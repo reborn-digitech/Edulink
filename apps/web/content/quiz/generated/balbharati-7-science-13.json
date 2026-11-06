@@ -310,6 +310,188 @@
       "generatedAt": "2026-11-02T04:21:24.181Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If a piece of iron is painted, what is the main purpose of this action?",
+      "choices": [
+        "To make it look shiny",
+        "To prevent rusting",
+        "To make it more attractive",
+        "To make it lighter"
+      ],
+      "answerIndex": 1,
+      "solution": "Painting iron prevents rusting by creating a barrier that stops moisture and oxygen from reaching the surface. The other options are not the primary purpose of painting iron.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि लोहे के टुकड़े पर पेंट किया जाता है, तो इस कार्य का मुख्य उद्देश्य क्या होता है?",
+          "choices": [
+            "इसे चमकदार बनाना",
+            "जंग लगने से रोकना",
+            "इसे अधिक आकर्षक बनाना",
+            "इसे हल्का बनाना"
+          ],
+          "solution": "लोहे पर पेंट लगाने से जंग लगना रोका जाता है क्योंकि यह एक बाधा बनाता है जो नमी और ऑक्सीजन के सतह तक पहुंचने से रोकता है। अन्य विकल्प लोहे पर पेंट लगाने का मुख्य उद्देश्य नहीं है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms like 'जंग लगना' for 'rusting'.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "लोखंडाचा एक तुकडा रंगला गेला असता, ह्या कृतीचा मुख्य उद्देश काय असतो?",
+          "choices": [
+            "त्याला चमकदार बनवणे",
+            "रूस्टिंग रोखणे",
+            "त्याला अधिक सुंदर बनवणे",
+            "त्याला हलका बनवणे"
+          ],
+          "solution": "लोखंडावर रंग लावल्याने त्याच्या सतहला नम आणि ऑक्सिजनपासून बचाव होतो, ज्यामुळे रूस्टिंग रोखली जाते. इतर विकल्प लोखंडावर रंग लावण्याचा मुख्य उद्देश नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms like 'रूस्टिंग' (rusting) which is commonly used in Marathi textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "focuses on appearance rather than protection",
+        null,
+        "students may confuse the purpose of painting with aesthetic improvement rather than protection",
+        "confuses function with weight change"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 1, as painting iron prevents rusting by blocking moisture and oxygen. The other options are common misconceptions about the purpose of painting.",
+      "sources": [
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 101,
+          "pageStart": 101,
+          "pageEnd": 101,
+          "headingPath": [
+            "13. Changes – Physical and Chemical",
+            "t t t"
+          ]
+        }
+      ],
+      "edition": "First Edition 2017",
+      "generatedAt": "2026-10-31T17:20:53.282Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "A student observes that a piece of metal changes color when exposed to air. What can be inferred about the change?",
+      "choices": [
+        "It is a physical change because the color changed",
+        "It is a chemical change because the metal became heavier",
+        "It is a physical change because no new substance is formed",
+        "It is a chemical change because the composition of the metal changed"
+      ],
+      "answerIndex": 3,
+      "solution": "The change is a chemical change because a color change in a metal often indicates a chemical reaction, such as oxidation or corrosion, which alters the composition of the metal. A physical change would not involve a change in the composition of the metal.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक छात्र देखता है कि हवा के संपर्क में आने पर एक धातु के टुकड़े का रंग बदल जाता है। इस परिवर्तन के बारे में क्या निष्कर्ष निकाला जा सकता है?",
+          "choices": [
+            "यह एक भौतिक परिवर्तन है क्योंकि रंग बदल गया",
+            "यह एक रासायनिक परिवर्तन है क्योंकि धातु भारी हो गई",
+            "यह एक भौतिक परिवर्तन है क्योंकि कोई नया पदार्थ नहीं बना",
+            "यह एक रासायनिक परिवर्तन है क्योंकि धातु की संरचना बदल गई"
+          ],
+          "solution": "यह परिवर्तन एक रासायनिक परिवर्तन है क्योंकि धातु में रंग परिवर्तन आमतौर पर रासायनिक अभिक्रिया, जैसे ऑक्सीकरण या जंग लगने के संकेत होता है, जो धातु की संरचना को बदल देता है। एक भौतिक परिवर्तन में धातु की संरचना में कोई परिवर्तन नहीं होता।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains original meaning, and uses standard Hindi scientific terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका विद्यार्थ्याला लक्षात आले की वायूशी संपर्कात आल्यानंतर धातूचा रंग बदलतो. या बदलाबद्दल काय निष्कर्ष काढता येईल?",
+          "choices": [
+            "हे भौमितिक बदल आहे कारण रंग बदलला",
+            "हे रासायनिक बदल आहे कारण धातू भारवान झाला",
+            "हे भौमितिक बदल आहे कारण कोणताही नवीन पदार्थ तयार झाला नाही",
+            "हे रासायनिक बदल आहे कारण धातूचा घटक बदलला"
+          ],
+          "solution": "हा बदल रासायनिक बदल आहे कारण धातूमध्ये रंग बदलणे रासायनिक अभिक्रिया, जसे की ऑक्सिडेशन किंवा अपघटन यांचा संकेत देते, जी धातूच्या घटकात बदल करते. भौमितिक बदलामध्ये धातूच्या घटकात बदल होत नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Fails to understand that color change can indicate a chemical change",
+        "Student assumes weight change indicates chemical change, not realizing color change is the key clue",
+        "Confuses a chemical change with a physical change",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 3, as a color change in a metal typically indicates a chemical change, such as oxidation. The solution correctly identifies this and the reasoning aligns with the key.",
+      "sources": [
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 97,
+          "pageStart": 98,
+          "pageEnd": 99,
+          "headingPath": [
+            "13. Changes – Physical and Chemical"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 98,
+          "pageStart": 99,
+          "pageEnd": 100,
+          "headingPath": [
+            "13. Changes – Physical and Chemical"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 99,
+          "pageStart": 100,
+          "pageEnd": 101,
+          "headingPath": [
+            "13. Changes – Physical and Chemical"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 100,
+          "pageStart": 101,
+          "pageEnd": 101,
+          "headingPath": [
+            "13. Changes – Physical and Chemical"
+          ]
+        }
+      ],
+      "edition": "First Edition 2017",
+      "generatedAt": "2026-10-31T17:20:53.282Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
     }
   ]
 }

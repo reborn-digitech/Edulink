@@ -1164,6 +1164,576 @@
       "generatedAt": "2026-10-28T20:03:22.284Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "Which of the following climatic groups according to Koeppen is based on temperature and has a no dry season?",
+      "choices": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "answerIndex": 0,
+      "solution": "Group A in the Koeppen climate classification is based on temperature and includes climates with no dry season, such as the tropical wet climate. Other options are incorrect because they represent different climate types, such as dry, warm temperate, or cold climates, which do not meet the criteria of having no dry season.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा कोएप्पेन के जलवायु समूह तापमान पर आधारित है और एक शुष्क ऋतु नहीं है?",
+          "choices": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ],
+          "solution": "कोएप्पेन जलवायु वर्गीकरण में वर्ग A तापमान पर आधारित है और एक शुष्क ऋतु वाले बिना जलवायु के साथ आता है, जैसे कि उष्णकटिबंधीय आर्द्र जलवायु। अन्य विकल्प गलत हैं क्योंकि वे विभिन्न जलवायु प्रकारों, जैसे शुष्क, गर्म समशीतोष्ण या ठंडी जलवायु का प्रतिनिधित्व करते हैं, जो शुष्क ऋतु न होने की शर्त को पूरा नहीं करते।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. All options are correctly translated, and the correct answer remains option (1). The distractors remain incorrect, and the technical terms used are consistent with standard Hindi geography textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "कोपेनच्या वर्गीकरणानुसार खालीलपैकी कोणता जलवायू समूह तापमानावर आधारित आहे आणि त्याला कोणताही शुष्क हंगाम नाही?",
+          "choices": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ],
+          "solution": "कोपेनच्या जलवायू वर्गीकरणातील समूह A तापमानावर आधारित आहे आणि त्यामध्ये कोणताही शुष्क हंगाम नसलेल्या जलवायूंचा समावेश होतो, उदाहरणार्थ उष्णकटिबंधीय ओला जलवायू. इतर विकल्प चुकीचे आहेत कारण ते विविध जलवायू प्रकार दर्शवतात, जसे की शुष्क, उष्ण शीतोष्ण आणि थंड जलवायू, जे शुष्क हंगाम नसलेल्या अटींच्या पूर्ततेसाठी योग्य नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for climate types.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses the classification of dry climates with humid climates",
+        "Confuses the classification of warm temperate climates with humid climates",
+        "Confuses the classification of cold snow forest climates with humid climates"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is A, as it refers to tropical humid climates with no dry season. The other options represent different climate groups with distinct characteristics, and the author's reasoning aligns with common misconceptions students might have.",
+      "sources": [
+        {
+          "document": "ncert/11/geography/kegy211.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 1,
+          "headingPath": [
+            "Chapter 11: World Climate and Climate Change"
+          ]
+        },
+        {
+          "document": "ncert/11/geography/kegy211.pdf",
+          "ordinal": 1,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 11: World Climate and Climate Change"
+          ]
+        },
+        {
+          "document": "ncert/11/geography/kegy211.pdf",
+          "ordinal": 2,
+          "pageStart": 2,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 11: World Climate and Climate Change"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T07:13:50.592Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of the following is a characteristic of the Mediterranean climate?",
+      "choices": [
+        "It has a dry summer and a wet winter",
+        "It is found in the interior of continents",
+        "It has a high annual precipitation",
+        "It is located near the equator"
+      ],
+      "answerIndex": 0,
+      "solution": "The correct option is that it has a dry summer and a wet winter, which is a defining feature of the Mediterranean climate. The second option is incorrect because Mediterranean climates are typically found on the western coasts of continents, not their interiors. The third option is wrong because these climates have low annual precipitation, not high. The fourth option is incorrect since Mediterranean climates are found in mid-latitude regions, not near the equator.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा मध्यसागरीय जलवायु की विशेषता है?",
+          "choices": [
+            "इसके गर्म गर्मी और नम सर्दी होती है",
+            "इसे महाद्वीपों के आंतरिक भाग में पाया जाता है",
+            "इसके वार्षिक वर्षा का उच्च स्तर होता है",
+            "इसे भूमध्य रेखा के पास स्थित माना जाता है"
+          ],
+          "solution": "सही विकल्प यह है कि इसके गर्म गर्मी और नम सर्दी होती है, जो मध्यसागरीय जलवायु की निर्णायक विशेषता है। दूसरा विकल्प गलत है क्योंकि मध्यसागरीय जलवायु आमतौर पर महाद्वीपों के पश्चिमी तटों पर पाई जाती है, न कि उनके आंतरिक भागों में। तीसरा विकल्प गलत है क्योंकि इन जलवायुओं में वार्षिक वर्षा कम होती है, न कि उच्च। चौथा विकल्प गलत है क्योंकि मध्यसागरीय जलवायु मध्य अक्षांश क्षेत्रों में पाई जाती है, न कि भूमध्य रेखा के पास।",
+          "imageAlt": null,
+          "critique": "The translation accurately reflects the original meaning, with appropriate Hindi terminology for climate types and geographical terms.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते मेडिटेरेनियन जलवायूचे वैशिष्ट्य आहे?",
+          "choices": [
+            "त्याचा उन्हाळा शुष्क आणि हिवाळा ओला असतो",
+            "तो महाद्वीपाच्या आतराष्ट्रात आढळतो",
+            "त्याचा वार्षिक पाऊस उच्च असतो",
+            "तो समानांतर रेखेजवळ असतो"
+          ],
+          "solution": "उच्च विकल्प त्याचा उन्हाळा शुष्क आणि हिवाळा ओला असतो, हे मेडिटेरेनियन जलवायूचे वैशिष्ट्य आहे. दुसरा विकल्प चुकीचा आहे कारण मेडिटेरेनियन जलवायू महाद्वीपाच्या पश्चिम किनारपट्टीवर आढळतो, नाहीतर आतराष्ट्रात. तिसरा विकल्प चुकीचा आहे कारण या जलवायूचा वार्षिक पाऊस कमी असतो, नाहीतर उच्च. चौथा विकल्प चुकीचा आहे कारण मेडिटेरेनियन जलवायू मध्य उष्णकटिबंधीय प्रदेशात आढळतो, नाहीतर समानांतर रेखेजवळ.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for geographical concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses the characteristics of a different climate",
+        "Misunderstands the location of the climate",
+        "Misinterprets the amount of rainfall in the climate type\",\"Misunderstands the latitudinal placement of the climate\"]},{"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 0, as the Mediterranean climate is characterized by dry summers and wet winters. The other options reflect common misconceptions about the location, precipitation, and latitude of the climate.",
+      "sources": [
+        {
+          "document": "ncert/11/geography/kegy211.pdf",
+          "ordinal": 3,
+          "pageStart": 3,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 11: World Climate and Climate Change"
+          ]
+        },
+        {
+          "document": "ncert/11/geography/kegy211.pdf",
+          "ordinal": 4,
+          "pageStart": 4,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 11: World Climate and Climate Change"
+          ]
+        },
+        {
+          "document": "ncert/11/geography/kegy211.pdf",
+          "ordinal": 5,
+          "pageStart": 4,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 11: World Climate and Climate Change"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T07:13:50.592Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "In which of the following climatic groups are the tropical wet and dry climates found?",
+      "choices": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "answerIndex": 0,
+      "solution": "Tropical wet and dry climates are classified under the tropical humid group, which is characterized by high temperatures and distinct wet and dry seasons. Option A is correct because it represents this group, while B refers to arid conditions, C corresponds to regions with milder temperatures, and D includes areas with cold climates.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से किस जलवायु समूह में उष्णकटिबंधीय आर्द्र एवं शुष्क जलवायु पाई जाती हैं?",
+          "choices": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ],
+          "solution": "उष्णकटिबंधीय आर्द्र एवं शुष्क जलवायु को उष्णकटिबंधीय आर्द्र समूह के अंतर्गत वर्गीकृत किया गया है, जिसकी विशेषता उच्च तापमान एवं स्पष्ट आर्द्र एवं शुष्क मौसम है। विकल्प A सही है क्योंकि यह इस समूह का प्रतिनिधित्व करता है, जबकि B शुष्क परिस्थितियों को संदर्भित करता है, C मृदु तापमान वाले क्षेत्रों के साथ संबंधित है, और D ठंडे जलवायु वाले क्षेत्रों को शामिल करता है।",
+          "imageAlt": null,
+          "critique": "Translation accurately reflects the original meaning, technical terms are appropriate for Hindi-medium curriculum, and the structure matches the original.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणत्या जलवायू गटात उष्णकटिबंधीय आर्द्र आणि शुष्क जलवायू आहेत?",
+          "choices": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ],
+          "solution": "उष्णकटिबंधीय आर्द्र आणि शुष्क जलवायू उष्णकटिबंधीय आर्द्र गटात वर्गीकृत केल्या जातात, जो उच्च तापमान आणि विशिष्ट वर्षा आणि शुष्क हंगामांच्या वैशिष्ट्यांनी विशिष्ट आहे. विकल्प A बरोबर आहे कारण तो हा गट दर्शवतो, तर B हा शुष्क परिस्थितींचा दावा करतो, C हा अधिक शीतल तापमान असलेल्या भागांशी संबंधित आहे आणि D हा थंड हवामान असलेल्या भागांचा समावेश करतो.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for climatic groups.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses dry climates with humid climates",
+        "Confuses warm temperate climates with humid climates",
+        "Confuses cold climates with humid climates"
+      ],
+      "solverAnswers": [
+        0,
+        1,
+        0,
+        0,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct, as tropical wet and dry climates (Aw) are indeed classified under Group A (tropical humid climates). The distractors reflect common misconceptions about climate classification.",
+      "sources": [
+        {
+          "document": "ncert/11/geography/kegy211.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 1,
+          "headingPath": [
+            "Chapter 11: World Climate and Climate Change"
+          ]
+        },
+        {
+          "document": "ncert/11/geography/kegy211.pdf",
+          "ordinal": 1,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 11: World Climate and Climate Change"
+          ]
+        },
+        {
+          "document": "ncert/11/geography/kegy211.pdf",
+          "ordinal": 2,
+          "pageStart": 2,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 11: World Climate and Climate Change"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T07:13:50.592Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "In which region would you expect to find a humid subtropical climate (Cwa)?",
+      "choices": [
+        "The western coast of South America",
+        "The eastern coast of North America",
+        "The central part of Australia",
+        "The interior of Africa"
+      ],
+      "answerIndex": 1,
+      "solution": "A humid subtropical climate (Cwa) is typically found on the eastern sides of continents, where warm, moist air from the ocean meets land. The eastern coast of North America experiences this climate due to its position relative to ocean currents and wind patterns. The western coast of South America has a different climate, the central part of Australia is arid, and the interior of Africa is not characterized by this climate type.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "किस क्षेत्र में आप नम उपोष्णकटिबंधीय जलवायु (Cwa) की अपेक्षा करेंगे?",
+          "choices": [
+            "दक्षिण अमेरिका के पश्चिमी तट",
+            "उत्तर अमेरिका के पूर्वी तट",
+            "ऑस्ट्रेलिया के केंद्रीय भाग",
+            "अफ्रीका के आंतरिक भाग"
+          ],
+          "solution": "एक नम उपोष्णकटिबंधीय जलवायु (Cwa) आमतौर पर महासागर से गर्म और नम हवाओं के भूमि के साथ मिलने वाले महाद्वीप के पूर्वी भागों में पाई जाती है। उत्तर अमेरिका के पूर्वी तट जलवायु के कारण इस जलवायु की अपेक्षा करता है। दक्षिण अमेरिका के पश्चिमी तट की जलवायु अलग होती है, ऑस्ट्रेलिया के केंद्रीय भाग शुष्क हैं और अफ्रीका के आंतरिक भाग इस जलवायु प्रकार के अधिकार में नहीं हैं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, technical terms are correctly used in Hindi, and the structure matches the original.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "कोणत्या प्रदेशात तुम्हाला आर्द्र उपउष्णकटिबंधीय जलवायू (Cwa) अपेक्षित असेल?",
+          "choices": [
+            "दक्षिण अमेरिकेच्या पश्चिम किनार्यावर",
+            "उत्तर अमेरिकेच्या पूर्व किनार्यावर",
+            "ऑस्ट्रेलियाच्या मध्यभागात",
+            "आफ्रिकेच्या आंतरभागात"
+          ],
+          "solution": "एक आर्द्र उपउष्णकटिबंधीय जलवायू (Cwa) सामान्यतः महासागरापासून जमिनीवर उष्ण, आर्द्र हवा मिळणाऱ्या महाद्वीपांच्या पूर्व किनार्यावर असतो. उत्तर अमेरिकेच्या पूर्व किनार्याला या जलवायूची असते कारण त्याचा समुद्रधारा आणि हवामान वितरणाशी संबंध असतो. दक्षिण अमेरिकेच्या पश्चिम किनार्याला वेगळा जलवायू असतो, ऑस्ट्रेलियाच्या मध्यभागात शुष्क जलवायू असतो आणि आफ्रिकेच्या आंतरभागात या जलवायू प्रकाराने विशिष्ट नसतो.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for climate types.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the climate with that of the west coast",
+        null,
+        "Misunderstands the location of the humid subtropical climate",
+        "Confuses the climate with that of the interior of a continent\",\"Misunderstands the region where this climate occurs\"]},{"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 1, as the humid subtropical climate (Cwa) is typically found on the eastern coasts of continents, such as the eastern coast of North America. The author's reasoning aligns with standard climatic classifications.",
+      "sources": [
+        {
+          "document": "ncert/11/geography/kegy211.pdf",
+          "ordinal": 3,
+          "pageStart": 3,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 11: World Climate and Climate Change"
+          ]
+        },
+        {
+          "document": "ncert/11/geography/kegy211.pdf",
+          "ordinal": 4,
+          "pageStart": 4,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 11: World Climate and Climate Change"
+          ]
+        },
+        {
+          "document": "ncert/11/geography/kegy211.pdf",
+          "ordinal": 5,
+          "pageStart": 4,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 11: World Climate and Climate Change"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T07:13:50.592Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "What is the role of forests in relation to carbon dioxide in the atmosphere?",
+      "choices": [
+        "They absorb carbon dioxide during photosynthesis",
+        "They release carbon dioxide through respiration",
+        "They store carbon dioxide in the soil",
+        "They convert carbon dioxide into oxygen"
+      ],
+      "answerIndex": 0,
+      "solution": "Forests absorb carbon dioxide from the atmosphere during photosynthesis, which is a fundamental process by which plants convert carbon dioxide and water into glucose and oxygen. The other options are incorrect because forests do not primarily release carbon dioxide through respiration, nor do they store it in the soil or convert it directly into oxygen.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "वायुमंडल में कार्बन डाइऑक्साइड के संबंध में वनों की भूमिका क्या है?",
+          "choices": [
+            "वे प्रकाश संश्लेषण के दौरान कार्बन डाइऑक्साइड अवशोषित करते हैं",
+            "वे श्वसन के दौरान कार्बन डाइऑक्साइड उत्सर्जित करते हैं",
+            "वे मिट्टी में कार्बन डाइऑक्साइड को भंडारित करते हैं",
+            "वे कार्बन डाइऑक्साइड को ऑक्सीजन में परिवर्तित करते हैं"
+          ],
+          "solution": "वन वायुमंडल से प्रकाश संश्लेषण के दौरान कार्बन डाइऑक्साइड को अवशोषित करते हैं, जो एक मूलभूत प्रक्रिया है जिसके द्वारा पौधे कार्बन डाइऑक्साइड और पानी को ग्लूकोज और ऑक्सीजन में परिवर्तित कर देते हैं। अन्य विकल्प गलत हैं क्योंकि वन प्रमुख रूप से श्वसन के दौरान कार्बन डाइऑक्साइड उत्सर्जित नहीं करते, न ही वे इसे मिट्टी में भंडारित करते हैं या इसे सीधे ऑक्सीजन में परिवर्तित करते हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate scientific terminology in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "वायुमार्गातील कार्बन डायऑक्साइडशी संबंधित जंगलांचा भूमिका काय आहे?",
+          "choices": [
+            "ते प्रकाशसंश्लेषण दरम्यान कार्बन डायऑक्साइड शोषतात",
+            "ते श्वसनाद्वारे कार्बन डायऑक्साइड जारी करतात",
+            "ते मातीत कार्बन डायऑक्साइड भंडारित करतात",
+            "ते कार्बन डायऑक्साइडला ऑक्सीजनमध्ये रूपांतरित करतात"
+          ],
+          "solution": "जंगल वायुमार्गातून प्रकाशसंश्लेषण दरम्यान कार्बन डायऑक्साइड शोषतात, हे एक मूलभूत प्रक्रिया आहे ज्याद्वारे वनस्पती कार्बन डायऑक्साइड आणि पाणी ग्लूकोज आणि ऑक्सीजनमध्ये रूपांतरित करतात. इतर विकल्प चुकीचे आहेत कारण जंगल श्वसनाद्वारे मुख्यतः कार्बन डायऑक्साइड जारी करत नाहीत, निर्माण करत नाहीत कार्बन डायऑक्साइड भंडारित करत नाहीत किंवा त्याचे ऑक्सीजनमध्ये थेट रूपांतर करत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the scientific terminology used in Marathi textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses the function of forests with other processes",
+        "Misinterprets the role of forests in the carbon cycle",
+        "Misunderstands the process of photosynthesis"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 0, as forests absorb carbon dioxide during photosynthesis. The other options reflect common misconceptions about the role of forests in the carbon cycle.",
+      "sources": [
+        {
+          "document": "ncert/11/geography/kegy211.pdf",
+          "ordinal": 6,
+          "pageStart": 5,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 11: World Climate and Climate Change"
+          ]
+        },
+        {
+          "document": "ncert/11/geography/kegy211.pdf",
+          "ordinal": 7,
+          "pageStart": 5,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 11: World Climate and Climate Change"
+          ]
+        },
+        {
+          "document": "ncert/11/geography/kegy211.pdf",
+          "ordinal": 8,
+          "pageStart": 6,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 11: World Climate and Climate Change"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T07:13:50.592Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "A student was asked to classify a region with an average temperature of the coldest month at 15°C, high annual rainfall, and no dry season. Which climatic group would this region belong to?",
+      "choices": [
+        "A - Tropical Humid Climates",
+        "B - Dry Climates",
+        "C - Warm Temperate Climates",
+        "D - Cold Snow Forest Climates"
+      ],
+      "answerIndex": 0,
+      "solution": "The region described has an average temperature of the coldest month at 15°C, which is above -3°C, and it has high annual rainfall with no dry season. This matches the characteristics of A - Tropical Humid Climates. The other options do not fit the description.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक छात्र को एक क्षेत्र का वर्गीकरण करने के लिए कहा गया जिसके सबसे ठंडे महीने का औसत तापमान 15°C है, उच्च वार्षिक वर्षा है, और कोई शुष्क मौसम नहीं है। इस क्षेत्र के लिए कौन सा जलवायु समूह आएगा?",
+          "choices": [
+            "उष्णकटिबंधीय आर्द्र जलवायु",
+            "शुष्क जलवायु",
+            "गर्म समशीतोष्ण जलवायु",
+            "ठंडे बर्फीले वन जलवायु"
+          ],
+          "solution": "वर्णित क्षेत्र के सबसे ठंडे महीने का औसत तापमान 15°C है, जो -3°C से ऊपर है, और इसमें उच्च वार्षिक वर्षा है और कोई शुष्क मौसम नहीं है। यह उष्णकटिबंधीय आर्द्र जलवायु के लक्षणों के साथ मेल खाता है। अन्य विकल्प विवरण के अनुरूप नहीं हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the original English question and maintains the correct answer and distractors. Technical terms are appropriately translated.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका विद्यार्थ्याला एका प्रदेशाचे वर्गीकरण करण्यास सांगितले गेले, ज्याच्या शीततम महिन्याच्या ओसंत तापमानाची सरासरी 15°C आहे, वर्षभर उच्च पाऊस पडतो आणि शुष्क हंगाम नाही. हा प्रदेश कोणत्या जलवायू वर्गात येईल?",
+          "choices": [
+            "उष्णकटिबंधीय आर्द्र जलवायू",
+            "शुष्क जलवायू",
+            "उष्ण उपोष्णकटिबंधीय जलवायू",
+            "ठिणगी वाळवंट जलवायू"
+          ],
+          "solution": "वर्णन केलेला प्रदेश शीततम महिन्याच्या ओसंत तापमानाची सरासरी 15°C आहे, जी -3°C पेक्षा जास्त आहे, आणि वर्षभर उच्च पाऊस पडतो आणि शुष्क हंगाम नाही. हे उष्णकटिबंधीय आर्द्र जलवायू च्या वैशिष्ट्यांच्या अनुरूप आहे. इतर विकल्प वर्णनास अनुरूप नाहीत.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the original meaning, and uses appropriate terminology consistent with Marathi-medium geography textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Misclassifies tropical humid climate as dry climate",
+        "Confuses warm temperate climate with tropical humid climate",
+        "Confuses cold snow forest climate with tropical humid climate"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is A - Tropical Humid Climates. The criteria match the definition of this climate type, which includes a minimum temperature of 15°C in the coldest month, high rainfall, and no dry season. The other options are incorrectly classified, and the reasons provided by the author align with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/11/geography/kegy211.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 1,
+          "headingPath": [
+            "Chapter 11: World Climate and Climate Change"
+          ]
+        },
+        {
+          "document": "ncert/11/geography/kegy211.pdf",
+          "ordinal": 1,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 11: World Climate and Climate Change"
+          ]
+        },
+        {
+          "document": "ncert/11/geography/kegy211.pdf",
+          "ordinal": 2,
+          "pageStart": 2,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 11: World Climate and Climate Change"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T07:13:50.592Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
     }
   ]
 }

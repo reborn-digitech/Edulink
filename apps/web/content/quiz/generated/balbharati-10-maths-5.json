@@ -1,0 +1,771 @@
+{
+  "subject": "MATHS",
+  "classLevel": 10,
+  "chapter": "Chapter 5 — Probability",
+  "name": "Probability",
+  "slug": "balbharati-maths-10-probability",
+  "summary": "This chapter introduces the concept of probability and how to calculate the likelihood of events.",
+  "position": 5,
+  "source": "generated against Balbharati Mathematics, Class 10, chapter 5 (\"१० वी गणित भाग - १ इंग्रजी\", chapter 5) (2026 edition)",
+  "licence": "Original questions written for Shalaghar · CC BY-SA 4.0",
+  "translations": {
+    "hi": {
+      "name": "अध्याय 5 - संभाव्यता।",
+      "summary": "या अध्याय में संभाव्यता की अवधारणा और घटनाओं की संभाव्यता की गणना कैसे करें, इसका परिचय दिया गया है।"
+    },
+    "mr": {
+      "name": "अध्याय 5 - संभाव्यता.",
+      "summary": "ही अध्यायात संभाव्यता आणि घटनांच्या संभाव्यतेची गणना कशी करायची याचा परिचय दिला आहे."
+    }
+  },
+  "board": "BALBHARATI",
+  "book": "१० वी गणित भाग - १ इंग्रजी",
+  "edition": "2026 edition",
+  "generatedAt": "2026-11-06T19:03:41.258Z",
+  "model": "qwen3-30b-a3b",
+  "topicIsNew": true,
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "What is the sample space when two coins are tossed simultaneously?",
+      "choices": [
+        "{H, T}",
+        "{HH, HT, TH, TT}",
+        "{HH, HT, TT}",
+        "{H, T, HT, TT}"
+      ],
+      "answerIndex": 1,
+      "solution": "The sample space when two coins are tossed simultaneously includes all possible combinations of outcomes: both coins landing heads (HH), first heads and second tails (HT), first tails and second heads (TH), and both coins landing tails (TT). This set {HH, HT, TH, TT} represents all possible results. Other options are missing some outcomes or include incorrect combinations.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "दो सिक्कों के एक साथ फेंके जाने पर संभाव्य अंतर्वार्ता क्या होता है?",
+          "choices": [
+            "{H, T}",
+            "{HH, HT, TH, TT}",
+            "{HH, HT, TT}",
+            "{H, T, HT, TT}"
+          ],
+          "solution": "जब दो सिक्कों को एक साथ फेंका जाता है, तो संभाव्य अंतर्वार्ता में सभी संभावित परिणाम शामिल होते हैं: दोनों सिक्कों के चित (HH), पहले सिक्के के चित और दूसरे के पट (HT), पहले सिक्के के पट और दूसरे के चित (TH), और दोनों सिक्कों के पट (TT)। इस सेट {HH, HT, TH, TT} में सभी संभावित परिणाम शामिल होते हैं। अन्य विकल्प अपूर्ण परिणाम छोड़ देते हैं या गलत संयोजन शामिल करते हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms. The correct answer remains option (2) and the distractors are still incorrect.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "दोन सिक्के एकाच वेळी उडवल्यास नमुना अवकाश काय असतो?",
+          "choices": [
+            "{H, T}",
+            "{HH, HT, TH, TT}",
+            "{HH, HT, TT}",
+            "{H, T, HT, TT}"
+          ],
+          "solution": "दोन सिक्के एकाच वेळी उडवल्यास नमुना अवकाशमध्ये अंमलात आणलेल्या निकालांच्या सर्व संभाव्य जोड्या समाविष्ट असतात: दोन्ही सिक्के डोके आले (HH), पहिला डोका आणि दुसरा लागला (HT), पहिला लागला आणि दुसरा डोका आला (TH), आणि दोन्ही सिक्के लागले (TT). हा सेट {HH, HT, TH, TT} सर्व संभाव्य निकाल दर्शवतो. इतर विकल्पांमध्ये काही निकाल गहाळ आहेत किंवा अयोग्य जोड्या समाविष्ट आहेत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for probability concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "only lists single outcomes without considering combinations",
+        null,
+        "Student forgets that HT and TH are distinct outcomes when two coins are tossed.",
+        "Confuses sample space with individual outcomes and combined outcomes"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is option 1, as it includes all four possible outcomes of tossing two coins: HH, HT, TH, TT. The other options are either incomplete or incorrectly combine outcomes.",
+      "sources": [
+        {
+          "document": "balbharati/10/mathematics/1003000608.pdf",
+          "ordinal": 68,
+          "pageStart": 127,
+          "pageEnd": 129,
+          "headingPath": [
+            "5. Probability"
+          ]
+        },
+        {
+          "document": "balbharati/10/mathematics/1003000608.pdf",
+          "ordinal": 69,
+          "pageStart": 129,
+          "pageEnd": 130,
+          "headingPath": [
+            "5. Probability"
+          ]
+        },
+        {
+          "document": "balbharati/10/mathematics/1003000608.pdf",
+          "ordinal": 70,
+          "pageStart": 130,
+          "pageEnd": 131,
+          "headingPath": [
+            "5. Probability"
+          ]
+        }
+      ],
+      "edition": "2026 edition",
+      "generatedAt": "2026-11-06T19:03:41.258Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is the probability of an event that the ticket drawn bears an odd number?",
+      "choices": [
+        "1/30",
+        "15/30",
+        "16/30",
+        "30/30"
+      ],
+      "answerIndex": 1,
+      "solution": "The total number of tickets is 30. The odd numbers from 1 to 30 are 15 (1, 3, 5, ..., 29). So, the probability is 15/30. The option 1/30 is incorrect because it assumes only one odd number, 15/30 is correct, 16/30 is incorrect because it includes an extra number, and 30/30 is incorrect because it suggests all numbers are odd.",
+      "checkExpr": "15/30",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "क्या संभाव्यता है कि खींचे गए टिकट पर एक विषम संख्या हो?",
+          "choices": [
+            "1/30",
+            "15/30",
+            "16/30",
+            "30/30"
+          ],
+          "solution": "कुल टिकटों की संख्या 30 है। 1 से 30 तक की विषम संख्याएं 15 हैं (1, 3, 5, ..., 29)। इसलिए, संभाव्यता 15/30 है। 1/30 गलत है क्योंकि यह केवल एक विषम संख्या मानता है, 15/30 सही है, 16/30 गलत है क्योंकि यह एक अतिरिक्त संख्या शामिल करता है, और 30/30 गलत है क्योंकि यह दर्शाता है कि सभी संख्याएं विषम हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology as used in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका टिकिटावर विचित्र संख्या असलेल्या घटनेची संभाव्यता काय आहे?",
+          "choices": [
+            "1/30",
+            "15/30",
+            "16/30",
+            "30/30"
+          ],
+          "solution": "टिकिटांची एकूण संख्या 30 आहे. 1 ते 30 च्या विचित्र संख्या 15 आहेत (1, 3, 5, ..., 29). म्हणून, संभाव्यता 15/30 आहे. 1/30 अयोग्य आहे कारण ते फक्त एक विचित्र संख्या मानते, 15/30 बरोबर आहे, 16/30 अयोग्य आहे कारण त्यामध्ये अतिरिक्त संख्या समाविष्ट आहे आणि 30/30 अयोग्य आहे कारण ते सूचित करते की सर्व संख्या विचित्र आहेत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "thinks only one odd number exists",
+        null,
+        "confuses the count of odd numbers",
+        "includes an extra number in the count of odd numbers"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-constructed, with a clear and correct solution. The author's reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/10/mathematics/1003000608.pdf",
+          "ordinal": 74,
+          "pageStart": 136,
+          "pageEnd": 138,
+          "headingPath": [
+            "5. Probability"
+          ]
+        },
+        {
+          "document": "balbharati/10/mathematics/1003000608.pdf",
+          "ordinal": 75,
+          "pageStart": 138,
+          "pageEnd": 138,
+          "headingPath": [
+            "5. Probability"
+          ]
+        }
+      ],
+      "edition": "2026 edition",
+      "generatedAt": "2026-11-06T19:03:41.258Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the term used for the set of all possible outcomes of a random experiment?",
+      "choices": [
+        "Sample Point",
+        "Event",
+        "Probability",
+        "Sample Space"
+      ],
+      "answerIndex": 3,
+      "solution": "The term used for the set of all possible outcomes of a random experiment is 'Sample Space'. A sample space is denoted by 'S' or 'Ω'. The other options are incorrect because a 'Sample Point' is an individual outcome, an 'Event' is a subset of the sample space, and 'Probability' is a measure of the likelihood of an event.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक यादृच्छिक प्रयोग के सभी संभावित परिणामों के सेट के लिए क्या शब्द प्रयोग किया जाता है?",
+          "choices": [
+            "नमूना बिंदु",
+            "घटना",
+            "संभाव्यता",
+            "नमूना अंतरिक्ष"
+          ],
+          "solution": "एक यादृच्छिक प्रयोग के सभी संभावित परिणामों के सेट के लिए शब्द 'नमूना अंतरिक्ष' प्रयोग किया जाता है। एक नमूना अंतरिक्ष को 'S' या 'Ω' द्वारा निरूपित किया जाता है। अन्य विकल्प गलत हैं क्योंकि 'नमूना बिंदु' एक व्यक्तिगत परिणाम है, 'घटना' नमूना अंतरिक्ष का एक उपसमुच्चय है और 'संभाव्यता' एक घटना के घटित होने की संभावना का माप है।",
+          "imageAlt": null,
+          "critique": "All terms are standard in Hindi mathematics textbooks. 'Sample Space' is correctly translated as 'नमूना अंतरिक्ष' and other terms are accurately rendered.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका यादृच्छिक प्रयोगाच्या अशा सर्व संभाव्य निकालांच्या सेटला कोणत्या शब्दाने ओळखले जाते?",
+          "choices": [
+            "नमुना बिंदू",
+            "घटना",
+            "संभाव्यता",
+            "नमुना अवकाश"
+          ],
+          "solution": "एका यादृच्छिक प्रयोगाच्या अशा सर्व संभाव्य निकालांच्या सेटला 'नमुना अवकाश' म्हणतात. नमुना अवकाशाला 'S' किंवा 'Ω' ने दर्शवितात. इतर विकल्प अयोग्य आहेत कारण 'नमुना बिंदू' हा एक विशिष्ट निकाल आहे, 'घटना' हा नमुना अवकाशाचा उपसमूह आहे आणि 'संभाव्यता' ही घटनेच्या घडण्याच्या संभाव्यतेचे मापन आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology consistent with standard textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses sample space with sample point",
+        "Confuses sample space with event",
+        "Confuses sample space with probability",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-constructed and the key is correct. The solution clearly explains the distinction between sample space, sample point, event, and probability.",
+      "sources": [
+        {
+          "document": "balbharati/10/mathematics/1003000608.pdf",
+          "ordinal": 65,
+          "pageStart": 123,
+          "pageEnd": 124,
+          "headingPath": [
+            "5. Probability"
+          ]
+        },
+        {
+          "document": "balbharati/10/mathematics/1003000608.pdf",
+          "ordinal": 66,
+          "pageStart": 124,
+          "pageEnd": 125,
+          "headingPath": [
+            "5. Probability"
+          ]
+        },
+        {
+          "document": "balbharati/10/mathematics/1003000608.pdf",
+          "ordinal": 67,
+          "pageStart": 125,
+          "pageEnd": 127,
+          "headingPath": [
+            "5. Probability"
+          ]
+        }
+      ],
+      "edition": "2026 edition",
+      "generatedAt": "2026-11-06T19:03:41.258Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "If a die is rolled, what is the probability of getting a prime number on the upper face?",
+      "choices": [
+        "1/6",
+        "2/6",
+        "3/6",
+        "4/6"
+      ],
+      "answerIndex": 2,
+      "solution": "When a die is rolled, the sample space is {1, 2, 3, 4, 5, 6}. The prime numbers are 2, 3, and 5, so there are 3 favorable outcomes. Hence, the probability is 3/6. The other options do not correctly count the favorable outcomes.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक पासा फेंका जाता है, तो ऊपरी सतह पर एक अभाज्य संख्या प्राप्त करने की प्रायिकता क्या है?",
+          "choices": [
+            "1/6",
+            "2/6",
+            "3/6",
+            "4/6"
+          ],
+          "solution": "जब एक पासा फेंका जाता है, तो समष्टि अंतराल {1, 2, 3, 4, 5, 6} होता है। अभाज्य संख्याएँ 2, 3 और 5 हैं, अतः 3 अनुकूल परिणाम हैं। इसलिए, प्रायिकता 3/6 है। अन्य विकल्प अनुकूल परिणामों की सही गणना नहीं करते हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Hindi mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर एका छाननीचा फेकला गेला, तर उपरी बाजूला अभाज्य संख्या मिळण्याची संभाव्यता किती?",
+          "choices": [
+            "1/6",
+            "2/6",
+            "3/6",
+            "4/6"
+          ],
+          "solution": "जेव्हा एका छाननीचा फेकला गेला, तेव्हा नमुना अंतर्गत {1, 2, 3, 4, 5, 6} असते. अभाज्य संख्या 2, 3 आणि 5 असतात, त्यामुळे 3 अनुकूल निकाल असतात. म्हणून, संभाव्यता 3/6 असते. इतर विकल्प अनुकूल निकालांची चुकीची गणना करतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for mathematical concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Believes only 1 is prime, ignoring 2, 3, and 5",
+        "Chooses the number of even numbers",
+        null,
+        "Chooses the number of composite numbers"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 3/6, as there are three prime numbers (2, 3, 5) on a die. The distractors reflect common misconceptions about prime numbers, even numbers, and composite numbers.",
+      "sources": [
+        {
+          "document": "balbharati/10/mathematics/1003000608.pdf",
+          "ordinal": 71,
+          "pageStart": 131,
+          "pageEnd": 133,
+          "headingPath": [
+            "5. Probability"
+          ]
+        },
+        {
+          "document": "balbharati/10/mathematics/1003000608.pdf",
+          "ordinal": 72,
+          "pageStart": 133,
+          "pageEnd": 135,
+          "headingPath": [
+            "5. Probability"
+          ]
+        },
+        {
+          "document": "balbharati/10/mathematics/1003000608.pdf",
+          "ordinal": 73,
+          "pageStart": 135,
+          "pageEnd": 136,
+          "headingPath": [
+            "5. Probability"
+          ]
+        }
+      ],
+      "edition": "2026 edition",
+      "generatedAt": "2026-11-06T19:03:41.258Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "If a die is rolled once, what is the probability of getting an odd number?",
+      "choices": [
+        "1/2",
+        "1/3",
+        "1/4",
+        "1/6"
+      ],
+      "answerIndex": 0,
+      "solution": "A die has six faces, with numbers 1 to 6. The odd numbers are 1, 3, and 5, so there are 3 favorable outcomes. The probability is 3/6, which simplifies to 1/2. '1/3' is the probability of a specific odd number. '1/4' is incorrect. '1/6' is the probability of a specific number.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक पासा एक बार फेंका जाता है, तो एक विषम संख्या प्राप्त करने की प्रायिकता क्या है?",
+          "choices": [
+            "1/2",
+            "1/3",
+            "1/4",
+            "1/6"
+          ],
+          "solution": "एक पासा में छह फलक होते हैं, जिन पर संख्याएँ 1 से 6 तक होती हैं। विषम संख्याएँ 1, 3 और 5 हैं, अतः तीन अनुकूल परिणाम हैं। प्रायिकता 3/6 है, जो 1/2 में सरलीकृत हो जाती है। '1/3' एक विशिष्ट विषम संख्या की प्रायिकता है। '1/4' गलत है। '1/6' एक विशिष्ट संख्या की प्रायिकता है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर एका छक्का एकदा फेकला गेला, तर अयोग्य संख्या मिळण्याची तक्ता काय असेल?",
+          "choices": [
+            "1/2",
+            "1/3",
+            "1/4",
+            "1/6"
+          ],
+          "solution": "एका छक्क्याच्या छह बाजू असतात, ज्यांवर 1 ते 6 नंबर असतात. अयोग्य संख्या 1, 3 आणि 5 असतात, त्यामुळे 3 अनुकूल निकाल असतात. तक्ता 3/6 असतो, जो 1/2 मध्ये सोपा केला जातो. '1/3' हा एका विशिष्ट अयोग्य संख्येचा तक्ता आहे. '1/4' चूकीचा आहे. '1/6' हा एका विशिष्ट संख्येचा तक्ता आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi terminology for probability concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Student thinks there are only three possible outcomes: odd, even, and neither",
+        "Confuses the number of favorable outcomes.",
+        "Incorrect calculation of favorable outcomes and total outcomes.', "
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct and clearly explains why 1/2 is the right answer. The reasoning for the distractors is plausible and reflects common student misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/10/mathematics/1003000608.pdf",
+          "ordinal": 74,
+          "pageStart": 136,
+          "pageEnd": 138,
+          "headingPath": [
+            "5. Probability"
+          ]
+        },
+        {
+          "document": "balbharati/10/mathematics/1003000608.pdf",
+          "ordinal": 75,
+          "pageStart": 138,
+          "pageEnd": 138,
+          "headingPath": [
+            "5. Probability"
+          ]
+        }
+      ],
+      "edition": "2026 edition",
+      "generatedAt": "2026-11-06T19:03:41.258Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If two digit numbers are formed using digits 2, 3, and 5 without repeating a digit, how many such numbers can be formed?",
+      "choices": [
+        "3",
+        "6",
+        "9",
+        "12"
+      ],
+      "answerIndex": 1,
+      "solution": "The number of two-digit numbers that can be formed is 3 × 2 = 6. This is because for the first digit, there are 3 choices, and for the second digit, there are 2 remaining choices. The correct option is 6. The other options are incorrect due to miscalculations or misunderstandings of permutations.",
+      "checkExpr": "3*2",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि अंक 2, 3 और 5 का प्रयोग बिना किसी अंक के पुनरावृत्ति के दो अंकों की संख्याएँ बनाई जाएँ, तो कितनी ऐसी संख्याएँ बनाई जा सकती हैं?",
+          "choices": [
+            "3",
+            "6",
+            "9",
+            "12"
+          ],
+          "solution": "दो अंकों की संख्याओं की संख्या 3 × 2 = 6 है। इसका कारण यह है कि पहले अंक के लिए 3 विकल्प हैं, और दूसरे अंक के लिए 2 शेष विकल्प हैं। सही विकल्प 6 है। अन्य विकल्प गणना त्रुटि या क्रमचय की गलत समझ के कारण गलत हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर अकराच्या अंकां 2, 3 आणि 5 वापरून द्विअंकीय संख्या तयार करायच्या असतील आणि एकाच अंकाचा पुनरावर्तन करायचा नसतो तर अशा किती संख्या तयार करता येतील?",
+          "choices": [
+            "3",
+            "6",
+            "9",
+            "12"
+          ],
+          "solution": "तयार करता येणाऱ्या द्विअंकीय संख्यांची संख्या 3 × 2 = 6 आहे. हे कारण असे आहे की पहिल्या अंकासाठी 3 विकल्प आहेत आणि दुसऱ्या अंकासाठी 2 उरलेले विकल्प आहेत. योग्य विकल्प 6 आहे. इतर विकल्प गणनाच्या चूक किंवा क्रमविन्यासाच्या असमजामुळे चुकीचे आहेत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Counts only the number of digits",
+        null,
+        "Adds the number of digits instead of multiplying",
+        "Multiplies incorrectly"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The question is a permutation problem where two-digit numbers are formed from 3 distinct digits without repetition. The correct calculation is 3 × 2 = 6, which matches the author's key. The distractors reflect common misconceptions such as counting digits instead of permutations, adding instead of multiplying, and incorrect multiplication.",
+      "sources": [
+        {
+          "document": "balbharati/10/mathematics/1003000608.pdf",
+          "ordinal": 68,
+          "pageStart": 127,
+          "pageEnd": 129,
+          "headingPath": [
+            "5. Probability"
+          ]
+        },
+        {
+          "document": "balbharati/10/mathematics/1003000608.pdf",
+          "ordinal": 69,
+          "pageStart": 129,
+          "pageEnd": 130,
+          "headingPath": [
+            "5. Probability"
+          ]
+        },
+        {
+          "document": "balbharati/10/mathematics/1003000608.pdf",
+          "ordinal": 70,
+          "pageStart": 130,
+          "pageEnd": 131,
+          "headingPath": [
+            "5. Probability"
+          ]
+        }
+      ],
+      "edition": "2026 edition",
+      "generatedAt": "2026-11-06T19:03:41.258Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "A die is rolled. What is the probability of getting a number less than 3?",
+      "choices": [
+        "1/3",
+        "1/6",
+        "1/4",
+        "1/2"
+      ],
+      "answerIndex": 0,
+      "solution": "When a die is rolled, the sample space is {1, 2, 3, 4, 5, 6}. The numbers less than 3 are 1 and 2, so there are 2 favorable outcomes. The probability is 2/6, which simplifies to 1/3. The other options do not match the correct calculation.",
+      "checkExpr": "2/6",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक पासा फेंका जाता है। 3 से कम संख्या प्राप्त करने की प्रायिकता क्या है?",
+          "choices": [
+            "1/3",
+            "1/6",
+            "1/4",
+            "1/2"
+          ],
+          "solution": "जब एक पासा फेंका जाता है, तो सम्भाव्य अंक {1, 2, 3, 4, 5, 6} होते हैं। 3 से कम संख्याएँ 1 और 2 हैं, अतः 2 अनुकूल परिणाम हैं। प्रायिकता 2/6 होती है, जो 1/3 में सरलीकृत हो जाती है। अन्य विकल्प सही गणना के अनुरूप नहीं हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Hindi mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका छक्क्याच्या फेकाच्या वेळी, 3 पेक्षा लहान संख्या मिळण्याची शक्यता किती?",
+          "choices": [
+            "1/3",
+            "1/6",
+            "1/4",
+            "1/2"
+          ],
+          "solution": "जेव्हा एका छक्क्याची फेक केली जाते, तेव्हा नमुना अंतर {1, 2, 3, 4, 5, 6} असते. 3 पेक्षा लहान संख्या 1 आणि 2 असतात, म्हणून 2 अनुकूल निकाल असतात. शक्यता 2/6 असते, जी 1/3 मध्ये सोपीकरण केली जाते. इतर विकल्प योग्य गणनेशी जुळत नाहीत.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Believes only one outcome (rolling a 1) satisfies the condition, ignoring that 2 also works.",
+        "Believes the die has 4 sides instead of 6",
+        "Student thinks only two outcomes (less than 3 and not less than 3) exist, ignoring the actual numbers on the die."
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct and matches the key. The correct answer is 1/3, as there are two favorable outcomes (1 and 2) out of six possible outcomes. The distractors are based on plausible misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/10/mathematics/1003000608.pdf",
+          "ordinal": 71,
+          "pageStart": 131,
+          "pageEnd": 133,
+          "headingPath": [
+            "5. Probability"
+          ]
+        },
+        {
+          "document": "balbharati/10/mathematics/1003000608.pdf",
+          "ordinal": 72,
+          "pageStart": 133,
+          "pageEnd": 135,
+          "headingPath": [
+            "5. Probability"
+          ]
+        },
+        {
+          "document": "balbharati/10/mathematics/1003000608.pdf",
+          "ordinal": 73,
+          "pageStart": 135,
+          "pageEnd": 136,
+          "headingPath": [
+            "5. Probability"
+          ]
+        }
+      ],
+      "edition": "2026 edition",
+      "generatedAt": "2026-11-06T19:03:41.258Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "A box contains 5 strawberry chocolates, 6 coffee chocolates, and 2 peppermint chocolates. What is the probability of picking a coffee chocolate?",
+      "choices": [
+        "5/13",
+        "6/13",
+        "2/13",
+        "13/6"
+      ],
+      "answerIndex": 1,
+      "solution": "The total number of chocolates is 5 + 6 + 2 = 13. The number of coffee chocolates is 6. So, the probability is 6/13. The other options either use the wrong numbers or reverse the fraction.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक बॉक्स में 5 स्ट्रॉबेरी चॉकलेट, 6 कॉफी चॉकलेट और 2 पेपरमिंट चॉकलेट हैं। कॉफी चॉकलेट निकालने की प्रायिकता क्या है?",
+          "choices": [
+            "5/13",
+            "6/13",
+            "2/13",
+            "13/6"
+          ],
+          "solution": "कुल चॉकलेट की संख्या 5 + 6 + 2 = 13 है। कॉफी चॉकलेट की संख्या 6 है। इसलिए, प्रायिकता 6/13 है। अन्य विकल्प गलत संख्या का उपयोग करते हैं या भिन्न को उल्टा कर देते हैं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, with appropriate Hindi terminology used for mathematical concepts.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका बॉक्समध्ये 5 स्ट्रॉबेरी चॉकलेट्स, 6 कॉफी चॉकलेट्स आणि 2 पेपरमिंट चॉकलेट्स आहेत. कॉफी चॉकलेट घेण्याची शक्यता किती आहे?",
+          "choices": [
+            "5/13",
+            "6/13",
+            "2/13",
+            "13/6"
+          ],
+          "solution": "एकूण चॉकलेट्सची संख्या 5 + 6 + 2 = 13 आहे. कॉफी चॉकलेट्सची संख्या 6 आहे. म्हणून, शक्यता 6/13 आहे. इतर विकल्पांमध्ये चुकीची संख्या वापरली गेली आहे किंवा अंश आणि छेद चुकून घातले गेले आहेत.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate terminology common in Marathi-medium textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Chooses the number of strawberry chocolates",
+        null,
+        "Chooses the number of peppermint chocolates",
+        "Reverses the numerator and denominator"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct and matches the key. The reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/10/mathematics/1003000608.pdf",
+          "ordinal": 71,
+          "pageStart": 131,
+          "pageEnd": 133,
+          "headingPath": [
+            "5. Probability"
+          ]
+        },
+        {
+          "document": "balbharati/10/mathematics/1003000608.pdf",
+          "ordinal": 72,
+          "pageStart": 133,
+          "pageEnd": 135,
+          "headingPath": [
+            "5. Probability"
+          ]
+        },
+        {
+          "document": "balbharati/10/mathematics/1003000608.pdf",
+          "ordinal": 73,
+          "pageStart": 135,
+          "pageEnd": 136,
+          "headingPath": [
+            "5. Probability"
+          ]
+        }
+      ],
+      "edition": "2026 edition",
+      "generatedAt": "2026-11-06T19:03:41.258Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    }
+  ]
+}

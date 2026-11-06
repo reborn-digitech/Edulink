@@ -1339,6 +1339,1006 @@
       "generatedAt": "2026-11-02T03:59:02.149Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "Which of the following is a property of heat energy?",
+      "choices": [
+        "It can be seen",
+        "It can be touched",
+        "It can be stored in a container",
+        "It can be transferred from one body to another"
+      ],
+      "answerIndex": 3,
+      "solution": "Heat energy can be transferred from one body to another, as it is a form of energy that moves between objects due to temperature differences. It cannot be seen or touched directly because it is a form of thermal energy, not a physical substance. It also cannot be stored in a container in the same way as matter or other forms of energy.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा ऊष्मा ऊर्जा का गुण है?",
+          "choices": [
+            "इसे देखा जा सकता है",
+            "इसे छूया जा सकता है",
+            "इसे एक बर्तन में संग्रहित किया जा सकता है",
+            "इसे एक वस्तु से दूसरी वस्तु में स्थानांतरित किया जा सकता है"
+          ],
+          "solution": "ऊष्मा ऊर्जा एक अन्य वस्तु में स्थानांतरित की जा सकती है, क्योंकि यह तापमान अंतर के कारण वस्तुओं के बीच गति करने वाले ऊर्जा के रूप में होती है। इसे सीधे देखा या छूया नहीं जा सकता क्योंकि यह एक भौतिक पदार्थ नहीं होती बल्कि तापीय ऊर्जा के रूप में होती है। इसे अन्य ऊर्जा के रूप में एक बर्तन में संग्रहित नहीं किया जा सकता।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology consistent with school-level science textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते उष्ण ऊर्जेचे गुणधर्म आहे?",
+          "choices": [
+            "ते दिसू शकते",
+            "ते स्पर्श करता येते",
+            "ते एका वस्तूमध्ये भंडारले जाऊ शकते",
+            "ते एका वस्तूमधून दुसऱ्या वस्तूमध्ये हलवता येते"
+          ],
+          "solution": "उष्ण ऊर्जा एका वस्तूमधून दुसऱ्या वस्तूमध्ये हलवता येते, कारण ती तापमानाच्या फरकामुळे वस्तूंमध्ये गती करते. ते दिसू शकत नाही किंवा स्पर्श करता येत नाही कारण ती एक तापमान ऊर्जेची रूपे आहे, नैसर्गिक वस्तू नाही. ती वस्तू किंवा इतर ऊर्जा रूपाप्रमाणे एका वस्तूमध्ये भंडारली जाऊ शकत नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the properties of heat with those of light",
+        "Thinks heat is a tangible substance",
+        "Believes heat can be stored like a liquid",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 3, as heat energy can indeed be transferred between bodies. The other options reflect common misconceptions about heat being visible, tangible, or storable like a liquid.",
+      "sources": [
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 67,
+          "pageStart": 68,
+          "pageEnd": 68,
+          "headingPath": [
+            "9. Heat"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 68,
+          "pageStart": 69,
+          "pageEnd": 69,
+          "headingPath": [
+            "9. Heat"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 69,
+          "pageStart": 69,
+          "pageEnd": 70,
+          "headingPath": [
+            "9. Heat"
+          ]
+        }
+      ],
+      "edition": "First Edition 2017",
+      "generatedAt": "2026-10-31T16:49:21.729Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Why does the halwai wrap a cloth around the end of his slotted spoon while stirring boiling milk?",
+      "choices": [
+        "To make it look clean",
+        "To prevent the spoon from getting too hot",
+        "To prevent the milk from spilling over",
+        "To make it easier to grip the spoon"
+      ],
+      "answerIndex": 1,
+      "solution": "The cloth acts as an insulator, reducing heat transfer from the spoon to the hand, which prevents the spoon from getting too hot. The other options do not align with the physical principles involved in heat transfer and safety.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "हलवाई उबलते दूध के साथ हलवाई के छेददार चांटे के सिरे पर एक कपड़ा क्यों लपेटता है?",
+          "choices": [
+            "इसे साफ दिखाने के लिए",
+            "चांटे के गर्म होने से रोकने के लिए",
+            "दूध के बाहर निकलने से रोकने के लिए",
+            "चांटे को पकड़ने में सुविधा देने के लिए"
+          ],
+          "solution": "कपड़ा एक ऊष्मा विच्छेदक के रूप में कार्य करता है, जो चांटे से हाथ तक ऊष्मा संचरण को कम करता है, जो चांटे के गर्म होने से रोकता है। अन्य विकल्प ऊष्मा संचरण और सुरक्षा के भौतिक सिद्धांतों के साथ मेल नहीं खाते।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English question and options, with appropriate technical terms like 'ऊष्मा विच्छेदक' (insulator) used in place of transliterated English terms.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "हलवाईने उकळत असलेल्या दुधाला हाताने चाळण्यासाठी त्याच्या खांबाच्या शेवटाला कपडा बांधतो कारण काय?",
+          "choices": [
+            "त्याला स्वच्छ दिसायला",
+            "खांब खूप गरम होऊ नये",
+            "दुधाचा उकळा बाहेर पडू नये",
+            "खांब घेणे सोपे होईल"
+          ],
+          "solution": "कपडा एक अवाहक असतो, जो खांबापासून हाताकडे ऊष्मा हस्तांतरित होण्याला रोखतो, जेणेकरून खांब खूप गरम होऊ नये. इतर विकल्प ऊष्मा हस्तांतरण आणि सुरक्षेशी संबंधित भौतिक नियमांशी जुळत नाहीत.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the original meaning, and uses appropriate technical terms like 'अवाहक' (insulator) that are standard in Marathi science textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Thinks the cloth is for appearance",
+        null,
+        "students may think covering the spoon prevents overflow due to surface tension or pressure",
+        "Students might think the cloth is for better grip rather than heat protection"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-constructed, with a clear correct answer and plausible distractors based on common misconceptions. The reasoning in the solution is sound and matches the correct answer.",
+      "sources": [
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 67,
+          "pageStart": 68,
+          "pageEnd": 68,
+          "headingPath": [
+            "9. Heat"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 68,
+          "pageStart": 69,
+          "pageEnd": 69,
+          "headingPath": [
+            "9. Heat"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 69,
+          "pageStart": 69,
+          "pageEnd": 70,
+          "headingPath": [
+            "9. Heat"
+          ]
+        }
+      ],
+      "edition": "First Edition 2017",
+      "generatedAt": "2026-10-31T16:49:21.729Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the reason for painting one tin black in the experiment on heat absorption?",
+      "choices": [
+        "To make it more attractive",
+        "To increase heat absorption",
+        "To reduce heat absorption",
+        "To make it lighter"
+      ],
+      "answerIndex": 1,
+      "solution": "Painting one tin black increases heat absorption because dark-colored objects absorb more heat than light-colored ones. This is a direct application of the principle of heat absorption by different colors.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "गर्मी अवशोषण पर प्रयोग में एक टिन को काला क्यों रंगा जाता है?",
+          "choices": [
+            "इसे अधिक आकर्षक बनाने के लिए",
+            "गर्मी अवशोषण बढ़ाने के लिए",
+            "गर्मी अवशोषण कम करने के लिए",
+            "इसे हल्का बनाने के लिए"
+          ],
+          "solution": "एक टिन को काला रंगने से गर्मी अवशोषण बढ़ जाता है क्योंकि काले रंग के वस्तुएं प्रकाश रंग की वस्तुओं की तुलना में अधिक गर्मी अवशोषित करती हैं। यह विभिन्न रंगों द्वारा गर्मी अवशोषण के सिद्धांत के सीधा अनुप्रयोग है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains the original meaning, and uses standard Hindi scientific terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "ताप अवशोषणाच्या प्रयोगात एका टिनला काळा का रंगवले जाते?",
+          "choices": [
+            "त्याला अधिक सुंदर बनविण्यासाठी",
+            "ताप अवशोषण वाढविण्यासाठी",
+            "ताप अवशोषण कमी करण्यासाठी",
+            "त्याला हलका बनविण्यासाठी"
+          ],
+          "solution": "एका टिनला काळा रंगवल्यामुळे ताप अवशोषण वाढते कारण काळ्या रंगाच्या वस्तू लाल रंगाच्या वस्तूंपेक्षा अधिक ताप अवशोषित करतात. हे विविध रंगांद्वारे ताप अवशोषणाच्या तत्त्वाचे सीधे अनुप्रयोग आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for scientific concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Incorrect assumption about aesthetics",
+        null,
+        "Confuses dark colors with heat reflection",
+        "Incorrect assumption about weight"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly identifies that dark colors absorb more heat, and the reasoning aligns with the scientific principle. All distractors are based on plausible misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 70,
+          "pageStart": 70,
+          "pageEnd": 71,
+          "headingPath": [
+            "9. Heat"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 71,
+          "pageStart": 71,
+          "pageEnd": 72,
+          "headingPath": [
+            "9. Heat"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 72,
+          "pageStart": 72,
+          "pageEnd": 73,
+          "headingPath": [
+            "9. Heat"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 73,
+          "pageStart": 73,
+          "pageEnd": 73,
+          "headingPath": [
+            "9. Heat",
+            "t t t"
+          ]
+        }
+      ],
+      "edition": "First Edition 2017",
+      "generatedAt": "2026-10-31T16:49:21.729Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If a steel glass is held in a handkerchief while drinking hot milk, what is the purpose of the handkerchief?",
+      "choices": [
+        "To keep the glass cool",
+        "To make the glass more comfortable to hold",
+        "To prevent the heat from transferring to the hand",
+        "To add a decorative element"
+      ],
+      "answerIndex": 2,
+      "solution": "The handkerchief prevents the heat from transferring to the hand by acting as an insulator, which reduces direct heat contact. Keeping the glass cool is not the main purpose, making it more comfortable is a secondary effect, and adding a decorative element is unrelated to heat transfer.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि गर्म दूध पीते समय एक स्टील के गिलास को एक मैंटल में पकड़ा जाए, तो मैंटल का उद्देश्य क्या होता है?",
+          "choices": [
+            "गिलास को ठंडा रखना",
+            "गिलास को पकड़ने में अधिक सुविधाजनक बनाना",
+            "हाथ में ऊष्मा के संचरण को रोकना",
+            "एक सजावटी तत्व जोड़ना"
+          ],
+          "solution": "मैंटल ऊष्मा के संचरण को रोकता है, जो एक ऊष्मारोधक के रूप में कार्य करता है, जो सीधे ऊष्मा संपर्क को कम करता है। गिलास को ठंडा रखना मुख्य उद्देश्य नहीं है, गिलास को अधिक सुविधाजनक बनाना एक द्वितीयक प्रभाव है, और सजावटी तत्व जोड़ना ऊष्मा संचरण से असंबंधित है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, technical terms like 'ऊष्मारोधक' (insulator) are standard in Hindi science textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर गरम दूध पितानाच्या वेळी एका कापड्याच्या तौलियाने इस्पाताचे ग्लास धरले जाते, तर तौलियाचा उद्देश काय असतो?",
+          "choices": [
+            "ग्लास थंड ठेवणे",
+            "ग्लास धरण्यास आरामदायक करणे",
+            "हाताला ऊष्मा पोहोचू नये यासाठी",
+            "सजावटीचा घटक जोडणे"
+          ],
+          "solution": "तौलिया ऊष्मा पोहोचू नये यासाठी एक विद्युतरोधक म्हणून कार्य करतो, जे थेट ऊष्मा संपर्क कमी करतो. ग्लास थंड ठेवणे हे मुख्य उद्देश नसतो, ग्लास आरामदायक करणे हे द्वितीयक परिणाम असतो आणि सजावटीचा घटक जोडणे हा ऊष्मा प्रसाराशी संबंधित नसतो.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms like 'विद्युतरोधक' (insulator) that are standard in Marathi textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Thinks the handkerchief is for cooling",
+        "Believes the handkerchief is for comfort",
+        null,
+        "Assumes the handkerchief is for decoration"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 2, as the handkerchief acts as an insulator to prevent heat transfer. The other options reflect common misconceptions about the purpose of the handkerchief.",
+      "sources": [
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 67,
+          "pageStart": 68,
+          "pageEnd": 68,
+          "headingPath": [
+            "9. Heat"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 68,
+          "pageStart": 69,
+          "pageEnd": 69,
+          "headingPath": [
+            "9. Heat"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 69,
+          "pageStart": 69,
+          "pageEnd": 70,
+          "headingPath": [
+            "9. Heat"
+          ]
+        }
+      ],
+      "edition": "First Edition 2017",
+      "generatedAt": "2026-10-31T16:49:21.729Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If a metal ball is heated and then placed in a ring, what will happen?",
+      "choices": [
+        "It will pass through the ring easily",
+        "It will not pass through the ring",
+        "It will contract in size",
+        "It will expand in size"
+      ],
+      "answerIndex": 1,
+      "solution": "When a metal ball is heated, it expands and may not pass through the ring. This experiment demonstrates that solids expand when heated and contract when cooled.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक धातु की गेंद को गर्म किया जाता है और फिर एक वलय में रखा जाता है, तो क्या होगा?",
+          "choices": [
+            "यह वलय के माध्यम से आसानी से गुजर जाएगी",
+            "यह वलय के माध्यम से नहीं गुजर पाएगी",
+            "यह आकार में सिकुड़ जाएगी",
+            "यह आकार में फैल जाएगी"
+          ],
+          "solution": "जब एक धातु की गेंद को गर्म किया जाता है, तो यह फैलती है और वलय के माध्यम से नहीं गुजर सकती। यह प्रयोग यह दर्शाता है कि ठोस गर्म होने पर फैलते हैं और ठंडा होने पर सिकुड़ते हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and technical terms. All options are correctly translated, and the correct answer remains in the same position. The solution is also accurately translated.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एक धातूचा गोला गरम केला जातो आणि नंतर एका वलयात ठेवला जातो, तर काय होईल?",
+          "choices": [
+            "तो वलयातून सहज जाईल",
+            "तो वलयातून जाणार नाही",
+            "तो आकारात छोटा होईल",
+            "तो आकारात मोठा होईल"
+          ],
+          "solution": "जेव्हा एक धातूचा गोला गरम केला जातो तेव्हा तो विस्तारतो आणि वलयातून जाऊ शकत नाही. या प्रयोगामुळे दिसते की घन पदार्थ गरम होतात तेव्हा विस्तारतात आणि थंड होतात तेव्हा खुंटतात.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate technical terms like 'विस्तारतो' (expands) and 'खुंटतात' (contract).",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Incorrect assumption about expansion",
+        null,
+        "Student thinks heating causes contraction instead of expansion",
+        "Confuses melting with expansion"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 1, as heating a metal ball causes it to expand, making it unable to pass through the ring. The reasoning in the solution is sound and matches the correct answer. The distractors reflect common misconceptions about thermal expansion.",
+      "sources": [
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 70,
+          "pageStart": 70,
+          "pageEnd": 71,
+          "headingPath": [
+            "9. Heat"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 71,
+          "pageStart": 71,
+          "pageEnd": 72,
+          "headingPath": [
+            "9. Heat"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 72,
+          "pageStart": 72,
+          "pageEnd": 73,
+          "headingPath": [
+            "9. Heat"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 73,
+          "pageStart": 73,
+          "pageEnd": 73,
+          "headingPath": [
+            "9. Heat",
+            "t t t"
+          ]
+        }
+      ],
+      "edition": "First Edition 2017",
+      "generatedAt": "2026-10-31T16:49:21.729Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "Which of the following is an example of heat transfer through conduction?",
+      "choices": [
+        "Heating water in a kettle",
+        "Warming up near a fire",
+        "Melting ice with a flame",
+        "Using a copper rod to transfer heat"
+      ],
+      "answerIndex": 3,
+      "solution": "Using a copper rod to transfer heat is an example of conduction because heat moves directly through the solid material from one end to the other. Heating water in a kettle involves convection as the water circulates, warming up near a fire is radiation as heat travels through space, and melting ice with a flame involves both conduction and convection but not pure conduction.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा चालन द्वारा ऊष्मा संचरण का उदाहरण है?",
+          "choices": [
+            "केतली में पानी गर्म करना",
+            "आग के पास गर्म होना",
+            "माचिस से बर्फ पिघलाना",
+            "ऊष्मा संचरित करने के लिए तांबे की छड़ का उपयोग करना"
+          ],
+          "solution": "तांबे की छड़ के द्वारा ऊष्मा संचरित करना चालन का उदाहरण है क्योंकि ऊष्मा ठोस सामग्री के माध्यम से एक सिरे से दूसरे सिरे तक सीधे गति करती है। केतली में पानी गर्म करना संवहन के साथ होता है जबकि आग के पास गर्म होना विकिरण है क्योंकि ऊष्मा अंतरिक्ष में यात्रा करती है और माचिस से बर्फ पिघलाना चालन और संवहन दोनों के साथ होता है लेकिन शुद्ध चालन नहीं।",
+          "imageAlt": null,
+          "critique": "Hindi translation accurately reflects the English original in meaning, technical terms, and option structure.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते घनद्रव्यामार्फत ऊष्मा हस्तांतरित होण्याचे उदाहरण आहे?",
+          "choices": [
+            "केंडलमध्ये पाणी गरम करणे",
+            "आगजवळ उबवणे",
+            "ज्वालेने बर्फ वितळवणे",
+            "ऊष्मा हस्तांतरित करण्यासाठी तांब्याचा छडा वापरणे"
+          ],
+          "solution": "तांब्याचा छडा वापरून ऊष्मा हस्तांतरित करणे हे घनद्रव्यामार्फत ऊष्मा हस्तांतरणाचे उदाहरण आहे कारण ऊष्मा घनद्रव्यामार्फत एका छड्याच्या एका टोकापासून दुसऱ्या टोकापर्यंत लागलेल्या सीधा हस्तांतरित होते. केंडलमध्ये पाणी गरम करणे हे प्रवाहामार्फत ऊष्मा हस्तांतरण आहे आणि आगजवळ उबवणे हे विकिरणामार्फत ऊष्मा हस्तांतरण आहे आणि ज्वालेने बर्फ वितळवणे हे घनद्रव्यामार्फत आणि प्रवाहामार्फत ऊष्मा हस्तांतरणाचा संयोजन असतो परंतु शुद्ध घनद्रव्यामार्फत ऊष्मा हस्तांतरण नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi technical terms used for heat transfer methods.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Thinks boiling water is conduction",
+        "Believes fire warming is conduction",
+        "Assumes melting ice is conduction",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 3, as conduction occurs through direct contact in a solid, like a copper rod. The other options involve convection (heating water) or radiation (warming near a fire), and melting ice with a flame involves both conduction and convection, not purely conduction.",
+      "sources": [
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 67,
+          "pageStart": 68,
+          "pageEnd": 68,
+          "headingPath": [
+            "9. Heat"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 68,
+          "pageStart": 69,
+          "pageEnd": 69,
+          "headingPath": [
+            "9. Heat"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 69,
+          "pageStart": 69,
+          "pageEnd": 70,
+          "headingPath": [
+            "9. Heat"
+          ]
+        }
+      ],
+      "edition": "First Edition 2017",
+      "generatedAt": "2026-10-31T16:49:21.729Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "Why are heaters placed near the floor and air conditioners near the ceiling?",
+      "choices": [
+        "Because of the color of the room",
+        "Because of the density of air",
+        "Because of the way heat moves",
+        "Because of the shape of the room"
+      ],
+      "answerIndex": 2,
+      "solution": "Heaters are placed near the floor because warm air rises, and air conditioners are placed near the ceiling because cool air falls. This is due to the principle of convection currents in air.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "हीटर क्यों फर्श के पास रखे जाते हैं और एयर कंडीशनर छत के पास क्यों रखे जाते हैं?",
+          "choices": [
+            "कमरे के रंग के कारण",
+            "हवा के घनत्व के कारण",
+            "ऊष्मा के गति के कारण",
+            "कमरे के आकार के कारण"
+          ],
+          "solution": "हीटर फर्श के पास रखे जाते हैं क्योंकि गर्म हवा ऊपर जाती है, और एयर कंडीशनर छत के पास रखे जाते हैं क्योंकि ठंडी हवा नीचे गिरती है। यह हवा में संवहन धाराओं के सिद्धांत के कारण होता है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, technical terms like 'संवहन धाराएँ' (convection currents) are standard in Hindi science textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "हीटर्स फ्लोरच्या जवळ आणि एसी छताच्या जवळ का ठेवले जातात?",
+          "choices": [
+            "कमर्याच्या रंगामुळे",
+            "हवेच्या घनतेमुळे",
+            "ऊष्मा चालण्याच्या पद्धतीमुळे",
+            "कमर्याच्या आकृतीमुळे"
+          ],
+          "solution": "हीटर्स फ्लोरच्या जवळ ठेवले जातात कारण उबदार हवा वर जाते आणि एसी छताच्या जवळ ठेवले जातात कारण थंड हवा खाली येते. हे हवेत उबदार प्रवाहाच्या तत्वामुळे आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Incorrect assumption about color",
+        "Confuses density with heat movement",
+        null,
+        "Incorrect assumption about room shape"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies convection currents as the reason, and the reasoning aligns with the correct answer. The distractors reflect common misconceptions about color, density, and room shape.",
+      "sources": [
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 70,
+          "pageStart": 70,
+          "pageEnd": 71,
+          "headingPath": [
+            "9. Heat"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 71,
+          "pageStart": 71,
+          "pageEnd": 72,
+          "headingPath": [
+            "9. Heat"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 72,
+          "pageStart": 72,
+          "pageEnd": 73,
+          "headingPath": [
+            "9. Heat"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 73,
+          "pageStart": 73,
+          "pageEnd": 73,
+          "headingPath": [
+            "9. Heat",
+            "t t t"
+          ]
+        }
+      ],
+      "edition": "First Edition 2017",
+      "generatedAt": "2026-10-31T16:49:21.729Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "A copper bar and a steel bar are heated at one end. Which bar will transfer heat faster?",
+      "choices": [
+        "Both transfer at the same rate",
+        "Steel bar",
+        "Copper bar",
+        "Cannot be determined"
+      ],
+      "answerIndex": 2,
+      "solution": "Copper is a better conductor of heat than steel, which means it transfers thermal energy more efficiently. This is due to the higher thermal conductivity of copper compared to steel. Therefore, the copper bar will transfer heat faster. The steel bar is a poorer conductor and will transfer heat more slowly.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक तांबे की छड़ और एक इस्पात की छड़ के एक सिरे को गर्म किया जाता है। कौन-सी छड़ गर्मी के विस्तार को तेजी से संचारित करेगी?",
+          "choices": [
+            "दोनों एक ही दर पर संचारित करते हैं",
+            "इस्पात की छड़",
+            "तांबे की छड़",
+            "निर्धारित नहीं किया जा सकता"
+          ],
+          "solution": "तांबा इस्पात की तुलना में अच्छा ऊष्मा चालक होता है, जिसका अर्थ है कि यह ऊष्मीय ऊर्जा के संचार को अधिक कुशलतापूर्वक करता है। इसका कारण तांबे की ऊष्मीय चालकता के उच्च स्तर है जो इस्पात की तुलना में अधिक होता है। इसलिए, तांबे की छड़ गर्मी के विस्तार को तेजी से संचारित करेगी। इस्पात की छड़ खराब चालक है और गर्मी के विस्तार को धीमी गति से संचारित करेगी।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriate for Hindi-medium curriculum, and the correct answer remains option (3) in the same position.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "तांब्याचा छडा आणि इस्पाताचा छडा एका टोकाला गरम केला जातो. कोणता छडा ताप जलदपणे प्रसारित करेल?",
+          "choices": [
+            "दोन्ही एकसारख्या दराने प्रसारित करतात",
+            "इस्पाताचा छडा",
+            "तांब्याचा छडा",
+            "निश्चित करता येत नाही"
+          ],
+          "solution": "तांबा इस्पातापेक्षा तापाचा चांगला वाहक आहे, ज्यामुळे तो तापीय ऊर्जेचा जलदपणे प्रसार करतो. हे तांब्याच्या उच्च तापीय वाहकतेमुळे आहे. त्यामुळे, तांब्याचा छडा ताप जलदपणे प्रसारित करेल. इस्पाताचा छडा खासकरून वाहक असून ताप जास्तीत जास्त धीम्या दराने प्रसारित करेल.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate technical terms in Marathi.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Thinks both materials conduct equally",
+        "Believes steel conducts better",
+        null,
+        "Assumes the rate cannot be determined"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is valid and the solution is correct. Copper is indeed a better conductor of heat than steel, so the copper bar will transfer heat faster. The reasoning aligns with scientific principles and the author's explanation is sound.",
+      "sources": [
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 67,
+          "pageStart": 68,
+          "pageEnd": 68,
+          "headingPath": [
+            "9. Heat"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 68,
+          "pageStart": 69,
+          "pageEnd": 69,
+          "headingPath": [
+            "9. Heat"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 69,
+          "pageStart": 69,
+          "pageEnd": 70,
+          "headingPath": [
+            "9. Heat"
+          ]
+        }
+      ],
+      "edition": "First Edition 2017",
+      "generatedAt": "2026-10-31T16:49:21.729Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Why does a glass bottle crack when boiling water is poured into it, but a borosil glass bottle does not?",
+      "choices": [
+        "Because borosil glass expands more",
+        "Because borosil glass contracts more",
+        "Because borosil glass has a lower expansion coefficient",
+        "Because borosil glass is made of metal"
+      ],
+      "answerIndex": 2,
+      "solution": "Borosil glass does not crack because it has a lower expansion coefficient, meaning it expands less when heated. If a glass bottle expands unevenly due to heat, it can crack, but borosil glass resists this. The other options are incorrect because expansion coefficient, not contraction, determines how much a material expands, and borosil glass is not made of metal.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक कांच की बोतल में उबलते पानी को डालने पर फूट जाती है, लेकिन बोरोसिलिकेट कांच की बोतल नहीं फूटती? क्यों?",
+          "choices": [
+            "क्योंकि बोरोसिलिकेट कांच अधिक फैलता है",
+            "क्योंकि बोरोसिलिकेट कांच अधिक सिकुड़ता है",
+            "क्योंकि बोरोसिलिकेट कांच का फैलाव गुणांक कम होता है",
+            "क्योंकि बोरोसिलिकेट कांच धातु से बना होता है"
+          ],
+          "solution": "बोरोसिलिकेट कांच फूट जाता है क्योंकि इसका फैलाव गुणांक कम होता है, जिसका अर्थ है कि यह गर्म होने पर कम फैलता है। यदि एक कांच की बोतल गर्मी के कारण असमान रूप से फैलती है, तो यह फूट सकती है, लेकिन बोरोसिलिकेट कांच इसका विरोध करता है। अन्य विकल्प गलत हैं क्योंकि फैलाव गुणांक, फैलाव के स्थान पर सिकुड़ना, किसी सामग्री के कितना फैलने का निर्धारण करता है, और बोरोसिलिकेट कांच धातु से बना नहीं होता है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English content with appropriate technical terms like 'फैलाव गुणांक' (expansion coefficient) that are standard in Hindi science textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "उब्बलत असलेल्या पाण्याचा ग्लास बाटलीत घालताना ती फुटते, परंतु बोरोसिल ग्लास बाटली फुटत नाही, कारण काय?",
+          "choices": [
+            "कारण बोरोसिल ग्लास जास्त विस्तारतो",
+            "कारण बोरोसिल ग्लास जास्त खुंजवतो",
+            "कारण बोरोसिल ग्लास च्या विस्ताराचा गुणांक कमी असतो",
+            "कारण बोरोसिल ग्लास धातूने बनलेला असतो"
+          ],
+          "solution": "बोरोसिल ग्लास फुटत नाही कारण त्याचा विस्ताराचा गुणांक कमी असतो, ज्यामुळे तो उष्णतेने कमी विस्तारतो. जर ग्लास बाटली उष्णतेमुळे असमान विस्तार करत असेल तर ती फुटू शकते, परंतु बोरोसिल ग्लास याच्यावर विरोध करतो. इतर विकल्प चुकीचे आहेत कारण विस्ताराचा गुणांक, खुंजवण्याच्या गुणांकापेक्षा एका सामग्रीच्या विस्ताराचे प्रमाण ठरवतो, आणि बोरोसिल ग्लास धातूने बनलेला नसतो.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms like 'विस्ताराचा गुणांक' (coefficient of expansion) that match standard Marathi science terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Thinks borosil glass expands more",
+        "Believes it contracts more",
+        null,
+        "Student thinks borosil glass is a metal because it is heat-resistant"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 2, as borosil glass has a lower thermal expansion coefficient, which prevents cracking. The distractors reflect common misconceptions about expansion, contraction, and material composition.",
+      "sources": [
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 70,
+          "pageStart": 70,
+          "pageEnd": 71,
+          "headingPath": [
+            "9. Heat"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 71,
+          "pageStart": 71,
+          "pageEnd": 72,
+          "headingPath": [
+            "9. Heat"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 72,
+          "pageStart": 72,
+          "pageEnd": 73,
+          "headingPath": [
+            "9. Heat"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 73,
+          "pageStart": 73,
+          "pageEnd": 73,
+          "headingPath": [
+            "9. Heat",
+            "t t t"
+          ]
+        }
+      ],
+      "edition": "First Edition 2017",
+      "generatedAt": "2026-10-31T16:49:21.729Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Why do penguins in Antarctica have black feathers?",
+      "choices": [
+        "To absorb more heat",
+        "To reflect more heat",
+        "To blend with the environment",
+        "To stay dry"
+      ],
+      "answerIndex": 0,
+      "solution": "Penguins have black feathers to absorb more heat from the sun, which helps them stay warm in the cold environment of Antarctica. This is related to the principle of heat absorption by dark-colored objects.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एंटार्कटिका में पेंगुइन के काले बाल क्यों होते हैं?",
+          "choices": [
+            "अधिक गर्मी अवशोषित करने के लिए",
+            "अधिक गर्मी परावर्तित करने के लिए",
+            "पर्यावरण में मिल जाने के लिए",
+            "सूखे रहने के लिए"
+          ],
+          "solution": "पेंगुइन के काले बाल सूर्य की अधिक गर्मी अवशोषित करने के लिए होते हैं, जो एंटार्कटिका के ठंडे वातावरण में गर्म रहने में मदद करते हैं। यह काले रंग के वस्तुओं द्वारा गर्मी अवशोषण के स principio से संबंधित है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, technical terms are appropriate for Hindi-medium curriculum, and the structure matches the original.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एंटार्क्टिकमधील पेंग्विन्सला काळे पावले का असतात?",
+          "choices": [
+            "अधिक उष्मा शोषून घेण्यासाठी",
+            "अधिक उष्मा परावर्तित करण्यासाठी",
+            "वातावरणाशी जुळून जाण्यासाठी",
+            "थंड रहाण्यासाठी"
+          ],
+          "solution": "पेंग्विन्सला काळे पावले उन्हापासून अधिक उष्मा शोषून घेण्यासाठी असतात, जे एंटार्क्टिकमधील थंड वातावरणात त्यांना उबेर ठेवते. हे गडद रंगाच्या वस्तूंद्वारे उष्मा शोषणाच्या तत्वाशी संबंधित आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses the effect of color on heat absorption, thinking dark colors reflect rather than absorb heat",
+        "Confuses absorption with reflection",
+        "Incorrect assumption about camouflage"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 0, as dark colors absorb more heat, which is a well-established principle. The distractors reflect common misconceptions about color and heat, as well as unrelated functions of feathers.",
+      "sources": [
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 70,
+          "pageStart": 70,
+          "pageEnd": 71,
+          "headingPath": [
+            "9. Heat"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 71,
+          "pageStart": 71,
+          "pageEnd": 72,
+          "headingPath": [
+            "9. Heat"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 72,
+          "pageStart": 72,
+          "pageEnd": 73,
+          "headingPath": [
+            "9. Heat"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 73,
+          "pageStart": 73,
+          "pageEnd": 73,
+          "headingPath": [
+            "9. Heat",
+            "t t t"
+          ]
+        }
+      ],
+      "edition": "First Edition 2017",
+      "generatedAt": "2026-10-31T16:49:21.729Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
     }
   ]
 }

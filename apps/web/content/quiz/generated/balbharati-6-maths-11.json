@@ -214,6 +214,291 @@
       "generatedAt": "2026-11-01T13:45:10.578Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "What is the expanded form of the decimal fraction 54.632?",
+      "choices": [
+        "50 + 4 + 0.6 + 0.03 + 0.002",
+        "50 + 4 + 6 + 0.3 + 0.02",
+        "5 + 4 + 6 + 3 + 2",
+        "5 + 4 + 0.6 + 0.03 + 0.002"
+      ],
+      "answerIndex": 0,
+      "solution": "The correct answer is 50 + 4 + 0.6 + 0.03 + 0.002 because each digit's place value is considered in the expanded form. The other options either miss the place values or do not correctly represent the decimal places.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "दशमलव भिन्न 54.632 का विस्तारित रूप क्या है?",
+          "choices": [
+            "50 + 4 + 0.6 + 0.03 + 0.002",
+            "50 + 4 + 6 + 0.3 + 0.02",
+            "5 + 4 + 6 + 3 + 2",
+            "5 + 4 + 0.6 + 0.03 + 0.002"
+          ],
+          "solution": "सही उत्तर 50 + 4 + 0.6 + 0.03 + 0.002 है क्योंकि विस्तारित रूप में प्रत्येक अंक के स्थानीय मान को ध्यान में रखा जाता है। अन्य विकल्प या तो स्थानीय मान छोड़ देते हैं या दशमलव स्थानों का सही रूप से प्रतिनिधित्व नहीं करते।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology as used in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "54.632 दशांश अपूर्णांकाचे विस्तारित रूप काय आहे?",
+          "choices": [
+            "50 + 4 + 0.6 + 0.03 + 0.002",
+            "50 + 4 + 6 + 0.3 + 0.02",
+            "5 + 4 + 6 + 3 + 2",
+            "5 + 4 + 0.6 + 0.03 + 0.002"
+          ],
+          "solution": "सही उत्तर 50 + 4 + 0.6 + 0.03 + 0.002 आहे कारण विस्तारित रूपात प्रत्येक अंकाच्या स्थान मूल्याचा विचार केला जातो. इतर उत्तरे कमी स्थान मूल्य असतात किंवा दशांश स्थानांचे योग्य रूप दर्शवत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for decimal fractions and place value.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses decimal place values with whole number place values",
+        "Mistakenly adding all digits without considering their place value",
+        "Confuses the place value of the tens digit, thinking it's just the digit itself instead of its full place value"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 0, as it correctly breaks down the number 54.632 into its place values. The other options fail to account for the place value of the tens and units digits properly.",
+      "sources": [
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 61,
+          "pageStart": 92,
+          "pageEnd": 93,
+          "headingPath": [
+            "11. Decimal Fractions"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 62,
+          "pageStart": 93,
+          "pageEnd": 95,
+          "headingPath": [
+            "11. Decimal Fractions"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 63,
+          "pageStart": 95,
+          "pageEnd": 97,
+          "headingPath": [
+            "11. Decimal Fractions"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-10-31T00:34:25.535Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "Which of the following decimal fractions is the largest?",
+      "choices": [
+        "9.42",
+        "9.72",
+        "8.78",
+        "8.71"
+      ],
+      "answerIndex": 1,
+      "solution": "The correct answer is 9.72 because when comparing decimal fractions, the integer parts are compared first. If they are equal, the digits after the decimal point are compared. The other options are smaller than 9.72.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा दशमलव भिन्न सबसे बड़ा है?",
+          "choices": [
+            "9.42",
+            "9.72",
+            "8.78",
+            "8.71"
+          ],
+          "solution": "सही उत्तर 9.72 है क्योंकि दशमलव भिन्नों की तुलना करते समय सबसे पहले पूर्णांक भाग की तुलना की जाती है। यदि वे समान हों तो दशमलव बिंदु के बाद के अंकों की तुलना की जाती है। अन्य विकल्प 9.72 से छोटे हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. All options and the solution are correctly translated and maintain the same logical structure.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणता दशांश अपूर्णांक सर्वात मोठा आहे?",
+          "choices": [
+            "9.42",
+            "9.72",
+            "8.78",
+            "8.71"
+          ],
+          "solution": "सही उत्तर 9.72 आहे कारण दशांश अपूर्णांकांची तुलना करताना सर्वप्रथम पूर्णांक भागाची तुलना केली जाते. जर ते समान असतील तर दशांश बिंदूनंतरच्या अंकांची तुलना केली जाते. इतर विकल्प 9.72 पेक्षा लहान आहेत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Compares the integer parts correctly but makes a mistake in the decimal comparison",
+        null,
+        "Confuses the order of the decimal fractions",
+        "Fails to compare the decimal parts properly"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct. Comparing the integer parts first, 9.72 has the highest integer part (9), and among the others with 9 as the integer part, 9.72 has the highest decimal part (0.72). The distractors reflect common misconceptions in decimal comparison.",
+      "sources": [
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 61,
+          "pageStart": 92,
+          "pageEnd": 93,
+          "headingPath": [
+            "11. Decimal Fractions"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 62,
+          "pageStart": 93,
+          "pageEnd": 95,
+          "headingPath": [
+            "11. Decimal Fractions"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 63,
+          "pageStart": 95,
+          "pageEnd": 97,
+          "headingPath": [
+            "11. Decimal Fractions"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-10-31T00:34:25.535Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Which of the following is the correct way to add 3.64 and 5.4?",
+      "choices": [
+        "9.04",
+        "8.04",
+        "9.14",
+        "9.05"
+      ],
+      "answerIndex": 0,
+      "solution": "The correct answer is 9.04 because when adding decimal fractions, the decimal points must be aligned. The other options have incorrect sums due to misalignment or calculation errors.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा 3.64 और 5.4 को जोड़ने का सही तरीका है?",
+          "choices": [
+            "9.04",
+            "8.04",
+            "9.14",
+            "9.05"
+          ],
+          "solution": "सही उत्तर 9.04 है क्योंकि दशमलव भिन्नों को जोड़ते समय दशमलव बिंदुओं को संरेखित करना आवश्यक है। अन्य विकल्प गलत योग के कारण गलत हैं क्योंकि असंरेखित या गणना त्रुटियों के कारण।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणता 3.64 आणि 5.4 जोडण्याचा योग्य मार्ग आहे?",
+          "choices": [
+            "9.04",
+            "8.04",
+            "9.14",
+            "9.05"
+          ],
+          "solution": "योग्य उत्तर 9.04 आहे कारण दशांश अपूर्णांक जोडताना दशांश बिंदू अक्षरशः एकाच रेषेत असावे. इतर उत्तरे अक्षरशः असमायुक्त किंवा गणना चूकीमुळे चुकीचे आहेत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Misaligns the decimal points during addition",
+        "Makes a calculation error",
+        "Fails to align the decimal points properly"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 9.04, as 3.64 + 5.4 = 9.04 when properly aligned. The author's reasoning is sound, and the distractors reflect common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 61,
+          "pageStart": 92,
+          "pageEnd": 93,
+          "headingPath": [
+            "11. Decimal Fractions"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 62,
+          "pageStart": 93,
+          "pageEnd": 95,
+          "headingPath": [
+            "11. Decimal Fractions"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 63,
+          "pageStart": 95,
+          "pageEnd": 97,
+          "headingPath": [
+            "11. Decimal Fractions"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-10-31T00:34:25.535Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
     }
   ]
 }

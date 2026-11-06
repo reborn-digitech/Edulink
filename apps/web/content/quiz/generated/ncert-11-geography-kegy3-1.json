@@ -310,6 +310,388 @@
       "generatedAt": "2026-10-28T18:46:05.090Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of the following is an example of a physical map?",
+      "choices": [
+        "A map showing the distribution of different types of soils",
+        "A map showing the administrative divisions of a country",
+        "A map showing the location of transportation lines",
+        "A map showing the population distribution"
+      ],
+      "answerIndex": 0,
+      "solution": "A physical map represents natural features of the Earth's surface. The distribution of different types of soils is a natural feature, making it an example of a physical map. Administrative divisions, transportation lines, and population distribution are human-made or social features, which are not part of physical maps.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा भौतिक मानचित्र का उदाहरण है?",
+          "choices": [
+            "विभिन्न प्रकार की मिट्टियों के वितरण को दर्शाने वाला मानचित्र",
+            "एक देश के प्रशासनिक विभागों को दर्शाने वाला मानचित्र",
+            "परिवहन लाइनों के स्थान को दर्शाने वाला मानचित्र",
+            "जनसंख्या वितरण को दर्शाने वाला मानचित्र"
+          ],
+          "solution": "एक भौतिक मानचित्र पृथ्वी की सतह की प्राकृतिक विशेषताओं का प्रतिनिधित्व करता है। विभिन्न प्रकार की मिट्टियों के वितरण की प्राकृतिक विशेषता है, जो भौतिक मानचित्र का एक उदाहरण बन जाती है। प्रशासनिक विभाग, परिवहन लाइनें और जनसंख्या वितरण मानव द्वारा बनाए गए या सामाजिक विशेषताएं हैं, जो भौतिक मानचित्रों के हिस्से नहीं हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate geographical terminology as taught in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते भौतिक नकाशाचे उदाहरण आहे?",
+          "choices": [
+            "विविध प्रकारच्या जमीनांच्या वितरणाचा नकाशा",
+            "एका देशाच्या विभागांचा नकाशा",
+            "परिवहन रेषांचा नकाशा",
+            "लोकसंख्या वितरणाचा नकाशा"
+          ],
+          "solution": "भौतिक नकाशा पृथ्वीच्या सतही वैयक्तिक वैशिष्ट्यांचे प्रतिनिधित्व करतो. विविध प्रकारच्या जमीनांच्या वितरणाचा नकाशा हा प्राकृतिक वैशिष्ट्य आहे, ज्यामुळे तो भौतिक नकाशाचे उदाहरण बनतो. विभाग, परिवहन रेषा आणि लोकसंख्या वितरण हे मानवी किंवा सामाजिक वैशिष्ट्य आहेत, जे भौतिक नकाशांमध्ये समाविष्ट नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for geographical concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses physical maps with political maps",
+        "Confuses political maps with physical maps",
+        "Confuses cultural maps with physical maps"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 0, as soil distribution is a physical feature. The other options relate to human or cultural features, which align with the author's reasoning.",
+      "sources": [
+        {
+          "document": "ncert/11/geography/kegy301.pdf",
+          "ordinal": 3,
+          "pageStart": 5,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 1: Introduction to Maps"
+          ]
+        },
+        {
+          "document": "ncert/11/geography/kegy301.pdf",
+          "ordinal": 4,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 1: Introduction to Maps"
+          ]
+        },
+        {
+          "document": "ncert/11/geography/kegy301.pdf",
+          "ordinal": 5,
+          "pageStart": 8,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 1: Introduction to Maps"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-21T06:08:22.992Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of the following is not an essential element of a map?",
+      "choices": [
+        "Map Legend",
+        "Symbols",
+        "North Direction",
+        "History of Maps"
+      ],
+      "answerIndex": 3,
+      "solution": "A map requires elements like a legend, symbols, and a north direction to convey information effectively. However, the history of maps is not a necessary component for a map to function. The other options are fundamental to understanding and using a map, while the history of maps is unrelated to its practical purpose.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन एक मानचित्र का आवश्यक तत्व नहीं है?",
+          "choices": [
+            "मानचित्र प्रतीक",
+            "प्रतीक",
+            "उत्तर दिशा",
+            "मानचित्रों का इतिहास"
+          ],
+          "solution": "एक मानचित्र के लिए एक प्रतीक, प्रतीक और उत्तर दिशा जैसे तत्व आवश्यक होते हैं। हालांकि, मानचित्रों का इतिहास मानचित्र के कार्य करने के लिए आवश्यक घटक नहीं है। अन्य विकल्प मानचित्र की समझ और उपयोग के लिए मूलभूत हैं, जबकि मानचित्रों का इतिहास इसके व्यावहारिक उद्देश्य से असंबंधित है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology commonly found in textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते नकाशाचे आवश्यक घटक नाही?",
+          "choices": [
+            "नकाशाचे प्रतिनिधित्व",
+            "चिन्हे",
+            "उत्तर दिशा",
+            "नकाशांचा इतिहास"
+          ],
+          "solution": "नकाशाला माहिती अचूकपणे प्रसारित करण्यासाठी प्रतिनिधित्व, चिन्हे आणि उत्तर दिशा अशा घटकांची आवश्यकता असते. नकाशांचा इतिहास हा नकाशाच्या कार्यासाठी आवश्यक घटक नाही. इतर पर्याय नकाशाच्या वापरासाठी महत्वपूर्ण आहेत, तर नकाशांचा इतिहास हा त्याच्या व्यावहारिक उद्देशाशी संबंधित नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for map elements.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses map legend with history",
+        "Confuses symbols with history",
+        "Confuses north direction with history",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct. 'History of Maps' is not an essential element of a map, while map legend, symbols, and north direction are standard elements. The distractors are plausible misconceptions where students might confuse historical information with essential map components.",
+      "sources": [
+        {
+          "document": "ncert/11/geography/kegy301.pdf",
+          "ordinal": 6,
+          "pageStart": 11,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 1: Introduction to Maps"
+          ]
+        },
+        {
+          "document": "ncert/11/geography/kegy301.pdf",
+          "ordinal": 7,
+          "pageStart": 14,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 1: Introduction to Maps"
+          ]
+        },
+        {
+          "document": "ncert/11/geography/kegy301.pdf",
+          "ordinal": 8,
+          "pageStart": 15,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 1: Introduction to Maps",
+            "EXERCISE"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-21T06:08:22.992Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "If a map is drawn without a scale, which of the following is it most likely to be called?",
+      "choices": [
+        "A sketch",
+        "A plan",
+        "A projection",
+        "A generalisation"
+      ],
+      "answerIndex": 0,
+      "solution": "A sketch is a rough representation of an area without precise measurements or a scale, which matches the description of a map drawn without a scale. A plan is a detailed design for a specific purpose, usually with a scale. A projection is a method of representing the curved surface of the Earth on a flat map, which involves a scale. Generalisation refers to simplifying details on a map, not the absence of a scale.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक मानचित्र बिना मापक के बनाया जाता है, तो निम्नलिखित में से इसे अधिक संभावना से क्या कहा जाएगा?",
+          "choices": [
+            "एक खराब चित्र",
+            "एक योजना",
+            "एक प्रक्षेप",
+            "एक सामान्यीकरण"
+          ],
+          "solution": "एक खराब चित्र एक क्षेत्र का काल्पनिक प्रतिनिधित्व होता है जिसमें सटीक माप या मापक नहीं होता, जो बिना मापक के बनाए गए मानचित्र के वर्णन के अनुरूप होता है। एक योजना एक विशिष्ट उद्देश्य के लिए विस्तृत डिज़ाइन होती है, आमतौर पर मापक के साथ। प्रक्षेप एक गोलाकार सतह के एक तल मानचित्र पर प्रतिबिंबित करने की विधि होती है, जिसमें मापक शामिल होता है। सामान्यीकरण मानचित्र पर विवरण को सरल बनाने के लिए किया जाता है, मापक के अभाव के बजाय।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate and maintains the original meaning, with appropriate terminology used in Indian geography textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर एक नकाशा अल्पमाप विना तयार केला गेला असेल, तर खालीलपैकी कोणत्या नावाने त्याला संबोधित केले जाणार आहे?",
+          "choices": [
+            "एक खर्चा",
+            "एक योजना",
+            "एक प्रक्षेपण",
+            "एक सामान्यीकरण"
+          ],
+          "solution": "खर्चा एक विस्तृत प्रतिमा आहे ज्यामध्ये नकाशा अल्पमाप विना असतो. योजना एखाद्या विशिष्ट उद्देशासाठी तयार केलेली विस्तृत डिझाइन आहे, जी अल्पमाप असते. प्रक्षेपण हे खालच्या नकाशावर गोल आकाराच्या पृष्ठभागाचे प्रतिनिधित्व करण्याचे एक पद्धत आहे, जी अल्पमाप वापरते. सामान्यीकरण हे नकाशावरील विवरणांचे सरलीकरण आहे, अल्पमाप असणे नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for geographical concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses the terms 'map' and 'sketch'",
+        "Misinterprets the concept of a plan",
+        "Ignores the role of scale in defining a map"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 0 (A sketch). A sketch is an approximate representation of an area without a formal scale, which aligns with the definition provided. The other options are incorrect because they represent more structured or defined types of maps or representations.",
+      "sources": [
+        {
+          "document": "ncert/11/geography/kegy301.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 1: Introduction to Maps"
+          ]
+        },
+        {
+          "document": "ncert/11/geography/kegy301.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 1: Introduction to Maps"
+          ]
+        },
+        {
+          "document": "ncert/11/geography/kegy301.pdf",
+          "ordinal": 2,
+          "pageStart": 3,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 1: Introduction to Maps"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-21T06:08:22.992Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Why is it important for a map to have a north direction?",
+      "choices": [
+        "To show the location of cities",
+        "To determine the exact time",
+        "To help locate features relative to each other",
+        "To calculate the area of the region"
+      ],
+      "answerIndex": 2,
+      "solution": "The north direction on a map helps users understand where different features are in relation to each other, making it easier to navigate. It does not show the location of cities, determine time, or calculate area, as those functions rely on other map elements. This is fundamental to how maps are designed to represent spatial relationships.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक मानचित्र में उत्तर दिशा होना क्यों महत्वपूर्ण है?",
+          "choices": [
+            "शहरों के स्थान को दिखाने के लिए",
+            "ठीक समय निर्धारित करने के लिए",
+            "अन्य विशेषताओं के संदर्भ में स्थिति को सुलभ बनाने के लिए",
+            "क्षेत्र के क्षेत्रफल की गणना करने के लिए"
+          ],
+          "solution": "मानचित्र पर उत्तर दिशा उपयोक्ताओं को विभिन्न विशेषताओं के बीच संबंध को समझने में मदद करती है, जिससे नेविगेशन आसान हो जाता है। यह शहरों के स्थान को दिखाने, समय निर्धारित करने या क्षेत्र के क्षेत्रफल की गणना करने के कार्यों को नहीं करता, क्योंकि ये कार्य अन्य मानचित्र तत्वों पर निर्भर करते हैं। यह मानचित्रों के डिज़ाइन के आधारभूत तत्व है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the original English question and solution, with appropriate terminology and logical structure.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "मापकृत नकाशाला उत्तर दिशा असणे का महत्वाचे आहे?",
+          "choices": [
+            "शहरांच्या स्थानाचे दर्शविणे",
+            "अचूक वेळ ठरवणे",
+            "इतर विशिष्ट वस्तूंचे स्थान शोधण्यास मदत करणे",
+            "प्रदेशाचे क्षेत्रफळ काढणे"
+          ],
+          "solution": "मापकृत नकाशावरील उत्तर दिशा वापरकर्त्यांना विविध वस्तूंचे एकमेकांशी संबंध बरोबर समजून घेण्यास मदत करते, ज्यामुळे नेव्हिगेशन सोपे होते. ते शहरांच्या स्थानाचे दर्शविण्यास, वेळ ठरविण्यास किंवा क्षेत्रफळ काढण्यास वापरले जात नाही, कारण या कार्यांची नकाशाच्या इतर घटकांवर अवलंबून असते. हे नकाशांच्या रचनेच्या मूलभूत तत्वांपैकी एक आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology. The correct answer remains in the same position (option 2), and the distractors remain incorrect.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the purpose of cities on a map",
+        "Misunderstands the use of north direction",
+        null,
+        "Confuses area calculation with direction"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 2, as the primary purpose of a north direction on a map is to help locate features relative to each other. The other options represent common misconceptions about the role of directional markers on maps.",
+      "sources": [
+        {
+          "document": "ncert/11/geography/kegy301.pdf",
+          "ordinal": 6,
+          "pageStart": 11,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 1: Introduction to Maps"
+          ]
+        },
+        {
+          "document": "ncert/11/geography/kegy301.pdf",
+          "ordinal": 7,
+          "pageStart": 14,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 1: Introduction to Maps"
+          ]
+        },
+        {
+          "document": "ncert/11/geography/kegy301.pdf",
+          "ordinal": 8,
+          "pageStart": 15,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 1: Introduction to Maps",
+            "EXERCISE"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-21T06:08:22.992Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
     }
   ]
 }

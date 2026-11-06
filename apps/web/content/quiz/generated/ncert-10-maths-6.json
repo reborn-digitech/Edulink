@@ -379,6 +379,490 @@
       "generatedAt": "2026-10-30T05:01:08.946Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "What does the AAA criterion for triangle similarity stand for?",
+      "choices": [
+        "Angle-Angle-Angle",
+        "Angle-Altitude-Angle",
+        "Angle-Area-Angle",
+        "Angle-Altitude-Altitude"
+      ],
+      "answerIndex": 0,
+      "solution": "The AAA criterion stands for Angle-Angle-Angle. It states that if all three corresponding angles of two triangles are equal, then the triangles are similar. The other options are not standard terms used in geometry.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "त्रिभुज समरूपता के AAA मानक क्या होता है?",
+          "choices": [
+            "कोण-कोण-कोण",
+            "कोण-ऊंचाई-कोण",
+            "कोण-क्षेत्रफल-कोण",
+            "कोण-ऊंचाई-ऊंचाई"
+          ],
+          "solution": "AAA मानक कोण-कोण-कोण के लिए होता है। यह बताता है कि यदि दो त्रिभुजों के तीनों संगत कोण बराबर हों, तो त्रिभुज समरूप होते हैं। अन्य विकल्प ज्यामिति में मानक शब्द नहीं हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Hindi terminology used for geometry concepts.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "AAA निकाल त्रिकोण समरूपतेचा काय अर्थ आहे?",
+          "choices": [
+            "कोन-कोन-कोन",
+            "कोन-उंची-कोन",
+            "कोन-क्षेत्रफळ-कोन",
+            "कोन-उंची-उंची"
+          ],
+          "solution": "AAA निकाल कोन-कोन-कोन चा अर्थ आहे. तो असे म्हणते की जर दोन त्रिकोणांच्या तीन अनुरूप कोन समान असतील तर त्रिकोण समरूप असतात. इतर विकल्प ज्योमितीमध्ये मान्य शब्द नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi geometry terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "confuses the terms",
+        "does not know the correct acronym",
+        "does not understand the meaning of AAA"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The question is straightforward and tests recall of the AAA criterion for triangle similarity. The correct answer is clearly 0, and the distractors are plausible but incorrect. The author's reasoning for the wrong options aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/10/mathematics/jemh106.pdf",
+          "ordinal": 6,
+          "pageStart": 13,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 6: Triangles"
+          ]
+        },
+        {
+          "document": "ncert/10/mathematics/jemh106.pdf",
+          "ordinal": 7,
+          "pageStart": 14,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 6: Triangles"
+          ]
+        },
+        {
+          "document": "ncert/10/mathematics/jemh106.pdf",
+          "ordinal": 8,
+          "pageStart": 16,
+          "pageEnd": 17,
+          "headingPath": [
+            "Chapter 6: Triangles"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T17:42:51.263Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "Which similarity criterion states that if one angle of a triangle is equal to one angle of another triangle and the sides including these angles are proportional, then the two triangles are similar?",
+      "choices": [
+        "AAA similarity criterion",
+        "SSS similarity criterion",
+        "ASA similarity criterion",
+        "SAS similarity criterion"
+      ],
+      "answerIndex": 3,
+      "solution": "The SAS (Side–Angle–Side) similarity criterion states that if one angle of a triangle is equal to one angle of another triangle and the sides including these angles are proportional, then the two triangles are similar. The AAA criterion is based on all three angles being equal, the SSS criterion is based on all three sides being proportional, and the ASA criterion is not a similarity criterion. The correct answer is SAS similarity criterion.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "कौन सा समरूपता का आधार कहता है कि यदि एक त्रिभुज का एक कोण दूसरे त्रिभुज के एक कोण के बराबर हो और इन कोणों के सामने की भुजाएं समानुपाती हों, तो दोनों त्रिभुज समरूप होते हैं?",
+          "choices": [
+            "AAA समरूपता का आधार",
+            "SSS समरूपता का आधार",
+            "ASA समरूपता का आधार",
+            "SAS समरूपता का आधार"
+          ],
+          "solution": "SAS (भुजा-कोण-भुजा) समरूपता का आधार कहता है कि यदि एक त्रिभुज का एक कोण दूसरे त्रिभुज के एक कोण के बराबर हो और इन कोणों के सामने की भुजाएं समानुपाती हों, तो दोनों त्रिभुज समरूप होते हैं। AAA आधार सभी तीन कोणों के बराबर होने पर आधारित है, SSS आधार सभी तीन भुजाओं के समानुपाती होने पर आधारित है, और ASA आधार समरूपता का आधार नहीं है। सही उत्तर SAS समरूपता का आधार है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English original in meaning, terminology, and structure. All options and the solution are correctly translated and maintain the same logical relationships.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "त्रिकोणांच्या समरूपतेच्या निकालाचे कोणते निकाल की जर एका त्रिकोणाचा एक कोन दुसऱ्या त्रिकोणाच्या एका कोनासारखा असेल आणि या कोनांमधील बाजू अनुपातात असतील तर दोन त्रिकोण समरूप असतात?",
+          "choices": [
+            "AAA समरूपता निकाल",
+            "SSS समरूपता निकाल",
+            "ASA समरूपता निकाल",
+            "SAS समरूपता निकाल"
+          ],
+          "solution": "SAS (बाजू-कोन-बाजू) समरूपता निकाल की जर एका त्रिकोणाचा एक कोन दुसऱ्या त्रिकोणाच्या एका कोनासारखा असेल आणि या कोनांमधील बाजू अनुपातात असतील तर दोन त्रिकोण समरूप असतात. AAA निकाल सर्व तीन कोनांच्या समानतेवर आधारित असतो, SSS निकाल सर्व तीन बाजूंच्या अनुपातावर आधारित असतो आणि ASA निकाल समरूपतेचा निकाल नसतो. योग्य उत्तर SAS समरूपता निकाल आहे.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate technical terms as used in Marathi-medium textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the SAS criterion with the AAA criterion",
+        "Confuses the SAS criterion with the SSS criterion",
+        "Confuses the SAS criterion with the ASA criterion",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-constructed and the solution is accurate. The correct answer is SAS similarity criterion, and the author's reasoning for the distractors aligns with common student misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/10/mathematics/jemh106.pdf",
+          "ordinal": 9,
+          "pageStart": 18,
+          "pageEnd": 20,
+          "headingPath": [
+            "Chapter 6: Triangles"
+          ]
+        },
+        {
+          "document": "ncert/10/mathematics/jemh106.pdf",
+          "ordinal": 10,
+          "pageStart": 20,
+          "pageEnd": 23,
+          "headingPath": [
+            "Chapter 6: Triangles"
+          ]
+        },
+        {
+          "document": "ncert/10/mathematics/jemh106.pdf",
+          "ordinal": 11,
+          "pageStart": 23,
+          "pageEnd": 25,
+          "headingPath": [
+            "Chapter 6: Triangles"
+          ]
+        },
+        {
+          "document": "ncert/10/mathematics/jemh106.pdf",
+          "ordinal": 12,
+          "pageStart": 25,
+          "pageEnd": 25,
+          "headingPath": [
+            "Chapter 6: Triangles"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T17:42:51.263Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "If two angles of one triangle are equal to two angles of another triangle, what can be said about the triangles?",
+      "choices": [
+        "They are congruent",
+        "They are similar",
+        "They are not similar",
+        "They are not congruent"
+      ],
+      "answerIndex": 1,
+      "solution": "If two angles of one triangle are equal to two angles of another triangle, the third angles must also be equal, making the triangles similar by the AA similarity criterion. Congruency requires both equal angles and equal side lengths, which is not guaranteed here. The other options contradict the geometric properties of triangles.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक त्रिभुज के दो कोण दूसरे त्रिभुज के दो कोणों के बराबर हैं, तो त्रिभुजों के बारे में क्या कहा जा सकता है?",
+          "choices": [
+            "वे सर्वांगसम हैं",
+            "वे समरूप हैं",
+            "वे समरूप नहीं हैं",
+            "वे सर्वांगसम नहीं हैं"
+          ],
+          "solution": "यदि एक त्रिभुज के दो कोण दूसरे त्रिभुज के दो कोणों के बराबर हैं, तो तीसरे कोण भी बराबर होना चाहिए, जिससे त्रिभुज समरूप हो जाते हैं। सर्वांगसमता के लिए बराबर कोणों और बराबर भुजाओं की आवश्यकता होती है, जो यहां निश्चित रूप से नहीं होती। अन्य विकल्प त्रिभुजों के ज्यामितीय गुणों के विरोधी हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses standard geometric terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका त्रिकोणाचे दोन कोन दुसऱ्या त्रिकोणाच्या दोन कोनांसोबत बरोबर असतील, तर त्रिकोणांबद्दल काय म्हणायला शकता?",
+          "choices": [
+            "ते एकरूप असतात",
+            "ते समरूप असतात",
+            "ते समरूप नसतात",
+            "ते एकरूप नसतात"
+          ],
+          "solution": "जर एका त्रिकोणाचे दोन कोन दुसऱ्या त्रिकोणाच्या दोन कोनांसोबत बरोबर असतील, तर तिसरे कोन देखील बरोबर असतील, ज्यामुळे त्रिकोण समरूप असतात असे म्हणता येईल. एकरूपता हे समान कोन आणि समान बाजूंच्या लांबीची आवश्यकता असते, जे येथे खात्री करता येत नाही. इतर विकल्प त्रिकोणांच्या भौमितिक गुणधर्मांच्या विरुद्ध असतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate use of Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "confuses similarity with congruency",
+        null,
+        "does not understand the AA criterion",
+        "does not know the difference between similarity and congruency"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly applies the AA similarity criterion. The correct answer is 1, and the reasoning for the other options aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/10/mathematics/jemh106.pdf",
+          "ordinal": 6,
+          "pageStart": 13,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 6: Triangles"
+          ]
+        },
+        {
+          "document": "ncert/10/mathematics/jemh106.pdf",
+          "ordinal": 7,
+          "pageStart": 14,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 6: Triangles"
+          ]
+        },
+        {
+          "document": "ncert/10/mathematics/jemh106.pdf",
+          "ordinal": 8,
+          "pageStart": 16,
+          "pageEnd": 17,
+          "headingPath": [
+            "Chapter 6: Triangles"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T17:42:51.263Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If two triangles are similar, what can be said about their corresponding sides?",
+      "choices": [
+        "They are equal in length",
+        "They are in the same ratio",
+        "They are perpendicular to each other",
+        "They are not related"
+      ],
+      "answerIndex": 1,
+      "solution": "The correct answer is that the corresponding sides are in the same ratio. This is a fundamental property of similar triangles, where their sides maintain a constant proportion. Equal lengths would imply congruence, perpendicularity is not a necessary characteristic, and the sides are clearly related through the ratio.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि दो त्रिभुज समरूप हैं, तो उनकी संगत भुजाओं के बारे में क्या कहा जा सकता है?",
+          "choices": [
+            "उनकी लंबाई समान होती है",
+            "वे एक ही अनुपात में होती हैं",
+            "वे एक दूसरे के लंबवत होती हैं",
+            "वे एक दूसरे से संबंधित नहीं होती हैं"
+          ],
+          "solution": "सही उत्तर यह है कि संगत भुजाएं एक ही अनुपात में होती हैं। यह समरूप त्रिभुजों के एक मूलभूत गुण है, जहां उनकी भुजाएं एक स्थिर अनुपात में रहती हैं। समान लंबाई का अर्थ सर्वांगसमता होती है, लंबवत होना आवश्यक गुण नहीं है, और भुजाएं अनुपात के माध्यम से स्पष्ट रूप से संबंधित होती हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate mathematical terminology in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर दोन त्रिकोण समरूप असतील, तर त्यांच्या संगत बाजूंबद्दल काय म्हणायला शकता?",
+          "choices": [
+            "त्यांच्या लांबी समान असतात",
+            "त्यांच्या अनुपातात एकसारखे असतात",
+            "त्यांच्या एकमेकांवर लंब असतात",
+            "त्यांच्या एकमेकांशी संबंध नसतो"
+          ],
+          "solution": "सहसंबंधी बाजू एकसारख्या अनुपातात असतात हे योग्य उत्तर आहे. हे समरूप त्रिकोणांचे एक मूलभूत गुणधर्म आहे, ज्यामध्ये त्यांच्या बाजू अचूक प्रमाणात राहतात. समान लांबी असल्यास संगतता असते, लंबत्व आवश्यक गुणधर्म नाही आणि बाजू अनुपातातून स्पष्टपणे संबंधित असतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses similarity with congruence",
+        null,
+        "Assumes a specific angle condition not mentioned",
+        "Incorrectly applies the concept of proportionality without the similarity condition"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly identifies that similar triangles have corresponding sides in the same ratio, and the reasons for the distractors align with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/10/mathematics/jemh106.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 6: Triangles"
+          ]
+        },
+        {
+          "document": "ncert/10/mathematics/jemh106.pdf",
+          "ordinal": 1,
+          "pageStart": 3,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 6: Triangles"
+          ]
+        },
+        {
+          "document": "ncert/10/mathematics/jemh106.pdf",
+          "ordinal": 2,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 6: Triangles"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T17:42:51.263Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "In triangle ABC, a line DE is drawn parallel to BC, intersecting AB at D and AC at E. If AD = 4 cm and DB = 2 cm, what is the ratio of AE to EC?",
+      "choices": [
+        "1:2",
+        "2:1",
+        "1:1",
+        "3:2"
+      ],
+      "answerIndex": 1,
+      "solution": "According to the Basic Proportionality Theorem, if a line is drawn parallel to one side of a triangle, it divides the other two sides in the same ratio. Since AD = 4 cm and DB = 2 cm, the ratio is 2:1. The first option is incorrect because it reverses the ratio. The third and fourth options do not match the calculated ratio.",
+      "checkExpr": "4/2",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "त्रिभुज ABC में, एक रेखा DE, BC के समांतर खींची गई है, AB को D और AC को E पर काटती है। यदि AD = 4 सेमी और DB = 2 सेमी है, तो AE का EC से अनुपात क्या है?",
+          "choices": [
+            "1:2",
+            "2:1",
+            "1:1",
+            "3:2"
+          ],
+          "solution": "मूलभूत आनुपातिकता प्रमेय के अनुसार, यदि किसी त्रिभुज की एक भुजा के समांतर एक रेखा खींची जाती है, तो यह अन्य दो भुजाओं को समान अनुपात में विभाजित करती है। AD = 4 सेमी और DB = 2 सेमी होने के कारण, अनुपात 2:1 है। पहला विकल्प अनुपात को उलट देता है। तीसरा और चौथा विकल्प गणना के अनुपात के बराबर नहीं हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology as used in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "त्रिकोण ABC मध्ये, एक रेषा DE, BC ला समांतर आहे, AB ला D आणि AC ला E वर छेदते. जर AD = 4 सेमी आणि DB = 2 सेमी असेल, तर AE आणि EC चे गुणोत्तर किती असेल?",
+          "choices": [
+            "1:2",
+            "2:1",
+            "1:1",
+            "3:2"
+          ],
+          "solution": "मूलभूत अनुपाताच्या प्रमेयानुसार, जर त्रिकोणाच्या एका बाजूला समांतर रेषा काढली गेली असेल, तर ती इतर दोन बाजूंना एकसारख्या गुणोत्तरात विभाजित करते. AD = 4 सेमी आणि DB = 2 सेमी असल्यामुळे, गुणोत्तर 2:1 आहे. पहिला विकल्प गुणोत्तर उलट करतो. तिसरा आणि चौथा विकल्प गणित केलेल्या गुणोत्तराशी जुळत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Reverses the ratio",
+        null,
+        "Confuses the ratio of segments with the ratio of areas or assumes equal division without considering proportionality",
+        "Incorrect ratio"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        0,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly applies the Basic Proportionality Theorem and identifies the correct ratio. The reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/10/mathematics/jemh106.pdf",
+          "ordinal": 3,
+          "pageStart": 5,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 6: Triangles"
+          ]
+        },
+        {
+          "document": "ncert/10/mathematics/jemh106.pdf",
+          "ordinal": 4,
+          "pageStart": 7,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 6: Triangles"
+          ]
+        },
+        {
+          "document": "ncert/10/mathematics/jemh106.pdf",
+          "ordinal": 5,
+          "pageStart": 10,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 6: Triangles"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T17:42:51.263Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
     }
   ]
 }

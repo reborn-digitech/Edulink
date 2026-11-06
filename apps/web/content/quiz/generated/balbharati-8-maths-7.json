@@ -368,6 +368,671 @@
       "generatedAt": "2026-11-02T07:20:55.821Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is the mathematical symbol used to denote direct variation?",
+      "choices": [
+        "α",
+        "β",
+        "γ",
+        "δ"
+      ],
+      "answerIndex": 0,
+      "solution": "The chapter uses the Greek letter alpha (α) to denote direct variation. Other symbols like β, γ, and δ are not used for this purpose in the chapter.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "प्रत्यक्ष परिवर्तन के लिए गणितीय प्रतीक क्या है?",
+          "choices": [
+            "α",
+            "β",
+            "γ",
+            "δ"
+          ],
+          "solution": "अध्याय में प्रत्यक्ष परिवर्तन के लिए ग्रीक अक्षर अल्फा (α) का उपयोग किया गया है। अन्य प्रतीक जैसे β, γ और δ अध्याय में इस उद्देश्य के लिए उपयोग नहीं किए जाते हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. The Greek letters are correctly represented and the solution clearly identifies the correct symbol.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "लांबीच्या बदलाचे नियम कोणत्या गणितीय प्रतीकाने दर्शविले जाते?",
+          "choices": [
+            "α",
+            "β",
+            "γ",
+            "δ"
+          ],
+          "solution": "अध्यायात लांबीच्या बदलाचे नियम दर्शविण्यासाठी ग्रीक अक्षर अल्फा (α) वापरले जाते. अन्य प्रतीकांसारखे β, γ आणि δ अध्यायात या उद्देशाने वापरले जात नाहीत.",
+          "imageAlt": null,
+          "critique": "The Marathi translation accurately reflects the English question and solution, with appropriate use of Marathi terminology for mathematical concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses alpha with other Greek letters",
+        "Misremember the symbol for inverse variation",
+        "Thinks it is a different Greek letter"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 0 (α), as direct variation is denoted by the Greek letter alpha. The other options are other Greek letters, and the reasons provided by the author align with common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 27,
+          "pageStart": 45,
+          "pageEnd": 46,
+          "headingPath": [
+            "7. Variation"
+          ]
+        },
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 28,
+          "pageStart": 46,
+          "pageEnd": 47,
+          "headingPath": [
+            "7. Variation"
+          ]
+        },
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 29,
+          "pageStart": 47,
+          "pageEnd": 49,
+          "headingPath": [
+            "7. Variation"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-11-01T00:27:52.502Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is the equation form of direct variation?",
+      "choices": [
+        "x = k + y",
+        "x = ky",
+        "x = y/k",
+        "x = k - y"
+      ],
+      "answerIndex": 1,
+      "solution": "Direct variation describes a relationship where one variable is a constant multiple of the other, which is mathematically expressed as x = ky. The other options do not represent this proportional relationship; x = k + y and x = k - y involve addition or subtraction, while x = y/k represents inverse variation.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "प्रत्यक्ष परिवर्तन के समीकरण का रूप क्या है?",
+          "choices": [
+            "x = k + y",
+            "x = ky",
+            "x = y/k",
+            "x = k - y"
+          ],
+          "solution": "प्रत्यक्ष परिवर्तन एक संबंध को दर्शाता है जहां एक चर दूसरे के एक नियतांक गुणक होता है, जिसे गणितीय रूप से x = ky द्वारा व्यक्त किया जाता है। अन्य विकल्प प्रत्यक्ष समानुपातिक संबंध का प्रतिनिधित्व नहीं करते; x = k + y और x = k - y में जोड़ या घटाव शामिल होता है, जबकि x = y/k व्युत्क्रम परिवर्तन का प्रतिनिधित्व करता है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "लक्ष्य विचाराचे समीकरण कोणते आहे?",
+          "choices": [
+            "x = k + y",
+            "x = ky",
+            "x = y/k",
+            "x = k - y"
+          ],
+          "solution": "लक्ष्य विचाराचे संबंध असे व्यक्त करतो की एक चल हा दुसऱ्याच्या अचल गुणाकाराचे असतो, जे गणितीयरित्या x = ky असे व्यक्त केले जाते. इतर विकल्प या अनुपाती संबंधाला प्रतिबिंबित करत नाहीत; x = k + y आणि x = k - y मध्ये जोडणे किंवा वजाबाकी असते, तर x = y/k अप्रत्यक्ष विचाराचे प्रतिबिंबित करते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Adds k and y instead of multiplying",
+        null,
+        "Thinks it is a subtraction or division",
+        "Confuses the form with inverse variation"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is x = ky, which matches the definition of direct variation. The other options represent common misconceptions about the form of direct variation.",
+      "sources": [
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 27,
+          "pageStart": 45,
+          "pageEnd": 46,
+          "headingPath": [
+            "7. Variation"
+          ]
+        },
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 28,
+          "pageStart": 46,
+          "pageEnd": 47,
+          "headingPath": [
+            "7. Variation"
+          ]
+        },
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 29,
+          "pageStart": 47,
+          "pageEnd": 49,
+          "headingPath": [
+            "7. Variation"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-11-01T00:27:52.502Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is the equation form of inverse variation?",
+      "choices": [
+        "x = ky",
+        "x = k/y",
+        "x = y/k",
+        "x = k + y"
+      ],
+      "answerIndex": 1,
+      "solution": "Inverse variation describes a relationship where one variable increases as the other decreases, and it is mathematically expressed as x = k/y, where k is a constant. The option x = ky represents direct variation, x = y/k is a form of direct variation with division, and x = k + y is a linear relationship, none of which reflect inverse variation.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "व्युत्क्रम अनुपात के समीकरण के रूप क्या है?",
+          "choices": [
+            "x = ky",
+            "x = k/y",
+            "x = y/k",
+            "x = k + y"
+          ],
+          "solution": "व्युत्क्रम अनुपात एक संबंध को दर्शाता है जहां एक चर दूसरे के बढ़ने पर कम हो जाता है, और इसको गणितीय रूप से x = k/y के रूप में व्यक्त किया जाता है, जहां k एक नियतांक है। विकल्प x = ky सीधा अनुपात का प्रतिनिधित्व करता है, x = y/k सीधा अनुपात के साथ भाग के रूप में है, और x = k + y एक रैखिक संबंध है, जो कि कोई भी व्युत्क्रम अनुपात का प्रतिनिधित्व नहीं करता है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. Technical terms like 'व्युत्क्रम अनुपात' (inverse variation) and 'सीधा अनुपात' (direct variation) are correctly used as per Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "अपकर्ष बदलाची समीकरण रूप कोणते आहे?",
+          "choices": [
+            "x = ky",
+            "x = k/y",
+            "x = y/k",
+            "x = k + y"
+          ],
+          "solution": "अपकर्ष बदल हा एक संबंध आहे जेथे एक चल वाढत असताना दुसरा चल कमी होतो, आणि त्याचे गणितीय व्यक्तीकरण x = k/y असते, जेथे k अचल असतो. ऑप्शन x = ky हा प्रत्यक्ष बदल दर्शवतो, x = y/k हा भागाकारासह प्रत्यक्ष बदलाचा एक प्रकार आहे आणि x = k + y हा रेषीय संबंध आहे, ज्यापैकी कोणताही अपकर्ष बदल दर्शवत नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for mathematical concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Uses the same form as direct variation",
+        null,
+        "Thinks it is a division of y by k",
+        "Adds k and y instead of dividing"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is x = k/y, which matches the definition of inverse variation. The other options represent common misconceptions, such as confusing direct variation with inverse, dividing y by k instead of k by y, and adding k and y instead of dividing.",
+      "sources": [
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 27,
+          "pageStart": 45,
+          "pageEnd": 46,
+          "headingPath": [
+            "7. Variation"
+          ]
+        },
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 28,
+          "pageStart": 46,
+          "pageEnd": 47,
+          "headingPath": [
+            "7. Variation"
+          ]
+        },
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 29,
+          "pageStart": 47,
+          "pageEnd": 49,
+          "headingPath": [
+            "7. Variation"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-11-01T00:27:52.502Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "If the cost of 3 notebooks is ` 60, what is the cost of 1 notebook?",
+      "choices": [
+        "` 20",
+        "` 30",
+        "` 40",
+        "` 50"
+      ],
+      "answerIndex": 0,
+      "solution": "The cost of 3 notebooks is ` 60, so the cost of 1 notebook is 60 divided by 3, which is ` 20. Other options are incorrect because they do not divide the total cost by the number of notebooks.",
+      "checkExpr": "60/3",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि 3 नोटबुक का मूल्य ` 60 है, तो 1 नोटबुक का मूल्य क्या है?",
+          "choices": [
+            "` 20",
+            "` 30",
+            "` 40",
+            "` 50"
+          ],
+          "solution": "3 नोटबुक का मूल्य ` 60 है, अतः 1 नोटबुक का मूल्य 60 को 3 से भाग देने पर ` 20 होता है। अन्य विकल्प गलत हैं क्योंकि वे कुल मूल्य को नोटबुक की संख्या से विभाजित नहीं करते।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "3 नोटबुकची किंमत 60 रुपये असल्यास 1 नोटबुकची किंमत किती?",
+          "choices": [
+            "20 रुपये",
+            "30 रुपये",
+            "40 रुपये",
+            "50 रुपये"
+          ],
+          "solution": "3 नोटबुकची किंमत 60 रुपये असल्यास 1 नोटबुकची किंमत 60 ला 3 ने भागल्यास मिळते, जो 20 रुपये आहे. इतर विकल्प चुकीचे आहेत कारण ते एकूण किंमत नोटबुकच्या संख्येने भागलेली नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Multiplies instead of dividing",
+        "Adds instead of dividing",
+        "Thinks the cost is higher than it is"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The question is straightforward and the solution is correct. The correct answer is 20, and the author's reasoning for the distractors is valid.",
+      "sources": [
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 27,
+          "pageStart": 45,
+          "pageEnd": 46,
+          "headingPath": [
+            "7. Variation"
+          ]
+        },
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 28,
+          "pageStart": 46,
+          "pageEnd": 47,
+          "headingPath": [
+            "7. Variation"
+          ]
+        },
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 29,
+          "pageStart": 47,
+          "pageEnd": 49,
+          "headingPath": [
+            "7. Variation"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-11-01T00:27:52.502Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "If the cost of 5 notebooks is ` 100, what is the cost of 1 notebook?",
+      "choices": [
+        "` 10",
+        "` 20",
+        "` 30",
+        "` 25"
+      ],
+      "answerIndex": 1,
+      "solution": "The cost of 5 notebooks is ` 100, so the cost of 1 notebook is 100 divided by 5, which is ` 20. Other options are incorrect because they do not divide the total cost by the number of notebooks.",
+      "checkExpr": "100/5",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि 5 नोटबुक का मूल्य ` 100 है, तो 1 नोटबुक का मूल्य क्या है?",
+          "choices": [
+            "` 10",
+            "` 20",
+            "` 30",
+            "` 25"
+          ],
+          "solution": "5 नोटबुक का मूल्य ` 100 है, अतः 1 नोटबुक का मूल्य 100 को 5 से भाग देने पर प्राप्त होता है, जो ` 20 है। अन्य विकल्प गलत हैं क्योंकि वे कुल मूल्य को नोटबुक की संख्या से विभाजित नहीं करते।",
+          "imageAlt": null,
+          "critique": "The Hindi version accurately reflects the English question, with equivalent options and solution. The term 'नोटबुक' is the standard Hindi word for 'notebook', and the numerical formatting is consistent.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "5 नोटबुकची किंमत 100 आहे, तर 1 नोटबुकची किंमत किती?",
+          "choices": [
+            "10",
+            "20",
+            "30",
+            "25"
+          ],
+          "solution": "5 नोटबुकची किंमत 100 आहे, म्हणून 1 नोटबुकची किंमत 100 ला 5 ने भागल्यास मिळते, जे 20 आहे. इतर विकल्प चुकीचे आहेत कारण ते एकूण किंमतीला नोटबुकच्या संख्येने भागत नाहीत.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Multiplies instead of dividing",
+        null,
+        "Mistakenly multiplies the total cost by the number of notebooks instead of dividing",
+        "Confuses the total cost with the cost per item by dividing the total by 4 instead of 5"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct and straightforward. Dividing 100 by 5 gives 20, which is the correct cost per notebook. The author's reasoning for the distractors is valid and reflects common student misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 27,
+          "pageStart": 45,
+          "pageEnd": 46,
+          "headingPath": [
+            "7. Variation"
+          ]
+        },
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 28,
+          "pageStart": 46,
+          "pageEnd": 47,
+          "headingPath": [
+            "7. Variation"
+          ]
+        },
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 29,
+          "pageStart": 47,
+          "pageEnd": 49,
+          "headingPath": [
+            "7. Variation"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-11-01T00:27:52.502Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If 6 workers can complete a job in 10 days, how many workers are needed to complete the job in 5 days?",
+      "choices": [
+        "3",
+        "6",
+        "12",
+        "18"
+      ],
+      "answerIndex": 2,
+      "solution": "The number of workers and the number of days are in inverse variation. If 6 workers take 10 days, then the constant of variation is 6 × 10 = 60. To complete the job in 5 days, the number of workers needed is 60 / 5 = 12. The option 3 is incorrect because it assumes a lower number of workers. The option 6 is the original number of workers. The option 18 is incorrect because it assumes more workers than needed.",
+      "checkExpr": "6*10/5",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि 6 कारीगर एक कार्य को 10 दिन में पूरा कर सकते हैं, तो 5 दिन में उस कार्य को पूरा करने के लिए कितने कारीगर आवश्यक हैं?",
+          "choices": [
+            "3",
+            "6",
+            "12",
+            "18"
+          ],
+          "solution": "कारीगरों की संख्या और दिनों की संख्या व्युत्क्रम अनुपात में है। यदि 6 कारीगर 10 दिन लेते हैं, तो परिवर्तन का नियतांक 6 × 10 = 60 है। 5 दिन में कार्य पूरा करने के लिए आवश्यक कारीगरों की संख्या 60 / 5 = 12 है। विकल्प 3 गलत है क्योंकि यह एक कम संख्या के कारीगरों की धारणा करता है। विकल्प 6 मूल कारीगरों की संख्या है। विकल्प 18 गलत है क्योंकि यह आवश्यकता से अधिक कारीगरों की धारणा करता है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology common in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "6 कामगार एक काम 10 दिवसांत पूर्ण करू शकतात, तर 5 दिवसांत काम पूर्ण करण्यासाठी किती कामगार आवश्यक आहेत?",
+          "choices": [
+            "3",
+            "6",
+            "12",
+            "18"
+          ],
+          "solution": "कामगारांची संख्या आणि दिवसांची संख्या व्यस्त प्रमाणात असतात. जर 6 कामगार 10 दिवस घेत असतील, तर व्यस्त प्रमाणाची स्थिरांक 6 × 10 = 60 असतो. 5 दिवसांत काम पूर्ण करण्यासाठी आवश्यक कामगारांची संख्या 60 / 5 = 12 असते. विकल्प 3 अयोग्य आहे कारण तो कमी कामगारांचा अंदाज घेतो. विकल्प 6 हा मूळ कामगारांची संख्या आहे. विकल्प 18 अयोग्य आहे कारण तो आवश्यक पेक्षा जास्त कामगारांचा अंदाज घेतो.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi technical terms for inverse variation and related concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Student thinks doubling the time requires doubling the workers, not halving them",
+        "original number of workers",
+        null,
+        "incorrect multiplication"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly identifies the inverse variation relationship and calculates the required number of workers as 12. The reasoning for the distractors is plausible and reflects common student misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 27,
+          "pageStart": 45,
+          "pageEnd": 46,
+          "headingPath": [
+            "7. Variation"
+          ]
+        },
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 28,
+          "pageStart": 46,
+          "pageEnd": 47,
+          "headingPath": [
+            "7. Variation"
+          ]
+        },
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 29,
+          "pageStart": 47,
+          "pageEnd": 49,
+          "headingPath": [
+            "7. Variation"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-11-01T00:27:52.502Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If the cost of 10 notebooks is ` 200, what is the cost of 15 notebooks?",
+      "choices": [
+        "` 250",
+        "` 300",
+        "` 350",
+        "` 400"
+      ],
+      "answerIndex": 1,
+      "solution": "The cost of 10 notebooks is ` 200, so the cost of 1 notebook is 200 divided by 10, which is ` 20. The cost of 15 notebooks is 15 multiplied by 20, which is ` 300. Other options are incorrect because they do not use the correct calculation method.",
+      "checkExpr": "(200/10)*15",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि 10 नोटबुक का मूल्य ` 200 है, तो 15 नोटबुक का मूल्य क्या है?",
+          "choices": [
+            "` 250",
+            "` 300",
+            "` 350",
+            "` 400"
+          ],
+          "solution": "10 नोटबुक का मूल्य ` 200 है, अतः 1 नोटबुक का मूल्य 200 को 10 से भाग देने पर ` 20 होता है। 15 नोटबुक का मूल्य 15 को 20 से गुणा करने पर ` 300 होता है। अन्य विकल्प गलत हैं क्योंकि वे सही गणना विधि का उपयोग नहीं करते।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology common in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "10 नोटबुकची किंमत 200 आहे, तर 15 नोटबुकची किंमत किती असेल?",
+          "choices": [
+            "250",
+            "300",
+            "350",
+            "400"
+          ],
+          "solution": "10 नोटबुकची किंमत 200 आहे, म्हणून 1 नोटबुकची किंमत 200 भागिले 10, जी 20 आहे. 15 नोटबुकची किंमत 15 गुणिले 20, जी 300 आहे. इतर विकल्प चुकीच्या गणना पद्धतीचा वापर करून असल्यामुळे चुकीचे आहेत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Adds 50 to the original cost",
+        null,
+        "Thinks the cost increases by a different amount",
+        "Thinks the cost is the same as for 10 notebooks"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct and logically leads to option 1. The distractors represent plausible misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 27,
+          "pageStart": 45,
+          "pageEnd": 46,
+          "headingPath": [
+            "7. Variation"
+          ]
+        },
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 28,
+          "pageStart": 46,
+          "pageEnd": 47,
+          "headingPath": [
+            "7. Variation"
+          ]
+        },
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 29,
+          "pageStart": 47,
+          "pageEnd": 49,
+          "headingPath": [
+            "7. Variation"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-11-01T00:27:52.502Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
     }
   ]
 }

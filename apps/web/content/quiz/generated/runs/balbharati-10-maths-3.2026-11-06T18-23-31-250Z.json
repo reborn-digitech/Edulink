@@ -1,0 +1,539 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-11-06T18:23:31.250Z",
+  "finishedAt": "2026-11-06T18:46:19.175Z",
+  "seconds": 1368,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "१० वी गणित भाग - १ इंग्रजी",
+    "bookCode": "1003000608",
+    "document": "balbharati/10/mathematics/1003000608.pdf",
+    "classLevel": 10,
+    "subject": "Mathematics",
+    "chapter": "Chapter 3 — Arithmetic Progression",
+    "edition": "2026 edition",
+    "chunks": 13,
+    "groups": 5
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 0,
+    "6": 0
+  },
+  "style": {
+    "present": false,
+    "excerpts": [],
+    "note": "no past papers in the corpus (ContentDocument source \"papers\"): levels 5 and 6 skipped"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 9,
+      "ms": 360960,
+      "in": 27,
+      "out": 26,
+      "rejects": 2,
+      "promptTokens": 38475,
+      "completionTokens": 6503
+    },
+    "critique": {
+      "calls": 34,
+      "ms": 665008,
+      "in": 26,
+      "out": 22,
+      "rejects": 4,
+      "promptTokens": 15877,
+      "completionTokens": 5752
+    },
+    "solver": {
+      "calls": 173,
+      "ms": 289615,
+      "in": 22,
+      "out": 16,
+      "rejects": 6,
+      "promptTokens": 41363,
+      "completionTokens": 2082
+    },
+    "form": {
+      "calls": 0,
+      "ms": 0,
+      "in": 16,
+      "out": 11,
+      "rejects": 5,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 11,
+      "out": 11,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 2,
+      "ms": 784,
+      "in": 11,
+      "out": 9,
+      "rejects": 2,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 37,
+      "ms": 628738,
+      "in": 18,
+      "out": 18,
+      "rejects": 0,
+      "promptTokens": 18438,
+      "completionTokens": 7529
+    }
+  },
+  "kept": 9,
+  "keptByLevel": {
+    "1": 3,
+    "2": 4,
+    "3": 2,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 0,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "If the first term of an A.P. is 5 and the common difference is 3, what is the 10th term?",
+      "ms": {
+        "draft": 23938,
+        "critique": 47021,
+        "solver": 12724
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Kabir's height increases by 10 cm each year. If he was 70 cm at age 1, what will be his height at age 15?",
+      "ms": {
+        "draft": 23938,
+        "critique": 44594
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the formula to find the sum of the first n terms of an arithmetic progression?",
+      "ms": {
+        "draft": 15279,
+        "critique": 39865,
+        "solver": 2109,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the first term of an arithmetic progression is 5 and the common difference is 3, what is the sum of the first 10 terms?",
+      "ms": {
+        "draft": 15279,
+        "critique": 8585,
+        "solver": 1761,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the formula used to find the sum of the first n terms of an arithmetic progression?",
+      "ms": {
+        "draft": 6767,
+        "critique": 13826,
+        "solver": 4018,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In an arithmetic progression, the 5th term is 17 and the 8th term is 29. What is the sum of the first 10 terms?",
+      "ms": {
+        "draft": 15279,
+        "critique": 13450,
+        "solver": 43419
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If the sum of the first n terms of an A.P. is 100, and the first term is 1, what is the value of n?",
+      "ms": {
+        "draft": 12580,
+        "critique": 34710
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In an A.P., the sum of the first 5 terms is 25 and the sum of the first 10 terms is 75. What is the common difference?",
+      "ms": {
+        "draft": 12580,
+        "critique": 25440
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "An arithmetic progression has its 5th term as 20 and 10th term as 40. What is the common difference?",
+      "ms": {
+        "draft": 6767,
+        "critique": 28852,
+        "solver": 63409
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the 5th term of an A.P. is 15 and the 10th term is 30, what is the common difference?",
+      "ms": {
+        "draft": 12580,
+        "critique": 28286,
+        "solver": 31538,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Find the sum of the first 15 terms of the A.P. 3, 7, 11, ...",
+      "ms": {
+        "draft": 14419,
+        "critique": 9672,
+        "solver": 2309
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If the sum of the first 10 terms of an A.P. is 350 and the sum of the first 15 terms is 825, find the common difference.",
+      "ms": {
+        "draft": 14419,
+        "critique": 11249,
+        "solver": 22272
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Sachin invested in a national saving certificate scheme. In the first year he invested 1000, in the second year 1500, in the third year 2000, and so on. Find the total amount that he invested in 10 years.",
+      "ms": {
+        "draft": 9729,
+        "critique": 8705,
+        "solver": 26331
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following sequences is an arithmetic progression?",
+      "ms": {
+        "draft": 13853,
+        "critique": 13460
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the sum of the first 50 even natural numbers?",
+      "ms": {
+        "draft": 103107,
+        "critique": 9925,
+        "solver": 15753,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the sum of the first 10 natural numbers?",
+      "ms": {
+        "draft": 14419,
+        "critique": 8554,
+        "solver": 2669,
+        "form": 1
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the 100th term of the arithmetic progression starting with 5 and having a common difference of 3?",
+      "ms": {
+        "draft": 10859,
+        "critique": 9276,
+        "solver": 2587,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the formula to find the nth term of an arithmetic progression?",
+      "ms": {
+        "draft": 23938,
+        "critique": 54394,
+        "solver": 9295,
+        "form": 0,
+        "translation": 40278
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the formula used to find the sum of the first n terms of an arithmetic progression?",
+      "ms": {
+        "draft": 9729,
+        "critique": 11934,
+        "solver": 4509,
+        "form": 0,
+        "translation": 96794
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the sum of the first 10 natural numbers?",
+      "ms": {
+        "draft": 12580,
+        "critique": 34470,
+        "solver": 7404,
+        "form": 0,
+        "translation": 46895
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following sequences is an arithmetic progression?",
+      "ms": {
+        "draft": 23938,
+        "critique": 57233,
+        "solver": 56214,
+        "form": 0,
+        "translation": 42596
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of an arithmetic progression?",
+      "ms": {
+        "draft": 15279,
+        "critique": 10311,
+        "solver": 27252,
+        "form": 3,
+        "translation": 44801
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "In an arithmetic progression, what does the term 'd' represent?",
+      "ms": {
+        "draft": 6767,
+        "critique": 16811,
+        "solver": 5727,
+        "form": 0,
+        "translation": 71972
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If the first term of an A.P. is 5 and the common difference is 3, what is the fourth term?",
+      "ms": {
+        "draft": 14419,
+        "critique": 9673,
+        "solver": 3592,
+        "form": 0,
+        "translation": 91590
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the sum of the first 100 natural numbers?",
+      "ms": {
+        "draft": 103107,
+        "critique": 9987,
+        "solver": 2680,
+        "form": 0,
+        "translation": 112646
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the first term of an arithmetic progression is 5 and the common difference is 3, what is the 10th term?",
+      "ms": {
+        "draft": 6767,
+        "critique": 23587,
+        "solver": 9779,
+        "form": 0,
+        "translation": 67617
+      },
+      "outcome": "kept",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 0, round 1)",
+      "reason": "The operation was aborted due to timeout"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If the first term of an A.P. is 5 and the common difference is 3, what is the 10th term?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Kabir's height increases by 10 cm each year. If he was 70 cm at age 1, what will be his height at age 15?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the formula to find the sum of the first n terms of an arithmetic progression?",
+      "reason": "options 1 and 3 say the same thing (\"Sn = n/2 [2a + (n-1)d]\" / \"Sn = n/2 [2a + (n-1)]\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If the first term of an arithmetic progression is 5 and the common difference is 3, what is the sum of the first 10 terms?",
+      "reason": "ARITHMETIC MISMATCH — checkExpr \"10/2*(2*5 + (10-1)*3)\" = 185, but the key says 165"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the formula used to find the sum of the first n terms of an arithmetic progression?",
+      "reason": "options 2 and 3 say the same thing (\"S = a + (n-1)d\" / \"S = n/2 [a + (n-1)d]\")"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "In an arithmetic progression, the 5th term is 17 and the 8th term is 29. What is the sum of the first 10 terms?",
+      "reason": "after redraft: the solver picked option 1 4 times against the key's 1: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "If the sum of the first n terms of an A.P. is 100, and the first term is 1, what is the value of n?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "In an A.P., the sum of the first 5 terms is 25 and the sum of the first 10 terms is 75. What is the common difference?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "An arithmetic progression has its 5th term as 20 and 10th term as 40. What is the common difference?",
+      "reason": "distractor 0 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If the 5th term of an A.P. is 15 and the 10th term is 30, what is the common difference?",
+      "reason": "checkExpr \"3\" is a bare literal"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the common difference of the arithmetic progression -2, 0, 2, 4?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "Find the sum of the first 15 terms of the A.P. 3, 7, 11, ...",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "If the sum of the first 10 terms of an A.P. is 350 and the sum of the first 15 terms is 825, find the common difference.",
+      "reason": "distractors 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "Sachin invested in a national saving certificate scheme. In the first year he invested 1000, in the second year 1500, in the third year 2000, and so on. Find the total amount that he invested in 10 years.",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Which of the following sequences is an arithmetic progression?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the sum of the first 50 even natural numbers?",
+      "reason": "options 0 and 2 are the same (\"2500\"); options 0 and 2 are the same number"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the sum of the first 10 natural numbers?",
+      "reason": "near-duplicate of batch item \"What is the sum of the first 10 natural numbers?…\" (cosine 1.000 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 4,
+      "stem": "What is the 100th term of the arithmetic progression starting with 5 and having a common difference of 3?",
+      "reason": "near-duplicate of batch item \"If the first term of an arithmetic progression is …\" (cosine 0.916 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "no past papers in the corpus (ContentDocument source \"papers\"): levels 5 and 6 skipped",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

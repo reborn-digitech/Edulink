@@ -594,6 +594,291 @@
       "generatedAt": "2026-10-28T07:03:35.206Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "What kind of work did Sidya do in the city?",
+      "choices": [
+        "He helped in a school",
+        "He cleaned and sorted fish",
+        "He sold vegetables",
+        "He repaired fishing nets"
+      ],
+      "answerIndex": 1,
+      "solution": "Sidya's work involved cleaning and sorting fish, as this is the specific task described in the context. The other options, such as helping in a school, selling vegetables, or repairing fishing nets, are not supported by the information provided. There is no evidence to suggest these were part of his responsibilities.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "सिड्या शहर में किस प्रकार का काम करता था?",
+          "choices": [
+            "उसने एक स्कूल में मदद की",
+            "उसने मछली की सफाई और वर्गीकरण की",
+            "उसने सब्जियां बेचीं",
+            "उसने मछली पकड़ने के जाल मरम्मत की"
+          ],
+          "solution": "सिड्या के काम में मछली की सफाई और वर्गीकरण शामिल था, क्योंकि यह संदर्भ में विशिष्ट कार्य है। अन्य विकल्प, जैसे स्कूल में मदद करना, सब्जियां बेचना या मछली पकड़ने के जाल मरम्मत करना, जानकारी के द्वारा समर्थित नहीं हैं। इसके लिए कोई प्रमाण नहीं है कि ये उसकी जिम्मेदारियों का हिस्सा रहे।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate terminology common in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "सिद्याने शहरात कोणत्या प्रकारचे काम केले?",
+          "choices": [
+            "त्याने शाळेत मदत केली",
+            "त्याने मासे शुद्ध केल्या आणि विभागल्या",
+            "त्याने भाजी विकल्या",
+            "त्याने मत्स्य जाल दुरुस्त केले"
+          ],
+          "solution": "सिद्याचे काम मासे शुद्ध करणे आणि विभागणे हे होते, कारण हे विशिष्ट काम संदर्भात वर्णन केले गेले आहे. इतर विकल्प, शाळेत मदत करणे, भाजी विकणे किंवा मत्स्य जाल दुरुस्त करणे, यांचे समर्थन माहिती उपलब्ध नाही. यांच्या जबाबदाऱ्यांमध्ये हे असल्याचे पुरावा नाही.",
+          "imageAlt": null,
+          "critique": "The Marathi translation accurately reflects the English original in meaning, structure, and terminology. The correct answer remains in the same position (option 1), and the distractors are still incorrect. Technical terms like 'मत्स्य जाल' (fishing net) are appropriate for a Marathi-medium curriculum.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "refers to a different family member's work",
+        null,
+        "confuses the work with something else mentioned",
+        "mentions a task done by Jatrya, not Sidya"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 1, as the passage explicitly states that Sidya cleaned and sorted fish. The other options are either attributed to other characters or not mentioned at all.",
+      "sources": [
+        {
+          "document": "ncert/5/environmental-studies/eeap118.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 18: No Place for Us?"
+          ]
+        },
+        {
+          "document": "ncert/5/environmental-studies/eeap118.pdf",
+          "ordinal": 1,
+          "pageStart": 3,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 18: No Place for Us?"
+          ]
+        },
+        {
+          "document": "ncert/5/environmental-studies/eeap118.pdf",
+          "ordinal": 2,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 18: No Place for Us?"
+          ]
+        }
+      ],
+      "edition": "2024 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-23T02:14:06.875Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "What would happen if a dam is built in a village?",
+      "choices": [
+        "People may have to move to a new place",
+        "The village may have more pollution",
+        "The village may have more trees",
+        "The village may have better access to water"
+      ],
+      "answerIndex": 0,
+      "solution": "Building a dam often leads to the flooding of the surrounding area, which can force people to relocate to higher ground. The other options do not align with the typical environmental and social impacts of dam construction.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक गाँव में बाँध बनाने पर क्या होगा?",
+          "choices": [
+            "लोगों को एक नए स्थान पर जाना पड़ सकता है",
+            "गाँव में अधिक प्रदूषण हो सकता है",
+            "गाँव में अधिक पेड़ हो सकते हैं",
+            "गाँव के पानी तक बेहतर पहुँच हो सकती है"
+          ],
+          "solution": "बाँध बनाने से आसपास के क्षेत्र में जल भराव हो सकता है, जिसके कारण लोगों को ऊँचे स्थान पर बस्ती बनानी पड़ सकती है। अन्य विकल्प बाँध निर्माण के सामान्य पर्यावरणीय और सामाजिक प्रभावों के अनुरूप नहीं हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate terminology common in Hindi-medium education.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "गावात बांध बांधल्यास काय होईल?",
+          "choices": [
+            "लोकांना नवीन जागेवर जावे लागू शकते",
+            "गावात अधिक दूषण होईल",
+            "गावात अधिक झाडे असतील",
+            "गावाला पाण्यापासून चांगला प्रवेश असेल"
+          ],
+          "solution": "बांध बांधणे अकस्मात जवळच्या भागाच्या बाजूला पाणी भरून टाकते, ज्यामुळे लोकांना उंच जागेवर जाण्याची आवश्यकता असू शकते. इतर विकल्प बांध बांधण्याच्या सामान्य पर्यावरणीय आणि सामाजिक परिणामांशी जुळत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for 'dam' and related concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "students might think building a dam leads to more pollution from construction and waste",
+        "Believes building a dam will lead to reforestation without understanding the environmental impact",
+        "students might think dams always provide water resources without considering displacement or environmental impact"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 0, as the passage explicitly states that people had to move when a dam was built. The other options represent common misconceptions about dams, which the author correctly identifies.",
+      "sources": [
+        {
+          "document": "ncert/5/environmental-studies/eeap118.pdf",
+          "ordinal": 3,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 18: No Place for Us?"
+          ]
+        },
+        {
+          "document": "ncert/5/environmental-studies/eeap118.pdf",
+          "ordinal": 4,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 18: No Place for Us?"
+          ]
+        },
+        {
+          "document": "ncert/5/environmental-studies/eeap118.pdf",
+          "ordinal": 5,
+          "pageStart": 8,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 18: No Place for Us?"
+          ]
+        }
+      ],
+      "edition": "2024 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-23T02:14:06.875Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "Why did the people of Khedi not want to move from their village?",
+      "choices": [
+        "Because they had no place to go",
+        "Because they were afraid of the new environment",
+        "Because they had lived there for generations",
+        "Because they were used to the village life"
+      ],
+      "answerIndex": 2,
+      "solution": "The people of Khedi had lived in their village for many generations, which made it difficult for them to leave. The other options suggest fears or lack of alternatives, but the main reason given is their deep-rooted connection to their ancestral home.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "खेड़ी के लोग अपने गाँव से जाना क्यों नहीं चाहते थे?",
+          "choices": [
+            "क्योंकि उनके पास जाने के लिए कोई जगह नहीं थी",
+            "क्योंकि वे नए वातावरण से डरते थे",
+            "क्योंकि वे वहाँ पीढ़ियों से रहे थे",
+            "क्योंकि वे गाँव के जीवन के आदी थे"
+          ],
+          "solution": "खेड़ी के लोग अपने गाँव में कई पीढ़ियों से रहे थे, जिसके कारण उन्हें जाना मुश्किल लगा। अन्य विकल्प डर या विकल्प की कमी के संकेत देते हैं, लेकिन मुख्य कारण उनका अपने पूर्वजों के घर के साथ गहरा संबंध था।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate terminology common in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खेडीच्या लोकांनी आपल्या गावातून जाण्याची इच्छा का नाही केली?",
+          "choices": [
+            "कारण त्यांना जायचे ठिकाण नव्हते",
+            "कारण ते नवीन वातावरणाच्या भीतीखाली होते",
+            "कारण ते तिथे पिढी-पिढी राहिले होते",
+            "कारण ते गावाच्या जीवनाला अनुरूप होते"
+          ],
+          "solution": "खेडीच्या लोकांनी आपल्या गावात अनेक पिढी राहिल्यामुळे त्यांना जाण्याची इच्छा नव्हती. इतर विकल्पांमध्ये भीती किंवा विकल्पांचा अभाव सुचवला आहे, परंतु मुख्य कारण त्यांचा आपल्या पूर्वजांच्या घराशी गहन संबंध होता.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Students might think the villagers didn't want to move because they had nowhere else to live, not realizing the emotional connection to their home.",
+        "students may confuse fear of change with fear of authority or specific threats",
+        null,
+        "students often confuse emotional attachment with practical reasons for staying in a place"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 2, as the passage explicitly states that the people of Khedi had lived there for generations. The other options are plausible but not supported by the text. The author's reasoning for the distractors reflects common student misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/5/environmental-studies/eeap118.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 18: No Place for Us?"
+          ]
+        },
+        {
+          "document": "ncert/5/environmental-studies/eeap118.pdf",
+          "ordinal": 1,
+          "pageStart": 3,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 18: No Place for Us?"
+          ]
+        },
+        {
+          "document": "ncert/5/environmental-studies/eeap118.pdf",
+          "ordinal": 2,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 18: No Place for Us?"
+          ]
+        }
+      ],
+      "edition": "2024 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-23T02:14:06.875Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
     }
   ]
 }

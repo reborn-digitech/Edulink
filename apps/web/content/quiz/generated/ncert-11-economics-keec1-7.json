@@ -318,6 +318,476 @@
       "generatedAt": "2026-10-28T23:11:25.660Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of the following is an example of an environmental function that helps sustain life and maintain biodiversity?",
+      "choices": [
+        "Assimilating waste",
+        "Providing aesthetic services",
+        "Supplying resources",
+        "Supporting genetic and bio diversity"
+      ],
+      "answerIndex": 3,
+      "solution": "The correct option, supporting genetic and bio diversity, is an environmental function that directly contributes to sustaining life and maintaining biodiversity. Assimilating waste helps in recycling materials but does not directly sustain life. Providing aesthetic services is more about human enjoyment than biological sustainability. Supplying resources is important but not specifically about maintaining biodiversity.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा एक पर्यावरणीय कार्य का उदाहरण है जो जीवन को स्थायी बनाए रखने और जैव विविधता को बनाए रखने में सहायता करता है?",
+          "choices": [
+            "अपशिष्ट का अवशोषण करना",
+            "सौंदर्य सेवाएं प्रदान करना",
+            "संसाधन प्रदान करना",
+            "आनुवंशिक और जैव विविधता का समर्थन करना"
+          ],
+          "solution": "सही विकल्प, आनुवंशिक और जैव विविधता का समर्थन करना, एक पर्यावरणीय कार्य है जो सीधे जीवन को स्थायी बनाए रखने और जैव विविधता को बनाए रखने में योगदान देता है। अपशिष्ट का अवशोषण करना पदार्थों के चक्रीकरण में सहायता करता है लेकिन जीवन को सीधे स्थायी नहीं रखता। सौंदर्य सेवाएं प्रदान करना मानव के आनंद के लिए होता है लेकिन जैविक स्थायित्व के लिए नहीं। संसाधन प्रदान करना महत्वपूर्ण है लेकिन जैव विविधता को बनाए रखने के लिए विशिष्ट नहीं है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology consistent with standard environmental science textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते जैविक कार्याचे उदाहरण आहे जे जीवन टिकवून ठेवण्यास आणि जैव विविधता बरोबर ठेवण्यास मदत करते?",
+          "choices": [
+            "अपशिष्ट असमिलित करणे",
+            "सौंदर्य विधी पुरविणे",
+            "संसाधने पुरविणे",
+            "जेनेटिक आणि जैव विविधता समर्थन करणे"
+          ],
+          "solution": "सही विकल्प, जेनेटिक आणि जैव विविधता समर्थन करणे, हे जैविक कार्य आहे जे जीवन टिकवून ठेवण्यास आणि जैव विविधता बरोबर ठेवण्यास थेट योगदान देते. अपशिष्ट असमिलित करणे हे सामग्री फिरविण्यास मदत करते परंतु जीवन टिकवून ठेवण्यास थेट मदत करत नाही. सौंदर्य विधी पुरविणे हे मानवाच्या आनंदासाठी आहे जे जैविक स्थिरतेशी संबंधित नाही. संसाधने पुरविणे महत्वपूर्ण आहे परंतु जैव विविधता बरोबर ठेवण्याशी संबंधित नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for environmental concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the function of waste assimilation with sustaining life",
+        "Misinterprets aesthetic value as a life-supporting function",
+        "Focuses on resource supply rather than biodiversity support",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 3, as the question specifically asks for an environmental function that sustains life and maintains biodiversity. The author's reasoning aligns with this, and the misconceptions listed for the other options are plausible for students.",
+      "sources": [
+        {
+          "document": "ncert/11/economics/keec107.pdf",
+          "ordinal": 15,
+          "pageStart": 14,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 7: Environment and Sustainable Development",
+            "USTAINABLE EVELOPMENT"
+          ]
+        },
+        {
+          "document": "ncert/11/economics/keec107.pdf",
+          "ordinal": 16,
+          "pageStart": 14,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 7: Environment and Sustainable Development",
+            "USTAINABLE EVELOPMENT"
+          ]
+        },
+        {
+          "document": "ncert/11/economics/keec107.pdf",
+          "ordinal": 17,
+          "pageStart": 15,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 7: Environment and Sustainable Development",
+            "USTAINABLE EVELOPMENT"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T10:22:30.189Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of the following is a renewable resource?",
+      "choices": [
+        "Petroleum",
+        "Coal",
+        "Fish",
+        "Iron-ore"
+      ],
+      "answerIndex": 2,
+      "solution": "Fish is a renewable resource because they can reproduce and replenish their populations if managed properly. Petroleum, coal, and iron-ore are non-renewable because they form over millions of years and cannot be replaced within a human timescale.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन एक नवीकरणीय संसाधन है?",
+          "choices": [
+            "पेट्रोलियम",
+            "कोयला",
+            "मछली",
+            "लौह-अयस्क"
+          ],
+          "solution": "मछली एक नवीकरणीय संसाधन है क्योंकि उनके जनसंख्या को बनाए रखने के लिए उनके प्रजनन और पुनर्भरण किया जा सकता है। पेट्रोलियम, कोयला और लौह-अयस्क अनवीकरणीय हैं क्योंकि वे मिलियन वर्षों में बनते हैं और मानव के समयमापन में बदले नहीं जा सकते।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains original meaning, and uses appropriate Hindi terminology for environmental science concepts.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणता पुनर्वसनीय संसाधन आहे?",
+          "choices": [
+            "पेट्रोलियम",
+            "कोळसा",
+            "मासे",
+            "लोहाचूर्ण"
+          ],
+          "solution": "मासे पुनर्वसनीय संसाधन आहे कारण ते योग्य प्रकारे व्यवस्थापित केल्यास त्यांची लोकसंख्या पुन्हा वाढू शकते. पेट्रोलियम, कोळसा आणि लोहाचूर्ण अपुनर्वसनीय आहेत कारण ते लाखो वर्षांत तयार होतात आणि मानवी कालावधीत पुन्हा तयार होऊ शकत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for environmental science concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Includes fossil fuels as renewable",
+        "Confuses fish with non-renewable resources",
+        null,
+        "Mistakes iron-ore for a renewable resource"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is Fish (option 2), as it is a renewable resource that can be replenished through natural processes. The other options are non-renewable fossil fuels or minerals. The author's reasoning aligns with standard definitions of renewable and non-renewable resources.",
+      "sources": [
+        {
+          "document": "ncert/11/economics/keec107.pdf",
+          "ordinal": 15,
+          "pageStart": 14,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 7: Environment and Sustainable Development",
+            "USTAINABLE EVELOPMENT"
+          ]
+        },
+        {
+          "document": "ncert/11/economics/keec107.pdf",
+          "ordinal": 16,
+          "pageStart": 14,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 7: Environment and Sustainable Development",
+            "USTAINABLE EVELOPMENT"
+          ]
+        },
+        {
+          "document": "ncert/11/economics/keec107.pdf",
+          "ordinal": 17,
+          "pageStart": 15,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 7: Environment and Sustainable Development",
+            "USTAINABLE EVELOPMENT"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T10:22:30.189Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of the following is an example of a movement that aimed at protecting forests in India?",
+      "choices": [
+        "Chipko Movement",
+        "Green Revolution",
+        "White Revolution",
+        "Blue Revolution"
+      ],
+      "answerIndex": 0,
+      "solution": "The Chipko Movement is an example of a movement that aimed at protecting forests in India, as it involved local communities in preventing deforestation. The Green Revolution focused on increasing agricultural production, the White Revolution on dairy development, and the Blue Revolution on improving fisheries.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा भारत में वनों के संरक्षण के लिए एक आंदोलन का उदाहरण है?",
+          "choices": [
+            "चिपको आंदोलन",
+            "हरित क्रांति",
+            "सफेद क्रांति",
+            "नीली क्रांति"
+          ],
+          "solution": "चिपको आंदोलन भारत में वनों के संरक्षण के लिए एक आंदोलन का उदाहरण है, क्योंकि इसमें स्थानीय समुदायों को वनों के विनाश से रोकने में शामिल किया गया। हरित क्रांति कृषि उत्पादन में वृद्धि पर केंद्रित रही, सफेद क्रांति दुग्ध विकास पर और नीली क्रांति मत्स्य उद्योग में सुधार पर।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses standard Indian terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते भारतात वनांचे संरक्षण करण्याच्या उद्योगाचे उदाहरण आहे?",
+          "choices": [
+            "चिप्को चळवळ",
+            "हिरवा क्रांती",
+            "काळा क्रांती",
+            "निळा क्रांती"
+          ],
+          "solution": "चिप्को चळवळ ही भारतात वनांचे संरक्षण करण्याच्या उद्योगाचे उदाहरण आहे, ज्यामध्ये वन तोडण्यापासून रोखण्यासाठी स्थानिक समुदायांचा सहभाग होता. हिरवा क्रांती शेती उत्पादन वाढवण्यावर केंद्रित होती, काळा क्रांती दुग्ध विकासावर आणि निळा क्रांती मत्स्य उत्पादन सुधारण्यावर.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for the movements.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses Chipko with another movement",
+        "Confuses Chipko with another movement",
+        "Confuses Chipko with another movement"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-constructed, with a clear correct answer and plausible distractors. The author's reasoning aligns with the actual historical context of the movements.",
+      "sources": [
+        {
+          "document": "ncert/11/economics/keec107.pdf",
+          "ordinal": 6,
+          "pageStart": 7,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 7: Environment and Sustainable Development",
+            "USTAINABLE EVELOPMENT"
+          ]
+        },
+        {
+          "document": "ncert/11/economics/keec107.pdf",
+          "ordinal": 7,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 7: Environment and Sustainable Development",
+            "USTAINABLE EVELOPMENT"
+          ]
+        },
+        {
+          "document": "ncert/11/economics/keec107.pdf",
+          "ordinal": 8,
+          "pageStart": 8,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 7: Environment and Sustainable Development",
+            "USTAINABLE EVELOPMENT"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T10:22:30.189Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "A farmer in a region with limited water resources decides to use compost from organic waste as a fertilizer. What is the likely impact of this decision on the environment?",
+      "choices": [
+        "It increases soil pollution",
+        "It reduces the need for chemical fertilizers",
+        "It leads to water contamination",
+        "It decreases biodiversity"
+      ],
+      "answerIndex": 1,
+      "solution": "Using compost from organic waste helps reduce the need for chemical fertilizers, which are often harmful to the environment. Chemical fertilizers can lead to soil degradation and water pollution, so reducing their use is beneficial. The other options, such as increased soil pollution or water contamination, are not directly linked to compost use. Decreased biodiversity is also not a typical outcome of using compost.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक क्षेत्र में सीमित जल संसाधन होने के कारण एक किसान कार्बनिक अपशिष्ट से कम्पोस्ट का उपयोग उर्वरक के रूप में करता है। इस निर्णय का पर्यावरण पर संभावित प्रभाव क्या होगा?",
+          "choices": [
+            "यह मिट्टी के प्रदूषण को बढ़ाता है",
+            "यह रासायनिक उर्वरकों की आवश्यकता को कम करता है",
+            "यह जल प्रदूषण का कारण बनता है",
+            "यह जैव विविधता को कम करता है"
+          ],
+          "solution": "कार्बनिक अपशिष्ट से कम्पोस्ट का उपयोग रासायनिक उर्वरकों की आवश्यकता को कम करने में सहायता करता है, जो आमतौर पर पर्यावरण के लिए हानिकारक होते हैं। रासायनिक उर्वरक मिट्टी के क्षरण और जल प्रदूषण का कारण बन सकते हैं, इसलिए उनके उपयोग को कम करना लाभदायक होता है। अन्य विकल्प, जैसे मिट्टी के प्रदूषण या जल प्रदूषण में वृद्धि, कम्पोस्ट के उपयोग से सीधे संबंधित नहीं हैं। जैव विविधता में कमी के रूप में भी आमतौर पर कम्पोस्ट के उपयोग का कोई परिणाम नहीं होता।",
+          "imageAlt": null,
+          "critique": "Translation accurately reflects the original meaning, technical terms are appropriate for Hindi-medium curriculum, and the correct answer remains option (2).",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका पाणी संसाधनांच्या कमतरतेने ग्रस्त क्षेत्रातील शेतकरी साहित्याच्या अपशिष्टापासून कॉम्पोस्ट वापरून खत म्हणून वापरण्याचा निर्णय घेतो. या निर्णयाचा वातावरणावर काय अपेक्षित परिणाम होईल?",
+          "choices": [
+            "ते जमीनीच्या दूषणाला वाढते",
+            "ते रासायनिक खतांच्या आवश्यकतेला कमी करते",
+            "ते पाण्याच्या दूषणाला वाढते",
+            "ते जैवविविधतेला कमी करते"
+          ],
+          "solution": "अॅपरेंट अपशिष्टापासून कॉम्पोस्ट वापरणे रासायनिक खतांच्या आवश्यकतेला कमी करते, जे वातावरणासाठी त्रासदायक असतात. रासायनिक खतांमुळे जमीनीची निर्मिती आणि पाण्याचे दूषण होऊ शकते, म्हणून त्यांच्या वापराची गरज कमी करणे फायदेशीर असते. इतर विकल्प, जसे की जमीनीचे दूषण वाढणे किंवा पाण्याचे दूषण, कॉम्पोस्ट वापराशी सीधा संबंध नसतो. जैवविविधतेचे कमी होणे देखील कॉम्पोस्ट वापराचा सामान्य परिणाम नसतो.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms. The correct answer remains option (2) and the distractors are still incorrect as in the original.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Assumes compost leads to pollution",
+        null,
+        "Thinks compost causes water contamination",
+        "Believes compost harms biodiversity"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 1, as compost from organic waste reduces the need for chemical fertilizers, which is a well-established environmental benefit. The other options represent common misconceptions about compost.",
+      "sources": [
+        {
+          "document": "ncert/11/economics/keec107.pdf",
+          "ordinal": 15,
+          "pageStart": 14,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 7: Environment and Sustainable Development",
+            "USTAINABLE EVELOPMENT"
+          ]
+        },
+        {
+          "document": "ncert/11/economics/keec107.pdf",
+          "ordinal": 16,
+          "pageStart": 14,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 7: Environment and Sustainable Development",
+            "USTAINABLE EVELOPMENT"
+          ]
+        },
+        {
+          "document": "ncert/11/economics/keec107.pdf",
+          "ordinal": 17,
+          "pageStart": 15,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 7: Environment and Sustainable Development",
+            "USTAINABLE EVELOPMENT"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T10:22:30.189Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "Which of the following best describes the approach needed to address environmental issues in India?",
+      "choices": [
+        "Implementing strict environmental laws without considering local needs",
+        "Ignoring environmental issues until they become critical",
+        "Balancing development and environmental protection",
+        "Prioritizing industrial growth over nature while enforcing strict laws"
+      ],
+      "answerIndex": 2,
+      "solution": "Balancing development and environmental protection is the best approach because it allows for economic progress while preserving natural resources for future generations. Ignoring environmental issues or prioritizing industrial growth without regard for nature can lead to long-term harm. Implementing strict laws without considering local needs may not be effective or fair in addressing complex environmental challenges.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा वातावरणीय समस्याओं के समाधान के लिए आवश्यक दृष्टिकोण को सबसे अच्छा वर्णित करता है?",
+          "choices": [
+            "स्थानीय आवश्यकताओं के बिना कठोर वातावरणीय कानून लागू करना",
+            "जब तक समस्याएं आपातकालीन न हो जाएं, वातावरणीय समस्याओं को अनदेखा करना",
+            "विकास और वातावरणीय संरक्षण के बीच संतुलन बनाए रखना",
+            "प्रकृति के लिए औद्योगिक वृद्धि को प्राथमिकता देना और कठोर कानून लागू करना"
+          ],
+          "solution": "विकास और वातावरणीय संरक्षण के बीच संतुलन बनाए रखना सबसे अच्छा दृष्टिकोण है क्योंकि यह आर्थिक प्रगति की अनुमति देता है जबकि भविष्य के लिए प्राकृतिक संसाधनों की सुरक्षा करता है। वातावरणीय समस्याओं को अनदेखा करना या प्रकृति के बिना औद्योगिक वृद्धि को प्राथमिकता देना लंबे समय तक हानि का कारण बन सकता है। स्थानीय आवश्यकताओं के बिना कठोर कानून लागू करना जटिल वातावरणीय चुनौतियों के समाधान में अक्सर असमान या अकार्यक्षम हो सकता है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains original meaning, and uses appropriate Hindi terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणता वातावरणीय अडचणींवर उपाय करण्याचा पद्धत सर्वात चांगला आहे?",
+          "choices": [
+            "स्थानिक आवश्यकता न पाहता कठोर वातावरणीय कायदे लागू करणे",
+            "अडचणी गंभीर होईपर्यंत वातावरणीय अडचणींना नजरअंदाज करणे",
+            "विकास आणि वातावरणीय संरक्षण यांचे संतुलन करणे",
+            "प्रकृतीच्या तुलनेत औद्योगिक विकासाला प्राधान्य देणे आणि कठोर कायदे लागू करणे"
+          ],
+          "solution": "विकास आणि वातावरणीय संरक्षण यांचे संतुलन करणे हा सर्वात चांगला पद्धत आहे कारण तो आर्थिक प्रगतीसह भविष्यासाठी प्राकृतिक संसाधनांचे संरक्षण करते. वातावरणीय अडचणींना नजरअंदाज करणे किंवा प्रकृतीच्या तुलनेत औद्योगिक विकासाला प्राधान्य देणे लांबलचक नुकसान करू शकते. स्थानिक आवश्यकता न पाहता कठोर कायदे लागू करणे जटिल वातावरणीय अडचणींवर उपाय करण्यासाठी असमर्थ किंवा अन्यायकारक असू शकते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for environmental concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "students may think environmental solutions should be rigid and not adapted to local conditions",
+        "Believing that environmental problems will resolve themselves without proactive measures",
+        null,
+        "Believing that industrial growth and environmental protection can be simultaneously prioritized without trade-offs"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 2, as it aligns with the concept of sustainable development. The reasoning provided by the author is sound and matches the intended understanding of the topic.",
+      "sources": [
+        {
+          "document": "ncert/11/economics/keec107.pdf",
+          "ordinal": 18,
+          "pageStart": 16,
+          "pageEnd": 17,
+          "headingPath": [
+            "Chapter 7: Environment and Sustainable Development",
+            "USTAINABLE EVELOPMENT"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T10:22:30.189Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
     }
   ]
 }

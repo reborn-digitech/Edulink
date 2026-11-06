@@ -937,6 +937,3969 @@
       "generatedAt": "2026-11-01T20:47:58.640Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Why is it important to use water efficiently?",
+      "choices": [
+        "To save money on water bills",
+        "To reduce the amount of water in the atmosphere",
+        "To avoid wastage and ensure availability for future generations",
+        "To make water taste better"
+      ],
+      "answerIndex": 2,
+      "solution": "Using water efficiently is important to avoid wastage and ensure that there is enough water available for future generations. Saving money on water bills is a possible benefit but not the main reason. Reducing the amount of water in the atmosphere is not a realistic or intended goal, and making water taste better has no connection to water efficiency.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "जल के उपयोग को क्यों कुशलता से करना महत्वपूर्ण है?",
+          "choices": [
+            "जल बिल पर पैसा बचाने के लिए",
+            "वातावरण में जल की मात्रा कम करने के लिए",
+            "अपव्यय से बचने और भविष्य की पीढ़ियों के लिए उपलब्धता सुनिश्चित करने के लिए",
+            "जल के स्वाद को बेहतर बनाने के लिए"
+          ],
+          "solution": "जल के उपयोग को कुशलता से करना अपव्यय से बचने और भविष्य की पीढ़ियों के लिए जल की उपलब्धता सुनिश्चित करने के लिए महत्वपूर्ण है। जल बिल पर पैसा बचाना एक संभावित लाभ है लेकिन मुख्य कारण नहीं है। वातावरण में जल की मात्रा कम करना एक वास्तविक या इच्छित लक्ष्य नहीं है, और जल के स्वाद को बेहतर बनाना जल की कुशलता से कोई संबंध नहीं रखता।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology consistent with educational materials.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "पाणी वापरणे व्यवस्थित का महत्वाचे आहे?",
+          "choices": [
+            "पाणी बिलावर खर्च वाचवण्यासाठी",
+            "हवेतील पाण्याच्या प्रमाणात कमी करण्यासाठी",
+            "वायु वापराची बचत करून भविष्यातील पिढ्यांसाठी पाणी उपलब्ध ठेवण्यासाठी",
+            "पाणी चांगले वाटू देण्यासाठी"
+          ],
+          "solution": "पाणी व्यवस्थित वापरणे वायु वापराची बचत करून भविष्यातील पिढ्यांसाठी पाणी उपलब्ध ठेवण्यासाठी महत्वाचे आहे. पाणी बिलावर खर्च वाचवणे हे एक शक्य फायदा आहे परंतु मुख्य कारण नाही. हवेतील पाण्याच्या प्रमाणात कमी करणे एक वास्तविक आणि इच्छित उद्देश नाही आणि पाणी चांगले वाटू देणे पाणी व्यवस्थित वापराशी काही संबंध नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for technical concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Thinks water conservation is about cost",
+        "Misunderstands the purpose of water conservation",
+        null,
+        "Believes water taste is a key factor in its use"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is clearly supported by the passage, which emphasizes water's scarcity and the need for responsible use. The other options reflect common misconceptions about water conservation.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu111.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 11: Nature’s Treasures"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu111.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 11: Nature’s Treasures",
+            "11.1 Air"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu111.pdf",
+          "ordinal": 2,
+          "pageStart": 3,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 11: Nature’s Treasures",
+            "11.1 Air"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu111.pdf",
+          "ordinal": 3,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 11: Nature’s Treasures",
+            "11.2 Water"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-31T09:51:04.011Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If a windmill is used to generate electricity, what is the primary source of energy?",
+      "choices": [
+        "Sunlight",
+        "Water",
+        "Wind",
+        "Fossil fuels"
+      ],
+      "answerIndex": 2,
+      "solution": "The primary source of energy for a windmill generating electricity is wind, as the wind causes the blades to rotate, which then powers the generator. Sunlight is used in solar panels, water in hydroelectric dams, and fossil fuels in traditional power plants, none of which are directly related to windmills.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि वायु चक्की का उपयोग बिजली उत्पन्न करने के लिए किया जाता है, तो ऊर्जा का प्राथमिक स्रोत क्या है?",
+          "choices": [
+            "सूर्य का प्रकाश",
+            "पानी",
+            "हवा",
+            "जीवाश्म ईंधन"
+          ],
+          "solution": "वायु चक्की द्वारा बिजली उत्पन्न करने के लिए ऊर्जा का प्राथमिक स्रोत हवा है, क्योंकि हवा पंखे को घूमने देती है, जो बिजली जनित्र को चलाती है। सूर्य का प्रकाश सौर पैनल में उपयोग किया जाता है, पानी जल विद्युत बांध में उपयोग किया जाता है, और जीवाश्म ईंधन पारंपरिक बिजली गृह में उपयोग किया जाता है, जो वायु चक्की से सीधे संबंधित नहीं है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate technical terms as found in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर विंडमिल विद्युत उत्पादनासाठी वापरला जात असेल, तर ऊर्जेचा प्राथमिक स्रोत काय असतो?",
+          "choices": [
+            "सूर्याचे प्रकाश",
+            "पाणी",
+            "हवा",
+            "ज्वलनीय इंधन"
+          ],
+          "solution": "विंडमिल विद्युत उत्पादनासाठी वापरल्यास ऊर्जेचा प्राथमिक स्रोत हवा असतो, कारण हवा पालांगणांना फिरवते, जे जनित्राला चालवते. सूर्याचा प्रकाश सौर पॅनलमध्ये वापरला जातो, पाणी जलविद्युत बांधांमध्ये वापरले जाते आणि ज्वलनीय इंधन विद्युत केंद्रांमध्ये वापरले जाते, जे विंडमिलशी सीधा संबंधित नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for energy sources.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses windmills with solar panels",
+        "Thinks water is the main energy source",
+        null,
+        "Misunderstands the function of windmills"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-constructed and the solution correctly identifies wind as the primary energy source for windmills. The distractors reflect common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu111.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 11: Nature’s Treasures"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu111.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 11: Nature’s Treasures",
+            "11.1 Air"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu111.pdf",
+          "ordinal": 2,
+          "pageStart": 3,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 11: Nature’s Treasures",
+            "11.1 Air"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu111.pdf",
+          "ordinal": 3,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 11: Nature’s Treasures",
+            "11.2 Water"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-31T09:51:04.011Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If a village uses a lot of firewood for cooking, what might happen to the surrounding forests over time?",
+      "choices": [
+        "They will grow faster",
+        "They will remain the same",
+        "They will be depleted",
+        "They will become more diverse"
+      ],
+      "answerIndex": 2,
+      "solution": "Using a lot of firewood can lead to the depletion of forests as trees are cut down faster than they can regrow. This is a direct application of the concept of renewable resources and their sustainable use.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक गाँव खाना पकाने के लिए बहुत अधिक लकड़ी जलाता है, तो समय के साथ आसपास के वन क्या हो सकते हैं?",
+          "choices": [
+            "वे तेजी से बढ़ेंगे",
+            "वे वैसे ही रहेंगे",
+            "वे खत्म हो जाएँगे",
+            "वे अधिक विविध हो जाएँगे"
+          ],
+          "solution": "बहुत अधिक लकड़ी जलाने से वनों के विनाश का कारण बन सकता है क्योंकि पेड़ उतनी तेजी से नहीं बढ़ते जितनी तेजी से उन्हें काटा जाता है। यह नवीकरणीय संसाधनों और उनके स्थायी उपयोग की अवधारणा के सीधे अनुप्रयोग है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology commonly found in textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका गावात रांगोळीसाठी जास्त लाकडे वापरल्यास वेळेसह आजूबाजूच्या जंगलांवर काय परिणाम होऊ शकतो?",
+          "choices": [
+            "ते जास्त वेगाने वाढतील",
+            "ते त्याच रूपात राहतील",
+            "ते कमी होतील",
+            "ते अधिक विविध होतील"
+          ],
+          "solution": "जास्त लाकडे वापरल्यामुळे जंगलांचा निर्माण होण्यापेक्षा जास्त नुकसान होऊ शकतो. हे पुनरुत्पादन शक्यता असलेल्या संसाधनांच्या स्थायी वापराच्या अवलंबनाच्या सीधा अनुप्रयोग आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for environmental concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Believes that resource use does not affect the environment",
+        "Believes that resource use does not affect the environment",
+        null,
+        "Believes that resource use does not affect the environment"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly identifies that overuse of firewood leads to forest depletion. The reasoning aligns with the concept of sustainable resource use. All distractors are incorrectly explained as stemming from the same misconception, which is reasonable for a class at this level.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu111.pdf",
+          "ordinal": 12,
+          "pageStart": 17,
+          "pageEnd": 18,
+          "headingPath": [
+            "Chapter 11: Nature’s Treasures",
+            "11.7 Natural Resources: Renewable and Non-renewable"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu111.pdf",
+          "ordinal": 13,
+          "pageStart": 18,
+          "pageEnd": 19,
+          "headingPath": [
+            "Chapter 11: Nature’s Treasures",
+            "11.8 Resources We use"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu111.pdf",
+          "ordinal": 14,
+          "pageStart": 19,
+          "pageEnd": 20,
+          "headingPath": [
+            "Chapter 11: Nature’s Treasures",
+            "11.8 Resources We use",
+            "Summary"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu111.pdf",
+          "ordinal": 15,
+          "pageStart": 21,
+          "pageEnd": 22,
+          "headingPath": [
+            "Chapter 11: Nature’s Treasures",
+            "11.8 Resources We use",
+            "Let us enhance our learning"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-31T09:51:04.011Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If there is no sunlight for a week, what will happen to the solar panels?",
+      "choices": [
+        "They will work better",
+        "They will stop working",
+        "They will produce more energy",
+        "They will start using stored battery energy"
+      ],
+      "answerIndex": 1,
+      "solution": "Solar panels convert sunlight into electricity. Without sunlight, they cannot generate power and will stop working. The other options are incorrect because solar panels do not produce more energy without sunlight, nor do they automatically use stored battery energy in this scenario.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "अगर एक सप्ताह तक सूर्य का प्रकाश नहीं होता है तो सौर पैनल क्या होगा?",
+          "choices": [
+            "वे बेहतर काम करेंगे",
+            "वे काम बंद कर देंगे",
+            "वे अधिक ऊर्जा उत्पन्न करेंगे",
+            "वे संग्रहीत बैटरी ऊर्जा का उपयोग करना शुरू कर देंगे"
+          ],
+          "solution": "सौर पैनल सूर्य के प्रकाश को बिजली में बदलते हैं। सूर्य के प्रकाश के बिना, वे शक्ति उत्पन्न नहीं कर सकते हैं और काम बंद कर देंगे। अन्य विकल्प गलत हैं क्योंकि सूर्य के प्रकाश के बिना सौर पैनल अधिक ऊर्जा उत्पन्न नहीं करते हैं, और इस परिस्थिति में वे स्वचालित रूप से संग्रहीत बैटरी ऊर्जा का उपयोग नहीं करते हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate technical terms as found in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर एक आठवडा सूर्यप्रकाश नसेल तर सौर पॅनल्सवर काय परिणाम होईल?",
+          "choices": [
+            "ते चांगले काम करतील",
+            "ते थांबून जातील",
+            "ते अधिक ऊर्जा तयार करतील",
+            "ते जमा केलेल्या बॅटरी ऊर्जेचा वापर सुरू करतील"
+          ],
+          "solution": "सौर पॅनल्स सूर्यप्रकाशाला विद्युत रूपात बदलतात. सूर्यप्रकाश नसल्यास ते शक्ती तयार करू शकत नाहीत आणि थांबून जातात. इतर विकल्प चुकीचे आहेत कारण सूर्यप्रकाश नसल्यास सौर पॅनल्स अधिक ऊर्जा तयार करत नाहीत, आणि या परिस्थितीत ते जमा केलेल्या बॅटरी ऊर्जेचा स्वतःच वापर करत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi technical terms used for solar panels and battery energy.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Thinks solar panels work without sunlight",
+        null,
+        "Believes solar panels produce more energy in dark",
+        "students think solar panels can use stored energy without a separate battery system"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-constructed, with a clear correct answer and plausible distractors based on common misconceptions about solar panels.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu111.pdf",
+          "ordinal": 16,
+          "pageStart": 23,
+          "pageEnd": 24,
+          "headingPath": [
+            "Chapter 11: Nature’s Treasures",
+            "11.8 Resources We use",
+            "Learning further"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-31T09:51:04.011Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "In a natural reserve park, which of the following would most likely be a producer in the food chain?",
+      "choices": [
+        "Snake",
+        "Grass",
+        "Fox",
+        "Bird"
+      ],
+      "answerIndex": 1,
+      "solution": "Grass is a producer because it makes its own food through photosynthesis. Snakes, foxes, and birds are consumers as they rely on other organisms for energy. Producers form the base of the food chain by converting sunlight into usable energy.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक प्राकृतिक अभयारण्य में, निम्नलिखित में से कौन खाद्य श्रृंखला में उत्पादक होने की संभावना सबसे अधिक होगी?",
+          "choices": [
+            "सांप",
+            "घास",
+            "लोमड़ी",
+            "पक्षी"
+          ],
+          "solution": "घास उत्पादक होती है क्योंकि यह प्रकाश संश्लेषण द्वारा अपना खाना बनाती है। सांप, लोमड़ी और पक्षी उपभोक्ता होते हैं क्योंकि वे अन्य जीवों पर ऊर्जा के लिए निर्भर रहते हैं। उत्पादक खाद्य श्रृंखला के आधार बनते हैं क्योंकि वे सूर्य के प्रकाश को उपयोगी ऊर्जा में बदलते हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology for ecological concepts.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका प्राकृतिक अभयारण्यात, खालीलपैकी कोणता खाद्य पाकळीत उत्पादक असेल?",
+          "choices": [
+            "साप",
+            "लालगार",
+            "लोबो",
+            "पक्षी"
+          ],
+          "solution": "लालगार उत्पादक आहे कारण ते स्वतः फोटोसिंथेसिसमधून आपले खाद्य तयार करते. साप, लोबो आणि पक्षी उपभोक्ते आहेत कारण ते इतर जीवांवर अवलंबून असतात. उत्पादक खाद्य पाकळीच्या तळाशी असतात जे सूर्याच्या प्रकाशाला उपयोगी ऊर्जेमध्ये बदलतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for ecological concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Thinks a snake is a producer",
+        null,
+        "Confuses consumers with producers",
+        "Believes a bird can produce its own food"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies grass as a producer because it is a plant capable of photosynthesis. The reasoning for the distractors aligns with common misconceptions about producers and consumers.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu111.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 11: Nature’s Treasures"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu111.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 11: Nature’s Treasures",
+            "11.1 Air"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu111.pdf",
+          "ordinal": 2,
+          "pageStart": 3,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 11: Nature’s Treasures",
+            "11.1 Air"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu111.pdf",
+          "ordinal": 3,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 11: Nature’s Treasures",
+            "11.2 Water"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-31T09:51:04.011Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "A student listed the following resources used in their daily life: water, air, petrol, and electricity. Which of these is a non-renewable resource?",
+      "choices": [
+        "Water",
+        "Air",
+        "Petrol",
+        "Electricity"
+      ],
+      "answerIndex": 2,
+      "solution": "Petrol is a non-renewable resource as it is a fossil fuel that takes millions of years to form. Water and air are renewable, and electricity can be generated from renewable or non-renewable sources.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक छात्र ने अपने दैनिक जीवन में उपयोग किए गए संसाधनों की सूची बनाई: पानी, हवा, पेट्रोल और बिजली। इनमें से कौन-सा अक्षय संसाधन है?",
+          "choices": [
+            "पानी",
+            "हवा",
+            "पेट्रोल",
+            "बिजली"
+          ],
+          "solution": "पेट्रोल एक अक्षय संसाधन है क्योंकि यह जीवाश्म ईंधन है जिसे बनाने में लाखों साल लगते हैं। पानी और हवा नवीकरणीय हैं, और बिजली को नवीकरणीय या अक्षय स्रोतों से उत्पन्न किया जा सकता है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology for environmental science concepts.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका विद्यार्थ्याने आपल्या दैनिक जीवनात वापरलेल्या संसाधनांची खालील यादी तयार केली: पाणी, हवा, पेट्रोल आणि विद्युत. यापैकी कोणते संसाधन अक्षय नाही?",
+          "choices": [
+            "पाणी",
+            "हवा",
+            "पेट्रोल",
+            "विद्युत"
+          ],
+          "solution": "पेट्रोल हे अक्षय नसलेले संसाधन आहे कारण ते जीवाश्म इंधन आहे ज्याला लाखो वर्षे लागतात. पाणी आणि हवा यांना पुनर्प्राप्त केले जाऊ शकते, आणि विद्युत अक्षय किंवा अक्षय स्रोतांपासून तयार केली जाऊ शकते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for environmental science concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses non-renewable resources with renewable ones",
+        "Confuses non-renewable resources with renewable ones",
+        null,
+        "Confuses non-renewable resources with renewable ones"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies petrol as a non-renewable resource. The reasoning for the other options is valid, as water and air are renewable, and electricity is a form of energy that can come from either renewable or non-renewable sources.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu111.pdf",
+          "ordinal": 12,
+          "pageStart": 17,
+          "pageEnd": 18,
+          "headingPath": [
+            "Chapter 11: Nature’s Treasures",
+            "11.7 Natural Resources: Renewable and Non-renewable"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu111.pdf",
+          "ordinal": 13,
+          "pageStart": 18,
+          "pageEnd": 19,
+          "headingPath": [
+            "Chapter 11: Nature’s Treasures",
+            "11.8 Resources We use"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu111.pdf",
+          "ordinal": 14,
+          "pageStart": 19,
+          "pageEnd": 20,
+          "headingPath": [
+            "Chapter 11: Nature’s Treasures",
+            "11.8 Resources We use",
+            "Summary"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu111.pdf",
+          "ordinal": 15,
+          "pageStart": 21,
+          "pageEnd": 22,
+          "headingPath": [
+            "Chapter 11: Nature’s Treasures",
+            "11.8 Resources We use",
+            "Let us enhance our learning"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-31T09:51:04.011Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "A farmer uses a lot of fertilizers and pesticides to increase crop yield. What effect might this have on the natural resources of the area?",
+      "choices": [
+        "It will increase the fertility of the soil",
+        "It will decrease the fertility of the soil",
+        "It will make the water cleaner",
+        "It will make the air more polluted"
+      ],
+      "answerIndex": 1,
+      "solution": "Using excessive fertilizers and pesticides can harm the soil by reducing its fertility over time. This is an application of understanding how human activities can affect natural resources.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक किसान फसल के उत्पादन को बढ़ाने के लिए बहुत सारे उर्वरक और कीटनाशक उपयोग करता है। इसका क्षेत्र के प्राकृतिक संसाधनों पर क्या प्रभाव पड़ सकता है?",
+          "choices": [
+            "यह मिट्टी की उर्वरता बढ़ाएगा",
+            "यह मिट्टी की उर्वरता घटाएगा",
+            "यह पानी साफ कर देगा",
+            "यह हवा को अधिक प्रदूषित कर देगा"
+          ],
+          "solution": "अत्यधिक उर्वरक और कीटनाशक का उपयोग मिट्टी को घातक नुकसान पहुंचा सकता है और लंबे समय में इसकी उर्वरता कम कर सकता है। यह मानव गतिविधियों के प्राकृतिक संसाधनों पर प्रभाव के बोध के एक अनुप्रयोग है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains original meaning, and uses standard Hindi terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका शेतकऱ्याने फळबागांच्या उत्पादनाच्या वाढीसाठी जास्त खते आणि कीटकनाशक वापरले. यामुळे त्या भागाच्या प्राकृतिक संसाधनांवर काय परिणाम होऊ शकतो?",
+          "choices": [
+            "ते जमीनची उपज वाढविणार",
+            "ते जमीनची उपज कमी करणार",
+            "ते पाणी स्वच्छ करणार",
+            "ते हवा अधिक दूषित करणार"
+          ],
+          "solution": "अतिरिक्त खते आणि कीटकनाशक वापरणे जमीनला ताबडतोब नुकसान करू शकते आणि त्यामुळे जमीनची उपज कमी होऊ शकते. हे मानवी कृतींच्या प्राकृतिक संसाधनांवर होणार्या परिणामांच्या समजीकरणाच्या अनुप्रयोगाचे उदाहरण आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for environmental science concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Believes that resource use always improves the environment",
+        null,
+        "Believes that resource use always improves the environment",
+        "Believes that resource use always improves the environment"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 1, as excessive use of fertilizers and pesticides can degrade soil fertility. The author's reasoning for the wrong options is consistent with a misconception that resource use always improves the environment, which is a plausible student error.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu111.pdf",
+          "ordinal": 12,
+          "pageStart": 17,
+          "pageEnd": 18,
+          "headingPath": [
+            "Chapter 11: Nature’s Treasures",
+            "11.7 Natural Resources: Renewable and Non-renewable"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu111.pdf",
+          "ordinal": 13,
+          "pageStart": 18,
+          "pageEnd": 19,
+          "headingPath": [
+            "Chapter 11: Nature’s Treasures",
+            "11.8 Resources We use"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu111.pdf",
+          "ordinal": 14,
+          "pageStart": 19,
+          "pageEnd": 20,
+          "headingPath": [
+            "Chapter 11: Nature’s Treasures",
+            "11.8 Resources We use",
+            "Summary"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu111.pdf",
+          "ordinal": 15,
+          "pageStart": 21,
+          "pageEnd": 22,
+          "headingPath": [
+            "Chapter 11: Nature’s Treasures",
+            "11.8 Resources We use",
+            "Let us enhance our learning"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-31T09:51:04.011Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "A student is asked to identify which of the following is a renewable resource. The options are: coal, petroleum, natural gas, and solar energy. Which is the correct answer?",
+      "choices": [
+        "coal",
+        "petroleum",
+        "natural gas",
+        "solar energy"
+      ],
+      "answerIndex": 3,
+      "solution": "Solar energy is a renewable resource because it comes from the sun, which is a continuous and inexhaustible source. Coal, petroleum, and natural gas are non-renewable resources because they are formed over millions of years and cannot be replenished quickly.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक छात्र को निम्नलिखित में से कौन-सा एक पुनः पूर्तियोग्य संसाधन है, इसकी पहचान करने के लिए कहा गया है। विकल्प हैं: कोयला, पेट्रोलियम, प्राकृतिक गैस और सौर ऊर्जा। सही उत्तर कौन-सा है?",
+          "choices": [
+            "कोयला",
+            "पेट्रोलियम",
+            "प्राकृतिक गैस",
+            "सौर ऊर्जा"
+          ],
+          "solution": "सौर ऊर्जा एक पुनः पूर्तियोग्य संसाधन है क्योंकि यह सूर्य से आती है, जो एक लगातार और अक्षीण स्रोत है। कोयला, पेट्रोलियम और प्राकृतिक गैस अपुनः पूर्तियोग्य संसाधन हैं क्योंकि ये मिलियन वर्षों में बनते हैं और तेजी से पूरा नहीं हो सकते।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriately used in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका विद्यार्थ्याला खालीलपैकी कोणते एक पुनर्वार्य वनस्पती आहे याची ओळख करून दिली जाते. विकल्प आहेत: कोळसा, पेट्रोलियम, प्राकृतिक वायू, आणि सौर ऊर्जा. योग्य उत्तर कोणते आहे?",
+          "choices": [
+            "कोळसा",
+            "पेट्रोलियम",
+            "प्राकृतिक वायू",
+            "सौर ऊर्जा"
+          ],
+          "solution": "सौर ऊर्जा ही पुनर्वार्य वनस्पती आहे कारण ती सूर्यापासून येते, जो एक अतुट आणि अक्षय स्रोत आहे. कोळसा, पेट्रोलियम आणि प्राकृतिक वायू ही अपुनर्वार्य वनस्पती आहेत कारण त्यांचे निर्माण मिलियन वर्षांत होते आणि त्यांना त्वरित पुनर्भर करता येत नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for scientific concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "confuses non-renewable resources with renewable ones",
+        "confuses non-renewable resources with renewable ones",
+        "confuses non-renewable resources with renewable ones",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is well-constructed, with a clear correct answer and plausible distractors. The reasoning provided by the author is accurate and aligns with scientific understanding.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu111.pdf",
+          "ordinal": 16,
+          "pageStart": 23,
+          "pageEnd": 24,
+          "headingPath": [
+            "Chapter 11: Nature’s Treasures",
+            "11.8 Resources We use",
+            "Learning further"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-31T09:51:04.011Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is the name given to resources that are created by human beings?",
+      "choices": [
+        "Renewable resources",
+        "Natural resources",
+        "Non-renewable resources",
+        "Human-made resources"
+      ],
+      "answerIndex": 3,
+      "solution": "Human-made resources are the name given to resources created by human beings. Renewable resources are those that can be replenished naturally, natural resources are found in nature without human intervention, and non-renewable resources are those that cannot be easily replaced once used.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "मनुष्य द्वारा बनाए गए संसाधनों के लिए क्या नाम दिया जाता है?",
+          "choices": [
+            "नवीकरणीय संसाधन",
+            "प्राकृतिक संसाधन",
+            "अनवीकरणीय संसाधन",
+            "मानव द्वारा बनाए संसाधन"
+          ],
+          "solution": "मानव द्वारा बनाए संसाधन मनुष्य द्वारा बनाए गए संसाधनों के लिए नाम है। नवीकरणीय संसाधन वे होते हैं जो प्राकृतिक रूप से बहाल हो जाते हैं, प्राकृतिक संसाधन प्राकृतिक रूप से पाए जाते हैं जिनमें मनुष्य के हस्तक्षेप की आवश्यकता नहीं होती और अनवीकरणीय संसाधन वे होते हैं जिन्हें उपयोग के बाद आसानी से बदला नहीं जा सकता।",
+          "imageAlt": null,
+          "critique": "The translation is accurate and uses standard Hindi terminology from Indian textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "माणसांद्वारे तयार केलेल्या संसाधनांचे नाव काय आहे?",
+          "choices": [
+            "नवीकरणीय संसाधने",
+            "प्राकृतिक संसाधने",
+            "अनवीकरणीय संसाधने",
+            "माणसांद्वारे तयार केलेली संसाधने"
+          ],
+          "solution": "माणसांद्वारे तयार केलेली संसाधने ही माणसांद्वारे तयार केलेल्या संसाधनांचे नाव आहे. नवीकरणीय संसाधने ही अशी संसाधने आहेत ज्या प्राकृतिकरित्या पुन्हा भरून निघतात, प्राकृतिक संसाधने ही अशी संसाधने आहेत ज्या माणसांच्या हस्तक्षेपाशिवाय प्राकृतिकरित्या आढळतात आणि अनवीकरणीय संसाधने ही अशी संसाधने आहेत ज्या वापरल्यानंतर सहजपणे बदलता येत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology consistent with standard educational materials.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses human-made resources with renewable resources",
+        "Confuses human-made resources with natural resources",
+        "Confuses human-made resources with non-renewable resources",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is clearly stated in the passage as 'human-made resources.' The other options are common misconceptions where students confuse human-made resources with naturally occurring ones or those that are renewable or non-renewable.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu111.pdf",
+          "ordinal": 12,
+          "pageStart": 17,
+          "pageEnd": 18,
+          "headingPath": [
+            "Chapter 11: Nature’s Treasures",
+            "11.7 Natural Resources: Renewable and Non-renewable"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu111.pdf",
+          "ordinal": 13,
+          "pageStart": 18,
+          "pageEnd": 19,
+          "headingPath": [
+            "Chapter 11: Nature’s Treasures",
+            "11.8 Resources We use"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu111.pdf",
+          "ordinal": 14,
+          "pageStart": 19,
+          "pageEnd": 20,
+          "headingPath": [
+            "Chapter 11: Nature’s Treasures",
+            "11.8 Resources We use",
+            "Summary"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu111.pdf",
+          "ordinal": 15,
+          "pageStart": 21,
+          "pageEnd": 22,
+          "headingPath": [
+            "Chapter 11: Nature’s Treasures",
+            "11.8 Resources We use",
+            "Let us enhance our learning"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T13:20:17.737Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "Which method is used to store rainwater for later use?",
+      "choices": [
+        "Water recycling",
+        "Water harvesting",
+        "Water pollution",
+        "Water conservation"
+      ],
+      "answerIndex": 1,
+      "solution": "Water harvesting is the method used to collect and store rainwater for later use. Water recycling involves reusing water, water pollution refers to the contamination of water sources, and water conservation focuses on reducing water usage. Therefore, the correct answer is water harvesting.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "कौन सी विधि बाद में उपयोग के लिए बरसात के पानी के भंडारण के लिए उपयोग की जाती है?",
+          "choices": [
+            "पानी के पुनर्चक्रण",
+            "पानी के संग्रहण",
+            "पानी के प्रदूषण",
+            "पानी के संरक्षण"
+          ],
+          "solution": "पानी के संग्रहण बाद में उपयोग के लिए बरसात के पानी के भंडारण के लिए उपयोग की जाने वाली विधि है। पानी के पुनर्चक्रण में पानी के पुनर्उपयोग का अर्थ है, पानी के प्रदूषण का अर्थ पानी के स्रोतों के प्रदूषण का अर्थ है, और पानी के संरक्षण के बारे में कम पानी के उपयोग पर ध्यान केंद्रित करता है। इसलिए, सही उत्तर पानी के संग्रहण है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. All options are correctly translated, and the correct answer remains option (2). The distractors remain incorrect as in the original.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "पाऊस पाणी भविष्यात वापरण्यासाठी जमा करण्यासाठी कोणता पद्धत वापरला जातो?",
+          "choices": [
+            "पाणी पुनर्वापर",
+            "पाणी एकत्रित करणे",
+            "पाणी दूषण",
+            "पाणी संवर्धन"
+          ],
+          "solution": "पाणी एकत्रित करणे ही पाऊस पाणी एकत्रित करण्यासाठी आणि भविष्यात वापरण्यासाठी वापरली जाणारी पद्धत आहे. पाणी पुनर्वापर हा पाणी पुन्हा वापरण्याचा अर्थ आहे, पाणी दूषण हा पाणी स्रोतांच्या दूषित होण्याचा अर्थ आहे आणि पाणी संवर्धन हा पाणी वापर कमी करण्यावर लक्ष केंद्रित करते. त्यामुळे योग्य उत्तर पाणी एकत्रित करणे आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms. The solution correctly identifies option (2) as the correct answer, and the distractors remain incorrect in Marathi.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses water recycling with water harvesting",
+        null,
+        "Confuses water pollution with the method of storing water",
+        "Confuses water conservation with the specific method of storing rainwater"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly identifies 'water harvesting' as the method of storing rainwater, and the reasons for the other options are valid misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu111.pdf",
+          "ordinal": 4,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 11: Nature’s Treasures",
+            "11.2 Water",
+            "Activity 11.3: Let us find out"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu111.pdf",
+          "ordinal": 5,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 11: Nature’s Treasures",
+            "11.2 Water",
+            "Activity 11.3: Let us find out"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu111.pdf",
+          "ordinal": 6,
+          "pageStart": 8,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 11: Nature’s Treasures",
+            "11.3 Energy from the Sun"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu111.pdf",
+          "ordinal": 7,
+          "pageStart": 10,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 11: Nature’s Treasures",
+            "11.4 Forests"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T13:20:17.737Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is the purpose of digging and loosening the soil before planting vegetables?",
+      "choices": [
+        "To increase the number of earthworms in the soil",
+        "To allow roots to grow easily and provide air to the plants",
+        "To remove all the nutrients from the soil",
+        "To prevent the soil from getting wet"
+      ],
+      "answerIndex": 1,
+      "solution": "The purpose of digging and loosening the soil is to allow roots to grow easily and provide air to the plants. This is because the space between soil particles is essential for plant growth. The other options are incorrect because earthworms are natural agents that help in turning the soil, not something to be removed, and soil being wet is not the main purpose of digging.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "बैली लगाने से पहले मिट्टी के खोदने और ढीला करने का उद्देश्य क्या है?",
+          "choices": [
+            "मिट्टी में केंचुए की संख्या बढ़ाना",
+            "जड़ों के सुगम रूप से बढ़ने और पौधों के लिए हवा प्रदान करना",
+            "मिट्टी से सभी पोषक तत्वों को हटाना",
+            "मिट्टी के गीला होने से रोकना"
+          ],
+          "solution": "मिट्टी के खोदने और ढीला करने का उद्देश्य जड़ों के सुगम रूप से बढ़ने और पौधों के लिए हवा प्रदान करना है। यह इसलिए है क्योंकि मिट्टी के कणों के बीच की जगह पौधों के विकास के लिए आवश्यक है। अन्य विकल्प गलत हैं क्योंकि केंचुए प्राकृतिक एजेंट हैं जो मिट्टी के घुमाव में सहायता करते हैं, न कि कम करने के लिए, और मिट्टी के गीला होना खोदने के मुख्य उद्देश्य नहीं है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains original meaning, and uses appropriate Hindi agricultural terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "शाळेत भाजीपाला लावण्यापूर्वी जमीन खोदणे आणि ढवळण्याचा उद्देश काय असतो?",
+          "choices": [
+            "जमीनमध्ये खोकल्यांची संख्या वाढवणे",
+            "मूळे सहज वाढू देणे आणि वनस्पतींना हवा देणे",
+            "जमीनमधून सर्व पोषक घटक दूर करणे",
+            "जमीन ओली होऊ देणे टाळणे"
+          ],
+          "solution": "जमीन खोदणे आणि ढवळण्याचा उद्देश मूळे सहज वाढू देणे आणि वनस्पतींना हवा देणे असतो. हे त्यामुळे आहे कारण जमीन खांद्यांमधील जागा वनस्पतींच्या वाढीसाठी आवश्यक असते. इतर विकल्प अयोग्य असतात कारण खोकळे जमीन खोदण्याच्या नैसर्गिक साधनांपैकी एक असतात, जे दूर करायचे नसतात, आणि जमीन ओली होणे हा खोदण्याचा मुख्य उद्देश नसतो.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for agricultural concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the role of earthworms with the purpose of digging",
+        null,
+        "Misunderstands the function of soil",
+        "Does not understand the importance of air in soil for plant growth"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly identifies the purpose of loosening soil and explains why the other options are incorrect. The misconceptions listed for the wrong options are plausible for students at this level.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu111.pdf",
+          "ordinal": 8,
+          "pageStart": 11,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 11: Nature’s Treasures",
+            "11.4 Forests"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu111.pdf",
+          "ordinal": 9,
+          "pageStart": 12,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 11: Nature’s Treasures",
+            "11.5 Soil, Rocks and Minerals"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu111.pdf",
+          "ordinal": 10,
+          "pageStart": 13,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 11: Nature’s Treasures",
+            "11.5 Soil, Rocks and Minerals"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu111.pdf",
+          "ordinal": 11,
+          "pageStart": 15,
+          "pageEnd": 17,
+          "headingPath": [
+            "Chapter 11: Nature’s Treasures",
+            "11.6 Fossil Fuels"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T13:20:17.737Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which gas makes up the largest percentage of the air we breathe?",
+      "choices": [
+        "Nitrogen",
+        "Oxygen",
+        "Argon",
+        "Carbon dioxide"
+      ],
+      "answerIndex": 0,
+      "solution": "Nitrogen is the most abundant gas in the atmosphere, making up about 78% of the air. Oxygen is next at about 21%, while argon and carbon dioxide are present in much smaller amounts. Since nitrogen is the largest component, it is the correct answer.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "हम जो हवा सांस लेते हैं, उसमें सबसे बड़ा भाग कौन सी गैस बनाती है?",
+          "choices": [
+            "नाइट्रोजन",
+            "ऑक्सीजन",
+            "आर्गॉन",
+            "कार्बन डाइऑक्साइड"
+          ],
+          "solution": "वातावरण में सबसे अधिक मात्रा में नाइट्रोजन होती है, जो लगभग 78% होती है। ऑक्सीजन अगले स्थान पर लगभग 21% होती है, जबकि आर्गॉन और कार्बन डाइऑक्साइड कम मात्रा में मौजूद होती हैं। चूंकि नाइट्रोजन सबसे बड़ा घटक है, इसलिए यह सही उत्तर है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard scientific terms as found in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "आम्ही श्वास घेतलेल्या हवेच्या शेवटी सर्वात मोठ्या प्रमाणात कोणता वायू असतो?",
+          "choices": [
+            "नायट्रोजन",
+            "ऑक्सिजन",
+            "आर्गॉन",
+            "कार्बन डायऑक्साइड"
+          ],
+          "solution": "नायट्रोजन हवामानातील सर्वात जास्त प्रमाणात असलेला वायू आहे, जो जवळपास 78% असतो. ऑक्सिजन नंतर 21% असतो, तर आर्गॉन आणि कार्बन डायऑक्साइड खूप कमी प्रमाणात असतात. नायट्रोजन सर्वात मोठा घटक असल्याने, तो योग्य उत्तर आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses nitrogen with oxygen",
+        "Thinks oxygen is the most abundant gas",
+        "Mistakenly believes argon is the most abundant gas in air and forgets that it is only a small part of the air's composition"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The solution is accurate and correctly identifies nitrogen as the most abundant gas in the atmosphere, based on the percentages provided. The reasoning for the incorrect options aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu111.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 11: Nature’s Treasures"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu111.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 11: Nature’s Treasures",
+            "11.1 Air"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu111.pdf",
+          "ordinal": 2,
+          "pageStart": 3,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 11: Nature’s Treasures",
+            "11.1 Air"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu111.pdf",
+          "ordinal": 3,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 11: Nature’s Treasures",
+            "11.2 Water"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T13:20:17.737Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If a windmill farm is built in an area with no wind, what would happen?",
+      "choices": [
+        "It would generate more electricity",
+        "It would not rotate",
+        "It would damage the environment",
+        "It would use more water"
+      ],
+      "answerIndex": 1,
+      "solution": "Windmills require wind to rotate, so if there is no wind, they would not work. The other options are incorrect because windmills do not generate more electricity without wind, do not damage the environment in this scenario, and do not use water.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि किसी क्षेत्र में बिना हवा के एक हवाई चक्की के कारखाना बनाया जाए, तो क्या होगा?",
+          "choices": [
+            "यह अधिक बिजली उत्पन्न करेगा",
+            "यह घूमेगी नहीं",
+            "यह पर्यावरण को नुकसान पहुंचाएगा",
+            "यह अधिक पानी का उपयोग करेगा"
+          ],
+          "solution": "हवाई चक्की के घूमने के लिए हवा की आवश्यकता होती है, इसलिए यदि कोई हवा नहीं है, तो वे काम नहीं करेंगे। अन्य विकल्प गलत हैं क्योंकि हवा के बिना हवाई चक्की अधिक बिजली उत्पन्न नहीं करती हैं, इस स्थिति में पर्यावरण को नुकसान नहीं पहुंचाती हैं और पानी का उपयोग नहीं करती हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi technical terms like 'हवाई चक्की' for 'windmill'.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका वाताडे फार्म वातावरणात न वाहत असलेल्या वातावरणात बांधला गेला तर काय होईल?",
+          "choices": [
+            "ते अधिक विद्युत उत्पादन करेल",
+            "ते फिरणार नाही",
+            "ते पर्यावरण नुकसान करेल",
+            "ते अधिक पाणी वापरेल"
+          ],
+          "solution": "वाताडे फिरण्यासाठी वातावरण आवश्यक असते, म्हणून जर वातावरण नसेल तर ते काम करणार नाही. इतर विकल्प चुकीचे आहेत कारण वाताडे वातावरण नसताना अधिक विद्युत उत्पादन करत नाहीत, या परिस्थितीत पर्यावरण नुकसान करत नाहीत आणि पाणी वापरत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi technical terms used.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Thinks windmills work better without wind",
+        null,
+        "Thinks windmills cause environmental damage",
+        "Thinks windmills use water for operation"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-constructed with a clear correct answer and plausible distractors based on common misconceptions. The solution is logically sound and matches the key.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu111.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 11: Nature’s Treasures"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu111.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 11: Nature’s Treasures",
+            "11.1 Air"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu111.pdf",
+          "ordinal": 2,
+          "pageStart": 3,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 11: Nature’s Treasures",
+            "11.1 Air"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu111.pdf",
+          "ordinal": 3,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 11: Nature’s Treasures",
+            "11.2 Water"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T13:20:17.737Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "A student wants to reduce water usage in their school. Which of the following actions would be the most effective?",
+      "choices": [
+        "Using more water for cleaning",
+        "Fixing leaking taps",
+        "Increasing the number of water fountains",
+        "Allowing students to drink water only during specific times"
+      ],
+      "answerIndex": 1,
+      "solution": "Fixing leaking taps is an effective way to reduce water wastage. Using more water, increasing water fountains, and allowing free drinking will increase water usage rather than reduce it.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक छात्र अपने स्कूल में पानी के उपयोग को कम करना चाहता है। निम्नलिखित में से कौन-सी क्रिया सबसे अधिक प्रभावी होगी?",
+          "choices": [
+            "साफ करने के लिए अधिक पानी का उपयोग करना",
+            "रिसते हुए नल की मरम्मत करना",
+            "पानी के फव्वारों की संख्या बढ़ाना",
+            "छात्रों को केवल विशिष्ट समय पर पानी पीने की अनुमति देना"
+          ],
+          "solution": "रिसते हुए नल की मरम्मत पानी के बर्बर उपयोग को कम करने का एक प्रभावी तरीका है। अधिक पानी का उपयोग, पानी के फव्वारों की संख्या बढ़ाना और मुक्त पीने की अनुमति देना पानी के उपयोग को बढ़ाएगा न कि कम करेगा।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the original English question, with all options and the solution maintaining the same meaning. The correct answer (option 2) is in the same position. All distractors remain incorrect in the Hindi version. Technical terms like 'leaking taps' are translated appropriately using standard Hindi terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका विद्यार्थ्याला आपल्या शाळेतील पाणी वापर कमी करायचा असेल, तर खालीलपैकी कोणती कृती सर्वात अधिक प्रभावी असेल?",
+          "choices": [
+            "स्वच्छतेसाठी अधिक पाणी वापरणे",
+            "निर्वहन झालेल्या नळांची दुरुस्ती करणे",
+            "पाण्याच्या फाउंटनची संख्या वाढवणे",
+            "विद्यार्थ्यांना फक्त विशिष्ट वेळी पाणी पिण्याची परवानगी देणे"
+          ],
+          "solution": "निर्वहन झालेल्या नळांची दुरुस्ती करणे हा पाणी वाया जाण्याच्या वाढीला रोखण्यासाठी प्रभावी उपाय आहे. अधिक पाणी वापरणे, पाण्याच्या फाउंटनची संख्या वाढवणे आणि विद्यार्थ्यांना मुक्तपणे पाणी पिण्याची परवानगी देणे ही कृती पाणी वापर वाढवतात नाहीत तर कमी करत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Thinks more water usage is better",
+        null,
+        "Believing that more water sources encourage conservation, not realizing it increases usage",
+        "students may think restricting access reduces usage, not realizing it could lead to waste"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 1 (Fixing leaking taps) as it directly reduces water wastage. The other options either increase water usage or are based on misconceptions about conservation.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu111.pdf",
+          "ordinal": 16,
+          "pageStart": 23,
+          "pageEnd": 24,
+          "headingPath": [
+            "Chapter 11: Nature’s Treasures",
+            "11.8 Resources We use",
+            "Learning further"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T13:20:17.737Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If a large forest area is cut down, what is one possible consequence?",
+      "choices": [
+        "The soil becomes more fertile",
+        "The number of animals increases",
+        "The water cycle is disrupted",
+        "The climate becomes cooler"
+      ],
+      "answerIndex": 2,
+      "solution": "If a large forest area is cut down, the water cycle is disrupted. This is because trees play a vital role in the water cycle by releasing water vapor into the air. The other options are incorrect as cutting down forests generally leads to soil erosion and loss of biodiversity, not improvement in soil fertility or climate.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक बड़े वन क्षेत्र को काट दिया जाता है, तो एक संभावित परिणाम क्या हो सकता है?",
+          "choices": [
+            "मिट्टी अधिक उर्वर हो जाती है",
+            "जानवरों की संख्या बढ़ जाती है",
+            "जल चक्र बाधित हो जाता है",
+            "जलवायु ठंडी हो जाती है"
+          ],
+          "solution": "यदि एक बड़े वन क्षेत्र को काट दिया जाता है, तो जल चक्र बाधित हो जाता है। यह इसलिए है क्योंकि पेड़ जल चक्र में पानी के वाष्प के रूप में हवा में छोड़ने में महत्वपूर्ण भूमिका निभाते हैं। अन्य विकल्प गलत हैं क्योंकि वनों को काटने से आमतौर पर मिट्टी का कटाव और जैव विविधता के नुकसान होता है, न कि मिट्टी की उर्वरता या जलवायु में सुधार।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology consistent with standard educational materials.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर एक मोठा वन क्षेत्र कापले गेले, तर एक शक्य परिणाम काय असू शकतो?",
+          "choices": [
+            "माती अधिक उपजी बनते",
+            "प्राण्यांची संख्या वाढते",
+            "पाण्याचा चक्र खराब होतो",
+            "हवामान थंड होते"
+          ],
+          "solution": "जर एक मोठा वन क्षेत्र कापले गेले, तर पाण्याचा चक्र खराब होतो. हे त्यामुळे आहे कारण वृक्ष पाण्याच्या चक्रात एक महत्वपूर्ण भूमिका बजावतात कारण ते हवेत पाण्याच्या वाफ निर्माण करतात. इतर विकल्प चुकीचे आहेत कारण वन कापणे सामान्यतः मातीच्या अपरदन आणि जैव विविधतेच्या नुकसानीच्या बरोबरीने उपजी माती किंवा हवामानाच्या सुधारणेच्या बरोबरीने नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for ecological concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Misunderstands the role of trees in soil fertility",
+        "Believes deforestation leads to more animals",
+        null,
+        "Does not understand the impact of deforestation on climate"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct and aligns with the key. The reasoning is sound, as deforestation disrupts the water cycle due to reduced transpiration from trees. The other options represent common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu111.pdf",
+          "ordinal": 8,
+          "pageStart": 11,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 11: Nature’s Treasures",
+            "11.4 Forests"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu111.pdf",
+          "ordinal": 9,
+          "pageStart": 12,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 11: Nature’s Treasures",
+            "11.5 Soil, Rocks and Minerals"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu111.pdf",
+          "ordinal": 10,
+          "pageStart": 13,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 11: Nature’s Treasures",
+            "11.5 Soil, Rocks and Minerals"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu111.pdf",
+          "ordinal": 11,
+          "pageStart": 15,
+          "pageEnd": 17,
+          "headingPath": [
+            "Chapter 11: Nature’s Treasures",
+            "11.6 Fossil Fuels"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T13:20:17.737Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "Which of the following is an example of a renewable resource that can be used to generate electricity?",
+      "choices": [
+        "Coal",
+        "Wind",
+        "Petroleum",
+        "Natural gas"
+      ],
+      "answerIndex": 1,
+      "solution": "Wind is a renewable resource because it is continuously available and does not get exhausted. Coal, petroleum, and natural gas are non-renewable and will eventually run out.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन एक पुनः प्राप्य संसाधन है जिसका विद्युत उत्पादन के लिए उपयोग किया जा सकता है?",
+          "choices": [
+            "कोयला",
+            "हवा",
+            "पेट्रोलियम",
+            "प्राकृतिक गैस"
+          ],
+          "solution": "हवा एक पुनः प्राप्य संसाधन है क्योंकि यह लगातार उपलब्ध रहती है और इसकी समाप्ति नहीं होती। कोयला, पेट्रोलियम और प्राकृतिक गैस अपुनः प्राप्य हैं और अंततः खत्म हो जाएंगी।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriately used in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते विद्युत उत्पादनासाठी वापरता येणारा पुनर्वापर करता येणारा संसाधनाचे उदाहरण आहे?",
+          "choices": [
+            "कोळसा",
+            "वाऱ्याचा",
+            "पेट्रोलियम",
+            "प्राकृतिक वायू"
+          ],
+          "solution": "वाऱ्याचे पुनर्वापर करता येणारे संसाधन आहे कारण ते सतत उपलब्ध असते आणि ते खर्च होत नाही. कोळसा, पेट्रोलियम आणि प्राकृतिक वायू अपुनर्वापर करता येणारे असून ते अखेर खर्च होतील.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the original meaning, and uses appropriate technical terms as used in Marathi textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Thinks coal is a renewable resource",
+        null,
+        "Believes petroleum is renewable",
+        "Considers natural gas as renewable"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is Wind (option 1), as it is a renewable resource. The other options are non-renewable fossil fuels. The author's reasoning for the distractors reflects common misconceptions about renewable vs. non-renewable resources.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu111.pdf",
+          "ordinal": 16,
+          "pageStart": 23,
+          "pageEnd": 24,
+          "headingPath": [
+            "Chapter 11: Nature’s Treasures",
+            "11.8 Resources We use",
+            "Learning further"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T13:20:17.737Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "A village is facing a shortage of water. Which of the following methods would best help in conserving water?",
+      "choices": [
+        "Building more dams",
+        "Using water for washing cars daily",
+        "Planting more trees",
+        "Using water for irrigation only at night"
+      ],
+      "answerIndex": 2,
+      "solution": "Planting more trees helps in conserving water by increasing the water table and reducing soil erosion. Building more dams, using water for washing cars, and using water for irrigation at night do not directly help in water conservation.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक गाँव में पानी की कमी हो रही है। निम्नलिखित में से कौन-सी विधि पानी के संरक्षण में सर्वाधिक सहायता करेगी?",
+          "choices": [
+            "अधिक बांध बनाना",
+            "दैनिक रूप से कार धोने के लिए पानी का उपयोग करना",
+            "अधिक पेड़ लगाना",
+            "केवल रात के समय सिंचाई के लिए पानी का उपयोग करना"
+          ],
+          "solution": "अधिक पेड़ लगाने से पानी के स्तर में वृद्धि होती है और मिट्टी के कटाव को कम करता है। अधिक बांध बनाना, कार धोने के लिए पानी का उपयोग करना और रात के समय सिंचाई के लिए पानी का उपयोग करना पानी के संरक्षण में सीधे सहायता नहीं करते हैं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, technical terms match standard Hindi usage, and the logic of the question and solution is preserved.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका गावात पाणी अभाव आहे. खालीलपैकी कोणता विधी पाणी बचतीसाठी सर्वात चांगला असेल?",
+          "choices": [
+            "अधिक बांध बांधणे",
+            "दररोज गाड्या धुण्यासाठी पाणी वापरणे",
+            "अधिक झाडे लावणे",
+            "रात्री शेतीसाठी पाणी वापरणे"
+          ],
+          "solution": "अधिक झाडे लावणे हे पाणी बचतीसाठी मदत करते कारण ते पाण्याच्या स्तराचे वाढवते आणि मातीच्या विनोदाचे नियंत्रण करते. अधिक बांध बांधणे, गाड्या धुण्यासाठी पाणी वापरणे आणि रात्री शेतीसाठी पाणी वापरणे हे पाणी बचतीला थेट मदत करत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for technical concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Thinks building dams helps conserve water",
+        "Does not understand the impact of car washing on water use",
+        null,
+        "Believes irrigation timing helps conserve water"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 2 (planting more trees), as it helps increase the water table and reduce soil erosion, both of which contribute to water conservation. The other options are either wasteful (washing cars) or do not directly conserve water (building dams, irrigation at night). The author's reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu111.pdf",
+          "ordinal": 16,
+          "pageStart": 23,
+          "pageEnd": 24,
+          "headingPath": [
+            "Chapter 11: Nature’s Treasures",
+            "11.8 Resources We use",
+            "Learning further"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T13:20:17.737Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "In a village where water is scarce, a farmer starts using a traditional water harvesting method. What is the most likely long-term benefit for the village?",
+      "choices": [
+        "Increased pollution of water sources",
+        "More water available for daily use",
+        "Improved air quality",
+        "Higher crop production"
+      ],
+      "answerIndex": 1,
+      "solution": "Water harvesting involves collecting and storing rainwater or runoff, which increases the amount of water available for use over time. This directly supports daily needs in areas with limited water. Increased pollution and improved air quality are not outcomes of water harvesting, and while higher crop production may result, it is not the primary long-term benefit of the method.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक गाँव में जहाँ पानी की कमी है, एक किसान पारंपरिक पानी एकत्रीकरण विधि का उपयोग करना शुरू कर देता है। गाँव के लिए सबसे संभावित लंबे समय के लाभ क्या है?",
+          "choices": [
+            "पानी के स्रोतों का बढ़ा हुआ प्रदूषण",
+            "दैनिक उपयोग के लिए अधिक पानी उपलब्ध",
+            "सुधारा हुआ वायु गुणवत्ता",
+            "अधिक फसल उत्पादन"
+          ],
+          "solution": "पानी एकत्रीकरण विधि वर्षा के पानी या बारिश के पानी को एकत्र करने और संग्रहीत करने में शामिल होती है, जो समय के साथ उपयोग के लिए उपलब्ध पानी की मात्रा को बढ़ाती है। यह सीधे उन क्षेत्रों में दैनिक आवश्यकताओं के समर्थन में आती है जहाँ पानी की कमी होती है। बढ़ा हुआ प्रदूषण और सुधारा हुआ वायु गुणवत्ता पानी एकत्रीकरण के परिणाम नहीं हैं, और जबकि अधिक फसल उत्पादन हो सकता है, लेकिन इस विधि के लंबे समय के लाभ के रूप में यह प्राथमिक लाभ नहीं है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains original meaning, and uses appropriate Hindi technical terms.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जलाभाव असलेल्या गावात, एक शेतकरी पारंपारिक जल संचयन पद्धतीचा वापर करू लागतो. गावासाठी लांबकाळी फायदा काय असू शकतो?",
+          "choices": [
+            "जल स्रोतांचा अधिक प्रदूषण",
+            "दैनिक वापरासाठी अधिक पाणी उपलब्ध",
+            "हवा च्या गुणवत्तेत सुधारणा",
+            "उंच शेती उत्पादन"
+          ],
+          "solution": "जल संचयन हा वर्षा पाणी किंवा बाहेर पडलेल्या पाण्याच्या एकत्रित करण्याची प्रक्रिया आहे, जी विस्तृत काळासाठी वापरासाठी उपलब्ध पाण्याची परिमाण वाढवते. हे ताबडतोब जलाभाव असलेल्या भागात दैनिक आवश्यकतांना ताकद देते. जल स्रोतांचा प्रदूषण आणि हवा च्या गुणवत्तेत सुधारणा जल संचयनचे परिणाम नाहीत, आणि जास्त शेती उत्पादन असू शकते, परंतु ही पद्धतीच्या मुख्य लांबकाळी फायद्याची नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms. The correct answer remains in the same position, and the distractors are still incorrect.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "This is the opposite of what water harvesting aims to achieve.",
+        null,
+        "This is an indirect benefit and not the primary goal.",
+        "This is not directly related to water harvesting."
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies that water harvesting increases water availability, and the reasoning for the other options is valid. The distractors represent common misconceptions or indirect effects.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu111.pdf",
+          "ordinal": 4,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 11: Nature’s Treasures",
+            "11.2 Water",
+            "Activity 11.3: Let us find out"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu111.pdf",
+          "ordinal": 5,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 11: Nature’s Treasures",
+            "11.2 Water",
+            "Activity 11.3: Let us find out"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu111.pdf",
+          "ordinal": 6,
+          "pageStart": 8,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 11: Nature’s Treasures",
+            "11.3 Energy from the Sun"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu111.pdf",
+          "ordinal": 7,
+          "pageStart": 10,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 11: Nature’s Treasures",
+            "11.4 Forests"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T13:20:17.737Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "If a windmill farm uses 10 windmills, and each windmill can generate 500 units of electricity, how many total units of electricity can be generated?",
+      "choices": [
+        "1000",
+        "3000",
+        "5000",
+        "7000"
+      ],
+      "answerIndex": 2,
+      "solution": "If 10 windmills generate 500 units each, then 10 × 500 = 5000 units. The question asks for the total electricity generated, which is a simple multiplication of the number of windmills and the electricity generated per windmill. The other options are incorrect due to miscalculations or misreadings.",
+      "checkExpr": "10*500",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक हवाई चक्की के कारखाने में 10 हवाई चक्कियां हैं, और प्रत्येक हवाई चक्की 500 इकाइयां बिजली उत्पन्न कर सकती है, तो कुल कितनी इकाइयां बिजली उत्पन्न की जा सकती है?",
+          "choices": [
+            "1000",
+            "3000",
+            "5000",
+            "7000"
+          ],
+          "solution": "यदि 10 हवाई चक्कियां प्रत्येक 500 इकाइयां उत्पन्न करती हैं, तो 10 × 500 = 5000 इकाइयां। प्रश्न कुल बिजली उत्पादन के बारे में पूछता है, जो हवाई चक्कियों की संख्या और प्रति हवाई चक्की उत्पन्न बिजली के गुणनफल के रूप में एक सरल गुणा है। अन्य विकल्प गणना त्रुटि या गलत पढ़ाई के कारण गलत हैं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains the original meaning, and uses appropriate Hindi technical terms.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर विंडमिल फार्म 10 विंडमिल वापरत असेल आणि प्रत्येक विंडमिल 500 युनिट विद्युत उत्पन्न करू शकत असेल, तर एकूण किती युनिट विद्युत उत्पन्न करता येईल?",
+          "choices": [
+            "1000",
+            "3000",
+            "5000",
+            "7000"
+          ],
+          "solution": "जर 10 विंडमिल प्रत्येक 500 युनिट विद्युत उत्पन्न करत असेल, तर 10 × 500 = 5000 युनिट. प्रश्नात एकूण विद्युत उत्पादन विचारले गेले आहे, जे विंडमिलच्या संख्या आणि प्रत्येक विंडमिल द्वारे उत्पन्न केलेल्या विद्युत युनिटच्या सोप्या गुणाकाराने मिळते. इतर उत्तरे चूकीच्या गणना किंवा चुकीच्या वाचनामुळे अयोग्य आहेत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms. The structure and logic of the question and solution are preserved.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Adds 10 and 500 instead of multiplying",
+        "Multiplies 10 by 300 instead of 500",
+        null,
+        "Adds 10 and 700 instead of multiplying"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is straightforward arithmetic, and the correct answer is 5000. The author's solution and reasoning for the distractors are accurate and reflect common student misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu111.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 11: Nature’s Treasures"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu111.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 11: Nature’s Treasures",
+            "11.1 Air"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu111.pdf",
+          "ordinal": 2,
+          "pageStart": 3,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 11: Nature’s Treasures",
+            "11.1 Air"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu111.pdf",
+          "ordinal": 3,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 11: Nature’s Treasures",
+            "11.2 Water"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T13:20:17.737Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "If a person is using a fuel that is cleaner than petrol or diesel, which fuel is he most likely using?",
+      "choices": [
+        "Kerosene",
+        "Coal",
+        "Compressed Natural Gas (CNG)",
+        "LPG"
+      ],
+      "answerIndex": 2,
+      "solution": "Compressed Natural Gas (CNG) is a cleaner fuel than petrol or diesel because it produces fewer harmful emissions when burned. Kerosene and LPG, while cleaner than some fuels, still emit more pollutants than CNG. Coal is not a fuel used in vehicles and produces significantly more pollution.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि कोई व्यक्ति पेट्रोल या डीजल की तुलना में अधिक स्वच्छ ईंधन का उपयोग कर रहा है, तो वह अधिक संभावना से कौन-सा ईंधन उपयोग कर रहा है?",
+          "choices": [
+            "केरोसीन",
+            "कोयला",
+            "संपीड़ित प्राकृतिक गैस (CNG)",
+            "एलपीजी"
+          ],
+          "solution": "संपीड़ित प्राकृतिक गैस (CNG) पेट्रोल या डीजल की तुलना में अधिक स्वच्छ ईंधन है क्योंकि जब इसे जलाया जाता है तो इसके द्वारा कम हानिकारक उत्सर्जन होता है। केरोसीन और एलपीजी, जबकि कुछ ईंधन की तुलना में अधिक स्वच्छ हैं, लेकिन अभी भी CNG की तुलना में अधिक प्रदूषक उत्सर्जित करते हैं। कोयला वाहनों में उपयोग किए जाने वाला ईंधन नहीं है और इसके द्वारा बहुत अधिक प्रदूषण होता है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, technical terms are appropriate for Hindi-medium curriculum, and the logic of the question and solution is preserved.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर एखादा माणूस पेट्रोल किंवा डिझेलपेकी शुद्ध ईंधन वापरत असेल, तर तो अधिक शक्यतो ईंधन कोणते वापरत असेल?",
+          "choices": [
+            "केरोसीन",
+            "कोळसा",
+            "कम्प्रेस्ड नैसर्गिक वायू (CNG)",
+            "एलपीजी"
+          ],
+          "solution": "कम्प्रेस्ड नैसर्गिक वायू (CNG) पेट्रोल किंवा डिझेलपेकी शुद्ध ईंधन आहे कारण ते जाळल्यास कमी अवांछित उत्सर्जन होते. केरोसीन आणि एलपीजी, जरी काही ईंधनापेकी शुद्ध असले तरी, ते CNG पेकी जास्त अवांछित प्रदूषक उत्सर्जित करतात. कोळसा वाहनांमध्ये वापरले जाणारे ईंधन नाही आणि ते अतिशय जास्त प्रदूषण उत्सर्जित करते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi technical terms used for fuels.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Believes kerosene is a cleaner fuel than petrol and diesel due to its common use in household lighting",
+        "Coal is not a fuel for vehicles",
+        null,
+        "LPG is not described as cleaner than CNG"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 2 (CNG), as it is explicitly stated to be a cleaner fuel than petrol or diesel. The reasoning for the distractors is valid and reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu111.pdf",
+          "ordinal": 8,
+          "pageStart": 11,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 11: Nature’s Treasures",
+            "11.4 Forests"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu111.pdf",
+          "ordinal": 9,
+          "pageStart": 12,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 11: Nature’s Treasures",
+            "11.5 Soil, Rocks and Minerals"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu111.pdf",
+          "ordinal": 10,
+          "pageStart": 13,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 11: Nature’s Treasures",
+            "11.5 Soil, Rocks and Minerals"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu111.pdf",
+          "ordinal": 11,
+          "pageStart": 15,
+          "pageEnd": 17,
+          "headingPath": [
+            "Chapter 11: Nature’s Treasures",
+            "11.6 Fossil Fuels"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T13:20:17.737Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "Which of the following is a natural resource?",
+      "choices": [
+        "Petrol",
+        "Bicycle",
+        "Solar panel",
+        "Electric bulb"
+      ],
+      "answerIndex": 0,
+      "solution": "Petrol is a natural resource because it is formed from the remains of ancient organisms over millions of years through natural processes. A bicycle, solar panel, and electric bulb are all man-made objects created by humans. Natural resources are materials or substances that occur in nature without human intervention.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन एक प्राकृतिक संसाधन है?",
+          "choices": [
+            "पेट्रोल",
+            "साइकिल",
+            "सौर पैनल",
+            "बिजली का बल्ब"
+          ],
+          "solution": "पेट्रोल एक प्राकृतिक संसाधन है क्योंकि यह प्राचीन जीवों के अवशेषों से लाखों साल तक प्राकृतिक प्रक्रियाओं के माध्यम से बनता है। साइकिल, सौर पैनल और बिजली का बल्ब सभी मनुष्य द्वारा बनाए गए वस्तुएं हैं। प्राकृतिक संसाधन ऐसे सामग्री या अवयव होते हैं जो प्राकृतिक रूप से मनुष्य के हस्तक्षेप के बिना होते हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology for natural resources.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणता एक प्राकृतिक संसाधन आहे?",
+          "choices": [
+            "पेट्रोल",
+            "सायकल",
+            "सौर पॅनल",
+            "विद्युत बल्ब"
+          ],
+          "solution": "पेट्रोल हे प्राकृतिक संसाधन आहे कारण ते जीवांच्या अवशेषांपासून लाखो वर्षांत व्याकुल वातावरणात तयार होते. सायकल, सौर पॅनल आणि विद्युत बल्ब हे सर्व मानवी निर्मित वस्तू आहेत. प्राकृतिक संसाधने ही अशी वस्तू किंवा पदार्थ आहेत जी मानवी हस्तक्षेप शिवाय प्राकृतिकरित्या असतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for scientific concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses human-made resources with natural resources",
+        "Confuses human-made resources with natural resources",
+        "Confuses human-made resources with natural resources"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct. Petrol is a natural resource derived from fossil fuels, while the other options are human-made. The reasoning aligns with the definition provided.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu111.pdf",
+          "ordinal": 12,
+          "pageStart": 17,
+          "pageEnd": 18,
+          "headingPath": [
+            "Chapter 11: Nature’s Treasures",
+            "11.7 Natural Resources: Renewable and Non-renewable"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu111.pdf",
+          "ordinal": 13,
+          "pageStart": 18,
+          "pageEnd": 19,
+          "headingPath": [
+            "Chapter 11: Nature’s Treasures",
+            "11.8 Resources We use"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu111.pdf",
+          "ordinal": 14,
+          "pageStart": 19,
+          "pageEnd": 20,
+          "headingPath": [
+            "Chapter 11: Nature’s Treasures",
+            "11.8 Resources We use",
+            "Summary"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu111.pdf",
+          "ordinal": 15,
+          "pageStart": 21,
+          "pageEnd": 22,
+          "headingPath": [
+            "Chapter 11: Nature’s Treasures",
+            "11.8 Resources We use",
+            "Let us enhance our learning"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T00:19:28.933Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "Which activity helps in turning and loosening the soil?",
+      "choices": [
+        "Digging the soil",
+        "Burning the soil",
+        "Washing the soil",
+        "Freezing the soil"
+      ],
+      "answerIndex": 0,
+      "solution": "Digging the soil helps in turning and loosening it because it physically breaks up the earth and mixes the layers, making it easier for roots to grow. Burning the soil can destroy organic matter and harm soil structure. Washing the soil removes nutrients and can compact it instead of loosening it. Freezing the soil may cause it to crack, but it does not effectively turn or loosen it in a way that benefits plant growth.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "कौन-सी गतिविधि मृदा के उलटने और ढीला होने में सहायता करती है?",
+          "choices": [
+            "मृदा को खोदना",
+            "मृदा को जलाना",
+            "मृदा को धोना",
+            "मृदा को हिमायत करना"
+          ],
+          "solution": "मृदा को खोदना मृदा के उलटने और ढीला होने में सहायता करता है क्योंकि यह भूमि को भौतिक रूप से टूटने देता है और पर слों को मिलाता है, जिससे जड़ों के बढ़ने में सुविधा होती है। मृदा को जलाना कार्बनिक पदार्थ को नष्ट कर सकता है और मृदा संरचना को नुकसान पहुंचा सकता है। मृदा को धोना पोषक तत्वों को हटा सकता है और इसके बजाय इसे संपीड़ित कर सकता है। मृदा को हिमायत करना इसे फूटने के लिए अनुमति दे सकता है, लेकिन यह पौधों के विकास के लिए लाभदायक तरीके से मृदा के उलटने या ढीला होने में सक्षम नहीं होता है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate technical terms as used in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "कोणती क्रिया मातीच्या चाकून आणि नरम करण्यास मदत करते?",
+          "choices": [
+            "माती खोदणे",
+            "माती जाळणे",
+            "माती धुणे",
+            "माती थंड करणे"
+          ],
+          "solution": "माती खोदणे मातीच्या चाकून आणि नरम करण्यास मदत करते कारण ते भूमीला शारीरिकरित्या तुकडे करते आणि थरांचे मिश्रण करते, जेणेकरून झाडांच्या मूळांना वाढण्यास सोपे होते. माती जाळणे जैविक पदार्थ नष्ट करू शकते आणि मातीच्या संरचनेला नुकसान पोहोचू शकते. माती धुणे पोषक घटक दूर करू शकते आणि ती मातीला घटक करू शकते जेणेकरून ती नरम करण्याऐवजी खोल करते. माती थंड करणे मातीला फुटू शकते, परंतु ती झाडांच्या वाढीस फायदेशीर प्रकारे मातीच्या चाकून आणि नरम करण्यास नक्की मदत करत नाही.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the original meaning, and uses appropriate technical terms. The correct answer (1) is in the same position as in the English version.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Student thinks burning breaks up soil structure and makes it easier to work with",
+        "Students might think washing soil removes impurities and makes it easier to work with",
+        "Believes freezing physically alters soil structure in a way that loosens it, similar to how ice can crack rocks."
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 0 (Digging the soil), as it is the only activity that directly turns and loosens soil. The author's reasoning for the other options reflects plausible misconceptions about soil treatment.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu111.pdf",
+          "ordinal": 8,
+          "pageStart": 11,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 11: Nature’s Treasures",
+            "11.4 Forests"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu111.pdf",
+          "ordinal": 9,
+          "pageStart": 12,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 11: Nature’s Treasures",
+            "11.5 Soil, Rocks and Minerals"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu111.pdf",
+          "ordinal": 10,
+          "pageStart": 13,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 11: Nature’s Treasures",
+            "11.5 Soil, Rocks and Minerals"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu111.pdf",
+          "ordinal": 11,
+          "pageStart": 15,
+          "pageEnd": 17,
+          "headingPath": [
+            "Chapter 11: Nature’s Treasures",
+            "11.6 Fossil Fuels"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T00:19:28.933Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the main reason why we cannot hold our breath for a long time?",
+      "choices": [
+        "Our lungs can only hold a small amount of air",
+        "We need oxygen for our body to function",
+        "The air in our lungs becomes too heavy",
+        "We get tired very quickly"
+      ],
+      "answerIndex": 1,
+      "solution": "The main reason we cannot hold our breath for a long time is that our body requires oxygen to function properly. Without oxygen, cells in the body cannot produce the energy needed for basic processes. The other options are incorrect because lung capacity, air weight, and fatigue are not the primary limiting factors in holding one's breath.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "हम लंबे समय तक अपनी सांस रोके रखने में क्यों असमर्थ होते हैं?",
+          "choices": [
+            "हमारे फेफड़े केवल छोटी मात्रा में हवा धारण कर सकते हैं",
+            "हमारे शरीर के कार्य करने के लिए ऑक्सीजन की आवश्यकता होती है",
+            "हमारे फेफड़ों में हवा भारी हो जाती है",
+            "हम बहुत जल्दी थक जाते हैं"
+          ],
+          "solution": "हम लंबे समय तक अपनी सांस रोके रखने में असमर्थ होते हैं क्योंकि हमारे शरीर के कार्य करने के लिए ऑक्सीजन की आवश्यकता होती है। बिना ऑक्सीजन के शरीर के कोशिकाएं आवश्यक ऊर्जा उत्पन्न नहीं कर सकतीं। अन्य विकल्प गलत हैं क्योंकि फेफड़ों की क्षमता, हवा का भार और थकान एक बार के लिए सांस रोके रखने के प्रमुख सीमा नहीं हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms as found in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "आम्ही लांब वेळ आपल्या श्वासाला रोखू शकत नाही याचा मुख्य कारण काय आहे?",
+          "choices": [
+            "आमच्या फुफ्फुसांमध्ये फक्त थोडे वायू ठेवता येते",
+            "आमच्या शरीराच्या कार्यासाठी ऑक्सिजन आवश्यक आहे",
+            "आमच्या फुफ्फुसांमधील वायू भारी होऊ लागतो",
+            "आम्ही लवकर थकून जातो"
+          ],
+          "solution": "आम्ही लांब वेळ आपल्या श्वासाला रोखू शकत नाही याचा मुख्य कारण असा आहे की आमच्या शरीराच्या कार्यासाठी ऑक्सिजन आवश्यक आहे. ऑक्सिजन नसल्यास शरीरातील कोशिका आवश्यक ऊर्जा तयार करू शकत नाहीत. इतर विकल्प चुकीचे आहेत कारण फुफ्फुसांची क्षमता, वायूचा वजन आणि थकवा हे श्वास रोखण्याच्या मुख्य सीमा नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for biological concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Misunderstands the function of the lungs",
+        null,
+        "Believes breath-holding is about physical strength",
+        "Confuses breath-holding with physical exhaustion"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 1, as the body requires oxygen to function, and holding breath leads to oxygen deprivation. The other options reflect common misconceptions about lung capacity, physical weight, and fatigue.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu111.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 11: Nature’s Treasures"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu111.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 11: Nature’s Treasures",
+            "11.1 Air"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu111.pdf",
+          "ordinal": 2,
+          "pageStart": 3,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 11: Nature’s Treasures",
+            "11.1 Air"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu111.pdf",
+          "ordinal": 3,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 11: Nature’s Treasures",
+            "11.2 Water"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T00:19:28.933Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of the following is a renewable natural resource?",
+      "choices": [
+        "Petrol",
+        "Natural gas",
+        "Coal",
+        "Water"
+      ],
+      "answerIndex": 3,
+      "solution": "Water is a renewable natural resource because it is continuously replenished through the water cycle. Petrol, natural gas, and coal are non-renewable as they take millions of years to form and are not replenished quickly.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन एक नवीकरणीय प्राकृतिक संसाधन है?",
+          "choices": [
+            "पेट्रोल",
+            "प्राकृतिक गैस",
+            "कोयला",
+            "जल"
+          ],
+          "solution": "जल एक नवीकरणीय प्राकृतिक संसाधन है क्योंकि यह जल चक्र के माध्यम से लगातार पुनः पूर्ति होता रहता है। पेट्रोल, प्राकृतिक गैस और कोयला अनवीकरणीय हैं क्योंकि इनके बनने में मिलियन वर्ष लगते हैं और ये तेजी से पुनः पूर्ति नहीं होते।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, technical terms are appropriately used in Hindi, and the structure matches the original.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणता एक पुनर्योजित प्राकृतिक संसाधन आहे?",
+          "choices": [
+            "पेट्रोल",
+            "प्राकृतिक वायू",
+            "कोळसा",
+            "पाणी"
+          ],
+          "solution": "पाणी हे पुनर्योजित प्राकृतिक संसाधन आहे कारण ते पाण्याच्या चक्रामुळे सतत पुन्हा भरले जाते. पेट्रोल, प्राकृतिक वायू आणि कोळसा अपुनर्योजित आहेत कारण त्यांच्या निर्माणास लाखो वर्ष लागतात आणि ते जलद रीतीने पुन्हा भरले जात नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for natural resources.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses non-renewable with renewable resources",
+        "Confuses non-renewable with renewable resources",
+        "Confuses non-renewable with renewable resources",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct and the key is accurate. Water is indeed a renewable resource due to the water cycle, while the others are non-renewable. The distractors are all incorrect and the reasons provided align with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu111.pdf",
+          "ordinal": 12,
+          "pageStart": 17,
+          "pageEnd": 18,
+          "headingPath": [
+            "Chapter 11: Nature’s Treasures",
+            "11.7 Natural Resources: Renewable and Non-renewable"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu111.pdf",
+          "ordinal": 13,
+          "pageStart": 18,
+          "pageEnd": 19,
+          "headingPath": [
+            "Chapter 11: Nature’s Treasures",
+            "11.8 Resources We use"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu111.pdf",
+          "ordinal": 14,
+          "pageStart": 19,
+          "pageEnd": 20,
+          "headingPath": [
+            "Chapter 11: Nature’s Treasures",
+            "11.8 Resources We use",
+            "Summary"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu111.pdf",
+          "ordinal": 15,
+          "pageStart": 21,
+          "pageEnd": 22,
+          "headingPath": [
+            "Chapter 11: Nature’s Treasures",
+            "11.8 Resources We use",
+            "Let us enhance our learning"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T00:19:28.933Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "Which of the following is an example of using wind energy?",
+      "choices": [
+        "Using a fan to cool a room",
+        "Drinking water from a well",
+        "Using a windmill to generate electricity",
+        "Planting trees in a garden"
+      ],
+      "answerIndex": 2,
+      "solution": "Using a windmill to generate electricity is an example of harnessing wind energy because windmills convert the kinetic energy of wind into electrical energy. A fan uses electricity to create airflow, not wind energy. Drinking water from a well does not involve wind, and planting trees does not directly use wind energy.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन वायु ऊर्जा के उपयोग का उदाहरण है?",
+          "choices": [
+            "एक कम्प्यूटर के लिए बिजली प्राप्त करना",
+            "एक कुएं से पानी पीना",
+            "विद्युत उत्पादन के लिए एक पवन चक्की का उपयोग करना",
+            "एक बगीचे में पेड़ लगाना"
+          ],
+          "solution": "विद्युत उत्पादन के लिए एक पवन चक्की का उपयोग करना वायु ऊर्जा के उपयोग का एक उदाहरण है क्योंकि पवन चक्की वायु की गतिज ऊर्जा को विद्युत ऊर्जा में बदल देती है। एक पंखा बिजली का उपयोग करके हवा का प्रवाह बनाता है, न कि वायु ऊर्जा का। एक कुएं से पानी पीना वायु के साथ कोई संबंध नहीं रखता है, और पेड़ लगाना सीधे वायु ऊर्जा के उपयोग का कार्य नहीं है।",
+          "imageAlt": null,
+          "critique": "Option 2 is incorrect in Hindi translation (should be option 3), but all other elements match the original.",
+          "flag": "translation critique: not one answer at the same position"
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते वायू ऊर्जेचा वापर करण्याचे उदाहरण आहे?",
+          "choices": [
+            "एका खोलीत थंडी घालण्यासाठी फॅन वापरणे",
+            "कुंडीतून पाणी पिणे",
+            "विद्युत उत्पादनासाठी वाताघडीचा वापर करणे",
+            "बगीच्यात झाडे लावणे"
+          ],
+          "solution": "विद्युत उत्पादनासाठी वाताघडीचा वापर करणे हा वायू ऊर्जेचा वापर करण्याचा उदाहरण आहे कारण वाताघड्या वायूच्या गतीशील ऊर्जेला विद्युत ऊर्जेमध्ये रूपांतरित करतात. फॅन विद्युत ऊर्जेचा वापर करून हवा तयार करतो, वायू ऊर्जेचा वापर करत नाही. कुंडीतून पाणी पिणे वायूशी संबंधित नाही आणि झाडे लावणे वायू ऊर्जेचा थेट वापर करत नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi technical terms used for energy concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses wind energy with electrical appliances",
+        "Thinks water is the main source of energy",
+        null,
+        "Ignores the function of windmills"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 2, as windmills directly use wind energy to generate electricity. The other options do not involve wind energy, and the author's reasoning for the distractors reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu111.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 11: Nature’s Treasures"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu111.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 11: Nature’s Treasures",
+            "11.1 Air"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu111.pdf",
+          "ordinal": 2,
+          "pageStart": 3,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 11: Nature’s Treasures",
+            "11.1 Air"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu111.pdf",
+          "ordinal": 3,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 11: Nature’s Treasures",
+            "11.2 Water"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T00:19:28.933Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If a family stops using solar panels and relies only on fossil fuels for electricity, what would be the impact on the environment?",
+      "choices": [
+        "It would reduce air pollution",
+        "It would increase air pollution",
+        "It would improve air quality",
+        "It would reduce water usage"
+      ],
+      "answerIndex": 1,
+      "solution": "Using fossil fuels increases air pollution because they release harmful gases when burned. Reducing the use of solar energy and relying on fossil fuels would have a negative impact on the environment.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि कोई परिवार सौर पैनल के उपयोग को बंद कर दे और बिजली के लिए केवल जीवाश्म ईंधन पर निर्भर करे, तो पर्यावरण पर क्या प्रभाव होगा?",
+          "choices": [
+            "इससे वायु प्रदूषण कम हो जाएगा",
+            "इससे वायु प्रदूषण बढ़ जाएगा",
+            "इससे वायु की गुणवत्ता सुधर जाएगी",
+            "इससे पानी की खपत कम हो जाएगी"
+          ],
+          "solution": "जीवाश्म ईंधन के उपयोग से वायु प्रदूषण बढ़ जाता है क्योंकि उन्हें जलाने पर हानिकारक गैसें निकलती हैं। सौर ऊर्जा के उपयोग को कम करके जीवाश्म ईंधन पर निर्भर करना पर्यावरण पर नकारात्मक प्रभाव डालेगा।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate technical terms as found in Hindi-medium science textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका कुटुंबाने सौर पॅनेलचा वापर थांबवला आणि विद्युतीय ऊर्जेसाठी फक्त खनिज इंधनांवर अवलंबून राहिले, तर पर्यावरणावर काय परिणाम होईल?",
+          "choices": [
+            "ते हवा प्रदूषण कमी करेल",
+            "ते हवा प्रदूषण वाढवील",
+            "ते हवा गुणवत्ता सुधारेल",
+            "ते पाणी वापर कमी करेल"
+          ],
+          "solution": "खनिज इंधनांचा वापर हवा प्रदूषण वाढवतो कारण त्यांच्या जाळण्यामुळे हानिकारक वायू निर्माण होतात. सौर ऊर्जेचा वापर कमी करून खनिज इंधनांवर अवलंबून राहणे पर्यावरणावर नकारात्मक परिणाम घडवून आणेल.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for environmental concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Incorrectly assumes fossil fuels reduce pollution",
+        null,
+        "belief that fossil fuels are cleaner than solar energy",
+        "Unrelated to the impact of fossil fuels on the environment"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 1, as burning fossil fuels releases harmful gases that increase air pollution. The author's solution and reasoning are accurate, and the reasons for the wrong options reflect common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu111.pdf",
+          "ordinal": 16,
+          "pageStart": 23,
+          "pageEnd": 24,
+          "headingPath": [
+            "Chapter 11: Nature’s Treasures",
+            "11.8 Resources We use",
+            "Learning further"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T00:19:28.933Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "Which of the following is a human-made resource?",
+      "choices": [
+        "Water",
+        "Air",
+        "Electric bulb",
+        "Forest"
+      ],
+      "answerIndex": 2,
+      "solution": "An electric bulb is a human-made resource because it is created by humans using various materials and technology. Water, air, and forests occur naturally in the environment without human intervention. Human-made resources are those that are manufactured or constructed by people, while natural resources exist in their original form in nature.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन एक मानव निर्मित संसाधन है?",
+          "choices": [
+            "जल",
+            "हवा",
+            "बिजली का बल्ब",
+            "वन"
+          ],
+          "solution": "एक बिजली का बल्ब मानव निर्मित संसाधन है क्योंकि इसे मानव द्वारा विभिन्न सामग्री और तकनीक का उपयोग करके बनाया जाता है। जल, हवा और वन पर्यावरण में प्राकृतिक रूप से पाए जाते हैं जिनमें मानव हस्तक्षेप नहीं होता। मानव निर्मित संसाधन वे होते हैं जिन्हें लोग बनाते या निर्माण करते हैं, जबकि प्राकृतिक संसाधन प्रकृति में अपने मूल रूप में मौजूद होते हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology for educational context.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते मानवनिर्मित संसाधन आहे?",
+          "choices": [
+            "पाणी",
+            "हवा",
+            "विद्युत बल्ब",
+            "जंगल"
+          ],
+          "solution": "विद्युत बल्ब मानवनिर्मित संसाधन आहे कारण तो मानवाद्वारे विविध सामग्री आणि तंत्रज्ञान वापरून तयार केला जातो. पाणी, हवा आणि जंगल वातावरणात प्राकृतिकरित्या असतात ज्यात मानवी हस्तक्षेप नसतो. मानवनिर्मित संसाधने ही अशी आहेत ज्या मानवाद्वारे उत्पादित किंवा निर्मित केल्या जातात, तर प्राकृतिक संसाधने प्राकृतिक रूपात प्राकृतिकरित्या असतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for educational context.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses natural resources with human-made resources",
+        "Confuses natural resources with human-made resources",
+        null,
+        "Confuses natural resources with human-made resources"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies the electric bulb as a human-made resource and correctly classifies the others as natural. The reasoning is sound and matches the key.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu111.pdf",
+          "ordinal": 12,
+          "pageStart": 17,
+          "pageEnd": 18,
+          "headingPath": [
+            "Chapter 11: Nature’s Treasures",
+            "11.7 Natural Resources: Renewable and Non-renewable"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu111.pdf",
+          "ordinal": 13,
+          "pageStart": 18,
+          "pageEnd": 19,
+          "headingPath": [
+            "Chapter 11: Nature’s Treasures",
+            "11.8 Resources We use"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu111.pdf",
+          "ordinal": 14,
+          "pageStart": 19,
+          "pageEnd": 20,
+          "headingPath": [
+            "Chapter 11: Nature’s Treasures",
+            "11.8 Resources We use",
+            "Summary"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu111.pdf",
+          "ordinal": 15,
+          "pageStart": 21,
+          "pageEnd": 22,
+          "headingPath": [
+            "Chapter 11: Nature’s Treasures",
+            "11.8 Resources We use",
+            "Let us enhance our learning"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T00:19:28.933Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "Which of the following is an example of a food chain in the village?",
+      "choices": [
+        "Grass → Rabbit → Fox",
+        "Water → Plants → Animals",
+        "Air → Trees → Birds",
+        "Sun → Soil → Insects"
+      ],
+      "answerIndex": 0,
+      "solution": "Grass is a producer, rabbit is a herbivore, and fox is a carnivore, forming a proper food chain. Water, air, and sun are not living organisms and cannot be part of a food chain. Plants and animals can be part of a food chain, but the sequence 'Water → Plants → Animals' is not accurate. Trees and birds can be part of a food chain, but 'Air → Trees → Birds' is not a valid sequence.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन गाँव में एक भोजन श्रृंखला का उदाहरण है?",
+          "choices": [
+            "घास → खरगोश → लोमड़ी",
+            "जल → पौधे → जीव",
+            "हवा → पेड़ → पक्षी",
+            "सूर्य → मिट्टी → कीट"
+          ],
+          "solution": "घास एक उत्पादक है, खरगोश एक शाकाहारी है और लोमड़ी एक मांसाहारी है, जो एक सही भोजन श्रृंखला बनाते हैं। जल, हवा और सूर्य जीवित जीव नहीं हैं और भोजन श्रृंखला का हिस्सा नहीं हो सकते। पौधे और जीव भोजन श्रृंखला के हिस्से हो सकते हैं, लेकिन अनुक्रम 'जल → पौधे → जीव' सही नहीं है। पेड़ और पक्षी भोजन श्रृंखला के हिस्से हो सकते हैं, लेकिन 'हवा → पेड़ → पक्षी' एक वैध अनुक्रम नहीं है।",
+          "imageAlt": null,
+          "critique": "Translation accurately preserves meaning, technical terms are standard in Hindi textbooks, and the correct answer remains option 1.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते गावातील खाद्यप्रवाहाचे उदाहरण आहे?",
+          "choices": [
+            "लिंब → रॅबिट → शियाल",
+            "पाणी → वनस्पती → प्राणी",
+            "हवा → वृक्ष → पक्षी",
+            "सूर्य → माती → कीटक"
+          ],
+          "solution": "लिंब एक उत्पादक आहे, रॅबिट हे शाकाहारी आहे आणि शियाल हे मांसाहारी आहे, जे एक योग्य खाद्यप्रवाह तयार करते. पाणी, हवा आणि सूर्य जीवित नसल्यामुळे खाद्यप्रवाहाचा भाग नाहीत. वनस्पती आणि प्राणी खाद्यप्रवाहाचा भाग असू शकतात, परंतु 'पाणी → वनस्पती → प्राणी' ही अचूक अनुक्रम नाही. वृक्ष आणि पक्षी खाद्यप्रवाहाचा भाग असू शकतात, परंतु 'हवा → वृक्ष → पक्षी' हा वैध अनुक्रम नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for ecological concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses producers and consumers",
+        "Ignores the role of water",
+        "Misunderstands the components of a food chain"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 0, as 'Grass → Rabbit → Fox' is a valid food chain with a producer, primary consumer, and secondary consumer. The other options fail to represent a proper food chain structure.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu111.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 11: Nature’s Treasures"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu111.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 11: Nature’s Treasures",
+            "11.1 Air"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu111.pdf",
+          "ordinal": 2,
+          "pageStart": 3,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 11: Nature’s Treasures",
+            "11.1 Air"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu111.pdf",
+          "ordinal": 3,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 11: Nature’s Treasures",
+            "11.2 Water"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T00:19:28.933Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "Which of the following is an example of a non-renewable resource that is also a fuel?",
+      "choices": [
+        "Water",
+        "Solar energy",
+        "Petrol",
+        "Wind energy"
+      ],
+      "answerIndex": 2,
+      "solution": "Petrol is a non-renewable resource because it takes millions of years to form and is not replenished quickly. It is also a fuel as it can be burned to produce energy. Water, solar energy, and wind energy are all renewable resources that can be replenished naturally in a short period of time.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा अक्षय संसाधन का उदाहरण है जो ईंधन भी है?",
+          "choices": [
+            "जल",
+            "सौर ऊर्जा",
+            "पेट्रोल",
+            "हवा ऊर्जा"
+          ],
+          "solution": "पेट्रोल अक्षय संसाधन है क्योंकि इसके बनने में मिलियन वर्ष लगते हैं और यह तेजी से पूरक नहीं होता है। यह ईंधन भी है क्योंकि इसे जलाकर ऊर्जा उत्पन्न की जा सकती है। जल, सौर ऊर्जा और हवा ऊर्जा सभी अक्षय संसाधन हैं जो एक छोटी अवधि में प्राकृतिक रूप से पूरक हो सकते हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Hindi terminology used for environmental concepts.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते एक अकायम संसाधनाचे उदाहरण आहे जे इंधन देखील आहे?",
+          "choices": [
+            "पाणी",
+            "सौर ऊर्जा",
+            "पेट्रोल",
+            "हवाई ऊर्जा"
+          ],
+          "solution": "पेट्रोल अकायम संसाधन आहे कारण त्याच्या निर्माणास लाखो वर्ष लागतात आणि ते जल्दी पुनर्पूर्त केले जात नाही. ते इंधन देखील आहे कारण ते ऊर्जा उत्पन्न करण्यासाठी जाळले जाऊ शकते. पाणी, सौर ऊर्जा आणि हवाई ऊर्जा या सर्व नवीकरणीय संसाधने आहेत ज्या लहान कालावधीत प्राकृतिकरित्या पुनर्पूर्त केली जाऊ शकतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for environmental concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses renewable resources with non-renewable resources",
+        "Confuses renewable resources with non-renewable resources",
+        null,
+        "Confuses renewable resources with non-renewable resources"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies petrol as a non-renewable fuel, and the other options are correctly classified as renewable resources. The reasoning for the wrong options is valid and reflects a common misconception.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu111.pdf",
+          "ordinal": 12,
+          "pageStart": 17,
+          "pageEnd": 18,
+          "headingPath": [
+            "Chapter 11: Nature’s Treasures",
+            "11.7 Natural Resources: Renewable and Non-renewable"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu111.pdf",
+          "ordinal": 13,
+          "pageStart": 18,
+          "pageEnd": 19,
+          "headingPath": [
+            "Chapter 11: Nature’s Treasures",
+            "11.8 Resources We use"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu111.pdf",
+          "ordinal": 14,
+          "pageStart": 19,
+          "pageEnd": 20,
+          "headingPath": [
+            "Chapter 11: Nature’s Treasures",
+            "11.8 Resources We use",
+            "Summary"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu111.pdf",
+          "ordinal": 15,
+          "pageStart": 21,
+          "pageEnd": 22,
+          "headingPath": [
+            "Chapter 11: Nature’s Treasures",
+            "11.8 Resources We use",
+            "Let us enhance our learning"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T00:19:28.933Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Why is it important to use water efficiently in daily life?",
+      "choices": [
+        "To make sure we have enough water for the future",
+        "To save money on water bills",
+        "To reduce the time spent on watering plants",
+        "To make water look cleaner"
+      ],
+      "answerIndex": 0,
+      "solution": "Using water efficiently helps ensure there is enough water available for future generations. This is important because water is a limited resource. The other options, such as saving money or reducing time, may be benefits but are not the primary reason for efficient water use.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "हमारे दैनिक जीवन में पानी के प्रभावी उपयोग का क्यों महत्व है?",
+          "choices": [
+            "भविष्य के लिए पर्याप्त पानी सुनिश्चित करने के लिए",
+            "पानी के बिल पर धन बचाने के लिए",
+            "पौधों के सिंचाई में बिताए समय को कम करने के लिए",
+            "पानी को साफ दिखाने के लिए"
+          ],
+          "solution": "पानी के प्रभावी उपयोग से भविष्य की पीढ़ियों के लिए पर्याप्त पानी उपलब्ध रहता है। यह महत्वपूर्ण है क्योंकि पानी एक सीमित संसाधन है। अन्य विकल्प, जैसे धन बचाना या समय कम करना, लाभ हो सकते हैं लेकिन प्रभावी पानी उपयोग का मुख्य कारण नहीं है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "दैनिक जीवनात पाणी वापरणे शक्य तितके दक्षपणे का महत्वाचे आहे?",
+          "choices": [
+            "भविष्यासाठी पाणी उपलब्ध राहील याची खात्री करणे",
+            "पाणी बिलांवर खर्च वाचवणे",
+            "वनस्पतींना पाणी घालण्यासाठी वापरल्या जाणार्या वेळेची कमी करणे",
+            "पाणी शुद्ध दिसावे"
+          ],
+          "solution": "पाणी दक्षपणे वापरणे भविष्यातील पिढ्यांसाठी पाणी उपलब्ध राहण्यास मदत करते. हे महत्वाचे आहे कारण पाणी एक मर्यादित संसाधन आहे. इतर विकल्प, जसे की पैसे वाचवणे किंवा वेळ कमी करणे, असे फायदे असू शकतात परंतु पाणी दक्षपणे वापरण्याचे मुख्य कारण नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for environmental concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Thinks water use is about cost",
+        "Focuses on convenience over sustainability",
+        "Believes water appearance is important"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 0, as it aligns with the idea of preserving water for future needs. The other options reflect common misconceptions about water use being about cost, convenience, or appearance.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu111.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 11: Nature’s Treasures"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu111.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 11: Nature’s Treasures",
+            "11.1 Air"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu111.pdf",
+          "ordinal": 2,
+          "pageStart": 3,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 11: Nature’s Treasures",
+            "11.1 Air"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu111.pdf",
+          "ordinal": 3,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 11: Nature’s Treasures",
+            "11.2 Water"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T00:19:28.933Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Why is it important to use natural resources judiciously?",
+      "choices": [
+        "To increase pollution",
+        "To ensure they are available for future generations",
+        "To reduce the number of human activities",
+        "To make more human-made resources"
+      ],
+      "answerIndex": 1,
+      "solution": "Using natural resources judiciously is important to ensure they are available for future generations. This approach supports sustainability and prevents depletion. The other options either contradict the goal of conservation or misunderstand the purpose of responsible resource use.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "प्रकृतिक संसाधनों के सावधानीपूर्वक उपयोग क्यों महत्वपूर्ण है?",
+          "choices": [
+            "प्रदूषण बढ़ाने के लिए",
+            "यह सुनिश्चित करने के लिए कि भविष्य की पीढ़ियों के लिए वे उपलब्ध रहें",
+            "मानव क्रियाकलापों की संख्या कम करने के लिए",
+            "अधिक मानव निर्मित संसाधन बनाने के लिए"
+          ],
+          "solution": "प्रकृतिक संसाधनों के सावधानीपूर्वक उपयोग के महत्व को यह सुनिश्चित करना है कि भविष्य की पीढ़ियों के लिए वे उपलब्ध रहें। इस प्रकार स्थायित्व का समर्थन किया जाता है और उनके अंत होने से बचा जाता है। अन्य विकल्प संरक्षण के लक्ष्य के विरोधी हैं या महत्वपूर्ण संसाधन उपयोग के उद्देश्य को गलत समझते हैं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, with appropriate Hindi terminology used for natural resources and sustainability concepts.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "प्राकृतिक संसाधनांचा विवेकाने वापर का महत्वाचा आहे?",
+          "choices": [
+            "काळजी घेणे",
+            "त्यांना भविष्याच्या पिढ्यांसाठी उपलब्ध ठेवणे",
+            "मानवी क्रियाकलापांची संख्या कमी करणे",
+            "अधिक मानव निर्मित संसाधने तयार करणे"
+          ],
+          "solution": "प्राकृतिक संसाधनांचा विवेकाने वापर करणे त्यांना भविष्याच्या पिढ्यांसाठी उपलब्ध ठेवण्यासाठी महत्वाचे आहे. हा दृष्टिकोन स्थिरता आणि निर्भरतेच्या अभावामुळे निर्माण होणार्या नुकसानीच्या टाळण्यास मदत करतो. इतर विकल्प जागतिक वाचनाच्या उद्देशाशी विरोधात आहेत किंवा मानवी संसाधनांच्या वापराच्या उद्देशाचे अस्पष्ट आहेत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for environmental concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Misunderstands the purpose of conservation",
+        null,
+        "Confuses resource use with human activity",
+        "Misunderstands the purpose of conservation"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is clearly supported by the reasoning that natural resources must be preserved for future use. The other options represent common misconceptions about conservation.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu111.pdf",
+          "ordinal": 12,
+          "pageStart": 17,
+          "pageEnd": 18,
+          "headingPath": [
+            "Chapter 11: Nature’s Treasures",
+            "11.7 Natural Resources: Renewable and Non-renewable"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu111.pdf",
+          "ordinal": 13,
+          "pageStart": 18,
+          "pageEnd": 19,
+          "headingPath": [
+            "Chapter 11: Nature’s Treasures",
+            "11.8 Resources We use"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu111.pdf",
+          "ordinal": 14,
+          "pageStart": 19,
+          "pageEnd": 20,
+          "headingPath": [
+            "Chapter 11: Nature’s Treasures",
+            "11.8 Resources We use",
+            "Summary"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu111.pdf",
+          "ordinal": 15,
+          "pageStart": 21,
+          "pageEnd": 22,
+          "headingPath": [
+            "Chapter 11: Nature’s Treasures",
+            "11.8 Resources We use",
+            "Let us enhance our learning"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T00:19:28.933Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Which of the following best explains why the cow is getting energy from the Sun?",
+      "choices": [
+        "The cow is directly absorbing heat from the Sun.",
+        "The cow is eating grass that gets its energy from the Sun.",
+        "The cow is standing in the Sun and is therefore getting energy.",
+        "The cow is using the Sun to dry its fur."
+      ],
+      "answerIndex": 1,
+      "solution": "The cow gets energy from the Sun indirectly. Grass, which the cow eats, needs sunlight to grow and produce food through photosynthesis. Therefore, the energy in the grass ultimately comes from the Sun. The other options are incorrect because they suggest direct or unrelated ways the cow gets energy from the Sun.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा विकल्प गाय के सूर्य से ऊर्जा प्राप्त करने की बेस्ट व्याख्या करता है?",
+          "choices": [
+            "गाय सीधे सूर्य से गर्मी अवशोषित कर रही है।",
+            "गाय घास खा रही है जिसकी ऊर्जा सूर्य से है।",
+            "गाय सूर्य में खड़ी होकर ऊर्जा प्राप्त कर रही है।",
+            "गाय अपने बालों को सूर्य में सुखाने के लिए उपयोग कर रही है।"
+          ],
+          "solution": "गाय सूर्य से ऊर्जा अप्रत्यक्ष रूप से प्राप्त करती है। घास जिसे गाय खाती है, सूर्य के प्रकाश की आवश्यकता होती है ताकि यह फोटोसिंथेसिस के माध्यम से भोजन बना सके। इसलिए, घास में ऊर्जा अंततः सूर्य से आती है। अन्य विकल्प गलत हैं क्योंकि वे गाय के सूर्य से ऊर्जा प्राप्त करने के सीधे या असंबंधित तरीकों के बारे में सुझाव देते हैं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains the original meaning, and uses appropriate Hindi scientific terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते शेळी सूर्यापासून ऊर्जा मिळत आहे याचे सर्वात चांगले स्पष्टीकरण दर्शविते?",
+          "choices": [
+            "शेळी सूर्यापासून ताप थेट अवशोषित करत आहे.",
+            "शेळी घास खात आहे ज्याला सूर्यापासून ऊर्जा मिळते.",
+            "शेळी सूर्यात उभी राहिली आहे आणि म्हणून ऊर्जा मिळत आहे.",
+            "शेळी तिच्या रोंगांना शुष्क करण्यासाठी सूर्याचा उपयोग करत आहे."
+          ],
+          "solution": "शेळी सूर्यापासून ऊर्जा अप्रत्यक्षपणे मिळते. ज्या घासाची शेळी खाते त्याला वाढण्यासाठी सूर्यप्रकाश आवश्यक असतो आणि प्रकाशसंश्लेषणाद्वारे ऊर्जा तयार होते. त्यामुळे घासातील ऊर्जा अखेर सूर्यापासून येते. इतर विकल्प चुकीचे आहेत कारण ते सूर्यापासून शेळीला ऊर्जा मिळत असल्याचे दर्शवितात जे थेट किंवा असंबंधित असते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses direct energy absorption with indirect energy transfer.",
+        null,
+        "Correctly identifies the source but misinterprets the process.",
+        "Thinks the Sun provides energy through physical contact or drying effect instead of through the food chain.','Misunderstands the role of the Sun in the energy transfer process."
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 1, as it correctly identifies the indirect energy transfer through the food chain. The other options reflect common misconceptions about how energy from the Sun is transferred to animals.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu111.pdf",
+          "ordinal": 4,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 11: Nature’s Treasures",
+            "11.2 Water",
+            "Activity 11.3: Let us find out"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu111.pdf",
+          "ordinal": 5,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 11: Nature’s Treasures",
+            "11.2 Water",
+            "Activity 11.3: Let us find out"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu111.pdf",
+          "ordinal": 6,
+          "pageStart": 8,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 11: Nature’s Treasures",
+            "11.3 Energy from the Sun"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu111.pdf",
+          "ordinal": 7,
+          "pageStart": 10,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 11: Nature’s Treasures",
+            "11.4 Forests"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T00:19:28.933Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If a person holds their breath for too long, what happens to their body?",
+      "choices": [
+        "They feel more energetic",
+        "They feel tired and uncomfortable",
+        "They start to float",
+        "They become lighter"
+      ],
+      "answerIndex": 1,
+      "solution": "When a person holds their breath for too long, the body accumulates carbon dioxide and lacks oxygen, leading to discomfort and fatigue. The correct option reflects the natural physiological response to breath-holding. The other options do not align with how the body reacts to oxygen deprivation.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि कोई व्यक्ति अपनी सांस लंबे समय तक रोक लेता है, तो उसके शरीर में क्या होता है?",
+          "choices": [
+            "उन्हें अधिक ऊर्जावान महसूस होता है",
+            "उन्हें थके हुए और असहज महसूस होता है",
+            "वे तैरना शुरू कर देते हैं",
+            "वे हल्के हो जाते हैं"
+          ],
+          "solution": "जब कोई व्यक्ति अपनी सांस लंबे समय तक रोक लेता है, तो शरीर में कार्बन डाइऑक्साइड जमा हो जाता है और ऑक्सीजन की कमी हो जाती है, जिसके कारण असहजता और थकान होती है। सही विकल्प सांस रोकने के प्राकृतिक शारीरिक प्रतिक्रिया को प्रतिबिंबित करता है। अन्य विकल्प ऑक्सीजन की कमी के प्रति शरीर की प्रतिक्रिया के साथ मेल नहीं खाते।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. All options are correctly translated and maintain their intended meaning. The correct answer remains in the same position (option 2).",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर एखादा व्यक्ती खूप लांब वेळ आपला श्वास रोखत रहे, तर त्याच्या शरीरावर काय परिणाम होतो?",
+          "choices": [
+            "त्यांना अधिक ऊर्जा वाटते",
+            "त्यांना थकलेले आणि असोयीचे वाटते",
+            "ते तरंगत लागतात",
+            "ते हलके होतात"
+          ],
+          "solution": "जर एखादा व्यक्ती खूप लांब वेळ आपला श्वास रोखत रहे, तर शरीरात कार्बन डायऑक्साइड जमा होतो आणि ऑक्सीजनची कमतरता होते, ज्यामुळे असोयी आणि थकवा होतो. बरोबर विकल्प श्वास रोखण्यामुळे होणाऱ्या शारीरिक प्रतिक्रियेचे प्रतिनिधित्व करतो. इतर विकल्प ऑक्सीजनच्या कमतरतेमुळे शरीराच्या प्रतिक्रियेशी जुळत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for physiological concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Misunderstands the effects of holding breath",
+        null,
+        "Confuses physical effects with unrelated phenomena",
+        "Confuses physical effects with unrelated phenomena"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 1, as holding one's breath for too long causes discomfort, which aligns with the passage. The other options are clearly incorrect and represent common misconceptions about the effects of breath-holding.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu111.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 11: Nature’s Treasures"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu111.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 11: Nature’s Treasures",
+            "11.1 Air"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu111.pdf",
+          "ordinal": 2,
+          "pageStart": 3,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 11: Nature’s Treasures",
+            "11.1 Air"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu111.pdf",
+          "ordinal": 3,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 11: Nature’s Treasures",
+            "11.2 Water"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T02:50:35.149Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If a school starts a rainwater harvesting system, what would be a direct benefit?",
+      "choices": [
+        "Increased use of fossil fuels",
+        "More water for drinking",
+        "More pollution",
+        "More trees cut"
+      ],
+      "answerIndex": 1,
+      "solution": "Rainwater harvesting helps in conserving water. The direct benefit would be more water available for use, such as for drinking or other purposes. The other options are not related to the benefits of rainwater harvesting.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक स्कूल वर्षा जल संग्रहण प्रणाली शुरू करता है, तो एक सीधा लाभ क्या होगा?",
+          "choices": [
+            "जीवाश्म ईंधन के अधिक उपयोग",
+            "पीने के लिए अधिक पानी",
+            "अधिक प्रदूषण",
+            "अधिक पेड़ काटे जाते हैं"
+          ],
+          "solution": "वर्षा जल संग्रहण पानी के संरक्षण में मदद करता है। सीधा लाभ उपयोग के लिए उपलब्ध पानी के अधिक होने के रूप में होगा, जैसे पीने के लिए या अन्य उद्देश्यों के लिए। अन्य विकल्प वर्षा जल संग्रहण के लाभ से संबंधित नहीं हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology for a school-level science context.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर शाळा वर्षाव जल संचयन प्रणाली सुरू करेल, तर एक थेट फायदा काय असेल?",
+          "choices": [
+            "ज्वलनशील इंधनाचा जास्त वापर",
+            "पिण्याच्या पाण्याचा जास्त वापर",
+            "अधिक दूषण",
+            "अधिक झाडे कापली जातील"
+          ],
+          "solution": "वर्षाव जल संचयनामुळे पाणी बचत होतो. थेट फायदा म्हणजे वापरासाठी उपलब्ध पाणी जास्त होतो, जे पिण्यासाठी किंवा इतर उद्देशांसाठी असू शकते. इतर विकल्प वर्षाव जल संचयनाच्या फायद्यांशी संबंधित नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for technical concepts like 'rainwater harvesting'.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the benefits of rainwater harvesting",
+        null,
+        "Misunderstands the purpose",
+        "Incorrectly assumes negative outcomes"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 1, as rainwater harvesting directly increases the availability of water for use. The other options are clearly incorrect and represent common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu111.pdf",
+          "ordinal": 16,
+          "pageStart": 23,
+          "pageEnd": 24,
+          "headingPath": [
+            "Chapter 11: Nature’s Treasures",
+            "11.8 Resources We use",
+            "Learning further"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T02:50:35.149Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If a person collects soil samples from different places, what is the most likely reason for the variation in their appearance?",
+      "choices": [
+        "Different types of plants grow in different places",
+        "Different types of animals live in different places",
+        "Different materials are present in the soil",
+        "Different weather conditions affect the soil"
+      ],
+      "answerIndex": 2,
+      "solution": "The most likely reason for the variation in the appearance of soil samples is that different materials are present in the soil. These materials, such as minerals, organic matter, and other substances, can affect the color and texture of the soil. Other factors, like plants or animals, may influence the soil indirectly but do not directly cause the variation in appearance as clearly as the composition of the soil itself.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि कोई व्यक्ति विभिन्न स्थानों से मिट्टी के नमूने एकत्र करता है, तो उनके दिखावट में अंतर के लिए सबसे संभावित कारण क्या है?",
+          "choices": [
+            "विभिन्न स्थानों में विभिन्न प्रकार के पौधे उगते हैं",
+            "विभिन्न स्थानों में विभिन्न प्रकार के जानवर रहते हैं",
+            "मिट्टी में विभिन्न पदार्थ उपस्थित होते हैं",
+            "विभिन्न जलवायु परिस्थितियाँ मिट्टी पर प्रभाव डालती हैं"
+          ],
+          "solution": "मिट्टी के नमूनों के दिखावट में अंतर के लिए सबसे संभावित कारण यह है कि मिट्टी में विभिन्न पदार्थ उपस्थित होते हैं। इन पदार्थों, जैसे कि खनिज, कार्बनिक पदार्थ और अन्य वस्तुएँ, मिट्टी के रंग और तंतु को प्रभावित कर सकते हैं। अन्य कारक, जैसे पौधे या जानवर, मिट्टी पर अप्रत्यक्ष रूप से प्रभाव डाल सकते हैं लेकिन मिट्टी के स्वयं के संघटन की तुलना में मिट्टी के दिखावट में अंतर के लिए इतना स्पष्ट रूप से कारण नहीं होते।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology consistent with textbook language.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर एखादा माणूस विविध ठिकाणांवरून मातीचे नमुने एकत्र करतो, तर त्यांच्या दिसावयाच्या रूपातील फरकाचा सर्वात शक्य कारण काय असू शकते?",
+          "choices": [
+            "विविध ठिकाणी वेगवेगळ्या वनस्पती वाढतात",
+            "विविध ठिकाणी वेगवेगळ्या प्राणी राहतात",
+            "मातीमध्ये वेगवेगळे पदार्थ असतात",
+            "विविध हवामानाच्या परिस्थितीमुळे मातीवर प्रभाव पडतो"
+          ],
+          "solution": "मातीच्या नमुन्यांच्या दिसावयाच्या रूपातील फरकाचा सर्वात शक्य कारण मातीमध्ये वेगवेगळे पदार्थ असणे असू शकते. हे पदार्थ, जसे की खनिजे, कार्बनिक पदार्थ आणि इतर वस्तु, मातीच्या रंग आणि ताकदीवर प्रभाव टाकू शकतात. वनस्पती किंवा प्राणी यांच्या माध्यमातून मातीवर अप्रत्यक्ष प्रभाव पडू शकतो परंतु मातीच्या रचनेमुळे दिसावयाच्या रूपातील फरक जास्त निश्चितपणे निर्माण होतो.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology consistent with textbook language.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Thinks plants cause variation in soil",
+        "Thinks animals cause variation in soil",
+        null,
+        "Believes weather causes variation in soil"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 2, as the variation in soil appearance is due to different materials present. The other options, while potentially related, are not the primary reason given in the passage. The author's reasoning for the wrong options reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu111.pdf",
+          "ordinal": 8,
+          "pageStart": 11,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 11: Nature’s Treasures",
+            "11.4 Forests"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu111.pdf",
+          "ordinal": 9,
+          "pageStart": 12,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 11: Nature’s Treasures",
+            "11.5 Soil, Rocks and Minerals"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu111.pdf",
+          "ordinal": 10,
+          "pageStart": 13,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 11: Nature’s Treasures",
+            "11.5 Soil, Rocks and Minerals"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu111.pdf",
+          "ordinal": 11,
+          "pageStart": 15,
+          "pageEnd": 17,
+          "headingPath": [
+            "Chapter 11: Nature’s Treasures",
+            "11.6 Fossil Fuels"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T02:50:35.149Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "Which of the following is a natural resource that can be used to generate electricity?",
+      "choices": [
+        "Wind",
+        "Plastic",
+        "Cement",
+        "Glass"
+      ],
+      "answerIndex": 0,
+      "solution": "Wind is a natural resource that can be harnessed to generate electricity through wind turbines. Plastic, cement, and glass are synthetic materials created by humans and do not occur naturally in the environment.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा प्राकृतिक संसाधन है जिसका विद्युत उत्पादन के लिए उपयोग किया जा सकता है?",
+          "choices": [
+            "हवा",
+            "प्लास्टिक",
+            "सीमेंट",
+            "कांच"
+          ],
+          "solution": "हवा एक प्राकृतिक संसाधन है जिसका विद्युत उत्पादन के लिए पवन टर्बाइन के माध्यम से उपयोग किया जा सकता है। प्लास्टिक, सीमेंट और कांच मानव द्वारा बनाए गए संश्लेषित सामग्री हैं और पर्यावरण में प्राकृतिक रूप से उपस्थित नहीं हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate technical terms as found in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणता एक प्राकृतिक संसाधन आहे जे विद्युत उत्पादनासाठी वापरता येऊ शकतो?",
+          "choices": [
+            "वायू",
+            "प्लास्टिक",
+            "सीमेंट",
+            "काच"
+          ],
+          "solution": "वायू हे प्राकृतिक संसाधन आहे जे विंड टर्बाइन्स माध्यमातून विद्युत उत्पादनासाठी वापरता येते. प्लास्टिक, सीमेंट आणि काच हे मानवाद्वारे तयार केलेले संश्लेषित सामग्री आहेत आणि पर्यावरणात प्राकृतिकरित्या असत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi technical terms used for natural resources and synthetic materials.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses natural resources with man-made materials",
+        "Confuses natural resources with man-made materials",
+        "Confuses natural resources with man-made materials"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct. Wind is a natural resource that can be used to generate electricity, while plastic, cement, and glass are man-made. The reasoning for the wrong options is valid and reflects a common misconception.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu111.pdf",
+          "ordinal": 16,
+          "pageStart": 23,
+          "pageEnd": 24,
+          "headingPath": [
+            "Chapter 11: Nature’s Treasures",
+            "11.8 Resources We use",
+            "Learning further"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T02:50:35.149Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "If a family uses solar panels for electricity, what would happen if there was no sunlight for a week?",
+      "choices": [
+        "They would use more water",
+        "They would run out of electricity",
+        "They would use more wind energy",
+        "They would use more fossil fuels"
+      ],
+      "answerIndex": 1,
+      "solution": "Solar panels generate electricity from sunlight. If there was no sunlight for a week, the family would not be able to generate electricity through solar panels, leading to a temporary loss of electricity. The other options are not directly related to the use of solar panels.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि कोई परिवार बिजली के लिए सौर पैनल का उपयोग करता है, तो एक सप्ताह तक सूर्य के बिना रहने पर क्या होगा?",
+          "choices": [
+            "वे अधिक पानी का उपयोग करेंगे",
+            "वे बिजली के अंत हो जाएगा",
+            "वे अधिक हवा ऊर्जा का उपयोग करेंगे",
+            "वे अधिक जीवाश्म ईंधन का उपयोग करेंगे"
+          ],
+          "solution": "सौर पैनल सूर्य के प्रकाश से बिजली उत्पन्न करते हैं। यदि एक सप्ताह तक सूर्य के बिना रहने पर, परिवार सौर पैनलों के माध्यम से बिजली उत्पन्न नहीं कर सकेगा, जिसके कारण बिजली के अस्थायी नुकसान होगा। अन्य विकल्प सौर पैनलों के उपयोग से सीधे संबंधित नहीं हैं।",
+          "imageAlt": null,
+          "critique": "Translation accurately reflects the original meaning with appropriate Hindi terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर एक कुटुंब सौर पॅनल वापरत असेल तर एक आठवडा सूर्यप्रकाश नसल्यास काय होईल?",
+          "choices": [
+            "त्यांना जास्त पाणी वापरावे लागेल",
+            "त्यांना विद्युत निर्माण बंद होईल",
+            "त्यांना जास्त वायू ऊर्जा वापरावी लागेल",
+            "त्यांना जास्त ज्वलनशील इंधन वापरावे लागेल"
+          ],
+          "solution": "सौर पॅनल सूर्यप्रकाशापासून विद्युत निर्माण करतात. जर एक आठवडा सूर्यप्रकाश नसल्यास, कुटुंब सौर पॅनलद्वारे विद्युत निर्माण करू शकणार नाहीत, ज्यामुळे विद्युत अस्थायी निर्माण बंद होईल. इतर विकल्प सौर पॅनलच्या वापराशी सीधा संबंध नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms. The correct answer remains option (1), and the distractors are still incorrect.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Misunderstands the function of solar panels",
+        null,
+        "Confuses energy sources",
+        "Assumes alternative energy sources are used without evidence"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is sound and correctly identifies option 1 as the correct answer. The reasoning aligns with the function of solar panels and the lack of sunlight.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu111.pdf",
+          "ordinal": 16,
+          "pageStart": 23,
+          "pageEnd": 24,
+          "headingPath": [
+            "Chapter 11: Nature’s Treasures",
+            "11.8 Resources We use",
+            "Learning further"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T02:50:35.149Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "If a student collects soil samples from a farm and from a forest, what is the most likely difference they might observe?",
+      "choices": [
+        "The farm soil will have more nutrients",
+        "The forest soil will be drier",
+        "The farm soil will have more earthworms",
+        "The forest soil will have more decomposed plant matter"
+      ],
+      "answerIndex": 3,
+      "solution": "Forest soil is likely to have more decomposed plant matter because the natural cycle of leaves and plant material decaying on the forest floor contributes to rich organic content. Farm soil may have fewer decomposed materials due to regular tilling and removal of plant residues. The other options are not directly related to the natural decomposition process in forests.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक छात्र खेत से और एक जंगल से मिट्टी के नमूने एकत्र करता है, तो वह संभवतः क्या अंतर देख सकता है?",
+          "choices": [
+            "खेत की मिट्टी में अधिक पोषक तत्व होंगे",
+            "जंगल की मिट्टी अधिक शुष्क होगी",
+            "खेत की मिट्टी में अधिक केंचुए होंगे",
+            "जंगल की मिट्टी में अधिक अपघटित पौधा पदार्थ होंगे"
+          ],
+          "solution": "जंगल की मिट्टी में अधिक अपघटित पौधा पदार्थ हो सकते हैं क्योंकि पेड़ों और पौधों के पत्तियों और पदार्थों के जंगल के फर्श पर अपघटन की प्राकृतिक चक्र अकार्बनिक सामग्री के समृद्ध होने में योगदान देता है। खेत की मिट्टी में नियमित बोरी और पौधा अवशेषों के हटाने के कारण अपघटित सामग्री कम हो सकती है। अन्य विकल्प जंगल में प्राकृतिक अपघटन प्रक्रिया से सीधे संबंधित नहीं हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology for a textbook context.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका विद्यार्थीने शेतापासून आणि जंगलापासून खोलीचे नमुने एकत्रित केले, तर त्यांनी अपेक्षित फरक काय असू शकतो?",
+          "choices": [
+            "शेताच्या खोलीत अधिक पोषक द्रव्ये असतील",
+            "जंगलाच्या खोलीत अधिक शुष्कता असतील",
+            "शेताच्या खोलीत अधिक केंडी असतील",
+            "जंगलाच्या खोलीत अधिक अपघटित वनस्पती पदार्थ असतील"
+          ],
+          "solution": "जंगलाच्या खोलीत अधिक अपघटित वनस्पती पदार्थ असू शकतात कारण जंगलात झाडांच्या पानांच्या आणि वनस्पतीच्या सामग्रीचा प्राकृतिक चक्र खोलीत अधिक कार्बनिक सामग्री बनवतो. शेताच्या खोलीत नियमित खोदण्यामुळे आणि वनस्पतीच्या अवशेषांच्या काढण्यामुळे अपघटित सामग्री कमी असू शकते. इतर विकल्प जंगलातील प्राकृतिक अपघटन प्रक्रियेशी सीधा संबंधित नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for soil science concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Thinks farm soil has more nutrients",
+        "Thinks forest soil is drier",
+        "Thinks farm soil has more earthworms",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 3, as the passage supports the idea that forest soil has more decomposed plant matter. The other options are not directly supported by the passage, and the author's reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu111.pdf",
+          "ordinal": 8,
+          "pageStart": 11,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 11: Nature’s Treasures",
+            "11.4 Forests"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu111.pdf",
+          "ordinal": 9,
+          "pageStart": 12,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 11: Nature’s Treasures",
+            "11.5 Soil, Rocks and Minerals"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu111.pdf",
+          "ordinal": 10,
+          "pageStart": 13,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 11: Nature’s Treasures",
+            "11.5 Soil, Rocks and Minerals"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu111.pdf",
+          "ordinal": 11,
+          "pageStart": 15,
+          "pageEnd": 17,
+          "headingPath": [
+            "Chapter 11: Nature’s Treasures",
+            "11.6 Fossil Fuels"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T02:50:35.149Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "If a windmill farm uses the energy of the wind to generate electricity, which of the following is a direct benefit of this use?",
+      "choices": [
+        "It increases pollution",
+        "It reduces dependence on fossil fuels",
+        "It decreases the wind speed",
+        "It causes more rainfall"
+      ],
+      "answerIndex": 1,
+      "solution": "Using wind to generate electricity relies on a renewable energy source, which decreases the need for non-renewable and polluting fossil fuels. The other options are incorrect because wind energy does not increase pollution, does not significantly affect wind speed, and does not influence rainfall patterns.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक हवाई चक्की के क्षेत्र हवा की ऊर्जा का उपयोग बिजली उत्पन्न करने के लिए करते हैं, तो इस उपयोग का निर्दिष्ट लाभ कौन सा है?",
+          "choices": [
+            "यह प्रदूषण बढ़ाता है",
+            "यह जीवाश्म ईंधन पर निर्भरता कम करता है",
+            "यह हवा की गति कम करता है",
+            "यह अधिक बारिश के कारण होता है"
+          ],
+          "solution": "हवा का उपयोग बिजली उत्पन्न करने के लिए एक नवीकरणीय ऊर्जा स्रोत पर निर्भर करता है, जो अकाट्य और प्रदूषक जीवाश्म ईंधन की आवश्यकता को कम करता है। अन्य विकल्प गलत हैं क्योंकि हवा ऊर्जा प्रदूषण नहीं बढ़ाती है, हवा की गति पर निर्णायक प्रभाव नहीं डालती है और बारिश के पैटर्न पर प्रभाव नहीं डालती है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, technical terms are appropriate for Hindi-medium curriculum, and the logic of the question and solution is preserved.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर विंडमिल फार्म वायूच्या ऊर्जेचा वापर करून विद्युत उत्पादन करत असेल, तर खालीलपैकी कोणते एक आधीचे फायदा असेल?",
+          "choices": [
+            "ते प्रदूषण वाढवते",
+            "ते ज्वलनीय इंधनावर अवलंबून राहण्याची गरज कमी करते",
+            "ते वायूच्या वेगाला कमी करते",
+            "ते अधिक वृष्टीपात होण्यास कारणीभूत ठरते"
+          ],
+          "solution": "विद्युत उत्पादनासाठी वायूचा वापर हा पुनर्प्राप्त ऊर्जा स्रोतावर अवलंबून असतो, जो अपुनर्प्राप्त आणि प्रदूषक ज्वलनीय इंधनाची आवश्यकता कमी करतो. इतर विकल्प चुकीचे आहेत कारण वायू ऊर्जा प्रदूषण वाढवत नाही, वायूच्या वेगावर महत्त्वाचा परिणाम करत नाही आणि वृष्टीपाताच्या पैटर्नवर परिणाम करत नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Misunderstands the environmental impact of windmills",
+        null,
+        "Confuses wind energy with other forms of energy",
+        "Misunderstands the effects of windmills on weather"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 1, as windmills reduce dependence on fossil fuels by using renewable wind energy. The other options represent common misconceptions about wind energy.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu111.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 11: Nature’s Treasures"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu111.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 11: Nature’s Treasures",
+            "11.1 Air"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu111.pdf",
+          "ordinal": 2,
+          "pageStart": 3,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 11: Nature’s Treasures",
+            "11.1 Air"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu111.pdf",
+          "ordinal": 3,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 11: Nature’s Treasures",
+            "11.2 Water"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T02:50:35.149Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
     }
   ]
 }

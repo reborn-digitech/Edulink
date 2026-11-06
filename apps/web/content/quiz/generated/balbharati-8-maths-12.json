@@ -232,6 +232,630 @@
       "generatedAt": "2026-11-02T07:41:46.993Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is the term for the value of the variable that satisfies the given equation?",
+      "choices": [
+        "Solution",
+        "Expression",
+        "Equation",
+        "Operation"
+      ],
+      "answerIndex": 0,
+      "solution": "The term for the value of the variable that satisfies an equation is called the solution, as it is the value that makes the equation true. An expression is a combination of numbers and variables, not a value that satisfies an equation. An equation is a statement that two expressions are equal, not the value that satisfies it. An operation is a mathematical action like addition or multiplication, not a result.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "दिए गए समीकरण को संतुष्ट करने वाले चर के मान के लिए क्या शब्द है?",
+          "choices": [
+            "हल",
+            "अभिव्यक्ति",
+            "समीकरण",
+            "संक्रिया"
+          ],
+          "solution": "एक समीकरण को संतुष्ट करने वाले चर के मान को हल कहा जाता है, क्योंकि यह वह मान है जो समीकरण को सत्य बनाता है। अभिव्यक्ति संख्याओं और चर के संयोजन होती है, जो समीकरण को संतुष्ट करने वाला मान नहीं होती। समीकरण दो अभिव्यक्तियों के बराबर होने का कथन होता है, जो समीकरण को संतुष्ट करने वाला मान नहीं होता। संक्रिया जैसे योग या गुणा के गणितीय क्रिया होती है, जो परिणाम नहीं होती।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses standard mathematical terminology as taught in Hindi-medium curricula.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "दिलेल्या समीकरणाला पूर्ण करणारा चलाचा मूल्य कोणत्या शब्दाने ओळखला जातो?",
+          "choices": [
+            "उत्तर",
+            "अभिव्यक्ती",
+            "समीकरण",
+            "क्रिया"
+          ],
+          "solution": "एका समीकरणाला पूर्ण करणारा चलाचा मूल्य उत्तर म्हणतात, कारण हा मूल्य समीकरण खरे करतो. अभिव्यक्ती ही संख्या आणि चलांची जोडणी असते, समीकरणाला पूर्ण करणारा मूल्य नसते. समीकरण ही दोन अभिव्यक्तींच्या समानतेचा दावा असतो, म्हणून ते समीकरणाला पूर्ण करणारा मूल्य नसते. क्रिया ही जोडणे किंवा गुणाकार अशा गणितीय कृती असतात, म्हणून ती समीकरणाचा निकाल नसतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for mathematical concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses the term 'solution' with 'expression'",
+        "Confuses the term 'solution' with 'equation'",
+        "Confuses the term 'solution' with 'operation'"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The question is straightforward and tests recall of a basic definition. The correct answer is clearly 'Solution', and the author's reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 52,
+          "pageStart": 85,
+          "pageEnd": 87,
+          "headingPath": [
+            "12. Equations in one variable"
+          ]
+        },
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 53,
+          "pageStart": 87,
+          "pageEnd": 88,
+          "headingPath": [
+            "12. Equations in one variable"
+          ]
+        },
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 54,
+          "pageStart": 88,
+          "pageEnd": 90,
+          "headingPath": [
+            "12. Equations in one variable"
+          ]
+        },
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 55,
+          "pageStart": 90,
+          "pageEnd": 90,
+          "headingPath": [
+            "12. Equations in one variable"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-11-01T00:56:17.687Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "Which of the following is the solution of the equation x + 4 = 9?",
+      "choices": [
+        "x = 3",
+        "x = 4",
+        "x = 5",
+        "x = 6"
+      ],
+      "answerIndex": 2,
+      "solution": "The equation x + 4 = 9 means we need to find the value of x that makes the equation true. To solve it, we subtract 4 from both sides, which gives x = 9 - 4 = 5. The option 'x = 5' is the correct solution. The option 'x = 3' is wrong because it subtracts 6 instead of 4. The option 'x = 4' is wrong because it subtracts 5 instead of 4. The option 'x = 6' is wrong because it adds 2 instead of subtracting 4.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में कौन समीकरण x + 4 = 9 का हल है?",
+          "choices": [
+            "x = 3",
+            "x = 4",
+            "x = 5",
+            "x = 6"
+          ],
+          "solution": "समीकरण x + 4 = 9 का अर्थ हमें x का मान ज्ञात करना है जो समीकरण को सत्य बना दे। इसे हल करने के लिए हम दोनों ओर से 4 घटाते हैं, जिससे x = 9 - 4 = 5 प्राप्त होता है। विकल्प 'x = 5' सही हल है। विकल्प 'x = 3' गलत है क्योंकि इसमें 6 घटाया गया है बजाय 4 के। विकल्प 'x = 4' गलत है क्योंकि इसमें 5 घटाया गया है बजाय 4 के। विकल्प 'x = 6' गलत है क्योंकि इसमें 2 जोड़ा गया है बजाय 4 के घटाने के।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी समीकरण x + 4 = 9 चे उत्तर कोणते आहे?",
+          "choices": [
+            "x = 3",
+            "x = 4",
+            "x = 5",
+            "x = 6"
+          ],
+          "solution": "समीकरण x + 4 = 9 म्हणजे आम्हाला x चे मूल्य शोधायचे आहे जे समीकरण खरे करते. त्यासोबतच, आम्ही दोन्ही बाजूंमधून 4 वजा करतो, जे x = 9 - 4 = 5 देते. 'x = 5' हा विकल्प योग्य उत्तर आहे. 'x = 3' हा विकल्प चुकीचा आहे कारण 4 वजा करण्याऐवजी 6 वजा केला आहे. 'x = 4' हा विकल्प चुकीचा आहे कारण 4 वजा करण्याऐवजी 5 वजा केला आहे. 'x = 6' हा विकल्प चुकीचा आहे कारण 4 वजा करण्याऐवजी 2 जोडला आहे.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "subtracts 6 instead of 4",
+        "subtracts 5 instead of 4",
+        null,
+        "adds 2 instead of subtracting 4"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct and the reasoning aligns with standard algebraic methods. The author's explanations for the incorrect options are plausible misconceptions that students might make.",
+      "sources": [
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 52,
+          "pageStart": 85,
+          "pageEnd": 87,
+          "headingPath": [
+            "12. Equations in one variable"
+          ]
+        },
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 53,
+          "pageStart": 87,
+          "pageEnd": 88,
+          "headingPath": [
+            "12. Equations in one variable"
+          ]
+        },
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 54,
+          "pageStart": 88,
+          "pageEnd": 90,
+          "headingPath": [
+            "12. Equations in one variable"
+          ]
+        },
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 55,
+          "pageStart": 90,
+          "pageEnd": 90,
+          "headingPath": [
+            "12. Equations in one variable"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-11-01T00:56:17.687Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "Solve the equation x - 4 = 3.",
+      "choices": [
+        "x = 1",
+        "x = 5",
+        "x = 7",
+        "x = 9"
+      ],
+      "answerIndex": 2,
+      "solution": "To solve x - 4 = 3, add 4 to both sides of the equation, resulting in x = 7. This follows the basic principle of maintaining equality by performing the same operation on both sides. The other options do not result in a true statement when substituted back into the original equation.",
+      "checkExpr": "3 + 4",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "समीकरण x - 4 = 3 को हल कीजिए।",
+          "choices": [
+            "x = 1",
+            "x = 5",
+            "x = 7",
+            "x = 9"
+          ],
+          "solution": "समीकरण x - 4 = 3 को हल करने के लिए दोनों ओर 4 जोड़ दें, जिससे x = 7 प्राप्त होता है। यह समानता के मूल सिद्धांत का अनुसरण करता है, जो दोनों ओर एक ही संक्रिया करके बराबरी बनाए रखता है। अन्य विकल्प मूल समीकरण में प्रतिस्थापित करने पर सत्य कथन नहीं देते हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "समीकरण x - 4 = 3 सोडवा.",
+          "choices": [
+            "x = 1",
+            "x = 5",
+            "x = 7",
+            "x = 9"
+          ],
+          "solution": "x - 4 = 3 समीकरण सोडवण्यासाठी, समीकरणाच्या दोन्ही बाजूंमध्ये 4 जोडा, जे x = 7 चा निष्कर्ष देते. हे समीकरणाच्या समानतेच्या मूलभूत तत्त्वाचे अनुसरण करते. इतर विकल्पांमध्ये मूळ समीकरणात बदल केल्यास खोटे विधान मिळते.",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, structure, and mathematical terminology appropriate for Marathi-medium education.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Subtracts 4 instead of adding",
+        "Adds 2 instead of 4",
+        null,
+        "Adds 5 instead of 4"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct. Adding 4 to both sides of the equation x - 4 = 3 gives x = 7, which matches the key. The distractors reflect common errors such as incorrect addition.",
+      "sources": [
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 52,
+          "pageStart": 85,
+          "pageEnd": 87,
+          "headingPath": [
+            "12. Equations in one variable"
+          ]
+        },
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 53,
+          "pageStart": 87,
+          "pageEnd": 88,
+          "headingPath": [
+            "12. Equations in one variable"
+          ]
+        },
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 54,
+          "pageStart": 88,
+          "pageEnd": 90,
+          "headingPath": [
+            "12. Equations in one variable"
+          ]
+        },
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 55,
+          "pageStart": 90,
+          "pageEnd": 90,
+          "headingPath": [
+            "12. Equations in one variable"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-11-01T00:56:17.687Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "Which operation is used to isolate the variable in the equation 4x = 24?",
+      "choices": [
+        "Adding 24 to both sides",
+        "Dividing both sides by 4",
+        "Multiplying both sides by 4",
+        "Subtracting 24 from both sides"
+      ],
+      "answerIndex": 1,
+      "solution": "Dividing both sides by 4 is the correct operation because it undoes the multiplication by 4, leaving x by itself. Adding or subtracting 24 does not address the multiplication, and multiplying both sides by 4 would make the equation more complex rather than simpler.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "समीकरण 4x = 24 में चर को अलग करने के लिए कौन सा संक्रिया का उपयोग किया जाता है?",
+          "choices": [
+            "दोनों ओर 24 जोड़ना",
+            "दोनों ओर 4 से भाग देना",
+            "दोनों ओर 4 से गुणा करना",
+            "दोनों ओर से 24 घटाना"
+          ],
+          "solution": "दोनों ओर 4 से भाग देना सही संक्रिया है क्योंकि यह 4 से गुणा करने के विपरीत है, जिससे x अकेला रह जाता है। 24 को जोड़ना या घटाना गुणा के साथ संबंधित नहीं है, और दोनों ओर 4 से गुणा करना समीकरण को अधिक जटिल बना देता है बजाय सरल बनाने के।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English question, with appropriate mathematical terminology used in a Hindi-medium context.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "समीकरण 4x = 24 मध्ये चल विलग करण्यासाठी कोणती क्रिया वापरली जाते?",
+          "choices": [
+            "दोन्ही बाजूंमध्ये 24 जोडणे",
+            "दोन्ही बाजूंना 4 ने भागणे",
+            "दोन्ही बाजूंना 4 ने गुणणे",
+            "दोन्ही बाजूंमधून 24 वजा करणे"
+          ],
+          "solution": "दोन्ही बाजूंना 4 ने भागणे ही योग्य क्रिया आहे कारण ती 4 ने गुणण्याला विलोपित करते, x ला स्वतंत्र ठेवते. 24 जोडणे किंवा 24 वजा करणे ही गुणनाला निर्देशित करत नाहीत, आणि दोन्ही बाजूंना 4 ने गुणणे ही समीकरण अधिक जटिल करेल नाहीतर सोपे करेल.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Student thinks the goal is to eliminate the coefficient by adding the constant term instead of dividing.",
+        null,
+        "This would increase the value of x",
+        "Student incorrectly thinks the goal is to eliminate the constant on the right side rather than the coefficient of the variable."
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct operation to isolate x in 4x = 24 is to divide both sides by 4. The author's solution and reasoning are accurate and align with standard algebraic principles.",
+      "sources": [
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 52,
+          "pageStart": 85,
+          "pageEnd": 87,
+          "headingPath": [
+            "12. Equations in one variable"
+          ]
+        },
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 53,
+          "pageStart": 87,
+          "pageEnd": 88,
+          "headingPath": [
+            "12. Equations in one variable"
+          ]
+        },
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 54,
+          "pageStart": 88,
+          "pageEnd": 90,
+          "headingPath": [
+            "12. Equations in one variable"
+          ]
+        },
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 55,
+          "pageStart": 90,
+          "pageEnd": 90,
+          "headingPath": [
+            "12. Equations in one variable"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-11-01T00:56:17.687Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "In the equation 4(x - 7) = 5(x - 2), which of the following is the correct value of x?",
+      "choices": [
+        "x = -18",
+        "x = -17",
+        "x = -16",
+        "x = -15"
+      ],
+      "answerIndex": 0,
+      "solution": "The equation 4(x - 7) = 5(x - 2) means we need to find the value of x that makes the equation true. To solve it, we first expand both sides: 4x - 28 = 5x - 10. Then we subtract 4x from both sides, which gives -28 = x - 10. Next, we add 10 to both sides, which gives -18 = x. The option 'x = -18' is the correct solution. The option 'x = -17' is wrong because it adds 1 instead of 10. The option 'x = -16' is wrong because it adds 2 instead of 10. The option 'x = -15' is wrong because it adds 3 instead of 10.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "समीकरण 4(x - 7) = 5(x - 2) में, निम्नलिखित में से कौन सा x का सही मान है?",
+          "choices": [
+            "x = -18",
+            "x = -17",
+            "x = -16",
+            "x = -15"
+          ],
+          "solution": "समीकरण 4(x - 7) = 5(x - 2) का अर्थ है कि हमें x का मान ज्ञात करना है जो समीकरण को सत्य बनाता है। इसे हल करने के लिए, हम पहले दोनों ओर को विस्तारित करते हैं: 4x - 28 = 5x - 10। फिर हम दोनों ओर से 4x घटाते हैं, जिससे -28 = x - 10 प्राप्त होता है। अगले चरण में, हम दोनों ओर 10 जोड़ते हैं, जिससे -18 = x प्राप्त होता है। विकल्प 'x = -18' सही हल है। विकल्प 'x = -17' गलत है क्योंकि इसमें 10 के बजाय 1 जोड़ा गया है। विकल्प 'x = -16' गलत है क्योंकि इसमें 10 के बजाय 2 जोड़ा गया है। विकल्प 'x = -15' गलत है क्योंकि इसमें 10 के बजाय 3 जोड़ा गया है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "समीकरण 4(x - 7) = 5(x - 2) मध्ये x ची खालीलपैकी कोणती बरोबर किंमत आहे?",
+          "choices": [
+            "x = -18",
+            "x = -17",
+            "x = -16",
+            "x = -15"
+          ],
+          "solution": "समीकरण 4(x - 7) = 5(x - 2) म्हणजे x ची अशी किंमत शोधणे आहे जी समीकरण खरे करते. त्यासोबतच आपण दोन्ही बाजूंचा विस्तार करतो: 4x - 28 = 5x - 10. नंतर आपण दोन्ही बाजूंमधून 4x वजा करतो, ज्यामुळे -28 = x - 10 मिळते. नंतर आपण दोन्ही बाजूंमध्ये 10 जोडतो, ज्यामुळे -18 = x मिळते. विकल्प 'x = -18' हा बरोबर उत्तर आहे. विकल्प 'x = -17' चूक आहे कारण ते 1 जोडते बरोबर 10 जोडते. विकल्प 'x = -16' चूक आहे कारण ते 2 जोडते बरोबर 10 जोडते. विकल्प 'x = -15' चूक आहे कारण ते 3 जोडते बरोबर 10 जोडते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi mathematical terminology used.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "adds 1 instead of 10",
+        "adds 2 instead of 10",
+        "adds 3 instead of 10"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct and the correct answer is x = -18. The author's reasoning for the distractors is plausible and reflects common student errors.",
+      "sources": [
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 52,
+          "pageStart": 85,
+          "pageEnd": 87,
+          "headingPath": [
+            "12. Equations in one variable"
+          ]
+        },
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 53,
+          "pageStart": 87,
+          "pageEnd": 88,
+          "headingPath": [
+            "12. Equations in one variable"
+          ]
+        },
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 54,
+          "pageStart": 88,
+          "pageEnd": 90,
+          "headingPath": [
+            "12. Equations in one variable"
+          ]
+        },
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 55,
+          "pageStart": 90,
+          "pageEnd": 90,
+          "headingPath": [
+            "12. Equations in one variable"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-11-01T00:56:17.687Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "If the sum of the weights of Joseph and his younger brother is 63 kg and Joseph's weight is twice his brother's, what is Joseph's weight?",
+      "choices": [
+        "21 kg",
+        "42 kg",
+        "63 kg",
+        "126 kg"
+      ],
+      "answerIndex": 1,
+      "solution": "Let the weight of Joseph's brother be x. Then Joseph's weight is 2x. Adding their weights gives x + 2x = 63, which simplifies to 3x = 63. Solving for x gives 21, so Joseph's weight is 2 times that, which is 42 kg. The option 21 kg is the brother's weight, not Joseph's. The option 63 kg would mean Joseph's brother weighs 0 kg, which is impossible. The option 126 kg is double the total weight and does not satisfy the given relationship.",
+      "checkExpr": "2*21",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि जोसेफ और उसके छोटे भाई के वजन का योग 63 किग्रा है और जोसेफ का वजन उसके भाई के दोगुना है, तो जोसेफ का वजन क्या है?",
+          "choices": [
+            "21 किग्रा",
+            "42 किग्रा",
+            "63 किग्रा",
+            "126 किग्रा"
+          ],
+          "solution": "मान लीजिए जोसेफ के भाई का वजन x है। तब जोसेफ का वजन 2x होगा। उनके वजनों का योग x + 2x = 63 होगा, जो 3x = 63 में सरलीकृत हो जाता है। x के लिए हल करने पर 21 प्राप्त होता है, तब जोसेफ का वजन 2 गुना होगा, जो 42 किग्रा होगा। विकल्प 21 किग्रा भाई का वजन है, न कि जोसेफ का। विकल्प 63 किग्रा का अर्थ होगा कि जोसेफ के भाई का वजन 0 किग्रा है, जो असंभव है। विकल्प 126 किग्रा कुल वजन का दोगुना है और दिए गए संबंध को संतुष्ट नहीं करता।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology common in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जोसेफ आणि त्याच्या लहान भाऊच्या वजनाची बेरीज 63 किग्रा आहे आणि जोसेफचे वजन त्याच्या भाऊच्या दुप्पट आहे, तर जोसेफचे वजन किती आहे?",
+          "choices": [
+            "21 किग्रा",
+            "42 किग्रा",
+            "63 किग्रा",
+            "126 किग्रा"
+          ],
+          "solution": "मानू जोसेफच्या भाऊचे वजन x आहे. तर जोसेफचे वजन 2x आहे. त्यांचे वजन जोडल्यास x + 2x = 63 होते, जे 3x = 63 च्या सोप्या रूपात लिहिता येते. x चे मूल्य 21 मिळते, म्हणून जोसेफचे वजन 2 वेळा असेल, जे 42 किग्रा आहे. 21 किग्रा या पर्यायात भाऊचे वजन असते, जोसेफचे नाही. 63 किग्रा या पर्यायाने जोसेफच्या भाऊचे वजन 0 किग्रा असेल, जे शक्य नाही. 126 किग्रा या पर्यायाने एकूण वजनाच्या दुप्पट असते आणि दिलेल्या संबंधाला अनुरूप नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "This is the weight of Joseph's brother",
+        null,
+        "This is the total weight",
+        "This is double the total weight"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct and logically follows from the given information. The reasoning is sound and matches the correct answer.",
+      "sources": [
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 52,
+          "pageStart": 85,
+          "pageEnd": 87,
+          "headingPath": [
+            "12. Equations in one variable"
+          ]
+        },
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 53,
+          "pageStart": 87,
+          "pageEnd": 88,
+          "headingPath": [
+            "12. Equations in one variable"
+          ]
+        },
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 54,
+          "pageStart": 88,
+          "pageEnd": 90,
+          "headingPath": [
+            "12. Equations in one variable"
+          ]
+        },
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 55,
+          "pageStart": 90,
+          "pageEnd": 90,
+          "headingPath": [
+            "12. Equations in one variable"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-11-01T00:56:17.687Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
     }
   ]
 }

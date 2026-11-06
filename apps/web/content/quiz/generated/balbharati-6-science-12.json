@@ -499,6 +499,961 @@
       "generatedAt": "2026-11-01T18:19:40.600Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "Which of the following is an example of linear motion?",
+      "choices": [
+        "A ball rolling on the ground",
+        "A pendulum swinging",
+        "A car moving on a curved road",
+        "A fruit falling from a tree"
+      ],
+      "answerIndex": 3,
+      "solution": "A fruit falling from a tree is an example of linear motion because it moves in a straight line. A ball rolling on the ground may not always move in a straight line, a pendulum swings in a circular arc, and a car moving on a curved road follows a non-linear path.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन रेखीय गति का उदाहरण है?",
+          "choices": [
+            "जमीन पर लुढ़कती गेंद",
+            "एक पेंडुलम के झूलना",
+            "एक कार एक वक्र मार्ग पर चलना",
+            "एक फल एक पेड़ से गिरना"
+          ],
+          "solution": "एक फल एक पेड़ से गिरना रेखीय गति का उदाहरण है क्योंकि यह एक सीधी रेखा में गति करता है। जमीन पर लुढ़कती गेंद हमेशा एक सीधी रेखा में नहीं गति करती है, एक पेंडुलम एक वृत्ताकार चाप में झूलता है और एक कार एक वक्र मार्ग पर चलते समय एक अरेखीय पथ का अनुसरण करती है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate technical terms as used in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते रेषीय गतीचे उदाहरण आहे?",
+          "choices": [
+            "जमिनीवर फिरणारा गोला",
+            "एका दोरीला बांधलेला गुडगुडा झुलत आहे",
+            "वक्र मार्गावर चालणारी गाडी",
+            "एका झाडावरून खाली पडणारा फळ"
+          ],
+          "solution": "एका झाडावरून खाली पडणारा फळ हा रेषीय गतीचा उदाहरण आहे कारण तो सरळ रेषेत गती करतो. जमिनीवर फिरणारा गोला सदैव सरळ रेषेत गती करत नाही, गुडगुडा वर्तुळाकार वक्रात झुलतो आणि वक्र मार्गावर चालणारी गाडी नियमित नसलेल्या मार्गावर जाते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for physics concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses linear motion with general motion",
+        "Identifies circular motion as linear",
+        "Thinks curved motion is linear",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 3, as a fruit falling from a tree moves in a straight line. The other options involve curved or circular motion, which are not linear. The author's reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 104,
+          "pageStart": 120,
+          "pageEnd": 121,
+          "headingPath": [
+            "12. Motion and Types of Motion"
+          ]
+        },
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 105,
+          "pageStart": 121,
+          "pageEnd": 122,
+          "headingPath": [
+            "12. Motion and Types of Motion"
+          ]
+        },
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 106,
+          "pageStart": 122,
+          "pageEnd": 124,
+          "headingPath": [
+            "12. Motion and Types of Motion"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-10-31T06:42:10.693Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What determines whether an object is in motion or at rest?",
+      "choices": [
+        "The size of the object",
+        "The position of the observer",
+        "The color of the object",
+        "The temperature of the object"
+      ],
+      "answerIndex": 1,
+      "solution": "The position of the observer determines whether an object is in motion or at rest. An object may appear to be moving to one observer but stationary to another, depending on their position and reference point.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "क्या तय करता है कि एक वस्तु गतिशील है या विराम में है?",
+          "choices": [
+            "वस्तु का आकार",
+            "अवलोकक की स्थिति",
+            "वस्तु का रंग",
+            "वस्तु का तापमान"
+          ],
+          "solution": "अवलोकक की स्थिति तय करती है कि एक वस्तु गतिशील है या विराम में है। एक वस्तु एक अवलोकक के लिए गतिशील लग सकती है लेकिन दूसरे अवलोकक के लिए स्थिर लग सकती है, जो उनकी स्थिति और संदर्भ बिंदु पर निर्भर करता है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriately used in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "कोणते वस्तु गतीत आहे किंवा विश्रांतीत आहे याचे निर्धारण करते?",
+          "choices": [
+            "वस्तुचे आकार",
+            "अवलोककाचे स्थान",
+            "वस्तुचे रंग",
+            "वस्तुचे तापमान"
+          ],
+          "solution": "अवलोककाचे स्थान वस्तु गतीत आहे किंवा विश्रांतीत आहे याचे निर्धारण करते. एका अवलोककाला वस्तु गतीत दिसू शकते तर दुसऱ्या अवलोककाला विश्रांतीत दिसू शकते, जे त्यांच्या स्थान आणि संदर्भावर अवलंबून असते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for scientific concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Focuses on physical attributes of the object",
+        null,
+        "Mistakenly believes motion is independent of observation",
+        "Confuses motion with environmental factors"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-constructed. The correct answer is 1, and the reasoning aligns with the concept of relative motion. The distractors reflect common misconceptions about motion.",
+      "sources": [
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 104,
+          "pageStart": 120,
+          "pageEnd": 121,
+          "headingPath": [
+            "12. Motion and Types of Motion"
+          ]
+        },
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 105,
+          "pageStart": 121,
+          "pageEnd": 122,
+          "headingPath": [
+            "12. Motion and Types of Motion"
+          ]
+        },
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 106,
+          "pageStart": 122,
+          "pageEnd": 124,
+          "headingPath": [
+            "12. Motion and Types of Motion"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-10-31T06:42:10.693Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If an object moves in a straight line, what type of motion is it exhibiting?",
+      "choices": [
+        "Circular motion",
+        "Oscillatory motion",
+        "Linear motion",
+        "Random motion"
+      ],
+      "answerIndex": 2,
+      "solution": "If an object moves in a straight line, it is exhibiting linear motion. Circular motion follows a curved path, oscillatory motion is back and forth, and random motion is unpredictable.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि कोई वस्तु सीधी रेखा में गतिमान है, तो यह किस प्रकार की गति का अनुभव कर रहा है?",
+          "choices": [
+            "वृत्तीय गति",
+            "दोलनी गति",
+            "रैखिक गति",
+            "यादृच्छिक गति"
+          ],
+          "solution": "यदि कोई वस्तु सीधी रेखा में गतिमान है, तो यह रैखिक गति का अनुभव कर रहा है। वृत्तीय गति एक वक्र पथ का अनुसरण करती है, दोलनी गति आगे-पीछे होती है और यादृच्छिक गति अनुमानित नहीं होती है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Hindi scientific terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका वस्तूने सीधा रेषेत गती केल्यास ती कोणत्या प्रकारची गती दर्शवित आहे?",
+          "choices": [
+            "वर्तुळाकार गती",
+            "दोलनशील गती",
+            "रेषीय गती",
+            "अनियमित गती"
+          ],
+          "solution": "जर एका वस्तूने सीधा रेषेत गती केली तर ती रेषीय गती दर्शवित आहे. वर्तुळाकार गती वक्र मार्गावर असते, दोलनशील गती आगला-पाछला असते आणि अनियमित गती अनिश्चित असते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology as used in standard textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses circular motion with linear",
+        "Associates motion with periodic movement",
+        null,
+        "Misinterprets unpredictable motion as linear"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The question is clear and the solution correctly identifies linear motion as the answer. The distractors are based on common misconceptions about motion types.",
+      "sources": [
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 104,
+          "pageStart": 120,
+          "pageEnd": 121,
+          "headingPath": [
+            "12. Motion and Types of Motion"
+          ]
+        },
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 105,
+          "pageStart": 121,
+          "pageEnd": 122,
+          "headingPath": [
+            "12. Motion and Types of Motion"
+          ]
+        },
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 106,
+          "pageStart": 122,
+          "pageEnd": 124,
+          "headingPath": [
+            "12. Motion and Types of Motion"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-10-31T06:42:10.693Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "A child is sitting in a moving bus. According to the child, the bag next to them is stationary. What would an observer outside the bus say?",
+      "choices": [
+        "The bag is moving",
+        "The bag is stationary",
+        "The bag is accelerating",
+        "The bag is in circular motion"
+      ],
+      "answerIndex": 0,
+      "solution": "An observer outside the bus would say the bag is moving because the bus itself is in motion. The child perceives the bag as stationary because they are moving with the bus and use the bus as a reference point.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक बच्चा एक गतिशील बस में बैठा हुआ है। बच्चे के अनुसार, उनके पास वाला बैग स्थिर है। बस के बाहर के एक अवलोकनकर्ता क्या कहेगा?",
+          "choices": [
+            "बैग गतिशील है",
+            "बैग स्थिर है",
+            "बैग त्वरित है",
+            "बैग वृत्ताकार गति में है"
+          ],
+          "solution": "बस के बाहर के अवलोकनकर्ता बैग गतिशील है कहेगा क्योंकि बस स्वयं गतिशील है। बच्चा बैग को स्थिर इसलिए प्रतीत करता है क्योंकि वह बस के साथ गतिशील है और बस को संदर्भ बिंदु के रूप में उपयोग करता है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriately used in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका बालकाचे एका चालू बसमध्ये बसलेले आहे. बालकाच्या दृष्टीने, त्याच्या जवळ असलेला बॅग स्थिर आहे. बसबाहेर असलेला निरीक्षक काय म्हणेल?",
+          "choices": [
+            "बॅग चालू आहे",
+            "बॅग स्थिर आहे",
+            "बॅग त्वरित आहे",
+            "बॅग वर्तुळाकार गतीत आहे"
+          ],
+          "solution": "बसबाहेर असलेला निरीक्षक बॅग चालू आहे असे म्हणेल कारण बस स्वतः गतीत आहे. बालकाच्या दृष्टीने बॅग स्थिर आहे कारण तो बससह गतीत आहे आणि बसला आधार मानतो.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for physics concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Believes motion is absolute and does not depend on the observer's frame of reference",
+        "Student thinks motion always involves speeding up, not just moving at constant speed",
+        "Believes motion is always circular due to Earth's rotation"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies that motion is relative and depends on the observer's frame of reference. The author's reasoning for the wrong options reflects common misconceptions among students.",
+      "sources": [
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 104,
+          "pageStart": 120,
+          "pageEnd": 121,
+          "headingPath": [
+            "12. Motion and Types of Motion"
+          ]
+        },
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 105,
+          "pageStart": 121,
+          "pageEnd": 122,
+          "headingPath": [
+            "12. Motion and Types of Motion"
+          ]
+        },
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 106,
+          "pageStart": 122,
+          "pageEnd": 124,
+          "headingPath": [
+            "12. Motion and Types of Motion"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-10-31T06:42:10.693Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Which of the following is an example of non-linear motion?",
+      "choices": [
+        "A train moving on a straight track",
+        "A ball rolling on the ground",
+        "A car moving on a circular road",
+        "A stone falling from a height"
+      ],
+      "answerIndex": 2,
+      "solution": "A car moving on a circular road is an example of non-linear motion because it follows a curved path. A train, a ball, and a stone in free fall exhibit linear motion.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा असीधी गति का उदाहरण है?",
+          "choices": [
+            "एक सीधे ट्रैक पर चल रही ट्रेन",
+            "जमीन पर लुढ़क रहा एक गेंद",
+            "एक वृत्ताकार सड़क पर चल रहा एक कार",
+            "ऊंचाई से गिर रहा एक पत्थर"
+          ],
+          "solution": "एक वृत्ताकार सड़क पर चल रहा एक कार असीधी गति का उदाहरण है क्योंकि यह एक वक्र पथ का अनुसरण करता है। एक ट्रेन, एक गेंद और एक पत्थर मुक्त पतन में सीधी गति प्रदर्शित करता है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and technical terms. All options are correctly translated, and the correct answer remains option 2. The solution is also properly translated and maintains the same reasoning.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते अरेषीय गतीचे उदाहरण आहे?",
+          "choices": [
+            "सीध्या मार्गावर चालणारा रेल्वे गाडी",
+            "जमिनीवर फिरणारा गोला",
+            "वर्तुळाकार मार्गावर चालणारा गाडी",
+            "उंचीवरून खाली पडणारा दगड"
+          ],
+          "solution": "वर्तुळाकार मार्गावर चालणारा गाडी ही अरेषीय गतीचे उदाहरण आहे कारण तो वक्र मार्गावर जातो. रेल्वे गाडी, गोला आणि मुक्त पाडलेला दगड रेषीय गती दर्शवतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms for physics concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses circular motion with linear",
+        "Thinks any motion is linear",
+        null,
+        "Mistakenly classifies falling motion as non-linear"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 2, as a car moving on a circular road follows a curved path, which is non-linear motion. The other options describe linear motion, and the author's reasoning for the wrong options aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 104,
+          "pageStart": 120,
+          "pageEnd": 121,
+          "headingPath": [
+            "12. Motion and Types of Motion"
+          ]
+        },
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 105,
+          "pageStart": 121,
+          "pageEnd": 122,
+          "headingPath": [
+            "12. Motion and Types of Motion"
+          ]
+        },
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 106,
+          "pageStart": 122,
+          "pageEnd": 124,
+          "headingPath": [
+            "12. Motion and Types of Motion"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-10-31T06:42:10.693Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What type of motion does a pendulum exhibit?",
+      "choices": [
+        "Circular motion",
+        "Oscillatory motion",
+        "Random motion",
+        "Linear motion"
+      ],
+      "answerIndex": 1,
+      "solution": "The correct answer is 'Oscillatory motion' because a pendulum moves back and forth along the same path, which is the definition of oscillatory motion. Circular motion involves movement in a circular path, random motion is unpredictable and not along a fixed path, and linear motion is movement in a straight line.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक लोलक किस प्रकार की गति प्रदर्शित करता है?",
+          "choices": [
+            "वृत्तीय गति",
+            "दोलनी गति",
+            "यादृच्छिक गति",
+            "रैखिक गति"
+          ],
+          "solution": "सही उत्तर 'दोलनी गति' है क्योंकि एक लोलक एक ही मार्ग के साथ आगे और पीछे गति करता है, जो दोलनी गति की परिभाषा है। वृत्तीय गति एक वृत्ताकार मार्ग में गति को कहते हैं, यादृच्छिक गति अनिश्चित और एक निश्चित मार्ग के बिना होती है और रैखिक गति एक सीधी रेखा में गति को कहते हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard physics terminology as taught in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "पेंडुलम कोणत्या प्रकारच्या गतीचे उदाहरण आहे?",
+          "choices": [
+            "वृत्ताकार गती",
+            "दोलनी गती",
+            "अनियमित गती",
+            "रेषीय गती"
+          ],
+          "solution": "बरोबर उत्तर 'दोलनी गती' आहे कारण पेंडुलम एका ठराविक मार्गावर आगलबगल करत असतो, जे दोलनी गतीचे वर्णन आहे. वृत्ताकार गतीमध्ये वृत्ताकार मार्गावर गती होते, अनियमित गती अनिश्चित असते आणि रेषीय गती सरळ रेषेत गती होते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology as used in standard textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses circular motion with oscillatory motion",
+        null,
+        "Misidentifies random motion as oscillatory motion",
+        "Thinks linear motion is the same as oscillatory motion"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly identifies oscillatory motion as the correct answer and provides accurate explanations for why the other options are incorrect.",
+      "sources": [
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 99,
+          "pageStart": 121,
+          "pageEnd": 122,
+          "headingPath": [
+            "12. Motion and Types of Motion"
+          ]
+        },
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 100,
+          "pageStart": 122,
+          "pageEnd": 124,
+          "headingPath": [
+            "12. Motion and Types of Motion"
+          ]
+        },
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 101,
+          "pageStart": 124,
+          "pageEnd": 125,
+          "headingPath": [
+            "12. Motion and Types of Motion",
+            "Exercises"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-10-30T20:41:34.421Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "A child is riding a merry-go-round. What type of motion does the child experience?",
+      "choices": [
+        "Linear motion",
+        "Oscillatory motion",
+        "Circular motion",
+        "Random motion"
+      ],
+      "answerIndex": 2,
+      "solution": "The correct answer is 'Circular motion' because the child is moving along a circular path as the merry-go-round rotates. Linear motion is movement in a straight line, oscillatory motion is back-and-forth movement, and random motion is unpredictable. Since the child's path is circular, the motion is circular.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक बच्चा मैरी-गो-राउंड पर सवार है। बच्चा किस प्रकार की गति का अनुभव करता है?",
+          "choices": [
+            "रैखिक गति",
+            "दोलनी गति",
+            "वृत्तीय गति",
+            "यादृच्छिक गति"
+          ],
+          "solution": "सही उत्तर 'वृत्तीय गति' है क्योंकि मैरी-गो-राउंड घूमते समय बच्चा एक वृत्ताकार पथ पर गति करता है। रैखिक गति सीधी रेखा में गति होती है, दोलनी गति पीछे-आगे की गति होती है और यादृच्छिक गति अनिश्चित होती है। चूंकि बच्चे का पथ वृत्ताकार है, इसलिए गति वृत्तीय होती है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Hindi scientific terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका मुलाने मरी-गो-राउंड चालवला आहे. मुलाला कोणत्या प्रकारचा गती अनुभव होत आहे?",
+          "choices": [
+            "रेषीय गती",
+            "दोलनी गती",
+            "वर्तुळाकार गती",
+            "अनियमित गती"
+          ],
+          "solution": "बरोबर उत्तर 'वर्तुळाकार गती' आहे कारण मरी-गो-राउंड फिरत असताना मुला वर्तुळाकार मार्गाने चालत असतो. रेषीय गती ही सरळ रेषेत चालने आहे, दोलनी गती ही आगळी-वागळी गती आहे आणि अनियमित गती ही अनिश्चित आहे. मुलाचा मार्ग वर्तुळाकार असल्याने गती वर्तुळाकार आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology as found in standard textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Thinks motion in a circle is linear",
+        "Associates oscillatory motion with circular motion",
+        null,
+        "Does not understand the difference between random and circular motion"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct and aligns with the key. The child on a merry-go-round experiences circular motion, and the explanations for the distractors are plausible misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 99,
+          "pageStart": 121,
+          "pageEnd": 122,
+          "headingPath": [
+            "12. Motion and Types of Motion"
+          ]
+        },
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 100,
+          "pageStart": 122,
+          "pageEnd": 124,
+          "headingPath": [
+            "12. Motion and Types of Motion"
+          ]
+        },
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 101,
+          "pageStart": 124,
+          "pageEnd": 125,
+          "headingPath": [
+            "12. Motion and Types of Motion",
+            "Exercises"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-10-30T20:41:34.421Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "A student observes an object that is moving in a straight line and then changes direction. What type of motion is this object exhibiting?",
+      "choices": [
+        "Linear motion",
+        "Circular motion",
+        "Oscillatory motion",
+        "Random motion"
+      ],
+      "answerIndex": 3,
+      "solution": "Random motion is when an object moves in unpredictable directions, which matches the observation of an object changing direction. Linear motion involves movement in a straight line, which is not the case here. Circular motion follows a curved path, and oscillatory motion involves back-and-forth movement, neither of which describes a change in direction as observed.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक छात्र एक वस्तु के धीरे-धीरे सीधी रेखा में गति करते हुए देखता है और फिर दिशा बदल जाती है। यह वस्तु किस प्रकार की गति प्रदर्शित कर रही है?",
+          "choices": [
+            "रैखिक गति",
+            "वृत्तीय गति",
+            "दोलनी गति",
+            "अनियमित गति"
+          ],
+          "solution": "अनियमित गति वह होती है जब एक वस्तु अनुमानित दिशाओं में गति करती है, जो एक वस्तु के दिशा बदलते हुए अवलोकन के साथ मेल खाती है। रैखिक गति सीधी रेखा में गति के लिए होती है, जो यहां नहीं है। वृत्तीय गति वक्र मार्ग का अनुसरण करती है, और दोलनी गति पीछे-आगे गति के लिए होती है, जो दिशा बदलने का वर्णन नहीं करती है जैसा कि अवलोकन में है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Hindi terminology from textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एक विद्यार्थी एका वस्तूचे निरीक्षण करतो जी सरळ रेषेत गतिमान असते आणि नंतर दिशा बदलते. या वस्तूने कोणत्या प्रकारची गती दाखवली आहे?",
+          "choices": [
+            "रेखीय गती",
+            "वृत्तीय गती",
+            "दोलनीय गती",
+            "अनियमित गती"
+          ],
+          "solution": "अनियमित गती ही अशी गती आहे जेव्हा एखादी वस्तू अप्रत्याशित दिशांमध्ये गतिमान असते, जे एखाद्या वस्तूच्या दिशा बदलण्याच्या निरीक्षणाशी जुळते. रेखीय गती ही सरळ रेषेत गती असते, जे येथे नाही. वृत्तीय गती ही वक्र मार्गावर जाते, आणि दोलनीय गती ही पुढे-मागे गती असते, जे येथे दिशा बदलण्याच्या निरीक्षणाशी जुळत नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms for motion types.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Chooses linear motion, thinking that any movement in a straight line is linear.",
+        "Chooses circular motion, thinking that changing direction is circular.",
+        "Chooses oscillatory motion, thinking that changing direction is oscillatory.",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct. The object is moving in a straight line but changes direction, which disqualifies linear motion. Circular and oscillatory motion involve specific patterns of direction change, not random ones. Random motion is the only option that fits the description of changing direction unpredictably.",
+      "sources": [
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 99,
+          "pageStart": 121,
+          "pageEnd": 122,
+          "headingPath": [
+            "12. Motion and Types of Motion"
+          ]
+        },
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 100,
+          "pageStart": 122,
+          "pageEnd": 124,
+          "headingPath": [
+            "12. Motion and Types of Motion"
+          ]
+        },
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 101,
+          "pageStart": 124,
+          "pageEnd": 125,
+          "headingPath": [
+            "12. Motion and Types of Motion",
+            "Exercises"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-10-30T20:41:34.421Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "A car is moving on a straight road, but the distance it covers in each second keeps changing. What can be said about its motion?",
+      "choices": [
+        "It is in uniform linear motion",
+        "It is in non-uniform linear motion",
+        "It is in oscillatory motion",
+        "It is in circular motion"
+      ],
+      "answerIndex": 1,
+      "solution": "The correct answer is 'It is in non-uniform linear motion' because linear motion refers to movement along a straight path, and if the distance covered each second is changing, the speed is not constant. This makes it non-uniform linear motion. Uniform linear motion has constant speed, oscillatory motion is back-and-forth, and circular motion is along a circular path.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक कार सीधे रास्ते पर चल रही है, लेकिन प्रति सेकंड यह कवर करने वाली दूरी बदलती रहती है। इसकी गति के बारे में क्या कहा जा सकता है?",
+          "choices": [
+            "यह समरूप रेखीय गति में है",
+            "यह असमरूप रेखीय गति में है",
+            "यह दोलन गति में है",
+            "यह वृत्तीय गति में है"
+          ],
+          "solution": "सही उत्तर 'यह असमरूप रेखीय गति में है' है क्योंकि रेखीय गति एक सीधी पथ के साथ गति को संदर्भित करती है, और यदि प्रति सेकंड कवर की गई दूरी बदल रही है, तो गति अचर नहीं है। इससे यह असमरूप रेखीय गति बन जाती है। समरूप रेखीय गति में गति अचर होती है, दोलन गति आगे-पीछे होती है, और वृत्तीय गति एक वृत्ताकार पथ के साथ होती है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English original in meaning, terminology, and structure. All technical terms are in line with standard Hindi-medium physics textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एक गाडी सरळ मार्गावर चालत आहे, परंतु ती प्रत्येक सेकंदात असलेला अंतर बदलत आहे. तिच्या गतीबद्दल काय म्हणावे शकता?",
+          "choices": [
+            "ती समान रेखीय गतीत आहे",
+            "ती असमान रेखीय गतीत आहे",
+            "ती दोलन गतीत आहे",
+            "ती वर्तुळाकार गतीत आहे"
+          ],
+          "solution": "बरोबर उत्तर 'ती असमान रेखीय गतीत आहे' आहे कारण रेखीय गती म्हणजे सरळ मार्गावर चालणे, आणि जर प्रत्येक सेकंदात अंतर बदलत असेल तर वेग नियत नसतो. ही असमान रेखीय गती बनते. समान रेखीय गतीत वेग नियत असतो, दोलन गती ही आगळी-वागळी असते आणि वर्तुळाकार गती ही वर्तुळाकृती मार्गावर असते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms for motion types.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Thinks changing speed is not part of linear motion",
+        null,
+        "Confuses oscillatory motion with non-uniform motion",
+        "Believes circular motion is the only one with changing speed"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies that non-uniform linear motion occurs when speed changes, even along a straight path. The reasoning aligns with the definition of motion types.",
+      "sources": [
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 99,
+          "pageStart": 121,
+          "pageEnd": 122,
+          "headingPath": [
+            "12. Motion and Types of Motion"
+          ]
+        },
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 100,
+          "pageStart": 122,
+          "pageEnd": 124,
+          "headingPath": [
+            "12. Motion and Types of Motion"
+          ]
+        },
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 101,
+          "pageStart": 124,
+          "pageEnd": 125,
+          "headingPath": [
+            "12. Motion and Types of Motion",
+            "Exercises"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-10-30T20:41:34.421Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "A ball is thrown vertically upwards. What type of motion does it exhibit during its ascent?",
+      "choices": [
+        "Linear motion",
+        "Oscillatory motion",
+        "Circular motion",
+        "Random motion"
+      ],
+      "answerIndex": 0,
+      "solution": "The correct answer is 'Linear motion' because the ball moves along a straight vertical path during its ascent. Even though its speed decreases due to gravity, the path is straight, so it is linear motion. Oscillatory motion involves back-and-forth movement, circular motion is along a circular path, and random motion is unpredictable.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक गेंद को ऊर्ध्वाधर ऊपर की ओर फेंका जाता है। इसके उत्थान के दौरान यह किस प्रकार की गति प्रदर्शित करती है?",
+          "choices": [
+            "रैखिक गति",
+            "दोलनी गति",
+            "वृत्तीय गति",
+            "यादृच्छिक गति"
+          ],
+          "solution": "सही उत्तर 'रैखिक गति' है क्योंकि गेंद अपने उत्थान के दौरान एक सीधी ऊर्ध्वाधर पथ पर गतिमान रहती है। भार के कारण इसकी गति कम होती है, लेकिन पथ सीधा रहता है, इसलिए यह रैखिक गति है। दोलनी गति में आगे-पीछे गति होती है, वृत्तीय गति वृत्ताकार पथ पर होती है और यादृच्छिक गति अनिश्चित होती है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, technical terms match standard Hindi curriculum, and the logic of the solution is preserved.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एक गोली उभयतः वर फेकली जाते. तिच्या उतरणात कोणत्या प्रकारचा गती दिसतो?",
+          "choices": [
+            "रेषीय गती",
+            "दोलनी गती",
+            "वृत्तीय गती",
+            "अनियमित गती"
+          ],
+          "solution": "बरोबर उत्तर 'रेषीय गती' आहे कारण गोली उतरणात एका सरळ उभयतः मार्गाने जाते. गुरुत्वाकर्षणामुळे तिच्या वेगाचा घट होतो, परंतु मार्ग सरळ आहे, म्हणून ती रेषीय गती आहे. दोलनी गती हा पुढे-मागे गती आहे, वृत्तीय गती ही वृत्ताकार मार्गाने जाणारी गती आहे आणि अनियमित गती ही अनिश्चित असते.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate technical terms as used in Marathi-medium textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Thinks vertical motion is oscillatory",
+        "Confuses circular motion with vertical motion",
+        "Does not recognize straight-line motion as linear"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct and aligns with the key. The ball's motion is indeed linear during its ascent as it moves along a straight vertical path.",
+      "sources": [
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 99,
+          "pageStart": 121,
+          "pageEnd": 122,
+          "headingPath": [
+            "12. Motion and Types of Motion"
+          ]
+        },
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 100,
+          "pageStart": 122,
+          "pageEnd": 124,
+          "headingPath": [
+            "12. Motion and Types of Motion"
+          ]
+        },
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 101,
+          "pageStart": 124,
+          "pageEnd": 125,
+          "headingPath": [
+            "12. Motion and Types of Motion",
+            "Exercises"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-10-30T20:41:34.421Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
     }
   ]
 }

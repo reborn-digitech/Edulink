@@ -1278,6 +1278,780 @@
       "generatedAt": "2026-10-28T14:23:28.572Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is the term used for the sequence of events by which a cell duplicates its genome and divides into two daughter cells?",
+      "choices": [
+        "Mitosis",
+        "Meiosis",
+        "Cell cycle",
+        "Cell division"
+      ],
+      "answerIndex": 2,
+      "solution": "The term used for the sequence of events by which a cell duplicates its genome and divides into two daughter cells is the cell cycle. This includes all the stages a cell goes through, from growth to division. Mitosis refers only to the division of the nucleus, meiosis is a specialized type of cell division for gametes, and cell division is a general term that does not specifically describe the entire sequence.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "कोशिका जीनोम के अनुक्रमण एवं दो पुत्री कोशिकाओं में विभाजन के घटनाक्रम के लिए उपयोग किया गया शब्द क्या है?",
+          "choices": [
+            "माइटोसिस",
+            "मीओसिस",
+            "कोशिका चक्र",
+            "कोशिका विभाजन"
+          ],
+          "solution": "कोशिका जीनोम के अनुक्रमण एवं दो पुत्री कोशिकाओं में विभाजन के घटनाक्रम के लिए उपयोग किया गया शब्द कोशिका चक्र है। यह सभी चरणों को शामिल करता है जिनमें कोशिका वृद्धि से लेकर विभाजन तक गुजरती है। माइटोसिस केवल नाभिक के विभाजन को संदर्भित करता है, मीओसिस गैमीट्स के लिए विशेष प्रकार का कोशिका विभाजन है, और कोशिका विभाजन एक सामान्य शब्द है जो विशेष रूप से पूरे घटनाक्रम का वर्णन नहीं करता है।",
+          "imageAlt": null,
+          "critique": "Translation accurately reflects the original meaning with appropriate Hindi terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "कोशिकेच्या जीनोमचे दुप्पटीकरण करण्याच्या आणि दोन अपत्य कोशिकांमध्ये विभाजनाच्या घटनांच्या अनुक्रमासाठी वापरलेला शब्द काय आहे?",
+          "choices": [
+            "माइटोसिस",
+            "मीओसिस",
+            "कोशिका चक्र",
+            "कोशिका विभाजन"
+          ],
+          "solution": "कोशिकेच्या जीनोमचे दुप्पटीकरण करण्याच्या आणि दोन अपत्य कोशिकांमध्ये विभाजनाच्या घटनांच्या अनुक्रमासाठी वापरलेला शब्द कोशिका चक्र आहे. हे सर्व टप्पे समाविष्ट करते ज्यामध्ये कोशिका वाढते आणि विभाजित होते. माइटोसिस हा केंद्रकाच्या विभाजनाचा फक्त एक टप्पा आहे, मीओसिस हा गॅमेटसाठी विशेष प्रकारचे कोशिका विभाजन आहे आणि कोशिका विभाजन हा एक सामान्य शब्द आहे जो खास करून पूर्ण अनुक्रमाचे वर्णन करत नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for biological concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "refers to nuclear division",
+        "refers to a specific type of cell division",
+        null,
+        "refers to the overall process of cell division"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-constructed and the solution is accurate. The correct answer is 'Cell cycle,' as it refers to the entire sequence of events including genome duplication and cell division. The other options are related but not as precise.",
+      "sources": [
+        {
+          "document": "ncert/11/biology/kebo110.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 1,
+          "headingPath": [
+            "Chapter 10: Cell Cycle and Cell Division",
+            "HAPTER"
+          ]
+        },
+        {
+          "document": "ncert/11/biology/kebo110.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 10: Cell Cycle and Cell Division",
+            "HAPTER"
+          ]
+        },
+        {
+          "document": "ncert/11/biology/kebo110.pdf",
+          "ordinal": 2,
+          "pageStart": 2,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 10: Cell Cycle and Cell Division",
+            "HAPTER"
+          ]
+        },
+        {
+          "document": "ncert/11/biology/kebo110.pdf",
+          "ordinal": 3,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 10: Cell Cycle and Cell Division",
+            "M P"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T03:37:20.317Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which phase of the cell cycle is the longest?",
+      "choices": [
+        "G1 phase",
+        "S phase",
+        "G2 phase",
+        "Interphase"
+      ],
+      "answerIndex": 3,
+      "solution": "Interphase is the longest phase of the cell cycle because it includes the G1, S, and G2 phases, which together take up the majority of the time. The G1, S, and G2 phases are all shorter individually and are part of the larger interphase period. The other options are subphases of interphase and not the longest phase on their own.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "कोशिका चक्र का कौन-सा चरण सबसे लंबा होता है?",
+          "choices": [
+            "G1 चरण",
+            "S चरण",
+            "G2 चरण",
+            "अन्तराल चरण"
+          ],
+          "solution": "अन्तराल चरण कोशिका चक्र का सबसे लंबा चरण होता है क्योंकि इसमें G1, S और G2 चरण शामिल होते हैं, जो अधिकांश समय लेते हैं। G1, S और G2 चरण अकेले छोटे होते हैं और बड़े अन्तराल चरण के हिस्से होते हैं। अन्य विकल्प अन्तराल चरण के उपचरण हैं और अकेले सबसे लंबा चरण नहीं हैं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, technical terms are correctly used in Hindi, and the structure matches the original.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "कोशिका चक्राच्या कोणत्या टप्प्याचा सर्वात जास्त वेळ जातो?",
+          "choices": [
+            "G1 टप्पा",
+            "S टप्पा",
+            "G2 टप्पा",
+            "अन्तर्कोशिका टप्पा"
+          ],
+          "solution": "अन्तर्कोशिका टप्पा कोशिका चक्राचा सर्वात जास्त वेळ घेणारा टप्पा आहे कारण त्यामध्ये G1, S आणि G2 टप्पे समाविष्ट असतात, जे एकत्रितपणे बहुतेक वेळ घेतात. G1, S आणि G2 टप्पे एकटे लहान असतात आणि अन्तर्कोशिका टप्प्याच्या मोठ्या आवृत्तीचे भाग असतात. इतर विकल्प अन्तर्कोशिका टप्प्याचे उपटप्पे आहेत आणि एकटे सर्वात जास्त वेळ घेणारा टप्पा नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Marathi biological terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "thinks G1 phase is the longest",
+        "thinks S phase is the longest",
+        "thinks G2 phase is the longest",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct. Interphase is indeed the longest phase of the cell cycle, as it includes G1, S, and G2 phases, which together make up more than 95% of the cycle.",
+      "sources": [
+        {
+          "document": "ncert/11/biology/kebo110.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 1,
+          "headingPath": [
+            "Chapter 10: Cell Cycle and Cell Division",
+            "HAPTER"
+          ]
+        },
+        {
+          "document": "ncert/11/biology/kebo110.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 10: Cell Cycle and Cell Division",
+            "HAPTER"
+          ]
+        },
+        {
+          "document": "ncert/11/biology/kebo110.pdf",
+          "ordinal": 2,
+          "pageStart": 2,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 10: Cell Cycle and Cell Division",
+            "HAPTER"
+          ]
+        },
+        {
+          "document": "ncert/11/biology/kebo110.pdf",
+          "ordinal": 3,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 10: Cell Cycle and Cell Division",
+            "M P"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T03:37:20.317Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which phase of the cell cycle is marked by DNA replication and chromosome duplication?",
+      "choices": [
+        "Interphase",
+        "Mitosis",
+        "Cytokinesis",
+        "Karyokinesis"
+      ],
+      "answerIndex": 0,
+      "solution": "DNA replication and chromosome duplication occur during the S phase, which is part of interphase. Interphase is the phase where the cell grows and prepares for division, while mitosis, cytokinesis, and karyokinesis are stages of cell division itself. Therefore, the correct answer is Interphase.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "कोशिका चक्र के किस चरण में डीएनए प्रतिकृति और गुणसूत्र द्विगुणन चिह्नित किया जाता है?",
+          "choices": [
+            "अन्तरावस्था",
+            "माइटोसिस",
+            "काय विभाजन",
+            "कैरियोकाइनेसिस"
+          ],
+          "solution": "डीएनए प्रतिकृति और गुणसूत्र द्विगुणन एस चरण में होता है, जो अंतरावस्था का एक हिस्सा है। अंतरावस्था वह चरण है जिसमें कोशिका बढ़ती है और विभाजन के लिए तैयार रहती है, जबकि माइटोसिस, काय विभाजन और कैरियोकाइनेसिस कोशिका विभाजन के चरण हैं। इसलिए सही उत्तर अंतरावस्था है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the scientific terminology used in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "कोशिका चक्राच्या कोणत्या टप्प्यामध्ये डीएनए प्रतिकृती आणि गुणसूत्र दुप्पटीकरण होते?",
+          "choices": [
+            "अंतराळ",
+            "माइटोसिस",
+            "कायटोकायनेसिस",
+            "कॅरिओकायनेसिस"
+          ],
+          "solution": "डीएनए प्रतिकृती आणि गुणसूत्र दुप्पटीकरण एस टप्प्यात होते, जो अंतराळाचा भाग आहे. अंतराळ हा टप्पा आहे जेथे कोशिका वाढते आणि विभाजनासाठी तयार होते, तर माइटोसिस, कायटोकायनेसिस आणि कॅरिओकायनेसिस हे कोशिका विभाजनाचे टप्पे आहेत. म्हणूनच, योग्य उत्तर अंतराळ आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the scientific terminology used in Marathi textbooks. The term 'अंतराळ' (interphase) is correctly used, and the other terms are standard Marathi equivalents of the English terms.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses the S phase with the overall interphase",
+        "Misunderstands the function of mitosis",
+        "Misunderstands the definition of karyokinesis"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly identifies interphase as the phase where DNA replication and chromosome duplication occur, specifically during the S phase. The reasoning for the other options is also valid and reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/11/biology/kebo110.pdf",
+          "ordinal": 10,
+          "pageStart": 10,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 10: Cell Cycle and Cell Division",
+            "M P"
+          ]
+        },
+        {
+          "document": "ncert/11/biology/kebo110.pdf",
+          "ordinal": 11,
+          "pageStart": 10,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 10: Cell Cycle and Cell Division",
+            "M P"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T03:37:20.317Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If a cell is in the G phase of the cell cycle, what is it likely doing?",
+      "choices": [
+        "Replicating DNA",
+        "Growing and carrying out normal metabolism",
+        "Undergoing chromosome condensation",
+        "Aligning chromosomes at the equatorial plate"
+      ],
+      "answerIndex": 1,
+      "solution": "The G phase is the period when the cell grows and performs its normal functions, such as protein synthesis and organelle replication. DNA replication occurs during the S phase, not the G phase. Chromosome condensation and alignment happen during mitosis, not the G phase. Therefore, the correct answer is growing and carrying out normal metabolism.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि कोशिका कोशिका चक्र के G चरण में है, तो यह क्या संभावित कर रही होगी?",
+          "choices": [
+            "डीएनए की प्रतिकृति बना रही है",
+            "बढ़ रही है और सामान्य मेटाबॉलिज्म कर रही है",
+            "गुणसूत्र संघनन कर रही है",
+            "गुणसूत्र को एक्वेटोरियल प्लेट पर समायोजित कर रही है"
+          ],
+          "solution": "G चरण वह अवधि है जब कोशिका बढ़ती है और अपने सामान्य कार्य करती है, जैसे प्रोटीन संश्लेषण और ऑर्गेल की प्रतिकृति। डीएनए की प्रतिकृति S चरण में होती है, G चरण में नहीं। गुणसूत्र संघनन और समायोजन माइटोसिस में होता है, G चरण में नहीं। इसलिए सही उत्तर बढ़ रही है और सामान्य मेटाबॉलिज्म कर रही है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriately translated, and the structure matches the English version.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर कोशिका कोशिका चक्राच्या G फेजमध्ये असेल, तर ती काय करत असण्याची शक्यता आहे?",
+          "choices": [
+            "डीएनएचे प्रतिकृतीकरण करणे",
+            "वाढत असणे आणि सामान्य मेटाबॉलिझम करणे",
+            "क्रोमोझोमचे संघनन होणे",
+            "क्रोमोझोम अक्षांश बिंदूवर असलेले असणे"
+          ],
+          "solution": "G फेज ही ती कालावधी आहे जेव्हा कोशिका वाढत असते आणि तिचे सामान्य कार्य करत असते, जसे की प्रोटीन संश्लेषण आणि अर्गेल नक्कल. डीएनएचे प्रतिकृतीकरण S फेजमध्ये होते, G फेजमध्ये नाही. क्रोमोझोमचे संघनन आणि असमानता मिटोसिसमध्ये होते, G फेजमध्ये नाही. त्यामुळे, योग्य उत्तर वाढत असणे आणि सामान्य मेटाबॉलिझम करणे आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for cell biology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the S phase with the G phase",
+        null,
+        "Misunderstands the function of the G phase",
+        "Misunderstands the events of mitosis"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly identifies that the G phase is part of interphase where the cell grows and carries out normal metabolism, and correctly rules out the other options which correspond to S phase, mitosis, and not the G phase.",
+      "sources": [
+        {
+          "document": "ncert/11/biology/kebo110.pdf",
+          "ordinal": 10,
+          "pageStart": 10,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 10: Cell Cycle and Cell Division",
+            "M P"
+          ]
+        },
+        {
+          "document": "ncert/11/biology/kebo110.pdf",
+          "ordinal": 11,
+          "pageStart": 10,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 10: Cell Cycle and Cell Division",
+            "M P"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T03:37:20.317Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If a cell is observed to have its chromosomes aligned at the metaphase plate, which of the following is most likely to occur next?",
+      "choices": [
+        "The nuclear envelope reforms around the chromosomes.",
+        "The sister chromatids separate and move to opposite poles.",
+        "The cell divides into two daughter cells.",
+        "The chromosomes condense and become visible."
+      ],
+      "answerIndex": 1,
+      "solution": "The correct answer is that the sister chromatids separate and move to opposite poles. After metaphase, the cell proceeds to anaphase, where the sister chromatids split and are pulled to opposite poles. The nuclear envelope reforms during telophase, cell division occurs during cytokinesis, and chromosome condensation occurs during prophase.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि किसी कोशिका के गुणसूत्र मेटाफेज प्लेट पर स्थित पाए जाते हैं, तो निम्नलिखित में से कौन सा अगला होने की संभावना सबसे अधिक है?",
+          "choices": [
+            "केंद्रक झिल्ली गुणसूत्रों के चारों ओर पुनः बन जाती है।",
+            "सहपाठी गुणसूत्र अलग हो जाते हैं और विपरीत ध्रुवों पर जाते हैं।",
+            "कोशिका दो डॉटर कोशिकाओं में विभाजित हो जाती है।",
+            "गुणसूत्र संकुचित हो जाते हैं और दृश्यमान हो जाते हैं।"
+          ],
+          "solution": "सही उत्तर यह है कि सहपाठी गुणसूत्र अलग हो जाते हैं और विपरीत ध्रुवों पर जाते हैं। मेटाफेज के बाद कोशिका एनाफेज में आगे बढ़ती है, जहां सहपाठी गुणसूत्र विभाजित हो जाते हैं और विपरीत ध्रुवों की ओर खींच लिए जाते हैं। केंद्रक झिल्ली टेलोफेज के दौरान पुनः बन जाती है, कोशिका विभाजन काइटोकाइनेसिस के दौरान होता है, और गुणसूत्र के संकुचन के प्रोफेज में होता है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the original English question and solution, with appropriate terminology used in a Hindi-medium biology context.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर कोशिकेच्या गुणसूत्रांना मेटाफेज प्लेटवर समायोजित असल्याचे निरीक्षण केले जाते, तर खालीलपैकी कोणते घडणार आहे?",
+          "choices": [
+            "न्यूक्लियर आवरण गुणसूत्रांच्या आजूबाजूला पुन्हा बनते.",
+            "बहिणी गुणसूत्र विभक्त होतात आणि विरुद्ध ध्रुवांकडे जातात.",
+            "कोशिका दोन डॉटर कोशिकांमध्ये विभाजित होते.",
+            "गुणसूत्र घन बनतात आणि दृश्यमान होतात."
+          ],
+          "solution": "बहिणी गुणसूत्र विभक्त होतात आणि विरुद्ध ध्रुवांकडे जातात हे योग्य उत्तर आहे. मेटाफेजनंतर कोशिका अॅनाफेजमध्ये जाते, जेथे बहिणी गुणसूत्र विभक्त होतात आणि विरुद्ध ध्रुवांकडे खेचले जातात. न्यूक्लियर आवरण टेलोफेजमध्ये पुन्हा बनते, कोशिका विभाजन कायटोकाइनेसिसमध्ये होते आणि गुणसूत्र घन बनतात प्रोफेजमध्ये.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the scientific terminology appropriate for a Marathi-medium biology curriculum.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses telophase with the next stage after metaphase.",
+        null,
+        "Believes cytokinesis occurs immediately after metaphase, without anaphase",
+        "Confuses the stage of cell division with the next stage after metaphase."
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly identifies anaphase as the next stage after metaphase, where sister chromatids separate. The reasoning for the distractors aligns with common student misconceptions about the cell cycle stages.",
+      "sources": [
+        {
+          "document": "ncert/11/biology/kebo110.pdf",
+          "ordinal": 4,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 10: Cell Cycle and Cell Division",
+            "M P"
+          ]
+        },
+        {
+          "document": "ncert/11/biology/kebo110.pdf",
+          "ordinal": 5,
+          "pageStart": 5,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 10: Cell Cycle and Cell Division",
+            "M P"
+          ]
+        },
+        {
+          "document": "ncert/11/biology/kebo110.pdf",
+          "ordinal": 6,
+          "pageStart": 6,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 10: Cell Cycle and Cell Division",
+            "M P"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T03:37:20.317Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "If a cell has 2C DNA content at G1 phase, what will be the DNA content after S phase and after M phase, respectively?",
+      "choices": [
+        "2C, 2C",
+        "2C, 4C",
+        "4C, 2C",
+        "4C, 4C"
+      ],
+      "answerIndex": 2,
+      "solution": "The DNA content doubles during S phase, so it becomes 4C. After M phase, the DNA content is halved in each daughter cell, so it returns to 2C. Therefore, the correct answer is 4C, 2C. The option 2C, 2C is wrong because DNA content doubles during S phase. The option 2C, 4C is wrong because DNA content does not double after M phase. The option 4C, 4C is wrong because DNA content is halved after M phase.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि किसी कोशिका में G1 चरण में 2C DNA सामग्री है, तो S चरण और M चरण के बाद क्रमशः DNA सामग्री क्या होगी?",
+          "choices": [
+            "2C, 2C",
+            "2C, 4C",
+            "4C, 2C",
+            "4C, 4C"
+          ],
+          "solution": "S चरण के दौरान DNA सामग्री दुगुनी हो जाती है, इसलिए यह 4C हो जाती है। M चरण के बाद, प्रत्येक पुत्री कोशिका में DNA सामग्री आधी हो जाती है, इसलिए यह 2C वापस आ जाती है। अतः सही उत्तर 4C, 2C है। विकल्प 2C, 2C गलत है क्योंकि S चरण में DNA सामग्री दुगुनी हो जाती है। विकल्प 2C, 4C गलत है क्योंकि M चरण के बाद DNA सामग्री दुगुनी नहीं होती। विकल्प 4C, 4C गलत है क्योंकि M चरण के बाद DNA सामग्री आधी हो जाती है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the scientific terminology, and preserves the logical structure of the question and explanation.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "गॉ फेजमध्ये 2C DNA असलेल्या कोशिकेचे DNA अंश S फेजनंतर आणि M फेजनंतर किती असेल?",
+          "choices": [
+            "2C, 2C",
+            "2C, 4C",
+            "4C, 2C",
+            "4C, 4C"
+          ],
+          "solution": "S फेजमध्ये DNA अंश दुप्पट होतो, म्हणून तो 4C होतो. M फेजनंतर प्रत्येक पुत्र कोशिकेत DNA अंश अर्धा होतो, म्हणून तो परत 2C होतो. म्हणूनच योग्य उत्तर 4C, 2C आहे. 2C, 2C हे चुकीचे आहे कारण S फेजमध्ये DNA अंश दुप्पट होतो. 2C, 4C हे चुकीचे आहे कारण M फेजनंतर DNA अंश दुप्पट होत नाही. 4C, 4C हे चुकीचे आहे कारण M फेजनंतर DNA अंश अर्धा होतो.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the scientific terminology, and preserves the logical structure of the question and explanation.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "thinks DNA content remains the same after S phase",
+        "thinks DNA content doubles after M phase",
+        null,
+        "thinks DNA content remains the same after M phase"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly explains that DNA content doubles during S phase and is halved during M phase, leading to 4C after S and 2C after M. The reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/11/biology/kebo110.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 1,
+          "headingPath": [
+            "Chapter 10: Cell Cycle and Cell Division",
+            "HAPTER"
+          ]
+        },
+        {
+          "document": "ncert/11/biology/kebo110.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 10: Cell Cycle and Cell Division",
+            "HAPTER"
+          ]
+        },
+        {
+          "document": "ncert/11/biology/kebo110.pdf",
+          "ordinal": 2,
+          "pageStart": 2,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 10: Cell Cycle and Cell Division",
+            "HAPTER"
+          ]
+        },
+        {
+          "document": "ncert/11/biology/kebo110.pdf",
+          "ordinal": 3,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 10: Cell Cycle and Cell Division",
+            "M P"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T03:37:20.317Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "If a cell in G phase is prevented from entering the S phase, what would be the effect on the cell cycle?",
+      "choices": [
+        "The cell would not replicate its DNA.",
+        "The cell would undergo mitosis without DNA replication.",
+        "The cell would enter the G phase directly.",
+        "The cell would stop dividing permanently."
+      ],
+      "answerIndex": 0,
+      "solution": "The correct answer is The cell would not replicate its DNA. The S phase is responsible for DNA replication. If the cell is prevented from entering S phase, DNA replication does not occur. The other options misinterpret the role of the G phase in the cell cycle.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि G चरण में एक कोशिका S चरण में प्रवेश से रोक दी जाए, तो कोशिका चक्र पर क्या प्रभाव पड़ेगा?",
+          "choices": [
+            "कोशिका अपना डीएनए प्रतिकृति नहीं बनाएगा।",
+            "कोशिका डीएनए प्रतिकृति के बिना मिटोसिस करेगी।",
+            "कोशिका सीधे G चरण में प्रवेश कर जाएगी।",
+            "कोशिका स्थायी रूप से विभाजित नहीं होगी।"
+          ],
+          "solution": "सही उत्तर कोशिका अपना डीएनए प्रतिकृति नहीं बनाएगा। S चरण डीएनए प्रतिकृति के लिए उत्तरदायी होता है। यदि कोशिका S चरण में प्रवेश से रोक दी जाए, तो डीएनए प्रतिकृति नहीं होती है। अन्य विकल्प कोशिका चक्र में G चरण के कार्य को गलत तरीके से समझते हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the scientific terminology used in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "ग फेजमधील एक कोशिका S फेजमध्ये प्रवेश करू शकत नाही, तर कोशिका चक्रावर काय परिणाम होईल?",
+          "choices": [
+            "कोशिका आपले डीएनए प्रतिकृत करणार नाही.",
+            "कोशिका डीएनए प्रतिकृतीशिवाय मिटोसिस करेल.",
+            "कोशिका सी फेजमध्ये लगेच प्रवेश करेल.",
+            "कोशिका अशाप्रकारे विभाजित होणे बंद करेल."
+          ],
+          "solution": "योग्य उत्तर कोशिका आपले डीएनए प्रतिकृत करणार नाही. S फेज डीएनए प्रतिकृतीसाठी जबाबदार आहे. जर कोशिका S फेजमध्ये प्रवेश करू शकत नसेल तर डीएनए प्रतिकृती होणार नाही. इतर विकल्प कोशिका चक्रातील G फेजच्या भूमिकेचे चुकीचे अर्थ समजतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi biological terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses G phase with S phase, which is the DNA replication phase.",
+        "Believes that mitosis can occur without DNA replication, which is not possible.",
+        "Misunderstands the sequence of the cell cycle phases."
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies that preventing entry into the S phase stops DNA replication. The reasoning for the wrong options aligns with common misconceptions about the cell cycle.",
+      "sources": [
+        {
+          "document": "ncert/11/biology/kebo110.pdf",
+          "ordinal": 10,
+          "pageStart": 10,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 10: Cell Cycle and Cell Division",
+            "M P"
+          ]
+        },
+        {
+          "document": "ncert/11/biology/kebo110.pdf",
+          "ordinal": 11,
+          "pageStart": 10,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 10: Cell Cycle and Cell Division",
+            "M P"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T03:37:20.317Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Which of the following best explains the significance of meiosis in sexual reproduction?",
+      "choices": [
+        "It ensures the production of identical daughter cells",
+        "It maintains the chromosome number in the offspring",
+        "It reduces the chromosome number to half in gametes",
+        "It allows for the formation of body cells"
+      ],
+      "answerIndex": 2,
+      "solution": "Meiosis reduces the chromosome number by half in gametes, ensuring that when they combine during fertilization, the offspring has the correct number of chromosomes. The other options are incorrect because meiosis does not produce identical cells, does not maintain chromosome number in gametes, and does not form body cells.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा यौन प्रजनन में मेयोसिस के महत्व की सबसे अच्छी व्याख्या करता है?",
+          "choices": [
+            "यह संतति को समान डॉटर सेल के उत्पादन की गारंटी देता है",
+            "यह संतति में गुणसूत्र संख्या को बरकरार रखता है",
+            "यह युग्मकों में गुणसूत्र संख्या को आधा कर देता है",
+            "यह शरीर कोशिकाओं के निर्माण की अनुमति देता है"
+          ],
+          "solution": "मेयोसिस युग्मकों में गुणसूत्र संख्या को आधा कर देता है, जिससे निषेचन के दौरान संतति में सही गुणसूत्र संख्या होती है। अन्य विकल्प गलत हैं क्योंकि मेयोसिस समान कोशिकाओं के उत्पादन नहीं करता है, युग्मकों में गुणसूत्र संख्या को बरकरार नहीं रखता है और शरीर कोशिकाओं के निर्माण में सहायता नहीं करता है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the scientific terminology and meaning of the original question.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते योग्यरित्या लैंगिक प्रजोत्पादनातील मियोसिसच्या महत्त्वाचे स्पष्टीकरण करते?",
+          "choices": [
+            "ते समान दुहेरी कोशिका तयार करण्याची खात्री देते",
+            "ते वंशात गुणसूत्रांच्या संख्येचे नियमन करते",
+            "ते गॅमिट्समध्ये गुणसूत्रांच्या संख्येला अर्ध्यापर्यंत कमी करते",
+            "ते शरीर कोशिकांच्या निर्मितीसाठी परवानगी देते"
+          ],
+          "solution": "मियोसिस गॅमिट्समध्ये गुणसूत्रांच्या संख्येला अर्ध्यापर्यंत कमी करते, जेणेकरून निर्मिती दरम्यान त्यांच्या जोडणीमुळे वंशात योग्य गुणसूत्रांची संख्या असते. इतर विकल्प अयोग्य आहेत कारण मियोसिस समान कोशिका तयार करत नाही, गॅमिट्समध्ये गुणसूत्रांच्या संख्येचे नियमन करत नाही आणि शरीर कोशिका तयार करत नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the scientific terminology appropriate for a Marathi-medium textbook.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses meiosis with mitosis",
+        "Misunderstands the role of meiosis in maintaining chromosome number",
+        null,
+        "Misinterprets the function of gametes"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 2, as meiosis reduces chromosome number by half in gametes, which is essential for sexual reproduction. The other options reflect common misconceptions about meiosis versus mitosis and the function of gametes.",
+      "sources": [
+        {
+          "document": "ncert/11/biology/kebo110.pdf",
+          "ordinal": 10,
+          "pageStart": 10,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 10: Cell Cycle and Cell Division",
+            "M P"
+          ]
+        },
+        {
+          "document": "ncert/11/biology/kebo110.pdf",
+          "ordinal": 11,
+          "pageStart": 10,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 10: Cell Cycle and Cell Division",
+            "M P"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T03:37:20.317Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
     }
   ]
 }

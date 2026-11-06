@@ -1506,6 +1506,811 @@
       "generatedAt": "2026-11-02T05:02:33.383Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is the name of the galaxy that contains our solar system?",
+      "choices": [
+        "Nebula",
+        "Milky Way",
+        "Celestial Sphere",
+        "Red Giant"
+      ],
+      "answerIndex": 1,
+      "solution": "The Milky Way is the name of the galaxy that contains our solar system, as it is a well-established astronomical fact. A nebula is a cloud of gas and dust in space, not a galaxy. The celestial sphere is a model used to represent the sky, not a galaxy. A red giant is a type of star, not a galaxy.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "हमारे सौर मंडल को समाहित करने वाले गैलेक्सी का नाम क्या है?",
+          "choices": [
+            "नेबुला",
+            "दुग्धमार्ग",
+            "आकाशीय गोला",
+            "लाल दानव"
+          ],
+          "solution": "दुग्धमार्ग हमारे सौर मंडल को समाहित करने वाले गैलेक्सी का नाम है, क्योंकि यह एक अच्छी तरह से स्थापित खगोलीय तथ्य है। एक नेबुला अंतरिक्ष में गैस और धूल का बादल है, गैलेक्सी नहीं। आकाशीय गोला आकाश को दर्शाने के लिए एक मॉडल है, गैलेक्सी नहीं। एक लाल दानव एक प्रकार का तारा है, गैलेक्सी नहीं।",
+          "imageAlt": null,
+          "critique": "All terms are standard Hindi scientific terms used in textbooks. The translation is accurate and maintains the original meaning and structure.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "आपल्या सौरमंडळाचा समावेश असलेल्या गॅलक्सीचे नाव काय आहे?",
+          "choices": [
+            "नेबुला",
+            "मिल्की वे",
+            "खगोलीय गोल",
+            "रेड गियंट"
+          ],
+          "solution": "मिल्की वे ही गॅलक्सीचे नाव आहे ज्यामध्ये आपले सौरमंडळ समाविष्ट आहे, कारण हे एक चांगल्या प्रकारे स्थापित खगोलशास्त्रीय तथ्य आहे. नेबुला हे अंतरिक्षातील वाफ आणि धूल चे ढग आहे, गॅलक्सी नाही. खगोलीय गोल हा आकाशाचे मॉडेल आहे, गॅलक्सी नाही. रेड गियंट हा ताराचा एक प्रकार आहे, गॅलक्सी नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for astronomical concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses a nebula with a galaxy",
+        null,
+        "Incorrectly identifies the name of the galaxy",
+        "Confuses a star type with a galaxy"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 'Milky Way' as it is the galaxy containing our solar system. The other options are either types of celestial objects or incorrect terms for galaxies, which aligns with the author's reasoning.",
+      "sources": [
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 144,
+          "pageStart": 141,
+          "pageEnd": 141,
+          "headingPath": [
+            "20. In the World of Stars"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 145,
+          "pageStart": 141,
+          "pageEnd": 142,
+          "headingPath": [
+            "20. In the World of Stars"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 146,
+          "pageStart": 142,
+          "pageEnd": 143,
+          "headingPath": [
+            "20. In the World of Stars"
+          ]
+        }
+      ],
+      "edition": "First Edition 2017",
+      "generatedAt": "2026-10-31T19:53:22.439Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the name given to the line where the sky appears to meet the ground?",
+      "choices": [
+        "Zenith",
+        "Nadir",
+        "Horizon",
+        "Meridian"
+      ],
+      "answerIndex": 2,
+      "solution": "The horizon is the line where the sky appears to meet the ground. The zenith is the point directly overhead, the nadir is the point directly opposite the zenith, and the meridian is an imaginary line passing through the zenith and the north-south direction.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "आकाश के जहां जमीन से मिलता है, उस रेखा का नाम क्या है?",
+          "choices": [
+            "जेनिथ",
+            "नेडर",
+            "हॉराइजन",
+            "मेरिडियन"
+          ],
+          "solution": "हॉराइजन वह रेखा है जहां आकाश जमीन से मिलता है। जेनिथ वह बिंदु है जो सीधे ऊपर होता है, नेडर वह बिंदु है जो जेनिथ के विपरीत होता है, और मेरिडियन एक कल्पित रेखा है जो जेनिथ और उत्तर-दक्षिण दिशा से गुजरती है।",
+          "imageAlt": null,
+          "critique": "All terms are correctly translated and match standard Hindi scientific terminology. The solution and options align with the English version.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "आकाश ज्या रेषेवर जमीनशी भिडतो त्या रेषेला कोणते नाव दिले जाते?",
+          "choices": [
+            "झेनिथ",
+            "नॅडिर",
+            "हॉरिझॉन",
+            "मेरिडियन"
+          ],
+          "solution": "हॉरिझॉन ही रेषा आहे ज्या रेषेवर आकाश जमीनशी भिडतो. झेनिथ हा शीर्ष बिंदू आहे, नॅडिर हा झेनिथच्या विरुद्ध बिंदू आहे आणि मेरिडियन ही झेनिथ मार्गे जाणारी काल्पनिक रेषा आहे आणि उत्तर-दक्षिण दिशेने जाते.",
+          "imageAlt": null,
+          "critique": "All terms are transliterated but match standard astronomical terminology used in Marathi textbooks. 'Horizon' is correctly translated as 'हॉरिझॉन' and is the correct answer.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "refers to the point directly above the observer",
+        "refers to the point directly below the observer",
+        null,
+        "refers to a great circle passing through the poles"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 'Horizon' as it is the line where the sky meets the ground. The other options refer to different celestial points or lines, and the author's explanations for the wrong options align with common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 144,
+          "pageStart": 141,
+          "pageEnd": 141,
+          "headingPath": [
+            "20. In the World of Stars"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 145,
+          "pageStart": 141,
+          "pageEnd": 142,
+          "headingPath": [
+            "20. In the World of Stars"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 146,
+          "pageStart": 142,
+          "pageEnd": 143,
+          "headingPath": [
+            "20. In the World of Stars"
+          ]
+        }
+      ],
+      "edition": "First Edition 2017",
+      "generatedAt": "2026-10-31T19:53:22.439Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "What happens to a nebula when the particles in it are attracted to each other due to gravity?",
+      "choices": [
+        "It becomes a black hole",
+        "It becomes a red giant",
+        "It contracts and becomes dense and spherical",
+        "It expands and becomes less dense"
+      ],
+      "answerIndex": 2,
+      "solution": "When particles in a nebula are attracted by gravity, the force pulls them together, causing the nebula to contract and become denser and more spherical. A black hole forms from the collapse of a massive star, not a nebula. A red giant is a later stage in a star's life, not directly caused by gravity in a nebula. Expansion and less density would occur if the nebula were pushed apart, not pulled together.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक नेबुला में क्या होता है जब इसके कण गुरुत्वाकर्षण के कारण एक दूसरे को आकर्षित करते हैं?",
+          "choices": [
+            "यह एक ब्लैक होल बन जाता है",
+            "यह लाल दानव बन जाता है",
+            "यह सिकुड़ जाता है और घना और गोलाकार बन जाता है",
+            "यह फैल जाता है और कम घना हो जाता है"
+          ],
+          "solution": "जब नेबुला में कण गुरुत्वाकर्षण द्वारा एक दूसरे को आकर्षित करते हैं, तो बल उन्हें एक साथ खींचता है, जिसके कारण नेबुला सिकुड़ जाता है और अधिक घना और गोलाकार हो जाता है। ब्लैक होल एक भारी तारे के ढांचे से बनता है, नेबुला से नहीं। लाल दानव एक तारे के जीवन के बाद के चरण में होता है, नेबुला में गुरुत्वाकर्षण के कारण नहीं। फैलना और कम घना होना तब होता है जब नेबुला को दूर धकेला जाता है, न कि एक साथ खींचा जाता है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi scientific terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका नेब्युलामधील कणांमध्ये गुरुत्वाकर्षणामुळे आकर्षित होत असताना काय होते?",
+          "choices": [
+            "तो कृष्ण छिद्र बनतो",
+            "तो लाल दिगंत बनतो",
+            "तो अंतर्गत होऊन घन आणि गोलाकार होतो",
+            "तो विस्तारतो आणि कमी घन बनतो"
+          ],
+          "solution": "जेव्हा एका नेब्युलामधील कण गुरुत्वाकर्षणामुळे एकमेकांकडे आकर्षित होतात, तेव्हा बल त्यांना एकत्र खेचते, ज्यामुळे नेब्युला अंतर्गत होऊन घन आणि गोलाकार होतो. कृष्ण छिद्र एका भारी ताराच्या कोसळणापासून बनतो, नेब्युलापासून नव्हे. लाल दिगंत हा ताराच्या जीवनाच्या नंतरच्या टप्प्यात आहे, नेब्युलामध्ये गुरुत्वाकर्षणामुळे नाही. विस्तार आणि कमी घनता नेब्युला विखुरलेल्या असल्यास होते, नेब्युला एकत्र खेचल्यास नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Refers to a different stage of star formation",
+        "Refers to a later stage of a star's life",
+        null,
+        "Describes an opposite effect of gravity"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 2, as gravity causes a nebula to contract and become dense and spherical. The other options refer to different stages or effects not directly caused by the initial gravitational attraction in a nebula.",
+      "sources": [
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 144,
+          "pageStart": 141,
+          "pageEnd": 141,
+          "headingPath": [
+            "20. In the World of Stars"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 145,
+          "pageStart": 141,
+          "pageEnd": 142,
+          "headingPath": [
+            "20. In the World of Stars"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 146,
+          "pageStart": 142,
+          "pageEnd": 143,
+          "headingPath": [
+            "20. In the World of Stars"
+          ]
+        }
+      ],
+      "edition": "First Edition 2017",
+      "generatedAt": "2026-10-31T19:53:22.439Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "How many nakshatras are in one zodiac sign?",
+      "choices": [
+        "12",
+        "27",
+        "3",
+        "9"
+      ],
+      "answerIndex": 2,
+      "solution": "In the system of nakshatras, the entire 360-degree circle of the sky is divided into 27 equal parts, each called a nakshatra. Since each zodiac sign spans 30 degrees, and each nakshatra spans approximately 13.33 degrees, three nakshatras fit into one zodiac sign. The option '12' refers to the number of zodiac signs, '27' refers to the total number of nakshatras, and '9' does not align with the calculated division of the zodiac.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक राशि चिह्न में कितने नक्षत्र होते हैं?",
+          "choices": [
+            "12",
+            "27",
+            "3",
+            "9"
+          ],
+          "solution": "नक्षत्रों के प्रणाली में, आकाश के पूरे 360 डिग्री के वृत्त को 27 बराबर भागों में विभाजित किया जाता है, जिन्हें प्रत्येक नक्षत्र कहा जाता है। प्रत्येक राशि चिह्न 30 डिग्री का होता है, और प्रत्येक नक्षत्र लगभग 13.33 डिग्री का होता है, इसलिए एक राशि चिह्न में तीन नक्षत्र फिट होते हैं। विकल्प '12' राशि चिह्नों की संख्या को संदर्भित करता है, '27' कुल नक्षत्रों की संख्या को संदर्भित करता है, और '9' राशि के विभाजन के साथ मेल नहीं खाता है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Hindi terminology for astronomical concepts.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका राशीमध्ये किती नक्षत्रे असतात?",
+          "choices": [
+            "12",
+            "27",
+            "3",
+            "9"
+          ],
+          "solution": "नक्षत्रांच्या पद्धतीत, आकाशाचा 360 अंशाचा पूर्ण वर्तुळ 27 समान भागांमध्ये विभागला जातो, ज्याला प्रत्येक नक्षत्र म्हणतात. प्रत्येक राशी 30 अंशांची असते आणि प्रत्येक नक्षत्राचा अंश 13.33 अंश असतो, म्हणून एका राशीमध्ये तीन नक्षत्रे बसतात. '12' चा उल्लेख राशींच्या संख्येशी आहे, '27' ही नक्षत्रांच्या एकूण संख्येशी आहे आणि '9' राशीच्या गणितीय विभाजनाशी मेळ नाही.",
+          "imageAlt": null,
+          "critique": "The translation accurately preserves the meaning, technical terms, and logical structure of the original question. The Marathi version uses appropriate terminology ('नक्षत्रे', 'राशी') that aligns with standard Marathi astronomy textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "confuses zodiac signs with nakshatras",
+        "confuses total nakshatras with zodiac signs",
+        null,
+        "incorrect calculation based on the given information"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly calculates that 27 nakshatras make up 360 degrees, and since each zodiac sign is 30 degrees, 3 nakshatras make up one zodiac sign. The reasoning for the distractors is valid and reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 147,
+          "pageStart": 143,
+          "pageEnd": 144,
+          "headingPath": [
+            "20. In the World of Stars"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 148,
+          "pageStart": 144,
+          "pageEnd": 145,
+          "headingPath": [
+            "20. In the World of Stars"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 149,
+          "pageStart": 145,
+          "pageEnd": 146,
+          "headingPath": [
+            "20. In the World of Stars"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 150,
+          "pageStart": 146,
+          "pageEnd": 146,
+          "headingPath": [
+            "20. In the World of Stars"
+          ]
+        }
+      ],
+      "edition": "First Edition 2017",
+      "generatedAt": "2026-10-31T19:53:22.439Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "What is the significance of the Pole Star in sky watching?",
+      "choices": [
+        "It is the brightest star in the sky",
+        "It is used to locate the direction of north",
+        "It is the closest star to the Earth",
+        "It is the only star visible at night"
+      ],
+      "answerIndex": 1,
+      "solution": "The Pole Star is used to locate the direction of north because it remains nearly stationary in the sky, making it a reliable reference point. It is not the brightest star, as other stars like Sirius are brighter. It is not the closest star to Earth, as there are many closer stars, such as Proxima Centauri. It is not the only star visible at night, as numerous other stars can be seen under clear conditions.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "आकाश देखने में ध्रुव तारा का क्या महत्व है?",
+          "choices": [
+            "यह आकाश में सबसे चमकीला तारा है",
+            "इसका उपयोग उत्तर दिशा का निर्धारण करने के लिए किया जाता है",
+            "यह पृथ्वी के सबसे करीब का तारा है",
+            "यह रात में दिखाई देने वाला एकमात्र तारा है"
+          ],
+          "solution": "ध्रुव तारा का उपयोग उत्तर दिशा का निर्धारण करने के लिए किया जाता है क्योंकि यह आकाश में लगभग स्थिर रहता है, जिससे यह एक विश्वसनीय संदर्भ बिंदु बन जाता है। यह सबसे चमकीला तारा नहीं है, क्योंकि अन्य तारे जैसे सिरियस अधिक चमकीले होते हैं। यह पृथ्वी के सबसे करीब का तारा नहीं है, क्योंकि अन्य कई तारे, जैसे प्रॉक्सिमा सेंटौरी, निकट हैं। यह रात में दिखाई देने वाला एकमात्र तारा नहीं है, क्योंकि स्पष्ट स्थिति में कई अन्य तारे दिखाई दे सकते हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Hindi scientific terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "आकाश निरीक्षणात ध्रुव तारा काय अर्थ आहे?",
+          "choices": [
+            "ते आकाशातील सर्वात तीव्र तारा आहे",
+            "त्याचा उत्तर दिशा शोधण्यासाठी वापर केला जातो",
+            "ते पृथ्वीच्या सर्वात जवळचा तारा आहे",
+            "रात्री त्याच एकमेव तारा दिसतो"
+          ],
+          "solution": "ध्रुव तारा उत्तर दिशा शोधण्यासाठी वापरला जातो कारण तो आकाशात लगभग थांबलेला राहतो, ज्यामुळे तो विश्वासार्ह संदर्भ बनतो. तो सर्वात तीव्र तारा नाही, कारण इतर तारे जसे की सिरियस अधिक तीव्र आहेत. तो पृथ्वीच्या सर्वात जवळचा तारा नाही, कारण अनेक जवळचे तारे, जसे की प्रॉक्सिमा सेंटॉरी, आहेत. रात्री त्याच एकमेव तारा दिसत नाही, कारण स्पष्ट परिस्थितीत अनेक इतर तारे दिसू शकतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for astronomical concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "incorrectly assumes brightness is the main significance",
+        null,
+        "incorrectly assumes proximity is the main significance",
+        "incorrectly assumes exclusivity is the main significance"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 1, as the Pole Star is used to locate the direction of north. The other options are incorrect and represent common misconceptions about the Pole Star.",
+      "sources": [
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 147,
+          "pageStart": 143,
+          "pageEnd": 144,
+          "headingPath": [
+            "20. In the World of Stars"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 148,
+          "pageStart": 144,
+          "pageEnd": 145,
+          "headingPath": [
+            "20. In the World of Stars"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 149,
+          "pageStart": 145,
+          "pageEnd": 146,
+          "headingPath": [
+            "20. In the World of Stars"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 150,
+          "pageStart": 146,
+          "pageEnd": 146,
+          "headingPath": [
+            "20. In the World of Stars"
+          ]
+        }
+      ],
+      "edition": "First Edition 2017",
+      "generatedAt": "2026-10-31T19:53:22.439Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "If the sun enters the zodiac sign Capricorn, which constellation is behind the sun?",
+      "choices": [
+        "Saptarshi",
+        "Sharmishtha",
+        "Mrug",
+        "Vrushchik"
+      ],
+      "answerIndex": 3,
+      "solution": "When the sun enters the zodiac sign Capricorn, the constellation that appears behind the sun is Vrushchik, which corresponds to Scorpio. Saptarshi refers to a different constellation, not Scorpio. Sharmishtha is associated with Cassiopeia, and Mrug refers to Orion, neither of which align with Capricorn's corresponding constellation.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि सूर्य मकर राशि में प्रवेश करता है, तो सूर्य के पीछे कौन-सा तारामंडल होता है?",
+          "choices": [
+            "सप्तर्षि",
+            "शर्मिष्ठा",
+            "मृग",
+            "वृश्चिक"
+          ],
+          "solution": "जब सूर्य मकर राशि में प्रवेश करता है, तो सूर्य के पीछे वाला तारामंडल वृश्चिक होता है, जो कि स्कॉर्पियो के अनुरूप है। सप्तर्षि एक अलग तारामंडल है, जो कि स्कॉर्पियो के अनुरूप नहीं है। शर्मिष्ठा कैसियोपिया से संबंधित है, और मृग ओरियन के अनुरूप है, जो भी मकर राशि के अनुरूप नहीं है।",
+          "imageAlt": null,
+          "critique": "All terms are standard in Hindi astronomy textbooks. 'Vrushchik' corresponds to Scorpio, 'Mrug' to Orion, 'Saptarshi' to the Big Dipper, and 'Sharmishtha' to Cassiopeia. The translation preserves the original meaning and structure.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर सूर्य राशिचक्रातील मकर राशीत प्रवेश करत असेल, तर सूर्याच्या पाठीमागे कोणती नक्षत्रे असते?",
+          "choices": [
+            "सप्तर्षी",
+            "शर्मिष्ठा",
+            "मृग",
+            "वृश्चिक"
+          ],
+          "solution": "जेव्हा सूर्य राशिचक्रातील मकर राशीत प्रवेश करतो, तेव्हा सूर्याच्या पाठीमागे असणारी नक्षत्रे वृश्चिक असते, जी स्कॉर्पिओ च्या तुलनेत येते. सप्तर्षी ही इतर नक्षत्रे असते, स्कॉर्पिओ नाही. शर्मिष्ठा ही कॅसिओपिया शी जोडली जाते आणि मृग ही ओरियन शी जोडली जाते, ज्यापैकी कोणाचाही मकर राशीशी संबंध नसतो.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terms for constellations.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses zodiac signs with Indian constellations like Saptarshi, which are not related to the zodiac",
+        "refers to a different constellation",
+        "Confuses nakshatra names with zodiac signs, thinking 'Mrug' is a zodiac sign",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        1,
+        1,
+        3,
+        3
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct, as it correctly identifies Vrushchik as the constellation for Scorpio and applies that logic to the question. The reasoning for the distractors aligns with common misconceptions about zodiac signs and constellations.",
+      "sources": [
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 147,
+          "pageStart": 143,
+          "pageEnd": 144,
+          "headingPath": [
+            "20. In the World of Stars"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 148,
+          "pageStart": 144,
+          "pageEnd": 145,
+          "headingPath": [
+            "20. In the World of Stars"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 149,
+          "pageStart": 145,
+          "pageEnd": 146,
+          "headingPath": [
+            "20. In the World of Stars"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 150,
+          "pageStart": 146,
+          "pageEnd": 146,
+          "headingPath": [
+            "20. In the World of Stars"
+          ]
+        }
+      ],
+      "edition": "First Edition 2017",
+      "generatedAt": "2026-10-31T19:53:22.439Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "If the sun enters a particular zodiac sign, what does this indicate about the Earth's position?",
+      "choices": [
+        "The Earth is at a point where the sun appears to be in that zodiac sign.",
+        "The Earth is at a point where the sun appears to be in that zodiac sign from the moon's perspective.",
+        "The Earth is not moving around the sun.",
+        "The Earth is not in orbit around the sun."
+      ],
+      "answerIndex": 0,
+      "solution": "The Earth is at a point where the sun appears to be in that zodiac sign because the Earth's position relative to the sun causes the sun to be seen in that specific zodiac sign from Earth's perspective. The other options are incorrect because they either misrepresent the Earth's motion or suggest the Earth is not in orbit around the sun, which contradicts established astronomical principles.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि सूर्य एक विशिष्ट राशि में प्रवेश करता है, तो इसका अर्थ पृथ्वी की स्थिति के बारे में क्या होता है?",
+          "choices": [
+            "पृथ्वी उस बिंदु पर होती है जहां सूर्य उस राशि में दिखाई देता है।",
+            "पृथ्वी उस बिंदु पर होती है जहां सूर्य चंद्रमा के दृष्टिकोण से उस राशि में दिखाई देता है।",
+            "पृथ्वी सूर्य के चारों ओर गतिमान नहीं होती है।",
+            "पृथ्वी सूर्य के चारों ओर कक्षा में नहीं होती है।"
+          ],
+          "solution": "पृथ्वी उस बिंदु पर होती है जहां सूर्य उस राशि में दिखाई देता है क्योंकि पृथ्वी की स्थिति सूर्य के सापेक्ष उस विशिष्ट राशि में सूर्य को पृथ्वी के दृष्टिकोण से देखा जाता है। अन्य विकल्प गलत हैं क्योंकि वे या तो पृथ्वी की गति को गलत तरीके से प्रस्तुत करते हैं या यह सुझाव देते हैं कि पृथ्वी सूर्य के चारों ओर गतिमान नहीं है, जो स्थापित खगोलीय सिद्धांतों के विरोधी है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate astronomical terminology in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "सूर्य एका विशिष्ट राशीमध्ये प्रवेश करतो, तर ते भूमीच्या स्थितीबद्दल काय सूचित करते?",
+          "choices": [
+            "भूमी एका बिंदूवर असते जेथे सूर्य त्या राशीमध्ये दिसतो.",
+            "भूमी एका बिंदूवर असते जेथे सूर्य चंद्राच्या दृष्टिकोनातून त्या राशीमध्ये दिसतो.",
+            "भूमी सूर्याच्या चारा वर गती करत नाही.",
+            "भूमी सूर्याच्या चारा वर नाही असते."
+          ],
+          "solution": "भूमी एका बिंदूवर असते जेथे सूर्य त्या राशीमध्ये दिसतो, कारण भूमीची स्थिती सूर्याशी जुळलेली असते ज्यामुळे सूर्य भूमीच्या दृष्टिकोनातून त्या विशिष्ट राशीमध्ये दिसतो. इतर विकल्प चुकीचे आहेत कारण ते भूमीच्या गतीचे अस्पष्टीकरण करतात किंवा भूमी सूर्याच्या चारा वर नाही असते, असे सूचित करतात, जे स्थापित खगोलशास्त्रीय तत्वांच्या विरुद्ध आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi astronomical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses the reference point for observing the sun's position in the zodiac.",
+        "Misunderstands the Earth's position as the same as the sun.",
+        "Incorrectly believes the Earth is not moving in orbit."
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 0, as the Earth's position relative to the sun determines the apparent zodiac sign. The other options contain misconceptions about the Earth's motion and reference points.",
+      "sources": [
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 147,
+          "pageStart": 143,
+          "pageEnd": 144,
+          "headingPath": [
+            "20. In the World of Stars"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 148,
+          "pageStart": 144,
+          "pageEnd": 145,
+          "headingPath": [
+            "20. In the World of Stars"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 149,
+          "pageStart": 145,
+          "pageEnd": 146,
+          "headingPath": [
+            "20. In the World of Stars"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 150,
+          "pageStart": 146,
+          "pageEnd": 146,
+          "headingPath": [
+            "20. In the World of Stars"
+          ]
+        }
+      ],
+      "edition": "First Edition 2017",
+      "generatedAt": "2026-10-31T19:53:22.439Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Why is it important to understand that the sun's motion is apparent and not real?",
+      "choices": [
+        "It helps in predicting the weather accurately.",
+        "It helps in understanding the movement of the Earth around the sun.",
+        "It helps in determining the brightness of the sun.",
+        "It helps in identifying the constellations in the sky."
+      ],
+      "answerIndex": 1,
+      "solution": "Understanding that the sun's motion is apparent helps explain how the Earth's movement around the sun causes the sun to appear to move across the sky. This concept is fundamental to astronomy and helps clarify the relationship between Earth's orbit and celestial observations. The other options do not relate to the actual reason for the apparent motion of the sun.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "सूर्य के गति को आभासी और वास्तविक नहीं समझना क्यों महत्वपूर्ण है?",
+          "choices": [
+            "इससे वायुमंडल की भविष्यवाणी सटीक रूप से करने में सहायता मिलती है।",
+            "इससे सूर्य के चारों ओर पृथ्वी की गति की समझ में सहायता मिलती है।",
+            "इससे सूर्य की चमक का निर्धारण करने में सहायता मिलती है।",
+            "इससे आकाश में तारामंडलों की पहचान करने में सहायता मिलती है।"
+          ],
+          "solution": "सूर्य की गति को आभासी समझना यह समझने में सहायता करता है कि पृथ्वी की गति सूर्य के आकाश में गति के कारण होती है। यह खगोल विज्ञान के लिए मूलभूत अवधारणा है और पृथ्वी की कक्षा और आकाशीय निरीक्षण के बीच संबंध को स्पष्ट करता है। अन्य विकल्प सूर्य की आभासी गति के वास्तविक कारण से संबंधित नहीं हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the original English question and solution, with appropriate terminology used in a Hindi-medium educational context.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "सूर्याच्या गतीचा अभ्यास करणे आवश्यक का आहे कारण ती खरी नसून अपार्श्विक आहे?",
+          "choices": [
+            "त्यामुळे वारा वारा अचूक भविष्यवाणी करणे शक्य होते.",
+            "त्यामुळे सूर्याच्या भोवती पृथ्वीच्या गतीचे बोध होतो.",
+            "त्यामुळे सूर्याच्या तीव्रतेचे निर्धारण होते.",
+            "त्यामुळे आकाशातील राशींची ओळख होते."
+          ],
+          "solution": "सूर्याच्या गतीचा अपार्श्विक असण्याचा अभ्यास करणे सूर्याच्या भोवती पृथ्वीच्या गतीमुळे सूर्याच्या आकाशात जाण्याचे व्याख्यान करण्यास मदत होते. हा अभ्यास खगोलशास्त्राच्या मूलभूत माहितीचा भाग आहे आणि पृथ्वीच्या कक्षेच्या आणि खगोलीय निरीक्षणांच्या संबंधाचे स्पष्टीकरण करते. इतर विकल्प सूर्याच्या अपार्श्विक गतीच्या खर्या कारणाशी संबंधित नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the sun's motion with weather prediction.",
+        null,
+        "Misunderstands the purpose of understanding apparent motion.",
+        "Focuses on the brightness of the sun instead of the Earth's movement."
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 1, as understanding the apparent motion of the sun is essential for grasping the Earth's orbit around it. The other options represent common misconceptions or irrelevant points.",
+      "sources": [
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 147,
+          "pageStart": 143,
+          "pageEnd": 144,
+          "headingPath": [
+            "20. In the World of Stars"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 148,
+          "pageStart": 144,
+          "pageEnd": 145,
+          "headingPath": [
+            "20. In the World of Stars"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 149,
+          "pageStart": 145,
+          "pageEnd": 146,
+          "headingPath": [
+            "20. In the World of Stars"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 150,
+          "pageStart": 146,
+          "pageEnd": 146,
+          "headingPath": [
+            "20. In the World of Stars"
+          ]
+        }
+      ],
+      "edition": "First Edition 2017",
+      "generatedAt": "2026-10-31T19:53:22.439Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
     }
   ]
 }

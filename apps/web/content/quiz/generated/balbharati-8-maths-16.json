@@ -291,6 +291,644 @@
       "generatedAt": "2026-11-02T07:58:24.409Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "If the side of a cube is 4 cm, what is the volume of the cube?",
+      "choices": [
+        "64 cm³",
+        "16 cm³",
+        "24 cm³",
+        "48 cm³"
+      ],
+      "answerIndex": 0,
+      "solution": "The volume of a cube is calculated as side³. For a side of 4 cm, 4³ = 64 cm³. The other options are incorrect calculations.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक घन की भुजा 4 सेमी है, तो घन का आयतन क्या है?",
+          "choices": [
+            "64 सेमी³",
+            "16 सेमी³",
+            "24 सेमी³",
+            "48 सेमी³"
+          ],
+          "solution": "एक घन का आयतन भुजा³ के रूप में गणना किया जाता है। 4 सेमी की भुजा के लिए, 4³ = 64 सेमी³। अन्य विकल्प गलत गणना हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms as found in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर घनाच्या बाजूचे लांबी 4 सेमी असेल, तर घनाचा घनफळ किती असेल?",
+          "choices": [
+            "64 सेमी³",
+            "16 सेमी³",
+            "24 सेमी³",
+            "48 सेमी³"
+          ],
+          "solution": "घनाचा घनफळ बाजूच्या घनाच्या रूपात गणला जातो. 4 सेमी बाजूसाठी, 4³ = 64 सेमी³. इतर विकल्प चुकीच्या गणना आहेत.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate technical terms. The correct answer is in the same position (option 1), and the distractors remain incorrect.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Calculates area instead of volume by squaring the side length",
+        "Confuses the formula for volume with surface area or multiplies only two dimensions instead of three",
+        "Multiplying side length by 3 instead of cubing it"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly calculates the volume of the cube as 4³ = 64 cm³. The author's reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 71,
+          "pageStart": 116,
+          "pageEnd": 117,
+          "headingPath": [
+            "16. Surface area and Volume"
+          ]
+        },
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 72,
+          "pageStart": 117,
+          "pageEnd": 119,
+          "headingPath": [
+            "16. Surface area and Volume"
+          ]
+        },
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 73,
+          "pageStart": 119,
+          "pageEnd": 120,
+          "headingPath": [
+            "16. Surface area and Volume"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-11-01T01:21:28.810Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "A cuboid has length 10 cm, breadth 4 cm, and height 5 cm. What is its volume?",
+      "choices": [
+        "200 cm³",
+        "400 cm³",
+        "100 cm³",
+        "500 cm³"
+      ],
+      "answerIndex": 0,
+      "solution": "The volume of a cuboid is calculated by multiplying its length, breadth, and height. Using the formula V = l × b × h, we get V = 10 × 4 × 5 = 200 cm³. The option '400 cm³' is incorrect because it multiplies the length and breadth incorrectly. '100 cm³' is wrong as it uses only two dimensions. '500 cm³' is incorrect because it miscalculates the product of the dimensions.",
+      "checkExpr": "10*4*5",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक घनाभ की लंबाई 10 सेमी, चौड़ाई 4 सेमी और ऊंचाई 5 सेमी है। इसका आयतन क्या है?",
+          "choices": [
+            "200 सेमी³",
+            "400 सेमी³",
+            "100 सेमी³",
+            "500 सेमी³"
+          ],
+          "solution": "एक घनाभ का आयतन इसकी लंबाई, चौड़ाई और ऊंचाई के गुणनफल से गणना की जाती है। सूत्र V = l × b × h का उपयोग करके, हमें V = 10 × 4 × 5 = 200 सेमी³ प्राप्त होता है। '400 सेमी³' गलत है क्योंकि यह लंबाई और चौड़ाई को गलत तरीके से गुणा करता है। '100 सेमी³' गलत है क्योंकि यह केवल दो आयामों का उपयोग करता है। '500 सेमी³' गलत है क्योंकि यह आयामों के गुणनफल की गणना गलत करता है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका घनाची लांबी 10 सेमी, रुंदी 4 सेमी आणि उंची 5 सेमी आहे. त्याचा आयतन किती आहे?",
+          "choices": [
+            "200 सेमी³",
+            "400 सेमी³",
+            "100 सेमी³",
+            "500 सेमी³"
+          ],
+          "solution": "घनाचा आयतन त्याच्या लांबी, रुंदी आणि उंची गुणिले जाऊन काढला जातो. सूत्र V = l × b × h वापरून, आम्ही V = 10 × 4 × 5 = 200 सेमी³ मिळतो. '400 सेमी³' अयोग्य आहे कारण ते लांबी आणि रुंदी गुणिले चुकीचे आहे. '100 सेमी³' अयोग्य आहे कारण ते केवळ दोन आयतन वापरते. '500 सेमी³' अयोग्य आहे कारण ते आयतनाच्या गुणाकाराची चुकीची गणना करते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "multiplies the length and breadth incorrectly",
+        "uses only two dimensions",
+        "miscalculates the product of the dimensions"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 200 cm³, calculated as 10 × 4 × 5. The author's reasoning for the distractors is valid and reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 71,
+          "pageStart": 116,
+          "pageEnd": 117,
+          "headingPath": [
+            "16. Surface area and Volume"
+          ]
+        },
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 72,
+          "pageStart": 117,
+          "pageEnd": 119,
+          "headingPath": [
+            "16. Surface area and Volume"
+          ]
+        },
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 73,
+          "pageStart": 119,
+          "pageEnd": 120,
+          "headingPath": [
+            "16. Surface area and Volume"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-11-01T01:21:28.810Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "A cube has a side length of 3 cm. What is its volume?",
+      "choices": [
+        "9 cm³",
+        "27 cm³",
+        "12 cm³",
+        "15 cm³"
+      ],
+      "answerIndex": 1,
+      "solution": "The volume of a cube is calculated by cubing the side length. Using the formula V = l³, we get V = 3³ = 27 cm³. The option '9 cm³' is incorrect because it multiplies the side length by itself only twice. '12 cm³' is wrong as it does not cube the side length. '15 cm³' is incorrect because it adds the side length three times.",
+      "checkExpr": "3*3*3",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक घन की भुजा की लंबाई 3 सेमी है। इसका आयतन क्या है?",
+          "choices": [
+            "9 सेमी³",
+            "27 सेमी³",
+            "12 सेमी³",
+            "15 सेमी³"
+          ],
+          "solution": "एक घन का आयतन भुजा की लंबाई के घन द्वारा गणना की जाती है। सूत्र V = l³ का उपयोग करके, हमें V = 3³ = 27 सेमी³ मिलता है। '9 सेमी³' गलत है क्योंकि यह भुजा की लंबाई को केवल दो बार गुणा करता है। '12 सेमी³' गलत है क्योंकि यह भुजा की लंबाई को घन नहीं करता। '15 सेमी³' गलत है क्योंकि यह भुजा की लंबाई को तीन बार जोड़ता है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Hindi technical terms for mathematical concepts.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका घनाची बाजू 3 सेमी आहे. त्याचा घनफळ किती आहे?",
+          "choices": [
+            "9 सेमी³",
+            "27 सेमी³",
+            "12 सेमी³",
+            "15 सेमी³"
+          ],
+          "solution": "एका घनाचा घनफळ बाजूच्या लांबीच्या घनाच्या नियमाने काढला जातो. सूत्र V = l³ वापरून, आपल्याला V = 3³ = 27 सेमी³ मिळतो. '9 सेमी³' अयोग्य आहे कारण ते बाजूच्या लांबीला फक्त दोनदा गुणते. '12 सेमी³' अयोग्य आहे कारण ते बाजूच्या लांबीचा घन घेत नाही. '15 सेमी³' अयोग्य आहे कारण ते बाजूच्या लांबीचे तीनदा जोडते.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "multiplies the side length by itself only twice",
+        null,
+        "does not cube the side length",
+        "adds the side length three times"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct and matches the key. The volume of a cube is indeed calculated as side length cubed, and the reasoning for the incorrect options reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 71,
+          "pageStart": 116,
+          "pageEnd": 117,
+          "headingPath": [
+            "16. Surface area and Volume"
+          ]
+        },
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 72,
+          "pageStart": 117,
+          "pageEnd": 119,
+          "headingPath": [
+            "16. Surface area and Volume"
+          ]
+        },
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 73,
+          "pageStart": 119,
+          "pageEnd": 120,
+          "headingPath": [
+            "16. Surface area and Volume"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-11-01T01:21:28.810Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "A cylindrical tank has an internal diameter of 2 m and a depth of 3 m. How much water can it hold in liters?",
+      "choices": [
+        "9420 liters",
+        "18840 liters",
+        "28260 liters",
+        "37680 liters"
+      ],
+      "answerIndex": 0,
+      "solution": "The volume of the cylinder is πr²h. The radius is 1 m, and the height is 3 m. Volume = 3.14×1²×3 = 9.42 m³. Since 1 m³ = 1000 liters, the volume is 9420 liters. The incorrect options arise from miscalculating the radius or failing to convert cubic meters to liters.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक बेलनाकार टैंक का आ interal व्यास 2 मीटर है और गहराई 3 मीटर है। यह कितना पानी रख सकता है लीटर में?",
+          "choices": [
+            "9420 लीटर",
+            "18840 लीटर",
+            "28260 लीटर",
+            "37680 लीटर"
+          ],
+          "solution": "बेलन का आयतन πr²h होता है। त्रिज्या 1 मीटर है और ऊंचाई 3 मीटर है। आयतन = 3.14×1²×3 = 9.42 मीटर³। चूंकि 1 मीटर³ = 1000 लीटर, आयतन 9420 लीटर है। गलत विकल्प त्रिज्या की गलत गणना करने या घन मीटर को लीटर में बदलने में असफल होने के कारण होते हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms. The correct answer is in the same position (option 1) and the distractors remain incorrect.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका बेलनाकृती टॅंकचा आतील व्यास 2 मीटर आहे आणि त्याची खोली 3 मीटर आहे. तो किती पाणी धारण करू शकतो?",
+          "choices": [
+            "9420 लिटर",
+            "18840 लिटर",
+            "28260 लिटर",
+            "37680 लिटर"
+          ],
+          "solution": "बेलनाचा आयतन πr²h आहे. त्रिज्या 1 मीटर आहे आणि उंची 3 मीटर आहे. आयतन = 3.14×1²×3 = 9.42 मीटर³. कारण 1 मीटर³ = 1000 लिटर, तर आयतन 9420 लिटर आहे. चुकीचे उत्तर त्रिज्या चुकून गणल्यामुळे किंवा घन मीटर ते लिटरमध्ये रूपांतरित करण्याच्या अपयशामुळे येतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses diameter with radius in volume calculation, leading to double the correct volume",
+        "Confuses diameter with radius",
+        "Miscalculates the value of π"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct. The volume of the cylinder is calculated properly using πr²h, with radius 1 m (half of 2 m diameter), and the conversion from cubic meters to liters is accurate. The distractors reflect common misconceptions like using diameter instead of radius or miscalculating π.",
+      "sources": [
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 74,
+          "pageStart": 120,
+          "pageEnd": 122,
+          "headingPath": [
+            "16. Surface area and Volume"
+          ]
+        },
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 75,
+          "pageStart": 122,
+          "pageEnd": 123,
+          "headingPath": [
+            "16. Surface area and Volume"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-11-01T01:21:28.810Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "A cuboid is formed by joining two cubes, each with a side of 4 cm. What is the total surface area of the resulting cuboid?",
+      "choices": [
+        "128 cm²",
+        "160 cm²",
+        "176 cm²",
+        "192 cm²"
+      ],
+      "answerIndex": 1,
+      "solution": "The total surface area of the cuboid is calculated by using the formula 2(lb + bh + hl). When two cubes of 4 cm are joined, the dimensions of the cuboid become length = 8 cm, breadth = 4 cm, and height = 4 cm. Plugging these values into the formula gives 2(8×4 + 4×4 + 4×8) = 2(32 + 16 + 32) = 2(80) = 160 cm². The option '128 cm²' is incorrect because it does not account for the correct dimensions. '176 cm²' is wrong as it miscalculates the product of the dimensions. '192 cm²' is incorrect because it adds the areas of the two cubes instead of calculating the surface area of the new cuboid.",
+      "checkExpr": "2*(8*4+4*4+4*8)",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "4 सेमी के एक किनारे वाले दो घनों को जोड़कर एक घनाभ बनाया जाता है। परिणामी घनाभ का कुल पृष्ठीय क्षेत्रफल क्या है?",
+          "choices": [
+            "128 वर्ग सेमी",
+            "160 वर्ग सेमी",
+            "176 वर्ग सेमी",
+            "192 वर्ग सेमी"
+          ],
+          "solution": "घनाभ का कुल पृष्ठीय क्षेत्रफल सूत्र 2(ले. चौ. + चौ. ऊं. + ऊं. ले.) के प्रयोग से गणना की जाती है। 4 सेमी के दो घनों को जोड़ने पर घनाभ के आयाम लंबाई = 8 सेमी, चौड़ाई = 4 सेमी, और ऊंचाई = 4 सेमी हो जाते हैं। इन मानों को सूत्र में रखने पर 2(8×4 + 4×4 + 4×8) = 2(32 + 16 + 32) = 2(80) = 160 वर्ग सेमी प्राप्त होता है। विकल्प '128 वर्ग सेमी' गलत है क्योंकि इसमें सही आयामों की गणना नहीं की गई है। '176 वर्ग सेमी' गलत है क्योंकि इसमें आयामों के गुणन की गलत गणना की गई है। '192 वर्ग सेमी' गलत है क्योंकि इसमें दो घनों के क्षेत्रफलों को जोड़ दिया गया है बजाय नए घनाभ के पृष्ठीय क्षेत्रफल की गणना के।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate technical terms as used in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एक घनाचे रूपांतर दोन घनांच्या जोडण्याने होते, ज्याच्या प्रत्येक बाजूची लांबी 4 सेंमी आहे. तयार झालेल्या घनाच्या एकूण पृष्ठभागाचे क्षेत्रफळ किती असेल?",
+          "choices": [
+            "128 सेंमी²",
+            "160 सेंमी²",
+            "176 सेंमी²",
+            "192 सेंमी²"
+          ],
+          "solution": "घनाच्या एकूण पृष्ठभागाचे क्षेत्रफळ वर्गीकरण 2(ला.बा.उ. ) च्या सूत्राने गणले जाते. 4 सेंमी च्या दोन घनांच्या जोडण्याने घनाच्या अंतर्गत असलेल्या मापांचे रूप लांबी = 8 सेंमी, रुंदी = 4 सेंमी आणि उंची = 4 सेंमी असते. या मापांचे सूत्रामध्ये ठेवल्यास 2(8×4 + 4×4 + 4×8) = 2(32 + 16 + 32) = 2(80) = 160 सेंमी² मिळते. '128 सेंमी²' अयोग्य आहे कारण ते योग्य मापांचा विचार करत नाही. '176 सेंमी²' अयोग्य आहे कारण ते मापांच्या गुणाकाराचे चुकीचे गणन करते. '192 सेंमी²' अयोग्य आहे कारण ते दोन घनांच्या क्षेत्रफळांची बेरीज करते आणि नवीन घनाच्या पृष्ठभागाचे क्षेत्रफळ गणले जात नाही.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate technical terms as used in Marathi textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Student calculates the surface area of two separate cubes and doubles it without accounting for the overlapping faces that are no longer exposed.",
+        null,
+        "does not account for the correct dimensions",
+        "adds the areas of the two cubes instead of calculating the surface area of the new cuboid"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct. The surface area of the cuboid is properly calculated with the new dimensions. The reasoning for the wrong options is mostly accurate, though the reason for option 2 is vague and not a clear misconception.",
+      "sources": [
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 71,
+          "pageStart": 116,
+          "pageEnd": 117,
+          "headingPath": [
+            "16. Surface area and Volume"
+          ]
+        },
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 72,
+          "pageStart": 117,
+          "pageEnd": 119,
+          "headingPath": [
+            "16. Surface area and Volume"
+          ]
+        },
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 73,
+          "pageStart": 119,
+          "pageEnd": 120,
+          "headingPath": [
+            "16. Surface area and Volume"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-11-01T01:21:28.810Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "A cylinder has a curved surface area of 154 cm² and a height of 7 cm. What is the diameter of the cylinder?",
+      "choices": [
+        "7 cm",
+        "14 cm",
+        "21 cm",
+        "28 cm"
+      ],
+      "answerIndex": 0,
+      "solution": "The curved surface area of a cylinder is 2πrh. Given that the curved surface area is 154 cm² and the height is 7 cm, substituting into the formula: 2πrh = 154. Using π = 3.14, 2×3.14×r×7 = 154. Solving for r gives r = 3.5 cm, so the diameter is 7 cm. The incorrect options arise from miscalculating the radius or confusing diameter with radius.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक बेलन के वक्र पृष्ठ क्षेत्रफल 154 वर्ग सेमी है और ऊंचाई 7 सेमी है। बेलन का व्यास क्या है?",
+          "choices": [
+            "7 सेमी",
+            "14 सेमी",
+            "21 सेमी",
+            "28 सेमी"
+          ],
+          "solution": "एक बेलन के वक्र पृष्ठ क्षेत्रफल 2πrh होता है। दिया गया है कि वक्र पृष्ठ क्षेत्रफल 154 वर्ग सेमी है और ऊंचाई 7 सेमी है। सूत्र में मान रखने पर: 2πrh = 154। π = 3.14 लेने पर, 2×3.14×r×7 = 154। r के लिए हल करने पर r = 3.5 सेमी प्राप्त होता है, अतः व्यास 7 सेमी है। गलत विकल्प त्रुटिपूर्ण त्रिज्या की गणना या व्यास और त्रिज्या में भ्रम के कारण बनते हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms as used in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका वर्तुळाकार वक्रपृष्ठाचे क्षेत्रफळ 154 चौ. सेमी आहे आणि त्याची उंची 7 सेमी आहे. तर वर्तुळाकार वक्रपृष्ठाच्या व्यासाचे माप किती आहे?",
+          "choices": [
+            "7 सेमी",
+            "14 सेमी",
+            "21 सेमी",
+            "28 सेमी"
+          ],
+          "solution": "एका वर्तुळाकार वक्रपृष्ठाचे क्षेत्रफळ 2πrh आहे. दिलेल्या वक्रपृष्ठाचे क्षेत्रफळ 154 चौ. सेमी आहे आणि उंची 7 सेमी आहे, सूत्रात बदल करून: 2πrh = 154. π = 3.14 वापरून, 2×3.14×r×7 = 154. r चे मूल्य शोधल्यास r = 3.5 सेमी, म्हणून व्यास 7 सेमी आहे. चुकीचे उत्तर त्रुटीने त्रिज्या काढण्याच्या किंवा व्यास आणि त्रिज्या च्या गोंधळामुळे येतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms for geometry.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses radius with diameter",
+        "Confuses the curved surface area formula with the total surface area formula, leading to an incorrect calculation of radius",
+        "Fails to isolate the radius in the equation"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct. The curved surface area formula is applied properly, and the radius is correctly calculated as 3.5 cm, leading to a diameter of 7 cm. The reasoning for the distractors aligns with common student misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 74,
+          "pageStart": 120,
+          "pageEnd": 122,
+          "headingPath": [
+            "16. Surface area and Volume"
+          ]
+        },
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 75,
+          "pageStart": 122,
+          "pageEnd": 123,
+          "headingPath": [
+            "16. Surface area and Volume"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-11-01T01:21:28.810Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "A cylinder has a total surface area of 616 cm² and a height of 14 cm. What is the radius of the cylinder?",
+      "choices": [
+        "7 cm",
+        "14 cm",
+        "21 cm",
+        "28 cm"
+      ],
+      "answerIndex": 0,
+      "solution": "The total surface area of a cylinder is 2πr(r + h). Given that the total surface area is 616 cm² and the height is 14 cm, substituting into the formula: 2πr(r + 14) = 616. Using π = 3.14, 2×3.14×r(r + 14) = 616. Solving the quadratic equation gives r = 7 cm. The incorrect options arise from miscalculating the quadratic equation or using the wrong formula.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक बेलन का कुल पृष्ठीय क्षेत्रफल 616 वर्ग सेमी है और ऊंचाई 14 सेमी है। बेलन की त्रिज्या क्या है?",
+          "choices": [
+            "7 सेमी",
+            "14 सेमी",
+            "21 सेमी",
+            "28 सेमी"
+          ],
+          "solution": "बेलन का कुल पृष्ठीय क्षेत्रफल 2πr(r + h) होता है। दिया गया है कि कुल पृष्ठीय क्षेत्रफल 616 वर्ग सेमी है और ऊंचाई 14 सेमी है। सूत्र में मान रखने पर: 2πr(r + 14) = 616। π = 3.14 का उपयोग करके, 2×3.14×r(r + 14) = 616। द्विघात समीकरण को हल करने पर r = 7 सेमी प्राप्त होता है। गलत विकल्प द्विघात समीकरण की गलत गणना या गलत सूत्र के कारण होते हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms as per Hindi-medium curriculum.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका वर्तुळाकार नळीच्या एकूण पृष्ठभागाचे क्षेत्रफळ 616 सेमी² आहे आणि तिची उंची 14 सेमी आहे. तर नळीच्या त्रिज्येचे मूल्य किती आहे?",
+          "choices": [
+            "7 सेमी",
+            "14 सेमी",
+            "21 सेमी",
+            "28 सेमी"
+          ],
+          "solution": "एका वर्तुळाकार नळीच्या एकूण पृष्ठभागाचे क्षेत्रफळ 2πr(r + h) असते. दिलेल्या एकूण पृष्ठभागाचे क्षेत्रफळ 616 सेमी² आहे आणि उंची 14 सेमी आहे. सूत्रात बदल करून: 2πr(r + 14) = 616. π = 3.14 वापरून, 2×3.14×r(r + 14) = 616. द्विघात समीकरण सोडवून r = 7 सेमी मिळते. चूकीचे उत्तर द्विघात समीकरणाच्या गणनेत चूक किंवा चुकीच्या सूत्राचा वापर करून मिळतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms for geometry.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Fails to solve the quadratic equation correctly",
+        "Uses the curved surface area formula instead of the total surface area formula",
+        "Confuses the height with the radius"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct and leads to the correct answer of 7 cm. The reasoning for the distractors is plausible and reflects common student misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 74,
+          "pageStart": 120,
+          "pageEnd": 122,
+          "headingPath": [
+            "16. Surface area and Volume"
+          ]
+        },
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 75,
+          "pageStart": 122,
+          "pageEnd": 123,
+          "headingPath": [
+            "16. Surface area and Volume"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-11-01T01:21:28.810Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
     }
   ]
 }

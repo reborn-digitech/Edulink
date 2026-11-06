@@ -1,0 +1,540 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-11-06T17:21:50.934Z",
+  "finishedAt": "2026-11-06T17:49:08.441Z",
+  "seconds": 1638,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "१० वी गणित भाग - १ इंग्रजी",
+    "bookCode": "1003000608",
+    "document": "balbharati/10/mathematics/1003000608.pdf",
+    "classLevel": 10,
+    "subject": "Mathematics",
+    "chapter": "Chapter 1 — Linear Equations in Two Variables",
+    "edition": "2026 edition",
+    "chunks": 11,
+    "groups": 4
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 0,
+    "6": 0
+  },
+  "style": {
+    "present": false,
+    "excerpts": [],
+    "note": "no past papers in the corpus (ContentDocument source \"papers\"): levels 5 and 6 skipped"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 8,
+      "ms": 533064,
+      "in": 27,
+      "out": 27,
+      "rejects": 0,
+      "promptTokens": 34110,
+      "completionTokens": 5693
+    },
+    "critique": {
+      "calls": 35,
+      "ms": 1364998,
+      "in": 27,
+      "out": 18,
+      "rejects": 9,
+      "promptTokens": 14794,
+      "completionTokens": 6061
+    },
+    "solver": {
+      "calls": 147,
+      "ms": 484381,
+      "in": 18,
+      "out": 12,
+      "rejects": 6,
+      "promptTokens": 34157,
+      "completionTokens": 1632
+    },
+    "form": {
+      "calls": 2,
+      "ms": 71183,
+      "in": 12,
+      "out": 8,
+      "rejects": 4,
+      "promptTokens": 2175,
+      "completionTokens": 293
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 1,
+      "ms": 945,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 33,
+      "ms": 1170718,
+      "in": 16,
+      "out": 16,
+      "rejects": 0,
+      "promptTokens": 15814,
+      "completionTokens": 6743
+    }
+  },
+  "kept": 8,
+  "keptByLevel": {
+    "1": 1,
+    "2": 2,
+    "3": 2,
+    "4": 3,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 3,
+  "needsFigure": 1,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "Which of the following is the general form of a linear equation in two variables?",
+      "ms": {
+        "draft": 24019,
+        "critique": 30670,
+        "solver": 86326,
+        "form": 17
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If x = 1 and y = -1 is the solution to the equations 5x - 3y = 8 and 3x + y = 2, which of the following is the value of x?",
+      "ms": {
+        "draft": 24019,
+        "critique": 31961,
+        "solver": 107351,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Using Cramer’s Rule, solve the equations 5x + 3y = -11 and 2x + 4y = -10. What is the value of x?",
+      "ms": {
+        "draft": 28137,
+        "critique": 35324
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the condition for the solution of a pair of linear equations to be unique?",
+      "ms": {
+        "draft": 28137,
+        "critique": 43823
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the value of the determinant represented by the matrix (a, b), (c, d)?",
+      "ms": {
+        "draft": 28137,
+        "critique": 45090,
+        "solver": 74305,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What method is used to solve the simultaneous equations in the passage?",
+      "ms": {
+        "draft": 23883,
+        "critique": 40200,
+        "solver": 7615
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A boat travels 16 km upstream and 24 km downstream in 6 hours. The same boat travels 36 km upstream and 48 km downstream in 13 hours. What is the speed of the boat in still water?",
+      "ms": {
+        "draft": 23883,
+        "critique": 43834,
+        "solver": 10700
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the sum of two numbers is 30 and their difference is 8, what is the smaller number?",
+      "ms": {
+        "draft": 23883,
+        "critique": 49444,
+        "solver": 79049
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a linear equation in two variables?",
+      "ms": {
+        "draft": 23883,
+        "critique": 49036,
+        "solver": 96281,
+        "form": 19856
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Solve the equation 2x + 3 = 7 using the elimination method.",
+      "ms": {
+        "draft": 9184,
+        "critique": 32659
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If D = 49 and Dx = -7 for simultaneous equations in x and y, what is the value of x?",
+      "ms": {
+        "draft": 9184,
+        "critique": 39243,
+        "solver": 4908
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the value of x if D = 49 and D_x = -7 for simultaneous equations in x and y?",
+      "ms": {
+        "draft": 6986,
+        "critique": 43227
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A two-digit number and the number with digits interchanged add up to 143. The digit in the unit’s place is 3 more than the digit in the ten’s place. What is the original number?",
+      "ms": {
+        "draft": 6986,
+        "critique": 51158
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the solution to the given equations according to the passage?",
+      "ms": {
+        "draft": 17400,
+        "critique": 44378
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which method is used to solve the simultaneous equations in the passage?",
+      "ms": {
+        "draft": 17400,
+        "critique": 44085,
+        "solver": 8152
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the method called that uses determinants to solve simultaneous equations?",
+      "ms": {
+        "draft": 27961,
+        "critique": 29815
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If two equations represent the same line when graphed, what can be said about the determinant D?",
+      "ms": {
+        "draft": 27961,
+        "critique": 38358
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Solve the following simultaneous equations: 3a + 5b = 26 and a + 5b = 22. What is the value of a?",
+      "ms": {
+        "draft": 28149,
+        "critique": 38943
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a condition for using Cramer's method to solve simultaneous equations?",
+      "ms": {
+        "draft": 27961,
+        "critique": 35482,
+        "solver": 53767
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the value of x in the equation 4x = 19?",
+      "ms": {
+        "draft": 9184,
+        "critique": 28591,
+        "solver": 7314,
+        "form": 1,
+        "translation": 120600
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the value of y when x = 3 for the equation 4x + y = 19?",
+      "ms": {
+        "draft": 6986,
+        "critique": 38696,
+        "solver": 8024,
+        "form": 0,
+        "translation": 137352
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a linear equation in two variables?",
+      "ms": {
+        "draft": 24019,
+        "critique": 38155,
+        "solver": 108144,
+        "form": 1,
+        "translation": 124789
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the speed of a boat in still water is 8 km/hr and the speed of the water current is 4 km/hr, what is the speed of the boat downstream?",
+      "ms": {
+        "draft": 17400,
+        "critique": 33772,
+        "solver": 9425,
+        "form": 0,
+        "translation": 122544
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If two equations have a determinant D = 0 and D_x = 0, what can be said about their solutions?",
+      "ms": {
+        "draft": 6986,
+        "critique": 41423,
+        "solver": 10031,
+        "form": 1,
+        "translation": 156020
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If the equations ax + by = c and dx + ey = f have a unique solution, what condition must be satisfied?",
+      "ms": {
+        "draft": 9184,
+        "critique": 30003,
+        "solver": 5859,
+        "form": 3,
+        "translation": 141264
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "Using the graphical method, if the lines representing the equations x + y = 6 and x - y = 4 intersect at (5, 1), which of the following is the solution to the equations?",
+      "ms": {
+        "draft": 24019,
+        "critique": 48275,
+        "solver": 79973,
+        "form": 0,
+        "translation": 165465
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "What is the conclusion when the graphs of two linear equations are the same line?",
+      "ms": {
+        "draft": 28137,
+        "critique": 37493,
+        "solver": 12025,
+        "form": 0,
+        "translation": 178065
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is the general form of a linear equation in two variables?",
+      "reason": "options 0 and 1 say the same thing (\"ax + by + c = 0\" / \"ax^2 + by + c = 0\"); options 0 and 2 say the same thing (\"ax + by + c = 0\" / \"ax + by^2 + c = 0\"); options 1 and 2 say the same thing (\"ax^2 + by + c = 0\" / \"ax + by^2 + c = 0\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If x = 1 and y = -1 is the solution to the equations 5x - 3y = 8 and 3x + y = 2, which of the following is the value of x?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Using Cramer’s Rule, solve the equations 5x + 3y = -11 and 2x + 4y = -10. What is the value of x?",
+      "reason": "option 1 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the condition for the solution of a pair of linear equations to be unique?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the value of the determinant represented by the matrix (a, b), (c, d)?",
+      "reason": "options mix numbers and words (1 of 4 are numbers); checkExpr \"ad-bc\" is not arithmetic the bank can evaluate"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What method is used to solve the simultaneous equations in the passage?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "A boat travels 16 km upstream and 24 km downstream in 6 hours. The same boat travels 36 km upstream and 48 km downstream in 13 hours. What is the speed of the boat in still water?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If the sum of two numbers is 30 and their difference is 8, what is the smaller number?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is an example of a linear equation in two variables?",
+      "reason": "options 0 and 2 are the same (\"x + y = 5\")"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Solve the equation 2x + 3 = 7 using the elimination method.",
+      "reason": "the critic finds option 1 correct, the key is 0; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "If D = 49 and Dx = -7 for simultaneous equations in x and y, what is the value of x?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the value of x if D = 49 and D_x = -7 for simultaneous equations in x and y?",
+      "reason": "the critic finds option 1 correct, the key is 0; more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "A two-digit number and the number with digits interchanged add up to 143. The digit in the unit’s place is 3 more than the digit in the ten’s place. What is the original number?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the solution to the given equations according to the passage?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which method is used to solve the simultaneous equations in the passage?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the method called that uses determinants to solve simultaneous equations?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If two equations represent the same line when graphed, what can be said about the determinant D?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Solve the following simultaneous equations: 3a + 5b = 26 and a + 5b = 22. What is the value of a?",
+      "reason": "the critic finds option 0 correct, the key is 1; more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is a condition for using Cramer's method to solve simultaneous equations?",
+      "reason": "distractor 0 picked by nobody and no real misconception, after one redraft"
+    }
+  ],
+  "notes": [
+    "no past papers in the corpus (ContentDocument source \"papers\"): levels 5 and 6 skipped",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

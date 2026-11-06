@@ -214,6 +214,196 @@
       "generatedAt": "2026-10-28T07:08:03.300Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "What was the name of the farmer who stored the seeds in a wooden box?",
+      "choices": [
+        "Damjibhai",
+        "Hasmukh",
+        "Bajra",
+        "Vangaam"
+      ],
+      "answerIndex": 0,
+      "solution": "The correct answer is Damjibhai because the story describes him as the farmer who created a wooden box to store seeds. Hasmukh is not mentioned as the one who stored seeds, Bajra refers to a type of grain, and Vangaam is likely a place name, not a person.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "बीजों को लकड़ी के डिब्बे में रखने वाले किसान का नाम क्या था?",
+          "choices": [
+            "दामजीभाई",
+            "हसमुख",
+            "बाजरा",
+            "वंगाम"
+          ],
+          "solution": "सही उत्तर दामजीभाई है क्योंकि कहानी में उसे बीज रखने के लिए लकड़ी का डिब्बा बनाने वाला किसान के रूप में वर्णित किया गया है। हसमुख को बीज रखने वाले के रूप में उल्लेख नहीं किया गया है, बाजरा एक प्रकार के अनाज के रूप में संदर्भित है और वंगाम एक स्थान के नाम के रूप में लगता है, न कि व्यक्ति के रूप में।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English question and solution, with appropriate terminology and correct answer positioning.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "शेतकऱ्याचे नाव काय होते ज्याने बीजे लाकडी बॉक्समध्ये साठवले?",
+          "choices": [
+            "दामजीभाई",
+            "हसमुख",
+            "बजरा",
+            "वंगाम"
+          ],
+          "solution": "उत्तर दामजीभाई आहे कारण कथा त्याला बीजे साठवण्यासाठी लाकडी बॉक्स तयार करणारा शेतकरी म्हणून वर्णन करते. हसमुख बीजे साठवल्याचे उल्लेख नाही, बजरा एक प्रकारचे धान्य आहे आणि वंगाम शक्यतो एक ठिकाणाचे नाव आहे, माणसाचे नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology and correct answer positioning.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "confuses the seed name with the farmer's name",
+        "refers to the son of Damjibhai, not the farmer who stored the seeds",
+        "refers to the type of seed, not the farmer"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-constructed and the key is correct. The solution correctly identifies Damjibhai as the farmer who stored the seeds in a wooden box, and the reasoning for the distractors is valid.",
+      "sources": [
+        {
+          "document": "ncert/5/environmental-studies/eeap119.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 19: A Seed Tells a Farmer’s Story"
+          ]
+        },
+        {
+          "document": "ncert/5/environmental-studies/eeap119.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 19: A Seed Tells a Farmer’s Story"
+          ]
+        },
+        {
+          "document": "ncert/5/environmental-studies/eeap119.pdf",
+          "ordinal": 2,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 19: A Seed Tells a Farmer’s Story"
+          ]
+        }
+      ],
+      "edition": "2024 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-23T02:18:51.237Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Why did Damjibhai store seeds in a wooden box?",
+      "choices": [
+        "To make them look nice",
+        "To protect them from insects",
+        "To sell them later",
+        "To use them in cooking"
+      ],
+      "answerIndex": 1,
+      "solution": "Damjibhai stored seeds in a wooden box to protect them from insects, as the presence of neem leaves suggests a natural insect-repelling method. The other options—making them look nice, selling them later, or using them in cooking—do not align with the purpose of storing seeds for long-term preservation.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "डैमजीभाई ने बीज क्यों लकड़ी के डिब्बे में रखे?",
+          "choices": [
+            "उन्हें खूबसूरत दिखाने के लिए",
+            "उन्हें कीटों से बचाने के लिए",
+            "बाद में बेचने के लिए",
+            "उन्हें खाने में उपयोग करने के लिए"
+          ],
+          "solution": "डैमजीभाई ने बीज लकड़ी के डिब्बे में रखे कीटों से बचाने के लिए, क्योंकि नीम के पत्तों की उपस्थिति एक प्राकृतिक कीट-अपकारक विधि को दर्शाती है। अन्य विकल्प—उन्हें खूबसूरत दिखाना, बाद में बेचना या खाने में उपयोग करना—बीजों के लंबे समय तक संरक्षण के उद्देश्य के साथ मेल नहीं खाते।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology, with the correct answer in the same position. All distractors remain incorrect, and technical terms like 'कीटों से बचाने' (to protect from insects) are appropriately used.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "डॅमजीभाईने बियांच्या बॉक्समध्ये का ठेवले?",
+          "choices": [
+            "त्यांना चांगले दिसायला",
+            "त्यांना कीटकांपासून बचावासाठी",
+            "नंतर त्यांना विकायला",
+            "त्यांना राहून खायला"
+          ],
+          "solution": "डॅमजीभाईने बिया लाकडी बॉक्समध्ये ठेवले कारण त्यांना कीटकांपासून बचावासाठी, जेणेकरून नीम पानांच्या उपस्थितीमुळे एक प्राकृतिक कीटक विरोधी विधी असल्याचे सूचित होते. इतर विकल्प- त्यांना चांगले दिसायला, नंतर त्यांना विकायला किंवा राहून खायला- बियांच्या लांबलचक रखवानीच्या उद्देशाशी जुळत नाहीत.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the original meaning, and uses appropriate terminology. The structure and logic of the question and solution are preserved.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "imagines the box is for aesthetics",
+        null,
+        "assumes the seeds are for sale",
+        "assumes the seeds are used in cooking"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 1, as the passage explicitly states that neem leaves were used to protect the seeds from insects. The other options are not supported by the text and represent common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/5/environmental-studies/eeap119.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 19: A Seed Tells a Farmer’s Story"
+          ]
+        },
+        {
+          "document": "ncert/5/environmental-studies/eeap119.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 19: A Seed Tells a Farmer’s Story"
+          ]
+        },
+        {
+          "document": "ncert/5/environmental-studies/eeap119.pdf",
+          "ordinal": 2,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 19: A Seed Tells a Farmer’s Story"
+          ]
+        }
+      ],
+      "edition": "2024 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-23T02:18:51.237Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
     }
   ]
 }

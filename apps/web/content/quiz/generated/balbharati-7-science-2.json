@@ -1076,6 +1076,1440 @@
       "generatedAt": "2026-11-02T03:20:14.393Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which part of the plant grows from the seed towards the soil?",
+      "choices": [
+        "Plumule",
+        "Radicle",
+        "Root cap",
+        "Root hair"
+      ],
+      "answerIndex": 1,
+      "solution": "The radicle is the part of the plant that grows from the seed towards the soil, as it is the first structure to emerge during seed germination. The plumule grows upward into the air, the root cap protects the growing tip of the root, and root hairs increase the surface area for water absorption. Therefore, the correct answer is radicle.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "पौधे का कौन-सा भाग बीज से मिट्टी की ओर बढ़ता है?",
+          "choices": [
+            "प्लूम्यूल",
+            "रेडिकल",
+            "मूल कपाट",
+            "मूल रोम"
+          ],
+          "solution": "रेडिकल पौधे का वह भाग है जो बीज से मिट्टी की ओर बढ़ता है, क्योंकि बीज अंकुरण के दौरान पहला संरचना यही उभरता है। प्लूम्यूल हवा की ओर बढ़ता है, मूल कपाट मूल के बढ़ते सिरे की रक्षा करता है और मूल रोम जल अवशोषण के लिए सतह क्षेत्र बढ़ाते हैं। इसलिए सही उत्तर रेडिकल है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, technical terms are correctly used in Hindi, and the meaning matches the original English question.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "विच्छेदाच्या बीजापासून जमीनकडे कोणता भाग वाढतो?",
+          "choices": [
+            "प्लुम्युल",
+            "रॅडिकल",
+            "मूल शिरा",
+            "मूल रोम"
+          ],
+          "solution": "रॅडिकल हा वनस्पतीचा भाग आहे जो बीजापासून जमीनकडे वाढतो, कारण बीज फुटताना तो सर्वप्रथम उद्भवतो. प्लुम्युल हवेत वर वाढतो, मूळ शिरा मूळाच्या वाढत्या टीपला रक्षण करते आणि मूळ रोम पाणी शोषण्यासाठी पृष्ठभागाची वाढ करतात. म्हणूनच योग्य उत्तर रॅडिकल आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi botanical terms.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the radicle with the plumule, which grows above the soil.",
+        null,
+        "Correctly identifies the radicle but confuses it with the root cap, which is a protective structure.",
+        "Confuses the radicle with the root hair, which is a small structure near the tip."
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The solution is accurate and matches the correct answer. The reasoning for the distractors reflects common student misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 18,
+          "pageStart": 20,
+          "pageEnd": 20,
+          "headingPath": [
+            "2. Plants : Structure and Function"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 19,
+          "pageStart": 20,
+          "pageEnd": 21,
+          "headingPath": [
+            "2. Plants : Structure and Function"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 20,
+          "pageStart": 21,
+          "pageEnd": 23,
+          "headingPath": [
+            "2. Plants : Structure and Function"
+          ]
+        }
+      ],
+      "edition": "First Edition 2017",
+      "generatedAt": "2026-10-31T15:49:49.434Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which part of the stem is responsible for the growth of the plant?",
+      "choices": [
+        "Node",
+        "Internode",
+        "Bud",
+        "Leaf base"
+      ],
+      "answerIndex": 2,
+      "solution": "The bud is responsible for the growth of the plant because it contains the apical meristem, which is the region of active cell division and growth. Nodes and internodes are parts of the stem that provide structure but do not drive growth, and the leaf base is part of the leaf, not involved in stem elongation.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "पौधे के वृद्धि के लिए स्टेम का कौन-सा हिस्सा जिम्मेदार है?",
+          "choices": [
+            "नोड",
+            "इंटरनोड",
+            "बुद",
+            "पत्ती का आधार"
+          ],
+          "solution": "बुद पौधे के वृद्धि के लिए जिम्मेदार है क्योंकि इसमें एपिकल मेरिस्टम होता है, जो सक्रिय कोशिका विभाजन और वृद्धि का क्षेत्र होता है। नोड और इंटरनोड स्टेम के हिस्से हैं जो संरचना प्रदान करते हैं लेकिन वृद्धि को बढ़ावा नहीं देते, और पत्ती का आधार पत्ती का हिस्सा है, स्टेम के विस्तार में शामिल नहीं होता।",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Hindi botanical terms used.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "वाढीच्या जवाबदार भागाचा अंकुर कोणता असतो?",
+          "choices": [
+            "नोड",
+            "इंटरनोड",
+            "बुद",
+            "पानाची बेस"
+          ],
+          "solution": "बुद वाढीच्या जवाबदार असतो कारण त्यामध्ये एपिकल मेरिस्टीम असतो, जो सक्रिय कोशिका विभाजन आणि वाढीचा क्षेत्र आहे. नोड आणि इंटरनोड हे अंकुराचे भाग आहेत जे संरचना पुरवतात परंतु वाढ नक्की करत नाहीत, आणि पानाची बेस हे पानाचा भाग आहे, जो अंकुराच्या वाढीशी संबंधित नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for botanical terms.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the bud with the node, which is a point where leaves grow.",
+        "Confuses the bud with the internode, which is the section between two nodes.",
+        null,
+        "Believes the leaf base is responsible for growth, which is not the case."
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct. The bud, located at the apical end of the stem, is indeed responsible for the growth of the plant. The other options are structural parts and not directly involved in growth.",
+      "sources": [
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 18,
+          "pageStart": 20,
+          "pageEnd": 20,
+          "headingPath": [
+            "2. Plants : Structure and Function"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 19,
+          "pageStart": 20,
+          "pageEnd": 21,
+          "headingPath": [
+            "2. Plants : Structure and Function"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 20,
+          "pageStart": 21,
+          "pageEnd": 23,
+          "headingPath": [
+            "2. Plants : Structure and Function"
+          ]
+        }
+      ],
+      "edition": "First Edition 2017",
+      "generatedAt": "2026-10-31T15:49:49.434Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of the following describes the function of the receptacle in a flower?",
+      "choices": [
+        "It produces pollen grains",
+        "It supports the petals and other flower parts",
+        "It stores water for the plant",
+        "It absorbs sunlight for photosynthesis"
+      ],
+      "answerIndex": 1,
+      "solution": "The receptacle supports the petals and other flower parts, providing a structure for the flower's components. Pollen grains are produced by the anthers, not the receptacle. Water absorption occurs through the roots, and photosynthesis takes place in the leaves, not the receptacle.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन फूल में अंडाशय के कार्य का वर्णन करता है?",
+          "choices": [
+            "यह बीजाणु उत्पन्न करता है",
+            "यह पंखुड़ियों और अन्य फूल के भागों का समर्थन करता है",
+            "यह पौधे के लिए पानी को भंडारित करता है",
+            "यह प्रकाश संश्लेषण के लिए सूर्य के प्रकाश को अवशोषित करता है"
+          ],
+          "solution": "अंडाशय पंखुड़ियों और अन्य फूल के भागों का समर्थन करता है, जो फूल के घटकों के लिए एक संरचना प्रदान करता है। बीजाणु अंडाशय के बजाय परागकोशों द्वारा उत्पन्न किए जाते हैं। पानी के अवशोषण मूलों द्वारा होता है, और प्रकाश संश्लेषण पत्तियों में होता है, अंडाशय में नहीं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English content, with appropriate botanical terminology used.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते फुलातील पातळीच्या कार्याचे वर्णन करते?",
+          "choices": [
+            "ते परागाणू तयार करते",
+            "ते पुष्पाच्या पानां आणि इतर घटकांना बरोबर ठेवते",
+            "ते वनस्पतीसाठी पाणी जमा करते",
+            "ते प्रकाशसंश्लेषणासाठी सूर्याचे प्रकाश शोषते"
+          ],
+          "solution": "पातळी पुष्पाच्या पानां आणि इतर घटकांना बरोबर ठेवते, जे पुष्पाच्या घटकांसाठी एक संरचना प्रदान करते. परागाणू अंतर्गत अंगाद्वारे तयार केले जातात, नाहीतर पातळी. पाणी शिरांमार्फत शोषले जाते, आणि प्रकाशसंश्लेषण पानांमध्ये होते, नाहीतर पातळी.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the original meaning, and uses appropriate botanical terminology consistent with Marathi educational materials.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the function of the anther with the receptacle",
+        null,
+        "Does not understand the role of the receptacle and thinks it is involved in water absorption",
+        "Thinks the receptacle is involved in photosynthesis, which is not its function."
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 1, as the receptacle supports the petals and other flower parts. The other options represent common misconceptions about plant structures.",
+      "sources": [
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 21,
+          "pageStart": 23,
+          "pageEnd": 24,
+          "headingPath": [
+            "2. Plants : Structure and Function"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 22,
+          "pageStart": 24,
+          "pageEnd": 25,
+          "headingPath": [
+            "2. Plants : Structure and Function"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 23,
+          "pageStart": 25,
+          "pageEnd": 25,
+          "headingPath": [
+            "2. Plants : Structure and Function",
+            "t t t"
+          ]
+        }
+      ],
+      "edition": "First Edition 2017",
+      "generatedAt": "2026-10-31T15:49:49.434Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which part of the flower is responsible for attracting insects?",
+      "choices": [
+        "Calyx",
+        "Corolla",
+        "Androecium",
+        "Gynoecium"
+      ],
+      "answerIndex": 1,
+      "solution": "The corolla is the part of the flower that is responsible for attracting insects. It consists of the petals, which are often brightly coloured and scented. The calyx protects the flower bud, the androecium is the male part, and the gynoecium is the female part.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "फूल का कौन सा भाग कीटों को आकर्षित करने के लिए जिम्मेदार है?",
+          "choices": [
+            "कैल्यॉक्स",
+            "कॉरोला",
+            "एंड्रोइसियम",
+            "गाइनोइसियम"
+          ],
+          "solution": "कॉरोला फूल का वह भाग है जो कीटों को आकर्षित करने के लिए जिम्मेदार है। इसमें पंखुड़ियां होती हैं, जो आमतौर पर रंगीन और सुगंधित होती हैं। कैल्यॉक्स फूल के कलिका की रक्षा करता है, एंड्रोइसियम पुरुष भाग है और गाइनोइसियम मादा भाग है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Hindi botanical terms used.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "पुष्पाचा कोणता भाग जंतूंना आकर्षित करतो?",
+          "choices": [
+            "कॅलिक्स",
+            "कॉरोला",
+            "एंड्रोइसियम",
+            "गायनोइसियम"
+          ],
+          "solution": "कॉरोला हा पुष्पाचा भाग आहे जो जंतूंना आकर्षित करतो. तो पुष्पपत्रांनी बनलेला असतो, जे लाल रंगाचे असतात आणि वास असतो. कॅलिक्स पुष्पाच्या बुरशीला रक्षण करतो, एंड्रोइसियम हे पुरुष भाग असतो आणि गायनोइसियम हे स्त्री भाग असतो.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the scientific terminology used in Marathi textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses calyx with corolla",
+        null,
+        "Does not know the function of corolla",
+        "Confuses androecium with gynoecium"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct and aligns with the scientific understanding that the corolla (petals) attract insects. The reasoning for the distractors reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 21,
+          "pageStart": 23,
+          "pageEnd": 24,
+          "headingPath": [
+            "2. Plants : Structure and Function"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 22,
+          "pageStart": 24,
+          "pageEnd": 25,
+          "headingPath": [
+            "2. Plants : Structure and Function"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 23,
+          "pageStart": 25,
+          "pageEnd": 25,
+          "headingPath": [
+            "2. Plants : Structure and Function",
+            "t t t"
+          ]
+        }
+      ],
+      "edition": "First Edition 2017",
+      "generatedAt": "2026-10-31T15:49:49.434Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If a plant has leaves with a rough surface, which of the following could be the reason?",
+      "choices": [
+        "To increase water absorption",
+        "To reduce water loss",
+        "To attract insects for pollination",
+        "To store excess nutrients"
+      ],
+      "answerIndex": 1,
+      "solution": "A rough surface on leaves can help reduce water loss by limiting the rate of transpiration. This is because the rough texture can trap a layer of moist air close to the leaf, reducing the movement of water vapor into the air. The other options are incorrect because water absorption occurs through roots, pollination is typically aided by color or scent, and nutrient storage is not directly related to leaf texture.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक पौधे के पत्तों पर कच्च superfice है, तो निम्नलिखित में से कौन-सा कारण हो सकता है?",
+          "choices": [
+            "जल अवशोषण में वृद्धि करने के लिए",
+            "जल हानि कम करने के लिए",
+            "परागण के लिए कीटों को आकर्षित करने के लिए",
+            "अतिरिक्त पोषक तत्वों के भंडारण के लिए"
+          ],
+          "solution": "पत्तियों पर कच्च सतह जल हानि कम करने में मदद कर सकती है क्योंकि यह वाष्पन की दर को सीमित कर सकती है। इसके कारण कच्च ऊतक लीविस के निकट नम हवा की एक परत को फंसा सकता है, जिससे जल वाष्प की हवा में गति कम हो जाती है। अन्य विकल्प गलत हैं क्योंकि जल अवशोषण मूल से होता है, परागण आमतौर पर रंग या सुगंध द्वारा सहायता प्राप्त करता है, और पोषक तत्वों के भंडारण का सीधा संबंध पत्तियों की सतह से नहीं होता।",
+          "imageAlt": null,
+          "critique": "The translation accurately reflects the original meaning, with appropriate Hindi terminology used for biological concepts.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर एका वनस्पतीच्या पानांची सतह खुरकीदार असेल, तर खालीलपैकी कोणते कारण असू शकते?",
+          "choices": [
+            "पाणी अवशोषण वाढवण्यासाठी",
+            "पाणी गमावण्याचे प्रमाण कमी करण्यासाठी",
+            "किटकांना परागणासाठी आकर्षित करण्यासाठी",
+            "अतिरिक्त पोषक घटक भंडारणासाठी"
+          ],
+          "solution": "पानांच्या खुरकीदार सतही वाष्पीभवनाच्या दराला मर्यादित करून पाणी गमावण्याचे प्रमाण कमी करू शकते. हे त्यामुळे होते कारण खुरकीदार तत्व आर्द्र हवेचा एक थर पानांच्या जवळ अडकवू शकते, जेणेकरून पाण्याच्या वाफेचा हवेत गती घटतो. इतर विकल्प अयोग्य आहेत कारण पाणी अवशोषण मूळ द्वारे होते, परागण वर्ण किंवा सुगंधाद्वारे मदत होते आणि पोषक घटकांचे भंडारण पानांच्या सतहीशी सीधा संबंध नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi botanical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Thinks a rough surface increases water absorption, which is not the case",
+        null,
+        "Confuses the function of leaf texture with pollination",
+        "Does not understand that nutrient storage is not related to the texture of the leaf surface."
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 1, as a rough leaf surface can reduce water loss by limiting transpiration. The other options represent common misconceptions about plant structures.",
+      "sources": [
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 21,
+          "pageStart": 23,
+          "pageEnd": 24,
+          "headingPath": [
+            "2. Plants : Structure and Function"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 22,
+          "pageStart": 24,
+          "pageEnd": 25,
+          "headingPath": [
+            "2. Plants : Structure and Function"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 23,
+          "pageStart": 25,
+          "pageEnd": 25,
+          "headingPath": [
+            "2. Plants : Structure and Function",
+            "t t t"
+          ]
+        }
+      ],
+      "edition": "First Edition 2017",
+      "generatedAt": "2026-10-31T15:49:49.434Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "A student observes a leaf and finds that its veins form a network. Which type of venation does this leaf have?",
+      "choices": [
+        "Reticulate venation",
+        "Parallel venation",
+        "Circulate venation",
+        "Radial venation"
+      ],
+      "answerIndex": 0,
+      "solution": "The leaf with veins forming a network has reticulate venation. This is because reticulate venation refers to a pattern where veins branch and form a web-like structure. Parallel venation has veins that run in the same direction without forming a network. Circulate and radial venation are not terms used in describing leaf venation.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक छात्र एक पत्ती के अवलोकन करता है और पाता है कि इसकी नसें एक जाल का निर्माण करती हैं। इस पत्ती के लिए किस प्रकार की नसदार संरचना होगी?",
+          "choices": [
+            "जालीदार नसदार संरचना",
+            "समांतर नसदार संरचना",
+            "चक्रीय नसदार संरचना",
+            "किरणीय नसदार संरचना"
+          ],
+          "solution": "जाल का निर्माण करने वाली नसों वाली पत्ती जालीदार नसदार संरचना के अंतर्गत आती है। इसका कारण यह है कि जालीदार नसदार संरचना में नसें शाखा बनाती हैं और एक जाल के रूप में बनती हैं। समांतर नसदार संरचना में नसें एक ही दिशा में चलती हैं और जाल का निर्माण नहीं करती हैं। चक्रीय और किरणीय नसदार संरचना पत्ती के नसदार संरचना के वर्णन के लिए उपयोग किए जाने वाले शब्द नहीं हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology for botanical venation types.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका विद्यार्थ्याने एका पानाचा अभ्यास केला आणि त्याला वाटले की त्याच्या नाड्या एका जालाचा आकार घेतात. हे पान कोणत्या प्रकारच्या नाडी विन्यासाचे असेल?",
+          "choices": [
+            "जालीय नाडी विन्यास",
+            "समांतर नाडी विन्यास",
+            "भ्रमण नाडी विन्यास",
+            "किरणीय नाडी विन्यास"
+          ],
+          "solution": "जालाचा आकार घेणारी नाड्या असलेल्या पानाला जालीय नाडी विन्यास असतो. हे त्यामुळे आहे कारण जालीय नाडी विन्यास हा एक पॅटर्न आहे ज्यामध्ये नाड्या शाखा घेतात आणि जालासारखा संरचना तयार होते. समांतर नाडी विन्यासमध्ये नाड्या एकाच दिशेने जातात आणि जालाचा आकार घेत नाहीत. भ्रमण आणि किरणीय नाडी विन्यास हे पानाच्या नाडी विन्यासाचे शब्द वापरले जात नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi botanical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses reticulate with parallel venation",
+        "Does not understand the term reticulate",
+        "Incorrectly uses terms like circulate or radial"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-constructed, with a clear correct answer and plausible distractors based on common misconceptions. The solution accurately explains the correct answer and the errors in the other options.",
+      "sources": [
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 21,
+          "pageStart": 23,
+          "pageEnd": 24,
+          "headingPath": [
+            "2. Plants : Structure and Function"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 22,
+          "pageStart": 24,
+          "pageEnd": 25,
+          "headingPath": [
+            "2. Plants : Structure and Function"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 23,
+          "pageStart": 25,
+          "pageEnd": 25,
+          "headingPath": [
+            "2. Plants : Structure and Function",
+            "t t t"
+          ]
+        }
+      ],
+      "edition": "First Edition 2017",
+      "generatedAt": "2026-10-31T15:49:49.434Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "A student observes that a seed divides into two equal parts when pressed. What type of seed is this?",
+      "choices": [
+        "Monocotyledonous seed",
+        "Dicotyledonous seed",
+        "Retrocotyledonous seed",
+        "Unicotyledonous seed"
+      ],
+      "answerIndex": 1,
+      "solution": "A seed that divides into two equal parts is a dicotyledonous seed. This is because dicotyledonous seeds have two cotyledons, while monocotyledonous seeds have only one. Retrocotyledonous and unicotyledonous are not terms used to describe seeds.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक छात्र देखता है कि जब एक बीज के दोनों ओर दबाया जाता है तो वह दो समान भागों में विभाजित हो जाता है। ऐसा बीज किस प्रकार का होता है?",
+          "choices": [
+            "एकबीजपत्री बीज",
+            "द्विबीजपत्री बीज",
+            "पश्चबीजपत्री बीज",
+            "एकबीजपत्री बीज"
+          ],
+          "solution": "जो बीज दो समान भागों में विभाजित हो जाता है, वह द्विबीजपत्री बीज होता है। इसका कारण यह है कि द्विबीजपत्री बीज में दो बीजपत्र होते हैं, जबकि एकबीजपत्री बीज में केवल एक बीजपत्र होता है। पश्चबीजपत्री और एकबीजपत्री शब्द बीज को वर्णित करने के लिए प्रयोग नहीं किए जाते।",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Hindi botanical terms used.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका विद्यार्थ्याने लक्षात घेतले की एका बीजाला दाबल्यास तो दोन समान भागांमध्ये विभाजित होतो. हा बीज कोणत्या प्रकारचा असेल?",
+          "choices": [
+            "एकबीजपत्री बीज",
+            "द्विबीजपत्री बीज",
+            "प्रतिबीजपत्री बीज",
+            "एकबीजपत्री बीज"
+          ],
+          "solution": "ज्या बीजाला दाबल्यास दोन समान भागांमध्ये विभाजित करता येते तो द्विबीजपत्री बीज असतो. हे त्यामुळे घडते कारण द्विबीजपत्री बीजांमध्ये दोन बीजपत्र असतात, तर एकबीजपत्री बीजांमध्ये फक्त एक बीजपत्र असतो. प्रतिबीजपत्री आणि एकबीजपत्री हे बीजांचे वर्णन करण्यासाठी वापरले जाणारे शब्द नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi botanical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses monocot with dicot",
+        null,
+        "Does not understand the term dicot",
+        "Uses incorrect terminology"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct. Dicotyledonous seeds have two cotyledons, which explains why they divide into two equal parts. The other options are either incorrect terms or reflect common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 21,
+          "pageStart": 23,
+          "pageEnd": 24,
+          "headingPath": [
+            "2. Plants : Structure and Function"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 22,
+          "pageStart": 24,
+          "pageEnd": 25,
+          "headingPath": [
+            "2. Plants : Structure and Function"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 23,
+          "pageStart": 25,
+          "pageEnd": 25,
+          "headingPath": [
+            "2. Plants : Structure and Function",
+            "t t t"
+          ]
+        }
+      ],
+      "edition": "First Edition 2017",
+      "generatedAt": "2026-10-31T15:49:49.434Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "Which type of root is found in monocot plants?",
+      "choices": [
+        "Tap root",
+        "Fibrous root",
+        "Prop root",
+        "Adventitious root"
+      ],
+      "answerIndex": 1,
+      "solution": "Monocot plants have a root system made up of many thin, similar-sized roots, known as fibrous roots. Tap roots are characteristic of dicots, prop roots are specialized structures in some trees, and adventitious roots develop from parts of the plant other than the primary root. Therefore, the correct answer is fibrous root.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "मोनोकॉट पौधों में किस प्रकार की जड़ पाई जाती है?",
+          "choices": [
+            "सीधी जड़",
+            "बाल जड़",
+            "सहारा जड़",
+            "अनुकूल जड़"
+          ],
+          "solution": "मोनोकॉट पौधों में जड़ प्रणाली बहुत सी पतली, लगभग एक ही आकार की जड़ों से बनी होती है, जिन्हें बाल जड़ कहा जाता है। सीधी जड़ द्विबीजपत्री पौधों के लक्षण होती है, सहारा जड़ कुछ पेड़ों में विशेष संरचना होती है और अनुकूल जड़ प्राथमिक जड़ के अलावा पौधे के अन्य हिस्सों से विकसित होती है। अतः सही उत्तर बाल जड़ है।",
+          "imageAlt": null,
+          "critique": "Hindi translation accurately reflects the original English question and solution, with appropriate terminology used in Indian biology textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "मोनोकॉट पौध्यांमध्ये कोणत्या प्रकारची मूळे असतात?",
+          "choices": [
+            "टॅप मूळ",
+            "सूत्री मूळ",
+            "प्रॉप मूळ",
+            "अॅडव्हेन्टिशियस मूळ"
+          ],
+          "solution": "मोनोकॉट पौध्यांमध्ये बहुतेक लहान, समान आकाराची मूळे असतात, ज्यांना सूत्री मूळ म्हणतात. टॅप मूळ हे डायकॉटची वैशिष्ट्य आहे, प्रॉप मूळ हे काही झाडांची विशेष संरचना आहे आणि अॅडव्हेन्टिशियस मूळ प्राथमिक मूळापेक्षा पौध्याच्या इतर भागापासून विकसित होतात. म्हणूनच, योग्य उत्तर सूत्री मूळ आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, with appropriate Marathi terminology for botanical terms. The structure and meaning match the original English question.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses fibrous roots with tap roots, which are found in dicots.",
+        null,
+        "Correctly identifies fibrous roots but confuses them with prop roots, which are a type of modified root.",
+        "Confuses fibrous roots with adventitious roots, which grow from the stem."
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies fibrous roots as the type found in monocots, and the reasons for the wrong options align with common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 18,
+          "pageStart": 20,
+          "pageEnd": 20,
+          "headingPath": [
+            "2. Plants : Structure and Function"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 19,
+          "pageStart": 20,
+          "pageEnd": 21,
+          "headingPath": [
+            "2. Plants : Structure and Function"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 20,
+          "pageStart": 21,
+          "pageEnd": 23,
+          "headingPath": [
+            "2. Plants : Structure and Function"
+          ]
+        }
+      ],
+      "edition": "First Edition 2017",
+      "generatedAt": "2026-10-31T15:49:49.434Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "A student observes a vertical section of a hibiscus flower and notices that the anthers burst and release pollen grains. What process is this an example of?",
+      "choices": [
+        "Pollination",
+        "Fertilization",
+        "Germination",
+        "Seed formation"
+      ],
+      "answerIndex": 0,
+      "solution": "The bursting of anthers and release of pollen grains is an example of pollination. This is the process by which pollen is transferred from the anther to the stigma. Fertilization occurs after pollination, germination is the process of a seed growing, and seed formation is the final stage after fertilization.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक छात्र हिबिस्कस के ऊर्ध्वाधर काटे गए फूल का अवलोकन करता है और देखता है कि एनर्थ्स फट जाते हैं और पराग कण निकल जाते हैं। यह कौन-सी प्रक्रिया का उदाहरण है?",
+          "choices": [
+            "परागण",
+            "निषेचन",
+            "अंकुरण",
+            "बीज का निर्माण"
+          ],
+          "solution": "एनर्थ्स के फटने और पराग कणों के निकलने की प्रक्रिया परागण के उदाहरण है। यह प्रक्रिया है जिसमें पराग कणों का स्टिग्मा पर स्थानांतरण होता है। निषेचन परागण के बाद होता है, अंकुरण बीज के बढ़ने की प्रक्रिया है, और बीज का निर्माण निषेचन के बाद अंतिम चरण है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard biological terminology as taught in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका विद्यार्थीनीने हिबिस्कस फुलाचा उभयांकन काटा पाहिला आणि लक्षात आले की अंथरुण फुटतात आणि परागाचे दाणे सोडतात. हे प्रक्रियेचे उदाहरण आहे?",
+          "choices": [
+            "परागकणाचा प्रसार",
+            "गर्भधान्य निर्माण",
+            "बीजाची उत्पत्ती",
+            "बीज विकास"
+          ],
+          "solution": "अंथरुण फुटतात आणि परागाचे दाणे सोडतात हे परागकणाचा प्रसार चे उदाहरण आहे. ही प्रक्रिया आहे जेव्हा परागाचे दाणे अंथरुणापासून परागाच्या शीरेवर जातात. गर्भधान्य निर्माण परागकणाचा प्रसार नंतर होते, बीज विकास हा बीजाच्या विकासाची प्रक्रिया आहे आणि बीज निर्माण हा गर्भधान्य नंतरचा अंतिम टप्पा आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi botanical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses pollination with fertilization",
+        "Does not understand the sequence of events",
+        "Confuses germination with pollination"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies pollination as the process where pollen is released from anthers. The reasoning for the distractors aligns with common misconceptions about the sequence of plant reproductive processes.",
+      "sources": [
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 21,
+          "pageStart": 23,
+          "pageEnd": 24,
+          "headingPath": [
+            "2. Plants : Structure and Function"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 22,
+          "pageStart": 24,
+          "pageEnd": 25,
+          "headingPath": [
+            "2. Plants : Structure and Function"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 23,
+          "pageStart": 25,
+          "pageEnd": 25,
+          "headingPath": [
+            "2. Plants : Structure and Function",
+            "t t t"
+          ]
+        }
+      ],
+      "edition": "First Edition 2017",
+      "generatedAt": "2026-10-31T15:49:49.434Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "What would happen if a plant like banyan had fibrous roots instead of tap roots?",
+      "choices": [
+        "It would grow taller",
+        "It would have stronger support",
+        "It would have more prop roots",
+        "It would not be able to anchor itself properly"
+      ],
+      "answerIndex": 3,
+      "solution": "Banyan trees have tap roots that provide strong anchoring. If they had fibrous roots, they would not be able to anchor themselves properly, as fibrous roots spread out more but do not provide the same level of support. Hence, the correct answer is that it would not be able to anchor itself properly.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि बरगद के पौधे के बजाय जड़ें बहुत छोटी जड़ें होतीं तो क्या होता?",
+          "choices": [
+            "यह अधिक ऊंचा बढ़ता",
+            "इसके लिए अधिक मजबूत समर्थन होता",
+            "इसके पास अधिक समर्थन जड़ें होतीं",
+            "इसे ठीक तरह से जमा नहीं होता"
+          ],
+          "solution": "बरगद के पेड़ की मुख्य जड़ें होती हैं जो मजबूत जमीन देती हैं। यदि इनके स्थान पर बहुत छोटी जड़ें होतीं तो वे ठीक तरह से जमा नहीं हो पातीं, क्योंकि बहुत छोटी जड़ें अधिक फैली होती हैं लेकिन एक ही स्तर पर समर्थन प्रदान नहीं करतीं। इसलिए, सही उत्तर यह है कि इसे ठीक तरह से जमा नहीं होता।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriately translated for Hindi-medium context.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "बन्यानच्या वृक्षाच्या जाड जडणाच्या जागी रेशमी मूळे असल्यास काय होईल?",
+          "choices": [
+            "तो अधिक उंच वाढेल",
+            "त्याला अधिक शक्तिशाली समर्थन असेल",
+            "त्याला अधिक प्रॉप मूळे असतील",
+            "त्याला योग्यरीत्या जमीनीत घट्ट करू शकणार नाही"
+          ],
+          "solution": "बन्यान वृक्षांमध्ये जाड जडणाची मूळे असतात जी शक्तिशाली जमीनीत घट्ट करतात. जर त्यांच्याकडे रेशमी मूळे असतील तर ते योग्यरीत्या जमीनीत घट्ट करू शकणार नाहीत, कारण रेशमी मूळे अधिक विस्तारतात परंतु त्यांना त्याच तळाशीच्या समर्थनाची गरज नसते. म्हणूनच योग्य उत्तर असे की त्याला योग्यरीत्या जमीनीत घट्ट करू शकणार नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi botanical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Assumes fibrous roots allow for more height",
+        "Incorrectly thinks fibrous roots provide stronger support",
+        "Students may think fibrous roots lead to more additional support structures like prop roots, confusing root systems with structural adaptations.",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies that fibrous roots do not provide the same anchoring as tap roots, and the reasoning aligns with the correct answer. All distractors reflect common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 18,
+          "pageStart": 20,
+          "pageEnd": 20,
+          "headingPath": [
+            "2. Plants : Structure and Function"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 19,
+          "pageStart": 20,
+          "pageEnd": 21,
+          "headingPath": [
+            "2. Plants : Structure and Function"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 20,
+          "pageStart": 21,
+          "pageEnd": 23,
+          "headingPath": [
+            "2. Plants : Structure and Function"
+          ]
+        }
+      ],
+      "edition": "First Edition 2017",
+      "generatedAt": "2026-10-31T15:49:49.434Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "A student observes a plant with leaves that close when touched. Which of the following is most likely to be the reason for this movement?",
+      "choices": [
+        "It is a response to light",
+        "It is a growth-related movement",
+        "It is a response to touch",
+        "It is a response to water"
+      ],
+      "answerIndex": 2,
+      "solution": "The movement of the plant's leaves closing when touched is a direct response to physical contact. This type of reaction is classified as a tropism, specifically a thigmonastic response, which is triggered by touch. Other options like light, growth, or water do not directly cause this immediate reaction.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक छात्र एक पौधे के पत्ते देखता है जो स्पर्श करने पर बंद हो जाते हैं। इस गति के लिए निम्नलिखित में से कौन-सा सबसे अधिक संभावित कारण हो सकता है?",
+          "choices": [
+            "यह प्रकाश के प्रति एक प्रतिक्रिया है",
+            "यह वृद्धि से संबंधित गति है",
+            "यह स्पर्श के प्रति एक प्रतिक्रिया है",
+            "यह जल के प्रति एक प्रतिक्रिया है"
+          ],
+          "solution": "पौधे के पत्तों के स्पर्श करने पर बंद होने की गति भौतिक स्पर्श के प्रति सीधी प्रतिक्रिया है। इस प्रकार की प्रतिक्रिया को ट्रॉपिज्म के रूप में वर्गीकृत किया जाता है, विशेष रूप से थिग्मोनैस्टिक प्रतिक्रिया, जो स्पर्श द्वारा उत्पन्न होती है। प्रकाश, वृद्धि या जल जैसे अन्य विकल्प इस तत्काल प्रतिक्रिया के लिए सीधे कारण नहीं होते।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains original meaning, and uses appropriate Hindi botanical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका विद्यार्थीने एका वनस्पती नोंदवली ज्याच्या पानांनी स्पर्श केल्यानंतर बंद होतात. खालीलपैकी कोणता हा गतीचा कारण असण्याची शक्यता असते?",
+          "choices": [
+            "हे प्रकाशाच्या प्रतिक्रियेमध्ये आहे",
+            "हे वाढीशी संबंधित गती आहे",
+            "हे स्पर्शाच्या प्रतिक्रियेमध्ये आहे",
+            "हे पाण्याच्या प्रतिक्रियेमध्ये आहे"
+          ],
+          "solution": "वनस्पतीच्या पानांच्या स्पर्श केल्यानंतर बंद होणारी गती हा शारीरिक स्पर्शाच्या प्रतिक्रियेमध्ये आहे. अशा प्रकारच्या प्रतिक्रिया ट्रॉपिझम असतात, विशेषतः थिग्मोनॅस्टिक प्रतिक्रिया, जी स्पर्शामुळे उद्भवतात. इतर विकल्पांमध्ये प्रकाश, वाढ आणि पाणी हे तात्काळ प्रतिक्रिया उद्भवू शकत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation accurately reflects the original meaning, with appropriate Marathi terminology for biological concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Thinks the movement is due to light, which is not the case",
+        "Confuses touch response with a growth-related movement",
+        null,
+        "Thinks the movement is due to water, which is not the cause."
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 2, as the movement is a response to touch, as demonstrated by the 'Touch me not' plant. The author's reasoning is sound, and the distractors reflect common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 21,
+          "pageStart": 23,
+          "pageEnd": 24,
+          "headingPath": [
+            "2. Plants : Structure and Function"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 22,
+          "pageStart": 24,
+          "pageEnd": 25,
+          "headingPath": [
+            "2. Plants : Structure and Function"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 23,
+          "pageStart": 25,
+          "pageEnd": 25,
+          "headingPath": [
+            "2. Plants : Structure and Function",
+            "t t t"
+          ]
+        }
+      ],
+      "edition": "First Edition 2017",
+      "generatedAt": "2026-10-31T15:49:49.434Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "A student observes a leaf with spines on its surface. Which function of leaves is this adaptation best suited for?",
+      "choices": [
+        "Photosynthesis",
+        "Transpiration",
+        "Protection",
+        "Storage"
+      ],
+      "answerIndex": 2,
+      "solution": "A leaf with spines is adapted for protection. This is a defense mechanism against herbivores. Photosynthesis is the main function of leaves, transpiration is the loss of water, and storage is not a primary function of leaves.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक छात्र पृष्ठ के सतह पर लंगूर वाले पत्ते को देखता है। इस अनुकूलन के लिए पत्तों के कौन से कार्य के लिए यह सबसे अच्छा उपयुक्त है?",
+          "choices": [
+            "प्रकाश संश्लेषण",
+            "वाष्पीकरण",
+            "रक्षा",
+            "भंडारण"
+          ],
+          "solution": "लंगूर वाले पत्ते रक्षा के लिए अनुकूलित होते हैं। यह एक रक्षात्मक युक्ति है शाकाहारी प्राणियों के खिलाफ। प्रकाश संश्लेषण पत्तों का मुख्य कार्य है, वाष्पीकरण जल के हानि है, और भंडारण पत्तों का मुख्य कार्य नहीं है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology as found in standard textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका विद्यार्थीने पानाच्या पृष्ठभागावर असलेल्या तीक्ष्ण अवयवांचे निरीक्षण केले. ही अनुकूलने पानांच्या कोणत्या कार्यासाठी उत्तम आहे?",
+          "choices": [
+            "फोटोसिंथेसिस",
+            "वाष्पीभवन",
+            "रक्षण",
+            "संचय"
+          ],
+          "solution": "पानावर असलेल्या तीक्ष्ण अवयवांचे रक्षणासाठी अनुकूलन आहे. ही एक रक्षणात्मक व्यवस्था आहे. पानांचे मुख्य कार्य फोटोसिंथेसिस आहे, वाष्पीभवन हे पाण्याचे नुकसान आहे, आणि संचय पानांचे मुख्य कार्य नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology commonly found in textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses protection with photosynthesis",
+        "Does not understand the purpose of spines",
+        null,
+        "Confuses storage with transpiration"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies that spines on a leaf are for protection, and the reasoning aligns with the correct answer. The distractors are based on common misconceptions about leaf functions.",
+      "sources": [
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 21,
+          "pageStart": 23,
+          "pageEnd": 24,
+          "headingPath": [
+            "2. Plants : Structure and Function"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 22,
+          "pageStart": 24,
+          "pageEnd": 25,
+          "headingPath": [
+            "2. Plants : Structure and Function"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 23,
+          "pageStart": 25,
+          "pageEnd": 25,
+          "headingPath": [
+            "2. Plants : Structure and Function",
+            "t t t"
+          ]
+        }
+      ],
+      "edition": "First Edition 2017",
+      "generatedAt": "2026-10-31T15:49:49.434Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Why do roots of plants like radish and carrot become thick and fleshy?",
+      "choices": [
+        "To absorb more water",
+        "To store food",
+        "To anchor the plant",
+        "To increase surface area"
+      ],
+      "answerIndex": 1,
+      "solution": "The roots of plants like radish and carrot become thick and fleshy because they are designed to store food. While roots can absorb water and help anchor the plant, their thickened structure is specifically for food storage. Increasing surface area is not the main purpose of their fleshy texture.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "राजमार्ग और गाजर के पौधों की जड़ें मोटी और मांसल क्यों हो जाती हैं?",
+          "choices": [
+            "अधिक पानी अवशोषित करने के लिए",
+            "भोजन संग्रहित करने के लिए",
+            "पौधे को स्थिर करने के लिए",
+            "सतह क्षेत्र बढ़ाने के लिए"
+          ],
+          "solution": "राजमार्ग और गाजर के पौधों की जड़ें मोटी और मांसल हो जाती हैं क्योंकि वे भोजन संग्रहित करने के लिए डिज़ाइन की गई होती हैं। जड़ें पानी के अवशोषण में सहायता कर सकती हैं और पौधे को स्थिर कर सकती हैं, लेकिन उनकी मोटी संरचना विशेष रूप से भोजन संग्रहण के लिए होती है। सतह क्षेत्र बढ़ाना उनकी मांसल संरचना का मुख्य उद्देश्य नहीं है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate botanical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "रायडिश आणि गाजर अशा वनस्पतींच्या मूळांना मोठे आणि मांसल का होते?",
+          "choices": [
+            "अधिक पाणी शोषण्यासाठी",
+            "खाद्य पदार्थ जमा करण्यासाठी",
+            "वनस्पतीला खुपसण्यासाठी",
+            "पृष्ठभागाच्या क्षेत्रात वाढ करण्यासाठी"
+          ],
+          "solution": "रायडिश आणि गाजर अशा वनस्पतींच्या मूळांना मोठे आणि मांसल होते कारण ते खाद्य पदार्थ जमा करण्यासाठी डिझाइन केलेले असतात. मूळे पाणी शोषू शकतात आणि वनस्पतीला खुपसू शकतात, परंतु त्यांची मोठी रचना खाद्य पदार्थ जमा करण्यासाठी विशिष्टपणे तयार केलेली असते. पृष्ठभागाच्या क्षेत्रात वाढ करणे हा त्यांच्या मांसल रचनेचा मुख्य उद्देश नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi botanical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the function of thick roots with water absorption, which is the role of root hairs.",
+        null,
+        "Believes the thick roots are for anchoring the plant, which is a general function of all roots.",
+        "Thinks the thick roots increase surface area, which is not their main purpose."
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is well-constructed, and the correct answer is clearly supported by botanical knowledge. The distractors reflect common misconceptions about root functions.",
+      "sources": [
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 18,
+          "pageStart": 20,
+          "pageEnd": 20,
+          "headingPath": [
+            "2. Plants : Structure and Function"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 19,
+          "pageStart": 20,
+          "pageEnd": 21,
+          "headingPath": [
+            "2. Plants : Structure and Function"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 20,
+          "pageStart": 21,
+          "pageEnd": 23,
+          "headingPath": [
+            "2. Plants : Structure and Function"
+          ]
+        }
+      ],
+      "edition": "First Edition 2017",
+      "generatedAt": "2026-10-31T15:49:49.434Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "What is the main reason for the swelling of the underground parts of plants like radish and carrot?",
+      "choices": [
+        "They store food",
+        "They absorb water and minerals",
+        "They produce more root hairs",
+        "They grow in length"
+      ],
+      "answerIndex": 0,
+      "solution": "The underground parts of plants like radish and carrot become thick, fleshy, and swollen because they store food. This is a modification of the root for storage purposes. Absorbing water and minerals is the function of root hairs, producing more root hairs is not the main reason for swelling, and growing in length is not the main reason either. Hence, the correct answer is they store food.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "रूबरू और गाजर जैसे पौधों के भूमिगत भागों के सूजने का मुख्य कारण क्या है?",
+          "choices": [
+            "वे भोजन संग्रहित करते हैं",
+            "वे पानी और खनिज अवशोषित करते हैं",
+            "वे अधिक जड़ बाल उत्पन्न करते हैं",
+            "वे लंबाई में बढ़ते हैं"
+          ],
+          "solution": "रूबरू और गाजर जैसे पौधों के भूमिगत भाग बोझिल, मांसल और सूजे हुए होते हैं क्योंकि वे भोजन संग्रहित करते हैं। यह भोजन संग्रहण के लिए जड़ के एक परिवर्तन है। पानी और खनिज अवशोषित करना जड़ बालों का कार्य है, अधिक जड़ बाल उत्पन्न करना सूजन का मुख्य कारण नहीं है, और लंबाई में बढ़ना भी मुख्य कारण नहीं है। इसलिए सही उत्तर वे भोजन संग्रहित करते हैं है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi botanical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "रूपांतरित भागांच्या वाढीमुळे रास्पबेरी आणि गाजरासारख्या वनस्पतींच्या खालच्या भागांचा फुगा का होतो?",
+          "choices": [
+            "ते खाद्य जमा करतात",
+            "ते पाणी आणि खनिज शोषतात",
+            "ते अधिक मूळ रोंदे तयार करतात",
+            "ते लांबीत वाढतात"
+          ],
+          "solution": "रास्पबेरी आणि गाजरासारख्या वनस्पतींच्या खालच्या भागांमध्ये खाद्य जमा करण्यासाठी रूपांतर होते. हे मूळाचे रूपांतर खाद्य संचयासाठी आहे. पाणी आणि खनिज शोषणे हे मूळ रोंद्यांचे कार्य आहे, अधिक मूळ रोंदे तयार करणे हे फुगा होण्याचे मुख्य कारण नाही, आणि लांबीत वाढणे हे मुख्य कारण नाही. म्हणूनच, योग्य उत्तर खाद्य जमा करणे आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi botanical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses the function of root hairs with storage",
+        "Misunderstands the role of root hairs in absorption",
+        "Students confuse root growth with the swelling of storage tissues"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 0, as the swelling of roots like those of radish and carrot is due to food storage. The other options reflect common misconceptions about root functions.",
+      "sources": [
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 18,
+          "pageStart": 20,
+          "pageEnd": 20,
+          "headingPath": [
+            "2. Plants : Structure and Function"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 19,
+          "pageStart": 20,
+          "pageEnd": 21,
+          "headingPath": [
+            "2. Plants : Structure and Function"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 20,
+          "pageStart": 21,
+          "pageEnd": 23,
+          "headingPath": [
+            "2. Plants : Structure and Function"
+          ]
+        }
+      ],
+      "edition": "First Edition 2017",
+      "generatedAt": "2026-10-31T15:49:49.434Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "A plant has a leaf with a fleshy texture. Which of the following could be a possible function of this adaptation?",
+      "choices": [
+        "To increase transpiration",
+        "To store water",
+        "To attract pollinators",
+        "To increase photosynthesis"
+      ],
+      "answerIndex": 1,
+      "solution": "A fleshy leaf is an adaptation that allows a plant to store water, which is especially useful in dry environments. This is because the fleshy tissue can hold large amounts of water. The other options are incorrect because fleshy leaves do not increase transpiration, are not related to attracting pollinators, and do not directly enhance photosynthesis.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक पौधे के पत्ते की ऊतक गाढ़ और मांसल है। निम्नलिखित में से कौन-सा इस अनुकूलन का संभावित कार्य हो सकता है?",
+          "choices": [
+            "वाष्पीकरण बढ़ाना",
+            "जल संग्रह करना",
+            "परागकण वाहक आकर्षित करना",
+            "प्रकाश संश्लेषण बढ़ाना"
+          ],
+          "solution": "मांसल पत्ता एक अनुकूलन है जो पौधे के जल संग्रह की अनुमति देता है, जो शुष्क वातावरण में विशेष रूप से उपयोगी होता है। यह इसलिए है क्योंकि मांसल ऊतक बड़ी मात्रा में जल को धारण कर सकता है। अन्य विकल्प गलत हैं क्योंकि मांसल पत्ते वाष्पीकरण नहीं बढ़ाते, परागकण वाहक आकर्षित करने से संबंधित नहीं हैं और प्रकाश संश्लेषण को सीधे बढ़ाने में सहायता नहीं करते।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi botanical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका वनस्पतीच्या पानाचा त्वचा फुललेला असतो. खालीलपैकी कोणते एक असे विशेषत्वाचे कार्य असू शकते?",
+          "choices": [
+            "पाणी वाफ बनवणे वाढविणे",
+            "पाणी जमा करणे",
+            "परागकोशांचे आकर्षण करणे",
+            "फोटोसिंथेसिस वाढविणे"
+          ],
+          "solution": "फुललेले पान हे एक असे अनुकूलन आहे ज्यामुळे वनस्पती पाणी जमा करू शकते, जे शुष्क परिस्थितीत विशेषतः उपयुक्त असते. हे कारण फुललेल्या ऊतीमुळे मोठ्या प्रमाणात पाणी जमा करता येते. इतर विकल्प अयोग्य आहेत कारण फुललेल्या पानांमुळे पाणी वाफ बनवणे वाढत नाही, ते परागकोशांच्या आकर्षणाशी संबंधित नाहीत आणि फोटोसिंथेसिसला सीधा वाढवत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for biological concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Thinks fleshy leaves increase transpiration, which is not correct",
+        null,
+        "Confuses the function of fleshy leaves with pollination",
+        "Thinks fleshy leaves increase photosynthesis, which is not directly related to leaf texture."
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 1, as fleshy leaves are adapted to store water. The reasoning in the solution is sound and matches the author's key. The distractors reflect common misconceptions about leaf functions.",
+      "sources": [
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 21,
+          "pageStart": 23,
+          "pageEnd": 24,
+          "headingPath": [
+            "2. Plants : Structure and Function"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 22,
+          "pageStart": 24,
+          "pageEnd": 25,
+          "headingPath": [
+            "2. Plants : Structure and Function"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 23,
+          "pageStart": 25,
+          "pageEnd": 25,
+          "headingPath": [
+            "2. Plants : Structure and Function",
+            "t t t"
+          ]
+        }
+      ],
+      "edition": "First Edition 2017",
+      "generatedAt": "2026-10-31T15:49:49.434Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
     }
   ]
 }

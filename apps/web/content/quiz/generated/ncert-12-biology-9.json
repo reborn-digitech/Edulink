@@ -1727,6 +1727,1693 @@
       "generatedAt": "2026-10-29T04:02:18.517Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is the term used for a protein produced by a foreign gene in a host organism?",
+      "choices": [
+        "Recombinant protein",
+        "Host protein",
+        "Viral protein",
+        "Enzyme protein"
+      ],
+      "answerIndex": 0,
+      "solution": "The term used for a protein produced by a foreign gene in a host organism is a recombinant protein. This is the protein that is the target of biotechnological processes. Host protein refers to proteins produced naturally by the host, not the foreign gene. Viral protein and enzyme protein are not specific terms for this context.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक परजीवी जीन द्वारा एक मेजबान जीव में उत्पादित प्रोटीन के लिए उपयोग किया जाने वाला शब्द क्या है?",
+          "choices": [
+            "पुनर्योजित प्रोटीन",
+            "मेजबान प्रोटीन",
+            "वायरस प्रोटीन",
+            "एंजाइम प्रोटीन"
+          ],
+          "solution": "एक परजीवी जीन द्वारा एक मेजबान जीव में उत्पादित प्रोटीन के लिए उपयोग किया जाने वाला शब्द पुनर्योजित प्रोटीन है। यह प्रोटीन जैव प्रौद्योगिकी प्रक्रियाओं का लक्ष्य होती है। मेजबान प्रोटीन का अर्थ होता है मेजबान द्वारा प्राकृतिक रूप से उत्पादित प्रोटीन, जो कि परजीवी जीन द्वारा नहीं होता। वायरस प्रोटीन और एंजाइम प्रोटीन इस संदर्भ में विशिष्ट शब्द नहीं हैं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains technical terminology appropriate for Hindi-medium biology curriculum.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका विदेशी जीनद्वारे एका हॉस्ट जीवात तयार केलेल्या प्रोटीनच्या नावाचा शब्द काय आहे?",
+          "choices": [
+            "पुनर्जनित प्रोटीन",
+            "हॉस्ट प्रोटीन",
+            "व्हायरल प्रोटीन",
+            "एन्झाइम प्रोटीन"
+          ],
+          "solution": "एका विदेशी जीनद्वारे एका हॉस्ट जीवात तयार केलेल्या प्रोटीनच्या नावाचा शब्द पुनर्जनित प्रोटीन आहे. हा प्रोटीन बायोटेक्नॉलॉजीच्या प्रक्रियांचा लक्ष्य असतो. हॉस्ट प्रोटीन हा शब्द हॉस्ट जीवाद्वारे स्वाभाविकपणे तयार केलेल्या प्रोटीनसाठी वापरला जातो, विदेशी जीनच्या निर्मितीसाठी नाही. व्हायरल प्रोटीन आणि एन्झाइम प्रोटीन हे या संदर्भातील विशिष्ट शब्द नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology consistent with standard biology textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses the term with host protein",
+        "Does not understand the definition of recombinant protein",
+        "Thinks the protein is always of viral origin"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The question is clear and the correct answer is 0. The author's reasoning for the distractors aligns with common misconceptions students might have.",
+      "sources": [
+        {
+          "document": "ncert/12/biology/lebo109.pdf",
+          "ordinal": 12,
+          "pageStart": 13,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 9: Biotechnology : Principles and Processes",
+            "9.3",
+            "DNA T"
+          ]
+        },
+        {
+          "document": "ncert/12/biology/lebo109.pdf",
+          "ordinal": 13,
+          "pageStart": 14,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 9: Biotechnology : Principles and Processes",
+            "9.3",
+            "DNA T"
+          ]
+        },
+        {
+          "document": "ncert/12/biology/lebo109.pdf",
+          "ordinal": 14,
+          "pageStart": 15,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 9: Biotechnology : Principles and Processes",
+            "EXERCISES"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T16:33:19.220Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "Which of the following is a feature of a cloning vector?",
+      "choices": [
+        "Origin of replication",
+        "Photosynthetic ability",
+        "Ability to produce light",
+        "Resistance to heat"
+      ],
+      "answerIndex": 0,
+      "solution": "A cloning vector must have an origin of replication to ensure the DNA can replicate inside the host cell. Photosynthetic ability, ability to produce light, and resistance to heat are not essential features for a cloning vector's function.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सी एक क्लोनिंग वेक्टर की विशेषता है?",
+          "choices": [
+            "प्रतिकृति का स्रोत",
+            "प्रकाश संश्लेषण क्षमता",
+            "प्रकाश उत्पन्न करने की क्षमता",
+            "ऊष्मा के प्रति प्रतिरोध"
+          ],
+          "solution": "एक क्लोनिंग वेक्टर में प्रतिकृति का स्रोत होना आवश्यक है ताकि डीएनए में संस्थानक कोशिका में प्रतिकृति हो सके। प्रकाश संश्लेषण क्षमता, प्रकाश उत्पन्न करने की क्षमता और ऊष्मा के प्रति प्रतिरोध क्लोनिंग वेक्टर के कार्य के लिए आवश्यक विशेषताएं नहीं हैं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriately translated for a Hindi-medium curriculum.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी क्लोनिंग वेक्टरचा लक्षण आहे?",
+          "choices": [
+            "प्रतिकृतीचा स्रोत",
+            "प्रकाशसंश्लेषण क्षमता",
+            "प्रकाश उत्पादन क्षमता",
+            "उष्णतेला प्रतिरोध"
+          ],
+          "solution": "क्लोनिंग वेक्टरला होस्ट सेलमध्ये डीएनए अस्तित्वात राहण्यासाठी प्रतिकृतीचा स्रोत असणे आवश्यक आहे. प्रकाशसंश्लेषण क्षमता, प्रकाश उत्पादन क्षमता आणि उष्णतेला प्रतिरोध क्लोनिंग वेक्टरच्या कार्यासाठी आवश्यक लक्षण नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for biological concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Pupils might confuse origin of replication with other biological features",
+        "Pupils might think vectors are involved in photosynthesis",
+        "Pupils might think vectors produce light for identification purposes"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 0 (Origin of replication), which is a fundamental feature of a cloning vector. The other options are clearly incorrect and represent plausible misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/12/biology/lebo109.pdf",
+          "ordinal": 6,
+          "pageStart": 8,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 9: Biotechnology : Principles and Processes",
+            "9.1",
+            "DNA T"
+          ]
+        },
+        {
+          "document": "ncert/12/biology/lebo109.pdf",
+          "ordinal": 7,
+          "pageStart": 8,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 9: Biotechnology : Principles and Processes",
+            "9.1",
+            "DNA T"
+          ]
+        },
+        {
+          "document": "ncert/12/biology/lebo109.pdf",
+          "ordinal": 8,
+          "pageStart": 9,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 9: Biotechnology : Principles and Processes",
+            "9.1",
+            "DNA T"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T16:33:19.220Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the role of a bioreactor in the production of a protein?",
+      "choices": [
+        "It controls the temperature and pH of the culture",
+        "It allows the culture to be stored for long periods",
+        "It provides the optimal conditions for the growth of cells",
+        "It ensures the culture is free from contamination"
+      ],
+      "answerIndex": 2,
+      "solution": "The role of a bioreactor is to provide the optimal conditions for the growth of cells. This includes controlling temperature, pH, and other factors that help the cells grow and produce the desired protein. Controlling temperature and pH is part of this, but not the sole purpose. Storing the culture for long periods is not the main function, and preventing contamination is important but not the primary role.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक प्रोटीन के उत्पादन में जैव अभिक्रियाकर की भूमिका क्या है?",
+          "choices": [
+            "यह संस्कृति के तापमान और pH को नियंत्रित करता है",
+            "यह संस्कृति को लंबे समय तक संग्रहीत करने की अनुमति देता है",
+            "यह कोशिकाओं के विकास के लिए अनुकूल परिस्थितियां प्रदान करता है",
+            "यह सुनिश्चित करता है कि संस्कृति दूषित न हो"
+          ],
+          "solution": "जैव अभिक्रियाकर की भूमिका कोशिकाओं के विकास के लिए अनुकूल परिस्थितियां प्रदान करना है। इसमें तापमान, pH और अन्य कारकों को नियंत्रित करना शामिल है जो कोशिकाओं के विकास और अपेक्षित प्रोटीन के उत्पादन में मदद करते हैं। तापमान और pH को नियंत्रित करना इसका एक हिस्सा है, लेकिन इसका एकमात्र उद्देश्य नहीं है। लंबे समय तक संस्कृति को संग्रहीत करना मुख्य कार्य नहीं है, और दूषण से बचाना महत्वपूर्ण है लेकिन इसकी प्राथमिक भूमिका नहीं है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms. The correct answer (option 2) is in the same position as in the English version. All distractors remain incorrect in the Hindi version.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "प्रोटीन तयार करण्यामध्ये बायोरिएक्टरचा भूमिका काय आहे?",
+          "choices": [
+            "ते संस्कृतीच्या तापमान आणि pH चे नियंत्रण करते",
+            "ते संस्कृतीला लांब काळ जमा ठेवण्यास परवानगी देते",
+            "ते कोशिकांच्या वृद्धीसाठी उत्तम अवस्था पुरवते",
+            "ते संस्कृतीला संसर्गमुक्त ठेवते"
+          ],
+          "solution": "बायोरिएक्टरची भूमिका कोशिकांच्या वृद्धीसाठी उत्तम अवस्था पुरवणे आहे. यामध्ये कोशिकांच्या वृद्धी आणि आवश्यक प्रोटीन तयार करण्यास मदत करणारे तापमान, pH आणि इतर घटकांचे नियंत्रण समाविष्ट आहे. तापमान आणि pH चे नियंत्रण हे याचा भाग आहे, परंतु एकट्या उद्देशासाठी नाही. लांब काळ जमा ठेवणे ही मुख्य कार्य नाही, आणि संसर्गमुक्त ठेवणे महत्वाचे आहे परंतु प्राथमिक भूमिका नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi technical terms used.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses temperature control with the main function",
+        "Thinks the main role is storage",
+        null,
+        "Does not understand the purpose of optimal conditions"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 2, as the bioreactor's primary role is to provide optimal conditions for cell growth. The other options represent common misconceptions about the bioreactor's function.",
+      "sources": [
+        {
+          "document": "ncert/12/biology/lebo109.pdf",
+          "ordinal": 12,
+          "pageStart": 13,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 9: Biotechnology : Principles and Processes",
+            "9.3",
+            "DNA T"
+          ]
+        },
+        {
+          "document": "ncert/12/biology/lebo109.pdf",
+          "ordinal": 13,
+          "pageStart": 14,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 9: Biotechnology : Principles and Processes",
+            "9.3",
+            "DNA T"
+          ]
+        },
+        {
+          "document": "ncert/12/biology/lebo109.pdf",
+          "ordinal": 14,
+          "pageStart": 15,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 9: Biotechnology : Principles and Processes",
+            "EXERCISES"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T16:33:19.220Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the main function of restriction enzymes in biotechnology?",
+      "choices": [
+        "To replicate DNA",
+        "To cut DNA at specific sites",
+        "To join DNA fragments",
+        "To store genetic information"
+      ],
+      "answerIndex": 1,
+      "solution": "The main function of restriction enzymes is to cut DNA at specific sites, allowing scientists to isolate and manipulate genetic material. Replicating DNA is the role of DNA polymerase, joining DNA fragments is done by DNA ligase, and storing genetic information is not a function of restriction enzymes.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "बायोटेक्नोलॉजी में सीमित एंजाइमों का मुख्य कार्य क्या है?",
+          "choices": [
+            "डीएनए की प्रतिकृति बनाना",
+            "विशिष्ट साइटों पर डीएनए काटना",
+            "डीएनए अंशों को जोड़ना",
+            "आनुवंशिक जानकारी को संग्रहीत करना"
+          ],
+          "solution": "सीमित एंजाइमों का मुख्य कार्य विशिष्ट साइटों पर डीएनए काटना होता है, जिससे वैज्ञानिक आनुवंशिक सामग्री को अलग कर सकते हैं और इसका उपयोग कर सकते हैं। डीएनए की प्रतिकृति बनाना डीएनए पॉलीमरेज की भूमिका है, डीएनए अंशों को जोड़ना डीएनए लिगेस की भूमिका है, और आनुवंशिक जानकारी को संग्रहीत करना सीमित एंजाइमों की भूमिका नहीं है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi scientific terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "बायोटेक्नॉलॉजीमध्ये सीमित एंजाइमचे मुख्य कार्य काय आहे?",
+          "choices": [
+            "डीएनए प्रतिकृत करणे",
+            "विशिष्ट ठिकाणी डीएनए कापणे",
+            "डीएनए खंड जोडणे",
+            "जेनेटिक माहिती भंडारण करणे"
+          ],
+          "solution": "सीमित एंजाइमचे मुख्य कार्य विशिष्ट ठिकाणी डीएनए कापणे आहे, जेणेकरून वैज्ञानिक जीनेटिक माहिती विलग करू शकतात आणि हाताळू शकतात. डीएनए प्रतिकृत करणे हे डीएनए पॉलिमरेजचे कार्य आहे, डीएनए खंड जोडणे हे डीएनए लिगेझचे कार्य आहे आणि जेनेटिक माहिती भंडारण करणे हे सीमित एंजाइमचे कार्य नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses restriction enzymes with DNA replication enzymes",
+        null,
+        "Thinks they join DNA fragments, which is the role of DNA ligase",
+        "Believes they store genetic information, which is not their function"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-constructed, with a clear correct answer and plausible misconceptions in the distractors. The solution accurately explains the roles of different enzymes.",
+      "sources": [
+        {
+          "document": "ncert/12/biology/lebo109.pdf",
+          "ordinal": 12,
+          "pageStart": 13,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 9: Biotechnology : Principles and Processes",
+            "9.3",
+            "DNA T"
+          ]
+        },
+        {
+          "document": "ncert/12/biology/lebo109.pdf",
+          "ordinal": 13,
+          "pageStart": 14,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 9: Biotechnology : Principles and Processes",
+            "9.3",
+            "DNA T"
+          ]
+        },
+        {
+          "document": "ncert/12/biology/lebo109.pdf",
+          "ordinal": 14,
+          "pageStart": 15,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 9: Biotechnology : Principles and Processes",
+            "EXERCISES"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T16:33:19.220Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Why are bacteria made 'competent' before introducing recombinant DNA into them?",
+      "choices": [
+        "To make them resistant to antibiotics",
+        "To allow DNA to pass through the cell membrane",
+        "To increase the number of bacteria",
+        "To make them grow faster"
+      ],
+      "answerIndex": 1,
+      "solution": "The correct answer is 'To allow DNA to pass through the cell membrane'. DNA is a hydrophilic molecule and cannot pass through the cell membrane on its own. Making bacteria competent increases the efficiency with which DNA enters the bacterium. It is not done to make them resistant to antibiotics, increase their number, or make them grow faster.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "बैक्टीरिया को पुनर्योगज डीएनए को उनमें प्रवेश कराने से पहले 'प्रतिकूल' क्यों बनाया जाता है?",
+          "choices": [
+            "उन्हें एंटीबायोटिक्स के प्रति प्रतिरोधी बनाने के लिए",
+            "डीएनए के कोशिका झिल्ली से गुजरने की अनुमति देने के लिए",
+            "बैक्टीरिया की संख्या बढ़ाने के लिए",
+            "उन्हें तेजी से बढ़ने के लिए"
+          ],
+          "solution": "सही उत्तर 'डीएनए के कोशिका झिल्ली से गुजरने की अनुमति देने के लिए' है। डीएनए एक जल-आकर्षक अणु है और अकेले कोशिका झिल्ली से गुजर नहीं सकता। बैक्टीरिया को प्रतिकूल बनाने से डीएनए के बैक्टीरियम में प्रवेश की दक्षता बढ़ जाती है। इसे एंटीबायोटिक्स के प्रति प्रतिरोधी बनाने, उनकी संख्या बढ़ाने या तेजी से बढ़ने के लिए नहीं किया जाता।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the original English question and solution, with appropriate technical terms used in a Hindi-medium biology context.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "बॅक्टेरिया मध्ये पुनर्संयोजित डीएनए जोडण्यापूर्वी त्यांना का 'क्षम' केले जाते?",
+          "choices": [
+            "त्यांना अँटीबायोटिक्स विरुद्ध प्रतिरोधक बनवणे",
+            "डीएनए जीवाणूच्या कोशिका झिल्लीतून जाऊ देणे",
+            "बॅक्टेरियांची संख्या वाढवणे",
+            "त्यांना जास्त वेगाने वाढवणे"
+          ],
+          "solution": "योग्य उत्तर 'डीएनए जीवाणूच्या कोशिका झिल्लीतून जाऊ देणे' आहे. डीएनए हा जलावेशी अणू आहे आणि तो स्वतः जीवाणूच्या कोशिका झिल्लीतून जाऊ शकत नाही. बॅक्टेरियांना क्षम बनवणे डीएनए जीवाणूमध्ये प्रवेश करण्याच्या दक्षतेत वाढ करते. ते अँटीबायोटिक्स विरुद्ध प्रतिरोधक बनवण्यासाठी, त्यांची संख्या वाढवण्यासाठी किंवा जास्त वेगाने वाढवण्यासाठी केले जात नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi biological terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the role of selectable markers (antibiotic resistance) with the purpose of making cells competent",
+        null,
+        "Misconception that competence is used to promote bacterial growth",
+        "Confuses the purpose of transformation with growth enhancement, which is not the reason for making cells competent"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 1, as competence allows DNA to enter the cell. The other options reflect common misconceptions about the purpose of competence.",
+      "sources": [
+        {
+          "document": "ncert/12/biology/lebo109.pdf",
+          "ordinal": 9,
+          "pageStart": 10,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 9: Biotechnology : Principles and Processes",
+            "9.1",
+            "DNA T"
+          ]
+        },
+        {
+          "document": "ncert/12/biology/lebo109.pdf",
+          "ordinal": 10,
+          "pageStart": 11,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 9: Biotechnology : Principles and Processes",
+            "9.3",
+            "DNA T"
+          ]
+        },
+        {
+          "document": "ncert/12/biology/lebo109.pdf",
+          "ordinal": 11,
+          "pageStart": 12,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 9: Biotechnology : Principles and Processes",
+            "9.3",
+            "DNA T"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T16:33:19.220Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If a piece of DNA is transferred into an alien organism, what must happen for it to be replicated?",
+      "choices": [
+        "It must be placed in a sterile environment",
+        "It must be combined with a protein",
+        "It must be integrated into the genome of the recipient",
+        "It must be heated to a high temperature"
+      ],
+      "answerIndex": 2,
+      "solution": "For a piece of DNA to be replicated in an alien organism, it must be integrated into the genome of the recipient, as this allows it to be copied along with the host's DNA during cell division. Placing it in a sterile environment, combining it with a protein, or heating it do not ensure that the DNA will be replicated. These methods do not address the fundamental requirement of being incorporated into the host's genetic material.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक डीएनए के टुकड़े को एक विदेशी जीव में स्थानांतरित किया जाता है, तो इसकी प्रतिकृति बनाने के लिए क्या होना आवश्यक है?",
+          "choices": [
+            "इसे एक बर्तन वातावरण में रखा जाना चाहिए",
+            "इसे एक प्रोटीन के साथ संयोजित किया जाना चाहिए",
+            "इसे ग्रहणकर्ता के जीनोम में एम्बेड किया जाना चाहिए",
+            "इसे उच्च तापमान पर गर्म किया जाना चाहिए"
+          ],
+          "solution": "एक विदेशी जीव में डीएनए के टुकड़े की प्रतिकृति बनाने के लिए, इसे ग्रहणकर्ता के जीनोम में एम्बेड किया जाना चाहिए, क्योंकि इससे इसे कोशिका विभाजन के दौरान होस्ट के डीएनए के साथ अनुलिपित करने की अनुमति मिलती है। इसे बर्तन वातावरण में रखना, इसे प्रोटीन के साथ संयोजित करना या इसे उच्च तापमान पर गर्म करना डीएनए की प्रतिकृति बनाने की गारंटी नहीं देता है। इन विधियों में जीनोमिक सामग्री में शामिल होने की मूल आवश्यकता को ध्यान में नहीं रखा जाता है।",
+          "imageAlt": null,
+          "critique": "Translation accurately reflects the original meaning with appropriate Hindi scientific terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका विदेशी संस्थेत डीएनएचा एक भाग प्रसारित केला गेला असता, तो प्रतिकृत करण्यासाठी काय घडायला हवे?",
+          "choices": [
+            "त्याला स्टेरिल वातावरणात ठेवले पाहिजे",
+            "त्याला प्रोटीनसह जोडले पाहिजे",
+            "त्याला ग्राहकाच्या जेनोममध्ये समाविष्ट केले पाहिजे",
+            "त्याला उच्च तापमानावर गरम केले पाहिजे"
+          ],
+          "solution": "विदेशी संस्थेत डीएनएचा एक भाग प्रतिकृत करायला हवा असल्यास, तो ग्राहकाच्या जेनोममध्ये समाविष्ट केला पाहिजे, कारण हे त्याला विभाजनादरम्यान वास्तविक डीएनएसह प्रतिकृत करण्यास परवानगी देते. त्याला स्टेरिल वातावरणात ठेवणे, त्याला प्रोटीनसह जोडणे किंवा त्याला उच्च तापमानावर गरम करणे डीएनएच्या प्रतिकृतीची खात्री देत नाहीत. ही पद्धती ग्राहकाच्या आनुवंशिक पदार्थात समाविष्ट होण्याच्या मूलभूत आवश्यकतेला लक्षात न घेता असतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for biological concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Thinks environmental conditions are the main factor",
+        "Confuses DNA replication with protein synthesis",
+        null,
+        "Believes replication depends on external conditions"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 2, as DNA must integrate into the recipient's genome to replicate. The other options represent common misconceptions about DNA replication.",
+      "sources": [
+        {
+          "document": "ncert/12/biology/lebo109.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 9: Biotechnology : Principles and Processes"
+          ]
+        },
+        {
+          "document": "ncert/12/biology/lebo109.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 9: Biotechnology : Principles and Processes"
+          ]
+        },
+        {
+          "document": "ncert/12/biology/lebo109.pdf",
+          "ordinal": 2,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 9: Biotechnology : Principles and Processes",
+            "9.1"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T16:33:19.220Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "Why is it important to grow cells in a continuous culture system in biotechnology?",
+      "choices": [
+        "To reduce the cost of the experiment",
+        "To maintain the cells in their most active growth phase",
+        "To prevent the cells from producing proteins",
+        "To increase the number of bioreactors required"
+      ],
+      "answerIndex": 1,
+      "solution": "Growing cells in a continuous culture system helps maintain them in their most active growth phase, which leads to higher yields of the desired protein. This is essential for large-scale production. Reducing costs, preventing protein production, and increasing the number of bioreactors are not the main reasons for using this system.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "बायोटेक्नोलॉजी में सतत संस्कृति प्रणाली में कोशिकाओं को उगाना क्यों महत्वपूर्ण है?",
+          "choices": [
+            "प्रयोग की लागत कम करने के लिए",
+            "कोशिकाओं को अपने सबसे अधिक सक्रिय वृद्धि चरण में बनाए रखने के लिए",
+            "कोशिकाओं से प्रोटीन के उत्पादन को रोकने के लिए",
+            "आवश्यक बायोरिएक्टर की संख्या बढ़ाने के लिए"
+          ],
+          "solution": "सतत संस्कृति प्रणाली में कोशिकाओं को उगाना उन्हें अपने सबसे अधिक सक्रिय वृद्धि चरण में बनाए रखने में मदद करता है, जिससे अपेक्षित प्रोटीन के उच्च उत्पादन होते हैं। यह बड़े पैमाने पर उत्पादन के लिए आवश्यक है। लागत कम करना, प्रोटीन के उत्पादन को रोकना और बायोरिएक्टर की संख्या बढ़ाना इस प्रणाली के उपयोग के मुख्य कारण नहीं हैं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriate for Hindi-medium curriculum.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "बायोटेक्नॉलॉजीमध्ये सतत संस्कृती प्रणालीत सेल्स वाढवणे का महत्वाचे आहे?",
+          "choices": [
+            "प्रयोगाचा खर्च कमी करण्यासाठी",
+            "सेल्स त्यांच्या सर्वात सक्रिय वाढीच्या टप्प्यात ठेवण्यासाठी",
+            "सेल्स द्वारे प्रोटीन तयार करणे थांबवण्यासाठी",
+            "आवश्यक बायोरिएक्टर्सची संख्या वाढवण्यासाठी"
+          ],
+          "solution": "सतत संस्कृती प्रणालीत सेल्स वाढवणे त्यांना सर्वात सक्रिय वाढीच्या टप्प्यात ठेवते, जे अपेक्षित प्रोटीनच्या उच्च उत्पादनास नेमके मदत करते. हे मोठ्या प्रमाणावर उत्पादनासाठी आवश्यक आहे. खर्च कमी करणे, प्रोटीन तयार करणे थांबवणे आणि बायोरिएक्टर्सची संख्या वाढवणे हे या प्रणालीचा वापर करण्याचे मुख्य कारण नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms. The correct answer remains in the same position (option 2). All distractors are still incorrect in Marathi.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Believes the main purpose is cost reduction",
+        null,
+        "Thinks the system prevents protein production, which is incorrect",
+        "Assumes the system increases the number of bioreactors needed"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 1, as continuous culture maintains cells in their active growth phase for optimal protein production. The other options reflect common misconceptions or incorrect assumptions.",
+      "sources": [
+        {
+          "document": "ncert/12/biology/lebo109.pdf",
+          "ordinal": 12,
+          "pageStart": 13,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 9: Biotechnology : Principles and Processes",
+            "9.3",
+            "DNA T"
+          ]
+        },
+        {
+          "document": "ncert/12/biology/lebo109.pdf",
+          "ordinal": 13,
+          "pageStart": 14,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 9: Biotechnology : Principles and Processes",
+            "9.3",
+            "DNA T"
+          ]
+        },
+        {
+          "document": "ncert/12/biology/lebo109.pdf",
+          "ordinal": 14,
+          "pageStart": 15,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 9: Biotechnology : Principles and Processes",
+            "EXERCISES"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T16:33:19.220Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "Which enzyme is used to join two DNA fragments together during the formation of recombinant DNA?",
+      "choices": [
+        "Restriction enzyme",
+        "DNA polymerase",
+        "DNA ligase",
+        "RNA polymerase"
+      ],
+      "answerIndex": 2,
+      "solution": "The correct answer is DNA ligase because it is responsible for joining DNA fragments together by forming phosphodiester bonds between them. Restriction enzymes cut DNA at specific sites, DNA polymerase synthesizes new DNA strands during replication, and RNA polymerase produces RNA from a DNA template. None of these other enzymes are involved in joining DNA fragments.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "पुनर्योगज DNA के निर्माण के दौरान दो DNA अंशों को एक साथ जोड़ने के लिए कौन-सा एंजाइम का उपयोग किया जाता है?",
+          "choices": [
+            "सीमाबद्ध एंजाइम",
+            "DNA पॉलीमरेज",
+            "DNA लिगेज",
+            "RNA पॉलीमरेज"
+          ],
+          "solution": "सही उत्तर DNA लिगेज है क्योंकि यह फॉस्फोडाइएस्टर बंध बनाकर DNA अंशों को एक साथ जोड़ने के लिए जिम्मेदार होता है। सीमाबद्ध एंजाइम विशिष्ट स्थानों पर DNA काटते हैं, DNA पॉलीमरेज प्रतिकृति के दौरान नए DNA अंश संश्लेषित करता है, और RNA पॉलीमरेज DNA टेम्पलेट से RNA बनाता है। इनमें से कोई अन्य एंजाइम DNA अंशों को जोड़ने में शामिल नहीं होता।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses standard biological terminology as taught in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "पुनर्योगज DNA च्या निर्माणादरम्यान दोन DNA अपत्ती एकत्र करण्यासाठी कोणता एन्झाइम वापरला जातो?",
+          "choices": [
+            "सीमित एन्झाइम",
+            "DNA पॉलिमरेज",
+            "DNA लिगेज",
+            "RNA पॉलिमरेज"
+          ],
+          "solution": "योग्य उत्तर DNA लिगेज आहे कारण ते त्यांच्यात फॉस्फोडायस्टर बॉंड तयार करून DNA अपत्ती एकत्र करण्याची जबाबदारी घेते. सीमित एन्झाइम विशिष्ट ठिकाणी DNA कापतात, DNA पॉलिमरेज प्रतिकृती दरम्यान नवीन DNA रेखा संश्लेषित करतात आणि RNA पॉलिमरेज एका DNA टेम्पलेटपासून RNA तयार करतात. या इतर एन्झाइममध्ये DNA अपत्ती एकत्र करण्याचा विषय नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses restriction enzymes with the joining process",
+        "Thinks DNA polymerase is used for joining",
+        null,
+        "Misunderstands the function of RNA polymerase"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is DNA ligase, which is used to join DNA fragments. The reasoning in the author's solution is accurate and aligns with standard biological knowledge.",
+      "sources": [
+        {
+          "document": "ncert/12/biology/lebo109.pdf",
+          "ordinal": 3,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 9: Biotechnology : Principles and Processes",
+            "9.1"
+          ]
+        },
+        {
+          "document": "ncert/12/biology/lebo109.pdf",
+          "ordinal": 4,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 9: Biotechnology : Principles and Processes",
+            "9.1",
+            "DNA T"
+          ]
+        },
+        {
+          "document": "ncert/12/biology/lebo109.pdf",
+          "ordinal": 5,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 9: Biotechnology : Principles and Processes",
+            "9.1",
+            "DNA T"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T16:33:19.220Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "Which of the following best describes downstream processing in biotechnology?",
+      "choices": [
+        "The process of isolating foreign DNA",
+        "The process of growing cells in a bioreactor",
+        "The process of separating and purifying the final product",
+        "The process of inserting DNA into a host organism"
+      ],
+      "answerIndex": 2,
+      "solution": "Downstream processing refers to the process of separating and purifying the final product after it has been produced. It includes steps like formulation and quality control. Isolating foreign DNA, growing cells, and inserting DNA are part of earlier stages in the biotechnology process.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा जैव प्रौद्योगिकी में निर्वहन प्रक्रिया का सबसे अच्छा वर्णन करता है?",
+          "choices": [
+            "विदेशी डीएनए के अलग करने की प्रक्रिया",
+            "एक बायोरिएक्टर में कोशिकाओं के उगाने की प्रक्रिया",
+            "अंतिम उत्पाद के अलग करने और शुद्ध करने की प्रक्रिया",
+            "मेजबान जीव में डीएनए के प्रवेश की प्रक्रिया"
+          ],
+          "solution": "निर्वहन प्रक्रिया उत्पाद के उत्पादन के बाद अंतिम उत्पाद के अलग करने और शुद्ध करने की प्रक्रिया को संदर्भित करती है। इसमें फॉर्मूलेशन और गुणवत्ता नियंत्रण जैसे चरण शामिल होते हैं। विदेशी डीएनए के अलग करने, कोशिकाओं के उगाने और डीएनए के मेजबान जीव में प्रवेश कराने जैसी प्रक्रियाएं जैव प्रौद्योगिकी प्रक्रिया के पूर्व चरणों के हिस्से होती हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate technical terms as used in Hindi biotechnology textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते बायोटेक्नॉलॉजीमध्ये डाउनस्ट्रीम प्रक्रिया चे सर्वात चांगले वर्णन करते?",
+          "choices": [
+            "विदेशी DNA चे अलगीकरणाची प्रक्रिया",
+            "एका बायोरिएक्टरमध्ये कोशिकांच्या वाढीची प्रक्रिया",
+            "अंतिम उत्पादनाचे विलगीकरण आणि शुद्धीकरणाची प्रक्रिया",
+            "हॉस्ट जीवाणूमध्ये DNA चे अंतर्गत करण्याची प्रक्रिया"
+          ],
+          "solution": "डाउनस्ट्रीम प्रक्रिया ही उत्पादनानंतर अंतिम उत्पादनाचे विलगीकरण आणि शुद्धीकरणाची प्रक्रिया दर्शविते. तिच्यामध्ये तयारी आणि गुणवत्ता नियंत्रणाच्या टप्प्यांचा समावेश होतो. विदेशी DNA चे अलगीकरण, कोशिकांची वाढ आणि DNA चे हॉस्ट जीवाणूमध्ये अंतर्गत करणे ही बायोटेक्नॉलॉजीच्या प्रक्रियेच्या आधीच्या टप्प्यांच्या भाग आहेत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the technical terms used in Marathi textbooks, and preserves the meaning and structure of the original question.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses downstream processing with DNA isolation",
+        "Thinks it refers to cell growth in a bioreactor",
+        null,
+        "Misunderstands the purpose of inserting DNA into a host organism"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 2, as downstream processing involves the separation and purification of the final product. The other options describe earlier stages in the biotechnology process, which aligns with the author's reasoning.",
+      "sources": [
+        {
+          "document": "ncert/12/biology/lebo109.pdf",
+          "ordinal": 12,
+          "pageStart": 13,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 9: Biotechnology : Principles and Processes",
+            "9.3",
+            "DNA T"
+          ]
+        },
+        {
+          "document": "ncert/12/biology/lebo109.pdf",
+          "ordinal": 13,
+          "pageStart": 14,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 9: Biotechnology : Principles and Processes",
+            "9.3",
+            "DNA T"
+          ]
+        },
+        {
+          "document": "ncert/12/biology/lebo109.pdf",
+          "ordinal": 14,
+          "pageStart": 15,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 9: Biotechnology : Principles and Processes",
+            "EXERCISES"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T16:33:19.220Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "A biotechnologist wants to insert a gene for antibiotic resistance into a plasmid. The plasmid is then introduced into a bacterial host. Which of the following best describes the purpose of this process?",
+      "choices": [
+        "To make the bacteria glow under UV light",
+        "To allow the bacteria to grow in the presence of an antibiotic",
+        "To change the colour of the bacteria",
+        "To prevent the bacteria from dividing"
+      ],
+      "answerIndex": 1,
+      "solution": "The correct answer is 'To allow the bacteria to grow in the presence of an antibiotic' because inserting an antibiotic resistance gene enables the bacteria to survive when exposed to antibiotics. The other options do not align with the function of an antibiotic resistance gene, which is to protect the organism from antibiotic effects, not to alter appearance or prevent division.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक जैव प्रौद्योगिकी विशेषज्ञ एंटीबायोटिक प्रतिरोध के लिए एक जीन को प्लाज्मिड में सम्मिलित करना चाहता है। प्लाज्मिड को बैक्टीरियल होस्ट में प्रवेश कराया जाता है। निम्नलिखित में से कौन-सा इस प्रक्रिया के उद्देश्य का सबसे अच्छा वर्णन करता है?",
+          "choices": [
+            "बैक्टीरिया को पराबैंगनी प्रकाश में चमकने के लिए",
+            "बैक्टीरिया को एंटीबायोटिक की उपस्थिति में बढ़ने की अनुमति देना",
+            "बैक्टीरिया के रंग को बदलना",
+            "बैक्टीरिया के विभाजन को रोकना"
+          ],
+          "solution": "सही उत्तर 'बैक्टीरिया को एंटीबायोटिक की उपस्थिति में बढ़ने की अनुमति देना' है क्योंकि एंटीबायोटिक प्रतिरोध जीन को सम्मिलित करने से बैक्टीरिया को एंटीबायोटिक के संपर्क में रहकर जीवित रहने की क्षमता प्राप्त होती है। अन्य विकल्प एंटीबायोटिक प्रतिरोध जीन के कार्य के साथ संगत नहीं हैं, जो कि जीव को एंटीबायोटिक प्रभावों से सुरक्षित रखना है, न कि उसके दृश्य आकार को बदलना या विभाजन को रोकना।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains original meaning, and uses appropriate technical terms in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एक जैव प्रौद्योगिकी विशेषज्ञ एक एंटीबायोटिक प्रतिरोधाचा जीन एका प्लाझ्मिडमध्ये समाविष्ट करू इच्छितो. नंतर तो प्लाझ्मिडम बॅक्टेरियल हॉस्टमध्ये प्रवेश करतो. खालीलपैकी कोणते या प्रक्रियेचा उद्देश योग्यरित्या वर्णन करते?",
+          "choices": [
+            "बॅक्टेरियांना पराबैंगुन प्रकाशाखाली चमकण्यासाठी",
+            "बॅक्टेरियांना एंटीबायोटिक उपस्थितीत वाढण्यासाठी परवानगी देण्यासाठी",
+            "बॅक्टेरियांचा रंग बदलण्यासाठी",
+            "बॅक्टेरियांच्या विभाजनाला रोखण्यासाठी"
+          ],
+          "solution": "योग्य उत्तर 'बॅक्टेरियांना एंटीबायोटिक उपस्थितीत वाढण्यासाठी परवानगी देण्यासाठी' आहे कारण एंटीबायोटिक प्रतिरोधाचा जीन समाविष्ट करणे बॅक्टेरियांना एंटीबायोटिकमुळे प्रभावित होऊ नये यासाठी आवश्यक असते. इतर विकल्प एंटीबायोटिक प्रतिरोधाच्या जीनच्या कार्याशी संगत नसतात, जे जीवांना एंटीबायोटिकच्या प्रभावापासून बचाव करण्यासाठी असते, नाही की त्याचा दिसावा बदलण्यासाठी किंवा विभाजन रोखण्यासाठी.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for biotechnology concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the purpose of a fluorescent gene",
+        null,
+        "Does not understand the role of antibiotic resistance",
+        "Misinterprets the function of the gene"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 1, as the antibiotic resistance gene allows the bacteria to survive in the presence of an antibiotic. The other options represent common misconceptions about the function of such genes.",
+      "sources": [
+        {
+          "document": "ncert/12/biology/lebo109.pdf",
+          "ordinal": 3,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 9: Biotechnology : Principles and Processes",
+            "9.1"
+          ]
+        },
+        {
+          "document": "ncert/12/biology/lebo109.pdf",
+          "ordinal": 4,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 9: Biotechnology : Principles and Processes",
+            "9.1",
+            "DNA T"
+          ]
+        },
+        {
+          "document": "ncert/12/biology/lebo109.pdf",
+          "ordinal": 5,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 9: Biotechnology : Principles and Processes",
+            "9.1",
+            "DNA T"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T16:33:19.220Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "What happens to the colonies when the β-galactosidase gene is inactivated by insertional inactivation?",
+      "choices": [
+        "They turn blue",
+        "They turn red",
+        "They remain colourless",
+        "They become transparent"
+      ],
+      "answerIndex": 2,
+      "solution": "When the β-galactosidase gene is inactivated, the colonies cannot produce the enzyme needed to break down the substrate, resulting in no color change. This means the colonies remain colorless. The other options, such as turning blue or red, would require the enzyme to be active, which it is not in this case. Transparency is unrelated to the presence or absence of β-galactosidase activity.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "जब β-गैलेक्टोसिडेज जीन आवेशन अक्षमता द्वारा अक्षम कर दिया जाता है तो कॉलोनियाँ क्या हो जाती हैं?",
+          "choices": [
+            "वे नीले हो जाते हैं",
+            "वे लाल हो जाते हैं",
+            "वे बिना रंग के रह जाते हैं",
+            "वे पारदर्शी हो जाते हैं"
+          ],
+          "solution": "जब β-गैलेक्टोसिडेज जीन अक्षम कर दिया जाता है तो कॉलोनियाँ उस एंजाइम के उत्पादन में अक्षम हो जाती हैं जिसकी उन्हें उपापचय के लिए आवश्यकता होती है, जिसके परिणामस्वरूप कोई रंग परिवर्तन नहीं होता। इसका अर्थ है कि कॉलोनियाँ बिना रंग के रह जाती हैं। अन्य विकल्प, जैसे नीले या लाल हो जाना, एंजाइम के सक्रिय होने के अनुरूप होते हैं, जो इस स्थिति में नहीं होता। पारदर्शिता β-गैलेक्टोसिडेज गतिविधि की उपस्थिति या अनुपस्थिति से संबंधित नहीं है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate technical terms as found in Hindi science textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "β-गॅलेक्टोसिडेज जीन इन्सर्शनल इनॅक्टिव्हेशनमुळे अकर्यात झाल्यास रोपणे काय होतात?",
+          "choices": [
+            "ते निळे होतात",
+            "ते लाल होतात",
+            "ते रंगहीन राहतात",
+            "ते पारदर्शक होतात"
+          ],
+          "solution": "जेव्हा β-गॅलेक्टोसिडेज जीन अकर्यात झाले तेव्हा रोपणे उपायाचे एन्झाइम तयार करू शकत नाहीत, जे उपायाचे विघटन करण्यासाठी आवश्यक आहे, ज्यामुळे रंग बदल होत नाही. हे रोपणे रंगहीन राहतात. इतर विकल्प, निळे किंवा लाल होणे, एन्झाइम अक्रिय असताना शक्य नाहीत. पारदर्शकता β-गॅलेक्टोसिडेज क्रियाशीलतेशी संबंधित नाही.",
+          "imageAlt": null,
+          "critique": "The Marathi translation accurately reflects the English question and solution, with appropriate technical terms used in a Marathi educational context.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Pupils might think the colonies turn blue as they are the normal colour",
+        "Pupils might confuse the colour with a different reaction",
+        null,
+        "Pupils might think the colonies become transparent due to lack of pigment"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 2, as the inactivation of the β-galactosidase gene prevents the colonies from producing color. The author's reasoning aligns with the correct biological mechanism, and the distractors reflect plausible student misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/12/biology/lebo109.pdf",
+          "ordinal": 6,
+          "pageStart": 8,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 9: Biotechnology : Principles and Processes",
+            "9.1",
+            "DNA T"
+          ]
+        },
+        {
+          "document": "ncert/12/biology/lebo109.pdf",
+          "ordinal": 7,
+          "pageStart": 8,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 9: Biotechnology : Principles and Processes",
+            "9.1",
+            "DNA T"
+          ]
+        },
+        {
+          "document": "ncert/12/biology/lebo109.pdf",
+          "ordinal": 8,
+          "pageStart": 9,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 9: Biotechnology : Principles and Processes",
+            "9.1",
+            "DNA T"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T16:33:19.220Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "A scientist claims that they have created a new method to make a plant resistant to pests using biotechnology. Which of the following would best support this claim?",
+      "choices": [
+        "The plant was grown in a greenhouse",
+        "The plant was treated with a chemical pesticide",
+        "A gene from a bacterium was inserted into the plant's genome",
+        "The plant was watered more frequently"
+      ],
+      "answerIndex": 2,
+      "solution": "Inserting a gene from a bacterium into a plant's genome directly alters the plant's genetic makeup, which can confer resistance to pests through biotechnology. The other options involve external factors like environment, chemicals, or watering, which do not involve genetic changes.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक वैज्ञानिक दावा करता है कि उसने जैव प्रौद्योगिकी का उपयोग करके एक नई विधि विकसित की है जिससे पौधा कीटों के प्रति प्रतिरोधक बन जाता है। निम्नलिखित में से कौन-सा इस दावे को सबसे अच्छा समर्थन करेगा?",
+          "choices": [
+            "पौधा ग्रीनहाउस में उगाया गया",
+            "पौधे के साथ रासायनिक कीटनाशक का उपयोग किया गया",
+            "एक बैक्टीरिया से जीन को पौधे के जीनोम में सम्मिलित कर दिया गया",
+            "पौधे को अधिक बार पानी दिया गया"
+          ],
+          "solution": "एक बैक्टीरिया से जीन को पौधे के जीनोम में सम्मिलित करना पौधे की आनुवंशिक बनावट को सीधे बदल देता है, जो जैव प्रौद्योगिकी के माध्यम से कीटों के प्रति प्रतिरोधकता प्रदान कर सकता है। अन्य विकल्प पर्यावरण, रासायनिक पदार्थ या पानी के बाहरी कारकों के साथ जुड़े हुए हैं, जो आनुवंशिक परिवर्तन के बजाय बाहरी कारकों के साथ हैं।",
+          "imageAlt": null,
+          "critique": "Translation accurately reflects the original meaning, technical terms are appropriately used in Hindi, and the correct answer remains option 2.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एक वैज्ञानिक दावा करतो की त्यांनी जैवतंत्रिकी वापरून एका वनस्पतीला कीटकांपासून संरक्षित करण्याचा नवीन पद्धत तयार केला आहे. खालीलपैकी कोणता विधान हा दावा समर्थित करेल?",
+          "choices": [
+            "वनस्पतीला शेतात लावले गेले",
+            "वनस्पतीला रासायनिक कीटकनाशकाने वापरले गेले",
+            "एका जीवाणूचा जीन वनस्पतीच्या जीनोममध्ये समाविष्ट केला गेला",
+            "वनस्पतीला जास्त वेळा पाणी दिले गेले"
+          ],
+          "solution": "जीवाणूचा जीन वनस्पतीच्या जीनोममध्ये समाविष्ट करणे वनस्पतीच्या आनुवंशिक बनावटला बदलते, जे जैवतंत्रिकीमार्फत कीटकांपासून संरक्षण प्रदान करू शकते. इतर विधानांमध्ये वातावरण, रासायनिक पदार्थ किंवा पाणी यासारख्या बाह्य कारकांचा समावेश आहे, जे आनुवंशिक बदलांचा समावेश करत नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses biotechnology with general agriculture",
+        "Thinks chemical treatment is biotechnology",
+        null,
+        "Believes plant care is a biotechnological process"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is option 2, as inserting a gene from a bacterium into a plant's genome is a direct application of biotechnology to confer pest resistance. The other options do not involve genetic modification and are therefore not biotechnological interventions.",
+      "sources": [
+        {
+          "document": "ncert/12/biology/lebo109.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 9: Biotechnology : Principles and Processes"
+          ]
+        },
+        {
+          "document": "ncert/12/biology/lebo109.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 9: Biotechnology : Principles and Processes"
+          ]
+        },
+        {
+          "document": "ncert/12/biology/lebo109.pdf",
+          "ordinal": 2,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 9: Biotechnology : Principles and Processes",
+            "9.1"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T16:33:19.220Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "Which of the following best explains why biotechnology is considered to have an anthropocentric approach?",
+      "choices": [
+        "It focuses on the needs of humans",
+        "It uses only natural resources",
+        "It is based on traditional methods",
+        "It is limited to medical applications"
+      ],
+      "answerIndex": 0,
+      "solution": "The correct option is right because biotechnology is primarily concerned with addressing human needs and improving human life. The other options are incorrect because they do not reflect the focus on human-centered goals, as biotechnology is not solely about natural resources, traditional methods, or medical uses.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा बायोटेक्नोलॉजी के एंथ्रोपोसेंट्रिक दृष्टिकोण के रूप में माने जाने के कारण के बेस्ट स्पष्टीकरण करता है?",
+          "choices": [
+            "इसका केंद्र इंसानों की आवश्यकताओं पर होता है",
+            "इसका उपयोग केवल प्राकृतिक संसाधनों के साथ किया जाता है",
+            "इसका आधार पारंपरिक विधियों पर होता है",
+            "इसका उपयोग केवल चिकित्सा अनुप्रयोगों तक सीमित होता है"
+          ],
+          "solution": "सही विकल्प यह है क्योंकि बायोटेक्नोलॉजी मुख्य रूप से मनुष्य की आवश्यकताओं के समाधान और मनुष्य के जीवन में सुधार पर ध्यान केंद्रित करती है। अन्य विकल्प गलत हैं क्योंकि वे मनुष्य-केंद्रित लक्ष्यों की ओर ध्यान नहीं देते, क्योंकि बायोटेक्नोलॉजी प्राकृतिक संसाधनों, पारंपरिक विधियों या चिकित्सा उपयोगों के सिर्फ एक ही हिस्से के बारे में नहीं है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते बायोटेक्नॉलॉजीला मानवकेंद्रित दृष्टिकोन मानले जाते याचे सर्वात चांगले स्पष्टीकरण देते?",
+          "choices": [
+            "ते मानवांच्या आवश्यकतांवर लक्ष केंद्रित करते",
+            "ते केवळ प्राकृतिक संसाधनांचा वापर करते",
+            "ते पारंपारिक पद्धतींवर आधारित आहे",
+            "ते औषधीय अनुप्रयोगांपर्यंत मर्यादित आहे"
+          ],
+          "solution": "सही विकल्प खरा आहे कारण बायोटेक्नॉलॉजी मुख्यतः मानवांच्या आवश्यकतांचे निराकरण करण्यावर आणि मानव जीवनात सुधारणा करण्यावर लक्ष केंद्रित करते. इतर विकल्प अयोग्य आहेत कारण ते मानव-केंद्रित उद्देशांचे प्रतिबिंबित करत नाहीत, कारण बायोटेक्नॉलॉजी प्राकृतिक संसाधनांवर, पारंपारिक पद्धतींवर किंवा औषधीय वापरावर फक्त अवलंबून नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for biotechnology concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Thinks biotechnology is about natural resources",
+        "Confuses traditional methods with biotechnology",
+        "Limits biotechnology to medicine"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 0, as biotechnology's anthropocentric nature is defined by its focus on human needs. The other options represent common misconceptions about biotechnology.",
+      "sources": [
+        {
+          "document": "ncert/12/biology/lebo109.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 9: Biotechnology : Principles and Processes"
+          ]
+        },
+        {
+          "document": "ncert/12/biology/lebo109.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 9: Biotechnology : Principles and Processes"
+          ]
+        },
+        {
+          "document": "ncert/12/biology/lebo109.pdf",
+          "ordinal": 2,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 9: Biotechnology : Principles and Processes",
+            "9.1"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T16:33:19.220Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "A company claims to use biotechnology to produce a new enzyme for industrial use. Which of the following is most likely to be a key step in their process?",
+      "choices": [
+        "Using a microscope to observe cells",
+        "Growing the enzyme in a bioreactor",
+        "Testing the enzyme on animals",
+        "Storing the enzyme in a refrigerator"
+      ],
+      "answerIndex": 1,
+      "solution": "The key step in producing an enzyme for industrial use would be growing it in a bioreactor, where large-scale production is possible. Observing cells, testing on animals, and storing in a refrigerator are not the main steps in the biotechnology process for this purpose.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक कंपनी दावा करती है कि वह बायोटेक्नोलॉजी का उपयोग औद्योगिक उपयोग के लिए एक नए एंजाइम के उत्पादन में करती है। निम्नलिखित में से कौन-सा उनकी प्रक्रिया में एक मुख्य चरण होने की संभावना है?",
+          "choices": [
+            "कोशिकाओं को देखने के लिए माइक्रोस्कोप का उपयोग करना",
+            "एक बायोरिएक्टर में एंजाइम को उगाना",
+            "एंजाइम को जानवरों पर परीक्षण करना",
+            "एंजाइम को फ्रिज में संग्रहित करना"
+          ],
+          "solution": "औद्योगिक उपयोग के लिए एंजाइम के उत्पादन में मुख्य चरण बायोरिएक्टर में एंजाइम को उगाना होगा, जहां बड़े पैमाने पर उत्पादन संभव है। कोशिकाओं को देखना, जानवरों पर परीक्षण करना और फ्रिज में संग्रहित करना इस उद्देश्य के लिए जीव प्रौद्योगिकी प्रक्रिया के मुख्य चरण नहीं हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate technical terms as used in Hindi science textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका कंपनीने औद्योगिक उपयोगासाठी नवीन एन्झाइम तयार करण्यासाठी जैवतंत्रिकीचा वापर केल्याचा दावा केला आहे. खालीलपैकी कोणता त्यांच्या प्रक्रियेत मुख्य टप्पा असण्याची शक्यता आहे?",
+          "choices": [
+            "सेल्स निरीक्षणासाठी मायक्रोस्कोप वापरणे",
+            "एका बायोरिएक्टरमध्ये एन्झाइम वाढवणे",
+            "एन्झाइम जानवनांवर चाचणी करणे",
+            "एन्झाइम रेफ्रिजरेटरमध्ये ठेवणे"
+          ],
+          "solution": "औद्योगिक उपयोगासाठी एन्झाइम तयार करण्याचा मुख्य टप्पा बायोरिएक्टरमध्ये एन्झाइम वाढवणे असेल, जेथे विशाल प्रमाणात उत्पादन करता येते. सेल्स निरीक्षण, जानवनांवर चाचणी आणि रेफ्रिजरेटरमध्ये ठेवणे हे या उद्देशासाठी जैवतंत्रिकी प्रक्रियेचे मुख्य टप्पे नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi technical terms used for biotechnology concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Thinks the main step is observing cells",
+        null,
+        "Believes testing on animals is the main step",
+        "Assumes storing the enzyme is the main step"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 1, as growing the enzyme in a bioreactor is a key step in industrial biotechnology. The other options are not central to the production process.",
+      "sources": [
+        {
+          "document": "ncert/12/biology/lebo109.pdf",
+          "ordinal": 12,
+          "pageStart": 13,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 9: Biotechnology : Principles and Processes",
+            "9.3",
+            "DNA T"
+          ]
+        },
+        {
+          "document": "ncert/12/biology/lebo109.pdf",
+          "ordinal": 13,
+          "pageStart": 14,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 9: Biotechnology : Principles and Processes",
+            "9.3",
+            "DNA T"
+          ]
+        },
+        {
+          "document": "ncert/12/biology/lebo109.pdf",
+          "ordinal": 14,
+          "pageStart": 15,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 9: Biotechnology : Principles and Processes",
+            "EXERCISES"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T16:33:19.220Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "A student is given a task to create a recombinant DNA molecule that can replicate in a bacterial host. They decide to use a plasmid without an origin of replication. What will happen to the recombinant DNA in the host?",
+      "choices": [
+        "It will replicate and multiply",
+        "It will be degraded by the host's enzymes",
+        "It will integrate into the bacterial chromosome",
+        "It will not replicate"
+      ],
+      "answerIndex": 3,
+      "solution": "The correct answer is 'It will not replicate' because for a DNA molecule to replicate in a bacterial host, it must contain an origin of replication, which allows the replication machinery to initiate copying. Without this, the DNA cannot be replicated by the host's enzymes. The other options are incorrect because degradation would require specific enzymes, integration into the chromosome is not guaranteed, and replication is not possible without the origin.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक छात्र को एक पुनर्योजी डीएनए अणु बनाने का कार्य दिया जाता है जो एक बैक्टीरियल होस्ट में प्रतिकृति बना सके। वे एक अप्रतिकृति के बिना प्लाज्मिड का उपयोग करने का निर्णय लेते हैं। होस्ट में पुनर्योजी डीएनए क्या होगा?",
+          "choices": [
+            "यह प्रतिकृति बनाएगा और बढ़ेगा",
+            "यह होस्ट के एंजाइम द्वारा अपघटित हो जाएगा",
+            "यह बैक्टीरियल क्रोमोसोम में एम्बेड हो जाएगा",
+            "यह प्रतिकृति नहीं करेगा"
+          ],
+          "solution": "सही उत्तर 'यह प्रतिकृति नहीं करेगा' है क्योंकि एक डीएनए अणु के लिए बैक्टीरियल होस्ट में प्रतिकृति बनाने के लिए एक अप्रतिकृति के आरंभ होना आवश्यक है, जो प्रतिकृति यंत्र के द्वारा प्रतिकृति शुरू करने की अनुमति देता है। इसके बिना डीएनए होस्ट के एंजाइम द्वारा प्रतिकृति नहीं कर सकता। अन्य विकल्प गलत हैं क्योंकि अपघटन के लिए विशिष्ट एंजाइम की आवश्यकता होती है, क्रोमोसोम में एम्बेड होना निश्चित नहीं है, और अप्रतिकृति के बिना प्रतिकृति संभव नहीं है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate technical terms as found in Hindi-medium biology textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका विद्यार्थ्याला एका पुनर्योजित DNA अणू तयार करण्याचे कार्य दिले जाते जे बॅक्टेरियल हॉस्टमध्ये प्रतिकृती करू शकेल. त्यांनी ओरिजिन ऑफ रिप्लिकेशन विना एका प्लाझ्मिडचा वापर करण्याचा निर्णय घेतला. हॉस्टमध्ये पुनर्योजित DNA काय होईल?",
+          "choices": [
+            "ते प्रतिकृती करेल आणि वाढेल",
+            "ते हॉस्टच्या एन्झाईम्सद्वारे विघटित होईल",
+            "ते बॅक्टेरियल क्रोमोझोममध्ये समाविष्ट होईल",
+            "ते प्रतिकृती करणार नाही"
+          ],
+          "solution": "बरोबर उत्तर 'ते प्रतिकृती करणार नाही' आहे कारण बॅक्टेरियल हॉस्टमध्ये DNA अणू प्रतिकृती करण्यासाठी त्याला ओरिजिन ऑफ रिप्लिकेशन असणे आवश्यक आहे, जे प्रतिकृती मशीनरीला प्रतिकृती सुरू करण्यास परवानगी देते. ओरिजिन विना, हॉस्टच्या एन्झाईम्सद्वारे DNA प्रतिकृती करू शकत नाही. इतर विकल्प अयोग्य आहेत कारण विघटनासाठी विशिष्ट एन्झाईम्स आवश्यक असतात, क्रोमोझोममध्ये समाविष्ट होणे खात्री देत नाही आणि ओरिजिन विना प्रतिकृती शक्य नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for biological concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Believes that DNA can replicate without an origin",
+        "Thinks the DNA will be degraded without evidence",
+        "Assumes integration into the chromosome is automatic",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 3, as the plasmid lacks an origin of replication, which is essential for DNA replication in a bacterial host. The reasoning provided by the author is sound and aligns with the biological principles of recombinant DNA technology.",
+      "sources": [
+        {
+          "document": "ncert/12/biology/lebo109.pdf",
+          "ordinal": 3,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 9: Biotechnology : Principles and Processes",
+            "9.1"
+          ]
+        },
+        {
+          "document": "ncert/12/biology/lebo109.pdf",
+          "ordinal": 4,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 9: Biotechnology : Principles and Processes",
+            "9.1",
+            "DNA T"
+          ]
+        },
+        {
+          "document": "ncert/12/biology/lebo109.pdf",
+          "ordinal": 5,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 9: Biotechnology : Principles and Processes",
+            "9.1",
+            "DNA T"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T16:33:19.220Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "If a piece of DNA is not integrated into the genome of a recipient organism, what is the most likely outcome?",
+      "choices": [
+        "It will multiply rapidly",
+        "It will be inherited by the next generation",
+        "It will not be able to replicate",
+        "It will cause a mutation"
+      ],
+      "answerIndex": 2,
+      "solution": "If a piece of DNA is not integrated into the genome, it lacks the necessary sequences to be recognized and replicated by the host's cellular machinery. This makes it unable to replicate, which is why the correct option is that it will not be able to replicate. The other options are incorrect because DNA that is not integrated typically does not multiply rapidly, is not inherited by the next generation, and does not directly cause mutations on its own.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि डीएनए का एक टुकड़ा ग्रहणकर्ता जीव के जीनोम में समाविष्ट नहीं होता है, तो सबसे संभावित परिणाम क्या होगा?",
+          "choices": [
+            "यह तेजी से बहुत संख्या में बढ़ जाएगा",
+            "यह अगली पीढ़ी द्वारा विरासत में मिलेगा",
+            "यह अपने आप की प्रतिकृति नहीं बना सकेगा",
+            "यह उत्परिवर्तन का कारण बनेगा"
+          ],
+          "solution": "यदि डीएनए का एक टुकड़ा जीनोम में समाविष्ट नहीं होता है, तो यह समावेशन के लिए आवश्यक अनुक्रमों के बिना रह जाता है, जिसके कारण यह मेजबान की कोशिकीय मशीनरी द्वारा पहचाने और प्रतिकृति बनाने में असमर्थ रहता है। इसलिए सही विकल्प यह है कि यह अपने आप की प्रतिकृति नहीं बना सकेगा। अन्य विकल्प गलत हैं क्योंकि समाविष्ट न होने वाला डीएनए आमतौर पर तेजी से बहुत संख्या में बढ़ नहीं सकता, अगली पीढ़ी द्वारा विरासत में नहीं मिलता है, और अपने आप उत्परिवर्तन का कारण नहीं बनता है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the scientific meaning, with appropriate Hindi terminology used for biological concepts.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर डीएनएचा एक भाग प्राप्तकर्ता सजीवाच्या जीनोममध्ये समाविष्ट नसेल, तर त्याचा सर्वात शक्य निकाल काय असेल?",
+          "choices": [
+            "तो वेगाने प्रतिकृती करेल",
+            "तो अगल्या पिढीला वारसा मिळेल",
+            "तो प्रतिकृती करू शकणार नाही",
+            "तो उत्परिवर्तन निर्माण करेल"
+          ],
+          "solution": "जर डीएनएचा एक भाग जीनोममध्ये समाविष्ट नसेल तर त्याला निर्दिष्ट असलेल्या अनुक्रमांची आवश्यकता असते जेणेकरून त्याला मूळ सजीवाच्या कोशिकांच्या मशीनरीद्वारे ओळखले जाऊ शकेल आणि प्रतिकृती करता येईल. हे त्याला प्रतिकृती करण्यास अशक्य करते, ज्यामुळे योग्य पर्याय असे आहे की तो प्रतिकृती करू शकणार नाही. इतर पर्याय खोटे आहेत कारण समाविष्ट नसलेला डीएनए सामान्यतः वेगाने प्रतिकृती करत नाही, अगल्या पिढीला वारसा मिळत नाही आणि तो स्वतः उत्परिवर्तन निर्माण करत नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi biological terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Believes DNA always replicates",
+        "Thinks DNA integration is unnecessary for inheritance",
+        null,
+        "Confuses DNA with other genetic material"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 2, as DNA not integrated into the genome cannot replicate. The author's reasoning aligns with biological principles, and the misconceptions listed for the distractors are plausible student errors.",
+      "sources": [
+        {
+          "document": "ncert/12/biology/lebo109.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 9: Biotechnology : Principles and Processes"
+          ]
+        },
+        {
+          "document": "ncert/12/biology/lebo109.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 9: Biotechnology : Principles and Processes"
+          ]
+        },
+        {
+          "document": "ncert/12/biology/lebo109.pdf",
+          "ordinal": 2,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 9: Biotechnology : Principles and Processes",
+            "9.1"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T16:33:19.220Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "In a biotechnology experiment, a student notices that the culture in the bioreactor is not producing the desired protein. What is the most likely cause of this issue?",
+      "choices": [
+        "The bioreactor is not large enough",
+        "The culture is not being stirred properly",
+        "The conditions for protein expression are not optimal",
+        "The DNA is not being copied correctly"
+      ],
+      "answerIndex": 2,
+      "solution": "The most likely cause is that the conditions for protein expression, such as temperature, pH, or oxygen levels, are not optimal. This would prevent the cells from producing the desired protein. The size of the bioreactor, stirring, and DNA copying are less likely to be the main issue in this scenario.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक जैव प्रौद्योगिकी प्रयोग में, एक छात्र को अनुभव होता है कि बायोरिएक्टर में संस्कृति अपेक्षित प्रोटीन उत्पादित नहीं कर रही है। इस समस्या के लिए सबसे संभावित कारण क्या है?",
+          "choices": [
+            "बायोरिएक्टर पर्याप्त बड़ा नहीं है",
+            "संस्कृति को अच्छी तरह से हिलाया जा रहा नहीं है",
+            "प्रोटीन अभिव्यक्ति के लिए परिस्थितियां अनुकूल नहीं हैं",
+            "डीएनए की सही तरह से प्रतिलिपि नहीं बन रही है"
+          ],
+          "solution": "सबसे संभावित कारण यह है कि प्रोटीन अभिव्यक्ति के लिए परिस्थितियां, जैसे तापमान, एच या ऑक्सीजन के स्तर, अनुकूल नहीं हैं। इससे सेल्स अपेक्षित प्रोटीन उत्पादित नहीं कर पाएंगे। बायोरिएक्टर के आकार, हिलाना और डीएनए की प्रतिलिपि इस परिदृश्य में मुख्य समस्या नहीं हो सकती है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains original meaning, and uses appropriate technical terms in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "बायोटेक्नॉलॉजी अभ्यासात, एका विद्यार्थ्याला लक्षात येते की बायोरिएक्टरमधील संस्कृती इच्छित प्रोटीन तयार करत नाही. ह्या समस्येचे सर्वात शक्य कारण काय असू शकते?",
+          "choices": [
+            "बायोरिएक्टर पुरेसे मोठा नाही",
+            "संस्कृती योग्यरित्या हालवली जात नाही",
+            "प्रोटीन व्यक्तीकरणाची अवस्था अनुकूल नाही",
+            "डीएनए योग्यरित्या प्रतिकृत केला जात नाही"
+          ],
+          "solution": "सर्वात शक्य कारण असे आहे की प्रोटीन व्यक्तीकरणाच्या अवस्था, जसे की तापमान, पीएच किंवा ऑक्सिजनचे पातळी, अनुकूल नाहीत. हे सेल्सला इच्छित प्रोटीन तयार करण्यास अडथळा निर्माण करेल. बायोरिएक्टरचा आकार, हालवणे आणि डीएनएची प्रतिकृती ह्या परिस्थितीत मुख्य समस्या असण्याची शक्यता कमी आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Student believes size alone determines protein production, ignoring environmental and operational factors",
+        "Students may think that stirring is the main factor in protein production, not realizing it's more about environmental conditions.",
+        null,
+        "Believes that DNA replication errors directly prevent protein expression, ignoring the role of expression conditions and transcription/translation"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 2, as suboptimal conditions for protein expression (e.g., temperature, pH, oxygen) are a common and likely cause of poor protein production. The other options represent plausible but less likely or incorrect explanations.",
+      "sources": [
+        {
+          "document": "ncert/12/biology/lebo109.pdf",
+          "ordinal": 12,
+          "pageStart": 13,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 9: Biotechnology : Principles and Processes",
+            "9.3",
+            "DNA T"
+          ]
+        },
+        {
+          "document": "ncert/12/biology/lebo109.pdf",
+          "ordinal": 13,
+          "pageStart": 14,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 9: Biotechnology : Principles and Processes",
+            "9.3",
+            "DNA T"
+          ]
+        },
+        {
+          "document": "ncert/12/biology/lebo109.pdf",
+          "ordinal": 14,
+          "pageStart": 15,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 9: Biotechnology : Principles and Processes",
+            "EXERCISES"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T16:33:19.220Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
     }
   ]
 }

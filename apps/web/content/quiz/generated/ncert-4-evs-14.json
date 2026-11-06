@@ -258,6 +258,474 @@
       "generatedAt": "2026-10-28T04:32:14.592Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Why do Basva and his family have to remove weeds from the field?",
+      "choices": [
+        "To make the field look clean",
+        "To prevent the weeds from taking water and fertilizers",
+        "To grow more crops in the same field",
+        "To make the onions grow faster"
+      ],
+      "answerIndex": 1,
+      "solution": "Weeds compete with onion plants for water and fertilizers, which can hinder their growth. Removing weeds ensures the onions have access to these essential resources. The other options do not accurately explain the reason for weed removal.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "बस्वा और उनके परिवार को खेत से चारा क्यों हटाना पड़ता है?",
+          "choices": [
+            "खेत को साफ दिखाने के लिए",
+            "चारा के पानी और उर्वरक लेने से रोकने के लिए",
+            "उसी खेत में अधिक फसल उगाने के लिए",
+            "प्याज के तेजी से बढ़ने के लिए"
+          ],
+          "solution": "चारा प्याज के पौधों के पानी और उर्वरक के लिए प्रतिस्पर्धा करता है, जो उनके विकास को रोक सकता है। चारा हटाने से प्याज को इन महत्वपूर्ण संसाधनों तक पहुंच होती है। अन्य विकल्प पालन के कारण के रूप में सही रूप से व्याख्या नहीं करते हैं।",
+          "imageAlt": null,
+          "critique": "Translation accurately conveys the original meaning with appropriate Hindi agricultural terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "बस्वा आणि त्याच्या कुटुंबाला शेतातून शेंगाचे लिंबू का काढावे लागतात?",
+          "choices": [
+            "शेताला स्वच्छ दिसायला",
+            "शेंगाचे लिंबू पाणी आणि खते घेऊ देण्यासाठी रोखण्यासाठी",
+            "त्याच शेतात अधिक शेंगाचे लिंबू लावण्यासाठी",
+            "शेंगाचे लिंबू जलद वाढविण्यासाठी"
+          ],
+          "solution": "शेंगाचे लिंबू आणि शेंगाचे लिंबू पाणी आणि खतांच्या वाटाघाटीत लढतात, जे त्यांच्या वाढीला अडथळा आहे. शेंगाचे लिंबू काढल्याने शेंगाचे लिंबू या महत्वाच्या संसाधनांपर्यंत पोहोचू शकतात. इतर विकल्प शेंगाचे लिंबू काढण्याच्या कारणाचे अचूक स्पष्टीकरण नाहीत.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate local terminology (e.g., 'शेंगाचे लिंबू' for 'onion plants').",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Believes weeds are removed for aesthetic reasons.",
+        null,
+        "Thinks removing weeds helps in growing more crops in the same area.",
+        "Believes weeds help onions grow faster."
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 1, as weeds compete with crops for water and fertilizers. The other options reflect common misconceptions about weed removal.",
+      "sources": [
+        {
+          "document": "ncert/4/environmental-studies/deap114.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 14: Basva's Farm"
+          ]
+        },
+        {
+          "document": "ncert/4/environmental-studies/deap114.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 14: Basva's Farm",
+            "Sowing the Seeds"
+          ]
+        },
+        {
+          "document": "ncert/4/environmental-studies/deap114.pdf",
+          "ordinal": 2,
+          "pageStart": 2,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 14: Basva's Farm",
+            "The Sprouts Appear"
+          ]
+        },
+        {
+          "document": "ncert/4/environmental-studies/deap114.pdf",
+          "ordinal": 3,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 14: Basva's Farm",
+            "Growing Plants"
+          ]
+        },
+        {
+          "document": "ncert/4/environmental-studies/deap114.pdf",
+          "ordinal": 4,
+          "pageStart": 4,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 14: Basva's Farm",
+            "The Onion Crop"
+          ]
+        }
+      ],
+      "edition": "2024 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-22T23:22:13.919Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the main reason for removing weeds from the field?",
+      "choices": [
+        "To make the field look clean",
+        "To prevent them from taking water and fertilisers",
+        "To use them for making compost",
+        "To grow more crops in the same field"
+      ],
+      "answerIndex": 1,
+      "solution": "Weeds compete with crops for water and fertilizers, which can negatively affect crop growth. The correct option highlights this competition, which is a fundamental principle of plant biology. The other options, such as making the field look clean or using weeds for compost, are not primary concerns in agricultural practices.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "खेत से चारा निकालने का मुख्य कारण क्या है?",
+          "choices": [
+            "खेत को साफ दिखाने के लिए",
+            "उन्हें पानी और उर्वरक लेने से रोकने के लिए",
+            "कम्पोस्ट बनाने के लिए उनका उपयोग करने के लिए",
+            "एक ही खेत में अधिक फसल उगाने के लिए"
+          ],
+          "solution": "चारा फसलों के पानी और उर्वरक लेने के लिए प्रतिस्पर्धा करते हैं, जो फसल के विकास पर नकारात्मक प्रभाव डाल सकता है। सही विकल्प इस प्रतिस्पर्धा को दर्शाता है, जो पौधों के जीवविज्ञान के आधारभूत सिद्धांत है। अन्य विकल्प, जैसे खेत को साफ दिखाना या चारा कम्पोस्ट बनाने के लिए उपयोग करना, कृषि प्रथाओं में मुख्य चिंता नहीं हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate agricultural terminology in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "मुख्य कारण काय आहे ज्यामुळे शेतातून गळती दूर कराव्यात?",
+          "choices": [
+            "शेताला स्वच्छ दिसायला",
+            "त्यांना पाणी आणि खते घेण्यापासून रोखणे",
+            "त्यांचा गोबर तयार करण्यासाठी वापरणे",
+            "त्याच शेतात जास्त शेंग लावणे"
+          ],
+          "solution": "गळती शेंगांसाठी पाणी आणि खतांच्या वाटपासाठी स्पर्धा करतात, जी शेंगांच्या वाढीवर नकारात्मक परिणाम करू शकते. योग्य पर्याय ही स्पर्धा दर्शवतो, जी वनस्पती जीवशास्त्राच्या मूलभूत तत्त्वांमध्ये आहे. इतर पर्याय, जसे की शेताला स्वच्छ दिसायला किंवा गळती गोबर तयार करण्यासाठी वापरणे, शेती कार्यक्रमांमध्ये प्राथमिक चिंता नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi agricultural terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Believes the main reason for removing weeds is aesthetic",
+        null,
+        "Believes the main reason for removing weeds is for compost",
+        "Believes the main reason for removing weeds is for increasing crop yield in the same area"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 1, as weeds compete with crops for water and nutrients. The other options represent common misconceptions about the purpose of weed removal.",
+      "sources": [
+        {
+          "document": "ncert/4/environmental-studies/deap114.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 14: Basva's Farm"
+          ]
+        },
+        {
+          "document": "ncert/4/environmental-studies/deap114.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 14: Basva's Farm",
+            "Sowing the Seeds"
+          ]
+        },
+        {
+          "document": "ncert/4/environmental-studies/deap114.pdf",
+          "ordinal": 2,
+          "pageStart": 2,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 14: Basva's Farm",
+            "The Sprouts Appear"
+          ]
+        },
+        {
+          "document": "ncert/4/environmental-studies/deap114.pdf",
+          "ordinal": 3,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 14: Basva's Farm",
+            "Growing Plants"
+          ]
+        },
+        {
+          "document": "ncert/4/environmental-studies/deap114.pdf",
+          "ordinal": 4,
+          "pageStart": 4,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 14: Basva's Farm",
+            "The Onion Crop"
+          ]
+        }
+      ],
+      "edition": "2024 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-22T23:22:13.919Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If there were no proper roads, how would Basva's father transport the onions to the market?",
+      "choices": [
+        "By bullocks",
+        "By bicycle",
+        "By boat",
+        "By train"
+      ],
+      "answerIndex": 0,
+      "solution": "The correct option is By bullocks because bullocks are commonly used for transportation in areas without proper roads. A bicycle would not be suitable for carrying large quantities of onions, a boat would only work near water bodies, and a train requires a railway track, which is not mentioned as available.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "अगर उचित सड़क न होती, तो बस्सा के पिता बाजार में प्याज कैसे पहुंचाते?",
+          "choices": [
+            "गायों से",
+            "साइकिल से",
+            "नाव से",
+            "ट्रेन से"
+          ],
+          "solution": "सही विकल्प गायों से है क्योंकि अच्छी सड़क न होने पर गायों का उपयोग आमतौर पर परिवहन के लिए किया जाता है। साइकिल बड़ी मात्रा में प्याज ले जाने के लिए उपयुक्त नहीं होती, नाव केवल पानी के किनारे वाले क्षेत्रों में काम करती है, और ट्रेन के लिए रेलवे ट्रैक की आवश्यकता होती है, जिसके बारे में कोई उल्लेख नहीं किया गया है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate regional terms like 'गायों' (bullocks) instead of transliterated 'oxen'.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "अगर अच्छी सड़कें नहीं होतीं, तो बस्सा के पिता बाजार में प्याज कैसे ले जाएगा?",
+          "choices": [
+            "गायों से",
+            "साइकिल से",
+            "नाव से",
+            "ट्रेन से"
+          ],
+          "solution": "सही विकल्प गायों से है क्योंकि अच्छी सड़कों के बिना क्षेत्रों में गायों का उपयोग आमतौर पर परिवहन के लिए किया जाता है. साइकिल बड़ी मात्रा में प्याज ले जाने के लिए उपयुक्त नहीं होगी, नाव केवल पानी के किनारे वाले क्षेत्रों में काम करेगी, और ट्रेन के लिए रेलवे ट्रैक की आवश्यकता होती है, जिसके बारे में कहा नहीं गया है कि उपलब्ध है.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terms used for transportation methods.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Thinks a bicycle is a suitable alternative for transporting heavy loads.",
+        "Believes a boat is commonly used for transporting crops.",
+        "Thinks a train is a likely method of transport in a village."
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 0 (By bullocks). The reasoning is sound, as bullocks are a common alternative to trucks in the absence of roads. The other options are not supported by the passage and represent plausible misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/4/environmental-studies/deap114.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 14: Basva's Farm"
+          ]
+        },
+        {
+          "document": "ncert/4/environmental-studies/deap114.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 14: Basva's Farm",
+            "Sowing the Seeds"
+          ]
+        },
+        {
+          "document": "ncert/4/environmental-studies/deap114.pdf",
+          "ordinal": 2,
+          "pageStart": 2,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 14: Basva's Farm",
+            "The Sprouts Appear"
+          ]
+        },
+        {
+          "document": "ncert/4/environmental-studies/deap114.pdf",
+          "ordinal": 3,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 14: Basva's Farm",
+            "Growing Plants"
+          ]
+        },
+        {
+          "document": "ncert/4/environmental-studies/deap114.pdf",
+          "ordinal": 4,
+          "pageStart": 4,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 14: Basva's Farm",
+            "The Onion Crop"
+          ]
+        }
+      ],
+      "edition": "2024 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-22T23:22:13.919Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "What is the main reason Basva helps his father in the field only after school hours and on holidays?",
+      "choices": [
+        "Because he has to study",
+        "Because the work is too hard for him",
+        "Because he is not allowed to work during school time",
+        "Because the work requires more people"
+      ],
+      "answerIndex": 2,
+      "solution": "The correct answer is because he is not allowed to work during school time. This is supported by the fact that he only helps after school and on holidays, indicating that school commitments prevent him from working during those hours. The other options are not directly supported by the information provided.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "बस्वा स्कूल के बाद के समय और छुट्टियों पर अपने पिता की खेत में मदद करता है क्योंकि इसका मुख्य कारण क्या है?",
+          "choices": [
+            "क्योंकि उसे पढ़ाई करनी पड़ती है",
+            "क्योंकि काम उसके लिए बहुत कठिन है",
+            "क्योंकि वह स्कूल के समय में काम करने की अनुमति नहीं दिया जाता है",
+            "क्योंकि काम में अधिक लोगों की आवश्यकता होती है"
+          ],
+          "solution": "सही उत्तर क्योंकि वह स्कूल के समय में काम करने की अनुमति नहीं दिया जाता है। इसका समर्थन यह है कि वह केवल स्कूल के बाद और छुट्टियों पर मदद करता है, जो इंगित करता है कि स्कूल के कार्य उसे उस समय काम नहीं करने देते हैं। अन्य विकल्प दी गई जानकारी द्वारा सीधे समर्थित नहीं हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. All options are correctly translated and maintain their original logical relationships. The key is correctly positioned in the same location. Technical terms like 'school time' are translated using standard Hindi expressions.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "बस्वा स्कूलच्या वेळेत आणि छुट्टीवर नंतर शेतात आपल्या वडिलांना मदत करतो, त्याचे मुख्य कारण काय आहे?",
+          "choices": [
+            "कारण तो शिकायला लागतो",
+            "कारण काम त्यासाठी खूप कठीण आहे",
+            "कारण त्याला स्कूलच्या वेळेत काम करण्यास मनाई आहे",
+            "कारण कामासाठी जास्त लोकांची गरज आहे"
+          ],
+          "solution": "योग्य उत्तर हे असे आहे की त्याला स्कूलच्या वेळेत काम करण्यास मनाई आहे. हे स्पष्टीकरण असे आहे की तो स्कूलनंतर आणि छुट्टीवर मदत करतो, ज्यामुळे त्याच्या स्कूलच्या वेळेत काम करता येत नाही. इतर विकल्प दिलेल्या माहितीने समर्थित नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Believes the reason is related to studying rather than time constraints.",
+        "Thinks the work is too difficult for him to do during school hours.",
+        null,
+        "Thinks the work requires more people, not that he has time constraints."
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 2, as the passage implies Basva cannot work during school hours. The other options are not supported by the text and represent common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/4/environmental-studies/deap114.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 14: Basva's Farm"
+          ]
+        },
+        {
+          "document": "ncert/4/environmental-studies/deap114.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 14: Basva's Farm",
+            "Sowing the Seeds"
+          ]
+        },
+        {
+          "document": "ncert/4/environmental-studies/deap114.pdf",
+          "ordinal": 2,
+          "pageStart": 2,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 14: Basva's Farm",
+            "The Sprouts Appear"
+          ]
+        },
+        {
+          "document": "ncert/4/environmental-studies/deap114.pdf",
+          "ordinal": 3,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 14: Basva's Farm",
+            "Growing Plants"
+          ]
+        },
+        {
+          "document": "ncert/4/environmental-studies/deap114.pdf",
+          "ordinal": 4,
+          "pageStart": 4,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 14: Basva's Farm",
+            "The Onion Crop"
+          ]
+        }
+      ],
+      "edition": "2024 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-22T23:22:13.919Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
     }
   ]
 }

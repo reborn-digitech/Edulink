@@ -1240,6 +1240,2890 @@
       "generatedAt": "2026-10-30T09:23:15.192Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the main reason for the decrease in the ozone layer?",
+      "choices": [
+        "Natural changes in the atmosphere",
+        "Release of chlorofluorocarbons (CFCs)",
+        "Increased solar radiation",
+        "Deforestation"
+      ],
+      "answerIndex": 1,
+      "solution": "The main reason for the decrease in the ozone layer is the release of chlorofluorocarbons (CFCs), which break down ozone molecules in the stratosphere. Natural changes in the atmosphere and increased solar radiation do not significantly impact ozone levels on a global scale. Deforestation affects the environment but does not directly influence the ozone layer.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "ओज़ोन परत में कमी का मुख्य कारण क्या है?",
+          "choices": [
+            "वातावरण में प्राकृतिक परिवर्तन",
+            "क्लोरोफ्लूरोकार्बन (CFCs) के उत्सर्जन",
+            "बढ़ी हुई सौर विकिरण",
+            "वनों की कटाई"
+          ],
+          "solution": "ओज़ोन परत में कमी का मुख्य कारण क्लोरोफ्लूरोकार्बन (CFCs) के उत्सर्जन है, जो स्ट्रैटोस्फीयर में ओज़ोन अणुओं को तोड़ देते हैं। वातावरण में प्राकृतिक परिवर्तन और बढ़ी हुई सौर विकिरण ओज़ोन स्तर पर वैश्विक स्तर पर महत्वपूर्ण प्रभाव नहीं डालते। वनों की कटाई पर्यावरण को प्रभावित करती है लेकिन ओज़ोन परत को सीधे प्रभावित नहीं करती।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English content, with appropriate scientific terminology used in a way that aligns with Indian curriculum standards.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "ओझोन पर्पटीत घट होण्याचे मुख्य कारण काय आहे?",
+          "choices": [
+            "हवामानातील प्राकृतिक बदल",
+            "क्लोरोफ्लुओरोकार्बन (CFCs) चा निर्मोचन",
+            "वाढलेला सूर्यप्रकाश",
+            "वनतोड"
+          ],
+          "solution": "ओझोन पर्पटीत घट होण्याचे मुख्य कारण क्लोरोफ्लुओरोकार्बन (CFCs) चा निर्मोचन आहे, जे स्ट्रॅटोस्फिअरमधील ओझोन अणू तोडतात. हवामानातील प्राकृतिक बदल आणि वाढलेला सूर्यप्रकाश जागतिक पातळीवर ओझोन पातळीवर महत्त्वपूर्ण प्रभाव टाकत नाहीत. वनतोड वातावरणावर प्रभाव टाकतो परंतु ओझोन पर्पटीवर थेट प्रभाव टाकत नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms. The correct answer remains option (2) and the distractors are still incorrect.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Believes natural processes are the main cause",
+        null,
+        "Does not know the specific chemicals responsible for ozone depletion",
+        "Misunderstands the cause of ozone layer depletion"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 1, as CFCs are well-established as the primary cause of ozone layer depletion. The other options represent common misconceptions or incorrect explanations.",
+      "sources": [
+        {
+          "document": "ncert/10/science/jesc113.pdf",
+          "ordinal": 4,
+          "pageStart": 3,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 13: Our Environment",
+            "13.1 ECO13.1 ECO-SYSTEM — WHA13.1 ECO-SYSTEM — WHA-SYSTEM — WHAT ARE ITS COMPONENTS?-SYSTEM — WHAT ARE ITS COMPONENTS?",
+            "13.1.1 Food Chains and Webs"
+          ]
+        },
+        {
+          "document": "ncert/10/science/jesc113.pdf",
+          "ordinal": 5,
+          "pageStart": 5,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 13: Our Environment",
+            "13.1 ECO13.1 ECO-SYSTEM — WHA13.1 ECO-SYSTEM — WHA-SYSTEM — WHAT ARE ITS COMPONENTS?-SYSTEM — WHAT ARE ITS COMPONENTS?",
+            "13.1.1 Food Chains and Webs",
+            "1 3 . 2 HOW DO OUR ACTIVITIES AFFECT THE"
+          ]
+        },
+        {
+          "document": "ncert/10/science/jesc113.pdf",
+          "ordinal": 6,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 13: Our Environment",
+            "13.1 ECO13.1 ECO-SYSTEM — WHA13.1 ECO-SYSTEM — WHA-SYSTEM — WHAT ARE ITS COMPONENTS?-SYSTEM — WHAT ARE ITS COMPONENTS?",
+            "13.2.1 Ozone Layer and How it is Getting Depleted"
+          ]
+        },
+        {
+          "document": "ncert/10/science/jesc113.pdf",
+          "ordinal": 7,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 13: Our Environment",
+            "13.1 ECO13.1 ECO-SYSTEM — WHA13.1 ECO-SYSTEM — WHA-SYSTEM — WHAT ARE ITS COMPONENTS?-SYSTEM — WHAT ARE ITS COMPONENTS?",
+            "13.2.2 Managing the Garbage we Produce"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-28T02:12:34.256Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the role of decomposers in an ecosystem?",
+      "choices": [
+        "They produce their own food",
+        "They break down dead organisms and waste materials",
+        "They are the main source of energy in the ecosystem",
+        "They are the top consumers in the food chain"
+      ],
+      "answerIndex": 1,
+      "solution": "Decomposers break down dead organisms and waste materials, which helps recycle nutrients within the ecosystem. Producers, not decomposers, make their own food through photosynthesis. Energy in an ecosystem primarily comes from producers, not decomposers. Decomposers are not top consumers, as they feed on dead matter rather than other organisms.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक पारिस्थितिक तंत्र में अपघटकों की भूमिका क्या है?",
+          "choices": [
+            "वे अपना खाना बनाते हैं",
+            "वे मृत जीवों और अपशिष्ट सामग्री को तोड़ देते हैं",
+            "वे पारिस्थितिक तंत्र में ऊर्जा का मुख्य स्रोत हैं",
+            "वे खाद्य श्रृंखला में शीर्ष उपभोक्ता हैं"
+          ],
+          "solution": "अपघटक मृत जीवों और अपशिष्ट सामग्री को तोड़ देते हैं, जो पारिस्थितिक तंत्र में पोषक तत्वों के चक्रण में सहायता करता है। उत्पादक, अपघटकों के बजाय, प्रकाश संश्लेषण के माध्यम से अपना खाना बनाते हैं। पारिस्थितिक तंत्र में ऊर्जा मुख्य रूप से उत्पादकों से आती है, अपघटकों से नहीं। अपघटक शीर्ष उपभोक्ता नहीं होते, क्योंकि वे अन्य जीवों के बजाय मृत पदार्थों पर खाते हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate terminology consistent with Indian curriculum.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एकोसिस्टममध्ये परिपोषकांची भूमिका काय आहे?",
+          "choices": [
+            "ते स्वतः आपले खाद्य तयार करतात",
+            "ते मृत जीव आणि अपशिष्ट पदार्थ तोडतात",
+            "ते एकोसिस्टममध्ये ऊर्जेचे मुख्य स्रोत आहेत",
+            "ते खाद्य पाकात शीर्ष व्यापारी आहेत"
+          ],
+          "solution": "परिपोषक मृत जीव आणि अपशिष्ट पदार्थ तोडतात, जे एकोसिस्टममध्ये पोषक तत्वांच्या पुनर्चक्रणास मदत करते. परिपोषकांऐवजी उत्पादक फोटोसिंथेसिसमार्फत स्वतः आपले खाद्य तयार करतात. एकोसिस्टममध्ये ऊर्जा मुख्यतः उत्पादकांपासून येते, परिपोषकांपासून नव्हे. परिपोषक शीर्ष व्यापारी नसतात, कारण ते इतर जीवांऐवजी मृत पदार्थ खातात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for ecological concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses decomposers with producers",
+        null,
+        "Does not understand the function of decomposers",
+        "Believes decomposers are the top of the food chain"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 1, as decomposers are responsible for breaking down dead organisms and waste materials. The other options describe roles of producers (option 0 and 2) and top consumers (option 3), which aligns with the author's reasoning.",
+      "sources": [
+        {
+          "document": "ncert/10/science/jesc113.pdf",
+          "ordinal": 4,
+          "pageStart": 3,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 13: Our Environment",
+            "13.1 ECO13.1 ECO-SYSTEM — WHA13.1 ECO-SYSTEM — WHA-SYSTEM — WHAT ARE ITS COMPONENTS?-SYSTEM — WHAT ARE ITS COMPONENTS?",
+            "13.1.1 Food Chains and Webs"
+          ]
+        },
+        {
+          "document": "ncert/10/science/jesc113.pdf",
+          "ordinal": 5,
+          "pageStart": 5,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 13: Our Environment",
+            "13.1 ECO13.1 ECO-SYSTEM — WHA13.1 ECO-SYSTEM — WHA-SYSTEM — WHAT ARE ITS COMPONENTS?-SYSTEM — WHAT ARE ITS COMPONENTS?",
+            "13.1.1 Food Chains and Webs",
+            "1 3 . 2 HOW DO OUR ACTIVITIES AFFECT THE"
+          ]
+        },
+        {
+          "document": "ncert/10/science/jesc113.pdf",
+          "ordinal": 6,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 13: Our Environment",
+            "13.1 ECO13.1 ECO-SYSTEM — WHA13.1 ECO-SYSTEM — WHA-SYSTEM — WHAT ARE ITS COMPONENTS?-SYSTEM — WHAT ARE ITS COMPONENTS?",
+            "13.2.1 Ozone Layer and How it is Getting Depleted"
+          ]
+        },
+        {
+          "document": "ncert/10/science/jesc113.pdf",
+          "ordinal": 7,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 13: Our Environment",
+            "13.1 ECO13.1 ECO-SYSTEM — WHA13.1 ECO-SYSTEM — WHA-SYSTEM — WHAT ARE ITS COMPONENTS?-SYSTEM — WHAT ARE ITS COMPONENTS?",
+            "13.2.2 Managing the Garbage we Produce"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-28T02:12:34.256Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the process called when harmful chemicals accumulate at each trophic level of a food chain?",
+      "choices": [
+        "Biological concentration",
+        "Biological accumulation",
+        "Biological magnification",
+        "Biological intensification"
+      ],
+      "answerIndex": 2,
+      "solution": "The correct term is biological magnification, which describes how harmful chemicals become more concentrated at each higher trophic level in a food chain. This occurs because these chemicals are not easily broken down and accumulate as they are passed from one organism to another. Biological concentration and accumulation refer to the presence of chemicals in an organism but not their increasing concentration across the food chain. Biological intensification is not a recognized scientific term for this process.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "खाद्य श्रृंखला के प्रत्येक पोषी स्तर पर हानिकारक रसायनों के संचय की प्रक्रिया क्या कहलाती है?",
+          "choices": [
+            "जैविक सांद्रण",
+            "जैविक संचय",
+            "जैविक आवर्धन",
+            "जैविक तीव्रता"
+          ],
+          "solution": "सही शब्द जैविक आवर्धन है, जो यह वर्णित करता है कि हानिकारक रसायन खाद्य श्रृंखला में एक उच्च पोषी स्तर पर अधिक सांद्रित हो जाते हैं। इसका कारण यह है कि ये रसायन आसानी से नहीं टूटते हैं और जब वे एक जीव से दूसरे जीव में पारित होते हैं तो इनका संचय होता है। जैविक सांद्रण और संचय केवल रसायनों की उपस्थिति को संदर्भित करते हैं लेकिन खाद्य श्रृंखला में इनके बढ़ते सांद्रण को नहीं। जैविक तीव्रता इस प्रक्रिया के लिए कोई मान्य वैज्ञानिक शब्द नहीं है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the scientific terminology used in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खाद्य प्रवृत्तीतील प्रत्येक पोषक स्तरावर अनुकूल रासायनिक पदार्थ जमा होण्याच्या प्रक्रियेला काय म्हणतात?",
+          "choices": [
+            "जैविक संकेंद्रण",
+            "जैविक संचय",
+            "जैविक विस्तार",
+            "जैविक तीव्रता"
+          ],
+          "solution": "योग्य शब्द जैविक विस्तार आहे, जे खाद्य प्रवृत्तीतील प्रत्येक उच्च पोषक स्तरावर अनुकूल रासायनिक पदार्थांचे संकेंद्रण वाढत जाण्याचे वर्णन करते. हे घडते कारण या रासायनिक पदार्थांचे विघटन सोपे नसते आणि ते एका जीवातून दुसऱ्या जीवात पसरताना जमा होतात. जैविक संकेंद्रण आणि संचय हे रासायनिक पदार्थांच्या एका जीवात असण्याच्या स्थितीला संदर्भित करतात परंतु खाद्य प्रवृत्तीतील संकेंद्रणाच्या वाढीला नाही. जैविक तीव्रता हा या प्रक्रियेसाठी स्वीकृत वैज्ञानिक शब्द नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the scientific terminology appropriate for a Marathi-medium curriculum.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Uses incorrect terminology",
+        "Refers to a similar but incorrect term",
+        null,
+        "Confuses the term with another related process"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 'Biological magnification,' which is the standard ecological term for the accumulation of harmful chemicals at higher trophic levels. The other options are either incorrect or not standard terms used in this context.",
+      "sources": [
+        {
+          "document": "ncert/10/science/jesc113.pdf",
+          "ordinal": 4,
+          "pageStart": 3,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 13: Our Environment",
+            "13.1 ECO13.1 ECO-SYSTEM — WHA13.1 ECO-SYSTEM — WHA-SYSTEM — WHAT ARE ITS COMPONENTS?-SYSTEM — WHAT ARE ITS COMPONENTS?",
+            "13.1.1 Food Chains and Webs"
+          ]
+        },
+        {
+          "document": "ncert/10/science/jesc113.pdf",
+          "ordinal": 5,
+          "pageStart": 5,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 13: Our Environment",
+            "13.1 ECO13.1 ECO-SYSTEM — WHA13.1 ECO-SYSTEM — WHA-SYSTEM — WHAT ARE ITS COMPONENTS?-SYSTEM — WHAT ARE ITS COMPONENTS?",
+            "13.1.1 Food Chains and Webs",
+            "1 3 . 2 HOW DO OUR ACTIVITIES AFFECT THE"
+          ]
+        },
+        {
+          "document": "ncert/10/science/jesc113.pdf",
+          "ordinal": 6,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 13: Our Environment",
+            "13.1 ECO13.1 ECO-SYSTEM — WHA13.1 ECO-SYSTEM — WHA-SYSTEM — WHAT ARE ITS COMPONENTS?-SYSTEM — WHAT ARE ITS COMPONENTS?",
+            "13.2.1 Ozone Layer and How it is Getting Depleted"
+          ]
+        },
+        {
+          "document": "ncert/10/science/jesc113.pdf",
+          "ordinal": 7,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 13: Our Environment",
+            "13.1 ECO13.1 ECO-SYSTEM — WHA13.1 ECO-SYSTEM — WHA-SYSTEM — WHAT ARE ITS COMPONENTS?-SYSTEM — WHAT ARE ITS COMPONENTS?",
+            "13.2.2 Managing the Garbage we Produce"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-28T02:12:34.256Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "What would happen if decomposers were not present in an ecosystem?",
+      "choices": [
+        "The ecosystem would become more balanced",
+        "The dead matter would accumulate and not be reused",
+        "The producers would increase in number",
+        "The consumers would not need to eat"
+      ],
+      "answerIndex": 1,
+      "solution": "Decomposers play a key role in breaking down dead organic material and recycling nutrients back into the ecosystem. Without them, dead matter would not be broken down and would accumulate instead of being reused. This would disrupt the nutrient cycle and negatively affect the ecosystem's health.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि पर्यावरण में अपघटक नहीं होते तो क्या होता?",
+          "choices": [
+            "पर्यावरण अधिक संतुलित हो जाता",
+            "मृत पदार्थ जमा हो जाते और पुनः उपयोग नहीं किया जाता",
+            "उत्पादकों की संख्या बढ़ जाती",
+            "उपभोक्ता खाने की आवश्यकता नहीं होती"
+          ],
+          "solution": "अपघटक पर्यावरण में मृत जैविक सामग्री के टूटने और पोषक तत्वों के पुनर्चक्रण में मुख्य भूमिका निभाते हैं। उनके बिना, मृत पदार्थ टूट नहीं पाते और पुनः उपयोग के बजाय जमा हो जाते हैं। इससे पोषक तत्व चक्र में बाधा उत्पन्न होती है और पर्यावरण के स्वास्थ्य पर नकारात्मक प्रभाव पड़ता है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains original meaning, and uses appropriate Hindi scientific terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर एकोसिस्टममध्ये अपघटक नसतील तर काय होईल?",
+          "choices": [
+            "एकोसिस्टम अधिक संतुलित होईल",
+            "मृत पदार्थ जमा होईल आणि पुनर्वापर केला जाणार नाही",
+            "उत्पादकांची संख्या वाढेल",
+            "उपभोक्तांना खाण्याची आवश्यकता नसेल"
+          ],
+          "solution": "अपघटकांची भूमिका जीवनाच्या अवशेषांचे विघटन करणे आणि पुनर्जीवन निर्माण करणे आहे. त्यांच्या अनुपस्थितीत, मृत पदार्थ विघटित होणार नाहीत आणि पुनर्वापर केला जाणार नाहीत. हे पोषक तत्वांच्या चक्राला बिघडवील आणि पर्यावरणाच्या आरोग्याला नकारात्मक परिणाम होईल.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for ecological concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Misunderstands the role of decomposers",
+        null,
+        "Incorrectly assumes decomposers are harmful",
+        "Confuses the role of producers and consumers."
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 1, as decomposers are essential for breaking down dead matter and recycling nutrients. The other options reflect common misconceptions about the roles of decomposers, producers, and consumers.",
+      "sources": [
+        {
+          "document": "ncert/10/science/jesc113.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 1,
+          "headingPath": [
+            "Chapter 13: Our Environment"
+          ]
+        },
+        {
+          "document": "ncert/10/science/jesc113.pdf",
+          "ordinal": 1,
+          "pageStart": 1,
+          "pageEnd": 1,
+          "headingPath": [
+            "Chapter 13: Our Environment",
+            "13.1 ECO13.1 ECO-SYSTEM — WHA13.1 ECO-SYSTEM — WHA-SYSTEM — WHAT ARE ITS COMPONENTS?-SYSTEM — WHAT ARE ITS COMPONENTS?"
+          ]
+        },
+        {
+          "document": "ncert/10/science/jesc113.pdf",
+          "ordinal": 2,
+          "pageStart": 2,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 13: Our Environment",
+            "13.1 ECO13.1 ECO-SYSTEM — WHA13.1 ECO-SYSTEM — WHA-SYSTEM — WHAT ARE ITS COMPONENTS?-SYSTEM — WHAT ARE ITS COMPONENTS?"
+          ]
+        },
+        {
+          "document": "ncert/10/science/jesc113.pdf",
+          "ordinal": 3,
+          "pageStart": 3,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 13: Our Environment",
+            "13.1 ECO13.1 ECO-SYSTEM — WHA13.1 ECO-SYSTEM — WHA-SYSTEM — WHAT ARE ITS COMPONENTS?-SYSTEM — WHAT ARE ITS COMPONENTS?",
+            "13.1.1 Food Chains and Webs"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-28T02:12:34.256Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If a town generates a lot of biodegradable waste, which of the following is likely to happen?",
+      "choices": [
+        "It will have a positive effect on soil fertility",
+        "It will cause persistent pollution",
+        "It may lead to foul smells and the growth of germs",
+        "It will enrich the atmosphere with oxygen"
+      ],
+      "answerIndex": 2,
+      "solution": "Biodegradable waste can decompose and release unpleasant odors and harmful microorganisms, especially if not managed properly. This occurs because the breakdown process often involves bacteria and other organisms that produce gases and create unsanitary conditions. Other options are incorrect because biodegradable waste does not typically cause long-term pollution, improve soil fertility, or increase atmospheric oxygen.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक शहर में बहुत सारा जैविक अपघटनीय अपशिष्ट उत्पन्न होता है, तो निम्नलिखित में से कौन-सा होने की संभावना है?",
+          "choices": [
+            "इसके कारण मृदा उर्वरता में सुधार होगा",
+            "इसके कारण लंबे समय तक प्रदूषण होगा",
+            "इसके कारण बदबू और रोगाणुओं के बढ़ने की संभावना हो सकती है",
+            "इसके कारण वातावरण में ऑक्सीजन की मात्रा बढ़ जाएगी"
+          ],
+          "solution": "जैविक अपघटनीय अपशिष्ट अपघटित हो सकता है और असुविधाजनक गंध और हानिकारक सूक्ष्मजीव छोड़ सकता है, विशेष रूप से यदि इसका ठीक से प्रबंधन नहीं किया जाता है। ऐसा इसलिए होता है क्योंकि अपघटन प्रक्रिया में अक्सर बैक्टीरिया और अन्य जीव शामिल होते हैं जो गैसें उत्पन्न करते हैं और अस्वच्छ स्थिति पैदा करते हैं। अन्य विकल्प गलत हैं क्योंकि जैविक अपघटनीय अपशिष्ट आमतौर पर लंबे समय तक प्रदूषण नहीं पैदा करता है, मृदा उर्वरता में सुधार नहीं करता है, और वातावरण में ऑक्सीजन की मात्रा बढ़ाता नहीं है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms as found in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका शहराने बहुतेक जैविक अपशिष्ट तयार केला, तर खालीलपैकी काय घडू शकते?",
+          "choices": [
+            "त्याचा मातीच्या उर्वरता वर चांगला परिणाम होईल",
+            "त्यामुळे सतत प्रदूषण होईल",
+            "त्यामुळे खराब वास आणि जीवाणूंचा विकास होऊ शकतो",
+            "त्यामुळे हवेत ऑक्सीजनची वृद्धी होईल"
+          ],
+          "solution": "जैविक अपशिष्ट विघटित होऊ शकते आणि असुखद वास आणि हानिकारक जीवाणूंचे उत्सर्जन करू शकते, विशेषतः जेव्हा त्याची चांगली व्यवस्था केली जात नाही. हे घडते कारण विघटन प्रक्रियेत बॅक्टेरिया आणि इतर सजीव गॅसेस तयार करतात आणि अस्वच्छ परिस्थिती तयार करतात. इतर विकल्प चुकीचे आहेत कारण जैविक अपशिष्ट सामान्यतः दीर्घकाळ असे प्रदूषण निर्माण करत नाही, मातीच्या उर्वरता सुधारत नाही किंवा हवेत ऑक्सीजनची वृद्धी करत नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "students may incorrectly believe that biodegradable waste always improves soil quality without considering potential negative effects",
+        "This is a misconception, as biodegradable waste is not persistent and will break down over time.",
+        null,
+        "Believes biodegradable waste directly increases oxygen levels in the atmosphere"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 2, as biodegradable waste can indeed lead to foul smells and germ growth if not properly managed. The author's reasoning aligns with scientific understanding, and the misconceptions listed for the other options are plausible for students.",
+      "sources": [
+        {
+          "document": "ncert/10/science/jesc113.pdf",
+          "ordinal": 8,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 13: Our Environment",
+            "13.1 ECO13.1 ECO-SYSTEM — WHA13.1 ECO-SYSTEM — WHA-SYSTEM — WHAT ARE ITS COMPONENTS?-SYSTEM — WHAT ARE ITS COMPONENTS?",
+            "13.2.2 Managing the Garbage we Produce"
+          ]
+        },
+        {
+          "document": "ncert/10/science/jesc113.pdf",
+          "ordinal": 9,
+          "pageStart": 8,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 13: Our Environment",
+            "13.1 ECO13.1 ECO-SYSTEM — WHA13.1 ECO-SYSTEM — WHA-SYSTEM — WHAT ARE ITS COMPONENTS?-SYSTEM — WHAT ARE ITS COMPONENTS?",
+            "13.2.2 Managing the Garbage we Produce"
+          ]
+        },
+        {
+          "document": "ncert/10/science/jesc113.pdf",
+          "ordinal": 10,
+          "pageStart": 9,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 13: Our Environment",
+            "What you have learnt"
+          ]
+        },
+        {
+          "document": "ncert/10/science/jesc113.pdf",
+          "ordinal": 11,
+          "pageStart": 10,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 13: Our Environment",
+            "What you have learnt"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-28T02:12:34.256Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "What is the role of producers in an ecosystem?",
+      "choices": [
+        "To break down dead matter",
+        "To consume other organisms",
+        "To create food using sunlight",
+        "To provide oxygen for animals"
+      ],
+      "answerIndex": 2,
+      "solution": "Producers use sunlight, water, and carbon dioxide to create their own food through photosynthesis, which is essential for sustaining the ecosystem. Decomposers break down dead matter, and consumers eat other organisms. Providing oxygen is a byproduct of photosynthesis but not the main role of producers.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक पारिस्थितिक तंत्र में उत्पादकों की भूमिका क्या है?",
+          "choices": [
+            "मृत पदार्थ को अपघटित करना",
+            "अन्य जीवों का उपभोग करना",
+            "सूर्य के प्रकाश का उपयोग करके भोजन बनाना",
+            "जीवों के लिए ऑक्सीजन प्रदान करना"
+          ],
+          "solution": "उत्पादक सूर्य के प्रकाश, पानी और कार्बन डाइऑक्साइड का उपयोग करके अपना भोजन फोटोसिंथेसिस द्वारा बनाते हैं, जो पारिस्थितिक तंत्र के बर्ताव के लिए आवश्यक है। अपघटक मृत पदार्थ को अपघटित करते हैं, और उपभोक्त अन्य जीवों का उपभोग करते हैं। ऑक्सीजन प्रदान करना फोटोसिंथेसिस का एक परिणाम है लेकिन उत्पादकों की मुख्य भूमिका नहीं है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate ecological terminology in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एकोसिस्टममध्ये उत्पादकांची भूमिका काय आहे?",
+          "choices": [
+            "मृत पदार्थ विघटित करणे",
+            "इतर जीवांचे खाणे",
+            "सूर्यप्रकाशाचा वापर करून खाद्य तयार करणे",
+            "प्राण्यांसाठी ऑक्सिजन पुरवणे"
+          ],
+          "solution": "उत्पादक सूर्यप्रकाश, पाणी आणि कार्बन डायऑक्साइडचा वापर करून फोटोसिंथेसिसच्या माध्यमातून आपले खाद्य तयार करतात, जे पर्यावरणाच्या जीवनासाठी आवश्यक आहे. विघटक मृत पदार्थ विघटित करतात, आणि उपभोक्ते इतर जीवांचे खातात. ऑक्सिजन प्रदान करणे हे फोटोसिंथेसिसचे बाजूचे उत्पादन आहे परंतु उत्पादकांची मुख्य भूमिका नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Describes the role of decomposers",
+        "Describes the role of consumers",
+        null,
+        "Misunderstands the role of producers."
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is well-constructed, with a clear correct answer and plausible distractors that reflect common misconceptions about ecosystem roles.",
+      "sources": [
+        {
+          "document": "ncert/10/science/jesc113.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 1,
+          "headingPath": [
+            "Chapter 13: Our Environment"
+          ]
+        },
+        {
+          "document": "ncert/10/science/jesc113.pdf",
+          "ordinal": 1,
+          "pageStart": 1,
+          "pageEnd": 1,
+          "headingPath": [
+            "Chapter 13: Our Environment",
+            "13.1 ECO13.1 ECO-SYSTEM — WHA13.1 ECO-SYSTEM — WHA-SYSTEM — WHAT ARE ITS COMPONENTS?-SYSTEM — WHAT ARE ITS COMPONENTS?"
+          ]
+        },
+        {
+          "document": "ncert/10/science/jesc113.pdf",
+          "ordinal": 2,
+          "pageStart": 2,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 13: Our Environment",
+            "13.1 ECO13.1 ECO-SYSTEM — WHA13.1 ECO-SYSTEM — WHA-SYSTEM — WHAT ARE ITS COMPONENTS?-SYSTEM — WHAT ARE ITS COMPONENTS?"
+          ]
+        },
+        {
+          "document": "ncert/10/science/jesc113.pdf",
+          "ordinal": 3,
+          "pageStart": 3,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 13: Our Environment",
+            "13.1 ECO13.1 ECO-SYSTEM — WHA13.1 ECO-SYSTEM — WHA-SYSTEM — WHAT ARE ITS COMPONENTS?-SYSTEM — WHAT ARE ITS COMPONENTS?",
+            "13.1.1 Food Chains and Webs"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-28T02:12:34.256Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "A student observed that some waste in their school is biodegradable and some is not. Which of the following best describes the impact of non-biodegradable waste on the environment?",
+      "choices": [
+        "It is broken down by microorganisms",
+        "It can remain in the environment for a long time",
+        "It can be used as a source of energy",
+        "It can be easily recycled"
+      ],
+      "answerIndex": 1,
+      "solution": "Non-biodegradable waste can remain in the environment for a long time because it is not easily broken down by natural processes. The other options do not accurately describe the characteristics of non-biodegradable waste.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक छात्र ने देखा कि उनके स्कूल में कुछ अपशिष्ट जैविक रूप से विघटित होता है और कुछ नहीं होता। निम्नलिखित में से कौन-सा अपशिष्ट के पर्यावरण पर प्रभाव का सबसे अच्छा वर्णन करता है?",
+          "choices": [
+            "यह सूक्ष्मजीवों द्वारा टूट जाता है",
+            "यह पर्यावरण में लंबे समय तक रह सकता है",
+            "इसे ऊर्जा के स्रोत के रूप में उपयोग किया जा सकता है",
+            "इसे आसानी से पुनर्चक्रित किया जा सकता है"
+          ],
+          "solution": "अजैविक अपशिष्ट पर्यावरण में लंबे समय तक रह सकता है क्योंकि यह प्राकृतिक प्रक्रियाओं द्वारा आसानी से टूट नहीं जाता है। अन्य विकल्प अजैविक अपशिष्ट के गुणों का सही वर्णन नहीं करते हैं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains original meaning, and uses appropriate Hindi terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका विद्यार्थ्याने त्यांच्या शाळेतील काही कचरा जैवनिर्मूलनयोग्य आहे आणि काही नाही असे नोंदवले. खालीलपैकी कोणते नैसर्गिक वातावरणावर अजैवनिर्मूलनयोग्य कचराच्या परिणामाचे सर्वात चांगले वर्णन करते?",
+          "choices": [
+            "तो माइक्रोऑर्गनिझमद्वारे तोडला जातो",
+            "तो नैसर्गिक वातावरणात लांब काळ राहू शकतो",
+            "तो ऊर्जेचा स्रोत म्हणून वापरता येऊ शकतो",
+            "तो सहज पुनर्वापर करता येऊ शकतो"
+          ],
+          "solution": "अजैवनिर्मूलनयोग्य कचरा नैसर्गिक प्रक्रियांद्वारे सहज तोडला जात नाही म्हणून तो नैसर्गिक वातावरणात लांब काळ राहू शकतो. इतर विकल्प अजैवनिर्मूलनयोग्य कचराच्या वैशिष्ट्यांचे योग्य वर्णन करत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for environmental science concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Misunderstands the nature of non-biodegradable waste",
+        null,
+        "Believes non-biodegradable waste is easily broken down",
+        "Incorrectly assumes non-biodegradable waste can be used as energy"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 1, as non-biodegradable waste does not break down easily and can persist in the environment for long periods. The other options are incorrect and reflect common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/10/science/jesc113.pdf",
+          "ordinal": 8,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 13: Our Environment",
+            "13.1 ECO13.1 ECO-SYSTEM — WHA13.1 ECO-SYSTEM — WHA-SYSTEM — WHAT ARE ITS COMPONENTS?-SYSTEM — WHAT ARE ITS COMPONENTS?",
+            "13.2.2 Managing the Garbage we Produce"
+          ]
+        },
+        {
+          "document": "ncert/10/science/jesc113.pdf",
+          "ordinal": 9,
+          "pageStart": 8,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 13: Our Environment",
+            "13.1 ECO13.1 ECO-SYSTEM — WHA13.1 ECO-SYSTEM — WHA-SYSTEM — WHAT ARE ITS COMPONENTS?-SYSTEM — WHAT ARE ITS COMPONENTS?",
+            "13.2.2 Managing the Garbage we Produce"
+          ]
+        },
+        {
+          "document": "ncert/10/science/jesc113.pdf",
+          "ordinal": 10,
+          "pageStart": 9,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 13: Our Environment",
+            "What you have learnt"
+          ]
+        },
+        {
+          "document": "ncert/10/science/jesc113.pdf",
+          "ordinal": 11,
+          "pageStart": 10,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 13: Our Environment",
+            "What you have learnt"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-28T02:12:34.256Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "If a large amount of biodegradable waste is generated in a neighborhood, what would be the most likely impact?",
+      "choices": [
+        "It would increase the oxygen level in the air",
+        "It would cause foul smells and germs to spread",
+        "It would improve the soil fertility",
+        "It would reduce the number of microorganisms"
+      ],
+      "answerIndex": 1,
+      "solution": "Biodegradable waste decomposes, and when there is a large amount, the process can produce foul smells and allow germs to spread. This is because the decomposition often occurs in anaerobic conditions, leading to the release of bad odors and harmful bacteria. Other options are incorrect because decomposition typically does not increase oxygen levels, improves soil fertility, or reduces microorganisms.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक आवासीय क्षेत्र में बहुत अधिक जैव अपघटनीय कचरा उत्पन्न होता है, तो सबसे संभावित प्रभाव क्या होगा?",
+          "choices": [
+            "यह हवा में ऑक्सीजन के स्तर को बढ़ा देगा",
+            "यह बदबू और रोगाणुओं के फैलाव का कारण बनेगा",
+            "यह मिट्टी की उर्वरता में सुधार करेगा",
+            "यह सूक्ष्मजीवों की संख्या कम कर देगा"
+          ],
+          "solution": "जैव अपघटनीय कचरा अपघटित होता है, और जब इसकी मात्रा बहुत अधिक होती है, तो अपघटन प्रक्रिया बदबू उत्पन्न कर सकती है और रोगाणुओं के फैलाव की अनुमति दे सकती है। ऐसा इसलिए होता है क्योंकि अपघटन अक्सर एनारोबिक स्थितियों में होता है, जिसके कारण खराब गंध और हानिकारक बैक्टीरिया छोड़े जाते हैं। अन्य विकल्प गलत हैं क्योंकि अपघटन आमतौर पर हवा में ऑक्सीजन के स्तर को बढ़ाता नहीं है, मिट्टी की उर्वरता में सुधार नहीं करता है या सूक्ष्मजीवों की संख्या कम नहीं करता है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate technical terms as found in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका गावात जास्तीत जास्त जैविक अपशिष्ट तयार होत असेल तर त्याचा सर्वात जास्त शक्यतो असा परिणाम काय असेल?",
+          "choices": [
+            "त्यामुळे हवेत ऑक्सीजनचा पातळी वाढेल",
+            "त्यामुळे खराब वास आणि जीवाणू पसरतील",
+            "त्यामुळे मातीची उपजीविका सुधारेल",
+            "त्यामुळे छोट्या जीवाणूंची संख्या कमी होईल"
+          ],
+          "solution": "जैविक अपशिष्ट विघटित होतो आणि जेव्हा त्याची मोठी प्रमाण असते तेव्हा विघटनाची प्रक्रिया खराब वास आणि जीवाणूंच्या पसरण्यास कारणीभूत होऊ शकते. हे असे असते कारण विघटन अक्सीजन नसलेल्या परिस्थितीत होते, ज्यामुळे खराब वास आणि हानिकारक जीवाणूंचे विसर्जन होते. इतर विकल्प चुकीचे आहेत कारण विघटन ऑक्सीजनच्या पातळीत वाढ करत नाही, मातीची उपजीविका सुधारत नाही किंवा छोट्या जीवाणूंची संख्या कमी करत नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for biological concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Misunderstands the effects of waste decomposition",
+        null,
+        "Incorrectly assumes biodegradable waste improves soil",
+        "Confuses the effect of biodegradable waste with that of non-biodegradable waste."
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 1, as biodegradable waste decomposing in large quantities can indeed cause foul smells and the spread of germs. The other options represent common misconceptions about the effects of biodegradable waste.",
+      "sources": [
+        {
+          "document": "ncert/10/science/jesc113.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 1,
+          "headingPath": [
+            "Chapter 13: Our Environment"
+          ]
+        },
+        {
+          "document": "ncert/10/science/jesc113.pdf",
+          "ordinal": 1,
+          "pageStart": 1,
+          "pageEnd": 1,
+          "headingPath": [
+            "Chapter 13: Our Environment",
+            "13.1 ECO13.1 ECO-SYSTEM — WHA13.1 ECO-SYSTEM — WHA-SYSTEM — WHAT ARE ITS COMPONENTS?-SYSTEM — WHAT ARE ITS COMPONENTS?"
+          ]
+        },
+        {
+          "document": "ncert/10/science/jesc113.pdf",
+          "ordinal": 2,
+          "pageStart": 2,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 13: Our Environment",
+            "13.1 ECO13.1 ECO-SYSTEM — WHA13.1 ECO-SYSTEM — WHA-SYSTEM — WHAT ARE ITS COMPONENTS?-SYSTEM — WHAT ARE ITS COMPONENTS?"
+          ]
+        },
+        {
+          "document": "ncert/10/science/jesc113.pdf",
+          "ordinal": 3,
+          "pageStart": 3,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 13: Our Environment",
+            "13.1 ECO13.1 ECO-SYSTEM — WHA13.1 ECO-SYSTEM — WHA-SYSTEM — WHAT ARE ITS COMPONENTS?-SYSTEM — WHAT ARE ITS COMPONENTS?",
+            "13.1.1 Food Chains and Webs"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-28T02:12:34.256Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "A farmer uses a lot of pesticides on his crops. Later, he finds high levels of pesticide residues in his own body. What is the most likely reason for this?",
+      "choices": [
+        "Pesticides are stored in the farmer's fat cells",
+        "Pesticides are absorbed directly through the skin",
+        "Pesticides are not biodegradable and accumulate in the food chain",
+        "Pesticides cause immediate health effects"
+      ],
+      "answerIndex": 2,
+      "solution": "Pesticides that are not biodegradable can accumulate in the food chain, increasing in concentration as they move from one trophic level to the next, which can result in high levels in humans who consume contaminated plants or animals. Pesticides stored in fat cells or absorbed through the skin would not typically lead to such high systemic levels. Immediate health effects would not explain the gradual buildup over time.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक किसान अपने फसलों पर बहुत सारे कीटनाशक उपयोग करता है। बाद में, उसे अपने शरीर में उच्च स्तर के कीटनाशक अवशेष पाता है। इसके लिए सबसे संभावित कारण क्या है?",
+          "choices": [
+            "कीटनाशक खासकर किसान के वसा कोशिकाओं में संग्रहित हो जाते हैं",
+            "कीटनाशक त्वचा के माध्यम से सीधे अवशोषित हो जाते हैं",
+            "कीटनाशक अविघटनशील होते हैं और खाद्य श्रृंखला में संचित हो जाते हैं",
+            "कीटनाशक तुरंत स्वास्थ्य प्रभाव पैदा करते हैं"
+          ],
+          "solution": "अविघटनशील कीटनाशक खाद्य श्रृंखला में संचित हो सकते हैं, जो एक पोषक स्तर से अगले पर बढ़ते जाते हैं, जिसके परिणामस्वरूप अप्रत्यक्ष रूप से प्रदूषित पौधों या जानवरों को खाने वाले मनुष्यों में उच्च स्तर पाए जा सकते हैं। वसा कोशिकाओं में संग्रहित कीटनाशक या त्वचा के माध्यम से अवशोषित कीटनाशक आमतौर पर ऐसे उच्च प्रणालीगत स्तर नहीं लाते। तुरंत स्वास्थ्य प्रभाव लंबे समय में धीरे-धीरे बढ़ते संचय की व्याख्या नहीं कर सकते।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains original meaning, and uses appropriate Hindi scientific terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका शेतकऱ्याने त्याच्या शेतात खूप जास्त कीटकनाशक वापरले. नंतर त्याला आपल्या शरीरात उच्च पातळीवर कीटकनाशकांचे अवशेष दिसतात. ह्याचे सर्वात शक्य कारण काय असू शकते?",
+          "choices": [
+            "कीटकनाशक शेतकऱ्याच्या चरबीच्या कोशिकांमध्ये जमा होतात",
+            "कीटकनाशक त्वचेच्या मार्फत लगेच शोषले जातात",
+            "कीटकनाशक अविघटनीय असून ते खाद्य पिंजरात संचयित होतात",
+            "कीटकनाशकांमुळे तात्काळ आरोग्य प्रभाव होतात"
+          ],
+          "solution": "अविघटनीय कीटकनाशक खाद्य पिंजरात संचयित होऊ शकतात, जे एका खाद्य स्तरापासून दुसऱ्या खाद्य स्तरावर जाताना तीव्रता वाढवू शकतात, ज्यामुळे दुष्परिणाम असलेल्या वनस्पती वा प्राण्यांचे खाणारे माणसांमध्ये उच्च पातळी असू शकते. चरबीच्या कोशिकांमध्ये जमा झालेले कीटकनाशक किंवा त्वचेच्या मार्फत शोषले गेलेले कीटकनाशक सामान्यतः अशा उच्च प्रमाणात शरीरात जमा होऊ शकत नाहीत. तात्काळ आरोग्य प्रभाव वेळेच्या विकासामुळे जमा होणार्या उच्च पातळीचे वर्णन करू शकत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses storage of toxins with their accumulation in food chains",
+        "Believes pesticides act immediately on the skin",
+        null,
+        "Does not understand the concept of biological magnification"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 2, as the question relates to the accumulation of pesticides in the food chain, which is a well-established concept in environmental science. The author's reasoning aligns with this, and the distractors reflect common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/10/science/jesc113.pdf",
+          "ordinal": 4,
+          "pageStart": 3,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 13: Our Environment",
+            "13.1 ECO13.1 ECO-SYSTEM — WHA13.1 ECO-SYSTEM — WHA-SYSTEM — WHAT ARE ITS COMPONENTS?-SYSTEM — WHAT ARE ITS COMPONENTS?",
+            "13.1.1 Food Chains and Webs"
+          ]
+        },
+        {
+          "document": "ncert/10/science/jesc113.pdf",
+          "ordinal": 5,
+          "pageStart": 5,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 13: Our Environment",
+            "13.1 ECO13.1 ECO-SYSTEM — WHA13.1 ECO-SYSTEM — WHA-SYSTEM — WHAT ARE ITS COMPONENTS?-SYSTEM — WHAT ARE ITS COMPONENTS?",
+            "13.1.1 Food Chains and Webs",
+            "1 3 . 2 HOW DO OUR ACTIVITIES AFFECT THE"
+          ]
+        },
+        {
+          "document": "ncert/10/science/jesc113.pdf",
+          "ordinal": 6,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 13: Our Environment",
+            "13.1 ECO13.1 ECO-SYSTEM — WHA13.1 ECO-SYSTEM — WHA-SYSTEM — WHAT ARE ITS COMPONENTS?-SYSTEM — WHAT ARE ITS COMPONENTS?",
+            "13.2.1 Ozone Layer and How it is Getting Depleted"
+          ]
+        },
+        {
+          "document": "ncert/10/science/jesc113.pdf",
+          "ordinal": 7,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 13: Our Environment",
+            "13.1 ECO13.1 ECO-SYSTEM — WHA13.1 ECO-SYSTEM — WHA-SYSTEM — WHAT ARE ITS COMPONENTS?-SYSTEM — WHAT ARE ITS COMPONENTS?",
+            "13.2.2 Managing the Garbage we Produce"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-28T02:12:34.256Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "If a pesticide is not biodegradable, what is the most likely impact on humans who consume food from the top of the food chain?",
+      "choices": [
+        "It will be completely broken down by the human digestive system",
+        "It will be absorbed by plants and passed on to lower trophic levels",
+        "It will accumulate in the human body",
+        "It will be excreted without harm"
+      ],
+      "answerIndex": 2,
+      "solution": "Non-biodegradable pesticides persist in the environment and are not easily broken down. As they move up the food chain, they accumulate in the tissues of organisms, especially those at higher trophic levels, such as humans. This process, called biological magnification, leads to higher concentrations in top predators. The other options are incorrect because non-biodegradable substances are not typically broken down or excreted completely, and they do not pass on to lower trophic levels once they are in the top ones.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक कीटनाशक जैव अपघटनीय नहीं है, तो भोजन के शीर्ष पोषी स्तर से खाने वाले मनुष्यों पर सबसे संभावित प्रभाव क्या होगा?",
+          "choices": [
+            "मनुष्य के पाचन तंत्र द्वारा इसे पूरी तरह अलग कर दिया जाएगा",
+            "इसे पौधे अवशोषित कर लेंगे और निम्न ट्रॉफिक स्तरों तक पहुंचा देंगे",
+            "इसे मनुष्य के शरीर में संचित कर लिया जाएगा",
+            "इसे हानि के बिना निकाल दिया जाएगा"
+          ],
+          "solution": "अजैव अपघटनीय कीटनाशक पर्यावरण में रहते हैं और आसानी से नहीं टूटते हैं। जैसे-जैसे वे खाद्य श्रृंखला में ऊपर की ओर बढ़ते हैं, वे जीवों के ऊतकों में संचित हो जाते हैं, विशेष रूप से ऊंचे पोषी स्तरों जैसे मनुष्यों में। इस प्रक्रिया को जैविक गुणक कहा जाता है, जो शीर्ष प्राणियों में उच्च सांद्रता के कारण होता है। अन्य विकल्प गलत हैं क्योंकि अजैव अपघटनीय पदार्थ आमतौर पर पूरी तरह से अलग नहीं होते हैं या निकाल दिए जाते हैं, और जब वे शीर्ष पर होते हैं तो वे निम्न ट्रॉफिक स्तरों तक नहीं पहुंचते हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology from standard textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर एखादा खतनाशक जैविक अपघटनीय नसेल तर आहार श्रृंखलेच्या शीर्षावरून खाणार्या माणसांवर सर्वात शक्यतो दुष्परिणाम काय असेल?",
+          "choices": [
+            "मानवी पाचक प्रणाली त्याचे पूर्णपणे विघटन करेल",
+            "तो वनस्पतींद्वारे अवशोषित केला जाईल आणि खालच्या पोषणस्तरांमध्ये पाठवला जाईल",
+            "तो मानवी शरीरात संचयित होईल",
+            "तो अपाय शिवाय बाहेर काढला जाईल"
+          ],
+          "solution": "अजैविक अपघटनीय खतनाशक वातावरणात टिकून रहातात आणि त्यांचे पूर्णपणे विघटन होत नाही. जेव्हा ते आहार श्रृंखलेच्या माध्यमातून जातात तेव्हा ते जीवांच्या ऊतींमध्ये संचयित होतात, विशेषतः शीर्ष पोषणस्तरावर असलेल्या जीवांमध्ये, जसे की मानव. हा प्रक्रिया, जी जैविक प्रवर्धन म्हणून ओळखली जाते, शीर्ष शिकारींमध्ये उच्च घनता निर्माण करते. इतर विकल्प चुकीचे आहेत कारण अजैविक अपघटनीय पदार्थ जास्तीत जास्त पूर्णपणे विघटित किंवा बाहेर काढले जात नाहीत, आणि जेव्हा ते शीर्ष पोषणस्तरांमध्ये जातात तेव्हा ते खालच्या पोषणस्तरांमध्ये पाठवले जात नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the scientific terminology used in Marathi textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Believes pesticides are completely broken down",
+        "Believes that non-biodegradable pesticides only affect lower levels and not the top",
+        null,
+        "Misunderstands the process of accumulation"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question correctly identifies the phenomenon of biological magnification. The correct answer (2) reflects the accumulation of non-biodegradable pesticides in top predators, including humans. The other options represent common misconceptions about pesticide behavior.",
+      "sources": [
+        {
+          "document": "ncert/10/science/jesc113.pdf",
+          "ordinal": 4,
+          "pageStart": 3,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 13: Our Environment",
+            "13.1 ECO13.1 ECO-SYSTEM — WHA13.1 ECO-SYSTEM — WHA-SYSTEM — WHAT ARE ITS COMPONENTS?-SYSTEM — WHAT ARE ITS COMPONENTS?",
+            "13.1.1 Food Chains and Webs"
+          ]
+        },
+        {
+          "document": "ncert/10/science/jesc113.pdf",
+          "ordinal": 5,
+          "pageStart": 5,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 13: Our Environment",
+            "13.1 ECO13.1 ECO-SYSTEM — WHA13.1 ECO-SYSTEM — WHA-SYSTEM — WHAT ARE ITS COMPONENTS?-SYSTEM — WHAT ARE ITS COMPONENTS?",
+            "13.1.1 Food Chains and Webs",
+            "1 3 . 2 HOW DO OUR ACTIVITIES AFFECT THE"
+          ]
+        },
+        {
+          "document": "ncert/10/science/jesc113.pdf",
+          "ordinal": 6,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 13: Our Environment",
+            "13.1 ECO13.1 ECO-SYSTEM — WHA13.1 ECO-SYSTEM — WHA-SYSTEM — WHAT ARE ITS COMPONENTS?-SYSTEM — WHAT ARE ITS COMPONENTS?",
+            "13.2.1 Ozone Layer and How it is Getting Depleted"
+          ]
+        },
+        {
+          "document": "ncert/10/science/jesc113.pdf",
+          "ordinal": 7,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 13: Our Environment",
+            "13.1 ECO13.1 ECO-SYSTEM — WHA13.1 ECO-SYSTEM — WHA-SYSTEM — WHAT ARE ITS COMPONENTS?-SYSTEM — WHAT ARE ITS COMPONENTS?",
+            "13.2.2 Managing the Garbage we Produce"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-28T02:12:34.256Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "If a new pesticide is developed that is completely biodegradable, what would be the most likely impact on the environment compared to existing non-biodegradable pesticides?",
+      "choices": [
+        "It would have the same long-term effects as non-biodegradable pesticides",
+        "It would persist in the environment for a long time",
+        "It would accumulate in the food chain and harm humans",
+        "It would break down quickly and reduce environmental harm"
+      ],
+      "answerIndex": 3,
+      "solution": "A completely biodegradable pesticide would be broken down by natural processes, reducing its ability to remain in the environment. This would lead to less long-term harm compared to non-biodegradable pesticides, which persist and accumulate. The other options incorrectly suggest that the pesticide would have lasting negative effects or accumulate in the food chain, which contradicts the nature of biodegradability.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक नया कीटनाशक विकसित किया जाता है जो पूर्ण रूप से जैव-अपघटनीय है, तो पारंपरिक अजैव-अपघटनीय कीटनाशकों की तुलना में पर्यावरण पर सबसे अधिक संभावित प्रभाव क्या होगा?",
+          "choices": [
+            "इसका लंबे समय तक प्रभाव पारंपरिक अजैव-अपघटनीय कीटनाशकों के समान होगा",
+            "इसका पर्यावरण में लंबे समय तक रहने की संभावना है",
+            "इसका आहार श्रृंखला में संचय होगा और मनुष्यों को नुकसान पहुंचाएगा",
+            "इसके तेजी से अपघटित होने से पर्यावरणीय हानि कम हो जाएगी"
+          ],
+          "solution": "एक पूर्ण रूप से जैव-अपघटनीय कीटनाशक प्राकृतिक प्रक्रियाओं द्वारा अपघटित हो जाएगा, जिससे इसके पर्यावरण में रहने की क्षमता कम हो जाएगी। इससे पारंपरिक अजैव-अपघटनीय कीटनाशकों की तुलना में कम लंबे समय की हानि होगी, जो अपघटित नहीं होते और संचित हो जाते हैं। अन्य विकल्प गलत रूप से बताते हैं कि कीटनाशक के लंबे समय तक नकारात्मक प्रभाव होंगे या आहार श्रृंखला में संचित हो जाएगा, जो जैव-अपघटनीयता की प्रकृति के विरुद्ध है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi technical terms.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर एक नवीन कीटकनाशक विकसित केला गेला आहे जो पूर्णपणे जैव विघटनीय आहे, तर असलेल्या अजैव विघटनीय कीटकनाशकांच्या तुलनेत पर्यावरणावर सर्वात शक्य परिणाम काय असेल?",
+          "choices": [
+            "त्याचे लांबलचक परिणाम अजैव विघटनीय कीटकनाशकांसारखेच असतील",
+            "ते पर्यावरणात लांब काळ टिकेल",
+            "ते आहार शृंखलेत जमा होईल आणि माणसांना नुकसान पोहोचवील",
+            "ते लवकर विघटित होईल आणि पर्यावरणीय नुकसान कमी होईल"
+          ],
+          "solution": "पूर्णपणे जैव विघटनीय कीटकनाशक नैसर्गिक प्रक्रियांद्वारे विघटित होईल, ज्यामुळे ते पर्यावरणात राहण्याची क्षमता कमी होईल. यामुळे अजैव विघटनीय कीटकनाशकांच्या तुलनेत कमी लांबलचक नुकसान होईल, जे सतत राहतात आणि जमा होतात. इतर विकल्प चुकीचे असतात जे सूचित करतात की कीटकनाशक लांबकाळ नकारात्मक परिणाम घडवून आणेल किंवा आहार शृंखलेत जमा होईल, जे जैव विघटनीयतेच्या प्रकृतीला विरोधी आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms. The correct answer (option 3) is in the same position as in the English version. All distractors remain incorrect in Marathi.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses biodegradable with non-biodegradable substances",
+        "Does not understand the definition of biodegradability",
+        "Misunderstands the concept of biological magnification",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies that biodegradable substances break down quickly, reducing long-term environmental harm. The reasoning aligns with the scientific understanding of biodegradability and the effects of non-biodegradable pesticides.",
+      "sources": [
+        {
+          "document": "ncert/10/science/jesc113.pdf",
+          "ordinal": 4,
+          "pageStart": 3,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 13: Our Environment",
+            "13.1 ECO13.1 ECO-SYSTEM — WHA13.1 ECO-SYSTEM — WHA-SYSTEM — WHAT ARE ITS COMPONENTS?-SYSTEM — WHAT ARE ITS COMPONENTS?",
+            "13.1.1 Food Chains and Webs"
+          ]
+        },
+        {
+          "document": "ncert/10/science/jesc113.pdf",
+          "ordinal": 5,
+          "pageStart": 5,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 13: Our Environment",
+            "13.1 ECO13.1 ECO-SYSTEM — WHA13.1 ECO-SYSTEM — WHA-SYSTEM — WHAT ARE ITS COMPONENTS?-SYSTEM — WHAT ARE ITS COMPONENTS?",
+            "13.1.1 Food Chains and Webs",
+            "1 3 . 2 HOW DO OUR ACTIVITIES AFFECT THE"
+          ]
+        },
+        {
+          "document": "ncert/10/science/jesc113.pdf",
+          "ordinal": 6,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 13: Our Environment",
+            "13.1 ECO13.1 ECO-SYSTEM — WHA13.1 ECO-SYSTEM — WHA-SYSTEM — WHAT ARE ITS COMPONENTS?-SYSTEM — WHAT ARE ITS COMPONENTS?",
+            "13.2.1 Ozone Layer and How it is Getting Depleted"
+          ]
+        },
+        {
+          "document": "ncert/10/science/jesc113.pdf",
+          "ordinal": 7,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 13: Our Environment",
+            "13.1 ECO13.1 ECO-SYSTEM — WHA13.1 ECO-SYSTEM — WHA-SYSTEM — WHAT ARE ITS COMPONENTS?-SYSTEM — WHAT ARE ITS COMPONENTS?",
+            "13.2.2 Managing the Garbage we Produce"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-28T02:12:34.256Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Why do decomposers play a crucial role in an ecosystem?",
+      "choices": [
+        "They provide energy to the ecosystem",
+        "They break down complex substances into simpler forms",
+        "They produce oxygen for the environment",
+        "They prevent the accumulation of waste"
+      ],
+      "answerIndex": 1,
+      "solution": "Decomposers break down complex substances into simpler forms, allowing nutrients to be reused by other organisms in the ecosystem. This process is vital for nutrient cycling and maintaining ecological balance. The other options are incorrect because decomposers do not provide energy, produce oxygen, or prevent waste accumulation directly.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "क्यों अपघटक पारिस्थितिकी तंत्र में एक महत्वपूर्ण भूमिका निभाते हैं?",
+          "choices": [
+            "वे पारिस्थितिकी तंत्र को ऊर्जा प्रदान करते हैं",
+            "वे जटिल पदार्थों को सरल रूप में तोड़ देते हैं",
+            "वे वातावरण के लिए ऑक्सीजन उत्पन्न करते हैं",
+            "वे अपशिष्ट के संचय को रोकते हैं"
+          ],
+          "solution": "अपघटक जटिल पदार्थों को सरल रूप में तोड़ देते हैं, जिससे अन्य जीवों द्वारा पोषक तत्वों के पुनः उपयोग की संभावना होती है। यह प्रक्रिया पोषक तत्व चक्र बनाए रखने और पारिस्थितिकी संतुलन बनाए रखने के लिए आवश्यक है। अन्य विकल्प गलत हैं क्योंकि अपघटक ऊर्जा प्रदान नहीं करते, ऑक्सीजन उत्पन्न नहीं करते, या सीधे अपशिष्ट के संचय को रोक नहीं सकते।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains original meaning, and uses appropriate Hindi terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "अपघटक का महत्वपूर्ण भूमिका निभातात का कारण?",
+          "choices": [
+            "ते पर्यावरणाला ऊर्जा पुरवतात",
+            "ते जटिल पदार्थांना सोप्प्या रूपात तोडतात",
+            "ते पर्यावरणाला ऑक्सिजन पुरवतात",
+            "ते अपशिष्टाच्या जमा होण्याला रोखतात"
+          ],
+          "solution": "अपघटक जटिल पदार्थांना सोप्प्या रूपात तोडतात, ज्यामुळे नंतर इतर जीवांना पोषक घटक पुन्हा वापरता येतात. हा प्रक्रिया पोषक चक्र आणि पर्यावरणीय संतुलन बरोबर ठेवण्यासाठी महत्वपूर्ण आहे. इतर विकल्प अयोग्य आहेत कारण अपघटक ऊर्जा पुरवत नाहीत, ऑक्सिजन उत्पादित करत नाहीत किंवा सीमित अपशिष्ट जमा होण्याला थांबवत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for biological concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the role of producers",
+        null,
+        "Thinks decomposers produce oxygen",
+        "Believes decomposers prevent waste"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 1, as decomposers break down complex organic matter into simpler forms, enabling nutrient recycling. The other options reflect common misconceptions about the roles of producers, oxygen production, and waste prevention.",
+      "sources": [
+        {
+          "document": "ncert/10/science/jesc113.pdf",
+          "ordinal": 4,
+          "pageStart": 3,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 13: Our Environment",
+            "13.1 ECO13.1 ECO-SYSTEM — WHA13.1 ECO-SYSTEM — WHA-SYSTEM — WHAT ARE ITS COMPONENTS?-SYSTEM — WHAT ARE ITS COMPONENTS?",
+            "13.1.1 Food Chains and Webs"
+          ]
+        },
+        {
+          "document": "ncert/10/science/jesc113.pdf",
+          "ordinal": 5,
+          "pageStart": 5,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 13: Our Environment",
+            "13.1 ECO13.1 ECO-SYSTEM — WHA13.1 ECO-SYSTEM — WHA-SYSTEM — WHAT ARE ITS COMPONENTS?-SYSTEM — WHAT ARE ITS COMPONENTS?",
+            "13.1.1 Food Chains and Webs",
+            "1 3 . 2 HOW DO OUR ACTIVITIES AFFECT THE"
+          ]
+        },
+        {
+          "document": "ncert/10/science/jesc113.pdf",
+          "ordinal": 6,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 13: Our Environment",
+            "13.1 ECO13.1 ECO-SYSTEM — WHA13.1 ECO-SYSTEM — WHA-SYSTEM — WHAT ARE ITS COMPONENTS?-SYSTEM — WHAT ARE ITS COMPONENTS?",
+            "13.2.1 Ozone Layer and How it is Getting Depleted"
+          ]
+        },
+        {
+          "document": "ncert/10/science/jesc113.pdf",
+          "ordinal": 7,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 13: Our Environment",
+            "13.1 ECO13.1 ECO-SYSTEM — WHA13.1 ECO-SYSTEM — WHA-SYSTEM — WHAT ARE ITS COMPONENTS?-SYSTEM — WHAT ARE ITS COMPONENTS?",
+            "13.2.2 Managing the Garbage we Produce"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-28T02:12:34.256Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "If all the waste generated was biodegradable, would it have no impact on the environment?",
+      "choices": [
+        "Yes, because it would break down easily",
+        "No, because it could still cause pollution",
+        "Yes, because it would not harm the ecosystem",
+        "No, because it would take time to decompose"
+      ],
+      "answerIndex": 1,
+      "solution": "Even if all waste were biodegradable, it could still cause pollution during the decomposition process. The other options do not fully address the potential environmental impact of biodegradable waste.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि सभी उत्पन्न हुए अपशिष्ट जैविक रूप से अपघटनीय थे, तो क्या यह पर्यावरण पर कोई प्रभाव नहीं डालेगा?",
+          "choices": [
+            "हाँ, क्योंकि यह आसानी से टूट जाएगा",
+            "नहीं, क्योंकि यह अभी भी प्रदूषण का कारण बन सकता है",
+            "हाँ, क्योंकि यह जैव विविधता को हानि नहीं पहुंचाएगा",
+            "नहीं, क्योंकि यह अपघटन में समय लेगा"
+          ],
+          "solution": "यदि सभी अपशिष्ट जैविक रूप से अपघटनीय होते, तो अपघटन प्रक्रिया के दौरान यह प्रदूषण का कारण बन सकते हैं। अन्य विकल्प जैविक रूप से अपघटनीय अपशिष्ट के पर्यावरण पर संभावित प्रभाव को पूरी तरह से नहीं ध्यान में रखते हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर सर्व अपशिष्ट जैविक अपशिष्ट असेल तर त्याचा पर्यावरणावर कोणताही परिणाम होणार नाही का?",
+          "choices": [
+            "होय, कारण ते सहज विघटित होईल",
+            "नाही, कारण ते अजूनही प्रदूषण करू शकते",
+            "होय, कारण ते परिसंस्थेला हानी पोहोचवू शकत नाही",
+            "नाही, कारण त्याला विघटित होण्यास वेळ लागेल"
+          ],
+          "solution": "जर सर्व अपशिष्ट जैविक असेल तर ते विघटन प्रक्रियेदरम्यान प्रदूषण करू शकते. इतर विकल्प जैविक अपशिष्टाच्या पर्यावरणावरील संभाव्य परिणामांचा पूर्णपणे विचार करत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation accurately reflects the original meaning, with appropriate Marathi terminology for environmental concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Overlooks the pollution caused during decomposition",
+        null,
+        "Incorrectly assumes biodegradable waste has no impact",
+        "Believes biodegradable waste is always safe"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 1, as biodegradable waste can still cause pollution during decomposition. The other options reflect common misconceptions about biodegradable waste.",
+      "sources": [
+        {
+          "document": "ncert/10/science/jesc113.pdf",
+          "ordinal": 8,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 13: Our Environment",
+            "13.1 ECO13.1 ECO-SYSTEM — WHA13.1 ECO-SYSTEM — WHA-SYSTEM — WHAT ARE ITS COMPONENTS?-SYSTEM — WHAT ARE ITS COMPONENTS?",
+            "13.2.2 Managing the Garbage we Produce"
+          ]
+        },
+        {
+          "document": "ncert/10/science/jesc113.pdf",
+          "ordinal": 9,
+          "pageStart": 8,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 13: Our Environment",
+            "13.1 ECO13.1 ECO-SYSTEM — WHA13.1 ECO-SYSTEM — WHA-SYSTEM — WHAT ARE ITS COMPONENTS?-SYSTEM — WHAT ARE ITS COMPONENTS?",
+            "13.2.2 Managing the Garbage we Produce"
+          ]
+        },
+        {
+          "document": "ncert/10/science/jesc113.pdf",
+          "ordinal": 10,
+          "pageStart": 9,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 13: Our Environment",
+            "What you have learnt"
+          ]
+        },
+        {
+          "document": "ncert/10/science/jesc113.pdf",
+          "ordinal": 11,
+          "pageStart": 10,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 13: Our Environment",
+            "What you have learnt"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-28T02:12:34.256Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is the term used for all interacting organisms in an area along with the non-living components of the environment?",
+      "choices": [
+        "Ecosystem",
+        "Biosphere",
+        "Community",
+        "Population"
+      ],
+      "answerIndex": 0,
+      "solution": "An ecosystem refers to all interacting organisms in an area along with the non-living components of the environment. The biosphere is the largest ecological level, encompassing all ecosystems. A community consists only of living organisms, and a population refers to a single species in an area.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक क्षेत्र में अंतःक्रियाशील जीवों के साथ पर्यावरण के गैर-जैविक घटकों के लिए उपयोग किया जाने वाला शब्द क्या है?",
+          "choices": [
+            "पारिस्थितिक तंत्र",
+            "जीवमंडल",
+            "समुदाय",
+            "जनसंख्या"
+          ],
+          "solution": "एक पारिस्थितिक तंत्र एक क्षेत्र में अंतःक्रियाशील जीवों के साथ पर्यावरण के गैर-जैविक घटकों के लिए उपयोग किया जाने वाला शब्द है। जीवमंडल सबसे बड़ा पारिस्थितिक स्तर है, जो सभी पारिस्थितिक तंत्र को शामिल करता है। समुदाय केवल जैविक घटकों से बना होता है, और जनसंख्या किसी एक प्रजाति के क्षेत्र में जीवों की संख्या को दर्शाती है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, with appropriate Hindi terminology used for ecological concepts. The structure and meaning of the question and options match the original English version.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका भागातील सर्व अन्योन्य क्रियाशील जीव आणि वातावरणाच्या जीवनरहित घटकांच्या एकत्रित असण्यासाठी वापरलेला शब्द काय आहे?",
+          "choices": [
+            "पारिस्थितिक तंत्र",
+            "जीवमंडल",
+            "समुदाय",
+            "लोकसंख्या"
+          ],
+          "solution": "पारिस्थितिक तंत्र एका भागातील सर्व अन्योन्य क्रियाशील जीव आणि वातावरणाच्या जीवनरहित घटकांच्या एकत्रित असण्यासाठी वापरलेला शब्द आहे. जीवमंडल हा सर्वात मोठा पारिस्थितिक स्तर आहे, जो सर्व पारिस्थितिक तंत्रांना समाविष्ट करतो. समुदाय केवळ जीवन घटकांनी बनलेला असतो आणि लोकसंख्या एका भागातील एका प्रजातीला संदर्भित करते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, with appropriate Marathi ecological terminology used. The meaning of the question and options is preserved, and the correct answer remains option (1).",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses the term 'ecosystem' with 'biosphere'",
+        "Confuses the term 'ecosystem' with 'community'",
+        "Confuses the term 'ecosystem' with 'population'"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-constructed and the correct answer (ecosystem) is clearly defined. The distractors are common misconceptions that students might have, and the author's reasoning for them is accurate.",
+      "sources": [
+        {
+          "document": "ncert/10/science/jesc113.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 1,
+          "headingPath": [
+            "Chapter 13: Our Environment"
+          ]
+        },
+        {
+          "document": "ncert/10/science/jesc113.pdf",
+          "ordinal": 1,
+          "pageStart": 1,
+          "pageEnd": 1,
+          "headingPath": [
+            "Chapter 13: Our Environment",
+            "13.1 ECO13.1 ECO-SYSTEM — WHA13.1 ECO-SYSTEM — WHA-SYSTEM — WHAT ARE ITS COMPONENTS?-SYSTEM — WHAT ARE ITS COMPONENTS?"
+          ]
+        },
+        {
+          "document": "ncert/10/science/jesc113.pdf",
+          "ordinal": 2,
+          "pageStart": 2,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 13: Our Environment",
+            "13.1 ECO13.1 ECO-SYSTEM — WHA13.1 ECO-SYSTEM — WHA-SYSTEM — WHAT ARE ITS COMPONENTS?-SYSTEM — WHAT ARE ITS COMPONENTS?"
+          ]
+        },
+        {
+          "document": "ncert/10/science/jesc113.pdf",
+          "ordinal": 3,
+          "pageStart": 3,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 13: Our Environment",
+            "13.1 ECO13.1 ECO-SYSTEM — WHA13.1 ECO-SYSTEM — WHA-SYSTEM — WHAT ARE ITS COMPONENTS?-SYSTEM — WHAT ARE ITS COMPONENTS?",
+            "13.1.1 Food Chains and Webs"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T20:46:30.165Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is the term for the different levels in a food chain?",
+      "choices": [
+        "Trophic levels",
+        "Energy levels",
+        "Biome levels",
+        "Ecological levels"
+      ],
+      "answerIndex": 0,
+      "solution": "The term for the different levels in a food chain is trophic levels, which refers to the position an organism occupies in the transfer of energy. Energy levels, biome levels, and ecological levels are not scientifically recognized terms for these positions in a food chain.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "खाद्य श्रृंखला में अलग-अलग स्तरों के लिए शब्द क्या है?",
+          "choices": [
+            "ट्रॉफिक स्तर",
+            "ऊर्जा स्तर",
+            "जैवमंडल स्तर",
+            "पारिस्थितिक स्तर"
+          ],
+          "solution": "खाद्य श्रृंखला में अलग-अलग स्तरों के लिए शब्द ट्रॉफिक स्तर है, जो कि ऊर्जा के स्थानांतरण में एक जीव के स्थान को संदर्भित करता है। ऊर्जा स्तर, जैवमंडल स्तर और पारिस्थितिक स्तर खाद्य श्रृंखला में इन स्थानों के लिए वैज्ञानिक रूप से स्वीकृत शब्द नहीं हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. Technical terms like 'ट्रॉफिक स्तर' (trophic levels) are correctly used, and the distractors remain incorrect as in the original.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खाद्य प्रसारातील विविध स्तरांच्या नावाचा शोध घ्या?",
+          "choices": [
+            "ट्रॉफिक स्तर",
+            "ऊर्जा स्तर",
+            "जैवमंडल स्तर",
+            "पारिस्थितिक स्तर"
+          ],
+          "solution": "खाद्य प्रसारातील विविध स्तरांचे नाव ट्रॉफिक स्तर आहे, जे ऊर्जेच्या हस्तांतरणात एखाद्या सजीवाच्या स्थितीला संदर्भित करते. ऊर्जा स्तर, जैवमंडल स्तर आणि पारिस्थितिक स्तर हे खाद्य प्रसारातील या स्थितींसाठी वैज्ञानिकदृष्ट्या मान्य केलेले नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology commonly found in textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses trophic levels with energy levels",
+        "Misunderstands the term for different levels in a food chain",
+        "Confuses ecological levels with trophic levels"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 'Trophic levels,' as this is the standard scientific term used to describe the different levels in a food chain. The other options are not standard terminology in this context and represent common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/10/science/jesc113.pdf",
+          "ordinal": 4,
+          "pageStart": 3,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 13: Our Environment",
+            "13.1 ECO13.1 ECO-SYSTEM — WHA13.1 ECO-SYSTEM — WHA-SYSTEM — WHAT ARE ITS COMPONENTS?-SYSTEM — WHAT ARE ITS COMPONENTS?",
+            "13.1.1 Food Chains and Webs"
+          ]
+        },
+        {
+          "document": "ncert/10/science/jesc113.pdf",
+          "ordinal": 5,
+          "pageStart": 5,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 13: Our Environment",
+            "13.1 ECO13.1 ECO-SYSTEM — WHA13.1 ECO-SYSTEM — WHA-SYSTEM — WHAT ARE ITS COMPONENTS?-SYSTEM — WHAT ARE ITS COMPONENTS?",
+            "13.1.1 Food Chains and Webs",
+            "1 3 . 2 HOW DO OUR ACTIVITIES AFFECT THE"
+          ]
+        },
+        {
+          "document": "ncert/10/science/jesc113.pdf",
+          "ordinal": 6,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 13: Our Environment",
+            "13.1 ECO13.1 ECO-SYSTEM — WHA13.1 ECO-SYSTEM — WHA-SYSTEM — WHAT ARE ITS COMPONENTS?-SYSTEM — WHAT ARE ITS COMPONENTS?",
+            "13.2.1 Ozone Layer and How it is Getting Depleted"
+          ]
+        },
+        {
+          "document": "ncert/10/science/jesc113.pdf",
+          "ordinal": 7,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 13: Our Environment",
+            "13.1 ECO13.1 ECO-SYSTEM — WHA13.1 ECO-SYSTEM — WHA-SYSTEM — WHAT ARE ITS COMPONENTS?-SYSTEM — WHAT ARE ITS COMPONENTS?",
+            "13.2.2 Managing the Garbage we Produce"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T20:46:30.165Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "Which of the following is a characteristic of biodegradable substances?",
+      "choices": [
+        "They remain in the environment for a long time",
+        "They are not broken down by natural processes",
+        "They are broken down by biological processes",
+        "They are not broken down by human-made processes"
+      ],
+      "answerIndex": 2,
+      "solution": "Biodegradable substances are broken down by biological processes. The other options describe non-biodegradable substances, which do not break down easily and can harm the environment.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सी बायोडिग्रेडेबल पदार्थों की विशेषता है?",
+          "choices": [
+            "वे पर्यावरण में लंबे समय तक रहते हैं",
+            "वे प्राकृतिक प्रक्रियाओं द्वारा नहीं टूटते हैं",
+            "वे जैविक प्रक्रियाओं द्वारा टूट जाते हैं",
+            "वे मानव-निर्मित प्रक्रियाओं द्वारा नहीं टूटते हैं"
+          ],
+          "solution": "बायोडिग्रेडेबल पदार्थ जैविक प्रक्रियाओं द्वारा टूट जाते हैं। अन्य विकल्प अबायोडिग्रेडेबल पदार्थों का वर्णन करते हैं, जो आसानी से टूट नहीं पाते हैं और पर्यावरण के लिए हानिकारक हो सकते हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology for biological processes.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते बायोडिग्रेडेबल पदार्थांचे वैशिष्ट्य आहे?",
+          "choices": [
+            "ते पर्यावरणात लांब काळ राहतात",
+            "ते प्राकृतिक प्रक्रियांद्वारे विघटित होत नाहीत",
+            "ते जैविक प्रक्रियांद्वारे विघटित होतात",
+            "ते मानवनिर्मित प्रक्रियांद्वारे विघटित होत नाहीत"
+          ],
+          "solution": "बायोडिग्रेडेबल पदार्थ जैविक प्रक्रियांद्वारे विघटित होतात. इतर विकल्प अबायोडिग्रेडेबल पदार्थांचे वर्णन करतात, जे सहज विघटित होत नाहीत आणि पर्यावरणाला नुकसान पोहोचवू शकतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for biological processes.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses biodegradable with non-biodegradable",
+        "Confuses biodegradable with non-biodegradable",
+        null,
+        "Students may confuse natural with human-made processes, thinking that biodegradable materials only break down if humans intervene"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 2, as biodegradable substances are indeed broken down by biological processes. The author's reasoning for the distractors is valid and reflects common student misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/10/science/jesc113.pdf",
+          "ordinal": 8,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 13: Our Environment",
+            "13.1 ECO13.1 ECO-SYSTEM — WHA13.1 ECO-SYSTEM — WHA-SYSTEM — WHAT ARE ITS COMPONENTS?-SYSTEM — WHAT ARE ITS COMPONENTS?",
+            "13.2.2 Managing the Garbage we Produce"
+          ]
+        },
+        {
+          "document": "ncert/10/science/jesc113.pdf",
+          "ordinal": 9,
+          "pageStart": 8,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 13: Our Environment",
+            "13.1 ECO13.1 ECO-SYSTEM — WHA13.1 ECO-SYSTEM — WHA-SYSTEM — WHAT ARE ITS COMPONENTS?-SYSTEM — WHAT ARE ITS COMPONENTS?",
+            "13.2.2 Managing the Garbage we Produce"
+          ]
+        },
+        {
+          "document": "ncert/10/science/jesc113.pdf",
+          "ordinal": 10,
+          "pageStart": 9,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 13: Our Environment",
+            "What you have learnt"
+          ]
+        },
+        {
+          "document": "ncert/10/science/jesc113.pdf",
+          "ordinal": 11,
+          "pageStart": 10,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 13: Our Environment",
+            "What you have learnt"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T20:46:30.165Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If an aquarium is not cleaned regularly, what might happen to the organisms in it?",
+      "choices": [
+        "The organisms might grow faster",
+        "The organisms might not get enough oxygen",
+        "The organisms might start eating each other",
+        "The organisms might become more active"
+      ],
+      "answerIndex": 1,
+      "solution": "Without regular cleaning, waste and harmful substances can build up in the water, reducing the amount of oxygen available. This lack of oxygen can harm or even kill the organisms living in the aquarium. The other options do not directly result from the accumulation of waste and are not as scientifically accurate as the oxygen issue.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक आक्वेरियम को नियमित रूप से साफ नहीं किया जाता है, तो इसके जीवों पर क्या हो सकता है?",
+          "choices": [
+            "जीव अधिक तेजी से बढ़ सकते हैं",
+            "जीवों को पर्याप्त ऑक्सीजन नहीं मिल सकती है",
+            "जीव एक दूसरे को खा लेंगे",
+            "जीव अधिक सक्रिय हो जाएंगे"
+          ],
+          "solution": "नियमित साफ करने के बिना, जल में अपशिष्ट और हानिकारक पदार्थ जमा हो सकते हैं, जो उपलब्ध ऑक्सीजन की मात्रा कम कर सकते हैं। ऑक्सीजन की कमी आक्वेरियम में रहने वाले जीवों को नुकसान पहुंचा सकती है। अन्य विकल्प अपशिष्ट के जमाव से सीधे परिणाम नहीं हैं और ऑक्सीजन की समस्या के बराबर वैज्ञानिक रूप से सटीक नहीं हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the scientific meaning, and uses appropriate Hindi terminology for aquarium and biological concepts.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर टाकी नियमितपणे स्वच्छ केली जात नाही, तर तितक्यातील सजीवांवर काय परिणाम होऊ शकतो?",
+          "choices": [
+            "सजीव जलद वाढू शकतात",
+            "सजीवांना पुरेसा ऑक्सिजन मिळणार नाही",
+            "सजीव एकमेकांचे खाऊ शकतात",
+            "सजीव अधिक सक्रिय होऊ शकतात"
+          ],
+          "solution": "नियमित स्वच्छता न ठेवल्याने पाण्यात अपशिष्ट आणि हानिकारक पदार्थ जमा होऊ शकतात, ज्यामुळे ऑक्सिजनची पुरेशी पातळी घटते. ऑक्सिजनच्या अभावामुळे टाकीतील सजीवांवर नुकसान होऊ शकतो. इतर विकल्पांमध्ये अपशिष्टाच्या जमामुळे सीधा परिणाम होत नाही आणि ऑक्सिजनच्या समस्येपेक्षा ते वैज्ञानिकदृष्ट्या अधिक अचूक नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Believes that not cleaning an aquarium leads to faster growth",
+        null,
+        "Believes that not cleaning an aquarium causes organisms to eat each other",
+        "Believes that not cleaning an aquarium increases activity levels"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 1, as the accumulation of waste and dead organisms in an uncleaned aquarium leads to reduced oxygen levels and poor water quality, which harms the organisms. The other options represent common misconceptions about the effects of not cleaning an aquarium.",
+      "sources": [
+        {
+          "document": "ncert/10/science/jesc113.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 1,
+          "headingPath": [
+            "Chapter 13: Our Environment"
+          ]
+        },
+        {
+          "document": "ncert/10/science/jesc113.pdf",
+          "ordinal": 1,
+          "pageStart": 1,
+          "pageEnd": 1,
+          "headingPath": [
+            "Chapter 13: Our Environment",
+            "13.1 ECO13.1 ECO-SYSTEM — WHA13.1 ECO-SYSTEM — WHA-SYSTEM — WHAT ARE ITS COMPONENTS?-SYSTEM — WHAT ARE ITS COMPONENTS?"
+          ]
+        },
+        {
+          "document": "ncert/10/science/jesc113.pdf",
+          "ordinal": 2,
+          "pageStart": 2,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 13: Our Environment",
+            "13.1 ECO13.1 ECO-SYSTEM — WHA13.1 ECO-SYSTEM — WHA-SYSTEM — WHAT ARE ITS COMPONENTS?-SYSTEM — WHAT ARE ITS COMPONENTS?"
+          ]
+        },
+        {
+          "document": "ncert/10/science/jesc113.pdf",
+          "ordinal": 3,
+          "pageStart": 3,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 13: Our Environment",
+            "13.1 ECO13.1 ECO-SYSTEM — WHA13.1 ECO-SYSTEM — WHA-SYSTEM — WHAT ARE ITS COMPONENTS?-SYSTEM — WHAT ARE ITS COMPONENTS?",
+            "13.1.1 Food Chains and Webs"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T20:46:30.165Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If a person consumes food containing pesticide residues, what is the most likely effect on their body?",
+      "choices": [
+        "The body will break down the pesticides easily",
+        "The pesticides will be completely removed by washing",
+        "Pesticides may accumulate in the body over time",
+        "Pesticides will have no effect on the body"
+      ],
+      "answerIndex": 2,
+      "solution": "Pesticides may accumulate in the body over time because they are not easily broken down and can build up with repeated exposure. The body does not efficiently break down pesticides, so they can remain in the body for extended periods. Washing may reduce pesticide residues but does not guarantee complete removal, and pesticides can have harmful effects even in small amounts.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि कोई व्यक्ति कीटनाशक अवशेषों वाला भोजन खाता है, तो उसके शरीर पर सबसे संभावित प्रभाव क्या होगा?",
+          "choices": [
+            "शरीर कीटनाशकों को आसानी से तोड़ देगा",
+            "कीटनाशक धोने से पूरी तरह से हटा दिए जाएंगे",
+            "कीटनाशक शरीर में समय के साथ संचित हो सकते हैं",
+            "कीटनाशक शरीर पर कोई प्रभाव नहीं डालेंगे"
+          ],
+          "solution": "कीटनाशक शरीर में समय के साथ संचित हो सकते हैं क्योंकि वे आसानी से तोड़े नहीं जा सकते और बार-बार संपर्क के साथ एकत्रित हो सकते हैं। शरीर कीटनाशकों को अच्छी तरह से तोड़ नहीं सकता, इसलिए वे लंबे समय तक शरीर में रह सकते हैं। धोने से कीटनाशक अवशेष कम हो सकते हैं लेकिन पूरी तरह से हटाने की गारंटी नहीं होती, और छोटी मात्रा में भी कीटनाशक हानिकारक प्रभाव डाल सकते हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English original in meaning, technical terms, and option structure. The correct answer remains option (3), and all distractors remain incorrect.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर कोणत्याही व्यक्तीने कीटकनाशक अवशेष असलेले खाद्य खाल्ले, तर त्यांच्या शरीरावर सर्वात जास्त संभाव्य परिणाम काय असेल?",
+          "choices": [
+            "शरीर कीटकनाशकांचे सोपे विघटन करेल",
+            "कीटकनाशक धुऊन पूर्णपणे काढले जातील",
+            "कीटकनाशक शरीरामध्ये समयानुसार संचय होऊ शकतात",
+            "कीटकनाशकांचा शरीरावर कोणताही परिणाम होणार नाही"
+          ],
+          "solution": "कीटकनाशक शरीरामध्ये समयानुसार संचय होऊ शकतात, कारण ते सोपे विघटित होत नाहीत आणि दुरुस्त प्रतिक्रियेने त्यांचा संचय होऊ शकतो. शरीर कीटकनाशकांचे अस्तित्वात नियमितपणे उपस्थित राहू शकते. धुऊन कीटकनाशकांचे अवशेष कमी करता येतात परंतु पूर्णपणे काढून टाकणे निश्चित नाही, आणि लहान प्रमाणातही कीटकनाशकांचा शरीरावर हानिकारक परिणाम होऊ शकतो.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for technical concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Believes pesticides are easily broken down by the body",
+        "Thinks washing removes all pesticide residues",
+        null,
+        "Does not understand the concept of biological magnification and assumes pesticides are harmless."
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly identifies that pesticides can accumulate in the body due to biological magnification, and the reasoning for the incorrect options aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/10/science/jesc113.pdf",
+          "ordinal": 4,
+          "pageStart": 3,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 13: Our Environment",
+            "13.1 ECO13.1 ECO-SYSTEM — WHA13.1 ECO-SYSTEM — WHA-SYSTEM — WHAT ARE ITS COMPONENTS?-SYSTEM — WHAT ARE ITS COMPONENTS?",
+            "13.1.1 Food Chains and Webs"
+          ]
+        },
+        {
+          "document": "ncert/10/science/jesc113.pdf",
+          "ordinal": 5,
+          "pageStart": 5,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 13: Our Environment",
+            "13.1 ECO13.1 ECO-SYSTEM — WHA13.1 ECO-SYSTEM — WHA-SYSTEM — WHAT ARE ITS COMPONENTS?-SYSTEM — WHAT ARE ITS COMPONENTS?",
+            "13.1.1 Food Chains and Webs",
+            "1 3 . 2 HOW DO OUR ACTIVITIES AFFECT THE"
+          ]
+        },
+        {
+          "document": "ncert/10/science/jesc113.pdf",
+          "ordinal": 6,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 13: Our Environment",
+            "13.1 ECO13.1 ECO-SYSTEM — WHA13.1 ECO-SYSTEM — WHA-SYSTEM — WHAT ARE ITS COMPONENTS?-SYSTEM — WHAT ARE ITS COMPONENTS?",
+            "13.2.1 Ozone Layer and How it is Getting Depleted"
+          ]
+        },
+        {
+          "document": "ncert/10/science/jesc113.pdf",
+          "ordinal": 7,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 13: Our Environment",
+            "13.1 ECO13.1 ECO-SYSTEM — WHA13.1 ECO-SYSTEM — WHA-SYSTEM — WHAT ARE ITS COMPONENTS?-SYSTEM — WHAT ARE ITS COMPONENTS?",
+            "13.2.2 Managing the Garbage we Produce"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T20:46:30.165Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If all the waste generated is biodegradable, what impact will it have on the environment?",
+      "choices": [
+        "It will cause no harm to the environment",
+        "It will lead to foul smells and harmful gases",
+        "It will increase the ozone layer",
+        "It will reduce the number of organisms in the ecosystem"
+      ],
+      "answerIndex": 1,
+      "solution": "Even biodegradable waste can cause foul smells and harmful gases during decomposition. The other options are incorrect because they either ignore the potential negative effects or are unrelated to the question.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि उत्पन्न होने वाला सारा अपशिष्ट जैविक रूप से अपघटनीय हो, तो यह पर्यावरण पर क्या प्रभाव डालेगा?",
+          "choices": [
+            "इससे पर्यावरण को कोई हानि नहीं होगी",
+            "इससे बदबू और हानिकारक गैसें होंगी",
+            "इससे ओजोन परत बढ़ जाएगी",
+            "इससे पारिस्थितिकी तंत्र में जीवों की संख्या कम हो जाएगी"
+          ],
+          "solution": "जैविक रूप से अपघटनीय अपशिष्ट के अपघटन के दौरान बदबू और हानिकारक गैसें हो सकती हैं। अन्य विकल्प गलत हैं क्योंकि वे नकारात्मक प्रभाव को अनदेखा कर देते हैं या प्रश्न से संबंधित नहीं हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate technical terms as found in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर सर्व उत्पन्न जैविक अपघटनीय असेल तर त्याचा पर्यावरणावर काय परिणाम होईल?",
+          "choices": [
+            "ते पर्यावरणाला कोणताही त्रास देणार नाही",
+            "ते असुखद वास आणि हानिकारक वायूंच्या उत्पादनास लावेल",
+            "ते ओझोन पर्ती वाढवील",
+            "ते परिसंस्थेतील सजीवांची संख्या कमी करील"
+          ],
+          "solution": "जैविक अपघटनीय उत्पन्न अपघटनादरम्यान असुखद वास आणि हानिकारक वायूंच्या उत्पादनास लावू शकते. इतर विकल्प चुकीचे आहेत कारण ते नकारात्मक परिणामांचा निर्लेख करतात किंवा प्रश्नाशी संबंधित नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation accurately reflects the original meaning, with appropriate Marathi technical terms and correct answer positioning.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Assumes biodegradable waste has no negative impact",
+        null,
+        "Misinterprets the effects of biodegradable waste",
+        "Confuses the impact of biodegradable waste with other environmental issues"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 1, as biodegradable waste can still produce foul smells and harmful gases during decomposition. The other options represent common misconceptions or incorrect assumptions about biodegradable waste.",
+      "sources": [
+        {
+          "document": "ncert/10/science/jesc113.pdf",
+          "ordinal": 8,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 13: Our Environment",
+            "13.1 ECO13.1 ECO-SYSTEM — WHA13.1 ECO-SYSTEM — WHA-SYSTEM — WHAT ARE ITS COMPONENTS?-SYSTEM — WHAT ARE ITS COMPONENTS?",
+            "13.2.2 Managing the Garbage we Produce"
+          ]
+        },
+        {
+          "document": "ncert/10/science/jesc113.pdf",
+          "ordinal": 9,
+          "pageStart": 8,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 13: Our Environment",
+            "13.1 ECO13.1 ECO-SYSTEM — WHA13.1 ECO-SYSTEM — WHA-SYSTEM — WHAT ARE ITS COMPONENTS?-SYSTEM — WHAT ARE ITS COMPONENTS?",
+            "13.2.2 Managing the Garbage we Produce"
+          ]
+        },
+        {
+          "document": "ncert/10/science/jesc113.pdf",
+          "ordinal": 10,
+          "pageStart": 9,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 13: Our Environment",
+            "What you have learnt"
+          ]
+        },
+        {
+          "document": "ncert/10/science/jesc113.pdf",
+          "ordinal": 11,
+          "pageStart": 10,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 13: Our Environment",
+            "What you have learnt"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T20:46:30.165Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "Which of the following is an example of a non-biodegradable substance?",
+      "choices": [
+        "Leather",
+        "Plastic",
+        "Wood",
+        "Fruit-peels"
+      ],
+      "answerIndex": 1,
+      "solution": "Plastic is a non-biodegradable substance because it does not break down easily in the environment. Leather, wood, and fruit-peels are biodegradable as they can be broken down naturally.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन एक अजैव निम्नीकरणीय पदार्थ का उदाहरण है?",
+          "choices": [
+            "चमड़ा",
+            "प्लास्टिक",
+            "लकड़ी",
+            "फलों के छिलके"
+          ],
+          "solution": "प्लास्टिक एक अजैव निम्नीकरणीय पदार्थ है क्योंकि यह पर्यावरण में आसानी से टूट नहीं जाता है। चमड़ा, लकड़ी और फलों के छिलके जैव निम्नीकरणीय होते हैं क्योंकि वे प्राकृतिक रूप से टूट सकते हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English content with appropriate terminology used in Indian school textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते अजैविक द्रव्याचे उदाहरण आहे?",
+          "choices": [
+            "चरखी",
+            "प्लास्टिक",
+            "लाकूड",
+            "फळांचे वासरे"
+          ],
+          "solution": "प्लास्टिक अजैविक द्रव्य आहे कारण ते वातावरणात सहज विघटित होत नाही. चरखी, लाकूड आणि फळांचे वासरे जैविक आहेत कारण ते प्राकृतिक प्रकारे विघटित होऊ शकतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, with appropriate Marathi terms for 'non-biodegradable' (अजैविक) and 'biodegradable' (जैविक). The structure and meaning match the English version.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses biodegradable with non-biodegradable",
+        null,
+        "Misidentifies the properties of non-biodegradable substances",
+        "Incorrectly classifies biodegradable materials as non-biodegradable"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 1 (Plastic), as it is non-biodegradable. The author's solution and reasoning are accurate and align with scientific understanding.",
+      "sources": [
+        {
+          "document": "ncert/10/science/jesc113.pdf",
+          "ordinal": 8,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 13: Our Environment",
+            "13.1 ECO13.1 ECO-SYSTEM — WHA13.1 ECO-SYSTEM — WHA-SYSTEM — WHAT ARE ITS COMPONENTS?-SYSTEM — WHAT ARE ITS COMPONENTS?",
+            "13.2.2 Managing the Garbage we Produce"
+          ]
+        },
+        {
+          "document": "ncert/10/science/jesc113.pdf",
+          "ordinal": 9,
+          "pageStart": 8,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 13: Our Environment",
+            "13.1 ECO13.1 ECO-SYSTEM — WHA13.1 ECO-SYSTEM — WHA-SYSTEM — WHAT ARE ITS COMPONENTS?-SYSTEM — WHAT ARE ITS COMPONENTS?",
+            "13.2.2 Managing the Garbage we Produce"
+          ]
+        },
+        {
+          "document": "ncert/10/science/jesc113.pdf",
+          "ordinal": 10,
+          "pageStart": 9,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 13: Our Environment",
+            "What you have learnt"
+          ]
+        },
+        {
+          "document": "ncert/10/science/jesc113.pdf",
+          "ordinal": 11,
+          "pageStart": 10,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 13: Our Environment",
+            "What you have learnt"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T20:46:30.165Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "If an aquarium is not cleaned regularly, what might happen to the water quality?",
+      "choices": [
+        "It becomes clearer",
+        "It becomes more oxygen-rich",
+        "It becomes polluted",
+        "It becomes less acidic"
+      ],
+      "answerIndex": 2,
+      "solution": "If an aquarium is not cleaned, waste from fish and decaying matter can build up, leading to pollution. This can harm the fish and make the water dirty. The other options do not reflect the consequences of poor maintenance.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक जलसंचयी टैंक को नियमित रूप से साफ नहीं किया जाता है, तो जल की गुणवत्ता में क्या हो सकता है?",
+          "choices": [
+            "यह स्पष्ट हो जाता है",
+            "यह अधिक ऑक्सीजन युक्त हो जाता है",
+            "यह प्रदूषित हो जाता है",
+            "यह कम अम्लीय हो जाता है"
+          ],
+          "solution": "यदि जलसंचयी टैंक को साफ नहीं किया जाता है, तो मछलियों के अपशिष्ट और क्षतिग्रस्त पदार्थ जमा हो सकते हैं, जिसके परिणामस्वरूप प्रदूषण होता है। इससे मछलियों को नुकसान हो सकता है और जल गंदा हो सकता है। अन्य विकल्प खराब रखरखाव के परिणामों को प्रतिबिंबित नहीं करते हैं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriately used in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर आक्वेरियम नियमितपणे साफ करण्यात आले नाही, तर पाण्याची गुणवत्ता काय होऊ शकते?",
+          "choices": [
+            "ते अधिक स्पष्ट होते",
+            "ते अधिक ऑक्सिजन धरलेले असते",
+            "ते दूषित होते",
+            "ते कमी अम्लीय होते"
+          ],
+          "solution": "जर आक्वेरियम साफ करण्यात आले नाही, तर मासे आणि अपशिष्ट पदार्थांचे अपघटन होऊ शकते, जे दूषणाला कारणीभूत ठरते. हे मासे आणि पाणी दुषित करू शकते. इतर पर्याय खराब देखभालच्या परिणामांचे प्रतिनिधित्व करत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Misunderstands the impact of not cleaning",
+        "Confuses pollution with oxygen enrichment",
+        null,
+        "Students may confuse pollution with changes in pH, thinking that without cleaning, the water becomes less acidic instead of more polluted."
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 2, as lack of cleaning leads to accumulation of waste and pollution. The author's reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/10/science/jesc113.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 1,
+          "headingPath": [
+            "Chapter 13: Our Environment"
+          ]
+        },
+        {
+          "document": "ncert/10/science/jesc113.pdf",
+          "ordinal": 1,
+          "pageStart": 1,
+          "pageEnd": 1,
+          "headingPath": [
+            "Chapter 13: Our Environment",
+            "13.1 ECO13.1 ECO-SYSTEM — WHA13.1 ECO-SYSTEM — WHA-SYSTEM — WHAT ARE ITS COMPONENTS?-SYSTEM — WHAT ARE ITS COMPONENTS?"
+          ]
+        },
+        {
+          "document": "ncert/10/science/jesc113.pdf",
+          "ordinal": 2,
+          "pageStart": 2,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 13: Our Environment",
+            "13.1 ECO13.1 ECO-SYSTEM — WHA13.1 ECO-SYSTEM — WHA-SYSTEM — WHAT ARE ITS COMPONENTS?-SYSTEM — WHAT ARE ITS COMPONENTS?"
+          ]
+        },
+        {
+          "document": "ncert/10/science/jesc113.pdf",
+          "ordinal": 3,
+          "pageStart": 3,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 13: Our Environment",
+            "13.1 ECO13.1 ECO-SYSTEM — WHA13.1 ECO-SYSTEM — WHA-SYSTEM — WHAT ARE ITS COMPONENTS?-SYSTEM — WHAT ARE ITS COMPONENTS?",
+            "13.1.1 Food Chains and Webs"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T20:46:30.165Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "In a region where most waste is biodegradable, what could be the potential environmental impact?",
+      "choices": [
+        "It will not affect the environment",
+        "It will cause excessive pollution",
+        "It will enrich the atmosphere with oxygen",
+        "It will lead to the spread of diseases"
+      ],
+      "answerIndex": 3,
+      "solution": "Biodegradable waste, when present in large amounts, can create unhygienic conditions that support the growth of harmful germs, which can lead to the spread of diseases. Other options are incorrect because biodegradable waste can still affect the environment, it does not typically cause excessive pollution in the same way non-biodegradable waste does, and it does not enrich the atmosphere with oxygen.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "जहां अधिकांश अपशिष्ट जैविक रूप से अविघटनशील होता है, वातावरण पर संभावित प्रभाव क्या हो सकता है?",
+          "choices": [
+            "इससे वातावरण पर कोई प्रभाव नहीं पड़ेगा",
+            "इससे अत्यधिक प्रदूषण होगा",
+            "इससे वायुमंडल में ऑक्सीजन समृद्ध होगा",
+            "इससे रोगों का प्रसार होगा"
+          ],
+          "solution": "जैविक रूप से अविघटनशील अपशिष्ट, बड़ी मात्रा में उपस्थित होने पर अस्वच्छ स्थिति उत्पन्न कर सकता है जो हानिकारक जीवाणुओं के विकास को समर्थन दे सकता है, जो रोगों के प्रसार का कारण बन सकता है। अन्य विकल्प गलत हैं क्योंकि जैविक रूप से अविघटनशील अपशिष्ट वातावरण पर असर डाल सकता है, यह अक्सर अजैविक रूप से अविघटनशील अपशिष्ट के समान तरीके से अत्यधिक प्रदूषण नहीं पैदा करता है और वायुमंडल में ऑक्सीजन को समृद्ध नहीं करता है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate technical terms commonly found in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "बायोडिग्रेडेबल कचरा असलेल्या एका भागात, वातावरणावर काय शक्य परिणाम होऊ शकतो?",
+          "choices": [
+            "ते वातावरणाला प्रभावित करणार नाही",
+            "ते अतिशय दूषण निर्माण करेल",
+            "ते हवेला ऑक्सिजन शिल्लक ठेवेल",
+            "ते रोगांच्या पसरणीला लावेल"
+          ],
+          "solution": "बायोडिग्रेडेबल कचरा, मोठ्या प्रमाणात असल्यास, अस्वच्छ अवस्था निर्माण करू शकतो जी हानिकारक जीवाणूंच्या वाढीला आवश्यकता असते, जी रोगांच्या पसरणीला लावू शकते. इतर विकल्प अयोग्य आहेत कारण बायोडिग्रेडेबल कचरा वातावरणाला अजूनही प्रभावित करू शकतो, ते अनबायोडिग्रेडेबल कचराप्रमाणे अतिशय दूषण निर्माण करत नाही आणि ते हवेला ऑक्सिजन शिल्लक ठेवत नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for environmental science concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Understands that biodegradable waste is not harmful",
+        "Thinks biodegradable waste enriches the atmosphere",
+        "Misunderstands the impact of biodegradable waste",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 3, as biodegradable waste can lead to the spread of diseases if not managed properly. The reasoning in the author's solution is sound and aligns with the explanation provided.",
+      "sources": [
+        {
+          "document": "ncert/10/science/jesc113.pdf",
+          "ordinal": 4,
+          "pageStart": 3,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 13: Our Environment",
+            "13.1 ECO13.1 ECO-SYSTEM — WHA13.1 ECO-SYSTEM — WHA-SYSTEM — WHAT ARE ITS COMPONENTS?-SYSTEM — WHAT ARE ITS COMPONENTS?",
+            "13.1.1 Food Chains and Webs"
+          ]
+        },
+        {
+          "document": "ncert/10/science/jesc113.pdf",
+          "ordinal": 5,
+          "pageStart": 5,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 13: Our Environment",
+            "13.1 ECO13.1 ECO-SYSTEM — WHA13.1 ECO-SYSTEM — WHA-SYSTEM — WHAT ARE ITS COMPONENTS?-SYSTEM — WHAT ARE ITS COMPONENTS?",
+            "13.1.1 Food Chains and Webs",
+            "1 3 . 2 HOW DO OUR ACTIVITIES AFFECT THE"
+          ]
+        },
+        {
+          "document": "ncert/10/science/jesc113.pdf",
+          "ordinal": 6,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 13: Our Environment",
+            "13.1 ECO13.1 ECO-SYSTEM — WHA13.1 ECO-SYSTEM — WHA-SYSTEM — WHAT ARE ITS COMPONENTS?-SYSTEM — WHAT ARE ITS COMPONENTS?",
+            "13.2.1 Ozone Layer and How it is Getting Depleted"
+          ]
+        },
+        {
+          "document": "ncert/10/science/jesc113.pdf",
+          "ordinal": 7,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 13: Our Environment",
+            "13.1 ECO13.1 ECO-SYSTEM — WHA13.1 ECO-SYSTEM — WHA-SYSTEM — WHAT ARE ITS COMPONENTS?-SYSTEM — WHAT ARE ITS COMPONENTS?",
+            "13.2.2 Managing the Garbage we Produce"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T20:46:30.165Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "Which of the following is an environment-friendly practice?",
+      "choices": [
+        "Using plastic bags for shopping",
+        "Leaving lights on when not in use",
+        "Using a scooter for short distances",
+        "Using cloth-bags for shopping"
+      ],
+      "answerIndex": 3,
+      "solution": "Using cloth-bags for shopping is an environment-friendly practice because it reduces plastic waste. The other options contribute to environmental pollution.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सी पर्यावरण अनुकूल प्रथा है?",
+          "choices": [
+            "शॉपिंग के लिए प्लास्टिक के बैग का उपयोग करना",
+            "उपयोग न करते समय लाइट जले रहना",
+            "छोटी दूरी के लिए स्कूटर का उपयोग करना",
+            "शॉपिंग के लिए कपड़े के बैग का उपयोग करना"
+          ],
+          "solution": "शॉपिंग के लिए कपड़े के बैग का उपयोग करना पर्यावरण अनुकूल प्रथा है क्योंकि यह प्लास्टिक के अपशिष्ट को कम करता है। अन्य विकल्प पर्यावरण प्रदूषण में योगदान देते हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the original English question and solution, with appropriate terminology used in a Hindi-medium educational context.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणता वातावरण मित्रपूर्ण प्रथा आहे?",
+          "choices": [
+            "शॉपिंगसाठी प्लास्टिकच्या बॅगा वापरणे",
+            "वापरले नसताना दिवे चालू ठेवणे",
+            "लहान अंतरासाठी स्कूटर वापरणे",
+            "शॉपिंगसाठी कापडाच्या बॅगा वापरणे"
+          ],
+          "solution": "शॉपिंगसाठी कापडाच्या बॅगा वापरणे ही वातावरण मित्रपूर्ण प्रथा आहे कारण ती प्लास्टिकच्या अपशिष्टाचे प्रमाण कमी करते. इतर विकल्प वातावरणीय प्रदूषणास कारणीभूत ठरतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for environmental concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Chooses a practice that increases plastic waste",
+        "Chooses a practice that wastes energy",
+        "Misunderstands the concept of environment-friendly practices",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 3, as cloth-bags reduce plastic waste. The other options are clearly harmful to the environment. The author's reasoning for the wrong options is valid and reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/10/science/jesc113.pdf",
+          "ordinal": 8,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 13: Our Environment",
+            "13.1 ECO13.1 ECO-SYSTEM — WHA13.1 ECO-SYSTEM — WHA-SYSTEM — WHAT ARE ITS COMPONENTS?-SYSTEM — WHAT ARE ITS COMPONENTS?",
+            "13.2.2 Managing the Garbage we Produce"
+          ]
+        },
+        {
+          "document": "ncert/10/science/jesc113.pdf",
+          "ordinal": 9,
+          "pageStart": 8,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 13: Our Environment",
+            "13.1 ECO13.1 ECO-SYSTEM — WHA13.1 ECO-SYSTEM — WHA-SYSTEM — WHAT ARE ITS COMPONENTS?-SYSTEM — WHAT ARE ITS COMPONENTS?",
+            "13.2.2 Managing the Garbage we Produce"
+          ]
+        },
+        {
+          "document": "ncert/10/science/jesc113.pdf",
+          "ordinal": 10,
+          "pageStart": 9,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 13: Our Environment",
+            "What you have learnt"
+          ]
+        },
+        {
+          "document": "ncert/10/science/jesc113.pdf",
+          "ordinal": 11,
+          "pageStart": 10,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 13: Our Environment",
+            "What you have learnt"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T20:46:30.165Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Why do harmful chemicals like pesticides get accumulated in human bodies through the food chain?",
+      "choices": [
+        "Because they are non-biodegradable and get stored in fat tissues",
+        "Because they are easily broken down by the body",
+        "Because they are not absorbed by plants",
+        "Because they are only found in animals"
+      ],
+      "answerIndex": 0,
+      "solution": "Harmful chemicals like pesticides accumulate in human bodies because they are non-biodegradable and can be stored in fat tissues, making them difficult for the body to eliminate. The other options are incorrect because the body does not easily break down these chemicals, plants can absorb them, and these chemicals are not exclusive to animals.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "क्यों अवांछनीय रसायन जैसे कीटनाशक मनुष्यों के शरीर में खाद्य श्रृंखला के माध्यम से संचित हो जाते हैं?",
+          "choices": [
+            "क्योंकि वे अविघटनशील होते हैं और वसा के ऊतकों में संग्रहीत हो जाते हैं",
+            "क्योंकि वे शरीर द्वारा सरलता से अपघटित हो जाते हैं",
+            "क्योंकि वे पौधों द्वारा अवशोषित नहीं होते हैं",
+            "क्योंकि वे केवल जानवरों में पाए जाते हैं"
+          ],
+          "solution": "कीटनाशक जैसे अवांछनीय रसायन मनुष्यों के शरीर में इसलिए संचित हो जाते हैं क्योंकि वे अविघटनशील होते हैं और वसा के ऊतकों में संग्रहीत हो जाते हैं, जिसके कारण शरीर उन्हें निकालने में कठिनाई महसूस करता है। अन्य विकल्प गलत हैं क्योंकि शरीर इन रसायनों को सरलता से अपघटित नहीं करता है, पौधे इन्हें अवशोषित कर सकते हैं, और ये रसायन जानवरों में ही नहीं पाए जाते हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology consistent with standard science textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "काही अवांछनी रसायनांचे जसे की कीटकनाशकांचे मानवांच्या शरीरात खाद्य प्रणालीमार्फत संचय होतो कारण काय?",
+          "choices": [
+            "कारण ते अविघटनीय असून ते चरबीच्या ऊतीत साठवले जातात",
+            "कारण ते शरीराद्वारे सहज विघटित होतात",
+            "कारण ते वनस्पतींद्वारे अवशोषित केले जात नाहीत",
+            "कारण ते फक्त प्राण्यांमध्ये आढळतात"
+          ],
+          "solution": "कीटकनाशकांसारखी अवांछनी रसायने मानवांच्या शरीरात जमा होतात कारण ते अविघटनीय असून ते चरबीच्या ऊतीत साठवले जातात, ज्यामुळे शरीराला त्यांचे निष्कासन कठीण होते. इतर विकल्प चुकीचे आहेत कारण शरीर या रसायनांचे सहज विघटन करू शकत नाही, वनस्पती त्यांचे अवशोषण करू शकतात आणि या रसायनांचे अस्तित्व प्राण्यांमध्येच मर्यादित नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology consistent with textbook language.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Thinks harmful chemicals are easily broken down",
+        "Misunderstands how pesticides enter the food chain",
+        "Believes pesticides are only found in animals"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 0, as non-biodegradable pesticides accumulate in fat tissues and biomagnify through the food chain. The other options represent common misconceptions about pesticide behavior.",
+      "sources": [
+        {
+          "document": "ncert/10/science/jesc113.pdf",
+          "ordinal": 4,
+          "pageStart": 3,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 13: Our Environment",
+            "13.1 ECO13.1 ECO-SYSTEM — WHA13.1 ECO-SYSTEM — WHA-SYSTEM — WHAT ARE ITS COMPONENTS?-SYSTEM — WHAT ARE ITS COMPONENTS?",
+            "13.1.1 Food Chains and Webs"
+          ]
+        },
+        {
+          "document": "ncert/10/science/jesc113.pdf",
+          "ordinal": 5,
+          "pageStart": 5,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 13: Our Environment",
+            "13.1 ECO13.1 ECO-SYSTEM — WHA13.1 ECO-SYSTEM — WHA-SYSTEM — WHAT ARE ITS COMPONENTS?-SYSTEM — WHAT ARE ITS COMPONENTS?",
+            "13.1.1 Food Chains and Webs",
+            "1 3 . 2 HOW DO OUR ACTIVITIES AFFECT THE"
+          ]
+        },
+        {
+          "document": "ncert/10/science/jesc113.pdf",
+          "ordinal": 6,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 13: Our Environment",
+            "13.1 ECO13.1 ECO-SYSTEM — WHA13.1 ECO-SYSTEM — WHA-SYSTEM — WHAT ARE ITS COMPONENTS?-SYSTEM — WHAT ARE ITS COMPONENTS?",
+            "13.2.1 Ozone Layer and How it is Getting Depleted"
+          ]
+        },
+        {
+          "document": "ncert/10/science/jesc113.pdf",
+          "ordinal": 7,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 13: Our Environment",
+            "13.1 ECO13.1 ECO-SYSTEM — WHA13.1 ECO-SYSTEM — WHA-SYSTEM — WHAT ARE ITS COMPONENTS?-SYSTEM — WHAT ARE ITS COMPONENTS?",
+            "13.2.2 Managing the Garbage we Produce"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T20:46:30.165Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "If a food chain has four trophic levels, what is the main reason for the limited number of organisms at the top of the chain?",
+      "choices": [
+        "There is not enough sunlight for producers to grow",
+        "The energy available decreases at each level",
+        "The number of predators increases at higher levels",
+        "The environment becomes too cold for higher-level organisms"
+      ],
+      "answerIndex": 1,
+      "solution": "The energy available decreases at each level because only a small fraction of the energy from one trophic level is transferred to the next, limiting the number of organisms that can be supported at higher levels. The other options are incorrect because sunlight availability affects only producers, predator numbers do not necessarily increase with trophic level, and temperature changes are not the primary factor in limiting organism numbers in food chains.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक खाद्य श्रृंखला में चार पोषी स्तर हैं, तो श्रृंखला के शीर्ष पर जीवों की संख्या सीमित होने का मुख्य कारण क्या है?",
+          "choices": [
+            "उत्पादकों के लिए पर्याप्त सूर्य प्रकाश नहीं होता है",
+            "प्रत्येक स्तर पर उपलब्ध ऊर्जा घटती जाती है",
+            "उच्च स्तर पर लूटेरों की संख्या बढ़ जाती है",
+            "उच्च स्तर के जीवों के लिए वातावरण बहुत ठंडा हो जाता है"
+          ],
+          "solution": "प्रत्येक स्तर पर उपलब्ध ऊर्जा घटती जाती है क्योंकि एक पोषी स्तर से अगले स्तर तक केवल ऊर्जा के छोटे अंश का स्थानांतरण होता है, जिससे उच्च स्तर पर समर्थित जीवों की संख्या सीमित रहती है। अन्य विकल्प गलत हैं क्योंकि सूर्य प्रकाश की उपलब्धता केवल उत्पादकों को प्रभावित करती है, पोषी स्तर के साथ लूटेरों की संख्या आवश्यक रूप से बढ़ती नहीं है और तापमान में परिवर्तन खाद्य श्रृंखलाओं में जीवों की संख्या को सीमित करने का मुख्य कारक नहीं है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate biological terminology as found in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका अन्न प्रवाहात चार जैविक स्तर असल्यास, प्रवाहाच्या शीर्षस्थानी असलेल्या सजीवांची संख्या मर्यादित असते याचा मुख्य कारण काय आहे?",
+          "choices": [
+            "उत्पादकांना वाढण्यासाठी पुरेसे सूर्यप्रकाश नाही",
+            "प्रत्येक स्तरावर उपलब्ध ऊर्जा कमी होते",
+            "उच्च स्तरांवर प्राण्यांची संख्या वाढते",
+            "उच्च स्तरांवरील सजीवांसाठी वातावरण खूप थंड होते"
+          ],
+          "solution": "प्रत्येक स्तरावर उपलब्ध ऊर्जा कमी होते, कारण एका जैविक स्तरावरील ऊर्जेच्या लहान भागाचा अनुक्रमे दुसऱ्या स्तरावर वापर होतो, ज्यामुळे उच्च स्तरांवर समर्थित करण्यासाठी असलेल्या सजीवांची संख्या मर्यादित राहते. इतर विकल्प अयोग्य आहेत कारण सूर्यप्रकाश उत्पादकांवरच असर करतो, प्राण्यांची संख्या जैविक स्तरावर निश्चितपणे वाढत नाही आणि तापमानात बदल हा अन्न प्रवाहात सजीवांच्या संख्येच्या मर्यादेचा प्रमुख कारण नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Focuses on sunlight rather than energy transfer",
+        null,
+        "Misunderstands the role of energy in the ecosystem",
+        "Does not understand that energy loss limits the number of organisms at higher trophic levels."
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 1, as energy loss at each trophic level limits the number of organisms at higher levels. The other options reflect common misconceptions about ecosystems.",
+      "sources": [
+        {
+          "document": "ncert/10/science/jesc113.pdf",
+          "ordinal": 4,
+          "pageStart": 3,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 13: Our Environment",
+            "13.1 ECO13.1 ECO-SYSTEM — WHA13.1 ECO-SYSTEM — WHA-SYSTEM — WHAT ARE ITS COMPONENTS?-SYSTEM — WHAT ARE ITS COMPONENTS?",
+            "13.1.1 Food Chains and Webs"
+          ]
+        },
+        {
+          "document": "ncert/10/science/jesc113.pdf",
+          "ordinal": 5,
+          "pageStart": 5,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 13: Our Environment",
+            "13.1 ECO13.1 ECO-SYSTEM — WHA13.1 ECO-SYSTEM — WHA-SYSTEM — WHAT ARE ITS COMPONENTS?-SYSTEM — WHAT ARE ITS COMPONENTS?",
+            "13.1.1 Food Chains and Webs",
+            "1 3 . 2 HOW DO OUR ACTIVITIES AFFECT THE"
+          ]
+        },
+        {
+          "document": "ncert/10/science/jesc113.pdf",
+          "ordinal": 6,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 13: Our Environment",
+            "13.1 ECO13.1 ECO-SYSTEM — WHA13.1 ECO-SYSTEM — WHA-SYSTEM — WHAT ARE ITS COMPONENTS?-SYSTEM — WHAT ARE ITS COMPONENTS?",
+            "13.2.1 Ozone Layer and How it is Getting Depleted"
+          ]
+        },
+        {
+          "document": "ncert/10/science/jesc113.pdf",
+          "ordinal": 7,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 13: Our Environment",
+            "13.1 ECO13.1 ECO-SYSTEM — WHA13.1 ECO-SYSTEM — WHA-SYSTEM — WHAT ARE ITS COMPONENTS?-SYSTEM — WHAT ARE ITS COMPONENTS?",
+            "13.2.2 Managing the Garbage we Produce"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T20:46:30.165Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "What is the main reason for the concern about damage to the ozone layer?",
+      "choices": [
+        "It causes acid rain",
+        "It increases the temperature of the Earth",
+        "It allows more ultraviolet radiation to reach the Earth's surface",
+        "It reduces the availability of oxygen in the atmosphere"
+      ],
+      "answerIndex": 2,
+      "solution": "Damage to the ozone layer allows more ultraviolet radiation to reach the Earth's surface, which can harm living organisms. The other options describe different environmental issues that are not directly related to the ozone layer.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "ओज़ोन परत के नुकसान के बारे में चिंता का मुख्य कारण क्या है?",
+          "choices": [
+            "यह अम्लीय वर्षा का कारण बनता है",
+            "यह पृथ्वी के तापमान को बढ़ाता है",
+            "यह पृथ्वी की सतह तक अधिक पराबैंगनी विकिरण पहुंचाता है",
+            "यह वातावरण में ऑक्सीजन की उपलब्धता कम करता है"
+          ],
+          "solution": "ओज़ोन परत के नुकसान के कारण पृथ्वी की सतह तक अधिक पराबैंगनी विकिरण पहुंचता है, जो जीवित जीवों को नुकसान पहुंचा सकता है। अन्य विकल्प ओज़ोन परत से सीधे संबंधित नहीं हैं बल्कि अलग पर्यावरणीय समस्याओं का वर्णन करते हैं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriately used in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "ओझोन थर क्षतीच्या धोक्याबद्दल चिंतेचे मुख्य कारण काय आहे?",
+          "choices": [
+            "ते अम्ल वृष्टी निर्माण करते",
+            "ते पृथ्वीच्या तापमानाच्या वाढीस प्रोत्साहन देते",
+            "ते पृथ्वीच्या पृष्ठभागावर पोहोचण्यासाठी अधिक पराबैंगुन विकिरणाची परवानगी देते",
+            "ते वातावरणातील ऑक्सिजनच्या उपलब्धतेचे कमी करते"
+          ],
+          "solution": "ओझोन थर क्षतीमुळे पृथ्वीच्या पृष्ठभागावर पोहोचण्यासाठी अधिक पराबैंगुन विकिरणाची परवानगी दिली जाते, जे जीवितांना हानी पोहोचवू शकते. इतर विकल्पांमध्ये ओझोन थराशी सीधा संबंध नसलेल्या वेगळ्या पर्यावरणीय समस्या वर्णन केल्या आहेत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the effects of the ozone layer with other environmental problems",
+        "Misunderstands the role of the ozone layer",
+        null,
+        "Misinterprets the impact of the ozone layer on the Earth's climate"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 2, as ozone depletion allows more UV radiation to reach the surface. The author's reasoning for the other options is valid and reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/10/science/jesc113.pdf",
+          "ordinal": 8,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 13: Our Environment",
+            "13.1 ECO13.1 ECO-SYSTEM — WHA13.1 ECO-SYSTEM — WHA-SYSTEM — WHAT ARE ITS COMPONENTS?-SYSTEM — WHAT ARE ITS COMPONENTS?",
+            "13.2.2 Managing the Garbage we Produce"
+          ]
+        },
+        {
+          "document": "ncert/10/science/jesc113.pdf",
+          "ordinal": 9,
+          "pageStart": 8,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 13: Our Environment",
+            "13.1 ECO13.1 ECO-SYSTEM — WHA13.1 ECO-SYSTEM — WHA-SYSTEM — WHAT ARE ITS COMPONENTS?-SYSTEM — WHAT ARE ITS COMPONENTS?",
+            "13.2.2 Managing the Garbage we Produce"
+          ]
+        },
+        {
+          "document": "ncert/10/science/jesc113.pdf",
+          "ordinal": 10,
+          "pageStart": 9,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 13: Our Environment",
+            "What you have learnt"
+          ]
+        },
+        {
+          "document": "ncert/10/science/jesc113.pdf",
+          "ordinal": 11,
+          "pageStart": 10,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 13: Our Environment",
+            "What you have learnt"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T20:46:30.165Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
     }
   ]
 }

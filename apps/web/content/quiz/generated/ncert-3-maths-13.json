@@ -582,6 +582,303 @@
       "generatedAt": "2026-10-28T03:00:35.910Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "How many days are there in a week?",
+      "choices": [
+        "5 days",
+        "6 days",
+        "7 days",
+        "8 days"
+      ],
+      "answerIndex": 2,
+      "solution": "There are 7 days in a week because the standard calendar system divides time into seven distinct days: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, and Sunday. The option '5 days' is incorrect because it omits two days of the week. '6 days' is wrong because it leaves out one day, and '8 days' is incorrect because it adds an extra day that does not exist in the standard week.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक सप्ताह में कितने दिन होते हैं?",
+          "choices": [
+            "5 दिन",
+            "6 दिन",
+            "7 दिन",
+            "8 दिन"
+          ],
+          "solution": "एक सप्ताह में 7 दिन होते हैं क्योंकि मानक कैलेंडर प्रणाली समय को सात अलग-अलग दिनों में विभाजित करती है: सोमवार, मंगलवार, बुधवार, गुरुवार, शुक्रवार, शनिवार और रविवार। विकल्प '5 दिन' गलत है क्योंकि यह सप्ताह के दो दिन छोड़ देता है। '6 दिन' गलत है क्योंकि यह एक दिन छोड़ देता है, और '8 दिन' गलत है क्योंकि यह एक अतिरिक्त दिन जोड़ देता है जो मानक सप्ताह में नहीं होता है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Hindi terms for days of the week.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका आठवड्यात किती दिवस असतात?",
+          "choices": [
+            "5 दिवस",
+            "6 दिवस",
+            "7 दिवस",
+            "8 दिवस"
+          ],
+          "solution": "एका आठवड्यात 7 दिवस असतात कारण मानक कॅलेंडर प्रणाली वेळेला सात वेगवेगळ्या दिवसांमध्ये विभागते: सोमवार, मंगळवार, बुधवार, बुधवार, गुरुवार, शुक्रवार, शनिवार आणि रविवार. '5 दिवस' अयोग्य आहे कारण ते आठवड्यातील दोन दिवस बाजूला ठेवते. '6 दिवस' अयोग्य आहे कारण ते एक दिवस बाजूला ठेवते, आणि '8 दिवस' अयोग्य आहे कारण ते मानक आठवड्यात असलेल्या एका दिवसाच्या जागी एक अतिरिक्त दिवस जोडते.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses standard Marathi terms for days of the week.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "misses two days of the week",
+        "misses one day of the week",
+        null,
+        "adds an extra day"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The question is straightforward and tests basic knowledge of the number of days in a week. The correct answer is 7, and the author's reasoning for the incorrect options is valid and reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/3/mathematics/cemm113.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 13: Time G oes O n",
+            "July"
+          ]
+        },
+        {
+          "document": "ncert/3/mathematics/cemm113.pdf",
+          "ordinal": 1,
+          "pageStart": 4,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 13: Time G oes O n",
+            "Age Fun"
+          ]
+        },
+        {
+          "document": "ncert/3/mathematics/cemm113.pdf",
+          "ordinal": 2,
+          "pageStart": 6,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 13: Time G oes O n",
+            "Age Fun",
+            "Let us Play"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T21:31:23.414Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "What is the total number of days in the month of July?",
+      "choices": [
+        "28 days",
+        "29 days",
+        "30 days",
+        "31 days"
+      ],
+      "answerIndex": 3,
+      "solution": "July is one of the months that has 31 days. February has 28 or 29 days depending on the year, and months like April have 30 days. Therefore, the correct answer is 31 days.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "जुलाई माह में कुल कितने दिन होते हैं?",
+          "choices": [
+            "28 दिन",
+            "29 दिन",
+            "30 दिन",
+            "31 दिन"
+          ],
+          "solution": "जुलाई उन महीनों में से एक है जिसमें 31 दिन होते हैं। फरवरी में 28 या 29 दिन होते हैं जो वर्ष पर निर्भर करते हैं, और अप्रैल जैसे महीनों में 30 दिन होते हैं। इसलिए सही उत्तर 31 दिन है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard Hindi terms for months and days.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जुलै महिन्यात एकूण किती दिवस असतात?",
+          "choices": [
+            "28 दिवस",
+            "29 दिवस",
+            "30 दिवस",
+            "31 दिवस"
+          ],
+          "solution": "जुलै हा महिना एक असा महिना आहे ज्यात 31 दिवस असतात. फेब्रुवारी महिन्यात 28 किंवा 30 दिवस असतात, तर एप्रिल महिन्यात 30 दिवस असतात. म्हणून, योग्य उत्तर 31 दिवस आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Marathi terminology for months and days.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "number of days in February",
+        "leap year February",
+        "number of days in April",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is straightforward and the correct answer is 31 days. The author's reasoning for the distractors is accurate and reflects common misconceptions about the number of days in different months.",
+      "sources": [
+        {
+          "document": "ncert/3/mathematics/cemm113.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 13: Time G oes O n",
+            "July"
+          ]
+        },
+        {
+          "document": "ncert/3/mathematics/cemm113.pdf",
+          "ordinal": 1,
+          "pageStart": 4,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 13: Time G oes O n",
+            "Age Fun"
+          ]
+        },
+        {
+          "document": "ncert/3/mathematics/cemm113.pdf",
+          "ordinal": 2,
+          "pageStart": 6,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 13: Time G oes O n",
+            "Age Fun",
+            "Let us Play"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T21:31:23.414Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "If Hetal is twice as old as her brother and also 10 years older than her brother, how old is her brother?",
+      "choices": [
+        "5 years",
+        "10 years",
+        "15 years",
+        "20 years"
+      ],
+      "answerIndex": 0,
+      "solution": "Let the brother's age be x. Then Hetal's age is 2x. According to the problem, 2x = x + 10, so x = 5. The brother is 5 years old. '10 years' is the difference, not the brother's age. '15 years' and '20 years' are incorrect as they do not satisfy the condition.",
+      "checkExpr": "10/2",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "अगर हेटल अपने भाई से दोगुनी उम्र की है और अपने भाई से 10 साल बड़ी है, तो उसका भाई कितने साल का है?",
+          "choices": [
+            "5 साल",
+            "10 साल",
+            "15 साल",
+            "20 साल"
+          ],
+          "solution": "मान लीजिए भाई की उम्र x है। तो हेटल की उम्र 2x है। समस्या के अनुसार, 2x = x + 10, इसलिए x = 5। भाई 5 साल का है। '10 साल' अंतर है, भाई की उम्र नहीं। '15 साल' और '20 साल' गलत हैं क्योंकि वे स्थिति को संतुष्ट नहीं करते।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate terminology common in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "हेटल आपल्या भाऊपेक्षा दुप्पट वयाची आहे आणि आपल्या भाऊपेक्षा 10 वर्षांनी जास्त वयाची आहे, तर तिचा भाऊ किती वर्षांचा आहे?",
+          "choices": [
+            "5 वर्ष",
+            "10 वर्ष",
+            "15 वर्ष",
+            "20 वर्ष"
+          ],
+          "solution": "मानू तिच्या भाऊचे वय x आहे. तर हेटलचे वय 2x आहे. समस्येनुसार, 2x = x + 10, म्हणून x = 5. भाऊ 5 वर्षांचा आहे. '10 वर्ष' हे फरक आहे, भाऊचे वय नाही. '15 वर्ष' आणि '20 वर्ष' अयोग्य आहेत कारण ते अट पूर्ण करत नाहीत.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate terminology. The solution and options are correctly translated and retain their original logic.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "confuses the age difference with the brother's age",
+        "adds the age difference",
+        "multiplies the age difference"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is logically sound and correctly solves the equation. The reasoning for the distractors aligns with common misconceptions students might have.",
+      "sources": [
+        {
+          "document": "ncert/3/mathematics/cemm113.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 13: Time G oes O n",
+            "July"
+          ]
+        },
+        {
+          "document": "ncert/3/mathematics/cemm113.pdf",
+          "ordinal": 1,
+          "pageStart": 4,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 13: Time G oes O n",
+            "Age Fun"
+          ]
+        },
+        {
+          "document": "ncert/3/mathematics/cemm113.pdf",
+          "ordinal": 2,
+          "pageStart": 6,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 13: Time G oes O n",
+            "Age Fun",
+            "Let us Play"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T21:31:23.414Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
     }
   ]
 }

@@ -361,6 +361,101 @@
       "generatedAt": "2026-11-01T22:57:04.978Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "If the radius of a circle is 35 cm, what is its circumference?",
+      "choices": [
+        "110 cm",
+        "220 cm",
+        "385 cm",
+        "770 cm"
+      ],
+      "answerIndex": 1,
+      "solution": "The circumference of a circle is calculated using the formula c = 2πr. With a radius of 35 cm and π approximated as 22/7, the calculation is 2 × 22/7 × 35 = 220 cm. The other options are incorrect because they result from errors in applying the formula or using the wrong value for π.",
+      "checkExpr": "2*(22/7)*35",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक वृत्त की त्रिज्या 35 सेमी है, तो इसकी परिधि क्या है?",
+          "choices": [
+            "110 सेमी",
+            "220 सेमी",
+            "385 सेमी",
+            "770 सेमी"
+          ],
+          "solution": "एक वृत्त की परिधि की गणना सूत्र c = 2πr के उपयोग से की जाती है। 35 सेमी की त्रिज्या वाले वृत्त में π के मान के रूप में 22/7 लेने पर गणना 2 × 22/7 × 35 = 220 सेमी होती है। अन्य विकल्प गलत फॉर्मूला के उपयोग या गलत π के मान के कारण गलत हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology as taught in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका वर्तुळाच्या त्रिज्येचे माप 35 सेंमी आहे, तर त्याची परिमिती किती असेल?",
+          "choices": [
+            "110 सेंमी",
+            "220 सेंमी",
+            "385 सेंमी",
+            "770 सेंमी"
+          ],
+          "solution": "एका वर्तुळाची परिमिती वर्तुळाच्या त्रिज्येच्या आधारे c = 2πr या सूत्राने गणली जाते. 35 सेंमी त्रिज्या आणि π च्या मूल्याच्या अंदाजे 22/7 असताना गणना 2 × 22/7 × 35 = 220 सेंमी असते. इतर विकल्प चुकीच्या सूत्राच्या अपूर्ण अर्थाने किंवा चुकीच्या π च्या मूल्याने मिळतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "incorrectly used π = 3.14 and got 219.8 cm",
+        null,
+        "used diameter instead of radius in the formula",
+        "incorrectly used π = 7"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly applies the formula c = 2πr with π = 22/7 and r = 35 cm, resulting in 220 cm. The author's reasoning for the distractors is valid and reflects common student misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/7/mathematics/703020004.pdf",
+          "ordinal": 55,
+          "pageStart": 85,
+          "pageEnd": 86,
+          "headingPath": [
+            "11. Circle"
+          ]
+        },
+        {
+          "document": "balbharati/7/mathematics/703020004.pdf",
+          "ordinal": 56,
+          "pageStart": 86,
+          "pageEnd": 88,
+          "headingPath": [
+            "11. Circle"
+          ]
+        },
+        {
+          "document": "balbharati/7/mathematics/703020004.pdf",
+          "ordinal": 57,
+          "pageStart": 88,
+          "pageEnd": 89,
+          "headingPath": [
+            "11. Circle"
+          ]
+        }
+      ],
+      "edition": "2026 edition",
+      "generatedAt": "2026-10-31T12:13:56.869Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
     }
   ]
 }

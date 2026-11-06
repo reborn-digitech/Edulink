@@ -1226,6 +1226,1826 @@
       "generatedAt": "2026-10-30T03:06:54.677Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is the term used for atoms of the same element that have the same number of protons but different numbers of neutrons?",
+      "choices": [
+        "Isotones",
+        "Isobars",
+        "Isotopes",
+        "Isomers"
+      ],
+      "answerIndex": 2,
+      "solution": "Isotopes are atoms of the same element that have the same number of protons but different numbers of neutrons, which gives them different mass numbers. Isotones have the same number of neutrons but different protons, isobars have the same mass number but different protons, and isomers are different arrangements of atoms within a molecule.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक ही तत्व के परमाणुओं के लिए क्या शब्द प्रयोग किया जाता है जिनके प्रोटॉनों की संख्या समान होती है लेकिन न्यूट्रॉनों की संख्या अलग-अलग होती है?",
+          "choices": [
+            "आइसोटोन्स",
+            "आइसोबार्स",
+            "आइसोटोप्स",
+            "आइसोमर्स"
+          ],
+          "solution": "आइसोटोप्स एक ही तत्व के परमाणु होते हैं जिनके प्रोटॉनों की संख्या समान होती है लेकिन न्यूट्रॉनों की संख्या अलग-अलग होती है, जिसके कारण उनकी द्रव्यमान संख्या अलग होती है। आइसोटोन्स के समान न्यूट्रॉन होते हैं लेकिन अलग-अलग प्रोटॉन, आइसोबार्स की समान द्रव्यमान संख्या होती है लेकिन अलग-अलग प्रोटॉन, और आइसोमर्स अणु के भीतर परमाणुओं की अलग-अलग व्यवस्था होती है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses standard scientific terminology used in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका घटकाचे परमाणू ज्यांच्या प्रोटॉन संख्या समान असतात पण न्यूट्रॉन संख्या वेगवेगळ्या असतात अशा परमाणूंसाठी वापरलेला शब्द काय आहे?",
+          "choices": [
+            "इसोटोन्स",
+            "इसोबार्स",
+            "इसोटोप्स",
+            "इसोमर्स"
+          ],
+          "solution": "इसोटोप्स हे एका घटकाचे परमाणू आहेत ज्यांच्या प्रोटॉन संख्या समान असतात पण न्यूट्रॉन संख्या वेगवेगळ्या असतात, ज्यामुळे त्यांचे द्रव्यमान संख्या वेगवेगळ्या असतात. इसोटोन्स ला समान न्यूट्रॉन संख्या असतात पण प्रोटॉन संख्या वेगवेगळ्या असतात, इसोबार्स ला समान द्रव्यमान संख्या असतात पण प्रोटॉन संख्या वेगवेगळ्या असतात, आणि इसोमर्स हे अणूंच्या विविध व्यवस्थांचे विविध रूप आहेत.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, with appropriate technical terms and correct answer positioning. The solution explanation aligns with the English version.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "confuses isotones with isotopes",
+        "confuses isobars with isotopes",
+        null,
+        "Confuses isotopes with isomers, thinking they are different forms of the same molecule"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-constructed, and the solution correctly identifies 'isotopes' as the correct term. The distractors are common misconceptions that students might have, and the author's reasoning for each is valid.",
+      "sources": [
+        {
+          "document": "ncert/9/science/iesc108.pdf",
+          "ordinal": 20,
+          "pageStart": 15,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 8: Journey Inside the Atom",
+            "8.9 A Deeper Look into Atomic Structure",
+            "8.9.1 Isotopes"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc108.pdf",
+          "ordinal": 21,
+          "pageStart": 15,
+          "pageEnd": 17,
+          "headingPath": [
+            "Chapter 8: Journey Inside the Atom",
+            "8.9 A Deeper Look into Atomic Structure",
+            "8.9.1 Isotopes",
+            "A. Average atomic mass"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc108.pdf",
+          "ordinal": 22,
+          "pageStart": 17,
+          "pageEnd": 17,
+          "headingPath": [
+            "Chapter 8: Journey Inside the Atom",
+            "8.9 A Deeper Look into Atomic Structure",
+            "8.9.2 Isobars"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-22T15:25:07.502Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of the following elements has an electronic configuration of 2, 8, 1?",
+      "choices": [
+        "Oxygen",
+        "Sodium",
+        "Chlorine",
+        "Argon"
+      ],
+      "answerIndex": 1,
+      "solution": "Sodium has an atomic number of 11, which means it has 11 electrons. These electrons fill the shells as 2 in the first, 8 in the second, and 1 in the third, resulting in the configuration 2, 8, 1. Oxygen has 8 electrons, giving it a configuration of 2, 6. Chlorine has 17 electrons, leading to 2, 8, 7. Argon has 18 electrons, resulting in 2, 8, 8. Therefore, sodium is the correct answer.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा तत्व इलेक्ट्रॉनिक विन्यास 2, 8, 1 का होता है?",
+          "choices": [
+            "ऑक्सीजन",
+            "सोडियम",
+            "क्लोरीन",
+            "आर्गॉन"
+          ],
+          "solution": "सोडियम का परमाणु क्रमांक 11 होता है, जिसका अर्थ है कि इसमें 11 इलेक्ट्रॉन होते हैं। इन इलेक्ट्रॉनों के कक्षों में भरने के बाद 2 पहले कक्ष में, 8 दूसरे कक्ष में और 1 तीसरे कक्ष में होते हैं, जिससे विन्यास 2, 8, 1 प्राप्त होता है। ऑक्सीजन के पास 8 इलेक्ट्रॉन होते हैं, जिसके कारण इसका विन्यास 2, 6 होता है। क्लोरीन के पास 17 इलेक्ट्रॉन होते हैं, जिसके कारण इसका विन्यास 2, 8, 7 होता है। आर्गॉन के पास 18 इलेक्ट्रॉन होते हैं, जिसके कारण इसका विन्यास 2, 8, 8 होता है। इसलिए सोडियम सही उत्तर है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard Hindi terminology for chemistry concepts.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणत्या घटकाचे इलेक्ट्रॉन वितरण 2, 8, 1 आहे?",
+          "choices": [
+            "ऑक्सीजन",
+            "सोडियम",
+            "क्लोरीन",
+            "अर्गॉन"
+          ],
+          "solution": "सोडियम चे परमाणु क्रमांक 11 आहे, जे 11 इलेक्ट्रॉन दर्शवते. या इलेक्ट्रॉन वितरण 2, 8, 1 असा होतो. ऑक्सीजन ला 8 इलेक्ट्रॉन असतात, ज्यामुळे त्याचे वितरण 2, 6 असते. क्लोरीन ला 17 इलेक्ट्रॉन असतात, ज्यामुळे त्याचे वितरण 2, 8, 7 असते. अर्गॉन ला 18 इलेक्ट्रॉन असतात, ज्यामुळे त्याचे वितरण 2, 8, 8 असते. म्हणून सोडियम हे बरोबर उत्तर आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the correct answer position, and uses standard Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the electronic configuration of oxygen",
+        null,
+        "Confuses the electronic configuration of chlorine",
+        "Confuses the electronic configuration of argon"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is sodium (option 1), as its electronic configuration is indeed 2, 8, 1. The distractors are based on common misconceptions about the electronic configurations of oxygen, chlorine, and argon.",
+      "sources": [
+        {
+          "document": "ncert/9/science/iesc108.pdf",
+          "ordinal": 16,
+          "pageStart": 12,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 8: Journey Inside the Atom",
+            "8.7 How Are Electrons Distributed in Different",
+            "Energy Levels?"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc108.pdf",
+          "ordinal": 17,
+          "pageStart": 13,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 8: Journey Inside the Atom",
+            "8.7 How Are Electrons Distributed in Different",
+            "Energy Levels?"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc108.pdf",
+          "ordinal": 18,
+          "pageStart": 14,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 8: Journey Inside the Atom",
+            "8.8 Combining Capacity of an Atom: Valency"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc108.pdf",
+          "ordinal": 19,
+          "pageStart": 14,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 8: Journey Inside the Atom",
+            "8.8 Combining Capacity of an Atom: Valency"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-22T15:25:07.502Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "According to Rutherford's model of the atom, where are the electrons located?",
+      "choices": [
+        "Inside the nucleus",
+        "Throughout the atom's volume",
+        "Surrounding the nucleus in fixed orbits",
+        "Inside the protons"
+      ],
+      "answerIndex": 2,
+      "solution": "Rutherford's model describes the electrons as revolving around the nucleus, similar to how planets orbit the Sun. This model introduced the concept of a central nucleus with electrons moving in orbits around it. The other options are incorrect because they either place electrons inside the nucleus or suggest they are spread out in a way that contradicts the model.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "रदरफोर्ड के परमाणु मॉडल के अनुसार, इलेक्ट्रॉन कहाँ स्थित होते हैं?",
+          "choices": [
+            "न्यूक्लियस के अंदर",
+            "परमाणु के आयतन में पूरे भाग में",
+            "न्यूक्लियस के चारों ओर निश्चित कक्षाओं में",
+            "प्रोटॉन के अंदर"
+          ],
+          "solution": "रदरफोर्ड के मॉडल में इलेक्ट्रॉन न्यूक्लियस के चारों ओर घूमते हैं, जैसे कि ग्रह सूर्य के चारों ओर घूमते हैं। इस मॉडल ने केंद्रीय न्यूक्लियस के साथ इलेक्ट्रॉन के निश्चित कक्षाओं में घूमने की अवधारणा प्रस्तुत की। अन्य विकल्प गलत हैं क्योंकि वे इलेक्ट्रॉनों को न्यूक्लियस के अंदर रखते हैं या इलेक्ट्रॉनों के बराबर वितरण का सुझाव देते हैं जो मॉडल के विरोधी है।",
+          "imageAlt": null,
+          "critique": "Hindi translation accurately reflects the original English question and solution, with appropriate terminology used in Indian science education.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "रदरफोर्डच्या अणूच्या मॉडेलनुसार, इलेक्ट्रॉन कुठे स्थित आहेत?",
+          "choices": [
+            "न्यूक्लियसमध्ये",
+            "अणूच्या आयतनामध्ये",
+            "न्यूक्लियसच्या चारीकडे निश्चित मार्गावर",
+            "प्रोटॉनमध्ये"
+          ],
+          "solution": "रदरफोर्डच्या मॉडेलमध्ये इलेक्ट्रॉन न्यूक्लियसच्या चारीकडे फिरत असतात, जे ग्रहांच्या सूर्याभोवती फिरण्यासारखे आहे. हा मॉडेल एका केंद्रीय न्यूक्लियसचा अस्तित्व आणि इलेक्ट्रॉनचा न्यूक्लियसच्या चारीकडे फिरण्याचा विचार मांडतो. इतर विकल्प चुकीचे आहेत कारण ते इलेक्ट्रॉनला न्यूक्लियसमध्ये ठेवतात किंवा त्यांच्या वितरणाचा असा विचार करतात जो मॉडेलला विरोधी आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Misinterprets the nucleus as containing electrons",
+        "Incorrectly assumes electrons are spread throughout the atom",
+        null,
+        "Confuses the structure of the nucleus with that of the electrons"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly identifies Rutherford's model as having electrons in fixed orbits around the nucleus. The reasoning for the distractors aligns with common misconceptions about atomic structure.",
+      "sources": [
+        {
+          "document": "ncert/9/science/iesc108.pdf",
+          "ordinal": 4,
+          "pageStart": 4,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 8: Journey Inside the Atom",
+            "8.2 A Short Historical Journey Through Atomic Models",
+            "8.2.2 Testing Thomson’s model: The gold foil experiment"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc108.pdf",
+          "ordinal": 5,
+          "pageStart": 5,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 8: Journey Inside the Atom",
+            "8.2 A Short Historical Journey Through Atomic Models",
+            "8.2.2 Testing Thomson’s model: The gold foil experiment"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc108.pdf",
+          "ordinal": 6,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 8: Journey Inside the Atom",
+            "8.2 A Short Historical Journey Through Atomic Models",
+            "8.2.2 Testing Thomson’s model: The gold foil experiment"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc108.pdf",
+          "ordinal": 7,
+          "pageStart": 6,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 8: Journey Inside the Atom",
+            "8.2 A Short Historical Journey Through Atomic Models",
+            "8.2.2 Testing Thomson’s model: The gold foil experiment"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-22T15:25:07.502Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "In the gold foil experiment, most alpha particles passed through the gold foil without deflection. What does this observation suggest about the structure of an atom?",
+      "choices": [
+        "The atom is mostly solid with no empty space",
+        "The atom has a dense, positively charged nucleus",
+        "The atom is mostly empty space with a small, dense nucleus",
+        "The atom has equal amounts of positive and negative charge"
+      ],
+      "answerIndex": 2,
+      "solution": "The observation that most alpha particles passed through the gold foil without deflection suggests that most of the atom is empty space. This supports the idea that the nucleus, which is dense and positively charged, occupies only a very small part of the atom. The other options are incorrect because they either contradict the experimental results or misinterpret the findings.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "स्वर्ण पत्र प्रयोग में, अधिकांश अल्फा कण बिना विचलन के स्वर्ण पत्र से गुजर गए। इस अवलोकन के अनुसार परमाणु की संरचना के बारे में क्या निष्कर्ष निकलता है?",
+          "choices": [
+            "परमाणु अधिकांश रूप से ठोस है जिसमें कोई खाली स्थान नहीं है",
+            "परमाणु में घन, धनात्मक आवेशित नाभिक होता है",
+            "परमाणु अधिकांश रूप से खाली स्थान है जिसमें छोटा, घन नाभिक होता है",
+            "परमाणु में समान मात्रा में धनात्मक एवं ऋणात्मक आवेश होता है"
+          ],
+          "solution": "अधिकांश अल्फा कण बिना विचलन के स्वर्ण पत्र से गुजर जाने का अवलोकन यह सुझाव देता है कि परमाणु का अधिकांश भाग खाली स्थान है। इससे यह विचार समर्थित होता है कि नाभिक, जो घन एवं धनात्मक आवेशित होता है, परमाणु के केवल बहुत कम भाग को घेरता है। अन्य विकल्प गलत हैं क्योंकि वे प्रयोग के परिणामों के विरोध में हैं या खोजों की गलत व्याख्या करते हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate scientific terminology in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "सोन्याच्या पानाच्या प्रयोगात, बहुतेक अल्फा कण सोन्याच्या पानातून विचलित न होता जातात. ही निरीक्षणे परमाणूच्या संरचनेबद्दल काय सूचित करतात?",
+          "choices": [
+            "परमाणू खालील रूपात घन असतो आणि खालील जागा नसते",
+            "परमाणूला घन, धनावेशित नाभिक असतो",
+            "परमाणू खालील जागेने भरलेला असतो आणि छोटा, घन नाभिक असतो",
+            "परमाणूत समान प्रमाणात धन आणि ऋण आवेश असतो"
+          ],
+          "solution": "बहुतेक अल्फा कण सोन्याच्या पानातून विचलित न होता जाणे हे असे सूचित करते की परमाणूच्या अधिकांश भागात खालील जागा असते. हे नाभिकाच्या विचाराला त्याच्या अत्यंत लहान भागात घन आणि धनावेशित असल्याच्या विचाराला त्याच्या अत्यंत लहान भागात घन आणि धनावेशित असल्याच्या विचाराला समर्थन करते. इतर विकल्प चूक आहेत कारण ते प्रयोगाच्या निष्कर्षांशी विरोधात असतात किंवा त्यांचे अस्तित्व चुकीचे असते.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the original meaning, and uses appropriate scientific terminology consistent with Marathi textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the meaning of 'most particles passing through' with the atom being solid",
+        "Misunderstands the role of the nucleus in the atom",
+        null,
+        "Incorrectly assumes the nucleus is not small in comparison to the atom's size"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 2, as the gold foil experiment shows that most alpha particles pass through without deflection, indicating the atom is mostly empty space with a small, dense nucleus. The other options reflect common misconceptions about atomic structure.",
+      "sources": [
+        {
+          "document": "ncert/9/science/iesc108.pdf",
+          "ordinal": 4,
+          "pageStart": 4,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 8: Journey Inside the Atom",
+            "8.2 A Short Historical Journey Through Atomic Models",
+            "8.2.2 Testing Thomson’s model: The gold foil experiment"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc108.pdf",
+          "ordinal": 5,
+          "pageStart": 5,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 8: Journey Inside the Atom",
+            "8.2 A Short Historical Journey Through Atomic Models",
+            "8.2.2 Testing Thomson’s model: The gold foil experiment"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc108.pdf",
+          "ordinal": 6,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 8: Journey Inside the Atom",
+            "8.2 A Short Historical Journey Through Atomic Models",
+            "8.2.2 Testing Thomson’s model: The gold foil experiment"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc108.pdf",
+          "ordinal": 7,
+          "pageStart": 6,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 8: Journey Inside the Atom",
+            "8.2 A Short Historical Journey Through Atomic Models",
+            "8.2.2 Testing Thomson’s model: The gold foil experiment"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-22T15:25:07.502Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "An atom has 79 protons and a mass number of 197. What will be the mass number if two neutrons are added to its nucleus?",
+      "choices": [
+        "199",
+        "198",
+        "200",
+        "197"
+      ],
+      "answerIndex": 0,
+      "solution": "The mass number of an atom is the sum of the number of protons and neutrons. In this case, the original mass number is 197, which means there are 197 - 79 = 118 neutrons. Adding two more neutrons gives 118 + 2 = 120 neutrons, making the new mass number 79 + 120 = 199. The option '198' is incorrect because it adds only one neutron. The option '200' is incorrect because it adds three neutrons. The option '197' is incorrect because it does not account for the added neutrons.",
+      "checkExpr": "79+(197-79)+2",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक परमाणु में 79 प्रोटॉन हैं और द्रव्यमान संख्या 197 है। यदि इसके नाभिक में दो न्यूट्रॉन जोड़े जाएं तो द्रव्यमान संख्या क्या होगी?",
+          "choices": [
+            "199",
+            "198",
+            "200",
+            "197"
+          ],
+          "solution": "किसी परमाणु की द्रव्यमान संख्या प्रोटॉन और न्यूट्रॉन की संख्या के योग के बराबर होती है। इस मामले में मूल द्रव्यमान संख्या 197 है, जिसका अर्थ है कि 197 - 79 = 118 न्यूट्रॉन हैं। दो अतिरिक्त न्यूट्रॉन जोड़ने से 118 + 2 = 120 न्यूट्रॉन हो जाते हैं, जिसके कारण नई द्रव्यमान संख्या 79 + 120 = 199 हो जाती है। विकल्प '198' गलत है क्योंकि इसमें केवल एक न्यूट्रॉन जोड़ा गया है। विकल्प '200' गलत है क्योंकि इसमें तीन न्यूट्रॉन जोड़े गए हैं। विकल्प '197' गलत है क्योंकि इसमें जोड़े गए न्यूट्रॉनों की गणना नहीं की गई है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms as used in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका परमाणूमध्ये 79 प्रोटॉन आणि द्रव्यमान संख्या 197 आहे. जर त्याच्या नाभिकात 2 न्यूट्रॉन जोडले जातील तर द्रव्यमान संख्या किती असेल?",
+          "choices": [
+            "199",
+            "198",
+            "200",
+            "197"
+          ],
+          "solution": "परमाणूची द्रव्यमान संख्या प्रोटॉन आणि न्यूट्रॉनच्या संख्येच्या बेरजेने मिळते. ह्या प्रकरणात, मूळ द्रव्यमान संख्या 197 आहे, जी 197 - 79 = 118 न्यूट्रॉन दर्शविते. 2 अतिरिक्त न्यूट्रॉन जोडल्याने 118 + 2 = 120 न्यूट्रॉन मिळतात, ज्यामुळे नवीन द्रव्यमान संख्या 79 + 120 = 199 होते. '198' विकल्प चुकीचा आहे कारण त्यामध्ये केवळ एक न्यूट्रॉन जोडला गेला आहे. '200' विकल्प चुकीचा आहे कारण त्यामध्ये तीन न्यूट्रॉन जोडले गेले आहेत. '197' विकल्प चुकीचा आहे कारण त्यामध्ये जोडलेल्या न्यूट्रॉनचा विचार केला गेलेला नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "adds only one neutron",
+        "adds three neutrons",
+        "does not account for added neutrons"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct and logically follows from the definition of mass number. The correct answer is 199, and the reasoning for the distractors is valid.",
+      "sources": [
+        {
+          "document": "ncert/9/science/iesc108.pdf",
+          "ordinal": 23,
+          "pageStart": 17,
+          "pageEnd": 18,
+          "headingPath": [
+            "Chapter 8: Journey Inside the Atom",
+            "8.9 A Deeper Look into Atomic Structure",
+            "8.9.2 Isobars"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc108.pdf",
+          "ordinal": 24,
+          "pageStart": 18,
+          "pageEnd": 20,
+          "headingPath": [
+            "Chapter 8: Journey Inside the Atom",
+            "8.9 A Deeper Look into Atomic Structure",
+            "8.9.2 Isobars",
+            "Revise, Reflect, Refine"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc108.pdf",
+          "ordinal": 25,
+          "pageStart": 20,
+          "pageEnd": 21,
+          "headingPath": [
+            "Chapter 8: Journey Inside the Atom",
+            "8.9 A Deeper Look into Atomic Structure",
+            "8.9.2 Isobars",
+            "Revise, Reflect, Refine"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-22T15:25:07.502Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "If an atom has 18 neutrons and an atomic number of 17, what is its mass number?",
+      "choices": [
+        "35",
+        "34",
+        "33",
+        "32"
+      ],
+      "answerIndex": 0,
+      "solution": "The correct answer is 35. The mass number is the sum of the number of protons and neutrons. Since the atomic number is 17, the number of protons is also 17. Adding the 18 neutrons gives 17 + 18 = 35. The other options are incorrect because they do not match this calculation.",
+      "checkExpr": "17+18",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक परमाणु में 18 न्यूट्रॉन हैं और परमाणु संख्या 17 है, तो इसकी द्रव्यमान संख्या क्या है?",
+          "choices": [
+            "35",
+            "34",
+            "33",
+            "32"
+          ],
+          "solution": "सही उत्तर 35 है। द्रव्यमान संख्या प्रोटॉनों और न्यूट्रॉनों की संख्या के योग के बराबर होती है। चूंकि परमाणु संख्या 17 है, इसलिए प्रोटॉनों की संख्या भी 17 है। 18 न्यूट्रॉन जोड़ने से 17 + 18 = 35 प्राप्त होता है। अन्य विकल्प गलत हैं क्योंकि वे इस गणना के साथ मेल नहीं खाते।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard scientific terminology as taught in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका परमाणूमध्ये 18 न्यूट्रॉन आहेत आणि परमाणु क्रमांक 17 आहे, तर त्याचा द्रव्यमान क्रमांक किती असेल?",
+          "choices": [
+            "35",
+            "34",
+            "33",
+            "32"
+          ],
+          "solution": "योग्य उत्तर 35 आहे. द्रव्यमान क्रमांक प्रोटॉन आणि न्यूट्रॉनच्या संख्येच्या बेरजेने मिळतो. परमाणु क्रमांक 17 असल्याने प्रोटॉनची संख्या 17 असते. 18 न्यूट्रॉन जोडल्याने 17 + 18 = 35 मिळते. इतर उत्तरे चुकीची आहेत कारण ते या गणनेशी मेळ नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses atomic number with mass number, subtracts instead of adds protons and neutrons",
+        "Confuses atomic number with mass number by subtracting 1 instead of adding neutrons to protons",
+        "Student subtracts neutrons from atomic number instead of adding"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is well-constructed and the solution is correct. The correct answer is 35, as the mass number is the sum of protons (equal to atomic number, 17) and neutrons (18). The distractors reflect common misconceptions about atomic structure.",
+      "sources": [
+        {
+          "document": "ncert/9/science/iesc108.pdf",
+          "ordinal": 13,
+          "pageStart": 9,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 8: Journey Inside the Atom",
+            "8.4 Symbols of Elements"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc108.pdf",
+          "ordinal": 14,
+          "pageStart": 10,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 8: Journey Inside the Atom",
+            "8.5 Atomic Number"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc108.pdf",
+          "ordinal": 15,
+          "pageStart": 11,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 8: Journey Inside the Atom",
+            "8.6 Mass Number"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-22T15:25:07.502Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Why did Rutherford’s model fail to explain atomic stability, while Bohr’s model succeeded?",
+      "choices": [
+        "Rutherford’s model did not account for the attraction between electrons and the nucleus, while Bohr’s model did.",
+        "Rutherford’s model allowed electrons to lose energy and fall into the nucleus, while Bohr’s model prevented this.",
+        "Rutherford’s model explained the stability of atoms, while Bohr’s model did not.",
+        "Rutherford’s model proposed that electrons revolve around the nucleus, while Bohr’s model did not."
+      ],
+      "answerIndex": 1,
+      "solution": "Rutherford’s model failed to explain atomic stability because it did not account for the fact that electrons would lose energy and eventually fall into the nucleus. Bohr’s model succeeded by proposing that electrons move in fixed energy levels without losing energy. The option 'Rutherford’s model did not account for the attraction between electrons and the nucleus, while Bohr’s model did' is incorrect because both models acknowledged the attraction. The option 'Rutherford’s model explained the stability of atoms, while Bohr’s model did not' is incorrect because Rutherford’s model did not explain stability. The option 'Rutherford’s model proposed that electrons revolve around the nucleus, while Bohr’s model did not' is incorrect because both models proposed this.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "रदरफोर्ड के मॉडल ने परमाणु स्थायित्व को समझाने में क्यों विफल रहा, जबकि बोर के मॉडल ने सफलता प्राप्त की?",
+          "choices": [
+            "रदरफोर्ड के मॉडल ने इलेक्ट्रॉन और नाभिक के बीच आकर्षण की गणना नहीं की, जबकि बोर के मॉडल ने की।",
+            "रदरफोर्ड के मॉडल में इलेक्ट्रॉन ऊर्जा खो सकते हैं और नाभिक में गिर सकते हैं, जबकि बोर के मॉडल ने इसे रोक दिया।",
+            "रदरफोर्ड के मॉडल ने परमाणु की स्थायित्व की व्याख्या की, जबकि बोर के मॉडल ने नहीं की।",
+            "रदरफोर्ड के मॉडल ने इलेक्ट्रॉनों के नाभिक के चारों ओर घूमने का प्रस्ताव दिया, जबकि बोर के मॉडल ने नहीं किया।"
+          ],
+          "solution": "रदरफोर्ड के मॉडल ने परमाणु स्थायित्व को समझाने में विफल रहा क्योंकि इसमें इलेक्ट्रॉनों के ऊर्जा खोकर अंततः नाभिक में गिर जाने की बात की गणना नहीं की गई। बोर के मॉडल ने इलेक्ट्रॉनों के निश्चित ऊर्जा स्तरों में घूमने का प्रस्ताव देकर सफलता प्राप्त की। 'रदरफोर्ड के मॉडल ने इलेक्ट्रॉन और नाभिक के बीच आकर्षण की गणना नहीं की, जबकि बोर के मॉडल ने की' विकल्प गलत है क्योंकि दोनों मॉडल आकर्षण को मान्यता देते हैं। 'रदरफोर्ड के मॉडल ने परमाणु की स्थायित्व की व्याख्या की, जबकि बोर के मॉडल ने नहीं की' विकल्प गलत है क्योंकि रदरफोर्ड के मॉडल ने स्थायित्व की व्याख्या नहीं की। 'रदरफोर्ड के मॉडल ने इलेक्ट्रॉनों के नाभिक के चारों ओर घूमने का प्रस्ताव दिया, जबकि बोर के मॉडल ने नहीं किया' विकल्प गलत है क्योंकि दोनों मॉडल इस प्रस्ताव के समर्थक हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate scientific terminology as used in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "रदरफोर्डच्या मॉडेलने परमाणूच्या स्थिरतेचे स्पष्टीकरण का दिले नाही, तर बोहरच्या मॉडेलने याचे स्पष्टीकरण दिले?",
+          "choices": [
+            "रदरफोर्डच्या मॉडेलने इलेक्ट्रॉन आणि न्यूक्लियसमधील आकर्षणाचा विचार केला नाही, तर बोहरच्या मॉडेलने केला.",
+            "रदरफोर्डच्या मॉडेलने इलेक्ट्रॉन ऊर्जा गमावू शकतात आणि न्यूक्लियसमध्ये पडू शकतात, तर बोहरच्या मॉडेलने हे रोखले.",
+            "रदरफोर्डच्या मॉडेलने परमाणूची स्थिरता स्पष्ट केली, तर बोहरच्या मॉडेलने न केली.",
+            "रदरफोर्डच्या मॉडेलने इलेक्ट्रॉन न्यूक्लियसच्या भोवती फिरतात असे म्हटले, तर बोहरच्या मॉडेलने न म्हटले."
+          ],
+          "solution": "रदरफोर्डच्या मॉडेलने परमाणूच्या स्थिरतेचे स्पष्टीकरण दिले नाही कारण त्याने इलेक्ट्रॉन ऊर्जा गमावू शकतात आणि न्यूक्लियसमध्ये पडू शकतात हे ध्यानात ठेवले नव्हते. बोहरच्या मॉडेलने इलेक्ट्रॉन निश्चित ऊर्जा स्तरांमध्ये फिरतात आणि ऊर्जा गमावत नाहीत असे म्हटले. 'रदरफोर्डच्या मॉडेलने इलेक्ट्रॉन आणि न्यूक्लियसमधील आकर्षणाचा विचार केला नाही, तर बोहरच्या मॉडेलने केला.' हा विकल्प अयोग्य आहे कारण दोन्ही मॉडेल आकर्षणाचा विचार करतात. 'रदरफोर्डच्या मॉडेलने परमाणूची स्थिरता स्पष्ट केली, तर बोहरच्या मॉडेलने न केली.' हा विकल्प अयोग्य आहे कारण रदरफोर्डच्या मॉडेलने स्थिरतेचे स्पष्टीकरण दिले नाही. 'रदरफोर्डच्या मॉडेलने इलेक्ट्रॉन न्यूक्लियसच्या भोवती फिरतात असे म्हटले, तर बोहरच्या मॉडेलने न म्हटले.' हा विकल्प अयोग्य आहे कारण दोन्ही मॉडेल याचा विचार करतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology. The structure and logic of the question and solution are preserved.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "incorrectly attributes the success of Bohr's model",
+        null,
+        "incorrectly states that Rutherford's model explained stability",
+        "incorrectly states that Bohr's model did not propose electron revolution"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 1, as Rutherford's model failed because it predicted electrons would lose energy and collapse into the nucleus, while Bohr's model introduced fixed energy levels to prevent this. The author's solution is accurate and aligns with the correct reasoning.",
+      "sources": [
+        {
+          "document": "ncert/9/science/iesc108.pdf",
+          "ordinal": 23,
+          "pageStart": 17,
+          "pageEnd": 18,
+          "headingPath": [
+            "Chapter 8: Journey Inside the Atom",
+            "8.9 A Deeper Look into Atomic Structure",
+            "8.9.2 Isobars"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc108.pdf",
+          "ordinal": 24,
+          "pageStart": 18,
+          "pageEnd": 20,
+          "headingPath": [
+            "Chapter 8: Journey Inside the Atom",
+            "8.9 A Deeper Look into Atomic Structure",
+            "8.9.2 Isobars",
+            "Revise, Reflect, Refine"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc108.pdf",
+          "ordinal": 25,
+          "pageStart": 20,
+          "pageEnd": 21,
+          "headingPath": [
+            "Chapter 8: Journey Inside the Atom",
+            "8.9 A Deeper Look into Atomic Structure",
+            "8.9.2 Isobars",
+            "Revise, Reflect, Refine"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-22T15:25:07.502Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "In an atom, the number of protons is equal to the number of electrons. If all the electrons are replaced with hypothetical particles that have the same charge as electrons but are 500 times heavier, what will be the impact on the atom’s chemical properties?",
+      "choices": [
+        "It will remain the same",
+        "It will change slightly",
+        "It will become more reactive",
+        "It will become less reactive"
+      ],
+      "answerIndex": 0,
+      "solution": "Chemical properties depend on the number and arrangement of electrons. Since the hypothetical particles have the same charge as electrons, the electron configuration remains the same, and so do the chemical properties. The first option is correct because the charge and number of particles are the same. The other options are incorrect because they assume the chemical properties will change, which they do not.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक परमाणु में प्रोटॉनों की संख्या इलेक्ट्रॉनों की संख्या के बराबर होती है। यदि सभी इलेक्ट्रॉनों को काल्पनिक कणों से बदल दिया जाए जो इलेक्ट्रॉनों के समान आवेश रखते हैं लेकिन 500 गुना भारी होते हैं, तो परमाणु के रासायनिक गुणों पर क्या प्रभाव पड़ेगा?",
+          "choices": [
+            "यह वही रहेगा",
+            "यह थोड़ा बदल जाएगा",
+            "यह अधिक अभिक्रियाशील हो जाएगा",
+            "यह कम अभिक्रियाशील हो जाएगा"
+          ],
+          "solution": "रासायनिक गुण इलेक्ट्रॉनों की संख्या और व्यवस्था पर निर्भर करते हैं। काल्पनिक कण इलेक्ट्रॉनों के समान आवेश रखते हैं, इसलिए इलेक्ट्रॉन विन्यास वही रहता है, और रासायनिक गुण भी वही रहते हैं। पहला विकल्प सही है क्योंकि कणों का आवेश और संख्या वही रहती है। अन्य विकल्प गलत हैं क्योंकि वे अनुमान लगाते हैं कि रासायनिक गुण बदल जाएंगे, जो नहीं होता।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi scientific terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका परमाणूत प्रोटॉनांची संख्या इलेक्ट्रॉनांच्या संख्येसारखी असते. जर इलेक्ट्रॉन सर्व असतील तर त्यांच्याऐवजी असे आभासी कण असतील ज्यांचा आवेश इलेक्ट्रॉनांसारखा असेल पण ते 500 पट भारी असतील, तर परमाणूच्या रासायनिक गुणांवर काय परिणाम होईल?",
+          "choices": [
+            "ते बरोबर राहील",
+            "ते थोडक्यात बदलेल",
+            "ते अधिक अभिक्रियाशील होईल",
+            "ते कमी अभिक्रियाशील होईल"
+          ],
+          "solution": "रासायनिक गुण इलेक्ट्रॉनांच्या संख्या आणि विन्यासावर अवलंबून असतात. आभासी कणांचा आवेश इलेक्ट्रॉनांसारखा असल्यामुळे इलेक्ट्रॉन विन्यास बदलत नाही आणि रासायनिक गुणही बदलत नाहीत. पहिला विकल्प बरोबर आहे कारण आवेश आणि कणांची संख्या बरोबर असते. इतर विकल्प चुकीचे आहेत कारण ते रासायनिक गुण बदलतील असे मानतात, पण ते बदलत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Student believes mass affects chemical properties but not significantly",
+        "assumes mass affects chemical properties",
+        "assumes mass affects chemical properties"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct. Chemical properties are determined by electron configuration, which remains unchanged if the hypothetical particles have the same charge and number as electrons. The mass of the particles does not affect chemical behavior.",
+      "sources": [
+        {
+          "document": "ncert/9/science/iesc108.pdf",
+          "ordinal": 26,
+          "pageStart": 21,
+          "pageEnd": 22,
+          "headingPath": [
+            "Chapter 8: Journey Inside the Atom",
+            "8.9 A Deeper Look into Atomic Structure",
+            "8.9.2 Isobars",
+            "Revise, Reflect, Refine"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc108.pdf",
+          "ordinal": 27,
+          "pageStart": 22,
+          "pageEnd": 22,
+          "headingPath": [
+            "Chapter 8: Journey Inside the Atom",
+            "8.9 A Deeper Look into Atomic Structure",
+            "8.9.2 Isobars",
+            "The Journey Beyond"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-22T15:25:07.502Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Rutherford's model could not explain the stability of the atom. What is the main reason for this limitation?",
+      "choices": [
+        "The model did not account for the presence of neutrons",
+        "The model did not describe the motion of electrons around the nucleus",
+        "The model assumed that electrons are stationary",
+        "The model did not consider the energy loss of accelerating electrons"
+      ],
+      "answerIndex": 3,
+      "solution": "Rutherford's model could not explain why atoms are stable because it did not consider that accelerating electrons would lose energy and spiral into the nucleus. This was a major limitation of the model. The other options are incorrect because they either refer to aspects not directly related to the stability issue or suggest elements not considered in the original model.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "रदरफोर्ड का मॉडल परमाणु के स्थायित्व की व्याख्या नहीं कर सका। इस सीमा के मुख्य कारण क्या है?",
+          "choices": [
+            "मॉडल ने न्यूट्रॉन की उपस्थिति को ध्यान में नहीं रखा",
+            "मॉडल ने नाभिक के चारों ओर इलेक्ट्रॉन के गति का वर्णन नहीं किया",
+            "मॉडल में इलेक्ट्रॉन अचल हैं का अनुमान लगाया गया",
+            "मॉडल ने त्वरित इलेक्ट्रॉन के ऊर्जा हानि को ध्यान में नहीं रखा"
+          ],
+          "solution": "रदरफोर्ड के मॉडल में परमाणु के स्थायित्व की व्याख्या नहीं की जा सकी क्योंकि इसमें त्वरित इलेक्ट्रॉन ऊर्जा हानि करेंगे और नाभिक में गिर जाएंगे का ध्यान नहीं रखा गया था। यह मॉडल की एक मुख्य सीमा थी। अन्य विकल्प गलत हैं क्योंकि वे स्थायित्व समस्या से सीधे संबंधित नहीं हैं या मूल मॉडल में विचार किए गए तत्वों को सुझाते हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate technical terms common in Hindi science textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "रदरफोर्डच्या मॉडेलमुळे परमाणूच्या स्थिरतेचे स्पष्टीकरण देता आले नाही. ह्या मर्यादेचे मुख्य कारण काय आहे?",
+          "choices": [
+            "मॉडेलने न्यूट्रॉनच्या उपस्थितीचा विचार केला नाही",
+            "मॉडेलने न्यूक्लियसच्या भोवती इलेक्ट्रॉनच्या गतीचे वर्णन केले नाही",
+            "मॉडेलने इलेक्ट्रॉन निश्चल असल्याचा अंदाज घेतला",
+            "मॉडेलने त्वरित होणाऱ्या इलेक्ट्रॉनच्या ऊर्जा हरणाचा विचार केला नाही"
+          ],
+          "solution": "रदरफोर्डच्या मॉडेलमुळे परमाणूच्या स्थिरतेचे स्पष्टीकरण देता आले नाही कारण त्याने त्वरित होणाऱ्या इलेक्ट्रॉनच्या ऊर्जा हरणाचा विचार केला नाही आणि ते न्यूक्लियसमध्ये पडू शकतात. हे मॉडेलची महत्त्वाची मर्यादा होती. इतर विकल्प चुकीचे आहेत कारण ते स्थिरतेच्या विषयाशी सीधा संबंध नसलेल्या अंशांवर बोलतात किंवा मूळ मॉडेलमध्ये विचार केलेल्या घटकांचा उल्लेख करतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Misunderstands the role of neutrons in atomic stability",
+        "Confuses the motion of electrons with the model's limitations",
+        "Incorrectly assumes electrons are stationary in the model",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 3, as Rutherford's model failed to explain atomic stability due to the lack of consideration for energy loss by accelerating electrons. The author's reasoning aligns with the scientific understanding of the time.",
+      "sources": [
+        {
+          "document": "ncert/9/science/iesc108.pdf",
+          "ordinal": 4,
+          "pageStart": 4,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 8: Journey Inside the Atom",
+            "8.2 A Short Historical Journey Through Atomic Models",
+            "8.2.2 Testing Thomson’s model: The gold foil experiment"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc108.pdf",
+          "ordinal": 5,
+          "pageStart": 5,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 8: Journey Inside the Atom",
+            "8.2 A Short Historical Journey Through Atomic Models",
+            "8.2.2 Testing Thomson’s model: The gold foil experiment"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc108.pdf",
+          "ordinal": 6,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 8: Journey Inside the Atom",
+            "8.2 A Short Historical Journey Through Atomic Models",
+            "8.2.2 Testing Thomson’s model: The gold foil experiment"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc108.pdf",
+          "ordinal": 7,
+          "pageStart": 6,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 8: Journey Inside the Atom",
+            "8.2 A Short Historical Journey Through Atomic Models",
+            "8.2.2 Testing Thomson’s model: The gold foil experiment"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-22T15:25:07.502Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "Which organisation approves the names and symbols of elements?",
+      "choices": [
+        "IUPAC",
+        "BARC",
+        "UNESCO",
+        "NASA"
+      ],
+      "answerIndex": 0,
+      "solution": "IUPAC is the organisation that approves the names and symbols of elements, as it is the global authority for chemical nomenclature. BARC is a research institution focused on nuclear energy, UNESCO promotes education and science but not element naming, and NASA is a space exploration agency. None of the other options have the responsibility for element naming.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "कौन सा संगठन तत्वों के नाम और प्रतीकों को मंजूरी देता है?",
+          "choices": [
+            "IUPAC",
+            "BARC",
+            "UNESCO",
+            "NASA"
+          ],
+          "solution": "IUPAC तत्वों के नाम और प्रतीकों को मंजूरी देने वाला संगठन है क्योंकि यह रासायनिक नामकरण की वैश्विक प्राधिकरण है। BARC परमाणु ऊर्जा पर अनुसंधान केंद्र है, UNESCO शिक्षा और विज्ञान को प्रोत्साहित करता है लेकिन तत्वों के नामकरण के लिए नहीं, और NASA अंतरिक्ष अन्वेषण एजेंसी है। अन्य विकल्पों में तत्वों के नामकरण की जिम्मेदारी नहीं है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate use of Hindi technical terms.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "कोणत्या संस्थेने घटकांची नावे आणि प्रतीके मान्यता दिली जातात?",
+          "choices": [
+            "IUPAC",
+            "BARC",
+            "UNESCO",
+            "NASA"
+          ],
+          "solution": "IUPAC ही घटकांची नावे आणि प्रतीके मान्य करणारी संस्था आहे, कारण ती रसायनशास्त्रीय नामकरणाची जागतिक प्राधिकरण आहे. BARC ही परमाणु ऊर्जेवर केंद्रित असलेली अनुसंधान संस्था आहे, UNESCO शिक्षण आणि विज्ञानाचा प्रसार करते परंतु घटकांची नावे ठरवत नाही आणि NASA ही अंतरिक्ष अन्वेषण एजन्सी आहे. इतर विकल्पांमध्ये घटकांची नावे ठरवण्याची जबाबदारी नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for scientific organizations.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "confuses BARC with the organisation that approves element symbols",
+        "associates UNESCO with scientific standards",
+        "associates NASA with scientific research"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The question is straightforward and tests recall of a basic scientific fact. The correct answer is IUPAC, and the author's reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/9/science/iesc108.pdf",
+          "ordinal": 13,
+          "pageStart": 9,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 8: Journey Inside the Atom",
+            "8.4 Symbols of Elements"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc108.pdf",
+          "ordinal": 14,
+          "pageStart": 10,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 8: Journey Inside the Atom",
+            "8.5 Atomic Number"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc108.pdf",
+          "ordinal": 15,
+          "pageStart": 11,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 8: Journey Inside the Atom",
+            "8.6 Mass Number"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-19T17:06:53.481Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the main reason electrons in Bohr's model do not lose energy while revolving around the nucleus?",
+      "choices": [
+        "They are in stationary states",
+        "They are too small",
+        "They are neutral",
+        "They are in the nucleus"
+      ],
+      "answerIndex": 0,
+      "solution": "Bohr's model introduces the concept of stationary states, in which electrons do not lose energy while moving in fixed shells. 'They are in stationary states' is the correct answer. 'They are too small' is not relevant. 'They are neutral' is incorrect because electrons are negatively charged. 'They are in the nucleus' is false because electrons are not in the nucleus.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "बोर के मॉडल में इलेक्ट्रॉन नाभिक के चारों ओर घूमते समय ऊर्जा क्यों नहीं खोते?",
+          "choices": [
+            "वे स्थैतिक अवस्थाओं में होते हैं",
+            "वे बहुत छोटे होते हैं",
+            "वे उदासीन होते हैं",
+            "वे नाभिक में होते हैं"
+          ],
+          "solution": "बोर के मॉडल में स्थैतिक अवस्थाओं की अवधारणा पेश की गई है, जिसमें इलेक्ट्रॉन निश्चित कक्षाओं में घूमते समय ऊर्जा नहीं खोते। 'वे स्थैतिक अवस्थाओं में होते हैं' सही उत्तर है। 'वे बहुत छोटे होते हैं' असंबंधित है। 'वे उदासीन होते हैं' गलत है क्योंकि इलेक्ट्रॉन ऋणात्मक आवेशित होते हैं। 'वे नाभिक में होते हैं' गलत है क्योंकि इलेक्ट्रॉन नाभिक में नहीं होते।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms as used in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "बोहरच्या मॉडेलमध्ये इलेक्ट्रॉन्स न्यूक्लियस भोवती फिरत असताना ऊर्जा का गमावत नाहीत?",
+          "choices": [
+            "ते स्थिर अवस्थांमध्ये असतात",
+            "ते खूप लहान असतात",
+            "ते निरुद्वेग असतात",
+            "ते न्यूक्लियसमध्ये असतात"
+          ],
+          "solution": "बोहरच्या मॉडेलमध्ये स्थिर अवस्थांचा अभ्यास केला गेला आहे, ज्यामध्ये इलेक्ट्रॉन्स फिक्स कक्षांमध्ये गेल्यावर ऊर्जा गमावत नाहीत. 'ते स्थिर अवस्थांमध्ये असतात' ही बरोबर उत्तर आहे. 'ते खूप लहान असतात' हा अनुरूप नाही. 'ते निरुद्वेग असतात' हे चुकीचे आहे कारण इलेक्ट्रॉन्स ऋणात्मक आहेत. 'ते न्यूक्लियसमध्ये असतात' हे खोटे आहे कारण इलेक्ट्रॉन्स न्यूक्लियसमध्ये नसतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for scientific concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses the term 'stationary states' with other properties of electrons",
+        "Misunderstands the size of electrons",
+        "Incorrectly assumes electrons are neutral and located in the nucleus"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 'They are in stationary states,' which aligns with Bohr's model. The other options reflect common misconceptions about electron properties and atomic structure.",
+      "sources": [
+        {
+          "document": "ncert/9/science/iesc108.pdf",
+          "ordinal": 8,
+          "pageStart": 7,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 8: Journey Inside the Atom",
+            "8.2 A Short Historical Journey Through Atomic Models",
+            "8.2.3 Bohr’s model of the atom"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc108.pdf",
+          "ordinal": 9,
+          "pageStart": 7,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 8: Journey Inside the Atom",
+            "8.2 A Short Historical Journey Through Atomic Models",
+            "8.2.3 Bohr’s model of the atom"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc108.pdf",
+          "ordinal": 10,
+          "pageStart": 8,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 8: Journey Inside the Atom",
+            "8.3 What Components Contribute to the",
+            "Mass of an Atom?"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc108.pdf",
+          "ordinal": 11,
+          "pageStart": 8,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 8: Journey Inside the Atom",
+            "8.3 What Components Contribute to the",
+            "8.3.1 Discovery of the Neutron"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc108.pdf",
+          "ordinal": 12,
+          "pageStart": 8,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 8: Journey Inside the Atom",
+            "8.3 What Components Contribute to the",
+            "8.3.1 Discovery of the Neutron"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-19T17:06:53.481Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If an electron moves from the K-shell (n = 1) to the L-shell (n = 2), what happens to its energy?",
+      "choices": [
+        "It increases",
+        "It decreases",
+        "It remains the same",
+        "It becomes zero"
+      ],
+      "answerIndex": 0,
+      "solution": "According to Bohr's model, the energy of an electron increases as it moves to shells farther away from the nucleus. The K-shell (n = 1) is the closest to the nucleus and has the least energy, while the L-shell (n = 2) has more energy. Therefore, when an electron moves from the K-shell to the L-shell, its energy increases. 'It decreases' is incorrect because energy increases with distance from the nucleus. 'It remains the same' and 'It becomes zero' are not supported by the model.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक इलेक्ट्रॉन K-शेल (n = 1) से L-शेल (n = 2) में गति करता है, तो इसकी ऊर्जा क्या होती है?",
+          "choices": [
+            "इसकी ऊर्जा बढ़ जाती है",
+            "इसकी ऊर्जा घट जाती है",
+            "इसकी ऊर्जा समान रहती है",
+            "इसकी ऊर्जा शून्य हो जाती है"
+          ],
+          "solution": "बोहर के मॉडल के अनुसार, इलेक्ट्रॉन की ऊर्जा नाभिक से दूर शेल में जाने पर बढ़ जाती है। K-शेल (n = 1) नाभिक के सबसे निकट होता है और इसकी ऊर्जा सबसे कम होती है, जबकि L-शेल (n = 2) में अधिक ऊर्जा होती है। इसलिए, जब इलेक्ट्रॉन K-शेल से L-शेल में जाता है, तो इसकी ऊर्जा बढ़ जाती है। 'इसकी ऊर्जा घट जाती है' गलत है क्योंकि नाभिक से दूर जाने पर ऊर्जा बढ़ती है। 'इसकी ऊर्जा समान रहती है' और 'इसकी ऊर्जा शून्य हो जाती है' मॉडल द्वारा समर्थित नहीं है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Hindi terminology for atomic shells and energy concepts.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "इलेक्ट्रॉन केला खोल (n = 1) वरून एल खोल (n = 2) वर जातो, तर त्याच्या ऊर्जेवर काय परिणाम होतो?",
+          "choices": [
+            "ती वाढते",
+            "ती घटते",
+            "ती एकसारखी रहाते",
+            "ती शून्य होते"
+          ],
+          "solution": "बोहरच्या मॉडेलनुसार, इलेक्ट्रॉनची ऊर्जा नाभिकापासून दूर जाऊन खोलींमध्ये जात जात वाढते. केला खोल (n = 1) नाभिकापासून सर्वात जवळ असून त्याची ऊर्जा सर्वात कमी असते, तर एल खोल (n = 2) ला अधिक ऊर्जा असते. म्हणून, जेव्हा इलेक्ट्रॉन केला खोलापासून एल खोलावर जातो, तेव्हा त्याची ऊर्जा वाढते. 'ती घटते' अयोग्य आहे कारण नाभिकापासून अंतर वाढत जाते तेव्हा ऊर्जा वाढते. 'ती एकसारखी रहाते' आणि 'ती शून्य होते' हे मॉडेलने समर्थित नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for atomic shells and energy concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Believes energy decreases when moving away from the nucleus",
+        "Misunderstands the model as having constant energy in all shells",
+        "Incorrectly assumes energy can become zero in an atom"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly applies Bohr's model, which states that energy increases with distance from the nucleus. The reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/9/science/iesc108.pdf",
+          "ordinal": 8,
+          "pageStart": 7,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 8: Journey Inside the Atom",
+            "8.2 A Short Historical Journey Through Atomic Models",
+            "8.2.3 Bohr’s model of the atom"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc108.pdf",
+          "ordinal": 9,
+          "pageStart": 7,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 8: Journey Inside the Atom",
+            "8.2 A Short Historical Journey Through Atomic Models",
+            "8.2.3 Bohr’s model of the atom"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc108.pdf",
+          "ordinal": 10,
+          "pageStart": 8,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 8: Journey Inside the Atom",
+            "8.3 What Components Contribute to the",
+            "Mass of an Atom?"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc108.pdf",
+          "ordinal": 11,
+          "pageStart": 8,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 8: Journey Inside the Atom",
+            "8.3 What Components Contribute to the",
+            "8.3.1 Discovery of the Neutron"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc108.pdf",
+          "ordinal": 12,
+          "pageStart": 8,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 8: Journey Inside the Atom",
+            "8.3 What Components Contribute to the",
+            "8.3.1 Discovery of the Neutron"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-19T17:06:53.481Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "What is the mass number of an atom with 20 protons and 21 neutrons?",
+      "choices": [
+        "41",
+        "20",
+        "21",
+        "42"
+      ],
+      "answerIndex": 0,
+      "solution": "The mass number is the sum of protons and neutrons. The atom has 20 protons and 21 neutrons, so the mass number is 41. The other options are incorrect because they represent the number of protons, the number of neutrons, or the sum of protons and neutrons plus one.",
+      "checkExpr": "20+21",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक परमाणु का द्रव्यमान संख्या क्या होगी जिसमें 20 प्रोटॉन और 21 न्यूट्रॉन हैं?",
+          "choices": [
+            "41",
+            "20",
+            "21",
+            "42"
+          ],
+          "solution": "द्रव्यमान संख्या प्रोटॉन और न्यूट्रॉन के योग के बराबर होती है। परमाणु में 20 प्रोटॉन और 21 न्यूट्रॉन हैं, इसलिए द्रव्यमान संख्या 41 है। अन्य विकल्प गलत हैं क्योंकि वे प्रोटॉन की संख्या, न्यूट्रॉन की संख्या, या प्रोटॉन और न्यूट्रॉन के योग में एक जोड़ने के बराबर हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms as used in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका परमाणूचे द्रव्यमान संख्या किती असेल ज्यामध्ये 20 प्रोटॉन आणि 21 न्यूटॉन आहेत?",
+          "choices": [
+            "41",
+            "20",
+            "21",
+            "42"
+          ],
+          "solution": "द्रव्यमान संख्या प्रोटॉन आणि न्यूटॉनच्या बेरजेने मिळते. परमाणूमध्ये 20 प्रोटॉन आणि 21 न्यूटॉन आहेत, म्हणून द्रव्यमान संख्या 41 असेल. इतर विकल्प चुकीचे आहेत कारण ते प्रोटॉनच्या संख्येला, न्यूटॉनच्या संख्येला किंवा प्रोटॉन आणि न्यूटॉनच्या बेरजेला एक जोडल्याने मिळतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "uses the number of protons as the mass number",
+        "uses the number of neutrons as the mass number",
+        "adds protons and neutrons and then adds one"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is clear and the correct answer is 41, which is the sum of 20 protons and 21 neutrons. The distractors reflect common misconceptions, such as using only protons, only neutrons, or adding one extra to the sum.",
+      "sources": [
+        {
+          "document": "ncert/9/science/iesc108.pdf",
+          "ordinal": 13,
+          "pageStart": 9,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 8: Journey Inside the Atom",
+            "8.4 Symbols of Elements"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc108.pdf",
+          "ordinal": 14,
+          "pageStart": 10,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 8: Journey Inside the Atom",
+            "8.5 Atomic Number"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc108.pdf",
+          "ordinal": 15,
+          "pageStart": 11,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 8: Journey Inside the Atom",
+            "8.6 Mass Number"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-19T17:06:53.481Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "If an element has a mass number of 35 and an atomic number of 17, how many neutrons does it have?",
+      "choices": [
+        "18",
+        "35",
+        "17",
+        "52"
+      ],
+      "answerIndex": 0,
+      "solution": "The mass number is the sum of protons and neutrons. The atomic number is the number of protons, so the number of neutrons is the mass number minus the atomic number. 35 - 17 = 18. The other options are incorrect because they represent the mass number, the atomic number, or the sum of the mass number and atomic number.",
+      "checkExpr": "35-17",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि किसी तत्व का द्रव्यमान संख्या 35 और परमाणु संख्या 17 है, तो इसके पास कितने न्यूट्रॉन हैं?",
+          "choices": [
+            "18",
+            "35",
+            "17",
+            "52"
+          ],
+          "solution": "द्रव्यमान संख्या प्रोटॉन और न्यूट्रॉन के योग के बराबर होती है। परमाणु संख्या प्रोटॉन की संख्या होती है, इसलिए न्यूट्रॉन की संख्या द्रव्यमान संख्या में से परमाणु संख्या को घटाने पर प्राप्त होती है। 35 - 17 = 18। अन्य विकल्प गलत हैं क्योंकि वे द्रव्यमान संख्या, परमाणु संख्या या द्रव्यमान संख्या और परमाणु संख्या के योग का प्रतिनिधित्व करते हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Hindi scientific terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका घटकाचा द्रव्यमान संख्या 35 आणि परमाणु संख्या 17 असल्यास, त्याचे न्यूट्रॉन किती असतील?",
+          "choices": [
+            "18",
+            "35",
+            "17",
+            "52"
+          ],
+          "solution": "द्रव्यमान संख्या प्रोटॉन आणि न्यूट्रॉनच्या बेरजेने दर्शवली जाते. परमाणु संख्या प्रोटॉनच्या संख्येने दर्शवली जाते, म्हणून न्यूट्रॉनची संख्या द्रव्यमान संख्या आणि परमाणु संख्या वजा करून मिळते. 35 - 17 = 18. इतर विकल्प चुकीचे असतात कारण ते द्रव्यमान संख्या, परमाणु संख्या किंवा द्रव्यमान संख्या आणि परमाणु संख्या बेरजेचे प्रतिनिधित्व करतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "uses the mass number as the number of neutrons",
+        "uses the atomic number as the number of neutrons",
+        "adds the mass number and atomic number"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct and aligns with the standard formula for calculating neutrons (mass number - atomic number). The reasoning for the distractors is valid and reflects common student misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/9/science/iesc108.pdf",
+          "ordinal": 13,
+          "pageStart": 9,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 8: Journey Inside the Atom",
+            "8.4 Symbols of Elements"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc108.pdf",
+          "ordinal": 14,
+          "pageStart": 10,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 8: Journey Inside the Atom",
+            "8.5 Atomic Number"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc108.pdf",
+          "ordinal": 15,
+          "pageStart": 11,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 8: Journey Inside the Atom",
+            "8.6 Mass Number"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-19T17:06:53.481Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "The average atomic mass of an element is calculated based on the relative abundance of its isotopes in nature. If an element has two isotopes, one with a mass number of 35 and an abundance of 75%, and the other with a mass number of 37 and an abundance of 25%, what is the average atomic mass?",
+      "choices": [
+        "35.5",
+        "36.0",
+        "36.5",
+        "37.0"
+      ],
+      "answerIndex": 0,
+      "solution": "To calculate the average atomic mass, we multiply the mass number of each isotope by its relative abundance and sum the results. (35 × 0.75) + (37 × 0.25) = 26.25 + 9.25 = 35.5. The other options are incorrect because they do not correctly calculate the weighted average.",
+      "checkExpr": "35*0.75+37*0.25",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक तत्व के परमाणु द्रव्यमान की औसत गणना प्रकृति में इसके समस्थानिकों की सापेक्ष बहुलता पर आधारित होती है। यदि एक तत्व के दो समस्थानिक हैं, जिनमें एक के द्रव्यमान संख्या 35 और बहुलता 75% है, और दूसरे के द्रव्यमान संख्या 37 और बहुलता 25% है, तो औसत परमाणु द्रव्यमान क्या है?",
+          "choices": [
+            "35.5",
+            "36.0",
+            "36.5",
+            "37.0"
+          ],
+          "solution": "औसत परमाणु द्रव्यमान की गणना करने के लिए, हम प्रत्येक समस्थानिक के द्रव्यमान संख्या को इसकी सापेक्ष बहुलता से गुणा करते हैं और परिणामों को जोड़ देते हैं। (35 × 0.75) + (37 × 0.25) = 26.25 + 9.25 = 35.5। अन्य विकल्प गलत हैं क्योंकि वे सही भारित औसत की गणना नहीं करते।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate scientific terminology in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका घटकाचा सरासरी परमाणु द्रव्यमान त्याच्या समस्थानिकांच्या सापेक्ष विस्तारावर आधारित असतो. जर एका घटकाला दोन समस्थानिक असतील, ज्यांचे द्रव्यमान संख्या क्रमाने 35 आणि 37 असून त्यांची विस्तार क्रमाने 75% आणि 25% असेल, तर सरासरी परमाणु द्रव्यमान किती असेल?",
+          "choices": [
+            "35.5",
+            "36.0",
+            "36.5",
+            "37.0"
+          ],
+          "solution": "सरासरी परमाणु द्रव्यमान काढण्यासाठी, आम्ही प्रत्येक समस्थानिकाच्या द्रव्यमान संख्येला त्याच्या सापेक्ष विस्ताराने गुणून फलितांची बेरीज करतो. (35 × 0.75) + (37 × 0.25) = 26.25 + 9.25 = 35.5. इतर विकल्प चुकीचे आहेत कारण ते वजनदार औसत योग्यरित्या गणित करत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Uses the average of the two mass numbers",
+        "Adds the mass numbers directly",
+        "Multiplies the mass numbers by their abundance but adds incorrectly"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct and matches the author's key. The calculation (35 × 0.75) + (37 × 0.25) = 35.5 is accurate. The distractors reflect common misconceptions such as averaging without weighting, adding mass numbers directly, and incorrect arithmetic.",
+      "sources": [
+        {
+          "document": "ncert/9/science/iesc108.pdf",
+          "ordinal": 23,
+          "pageStart": 17,
+          "pageEnd": 18,
+          "headingPath": [
+            "Chapter 8: Journey Inside the Atom",
+            "8.9 A Deeper Look into Atomic Structure",
+            "8.9.2 Isobars"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc108.pdf",
+          "ordinal": 24,
+          "pageStart": 18,
+          "pageEnd": 20,
+          "headingPath": [
+            "Chapter 8: Journey Inside the Atom",
+            "8.9 A Deeper Look into Atomic Structure",
+            "8.9.2 Isobars",
+            "Revise, Reflect, Refine"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc108.pdf",
+          "ordinal": 25,
+          "pageStart": 20,
+          "pageEnd": 21,
+          "headingPath": [
+            "Chapter 8: Journey Inside the Atom",
+            "8.9 A Deeper Look into Atomic Structure",
+            "8.9.2 Isobars",
+            "Revise, Reflect, Refine"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-19T17:06:53.481Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "If an atom has 26 protons and 30 neutrons, what is the total number of particles in its nucleus?",
+      "choices": [
+        "56",
+        "30",
+        "26",
+        "52"
+      ],
+      "answerIndex": 0,
+      "solution": "The nucleus of an atom contains protons and neutrons. If the atom has 26 protons and 30 neutrons, the total number of particles in the nucleus is 26 + 30 = 56. '56' is the correct answer. '30' and '26' are the numbers of neutrons and protons separately, and '52' is incorrect because it assumes the number of neutrons is 26 instead of 30.",
+      "checkExpr": "26+30",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि किसी परमाणु में 26 प्रोटॉन और 30 न्यूट्रॉन हैं, तो इसके नाभिक में कुल कितने कण होते हैं?",
+          "choices": [
+            "56",
+            "30",
+            "26",
+            "52"
+          ],
+          "solution": "किसी परमाणु के नाभिक में प्रोटॉन और न्यूट्रॉन होते हैं। यदि परमाणु में 26 प्रोटॉन और 30 न्यूट्रॉन हैं, तो नाभिक में कुल कणों की संख्या 26 + 30 = 56 होती है। '56' सही उत्तर है। '30' और '26' क्रमशः न्यूट्रॉन और प्रोटॉन की संख्या हैं, और '52' गलत है क्योंकि यह न्यूट्रॉन की संख्या को 26 मान लेता है बजाय 30 के।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi scientific terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका परमाणूमध्ये 26 प्रोटॉन आणि 30 न्यूट्रॉन असतील, तर त्याच्या नाभिकातील एकूण कणांची संख्या किती असेल?",
+          "choices": [
+            "56",
+            "30",
+            "26",
+            "52"
+          ],
+          "solution": "एका परमाणूच्या नाभिकात प्रोटॉन आणि न्यूट्रॉन असतात. जर परमाणूला 26 प्रोटॉन आणि 30 न्यूट्रॉन असतील, तर नाभिकातील कणांची एकूण संख्या 26 + 30 = 56 असेल. '56' हे योग्य उत्तर आहे. '30' आणि '26' ही न्यूट्रॉन आणि प्रोटॉन विशिष्ट संख्या आहेत, आणि '52' अयोग्य आहे कारण ते न्यूट्रॉनची संख्या 26 असेल असे धरून घेते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses the number of neutrons with the total number of particles in the nucleus",
+        "Student thinks the number of protons is the total number of particles in the nucleus",
+        "Incorrectly assumes the number of neutrons is the same as protons"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is straightforward and the solution is correct. The nucleus contains protons and neutrons, so 26 + 30 = 56. The author's reasoning for the distractors is valid and reflects common student misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/9/science/iesc108.pdf",
+          "ordinal": 8,
+          "pageStart": 7,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 8: Journey Inside the Atom",
+            "8.2 A Short Historical Journey Through Atomic Models",
+            "8.2.3 Bohr’s model of the atom"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc108.pdf",
+          "ordinal": 9,
+          "pageStart": 7,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 8: Journey Inside the Atom",
+            "8.2 A Short Historical Journey Through Atomic Models",
+            "8.2.3 Bohr’s model of the atom"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc108.pdf",
+          "ordinal": 10,
+          "pageStart": 8,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 8: Journey Inside the Atom",
+            "8.3 What Components Contribute to the",
+            "Mass of an Atom?"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc108.pdf",
+          "ordinal": 11,
+          "pageStart": 8,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 8: Journey Inside the Atom",
+            "8.3 What Components Contribute to the",
+            "8.3.1 Discovery of the Neutron"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc108.pdf",
+          "ordinal": 12,
+          "pageStart": 8,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 8: Journey Inside the Atom",
+            "8.3 What Components Contribute to the",
+            "8.3.1 Discovery of the Neutron"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-19T17:06:53.481Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "An atom has an electronic configuration of 2, 8, 7. What is its valency?",
+      "choices": [
+        "1",
+        "2",
+        "3",
+        "7"
+      ],
+      "answerIndex": 0,
+      "solution": "The atom has 7 valence electrons, which means it needs to gain 1 electron to achieve a stable octet configuration. This makes its valency 1. Option 2 suggests gaining 2 electrons, which would not complete the octet. Option 3 implies gaining 3 electrons, which is unnecessary. Option 7 incorrectly assumes the atom loses 7 electrons, which is not energetically favorable.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक परमाणु का इलेक्ट्रॉनिक विन्यास 2, 8, 7 है। इसकी संयोजकता क्या है?",
+          "choices": [
+            "1",
+            "2",
+            "3",
+            "7"
+          ],
+          "solution": "परमाणु के 7 बाह्य इलेक्ट्रॉन हैं, जिसका अर्थ है कि यह एक इलेक्ट्रॉन जोड़कर स्थायी अष्टक विन्यास प्राप्त कर सकता है। इसके कारण इसकी संयोजकता 1 होती है। विकल्प 2 द्वारा दो इलेक्ट्रॉन जोड़ने का सुझाव दिया गया है, जो अष्टक को पूरा नहीं करता। विकल्प 3 तीन इलेक्ट्रॉन जोड़ने का अर्थ देता है, जो आवश्यक नहीं है। विकल्प 7 गलत रूप से अणु के 7 इलेक्ट्रॉन खो देने का अनुमान लगाता है, जो ऊर्जा के दृष्टिकोण से अनुकूल नहीं है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard Hindi scientific terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका परमाणूची इलेक्ट्रॉन वितरण 2, 8, 7 आहे. त्याची वलेन्सी किती आहे?",
+          "choices": [
+            "1",
+            "2",
+            "3",
+            "7"
+          ],
+          "solution": "हा परमाणू 7 वैलेन्स इलेक्ट्रॉन असल्यामुळे त्याला एक इलेक्ट्रॉन मिळवावा लागेल जेणेकरून तो स्थिर ऑक्टेट वितरण प्राप्त करू शकेल. हे त्याची वलेन्सी 1 बनवते. पर्याय 2 वर 2 इलेक्ट्रॉन मिळवण्याचा अंदाज आहे, जो ऑक्टेट पूर्ण करणार नाही. पर्याय 3 वर 3 इलेक्ट्रॉन मिळवण्याचा अंदाज आहे, जो आवश्यक नाही. पर्याय 7 वर परमाणू 7 इलेक्ट्रॉन गमावतो, जो ऊर्जातः अनुकूल नाही असे चुकीचे मानते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi terminology for chemistry concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Thinks the valency is the same as the number of valence electrons",
+        "Confuses the valency with the number of electrons in the second shell",
+        "Mistakes the valency for the number of electrons in the outermost shell"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 1, as the atom has 7 valence electrons and will gain 1 to complete its octet. The author's reasoning is sound, and the misconceptions listed for the distractors are plausible for students.",
+      "sources": [
+        {
+          "document": "ncert/9/science/iesc108.pdf",
+          "ordinal": 16,
+          "pageStart": 12,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 8: Journey Inside the Atom",
+            "8.7 How Are Electrons Distributed in Different",
+            "Energy Levels?"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc108.pdf",
+          "ordinal": 17,
+          "pageStart": 13,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 8: Journey Inside the Atom",
+            "8.7 How Are Electrons Distributed in Different",
+            "Energy Levels?"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc108.pdf",
+          "ordinal": 18,
+          "pageStart": 14,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 8: Journey Inside the Atom",
+            "8.8 Combining Capacity of an Atom: Valency"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc108.pdf",
+          "ordinal": 19,
+          "pageStart": 14,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 8: Journey Inside the Atom",
+            "8.8 Combining Capacity of an Atom: Valency"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-19T17:06:53.481Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
     }
   ]
 }

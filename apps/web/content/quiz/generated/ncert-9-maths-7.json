@@ -574,6 +574,2173 @@
       "generatedAt": "2026-10-30T01:39:33.133Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the main purpose of using probability in everyday life?",
+      "choices": [
+        "To measure the length of objects",
+        "To predict the exact outcome of random events",
+        "To determine the exact time of an event",
+        "To express the likelihood of events"
+      ],
+      "answerIndex": 3,
+      "solution": "Probability is used to express how likely an event is to happen, based on available information. It does not measure physical properties like length, nor can it predict exact outcomes of random events, which are inherently uncertain. It also does not determine the exact time of an event, as time is not directly related to probability. The correct answer is 'To express the likelihood of events.'",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "आम जीवन में संभाव्यता का मुख्य उद्देश्य क्या है?",
+          "choices": [
+            "वस्तुओं की लंबाई को मापना",
+            "यादृच्छिक घटनाओं के निश्चित परिणाम की भविष्यवाणी करना",
+            "किसी घटना के समय को निर्धारित करना",
+            "घटनाओं की संभावना को व्यक्त करना"
+          ],
+          "solution": "संभाव्यता का उपयोग उपलब्ध सूचना के आधार पर घटना के होने की संभावना को व्यक्त करने के लिए किया जाता है। यह लंबाई जैसे भौतिक गुणों को मापता नहीं है, न ही यादृच्छिक घटनाओं के निश्चित परिणाम की भविष्यवाणी कर सकता है, जो आंतरिक रूप से अनिश्चित होते हैं। इसके अलावा, यह समय के निश्चित समय को निर्धारित नहीं कर सकता है, क्योंकि समय संभाव्यता से सीधे संबंधित नहीं है। सही उत्तर 'घटनाओं की संभावना को व्यक्त करना' है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology consistent with textbook language.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "रोजच्या जीवनात संभाव्यता वापरण्याचा मुख्य उद्देश काय आहे?",
+          "choices": [
+            "वस्तूंची लांबी मोजणे",
+            "यादृच्छिक घटनांच्या अचूक निकालाचा अंदाज लावणे",
+            "एका घटनेच्या अचूक वेळेचा निर्धार करणे",
+            "घटनांच्या संभाव्यतेचे व्यक्त करणे"
+          ],
+          "solution": "संभाव्यता ही उपलब्ध माहितीवर आधारित घटना घडण्याच्या संभाव्यतेचे व्यक्त करण्यासाठी वापरली जाते. ती भौतिक गुणधर्मांसारखी लांबी मोजत नाही, आणि यादृच्छिक घटनांच्या अचूक निकालाचा अंदाज लावू शकत नाही, कारण ते अपरिशोधित असतात. ती घटनेच्या अचूक वेळेचा निर्धार करू शकत नाही, कारण वेळ संभाव्यतेशी सीधा संबंध नाही. योग्य उत्तर 'घटनांच्या संभाव्यतेचे व्यक्त करणे' आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology consistent with textbook usage.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses probability with measurement of physical quantities",
+        "Believes probability can predict exact outcomes",
+        "Misunderstands the role of probability in time prediction",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-constructed, with a clear correct answer and plausible distractors based on common misconceptions about probability.",
+      "sources": [
+        {
+          "document": "ncert/9/mathematics/iemh107.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 7: The Mathematics of Maybe: Introduction to Probability",
+            "7.1 What is Probability?"
+          ]
+        },
+        {
+          "document": "ncert/9/mathematics/iemh107.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 7: The Mathematics of Maybe: Introduction to Probability",
+            "7.1 What is Probability?"
+          ]
+        },
+        {
+          "document": "ncert/9/mathematics/iemh107.pdf",
+          "ordinal": 2,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 7: The Mathematics of Maybe: Introduction to Probability",
+            "7.1 What is Probability?"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-22T13:03:58.024Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of the following is an example of an event with an 'even chance'?",
+      "choices": [
+        "A die showing a 6",
+        "A coin landing on its edge",
+        "A card drawn from a deck being a heart",
+        "A coin landing on heads"
+      ],
+      "answerIndex": 3,
+      "solution": "The correct answer is 'A coin landing on heads' because it has an equal chance of happening as landing on tails. 'A die showing a 6' is less likely, 'A card drawn from a deck being a heart' is more likely, and 'A coin landing on its edge' is not a typical outcome in probability problems.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा 'सम संभावना' के घटना का उदाहरण है?",
+          "choices": [
+            "एक पासा 6 दिखाता है",
+            "एक सिक्का सिरे पर गिरता है",
+            "एक गड्डी से निकाला गया कार्ड हार्ट है",
+            "एक सिक्का सिर पर गिरता है"
+          ],
+          "solution": "सही उत्तर 'एक सिक्का सिर पर गिरता है' है क्योंकि यह चेहरा या पीछा होने के बराबर संभावना है। 'एक पासा 6 दिखाता है' कम संभावना है, 'एक गड्डी से निकाला गया कार्ड हार्ट है' अधिक संभावना है, और 'एक सिक्का सिरे पर गिरता है' संभावना के समस्याओं में एक आम परिणाम नहीं है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology for probability concepts.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते एक 'सम शक्यता' असलेल्या घटनेचे उदाहरण आहे?",
+          "choices": [
+            "एका छक्का वर 6 दिसणे",
+            "एका नाण्याचा कडा खाली येणे",
+            "एका गाडीमधून एका कार्ड चा हृदय असणे",
+            "एका नाण्याचा शिर खाली येणे"
+          ],
+          "solution": "बरोबर उत्तर 'एका नाण्याचा शिर खाली येणे' आहे कारण त्याची घटना घडण्याची शक्यता त्याच्या पाठी खाली येण्याच्या शक्यतेसोबत समान आहे. 'एका छक्का वर 6 दिसणे' कमी शक्यता असलेले आहे, 'एका गाडीमधून एका कार्ड चा हृदय असणे' अधिक शक्यता असलेले आहे, आणि 'एका नाण्याचा कडा खाली येणे' हे सामान्य वर्गीकरणात येत नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for probability concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses 'even chance' with a specific outcome",
+        "Ignores the rare possibility of a coin standing on edge",
+        "Fails to consider the proportion of hearts in a deck of cards",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 3, as a fair coin has an even chance of landing on heads or tails. The other options are incorrect for the reasons given, and the misconceptions identified are plausible for students at this level.",
+      "sources": [
+        {
+          "document": "ncert/9/mathematics/iemh107.pdf",
+          "ordinal": 3,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 7: The Mathematics of Maybe: Introduction to Probability",
+            "7.1 What is Probability?"
+          ]
+        },
+        {
+          "document": "ncert/9/mathematics/iemh107.pdf",
+          "ordinal": 4,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 7: The Mathematics of Maybe: Introduction to Probability",
+            "7.2 Measuring Probability Objectively"
+          ]
+        },
+        {
+          "document": "ncert/9/mathematics/iemh107.pdf",
+          "ordinal": 5,
+          "pageStart": 6,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 7: The Mathematics of Maybe: Introduction to Probability",
+            "Did you know? The game of Snakes"
+          ]
+        },
+        {
+          "document": "ncert/9/mathematics/iemh107.pdf",
+          "ordinal": 6,
+          "pageStart": 8,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 7: The Mathematics of Maybe: Introduction to Probability",
+            "Did you know? The game of Snakes"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-22T13:03:58.024Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of the following is an example of a 'certain' event?",
+      "choices": [
+        "Drawing a red card from a deck of 52 cards",
+        "Rolling a 7 on a six-sided die",
+        "A student passing an exam",
+        "All the sweets in a bag being red"
+      ],
+      "answerIndex": 3,
+      "solution": "The correct answer is 'All the sweets in a bag being red' because it is guaranteed to happen if all the sweets are red. 'Drawing a red card from a deck of 52 cards' is not certain, 'Rolling a 7 on a six-sided die' is impossible, and 'A student passing an exam' is not certain.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन एक 'निश्चित' घटना का उदाहरण है?",
+          "choices": [
+            "52 कार्ड के एक डेक से लाल कार्ड निकालना",
+            "छह तरफ वाले पासे पर 7 आना",
+            "एक छात्र परीक्षा उत्तीर्ण करना",
+            "एक बैग में सभी चीनी मिठाई लाल होना"
+          ],
+          "solution": "सही उत्तर 'एक बैग में सभी चीनी मिठाई लाल होना' है क्योंकि यह तब निश्चित रूप से होता है जब सभी चीनी मिठाई लाल होती हैं। '52 कार्ड के एक डेक से लाल कार्ड निकालना' निश्चित नहीं है, 'छह तरफ वाले पासे पर 7 आना' असंभव है, और 'एक छात्र परीक्षा उत्तीर्ण करना' निश्चित नहीं है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology for probability concepts.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते 'निश्चित' घटनेचे उदाहरण आहे?",
+          "choices": [
+            "52 कार्डच्या डेकमधून लाल कार्ड निवडणे",
+            "छह-बाजूच्या छक्करमध्ये 7 फेकणे",
+            "एका विद्यार्थीने परीक्षा उत्तीर्ण होणे",
+            "एका बॅगेतील सर्व गोड्या लाल असणे"
+          ],
+          "solution": "बरोबर उत्तर 'एका बॅगेतील सर्व गोड्या लाल असणे' आहे कारण जर सर्व गोड्या लाल असतील तर ते खात्रीनामा घडेल. '52 कार्डच्या डेकमधून लाल कार्ड निवडणे' खात्रीनामा नाही, 'छह-बाजूच्या छक्करमध्ये 7 फेकणे' अशक्य आहे आणि 'एका विद्यार्थीने परीक्षा उत्तीर्ण होणे' खात्रीनामा नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for probability concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses possibility with certainty",
+        "Ignores the impossibility of the event",
+        "Fails to understand the definition of a certain event",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 3, as it is the only option that describes a certain event if all the sweets in the bag are red. The other options are either not certain or impossible.",
+      "sources": [
+        {
+          "document": "ncert/9/mathematics/iemh107.pdf",
+          "ordinal": 3,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 7: The Mathematics of Maybe: Introduction to Probability",
+            "7.1 What is Probability?"
+          ]
+        },
+        {
+          "document": "ncert/9/mathematics/iemh107.pdf",
+          "ordinal": 4,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 7: The Mathematics of Maybe: Introduction to Probability",
+            "7.2 Measuring Probability Objectively"
+          ]
+        },
+        {
+          "document": "ncert/9/mathematics/iemh107.pdf",
+          "ordinal": 5,
+          "pageStart": 6,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 7: The Mathematics of Maybe: Introduction to Probability",
+            "Did you know? The game of Snakes"
+          ]
+        },
+        {
+          "document": "ncert/9/mathematics/iemh107.pdf",
+          "ordinal": 6,
+          "pageStart": 8,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 7: The Mathematics of Maybe: Introduction to Probability",
+            "Did you know? The game of Snakes"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-22T13:03:58.024Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If the probability of an event is 0, what does it mean?",
+      "choices": [
+        "The event is certain to happen",
+        "The event is impossible to happen",
+        "The event has an equal chance of happening or not happening",
+        "The event is more likely to happen than not"
+      ],
+      "answerIndex": 1,
+      "solution": "A probability of 0 means the event cannot occur under any circumstances. This is because probability values range from 0 to 1, with 0 representing absolute impossibility. The other options describe probabilities of 1, 0.5, and values greater than 0.5, which correspond to certainty, equal chances, and higher likelihood, respectively.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि किसी घटना की संभावना 0 है, तो इसका क्या अर्थ है?",
+          "choices": [
+            "घटना निश्चित रूप से होगी",
+            "घटना होना असंभव है",
+            "घटना होने या न होने की समान संभावना है",
+            "घटना होना अन्यथा की तुलना में अधिक संभावित है"
+          ],
+          "solution": "0 की संभावना का अर्थ है कि घटना किसी भी परिस्थिति में घट नहीं सकती। यह इसलिए है क्योंकि संभावना के मान 0 से 1 के बीच होते हैं, जहां 0 पूर्ण असंभवता का प्रतिनिधित्व करता है। अन्य विकल्प 1, 0.5 और 0.5 से अधिक मानों के अनुरूप हैं, जो क्रमशः निश्चितता, समान संभावना और अधिक संभावितता के अर्थ में आते हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर घटनेची शक्यता 0 असेल, तर ते काय अर्थ दर्शवते?",
+          "choices": [
+            "घटना घडण्यास खात्री आहे",
+            "घटना घडणे अशक्य आहे",
+            "घटना घडणे किंवा न घडणे ही समान शक्यता आहे",
+            "घटना घडणे न घडण्यापेक्षा जास्त शक्य आहे"
+          ],
+          "solution": "0 ची शक्यता असलेल्या घटनेचा अर्थ असा आहे की घटना कोणत्याही परिस्थितीत घडू शकत नाही. हे कारण आहे की शक्यतेच्या मूल्यांची श्रेणी 0 ते 1 असते, जेथे 0 अबोलूत अशक्यतेचा प्रतिनिधित्व करते. इतर विकल्पांमध्ये 1, 0.5 आणि 0.5 पेक्षा जास्त मूल्यांचा अर्थ असा आहे, जे क्रमशः खात्री, समान शक्यता आणि जास्त संभाव्यता दर्शवतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for probability concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses 0 with certainty",
+        null,
+        "Believes 0 means equal chance",
+        "Misunderstands the meaning of greater than 0.5"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 1, as a probability of 0 means the event is impossible. The other options represent common misconceptions about probability values.",
+      "sources": [
+        {
+          "document": "ncert/9/mathematics/iemh107.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 7: The Mathematics of Maybe: Introduction to Probability",
+            "7.1 What is Probability?"
+          ]
+        },
+        {
+          "document": "ncert/9/mathematics/iemh107.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 7: The Mathematics of Maybe: Introduction to Probability",
+            "7.1 What is Probability?"
+          ]
+        },
+        {
+          "document": "ncert/9/mathematics/iemh107.pdf",
+          "ordinal": 2,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 7: The Mathematics of Maybe: Introduction to Probability",
+            "7.1 What is Probability?"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-22T13:03:58.024Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "A fair die is rolled. What is the probability of getting a number greater than 4?",
+      "choices": [
+        "1/6",
+        "1/3",
+        "1/2",
+        "2/3"
+      ],
+      "answerIndex": 1,
+      "solution": "The possible outcomes when a die is rolled are 1, 2, 3, 4, 5, and 6. Numbers greater than 4 are 5 and 6, which are 2 outcomes. So, the probability is 2/6, which simplifies to 1/3. The option '1/6' is incorrect because it only considers one outcome. The option '1/2' is incorrect because it assumes 3 outcomes. The option '2/3' is incorrect because it assumes 4 outcomes.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक न्याय्य पासा फेंका जाता है। 4 से बड़ी संख्या प्राप्त करने की प्रायिकता क्या है?",
+          "choices": [
+            "1/6",
+            "1/3",
+            "1/2",
+            "2/3"
+          ],
+          "solution": "जब एक पासा फेंका जाता है तो संभावित परिणाम 1, 2, 3, 4, 5 और 6 होते हैं। 4 से बड़ी संख्याएँ 5 और 6 हैं, जो 2 परिणाम हैं। इसलिए, प्रायिकता 2/6 है, जो सरलीकृत होकर 1/3 हो जाती है। विकल्प '1/6' गलत है क्योंकि यह केवल एक परिणाम को मानता है। विकल्प '1/2' गलत है क्योंकि यह 3 परिणामों को मानता है। विकल्प '2/3' गलत है क्योंकि यह 4 परिणामों को मानता है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका न्याय्य छक्का फेकल्यास 4 पेक्षा मोठ्या संख्येच्या मिळण्याची शक्यता किती?",
+          "choices": [
+            "1/6",
+            "1/3",
+            "1/2",
+            "2/3"
+          ],
+          "solution": "छक्का फेकल्यास शक्य परिणाम 1, 2, 3, 4, 5 आणि 6 असतात. 4 पेक्षा मोठ्या संख्या 5 आणि 6 असून त्यांचे परिणाम 2 असतात. म्हणून, शक्यता 2/6 असून ती 1/3 वर घटविता येते. पर्याय '1/6' अयोग्य आहे कारण तो केवळ एक परिणाम विचारात घेतो. पर्याय '1/2' अयोग्य आहे कारण तो 3 परिणाम विचारात घेतो. पर्याय '2/3' अयोग्य आहे कारण तो 4 परिणाम विचारात घेतो.",
+          "imageAlt": null,
+          "critique": "The Marathi translation accurately reflects the English question and solution, with appropriate terminology used in a Marathi educational context.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "counts only one outcome",
+        null,
+        "assumes 3 outcomes",
+        "assumes 4 outcomes"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct and matches the author's key. The probability of rolling a number greater than 4 (i.e., 5 or 6) is 2/6 = 1/3.",
+      "sources": [
+        {
+          "document": "ncert/9/mathematics/iemh107.pdf",
+          "ordinal": 14,
+          "pageStart": 17,
+          "pageEnd": 18,
+          "headingPath": [
+            "Chapter 7: The Mathematics of Maybe: Introduction to Probability",
+            "7.4 Tree diagrams",
+            "End-of-c"
+          ]
+        },
+        {
+          "document": "ncert/9/mathematics/iemh107.pdf",
+          "ordinal": 15,
+          "pageStart": 18,
+          "pageEnd": 19,
+          "headingPath": [
+            "Chapter 7: The Mathematics of Maybe: Introduction to Probability",
+            "7.4 Tree diagrams",
+            "End-of-c"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-22T13:03:58.024Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "A fair 6-sided die is rolled. What is the probability of rolling an even number?",
+      "choices": [
+        "1/6",
+        "1/3",
+        "1/2",
+        "2/3"
+      ],
+      "answerIndex": 2,
+      "solution": "The sample space for rolling a die is {1, 2, 3, 4, 5, 6}. The even numbers are 2, 4, and 6, so there are 3 favorable outcomes. The probability is 3/6 = 1/2. The option '1/6' is incorrect because it assumes only one favorable outcome. '1/3' is incorrect because it assumes only two favorable outcomes. '2/3' is incorrect because it suggests more than half of the outcomes are even.",
+      "checkExpr": "3/6",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक न्यायसंगत 6-भुज घनाकृति के फेंके जाने पर, सम संख्या आने की प्रायिकता क्या है?",
+          "choices": [
+            "1/6",
+            "1/3",
+            "1/2",
+            "2/3"
+          ],
+          "solution": "घनाकृति फेंके जाने के नमूना स्थान {1, 2, 3, 4, 5, 6} है। सम संख्याएँ 2, 4 और 6 हैं, इसलिए 3 अनुकूल परिणाम हैं। प्रायिकता 3/6 = 1/2 है। विकल्प '1/6' गलत है क्योंकि यह केवल एक अनुकूल परिणाम के असमान अनुमान के लिए है। '1/3' गलत है क्योंकि यह केवल दो अनुकूल परिणाम के असमान अनुमान के लिए है। '2/3' गलत है क्योंकि यह यह सुझाव देता है कि अधिकांश परिणाम सम हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एक न्याय्य 6-बाजूचा छक्का फेकला जातो. सम नंबर फेकण्याची शक्यता किती?",
+          "choices": [
+            "1/6",
+            "1/3",
+            "1/2",
+            "2/3"
+          ],
+          "solution": "छक्का फेकल्याचा नमुना अंक आहे {1, 2, 3, 4, 5, 6}. सम अंक 2, 4 आणि 6 आहेत, म्हणून 3 अनुकूल निकाल आहेत. शक्यता 3/6 = 1/2 आहे. '1/6' चूक आहे कारण ते फक्त एक अनुकूल निकाल मानते. '1/3' चूक आहे कारण ते फक्त दोन अनुकूल निकाल मानते. '2/3' चूक आहे कारण ते सांगते की अधिकतर निकाल सम आहेत.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "assumes only one favorable outcome",
+        "assumes only two favorable outcomes",
+        null,
+        "suggests more than half of the outcomes are even"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct and matches the author's key. The reasoning for the distractors is valid and reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/9/mathematics/iemh107.pdf",
+          "ordinal": 7,
+          "pageStart": 9,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 7: The Mathematics of Maybe: Introduction to Probability",
+            "Want to learn more about sampling? What we have learned so far is"
+          ]
+        },
+        {
+          "document": "ncert/9/mathematics/iemh107.pdf",
+          "ordinal": 8,
+          "pageStart": 10,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 7: The Mathematics of Maybe: Introduction to Probability",
+            "When we speak of a coin, we assume it to be"
+          ]
+        },
+        {
+          "document": "ncert/9/mathematics/iemh107.pdf",
+          "ordinal": 9,
+          "pageStart": 11,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 7: The Mathematics of Maybe: Introduction to Probability",
+            "When we speak of a coin, we assume it to be"
+          ]
+        },
+        {
+          "document": "ncert/9/mathematics/iemh107.pdf",
+          "ordinal": 10,
+          "pageStart": 12,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 7: The Mathematics of Maybe: Introduction to Probability",
+            "7.3 Elements of Probability: Sample Spaces and",
+            "Events"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-22T13:03:58.024Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "Which of the following is an example of a random event?",
+      "choices": [
+        "Winning a game of chess with a guaranteed strategy",
+        "Rolling a die and getting a 6",
+        "Knowing the exact time of sunrise",
+        "Predicting the outcome of a cricket match based on past performance"
+      ],
+      "answerIndex": 1,
+      "solution": "Rolling a die and getting a 6 is an example of a random event because the outcome cannot be predicted with certainty. The other options involve predictable or deterministic outcomes, such as a guaranteed strategy in chess, a calculable sunrise time, and a prediction based on past performance.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन एक यादृच्छिक घटना का उदाहरण है?",
+          "choices": [
+            "एक गारंटीकृत रणनीति के साथ शतरंज के खेल में जीतना",
+            "एक पासा फेंकना और 6 प्राप्त करना",
+            "सूर्योदय के सटीक समय को जानना",
+            "अतीत के प्रदर्शन के आधार पर क्रिकेट मैच के परिणाम की भविष्यवाणी करना"
+          ],
+          "solution": "एक पासा फेंकना और 6 प्राप्त करना एक यादृच्छिक घटना का उदाहरण है क्योंकि परिणाम की निश्चितता से भविष्यवाणी नहीं की जा सकती है। अन्य विकल्पों में भविष्यवाणी योग्य या निश्चित परिणाम शामिल हैं, जैसे शतरंज में एक गारंटीकृत रणनीति, एक गणितीय रूप से निकाला गया सूर्योदय का समय, और अतीत के प्रदर्शन के आधार पर भविष्यवाणी।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate technical terms. The correct answer remains option (2) in the same position. All distractors remain incorrect.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते एक यादृच्छिक घटनेचे उदाहरण आहे?",
+          "choices": [
+            "खात्रीशीर रणनीतीसह शतरंजाचा खेळ जिंकणे",
+            "एका पासाची फेक करून 6 मिळणे",
+            "सूर्योदयाचा तास नक्की कळणे",
+            "क्रिकेट सामन्याचा निकाल विजयी काळावर आधारित पूर्वानुमान करणे"
+          ],
+          "solution": "पासाची फेक करून 6 मिळणे हे यादृच्छिक घटनेचे उदाहरण आहे कारण निकाल खात्रीशीरपणे पूर्वानुमान करता येत नाही. इतर विकल्पांमध्ये पूर्वानुमान शक्य असलेल्या किंवा निश्चित घटनांचा समावेश आहे, जसे शतरंजामध्ये खात्रीशीर रणनीती, सूर्योदयाचा तास गणितीय रीतीने निश्चित करता येणे आणि विजयी काळावर आधारित पूर्वानुमान.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for probability concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Believes strategy-based outcomes are random",
+        null,
+        "Confuses prediction with randomness",
+        "Misunderstands the concept of predictability"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is option 1, as rolling a die is a classic example of a random event. The other options involve predictable or deterministic outcomes, which aligns with the author's reasoning.",
+      "sources": [
+        {
+          "document": "ncert/9/mathematics/iemh107.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 7: The Mathematics of Maybe: Introduction to Probability",
+            "7.1 What is Probability?"
+          ]
+        },
+        {
+          "document": "ncert/9/mathematics/iemh107.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 7: The Mathematics of Maybe: Introduction to Probability",
+            "7.1 What is Probability?"
+          ]
+        },
+        {
+          "document": "ncert/9/mathematics/iemh107.pdf",
+          "ordinal": 2,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 7: The Mathematics of Maybe: Introduction to Probability",
+            "7.1 What is Probability?"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-22T13:03:58.024Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "A bag contains 10 red balls and 15 blue balls. If one ball is picked at random, what is the probability that it is not blue?",
+      "choices": [
+        "2/5",
+        "3/5",
+        "1/2",
+        "1/3"
+      ],
+      "answerIndex": 0,
+      "solution": "The correct answer is 2/5 because there are 10 red balls out of a total of 25 balls. '3/5' is incorrect because it represents the probability of picking a blue ball, '1/2' is not supported by the numbers, and '1/3' is too low given the data.",
+      "checkExpr": "10/25",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक बैग में 10 लाल गेंदें और 15 नीली गेंदें हैं। यदि एक गेंद यादृच्छिक रूप से निकाली जाती है, तो इसके नीली न होने की प्रायिकता क्या है?",
+          "choices": [
+            "2/5",
+            "3/5",
+            "1/2",
+            "1/3"
+          ],
+          "solution": "सही उत्तर 2/5 है क्योंकि कुल 25 गेंदों में 10 लाल गेंदें हैं। '3/5' गलत है क्योंकि यह नीली गेंद निकालने की प्रायिकता का प्रतिनिधित्व करता है, '1/2' संख्याओं द्वारा समर्थित नहीं है और '1/3' आंकड़ों के आधार पर बहुत कम है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains original meaning, and uses appropriate Hindi mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका बॅगमध्ये 10 लाल फुले आणि 15 निळ्या फुले आहेत. जर एका फुलाची यादृच्छिक निवड केली गेली, तर ती निळी नसल्याची शक्यता किती असेल?",
+          "choices": [
+            "2/5",
+            "3/5",
+            "1/2",
+            "1/3"
+          ],
+          "solution": "सही उत्तर 2/5 आहे कारण 25 फुलांपैकी 10 लाल फुले आहेत. '3/5' चुकीचे आहे कारण ते निळ्या फुलाच्या निवडेची शक्यता दर्शवते, '1/2' च्या संख्यांमध्ये समर्थन नाही आणि '1/3' ची संख्या डेटामुळे खूप कमी आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for probability and numbers.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses the number of blue balls with the probability of picking a non-blue ball",
+        "Fails to consider the total number of balls",
+        "Assumes equal distribution of colours"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 2/5, as there are 10 red balls out of 25 total. The author's reasoning is sound and matches the correct solution. The distractors reflect common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/9/mathematics/iemh107.pdf",
+          "ordinal": 3,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 7: The Mathematics of Maybe: Introduction to Probability",
+            "7.1 What is Probability?"
+          ]
+        },
+        {
+          "document": "ncert/9/mathematics/iemh107.pdf",
+          "ordinal": 4,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 7: The Mathematics of Maybe: Introduction to Probability",
+            "7.2 Measuring Probability Objectively"
+          ]
+        },
+        {
+          "document": "ncert/9/mathematics/iemh107.pdf",
+          "ordinal": 5,
+          "pageStart": 6,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 7: The Mathematics of Maybe: Introduction to Probability",
+            "Did you know? The game of Snakes"
+          ]
+        },
+        {
+          "document": "ncert/9/mathematics/iemh107.pdf",
+          "ordinal": 6,
+          "pageStart": 8,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 7: The Mathematics of Maybe: Introduction to Probability",
+            "Did you know? The game of Snakes"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-22T13:03:58.024Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "A bag contains 4 red balls and 5 blue balls. One ball is drawn and laid aside, and a second ball is drawn. What is the probability of drawing a red ball and then a blue ball?",
+      "choices": [
+        "4/9",
+        "5/9",
+        "20/81",
+        "40/81"
+      ],
+      "answerIndex": 2,
+      "solution": "The probability of drawing a red ball first is 4/9. After one red ball is laid aside, there are 8 balls left (3 red and 5 blue). The probability of drawing a blue ball next is 5/8. Multiplying these probabilities gives (4/9) × (5/8) = 20/72 = 5/18, which simplifies to 20/81. The option '4/9' is incorrect because it only considers the first draw. The option '5/9' is incorrect because it assumes the second draw has 9 balls. The option '40/81' is incorrect because it assumes both draws have 9 balls.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक थैले में 4 लाल गेंदें और 5 नीली गेंदें हैं। एक गेंद निकाली जाती है और एक ओर रख दी जाती है, और दूसरी गेंद निकाली जाती है। लाल गेंद और फिर नीली गेंद निकालने की प्रायिकता क्या है?",
+          "choices": [
+            "4/9",
+            "5/9",
+            "20/81",
+            "40/81"
+          ],
+          "solution": "पहले एक लाल गेंद निकालने की प्रायिकता 4/9 है। एक लाल गेंद एक ओर रख देने के बाद, 8 गेंदें बच जाती हैं (3 लाल और 5 नीली)। अगले चरण में एक नीली गेंद निकालने की प्रायिकता 5/8 है। इन प्रायिकताओं को गुणा करने पर (4/9) × (5/8) = 20/72 = 5/18, जो 20/81 में सरलीकृत हो जाता है। विकल्प '4/9' गलत है क्योंकि यह केवल पहले निकाले गए गेंद को ध्यान में रखता है। विकल्प '5/9' गलत है क्योंकि यह दूसरे निकाले गए गेंद के लिए 9 गेंदों की परिकल्पना करता है। विकल्प '40/81' गलत है क्योंकि यह दोनों निकाले गए गेंद के लिए 9 गेंदों की परिकल्पना करता है।",
+          "imageAlt": "एक थैला जिसमें लाल और नीली गेंदें हैं, 4 लाल और 5 नीली गेंदें दिखाई दे रही हैं।",
+          "critique": "Translation is accurate, maintains original meaning, and uses standard Hindi mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका बॅगेत 4 लाल गोले आणि 5 नील गोले आहेत. एका गोला बाहेर काढला जातो आणि दुसरा गोला काढला जातो. लाल गोला आणि नील गोला काढण्याची शक्यता किती?",
+          "choices": [
+            "4/9",
+            "5/9",
+            "20/81",
+            "40/81"
+          ],
+          "solution": "पहिल्यांदा लाल गोला काढण्याची शक्यता 4/9 आहे. एक लाल गोला बाहेर काढल्यानंतर, उरलेल्या 8 गोल्यांमध्ये 3 लाल आणि 5 नील असतात. नंतर नील गोला काढण्याची शक्यता 5/8 आहे. या दोन शक्यता गुणिल्याने (4/9) × (5/8) = 20/72 = 5/18, जे 20/81 वर अद्यतनित होते. विकल्प '4/9' अयोग्य आहे कारण तो केवळ पहिल्या गोला काढण्याचा विचार करतो. विकल्प '5/9' अयोग्य आहे कारण तो दुसर्‍या गोला काढण्याच्या 9 गोल्यांचा अंदाज घेतो. विकल्प '40/81' अयोग्य आहे कारण तो दोन्ही गोल्यांच्या 9 गोल्यांचा अंदाज घेतो.",
+          "imageAlt": "एका बॅगेत 4 लाल आणि 5 नील गोले दर्शविलेल्या आहेत.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": "A bag with red and blue balls, showing 4 red and 5 blue balls.",
+      "figure": {
+        "kind": "geometry",
+        "spec": {
+          "frame": {
+            "xMin": 0,
+            "xMax": 10,
+            "yMin": 0,
+            "yMax": 7,
+            "unit": "units"
+          },
+          "points": [
+            {
+              "id": "B",
+              "x": 5,
+              "y": 3.5,
+              "label": "B"
+            }
+          ],
+          "texts": [
+            {
+              "x": 5,
+              "y": 6,
+              "label": "bag"
+            },
+            {
+              "x": 3,
+              "y": 3.5,
+              "label": "red"
+            },
+            {
+              "x": 7,
+              "y": 3.5,
+              "label": "blue"
+            }
+          ]
+        },
+        "labels": {
+          "red": {
+            "en": "red balls",
+            "hi": "लाल गेंदें",
+            "mr": "लाल गोले"
+          },
+          "blue": {
+            "en": "blue balls",
+            "hi": "नीली गेंदें",
+            "mr": "नील गोले"
+          },
+          "bag": {
+            "en": "bag",
+            "hi": "थैला",
+            "mr": "बॅग"
+          }
+        }
+      },
+      "needsFigure": true,
+      "distractorReason": [
+        "considers only the first draw",
+        "assumes the second draw has 9 balls",
+        null,
+        "assumes both draws have 9 balls"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct. The probability of drawing a red ball first is 4/9, and then a blue ball is 5/8, giving 20/72, which simplifies to 5/18 or 20/81. The author's reasoning for the distractors is valid.",
+      "sources": [
+        {
+          "document": "ncert/9/mathematics/iemh107.pdf",
+          "ordinal": 14,
+          "pageStart": 17,
+          "pageEnd": 18,
+          "headingPath": [
+            "Chapter 7: The Mathematics of Maybe: Introduction to Probability",
+            "7.4 Tree diagrams",
+            "End-of-c"
+          ]
+        },
+        {
+          "document": "ncert/9/mathematics/iemh107.pdf",
+          "ordinal": 15,
+          "pageStart": 18,
+          "pageEnd": 19,
+          "headingPath": [
+            "Chapter 7: The Mathematics of Maybe: Introduction to Probability",
+            "7.4 Tree diagrams",
+            "End-of-c"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-22T13:03:58.024Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "If a fair coin is tossed 100 times, and it lands on heads 52 times, what can be concluded about the fairness of the coin?",
+      "choices": [
+        "The coin is biased towards heads",
+        "The coin is fair because the result is close to 50%",
+        "The coin is fair because the number of heads is more than tails",
+        "The coin is biased because it landed on heads more than tails"
+      ],
+      "answerIndex": 1,
+      "solution": "The correct answer is 'The coin is fair because the result is close to 50%' because the result (52 heads out of 100) is close to the expected 50%, which is normal in random outcomes. 'The coin is biased towards heads' and 'The coin is biased because it landed on heads more than tails' are incorrect because a small deviation does not indicate bias. 'The coin is fair because the number of heads is more than tails' is also incorrect because more heads does not prove fairness.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक न्याय्य सिक्का 100 बार फेंका जाता है और यह 52 बार चित पर आता है, तो सिक्के की न्याय्यता के बारे में क्या निष्कर्ष निकाला जा सकता है?",
+          "choices": [
+            "सिक्का चित के पक्ष में असमान है",
+            "सिक्का न्याय्य है क्योंकि परिणाम 50% के करीब है",
+            "सिक्का न्याय्य है क्योंकि चित की संख्या पट से अधिक है",
+            "सिक्का असमान है क्योंकि यह चित पर अधिक बार आया है"
+          ],
+          "solution": "सही उत्तर 'सिक्का न्याय्य है क्योंकि परिणाम 50% के करीब है' है क्योंकि परिणाम (100 में से 52 चित) अपेक्षित 50% के करीब है, जो यादृच्छिक परिणाम में सामान्य है। 'सिक्का चित के पक्ष में असमान है' और 'सिक्का असमान है क्योंकि यह चित पर अधिक बार आया है' गलत हैं क्योंकि छोटा विचलन असमानता के संकेत नहीं है। 'सिक्का न्याय्य है क्योंकि चित की संख्या पट से अधिक है' भी गलत है क्योंकि अधिक चित न्याय्यता के प्रमाण नहीं हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate terminology as found in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर एक न्याय्य बाजू एकूण 100 वेळा फेकली गेली आणि ती 52 वेळा शिरोमुक्त आली, तर बाजूच्या न्याय्यतेबद्दल काय निष्कर्ष काढता येईल?",
+          "choices": [
+            "बाजू हे शिरोमुक्त बाजूला अनुकूल आहे",
+            "बाजू न्याय्य आहे कारण निकाल 50 च्या जवळ आहे",
+            "बाजू न्याय्य आहे कारण शिरोमुक्त च्या संख्या पेक्षा जास्त आहे",
+            "बाजू हे अनुकूल आहे कारण ती शिरोमुक्त च्या जास्त वेळा आली"
+          ],
+          "solution": "सही उत्तर 'बाजू न्याय्य आहे कारण निकाल 50 च्या जवळ आहे' आहे कारण निकाल (100 च्या 52 शिरोमुक्त) अपेक्षित 50 च्या जवळ आहे, जे यादृच्छिक निकालांमध्ये सामान्य आहे. 'बाजू हे शिरोमुक्त बाजूला अनुकूल आहे' आणि 'बाजू हे अनुकूल आहे कारण ती शिरोमुक्त च्या जास्त वेळा आली' हे चूकीचे आहेत कारण लहान विचलन अनुकूलतेचा संकेत नाही. 'बाजू न्याय्य आहे कारण शिरोमुक्त च्या संख्या पेक्षा जास्त आहे' हे देखील चूकीचे आहे कारण जास्त शिरोमुक्त न्याय्यतेचे प्रमाण नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for probability concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Assumes any deviation is bias",
+        null,
+        "Misinterprets the meaning of 'fair'",
+        "Fails to account for random variation"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies that a small deviation from 50% in 100 tosses is expected in a fair coin. The reasoning aligns with basic probability principles and the author's explanation.",
+      "sources": [
+        {
+          "document": "ncert/9/mathematics/iemh107.pdf",
+          "ordinal": 3,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 7: The Mathematics of Maybe: Introduction to Probability",
+            "7.1 What is Probability?"
+          ]
+        },
+        {
+          "document": "ncert/9/mathematics/iemh107.pdf",
+          "ordinal": 4,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 7: The Mathematics of Maybe: Introduction to Probability",
+            "7.2 Measuring Probability Objectively"
+          ]
+        },
+        {
+          "document": "ncert/9/mathematics/iemh107.pdf",
+          "ordinal": 5,
+          "pageStart": 6,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 7: The Mathematics of Maybe: Introduction to Probability",
+            "Did you know? The game of Snakes"
+          ]
+        },
+        {
+          "document": "ncert/9/mathematics/iemh107.pdf",
+          "ordinal": 6,
+          "pageStart": 8,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 7: The Mathematics of Maybe: Introduction to Probability",
+            "Did you know? The game of Snakes"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-22T13:03:58.024Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "If the probability of an event happening is 0.3, what is the probability that it does not happen?",
+      "choices": [
+        "0.7",
+        "0.3",
+        "0.5",
+        "0.6"
+      ],
+      "answerIndex": 0,
+      "solution": "The probability of an event not happening is 1 minus the probability of it happening. If the probability of the event happening is 0.3, then the probability of it not happening is 1 - 0.3 = 0.7. The option 0.3 is incorrect because it is the probability of the event happening, not not happening. The option 0.5 is incorrect because it assumes the probabilities are equal. The option 0.6 is incorrect because it assumes the probability of the event not happening is 0.6, which is not correct.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि किसी घटना के होने की प्रायिकता 0.3 है, तो इसके न होने की प्रायिकता क्या है?",
+          "choices": [
+            "0.7",
+            "0.3",
+            "0.5",
+            "0.6"
+          ],
+          "solution": "किसी घटना के न होने की प्रायिकता घटना के होने की प्रायिकता के 1 में से घटाने से प्राप्त होती है। यदि घटना के होने की प्रायिकता 0.3 है, तो इसके न होने की प्रायिकता 1 - 0.3 = 0.7 होगी। 0.3 विकल्प गलत है क्योंकि यह घटना के होने की प्रायिकता है, न कि न होने की। 0.5 विकल्प गलत है क्योंकि यह मान लेता है कि प्रायिकताएं समान हैं। 0.6 विकल्प गलत है क्योंकि यह मान लेता है कि घटना के न होने की प्रायिकता 0.6 है, जो सही नहीं है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology for probability.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर घटना घडण्याची शक्यता 0.3 असेल, तर ती घडू नये याची शक्यता किती असेल?",
+          "choices": [
+            "0.7",
+            "0.3",
+            "0.5",
+            "0.6"
+          ],
+          "solution": "घटना घडू नये याची शक्यता ही घटना घडण्याची शक्यता विरुद्ध असते. जर घटना घडण्याची शक्यता 0.3 असेल, तर ती घडू नये याची शक्यता 1 - 0.3 = 0.7 असेल. 0.3 असा पर्याय चुकीचा आहे कारण ही घटना घडण्याची शक्यता आहे, नाही की घडू नये. 0.5 असा पर्याय चुकीचा आहे कारण तो शक्यता समान असल्याचा अंदाज घेतो. 0.6 असा पर्याय चुकीचा आहे कारण तो घटना घडू नये याची शक्यता 0.6 असल्याचा अंदाज घेतो, जो चुकीचा आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for probability concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "confuses probability of happening with not happening",
+        "assumes equal probability of happening and not happening",
+        "assumes the probability of not happening is 0.6"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly applies the complement rule of probability. The reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/9/mathematics/iemh107.pdf",
+          "ordinal": 3,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 7: The Mathematics of Maybe: Introduction to Probability",
+            "7.1 What is Probability?"
+          ]
+        },
+        {
+          "document": "ncert/9/mathematics/iemh107.pdf",
+          "ordinal": 4,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 7: The Mathematics of Maybe: Introduction to Probability",
+            "7.2 Measuring Probability Objectively"
+          ]
+        },
+        {
+          "document": "ncert/9/mathematics/iemh107.pdf",
+          "ordinal": 5,
+          "pageStart": 6,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 7: The Mathematics of Maybe: Introduction to Probability",
+            "Did you know? The game of Snakes"
+          ]
+        },
+        {
+          "document": "ncert/9/mathematics/iemh107.pdf",
+          "ordinal": 6,
+          "pageStart": 8,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 7: The Mathematics of Maybe: Introduction to Probability",
+            "Did you know? The game of Snakes"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-22T13:03:58.024Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "In a sample space, the probability of event A is 0.4 and the probability of event B is 0.3. If A and B are mutually exclusive events, what is the probability of either A or B occurring?",
+      "choices": [
+        "0.1",
+        "0.3",
+        "0.4",
+        "0.7"
+      ],
+      "answerIndex": 3,
+      "solution": "For mutually exclusive events, the probability of either A or B occurring is the sum of their probabilities. This is 0.4 + 0.3 = 0.7. The option '0.1' is incorrect because it assumes the probability of both A and B occurring. '0.3' is incorrect because it assumes only the probability of B. '0.4' is incorrect because it assumes only the probability of A.",
+      "checkExpr": "0.4+0.3",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक नमूना अंतराल में, घटना A की प्रायिकता 0.4 है और घटना B की प्रायिकता 0.3 है। यदि A और B एक दूसरे के विवर्जित घटनाएं हैं, तो A या B के होने की प्रायिकता क्या है?",
+          "choices": [
+            "0.1",
+            "0.3",
+            "0.4",
+            "0.7"
+          ],
+          "solution": "एक दूसरे के विवर्जित घटनाओं के लिए, A या B के होने की प्रायिकता उनकी प्रायिकताओं के योग होती है। यह 0.4 + 0.3 = 0.7 है। '0.1' गलत है क्योंकि यह A और B के होने की प्रायिकता को मानता है। '0.3' गलत है क्योंकि यह केवल B की प्रायिकता को मानता है। '0.4' गलत है क्योंकि यह केवल A की प्रायिकता को मानता है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "नमुना अंतरालात, घटना A ची शक्यता 0.4 आहे आणि घटना B ची शक्यता 0.3 आहे. जर A आणि B ही परस्पर विरोधी घटना असतील, तर A किंवा B घडण्याची शक्यता किती असेल?",
+          "choices": [
+            "0.1",
+            "0.3",
+            "0.4",
+            "0.7"
+          ],
+          "solution": "परस्पर विरोधी घटनांसाठी, A किंवा B घडण्याची शक्यता त्यांच्या शक्यतांच्या बेरजेएवजी असते. ही 0.4 + 0.3 = 0.7 आहे. '0.1' अशी शक्यता चुकीची आहे कारण ती A आणि B दोन्ही घडण्याची शक्यता मानते. '0.3' अशी शक्यता चुकीची आहे कारण ती केवळ B ची शक्यता मानते. '0.4' अशी शक्यता चुकीची आहे कारण ती केवळ A ची शक्यता मानते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "assumes the probability of both A and B occurring",
+        "assumes only the probability of B",
+        "assumes only the probability of A",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct. For mutually exclusive events, the probability of either A or B occurring is the sum of their probabilities. The author's reasoning for the distractors is valid and reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/9/mathematics/iemh107.pdf",
+          "ordinal": 7,
+          "pageStart": 9,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 7: The Mathematics of Maybe: Introduction to Probability",
+            "Want to learn more about sampling? What we have learned so far is"
+          ]
+        },
+        {
+          "document": "ncert/9/mathematics/iemh107.pdf",
+          "ordinal": 8,
+          "pageStart": 10,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 7: The Mathematics of Maybe: Introduction to Probability",
+            "When we speak of a coin, we assume it to be"
+          ]
+        },
+        {
+          "document": "ncert/9/mathematics/iemh107.pdf",
+          "ordinal": 9,
+          "pageStart": 11,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 7: The Mathematics of Maybe: Introduction to Probability",
+            "When we speak of a coin, we assume it to be"
+          ]
+        },
+        {
+          "document": "ncert/9/mathematics/iemh107.pdf",
+          "ordinal": 10,
+          "pageStart": 12,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 7: The Mathematics of Maybe: Introduction to Probability",
+            "7.3 Elements of Probability: Sample Spaces and",
+            "Events"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-22T13:03:58.024Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "What does probability measure?",
+      "choices": [
+        "Length of an object",
+        "Area of a shape",
+        "Volume of a liquid",
+        "Likelihood of an event"
+      ],
+      "answerIndex": 3,
+      "solution": "Probability measures the likelihood of an event. It quantifies how likely it is for something to happen, based on available information. The other options describe physical measurements and are not related to the concept of chance or possibility.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "संभावना क्या मापती है?",
+          "choices": [
+            "किसी वस्तु की लंबाई",
+            "किसी आकृति का क्षेत्रफल",
+            "तरल का आयतन",
+            "घटना की संभावना"
+          ],
+          "solution": "संभावना घटना की संभावना को मापती है। यह किसी चीज के होने की संभावना को उपलब्ध जानकारी के आधार पर मात्रात्मक रूप से व्यक्त करती है। अन्य विकल्प भौतिक मापन को दर्शाते हैं और संभावना या संभाव्यता की अवधारणा से संबंधित नहीं हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the original English question and solution, with appropriate terminology used in a Hindi-medium educational context.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "संभाव्यता काय मोजते?",
+          "choices": [
+            "वस्तूची लांबी",
+            "आकृतीचे क्षेत्रफळ",
+            "तरल पदार्थाचे आयतन",
+            "घटनेची शक्यता"
+          ],
+          "solution": "संभाव्यता घटनेची शक्यता मोजते. ती काही गोष्टी घडण्याची शक्यता किती आहे याचे मूल्यांकन उपलब्ध माहितीवर आधारित करते. इतर विकल्प भौतिक मोजमाप दर्शवतात आणि संभाव्यतेच्या अवधारणेशी संबंधित नाहीत.",
+          "imageAlt": null,
+          "critique": "The Marathi translation accurately reflects the English original in meaning, structure, and terminology. The term 'शक्यता' (likelihood) is the standard Marathi term for 'likelihood' in probability contexts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses probability with measurement of physical quantities like length, area, or volume.",
+        "Confuses probability with measurement of physical quantities like length, area, or volume.",
+        "Confuses probability with measurement of physical quantities like length, area, or volume.",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": null,
+      "critique": "The question is clear and the correct answer is unambiguous. The author's reasoning for the distractors is accurate, as they reflect common misconceptions about probability.",
+      "sources": [
+        {
+          "document": "ncert/9/mathematics/iemh107.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 7",
+            "7.1 What is Probability?"
+          ]
+        },
+        {
+          "document": "ncert/9/mathematics/iemh107.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 7",
+            "7.1 What is Probability?"
+          ]
+        },
+        {
+          "document": "ncert/9/mathematics/iemh107.pdf",
+          "ordinal": 2,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 7",
+            "7.1 What is Probability?"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-19T15:07:05.031Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is the probability of drawing a card that is not an E from the word 'PEACE'?",
+      "choices": [
+        "2/5",
+        "3/5",
+        "4/5",
+        "1/5"
+      ],
+      "answerIndex": 1,
+      "solution": "The word 'PEACE' has 5 letters, with 2 E's. So, the letters that are not E are 3 in total. The probability is 3/5. The other options are incorrect because they do not represent the correct count of non-E letters.",
+      "checkExpr": "3/5",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "शब्द 'PEACE' में से एक अक्षर निकाले जाने की संभावना क्या है जो E न हो?",
+          "choices": [
+            "2/5",
+            "3/5",
+            "4/5",
+            "1/5"
+          ],
+          "solution": "शब्द 'PEACE' में 5 अक्षर हैं, जिनमें 2 E हैं। अतः E नहीं वाले अक्षर 3 हैं। संभावना 3/5 है। अन्य विकल्प गलत हैं क्योंकि वे सही गणना का प्रतिनिधित्व नहीं करते।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the original English question, with appropriate terminology and correct mathematical meaning.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "PEACE शब्दातून E नसलेला एक कार्ड घेण्याची शक्यता किती आहे?",
+          "choices": [
+            "2/5",
+            "3/5",
+            "4/5",
+            "1/5"
+          ],
+          "solution": "शब्द 'PEACE' मध्ये 5 अक्षरे आहेत, ज्यामध्ये 2 E आहेत. म्हणून, E नसलेली अक्षरे एकूण 3 आहेत. शक्यता 3/5 आहे. इतर विकल्प चुकीच्या निर्देशांमुळे अयोग्य आहेत.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate terminology. The structure and logic of the question and solution are preserved.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "counts only the number of E's",
+        null,
+        "includes E's in the non-E count",
+        "miscalculates the total letters"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct. The word 'PEACE' has 5 letters, 2 of which are E, so 3 are not E. The probability is 3/5, which matches the key.",
+      "sources": [
+        {
+          "document": "ncert/9/mathematics/iemh107.pdf",
+          "ordinal": 14,
+          "pageStart": 17,
+          "pageEnd": 18,
+          "headingPath": [
+            "Chapter 7",
+            "7.4 Tree diagrams",
+            "End-of-c"
+          ]
+        },
+        {
+          "document": "ncert/9/mathematics/iemh107.pdf",
+          "ordinal": 15,
+          "pageStart": 18,
+          "pageEnd": 19,
+          "headingPath": [
+            "Chapter 7",
+            "7.4 Tree diagrams",
+            "End-of-c"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-19T15:07:05.031Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is the theoretical probability of rolling a '3' on a fair 6-sided die?",
+      "choices": [
+        "1/6",
+        "1/3",
+        "1/2",
+        "2/3"
+      ],
+      "answerIndex": 0,
+      "solution": "The theoretical probability is the number of favorable outcomes divided by the total number of possible outcomes. A fair die has 6 sides, and only one side is a '3', so the probability is 1/6. The other options incorrectly represent the number of favorable outcomes.",
+      "checkExpr": "1/6",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक न्यायसंगत 6-भुज घन में '3' के आने की सैद्धांतिक संभावना क्या है?",
+          "choices": [
+            "1/6",
+            "1/3",
+            "1/2",
+            "2/3"
+          ],
+          "solution": "सैद्धांतिक संभावना अनुकूल परिणामों की संख्या को संभावित परिणामों की कुल संख्या से विभाजित करके प्राप्त की जाती है। एक न्यायसंगत घन में 6 भुजाएं होती हैं और केवल एक भुजा '3' होती है, इसलिए संभावना 1/6 है। अन्य विकल्प अनुकूल परिणामों की संख्या को गलत ढंग से प्रस्तुत करते हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology for probability concepts.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका न्याय्य 6-बाजू असलेल्या पास्तुनीवर '3' फेकण्याची वैज्ञानिक संभाव्यता किती आहे?",
+          "choices": [
+            "1/6",
+            "1/3",
+            "1/2",
+            "2/3"
+          ],
+          "solution": "वैज्ञानिक संभाव्यता ही अनुकूल परिणामांची संख्या एकूण शक्य परिणामांची संख्या भागाकार असते. न्याय्य पास्तुनीला 6 बाजू असतात आणि केवळ एक बाजू '3' असते, म्हणून संभाव्यता 1/6 असते. इतर विकल्प अनुकूल परिणामांची संख्या चुकून दर्शवतात.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Believes there are only three possible outcomes (even though there are six sides on the die)",
+        "Believes that each outcome has an equal chance of occurring, ignoring the number of possible outcomes",
+        "Believes that the probability of rolling a specific number increases after multiple rolls of other numbers"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The question is straightforward and tests basic understanding of theoretical probability. The correct answer is 1/6, and the author's reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/9/mathematics/iemh107.pdf",
+          "ordinal": 7,
+          "pageStart": 9,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 7",
+            "Want to learn more about sampling? What we have learned so far is"
+          ]
+        },
+        {
+          "document": "ncert/9/mathematics/iemh107.pdf",
+          "ordinal": 8,
+          "pageStart": 10,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 7",
+            "When we speak of a coin, we assume it to be"
+          ]
+        },
+        {
+          "document": "ncert/9/mathematics/iemh107.pdf",
+          "ordinal": 9,
+          "pageStart": 11,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 7",
+            "When we speak of a coin, we assume it to be"
+          ]
+        },
+        {
+          "document": "ncert/9/mathematics/iemh107.pdf",
+          "ordinal": 10,
+          "pageStart": 12,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 7",
+            "7.3 Elements of Probability: Sample Spaces and",
+            "Events"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-19T15:07:05.031Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the term used to describe the set of all possible outcomes of a random experiment?",
+      "choices": [
+        "Probability",
+        "Event",
+        "Sample space",
+        "Outcome"
+      ],
+      "answerIndex": 2,
+      "solution": "The sample space is the term used to describe the set of all possible outcomes of a random experiment. Probability refers to the likelihood of an event occurring, an event is a specific result or set of results, and an outcome is a single possible result of an experiment.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक यादृच्छिक प्रयोग के सभी संभावित परिणामों के समुच्चय के लिए उपयोग किया जाने वाला शब्द क्या है?",
+          "choices": [
+            "प्रायिकता",
+            "घटना",
+            "नमूना अंतरिक्ष",
+            "परिणाम"
+          ],
+          "solution": "नमूना अंतरिक्ष एक यादृच्छिक प्रयोग के सभी संभावित परिणामों के समुच्चय के लिए उपयोग किया जाने वाला शब्द है। प्रायिकता एक घटना के होने की संभावना को संदर्भित करती है, घटना एक विशिष्ट परिणाम या परिणामों के समुच्चय होती है, और परिणाम एक प्रयोग के एक संभावित परिणाम होता है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate technical terms as found in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका यादृच्छिक प्रयोगाच्या सर्व शक्य निकालांच्या सेटला ओळखण्यासाठी वापरलेला शब्द कोणता आहे?",
+          "choices": [
+            "संभाव्यता",
+            "घटना",
+            "नमुना अवकाश",
+            "निकाल"
+          ],
+          "solution": "नमुना अवकाश हा यादृच्छिक प्रयोगाच्या सर्व शक्य निकालांच्या सेटला ओळखण्यासाठी वापरलेला शब्द आहे. संभाव्यता हा घटना घडण्याच्या संभाव्यतेचा अर्थ आहे, घटना हा विशिष्ट निकाल किंवा निकालांचा सेट आहे आणि निकाल हा प्रयोगाचा एक शक्य निकाल आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for statistical concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses probability with the sample space",
+        "Confuses event with the sample space",
+        null,
+        "Confuses outcome with the sample space"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The question is clear and the correct answer is 2 (Sample space). The author's solution and reasoning are accurate and align with standard mathematical definitions.",
+      "sources": [
+        {
+          "document": "ncert/9/mathematics/iemh107.pdf",
+          "ordinal": 11,
+          "pageStart": 13,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 7",
+            "7.3 Elements of Probability: Sample Spaces and",
+            "Events"
+          ]
+        },
+        {
+          "document": "ncert/9/mathematics/iemh107.pdf",
+          "ordinal": 12,
+          "pageStart": 14,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 7",
+            "7.4 Tree diagrams"
+          ]
+        },
+        {
+          "document": "ncert/9/mathematics/iemh107.pdf",
+          "ordinal": 13,
+          "pageStart": 15,
+          "pageEnd": 17,
+          "headingPath": [
+            "Chapter 7",
+            "7.4 Tree diagrams",
+            "End-of-c"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-19T15:07:05.031Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the probability of drawing 2 blue balls from a basket containing 4 red and 5 blue balls?",
+      "choices": [
+        "5/18",
+        "10/18",
+        "10/81",
+        "5/9"
+      ],
+      "answerIndex": 0,
+      "solution": "The probability of drawing the first blue ball is 5/9, and the second blue ball is 4/8. Multiplying these gives (5/9) × (4/8) = 20/72 = 5/18. The other options are incorrect because they do not reflect the correct multiplication of probabilities.",
+      "checkExpr": "(5/9)*(4/8)",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "4 लाल और 5 नीले गेंदों वाले एक टोकरी से 2 नीली गेंदें निकालने की प्रायिकता क्या है?",
+          "choices": [
+            "5/18",
+            "10/18",
+            "10/81",
+            "5/9"
+          ],
+          "solution": "पहली नीली गेंद निकालने की प्रायिकता 5/9 है और दूसरी नीली गेंद निकालने की प्रायिकता 4/8 है। इनका गुणन करने पर (5/9) × (4/8) = 20/72 = 5/18 प्राप्त होता है। अन्य विकल्प गलत हैं क्योंकि वे सही प्रायिकताओं के गुणन को प्रतिबिंबित नहीं करते।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "9 च्या बॅगेत 4 लाल आणि 5 नील गोल्या असतात, तर 2 नील गोल्या घेण्याची शक्यता किती आहे?",
+          "choices": [
+            "5/18",
+            "10/18",
+            "10/81",
+            "5/9"
+          ],
+          "solution": "पहिल्या नील गोली घेण्याची शक्यता 5/9 आहे, आणि दुसरी नील गोली घेण्याची शक्यता 4/8 आहे. यांच्या गुणाकाराने (5/9) × (4/8) = 20/72 = 5/18 मिळते. इतर विकल्प चुकीचे आहेत कारण ते शक्यतांच्या योग्य गुणाकाराचे प्रतिनिधित्व करत नाहीत.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate terminology. The correct answer remains in the same position (option 1) and the distractors are still incorrect.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "incorrectly multiplies probabilities without adjusting for the reduced number of balls",
+        "uses the same probability for both draws",
+        "fails to simplify the final result"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        1,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct and matches the key. The author's reasoning for the distractors is accurate, though the reason for option 1 is not a real misconception.",
+      "sources": [
+        {
+          "document": "ncert/9/mathematics/iemh107.pdf",
+          "ordinal": 14,
+          "pageStart": 17,
+          "pageEnd": 18,
+          "headingPath": [
+            "Chapter 7",
+            "7.4 Tree diagrams",
+            "End-of-c"
+          ]
+        },
+        {
+          "document": "ncert/9/mathematics/iemh107.pdf",
+          "ordinal": 15,
+          "pageStart": 18,
+          "pageEnd": 19,
+          "headingPath": [
+            "Chapter 7",
+            "7.4 Tree diagrams",
+            "End-of-c"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-19T15:07:05.031Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the probability of getting a 4 when rolling a fair 6-sided die?",
+      "choices": [
+        "1/6",
+        "1/4",
+        "1/3",
+        "1/2"
+      ],
+      "answerIndex": 0,
+      "solution": "The theoretical probability of rolling a 4 on a fair 6-sided die is 1 out of 6 possible outcomes. The correct answer is 1/6. The other options incorrectly assume different numbers of outcomes or misinterpret the probability.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक न्याय्य 6-पक्ष वाले पासे को फेंकने पर 4 प्राप्त करने की प्रायिकता क्या है?",
+          "choices": [
+            "1/6",
+            "1/4",
+            "1/3",
+            "1/2"
+          ],
+          "solution": "एक न्याय्य 6-पक्ष वाले पासे पर 4 के आने की सैद्धांतिक प्रायिकता 6 संभावित परिणामों में से 1 है। सही उत्तर 1/6 है। अन्य विकल्प गलत रूप से अन्य संभावित परिणामों की संख्या को मान लेते हैं या प्रायिकता की गलत व्याख्या करते हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "6-बाजूच्या न्यूनतम छिद्राच्या फलकावर 4 मिळण्याची शक्यता किती आहे?",
+          "choices": [
+            "1/6",
+            "1/4",
+            "1/3",
+            "1/2"
+          ],
+          "solution": "6-बाजूच्या न्यूनतम छिद्राच्या फलकावर 4 मिळण्याची तत्त्वज्ञानिक शक्यता 6 शक्य परिणामांपैकी 1 असते. योग्य उत्तर 1/6 आहे. इतर विकल्पांमध्ये वेगवेगळ्या परिणामांची चूक केलेली आहे किंवा शक्यतेचा गैरसमज आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi terminology for probability concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "confuses the number of outcomes with the probability",
+        "confuses the desired outcome with the total outcomes",
+        "misunderstands the number of possible outcomes"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The question is straightforward and the solution is correct. The probability of rolling a 4 on a fair 6-sided die is indeed 1/6. The author's reasoning for the distractors is valid and reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/9/mathematics/iemh107.pdf",
+          "ordinal": 7,
+          "pageStart": 9,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 7",
+            "Want to learn more about sampling? What we have learned so far is"
+          ]
+        },
+        {
+          "document": "ncert/9/mathematics/iemh107.pdf",
+          "ordinal": 8,
+          "pageStart": 10,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 7",
+            "When we speak of a coin, we assume it to be"
+          ]
+        },
+        {
+          "document": "ncert/9/mathematics/iemh107.pdf",
+          "ordinal": 9,
+          "pageStart": 11,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 7",
+            "When we speak of a coin, we assume it to be"
+          ]
+        },
+        {
+          "document": "ncert/9/mathematics/iemh107.pdf",
+          "ordinal": 10,
+          "pageStart": 12,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 7",
+            "7.3 Elements of Probability: Sample Spaces and",
+            "Events"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-19T15:07:05.031Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If the probability of an event is 0.5, what does this mean?",
+      "choices": [
+        "The event is certain to happen",
+        "The event is impossible",
+        "The event is equally likely to happen or not happen",
+        "The event will happen more than half the time"
+      ],
+      "answerIndex": 2,
+      "solution": "A probability of 0.5 means the event has an equal chance of occurring or not occurring. This reflects a 50-50 likelihood between the two outcomes. The other options incorrectly interpret what a 0.5 probability represents, such as certainty or impossibility, which are not consistent with the definition of probability.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि किसी घटना की प्रायिकता 0.5 है, तो इसका क्या अर्थ है?",
+          "choices": [
+            "घटना निश्चित रूप से होगी",
+            "घटना असंभव है",
+            "घटना होने या न होने की संभावना समान है",
+            "घटना आधे से अधिक बार होगी"
+          ],
+          "solution": "0.5 की प्रायिकता का अर्थ है कि घटना के घटित होने या न होने की संभावना समान है। यह दोनों परिणामों के बीच 50-50 संभावना को दर्शाता है। अन्य विकल्प गलत रूप से 0.5 प्रायिकता के अर्थ की व्याख्या करते हैं, जैसे कि निश्चितता या असंभवता, जो प्रायिकता की परिभाषा के साथ संगत नहीं है।",
+          "imageAlt": null,
+          "critique": "Translation accurately preserves meaning, technical terms match Hindi curriculum, and the correct answer remains option 2.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर एका घटनेची शक्यता 0.5 असेल, तर ते काय दर्शवते?",
+          "choices": [
+            "घटना खात्रीने होईल",
+            "घटना अशक्य आहे",
+            "घटना होऊ शकते किंवा नाही याची समान शक्यता आहे",
+            "घटना अर्ध्यापेक्षा जास्त वेळा होईल"
+          ],
+          "solution": "0.5 ची शक्यता असल्याने घटनेच्या घडण्याची किंवा न घडण्याची संभाव्यता समान असते. हे दोन परिणामांमध्ये 50-50 शक्यता दर्शवते. इतर विकल्प चुकीच्या प्रकारे 0.5 ची शक्यता व्याख्यात करतात, जसे की खात्री किंवा अशक्यता, जी प्रायोगिक शक्यतेच्या व्याख्येशी जुळत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for probability concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Believes that a probability of 0.5 means the event is certain to happen, which is incorrect.",
+        "Believes that a probability of 0.5 means the event is impossible, which is incorrect.",
+        null,
+        "Believes that a probability of 0.5 means the event will happen more than half the time, which is incorrect."
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 2, as a probability of 0.5 means the event is equally likely to happen or not happen. The other options represent common misconceptions about probability.",
+      "sources": [
+        {
+          "document": "ncert/9/mathematics/iemh107.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 7",
+            "7.1 What is Probability?"
+          ]
+        },
+        {
+          "document": "ncert/9/mathematics/iemh107.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 7",
+            "7.1 What is Probability?"
+          ]
+        },
+        {
+          "document": "ncert/9/mathematics/iemh107.pdf",
+          "ordinal": 2,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 7",
+            "7.1 What is Probability?"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-19T15:07:05.031Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "A four-digit number is formed using the digits 1, 2, 3, and 4 with no repetition. What is the probability that the number is even?",
+      "choices": [
+        "1/2",
+        "1/4",
+        "3/4",
+        "2/3"
+      ],
+      "answerIndex": 0,
+      "solution": "For a number to be even, its last digit must be an even number (2 or 4). There are 4 choices for the last digit (2 or 4), and then 3! = 6 ways to arrange the remaining digits. So, the number of even numbers is 2 * 6 = 12. The total number of four-digit numbers is 4! = 24. Therefore, the probability is 12/24 = 1/2. The option 1/4 is incorrect because it assumes only one even digit. The option 3/4 is incorrect because it assumes more even numbers than possible. The option 2/3 is incorrect because it assumes a different arrangement of digits.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक चार-अंकीय संख्या अंक 1, 2, 3 और 4 का उपयोग करके बनाई जाती है बिना किसी पुनरावृत्ति के। संख्या सम होने की प्रायिकता क्या है?",
+          "choices": [
+            "1/2",
+            "1/4",
+            "3/4",
+            "2/3"
+          ],
+          "solution": "एक संख्या सम होने के लिए इसका अंतिम अंक सम अंक (2 या 4) होना चाहिए। अंतिम अंक के लिए 4 विकल्प हैं (2 या 4), और शेष अंकों को व्यवस्थित करने के 3! = 6 तरीके हैं। अतः सम संख्याओं की संख्या 2 * 6 = 12 है। चार-अंकीय संख्याओं की कुल संख्या 4! = 24 है। अतः प्रायिकता 12/24 = 1/2 है। विकल्प 1/4 गलत है क्योंकि यह केवल एक सम अंक की धारणा करता है। विकल्प 3/4 गलत है क्योंकि यह संभव सम संख्याओं की अधिक संख्या की धारणा करता है। विकल्प 2/3 गलत है क्योंकि यह अंकों के अलग व्यवस्थित करने की धारणा करता है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Hindi mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "चार अंकी संख्या अंक 1, 2, 3 आणि 4 वापरून तयार केली जाते आणि पुनरावृत्ती नाही. संख्या सम असेल याची शक्यता किती आहे?",
+          "choices": [
+            "1/2",
+            "1/4",
+            "3/4",
+            "2/3"
+          ],
+          "solution": "एखादी संख्या सम असेल तर तिचा शेवटचा अंक सम अंक (2 किंवा 4) असावा. शेवटच्या अंकासाठी 4 निवडा आहेत (2 किंवा 4), आणि उरलेल्या अंकांची व्यवस्थापन 3! = 6 प्रकारांनी केली जाऊ शकते. म्हणून, सम संख्यांची संख्या 2 * 6 = 12 आहे. चार अंकी संख्यांची एकूण संख्या 4! = 24 आहे. म्हणून, शक्यता 12/24 = 1/2 आहे. 1/4 निवड चूक आहे कारण ती केवळ एक सम अंक मानते. 3/4 निवड चूक आहे कारण ती सम संख्यांची जास्त संख्या मानते. 2/3 निवड चूक आहे कारण ती अंकांच्या वेगळ्या व्यवस्थापनाची अपेक्षा करते.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "assumes only one even digit",
+        "assumes more even numbers than possible",
+        "assumes a different arrangement of digits"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct and matches the reasoning. The probability is indeed 1/2, as the last digit must be 2 or 4 (2 choices), and the rest can be arranged in 3! = 6 ways, giving 12 even numbers out of 24 total.",
+      "sources": [
+        {
+          "document": "ncert/9/mathematics/iemh107.pdf",
+          "ordinal": 14,
+          "pageStart": 17,
+          "pageEnd": 18,
+          "headingPath": [
+            "Chapter 7",
+            "7.4 Tree diagrams",
+            "End-of-c"
+          ]
+        },
+        {
+          "document": "ncert/9/mathematics/iemh107.pdf",
+          "ordinal": 15,
+          "pageStart": 18,
+          "pageEnd": 19,
+          "headingPath": [
+            "Chapter 7",
+            "7.4 Tree diagrams",
+            "End-of-c"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-19T15:07:05.031Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "In a deck of 6 cards, if the number of purple cards increases, what happens to the probability of picking a purple card?",
+      "choices": [
+        "It decreases",
+        "It remains the same",
+        "It increases",
+        "It becomes 0"
+      ],
+      "answerIndex": 2,
+      "solution": "As the number of purple cards increases, the probability of picking a purple card increases because there are more favorable outcomes relative to the total number of cards. If there are more purple cards, it becomes more likely to select one. The other options do not align with how probability works in this scenario.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "6 कार्ड वाले डेक में, यदि बैंगनी कार्डों की संख्या बढ़ती है, तो बैंगनी कार्ड निकालने की प्रायिकता क्या होती है?",
+          "choices": [
+            "यह घटती है",
+            "यह एक समान रहती है",
+            "यह बढ़ती है",
+            "यह शून्य हो जाती है"
+          ],
+          "solution": "जैसे-जैसे बैंगनी कार्डों की संख्या बढ़ती है, बैंगनी कार्ड निकालने की प्रायिकता बढ़ जाती है क्योंकि अब कुल कार्डों के सापेक्ष अनुकूल परिणाम अधिक होते हैं। यदि बैंगनी कार्ड अधिक होते हैं, तो एक कार्ड चुनना अधिक संभावित हो जाता है। अन्य विकल्प इस परिदृश्य में प्रायिकता के कार्य करने के साथ मेल नहीं खाते।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately preserves the meaning, structure, and technical terms of the original English question. The correct answer remains option (3) and the distractors are still incorrect.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "6 कार्डच्या डेकमध्ये, जर बैग रंगाच्या कार्डची संख्या वाढते, तर बैग रंगाचे कार्ड निवडण्याची शक्यता काय होते?",
+          "choices": [
+            "ती कमी होते",
+            "ती बरोबर राहते",
+            "ती वाढते",
+            "ती 0 होते"
+          ],
+          "solution": "जेव्हा बैग रंगाच्या कार्डची संख्या वाढते, तेव्हा बैग रंगाचे कार्ड निवडण्याची शक्यता वाढते कारण एकूण कार्डांच्या तुलनेत अनुकूल परिणाम जास्त असतात. जर बैग रंगाच्या कार्ड जास्त असतील, तर त्यांची निवड कमी शक्यतेची असते. इतर विकल्प या परिस्थितीत प्रायोगिक शक्यतेच्या कार्यप्रणालीशी सुसंगत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for probability concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Believes that the probability decreases, which is incorrect because more purple cards mean a higher chance of picking one.",
+        "Believes that the probability remains the same, which is incorrect because the number of purple cards affects the probability.",
+        null,
+        "Believes that the probability becomes 0, which is incorrect because the probability increases with more purple cards."
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is clear and the solution correctly identifies that increasing the number of purple cards increases the probability of picking one. The reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/9/mathematics/iemh107.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 7",
+            "7.1 What is Probability?"
+          ]
+        },
+        {
+          "document": "ncert/9/mathematics/iemh107.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 7",
+            "7.1 What is Probability?"
+          ]
+        },
+        {
+          "document": "ncert/9/mathematics/iemh107.pdf",
+          "ordinal": 2,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 7",
+            "7.1 What is Probability?"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-19T15:07:05.031Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
     }
   ]
 }

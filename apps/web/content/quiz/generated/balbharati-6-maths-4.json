@@ -282,6 +282,436 @@
       "generatedAt": "2026-10-30T21:34:25.227Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What type of number pattern is represented by the sequence 1, 3, 5, 7, 9, ...?",
+      "choices": [
+        "Even numbers",
+        "Square numbers",
+        "Triangular numbers",
+        "Odd numbers"
+      ],
+      "answerIndex": 3,
+      "solution": "The sequence 1, 3, 5, 7, 9, ... consists of numbers that are not divisible by 2. These are odd numbers. The other options are incorrect because even numbers are divisible by 2, square numbers are like 1, 4, 9, 16, and triangular numbers are like 1, 3, 6, 10.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "अनुक्रम 1, 3, 5, 7, 9, ... द्वारा किस प्रकार की संख्या पैटर्न का प्रतिनिधित्व किया जाता है?",
+          "choices": [
+            "सम संख्याएँ",
+            "वर्ग संख्याएँ",
+            "त्रिभुजाकार संख्याएँ",
+            "विषम संख्याएँ"
+          ],
+          "solution": "अनुक्रम 1, 3, 5, 7, 9, ... में संख्याएँ हैं जो 2 से विभाज्य नहीं हैं। ये विषम संख्याएँ हैं। अन्य विकल्प गलत हैं क्योंकि सम संख्याएँ 2 से विभाज्य हैं, वर्ग संख्याएँ जैसे 1, 4, 9, 16 हैं और त्रिभुजाकार संख्याएँ जैसे 1, 3, 6, 10 हैं।",
+          "imageAlt": null,
+          "critique": "All terms are standard in Hindi mathematics curriculum. The translation is accurate and maintains the original meaning and structure.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "अनुक्रम 1, 3, 5, 7, 9, ... चा आकार कोणत्या संख्या पॅटर्नचा आहे?",
+          "choices": [
+            "सम संख्या",
+            "वर्ग संख्या",
+            "त्रिकोणी संख्या",
+            "विषम संख्या"
+          ],
+          "solution": "अनुक्रम 1, 3, 5, 7, 9, ... मध्ये अशा संख्या आहेत ज्या 2 ने भागल्या जात नाहीत. त्या विषम संख्या आहेत. इतर विकल्प अयोग्य आहेत कारण सम संख्या 2 ने भागल्या जातात, वर्ग संख्या 1, 4, 9, 16 अशा असतात आणि त्रिकोणी संख्या 1, 3, 6, 10 अशा असतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses odd numbers with even numbers",
+        "Confuses square numbers with odd numbers",
+        "Confuses triangular numbers with odd numbers",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 'Odd numbers' as the sequence contains numbers not divisible by 2. The author's reasoning is sound and the misconceptions listed for the wrong options are plausible for students.",
+      "sources": [
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 28,
+          "pageStart": 42,
+          "pageEnd": 45,
+          "headingPath": [
+            "4. Patterns"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 29,
+          "pageStart": 45,
+          "pageEnd": 47,
+          "headingPath": [
+            "4. Patterns"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-10-30T12:58:00.482Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of the following is an example of a number pattern found in nature?",
+      "choices": [
+        "Even numbers",
+        "Square numbers",
+        "Fractals",
+        "Triangular numbers"
+      ],
+      "answerIndex": 2,
+      "solution": "Fractals are patterns found in nature, such as the branching of trees or the shape of coastlines. The other options are mathematical patterns but not specifically related to natural structures. Even numbers, square numbers, and triangular numbers are not inherently found in nature in the same way fractals are.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा प्रकृति में पाये जाने वाले संख्या पैटर्न का एक उदाहरण है?",
+          "choices": [
+            "सम संख्याएँ",
+            "वर्ग संख्याएँ",
+            "फ्रैक्टल्स",
+            "त्रिभुजाकार संख्याएँ"
+          ],
+          "solution": "फ्रैक्टल्स प्रकृति में पाए जाने वाले पैटर्न हैं, जैसे कि पेड़ों की शाखाओं का विभाजन या तटरेखाओं के आकार। अन्य विकल्प गणितीय पैटर्न हैं लेकिन विशेष रूप से प्राकृतिक संरचनाओं से संबंधित नहीं हैं। सम संख्याएँ, वर्ग संख्याएँ और त्रिभुजाकार संख्याएँ प्रकृति में फ्रैक्टल्स के समान तरीके से नहीं पाई जाती हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate mathematical terminology in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते प्राकृतिक वातावरणात आढळणारा संख्या पॅटर्नचे उदाहरण आहे?",
+          "choices": [
+            "सम संख्या",
+            "चौरस संख्या",
+            "फ्रॅक्टल्स",
+            "त्रिकोणी संख्या"
+          ],
+          "solution": "फ्रॅक्टल्स हे प्राकृतिक वातावरणात आढळणारे पॅटर्न आहेत, जसे की झाडांची शाखा विभाजन किंवा तटबंदीचे आकार. इतर विकल्प मातीमधील पॅटर्न आहेत परंतु प्राकृतिक संरचनांशी विशिष्टपणे संबंधित नाहीत. सम संख्या, चौरस संख्या आणि त्रिकोणी संख्या ह्या प्राकृतिक वातावरणात फ्रॅक्टल्स प्रमाणे स्वतःच आढळत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for mathematical concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses fractals with even numbers",
+        "Confuses fractals with square numbers",
+        null,
+        "Confuses fractals with triangular numbers"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 2 (Fractals), as they are indeed patterns found in nature. The author's reasoning is sound, and the misconceptions listed for the wrong options are plausible for students who may confuse mathematical patterns with natural ones.",
+      "sources": [
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 28,
+          "pageStart": 42,
+          "pageEnd": 45,
+          "headingPath": [
+            "4. Patterns"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 29,
+          "pageStart": 45,
+          "pageEnd": 47,
+          "headingPath": [
+            "4. Patterns"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-10-30T12:58:00.482Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "What is the next number in the sequence 1, 3, 6, 10, 15, 21, ...?",
+      "choices": [
+        "28",
+        "27",
+        "29",
+        "30"
+      ],
+      "answerIndex": 0,
+      "solution": "The sequence represents triangular numbers, where each number is the sum of the natural numbers up to that point. The next number is 28, which is 1+2+3+4+5+6+7. The other options do not follow the pattern of triangular numbers.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "अनुक्रम 1, 3, 6, 10, 15, 21, ... में अगला संख्या क्या है?",
+          "choices": [
+            "28",
+            "27",
+            "29",
+            "30"
+          ],
+          "solution": "अनुक्रम त्रिकोणीय संख्याओं का प्रतिनिधित्व करता है, जहां प्रत्येक संख्या उस बिंदु तक प्राकृतिक संख्याओं के योग होती है। अगली संख्या 28 है, जो 1+2+3+4+5+6+7 के बराबर है। अन्य विकल्प त्रिकोणीय संख्याओं के पैटर्न के अनुसार नहीं हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "अनुक्रम 1, 3, 6, 10, 15, 21, ... मध्ये अगोदरचा अंक कोणता असेल?",
+          "choices": [
+            "28",
+            "27",
+            "29",
+            "30"
+          ],
+          "solution": "अनुक्रम हा त्रिकोणीय संख्या दर्शवितो, जेथे प्रत्येक संख्या त्या बिंदूपर्यंत प्राकृतिक संख्यांच्या बेरजेने असते. अगोदरची संख्या 28 असेल, जी 1+2+3+4+5+6+7 च्या बेरजेने असते. इतर विकल्प त्रिकोणीय संख्यांच्या पॅटर्ननुसार येत नाहीत.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate and maintains the original meaning, with appropriate terminology used for triangular numbers.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Adds 7 to 21 incorrectly",
+        "Adds 6 to 21 incorrectly",
+        "Adds 9 to 21 incorrectly"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The sequence is the triangular numbers, and the next number is indeed 28. The distractors represent common addition errors, which are plausible misconceptions for students.",
+      "sources": [
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 28,
+          "pageStart": 42,
+          "pageEnd": 45,
+          "headingPath": [
+            "4. Patterns"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 29,
+          "pageStart": 45,
+          "pageEnd": 47,
+          "headingPath": [
+            "4. Patterns"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-10-30T12:58:00.482Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "Which of the following is a property of fractals?",
+      "choices": [
+        "They have a smooth surface",
+        "They are not self-similar",
+        "They are found in nature",
+        "They are always regular shapes"
+      ],
+      "answerIndex": 2,
+      "solution": "Fractals are patterns that repeat at different scales and are often found in nature, like in the branching of trees or the structure of clouds. The other options are incorrect because fractals are not smooth or regular and are self-similar.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा फ्रैक्टल का गुण है?",
+          "choices": [
+            "उनकी सतह चिकनी होती है",
+            "वे स्व-समान नहीं होते",
+            "वे प्रकृति में पाए जाते हैं",
+            "वे हमेशा नियमित आकृतियाँ होती हैं"
+          ],
+          "solution": "फ्रैक्टल ऐसे पैटर्न होते हैं जो विभिन्न पैमानों पर दोहराए जाते हैं और अक्सर प्रकृति में पाए जाते हैं, जैसे पेड़ों की शाखाओं के शाखांकन या बादलों की संरचना। अन्य विकल्प गलत हैं क्योंकि फ्रैक्टल चिकनी या नियमित नहीं होते और स्व-समान होते हैं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriately used in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते फ्रॅक्टलचे गुणधर्म आहे?",
+          "choices": [
+            "त्यांचा चकचकीत पृष्ठभाग असतो",
+            "ते स्व-समान नसतात",
+            "ते प्रकृतीत आढळतात",
+            "ते नेहमी नियमित आकृती असतात"
+          ],
+          "solution": "फ्रॅक्टल हे विविध पातळ्यांवर पुनरावृत्ती होणारे आकृती असतात आणि ते अक्सर प्रकृतीत आढळतात, जसे झाडांच्या शाखांच्या शाखांच्या संरचनेत किंवा मेघांच्या संरचनेत. इतर विकल्प अयोग्य आहेत कारण फ्रॅक्टल चकचकीत किंवा नियमित नसतात आणि स्व-समान असतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for mathematical concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses fractals with smooth surfaces",
+        "Confuses fractals with non-self-similar structures",
+        null,
+        "Confuses fractals with regular shapes"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 2, as fractals are indeed found in nature. The other options are incorrect because fractals are not smooth, not regular, and are self-similar.",
+      "sources": [
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 28,
+          "pageStart": 42,
+          "pageEnd": 45,
+          "headingPath": [
+            "4. Patterns"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 29,
+          "pageStart": 45,
+          "pageEnd": 47,
+          "headingPath": [
+            "4. Patterns"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-10-30T12:58:00.482Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "If the number of jars in each layer of a stack follows the pattern 3, 6, 9, 12, ..., how many jars will be in the 15th layer?",
+      "choices": [
+        "45",
+        "42",
+        "51",
+        "54"
+      ],
+      "answerIndex": 0,
+      "solution": "The pattern is an arithmetic progression with a common difference of 3. The 15th term is calculated as 3 + (15 - 1) * 3 = 45. The other options do not correctly apply the formula for the nth term of an arithmetic sequence.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक ढेर में प्रत्येक परत में बर्तनों की संख्या निम्न पैटर्न के अनुसार है 3, 6, 9, 12, ..., तो 15वीं परत में कितने बर्तन होंगे?",
+          "choices": [
+            "45",
+            "42",
+            "51",
+            "54"
+          ],
+          "solution": "पैटर्न एक समांतर श्रेढ़ी है जिसका सार्व अंतर 3 है। 15वां पद 3 + (15 - 1) * 3 = 45 के रूप में गणना की जाती है। अन्य विकल्प समांतर श्रेढ़ी के एनवीं पद के सूत्र को सही तरीके से लागू नहीं करते हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर एका ढिल्ला वर बारीक बारीक जारची संख्या या पॅटर्न 3, 6, 9, 12, ..., असेल तर 15 व्या थरामध्ये किती जार असतील?",
+          "choices": [
+            "45",
+            "42",
+            "51",
+            "54"
+          ],
+          "solution": "हा पॅटर्न समांतर श्रेढी आहे ज्यात सामान्य फरक 3 आहे. 15 व्या पदाची किंमत 3 + (15 - 1) * 3 = 45 असे गणली जाते. इतर विकल्पांमध्ये समांतर श्रेढीच्या n व्या पदाच्या सूत्राचा चुकीचा अवलंब केला आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the mathematical meaning, and uses appropriate Marathi terminology for arithmetic progression.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Student adds 3 to the previous layer instead of multiplying the layer number by 3",
+        "Student adds 3 to the previous term but mistakenly counts the first term as the 14th instead of the 1st",
+        "Confuses the layer number with the total sum of the series up to that point"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies the pattern as an arithmetic progression with a common difference of 3 and applies the formula for the nth term. The reasoning for the distractors reflects plausible student misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 28,
+          "pageStart": 42,
+          "pageEnd": 45,
+          "headingPath": [
+            "4. Patterns"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 29,
+          "pageStart": 45,
+          "pageEnd": 47,
+          "headingPath": [
+            "4. Patterns"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-10-30T12:58:00.482Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
     }
   ]
 }

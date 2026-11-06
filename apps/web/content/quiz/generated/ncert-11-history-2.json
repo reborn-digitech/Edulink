@@ -543,6 +543,1135 @@
       "generatedAt": "2026-10-28T17:19:04.665Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "Which empire was established by Alexander the Great?",
+      "choices": [
+        "Assyrian Empire",
+        "Roman Empire",
+        "Macedonian Empire",
+        "Persian Empire"
+      ],
+      "answerIndex": 2,
+      "solution": "Alexander the Great was the ruler of Macedon, and his military campaigns led to the establishment of the Macedonian Empire. The Assyrian Empire was much older, the Roman Empire came after Alexander, and the Persian Empire existed before his conquests.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एलेक्जेंडर द ग्रेट द्वारा कौन-सा साम्राज्य स्थापित किया गया था?",
+          "choices": [
+            "असीरियाई साम्राज्य",
+            "रोमन साम्राज्य",
+            "मैसिडोनियन साम्राज्य",
+            "फारसी साम्राज्य"
+          ],
+          "solution": "एलेक्जेंडर द ग्रेट मैसिडोन के शासक थे, और उनके सैन्य अभियानों ने मैसिडोनियन साम्राज्य की स्थापना की। असीरियाई साम्राज्य बहुत पुराना था, रोमन साम्राज्य एलेक्जेंडर के बाद आया था, और फारसी साम्राज्य उनके विजयों से पहले मौजूद था।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, with appropriate Hindi terminology used for historical empires.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "अलेक्झांडर द ग्रेट द्वारे कोणते साम्राज्य स्थापित केले गेले?",
+          "choices": [
+            "असीरियन साम्राज्य",
+            "रोमन साम्राज्य",
+            "मॅसेडोनियन साम्राज्य",
+            "फारसी साम्राज्य"
+          ],
+          "solution": "अलेक्झांडर द ग्रेट मॅसेडोनचा शासक होता, आणि त्याच्या सैन्य कार्यक्रमांमुळे मॅसेडोनियन साम्राज्याची स्थापना झाली. असीरियन साम्राज्य खूप जुने आहे, रोमन साम्राज्य अलेक्झांडरनंतर आले आणि फारसी साम्राज्य त्याच्या विजयापूर्वी अस्तित्वात होते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for historical empires.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the empire with a pre-existing one",
+        "Refers to a later empire established after Alexander",
+        null,
+        "Refers to an empire that existed before Alexander's time"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The question is clear and the correct answer is unambiguous. The author's solution and reasoning for the distractors are accurate and reflect common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/11/history/kehs102.pdf",
+          "ordinal": 0,
+          "pageStart": 2,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 2: empires",
+            "An Empire Across Three Continents"
+          ]
+        },
+        {
+          "document": "ncert/11/history/kehs102.pdf",
+          "ordinal": 1,
+          "pageStart": 3,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 2: empires",
+            "An Empire Across Three Continents"
+          ]
+        },
+        {
+          "document": "ncert/11/history/kehs102.pdf",
+          "ordinal": 2,
+          "pageStart": 4,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 2: empires",
+            "An Empire Across Three Continents"
+          ]
+        },
+        {
+          "document": "ncert/11/history/kehs102.pdf",
+          "ordinal": 3,
+          "pageStart": 5,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 2: empires",
+            "An Empire Across Three Continents"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T05:20:53.342Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is the name of the empire that was established by Genghis Khan?",
+      "choices": [
+        "Mongol Empire",
+        "Persian Empire",
+        "Roman Empire",
+        "Ottoman Empire"
+      ],
+      "answerIndex": 0,
+      "solution": "The Mongol Empire is the correct answer because Genghis Khan is historically known for founding it through a series of military conquests. The Persian Empire predates him and was established by different rulers. The Roman Empire was located in Europe and was not connected to Genghis Khan. The Ottoman Empire was founded centuries later by Osman I.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "गेंगही कान द्वारा स्थापित साम्राज्य का नाम क्या है?",
+          "choices": [
+            "मंगोल साम्राज्य",
+            "फारसी साम्राज्य",
+            "रोमन साम्राज्य",
+            "ओटोमन साम्राज्य"
+          ],
+          "solution": "मंगोल साम्राज्य सही उत्तर है क्योंकि गेंगही कान को इतिहास में इसके स्थापना के लिए जाना जाता है। फारसी साम्राज्य उससे पहले था और अलग-अलग शासकों द्वारा स्थापित किया गया था। रोमन साम्राज्य यूरोप में स्थित था और गेंगही कान से जुड़ा नहीं था। ओटोमन साम्राज्य की स्थापना ओस्मान एक के द्वारा शताब्दियों बाद की गई थी।",
+          "imageAlt": null,
+          "critique": "All terms are standard in Hindi history textbooks. The translation is accurate and maintains the original meaning and structure.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "गेंगिस खान द्वारा स्थापित साम्राज्याचे नाव काय आहे?",
+          "choices": [
+            "मंगोल साम्राज्य",
+            "फारसी साम्राज्य",
+            "रोमन साम्राज्य",
+            "ओटोमन साम्राज्य"
+          ],
+          "solution": "मंगोल साम्राज्य हे बरोबर उत्तर आहे कारण गेंगिस खान ऐतिहासिकदृष्ट्या त्याच्या सैन्य विजयांद्वारे स्थापन केलेल्या मंगोल साम्राज्याचा संस्थापक आहे. फारसी साम्राज्य त्यापूर्वी असलेले आणि वेगळ्या शासकांद्वारे स्थापित केलेले आहे. रोमन साम्राज्य युरोपमध्ये होते आणि गेंगिस खानशी संबंधित नव्हते. ओटोमन साम्राज्याची स्थापना ओस्मान इब्न अब्दुल्लाह यांनी शतकांनंतर केली होती.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for historical empires.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses the Mongol Empire with other historical empires",
+        "Confuses the Mongol Empire with the Persian Empire",
+        "Confuses the Mongol Empire with the Roman Empire\",\"Confuses the Mongol Empire with the Ottoman Empire"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is clearly the Mongol Empire, and the other options are common historical confusions. The solution is sound and matches the key.",
+      "sources": [
+        {
+          "document": "ncert/11/history/kehs102.pdf",
+          "ordinal": 43,
+          "pageStart": 39,
+          "pageEnd": 40,
+          "headingPath": [
+            "Chapter 2: empires",
+            "Timeline ii",
+            "The Mongols after Genghis Khan"
+          ]
+        },
+        {
+          "document": "ncert/11/history/kehs102.pdf",
+          "ordinal": 44,
+          "pageStart": 40,
+          "pageEnd": 40,
+          "headingPath": [
+            "Chapter 2: empires",
+            "Timeline ii",
+            "The Mongols after Genghis Khan"
+          ]
+        },
+        {
+          "document": "ncert/11/history/kehs102.pdf",
+          "ordinal": 45,
+          "pageStart": 41,
+          "pageEnd": 41,
+          "headingPath": [
+            "Chapter 2: empires",
+            "Timeline ii",
+            "Social, Political and Military Organisation"
+          ]
+        },
+        {
+          "document": "ncert/11/history/kehs102.pdf",
+          "ordinal": 46,
+          "pageStart": 41,
+          "pageEnd": 41,
+          "headingPath": [
+            "Chapter 2: empires",
+            "Timeline ii",
+            "Social, Political and Military Organisation"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T05:20:53.342Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "What was the name of the Mongol courier system that connected distant areas of their regime?",
+      "choices": [
+        "Yam",
+        "Qubcur",
+        "Paiza",
+        "Gerege"
+      ],
+      "answerIndex": 0,
+      "solution": "The correct answer is Yam, as it was the name of the Mongol courier system used to connect different parts of their empire. Qubcur refers to a type of tax, Paiza was a type of official pass, and Gerege is unrelated to the courier system.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "मंगोल डिपो प्रणाली का नाम क्या था जो उनके राज्य के दूर के क्षेत्रों को जोड़ती थी?",
+          "choices": [
+            "याम",
+            "कुबचूर",
+            "पैजा",
+            "गेरेगे"
+          ],
+          "solution": "सही उत्तर याम है, क्योंकि यह मंगोल डिपो प्रणाली का नाम था जिसका उपयोग उनके साम्राज्य के विभिन्न हिस्सों को जोड़ने के लिए किया जाता था। कुबचूर एक प्रकार के कर को संदर्भित करता है, पैजा एक प्रकार के आधिकारिक पास को संदर्भित करता है और गेरेगे डिपो प्रणाली से असंबंधित है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, retains the original meaning, and uses appropriate Hindi terminology for historical concepts.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "मंगोल कौरियर प्रणालीचे नाव काय होते जी त्यांच्या राज्याच्या दूरवरच्या भागांना जोडले होते?",
+          "choices": [
+            "याम",
+            "कुबचूर",
+            "पैजा",
+            "गेरेगे"
+          ],
+          "solution": "योग्य उत्तर याम आहे, कारण ते मंगोल कौरियर प्रणालीचे नाव होते जी त्यांच्या साम्राज्याच्या विविध भागांना जोडले होते. कुबचूर हा एक प्रकारचा कर आहे, पैजा हा एक प्रकारचा अधिकृत पास होता आणि गेरेगे हा कौरियर प्रणालीशी संबंधित नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for historical concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses the tax with the system name",
+        "Refers to a tax paid by the nomads",
+        "Refers to a pass given to travelers"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 'Yam,' as it was the actual name of the Mongol courier system. The other options are correctly identified as taxes or passes, not the system name. The reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/11/history/kehs102.pdf",
+          "ordinal": 47,
+          "pageStart": 42,
+          "pageEnd": 43,
+          "headingPath": [
+            "Chapter 2: empires",
+            "Timeline ii",
+            "Social, Political and Military Organisation"
+          ]
+        },
+        {
+          "document": "ncert/11/history/kehs102.pdf",
+          "ordinal": 48,
+          "pageStart": 43,
+          "pageEnd": 44,
+          "headingPath": [
+            "Chapter 2: empires",
+            "Timeline ii",
+            "Social, Political and Military Organisation"
+          ]
+        },
+        {
+          "document": "ncert/11/history/kehs102.pdf",
+          "ordinal": 49,
+          "pageStart": 44,
+          "pageEnd": 44,
+          "headingPath": [
+            "Chapter 2: empires",
+            "Timeline ii",
+            "Ghazan Khan’s Speech"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T05:20:53.342Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of the following is mentioned as a centre of learning in West Africa?",
+      "choices": [
+        "Timbuktu",
+        "Zimbabwe",
+        "Mali",
+        "Angkor"
+      ],
+      "answerIndex": 0,
+      "solution": "Timbuktu is recognized as a major centre of learning in West Africa, historically known for its scholarly institutions and libraries. Zimbabwe, Mali, and Angkor are not specifically associated with this role in the context of West African history. The correct answer is Timbuktu.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा पश्चिम अफ्रीका में शिक्षा के केंद्र के रूप में उल्लिखित है?",
+          "choices": [
+            "तिम्बुक्तू",
+            "जिम्बाब्वे",
+            "मली",
+            "अंगकोर"
+          ],
+          "solution": "तिम्बुक्तू को पश्चिम अफ्रीका में एक प्रमुख शिक्षा केंद्र के रूप में मान्यता प्राप्त है, इतिहास में इसके विद्वान संस्थानों और पुस्तकालयों के लिए जाना जाता है। जिम्बाब्वे, मली और अंगकोर पश्चिम अफ्रीकी इतिहास के संदर्भ में इस भूमिका के साथ विशेष रूप से जुड़े नहीं हैं। सही उत्तर तिम्बुक्तू है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology for historical and geographical terms.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते पश्चिम आफ्रिकेतील शिक्षणाचे केंद्र म्हणून उल्लेखले गेले आहे?",
+          "choices": [
+            "टिम्बक्टू",
+            "जिम्बाब्वे",
+            "माली",
+            "अंगकोर"
+          ],
+          "solution": "टिम्बक्टू हे पश्चिम आफ्रिकेतील महत्त्वाचे शिक्षणाचे केंद्र मानले जाते, जे त्याच्या शैक्षणिक संस्था आणि पुस्तकालयांसाठी ऐतिहासिकरित्या ओळखले जाते. जिम्बाब्वे, माली आणि अंगकोर हे पश्चिम आफ्रिकेतील इतिहासाच्या संदर्भात या भूमिकेशी विशेषतः संबंधित नाहीत. योग्य उत्तर टिम्बक्टू आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for historical and geographical terms.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses Timbuktu with Zimbabwe",
+        "Confuses Timbuktu with Mali",
+        "Confuses Timbuktu with Angkor"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is Timbuktu, as it is explicitly mentioned as a center of learning in West Africa. The other options are incorrect, and the author's reasoning for the wrong options aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/11/history/kehs102.pdf",
+          "ordinal": 4,
+          "pageStart": 7,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 2: empires",
+            "Timeline ii",
+            "This timeline focuses on kingdoms and empires. Some of these such as the Roman Empire were very large, spreading across three continents. This was also the time when some of the major religious and cultural traditions developed. It was a time when institutions of intellectual activity emerged. Books were written and ideas travelled across continents. Some things that are now part of our everyday lives were used for the first time during this period."
+          ]
+        },
+        {
+          "document": "ncert/11/history/kehs102.pdf",
+          "ordinal": 5,
+          "pageStart": 8,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 2: empires",
+            "Timeline ii",
+            "This timeline focuses on kingdoms and empires. Some of these such as the Roman Empire were very large, spreading across three continents. This was also the time when some of the major religious and cultural traditions developed. It was a time when institutions of intellectual activity emerged. Books were written and ideas travelled across continents. Some things that are now part of our everyday lives were used for the first time during this period."
+          ]
+        },
+        {
+          "document": "ncert/11/history/kehs102.pdf",
+          "ordinal": 6,
+          "pageStart": 8,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 2: empires",
+            "Timeline ii",
+            "This timeline focuses on kingdoms and empires. Some of these such as the Roman Empire were very large, spreading across three continents. This was also the time when some of the major religious and cultural traditions developed. It was a time when institutions of intellectual activity emerged. Books were written and ideas travelled across continents. Some things that are now part of our everyday lives were used for the first time during this period."
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T05:20:53.342Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of the following best describes the role of Genghis Khan in the formation of the Mongol Empire?",
+      "choices": [
+        "He was a military leader who united the Mongol tribes",
+        "He was a religious leader who spread Buddhism",
+        "He was a trader who established trade routes",
+        "He was a scholar who documented history"
+      ],
+      "answerIndex": 0,
+      "solution": "Genghis Khan's role was primarily as a military leader who successfully united the Mongol tribes under a single rule, which was essential for the formation of the Mongol Empire. The other options are incorrect because there is no historical evidence that he was a religious leader who spread Buddhism, a trader who established trade routes, or a scholar who documented history.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा गेंगही खान के मंगोल साम्राज्य के गठन में भूमिका का सबसे अच्छा वर्णन करता है?",
+          "choices": [
+            "वह एक सैन्य नेता थे जिन्होंने मंगोल जनजातियों को एकीकृत किया",
+            "वह एक धार्मिक नेता थे जिन्होंने बौद्ध धर्म का प्रसार किया",
+            "वह एक व्यापारी थे जिन्होंने व्यापार मार्ग स्थापित किए",
+            "वह एक विद्वान थे जिन्होंने इतिहास का दस्तावेज़ किया"
+          ],
+          "solution": "गेंगही खान की भूमिका मुख्य रूप से एक सैन्य नेता के रूप में रही, जिन्होंने मंगोल जनजातियों को एक नियंत्रण के तहत एकीकृत किया, जो मंगोल साम्राज्य के गठन के लिए आवश्यक था। अन्य विकल्प गलत हैं क्योंकि इतिहास के कोई प्रमाण नहीं हैं कि वह एक धार्मिक नेता थे जिन्होंने बौद्ध धर्म का प्रसार किया, एक व्यापारी जिन्होंने व्यापार मार्ग स्थापित किए, या एक विद्वान जिन्होंने इतिहास का दस्तावेज़ किया।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. All options are correctly translated and maintain their original intent. The correct answer remains in the same position (option 1). The distractors are still incorrect in the Hindi version, and the technical terms used are appropriate for a Hindi-medium curriculum.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते गेंगिस खानच्या मंगोल साम्राज्याच्या निर्माणातील भूमिकेचे सर्वात चांगले वर्णन करते?",
+          "choices": [
+            "त्याने मंगोल जातींना एकत्रित केले",
+            "त्याने बौद्ध धर्म पसरवला",
+            "त्याने व्यापार मार्ग निर्माण केले",
+            "त्याने इतिहास दस्तावेज केला"
+          ],
+          "solution": "गेंगिस खानची भूमिका मुख्यतः एक युद्ध नेता होती जो मंगोल जातींना एक नियंत्रणाखाली एकत्रित केले, जे मंगोल साम्राज्याच्या निर्माणासाठी आवश्यक होते. इतर विकल्प चुकीचे आहेत कारण त्याच्या बौद्ध धर्म पसरविण्याच्या धार्मिक नेत्याच्या भूमिकेबद्दल कोणतेही ऐतिहासिक पुरावे नाहीत, व्यापार मार्ग निर्माण करणारा व्यापारी असल्याचे नाही किंवा इतिहास दस्तावेज करणारा शास्त्रज्ञ असल्याचे नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for historical concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses the role of a religious leader with that of a military leader",
+        "Incorrectly associates Genghis Khan with Buddhism",
+        "Misinterprets the role of a trader in the formation of an empire"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is option 0, as Genghis Khan is historically known for uniting the Mongol tribes. The other options are incorrect and represent common misconceptions about his role.",
+      "sources": [
+        {
+          "document": "ncert/11/history/kehs102.pdf",
+          "ordinal": 53,
+          "pageStart": 47,
+          "pageEnd": 48,
+          "headingPath": [
+            "Chapter 2: empires",
+            "Timeline ii",
+            "Conclusion: Situating Genghis Khan and the Mongols in World History"
+          ]
+        },
+        {
+          "document": "ncert/11/history/kehs102.pdf",
+          "ordinal": 54,
+          "pageStart": 48,
+          "pageEnd": 48,
+          "headingPath": [
+            "Chapter 2: empires",
+            "Timeline ii",
+            "Exercises"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T05:20:53.342Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "Which of the following best describes the role of the Roman cities in the administration of the empire?",
+      "choices": [
+        "They were the main centers of military power",
+        "They were the main sources of revenue for the empire",
+        "They were the main centers of governance and taxation",
+        "They were the main places for trade and commerce"
+      ],
+      "answerIndex": 2,
+      "solution": "Roman cities were central to the empire's administration because they managed governance and collected taxes, which were essential for maintaining control over the vast territory. While they had military, economic, and commercial functions, these were not their primary roles in the administrative structure. The other options describe secondary or supporting roles rather than the core function of the cities.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा रोमन शहरों के साम्राज्य के प्रशासन में भूमिका का सबसे अच्छा वर्णन करता है?",
+          "choices": [
+            "वे सैन्य शक्ति के मुख्य केंद्र थे",
+            "वे साम्राज्य के लिए आय के मुख्य स्रोत थे",
+            "वे प्रशासन एवं कर वसूली के मुख्य केंद्र थे",
+            "वे व्यापार एवं वाणिज्य के मुख्य स्थान थे"
+          ],
+          "solution": "रोमन शहर साम्राज्य के प्रशासन में केंद्रीय भूमिका निभाते थे क्योंकि वे प्रशासन और कर वसूली के लिए जिम्मेदार रहते थे, जो विशाल क्षेत्र पर नियंत्रण बनाए रखने के लिए आवश्यक थे। यद्यपि उनके सैन्य, आर्थिक एवं व्यापारिक कार्य रहे हैं, लेकिन ये प्रशासनिक संरचना में उनकी प्राथमिक भूमिका नहीं रहे हैं। अन्य विकल्प शहरों की गौण या सहायक भूमिकाओं का वर्णन करते हैं बजाय उनके मूल कार्य के।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology consistent with textbook language.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते रोमन शहरांच्या साम्राज्याच्या व्यवस्थापनातील भूमिकेचे सर्वात चांगले वर्णन करते?",
+          "choices": [
+            "ते सैन्य शक्तीचे मुख्य केंद्र होते",
+            "ते साम्राज्याच्या राजस्वाचे मुख्य स्रोत होते",
+            "ते शासन आणि करांचे मुख्य केंद्र होते",
+            "ते व्यापार आणि व्यवसायाचे मुख्य जागा होते"
+          ],
+          "solution": "रोमन शहरे साम्राज्याच्या व्यवस्थापनासाठी महत्वपूर्ण होती कारण ते शासन आणि कर वसूल करत होती, जे मोठ्या क्षेत्राच्या नियंत्रणासाठी आवश्यक होते. त्यांना सैन्य, आर्थिक आणि व्यापारी कार्ये होती, परंतु त्यांच्या व्यवस्थापन संरचनेत त्यांची मुख्य भूमिका नव्हती. इतर विकल्प शहरांच्या मुख्य कार्याऐवजी द्वितीयक किंवा सहाय्यक भूमिका वर्णन करतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for historical administration.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Focuses on military power instead of governance",
+        "Mentions revenue but not the central role in administration",
+        null,
+        "Correctly identifies the role but is not the best answer\",\"Focuses on trade instead of governance and taxation as the main role"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 2, as Roman cities were central to governance and taxation, which aligns with the historical role of the Roman Empire. The other options, while not entirely incorrect, do not capture the primary administrative function of the cities.",
+      "sources": [
+        {
+          "document": "ncert/11/history/kehs102.pdf",
+          "ordinal": 10,
+          "pageStart": 13,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 2: empires",
+            "Timeline ii",
+            "The Early Empire"
+          ]
+        },
+        {
+          "document": "ncert/11/history/kehs102.pdf",
+          "ordinal": 11,
+          "pageStart": 13,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 2: empires",
+            "Timeline ii",
+            "The Emperor Trajan’s Dream – A Conquest of India?"
+          ]
+        },
+        {
+          "document": "ncert/11/history/kehs102.pdf",
+          "ordinal": 12,
+          "pageStart": 14,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 2: empires",
+            "Timeline ii",
+            "The Emperor Trajan’s Dream – A Conquest of India?"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T05:20:53.342Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "Why did the Mongol Khans recruit civil administrators from the conquered societies?",
+      "choices": [
+        "To ensure the expansion of their empire",
+        "To integrate distant dominions and reduce harshness on sedentary life",
+        "To replace local rulers with Mongol leaders",
+        "To increase the number of soldiers in their army"
+      ],
+      "answerIndex": 1,
+      "solution": "The Mongol Khans recruited civil administrators to help manage and integrate the diverse regions they conquered, which allowed for more stable governance and less disruption to the settled populations. This approach reduced the harsh impact of Mongol rule on agricultural and urban societies. The other options do not align with the practical needs of governing a vast and varied empire.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "मंगोल खानों ने जीते गए समाजों से नागरिक प्रशासक क्यों नियुक्त किए?",
+          "choices": [
+            "अपने साम्राज्य के विस्तार को सुनिश्चित करने के लिए",
+            "दूर के शासन को एकीकृत करने और निवासी जीवन पर कठोरता कम करने के लिए",
+            "स्थानीय शासकों को मंगोल नेताओं से बदल देने के लिए",
+            "अपनी सेना में सैनिकों की संख्या बढ़ाने के लिए"
+          ],
+          "solution": "मंगोल खानों ने नागरिक प्रशासकों को सहायता के लिए नियुक्त किया जिससे उनके जीते गए विविध क्षेत्रों का प्रबंधन और एकीकरण संभव हो सके, जिससे अधिक स्थिर शासन और बसे हुए जनसमूहों के लिए कम व्यापार बाधा हुई। इस प्रकार के दृष्टिकोण ने कृषि और शहरी समाजों पर मंगोल शासन के कठोर प्रभाव को कम कर दिया। अन्य विकल्प साम्राज्य के विस्तार और विविधता की व्यावहारिक आवश्यकताओं के अनुरूप नहीं हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate terminology. The correct answer remains option 1, and the distractors are still incorrect.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "मंगोल खानांनी जिंकलेल्या समाजांमधून नागरी अधिकारी का नियुक्त केले?",
+          "choices": [
+            "आपल्या साम्राज्याच्या विस्ताराची खात्री करण्यासाठी",
+            "दूरच्या विजयांचे एकीकरण करण्यासाठी आणि बसलेल्या जीवनावर अधिक खर्याचा परिणाम कमी करण्यासाठी",
+            "स्थानिक राजे मंगोल नेते बदलण्यासाठी",
+            "आपल्या सैन्यात सैनिकांची संख्या वाढवण्यासाठी"
+          ],
+          "solution": "मंगोल खानांनी नागरी अधिकारी नेमले कारण त्यांनी जिंकलेल्या विविध प्रदेशांची व्यवस्थापन करण्यास मदत करणे आवश्यक होते, ज्यामुळे स्थिर शासन आणि बसलेल्या लोकांसाठी कमी अस्थिरता होती. हा प्रकार मंगोल शासनाच्या कृषी आणि शहरी समाजावर अधिक खर्याचा परिणाम कमी करतो. इतर विकल्प मोठ्या आणि विविध साम्राज्याच्या शासनाच्या व्यावहारिक आवश्यकतांशी संगत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for historical concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Focuses on expansion, which is not the stated reason",
+        null,
+        "Incorrectly assumes they replaced local rulers",
+        "Mentions soldiers, which is unrelated to the purpose of administrators"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer aligns with the historical understanding that the Mongols used local administrators to manage their vast and diverse empire. The other options represent common misconceptions about the Mongol administration.",
+      "sources": [
+        {
+          "document": "ncert/11/history/kehs102.pdf",
+          "ordinal": 47,
+          "pageStart": 42,
+          "pageEnd": 43,
+          "headingPath": [
+            "Chapter 2: empires",
+            "Timeline ii",
+            "Social, Political and Military Organisation"
+          ]
+        },
+        {
+          "document": "ncert/11/history/kehs102.pdf",
+          "ordinal": 48,
+          "pageStart": 43,
+          "pageEnd": 44,
+          "headingPath": [
+            "Chapter 2: empires",
+            "Timeline ii",
+            "Social, Political and Military Organisation"
+          ]
+        },
+        {
+          "document": "ncert/11/history/kehs102.pdf",
+          "ordinal": 49,
+          "pageStart": 44,
+          "pageEnd": 44,
+          "headingPath": [
+            "Chapter 2: empires",
+            "Timeline ii",
+            "Ghazan Khan’s Speech"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T05:20:53.342Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "Which of the following was the first dynasty to rule over the Vijayanagara Empire?",
+      "choices": [
+        "Suluva dynasty",
+        "Aravidu dynasty",
+        "Tuluva dynasty",
+        "Sangama dynasty"
+      ],
+      "answerIndex": 3,
+      "solution": "The Sangama dynasty was the first to rule over the Vijayanagara Empire, as historical records indicate they established the empire and laid its foundational structures. The Suluva, Tuluva, and Aravidu dynasties came after the Sangama dynasty in the empire's history. Each of these later dynasties succeeded the previous one, making the Sangama the earliest.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा विजयनगर साम्राज्य पर शासन करने वाला पहला वंश था?",
+          "choices": [
+            "सुलुवा वंश",
+            "अराविडू वंश",
+            "तुलुवा वंश",
+            "संगमा वंश"
+          ],
+          "solution": "इतिहास के अनुसार संगमा वंश विजयनगर साम्राज्य पर शासन करने वाला पहला वंश था, क्योंकि इसने साम्राज्य की स्थापना की और इसकी आधारशिला रखी। सुलुवा, तुलुवा और अराविडू वंश विजयनगर साम्राज्य के इतिहास में संगमा वंश के बाद आए। इनमें से प्रत्येक बाद के वंश पिछले वंश के बाद आए, जिसके कारण संगमा वंश सबसे पहला रहा।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the correct answer position, and uses appropriate historical terminology as found in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणती राजवंश विजयनगर साम्राज्यावर प्रथम राज्य करणारी झाली?",
+          "choices": [
+            "सुलुवा राजवंश",
+            "अराविडू राजवंश",
+            "तुलुवा राजवंश",
+            "संगमा राजवंश"
+          ],
+          "solution": "इतिहासाच्या नोंदीनुसार संगमा राजवंश हा विजयनगर साम्राज्यावर प्रथम राज्य करणारा राजवंश होता आणि त्यांनी साम्राज्याची आधारशिला घातली. सुलुवा, तुलुवा आणि अराविडू राजवंश हे संगमा राजवंशानंतर विजयनगर साम्राज्याच्या इतिहासात आले. हे राजवंश एकाच्या पुढे एक आले, ज्यामुळे संगमा राजवंश हा पहिला ठरतो.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate regional terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the order of dynasties",
+        "Mistakenly identifies a later dynasty as the first",
+        "Confuses the Tuluva dynasty with the first ruling dynasty",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 3 (Sangama dynasty), as it was indeed the first dynasty to rule the Vijayanagara Empire. The author's reasoning for the distractors is valid and reflects common misconceptions about the chronological order of the dynasties.",
+      "sources": [
+        {
+          "document": "ncert/11/history/kehs102.pdf",
+          "ordinal": 13,
+          "pageStart": 15,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 2: empires",
+            "Timeline ii",
+            "Doctor Galen on how Roman Cities Treated the Countryside"
+          ]
+        },
+        {
+          "document": "ncert/11/history/kehs102.pdf",
+          "ordinal": 14,
+          "pageStart": 16,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 2: empires",
+            "Timeline ii",
+            "The Third-Century Crisis"
+          ]
+        },
+        {
+          "document": "ncert/11/history/kehs102.pdf",
+          "ordinal": 15,
+          "pageStart": 16,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 2: empires",
+            "Timeline ii",
+            "Gender, Literacy, Culture"
+          ]
+        },
+        {
+          "document": "ncert/11/history/kehs102.pdf",
+          "ordinal": 16,
+          "pageStart": 17,
+          "pageEnd": 17,
+          "headingPath": [
+            "Chapter 2: empires",
+            "Timeline ii",
+            "Gender, Literacy, Culture"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T05:20:53.342Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "If a student was asked to classify an empire based on its administrative language, which of the following would be most relevant?",
+      "choices": [
+        "Whether the empire used Latin and Greek for administration",
+        "Whether the empire had a conscripted army",
+        "Whether the empire had a professional army",
+        "Whether the empire controlled the Sahara Desert"
+      ],
+      "answerIndex": 0,
+      "solution": "The use of Latin and Greek for administration directly relates to the classification of an empire based on its administrative language. Other options, such as the type of army or geographic control, pertain to military and territorial aspects, not language use in governance.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक छात्र को शासन भाषा के आधार पर साम्राज्य का वर्गीकरण करने के लिए कहा जाए, तो निम्नलिखित में से कौन-सा सबसे संबंधित होगा?",
+          "choices": [
+            "क्या साम्राज्य शासन के लिए लैटिन और ग्रीक का उपयोग करता था",
+            "क्या साम्राज्य के पास भर्ती सेना थी",
+            "क्या साम्राज्य के पास वृत्तिगत सेना थी",
+            "क्या साम्राज्य सहारा मरुस्थल के नियंत्रण में था"
+          ],
+          "solution": "शासन के लिए लैटिन और ग्रीक के उपयोग का सीधा संबंध शासन भाषा के आधार पर साम्राज्य के वर्गीकरण से होता है। अन्य विकल्प, जैसे सेना के प्रकार या भौगोलिक नियंत्रण, सैन्य और क्षेत्रीय पहलुओं से संबंधित हैं, भाषा के उपयोग से नहीं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains original meaning, and uses appropriate Hindi terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका विद्यार्थ्याला एका साम्राज्याचे त्याच्या व्यवस्थापन भाषेवर आधारित वर्गीकरण करायला सांगितले गेले असते, तर खालीलपैकी कोणते सर्वात अनुकूल असेल?",
+          "choices": [
+            "काय साम्राज्याने व्यवस्थापनासाठी लॅटिन आणि ग्रीक वापरले आहेत",
+            "काय साम्राज्याला सशस्त्र बल असलेले सैन्य आहे",
+            "काय साम्राज्याला वृत्तीगत सैन्य आहे",
+            "काय साम्राज्याने सहारा मरुभूमी नियंत्रित केली आहे"
+          ],
+          "solution": "व्यवस्थापनासाठी लॅटिन आणि ग्रीक वापरणे हे साम्राज्याच्या व्यवस्थापन भाषेवर आधारित वर्गीकरणाशी सीधा संबंध ठेवते. इतर विकल्प, जसे की सैन्याच्या प्रकार किंवा भौगोलिक नियंत्रण, सैन्य आणि क्षेत्रीय अंशांशी संबंधित असतात, जे शासनात भाषेच्या वापराशी संबंधित नसतात.",
+          "imageAlt": null,
+          "critique": "Translation accurately preserves meaning, technical terms (e.g. 'वृत्तीगत सैन्य' for 'professional army') are appropriate for Marathi textbooks, and the correct answer remains option 1.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses administrative language with other aspects of empire, such as military structure or geography",
+        "Confuses administrative language with military structure",
+        "Confuses administrative language with military structure"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 0, as the question asks about classification based on administrative language. The author's solution correctly identifies this, and the reasons for the other options being wrong are valid misconceptions about confusing administrative language with military or geographic factors.",
+      "sources": [
+        {
+          "document": "ncert/11/history/kehs102.pdf",
+          "ordinal": 7,
+          "pageStart": 10,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 2: empires",
+            "Timeline ii",
+            "An Empire Across Three Continents"
+          ]
+        },
+        {
+          "document": "ncert/11/history/kehs102.pdf",
+          "ordinal": 8,
+          "pageStart": 11,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 2: empires",
+            "Timeline ii",
+            "An Empire Across Three Continents"
+          ]
+        },
+        {
+          "document": "ncert/11/history/kehs102.pdf",
+          "ordinal": 9,
+          "pageStart": 12,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 2: empires",
+            "Timeline ii",
+            "The Early Empire"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T05:20:53.342Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "What can be inferred about the shift in power from Italy to the provinces in the Roman Empire?",
+      "choices": [
+        "It was a result of the decline of the Roman army",
+        "It was due to the increasing wealth of the provinces",
+        "It reflected the growing influence of provincial elites in governance",
+        "It was caused by the failure of the Roman Senate to govern effectively"
+      ],
+      "answerIndex": 2,
+      "solution": "The correct option reflects the growing influence of provincial elites in governance, as historical evidence shows that as the Roman Empire expanded, local leaders from the provinces gained more political power. The other options are incorrect because the decline of the Roman army, the wealth of the provinces, and the failure of the Senate do not directly explain the shift in power as accurately as the rise of provincial elites.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "रोमन साम्राज्य में इटली से प्रांतों की शक्ति में बदलाव के बारे में क्या निष्कर्ष निकाला जा सकता है?",
+          "choices": [
+            "इसका कारण रोमन सेना के पतन था",
+            "इसका कारण प्रांतों के बढ़ते सम्पन्नता था",
+            "इसका अर्थ प्रांतीय अधिकारियों के शासन में बढ़ते प्रभाव को दर्शाता है",
+            "इसका कारण रोमन सीनेट के प्रभावी रूप से शासन करने में असफलता थी"
+          ],
+          "solution": "सही विकल्प प्रांतीय अधिकारियों के शासन में बढ़ते प्रभाव को दर्शाता है, क्योंकि ऐतिहासिक साक्ष्य दर्शाता है कि जैसे-जैसे रोमन साम्राज्य विस्तारित हुआ, प्रांतों के स्थानीय नेता अधिक राजनीतिक शक्ति हासिल करते गए। अन्य विकल्प गलत हैं क्योंकि रोमन सेना के पतन, प्रांतों की सम्पन्नता और सीनेट के शासन में असफलता शक्ति के बदलाव की व्याख्या करने में प्रांतीय अधिकारियों के बढ़ते प्रभाव की तुलना में अधिक सटीक नहीं हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology for historical concepts.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "रोमन साम्राज्यात इटलीपासून प्रांतांकडे शक्तीच्या हस्तांतरणाबद्दल काय निष्कर्ष काढता येईल?",
+          "choices": [
+            "रोमन सैन्याच्या अवनतीमुळे झाले",
+            "प्रांतांच्या वाढत्या संपत्तीमुळे झाले",
+            "प्रांतीय अधिकाऱ्यांच्या शासनातील वाढत्या प्रभावाचे प्रतिबिंब आहे",
+            "रोमन सेनेटच्या प्रभावीपणे शासन करण्याच्या अयशस्वीतेमुळे झाले"
+          ],
+          "solution": "योग्य विकल्प प्रांतीय अधिकाऱ्यांच्या शासनातील वाढत्या प्रभावाचे प्रतिबिंब आहे, कारण ऐतिहासिक आधारांवर असे दिसून येते की रोमन साम्राज्याच्या विस्तारासह प्रांतांतील स्थानिक नेते अधिक राजकीय शक्ती मिळवत गेले. इतर विकल्प अयोग्य आहेत कारण रोमन सैन्याच्या अवनती, प्रांतांच्या संपत्ती आणि सेनेटच्या अयशस्वी शासनामुळे शक्तीच्या हस्तांतरणाचे विवरण अधिक अचूकपणे व्यक्त करत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology common in history textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Incorrectly attributes the shift to the army's decline",
+        "Mentions wealth but not the main reason for the shift in power",
+        null,
+        "Correctly identifies the shift but is not the best answer\",\"Focuses on the Senate's failure instead of the rise of provincial elites as the main cause"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 2, as it aligns with the inference that provincial elites gained influence. The other options reflect common misconceptions or misinterpretations of the passage.",
+      "sources": [
+        {
+          "document": "ncert/11/history/kehs102.pdf",
+          "ordinal": 10,
+          "pageStart": 13,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 2: empires",
+            "Timeline ii",
+            "The Early Empire"
+          ]
+        },
+        {
+          "document": "ncert/11/history/kehs102.pdf",
+          "ordinal": 11,
+          "pageStart": 13,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 2: empires",
+            "Timeline ii",
+            "The Emperor Trajan’s Dream – A Conquest of India?"
+          ]
+        },
+        {
+          "document": "ncert/11/history/kehs102.pdf",
+          "ordinal": 12,
+          "pageStart": 14,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 2: empires",
+            "Timeline ii",
+            "The Emperor Trajan’s Dream – A Conquest of India?"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T05:20:53.342Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Which of the following best explains the significance of amphorae in understanding the economic life of the Roman Empire?",
+      "choices": [
+        "They were used to store and transport luxury goods only",
+        "They provide evidence of the trade networks and regional specialization in production",
+        "They were primarily used for religious rituals and ceremonies",
+        "They were a form of currency used in Roman markets"
+      ],
+      "answerIndex": 1,
+      "solution": "The correct answer is that amphorae provide evidence of the trade networks and regional specialization in production. Amphorae were used to transport goods like olive oil, wine, and wheat across the Mediterranean, and their distribution helps archaeologists understand which regions were major producers and how goods moved between them. The other options are incorrect because amphorae were not used for luxury goods only, they were not primarily for religious rituals, and they were not a form of currency.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा अम्फोरा के महत्व की सबसे अच्छी व्याख्या करता है जिससे रोमन साम्राज्य के आर्थिक जीवन की समझ में सहायता मिलती है?",
+          "choices": [
+            "उनका उपयोग केवल लक्जरी वस्तुओं के भंडारण और परिवहन के लिए किया जाता था",
+            "उनके द्वारा व्यापार नेटवर्क और उत्पादन में क्षेत्रीय विशेषता के प्रमाण प्राप्त होते हैं",
+            "उनका उपयोग मुख्य रूप से धार्मिक रितुओं और समारोहों के लिए किया जाता था",
+            "उनका उपयोग रोमन बाजारों में मुद्रा के रूप में किया जाता था"
+          ],
+          "solution": "सही उत्तर यह है कि अम्फोरा व्यापार नेटवर्क और उत्पादन में क्षेत्रीय विशेषता के प्रमाण प्रदान करते हैं। अम्फोरा का उपयोग ऑलिव तेल, शराब और गेहूं जैसी वस्तुओं के परिवहन के लिए किया जाता था और उनके वितरण के माध्यम से आर्कियोलॉजिस्ट यह समझ सकते हैं कि कौन-से क्षेत्र मुख्य उत्पादक थे और वस्तुएं उनके बीच कैसे गईं। अन्य विकल्प गलत हैं क्योंकि अम्फोरा केवल लक्जरी वस्तुओं के लिए नहीं उपयोग किए जाते थे, वे मुख्य रूप से धार्मिक रितुओं के लिए नहीं थे, और वे मुद्रा के रूप में नहीं थे।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology for archaeological concepts.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते रोमन साम्राज्याच्या आर्थिक जीवनाच्या बाबतीत अम्फोरा च्या महत्त्वाचे सर्वात चांगले स्पष्टीकरण आहे?",
+          "choices": [
+            "त्यांनी फक्त अमूल्य वस्तू ठेवण्यासाठी आणि परिवहन करण्यासाठी वापरले गेले",
+            "त्यांनी व्यापारी मार्ग आणि उत्पादनातील प्रादेशिक विशिष्टता चे पुरावा दिला",
+            "त्यांनी धार्मिक विधी आणि सोहळ्यांसाठी प्राथमिकपणे वापरले गेले",
+            "त्यांनी रोमन बाजारात चलनाच्या रूपात वापरले गेले"
+          ],
+          "solution": "अम्फोरा च्या व्यापारी मार्ग आणि उत्पादनातील प्रादेशिक विशिष्टता चे पुरावा देण्याचे सर्वात चांगले स्पष्टीकरण योग्य उत्तर आहे. अम्फोरा ओलिव्ह तेल, व्हाईन आणि गहू अशा वस्तू ला मध्यसागरातून परिवहन करण्यासाठी वापरले जात होते, आणि त्यांच्या वितरणामुळे अर्किओलॉजिस्ट ला कोणत्या प्रदेशांनी मुख्य उत्पादक असून वस्तूंचा त्यांच्यातून कसा हलवला जात असे याची माहिती मिळते. इतर विकल्प अयोग्य आहेत कारण अम्फोरा फक्त अमूल्य वस्तू ठेवण्यासाठी वापरले गेले नाहीत, त्यांनी धार्मिक विधीसाठी प्राथमिकपणे वापरले गेले नाहीत आणि त्यांनी रोमन बाजारात चलनाच्या रूपात वापरले गेले नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology consistent with educational materials.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the purpose of amphorae as only for luxury items",
+        null,
+        "Fails to recognize the economic insight provided by amphorae",
+        "Misunderstands the primary function of amphorae as religious tools instead of commercial ones"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is well-justified, as amphorae were indeed used for transporting goods, revealing trade networks and regional specialization. The distractors reflect common misconceptions about their purpose.",
+      "sources": [
+        {
+          "document": "ncert/11/history/kehs102.pdf",
+          "ordinal": 17,
+          "pageStart": 17,
+          "pageEnd": 18,
+          "headingPath": [
+            "Chapter 2: empires",
+            "Timeline ii",
+            "Gender, Literacy, Culture"
+          ]
+        },
+        {
+          "document": "ncert/11/history/kehs102.pdf",
+          "ordinal": 18,
+          "pageStart": 18,
+          "pageEnd": 19,
+          "headingPath": [
+            "Chapter 2: empires",
+            "Timeline ii",
+            "Economic Expansion"
+          ]
+        },
+        {
+          "document": "ncert/11/history/kehs102.pdf",
+          "ordinal": 19,
+          "pageStart": 19,
+          "pageEnd": 19,
+          "headingPath": [
+            "Chapter 2: empires",
+            "Timeline ii",
+            "Economic Expansion"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T05:20:53.342Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
     }
   ]
 }

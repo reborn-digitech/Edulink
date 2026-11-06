@@ -710,6 +710,4637 @@
       "generatedAt": "2026-11-01T20:21:20.507Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which method is described as the process of letting heavier particles settle at the bottom of a liquid?",
+      "choices": [
+        "Filtration",
+        "Decantation",
+        "Sedimentation",
+        "Evaporation"
+      ],
+      "answerIndex": 2,
+      "solution": "Sedimentation is the process where heavier particles naturally settle at the bottom of a liquid due to gravity. Filtration involves passing the mixture through a filter to separate particles, decantation is pouring off the liquid after particles have settled, and evaporation removes liquid by heating. Sedimentation specifically refers to the settling of particles without any additional steps.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "कौन सी विधि एक द्रव के नीचे भारी कणों के बैठ जाने की प्रक्रिया के रूप में वर्णित की जाती है?",
+          "choices": [
+            "पर्याप्त निस्यंदन",
+            "अपकेंद्रण",
+            "अवसादन",
+            "वाष्पीकरण"
+          ],
+          "solution": "अवसादन एक प्रक्रिया है जिसमें भारी कण गुरुत्वाकर्षण के कारण द्रव के नीचे बैठ जाते हैं। निस्यंदन में मिश्रण को एक छलनी के माध्यम से गुजारा जाता है ताकि कणों को अलग किया जा सके, अपकेंद्रण एक ऐसी विधि है जिसमें कणों के बैठ जाने के बाद द्रव को बाहर निकाल दिया जाता है, और वाष्पीकरण में गर्म करके द्रव को हटा दिया जाता है। अवसादन विशेष रूप से बिना किसी अतिरिक्त कदम के कणों के बैठ जाने को संदर्भित करता है।",
+          "imageAlt": null,
+          "critique": "All terms are standard in Hindi science textbooks. 'Decantation' is correctly translated as 'अपकेंद्रण' and 'sedimentation' as 'अवसादन'.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "कोणत्या पद्धतीला द्रवाच्या खालच्या बाजूला भारी कणांच्या बसण्याच्या प्रक्रियेचे वर्णन केले जाते?",
+          "choices": [
+            "विलगीकरण",
+            "आस्तरण",
+            "अवक्षेपण",
+            "वाष्पीकरण"
+          ],
+          "solution": "अवक्षेपण ही एक प्रक्रिया आहे जेथे भारी कण गुरुत्वाकर्षणमुळे द्रवाच्या खालच्या बाजूला स्वतःच बसतात. विलगीकरणात मिश्रणाला फिल्टरमधून वाहून नेले जाते, आस्तरण हे कणांच्या बसल्यानंतर द्रव वाहून नेण्याचे आहे आणि वाष्पीकरणात उष्णतेने द्रव दूर केला जातो. अवक्षेपणात विशिष्टपणे कोणत्याही अतिरिक्त कृतीशिवाय कणांचे बसणे होते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, with appropriate Marathi scientific terms used. The meaning, options, and solution all align correctly with the English version.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses sedimentation with decantation",
+        "Confuses sedimentation with filtration",
+        null,
+        "Confuses sedimentation with evaporation"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-constructed, with a clear and accurate definition of sedimentation. The distractors are common misconceptions, and the solution correctly identifies the correct answer.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 3,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 9: Methods of Separation in Everyday Life",
+            "कबीर"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 4,
+          "pageStart": 7,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 9: Methods of Separation in Everyday Life",
+            "कबीर"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 5,
+          "pageStart": 9,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 9: Methods of Separation in Everyday Life",
+            "कबीर"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-31T09:26:44.305Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If a farmer wants to separate husk from grains, which method should they use?",
+      "choices": [
+        "Handpicking",
+        "Threshing",
+        "Winnowing",
+        "Sieving"
+      ],
+      "answerIndex": 2,
+      "solution": "Winnowing is used to separate heavier and lighter components, such as husk from grains, by using wind or blowing air. Handpicking is used for small quantities, threshing separates grains from stalks, and sieving is used for solid-solid mixtures based on size.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक किसान अनाज से छिलका अलग करना चाहता है, तो उसे कौन सी विधि का उपयोग करना चाहिए?",
+          "choices": [
+            "हाथ से चुनना",
+            "तहानी",
+            "हवाई अलगाव",
+            "चानणा"
+          ],
+          "solution": "हवाई अलगाव का उपयोग वायु या हवा बहाकर भारी और हल्के घटकों को अलग करने के लिए किया जाता है, जैसे कि अनाज से छिलका। हाथ से चुनना छोटी मात्रा में उपयोग किया जाता है, तहानी अनाज को छड़ी से अलग करती है, और चानणा आकार के आधार पर ठोस-ठोस मिश्रण के लिए उपयोग किया जाता है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English original in meaning, with appropriate technical terms used in Indian textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका शेतकऱ्याला गहूपासून घास वेगळा करायचा असेल, तर त्यांनी कोणती पद्धत वापरावी?",
+          "choices": [
+            "हाताने निवडणे",
+            "मळणे",
+            "वाऱ्याने वेगळे करणे",
+            "सिंगणे"
+          ],
+          "solution": "वाऱ्याने वेगळे करणे ही एक अशी पद्धत आहे जी भारी आणि हलक्या घटकांना वेगळे करते, उदाहरणार्थ घास आणि गहू वेगळे करते, वाऱ्याचा वापर करून. हाताने निवडणे ही लहान प्रमाणात वापरली जाते, मळणे ही गहू आणि बांडांमधून वेगळे करते, आणि सिंगणे ही आकारानुसार घटकांना वेगळे करण्यासाठी वापरली जाते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the technical terms used in Marathi science textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses winnowing with handpicking",
+        "Confuses winnowing with threshing",
+        null,
+        "Confuses winnowing with sieving"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 2 (Winnowing), as it is the method used to separate husk from grains by using air. The author's explanation is accurate, and the reasons for the wrong options reflect common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 9: Methods of Separation in Everyday Life",
+            "कबीर"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 9: Methods of Separation in Everyday Life",
+            "कबीर"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 2,
+          "pageStart": 4,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 9: Methods of Separation in Everyday Life",
+            "कबीर"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-31T09:26:44.305Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If a mixture of tea leaves and tea is left undisturbed, what happens to the tea leaves?",
+      "choices": [
+        "They dissolve in the tea",
+        "They float on the surface",
+        "They settle at the bottom",
+        "They mix completely with the tea"
+      ],
+      "answerIndex": 2,
+      "solution": "Tea leaves are heavier and do not dissolve in the liquid, so they settle at the bottom due to gravity. Dissolving is incorrect because tea leaves are not soluble. Floating is unlikely because they are denser than the liquid. Mixing completely is also incorrect as the leaves remain as solid particles.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि चाय के पत्ते और चाय के मिश्रण को अस्थिर छोड़ दिया जाए, तो चाय के पत्ते क्या हो जाते हैं?",
+          "choices": [
+            "वे चाय में घुल जाते हैं",
+            "वे सतह पर तैरते रहते हैं",
+            "वे तल पर बैठ जाते हैं",
+            "वे चाय के साथ पूरी तरह मिश्रित हो जाते हैं"
+          ],
+          "solution": "चाय के पत्ते भारी होते हैं और द्रव में घुल नहीं जाते, इसलिए गुरुत्वाकर्षण के कारण वे तल पर बैठ जाते हैं। घुलना गलत है क्योंकि चाय के पत्ते अघुलनशील होते हैं। तैरना असंभव है क्योंकि वे द्रव की तुलना में घनत्व में अधिक होते हैं। पूरी तरह मिश्रित होना भी गलत है क्योंकि पत्ते ठोस कणों के रूप में रहते हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate scientific terminology commonly found in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "चहा पाने आणि चहा असलेल्या मिश्रणाला अचल ठेवल्यास, चहा पाने काय होतात?",
+          "choices": [
+            "ते चहात विरघळतात",
+            "ते पृष्ठभागावर तरंगतात",
+            "ते तलावर बसतात",
+            "ते चहासह पूर्णपणे मिसळतात"
+          ],
+          "solution": "चहा पाने भारी असतात आणि द्रावकात विरघळत नाहीत, म्हणून गुरुत्वाकर्षणामुळे ते तलावर बसतात. विरघळणे अयोग्य आहे कारण चहा पाने अद्राव्य आहेत. तरंगणे असंभाव्य आहे कारण ते द्रावकापेक्षा घन असतात. पूर्णपणे मिसळणे देखील अयोग्य आहे कारण पाने घन कणांच्या रूपात राहतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the scientific meaning. Technical terms like 'विरघळतात' (dissolve), 'तरंगतात' (float), 'तलावर बसतात' (settle at the bottom) are appropriate for a Marathi-medium science curriculum.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Thinks tea leaves dissolve",
+        "Thinks tea leaves float",
+        null,
+        "Thinks tea leaves mix completely"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-constructed. The correct answer is 2, as tea leaves are insoluble and heavier, so they settle at the bottom. The distractors reflect common misconceptions about solubility and mixing.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 3,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 9: Methods of Separation in Everyday Life",
+            "कबीर"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 4,
+          "pageStart": 7,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 9: Methods of Separation in Everyday Life",
+            "कबीर"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 5,
+          "pageStart": 9,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 9: Methods of Separation in Everyday Life",
+            "कबीर"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-31T09:26:44.305Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "In filtration, what is the name of the liquid that passes through the filter paper?",
+      "choices": [
+        "Residue",
+        "Filtrate",
+        "Solute",
+        "Solvent"
+      ],
+      "answerIndex": 1,
+      "solution": "The liquid that passes through the filter paper is called the filtrate. Residue refers to the solid that remains on the filter, solute is the substance dissolved in a solvent, and solvent is the liquid that dissolves the solute. Filtrate is the correct term for the liquid that successfully passes through during filtration.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "फिल्ट्रेशन में, फिल्टर कागज से गुजरने वाले द्रव का नाम क्या होता है?",
+          "choices": [
+            "अवशेष",
+            "फिल्ट्रेट",
+            "विलेय",
+            "विलायक"
+          ],
+          "solution": "फिल्टर कागज से गुजरने वाला द्रव फिल्ट्रेट कहलाता है। अवशेष वह ठोस होता है जो फिल्टर पर रह जाता है, विलेय वह पदार्थ होता है जो विलायक में घुला रहता है, और विलायक वह द्रव होता है जो विलेय को घोलता है। फिल्ट्रेशन के दौरान जो द्रव सफलतापूर्वक गुजर जाता है, उसके लिए फिल्ट्रेट शब्द सही है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the scientific terminology used in Hindi textbooks. The correct answer remains option (2) 'फिल्ट्रेट' as in the original.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "फिल्टरीकरणात, फिल्टर कागदावरून जाणारा द्रवाचे नाव काय आहे?",
+          "choices": [
+            "अवशेष",
+            "फिल्ट्रेट",
+            "द्रावक",
+            "द्राव्य"
+          ],
+          "solution": "फिल्टर कागदावरून जाणारा द्रव फिल्ट्रेट म्हणून ओळखला जातो. अवशेष हा फिल्टरवर राहणारा घन पदार्थ आहे, द्रावक हा द्राव्य विसर्जित करणारा द्रव आहे आणि द्राव्य हा द्रावकात विसर्जित होणारा पदार्थ आहे. फिल्ट्रेट हा फिल्टरीकरणादरम्यान फिल्टर कागदावरून जाणारा द्रवाचे योग्य नाव आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the scientific terminology appropriate for a Marathi-medium curriculum.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses filtrate with residue",
+        null,
+        "Confuses filtrate with solute",
+        "Confuses filtrate with solvent"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is well-constructed and the solution is accurate. The correct answer is 'filtrate', and the distractors reflect common misconceptions about filtration terminology.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 3,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 9: Methods of Separation in Everyday Life",
+            "कबीर"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 4,
+          "pageStart": 7,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 9: Methods of Separation in Everyday Life",
+            "कबीर"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 5,
+          "pageStart": 9,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 9: Methods of Separation in Everyday Life",
+            "कबीर"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-31T09:26:44.305Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "If a student wants to separate a mixture of sand and water, which method would be most effective?",
+      "choices": [
+        "Decantation",
+        "Filtration",
+        "Evaporation",
+        "Distillation"
+      ],
+      "answerIndex": 1,
+      "solution": "Filtration is the most effective method because it allows water to pass through a filter while trapping the solid sand particles. Decantation would not fully separate the sand from the water, as some particles may remain suspended. Evaporation removes the water, leaving only the sand, but it is not a separation method for mixtures where both components are needed. Distillation is used for separating liquids with different boiling points, not for solid-liquid mixtures.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक छात्र जो रेत और पानी के मिश्रण को अलग करना चाहता है, कौन सी विधि सबसे अधिक प्रभावी होगी?",
+          "choices": [
+            "अपकेंद्रण",
+            "छानना",
+            "वाष्पीकरण",
+            "आसवन"
+          ],
+          "solution": "छानना सबसे अधिक प्रभावी विधि है क्योंकि यह पानी को एक छानने के माध्यम से गुजरने देता है जबकि ठोस रेत के कणों को रोक देता है। अपकेंद्रण रेत को पानी से पूरी तरह से अलग नहीं कर पाएगा, क्योंकि कुछ कण लटके रह सकते हैं। वाष्पीकरण पानी को हटा देता है, जिससे केवल रेत बचता है, लेकिन यह दोनों घटकों की आवश्यकता होने पर मिश्रण के लिए एक अलगीकरण विधि नहीं है। आसवन का उपयोग अलग-अलग क्वथनांक वाले द्रवों के अलगीकरण के लिए किया जाता है, ठोस-द्रव मिश्रण के लिए नहीं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate scientific terminology as found in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका विद्यार्थ्याला रेणू आणि पाणी यांच्या मिश्रणाचे विलगीकरण करायचे असेल, तर कोणती पद्धत सर्वात अधिक प्रभावी असेल?",
+          "choices": [
+            "अलगीकरण",
+            "विलगीकरण",
+            "वाष्पीकरण",
+            "आस्थापन"
+          ],
+          "solution": "विलगीकरण ही सर्वात अधिक प्रभावी पद्धत आहे कारण ती पाणी एका फिल्टरमधून जाऊ देते जेणेकरून घाणेरड्या रेणू घेऊन ठेवते. अलगीकरण रेणू आणि पाणी विलग करण्यास पूर्णपणे अयशस्वी ठरते, कारण काही कण अजूनही अलग राहू शकतात. वाष्पीकरण पाणी दूर करते आणि फक्त रेणू ठेवते, परंतु दोन्ही घटकांची आवश्यकता असलेल्या मिश्रणांसाठी ही विलगीकरणाची पद्धत नाही. आस्थापन ही वेगवेगळ्या उबवण्याच्या बिंदूंसह द्रवांच्या विलगीकरणासाठी वापरली जाते, घाणेरड्या-द्रव मिश्रणांसाठी नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and uses appropriate Marathi scientific terminology. The solution correctly explains why filtration is the best method, and the distractors remain incorrect as in the original.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Chooses decantation, which is less effective",
+        null,
+        "Chooses evaporation, which is not the best method",
+        "Chooses distillation, which is not applicable here"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct and aligns with the key. Filtration is indeed the most effective method for separating sand and water, as it allows the water to pass through while retaining the sand on the filter paper.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 3,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 9: Methods of Separation in Everyday Life",
+            "कबीर"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 4,
+          "pageStart": 7,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 9: Methods of Separation in Everyday Life",
+            "कबीर"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 5,
+          "pageStart": 9,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 9: Methods of Separation in Everyday Life",
+            "कबीर"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-31T09:26:44.305Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Why is sieving not suitable for separating salt from seawater?",
+      "choices": [
+        "Because salt dissolves in water",
+        "Because salt is not solid",
+        "Because salt is not present in seawater",
+        "Because salt is heavier than water"
+      ],
+      "answerIndex": 0,
+      "solution": "Sieving is not suitable because salt dissolves in water. The correct method is evaporation, where water is removed, leaving behind salt. Salt being heavier than water is not the reason for not using sieving. Salt is present in seawater, and it is solid, but it dissolves, making sieving ineffective.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "क्यों समुद्री जल से नमक के अलग करने के लिए छानना उपयुक्त नहीं है?",
+          "choices": [
+            "क्योंकि नमक पानी में घुल जाता है",
+            "क्योंकि नमक ठोस नहीं है",
+            "क्योंकि नमक समुद्री जल में उपस्थित नहीं है",
+            "क्योंकि नमक पानी के मुकाबले भारी है"
+          ],
+          "solution": "छानना उपयुक्त नहीं है क्योंकि नमक पानी में घुल जाता है। सही विधि वाष्पीकरण है, जिसमें पानी को हटा दिया जाता है, जिससे नमक बच जाता है। नमक पानी के मुकाबले भारी होना छानने के उपयोग के अयोग्य होने का कारण नहीं है। नमक समुद्री जल में उपस्थित है, और यह ठोस है, लेकिन यह घुल जाता है, जिसके कारण छानना अकार्यक्षम हो जाता है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi scientific terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "का तलावणे समुद्राच्या पाण्यापासून खारटपणा विभागण्यास उपयुक्त नाही?",
+          "choices": [
+            "कारण खारटपणा पाण्यात विरघळतो",
+            "कारण खारटपणा घन नाही",
+            "कारण खारटपणा समुद्राच्या पाण्यात नसतो",
+            "कारण खारटपणा पाण्यापेक्षा भारी असतो"
+          ],
+          "solution": "तलावणे उपयुक्त नाही कारण खारटपणा पाण्यात विरघळतो. योग्य पद्धत हे वाष्पीकरण आहे, जेथे पाणी हवेत जाते आणि खारटपणा राहतो. खारटपणा पाण्यापेक्षा भारी असल्याचे कारण तलावणे वापरण्यास अयोग्य नाही. समुद्राच्या पाण्यात खारटपणा असतो आणि तो घन असतो, परंतु तो विरघळतो, ज्यामुळे तलावणे अयोग्य ठरते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Misunderstands the concept of dissolution",
+        "Misunderstands the physical state of salt",
+        "Confuses salt's properties with other substances"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 0, as salt dissolves in water, making sieving ineffective. The author's reasoning is sound, and the misconceptions listed for the wrong options are plausible for students.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 9: Methods of Separation in Everyday Life",
+            "कबीर"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 9: Methods of Separation in Everyday Life",
+            "कबीर"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 2,
+          "pageStart": 4,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 9: Methods of Separation in Everyday Life",
+            "कबीर"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-31T09:26:44.305Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "A mixture contains iron filings and sand. Which method of separation should be used to separate them?",
+      "choices": [
+        "Filtration",
+        "Evaporation",
+        "Magnetic separation",
+        "Decantation"
+      ],
+      "answerIndex": 2,
+      "solution": "The correct answer is magnetic separation. Iron is magnetic and can be separated from non-magnetic sand using a magnet. Filtration separates solids from liquids, evaporation is used to separate dissolved solids from liquids, and decantation is used to separate immiscible liquids or solids from liquids.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक मिश्रण में लोहे के चूर्ण और रेत है। उन्हें अलग करने के लिए कौन सी विधि का उपयोग किया जाना चाहिए?",
+          "choices": [
+            "पर्याप्त निस्यंदन",
+            "वाष्पीकरण",
+            "चुंबकीय पृथक्करण",
+            "निस्यंदन"
+          ],
+          "solution": "सही उत्तर चुंबकीय पृथक्करण है। लोहा चुंबकीय होता है और एक चुंबक के उपयोग से गैर-चुंबकीय रेत से अलग किया जा सकता है। निस्यंदन तरल पदार्थों से ठोस पदार्थों को अलग करता है, वाष्पीकरण का उपयोग तरल पदार्थों से घुले हुए ठोस पदार्थों को अलग करने के लिए किया जाता है, और निस्यंदन का उपयोग अमिश्रणीय तरल पदार्थों या तरल पदार्थों से ठोस पदार्थों को अलग करने के लिए किया जाता है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate scientific terminology as taught in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका मिश्रणामध्ये लोखंडी चूर्ण आणि रेत असतो. त्यांना वेगळे करण्यासाठी कोणती विलगीकरणाची विधी वापरावी?",
+          "choices": [
+            "विलगीकरण",
+            "वाष्पीकरण",
+            "चुंबकीय विलगीकरण",
+            "निर्मलीकरण"
+          ],
+          "solution": "बरोबर उत्तर चुंबकीय विलगीकरण आहे. लोखंड चुंबकीय असते आणि त्याला चुंबकाच्या मदतीने अचुंबकीय रेतापासून वेगळे केले जाऊ शकते. विलगीकरणाने घोलित घटक द्रवापासून वेगळे केले जातात, वाष्पीकरणाने घोलित घटक द्रवापासून वेगळे केले जातात आणि निर्मलीकरणाने अमिश्रित द्रव अथवा घटक द्रवापासून वेगळे केले जातात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses filtration with magnetic separation",
+        "Thinks evaporation is used for solid separation",
+        null,
+        "Confuses magnetic separation with decantation, thinking both separate solids from mixtures by pouring off liquids"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-constructed. Magnetic separation is the correct method, as iron is magnetic and sand is not. The author's reasoning for the distractors aligns with common misconceptions students might have.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 6,
+          "pageStart": 11,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 9: Methods of Separationin Everyday Life",
+            "कबीर"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 7,
+          "pageStart": 13,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 9: Methods of Separationin Everyday Life",
+            "कबीर"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 8,
+          "pageStart": 15,
+          "pageEnd": 17,
+          "headingPath": [
+            "Chapter 9: Methods of Separationin Everyday Life",
+            "Summary"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T12:57:24.840Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "A student is given a mixture of sand, salt, and water. What is the first step to separate the components?",
+      "choices": [
+        "Evaporation",
+        "Filtration",
+        "Decantation",
+        "Magnetic separation"
+      ],
+      "answerIndex": 1,
+      "solution": "The correct answer is filtration because it is used to separate the insoluble sand from the saltwater mixture. Evaporation would remove the water, decantation is for settling solids, and magnetic separation is not applicable here.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक छात्र को रेत, नमक और पानी का मिश्रण दिया जाता है। घटकों को अलग करने के लिए पहला चरण क्या है?",
+          "choices": [
+            "वाष्पीकरण",
+            "छानना",
+            "निस्यंदन",
+            "चुंबकीय अलगीकरण"
+          ],
+          "solution": "सही उत्तर छानना है क्योंकि इसका उपयोग अविलेय रेत को नमक के पानी के मिश्रण से अलग करने के लिए किया जाता है। वाष्पीकरण पानी को हटा देगा, निस्यंदन ठोस पदार्थों के नीचे बैठने के लिए है, और चुंबकीय अलगीकरण यहां लागू नहीं होता है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English original in meaning, technical terms, and option order. All distractors remain incorrect, and the correct answer is in the same position.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका विद्यार्थ्याला रेणू, लवण आणि पाणी यांचा मिश्रण दिला जातो. घटकांना वेगळे करण्याचा पहिला टप्पा काय असेल?",
+          "choices": [
+            "आवासन",
+            "विलगीकरण",
+            "अवक्षेपण",
+            "चुंबकीय विलगीकरण"
+          ],
+          "solution": "योग्य उत्तर विलगीकरण आहे कारण ते लवणाच्या पाण्याच्या मिश्रणातून अविलेय रेणू वेगळे करण्यासाठी वापरले जाते. आवासन पाणी वायुमान करेल, अवक्षेपण घन पदार्थांच्या बसलेल्या अवस्थेसाठी असते आणि चुंबकीय विलगीकरण येथे अनुपयुक्त असते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and uses standard Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses filtration with evaporation",
+        null,
+        "Misunderstands the purpose of decantation",
+        "Does not recognize that magnetic separation is for magnetic materials"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is filtration, as it separates the insoluble sand from the saltwater mixture. The other options are incorrect for the reasons stated.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 9,
+          "pageStart": 17,
+          "pageEnd": 18,
+          "headingPath": [
+            "Chapter 9: Methods of Separationin Everyday Life",
+            "Let us enhance our learning"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 10,
+          "pageStart": 18,
+          "pageEnd": 19,
+          "headingPath": [
+            "Chapter 9: Methods of Separationin Everyday Life",
+            "Learning further"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 11,
+          "pageStart": 19,
+          "pageEnd": 19,
+          "headingPath": [
+            "Chapter 9: Methods of Separationin Everyday Life",
+            "Notes"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T12:57:24.840Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "If a student adds a mixture of salt, sugar, and water to a container, which method should they use to recover both salt and sugar?",
+      "choices": [
+        "Evaporation",
+        "Filtration",
+        "Distillation",
+        "Sublimation"
+      ],
+      "answerIndex": 0,
+      "solution": "Evaporation is the correct method as it allows the water to be removed, leaving behind the salt and sugar. Filtration is only for separating solids from liquids, distillation is for separating liquids based on boiling points, and sublimation is for solids that turn into gas. Since both salt and sugar are dissolved in water, evaporation is the only method that can recover them.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक छात्र नमक, चीनी और पानी के मिश्रण को एक कंटेनर में मिलाता है, तो वह दोनों नमक और चीनी को बरकरार रखने के लिए कौन सी विधि का उपयोग करे?",
+          "choices": [
+            "वाष्पीकरण",
+            "अपोलन",
+            "आसवन",
+            "उत्क्षेपण"
+          ],
+          "solution": "वाष्पीकरण सही विधि है क्योंकि यह पानी को हटाने की अनुमति देता है, नमक और चीनी को छोड़ देता है। अपोलन केवल तरल पदार्थों से ठोस पदार्थों को अलग करने के लिए होता है, आसवन उबलने के बिंदु के आधार पर तरल पदार्थों को अलग करने के लिए होता है, और उत्क्षेपण ठोस पदार्थों के लिए होता है जो गैस में बदल जाते हैं। चूंकि नमक और चीनी दोनों पानी में घुले हुए हैं, वाष्पीकरण एकमात्र विधि है जो उन्हें बरकरार रख सकता है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate scientific terminology as taught in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर एक विद्यार्थी एका वास्तूत लव्हणे, चारा आणि पाणी असलेला मिश्रण जोडतो, तर त्यांनी लव्हणे आणि चारा दोन्ही फिरून मिळवण्यासाठी कोणता पद्धत वापरावा?",
+          "choices": [
+            "वाष्पीकरण",
+            "विलगीकरण",
+            "आस्थापन",
+            "उत्केशन"
+          ],
+          "solution": "वाष्पीकरण ही योग्य पद्धत आहे कारण ती पाणी दूर करते, जे लव्हणे आणि चारा शिल्लक राहते. विलगीकरण हे केवळ द्रव्यांमधून घन पदार्थांना विलग करण्यासाठी वापरले जाते, आस्थापन हे उबाच्या बिंदूंवर आधारित द्रव्यांना विलग करण्यासाठी वापरले जाते आणि उत्केशन हे घन पदार्थांच्या वास्पीकरणासाठी वापरले जाते. लव्हणे आणि चारा दोन्ही पाण्यात विरघळलेले असल्याने, वाष्पीकरण ही एकमेव पद्धत आहे जी त्यांना परत मिळवू शकते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the scientific terminology appropriate for a Marathi-medium curriculum.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses evaporation with filtration",
+        "Confuses evaporation with distillation",
+        "Confuses evaporation with sublimation"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is evaporation, as it removes the water and leaves behind the dissolved solids (salt and sugar). The author's reasoning is accurate, and the misconceptions listed for the wrong options are plausible for students.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 3,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 9: Methods of Separationin Everyday Life",
+            "कबीर"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 4,
+          "pageStart": 7,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 9: Methods of Separationin Everyday Life",
+            "कबीर"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 5,
+          "pageStart": 9,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 9: Methods of Separationin Everyday Life",
+            "कबीर"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T12:57:24.840Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "In a scenario where a mixture contains salt, water, and calcium carbonate, which method would best separate the salt from the mixture?",
+      "choices": [
+        "Decantation",
+        "Filtration",
+        "Evaporation",
+        "Distillation"
+      ],
+      "answerIndex": 2,
+      "solution": "Evaporation is the best method because it allows the water to turn into vapor, leaving the salt behind as a solid. Filtration would only remove the calcium carbonate, which is a solid not dissolved in water. Decantation is used for separating liquids from solids, and distillation is unnecessary since the goal is to recover the salt, not purify the water.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक ऐसे स्थिति में जहां मिश्रण में नमक, पानी और कैल्शियम कार्बोनेट है, नमक को मिश्रण से सबसे अच्छा कौन सी विधि से अलग करेंगे?",
+          "choices": [
+            "अलग करना",
+            "छानना",
+            "वाष्पीकरण",
+            "आसवन"
+          ],
+          "solution": "वाष्पीकरण सबसे अच्छी विधि है क्योंकि यह पानी के वाष्प में बदलने की अनुमति देता है, नमक को ठोस के रूप में छोड़ देता है। छानना केवल कैल्शियम कार्बोनेट को हटा देगा, जो पानी में घुलित ठोस नहीं है। अलग करना तरल पदार्थों को ठोसों से अलग करने के लिए उपयोग किया जाता है, और आसवन आवश्यक नहीं है क्योंकि लक्ष्य नमक को बरकरार रखना है, न कि पानी को शुद्ध करना।",
+          "imageAlt": null,
+          "critique": "Hindi translation accurately reflects the English original in meaning, options, and solution. Technical terms like 'वाष्पीकरण' (evaporation), 'छानना' (filtration), and 'आसवन' (distillation) are standard in Hindi science textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "मिश्रणात खारा, पाणी आणि कॅल्शियम कार्बोनेट असल्यास, खारा विसर्जित करण्यासाठी कोणती विधी सर्वात योग्य असेल?",
+          "choices": [
+            "द्रवण",
+            "विलगीकरण",
+            "वाष्पीकरण",
+            "आस्थापन"
+          ],
+          "solution": "वाष्पीकरण ही उत्तम विधी आहे कारण ती पाणी वाफ म्हणून बदलते, खारा घन पदार्थ म्हणून ठेवते. विलगीकरण केवळ कॅल्शियम कार्बोनेट दूर करेल, जो पाण्यात विरघळलेला घन पदार्थ नाही. द्रवण घन पदार्थांपासून द्रव पृथक करण्यासाठी वापरले जाते आणि आस्थापन अनावश्यक आहे कारण उद्दिष्ट खारा पुन्हा मिळवणे आहे, नाही की पाणी शुद्ध करणे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the scientific terminology used in Marathi textbooks, and preserves the logical structure of the question and solution.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Thinks decantation is suitable for this mixture",
+        "Believes filtration can separate dissolved salt",
+        null,
+        "Does not know the correct method for recovering dissolved substances"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct. Evaporation is the appropriate method to recover dissolved salt from a mixture containing salt, water, and calcium carbonate. Filtration would only remove the insoluble calcium carbonate, and decantation or distillation are not suitable for this specific case.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 3,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 9: Methods of Separationin Everyday Life",
+            "कबीर"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 4,
+          "pageStart": 7,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 9: Methods of Separationin Everyday Life",
+            "कबीर"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 5,
+          "pageStart": 9,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 9: Methods of Separationin Everyday Life",
+            "कबीर"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T12:57:24.840Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Why is a filter paper more effective than a piece of cloth in removing impurities from water?",
+      "choices": [
+        "It is cheaper",
+        "It has smaller pores",
+        "It is more available",
+        "It is stronger"
+      ],
+      "answerIndex": 1,
+      "solution": "A filter paper is more effective because it has smaller pores, allowing it to trap finer impurities. While it may not be cheaper or more available, the key difference lies in the size of the pores. A piece of cloth has larger pores and cannot filter out as small particles as a filter paper can.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "पानी से अशुद्धियाँ हटाने में फ़िल्टर कागज क्यों एक कपड़े के टुकड़े की तुलना में अधिक प्रभावी होता है?",
+          "choices": [
+            "यह सस्ता होता है",
+            "इसके छिद्र छोटे होते हैं",
+            "इसकी उपलब्धता अधिक होती है",
+            "यह मजबूत होता है"
+          ],
+          "solution": "एक फ़िल्टर कागज अधिक प्रभावी होता है क्योंकि इसके छिद्र छोटे होते हैं, जो हल्की अशुद्धियों को रोकने में सक्षम होते हैं। यह आवश्यक नहीं है कि यह सस्ता या अधिक उपलब्ध हो, लेकिन छिद्रों के आकार में अंतर मुख्य अंतर है। एक कपड़े के टुकड़े में बड़े छिद्र होते हैं और वे फ़िल्टर कागज की तुलना में छोटे कणों को नहीं फ़िल्टर कर सकते।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate technical terms like 'छिद्र' (pores) that are standard in Hindi science textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "काचेच्या कागदाचा जलातील अशुद्धी दूर करण्यासाठी कपड्याच्या तुलनेत अधिक प्रभावी का आहे?",
+          "choices": [
+            "तो स्वस्त आहे",
+            "त्याच्या छिद्रे लहान आहेत",
+            "तो अधिक उपलब्ध आहे",
+            "तो अधिक शक्तिशाली आहे"
+          ],
+          "solution": "काचेच्या कागदाचा जलातील अशुद्धी दूर करण्यासाठी कपड्याच्या तुलनेत अधिक प्रभावी असतो कारण त्याच्या छिद्रे लहान असतात, ज्यामुळे ते सूक्ष्म अशुद्धी अडकवू शकतात. तो स्वस्त किंवा अधिक उपलब्ध असल्याचे नक्की नाही, परंतु मुख्य फरक छिद्रांच्या आकारात आहे. कपड्याच्या छिद्रे मोठ्या असतात आणि काचेच्या कागदापेक्षा लहान कण अडकवू शकत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses filter paper with cost",
+        null,
+        "Confuses filter paper with availability",
+        "Confuses filter paper with strength"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies the pore size as the key factor in filtration effectiveness. The reasoning for the wrong options aligns with common misconceptions about cost, availability, and strength.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 3,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 9: Methods of Separationin Everyday Life",
+            "कबीर"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 4,
+          "pageStart": 7,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 9: Methods of Separationin Everyday Life",
+            "कबीर"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 5,
+          "pageStart": 9,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 9: Methods of Separationin Everyday Life",
+            "कबीर"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T12:57:24.840Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "If a student wants to recover both salt and water from a salt solution, which method would be most suitable?",
+      "choices": [
+        "Filtration",
+        "Decantation",
+        "Evaporation",
+        "Distillation"
+      ],
+      "answerIndex": 3,
+      "solution": "Distillation is the most suitable method to recover both salt and water from a salt solution. It involves heating the solution to vaporize the water, which is then condensed back into liquid form, leaving the salt behind. Filtration and decantation cannot separate dissolved substances like salt, and evaporation only recovers the salt, not the water.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक छात्र को एक नमक के घोल से नमक और पानी दोनों को बरामद करना हो, तो कौन-सी विधि सबसे उपयुक्त होगी?",
+          "choices": [
+            "पर्याप्त निस्यंदन",
+            "निस्यंदन",
+            "वाष्पीकरण",
+            "आसवन"
+          ],
+          "solution": "आसवन एक नमक के घोल से नमक और पानी दोनों को बरामद करने के लिए सबसे उपयुक्त विधि है। इसमें घोल को गर्म करके पानी को वाष्पित किया जाता है, जिसे फिर द्रव अवस्था में संघनित कर लिया जाता है, जबकि नमक पीछे रह जाता है। निस्यंदन और निस्यंदन विलेय पदार्थों जैसे नमक को अलग नहीं कर सकते, और वाष्पीकरण केवल नमक को बरामद करता है, पानी को नहीं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English content with appropriate scientific terminology. The solution correctly identifies option 3 as the correct answer, and the distractors remain incorrect.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका विद्यार्थ्याला एका लवण द्रावणापासून लवण आणि पाणी दोन्ही पुन्हा मिळवायचे असतील, तर कोणती विधी सर्वात योग्य असेल?",
+          "choices": [
+            "पाणी विभाजन",
+            "विलगीकरण",
+            "वाष्पीकरण",
+            "आसवीकरण"
+          ],
+          "solution": "एका लवण द्रावणापासून लवण आणि पाणी दोन्ही पुन्हा मिळवण्यासाठी आसवीकरण ही सर्वात योग्य विधी आहे. यामध्ये द्रावणाला गरम करून पाणी वाफ म्हणून वायूत बदलले जाते, जे पुन्हा द्रवरूपात जमा होते, लवण शिल्लक रहाते. पाणी विभाजन आणि विलगीकरण अशा द्रावित पदार्थांचे विभाजन करू शकत नाहीत, आणि वाष्पीकरण फक्त लवण पुन्हा मिळवते, पाणी नाही.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the original meaning, and uses appropriate scientific terminology as used in Marathi textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Thinks evaporation is the only way to recover salt",
+        "Believes filtration can recover both salt and water",
+        "Does not understand the difference between evaporation and distillation",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct. Distillation is the appropriate method to recover both salt and water from a salt solution. Filtration and decantation do not work for dissolved substances, and evaporation only recovers salt, not water.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 3,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 9: Methods of Separationin Everyday Life",
+            "कबीर"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 4,
+          "pageStart": 7,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 9: Methods of Separationin Everyday Life",
+            "कबीर"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 5,
+          "pageStart": 9,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 9: Methods of Separationin Everyday Life",
+            "कबीर"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T12:57:24.840Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which method of separation is used to separate heavier and lighter components of a mixture by blowing air?",
+      "choices": [
+        "Handpicking",
+        "Threshing",
+        "Winnowing",
+        "Sieving"
+      ],
+      "answerIndex": 2,
+      "solution": "Winnowing uses blowing air to separate heavier and lighter components of a mixture, as the air carries away the lighter parts while the heavier ones fall. Handpicking involves manually removing components, threshing is for separating grains from their husks, and sieving separates particles based on size. Therefore, the correct answer is winnowing.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "कौन सी अलगीकरण की विधि एक मिश्रण के भारी और हल्के घटकों को हवा फूंककर अलग करने के लिए उपयोग की जाती है?",
+          "choices": [
+            "हाथ से चुनना",
+            "छालना",
+            "हवा द्वारा अलगीकरण",
+            "चानणी से छानना"
+          ],
+          "solution": "हवा द्वारा अलगीकरण हवा के फूंकने का उपयोग करके मिश्रण के भारी और हल्के घटकों को अलग करता है, क्योंकि हवा हल्के भागों को ले जाती है जबकि भारी भाग गिर जाते हैं। हाथ से चुनना घटकों को हाथ से हटाने के लिए होता है, छालना फसल के छिलके से अलग करने के लिए होता है, और चानणी से छानना आकार के आधार पर कणों को अलग करता है। इसलिए सही उत्तर हवा द्वारा अलगीकरण है।",
+          "imageAlt": null,
+          "critique": "Hindi translation accurately reflects the English original in meaning, terminology, and structure. 'हवा द्वारा अलगीकरण' is the correct term for 'winnowing' in Hindi science textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "मिश्रणाच्या भारी आणि हलक्या घटकांना हवा फुंकून कशाच्या मदतीने वेगळे केले जाते?",
+          "choices": [
+            "हाताने निवडणे",
+            "थ्रेशिंग",
+            "विनोविंग",
+            "सिव्हिंग"
+          ],
+          "solution": "विनोविंग हवा फुंकून मिश्रणाच्या भारी आणि हलक्या घटकांना वेगळे करण्यासाठी वापरले जाते, कारण हवा हलक्या भागांना वाहून नेते आणि भारी भाग खाली पडतात. हाताने निवडणे हा हाताने घटक निवडण्याचा प्रकार आहे, थ्रेशिंग हा दाणे आणि त्यांच्या खालील भागांना वेगळे करण्यासाठी वापरला जातो आणि सिव्हिंग हा घटकांच्या आकारावर आधारित घटकांना वेगळे करतो. म्हणूनच योग्य उत्तर विनोविंग आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, with appropriate Marathi equivalents for scientific terms. 'Winnowing' is correctly translated as 'विनोविंग', which is the term used in Marathi textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses winnowing with handpicking, which is for removing small impurities.",
+        "Confuses winnowing with threshing, which is for separating grains from stalks.",
+        null,
+        "Confuses winnowing with sieving, which is for separating by size."
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is winnowing, as it involves using air to separate heavier and lighter components. The author's reasoning aligns with scientific understanding, and the misconceptions described for the other options are plausible for students.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 9: Methods of Separationin Everyday Life",
+            "कबीर"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 9: Methods of Separationin Everyday Life",
+            "कबीर"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 2,
+          "pageStart": 4,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 9: Methods of Separationin Everyday Life",
+            "कबीर"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T00:02:56.552Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the purpose of using a filter paper in the experiment?",
+      "choices": [
+        "To remove salt from the solution",
+        "To separate tea leaves from tea",
+        "To collect water in a container",
+        "To separate mud from water"
+      ],
+      "answerIndex": 3,
+      "solution": "Filter paper is used to separate solid particles from a liquid. In this case, it separates mud from water, leaving the water clear. Removing salt requires evaporation, separating tea leaves uses a strainer, and collecting water in a container is not the function of filter paper.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "प्रयोग में फिल्टर कागज का उपयोग करने का उद्देश्य क्या है?",
+          "choices": [
+            "विलयन से नमक को हटाना",
+            "चाय के पत्ते को चाय से अलग करना",
+            "एक कंटेनर में पानी एकत्र करना",
+            "पानी से मिट्टी को अलग करना"
+          ],
+          "solution": "फिल्टर कागज का उपयोग द्रव में ठोस कणों को अलग करने के लिए किया जाता है। इस मामले में, यह पानी से मिट्टी को अलग करता है, पानी को स्पष्ट छोड़ देता है। नमक को हटाने के लिए वाष्पीकरण की आवश्यकता होती है, चाय के पत्ते को अलग करने के लिए एक छाननी का उपयोग किया जाता है, और कंटेनर में पानी एकत्र करना फिल्टर कागज का कार्य नहीं है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains original meaning, and uses appropriate technical terms in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "प्रयोगात फिल्टर कागदाचा उपयोग करण्याचा हेतू काय आहे?",
+          "choices": [
+            "द्रावणातून खारटपणा काढणे",
+            "चहा विरहित चहाच्या पानांना वेगळे करणे",
+            "कंटेनरमध्ये पाणी एकत्रित करणे",
+            "पाण्यापासून माती वेगळी करणे"
+          ],
+          "solution": "फिल्टर कागदाचा उपयोग द्रवापासून घन कणांना वेगळे करण्यासाठी केला जातो. या प्रकरणात, तो पाण्यापासून माती वेगळी करतो, पाणी स्पष्ट ठेवतो. खारटपणा काढण्यासाठी उत्सारण आवश्यक असते, चहाच्या पानांना वेगळे करण्यासाठी स्ट्रेनर वापरला जातो आणि कंटेनरमध्ये पाणी एकत्रित करणे हे फिल्टर कागदाचे कार्य नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi technical terms used.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses filtration with evaporation",
+        "Confuses filtration with decantation",
+        "Confuses filtration with decantation",
+        null
+      ],
+      "solverAnswers": [
+        1,
+        3,
+        1,
+        3,
+        3
+      ],
+      "levelFlag": "level 2 but the solver missed it 2 of 5 times",
+      "critique": "The correct answer is 3, as filter paper is used to separate insoluble solids like mud from water. The author's reasoning is accurate, and the misconceptions described for the wrong options are plausible for students.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 3,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 9: Methods of Separationin Everyday Life",
+            "कबीर"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 4,
+          "pageStart": 7,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 9: Methods of Separationin Everyday Life",
+            "कबीर"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 5,
+          "pageStart": 9,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 9: Methods of Separationin Everyday Life",
+            "कबीर"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T00:02:56.552Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which method of separation is used to remove impurities from a mixture of solid particles that are larger in size than the desired particles?",
+      "choices": [
+        "Handpicking",
+        "Magnetic separation",
+        "Decantation",
+        "Filtration"
+      ],
+      "answerIndex": 0,
+      "solution": "Handpicking is used when the impurities are larger and visible, allowing them to be removed manually. Magnetic separation is used for magnetic materials, decantation is for separating solids from liquids, and filtration is for finer particles.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "किस अलगाव की विधि का उपयोग बड़े आकार के ठोस कणों से मिश्रण में अशुद्धियों को हटाने के लिए किया जाता है?",
+          "choices": [
+            "हाथ से चुनना",
+            "चुंबकीय अलगाव",
+            "अपकेंद्रण",
+            "छानना"
+          ],
+          "solution": "हाथ से चुनना तब उपयोग किया जाता है जब अशुद्धियां बड़ी और दृश्यमान होती हैं, जिससे उन्हें हाथ से हटाया जा सकता है। चुंबकीय अलगाव चुंबकीय सामग्री के लिए उपयोग किया जाता है, अपकेंद्रण ठोसों को तरल पदार्थों से अलग करने के लिए उपयोग किया जाता है, और छानना छोटे कणों के लिए उपयोग किया जाता है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriately translated, and the correct answer remains in the same position.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "मिश्रणातील अशुद्धी निवडलेल्या कणांपेक्षा मोठ्या आकाराच्या घटकांमधून कोणत्या विलगीकरण पद्धतीचा वापर केला जातो?",
+          "choices": [
+            "हाताने निवडणे",
+            "चुंबकीय विलगीकरण",
+            "निर्मलीकरण",
+            "पाण्याची निर्मलीकरण"
+          ],
+          "solution": "हाताने निवडणे वापरले जाते जेव्हा अशुद्धी मोठ्या आणि दृश्य असतात, जेणेकरून त्यांना हाताने दूर केले जाऊ शकते. चुंबकीय विलगीकरण चुंबकीय पदार्थांसाठी वापरले जाते, निर्मलीकरण घटकांना द्रवांपासून विलग करण्यासाठी वापरले जाते आणि पाण्याची निर्मलीकरण अगदी छोट्या कणांसाठी वापरले जाते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi scientific terminology used.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Student thinks magnetic separation works for all solid-solid mixtures regardless of magnetic properties",
+        "Student thinks decantation can separate solid particles by size, not realizing it only separates immiscible liquids or settled solids",
+        "Student thinks filtration can separate larger particles from smaller ones, not realizing it's for separating solids from liquids or very fine particles"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-constructed and the key is correct. Handpicking is the appropriate method when impurities are larger and visible. The distractors are based on common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 9,
+          "pageStart": 17,
+          "pageEnd": 18,
+          "headingPath": [
+            "Chapter 9: Methods of Separationin Everyday Life",
+            "Let us enhance our learning"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 10,
+          "pageStart": 18,
+          "pageEnd": 19,
+          "headingPath": [
+            "Chapter 9: Methods of Separationin Everyday Life",
+            "Learning further"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 11,
+          "pageStart": 19,
+          "pageEnd": 19,
+          "headingPath": [
+            "Chapter 9: Methods of Separationin Everyday Life",
+            "Notes"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T00:02:56.552Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If a farmer has a mixture of rice and husk, which method would be most suitable to separate them?",
+      "choices": [
+        "Handpicking",
+        "Threshing",
+        "Winnowing",
+        "Sieving"
+      ],
+      "answerIndex": 2,
+      "solution": "Winnowing is the method that uses air to separate heavier and lighter components, such as rice and husk. Handpicking is used for removing small impurities by hand, threshing is for separating grains from their stalks, and sieving is for separating particles based on size. Therefore, winnowing is the most suitable method for this mixture.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक किसान के पास चावल और भूसे के मिश्रण है, तो उन्हें अलग करने के लिए कौन सी विधि सबसे उपयुक्त होगी?",
+          "choices": [
+            "हाथ से चुनना",
+            "तोड़ना",
+            "हवा देना",
+            "छानना"
+          ],
+          "solution": "हवा देना वह विधि है जो हवा का उपयोग भारी और हल्के घटकों को अलग करने के लिए करती है, जैसे कि चावल और भूसा। हाथ से चुनना हाथ से छोटी अशुद्धियों को हटाने के लिए उपयोग किया जाता है, तोड़ना फसल के छिलके से अनाज को अलग करने के लिए होता है और छानना आकार के आधार पर कणों को अलग करने के लिए होता है। इसलिए, यह मिश्रण के लिए हवा देना सबसे उपयुक्त विधि है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, with appropriate Hindi terminology used for scientific processes.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका शेतकऱ्याकडे चावल आणि खोकल्याचा मिश्रण असल्यास, त्यांना वेगळे करण्यासाठी कोणती पद्धत सर्वात उपयुक्त असेल?",
+          "choices": [
+            "हाताने निवडणे",
+            "मळणे",
+            "हवेने वेगळे करणे",
+            "सांडणे"
+          ],
+          "solution": "हवेने वेगळे करणे ही पद्धत वाऱ्याचा वापर करून भारी आणि हलक्या घटकांना वेगळे करते, जसे की चावल आणि खोकले. हाताने निवडणे ही हाताने लहान अशुद्धी वेगळ्या करण्यासाठी वापरली जाते, मळणे ही धान्याला त्याच्या डाळींपासून वेगळे करण्यासाठी आणि सांडणे ही घटकांना आकाराच्या आधारे वेगळे करण्यासाठी वापरली जाते. त्यामुळे हा मिश्रणासाठी हवेने वेगळे करणे ही सर्वात उपयुक्त पद्धत आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses winnowing with handpicking, which is for removing small impurities.",
+        "Confuses winnowing with threshing, which is for separating grains from stalks.",
+        null,
+        "Confuses winnowing with sieving, which is for separating by size."
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly identifies winnowing as the method used to separate rice and husk based on their weight difference. The reasoning for the other options is also accurate and reflects common student misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 9: Methods of Separationin Everyday Life",
+            "कबीर"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 9: Methods of Separationin Everyday Life",
+            "कबीर"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 2,
+          "pageStart": 4,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 9: Methods of Separationin Everyday Life",
+            "कबीर"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T00:02:56.552Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If a mixture of salt and water is heated, what will be left behind?",
+      "choices": [
+        "Water",
+        "Salt",
+        "Both salt and water",
+        "Nothing"
+      ],
+      "answerIndex": 1,
+      "solution": "When a mixture of salt and water is heated, the water evaporates, leaving the salt behind because salt does not evaporate. Water would not remain as it turns into vapor. Both salt and water cannot stay because water is removed through evaporation. Nothing is incorrect because the salt remains after the water is gone.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि नमक और पानी के मिश्रण को गर्म किया जाए, तो क्या शेष रह जाएगा?",
+          "choices": [
+            "पानी",
+            "नमक",
+            "नमक और पानी दोनों",
+            "कुछ भी नहीं"
+          ],
+          "solution": "जब नमक और पानी के मिश्रण को गर्म किया जाता है, तो पानी वाष्प बन जाता है, जिससे नमक शेष रह जाता है क्योंकि नमक वाष्प नहीं होता। पानी शेष नहीं रहेगा क्योंकि यह वाष्प में बदल जाता है। नमक और पानी दोनों शेष नहीं रह सकते क्योंकि पानी वाष्पीकरण के द्वारा हटा दिया जाता है। कुछ भी नहीं गलत है क्योंकि पानी जाने के बाद नमक शेष रह जाता है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate scientific terminology as used in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर खारट पाणी आणि पाणी याचा मिश्रण गरम केला जातो, तर त्यापासून काय उरेल?",
+          "choices": [
+            "पाणी",
+            "खारट",
+            "खारट आणि पाणी दोन्ही",
+            "काहीही नाही"
+          ],
+          "solution": "खारट आणि पाणी याचा मिश्रण गरम केल्यास पाणी वाफ बनून उडून जाते, खारट उरतो कारण खारट वाफ बनत नाही. पाणी उरणार नाही कारण ते वाफ बनून जाते. खारट आणि पाणी दोन्ही उरू शकत नाही कारण पाणी वाफ बनून जाते. काहीही नाही हे चूक आहे कारण पाणी जाऊन खारट उरतो.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for scientific concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses evaporation with condensation",
+        null,
+        "Confuses evaporation with complete removal",
+        "Confuses evaporation with no change"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The question is clear and the correct answer is 1 (Salt). The author's solution and reasoning are accurate and align with the scientific principle of evaporation. The misconceptions listed for the wrong options are plausible for students at this level.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 3,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 9: Methods of Separationin Everyday Life",
+            "कबीर"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 4,
+          "pageStart": 7,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 9: Methods of Separationin Everyday Life",
+            "कबीर"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 5,
+          "pageStart": 9,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 9: Methods of Separationin Everyday Life",
+            "कबीर"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T00:02:56.552Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "Which method of separation would you use to separate a mixture of salt and water?",
+      "choices": [
+        "Filtration",
+        "Decantation",
+        "Evaporation",
+        "Magnetic separation"
+      ],
+      "answerIndex": 2,
+      "solution": "Evaporation is used to separate a soluble solid from a liquid. Filtration separates insoluble solids, decantation is for separating liquids from settled solids, and magnetic separation is for magnetic materials.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "आप नमक और पानी के मिश्रण को अलग करने के लिए कौन सी विधि का उपयोग करेंगे?",
+          "choices": [
+            "पर्याप्त निस्यंदन",
+            "अपकेंद्रण",
+            "वाष्पीकरण",
+            "चुंबकीय अलगीकरण"
+          ],
+          "solution": "वाष्पीकरण का उपयोग द्रव में विलेय ठोस को अलग करने के लिए किया जाता है। अपरिवर्तनीय ठोस को अलग करने के लिए निस्यंदन का उपयोग किया जाता है, अपकेंद्रण बैठे हुए ठोस से तरल पदार्थ को अलग करने के लिए किया जाता है और चुंबकीय अलगीकरण चुंबकीय सामग्री के लिए किया जाता है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard scientific terminology appropriate for a Hindi-medium curriculum.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "तुम्ही पाण्याच्या आणि खारट पाण्याच्या मिश्रणाला वेगळे करण्यासाठी कोणता विलगीकरण पद्धती वापराल?",
+          "choices": [
+            "विलगीकरण",
+            "उतरवणे",
+            "वाफ बनवणे",
+            "चुंबकीय विलगीकरण"
+          ],
+          "solution": "वाफ बनवण्याच्या पद्धतीने द्रव्यामधून विरल घटकाला वेगळे केले जाते. विलगीकरणाने अविलीन घटक वेगळे केले जातात, उतरवण्याने बसलेल्या घटकांमधून द्रव वेगळे केले जातात आणि चुंबकीय विलगीकरणाने चुंबकीय घटक वेगळे केले जातात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Thinks filtration works for soluble solids",
+        "Confuses decantation with evaporation",
+        null,
+        "Mistakes magnetic separation for a general method"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is evaporation, as it is used to separate a soluble solid (salt) from a liquid (water). The other options are incorrect for the reasons given.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 9,
+          "pageStart": 17,
+          "pageEnd": 18,
+          "headingPath": [
+            "Chapter 9: Methods of Separationin Everyday Life",
+            "Let us enhance our learning"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 10,
+          "pageStart": 18,
+          "pageEnd": 19,
+          "headingPath": [
+            "Chapter 9: Methods of Separationin Everyday Life",
+            "Learning further"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 11,
+          "pageStart": 19,
+          "pageEnd": 19,
+          "headingPath": [
+            "Chapter 9: Methods of Separationin Everyday Life",
+            "Notes"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T00:02:56.552Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "After heating a salt solution in a china dish, what is left behind on the dish?",
+      "choices": [
+        "Salt",
+        "Water",
+        "Sugar",
+        "Sand"
+      ],
+      "answerIndex": 0,
+      "solution": "When a salt solution is heated, the water evaporates, leaving the salt behind because it is a solid that does not vaporize. Water is a liquid that turns into vapor and disappears. Sugar is not part of the original mixture, and sand is not soluble in water, so it would not be present in the solution to begin with.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक नमक के घोल को चिनी के कटोरे में गर्म करने के बाद, कटोरे पर क्या बच जाता है?",
+          "choices": [
+            "नमक",
+            "पानी",
+            "चीनी",
+            "रेत"
+          ],
+          "solution": "जब एक नमक के घोल को गर्म किया जाता है, तो पानी वाष्पित हो जाता है, जिससे नमक बच जाता है क्योंकि यह एक ठोस है जो वाष्पित नहीं होता। पानी एक द्रव है जो वाष्प में बदल जाता है और लापता हो जाता है। चीनी मूल मिश्रण का हिस्सा नहीं है, और रेत पानी में अघुलनशील है, इसलिए शुरू में घोल में उपस्थित नहीं होगा।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate scientific terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "तांबड्या बर्तनात एक खारा द्रावण गरम केल्यास, बर्तनावर काय राहते?",
+          "choices": [
+            "खारा",
+            "पाणी",
+            "शर्करा",
+            "माती"
+          ],
+          "solution": "खारा द्रावण गरम केल्यास, पाणी वाफ बनून उडते, खारा घासलेला राहतो कारण तो घासलेला घटक आहे जो वाफ बनत नाही. पाणी द्रव आहे जो वाफ बनून निघून जाते. शर्करा मूळ मिश्रणाचा भाग नसते आणि माती पाण्यात विरघळत नाही, त्यामुळे ती सुरुवातीला द्रावणात असू शकत नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses the role of water in the process.",
+        "Thinks sugar is part of the solution.",
+        "Assumes sand is present in the solution."
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is well-constructed, with a clear correct answer and plausible misconceptions for the distractors. The solution correctly identifies evaporation as the process and explains why the other options are incorrect.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 3,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 9: Methods of Separationin Everyday Life",
+            "कबीर"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 4,
+          "pageStart": 7,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 9: Methods of Separationin Everyday Life",
+            "कबीर"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 5,
+          "pageStart": 9,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 9: Methods of Separationin Everyday Life",
+            "कबीर"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T00:02:56.552Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "A student accidentally mixes iron nails, sand, and salt in water. Which method of separation should be used first to separate the iron nails?",
+      "choices": [
+        "Filtration",
+        "Decantation",
+        "Magnetic separation",
+        "Evaporation"
+      ],
+      "answerIndex": 2,
+      "solution": "Magnetic separation should be used first because the iron nails are magnetic and can be easily separated from the mixture using a magnet. Filtration, decantation, and evaporation are not suitable for separating magnetic substances from a mixture.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक छात्र अकस्मात लोहे के नाखून, रेत और नमक को पानी में मिला देता है। लोहे के नाखून को अलग करने के लिए सबसे पहले किस विधि का उपयोग किया जाना चाहिए?",
+          "choices": [
+            "पर्याप्त निस्यंदन",
+            "अपकेंद्रण",
+            "चुंबकीय पृथक्करण",
+            "वाष्पीकरण"
+          ],
+          "solution": "चुंबकीय पृथक्करण का उपयोग सबसे पहले किया जाना चाहिए क्योंकि लोहे के नाखून चुंबकीय होते हैं और एक चुंबक के उपयोग से मिश्रण से आसानी से अलग किए जा सकते हैं। निस्यंदन, अपकेंद्रण और वाष्पीकरण चुंबकीय पदार्थों के मिश्रण से अलग करने के लिए उपयुक्त नहीं हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English original in meaning, technical terms, and structure. All options are correctly translated and maintain their original intent. The correct answer is in the same position (option 2), and the explanation is consistent.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका विद्यार्थ्याने अयोग्यरित्या लोहाच्या नाकां, रेती आणि लवणाचे पाण्यात मिश्रण केले. लोहाच्या नाकांचे वेगळे करण्यासाठी प्रथम कोणत्या विलगीकरण पद्धतीचा वापर करावा?",
+          "choices": [
+            "विलगीकरण",
+            "निलंबन",
+            "चुंबकीय विलगीकरण",
+            "वाष्पीकरण"
+          ],
+          "solution": "चुंबकीय विलगीकरण प्रथम वापरले पाहिजे कारण लोहाच्या नाकांमध्ये चुंबकीय गुण असतात आणि त्यांना चुंबक वापरून मिश्रणापासून सहज वेगळे केले जाऊ शकते. विलगीकरण, निलंबन आणि वाष्पीकरण ह्या पद्धती मिश्रणापासून चुंबकीय पदार्थ वेगळे करण्यासाठी अनुकूल नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses magnetic separation with filtration, which is used for separating solids from liquids.",
+        "Confuses magnetic separation with decantation, which is used for separating immiscible liquids.",
+        null,
+        "Confuses magnetic separation with evaporation, which is used to separate a solid from a liquid."
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is magnetic separation because iron nails are magnetic and can be easily separated using a magnet. The other options are not suitable for separating magnetic materials from a mixture.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 6,
+          "pageStart": 11,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 9: Methods of Separationin Everyday Life",
+            "कबीर"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 7,
+          "pageStart": 13,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 9: Methods of Separationin Everyday Life",
+            "कबीर"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 8,
+          "pageStart": 15,
+          "pageEnd": 17,
+          "headingPath": [
+            "Chapter 9: Methods of Separationin Everyday Life",
+            "Summary"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T00:02:56.552Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "A student tried to separate a mixture of oil and water but ended up with an emulsion. What method should be used next to separate the two liquids?",
+      "choices": [
+        "Filtration",
+        "Decantation",
+        "Distillation",
+        "Magnetic separation"
+      ],
+      "answerIndex": 2,
+      "solution": "Distillation is used to separate miscible liquids with different boiling points. Filtration and decantation are for solids and liquids, and magnetic separation is for magnetic materials.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक छात्र ने तेल और पानी के मिश्रण को अलग करने की कोशिश की लेकिन एमल्शन प्राप्त हुआ। दोनों द्रवों को अलग करने के लिए अगला कौन सा विधि उपयोग करनी चाहिए?",
+          "choices": [
+            "अपोलन",
+            "निस्यंदन",
+            "आसवन",
+            "चुंबकीय पृथक्करण"
+          ],
+          "solution": "आसवन का उपयोग विभिन्न क्वथनांक वाले विलेय द्रवों को अलग करने के लिए किया जाता है। अपोलन और निस्यंदन ठोस और द्रव के लिए होते हैं, और चुंबकीय पृथक्करण चुंबकीय सामग्री के लिए होता है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English original in meaning, terminology, and structure. All technical terms are correctly translated and match standard Hindi science curriculum.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका विद्यार्थ्याने तेल आणि पाणी यांच्या मिश्रणाला विभक्त करण्याचा प्रयत्न केला पण त्याने एमल्शन मिळाले. दोन द्रवांना विभक्त करण्यासाठी आता कोणती विधी वापरावी?",
+          "choices": [
+            "विलगीकरण",
+            "निर्मलीकरण",
+            "आस्थापन",
+            "चुंबकीय विलगीकरण"
+          ],
+          "solution": "आस्थापन मिश्रित द्रवांना विभक्त करण्यासाठी वापरली जाते ज्यांचे वायू बिंदू वेगवेगळे असतात. विलगीकरण आणि निर्मलीकरण घन पदार्थ आणि द्रवांसाठी वापरली जाते आणि चुंबकीय विलगीकरण चुंबकीय पदार्थांसाठी वापरली जाते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Thinks filtration works for liquids",
+        "Confuses decantation with distillation",
+        null,
+        "Mistakes magnetic separation for a general method"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is distillation, as it is used to separate miscible liquids with different boiling points. The author's reasoning is sound, and the misconceptions listed for the wrong options are plausible for students at this level.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 9,
+          "pageStart": 17,
+          "pageEnd": 18,
+          "headingPath": [
+            "Chapter 9: Methods of Separationin Everyday Life",
+            "Let us enhance our learning"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 10,
+          "pageStart": 18,
+          "pageEnd": 19,
+          "headingPath": [
+            "Chapter 9: Methods of Separationin Everyday Life",
+            "Learning further"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 11,
+          "pageStart": 19,
+          "pageEnd": 19,
+          "headingPath": [
+            "Chapter 9: Methods of Separationin Everyday Life",
+            "Notes"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T00:02:56.552Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "If a student adds a salt solution to a beaker and then heats it, what will happen to the water?",
+      "choices": [
+        "It will freeze",
+        "It will condense",
+        "It will evaporate",
+        "It will remain the same"
+      ],
+      "answerIndex": 2,
+      "solution": "Heating a salt solution provides energy to the water molecules, causing them to move faster and eventually escape into the air as vapor, which is evaporation. Freezing requires removing heat, condensation is the process of vapor turning back into liquid, and the water cannot remain the same because heat changes its state. The correct answer is that it will evaporate.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक छात्र एक नमक के घोल को एक बीकर में मिलाता है और फिर उसे गर्म करता है, तो पानी पर क्या प्रभाव पड़ेगा?",
+          "choices": [
+            "यह जम जाएगा",
+            "यह द्रवित हो जाएगा",
+            "यह वाष्पित हो जाएगा",
+            "यह वही रहेगा"
+          ],
+          "solution": "नमक के घोल को गर्म करने से पानी के अणुओं को ऊर्जा प्राप्त होती है, जिससे वे तेजी से चलने लगते हैं और अंततः हवा में वाष्प के रूप में बाहर निकल जाते हैं, जो वाष्पीकरण है। जमने के लिए ऊष्मा का निष्कासन आवश्यक है, द्रवण वाष्प के द्रव में बदलने की प्रक्रिया है, और पानी वही नहीं रह सकता क्योंकि ऊष्मा इसकी अवस्था को बदल देती है। सही उत्तर यह है कि यह वाष्पित हो जाएगा।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English original in meaning, terminology, and logic. All options are correctly translated and maintain their intended scientific meaning. The correct answer remains in the same position (option 2).",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका विद्यार्थीने बीकरमध्ये लवणाचे द्रावण घालून त्याचे उष्णता दिली, तर पाणी काय होईल?",
+          "choices": [
+            "ते जमेल",
+            "ते घनीभूत होईल",
+            "ते बाष्पीभूत होईल",
+            "ते त्याच रूपात राहील"
+          ],
+          "solution": "लवणाचे द्रावण उष्णता देणे पाणी अणूंना ऊर्जा प्रदान करते, ज्यामुळे ते वायूच्या रूपात हवेत बाहेर पडतात, जे बाष्पीभवन आहे. जमावण्यासाठी उष्णता काढणे आवश्यक असते, घनीभवन हे वाफेच्या रूपात परत द्रव बनण्याची प्रक्रिया आहे आणि पाणी त्याच रूपात राहू शकत नाही कारण उष्णता त्याच्या अवस्था बदलते. योग्य उत्तर ते बाष्पीभूत होईल आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses evaporation with freezing",
+        "Confuses evaporation with condensation",
+        null,
+        "Confuses evaporation with no change"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is well-constructed, with a clear correct answer and plausible misconceptions in the distractors. The solution correctly identifies evaporation as the result of heating a salt solution.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 3,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 9: Methods of Separationin Everyday Life",
+            "कबीर"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 4,
+          "pageStart": 7,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 9: Methods of Separationin Everyday Life",
+            "कबीर"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 5,
+          "pageStart": 9,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 9: Methods of Separationin Everyday Life",
+            "कबीर"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T00:02:56.552Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "If a mixture contains salt, water, and insoluble particles, which method would you use to separate the salt from the water?",
+      "choices": [
+        "Evaporation",
+        "Filtration",
+        "Decantation",
+        "Distillation"
+      ],
+      "answerIndex": 0,
+      "solution": "Evaporation is the correct method because heating the mixture causes the water to turn into vapor, leaving the salt behind. Filtration would only remove insoluble particles, not dissolve salt from water. Decantation is used to separate liquids from settled solids, and distillation is for separating liquids with different boiling points, not for recovering dissolved salt.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक मिश्रण में नमक, पानी और अघुलनशील कण हों, तो आप पानी से नमक को कौन-सी विधि से अलग करेंगे?",
+          "choices": [
+            "वाष्पीकरण",
+            "छानना",
+            "अपकेंद्रण",
+            "आसवन"
+          ],
+          "solution": "वाष्पीकरण सही विधि है क्योंकि मिश्रण को गर्म करने से पानी वाष्प में बदल जाता है, जिससे नमक बच जाता है। छानना केवल अघुलनशील कण ही हटा सकता है, पानी से घुले नमक को नहीं। अपकेंद्रण का उपयोग बैठे हुए ठोस पदार्थों से तरल पदार्थों को अलग करने के लिए किया जाता है, और आसवन का उपयोग अलग-अलग क्वथनांक वाले तरल पदार्थों को अलग करने के लिए किया जाता है, नमक के घुले हुए रूप को पुनः प्राप्त करने के लिए नहीं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms as found in Hindi-medium science textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर एका मिश्रणामध्ये खारट पाणी आणि अविलियन घटक असतील, तर तुम्ही पाण्यापासून खारट वेगळे करण्यासाठी कोणता पद्धत वापराल?",
+          "choices": [
+            "वाष्पीकरण",
+            "विलगीकरण",
+            "निलंबन विलगीकरण",
+            "आस्थापन"
+          ],
+          "solution": "वाष्पीकरण ही योग्य पद्धत आहे कारण मिश्रण गरम करण्यामुळे पाणी वाफ म्हणून बदलते आणि खारट शिल्लक रहातो. विलगीकरण फक्त अविलियन घटक वेगळे करते, पाण्यापासून विलियन खारट वेगळे करत नाही. निलंबन विलगीकरण हा वस्तूंच्या बसलेल्या घटकांपासून द्रव वेगळे करण्यासाठी वापरला जातो आणि आस्थापन हा वेगवेगळ्या उबाच्या बिंदू असलेल्या द्रवांच्या वेगळ्या करण्यासाठी वापरला जातो, पाण्यापासून विलियन खारट वेगळे करण्यासाठी नाही.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate technical terms as used in Marathi-medium science textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Thinks the process involves filtering the salt.",
+        "Assumes the solid is settled and can be poured off.",
+        "Does not understand the difference between distillation and evaporation."
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is evaporation, as it is the method used to separate a soluble solid (salt) from a liquid (water). The other options are incorrect because filtration removes insoluble solids, decantation is for separating settled solids, and distillation is for separating liquids with different boiling points.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 3,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 9: Methods of Separationin Everyday Life",
+            "कबीर"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 4,
+          "pageStart": 7,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 9: Methods of Separationin Everyday Life",
+            "कबीर"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 5,
+          "pageStart": 9,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 9: Methods of Separationin Everyday Life",
+            "कबीर"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T00:02:56.552Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of the following is an example of handpicking?",
+      "choices": [
+        "Separating salt from water",
+        "Separating husk from grains",
+        "Separating rice from chana dal",
+        "Separating flour from bran"
+      ],
+      "answerIndex": 1,
+      "solution": "Handpicking involves manually separating components based on visible differences like size, color, or shape. Separating husk from grains fits this method as husks are typically lighter and can be removed by hand. Separating salt from water requires evaporation, separating rice from chana dal uses sieving, and separating flour from bran also involves sieving, none of which are handpicking.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा हाथ से चुनाई का उदाहरण है?",
+          "choices": [
+            "जल से नमक का अलग करना",
+            "अनाज से छिलका का अलग करना",
+            "चाना दाल से चावल का अलग करना",
+            "ब्रान से आटा का अलग करना"
+          ],
+          "solution": "हाथ से चुनाई में दृश्य अंतरों जैसे आकार, रंग या आकृति के आधार पर घटकों को हाथ से अलग किया जाता है। अनाज से छिलका का अलग करना इस विधि के अनुरूप है क्योंकि छिलका आमतौर पर हल्का होता है और हाथ से अलग किया जा सकता है। जल से नमक का अलग करना वाष्पीकरण की आवश्यकता होती है, चाना दाल से चावल का अलग करना छानने के द्वारा किया जाता है, और ब्रान से आटा का अलग करना भी छानने के द्वारा किया जाता है, जो कि कोई भी हाथ से चुनाई नहीं है।",
+          "imageAlt": null,
+          "critique": "Translation accurately reflects the original meaning, technical terms are appropriate for Hindi-medium curriculum, and the correct answer remains option (2) in the same position.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते हाताने विलगीकरणाचे उदाहरण आहे?",
+          "choices": [
+            "पाण्यापासून खारटपणा विलगित करणे",
+            "गहूपासून चाल विलगित करणे",
+            "चना दालपासून राई विलगित करणे",
+            "ब्रेनपासून गार विलगित करणे"
+          ],
+          "solution": "हाताने विलगीकरण हा दृश्य फरकांवर आधारित असतो जसे की आकार, रंग किंवा आकृती. गहूपासून चाल विलगित करणे हा या पद्धतीचा उदाहरण आहे कारण चाल लहान असतात आणि त्यांना हाताने विलगित करता येते. पाण्यापासून खारटपणा विलगित करण्यासाठी वाफ करणे आवश्यक असते, चना दालपासून राई विलगित करण्यासाठी छाननी वापरली जाते आणि ब्रेनपासून गार विलगित करण्यासाठी देखील छाननी वापरली जाते, जे की हाताने विलगीकरण नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation accurately reflects the original meaning, with appropriate Marathi technical terms used for separation methods.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Chooses separating salt from water, which is an evaporation process.",
+        null,
+        "Chooses separating rice from chana dal, which is done by sieving.",
+        "Chooses separating flour from bran, which is also done by sieving."
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is option 1, as handpicking is used to separate husk from grains based on differences in size, color, and shape. The other options involve different methods like evaporation, sieving, and sieving again, which aligns with the author's solution.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 9: Methods of Separationin Everyday Life",
+            "कबीर"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 9: Methods of Separationin Everyday Life",
+            "कबीर"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 2,
+          "pageStart": 4,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 9: Methods of Separationin Everyday Life",
+            "कबीर"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T02:30:57.380Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which process is used to separate salt from a salt solution?",
+      "choices": [
+        "Evaporation",
+        "Sublimation",
+        "Filtration",
+        "Decantation"
+      ],
+      "answerIndex": 0,
+      "solution": "The process of heating the salt solution to remove water and leave salt behind is called evaporation. Sublimation is the direct conversion of a solid to a gas, filtration is used to separate solids from liquids, and decantation is the process of pouring off a liquid after sedimentation. Evaporation is the correct method for recovering salt from a solution.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक नमक के घोल से नमक को कौन-सी प्रक्रिया द्वारा अलग किया जाता है?",
+          "choices": [
+            "वाष्पीकरण",
+            "उत्केशन",
+            "छानन",
+            "अलग करना"
+          ],
+          "solution": "नमक के घोल को गर्म करके पानी को हटाकर नमक को छोड़ देने की प्रक्रिया को वाष्पीकरण कहते हैं। उत्केशन ठोस के ठोस से गैस में सीधे बदलने की प्रक्रिया है, छानन ठोस को तरल से अलग करने के लिए उपयोग किया जाता है और अलग करना बरसात के बाद तरल को बाहर निकालने की प्रक्रिया है। घोल से नमक के बरकरार रखने के लिए वाष्पीकरण सही विधि है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate scientific terminology as per Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "तांबड्याच्या द्रावणापासून तांबडा कशाच्या प्रक्रियेने वेगळा केला जातो?",
+          "choices": [
+            "वाष्पीकरण",
+            "उत्क्षेपन",
+            "कोलावणे",
+            "तळाशी जाणे"
+          ],
+          "solution": "तांबड्याच्या द्रावणाला गरम करून पाणी काढून तांबडा ठेवला जाणारा प्रक्रिया वाष्पीकरण म्हणतात. उत्क्षेपन हा घन पदार्थाचा सीधा वाफेत रूपांतर होणे आहे, कोलावणे हा द्रवापासून घन पदार्थाचे वेगळे करण्यासाठी वापरले जाते आणि तळाशी जाणे हा घन पदार्थाच्या तळाशी जाऊन द्रव वेगळा करण्याची प्रक्रिया आहे. द्रावणापासून तांबडा मिळवण्यासाठी वाष्पीकरण ही योग्य पद्धत आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the scientific terminology appropriate for a Marathi-medium curriculum.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses evaporation with sublimation",
+        "Does not understand that filtration is not suitable for dissolving solids",
+        "Misunderstands decantation as a method for separating dissolved solids"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly identifies evaporation as the method to separate salt from a salt solution. The reasoning for the other options aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 3,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 9: Methods of Separationin Everyday Life",
+            "कबीर"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 4,
+          "pageStart": 7,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 9: Methods of Separationin Everyday Life",
+            "कबीर"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 5,
+          "pageStart": 9,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 9: Methods of Separationin Everyday Life",
+            "कबीर"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T02:30:57.380Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "What is the purpose of beating the stalks in the fields?",
+      "choices": [
+        "To dry the stalks",
+        "To separate grains from the stalks",
+        "To make the stalks lighter",
+        "To make the stalks more flexible"
+      ],
+      "answerIndex": 1,
+      "solution": "Beating the stalks helps to free the grains that are attached to them, which is a key step in harvesting. This process, known as threshing, separates the edible grains from the inedible stalks. Drying the stalks, making them lighter, or more flexible are not the primary goals of this action.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "खेतों में तनों को हथौड़ा मारने का उद्देश्य क्या है?",
+          "choices": [
+            "तनों को सुखाना",
+            "तनों से अन्न को अलग करना",
+            "तनों को हल्का बनाना",
+            "तनों को अधिक लचीला बनाना"
+          ],
+          "solution": "तनों को हथौड़ा मारना उन पर लगे अन्न को मुक्त करने में सहायता करता है, जो फसल के एक महत्वपूर्ण चरण है। इस प्रक्रिया को छालना कहते हैं, जो खाने योग्य अन्न को अखाद्य तनों से अलग करता है। तनों को सुखाना, उन्हें हल्का बनाना या अधिक लचीला बनाना इस क्रिया का मुख्य उद्देश्य नहीं है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. 'छालना' (threshing) is the correct technical term used in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "शेतात तुकडे बारीक करण्याचा उद्देश काय आहे?",
+          "choices": [
+            "तुकडे शुष्क करणे",
+            "तुकड्यांमधून दाणे वेगळे करणे",
+            "तुकडे हलके करणे",
+            "तुकडे अधिक लचका बनवणे"
+          ],
+          "solution": "तुकडे बारीक करणे त्यांमधून जुळलेले दाणे मुक्त करण्यास मदत करते, जे शेतीच्या एका महत्वाच्या टप्प्याचे नाव तेथिंग आहे. हा प्रक्रिया खाण्यायोग्य दाणे अन्नयोग्य तुकड्यांपासून वेगळे करते. तुकडे शुष्क करणे, त्यांना हलके करणे किंवा अधिक लचका बनवणे हे या कृतीचे प्राथमिक उद्देश नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for agricultural processes.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Mistakenly thinks the purpose is to dry the stalks.",
+        null,
+        "Confuses the purpose of threshing with making the stalks lighter.",
+        "Confuses the purpose of threshing with making the stalks more flexible."
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly identifies the purpose of beating stalks as threshing, which separates grains from the stalks. The other options represent plausible misconceptions about the process.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 9: Methods of Separationin Everyday Life",
+            "कबीर"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 9: Methods of Separationin Everyday Life",
+            "कबीर"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 2,
+          "pageStart": 4,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 9: Methods of Separationin Everyday Life",
+            "कबीर"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T02:30:57.380Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "Which method would you use to separate tea leaves from tea?",
+      "choices": [
+        "Filtration",
+        "Decantation",
+        "Evaporation",
+        "Sublimation"
+      ],
+      "answerIndex": 0,
+      "solution": "Filtration is used to separate insoluble solids from liquids. Tea leaves are insoluble and can be separated from tea using a filter. Decantation is used when solids settle at the bottom, evaporation is for dissolving solids, and sublimation is for solids turning into gas directly. Filtration is the best method here.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "तेज के पत्ते तेज से किस विधि द्वारा अलग किए जा सकते हैं?",
+          "choices": [
+            "अपोहन",
+            "अपकेंद्रण",
+            "वाष्पीकरण",
+            "उत्क्षेपण"
+          ],
+          "solution": "अपोहन अविलेय ठोस पदार्थों को द्रव से अलग करने के लिए प्रयोग किया जाता है। चाय के पत्ते अविलेय होते हैं और एक छानने के कपड़े के माध्यम से चाय से अलग किए जा सकते हैं। अपकेंद्रण तब प्रयोग किया जाता है जब ठोस नीचे बैठ जाते हैं, वाष्पीकरण विलेय ठोस के लिए होता है और उत्क्षेपण ठोस के सीधे गैस में बदल जाने के लिए होता है। यहां अपोहन सबसे अच्छी विधि है।",
+          "imageAlt": null,
+          "critique": "Hindi translation accurately reflects the English original in meaning, terminology, and structure. All technical terms are standard in Hindi science textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "चहा पानांचे चहा मधून वेगळे करण्यासाठी तुम्ही कोणता पद्धत वापराल?",
+          "choices": [
+            "विलगीकरण",
+            "निर्मलीकरण",
+            "वाष्पीकरण",
+            "उत्केशन"
+          ],
+          "solution": "विलगीकरण अविलेय घन पदार्थांना द्रवांपासून वेगळे करण्यासाठी वापरले जाते. चहा पाने अविलेय असून त्यांना विलगीकरणाच्या माध्यमातून चहापासून वेगळे करता येते. निर्मलीकरण तेव्हा वापरले जाते जेव्हा घन पदार्थ तलावर बसतात, वाष्पीकरण विलीन घन पदार्थांसाठी आणि उत्केशन घन पदार्थांना वाफेत बदलण्यासाठी वापरले जाते. येथे विलगीकरण ही सर्वोत्तम पद्धत आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and uses standard Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Chooses decantation thinking it separates solids from liquids",
+        "Misconceives evaporation as a method for separating solids from liquids",
+        "Does not understand sublimation is not applicable here"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly identifies filtration as the appropriate method, and the reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 3,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 9: Methods of Separationin Everyday Life",
+            "कबीर"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 4,
+          "pageStart": 7,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 9: Methods of Separationin Everyday Life",
+            "कबीर"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 5,
+          "pageStart": 9,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 9: Methods of Separationin Everyday Life",
+            "कबीर"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T02:30:57.380Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If a mixture contains oil and water, which method would you use to separate them?",
+      "choices": [
+        "Decantation",
+        "Filtration",
+        "Handpicking",
+        "Sieving"
+      ],
+      "answerIndex": 0,
+      "solution": "Decantation is used to separate immiscible liquids like oil and water. Filtration is used for solids and liquids, handpicking is for visible impurities, and sieving is for separating particles of different sizes.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि मिश्रण में तेल और पानी हो, तो आप उन्हें अलग करने के लिए कौन सी विधि का उपयोग करेंगे?",
+          "choices": [
+            "अपकेंद्रण",
+            "छानना",
+            "हाथ से चुनना",
+            "छलनी से छानना"
+          ],
+          "solution": "अपकेंद्रण अमिश्रणीय द्रवों जैसे तेल और पानी को अलग करने के लिए उपयोग किया जाता है। छानना ठोस और द्रव के लिए उपयोग किया जाता है, हाथ से चुनना दृश्य अशुद्धियों के लिए और छलनी से छानना विभिन्न आकार के कणों के अलग करने के लिए।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the original English question and solution, with appropriate terminology used in a Hindi-medium science context.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर एका मिश्रणामध्ये तेल आणि पाणी असेल, तर त्यांना वेगळे करण्यासाठी कोणती पद्धत वापराल?",
+          "choices": [
+            "डेकांटेशन",
+            "फिल्ट्रेशन",
+            "हॅंडपिकिंग",
+            "सिव्हिंग"
+          ],
+          "solution": "डेकांटेशन मिस्किबल द्रव्यांचे वेगळे करण्यासाठी वापरले जाते जसे की तेल आणि पाणी. फिल्ट्रेशन घन पदार्थ आणि द्रव्यांसाठी वापरले जाते, हॅंडपिकिंग दृश्य अशुद्धींसाठी आणि सिव्हिंग वेगवेगळ्या आकाराच्या कणांना वेगळे करण्यासाठी वापरले जाते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi technical terms used for the separation methods.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Student thinks filtration can separate immiscible liquids like oil and water",
+        "Confuses physical separation methods for mixtures with those for solid particles",
+        "Student thinks sieving can separate immiscible liquids like oil and water"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is decantation, as it is used to separate immiscible liquids like oil and water. The other options are incorrect for the reasons stated.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 9,
+          "pageStart": 17,
+          "pageEnd": 18,
+          "headingPath": [
+            "Chapter 9: Methods of Separationin Everyday Life",
+            "Let us enhance our learning"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 10,
+          "pageStart": 18,
+          "pageEnd": 19,
+          "headingPath": [
+            "Chapter 9: Methods of Separationin Everyday Life",
+            "Learning further"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 11,
+          "pageStart": 19,
+          "pageEnd": 19,
+          "headingPath": [
+            "Chapter 9: Methods of Separationin Everyday Life",
+            "Notes"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T02:30:57.380Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "What is the purpose of using a filter paper in the process of filtration?",
+      "choices": [
+        "To remove liquid from solid particles",
+        "To allow solid particles to pass through",
+        "To separate solid particles from a liquid",
+        "To speed up the evaporation process"
+      ],
+      "answerIndex": 2,
+      "solution": "Filter paper has fine pores that let liquid pass through while trapping solid particles, making it effective for separating solids from liquids. The other options are incorrect because filter paper does not remove liquid from solids, allow solids to pass through, or speed up evaporation.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "फिल्टर कागज का उपयोग फिल्ट्रेशन की प्रक्रिया में क्यों किया जाता है?",
+          "choices": [
+            "ठोस कणों से तरल पदार्थ को हटाना",
+            "ठोस कणों को पार करने देना",
+            "तरल पदार्थ से ठोस कणों को अलग करना",
+            "वाष्पीकरण की प्रक्रिया को तेज करना"
+          ],
+          "solution": "फिल्टर कागज में सूक्ष्म छिद्र होते हैं जो तरल पदार्थ को पार करने देते हैं जबकि ठोस कणों को रोक लेते हैं, जिससे यह तरल पदार्थ से ठोस कणों को अलग करने में प्रभावी बन जाता है। अन्य विकल्प गलत हैं क्योंकि फिल्टर कागज ठोस कणों से तरल पदार्थ को हटाने में सक्षम नहीं होता, ठोस कणों को पार करने देने में सक्षम नहीं होता और वाष्पीकरण की प्रक्रिया को तेज नहीं करता।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriate for Hindi-medium curriculum.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "फिल्टर कागदाचा वापर करण्याचा उद्देश काय आहे?",
+          "choices": [
+            "तरल पदार्थांपासून घन कणांना विलग करणे",
+            "घन कणांना पार करण्यास परवानगी देणे",
+            "तरल पदार्थांपासून घन कणांना विलग करणे",
+            "वाष्पीकरणाच्या प्रक्रियेला वेग देणे"
+          ],
+          "solution": "फिल्टर कागदाच्या चिकट छिद्रांमुळे तरल पदार्थ जातात आणि घन कण रोखले जातात, ज्यामुळे घन आणि तरल पदार्थ विलग करण्यास उपयुक्त ठरते. इतर विकल्प अयोग्य आहेत कारण फिल्टर कागद घन कणांपासून तरल पदार्थ विलग करत नाही, घन कणांना पार करत नाही आणि वाष्पीकरणाला वेग देत नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for scientific concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the function of filtration with that of drying or decanting",
+        "Misunderstands that filter paper allows solids to pass through, which is incorrect.",
+        null,
+        "Thinks filter paper speeds up evaporation, which is not its role in filtration."
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 2, as filter paper separates solid particles from a liquid by allowing the liquid to pass through its pores. The other options represent common misconceptions about the function of filter paper.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 3,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 9: Methods of Separationin Everyday Life",
+            "कबीर"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 4,
+          "pageStart": 7,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 9: Methods of Separationin Everyday Life",
+            "कबीर"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 5,
+          "pageStart": 9,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 9: Methods of Separationin Everyday Life",
+            "कबीर"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T02:30:57.380Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "A mixture of sand, salt, and sawdust is given. Which method should be used to separate the sawdust first?",
+      "choices": [
+        "Filtration",
+        "Decantation",
+        "Magnetic separation",
+        "Handpicking"
+      ],
+      "answerIndex": 3,
+      "solution": "Handpicking is used to separate sawdust first because it is a visible, solid particle that can be manually picked out. Filtration would separate sand and salt, decantation is for liquids, and magnetic separation is not applicable here.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "रेत, नमक और लकड़ी के चूर्ण का मिश्रण दिया गया है। पहले लकड़ी के चूर्ण को पृथक करने के लिए किस विधि का उपयोग किया जाना चाहिए?",
+          "choices": [
+            "पर्दे द्वारा छानना",
+            "अपकेंद्रण",
+            "चुंबकीय पृथक्करण",
+            "हाथ से चुनना"
+          ],
+          "solution": "हाथ से चुनना का उपयोग पहले लकड़ी के चूर्ण को पृथक करने के लिए किया जाता है क्योंकि यह दृश्यमान, ठोस कण होता है जिसे हाथ से अलग किया जा सकता है। पर्दे द्वारा छानना रेत और नमक को पृथक कर देता है, अपकेंद्रण तरल पदार्थों के लिए होता है और चुंबकीय पृथक्करण यहां लागू नहीं होता।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, technical terms are standard in Hindi science textbooks, and the logic of the solution matches the original.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "रेणू, लवण आणि लाकडाचा चूर्ण असलेला मिश्रण दिला आहे. पहिल्यांदा लाकडाचा चूर्ण काढण्यासाठी कोणती विधी वापरावी?",
+          "choices": [
+            "विलगीकरण",
+            "तळाशी घालणे",
+            "चुंबकीय विलगीकरण",
+            "हाताने वेगळे करणे"
+          ],
+          "solution": "हाताने वेगळे करणे वापरली जाते कारण लाकडाचा चूर्ण दिसणारा, घन घटक आहे जो हाताने हलवता येतो. विलगीकरण रेणू आणि लवण वेगळे करेल, तळाशी घालणे द्रव्यांसाठी आहे आणि चुंबकीय विलगीकरण येथे अनुकूल नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi scientific terminology used.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "confuses separation of small particles with visible impurities",
+        "confuses liquid separation with solid separation",
+        "confuses magnetic properties with solid-liquid separation",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is handpicking because sawdust is a visible, solid particle that can be manually separated. The other options are incorrect: filtration would separate sand and salt, decantation is for liquids, and magnetic separation is not applicable. The author's reasoning aligns with the correct method and the misconceptions are plausible.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 9,
+          "pageStart": 17,
+          "pageEnd": 18,
+          "headingPath": [
+            "Chapter 9: Methods of Separationin Everyday Life",
+            "Let us enhance our learning"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 10,
+          "pageStart": 18,
+          "pageEnd": 19,
+          "headingPath": [
+            "Chapter 9: Methods of Separationin Everyday Life",
+            "Learning further"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 11,
+          "pageStart": 19,
+          "pageEnd": 19,
+          "headingPath": [
+            "Chapter 9: Methods of Separationin Everyday Life",
+            "Notes"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T02:30:57.380Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "After heating a salt solution, a student observes a residue in the container. What is the residue?",
+      "choices": [
+        "Salt",
+        "Water",
+        "Oil",
+        "Sugar"
+      ],
+      "answerIndex": 0,
+      "solution": "When a salt solution is heated, the water evaporates, leaving behind the salt. Water is removed as vapor, oil and sugar are not mentioned in the context. The residue is salt, which is left after evaporation.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "ऊष्मा देने के बाद एक नमक के विलयन के बर्तन में एक छाल देखी जाती है। छाल क्या है?",
+          "choices": [
+            "नमक",
+            "पानी",
+            "तेल",
+            "चीनी"
+          ],
+          "solution": "जब नमक के विलयन को गर्म किया जाता है, तो पानी वाष्पित हो जाता है, जिससे नमक बच जाता है। पानी वाष्प के रूप में हटा दिया जाता है, तेल और चीनी संदर्भ में उल्लेख नहीं की गई है। वाष्पीकरण के बाद छाल नमक होता है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms as found in Hindi-medium science textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "उकडलेल्या लवण द्रावणानंतर, एका विद्यार्थ्याला विसर्जनात अवशेष दिसतो. तो अवशेष काय आहे?",
+          "choices": [
+            "लवण",
+            "पाणी",
+            "तेल",
+            "शर्करा"
+          ],
+          "solution": "जेव्हा लवण द्रावण उकडले जाते, तेव्हा पाणी वाफ म्हणून दूर होते, लवण शिल्लक रहाते. पाणी वाफ म्हणून दूर होते, तेल आणि शर्करा संदर्भात उल्लेख केलेली नाहीत. उकडल्यानंतर शिल्लक रहाणारा अवशेष लवण आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the scientific context. All terms are appropriately translated using standard Marathi science vocabulary.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Thinks water is left as residue",
+        "Confuses oil with salt",
+        "Mistakenly identifies sugar as the residue"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct and aligns with the key. The residue left after evaporating a salt solution is indeed salt, as water evaporates and the other options are not part of the original solution.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 3,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 9: Methods of Separationin Everyday Life",
+            "कबीर"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 4,
+          "pageStart": 7,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 9: Methods of Separationin Everyday Life",
+            "कबीर"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 5,
+          "pageStart": 9,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 9: Methods of Separationin Everyday Life",
+            "कबीर"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T02:30:57.380Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "If a mixture contains salt, water, and sand, which method should be used first to separate the components?",
+      "choices": [
+        "Filtration",
+        "Evaporation",
+        "Decantation",
+        "Sublimation"
+      ],
+      "answerIndex": 0,
+      "solution": "Filtration is the correct method because it separates solid particles like sand from the liquid mixture. Evaporation would only separate salt from water, not remove the sand first. Decantation is not effective for fine particles like sand, and sublimation does not apply to salt or sand.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि मिश्रण में नमक, पानी और रेत हो, तो घटकों को अलग करने के लिए पहले किस विधि का उपयोग करना चाहिए?",
+          "choices": [
+            "अपकेंद्रण",
+            "वाष्पीकरण",
+            "अपोहन",
+            "उत्केंद्रण"
+          ],
+          "solution": "अपकेंद्रण सही विधि है क्योंकि यह तरल मिश्रण से ठोस कणों जैसे रेत को अलग करता है। वाष्पीकरण केवल नमक को पानी से अलग करता है, रेत को पहले अलग नहीं करता। अपोहन रेत जैसे छोटे कणों के लिए प्रभावी नहीं है, और उत्केंद्रण नमक या रेत के लिए लागू नहीं होता।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate scientific terminology as used in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर एक मिश्रण लवण, पाणी आणि रेती घटकांमध्ये असेल, तर घटकांचे विलगीकरण करण्यासाठी प्रथम कोणता पद्धत वापरावा?",
+          "choices": [
+            "विलगीकरण",
+            "वाष्पीकरण",
+            "तळाशी ढकलणे",
+            "उद्वाष्पीकरण"
+          ],
+          "solution": "विलगीकरण ही योग्य पद्धत आहे कारण ती रेती सारख्या घन कणांना द्रव मिश्रणापासून विलग करते. वाष्पीकरण हे लवण आणि पाण्याला विलग करेल, परंतु रेती विलग करण्यासाठी नाही. तळाशी ढकलणे ही रेती सारख्या सूक्ष्म कणांसाठी अचूक नाही आणि उद्वाष्पीकरण लवण किंवा रेतीसाठी लागू होत नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Chooses evaporation, thinking it can separate all components at once.",
+        "Chooses decantation, thinking it can remove sand from a liquid.",
+        "Chooses sublimation, which is not applicable for the given mixture."
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct and aligns with the reasoning. Filtration is the appropriate first step to remove sand from the mixture before proceeding with evaporation to separate salt and water.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 3,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 9: Methods of Separationin Everyday Life",
+            "कबीर"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 4,
+          "pageStart": 7,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 9: Methods of Separationin Everyday Life",
+            "कबीर"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 5,
+          "pageStart": 9,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 9: Methods of Separationin Everyday Life",
+            "कबीर"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T02:30:57.380Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "In a scenario where a student tries to separate salt from a saltwater solution but the water evaporates too quickly, what could be an alternative method to recover the salt?",
+      "choices": [
+        "Using a centrifuge",
+        "Using a filter paper",
+        "Using a distillation setup",
+        "Using decantation"
+      ],
+      "answerIndex": 2,
+      "solution": "Using a distillation setup is correct because it allows for the controlled separation of water from salt by heating the solution, vaporizing the water, and then condensing it back into liquid, leaving the salt behind. A centrifuge is used for separating mixtures based on density, not for dissolving solids. Filter paper cannot separate dissolved salt from water, and decantation is used for separating immiscible liquids or solid particles that settle at the bottom.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक स्थिति में जहां एक छात्र लवण के जलीय घोल से नमक को अलग करने की कोशिश करता है लेकिन पानी बहुत तेजी से वाष्पित हो जाता है, नमक को बरकरार रखने के लिए एक विकल्प क्या हो सकता है?",
+          "choices": [
+            "एक सेंट्रीफ्यूज का उपयोग करना",
+            "एक फिल्टर कागज का उपयोग करना",
+            "एक आसवन सेटअप का उपयोग करना",
+            "अपकेंद्रण का उपयोग करना"
+          ],
+          "solution": "आसवन सेटअप का उपयोग करना सही है क्योंकि यह घोल के तापन द्वारा पानी के नमक से नियंत्रित अलगाव की अनुमति देता है, पानी के वाष्पीकरण और फिर इसके द्रव में फिर से संघनन के माध्यम से, नमक के पीछे छोड़ देता है। एक सेंट्रीफ्यूज का उपयोग घनत्व पर आधारित मिश्रणों के अलगाव के लिए किया जाता है, न कि घुलित ठोस के लिए। फिल्टर कागज घुले हुए नमक को पानी से अलग नहीं कर सकता है, और अपकेंद्रण अमिश्रणीय तरल पदार्थों या नीचे बैठे ठोस कणों के अलगाव के लिए उपयोग किया जाता है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains technical terms, and preserves the logic of the original question and solution.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर एका विद्यार्थ्याने लवकर उद्भासित होणाऱ्या पाण्यामुळे लवकर खारट पाणी विलग करण्याचा प्रयत्न केला तर खारट पाण्यातून खार फिरून मिळविण्याचा एक विकल्प काय असू शकतो?",
+          "choices": [
+            "सेंट्रिफ्यूज वापरणे",
+            "फिल्टर कागद वापरणे",
+            "आवाहन व्यवस्था वापरणे",
+            "डेकांटेशन वापरणे"
+          ],
+          "solution": "आवाहन व्यवस्था वापरणे बरोबर आहे कारण ती विलीन झालेल्या पाण्यापासून खार विलग करण्यास अनुमती देते, जेव्हा विलीन झालेल्या द्रवाला गरम केला जातो, पाणी वाफ म्हणून वायू बनतो आणि नंतर त्याचे पुन्हा द्रव रूपात घटक बनते, खार शिल्लक राहतो. सेंट्रिफ्यूज घन पदार्थांच्या घनतेवर आधारित मिश्रणांचे विलगीकरण करण्यासाठी वापरला जातो, विलीन घन पदार्थांचे विलगीकरण करण्यासाठी नाही. फिल्टर कागद विलीन खार आणि पाणी विलग करू शकत नाही, आणि डेकांटेशन अमिश्रित द्रव वा तलावात बसलेल्या घन पदार्थांचे विलगीकरण करण्यासाठी वापरला जातो.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the scientific terminology appropriate for a Marathi-medium curriculum.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Chooses centrifuge, which is used for separating suspended particles, not dissolved solids.",
+        "Chooses filter paper, which cannot separate dissolved salt from water.",
+        null,
+        "Chooses decantation, which is for separating settled solids from liquids, not dissolved substances."
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 2 (distillation), as it is the only method that can recover salt from a saltwater solution when evaporation is too fast. The author's reasoning is accurate and aligns with scientific principles.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 3,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 9: Methods of Separationin Everyday Life",
+            "कबीर"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 4,
+          "pageStart": 7,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 9: Methods of Separationin Everyday Life",
+            "कबीर"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 5,
+          "pageStart": 9,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 9: Methods of Separationin Everyday Life",
+            "कबीर"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T02:30:57.380Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "Which method is used to remove small stones and husk from grains?",
+      "choices": [
+        "Handpicking",
+        "Threshing",
+        "Winnowing",
+        "Sieving"
+      ],
+      "answerIndex": 0,
+      "solution": "Handpicking is used to remove small stones and husk from grains. This is done by manually picking out the unwanted particles. Threshing is used to separate grains from stalks, winnowing separates heavier and lighter components using wind, and sieving separates particles based on size.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "अनाज से छोटे पत्थर और खाद्यान्न को हटाने के लिए किस विधि का उपयोग किया जाता है?",
+          "choices": [
+            "हाथ से चुनना",
+            "तहाई",
+            "हवा से अलग करना",
+            "छानना"
+          ],
+          "solution": "हाथ से चुनना अनाज से छोटे पत्थर और खाद्यान्न को हटाने के लिए उपयोग किया जाता है। इसे हाथ से अवांछित कणों को चुनकर किया जाता है। तहाई फसलों को छड़ियों से अलग करने के लिए की जाती है, हवा से अलग करना हवा के उपयोग से भारी और हल्के घटकों को अलग करता है और छानना आकार के आधार पर कणों को अलग करता है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, technical terms match Indian curriculum usage, and the logic of the solution is preserved.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "गहूमधून लहान शिसे आणि खोबरे काढण्यासाठी कोणता पद्धत वापरली जाते?",
+          "choices": [
+            "हाताने निवडणे",
+            "तुडवणे",
+            "वारे वाजवणे",
+            "सांडणे"
+          ],
+          "solution": "हाताने निवडणे गहूमधून लहान शिसे आणि खोबरे काढण्यासाठी वापरली जाते. हे हाताने अवांछित कण विलग करून केले जाते. तुडवणे गहू आणि शेंड्यांमधून वेगळे करण्यासाठी वापरले जाते, वारे वाजवणे वाऱ्याच्या साहाय्याने भारी आणि हलके घटक वेगळे करते आणि सांडणे आकारानुसार कण वेगळे करते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses handpicking with threshing",
+        "Confuses handpicking with winnowing",
+        "Confuses handpicking with sieving"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is handpicking, as it involves manually removing impurities like stones and husk from grains. The other options are correctly dismissed as they involve different processes (threshing for separating grains from stalks, winnowing for separating by weight, and sieving for size). The reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 9: Methods of Separationin Everyday Life",
+            "कबीर"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 9: Methods of Separationin Everyday Life",
+            "कबीर"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 2,
+          "pageStart": 4,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 9: Methods of Separationin Everyday Life",
+            "कबीर"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-11T21:22:48.902Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is the process called when grains are separated from stalks by beating them?",
+      "choices": [
+        "Handpicking",
+        "Threshing",
+        "Winnowing",
+        "Sieving"
+      ],
+      "answerIndex": 1,
+      "solution": "Threshing is the process of separating grains from stalks by beating them. Handpicking is used to remove small stones and husk, winnowing is used to separate heavier and lighter components using wind, and sieving is used to separate based on size.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "अन्न के दानों को फसलों से अलग करने की प्रक्रिया क्या कहलाती है जब उन्हें बीड़े से मारकर अलग किया जाता है?",
+          "choices": [
+            "हाथ से चुनना",
+            "तहला",
+            "हवा से अलग करना",
+            "छानना"
+          ],
+          "solution": "तहला फसलों से अन्न के दानों को बीड़े से मारकर अलग करने की प्रक्रिया है। हाथ से चुनना छोटे पत्थर और खाद्यान्न के अवशेष को हटाने के लिए उपयोग किया जाता है, हवा से अलग करना हवा के उपयोग से भारी और हल्के घटकों को अलग करने के लिए उपयोग किया जाता है, और छानना आकार के आधार पर अलग करने के लिए उपयोग किया जाता है।",
+          "imageAlt": null,
+          "critique": "Hindi translation accurately reflects the English original in meaning, terminology, and option positions.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "गहू तसेच डोके वेगळे करण्याच्या प्रक्रियेला काय म्हणतात?",
+          "choices": [
+            "हाताने निवडणे",
+            "तोडणे",
+            "हवाई विलगीकरण",
+            "सिंगणे"
+          ],
+          "solution": "तोडणे ही गहू तसेच डोके वेगळे करण्याच्या प्रक्रियेला म्हणतात. हाताने निवडणे हा छोटे शिल आणि खोकला वेगळे करण्यासाठी वापरला जातो, हवाई विलगीकरण हा वाऱ्याच्या साहाय्याने भारी आणि हलके घटक वेगळे करण्यासाठी वापरला जातो आणि सिंगणे हा आकारानुसार वेगळे करण्यासाठी वापरला जातो.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the technical terms used in Marathi educational materials.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses threshing with handpicking",
+        null,
+        "Confuses threshing with winnowing",
+        "Confuses threshing with sieving"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The question is clear and the correct answer is 1 (Threshing). The author's explanation and reasoning for the distractors are accurate and reflect common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 9: Methods of Separationin Everyday Life",
+            "कबीर"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 9: Methods of Separationin Everyday Life",
+            "कबीर"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 2,
+          "pageStart": 4,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 9: Methods of Separationin Everyday Life",
+            "कबीर"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-11T21:22:48.902Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "Which method is used to separate heavier and lighter components of a mixture using wind?",
+      "choices": [
+        "Handpicking",
+        "Threshing",
+        "Winnowing",
+        "Sieving"
+      ],
+      "answerIndex": 2,
+      "solution": "Winnowing is the method used to separate heavier and lighter components of a mixture using wind. Handpicking is used for small stones and husk, threshing for separating grains from stalks, and sieving for separating based on size.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "कौन सी विधि वायु के उपयोग से मिश्रण के भारी और हल्के घटकों को अलग करने के लिए उपयोग की जाती है?",
+          "choices": [
+            "हाथ से चुनना",
+            "थ्रेशिंग",
+            "विनोविंग",
+            "सिविंग"
+          ],
+          "solution": "विनोविंग वह विधि है जिसका उपयोग वायु के उपयोग से मिश्रण के भारी और हल्के घटकों को अलग करने के लिए किया जाता है। हाथ से चुनना छोटे पत्थरों और छिलके के लिए उपयोग किया जाता है, थ्रेशिंग गेंहू के बीजों को छड़ों से अलग करने के लिए और सिविंग आकार के आधार पर अलग करने के लिए उपयोग किया जाता है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms. The correct answer remains option (2) and the distractors are still incorrect.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "मिश्रणाच्या भारी आणि हलक्या घटकांना वाऱ्याचा वापर करून कशाच्या माध्यमातून वेगळे केले जाते?",
+          "choices": [
+            "हाताने निवडणे",
+            "मळणे",
+            "वाफरणे",
+            "सोयरीने वेगळे करणे"
+          ],
+          "solution": "वाफरणे हे मिश्रणाच्या भारी आणि हलक्या घटकांना वाऱ्याचा वापर करून वेगळे करण्याचे पद्धत आहे. हाताने निवडणे लहान शेंडे आणि गवतासाठी वापरले जाते, मळणे धान्य आणि खांबांचे वेगळे करण्यासाठी आणि सोयरीने वेगळे करणे आकारावर आधारित वेगळे करण्यासाठी वापरले जाते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses winnowing with handpicking",
+        "Confuses winnowing with threshing",
+        null,
+        "Confuses winnowing with sieving"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 2 (Winnowing), as it is the method that uses wind to separate heavier and lighter components. The author's solution and reasoning are accurate.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 9: Methods of Separationin Everyday Life",
+            "कबीर"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 9: Methods of Separationin Everyday Life",
+            "कबीर"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 2,
+          "pageStart": 4,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 9: Methods of Separationin Everyday Life",
+            "कबीर"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-11T21:22:48.902Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is the process of separating fine flour particles from larger ones called?",
+      "choices": [
+        "Handpicking",
+        "Threshing",
+        "Winnowing",
+        "Sieving"
+      ],
+      "answerIndex": 3,
+      "solution": "Sieving is the process of separating fine flour particles from larger ones. Handpicking is used to remove small stones and husk, threshing for separating grains from stalks, and winnowing for separating heavier and lighter components using wind.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "बड़े कणों से छोटे आटे के कणों के अलग करने की प्रक्रिया क्या कहलाती है?",
+          "choices": [
+            "हाथ से चुनना",
+            "तेजाब करना",
+            "हवा से अलग करना",
+            "छानना"
+          ],
+          "solution": "छानना बड़े कणों से छोटे आटे के कणों के अलग करने की प्रक्रिया है। हाथ से चुनना छोटे पत्थर और खाद्यान्न के अलग करने के लिए किया जाता है, तेजाब करना फसलों से अनाज के अलग करने के लिए और हवा से अलग करना हवा के उपयोग से भारी और हल्के घटकों के अलग करने के लिए किया जाता है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriate for Hindi-medium curriculum.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "मोठ्या चिखलाच्या कणांपासून निर्माण होणाऱ्या सूक्ष्म गोडे कणांच्या वेगळ्या प्रक्रियेला काय म्हणतात?",
+          "choices": [
+            "हाताने निवडणे",
+            "पिकवणे",
+            "पान वाहणे",
+            "चाकूने वेगळे करणे"
+          ],
+          "solution": "चाकूने वेगळे करणे ही निर्माण होणाऱ्या सूक्ष्म गोडे कणांपासून मोठ्या चिखलाच्या कणांच्या वेगळ्या प्रक्रियेला म्हणतात. हाताने निवडणे हा लहान शिसे आणि चारा वेगळे करण्यासाठी वापरला जातो, पिकवणे हा गहू आणि स्टॉकमधून वेगळे करण्यासाठी आणि पान वाहणे हा हवेच्या वापराने भारी आणि हलक्या घटकांना वेगळे करण्यासाठी वापरला जातो.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi technical terms used for the processes.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses sieving with handpicking",
+        "Confuses sieving with threshing",
+        "Confuses sieving with winnowing",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is sieving, as it is the process of separating fine particles from larger ones. The author's reasoning for the distractors is accurate and reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 9: Methods of Separationin Everyday Life",
+            "कबीर"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 9: Methods of Separationin Everyday Life",
+            "कबीर"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 2,
+          "pageStart": 4,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 9: Methods of Separationin Everyday Life",
+            "कबीर"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-11T21:22:48.902Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What process is used to recover salt from a salt solution?",
+      "choices": [
+        "Evaporation",
+        "Filtration",
+        "Decantation",
+        "Sublimation"
+      ],
+      "answerIndex": 0,
+      "solution": "The process of heating the salt solution to remove water and leave salt behind is called evaporation. Filtration is used to separate solid particles from a liquid, decantation is used to separate a liquid from settled solids, and sublimation is the direct conversion of a solid to a gas, which does not apply here.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक नमक के घोल से नमक को बरामद करने के लिए किस प्रक्रिया का उपयोग किया जाता है?",
+          "choices": [
+            "वाष्पीकरण",
+            "छानन",
+            "अलग करना",
+            "उत्क्रमण"
+          ],
+          "solution": "नमक के घोल को गर्म करके पानी को हटाकर नमक को छोड़ देने की प्रक्रिया को वाष्पीकरण कहते हैं। छानन का उपयोग द्रव में घुलित ठोस कणों को अलग करने के लिए किया जाता है, अलग करना बरसे हुए ठोस कणों से द्रव को अलग करने के लिए किया जाता है, और उत्क्रमण ठोस के ठोस से गैस में सीधे रूपांतरण है, जो यहां लागू नहीं होता है।",
+          "imageAlt": null,
+          "critique": "All terms are standard Hindi scientific terms used in textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "तांबूस घालण्याच्या द्रावणापासून तांबूस घेण्यासाठी कोणती प्रक्रिया वापरली जाते?",
+          "choices": [
+            "वाष्पीकरण",
+            "कोलतटीकरण",
+            "तळाशी घालणे",
+            "उत्क्षेपण"
+          ],
+          "solution": "तांबूस घालण्याच्या द्रावणाला गरम करून पाणी काढून घेण्याची प्रक्रिया वाष्पीकरण म्हणतात. कोलतटीकरण हा द्रवापासून घास घटकांना वेगळे करण्यासाठी वापरला जातो, तळाशी घालणे हा तळाशी घातलेल्या घटकांपासून द्रावणाला वेगळे करण्यासाठी वापरला जातो आणि उत्क्षेपण हा घन पदार्थाच्या वाफेत बदलण्याची प्रक्रिया आहे, जी येथे लागू होत नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the scientific terminology appropriate for a Marathi-medium curriculum.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses evaporation with filtration",
+        "Confuses evaporation with decantation",
+        "Confuses evaporation with sublimation"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is evaporation, as it is the process used to recover salt from a salt solution by removing the water. The other options are incorrect because they describe different separation techniques that do not apply to this situation.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 3,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 9: Methods of Separationin Everyday Life",
+            "कबीर"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 4,
+          "pageStart": 7,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 9: Methods of Separationin Everyday Life",
+            "कबीर"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 5,
+          "pageStart": 9,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 9: Methods of Separationin Everyday Life",
+            "कबीर"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-11T21:22:48.902Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the process called when a solid is recovered from a solution by heating it?",
+      "choices": [
+        "Evaporation",
+        "Filtration",
+        "Decantation",
+        "Sublimation"
+      ],
+      "answerIndex": 0,
+      "solution": "The process of recovering a solid from a solution by heating is called evaporation. When the water in the solution is heated, it turns into vapour and leaves the container, leaving the solid behind. Filtration is used to separate solids from liquids, decantation is used to separate a liquid from a solid by pouring off the liquid, and sublimation is when a solid turns directly into a gas without becoming a liquid.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक घोल से ठोस के बरामद करने की प्रक्रिया क्या कहलाती है?",
+          "choices": [
+            "वाष्पीकरण",
+            "छानन",
+            "अलग करना",
+            "उत्क्षेपण"
+          ],
+          "solution": "एक घोल से ठोस के बरामद करने की प्रक्रिया वाष्पीकरण कहलाती है। जब घोल में पानी को गर्म किया जाता है, तो यह वाष्प में बदल जाता है और बर्तन छोड़ देता है, ठोस के पीछे छोड़ देता है। छानन का उपयोग ठोस को तरल से अलग करने के लिए किया जाता है, अलग करना एक तरल को ठोस से अलग करने के लिए किया जाता है, और उत्क्षेपण तब होता है जब ठोस सीधे गैस में बदल जाता है बिना तरल बने।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate scientific terminology as used in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका द्रावणापासून घन पदार्थ मिळविण्याच्या प्रक्रियेला काय म्हणतात?",
+          "choices": [
+            "वाष्पीकरण",
+            "विलगीकरण",
+            "उतरण",
+            "उद्भासन"
+          ],
+          "solution": "एका द्रावणापासून घन पदार्थ मिळविण्याची प्रक्रिया वाष्पीकरण म्हणतात. जेव्हा द्रावणातील पाणी उकळवले जाते, तेव्हा ते वाफ म्हणून वायूत बदलते आणि बरखास्त होते, घन पदार्थ शिल्लक रहातो. विलगीकरण घन पदार्थ आणि द्रावक विलग करण्यासाठी वापरले जाते, उतरण हा घन पदार्थापासून द्रावक विलग करण्यासाठी वापरला जातो, आणि उद्भासन हा घन पदार्थाचा सीधा वाफ म्हणून बदल होतो आणि द्रावकाच्या अवस्थेत जात नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the scientific terminology appropriate for a Marathi-medium curriculum.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses evaporation with filtration",
+        "Confuses evaporation with decantation",
+        "Confuses evaporation with sublimation"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-constructed and the solution is accurate. The correct answer is evaporation, and the explanations for the other options are valid misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 3,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 9: Methods of Separationin Everyday Life",
+            "कबीर"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 4,
+          "pageStart": 7,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 9: Methods of Separationin Everyday Life",
+            "कबीर"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 5,
+          "pageStart": 9,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 9: Methods of Separationin Everyday Life",
+            "कबीर"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-11T21:22:48.902Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which method of separation is used to separate iron powder from sawdust?",
+      "choices": [
+        "Handpicking",
+        "Magnetic separation",
+        "Decantation",
+        "Filtration"
+      ],
+      "answerIndex": 1,
+      "solution": "The correct answer is magnetic separation because iron is magnetic and can be separated from non-magnetic sawdust using a magnet. Handpicking is used for large, visible particles. Decantation is for separating solids from liquids. Filtration is used to separate insoluble solids from liquids.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "लकड़ी के चूर्ण से लोहे के चूर्ण को किस अलगाव विधि से अलग किया जाता है?",
+          "choices": [
+            "हाथ से चुनना",
+            "चुंबकीय अलगाव",
+            "अपकेंद्रण",
+            "छानना"
+          ],
+          "solution": "सही उत्तर चुंबकीय अलगाव है क्योंकि लोहा चुंबकीय होता है और एक चुंबक के उपयोग से अचुंबकीय लकड़ी के चूर्ण से अलग किया जा सकता है। हाथ से चुनना बड़े दृश्य पदार्थों के लिए उपयोग किया जाता है। अपकेंद्रण ठोसों को तरल पदार्थों से अलग करने के लिए उपयोग किया जाता है। छानना अविलेय ठोसों को तरल पदार्थों से अलग करने के लिए उपयोग किया जाता है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate technical terms as found in Hindi-medium science textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "लाकडाच्या चूर्णापासून लोखंडाचा चूर्ण काढण्यासाठी कोणती विलगीकरणाची विधी वापरली जाते?",
+          "choices": [
+            "हाताने पकडणे",
+            "चुंबकीय विलगीकरण",
+            "निर्मलीकरण",
+            "तपासणी"
+          ],
+          "solution": "बरोबर उत्तर चुंबकीय विलगीकरण आहे कारण लोखंड चुंबकीय असते आणि ते अचुंबकीय लाकडाच्या चूर्णापासून चुंबकाच्या माध्यमातून विलग करता येते. हाताने पकडणे मोठ्या आणि दृश्य घटकांसाठी वापरले जाते. निर्मलीकरण घटकांना द्रावकापासून विलग करण्यासाठी वापरले जाते. तपासणी अद्रव्य घटकांना द्रावकापासून विलग करण्यासाठी वापरले जाते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses magnetic properties with physical size.",
+        null,
+        "Does not recognize the magnetic nature of iron.",
+        "Thinks decantation works for solid mixtures like this one."
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly identifies magnetic separation as the method to separate iron powder from sawdust, as iron is magnetic and can be attracted by a magnet. The reasoning for the other options is valid and reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 9,
+          "pageStart": 17,
+          "pageEnd": 18,
+          "headingPath": [
+            "Chapter 9: Methods of Separationin Everyday Life",
+            "Let us enhance our learning"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 10,
+          "pageStart": 18,
+          "pageEnd": 19,
+          "headingPath": [
+            "Chapter 9: Methods of Separationin Everyday Life",
+            "Learning further"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 11,
+          "pageStart": 19,
+          "pageEnd": 19,
+          "headingPath": [
+            "Chapter 9: Methods of Separationin Everyday Life",
+            "Notes"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-11T21:22:48.902Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "Which method is best suited to remove tea leaves from tea?",
+      "choices": [
+        "Filtration",
+        "Decantation",
+        "Evaporation",
+        "Distillation"
+      ],
+      "answerIndex": 0,
+      "solution": "Filtration is the process of separating solid particles from a liquid using a filter. Tea leaves are solid and do not dissolve in tea, so they can be separated using a filter. Decantation is used for settling solids, evaporation is for removing liquid, and distillation is for separating components of a mixture based on boiling points.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "चाय में चाय के पत्ते को हटाने के लिए कौन सी विधि सबसे उपयुक्त है?",
+          "choices": [
+            "अपोलन",
+            "अपकेंद्रण",
+            "वाष्पीकरण",
+            "आसवन"
+          ],
+          "solution": "अपोलन एक प्रक्रिया है जिसके द्वारा एक तरल पदार्थ से ठोस कणों को अलग किया जाता है। चाय के पत्ते ठोस होते हैं और चाय में घुलित नहीं होते, इसलिए उन्हें एक फ़िल्टर के उपयोग से अलग किया जा सकता है। अपकेंद्रण का उपयोग स्थिर ठोसों के लिए किया जाता है, वाष्पीकरण तरल को हटाने के लिए और आसवन के लिए मिश्रण के घटकों को उबलने के बिंदुओं के आधार पर अलग किया जाता है।",
+          "imageAlt": null,
+          "critique": "All terms are standard Hindi scientific terms used in Indian textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "चहा च्या पानांनी चहा काढण्यासाठी कोणती विधी सर्वात योग्य आहे?",
+          "choices": [
+            "विलगीकरण",
+            "अवक्षेपण",
+            "वाष्पीकरण",
+            "आसवीकरण"
+          ],
+          "solution": "विलगीकरण ही द्रव्यामधून घन घटक विलग करण्याची विधी आहे. चहा पाने घन असून चहामध्ये विरघळत नाहीत, म्हणून त्यांना एका फिल्टरच्या माध्यमातून विलग करता येते. अवक्षेपण ही अवक्षेपित घटकांसाठी वापरली जाते, वाष्पीकरण ही द्रव दूर करण्यासाठी आणि आसवीकरण ही मिश्रणाच्या घटकांना उबाच्या बिंदूंच्या आधारे विलग करण्यासाठी वापरली जाते.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate scientific terminology as taught in Marathi-medium textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses filtration with decantation",
+        "Confuses filtration with evaporation",
+        "Confuses filtration with distillation"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct. Filtration is the appropriate method to remove tea leaves from tea, as they are insoluble solids. The other options are correctly dismissed as inappropriate for this task.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 3,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 9: Methods of Separationin Everyday Life",
+            "कबीर"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 4,
+          "pageStart": 7,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 9: Methods of Separationin Everyday Life",
+            "कबीर"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 5,
+          "pageStart": 9,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 9: Methods of Separationin Everyday Life",
+            "कबीर"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-11T21:22:48.902Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "Which method of separation is best suited to remove iron nails from a mixture of sand and stones?",
+      "choices": [
+        "Handpicking",
+        "Magnetic separation",
+        "Decantation",
+        "Filtration"
+      ],
+      "answerIndex": 1,
+      "solution": "The correct answer is magnetic separation because iron nails are attracted to a magnet, making it the most efficient method. Handpicking is not practical for small or numerous nails. Decantation and filtration are used for separating liquids from solids, not for magnetic materials.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "रेत और पत्थर के मिश्रण से लोहे के कील को हटाने के लिए सबसे उपयुक्त अलगाव की विधि कौन सी है?",
+          "choices": [
+            "हाथ से चुनना",
+            "चुंबकीय अलगाव",
+            "निस्यंदन",
+            "अपोलन"
+          ],
+          "solution": "सही उत्तर चुंबकीय अलगाव है क्योंकि लोहे की कील चुंबक से आकर्षित होती है, जो इसे सबसे अधिक कारगर विधि बनाती है। हाथ से चुनना छोटी या बहुत सारी कीलों के लिए अनुचित है। निस्यंदन और अपोलन तरल पदार्थों और ठोस पदार्थों के अलगाव के लिए उपयोग किए जाते हैं, लेकिन चुंबकीय पदार्थों के लिए नहीं।",
+          "imageAlt": null,
+          "critique": "All terms are standard in Hindi science textbooks. 'अपोलन' is the correct Hindi term for 'filtration', and 'निस्यंदन' for 'decantation'.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "रेणू आणि शेणाच्या मिश्रणापासून लोखंडी नाल्या काढण्यासाठी कोणती विलगीकरणाची विधी उत्तम असते?",
+          "choices": [
+            "हाताने निवडा",
+            "चुंबकीय विलगीकरण",
+            "निर्मलीकरण",
+            "तपासणी"
+          ],
+          "solution": "बरोबर उत्तर चुंबकीय विलगीकरण आहे कारण लोखंडी नाल्या चुंबकाला आकर्षित करतात, जे उत्तम विधी असते. हाताने निवडा लहान किंवा बर्याच नाल्यांसाठी उपयुक्त नसते. निर्मलीकरण आणि तपासणी ही द्रव आणि घन पदार्थांचे विलगीकरण करण्यासाठी वापरली जाते, मॅग्नेटिक पदार्थांसाठी नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and uses appropriate Marathi technical terms. The structure and meaning match the original English question.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses magnetic properties with physical removal",
+        null,
+        "Does not consider the magnetic nature of iron",
+        "Incorrectly assumes the method is for liquids"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct and aligns with the key. Magnetic separation is the only method that directly addresses the magnetic property of iron nails, making it the best choice.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 9,
+          "pageStart": 17,
+          "pageEnd": 18,
+          "headingPath": [
+            "Chapter 9: Methods of Separationin Everyday Life",
+            "Let us enhance our learning"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 10,
+          "pageStart": 18,
+          "pageEnd": 19,
+          "headingPath": [
+            "Chapter 9: Methods of Separationin Everyday Life",
+            "Learning further"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 11,
+          "pageStart": 19,
+          "pageEnd": 19,
+          "headingPath": [
+            "Chapter 9: Methods of Separationin Everyday Life",
+            "Notes"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-11T21:22:48.902Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "Which method of separation would you use to separate salt from a saltwater solution?",
+      "choices": [
+        "Filtration",
+        "Decantation",
+        "Evaporation",
+        "Distillation"
+      ],
+      "answerIndex": 2,
+      "solution": "The correct answer is evaporation because salt is soluble in water and can be separated by heating the solution until the water evaporates. Filtration is used for insoluble solids. Decantation is for separating solids from liquids. Distillation is for separating mixtures of liquids with different boiling points.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "आप नमक के एक नमक के घोल से नमक को किस अलगाव की विधि द्वारा अलग करेंगे?",
+          "choices": [
+            "पर्याप्त निस्यंदन",
+            "अलगाव",
+            "वाष्पीकरण",
+            "आसवन"
+          ],
+          "solution": "सही उत्तर वाष्पीकरण है क्योंकि नमक पानी में विलेय होता है और घोल को गर्म करके पानी के वाष्पीकरण तक ले जाकर अलग किया जा सकता है। अविलेय ठोस के लिए निस्यंदन का उपयोग किया जाता है। अलगाव का उपयोग ठोस के तरल से अलग करने के लिए किया जाता है। आसवन का उपयोग विभिन्न क्वथनांक वाले तरल मिश्रणों के अलगाव के लिए किया जाता है।",
+          "imageAlt": null,
+          "critique": "All terms are standard in Hindi science textbooks. 'वाष्पीकरण' for evaporation, 'आसवन' for distillation, 'निस्यंदन' for filtration, and 'अलगाव' for decantation are correct and commonly used.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "तुम्ही लवकर लवकर पाण्यातून खारटपणा काढण्यासाठी कोणती विलगीकरण पद्धत वापराल?",
+          "choices": [
+            "विलगीकरण",
+            "अलग करणे",
+            "वाष्पीकरण",
+            "आस्थापन"
+          ],
+          "solution": "योग्य उत्तर वाष्पीकरण आहे कारण खारटपणा पाण्यात विरघळतो आणि त्याला उकळताना पाणी वाष्पीकरणाने वेगळे केले जाऊ शकते. विलगीकरण अविलेय घन पदार्थांसाठी वापरले जाते. अलग करणे घन पदार्थां आणि द्रवांच्या विलगीकरणासाठी वापरले जाते. आस्थापन विविध उबदार बिंदू असलेल्या द्रवांच्या मिश्रणांच्या विलगीकरणासाठी वापरले जाते.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate technical terms. The correct answer (3) is in the same position as in the English version. All distractors remain incorrect and distinct.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Thinks filtration works for dissolved substances.",
+        "Believes decantation works for dissolved solids.",
+        null,
+        "Confuses distillation with evaporation."
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-constructed, with a clear correct answer and plausible distractors based on common misconceptions. The solution is accurate and matches the key.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 9,
+          "pageStart": 17,
+          "pageEnd": 18,
+          "headingPath": [
+            "Chapter 9: Methods of Separationin Everyday Life",
+            "Let us enhance our learning"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 10,
+          "pageStart": 18,
+          "pageEnd": 19,
+          "headingPath": [
+            "Chapter 9: Methods of Separationin Everyday Life",
+            "Learning further"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 11,
+          "pageStart": 19,
+          "pageEnd": 19,
+          "headingPath": [
+            "Chapter 9: Methods of Separationin Everyday Life",
+            "Notes"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-11T21:22:48.902Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "Based on the diagram showing the setup for filtration, which part is used to hold the filter paper?",
+      "choices": [
+        "Funnel",
+        "Conical flask",
+        "Tripod stand",
+        "Muddy water"
+      ],
+      "answerIndex": 0,
+      "solution": "The funnel is used to hold the filter paper in place during the filtration process. The conical flask collects the filtered liquid, the tripod stand holds the funnel, and muddy water is the substance being filtered.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "चित्र में फिल्ट्रेशन के सेटअप के आधार पर, कौन सा भाग फिल्टर कागज को धारित करने के लिए उपयोग किया जाता है?",
+          "choices": [
+            "फनल",
+            "शंक्वाकार बर्तन",
+            "त्रिपॉड स्टैंड",
+            "गाद वाला पानी"
+          ],
+          "solution": "फनल का उपयोग फिल्ट्रेशन प्रक्रिया के दौरान फिल्टर कागज को स्थिर रखने के लिए किया जाता है। शंक्वाकार बर्तन फिल्टर किए गए तरल को एकत्र करता है, त्रिपॉड स्टैंड फनल को धारित करता है, और गाद वाला पानी फिल्टर किए जाने वाले पदार्थ के रूप में उपयोग किया जाता है।",
+          "imageAlt": "एक बर्तन का चित्र जो फिल्ट्रेशन में उपयोग किया जाता है",
+          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriately translated.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "तलावाच्या नकाशावरून निर्माण केलेल्या विलगीकरणाच्या सेटअपवर आधारित, फिल्टर कागद ठेवण्यासाठी कोणता भाग वापरला जातो?",
+          "choices": [
+            "फ्यूनल",
+            "शंकू बरोबर फ्लास्क",
+            "ट्रायपॉड स्टँड",
+            "मिडी वॉटर"
+          ],
+          "solution": "फ्यूनल विलगीकरण प्रक्रियेदरम्यान फिल्टर कागद ठेवण्यासाठी वापरला जातो. शंकू बरोबर फ्लास्क विलगीकृत द्रव एकत्र करतो, ट्रायपॉड स्टँड फ्यूनल ठेवतो आणि मिडी वॉटर विलगीकरण करण्यात येणारा पदार्थ आहे.",
+          "imageAlt": "विलगीकरणासाठी वापरलेला एक बरोबर बरोबर नकाशा",
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate technical terms. The correct answer (1) Funnel is in the same position as in the English version. All distractors remain incorrect.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": "A diagram showing a beaker used in filtration",
+      "figure": {
+        "kind": "diagram",
+        "spec": {
+          "parts": [
+            {
+              "part": "beaker",
+              "x": 40,
+              "y": 30,
+              "size": 20,
+              "labels": [
+                "beaker"
+              ],
+              "text": {}
+            }
+          ],
+          "arrows": [],
+          "texts": []
+        },
+        "labels": {
+          "beaker": {
+            "en": "beaker",
+            "hi": "बर्तन",
+            "mr": "बरोबर"
+          }
+        }
+      },
+      "needsFigure": true,
+      "distractorReason": [
+        null,
+        "Confuses funnel with conical flask",
+        "Confuses funnel with tripod stand",
+        "Confuses funnel with muddy water"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 0 (Funnel), as the funnel is the part that holds the filter paper during filtration. The author's solution and reasoning are accurate and align with scientific understanding.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 3,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 9: Methods of Separationin Everyday Life",
+            "कबीर"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 4,
+          "pageStart": 7,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 9: Methods of Separationin Everyday Life",
+            "कबीर"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 5,
+          "pageStart": 9,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 9: Methods of Separationin Everyday Life",
+            "कबीर"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-11T21:22:48.902Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "A mixture contains oil, water, and salt. Which of the following methods would be most effective to separate the oil from the water?",
+      "choices": [
+        "Filtration",
+        "Decantation",
+        "Distillation",
+        "Evaporation"
+      ],
+      "answerIndex": 1,
+      "solution": "The correct answer is decantation because oil and water do not mix and form layers, allowing the oil to be poured off. Filtration is for separating solids from liquids. Distillation is for separating liquids with different boiling points. Evaporation is for separating dissolved solids from liquids.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक मिश्रण में तेल, पानी और नमक है। निम्नलिखित में से कौन-सी विधि पानी से तेल को अलग करने के लिए सबसे प्रभावी होगी?",
+          "choices": [
+            "परिस्पर्शन",
+            "अपकेंद्रण",
+            "आसवन",
+            "वाष्पीकरण"
+          ],
+          "solution": "सही उत्तर अपकेंद्रण है क्योंकि तेल और पानी मिश्रित नहीं होते और पर слों के रूप में बनते हैं, जिससे तेल को ढाल दिया जा सकता है। परिस्पर्शन ठोसों को तरलों से अलग करने के लिए होता है। आसवन अलग-अलग क्वथनांक वाले तरलों को अलग करने के लिए होता है। वाष्पीकरण विलीन ठोसों को तरलों से अलग करने के लिए होता है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate scientific terminology as used in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका मिश्रणामध्ये तेल, पाणी आणि लवण असते. खालीलपैकी कोणती पद्धत तेलाला पाण्यापासून वेगळे करण्यासाठी सर्वात अधिक प्रभावी असेल?",
+          "choices": [
+            "विलगीकरण",
+            "उतरविणे",
+            "आवासीय विलगीकरण",
+            "वाष्पीकरण"
+          ],
+          "solution": "बरोबर उत्तर उतरविणे आहे कारण तेल आणि पाणी मिसळत नाहीत आणि पातळ्या तयार करतात, ज्यामुळे तेल वरून वाहून नेले जाऊ शकते. विलगीकरण हे घन पदार्थांना द्रवापासून वेगळे करण्यासाठी वापरले जाते. आवासीय विलगीकरण हे वेगवेगळ्या उबदार बिंदू असलेल्या द्रवांना वेगळे करण्यासाठी वापरले जाते. वाष्पीकरण हे द्रवापासून विरल घन पदार्थांना वेगळे करण्यासाठी वापरले जाते.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate technical terms as used in Marathi-medium science textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Thinks filtration works for immiscible liquids.",
+        null,
+        "Confuses distillation with separating immiscible liquids.",
+        "Believes evaporation works for oil and water."
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct. Decantation is the best method for separating immiscible liquids like oil and water. The reasoning for the distractors is valid and reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 9,
+          "pageStart": 17,
+          "pageEnd": 18,
+          "headingPath": [
+            "Chapter 9: Methods of Separationin Everyday Life",
+            "Let us enhance our learning"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 10,
+          "pageStart": 18,
+          "pageEnd": 19,
+          "headingPath": [
+            "Chapter 9: Methods of Separationin Everyday Life",
+            "Learning further"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 11,
+          "pageStart": 19,
+          "pageEnd": 19,
+          "headingPath": [
+            "Chapter 9: Methods of Separationin Everyday Life",
+            "Notes"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-11T21:22:48.902Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "A mixture of salt, sand, and water is prepared. After filtration, the filtrate is evaporated. What remains in the dish after evaporation?",
+      "choices": [
+        "Salt",
+        "Sand",
+        "Both salt and sand",
+        "Neither"
+      ],
+      "answerIndex": 0,
+      "solution": "Filtration removes sand, leaving saltwater. Evaporation of the water leaves behind salt. Sand is removed during filtration. Both salt and sand cannot remain after these steps. Neither is incorrect because salt remains.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "नमक, रेत और पानी के मिश्रण को तैयार किया गया। फिल्टर करने के बाद, फिल्ट्रेट को उबालकर वाष्पित कर दिया जाता है। वाष्पन के बाद प्लेट में क्या बचता है?",
+          "choices": [
+            "नमक",
+            "रेत",
+            "नमक और रेत दोनों",
+            "कोई नहीं"
+          ],
+          "solution": "फिल्टरिंग रेत को हटा देता है, जिससे नमक के पानी का अवशेष बचता है। पानी के वाष्पन से नमक बच जाता है। फिल्टरिंग के दौरान रेत को हटा दिया जाता है। इन चरणों के बाद नमक और रेत दोनों बच नहीं सकते। कोई नहीं गलत है क्योंकि नमक बच जाता है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the scientific meaning. Technical terms like 'filtration' (फिल्टरिंग) and 'evaporation' (वाष्पन) are correctly used in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "तुप, रेती आणि पाणी यांचा मिश्रण तयार केला जातो. फिल्ट्रेशननंतर, फिल्ट्रेट उबेरला जातो. उबेरल्यानंतर डिशमध्ये काय राहते?",
+          "choices": [
+            "तुप",
+            "रेती",
+            "तुप आणि रेती दोन्ही",
+            "काहीही नाही"
+          ],
+          "solution": "फिल्ट्रेशनने रेती दूर करते, तुपाचे पाणी राहते. पाणी उबेरल्यानंतर तुप राहते. रेती फिल्ट्रेशनदरम्यान दूर केली जाते. या प्रक्रियांनंतर तुप आणि रेती दोन्ही राहू शकत नाहीत. काहीही नाही हे चूक आहे कारण तुप राहते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses what is removed during filtration",
+        "Confuses what is removed during evaporation",
+        "Fails to understand the sequence of processes"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies that filtration removes sand, leaving salt in solution, and evaporation leaves salt behind. The reasoning aligns with the scientific process described.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 3,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 9: Methods of Separationin Everyday Life",
+            "कबीर"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 4,
+          "pageStart": 7,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 9: Methods of Separationin Everyday Life",
+            "कबीर"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 5,
+          "pageStart": 9,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 9: Methods of Separationin Everyday Life",
+            "कबीर"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-11T21:22:48.902Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "A mixture contains a soluble solid, an insoluble solid, and a liquid. Which method of separation would be used to first separate the insoluble solid from the mixture?",
+      "choices": [
+        "Filtration",
+        "Decantation",
+        "Distillation",
+        "Evaporation"
+      ],
+      "answerIndex": 0,
+      "solution": "The correct answer is filtration because it separates insoluble solids from liquids. Decantation is used for separating immiscible liquids. Distillation is for separating liquids with different boiling points. Evaporation is for separating dissolved solids from liquids.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक मिश्रण में विलेय ठोस, अविलेय ठोस और एक द्रव है। मिश्रण से अविलेय ठोस को पहले अलग करने के लिए किस विधि का उपयोग किया जाएगा?",
+          "choices": [
+            "परिष्करण",
+            "अलग करना",
+            "आसवन",
+            "वाष्पीकरण"
+          ],
+          "solution": "सही उत्तर परिष्करण है क्योंकि यह द्रवों से अविलेय ठोस को अलग करता है। अलग करना अमिश्रणीय द्रवों के अलग करने के लिए उपयोग किया जाता है। आसवन विभिन्न क्वथनांक वाले द्रवों के अलग करने के लिए उपयोग किया जाता है। वाष्पीकरण द्रवों से विलेय ठोस के अलग करने के लिए उपयोग किया जाता है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms as found in Hindi-medium science textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका मिश्रणात विरघळता घटक, अविरघळता घटक आणि द्रव असतो. मिश्रणातून अविरघळता घटक वेगळा करण्यासाठी सर्वप्रथम कोणती विभाजनाची पद्धत वापरली जाईल?",
+          "choices": [
+            "विलगीकरण",
+            "तळाशी ढालणे",
+            "उत्तापन",
+            "वाष्पीकरण"
+          ],
+          "solution": "बरोबर उत्तर विलगीकरण आहे कारण ते अविरघळता घटक द्रवापासून वेगळे करते. तळाशी ढालणे अमिश्रित द्रवांचे वेगळे करण्यासाठी वापरले जाते. उत्तापन वेगवेगळ्या उबाच्या बिंदू असलेल्या द्रवांचे वेगळे करण्यासाठी वापरले जाते. वाष्पीकरण द्रवापासून विरघळलेल्या घटकांचे वेगळे करण्यासाठी वापरले जाते.",
+          "imageAlt": null,
+          "critique": "The Marathi translation accurately reflects the English content with appropriate technical terms used in Marathi science textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Thinks decantation is used for solids and liquids.",
+        "Confuses distillation with separating solids from liquids.",
+        "Believes evaporation works for insoluble solids."
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies filtration as the method to separate an insoluble solid from a liquid. The reasoning for the other options aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 9,
+          "pageStart": 17,
+          "pageEnd": 18,
+          "headingPath": [
+            "Chapter 9: Methods of Separationin Everyday Life",
+            "Let us enhance our learning"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 10,
+          "pageStart": 18,
+          "pageEnd": 19,
+          "headingPath": [
+            "Chapter 9: Methods of Separationin Everyday Life",
+            "Learning further"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 11,
+          "pageStart": 19,
+          "pageEnd": 19,
+          "headingPath": [
+            "Chapter 9: Methods of Separationin Everyday Life",
+            "Notes"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-11T21:22:48.902Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
     }
   ]
 }

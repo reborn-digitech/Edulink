@@ -404,6 +404,1818 @@
       "generatedAt": "2026-11-02T10:26:26.347Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "Which of the following is a feature of fungi?",
+      "choices": [
+        "They have cell walls made of chitin",
+        "They can perform photosynthesis",
+        "They are unicellular",
+        "They have a distinct nucleus"
+      ],
+      "answerIndex": 0,
+      "solution": "Fungi have cell walls made of chitin, which is a defining characteristic of their structure. Unlike plants, fungi cannot perform photosynthesis because they lack chlorophyll. While some fungi are unicellular, many are multicellular, and all fungi are eukaryotic, meaning they have a distinct nucleus.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सी कवक की विशेषता है?",
+          "choices": [
+            "उनकी कोशिका भित्ति काइटिन से बनी होती है",
+            "वे प्रकाश संश्लेषण कर सकते हैं",
+            "वे एककोशिकीय होते हैं",
+            "उनके पास एक विशिष्ट केंद्रक होता है"
+          ],
+          "solution": "कवक की कोशिका भित्ति काइटिन से बनी होती है, जो उनकी संरचना की एक परिभाषात्मक विशेषता है। पौधों के विपरीत, कवक प्रकाश संश्लेषण नहीं कर सकते क्योंकि उनमें क्लोरोफिल नहीं होता है। कुछ कवक एककोशिकीय होते हैं, लेकिन अधिकांश बहुकोशिकीय होते हैं, और सभी कवक यूकैरियोटिक होते हैं, जिनके पास एक विशिष्ट केंद्रक होता है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains original meaning, and uses standard Hindi scientific terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते कवकाचे वैशिष्ट्य आहे?",
+          "choices": [
+            "त्यांच्या कोशिका भिंती काइटिनने बनलेल्या असतात",
+            "ते सूर्याच्या प्रकाशाचा वापर करून प्रकाशसंश्लेषण करू शकतात",
+            "ते एककोशिकीय असतात",
+            "त्यांच्याकडे विशिष्ट न्यूक्लियस असतो"
+          ],
+          "solution": "कवकांच्या कोशिका भिंती काइटिनने बनलेल्या असतात, जे त्यांच्या रचनेचे निर्धारक लक्षण आहे. वनस्पतींपेक्षा कवक प्रकाशसंश्लेषण करू शकत नाहीत कारण त्यांच्याकडे क्लोरोफिल नसते. काही कवक एककोशिकीय असतात, परंतु बरेच बहुकोशिकीय असतात, आणि सर्व कवक युकेरियोटिक असतात, जे त्यांच्याकडे विशिष्ट न्यूक्लियस असल्याचा अर्थ आहे.",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains original meaning, and uses appropriate Marathi terminology for biology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses the cell wall composition of fungi with other organisms",
+        "Mistakenly associates photosynthesis with fungi, which is a feature of plants",
+        "Incorrectly assumes all fungi are unicellular"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 0, as fungi do have cell walls made of chitin. The other options are incorrect: fungi do not perform photosynthesis (they are heterotrophs), many are multicellular, and all fungi are eukaryotes with a distinct nucleus. The author's reasoning for the wrong options aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 9,
+          "pageStart": 10,
+          "pageEnd": 11,
+          "headingPath": [
+            "1. Living World and Classification of Microbes"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 10,
+          "pageStart": 11,
+          "pageEnd": 12,
+          "headingPath": [
+            "1. Living World and Classification of Microbes"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 11,
+          "pageStart": 12,
+          "pageEnd": 14,
+          "headingPath": [
+            "1. Living World and Classification of Microbes"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-29T19:42:26.886Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of the following is a characteristic of fungi?",
+      "choices": [
+        "They are autotrophic",
+        "They reproduce by budding",
+        "They are unicellular only",
+        "They cause diseases in plants only"
+      ],
+      "answerIndex": 1,
+      "solution": "Fungi can reproduce by budding, which is a form of asexual reproduction. This is a common method among certain types of fungi, such as yeast. The other options are incorrect because fungi are not autotrophic, they can be both unicellular and multicellular, and they can cause diseases in both plants and animals.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा कवक का गुण है?",
+          "choices": [
+            "वे स्वपोषी होते हैं",
+            "वे बुदबुदन द्वारा जनन करते हैं",
+            "वे केवल एककोशिकीय होते हैं",
+            "वे केवल पौधों में रोग पैदा करते हैं"
+          ],
+          "solution": "कवक बुदबुदन द्वारा जनन कर सकते हैं, जो अलैंगिक जनन के एक रूप है। यह कुछ प्रकार के कवक, जैसे खमीर में सामान्य विधि है। अन्य विकल्प गलत हैं क्योंकि कवक स्वपोषी नहीं होते, वे एककोशिकीय और बहुकोशिकीय दोनों हो सकते हैं, और वे पौधों और जानवरों दोनों में रोग पैदा कर सकते हैं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, with appropriate Hindi terminology used for biological concepts.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते विषाणूंचे लक्षण आहे?",
+          "choices": [
+            "ते स्वपोषी असतात",
+            "ते बुदबुद द्वारे प्रजनन करतात",
+            "ते एककोशिकीय असतात केवळ",
+            "ते वनस्पतींमध्ये रोग उत्पन्न करतात केवळ"
+          ],
+          "solution": "विषाणू बुदबुद द्वारे प्रजनन करू शकतात, जे अल्पजीवी प्रजननाच्या एका प्रकाराचे उदाहरण आहे. हे विशिष्ट प्रकारच्या विषाणूंमध्ये सामान्य पद्धत आहे, जसे की यीस्ट. इतर विकल्प अयोग्य आहेत कारण विषाणू स्वपोषी नाहीत, ते एककोशिकीय आणि बहुकोशिकीय दोन्ही असू शकतात आणि ते वनस्पतींसह जीवांमध्ये रोग उत्पन्न करू शकतात.",
+          "imageAlt": null,
+          "critique": "The question is incorrectly translated. 'Fungi' is mistranslated as 'विषाणूं' (viruses), which is a major error. This invalidates all aspects of the comparison.",
+          "flag": "translation critique: meaning changed; not one answer at the same position; a distractor no longer wrong; terms not the board's"
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Misinterprets autotrophic organisms like algae.",
+        null,
+        "Overgeneralizes the structure of fungi.",
+        "Incorrectly limits the role of fungi to only plant diseases."
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 1, as fungi do reproduce by budding. The other options are incorrect: fungi are not autotrophic, they can be multicellular, and they cause diseases in both plants and animals.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 12,
+          "pageStart": 14,
+          "pageEnd": 15,
+          "headingPath": [
+            "1. Living World and Classification of Microbes"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 13,
+          "pageStart": 15,
+          "pageEnd": 15,
+          "headingPath": [
+            "1. Living World and Classification of Microbes",
+            "Exercises"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-29T19:42:26.886Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If a microorganism is unicellular, has a nucleus, and moves using flagella, which kingdom does it belong to?",
+      "choices": [
+        "Monera",
+        "Protista",
+        "Fungi",
+        "Plantae"
+      ],
+      "answerIndex": 1,
+      "solution": "Protista includes unicellular organisms with a nucleus and structures like flagella for movement. Monera are prokaryotic and lack a nucleus. Fungi are typically multicellular and lack flagella. Plantae are autotrophic and do not move using flagella.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक जीवाणु एककोशिकीय है, कोशिका झिल्ली रखता है और झिल्ली के उपयोग से गति करता है, तो यह किस जगत में सम्बन्धित होता है?",
+          "choices": [
+            "मोनेरा",
+            "प्रोटिस्टा",
+            "फंजाई",
+            "पौधे"
+          ],
+          "solution": "प्रोटिस्टा में एककोशिकीय जीव होते हैं जिनमें कोशिका झिल्ली होती है और गति के लिए झिल्ली जैसी संरचनाएं होती हैं। मोनेरा प्रोकैरियोटिक होते हैं और कोशिका झिल्ली नहीं रखते। फंजाई आमतौर पर बहुकोशिकीय होते हैं और झिल्ली नहीं रखते। पौधे स्वपोषी होते हैं और झिल्ली के उपयोग से गति नहीं करते।",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the scientific terminology used in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर एक किरणजन्य एककोशिकीय असेल, कोशिकाकेंद्र असेल आणि फ्लॅजेला वापरून गती करत असेल, तर तो जिनस कोणत्या वर्गात येतो?",
+          "choices": [
+            "मोनेरा",
+            "प्रोटिस्टा",
+            "फंगी",
+            "प्लांटी"
+          ],
+          "solution": "प्रोटिस्टा एककोशिकीय जीव आहेत ज्यांच्याकडे कोशिकाकेंद्र असतो आणि गतीसाठी फ्लॅजेला जसे संरचना असतात. मोनेरा प्रोकॅरियोटिक असून कोशिकाकेंद्र असत नाही. फंगी मुख्यतः बहुकोशिकीय असतात आणि फ्लॅजेला असत नाहीत. प्लांटी स्वपोषी असतात आणि फ्लॅजेला वापरून गती करत नाहीत.",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, with appropriate Marathi biological terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses prokaryotic with eukaryotic cells",
+        null,
+        "Incorrectly assumes the organism is a fungus or plant",
+        "Mistakenly classifies the organism as a plant, which is autotrophic"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is Protista (option 1), as it includes unicellular, eukaryotic organisms with flagella. The other options are correctly dismissed based on known characteristics of the kingdoms.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 9,
+          "pageStart": 10,
+          "pageEnd": 11,
+          "headingPath": [
+            "1. Living World and Classification of Microbes"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 10,
+          "pageStart": 11,
+          "pageEnd": 12,
+          "headingPath": [
+            "1. Living World and Classification of Microbes"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 11,
+          "pageStart": 12,
+          "pageEnd": 14,
+          "headingPath": [
+            "1. Living World and Classification of Microbes"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-29T19:42:26.886Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "Which of the following organisms can be classified as both a protist and a parasite?",
+      "choices": [
+        "Chlorella",
+        "Candida",
+        "Plasmodium",
+        "Tomato Wilt Virus"
+      ],
+      "answerIndex": 2,
+      "solution": "Plasmodium is a protist because it is a single-celled eukaryote and a parasite because it relies on a host for survival, causing malaria. Chlorella is an autotrophic organism that produces its own food, Candida is a fungus that reproduces through budding, and Tomato Wilt Virus is a non-living entity that cannot carry out life processes on its own.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा जीव एक प्रोटिस्ट और परजीवी दोनों के रूप में वर्गीकृत किया जा सकता है?",
+          "choices": [
+            "क्लोरेला",
+            "कैंडिडा",
+            "प्लाज्मोडियम",
+            "टमाटर विल्ट वायरस"
+          ],
+          "solution": "प्लाज्मोडियम एक प्रोटिस्ट है क्योंकि यह एक कोशिका वाला यूकैरियोट है और एक परजीवी है क्योंकि यह अपने जीवन के लिए माध्यम पर निर्भर करता है, मलेरिया का कारण बनता है। क्लोरेला एक स्वपोषी जीव है जो अपना भोजन बनाता है, कैंडिडा एक कवक है जो बुंद के माध्यम से बढ़ता है और टमाटर विल्ट वायरस एक अजीवित एकक है जो अपने आप में जीवन प्रक्रियाएं नहीं कर सकता।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate biological terms as used in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालील पैकी कोणते जीव एका प्रोटिस्ट आणि परजीवी दोन्ही म्हणून वर्गीकृत केले जाऊ शकते?",
+          "choices": [
+            "क्लोरेला",
+            "कॅन्डिडा",
+            "प्लॅज्मोडियम",
+            "टॉमॅटो विल्ट व्हायरस"
+          ],
+          "solution": "प्लॅज्मोडियम एक प्रोटिस्ट आहे कारण तो एककोशिकीय युकॅरियोट आहे आणि परजीवी आहे कारण तो जीवनासाठी एका माध्यमावर अवलंबून असतो, मलेरिया उत्पन्न करतो. क्लोरेला एक स्वपोषक जीव आहे जो आपल्याला आहार तयार करतो, कॅन्डिडा एक कवक आहे जो बुडक्यांच्या माध्यमातून प्रजनन करतो आणि टॉमॅटो विल्ट व्हायरस हा एक अजीव वस्तु आहे जी आपल्याला जीवन प्रक्रिया करू शकत नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses autotrophic algae with protists.",
+        "Identifies a fungus instead of a protist.",
+        null,
+        "Misidentifies a virus as a parasite."
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct. Plasmodium is a protist (protozoan) and a parasite, while the other options are not protists or not parasites.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 12,
+          "pageStart": 14,
+          "pageEnd": 15,
+          "headingPath": [
+            "1. Living World and Classification of Microbes"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 13,
+          "pageStart": 15,
+          "pageEnd": 15,
+          "headingPath": [
+            "1. Living World and Classification of Microbes",
+            "Exercises"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-29T19:42:26.886Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "A microorganism is found to be a saprophyte and has a cell wall made of chitin. Which kingdom does it belong to?",
+      "choices": [
+        "Monera",
+        "Protista",
+        "Fungi",
+        "Plantae"
+      ],
+      "answerIndex": 2,
+      "solution": "Fungi are known to be saprophytes and have cell walls made of chitin, which matches the given characteristics. Monera, which includes bacteria, does not have cell walls made of chitin and are not typically saprophytes. Protista and Plantae also lack this specific combination of traits.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक सूक्ष्मजीव को देखा गया है जो एक सैप्रोफाइट है और जिसकी कोशिका भित्ति किटिन से बनी है। इसके संबंधित जगत कौन-सा है?",
+          "choices": [
+            "मोनेरा",
+            "प्रोटिस्टा",
+            "फंजाई",
+            "पौधा"
+          ],
+          "solution": "फंजाई को ज्ञात है कि वे सैप्रोफाइट होते हैं और कोशिका भित्ति किटिन से बनी होती है, जो दिए गए विशेषताओं के अनुरूप है। मोनेरा, जिसमें जीवाणु शामिल हैं, किटिन से बनी कोशिका भित्ति नहीं होती है और वे सामान्य रूप से सैप्रोफाइट नहीं होते हैं। प्रोटिस्टा और पौधा भी इस विशिष्ट विशेषता के संयोजन के अभाव में हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate biological terminology in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका सूक्ष्मजीवाचा अभ्यास केल्यास तो सॅप्रॉफाइट असून त्याचा कोशिकाभित्ती काइटिन बनलेली आहे. तो कोणत्या जगतात येतो?",
+          "choices": [
+            "मोनेरा",
+            "प्रोटिस्टा",
+            "कवक",
+            "वनस्पती"
+          ],
+          "solution": "कवक सॅप्रॉफाइट असतात आणि त्यांच्या कोशिकाभित्ती काइटिन बनलेल्या असतात, जे दिलेल्या वैशिष्ट्यांच्या अनुरूप आहे. मोनेरा, जे बॅक्टेरिया वगळतो, काइटिन बनलेल्या कोशिकाभित्ती असत नाहीत आणि सामान्यतः सॅप्रॉफाइट नसतात. प्रोटिस्टा आणि वनस्पती देखील या विशिष्ट वैशिष्ट्यांच्या अभावाने असतात.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the original meaning, and uses appropriate biological terminology as used in Marathi textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Includes bacteria, which are not saprophytes and have different cell wall structures",
+        "Includes protists, which are not saprophytes and do not have chitin-based cell walls",
+        null,
+        "Includes plants, which are not saprophytes and have cell walls made of cellulose"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies fungi as the kingdom with saprophytic microorganisms and chitin-based cell walls. The reasoning for the other options is also accurate and reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 9,
+          "pageStart": 10,
+          "pageEnd": 11,
+          "headingPath": [
+            "1. Living World and Classification of Microbes"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 10,
+          "pageStart": 11,
+          "pageEnd": 12,
+          "headingPath": [
+            "1. Living World and Classification of Microbes"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 11,
+          "pageStart": 12,
+          "pageEnd": 14,
+          "headingPath": [
+            "1. Living World and Classification of Microbes"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-29T19:42:26.886Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "Which scientist introduced the five-kingdom system of classification?",
+      "choices": [
+        "Carl Linnaeus",
+        "Haeckel",
+        "Chatton",
+        "Whittaker"
+      ],
+      "answerIndex": 3,
+      "solution": "Whittaker introduced the five-kingdom system of classification in 1969, which included animals, plants, fungi, protists, and monera. Linnaeus developed the binomial nomenclature system, Haeckel proposed a three-kingdom system, and Chatton distinguished between prokaryotes and eukaryotes. Therefore, the correct answer is Whittaker.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "किस वैज्ञानिक ने पांच जगत वर्गीकरण प्रणाली की शुरुआत की?",
+          "choices": [
+            "कार्ल लिनियस",
+            "हैकेल",
+            "चैटन",
+            "विटेकर"
+          ],
+          "solution": "विटेकर ने 1969 में पांच जगत वर्गीकरण प्रणाली की शुरुआत की, जिसमें जानवर, पौधे, कवक, प्रोटिस्ट और मोनेरा शामिल थे। लिनियस ने द्विनाम पद्धति का विकास किया, हैकेल ने तीन जगत प्रणाली का प्रस्ताव रखा, और चैटन ने प्रोकैरियोट्स और यूकैरियोट्स के बीच अंतर स्थापित किया। इसलिए सही उत्तर विटेकर है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate scientific terminology in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "कोणत्या वैज्ञानिकाने पाच राज्यांच्या वर्गीकरणाची पद्धत विचारात घेतली?",
+          "choices": [
+            "कार्ल लिनियस",
+            "हॅकेल",
+            "चॅटॉन",
+            "विटेकर"
+          ],
+          "solution": "विटेकर यांनी १९६९ मध्ये पाच राज्यांच्या वर्गीकरणाची पद्धत विचारात घेतली, ज्यामध्ये प्राणी, वनस्पती, कवक, प्रोटिस्ट आणि मोनेरा समाविष्ट होते. लिनियस यांनी द्विनाम पद्धत विकसित केली, हॅकेल यांनी तीन राज्यांची पद्धत मांडली आणि चॅटॉन यांनी प्रोकॅरियॉट आणि यूकॅरियॉट यांच्यात फरक केला. म्हणूनच योग्य उत्तर विटेकर आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses Whittaker with Linnaeus",
+        "Confuses Haeckel with the five-kingdom system",
+        "Confuses Chatton with the five-kingdom system",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct and matches the key. The answer is Whittaker, and the author's reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 9,
+          "pageStart": 10,
+          "pageEnd": 11,
+          "headingPath": [
+            "1. Living World and Classification of Microbes"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 10,
+          "pageStart": 11,
+          "pageEnd": 12,
+          "headingPath": [
+            "1. Living World and Classification of Microbes"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 11,
+          "pageStart": 12,
+          "pageEnd": 14,
+          "headingPath": [
+            "1. Living World and Classification of Microbes"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-22T06:04:28.514Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Which of the following microorganisms is considered to be at the edge of living and non-living?",
+      "choices": [
+        "Bacteria",
+        "Fungi",
+        "Algae",
+        "Virus"
+      ],
+      "answerIndex": 3,
+      "solution": "The correct answer is 'Virus' because viruses are not considered living organisms and are often described as being at the edge of living and non-living. Bacteria, fungi, and algae are all classified as living organisms.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा जीवाणु जीवित और अजीवित के किनारे पर माना जाता है?",
+          "choices": [
+            "जीवाणु",
+            "कवक",
+            "शैवाल",
+            "वायरस"
+          ],
+          "solution": "सही उत्तर 'वायरस' है क्योंकि वायरस को जीवित जीवों के रूप में नहीं माना जाता है और आमतौर पर जीवित और अजीवित के किनारे पर होने के रूप में वर्णित किया जाता है। जीवाणु, कवक और शैवाल सभी जीवित जीवों के रूप में वर्गीकृत हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate scientific terminology in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणता जीवाणू जीवित आणि अजीवित च्या किनारशी असल्याचा मानला जातो?",
+          "choices": [
+            "जीवाणू",
+            "कवक",
+            "शैवाल",
+            "व्हायरस"
+          ],
+          "solution": "बरोबर उत्तर 'व्हायरस' आहे कारण व्हायरस जीवित जीव मानले जात नाहीत आणि त्यांना जीवित आणि अजीवित च्या किनारशी असल्याचे वर्णन केले जाते. जीवाणू, कवक आणि शैवाल यांना सर्वांना जीवित जीव म्हणून वर्गीकृत केले जाते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for biological concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses bacteria with non-living organisms",
+        "Confuses fungi with non-living organisms",
+        "Confuses algae as non-living due to their photosynthetic nature and sometimes appearing static in water",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is accurate and aligns with scientific understanding. Viruses are indeed considered to be at the edge of living and non-living because they cannot reproduce or carry out metabolic processes on their own.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 12,
+          "pageStart": 14,
+          "pageEnd": 15,
+          "headingPath": [
+            "1. Living World and Classification of Microbes"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 13,
+          "pageStart": 15,
+          "pageEnd": 15,
+          "headingPath": [
+            "1. Living World and Classification of Microbes",
+            "Exercises"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-22T06:04:28.514Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "A new organism was found in a moist environment and was observed to have a cell wall made of chitin and to absorb nutrients from dead matter. What can be concluded about this organism?",
+      "choices": [
+        "It is a plant",
+        "It is a fungus",
+        "It is a bacterium",
+        "It is a protozoan"
+      ],
+      "answerIndex": 1,
+      "solution": "Fungi have cell walls made of chitin and are heterotrophic, absorbing nutrients from dead matter. The correct option is 'It is a fungus' because these characteristics are defining traits of fungi. Plants have cell walls made of cellulose, bacteria lack chitin in their cell walls, and protozoans are typically motile and not known for absorbing nutrients from dead matter.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक नए जीव को नम वातावरण में पाया गया और देखा गया कि इसकी कोशिका भित्ति काइटिन से बनी हुई है और यह मृत पदार्थ से पोषक तत्व अवशोषित करता है। इस जीव के बारे में क्या निष्कर्ष निकाला जा सकता है?",
+          "choices": [
+            "यह एक पौधा है",
+            "यह एक कवक है",
+            "यह एक जीवाणु है",
+            "यह एक प्रोटोजोआ है"
+          ],
+          "solution": "कवकों की कोशिका भित्ति काइटिन से बनी होती है और वे परपोषी होते हैं, जो मृत पदार्थ से पोषक तत्व अवशोषित करते हैं। सही विकल्प 'यह एक कवक है' है क्योंकि ये विशेषताएं कवकों की परिभाषा हैं। पौधों की कोशिका भित्ति सेल्यूलोज से बनी होती है, जीवाणुओं की कोशिका भित्ति में काइटिन नहीं होता है, और प्रोटोजोआ आमतौर पर गतिशील होते हैं और मृत पदार्थ से पोषक तत्व अवशोषित करने के लिए जाने नहीं जाते हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate biological terminology as taught in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका नवीन जीवाची ओळख निरीक्षणात आली आहे जो ओलसर वातावरणात आढळला आहे आणि त्याचा कोशिका भिंत काइटिन बनलेली आहे आणि मृत पदार्थांमधून पोषक तत्व शोषून घेत आहे. या जीवाबद्दल काय निष्कर्ष काढता येईल?",
+          "choices": [
+            "तो वनस्पती आहे",
+            "तो कवक आहे",
+            "तो जीवाणू आहे",
+            "तो प्रोटोझॉएन आहे"
+          ],
+          "solution": "कवकांच्या कोशिका भिंती काइटिन बनलेल्या असतात आणि ते परपोषी असतात, मृत पदार्थांमधून पोषक तत्व शोषून घेतात. योग्य विकल्प 'तो कवक आहे' आहे कारण या वैशिष्ट्यांचा त्याच्यावर निर्णायक प्रभाव असतो. वनस्पतींच्या कोशिका भिंती सेल्युलोज बनलेल्या असतात, जीवाणूंच्या कोशिका भिंतीत काइटिन असत नाही आणि प्रोटोझॉएन अक्सर गतिशील असतात आणि मृत पदार्थांमधून पोषक तत्व शोषून घेण्याचे ज्ञान नसते.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the original meaning, and uses appropriate biological terminology as taught in Marathi-medium textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Incorrectly applies to plants",
+        null,
+        "Incorrectly applies to prokaryotes",
+        "Incorrectly applies to protozoans"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies that the organism is a fungus due to the presence of a chitin cell wall and heterotrophic nutrition. The reasoning for the other options is accurate and reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 9,
+          "pageStart": 10,
+          "pageEnd": 11,
+          "headingPath": [
+            "1. Living World and Classification of Microbes"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 10,
+          "pageStart": 11,
+          "pageEnd": 12,
+          "headingPath": [
+            "1. Living World and Classification of Microbes"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 11,
+          "pageStart": 12,
+          "pageEnd": 14,
+          "headingPath": [
+            "1. Living World and Classification of Microbes"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-22T06:04:28.514Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "If a microorganism is found to be multicellular, has a cell wall, and performs photosynthesis, which kingdom does it belong to?",
+      "choices": [
+        "Fungi",
+        "Protista",
+        "Plantae",
+        "Monera"
+      ],
+      "answerIndex": 2,
+      "solution": "The organism is multicellular, has a cell wall, and performs photosynthesis, which are characteristics of the Plantae kingdom. Fungi are typically heterotrophic and lack the ability to perform photosynthesis. Protista includes mostly unicellular organisms, and Monera consists of prokaryotes, which do not have a nucleus or cell walls made of cellulose. Therefore, the correct answer is Plantae.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक सूक्ष्मजीव के पाये जाने पर यह बहुकोशिकीय है, कोशिका भित्ति रखता है और प्रकाश संश्लेषण करता है, तो यह किस जगत में सम्बन्धित होता है?",
+          "choices": [
+            "कवक",
+            "प्रोटिस्टा",
+            "वनस्पति",
+            "मोनेरा"
+          ],
+          "solution": "सूक्ष्मजीव बहुकोशिकीय है, कोशिका भित्ति रखता है और प्रकाश संश्लेषण करता है, जो वनस्पति जगत के लक्षण हैं। कवक आमतौर पर परपोषी होते हैं और प्रकाश संश्लेषण करने की क्षमता नहीं रखते। प्रोटिस्टा में अधिकांश एककोशिकीय जीव होते हैं, और मोनेरा में प्रोकैरियोट्स होते हैं, जिनमें कोशिका नाभिक या सेलुलोज बनी कोशिका भित्ति नहीं होती। इसलिए, सही उत्तर वनस्पति है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate biological terminology as used in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर एका सूक्ष्मजीवाचा शोध लावला गेला आहे जो बहुकोशिकीय आहे, कोशिका भित्ती असते आणि प्रकाशसंश्लेषण करतो, तर तो कोणत्या जगतात समाविष्ट असेल?",
+          "choices": [
+            "कवक",
+            "प्रोटिस्टा",
+            "वनस्पती",
+            "मोनेरा"
+          ],
+          "solution": "या सूक्ष्मजीवाचे बहुकोशिकीय, कोशिका भित्ती असणे आणि प्रकाशसंश्लेषण करणे ही वनस्पती जगताची वैशिष्ट्ये आहेत. कवक सामान्यतः परपोषक असतात आणि प्रकाशसंश्लेषण करू शकत नाहीत. प्रोटिस्टा मुख्यतः एककोशिकीय जीव असतात, आणि मोनेरा हे प्रोकॅरियोट्स असतात, ज्यांच्याकडे कोशिकाकेंद्रक किंवा सेलुलोज बनलेली कोशिका भित्ती नसते. त्यामुळे योग्य उत्तर वनस्पती आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology consistent with standard biology textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses Plantae with Fungi",
+        "Confuses Plantae with Protista",
+        null,
+        "Confuses Plantae with Monera"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is well-constructed, with a clear and defensible correct answer. The distractors are based on common misconceptions about the classification of microorganisms.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 9,
+          "pageStart": 10,
+          "pageEnd": 11,
+          "headingPath": [
+            "1. Living World and Classification of Microbes"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 10,
+          "pageStart": 11,
+          "pageEnd": 12,
+          "headingPath": [
+            "1. Living World and Classification of Microbes"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 11,
+          "pageStart": 12,
+          "pageEnd": 14,
+          "headingPath": [
+            "1. Living World and Classification of Microbes"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-22T06:04:28.514Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "Which of the following is an example of a free-living microbe?",
+      "choices": [
+        "Amoeba",
+        "Plasmodium vivax",
+        "Entamoeba histolytica",
+        "Tomato Wilt Virus"
+      ],
+      "answerIndex": 0,
+      "solution": "Amoeba is a free-living microbe because it can survive and reproduce independently in its environment. Plasmodium vivax and Entamoeba histolytica are parasitic organisms that require a host to complete their life cycles. Tomato Wilt Virus is not a living microbe but a virus, which cannot reproduce on its own.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्न में से कौन एक स्वतंत्र रूप से रहने वाला सूक्ष्मजीव है?",
+          "choices": [
+            "अमीबा",
+            "प्लाज्मोडियम विवैक्स",
+            "एंटैमीबा हिस्टोलिटिका",
+            "टमाटर विल्ट वायरस"
+          ],
+          "solution": "अमीबा एक स्वतंत्र रूप से रहने वाला सूक्ष्मजीव है क्योंकि यह अपने वातावरण में स्वतंत्र रूप से जीवित रह सकता है और प्रजनन कर सकता है। प्लाज्मोडियम विवैक्स और एंटैमीबा हिस्टोलिटिका परजीवी सूक्ष्मजीव हैं जिन्हें अपने जीवन चक्र को पूरा करने के लिए मेजबान की आवश्यकता होती है। टमाटर विल्ट वायरस एक जीवित सूक्ष्मजीव नहीं है बल्कि एक वायरस है, जो अकेले प्रजनन नहीं कर सकता।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, technical terms are appropriately translated, and the meaning is preserved.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते एक स्वतंत्र रीतीने रहाणारे जीवाणूचे उदाहरण आहे?",
+          "choices": [
+            "अमीबा",
+            "प्लाझमोडियम विवॅक्स",
+            "एंटामीबा हिस्टोलिटिका",
+            "टोमॅटो विल्ट व्हायरस"
+          ],
+          "solution": "अमीबा एक स्वतंत्र रीतीने रहाणारा जीवाणू आहे कारण तो आपल्या वातावरणात स्वतंत्रपणे जिवंत राहू शकतो आणि प्रजोत्पादन करू शकतो. प्लाझमोडियम विवॅक्स आणि एंटामीबा हिस्टोलिटिका हे परजीवी जीव आहेत ज्यांना आपल्या जीवनक्रम पूर्ण करण्यासाठी मेजवानी आवश्यक आहे. टोमॅटो विल्ट व्हायरस हा जीवन नसलेला जीवाणू नाही तर व्हायरस आहे, जो स्वतंत्रपणे प्रजोत्पादन करू शकत नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for biological concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses parasitic with free-living microbes",
+        "Identifies a parasitic microbe",
+        "Identifies a parasitic microbe"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 0 (Amoeba), as it is a free-living microbe. The other options are either parasitic or not living organisms. The author's reasoning aligns with scientific understanding and identifies valid misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 12,
+          "pageStart": 14,
+          "pageEnd": 15,
+          "headingPath": [
+            "1. Living World and Classification of Microbes"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 13,
+          "pageStart": 15,
+          "pageEnd": 15,
+          "headingPath": [
+            "1. Living World and Classification of Microbes",
+            "Exercises"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-19T08:22:53.628Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "Which of the following is an example of a unicellular eukaryotic organism?",
+      "choices": [
+        "Amoeba",
+        "Bacteria",
+        "Virus",
+        "Cyanobacteria"
+      ],
+      "answerIndex": 0,
+      "solution": "Amoeba is a unicellular eukaryotic organism because it has a nucleus and other membrane-bound organelles. Bacteria and cyanobacteria lack a nucleus and are classified as prokaryotes. Viruses are not considered living organisms and do not have cellular structures.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन एक कोशिका युक्त यूकैरियोटिक जीव का उदाहरण है?",
+          "choices": [
+            "अमीबा",
+            "जीवाणु",
+            "वायरस",
+            "सायनोबैक्टीरिया"
+          ],
+          "solution": "अमीबा एक कोशिका युक्त यूकैरियोटिक जीव है क्योंकि इसमें केंद्रक और अन्य कला-सीमित अंग होते हैं। जीवाणु और सायनोबैक्टीरिया के पास केंद्रक नहीं होता है और इन्हें प्रोकैरियोट्स के रूप में वर्गीकृत किया जाता है। वायरस को जीवित जीव माना जाता है और इनमें कोशिका संरचना नहीं होती है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi scientific terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते एककोशिक यूकॅरियोटिक सजीवाचे उदाहरण आहे?",
+          "choices": [
+            "अमीबा",
+            "जीवाणू",
+            "व्हायरस",
+            "सायनोबॅक्टेरिया"
+          ],
+          "solution": "अमीबा एककोशिक यूकॅरियोटिक सजीव आहे कारण त्याच्यात न्यूक्लियस आणि इतर कोशिकाकेंद्रीय अंगांचा समावेश असतो. जीवाणू आणि सायनोबॅक्टेरिया न्यूक्लियस शिवाय असतात आणि प्रोकॅरियोट्स म्हणून वर्गीकृत केले जातात. व्हायरस जीवित सजीव मानले जात नाहीत आणि त्यांची कोशिकांची संरचना नसते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi biological terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses prokaryotes with eukaryotes",
+        "Misunderstands the definition of eukaryotes",
+        "Does not recognize viruses as non-living organisms"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly identifies Amoeba as a unicellular eukaryote and explains why the other options are incorrect. The reasoning aligns with standard biological classifications.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 12,
+          "pageStart": 14,
+          "pageEnd": 15,
+          "headingPath": [
+            "1. Living World and Classification of Microbes"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 13,
+          "pageStart": 15,
+          "pageEnd": 15,
+          "headingPath": [
+            "1. Living World and Classification of Microbes",
+            "Exercises"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-19T08:22:53.628Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "Which of the following is an example of a parasitic microbe?",
+      "choices": [
+        "Chlorella",
+        "Baker's yeast",
+        "Plasmodium vivax",
+        "Paramoecium"
+      ],
+      "answerIndex": 2,
+      "solution": "Plasmodium vivax is a parasitic microbe because it lives inside a host and depends on it for survival, causing malaria. Chlorella is a photosynthetic organism that lives independently, Baker's yeast is a fungus that reproduces on its own, and Paramoecium is a free-living protozoan.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन एक परजीवी सूक्ष्मजीव का उदाहरण है?",
+          "choices": [
+            "क्लोरेला",
+            "बेकर के खमीर",
+            "प्लाज्मोडियम विवैक्स",
+            "पैरामीशियम"
+          ],
+          "solution": "प्लाज्मोडियम विवैक्स एक परजीवी सूक्ष्मजीव है क्योंकि यह एक मेजबान के भीतर रहता है और अपने जीवन के लिए उस पर निर्भर रहता है, मलेरिया का कारण बनता है। क्लोरेला एक प्रकाश संश्लेषी संगठन है जो स्वतंत्र रूप से रहता है, बेकर के खमीर एक कवक है जो अपने आप बराबर बढ़ता है, और पैरामीशियम एक स्वतंत्र रूप से रहने वाला प्रोटोजोआ है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Hindi terminology for biological concepts.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते एक परजीवी जीवाणूचे उदाहरण आहे?",
+          "choices": [
+            "क्लोरेला",
+            "बेकर्स यीस्ट",
+            "प्लॅज्मोडियम विवॅक्स",
+            "पॅरामिसियम"
+          ],
+          "solution": "प्लॅज्मोडियम विवॅक्स हा परजीवी जीवाणू आहे कारण तो एका माध्यमात राहतो आणि त्याच्या जीवनावर अवलंबून राहतो, मलेरिया उत्पन्न करतो. क्लोरेला हा फोटोसिंथेटिक संस्था आहे जी स्वतंत्रपणे राहते, बेकर्स यीस्ट हा एक कवक आहे जो स्वतःचे प्रजोत्पादन करतो आणि पॅरामिसियम हा स्वतंत्रपणे राहणारा प्रोटोझॉअन आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the scientific terminology used in Marathi textbooks. The structure and meaning of the question and solution are preserved.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Identifies a free-living microbe",
+        "Identifies a fungus",
+        null,
+        "Identifies a free-living microbe"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 2 (Plasmodium vivax), which is a parasitic microbe. The author's solution is accurate, and the reasons for the wrong options align with common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 12,
+          "pageStart": 14,
+          "pageEnd": 15,
+          "headingPath": [
+            "1. Living World and Classification of Microbes"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 13,
+          "pageStart": 15,
+          "pageEnd": 15,
+          "headingPath": [
+            "1. Living World and Classification of Microbes",
+            "Exercises"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-19T08:22:53.628Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "A student observed an organism that had chloroplasts and lived in water. Which group does this organism most likely belong to?",
+      "choices": [
+        "Fungi",
+        "Bacteria",
+        "Algae",
+        "Viruses"
+      ],
+      "answerIndex": 2,
+      "solution": "Algae are aquatic, eukaryotic organisms that contain chloroplasts and perform photosynthesis. Fungi are not capable of photosynthesis and are heterotrophic. Bacteria are prokaryotes and do not have chloroplasts. Viruses are not classified as living organisms and lack cellular structures.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक छात्र ने एक जीव को देखा जिसमें क्लोरोप्लास्ट थे और वह पानी में रहता था। इस जीव किस समूह में सबसे अधिक संभावना है?",
+          "choices": [
+            "कवक",
+            "जीवाणु",
+            "शैवाल",
+            "वायरस"
+          ],
+          "solution": "शैवाल जलीय, यूकैरियोटिक जीव होते हैं जिनमें क्लोरोप्लास्ट होते हैं और प्रकाश संश्लेषण करते हैं। कवक प्रकाश संश्लेषण करने में सक्षम नहीं होते हैं और परपोषी होते हैं। जीवाणु प्रोकैरियोट होते हैं और उनमें क्लोरोप्लास्ट नहीं होते हैं। वायरस को जीवित जीव के रूप में वर्गीकृत नहीं किया जाता है और उनमें कोशिकीय संरचनाएं नहीं होती हैं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains scientific terminology appropriate for Hindi-medium curriculum.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका विद्यार्थ्याने एका जीवनाची निरीक्षण केले ज्याने क्लोरोप्लास्ट आणि पाण्यात राहिले. हा जीवन ज्या गटात असावा तो कोणता आहे?",
+          "choices": [
+            "कवक",
+            "जीवाणू",
+            "शैवाल",
+            "विषाणू"
+          ],
+          "solution": "शैवाल हे जलीय, युकॅरियोटिक जीव आहेत ज्यांना क्लोरोप्लास्ट असतात आणि प्रकाशसंश्लेषण करतात. कवक प्रकाशसंश्लेषण करू शकत नाहीत आणि हेटेरोट्रॉफिक असतात. जीवाणू प्रोकॅरियोटिक असतात आणि त्यांना क्लोरोप्लास्ट असत नाही. विषाणू जीवित जीव म्हणून वर्गीकृत केले जात नाहीत आणि त्यांचे कोशिका संरचना असत नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for biological concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses saprotrophic with autotrophic",
+        "Confuses prokaryotes with eukaryotes",
+        null,
+        "Does not recognize the role of chloroplasts in autotrophy"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly identifies that algae are the only option with chloroplasts, are aquatic, and are autotrophic. The reasoning for the wrong options aligns with common misconceptions about fungi, bacteria, and viruses.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 12,
+          "pageStart": 14,
+          "pageEnd": 15,
+          "headingPath": [
+            "1. Living World and Classification of Microbes"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 13,
+          "pageStart": 15,
+          "pageEnd": 15,
+          "headingPath": [
+            "1. Living World and Classification of Microbes",
+            "Exercises"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-19T08:22:53.628Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "Which of the following is a correct statement about viruses?",
+      "choices": [
+        "They can reproduce on their own",
+        "They are considered living organisms",
+        "They can only survive in living cells",
+        "They have a cell wall"
+      ],
+      "answerIndex": 2,
+      "solution": "Viruses can only survive in living cells because they lack the necessary machinery to replicate outside a host. They cannot reproduce on their own, as they do not carry out metabolic processes. They are not considered living organisms because they cannot carry out life functions independently. They do not have a cell wall, as they lack cellular structure.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा विषाणुओं के बारे में सही कथन है?",
+          "choices": [
+            "वे अपने आप बहुत सारे जीव बना सकते हैं",
+            "उन्हें जीवित जीव माना जाता है",
+            "वे केवल जीवित कोशिकाओं में जीवित रह सकते हैं",
+            "उनके पास कोशिका भित्ति होती है"
+          ],
+          "solution": "विषाणु केवल जीवित कोशिकाओं में जीवित रह सकते हैं क्योंकि वे बाहरी एक मेजबान के बिना प्रतिकृति बनाने के लिए आवश्यक यंत्र नहीं रखते हैं। वे अपने आप बहुत सारे जीव नहीं बना सकते हैं क्योंकि वे चयापचय प्रक्रियाएं नहीं करते हैं। उन्हें जीवित जीव नहीं माना जाता है क्योंकि वे स्वतंत्र रूप से जीवन कार्य नहीं कर सकते हैं। उनके पास कोशिका भित्ति नहीं होती है क्योंकि वे कोशिकीय संरचना से रहित होते हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the original English question and solution, with appropriate terminology used in a Hindi-medium educational context.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणता विरसांबद्दल बरोबर विधान आहे?",
+          "choices": [
+            "ते स्वतः च वाढू शकतात",
+            "त्यांना जीवित वस्तू मानले जाते",
+            "ते केवळ जीवित कोशिकांमध्ये जगू शकतात",
+            "त्यांना कोशिका भित्ती असते"
+          ],
+          "solution": "विरसांना केवळ जीवित कोशिकांमध्ये जगू शकता कारण ते बाहेरील एकाच स्वतःच्या प्रतिकृती करण्यासाठी आवश्यक यंत्रणा नाहीत. ते स्वतः च वाढू शकत नाहीत, कारण ते जैविक प्रक्रिया करत नाहीत. त्यांना जीवित वस्तू मानले जात नाहीत कारण ते स्वतःच्या जीवन क्रिया स्वतः करू शकत नाहीत. त्यांना कोशिका भित्ती असत नाही, कारण ते कोशिकांची संरचना नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for biological concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Misunderstands viral reproduction",
+        "Misconception about classification",
+        null,
+        "Misunderstands viral structure"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 2, as viruses cannot reproduce on their own, are not classified as living organisms, and lack a cell wall. The author's solution and reasoning are accurate.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 12,
+          "pageStart": 14,
+          "pageEnd": 15,
+          "headingPath": [
+            "1. Living World and Classification of Microbes"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 13,
+          "pageStart": 15,
+          "pageEnd": 15,
+          "headingPath": [
+            "1. Living World and Classification of Microbes",
+            "Exercises"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-19T08:22:53.628Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "Which of the following is an example of an autotrophic microbe?",
+      "choices": [
+        "Candida",
+        "Amoeba",
+        "Chlorella",
+        "Entamoeba histolytica"
+      ],
+      "answerIndex": 2,
+      "solution": "Chlorella is an autotrophic microbe because it can produce its own food through photosynthesis. Candida and Entamoeba histolytica are heterotrophic, meaning they rely on external sources of organic matter for nutrition. Amoeba is also a heterotroph, as it engulfs other organisms for sustenance.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन एक स्वपोषी सूक्ष्मजीव का उदाहरण है?",
+          "choices": [
+            "कैंडिडा",
+            "अमीबा",
+            "क्लोरेला",
+            "एंटामीबा हिस्टोलिटिका"
+          ],
+          "solution": "क्लोरेला एक स्वपोषी सूक्ष्मजीव है क्योंकि यह प्रकाश संश्लेषण द्वारा अपना भोजन बना सकता है। कैंडिडा और एंटामीबा हिस्टोलिटिका हेटेरोपोषी हैं, जिनका पोषण के लिए बाहरी स्रोतों पर निर्भर करना पड़ता है। अमीबा भी एक हेटेरोपोषी है, क्योंकि यह अन्य जीवों को ग्रहण करके पोषण प्राप्त करता है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate biological terminology as found in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणता स्वपोषक जीवाणूचा उदाहरण आहे?",
+          "choices": [
+            "कॅन्डिडा",
+            "अमीबा",
+            "क्लोरेला",
+            "एंटॅमीबा हिस्टोलिटिका"
+          ],
+          "solution": "क्लोरेला एक स्वपोषक जीवाणू आहे कारण ती स्वतःचे खाद्य फोटोसंश्लेषणाद्वारे तयार करू शकते. कॅन्डिडा आणि एंटॅमीबा हिस्टोलिटिका हे परपोषक आहेत, जे पोषणासाठी बाह्य स्रोतांवर अवलंबून असतात. अमीबा देखील परपोषक आहे, कारण तो इतर जीवांचे अंगात घेऊन त्यांचे पोषण करतो.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for biological concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Identifies a fungus",
+        "Identifies a heterotroph",
+        null,
+        "Identifies a parasitic microbe"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is Chlorella, which is an autotrophic microbe that performs photosynthesis. The other options are all heterotrophic or parasitic, and the author's reasoning for the wrong options aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 12,
+          "pageStart": 14,
+          "pageEnd": 15,
+          "headingPath": [
+            "1. Living World and Classification of Microbes"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 13,
+          "pageStart": 15,
+          "pageEnd": 15,
+          "headingPath": [
+            "1. Living World and Classification of Microbes",
+            "Exercises"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-19T08:22:53.628Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "A researcher found a microorganism that can only reproduce inside a host cell. It contains DNA or RNA and is surrounded by a protein coat. Which of the following is this microorganism most likely to be?",
+      "choices": [
+        "Bacteriophage",
+        "Algae",
+        "Fungi",
+        "Amoeba"
+      ],
+      "answerIndex": 0,
+      "solution": "A bacteriophage is a type of virus that requires a host cell to reproduce and has a protein coat surrounding its genetic material, which matches the description. Algae are self-feeding organisms that do not require a host for reproduction. Fungi obtain nutrients from their environment and do not reproduce inside host cells. Amoebae are independent, single-celled organisms that do not rely on a host for reproduction.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक अनुसंधानकर्ता ने एक सूक्ष्मजीव खोजा जो केवल एक परजीवी कोशिका के भीतर प्रतिकृति बना सकता है। इसमें DNA या RNA होता है और इसके चारों ओर एक प्रोटीन कोट होता है। निम्नलिखित में से कौन सा यह सूक्ष्मजीव अधिक संभावना है?",
+          "choices": [
+            "बैक्टीरियोफेज",
+            "शैवाल",
+            "कवक",
+            "अमीबा"
+          ],
+          "solution": "एक बैक्टीरियोफेज विषाणु के एक प्रकार होता है जिसके लिए परजीवी कोशिका के आवश्यकता होती है और इसके आनुवंशिक सामग्री के चारों ओर एक प्रोटीन कोट होता है, जो विवरण के साथ मेल खाता है। शैवाल आत्म-पोषक संरचनाएं होती हैं जिन्हें प्रतिकृति के लिए कोई परजीवी की आवश्यकता नहीं होती। कवक अपने वातावरण से पोषण प्राप्त करते हैं और परजीवी कोशिकाओं के भीतर प्रतिकृति नहीं करते। अमीबा आत्मनिर्भर, एककोशिकीय संरचनाएं होती हैं जो प्रतिकृति के लिए किसी परजीवी पर निर्भर नहीं होती।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology for biological concepts.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका शास्त्रज्ञाने एका छोट्या जीवाची नोंद केली जो केवळ एका अंतर्गत कोशिकेत जनन करू शकतो. त्यामध्ये DNA किंवा RNA असतो आणि त्याचे बाहेरील आवरण प्रोटीनचे असते. खालीलपैकी कोणता जीव हा छोट्या जीव असावा?",
+          "choices": [
+            "बॅक्टेरिओफेज",
+            "शैवाल",
+            "कवक",
+            "अमीबा"
+          ],
+          "solution": "बॅक्टेरिओफेज हा विषाणूचा प्रकार आहे जो जननासाठी अंतर्गत कोशिकेची आवश्यकता असते आणि त्याच्या आनुवंशिक पदार्थाचे आवरण प्रोटीनचे असते, जे वर्णनाशी जुळते. शैवाल हे स्वतंत्र खाद्य पदार्थ खाणारे जीव आहेत जे जननासाठी अंतर्गत कोशिकेची आवश्यकता नसते. कवक आपल्या वातावरणापासून पोषक द्रव्य घेतात आणि अंतर्गत कोशिकेत जनन करत नाहीत. अमीबा हे स्वतंत्र, एककोशिकीय जीव आहेत जे जननासाठी अंतर्गत कोशिकेवर अवलंबून नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for biological concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses viruses with algae due to both being microscopic and sometimes mentioned in the same context",
+        "Believes fungi can reproduce inside host cells like viruses",
+        "Confuses viruses with other unicellular organisms like amoebae that can live independently."
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is well-constructed, with a clear and correct answer (bacteriophage). The reasoning for the distractors aligns with common student misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 12,
+          "pageStart": 14,
+          "pageEnd": 15,
+          "headingPath": [
+            "1. Living World and Classification of Microbes"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 13,
+          "pageStart": 15,
+          "pageEnd": 15,
+          "headingPath": [
+            "1. Living World and Classification of Microbes",
+            "Exercises"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-19T08:22:53.628Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "A student is given a sample and told that the microorganism in it is unicellular, has a nucleus, and is heterotrophic. Which of the following is most likely to be the correct classification?",
+      "choices": [
+        "Bacteria",
+        "Algae",
+        "Protozoa",
+        "Fungi"
+      ],
+      "answerIndex": 2,
+      "solution": "Protozoa are unicellular, have a nucleus, and are heterotrophic, which matches the description. Bacteria lack a nucleus and are prokaryotic. Algae are typically autotrophic, producing their own food. Fungi are heterotrophic but have cell walls made of chitin, not a flexible membrane. Therefore, the correct answer is protozoa.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक छात्र को एक नमूना दिया जाता है और बताया जाता है कि इसमें एक सूक्ष्मजीव है जो एककोशिकीय है, एक केंद्रक है, और हेटेरोट्रॉफिक है। निम्नलिखित में से कौन सा सबसे अधिक संभावित सही वर्गीकरण है?",
+          "choices": [
+            "जीवाणु",
+            "शैवाल",
+            "प्रोटोजोआ",
+            "कवक"
+          ],
+          "solution": "प्रोटोजोआ एककोशिकीय होते हैं, एक केंद्रक होता है, और हेटेरोट्रॉफिक होते हैं, जो विवरण के साथ मेल खाते हैं। जीवाणु के पास केंद्रक नहीं होता है और वे प्रोकैरियोटिक होते हैं। शैवाल आमतौर पर स्वपोषी होते हैं, जो अपना भोजन बनाते हैं। कवक हेटेरोट्रॉफिक होते हैं लेकिन उनकी कोशिका भित्ति काइटिन से बनी होती है, एक लचीली झिल्ली नहीं। इसलिए, सही उत्तर प्रोटोजोआ है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English original in meaning, terminology, and structure. All options and the solution are correctly translated and maintain their scientific accuracy.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका विद्यार्थ्याला एका नमुना दिला जातो आणि त्याला सांगितले जाते की त्यामधील जीवाणू एककोशिकीय आहे, त्यामध्ये कोशिकाकेंद्र आहे आणि तो परपोषक आहे. खालीलपैकी कोणते वर्गीकरण सर्वात जास्त शक्यता असलेले योग्य वर्गीकरण असेल?",
+          "choices": [
+            "बॅक्टेरिया",
+            "शैवाल",
+            "प्रोटोजोआ",
+            "कवक"
+          ],
+          "solution": "प्रोटोजोआ एककोशिकीय आहेत, त्यांच्यामध्ये कोशिकाकेंद्र असतो आणि ते परपोषक असतात, जे वर्णनाशी जुळते. बॅक्टेरिया कोशिकाकेंद्र रहित असतात आणि प्रोकॅरियोटिक असतात. शैवाल सामान्यतः स्वपोषक असतात, जे आपले खाद्य तयार करतात. कवक परपोषक असतात परंतु त्यांच्या कोशिकाभित्तीत काइटिन असतो, जे लचकेदार झिल्ली नाही. त्यामुळे योग्य उत्तर प्रोटोजोआ असेल.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi biological terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses protozoa with bacteria",
+        "Confuses protozoa with algae",
+        null,
+        "Confuses protozoa with fungi"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies protozoa as the only option that matches all three criteria: unicellular, eukaryotic (has a nucleus), and heterotrophic. The reasoning for the other options is also accurate and reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 9,
+          "pageStart": 10,
+          "pageEnd": 11,
+          "headingPath": [
+            "1. Living World and Classification of Microbes"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 10,
+          "pageStart": 11,
+          "pageEnd": 12,
+          "headingPath": [
+            "1. Living World and Classification of Microbes"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 11,
+          "pageStart": 12,
+          "pageEnd": 14,
+          "headingPath": [
+            "1. Living World and Classification of Microbes"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-19T08:22:53.628Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "Which of the following organisms is a parasite?",
+      "choices": [
+        "Clostridium tetani",
+        "Paramoecium",
+        "Rhizoids",
+        "Sporangium"
+      ],
+      "answerIndex": 0,
+      "solution": "Clostridium tetani is a bacterium that can live inside a host and cause disease, making it a parasite. Paramoecium is a free-living protozoan, not a parasite. Rhizoids are structures that help fungi absorb nutrients from their environment, but they are not parasites. Sporangium is a reproductive structure in fungi, not a parasite.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा जीव परजीवी है?",
+          "choices": [
+            "क्लोस्ट्रिडियम टेटानी",
+            "पैरामीशियम",
+            "राइजॉइड्स",
+            "स्पोरैंजियम"
+          ],
+          "solution": "क्लोस्ट्रिडियम टेटानी एक बैक्टीरियम है जो कि मेजबान के अंदर रह सकता है और बीमारी पैदा कर सकता है, जिसके कारण यह एक परजीवी है। पैरामीशियम एक मुक्त-जीवी प्रोटोजोआ है, परजीवी नहीं। राइजॉइड्स एक कवक द्वारा अपने वातावरण से पोषक तत्व अवशोषित करने में सहायता करने वाले संरचनाएं हैं, लेकिन वे परजीवी नहीं हैं। स्पोरैंजियम एक कवक में जनन संरचना है, परजीवी नहीं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English content with appropriate biological terminology used in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणता जीव एक परजीवी आहे?",
+          "choices": [
+            "क्लोस्ट्रिडियम टेटानी",
+            "पॅरामिसियम",
+            "रायजॉइड्स",
+            "स्पोरॅंजियम"
+          ],
+          "solution": "क्लोस्ट्रिडियम टेटानी हा एक जीवाणू आहे जो एका माध्यमात रहाऊ शकतो आणि आजार उत्पन्न करू शकतो, ज्यामुळे तो परजीवी बनतो. पॅरामिसियम हा मुक्त जीवन जीवाणू आहे, परजीवी नाही. रायजॉइड्स हे कवकांना त्यांच्या वातावरणातून पोषक घेण्यात मदत करणारे संरचना आहेत, परंतु ते परजीवी नाहीत. स्पोरॅंजियम हा कवकांमधील प्रजनन संरचना आहे, परजीवी नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the scientific terminology appropriate for a Marathi-medium curriculum.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses protozoa with parasites",
+        "Confuses fungal structures with parasites",
+        "Confuses fungal structures with parasites"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 0 (Clostridium tetani), as it is a parasitic bacterium. The other options are either non-parasitic organisms or structures, and the author's reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 9,
+          "pageStart": 10,
+          "pageEnd": 11,
+          "headingPath": [
+            "1. Living World and Classification of Microbes"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 10,
+          "pageStart": 11,
+          "pageEnd": 12,
+          "headingPath": [
+            "1. Living World and Classification of Microbes"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 11,
+          "pageStart": 12,
+          "pageEnd": 14,
+          "headingPath": [
+            "1. Living World and Classification of Microbes"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-19T08:22:53.628Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "A student classified an organism as a eukaryote and noted that it absorbs food from dead organic matter. It also reproduces by budding. Which of the following could this organism be?",
+      "choices": [
+        "Virus",
+        "Bacteria",
+        "Algae",
+        "Yeast"
+      ],
+      "answerIndex": 3,
+      "solution": "Yeast is a eukaryote that absorbs nutrients from dead organic matter and reproduces by budding, which matches the description. Viruses are not considered living organisms and do not reproduce by budding. Bacteria are prokaryotes, lacking a nucleus. Algae are typically autotrophic, producing their own food.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक छात्र ने एक जीव को एक्यूरियोट के रूप में वर्गीकृत किया और नोट किया कि यह मृत कार्बनिक पदार्थ से भोजन अवशोषित करता है। यह बुद्धि द्वारा जनन करता है। निम्नलिखित में से कौन सा जीव हो सकता है?",
+          "choices": [
+            "वायरस",
+            "जीवाणु",
+            "शैवाल",
+            "खमीर"
+          ],
+          "solution": "खमीर एक एक्यूरियोट है जो मृत कार्बनिक पदार्थ से पोषक तत्व अवशोषित करता है और बुद्धि द्वारा जनन करता है, जो विवरण के साथ मेल खाता है। वायरस को जीवित जीव माना जाता है और वे बुद्धि द्वारा जनन नहीं करते। जीवाणु प्रोकैरियोट होते हैं, जिनमें कोशिका नाभिक नहीं होता। शैवाल आमतौर पर स्वपोषी होते हैं, जो अपना भोजन बनाते हैं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains scientific terminology, and preserves the logic of the question and solution.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका विद्यार्थ्याने एका जीवाची वर्गीकरणे अयुक्तीशील असल्याचे नोंदवले आणि त्याने मृत जैविक पदार्थांमधून खाद्य शोषत असल्याचे नोंदवले. त्याने उगमाच्या माध्यमातून प्रजोत्पादन केले. खालीलपैकी कोणता जीव असू शकतो?",
+          "choices": [
+            "व्हायरस",
+            "बॅक्टेरिया",
+            "शैवाल",
+            "खमीर"
+          ],
+          "solution": "खमीर हा अयुक्तीशील असून मृत जैविक पदार्थांमधून पोषक तत्वे शोषतो आणि उगमाच्या माध्यमातून प्रजोत्पादन करतो, जे वर्णनाशी जुमानते. व्हायरस जीवन नसलेल्या एककांचे मानले जातात आणि उगमाच्या माध्यमातून प्रजोत्पादन करत नाहीत. बॅक्टेरिया हे अयुक्तीशील असतात आणि कोशिकाकेंद्र नसतात. शैवाल सामान्यतः स्वयंपोषक असतात, जे आपले खाद्य तयार करतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the scientific terminology appropriate for a Marathi-medium curriculum.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses non-living with living",
+        "Confuses prokaryotes with eukaryotes",
+        "Confuses autotrophic with saprotrophic",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct. Yeast is a eukaryote that absorbs food from dead organic matter (saprotrophic) and reproduces by budding. The other options are correctly ruled out based on their biological characteristics.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 12,
+          "pageStart": 14,
+          "pageEnd": 15,
+          "headingPath": [
+            "1. Living World and Classification of Microbes"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 13,
+          "pageStart": 15,
+          "pageEnd": 15,
+          "headingPath": [
+            "1. Living World and Classification of Microbes",
+            "Exercises"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-19T08:22:53.628Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Which of the following is a correct classification of organisms based on their cell structure?",
+      "choices": [
+        "Bacteria - Eukaryotic",
+        "Protozoa - Prokaryotic",
+        "Fungi - Eukaryotic",
+        "Algae - Prokaryotic"
+      ],
+      "answerIndex": 2,
+      "solution": "Fungi are classified as eukaryotic because their cells contain a nucleus and membrane-bound organelles. Bacteria and algae are prokaryotic, meaning their cells lack a nucleus. Protozoa are also eukaryotic, as they have complex cellular structures. Therefore, the correct classification is fungi - eukaryotic.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा जीवों के कोशिका संरचना के आधार पर सही वर्गीकरण है?",
+          "choices": [
+            "जीवाणु - यूकैरियोटिक",
+            "प्रोटोजोआ - प्रोकैरियोटिक",
+            "कवक - यूकैरियोटिक",
+            "शैवाल - प्रोकैरियोटिक"
+          ],
+          "solution": "कवक को यूकैरियोटिक माना जाता है क्योंकि उनकी कोशिकाओं में एक केंद्रक और झिल्ली-सीमित अंग होते हैं। जीवाणु और शैवाल प्रोकैरियोटिक होते हैं, जिनकी कोशिकाओं में केंद्रक की कमी होती है। प्रोटोजोआ भी यूकैरियोटिक होते हैं, क्योंकि उनकी कोशिकाओं में जटिल संरचनाएं होती हैं। इसलिए, सही वर्गीकरण कवक - यूकैरियोटिक है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate biological terminology as used in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते जीवांचे कोशिका संरचनेवर आधारित योग्य वर्गीकरण आहे?",
+          "choices": [
+            "बॅक्टेरिया - युकॅरियोटिक",
+            "प्रोटोजोआ - प्रोकॅरियोटिक",
+            "कवक - युकॅरियोटिक",
+            "शैवाल - प्रोकॅरियोटिक"
+          ],
+          "solution": "कवक युकॅरियोटिक म्हणून वर्गीकृत केले जातात कारण त्यांच्या कोशिकांमध्ये न्यूक्लियस आणि झिल्ली-बांधलेले अंगरेखे असतात. बॅक्टेरिया आणि शैवाल प्रोकॅरियोटिक असतात, जे त्यांच्या कोशिकांमध्ये न्यूक्लियस असणार नाही. प्रोटोजोआ देखील युकॅरियोटिक असतात, कारण त्यांच्या कोशिकांमध्ये जटिल कोशिका संरचना असते. त्यामुळे, योग्य वर्गीकरण हे कवक - युकॅरियोटिक आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology consistent with standard biology textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses bacteria with eukaryotic organisms",
+        "Confuses protozoa with prokaryotic organisms",
+        null,
+        "Confuses algae with prokaryotic organisms"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is option 2 (Fungi - Eukaryotic). The solution is sound, and the reasoning aligns with scientific knowledge. The distractors reflect common misconceptions about the cell structure of bacteria, protozoa, and algae.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 9,
+          "pageStart": 10,
+          "pageEnd": 11,
+          "headingPath": [
+            "1. Living World and Classification of Microbes"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 10,
+          "pageStart": 11,
+          "pageEnd": 12,
+          "headingPath": [
+            "1. Living World and Classification of Microbes"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 11,
+          "pageStart": 12,
+          "pageEnd": 14,
+          "headingPath": [
+            "1. Living World and Classification of Microbes"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-19T08:22:53.628Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
     }
   ]
 }

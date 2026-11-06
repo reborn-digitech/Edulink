@@ -216,6 +216,102 @@
       "generatedAt": "2026-10-28T03:58:07.960Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If a person was born on 29 February 2016, which year will they celebrate their 4th birthday?",
+      "choices": [
+        "2018",
+        "2020",
+        "2022",
+        "2024"
+      ],
+      "answerIndex": 3,
+      "solution": "Since 2016 is a leap year, the person will celebrate their birthday every 4 years. Adding 4 years to 2016 gives 2020, but they will celebrate their 4th birthday in 2024 as it is the next leap year after 2020. 2018 and 2022 are not leap years, and 2020 is only the third birthday.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि कोई व्यक्ति 2016 में 29 फरवरी को पैदा हुआ, तो वह अपना 4वां जन्मदिन किस वर्ष मनाएगा?",
+          "choices": [
+            "2018",
+            "2020",
+            "2022",
+            "2024"
+          ],
+          "solution": "2016 एक लीप वर्ष है, इसलिए व्यक्ति प्रत्येक 4 वर्ष बाद अपना जन्मदिन मनाएगा। 2016 में 4 वर्ष जोड़ने पर 2020 प्राप्त होता है, लेकिन वह 2024 में अपना 4वां जन्मदिन मनाएगा क्योंकि 2020 के बाद अगला लीप वर्ष 2024 है। 2018 और 2022 लीप वर्ष नहीं हैं, और 2020 केवल तीसरा जन्मदिन है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate use of Hindi terms for leap year and birthday.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर कोणी व्यक्ती 2016 मध्ये 29 फेब्रुवारी रोजी जन्मली असेल, तर ती तिच्या 4 व्या वाढदिवसाचा उत्सव कोणत्या वर्षी साजरा करेल?",
+          "choices": [
+            "2018",
+            "2020",
+            "2022",
+            "2024"
+          ],
+          "solution": "2016 हे कालांतर वर्ष आहे, म्हणून व्यक्ती प्रत्येक 4 वर्षांनी तिच्या वाढदिवसाचा उत्सव साजरा करेल. 2016 मध्ये 4 वर्षे जोडल्याने 2020 मिळते, परंतु ती तिच्या 4 व्या वाढदिवसाचा उत्सव 2024 मध्ये साजरा करेल, कारण 2020 नंतरचे अगले कालांतर वर्ष 2024 आहे. 2018 आणि 2022 हे कालांतर वर्ष नाहीत, आणि 2020 हे केवळ तिसरा वाढदिवस आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for leap years ('कालांतर वर्ष') and proper structure.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Not a leap year, so the person cannot celebrate their birthday on 29 February",
+        "Not the next leap year after 2020, and only the third birthday",
+        "Not a leap year, so the person cannot celebrate their birthday on 29 February",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": null,
+      "critique": "The solution is flawed in its explanation, as it incorrectly states that 2020 is the third birthday and 2024 is the fourth. However, the correct answer is 2024, as it is the next leap year after 2020, and the person would have only celebrated their 1st, 2nd, 3rd, and then 4th birthday in 2024.",
+      "sources": [
+        {
+          "document": "ncert/4/mathematics/demm112.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 12: Ticking Clocks and Turning Calendar"
+          ]
+        },
+        {
+          "document": "ncert/4/mathematics/demm112.pdf",
+          "ordinal": 1,
+          "pageStart": 3,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 12: Ticking Clocks and Turning Calendar"
+          ]
+        },
+        {
+          "document": "ncert/4/mathematics/demm112.pdf",
+          "ordinal": 2,
+          "pageStart": 6,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 12: Ticking Clocks and Turning Calendar",
+            "8:00 PM"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T22:40:52.127Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
     }
   ]
 }

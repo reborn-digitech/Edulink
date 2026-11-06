@@ -1494,6 +1494,986 @@
       "generatedAt": "2026-10-28T12:59:58.526Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of the following is an example of radial symmetry?",
+      "choices": [
+        "Earthworm",
+        "Human",
+        "Starfish",
+        "Frog"
+      ],
+      "answerIndex": 2,
+      "solution": "Radial symmetry means an organism can be divided into equal parts around a central axis. Starfish, being echinoderms, have this type of symmetry. Earthworms, humans, and frogs have bilateral symmetry, meaning they can only be divided into mirror-image halves along one plane.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा अक्षीय सममिति का उदाहरण है?",
+          "choices": [
+            "केंचुआ",
+            "मनुष्य",
+            "तारामीन",
+            "मेंढक"
+          ],
+          "solution": "अक्षीय सममिति का अर्थ है कि एक जीव केंद्रीय अक्ष के चारों ओर बराबर भागों में विभाजित किया जा सकता है। तारामीन, जो कि एक अंगुलीदार पानी के जीव हैं, इस प्रकार की सममिति रखते हैं। केंचुआ, मनुष्य और मेंढक द्विपक्षीय सममिति रखते हैं, जिसका अर्थ है कि वे केवल एक तल पर दर्पण-छवि आधारित आधे में विभाजित किए जा सकते हैं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains scientific terminology appropriate for Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते अक्षीय सममितीचे उदाहरण आहे?",
+          "choices": [
+            "केंचुआ",
+            "माणूस",
+            "तारका माशा",
+            "मेंढक"
+          ],
+          "solution": "अक्षीय सममिती म्हणजे एखाद्या जीवाला केंद्रीय अक्षाच्या भोवती समान भागांमध्ये विभागता येते. तारका माशा, जे एकीनोडर्म आहेत, या प्रकारची सममिती असते. केंचुआ, माणूस आणि मेंढक द्विपार्श्व सममिती असतात, ज्यामुळे ते एका तलावर द्विचरित्र अर्धांमध्ये विभागता येतात.",
+          "imageAlt": null,
+          "critique": "The translation accurately reflects the original meaning, with appropriate Marathi terms for biological concepts like 'radial symmetry' and 'bilateral symmetry'.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Incorrectly associates earthworm with radial symmetry",
+        "Incorrectly associates human with radial symmetry",
+        null,
+        "Incorrectly associates frog with radial symmetry"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 2 (Starfish), as echinoderms like starfish exhibit radial symmetry. The other options are incorrect because earthworms, humans, and frogs all have bilateral symmetry. The author's reasoning aligns with biological facts.",
+      "sources": [
+        {
+          "document": "ncert/11/biology/kebo104.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 4: Animal Kingdom",
+            "HAPTER"
+          ]
+        },
+        {
+          "document": "ncert/11/biology/kebo104.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 4: Animal Kingdom",
+            "HAPTER"
+          ]
+        },
+        {
+          "document": "ncert/11/biology/kebo104.pdf",
+          "ordinal": 2,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 4: Animal Kingdom",
+            "HAPTER"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-23T07:28:27.619Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the function of the water vascular system in echinoderms?",
+      "choices": [
+        "To aid in locomotion",
+        "To help in digestion",
+        "To protect the body",
+        "To store food"
+      ],
+      "answerIndex": 0,
+      "solution": "The water vascular system in echinoderms is responsible for movement, as it operates the tube feet that allow the organism to move. This system does not play a role in digestion, protection, or food storage, as those functions are handled by other parts of the organism. Therefore, the correct answer is 'To aid in locomotion'.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एकीनोडर्म में जल वास्कुलर प्रणाली का कार्य क्या है?",
+          "choices": [
+            "गति में सहायता करना",
+            "पाचन में सहायता करना",
+            "शरीर की रक्षा करना",
+            "भोजन को भंडारित करना"
+          ],
+          "solution": "एकीनोडर्म में जल वास्कुलर प्रणाली गति के लिए जिम्मेदार होती है, क्योंकि यह ट्यूब पैड को संचालित करती है जो संगठन के गति की अनुमति देती है। इस प्रणाली का पाचन, रक्षा या भोजन भंडारण में कोई भूमिका नहीं होती, क्योंकि इन कार्यों का ध्यान अन्य भागों द्वारा रखा जाता है। इसलिए सही उत्तर 'गति में सहायता करना' है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, with appropriate Hindi terminology used for biological concepts.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एकिनोडर्ममधील पाणी वास्क्युलर प्रणालीचे कार्य काय आहे?",
+          "choices": [
+            "गतीमध्ये मदत करणे",
+            "पचनामध्ये मदत करणे",
+            "शरीराचे रक्षण करणे",
+            "खाद्याचे संग्रह करणे"
+          ],
+          "solution": "एकिनोडर्ममधील पाणी वास्क्युलर प्रणाली गतीच्या कार्यासाठी जबाबदार आहे, कारण ती ट्यूब फूट चालवते ज्यामुळे सजीव गती करू शकतो. ही प्रणाली पचन, रक्षण किंवा खाद्याच्या संग्रहाच्या कार्यासाठी जबाबदार नाही, कारण या कार्यांची जबाबदारी इतर भागांकडून केली जाते. म्हणून, योग्य उत्तर 'गतीमध्ये मदत करणे' आहे.",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains original meaning, and uses appropriate Marathi terminology for biological concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses the water vascular system with the digestive system",
+        "Confuses the function of the water vascular system with other systems",
+        "Confuses the function of the water vascular system with other systems"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly identifies the function of the water vascular system as aiding in locomotion, and the reasoning for the distractors is valid as they reflect common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/11/biology/kebo104.pdf",
+          "ordinal": 12,
+          "pageStart": 15,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 4: Animal Kingdom",
+            "HAPTER"
+          ]
+        },
+        {
+          "document": "ncert/11/biology/kebo104.pdf",
+          "ordinal": 13,
+          "pageStart": 16,
+          "pageEnd": 17,
+          "headingPath": [
+            "Chapter 4: Animal Kingdom",
+            "HAPTER"
+          ]
+        },
+        {
+          "document": "ncert/11/biology/kebo104.pdf",
+          "ordinal": 14,
+          "pageStart": 17,
+          "pageEnd": 18,
+          "headingPath": [
+            "Chapter 4: Animal Kingdom",
+            "HAPTER"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-23T07:28:27.619Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of the following is an example of an amphibian?",
+      "choices": [
+        "Clarias",
+        "Hippocampus",
+        "Betta",
+        "Rana"
+      ],
+      "answerIndex": 3,
+      "solution": "Rana is an example of an amphibian because it is a frog, which is a member of the class Amphibia. Clarias, Hippocampus, and Betta are all fish, belonging to the class Actinopterygii. Amphibians have a life cycle that includes both aquatic and terrestrial stages, which frogs exhibit. Fish, on the other hand, live exclusively in water and have gills for respiration.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन एक उभयचर का उदाहरण है?",
+          "choices": [
+            "क्लैरियस",
+            "हिप्पोकैम्पस",
+            "बेटा",
+            "राना"
+          ],
+          "solution": "राना एक उभयचर का उदाहरण है क्योंकि यह मेंढक है जो वर्ग एम्फीबिया का सदस्य है। क्लैरियस, हिप्पोकैम्पस और बेटा सभी मछली हैं जो वर्ग एक्टिनोप्टेरिगियी के अंतर्गत आते हैं। उभयचरों के जीवन चक्र में जलीय और थलीय चरण दोनों शामिल होते हैं, जो मेंढक प्रदर्शित करते हैं। दूसरी ओर, मछली जल में ही रहती हैं और श्वसन के लिए गल्फ का उपयोग करती हैं।",
+          "imageAlt": null,
+          "critique": "Hindi translation accurately reflects the original English content with appropriate biological terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते एक उभयचराचे उदाहरण आहे?",
+          "choices": [
+            "क्लॅरियस",
+            "हिप्पोकॅम्पस",
+            "बेटा",
+            "राना"
+          ],
+          "solution": "राना हा एक उभयचर आहे कारण तो बगदाड आहे, जो वर्ग एम्फिबिया चा सदस्य आहे. क्लॅरियस, हिप्पोकॅम्पस आणि बेटा सर्व विहिरी आहेत, जे क्लॅस एक्टिनोप्टेरिगिई च्या अंतर्गत येतात. उभयचरांच्या जीवनाच्या चक्रात जलीय आणि थलजीवी पाने असतात, जे बगदाड दर्शवतात. विहिरी वर्तमान काळात फक्त पाण्यात राहतात आणि श्वास घेण्यासाठी त्यांच्याकडे किरण असतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the scientific terminology used in Marathi textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Incorrectly identifies a bony fish as an amphibian",
+        "Incorrectly identifies a bony fish as an amphibian",
+        "Incorrectly identifies a bony fish as an amphibian",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is Rana (frog), which is an amphibian. Clarias, Hippocampus, and Betta are all bony fish, so the reasoning is sound. The author's explanation correctly identifies the misconception in the distractors.",
+      "sources": [
+        {
+          "document": "ncert/11/biology/kebo104.pdf",
+          "ordinal": 9,
+          "pageStart": 12,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 4: Animal Kingdom",
+            "HAPTER"
+          ]
+        },
+        {
+          "document": "ncert/11/biology/kebo104.pdf",
+          "ordinal": 10,
+          "pageStart": 13,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 4: Animal Kingdom",
+            "HAPTER"
+          ]
+        },
+        {
+          "document": "ncert/11/biology/kebo104.pdf",
+          "ordinal": 11,
+          "pageStart": 15,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 4: Animal Kingdom",
+            "HAPTER"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-23T07:28:27.619Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "Which of the following animals has a body cavity lined by mesoderm?",
+      "choices": [
+        "Sponge",
+        "Roundworm",
+        "Earthworm",
+        "Flatworm"
+      ],
+      "answerIndex": 2,
+      "solution": "Earthworms have a body cavity lined by mesoderm, making them coelomates. Sponges and flatworms lack a body cavity entirely, while roundworms have a body cavity that is not fully lined by mesoderm, classifying them as pseudocoelomates.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से किस जीव के शरीर की गुहा मेसोडर्म द्वारा आच्छादित होती है?",
+          "choices": [
+            "स्पंज",
+            "गोलकृमि",
+            "केंचुआ",
+            "समतल कृमि"
+          ],
+          "solution": "केंचुआ की शरीर की गुहा मेसोडर्म द्वारा आच्छादित होती है, जिसके कारण ये कोएलोमेट्स होते हैं। स्पंज और समतल कृमि पूरी तरह से शरीर की गुहा के बिना होते हैं, जबकि गोलकृमि के पास एक शरीर की गुहा होती है जो पूरी तरह से मेसोडर्म द्वारा आच्छादित नहीं होती है, जिसके कारण उन्हें प्रतिकृति कोएलोमेट्स कहा जाता है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate biological terminology as used in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणत्या जीवाचे शरीर गोली असते जे मेसोडर्म द्वारे झाकलेली असते?",
+          "choices": [
+            "स्पंज",
+            "वृत्तकृमी",
+            "खोकला",
+            "सपाटकृमी"
+          ],
+          "solution": "खोकल्यांचे शरीर गोली असते जे मेसोडर्म द्वारे झाकलेली असते, ज्यामुळे ते कोएलोमेट्स म्हणून वर्गीकृत केले जातात. स्पंज आणि सपाटकृमी एकही शरीर गोली नसते, तर वृत्तकृमी असे शरीर गोली असते जी मेसोडर्म द्वारे पूर्णपणे झाकलेली नसते, ज्यामुळे त्यांना पूस्डोकॉएलोमेट्स म्हणून वर्गीकृत केले जाते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the scientific terminology used in Marathi textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses sponge with coelomate",
+        "Confuses roundworm with coelomate",
+        null,
+        "Confuses flatworm with coelomate"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is Earthworm (option 2), as it is an annelid and thus a coelomate. The author's reasoning is accurate, and the misconceptions listed for the wrong options are valid.",
+      "sources": [
+        {
+          "document": "ncert/11/biology/kebo104.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 4: Animal Kingdom",
+            "HAPTER"
+          ]
+        },
+        {
+          "document": "ncert/11/biology/kebo104.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 4: Animal Kingdom",
+            "HAPTER"
+          ]
+        },
+        {
+          "document": "ncert/11/biology/kebo104.pdf",
+          "ordinal": 2,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 4: Animal Kingdom",
+            "HAPTER"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-23T07:28:27.619Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "Which phylum includes organisms that have a chitinous exoskeleton and jointed appendages?",
+      "choices": [
+        "Annelida",
+        "Arthropoda",
+        "Mollusca",
+        "Platyhelminthes"
+      ],
+      "answerIndex": 1,
+      "solution": "Annelida includes segmented worms like Nereis, which have a soft body and no exoskeleton. Mollusca includes animals like snails and clams, which have a calcareous shell but no exoskeleton. Platyhelminthes includes flatworms, which are soft-bodied and lack an exoskeleton. Arthropoda includes insects, spiders, and crustaceans, which have a chitinous exoskeleton and jointed appendages.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "कौन सा वर्ग ऐसे जीवों को सम्मिलित करता है जिनके पास काइटिन वाला बाह्य कंकाल और संयुक्त अंग होते हैं?",
+          "choices": [
+            "आनेलिडा",
+            "आर्थ्रोपोडा",
+            "मोलस्का",
+            "प्लैटीहेलमिंथेस"
+          ],
+          "solution": "आनेलिडा में नीरिस जैसे वृत्ताकार कीट होते हैं जिनका नरम शरीर होता है और कोई बाह्य कंकाल नहीं होता। मोलस्का में सैल और मोलस्का जैसे जीव होते हैं जिनका चूना वाला खोल होता है लेकिन कोई बाह्य कंकाल नहीं होता। प्लैटीहेलमिंथेस में फ्लैटवर्म होते हैं जिनका नरम शरीर होता है और कोई बाह्य कंकाल नहीं होता। आर्थ्रोपोडा में कीट, मकड़ियां और क्रस्टेशियन होते हैं जिनका काइटिन वाला बाह्य कंकाल और संयुक्त अंग होते हैं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, technical terms are correctly rendered in Hindi, and the solution matches the original.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "कोणत्या प्राणी वर्गात चिटिनस बाह्यकंठ आणि जोडलेले अवयव असलेले सजीव समाविष्ट आहेत?",
+          "choices": [
+            "अन्नेलिडा",
+            "अर्थ्रोपोडा",
+            "मोलस्का",
+            "प्लॅटीहेल्मिंथेस"
+          ],
+          "solution": "अन्नेलिडा वर्गात विभागलेले कीटक असतात जसे की नेरिस, ज्यांचे नरम शरीर असते आणि कोणताही बाह्यकंठ नसतो. मोलस्का वर्गात गोळी आणि क्लॅम्स सारखे प्राणी असतात, ज्यांचे कॅल्सियम कार्बोनेट असलेले खोकले असतात पण कोणताही बाह्यकंठ नसतो. प्लॅटीहेल्मिंथेस वर्गात तलक बीज असतात, ज्यांचे नरम शरीर असते आणि कोणताही बाह्यकंठ नसतो. अर्थ्रोपोडा वर्गात कीटक, माकड आणि खार्या पाण्याचे प्राणी असतात, ज्यांचे चिटिनस बाह्यकंठ आणि जोडलेले अवयव असतात.",
+          "imageAlt": null,
+          "critique": "The Marathi translation accurately reflects the English content with appropriate biological terminology used in Marathi textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses Annelida with Arthropoda",
+        null,
+        "Confuses Mollusca with Arthropoda",
+        "Confuses Platyhelminthes with Arthropoda"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is Arthropoda, which is correctly identified in the author's key. The explanation provided is accurate and matches the biological characteristics of the phyla. The distractors are all plausible misconceptions that students might have.",
+      "sources": [
+        {
+          "document": "ncert/11/biology/kebo104.pdf",
+          "ordinal": 3,
+          "pageStart": 4,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 4: Animal Kingdom",
+            "HAPTER"
+          ]
+        },
+        {
+          "document": "ncert/11/biology/kebo104.pdf",
+          "ordinal": 4,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 4: Animal Kingdom",
+            "HAPTER"
+          ]
+        },
+        {
+          "document": "ncert/11/biology/kebo104.pdf",
+          "ordinal": 5,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 4: Animal Kingdom",
+            "HAPTER"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-23T07:28:27.619Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "Which of the following is an example of a Coelenterate?",
+      "choices": [
+        "Nereis",
+        "Taenia",
+        "Adamsia",
+        "Ascaris"
+      ],
+      "answerIndex": 2,
+      "solution": "Nereis is an annelid, Taenia is a flatworm, and Ascaris is a roundworm. Adamsia is a sea anemone, which is a Coelenterate. Coelenterates, also known as Cnidarians, include organisms like sea anemones, jellyfish, and corals.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन एक कोएलेंटेरेट का उदाहरण है?",
+          "choices": [
+            "नेरिस",
+            "टेनिया",
+            "एडम्सिया",
+            "एस्कैरिस"
+          ],
+          "solution": "नेरिस एक कृमि है, टेनिया एक फ्लैटवार्म है, और एस्कैरिस एक गोल कृमि है। एडम्सिया एक समुद्री एनीमोन है, जो कि एक कोएलेंटेरेट है। कोएलेंटेरेट, जिन्हें निडारियन भी कहा जाता है, में समुद्री एनीमोन, जेलीफिश और मूंगा जैसे जीव शामिल होते हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the original English question and solution, with appropriate biological terminology used in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोलेंटेरेटचा उदाहरण कोणते आहे?",
+          "choices": [
+            "नेरिस",
+            "टेनिया",
+            "अडम्सिया",
+            "अस्कॅरिस"
+          ],
+          "solution": "नेरिस एक एनिलिड आहे, टेनिया एक फ्लॅटवर्म आहे आणि अस्कॅरिस एक राउंडवर्म आहे. अडम्सिया एक समुद्र एनिमोन आहे, जो कोलेंटेरेट आहे. कोलेंटेरेट्स, ज्यांना निडारियन्स म्हणतात, त्यामध्ये समुद्र एनिमोन, जेलीफिश आणि कॉरल अशा संस्थांचा समावेश होतो.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi biological terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses Annelida with Coelenterata",
+        "Confuses Platyhelminthes with Coelenterata",
+        null,
+        "Confuses Aschelminthes with Coelenterata"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly identifies Adamsia as a coelenterate (cnidarian) and correctly eliminates the other options, which belong to different phyla. The reasons for the wrong options align with common student misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/11/biology/kebo104.pdf",
+          "ordinal": 3,
+          "pageStart": 4,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 4: Animal Kingdom",
+            "HAPTER"
+          ]
+        },
+        {
+          "document": "ncert/11/biology/kebo104.pdf",
+          "ordinal": 4,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 4: Animal Kingdom",
+            "HAPTER"
+          ]
+        },
+        {
+          "document": "ncert/11/biology/kebo104.pdf",
+          "ordinal": 5,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 4: Animal Kingdom",
+            "HAPTER"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-23T07:28:27.619Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "Which of the following is a characteristic of echinoderms?",
+      "choices": [
+        "Presence of a notochord",
+        "Bilateral symmetry in adults",
+        "Water vascular system",
+        "Hinged jaw"
+      ],
+      "answerIndex": 2,
+      "solution": "Echinoderms have a water vascular system, which is a defining feature of this group. Unlike bilaterally symmetrical animals, echinoderms are radially symmetrical as adults. They lack a notochord and hinged jaws, which are characteristics of other animal groups.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा एक एकिनोडर्म की विशेषता है?",
+          "choices": [
+            "नोटोकॉर्ड की उपस्थिति",
+            "वयस्कों में द्विपार्श्विक सममिति",
+            "जल वास्कुलर प्रणाली",
+            "हिंज जबड़ा"
+          ],
+          "solution": "एकिनोडर्म में जल वास्कुलर प्रणाली होती है, जो इस समूह की निर्णायक विशेषता है। द्विपार्श्विक सममिति वाले जीवों के विपरीत, एकिनोडर्म वयस्कों में चक्रीय रूप से सममित होते हैं। इनमें नोटोकॉर्ड और हिंज जबड़े नहीं होते हैं, जो अन्य जीव समूहों की विशेषताएं हैं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriately translated, and the correct answer remains in the same position.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते एकीनोडर्मचे लक्षण आहे?",
+          "choices": [
+            "नॉटोकॉर्डची उपस्थिती",
+            "प्रौढांमध्ये द्विपार्श्विक सममिती",
+            "जल वास्कुलर प्रणाली",
+            "हिंगेड जब"
+          ],
+          "solution": "एकीनोडर्ममध्ये जल वास्कुलर प्रणाली असते, जी या समूहाचे निर्णायक लक्षण आहे. द्विपार्श्विक सममिती असलेल्या प्राण्यांपेक्षा, एकीनोडर्म प्रौढांमध्ये वृत्ताकार सममिती असतात. त्यांच्याकडे नॉटोकॉर्ड आणि हिंगेड जब नसतात, जे इतर प्राणी समूहांचे लक्षण आहेत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for biological concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses chordate features with echinoderms",
+        "Confuses symmetry in echinoderms",
+        null,
+        "Confuses echinoderms with fish or other animals that have jaws"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies the water vascular system as a unique feature of echinoderms and explains why the other options are incorrect. The reasoning aligns with standard biological knowledge.",
+      "sources": [
+        {
+          "document": "ncert/11/biology/kebo104.pdf",
+          "ordinal": 6,
+          "pageStart": 8,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 4: Animal Kingdom",
+            "HAPTER"
+          ]
+        },
+        {
+          "document": "ncert/11/biology/kebo104.pdf",
+          "ordinal": 7,
+          "pageStart": 9,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 4: Animal Kingdom",
+            "HAPTER"
+          ]
+        },
+        {
+          "document": "ncert/11/biology/kebo104.pdf",
+          "ordinal": 8,
+          "pageStart": 11,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 4: Animal Kingdom",
+            "HAPTER"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-23T07:28:27.619Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "A student is given a list of organisms and asked to classify them based on the presence of a coelom. Which of the following would be classified as coelomate?",
+      "choices": [
+        "Taenia",
+        "Ascaris",
+        "Nereis",
+        "Fasciola"
+      ],
+      "answerIndex": 2,
+      "solution": "Taenia and Fasciola are flatworms, which are acoelomate. Ascaris is a roundworm, which is pseudocoelomate. Nereis is an annelid, which is coelomate. Coelomate animals have a true body cavity lined by mesoderm.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक छात्र को कोशिका की उपस्थिति पर आधारित जीवों की सूची दी जाती है। निम्नलिखित में से कौन-सा एक कोलोमेट के रूप में वर्गीकृत किया जाएगा?",
+          "choices": [
+            "टेनिया",
+            "एस्केरिस",
+            "नेरिस",
+            "फैस्कियोला"
+          ],
+          "solution": "टेनिया और फैस्कियोला फ्लैटवार्म हैं, जो अकोलोमेट हैं। एस्केरिस एक गोलकृमि है, जो प्रतिकोलोमेट है। नेरिस एक एनिलिड है, जो कोलोमेट है। कोलोमेट जीवों में मेसोडर्म द्वारा ढका एक वास्तविक शरीर गुहा होती है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate biological terminology as found in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका विद्यार्थ्याला जीवांच्या यादी दिल्या जातात आणि त्यांना कॉएलोमच्या उपस्थितीवर आधारित वर्गीकरण करण्यास सांगितले जाते. खालीलपैकी कोणता कॉएलोमेट म्हणून वर्गीकृत केला जाईल?",
+          "choices": [
+            "टेनिया",
+            "अस्कॅरिस",
+            "नेरिस",
+            "फॅस्किओला"
+          ],
+          "solution": "टेनिया आणि फॅस्किओला हे समांतर पट्टी आहेत, जे अकॉएलोमेट आहेत. अस्कॅरिस हा गोल कृमी आहे, जो अर्धा कॉएलोमेट आहे. नेरिस हा अनेलिड आहे, जो कॉएलोमेट आहे. कॉएलोमेट प्राणी एक खरा शरीर गोळा असतो जो मेसोडर्म द्वारे वर्णिलेला असतो.",
+          "imageAlt": null,
+          "critique": "Translation is accurate, technical terms match Marathi biology curriculum, and the question structure is preserved.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses acoelomate with coelomate",
+        "Confuses pseudocoelomate with coelomate",
+        null,
+        "Confuses acoelomate with coelomate"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct. Nereis is an annelid and is coelomate, while Taenia and Fasciola are flatworms (acoelomate), and Ascaris is a pseudocoelomate. The reasoning aligns with standard biological classification.",
+      "sources": [
+        {
+          "document": "ncert/11/biology/kebo104.pdf",
+          "ordinal": 3,
+          "pageStart": 4,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 4: Animal Kingdom",
+            "HAPTER"
+          ]
+        },
+        {
+          "document": "ncert/11/biology/kebo104.pdf",
+          "ordinal": 4,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 4: Animal Kingdom",
+            "HAPTER"
+          ]
+        },
+        {
+          "document": "ncert/11/biology/kebo104.pdf",
+          "ordinal": 5,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 4: Animal Kingdom",
+            "HAPTER"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-23T07:28:27.619Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "Which of the following is a unique feature of class Mammalia?",
+      "choices": [
+        "Presence of feathers",
+        "Presence of hair",
+        "Presence of scales",
+        "Presence of gills"
+      ],
+      "answerIndex": 1,
+      "solution": "The presence of hair is a unique feature of mammals, distinguishing them from other animal classes. Feathers are found in birds, scales in reptiles, and gills in fish, which are not characteristics of mammals.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सी वर्ग मम्मेलिया की एक विशिष्ट विशेषता है?",
+          "choices": [
+            "पंखों की उपस्थिति",
+            "बालों की उपस्थिति",
+            "कलियों की उपस्थिति",
+            "गलफूसों की उपस्थिति"
+          ],
+          "solution": "बालों की उपस्थिति स्तनधारियों की एक विशिष्ट विशेषता है, जो उन्हें अन्य जानवरों के वर्गों से अलग करती है। पंख पक्षियों में पाए जाते हैं, कलियाँ सांपों में और गलफूस मछलियों में, जो स्तनधारियों की विशेषताएं नहीं हैं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, technical terms are appropriately used in Hindi, and the question structure matches the original.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते वर्ग Mammalia चे विशिष्ट लक्षण आहे?",
+          "choices": [
+            "पावलांची उपस्थिती",
+            "लोंबांची उपस्थिती",
+            "क्ल्वांची उपस्थिती",
+            "किरणांची उपस्थिती"
+          ],
+          "solution": "लोंबांची उपस्थिती हे स्तनपायींचे विशिष्ट लक्षण आहे, जे इतर प्राणी वर्गांपासून त्यांना वेगळे करते. पावले पक्षींमध्ये आढळतात, क्ल्व रिप्टाइल्समध्ये आणि किरण जलचरांमध्ये, जे स्तनपायींचे लक्षण नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terms for biological features.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses birds with mammals",
+        null,
+        "Confuses reptiles with mammals",
+        "Confuses fish with mammals"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct and aligns with biological knowledge. Hair is a unique feature of mammals, and the other options correspond to other classes as stated.",
+      "sources": [
+        {
+          "document": "ncert/11/biology/kebo104.pdf",
+          "ordinal": 9,
+          "pageStart": 12,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 4: Animal Kingdom",
+            "HAPTER"
+          ]
+        },
+        {
+          "document": "ncert/11/biology/kebo104.pdf",
+          "ordinal": 10,
+          "pageStart": 13,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 4: Animal Kingdom",
+            "HAPTER"
+          ]
+        },
+        {
+          "document": "ncert/11/biology/kebo104.pdf",
+          "ordinal": 11,
+          "pageStart": 15,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 4: Animal Kingdom",
+            "HAPTER"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-23T07:28:27.619Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "In a classification of animals, a phylum is grouped with others based on the presence of a coelom. Which of the following is most likely to be the phylum that has a body cavity lined by mesoderm?",
+      "choices": [
+        "Porifera",
+        "Nematoda",
+        "Annelida",
+        "Platyhelminthes"
+      ],
+      "answerIndex": 2,
+      "solution": "Annelida is the correct answer because they possess a true coelom, which is a body cavity completely lined by mesoderm. Porifera and Platyhelminthes lack a coelom entirely, making them acoelomates. Nematoda have a pseudocoelom, which is not fully lined by mesoderm, so they are not considered true coelomates.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "जीवों के वर्गीकरण में, एक फाइलम को अन्य फाइलमों के साथ एक कोएलोम की उपस्थिति के आधार पर समूहित किया जाता है। निम्नलिखित में से कौन-सा फाइलम सबसे अधिक संभावना है जिसके शरीर की गुहा मेसोडर्म द्वारा लाइन की गई हो?",
+          "choices": [
+            "पोरिफेरा",
+            "नेमाटोडा",
+            "एनिलिडा",
+            "प्लैटीहेल्मिंथेस"
+          ],
+          "solution": "एनिलिडा सही उत्तर है क्योंकि उनके पास एक वास्तविक कोएलोम होता है, जो एक शरीर की गुहा है जो पूरी तरह से मेसोडर्म द्वारा लाइन की गई होती है। पोरिफेरा और प्लैटीहेल्मिंथेस पूरी तरह से कोएलोम के बिना होते हैं, जिसके कारण वे अकोएलोमेट्स कहलाते हैं। नेमाटोडा के पास एक प्रतिरूप कोएलोम होता है, जो मेसोडर्म द्वारा पूरी तरह से लाइन नहीं किया जाता है, इसलिए उन्हें वास्तविक कोएलोमेट्स माना नहीं जाता है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the scientific terminology used in Hindi textbooks, and preserves the structure and meaning of the original question.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "प्राण्यांच्या वर्गीकरणात, एक कॉएलम असल्याच्या उपस्थितीवर आधारित फायलम इतरांसह एकत्रित केले जातात. खालीलपैकी कोणते फायलम असे असण्याची शक्यता सर्वात जास्त आहे ज्याच्या शरीराच्या गोळ्याचे अंतर्भाग मेसोडर्मद्वारे व्यापलेले असते?",
+          "choices": [
+            "पोरिफेरा",
+            "नेमॅटोडा",
+            "एन्नेलिडा",
+            "प्लॅटिहेलमिंथेस"
+          ],
+          "solution": "एन्नेलिडा हा बरोबर उत्तर आहे कारण त्यांच्याकडे खरा कॉएलम असतो, जो शरीराच्या गोळ्याच्या पूर्णपणे मेसोडर्मद्वारे व्यापलेला असतो. पोरिफेरा आणि प्लॅटिहेलमिंथेस ला कॉएलम एकूणच नसतो, ज्यामुळे ते अकॉएलोमेट्स म्हणून ओळखले जातात. नेमॅटोडाला प्रतिकूल कॉएलम असतो, जो पूर्णपणे मेसोडर्मद्वारे व्यापलेला नसतो, त्यामुळे त्यांना खरा कॉएलोमेट मानले जात नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the scientific terminology appropriate for a Marathi-medium biology curriculum.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses porifera with coelomate",
+        "Confuses nematoda with coelomate",
+        null,
+        "Confuses platyhelminthes with coelomate"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies Annelida as coelomates, with a body cavity lined by mesoderm. The other options are correctly identified as acoelomates or pseudocoelomates.",
+      "sources": [
+        {
+          "document": "ncert/11/biology/kebo104.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 4: Animal Kingdom",
+            "HAPTER"
+          ]
+        },
+        {
+          "document": "ncert/11/biology/kebo104.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 4: Animal Kingdom",
+            "HAPTER"
+          ]
+        },
+        {
+          "document": "ncert/11/biology/kebo104.pdf",
+          "ordinal": 2,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 4: Animal Kingdom",
+            "HAPTER"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-23T07:28:27.619Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
     }
   ]
 }

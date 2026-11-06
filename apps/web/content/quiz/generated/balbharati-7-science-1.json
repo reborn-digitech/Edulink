@@ -1053,6 +1053,671 @@
       "generatedAt": "2026-11-02T03:14:48.860Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "Which of the following is a characteristic of desert plants?",
+      "choices": [
+        "They have large, broad leaves",
+        "They have thin, ribbon-like leaves",
+        "They lose a lot of water through evaporation",
+        "They have a thick waxy layer on their stems"
+      ],
+      "answerIndex": 3,
+      "solution": "Desert plants have a thick waxy layer on their stems to reduce water loss. This is an adaptation to the arid environment. The other options describe features of aquatic or other types of plants, not desert plants.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सी विशेषता रेगिस्तान के पौधों की होती है?",
+          "choices": [
+            "उनके पास बड़े, चौड़े पत्ते होते हैं",
+            "उनके पास पतले, रिबन के आकार के पत्ते होते हैं",
+            "वे वाष्पीकरण के माध्यम से बहुत सारा पानी खो देते हैं",
+            "उनके तनों पर एक मोटी मोम की परत होती है"
+          ],
+          "solution": "रेगिस्तान के पौधों के तनों पर मोटी मोम की परत होती है जो पानी के नुकसान को कम करती है। यह शुष्क वातावरण के अनुकूलन के लिए होता है। अन्य विकल्प जलीय या अन्य प्रकार के पौधों की विशेषताएं बताते हैं, रेगिस्तान के पौधों की नहीं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriate for Hindi-medium curriculum.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खराबीतील वनस्पतींची खालीलपैकी कोणती वैशिष्ट्ये आहेत?",
+          "choices": [
+            "त्यांच्याकडे मोठ्या, विस्तृत पाने असतात",
+            "त्यांच्याकडे थरथरीत, रिबन-आकाराची पाने असतात",
+            "त्यांनी वाफ बनवून बरेच पाणी गमावतात",
+            "त्यांच्या तीक्ष्णावर जास्त मोठा मोमाचा थर असतो"
+          ],
+          "solution": "खराबीतील वनस्पतींच्या तीक्ष्णावर जास्त मोठा मोमाचा थर असतो, जेणेकरून पाण्याचा निर्वहन कमी होतो. हे शुष्क वातावरणातील समायोजन आहे. इतर विकल्पांमध्ये जलीय किंवा इतर प्रकारच्या वनस्पतींच्या वैशिष्ट्यांचे वर्णन आहे, खराबीतील वनस्पतींचे नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for botanical concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses desert plants with aquatic plants",
+        "Confuses desert plants with aquatic plants",
+        "Misunderstands the purpose of adaptations in desert plants, thinking they lose more water than they actually do",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 3, as desert plants have a thick waxy layer to reduce water loss. The other options are incorrect and represent common misconceptions about plant adaptations.",
+      "sources": [
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 10,
+          "pageStart": 11,
+          "pageEnd": 12,
+          "headingPath": [
+            "1. The Living World : Adaptations and Classification"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 11,
+          "pageStart": 12,
+          "pageEnd": 13,
+          "headingPath": [
+            "1. The Living World : Adaptations and Classification"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 12,
+          "pageStart": 13,
+          "pageEnd": 14,
+          "headingPath": [
+            "1. The Living World : Adaptations and Classification"
+          ]
+        }
+      ],
+      "edition": "First Edition 2017",
+      "generatedAt": "2026-10-31T15:43:05.856Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of the following is an example of an adaptation in aquatic plants?",
+      "choices": [
+        "They have fibrous roots",
+        "They have leaves with a waxy layer",
+        "They have long, deep roots",
+        "They have thick stems for storing water"
+      ],
+      "answerIndex": 1,
+      "solution": "Aquatic plants have leaves with a waxy layer to prevent them from rotting in water. This is an adaptation to their aquatic environment. The other options describe features of desert or terrestrial plants, not aquatic ones.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा जलीय पौधों में अनुकूलन का उदाहरण है?",
+          "choices": [
+            "उनके पास रेशेदार जड़ें होती हैं",
+            "उनके पत्ते वाले परत वाले होते हैं",
+            "उनके पास लंबी, गहरी जड़ें होती हैं",
+            "उनके मोटे तने पानी के भंडारण के लिए होते हैं"
+          ],
+          "solution": "जलीय पौधों के पत्ते वाले परत वाले होते हैं ताकि पानी में डूबकर खराब न हो जाएं। यह उनके जलीय वातावरण के अनुकूलन है। अन्य विकल्प रेगिस्तान या भूमि पौधों की विशेषताओं का वर्णन करते हैं, जलीय पौधों के नहीं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, with appropriate Hindi terminology used for biological concepts.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते जलीय वनस्पतींमधील समायोजनाचे उदाहरण आहे?",
+          "choices": [
+            "त्यांना फाइबरस जडे असतात",
+            "त्यांना वाळू वर असलेल्या पानांचा पर्पटी असतो",
+            "त्यांना लांब, खोल जडे असतात",
+            "त्यांना पाणी साठवण्यासाठी मोठे तंतू असतात"
+          ],
+          "solution": "जलीय वनस्पतींच्या पानांमध्ये वाळू वर असलेल्या पर्पटी असते, जेणेकरून ते पाण्यात विघटित होऊ नयेत. हे त्यांच्या जलीय वातावरणासाठी समायोजन आहे. इतर विकल्पांमध्ये रेगिस्तान किंवा भूमिक वनस्पतींच्या वैशिष्ट्यांचे वर्णन आहे, जलीय वनस्पतींचे नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi botanical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Describes a feature of desert plants",
+        null,
+        "Confuses desert plant adaptations with aquatic ones",
+        "Confuses desert plant adaptations with aquatic ones"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 1, as aquatic plants have a waxy layer on their leaves to prevent water loss and rot. The other options describe adaptations of desert or terrestrial plants, which aligns with the author's reasoning.",
+      "sources": [
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 10,
+          "pageStart": 11,
+          "pageEnd": 12,
+          "headingPath": [
+            "1. The Living World : Adaptations and Classification"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 11,
+          "pageStart": 12,
+          "pageEnd": 13,
+          "headingPath": [
+            "1. The Living World : Adaptations and Classification"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 12,
+          "pageStart": 13,
+          "pageEnd": 14,
+          "headingPath": [
+            "1. The Living World : Adaptations and Classification"
+          ]
+        }
+      ],
+      "edition": "First Edition 2017",
+      "generatedAt": "2026-10-31T15:43:05.856Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "A student observed that a cactus has small, needle-like leaves and a fleshy stem. What is the most likely reason for this adaptation?",
+      "choices": [
+        "To attract insects for pollination",
+        "To reduce water loss through evaporation",
+        "To increase the surface area for photosynthesis",
+        "To store more sunlight for energy"
+      ],
+      "answerIndex": 1,
+      "solution": "The cactus has small, needle-like leaves and a fleshy stem to reduce water loss through evaporation. This is an adaptation to the desert environment where water is scarce. The other options are not relevant to the cactus's survival in arid conditions.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक छाता ने देखा कि एक कैक्टस में छोटे, सुई के आकार के पत्ते और मांसल तना है। इस अनुकूलन के लिए सबसे संभावित कारण क्या है?",
+          "choices": [
+            "परागण के लिए कीटों को आकर्षित करना",
+            "वाष्पीकरण के माध्यम से पानी के नुकसान को कम करना",
+            "प्रकाश संश्लेषण के लिए सतह क्षेत्र को बढ़ाना",
+            "ऊर्जा के लिए अधिक सूर्य प्रकाश संग्रहित करना"
+          ],
+          "solution": "कैक्टस में छोटे, सुई के आकार के पत्ते और मांसल तना वाष्पीकरण के माध्यम से पानी के नुकसान को कम करने के लिए होते हैं। यह एक रेगिस्तानी पर्यावरण में पानी की कमी के लिए अनुकूलन है। अन्य विकल्प रेगिस्तानी स्थितियों में कैक्टस के जीवित रहने के लिए संबंधित नहीं हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. All options and the solution are correctly translated, with the correct answer remaining in the same position. The technical terms used are appropriate for a Hindi-medium science curriculum.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका विद्यार्थ्याने नोंदवले की एका कॅक्टसमध्ये लहान, सुईसारखे पाने आणि मांसल तंतू आहेत. ह्या अनुकूलनाचा सर्वात शक्य कारण काय असू शकते?",
+          "choices": [
+            "परागणासाठी कीटकांना आकर्षित करण्यासाठी",
+            "वाफ बनवून पाणी गमावण्याचा घटक कमी करण्यासाठी",
+            "प्रकाशसंश्लेषणासाठी सतह क्षेत्र वाढवण्यासाठी",
+            "ऊर्जेसाठी जास्तीत जास्त सूर्यप्रकाश जमा करण्यासाठी"
+          ],
+          "solution": "कॅक्टसमध्ये लहान, सुईसारखे पाने आणि मांसल तंतू वाफ बनवून पाणी गमावण्याचा घटक कमी करण्यासाठी असतात. हे विशाल वाळवंटातील पाणी अल्पतेच्या परिस्थितीत जीवन टिकवून ठेवण्याचे अनुकूलन आहे. इतर विकल्प वाळवंटातील कॅक्टसच्या जीवनासाठी अनुरूप नाहीत.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate and maintains the original meaning, with appropriate terminology used in a Marathi-medium science context.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the purpose of leaf shape with pollination",
+        null,
+        "Misunderstands the role of fleshy stems in water storage and photosynthesis",
+        "Believes that reducing surface area helps in photosynthesis, which is incorrect in this context."
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 1, as cacti have small leaves and fleshy stems to minimize water loss in arid environments. The other options reflect common misconceptions about plant adaptations.",
+      "sources": [
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 10,
+          "pageStart": 11,
+          "pageEnd": 12,
+          "headingPath": [
+            "1. The Living World : Adaptations and Classification"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 11,
+          "pageStart": 12,
+          "pageEnd": 13,
+          "headingPath": [
+            "1. The Living World : Adaptations and Classification"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 12,
+          "pageStart": 13,
+          "pageEnd": 14,
+          "headingPath": [
+            "1. The Living World : Adaptations and Classification"
+          ]
+        }
+      ],
+      "edition": "First Edition 2017",
+      "generatedAt": "2026-10-31T15:43:05.856Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "Which of the following adaptations helps a bird fly efficiently?",
+      "choices": [
+        "Tapering slender body",
+        "Webbed toes",
+        "Waxy feathers",
+        "Slippery skin"
+      ],
+      "answerIndex": 0,
+      "solution": "The correct answer is a tapering slender body, which helps reduce air resistance and enables efficient flight. Webbed toes help in swimming, waxy feathers help in staying dry, and slippery skin is not a feature of birds.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा अनुकूलन पक्षी के उड़ान को कुशलतापूर्वक करने में सहायता करता है?",
+          "choices": [
+            "तीखे बल्ब वाला शरीर",
+            "जालदार पैर",
+            "मोम वाले पंख",
+            "चिकनी त्वचा"
+          ],
+          "solution": "सही उत्तर तीखे बल्ब वाला शरीर है, जो हवा के प्रतिरोध को कम करता है और कुशल उड़ान की अनुमति देता है। जालदार पैर तैरने में सहायता करते हैं, मोम वाले पंख नमी से बचाते हैं, और चिकनी त्वचा पक्षियों की विशेषता नहीं है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, technical terms match standard Hindi biology terminology, and the logic of the question and solution is preserved.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणती समायोजने एका पक्ष्याला लहान वाटत उडण्यास मदत करते?",
+          "choices": [
+            "तीक्ष्ण निर्वाहक शरीर",
+            "पाणी चालविणारे पाय",
+            "मोमाचे अंगवस्त्र",
+            "खोल त्वचा"
+          ],
+          "solution": "योग्य उत्तर हा तीक्ष्ण निर्वाहक शरीर आहे, जे हवेच्या प्रतिरोधाला कमी करते आणि उडण्यास लहान वाटत उडण्यास मदत करते. पाणी चालविणारे पाय तरुण चालण्यास मदत करतात, मोमाचे अंगवस्त्र पाण्यात राहण्यास मदत करतात आणि खोल त्वचा पक्ष्यांची वैशिष्ट्य नाही.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate terminology used in Marathi science textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses adaptation for swimming with flying",
+        "Confuses adaptation for water resistance with flying",
+        "Confuses adaptation for staying dry with flying"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 0, as a tapering slender body reduces air resistance and aids flight. The other options are incorrect: webbed toes aid swimming, waxy feathers help with water resistance, and birds do not have slippery skin.",
+      "sources": [
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 13,
+          "pageStart": 14,
+          "pageEnd": 15,
+          "headingPath": [
+            "1. The Living World : Adaptations and Classification"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 14,
+          "pageStart": 15,
+          "pageEnd": 17,
+          "headingPath": [
+            "1. The Living World : Adaptations and Classification"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 15,
+          "pageStart": 17,
+          "pageEnd": 18,
+          "headingPath": [
+            "1. The Living World : Adaptations and Classification"
+          ]
+        }
+      ],
+      "edition": "First Edition 2017",
+      "generatedAt": "2026-10-31T15:43:05.856Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "What is the purpose of the conical shape of trees in snowy regions?",
+      "choices": [
+        "To store more water",
+        "To absorb more sunlight",
+        "To prevent snow accumulation",
+        "To grow taller"
+      ],
+      "answerIndex": 2,
+      "solution": "The conical shape of trees in snowy regions helps prevent snow from accumulating on the tree, which could damage the branches. This is an adaptation to the heavy snowfall in such areas. The other options describe unrelated functions.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "हिम वाले क्षेत्रों में वृक्षों के शंक्वाकार आकार का उद्देश्य क्या है?",
+          "choices": [
+            "अधिक पानी भंडारित करना",
+            "अधिक सूर्य प्रकाश अवशोषित करना",
+            "हिम जमाव को रोकना",
+            "अधिक ऊंचा बढ़ना"
+          ],
+          "solution": "हिम वाले क्षेत्रों में वृक्षों के शंक्वाकार आकार के कारण हिम शाखाओं पर जमा नहीं होता, जो शाखाओं को नुकसान पहुंचा सकता है। यह ऐसे क्षेत्रों में भारी बर्फबारी के लिए एक अनुकूलन है। अन्य विकल्प असंबंधित कार्यों का वर्णन करते हैं।",
+          "imageAlt": null,
+          "critique": "The translation accurately reflects the original meaning, with appropriate Hindi terminology used for biological concepts.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "बर्फील्या भागातील झाडांच्या शंकू आकृतीचा उद्देश काय आहे?",
+          "choices": [
+            "अधिक पाणी जमा करणे",
+            "अधिक सूर्यप्रकाश शोषण करणे",
+            "बर्फ जमा होणे टाळणे",
+            "अधिक उंच वाढणे"
+          ],
+          "solution": "बर्फील्या भागातील झाडांच्या शंकू आकृतीमुळे झाडावर बर्फ जमा होणे टाळले जाते, जे डांबरांना नुकसान पोहोचू शकते. ही अशा भागातील भारी बर्फ पाऊसासाठी अनुकूलन आहे. इतर विकल्पांमध्ये असंबंधित कार्य वर्णन केले आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for biological concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the purpose of tree shape",
+        "Misunderstands the function of conical shape",
+        null,
+        "Confuses adaptation with growth patterns"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies the conical shape's purpose as preventing snow accumulation, and the reasoning for the wrong options aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 10,
+          "pageStart": 11,
+          "pageEnd": 12,
+          "headingPath": [
+            "1. The Living World : Adaptations and Classification"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 11,
+          "pageStart": 12,
+          "pageEnd": 13,
+          "headingPath": [
+            "1. The Living World : Adaptations and Classification"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 12,
+          "pageStart": 13,
+          "pageEnd": 14,
+          "headingPath": [
+            "1. The Living World : Adaptations and Classification"
+          ]
+        }
+      ],
+      "edition": "First Edition 2017",
+      "generatedAt": "2026-10-31T15:43:05.856Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "A student observes that an animal has a white body and long, thick hair. Which environment is this animal most likely adapted to?",
+      "choices": [
+        "Desert",
+        "Forest",
+        "Snowy region",
+        "Grassland"
+      ],
+      "answerIndex": 2,
+      "solution": "The correct answer is a snowy region because white body color and long, thick hair help an animal stay warm and blend in with snow. Deserts are hot, so animals there usually have features for heat resistance, not insulation. Forests and grasslands have environments that require different types of camouflage, not white coloration.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक छात्र देखता है कि एक जानवर का शरीर सफेद है और लंबे मोटे बाल हैं। यह जानवर किस पर्यावरण में अधिक संभावना से अनुकूलित है?",
+          "choices": [
+            "मरुस्थल",
+            "जंगल",
+            "हिमांकित क्षेत्र",
+            "घास के मैदान"
+          ],
+          "solution": "सही उत्तर हिमांकित क्षेत्र है क्योंकि सफेद शरीर रंग और लंबे मोटे बाल जानवर को गर्म रखने और बर्फ के साथ मिल जाने में मदद करते हैं। मरुस्थल गर्म होते हैं, इसलिए वहां के जानवर आमतौर पर गर्मी के विरुद्ध रक्षा के लिए विशेषताओं के साथ होते हैं, न कि ऊष्मारोधन के लिए। जंगल और घास के मैदान में वातावरण अलग प्रकार के छिपाव की आवश्यकता करते हैं, सफेद रंग की आवश्यकता नहीं होती।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains original meaning, and uses appropriate Hindi terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका विद्यार्थ्याला असा जीव दिसतो की त्याचा शरीर फिकट असून लांब, मोठे वाल असतात. हा जीव कोणत्या वातावरणासाठी अधिक अनुकूलित असू शकतो?",
+          "choices": [
+            "मरुभूमी",
+            "जंगल",
+            "हिमाच्छादित क्षेत्र",
+            "मैदान"
+          ],
+          "solution": "हिमाच्छादित क्षेत्र हा योग्य उत्तर आहे कारण फिकट शरीर रंग आणि लांब, मोठे वाल जीवाला गरम ठेवतात आणि हिमाच्छादित भागात समायोजित होतात. मरुभूमी उष्ण असतात, त्यामुळे तेथील प्राणी उष्णतेच्या प्रतिरोधासाठी वैशिष्ट्यांचा वापर करतात, नाही की अनुकूलनासाठी. जंगले आणि मैदान अशा वातावरणांमध्ये वेगवेगळ्या प्रकारच्या छलांची आवश्यकता असते, ज्यामध्ये फिकट रंग नसतो.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for biological concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses adaptation for water conservation with snowy regions",
+        "Confuses camouflage with snowy regions",
+        null,
+        "Confuses general blending with snowy regions"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is sound and aligns with the correct answer. The reasoning about white coloration and thick hair for insulation in snowy regions is accurate. The distractors reflect common misconceptions about animal adaptations in other environments.",
+      "sources": [
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 13,
+          "pageStart": 14,
+          "pageEnd": 15,
+          "headingPath": [
+            "1. The Living World : Adaptations and Classification"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 14,
+          "pageStart": 15,
+          "pageEnd": 17,
+          "headingPath": [
+            "1. The Living World : Adaptations and Classification"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 15,
+          "pageStart": 17,
+          "pageEnd": 18,
+          "headingPath": [
+            "1. The Living World : Adaptations and Classification"
+          ]
+        }
+      ],
+      "edition": "First Edition 2017",
+      "generatedAt": "2026-10-31T15:43:05.856Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Why do desert plants like cactus have modified leaves?",
+      "choices": [
+        "To store more water",
+        "To absorb more sunlight",
+        "To reduce water loss",
+        "To attract insects"
+      ],
+      "answerIndex": 2,
+      "solution": "Desert plants like cactus have modified leaves to reduce water loss. This is an adaptation to the dry environment where water is scarce. The other options do not accurately describe the purpose of modified leaves in cacti.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "मरुस्थल के पौधों जैसे कैक्टस में बदले हुए पत्तियां क्यों होती हैं?",
+          "choices": [
+            "अधिक पानी भंडारित करने के लिए",
+            "अधिक सूर्य के प्रकाश को अवशोषित करने के लिए",
+            "पानी के नुकसान को कम करने के लिए",
+            "कीटों को आकर्षित करने के लिए"
+          ],
+          "solution": "मरुस्थल के पौधों जैसे कैक्टस में बदले हुए पत्तियां पानी के नुकसान को कम करने के लिए होती हैं। यह एक शुष्क वातावरण में जल की कमी के लिए अनुकूलन है। अन्य विकल्प कैक्टस में बदले हुए पत्तियों के उद्देश्य को सही ढंग से वर्णित नहीं करते।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, technical terms are appropriately used in Hindi, and the structure matches the original.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "कांटे असलेले वनस्पतींसारख्या रेणू वनस्पतींमध्ये बदललेल्या पानांची कशासाठी आवश्यकता आहे?",
+          "choices": [
+            "अधिक पाणी जमा करण्यासाठी",
+            "अधिक सूर्यप्रकाश शोषण्यासाठी",
+            "पाणी निर्माण कमी करण्यासाठी",
+            "कीटकांना आकर्षित करण्यासाठी"
+          ],
+          "solution": "रेणू वनस्पतींमध्ये कांटे असलेल्या वनस्पतींमध्ये बदललेल्या पानांची आवश्यकता पाणी निर्माण कमी करण्यासाठी आहे. हे एक शुष्क वातावरणातील अनुकूलन आहे जेथे पाणी अल्प आहे. इतर विकल्प बदललेल्या पानांच्या उद्देशाचे योग्य वर्णन करत नाहीत.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the original meaning, and uses appropriate terminology. The correct answer remains in the same position (option 2), and the distractors are still incorrect.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the function of modified leaves with water storage",
+        "Misunderstands the role of leaves in desert plants",
+        null,
+        "Confuses the purpose of modified leaves with attracting insects"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 2, as cactus leaves are modified into spines to reduce water loss, which aligns with the adaptation to arid environments. The other options represent common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 10,
+          "pageStart": 11,
+          "pageEnd": 12,
+          "headingPath": [
+            "1. The Living World : Adaptations and Classification"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 11,
+          "pageStart": 12,
+          "pageEnd": 13,
+          "headingPath": [
+            "1. The Living World : Adaptations and Classification"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 12,
+          "pageStart": 13,
+          "pageEnd": 14,
+          "headingPath": [
+            "1. The Living World : Adaptations and Classification"
+          ]
+        }
+      ],
+      "edition": "First Edition 2017",
+      "generatedAt": "2026-10-31T15:43:05.856Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
     }
   ]
 }

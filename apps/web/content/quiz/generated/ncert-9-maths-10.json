@@ -916,6 +916,493 @@
       "generatedAt": "2026-10-30T00:42:14.590Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is the purpose of a stacked bar chart?",
+      "choices": [
+        "To compare the totals of different categories",
+        "To show the total expenditure of a family as a single bar",
+        "To compare the components that make up the totals of different categories",
+        "To display the exact values of each category individually"
+      ],
+      "answerIndex": 2,
+      "solution": "A stacked bar chart is used to compare the totals of different categories while also showing the components that make up those totals. The other options are incorrect because they either misrepresent the purpose of the chart or describe features of other types of charts. The correct answer highlights both comparison of totals and the breakdown of components.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक स्टैक्ड बार चार्ट का उद्देश्य क्या है?",
+          "choices": [
+            "विभिन्न श्रेणियों के कुल का तुलना करना",
+            "एक परिवार के कुल व्यय को एक बार के रूप में दिखाना",
+            "विभिन्न श्रेणियों के कुल के बने हुए घटकों की तुलना करना",
+            "प्रत्येक श्रेणी के निश्चित मानों को अलग-अलग दिखाना"
+          ],
+          "solution": "एक स्टैक्ड बार चार्ट का उपयोग विभिन्न श्रेणियों के कुल की तुलना करने के साथ-साथ उन कुल के घटकों को दिखाने के लिए किया जाता है। अन्य विकल्प गलत हैं क्योंकि वे चार्ट के उद्देश्य को गलत तरीके से प्रस्तुत करते हैं या अन्य प्रकार के चार्ट के विशेषताओं का वर्णन करते हैं। सही उत्तर कुल की तुलना और घटकों के विश्लेषण को दर्शाता है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology for statistical charts.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "स्टॅक्ड बार चार्टचा उद्देश काय आहे?",
+          "choices": [
+            "विविध वर्गांच्या एकूण बेरीज तुलना करणे",
+            "कुटुंबाचा एकूण खर्च एका बार मध्ये दाखवणे",
+            "विविध वर्गांच्या एकूण बेरीज बनविणाऱ्या घटकांची तुलना करणे",
+            "प्रत्येक वर्गाच्या अचूक मूल्यांचे दर्शन करणे"
+          ],
+          "solution": "स्टॅक्ड बार चार्ट विविध वर्गांच्या एकूण बेरीज तुलना करण्यासाठी आणि त्या एकूण बेरीज बनविणाऱ्या घटकांचे दर्शन करण्यासाठी वापरला जातो. इतर विकल्प चार्टच्या उद्देशाचे अपूर्ण वर्णन करतात किंवा इतर चार्ट प्रकारांच्या वैशिष्ट्यांचे वर्णन करतात. योग्य उत्तर एकूण बेरीज आणि घटकांच्या विभाजनाची दोन्ही बाबींचे उल्लेख करते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for statistical charts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the purpose of a stacked bar chart with a simple bar chart",
+        "Misunderstands the chart as showing only the total expenditure",
+        null,
+        "Incorrectly assumes the chart is for comparing individual values only"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer correctly identifies the dual purpose of a stacked bar chart: comparing totals and showing components. The author's reasoning for the other options aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/9/mathematics/iemh202.pdf",
+          "ordinal": 9,
+          "pageStart": 13,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 10: How Quantities Combine: Understanding Data",
+            "10.2 Visualising and Interpreting Data"
+          ]
+        },
+        {
+          "document": "ncert/9/mathematics/iemh202.pdf",
+          "ordinal": 10,
+          "pageStart": 14,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 10: How Quantities Combine: Understanding Data",
+            "10.2 Visualising and Interpreting Data"
+          ]
+        },
+        {
+          "document": "ncert/9/mathematics/iemh202.pdf",
+          "ordinal": 11,
+          "pageStart": 16,
+          "pageEnd": 17,
+          "headingPath": [
+            "Chapter 10: How Quantities Combine: Understanding Data",
+            "10.2 Visualising and Interpreting Data"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-22T11:45:30.720Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the purpose of using a weighted average?",
+      "choices": [
+        "To calculate the average of all values equally",
+        "To calculate the average when values have different levels of importance",
+        "To compare two sets of data with different units",
+        "To find the mode of the data"
+      ],
+      "answerIndex": 1,
+      "solution": "A weighted average is used when values have different levels of importance. It allows for a more accurate average by giving more weight to certain values.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "भारित औसत का उपयोग करने का उद्देश्य क्या है?",
+          "choices": [
+            "सभी मानों के औसत की गणना करना",
+            "जब मानों के अलग-अलग महत्व के स्तर होते हैं तो औसत की गणना करना",
+            "अलग-अलग इकाइयों वाले दो डेटा सेटों की तुलना करना",
+            "डेटा का बहुलक ज्ञात करना"
+          ],
+          "solution": "भारित औसत तब उपयोग किया जाता है जब मानों के अलग-अलग महत्व के स्तर होते हैं। इससे अधिक शुद्ध औसत प्राप्त करना संभव होता है क्योंकि कुछ मानों को अधिक भार दिया जाता है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriate for Hindi curriculum.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "भारित सरासरी वापरण्याचा उद्देश काय आहे?",
+          "choices": [
+            "सर्व मूल्यांचा सरासरी काढणे",
+            "मूल्यांच्या वेगवेगळ्या महत्त्वाच्या पातळींसह सरासरी काढणे",
+            "वेगवेगळ्या एककांसह दोन सेट डेटा तुलना करणे",
+            "डेटाचा मोड शोधणे"
+          ],
+          "solution": "भारित सरासरी वापरली जाते जेव्हा मूल्यांच्या वेगवेगळ्या महत्त्वाच्या पातळी असतात. ते अधिक शुद्ध सरासरी काढण्यास परवानगी देते जेव्हा काही मूल्यांना अधिक भार दिला जातो.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the original meaning, and uses appropriate technical terms as used in Marathi-medium education.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses weighted average with simple average",
+        null,
+        "Student thinks weighted average is used for comparing different data types",
+        "Confuses weighted average with comparison"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 1. The author's solution and reasoning are accurate. The distractors reflect common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/9/mathematics/iemh202.pdf",
+          "ordinal": 19,
+          "pageStart": 27,
+          "pageEnd": 28,
+          "headingPath": [
+            "Chapter 10: How Quantities Combine: Understanding Data",
+            "End-of-Chapt"
+          ]
+        },
+        {
+          "document": "ncert/9/mathematics/iemh202.pdf",
+          "ordinal": 20,
+          "pageStart": 28,
+          "pageEnd": 29,
+          "headingPath": [
+            "Chapter 10: How Quantities Combine: Understanding Data",
+            "End-of-Chapt"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-22T11:45:30.720Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "In Example 1, why is Method 1 incorrect?",
+      "choices": [
+        "Because it added the averages without considering the number of trainees",
+        "Because it used the wrong formula for average",
+        "Because the heights were not given correctly",
+        "Because the averages were calculated incorrectly"
+      ],
+      "answerIndex": 0,
+      "solution": "Because it added the averages without considering the number of trainees. The correct approach requires a weighted average based on group sizes, not just the simple addition of averages. The other options are incorrect because they imply errors in formula or data that are not relevant to the issue.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "उदाहरण 1 में, विधि 1 असही क्यों है?",
+          "choices": [
+            "क्योंकि इसने प्रशिक्षुओं की संख्या के बिना औसतों को जोड़ दिया",
+            "क्योंकि इसने औसत के लिए गलत सूत्र का उपयोग किया",
+            "क्योंकि ऊंचाइयां सही ढंग से दी गई नहीं थीं",
+            "क्योंकि औसत गलत तरीके से निकाले गए"
+          ],
+          "solution": "क्योंकि इसने प्रशिक्षुओं की संख्या के बिना औसतों को जोड़ दिया। सही दृष्टिकोण में समूह के आकार के आधार पर भारित औसत की आवश्यकता होती है, औसतों के सरल जोड़ के बजाय। अन्य विकल्प गलत हैं क्योंकि वे सूत्र या डेटा में त्रुटियों के बारे में कहते हैं जो समस्या के लिए संबंधित नहीं हैं।",
+          "imageAlt": null,
+          "critique": "Translation accurately preserves meaning, options, and solution. Technical terms like 'weighted average' are appropriately rendered in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "उदाहरण 1 मध्ये, पद्धत 1 चुकीची का आहे?",
+          "choices": [
+            "कारण त्याने प्रशिक्षणार्थींच्या संख्येचा विचार न करता सरासरी जोडल्या",
+            "कारण त्याने सरासरीसाठी चुकीचा सूत्र वापरला",
+            "कारण उंचींची माहिती चुकीची दिली गेली नाही",
+            "कारण सरासरी चुकीच्या पद्धतीने काढल्या गेल्या"
+          ],
+          "solution": "कारण त्याने प्रशिक्षणार्थींच्या संख्येचा विचार न करता सरासरी जोडल्या. योग्य पद्धतीमध्ये समूहांच्या आकारावर आधारित वजनदार सरासरी वापरली पाहिजे, सरासरी जोडण्याच्या सोप्या पद्धतीने नाही. इतर विकल्प चुकीचे आहेत कारण ते सूत्र किंवा डेटाच्या चुकीच्या गोष्टींवर भाष्य करतात जी समस्येशी संबंधित नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi technical terms. The correct answer remains in the same position (option 1), and the distractors are still incorrect in Marathi.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses the concept of average with weighted average",
+        "Does not understand how averages are calculated",
+        "Assumes the data is incorrect without evidence"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 0, as the issue is not with the formula or the data itself, but with not accounting for the different group sizes when adding averages. The reasoning in the author's solution is sound and matches the key.",
+      "sources": [
+        {
+          "document": "ncert/9/mathematics/iemh202.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 10: How Quantities Combine: Understanding Data",
+            "10.1 Combining Things"
+          ]
+        },
+        {
+          "document": "ncert/9/mathematics/iemh202.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 10: How Quantities Combine: Understanding Data",
+            "10.1 Combining Things",
+            "Think and Reflect"
+          ]
+        },
+        {
+          "document": "ncert/9/mathematics/iemh202.pdf",
+          "ordinal": 2,
+          "pageStart": 3,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 10: How Quantities Combine: Understanding Data",
+            "10.1 Combining Things",
+            "Think and Reflect"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-22T11:45:30.720Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "If a group of 10 people has an average height of 170 cm and a group of 15 people has an average height of 160 cm, what is the average height of the combined group?",
+      "choices": [
+        "164 cm",
+        "166 cm",
+        "168 cm",
+        "170 cm"
+      ],
+      "answerIndex": 0,
+      "solution": "The average height of the combined group is calculated using a weighted average: (10×170 + 15×160)/(10+15) = (1700 + 2400)/25 = 4100/25 = 164 cm. The other options are incorrect because they do not correctly apply the weighted average formula.",
+      "checkExpr": "(10*170+15*160)/(10+15)",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि 10 लोगों के एक समूह की औसत ऊंचाई 170 सेमी है और 15 लोगों के एक समूह की औसत ऊंचाई 160 सेमी है, तो संयुक्त समूह की औसत ऊंचाई क्या है?",
+          "choices": [
+            "164 सेमी",
+            "166 सेमी",
+            "168 सेमी",
+            "170 सेमी"
+          ],
+          "solution": "संयुक्त समूह की औसत ऊंचाई की गणना भारित औसत के उपयोग से की जाती है: (10×170 + 15×160)/(10+15) = (1700 + 2400)/25 = 4100/25 = 164 सेमी। अन्य विकल्प गलत हैं क्योंकि वे भारित औसत सूत्र का सही ढंग से उपयोग नहीं करते।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms. The correct answer remains in the same position (option 1). All distractors are still incorrect and distinct.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "10 लोकांच्या गटाची सरासरी उंची 170 सेमी आहे आणि 15 लोकांच्या गटाची सरासरी उंची 160 सेमी आहे, तर संयुक्त गटाची सरासरी उंची किती असेल?",
+          "choices": [
+            "164 सेमी",
+            "166 सेमी",
+            "168 सेमी",
+            "170 सेमी"
+          ],
+          "solution": "संयुक्त गटाची सरासरी उंची वजनदार सरासरीच्या सूत्राने गणित केली जाते: (10×170 + 15×160)/(10+15) = (1700 + 2400)/25 = 4100/25 = 164 सेमी. इतर विकल्प चुकीचे आहेत कारण ते वजनदार सरासरीच्या सूत्राचा योग्यरित्या वापर करत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the mathematical meaning, and uses appropriate Marathi terminology for averages and weighted averages.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Adds the averages without weighting",
+        "Uses the wrong group sizes in calculation",
+        "Fails to calculate the weighted average properly"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly applies the weighted average formula. The correct answer is 164 cm, and the author's reasoning for the other options aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/9/mathematics/iemh202.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 10: How Quantities Combine: Understanding Data",
+            "10.1 Combining Things"
+          ]
+        },
+        {
+          "document": "ncert/9/mathematics/iemh202.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 10: How Quantities Combine: Understanding Data",
+            "10.1 Combining Things",
+            "Think and Reflect"
+          ]
+        },
+        {
+          "document": "ncert/9/mathematics/iemh202.pdf",
+          "ordinal": 2,
+          "pageStart": 3,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 10: How Quantities Combine: Understanding Data",
+            "10.1 Combining Things",
+            "Think and Reflect"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-22T11:45:30.720Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "The average score of students in Section A is 72 and that of students in Section B is 76. Section A has 30 students and Section B has 25 students. What is the combined average of both sections?",
+      "choices": [
+        "73.2",
+        "73.6",
+        "74.0",
+        "74.4"
+      ],
+      "answerIndex": 1,
+      "solution": "The combined average is calculated as a weighted mean. The weights are the number of students, and the values are the average scores. The calculation is (72 × 30 + 76 × 25) / (30 + 25) = (2160 + 1900) / 55 = 4060 / 55 ≈ 73.6. The other options are incorrect because they do not use the correct weights or calculation method.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "सेक्शन A में छात्रों का औसत अंक 72 है और सेक्शन B में छात्रों का औसत अंक 76 है। सेक्शन A में 30 छात्र हैं और सेक्शन B में 25 छात्र हैं। दोनों सेक्शनों का संयुक्त औसत क्या है?",
+          "choices": [
+            "73.2",
+            "73.6",
+            "74.0",
+            "74.4"
+          ],
+          "solution": "संयुक्त औसत की गणना भारित माध्य के रूप में की जाती है। भार छात्रों की संख्या हैं, और मान औसत अंक हैं। गणना (72 × 30 + 76 × 25) / (30 + 25) = (2160 + 1900) / 55 = 4060 / 55 ≈ 73.6 है। अन्य विकल्प गलत हैं क्योंकि वे सही भार या गणना विधि का उपयोग नहीं करते हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology as used in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खंड A मधील विद्यार्थ्यांचा सरासरी गुण 72 आहे आणि खंड B मधील विद्यार्थ्यांचा सरासरी गुण 76 आहे. खंड A मध्ये 30 विद्यार्थी आहेत आणि खंड B मध्ये 25 विद्यार्थी आहेत. दोन्ही खंडांचा संयुक्त सरासरी किती आहे?",
+          "choices": [
+            "73.2",
+            "73.6",
+            "74.0",
+            "74.4"
+          ],
+          "solution": "संयुक्त सरासरी वजनदार माध्य म्हणून गणली जाते. वजन विद्यार्थ्यांची संख्या आहे आणि मूल्य सरासरी गुण आहेत. गणना (72 × 30 + 76 × 25) / (30 + 25) = (2160 + 1900) / 55 = 4060 / 55 ≈ 73.6 आहे. इतर विकल्प चुकीचे आहेत कारण ते योग्य वजन किंवा गणना पद्धती वापरत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Fails to weight by the number of students",
+        null,
+        "Incorrectly adds the scores without dividing by total students",
+        "Uses the average of the two averages instead of weighted mean"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly calculates the weighted average by multiplying each section's average by its number of students, summing those products, and dividing by the total number of students. The author's key and reasoning are accurate.",
+      "sources": [
+        {
+          "document": "ncert/9/mathematics/iemh202.pdf",
+          "ordinal": 3,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 10: How Quantities Combine: Understanding Data",
+            "10.1 Combining Things",
+            "Think and Reflect"
+          ]
+        },
+        {
+          "document": "ncert/9/mathematics/iemh202.pdf",
+          "ordinal": 4,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 10: How Quantities Combine: Understanding Data",
+            "10.1 Combining Things",
+            "Think and Reflect"
+          ]
+        },
+        {
+          "document": "ncert/9/mathematics/iemh202.pdf",
+          "ordinal": 5,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 10: How Quantities Combine: Understanding Data",
+            "10.1 Combining Things",
+            "Think and Reflect"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-22T11:45:30.720Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
     }
   ]
 }

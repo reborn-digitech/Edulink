@@ -597,6 +597,2673 @@
       "generatedAt": "2026-11-02T11:53:18.348Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "Which of the following is a natural acid?",
+      "choices": [
+        "Sulphuric acid",
+        "Hydrochloric acid",
+        "Nitric acid",
+        "Lemon juice"
+      ],
+      "answerIndex": 3,
+      "solution": "Lemon juice is a natural acid because it contains citric acid, which occurs naturally in citrus fruits. Sulphuric acid, hydrochloric acid, and nitric acid are all strong acids that are typically produced through industrial processes and not found naturally in food. Therefore, lemon juice is the correct answer.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन एक प्राकृतिक अम्ल है?",
+          "choices": [
+            "सल्फ्यूरिक अम्ल",
+            "हाइड्रोक्लोरिक अम्ल",
+            "नाइट्रिक अम्ल",
+            "नींबू का रस"
+          ],
+          "solution": "नींबू का रस एक प्राकृतिक अम्ल है क्योंकि इसमें सिट्रिक अम्ल होता है जो नारंगी फलों में प्राकृतिक रूप से पाया जाता है। सल्फ्यूरिक अम्ल, हाइड्रोक्लोरिक अम्ल और नाइट्रिक अम्ल सभी मजबूत अम्ल हैं जो आमतौर पर औद्योगिक प्रक्रियाओं द्वारा बनाए जाते हैं और खाद्य पदार्थों में प्राकृतिक रूप से नहीं पाए जाते। इसलिए नींबू का रस सही उत्तर है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Hindi scientific terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते एक प्राकृतिक अम्ल आहे?",
+          "choices": [
+            "सल्फ्यूरिक अम्ल",
+            "हायड्रोक्लोरिक अम्ल",
+            "नाइट्रिक अम्ल",
+            "लिंबूचा रस"
+          ],
+          "solution": "लिंबूचा रस एक प्राकृतिक अम्ल आहे कारण त्यामध्ये नैसर्गिकरित्या असलेले सिट्रिक अम्ल असतो. सल्फ्यूरिक अम्ल, हायड्रोक्लोरिक अम्ल आणि नाइट्रिक अम्ल यांपैकी सर्व मजबूत अम्ल आहेत जे व्यावसायिक प्रक्रियांद्वारे तयार केले जातात आणि खाद्यपदार्थांमध्ये प्राकृतिकरित्या आढळत नाहीत. म्हणून लिंबूचा रस हा योग्य उत्तर आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi technical terms used for acids.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses mineral acids with natural acids",
+        "Confuses mineral acids with natural acids",
+        "Confuses mineral acids with natural acids",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct. Lemon juice is a natural acid (citric acid), while the other options are strong mineral acids. The reasoning aligns with the author's explanation.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 105,
+          "pageStart": 92,
+          "pageEnd": 93,
+          "headingPath": [
+            "12. Introduction to Acid & Base"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 106,
+          "pageStart": 93,
+          "pageEnd": 94,
+          "headingPath": [
+            "12. Introduction to Acid & Base"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 107,
+          "pageStart": 94,
+          "pageEnd": 95,
+          "headingPath": [
+            "12. Introduction to Acid & Base"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-19T09:50:11.962Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "Which of the following is a base?",
+      "choices": [
+        "Lemon juice",
+        "Vinegar",
+        "Baking soda",
+        "Tamarind"
+      ],
+      "answerIndex": 2,
+      "solution": "Baking soda is a base because it can accept protons and has a pH greater than 7. Lemon juice, vinegar, and tamarind are acids, which means they release protons and have a pH less than 7. Therefore, the correct answer is baking soda.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन एक क्षार है?",
+          "choices": [
+            "नींबू का रस",
+            "सिरका",
+            "बेकिंग सोडा",
+            "इमली"
+          ],
+          "solution": "बेकिंग सोडा एक क्षार है क्योंकि यह प्रोटॉन को स्वीकृत कर सकता है और इसका pH 7 से अधिक होता है। नींबू का रस, सिरका और इमली अम्ल हैं, जिनका अर्थ है कि वे प्रोटॉन छोड़ते हैं और इनका pH 7 से कम होता है। इसलिए सही उत्तर बेकिंग सोडा है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the correct answer position, and uses appropriate Hindi terminology for acids and bases.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते एक क्षार आहे?",
+          "choices": [
+            "लिंबूचे रस",
+            "सिरप",
+            "बेकिंग सोडा",
+            "इमली"
+          ],
+          "solution": "बेकिंग सोडा एक क्षार आहे कारण तो प्रोटॉन घेऊ शकतो आणि त्याचे pH 7 पेक्षा जास्त असते. लिंबूचा रस, सिरप आणि इमली अॅसिड आहेत, जे प्रोटॉन देतात आणि त्यांचे pH 7 पेक्षा कमी असते. म्हणूनच योग्य उत्तर बेकिंग सोडा आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the scientific terminology appropriate for a Marathi-medium curriculum.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses acids with bases",
+        "Confuses acids with bases",
+        null,
+        "Confuses acids with bases"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly identifies baking soda as a base and explains that the other options are acids. The reasoning aligns with basic chemistry knowledge and the author's key.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 105,
+          "pageStart": 92,
+          "pageEnd": 93,
+          "headingPath": [
+            "12. Introduction to Acid & Base"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 106,
+          "pageStart": 93,
+          "pageEnd": 94,
+          "headingPath": [
+            "12. Introduction to Acid & Base"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 107,
+          "pageStart": 94,
+          "pageEnd": 95,
+          "headingPath": [
+            "12. Introduction to Acid & Base"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-19T09:50:11.962Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of the following indicators turns pink in a basic solution?",
+      "choices": [
+        "Methyl orange",
+        "Litmus paper",
+        "Phenolphthalein",
+        "Methyl red"
+      ],
+      "answerIndex": 2,
+      "solution": "Phenolphthalein is a pH indicator that remains colorless in acidic solutions and turns pink in basic solutions. Methyl orange turns red in acidic conditions and yellow in basic, litmus paper turns blue in basic solutions but is not pink, and methyl red turns red in acidic conditions. Therefore, the correct answer is phenolphthalein.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा संकेतक एक क्षारीय विलयन में गुलाबी हो जाता है?",
+          "choices": [
+            "मेथिल ऑरेंज",
+            "लिटमस पेपर",
+            "फीनॉलथेलीन",
+            "मेथिल रेड"
+          ],
+          "solution": "फीनॉलथेलीन एक pH संकेतक है जो अम्लीय विलयन में बिना रंग का रहता है और क्षारीय विलयन में गुलाबी हो जाता है। मेथिल ऑरेंज अम्लीय स्थिति में लाल हो जाता है और क्षारीय में पीला हो जाता है, लिटमस पेपर क्षारीय विलयन में नीला हो जाता है लेकिन गुलाबी नहीं होता है, और मेथिल रेड अम्लीय स्थिति में लाल हो जाता है। इसलिए सही उत्तर फीनॉलथेलीन है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English original in meaning, technical terms, and option order. The correct answer remains option (2), and all distractors are still incorrect as in the original.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालील चिन्हक रंग आम्लीय द्रावणात गुलाबी होतो?",
+          "choices": [
+            "मेथिल ऑरेंज",
+            "लिटमस कागद",
+            "फिनॉल्थेलिन",
+            "मेथिल रेड"
+          ],
+          "solution": "फिनॉल्थेलिन हा pH चिन्हक अम्लीय द्रावणात रंगहीन राहतो आणि क्षारीय द्रावणात गुलाबी होतो. मेथिल ऑरेंज अम्लीय परिस्थितीत लाल होतो आणि क्षारीय असताना पांढरा होतो, लिटमस कागद क्षारीय द्रावणात निळा होतो परंतु तो गुलाबी नसतो, आणि मेथिल रेड अम्लीय परिस्थितीत लाल होतो. त्यामुळे, योग्य उत्तर फिनॉल्थेलिन आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms for the pH indicators.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the color change in acid and base",
+        "Confuses the color change in acid and base",
+        null,
+        "Confuses the color change in acid and base"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The question is correctly answered by phenolphthalein, which turns pink in a basic solution. The author's solution is accurate, and the reasons for the wrong options are valid misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 105,
+          "pageStart": 92,
+          "pageEnd": 93,
+          "headingPath": [
+            "12. Introduction to Acid & Base"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 106,
+          "pageStart": 93,
+          "pageEnd": 94,
+          "headingPath": [
+            "12. Introduction to Acid & Base"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 107,
+          "pageStart": 94,
+          "pageEnd": 95,
+          "headingPath": [
+            "12. Introduction to Acid & Base"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-19T09:50:11.962Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What happens to blue litmus paper when it is dipped in an acid?",
+      "choices": [
+        "It turns red",
+        "It turns blue",
+        "It turns green",
+        "It remains blue"
+      ],
+      "answerIndex": 0,
+      "solution": "Blue litmus paper is used to test for acids, and it changes color in the presence of an acid. When exposed to an acid, the paper turns red due to the chemical reaction with the acidic substance. The other options do not reflect the known chemical behavior of litmus paper in acidic conditions.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एसिड में डूबाए जाने पर नीला लिटमस कागज क्या हो जाता है?",
+          "choices": [
+            "यह लाल हो जाता है",
+            "यह नीला हो जाता है",
+            "यह हरा हो जाता है",
+            "यह नीला रह जाता है"
+          ],
+          "solution": "नीला लिटमस कागज एसिड की जांच के लिए उपयोग किया जाता है, और एसिड की उपस्थिति में यह रंग बदल जाता है। एसिड के संपर्क में आने पर, कागज रासायनिक अभिक्रिया के कारण लाल हो जाता है। अन्य विकल्प एसिडीक स्थितियों में लिटमस कागज के ज्ञात रासायनिक व्यवहार को प्रतिबिंबित नहीं करते हैं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains original meaning, and uses standard Hindi scientific terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "आम्लामध्ये डुबवल्यास नील लिटमस कागद काय होतो?",
+          "choices": [
+            "तो लाल होतो",
+            "तो नील होतो",
+            "तो हिरवा होतो",
+            "तो नील राहतो"
+          ],
+          "solution": "नील लिटमस कागद आम्लाच्या तपासणीसाठी वापरला जातो आणि आम्लाच्या उपस्थितीत तो रंग बदलतो. आम्लाशी संपर्कात आल्यानंतर, कागद रसायनिक प्रतिक्रियेमुळे लाल होतो. इतर विकल्प आम्लीय परिस्थितीत लिटमस कागदाच्या ज्ञात रसायनिक वर्तनाला अनुरूप नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses the effect of base on litmus paper",
+        "Confuses the effect of base on litmus paper",
+        "Confuses the effect of base on litmus paper"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 0, as blue litmus paper turns red in an acid. The author's reasoning for the distractors is accurate, as they reflect common misconceptions about the effect of bases on litmus paper.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 105,
+          "pageStart": 92,
+          "pageEnd": 93,
+          "headingPath": [
+            "12. Introduction to Acid & Base"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 106,
+          "pageStart": 93,
+          "pageEnd": 94,
+          "headingPath": [
+            "12. Introduction to Acid & Base"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 107,
+          "pageStart": 94,
+          "pageEnd": 95,
+          "headingPath": [
+            "12. Introduction to Acid & Base"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-19T09:50:11.962Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of the following is a natural acid present in fruits?",
+      "choices": [
+        "Sulphuric acid",
+        "Nitric acid",
+        "Ascorbic acid",
+        "Hydrochloric acid"
+      ],
+      "answerIndex": 2,
+      "solution": "Ascorbic acid is a natural acid found in fruits, commonly known as vitamin C. Sulphuric, nitric, and hydrochloric acids are strong mineral acids that are not naturally present in fruits. These acids are typically produced through industrial processes and are not found in food sources like fruits.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा फलों में उपस्थित प्राकृतिक अम्ल है?",
+          "choices": [
+            "सल्फ्यूरिक अम्ल",
+            "नाइट्रिक अम्ल",
+            "एस्कॉर्बिक अम्ल",
+            "हाइड्रोक्लोरिक अम्ल"
+          ],
+          "solution": "एस्कॉर्बिक अम्ल फलों में पाया जाने वाला एक प्राकृतिक अम्ल है, जिसे आमतौर पर विटामिन सी के रूप में जाना जाता है। सल्फ्यूरिक, नाइट्रिक और हाइड्रोक्लोरिक अम्ल मजबूत खनिज अम्ल हैं जो फलों में प्राकृतिक रूप से उपस्थित नहीं होते हैं। इन अम्लों का निर्माण आमतौर पर औद्योगिक प्रक्रियाओं द्वारा किया जाता है और फल जैसे खाद्य स्रोतों में इनकी उपस्थिति नहीं होती है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, technical terms are standard in Hindi science textbooks, and the correct answer remains option 3 (एस्कॉर्बिक अम्ल) as in the original.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते फळांमध्ये आढळणारे प्राकृतिक अम्ल आहे?",
+          "choices": [
+            "सल्फ्यूरिक अम्ल",
+            "नाइट्रिक अम्ल",
+            "अस्कॉर्बिक अम्ल",
+            "हायड्रोक्लोरिक अम्ल"
+          ],
+          "solution": "अस्कॉर्बिक अम्ल हे फळांमध्ये आढळणारे प्राकृतिक अम्ल आहे, जे सामान्यतः व्हिटॅमिन सी म्हणून ओळखले जाते. सल्फ्यूरिक, नाइट्रिक आणि हायड्रोक्लोरिक अम्ल हे शक्तिशाली खनिज अम्ल आहेत जे फळांमध्ये प्राकृतिकरित्या आढळत नाहीत. या अम्लांचे उत्पादन सामान्यतः औद्योगिक प्रक्रियांमध्ये होते आणि फळांसारख्या खाद्य स्रोतांमध्ये ते आढळत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi technical terms used for acids.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses mineral acids with natural acids",
+        "Confuses mineral acids with natural acids",
+        null,
+        "Confuses mineral acids with natural acids"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is ascorbic acid, which is a natural acid found in fruits. The other options are mineral acids, not natural. The author's reasoning is sound and matches common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 108,
+          "pageStart": 95,
+          "pageEnd": 96,
+          "headingPath": [
+            "12. Introduction to Acid & Base"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 109,
+          "pageStart": 96,
+          "pageEnd": 97,
+          "headingPath": [
+            "12. Introduction to Acid & Base"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 110,
+          "pageStart": 98,
+          "pageEnd": 98,
+          "headingPath": [
+            "12. Introduction to Acid & Base",
+            "Exercises"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-19T09:50:11.962Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If a solution turns methyl orange pink, what type of solution is it?",
+      "choices": [
+        "Acidic",
+        "Basic",
+        "Neutral",
+        "Can't be determined"
+      ],
+      "answerIndex": 0,
+      "solution": "Methyl orange is a pH indicator that turns pink in acidic solutions. This color change occurs because the indicator's structure changes in the presence of hydrogen ions. Basic and neutral solutions do not cause this color change, and the color alone is sufficient to determine the type of solution.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि कोई विलयन मेथिल ऑरेंज को गुलाबी बना देता है, तो वह किस प्रकार का विलयन है?",
+          "choices": [
+            "अम्लीय",
+            "क्षारीय",
+            "उदासीन",
+            "निर्धारित नहीं किया जा सकता"
+          ],
+          "solution": "मेथिल ऑरेंज एक pH संकेतक है जो अम्लीय विलयन में गुलाबी हो जाता है। यह रंग परिवर्तन हाइड्रोजन आयनों की उपस्थिति में संकेतक की संरचना में परिवर्तन के कारण होता है। क्षारीय और उदासीन विलयन इस रंग परिवर्तन के कारण नहीं होते हैं और रंग अकेले विलयन के प्रकार का निर्धारण करने के लिए पर्याप्त है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms as found in Hindi-medium science textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका द्रावणाने मेथिल ऑरेंज रंगात बदलला, तर ते कोणत्या प्रकारचे द्रावण असेल?",
+          "choices": [
+            "अम्लीय",
+            "क्षारीय",
+            "उदासीन",
+            "निश्चित करता येत नाही"
+          ],
+          "solution": "मेथिल ऑरेंज हा pH संकेतक अम्लीय द्रावणात रांगे रंगात बदलतो. हा रंग बदल हाइड्रोजन आयनांच्या उपस्थितीत संकेतकाच्या संरचनेत होणारा बदल कारण असतो. क्षारीय आणि उदासीन द्रावणांमुळे हा रंग बदल होत नाही आणि रंगाच्या आधारे द्रावणाचा प्रकार निश्चित करता येतो.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses the effect of base on methyl orange",
+        "Confuses the effect of neutral solution on methyl orange",
+        "Misinterprets the indicator's behavior"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The solution is sound and aligns with the correct answer. Methyl orange turns pink in acidic solutions, and the reasoning provided by the author is accurate.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 105,
+          "pageStart": 92,
+          "pageEnd": 93,
+          "headingPath": [
+            "12. Introduction to Acid & Base"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 106,
+          "pageStart": 93,
+          "pageEnd": 94,
+          "headingPath": [
+            "12. Introduction to Acid & Base"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 107,
+          "pageStart": 94,
+          "pageEnd": 95,
+          "headingPath": [
+            "12. Introduction to Acid & Base"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-19T09:50:11.962Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "What happens when an acidic solution is mixed with a basic solution?",
+      "choices": [
+        "It becomes more acidic",
+        "It becomes more basic",
+        "It becomes neutral",
+        "It changes colour"
+      ],
+      "answerIndex": 2,
+      "solution": "When an acidic solution is mixed with a basic solution, they undergo neutralization and form a neutral solution. Hence, the correct answer is it becomes neutral.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक अम्लीय घोल के साथ एक क्षारीय घोल मिलाने पर क्या होता है?",
+          "choices": [
+            "यह अधिक अम्लीय हो जाता है",
+            "यह अधिक क्षारीय हो जाता है",
+            "यह उदासीन हो जाता है",
+            "यह रंग बदल जाता है"
+          ],
+          "solution": "जब एक अम्लीय घोल के साथ एक क्षारीय घोल मिलाया जाता है, तो वे उदासीनीकरण के कारण उदासीन घोल बना लेते हैं। इसलिए सही उत्तर यह है कि यह उदासीन हो जाता है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, technical terms are standard in Hindi science textbooks, and the logic of the question and answer is preserved.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एखाद्या अम्लीय द्रावणाला एखाद्या क्षारीय द्रावणाशी मिसळल्यास काय होते?",
+          "choices": [
+            "ते अधिक अम्लीय होते",
+            "ते अधिक क्षारीय होते",
+            "ते उदासीन होते",
+            "ते रंग बदलते"
+          ],
+          "solution": "एखाद्या अम्लीय द्रावणाला एखाद्या क्षारीय द्रावणाशी मिसळल्यास ते उदासीनीकरणाच्या प्रक्रियेत जाते आणि उदासीन द्रावण तयार होते. म्हणून, योग्य उत्तर म्हणजे ते उदासीन होते.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate technical terms as used in Marathi-medium science education.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Does not understand the concept of neutralization",
+        "Does not understand the concept of neutralization",
+        null,
+        "Confuses the effect of mixing acids and bases"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct and aligns with the scientific principle of neutralization. The reasoning for the distractors is valid and reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 105,
+          "pageStart": 92,
+          "pageEnd": 93,
+          "headingPath": [
+            "12. Introduction to Acid & Base"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 106,
+          "pageStart": 93,
+          "pageEnd": 94,
+          "headingPath": [
+            "12. Introduction to Acid & Base"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 107,
+          "pageStart": 94,
+          "pageEnd": 95,
+          "headingPath": [
+            "12. Introduction to Acid & Base"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-19T09:50:11.962Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "Which of the following is a correct observation when a few drops of lemon juice are added to turmeric indicator paper?",
+      "choices": [
+        "The paper turns red",
+        "The paper turns blue",
+        "The paper turns yellow",
+        "The paper remains unchanged"
+      ],
+      "answerIndex": 0,
+      "solution": "Lemon juice is acidic, and turmeric indicator paper turns red in acidic solutions. The correct option is 'The paper turns red'. The other options are incorrect because turmeric paper does not turn blue, yellow, or remain unchanged in acidic conditions.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा अवलोकन लीमन रस की कुछ बूंदें लाल मिर्च के सूचक कागज पर डाले जाने पर सही है?",
+          "choices": [
+            "कागज लाल हो जाता है",
+            "कागज नीला हो जाता है",
+            "कागज पीला हो जाता है",
+            "कागज अपरिवर्तित रहता है"
+          ],
+          "solution": "लीमन रस अम्लीय होता है, और लाल मिर्च के सूचक कागज अम्लीय विलयन में लाल हो जाता है। सही विकल्प 'कागज लाल हो जाता है' है। अन्य विकल्प गलत हैं क्योंकि लाल मिर्च के कागज के नीला, पीला या अपरिवर्तित रहना अम्लीय स्थिति में संभव नहीं है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English original in meaning, technical terms, and structure. All options are correctly translated, and the correct answer remains in the same position. The distractors are still incorrect, and the terminology used is standard in Hindi science textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणता अवलोकन लिंबू रसाच्या काही थेंबा लाल केसर दागिना कागदावर टाकल्यास योग्य असेल?",
+          "choices": [
+            "कागद लाल होतो",
+            "कागद नील होतो",
+            "कागद पिवळा होतो",
+            "कागद बदलत नाही"
+          ],
+          "solution": "लिंबू रस अम्लीय आहे, आणि लाल केसर दागिना कागद अम्लीय द्रावणात लाल होतो. योग्य पर्याय 'कागद लाल होतो' आहे. इतर पर्याय अयोग्य आहेत कारण लाल केसर कागद अम्लीय परिस्थितीत नील, पिवळा होतो किंवा बदलत नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the scientific meaning. All terms are correctly translated using standard Marathi scientific vocabulary.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses the effect of turmeric in basic solutions",
+        "Confuses turmeric indicator with litmus paper, thinking it behaves like a pH indicator that changes to yellow in acids",
+        "Incorrectly assumes turmeric does not react"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct. Lemon juice is acidic, and turmeric indicator paper turns red in acidic solutions. The reasoning for the distractors is valid and reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 105,
+          "pageStart": 92,
+          "pageEnd": 93,
+          "headingPath": [
+            "12. Introduction to Acid & Base"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 106,
+          "pageStart": 93,
+          "pageEnd": 94,
+          "headingPath": [
+            "12. Introduction to Acid & Base"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 107,
+          "pageStart": 94,
+          "pageEnd": 95,
+          "headingPath": [
+            "12. Introduction to Acid & Base"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-19T09:50:11.962Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "A student adds a few drops of a solution to a phenolphthalein indicator. The solution turns pink. What can be concluded about the solution?",
+      "choices": [
+        "It is an acid",
+        "It is a base",
+        "It is neutral",
+        "It is a salt"
+      ],
+      "answerIndex": 1,
+      "solution": "Phenolphthalein turns pink in basic solutions. The correct option is 'It is a base'. The other options are incorrect because phenolphthalein does not change color in acidic, neutral, or salt solutions.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक छात्र फीनॉल्फथेलीन संकेतक में कुछ बूंदें एक विलयन में मिलाता है। विलयन गुलाबी हो जाता है। विलयन के बारे में क्या निष्कर्ष निकाला जा सकता है?",
+          "choices": [
+            "यह एक अम्ल है",
+            "यह एक क्षार है",
+            "यह उदासीन है",
+            "यह लवण है"
+          ],
+          "solution": "फीनॉल्फथेलीन क्षारीय विलयन में गुलाबी हो जाता है। सही विकल्प 'यह एक क्षार है' है। अन्य विकल्प गलत हैं क्योंकि फीनॉल्फथेलीन अम्लीय, उदासीन या लवण विलयन में रंग नहीं बदलता।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Hindi scientific terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका विद्यार्थीने फिनॉल्फथेलिन इंडिकेटरमध्ये काही थेंब एका द्रावणाचे घालले. द्रावण गुलाबी रंगाचे झाले. तर द्रावणाबद्दल काय निष्कर्ष काढता येईल?",
+          "choices": [
+            "ते अम्ल आहे",
+            "ते क्षार आहे",
+            "ते उदासीन आहे",
+            "ते लवण आहे"
+          ],
+          "solution": "फिनॉल्फथेलिन बेसिक द्रावणामध्ये गुलाबी रंगाचे होते. योग्य विकल्प 'ते क्षार आहे' आहे. इतर विकल्प अयोग्य आहेत कारण फिनॉल्फथेलिन अम्लीय, उदासीन किंवा लवण द्रावणामध्ये रंग बदलत नाही.",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains original meaning, and uses standard Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Misunderstands the effect of acids on phenolphthalein",
+        null,
+        "Incorrectly assumes neutral solutions change color",
+        "Confuses salts with bases"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies that phenolphthalein turns pink in basic solutions, and the reasoning aligns with the correct answer. The distractors are all based on common misconceptions about pH indicators.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 105,
+          "pageStart": 92,
+          "pageEnd": 93,
+          "headingPath": [
+            "12. Introduction to Acid & Base"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 106,
+          "pageStart": 93,
+          "pageEnd": 94,
+          "headingPath": [
+            "12. Introduction to Acid & Base"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 107,
+          "pageStart": 94,
+          "pageEnd": 95,
+          "headingPath": [
+            "12. Introduction to Acid & Base"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-19T09:50:11.962Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "A student added a few drops of a solution to a blue litmus paper, and the paper turned red. What is the nature of the solution?",
+      "choices": [
+        "Acidic",
+        "Basic",
+        "Neutral",
+        "Cannot be determined"
+      ],
+      "answerIndex": 0,
+      "solution": "Blue litmus paper turns red in acidic solutions. The correct option is 'Acidic'. The other options are incorrect because basic, neutral, and undetermined solutions do not cause this color change.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक छात्र ने एक नीले लिटमस पेपर पर कुछ बूंदें एक घोल में डालीं, और पेपर लाल हो गया। घोल की प्रकृति क्या है?",
+          "choices": [
+            "अम्लीय",
+            "क्षारीय",
+            "उदासीन",
+            "निर्धारित नहीं किया जा सकता"
+          ],
+          "solution": "नीले लिटमस पेपर अम्लीय घोल में लाल हो जाता है। सही विकल्प 'अम्लीय' है। अन्य विकल्प गलत हैं क्योंकि क्षारीय, उदासीन और अनिर्धारित घोल इस रंग परिवर्तन का कारण नहीं बनते।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, technical terms match standard Hindi textbook usage, and the logic of the question and solution is preserved.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका विद्यार्थ्याने एका नील लिटमस कागदावर काही थेंब एका द्रावणाचे टाकले आणि कागद लाल होऊन गेला. द्रावणाची प्रकृती काय आहे?",
+          "choices": [
+            "अम्लीय",
+            "क्षारीय",
+            "उदासीन",
+            "निश्चित करता येत नाही"
+          ],
+          "solution": "नील लिटमस कागद अम्लीय द्रावणात लाल होतो. योग्य पर्याय 'अम्लीय' आहे. इतर पर्याय अयोग्य आहेत कारण क्षारीय, उदासीन आणि अनिश्चित द्रावणांमुळे हा रंग बदल होत नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Misunderstands the effect of bases on litmus",
+        "Incorrectly assumes neutral solutions change color",
+        "Fails to recognize the definitive nature of the test"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is well-constructed. The correct answer is clearly 'Acidic' based on the known behavior of blue litmus paper. The author's reasoning for the distractors is valid and reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 105,
+          "pageStart": 92,
+          "pageEnd": 93,
+          "headingPath": [
+            "12. Introduction to Acid & Base"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 106,
+          "pageStart": 93,
+          "pageEnd": 94,
+          "headingPath": [
+            "12. Introduction to Acid & Base"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 107,
+          "pageStart": 94,
+          "pageEnd": 95,
+          "headingPath": [
+            "12. Introduction to Acid & Base"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-19T09:50:11.962Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the main constituent of an acid?",
+      "choices": [
+        "Hydroxide ion",
+        "Chloride ion",
+        "Hydrogen ion",
+        "Oxide ion"
+      ],
+      "answerIndex": 2,
+      "solution": "The main constituent of an acid is the hydrogen ion (H⁺), as acids are defined by their ability to donate protons. Hydroxide and oxide ions are associated with bases, which accept protons. Chloride ions are not a general constituent of all acids, only specific ones like hydrochloric acid.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एसिड का मुख्य घटक क्या है?",
+          "choices": [
+            "हाइड्रॉक्साइड आयन",
+            "क्लोराइड आयन",
+            "हाइड्रोजन आयन",
+            "ऑक्साइड आयन"
+          ],
+          "solution": "एसिड का मुख्य घटक हाइड्रोजन आयन (H⁺) है, क्योंकि एसिडों की परिभाषा इसके प्रोटॉन देने की क्षमता द्वारा की जाती है। हाइड्रॉक्साइड और ऑक्साइड आयन क्षारकों से जुड़े हुए हैं, जो प्रोटॉन ग्रहण करते हैं। क्लोराइड आयन सभी एसिडों के सामान्य घटक नहीं हैं, केवल विशिष्ट एसिड जैसे हाइड्रोक्लोरिक एसिड में होते हैं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the scientific terminology used in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "अम्लाचा मुख्य घटक कोणता आहे?",
+          "choices": [
+            "हायड्रॉक्साइड आयॉन",
+            "क्लोराइड आयॉन",
+            "हायड्रोजन आयॉन",
+            "ऑक्साइड आयॉन"
+          ],
+          "solution": "अम्लाचा मुख्य घटक हायड्रोजन आयॉन (H⁺) आहे, कारण अम्लांची प्रतिकृती प्रोटॉन देण्याच्या क्षमतेवर आधारित आहे. हायड्रॉक्साइड आणि ऑक्साइड आयॉन बेससह संबंधित आहेत, जे प्रोटॉन ग्रहण करतात. क्लोराइड आयॉन सर्व अम्लांचा सामान्य घटक नाहीत, केवळ विशिष्ट अम्लांसारखे हायड्रोक्लोरिक अम्लासाठी असतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the scientific terminology appropriate for a Marathi-medium curriculum.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses base constituents with acid constituents",
+        "Confuses specific ion of HCl with general acid constituent",
+        null,
+        "Confuses base constituents with acid constituents"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 2 (Hydrogen ion), as acids are defined by the presence of H⁺ ions. The reasoning for the distractors aligns with common misconceptions about the composition of acids and bases.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 108,
+          "pageStart": 95,
+          "pageEnd": 96,
+          "headingPath": [
+            "12. Introduction to Acid & Base"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 109,
+          "pageStart": 96,
+          "pageEnd": 97,
+          "headingPath": [
+            "12. Introduction to Acid & Base"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 110,
+          "pageStart": 98,
+          "pageEnd": 98,
+          "headingPath": [
+            "12. Introduction to Acid & Base",
+            "Exercises"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-29T21:00:29.015Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "What happens when an acidic solution is mixed with a solution of baking soda?",
+      "choices": [
+        "No reaction occurs",
+        "A gas is released",
+        "The solution turns blue",
+        "The solution becomes more acidic"
+      ],
+      "answerIndex": 1,
+      "solution": "When an acidic solution is mixed with a solution of baking soda, a gas is released because the acid reacts with the baking soda, producing carbon dioxide gas. The solution does not remain unchanged, nor does it turn blue or become more acidic, as those outcomes do not result from this type of chemical reaction.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "जब एक अम्लीय घोल को बेकिंग सोडा के घोल के साथ मिलाया जाता है, तो क्या होता है?",
+          "choices": [
+            "कोई अभिक्रिया नहीं होती",
+            "एक गैस निकलती है",
+            "घोल नीला हो जाता है",
+            "घोल अधिक अम्लीय हो जाता है"
+          ],
+          "solution": "जब एक अम्लीय घोल को बेकिंग सोडा के घोल के साथ मिलाया जाता है, तो एक गैस निकलती है क्योंकि अम्ल बेकिंग सोडा के साथ अभिक्रिया करके कार्बन डाइऑक्साइड गैस उत्पन्न करता है। घोल अपरिवर्तित नहीं रहता, न ही यह नीला हो जाता है या अधिक अम्लीय हो जाता है, क्योंकि इस प्रकार की रासायनिक अभिक्रिया से ये परिणाम उत्पन्न नहीं होते हैं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriately used in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एखाद्या अम्लीय द्रावणाला बेकिंग सोडा द्रावणास मिसळल्यास काय होते?",
+          "choices": [
+            "कोणतीही ऍक्शन होत नाही",
+            "एक वाफ बाहेर पडते",
+            "द्रावण निळा होते",
+            "द्रावण अधिक अम्लीय होते"
+          ],
+          "solution": "एखाद्या अम्लीय द्रावणाला बेकिंग सोडा द्रावणास मिसळल्यास वाफ बाहेर पडते कारण अम्ल बेकिंग सोडासह रासायनिक प्रतिक्रिया करतो आणि कार्बन डायऑक्साइड वाफ तयार करतो. द्रावण अचूक राहत नाही, न तर ते निळे होते किंवा अधिक अम्लीय होते, कारण या प्रकारच्या रासायनिक प्रतिक्रियेमुळे या निर्जनाची निर्मिती होत नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for chemical reactions.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Misunderstands the reaction between acids and bases",
+        null,
+        "Confuses the effect of acids on indicators",
+        "Misinterprets the reaction as acidification"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 1, as acids react with baking soda (a base) to produce carbon dioxide gas, which is evidenced by bubbles or effervescence. The other options represent common misconceptions about acid-base reactions.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 105,
+          "pageStart": 92,
+          "pageEnd": 93,
+          "headingPath": [
+            "12. Introduction to Acid & Base"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 106,
+          "pageStart": 93,
+          "pageEnd": 94,
+          "headingPath": [
+            "12. Introduction to Acid & Base"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 107,
+          "pageStart": 94,
+          "pageEnd": 95,
+          "headingPath": [
+            "12. Introduction to Acid & Base"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-29T21:00:29.015Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "Which of the following substances is a base?",
+      "choices": [
+        "Vinegar",
+        "Lemon juice",
+        "Baking soda",
+        "Orange juice"
+      ],
+      "answerIndex": 2,
+      "solution": "Baking soda is a base because it has a bitter taste and feels slippery, which are characteristics of basic substances. Vinegar, lemon juice, and orange juice are all acidic and do not exhibit the properties of bases.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा पदार्थ क्षार है?",
+          "choices": [
+            "सिरका",
+            "नींबू का रस",
+            "बेकिंग सोडा",
+            "संतरे का रस"
+          ],
+          "solution": "बेकिंग सोडा एक क्षार है क्योंकि इसका स्वाद कड़वा होता है और यह फिसलने वाला महसूस होता है, जो क्षारीय पदार्थों के लक्षण हैं। सिरका, नींबू का रस और संतरे का रस सभी अम्लीय होते हैं और क्षारों के गुण प्रदर्शित नहीं करते।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriate for Hindi-medium curriculum.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते पदार्थ अल्कली आहे?",
+          "choices": [
+            "मीठाचा रस",
+            "नारिंगाचा रस",
+            "बेकिंग सोडा",
+            "संत्र्याचा रस"
+          ],
+          "solution": "बेकिंग सोडा अल्कली आहे कारण त्याचा तीव्र स्वाद असतो आणि तो स्लिपर वाटतो, जे अल्कली पदार्थांचे लक्षण आहे. मीठाचा रस, नारिंगाचा रस आणि संत्र्याचा रस सर्व अम्लीय आहेत आणि अल्कलीच्या गुणांचा प्रदर्शन करत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for acids and bases.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses acidic substances with bases",
+        "Confuses acidic substances with bases",
+        null,
+        "Confuses acidic substances with bases"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct. Baking soda is a base, while vinegar, lemon juice, and orange juice are all acidic. The author's reasoning for the distractors is valid as it reflects a common misconception.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 105,
+          "pageStart": 92,
+          "pageEnd": 93,
+          "headingPath": [
+            "12. Introduction to Acid & Base"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 106,
+          "pageStart": 93,
+          "pageEnd": 94,
+          "headingPath": [
+            "12. Introduction to Acid & Base"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 107,
+          "pageStart": 94,
+          "pageEnd": 95,
+          "headingPath": [
+            "12. Introduction to Acid & Base"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-29T21:00:29.015Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "Which of the following is used to neutralize excess acid in the stomach?",
+      "choices": [
+        "Sodium hydroxide",
+        "Calcium hydroxide",
+        "Magnesium hydroxide",
+        "Potassium hydroxide"
+      ],
+      "answerIndex": 2,
+      "solution": "Magnesium hydroxide is used to neutralize excess acid in the stomach because it is a mild base that reacts with stomach acid to form water and a salt. Sodium, calcium, and potassium hydroxides are strong bases and can be harmful if ingested, making them unsuitable for this purpose.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से किसका उपयोग पेट में अतिरिक्त अम्ल को उदासीन करने के लिए किया जाता है?",
+          "choices": [
+            "सोडियम हाइड्रॉक्साइड",
+            "कैल्शियम हाइड्रॉक्साइड",
+            "मैग्नीशियम हाइड्रॉक्साइड",
+            "पोटैशियम हाइड्रॉक्साइड"
+          ],
+          "solution": "मैग्नीशियम हाइड्रॉक्साइड का उपयोग पेट में अतिरिक्त अम्ल को उदासीन करने के लिए किया जाता है क्योंकि यह एक हल्का क्षार है जो पेट के अम्ल के साथ अभिक्रिया करके पानी और एक लवण बनाता है। सोडियम, कैल्शियम और पोटैशियम हाइड्रॉक्साइड मजबूत क्षार हैं और खाए जाने पर हानिकारक हो सकते हैं, इसलिए इनका इस उद्देश्य के लिए उपयोग अनुचित होता है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology for chemical compounds.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खाद्यनालीमध्ये अतिरिक्त अम्ल उद्भाजित करण्यासाठी खालीलपैकी कोणते वापरले जाते?",
+          "choices": [
+            "सोडियम हायड्रॉक्साइड",
+            "कॅल्शियम हायड्रॉक्साइड",
+            "मॅग्नेशियम हायड्रॉक्साइड",
+            "पोटॅशियम हायड्रॉक्साइड"
+          ],
+          "solution": "मॅग्नेशियम हायड्रॉक्साइड खाद्यनालीमध्ये अतिरिक्त अम्ल उद्भाजित करण्यासाठी वापरले जाते कारण ते एक निर्जल बेस आहे जे खाद्यनालीच्या अम्लाशी अभिक्रिया करून पाणी आणि लवण तयार करते. सोडियम, कॅल्शियम आणि पोटॅशियम हायड्रॉक्साइड मजबूत बेस आहेत आणि त्यांचे खाणे घातक असू शकते, ज्यामुळे त्यांचा या हेतूसाठी वापर अयोग्य ठरतो.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses general base with specific antacid",
+        "Confuses general base with specific antacid",
+        null,
+        "Confuses general base with specific antacid"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 2 (Magnesium hydroxide), as it is the active ingredient in milk of magnesia, a common antacid. The other options are strong bases not typically used for stomach acid neutralization. The author's reasoning is sound and matches common student misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 108,
+          "pageStart": 95,
+          "pageEnd": 96,
+          "headingPath": [
+            "12. Introduction to Acid & Base"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 109,
+          "pageStart": 96,
+          "pageEnd": 97,
+          "headingPath": [
+            "12. Introduction to Acid & Base"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 110,
+          "pageStart": 98,
+          "pageEnd": 98,
+          "headingPath": [
+            "12. Introduction to Acid & Base",
+            "Exercises"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-29T21:00:29.015Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "Which of the following is a correct statement about indicators?",
+      "choices": [
+        "Indicators are used to taste acids and bases",
+        "Indicators change colour in the presence of acids and bases",
+        "Indicators are always strong acids or bases",
+        "Indicators are harmful to touch or taste"
+      ],
+      "answerIndex": 1,
+      "solution": "Indicators change colour in the presence of acids and bases because they are sensitive to pH levels. They are not used for tasting, as that would be unsafe and inaccurate. Indicators are not necessarily strong acids or bases, and they are generally not harmful when used properly in experiments.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा स्वादक (इंडिकेटर) के बारे में सही कथन है?",
+          "choices": [
+            "स्वादक अम्लों और क्षारों के स्वाद के लिए उपयोग किए जाते हैं",
+            "अम्लों और क्षारों की उपस्थिति में स्वादक रंग बदल देते हैं",
+            "स्वादक हमेशा मजबूत अम्ल या क्षार होते हैं",
+            "स्वादक स्पर्श करने या स्वाद लेने में हानिकारक होते हैं"
+          ],
+          "solution": "स्वादक अम्लों और क्षारों की उपस्थिति में रंग बदल देते हैं क्योंकि वे pH स्तर के प्रति संवेदनशील होते हैं। इनका स्वाद लेने के लिए उपयोग असुरक्षित और असटीक होता है। स्वादक आवश्यक रूप से मजबूत अम्ल या क्षार नहीं होते हैं, और प्रयोगशाला में सही तरीके से उपयोग करने पर ये आमतौर पर हानिकारक नहीं होते हैं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains the original meaning, and uses appropriate Hindi scientific terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणता विधान संकेतकांबद्दल बरोबर आहे?",
+          "choices": [
+            "संकेतक अम्ले आणि क्षारांचे स्वाद घेण्यासाठी वापरले जातात",
+            "संकेतक अम्ले आणि क्षारांच्या उपस्थितीत रंग बदलतात",
+            "संकेतक नेहमीच दुर्बल अम्ल किंवा क्षार असतात",
+            "संकेतक स्पर्श किंवा स्वाद घेण्यासाठी हानिकारक असतात"
+          ],
+          "solution": "संकेतक अम्ले आणि क्षारांच्या उपस्थितीत रंग बदलतात कारण ते pH च्या संवेदनशील असतात. त्यांचा स्वाद घेण्यासाठी वापरले जात नाही, कारण हे असुरक्षित आणि अनिश्चित असते. संकेतक नेहमीच दुर्बल अम्ल किंवा क्षार असतात, आणि ते प्रयोगशाळेत योग्यरित्या वापरल्यास हानिकारक नसतात.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the original meaning, and uses appropriate technical terms. The correct answer remains option (2) and the distractors are still incorrect.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the function of indicators with tasting",
+        null,
+        "Misunderstands the nature of indicators",
+        "Misinterprets the safety of indicators"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 1, as indicators change color in the presence of acids and bases. The author's solution is accurate and aligns with the correct understanding of indicators.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 105,
+          "pageStart": 92,
+          "pageEnd": 93,
+          "headingPath": [
+            "12. Introduction to Acid & Base"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 106,
+          "pageStart": 93,
+          "pageEnd": 94,
+          "headingPath": [
+            "12. Introduction to Acid & Base"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 107,
+          "pageStart": 94,
+          "pageEnd": 95,
+          "headingPath": [
+            "12. Introduction to Acid & Base"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-29T21:00:29.015Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "What is the function of an indicator in a chemical reaction?",
+      "choices": [
+        "To change the pH of the solution",
+        "To measure the temperature of the solution",
+        "To show the presence of acid or base",
+        "To increase the concentration of the solution"
+      ],
+      "answerIndex": 2,
+      "solution": "An indicator is used to show the presence of acid or base by changing color in response to the pH of the solution. It does not alter the pH, measure temperature, or change the concentration of the solution, as those are not its functions.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "रासायनिक अभिक्रिया में सूचक का कार्य क्या होता है?",
+          "choices": [
+            "विलयन के pH को बदलना",
+            "विलयन के तापमान को मापना",
+            "अम्ल या क्षार की उपस्थिति दिखाना",
+            "विलयन की सांद्रता बढ़ाना"
+          ],
+          "solution": "एक सूचक का उपयोग विलयन के pH के प्रतिक्रिया में रंग बदलकर अम्ल या क्षार की उपस्थिति दिखाने के लिए किया जाता है। यह विलयन के pH को नहीं बदलता, तापमान को मापता है या विलयन की सांद्रता में परिवर्तन नहीं करता है, क्योंकि ये इसके कार्य नहीं हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate technical terms as found in Hindi-medium science textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "रासायनिक अभिक्रियेमध्ये एका संकेतकाची कार्ये काय आहे?",
+          "choices": [
+            "त्या द्रावणाच्या pH ची बदलणे",
+            "त्या द्रावणाच्या तापमानाचे मोजणे",
+            "अम्ल किंवा क्षाराच्या उपस्थिती दर्शविणे",
+            "त्या द्रावणाच्या सांद्रतेचे वाढविणे"
+          ],
+          "solution": "एका संकेतकाचा वापर द्रावणाच्या pH च्या प्रतिक्रियेमुळे रंग बदलून अम्ल किंवा क्षाराच्या उपस्थिती दर्शविण्यासाठी केला जातो. तो द्रावणाच्या pH ची बदलत नाही, तापमान मोजत नाही किंवा द्रावणाच्या सांद्रतेचे बदलत नाही, कारण ते त्याचे कार्य नाही.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the original meaning, and uses appropriate technical terms like 'संकेतक' (indicator) and 'pH' (pH) as used in Marathi science textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the function of an indicator with pH adjustment",
+        "Confuses the function of an indicator with temperature measurement",
+        null,
+        "Confuses the function of an indicator with concentration adjustment"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 2, as indicators are used to show the presence of acids or bases through color change. The other options represent common misconceptions about the function of indicators.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 105,
+          "pageStart": 92,
+          "pageEnd": 93,
+          "headingPath": [
+            "12. Introduction to Acid & Base"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 106,
+          "pageStart": 93,
+          "pageEnd": 94,
+          "headingPath": [
+            "12. Introduction to Acid & Base"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 107,
+          "pageStart": 94,
+          "pageEnd": 95,
+          "headingPath": [
+            "12. Introduction to Acid & Base"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-29T21:00:29.015Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "A student added a few drops of an unknown solution to phenolphthalein and the solution turned pink. What can be concluded about the unknown solution?",
+      "choices": [
+        "It is an acid",
+        "It is a base",
+        "It is neutral",
+        "It is a salt"
+      ],
+      "answerIndex": 1,
+      "solution": "Phenolphthalein turns pink in basic solutions and remains colorless in acidic ones. Since the solution turned pink, it must be a base. Acids would not cause a color change, and neutral or salt solutions also do not react with phenolphthalein to produce pink.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक छात्र ने कुछ बूंदें अज्ञात विलयन के फीनॉल्फथेलीन में मिलाई और विलयन गुलाबी हो गया। अज्ञात विलयन के बारे में क्या निष्कर्ष निकाला जा सकता है?",
+          "choices": [
+            "यह एक अम्ल है",
+            "यह एक क्षार है",
+            "यह उदासीन है",
+            "यह लवण है"
+          ],
+          "solution": "फीनॉल्फथेलीन क्षारीय विलयन में गुलाबी हो जाता है और अम्लीय विलयन में अकल्पनीय रहता है। चूंकि विलयन गुलाबी हो गया, इसलिए यह एक क्षार होना चाहिए। अम्ल रंग में परिवर्तन नहीं करते हैं, और उदासीन या लवण विलयन भी फीनॉल्फथेलीन के साथ गुलाबी रंग उत्पन्न करने में विफल रहते हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Hindi scientific terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका विद्यार्थ्याने अज्ञात द्रावणाच्या काही थेंबांना फिनॉल्फथेलिनमध्ये टाकले आणि द्रावण गुलाबी झाले. अज्ञात द्रावणाबद्दल काय निष्कर्ष काढता येईल?",
+          "choices": [
+            "ते अम्ल आहे",
+            "ते क्षार आहे",
+            "ते उदासीन आहे",
+            "ते लवण आहे"
+          ],
+          "solution": "फिनॉल्फथेलिन बेसिक द्रावणामध्ये गुलाबी होते आणि अम्लीय द्रावणामध्ये रंगहीन राहते. जेव्हा द्रावण गुलाबी झाले, तेव्हा ते एक क्षार असावा. अम्ल रंगाचा बदल करणार नाहीत, आणि उदासीन किंवा लवण द्रावणांमध्ये फिनॉल्फथेलिनशी रंगाचा बदल होत नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for chemistry.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Misinterprets the colour change of phenolphthalein in acids",
+        null,
+        "Confuses neutral solutions with bases",
+        "Misunderstands the function of salts"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct. Phenolphthalein turns pink in basic solutions, so the correct answer is that the solution is a base. The reasoning provided by the author is accurate and aligns with the known behavior of phenolphthalein.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 105,
+          "pageStart": 92,
+          "pageEnd": 93,
+          "headingPath": [
+            "12. Introduction to Acid & Base"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 106,
+          "pageStart": 93,
+          "pageEnd": 94,
+          "headingPath": [
+            "12. Introduction to Acid & Base"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 107,
+          "pageStart": 94,
+          "pageEnd": 95,
+          "headingPath": [
+            "12. Introduction to Acid & Base"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-29T21:00:29.015Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "A solution turns phenolphthalein pink. What can be concluded about the solution?",
+      "choices": [
+        "It is acidic",
+        "It is basic",
+        "It is neutral",
+        "It contains chloride ions"
+      ],
+      "answerIndex": 1,
+      "solution": "Phenolphthalein turns pink in basic solutions. The other options are incorrect because they do not describe the correct behavior of phenolphthalein in basic solutions.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक विलयन फीनॉल्फथेलिन को गुलाबी बना देता है। विलयन के बारे में क्या निष्कर्ष निकाला जा सकता है?",
+          "choices": [
+            "यह अम्लीय है",
+            "यह क्षारीय है",
+            "यह उदासीन है",
+            "यह क्लोराइड आयन रखता है"
+          ],
+          "solution": "फीनॉल्फथेलिन क्षारीय विलयन में गुलाबी हो जाता है। अन्य विकल्प गलत हैं क्योंकि वे क्षारीय विलयन में फीनॉल्फथेलिन के सही व्यवहार का वर्णन नहीं करते हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate technical terms as found in Hindi-medium science textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका द्रावणामुळे फिनॉल्फथेलिन पिवळा होतो. त्या द्रावणाबद्दल काय निष्कर्ष काढता येईल?",
+          "choices": [
+            "ते अम्लीय आहे",
+            "ते क्षारीय आहे",
+            "ते उदासीन आहे",
+            "त्यामध्ये क्लोराइड आयन आहेत"
+          ],
+          "solution": "फिनॉल्फथेलिन क्षारीय द्रावणामध्ये पिवळा होते. इतर विकल्प चुकीचे आहेत कारण ते क्षारीय द्रावणामध्ये फिनॉल्फथेलिनच्या वागण्याचे योग्य वर्णन करत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for chemical concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the effect of acids with bases",
+        null,
+        "Student thinks phenolphthalein turns pink only in neutral solutions, not realizing it is a base indicator.",
+        "Confuses the properties of neutral solutions"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct. Phenolphthalein turns pink in basic solutions, and the reasoning for the other options aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 108,
+          "pageStart": 95,
+          "pageEnd": 96,
+          "headingPath": [
+            "12. Introduction to Acid & Base"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 109,
+          "pageStart": 96,
+          "pageEnd": 97,
+          "headingPath": [
+            "12. Introduction to Acid & Base"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 110,
+          "pageStart": 98,
+          "pageEnd": 98,
+          "headingPath": [
+            "12. Introduction to Acid & Base",
+            "Exercises"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-29T21:00:29.015Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Which of the following statements is true about the reaction between an acid and a base?",
+      "choices": [
+        "No new substances are formed",
+        "Only water is formed",
+        "Salt and water are formed",
+        "Only salt is formed"
+      ],
+      "answerIndex": 2,
+      "solution": "When an acid reacts with a base, a neutralization reaction occurs, producing salt and water. This is a fundamental chemical reaction where both substances are neutralized. The other options are incorrect because new substances are always formed, and not just water or just salt.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा कथन अम्ल और क्षार के अभिक्रिया के बारे में सत्य है?",
+          "choices": [
+            "कोई नए पदार्थ बनते हैं",
+            "केवल पानी बनता है",
+            "लवण और पानी बनते हैं",
+            "केवल लवण बनता है"
+          ],
+          "solution": "जब अम्ल क्षार के साथ अभिक्रिया करता है, तो उदासीनीकरण अभिक्रिया होती है, जिसमें लवण और पानी बनते हैं। यह एक मूलभूत रासायनिक अभिक्रिया है जहां दोनों पदार्थ उदासीन हो जाते हैं। अन्य विकल्प गलत हैं क्योंकि हमेशा नए पदार्थ बनते हैं, और केवल पानी या केवल लवण नहीं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and technical terms. The correct answer remains option (2), and all distractors are still incorrect.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणता विधान अम्ल आणि आधान दरम्यानच्या ऍक्शनबद्दल खरा आहे?",
+          "choices": [
+            "कोणतेही नवीन पदार्थ तयार होत नाहीत",
+            "केवळ पाणी तयार होते",
+            "लवण आणि पाणी तयार होतात",
+            "केवळ लवण तयार होते"
+          ],
+          "solution": "जेव्हा अम्ल आधानशी ऍक्शन करतो, तेव्हा न्यूट्रलायझेशन ऍक्शन होतो, जो लवण आणि पाणी तयार करतो. हे एक मूलभूत रासायनिक ऍक्शन आहे जेथे दोन्ही पदार्थ न्यूट्रल केले जातात. इतर विकल्प अयोग्य आहेत कारण नवीन पदार्थ नेहमी तयार होतात, आणि केवळ पाणी किंवा केवळ लवण नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Misunderstands the products of neutralization",
+        "Misunderstands the products of neutralization",
+        null,
+        "Misunderstands the products of neutralization"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 2, as acids and bases neutralize each other to form salt and water. The other options are incorrect because they fail to account for both products of a neutralization reaction.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 108,
+          "pageStart": 95,
+          "pageEnd": 96,
+          "headingPath": [
+            "12. Introduction to Acid & Base"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 109,
+          "pageStart": 96,
+          "pageEnd": 97,
+          "headingPath": [
+            "12. Introduction to Acid & Base"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 110,
+          "pageStart": 98,
+          "pageEnd": 98,
+          "headingPath": [
+            "12. Introduction to Acid & Base",
+            "Exercises"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-29T21:00:29.015Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of the following is a characteristic of bases?",
+      "choices": [
+        "They have a sour taste",
+        "They turn red litmus paper blue",
+        "They are corrosive in nature",
+        "They are used as indicators"
+      ],
+      "answerIndex": 1,
+      "solution": "Bases are known to turn red litmus paper blue due to their chemical properties. Unlike acids, which have a sour taste and are corrosive, bases typically have a bitter taste and feel slippery. Indicators are substances that change color in the presence of acids or bases, but they are not a characteristic of bases themselves. Therefore, the correct answer is that bases turn red litmus paper blue.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा क्षार का गुण है?",
+          "choices": [
+            "उनका खट्टा स्वाद होता है",
+            "वे लाल लिटमस कागज को नीला कर देते हैं",
+            "उनकी प्रकृति खारापन वाली होती है",
+            "उनका उपयोग संकेतक के रूप में किया जाता है"
+          ],
+          "solution": "क्षार लाल लिटमस कागज को नीला कर देते हैं क्योंकि उनके रासायनिक गुण होते हैं। अम्लों के विपरीत, जिनका खट्टा स्वाद होता है और वे खारापन वाले होते हैं, क्षारों का स्वाद तीखा होता है और वे फिसलन वाले होते हैं। संकेतक वे पदार्थ होते हैं जो अम्ल या क्षार की उपस्थिति में रंग बदल देते हैं, लेकिन वे क्षार के गुण नहीं होते। इसलिए, सही उत्तर यह है कि क्षार लाल लिटमस कागज को नीला कर देते हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. All options and the solution are correctly translated, with the correct answer remaining option (2).",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते अम्लांचे गुणधर्म आहे?",
+          "choices": [
+            "त्यांचा खडबडीत छाप असतो",
+            "ते लाल लिटमस कागदाला निळा करतात",
+            "ते प्रतिकूल प्रकृतीचे असतात",
+            "त्यांचा वापर संकेतक म्हणून केला जातो"
+          ],
+          "solution": "अम्लांच्या रासायनिक गुणधर्मांमुळे ते लाल लिटमस कागदाला निळा करतात. अम्लांचा खडबडीत छाप असतो आणि ते प्रतिकूल प्रकृतीचे असतात, तर अल्कलींचा तीव्र छाप असतो आणि ते स्लिपरी असतात. संकेतक म्हणजे अम्ल किंवा अल्कली असल्यास रंग बदलणारी पदार्थ आहेत, परंतु ते अल्कलींचे गुणधर्म नाहीत. म्हणून, योग्य उत्तर म्हणजे अम्ल लाल लिटमस कागदाला निळा करतात.",
+          "imageAlt": null,
+          "critique": "The Marathi translation contains significant errors. The question asks about 'bases' in English, but the Marathi translation mistakenly refers to 'acids' (अम्ल) throughout. This changes the meaning of the question and all options. The key is also incorrect (1 instead of 2), and the solution refers to acids instead of bases. The technical terms are not consistent with standard Marathi science terminology.",
+          "flag": "translation critique: meaning changed; not one answer at the same position; a distractor no longer wrong; terms not the board's"
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses characteristics of acids with bases",
+        null,
+        "Incorrectly assumes bases are corrosive",
+        "Misunderstands the role of indicators"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly identifies that bases turn red litmus paper blue, and the reasoning for the other options aligns with common misconceptions about acids and bases.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 105,
+          "pageStart": 92,
+          "pageEnd": 93,
+          "headingPath": [
+            "12. Introduction to Acid & Base"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 106,
+          "pageStart": 93,
+          "pageEnd": 94,
+          "headingPath": [
+            "12. Introduction to Acid & Base"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 107,
+          "pageStart": 94,
+          "pageEnd": 95,
+          "headingPath": [
+            "12. Introduction to Acid & Base"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-22T07:36:16.131Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "A student added a few drops of methyl orange to a solution and it turned pink. What can be concluded about the solution?",
+      "choices": [
+        "It is a base",
+        "It is a neutral solution",
+        "It is an acid",
+        "It is a salt"
+      ],
+      "answerIndex": 2,
+      "solution": "Methyl orange turns pink in acidic solutions and yellow in basic solutions. Since the solution turned pink, it indicates the presence of an acid. A base would turn the indicator yellow, a neutral solution would not change its color, and a salt may not affect the indicator significantly. Therefore, the solution is acidic.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक छात्र ने एक विलयन में कुछ बूंदें मेथिल ऑरेंज मिलाईं और यह गुलाबी हो गई। विलयन के बारे में क्या निष्कर्ष निकाला जा सकता है?",
+          "choices": [
+            "यह एक क्षार है",
+            "यह एक उदासीन विलयन है",
+            "यह एक अम्ल है",
+            "यह एक लवण है"
+          ],
+          "solution": "मेथिल ऑरेंज अम्लीय विलयन में गुलाबी हो जाता है और क्षारीय विलयन में पीला हो जाता है। चूंकि विलयन गुलाबी हो गया, इसका अर्थ है कि अम्ल की उपस्थिति है। एक क्षार इंडिकेटर को पीला कर देगा, एक उदासीन विलयन इसके रंग को नहीं बदलेगा, और एक लवण इंडिकेटर पर लगभग कोई प्रभाव नहीं डाल सकता। इसलिए, विलयन अम्लीय है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains original meaning, and uses standard Hindi scientific terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका विद्यार्थ्याने एका द्रावणात मेथिल ऑरेंजच्या काही थेंबा घातले आणि ते गुलाबी रंगाचे झाले. तर द्रावणाबद्दल काय निष्कर्ष काढता येईल?",
+          "choices": [
+            "ते एक क्षार आहे",
+            "ते उदासीन द्रावण आहे",
+            "ते एक अम्ल आहे",
+            "ते एक लवण आहे"
+          ],
+          "solution": "मेथिल ऑरेंज अम्लीय द्रावणात गुलाबी रंगाचे होते आणि क्षारीय द्रावणात पांढरा रंगाचे होते. जेव्हा द्रावण गुलाबी रंगाचे झाले तेव्हा अम्लाच्या उपस्थितीचा संकेत देते. क्षार द्रावणाने इंडिकेटरला पांढरा रंग देते, उदासीन द्रावणाने इंडिकेटरचा रंग बदलत नाही आणि लवण इंडिकेटरला जास्त प्रमाणात प्रभावित करू शकत नाही. म्हणूनच, द्रावण अम्लीय आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the effect of bases on methyl orange",
+        "Does not understand the role of methyl orange in neutral solutions",
+        null,
+        "Misinterprets the indicator's response to salts"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct. Methyl orange turns pink in acidic solutions, so the correct answer is option 2. The author's reasoning for the distractors is valid and reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 105,
+          "pageStart": 92,
+          "pageEnd": 93,
+          "headingPath": [
+            "12. Introduction to Acid & Base"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 106,
+          "pageStart": 93,
+          "pageEnd": 94,
+          "headingPath": [
+            "12. Introduction to Acid & Base"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 107,
+          "pageStart": 94,
+          "pageEnd": 95,
+          "headingPath": [
+            "12. Introduction to Acid & Base"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-22T07:36:16.131Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "What happens when an acid reacts with a metal?",
+      "choices": [
+        "Hydrogen gas is released",
+        "Oxygen gas is released",
+        "Nitrogen gas is released",
+        "Carbon dioxide gas is released"
+      ],
+      "answerIndex": 0,
+      "solution": "When an acid reacts with a metal, hydrogen gas is released because the acid donates protons that combine with electrons from the metal to form hydrogen molecules. Oxygen, nitrogen, and carbon dioxide are not typically produced in such a reaction because they are not involved in the standard acid-metal reaction mechanism.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "धातु के साथ अम्ल की अभिक्रिया में क्या होता है?",
+          "choices": [
+            "हाइड्रोजन गैस निकलती है",
+            "ऑक्सीजन गैस निकलती है",
+            "नाइट्रोजन गैस निकलती है",
+            "कार्बन डाइऑक्साइड गैस निकलती है"
+          ],
+          "solution": "जब अम्ल धातु के साथ अभिक्रिया करता है, तो हाइड्रोजन गैस निकलती है क्योंकि अम्ल प्रोटॉन के दाता होते हैं जो धातु से इलेक्ट्रॉनों के साथ मिलकर हाइड्रोजन अणु बनाते हैं। ऑक्सीजन, नाइट्रोजन और कार्बन डाइऑक्साइड आमतौर पर ऐसी अभिक्रिया में उत्पन्न नहीं होते क्योंकि वे मानक अम्ल-धातु अभिक्रिया यांत्रिकी में शामिल नहीं होते।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate technical terms as found in Hindi-medium science textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका अम्लाचा धातूशी अभिक्रिया केल्यास काय होतो?",
+          "choices": [
+            "हायड्रोजन वायू बाहेर पडतो",
+            "ऑक्सीजन वायू बाहेर पडतो",
+            "नायट्रोजन वायू बाहेर पडतो",
+            "कार्बन डायऑक्साइड वायू बाहेर पडतो"
+          ],
+          "solution": "एका अम्लाचा धातूशी अभिक्रिया केल्यास हायड्रोजन वायू बाहेर पडतो कारण अम्ल प्रोटॉन देतो जे धातूमधून येणाऱ्या इलेक्ट्रॉनशी जोडून हायड्रोजन अणू बनवतात. ऑक्सीजन, नायट्रोजन आणि कार्बन डायऑक्साइड अशा प्रकारच्या अभिक्रियांमध्ये सामान्यतः उत्पन्न होत नाहीत कारण ते मानक अम्ल-धातू अभिक्रिया यंत्रणेमध्ये समाविष्ट नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "confuses the gas released with oxygen",
+        "confuses the gas released with nitrogen",
+        "confuses the gas released with carbon dioxide"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 0, as acids reacting with metals typically release hydrogen gas. The other options represent common misconceptions about gas release in chemical reactions.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 108,
+          "pageStart": 95,
+          "pageEnd": 96,
+          "headingPath": [
+            "12. Introduction to Acid & Base"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 109,
+          "pageStart": 96,
+          "pageEnd": 97,
+          "headingPath": [
+            "12. Introduction to Acid & Base"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 110,
+          "pageStart": 98,
+          "pageEnd": 98,
+          "headingPath": [
+            "12. Introduction to Acid & Base",
+            "Exercises"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-22T07:36:16.131Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "If a solution turns blue litmus paper red, what is the most likely nature of the solution?",
+      "choices": [
+        "Basic",
+        "Neutral",
+        "Acidic",
+        "Cannot be determined"
+      ],
+      "answerIndex": 2,
+      "solution": "Blue litmus paper turns red in the presence of an acid, which directly indicates an acidic solution. A basic solution would turn red litmus paper blue, and a neutral solution would not change the color of the paper. Since the paper turned red, the solution must be acidic.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि कोई विलयन नीले लिटमस कागज को लाल कर देता है, तो विलयन की अधिक संभावना क्या होगी?",
+          "choices": [
+            "क्षारीय",
+            "उदासीन",
+            "अम्लीय",
+            "निर्धारित नहीं किया जा सकता"
+          ],
+          "solution": "नीला लिटमस कागज अम्ल की उपस्थिति में लाल हो जाता है, जो सीधे अम्लीय विलयन को इंगित करता है। क्षारीय विलयन लाल लिटमस कागज को नीला कर देता है, और उदासीन विलयन कागज के रंग में कोई परिवर्तन नहीं करता। चूंकि कागज लाल हो गया, इसलिए विलयन अम्लीय होना चाहिए।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English original in meaning, terminology, and structure. All options are correctly translated, and the correct answer remains in the same position. The distractors remain incorrect, and the technical terms used are standard in Hindi science textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर एखादा द्रावण नील लिटमस कागदाला लाल करत असेल, तर द्रावणाची सर्वात शक्य प्रकृती काय असेल?",
+          "choices": [
+            "क्षारीय",
+            "उदासीन",
+            "अम्लीय",
+            "निश्चित करता येत नाही"
+          ],
+          "solution": "नील लिटमस कागद अम्लाच्या उपस्थितीत लाल होतो, जे सीधा अम्लीय द्रावणाची निर्देश करतो. क्षारीय द्रावण लाल लिटमस कागदाला नील करते, आणि उदासीन द्रावण कागदाच्या रंगात बदल करत नाही. कारण कागद लाल झाला, तर द्रावण अम्लीय असल्याचे निश्चित होते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the effect of bases on litmus paper",
+        "Does not recognize that litmus paper can indicate neutrality",
+        null,
+        "Misunderstands the role of litmus paper in determining solution nature"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct. Blue litmus paper turning red is a clear indicator of an acidic solution. The author's key is incorrect, as the correct answer should be option 2 (Acidic). The author's reasoning is correct, but the key is wrong.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 105,
+          "pageStart": 92,
+          "pageEnd": 93,
+          "headingPath": [
+            "12. Introduction to Acid & Base"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 106,
+          "pageStart": 93,
+          "pageEnd": 94,
+          "headingPath": [
+            "12. Introduction to Acid & Base"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 107,
+          "pageStart": 94,
+          "pageEnd": 95,
+          "headingPath": [
+            "12. Introduction to Acid & Base"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-22T07:36:16.131Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "Which of the following substances is most likely to have the highest pH value when dissolved in water?",
+      "choices": [
+        "Sulphuric acid",
+        "Acetic acid",
+        "Magnesium hydroxide",
+        "Sodium hydroxide"
+      ],
+      "answerIndex": 3,
+      "solution": "Sodium hydroxide is a strong base, which means it fully dissociates in water to produce a high concentration of hydroxide ions, resulting in a high pH. Sulphuric acid is a strong acid and would lower the pH, acetic acid is a weak acid and would only partially dissociate, and magnesium hydroxide is a weak base, producing fewer hydroxide ions than sodium hydroxide. Therefore, sodium hydroxide has the highest pH.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित पदार्थों में से कौन-सा जल में घुलने पर सबसे अधिक pH मान के लिए संभावित है?",
+          "choices": [
+            "सल्फ्यूरिक अम्ल",
+            "एसिटिक अम्ल",
+            "मैग्नीशियम हाइड्रॉक्साइड",
+            "सोडियम हाइड्रॉक्साइड"
+          ],
+          "solution": "सोडियम हाइड्रॉक्साइड एक मजबूत क्षार है, जिसका अर्थ है कि यह पानी में पूरी तरह से वियोजित हो जाता है और उच्च संकेंद्रण में हाइड्रॉक्साइड आयन उत्पन्न करता है, जिसके परिणामस्वरूप उच्च pH होता है। सल्फ्यूरिक अम्ल एक मजबूत अम्ल है और pH को कम कर देगा, एसिटिक अम्ल एक कमजोर अम्ल है और केवल आंशिक रूप से वियोजित होगा, और मैग्नीशियम हाइड्रॉक्साइड एक कमजोर क्षार है, जो सोडियम हाइड्रॉक्साइड की तुलना में कम हाइड्रॉक्साइड आयन उत्पन्न करता है। इसलिए, सोडियम हाइड्रॉक्साइड का pH सबसे अधिक है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses standard Hindi scientific terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते द्रव्य पाण्यात विरघळल्यास सर्वात जास्त pH मूल्य असण्याची शक्यता असते?",
+          "choices": [
+            "सल्फ्यूरिक ऍसिड",
+            "एसिटिक ऍसिड",
+            "मॅग्नेशियम हायड्रॉक्साइड",
+            "सोडियम हायड्रॉक्साइड"
+          ],
+          "solution": "सोडियम हायड्रॉक्साइड एक शक्तिशाली क्षार आहे, ज्यामुळे पाण्यात पूर्णपणे विघटित होऊन उच्च तीव्रतेचे हायड्रॉक्साइड आयन तयार होतात, ज्यामुळे pH उच्च असतो. सल्फ्यूरिक ऍसिड शक्तिशाली ऍसिड आहे आणि pH घटवते, एसिटिक ऍसिड एक कमकुवत ऍसिड आहे आणि फक्त भागभागाने विघटित होते, आणि मॅग्नेशियम हायड्रॉक्साइड कमकुवत क्षार आहे, जो सोडियम हायड्रॉक्साइड पेक्षा कमी हायड्रॉक्साइड आयन तयार करतो. त्यामुळे, सोडियम हायड्रॉक्साइड चा pH सर्वात जास्त असतो.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the strength of acids with pH value",
+        "Confuses weak bases with strong bases",
+        "Misunderstands the relationship between base strength and pH",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct. Sodium hydroxide is a strong base and will have the highest pH. The reasoning about acid and base strengths aligns with standard chemistry principles.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 105,
+          "pageStart": 92,
+          "pageEnd": 93,
+          "headingPath": [
+            "12. Introduction to Acid & Base"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 106,
+          "pageStart": 93,
+          "pageEnd": 94,
+          "headingPath": [
+            "12. Introduction to Acid & Base"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 107,
+          "pageStart": 94,
+          "pageEnd": 95,
+          "headingPath": [
+            "12. Introduction to Acid & Base"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-22T07:36:16.131Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "If a solution turns phenolphthalein pink, what can be said about its pH?",
+      "choices": [
+        "It is less than 7",
+        "It is exactly 7",
+        "It is greater than 7",
+        "It is neutral"
+      ],
+      "answerIndex": 2,
+      "solution": "Phenolphthalein turns pink in basic solutions, which have a pH greater than 7. A pH of 7 is neutral, and less than 7 is acidic. Therefore, the correct answer is that the solution has a pH greater than 7.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक विलयन फीनॉल्फथेलीन को गुलाबी बना दे, तो इसके pH के बारे में क्या कहा जा सकता है?",
+          "choices": [
+            "इसका मान 7 से कम है",
+            "इसका मान ठीक 7 है",
+            "इसका मान 7 से अधिक है",
+            "यह उदासीन है"
+          ],
+          "solution": "फीनॉल्फथेलीन के आधारीय विलयन में गुलाबी हो जाता है, जिनका pH 7 से अधिक होता है। 7 का pH उदासीन होता है, और 7 से कम अम्लीय होता है। इसलिए, सही उत्तर यह है कि विलयन का pH 7 से अधिक है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the original English question and solution, with appropriate technical terms used in a Hindi-medium context.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका द्रावणामुळे फिनॉल्फथेलिन पांढरा होतो, तर त्याच्या pH बद्दल काय म्हणता येईल?",
+          "choices": [
+            "ते 7 पेक्षा कमी आहे",
+            "ते तपशील 7 आहे",
+            "ते 7 पेक्षा जास्त आहे",
+            "ते उदासीन आहे"
+          ],
+          "solution": "फिनॉल्फथेलिन बेसिक द्रावणांमध्ये पांढरा होते, ज्यांचे pH 7 पेक्षा जास्त असते. 7 चे pH उदासीन असते, आणि 7 पेक्षा कमी असल्यास ते अम्लीय असते. म्हणूनच, योग्य उत्तर म्हणजे द्रावणाचे pH 7 पेक्षा जास्त आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the pH range for basic solutions",
+        "Confuses the pH range for neutral solutions",
+        null,
+        "Confuses the pH range for acidic solutions"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct and aligns with the key. Phenolphthalein turns pink in basic solutions (pH > 7), so option 2 is correct.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 105,
+          "pageStart": 92,
+          "pageEnd": 93,
+          "headingPath": [
+            "12. Introduction to Acid & Base"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 106,
+          "pageStart": 93,
+          "pageEnd": 94,
+          "headingPath": [
+            "12. Introduction to Acid & Base"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 107,
+          "pageStart": 94,
+          "pageEnd": 95,
+          "headingPath": [
+            "12. Introduction to Acid & Base"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-22T07:36:16.131Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "A student added a few drops of phenolphthalein to a solution and it remained colourless. What can be concluded about the solution?",
+      "choices": [
+        "It is a strong acid",
+        "It is a base",
+        "It is a salt",
+        "It is a neutral solution"
+      ],
+      "answerIndex": 0,
+      "solution": "Phenolphthalein remains colourless in acidic solutions and turns pink in basic solutions. Since the solution remained colourless, it indicates acidity. A base would cause a pink colour change, a salt may not affect the indicator, and a neutral solution would also not change the colour. Therefore, the solution is a strong acid.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक छात्र ने एक घोल में कुछ बूंदें फीनॉलफथेलीन मिलाई और यह बिना रंग के रह गया। घोल के बारे में क्या निष्कर्ष निकाला जा सकता है?",
+          "choices": [
+            "यह एक मजबूत अम्ल है",
+            "यह एक क्षार है",
+            "यह एक लवण है",
+            "यह एक उदासीन घोल है"
+          ],
+          "solution": "फीनॉलफथेलीन अम्लीय घोल में बिना रंग के रहता है और क्षारीय घोल में गुलाबी हो जाता है। चूंकि घोल बिना रंग के रहा, इसका अर्थ अम्लीयता है। क्षार गुलाबी रंग परिवर्तन करेगा, लवण संकेतक पर कोई प्रभाव नहीं डाल सकता है, और उदासीन घोल भी रंग में परिवर्तन नहीं करेगा। इसलिए, घोल एक मजबूत अम्ल है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate technical terms as found in Hindi-medium science textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका विद्यार्थ्याने एका द्रावणात थोडे फिनॉल्फथेलिन घातले आणि ते रंगहीन राहिले. तर द्रावणाबद्दल काय निष्कर्ष काढता येईल?",
+          "choices": [
+            "ते एक तीव्र अम्ल आहे",
+            "ते एक क्षार आहे",
+            "ते एक लवण आहे",
+            "ते उदासीन द्रावण आहे"
+          ],
+          "solution": "फिनॉल्फथेलिन अम्लीय द्रावणात रंगहीन राहते आणि क्षारीय द्रावणात गुलाबी रंग घेते. जेव्हा द्रावण रंगहीन राहिले तेव्हा त्याचा अर्थ अम्लीयता असल्याचा असतो. क्षार गुलाबी रंग बदल घडवून आणेल, लवण इंडिकेटरला प्रभावित करू शकत नाही आणि उदासीन द्रावण देखील रंग बदल घडवून आणेल नाही. त्यामुळे द्रावण तीव्र अम्ल आहे.",
+          "imageAlt": null,
+          "critique": "Translation accurately reflects the original meaning, technical terms are appropriately used in Marathi, and the correct answer remains in the same position.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses the effect of bases on phenolphthalein",
+        "Does not understand that salts may not affect indicators",
+        "Misinterprets the indicator's response to neutral solutions"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is sound, as phenolphthalein is colorless in acidic solutions and pink in basic ones. The author's reasoning correctly identifies that the solution is acidic, though the conclusion that it is a 'strong acid' may be an overreach since the indicator only confirms acidity, not strength.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 105,
+          "pageStart": 92,
+          "pageEnd": 93,
+          "headingPath": [
+            "12. Introduction to Acid & Base"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 106,
+          "pageStart": 93,
+          "pageEnd": 94,
+          "headingPath": [
+            "12. Introduction to Acid & Base"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 107,
+          "pageStart": 94,
+          "pageEnd": 95,
+          "headingPath": [
+            "12. Introduction to Acid & Base"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-22T07:36:16.131Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Which of the following is an example of a weak acid?",
+      "choices": [
+        "Sulphuric acid",
+        "Hydrochloric acid",
+        "Nitric acid",
+        "Acetic acid"
+      ],
+      "answerIndex": 3,
+      "solution": "Acetic acid is considered a weak acid because it only partially dissociates in water, releasing few hydrogen ions. Strong acids like sulfuric, hydrochloric, and nitric acid fully dissociate in solution, making them much more reactive. Therefore, acetic acid is the correct answer.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन एक कमजोर अम्ल का उदाहरण है?",
+          "choices": [
+            "सल्फ्यूरिक अम्ल",
+            "हाइड्रोक्लोरिक अम्ल",
+            "नाइट्रिक अम्ल",
+            "एसिटिक अम्ल"
+          ],
+          "solution": "एसिटिक अम्ल को एक कमजोर अम्ल माना जाता है क्योंकि यह पानी में केवल आंशिक रूप से वियोजित होता है, जिससे कम हाइड्रोजन आयन निकलते हैं। कमजोर अम्लों जैसे सल्फ्यूरिक, हाइड्रोक्लोरिक और नाइट्रिक अम्ल पूरी तरह से विलयन में वियोजित हो जाते हैं, जिससे वे बहुत अधिक प्रतिक्रियाशील होते हैं। इसलिए, एसिटिक अम्ल सही उत्तर है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses standard Hindi scientific terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते दुर्बल अम्लाचे उदाहरण आहे?",
+          "choices": [
+            "सल्फ्यूरिक अम्ल",
+            "हायड्रोक्लोरिक अम्ल",
+            "नाइट्रिक अम्ल",
+            "एसिटिक अम्ल"
+          ],
+          "solution": "एसिटिक अम्ल दुर्बल अम्ल मानला जातो कारण तो पाण्यात अंशतः विघटित होतो आणि थोडे हायड्रोजन आयन सोडतो. सल्फ्यूरिक, हायड्रोक्लोरिक आणि नाइट्रिक अम्ल अशा शक्तिशाली अम्लांमध्ये विघटित होतात, ज्यामुळे ते खूप अधिक प्रतिक्रियाशील असतात. त्यामुळे एसिटिक अम्ल हा योग्य उत्तर आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for acids.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses strong acids with weak acids",
+        "Confuses strong acids with weak acids",
+        "Confuses strong acids with weak acids",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is well-constructed. The correct answer is acetic acid, a weak organic acid. The other options are all strong acids, and the author's reasoning aligns with standard chemistry knowledge.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 105,
+          "pageStart": 92,
+          "pageEnd": 93,
+          "headingPath": [
+            "12. Introduction to Acid & Base"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 106,
+          "pageStart": 93,
+          "pageEnd": 94,
+          "headingPath": [
+            "12. Introduction to Acid & Base"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 107,
+          "pageStart": 94,
+          "pageEnd": 95,
+          "headingPath": [
+            "12. Introduction to Acid & Base"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-22T07:36:16.131Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Which of the following is a correct statement about the neutralization reaction?",
+      "choices": [
+        "It produces an acid and a base",
+        "It produces a salt and water",
+        "It produces a base and a salt",
+        "It produces an acid and a salt"
+      ],
+      "answerIndex": 1,
+      "solution": "In a neutralization reaction, an acid and a base react to form a salt and water. This is the standard outcome of such a reaction, as the hydrogen ions from the acid combine with hydroxide ions from the base to form water, while the remaining ions form a salt. The other options incorrectly describe the products, as they either include an acid or a base instead of a salt and water.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा उदासीनीकरण अभिक्रिया के बारे में सही कथन है?",
+          "choices": [
+            "यह एक अम्ल और एक क्षार उत्पादित करता है",
+            "यह एक लवण और पानी उत्पादित करता है",
+            "यह एक क्षार और एक लवण उत्पादित करता है",
+            "यह एक अम्ल और एक लवण उत्पादित करता है"
+          ],
+          "solution": "उदासीनीकरण अभिक्रिया में एक अम्ल और एक क्षार अभिक्रिया करके लवण और पानी उत्पादित करते हैं। ऐसी अभिक्रिया के मानक परिणाम हैं, क्योंकि अम्ल के हाइड्रोजन आयन क्षार के हाइड्रॉक्साइड आयनों के साथ मिलकर पानी बनाते हैं, जबकि शेष आयन लवण बनाते हैं। अन्य विकल्प गलत रूप से उत्पादों का वर्णन करते हैं, क्योंकि वे लवण और पानी के स्थान पर या तो एक अम्ल या एक क्षार शामिल करते हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the correct answer position, and uses standard Hindi scientific terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणता उद्धरण उदासीनीकरण अभिक्रियेबद्दल बरोबर आहे?",
+          "choices": [
+            "ते एक अम्ल आणि एक बेस तयार करते",
+            "ते एक लवण आणि पाणी तयार करते",
+            "ते एक बेस आणि लवण तयार करते",
+            "ते एक अम्ल आणि लवण तयार करते"
+          ],
+          "solution": "उदासीनीकरण अभिक्रियेत, अम्ल आणि बेस एकमेकांसोबत अभिक्रिया करून लवण आणि पाणी तयार करतात. हे अशा अभिक्रियेचे मानक फलित आहे, कारण अम्लातील हायड्रोजन आयॉन्स बेसमधील हायड्रॉक्साइड आयॉन्ससोबत जोडून पाणी तयार करतात, तर उरलेले आयॉन्स लवण तयार करतात. इतर विकल्प अभिक्रियेच्या उत्पादनांचे चुकीचे वर्णन करतात, कारण ते लवण आणि पाण्याऐवजी अम्ल किंवा बेसचा समावेश करतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the correct answer position, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "confuses the products of the reaction",
+        null,
+        "confuses the products of the reaction",
+        "confuses the products of the reaction"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is option 1, as neutralization reactions produce salt and water. The other options incorrectly describe the products, which reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 108,
+          "pageStart": 95,
+          "pageEnd": 96,
+          "headingPath": [
+            "12. Introduction to Acid & Base"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 109,
+          "pageStart": 96,
+          "pageEnd": 97,
+          "headingPath": [
+            "12. Introduction to Acid & Base"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 110,
+          "pageStart": 98,
+          "pageEnd": 98,
+          "headingPath": [
+            "12. Introduction to Acid & Base",
+            "Exercises"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-22T07:36:16.131Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
     }
   ]
 }

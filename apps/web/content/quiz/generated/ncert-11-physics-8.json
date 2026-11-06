@@ -119,6 +119,291 @@
       "generatedAt": "2026-10-28T09:59:39.485Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is the term used for the restoring force per unit area in a material?",
+      "choices": [
+        "Strain",
+        "Stress",
+        "Elasticity",
+        "Modulus"
+      ],
+      "answerIndex": 1,
+      "solution": "Stress is defined as the restoring force per unit area in a material. Strain refers to the fractional change in dimension, elasticity is the ability of a material to return to its original shape, and modulus is the constant of proportionality in Hooke's law. Therefore, the correct answer is stress.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "किसी सामग्री में पुनर्स्थापित बल प्रति क्षेत्रफल के लिए उपयोग किए जाने वाले शब्द क्या है?",
+          "choices": [
+            "विकृति",
+            "तनाव",
+            "लचीलापन",
+            "मापांक"
+          ],
+          "solution": "तनाव को किसी सामग्री में पुनर्स्थापित बल प्रति क्षेत्रफल के रूप में परिभाषित किया जाता है। विकृति आयाम में अंशिक परिवर्तन को संदर्भित करती है, लचीलापन सामग्री के मूल आकार में वापस आने की क्षमता है, और मापांक हुक के नियम में आनुपातिकता के नियतांक है। इसलिए, सही उत्तर तनाव है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms as found in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका सामग्रीतील पुनर्स्थिती बलाच्या एकक क्षेत्रावर वापरलेल्या शब्दाचे नाव काय आहे?",
+          "choices": [
+            "स्ट्रेन",
+            "स्ट्रेस",
+            "लोच",
+            "मॉड्युलस"
+          ],
+          "solution": "स्ट्रेस म्हणजे सामग्रीतील पुनर्स्थिती बलाच्या एकक क्षेत्रावर व्यक्त केलेले आहे. स्ट्रेन हा विस्ताराच्या अंशात बदलाचा संदर्भ देतो, लोच ही सामग्रीच्या मूळ आकारात परत येण्याची क्षमता आहे आणि मॉड्युलस हा हुकच्या नियमातील प्रमाणात बदलणारा खासगी स्थिरांक आहे. त्यामुळे, योग्य उत्तर स्ट्रेस आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and uses standard Marathi scientific terminology. The term 'स्ट्रेन' and 'स्ट्रेस' are direct transliterations but are commonly used in Marathi science textbooks. 'मॉड्युलस' is also a standard term used in Marathi physics.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses stress with strain",
+        null,
+        "Confuses stress with elasticity, thinking elasticity is the restoring force per unit area",
+        "Confuses stress with elasticity or modulus"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-constructed, with a clear and correct definition of stress. The distractors reflect common misconceptions about related terms in the study of mechanical properties of solids.",
+      "sources": [
+        {
+          "document": "ncert/11/physics/keph201.pdf",
+          "ordinal": 12,
+          "pageStart": 9,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 1: Mechanical Properties of Solids"
+          ]
+        },
+        {
+          "document": "ncert/11/physics/keph201.pdf",
+          "ordinal": 13,
+          "pageStart": 10,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 1: Mechanical Properties of Solids"
+          ]
+        },
+        {
+          "document": "ncert/11/physics/keph201.pdf",
+          "ordinal": 14,
+          "pageStart": 11,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 1: Mechanical Properties of Solids"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-23T04:26:01.962Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "A wire is stretched under a force, and its elongation is calculated using the formula F = YA × (l/L). What does Y represent in this formula?",
+      "choices": [
+        "Young's modulus",
+        "Shear modulus",
+        "Bulk modulus",
+        "Poisson's ratio"
+      ],
+      "answerIndex": 0,
+      "solution": "Young's modulus (Y) is a measure of a material's stiffness under tensile or compressive stress. The formula F = YA × (l/L) shows that Y relates the applied force (F) to the elongation (l) of the wire. Shear modulus (G) relates to twisting forces, bulk modulus (B) relates to compression under pressure, and Poisson's ratio is a dimensionless quantity relating lateral and longitudinal strain.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक तार को बल के अंतर्गत खींचा जाता है, और इसकी लम्बाई में वृद्धि सूत्र F = YA × (l/L) के उपयोग से गणना की जाती है। इस सूत्र में Y क्या प्रतिनिधित्व करता है?",
+          "choices": [
+            "यंग के प्रत्यास्थता गुणांक",
+            "कर्षण गुणांक",
+            "आयतन प्रत्यास्थता गुणांक",
+            "पॉइसों का अनुपात"
+          ],
+          "solution": "यंग के प्रत्यास्थता गुणांक (Y) किसी सामग्री की तनन या दाबीय ताकत का माप है। सूत्र F = YA × (l/L) दर्शाता है कि Y आरोपित बल (F) और तार की लम्बाई में वृद्धि (l) के बीच संबंध बनाता है। कर्षण गुणांक (G) घूर्णन बलों से संबंधित है, आयतन प्रत्यास्थता गुणांक (B) दबाव के अंतर्गत संपीड़न से संबंधित है, और पॉइसों का अनुपात अनुप्रस्थ और अनुदैर्ध्य विकृति के बीच एक आयामहीन मात्रा है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses standard technical terms as found in Hindi-medium physics textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका तारेला बलाने खेचले जाते आणि तिच्या विस्ताराची गणना F = YA × (l/L) या सूत्राने केली जाते. ह्या सूत्रात Y काय प्रतिनिधित्व करतो?",
+          "choices": [
+            "यंगचा मॉड्युलस",
+            "कतमिती मॉड्युलस",
+            "आयताकृती मॉड्युलस",
+            "पॉइसन गुणांक"
+          ],
+          "solution": "यंगचा मॉड्युलस (Y) हा एखाद्या सामग्रीच्या ताण किंवा दाबाखालील कठोरतेचा मापन आहे. सूत्र F = YA × (l/L) द्वारे दर्शवल्याप्रमाणे Y लागू बल (F) आणि तारेच्या विस्ताराच्या (l) मध्ये संबंध ठेवतो. कतमिती मॉड्युलस (G) वलय बलाशी संबंधित असतो, आयताकृती मॉड्युलस (B) दाबाखाली आकुंचनाशी संबंधित असतो आणि पॉइसन गुणांक हा बाजूच्या आणि लंबवर्ती विकृतीच्या दराशी संबंधित असलेला एक निरुक्त राशी आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and uses standard Marathi technical terms for the modulus concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses Young's modulus with shear modulus, which is related to twisting forces.",
+        "Confuses Young's modulus with bulk modulus, which relates to compression under pressure.",
+        "Confuses Young's modulus with Poisson's ratio, which is a dimensionless ratio of strains."
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is well-constructed. The correct answer is Young's modulus, and the explanations for the distractors align with common student misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/11/physics/keph201.pdf",
+          "ordinal": 9,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 1: Mechanical Properties of Solids"
+          ]
+        },
+        {
+          "document": "ncert/11/physics/keph201.pdf",
+          "ordinal": 10,
+          "pageStart": 8,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 1: Mechanical Properties of Solids"
+          ]
+        },
+        {
+          "document": "ncert/11/physics/keph201.pdf",
+          "ordinal": 11,
+          "pageStart": 9,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 1: Mechanical Properties of Solids"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-23T04:26:01.962Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "A metallic wire of length l is held between two supports under some tension. The wire is cooled through θ. Let Y be the Young’s modulus, ρ the density, and α the thermal coefficient of linear expansion of the material of the wire. What is the frequency of oscillations of the wire?",
+      "choices": [
+        "proportional to sqrt(αρY)",
+        "proportional to sqrt(Yρ/α)",
+        "proportional to sqrt(αρ/Y)",
+        "proportional to sqrt(Y/αρ)"
+      ],
+      "answerIndex": 3,
+      "solution": "The frequency of oscillations of the wire is proportional to sqrt(Y/αρ). This is derived from the relationship between tension, thermal expansion, and frequency. The other options are incorrect due to misinterpretation of the physical relationships between the variables.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "किसी धातु के तार की लंबाई l दो समर्थकों के बीच कुछ तनाव में रखी गई है। तार को θ तक ठंडा किया जाता है। मान लीजिए Y यंग के प्रत्यास्थता मापांक है, ρ घनत्व है, और α तार के पदार्थ के रैखिक प्रसार के तापीय गुणांक है। तार के दोलनों की आवृत्ति क्या है?",
+          "choices": [
+            "sqrt(αρY) के समानुपाती है",
+            "sqrt(Yρ/α) के समानुपाती है",
+            "sqrt(αρ/Y) के समानुपाती है",
+            "sqrt(Y/αρ) के समानुपाती है"
+          ],
+          "solution": "तार के दोलनों की आवृत्ति sqrt(Y/αρ) के समानुपाती है। इसका विश्लेषण तनाव, तापीय प्रसार और आवृत्ति के बीच संबंध से किया गया है। अन्य विकल्प चर राशियों के भौतिक संबंधों के गलत अर्थात्करण के कारण गलत हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms as found in Hindi-medium physics textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एक धातूचा तार l लांबीचा दोन साधनांमध्ये ठेवला आहे आणि काही तणावाखाली आहे. तार तापमानात घसरतो θ. मानू य Y हा यंगचा मॉड्युलस, ρ हा घनता आणि α हा तापमानाच्या रेषीय विस्ताराचा गुणांक आहे. ताराच्या दोलनाची वर्तुळ वेगाची विचार करा?",
+          "choices": [
+            "sqrt(αρY) च्या अनुपातात",
+            "sqrt(Yρ/α) च्या अनुपातात",
+            "sqrt(αρ/Y) च्या अनुपातात",
+            "sqrt(Y/αρ) च्या अनुपातात"
+          ],
+          "solution": "ताराच्या दोलनाची वर्तुळ वेगाची विचार करा sqrt(Y/αρ) च्या अनुपातात. हे तणाव, तापमान विस्तार आणि वर्तुळ वेग यांच्या संबंधावरून व्युत्पन्न केले गेले आहे. इतर विकल्प चुकीच्या भौतिक संबंधांमुळे अयोग्य आहेत.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate technical terms as used in Marathi-medium textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the relationship between thermal expansion and frequency, thinking all variables multiply together in the square root",
+        "incorrectly using the density in the numerator",
+        "incorrectly using the thermal coefficient in the denominator",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is option 3, as frequency is proportional to sqrt(Y / (αρ)). The solution is sound and matches the physical reasoning. The author's reasons for the wrong options are valid and reflect common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/11/physics/keph201.pdf",
+          "ordinal": 6,
+          "pageStart": 5,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 1: Mechanical Properties of Solids"
+          ]
+        },
+        {
+          "document": "ncert/11/physics/keph201.pdf",
+          "ordinal": 7,
+          "pageStart": 6,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 1: Mechanical Properties of Solids"
+          ]
+        },
+        {
+          "document": "ncert/11/physics/keph201.pdf",
+          "ordinal": 8,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 1: Mechanical Properties of Solids"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-23T04:26:01.962Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
     }
   ]
 }

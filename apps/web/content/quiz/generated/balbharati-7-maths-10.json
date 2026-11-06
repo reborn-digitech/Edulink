@@ -309,6 +309,920 @@
       "generatedAt": "2026-11-01T22:35:15.734Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is the term for the total money owed to the bank at the end of the time period?",
+      "choices": [
+        "Principal",
+        "Interest",
+        "Amount",
+        "Rate of interest"
+      ],
+      "answerIndex": 2,
+      "solution": "The term for the total money owed to the bank at the end of the time period is 'Amount'. This is because 'Amount' represents the sum of the principal and the interest. 'Principal' is the initial amount borrowed, 'Interest' is the extra money paid on top of the principal, and 'Rate of interest' is the percentage used to calculate the interest.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "अवधि के अंत में बैंक को ऋण के रूप में देय कुल धन के लिए क्या शब्द है?",
+          "choices": [
+            "मूलधन",
+            "ब्याज",
+            "राशि",
+            "ब्याज दर"
+          ],
+          "solution": "अवधि के अंत में बैंक को ऋण के रूप में देय कुल धन के लिए 'राशि' शब्द का प्रयोग किया जाता है। इसके पीछे कारण यह है कि 'राशि' मूलधन और ब्याज के योग को दर्शाती है। 'मूलधन' उधार ली गई प्रारंभिक राशि है, 'ब्याज' मूलधन पर अतिरिक्त धन है और 'ब्याज दर' ब्याज की गणना के लिए उपयोग किए जाने वाले प्रतिशत को कहते हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English original in meaning, terminology, and structure. All options are correctly translated and maintain their original meaning. The correct answer remains option (3) 'राशि' as in the English version. The explanation is also consistent.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "बँकेला वेळाच्या अंती बक्काचा एकूण रक्कम कोणत्या शब्दाने ओळखली जाते?",
+          "choices": [
+            "मूळरक्कम",
+            "व्याज",
+            "रक्कम",
+            "व्याजदर"
+          ],
+          "solution": "बँकेला वेळाच्या अंती बक्काचा एकूण रक्कम ही 'रक्कम' असे ओळखली जाते. कारण 'रक्कम' मूळरक्कम आणि व्याजाची बेरीज दर्शवते. 'मूळरक्कम' ही उसने घेतलेली सुरुवातीची रक्कम आहे, 'व्याज' ही मूळरक्कमवर अतिरिक्त दिलेली रक्कम आहे आणि 'व्याजदर' ही व्याज काढण्यासाठी वापरलेला टक्का आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi financial terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the initial amount with the total amount",
+        "Refers to the additional amount paid",
+        null,
+        "Refers to the percentage charged on the principal"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct and aligns with the definition of 'Amount' as the sum of principal and interest. The reasoning for the distractors is valid and reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/7/mathematics/703020004.pdf",
+          "ordinal": 50,
+          "pageStart": 79,
+          "pageEnd": 79,
+          "headingPath": [
+            "10. Banks and Simple Interest"
+          ]
+        },
+        {
+          "document": "balbharati/7/mathematics/703020004.pdf",
+          "ordinal": 51,
+          "pageStart": 80,
+          "pageEnd": 81,
+          "headingPath": [
+            "10. Banks and Simple Interest"
+          ]
+        },
+        {
+          "document": "balbharati/7/mathematics/703020004.pdf",
+          "ordinal": 52,
+          "pageStart": 81,
+          "pageEnd": 83,
+          "headingPath": [
+            "10. Banks and Simple Interest"
+          ]
+        }
+      ],
+      "edition": "2026 edition",
+      "generatedAt": "2026-10-31T12:05:33.939Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is the total amount that Suvidya returned to the bank if she borrowed 30000 rupees at 8 p.c.p.a. for a year and had to pay back 2400 rupees over and above what she had borrowed?",
+      "choices": [
+        "30000 rupees",
+        "32400 rupees",
+        "2400 rupees",
+        "30800 rupees"
+      ],
+      "answerIndex": 1,
+      "solution": "The total amount Suvidya returned is the sum of the principal and the interest. The principal is 30000 rupees and the interest is 2400 rupees. So, 30000 + 2400 = 32400 rupees. The option '30000 rupees' is the principal only, '2400 rupees' is the interest only, and '30800 rupees' is a wrong addition.",
+      "checkExpr": "30000+2400",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "सुविद्या ने एक वर्ष के लिए 30000 रुपए 8 प्रतिशत वार्षिक दर से बैंक से उधार लिए और ब्याज के रूप में 2400 रुपए अतिरिक्त चुकाने पड़े। बैंक को कितनी कुल राशि वापस की गई?",
+          "choices": [
+            "30000 रुपए",
+            "32400 रुपए",
+            "2400 रुपए",
+            "30800 रुपए"
+          ],
+          "solution": "सुविद्या द्वारा बैंक को वापस की गई कुल राशि मूलधन और ब्याज के योग के बराबर है। मूलधन 30000 रुपए है और ब्याज 2400 रुपए है। इसलिए, 30000 + 2400 = 32400 रुपए। विकल्प '30000 रुपए' केवल मूलधन है, '2400 रुपए' केवल ब्याज है, और '30800 रुपए' गलत जोड़ है।",
+          "imageAlt": null,
+          "critique": "Hindi translation accurately conveys the original meaning with appropriate financial terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "सुविद्याने 30000 रुपये 8 प्रति शेकडा वार्षिक दराने एक वर्षासाठी उसटले आणि तिने उसटलेल्या रकमेपेक्षा 2400 रुपये अधिक परत केले, तर बँकेला सुविद्याने एकूण किती रक्कम परत केली?",
+          "choices": [
+            "30000 रुपये",
+            "32400 रुपये",
+            "2400 रुपये",
+            "30800 रुपये"
+          ],
+          "solution": "सुविद्याने परत केलेली एकूण रक्कम मूळ रक्कम आणि व्याजाची बेरीज आहे. मूळ रक्कम 30000 रुपये आहे आणि व्याज 2400 रुपये आहे. म्हणून, 30000 + 2400 = 32400 रुपये. '30000 रुपये' ही मूळ रक्कम आहे, '2400 रुपये' हे व्याज आहे आणि '30800 रुपये' ही चुकीची बेरीज आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi financial terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "confuses principal with total amount",
+        null,
+        "ignores the interest amount",
+        "adds the interest incorrectly"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The question is straightforward, and the solution correctly adds the principal and interest. The reasoning for the distractors is valid and reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/7/mathematics/703020004.pdf",
+          "ordinal": 50,
+          "pageStart": 79,
+          "pageEnd": 79,
+          "headingPath": [
+            "10. Banks and Simple Interest"
+          ]
+        },
+        {
+          "document": "balbharati/7/mathematics/703020004.pdf",
+          "ordinal": 51,
+          "pageStart": 80,
+          "pageEnd": 81,
+          "headingPath": [
+            "10. Banks and Simple Interest"
+          ]
+        },
+        {
+          "document": "balbharati/7/mathematics/703020004.pdf",
+          "ordinal": 52,
+          "pageStart": 81,
+          "pageEnd": 83,
+          "headingPath": [
+            "10. Banks and Simple Interest"
+          ]
+        }
+      ],
+      "edition": "2026 edition",
+      "generatedAt": "2026-10-31T12:05:33.939Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "If the principal is 50000 rupees and the rate of interest is 12 p.c.p.a., what is the interest for one year?",
+      "choices": [
+        "5000",
+        "6000",
+        "7000",
+        "8000"
+      ],
+      "answerIndex": 1,
+      "solution": "The interest for one year is calculated using the formula: (Principal × Rate of Interest) / 100. For 50000 rupees at 12 p.c.p.a., the interest is (50000 × 12) / 100 = 6000 rupees. '5000' is 10% of 50000, '7000' is 14% of 50000, and '8000' is 16% of 50000.",
+      "checkExpr": "(50000*12)/100",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि मूलधन 50000 रुपए है और ब्याज की दर 12 प्रतिशत प्रति वर्ष है, तो एक वर्ष का ब्याज कितना होगा?",
+          "choices": [
+            "5000",
+            "6000",
+            "7000",
+            "8000"
+          ],
+          "solution": "एक वर्ष का ब्याज सूत्र: (मूलधन × ब्याज दर) / 100 के उपयोग से गणना किया जाता है। 50000 रुपए पर 12 प्रतिशत प्रति वर्ष के लिए, ब्याज (50000 × 12) / 100 = 6000 रुपए होगा। '5000' 50000 का 10 प्रतिशत है, '7000' 50000 का 14 प्रतिशत है, और '8000' 50000 का 16 प्रतिशत है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate terminology as found in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "मुद्दल 50000 रुपये आणि व्याजाचा दर 12 प्रति शेरा वार्षिक असेल तर एका वर्षाचा व्याज किती?",
+          "choices": [
+            "5000",
+            "6000",
+            "7000",
+            "8000"
+          ],
+          "solution": "एका वर्षाचा व्याज खालील सूत्राने गणला जातो: (मुद्दल × व्याजाचा दर) / 100. 50000 रुपयांचा 12 प्रति शेरा वार्षिक असेल तर व्याज हा (50000 × 12) / 100 = 6000 रुपये आहे. '5000' हा 50000 चा 10% आहे, '7000' हा 50000 चा 14% आहे आणि '8000' हा 50000 चा 16% आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi financial terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Calculates 10% of the principal",
+        null,
+        "Calculates 14% of the principal",
+        "Calculates 16% of the principal"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 6000, which is 12% of 50000. The author's solution is correct, and the reasons for the wrong options align with common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/7/mathematics/703020004.pdf",
+          "ordinal": 50,
+          "pageStart": 79,
+          "pageEnd": 79,
+          "headingPath": [
+            "10. Banks and Simple Interest"
+          ]
+        },
+        {
+          "document": "balbharati/7/mathematics/703020004.pdf",
+          "ordinal": 51,
+          "pageStart": 80,
+          "pageEnd": 81,
+          "headingPath": [
+            "10. Banks and Simple Interest"
+          ]
+        },
+        {
+          "document": "balbharati/7/mathematics/703020004.pdf",
+          "ordinal": 52,
+          "pageStart": 81,
+          "pageEnd": 83,
+          "headingPath": [
+            "10. Banks and Simple Interest"
+          ]
+        }
+      ],
+      "edition": "2026 edition",
+      "generatedAt": "2026-10-31T12:05:33.939Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "If the principal is 25000 rupees, time is 4 years, and the interest is 6000 rupees, what is the rate of interest?",
+      "choices": [
+        "4%",
+        "5%",
+        "6%",
+        "7%"
+      ],
+      "answerIndex": 2,
+      "solution": "The rate of interest can be calculated using the formula for simple interest, which is (Interest × 100) / (Principal × Time). Plugging in the values, (6000 × 100) / (25000 × 4) = 6%. The other options do not satisfy this calculation. 4% and 5% would result in lower interest amounts, while 7% would result in higher interest.",
+      "checkExpr": "6000*100/(25000*4)",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि मूलधन 25000 रुपये, समय 4 वर्ष और ब्याज 6000 रुपये है, तो ब्याज की दर क्या है?",
+          "choices": [
+            "4%",
+            "5%",
+            "6%",
+            "7%"
+          ],
+          "solution": "ब्याज की दर साधारण ब्याज के सूत्र का उपयोग करके गणना की जा सकती है, जो (ब्याज × 100) / (मूलधन × समय) है। मान रखने पर, (6000 × 100) / (25000 × 4) = 6%। अन्य विकल्प इस गणना को संतुष्ट नहीं करते हैं। 4% और 5% के लिए ब्याज की राशि कम होगी, जबकि 7% के लिए ब्याज की राशि अधिक होगी।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, uses appropriate terminology, and preserves the structure and logic of the original question.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "मुद्दल 25000 रुपये, काल 4 वर्षे आणि व्याज 6000 रुपये असल्यास, व्याजाचा दर किती असेल?",
+          "choices": [
+            "4%",
+            "5%",
+            "6%",
+            "7%"
+          ],
+          "solution": "व्याजाचा दर साधे व्याजाच्या सूत्राने गणला जाऊ शकतो, जो (व्याज × 100) / (मुद्दल × काल) आहे. मूल्यांची ठिकाणी ठेवल्यास, (6000 × 100) / (25000 × 4) = 6%. इतर विकल्प या गणनेला अनुरूप नाहीत. 4% आणि 5% ला कमी व्याजाच्या रकमेमुळे असेल, तर 7% ला जास्त व्याज असेल.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate terminology as used in Marathi-medium textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Incorrect calculation of the formula",
+        "Incorrect division of the total interest",
+        null,
+        "Confuses simple interest with compound interest, thinking the rate increases each year."
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The correct calculation for simple interest rate is (Interest / (Principal × Time)) × 100 = (6000 / (25000 × 4)) × 100 = 6%. The author's key and solution are correct, and the reasons for the distractors align with common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/7/mathematics/703020004.pdf",
+          "ordinal": 53,
+          "pageStart": 83,
+          "pageEnd": 84,
+          "headingPath": [
+            "10. Banks and Simple Interest"
+          ]
+        },
+        {
+          "document": "balbharati/7/mathematics/703020004.pdf",
+          "ordinal": 54,
+          "pageStart": 84,
+          "pageEnd": 84,
+          "headingPath": [
+            "10. Banks and Simple Interest"
+          ]
+        }
+      ],
+      "edition": "2026 edition",
+      "generatedAt": "2026-10-31T12:05:33.939Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "A person deposits 25000 rupees for 3 years at a rate of 8 p.c.p.a. What is the total interest earned?",
+      "choices": [
+        "4000",
+        "5000",
+        "6000",
+        "7000"
+      ],
+      "answerIndex": 2,
+      "solution": "The total interest is calculated using the formula: (Principal × Rate of Interest × Time) / 100. For 25000 rupees at 8 p.c.p.a. for 3 years, the interest is (25000 × 8 × 3) / 100 = 6000 rupees. '4000' is 8% for 2 years, '5000' is 8% for 2.5 years, and '7000' is 8% for 3.5 years.",
+      "checkExpr": "(25000*8*3)/100",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक व्यक्ति 3 साल के लिए 25000 रुपये 8 प्रतिशत प्रतिवर्ष की दर से जमा करता है। कमाए गए कुल ब्याज क्या है?",
+          "choices": [
+            "4000",
+            "5000",
+            "6000",
+            "7000"
+          ],
+          "solution": "कुल ब्याज की गणना सूत्र: (मूलधन × ब्याज दर × समय) / 100 के अनुसार की जाती है। 25000 रुपये के लिए 8 प्रतिशत प्रतिवर्ष की दर से 3 साल के लिए ब्याज (25000 × 8 × 3) / 100 = 6000 रुपये है। '4000' 8 प्रतिशत के 2 साल के लिए है, '5000' 8 प्रतिशत के 2.5 साल के लिए है, और '7000' 8 प्रतिशत के 3.5 साल के लिए है।",
+          "imageAlt": null,
+          "critique": "Translation accurately reflects the original question and solution, with appropriate Hindi financial terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका व्यक्तीने 3 वर्षांसाठी 25000 रुपये 8 प्रति शेकडा वार्षिक दराने ठेवले. एकूण व्याज किती मिळाले?",
+          "choices": [
+            "4000",
+            "5000",
+            "6000",
+            "7000"
+          ],
+          "solution": "एकूण व्याज फॉर्म्युला: (मुद्दल × व्याज दर × वेळ) / 100 वापरून गणित केले जाते. 25000 रुपये 8 प्रति शेकडा वार्षिक दराने 3 वर्षांसाठी व्याज हे (25000 × 8 × 3) / 100 = 6000 रुपये आहे. '4000' हे 8% वर 2 वर्षांचे आहे, '5000' हे 8% वर 2.5 वर्षांचे आहे आणि '7000' हे 8% वर 3.5 वर्षांचे आहे.",
+          "imageAlt": null,
+          "critique": "The Marathi translation accurately preserves the meaning, structure, and technical terms of the original English question. All options and the solution are correctly translated and maintain their intended meaning.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Calculates 8% interest for 2 years",
+        "Calculates 8% interest for 2.5 years",
+        null,
+        "Calculates 8% interest for 3.5 years"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The calculation is correct: (25000 × 8 × 3) / 100 = 6000. The distractors correspond to common time misinterpretations, which are plausible student errors.",
+      "sources": [
+        {
+          "document": "balbharati/7/mathematics/703020004.pdf",
+          "ordinal": 50,
+          "pageStart": 79,
+          "pageEnd": 79,
+          "headingPath": [
+            "10. Banks and Simple Interest"
+          ]
+        },
+        {
+          "document": "balbharati/7/mathematics/703020004.pdf",
+          "ordinal": 51,
+          "pageStart": 80,
+          "pageEnd": 81,
+          "headingPath": [
+            "10. Banks and Simple Interest"
+          ]
+        },
+        {
+          "document": "balbharati/7/mathematics/703020004.pdf",
+          "ordinal": 52,
+          "pageStart": 81,
+          "pageEnd": 83,
+          "headingPath": [
+            "10. Banks and Simple Interest"
+          ]
+        }
+      ],
+      "edition": "2026 edition",
+      "generatedAt": "2026-10-31T12:05:33.939Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If Aakash deposited 25000 rupees at 8 p.c.p.a. for 3 years, how much interest will he get?",
+      "choices": [
+        "2000 rupees",
+        "6000 rupees",
+        "25000 rupees",
+        "8000 rupees"
+      ],
+      "answerIndex": 1,
+      "solution": "Using the formula I = P × R × T, the interest is 25000 × 8% × 3 = 6000 rupees. '2000 rupees' is the interest for one year only. '25000 rupees' is the principal. '8000 rupees' is an incorrect calculation.",
+      "checkExpr": "25000*8*3/100",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "अक्षय ने 25000 रुपये 8 प्रतिशत वार्षिक ब्याज दर पर 3 साल के लिए जमा किए, तो उसे कितना ब्याज मिलेगा?",
+          "choices": [
+            "2000 रुपये",
+            "6000 रुपये",
+            "25000 रुपये",
+            "8000 रुपये"
+          ],
+          "solution": "सूत्र I = P × R × T का उपयोग करके, ब्याज 25000 × 8% × 3 = 6000 रुपये है। '2000 रुपये' केवल एक साल के लिए ब्याज है। '25000 रुपये' मूल राशि है। '8000 रुपये' एक गलत गणना है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate financial terminology as used in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "आकाशने 25000 रुपये 8 प्रति शेकडा वार्षिक दराने 3 वर्षांसाठी जमा केले, तर त्याला किती व्याज मिळेल?",
+          "choices": [
+            "2000 रुपये",
+            "6000 रुपये",
+            "25000 रुपये",
+            "8000 रुपये"
+          ],
+          "solution": "सूत्र I = P × R × T वापरून, व्याज 25000 × 8% × 3 = 6000 रुपये आहे. '2000 रुपये' हे एका वर्षाचे व्याज आहे. '25000 रुपये' हे मूळ रक्कम आहे. '8000 रुपये' हे अयोग्य गणना आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for financial concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "calculates interest for one year only",
+        null,
+        "confuses principal with interest",
+        "incorrect multiplication"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly applies the simple interest formula and the reasoning for the distractors aligns with common student misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/7/mathematics/703020004.pdf",
+          "ordinal": 50,
+          "pageStart": 79,
+          "pageEnd": 79,
+          "headingPath": [
+            "10. Banks and Simple Interest"
+          ]
+        },
+        {
+          "document": "balbharati/7/mathematics/703020004.pdf",
+          "ordinal": 51,
+          "pageStart": 80,
+          "pageEnd": 81,
+          "headingPath": [
+            "10. Banks and Simple Interest"
+          ]
+        },
+        {
+          "document": "balbharati/7/mathematics/703020004.pdf",
+          "ordinal": 52,
+          "pageStart": 81,
+          "pageEnd": 83,
+          "headingPath": [
+            "10. Banks and Simple Interest"
+          ]
+        }
+      ],
+      "edition": "2026 edition",
+      "generatedAt": "2026-10-31T12:05:33.939Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "Rihanna deposits 1500 rupees in the school fund at 9 p.c.p.a. for 2 years. What is the total amount she will get?",
+      "choices": [
+        "1770",
+        "1800",
+        "1850",
+        "1900"
+      ],
+      "answerIndex": 0,
+      "solution": "The total amount is calculated as Principal + Interest. Interest = (1500 × 9 × 2) / 100 = 270. Total amount = 1500 + 270 = 1770. '1800' is 9% for 2 years on 2000 rupees, '1850' is 9% for 2 years on 2055 rupees, and '1900' is 9% for 2 years on 2111 rupees.",
+      "checkExpr": "1500+(1500*9*2)/100",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "रिहाना स्कूल फंड में 2 साल के लिए 1500 रुपये 9 प्रतिशत प्रति वर्ष की दर से जमा करती है। वह कितनी कुल राशि प्राप्त करेगी?",
+          "choices": [
+            "1770",
+            "1800",
+            "1850",
+            "1900"
+          ],
+          "solution": "कुल राशि मूलधन + ब्याज के रूप में गणना की जाती है। ब्याज = (1500 × 9 × 2) / 100 = 270। कुल राशि = 1500 + 270 = 1770। '1800' 2000 रुपये पर 2 साल के लिए 9 प्रतिशत है, '1850' 2055 रुपये पर 2 साल के लिए 9 प्रतिशत है, और '1900' 2111 रुपये पर 2 साल के लिए 9 प्रतिशत है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains mathematical meaning, and uses standard Hindi financial terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "रिहाना शाळा फंड मध्ये 2 वर्षांसाठी 1500 रुपये 9 प्रति शेकडा वार्षिक दराने ठेवते. तिला किती एकूण रक्कम मिळेल?",
+          "choices": [
+            "1770",
+            "1800",
+            "1850",
+            "1900"
+          ],
+          "solution": "एकूण रक्कम मूलधन + व्याज असे काढली जाते. व्याज = (1500 × 9 × 2) / 100 = 270. एकूण रक्कम = 1500 + 270 = 1770. '1800' ही 2000 रुपयांवर 2 वर्षांसाठी 9% असते, '1850' ही 2055 रुपयांवर 2 वर्षांसाठी 9% असते आणि '1900' ही 2111 रुपयांवर 2 वर्षांसाठी 9% असते.",
+          "imageAlt": null,
+          "critique": "The translation accurately preserves the mathematical content, terminology, and structure of the original question. All options and the solution match the English version in meaning and intent.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Calculates 9% interest for 2 years on 2000 rupees",
+        "Calculates 9% interest for 2 years on 2055 rupees",
+        "Calculates 9% interest for 2 years on 2111 rupees"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly calculates simple interest and adds it to the principal. The distractors are based on plausible miscalculations, such as using incorrect principal amounts.",
+      "sources": [
+        {
+          "document": "balbharati/7/mathematics/703020004.pdf",
+          "ordinal": 50,
+          "pageStart": 79,
+          "pageEnd": 79,
+          "headingPath": [
+            "10. Banks and Simple Interest"
+          ]
+        },
+        {
+          "document": "balbharati/7/mathematics/703020004.pdf",
+          "ordinal": 51,
+          "pageStart": 80,
+          "pageEnd": 81,
+          "headingPath": [
+            "10. Banks and Simple Interest"
+          ]
+        },
+        {
+          "document": "balbharati/7/mathematics/703020004.pdf",
+          "ordinal": 52,
+          "pageStart": 81,
+          "pageEnd": 83,
+          "headingPath": [
+            "10. Banks and Simple Interest"
+          ]
+        }
+      ],
+      "edition": "2026 edition",
+      "generatedAt": "2026-10-31T12:05:33.939Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "If the interest on 1700 rupees is 340 rupees for 2 years, what is the rate of interest?",
+      "choices": [
+        "12%",
+        "15%",
+        "4%",
+        "10%"
+      ],
+      "answerIndex": 3,
+      "solution": "The rate of interest is calculated as (340 × 100) / (1700 × 2) = 10%. The other options result from incorrect calculations or misinterpretations of the formula.",
+      "checkExpr": "(340*100)/(1700*2)",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि 1700 रुपये पर 2 वर्ष में ब्याज 340 रुपये हो, तो ब्याज की दर क्या है?",
+          "choices": [
+            "12%",
+            "15%",
+            "4%",
+            "10%"
+          ],
+          "solution": "ब्याज की दर की गणना (340 × 100) / (1700 × 2) = 10% के रूप में की जाती है। अन्य विकल्प गलत गणना या सूत्र के गलत अर्थात्थ के कारण प्राप्त होते हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate terminology. The correct answer remains in the same position (option 4).",
+          "flag": null
+        },
+        "mr": {
+          "stem": "1700 रुपयांवर 2 वर्षांसाठी व्याज 340 रुपये असल्यास व्याजाचा दर किती आहे?",
+          "choices": [
+            "12%",
+            "15%",
+            "4%",
+            "10%"
+          ],
+          "solution": "व्याजाचा दर (340 × 100) / (1700 × 2) = 10% असे गणित केले जाते. इतर विकल्प अपयशस्वी गणितांमुळे किंवा सूत्राच्या चुकीच्या अटकळीमुळे मिळतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for financial concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Incorrectly divides the interest by the principal",
+        "Incorrectly calculates the time as 3 years instead of 2",
+        "Incorrectly adds the interest to the principal",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct calculation is (340 × 100) / (1700 × 2) = 10%. The author's reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/7/mathematics/703020004.pdf",
+          "ordinal": 53,
+          "pageStart": 83,
+          "pageEnd": 84,
+          "headingPath": [
+            "10. Banks and Simple Interest"
+          ]
+        },
+        {
+          "document": "balbharati/7/mathematics/703020004.pdf",
+          "ordinal": 54,
+          "pageStart": 84,
+          "pageEnd": 84,
+          "headingPath": [
+            "10. Banks and Simple Interest"
+          ]
+        }
+      ],
+      "edition": "2026 edition",
+      "generatedAt": "2026-10-31T12:05:33.939Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "Javed deposited 12000 rupees at 9% p.c.p.a. and received 17400 rupees in total. For how many years did he deposit the money?",
+      "choices": [
+        "4 years",
+        "5 years",
+        "6 years",
+        "7 years"
+      ],
+      "answerIndex": 1,
+      "solution": "The total interest is 17400 - 12000 = 5400. Using the formula, the time is calculated as 5 years. The other options are incorrect calculations based on wrong interest amounts or rates.",
+      "checkExpr": "(5400*100)/(12000*9)",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "जावेद ने 12000 रुपए 9% प्रति वर्ष ब्याज दर पर जमा किए और कुल 17400 रुपए प्राप्त किए। उसने कितने वर्षों तक धन जमा किया?",
+          "choices": [
+            "4 वर्ष",
+            "5 वर्ष",
+            "6 वर्ष",
+            "7 वर्ष"
+          ],
+          "solution": "कुल ब्याज 17400 - 12000 = 5400 है। सूत्र का उपयोग करके, समय की गणना 5 वर्ष की जाती है। अन्य विकल्प गलत ब्याज राशि या दर पर गलत गणनाओं के कारण असत्य हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English question, with appropriate financial terminology used in Indian Hindi-medium education.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जावेद ने 12000 रुपये 9% पीसीपीए वर जमा केले आणि एकूण 17400 रुपये मिळाले. त्याने किती वर्षे पैसे जमा केले?",
+          "choices": [
+            "4 वर्ष",
+            "5 वर्ष",
+            "6 वर्ष",
+            "7 वर्ष"
+          ],
+          "solution": "एकूण व्याज 17400 - 12000 = 5400 आहे. सूत्राचा वापर करून, वेळ 5 वर्ष गणित केली जाते. इतर विकल्प चुकीच्या व्याजाच्या रकमा किंवा दरांवर आधारित चुकीच्या गणना आहेत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi financial terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Incorrectly calculates the interest as 4800 instead of 5400",
+        null,
+        "Miscalculates the simple interest formula by adding the principal and interest directly without dividing by the rate or time.",
+        "Incorrectly adds the principal to the interest"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 5 years. The solution correctly calculates the interest as 5400 and applies the simple interest formula. The distractors reflect common misconceptions such as miscalculating interest or incorrectly adding principal and interest.",
+      "sources": [
+        {
+          "document": "balbharati/7/mathematics/703020004.pdf",
+          "ordinal": 53,
+          "pageStart": 83,
+          "pageEnd": 84,
+          "headingPath": [
+            "10. Banks and Simple Interest"
+          ]
+        },
+        {
+          "document": "balbharati/7/mathematics/703020004.pdf",
+          "ordinal": 54,
+          "pageStart": 84,
+          "pageEnd": 84,
+          "headingPath": [
+            "10. Banks and Simple Interest"
+          ]
+        }
+      ],
+      "edition": "2026 edition",
+      "generatedAt": "2026-10-31T12:05:33.939Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "If the interest on 3000 rupees is 600 rupees for a certain number of years, what would be the interest on 1500 rupees under the same conditions?",
+      "choices": [
+        "300 rupees",
+        "600 rupees",
+        "900 rupees",
+        "1200 rupees"
+      ],
+      "answerIndex": 0,
+      "solution": "The interest is directly proportional to the principal. Since 1500 is half of 3000, the interest would also be half, which is 300 rupees. The other options are incorrect as they do not maintain the proportional relationship.",
+      "checkExpr": "600/2",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि 3000 रुपए पर ब्याज 600 रुपए है, तो एक निश्चित संख्या में वर्षों में 1500 रुपए पर ब्याज क्या होगा?",
+          "choices": [
+            "300 रुपए",
+            "600 रुपए",
+            "900 रुपए",
+            "1200 रुपए"
+          ],
+          "solution": "ब्याज मूलधन के सीधे आनुपातिक होता है। चूंकि 1500, 3000 का आधा है, इसलिए ब्याज भी आधा होगा, जो 300 रुपए है। अन्य विकल्प गलत हैं क्योंकि वे आनुपातिक संबंध बनाए नहीं रखते।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "3000 रुपयांवरील व्याज 600 रुपये असेल, तर एका निश्चित कालावधीसाठी 1500 रुपयांवरील व्याज किती असेल?",
+          "choices": [
+            "300 रुपये",
+            "600 रुपये",
+            "900 रुपये",
+            "1200 रुपये"
+          ],
+          "solution": "व्याज मूळ रकमेशी थेट प्रमाणात असते. कारण 1500 हे 3000 च्या अर्ध्या आहे, तर व्याज देखील अर्धे असेल, जे 300 रुपये आहे. इतर विकल्प अनुपाती नियम ठेवत नाहीत म्हणून चुकीचे आहेत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi financial terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Assumes the same interest amount for half the principal",
+        "Assumes the interest is the same due to same rate",
+        "Assumes interest increases by a different factor"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct and logically follows from the principle of direct proportionality between principal and interest in simple interest calculations.",
+      "sources": [
+        {
+          "document": "balbharati/7/mathematics/703020004.pdf",
+          "ordinal": 53,
+          "pageStart": 83,
+          "pageEnd": 84,
+          "headingPath": [
+            "10. Banks and Simple Interest"
+          ]
+        },
+        {
+          "document": "balbharati/7/mathematics/703020004.pdf",
+          "ordinal": 54,
+          "pageStart": 84,
+          "pageEnd": 84,
+          "headingPath": [
+            "10. Banks and Simple Interest"
+          ]
+        }
+      ],
+      "edition": "2026 edition",
+      "generatedAt": "2026-10-31T12:05:33.939Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
     }
   ]
 }

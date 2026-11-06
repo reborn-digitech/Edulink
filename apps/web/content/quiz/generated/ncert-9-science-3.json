@@ -1369,6 +1369,2411 @@
       "generatedAt": "2026-10-30T02:18:02.006Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the main function of epithelial tissues?",
+      "choices": [
+        "To connect and support other tissues",
+        "To protect underlying tissues and allow secretion",
+        "To control and coordinate body functions",
+        "To transport nutrients and gases"
+      ],
+      "answerIndex": 1,
+      "solution": "Epithelial tissues mainly protect underlying tissues and facilitate secretion, as they form barriers and produce substances like mucus. The other options describe functions of connective, nervous, and circulatory tissues, which are not primary roles of epithelial tissues.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एपिथेलियल ऊतकों का मुख्य कार्य क्या है?",
+          "choices": [
+            "अन्य ऊतकों को जोड़ना और समर्थन करना",
+            "अंतर्निहित ऊतकों की रक्षा करना और स्राव की अनुमति देना",
+            "शरीर के कार्यों को नियंत्रित और समन्वयित करना",
+            "पोषक तत्वों और गैसों का परिवहन करना"
+          ],
+          "solution": "एपिथेलियल ऊतक मुख्य रूप से अंतर्निहित ऊतकों की रक्षा करते हैं और स्राव की अनुमति देते हैं, क्योंकि वे बाधाएं बनाते हैं और म्यूसस जैसे पदार्थों का उत्पादन करते हैं। अन्य विकल्प संयोजी, तंत्रिका और परिसंचरण ऊतकों के कार्यों का वर्णन करते हैं, जो एपिथेलियल ऊतकों के प्राथमिक कार्य नहीं हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. All options and the solution are correctly translated, with the correct answer remaining in the same position. The technical terms used are standard in Hindi biology textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एपिथेलियल ऊतींचे मुख्य कार्य काय आहे?",
+          "choices": [
+            "दुसऱ्या ऊतींना जोडणे आणि समर्थन करणे",
+            "खालच्या ऊतींचे रक्षण करणे आणि स्राव अनुमत करणे",
+            "शरीराचे नियंत्रण आणि समन्वय ठरवणे",
+            "पोषक द्रव्ये आणि वायूंचा परिवहन करणे"
+          ],
+          "solution": "एपिथेलियल ऊतींचे मुख्य कार्य खालच्या ऊतींचे रक्षण करणे आणि स्राव अनुमत करणे आहे, कारण ते अवरोध तयार करतात आणि म्युकस अशा पदार्थांचा उत्पादन करतात. इतर विकल्पांमध्ये जोडणारी, तंत्रिका आणि परिसंचरण ऊतींचे कार्य वर्णन केले गेले आहेत, जे एपिथेलियल ऊतींचे प्राथमिक कार्य नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for biological concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the function of connective tissue with that of epithelial tissue.",
+        null,
+        "Confuses the function of nervous tissue with that of epithelial tissue.",
+        "Confuses the function of blood with that of epithelial tissue."
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 1, as epithelial tissues are primarily responsible for protection and secretion. The author's reasoning for the distractors aligns with common misconceptions about the functions of other tissue types.",
+      "sources": [
+        {
+          "document": "ncert/9/science/iesc103.pdf",
+          "ordinal": 11,
+          "pageStart": 8,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 3: Tissues in Action",
+            "3.3 Animal Tissues",
+            "3.3.2 How are various parts",
+            "connected in our body?"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc103.pdf",
+          "ordinal": 12,
+          "pageStart": 9,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 3: Tissues in Action",
+            "3.3 Animal Tissues",
+            "3.3.2 How are various parts",
+            "connected in our body?"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc103.pdf",
+          "ordinal": 13,
+          "pageStart": 10,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 3: Tissues in Action",
+            "3.3 Animal Tissues",
+            "3.3.2 How are various parts",
+            "connected in our body?"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc103.pdf",
+          "ordinal": 14,
+          "pageStart": 11,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 3: Tissues in Action",
+            "3.3 Animal Tissues",
+            "3.3.2 How are various parts",
+            "connected in our body?"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-22T13:58:03.522Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the main reason for the thin walls and large nucleus in meristematic cells?",
+      "choices": [
+        "To store more nutrients",
+        "To allow rapid cell division",
+        "To provide structural support",
+        "To increase cell size"
+      ],
+      "answerIndex": 1,
+      "solution": "Meristematic cells have thin walls, dense cytoplasm, and a large prominent nucleus, which allows them to divide rapidly. This makes option (ii) correct. Option (i) is incorrect because they do not store more nutrients. Option (iii) is incorrect because they do not provide structural support. Option (iv) is incorrect because their main function is not to increase cell size, but to divide.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "मेरिस्टेमैटिक कोशिकाओं में पतली दीवारें और बड़ा नाभिक का मुख्य कारण क्या है?",
+          "choices": [
+            "अधिक पोषक तत्व भंडारण के लिए",
+            "तेजी से कोशिका विभाजन के लिए",
+            "संरचनात्मक समर्थन प्रदान करने के लिए",
+            "कोशिका आकार बढ़ाने के लिए"
+          ],
+          "solution": "मेरिस्टेमैटिक कोशिकाओं में पतली दीवारें, घना साइटोप्लाज्म और एक बड़ा प्रमुख नाभिक होता है, जो उन्हें तेजी से विभाजित होने की अनुमति देता है। इस कारण विकल्प (ii) सही है। विकल्प (i) गलत है क्योंकि वे अधिक पोषक तत्व भंडार नहीं करते हैं। विकल्प (iii) गलत है क्योंकि वे संरचनात्मक समर्थन प्रदान नहीं करते हैं। विकल्प (iv) गलत है क्योंकि उनका मुख्य कार्य कोशिका आकार बढ़ाना नहीं है, बल्कि विभाजन करना है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology consistent with standard biology textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "मरिस्टेमॅटिक कोशिकांमध्ये पातळ भिंती आणि मोठा न्यूक्लियस का असतात?",
+          "choices": [
+            "अधिक पोषक द्रव्यांचे भंडारण करण्यासाठी",
+            "त्वरित कोशिका विभाजनासाठी",
+            "संरचनात्मक समर्थन प्रदान करण्यासाठी",
+            "कोशिकेच्या आकारात वाढ करण्यासाठी"
+          ],
+          "solution": "मरिस्टेमॅटिक कोशिकांमध्ये पातळ भिंती, घन अंतर्गोलक आणि मोठा उत्तम न्यूक्लियस असतात, जे त्वरित कोशिका विभाजनास अनुमती देतात. हे ऑप्शन (ii) च्या बरोबर असते. ऑप्शन (i) चूक आहे कारण त्यांना अधिक पोषक द्रव्यांचे भंडारण करावे लागत नाही. ऑप्शन (iii) चूक आहे कारण त्यांना संरचनात्मक समर्थन प्रदान करावे लागत नाही. ऑप्शन (iv) चूक आहे कारण त्यांचे मुख्य कार्य कोशिकेच्या आकारात वाढ करणे नाही, तर विभाजन करणे आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi biological terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses function of vacuoles with meristematic cells",
+        null,
+        "Students may confuse plant cell structure with that of animal cells, thinking meristematic cells function like supportive tissues.",
+        "Confuses function of cell walls with meristematic cells"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly identifies that the large nucleus and thin walls in meristematic cells are for rapid cell division, and the reasons for the wrong options align with common student misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/9/science/iesc103.pdf",
+          "ordinal": 21,
+          "pageStart": 15,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 3: Tissues in Action",
+            "3.6 Skeletal System"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc103.pdf",
+          "ordinal": 22,
+          "pageStart": 15,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 3: Tissues in Action",
+            "3.6 Skeletal System"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc103.pdf",
+          "ordinal": 23,
+          "pageStart": 16,
+          "pageEnd": 18,
+          "headingPath": [
+            "Chapter 3: Tissues in Action",
+            "3.6 Skeletal System",
+            "Revise, Reflect, Refine"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-22T13:58:03.522Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the function of the vascular cambium in a tree?",
+      "choices": [
+        "To transport water and minerals",
+        "To transport sugars and nutrients",
+        "To increase the girth of the stem",
+        "To protect the inner tissues"
+      ],
+      "answerIndex": 2,
+      "solution": "The vascular cambium is a layer of meristematic cells that divides to produce new xylem and phloem, which helps increase the girth of the stem. It is not involved in transport or protection. Xylem and phloem are responsible for transport, while cork cambium protects the inner tissues.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक पेड़ में वास्कुलर कैम्बियम का कार्य क्या है?",
+          "choices": [
+            "जल और खनिज का परिवहन करना",
+            "शर्करा और पोषक तत्वों का परिवहन करना",
+            "कांटे के वृद्धि को बढ़ाना",
+            "आंतरिक ऊतकों की रक्षा करना"
+          ],
+          "solution": "वास्कुलर कैम्बियम एक मेरिस्टेमेटिक कोशिका की परत होती है जो नए जाइलम और फ्लोएम के उत्पादन के लिए विभाजित होती है, जो कांटे के वृद्धि को बढ़ाता है। यह परिवहन या संरक्षण में शामिल नहीं होता है। जाइलम और फ्लोएम परिवहन के लिए जिम्मेदार होते हैं, जबकि कॉर्क कैम्बियम आंतरिक ऊतकों की रक्षा करता है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, technical terms match standard Hindi biology terminology, and the logic of the question and solution is preserved.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "वृक्षातील रसांच्या वाहिन्यांची कार्ये काय आहेत?",
+          "choices": [
+            "पाणी आणि खनिज वाहून नेणे",
+            "शर्करा आणि पोषक द्रव्ये वाहून नेणे",
+            "काठाच्या व्यासात वाढ करणे",
+            "आंतरिक ऊतींची रक्षण करणे"
+          ],
+          "solution": "रसांच्या वाहिन्यांचा एक अर्धविभाजक कोशिका असतो जो नवीन जायलेम आणि फ्लोएम तयार करतो, जे काठाच्या व्यासात वाढ करते. तो वाहन किंवा रक्षणाशी संबंधित नसतो. जायलेम आणि फ्लोएम वाहनांची जबाबदारी घेतात, तर कॉर्क कॅम्बियम आंतरिक ऊतींची रक्षण करते.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate botanical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses xylem with the function of vascular cambium",
+        "Confuses phloem with the function of vascular cambium",
+        null,
+        "Thinks vascular cambium is for protection"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly identifies the function of the vascular cambium as increasing the girth of the stem through the production of xylem and phloem. The reasoning for the distractors is valid and reflects common student misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/9/science/iesc103.pdf",
+          "ordinal": 24,
+          "pageStart": 18,
+          "pageEnd": 19,
+          "headingPath": [
+            "Chapter 3: Tissues in Action",
+            "3.6 Skeletal System",
+            "Revise, Reflect, Refine"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc103.pdf",
+          "ordinal": 25,
+          "pageStart": 19,
+          "pageEnd": 20,
+          "headingPath": [
+            "Chapter 3: Tissues in Action",
+            "3.6 Skeletal System",
+            "Revise, Reflect, Refine"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc103.pdf",
+          "ordinal": 26,
+          "pageStart": 20,
+          "pageEnd": 20,
+          "headingPath": [
+            "Chapter 3: Tissues in Action",
+            "3.6 Skeletal System",
+            "Revise, Reflect, Refine",
+            "The Journey Beyond"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-22T13:58:03.522Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If the tip of a young stem is cut, what happens to the stem's growth?",
+      "choices": [
+        "It continues to grow in length",
+        "It stops growing in length but new branches arise",
+        "It grows in diameter",
+        "It becomes shorter and thicker"
+      ],
+      "answerIndex": 1,
+      "solution": "Cutting the tip of a young stem stops its lengthwise growth because the apical meristem, which drives this growth, is removed. However, new branches can form from the nodes due to intercalary meristems. The stem does not grow in diameter because that requires lateral meristems, and it does not become shorter and thicker because the primary growth is halted.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक युवा तने के सिरे को काट दिया जाए, तो तने के वृद्धि पर क्या प्रभाव पड़ता है?",
+          "choices": [
+            "यह लंबाई में आगे बढ़ता रहता है",
+            "यह लंबाई में बढ़ना बंद कर देता है लेकिन नए शाखाएं बनती हैं",
+            "यह व्यास में बढ़ता है",
+            "यह छोटा और मोटा हो जाता है"
+          ],
+          "solution": "एक युवा तने के सिरे को काट देने से इसकी लंबाई की वृद्धि रुक जाती है क्योंकि इस वृद्धि को धक्का देने वाला अपस्थानिक मेरिस्टम हटा दिया जाता है। हालांकि, नोड्स से अंतर्मुखी मेरिस्टम के कारण नए शाखाएं बन सकती हैं। तना व्यास में बढ़ता नहीं है क्योंकि इसके लिए पार्श्व मेरिस्टम की आवश्यकता होती है, और यह छोटा और मोटा नहीं होता है क्योंकि प्राथमिक वृद्धि रुक जाती है।",
+          "imageAlt": null,
+          "critique": "Translation accurately reflects the original meaning with appropriate botanical terminology in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर एका तरुण तीर्थाच्या टिपला कापला गेला, तर तीर्थाच्या वाढीवर काय परिणाम होतो?",
+          "choices": [
+            "तीर्थ लांबीत वाढते",
+            "तीर्थ लांबीत वाढत नाही पण नवीन शाखा तयार होतात",
+            "तीर्थ व्यासात वाढते",
+            "तीर्थ लहान होते आणि मोठे होते"
+          ],
+          "solution": "तरुण तीर्थाच्या टिपला कापल्याने त्याच्या लांबीत वाढ थांबते कारण ती वाढ विस्तारक कोशिकांमुळे होते, जी कापल्यानंतर नष्ट होतात. तर, नवीन शाखा नोडमधून विस्तारक कोशिकांमुळे तयार होऊ शकतात. तीर्थ व्यासात वाढत नाही कारण त्यास बाजूच्या कोशिकांची आवश्यकता असते, आणि तीर्थ लहान आणि मोठे होत नाही कारण प्राथमिक वाढ थांबलेली असते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the scientific terminology appropriate for a Marathi-medium curriculum.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses apical meristem with intercalary",
+        null,
+        "Misunderstands the role of intercalary meristem",
+        "Confuses girth increase with length growth"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly identifies that cutting the tip of a young stem stops length growth but allows new branches to form due to intercalary meristems. The reasoning aligns with the scientific explanation of plant growth mechanisms.",
+      "sources": [
+        {
+          "document": "ncert/9/science/iesc103.pdf",
+          "ordinal": 3,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 3: Tissues in Action",
+            "3.1 Why are Plant and Animal Tissues Different?",
+            "3.2.2 Lateral meristem — How do plants grow in girth?"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc103.pdf",
+          "ordinal": 4,
+          "pageStart": 4,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 3: Tissues in Action",
+            "3.1 Why are Plant and Animal Tissues Different?",
+            "3.2.3 Intercalary meristem — How do plants grow after",
+            "being cut?"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc103.pdf",
+          "ordinal": 5,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 3: Tissues in Action",
+            "3.1 Why are Plant and Animal Tissues Different?",
+            "3.2.4 Permanent tissues"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc103.pdf",
+          "ordinal": 6,
+          "pageStart": 5,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 3: Tissues in Action",
+            "3.1 Why are Plant and Animal Tissues Different?",
+            "3.2.4 Permanent tissues"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-22T13:58:03.522Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "A student observes a transverse section of a plant stem under a microscope and notices different types of cells. What process allows the meristematic tissue to develop into these different cell types?",
+      "choices": [
+        "Differentiation",
+        "Division",
+        "Absorption",
+        "Transport"
+      ],
+      "answerIndex": 0,
+      "solution": "Differentiation is the process by which meristematic cells develop into specialized cell types with distinct structures and functions. Division refers to the replication of cells, not their specialization. Absorption and transport are functions performed by specific cells, not the process of development.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक छात्र माइक्रोस्कोप के तहत एक पौधे के तने के अनुप्रस्थ काट का अवलोकन करता है और विभिन्न प्रकार की कोशिकाओं को देखता है। मेरिस्टेमेटिक ऊतक के विभिन्न कोशिका प्रकारों में विकसित होने की प्रक्रिया क्या है?",
+          "choices": [
+            "अनुवर्तन",
+            "विभाजन",
+            "अवशोषण",
+            "परिवहन"
+          ],
+          "solution": "अनुवर्तन वह प्रक्रिया है जिसमें मेरिस्टेमेटिक कोशिकाएं विशिष्ट संरचनाओं और कार्यों वाले विशिष्ट कोशिका प्रकारों में विकसित हो जाती हैं। विभाजन कोशिकाओं की प्रतिकृति है, न कि उनके विशिष्टीकरण। अवशोषण और परिवहन विशिष्ट कोशिकाओं द्वारा किए जाने वाले कार्य हैं, न कि विकास की प्रक्रिया।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, technical terms match standard Hindi biology terminology, and the logic of the question and solution is preserved.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका विद्यार्थीने मायक्रोस्कोपमध्ये एका वनस्पतीच्या तंतूचा अनुलंब छेद अवलोकन केला आणि विविध प्रकारच्या कोशिका नोंदवल्या. मेरिस्टेमॅटिक ऊती विविध कोशिका प्रकारांमध्ये विकसित होण्यास कोणता प्रक्रिया अनुमती देते?",
+          "choices": [
+            "विभेदन",
+            "विभाजन",
+            "शोषण",
+            "वाहतूक"
+          ],
+          "solution": "विभेदन ही मेरिस्टेमॅटिक कोशिकांना विशिष्ट संरचना आणि कार्यासह विशिष्ट कोशिका प्रकारांमध्ये विकसित होण्याची प्रक्रिया आहे. विभाजन ही कोशिकांच्या प्रतिकृतीची आहे, नाही की त्यांच्या विशिष्टतेची. शोषण आणि वाहतूक ही विशिष्ट कोशिकांद्वारे केली जाणारी कार्ये आहेत, नाही की विकासाची प्रक्रिया.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology consistent with standard biology textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses division with differentiation",
+        "Confuses absorption with differentiation",
+        "Confuses transport with differentiation"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is well-constructed. The correct answer is 'Differentiation,' as meristematic cells differentiate into various cell types. The distractors reflect common misconceptions, such as confusing division with differentiation or mistaking functions like absorption and transport for the process itself.",
+      "sources": [
+        {
+          "document": "ncert/9/science/iesc103.pdf",
+          "ordinal": 3,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 3: Tissues in Action",
+            "3.1 Why are Plant and Animal Tissues Different?",
+            "3.2.2 Lateral meristem — How do plants grow in girth?"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc103.pdf",
+          "ordinal": 4,
+          "pageStart": 4,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 3: Tissues in Action",
+            "3.1 Why are Plant and Animal Tissues Different?",
+            "3.2.3 Intercalary meristem — How do plants grow after",
+            "being cut?"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc103.pdf",
+          "ordinal": 5,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 3: Tissues in Action",
+            "3.1 Why are Plant and Animal Tissues Different?",
+            "3.2.4 Permanent tissues"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc103.pdf",
+          "ordinal": 6,
+          "pageStart": 5,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 3: Tissues in Action",
+            "3.1 Why are Plant and Animal Tissues Different?",
+            "3.2.4 Permanent tissues"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-22T13:58:03.522Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "Which tissue system in plants provides support and flexibility, allowing parts like stems and tendrils to bend without breaking?",
+      "choices": [
+        "Dermal tissue system",
+        "Ground tissue system",
+        "Vascular tissue system",
+        "Meristematic tissue system"
+      ],
+      "answerIndex": 1,
+      "solution": "The ground tissue system provides support and flexibility, allowing parts like stems and tendrils to bend without breaking. Dermal tissue forms the outer layer and does not provide structural support, vascular tissue is responsible for transporting water and nutrients, and meristematic tissue consists of undifferentiated cells that divide, not a structural system. The ground tissue system is the correct answer because it includes cells that offer both strength and flexibility.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "पौधों में कौन सा ऊतक प्रणाली समर्थन और लचीलापन प्रदान करता है, जिससे कि पत्तियां और तंतु जैसे हिस्से टूटे बिना मुड़ सकें?",
+          "choices": [
+            "एपिडर्मल ऊतक प्रणाली",
+            "भूमि ऊतक प्रणाली",
+            "रसांकन ऊतक प्रणाली",
+            "मेरिस्टेमेटिक ऊतक प्रणाली"
+          ],
+          "solution": "भूमि ऊतक प्रणाली समर्थन और लचीलापन प्रदान करता है, जिससे कि पत्तियां और तंतु जैसे हिस्से टूटे बिना मुड़ सकें। एपिडर्मल ऊतक बाहरी परत बनाता है और संरचनात्मक समर्थन प्रदान नहीं करता, रसांकन ऊतक पानी और पोषक तत्वों के परिवहन के लिए जिम्मेदार होता है, और मेरिस्टेमेटिक ऊतक अनिर्धारित कोशिकाओं से बना होता है जो विभाजित होता है, संरचनात्मक प्रणाली नहीं होता। भूमि ऊतक प्रणाली सही उत्तर है क्योंकि इसमें ऐसी कोशिकाएं शामिल होती हैं जो दृढ़ता और लचीलापन दोनों प्रदान करती हैं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriately translated, and the structure matches the original.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "वनस्पतींमध्ये कोणता ऊती प्रणाली समर्थन आणि लचका प्रदान करते, जेणेकरून पाकळ्या आणि अंकुरांसारख्या भागांना तुटल्याशिवाय वाकवता येते?",
+          "choices": [
+            "एपिडर्मल ऊती प्रणाली",
+            "ग्राउंड ऊती प्रणाली",
+            "व्हास्क्युलर ऊती प्रणाली",
+            "मेरिस्टेमॅटिक ऊती प्रणाली"
+          ],
+          "solution": "ग्राउंड ऊती प्रणाली समर्थन आणि लचका प्रदान करते, जेणेकरून पाकळ्या आणि अंकुरांसारख्या भागांना तुटल्याशिवाय वाकवता येते. एपिडर्मल ऊती बाह्य थर बनवते आणि संरचनात्मक समर्थन प्रदान करत नाही, व्हास्क्युलर ऊती पाणी आणि पोषक द्रव्ये परिवहन करण्यास जबाबदार आहे, आणि मेरिस्टेमॅटिक ऊती अपूर्ण विभाजित कोशिका असतात, ज्यामुळे संरचनात्मक प्रणाली नसते. ग्राउंड ऊती प्रणाली ही योग्य उत्तर आहे कारण ती अशा कोशिका समाविष्ट करते जी शक्ती आणि लचका देतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for plant tissue systems.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses dermal tissue with the function of support and flexibility.",
+        null,
+        "Correctly identifies the system but misattributes its function.",
+        "Confuses vascular tissue with the function of support and flexibility."
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is the ground tissue system, which provides support and flexibility. The author's reasoning is sound, and the misconceptions listed for the wrong options are plausible for students.",
+      "sources": [
+        {
+          "document": "ncert/9/science/iesc103.pdf",
+          "ordinal": 7,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 3: Tissues in Action",
+            "3.1 Why are Plant and Animal Tissues Different?",
+            "3.2.4 Permanent tissues"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc103.pdf",
+          "ordinal": 8,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 3: Tissues in Action",
+            "3.1 Why are Plant and Animal Tissues Different?",
+            "3.2.4 Permanent tissues"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc103.pdf",
+          "ordinal": 9,
+          "pageStart": 7,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 3: Tissues in Action",
+            "3.3 Animal Tissues"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc103.pdf",
+          "ordinal": 10,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 3: Tissues in Action",
+            "3.3 Animal Tissues",
+            "3.3.1 Epithelial tissues — Structure and",
+            "functions"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-22T13:58:03.522Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "In an experiment, a young mango sapling’s stem bends during wind but does not break. Which tissue is responsible for this flexibility?",
+      "choices": [
+        "Sclerenchyma",
+        "Collenchyma",
+        "Parenchyma",
+        "Meristematic"
+      ],
+      "answerIndex": 1,
+      "solution": "Collenchyma is a type of plant tissue that provides flexibility and support. It allows the stem to bend without breaking. Sclerenchyma provides rigid support but makes the stem less flexible. Parenchyma is involved in storage and is not responsible for flexibility. Meristematic tissue is involved in growth, not in providing mechanical support.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक प्रयोग में, एक युवा आम के बीजाणु के तने में हवा में झूल जाता है लेकिन टूट नहीं जाता। इस लचीलापन के लिए कौन सा ऊतक जिम्मेदार है?",
+          "choices": [
+            "स्क्लेरेनकाइमा",
+            "कोलेनकाइमा",
+            "पैरेनकाइमा",
+            "मेरिस्टेमेटिक"
+          ],
+          "solution": "कोलेनकाइमा पौधे के ऊतक का एक प्रकार है जो लचीलापन और समर्थन प्रदान करता है। यह तने के झूलने की अनुमति देता है लेकिन टूट नहीं जाता। स्क्लेरेनकाइमा कठोर समर्थन प्रदान करता है लेकिन तने के लचीलापन कम कर देता है। पैरेनकाइमा संग्रहण में शामिल होता है और लचीलापन के लिए जिम्मेदार नहीं होता। मेरिस्टेमेटिक ऊतक वृद्धि में शामिल होता है, न कि यांत्रिक समर्थन प्रदान करने में।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, technical terms are correctly used in Hindi as per standard textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका अभ्यासात, एका तरुण आंबा बिल्लीच्या तंतू वादळामुळे वाकतात पण तुटत नाहीत. ही लचकेपणा कोणत्या ऊतीमुळे होतो?",
+          "choices": [
+            "स्क्लेरेनकायमा",
+            "कॉलेनकायमा",
+            "पॅरेनकायमा",
+            "मेरिस्टेमॅटिक"
+          ],
+          "solution": "कॉलेनकायमा ही वनस्पतीची ऊती आहे जी लचकेपणा आणि समर्थन प्रदान करते. ती तंतू तुटल्याशिवाय वाकतात. स्क्लेरेनकायमा अक्षम समर्थन प्रदान करते पण तंतू लचकेपणा कमी करते. पॅरेनकायमा संचयाशी संबंधित असते आणि लचकेपणा जबाबदार नसते. मेरिस्टेमॅटिक ऊती वाढीशी संबंधित असते, नैसर्गिक समर्थन प्रदान करत नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the scientific terminology used in Marathi textbooks. The structure and meaning of the question and options match the original English version.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses sclerenchyma with a flexible tissue",
+        null,
+        "Thinks parenchyma is responsible for mechanical support",
+        "Thinks meristematic tissue provides flexibility"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies collenchyma as the tissue responsible for flexibility in plant stems. The reasoning aligns with standard botanical knowledge.",
+      "sources": [
+        {
+          "document": "ncert/9/science/iesc103.pdf",
+          "ordinal": 24,
+          "pageStart": 18,
+          "pageEnd": 19,
+          "headingPath": [
+            "Chapter 3: Tissues in Action",
+            "3.6 Skeletal System",
+            "Revise, Reflect, Refine"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc103.pdf",
+          "ordinal": 25,
+          "pageStart": 19,
+          "pageEnd": 20,
+          "headingPath": [
+            "Chapter 3: Tissues in Action",
+            "3.6 Skeletal System",
+            "Revise, Reflect, Refine"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc103.pdf",
+          "ordinal": 26,
+          "pageStart": 20,
+          "pageEnd": 20,
+          "headingPath": [
+            "Chapter 3: Tissues in Action",
+            "3.6 Skeletal System",
+            "Revise, Reflect, Refine",
+            "The Journey Beyond"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-22T13:58:03.522Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "In a science competition, a question asks: Which type of meristematic tissue helps grasses regenerate after being mowed?",
+      "choices": [
+        "Apical meristem",
+        "Lateral meristem",
+        "Intercalary meristem",
+        "Parenchyma"
+      ],
+      "answerIndex": 2,
+      "solution": "Intercalary meristem is the correct answer because it is responsible for growth in regions that are not at the tips of stems or roots, allowing grasses to regrow after being cut. Apical meristem is found at the tips and is responsible for primary growth, lateral meristem increases the girth of stems, and parenchyma is a type of permanent tissue involved in storage and support, not growth.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक विज्ञान प्रतियोगिता में, एक प्रश्न पूछता है: कौन सा मेरिस्टेमेटिक ऊतक घास के काटे जाने के बाद पुनर्जीवित होने में सहायता करता है?",
+          "choices": [
+            "अपीकल मेरिस्टेम",
+            "पार्श्व मेरिस्टेम",
+            "अंतर्मुखी मेरिस्टेम",
+            "पैरेन्काइमा"
+          ],
+          "solution": "अंतर्मुखी मेरिस्टेम सही उत्तर है क्योंकि यह विशेष रूप से एक पौधे के किनारों पर वृद्धि के लिए जिम्मेदार होता है जो कि घास के काटे जाने के बाद पुनर्जीवित हो सकते हैं। अपीकल मेरिस्टेम शीर्ष पर पाया जाता है और प्राथमिक वृद्धि के लिए जिम्मेदार होता है, पार्श्व मेरिस्टेम तनों के वृद्धि के लिए जिम्मेदार होता है और पैरेन्काइमा एक परमाणु ऊतक होता है जो भंडारण और समर्थन में भाग लेता है, न कि वृद्धि में।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the original English question and solution, with appropriate terminology used in a Hindi-medium biology context.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका विज्ञान प्रतियोगितेत, एक प्रश्न विचारला जातो: घासाला कापल्यानंतर त्याच्या पुनर्जन्मासाठी कोणत्या प्रकारच्या मेरिस्टीमॅटिक ऊतीची गरज असते?",
+          "choices": [
+            "अपिकल मेरिस्टीम",
+            "बाजूचे मेरिस्टीम",
+            "अंतर्मुख मेरिस्टीम",
+            "पॅरेन्काइमा"
+          ],
+          "solution": "अंतर्मुख मेरिस्टीम हा बरोबर उत्तर आहे कारण तो फक्त तीव्र वाढीच्या ठिकाणांमध्ये नसलेल्या भागांमध्ये वाढीची जबाबदारी घेतो, ज्यामुळे घासाला कापल्यानंतर त्याचा पुनर्जन्म होऊ शकतो. अपिकल मेरिस्टीम टिपीवर असतो आणि प्राथमिक वाढीची जबाबदारी घेतो, बाजूचे मेरिस्टीम स्टेमच्या व्यासात वाढ करते, आणि पॅरेन्काइमा हा एक प्रकारचा अंतिम ऊती आहे जो भंडारण आणि समर्थनासाठी जबाबदार असतो, वाढीसाठी नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the scientific terminology used in Marathi textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses apical with intercalary",
+        "Confuses lateral with intercalary",
+        null,
+        "Misidentifies parenchyma as a meristematic tissue"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies intercalary meristem as the tissue responsible for regeneration in grasses after mowing. The reasoning aligns with standard botanical knowledge.",
+      "sources": [
+        {
+          "document": "ncert/9/science/iesc103.pdf",
+          "ordinal": 3,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 3: Tissues in Action",
+            "3.1 Why are Plant and Animal Tissues Different?",
+            "3.2.2 Lateral meristem — How do plants grow in girth?"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc103.pdf",
+          "ordinal": 4,
+          "pageStart": 4,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 3: Tissues in Action",
+            "3.1 Why are Plant and Animal Tissues Different?",
+            "3.2.3 Intercalary meristem — How do plants grow after",
+            "being cut?"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc103.pdf",
+          "ordinal": 5,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 3: Tissues in Action",
+            "3.1 Why are Plant and Animal Tissues Different?",
+            "3.2.4 Permanent tissues"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc103.pdf",
+          "ordinal": 6,
+          "pageStart": 5,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 3: Tissues in Action",
+            "3.1 Why are Plant and Animal Tissues Different?",
+            "3.2.4 Permanent tissues"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-22T13:58:03.522Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "If a plant's xylem cells were all dead, how would they still help in transporting water against gravity?",
+      "choices": [
+        "They would use energy from the living cells in the leaves to push water up",
+        "They would rely on the movement of the plant's roots to pull water up",
+        "They would use the pressure from the surrounding soil to push water up",
+        "They would use the dead cells to create a physical channel for water to flow through"
+      ],
+      "answerIndex": 3,
+      "solution": "Xylem cells, even though dead, form a continuous, hollow channel that allows water to move upward through capillary action and root pressure. Living cells in the leaves do not provide energy for this process, and the movement of roots or soil pressure is not the primary mechanism. The physical structure of dead xylem cells enables water to flow efficiently against gravity.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक पौधे के जाइलम कोशिकाएं सभी मृत होती, तो वे गुरुत्व के विरुद्ध पानी के परिवहन में कैसे सहायता कर सकती हैं?",
+          "choices": [
+            "वे पत्तियों में जीवित कोशिकाओं से ऊर्जा का उपयोग करके पानी को ऊपर धकेलेंगी",
+            "वे पौधे के जड़ों के गति पर निर्भर करेंगी जो पानी को ऊपर खींचती है",
+            "वे परिवेश की मिट्टी के दबाव का उपयोग करके पानी को ऊपर धकेलेंगी",
+            "वे मृत कोशिकाओं का उपयोग जल के प्रवाह के लिए एक भौतिक चैनल बनाने के लिए करेंगी"
+          ],
+          "solution": "जाइलम कोशिकाएं, भले ही मृत हों, एक निरंतर, खोखला चैनल बनाती हैं जो जल के ऊपर की ओर चलने की अनुमति देता है कैपिलरी क्रिया और जड़ के दबाव द्वारा। पत्तियों में जीवित कोशिकाएं इस प्रक्रिया के लिए ऊर्जा प्रदान नहीं करती हैं, और जड़ों की गति या मिट्टी के दबाव का मुख्य यांत्रिकी नहीं है। मृत जाइलम कोशिकाओं की भौतिक संरचना जल के प्रवाह को गुरुत्व के विरुद्ध दक्षतापूर्वक बनाए रखने में सहायता करती है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate biological terminology as found in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर एका वनस्पतीच्या जाइलेम कोशिका सर्व जीवंत असतील, तर त्या गुरुत्वाच्या विरुद्ध जल वाहून नेण्यास कशी मदत करू शकतील?",
+          "choices": [
+            "त्या पानांमधील जीवंत कोशिकांपासून ऊर्जा वापरून जल वर धक्का देतील",
+            "त्या वनस्पतीच्या मूळांच्या गतीवर अवलंबून राहतील आणि जल वर खेचतील",
+            "त्या जागीच्या जमीनीच्या दाबाचा वापर करून जल वर धक्का देतील",
+            "त्या मृत कोशिकांचा वापर करून जल वाहत जाण्यासाठी भौतिक मार्ग तयार करतील"
+          ],
+          "solution": "जाइलेम कोशिका, जी जीवंत नसल्यामुळे, एक सतत, खोल नळी तयार करतात जी जलाला छिद्रीकरण क्रिया आणि मूळ दाबाद्वारे वर जाण्यास परवानगी देते. पानांमधील जीवंत कोशिका या प्रक्रियेसाठी ऊर्जा पुरवत नाहीत, आणि मूळांच्या गती किंवा जमिनीच्या दाबाचा वापर मुख्य मार्ग म्हणून नाही. मृत जाइलेम कोशिकांची भौतिक संरचना जलाच्या वाहनासाठी अत्यंत दक्ष आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi botanical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Misunderstands the role of xylem cells as active energy users.",
+        "Believes roots are the main source of water movement.",
+        "Incorrectly assumes soil pressure plays a role in water transport.",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 3, as xylem cells form a physical channel for water transport through capillary action and root pressure. The other options reflect common misconceptions about the role of xylem cells and water transport mechanisms.",
+      "sources": [
+        {
+          "document": "ncert/9/science/iesc103.pdf",
+          "ordinal": 7,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 3: Tissues in Action",
+            "3.1 Why are Plant and Animal Tissues Different?",
+            "3.2.4 Permanent tissues"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc103.pdf",
+          "ordinal": 8,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 3: Tissues in Action",
+            "3.1 Why are Plant and Animal Tissues Different?",
+            "3.2.4 Permanent tissues"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc103.pdf",
+          "ordinal": 9,
+          "pageStart": 7,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 3: Tissues in Action",
+            "3.3 Animal Tissues"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc103.pdf",
+          "ordinal": 10,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 3: Tissues in Action",
+            "3.3 Animal Tissues",
+            "3.3.1 Epithelial tissues — Structure and",
+            "functions"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-22T13:58:03.522Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Which of the following is an example of a connective tissue that provides flexibility and cushions the ends of bones?",
+      "choices": [
+        "Bone",
+        "Cartilage",
+        "Tendon",
+        "Ligament"
+      ],
+      "answerIndex": 1,
+      "solution": "Cartilage is a type of connective tissue that has a soft, jelly-like structure, allowing it to provide flexibility and cushioning. Bone is rigid and not flexible, tendon connects muscle to bone and is not cushioning, and ligament connects bones and is not flexible. Therefore, cartilage is the correct answer.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा एक संयोजी ऊतक का उदाहरण है जो लचीलापन प्रदान करता है और हड्डियों के सिरों को बुरा करता है?",
+          "choices": [
+            "अस्थि",
+            "उपास्थि",
+            "टेंडन",
+            "स्नायु"
+          ],
+          "solution": "उपास्थि एक संयोजी ऊतक है जिसकी सतह नरम और जेली जैसी होती है, जिसके कारण यह लचीलापन और सुरक्षा प्रदान करती है। अस्थि कठोर और लचीली नहीं होती, टेंडन मांसपेशी को हड्डी से जोड़ता है और सुरक्षा नहीं प्रदान करता है, और स्नायु हड्डियों को जोड़ता है और लचीला नहीं होता है। इसलिए, उपास्थि सही उत्तर है।",
+          "imageAlt": null,
+          "critique": "Hindi translation accurately reflects the original English question and solution, with appropriate terminology used for biological structures.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते एक एक जाळीय अंगाचे उदाहरण आहे जे लचका देते आणि हाडांच्या शेवटांना आराम देते?",
+          "choices": [
+            "हाड",
+            "कार्टिलेज",
+            "टेंडन",
+            "लिगामेंट"
+          ],
+          "solution": "कार्टिलेज हा एक प्रकारचा जाळीय अंग आहे ज्याची संरचना नरम आणि जेलीसारखी असते, ज्यामुळे त्याला लचका देण्यास आणि आराम देण्यास शक्यता असते. हाड कठोर आणि लचका नसते, टेंडन मांसपेशी आणि हाडांना जोडते आणि आराम देत नाही, आणि लिगामेंट हाडांना जोडते आणि लचका नसते. म्हणून कार्टिलेज हा योग्य उत्तर आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi medical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Chooses bone, which is a rigid connective tissue.",
+        null,
+        "Chooses tendon, which connects muscle to bone.",
+        "Chooses ligament, which connects bone to bone."
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is cartilage, which is a connective tissue that provides flexibility and cushions bones. The reasoning in the solution is sound and matches the provided explanation.",
+      "sources": [
+        {
+          "document": "ncert/9/science/iesc103.pdf",
+          "ordinal": 11,
+          "pageStart": 8,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 3: Tissues in Action",
+            "3.3 Animal Tissues",
+            "3.3.2 How are various parts",
+            "connected in our body?"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc103.pdf",
+          "ordinal": 12,
+          "pageStart": 9,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 3: Tissues in Action",
+            "3.3 Animal Tissues",
+            "3.3.2 How are various parts",
+            "connected in our body?"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc103.pdf",
+          "ordinal": 13,
+          "pageStart": 10,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 3: Tissues in Action",
+            "3.3 Animal Tissues",
+            "3.3.2 How are various parts",
+            "connected in our body?"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc103.pdf",
+          "ordinal": 14,
+          "pageStart": 11,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 3: Tissues in Action",
+            "3.3 Animal Tissues",
+            "3.3.2 How are various parts",
+            "connected in our body?"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-22T13:58:03.522Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "A student noticed that the fibres of a coconut husk are hard and brittle, while the leaf stalks of coriander are soft and flexible. What is the most likely reason for this difference?",
+      "choices": [
+        "The coconut husk has more vascular tissue",
+        "The coconut husk has more parenchyma cells",
+        "The coconut husk has more sclerenchyma cells",
+        "The coconut husk has more epidermal cells"
+      ],
+      "answerIndex": 2,
+      "solution": "Sclerenchyma cells have thick, lignified walls, making them hard and strong, which explains the hard and brittle texture of the coconut husk. Parenchyma cells, on the other hand, are softer and more flexible, which is why leaf stalks of coriander feel soft. The other options do not account for the structural differences in hardness and flexibility.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक छात्र ने देखा कि एक नारियल के छिलके के तंतु कठोर और भंगुर हैं, जबकि धनिया के पत्ते के तने नरम और लचीले हैं। इस अंतर के लिए सबसे संभावित कारण क्या है?",
+          "choices": [
+            "नारियल के छिलके में अधिक वास्कुलर ऊतक होता है",
+            "नारियल के छिलके में अधिक पैरेन्काइमा कोशिकाएं होती हैं",
+            "नारियल के छिलके में अधिक स्क्लेरेनकाइमा कोशिकाएं होती हैं",
+            "नारियल के छिलके में अधिक एपिडर्मल कोशिकाएं होती हैं"
+          ],
+          "solution": "स्क्लेरेनकाइमा कोशिकाओं की मजबूत, लिग्निफाइड दीवार होती है, जो उन्हें कठोर और मजबूत बनाती है, जो नारियल के छिलके के कठोर और भंगुर गुण की व्याख्या करती है। दूसरी ओर, पैरेन्काइमा कोशिकाएं नरम और लचीली होती हैं, जो धनिया के पत्ते के तने के नरम अनुभव की व्याख्या करती है। अन्य विकल्प कठोरता और लचीलापन में अंतर की व्याख्या नहीं करते हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate botanical terminology as per Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका विद्यार्थ्याला लक्षात आले की कोकोसच्या फळाच्या फांदींचे तंतू कठीण आणि भुकटे आहेत, तर धनियाच्या पानांच्या तारांचे तंतू मऊ आणि लचका आहेत. ह्या फरकाचा सर्वात शक्य कारण काय असू शकते?",
+          "choices": [
+            "कोकोसच्या फांदीत अधिक वास्क्युलर तंतू आहेत",
+            "कोकोसच्या फांदीत अधिक पॅरेन्काइमा कोशिका आहेत",
+            "कोकोसच्या फांदीत अधिक स्लेरेन्काइमा कोशिका आहेत",
+            "कोकोसच्या फांदीत अधिक एपिडर्मल कोशिका आहेत"
+          ],
+          "solution": "स्लेरेन्काइमा कोशिकांच्या जास्त जाड आणि लिग्निफाइड भिंती असतात, ज्यामुळे त्या कठीण आणि मजबूत असतात, जे कोकोसच्या फांदीच्या कठीण आणि भुकट्या तंतूंच्या वैशिष्ट्यांचे विवरण देतात. पॅरेन्काइमा कोशिका दुसरीकडे मऊ आणि लचकी असतात, ज्यामुळे धनियाच्या पानांच्या तारांची अनुभूती मऊ असते. इतर विकल्प अशा कठोरता आणि लचकेपणाच्या वैशिष्ट्यांच्या संदर्भात व्याख्या करत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the scientific terminology used in Marathi textbooks, and preserves the logical structure of the question and solution.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses vascular tissue with the role of hardness.",
+        "Misattributes flexibility to parenchyma cells.",
+        null,
+        "Incorrectly assumes epidermal cells are responsible for hardness."
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 2, as sclerenchyma cells are indeed responsible for hardness and strength due to their lignified walls. The author's reasoning aligns with scientific understanding, and the distractors reflect common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/9/science/iesc103.pdf",
+          "ordinal": 7,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 3: Tissues in Action",
+            "3.1 Why are Plant and Animal Tissues Different?",
+            "3.2.4 Permanent tissues"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc103.pdf",
+          "ordinal": 8,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 3: Tissues in Action",
+            "3.1 Why are Plant and Animal Tissues Different?",
+            "3.2.4 Permanent tissues"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc103.pdf",
+          "ordinal": 9,
+          "pageStart": 7,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 3: Tissues in Action",
+            "3.3 Animal Tissues"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc103.pdf",
+          "ordinal": 10,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 3: Tissues in Action",
+            "3.3 Animal Tissues",
+            "3.3.1 Epithelial tissues — Structure and",
+            "functions"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-22T13:58:03.522Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "Which type of tissue connects muscles to bones?",
+      "choices": [
+        "Epithelial tissue",
+        "Muscular tissue",
+        "Nervous tissue",
+        "Tendon"
+      ],
+      "answerIndex": 3,
+      "solution": "Tendons are specialized connective tissues that attach muscles to bones, allowing for the transmission of force during movement. Epithelial tissue forms protective coverings, muscular tissue is responsible for generating movement through contraction, and nervous tissue handles signal transmission. Tendons are specifically designed for their role in connecting muscle to bone, making them the correct answer.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "कौन-सा ऊतक मांसपेशियों को हड्डियों से जोड़ता है?",
+          "choices": [
+            "एपिथेलियल ऊतक",
+            "मांसपेशी ऊतक",
+            "तंत्रिका ऊतक",
+            "टेंडन"
+          ],
+          "solution": "टेंडन विशेष रूप से संयोजी ऊतक होते हैं जो मांसपेशियों को हड्डियों से जोड़ते हैं, जो गति के दौरान बल के संचरण की अनुमति देते हैं। एपिथेलियल ऊतक संरक्षक आवरण बनाते हैं, मांसपेशी ऊतक संकुचन द्वारा गति के उत्पादन के लिए जिम्मेदार होते हैं, और तंत्रिका ऊतक संकेत संचरण के लिए जिम्मेदार होते हैं। टेंडन को विशेष रूप से मांसपेशी को हड्डी से जोड़ने के कार्य के लिए डिज़ाइन किया गया है, जिसके कारण वे सही उत्तर हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately preserves the meaning, technical terms, and structure of the original English question. All options and the solution are correctly translated and maintain their intended meaning.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "कोणत्या प्रकारचे ऊती अंगाच्या मांसपेशी आणि हड्ड्यांना जोडते?",
+          "choices": [
+            "उपकला ऊती",
+            "मांसपेशी ऊती",
+            "तंत्रिका ऊती",
+            "कंडी"
+          ],
+          "solution": "कंड्या ही विशेष जोडणारी ऊती आहेत जी मांसपेशी आणि हड्ड्यांना जोडतात, गती दरम्यान बलाचे प्रेषण करतात. उपकला ऊती रक्षणात्मक आवर बनवतात, मांसपेशी ऊती आकुंचनामुळे गती उत्पन्न करतात आणि तंत्रिका ऊती संकेत प्रेषण करतात. कंड्या विशेषतः मांसपेशी आणि हड्ड्यांना जोडण्याच्या भूमिकेसाठी डिझाइन केलेल्या असतात, ज्यामुळे त्या योग्य उत्तर बनतात.",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains original meaning, and uses standard Marathi biological terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses muscle tissue with tendon",
+        "Confuses epithelial tissue with tendon",
+        "Confuses nervous tissue with tendon",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 'Tendon' (option 3), as tendons are the connective tissues that connect muscles to bones. The author's solution is accurate, and the reasoning for the distractors reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/9/science/iesc103.pdf",
+          "ordinal": 11,
+          "pageStart": 8,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 3: Tissues in Action",
+            "3.3 Animal Tissues",
+            "3.3.2 How are various parts",
+            "connected in our body?"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc103.pdf",
+          "ordinal": 12,
+          "pageStart": 9,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 3: Tissues in Action",
+            "3.3 Animal Tissues",
+            "3.3.2 How are various parts",
+            "connected in our body?"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc103.pdf",
+          "ordinal": 13,
+          "pageStart": 10,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 3: Tissues in Action",
+            "3.3 Animal Tissues",
+            "3.3.2 How are various parts",
+            "connected in our body?"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc103.pdf",
+          "ordinal": 14,
+          "pageStart": 11,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 3: Tissues in Action",
+            "3.3 Animal Tissues",
+            "3.3.2 How are various parts",
+            "connected in our body?"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-19T15:49:29.293Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "Which type of tissue connects and supports other tissues in the body?",
+      "choices": [
+        "Epithelial tissue",
+        "Muscular tissue",
+        "Nervous tissue",
+        "Connective tissue"
+      ],
+      "answerIndex": 3,
+      "solution": "Connective tissue is responsible for connecting and supporting other tissues in the body, as it includes structures like bones, cartilage, and blood that provide framework and support. Epithelial tissue forms protective coverings, muscular tissue enables movement, and nervous tissue transmits signals. None of the other options perform the function of connecting and supporting tissues.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "शरीर के अन्य ऊतकों को जोड़ने और समर्थन करने वाले ऊतक किस प्रकार के होते हैं?",
+          "choices": [
+            "एपिथेलियम ऊतक",
+            "पेशी ऊतक",
+            "तंत्रिका ऊतक",
+            "संयोजी ऊतक"
+          ],
+          "solution": "संयोजी ऊतक शरीर के अन्य ऊतकों को जोड़ने और समर्थन करने के लिए उत्तरदायी होता है, क्योंकि इसमें हड्डियां, रेशमी ऊतक और रक्त जैसी संरचनाएं शामिल होती हैं जो ढांचा और समर्थन प्रदान करती हैं। एपिथेलियम ऊतक संरक्षक कवरिंग बनाता है, पेशी ऊतक गति के लिए उत्तरदायी होता है, और तंत्रिका ऊतक संकेत ले जाता है। अन्य कोई विकल्प ऊतकों को जोड़ने और समर्थन करने के कार्य को नहीं करता है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi medical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "शरीरातील इतर ऊतींना जोडण्यास आणि समर्थन करण्यास कोणत्या प्रकारचे ऊती जबाबदार असतात?",
+          "choices": [
+            "एपिथेलियल ऊती",
+            "मांसपेशी ऊती",
+            "तंत्रिका ऊती",
+            "जोडणारी ऊती"
+          ],
+          "solution": "जोडणारी ऊती शरीरातील इतर ऊतींना जोडण्यास आणि समर्थन करण्यास जबाबदार असते, कारण तिला हड्ड्यां, कॉर्टिज आणि रक्तासारख्या संरचना समाविष्ट असतात ज्या ढांकला आणि समर्थन प्रदान करतात. एपिथेलियल ऊती रक्षक आवरण बनवतात, मांसपेशी ऊती गती अनुमत करतात आणि तंत्रिका ऊती संकेत प्रसारित करतात. इतर कोणत्याही विकल्पांनी ऊतींना जोडण्यास आणि समर्थन करण्याची कार्ये करत नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for biological concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the function of epithelial tissue with connective tissue",
+        "Confuses the function of muscular tissue with connective tissue",
+        "Confuses the function of nervous tissue with connective tissue",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": null,
+      "critique": "The question is straightforward and tests recall of basic tissue functions. The correct answer is clearly connective tissue, and the author's reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/9/science/iesc103.pdf",
+          "ordinal": 11,
+          "pageStart": 8,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 3: Tissues in Action",
+            "3.3 Animal Tissues",
+            "3.3.2 How are various parts",
+            "connected in our body?"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc103.pdf",
+          "ordinal": 12,
+          "pageStart": 9,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 3: Tissues in Action",
+            "3.3 Animal Tissues",
+            "3.3.2 How are various parts",
+            "connected in our body?"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc103.pdf",
+          "ordinal": 13,
+          "pageStart": 10,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 3: Tissues in Action",
+            "3.3 Animal Tissues",
+            "3.3.2 How are various parts",
+            "connected in our body?"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc103.pdf",
+          "ordinal": 14,
+          "pageStart": 11,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 3: Tissues in Action",
+            "3.3 Animal Tissues",
+            "3.3.2 How are various parts",
+            "connected in our body?"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-19T15:49:29.293Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "Which plant tissue is responsible for the girth of the stem?",
+      "choices": [
+        "Xylem",
+        "Phloem",
+        "Cork cambium",
+        "Vascular cambium"
+      ],
+      "answerIndex": 3,
+      "solution": "The vascular cambium is a layer of meristematic tissue responsible for the increase in girth of the stem. Xylem and phloem are conducting tissues, not involved in growth in girth. Cork cambium is involved in the formation of the outer protective layers of the stem.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "कौन सा पौधे के ऊतक तने के वृद्धि के व्यास के लिए उत्तरदायी है?",
+          "choices": [
+            "जाइलम",
+            "फ्लोएम",
+            "कॉर्क कैम्बियम",
+            "जाइलम कैम्बियम"
+          ],
+          "solution": "जाइलम कैम्बियम एक मेरिस्टेमेटिक ऊतक की परत है जो तने के वृद्धि के व्यास के लिए उत्तरदायी है। जाइलम और फ्लोएम परिवहन ऊतक हैं, जो व्यास में वृद्धि में शामिल नहीं हैं। कॉर्क कैम्बियम तने के बाहरी सुरक्षात्मक परतों के निर्माण में शामिल है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the original English question and solution, with appropriate terminology used in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "कोणते वनस्पती ऊती डांबराच्या गर्दीसाठी जबाबदार आहे?",
+          "choices": [
+            "कार्लेम",
+            "फ्लोएम",
+            "कॉर्क कॅम्बियम",
+            "रक्तवाहिनी कॅम्बियम"
+          ],
+          "solution": "रक्तवाहिनी कॅम्बियम हा वृद्धीच्या गर्दीसाठी जबाबदार असलेला मेरिस्टीमॅटिक ऊती आहे. कार्लेम आणि फ्लोएम हे वाहक ऊती आहेत, जे गर्दीत वाढीत समाविष्ट नाहीत. कॉर्क कॅम्बियम डांबराच्या बाह्य संरक्षक पर्तीच्या निर्मितीत समाविष्ट आहे.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, with appropriate technical terms used in Marathi biology textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "confuses xylem with the tissue responsible for girth",
+        "confuses phloem with the tissue responsible for girth",
+        "thinks cork cambium is responsible for girth instead of vascular cambium",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly identifies vascular cambium as the tissue responsible for stem girth increase. The distractors reflect common misconceptions about the roles of xylem, phloem, and cork cambium.",
+      "sources": [
+        {
+          "document": "ncert/9/science/iesc103.pdf",
+          "ordinal": 24,
+          "pageStart": 18,
+          "pageEnd": 19,
+          "headingPath": [
+            "Chapter 3: Tissues in Action",
+            "3.6 Skeletal System",
+            "Revise, Reflect, Refine"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc103.pdf",
+          "ordinal": 25,
+          "pageStart": 19,
+          "pageEnd": 20,
+          "headingPath": [
+            "Chapter 3: Tissues in Action",
+            "3.6 Skeletal System",
+            "Revise, Reflect, Refine"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc103.pdf",
+          "ordinal": 26,
+          "pageStart": 20,
+          "pageEnd": 20,
+          "headingPath": [
+            "Chapter 3: Tissues in Action",
+            "3.6 Skeletal System",
+            "Revise, Reflect, Refine",
+            "The Journey Beyond"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-19T15:49:29.293Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the function of cartilage in the body?",
+      "choices": [
+        "Provides strength and support",
+        "Provides flexibility and cushions bones",
+        "Transmits messages between cells",
+        "Helps in blood clotting"
+      ],
+      "answerIndex": 1,
+      "solution": "Cartilage provides flexibility and cushions bones, which helps in shock absorption. Bones provide strength and support, nervous tissue transmits messages between cells, and platelets help in blood clotting.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "शरीर में कार्टिलेज का कार्य क्या है?",
+          "choices": [
+            "शक्ति और समर्थन प्रदान करता है",
+            "लचीलापन और हड्डियों को अवशोषित करता है",
+            "कोशिकाओं के बीच संदेश प्रसारित करता है",
+            "रक्त जमाव में सहायता करता है"
+          ],
+          "solution": "कार्टिलेज लचीलापन प्रदान करता है और हड्डियों को अवशोषित करता है जो झटका अवशोषण में सहायता करता है। हड्डियां शक्ति और समर्थन प्रदान करती हैं, तंत्रिका ऊतक कोशिकाओं के बीच संदेश प्रसारित करता है और प्लेटलेट्स रक्त जमाव में सहायता करते हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology for biological concepts.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "शरीरातील कॉर्टिलेजचे कार्य काय आहे?",
+          "choices": [
+            "शक्ती आणि समर्थन प्रदान करते",
+            "लचकटपणा आणि हाडांचे रक्षण करते",
+            "कोशिकांमध्ये संदेश प्रसारित करते",
+            "रक्त जमावण्यात मदत करते"
+          ],
+          "solution": "कॉर्टिलेज हाडांचे रक्षण करते आणि लचकटपणा प्रदान करते, जे झटक्याचे शोषणात मदत करते. हाडांनी शक्ती आणि समर्थन प्रदान केले जाते, तर न्यूरोन्स कोशिकांमध्ये संदेश प्रसारित करतात आणि प्लेटलेट्स रक्त जमावण्यात मदत करतात.",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriately used in Marathi.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses cartilage with bone",
+        null,
+        "Confuses nervous tissue with cartilage",
+        "Confuses platelets with cartilage"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 1, as cartilage's primary function is to provide flexibility and cushion bones. The distractors correctly reflect common misconceptions about cartilage's role compared to bone, nervous tissue, and platelets.",
+      "sources": [
+        {
+          "document": "ncert/9/science/iesc103.pdf",
+          "ordinal": 11,
+          "pageStart": 8,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 3: Tissues in Action",
+            "3.3 Animal Tissues",
+            "3.3.2 How are various parts",
+            "connected in our body?"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc103.pdf",
+          "ordinal": 12,
+          "pageStart": 9,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 3: Tissues in Action",
+            "3.3 Animal Tissues",
+            "3.3.2 How are various parts",
+            "connected in our body?"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc103.pdf",
+          "ordinal": 13,
+          "pageStart": 10,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 3: Tissues in Action",
+            "3.3 Animal Tissues",
+            "3.3.2 How are various parts",
+            "connected in our body?"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc103.pdf",
+          "ordinal": 14,
+          "pageStart": 11,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 3: Tissues in Action",
+            "3.3 Animal Tissues",
+            "3.3.2 How are various parts",
+            "connected in our body?"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-19T15:49:29.293Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the main function of the epidermal tissue in plants?",
+      "choices": [
+        "To provide structural support",
+        "To absorb water and minerals",
+        "To protect the plant and reduce water loss",
+        "To transport water and minerals"
+      ],
+      "answerIndex": 2,
+      "solution": "The main function of the epidermal tissue in plants is to protect the plant and reduce water loss. This tissue forms a protective barrier that prevents excessive water loss and shields the plant from environmental damage. Other options describe functions of different tissues, such as vascular tissues for transport or ground tissues for support.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "पौधों में एपिडर्मल ऊतक का मुख्य कार्य क्या है?",
+          "choices": [
+            "संरचनात्मक समर्थन प्रदान करना",
+            "जल एवं खनिज अवशोषित करना",
+            "पौधे की रक्षा करना एवं जल हानि कम करना",
+            "जल एवं खनिज का परिवहन करना"
+          ],
+          "solution": "पौधों में एपिडर्मल ऊतक का मुख्य कार्य पौधे की रक्षा करना एवं जल हानि कम करना है। यह ऊतक एक सुरक्षात्मक अवरोध बनाता है जो अत्यधिक जल हानि को रोकता है एवं पौधे को वातावरणीय क्षति से बचाता है। अन्य विकल्प विभिन्न ऊतकों के कार्यों का वर्णन करते हैं, जैसे वाहक ऊतकों के द्वारा परिवहन या भू-ऊतकों के द्वारा समर्थन।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains original meaning, and uses standard Hindi botanical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "वनस्पतींमध्ये एपिडर्मल ऊतीचे मुख्य कार्य काय आहे?",
+          "choices": [
+            "संरचनात्मक समर्थन प्रदान करणे",
+            "पाणी आणि खनिज शोषण करणे",
+            "वनस्पतीचे रक्षण करणे आणि पाणी गमावणे कमी करणे",
+            "पाणी आणि खनिज वाहून नेणे"
+          ],
+          "solution": "वनस्पतींमध्ये एपिडर्मल ऊतीचे मुख्य कार्य वनस्पतीचे रक्षण करणे आणि पाणी गमावणे कमी करणे आहे. हे ऊती एक संरक्षक अवरोध बनवते जो अतिरिक्त पाणी गमावणे रोखतो आणि वनस्पतीला पर्यावरणीय नुकसानापासून बचाव करतो. इतर विकल्पांमध्ये विविध ऊतींच्या कार्याचे वर्णन आहे, जसे की वाहक ऊतींचे पाणी आणि खनिज वाहून नेणे किंवा जमिनीच्या ऊतींचे समर्थन करणे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi botanical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses ground tissue with epidermal tissue",
+        "Confuses root hair function with epidermal function",
+        null,
+        "Confuses the function of xylem with that of epidermal tissue"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 2, as the epidermal tissue's primary role is protection and water conservation. The author's reasoning for the distractors aligns with common student misconceptions about plant tissues.",
+      "sources": [
+        {
+          "document": "ncert/9/science/iesc103.pdf",
+          "ordinal": 7,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 3: Tissues in Action",
+            "3.1 Why are Plant and Animal Tissues Different?",
+            "3.2.4 Permanent tissues"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc103.pdf",
+          "ordinal": 8,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 3: Tissues in Action",
+            "3.1 Why are Plant and Animal Tissues Different?",
+            "3.2.4 Permanent tissues"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc103.pdf",
+          "ordinal": 9,
+          "pageStart": 7,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 3: Tissues in Action",
+            "3.3 Animal Tissues"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc103.pdf",
+          "ordinal": 10,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 3: Tissues in Action",
+            "3.3 Animal Tissues",
+            "3.3.1 Epithelial tissues — Structure and",
+            "functions"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-19T15:49:29.293Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "A plant's stem increases in girth due to the activity of which type of meristem?",
+      "choices": [
+        "Apical meristem",
+        "Lateral meristem",
+        "Intercalary meristem",
+        "Meristematic tissue"
+      ],
+      "answerIndex": 1,
+      "solution": "Lateral meristem is responsible for the increase in girth of a plant's stem because it consists of cells that divide laterally, leading to thickening. Apical meristem is involved in the elongation of the stem, not its width. Intercalary meristem contributes to growth in specific regions, such as between nodes, and meristematic tissue is a general term for all such tissues, not a specific type.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक पौधे के तने के वृद्धि में वृद्धि किस प्रकार के मेरिस्टम के क्रियाशीलता के कारण होती है?",
+          "choices": [
+            "अपस्थिति मेरिस्टम",
+            "क्षैतिज मेरिस्टम",
+            "मध्य मेरिस्टम",
+            "मेरिस्टम ऊतक"
+          ],
+          "solution": "क्षैतिज मेरिस्टम पौधे के तने के वृद्धि में वृद्धि के लिए उत्तरदायी है क्योंकि यह ऐसे कोशिकाओं से बना होता है जो क्षैतिज रूप से विभाजित होते हैं, जिसके कारण मोटाई बढ़ जाती है। अपस्थिति मेरिस्टम तने के विस्तार में शामिल होता है, न कि इसकी चौड़ाई। मध्य मेरिस्टम विशिष्ट क्षेत्रों, जैसे कि नोड्स के बीच, में वृद्धि के लिए योगदान देता है और मेरिस्टम ऊतक ऐसे सभी ऊतकों के लिए एक सामान्य शब्द है, एक विशिष्ट प्रकार नहीं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate biological terminology as used in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका वनस्पतीच्या तीक्ष्णाच्या वाढीमुळे वाढ होते ती कोणत्या प्रकारच्या मेरिस्टीमच्या क्रियेमुळे होते?",
+          "choices": [
+            "अपिकल मेरिस्टीम",
+            "बाजूचे मेरिस्टीम",
+            "अंतर्मुख मेरिस्टीम",
+            "मेरिस्टीमॅटिक तंतू"
+          ],
+          "solution": "बाजूचे मेरिस्टीम वनस्पतीच्या तीक्ष्णाच्या वाढीमुळे वाढ होते कारण त्यामध्ये बाजूला विभाजित होणारे सेल असतात, जे मोठेपणामुळे वाढतात. अपिकल मेरिस्टीम तीक्ष्णाच्या वाढीमुळे वाढते, नाही की त्याच्या रुंदीमुळे. अंतर्मुख मेरिस्टीम नोडमध्ये विशिष्ट भागात वाढीस जबाबदार असते आणि मेरिस्टीमॅटिक तंतू हा सर्व अशा तंतूंचा सामान्य शब्द असतो, एक विशिष्ट प्रकार नसतो.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the scientific terminology appropriate for a Marathi-medium curriculum.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the role of apical meristem with lateral meristem",
+        null,
+        "Confuses lateral meristem with intercalary meristem, thinking both are responsible for girth increase",
+        "Confusing general term with specific type of meristem"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 1 (Lateral meristem), as it is responsible for the increase in girth of a plant's stem. The reasoning provided by the author is accurate and aligns with standard botanical knowledge.",
+      "sources": [
+        {
+          "document": "ncert/9/science/iesc103.pdf",
+          "ordinal": 3,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 3: Tissues in Action",
+            "3.1 Why are Plant and Animal Tissues Different?",
+            "3.2.2 Lateral meristem — How do plants grow in girth?"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc103.pdf",
+          "ordinal": 4,
+          "pageStart": 4,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 3: Tissues in Action",
+            "3.1 Why are Plant and Animal Tissues Different?",
+            "3.2.3 Intercalary meristem — How do plants grow after",
+            "being cut?"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc103.pdf",
+          "ordinal": 5,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 3: Tissues in Action",
+            "3.1 Why are Plant and Animal Tissues Different?",
+            "3.2.4 Permanent tissues"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc103.pdf",
+          "ordinal": 6,
+          "pageStart": 5,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 3: Tissues in Action",
+            "3.1 Why are Plant and Animal Tissues Different?",
+            "3.2.4 Permanent tissues"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-19T15:49:29.293Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "Which of the following is a function of epithelial tissue?",
+      "choices": [
+        "Provides strength and support",
+        "Helps in the transport of nutrients",
+        "Helps in the rapid diffusion of liquids and gases",
+        "Helps in the contraction of muscles"
+      ],
+      "answerIndex": 2,
+      "solution": "Epithelial tissue is specialized for the rapid diffusion of liquids and gases due to its thin and tightly packed cells. Connective tissue provides strength and support, blood transports nutrients, and muscular tissue enables contraction. The function of rapid diffusion is unique to epithelial tissue.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा एपिथेलियम ऊतक का कार्य है?",
+          "choices": [
+            "प्रबलता एवं समर्थन प्रदान करता है",
+            "पोषक तत्वों के परिवहन में सहायता करता है",
+            "तरल पदार्थों एवं गैसों के तेज विसरण में सहायता करता है",
+            "मांसपेशियों के संकुचन में सहायता करता है"
+          ],
+          "solution": "एपिथेलियम ऊतक के पतले एवं घनी व्यवस्थित कोशिकाओं के कारण यह तरल पदार्थों एवं गैसों के तेज विसरण के लिए विशेषित होता है। संयोजी ऊतक प्रबलता एवं समर्थन प्रदान करता है, रक्त पोषक तत्वों के परिवहन में सहायता करता है, एवं मांसपेशी ऊतक संकुचन के लिए उत्तरदायी होता है। तेज विसरण का कार्य एपिथेलियम ऊतक के लिए विशिष्ट होता है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi medical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी एपिथेलियल ऊतीचे कार्य कोणते आहे?",
+          "choices": [
+            "शक्ती आणि समर्थन पुरवते",
+            "पोषक द्रव्यांच्या परिवहनात मदत करते",
+            "तरल आणि वायूंच्या त्वरित विसरणात मदत करते",
+            "मांसपेशींच्या संकुचनात मदत करते"
+          ],
+          "solution": "एपिथेलियल ऊती त्याच्या थरलेल्या आणि घटक विसरणासाठी विशेषीकृत आहे. आबादी ऊती शक्ती आणि समर्थन पुरवते, रक्त पोषक द्रव्यांच्या परिवहनात मदत करते, आणि मांसपेशी ऊती संकुचनाच्या कार्यासाठी जबाबदार आहे. तरल आणि वायूंच्या त्वरित विसरणाचे कार्य एपिथेलियल ऊतीसाठी विशिष्ट आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for biological concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the function of connective tissue with epithelial tissue",
+        "Confuses the function of blood with epithelial tissue",
+        null,
+        "Confuses the function of muscular tissue with epithelial tissue"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 2, as epithelial tissue is indeed involved in the rapid diffusion of liquids and gases. The other options correspond to functions of connective and muscular tissues, which are correctly identified as misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/9/science/iesc103.pdf",
+          "ordinal": 11,
+          "pageStart": 8,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 3: Tissues in Action",
+            "3.3 Animal Tissues",
+            "3.3.2 How are various parts",
+            "connected in our body?"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc103.pdf",
+          "ordinal": 12,
+          "pageStart": 9,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 3: Tissues in Action",
+            "3.3 Animal Tissues",
+            "3.3.2 How are various parts",
+            "connected in our body?"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc103.pdf",
+          "ordinal": 13,
+          "pageStart": 10,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 3: Tissues in Action",
+            "3.3 Animal Tissues",
+            "3.3.2 How are various parts",
+            "connected in our body?"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc103.pdf",
+          "ordinal": 14,
+          "pageStart": 11,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 3: Tissues in Action",
+            "3.3 Animal Tissues",
+            "3.3.2 How are various parts",
+            "connected in our body?"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-19T15:49:29.293Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "Why does a fresh twig bend but a dry twig break?",
+      "choices": [
+        "Due to the presence of parenchyma tissue",
+        "Due to the presence of collenchyma tissue",
+        "Due to the presence of sclerenchyma tissue",
+        "Due to the presence of meristematic tissue"
+      ],
+      "answerIndex": 1,
+      "solution": "Collenchyma tissue contains living cells with thickened corners that provide flexibility, allowing a fresh twig to bend. Sclerenchyma tissue, which is rigid, and parenchyma tissue, which is more for storage, do not offer the same flexibility. Meristematic tissue is involved in growth, not structural support. Therefore, the presence of collenchyma tissue explains why a fresh twig bends instead of breaking.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक ताजा डाल क्यों मुड़ जाती है लेकिन सूखी डाल टूट जाती है?",
+          "choices": [
+            "पैरेन्काइमा ऊतक की उपस्थिति के कारण",
+            "कोलेन्काइमा ऊतक की उपस्थिति के कारण",
+            "स्क्लेरेन्काइमा ऊतक की उपस्थिति के कारण",
+            "मेरिस्टेमेटिक ऊतक की उपस्थिति के कारण"
+          ],
+          "solution": "कोलेन्काइमा ऊतक में जीवित कोशिकाएं होती हैं जिनके कोने मोटे होते हैं जो लचीलापन प्रदान करते हैं, जिससे एक ताजा डाल मुड़ सकती है। स्क्लेरेन्काइमा ऊतक, जो कि कठोर होता है, और पैरेन्काइमा ऊतक, जो अधिकतर भंडारण के लिए होता है, एक ही लचीलापन प्रदान नहीं करते। मेरिस्टेमेटिक ऊतक वृद्धि में लगा रहता है, न कि संरचनात्मक समर्थन में। इसलिए, कोलेन्काइमा ऊतक की उपस्थिति एक ताजा डाल के टूटने के बजाय मुड़ने की व्याख्या करती है।",
+          "imageAlt": "एक पौधे की कोशिका का चित्र जिसमें चिह्नित संरचनाएं हैं: कोशिका भित्ति, कोशिका झिल्ली, केंद्रक, रिक्तिका, क्लोरोप्लास्ट और साइटोप्लाज्म।",
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate biological terminology as taught in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एक ताजा डांबा का तोड़तो आणि शुष्क डांबा तोडतो का कारण काय आहे?",
+          "choices": [
+            "पॅरेन्काइमा ऊती असल्यामुळे",
+            "कॉलेन्काइमा ऊती असल्यामुळे",
+            "स्क्लेरेन्काइमा ऊती असल्यामुळे",
+            "मेरिस्टेमॅटिक ऊती असल्यामुळे"
+          ],
+          "solution": "कॉलेन्काइमा ऊतीमध्ये जीवित कोशिका असतात ज्यांच्या कोनांमध्ये मजबूत जागा असतात जी लचकटपणा प्रदान करतात, ज्यामुळे ताजा डांबा वाकतो. स्क्लेरेन्काइमा ऊती, जी खूप खुली असते, आणि पॅरेन्काइमा ऊती, जी सामान्यतः संचयासाठी असते, त्यांच्याकडे त्याच लचकटपणा नसतो. मेरिस्टेमॅटिक ऊती वाढीशी संबंधित असतात, नैसर्गिक समर्थनाशी नाही. त्यामुळे, कॉलेन्काइमा ऊतीच्या अस्तित्वामुळे ताजा डांबा तोडला जातो आणि तोडला जातो याचे स्पष्टीकरण देता येते.",
+          "imageAlt": "एक वनस्पती कोशिका चित्रामध्ये लेबल केलेले संरचना: कोशिका भित्ती, कोशिका झिल्ली, न्यूक्लियस, वॅक्यूओल, क्लोरोप्लास्ट आणि साइटोप्लाज्म.",
+          "critique": "The Marathi translation is accurate, maintains the original meaning, and uses appropriate technical terms as used in Marathi textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": "A diagram of a plant cell with labeled structures: cell wall, cell membrane, nucleus, vacuole, chloroplast, and cytoplasm.",
+      "figure": {
+        "kind": "diagram",
+        "spec": {
+          "parts": [
+            {
+              "part": "plantCell",
+              "x": 30,
+              "y": 30,
+              "size": 20,
+              "labels": [
+                "cellWall",
+                "membrane",
+                "nucleus",
+                "vacuole",
+                "chloroplast",
+                "cytoplasm"
+              ],
+              "text": {
+                "cellWall": "cellWall",
+                "membrane": "membrane",
+                "nucleus": "nucleus",
+                "vacuole": "vacuole",
+                "chloroplast": "chloroplast",
+                "cytoplasm": "cytoplasm"
+              }
+            }
+          ],
+          "arrows": [],
+          "texts": []
+        },
+        "labels": {
+          "cellWall": {
+            "en": "cell wall",
+            "hi": "कोशिका भित्ति",
+            "mr": "कोशिका भित्ती"
+          },
+          "membrane": {
+            "en": "cell membrane",
+            "hi": "कोशिका झिल्ली",
+            "mr": "कोशिका झिल्ली"
+          },
+          "nucleus": {
+            "en": "nucleus",
+            "hi": "केंद्रक",
+            "mr": "न्यूक्लियस"
+          },
+          "vacuole": {
+            "en": "vacuole",
+            "hi": "रिक्तिका",
+            "mr": "वॅक्यूओल"
+          },
+          "chloroplast": {
+            "en": "chloroplast",
+            "hi": "क्लोरोप्लास्ट",
+            "mr": "क्लोरोप्लास्ट"
+          },
+          "cytoplasm": {
+            "en": "cytoplasm",
+            "hi": "साइटोप्लाज्म",
+            "mr": "साइटोप्लाज्म"
+          }
+        }
+      },
+      "needsFigure": true,
+      "distractorReason": [
+        "Describes the function of parenchyma in storage",
+        null,
+        "Describes the function of sclerenchyma in rigidity",
+        "Misunderstands the role of meristematic tissue in growth"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies collenchyma as the tissue responsible for flexibility in fresh twigs. The reasoning for the other options aligns with common misconceptions about the functions of parenchyma, sclerenchyma, and meristematic tissues.",
+      "sources": [
+        {
+          "document": "ncert/9/science/iesc103.pdf",
+          "ordinal": 3,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 3: Tissues in Action",
+            "3.1 Why are Plant and Animal Tissues Different?",
+            "3.2.2 Lateral meristem — How do plants grow in girth?"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc103.pdf",
+          "ordinal": 4,
+          "pageStart": 4,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 3: Tissues in Action",
+            "3.1 Why are Plant and Animal Tissues Different?",
+            "3.2.3 Intercalary meristem — How do plants grow after",
+            "being cut?"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc103.pdf",
+          "ordinal": 5,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 3: Tissues in Action",
+            "3.1 Why are Plant and Animal Tissues Different?",
+            "3.2.4 Permanent tissues"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc103.pdf",
+          "ordinal": 6,
+          "pageStart": 5,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 3: Tissues in Action",
+            "3.1 Why are Plant and Animal Tissues Different?",
+            "3.2.4 Permanent tissues"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-19T15:49:29.293Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Which of the following tissues is most likely to have stem cells?",
+      "choices": [
+        "Bone",
+        "Cartilage",
+        "Ligament",
+        "Tendon"
+      ],
+      "answerIndex": 0,
+      "solution": "Bone is the most likely tissue to have stem cells because it has the ability to regenerate and repair itself, which requires the presence of stem cells. Cartilage, ligament, and tendon have limited regenerative capacity and are less likely to contain stem cells. Bone's structure and function support the presence of these cells, unlike the other tissues listed.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन सा ऊतक सबसे अधिक संभावना है कि स्टेम सेल रखता है?",
+          "choices": [
+            "अस्थि",
+            "कॉर्टिलेज",
+            "संयोजी ऊतक",
+            "टेंडन"
+          ],
+          "solution": "अस्थि सबसे अधिक संभावना है कि स्टेम सेल रखता है क्योंकि इसके पुनर्जीवन और ठीक होने की क्षमता होती है, जिसके लिए स्टेम सेल की आवश्यकता होती है। कॉर्टिलेज, संयोजी ऊतक और टेंडन के पुनर्जीवन की क्षमता सीमित होती है और इनमें स्टेम सेल होने की संभावना कम होती है। अस्थि की संरचना और कार्य स्टेम सेल की उपस्थिति के समर्थन में होती है, जबकि अन्य ऊतकों में ऐसा नहीं होता।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriately translated, and the structure matches the English version.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणता ऊती अधिक संभाव्यतेने स्टेम सेल्स असेल?",
+          "choices": [
+            "हाड",
+            "कॉर्टिलेज",
+            "लिगामेंट",
+            "टेंडन"
+          ],
+          "solution": "हाड हा अधिक संभाव्यतेने ऊती असेल कारण त्याच्याकडे पुनर्जन्म आणि त्वरित दुरुस्तीची क्षमता असते, जी स्टेम सेल्स च्या उपस्थितीवर अवलंबून असते. कॉर्टिलेज, लिगामेंट आणि टेंडन ची पुनर्जन्म क्षमता मर्यादित असते आणि त्यांमध्ये स्टेम सेल्स असण्याची शक्यता कमी असते. हाड ची संरचना आणि कार्य स्टेम सेल्स च्या उपस्थितीला समर्थन करते, जे इतर ऊती च्या तुलनेत असते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi medical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses bone with cartilage",
+        "Confuses ligament with bone",
+        "Confuses tendon with bone"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 0 (Bone). The reasoning aligns with biological knowledge that bone tissue contains stem cells, particularly in the bone marrow. The author's explanation is sound, and the misconceptions listed for the other options are plausible for students.",
+      "sources": [
+        {
+          "document": "ncert/9/science/iesc103.pdf",
+          "ordinal": 11,
+          "pageStart": 8,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 3: Tissues in Action",
+            "3.3 Animal Tissues",
+            "3.3.2 How are various parts",
+            "connected in our body?"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc103.pdf",
+          "ordinal": 12,
+          "pageStart": 9,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 3: Tissues in Action",
+            "3.3 Animal Tissues",
+            "3.3.2 How are various parts",
+            "connected in our body?"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc103.pdf",
+          "ordinal": 13,
+          "pageStart": 10,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 3: Tissues in Action",
+            "3.3 Animal Tissues",
+            "3.3.2 How are various parts",
+            "connected in our body?"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc103.pdf",
+          "ordinal": 14,
+          "pageStart": 11,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 3: Tissues in Action",
+            "3.3 Animal Tissues",
+            "3.3.2 How are various parts",
+            "connected in our body?"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-19T15:49:29.293Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Why do meristematic cells lack vacuoles?",
+      "choices": [
+        "To allow for rapid cell division",
+        "To store more food",
+        "To prevent water loss",
+        "To increase flexibility"
+      ],
+      "answerIndex": 0,
+      "solution": "Meristematic cells lack vacuoles to allow for rapid cell division because vacuoles would take up space and hinder the cell's ability to divide quickly. Storing more food, preventing water loss, and increasing flexibility are not primary functions related to the structural needs of cells undergoing rapid division.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "मेरिस्टेमेटिक कोशिकाओं में वैक्यूओल्स क्यों नहीं होते?",
+          "choices": [
+            "तेजी से कोशिका विभाजन के लिए",
+            "अधिक भोजन संग्रहित करने के लिए",
+            "जल हानि को रोकने के लिए",
+            "लचीलापन बढ़ाने के लिए"
+          ],
+          "solution": "मेरिस्टेमेटिक कोशिकाओं में वैक्यूओल्स नहीं होते क्योंकि वे तेजी से कोशिका विभाजन के लिए आवश्यक होते हैं क्योंकि वैक्यूओल्स जगह घेरते हैं और कोशिका के तेज विभाजन की क्षमता को बाधित करते हैं। अधिक भोजन संग्रहित करना, जल हानि को रोकना और लचीलापन बढ़ाना कोशिका विभाजन के संरचनात्मक आवश्यकताओं से संबंधित नहीं हैं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, technical terms are appropriate for Hindi-medium curriculum, and the logic of the question and solution is preserved.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "मेरिस्टेमॅटिक कोशिका वैक्यूओल का अभाव का क्यों होता है?",
+          "choices": [
+            "तेजी से कोशिका विभाजन के लिए",
+            "अधिक भोजन संग्रहित करने के लिए",
+            "जल हानि को रोकने के लिए",
+            "लचीलापन बढ़ाने के लिए"
+          ],
+          "solution": "मेरिस्टेमॅटिक कोशिका वैक्यूओल का अभाव तेजी से कोशिका विभाजन के लिए होता है क्योंकि वैक्यूओल स्थान ले लेते हैं और कोशिका के तेजी से विभाजित होने की क्षमता को बाधित कर सकते हैं. अधिक भोजन संग्रहित करना, जल हानि को रोकना और लचीलापन बढ़ाना तेजी से विभाजित हो रही कोशिकाओं के संरचनात्मक आवश्यकताओं से संबंधित नहीं हैं.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for biological concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses the role of vacuoles in storage",
+        "Misunderstands the role of vacuoles in water regulation",
+        "Misinterprets the function of vacuoles in flexibility"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 0, as meristematic cells lack vacuoles to support rapid cell division. The reasoning in the author's solution is sound and aligns with biological understanding.",
+      "sources": [
+        {
+          "document": "ncert/9/science/iesc103.pdf",
+          "ordinal": 3,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 3: Tissues in Action",
+            "3.1 Why are Plant and Animal Tissues Different?",
+            "3.2.2 Lateral meristem — How do plants grow in girth?"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc103.pdf",
+          "ordinal": 4,
+          "pageStart": 4,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 3: Tissues in Action",
+            "3.1 Why are Plant and Animal Tissues Different?",
+            "3.2.3 Intercalary meristem — How do plants grow after",
+            "being cut?"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc103.pdf",
+          "ordinal": 5,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 3: Tissues in Action",
+            "3.1 Why are Plant and Animal Tissues Different?",
+            "3.2.4 Permanent tissues"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc103.pdf",
+          "ordinal": 6,
+          "pageStart": 5,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 3: Tissues in Action",
+            "3.1 Why are Plant and Animal Tissues Different?",
+            "3.2.4 Permanent tissues"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-19T15:49:29.293Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
     }
   ]
 }

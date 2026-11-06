@@ -220,6 +220,632 @@
       "generatedAt": "2026-10-28T05:39:18.904Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "Which unit is used to measure the weight of a sugar sachet?",
+      "choices": [
+        "Kilogram",
+        "Gram",
+        "Milligram",
+        "Tonnes"
+      ],
+      "answerIndex": 1,
+      "solution": "Gram is the correct unit because it is used to measure the weight of small objects like a sugar sachet. Milligram is too small for such an object, kilogram is too large, and tonnes are used for extremely heavy items. Therefore, the correct answer is 'Gram'.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक चीनी के पैकेट के भार को मापने के लिए कौन सी इकाई प्रयोग की जाती है?",
+          "choices": [
+            "किलोग्राम",
+            "ग्राम",
+            "मिलीग्राम",
+            "टन"
+          ],
+          "solution": "ग्राम सही इकाई है क्योंकि इसका प्रयोग छोटी वस्तुओं जैसे एक चीनी के पैकेट के भार को मापने के लिए किया जाता है। मिलीग्राम इतना छोटा होता है कि ऐसी वस्तु के लिए उपयुक्त नहीं होता है। किलोग्राम बहुत बड़ा होता है और टन अत्यधिक भारी वस्तुओं के लिए उपयोग किया जाता है। अतः सही उत्तर 'ग्राम' है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses standard Indian educational terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका चीनीच्या सॅकेटच्या वजनाचे मोजण्यासाठी कोणते एकक वापरले जाते?",
+          "choices": [
+            "किलोग्राम",
+            "ग्रॅम",
+            "मिलीग्रॅम",
+            "टन"
+          ],
+          "solution": "ग्रॅम हे योग्य एकक आहे कारण ते छोट्या वस्तूंच्या वजनाचे मोजण्यासाठी वापरले जाते जसे की एका चीनीच्या सॅकेट. मिलीग्रॅम खूप लहान आहे आणि अशा वस्तूसाठी अयोग्य आहे, किलोग्रॅम खूप मोठे आहे आणि टन खूप भारी वस्तूंसाठी वापरले जातात. म्हणूनच, योग्य उत्तर 'ग्रॅम' आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for units of measurement.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses grams with kilograms",
+        null,
+        "Thinks milligrams are used for everyday items",
+        "Uses the wrong unit for heavy objects"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The question is clear and the correct answer is 'Gram' (option 1). The reasoning provided by the author is accurate and aligns with the typical understanding of units of weight for everyday objects like a sugar sachet.",
+      "sources": [
+        {
+          "document": "ncert/5/mathematics/eemm108.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 8: Weight and Capacity",
+            "Check! Check!"
+          ]
+        },
+        {
+          "document": "ncert/5/mathematics/eemm108.pdf",
+          "ordinal": 1,
+          "pageStart": 3,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 8: Weight and Capacity",
+            "Check! Check!"
+          ]
+        },
+        {
+          "document": "ncert/5/mathematics/eemm108.pdf",
+          "ordinal": 2,
+          "pageStart": 6,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 8: Weight and Capacity",
+            "Check! Check!"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-23T00:36:21.915Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "How many milligrams are there in 1 gram?",
+      "choices": [
+        "10",
+        "100",
+        "1,000",
+        "10,000"
+      ],
+      "answerIndex": 2,
+      "solution": "The correct answer is 1,000 because the prefix 'milli-' means one-thousandth, so 1 gram is equal to 1,000 milligrams. The other options are too small to represent the relationship between grams and milligrams. 10 and 100 do not account for the full conversion factor, and 10,000 is an overestimation.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "1 ग्राम में कितने मिलीग्राम होते हैं?",
+          "choices": [
+            "10",
+            "100",
+            "1,000",
+            "10,000"
+          ],
+          "solution": "सही उत्तर 1,000 है क्योंकि प्रत्यय 'मिली-' एक हजारवां भाग का अर्थ रखता है, इसलिए 1 ग्राम 1,000 मिलीग्राम के बराबर होता है। अन्य विकल्प ग्राम और मिलीग्राम के बीच संबंध को नहीं दर्शाते हैं। 10 और 100 पूर्ण रूप से परिवर्तन कारक को ध्यान में नहीं रखते हैं और 10,000 एक अतिरिक्त अनुमान है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate terminology as found in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "1 ग्रॅममध्ये किती मिलीग्रॅम असतात?",
+          "choices": [
+            "10",
+            "100",
+            "1,000",
+            "10,000"
+          ],
+          "solution": "बरोबर उत्तर 1,000 आहे कारण प्रत्यय 'मिली-' म्हणजे एक-हजारवा भाग आहे, त्यामुळे 1 ग्रॅम 1,000 मिलीग्रॅम बरोबर असतो. इतर उत्तरे ग्रॅम आणि मिलीग्रॅमच्या संबंधाचा अंदाज घेण्यासाठी खूप लहान आहेत. 10 आणि 100 हे पूर्ण परिवर्तन घटक लक्षात घेत नाहीत, आणि 10,000 हे एक अतिवाढ आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate use of Marathi technical terms for units of measurement.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Thinks 1 gram is 10 milligrams",
+        "Confuses the conversion factor",
+        null,
+        "Uses a larger number than correct"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The question is straightforward and tests basic unit conversion knowledge. The correct answer is 1,000 milligrams in 1 gram, which is a standard conversion. The distractors reflect common misconceptions or errors in understanding the metric system.",
+      "sources": [
+        {
+          "document": "ncert/5/mathematics/eemm108.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 8: Weight and Capacity",
+            "Check! Check!"
+          ]
+        },
+        {
+          "document": "ncert/5/mathematics/eemm108.pdf",
+          "ordinal": 1,
+          "pageStart": 3,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 8: Weight and Capacity",
+            "Check! Check!"
+          ]
+        },
+        {
+          "document": "ncert/5/mathematics/eemm108.pdf",
+          "ordinal": 2,
+          "pageStart": 6,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 8: Weight and Capacity",
+            "Check! Check!"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-23T00:36:21.915Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of the following is the correct way to write 3 kg 500 g in grams?",
+      "choices": [
+        "3,500 g",
+        "3,050 g",
+        "350 g",
+        "35 g"
+      ],
+      "answerIndex": 0,
+      "solution": "The correct way to write 3 kg 500 g in grams is 3,500 g. 1 kg = 1,000 g, so 3 kg = 3,000 g. Adding 500 g gives 3,500 g. The option '3,050 g' incorrectly places the 500 g in the wrong place value. '350 g' and '35 g' are far too small to represent 3 kg 500 g.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा 3 किग्रा 500 ग्राम को ग्राम में लिखने का सही तरीका है?",
+          "choices": [
+            "3,500 ग्राम",
+            "3,050 ग्राम",
+            "350 ग्राम",
+            "35 ग्राम"
+          ],
+          "solution": "3 किग्रा 500 ग्राम को ग्राम में लिखने का सही तरीका 3,500 ग्राम है। 1 किग्रा = 1,000 ग्राम, इसलिए 3 किग्रा = 3,000 ग्राम। 500 ग्राम जोड़ने पर 3,500 ग्राम प्राप्त होता है। विकल्प '3,050 ग्राम' गलत अंकगणितीय स्थिति में 500 ग्राम को रखता है। '350 ग्राम' और '35 ग्राम' 3 किग्रा 500 ग्राम का प्रतिनिधित्व करने के लिए बहुत छोटे हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Hindi terminology for units of measurement.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणता 3 किलोग्रॅम 500 ग्रॅम लिहिण्याचा बरोबर मार्ग आहे?",
+          "choices": [
+            "3,500 ग्रॅम",
+            "3,050 ग्रॅम",
+            "350 ग्रॅम",
+            "35 ग्रॅम"
+          ],
+          "solution": "3 किलोग्रॅम 500 ग्रॅम लिहिण्याचा बरोबर मार्ग 3,500 ग्रॅम आहे. 1 किलोग्रॅम = 1,000 ग्रॅम, म्हणून 3 किलोग्रॅम = 3,000 ग्रॅम. 500 ग्रॅम जोडल्याने 3,500 ग्रॅम मिळते. '3,050 ग्रॅम' ची चुकीची स्थान मूल्य ठेवली आहे. '350 ग्रॅम' आणि '35 ग्रॅम' 3 किलोग्रॅम 500 ग्रॅम दर्शविण्यासाठी खूपच लहान आहेत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for units of measurement.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "confuses 3 kg 500 g with 3,050 g",
+        "does not understand the conversion from kg to g",
+        "does not understand the conversion from kg to g"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct. 3 kg is 3,000 g, and adding 500 g gives 3,500 g. The other options reflect common misconceptions about unit conversion.",
+      "sources": [
+        {
+          "document": "ncert/5/mathematics/eemm108.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 8: Weight and Capacity",
+            "Check! Check!"
+          ]
+        },
+        {
+          "document": "ncert/5/mathematics/eemm108.pdf",
+          "ordinal": 1,
+          "pageStart": 3,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 8: Weight and Capacity",
+            "Check! Check!"
+          ]
+        },
+        {
+          "document": "ncert/5/mathematics/eemm108.pdf",
+          "ordinal": 2,
+          "pageStart": 6,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 8: Weight and Capacity",
+            "Check! Check!"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-23T00:36:21.915Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "How many full glasses can the juice vendor serve if he has 5 l of orange juice and each glass can hold 250 ml?",
+      "choices": [
+        "20",
+        "15",
+        "10",
+        "25"
+      ],
+      "answerIndex": 0,
+      "solution": "Convert 5 l to ml: 5 l = 5,000 ml. Divide the total amount by the capacity of one glass: 5,000 ÷ 250 = 20. The other options result from incorrect conversion or division.",
+      "checkExpr": "5000/250",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "अगर रस विक्रेता के पास 5 लीटर अंगूर का रस है और प्रत्येक ग्लास 250 मिलीलीटर धारण कर सकता है, तो वह कितने पूर्ण ग्लास सेव कर सकता है?",
+          "choices": [
+            "20",
+            "15",
+            "10",
+            "25"
+          ],
+          "solution": "5 लीटर को मिलीलीटर में बदलें: 5 लीटर = 5,000 मिलीलीटर। कुल मात्रा को एक ग्लास की क्षमता से विभाजित करें: 5,000 ÷ 250 = 20। अन्य विकल्प गलत रूपांतरण या विभाजन के कारण होते हैं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, technical terms (like 'लीटर', 'मिलीलीटर') are standard in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "5 लीटर आंबा रस असलेल्या रस विक्रेत्याने किती फुल ग्लासेस सेव करू शकतो जर एका ग्लासमध्ये 250 मिली रस भरता येईल?",
+          "choices": [
+            "20",
+            "15",
+            "10",
+            "25"
+          ],
+          "solution": "5 लीटर ला मिलीमध्ये बदला: 5 लीटर = 5,000 मिली. एका ग्लासच्या क्षमतेने एकूण रक्कम भागा: 5,000 ÷ 250 = 20. इतर विकल्प चुकीच्या रूपांतराने किंवा भागाकाराने मिळतात.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate terminology. The correct answer (20) is in the same position as in the English version. All distractors remain incorrect.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "divides 5,000 by 300 instead of 250",
+        "multiplies 5 l by 3 instead of dividing",
+        "divides 5,000 by 200 instead of 250"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct. The conversion from liters to milliliters is accurate, and dividing 5,000 ml by 250 ml per glass gives 20. The author's reasoning for the distractors is plausible and reflects common student errors.",
+      "sources": [
+        {
+          "document": "ncert/5/mathematics/eemm108.pdf",
+          "ordinal": 6,
+          "pageStart": 14,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 8: Weight and Capacity",
+            "Check! Check!"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-23T00:36:21.915Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "If the king donates 800 kg of wheat grain, which is 10 times his weight, what is his current weight?",
+      "choices": [
+        "80 kg",
+        "800 kg",
+        "8 kg",
+        "8,000 kg"
+      ],
+      "answerIndex": 0,
+      "solution": "If the king donates 800 kg of wheat, which is 10 times his weight, then his weight is 800 kg divided by 10, which equals 80 kg. The option 800 kg is the amount donated, not his weight. The option 8 kg is too small and would mean the wheat is 100 times his weight. The option 8,000 kg is too large and would mean the wheat is only 1/10 of his weight.",
+      "checkExpr": "800/10",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि राजा 800 किग्रा गेहूं के दान करता है, जो उसके वजन का 10 गुना है, तो उसका वर्तमान वजन क्या है?",
+          "choices": [
+            "80 किग्रा",
+            "800 किग्रा",
+            "8 किग्रा",
+            "8,000 किग्रा"
+          ],
+          "solution": "यदि राजा 800 किग्रा गेहूं दान करता है, जो उसके वजन का 10 गुना है, तो उसका वजन 800 किग्रा को 10 से विभाजित करने पर 80 किग्रा होता है। विकल्प 800 किग्रा दान की गई मात्रा है, न कि उसका वजन। विकल्प 8 किग्रा बहुत छोटा है और इसका अर्थ होगा कि गेहूं उसके वजन का 100 गुना है। विकल्प 8,000 किग्रा बहुत बड़ा है और इसका अर्थ होगा कि गेहूं उसके वजन का केवल 1/10 है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology. The correct answer (option 1) is in the same position as in the English version. All distractors remain incorrect in the Hindi version.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "राजाने 800 किलोग्रॅम गहू दान केला, जो त्याच्या वजनाच्या 10 पट आहे, तर त्याचे वजन किती आहे?",
+          "choices": [
+            "80 किलोग्रॅम",
+            "800 किलोग्रॅम",
+            "8 किलोग्रॅम",
+            "8,000 किलोग्रॅम"
+          ],
+          "solution": "राजाने 800 किलोग्रॅम गहू दान केला, जो त्याच्या वजनाच्या 10 पट आहे, म्हणून त्याचे वजन 800 किलोग्रॅम भागिले 10, जे 80 किलोग्रॅम आहे. 800 किलोग्रॅम दान केलेल्या रकमेचे वजन नाही. 8 किलोग्रॅम खूप लहान आहे आणि गहू त्याच्या 100 पट असेल. 8,000 किलोग्रॅम खूप मोठा आहे आणि गहू त्याच्या 1/10 असेल.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi technical terms. The solution and options are correctly aligned with the English version.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Multiplies instead of divides",
+        "Uses the wrong value",
+        "Confuses the units"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct and logically follows from the given information. The king's weight is 800 kg divided by 10, which equals 80 kg. The other options represent common errors such as multiplication instead of division, using the wrong value, and unit confusion.",
+      "sources": [
+        {
+          "document": "ncert/5/mathematics/eemm108.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 8: Weight and Capacity",
+            "Check! Check!"
+          ]
+        },
+        {
+          "document": "ncert/5/mathematics/eemm108.pdf",
+          "ordinal": 1,
+          "pageStart": 3,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 8: Weight and Capacity",
+            "Check! Check!"
+          ]
+        },
+        {
+          "document": "ncert/5/mathematics/eemm108.pdf",
+          "ordinal": 2,
+          "pageStart": 6,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 8: Weight and Capacity",
+            "Check! Check!"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-23T00:36:21.915Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "A bottle of milk is poured equally into 8 glasses, leaving 120 ml of milk in the bottle. If each glass has a capacity of 360 ml, what is the total capacity of 8 glasses?",
+      "choices": [
+        "2880 ml",
+        "3000 ml",
+        "2920 ml",
+        "2800 ml"
+      ],
+      "answerIndex": 0,
+      "solution": "Each glass has 360 ml, so 8 × 360 ml = 2,880 ml. The total capacity of the 8 glasses is 2,880 ml. The other options are incorrect due to calculation errors or misunderstanding the question.",
+      "checkExpr": "8*360",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक दूध की बोतल को 8 ग्लास में समान रूप से डाला जाता है, बोतल में 120 मिलीलीटर दूध बच जाता है। यदि प्रत्येक ग्लास की क्षमता 360 मिलीलीटर है, तो 8 ग्लास की कुल क्षमता क्या है?",
+          "choices": [
+            "2880 मिलीलीटर",
+            "3000 मिलीलीटर",
+            "2920 मिलीलीटर",
+            "2800 मिलीलीटर"
+          ],
+          "solution": "प्रत्येक ग्लास में 360 मिलीलीटर है, अतः 8 × 360 मिलीलीटर = 2,880 मिलीलीटर। 8 ग्लास की कुल क्षमता 2,880 मिलीलीटर है। अन्य विकल्प गणना त्रुटि या प्रश्न के अंतर्दृष्टि के अभाव में गलत हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi technical terms.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका दुधाच्या बाटलीतून 8 ग्लासमध्ये दुध बरोबर भरले जाते, बाटलीत 120 मिली दुध उरते. जर प्रत्येक ग्लासची क्षमता 360 मिली असेल, तर 8 ग्लासची एकूण क्षमता किती असेल?",
+          "choices": [
+            "2880 मिली",
+            "3000 मिली",
+            "2920 मिली",
+            "2800 मिली"
+          ],
+          "solution": "प्रत्येक ग्लासमध्ये 360 मिली असल्याने, 8 × 360 मिली = 2,880 मिली. 8 ग्लासची एकूण क्षमता 2,880 मिली आहे. इतर विकल्प गणना चूक किंवा प्रश्नाच्या अस्पष्टतेमुळे चुकीचे आहेत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms for capacity and measurement.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "adds 120 ml to the total by mistake",
+        "calculates 8 × 375 ml instead of 360 ml",
+        "multiplies 8 by 350 ml instead of 360 ml"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 2880 ml (8 × 360 ml). The other options reflect common calculation errors, which are valid misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/5/mathematics/eemm108.pdf",
+          "ordinal": 6,
+          "pageStart": 14,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 8: Weight and Capacity",
+            "Check! Check!"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-23T00:36:21.915Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "If 1 l of milk costs ₹40, how much will 3 l milk cost?",
+      "choices": [
+        "₹120",
+        "₹100",
+        "₹80",
+        "₹140"
+      ],
+      "answerIndex": 0,
+      "solution": "1 l costs ₹40, so 3 l costs 3 × ₹40 = ₹120. The other options are incorrect because they either multiply incorrectly or misinterpret the cost per liter.",
+      "checkExpr": "3*40",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि 1 लीटर दूध का मूल्य ₹40 है, तो 3 लीटर दूध का मूल्य कितना होगा?",
+          "choices": [
+            "₹120",
+            "₹100",
+            "₹80",
+            "₹140"
+          ],
+          "solution": "1 लीटर का मूल्य ₹40 है, अतः 3 लीटर का मूल्य 3 × ₹40 = ₹120 होगा। अन्य विकल्प गलत हैं क्योंकि वे गलत तरीके से गुणा करते हैं या लीटर प्रति लागत को गलत तरीके से समझते हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate terminology. The structure and logic of the question and solution are preserved.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "1 लीटर दूधाची किंमत ₹40 आहे, तर 3 लीटर दूधाची किंमत किती होईल?",
+          "choices": [
+            "₹120",
+            "₹100",
+            "₹80",
+            "₹140"
+          ],
+          "solution": "1 लीटर ची किंमत ₹40 आहे, म्हणून 3 लीटर ची किंमत 3 × ₹40 = ₹120. इतर विकल्प चुकीचे आहेत कारण ते गुणाकार चुकीचा करतात किंवा लीटर प्रति किंमत चुकीची व्याख्या करतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terms for units and mathematical operations.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "multiplies 2 l instead of 3 l",
+        "calculates 2 l × ₹40 instead of 3 l",
+        "adds ₹40 multiple times incorrectly"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is straightforward and the solution is correct. The reasoning for the distractors aligns with common misconceptions, such as miscalculating the quantity or performing incorrect arithmetic.",
+      "sources": [
+        {
+          "document": "ncert/5/mathematics/eemm108.pdf",
+          "ordinal": 6,
+          "pageStart": 14,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 8: Weight and Capacity",
+            "Check! Check!"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-23T00:36:21.915Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
     }
   ]
 }

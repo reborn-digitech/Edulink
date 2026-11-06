@@ -320,6 +320,203 @@
       "generatedAt": "2026-10-28T04:48:28.650Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the main reason the children wanted to have a class party?",
+      "choices": [
+        "To eat and have fun together",
+        "To learn about festivals",
+        "To practice singing",
+        "To play games"
+      ],
+      "answerIndex": 0,
+      "solution": "The main reason the children wanted to have a class party was to eat and have fun together, which is a natural and common motivation for such events. The other options, like learning about festivals, practicing singing, or playing games, are activities that might happen during a party but are not the primary purpose stated.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "बच्चों के वर्ग पार्टी करने की मुख्य वजह क्या है?",
+          "choices": [
+            "एक साथ खाना खाना और मजा करना",
+            "त्योहारों के बारे में सीखना",
+            "गाना अभ्यास करना",
+            "खेलना"
+          ],
+          "solution": "बच्चों के वर्ग पार्टी करने की मुख्य वजह एक साथ खाना खाना और मजा करना था, जो ऐसे कार्यक्रमों के लिए एक स्वाभाविक और सामान्य प्रेरणा है। अन्य विकल्प, जैसे त्योहारों के बारे में सीखना, गाना अभ्यास करना या खेलना, एक पार्टी के दौरान हो सकने वाली गतिविधियां हैं लेकिन इनमें से कोई भी उल्लिखित प्राथमिक उद्देश्य नहीं है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. All options are correctly translated and maintain their original intent. The correct answer remains option (1), and the distractors are still incorrect as in the original.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "मुलांना वर्ग उत्सव करायला का इच्छा झाली?",
+          "choices": [
+            "एकत्र खाऊन आनंद घेणे",
+            "उत्सवांबद्दल शिकणे",
+            "गाणे अभ्यास करणे",
+            "खेळणे"
+          ],
+          "solution": "मुलांना वर्ग उत्सव करायला इच्छा झाली कारण एकत्र खाऊन आनंद घेणे ही अशा कार्यक्रमांची प्राथमिक उद्दिष्टे आहे. उत्सवांबद्दल शिकणे, गाणे अभ्यास करणे किंवा खेळणे ही उत्सवादरम्यान होऊ शकणारी क्रियाकलाप आहेत परंतु त्यांचे मुख्य उद्दिष्ट नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, natural, and uses appropriate Marathi terminology for a textbook context.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Focuses on the activity but not the main reason",
+        "Focuses on learning about festivals, which is not the main reason",
+        "Focuses on singing, which is not the main reason"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 0, as it directly reflects the main reason stated in the passage. The other options are plausible activities but not the primary motivation for the party.",
+      "sources": [
+        {
+          "document": "ncert/4/environmental-studies/deap120.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 20: Eating Together",
+            "Class Party"
+          ]
+        },
+        {
+          "document": "ncert/4/environmental-studies/deap120.pdf",
+          "ordinal": 1,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 20: Eating Together",
+            "Celebrating Bihu"
+          ]
+        },
+        {
+          "document": "ncert/4/environmental-studies/deap120.pdf",
+          "ordinal": 2,
+          "pageStart": 4,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 20: Eating Together",
+            "Celebrating Bihu"
+          ]
+        }
+      ],
+      "edition": "2024 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-22T23:41:21.485Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the purpose of the list of food items displayed outside Didi Moni’s room?",
+      "choices": [
+        "To show the students the teacher's favorite dishes",
+        "To tell the students what they will eat on different days",
+        "To remind the students to bring their own food",
+        "To list the names of the students who bring food"
+      ],
+      "answerIndex": 1,
+      "solution": "The list of food items outside Didi Moni’s room indicates the meals scheduled for different days of the week. This matches the purpose of informing students about their daily meals. The other options do not align with the clear indication of meal schedules provided by the list.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "दीदी मोनी के कमरे के बाहर दिखाए गए खाद्य वस्तुओं की सूची का उद्देश्य क्या है?",
+          "choices": [
+            "छात्रों को अध्यापक के पसंदीदा व्यंजन दिखाना",
+            "छात्रों को विभिन्न दिनों पर खाए जाने वाले भोजन के बारे में बताना",
+            "छात्रों को अपना खाना लाने की याद दिलाना",
+            "उन छात्रों के नामों की सूची बनाना जो खाना लाते हैं"
+          ],
+          "solution": "दीदी मोनी के कमरे के बाहर खाद्य वस्तुओं की सूची विभिन्न सप्ताह के दिनों के लिए निर्धारित भोजन को दर्शाती है। इसका उद्देश्य छात्रों को अपने दैनिक भोजन के बारे में बताना है। अन्य विकल्प खाद्य सूची द्वारा प्रदत्त स्पष्ट भोजन के आदेश के साथ मेल नहीं खाते।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate terminology common in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "दीदी मोनीच्या खोलीबाहेर दाखवलेल्या खाद्य पदार्थांच्या यादीचा उद्देश काय आहे?",
+          "choices": [
+            "विद्यार्थ्यांना शिक्षकाचे आवडते डिशेस दाखवणे",
+            "विद्यार्थ्यांना विविध दिवसांवर त्यांना खाणार असलेल्या खाद्यांची माहिती देणे",
+            "विद्यार्थ्यांना आपले स्वतःचे खाद्य आणण्याची आठवण करून देणे",
+            "खाद्य आणणाऱ्या विद्यार्थ्यांच्या नावांची यादी देणे"
+          ],
+          "solution": "दीदी मोनीच्या खोलीबाहेर दाखवलेल्या खाद्य पदार्थांच्या यादीमधून आठवड्याच्या विविध दिवसांसाठी ठरलेल्या भोजनांची माहिती मिळते. हे विद्यार्थ्यांना त्यांच्या दैनिक भोजनांची माहिती देण्याच्या उद्देशाशी जुळते. इतर विकल्प यादीने दिलेल्या स्पष्ट भोजन वेळापत्रकाशी जुळत नाहीत.",
+          "imageAlt": null,
+          "critique": "The Marathi translation accurately reflects the original English question and maintains the same meaning, structure, and intent. Technical terms like 'भोजन' (meal) and 'यादी' (list) are appropriately used in a Marathi educational context.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Student thinks the list is about the teacher's personal preferences rather than the meal schedule",
+        null,
+        "Confuses the purpose of the list with the students' responsibility to bring food",
+        "assumes the list is for parents"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 1, as the passage explicitly states the list shows what students will eat on different days. The other options represent plausible misconceptions about the list's purpose.",
+      "sources": [
+        {
+          "document": "ncert/4/environmental-studies/deap120.pdf",
+          "ordinal": 3,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 20: Eating Together",
+            "Mid-day Meal"
+          ]
+        },
+        {
+          "document": "ncert/4/environmental-studies/deap120.pdf",
+          "ordinal": 4,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 20: Eating Together",
+            "Mid-day Meal"
+          ]
+        },
+        {
+          "document": "ncert/4/environmental-studies/deap120.pdf",
+          "ordinal": 5,
+          "pageStart": 8,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 20: Eating Together",
+            "Mid-day MMid-day MealMid-day Meal",
+            "EVERY CHILD’S RIGHT"
+          ]
+        }
+      ],
+      "edition": "2024 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-22T23:41:21.485Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
     }
   ]
 }

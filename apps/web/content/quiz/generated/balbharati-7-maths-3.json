@@ -404,6 +404,463 @@
       "generatedAt": "2026-11-01T21:15:56.591Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "Which number is neither a prime nor a composite number?",
+      "choices": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "answerIndex": 0,
+      "solution": "The number 1 is neither a prime nor a composite number. The other options are prime or composite numbers.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "कौन सी संख्या न तो अभाज्य संख्या है और न ही भाज्य संख्या है?",
+          "choices": [
+            "1",
+            "2",
+            "3",
+            "4"
+          ],
+          "solution": "संख्या 1 न तो अभाज्य संख्या है और न ही भाज्य संख्या है। अन्य विकल्प अभाज्य या भाज्य संख्याएँ हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard mathematical terminology used in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "कोणता संख्या अभाज्य नसतो आणि भाज्य नसतो?",
+          "choices": [
+            "1",
+            "2",
+            "3",
+            "4"
+          ],
+          "solution": "संख्या 1 अभाज्य नसतो आणि भाज्य नसतो. इतर विकल्प अभाज्य किंवा भाज्य संख्या आहेत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Chooses a prime number.",
+        "Chooses a prime number.",
+        "Chooses a composite number."
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-constructed and the solution is accurate. The correct answer is 1, which is neither prime nor composite. The distractors are appropriately chosen as prime or composite numbers.",
+      "sources": [
+        {
+          "document": "balbharati/7/mathematics/703020004.pdf",
+          "ordinal": 17,
+          "pageStart": 25,
+          "pageEnd": 26,
+          "headingPath": [
+            "3. HCF and LCM"
+          ]
+        },
+        {
+          "document": "balbharati/7/mathematics/703020004.pdf",
+          "ordinal": 18,
+          "pageStart": 26,
+          "pageEnd": 28,
+          "headingPath": [
+            "3. HCF and LCM"
+          ]
+        },
+        {
+          "document": "balbharati/7/mathematics/703020004.pdf",
+          "ordinal": 19,
+          "pageStart": 29,
+          "pageEnd": 30,
+          "headingPath": [
+            "3. HCF and LCM"
+          ]
+        }
+      ],
+      "edition": "2026 edition",
+      "generatedAt": "2026-10-31T10:42:44.950Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of the following is an example of co-prime numbers?",
+      "choices": [
+        "(10, 20)",
+        "(12, 18)",
+        "(15, 21)",
+        "(14, 15)"
+      ],
+      "answerIndex": 3,
+      "solution": "The correct answer is (14, 15) because their only common factor is 1. The other options have common factors other than 1, such as 2 in (10, 20), 6 in (12, 18), and 3 in (15, 21).",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सी सह-अभाज्य संख्याओं की उदाहरण है?",
+          "choices": [
+            "(10, 20)",
+            "(12, 18)",
+            "(15, 21)",
+            "(14, 15)"
+          ],
+          "solution": "सही उत्तर (14, 15) है क्योंकि उनका केवल एक सामान्य गुणक है। अन्य विकल्पों में 1 के अलावा अन्य सामान्य गुणक हैं, जैसे (10, 20) में 2, (12, 18) में 6 और (15, 21) में 3।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English question and solution, with appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी को-अभाज्य संख्यांचे उदाहरण कोणते आहे?",
+          "choices": [
+            "(10, 20)",
+            "(12, 18)",
+            "(15, 21)",
+            "(14, 15)"
+          ],
+          "solution": "सहाय्यक उत्तर (14, 15) आहे कारण त्यांचा एकमेव सामायिक अपवर्तक 1 आहे. इतर विकल्पांमध्ये 1 व्यतिरिक्त सामायिक अपवर्तक आहेत, उदाहरणार्थ (10, 20) मध्ये 2, (12, 18) मध्ये 6 आणि (15, 21) मध्ये 3.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses co-prime numbers with numbers that have a common factor of 2.",
+        "Confuses co-prime numbers with numbers that have a common factor of 6.",
+        "Confuses co-prime numbers with numbers that have a common factor of 3.",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct. (14, 15) are co-prime because their greatest common factor is 1. The other options have common factors greater than 1.",
+      "sources": [
+        {
+          "document": "balbharati/7/mathematics/703020004.pdf",
+          "ordinal": 17,
+          "pageStart": 25,
+          "pageEnd": 26,
+          "headingPath": [
+            "3. HCF and LCM"
+          ]
+        },
+        {
+          "document": "balbharati/7/mathematics/703020004.pdf",
+          "ordinal": 18,
+          "pageStart": 26,
+          "pageEnd": 28,
+          "headingPath": [
+            "3. HCF and LCM"
+          ]
+        },
+        {
+          "document": "balbharati/7/mathematics/703020004.pdf",
+          "ordinal": 19,
+          "pageStart": 29,
+          "pageEnd": 30,
+          "headingPath": [
+            "3. HCF and LCM"
+          ]
+        }
+      ],
+      "edition": "2026 edition",
+      "generatedAt": "2026-10-31T10:42:44.950Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "What is the HCF of 60 and 48 using the prime factorisation method?",
+      "choices": [
+        "4",
+        "12",
+        "20",
+        "30"
+      ],
+      "answerIndex": 1,
+      "solution": "The HCF of 60 and 48 is 12 because the common prime factors are 2 and 3, and their lowest powers are 2^2 and 3^1. Multiplying these gives 12. The other options are incorrect as they do not represent the correct HCF.",
+      "checkExpr": "2*2*3",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "60 और 48 का HCF प्राकृतिक गुणनखंड विधि द्वारा क्या है?",
+          "choices": [
+            "4",
+            "12",
+            "20",
+            "30"
+          ],
+          "solution": "60 और 48 का HCF 12 है क्योंकि सामान्य अभाज्य गुणनखंड 2 और 3 हैं और उनकी निम्नतम घातें 2^2 और 3^1 हैं। इनका गुणनफल 12 होता है। अन्य विकल्प गलत हैं क्योंकि वे सही HCF का प्रतिनिधित्व नहीं करते।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English question and solution, with appropriate mathematical terminology used in a Hindi-medium context.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "60 आणि 48 चा HCF प्राथमिक अपयोजन पद्धतीने किती आहे?",
+          "choices": [
+            "4",
+            "12",
+            "20",
+            "30"
+          ],
+          "solution": "60 आणि 48 चा HCF 12 आहे कारण सामायिक प्राथमिक अपयोजक 2 आणि 3 आहेत आणि त्यांच्या निम्नतम घातांचे गुणाकार 2^2 आणि 3^1 असतात. याचा गुणाकार 12 असतो. इतर विकल्प चुकीचे आहेत कारण ते योग्य HCF दर्शवत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses HCF with a common factor instead of the highest one",
+        null,
+        "Confuses LCM with HCF by multiplying the highest powers of prime factors",
+        "Chooses a number that is not a common factor."
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly identifies the HCF as 12 by taking the lowest powers of common prime factors. The reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/7/mathematics/703020004.pdf",
+          "ordinal": 17,
+          "pageStart": 25,
+          "pageEnd": 26,
+          "headingPath": [
+            "3. HCF and LCM"
+          ]
+        },
+        {
+          "document": "balbharati/7/mathematics/703020004.pdf",
+          "ordinal": 18,
+          "pageStart": 26,
+          "pageEnd": 28,
+          "headingPath": [
+            "3. HCF and LCM"
+          ]
+        },
+        {
+          "document": "balbharati/7/mathematics/703020004.pdf",
+          "ordinal": 19,
+          "pageStart": 29,
+          "pageEnd": 30,
+          "headingPath": [
+            "3. HCF and LCM"
+          ]
+        }
+      ],
+      "edition": "2026 edition",
+      "generatedAt": "2026-10-31T10:42:44.950Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "A trader has three bundles of string 392 m, 308 m and 490 m long. What is the greatest length of string that the bundles can be cut up into without any left over string?",
+      "choices": [
+        "14 m",
+        "28 m",
+        "42 m",
+        "56 m"
+      ],
+      "answerIndex": 0,
+      "solution": "The greatest length of string that can be cut without any leftover is the HCF of the three lengths. The HCF of 392, 308, and 490 is 14. The other options are incorrect because they do not represent the HCF of the given lengths.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक व्यापारी के पास रस्सी के तीन बंडल 392 मी, 308 मी और 490 मी लंबे हैं। सभी रस्सी के बिना किसी बचे हुए टुकड़े के बराबर लंबाई में काटे जाने वाले सबसे बड़ा माप क्या है?",
+          "choices": [
+            "14 मी",
+            "28 मी",
+            "42 मी",
+            "56 मी"
+          ],
+          "solution": "बिना किसी बचे हुए टुकड़े के काटे जाने वाले सबसे बड़ा माप तीनों लंबाइयों का महत्तम समापवर्तक होता है। 392, 308 और 490 का महत्तम समापवर्तक 14 है। अन्य विकल्प गलत हैं क्योंकि वे दी गई लंबाइयों के महत्तम समापवर्तक का प्रतिनिधित्व नहीं करते।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English question, with appropriate mathematical terminology and correct answer positioning.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका व्यापार्याकडे 392 मी, 308 मी आणि 490 मी लांबीचे तीन बंडल आहेत. बंडलमधून बराच वापरल्याशिवाय बरोबर तारेची सर्वात मोठी लांबी किती असेल?",
+          "choices": [
+            "14 मी",
+            "28 मी",
+            "42 मी",
+            "56 मी"
+          ],
+          "solution": "बरोबर वापरल्याशिवाय तारेची सर्वात मोठी लांबी ही तीन लांबींच्या महत्तम सामायिक अपवर्तक (HCF) असेल. 392, 308 आणि 490 चा HCF 14 आहे. इतर विकल्प चुकीचे आहेत कारण ते दिलेल्या लांबींच्या HCF ला दर्शवत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for mathematical concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Student confuses HCF with LCM and calculates LCM of the numbers instead of HCF",
+        "Fails to find the correct HCF",
+        "Fails to compute the HCF correctly"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is correctly solved by finding the HCF of 392, 308, and 490, which is indeed 14. The author's reasoning for the distractors is valid, as they reflect common misconceptions like confusing HCF with LCM or failing to compute the HCF correctly.",
+      "sources": [
+        {
+          "document": "balbharati/7/mathematics/703020004.pdf",
+          "ordinal": 20,
+          "pageStart": 30,
+          "pageEnd": 32,
+          "headingPath": [
+            "3. HCF and LCM"
+          ]
+        },
+        {
+          "document": "balbharati/7/mathematics/703020004.pdf",
+          "ordinal": 21,
+          "pageStart": 32,
+          "pageEnd": 33,
+          "headingPath": [
+            "3. HCF and LCM"
+          ]
+        }
+      ],
+      "edition": "2026 edition",
+      "generatedAt": "2026-10-31T10:42:44.950Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "What is the smallest number that when divided by 8, 10, 12, 14 gives a remainder of 3 every time?",
+      "choices": [
+        "840",
+        "843",
+        "1680",
+        "1683"
+      ],
+      "answerIndex": 1,
+      "solution": "The smallest number that leaves a remainder of 3 when divided by 8, 10, 12, and 14 must be 3 more than a common multiple of these numbers. The least common multiple of 8, 10, 12, and 14 is 840, so adding 3 gives 843. The other options are either too large or do not correctly account for the remainder.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "8, 10, 12, 14 से विभाजित होने पर प्रत्येक बार 3 शेष देने वाली सबसे छोटी संख्या क्या है?",
+          "choices": [
+            "840",
+            "843",
+            "1680",
+            "1683"
+          ],
+          "solution": "8, 10, 12 और 14 से विभाजित होने पर 3 शेष देने वाली सबसे छोटी संख्या इन संख्याओं के एक सामान्य गुणज से 3 अधिक होनी चाहिए। 8, 10, 12 और 14 का लघुत्तम सामान्य गुणज 840 है, अतः 3 जोड़ने पर 843 प्राप्त होता है। अन्य विकल्प या तो बहुत बड़े हैं या शेष की सही गणना नहीं करते हैं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains original meaning, and uses standard Hindi mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "8, 10, 12, 14 ने भागल्यास प्रत्येक वेळी 3 उर्वर राहणारा सर्वात लहान संख्या काय आहे?",
+          "choices": [
+            "840",
+            "843",
+            "1680",
+            "1683"
+          ],
+          "solution": "8, 10, 12 आणि 14 ने भागल्यास 3 उर्वर राहणारा सर्वात लहान संख्या ही या संख्यांच्या सामाईक बहुकल्पापेक्षा 3 ने जास्त असते. 8, 10, 12 आणि 14 चा लहानतम सामाईक बहुकल्प 840 आहे, म्हणून 3 जोडून 843 मिळतो. इतर विकल्प कमी जास्त आहेत किंवा उर्वर च्या नियमाचा योग्य पालन करत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Chooses the LCM without adding the remainder",
+        null,
+        "Chooses twice the LCM without adding the remainder",
+        "Chooses the LCM plus a different remainder"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies the LCM of 8, 10, 12, and 14 as 840, then adds the remainder 3 to get 843, which is the correct answer. The reasoning for the distractors is valid and reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/7/mathematics/703020004.pdf",
+          "ordinal": 20,
+          "pageStart": 30,
+          "pageEnd": 32,
+          "headingPath": [
+            "3. HCF and LCM"
+          ]
+        },
+        {
+          "document": "balbharati/7/mathematics/703020004.pdf",
+          "ordinal": 21,
+          "pageStart": 32,
+          "pageEnd": 33,
+          "headingPath": [
+            "3. HCF and LCM"
+          ]
+        }
+      ],
+      "edition": "2026 edition",
+      "generatedAt": "2026-10-31T10:42:44.950Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
     }
   ]
 }

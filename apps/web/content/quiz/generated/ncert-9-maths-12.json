@@ -1188,6 +1188,833 @@
       "generatedAt": "2026-10-30T01:00:14.064Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is the sum of the angles of a quadrilateral?",
+      "choices": [
+        "180°",
+        "270°",
+        "360°",
+        "450°"
+      ],
+      "answerIndex": 2,
+      "solution": "The sum of the angles of a quadrilateral is always 360°, regardless of its shape, because a quadrilateral can be divided into two triangles, each with an angle sum of 180°. The other options do not match this geometric principle. 180° is the sum for a triangle, 270° and 450° are not valid angle sums for any quadrilateral.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक चतुर्भुज के कोणों का योग क्या होता है?",
+          "choices": [
+            "180°",
+            "270°",
+            "360°",
+            "450°"
+          ],
+          "solution": "एक चतुर्भुज के कोणों का योग हमेशा 360° होता है, चाहे इसका आकार कुछ भी हो, क्योंकि एक चतुर्भुज को दो त्रिभुजों में विभाजित किया जा सकता है, जिनमें प्रत्येक के कोणों का योग 180° होता है। अन्य विकल्प इस ज्यामितीय सिद्धांत के अनुरूप नहीं हैं। 180° एक त्रिभुज के कोणों का योग है, 270° और 450° किसी भी चतुर्भुज के लिए वैध कोण योग नहीं हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard mathematical terminology used in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "चतुर्भुजाच्या कोनांची बेरीज किती आहे?",
+          "choices": [
+            "180°",
+            "270°",
+            "360°",
+            "450°"
+          ],
+          "solution": "चतुर्भुजाच्या कोनांची बेरीज नेहमी 360° असते, त्याच्या आकृतीच्या आधारे बदलत नाही, कारण चतुर्भुज दोन त्रिकोणांमध्ये विभाजित केला जाऊ शकतो, ज्यांच्या कोनांची बेरीज 180° असते. इतर विकल्प या भूमितीय नियमाशी जुळत नाहीत. 180° ही त्रिकोणाची बेरीज आहे, 270° आणि 450° ही कोणत्याही चतुर्भुजासाठी वैध कोन बेरीज नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the sum of angles of a triangle with that of a quadrilateral",
+        "Adds an extra 90° to the correct value",
+        null,
+        "Confuses the angle sum of a quadrilateral with that of a pentagon or other polygon"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 360°, which is a well-established geometric fact. The distractors reflect common misconceptions, such as confusing the angle sum of a triangle (180°), adding an extra 90°, or confusing with a pentagon (540°).",
+      "sources": [
+        {
+          "document": "ncert/9/mathematics/iemh204.pdf",
+          "ordinal": 19,
+          "pageStart": 25,
+          "pageEnd": 26,
+          "headingPath": [
+            "Chapter 12: Quadrilaterals",
+            "End-of-c"
+          ]
+        },
+        {
+          "document": "ncert/9/mathematics/iemh204.pdf",
+          "ordinal": 20,
+          "pageStart": 27,
+          "pageEnd": 28,
+          "headingPath": [
+            "Chapter 12: Quadrilaterals",
+            "End-of-c"
+          ]
+        },
+        {
+          "document": "ncert/9/mathematics/iemh204.pdf",
+          "ordinal": 21,
+          "pageStart": 29,
+          "pageEnd": 30,
+          "headingPath": [
+            "Chapter 12: Quadrilaterals",
+            "End-of-c"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-22T12:21:44.225Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "Which of the following is a property of a convex quadrilateral?",
+      "choices": [
+        "All of its sides are equal",
+        "All of its angles are equal",
+        "All of its internal angles are less than 180°",
+        "All of its diagonals are equal"
+      ],
+      "answerIndex": 2,
+      "solution": "A convex quadrilateral is defined as a quadrilateral where all of its internal angles are less than 180°. This is the key property that differentiates it from a concave quadrilateral. The other options are incorrect because not all quadrilaterals have equal sides or angles, and diagonals are not necessarily equal in all quadrilaterals.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा उत्तल चतुर्भुज का गुण है?",
+          "choices": [
+            "इसके सभी भुजाएँ बराबर हैं",
+            "इसके सभी कोण बराबर हैं",
+            "इसके सभी आंतरिक कोण 180° से कम हैं",
+            "इसके सभी विकर्ण बराबर हैं"
+          ],
+          "solution": "एक उत्तल चतुर्भुज की परिभाषा एक चतुर्भुज है जिसके सभी आंतरिक कोण 180° से कम हैं। यह एक मुख्य गुण है जो इसे अवतल चतुर्भुज से अलग करता है। अन्य विकल्प गलत हैं क्योंकि सभी चतुर्भुजों की भुजाएँ या कोण बराबर नहीं होते हैं और सभी चतुर्भुजों में विकर्ण बराबर नहीं होते हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses standard mathematical terminology used in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते एक उत्तल चौकोनाचे गुणधर्म आहे?",
+          "choices": [
+            "त्याच्या सर्व बाजू बरोबर असतात",
+            "त्याच्या सर्व कोन बरोबर असतात",
+            "त्याच्या सर्व आंतरिक कोन 180° पेक्षा कमी असतात",
+            "त्याच्या सर्व विकर्ण बरोबर असतात"
+          ],
+          "solution": "एक उत्तल चौकोन म्हणजे एखादा चौकोन ज्याच्या सर्व आंतरिक कोन 180° पेक्षा कमी असतात. हा त्याचा मुख्य गुणधर्म आहे जो त्याला अवतल चौकोनापासून वेगळा करतो. इतर विकल्प अयोग्य आहेत कारण सर्व चौकोनांमध्ये समान बाजू वा कोन असत नाहीत आणि सर्व चौकोनांमध्ये विकर्ण समान असत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses properties of a square with a convex quadrilateral",
+        "Confuses properties of a regular quadrilateral with a convex quadrilateral",
+        null,
+        "Incorrectly assumes all quadrilaterals have equal diagonals"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 2, as a convex quadrilateral is defined by having all internal angles less than 180°. The other options are incorrect because they describe specific types of quadrilaterals (like squares or rectangles), not all convex quadrilaterals.",
+      "sources": [
+        {
+          "document": "ncert/9/mathematics/iemh204.pdf",
+          "ordinal": 22,
+          "pageStart": 30,
+          "pageEnd": 31,
+          "headingPath": [
+            "Chapter 12: Quadrilaterals",
+            "End-of-c"
+          ]
+        },
+        {
+          "document": "ncert/9/mathematics/iemh204.pdf",
+          "ordinal": 23,
+          "pageStart": 32,
+          "pageEnd": 33,
+          "headingPath": [
+            "Chapter 12: Quadrilaterals",
+            "End-of-c"
+          ]
+        },
+        {
+          "document": "ncert/9/mathematics/iemh204.pdf",
+          "ordinal": 24,
+          "pageStart": 33,
+          "pageEnd": 34,
+          "headingPath": [
+            "Chapter 12: Quadrilaterals",
+            "End-of-c",
+            "Chapter Summary"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-22T12:21:44.225Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of the following is a definition of a parallelogram?",
+      "choices": [
+        "A quadrilateral with one pair of parallel sides",
+        "A quadrilateral with all sides equal",
+        "A quadrilateral with two pairs of parallel sides",
+        "A quadrilateral with all angles equal"
+      ],
+      "answerIndex": 2,
+      "solution": "The correct answer is a quadrilateral with two pairs of parallel sides. This is the standard definition of a parallelogram. A quadrilateral with one pair of parallel sides is a trapezium. A quadrilateral with all sides equal is a rhombus, and a quadrilateral with all angles equal is a rectangle.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन एक समांतर चतुर्भुज की परिभाषा है?",
+          "choices": [
+            "एक चतुर्भुज जिसके एक जोड़ा समांतर भुजाएं होती हैं",
+            "एक चतुर्भुज जिसकी सभी भुजाएं बराबर होती हैं",
+            "एक चतुर्भुज जिसके दो जोड़े समांतर भुजाएं होती हैं",
+            "एक चतुर्भुज जिसके सभी कोण बराबर होते हैं"
+          ],
+          "solution": "सही उत्तर एक चतुर्भुज जिसके दो जोड़े समांतर भुजाएं होती हैं। यह एक समांतर चतुर्भुज की मानक परिभाषा है। एक चतुर्भुज जिसके एक जोड़े समांतर भुजाएं होती हैं एक समलम्ब चतुर्भुज होता है। एक चतुर्भुज जिसकी सभी भुजाएं बराबर होती हैं एक समचतुर्भुज होता है, और एक चतुर्भुज जिसके सभी कोण बराबर होते हैं एक आयत होता है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses standard geometric terminology as taught in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते एक समांतर चौकोनाचे निर्वचन आहे?",
+          "choices": [
+            "एक चौकोन ज्याच्या एका बाजूच्या जोडी उभयताच समांतर आहेत",
+            "एक चौकोन ज्याच्या सर्व बाजू बराबर आहेत",
+            "एक चौकोन ज्याच्या दोन बाजूच्या जोडी उभयताच समांतर आहेत",
+            "एक चौकोन ज्याचे सर्व कोन बराबर आहेत"
+          ],
+          "solution": "योग्य उत्तर हे एक चौकोन ज्याच्या दोन बाजूच्या जोडी उभयताच समांतर आहेत. हे समांतर चौकोनाचे मानक निर्वचन आहे. एक बाजूच्या जोडी उभयताच समांतर असलेला चौकोन हा समलंब चौकोन आहे. सर्व बाजू बराबर असलेला चौकोन हा विषमभुज आहे, आणि सर्व कोन बराबर असलेला चौकोन हा आयत आहे.",
+          "imageAlt": null,
+          "critique": "The Marathi translation accurately reflects the English original in meaning, structure, and terminology. Technical terms like 'समांतर चौकोन' (parallelogram), 'समलंब चौकोन' (trapezium), 'विषमभुज' (rhombus), and 'आयत' (rectangle) are standard in Marathi mathematics textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the definition of a trapezium with a parallelogram.",
+        "Thinks a rhombus is defined by all sides being equal, which is true but not the definition of a parallelogram.",
+        null,
+        "Believes that all angles being equal is the definition of a parallelogram, which is true for a rectangle but not for all parallelograms."
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is option 2. The author's solution is accurate, and the reasoning for the distractors reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/9/mathematics/iemh204.pdf",
+          "ordinal": 4,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 12: Quadrilaterals",
+            "12.1 What Exactly is a Quadrilateral?",
+            "Think and Reflect"
+          ]
+        },
+        {
+          "document": "ncert/9/mathematics/iemh204.pdf",
+          "ordinal": 5,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 12: Quadrilaterals",
+            "12.2 Parallelograms"
+          ]
+        },
+        {
+          "document": "ncert/9/mathematics/iemh204.pdf",
+          "ordinal": 6,
+          "pageStart": 7,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 12: Quadrilaterals",
+            "12.2 Parallelograms"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-22T12:21:44.225Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "In a quadrilateral ABCD, if AB is parallel to DC and AD is parallel to BC, which of the following is true?",
+      "choices": [
+        "It is a trapezium",
+        "It is a parallelogram",
+        "It is a kite",
+        "It is a rhombus"
+      ],
+      "answerIndex": 1,
+      "solution": "The correct answer is that it is a parallelogram because a quadrilateral with both pairs of opposite sides parallel is defined as a parallelogram. A trapezium has only one pair of parallel sides. A kite has two pairs of adjacent equal sides but not necessarily parallel. A rhombus is a special type of parallelogram with all sides equal, which is not stated here.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक चतुर्भुज ABCD में, यदि AB, DC के समांतर है और AD, BC के समांतर है, तो निम्नलिखित में से कौन सा सत्य है?",
+          "choices": [
+            "यह एक समलम्ब चतुर्भुज है",
+            "यह एक समांतर चतुर्भुज है",
+            "यह एक पंखा है",
+            "यह एक समचतुर्भुज है"
+          ],
+          "solution": "सही उत्तर यह है कि यह एक समांतर चतुर्भुज है क्योंकि दोनों जोड़े विपरीत भुजाएं समांतर होने वाला चतुर्भुज समांतर चतुर्भुज के रूप में परिभाषित किया जाता है। एक समलम्ब चतुर्भुज के केवल एक जोड़ा समांतर भुजाएं होती हैं। एक पंखा में दो जोड़े आसन्न बराबर भुजाएं होती हैं लेकिन आवश्यक नहीं कि समांतर हों। एक समचतुर्भुज एक विशेष प्रकार का समांतर चतुर्भुज है जिसमें सभी भुजाएं समान होती हैं, जो यहां नहीं बताया गया है।",
+          "imageAlt": null,
+          "critique": "All terms are standard in Hindi mathematics textbooks. 'समलम्ब चतुर्भुज' (trapezium) and 'समांतर चतुर्भुज' (parallelogram) are correctly used. 'पंखा' (kite) is the correct Hindi term. 'समचतुर्भुज' (rhombus) is also correct.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "चतुर्भुज ABCD मध्ये, जर AB आणि DC समांतर असेल आणि AD आणि BC समांतर असेल, तर खालीलपैकी कोणते खरे आहे?",
+          "choices": [
+            "ते ट्रॅपेझियम आहे",
+            "ते समांतर चौकोन आहे",
+            "ते त्रिखंडक आहे",
+            "ते समभुज आहे"
+          ],
+          "solution": "सही उत्तर ते समांतर चौकोन आहे कारण दोन जोड्या विरुद्ध बाजू एकमेकांना समांतर असल्यास चौकोन समांतर चौकोन म्हणतात. ट्रॅपेझियम मध्ये केवळ एक जोडी समांतर बाजू असतात. त्रिखंडक मध्ये दोन जोड्या जवळच्या समान बाजू असतात परंतु आवश्यकता नसते. समभुज हा समांतर चौकोनाचा विशेष प्रकार असतो ज्यामध्ये सर्व बाजू समान असतात, जे येथे नसते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi technical terms used for geometric shapes.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the definition of a trapezium with a parallelogram.",
+        null,
+        "Does not recognize that both pairs of opposite sides being parallel is the definition of a parallelogram.",
+        "Thinks a kite is defined by parallel sides, which is incorrect."
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-constructed. The correct answer is clearly 1 (parallelogram), as the definition matches the given conditions. The author's reasoning for the distractors is accurate and reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/9/mathematics/iemh204.pdf",
+          "ordinal": 4,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 12: Quadrilaterals",
+            "12.1 What Exactly is a Quadrilateral?",
+            "Think and Reflect"
+          ]
+        },
+        {
+          "document": "ncert/9/mathematics/iemh204.pdf",
+          "ordinal": 5,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 12: Quadrilaterals",
+            "12.2 Parallelograms"
+          ]
+        },
+        {
+          "document": "ncert/9/mathematics/iemh204.pdf",
+          "ordinal": 6,
+          "pageStart": 7,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 12: Quadrilaterals",
+            "12.2 Parallelograms"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-22T12:21:44.225Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "In a quadrilateral, if the opposite angles are equal, what can be concluded about the quadrilateral?",
+      "choices": [
+        "It is a trapezium",
+        "It is a parallelogram",
+        "It is a kite",
+        "It is a rhombus"
+      ],
+      "answerIndex": 1,
+      "solution": "The correct answer is that it is a parallelogram. One of the theorems states that if the opposite angles of a quadrilateral are equal, then it is a parallelogram. A trapezium does not necessarily have equal opposite angles. A kite does not have equal opposite angles. A rhombus is a special type of parallelogram, but not guaranteed here.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक चतुर्भुज में, यदि विपरीत कोण बराबर हों, तो चतुर्भुज के बारे में क्या निष्कर्ष निकाला जा सकता है?",
+          "choices": [
+            "यह एक समलम्ब चतुर्भुज है",
+            "यह एक समांतर चतुर्भुज है",
+            "यह एक पतंग है",
+            "यह एक समचतुर्भुज है"
+          ],
+          "solution": "सही उत्तर यह है कि यह एक समांतर चतुर्भुज है। एक प्रमेय के अनुसार, यदि एक चतुर्भुज के विपरीत कोण बराबर हों, तो वह समांतर चतुर्भुज होता है। समलम्ब चतुर्भुज के विपरीत कोण आवश्यक रूप से बराबर नहीं होते। पतंग के विपरीत कोण बराबर नहीं होते। समचतुर्भुज एक विशेष प्रकार का समांतर चतुर्भुज होता है, लेकिन यह यहां निश्चित रूप से नहीं होता।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Hindi geometry terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "चतुर्भुजात, जर विरुद्ध कोन समान असतील, तर चतुर्भुज बद्दल काय निष्कर्ष काढता येईल?",
+          "choices": [
+            "तो ट्रॅपेझियम आहे",
+            "तो समांतर चौकोन आहे",
+            "तो बाजू आहे",
+            "तो जांभ आहे"
+          ],
+          "solution": "बरोबर उत्तर म्हणजे तो समांतर चौकोन आहे. एका सिद्धांताने सांगितले आहे की, जर चतुर्भुजाचे विरुद्ध कोन समान असतील, तर तो समांतर चौकोन असतो. ट्रॅपेझियम विरुद्ध कोन समान असतील असे आवश्यक नाही. बाजू विरुद्ध कोन समान असतील असे नाही. जांभ हा समांतर चौकोनाचा विशिष्ट प्रकार आहे, परंतु येथे त्याची खात्री दिली जात नाही.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the original meaning, and uses appropriate terminology. The answer key and solution align correctly.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the property of a trapezium with that of a parallelogram.",
+        null,
+        "Does not understand that equal opposite angles is a defining property of a parallelogram.",
+        "Thinks a kite has equal opposite angles, which is incorrect."
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct. The theorem that if opposite angles of a quadrilateral are equal, it must be a parallelogram is accurate. The reasoning for the distractors also reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/9/mathematics/iemh204.pdf",
+          "ordinal": 4,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 12: Quadrilaterals",
+            "12.1 What Exactly is a Quadrilateral?",
+            "Think and Reflect"
+          ]
+        },
+        {
+          "document": "ncert/9/mathematics/iemh204.pdf",
+          "ordinal": 5,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 12: Quadrilaterals",
+            "12.2 Parallelograms"
+          ]
+        },
+        {
+          "document": "ncert/9/mathematics/iemh204.pdf",
+          "ordinal": 6,
+          "pageStart": 7,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 12: Quadrilaterals",
+            "12.2 Parallelograms"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-22T12:21:44.225Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "In a quadrilateral ABCD, if AB is parallel to DC and AB is not equal to DC, and G and H are the midpoints of diagonals AC and BD respectively, what can be said about the line GH?",
+      "choices": [
+        "GH is perpendicular to AB",
+        "GH is parallel to AB",
+        "GH bisects AB",
+        "GH is twice the length of AB"
+      ],
+      "answerIndex": 1,
+      "solution": "The correct answer is that GH is parallel to AB. In a quadrilateral with AB parallel to DC and AB not equal to DC, the segment connecting the midpoints of the diagonals (GH) is parallel to AB due to the properties of midlines in trapezoids. The other options are incorrect because GH is not necessarily perpendicular to AB, does not always bisect AB, and is not twice the length of AB.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक चतुर्भुज ABCD में, यदि AB, DC के समांतर है और AB, DC के बराबर नहीं है, और G और H क्रमशः विकर्ण AC और BD के मध्य बिंदु हैं, तो GH रेखा के बारे में क्या कहा जा सकता है?",
+          "choices": [
+            "GH, AB के लंबवत है",
+            "GH, AB के समांतर है",
+            "GH, AB को आधा करता है",
+            "GH, AB के दुगुने लंबाई का है"
+          ],
+          "solution": "सही उत्तर यह है कि GH, AB के समांतर है। AB के समांतर होने और AB, DC के बराबर न होने पर चतुर्भुज में विकर्णों के मध्य बिंदुओं को जोड़ने वाला खंड (GH) AB के समांतर होता है क्योंकि समलंब चतुर्भुज में मध्य रेखा के गुणों के कारण। अन्य विकल्प गलत हैं क्योंकि GH आवश्यक रूप से AB के लंबवत नहीं होता है, AB को हमेशा आधा नहीं करता है, और AB के दुगुने लंबाई का नहीं होता है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "चतुर्भुज ABCD मध्ये, जर AB हा DC ला समांतर असेल आणि AB हा DC ला समान नसेल, आणि G आणि H हे कर्ण AC आणि BD च्या मध्यबिंदू असतील, तर GH रेषेबद्दल काय म्हणता येईल?",
+          "choices": [
+            "GH हा AB ला लंब असतो",
+            "GH हा AB ला समांतर असतो",
+            "GH हा AB ला दुभागतो",
+            "GH हा AB च्या दुप्पट लांबीचा असतो"
+          ],
+          "solution": "उत्तम उत्तर म्हणजे GH हा AB ला समांतर असतो. AB ला समांतर असलेल्या DC आणि AB ला समान नसलेल्या चतुर्भुजात, कर्णांच्या मध्यबिंदूंना जोडणारी रेषा (GH) AB ला समांतर असते, कारण ट्रॅपेझॉइडमध्ये मध्यरेषांच्या गुणधर्मांमुळे. इतर विकल्प अयोग्य असतात कारण GH नेहमी AB ला लंब नसतो, AB ला नेहमी दुभागत नसतो आणि AB च्या दुप्पट लांबीचा असत नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Misapplies geometric properties of perpendicular lines.",
+        null,
+        "Confuses the relationship between GH and AB based on incorrect assumptions.",
+        "Fails to recognize the implication of the midline theorem in this context."
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies that GH is parallel to AB based on the midline theorem in trapezoids. The reasoning aligns with standard geometric principles.",
+      "sources": [
+        {
+          "document": "ncert/9/mathematics/iemh204.pdf",
+          "ordinal": 10,
+          "pageStart": 13,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 12: Quadrilaterals",
+            "12.3 Applications of Parallelograms",
+            "Think and Reflect"
+          ]
+        },
+        {
+          "document": "ncert/9/mathematics/iemh204.pdf",
+          "ordinal": 11,
+          "pageStart": 14,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 12: Quadrilaterals",
+            "12.3 Applications of Parallelograms",
+            "Think and Reflect"
+          ]
+        },
+        {
+          "document": "ncert/9/mathematics/iemh204.pdf",
+          "ordinal": 12,
+          "pageStart": 16,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 12: Quadrilaterals",
+            "12.3 Applications of Parallelograms",
+            "Think and Reflect"
+          ]
+        },
+        {
+          "document": "ncert/9/mathematics/iemh204.pdf",
+          "ordinal": 13,
+          "pageStart": 16,
+          "pageEnd": 18,
+          "headingPath": [
+            "Chapter 12: Quadrilaterals",
+            "12.3 Applications of Parallelograms",
+            "Think and Reflect"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-22T12:21:44.225Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "If a quadrilateral is circumscribed around a circle, which of the following is true?",
+      "choices": [
+        "The sum of the lengths of opposite sides is equal",
+        "The sum of the lengths of adjacent sides is equal",
+        "The product of the lengths of opposite sides is equal",
+        "The product of the lengths of adjacent sides is equal"
+      ],
+      "answerIndex": 0,
+      "solution": "If a quadrilateral is circumscribed around a circle, the sum of the lengths of opposite sides is equal. This is a well-known property of tangential quadrilaterals. The correct option states that the sum of the lengths of opposite sides is equal, which is accurate. The other options are incorrect because they describe properties of different types of quadrilaterals, such as parallelograms or cyclic quadrilaterals. The option about the product of the lengths of opposite sides being equal is incorrect because it applies to cyclic quadrilaterals, not tangential ones.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक चतुर्भुज एक वृत्त के चारों ओर परिवृत्त है, तो निम्नलिखित में से कौन-सा सत्य है?",
+          "choices": [
+            "विपरीत भुजाओं की लंबाइयों का योग समान होता है",
+            "समानांतर भुजाओं की लंबाइयों का योग समान होता है",
+            "विपरीत भुजाओं की लंबाइयों का गुणनफल समान होता है",
+            "समानांतर भुजाओं की लंबाइयों का गुणनफल समान होता है"
+          ],
+          "solution": "यदि एक चतुर्भुज एक वृत्त के चारों ओर परिवृत्त है, तो विपरीत भुजाओं की लंबाइयों का योग समान होता है। यह स्पर्श चतुर्भुज के एक ज्ञात गुणधर्म है। सही विकल्प यह बताता है कि विपरीत भुजाओं की लंबाइयों का योग समान होता है, जो सही है। अन्य विकल्प गलत हैं क्योंकि वे अलग-अलग प्रकार के चतुर्भुजों के गुणधर्म बताते हैं, जैसे समांतर चतुर्भुज या चक्रीय चतुर्भुज। विपरीत भुजाओं की लंबाइयों के गुणनफल के बराबर होने का विकल्प गलत है क्योंकि यह चक्रीय चतुर्भुज के लिए लागू होता है, न कि स्पर्श चतुर्भुज के लिए।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology for geometry.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एक चौकोन एका वर्तुळाच्या आवरणात असल्यास, खालीलपैकी कोणते खरे आहे?",
+          "choices": [
+            "विरुद्ध बाजूंच्या लांबींची बेरीज समान आहे",
+            "संलग्न बाजूंच्या लांबींची बेरीज समान आहे",
+            "विरुद्ध बाजूंच्या लांबींचा गुणाकार समान आहे",
+            "संलग्न बाजूंच्या लांबींचा गुणाकार समान आहे"
+          ],
+          "solution": "जर एक चौकोन एका वर्तुळाच्या आवरणात असेल, तर विरुद्ध बाजूंच्या लांबींची बेरीज समान असते. हे स्पर्श चौकोनाचे एक ओळखीचे गुणधर्म आहे. बरोबर विकल्प सांगतो की, विरुद्ध बाजूंच्या लांबींची बेरीज समान आहे, जे बरोबर आहे. इतर विकल्प चौकोनाच्या वेगवेगळ्या प्रकारांचे गुणधर्म वर्णन करतात, जसे की समांतर चौकोन किंवा चक्रीय चौकोन. विरुद्ध बाजूंच्या लांबींचा गुणाकार समान असल्याचा विकल्प चुकीचा आहे कारण तो चक्रीय चौकोनासाठी लागू होतो, नाही की स्पर्श चौकोनासाठी.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms for quadrilaterals and their properties.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "confuses tangential quadrilateral with cyclic quadrilateral",
+        "confuses parallelogram with tangential quadrilateral",
+        "confuses cyclic quadrilateral with tangential quadrilateral"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct and aligns with the known property of tangential quadrilaterals. The reasoning for the distractors is valid and reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/9/mathematics/iemh204.pdf",
+          "ordinal": 14,
+          "pageStart": 18,
+          "pageEnd": 19,
+          "headingPath": [
+            "Chapter 12: Quadrilaterals",
+            "12.3 Applications of Parallelograms",
+            "Think and Reflect"
+          ]
+        },
+        {
+          "document": "ncert/9/mathematics/iemh204.pdf",
+          "ordinal": 15,
+          "pageStart": 19,
+          "pageEnd": 20,
+          "headingPath": [
+            "Chapter 12: Quadrilaterals",
+            "12.4 Tiling the Plane Using Any 4-gon"
+          ]
+        },
+        {
+          "document": "ncert/9/mathematics/iemh204.pdf",
+          "ordinal": 16,
+          "pageStart": 20,
+          "pageEnd": 22,
+          "headingPath": [
+            "Chapter 12: Quadrilaterals",
+            "12.4 Tiling the Plane Using Any 4-gon",
+            "Think and Reflect"
+          ]
+        },
+        {
+          "document": "ncert/9/mathematics/iemh204.pdf",
+          "ordinal": 17,
+          "pageStart": 22,
+          "pageEnd": 23,
+          "headingPath": [
+            "Chapter 12: Quadrilaterals",
+            "12.4 Tiling the Plane Using Any 4-gon",
+            "Think and Reflect"
+          ]
+        },
+        {
+          "document": "ncert/9/mathematics/iemh204.pdf",
+          "ordinal": 18,
+          "pageStart": 24,
+          "pageEnd": 25,
+          "headingPath": [
+            "Chapter 12: Quadrilaterals",
+            "12.4 Tiling the Plane Using Any 4-gon",
+            "A Cutting-edge Discovery"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-22T12:21:44.225Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "In a quadrilateral ABCD, if the opposite sides are equal and the diagonals bisect each other, which of the following must be true?",
+      "choices": [
+        "It is a square",
+        "It is a rectangle",
+        "It is a parallelogram",
+        "It is a rhombus"
+      ],
+      "answerIndex": 2,
+      "solution": "The correct answer is that it is a parallelogram. If the opposite sides of a quadrilateral are equal, it is a parallelogram (converse of Theorem 1(a)). Also, if the diagonals bisect each other, it is a parallelogram (converse of Theorem 1(c)). Both properties together confirm that it is a parallelogram. A square and a rectangle are specific types of parallelograms, but they are not guaranteed here. A rhombus is a parallelogram with all sides equal, which is not stated.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक चतुर्भुज ABCD में, यदि विपरीत भुजाएँ बराबर हों और विकर्ण एक दूसरे को समद्विभाजित करें, तो निम्नलिखित में से कौन-सा अवश्य सत्य होगा?",
+          "choices": [
+            "यह एक वर्ग है",
+            "यह एक आयत है",
+            "यह एक समांतर चतुर्भुज है",
+            "यह एक समचतुर्भुज है"
+          ],
+          "solution": "सही उत्तर यह है कि यह एक समांतर चतुर्भुज है। यदि एक चतुर्भुज की विपरीत भुजाएँ बराबर हों, तो यह एक समांतर चतुर्भुज होता है (थ्योरम 1(a) का विलोम)। इसी प्रकार, यदि विकर्ण एक दूसरे को समद्विभाजित करें, तो यह एक समांतर चतुर्भुज होता है (थ्योरम 1(c) का विलोम)। दोनों गुणों के साथ-साथ यह सुनिश्चित हो जाता है कि यह एक समांतर चतुर्भुज है। एक वर्ग और एक आयत समांतर चतुर्भुज के विशिष्ट प्रकार हैं, लेकिन यहाँ इनकी गारंटी नहीं है। एक समचतुर्भुज एक समांतर चतुर्भुज होता है जिसकी सभी भुजाएँ बराबर होती हैं, जो कि यहाँ नहीं कहा गया है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses standard geometric terminology as found in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "चतुर्भुज ABCD मध्ये, जर विरुद्ध बाजू एकसारख्या असतील आणि विकर्ण एकमेकांना दुभागत असतील, तर खालीलपैकी कोणते खात्रीनामा असेल?",
+          "choices": [
+            "ते चौरस आहे",
+            "ते आयत आहे",
+            "ते समांतरभुज आहे",
+            "ते समभुज आहे"
+          ],
+          "solution": "योग्य उत्तर ते समांतरभुज आहे. जर चतुर्भुजाच्या विरुद्ध बाजू एकसारख्या असतील, तर ते समांतरभुज असतो (उलटा प्रमेय 1(a)). जर विकर्ण एकमेकांना दुभागत असतील, तर ते समांतरभुज असतो (उलटा प्रमेय 1(c)). दोन्ही गुणधर्मांच्या एकत्रित अस्तित्वामुळे खात्री असते की ते समांतरभुज आहे. चौरस आणि आयत हे समांतरभुजाचे विशिष्ट प्रकार आहेत, परंतु येथे त्यांची खात्री दिली जात नाही. समभुज हे सर्व बाजू एकसारख्या असलेले समांतरभुज आहे, जे खालीलपैकी नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Assumes that the properties define a square, which is a specific case of a parallelogram.",
+        "Thinks that the properties define a rectangle, which is also a specific case of a parallelogram.",
+        null,
+        "Confuses the properties of a rhombus with those of a general parallelogram."
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies that the given properties (opposite sides equal and diagonals bisecting each other) are sufficient to conclude the quadrilateral is a parallelogram. The other options are specific types of parallelograms that are not guaranteed by the given conditions.",
+      "sources": [
+        {
+          "document": "ncert/9/mathematics/iemh204.pdf",
+          "ordinal": 4,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 12: Quadrilaterals",
+            "12.1 What Exactly is a Quadrilateral?",
+            "Think and Reflect"
+          ]
+        },
+        {
+          "document": "ncert/9/mathematics/iemh204.pdf",
+          "ordinal": 5,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 12: Quadrilaterals",
+            "12.2 Parallelograms"
+          ]
+        },
+        {
+          "document": "ncert/9/mathematics/iemh204.pdf",
+          "ordinal": 6,
+          "pageStart": 7,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 12: Quadrilaterals",
+            "12.2 Parallelograms"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-22T12:21:44.225Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
     }
   ]
 }

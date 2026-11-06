@@ -1197,6 +1197,4340 @@
       "generatedAt": "2026-11-02T05:25:32.663Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the function of the metal cap on an electric cell?",
+      "choices": [
+        "It is the negative terminal",
+        "It is the positive terminal",
+        "It stores electricity",
+        "It generates electricity"
+      ],
+      "answerIndex": 1,
+      "solution": "The metal cap on an electric cell is the positive terminal because it is designed to allow the flow of electric current out of the cell. The other options are incorrect because the cap does not store or generate electricity, and the negative terminal is typically a metal disc, not the cap.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक विद्युत सेल के धातु के ढक्कन का कार्य क्या है?",
+          "choices": [
+            "यह ऋणात्मक टर्मिनल है",
+            "यह धनात्मक टर्मिनल है",
+            "यह विद्युत को संग्रहीत करता है",
+            "यह विद्युत को उत्पन्न करता है"
+          ],
+          "solution": "विद्युत सेल के धातु के ढक्कन का कार्य धनात्मक टर्मिनल होना है क्योंकि इसका उद्देश्य सेल से विद्युत धारा के प्रवाह की अनुमति देना है। अन्य विकल्प गलत हैं क्योंकि ढक्कन विद्युत को संग्रहीत या उत्पन्न नहीं करता है और ऋणात्मक टर्मिनल आमतौर पर धातु का डिस्क होता है, न कि ढक्कन।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriately used in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "विद्युत सेल च्या धातूच्या शिरोलेखाची कार्ये काय आहे?",
+          "choices": [
+            "ते ऋण टर्मिनल आहे",
+            "ते धन टर्मिनल आहे",
+            "ते विद्युत भंडारित करते",
+            "ते विद्युत उत्पन्न करते"
+          ],
+          "solution": "विद्युत सेल च्या धातूच्या शिरोलेखाची कार्ये धन टर्मिनल आहे कारण ते सेल मधून विद्युत प्रवाहाची परवानगी देण्यासाठी डिझाइन केले गेले आहे. इतर विकल्प अयोग्य आहेत कारण शिरोलेख विद्युत भंडारित करत नाही किंवा उत्पन्न करत नाही, आणि ऋण टर्मिनल सामान्यतः धातूचा डिस्क असतो, नाही की शिरोलेख.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate technical terms as used in Marathi textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the positive and negative terminals",
+        null,
+        "Confuses the function of the metal cap with a storage device",
+        "Confuses the function of the metal cap with an energy source"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 1, as the metal cap is the positive terminal. The other options represent common misconceptions about the function of the metal cap.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.1 A Torchlight"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 2,
+          "pageStart": 3,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.2 A Simple Electrical Circuit",
+            "3.2.1 Electric cell"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 3,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.2 A Simple Electrical Circuit",
+            "3.2.2 Battery"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-31T21:15:23.989Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which part of an incandescent lamp glows when current passes through it?",
+      "choices": [
+        "The glass bulb",
+        "The thick wires",
+        "The filament",
+        "The insulator"
+      ],
+      "answerIndex": 2,
+      "solution": "The filament is the thin wire inside the glass bulb that glows when current passes through it. The glass bulb, thick wires, and insulator do not glow. The filament is designed to heat up and emit light, making it the correct answer.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक अपवर्तक बल्ब का कौन-सा भाग विद्युत धारा पार करने पर चमकता है?",
+          "choices": [
+            "कांच का बल्ब",
+            "मोटे तार",
+            "तंतु",
+            "अन्तरावरोधक"
+          ],
+          "solution": "तंतु कांच के बल्ब के अंदर का पतला तार होता है जो विद्युत धारा पार करने पर चमकता है। कांच के बल्ब, मोटे तार और अन्तरावरोधक चमकते नहीं हैं। तंतु को गर्म होकर प्रकाश उत्सर्जित करने के लिए डिज़ाइन किया गया है, इसलिए यह सही उत्तर है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English question and solution, with appropriate technical terms used.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "अॅन्सेंडेंट लॅम्पचा कोणता भाग विद्युत प्रवाह वाहत असताना जळतो?",
+          "choices": [
+            "काचेचा बल्ब",
+            "जास्त मोठे तार",
+            "तापदायक तार",
+            "अवाहक"
+          ],
+          "solution": "तापदायक तार हा काचेच्या बल्बात अंतर्गत असलेला तार आहे जो विद्युत प्रवाह वाहत असताना जळतो. काचेचा बल्ब, जास्त मोठे तार आणि अवाहक जळत नाहीत. तापदायक तार तापलेला असतो आणि प्रकाश उत्सर्जित करतो, ज्यामुळे तो योग्य उत्तर बनतो.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi technical terms used.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the glowing part with the glass bulb",
+        "Thinks thick wires are the glowing part",
+        null,
+        "Student thinks the insulating material is the part that emits light"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The question is clear and the solution is correct. The filament is the correct answer, and the distractors reflect common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 4,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.2 A Simple Electrical Circuit",
+            "3.2.3 Electric lamp"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 5,
+          "pageStart": 5,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.2 A Simple Electrical Circuit",
+            "3.2.4 Making an electric lamp glow using an",
+            "electric cell or battery"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 6,
+          "pageStart": 8,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.2 A Simple Electrical Circuit",
+            "3.2.5 An electrical circuit"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-31T21:15:23.989Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What happens to the LED when the wires connected to it are interchanged?",
+      "choices": [
+        "It glows brighter",
+        "It glows",
+        "It does not glow",
+        "It glows dimmer"
+      ],
+      "answerIndex": 2,
+      "solution": "An LED only allows current to flow in one direction. When the wires are interchanged, the current cannot pass through, so the LED does not glow. It does not glow brighter or dimmer because the direction of current determines whether it functions at all, not the intensity of the light.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "LED पर क्या होता है जब इससे जुड़े तारों को बदल दिया जाता है?",
+          "choices": [
+            "यह अधिक चमकता है",
+            "यह चमकता है",
+            "यह चमकता नहीं है",
+            "यह कम चमकता है"
+          ],
+          "solution": "एक एलईडी केवल एक दिशा में धारा के प्रवाह की अनुमति देती है। जब तारों को बदल दिया जाता है, तो धारा नहीं बह सकती, इसलिए एलईडी चमकता नहीं है। चमक की तीव्रता नहीं बदलती क्योंकि धारा की दिशा इसके कार्य करने के लिए निर्धारित करती है, न कि चमक की तीव्रता।",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Hindi technical terms used.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एलईडी काय होतो जेव्हा त्याला जोडलेल्या तारा बदलल्या जातात?",
+          "choices": [
+            "तो जास्त जाळतो",
+            "तो जाळतो",
+            "तो जाळत नाही",
+            "तो कमी जाळतो"
+          ],
+          "solution": "एलईडी केवळ एका दिशेने विद्युत प्रवाह वाहू देते. जेव्हा तारा बदलल्या जातात, तेव्हा विद्युत प्रवाह वाहू शकत नाही, त्यामुळे एलईडी जाळत नाही. जाळण्याची तीव्रता निश्चित करणारा विद्युत प्रवाहाचा दिशा नसतो, तर तो कार्य करतो की नाही यावर अवलंबून असतो.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Believes that reversing the connections increases the brightness.",
+        "Assumes that the LED will still function but in a different way.",
+        null,
+        "Student believes reversing polarity only affects brightness, not whether the LED lights at all."
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly identifies that reversing the polarity of an LED prevents it from glowing, as LEDs are directional components. The reasoning aligns with the correct answer and the provided misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 7,
+          "pageStart": 9,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.2 A Simple Electrical Circuit",
+            "3.2.5 An electrical circuit"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 8,
+          "pageStart": 10,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.2 A Simple Electrical Circuit",
+            "3.2.6 Electric switch"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 9,
+          "pageStart": 11,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.3 Circuit Diagrams"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 10,
+          "pageStart": 12,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.4 Electrical Conductors and Insulators"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-31T21:15:23.989Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If a torch uses two electric cells, what happens when the cells are connected in the correct order?",
+      "choices": [
+        "The lamp glows",
+        "The lamp does not glow",
+        "The lamp flickers",
+        "The lamp gets damaged"
+      ],
+      "answerIndex": 0,
+      "solution": "When electric cells are connected in the correct order, they provide a continuous flow of electric current, which powers the lamp and causes it to glow. If the cells are connected incorrectly, the current cannot flow properly, so the lamp does not glow. The lamp flickering or getting damaged would require different conditions, such as an unstable current or excessive voltage.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक टॉर्च में दो विद्युत सेल होते हैं, तो सेल के सही क्रम में जुड़े होने पर क्या होता है?",
+          "choices": [
+            "लैंप जलता है",
+            "लैंप नहीं जलता",
+            "लैंप झिलमिलाता है",
+            "लैंप खराब हो जाता है"
+          ],
+          "solution": "जब विद्युत सेल सही क्रम में जुड़े होते हैं, तो वे विद्युत धारा के निरंतर प्रवाह के कारण, लैंप को शक्ति प्रदान करते हैं और लैंप जलता है। यदि सेल गलत क्रम में जुड़े होते हैं, तो धारा सही तरीके से प्रवाहित नहीं हो पाती, इसलिए लैंप नहीं जलता। लैंप के झिलमिलाने या खराब होने के लिए अलग-अलग स्थितियां आवश्यक होती हैं, जैसे अस्थिर धारा या अत्यधिक वोल्टेज।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi technical terms.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर टॉर्चमध्ये दोन विद्युत सेल वापरले जात असतील, तर सेल योग्य क्रमाने जोडले गेल्यास काय होते?",
+          "choices": [
+            "दिवा जळतो",
+            "दिवा जळत नाही",
+            "दिवा झपाटा मारतो",
+            "दिवा नुकसान होतो"
+          ],
+          "solution": "जेव्हा विद्युत सेल योग्य क्रमाने जोडले जातात तेव्हा ते विद्युत प्रवाहाचा सतत प्रवाह पुरवतात, जो दिवा चालवतो आणि तो जळतो. जर सेल चुकीच्या क्रमाने जोडले गेले असतील तर प्रवाह योग्यरित्या होऊ शकत नाही, त्यामुळे दिवा जळत नाही. दिवा झपाटा मारणे किंवा नुकसान होणे अशा वेगळ्या परिस्थितींमुळे होऊ शकते, जसे अस्थिर प्रवाह किंवा अतिरिक्त व्होल्टेज.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms like 'विद्युत सेल' and 'दिवा' which are standard in Marathi textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses the effect of correct connection with a fault",
+        "Confuses the effect of correct connection with a malfunction",
+        "Confuses the effect of correct connection with damage"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The question is clear and the correct answer is logically derived from the explanation. The reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.1 A Torchlight"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 2,
+          "pageStart": 3,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.2 A Simple Electrical Circuit",
+            "3.2.1 Electric cell"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 3,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.2 A Simple Electrical Circuit",
+            "3.2.2 Battery"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-31T21:15:23.989Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "What happens if a switch is in the 'OFF' position?",
+      "choices": [
+        "Electric current flows through the circuit",
+        "The circuit is completed",
+        "The circuit is broken",
+        "The lamp glows"
+      ],
+      "answerIndex": 2,
+      "solution": "When a switch is in the 'OFF' position, the circuit is broken, preventing electric current from flowing. The other options describe situations when the switch is in the 'ON' position.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि स्विच 'ऑफ' स्थिति में हो तो क्या होता है?",
+          "choices": [
+            "विद्युत धारा परिपथ में प्रवाहित होती है",
+            "परिपथ पूर्ण हो जाता है",
+            "परिपथ टूट जाता है",
+            "लैंप जलता है"
+          ],
+          "solution": "जब स्विच 'ऑफ' स्थिति में होता है तो परिपथ टूट जाता है जिससे विद्युत धारा प्रवाहित नहीं हो पाती। अन्य विकल्प स्विच की 'ऑन' स्थिति के अवसरों का वर्णन करते हैं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, technical terms are appropriate for Hindi-medium curriculum, and the logic of the question and solution is preserved.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर स्विच 'ऑफ' शीर्षकावर असेल तर काय होते?",
+          "choices": [
+            "विद्युत प्रवाह सर्किटमधून वाहतो",
+            "सर्किट पूर्ण होतो",
+            "सर्किट तुटतो",
+            "दिवा ज्वलित होतो"
+          ],
+          "solution": "जेव्हा स्विच 'ऑफ' शीर्षकावर असतो तेव्हा सर्किट तुटतो, जेणेकरून विद्युत प्रवाह प्रवाहित होऊ शकत नाही. इतर पर्याय स्विच 'ऑन' शीर्षकावर असताना घडतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi technical terms used for 'circuit' and 'switch'.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Thinks the switch being off allows current to flow",
+        "Thinks the switch being off completes the circuit",
+        null,
+        "Thinks the switch being off causes the lamp to glow"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 2, as an 'OFF' switch breaks the circuit. The reasoning is sound and matches the misconceptions described.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 11,
+          "pageStart": 14,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.4 Electrical Conductors and Insulators"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 12,
+          "pageStart": 15,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.4 Electrical Conductors and Insulators",
+            "In a Nutshell"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 13,
+          "pageStart": 16,
+          "pageEnd": 18,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.4 Electrical Conductors and Insulators",
+            "Let Us Enhance Our Learning"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 14,
+          "pageStart": 18,
+          "pageEnd": 18,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.4 Electrical Conductors and Insulators",
+            "Exploratory Projects"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-31T21:15:23.989Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "If the positive terminal of a cell is connected to the negative terminal of another cell, what is the effect on the overall voltage of the circuit?",
+      "choices": [
+        "The voltage remains the same",
+        "The voltage decreases",
+        "The voltage increases",
+        "The voltage becomes zero"
+      ],
+      "answerIndex": 2,
+      "solution": "When the positive terminal of one cell is connected to the negative terminal of another cell, the overall voltage of the circuit increases. This is because the cells are connected in series, and the voltages add up. The voltage does not remain the same, decrease, or become zero in this arrangement.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक सेल के धनात्मक टर्मिनल को दूसरे सेल के ऋणात्मक टर्मिनल से जोड़ा जाता है, तो परिपथ के कुल वोल्टेज पर क्या प्रभाव पड़ता है?",
+          "choices": [
+            "वोल्टेज वही रहता है",
+            "वोल्टेज कम हो जाता है",
+            "वोल्टेज बढ़ जाता है",
+            "वोल्टेज शून्य हो जाता है"
+          ],
+          "solution": "जब एक सेल के धनात्मक टर्मिनल को दूसरे सेल के ऋणात्मक टर्मिनल से जोड़ा जाता है, तो परिपथ के कुल वोल्टेज बढ़ जाता है। यह इसलिए है क्योंकि सेल श्रेणी में जुड़े होते हैं और वोल्टेज जुड़ जाते हैं। इस व्यवस्था में वोल्टेज वही नहीं रहता, कम नहीं होता और शून्य नहीं होता।",
+          "imageAlt": "दो बैटरी के तार के साथ श्रेणी में जुड़ी हुई हैं, धनात्मक और ऋणात्मक टर्मिनल दिखाए गए हैं।",
+          "critique": "Translation is accurate, maintains the same meaning, and uses standard Hindi technical terms.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर सेलच्या धनात्मक टर्मिनलला दुसऱ्या सेलच्या ऋणात्मक टर्मिनलला जोडले जाते, तर परिपथाच्या एकूण व्होल्टेजवर काय परिणाम होतो?",
+          "choices": [
+            "व्होल्टेज तितकाच राहतो",
+            "व्होल्टेज कमी होतो",
+            "व्होल्टेज वाढतो",
+            "व्होल्टेज शून्य होतो"
+          ],
+          "solution": "जर एका सेलच्या धनात्मक टर्मिनलला दुसऱ्या सेलच्या ऋणात्मक टर्मिनलला जोडले जाते, तर परिपथाच्या एकूण व्होल्टेज वाढतो. हे त्यामुळे होते कारण सेल सीरिजमध्ये जोडले गेले आहेत आणि व्होल्टेज जमा होतो. ही व्यवस्था असताना व्होल्टेज तितकाच राहत नाही, कमी होत नाही किंवा शून्य होत नाही.",
+          "imageAlt": "दोन बॅटरी तारेने श्रेणीमध्ये जोडल्या गेल्या आहेत, धनात्मक आणि ऋणात्मक टर्मिनल दर्शविले आहेत.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms for electrical concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": "Two batteries connected in series with a wire, showing positive and negative terminals.",
+      "figure": {
+        "kind": "circuit",
+        "spec": {
+          "nodes": [
+            {
+              "id": "n1",
+              "x": 1,
+              "y": 4
+            },
+            {
+              "id": "n2",
+              "x": 3,
+              "y": 4
+            },
+            {
+              "id": "n3",
+              "x": 5,
+              "y": 4
+            }
+          ],
+          "parts": [
+            {
+              "type": "battery",
+              "from": "n1",
+              "to": "n2",
+              "label": "B1",
+              "value": {
+                "value": 1.5,
+                "unit": "V"
+              }
+            },
+            {
+              "type": "battery",
+              "from": "n2",
+              "to": "n3",
+              "label": "B2",
+              "value": {
+                "value": 1.5,
+                "unit": "V"
+              }
+            },
+            {
+              "type": "wire",
+              "from": "n1",
+              "to": "n3"
+            }
+          ]
+        },
+        "labels": {}
+      },
+      "needsFigure": true,
+      "distractorReason": [
+        "Thinks the voltage is unaffected by the arrangement",
+        "Believes the voltage decreases when cells are connected in series",
+        null,
+        "Does not understand the concept of series connection"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is well-posed and the solution is correct. Connecting cells in series increases the total voltage, and the reasoning provided by the author is accurate. The distractors are plausible misconceptions for students.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.1 A Torchlight"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 2,
+          "pageStart": 3,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.2 A Simple Electrical Circuit",
+            "3.2.1 Electric cell"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 3,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.2 A Simple Electrical Circuit",
+            "3.2.2 Battery"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-31T21:15:23.989Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the main purpose of using insulators in electrical circuits?",
+      "choices": [
+        "To allow current to flow easily",
+        "To increase the resistance of the circuit",
+        "To prevent electric shocks",
+        "To reduce the voltage of the circuit"
+      ],
+      "answerIndex": 2,
+      "solution": "Insulators are used to prevent electric shocks because they do not allow electric current to pass through them, making them safe to handle. Allowing current to flow easily is the role of conductors, not insulators. Increasing resistance is a function of resistors, not insulators. Reducing voltage is typically done by other components like transformers or voltage regulators.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "विद्युत परिपथ में विद्युत अचालक का मुख्य उद्देश्य क्या है?",
+          "choices": [
+            "विद्युत धारा के आसानी से प्रवाहित होने के लिए",
+            "परिपथ के प्रतिरोध को बढ़ाना",
+            "विद्युत झटका रोकना",
+            "परिपथ के वोल्टेज को कम करना"
+          ],
+          "solution": "विद्युत अचालक विद्युत झटका रोकने के लिए उपयोग किए जाते हैं क्योंकि वे विद्युत धारा के प्रवाह की अनुमति नहीं देते हैं, जिससे उन्हें हाथ लगाना सुरक्षित रहता है। विद्युत धारा के आसानी से प्रवाहित होने का कार्य चालकों का होता है, न कि अचालकों का। प्रतिरोध बढ़ाना प्रतिरोधकों का कार्य होता है, न कि अचालकों का। वोल्टेज कम करना आमतौर पर ट्रांसफॉर्मर या वोल्टेज नियंत्रक जैसे अन्य घटकों द्वारा किया जाता है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Hindi technical terms used for electrical components.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "विद्युत परिपथात अवाहकांचा मुख्य उपयोग काय आहे?",
+          "choices": [
+            "विद्युत प्रवाह व्यापकपणे प्रवाहित करणे",
+            "परिपथाचा प्रतिरोध वाढवणे",
+            "विद्युत झटका रोखणे",
+            "परिपथाचे वोल्टेज कमी करणे"
+          ],
+          "solution": "अवाहकांचा वापर विद्युत झटका रोखण्यासाठी केला जातो कारण ते विद्युत प्रवाह व्यापकपणे प्रवाहित करत नाहीत, ज्यामुळे ते हाताळण्यास सुरक्षित असतात. विद्युत प्रवाह व्यापकपणे प्रवाहित करणे हा वाहकांचा भाग आहे, अवाहकांचा नाही. प्रतिरोध वाढवणे हा प्रतिरोधकांचा कार्य आहे, अवाहकांचा नाही. वोल्टेज कमी करणे हा ट्रान्सफॉर्मर किंवा वोल्टेज रेग्युलेटर सारख्या इतर घटकांचा कार्य आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Mistakes the function of conductors",
+        "Confuses insulators with resistors",
+        null,
+        "Incorrect understanding of safety purpose"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 2, as insulators are used to prevent electric shocks. The reasoning in the author's solution is sound, and the misconceptions listed for the wrong options are valid and commonly held by students.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 11,
+          "pageStart": 14,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.4 Electrical Conductors and Insulators"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 12,
+          "pageStart": 15,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.4 Electrical Conductors and Insulators",
+            "In a Nutshell"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 13,
+          "pageStart": 16,
+          "pageEnd": 18,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.4 Electrical Conductors and Insulators",
+            "Let Us Enhance Our Learning"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 14,
+          "pageStart": 18,
+          "pageEnd": 18,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.4 Electrical Conductors and Insulators",
+            "Exploratory Projects"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T15:58:01.457Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of the following is true about the terminals of an incandescent lamp?",
+      "choices": [
+        "Both terminals are the same",
+        "One terminal is longer than the other",
+        "They are connected to the same wire",
+        "They are connected to different wires"
+      ],
+      "answerIndex": 3,
+      "solution": "The terminals of an incandescent lamp are connected to different wires, which allows electric current to pass through the filament and produce light. If both terminals were connected to the same wire, no current would flow. The other options are incorrect because the terminals are not identical in function, and one is not longer than the other.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा एक बल्ब के टर्मिनलों के बारे में सत्य है?",
+          "choices": [
+            "दोनों टर्मिनल एक ही होते हैं",
+            "एक टर्मिनल दूसरे की तुलना में लंबा होता है",
+            "वे एक ही तार से जुड़े होते हैं",
+            "वे अलग-अलग तारों से जुड़े होते हैं"
+          ],
+          "solution": "एक बल्ब के टर्मिनल अलग-अलग तारों से जुड़े होते हैं, जो विद्युत धारा के प्रवाह के लिए फिलामेंट के माध्यम से अनुमति देते हैं और प्रकाश उत्पन्न करते हैं। यदि दोनों टर्मिनल एक ही तार से जुड़े होते, तो कोई धारा प्रवाह नहीं होती। अन्य विकल्प गलत हैं क्योंकि टर्मिनल समान कार्य नहीं करते हैं, और एक लंबा नहीं होता है।",
+          "imageAlt": null,
+          "critique": "Translation accurately preserves meaning, technical terms are appropriate, and the correct answer remains option 3.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते एक बल्बच्या टर्मिनलबद्दल खरे आहे?",
+          "choices": [
+            "दोन्ही टर्मिनल एकसारखे असतात",
+            "एक टर्मिनल दुसऱ्यापेक्षा लांब असतो",
+            "त्यांना एकाच तारेशी जोडले जाते",
+            "त्यांना वेगवेगळ्या तारांशी जोडले जाते"
+          ],
+          "solution": "बल्बच्या टर्मिनलला वेगवेगळ्या तारांशी जोडले जाते, जेणेकरून विद्युत प्रवाह फिलामेंटमधून जाऊ शकेल आणि प्रकाश तयार होऊ शकेल. जर दोन्ही टर्मिनल एकाच तारेशी जोडले गेले असते, तर प्रवाह नसतो. इतर विकल्प चुकीचे आहेत कारण टर्मिनल फंक्शनमध्ये एकसारखे नसतात, आणि एक टर्मिनल दुसऱ्यापेक्षा लांब नसतो.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Thinks both terminals are the same",
+        "Confuses LED terminals with incandescent ones",
+        "Does not understand that the terminals are separate",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 3, as the terminals of an incandescent lamp must be connected to different wires to allow current to flow through the filament. The reasoning in the author's solution is sound and matches the correct answer.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 4,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.2 A Simple Electrical Circuit",
+            "3.2.3 Electric lamp"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 5,
+          "pageStart": 5,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.2 A Simple Electrical Circuit",
+            "3.2.4 Making an electric lamp glow using an",
+            "electric cell or battery"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 6,
+          "pageStart": 8,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.2 A Simple Electrical Circuit",
+            "3.2.5 An electrical circuit"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T15:58:01.457Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which part of the incandescent lamp is responsible for producing light?",
+      "choices": [
+        "The insulator",
+        "The glass bulb",
+        "The filament",
+        "The thick wire"
+      ],
+      "answerIndex": 2,
+      "solution": "The filament is responsible for producing light because it heats up and glows when electric current passes through it. The insulator, glass bulb, and thick wire do not emit light under these conditions. The filament's ability to glow is a direct result of the electrical resistance it provides.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "बल्ब के कौन से भाग द्वारा प्रकाश उत्पन्न किया जाता है?",
+          "choices": [
+            "आइसोलेटर",
+            "कांच का बल्ब",
+            "तंतु",
+            "मोटा तार"
+          ],
+          "solution": "तंतु प्रकाश उत्पन्न करता है क्योंकि जब विद्युत धारा इसके माध्यम से गुजरती है तो यह गर्म हो जाता है और चमकता है। आइसोलेटर, कांच का बल्ब और मोटा तार इन परिस्थितियों में प्रकाश उत्सर्जित नहीं करते हैं। तंतु की चमकने की क्षमता विद्युत प्रतिरोध के कारण होती है।",
+          "imageAlt": null,
+          "critique": "The translation accurately reflects the original question and answer, with appropriate Hindi technical terms used for components of an incandescent lamp.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "अज्वलन प्रकाश बल्बच्या कोणत्या भागाने प्रकाश उत्पन्न करण्याची जबाबदारी असते?",
+          "choices": [
+            "संयोजक",
+            "काचेचा बल्ब",
+            "तापन तार",
+            "मोठा तार"
+          ],
+          "solution": "तापन तार प्रकाश उत्पन्न करण्याची जबाबदारी असते कारण त्याला विद्युत प्रवाह वाहताना तापते आणि चमकते. संयोजक, काचेचा बल्ब आणि मोठा तार यांना या परिस्थितीत प्रकाश उत्सर्जित करत नाहीत. तापन तारची चमकण्याची क्षमता ही विद्युत प्रतिरोधामुळे आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the function of the insulator",
+        "Thinks the glass bulb is the light source",
+        null,
+        "Misunderstands the role of the thick wire"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct and aligns with the correct answer. The filament is indeed the part of the incandescent lamp that produces light by glowing when current passes through it.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 4,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.2 A Simple Electrical Circuit",
+            "3.2.3 Electric lamp"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 5,
+          "pageStart": 5,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.2 A Simple Electrical Circuit",
+            "3.2.4 Making an electric lamp glow using an",
+            "electric cell or battery"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 6,
+          "pageStart": 8,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.2 A Simple Electrical Circuit",
+            "3.2.5 An electrical circuit"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T15:58:01.457Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "Which of the following is a correct use of electricity in the 'Transportation' category?",
+      "choices": [
+        "Train",
+        "Fan",
+        "Radio",
+        "Computer"
+      ],
+      "answerIndex": 0,
+      "solution": "The correct answer is 'Train' because it is a vehicle that uses electricity for movement, which falls under the 'Transportation' category. 'Fan' uses electricity for air movement, which is related to 'Heating and Cooling', 'Radio' uses electricity for communication and entertainment, and 'Computer' uses electricity for data processing and information handling.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा विद्युत का सही उपयोग 'परिवहन' श्रेणी में है?",
+          "choices": [
+            "ट्रेन",
+            "पंखा",
+            "रेडियो",
+            "कंप्यूटर"
+          ],
+          "solution": "सही उत्तर 'ट्रेन' है क्योंकि यह एक वाहन है जो गति के लिए विद्युत का उपयोग करता है, जो 'परिवहन' श्रेणी में आता है। 'पंखा' विद्युत का उपयोग हवा के गति के लिए करता है, जो 'ऊष्मा एवं शीतलन' से संबंधित है, 'रेडियो' विद्युत का उपयोग संचार एवं मनोरंजन के लिए करता है और 'कंप्यूटर' विद्युत का उपयोग डेटा प्रसंस्करण एवं सूचना निपटान के लिए करता है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate technical terms as found in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणता विद्युत वापर 'परिवहन' श्रेणीत योग्य आहे?",
+          "choices": [
+            "ट्रेन",
+            "फॅन",
+            "रेडिओ",
+            "कॉम्प्यूटर"
+          ],
+          "solution": "बरोबर उत्तर 'ट्रेन' आहे कारण ती विद्युत वापरून गती देणारा वाहन आहे, जे 'परिवहन' श्रेणीत येते. 'फॅन' विद्युत वापरून हवा चालवतो, जे 'उष्णता आणि शीतलन' श्रेणीशी संबंधित आहे, 'रेडिओ' विद्युत वापरून संदेश आणि मनोरंजन करतो, आणि 'कॉम्प्यूटर' विद्युत वापरून माहिती आणि डेटा प्रक्रिया करतो.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms. The structure and logic of the question and solution are preserved.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "confuses categories",
+        "confuses categories",
+        "confuses categories"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The question is valid, and the correct answer is 'Train' as it fits the 'Transportation' category. The other options are correctly identified as belonging to different categories. The reasoning is sound and matches the expected misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.1 A Torchlight"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 2,
+          "pageStart": 3,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.2 A Simple Electrical Circuit",
+            "3.2.1 Electric cell"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 3,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.2 A Simple Electrical Circuit",
+            "3.2.2 Battery"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T15:58:01.457Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "In a circuit, which component is used to complete or break the circuit?",
+      "choices": [
+        "Battery",
+        "Lamp",
+        "Switch",
+        "Resistor"
+      ],
+      "answerIndex": 2,
+      "solution": "A switch is used to complete or break the circuit because it can open or close the path for electric current to flow. A battery provides power, a lamp emits light, and a resistor limits current, none of which can control the circuit's completion or breakage.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक सर्किट में, कौन सा घटक सर्किट को पूरा करने या तोड़ने के लिए उपयोग किया जाता है?",
+          "choices": [
+            "बैटरी",
+            "लैंप",
+            "स्विच",
+            "प्रतिरोधक"
+          ],
+          "solution": "एक स्विच का उपयोग सर्किट को पूरा करने या तोड़ने के लिए किया जाता है क्योंकि यह विद्युत धारा के पथ को खोल सकता है या बंद कर सकता है। बैटरी शक्ति प्रदान करती है, लैंप प्रकाश उत्सर्जित करता है और प्रतिरोधक धारा को सीमित करता है, जिनमें से कोई भी सर्किट के पूरा होने या तोड़े जाने के नियंत्रण करने में सक्षम नहीं है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Hindi technical terms.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "परिपथात, परिपथ पूर्ण करण्यासाठी किंवा तो तोडण्यासाठी कोणता घटक वापरला जातो?",
+          "choices": [
+            "बॅटरी",
+            "लॅम्प",
+            "स्विच",
+            "रेझिस्टर"
+          ],
+          "solution": "स्विच परिपथ पूर्ण करण्यासाठी किंवा तो तोडण्यासाठी वापरला जातो कारण तो विद्युत प्रवाहाच्या मार्गाला खुला किंवा बंद करू शकतो. बॅटरी ऊर्जा पुरवते, लॅम्प प्रकाश उत्पन्न करते आणि रेझिस्टर प्रवाह मर्यादित करते, ज्यापैकी कोणालाही परिपथाच्या पूर्णतेचा किंवा तोडण्याचा नियंत्रण करता येत नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Mistakes the function of a battery",
+        "Confuses the function of a lamp",
+        null,
+        "Incorrectly identifies the role of a resistor"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 2 (Switch), as it is the component that completes or breaks a circuit. The author's reasoning for the other options aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 11,
+          "pageStart": 14,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.4 Electrical Conductors and Insulators"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 12,
+          "pageStart": 15,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.4 Electrical Conductors and Insulators",
+            "In a Nutshell"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 13,
+          "pageStart": 16,
+          "pageEnd": 18,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.4 Electrical Conductors and Insulators",
+            "Let Us Enhance Our Learning"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 14,
+          "pageStart": 18,
+          "pageEnd": 18,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.4 Electrical Conductors and Insulators",
+            "Exploratory Projects"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T15:58:01.457Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "A student connects three electric cells in a torch, but the lamp does not glow. What is the most likely reason?",
+      "choices": [
+        "The cells are not connected properly",
+        "The cells are not of the same type",
+        "The switch is not turned on",
+        "The cells are not of the same voltage"
+      ],
+      "answerIndex": 0,
+      "solution": "The correct answer is 'The cells are not connected properly' because for an electric circuit to function, the cells must be connected in the correct sequence to allow the flow of electric current. If they are not connected properly, the circuit remains incomplete, and the lamp will not glow. The other options, such as the cells being of different types or voltages, or the switch not being on, are not directly related to the basic requirement of proper connection for the circuit to work.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक छात्र टॉर्च में तीन विद्युत सेल जोड़ता है, लेकिन बल्ब जलता नहीं है। सबसे संभावित कारण क्या है?",
+          "choices": [
+            "सेल सही तरह से जुड़े नहीं हैं",
+            "सेल एक ही प्रकार के नहीं हैं",
+            "स्विच चालू नहीं है",
+            "सेल एक ही वोल्टेज के नहीं हैं"
+          ],
+          "solution": "सही उत्तर 'सेल सही तरह से जुड़े नहीं हैं' है क्योंकि विद्युत परिपथ कार्य करने के लिए, सेलों को सही क्रम में जोड़ा जाना चाहिए ताकि विद्युत धारा के प्रवाह की अनुमति हो सके। यदि वे सही तरह से जुड़े नहीं हैं, तो परिपथ अपूर्ण रहता है और बल्ब जलता नहीं है। अन्य विकल्प, जैसे कि सेल अलग-अलग प्रकार के या वोल्टेज के होना, या स्विच बंद होना, परिपथ कार्य करने के लिए मूल आवश्यकता के सीधे संबंधित नहीं हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms as found in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका विद्यार्थीने टॉर्चमध्ये तीन विद्युत सेल जोडले, परंतु बल्ब जळत नाही. त्याचे सर्वात शक्य कारण काय असू शकते?",
+          "choices": [
+            "सेल योग्यरित्या जोडले गेले नाहीत",
+            "सेल एकसारखे नाहीत",
+            "स्विच चालू नाही",
+            "सेल एकसारखे व्होल्टेज नाहीत"
+          ],
+          "solution": "योग्य उत्तर 'सेल योग्यरित्या जोडले गेले नाहीत' आहे कारण विद्युत परिपथ कार्य करण्यासाठी सेल योग्य क्रमाने जोडले जाणे आवश्यक आहेत जेणेकरून विद्युत प्रवाह होऊ शकेल. जर सेल योग्यरित्या जोडले गेले नाहीत तर परिपथ अपूर्ण राहतो आणि बल्ब जळत नाही. इतर विकल्प, जसे की सेल वेगळ्या प्रकारचे असल्यामुळे किंवा व्होल्टेज वेगळे असल्यामुळे, किंवा स्विच चालू नसल्यामुळे, परिपथ कार्य करण्यासाठी आवश्यक असलेल्या योग्य जोडणीच्या मूलभूत आवश्यकतेशी सीधा संबंध नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms (e.g., 'सेल' for 'cells', 'परिपथ' for 'circuit', 'विद्युत प्रवाह' for 'electric current').",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "A pupil might think that different types of cells (like alkaline vs. carbon-zinc) would prevent the lamp from glowing, even if they are of the same voltage.",
+        "Student forgets that the switch must be in the 'on' position for the circuit to work",
+        "A student might think that different voltages prevent the lamp from glowing, not realizing that same voltage is not always necessary if the circuit is complete."
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 0, as improper connection is the most likely reason for a lamp not glowing in a circuit. The other options reflect common misconceptions, which are valid as distractors.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.1 A Torchlight"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 2,
+          "pageStart": 3,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.2 A Simple Electrical Circuit",
+            "3.2.1 Electric cell"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 3,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.2 A Simple Electrical Circuit",
+            "3.2.2 Battery"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T15:58:01.457Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Why is it important to connect the positive terminal of one cell to the negative terminal of another cell in a battery?",
+      "choices": [
+        "To ensure the flow of electric current",
+        "To increase the voltage",
+        "To decrease the resistance",
+        "To make the battery smaller"
+      ],
+      "answerIndex": 0,
+      "solution": "The correct answer is 'To ensure the flow of electric current' because connecting the positive terminal of one cell to the negative terminal of another creates a continuous path for electrons to move, allowing current to flow. Increasing voltage is a result of this connection, but not the main purpose. Decreasing resistance and making the battery smaller are not related to this specific connection.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक बैटरी में एक सेल के धनात्मक टर्मिनल को दूसरे सेल के ऋणात्मक टर्मिनल से क्यों जोड़ना आवश्यक है?",
+          "choices": [
+            "विद्युत धारा के प्रवाह को सुनिश्चित करना",
+            "वोल्टेज बढ़ाना",
+            "प्रतिरोध कम करना",
+            "बैटरी को छोटा बनाना"
+          ],
+          "solution": "सही उत्तर 'विद्युत धारा के प्रवाह को सुनिश्चित करना' है क्योंकि एक सेल के धनात्मक टर्मिनल को दूसरे सेल के ऋणात्मक टर्मिनल से जोड़ने से इलेक्ट्रॉनों के गति के लिए एक लगातार पथ बनता है, जिससे धारा प्रवाहित होती है। वोल्टेज बढ़ाना इस जोड़ का एक परिणाम है, लेकिन मुख्य उद्देश्य नहीं है। प्रतिरोध कम करना और बैटरी को छोटा बनाना इस विशिष्ट जोड़ से संबंधित नहीं है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate technical terms as found in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका सेलच्या धनात्मक टर्मिनलला दुसऱ्या सेलच्या ऋणात्मक टर्मिनलला का जोडावे लागते?",
+          "choices": [
+            "विद्युत प्रवाहाची खात्री करणे",
+            "व्होल्टेज वाढवणे",
+            "प्रतिरोध कमी करणे",
+            "बॅटरी लहान करणे"
+          ],
+          "solution": "सही उत्तर 'विद्युत प्रवाहाची खात्री करणे' आहे कारण एका सेलच्या धनात्मक टर्मिनलला दुसऱ्या सेलच्या ऋणात्मक टर्मिनलला जोडल्याने इलेक्ट्रॉन्स चालू राहण्यासाठी एक चक्रीय मार्ग तयार होतो, जेणेकरून प्रवाह होतो. व्होल्टेज वाढवणे हे या जोडणीचे परिणाम असते, परंतु मुख्य उद्देश नाही. प्रतिरोध कमी करणे आणि बॅटरी लहान करणे हे या विशिष्ट जोडणीशी संबंधित नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "confuses the purpose of a battery",
+        "misunderstands the function of a battery",
+        "confuses physical properties with function"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-constructed. The correct answer is 0, as connecting the positive terminal of one cell to the negative terminal of another is essential for current flow. The other options reflect common misconceptions about batteries.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.1 A Torchlight"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 2,
+          "pageStart": 3,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.2 A Simple Electrical Circuit",
+            "3.2.1 Electric cell"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 3,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.2 A Simple Electrical Circuit",
+            "3.2.2 Battery"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T15:58:01.457Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "If a student uses a material that is an insulator in a circuit, what would be the effect on the current?",
+      "choices": [
+        "The current would increase",
+        "The current would decrease",
+        "The current would stop",
+        "The current would remain the same"
+      ],
+      "answerIndex": 2,
+      "solution": "The current would stop because insulators do not allow the flow of electric current. Conductors allow current to flow, while insulators block it.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक छात्र एक परिपथ में एक विद्युत अचालक के रूप में एक सामग्री का उपयोग करता है, तो धारा पर क्या प्रभाव पड़ेगा?",
+          "choices": [
+            "धारा बढ़ जाएगी",
+            "धारा घट जाएगी",
+            "धारा रुक जाएगी",
+            "धारा वही रहेगी"
+          ],
+          "solution": "धारा रुक जाएगी क्योंकि अचालक विद्युत धारा के प्रवाह की अनुमति नहीं देते। चालक धारा के प्रवाह की अनुमति देते हैं, जबकि अचालक इसे रोकते हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English question and options, with appropriate technical terms like 'विद्युत अचालक' (insulator) and 'चालक' (conductor) used as in standard Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका विद्यार्थीने परिपथात एका विद्युत अवाहकाचा वापर केला, तर विद्युत प्रवाहावर काय परिणाम होईल?",
+          "choices": [
+            "प्रवाह वाढेल",
+            "प्रवाह कमी होईल",
+            "प्रवाह थांबेल",
+            "प्रवाह त्याच राहील"
+          ],
+          "solution": "प्रवाह थांबेल कारण अवाहक विद्युत प्रवाहाच्या प्रवाहाला परवानगी देत नाहीत. चालक प्रवाहाला परवानगी देतात, तर अवाहक त्याला अडवतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms like 'अवाहक' (insulator) and 'चालक' (conductor).",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Misunderstands the role of insulators",
+        "Confuses the effect of resistors",
+        null,
+        "Incorrectly assumes current remains the same"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 2, as insulators block the flow of electric current. The reasoning provided by the author is accurate and aligns with the correct understanding of insulators in electrical circuits.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 11,
+          "pageStart": 14,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.4 Electrical Conductors and Insulators"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 12,
+          "pageStart": 15,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.4 Electrical Conductors and Insulators",
+            "In a Nutshell"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 13,
+          "pageStart": 16,
+          "pageEnd": 18,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.4 Electrical Conductors and Insulators",
+            "Let Us Enhance Our Learning"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 14,
+          "pageStart": 18,
+          "pageEnd": 18,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.4 Electrical Conductors and Insulators",
+            "Exploratory Projects"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T15:58:01.457Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the main purpose of the filament in an incandescent lamp?",
+      "choices": [
+        "To connect the lamp to the cell",
+        "To produce light",
+        "To store electric charge",
+        "To prevent electric current from flowing"
+      ],
+      "answerIndex": 1,
+      "solution": "The filament in an incandescent lamp gets hot and glows to produce light. It is not used to connect the lamp to the cell, store electric charge, or prevent electric current from flowing. Its main purpose is to produce light.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक अस्पष्ट बल्ब में फिलामेंट का मुख्य उद्देश्य क्या है?",
+          "choices": [
+            "बल्ब को सेल से जोड़ना",
+            "प्रकाश उत्पन्न करना",
+            "विद्युत आवेश संग्रहीत करना",
+            "विद्युत धारा के प्रवाह को रोकना"
+          ],
+          "solution": "एक अस्पष्ट बल्ब में फिलामेंट गर्म हो जाता है और प्रकाश उत्पन्न करता है। इसका उपयोग बल्ब को सेल से जोड़ने, विद्युत आवेश संग्रहीत करने या विद्युत धारा के प्रवाह को रोकने के लिए नहीं किया जाता है। इसका मुख्य उद्देश्य प्रकाश उत्पन्न करना है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the original English question and solution, with appropriate technical terms used in a Hindi-medium context.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "इंकांडेसेंट बल्बमध्ये तापदायक ताराचा मुख्य उद्देश काय आहे?",
+          "choices": [
+            "बल्बला सेलशी जोडण्यासाठी",
+            "प्रकाश तयार करण्यासाठी",
+            "विद्युत आवेश जमा करण्यासाठी",
+            "विद्युत प्रवाह रोखण्यासाठी"
+          ],
+          "solution": "इंकांडेसेंट बल्बमध्ये तापदायक तार गरम होऊन त्याच्यामुळे प्रकाश तयार होतो. त्याचा उपयोग बल्बला सेलशी जोडण्यासाठी, विद्युत आवेश जमा करण्यासाठी किंवा विद्युत प्रवाह रोखण्यासाठी केला जात नाही. त्याचा मुख्य उद्देश प्रकाश तयार करणे आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi technical terms used.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the function of the filament with that of the wires",
+        null,
+        "Does not understand the role of the filament",
+        "Does not know the function of the filament in the lamp"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 1, as the filament's main purpose is to produce light by heating up. The distractors reflect common misconceptions about the filament's role.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 4,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.2 A Simple Electrical Circuit",
+            "3.2.3 Electric lamp"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 5,
+          "pageStart": 5,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.2 A Simple Electrical Circuit",
+            "3.2.4 Making an electric lamp glow using an",
+            "electric cell or battery"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 6,
+          "pageStart": 8,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.2 A Simple Electrical Circuit",
+            "3.2.5 An electrical circuit"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T02:11:34.267Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the main difference between an incandescent lamp and an LED lamp?",
+      "choices": [
+        "Incandescent lamps have filaments, LEDs do not",
+        "Incandescent lamps are used in phones, LEDs are not",
+        "Incandescent lamps are always yellow, LEDs are not",
+        "Incandescent lamps have only one terminal, LEDs have two"
+      ],
+      "answerIndex": 0,
+      "solution": "The main difference is that incandescent lamps have filaments, while LEDs do not. The other options are incorrect because LEDs are commonly used in phones, can emit various colors, and both types of lamps have two terminals.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक अस्पष्ट बल्ब और एक एलईडी बल्ब में मुख्य अंतर क्या है?",
+          "choices": [
+            "अस्पष्ट बल्ब में फिलामेंट होता है, एलईडी में नहीं",
+            "अस्पष्ट बल्ब फोन में उपयोग किए जाते हैं, एलईडी नहीं",
+            "अस्पष्ट बल्ब हमेशा पीले होते हैं, एलईडी नहीं",
+            "अस्पष्ट बल्ब में केवल एक टर्मिनल होता है, एलईडी में दो होते हैं"
+          ],
+          "solution": "मुख्य अंतर यह है कि अस्पष्ट बल्ब में फिलामेंट होता है, जबकि एलईडी में नहीं होता। अन्य विकल्प गलत हैं क्योंकि एलईडी फोन में आम तौर पर उपयोग किए जाते हैं, विभिन्न रंग उत्सर्जित कर सकते हैं, और दोनों प्रकार के बल्बों में दो टर्मिनल होते हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English question, with appropriate technical terms and correct answer positioning.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "इनकांडेसेंट लॅम्प आणि एलईडी लॅम्पमध्ये मुख्य फरक काय आहे?",
+          "choices": [
+            "इनकांडेसेंट लॅम्पमध्ये तापदायक असतो, एलईडीमध्ये नसतो",
+            "इनकांडेसेंट लॅम्प फोनमध्ये वापरले जातात, एलईडी वापरले जात नाहीत",
+            "इनकांडेसेंट लॅम्प हमखास पांढरे असतात, एलईडी असत नाहीत",
+            "इनकांडेसेंट लॅम्पमध्ये केवळ एक टर्मिनल असतो, एलईडीमध्ये दोन असतात"
+          ],
+          "solution": "मुख्य फरक असा आहे की इनकांडेसेंट लॅम्पमध्ये तापदायक असतो, तर एलईडीमध्ये नसतो. इतर विकल्प चुकीचे आहेत कारण एलईडी फोनमध्ये सामान्यतः वापरले जातात, ते विविध रंग देऊ शकतात आणि दोन्ही प्रकारच्या लॅम्पमध्ये दोन टर्मिनल असतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi technical terms used for electrical components.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Believes that LEDs are not used in modern devices like phones",
+        "Confuses color of light with type of lamp",
+        "Confuses the number of terminals based on the presence of a filament"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 0, as incandescent lamps do have filaments while LEDs do not. The other options reflect common misconceptions about the use, color, and structure of LEDs.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 4,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.2 A Simple Electrical Circuit",
+            "3.2.3 Electric lamp"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 5,
+          "pageStart": 5,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.2 A Simple Electrical Circuit",
+            "3.2.4 Making an electric lamp glow using an",
+            "electric cell or battery"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 6,
+          "pageStart": 8,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.2 A Simple Electrical Circuit",
+            "3.2.5 An electrical circuit"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T02:11:34.267Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of the following statements correctly describes the function of a switch in an electrical circuit?",
+      "choices": [
+        "It increases the voltage in the circuit",
+        "It controls the flow of current",
+        "It changes the direction of current",
+        "It reduces the resistance in the circuit"
+      ],
+      "answerIndex": 1,
+      "solution": "A switch controls the flow of current in a circuit. It can either complete the circuit (ON position) or break it (OFF position). The other options describe functions that are not performed by a switch.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा कथन विद्युत परिपथ में स्विच के कार्य का सही वर्णन करता है?",
+          "choices": [
+            "यह परिपथ में वोल्टेज बढ़ाता है",
+            "यह धारा के प्रवाह को नियंत्रित करता है",
+            "यह धारा की दिशा बदल देता है",
+            "यह परिपथ में प्रतिरोध कम कर देता है"
+          ],
+          "solution": "एक स्विच विद्युत परिपथ में धारा के प्रवाह को नियंत्रित करता है। यह या तो परिपथ को पूरा कर सकता है (ऑन स्थिति) या तो तोड़ सकता है (ऑफ स्थिति)। अन्य विकल्प परिपथ में स्विच द्वारा किए जाने वाले कार्यों का वर्णन नहीं करते हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the original English question and solution, with appropriate technical terms used in a Hindi-medium context.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणता विधान विद्युत परिपथातील स्विचच्या कार्याचे योग्यरित्या वर्णन करते?",
+          "choices": [
+            "ते परिपथातील वोल्टेज वाढवते",
+            "ते विद्युत प्रवाहाचा वापर नियंत्रित करते",
+            "ते विद्युत प्रवाहाच्या दिशेचे बदल करते",
+            "ते परिपथातील प्रतिरोध कमी करते"
+          ],
+          "solution": "एक स्विच परिपथातील विद्युत प्रवाहाचा वापर नियंत्रित करते. ते काही वेळा परिपथ पूर्ण करू शकते (ओन स्थिती) किंवा तो तोडू शकते (ऑफ स्थिती). इतर विधाने स्विच द्वारे केल्या जाणार्‍या कार्यांचे वर्णन करत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi technical terms used.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses switch with a voltage booster",
+        null,
+        "Thinks switch changes current direction",
+        "Believes switch affects resistance"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-constructed. The correct answer is clearly 1, and the distractors reflect common misconceptions about the function of a switch.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 7,
+          "pageStart": 9,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.2 A Simple Electrical Circuit",
+            "3.2.5 An electrical circuit"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 8,
+          "pageStart": 10,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.2 A Simple Electrical Circuit",
+            "3.2.6 Electric switch"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 9,
+          "pageStart": 11,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.3 Circuit Diagrams"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 10,
+          "pageStart": 12,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.4 Electrical Conductors and Insulators"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T02:11:34.267Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If the cells in a torch are placed in the wrong order, what will happen?",
+      "choices": [
+        "The lamp will glow brighter",
+        "The lamp will not glow",
+        "The lamp will glow for a longer time",
+        "The lamp will glow for a shorter time"
+      ],
+      "answerIndex": 1,
+      "solution": "If the cells are placed in the wrong order, the lamp will not glow. This is because the correct connection of the cells is necessary to complete the circuit and allow the flow of electric current. The other options are incorrect as the order of the cells affects whether the circuit is complete or not.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि टॉर्च में सेल गलत क्रम में रखे जाएं, तो क्या होगा?",
+          "choices": [
+            "लैंप अधिक चमकेगा",
+            "लैंप नहीं जलेगा",
+            "लैंप लंबे समय तक जलेगा",
+            "लैंप कम समय तक जलेगा"
+          ],
+          "solution": "यदि सेल गलत क्रम में रखे जाएं, तो लैंप नहीं जलेगा। इसका कारण यह है कि सेल के सही क्रम में जुड़े होने की आवश्यकता होती है ताकि परिपथ पूरा हो सके और विद्युत धारा के प्रवाह की अनुमति हो सके। अन्य विकल्प गलत हैं क्योंकि सेल के क्रम केवल यह निर्धारित करता है कि क्या परिपथ पूरा है या नहीं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms like 'परिपथ' (circuit) and 'विद्युत धारा' (electric current) as used in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर टॉर्च मधील सेल्स चुकीच्या क्रमाने ठेवले गेले तर काय होईल?",
+          "choices": [
+            "दिवा जास्त जास्त तीव्रतेने जळेल",
+            "दिवा जळणार नाही",
+            "दिवा जास्त काळ जळेल",
+            "दिवा कमी काळ जळेल"
+          ],
+          "solution": "जर सेल्स चुकीच्या क्रमाने ठेवले गेले तर दिवा जळणार नाही. हे कारण असे आहे की सेल्स चा योग्य जोडा विद्युत प्रवाहासाठी परिपथ पूर्ण करण्यासाठी आवश्यक आहे. इतर विकल्प चुकीचे आहेत कारण सेल्स चा क्रम परिपथ पूर्ण करण्यासाठी आवश्यक आहे की नाही यावर अवलंबून आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi technical terms used.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Thinks the order affects brightness",
+        null,
+        "Believes the order affects the duration of the glow",
+        "Confuses the effect of cell order on circuit completion"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 1. The author's reasoning is sound: incorrect cell order disrupts the circuit, preventing current flow. The distractors reflect common misconceptions about cell order affecting brightness, duration, or circuit completion.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.1 A Torchlight"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 2,
+          "pageStart": 3,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.2 A Simple Electrical Circuit",
+            "3.2.1 Electric cell"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 3,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.2 A Simple Electrical Circuit",
+            "3.2.2 Battery"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T02:11:34.267Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If an incandescent lamp is connected to a cell but does not glow, what could be the reason?",
+      "choices": [
+        "The filament is broken",
+        "The cell is not connected properly",
+        "The wires are too thin",
+        "The lamp is too new"
+      ],
+      "answerIndex": 0,
+      "solution": "If an incandescent lamp is connected to a cell but does not glow, it could be because the filament is broken. A broken filament stops the flow of current, preventing the lamp from glowing. The other options are not reasons for the lamp not glowing.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक बल्ब एक सेल से जुड़ा हुआ है लेकिन चमक नहीं रहा है, तो क्या कारण हो सकता है?",
+          "choices": [
+            "फिलामेंट टूट गया है",
+            "सेल सही तरह से जुड़ा नहीं है",
+            "तार बहुत पतले हैं",
+            "बल्ब बहुत नया है"
+          ],
+          "solution": "यदि एक बल्ब एक सेल से जुड़ा हुआ है लेकिन चमक नहीं रहा है, तो इसका कारण फिलामेंट टूट जाना हो सकता है। टूटा हुआ फिलामेंट धारा के प्रवाह को रोक देता है, जिससे बल्ब चमक नहीं पाता। अन्य विकल्प बल्ब के चमक न रहने के कारण नहीं हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms like 'फिलामेंट' (filament) and 'सेल' (cell) as used in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर एखादा अॅम्बर बल्ब सेलशी जोडला गेला असेल पण तो जळत नसेल, तर त्याचे कारण काय असू शकते?",
+          "choices": [
+            "तापद्रव्य तुटलेले आहे",
+            "सेल योग्यरित्या जोडलेला नाही",
+            "तार खूप थोरट्या आहेत",
+            "बल्ब खूप नवीन आहे"
+          ],
+          "solution": "जर एखादा अॅम्बर बल्ब सेलशी जोडला गेला असेल पण तो जळत नसेल, तर त्याचे कारण तापद्रव्य तुटलेले असू शकते. तापद्रव्य तुटल्याने विद्युत प्रवाह थांबतो, ज्यमुळे बल्ब जळत नाही. इतर पर्याय बल्ब जळत नसल्याचे कारण नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms (e.g., 'तापद्रव्य' for 'filament').",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "students might think that a fully charged cell is the problem, but a common misconception is that the cell is not properly connected",
+        "students may think that thinner wires restrict current too much, but in reality, thicker wires are better for conductivity",
+        "Student believes that new lamps are less likely to work due to a misunderstanding of how electrical components function."
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 0 (filament is broken). The solution is sound, and the author's reasoning for the distractors reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 4,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.2 A Simple Electrical Circuit",
+            "3.2.3 Electric lamp"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 5,
+          "pageStart": 5,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.2 A Simple Electrical Circuit",
+            "3.2.4 Making an electric lamp glow using an",
+            "electric cell or battery"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 6,
+          "pageStart": 8,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.2 A Simple Electrical Circuit",
+            "3.2.5 An electrical circuit"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T02:11:34.267Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "Which of the following is a conductor of electricity?",
+      "choices": [
+        "Plastic",
+        "Rubber",
+        "Wood",
+        "Copper"
+      ],
+      "answerIndex": 3,
+      "solution": "The correct answer is copper. Conductors are materials that allow electric current to pass through them easily. Copper is a metal and a good conductor. A pupil might think plastic or rubber are conductors because they are used in some electrical applications, but they are actually insulators. Another might think wood is a conductor, but it is also an insulator.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन विद्युत का चालक है?",
+          "choices": [
+            "प्लास्टिक",
+            "रबर",
+            "लकड़ी",
+            "तांबा"
+          ],
+          "solution": "सही उत्तर तांबा है। चालक वे सामग्री होती हैं जो विद्युत धारा के प्रवाह की अनुमति देती हैं। तांबा धातु है और एक अच्छा चालक है। एक छात्र शायद सोच सकता है कि प्लास्टिक या रबर चालक हैं क्योंकि वे कुछ विद्युतीय अनुप्रयोगों में उपयोग किए जाते हैं, लेकिन वे वास्तव में विद्युत अचालक हैं। एक अन्य छात्र लकड़ी को चालक सोच सकता है, लेकिन वह भी एक अचालक है।",
+          "imageAlt": "एक बार चुंबक जिसके ध्रुवों पर 'चालक' और 'तांबा' लेबल हैं।",
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms like 'चालक' (conductor) and 'अचालक' (insulator) as used in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते विद्युत कंडक्टर आहे?",
+          "choices": [
+            "प्लास्टिक",
+            "रबर",
+            "लाकडे",
+            "तांबे"
+          ],
+          "solution": "बरोबर उत्तर तांबे आहे. कंडक्टर हे विद्युत प्रवाह त्वरित पार करू शकणारे सामग्री आहेत. तांबे हे धातू आहे आणि चांगला कंडक्टर आहे. एक विद्यार्थी प्लास्टिक किंवा रबर हे कंडक्टर असू शकतात असे विचार करू शकतो कारण ते काही विद्युत अनुप्रयोगांमध्ये वापरले जातात, परंतु ते खरे तर अनवाहक आहेत. एक विद्यार्थी लाकडे हे कंडक्टर असू शकते असे विचार करू शकतो, परंतु ते अनवाहक आहे.",
+          "imageAlt": "एक बार मॅग्नेट ज्याच्या ध्रुवांवर 'कंडक्टर' आणि 'तांबे' चे निर्देश आहेत.",
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi technical terms used for 'conductor' and 'insulator'.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": "A bar magnet with labels 'conductor' and 'copper' on its poles.",
+      "figure": {
+        "kind": "diagram",
+        "spec": {
+          "parts": [
+            {
+              "part": "barMagnet",
+              "x": 50,
+              "y": 30,
+              "size": 20,
+              "labels": [
+                "north",
+                "south"
+              ],
+              "text": {
+                "north": "conductor",
+                "south": "copper"
+              }
+            }
+          ]
+        },
+        "labels": {
+          "conductor": {
+            "en": "conductor",
+            "hi": "चालक",
+            "mr": "कंडक्टर"
+          },
+          "copper": {
+            "en": "copper",
+            "hi": "तांबा",
+            "mr": "तांबे"
+          }
+        }
+      },
+      "needsFigure": true,
+      "distractorReason": [
+        "Confuses insulators with conductors",
+        "Believes plastic is a conductor",
+        "Believes wood is a conductor",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": null,
+      "critique": "The question is straightforward and correctly identifies copper as the conductor. The distractors are all common insulators, and the author's reasoning aligns with typical misconceptions students might have.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 7,
+          "pageStart": 9,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.2 A Simple Electrical Circuit",
+            "3.2.5 An electrical circuit"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 8,
+          "pageStart": 10,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.2 A Simple Electrical Circuit",
+            "3.2.6 Electric switch"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 9,
+          "pageStart": 11,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.3 Circuit Diagrams"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 10,
+          "pageStart": 12,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.4 Electrical Conductors and Insulators"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T02:11:34.267Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "In an electrical circuit, an LED glows only when its longer wire is connected to the positive terminal of the battery. What happens if the longer wire of the LED is connected to the negative terminal of the battery?",
+      "choices": [
+        "The LED glows brightly",
+        "The LED glows dimly",
+        "The LED does not glow",
+        "The LED flickers"
+      ],
+      "answerIndex": 2,
+      "solution": "The LED does not glow because it allows current to flow in only one direction. If the longer wire (positive terminal of the LED) is connected to the negative terminal of the battery, the current cannot pass through the LED, so it does not glow. The other options are incorrect because they suggest the LED would glow, which it does not in this case.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक विद्युत परिपथ में, एक एलईडी केवल तभी जलती है जब इसका लंबा तार बैटरी के धनात्मक टर्मिनल से जुड़ा होता है। यदि एलईडी का लंबा तार बैटरी के ऋणात्मक टर्मिनल से जुड़ा हो तो क्या होता है?",
+          "choices": [
+            "एलईडी तीव्र रूप से जलती है",
+            "एलईडी कमजोर रूप से जलती है",
+            "एलईडी जलती नहीं है",
+            "एलईडी झिलमिलाती है"
+          ],
+          "solution": "एलईडी जलती नहीं है क्योंकि यह केवल एक दिशा में धारा प्रवाहित होने की अनुमति देता है। यदि एलईडी के लंबे तार (धनात्मक टर्मिनल) को बैटरी के ऋणात्मक टर्मिनल से जोड़ा जाता है, तो धारा एलईडी से नहीं गुजरती, इसलिए यह जलती नहीं है। अन्य विकल्प गलत हैं क्योंकि वे एलईडी के जलने की ओर इशारा करते हैं, जो इस स्थिति में नहीं होता है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, technical terms are appropriately used in Hindi, and the logic of the question and solution is preserved.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "विद्युत परिपथात, एक एलईडी तिच्या लांब तारेला बॅटरीच्या धनात्मक टर्मिनलशी जोडल्यास जळते. जर एलईडीच्या लांब तारेला बॅटरीच्या ऋणात्मक टर्मिनलशी जोडले जाते, तर काय होते?",
+          "choices": [
+            "एलईडी तीव्र जळते",
+            "एलईडी थोडी जळते",
+            "एलईडी जळत नाही",
+            "एलईडी टिपटिप करते"
+          ],
+          "solution": "एलईडी जळत नाही कारण ती केवळ एका दिशेने विद्युत प्रवाह अनुमती देते. जर लांब तार (एलईडीचा धनात्मक टर्मिनल) बॅटरीच्या ऋणात्मक टर्मिनलशी जोडली जाते, तर विद्युत प्रवाह एलईडीमधून जाऊ शकत नाही, त्यामुळे एलईडी जळत नाही. इतर विकल्प अयोग्य आहेत कारण ते एलईडी जळेल असे सूचित करतात, जे या परिस्थितीत नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the direction of current flow",
+        "Assumes brightness depends on connection",
+        null,
+        "Incorrectly believes the LED glows in any configuration"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly explains that LEDs are diodes and only allow current to flow in one direction. Connecting the longer (anode) wire to the negative terminal blocks current, so the LED does not glow. The reasoning for all distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 7,
+          "pageStart": 9,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.2 A Simple Electrical Circuit",
+            "3.2.5 An electrical circuit"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 8,
+          "pageStart": 10,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.2 A Simple Electrical Circuit",
+            "3.2.6 Electric switch"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 9,
+          "pageStart": 11,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.3 Circuit Diagrams"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 10,
+          "pageStart": 12,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.4 Electrical Conductors and Insulators"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T02:11:34.267Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "In a torchlight, what is the function of the electric cells?",
+      "choices": [
+        "To control the flow of electricity",
+        "To provide a path for electric current",
+        "To store electric charge",
+        "To supply electric energy"
+      ],
+      "answerIndex": 3,
+      "solution": "The electric cells in a torchlight supply electric energy to the circuit. They are the source of electrical energy that powers the lamp. The other options are incorrect because the cells do not control the flow, provide a path, or store electric charge.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "टॉर्च में, विद्युत सेल का कार्य क्या होता है?",
+          "choices": [
+            "विद्युत के प्रवाह को नियंत्रित करना",
+            "विद्युत धारा के लिए मार्ग प्रदान करना",
+            "विद्युत आवेश को संग्रहीत करना",
+            "विद्युत ऊर्जा प्रदान करना"
+          ],
+          "solution": "टॉर्च में विद्युत सेल परिपथ में विद्युत ऊर्जा प्रदान करते हैं। वे बल्ब को चालू करने वाली विद्युत ऊर्जा के स्रोत होते हैं। अन्य विकल्प गलत हैं क्योंकि सेल धारा के प्रवाह को नहीं नियंत्रित करते, धारा के लिए मार्ग प्रदान नहीं करते और विद्युत आवेश को संग्रहीत नहीं करते।",
+          "imageAlt": null,
+          "critique": "Translation accurately reflects the original meaning, technical terms are appropriate for Hindi-medium curriculum, and the correct answer remains option 3.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "टॉर्चलाइटमध्ये विद्युत सेलचे कार्य काय आहे?",
+          "choices": [
+            "विद्युत प्रवाह नियंत्रित करणे",
+            "विद्युत प्रवाहाचा मार्ग पुरवणे",
+            "विद्युत आवेश जमा करणे",
+            "विद्युत ऊर्जा पुरवणे"
+          ],
+          "solution": "टॉर्चलाइटमध्ये विद्युत सेल विद्युत ऊर्जा पुरवतात. ते विद्युत ऊर्जेचे स्रोत असतात जे बल्बला शक्ती पुरवतात. इतर विकल्प चुकीचे आहेत कारण सेल विद्युत प्रवाह नियंत्रित करत नाहीत, विद्युत प्रवाहाचा मार्ग पुरवत नाहीत किंवा विद्युत आवेश जमा करत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi technical terms used.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Thinks the cells control the flow of electricity",
+        "Confuses the function of the cells with that of the wires",
+        "Believes the cells store electric charge",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is well-constructed and the correct answer is clearly 3. The author's reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.1 A Torchlight"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 2,
+          "pageStart": 3,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.2 A Simple Electrical Circuit",
+            "3.2.1 Electric cell"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 3,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.2 A Simple Electrical Circuit",
+            "3.2.2 Battery"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T02:11:34.267Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "A student uses a torchlight with two electric cells. If one cell is removed, what will happen?",
+      "choices": [
+        "The lamp will glow brighter",
+        "The lamp will not glow",
+        "The lamp will glow for a longer time",
+        "The lamp will glow for a shorter time"
+      ],
+      "answerIndex": 1,
+      "solution": "If one cell is removed from a torchlight, the lamp will not glow. This is because the circuit will be incomplete, and the flow of electric current will not be possible. The other options are incorrect as removing a cell reduces the energy available to the circuit, not the duration of the glow or its brightness.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक छात्र दो बैटरी वाले टॉर्च में उपयोग करता है। यदि एक बैटरी हटा दी जाए तो क्या होगा?",
+          "choices": [
+            "लैंप अधिक चमकेगा",
+            "लैंप नहीं जलेगा",
+            "लैंप लंबे समय तक जलेगा",
+            "लैंप कम समय तक जलेगा"
+          ],
+          "solution": "यदि टॉर्च में से एक बैटरी हटा दी जाती है, तो लैंप नहीं जलेगा। इसका कारण यह है कि परिपथ अपूर्ण हो जाएगा और बिजली के प्रवाह की संभावना नहीं रहेगी। अन्य विकल्प गलत हैं क्योंकि बैटरी हटाने से परिपथ के लिए उपलब्ध ऊर्जा कम हो जाती है, न कि जलने की अवधि या चमक की।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms like 'बैटरी' (battery) and 'परिपथ' (circuit) as used in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका विद्यार्थीने दोन वीज सेल असलेल्या टॉर्चलाईटचा वापर केला. जर एक सेल काढला गेला, तर काय होईल?",
+          "choices": [
+            "लॅम्प जास्त जास्त जळेल",
+            "लॅम्प जळणार नाही",
+            "लॅम्प जास्त काळ जळेल",
+            "लॅम्प कमी काळ जळेल"
+          ],
+          "solution": "जर टॉर्चलाईटमधून एक सेल काढला गेला, तर लॅम्प जळणार नाही. हे कारण असे आहे की परिपथ अपूर्ण होईल आणि वीज वाहतुक शक्य होणार नाही. इतर विकल्प अयोग्य आहेत, कारण सेल काढल्यामुळे परिपथाला उपलब्ध ऊर्जा कमी होते, जास्त काळ जळणे किंवा जास्त जळणे नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Thinks removing a cell increases brightness",
+        null,
+        "Believes removing a cell extends the glow duration",
+        "Confuses the effect of removing a cell on the circuit"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 1, as removing a cell from a torchlight's circuit breaks the path for current, preventing the lamp from glowing. The author's reasoning is sound and aligns with the correct physics of circuits.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.1 A Torchlight"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 2,
+          "pageStart": 3,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.2 A Simple Electrical Circuit",
+            "3.2.1 Electric cell"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 3,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.2 A Simple Electrical Circuit",
+            "3.2.2 Battery"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T02:11:34.267Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "In a circuit with an incandescent lamp, what would happen if the filament is broken?",
+      "choices": [
+        "The lamp will glow brighter",
+        "The lamp will not glow",
+        "The lamp will flicker",
+        "The lamp will glow normally"
+      ],
+      "answerIndex": 1,
+      "solution": "If the filament in an incandescent lamp is broken, the lamp will not glow because the circuit is incomplete, and current cannot flow through the filament. The other options do not accurately describe what happens when the filament is broken.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक प्रतिरोधी बल्ब वाली परिपथ में, यदि फिलामेंट टूट जाए तो क्या होगा?",
+          "choices": [
+            "बल्ब अधिक चमकेगा",
+            "बल्ब नहीं जलेगा",
+            "बल्ब झिलमिलाएगा",
+            "बल्ब सामान्य रूप से जलेगा"
+          ],
+          "solution": "यदि एक प्रतिरोधी बल्ब में फिलामेंट टूट जाता है, तो बल्ब नहीं जलेगा क्योंकि परिपथ अपूर्ण हो जाता है और फिलामेंट में धारा प्रवाहित नहीं हो सकती। अन्य विकल्प फिलामेंट टूटने पर होने वाली घटना का सही वर्णन नहीं करते।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the original English question and solution, with appropriate technical terms used in a Hindi-medium context.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका दिव्याच्या परिपथात, जर तापमानमापी तार तुटली असेल तर काय होईल?",
+          "choices": [
+            "दिवा जास्त चमकेल",
+            "दिवा चमकणार नाही",
+            "दिवा झपाटा मारेल",
+            "दिवा सामान्यपणे चमकेल"
+          ],
+          "solution": "जर दिव्याच्या तापमानमापी तार तुटली असेल तर दिवा चमकणार नाही कारण परिपथ अपूर्ण असेल आणि विद्युतप्रवाह तारमार्गे प्रवाहित होऊ शकणार नाही. इतर विकल्प तार तुटल्याच्या घटनेचे योग्य वर्णन करत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, with appropriate Marathi technical terms used (e.g., 'तापमानमापी तार' for 'filament'). The meaning, options, and solution align perfectly with the English version.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Thinks a broken filament would increase brightness",
+        null,
+        "Does not understand the role of the filament in the circuit",
+        "Confuses flickering with a broken filament"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies that a broken filament breaks the circuit, preventing current flow and thus the lamp not glowing. The reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 4,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.2 A Simple Electrical Circuit",
+            "3.2.3 Electric lamp"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 5,
+          "pageStart": 5,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.2 A Simple Electrical Circuit",
+            "3.2.4 Making an electric lamp glow using an",
+            "electric cell or battery"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 6,
+          "pageStart": 8,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.2 A Simple Electrical Circuit",
+            "3.2.5 An electrical circuit"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T02:11:34.267Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "If a switch in a circuit is in the OFF position, what happens to the current?",
+      "choices": [
+        "It increases",
+        "It decreases",
+        "It flows normally",
+        "It stops"
+      ],
+      "answerIndex": 3,
+      "solution": "The correct answer is that the current stops. When a switch is in the OFF position, the circuit is open, which means there is a gap preventing current from flowing. A pupil might think the current decreases or flows normally if they do not understand the concept of an open circuit. Another might think the current increases due to a misunderstanding of the switch's function.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि परिपथ में एक स्विच बंद स्थिति में है, तो धारा क्या होती है?",
+          "choices": [
+            "इसकी वृद्धि होती है",
+            "इसकी कमी होती है",
+            "इसका प्रवाह सामान्य रूप से होता है",
+            "यह रुक जाती है"
+          ],
+          "solution": "सही उत्तर यह है कि धारा रुक जाती है। जब स्विच बंद स्थिति में होता है, तो परिपथ खुला होता है, जिसका अर्थ है कि धारा के प्रवाह को रोकने वाला एक अंतर होता है। एक छात्र अगर खुले परिपथ के अवधारणा को समझ नहीं पाता है तो वह धारा कम हो जाती है या सामान्य रूप से प्रवाहित होती है सोच सकता है। एक अन्य छात्र स्विच के कार्य के गलत समझ के कारण धारा बढ़ जाती है सोच सकता है।",
+          "imageAlt": "एक परिपथ जिसमें स्विच बंद स्थिति में है, जिसे खुला प्रदर्शित किया गया है।",
+          "critique": "The Hindi translation has a critical error: the stem says 'बंद स्थिति' (ON position) instead of 'बंद स्थिति' (OFF position). This reverses the question and makes the answer incorrect. The key should be (4) 'यह रुक जाती है' but the stem is wrong, so the entire question is invalid.",
+          "flag": "translation critique: not one answer at the same position"
+        },
+        "mr": {
+          "stem": "जर परिपथातील स्विच ऑफ स्थितीत असेल, तर विद्युतप्रवाहाचा काय फायदा होतो?",
+          "choices": [
+            "तो वाढतो",
+            "तो कमी होतो",
+            "तो सामान्यपणे वाहतो",
+            "तो थांबतो"
+          ],
+          "solution": "बरोबर उत्तर असे की विद्युतप्रवाह थांबतो. जेव्हा स्विच ऑफ स्थितीत असतो तेव्हा परिपथ खुला असतो, ज्यामुळे विद्युतप्रवाह वाहण्यास अडथळा येतो. एखादा विद्यार्थी खुल्या परिपथाच्या संकल्पनेचा अभ्यास न करता विद्युतप्रवाह कमी होतो किंवा सामान्यपणे वाहतो असे विचार करू शकतो. एखाद्याला स्विचच्या कार्याच्या चुकीच्या समजूतीमुळे विद्युतप्रवाह वाढतो असे वाटू शकते.",
+          "imageAlt": "ऑफ स्थितीत स्विच असलेला परिपथ, खुला दर्शविला गेलेला आहे.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms for electrical concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": "A circuit with a switch in the OFF position, represented as open.",
+      "figure": {
+        "kind": "circuit",
+        "spec": {
+          "nodes": [
+            {
+              "id": "n1",
+              "x": 2,
+              "y": 4
+            },
+            {
+              "id": "n2",
+              "x": 8,
+              "y": 4
+            }
+          ],
+          "parts": [
+            {
+              "type": "switchOpen",
+              "from": "n1",
+              "to": "n2",
+              "label": "OFF"
+            }
+          ]
+        },
+        "labels": {
+          "OFF": {
+            "en": "OFF",
+            "hi": "बंद",
+            "mr": "ऑफ"
+          }
+        }
+      },
+      "needsFigure": true,
+      "distractorReason": [
+        "Misunderstands the function of an open circuit",
+        "Misunderstands the behavior of current in a closed circuit",
+        "Confuses the effect of an open switch with an increase in current",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is well-constructed. The correct answer is 3, as an open switch breaks the circuit and stops current. The author's reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 7,
+          "pageStart": 9,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.2 A Simple Electrical Circuit",
+            "3.2.5 An electrical circuit"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 8,
+          "pageStart": 10,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.2 A Simple Electrical Circuit",
+            "3.2.6 Electric switch"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 9,
+          "pageStart": 11,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.3 Circuit Diagrams"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 10,
+          "pageStart": 12,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.4 Electrical Conductors and Insulators"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T02:11:34.267Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "In a torchlight, what happens if the switch is in the off position?",
+      "choices": [
+        "The electric current flows freely",
+        "The electric current is stopped",
+        "The electric current is increased",
+        "The electric current is decreased"
+      ],
+      "answerIndex": 1,
+      "solution": "When the switch is in the off position, the electric current is stopped. This is because the switch acts as a break in the circuit, preventing the flow of current. The other options are incorrect because the switch does not allow current to flow freely, increase, or decrease the current.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "टॉर्च में, यदि स्विच बंद स्थिति में है तो क्या होता है?",
+          "choices": [
+            "विद्युत धारा स्वतंत्र रूप से प्रवाहित होती है",
+            "विद्युत धारा रोक दी जाती है",
+            "विद्युत धारा बढ़ जाती है",
+            "विद्युत धारा कम हो जाती है"
+          ],
+          "solution": "जब स्विच बंद स्थिति में होता है, तो विद्युत धारा रोक दी जाती है। ऐसा इसलिए होता है क्योंकि स्विच सर्किट में एक ब्रेक के रूप में कार्य करता है, जो धारा के प्रवाह को रोक देता है। अन्य विकल्प गलत हैं क्योंकि स्विच धारा के प्रवाह की अनुमति नहीं देता है, धारा को बढ़ा या कम नहीं करता है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriately used in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "टॉर्चलाइटमध्ये, जेव्हा स्विच बंद असतो तेव्हा काय होते?",
+          "choices": [
+            "विद्युत प्रवाह मुक्तपणे प्रवाहित होतो",
+            "विद्युत प्रवाह थांबवला जातो",
+            "विद्युत प्रवाह वाढतो",
+            "विद्युत प्रवाह कमी होतो"
+          ],
+          "solution": "जेव्हा स्विच बंद असतो तेव्हा विद्युत प्रवाह थांबवला जातो. हे कारण आहे की स्विच सर्किटमध्ये तुटलेला भाग म्हणून कार्य करतो, ज्यामुळे प्रवाह रोखला जातो. इतर विकल्प चुकीचे आहेत कारण स्विच प्रवाह मुक्तपणे प्रवाहित करत नाही, वाढवत नाही किंवा कमी करत नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Thinks the switch allows current to flow freely",
+        null,
+        "Believes the switch increases current",
+        "Confuses the function of the switch with a resistor"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 1, as a switch in the off position breaks the circuit and stops current flow. The author's reasoning aligns with standard physics and the misconceptions listed are plausible for students.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.1 A Torchlight"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 2,
+          "pageStart": 3,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.2 A Simple Electrical Circuit",
+            "3.2.1 Electric cell"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 3,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.2 A Simple Electrical Circuit",
+            "3.2.2 Battery"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T02:11:34.267Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "If an LED and an incandescent lamp are connected in the same circuit, which one will glow?",
+      "choices": [
+        "Only the LED",
+        "Only the incandescent lamp",
+        "Both will glow",
+        "Neither will glow"
+      ],
+      "answerIndex": 2,
+      "solution": "Both the LED and the incandescent lamp will glow if they are connected in the same circuit, assuming the circuit is complete and the voltage is suitable for both components. The other options are incorrect because both can glow in a properly connected circuit.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक एलईडी और एक बल्ब एक ही परिपथ में जुड़े हुए हैं, तो कौन सा चमकेगा?",
+          "choices": [
+            "केवल एलईडी",
+            "केवल बल्ब",
+            "दोनों चमकेंगे",
+            "कोई भी नहीं चमकेगा"
+          ],
+          "solution": "यदि एलईडी और बल्ब एक ही परिपथ में जुड़े हुए हैं, तो दोनों चमकेंगे, यदि परिपथ पूरा है और वोल्टेज दोनों घटकों के लिए उपयुक्त है। अन्य विकल्प गलत हैं क्योंकि एक सही तरीके से जुड़े परिपथ में दोनों चमक सकते हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms like 'बल्ब' for 'lamp' and 'एलईडी' for 'LED'.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका परिपथात एलईडी आणि एका बल्ब जोडले गेले असतील, तर कोणता जळेल?",
+          "choices": [
+            "केवळ एलईडी",
+            "केवळ बल्ब",
+            "दोन्ही जळेल",
+            "कोणीही जळणार नाही"
+          ],
+          "solution": "जर एलईडी आणि बल्ब एका परिपथात जोडले गेले असतील, तर दोन्ही जळतील, जर परिपथ पूर्ण असेल आणि व्होल्टेज दोन्ही घटकांसाठी योग्य असेल. उरलेल्या विकल्पांमध्ये चूक आहे कारण योग्यरित्या जोडल्यास दोन्ही जळू शकतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms like 'बल्ब' for 'lamp' and 'एलईडी' for 'LED'.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Thinks LEDs do not work in a circuit",
+        "Does not know that both can work together",
+        null,
+        "Confuses the functionality of LEDs and incandescent lamps"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct and the key is valid. Both the LED and incandescent lamp can glow in the same circuit if the voltage is appropriate and the circuit is complete. The distractors reflect common misconceptions about the functionality of LEDs and incandescent lamps.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 4,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.2 A Simple Electrical Circuit",
+            "3.2.3 Electric lamp"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 5,
+          "pageStart": 5,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.2 A Simple Electrical Circuit",
+            "3.2.4 Making an electric lamp glow using an",
+            "electric cell or battery"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 6,
+          "pageStart": 8,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.2 A Simple Electrical Circuit",
+            "3.2.5 An electrical circuit"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T02:11:34.267Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is the thin wire inside the glass bulb of an incandescent lamp called?",
+      "choices": [
+        "Filament",
+        "Wick",
+        "Wire",
+        "Cable"
+      ],
+      "answerIndex": 0,
+      "solution": "The thin wire inside the glass bulb of an incandescent lamp is called the filament because it is the component that heats up and emits light when electricity passes through it. A wick is a material used in candles to draw up fuel, a wire is a general term for a conductor, and a cable is a group of wires bundled together, none of which specifically describe the light-emitting part of the lamp.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक अंगूठी बल्ब के कांच के बल्ब के भीतर बालू तार क्या कहलाता है?",
+          "choices": [
+            "फिलामेंट",
+            "विक",
+            "तार",
+            "केबल"
+          ],
+          "solution": "एक अंगूठी बल्ब के कांच के बल्ब के भीतर बालू तार को फिलामेंट कहा जाता है क्योंकि यह घटक है जो बिजली के पास गुजरते समय गर्म हो जाता है और प्रकाश उत्सर्जित करता है। एक विक मोमबत्ती में ईंधन को ऊपर ले जाने के लिए उपयोग किया जाने वाला सामग्री है, एक तार एक सामान्य शब्द है जो एक चालक के लिए है, और एक केबल कई तारों के समूह के रूप में है, जिसमें से कोई भी बल्ब के प्रकाश उत्सर्जक हिस्से को विशेष रूप से वर्णित नहीं करता है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate technical terms. The term 'फिलामेंट' (filament) is correctly used, and the distractors are still incorrect in the context of an incandescent lamp.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "अॅन्सेंट लॅम्पच्या काचेच्या बल्बमधील थरा तार काय म्हणतात?",
+          "choices": [
+            "फिलामेंट",
+            "विक",
+            "तार",
+            "केबल"
+          ],
+          "solution": "अॅन्सेंट लॅम्पच्या काचेच्या बल्बमधील थरा तार फिलामेंट म्हणतात कारण ती विद्युत प्रवाहामुळे उत्तप्त होऊन प्रकाश उत्सर्जित करते. विक हा विसर्जकांमध्ये ईंधन उचलण्यासाठी वापरला जाणारा सामग्री आहे, तार हा एक सामान्य शब्द आहे आणि केबल हा एकत्रित झालेल्या अनेक तारांचा गट आहे, ज्यापैकी कोणताही विशिष्ट रूपाने लॅम्पच्या प्रकाश उत्सर्जक भागाला वर्णन करत नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the technical terms used in Marathi textbooks. The solution clearly explains why the other options are incorrect.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses the filament with a wick, which is part of a spirit lamp.",
+        "Confuses the filament with a general wire, which is not specific to the lamp's structure.",
+        "Confuses the filament with a cable, which is a larger and more general term."
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The question is straightforward and tests recall of a specific term. The correct answer is 'Filament,' and the distractors are plausible but incorrect based on the context of an incandescent lamp.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 4,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.2 A Simple Electrical Circuit",
+            "3.2.3 Electric lamp"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 5,
+          "pageStart": 5,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.2 A Simple Electrical Circuit",
+            "3.2.4 Making an electric lamp glow using an",
+            "electric cell or battery"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 6,
+          "pageStart": 8,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.2 A Simple Electrical Circuit",
+            "3.2.5 An electrical circuit"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T04:44:16.982Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "Which part of the incandescent lamp glows when the torch is switched on?",
+      "choices": [
+        "The thick wire",
+        "The insulator",
+        "The filament",
+        "The metal tip"
+      ],
+      "answerIndex": 2,
+      "solution": "The filament is the thin wire inside the glass bulb that glows when the torch is switched on. The thick wire and metal tip are part of the lamp's structure but do not glow. The insulator is used to hold the filament in place and does not glow.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "टॉर्च चालू करने पर बल्ब के किस भाग में चमक आती है?",
+          "choices": [
+            "मोटा तार",
+            "आइसोलेटर",
+            "फिलामेंट",
+            "धातु का टिप"
+          ],
+          "solution": "फिलामेंट बल्ब के अंदर का पतला तार होता है जो टॉर्च चालू करने पर चमकता है। मोटे तार और धातु के टिप बल्ब के संरचना के हिस्से होते हैं लेकिन चमकते नहीं हैं। आइसोलेटर फिलामेंट को स्थिर रखने के लिए उपयोग किया जाता है और यह चमकता नहीं है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English question and solution, with appropriate technical terms used in a Hindi-medium context.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "तापमान बल्बाचा कोणता भाग तार चालू केल्यास जळतो?",
+          "choices": [
+            "मोठा तार",
+            "अवाहक",
+            "तापन तार",
+            "धातूचा टिप"
+          ],
+          "solution": "तापन तार हा ग्लास बल्बाच्या आतला थोडका तार आहे जो तार चालू केल्यास जळतो. मोठा तार आणि धातूचा टिप हा बल्बाच्या रचनेचा भाग आहे परंतु जळत नाही. अवाहक हा तापन तार लावण्यासाठी वापरला जातो आणि जळत नाही.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate and maintains the technical terms used in Marathi textbooks. The meaning, options, and solution are all consistent with the English original.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the filament with the thick wire",
+        "Confuses the function of the insulator",
+        null,
+        "Confuses the glowing part with the conductive terminal of the lamp"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct and matches the key. The filament is the correct answer, and the reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 4,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.2 A Simple Electrical Circuit",
+            "3.2.3 Electric lamp"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 5,
+          "pageStart": 5,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.2 A Simple Electrical Circuit",
+            "3.2.4 Making an electric lamp glow using an",
+            "electric cell or battery"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 6,
+          "pageStart": 8,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.2 A Simple Electrical Circuit",
+            "3.2.5 An electrical circuit"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T04:44:16.982Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What happens to the torch lamp when the switch is in the position that allows current to flow?",
+      "choices": [
+        "It glows",
+        "It gets damaged",
+        "It turns off",
+        "It becomes dim"
+      ],
+      "answerIndex": 0,
+      "solution": "When the switch allows current to flow, the torch lamp receives electricity and glows. This is because the circuit is complete, enabling the flow of electric current through the lamp. The other options are incorrect as they do not align with how electric circuits function.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "टॉर्च लैंप क्या होता है जब स्विच ऐसी स्थिति में होता है जो विद्युत धारा के प्रवाह की अनुमति देती है?",
+          "choices": [
+            "यह चमकता है",
+            "यह खराब हो जाता है",
+            "यह बंद हो जाता है",
+            "यह धीमा हो जाता है"
+          ],
+          "solution": "जब स्विच विद्युत धारा के प्रवाह की अनुमति देता है, तो टॉर्च लैंप को बिजली मिलती है और यह चमकता है। इसका कारण यह है कि परिपथ पूरा हो जाता है, जिससे लैंप के माध्यम से विद्युत धारा का प्रवाह संभव हो जाता है। अन्य विकल्प गलत हैं क्योंकि वे विद्युत परिपथ के कार्य के साथ मेल नहीं खाते।",
+          "imageAlt": null,
+          "critique": "Hindi translation accurately reflects the original English question and solution. Technical terms like 'टॉर्च लैंप' (torch lamp), 'स्विच' (switch), 'विद्युत धारा' (electric current), and 'परिपथ' (circuit) are standard in Hindi science textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "टॉर्च लॅम्प काय होतो जेव्हा स्विच अस्तित्वात असतो जेणेकरून विद्युत प्रवाह वाहू शकेल?",
+          "choices": [
+            "ते जळते",
+            "ते नुकसान होते",
+            "ते बंद होते",
+            "ते गडद होते"
+          ],
+          "solution": "जेव्हा स्विच विद्युत प्रवाह वाहू शकतो, तेव्हा टॉर्च लॅम्पला विद्युत जाते आणि जळते. हे त्यामुळे आहे कारण परिपथ पूर्ण आहे, जेणेकरून विद्युत प्रवाह लॅम्पमधून वाहू शकतो. इतर विकल्प चुकीचे आहेत कारण ते विद्युत परिपथाच्या कार्यप्रणालीशी जुळत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and natural, with appropriate Marathi technical terms used for electrical concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses a functioning lamp with a damaged one",
+        "Confuses a working lamp with a non-functioning one",
+        "Confuses a dim lamp with a glowing one"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The question is straightforward and the correct answer is clearly 0. The reasoning for the distractors aligns with common misconceptions students might have about how circuits work.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.1 A Torchlight"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 2,
+          "pageStart": 3,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.2 A Simple Electrical Circuit",
+            "3.2.1 Electric cell"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 3,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.2 A Simple Electrical Circuit",
+            "3.2.2 Battery"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T04:44:16.982Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of the following is an insulator of electricity?",
+      "choices": [
+        "Copper",
+        "Silver",
+        "Gold",
+        "Rubber"
+      ],
+      "answerIndex": 3,
+      "solution": "Rubber is an insulator of electricity because it does not allow electric current to pass through it easily. Copper, silver, and gold are metals, which are excellent conductors of electricity. Insulators like rubber are used to prevent the flow of electricity and protect against electric shocks.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन विद्युत का एक विद्युतरोधी है?",
+          "choices": [
+            "तांबा",
+            "चांदी",
+            "सोना",
+            "रबर"
+          ],
+          "solution": "रबर विद्युत का एक विद्युतरोधी है क्योंकि यह विद्युत धारा के पार जाने की अनुमति नहीं देता है। तांबा, चांदी और सोना धातुएं हैं, जो विद्युत के अच्छे चालक हैं। विद्युतरोधी जैसे रबर का उपयोग विद्युत के प्रवाह को रोकने और विद्युत झटका से बचाने के लिए किया जाता है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi technical terms for electrical conductivity.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते विद्युत अवाहक आहे?",
+          "choices": [
+            "तांबे",
+            "रूपे",
+            "सोने",
+            "रबर"
+          ],
+          "solution": "रबर विद्युत अवाहक आहे कारण ते विद्युत प्रवाह त्वरित पार करू शकत नाही. तांबे, रूपे आणि सोने धातू आहेत, ज्या विद्युत चांगल्या वाहक आहेत. रबर अशा अवाहकांचा वापर विद्युत प्रवाह रोखण्यासाठी आणि विद्युत झटका टाळण्यासाठी केला जातो.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms for electrical conductivity.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses conductors with insulators",
+        "Confuses conductors with insulators",
+        "Confuses conductors with insulators",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-constructed. The correct answer is 3 (Rubber), as it is an insulator. The other options are all conductors, and the author's reasoning for the wrong options is valid, as it reflects a common misconception.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 11,
+          "pageStart": 14,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.4 Electrical Conductors and Insulators"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 12,
+          "pageStart": 15,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.4 Electrical Conductors and Insulators",
+            "In a Nutshell"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 13,
+          "pageStart": 16,
+          "pageEnd": 18,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.4 Electrical Conductors and Insulators",
+            "Let Us Enhance Our Learning"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 14,
+          "pageStart": 18,
+          "pageEnd": 18,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.4 Electrical Conductors and Insulators",
+            "Exploratory Projects"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T04:44:16.982Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What happens when the longer wire of an LED is connected to the negative terminal of a battery?",
+      "choices": [
+        "The LED glows brightly",
+        "The LED does not glow",
+        "The LED glows dimly",
+        "The LED flickers"
+      ],
+      "answerIndex": 1,
+      "solution": "The LED does not glow because current can only pass through it in one direction. The longer wire of the LED is the positive terminal, so connecting it to the negative terminal of the battery prevents current flow. A pupil might think the LED will glow regardless of connections, but it only works when the polarity is correct.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "जब एलईडी के लंबे तार को बैटरी के ऋणात्मक टर्मिनल से जोड़ा जाता है तो क्या होता है?",
+          "choices": [
+            "एलईडी तेजी से जलता है",
+            "एलईडी नहीं जलता",
+            "एलईडी कमजोरी से जलता है",
+            "एलईडी झिलमिलाता है"
+          ],
+          "solution": "एलईडी नहीं जलता क्योंकि धारा केवल एक दिशा में गुजर सकती है। एलईडी के लंबे तार का धनात्मक टर्मिनल होता है, इसलिए इसे बैटरी के ऋणात्मक टर्मिनल से जोड़ने से धारा प्रवाह रुक जाता है। एक छात्र यह सोच सकता है कि एलईडी जुड़ा हुआ होने पर जलता रहेगा, लेकिन यह केवल तभी काम करता है जब ध्रुवता सही हो।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Hindi technical terms. The correct answer remains option (2), and the distractors are still incorrect.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एलईडीच्या लांब ताराला बॅटरीच्या ऋणात्मक टर्मिनलशी जोडल्यास काय होते?",
+          "choices": [
+            "एलईडी जास्त जाळते",
+            "एलईडी जाळत नाही",
+            "एलईडी थोडी जाळते",
+            "एलईडी झपाटा मारते"
+          ],
+          "solution": "एलईडी जाळत नाही, कारण विद्युत प्रवाह त्यात एका दिशेने मात्र जाऊ शकतो. एलईडीच्या लांब ताराला धनात्मक टर्मिनल म्हणतात, त्यामुळे त्याला बॅटरीच्या ऋणात्मक टर्मिनलशी जोडल्यास विद्युत प्रवाह रोखला जातो. एका विद्यार्थ्याला वाटू शकते की एलईडी जोडण्याच्या प्रकारापेक्षा जाळेल, परंतु ते त्याच्या ध्रुवता योग्य असल्यासच जाळते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the technical terms used in Marathi science textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the direction of current flow",
+        null,
+        "Does not understand the polarity of LED",
+        "Thinks the longer wire is always positive regardless of connection details"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct and aligns with the key. The LED does not glow when connected in reverse, as it only allows current to flow in one direction. The reasoning about the polarity of the LED and the misconception about current flow is accurate.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 7,
+          "pageStart": 9,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.2 A Simple Electrical Circuit",
+            "3.2.5 An electrical circuit"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 8,
+          "pageStart": 10,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.2 A Simple Electrical Circuit",
+            "3.2.6 Electric switch"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 9,
+          "pageStart": 11,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.3 Circuit Diagrams"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 10,
+          "pageStart": 12,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.4 Electrical Conductors and Insulators"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T04:44:16.982Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "In a torch, how are the cells arranged to provide energy to the circuit?",
+      "choices": [
+        "In a random order",
+        "In parallel",
+        "In series",
+        "In a circular pattern"
+      ],
+      "answerIndex": 2,
+      "solution": "In a torch, the cells are arranged in series so that the positive terminal of one cell connects to the negative terminal of the next, creating a continuous path for electric current. This setup increases the total voltage available to the circuit. Arranging them in parallel or randomly would not provide sufficient voltage, and a circular pattern is not a standard electrical configuration.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "टॉर्च में, सेल कैसे व्यवस्थित किए जाते हैं ताकि सर्किट को ऊर्जा प्रदान की जा सके?",
+          "choices": [
+            "एक यादृच्छिक क्रम में",
+            "समांतर में",
+            "श्रेणी में",
+            "एक वृत्ताकार पैटर्न में"
+          ],
+          "solution": "टॉर्च में, सेल श्रेणी में व्यवस्थित किए जाते हैं ताकि एक सेल के धनात्मक टर्मिनल को अगले सेल के ऋणात्मक टर्मिनल से जोड़ा जा सके, जिससे विद्युत धारा के लिए एक निरंतर मार्ग बनता है। इस व्यवस्था से सर्किट के लिए कुल वोल्टेज बढ़ जाता है। समांतर या यादृच्छिक रूप से व्यवस्थित करने से पर्याप्त वोल्टेज प्राप्त नहीं होता है और एक वृत्ताकार पैटर्न मानक विद्युत व्यवस्था नहीं है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains original meaning, and uses standard Hindi technical terms.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "टॉर्चमध्ये, संपूर्ण परिपथाला ऊर्जा पुरविण्यासाठी सेल कशा व्यवस्थित केले जातात?",
+          "choices": [
+            "अयोग्य क्रमाने",
+            "समांतरात",
+            "श्रेणीत",
+            "वृत्ताकार प्रतिमेत"
+          ],
+          "solution": "टॉर्चमध्ये, सेल श्रेणीत व्यवस्थित केले जातात जेणेकरून एका सेलचा धनात्मक टर्मिनल दुसऱ्या सेलच्या ऋणात्मक टर्मिनलला जोडला जातो, ज्यामुळे विद्युत प्रवाहाचा एक अविच्छिन्न मार्ग तयार होतो. ही सेटअप परिपथाला उपलब्ध एकूण व्होल्टेज वाढवते. समांतरात किंवा अयोग्य क्रमाने ठेवल्यास पुरेसा व्होल्टेज मिळणार नाही आणि वृत्ताकार प्रतिमा एक मानक विद्युत व्यवस्था नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Assumes cells are placed randomly",
+        "Confuses parallel with series connection",
+        null,
+        "Confuses a circular pattern with a series connection"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 2 (in series), as the description matches the standard arrangement of cells in a torch. The reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.1 A Torchlight"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 2,
+          "pageStart": 3,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.2 A Simple Electrical Circuit",
+            "3.2.1 Electric cell"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 3,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.2 A Simple Electrical Circuit",
+            "3.2.2 Battery"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T04:44:16.982Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "What happens to the current in an incandescent lamp when the circuit is complete?",
+      "choices": [
+        "It stops flowing",
+        "It flows through the filament",
+        "It flows through the metal tip only",
+        "It flows through the insulator"
+      ],
+      "answerIndex": 1,
+      "solution": "When the circuit is complete, the current flows through the filament of the incandescent lamp, causing it to glow. The metal tip and insulator do not conduct the current in the same way. The current does not stop flowing when the circuit is complete.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक अपवर्तक बल्ब में परिपथ पूरा होने पर धारा क्या होती है?",
+          "choices": [
+            "यह प्रवाह बंद हो जाता है",
+            "यह फिलामेंट से प्रवाहित होता है",
+            "यह केवल धातु के टिप पर प्रवाहित होता है",
+            "यह विद्युतरोधी से प्रवाहित होता है"
+          ],
+          "solution": "जब परिपथ पूरा होता है, तो अपवर्तक बल्ब के फिलामेंट से धारा प्रवाहित होती है, जिसके कारण यह चमकता है। धातु के टिप और विद्युतरोधी धारा के प्रवाह के समान तरीके से नहीं कार्य करते। परिपथ पूरा होने पर धारा बंद नहीं होती।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms like 'फिलामेंट' (filament), 'धातु के टिप' (metal tip), and 'विद्युतरोधी' (insulator) as used in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "अॅन्सेंडेंट लॅम्प मध्ये परिपथ पूर्ण झाल्यास विद्युतप्रवाह काय होतो?",
+          "choices": [
+            "तो प्रवाह थांबतो",
+            "तो फिलामेंट मध्ये प्रवाहित होतो",
+            "तो धातू टिप मात्र प्रवाहित होतो",
+            "तो अवाहक मध्ये प्रवाहित होतो"
+          ],
+          "solution": "जेव्हा परिपथ पूर्ण होतो तेव्हा अॅन्सेंडेंट लॅम्पच्या फिलामेंट मध्ये विद्युतप्रवाह प्रवाहित होतो आणि तो तापल्यामुळे जळतो. धातू टिप आणि अवाहक विद्युतप्रवाह प्रवाहित करत नाहीत. परिपथ पूर्ण झाल्यावर विद्युतप्रवाह थांबत नाही.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the original meaning, and uses appropriate technical terms as used in Marathi textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Incorrectly assumes current stops",
+        null,
+        "Confuses the function of the metal tip",
+        "Confuses the function of the insulator"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly identifies that current flows through the filament when the circuit is complete. The reasoning for the distractors aligns with common misconceptions about the roles of the metal tip and insulator.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 4,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.2 A Simple Electrical Circuit",
+            "3.2.3 Electric lamp"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 5,
+          "pageStart": 5,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.2 A Simple Electrical Circuit",
+            "3.2.4 Making an electric lamp glow using an",
+            "electric cell or battery"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 6,
+          "pageStart": 8,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.2 A Simple Electrical Circuit",
+            "3.2.5 An electrical circuit"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T04:44:16.982Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "Based on the circuit diagram in Fig. 3.14, which component allows the circuit to be opened or closed?",
+      "choices": [
+        "Electric cell",
+        "Electric lamp",
+        "Switch",
+        "Wire"
+      ],
+      "answerIndex": 2,
+      "solution": "The switch allows the circuit to be opened or closed because it physically breaks or completes the electrical path. An electric cell provides power, an electric lamp emits light, and a wire simply conducts electricity without controlling the flow. The switch is specifically designed to control the circuit's state.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "चित्र 3.14 में परिपथ आरेख के आधार पर, कौन सा घटक परिपथ को खोलने या बंद करने की अनुमति देता है?",
+          "choices": [
+            "विद्युत सेल",
+            "विद्युत बल्ब",
+            "स्विच",
+            "तार"
+          ],
+          "solution": "स्विच परिपथ को खोलने या बंद करने की अनुमति देता है क्योंकि यह विद्युत पथ को भौतिक रूप से टूटा या पूरा करता है। विद्युत सेल शक्ति प्रदान करता है, विद्युत बल्ब प्रकाश उत्सर्जित करता है, और तार सिर्फ विद्युत के प्रवाह को संचारित करता है। स्विच को विशेष रूप से परिपथ के स्थिति को नियंत्रित करने के लिए डिज़ाइन किया गया है।",
+          "imageAlt": "एक सरल परिपथ जिसमें बंद स्विच और दो नोड्स को जोड़ने वाला तार है",
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate technical terms as used in Hindi-medium science textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "चित्र 3.14 मधील परिपथ आरेखावर आधारित, कोणता घटक परिपथ खोलण्यासाठी किंवा बंद करण्यासाठी अनुमती देतो?",
+          "choices": [
+            "विद्युत सेल",
+            "विद्युत दिवा",
+            "स्विच",
+            "तार"
+          ],
+          "solution": "स्विच परिपथ खोलण्यासाठी किंवा बंद करण्यासाठी अनुमती देतो कारण ते विद्युत पथ भौतिकरीत्या तोडतो किंवा पूर्ण करतो. विद्युत सेल ऊर्जा पुरवतो, विद्युत दिवा प्रकाश उत्सर्जित करतो आणि तार फक्त विद्युत प्रवाह करतो जो वापरकर्ता नियंत्रित करत नाही. स्विच विशेषतः परिपथच्या स्थितीचे नियंत्रण करण्यासाठी डिझाइन केलेला आहे.",
+          "imageAlt": "एक सोपा परिपथ ज्यामध्ये बंद स्विच आणि दोन नोड्स जोडणारी तार आहे",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": "A simple circuit with a closed switch and a wire connecting two nodes",
+      "figure": {
+        "kind": "circuit",
+        "spec": {
+          "nodes": [
+            {
+              "id": "n1",
+              "x": 2,
+              "y": 4
+            },
+            {
+              "id": "n2",
+              "x": 6,
+              "y": 4
+            }
+          ],
+          "parts": [
+            {
+              "type": "switchClosed",
+              "from": "n1",
+              "to": "n2",
+              "label": "switch"
+            },
+            {
+              "type": "wire",
+              "from": "n2",
+              "to": "n1"
+            }
+          ]
+        },
+        "labels": {
+          "switch": {
+            "en": "switch",
+            "hi": "स्विच",
+            "mr": "स्विच"
+          }
+        }
+      },
+      "needsFigure": true,
+      "distractorReason": [
+        "Confuses the role of the cell",
+        "Thinks the lamp controls the circuit",
+        null,
+        "Does not understand the function of a wire"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is clear and the correct answer is 2 (Switch). The reasoning provided by the author is accurate and reflects common misconceptions among students.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 7,
+          "pageStart": 9,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.2 A Simple Electrical Circuit",
+            "3.2.5 An electrical circuit"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 8,
+          "pageStart": 10,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.2 A Simple Electrical Circuit",
+            "3.2.6 Electric switch"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 9,
+          "pageStart": 11,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.3 Circuit Diagrams"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 10,
+          "pageStart": 12,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.4 Electrical Conductors and Insulators"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T04:44:16.982Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "If a torch uses three cells connected in series, what will happen to the lamp if one of the cells is removed?",
+      "choices": [
+        "The lamp will glow brighter",
+        "The lamp will not glow",
+        "The lamp will glow dimmer",
+        "The lamp will flicker"
+      ],
+      "answerIndex": 1,
+      "solution": "When cells are connected in series, removing one cell breaks the continuous path needed for electric current to flow, so the lamp will not glow. This is because the circuit is no longer complete, preventing the flow of electricity. The other options are incorrect because they suggest changes in brightness or flickering, which would not occur if the circuit is completely broken.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक टॉर्च में तीन सेल श्रेणी में जुड़े हुए हैं, तो यदि एक सेल को हटा दिया जाए तो लैंप पर क्या प्रभाव पड़ेगा?",
+          "choices": [
+            "लैंप अधिक चमकेगा",
+            "लैंप नहीं जलेगा",
+            "लैंप कम चमकेगा",
+            "लैंप झिलमिलाएगा"
+          ],
+          "solution": "जब सेल श्रेणी में जुड़े होते हैं, तो एक सेल को हटाने से विद्युत धारा के प्रवाह के लिए आवश्यक लगातार पथ टूट जाता है, इसलिए लैंप नहीं जलेगा। ऐसा इसलिए है क्योंकि परिपथ अब पूरा नहीं है, जिससे विद्युत के प्रवाह को रोक दिया जाता है। अन्य विकल्प गलत हैं क्योंकि वे चमक में परिवर्तन या झिलमिलाहट के बारे में कहते हैं, जो परिपथ पूरी तरह से टूट जाने पर नहीं हो सकता।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर एका टॉर्चमध्ये तीन सेल श्रेणीमध्ये जोडले गेले असतील, तर जर एका सेल बाजूला घेतला गेला तर लॅम्पवर काय परिणाम होईल?",
+          "choices": [
+            "लॅम्प जास्त जाळेल",
+            "लॅम्प जाळणार नाही",
+            "लॅम्प कमी जाळेल",
+            "लॅम्प झपाटा मारेल"
+          ],
+          "solution": "जेव्हा सेल श्रेणीमध्ये जोडले जातात तेव्हा एका सेल बाजूला घेतल्याने विद्युत प्रवाहाच्या लांब रस्त्याचा तुटा होतो, म्हणून लॅम्प जाळणार नाही. हे असे आहे कारण परिपथ पूर्ण राहिलेला नाही, ज्यामुळे विद्युत प्रवाह रोखला जातो. इतर विकल्प चुकीचे आहेत कारण ते तीव्रतेत बदल किंवा झपाटा मारण्याचा अंदाज दर्शवतात, जे परिपथ पूर्णपणे तुटल्यास घडू शकत नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Assumes more cells mean more brightness",
+        null,
+        "Confuses a broken circuit with a dim lamp",
+        "Assumes a flickering lamp is the result of a missing cell"
+      ],
+      "solverAnswers": [
+        1,
+        2,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 1, as removing a cell from a series circuit breaks the circuit, preventing current flow. The author's reasoning aligns with the physics of series circuits and the misconceptions students might have.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.1 A Torchlight"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 2,
+          "pageStart": 3,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.2 A Simple Electrical Circuit",
+            "3.2.1 Electric cell"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 3,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.2 A Simple Electrical Circuit",
+            "3.2.2 Battery"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T04:44:16.982Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "In a circuit with a battery and a lamp, if the lamp does not glow, which of the following is the most likely cause?",
+      "choices": [
+        "The battery is not connected properly",
+        "The lamp is a LED",
+        "The circuit is complete",
+        "The wires are made of copper"
+      ],
+      "answerIndex": 0,
+      "solution": "If the battery is not connected properly, the circuit will not be complete, preventing current from flowing and causing the lamp not to glow. A LED can still glow if properly connected, and copper wires are good conductors that do not hinder current flow. A complete circuit is required for the lamp to function, so an improper battery connection is the most likely issue.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक सर्किट में बैटरी और एक लैंप है, यदि लैंप नहीं जलता है, तो निम्नलिखित में से कौन-सा सबसे संभावित कारण है?",
+          "choices": [
+            "बैटरी सही तरह से जुड़ी नहीं है",
+            "लैंप एक एलईडी है",
+            "सर्किट पूर्ण है",
+            "तार कॉपर से बने हैं"
+          ],
+          "solution": "यदि बैटरी सही तरह से जुड़ी नहीं है, तो सर्किट पूर्ण नहीं होगा, जिससे धारा के प्रवाह को रोक दिया जाएगा और लैंप नहीं जलेगा। एलईडी सही तरह से जुड़े होने पर भी जल सकता है, और कॉपर तार धारा प्रवाह को रोकते नहीं हैं। लैंप कार्य करने के लिए पूर्ण सर्किट की आवश्यकता होती है, इसलिए गलत बैटरी के जुड़े होने के कारण सबसे संभावित समस्या है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and technical terms. The correct answer remains option (1), and the distractors are still incorrect in the Hindi version.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका सर्किटमध्ये बॅटरी आणि एका लॅम्प असताना, जर लॅम्प जळत नसेल तर खालीलपैकी कोणते सर्वात शक्य कारण असेल?",
+          "choices": [
+            "बॅटरी योग्यरित्या जोडली गेली नाही",
+            "लॅम्प एलईडी आहे",
+            "सर्किट पूर्ण आहे",
+            "तारा कॉपर बनलेल्या आहेत"
+          ],
+          "solution": "जर बॅटरी योग्यरित्या जोडली गेली नसेल तर सर्किट पूर्ण होणार नाही, जेणेकरून विद्युत प्रवाह रोखला जाईल आणि लॅम्प जळणार नाही. एलईडी योग्यरित्या जोडल्यास जळू शकतो, आणि कॉपर तारा चांगल्या वाहक असतात जे विद्युत प्रवाहाला अडथळा नकारतात. लॅम्प कार्य करण्यासाठी पूर्ण सर्किट आवश्यक असतो, म्हणून बॅटरीच्या अयोग्य जोडणी हे सर्वात शक्य असलेले विषय आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Assumes that a LED will always glow if connected",
+        "Assumes that a complete circuit is not necessary for the lamp to glow",
+        "Assumes that copper wires are not conductors"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 0, as an improperly connected battery would prevent the circuit from being complete, stopping current flow and preventing the lamp from glowing. The other options contain misconceptions: assuming a LED will always glow, thinking a complete circuit is unnecessary, and believing copper is not a conductor.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 11,
+          "pageStart": 14,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.4 Electrical Conductors and Insulators"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 12,
+          "pageStart": 15,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.4 Electrical Conductors and Insulators",
+            "In a Nutshell"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 13,
+          "pageStart": 16,
+          "pageEnd": 18,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.4 Electrical Conductors and Insulators",
+            "Let Us Enhance Our Learning"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 14,
+          "pageStart": 18,
+          "pageEnd": 18,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.4 Electrical Conductors and Insulators",
+            "Exploratory Projects"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T04:44:16.982Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "If the cells in a torch are connected in a way that the positive terminal of one cell is not connected to the negative terminal of the next, what will happen?",
+      "choices": [
+        "The lamp will glow normally",
+        "The lamp will not glow",
+        "The lamp will glow very brightly",
+        "The lamp will flicker"
+      ],
+      "answerIndex": 1,
+      "solution": "If the positive terminal of one cell is not connected to the negative terminal of the next, the circuit will not be complete, preventing the flow of electric current. Without current, the lamp cannot receive the necessary energy to glow. The other options suggest the lamp will function, which is not possible in an incomplete circuit.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि टॉर्च में सेल इस प्रकार जुड़े हुए हैं कि एक सेल के धनात्मक टर्मिनल को अगले सेल के ऋणात्मक टर्मिनल से नहीं जोड़ा गया है, तो क्या होगा?",
+          "choices": [
+            "लैंप सामान्य रूप से जलेगा",
+            "लैंप नहीं जलेगा",
+            "लैंप बहुत तेजी से जलेगा",
+            "लैंप झिलमिलाएगा"
+          ],
+          "solution": "यदि एक सेल के धनात्मक टर्मिनल को अगले सेल के ऋणात्मक टर्मिनल से नहीं जोड़ा गया है, तो सर्किट पूरा नहीं होगा, जिससे विद्युत प्रवाह रुक जाएगा। विद्युत प्रवाह न होने से लैंप को जलने के लिए आवश्यक ऊर्जा नहीं मिलेगी। अन्य विकल्प बताते हैं कि लैंप कार्य करेगा, जो अपूर्ण सर्किट में संभव नहीं है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms as used in Hindi-medium science textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर टॉर्च मधील सेल असा जोडले जातील की एका सेलचा धनात्मक टर्मिनल दुसऱ्या सेलच्या ऋणात्मक टर्मिनलला जोडले जात नाही, तर काय होईल?",
+          "choices": [
+            "दिवा सामान्यपणे जळेल",
+            "दिवा जळणार नाही",
+            "दिवा खूप जास्त जळेल",
+            "दिवा झपाटा मारेल"
+          ],
+          "solution": "जर एका सेलचा धनात्मक टर्मिनल दुसऱ्या सेलच्या ऋणात्मक टर्मिनलला जोडले जात नाही, तर परिपथ पूर्ण होणार नाही, ज्यामुळे विद्युत प्रवाह रोखला जाईल. विद्युत प्रवाह नसल्यास, दिव्याला जळण्यासाठी आवश्यक ऊर्जा मिळणार नाही. इतर विकल्प दिव्याला कार्य करत असल्याचे सूचित करतात, जे अपूर्ण परिपथामध्ये शक्य नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Assumes a partial connection allows the lamp to work",
+        null,
+        "Confuses a complete circuit with a faulty one",
+        "Assumes a flickering lamp is due to a faulty connection"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies that an incomplete circuit prevents current flow, so the lamp will not glow. The reasoning for the distractors aligns with common misconceptions about circuit connections.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.1 A Torchlight"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 2,
+          "pageStart": 3,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.2 A Simple Electrical Circuit",
+            "3.2.1 Electric cell"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 3,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.2 A Simple Electrical Circuit",
+            "3.2.2 Battery"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T04:44:16.982Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Why does the incandescent lamp glow only when current passes through the circuit?",
+      "choices": [
+        "Because it has a filament",
+        "Because it has two terminals",
+        "Because the current flows from the positive to the negative terminal",
+        "Because the circuit is complete"
+      ],
+      "answerIndex": 3,
+      "solution": "The incandescent lamp glows only when the circuit is complete because the current needs a complete path to flow through the filament. While the filament, terminals, and direction of current are important, the key reason is that the circuit must be complete for the current to flow and make the lamp glow.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक अपवर्तक बल्ब क्यों चमकता है जब विद्युत धारा परिपथ में प्रवाहित होती है?",
+          "choices": [
+            "क्योंकि इसमें एक फिलामेंट होता है",
+            "क्योंकि इसमें दो टर्मिनल होते हैं",
+            "क्योंकि धारा धनात्मक से ऋणात्मक टर्मिनल की ओर प्रवाहित होती है",
+            "क्योंकि परिपथ पूर्ण होता है"
+          ],
+          "solution": "एक अपवर्तक बल्ब केवल तभी चमकता है जब परिपथ पूर्ण होता है क्योंकि धारा के फिलामेंट से प्रवाहित होने के लिए पूर्ण पथ की आवश्यकता होती है। फिलामेंट, टर्मिनल और धारा की दिशा महत्वपूर्ण हैं, लेकिन मुख्य कारण यह है कि परिपथ पूर्ण होना चाहिए ताकि धारा बल्ब को चमकाने के लिए प्रवाहित हो सके।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, technical terms are appropriately used in Hindi, and the logic of the question and solution is preserved.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "इंकांडेसेंट लॅम्प केवळ तेव्हाच तप्त होतो जेव्हा परिपथातून विद्युतप्रवाह जातो?",
+          "choices": [
+            "कारण त्यात एक तापद्रव्य असतो",
+            "कारण त्यात दोन टर्मिनल असतात",
+            "कारण विद्युतप्रवाह धनात्मक ते ऋणात्मक टर्मिनलकडे वाहतो",
+            "कारण परिपथ पूर्ण आहे"
+          ],
+          "solution": "इंकांडेसेंट लॅम्प परिपथ पूर्ण असतानाच तप्त होतो कारण विद्युतप्रवाह तापद्रव्यामार्फत पूर्ण मार्गाने वाहावा लागतो. तापद्रव्य, टर्मिनल आणि विद्युतप्रवाहाची दिशा अहम असली तरी, विद्युतप्रवाह वाहून लॅम्प तप्त करण्यासाठी परिपथ पूर्ण असणे आवश्यक आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the role of the filament",
+        "Confuses the role of the terminals",
+        "Confuses the direction of current with the reason for glowing",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 3, as the lamp glows only when the circuit is complete, allowing current to flow through the filament. The other options describe components or properties of the lamp or circuit, but not the fundamental reason for the lamp glowing.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 4,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.2 A Simple Electrical Circuit",
+            "3.2.3 Electric lamp"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 5,
+          "pageStart": 5,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.2 A Simple Electrical Circuit",
+            "3.2.4 Making an electric lamp glow using an",
+            "electric cell or battery"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 6,
+          "pageStart": 8,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.2 A Simple Electrical Circuit",
+            "3.2.5 An electrical circuit"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T04:44:16.982Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
     }
   ]
 }

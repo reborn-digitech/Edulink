@@ -985,6 +985,3503 @@
       "generatedAt": "2026-11-02T14:54:59.378Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "Which type of interaction is shown in Fig. 12.16 where the bee benefits by getting nectar and the flower benefits by getting pollinated?",
+      "choices": [
+        "Parasitism",
+        "Commensalism",
+        "Mutualism",
+        "Competition"
+      ],
+      "answerIndex": 2,
+      "solution": "The interaction where both organisms benefit is called mutualism. In the example, the bee gets nectar and the flower gets pollinated, which are both benefits. Parasitism involves one organism benefiting and the other being harmed. Commensalism involves one organism benefiting and the other not affected. Competition involves organisms fighting for resources.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "चित्र 12.16 में कौन-सा अंतःक्रिया दिखाई गई है जहां मधुमक्खी नेक्टर प्राप्त करके लाभ पाती है और फूल परागित होकर लाभ पाता है?",
+          "choices": [
+            "परजीविता",
+            "सहभोजिता",
+            "सहयोगिता",
+            "प्रतिस्पर्धा"
+          ],
+          "solution": "जहां दोनों जीव लाभ पाते हैं, उस अंतःक्रिया को सहयोगिता कहते हैं। उदाहरण में, मधुमक्खी नेक्टर प्राप्त करती है और फूल परागित होता है, जो दोनों लाभ हैं। परजीविता में एक जीव लाभ पाता है और दूसरा नुकसान होता है। सहभोजिता में एक जीव लाभ पाता है और दूसरा प्रभावित नहीं होता। प्रतिस्पर्धा में जीव संसाधनों के लिए लड़ते हैं।",
+          "imageAlt": "एक आरेख जो मधुमक्खी और फूल के अंतःक्रिया को दर्शाता है, जो सहयोगिता का प्रतिनिधित्व करता है।",
+          "critique": "The Hindi translation accurately reflects the English content with appropriate biological terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "चित्र 12.16 मध्ये दाखवलेल्या प्रकारच्या अन्वयनात बी ने नेक्टर मिळवत असताना फुलाला परागण होते, तर ते कोणत्या प्रकारचे अन्वयन आहे?",
+          "choices": [
+            "परजीवितता",
+            "सहभोगिता",
+            "सहकारिता",
+            "स्पर्धा"
+          ],
+          "solution": "जेथे दोन्ही सजीव फायदेशीर होतात त्या अन्वयनाला सहकारिता म्हणतात. उदाहरणात, बीला नेक्टर मिळतो आणि फुलाला परागण होते, जे दोन्ही फायदे आहेत. परजीविततेमध्ये एका सजीवाला फायदा होतो आणि दुसऱ्याला नुकसान होते. सहभोगितेमध्ये एका सजीवाला फायदा होतो आणि दुसऱ्याला कोणताही प्रभाव नसतो. स्पर्धेमध्ये सजीव वस्तुंसाठी लढतात.",
+          "imageAlt": "एक आकृती जी बी आणि फुलाच्या अन्वयनाचे प्रतिनिधित्व करते, जी सहकारितेची प्रतिनिधित्व करते.",
+          "critique": "The translation is accurate and maintains the scientific terminology used in Marathi textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": "A diagram showing a bee and a flower interacting, representing mutualism.",
+      "figure": {
+        "kind": "diagram",
+        "spec": {
+          "parts": [
+            {
+              "part": "planeMirror",
+              "x": 20,
+              "y": 30,
+              "size": 10,
+              "labels": [
+                "incidentRay",
+                "reflectedRay",
+                "normal"
+              ],
+              "text": {
+                "incidentRay": "bee",
+                "reflectedRay": "flower",
+                "normal": "nectar"
+              }
+            }
+          ]
+        },
+        "labels": {
+          "bee": {
+            "en": "bee",
+            "hi": "मधुमक्खी",
+            "mr": "बी"
+          },
+          "flower": {
+            "en": "flower",
+            "hi": "फूल",
+            "mr": "फुल"
+          },
+          "nectar": {
+            "en": "nectar",
+            "hi": "नेक्टर",
+            "mr": "नेक्टर"
+          }
+        }
+      },
+      "needsFigure": true,
+      "distractorReason": [
+        "confuses parasitism with mutualism",
+        "thinks only one organism benefits",
+        null,
+        "incorrectly identifies the interaction type"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-constructed and the solution is accurate. The correct answer is clearly mutualism, and the explanations for the incorrect options reflect common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/8/science/hecu112.pdf",
+          "ordinal": 11,
+          "pageStart": 12,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 12: — How Nature Works in Harmony",
+            "12.7 How Does One Change Lead to Another?"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu112.pdf",
+          "ordinal": 12,
+          "pageStart": 13,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 12: — How Nature Works in Harmony",
+            "12.8 How Do Interactions Maintain",
+            "Balance in Ecosystems?"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu112.pdf",
+          "ordinal": 13,
+          "pageStart": 14,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 12: — How Nature Works in Harmony",
+            "12.9 What Are the Benefits of an Ecosystem?"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-30T00:13:14.675Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the main reason for the increase in agricultural pests after the decline in frog populations?",
+      "choices": [
+        "Frogs eat pests, so fewer frogs mean more pests",
+        "Pesticides kill pests",
+        "Frogs are not related to pests",
+        "Frogs help plants grow"
+      ],
+      "answerIndex": 0,
+      "solution": "Frogs eat insects, so when their numbers decrease, the number of pests increases. Pesticides are used as a result of the pest problem, not the cause. Frogs are directly related to pest control. Frogs do not help plants grow directly.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "कृषि की कीटों में वृद्धि का मुख्य कारण क्यों होता है जब बिल्लियों की संख्या घट जाती है?",
+          "choices": [
+            "बिल्लियाँ कीट खाती हैं, इसलिए कम बिल्लियाँ कम कीट होती हैं",
+            "कीटनाशक कीट मारते हैं",
+            "बिल्लियाँ कीट से संबंधित नहीं होती हैं",
+            "बिल्लियाँ पौधों के बढ़ने में मदद करती हैं"
+          ],
+          "solution": "बिल्लियाँ कीट खाती हैं, इसलिए जब उनकी संख्या घट जाती है, तो कीटों की संख्या बढ़ जाती है। कीटनाशक कीटों के समस्या के कारण उपयोग किए जाते हैं, न कि कारण। बिल्लियाँ कीट नियंत्रण से सीधे संबंधित होती हैं। बिल्लियाँ पौधों के बढ़ने में सीधे मदद नहीं करती हैं।",
+          "imageAlt": null,
+          "critique": "Hindi translation accurately reflects the English original in meaning, options, and solution. 'बिल्लियाँ' (frogs) is the correct term used in Hindi textbooks. All distractors remain incorrect as in the original.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "शेतीतील कीटकांची संख्या वाढली का कारण बांबूंच्या लोकसंख्येत घट झाली तर त्याचे मुख्य कारण काय आहे?",
+          "choices": [
+            "बांबू खातात कीटक, म्हणून लहान बांबूंचा अर्थ अधिक कीटक आहे",
+            "कीटकनाशक खातात कीटक",
+            "बांबू आणि कीटक एकमेकांशी संबंधित नाहीत",
+            "बांबू वनस्पती वाढतात मदत करतात"
+          ],
+          "solution": "बांबू जिवाणू खातात, म्हणून जेव्हा त्यांची संख्या कमी होते, तेव्हा कीटकांची संख्या वाढते. कीटकनाशक खातात कीटकांच्या समस्येमुळे वापरले जातात, नकारात्मक कारण नाही. बांबू लक्ष्यपत्त्याशी सीधा संबंध आहे. बांबू वनस्पती वाढतात मदत करतात नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for ecological concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "understands the relationship incorrectly",
+        "confuses cause and effect",
+        "does not understand the role of frogs"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is clearly supported by the reasoning that frogs eat pests, and their decline leads to an increase in pests. The other options reflect common misconceptions about the role of frogs in the ecosystem.",
+      "sources": [
+        {
+          "document": "ncert/8/science/hecu112.pdf",
+          "ordinal": 11,
+          "pageStart": 12,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 12: — How Nature Works in Harmony",
+            "12.7 How Does One Change Lead to Another?"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu112.pdf",
+          "ordinal": 12,
+          "pageStart": 13,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 12: — How Nature Works in Harmony",
+            "12.8 How Do Interactions Maintain",
+            "Balance in Ecosystems?"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu112.pdf",
+          "ordinal": 13,
+          "pageStart": 14,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 12: — How Nature Works in Harmony",
+            "12.9 What Are the Benefits of an Ecosystem?"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-30T00:13:14.675Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "In a grassland ecosystem, which organism is most likely to be at the highest trophic level?",
+      "choices": [
+        "Grass",
+        "Grasshopper",
+        "Frog",
+        "Eagle"
+      ],
+      "answerIndex": 3,
+      "solution": "Eagles are large carnivores and are at the highest trophic level in a food chain. Grass is a producer, grasshopper is a primary consumer, and frog is a secondary consumer.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक घास के मैदान पारिस्थितिकी तंत्र में, कौन सा जीव सबसे ऊपरी पोषी स्तर पर होने की संभावना है?",
+          "choices": [
+            "घास",
+            "कीट",
+            "मेंढक",
+            "गिद्ध"
+          ],
+          "solution": "गिद्ध बड़े मांसाहारी होते हैं और एक खाद्य श्रृंखला में सबसे ऊपरी पोषी स्तर पर होते हैं। घास उत्पादक होती है, कीट प्राथमिक उपभोक्ता होता है और मेंढक द्वितीयक उपभोक्ता होता है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology for ecological concepts.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "घासाच्या परिसंस्थेत, कोणता सजीव उंचतम पोषणस्तरावर असण्याची संभावना अधिक आहे?",
+          "choices": [
+            "घास",
+            "घासटी",
+            "मांजर",
+            "गरुड"
+          ],
+          "solution": "गरुड विशाल मांसाहारी आहेत आणि एका खाद्यप्रवाहात उंचतम पोषणस्तरावर असतात. घास उत्पादक आहे, घासटी प्राथमिक उपभोक्ता आहे आणि मांजर द्वितीयक उपभोक्ता आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the scientific terminology appropriate for a Marathi-medium curriculum.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses producers with top consumers",
+        "Confuses primary consumers with top consumers",
+        "Confuses secondary consumers with top consumers",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly identifies the eagle as the top predator in the food chain, and the reasons for the distractors align with common misconceptions about trophic levels.",
+      "sources": [
+        {
+          "document": "ncert/8/science/hecu112.pdf",
+          "ordinal": 7,
+          "pageStart": 8,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 12: — How Nature Works in Harmony",
+            "12.4 What Are the Different Types of Interactions",
+            "Activity 12.5: Let us classify"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu112.pdf",
+          "ordinal": 8,
+          "pageStart": 9,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 12: — How Nature Works in Harmony",
+            "12.5 Who Eats Whom?"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu112.pdf",
+          "ordinal": 9,
+          "pageStart": 11,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 12: — How Nature Works in Harmony",
+            "12.5 Who Eats Whom?",
+            "Activity 12.8: Let us trace and link"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu112.pdf",
+          "ordinal": 10,
+          "pageStart": 11,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 12: — How Nature Works in Harmony",
+            "12.6 What Happens to Waste in Nature?"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-30T00:13:14.675Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "What is the effect of reduced oxygen in a pond due to dying plants?",
+      "choices": [
+        "More fish die",
+        "More insects are produced",
+        "More plants grow",
+        "More frogs appear"
+      ],
+      "answerIndex": 0,
+      "solution": "Less oxygen in the water leads to the death of fish. More insects are a result of less fish, not directly from reduced oxygen. More plants growing is not a result of less oxygen. More frogs appearing is not related to reduced oxygen in the water.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "पौधों के मर जाने के कारण एक तालाब में ऑक्सीजन के कम होने का क्या प्रभाव होता है?",
+          "choices": [
+            "अधिक मछलियां मर जाती हैं",
+            "अधिक कीट उत्पन्न होते हैं",
+            "अधिक पौधे उगते हैं",
+            "अधिक बिल्लियां दिखाई देती हैं"
+          ],
+          "solution": "पानी में कम ऑक्सीजन मछलियों के मर जाने के कारण होता है। अधिक कीट मछलियों के कम होने के कारण होते हैं, ऑक्सीजन के कम होने से सीधे नहीं। अधिक पौधे उगना ऑक्सीजन के कम होने का परिणाम नहीं है। अधिक बिल्लियां दिखाई देना पानी में ऑक्सीजन के कम होने से संबंधित नहीं है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms. The correct answer (option 1) is in the same position as in the English version. All distractors remain incorrect in the Hindi version.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "पाणी टाकीत जाऊन जाणाऱ्या वनस्पतींमुळे ऑक्सीजनच्या कमी झालेल्या परिणामाचे काय परिणाम होतात?",
+          "choices": [
+            "अधिक मासे मरतात",
+            "अधिक कीटक तयार होतात",
+            "अधिक वनस्पती वाढतात",
+            "अधिक बिडक्या दिसतात"
+          ],
+          "solution": "पाण्यातील ऑक्सीजनची कमी मासांच्या मृत्यूला कारणीभूत होते. अधिक कीटक तयार होणे मासांच्या कमतरतेमुळे होते, ऑक्सीजनच्या कमीमुळे नव्हे. अधिक वनस्पती वाढणे ऑक्सीजनच्या कमीमुळे होत नाही. अधिक बिडक्या दिसणे पाण्यातील ऑक्सीजनच्या कमीशी संबंधित नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for ecological concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "confuses the effect of oxygen reduction",
+        "thinks insects are directly affected by oxygen",
+        "does not understand the chain reaction"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies that reduced oxygen leads to fish death, and the misconceptions listed for the other options are plausible student errors.",
+      "sources": [
+        {
+          "document": "ncert/8/science/hecu112.pdf",
+          "ordinal": 11,
+          "pageStart": 12,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 12: — How Nature Works in Harmony",
+            "12.7 How Does One Change Lead to Another?"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu112.pdf",
+          "ordinal": 12,
+          "pageStart": 13,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 12: — How Nature Works in Harmony",
+            "12.8 How Do Interactions Maintain",
+            "Balance in Ecosystems?"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu112.pdf",
+          "ordinal": 13,
+          "pageStart": 14,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 12: — How Nature Works in Harmony",
+            "12.9 What Are the Benefits of an Ecosystem?"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-30T00:13:14.675Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "In a food web, which of the following is a primary producer?",
+      "choices": [
+        "Frog",
+        "Grass",
+        "Snake",
+        "Owl"
+      ],
+      "answerIndex": 1,
+      "solution": "Grass is a primary producer because it makes its own food through photosynthesis. Frogs, snakes, and owls are consumers that depend on other organisms for food.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक भोजन जाल में, निम्नलिखित में से कौन एक प्राथमिक उत्पादक है?",
+          "choices": [
+            "मेंढक",
+            "घास",
+            "सांप",
+            "उल्लू"
+          ],
+          "solution": "घास एक प्राथमिक उत्पादक है क्योंकि यह प्रकाश संश्लेषण द्वारा अपना भोजन बनाता है। मेंढक, सांप और उल्लू ऐसे उपभोक्ता हैं जो अन्य जीवों पर भोजन के लिए निर्भर रहते हैं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the scientific terminology used in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खाद्य प्रवाहात, खालीलपैकी कोण एक प्राथमिक उत्पादक आहे?",
+          "choices": [
+            "मांजर",
+            "लाल गवत",
+            "साप",
+            "गांडूळ"
+          ],
+          "solution": "लाल गवत एक प्राथमिक उत्पादक आहे कारण ते प्रकाशसंश्लेषणाद्वारे आपले खाद्य तयार करते. मांजर, साप आणि गांडूळ हे उपभोक्ते आहेत जे इतर जीवांवर अवलंबून असतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the scientific terminology used in Marathi textbooks. 'लाल गवत' (grass) is the correct term for 'grass' in this context, and the roles of producers and consumers are clearly conveyed.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "confuses consumers with producers",
+        null,
+        "Confuses predators with producers, thinking snakes are at the base of the food chain",
+        "Confuses predators with producers, thinking birds at the top of the food chain are the source of energy"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is well-constructed. The correct answer is 1 (Grass), as it is a primary producer that performs photosynthesis. The distractors are reasonable misconceptions: frogs, snakes, and owls are all consumers, not producers.",
+      "sources": [
+        {
+          "document": "ncert/8/science/hecu112.pdf",
+          "ordinal": 11,
+          "pageStart": 12,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 12: — How Nature Works in Harmony",
+            "12.7 How Does One Change Lead to Another?"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu112.pdf",
+          "ordinal": 12,
+          "pageStart": 13,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 12: — How Nature Works in Harmony",
+            "12.8 How Do Interactions Maintain",
+            "Balance in Ecosystems?"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu112.pdf",
+          "ordinal": 13,
+          "pageStart": 14,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 12: — How Nature Works in Harmony",
+            "12.9 What Are the Benefits of an Ecosystem?"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-30T00:13:14.675Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "In a habitat, how do different organisms contribute to the balance of the ecosystem?",
+      "choices": [
+        "By competing for the same resources",
+        "By depending on each other for survival",
+        "By avoiding all interactions",
+        "By living in isolation"
+      ],
+      "answerIndex": 1,
+      "solution": "Organisms in an ecosystem rely on each other for survival through relationships like predation, pollination, and nutrient cycling, which helps maintain balance. Competing for resources or living in isolation would disrupt this balance rather than support it. Avoiding all interactions is not a realistic or necessary part of an ecosystem's function.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक आवास में, विभिन्न जीव एक पारिस्थितिकी तंत्र के संतुलन में कैसे योगदान करते हैं?",
+          "choices": [
+            "एक ही संसाधनों के लिए प्रतिस्पर्धा करके",
+            "अपने जीवित रहने के लिए एक दूसरे पर निर्भर रहकर",
+            "सभी अंतःक्रियाओं से बचकर",
+            "अकेलापन में रहकर"
+          ],
+          "solution": "एक पारिस्थितिकी तंत्र में जीव अपने जीवित रहने के लिए एक दूसरे पर निर्भर रहते हैं, जैसे शिकार-शिकारी संबंध, परागण और पोषक तत्व चक्रण, जो संतुलन बनाए रखने में मदद करते हैं। संसाधनों के लिए प्रतिस्पर्धा करना या अकेलापन में रहना इस संतुलन को बर्बाद कर देता है बजाय इसके कि इसका समर्थन करे। सभी अंतःक्रियाओं से बचना पारिस्थितिकी तंत्र के कार्य के लिए वास्तविक या आवश्यक नहीं है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. Technical terms like 'पारिस्थितिकी तंत्र' (ecosystem), 'परागण' (pollination), and 'पोषक तत्व चक्रण' (nutrient cycling) are standard in Hindi science textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका आवासात, विविध जीव विसंगतीच्या परिसंस्थेच्या संतुलनात कशी योगदान देतात?",
+          "choices": [
+            "एकाच संसाधनासाठी लढा देणे",
+            "जीवनासाठी एकमेकांवर अवलंबून राहणे",
+            "सर्व अन्योन्य क्रियांचा टाळा घेणे",
+            "स्वतंत्रपणे राहणे"
+          ],
+          "solution": "एका परिसंस्थेतील जीव आपापसांत अवलंबून राहून जीवनासाठी विविध संबंधांमुळे जीवन जगतात, जसे की शिकार, परागण आणि पोषक तत्वांचा परिसंचार, जे संतुलन बनवते. संसाधनांसाठी लढा किंवा स्वतंत्रपणे राहणे हे संतुलनाला नकारात्मक परिणाम करते. सर्व अन्योन्य क्रियांचा टाळा घेणे हे परिसंस्थेच्या कार्यासाठी वास्तविक आणि आवश्यक नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi ecological terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Believes organisms compete without cooperation",
+        null,
+        "Misunderstands the role of interaction",
+        "Thinks organisms do not interact"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 1, as interdependence is key to ecosystem balance. The other options represent common misconceptions about ecological relationships.",
+      "sources": [
+        {
+          "document": "ncert/8/science/hecu112.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 12: — How Nature Works in Harmony",
+            "Probe and ponder"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu112.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 12: — How Nature Works in Harmony",
+            "12.1 How Do We Experience and Interpret",
+            "Our Surroundings?"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu112.pdf",
+          "ordinal": 2,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 12: — How Nature Works in Harmony",
+            "12.1 How Do We Experience and Interpret",
+            "Activity 12.1: Let us explore"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu112.pdf",
+          "ordinal": 3,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 12: — How Nature Works in Harmony",
+            "12.2 Who All Live Together in Nature?"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-30T00:13:14.675Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "In a food web, which of the following statements is true?",
+      "choices": [
+        "Each organism is connected to only one other organism",
+        "Organisms at the top of the food chain are not affected by changes in the ecosystem",
+        "Organisms can be part of multiple food chains",
+        "Decomposers are not included in any food chain"
+      ],
+      "answerIndex": 2,
+      "solution": "In a food web, organisms can be part of multiple food chains. This is because an organism can be eaten by more than one species, and it can also eat more than one type of organism. The other options are incorrect as they do not reflect the interconnected nature of a food web.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "खाद्य जाल में, निम्नलिखित में से कौन-सा कथन सत्य है?",
+          "choices": [
+            "प्रत्येक जीव एक अन्य जीव से जुड़ा होता है",
+            "खाद्य श्रृंखला के शीर्ष पर स्थित जीव पारिस्थितिकी तंत्र में परिवर्तन से प्रभावित नहीं होते हैं",
+            "जीव कई खाद्य श्रृंखलाओं के हिस्सा हो सकते हैं",
+            "अपघटक किसी भी खाद्य श्रृंखला में शामिल नहीं होते हैं"
+          ],
+          "solution": "खाद्य जाल में जीव कई खाद्य श्रृंखलाओं के हिस्सा हो सकते हैं। इसका कारण यह है कि एक जीव कई प्रजातियों द्वारा खाया जा सकता है, और यह कई प्रकार के जीवों को भी खा सकता है। अन्य विकल्प खाद्य जाल के जटिल संबंध को दर्शाने में असफल रहते हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology for ecological concepts.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खाद्य पाकळीत, खालीलपैकी कोणता विधान खरा आहे?",
+          "choices": [
+            "प्रत्येक सजीव फक्त एका इतर सजीवाशी जोडलेला असतो",
+            "खाद्य पाकळीच्या शीर्षस्थानी असलेले सजीव अनियमित वातावरणात बदलांमुळे प्रभावित होत नाहीत",
+            "सजीव अनेक खाद्य पाकळ्यांचा भाग असू शकतात",
+            "विघटक खाद्य पाकळीत कोणत्याही खाद्य पाकळीत समाविष्ट नसतात"
+          ],
+          "solution": "खाद्य पाकळीत सजीव अनेक खाद्य पाकळ्यांचा भाग असू शकतात. हे कारण एक सजीव एकापेक्षा जास्त प्राण्यांनी खाल्ला जाऊ शकतो आणि त्याने एकापेक्षा जास्त प्रकारच्या सजीवांचा खाऊ शकतो. इतर विधाने खरी नाहीत कारण ते खाद्य पाकळीच्या जाळ्यातील एकमेकांशी जोडलेल्या प्रकृतीला प्रतिबिंबित करत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for ecological concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Misunderstands the concept of a food web",
+        "Misunderstands the role of top consumers",
+        null,
+        "Confuses decomposers with food chain components"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 2, as organisms can indeed be part of multiple food chains. The other options are incorrect and reflect common misconceptions about food webs.",
+      "sources": [
+        {
+          "document": "ncert/8/science/hecu112.pdf",
+          "ordinal": 7,
+          "pageStart": 8,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 12: — How Nature Works in Harmony",
+            "12.4 What Are the Different Types of Interactions",
+            "Activity 12.5: Let us classify"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu112.pdf",
+          "ordinal": 8,
+          "pageStart": 9,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 12: — How Nature Works in Harmony",
+            "12.5 Who Eats Whom?"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu112.pdf",
+          "ordinal": 9,
+          "pageStart": 11,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 12: — How Nature Works in Harmony",
+            "12.5 Who Eats Whom?",
+            "Activity 12.8: Let us trace and link"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu112.pdf",
+          "ordinal": 10,
+          "pageStart": 11,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 12: — How Nature Works in Harmony",
+            "12.6 What Happens to Waste in Nature?"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-30T00:13:14.675Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "Which organisms are called producers in an ecosystem?",
+      "choices": [
+        "Herbivores",
+        "Carnivores",
+        "Omnivores",
+        "Plants"
+      ],
+      "answerIndex": 3,
+      "solution": "Plants are called producers because they can make their own food through photosynthesis. Herbivores, carnivores, and omnivores are all consumers that depend on other organisms for food.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक पारिस्थितिक तंत्र में कौन-से जीव उत्पादक कहलाते हैं?",
+          "choices": [
+            "शाकाहारी",
+            "मांसाहारी",
+            "सर्वाहारी",
+            "पौधे"
+          ],
+          "solution": "पौधे उत्पादक कहलाते हैं क्योंकि वे प्रकाश संश्लेषण द्वारा अपना भोजन स्वयं बना सकते हैं। शाकाहारी, मांसाहारी और सर्वाहारी सभी उपभोक्ता होते हैं जो भोजन के लिए अन्य जीवों पर निर्भर रहते हैं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, with appropriate Hindi terminology used.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "कोणते जीव एकाधिकारात उत्पादक म्हणून ओळखले जातात?",
+          "choices": [
+            "शाकाहारी",
+            "मांसाहारी",
+            "सर्वाहारी",
+            "वनस्पती"
+          ],
+          "solution": "वनस्पती उत्पादक म्हणून ओळखल्या जातात कारण ते प्रकाशसंश्लेषणाद्वारे आपले खाद्य पाहिजे. शाकाहारी, मांसाहारी आणि सर्वाहारी सर्व सेवक आहेत जे खाद्यासाठी इतर जीवांवर अवलंबून असतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for ecological concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses consumers with producers",
+        "Refers to animals that eat only other animals",
+        "Refers to animals that eat both plants and animals",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly identifies plants as producers due to their ability to perform photosynthesis. The distractors reflect common misconceptions about consumer roles.",
+      "sources": [
+        {
+          "document": "ncert/8/science/hecu112.pdf",
+          "ordinal": 7,
+          "pageStart": 8,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 12: — How Nature Works in Harmony",
+            "12.4 What Are the Different Types of Interactions",
+            "Activity 12.5: Let us classify"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu112.pdf",
+          "ordinal": 8,
+          "pageStart": 9,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 12: — How Nature Works in Harmony",
+            "12.5 Who Eats Whom?"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu112.pdf",
+          "ordinal": 9,
+          "pageStart": 11,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 12: — How Nature Works in Harmony",
+            "12.5 Who Eats Whom?",
+            "Activity 12.8: Let us trace and link"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu112.pdf",
+          "ordinal": 10,
+          "pageStart": 11,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 12: — How Nature Works in Harmony",
+            "12.6 What Happens to Waste in Nature?"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T10:56:41.286Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of the following best describes a food web?",
+      "choices": [
+        "A single path of energy transfer in an ecosystem",
+        "A diagram showing multiple interconnected food chains",
+        "A list of all the producers in an ecosystem",
+        "A representation of the population of a single species"
+      ],
+      "answerIndex": 1,
+      "solution": "A food web shows how different organisms in an ecosystem are interconnected through multiple food chains. It represents the complex relationships between producers, consumers, and decomposers.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन एक खाद्य जाल का सबसे अच्छा वर्णन करता है?",
+          "choices": [
+            "एक पारिस्थितिक तंत्र में ऊर्जा स्थानांतरण का एकमात्र मार्ग",
+            "कई एकीकृत खाद्य श्रृंखलाओं को दर्शाने वाला आरेख",
+            "एक पारिस्थितिक तंत्र में सभी उत्पादकों की सूची",
+            "एक विशिष्ट प्रजाति की जनसंख्या का प्रतिनिधित्व"
+          ],
+          "solution": "एक खाद्य जाल दर्शाता है कि एक पारिस्थितिक तंत्र में विभिन्न जीव कई खाद्य श्रृंखलाओं के माध्यम से एक दूसरे से जुड़े हुए हैं। यह उत्पादकों, उपभोक्ताओं और वियोजकों के बीच के जटिल संबंधों का प्रतिनिधित्व करता है।",
+          "imageAlt": null,
+          "critique": "Hindi translation accurately reflects the original English question and solution, with appropriate terminology used in Indian science education.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते एका खाद्य जाळीचे सर्वोत्तम वर्णन करते?",
+          "choices": [
+            "एका परिसंस्थेत ऊर्जेच्या हस्तांतरणाचा एकमेव मार्ग",
+            "अनेक जुळलेल्या खाद्य श्रृंखलांचे दर्शविणारे आकृती",
+            "एका परिसंस्थेतील सर्व उत्पादकांची यादी",
+            "एका प्रजातीच्या लोकसंख्येचे प्रतिनिधित्व"
+          ],
+          "solution": "एका खाद्य जाळीमध्ये परिसंस्थेतील विविध जीव अनेक खाद्य श्रृंखलांच्या माध्यमातून जुळलेले असतात. ती उत्पादक, उपभोक्ता आणि विघटकांमधील जटिल संबंधांचे प्रतिनिधित्व करते.",
+          "imageAlt": null,
+          "critique": "The translation accurately conveys the original meaning with appropriate Marathi terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Describes a food chain instead of a food web",
+        null,
+        "Misunderstands the concept of a food web",
+        "Does not understand the role of producers in a food web"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 1, as a food web is defined as multiple interconnected food chains. The other options represent misconceptions about food chains, producers, and population, which align with the author's reasoning.",
+      "sources": [
+        {
+          "document": "ncert/8/science/hecu112.pdf",
+          "ordinal": 17,
+          "pageStart": 18,
+          "pageEnd": 18,
+          "headingPath": [
+            "Chapter 12: — How Nature Works in Harmony",
+            "12.9 What Are the Benefits of an Ecosystem?",
+            "Activity 12.10: Let us survey"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu112.pdf",
+          "ordinal": 18,
+          "pageStart": 18,
+          "pageEnd": 19,
+          "headingPath": [
+            "Chapter 12: — How Nature Works in Harmony",
+            "12.9 What Are the Benefits of an Ecosystem?",
+            "Activity 12.10: Let us survey"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu112.pdf",
+          "ordinal": 19,
+          "pageStart": 19,
+          "pageEnd": 20,
+          "headingPath": [
+            "Chapter 12: — How Nature Works in Harmony",
+            "12.9 What Are the Benefits of an Ecosystem?",
+            "Activity 12.10: Let us survey"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T10:56:41.286Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of the following is an example of an interaction between biotic and abiotic components?",
+      "choices": [
+        "A fish laying eggs in water",
+        "A frog eating insects",
+        "A water snake eating fish",
+        "A plant needing sunlight to grow"
+      ],
+      "answerIndex": 3,
+      "solution": "The correct answer is 'A plant needing sunlight to grow' because it shows how a living organism (plant) depends on a non-living component (sunlight) for its survival. 'A fish laying eggs in water' and 'A frog eating insects' are interactions among biotic components. 'A water snake eating fish' is also an interaction among biotic components.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन जैविक एवं अजैविक घटकों के बीच अंतःक्रिया का उदाहरण है?",
+          "choices": [
+            "एक मछली पानी में अंडे देना",
+            "एक मेंढक कीट खाना",
+            "एक जल सांप की मछली खाना",
+            "एक पौधे के सूर्य के प्रकाश की आवश्यकता होना बढ़ने के लिए"
+          ],
+          "solution": "सही उत्तर 'एक पौधे के सूर्य के प्रकाश की आवश्यकता होना बढ़ने के लिए' है क्योंकि यह दर्शाता है कि एक जीवित जीव (पौधा) अपने जीवित घटक (सूर्य के प्रकाश) पर निर्भर करता है। 'एक मछली पानी में अंडे देना' एवं 'एक मेंढक कीट खाना' जैविक घटकों के बीच अंतःक्रिया है। 'एक जल सांप की मछली खाना' भी जैविक घटकों के बीच अंतःक्रिया है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriately translated, and the correct answer remains in the same position.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते जैविक आणि अजैविक घटकांमधील अन्योन्य क्रियेचे उदाहरण आहे?",
+          "choices": [
+            "एका मासाने पाण्यात अंडी घालणे",
+            "एका मेंढकाने कीटकांचे खाणे",
+            "पाण्याच्या सापाने मासांचे खाणे",
+            "एका वनस्पतीला वाढण्यासाठी सूर्यप्रकाशाची आवश्यकता असणे"
+          ],
+          "solution": "बरोबर उत्तर 'एका वनस्पतीला वाढण्यासाठी सूर्यप्रकाशाची आवश्यकता असणे' आहे कारण हे एका जीवित जीव (वनस्पती) आणि अजीवित घटक (सूर्यप्रकाश) दरम्यानच्या अन्योन्य क्रियेचे उदाहरण आहे. 'एका मासाने पाण्यात अंडी घालणे' आणि 'एका मेंढकाने कीटकांचे खाणे' हे जैविक घटकांमधील अन्योन्य क्रियेचे उदाहरण आहेत. 'पाण्याच्या सापाने मासांचे खाणे' हे देखील जैविक घटकांमधील अन्योन्य क्रियेचे उदाहरण आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses interactions among biotic components with biotic-abiotic interactions",
+        "Confuses interactions among biotic components with biotic-abiotic interactions",
+        "Confuses interactions among biotic components with biotic-abiotic interactions",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct. A plant needing sunlight is a clear example of a biotic-abiotic interaction. The other options are all interactions among biotic components, as the author correctly notes.",
+      "sources": [
+        {
+          "document": "ncert/8/science/hecu112.pdf",
+          "ordinal": 4,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 12: — How Nature Works in Harmony",
+            "12.3 Does Every Organism in a Community",
+            "Activity 12.3: Let us read"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu112.pdf",
+          "ordinal": 5,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 12: — How Nature Works in Harmony",
+            "12.4 What Are the Different Types of Interactions",
+            "Among Organisms and their Surroundings?"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu112.pdf",
+          "ordinal": 6,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 12: — How Nature Works in Harmony",
+            "12.4 What Are the Different Types of Interactions",
+            "Activity 12.4: Let us relate and identify"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T10:56:41.286Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of the following is an example of a herbivore?",
+      "choices": [
+        "Mouse",
+        "Eagle",
+        "Frog",
+        "Mushroom"
+      ],
+      "answerIndex": 0,
+      "solution": "Herbivores are organisms that feed only on plants. A mouse is an example of a herbivore as it eats plants and plant products. An eagle is a carnivore, a frog can be an omnivore, and a mushroom is a decomposer.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन एक शाकाहारी का उदाहरण है?",
+          "choices": [
+            "चूहा",
+            "गिद्ध",
+            "मेंढक",
+            "कैंसर"
+          ],
+          "solution": "शाकाहारी वे जीव होते हैं जो केवल पौधों पर खाते हैं। एक चूहा शाकाहारी का उदाहरण है क्योंकि यह पौधों और पौधों के उत्पाद खाता है। गिद्ध मांसाहारी होता है, मेंढक एक ओम्नीवोर हो सकता है और कैंसर एक विघटक होता है।",
+          "imageAlt": null,
+          "critique": "Hindi translation accurately reflects the original English question and solution, with appropriate terminology used in Indian biology textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणता एक शाकाहारी असलेला उदाहरण आहे?",
+          "choices": [
+            "खरा",
+            "गरूड",
+            "मांजर",
+            "कॅप्सूल"
+          ],
+          "solution": "शाकाहारी म्हणजे फक्त वनस्पती खाणारे जीव. खरा हा शाकाहारी असलेला उदाहरण आहे कारण तो वनस्पती आणि वनस्पती उत्पादने खातो. गरूड हा मांसाहारी आहे, मांजर एक अन्नाहारी असू शकतो आणि कॅप्सूल हा विघटक आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terms for biological concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses omnivore with herbivore",
+        "Identifies a carnivore",
+        "Mistakes a decomposer for a herbivore"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct. A mouse is a herbivore, while an eagle is a carnivore, a frog is often an omnivore, and a mushroom is a decomposer. The reasoning aligns with standard biological classifications.",
+      "sources": [
+        {
+          "document": "ncert/8/science/hecu112.pdf",
+          "ordinal": 7,
+          "pageStart": 8,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 12: — How Nature Works in Harmony",
+            "12.4 What Are the Different Types of Interactions",
+            "Activity 12.5: Let us classify"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu112.pdf",
+          "ordinal": 8,
+          "pageStart": 9,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 12: — How Nature Works in Harmony",
+            "12.5 Who Eats Whom?"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu112.pdf",
+          "ordinal": 9,
+          "pageStart": 11,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 12: — How Nature Works in Harmony",
+            "12.5 Who Eats Whom?",
+            "Activity 12.8: Let us trace and link"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu112.pdf",
+          "ordinal": 10,
+          "pageStart": 11,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 12: — How Nature Works in Harmony",
+            "12.6 What Happens to Waste in Nature?"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T10:56:41.286Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "What happens when the population of frogs decreases in an ecosystem?",
+      "choices": [
+        "More insects in farmlands",
+        "Fewer pesticides used by farmers",
+        "More oxygen in water",
+        "More fish in the pond"
+      ],
+      "answerIndex": 0,
+      "solution": "The correct answer is 'More insects in farmlands' because frogs eat insects, and their reduced numbers lead to an increase in insect populations. This, in turn, may lead farmers to use more pesticides. Fewer pesticides would not occur if frog populations decrease. More oxygen in water would not happen because frogs are not the primary source of oxygen production in water. More fish in the pond would not occur because frogs are not directly involved in increasing fish populations.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक पारिस्थितिक तंत्र में मेंढकों की आबादी कम होने पर क्या होता है?",
+          "choices": [
+            "खेतों में अधिक कीट",
+            "किसानों द्वारा कम कीटनाशक उपयोग किया जाता है",
+            "जल में अधिक ऑक्सीजन",
+            "तालाब में अधिक मछली"
+          ],
+          "solution": "सही उत्तर 'खेतों में अधिक कीट' है क्योंकि मेंढक कीट खाते हैं, और उनकी संख्या में कमी के कारण कीटों की संख्या बढ़ जाती है। इसके परिणामस्वरूप, किसानों को अधिक कीटनाशक का उपयोग करना पड़ सकता है। यदि मेंढक की आबादी कम हो जाती है तो कम कीटनाशक का उपयोग होना संभव नहीं है। जल में अधिक ऑक्सीजन होना संभव नहीं है क्योंकि मेंढक जल में ऑक्सीजन उत्पादन के प्रमुख स्रोत नहीं हैं। तालाब में अधिक मछली होना संभव नहीं है क्योंकि मेंढक मछली की आबादी को बढ़ाने में स直ंत्र रूप से शामिल नहीं हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Hindi terminology used for ecological concepts.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका परिसंस्थेत बिडकांची लोकसंख्या कमी होत असल्यास काय होते?",
+          "choices": [
+            "शेतांमध्ये जास्त कीटक",
+            "शेतकऱ्यांद्वारे जास्त रसायन वापरले जात नाहीत",
+            "पाण्यात जास्त ऑक्सीजन",
+            "तलावात जास्त मासे"
+          ],
+          "solution": "बरोबर उत्तर 'शेतांमध्ये जास्त कीटक' आहे कारण बिडका कीटक खातात आणि त्यांच्या संख्येत घट होऊन कीटकांच्या संख्येत वाढ होते. यामुळे शेतकऱ्यांना जास्त रसायन वापरावे लागू शकते. बिडकांच्या संख्येत घट झाल्यास जास्त रसायन वापरले जाणार नाहीत. पाण्यात जास्त ऑक्सीजन होणार नाही कारण बिडका पाण्यात ऑक्सीजन उत्पादनाचा प्रमुख स्रोत नाहीत. तलावात जास्त मासे होणार नाहीत कारण बिडका मासांच्या संख्येत वाढीशी सीधा संबंध नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology consistent with textbook usage.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Believes that fewer frogs would reduce pests.",
+        "Thinks that fewer frogs would reduce pesticide use.",
+        "Thinks that frogs are the main source of oxygen in water."
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly identifies that frogs control insect populations, so their decline leads to more insects. The reasoning for the other options aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/8/science/hecu112.pdf",
+          "ordinal": 11,
+          "pageStart": 12,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 12: — How Nature Works in Harmony",
+            "12.7 How Does One Change Lead to Another?"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu112.pdf",
+          "ordinal": 12,
+          "pageStart": 13,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 12: — How Nature Works in Harmony",
+            "12.8 How Do Interactions Maintain",
+            "Balance in Ecosystems?"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu112.pdf",
+          "ordinal": 13,
+          "pageStart": 14,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 12: — How Nature Works in Harmony",
+            "12.9 What Are the Benefits of an Ecosystem?"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T10:56:41.286Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If a farmer uses synthetic fertilizers and pesticides on the same crop repeatedly, what is the most likely long-term effect on the ecosystem?",
+      "choices": [
+        "Increased soil fertility",
+        "Improved pest control",
+        "Soil degradation and loss of biodiversity",
+        "Improved water quality"
+      ],
+      "answerIndex": 2,
+      "solution": "Repeated use of synthetic fertilizers and pesticides can harm soil structure and microorganisms, leading to soil degradation. It can also eliminate beneficial insects and other organisms, reducing biodiversity. The other options are not supported by scientific understanding of these substances' effects.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक किसान एक ही फसल पर लगातार संश्लेषित उर्वरकों और कीटनाशकों का उपयोग करता है, तो पारिस्थितिकी तंत्र पर लंबे समय में सबसे संभावित प्रभाव क्या होगा?",
+          "choices": [
+            "बढ़ी हुई मृदा उर्वरता",
+            "सुधरा हुआ कीट नियंत्रण",
+            "मृदा क्षति और जैव विविधता का नुकसान",
+            "सुधरा हुआ जल गुणवत्ता"
+          ],
+          "solution": "लगातार संश्लेषित उर्वरकों और कीटनाशकों के उपयोग से मृदा संरचना और सूक्ष्मजीवों को नुकसान पहुंच सकता है, जिससे मृदा क्षति होती है। इसके अलावा, उपयोगी कीट और अन्य जीवों को नष्ट कर सकता है, जिससे जैव विविधता कम हो जाती है। अन्य विकल्प इन पदार्थों के प्रभावों के वैज्ञानिक समझ के समर्थन में नहीं हैं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains original meaning, and uses appropriate Hindi terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका शेतकरीने एकाच शेतीत वारंवार संश्लेषित खते आणि कीटकनाशक वापरल्यास पर्यावरणावर लांबलचक परिणाम काय असू शकतो?",
+          "choices": [
+            "जमीनची उर्वरकता वाढली",
+            "कीटक नियंत्रण सुधारले",
+            "जमीन निर्माण आणि जैवविविधतेचा नुकसान",
+            "पाण्याची गुणवत्ता सुधारली"
+          ],
+          "solution": "संश्लेषित खते आणि कीटकनाशकांचा वारंवार वापर जमीनच्या संरचनेवर आणि सूक्ष्मजीवांवर हानी करू शकतो, जमीनच्या निर्माणाच्या दिशेने नेणार. त्यामुळे उपयुक्त कीटक आणि इतर सजीवांचा नाश होऊ शकतो, ज्यामुळे जैवविविधता कमी होऊ शकते. इतर विकल्पांचे वैज्ञानिक ज्ञानाच्या दृष्टीने समर्थन नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for ecological concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Misunderstands the impact of synthetic fertilizers on soil",
+        "Confuses pest control with long-term benefits",
+        null,
+        "Misinterprets the effect of chemicals on water"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 2, as repeated use of synthetic fertilizers and pesticides leads to soil degradation and loss of biodiversity. The other options represent common misconceptions about the long-term effects of these chemicals.",
+      "sources": [
+        {
+          "document": "ncert/8/science/hecu112.pdf",
+          "ordinal": 14,
+          "pageStart": 15,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 12: — How Nature Works in Harmony",
+            "12.9 What Are the Benefits of an Ecosystem?"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu112.pdf",
+          "ordinal": 15,
+          "pageStart": 16,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 12: — How Nature Works in Harmony",
+            "12.9 What Are the Benefits of an Ecosystem?"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu112.pdf",
+          "ordinal": 16,
+          "pageStart": 17,
+          "pageEnd": 18,
+          "headingPath": [
+            "Chapter 12: — How Nature Works in Harmony",
+            "12.9 What Are the Benefits of an Ecosystem?",
+            "Activity 12.10: Let us survey"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T10:56:41.286Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If all decomposers in an ecosystem suddenly disappeared, what would happen?",
+      "choices": [
+        "The number of producers would increase significantly",
+        "The number of consumers would increase significantly",
+        "Nutrients from dead organisms would not be recycled",
+        "The ecosystem would become more balanced"
+      ],
+      "answerIndex": 2,
+      "solution": "Decomposers break down dead matter and recycle nutrients back into the ecosystem. Without them, nutrients would remain locked in dead organisms and not be available for other organisms.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि किसी पारिस्थितिकी तंत्र में सभी वियोजक अचानक लुप्त हो गए, तो क्या होगा?",
+          "choices": [
+            "उत्पादकों की संख्या बहुत बढ़ जाएगी",
+            "उपभोक्ताओं की संख्या बहुत बढ़ जाएगी",
+            "मृत जीवों से पोषक तत्व पुनर्चक्रित नहीं होंगे",
+            "पारिस्थितिकी तंत्र अधिक संतुलित हो जाएगा"
+          ],
+          "solution": "वियोजक मृत पदार्थों को तोड़ते हैं और पोषक तत्वों को पुनः पारिस्थितिकी तंत्र में वापस ले जाते हैं। उनके बिना, पोषक तत्व मृत जीवों में बंद रहेंगे और अन्य जीवों के लिए उपलब्ध नहीं होंगे।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains original meaning, and uses standard Hindi terminology used in Indian textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर एका पर्यावरणातील सर्व विघटक अचानक नाहीसे झाले, तर काय होईल?",
+          "choices": [
+            "उत्पादकांची संख्या चांगलीच वाढेल",
+            "उपभोक्त्यांची संख्या चांगलीच वाढेल",
+            "मृत सजीवांमधून पोषक घटक पुनर्चक्रीकरण केले जाणार नाहीत",
+            "पर्यावरण अधिक संतुलित होईल"
+          ],
+          "solution": "विघटक मृत पदार्थ विघटित करतात आणि पर्यावरणात पोषक घटक पुनर्चक्रीकरण करतात. त्यांच्या अनुपस्थितीत, पोषक घटक मृत सजीवांमध्ये बंद राहतील आणि इतर सजीवांसाठी उपलब्ध राहणार नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the scientific terminology used in Marathi textbooks. The meaning, options, and solution are all preserved correctly.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Misunderstands the role of decomposers",
+        "Misunderstands the role of decomposers",
+        null,
+        "Believes the ecosystem would be more balanced without decomposers"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly identifies that decomposers are essential for nutrient recycling. The reasoning aligns with the correct answer and the author's explanation.",
+      "sources": [
+        {
+          "document": "ncert/8/science/hecu112.pdf",
+          "ordinal": 17,
+          "pageStart": 18,
+          "pageEnd": 18,
+          "headingPath": [
+            "Chapter 12: — How Nature Works in Harmony",
+            "12.9 What Are the Benefits of an Ecosystem?",
+            "Activity 12.10: Let us survey"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu112.pdf",
+          "ordinal": 18,
+          "pageStart": 18,
+          "pageEnd": 19,
+          "headingPath": [
+            "Chapter 12: — How Nature Works in Harmony",
+            "12.9 What Are the Benefits of an Ecosystem?",
+            "Activity 12.10: Let us survey"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu112.pdf",
+          "ordinal": 19,
+          "pageStart": 19,
+          "pageEnd": 20,
+          "headingPath": [
+            "Chapter 12: — How Nature Works in Harmony",
+            "12.9 What Are the Benefits of an Ecosystem?",
+            "Activity 12.10: Let us survey"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T10:56:41.286Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "Which of the following best describes the role of abiotic components in an ecosystem?",
+      "choices": [
+        "They provide food and shelter to living organisms",
+        "They are influenced by biotic components",
+        "They are the main source of energy for all living organisms",
+        "They are not involved in any interactions with biotic components"
+      ],
+      "answerIndex": 0,
+      "solution": "The correct answer is 'They provide food and shelter to living organisms' because abiotic components like water, soil, and sunlight are essential for the survival of living organisms. 'They are influenced by biotic components' is true but not the main role of abiotic components. 'They are the main source of energy for all living organisms' is incorrect because the main source of energy is sunlight, not all abiotic components. 'They are not involved in any interactions' is incorrect because abiotic components interact with biotic components.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा एक पारिस्थितिकी तंत्र में अजैविक घटकों के कार्य का सबसे अच्छा वर्णन करता है?",
+          "choices": [
+            "वे जीवित जीवों के लिए भोजन और आश्रय प्रदान करते हैं",
+            "वे जैविक घटकों द्वारा प्रभावित होते हैं",
+            "वे सभी जीवित जीवों के लिए ऊर्जा का मुख्य स्रोत हैं",
+            "वे किसी भी जैविक घटकों के साथ अंतःक्रिया में शामिल नहीं होते"
+          ],
+          "solution": "सही उत्तर 'वे जीवित जीवों के लिए भोजन और आश्रय प्रदान करते हैं' है क्योंकि जल, मिट्टी और सूर्य के प्रकाश जैसे अजैविक घटक जीवित जीवों के जीवित रहने के लिए आवश्यक हैं। 'वे जैविक घटकों द्वारा प्रभावित होते हैं' सत्य है लेकिन अजैविक घटकों की मुख्य भूमिका नहीं है। 'वे सभी जीवित जीवों के लिए ऊर्जा का मुख्य स्रोत हैं' गलत है क्योंकि ऊर्जा का मुख्य स्रोत सूर्य का प्रकाश है, न कि सभी अजैविक घटक। 'वे किसी भी जैविक घटकों के साथ अंतःक्रिया में शामिल नहीं होते' गलत है क्योंकि अजैविक घटक जैविक घटकों के साथ अंतःक्रिया में शामिल होते हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate biological terminology as used in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते जैविक घटकांच्या पर्यावरणातील भूमिकेचे उत्तम वर्णन करते?",
+          "choices": [
+            "ते जीवित जीवांना खाद्य आणि आश्रय प्रदान करतात",
+            "ते जैविक घटकांमुळे प्रभावित होतात",
+            "ते सर्व जीवित जीवांसाठी ऊर्जेचा मुख्य स्रोत आहेत",
+            "ते जैविक घटकांशी कोणत्याही परस्पर क्रियांमध्ये सहभागी नाहीत"
+          ],
+          "solution": "बरोबर उत्तर 'ते जीवित जीवांना खाद्य आणि आश्रय प्रदान करतात' आहे कारण जैविक घटक जसे की पाणी, माती आणि सूर्यप्रकाश जीवित जीवांच्या जीवनासाठी आवश्यक आहेत. 'ते जैविक घटकांमुळे प्रभावित होतात' हे खरे आहे परंतु जैविक घटकांची मुख्य भूमिका नाही. 'ते सर्व जीवित जीवांसाठी ऊर्जेचा मुख्य स्रोत आहेत' हे चूक आहे कारण ऊर्जेचा मुख्य स्रोत सूर्यप्रकाश आहे, नाही की सर्व जैविक घटक. 'ते जैविक घटकांशी कोणत्याही परस्पर क्रियांमध्ये सहभागी नाहीत' हे चूक आहे कारण जैविक घटक जैविक घटकांशी परस्पर क्रियांमध्ये सहभागी होतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for ecological concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses the influence of biotic components on abiotic components with their main role",
+        "Confuses the role of sunlight as the main energy source with the role of all abiotic components",
+        "Confuses the interaction between biotic and abiotic components with non-interaction"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        2,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 0, as abiotic components do provide food and shelter (e.g., water, soil, sunlight). The author's reasoning is sound, and the misconceptions described for the other options are plausible for students.",
+      "sources": [
+        {
+          "document": "ncert/8/science/hecu112.pdf",
+          "ordinal": 4,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 12: — How Nature Works in Harmony",
+            "12.3 Does Every Organism in a Community",
+            "Activity 12.3: Let us read"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu112.pdf",
+          "ordinal": 5,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 12: — How Nature Works in Harmony",
+            "12.4 What Are the Different Types of Interactions",
+            "Among Organisms and their Surroundings?"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu112.pdf",
+          "ordinal": 6,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 12: — How Nature Works in Harmony",
+            "12.4 What Are the Different Types of Interactions",
+            "Activity 12.4: Let us relate and identify"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T10:56:41.286Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "If a forest is cleared for a road, what might happen to the animals living there?",
+      "choices": [
+        "They will move to a new habitat",
+        "They will stop needing food",
+        "They will adapt quickly to the new environment",
+        "They will all die immediately due to lack of space"
+      ],
+      "answerIndex": 0,
+      "solution": "The correct answer is that they will move to a new habitat, as animals often seek alternative places to live when their environment is destroyed. The idea that they will stop needing food is incorrect because all animals require food to survive. The notion that they will adapt quickly is unlikely, as adaptation takes time and not all species can adjust rapidly. The claim that they will all die immediately is too extreme, as some may survive for a period before succumbing to the changes.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक वन को एक सड़क के लिए साफ कर दिया जाता है, तो वहां रहने वाले जानवरों के साथ क्या हो सकता है?",
+          "choices": [
+            "वे एक नए आवास में चले जाएंगे",
+            "वे खाने की आवश्यकता बंद कर देंगे",
+            "वे नए वातावरण में तेजी से अनुकूलित हो जाएंगे",
+            "वे सभी अकेले जगह के अभाव में तुरंत मर जाएंगे"
+          ],
+          "solution": "सही उत्तर यह है कि वे एक नए आवास में चले जाएंगे, क्योंकि जब उनका वातावरण नष्ट हो जाता है, तो जानवर अक्सर रहने के अल्टरनेटिव स्थान खोजते हैं। यह विचार गलत है कि वे खाने की आवश्यकता बंद कर देंगे, क्योंकि सभी जानवर जीवित रहने के लिए खाना चाहते हैं। विचार यह कि वे नए वातावरण में तेजी से अनुकूलित हो जाएंगे, असंभव है, क्योंकि अनुकूलन के लिए समय लगता है और सभी प्रजातियां तेजी से अनुकूलित नहीं हो सकतीं। दावा कि वे सभी तुरंत मर जाएंगे, बहुत अत्यधिक है, क्योंकि कुछ जानवर बदलाव के कुछ समय तक जीवित रह सकते हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology commonly found in textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर रस्त्यासाठी एका जंगलाची साफ करण्यात आली, तर त्या जंगलात राहणारे प्राणी काय होऊ शकतात?",
+          "choices": [
+            "ते एका नवीन निवासस्थानात जातील",
+            "त्यांना खाद्याची आवश्यकता नसेल",
+            "ते नवीन वातावरणात त्वरित समायोजित होतील",
+            "त्यांचा जागेच्या कमतरतेमुळे ताबडतोब सर्व मृत्यू होईल"
+          ],
+          "solution": "योग्य उत्तर हे असेल की ते एका नवीन निवासस्थानात जातील, कारण प्राणी जेव्हा त्यांच्या वातावरणाची निर्मिती नष्ट होते तेव्हा ते नवीन जागा शोधतात. त्यांना खाद्याची आवश्यकता नसेल या विचाराचे असत्य असेल कारण सर्व प्राणी जगण्यासाठी खाद्याची आवश्यकता असते. ते नवीन वातावरणात त्वरित समायोजित होतील या विचाराचे असंभाव्य असेल, कारण समायोजनाला वेळ लागतो आणि सर्व प्रजाती त्वरित समायोजित होऊ शकत नाहीत. त्यांचा जागेच्या कमतरतेमुळे ताबडतोब सर्व मृत्यू होईल या विचाराचे अतिशय अतिरेकी असेल, कारण काही प्राणी बदलांमुळे ताबडतोब मृत्यू पावू शकत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology consistent with educational materials.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Students may mistakenly believe that animals can survive without food if their environment changes",
+        "students may think animals can instantly adjust to sudden environmental changes",
+        "Students often believe that animals cannot survive without their exact habitat and do not account for migration or adaptation"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 0, as the passage supports that animals may move to new habitats when their environment is destroyed. The other options represent common misconceptions about animal behavior in response to habitat loss.",
+      "sources": [
+        {
+          "document": "ncert/8/science/hecu112.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 12: — How Nature Works in Harmony",
+            "Probe and ponder"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu112.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 12: — How Nature Works in Harmony",
+            "12.1 How Do We Experience and Interpret",
+            "Our Surroundings?"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu112.pdf",
+          "ordinal": 2,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 12: — How Nature Works in Harmony",
+            "12.1 How Do We Experience and Interpret",
+            "Activity 12.1: Let us explore"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu112.pdf",
+          "ordinal": 3,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 12: — How Nature Works in Harmony",
+            "12.2 Who All Live Together in Nature?"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T10:56:41.286Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "Which of the following is an example of an ecosystem being disrupted by human activity?",
+      "choices": [
+        "A bird migrating to a new habitat",
+        "A forest being cleared for agriculture",
+        "A plant growing in a sunny area",
+        "A frog eating insects in a pond"
+      ],
+      "answerIndex": 1,
+      "solution": "The correct answer is 'A forest being cleared for agriculture' because it is a direct human activity that disrupts the ecosystem by removing habitats and disturbing the balance of species. Bird migration is a natural behavior, not a disruption. A plant growing in a sunny area is a normal ecological process. A frog eating insects is part of the natural food chain.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा मानव गतिविधि द्वारा पारिस्थितिकी तंत्र के विघटन का उदाहरण है?",
+          "choices": [
+            "एक पक्षी नए आवास में प्रवास करना",
+            "कृषि के लिए एक वन की काट देना",
+            "एक पौधा एक सूर्यमुखी क्षेत्र में बढ़ना",
+            "एक मेंढक एक तालाब में कीटों को खाना"
+          ],
+          "solution": "सही उत्तर 'कृषि के लिए एक वन की काट देना' है क्योंकि यह पारिस्थितिकी तंत्र के आवासों को नष्ट करके प्रजातियों के संतुलन को बाधित करने वाली सीधी मानव गतिविधि है। पक्षी प्रवास एक प्राकृतिक व्यवहार है, न कि विघटन। एक पौधा एक सूर्यमुखी क्षेत्र में बढ़ना सामान्य पारिस्थितिकी प्रक्रिया है। मेंढक कीटों को खाना प्राकृतिक खाद्य श्रृंखला का हिस्सा है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate ecological terminology in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते मानवी कृतीमुळे पर्यावरण व्यवस्थेच्या बिघाडाचे उदाहरण आहे?",
+          "choices": [
+            "एक पक्षी नवीन वासस्थानात पाठवला जातो",
+            "शेतीसाठी एक वन तोडला जातो",
+            "एक वनस्पती सूर्यप्रकाशाच्या ठिकाणी वाढते",
+            "एक बिडक तांबड्यांमध्ये खाते आहे"
+          ],
+          "solution": "बरोबर उत्तर 'शेतीसाठी एक वन तोडला जातो' आहे कारण हे मानवी कृतीचे एक सीधे उदाहरण आहे जे पर्यावरण व्यवस्थेच्या निर्जीव आणि प्राणी विविधतेच्या संतुलनाला बिघडवते. पक्षी वासस्थानात जाणे हे प्राकृतिक वर्तन आहे, बिघाड नाही. सूर्यप्रकाशाच्या ठिकाणी वनस्पती वाढणे हे सामान्य पारिस्थितिक प्रक्रिया आहे. बिडक तांबड्यांमध्ये खाणे हे प्राकृतिक खाद्य प्रतिसादाचा भाग आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for ecological concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Thinks migration is a disruption.",
+        null,
+        "Thinks plant growth is a disruption.",
+        "Thinks predator-prey interaction is a disruption."
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 1, as deforestation is a clear example of human activity disrupting an ecosystem. The other options represent natural processes or behaviors, which are not disruptions. The author's reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/8/science/hecu112.pdf",
+          "ordinal": 11,
+          "pageStart": 12,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 12: — How Nature Works in Harmony",
+            "12.7 How Does One Change Lead to Another?"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu112.pdf",
+          "ordinal": 12,
+          "pageStart": 13,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 12: — How Nature Works in Harmony",
+            "12.8 How Do Interactions Maintain",
+            "Balance in Ecosystems?"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu112.pdf",
+          "ordinal": 13,
+          "pageStart": 14,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 12: — How Nature Works in Harmony",
+            "12.9 What Are the Benefits of an Ecosystem?"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T10:56:41.286Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "A farmer uses synthetic fertilizers and pesticides on his farm. He observes that the population of pests has increased. What is the most likely reason for this?",
+      "choices": [
+        "Pests are attracted to synthetic fertilizers",
+        "Pests develop resistance to pesticides",
+        "Pests feed on the fertilizers",
+        "Pests reproduce faster in chemical-rich soil"
+      ],
+      "answerIndex": 1,
+      "solution": "The most likely reason is that pests develop resistance to pesticides, as repeated exposure can lead to genetic changes that make them less affected by the chemicals. The other options are incorrect because there is no evidence that pests are attracted to fertilizers, feed on them, or reproduce faster due to chemical-rich soil.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक किसान अपने खेत पर सिंथेटिक उर्वरक और कीटनाशक उपयोग करता है। वह देखता है कि कीटों की संख्या बढ़ गई है। इसके लिए सबसे संभावित कारण क्या है?",
+          "choices": [
+            "कीट सिंथेटिक उर्वरकों को आकर्षित करते हैं",
+            "कीट कीटनाशकों के प्रति प्रतिरोध विकसित करते हैं",
+            "कीट उर्वरकों पर खाते हैं",
+            "रासायनिक समृद्ध मिट्टी में कीट तेजी से प्रजनन करते हैं"
+          ],
+          "solution": "सबसे संभावित कारण यह है कि कीट कीटनाशकों के प्रति प्रतिरोध विकसित करते हैं, क्योंकि दोहरा संपर्क आनुवंशिक परिवर्तन के कारण हो सकता है जो उन्हें रासायनिक पदार्थों से कम प्रभावित करता है। अन्य विकल्प गलत हैं क्योंकि कीटों को उर्वरकों से आकर्षित किये जाने, उन पर खाने या रासायनिक समृद्ध मिट्टी में तेजी से प्रजनन करने के कोई सबूत नहीं है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate scientific terminology as found in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका शेतकऱ्याने त्याच्या शेतात सिंथेटिक खते आणि कीटकनाशक वापरले. तो पाहतो की कीटकांची लोकसंख्या वाढली आहे. ह्याचे सर्वात शक्य कारण काय आहे?",
+          "choices": [
+            "कीटकांना सिंथेटिक खतांची आकर्षण असते",
+            "कीटकांना कीटकनाशकांवर प्रतिरोध विकसित होतो",
+            "कीटक खतांवर खातात",
+            "रासायनिक-समृद्ध मातीत कीटक जलद वाढतात"
+          ],
+          "solution": "सर्वात शक्य कारण असे आहे की कीटकांना कीटकनाशकांवर प्रतिरोध विकसित होतो, कारण पुनरावृत्ती उपासनेमुळे जीनेटिक बदल होऊ शकतात ज्यामुळे ते रासायनिक पदार्थांवर कमी प्रभावित होतात. इतर विकल्प अयोग्य आहेत कारण खतांच्या आकर्षणाचे, खतांवर खाण्याचे किंवा रासायनिक-समृद्ध मातीत जलद वाढण्याचे कोणतेही पुरावे नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for scientific concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Misunderstands the interaction between pests and fertilizers",
+        null,
+        "Confuses resistance with attraction",
+        "Misinterprets the role of fertilizers in pest behavior"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 1, as resistance to pesticides is a well-established phenomenon. The other options reflect common misconceptions about the relationship between fertilizers, pesticides, and pests.",
+      "sources": [
+        {
+          "document": "ncert/8/science/hecu112.pdf",
+          "ordinal": 14,
+          "pageStart": 15,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 12: — How Nature Works in Harmony",
+            "12.9 What Are the Benefits of an Ecosystem?"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu112.pdf",
+          "ordinal": 15,
+          "pageStart": 16,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 12: — How Nature Works in Harmony",
+            "12.9 What Are the Benefits of an Ecosystem?"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu112.pdf",
+          "ordinal": 16,
+          "pageStart": 17,
+          "pageEnd": 18,
+          "headingPath": [
+            "Chapter 12: — How Nature Works in Harmony",
+            "12.9 What Are the Benefits of an Ecosystem?",
+            "Activity 12.10: Let us survey"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T10:56:41.286Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Why is it important for different organisms to have different resource needs in a habitat?",
+      "choices": [
+        "To increase competition",
+        "To ensure that no one species dominates",
+        "To prevent the environment from changing",
+        "To make the habitat less complex"
+      ],
+      "answerIndex": 1,
+      "solution": "If organisms had the same resource needs, they would compete intensely for those resources, which could lead to the decline or extinction of some species. This would allow one species to dominate, disrupting the balance of the ecosystem. The correct option ensures that different species can coexist without outcompeting each other. The other options are incorrect because increased competition and environmental change are negative outcomes, and a less complex habitat would not support biodiversity.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक आवास में विभिन्न जीवों के विभिन्न संसाधन आवश्यकताओं के होना क्यों महत्वपूर्ण है?",
+          "choices": [
+            "प्रतिस्पर्धा बढ़ाने के लिए",
+            "यह सुनिश्चित करने के लिए कि कोई एक प्रजाति शासित न हो",
+            "पर्यावरण के परिवर्तित होने से रोकने के लिए",
+            "आवास को कम जटिल बनाने के लिए"
+          ],
+          "solution": "यदि जीवों की संसाधन आवश्यकताएं एक जैसी होती तो वे उन संसाधनों के लिए तीव्र प्रतिस्पर्धा करते, जिसके परिणामस्वरूप कुछ प्रजातियों के लुप्त होने या विलुप्त होने की संभावना रहती। इससे एक प्रजाति के शासन की संभावना रहती और पारिस्थितिकी तंत्र के संतुलन को बाधित कर सकती है। सही विकल्प यह सुनिश्चित करता है कि विभिन्न प्रजातियां एक दूसरे के उत्पादन के बिना सह-अस्तित्व में रह सकें। अन्य विकल्प गलत हैं क्योंकि बढ़ी हुई प्रतिस्पर्धा और पर्यावरण में परिवर्तन नकारात्मक परिणाम हैं, और कम जटिल आवास जैव विविधता को समर्थन नहीं कर सकता।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate biological terminology in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका आवासातील विविध जीवांना विविध संसाधनांची गरज असणे का महत्वपूर्ण आहे?",
+          "choices": [
+            "स्पर्धा वाढविणे",
+            "कोणतीही प्रजाती वर्चस्व घेऊ नये याची खात्री करणे",
+            "पर्यावरणाच्या बदलाची रोख ठेवणे",
+            "आवासाची अधिक जटिलता कमी करणे"
+          ],
+          "solution": "जर जीवांना समान संसाधनांची गरज असेल तर त्यांच्यात तीव्र स्पर्धा होईल, जी काही प्रजातींच्या निर्मूलनापर्यंत जाऊ शकते. हे पर्यावरणाच्या संतुलनाला बिघडवू शकते. योग्य पर्यायामुळे विविध प्रजातींना एकमेकांना ओव्हरकॉम्पिट करण्याशिवाय एकत्र राहण्याची संधी मिळते. इतर पर्याय चुकीचे आहेत कारण वाढलेली स्पर्धा आणि पर्यावरणाचा बदल हे नकारात्मक निकाल आहेत, आणि कमी जटिल आवासामुळे जैव विविधता समर्थित होणार नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for ecological concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "incorrectly assumes competition is beneficial",
+        null,
+        "incorrectly assumes no one species would dominate",
+        "incorrectly assumes environmental stability"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 1, as different resource needs prevent one species from dominating, which aligns with ecological principles. The author's reasoning is sound, and the misconceptions listed for the wrong options are plausible student errors.",
+      "sources": [
+        {
+          "document": "ncert/8/science/hecu112.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 12: — How Nature Works in Harmony",
+            "Probe and ponder"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu112.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 12: — How Nature Works in Harmony",
+            "12.1 How Do We Experience and Interpret",
+            "Our Surroundings?"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu112.pdf",
+          "ordinal": 2,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 12: — How Nature Works in Harmony",
+            "12.1 How Do We Experience and Interpret",
+            "Activity 12.1: Let us explore"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu112.pdf",
+          "ordinal": 3,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 12: — How Nature Works in Harmony",
+            "12.2 Who All Live Together in Nature?"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T10:56:41.286Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Why is it important for an ecosystem to maintain a balance between predator and prey populations?",
+      "choices": [
+        "To ensure that all organisms are equally strong",
+        "To prevent any one species from overpopulating",
+        "To allow more resources for humans",
+        "To increase the number of predators"
+      ],
+      "answerIndex": 1,
+      "solution": "The correct answer is 'To prevent any one species from overpopulating' because balance ensures that no species becomes too dominant, which could harm the ecosystem. Ensuring all organisms are equally strong is not a factor in maintaining balance. More resources for humans is not a primary goal of ecosystem balance. Increasing predators would disrupt the balance, not maintain it.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक पारिस्थितिकी तंत्र में शिकारी और शिकार की आबादी के बीच संतुलन बनाए रखना क्यों महत्वपूर्ण है?",
+          "choices": [
+            "सभी जीवों को समान रूप से मजबूत होने का आश्वासन देना",
+            "किसी एक प्रजाति के अत्यधिक आबादी में बढ़ने से रोकना",
+            "मनुष्यों के लिए अधिक संसाधन देना",
+            "शिकारी की संख्या बढ़ाना"
+          ],
+          "solution": "सही उत्तर 'किसी एक प्रजाति के अत्यधिक आबादी में बढ़ने से रोकना' है क्योंकि संतुलन सुनिश्चित करता है कि कोई भी प्रजाति अत्यधिक प्रभावशाली न हो सके, जो पारिस्थितिकी तंत्र को नुकसान पहुंचा सकता है। सभी जीवों को समान रूप से मजबूत होने का आश्वासन बरकरार रखना संतुलन बनाए रखने का कारक नहीं है। मनुष्यों के लिए अधिक संसाधन देना पारिस्थितिकी तंत्र के संतुलन का प्राथमिक उद्देश्य नहीं है। शिकारी की संख्या बढ़ाना संतुलन को बरकरार रखने के बजाय उसे बिगाड़ देगा।",
+          "imageAlt": null,
+          "critique": "Translation accurately reflects the original meaning with appropriate Hindi terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एकोसिस्टममध्ये संभाव्य प्राणी आणि शिकारी लोकसंख्यांमध्ये संतुलन ठेवणे का महत्वपूर्ण आहे?",
+          "choices": [
+            "सर्व प्राणी समान शक्तिशाली असतील याची खात्री करणे",
+            "कोणत्याही एका प्रजातीच्या अतिवृद्धीला रोखणे",
+            "मानवांसाठी अधिक संसाधने देणे",
+            "शिकारींची संख्या वाढवणे"
+          ],
+          "solution": "सही उत्तर 'कोणत्याही एका प्रजातीच्या अतिवृद्धीला रोखणे' आहे कारण संतुलन खात्री करते की कोणतीही प्रजाती अतिशय नियंत्रित होऊ शकत नाही, जे पर्यावरणाला नुकसान पोहोचू शकते. सर्व प्राणी समान शक्तिशाली असतील याची खात्री करणे संतुलन ठेवण्याचा एक मुख्य कारण नाही. मानवांसाठी अधिक संसाधने देणे हे पर्यावरण संतुलनाचे मुख्य उद्दिष्ट नाही. शिकारींची संख्या वाढवणे संतुलन नष्ट करेल, नाहीतर ते ठेवेल.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi ecological terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Thinks balance ensures equal strength among species.",
+        null,
+        "Thinks balance benefits humans more.",
+        "Thinks increasing predators is a way to maintain balance."
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 1, as maintaining balance prevents overpopulation of any species, which aligns with ecological principles. The other options reflect common misconceptions about ecosystem balance.",
+      "sources": [
+        {
+          "document": "ncert/8/science/hecu112.pdf",
+          "ordinal": 11,
+          "pageStart": 12,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 12: — How Nature Works in Harmony",
+            "12.7 How Does One Change Lead to Another?"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu112.pdf",
+          "ordinal": 12,
+          "pageStart": 13,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 12: — How Nature Works in Harmony",
+            "12.8 How Do Interactions Maintain",
+            "Balance in Ecosystems?"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu112.pdf",
+          "ordinal": 13,
+          "pageStart": 14,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 12: — How Nature Works in Harmony",
+            "12.9 What Are the Benefits of an Ecosystem?"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T10:56:41.286Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Why is it not possible to have an ecosystem with only producers and no consumers or decomposers?",
+      "choices": [
+        "Producers cannot survive without consumers",
+        "Consumers are needed to provide oxygen for producers",
+        "Decomposers are essential for recycling nutrients",
+        "Producers can only survive in the presence of decomposers"
+      ],
+      "answerIndex": 2,
+      "solution": "Decomposers break down dead organic matter and recycle nutrients back into the ecosystem. Without decomposers, nutrients would not be recycled, and the ecosystem would eventually collapse.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक पारिस्थितिकी तंत्र में केवल उत्पादक होने के बजाय उपभोक्ता या अपघटक न होने के कारण क्या असंभव है?",
+          "choices": [
+            "उत्पादक उपभोक्ताओं के बिना जीवित नहीं रह सकते",
+            "उपभोक्ताओं की आवश्यकता उत्पादकों के लिए ऑक्सीजन प्रदान करने के लिए होती है",
+            "अपघटक पोषक तत्वों के चक्रीकरण के लिए आवश्यक हैं",
+            "उत्पादक केवल अपघटकों की उपस्थिति में ही जीवित रह सकते हैं"
+          ],
+          "solution": "अपघटक मृत जैविक पदार्थ के विघटन और पोषक तत्वों के पुनर्चक्रण में सहायता करते हैं। अपघटकों के बिना, पोषक तत्व पुनर्चक्रित नहीं होंगे और पारिस्थितिकी तंत्र अंततः ढह जाएगा।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology for ecological concepts.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका पर्यावरणात केवळ उत्पादक असून उपभोक्ता किंवा विघटक नसतील तर ते का शक्य नाही?",
+          "choices": [
+            "उत्पादक उपभोक्तांशिवाय जगू शकत नाहीत",
+            "उत्पादकांसाठी ऑक्सीजन पुरविण्यासाठी उपभोक्ता आवश्यक आहेत",
+            "विघटकांची खतांच्या पुनर्चक्रणासाठी आवश्यकता असते",
+            "उत्पादक विघटकांच्या उपस्थितीतच जगू शकतात"
+          ],
+          "solution": "विघटक मृत जैविक पदार्थ विघटित करतात आणि खतांचा पुनर्चक्रण पर्यावरणात करतात. विघटक नसल्यास, खतांचा पुनर्चक्रण होणार नाही आणि पर्यावरण अखेर नष्ट होईल.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for ecological concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Misunderstands the role of consumers",
+        "Confuses the role of consumers and decomposers",
+        null,
+        "Does not understand the importance of nutrient cycling"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is well-constructed, with a clear and accurate explanation. The correct answer (2) is supported by a solid understanding of ecosystem dynamics. The distractors reflect common misconceptions about the roles of consumers and decomposers.",
+      "sources": [
+        {
+          "document": "ncert/8/science/hecu112.pdf",
+          "ordinal": 17,
+          "pageStart": 18,
+          "pageEnd": 18,
+          "headingPath": [
+            "Chapter 12: — How Nature Works in Harmony",
+            "12.9 What Are the Benefits of an Ecosystem?",
+            "Activity 12.10: Let us survey"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu112.pdf",
+          "ordinal": 18,
+          "pageStart": 18,
+          "pageEnd": 19,
+          "headingPath": [
+            "Chapter 12: — How Nature Works in Harmony",
+            "12.9 What Are the Benefits of an Ecosystem?",
+            "Activity 12.10: Let us survey"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu112.pdf",
+          "ordinal": 19,
+          "pageStart": 19,
+          "pageEnd": 20,
+          "headingPath": [
+            "Chapter 12: — How Nature Works in Harmony",
+            "12.9 What Are the Benefits of an Ecosystem?",
+            "Activity 12.10: Let us survey"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T10:56:41.286Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Why is the role of decomposers important in an ecosystem?",
+      "choices": [
+        "They produce their own food",
+        "They provide shelter to other organisms",
+        "They recycle nutrients back into the soil",
+        "They are the main source of energy"
+      ],
+      "answerIndex": 2,
+      "solution": "Decomposers recycle nutrients back into the soil by breaking down dead matter. They do not produce their own food, nor do they provide shelter or act as the main energy source.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक पारिस्थितिक तंत्र में अपघटकों की भूमिका क्यों महत्वपूर्ण है?",
+          "choices": [
+            "वे स्वयं अपना भोजन बनाते हैं",
+            "वे अन्य जीवों के लिए आश्रय प्रदान करते हैं",
+            "वे मृत पदार्थों के अपघटन द्वारा मिट्टी में पुनः पोषक तत्व लौटाते हैं",
+            "वे ऊर्जा के मुख्य स्रोत हैं"
+          ],
+          "solution": "अपघटक मृत पदार्थों के अपघटन द्वारा मिट्टी में पुनः पोषक तत्व लौटाते हैं। वे स्वयं अपना भोजन नहीं बनाते हैं, न ही वे आश्रय प्रदान करते हैं या मुख्य ऊर्जा स्रोत के रूप में कार्य करते हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the original English question and solution, with appropriate terminology used in a Hindi-medium science context.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "पर्यावरणात विघटकांची भूमिका महत्वाची का आहे?",
+          "choices": [
+            "ते स्वतःचे खाद्य तयार करतात",
+            "ते इतर जीवांना आश्रय देतात",
+            "ते मातीत पुनर्वापर करतात",
+            "ते ऊर्जेचा मुख्य स्रोत आहेत"
+          ],
+          "solution": "विघटक मृत पदार्थ तोडून मातीत पुनर्वापर करतात. ते स्वतःचे खाद्य तयार करत नाहीत, न ते आश्रय देतात आणि ऊर्जेचा मुख्य स्रोत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for ecological concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Incorrectly identifies a producer",
+        "Misunderstands the role of decomposers",
+        null,
+        "Confuses decomposers with producers, thinking they generate energy instead of recycling nutrients"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 2, as decomposers play a crucial role in recycling nutrients. The author's reasoning for the wrong options aligns with common misconceptions about decomposers.",
+      "sources": [
+        {
+          "document": "ncert/8/science/hecu112.pdf",
+          "ordinal": 7,
+          "pageStart": 8,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 12: — How Nature Works in Harmony",
+            "12.4 What Are the Different Types of Interactions",
+            "Activity 12.5: Let us classify"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu112.pdf",
+          "ordinal": 8,
+          "pageStart": 9,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 12: — How Nature Works in Harmony",
+            "12.5 Who Eats Whom?"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu112.pdf",
+          "ordinal": 9,
+          "pageStart": 11,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 12: — How Nature Works in Harmony",
+            "12.5 Who Eats Whom?",
+            "Activity 12.8: Let us trace and link"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu112.pdf",
+          "ordinal": 10,
+          "pageStart": 11,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 12: — How Nature Works in Harmony",
+            "12.6 What Happens to Waste in Nature?"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T10:56:41.286Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "Which type of relationship is described when one organism benefits and the other is not affected?",
+      "choices": [
+        "Parasitism",
+        "Competition",
+        "Mutualism",
+        "Commensalism"
+      ],
+      "answerIndex": 3,
+      "solution": "Commensalism is the correct answer because it describes a relationship where one organism benefits and the other is neither helped nor harmed. Parasitism involves one organism benefiting while the other is harmed, mutualism involves both organisms benefiting, and competition refers to a struggle for resources, not a type of biological relationship.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "कौन सा संबंध तब वर्णित किया जाता है जब एक जीव लाभ पाता है और दूसरा प्रभावित नहीं होता?",
+          "choices": [
+            "परजीविता",
+            "प्रतिस्पर्धा",
+            "आंतरिक सहयोग",
+            "सहचरिता"
+          ],
+          "solution": "सहचरिता सही उत्तर है क्योंकि यह एक ऐसे संबंध का वर्णन करता है जहां एक जीव लाभ पाता है और दूसरा न तो सहायता पाता है और न ही हानि पहुंचाता है। परजीविता में एक जीव लाभ पाता है जबकि दूसरा हानि पहुंचाता है, आंतरिक सहयोग में दोनों जीव लाभ पाते हैं, और प्रतिस्पर्धा संसाधनों के लिए एक लड़ाई है, एक जैविक संबंध के प्रकार नहीं।",
+          "imageAlt": "एक तल परावर्तक दर्पण का चित्र जिसमें आपतित किरण, परावर्तित किरण और अभिलंब दिखाए गए हैं",
+          "critique": "Hindi translation accurately reflects the original English question and solution, with appropriate biological terminology used in Indian textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका सजीवाला फायदा होतो आणि दुसऱ्याला फायदा किंवा नुकसान होत नाही, अशा प्रकारच्या संबंधाचा वर्णन कोणत्या प्रकारचा असतो?",
+          "choices": [
+            "परजीवित",
+            "स्पर्धा",
+            "सहजीवन",
+            "सहावलंबित"
+          ],
+          "solution": "सहावलंबित हा बरोबर उत्तर आहे कारण तो एका सजीवाला फायदा होतो आणि दुसऱ्याला फायदा किंवा नुकसान होत नाही, अशा संबंधाचे वर्णन करतो. परजीवितमध्ये एका सजीवाला फायदा होतो आणि दुसऱ्याला नुकसान होते, सहजीवनमध्ये दोन्ही सजीवांना फायदा होतो आणि स्पर्धेमध्ये संसाधनांच्या लढाईचा संदर्भ असतो, जो जैविक संबंधाचा प्रकार नाही.",
+          "imageAlt": "एका समतल दर्पणाचा आकृती ज्यामध्ये अविर्गम तरंग, परावर्तित तरंग आणि सामान्य रेषा दर्शवलेली आहे",
+          "critique": "The translation is accurate and uses standard Marathi biological terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": "A diagram showing a plane mirror with incident ray, reflected ray, and normal",
+      "figure": {
+        "kind": "diagram",
+        "spec": {
+          "parts": [
+            {
+              "part": "planeMirror",
+              "x": 50,
+              "y": 30,
+              "size": 20,
+              "labels": [
+                "incidentRay",
+                "reflectedRay",
+                "normal"
+              ]
+            }
+          ]
+        },
+        "labels": {
+          "incidentRay": {
+            "en": "Incident ray",
+            "hi": "आपतित किरण",
+            "mr": "अविर्गम तरंग"
+          },
+          "reflectedRay": {
+            "en": "Reflected ray",
+            "hi": "परावर्तित किरण",
+            "mr": "परावर्तित तरंग"
+          },
+          "normal": {
+            "en": "Normal",
+            "hi": "अभिलंब",
+            "mr": "सामान्य रेषा"
+          }
+        }
+      },
+      "needsFigure": true,
+      "distractorReason": [
+        "confuses parasitism with commensalism",
+        "thinks competition is a type of relationship",
+        "mixes up mutualism with commensalism",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": null,
+      "critique": "The question is about symbiotic relationships, and the correct answer is commensalism (option 3), where one organism benefits and the other is not affected. The author's solution is accurate, and the reasons for the wrong options reflect common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/8/science/hecu112.pdf",
+          "ordinal": 11,
+          "pageStart": 12,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 12: — How Nature Works in Harmony",
+            "12.7 How Does One Change Lead to Another?"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu112.pdf",
+          "ordinal": 12,
+          "pageStart": 13,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 12: — How Nature Works in Harmony",
+            "12.8 How Do Interactions Maintain",
+            "Balance in Ecosystems?"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu112.pdf",
+          "ordinal": 13,
+          "pageStart": 14,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 12: — How Nature Works in Harmony",
+            "12.9 What Are the Benefits of an Ecosystem?"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T13:26:21.049Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "Which of the following is a reason why the Sundarbans are considered a World Heritage Site?",
+      "choices": [
+        "They have the largest mangrove forests in the world",
+        "They are home to many endangered species",
+        "They are the only mangrove forest in the world that is not threatened by climate change",
+        "They absorb carbon dioxide from the air and release oxygen"
+      ],
+      "answerIndex": 0,
+      "solution": "The Sundarbans are considered a World Heritage Site because they contain the largest mangrove forests in the world, which is a unique and ecologically significant feature. While they are home to many endangered species and play a role in carbon absorption, these are not the primary reason for their heritage status. The claim that they are not threatened by climate change is false, as mangrove ecosystems worldwide face significant climate-related challenges.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा कारण है कि सुंदरबन को विश्व धरोहर स्थल माना जाता है?",
+          "choices": [
+            "उनमें दुनिया के सबसे बड़े मैंग्रोव वन हैं",
+            "वे कई लुप्तप्राय प्रजातियों के आवास हैं",
+            "वे एकमात्र मैंग्रोव वन हैं जो जलवायु परिवर्तन से धत्ता नहीं हैं",
+            "वे हवा से कार्बन डाइऑक्साइड अवशोषित करते हैं और ऑक्सीजन छोड़ते हैं"
+          ],
+          "solution": "सुंदरबन को विश्व धरोहर स्थल माना जाता है क्योंकि उनमें दुनिया के सबसे बड़े मैंग्रोव वन हैं, जो एक अद्वितीय और पारिस्थितिक रूप से महत्वपूर्ण विशेषता है। यह सच है कि वे कई लुप्तप्राय प्रजातियों के आवास हैं और कार्बन अवशोषण में भूमिका निभाते हैं, लेकिन ये उनके धरोहर स्थल के रूप में विशेषता के प्रमुख कारण नहीं हैं। यह कथन कि वे जलवायु परिवर्तन से धत्ता नहीं हैं, असत्य है, क्योंकि पूरे विश्व के मैंग्रोव पारिस्थितिक तंत्र जलवायु संबंधी चुनौतियों का सामना कर रहे हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology for ecological concepts.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणता एक कारण आहे की बंगालचे डोंगर जागतिक वारसा स्थळ मानले जाते?",
+          "choices": [
+            "त्यांच्याकडे जगातील सर्वात मोठे बांगला जंगल आहेत",
+            "ते अनेक धोकादायक प्रजातींचे घर आहेत",
+            "ते जगातील एकमेव बांगला जंगल आहेत ज्यांना जलवायू बदलाचा धोका नाही",
+            "ते हवेतील कार्बन डायऑक्साइड शोषून ऑक्सिजन बाहेर काढतात"
+          ],
+          "solution": "बंगालचे डोंगर जागतिक वारसा स्थळ मानले जातात कारण त्यांच्याकडे जगातील सर्वात मोठे बांगला जंगल आहेत, हे एक अद्वितीय आणि पर्यावरणीय अर्थपूर्ण वैशिष्ट्य आहे. ते अनेक धोकादायक प्रजातींचे घर आहेत आणि कार्बन शोषणात भूमिका बजावतात, परंतु हे त्यांच्या वारसा स्थळाचे प्रमुख कारण नाहीत. जलवायू बदलाचा धोका नसल्याचा दावा खोटा आहे, कारण जगभरातील बांगला वनस्पती जलवायू बदलाच्या मोठ्या आव्हानांचा सामना करत आहेत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for ecological concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Students often confuse the reason for a site's heritage status with the presence of rare species, not realizing it's the combination of ecological, cultural, and environmental significance that matters.",
+        "students may mistakenly believe that the Sundarbans are uniquely protected from environmental threats",
+        "Believing that carbon absorption is the main reason for UNESCO recognition, not understanding the broader ecological and cultural significance"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 0, as the passage states that the Sundarbans are the largest mangrove forests in the world, which is the primary reason for their World Heritage Site status. The other options, while potentially true, are not stated as the primary reason in the passage.",
+      "sources": [
+        {
+          "document": "ncert/8/science/hecu112.pdf",
+          "ordinal": 14,
+          "pageStart": 15,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 12: — How Nature Works in Harmony",
+            "12.9 What Are the Benefits of an Ecosystem?"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu112.pdf",
+          "ordinal": 15,
+          "pageStart": 16,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 12: — How Nature Works in Harmony",
+            "12.9 What Are the Benefits of an Ecosystem?"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu112.pdf",
+          "ordinal": 16,
+          "pageStart": 17,
+          "pageEnd": 18,
+          "headingPath": [
+            "Chapter 12: — How Nature Works in Harmony",
+            "12.9 What Are the Benefits of an Ecosystem?",
+            "Activity 12.10: Let us survey"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T13:26:21.049Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "Which of the following is a biotic component of an ecosystem?",
+      "choices": [
+        "Air",
+        "Water",
+        "Soil",
+        "Plants"
+      ],
+      "answerIndex": 3,
+      "solution": "The correct answer is plants because they are living organisms, making them biotic components. Air, water, and soil are non-living and therefore abiotic components.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन एक पारिस्थितिकी तंत्र का जैविक घटक है?",
+          "choices": [
+            "हवा",
+            "पानी",
+            "मिट्टी",
+            "पौधे"
+          ],
+          "solution": "सही उत्तर पौधे हैं क्योंकि वे जीवित जीव हैं, जिन्हें जैविक घटक कहा जाता है। हवा, पानी और मिट्टी अजैविक हैं और इसलिए अजैविक घटक कहलाते हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Hindi terminology used for ecological concepts.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणता एक परिसंस्थेचा जैविक घटक आहे?",
+          "choices": [
+            "वायू",
+            "पाणी",
+            "माती",
+            "वनस्पती"
+          ],
+          "solution": "बरोबर उत्तर वनस्पती आहे कारण त्या जीवित सजीव असतात, ज्यामुळे त्या जैविक घटक बनतात. वायू, पाणी आणि माती अजैविक असतात म्हणून त्या अजैविक घटक आहेत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for ecological concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses abiotic with biotic components",
+        "Confuses abiotic with biotic components",
+        "Confuses abiotic with biotic components",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct. Plants are biotic components as they are living organisms, while air, water, and soil are abiotic. The reasons for the wrong options are valid misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/8/science/hecu112.pdf",
+          "ordinal": 17,
+          "pageStart": 18,
+          "pageEnd": 18,
+          "headingPath": [
+            "Chapter 12: — How Nature Works in Harmony",
+            "12.9 What Are the Benefits of an Ecosystem?",
+            "Activity 12.10: Let us survey"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu112.pdf",
+          "ordinal": 18,
+          "pageStart": 18,
+          "pageEnd": 19,
+          "headingPath": [
+            "Chapter 12: — How Nature Works in Harmony",
+            "12.9 What Are the Benefits of an Ecosystem?",
+            "Activity 12.10: Let us survey"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu112.pdf",
+          "ordinal": 19,
+          "pageStart": 19,
+          "pageEnd": 20,
+          "headingPath": [
+            "Chapter 12: — How Nature Works in Harmony",
+            "12.9 What Are the Benefits of an Ecosystem?",
+            "Activity 12.10: Let us survey"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T13:26:21.049Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of the following is an example of a biotic component in a habitat?",
+      "choices": [
+        "Soil",
+        "Water",
+        "Trees",
+        "Sunlight"
+      ],
+      "answerIndex": 2,
+      "solution": "Trees are living organisms and therefore are considered biotic components of a habitat. Soil and water are non-living, making them abiotic components. Sunlight is also non-living and not a component of the habitat itself.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा एक आवास में जैविक घटक का उदाहरण है?",
+          "choices": [
+            "मिट्टी",
+            "जल",
+            "पेड़",
+            "सूर्य का प्रकाश"
+          ],
+          "solution": "पेड़ जीवित जीव हैं और इसलिए एक आवास में जैविक घटक माने जाते हैं। मिट्टी और जल अजैविक हैं, जिसके कारण इन्हें अजैविक घटक माना जाता है। सूर्य का प्रकाश भी अजैविक है और आवास का घटक नहीं है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriately used in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणता वास्तविक वातावरणातील जैविक घटकाचा उदाहरण आहे?",
+          "choices": [
+            "माती",
+            "पाणी",
+            "वृक्ष",
+            "सूर्यप्रकाश"
+          ],
+          "solution": "वृक्ष जीवित वस्तू असल्यामुळे त्यांना वास्तविक वातावरणातील जैविक घटक मानले जाते. माती आणि पाणी अजैविक असल्यामुळे त्यांना अजैविक घटक मानले जाते. सूर्यप्रकाश देखील अजैविक आहे आणि वातावरणाचा घटक नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for ecological concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses abiotic with biotic components",
+        "Confuses abiotic with biotic components",
+        null,
+        "Student thinks sunlight is a living component because it is necessary for plant growth"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct. Trees are biotic components as they are living organisms. Soil and water are abiotic, and sunlight, while essential, is not a living component.",
+      "sources": [
+        {
+          "document": "ncert/8/science/hecu112.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 12: — How Nature Works in Harmony",
+            "Probe and ponder"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu112.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 12: — How Nature Works in Harmony",
+            "12.1 How Do We Experience and Interpret",
+            "Our Surroundings?"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu112.pdf",
+          "ordinal": 2,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 12: — How Nature Works in Harmony",
+            "12.1 How Do We Experience and Interpret",
+            "Activity 12.1: Let us explore"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu112.pdf",
+          "ordinal": 3,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 12: — How Nature Works in Harmony",
+            "12.2 Who All Live Together in Nature?"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T13:26:21.049Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of the following is a characteristic of a producer in an ecosystem?",
+      "choices": [
+        "They depend on other organisms for food",
+        "They break down complex substances into simple ones",
+        "They make their own food through photosynthesis",
+        "They feed on both plants and animals"
+      ],
+      "answerIndex": 2,
+      "solution": "Producers, like plants, make their own food through the process of photosynthesis. This is why they are called autotrophs. The other options describe consumers or decomposers, not producers.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा एक पारिस्थितिक तंत्र में उत्पादक का गुण है?",
+          "choices": [
+            "वे अन्य जीवों पर भोजन के लिए निर्भर रहते हैं",
+            "वे जटिल पदार्थों को सरल रूप में तोड़ देते हैं",
+            "वे प्रकाश संश्लेषण द्वारा अपना भोजन बनाते हैं",
+            "वे पौधों और जानवरों दोनों पर भोजन करते हैं"
+          ],
+          "solution": "उत्पादक, जैसे पौधे, प्रकाश संश्लेषण की प्रक्रिया द्वारा अपना भोजन बनाते हैं। इसी कारण उन्हें स्वपोषी कहा जाता है। अन्य विकल्प उपभोक्ता या विघटकों का वर्णन करते हैं, उत्पादक नहीं।",
+          "imageAlt": null,
+          "critique": "The translation accurately reflects the original meaning, with appropriate Hindi terminology for ecological concepts.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते एक परिसंस्थेतील उत्पादकाचे लक्षण आहे?",
+          "choices": [
+            "ते इतर जीवांवर अवलंबून असतात खाद्यासाठी",
+            "ते जटिल द्रव्यांना सोपे असे अंशांमध्ये तोडतात",
+            "ते प्रकाशसंश्लेषणाद्वारे आपले खाद्य तयार करतात",
+            "ते वनस्पती आणि प्राणी दोन्हीवर खातात"
+          ],
+          "solution": "उत्पादक, जसे की वनस्पती, प्रकाशसंश्लेषणाच्या प्रक्रियेद्वारे आपले खाद्य तयार करतात. त्यामुळे त्यांना स्वपोषक म्हणतात. इतर विकल्प उपभोक्ता किंवा विघटकांचे वर्णन करतात, उत्पादकांचे नव्हे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for ecological concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses producers with consumers",
+        "Describes decomposers",
+        null,
+        "Confuses omnivores with producers, thinking all organisms that eat multiple things are producers"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-constructed, with a clear correct answer and plausible distractors based on common misconceptions about ecosystem roles.",
+      "sources": [
+        {
+          "document": "ncert/8/science/hecu112.pdf",
+          "ordinal": 7,
+          "pageStart": 8,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 12: — How Nature Works in Harmony",
+            "12.4 What Are the Different Types of Interactions",
+            "Activity 12.5: Let us classify"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu112.pdf",
+          "ordinal": 8,
+          "pageStart": 9,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 12: — How Nature Works in Harmony",
+            "12.5 Who Eats Whom?"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu112.pdf",
+          "ordinal": 9,
+          "pageStart": 11,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 12: — How Nature Works in Harmony",
+            "12.5 Who Eats Whom?",
+            "Activity 12.8: Let us trace and link"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu112.pdf",
+          "ordinal": 10,
+          "pageStart": 11,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 12: — How Nature Works in Harmony",
+            "12.6 What Happens to Waste in Nature?"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T13:26:21.049Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "What happens if a habitat has only one type of living organism?",
+      "choices": [
+        "They will all thrive and grow",
+        "They will compete for resources",
+        "They will form a community",
+        "They will become extinct"
+      ],
+      "answerIndex": 1,
+      "solution": "If a habitat has only one type of living organism, they will compete for resources because all individuals have identical needs for food, water, and space. This competition can lead to resource depletion and instability in the population. Other options are incorrect because a single species cannot form a community, and while extinction is possible, it is not guaranteed.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक आवास में केवल एक प्रकार के जीवित जीव होने पर क्या होता है?",
+          "choices": [
+            "वे सभी उत्तम रूप से बढ़ेंगे और बढ़ेंगे",
+            "वे संसाधनों के लिए प्रतिस्पर्धा करेंगे",
+            "वे एक समुदाय बनाएंगे",
+            "वे विलुप्त हो जाएंगे"
+          ],
+          "solution": "यदि एक आवास में केवल एक प्रकार के जीवित जीव होते हैं, तो वे संसाधनों के लिए प्रतिस्पर्धा करेंगे क्योंकि सभी व्यक्तियों के भोजन, पानी और जगह की आवश्यकता एक ही होती है। इस प्रतिस्पर्धा के कारण संसाधनों का उपभोग हो सकता है और आबादी में अस्थिरता आ सकती है। अन्य विकल्प गलत हैं क्योंकि एक ही प्रजाति एक समुदाय नहीं बना सकती है, और यद्यपि विलुप्त होना संभव है, यह आवश्यक नहीं है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains original meaning, and uses appropriate Hindi scientific terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका आवासात केवळ एक प्रकारचे जीवन असेल तर काय होईल?",
+          "choices": [
+            "ते सर्व उत्तम वाढतील आणि विकसित होतील",
+            "ते संसाधनांसाठी एकमेकांशी स्पर्धा करतील",
+            "ते एक समुदाय तयार करतील",
+            "ते लोप पावतील"
+          ],
+          "solution": "जर एका आवासात केवळ एक प्रकारचे जीवन असेल, तर ते संसाधनांसाठी स्पर्धा करतील, कारण सर्व व्यक्तींची खाद्य, पाणी आणि जागेची आवश्यकता एकसारखी असते. ही स्पर्धा संसाधनांच्या निर्मूलनाच्या आणि लोकसंख्येच्या अस्थिरतेच्या दिशेने जाऊ शकते. इतर विकल्प चुकीचे आहेत, कारण एक जात एक समुदाय तयार करू शकत नाही, आणि जर लोप होणे शक्य असले तरी ते खात्रीने होणार नाही.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the original meaning, and uses appropriate terminology consistent with Marathi-medium science education.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Misunderstands the concept of population and resource availability",
+        null,
+        "Students may confuse the concept of a community with the presence of a single species",
+        "Misunderstands the concept of a community and ecosystem dynamics,"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 1, as a single type of organism in a habitat would lead to competition for limited resources. The reasoning in the author's solution is sound and aligns with ecological principles. The distractors reflect common misconceptions about ecosystems, communities, and resource dynamics.",
+      "sources": [
+        {
+          "document": "ncert/8/science/hecu112.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 12: — How Nature Works in Harmony",
+            "Probe and ponder"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu112.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 12: — How Nature Works in Harmony",
+            "12.1 How Do We Experience and Interpret",
+            "Our Surroundings?"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu112.pdf",
+          "ordinal": 2,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 12: — How Nature Works in Harmony",
+            "12.1 How Do We Experience and Interpret",
+            "Activity 12.1: Let us explore"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu112.pdf",
+          "ordinal": 3,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 12: — How Nature Works in Harmony",
+            "12.2 Who All Live Together in Nature?"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T13:26:21.049Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "What happens if the number of frogs in an ecosystem decreases due to overharvesting?",
+      "choices": [
+        "Insect population increases",
+        "Fish population increases",
+        "Oxygen production increases",
+        "Pesticide use decreases"
+      ],
+      "answerIndex": 0,
+      "solution": "If the number of frogs decreases, their role as predators of insects is reduced, leading to an increase in insect populations. Fish population would not increase because frogs contribute to the ecosystem's balance, and oxygen production is not directly affected by frog numbers. Pesticide use would increase, not decrease, due to the rise in insect pests.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक पारिस्थितिकी तंत्र में बाघों की संख्या अत्यधिक खाने के कारण कम हो जाती है तो क्या होता है?",
+          "choices": [
+            "कीट जनसंख्या बढ़ जाती है",
+            "मछली जनसंख्या बढ़ जाती है",
+            "ऑक्सीजन उत्पादन बढ़ जाता है",
+            "कीटनाशक उपयोग कम हो जाता है"
+          ],
+          "solution": "यदि बाघों की संख्या कम हो जाती है, तो उनकी कीटों के प्रति प्राकृतिक शिकारी की भूमिका कम हो जाती है, जिसके परिणामस्वरूप कीट जनसंख्या बढ़ जाती है। मछली जनसंख्या बढ़ नहीं सकती क्योंकि बाघ पारिस्थितिकी तंत्र के संतुलन में योगदान देते हैं और ऑक्सीजन उत्पादन बाघों की संख्या से सीधे संबंधित नहीं है। कीट अवांछित बढ़ने के कारण कीटनाशक उपयोग बढ़ जाएगा, न कि कम हो जाएगा।",
+          "imageAlt": null,
+          "critique": "Hindi translation has 'बाघों' (tigers) instead of 'बाघों' (frogs), which changes the meaning. Options 2 and 4 are swapped in position. Distractors are not logically wrong in Hindi due to translation errors.",
+          "flag": "translation critique: not one answer at the same position; a distractor no longer wrong; terms not the board's"
+        },
+        "mr": {
+          "stem": "एका पारिस्थितिकी तंत्रात बळी विनाशामुळे बारखाना घटल्यास काय होते?",
+          "choices": [
+            "कीटकांची लोकसंख्या वाढते",
+            "मासांची लोकसंख्या वाढते",
+            "ऑक्सिजन उत्पादन वाढते",
+            "कीटकनाशकांचा वापर कमी होतो"
+          ],
+          "solution": "जर बारखानांची संख्या कमी होत असेल तर त्यांच्या कीटकांवर असलेल्या पालनाच्या भूमिकेचा घट होतो, ज्यामुळे कीटकांची लोकसंख्या वाढते. मासांची लोकसंख्या वाढणार नाही कारण बारखाने पारिस्थितिकी तंत्राच्या संतुलनात योगदान देतात आणि ऑक्सिजन उत्पादन बारखानांच्या संख्येशी सीधा संबंध नाही. कीटकांच्या वाढीमुळे कीटकनाशकांचा वापर वाढेल, नाही कमी होईल.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi ecological terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "thinks frogs are predators of fish",
+        "confuses cause and effect",
+        "does not understand the role of frogs"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 0 (Insect population increases), as frogs are natural predators of insects. The author's solution is accurate, and the reasons for the wrong options reflect common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/8/science/hecu112.pdf",
+          "ordinal": 11,
+          "pageStart": 12,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 12: — How Nature Works in Harmony",
+            "12.7 How Does One Change Lead to Another?"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu112.pdf",
+          "ordinal": 12,
+          "pageStart": 13,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 12: — How Nature Works in Harmony",
+            "12.8 How Do Interactions Maintain",
+            "Balance in Ecosystems?"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu112.pdf",
+          "ordinal": 13,
+          "pageStart": 14,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 12: — How Nature Works in Harmony",
+            "12.9 What Are the Benefits of an Ecosystem?"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T13:26:21.049Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If a farmer wants to reduce the use of synthetic fertilisers, which of the following practices should they adopt?",
+      "choices": [
+        "Planting a single type of crop in the same area each year",
+        "Using organic manure like Kunapa Jala",
+        "Using more pesticides",
+        "Growing the same crop repeatedly"
+      ],
+      "answerIndex": 1,
+      "solution": "Using organic manure like Kunapa Jala provides essential nutrients to the soil without the need for synthetic fertilisers, making it an effective alternative. Planting a single crop repeatedly and using more pesticides can deplete soil nutrients and harm the environment, increasing reliance on synthetic inputs. The correct option is the second one.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक किसान संश्लेषित उर्वरकों के उपयोग को कम करना चाहता है, तो निम्नलिखित में से कौन सी प्रथा वे अपनाएं?",
+          "choices": [
+            "एक ही क्षेत्र में प्रत्येक वर्ष एक ही प्रकार की फसल लगाना",
+            "कुनापा जल जैसे कार्बनिक खाद का उपयोग करना",
+            "अधिक कीटनाशकों का उपयोग करना",
+            "एक ही फसल को बार-बार उगाना"
+          ],
+          "solution": "कुनापा जल जैसे कार्बनिक खाद के उपयोग से मिट्टी को आवश्यक पोषक तत्व प्राप्त होते हैं बिना संश्लेषित उर्वरकों के आवश्यकता के बिना, जो एक प्रभावी विकल्प है। एक ही फसल के बार-बार लगाने और अधिक कीटनाशकों के उपयोग से मिट्टी के पोषक तत्व क्षतिग्रस्त हो सकते हैं और पर्यावरण को नुकसान पहुंच सकता है, जिससे संश्लेषित आवश्यकताओं पर निर्भरता बढ़ जाती है। सही विकल्प दूसरा है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate technical terms. The correct answer is in the same position (option 2).",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका शेतकऱ्याला संश्लेषित खतांचा वापर कमी करायचा असल्यास, खालीलपैकी कोणती पद्धत त्यांनी अवलंबली पाहिजे?",
+          "choices": [
+            "एकाच प्रकारचा शेती करणारा वर्षानुवर्षे एकाच भागात वापरणे",
+            "कुनापा जाळा यासारखे जैविक खत वापरणे",
+            "अधिक कीटकनाशक वापरणे",
+            "एकाच पिकाचे वर्षानुवर्षे लावणे"
+          ],
+          "solution": "कुनापा जाळा यासारखे जैविक खत जमीनला आवश्यक पोषक तत्व पुरवते आणि संश्लेषित खतांच्या आवश्यकतेचा अंत आणते, जे एक प्रभावी विकल्प आहे. एकाच पिकाचे वर्षानुवर्षे लावणे आणि अधिक कीटकनाशक वापरणे जमीनच्या पोषक तत्वांच्या घटीचे कारण बनू शकते आणि पर्यावरणाला नुकसान पोहोचवू शकते, ज्यामुळे संश्लेषित खतांवर अधिक अवलंबून राहिले जाऊ शकते. योग्य पर्याय दुसरा आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi agricultural terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confusing monoculture with sustainable farming practices",
+        null,
+        "Chooses a harmful practice that increases the need for synthetic fertilisers",
+        "Chooses a harmful practice that increases the need for synthetic fertilisers"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is option 1, as organic manure like Kunapa Jala is a sustainable alternative to synthetic fertilizers. The other options either increase the need for synthetic fertilizers or are harmful to the environment.",
+      "sources": [
+        {
+          "document": "ncert/8/science/hecu112.pdf",
+          "ordinal": 14,
+          "pageStart": 15,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 12: — How Nature Works in Harmony",
+            "12.9 What Are the Benefits of an Ecosystem?"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu112.pdf",
+          "ordinal": 15,
+          "pageStart": 16,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 12: — How Nature Works in Harmony",
+            "12.9 What Are the Benefits of an Ecosystem?"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu112.pdf",
+          "ordinal": 16,
+          "pageStart": 17,
+          "pageEnd": 18,
+          "headingPath": [
+            "Chapter 12: — How Nature Works in Harmony",
+            "12.9 What Are the Benefits of an Ecosystem?",
+            "Activity 12.10: Let us survey"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T13:26:21.049Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "What would happen if all decomposers suddenly disappeared from a forest ecosystem?",
+      "choices": [
+        "The population of producers would increase",
+        "The population of consumers would increase",
+        "The nutrients in the soil would become scarce",
+        "The number of predators would decrease"
+      ],
+      "answerIndex": 2,
+      "solution": "If decomposers disappeared, dead matter would not be broken down, leading to a scarcity of nutrients in the soil. This would affect the growth of producers, who rely on these nutrients. The other options are incorrect because they do not directly result from the absence of decomposers. Producers would not thrive without nutrients, and consumers would not increase due to the lack of available food.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक वन पारिस्थितिक तंत्र से सभी विघटक अचानक लुप्त हो गए, तो क्या होगा?",
+          "choices": [
+            "उत्पादकों की जनसंख्या बढ़ जाएगी",
+            "उपभोक्ताओं की जनसंख्या बढ़ जाएगी",
+            "मिट्टी में पोषक तत्व कम हो जाएंगे",
+            "कुछ शिकारियों की संख्या कम हो जाएगी"
+          ],
+          "solution": "यदि विघटक लुप्त हो जाएं, तो मृत पदार्थ अपघटित नहीं होंगे, जिसके परिणामस्वरूप मिट्टी में पोषक तत्व कम हो जाएंगे। इससे उत्पादकों के विकास पर प्रभाव पड़ेगा, जो इन पोषक तत्वों पर निर्भर करते हैं। अन्य विकल्प गलत हैं क्योंकि वे विघटकों की अनुपस्थिति से सीधे परिणाम नहीं हैं। बिना पोषक तत्वों के उत्पादक अच्छी तरह से विकसित नहीं हो सकते हैं, और खाद्य सामग्री के अभाव में उपभोक्ताओं की संख्या बढ़ नहीं सकती।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology for ecological concepts.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर एका वन परिसंस्थेतील सर्व विघटक अचानक निर्माण झाले तर काय होईल?",
+          "choices": [
+            "उत्पादकांची लोकसंख्या वाढेल",
+            "उपभोक्तांची लोकसंख्या वाढेल",
+            "मातीतील पोषक घटक निर्विवाद राहतील",
+            "कृमी वाढीची संख्या कमी होईल"
+          ],
+          "solution": "जर विघटक निर्माण झाले तर मृत पदार्थ विघटित होणार नाहीत, ज्यामुळे मातीतील पोषक घटकांची कमतरता होईल. हे उत्पादकांच्या वाढीवर प्रभाव टाकेल, जे या पोषक घटकांवर अवलंबून असतात. इतर विकल्प चुकीचे आहेत कारण ते विघटकांच्या अनुपस्थितीमुळे सीधा निर्माण होत नाहीत. पोषक घटकांशिवाय उत्पादक चांगले वाढत नाहीत आणि खाद्याच्या अभावामुळे उपभोक्तांची लोकसंख्या वाढत नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the scientific terminology appropriate for a Marathi-medium textbook.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Incorrectly assumes decomposers limit producer growth",
+        "Incorrectly assumes decomposers help consumers grow",
+        null,
+        "Believes decomposers directly control predator populations"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The solution is sound and correctly identifies option 2 as the correct answer. The reasoning aligns with ecological principles, and the author's explanations for the incorrect options reflect common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/8/science/hecu112.pdf",
+          "ordinal": 17,
+          "pageStart": 18,
+          "pageEnd": 18,
+          "headingPath": [
+            "Chapter 12: — How Nature Works in Harmony",
+            "12.9 What Are the Benefits of an Ecosystem?",
+            "Activity 12.10: Let us survey"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu112.pdf",
+          "ordinal": 18,
+          "pageStart": 18,
+          "pageEnd": 19,
+          "headingPath": [
+            "Chapter 12: — How Nature Works in Harmony",
+            "12.9 What Are the Benefits of an Ecosystem?",
+            "Activity 12.10: Let us survey"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu112.pdf",
+          "ordinal": 19,
+          "pageStart": 19,
+          "pageEnd": 20,
+          "headingPath": [
+            "Chapter 12: — How Nature Works in Harmony",
+            "12.9 What Are the Benefits of an Ecosystem?",
+            "Activity 12.10: Let us survey"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T13:26:21.049Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "In a food chain, which of the following is a producer?",
+      "choices": [
+        "Hare",
+        "Mouse",
+        "Mushroom",
+        "Grass"
+      ],
+      "answerIndex": 3,
+      "solution": "Grass is a producer because it makes its own food through photosynthesis. Hare and mouse are consumers, and mushroom is a decomposer. Producers are organisms that can create their own food, which is the first trophic level in a food chain.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक खाद्य श्रृंखला में, निम्नलिखित में से कौन एक उत्पादक है?",
+          "choices": [
+            "खरगोश",
+            "चूहा",
+            "कांटा",
+            "घास"
+          ],
+          "solution": "घास एक उत्पादक है क्योंकि यह प्रकाश संश्लेषण द्वारा अपना खाना बनाता है। खरगोश और चूहा उपभोक्ता हैं, और कांटा एक वियोजक है। उत्पादक वे जीव होते हैं जो अपना खाना बना सकते हैं, जो खाद्य श्रृंखला में पहला पोषण स्तर होता है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology for biological concepts.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खाद्य प्रसारात, खालीलपैकी कोण उत्पादक आहे?",
+          "choices": [
+            "खरगोश",
+            "चूहा",
+            "कॅप्सूल",
+            "लालसर"
+          ],
+          "solution": "लालसर उत्पादक आहे कारण ते स्वतःचे खाद्य फोटोसंश्लेषणाद्वारे तयार करते. खरगोश आणि चूहा उपभोक्ते आहेत, आणि कॅप्सूल विघटक आहे. उत्पादक म्हणजे जीव जे स्वतःचे खाद्य तयार करू शकतात, जे खाद्य प्रसारात पहिल्या पोषण स्तरावर असतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the scientific terminology appropriate for a Marathi-medium curriculum.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses consumers with producers",
+        "Confuses consumers with producers",
+        "Confuses decomposers with producers",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct and aligns with the key. Grass is a producer, while hare and mouse are consumers, and mushroom is a decomposer. The reasons for the distractors are valid misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/8/science/hecu112.pdf",
+          "ordinal": 7,
+          "pageStart": 8,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 12: — How Nature Works in Harmony",
+            "12.4 What Are the Different Types of Interactions",
+            "Activity 12.5: Let us classify"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu112.pdf",
+          "ordinal": 8,
+          "pageStart": 9,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 12: — How Nature Works in Harmony",
+            "12.5 Who Eats Whom?"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu112.pdf",
+          "ordinal": 9,
+          "pageStart": 11,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 12: — How Nature Works in Harmony",
+            "12.5 Who Eats Whom?",
+            "Activity 12.8: Let us trace and link"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu112.pdf",
+          "ordinal": 10,
+          "pageStart": 11,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 12: — How Nature Works in Harmony",
+            "12.6 What Happens to Waste in Nature?"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T13:26:21.049Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "In a food web, how many organisms can a single organism be connected to through feeding relationships?",
+      "choices": [
+        "One",
+        "Two",
+        "Three",
+        "Two or more"
+      ],
+      "answerIndex": 3,
+      "solution": "In a food web, a single organism can be connected to two or more organisms through feeding relationships. This shows that food chains are interlinked, forming a complex network. The idea of multiple connections is key to understanding the structure of a food web.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक खाद्य जाल में, एक एकल जीव भोजन संबंधों के माध्यम से कितने जीवों से जुड़ा हो सकता है?",
+          "choices": [
+            "एक",
+            "दो",
+            "तीन",
+            "दो या अधिक"
+          ],
+          "solution": "एक खाद्य जाल में, एक एकल जीव भोजन संबंधों के माध्यम से दो या अधिक जीवों से जुड़ा हो सकता है। इससे पता चलता है कि खाद्य श्रृंखलाएं एक जटिल जाल बनाने के लिए एक दूसरे से जुड़ी हुई हैं। बहुगुणा संबंधों की अवधारणा खाद्य जाल की संरचना को समझने के लिए महत्वपूर्ण है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खाद्य पानात, एका संपूर्ण सजीवाला खाद्य संबंधांद्वारे किती सजीव जोडलेले असतात?",
+          "choices": [
+            "एक",
+            "दोन",
+            "तीन",
+            "दोन किंवा अधिक"
+          ],
+          "solution": "खाद्य पानात, एका संपूर्ण सजीवाला खाद्य संबंधांद्वारे दोन किंवा अधिक सजीव जोडलेले असतात. हे दर्शवते की खाद्य श्रंखला एकमेकांना जोडलेल्या असतात, जे जटिल जाळी तयार करतात. अनेक संबंधांचा विचार हा खाद्य पानाच्या संरचनेच्या बुद्धीमत्तेचा मुख्य भाग आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and natural, maintaining the original meaning, structure, and terminology appropriate for a Marathi-medium science curriculum.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Believes an organism can only have one connection",
+        "Believes an organism can only have two connections",
+        "Believes an organism can only have three connections",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 'Two or more' because in a food web, organisms can have multiple feeding relationships. The author's reasoning is sound and aligns with the scientific understanding of food webs.",
+      "sources": [
+        {
+          "document": "ncert/8/science/hecu112.pdf",
+          "ordinal": 7,
+          "pageStart": 8,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 12: — How Nature Works in Harmony",
+            "12.4 What Are the Different Types of Interactions",
+            "Activity 12.5: Let us classify"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu112.pdf",
+          "ordinal": 8,
+          "pageStart": 9,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 12: — How Nature Works in Harmony",
+            "12.5 Who Eats Whom?"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu112.pdf",
+          "ordinal": 9,
+          "pageStart": 11,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 12: — How Nature Works in Harmony",
+            "12.5 Who Eats Whom?",
+            "Activity 12.8: Let us trace and link"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu112.pdf",
+          "ordinal": 10,
+          "pageStart": 11,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 12: — How Nature Works in Harmony",
+            "12.6 What Happens to Waste in Nature?"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T13:26:21.049Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
     }
   ]
 }

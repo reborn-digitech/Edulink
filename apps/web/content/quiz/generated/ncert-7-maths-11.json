@@ -1181,6 +1181,1046 @@
       "generatedAt": "2026-11-02T02:27:29.287Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is the term used to describe the lowest multiple that is common to a group of numbers?",
+      "choices": [
+        "Greatest Common Factor",
+        "Lowest Common Factor",
+        "Highest Common Factor",
+        "Lowest Common Multiple"
+      ],
+      "answerIndex": 3,
+      "solution": "The correct term is 'Lowest Common Multiple' because it refers to the smallest number that is a multiple of each number in a group. Greatest Common Factor and Highest Common Factor refer to the largest number that divides all numbers in a group, not the smallest multiple. Lowest Common Factor is not a standard mathematical term.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "किसी संख्या के समूह के लिए सामान्य न्यूनतम गुणज के लिए उपयोग किया जाने वाला शब्द क्या है?",
+          "choices": [
+            "महत्तम सामान्य गुणनखंड",
+            "न्यूनतम सामान्य गुणनखंड",
+            "उच्चतम सामान्य गुणनखंड",
+            "न्यूनतम सामान्य गुणज"
+          ],
+          "solution": "सही शब्द 'न्यूनतम सामान्य गुणज' है क्योंकि यह उस सबसे छोटी संख्या को संदर्भित करता है जो समूह में प्रत्येक संख्या का गुणज होती है। महत्तम सामान्य गुणनखंड और उच्चतम सामान्य गुणनखंड उस सबसे बड़ी संख्या को संदर्भित करते हैं जो समूह में सभी संख्याओं को विभाजित करती है, न कि सबसे छोटा गुणज। न्यूनतम सामान्य गुणनखंड एक मानक गणितीय शब्द नहीं है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Hindi mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका संख्यांच्या गटासाठी सामान्य असलेल्या सर्वात लहान गुणिताला कोणते शब्द वापरला जातो?",
+          "choices": [
+            "महागता सामान्य घटक",
+            "सर्वात लहान सामान्य घटक",
+            "सर्वात मोठा सामान्य घटक",
+            "सर्वात लहान सामान्य गुणित"
+          ],
+          "solution": "योग्य शब्द 'सर्वात लहान सामान्य गुणित' आहे कारण तो गटातील प्रत्येक संख्येचा गुणित असलेला सर्वात लहान संख्या दर्शवतो. महागता सामान्य घटक आणि सर्वात मोठा सामान्य घटक गटातील सर्व संख्यांना भागल्याच्या सर्वात मोठ्या संख्येला संदर्भित करतात, गुणिताच्या सर्वात लहान संख्येला नाही. सर्वात लहान सामान्य घटक हा गणितीय शब्द नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses LCM with GCF, thinking the largest common factor is the answer",
+        "Confuses the concept of LCM with LCF, which is not a standard term.",
+        "Refers to the Highest Common Factor, which is the opposite concept.",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-posed and the correct answer is clearly 3. The author's reasoning for the distractors aligns with common misconceptions students might have.",
+      "sources": [
+        {
+          "document": "ncert/7/mathematics/gegp203.pdf",
+          "ordinal": 12,
+          "pageStart": 18,
+          "pageEnd": 20,
+          "headingPath": [
+            "Chapter 3: Finding Common Ground",
+            "3.3 Patterns, Properties, and a Pretty Procedure!",
+            "SUMMARY"
+          ]
+        }
+      ],
+      "edition": "2025 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-31T14:31:57.263Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is the highest common factor (HCF) of 45 and 75?",
+      "choices": [
+        "15",
+        "5",
+        "3",
+        "25"
+      ],
+      "answerIndex": 0,
+      "solution": "The HCF of 45 and 75 is 15. This is found by identifying the common prime factors and taking the minimum power of each. The prime factorisation of 45 is 3 × 3 × 5 and of 75 is 3 × 5 × 5. The common prime factors are 3 and 5, and the minimum powers are 3¹ and 5¹, so the HCF is 3 × 5 = 15. The option '5' is incorrect because it ignores the 3. The option '3' is incorrect because it ignores the 5. The option '25' is incorrect because it does not include the 3.",
+      "checkExpr": "3*5",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "45 और 75 का महत्तम समापवर्तक (HCF) क्या है?",
+          "choices": [
+            "15",
+            "5",
+            "3",
+            "25"
+          ],
+          "solution": "45 और 75 का HCF 15 है। यह सामान्य अभाज्य गुणनखंडों की पहचान करके और प्रत्येक के न्यूनतम घात को लेकर पाया जाता है। 45 का अभाज्य गुणनखंडन 3 × 3 × 5 है और 75 का 3 × 5 × 5 है। सामान्य अभाज्य गुणनखंड 3 और 5 हैं, और न्यूनतम घात 3¹ और 5¹ हैं, इसलिए HCF 3 × 5 = 15 है। विकल्प '5' गलत है क्योंकि यह 3 को अनदेखा करता है। विकल्प '3' गलत है क्योंकि यह 5 को अनदेखा करता है। विकल्प '25' गलत है क्योंकि यह 3 को शामिल नहीं करता।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology as used in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "45 आणि 75 चा सर्वात मोठा सामाईक अपवर्तक (HCF) किती आहे?",
+          "choices": [
+            "15",
+            "5",
+            "3",
+            "25"
+          ],
+          "solution": "45 आणि 75 चा HCF 15 आहे. हे सामाईक अविभाज्य अपवर्तक ओळखून प्रत्येकाच्या न्यूनतम घाताचा वापर करून शोधला जातो. 45 चे अविभाज्य अपवर्तन 3 × 3 × 5 आहे आणि 75 चे 3 × 5 × 5 आहे. सामाईक अविभाज्य अपवर्तक 3 आणि 5 आहेत, आणि न्यूनतम घात 3¹ आणि 5¹ आहेत, म्हणून HCF 3 × 5 = 15 आहे. विकल्प '5' अचूक नाही कारण ते 3 लक्षात ठेवत नाही. विकल्प '3' अचूक नाही कारण ते 5 लक्षात ठेवत नाही. विकल्प '25' अचूक नाही कारण ते 3 लक्षात ठेवत नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "ignores the 3",
+        "ignores the 5",
+        "ignores the 5 and 3"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct and aligns with the key. The reasoning for the distractors is valid and reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/7/mathematics/gegp203.pdf",
+          "ordinal": 3,
+          "pageStart": 5,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 3: Finding Common Ground",
+            "3.1 The Greatest of All"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp203.pdf",
+          "ordinal": 4,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 3: Finding Common Ground",
+            "3.1 The Greatest of All"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp203.pdf",
+          "ordinal": 5,
+          "pageStart": 9,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 3: Finding Common Ground",
+            "3.2 Least, but not Last!"
+          ]
+        }
+      ],
+      "edition": "2025 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-31T14:31:57.263Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the HCF of 96 and 275?",
+      "choices": [
+        "1",
+        "3",
+        "5",
+        "15"
+      ],
+      "answerIndex": 0,
+      "solution": "The HCF of 96 and 275 is 1 because there are no common prime factors between them. The prime factorisation of 96 is 2 × 2 × 2 × 2 × 2 × 3 and of 275 is 5 × 5 × 11. There are no common primes. 3, 5, and 15 are not factors of both numbers.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "96 और 275 का एचसीएफ क्या है?",
+          "choices": [
+            "1",
+            "3",
+            "5",
+            "15"
+          ],
+          "solution": "96 और 275 का एचसीएफ 1 है क्योंकि इनके बीच कोई सामान्य अभाज्य गुणनखंड नहीं है। 96 का अभाज्य गुणनखंड 2 × 2 × 2 × 2 × 2 × 3 है और 275 का अभाज्य गुणनखंड 5 × 5 × 11 है। कोई सामान्य अभाज्य नहीं है। 3, 5 और 15 दोनों संख्याओं के गुणनखंड नहीं हैं।",
+          "imageAlt": null,
+          "critique": "Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "96 आणि 275 चा एचसीएफ किती आहे?",
+          "choices": [
+            "1",
+            "3",
+            "5",
+            "15"
+          ],
+          "solution": "96 आणि 275 चा एचसीएफ 1 आहे कारण त्यांच्यात कोणते सामायिक अविभाज्य अवयव नाहीत. 96 चे अविभाज्य अपघटन 2 × 2 × 2 × 2 × 2 × 3 आहे आणि 275 चे 5 × 5 × 11 आहे. सामायिक अविभाज्य अवयव नाहीत. 3, 5 आणि 15 दोन्ही संख्यांचे अवयव नाहीत.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses 3 with a common factor",
+        "Confuses 5 with a common factor",
+        "Confuses 15 with a common factor"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct. The prime factorizations show no common factors, so HCF is 1. The distractors reflect common misconceptions about factors of 3, 5, and 15.",
+      "sources": [
+        {
+          "document": "ncert/7/mathematics/gegp203.pdf",
+          "ordinal": 3,
+          "pageStart": 5,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 3: Finding Common Ground",
+            "3.1 The Greatest of All"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp203.pdf",
+          "ordinal": 4,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 3: Finding Common Ground",
+            "3.1 The Greatest of All"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp203.pdf",
+          "ordinal": 5,
+          "pageStart": 9,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 3: Finding Common Ground",
+            "3.2 Least, but not Last!"
+          ]
+        }
+      ],
+      "edition": "2025 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-31T14:31:57.263Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "If two numbers are multiplied by 2, what happens to their highest common factor (HCF)?",
+      "choices": [
+        "It remains the same",
+        "It is halved",
+        "It is doubled",
+        "It becomes zero"
+      ],
+      "answerIndex": 2,
+      "solution": "When both numbers are doubled, they each gain an additional factor of 2. This factor of 2 is included in the HCF, so the HCF also doubles. The correct answer is 'It is doubled'. The other options are incorrect because doubling the numbers would not leave the HCF unchanged, halve it, or make it zero.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि दो संख्याओं को 2 से गुणा कर दिया जाए, तो उनका महत्तम समापवर्तक (HCF) क्या हो जाता है?",
+          "choices": [
+            "यह समान रहता है",
+            "यह आधा हो जाता है",
+            "यह दोगुना हो जाता है",
+            "यह शून्य हो जाता है"
+          ],
+          "solution": "जब दोनों संख्याओं को दोगुना कर दिया जाता है, तो प्रत्येक में एक अतिरिक्त गुणनखंड 2 हो जाता है। यह गुणनखंड HCF में शामिल हो जाता है, इसलिए HCF भी दोगुना हो जाता है। सही उत्तर 'यह दोगुना हो जाता है' है। अन्य विकल्प गलत हैं क्योंकि संख्याओं को दोगुना करने से HCF अपरिवर्तित नहीं रहता, आधा नहीं होता या शून्य नहीं हो जाता।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर दोन संख्यांना 2 ने गुणले जाते, तर त्यांचा महत्तम सामायिक अपवर्तक (HCF) काय होतो?",
+          "choices": [
+            "तो त्याच राहतो",
+            "तो अर्धा होतो",
+            "तो दुप्पट होतो",
+            "तो शून्य होतो"
+          ],
+          "solution": "जेव्हा दोन्ही संख्या दुप्पट केल्या जातात, तेव्हा त्यांना प्रत्येकी अतिरिक्त 2 चा अपवर्तक मिळतो. हा 2 चा अपवर्तक HCF मध्ये समाविष्ट असतो, म्हणून HCF दुप्पट होतो. योग्य उत्तर 'तो दुप्पट होतो' आहे. इतर विकल्प अयोग्य आहेत कारण संख्यांची दुप्पट करणे HCF अचल ठेवत नाही, अर्धा करत नाही किंवा शून्य करत नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "A pupil might think the HCF remains the same if they do not consider the effect of multiplying both numbers by 2.",
+        "A pupil might think the HCF is halved if they misunderstand how HCF is calculated.",
+        null,
+        "A pupil might think the HCF becomes zero if they incorrectly assume that doubling numbers removes common factors."
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct and logically explains that doubling both numbers adds an extra factor of 2 to the HCF, thereby doubling it. All distractors are based on plausible misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/7/mathematics/gegp203.pdf",
+          "ordinal": 9,
+          "pageStart": 14,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 3: Finding Common Ground",
+            "3.3 Patterns, Properties, and a Pretty Procedure!"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp203.pdf",
+          "ordinal": 10,
+          "pageStart": 16,
+          "pageEnd": 17,
+          "headingPath": [
+            "Chapter 3: Finding Common Ground",
+            "3.3 Patterns, Properties, and a Pretty Procedure!"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp203.pdf",
+          "ordinal": 11,
+          "pageStart": 17,
+          "pageEnd": 18,
+          "headingPath": [
+            "Chapter 3: Finding Common Ground",
+            "3.3 Patterns, Properties, and a Pretty Procedure!"
+          ]
+        }
+      ],
+      "edition": "2025 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-31T14:31:57.263Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "Lekhana has 84 kg of rice from one farm and 108 kg from another. She wants to pack the rice into bags of the same weight, using the fewest number of bags. What should be the weight of each bag?",
+      "choices": [
+        "6 kg",
+        "12 kg",
+        "18 kg",
+        "24 kg"
+      ],
+      "answerIndex": 1,
+      "solution": "The correct answer is 12 kg. The weight of the bag must be a common factor of 84 and 108 that allows the fewest number of bags. The common factors of 84 and 108 are 1, 2, 3, 4, 6, and 12. To use the fewest number of bags, Lekhana should choose the largest common factor, which is 12. The other options are smaller common factors, which would result in more bags. 6 kg would require more bags than 12 kg. 18 kg is not a factor of 84, so it cannot be used. 24 kg is also not a factor of 84 or 108.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "लेखना के पास एक खेत से 84 किग्रा चावल और दूसरे खेत से 108 किग्रा चावल है। वह चावल को एक ही भार के बैग में भरना चाहती है, जिससे कि बैगों की संख्या सबसे कम हो। प्रत्येक बैग का भार क्या होना चाहिए?",
+          "choices": [
+            "6 किग्रा",
+            "12 किग्रा",
+            "18 किग्रा",
+            "24 किग्रा"
+          ],
+          "solution": "सही उत्तर 12 किग्रा है। बैग के भार को 84 और 108 का एक सामान्य गुणनखंड होना चाहिए, जिससे कि बैगों की संख्या सबसे कम हो। 84 और 108 के सामान्य गुणनखंड 1, 2, 3, 4, 6 और 12 हैं। सबसे कम बैगों के लिए, लेखना को सबसे बड़ा सामान्य गुणनखंड चुनना चाहिए, जो 12 है। अन्य विकल्प छोटे सामान्य गुणनखंड हैं, जिनसे अधिक बैग चाहिए होंगे। 6 किग्रा के लिए अधिक बैग चाहिए होंगे। 18 किग्रा 84 का गुणनखंड नहीं है, इसलिए इसका उपयोग नहीं किया जा सकता है। 24 किग्रा भी 84 या 108 का गुणनखंड नहीं है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "लेखना एका शेतापासून 84 किग्रा चावल आणि दुसऱ्या शेतापासून 108 किग्रा चावल घेते. तिने चावल एकसारख्या वजनाच्या बॅगमध्ये भरायचे आहे, आणि बॅगची संख्या कमीत कमी असायला हवी. प्रत्येक बॅगचे वजन किती असावे?",
+          "choices": [
+            "6 किग्रा",
+            "12 किग्रा",
+            "18 किग्रा",
+            "24 किग्रा"
+          ],
+          "solution": "योग्य उत्तर 12 किग्रा आहे. बॅगचे वजन 84 आणि 108 चे सामान्य अपवर्तक असावे जेणेकरून बॅगची संख्या कमीत कमी राही. 84 आणि 108 चे सामान्य अपवर्तक 1, 2, 3, 4, 6 आणि 12 आहेत. कमीत कमी बॅग वापरण्यासाठी, लेखनाने सर्वात मोठा सामान्य अपवर्तक निवडायला हवा, जो 12 आहे. इतर विकल्प सामान्य अपवर्तकांपेक्षा लहान आहेत, जे अधिक बॅग वापरण्यास नेमके करतील. 6 किग्रा वापरल्यास 12 किग्रा पेक्षा जास्त बॅग लागेल. 18 किग्रा हा 84 चा अपवर्तक नाही, म्हणून तो वापरता येणार नाही. 24 किग्रा हा 84 किंवा 108 चा अपवर्तक नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Chooses a smaller common factor",
+        null,
+        "Chooses a smaller common factor",
+        "Chooses a number that is not a common factor"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly identifies the greatest common factor (GCF) of 84 and 108 as 12, which minimizes the number of bags. The reasoning for the wrong options aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/7/mathematics/gegp203.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 3: Finding Common Ground",
+            "3.1 The Greatest of All"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp203.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 3: Finding Common Ground",
+            "3.1 The Greatest of All"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp203.pdf",
+          "ordinal": 2,
+          "pageStart": 3,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 3: Finding Common Ground",
+            "3.1 The Greatest of All"
+          ]
+        }
+      ],
+      "edition": "2025 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-31T14:31:57.263Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "What is the HCF of 30 and 50?",
+      "choices": [
+        "5",
+        "10",
+        "15",
+        "20"
+      ],
+      "answerIndex": 1,
+      "solution": "The correct answer is 10. The HCF of two numbers is the largest number that divides both of them without leaving a remainder. The factors of 30 are 1, 2, 3, 5, 6, 10, 15, 30. The factors of 50 are 1, 2, 5, 10, 25, 50. The common factors are 1, 2, 5, and 10. The largest of these is 10. 5 is a common factor but not the largest. 15 is not a factor of 50. 20 is not a factor of 30 or 50.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "30 और 50 का एचसीएफ क्या है?",
+          "choices": [
+            "5",
+            "10",
+            "15",
+            "20"
+          ],
+          "solution": "सही उत्तर 10 है। दो संख्याओं का एचसीएफ वह सबसे बड़ी संख्या होती है जो दोनों संख्याओं को शेष बिना विभाजित करती है। 30 के गुणनखंड 1, 2, 3, 5, 6, 10, 15, 30 हैं। 50 के गुणनखंड 1, 2, 5, 10, 25, 50 हैं। सामान्य गुणनखंड 1, 2, 5 और 10 हैं। इनमें से सबसे बड़ा 10 है। 5 एक सामान्य गुणनखंड है लेकिन सबसे बड़ा नहीं है। 15, 50 का गुणनखंड नहीं है। 20, 30 या 50 का गुणनखंड नहीं है।",
+          "imageAlt": null,
+          "critique": "Hindi translation accurately reflects the English original in meaning, structure, and terminology. All mathematical terms (HCF, factors) are correctly translated and match standard Hindi textbook usage.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "30 आणि 50 चा एचसीएफ किती आहे?",
+          "choices": [
+            "5",
+            "10",
+            "15",
+            "20"
+          ],
+          "solution": "बरोबर उत्तर 10 आहे. दोन संख्यांचा एचसीएफ अशी सर्वात मोठी संख्या आहे जी त्या दोन संख्यांना शिल्लक न ठेवता भाग जाते. 30 चे अपवर्तक 1, 2, 3, 5, 6, 10, 15, 30 आहेत. 50 चे अपवर्तक 1, 2, 5, 10, 25, 50 आहेत. सामायिक अपवर्तक 1, 2, 5 आणि 10 आहेत. यापैकी सर्वात मोठी 10 आहे. 5 सामायिक अपवर्तक आहे पण सर्वात मोठा नाही. 15, 50 चा अपवर्तक नाही. 20, 30 किंवा 50 चा अपवर्तक नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi mathematical terminology used.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Chooses a smaller common factor",
+        null,
+        "Chooses a smaller common factor",
+        "Chooses a number that is not a common factor"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct and clearly explains why 10 is the HCF of 30 and 50. The reasoning for the distractors is also valid and reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/7/mathematics/gegp203.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 3: Finding Common Ground",
+            "3.1 The Greatest of All"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp203.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 3: Finding Common Ground",
+            "3.1 The Greatest of All"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp203.pdf",
+          "ordinal": 2,
+          "pageStart": 3,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 3: Finding Common Ground",
+            "3.1 The Greatest of All"
+          ]
+        }
+      ],
+      "edition": "2025 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-31T14:31:57.263Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "What is the HCF of 28 and 42?",
+      "choices": [
+        "7",
+        "14",
+        "21",
+        "28"
+      ],
+      "answerIndex": 1,
+      "solution": "The correct answer is 14. The HCF of two numbers is the largest number that divides both of them without leaving a remainder. The factors of 28 are 1, 2, 4, 7, 14, 28. The factors of 42 are 1, 2, 3, 6, 7, 14, 21, 42. The common factors are 1, 2, 7, and 14. The largest of these is 14. 7 is a common factor but not the largest. 21 is not a factor of 28. 28 is not a factor of 42.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "28 और 42 का एचसीएफ क्या है?",
+          "choices": [
+            "7",
+            "14",
+            "21",
+            "28"
+          ],
+          "solution": "सही उत्तर 14 है। दो संख्याओं का एचसीएफ वह सबसे बड़ी संख्या है जो दोनों संख्याओं को शेष बिना विभाजित करती है। 28 के गुणनखंड 1, 2, 4, 7, 14, 28 हैं। 42 के गुणनखंड 1, 2, 3, 6, 7, 14, 21, 42 हैं। सामान्य गुणनखंड 1, 2, 7 और 14 हैं। इनमें से सबसे बड़ा 14 है। 7 एक सामान्य गुणनखंड है लेकिन सबसे बड़ा नहीं है। 21, 28 का गुणनखंड नहीं है। 28, 42 का गुणनखंड नहीं है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "28 आणि 42 चा HCF किती आहे?",
+          "choices": [
+            "7",
+            "14",
+            "21",
+            "28"
+          ],
+          "solution": "बरोबर उत्तर 14 आहे. दोन संख्यांचा HCF असा मोठा नंबर आहे जो दोन्ही संख्यांना शिल्लक न ठेवता विभाजित करतो. 28 चे अपवर्तक 1, 2, 4, 7, 14, 28 आहेत. 42 चे अपवर्तक 1, 2, 3, 6, 7, 14, 21, 42 आहेत. सामायिक अपवर्तक 1, 2, 7 आणि 14 आहेत. यापैकी सर्वात मोठा 14 आहे. 7 सामायिक अपवर्तक आहे परंतु सर्वात मोठा नाही. 21, 28 चा अपवर्तक नाही. 28, 42 चा अपवर्तक नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Chooses a smaller common factor",
+        null,
+        "Chooses a smaller common factor",
+        "Chooses a number that is not a common factor"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly identifies the HCF as 14 by listing common factors and selecting the largest. The reasoning for the distractors is valid and reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/7/mathematics/gegp203.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 3: Finding Common Ground",
+            "3.1 The Greatest of All"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp203.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 3: Finding Common Ground",
+            "3.1 The Greatest of All"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp203.pdf",
+          "ordinal": 2,
+          "pageStart": 3,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 3: Finding Common Ground",
+            "3.1 The Greatest of All"
+          ]
+        }
+      ],
+      "edition": "2025 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-31T14:31:57.263Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "What is the smallest length of a toran that Anshu and Guna can both make?",
+      "choices": [
+        "6",
+        "8",
+        "24",
+        "48"
+      ],
+      "answerIndex": 2,
+      "solution": "Anshu uses strips of 6 cm and Guna uses strips of 8 cm. The smallest length they can both make is the LCM of 6 and 8. The multiples of 6 are 6, 12, 18, 24, ... and of 8 are 8, 16, 24, 32, ... The smallest common multiple is 24. 6 and 8 are the individual lengths, not the common multiple. 48 is a larger common multiple but not the smallest.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "अंशू और गुणा दोनों द्वारा बनाए जा सकने वाले टोरन की सबसे छोटी लंबाई क्या है?",
+          "choices": [
+            "6",
+            "8",
+            "24",
+            "48"
+          ],
+          "solution": "अंशू 6 सेमी के टुकड़ों का उपयोग करता है और गुणा 8 सेमी के टुकड़ों का उपयोग करता है। दोनों द्वारा बनाए जा सकने वाली सबसे छोटी लंबाई 6 और 8 का लघुत्तम समापवर्त्य है। 6 के गुणज 6, 12, 18, 24, ... हैं और 8 के गुणज 8, 16, 24, 32, ... हैं। सबसे छोटा सामान्य गुणज 24 है। 6 और 8 व्यक्तिगत लंबाई हैं, न कि सामान्य गुणज। 48 एक बड़ा सामान्य गुणज है लेकिन सबसे छोटा नहीं है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "अन्शू आणि गुणा दोन्ही कोणत्या लहानतम लांबीचा तोरण तयार करू शकतात?",
+          "choices": [
+            "6",
+            "8",
+            "24",
+            "48"
+          ],
+          "solution": "अन्शू 6 सेमी च्या पट्ट्या वापरतो आणि गुणा 8 सेमी च्या पट्ट्या वापरतो. अन्शू आणि गुणा दोन्ही तयार करू शकणारी लहानतम लांबी ही 6 आणि 8 चा ल.सा. (LCM) असेल. 6 चे गुणक 6, 12, 18, 24, ... आहेत आणि 8 चे गुणक 8, 16, 24, 32, ... आहेत. सर्वात लहान सामायिक गुणक 24 आहे. 6 आणि 8 ही विशिष्ट लांबी आहेत, सामायिक गुणक नाहीत. 48 हा लहानतम सामायिक गुणक नसला तरी एक मोठा सामायिक गुणक आहे.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate technical terms like 'ल.सा.' for LCM.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Chooses Anshu's strip length",
+        "Chooses Guna's strip length",
+        null,
+        "Chooses a larger common multiple"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question correctly asks for the least common multiple (LCM) of 6 and 8, which is 24. The solution is accurate, and the reasoning for the distractors aligns with common student misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/7/mathematics/gegp203.pdf",
+          "ordinal": 3,
+          "pageStart": 5,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 3: Finding Common Ground",
+            "3.1 The Greatest of All"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp203.pdf",
+          "ordinal": 4,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 3: Finding Common Ground",
+            "3.1 The Greatest of All"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp203.pdf",
+          "ordinal": 5,
+          "pageStart": 9,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 3: Finding Common Ground",
+            "3.2 Least, but not Last!"
+          ]
+        }
+      ],
+      "edition": "2025 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-31T14:31:57.263Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "What is the HCF of 24 and 36, using the prime factorisation method?",
+      "choices": [
+        "6",
+        "12",
+        "8",
+        "4"
+      ],
+      "answerIndex": 0,
+      "solution": "The prime factorisation of 24 is 2^3 * 3 and of 36 is 2^2 * 3^2. The HCF is 2^2 * 3 = 6. The other options are incorrect because they do not take the minimum power of each prime factor.",
+      "checkExpr": "2*3",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "24 और 36 का HCF, अभाज्य गुणनखंड विधि के उपयोग से क्या है?",
+          "choices": [
+            "6",
+            "12",
+            "8",
+            "4"
+          ],
+          "solution": "24 का अभाज्य गुणनखंड 2^3 * 3 है और 36 का अभाज्य गुणनखंड 2^2 * 3^2 है। HCF 2^2 * 3 = 6 है। अन्य विकल्प गलत हैं क्योंकि वे प्रत्येक अभाज्य गुणनखंड की न्यूनतम घात नहीं लेते हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology as found in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "24 आणि 36 चा HCF प्राथमिक अपघटन पद्धतीने किती आहे?",
+          "choices": [
+            "6",
+            "12",
+            "8",
+            "4"
+          ],
+          "solution": "24 चा प्राथमिक अपघटन 2^3 × 3 आहे आणि 36 चा 2^2 × 3^2 आहे. HCF हा 2^2 × 3 = 6 आहे. इतर विकल्प अयोग्य आहेत कारण ते प्रत्येक प्राथमिक अपघटकाच्या न्यूनतम शक्ती घेत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for mathematical concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "incorrectly takes the maximum power of 2 instead of the minimum",
+        "incorrectly multiplies 2^2 * 3^2",
+        "incorrectly takes 2^3 * 3"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies the HCF by taking the minimum powers of common prime factors. The reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/7/mathematics/gegp203.pdf",
+          "ordinal": 12,
+          "pageStart": 18,
+          "pageEnd": 20,
+          "headingPath": [
+            "Chapter 3: Finding Common Ground",
+            "3.3 Patterns, Properties, and a Pretty Procedure!",
+            "SUMMARY"
+          ]
+        }
+      ],
+      "edition": "2025 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-31T14:31:57.263Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "What is the LCM of 84 and 180?",
+      "choices": [
+        "2520",
+        "1260",
+        "840",
+        "420"
+      ],
+      "answerIndex": 1,
+      "solution": "The LCM of 84 and 180 is 1260. This is the smallest number that is a multiple of both 84 and 180. The other options are incorrect because they are not the smallest common multiple of the two numbers.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "84 और 180 का ल.स.प. क्या है?",
+          "choices": [
+            "2520",
+            "1260",
+            "840",
+            "420"
+          ],
+          "solution": "84 और 180 का ल.स.प. 1260 है। यह दोनों 84 और 180 के लिए सबसे छोटी सामान्य गुणज है। अन्य विकल्प गलत हैं क्योंकि वे दोनों संख्याओं के सबसे छोटे सामान्य गुणज नहीं हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "84 आणि 180 चा एलसीएम किती आहे?",
+          "choices": [
+            "2520",
+            "1260",
+            "840",
+            "420"
+          ],
+          "solution": "84 आणि 180 चा एलसीएम 1260 आहे. हा दोन्ही संख्यांचा सर्वात लहान सामाईक गुणक आहे. इतर विकल्प चुकीचे आहेत कारण ते दोन संख्यांचा सर्वात लहान सामाईक गुणक नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, with appropriate Marathi terminology for LCM (एलसीएम) and correct mathematical meaning preserved.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "A pupil might think the LCM is 2520, which is larger than the correct answer.",
+        null,
+        "A pupil might think the LCM is 840, which is not a multiple of 180.",
+        "A pupil might think the LCM is 420, which is not a multiple of 180."
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 1260. The solution is sound and the reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/7/mathematics/gegp203.pdf",
+          "ordinal": 9,
+          "pageStart": 14,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 3: Finding Common Ground",
+            "3.3 Patterns, Properties, and a Pretty Procedure!"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp203.pdf",
+          "ordinal": 10,
+          "pageStart": 16,
+          "pageEnd": 17,
+          "headingPath": [
+            "Chapter 3: Finding Common Ground",
+            "3.3 Patterns, Properties, and a Pretty Procedure!"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp203.pdf",
+          "ordinal": 11,
+          "pageStart": 17,
+          "pageEnd": 18,
+          "headingPath": [
+            "Chapter 3: Finding Common Ground",
+            "3.3 Patterns, Properties, and a Pretty Procedure!"
+          ]
+        }
+      ],
+      "edition": "2025 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-31T14:31:57.263Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "If the HCF of two numbers is 6 and their LCM is 36, what could be the two numbers?",
+      "choices": [
+        "6 and 36",
+        "12 and 18",
+        "9 and 24",
+        "18 and 36"
+      ],
+      "answerIndex": 1,
+      "solution": "The product of the two numbers is equal to the product of their HCF and LCM, so the product is 6 × 36 = 216. Among the options, 12 and 18 multiply to 216. The correct answer is '12 and 18'. The other options do not satisfy the condition that their product equals the product of the HCF and LCM.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि दो संख्याओं का महत्तम समापवर्तक 6 है और उनका लघुत्तम समापवर्तक 36 है, तो दो संख्याएं क्या हो सकती हैं?",
+          "choices": [
+            "6 और 36",
+            "12 और 18",
+            "9 और 24",
+            "18 और 36"
+          ],
+          "solution": "दो संख्याओं का गुणनफल उनके महत्तम समापवर्तक और लघुत्तम समापवर्तक के गुणनफल के बराबर होता है, अतः गुणनफल 6 × 36 = 216 है। विकल्पों में, 12 और 18 का गुणनफल 216 है। सही उत्तर '12 और 18' है। अन्य विकल्प इस शर्त को पूरा नहीं करते कि उनका गुणनफल महत्तम समापवर्तक और लघुत्तम समापवर्तक के गुणनफल के बराबर हो।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard mathematical terminology as found in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर दोन संख्यांचा महत्तम सामायिक अपवर्तक 6 आहे आणि त्यांचा लघुत्तम सामायिक अपवर्त्य 36 आहे, तर त्या दोन संख्या कोणत्या असू शकतात?",
+          "choices": [
+            "6 आणि 36",
+            "12 आणि 18",
+            "9 आणि 24",
+            "18 आणि 36"
+          ],
+          "solution": "दोन संख्यांचा गुणाकार महत्तम सामायिक अपवर्तक आणि लघुत्तम सामायिक अपवर्त्यच्या गुणाकार बरोबर असतो, म्हणून गुणाकार 6 × 36 = 216 असतो. पर्यायांमध्ये 12 आणि 18 गुणाकार 216 असतो. योग्य उत्तर '12 आणि 18' आहे. इतर पर्याय त्यांच्या गुणाकाराने महत्तम सामायिक अपवर्तक आणि लघुत्तम सामायिक अपवर्त्यच्या गुणाकार बरोबर असण्याच्या अटीला पूर्ण करत नाहीत.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses standard Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "A pupil might choose '6 and 36' if they think the HCF is one of the numbers.",
+        null,
+        "A pupil might choose '9 and 24' if they miscalculate the product of the numbers.",
+        "A pupil might choose '18 and 36' if they think both numbers are multiples of the HCF but fail to check the product."
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct. The product of the two numbers must be 6 × 36 = 216. Only 12 × 18 = 216, so option 1 is correct. The other options do not satisfy this condition.",
+      "sources": [
+        {
+          "document": "ncert/7/mathematics/gegp203.pdf",
+          "ordinal": 9,
+          "pageStart": 14,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 3: Finding Common Ground",
+            "3.3 Patterns, Properties, and a Pretty Procedure!"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp203.pdf",
+          "ordinal": 10,
+          "pageStart": 16,
+          "pageEnd": 17,
+          "headingPath": [
+            "Chapter 3: Finding Common Ground",
+            "3.3 Patterns, Properties, and a Pretty Procedure!"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp203.pdf",
+          "ordinal": 11,
+          "pageStart": 17,
+          "pageEnd": 18,
+          "headingPath": [
+            "Chapter 3: Finding Common Ground",
+            "3.3 Patterns, Properties, and a Pretty Procedure!"
+          ]
+        }
+      ],
+      "edition": "2025 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-31T14:31:57.263Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
     }
   ]
 }

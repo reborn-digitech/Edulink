@@ -735,6 +735,2072 @@
       "generatedAt": "2026-11-02T12:39:26.295Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "Which of the following is an example of an abiotic factor?",
+      "choices": [
+        "Grass",
+        "Algae",
+        "Soil",
+        "Fern"
+      ],
+      "answerIndex": 2,
+      "solution": "The correct answer is 'Soil' because it is a non-living component of the ecosystem, making it an abiotic factor. Grass, algae, and fern are living organisms, which makes them biotic factors.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन अजैविक कारक का उदाहरण है?",
+          "choices": [
+            "घास",
+            "शैवाल",
+            "मिट्टी",
+            "फर्न"
+          ],
+          "solution": "सही उत्तर 'मिट्टी' है क्योंकि यह पारिस्थितिकी तंत्र का अजैविक घटक है, जिसके कारण यह एक अजैविक कारक है। घास, शैवाल और फर्न जीवित जीव हैं, जिसके कारण वे जैविक कारक हैं।",
+          "imageAlt": null,
+          "critique": "Translation accurately reflects the original meaning, with appropriate Hindi terminology for ecological concepts.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते अजैविक घटकाचे उदाहरण आहे?",
+          "choices": [
+            "लिंबू",
+            "शैवाल",
+            "माती",
+            "फर्न"
+          ],
+          "solution": "बरोबर उत्तर 'माती' आहे कारण ती पर्यावरणाचा जैविक घटक नसलेला नैसर्गिक घटक आहे, ज्यामुळे ती अजैविक घटक म्हणून वर्गीकृत केली जाते. लिंबू, शैवाल आणि फर्न हे जीवित वस्तू आहेत, ज्यामुळे त्यांना जैविक घटक म्हणतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning. 'माती' is the correct term for 'soil' in Marathi science textbooks. The distractors 'लिंबू', 'शैवाल', and 'फर्न' are correctly translated and remain incorrect as they are living organisms.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses abiotic with biotic factors",
+        "Confuses abiotic with biotic factors",
+        null,
+        "Confuses abiotic with biotic factors"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct. Soil is an abiotic factor, while grass, algae, and fern are all biotic (living) components of an ecosystem.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 156,
+          "pageStart": 131,
+          "pageEnd": 132,
+          "headingPath": [
+            "18. Ecosystems"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 157,
+          "pageStart": 133,
+          "pageEnd": 134,
+          "headingPath": [
+            "18. Ecosystems"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 158,
+          "pageStart": 134,
+          "pageEnd": 135,
+          "headingPath": [
+            "18. Ecosystems"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-29T21:44:21.407Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the role of decomposers in an ecosystem?",
+      "choices": [
+        "They produce their own food",
+        "They consume other organisms",
+        "They convert organic substances into inorganic substances",
+        "They provide shelter to other organisms"
+      ],
+      "answerIndex": 2,
+      "solution": "The correct answer is 'They convert organic substances into inorganic substances' because decomposers break down dead organic matter into simpler inorganic forms. The other options describe the roles of producers or consumers, not decomposers.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक पारिस्थितिक तंत्र में अपघटकों की भूमिका क्या है?",
+          "choices": [
+            "वे अपना भोजन बनाते हैं",
+            "वे अन्य जीवों को खाते हैं",
+            "वे कार्बनिक पदार्थों को अकार्बनिक पदार्थों में बदल देते हैं",
+            "वे अन्य जीवों के लिए आवास प्रदान करते हैं"
+          ],
+          "solution": "सही उत्तर 'वे कार्बनिक पदार्थों को अकार्बनिक पदार्थों में बदल देते हैं' है क्योंकि अपघटक मृत कार्बनिक पदार्थों को सरल अकार्बनिक रूप में तोड़ देते हैं। अन्य विकल्प उत्पादकों या उपभोक्ताओं की भूमिका का वर्णन करते हैं, अपघटकों की नहीं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology for ecological concepts.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एकोसिस्टममध्ये परजीवी काय काम करतात?",
+          "choices": [
+            "ते स्वतः आपले खाद्य तयार करतात",
+            "ते इतर जीवांचा खातात",
+            "ते जैविक पदार्थांना अजैविक पदार्थांमध्ये बदलतात",
+            "ते इतर जीवांना आश्रय देतात"
+          ],
+          "solution": "सही उत्तर 'ते जैविक पदार्थांना अजैविक पदार्थांमध्ये बदलतात' आहे कारण परजीवी मृत जैविक पदार्थांना सोप्या अजैविक रूपांमध्ये तोडतात. इतर विकल्प प्रोड्यूसर्स किंवा कॉन्स्यूमर्सच्या भूमिका दर्शवतात, परजीवीच्या नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for ecological concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the role of producers",
+        "Confuses the role of consumers",
+        null,
+        "Confuses the role of producers"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-constructed. The correct answer is clearly 2, and the author's reasoning aligns with scientific understanding. The distractors are plausible misconceptions that students might have.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 156,
+          "pageStart": 131,
+          "pageEnd": 132,
+          "headingPath": [
+            "18. Ecosystems"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 157,
+          "pageStart": 133,
+          "pageEnd": 134,
+          "headingPath": [
+            "18. Ecosystems"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 158,
+          "pageStart": 134,
+          "pageEnd": 135,
+          "headingPath": [
+            "18. Ecosystems"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-29T21:44:21.407Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "Which of the following best represents the role of decomposers in an ecosystem?",
+      "choices": [
+        "They produce their own food using sunlight",
+        "They consume other organisms for energy",
+        "They break down dead organisms and return nutrients to the soil",
+        "They transfer energy from one organism to another"
+      ],
+      "answerIndex": 2,
+      "solution": "Decomposers break down dead organisms and return nutrients to the soil, making them available for producers to use again. The other options describe producers, consumers, and energy transfer, which are not the role of decomposers.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा एक पारिस्थितिक तंत्र में अपघटकों के कार्य का सबसे अच्छा प्रतिनिधित्व करता है?",
+          "choices": [
+            "वे सूर्य के प्रकाश का उपयोग करके अपना खाना बनाते हैं",
+            "वे ऊर्जा के लिए अन्य जीवों का उपभोग करते हैं",
+            "वे मृत जीवों के अपघटन करके मिट्टी में पोषक तत्व वापस लौटाते हैं",
+            "वे एक जीव से दूसरे जीव तक ऊर्जा के स्थानांतरण करते हैं"
+          ],
+          "solution": "अपघटक मृत जीवों के अपघटन करके मिट्टी में पोषक तत्व वापस लौटाते हैं, जिससे उत्पादक फिर से इनका उपयोग कर सकते हैं। अन्य विकल्प उत्पादक, उपभोक्ता और ऊर्जा स्थानांतरण का वर्णन करते हैं, जो अपघटकों के कार्य के रूप में नहीं हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate terminology as found in Hindi-medium science textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणता पर्यावरणात विघटकांच्या भूमिकेला सर्वात चांगला प्रतिनिधित्व करतो?",
+          "choices": [
+            "ते सूर्याच्या प्रकाशाचा वापर करून स्वतःचे खाद्य तयार करतात",
+            "ते ऊर्जा मिळविण्यासाठी इतर सजीवांचे खातात",
+            "ते मृत सजीवांचे विघटन करून त्यांच्यातील पोषक घटक मातीत परत करतात",
+            "ते एका सजीवापासून दुसऱ्या सजीवाला ऊर्जा प्रसारित करतात"
+          ],
+          "solution": "विघटक मृत सजीवांचे विघटन करून त्यांच्यातील पोषक घटक मातीत परत करतात, जेणेकरून उत्पादकांना पुन्हा वापरण्यासाठी उपलब्ध करून दिले जाते. इतर विकल्प पोषक, खाद्यसंसाधन आणि ऊर्जा प्रसारित करण्याच्या भूमिका दर्शवतात, जी विघटकांच्या भूमिकेची नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for ecological concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses producers with decomposers",
+        "Confuses consumers with decomposers",
+        null,
+        "Confuses decomposers with consumers, thinking they move energy rather than recycle nutrients"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 2, as decomposers are responsible for breaking down dead organisms and recycling nutrients. The other options correctly identify roles of producers, consumers, and energy transfer, which are not the role of decomposers. The author's reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 159,
+          "pageStart": 135,
+          "pageEnd": 136,
+          "headingPath": [
+            "18. Ecosystems"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 160,
+          "pageStart": 136,
+          "pageEnd": 137,
+          "headingPath": [
+            "18. Ecosystems"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 161,
+          "pageStart": 137,
+          "pageEnd": 138,
+          "headingPath": [
+            "18. Ecosystems"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-29T21:44:21.407Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "In a grassland ecosystem, if the number of primary consumers decreases, what is the most likely effect on the population of producers?",
+      "choices": [
+        "Increases",
+        "Decreases",
+        "Remains the same",
+        "Fluctuates"
+      ],
+      "answerIndex": 0,
+      "solution": "If the number of primary consumers decreases, there will be less grazing pressure on producers, leading to an increase in their population. The other options do not align with the ecological principle of predator-prey relationship.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "घास के मैदान पारिस्थितिक तंत्र में, यदि प्राथमिक उपभोक्ताओं की संख्या कम हो जाती है, तो उत्पादकों की जनसंख्या पर सबसे संभावित प्रभाव क्या होगा?",
+          "choices": [
+            "बढ़ जाती है",
+            "घट जाती है",
+            "एक ही रहती है",
+            "उतार-चढ़ाव करती है"
+          ],
+          "solution": "यदि प्राथमिक उपभोक्ताओं की संख्या कम हो जाती है, तो उत्पादकों पर कम चराई का दबाव होगा, जिसके परिणामस्वरूप उनकी जनसंख्या में वृद्धि होती है। अन्य विकल्प शिकारी-शिकारी संबंध के पारिस्थितिक सिद्धांत के अनुरूप नहीं हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate ecological terminology in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "घासाच्या परिसंस्थेत, जर प्राथमिक उपभोक्तांची संख्या कमी होते, तर उत्पादकांच्या लोकसंख्येवर सर्वात शक्य असलेला परिणाम काय असेल?",
+          "choices": [
+            "वाढते",
+            "कमी होते",
+            "एकसारखे राहते",
+            "हल्ला करते"
+          ],
+          "solution": "जर प्राथमिक उपभोक्तांची संख्या कमी होत असेल, तर उत्पादकांवर कमी घासण्याचा दबाव होईल, ज्यामुळे त्यांच्या लोकसंख्येत वाढ होईल. इतर विकल्प विपरीत प्रतिसादाच्या नियमाशी जुमानत नाहीत.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate ecological terminology as used in Marathi textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Misunderstands the impact of consumer numbers on producers",
+        "Misunderstands the impact of consumer numbers on producers",
+        "Incorrectly assumes no change in the ecosystem balance"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly applies the ecological principle that reduced grazing pressure leads to increased producer population. The reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 156,
+          "pageStart": 131,
+          "pageEnd": 132,
+          "headingPath": [
+            "18. Ecosystems"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 157,
+          "pageStart": 133,
+          "pageEnd": 134,
+          "headingPath": [
+            "18. Ecosystems"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 158,
+          "pageStart": 134,
+          "pageEnd": 135,
+          "headingPath": [
+            "18. Ecosystems"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-29T21:44:21.407Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the main function of decomposers in an ecosystem?",
+      "choices": [
+        "To produce their own food",
+        "To break down dead organisms",
+        "To eat other animals",
+        "To absorb sunlight"
+      ],
+      "answerIndex": 1,
+      "solution": "The correct answer is 'To break down dead organisms' because decomposers like fungi and bacteria break down dead plant and animal matter, recycling nutrients back into the ecosystem. They do not produce their own food, eat other animals, or absorb sunlight.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक पारिस्थितिक तंत्र में अपघटकों का मुख्य कार्य क्या है?",
+          "choices": [
+            "अपना खाना बनाना",
+            "मृत जीवों को तोड़ना",
+            "दूसरे जानवरों को खाना",
+            "सूर्य के प्रकाश को अवशोषित करना"
+          ],
+          "solution": "सही उत्तर 'मृत जीवों को तोड़ना' है क्योंकि कवक और जीवाणु जैसे अपघटक मृत पौधों और जानवरों के अंशों को तोड़ते हैं, जिससे पोषक तत्व पारिस्थितिक तंत्र में वापस चले जाते हैं। वे अपना खाना नहीं बनाते, दूसरे जानवरों को नहीं खाते और सूर्य के प्रकाश को नहीं अवशोषित करते।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. All options and the solution are correctly translated, with the correct answer in the same position. The technical terms used are standard in Hindi science textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एकोशनमध्ये परिपाक करणार्‍यांचे मुख्य कार्य काय आहे?",
+          "choices": [
+            "आपले खाद्य पाक करणे",
+            "मृत सजीवांचे विघटन करणे",
+            "इतर प्राण्यांचे खाणे",
+            "सूर्याचे प्रकाश शोषणे"
+          ],
+          "solution": "बरोबर उत्तर 'मृत सजीवांचे विघटन करणे' आहे कारण फंगास आणि बॅक्टेरिया यासारखे परिपाक करणारे मृत वनस्पती आणि प्राणी पदार्थांचे विघटन करतात, ज्यामुळे पोषक तत्वे पुन्हा पर्यावरणात परत जातात. ते आपले खाद्य पाक करत नाहीत, इतर प्राण्यांचे खात नाहीत आणि सूर्याचा प्रकाश शोषत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for ecological concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Misunderstands the role of producers",
+        null,
+        "Confuses consumers with decomposers",
+        "Misconceives decomposers as herbivores"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly identifies the role of decomposers and the reasoning for each distractor aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 159,
+          "pageStart": 135,
+          "pageEnd": 136,
+          "headingPath": [
+            "18. Ecosystems"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 160,
+          "pageStart": 136,
+          "pageEnd": 137,
+          "headingPath": [
+            "18. Ecosystems"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 161,
+          "pageStart": 137,
+          "pageEnd": 138,
+          "headingPath": [
+            "18. Ecosystems"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-22T08:19:09.358Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of the following is a producer in an ecosystem?",
+      "choices": [
+        "Grasshopper",
+        "Frog",
+        "Grass",
+        "Snake"
+      ],
+      "answerIndex": 2,
+      "solution": "The correct answer is 'Grass' because producers are organisms that make their own food through photosynthesis, such as plants. 'Grasshopper' and 'Frog' are consumers, and 'Snake' is a secondary or tertiary consumer. Producers are the base of the food chain.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन एक पारिस्थितिक तंत्र में उत्पादक है?",
+          "choices": [
+            "कैटरपिलर",
+            "मेंढक",
+            "घास",
+            "सांप"
+          ],
+          "solution": "सही उत्तर 'घास' है क्योंकि उत्पादक वे जीव होते हैं जो प्रकाश संश्लेषण द्वारा अपना भोजन बनाते हैं, जैसे कि पौधे। 'कैटरपिलर' और 'मेंढक' उपभोक्ता हैं, और 'सांप' द्वितीयक या तृतीयक उपभोक्ता है। उत्पादक भोजन श्रृंखला के आधार होते हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. 'कैटरपिलर' (caterpillar) and 'मेंढक' (frog) are correctly identified as consumers, and 'सांप' (snake) as a secondary or tertiary consumer. 'घास' (grass) is correctly identified as the producer.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोण एका पर्यावरणातील उत्पादक आहे?",
+          "choices": [
+            "कोबीमाकडा",
+            "मेंढक",
+            "लालगार",
+            "साप"
+          ],
+          "solution": "बरोबर उत्तर 'लालगार' आहे कारण उत्पादक म्हणजे फोटोसिंथेसिसद्वारे स्वतःचे खाद्य तयार करणारे जीव. उदाहरणार्थ, वनस्पती. 'कोबीमाकडा' आणि 'मेंढक' खाद्यप्राणी आहेत, आणि 'साप' द्वितीयक किंवा तृतीयक खाद्यप्राणी आहे. उत्पादक पोषण पिंडाच्या तळाशी असतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for ecological concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses primary consumers with producers",
+        "Confuses secondary consumers with producers",
+        null,
+        "Does not understand that consumers do not produce their own food"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct and aligns with the key. Grass is a producer as it performs photosynthesis. The other options are all consumers, which is a correct classification.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 159,
+          "pageStart": 135,
+          "pageEnd": 136,
+          "headingPath": [
+            "18. Ecosystems"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 160,
+          "pageStart": 136,
+          "pageEnd": 137,
+          "headingPath": [
+            "18. Ecosystems"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 161,
+          "pageStart": 137,
+          "pageEnd": 138,
+          "headingPath": [
+            "18. Ecosystems"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-22T08:19:09.358Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "In an ecosystem, which of the following is a primary consumer?",
+      "choices": [
+        "Cow",
+        "Tree",
+        "Fungus",
+        "Sunlight"
+      ],
+      "answerIndex": 0,
+      "solution": "The correct answer is 'Cow' because primary consumers are organisms that feed on producers like plants. Cows eat grass, making them primary consumers. Trees are producers, fungi are decomposers, and sunlight is not a living organism.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक पारिस्थितिकी तंत्र में, निम्नलिखित में से कौन एक प्राथमिक उपभोक्ता है?",
+          "choices": [
+            "गाय",
+            "पेड़",
+            "कवक",
+            "सूर्य का प्रकाश"
+          ],
+          "solution": "सही उत्तर 'गाय' है क्योंकि प्राथमिक उपभोक्ता वे जीव होते हैं जो उत्पादकों जैसे पौधों पर खाते हैं। गाय घास खाती है, इसलिए वे प्राथमिक उपभोक्ता होते हैं। पेड़ उत्पादक होते हैं, कवक विघटक होते हैं और सूर्य का प्रकाश जीवित जीव नहीं होता।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate biological terminology as used in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका पर्यावरणात, खालीलपैकी कोण एक प्राथमिक उपभोक्ता आहे?",
+          "choices": [
+            "गाय",
+            "वृक्ष",
+            "कवक",
+            "सूर्यप्रकाश"
+          ],
+          "solution": "सही उत्तर 'गाय' आहे कारण प्राथमिक उपभोक्ते हे उत्पादक जीव जसे की वनस्पती खाणारे असतात. गाय घास खाते, ज्यामुळे ती प्राथमिक उपभोक्ता बनते. वृक्ष उत्पादक आहेत, कवक विघटक आहेत आणि सूर्यप्रकाश जीवन नसलेला वस्तु आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for ecological concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses producers with consumers",
+        "Misunderstands the role of plants in the ecosystem",
+        "Confuses decomposers with consumers"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct and aligns with the key. The reasoning is sound and matches the typical misconceptions of students.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 159,
+          "pageStart": 135,
+          "pageEnd": 136,
+          "headingPath": [
+            "18. Ecosystems"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 160,
+          "pageStart": 136,
+          "pageEnd": 137,
+          "headingPath": [
+            "18. Ecosystems"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 161,
+          "pageStart": 137,
+          "pageEnd": 138,
+          "headingPath": [
+            "18. Ecosystems"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-22T08:19:09.358Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "In a food chain, which of the following is a tertiary consumer?",
+      "choices": [
+        "Grass",
+        "Grasshopper",
+        "Frog",
+        "Eagle"
+      ],
+      "answerIndex": 3,
+      "solution": "The correct answer is 'Eagle' because tertiary consumers are at the top of the food chain and feed on secondary consumers. Grass is a producer, grasshopper is a primary consumer, and frog is a secondary consumer.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक भोजन श्रृंखला में, निम्नलिखित में से कौन एक तृतीयक उपभोक्ता है?",
+          "choices": [
+            "घास",
+            "घासली",
+            "मेंढक",
+            "गिद्ध"
+          ],
+          "solution": "सही उत्तर 'गिद्ध' है क्योंकि तृतीयक उपभोक्ता भोजन श्रृंखला के शीर्ष पर होते हैं और द्वितीयक उपभोक्ताओं पर भोजन करते हैं। घास एक उत्पादक है, घासली एक प्राथमिक उपभोक्ता है और मेंढक एक द्वितीयक उपभोक्ता है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, with appropriate Hindi terminology used for ecological concepts.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खाद्य परिपथात, खालीलपैकी कोण तृतीय सेवक आहे?",
+          "choices": [
+            "लिंबू",
+            "माशरू",
+            "मेंढक",
+            "गाजर"
+          ],
+          "solution": "बरोबर उत्तर 'गाजर' आहे कारण तृतीय सेवक खाद्य परिपथाच्या शीर्षावर असतात आणि द्वितीय सेवकांवर आहार घेतात. लिंबू उत्पादक आहे, माशरू प्राथमिक सेवक आहे आणि मेंढक द्वितीय सेवक आहे.",
+          "imageAlt": null,
+          "critique": "The Marathi translation contains significant errors: 'लिंबू' (lemon) is incorrectly used for 'grass', 'गाजर' (carrot) is incorrectly used for 'eagle', and 'माशरू' (grasshopper) is incorrectly translated as 'mashru' (which is not a standard term). The solution also incorrectly states that the answer is 'गाजर' (carrot), which is not a tertiary consumer.",
+          "flag": "translation critique: meaning changed; not one answer at the same position; a distractor no longer wrong; terms not the board's"
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses producers with consumers",
+        "Confuses primary with secondary consumers",
+        "Misunderstands the role of secondary consumers",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly identifies the eagle as the tertiary consumer, and the reasoning aligns with standard ecological definitions. The distractors are plausible misconceptions for students.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 159,
+          "pageStart": 135,
+          "pageEnd": 136,
+          "headingPath": [
+            "18. Ecosystems"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 160,
+          "pageStart": 136,
+          "pageEnd": 137,
+          "headingPath": [
+            "18. Ecosystems"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 161,
+          "pageStart": 137,
+          "pageEnd": 138,
+          "headingPath": [
+            "18. Ecosystems"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-22T08:19:09.358Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "In an ecosystem, which of the following is the primary source of energy?",
+      "choices": [
+        "Decomposer",
+        "Consumer",
+        "Producer",
+        "Omnivore"
+      ],
+      "answerIndex": 2,
+      "solution": "Producers, such as plants, are the primary source of energy in an ecosystem because they convert sunlight into chemical energy through photosynthesis. Decomposers break down dead matter, consumers eat other organisms, and omnivores eat both plants and animals. Hence, the correct answer is 'Producer'.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक पारिस्थितिकी तंत्र में, निम्नलिखित में से कौन ऊर्जा का प्राथमिक स्रोत है?",
+          "choices": [
+            "अपघटक",
+            "उपभोक्ता",
+            "उत्पादक",
+            "सर्वभक्षी"
+          ],
+          "solution": "उत्पादक, जैसे कि पौधे, पारिस्थितिकी तंत्र में ऊर्जा का प्राथमिक स्रोत होते हैं क्योंकि वे प्रकाश संश्लेषण के माध्यम से सूर्य के प्रकाश को रासायनिक ऊर्जा में बदल देते हैं। अपघटक मृत पदार्थ को अपघटित करते हैं, उपभोक्ता अन्य जीवों को खाते हैं और सर्वभक्षी पौधों और जानवरों दोनों को खाते हैं। इसलिए, सही उत्तर 'उत्पादक' है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses standard biological terminology as taught in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एकोसिस्टममध्ये, खालीलपैकी कोणते ऊर्जेचे प्राथमिक स्रोत आहे?",
+          "choices": [
+            "विघटक",
+            "उपभोक्ता",
+            "उत्पादक",
+            "सर्वभक्षक"
+          ],
+          "solution": "उत्पादक, जसे की वनस्पती, एकोसिस्टममध्ये ऊर्जेचे प्राथमिक स्रोत आहेत कारण ते सूर्याच्या प्रकाशाचे रासायनिक ऊर्जेमध्ये रूपांतर करतात. विघटक मृत पदार्थ विघटित करतात, उपभोक्ता इतर जीव खातात आणि सर्वभक्षक वनस्पती आणि जीव दोन्ही खातात. त्यामुळे योग्य उत्तर 'उत्पादक' आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology consistent with standard science textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses decomposers with energy source",
+        "Confuses consumers with energy source",
+        null,
+        "Confuses omnivores with energy source"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct and aligns with the key. Producers are indeed the primary source of energy in an ecosystem through photosynthesis. The distractors reflect common misconceptions about the roles of decomposers, consumers, and omnivores.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 162,
+          "pageStart": 138,
+          "pageEnd": 138,
+          "headingPath": [
+            "18. Ecosystems",
+            "Exercises"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-22T08:19:09.358Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "Which of the following best describes the relationship between organisms in an ecosystem?",
+      "choices": [
+        "Food chain",
+        "Water cycle",
+        "Oxygen cycle",
+        "Nitrogen cycle"
+      ],
+      "answerIndex": 0,
+      "solution": "A food chain illustrates how energy and nutrients move between different organisms in an ecosystem, showing who eats whom. The water cycle, oxygen cycle, and nitrogen cycle are biogeochemical cycles that involve the movement of elements but do not directly describe the feeding relationships between organisms.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा एक पारिस्थितिकी तंत्र में जीवों के बीच संबंध का सबसे अच्छा वर्णन करता है?",
+          "choices": [
+            "खाद्य श्रृंखला",
+            "जल चक्र",
+            "ऑक्सीजन चक्र",
+            "नाइट्रोजन चक्र"
+          ],
+          "solution": "खाद्य श्रृंखला एक पारिस्थितिकी तंत्र में विभिन्न जीवों के बीच ऊर्जा और पोषक तत्वों के आदान-प्रदान को दर्शाती है, जो कौन किसको खाता है इसका संकेत देती है। जल चक्र, ऑक्सीजन चक्र और नाइट्रोजन चक्र बायोजियोकेमिकल चक्र हैं जो तत्वों के आदान-प्रदान में शामिल हैं लेकिन जीवों के बीच खाने के संबंधों का सीधा वर्णन नहीं करते।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, with appropriate Hindi scientific terminology used.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते एक पर्यावरणातील सजीवांमधील संबंधाचे सर्वात चांगले वर्णन करते?",
+          "choices": [
+            "खाद्य पानाचा क्रम",
+            "पाणी चक्र",
+            "ऑक्सिजन चक्र",
+            "नायट्रोजन चक्र"
+          ],
+          "solution": "खाद्य पानाचा क्रम एका पर्यावरणातील विविध सजीवांमध्ये ऊर्जा आणि पोषक घटकांच्या गतीचे चित्रण करतो, कोण कोणाला खातो याचे दर्शन करतो. पाणी चक्र, ऑक्सिजन चक्र आणि नायट्रोजन चक्र ही जैव-भूरासायनिक चक्रे आहेत जी घटकांच्या गतीशी संबंधित आहेत परंतु सजीवांमधील खाद्य संबंधांचे थेट वर्णन करत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for scientific concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses biogeochemical cycles with relationships",
+        "Confuses biogeochemical cycles with relationships",
+        "Confuses biogeochemical cycles with relationships"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is well-constructed. The correct answer is 'Food chain' as it directly describes the relationship between organisms. The other options are biogeochemical cycles, which are not about organism relationships. The author's reasoning is sound and matches common student misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 162,
+          "pageStart": 138,
+          "pageEnd": 138,
+          "headingPath": [
+            "18. Ecosystems",
+            "Exercises"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-22T08:19:09.358Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "If a dam is built on a river, which of the following is most likely to happen to the ecosystem?",
+      "choices": [
+        "More aquatic plants will grow",
+        "The number of decomposers will increase",
+        "The running water ecosystem will be destroyed",
+        "The number of fish will decrease"
+      ],
+      "answerIndex": 2,
+      "solution": "The correct answer is 'The running water ecosystem will be destroyed' because dams alter the natural flow of water, which can destroy the ecosystem that depends on flowing water. Other options are not the most direct consequence.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक नदी पर बांध बनाया जाता है, तो पारिस्थितिकी तंत्र पर निम्नलिखित में से क्या अधिक संभावना है?",
+          "choices": [
+            "अधिक जलीय पौधे उगेंगे",
+            "अपघटकों की संख्या बढ़ेगी",
+            "प्रवाह जल पारिस्थितिकी तंत्र नष्ट हो जाएगा",
+            "मछलियों की संख्या कम हो जाएगी"
+          ],
+          "solution": "सही उत्तर 'प्रवाह जल पारिस्थितिकी तंत्र नष्ट हो जाएगा' है क्योंकि बांध जल के प्राकृतिक प्रवाह को बदल देते हैं, जो प्रवाह जल पर निर्भर करने वाले पारिस्थितिकी तंत्र को नष्ट कर सकते हैं। अन्य विकल्प सबसे सीधा परिणाम नहीं हैं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriately translated, and the structure matches the English version.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर एका नदीवर बांध बांधला गेला तर खालीलपैकी कोणते जैवसंस्थेवर अधिक संभाव्य घडू शकते?",
+          "choices": [
+            "अधिक जलीय वनस्पती वाढतील",
+            "अपघटकांची संख्या वाढेल",
+            "प्रवाही जल जैवसंस्था नष्ट होईल",
+            "मासांची संख्या कमी होईल"
+          ],
+          "solution": "बरोबर उत्तर 'प्रवाही जल जैवसंस्था नष्ट होईल' आहे कारण बांधांमुळे पाण्याचा प्राकृतिक प्रवाह बदलतो, जो प्रवाही पाण्यावर अवलंबून असलेल्या जैवसंस्थेला नष्ट करू शकतो. इतर विकल्प मार्गदर्शक निर्णय नाहीत.",
+          "imageAlt": null,
+          "critique": "The Marathi translation accurately reflects the English original in meaning, structure, and terminology. The correct answer is in the same position, and the distractors remain incorrect. Technical terms like 'जैवसंस्था' (ecosystem) and 'प्रवाही जल जैवसंस्था' (running water ecosystem) are appropriate for Marathi-medium education.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Misunderstands the impact of dams on ecosystems",
+        "Confuses increase in decomposers with dam effects",
+        null,
+        "Misconceives the effect of dams on fish populations"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 2, as dams disrupt the natural flow of water, which is essential for a running water ecosystem. The other options are incorrect because they either misrepresent the effects of dams or are not the most direct consequence.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 159,
+          "pageStart": 135,
+          "pageEnd": 136,
+          "headingPath": [
+            "18. Ecosystems"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 160,
+          "pageStart": 136,
+          "pageEnd": 137,
+          "headingPath": [
+            "18. Ecosystems"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 161,
+          "pageStart": 137,
+          "pageEnd": 138,
+          "headingPath": [
+            "18. Ecosystems"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-22T08:19:09.358Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "In an ecosystem, what would happen if all producers were removed?",
+      "choices": [
+        "The ecosystem would continue to function normally",
+        "The ecosystem would collapse",
+        "The number of decomposers would increase",
+        "The number of consumers would decrease"
+      ],
+      "answerIndex": 1,
+      "solution": "Producers are the foundation of the food chain and provide energy to the entire ecosystem. Without them, the ecosystem would collapse as there would be no energy source for consumers. Hence, the correct answer is 'The ecosystem would collapse'.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक पारिस्थितिकी तंत्र में, यदि सभी उत्पादक हटा दिए जाएं तो क्या होगा?",
+          "choices": [
+            "पारिस्थितिकी तंत्र सामान्य रूप से कार्य करता रहेगा",
+            "पारिस्थितिकी तंत्र ढह जाएगा",
+            "अपघटकों की संख्या बढ़ जाएगी",
+            "उपभोक्ताओं की संख्या कम हो जाएगी"
+          ],
+          "solution": "उत्पादक खाद्य श्रृंखला के आधार होते हैं और पूरे पारिस्थितिकी तंत्र को ऊर्जा प्रदान करते हैं। उनके बिना, पारिस्थितिकी तंत्र ढह जाएगा क्योंकि उपभोक्ताओं के लिए कोई ऊर्जा स्रोत नहीं होगा। इसलिए, सही उत्तर 'पारिस्थितिकी तंत्र ढह जाएगा' है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate scientific terminology as used in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एकोसिस्टममध्ये, जर सर्व उत्पादक निघून गेले तर काय होईल?",
+          "choices": [
+            "एकोसिस्टम सामान्यपणे कार्य करत राहील",
+            "एकोसिस्टम ध्वस्त होईल",
+            "अपघटकांची संख्या वाढेल",
+            "उपभोक्तांची संख्या कमी होईल"
+          ],
+          "solution": "उत्पादक आहार पाकळीच्या अत्यंत महत्वाच्या भागात असतात आणि पूर्ण एकोसिस्टमला ऊर्जा पुरवतात. त्यांच्या अनुपस्थितीत, उपभोक्तांसाठी ऊर्जेचा स्रोत नसेल तर एकोसिस्टम ध्वस्त होईल. म्हणूनच, योग्य उत्तर 'एकोसिस्टम ध्वस्त होईल' आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for ecological concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Misunderstands the role of producers",
+        null,
+        "Misunderstands the role of decomposers",
+        "Misunderstands the role of consumers"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is sound and correctly identifies the role of producers in an ecosystem. The reasoning aligns with ecological principles.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 162,
+          "pageStart": 138,
+          "pageEnd": 138,
+          "headingPath": [
+            "18. Ecosystems",
+            "Exercises"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-22T08:19:09.358Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "If the number of decomposers in an ecosystem decreases, what is the most likely effect on the ecosystem?",
+      "choices": [
+        "More organic matter will accumulate",
+        "Producers will grow faster",
+        "Consumers will increase in number",
+        "The ecosystem will become more balanced"
+      ],
+      "answerIndex": 0,
+      "solution": "The correct answer is 'More organic matter will accumulate' because decomposers break down dead organisms. If their number decreases, dead matter will not be broken down efficiently, leading to accumulation. Producers and consumers will not necessarily grow or increase, and the ecosystem would become less balanced.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि पारिस्थितिकी तंत्र में अपघटकों की संख्या कम हो जाए, तो पारिस्थितिकी तंत्र पर सबसे संभावित प्रभाव क्या होगा?",
+          "choices": [
+            "अधिक कार्बनिक पदार्थ संचित हो जाएगा",
+            "उत्पादक अधिक तेजी से बढ़ेंगे",
+            "उपभोक्ता संख्या बढ़ेगी",
+            "पारिस्थितिकी तंत्र अधिक संतुलित हो जाएगा"
+          ],
+          "solution": "सही उत्तर 'अधिक कार्बनिक पदार्थ संचित हो जाएगा' है क्योंकि अपघटक मृत जीवों के विघटन में सहायता करते हैं। यदि उनकी संख्या कम हो जाती है, तो मृत पदार्थ अच्छी तरह से विघटित नहीं हो पाएंगे, जिसके परिणामस्वरूप संचय होता है। उत्पादक और उपभोक्ता आवश्यक रूप से बढ़ें या बढ़ेंगे, और पारिस्थितिकी तंत्र कम संतुलित हो जाएगा।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate biological terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर एकोसिस्टममधील विघटकांची संख्या कमी होत असेल तर, एकोसिस्टमवर सर्वात जास्त शक्यतो असा परिणाम काय होईल?",
+          "choices": [
+            "अधिक कार्बनिक पदार्थ संचय होईल",
+            "उत्पादक जास्त वेगाने वाढतील",
+            "उपभोक्ता संख्या वाढेल",
+            "एकोसिस्टम जास्त संतुलित होईल"
+          ],
+          "solution": "बरोबर उत्तर 'अधिक कार्बनिक पदार्थ संचय होईल' आहे कारण विघटक मृत जीवांचे विघटन करतात. जर त्यांची संख्या कमी झाली तर मृत पदार्थ त्यांच्या अपेक्षेने विघटित होणार नाहीत, ज्यामुळे संचय होईल. उत्पादक आणि उपभोक्ता जास्त वेगाने वाढतील किंवा वाढत नाहीत, आणि एकोसिस्टम कमी संतुलित होईल.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for ecological concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Misunderstands the role of decomposers in breaking down organic matter",
+        "Incorrectly assumes that producers will be unaffected by decomposers",
+        "Misunderstands the role of decomposers in maintaining ecosystem balance"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is sound and correctly identifies option 0 as the correct answer. The reasoning aligns with ecological principles: decomposers break down organic matter, so their decrease leads to accumulation. The distractors reflect common misconceptions about decomposers' roles.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 156,
+          "pageStart": 131,
+          "pageEnd": 132,
+          "headingPath": [
+            "18. Ecosystems"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 157,
+          "pageStart": 133,
+          "pageEnd": 134,
+          "headingPath": [
+            "18. Ecosystems"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 158,
+          "pageStart": 134,
+          "pageEnd": 135,
+          "headingPath": [
+            "18. Ecosystems"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-22T08:19:09.358Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Why are natural ecosystems important for maintaining the balance of the biosphere?",
+      "choices": [
+        "They provide resources for human use",
+        "They support a wide variety of life forms",
+        "They are used for tourism",
+        "They are beautiful to look at"
+      ],
+      "answerIndex": 1,
+      "solution": "The correct answer is 'They support a wide variety of life forms' because natural ecosystems maintain biodiversity, which is crucial for the balance of the biosphere. While they may provide resources, support tourism, or be beautiful, their key role is to support diverse life.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "प्राकृतिक पारिस्थितिक तंत्र जीवमंडल के संतुलन के लिए क्यों महत्वपूर्ण हैं?",
+          "choices": [
+            "वे मनुष्य के उपयोग के लिए संसाधन प्रदान करते हैं",
+            "वे विविध जीवन रूपों का समर्थन करते हैं",
+            "वे पर्यटन के लिए उपयोग किए जाते हैं",
+            "वे देखने में सुंदर होते हैं"
+          ],
+          "solution": "सही उत्तर 'वे विविध जीवन रूपों का समर्थन करते हैं' है क्योंकि प्राकृतिक पारिस्थितिक तंत्र जैव विविधता को बनाए रखते हैं, जो जीवमंडल के संतुलन के लिए महत्वपूर्ण है। ये संसाधन प्रदान कर सकते हैं, पर्यटन के लिए उपयोग किए जा सकते हैं या सुंदर हो सकते हैं, लेकिन उनकी मुख्य भूमिका विविध जीवन का समर्थन करना है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology common in textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "प्राकृतिक पर्यावरण व्यवस्था जीवमंडलाच्या संतुलनाच्या दृष्टीने महत्वाच्या का आहेत?",
+          "choices": [
+            "ते मानवाच्या वापरासाठी संसाधन पुरवतात",
+            "ते विविध जीवनाकृतींना समर्थन करतात",
+            "ते पर्यटनासाठी वापरले जातात",
+            "ते बघायला सुंदर असतात"
+          ],
+          "solution": "बरोबर उत्तर 'ते विविध जीवनाकृतींना समर्थन करतात' आहे कारण प्राकृतिक पर्यावरण व्यवस्था जैवविविधता बरोबर ठेवतात, जी जीवमंडलाच्या संतुलनासाठी आवश्यक आहे. ते संसाधन पुरवू शकतात, पर्यटनासाठी वापरले जाऊ शकतात किंवा सुंदर असू शकतात, परंतु त्यांची मुख्य भूमिका विविध जीवनाकृतींना समर्थन करणे आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology. The structure and logic of the question and solution are preserved.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Focuses on human use rather than ecological role",
+        null,
+        "Misunderstands the role of ecosystems in tourism",
+        "Misconceives aesthetics as the main function of ecosystems"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 1, as biodiversity is essential for maintaining the biosphere's balance. The other options reflect common misconceptions about the primary role of ecosystems.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 159,
+          "pageStart": 135,
+          "pageEnd": 136,
+          "headingPath": [
+            "18. Ecosystems"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 160,
+          "pageStart": 136,
+          "pageEnd": 137,
+          "headingPath": [
+            "18. Ecosystems"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 161,
+          "pageStart": 137,
+          "pageEnd": 138,
+          "headingPath": [
+            "18. Ecosystems"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-22T08:19:09.358Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "If a new species is introduced into an ecosystem, what could be the most likely impact on the existing food web?",
+      "choices": [
+        "It would have no impact",
+        "It would cause the ecosystem to collapse immediately",
+        "It could disrupt the existing food web",
+        "It would only affect the producers"
+      ],
+      "answerIndex": 2,
+      "solution": "Introducing a new species can change the balance of an ecosystem by competing for resources, preying on existing species, or altering the food web. This could lead to disruption of the existing food web. Hence, the correct answer is 'It could disrupt the existing food web'.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक नई प्रजाति को एक पारिस्थितिकी तंत्र में जोड़ा जाता है, तो विद्यमान भोजन जाल पर सबसे संभावित प्रभाव क्या हो सकता है?",
+          "choices": [
+            "इसका कोई प्रभाव नहीं होगा",
+            "इसके कारण पारिस्थितिकी तंत्र तुरंत ध्वस्त हो जाएगा",
+            "इसके कारण विद्यमान भोजन जाल का विकार हो सकता है",
+            "इसका केवल उत्पादकों पर प्रभाव पड़ेगा"
+          ],
+          "solution": "एक नई प्रजाति के पारिस्थितिकी तंत्र में जोड़े जाने से संसाधनों के प्रतिस्पर्धा, अस्तित्व में रहने वाली प्रजातियों पर शिकार करना या भोजन जाल को बदल देना जैसे कारणों से पारिस्थितिकी तंत्र के संतुलन में परिवर्तन हो सकता है। इससे विद्यमान भोजन जाल का विकार हो सकता है। अतः सही उत्तर 'इसके कारण विद्यमान भोजन जाल का विकार हो सकता है' है।",
+          "imageAlt": null,
+          "critique": "Translation accurately reflects the original meaning with appropriate Hindi ecological terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका नवीन प्रजातीचा पर्यावरणात समावेश केल्यास, अस्तित्वात असलेल्या खाद्य पानावर काय संभाव्य परिणाम होऊ शकतो?",
+          "choices": [
+            "त्याचा कोणताही परिणाम होणार नाही",
+            "त्यामुळे पर्यावरण तात्काळ कोलंबले जाईल",
+            "त्यामुळे अस्तित्वात असलेला खाद्य पान खोलू शकतो",
+            "त्यामुळे केवळ उत्पादकांचा फायदा होईल"
+          ],
+          "solution": "नवीन प्रजाती जोडल्यामुळे पर्यावरणाचे संतुलन बदलू शकते, कारण ती संसाधनांसाठी स्पर्धा करू शकते, अस्तित्वात असलेल्या प्राण्यांवर शिकार करू शकते किंवा खाद्य पान बदलू शकते. यामुळे अस्तित्वात असलेला खाद्य पान खोलू शकतो. म्हणून, योग्य उत्तर 'त्यामुळे अस्तित्वात असलेला खाद्य पान खोलू शकतो' आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for ecological concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Underestimates the impact of new species",
+        "Overestimates the impact of new species",
+        null,
+        "Underestimates the impact of new species"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 2, as introducing a new species can indeed disrupt the existing food web through competition, predation, or resource alteration. The reasoning in the solution is sound and matches the correct answer.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 162,
+          "pageStart": 138,
+          "pageEnd": 138,
+          "headingPath": [
+            "18. Ecosystems",
+            "Exercises"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-22T08:19:09.358Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is the term for the interactions among the factors of an ecosystem?",
+      "choices": [
+        "Producer",
+        "Consumer",
+        "Decomposer",
+        "Ecosystem"
+      ],
+      "answerIndex": 3,
+      "solution": "The term for the interactions among the factors of an ecosystem is 'ecosystem' because it refers to the entire system of living and non-living components and their relationships. 'Producer', 'consumer', and 'decomposer' are types of organisms within the ecosystem, not the overall system of interactions.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक पारिस्थितिकी तंत्र के कारकों के बीच अंतःक्रियाओं के लिए शब्द क्या है?",
+          "choices": [
+            "उत्पादक",
+            "उपभोक्ता",
+            "अपघटक",
+            "पारिस्थितिकी तंत्र"
+          ],
+          "solution": "एक पारिस्थितिकी तंत्र के कारकों के बीच अंतःक्रियाओं के लिए शब्द 'पारिस्थितिकी तंत्र' है क्योंकि यह जीवित और अजीवित घटकों और उनके संबंधों के पूर्ण प्रणाली को संदर्भित करता है। 'उत्पादक', 'उपभोक्ता' और 'अपघटक' पारिस्थितिकी तंत्र के भीतर जीवों के प्रकार हैं, न कि अंतःक्रियाओं की समग्र प्रणाली।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Hindi terminology for ecological concepts.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एकोसिस्टमच्या घटकांमधील अंतःक्रियांच्या संदर्भात कोणते शब्द वापरला जातो?",
+          "choices": [
+            "उत्पादक",
+            "उपभोक्ता",
+            "विघटक",
+            "एकोसिस्टम"
+          ],
+          "solution": "एकोसिस्टमच्या घटकांमधील अंतःक्रियांच्या संदर्भात 'एकोसिस्टम' शब्द वापरला जातो कारण तो जीवित आणि अजीवित घटकांच्या पूर्ण प्रणाली आणि त्यांच्या संबंधांना संदर्भित करतो. 'उत्पादक', 'उपभोक्ता' आणि 'विघटक' हे एकोसिस्टममधील जीवांचे प्रकार आहेत, पूर्ण प्रणाली नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for ecological concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses a part of the ecosystem with the whole system.",
+        "Confuses a consumer with the overall system.",
+        "Confuses a decomposer with the overall system.",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": null,
+      "critique": "The question is flawed because the term 'ecosystem' refers to the community of living organisms and their physical environment, not specifically the 'interactions among the factors.' The correct term would be 'ecological interactions' or 'ecosystem interactions,' but the author's key is 3. The reasoning for the distractors is valid as they reflect common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 162,
+          "pageStart": 138,
+          "pageEnd": 138,
+          "headingPath": [
+            "18. Ecosystems",
+            "Exercises"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-19T10:44:09.826Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of the following is a decomposer in an ecosystem?",
+      "choices": [
+        "Grass",
+        "Sunflower",
+        "Frog",
+        "Microbes"
+      ],
+      "answerIndex": 3,
+      "solution": "Microbes are decomposers that break down dead organic matter into inorganic substances. Grass and sunflower are producers, and frog is a consumer.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन एक पारिस्थितिक तंत्र में विघटक है?",
+          "choices": [
+            "घास",
+            "सूरजमुखी",
+            "मेंढक",
+            "जीवाणु"
+          ],
+          "solution": "जीवाणु विघटक होते हैं जो मृत जैविक पदार्थ को अकार्बनिक पदार्थ में तोड़ देते हैं। घास और सूरजमुखी उत्पादक हैं, और मेंढक उपभोक्ता है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains original meaning, and uses appropriate Hindi terminology for ecological concepts.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोण एका पर्यावरणात विघटक आहे?",
+          "choices": [
+            "लील",
+            "सूर्यफूल",
+            "मांजर",
+            "जीवाणू"
+          ],
+          "solution": "जीवाणू हे विघटक असतात जे मृत जैविक पदार्थांना अकार्बनिक पदार्थांमध्ये विघटित करतात. लील आणि सूर्यफूल उत्पादक असतात, आणि मांजर एक उपभोक्ता आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the scientific terminology appropriate for a Marathi-medium curriculum.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses producers with decomposers",
+        "Confuses producers with decomposers",
+        "Confuses consumers with decomposers",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly identifies microbes as decomposers and explains why the other options are not. The reasoning aligns with standard ecological classifications.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 156,
+          "pageStart": 131,
+          "pageEnd": 132,
+          "headingPath": [
+            "18. Ecosystems"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 157,
+          "pageStart": 133,
+          "pageEnd": 134,
+          "headingPath": [
+            "18. Ecosystems"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 158,
+          "pageStart": 134,
+          "pageEnd": 135,
+          "headingPath": [
+            "18. Ecosystems"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-19T10:44:09.826Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of the following is a component of an ecosystem?",
+      "choices": [
+        "Producers",
+        "Bulbs",
+        "Wires",
+        "Walls"
+      ],
+      "answerIndex": 0,
+      "solution": "Producers are a fundamental component of an ecosystem because they are living organisms, such as plants, that create their own food through photosynthesis, forming the base of the food chain. Bulbs, wires, and walls are not living entities and do not participate in the biological processes that define an ecosystem.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन एक पारितंत्र का घटक है?",
+          "choices": [
+            "उत्पादक",
+            "बल्ब",
+            "तार",
+            "दीवार"
+          ],
+          "solution": "उत्पादक एक पारितंत्र का आधारभूत घटक होते हैं क्योंकि वे जीवित संस्थान होते हैं, जैसे कि पौधे, जो प्रकाश संश्लेषण के माध्यम से अपना भोजन बनाते हैं, जो खाद्य श्रृंखला के आधार के रूप में कार्य करते हैं। बल्ब, तार और दीवार जीवित एकक नहीं होते और पारितंत्र को परिभाषित करने वाली जैविक प्रक्रियाओं में भाग नहीं लेते।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology for ecological concepts.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणता परिसंस्थेचा घटक आहे?",
+          "choices": [
+            "उत्पादक",
+            "बल्ब",
+            "तारा",
+            "दिवे"
+          ],
+          "solution": "उत्पादक परिसंस्थेचा मूलभूत घटक आहेत कारण ते जीवित असलेले एकक आहेत, जसे की वनस्पती, जे प्रकाशसंश्लेषण द्वारे आपले खाद्य तयार करतात, जे खाद्य परंपरेच्या तळाशी असते. बल्ब, तारा आणि दिवे जीवित असलेली एकके नाहीत आणि परिसंस्थेच्या जैविक प्रक्रियांमध्ये भाग घेत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for biological concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses ecosystem components with objects in a circuit",
+        "Confuses ecosystem components with objects in a circuit",
+        "Confuses ecosystem components with objects in a circuit"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 0 (Producers), as they are fundamental components of an ecosystem. The distractors (Bulbs, Wires, Walls) are not ecosystem components and are likely confused with objects from other contexts, as stated in the author's reasoning.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 159,
+          "pageStart": 135,
+          "pageEnd": 136,
+          "headingPath": [
+            "18. Ecosystems"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 160,
+          "pageStart": 136,
+          "pageEnd": 137,
+          "headingPath": [
+            "18. Ecosystems"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 161,
+          "pageStart": 137,
+          "pageEnd": 138,
+          "headingPath": [
+            "18. Ecosystems"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-19T10:44:09.826Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of the following is an example of an aquatic ecosystem?",
+      "choices": [
+        "Forest",
+        "Desert",
+        "River",
+        "Grassland"
+      ],
+      "answerIndex": 2,
+      "solution": "A river is an example of an aquatic ecosystem because it is a body of water that supports aquatic life. Forests, deserts, and grasslands are land-based and do not fit the definition of an aquatic ecosystem, which requires a significant presence of water.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन जलीय पारिस्थितिक तंत्र का उदाहरण है?",
+          "choices": [
+            "वन",
+            "मरुस्थल",
+            "नदी",
+            "घास के मैदान"
+          ],
+          "solution": "नदी एक जलीय पारिस्थितिक तंत्र का उदाहरण है क्योंकि यह जल का एक निर्माण है जो जलीय जीवन का समर्थन करता है। वन, मरुस्थल और घास के मैदान भूमि-आधारित हैं और जलीय पारिस्थितिक तंत्र की परिभाषा के अनुरूप नहीं हैं, जिसके लिए जल की एक महत्वपूर्ण उपस्थिति आवश्यक है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology for ecological concepts.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते जलीय परिसंस्थेचे उदाहरण आहे?",
+          "choices": [
+            "वाळवंट",
+            "रेणू",
+            "नदी",
+            "मैदान"
+          ],
+          "solution": "नदी ही जलीय परिसंस्थेचे उदाहरण आहे कारण ती पाण्याचा एक विस्तृत भाग आहे जो जलीय जीवन वाढवतो. वाळवंट, रेणू आणि मैदान ही जमिनीवर आधारित आहेत आणि जलीय परिसंस्थेच्या व्याख्येला अनुरूप नाहीत, ज्यामध्ये पाण्याची महत्त्वाची उपस्थिती आवश्यक आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for ecological concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses a land ecosystem with an aquatic one.",
+        "Confuses a desert with an aquatic ecosystem.",
+        null,
+        "Confuses a grassland with an aquatic ecosystem."
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 'River' as it is an aquatic ecosystem. The other options are all terrestrial ecosystems, and the author's reasoning for the wrong options reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 162,
+          "pageStart": 138,
+          "pageEnd": 138,
+          "headingPath": [
+            "18. Ecosystems",
+            "Exercises"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-19T10:44:09.826Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "In a grassland ecosystem, which of the following is most likely to be a primary consumer?",
+      "choices": [
+        "Tiger",
+        "Grass",
+        "Deer",
+        "Microbes"
+      ],
+      "answerIndex": 2,
+      "solution": "Deer is a primary consumer that feeds on grass. Tiger is a tertiary consumer, grass is a producer, and microbes are decomposers.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक घास के मैदान पारिस्थितिक तंत्र में, निम्नलिखित में से कौन सा अधिक संभावना है कि प्राथमिक उपभोक्ता हो?",
+          "choices": [
+            "बाघ",
+            "घास",
+            "हिरण",
+            "जीवाणु"
+          ],
+          "solution": "हिरण एक प्राथमिक उपभोक्ता है जो घास पर खाता है। बाघ एक तृतीयक उपभोक्ता है, घास एक उत्पादक है और जीवाणु वियोजक हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, with appropriate Hindi terms for ecological roles (उपभोक्ता, उत्पादक, वियोजक) that match standard textbook terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "मैदानातील परिसंस्थेत, खालीलपैकी कोणता अधिक संभाव्य एक प्राथमिक उपभोक्ता असू शकतो?",
+          "choices": [
+            "सिंह",
+            "लालगार",
+            "माकड",
+            "जीवाणू"
+          ],
+          "solution": "माकड हा प्राथमिक उपभोक्ता असतो जो लालगार खातो. सिंह हा तृतीयक उपभोक्ता असतो, लालगार हा उत्पादक असतो आणि जीवाणू हे विघटक असतात.",
+          "imageAlt": null,
+          "critique": "The translation accurately reflects the original meaning, with appropriate Marathi terminology for ecological roles.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses tertiary consumers with primary consumers",
+        "Confuses producers with primary consumers",
+        null,
+        "Confuses decomposers with primary consumers"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly identifies deer as the primary consumer, and the reasons for the other options align with common misconceptions about ecosystem roles.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 156,
+          "pageStart": 131,
+          "pageEnd": 132,
+          "headingPath": [
+            "18. Ecosystems"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 157,
+          "pageStart": 133,
+          "pageEnd": 134,
+          "headingPath": [
+            "18. Ecosystems"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 158,
+          "pageStart": 134,
+          "pageEnd": 135,
+          "headingPath": [
+            "18. Ecosystems"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-19T10:44:09.826Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "In an ecosystem, what role do decomposers play?",
+      "choices": [
+        "They produce their own food",
+        "They eat other organisms",
+        "They break down dead organic matter",
+        "They transfer energy to the next trophic level"
+      ],
+      "answerIndex": 2,
+      "solution": "Decomposers break down dead organic matter, which is essential for recycling nutrients in an ecosystem. This process helps return materials to the soil or water, making them available for other organisms. The other options describe roles of producers, consumers, or energy transfer, which are not what decomposers do.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक पारिस्थितिकी तंत्र में, अपघटक क्या कार्य करते हैं?",
+          "choices": [
+            "वे अपना खाना बनाते हैं",
+            "वे अन्य जीवों को खाते हैं",
+            "वे मृत जैविक पदार्थ को तोड़ देते हैं",
+            "वे अगले पोषी स्तर तक ऊर्जा का स्थानांतरण करते हैं"
+          ],
+          "solution": "अपघटक मृत जैविक पदार्थ को तोड़ देते हैं, जो पारिस्थितिकी तंत्र में पोषक तत्वों के पुनर्चक्रण के लिए आवश्यक है। इस प्रक्रिया में मिट्टी या पानी में सामग्री को वापस लौटाया जाता है, जिससे अन्य जीवों के लिए उपलब्ध हो जाता है। अन्य विकल्प उत्पादकों, उपभोक्ताओं या ऊर्जा स्थानांतरण के कार्य का वर्णन करते हैं, जो कि अपघटकों का कार्य नहीं है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains original meaning, and uses appropriate Hindi terminology for ecological concepts.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एकोसिस्टममध्ये, विघटकांची भूमिका काय असते?",
+          "choices": [
+            "ते स्वतः आपले खाद्य पाक करतात",
+            "ते इतर सजीवांचे खातात",
+            "ते मृत जैविक पदार्थ विघटित करतात",
+            "ते ऊर्जा दुसऱ्या पोषणस्तरावर पाठवतात"
+          ],
+          "solution": "विघटक मृत जैविक पदार्थ विघटित करतात, जे पर्यावरणात पोषक तत्वांच्या पुनर्चक्रणासाठी महत्वपूर्ण असते. हा प्रक्रिया माती किंवा पाण्यात पदार्थ वापरायला उपलब्ध करून देते, जेणेकरून इतर सजीवांना त्याचा फायदा होतो. इतर विकल्पांमध्ये उत्पादक, उपभोक्ता किंवा ऊर्जेचा पुढे पाठवण्याची भूमिका वर्णन केली गेली आहे, जी विघटकांची भूमिका नाही.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the original meaning, and uses appropriate scientific terminology used in Marathi textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses decomposers with producers",
+        "Confuses decomposers with consumers",
+        null,
+        "Confuses decomposers with consumers, thinking they move energy upward instead of breaking down matter"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 2, as decomposers break down dead organic matter. The author's solution is sound, and the reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 159,
+          "pageStart": 135,
+          "pageEnd": 136,
+          "headingPath": [
+            "18. Ecosystems"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 160,
+          "pageStart": 136,
+          "pageEnd": 137,
+          "headingPath": [
+            "18. Ecosystems"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 161,
+          "pageStart": 137,
+          "pageEnd": 138,
+          "headingPath": [
+            "18. Ecosystems"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-19T10:44:09.826Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "In which type of ecosystem would you most likely find cacti as dominant plants?",
+      "choices": [
+        "Aquatic",
+        "Grassland",
+        "Forest",
+        "Desert"
+      ],
+      "answerIndex": 3,
+      "solution": "Cacti are adapted to survive in environments with very little water, which is a defining characteristic of desert ecosystems. Deserts have extreme temperatures and low precipitation, making them unsuitable for most other plant types. Aquatic, grassland, and forest ecosystems do not provide the specific conditions that cacti require to thrive.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "किस पारिस्थितिक तंत्र में आप कैक्टस के बहुलक पौधों के रूप में सबसे अधिक पाएंगे?",
+          "choices": [
+            "जलीय",
+            "घास के मैदान",
+            "वन",
+            "रेगिस्तान"
+          ],
+          "solution": "कैक्टस लगभग कोई जल न होने वाले वातावरण में जीवित रहने के लिए अनुकूलित होते हैं, जो रेगिस्तान पारिस्थितिक तंत्र की एक परिभाषात्मक विशेषता है। रेगिस्तानों में चरम तापमान और कम वर्षा होती है, जो अधिकांश अन्य पौधों के लिए अनुपयुक्त होती है। जलीय, घास के मैदान और वन पारिस्थितिक तंत्र के लिए कैक्टस के लिए आवश्यक विशिष्ट परिस्थितियां प्रदान नहीं करते हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology for ecological terms.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "कोणत्या प्रकारच्या पर्यावरणात तुम्ही सर्वात जास्त कैक्टस वनस्पती शोधू शकता?",
+          "choices": [
+            "जलीय",
+            "मैदान",
+            "वाळवंट",
+            "जंगल"
+          ],
+          "solution": "कैक्टस वनस्पतींना खूप कमी पाणी असलेल्या वातावरणात जगण्यासाठी अनुकूलित करण्यात आले आहे, जे वाळवंट पर्यावरणाचे वैशिष्ट्य आहे. वाळवंटात अतिशय उच्च आणि खालच्या तापमानाची परिस्थिती असते आणि पाऊस खूप कमी असतो, ज्यामुळे इतर वनस्पतींसाठी अनुकूल नसते. जलीय, मैदान आणि जंगल पर्यावरणात वनस्पतींना जगण्यासाठी आवश्यक असलेली विशिष्ट परिस्थिती उपलब्ध नसते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for ecological terms.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses a plant adapted to deserts with one in aquatic ecosystems.",
+        "Confuses a plant adapted to deserts with one in grasslands.",
+        "Confuses a plant adapted to deserts with one in forests.",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-constructed, with a clear correct answer (desert) and plausible distractors. The author's reasoning aligns with scientific knowledge and common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 162,
+          "pageStart": 138,
+          "pageEnd": 138,
+          "headingPath": [
+            "18. Ecosystems",
+            "Exercises"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-19T10:44:09.826Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Why is an ecosystem considered a dynamic system?",
+      "choices": [
+        "Because it has only biotic factors",
+        "Because it has only abiotic factors",
+        "Because biotic and abiotic factors interact and change over time",
+        "Because it is not affected by any external factors"
+      ],
+      "answerIndex": 2,
+      "solution": "An ecosystem is dynamic because biotic and abiotic factors continuously interact and influence each other, leading to changes in the system over time. The other options are incorrect as they do not account for this interaction.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक पारिस्थितिकी तंत्र को एक गतिशील प्रणाली क्यों माना जाता है?",
+          "choices": [
+            "क्योंकि इसमें केवल जैविक कारक होते हैं",
+            "क्योंकि इसमें केवल अजैविक कारक होते हैं",
+            "क्योंकि जैविक और अजैविक कारक समय के साथ अंतःक्रिया करते रहते हैं और बदलते रहते हैं",
+            "क्योंकि इसे किसी बाहरी कारक से प्रभावित नहीं किया जाता"
+          ],
+          "solution": "एक पारिस्थितिकी तंत्र गतिशील होता है क्योंकि जैविक और अजैविक कारक लगातार अंतःक्रिया करते रहते हैं और एक दूसरे को प्रभावित करते हैं, जिसके परिणामस्वरूप समय के साथ प्रणाली में परिवर्तन होता है। अन्य विकल्प गलत हैं क्योंकि वे इस अंतःक्रिया की गणना नहीं करते।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses standard scientific terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एकोसिस्टम डायनॅमिक सिस्टम म्हणून का विचारला जातो?",
+          "choices": [
+            "कारण त्यामध्ये केवळ जैविक घटक असतात",
+            "कारण त्यामध्ये केवळ अजैविक घटक असतात",
+            "कारण जैविक आणि अजैविक घटक परस्परांशी अविरत असे अंतर्क्रिया करतात आणि वेळेनुसार बदलतात",
+            "कारण त्याला कोणत्याही बाह्य घटकांचा प्रभाव होत नाही"
+          ],
+          "solution": "एकोसिस्टम डायनॅमिक असतो कारण जैविक आणि अजैविक घटक अविरत असे अंतर्क्रिया करतात आणि त्यांच्या परस्पर प्रभावामुळे वेळेनुसार सिस्टममध्ये बदल होत असतात. इतर विकल्प अयोग्य असतात कारण ते या अंतर्क्रियेचा विचार करत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for ecological concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Misunderstands the concept of dynamic systems",
+        "Misunderstands the concept of dynamic systems",
+        null,
+        "Student believes ecosystems are static and isolated from external influences"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 2, as it accurately reflects the dynamic nature of ecosystems due to interactions between biotic and abiotic factors. The author's reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 156,
+          "pageStart": 131,
+          "pageEnd": 132,
+          "headingPath": [
+            "18. Ecosystems"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 157,
+          "pageStart": 133,
+          "pageEnd": 134,
+          "headingPath": [
+            "18. Ecosystems"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 158,
+          "pageStart": 134,
+          "pageEnd": 135,
+          "headingPath": [
+            "18. Ecosystems"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-19T10:44:09.826Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
     }
   ]
 }

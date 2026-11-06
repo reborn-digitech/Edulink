@@ -1427,6 +1427,1622 @@
       "generatedAt": "2026-10-29T08:25:25.366Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "What type of goods are consumed together?",
+      "choices": [
+        "Normal goods",
+        "Inferior goods",
+        "Substitute goods",
+        "Complementary goods"
+      ],
+      "answerIndex": 3,
+      "solution": "Complementary goods are those that are consumed together. These goods are used in conjunction with each other, meaning their demand is linked. Normal and inferior goods relate to how demand changes with income, while substitute goods are alternatives that can replace each other.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "किस प्रकार के माल एक साथ उपभोग किए जाते हैं?",
+          "choices": [
+            "सामान्य माल",
+            "निम्न गुणवत्ता वाले माल",
+            "प्रतिस्थापन माल",
+            "संपूरक माल"
+          ],
+          "solution": "संपूरक माल वे होते हैं जिनका एक साथ उपभोग किया जाता है। इन मालों का उपयोग एक दूसरे के साथ संयुक्त रूप से किया जाता है, अर्थात इनकी मांग एक दूसरे से जुड़ी होती है। सामान्य एवं निम्न गुणवत्ता वाले माल आय के साथ मांग के परिवर्तन से संबंधित होते हैं, जबकि प्रतिस्थापन माल एक दूसरे को बदल सकने वाले विकल्प होते हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate and uses standard Hindi economic terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "कोणत्या प्रकारच्या वस्तू एकत्र खाल्ल्या जातात?",
+          "choices": [
+            "सामान्य वस्तू",
+            "निम्न वस्तू",
+            "प्रतिस्थापन वस्तू",
+            "पूरक वस्तू"
+          ],
+          "solution": "पूरक वस्तू ह्या एकत्र खाल्ल्या जाणार्या वस्तू आहेत. ह्या वस्तू एकमेकांसोबत वापरल्या जातात, अर्थात त्यांची मागणी जोडलेली असते. सामान्य आणि निम्न वस्तू ह्या उत्पन्नाच्या बदलाशी जुळतात, तर प्रतिस्थापन वस्तू ह्या एकमेकांचे बदल करू शकणार्या वस्तू आहेत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi economic terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses normal goods with complementary goods",
+        "Confuses inferior goods with complementary goods",
+        "Confuses substitute goods with complementary goods",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-constructed and the solution correctly identifies complementary goods as those consumed together. The distractors are plausible misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/12/economics/leec202.pdf",
+          "ordinal": 21,
+          "pageStart": 17,
+          "pageEnd": 18,
+          "headingPath": [
+            "Chapter 2: Theory of Consumer",
+            "2.4"
+          ]
+        },
+        {
+          "document": "ncert/12/economics/leec202.pdf",
+          "ordinal": 22,
+          "pageStart": 18,
+          "pageEnd": 19,
+          "headingPath": [
+            "Chapter 2: Theory of Consumer",
+            "2.4"
+          ]
+        },
+        {
+          "document": "ncert/12/economics/leec202.pdf",
+          "ordinal": 23,
+          "pageStart": 19,
+          "pageEnd": 20,
+          "headingPath": [
+            "Chapter 2: Theory of Consumer",
+            "2.5"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T20:27:51.873Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is the term used to describe the responsiveness of the demand for a good to changes in its price?",
+      "choices": [
+        "Income elasticity",
+        "Cross elasticity",
+        "Price elasticity",
+        "Price inelasticity"
+      ],
+      "answerIndex": 2,
+      "solution": "Price elasticity is the term used to describe how much the quantity demanded of a good changes in response to a change in its price. Income elasticity measures responsiveness to changes in income, and cross elasticity measures responsiveness to changes in the price of another good. Price inelasticity refers to a situation where demand does not change much with price, but it is not the general term for the concept.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक वस्तु के मूल्य में परिवर्तन के प्रति उस वस्तु की मांग की संवेदनशीलता के लिए उपयोग किया जाने वाला शब्द क्या है?",
+          "choices": [
+            "आय लोच",
+            "पार्श्व लोच",
+            "मूल्य लोच",
+            "मूल्य अलोच"
+          ],
+          "solution": "मूल्य लोच उस शब्द के लिए उपयोग किया जाता है जो कि एक वस्तु की मांग में मूल्य में परिवर्तन के प्रति कितना परिवर्तन होता है। आय लोच आय में परिवर्तन के प्रति संवेदनशीलता को मापता है, और पार्श्व लोच अन्य वस्तु के मूल्य में परिवर्तन के प्रति संवेदनशीलता को मापता है। मूल्य अलोच एक ऐसी स्थिति को दर्शाता है जहां मांग मूल्य में परिवर्तन के साथ बहुत कम बदलती है, लेकिन यह अवधारणा के लिए सामान्य शब्द नहीं है।",
+          "imageAlt": "एक समतल दर्पण के साथ एक आपतित किरण, परावर्तित किरण और अभिलंब दर्शाने वाला आरेख।",
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses standard economic terminology as taught in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका वस्तूच्या किंमतीतील बदलांमुळे त्या वस्तूच्या मागणीच्या प्रतिसादाचे वर्णन करण्यासाठी वापरलेले शब्द काय आहे?",
+          "choices": [
+            "आय लोच",
+            "क्रॉस लोच",
+            "किंमत लोच",
+            "किंमत अलोच"
+          ],
+          "solution": "किंमत लोच हा एका वस्तूच्या किंमतीतील बदलांमुळे त्या वस्तूच्या मागणीच्या प्रमाणात होणाऱ्या बदलाचे वर्णन करण्यासाठी वापरलेला शब्द आहे. आय लोच हा आयतील बदलांमुळे होणाऱ्या प्रतिसादाचे मापन करतो, आणि क्रॉस लोच हा दुसऱ्या वस्तूच्या किंमतीतील बदलांमुळे होणाऱ्या प्रतिसादाचे मापन करतो. किंमत अलोच हा एक अशा स्थितीला संदर्भित करतो जेथे मागणी किंमतीत बदलल्यानंतर बरीच बदलत नाही, परंतु तो संपूर्ण संकल्पनेसाठी सामान्य शब्द नाही.",
+          "imageAlt": "एका समतल दर्पणाचा आरेख ज्यात एक अंतर्गत किरण, प्रतिबिंबित किरण आणि सामान्य आहे.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi economic terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": "A diagram showing a plane mirror with an incident ray, reflected ray, and normal.",
+      "figure": {
+        "kind": "diagram",
+        "spec": {
+          "parts": [
+            {
+              "part": "planeMirror",
+              "x": 50,
+              "y": 30,
+              "size": 20,
+              "labels": [
+                "mirror"
+              ]
+            },
+            {
+              "part": "planeMirror",
+              "x": 30,
+              "y": 30,
+              "size": 20,
+              "labels": [
+                "incidentRay",
+                "reflectedRay",
+                "normal"
+              ]
+            }
+          ]
+        },
+        "labels": {}
+      },
+      "needsFigure": true,
+      "distractorReason": [
+        "Confuses income elasticity with price elasticity",
+        "Refers to cross elasticity, which measures the responsiveness of demand for one good to the price of another",
+        null,
+        "Incorrectly refers to the measure as 'price inelasticity' instead of 'price elasticity'"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The question is about the definition of price elasticity of demand, and the correct answer is clearly identified as option 2. The author's solution and reasoning are accurate and align with standard economic definitions.",
+      "sources": [
+        {
+          "document": "ncert/12/economics/leec202.pdf",
+          "ordinal": 24,
+          "pageStart": 20,
+          "pageEnd": 22,
+          "headingPath": [
+            "Chapter 2: Theory of Consumer",
+            "2.6"
+          ]
+        },
+        {
+          "document": "ncert/12/economics/leec202.pdf",
+          "ordinal": 25,
+          "pageStart": 22,
+          "pageEnd": 22,
+          "headingPath": [
+            "Chapter 2: Theory of Consumer",
+            "2.6"
+          ]
+        },
+        {
+          "document": "ncert/12/economics/leec202.pdf",
+          "ordinal": 26,
+          "pageStart": 22,
+          "pageEnd": 23,
+          "headingPath": [
+            "Chapter 2: Theory of Consumer",
+            "2.6"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T20:27:51.873Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "Which of the following statements about indifference curves is true?",
+      "choices": [
+        "Indifference curves slope upward from left to right",
+        "Indifference curves intersect each other",
+        "Indifference curves represent the same level of satisfaction for all combinations of goods",
+        "Higher indifference curves represent higher levels of satisfaction"
+      ],
+      "answerIndex": 3,
+      "solution": "Higher indifference curves represent higher levels of satisfaction because they indicate more of the goods being considered, which typically leads to greater utility. Indifference curves slope downward, not upward, reflecting the trade-off between two goods. They also do not intersect, as that would imply inconsistent preferences. The statement about representing the same level of satisfaction is incorrect because higher curves correspond to higher levels of satisfaction.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा कथन अनुकूलता वक्रों के बारे में सत्य है?",
+          "choices": [
+            "अनुकूलता वक्र बाएं से दाएं ऊपर की ओर झुके होते हैं",
+            "अनुकूलता वक्र एक दूसरे को काटते हैं",
+            "अनुकूलता वक्र वस्तुओं के सभी संयोजनों के लिए एक ही संतुष्टि के स्तर का प्रतिनिधित्व करते हैं",
+            "उच्च अनुकूलता वक्र अधिक संतुष्टि के स्तर का प्रतिनिधित्व करते हैं"
+          ],
+          "solution": "उच्च अनुकूलता वक्र अधिक संतुष्टि के स्तर का प्रतिनिधित्व करते हैं क्योंकि वे वस्तुओं के अधिक संख्या को इंगित करते हैं, जो आमतौर पर अधिक उपयोगिता के कारण होता है। अनुकूलता वक्र नीचे की ओर झुके होते हैं, न कि ऊपर की ओर, जो दो वस्तुओं के बीच विनिमय को प्रतिबिंबित करते हैं। वे एक दूसरे को नहीं काटते, क्योंकि ऐसा करना असंगत पसंद को इंगित करता है। वस्तुओं के सभी संयोजनों के लिए एक ही संतुष्टि के स्तर का प्रतिनिधित्व करने का कथन गलत है क्योंकि उच्च वक्र अधिक संतुष्टि के स्तर का प्रतिनिधित्व करते हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses standard economic terminology appropriate for a Hindi-medium curriculum.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणता विधान असंतृप्ती वक्रांबद्दल खरा आहे?",
+          "choices": [
+            "असंतृप्ती वक्र डाव्यापासून उजव्या बाजूस वर जातात",
+            "असंतृप्ती वक्र एकमेकांना छेदतात",
+            "असंतृप्ती वक्र वस्तूंच्या सर्व जोड्यांसाठी एकसारखा संतोष प्रतिनिधित्व करतात",
+            "उच्च असंतृप्ती वक्र उच्च संतोषाच्या पातळीचे प्रतिनिधित्व करतात"
+          ],
+          "solution": "उच्च असंतृप्ती वक्र उच्च संतोषाच्या पातळीचे प्रतिनिधित्व करतात कारण ते विचाराधीन वस्तूंच्या जास्त रकमेला दर्शवतात, जे सामान्यतः अधिक उपयोगाच्या दिशेने जाते. असंतृप्ती वक्र खाली जातात, नक्कीच वर, दोन वस्तूंमधील विनिमयाचे प्रतिनिधित्व करतात. त्यांना एकमेकांना छेदू शकत नाहीत, कारण त्यांनी असंगत पसंती दर्शवली पाहिजे. एकसारखा संतोष प्रतिनिधित्व करण्याचा विधान चुकीचा आहे कारण उच्च वक्र उच्च संतोषाच्या पातळीचे प्रतिनिधित्व करतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi economic terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the direction of the slope",
+        "Believes curves can cross",
+        "Misunderstands the meaning of indifference curves at different levels of utility",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 3. Indifference curves slope downward and never intersect. Higher curves represent higher utility. The author's reasoning aligns with standard microeconomic theory.",
+      "sources": [
+        {
+          "document": "ncert/12/economics/leec202.pdf",
+          "ordinal": 8,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 2: Theory of Consumer",
+            "2.1"
+          ]
+        },
+        {
+          "document": "ncert/12/economics/leec202.pdf",
+          "ordinal": 9,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 2: Theory of Consumer",
+            "2.1"
+          ]
+        },
+        {
+          "document": "ncert/12/economics/leec202.pdf",
+          "ordinal": 10,
+          "pageStart": 8,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 2: Theory of Consumer",
+            "2.2"
+          ]
+        },
+        {
+          "document": "ncert/12/economics/leec202.pdf",
+          "ordinal": 11,
+          "pageStart": 8,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 2: Theory of Consumer",
+            "2.2"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T20:27:51.873Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of the following best describes the budget set of a consumer?",
+      "choices": [
+        "All bundles of goods that a consumer can buy with her income at the prevailing market prices",
+        "All bundles of goods that a consumer prefers",
+        "All bundles of goods that a consumer cannot afford",
+        "All bundles of goods that a consumer has already purchased"
+      ],
+      "answerIndex": 0,
+      "solution": "The budget set refers to all bundles of goods a consumer can afford with her income at current prices. The correct option states this directly. The other options are incorrect because they either describe preferences, unaffordable bundles, or past purchases, which are not what the budget set means.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा उपभोक्ता के बजट सेट का सबसे अच्छा वर्णन करता है?",
+          "choices": [
+            "उन सभी वस्तुओं के संयोजन जिन्हें उपभोक्ता वर्तमान बाजार मूल्यों पर अपनी आय से खरीद सकती है",
+            "उन सभी वस्तुओं के संयोजन जिन्हें उपभोक्ता पसंद करती है",
+            "उन सभी वस्तुओं के संयोजन जिन्हें उपभोक्ता खरीद नहीं सकती",
+            "उन सभी वस्तुओं के संयोजन जिन्हें उपभोक्ता पहले से खरीद चुकी है"
+          ],
+          "solution": "बजट सेट का अर्थ है उपभोक्ता के द्वारा वर्तमान मूल्यों पर अपनी आय से खरीद सके जाने वाले वस्तुओं के सभी संयोजन। सही विकल्प इसे सीधे रूप से बताता है। अन्य विकल्प गलत हैं क्योंकि वे पसंद के वर्णन, अप्राप्य संयोजन या पूर्व खरीदे गए वस्तुओं के वर्णन करते हैं, जो बजट सेट के अर्थ के विपरीत हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English original in meaning, terminology, and structure. All options are correctly translated and maintain their original logical relationship with the solution.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते ग्राहकाच्या बजेट सेटचे सर्वोत्तम वर्णन करते?",
+          "choices": [
+            "ग्राहकाच्या उपलब्ध उत्पन्नावर बाजार दरांवर खरेदी करू शकणारे सर्व बंडल",
+            "ग्राहकाला आवडणारे सर्व बंडल",
+            "ग्राहकाला खरेदी करता येणारे नाहीत असे सर्व बंडल",
+            "ग्राहकाने आधी खरेदी केलेले सर्व बंडल"
+          ],
+          "solution": "बजेट सेट म्हणजे ग्राहकाच्या उत्पन्नावर वर्तमान दरांवर खरेदी करू शकणारे सर्व बंडल आहे. योग्य विकल्प याचे सीधे वर्णन करतो. इतर विकल्प अयोग्य आहेत कारण ते पसंती, अखंड बंडल किंवा गेल्या खरेदी वर्णन करतात, जे बजेट सेटचा अर्थ नाही.",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for economic concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses the budget set with consumer preferences",
+        "Describes unaffordable bundles, not the budget set",
+        "Refers to past purchases, not what the consumer can afford now"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-constructed and the solution correctly identifies option 0 as the correct answer. The reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/12/economics/leec202.pdf",
+          "ordinal": 30,
+          "pageStart": 26,
+          "pageEnd": 27,
+          "headingPath": [
+            "Chapter 2: Theory of Consumer",
+            "2.6",
+            "S u m m a r y"
+          ]
+        },
+        {
+          "document": "ncert/12/economics/leec202.pdf",
+          "ordinal": 31,
+          "pageStart": 27,
+          "pageEnd": 27,
+          "headingPath": [
+            "Chapter 2: Theory of Consumer",
+            "2.6",
+            "Exercises Exercises"
+          ]
+        },
+        {
+          "document": "ncert/12/economics/leec202.pdf",
+          "ordinal": 32,
+          "pageStart": 27,
+          "pageEnd": 28,
+          "headingPath": [
+            "Chapter 2: Theory of Consumer",
+            "2.6",
+            "Exercises Exercises"
+          ]
+        },
+        {
+          "document": "ncert/12/economics/leec202.pdf",
+          "ordinal": 33,
+          "pageStart": 28,
+          "pageEnd": 28,
+          "headingPath": [
+            "Chapter 2: Theory of Consumer",
+            "2.6",
+            "Exercises Exercises"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T20:27:51.873Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the shape of an indifference curve if a consumer has monotonic preferences?",
+      "choices": [
+        "Downward sloping",
+        "Upward sloping",
+        "Vertical",
+        "Horizontal"
+      ],
+      "answerIndex": 0,
+      "solution": "Monotonic preferences imply that more of a good is always preferred to less, which leads to an indifference curve that is downward sloping. The other options are incorrect because upward, vertical, or horizontal curves do not reflect the idea that more of a good is better.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक उपभोक्ता के मोनोटॉनिक पसंद के मामले में अनुभेद वक्र का आकार क्या होता है?",
+          "choices": [
+            "नीचे की ओर ढलान वाला",
+            "ऊपर की ओर ढलान वाला",
+            "ऊर्ध्वाधर",
+            "क्षैतिज"
+          ],
+          "solution": "मोनोटॉनिक पसंद के अर्थ है कि एक वस्तु के अधिक के लिए कम के बजाय हमेशा प्राथमिकता दी जाती है, जिसके कारण अनुभेद वक्र नीचे की ओर ढलान वाला होता है। अन्य विकल्प गलत हैं क्योंकि ऊपर की ओर ढलान वाला, ऊर्ध्वाधर या क्षैतिज वक्र वस्तु के अधिक के बारे में विचार को प्रतिबिंबित नहीं करते।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate economic terminology in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका ग्राहकाच्या मोनोटॉनिक पसंती असल्यास असमानता वक्राची आकृती काय असते?",
+          "choices": [
+            "खालच्या बाजूला झुकलेला",
+            "वरच्या बाजूला झुकलेला",
+            "उभा",
+            "मागे झुकलेला"
+          ],
+          "solution": "मोनोटॉनिक पसंती असल्याने एखाद्या वस्तूच्या जास्त रकमेची अधिक पसंती असते, ज्यामुळे असमानता वक्र खालच्या बाजूला झुकलेला असतो. उरलेल्या विकल्पांमध्ये उभा, वरच्या बाजूला झुकलेला किंवा मागे झुकलेला वक्र असतात, जे एखाद्या वस्तूच्या जास्त रकमेची अधिक पसंती असल्याचे दर्शवित नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi economic terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Believes more of a good is always worse, so indifference curves slope up",
+        "Confuses the shape of an indifference curve with that of a budget line",
+        "Believes indifference curves are horizontal when preferences are monotonic"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly identifies that monotonic preferences lead to downward-sloping indifference curves. The reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/12/economics/leec202.pdf",
+          "ordinal": 30,
+          "pageStart": 26,
+          "pageEnd": 27,
+          "headingPath": [
+            "Chapter 2: Theory of Consumer",
+            "2.6",
+            "S u m m a r y"
+          ]
+        },
+        {
+          "document": "ncert/12/economics/leec202.pdf",
+          "ordinal": 31,
+          "pageStart": 27,
+          "pageEnd": 27,
+          "headingPath": [
+            "Chapter 2: Theory of Consumer",
+            "2.6",
+            "Exercises Exercises"
+          ]
+        },
+        {
+          "document": "ncert/12/economics/leec202.pdf",
+          "ordinal": 32,
+          "pageStart": 27,
+          "pageEnd": 28,
+          "headingPath": [
+            "Chapter 2: Theory of Consumer",
+            "2.6",
+            "Exercises Exercises"
+          ]
+        },
+        {
+          "document": "ncert/12/economics/leec202.pdf",
+          "ordinal": 33,
+          "pageStart": 28,
+          "pageEnd": 28,
+          "headingPath": [
+            "Chapter 2: Theory of Consumer",
+            "2.6",
+            "Exercises Exercises"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T20:27:51.873Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If a consumer’s income doubles and the prices of both goods also double, what happens to the budget line?",
+      "choices": [
+        "It remains unchanged",
+        "It shifts outward but remains parallel",
+        "It shifts inward but remains parallel",
+        "It becomes flatter"
+      ],
+      "answerIndex": 0,
+      "solution": "If income and prices both double, the purchasing power remains the same, so the budget line does not change. The other options are incorrect because they suggest a shift or change in slope that does not occur when both income and prices change proportionally.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक उपभोक्ता की आय दोगुनी हो जाती है और दोनों वस्तुओं के मूल्य भी दोगुने हो जाते हैं, तो बजट रेखा पर क्या प्रभाव पड़ता है?",
+          "choices": [
+            "यह अपरिवर्तित रहता है",
+            "यह बाहर की ओर खिसक जाता है लेकिन समानांतर रहता है",
+            "यह अंदर की ओर खिसक जाता है लेकिन समानांतर रहता है",
+            "यह चौड़ा हो जाता है"
+          ],
+          "solution": "यदि आय और मूल्य दोनों दोगुने हो जाते हैं, तो खरीद शक्ति समान रहती है, इसलिए बजट रेखा बदल नहीं जाती। अन्य विकल्प गलत हैं क्योंकि वे इंगित करते हैं कि खिसकाव या ढलान में परिवर्तन होता है जो आय और मूल्य में अनुपातिक परिवर्तन के साथ नहीं होता।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate economic terminology as used in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका ग्राहकाच्या उत्पन्नाची दुप्पट होते आणि दोन्ही वस्तूंच्या किंमती दुप्पट होतात, तर बजेट रेषा काय होते?",
+          "choices": [
+            "ती अपरिवर्तित राहते",
+            "ती बाहेरकडे खिसकते परंतु समांतर राहते",
+            "ती आतकडे खिसकते परंतु समांतर राहते",
+            "ती चपटी होते"
+          ],
+          "solution": "जर उत्पन्न आणि किंमती दोन्ही दुप्पट होत असतील, तर खरेदी शक्ती समान राहते, म्हणून बजेट रेषा बदलत नाही. इतर विकल्प अयोग्य आहेत कारण ते एका खाजगी बदलाचा अथवा ढालेच्या बदलाचा अंदाज देतात जो उत्पन्न आणि किंमती दोन्ही अनुपातात बदलल्यास घडत नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi economic terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Believes that doubling income always increases purchasing power regardless of price changes",
+        "Believes that doubling prices reduces purchasing power, ignoring the effect of income doubling",
+        "Student incorrectly assumes that doubling prices affects slope, not realizing income and prices scale equally"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct. When income and prices both double, the real income remains the same, so the budget line does not change. The author's reasoning for the distractors is valid and reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/12/economics/leec202.pdf",
+          "ordinal": 30,
+          "pageStart": 26,
+          "pageEnd": 27,
+          "headingPath": [
+            "Chapter 2: Theory of Consumer",
+            "2.6",
+            "S u m m a r y"
+          ]
+        },
+        {
+          "document": "ncert/12/economics/leec202.pdf",
+          "ordinal": 31,
+          "pageStart": 27,
+          "pageEnd": 27,
+          "headingPath": [
+            "Chapter 2: Theory of Consumer",
+            "2.6",
+            "Exercises Exercises"
+          ]
+        },
+        {
+          "document": "ncert/12/economics/leec202.pdf",
+          "ordinal": 32,
+          "pageStart": 27,
+          "pageEnd": 28,
+          "headingPath": [
+            "Chapter 2: Theory of Consumer",
+            "2.6",
+            "Exercises Exercises"
+          ]
+        },
+        {
+          "document": "ncert/12/economics/leec202.pdf",
+          "ordinal": 33,
+          "pageStart": 28,
+          "pageEnd": 28,
+          "headingPath": [
+            "Chapter 2: Theory of Consumer",
+            "2.6",
+            "Exercises Exercises"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T20:27:51.873Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If a consumer has a fixed income and wants to buy two goods, what determines the set of bundles she can afford?",
+      "choices": [
+        "The consumer's preferences for the goods",
+        "The prices of the goods and the consumer's income",
+        "The number of goods available in the market",
+        "The consumer's level of satisfaction"
+      ],
+      "answerIndex": 1,
+      "solution": "The set of bundles a consumer can afford is determined by the prices of the goods and the consumer's income because these define the total purchasing power available. Preferences, market availability, and satisfaction levels do not directly affect what can be purchased with a fixed amount of money.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक उपभोक्ता के पास एक निश्चित आय है और वह दो वस्तुएं खरीदना चाहता है, तो उसके द्वारा खरीदे जा सकने वाले बंडलों का सेट किसके द्वारा निर्धारित किया जाता है?",
+          "choices": [
+            "उपभोक्ता के वस्तुओं के प्रति पसंद",
+            "वस्तुओं की कीमतें और उपभोक्ता की आय",
+            "बाजार में उपलब्ध वस्तुओं की संख्या",
+            "उपभोक्ता के संतुष्टि के स्तर"
+          ],
+          "solution": "उपभोक्ता द्वारा खरीदे जा सकने वाले बंडलों का सेट वस्तुओं की कीमतें और उपभोक्ता की आय द्वारा निर्धारित किया जाता है क्योंकि ये उपलब्ध कुल खरीद शक्ति को परिभाषित करते हैं। पसंद, बाजार उपलब्धता और संतुष्टि के स्तर नकद राशि के साथ खरीदे जा सकने वाली वस्तुओं को प्रत्यक्ष रूप से प्रभावित नहीं करते हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate economic terminology in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका ग्राहकाचे निश्चित उत्पन्न असून तो दोन वस्तू खरेदी करू इच्छित असेल तर त्याला खरेदी करता येणारी बंडल्सची निश्चित करते काय?",
+          "choices": [
+            "ग्राहकाचे वस्तूंच्या प्रति आवड",
+            "वस्तूंच्या किंमती आणि ग्राहकाचे उत्पन्न",
+            "बाजारात उपलब्ध असलेल्या वस्तूंची संख्या",
+            "ग्राहकाच्या संतोषाचा पातळी"
+          ],
+          "solution": "ग्राहकाला खरेदी करता येणारी बंडल्सची निश्चित करते वस्तूंच्या किंमती आणि ग्राहकाचे उत्पन्न कारण हे त्याला उपलब्ध असलेल्या कुल खरेदी क्षमतेचे निश्चित करतात. आवड, बाजारात उपलब्धता आणि संतोषाच्या पातळी निश्चित रकमेने खरेदी करता येणारी वस्तूंच्या सीमेवर सीधा प्रभाव टाकत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi economic terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses preferences with affordability",
+        null,
+        "Ignores the role of income",
+        "Misunderstands the factors affecting affordability"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 1, as the budget set is determined by prices and income. The other options reflect common misconceptions about consumer choice theory.",
+      "sources": [
+        {
+          "document": "ncert/12/economics/leec202.pdf",
+          "ordinal": 8,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 2: Theory of Consumer",
+            "2.1"
+          ]
+        },
+        {
+          "document": "ncert/12/economics/leec202.pdf",
+          "ordinal": 9,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 2: Theory of Consumer",
+            "2.1"
+          ]
+        },
+        {
+          "document": "ncert/12/economics/leec202.pdf",
+          "ordinal": 10,
+          "pageStart": 8,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 2: Theory of Consumer",
+            "2.2"
+          ]
+        },
+        {
+          "document": "ncert/12/economics/leec202.pdf",
+          "ordinal": 11,
+          "pageStart": 8,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 2: Theory of Consumer",
+            "2.2"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T20:27:51.873Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "If the price of bananas increases and the consumer's income remains the same, what happens to the budget line?",
+      "choices": [
+        "It shifts inward",
+        "It shifts outward",
+        "It becomes steeper",
+        "It becomes flatter"
+      ],
+      "answerIndex": 2,
+      "solution": "If the price of bananas increases while the consumer's income stays the same, the budget line becomes steeper because the relative price of bananas compared to other goods has increased, leading to a steeper slope. An inward shift would occur if income decreased, and an outward shift would happen if income increased. A flatter budget line would result from a decrease in the price of bananas.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि केलों की कीमत बढ़ जाती है और उपभोक्ता की आय समान रहती है, तो बजट रेखा पर क्या प्रभाव पड़ता है?",
+          "choices": [
+            "यह अंदर की ओर खिसक जाती है",
+            "यह बाहर की ओर खिसक जाती है",
+            "यह अधिक ढालदार हो जाती है",
+            "यह अधिक चपटी हो जाती है"
+          ],
+          "solution": "केलों की कीमत बढ़ जाने पर जबकि उपभोक्ता की आय समान रहती है, तो बजट रेखा अधिक ढालदार हो जाती है क्योंकि केलों की तुलना में अन्य वस्तुओं की सापेक्ष कीमत बढ़ जाती है, जिसके कारण ढाल अधिक हो जाता है। आय में कमी होने पर अंदर की ओर खिसकाव होता है, और आय में वृद्धि होने पर बाहर की ओर खिसकाव होता है। केलों की कीमत में कमी होने पर बजट रेखा अधिक चपटी हो जाती है।",
+          "imageAlt": "एक ग्राफ जिसमें केले x-अक्ष पर और आम y-अक्ष पर हैं, एक बजट रेखा दिखाई दे रही है।",
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate economic terminology commonly found in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "बनानांच्या किंमतीत वाढ झाली आणि ग्राहकाच्या उत्पन्नात कोणतीही बदल होत नाही, तर बजेट रेषेवर काय परिणाम होतो?",
+          "choices": [
+            "ती आतमुखी खेचली जाते",
+            "ती बाहेरमुखी खेचली जाते",
+            "ती अधिक तीव्र होते",
+            "ती अधिक निम्न होते"
+          ],
+          "solution": "जेव्हा बनानांच्या किंमतीत वाढ होते आणि ग्राहकाच्या उत्पन्नात कोणतीही बदल होत नाही, तेव्हा बजेट रेषा अधिक तीव्र होते कारण बनानांच्या इतर वस्तूंच्या तुलनेत निरागत किंमत वाढली आहे, ज्यामुळे ढाल अधिक तीव्र होते. उत्पन्न कमी झाल्यास आतमुखी खेचली जाईल आणि उत्पन्न वाढल्यास बाहेरमुखी खेचली जाईल. बनानांच्या किंमतीत कमी झाल्यास बजेट रेषा अधिक निम्न होईल.",
+          "imageAlt": "बनाने आणि आंबे यांच्या अक्षांवर असलेल्या आलेखात बजेट रेषा दर्शवलेली आहे.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi economic terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": "A graph with bananas on the x-axis and mangoes on the y-axis, showing a budget line.",
+      "figure": {
+        "kind": "graph",
+        "spec": {
+          "x": {
+            "min": 0,
+            "max": 10,
+            "step": 1,
+            "label": "x"
+          },
+          "y": {
+            "min": 0,
+            "max": 10,
+            "step": 1,
+            "label": "y"
+          },
+          "grid": true,
+          "curves": [
+            {
+              "poly": [
+                1,
+                2,
+                3
+              ],
+              "label": "budgetLine"
+            }
+          ]
+        },
+        "labels": {
+          "x": {
+            "en": "Bananas"
+          },
+          "y": {
+            "en": "Mangoes"
+          },
+          "budgetLine": {
+            "en": "Budget Line",
+            "hi": "बजट रेखा",
+            "mr": "बजेट रेषा"
+          }
+        }
+      },
+      "needsFigure": true,
+      "distractorReason": [
+        "Confuses the effect of a price increase with a decrease in income",
+        "Student incorrectly thinks that higher prices increase purchasing power",
+        null,
+        "Confuses the effect of a price increase with making the budget line flatter"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is option 2 (It becomes steeper). An increase in the price of bananas, with income constant, makes the budget line steeper because the slope of the budget line is determined by the ratio of prices. The author's reasoning is sound and matches the standard economic theory.",
+      "sources": [
+        {
+          "document": "ncert/12/economics/leec202.pdf",
+          "ordinal": 12,
+          "pageStart": 9,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 2: Theory of Consumer",
+            "2.2"
+          ]
+        },
+        {
+          "document": "ncert/12/economics/leec202.pdf",
+          "ordinal": 13,
+          "pageStart": 10,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 2: Theory of Consumer",
+            "2.2"
+          ]
+        },
+        {
+          "document": "ncert/12/economics/leec202.pdf",
+          "ordinal": 14,
+          "pageStart": 11,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 2: Theory of Consumer",
+            "2.3"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T20:27:51.873Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "In a horizontal demand curve, what happens to the quantity demanded when the price is higher than the market price?",
+      "choices": [
+        "It increases",
+        "It decreases",
+        "It remains the same",
+        "It drops to zero"
+      ],
+      "answerIndex": 3,
+      "solution": "A horizontal demand curve represents perfectly elastic demand, where consumers will only buy the product at the market price. If the price is higher than the market price, consumers will not buy any of the product, causing the quantity demanded to drop to zero. Other options do not align with the characteristics of a perfectly elastic demand curve.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "क्षैतिज मांग वक्र में, जब मूल्य बाजार मूल्य से अधिक होता है तो मांगी गई मात्रा क्या होती है?",
+          "choices": [
+            "यह बढ़ जाता है",
+            "यह घट जाता है",
+            "यह एक ही रहता है",
+            "यह शून्य हो जाता है"
+          ],
+          "solution": "एक क्षैतिज मांग वक्र पूर्णतया लोचदार मांग का प्रतिनिधित्व करता है, जहां उपभोक्ता केवल बाजार मूल्य पर उत्पाद खरीदेंगे। यदि मूल्य बाजार मूल्य से अधिक होता है तो उपभोक्ता उत्पाद का कोई भी भाग खरीदेंगे नहीं, जिसके कारण मांगी गई मात्रा शून्य हो जाती है। अन्य विकल्प पूर्णतया लोचदार मांग वक्र के गुणधर्मों के अनुरूप नहीं हैं।",
+          "imageAlt": "एक समतल दर्पण का चित्र जिसमें आपतित किरण, परावर्तित किरण और अभिलंब दिखाए गए हैं।",
+          "critique": "Translation accurately reflects the original meaning, technical terms are standard in Hindi economics textbooks, and the correct answer remains in the same position.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "क्षैतिज मागणी वक्रावर, जेव्हा किंमत बाजार किंमतीपेक्षा जास्त असते तेव्हा मागितलेली प्रमाणात काय होते?",
+          "choices": [
+            "ते वाढते",
+            "ते घटते",
+            "ते एकसारखे रहाते",
+            "ते शून्यापर्यंत घसरते"
+          ],
+          "solution": "क्षैतिज मागणी वक्राचे आदर्श अल्पावधी मागणीचे प्रतिनिधित्व करते, जेथे ग्राहकांनी उत्पादन बाजार किंमतीवरच खरेदी करावे. जेव्हा किंमत बाजार किंमतीपेक्षा जास्त असते, तेव्हा ग्राहक उत्पादनाचा कोणताही भाग खरेदी करत नाहीत, ज्यामुळे मागितलेल्या प्रमाणात शून्यापर्यंत घसरण होते. इतर पर्याय आदर्श अल्पावधी मागणीच्या वैशिष्ट्यांशी जुमानत नाहीत.",
+          "imageAlt": "एक तलकर दर्पण दर्शविणारा आकृती, ज्यात एक अंतर्गत किरण, प्रतिबिंबित किरण आणि सामान्य असतात.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi economic terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": "A diagram showing a plane mirror with an incident ray, reflected ray, and normal.",
+      "figure": {
+        "kind": "diagram",
+        "spec": {
+          "parts": [
+            {
+              "part": "planeMirror",
+              "x": 50,
+              "y": 30,
+              "size": 20,
+              "labels": [
+                "mirror"
+              ]
+            },
+            {
+              "part": "planeMirror",
+              "x": 30,
+              "y": 30,
+              "size": 20,
+              "labels": [
+                "incidentRay",
+                "reflectedRay",
+                "normal"
+              ]
+            }
+          ]
+        },
+        "labels": {}
+      },
+      "needsFigure": true,
+      "distractorReason": [
+        "Believes that higher prices always lead to higher demand due to confusion with supply principles",
+        "Believes that demand curves slope upward when price is above equilibrium",
+        "Confuses a horizontal demand curve with a vertical one, where quantity remains constant regardless of price",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is about a horizontal demand curve, which represents perfectly elastic demand. The correct answer is that quantity demanded drops to zero when the price is higher than the market price. The author's reasoning aligns with this, and the misconceptions listed for the wrong options are plausible for students.",
+      "sources": [
+        {
+          "document": "ncert/12/economics/leec202.pdf",
+          "ordinal": 24,
+          "pageStart": 20,
+          "pageEnd": 22,
+          "headingPath": [
+            "Chapter 2: Theory of Consumer",
+            "2.6"
+          ]
+        },
+        {
+          "document": "ncert/12/economics/leec202.pdf",
+          "ordinal": 25,
+          "pageStart": 22,
+          "pageEnd": 22,
+          "headingPath": [
+            "Chapter 2: Theory of Consumer",
+            "2.6"
+          ]
+        },
+        {
+          "document": "ncert/12/economics/leec202.pdf",
+          "ordinal": 26,
+          "pageStart": 22,
+          "pageEnd": 23,
+          "headingPath": [
+            "Chapter 2: Theory of Consumer",
+            "2.6"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T20:27:51.873Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "A consumer has monotonic preferences. Which of the following bundles would she prefer to (10, 10)?",
+      "choices": [
+        "(10, 9)",
+        "(9, 10)",
+        "(9, 9)",
+        "(10, 11)"
+      ],
+      "answerIndex": 3,
+      "solution": "Monotonic preferences imply that more of a good is better. The bundle (10, 11) has more of good 2 than (10, 10), so it is preferred. The other options have less of at least one good, which would not be preferred under monotonic preferences.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक उपभोक्ता के पास एक एकरूप पसंद है। निम्नलिखित में से कौन-सा बंडल उसे (10, 10) से अधिक पसंद होगा?",
+          "choices": [
+            "(10, 9)",
+            "(9, 10)",
+            "(9, 9)",
+            "(10, 11)"
+          ],
+          "solution": "एकरूप पसंद का अर्थ है कि एक वस्तु की अधिक मात्रा बेहतर है। बंडल (10, 11) में (10, 10) की तुलना में वस्तु 2 की अधिक मात्रा है, इसलिए इसे पसंद किया जाएगा। अन्य विकल्पों में कम से कम एक वस्तु की मात्रा कम है, जो एकरूप पसंद के तहत पसंद नहीं की जाएगी।",
+          "imageAlt": null,
+          "critique": "Hindi translation accurately reflects the original English content with appropriate terminology used in Indian economics textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका ग्राहकाचे वर्धमान पसंती आहेत. खालीलपैकी कोणते बंडल (10, 10) च्या तुलनेत तिला आवडेल?",
+          "choices": [
+            "(10, 9)",
+            "(9, 10)",
+            "(9, 9)",
+            "(10, 11)"
+          ],
+          "solution": "वर्धमान पसंती असल्याने एखाद्या वस्तूचे जास्त असणे चांगले आहे. बंडल (10, 11) मध्ये (10, 10) च्या तुलनेत वस्तू 2 चे जास्त आहे, म्हणून तिला आवडेल. इतर विकल्पांमध्ये कमी एखाद्या वस्तूचे आहे, जे वर्धमान पसंती असलेल्या ग्राहकाला आवडणार नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi economic terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Assumes that (10, 9) is preferred, which has less of good 2",
+        "Assumes that (9, 10) is preferred, which has less of good 1",
+        "Assumes that (9, 9) is preferred, which has less of both goods",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies that monotonic preferences mean more of any good is preferred. (10, 11) has more of good 2, so it is the only bundle preferred to (10, 10). The other options have less of at least one good, which aligns with the misconceptions described.",
+      "sources": [
+        {
+          "document": "ncert/12/economics/leec202.pdf",
+          "ordinal": 30,
+          "pageStart": 26,
+          "pageEnd": 27,
+          "headingPath": [
+            "Chapter 2: Theory of Consumer",
+            "2.6",
+            "S u m m a r y"
+          ]
+        },
+        {
+          "document": "ncert/12/economics/leec202.pdf",
+          "ordinal": 31,
+          "pageStart": 27,
+          "pageEnd": 27,
+          "headingPath": [
+            "Chapter 2: Theory of Consumer",
+            "2.6",
+            "Exercises Exercises"
+          ]
+        },
+        {
+          "document": "ncert/12/economics/leec202.pdf",
+          "ordinal": 32,
+          "pageStart": 27,
+          "pageEnd": 28,
+          "headingPath": [
+            "Chapter 2: Theory of Consumer",
+            "2.6",
+            "Exercises Exercises"
+          ]
+        },
+        {
+          "document": "ncert/12/economics/leec202.pdf",
+          "ordinal": 33,
+          "pageStart": 28,
+          "pageEnd": 28,
+          "headingPath": [
+            "Chapter 2: Theory of Consumer",
+            "2.6",
+            "Exercises Exercises"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T20:27:51.873Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "If the marginal utility of a good is positive, what can be said about the total utility?",
+      "choices": [
+        "It is decreasing",
+        "It is increasing",
+        "It is zero",
+        "It is negative"
+      ],
+      "answerIndex": 1,
+      "solution": "When the marginal utility of a good is positive, it means that consuming an additional unit increases the total utility. This is because marginal utility represents the change in total utility from consuming one more unit. The other options are incorrect because they contradict the definition of marginal utility and its relationship to total utility.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि किसी वस्तु की सीमांत उपयोगिता धनात्मक है, तो कुल उपयोगिता के बारे में क्या कहा जा सकता है?",
+          "choices": [
+            "यह घट रही है",
+            "यह बढ़ रही है",
+            "यह शून्य है",
+            "यह ऋणात्मक है"
+          ],
+          "solution": "जब किसी वस्तु की सीमांत उपयोगिता धनात्मक होती है, तो इसका अर्थ है कि एक अतिरिक्त इकाई के उपभोग से कुल उपयोगिता बढ़ जाती है। यह इसलिए है क्योंकि सीमांत उपयोगिता एक अतिरिक्त इकाई के उपभोग से कुल उपयोगिता में परिवर्तन का प्रतिनिधित्व करती है। अन्य विकल्प गलत हैं क्योंकि वे सीमांत उपयोगिता के परिभाषा और कुल उपयोगिता से इसके संबंध के विरोधी हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. All options are correctly translated and maintain their logical relationship to the solution. The term 'सीमांत उपयोगिता' is the standard economic term used in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर एखाद्या वस्तूचे सीमांत उपयोग धनात्मक असेल, तर एकूण उपयोगाबद्दल काय म्हणायला शकता?",
+          "choices": [
+            "तो घसरत आहे",
+            "तो वाढत आहे",
+            "तो शून्य आहे",
+            "तो ऋणात्मक आहे"
+          ],
+          "solution": "जेव्हा एखाद्या वस्तूचे सीमांत उपयोग धनात्मक असते, तेव्हा एकूण उपयोग वाढतो. हे सीमांत उपयोग एका अतिरिक्त एकक उपभोग केल्यामुळे एकूण उपयोगात होणारा बदल दर्शवतो. इतर विकल्प असतात कारण ते सीमांत उपयोग आणि एकूण उपयोग यांच्या संबंधाच्या परिभाषेला विरोध करतात.",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains the original meaning, and uses standard Marathi economic terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the effect of positive marginal utility on total utility",
+        null,
+        "Fails to understand that positive marginal utility leads to an increase in total utility",
+        "Misinterprets the relationship between marginal utility and total utility"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly explains that positive marginal utility implies increasing total utility. All distractors reflect common misconceptions about the relationship between marginal and total utility.",
+      "sources": [
+        {
+          "document": "ncert/12/economics/leec202.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 1,
+          "headingPath": [
+            "Chapter 2: Theory of Consumer"
+          ]
+        },
+        {
+          "document": "ncert/12/economics/leec202.pdf",
+          "ordinal": 1,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 2: Theory of Consumer",
+            "2.1"
+          ]
+        },
+        {
+          "document": "ncert/12/economics/leec202.pdf",
+          "ordinal": 2,
+          "pageStart": 2,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 2: Theory of Consumer",
+            "2.1"
+          ]
+        },
+        {
+          "document": "ncert/12/economics/leec202.pdf",
+          "ordinal": 3,
+          "pageStart": 3,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 2: Theory of Consumer",
+            "2.1"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T20:27:51.873Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "According to the law of diminishing marginal utility, what happens to the marginal utility as the consumption of a commodity increases?",
+      "choices": [
+        "It increases",
+        "It decreases",
+        "It remains constant",
+        "It becomes zero"
+      ],
+      "answerIndex": 1,
+      "solution": "The law of diminishing marginal utility states that as the consumption of a commodity increases, the marginal utility derived from each additional unit decreases. This is because the satisfaction from each additional unit becomes less as the consumer consumes more. The other options do not align with this principle.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "अपने सीमांत उपयोग के नियम के अनुसार, जब किसी वस्तु की उपभोग बढ़ता है तो सीमांत उपयोग क्या होता है?",
+          "choices": [
+            "यह बढ़ता है",
+            "यह घटता है",
+            "यह अपरिवर्तित रहता है",
+            "यह शून्य हो जाता है"
+          ],
+          "solution": "सीमांत उपयोग के नियम के अनुसार जब किसी वस्तु की उपभोग बढ़ता है तो प्रत्येक अतिरिक्त इकाई से प्राप्त सीमांत उपयोग घट जाता है। इसका कारण यह है कि उपभोक्ता अधिक उपभोग करते समय प्रत्येक अतिरिक्त इकाई से संतुष्टि कम हो जाती है। अन्य विकल्प इस सिद्धांत के अनुरूप नहीं हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard economic terminology as found in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "कमी होत जाणारी सीमांत उपयोगाच्या कायद्यानुसार, एका वस्तूच्या उपभोगात वाढ झाल्यास सीमांत उपयोग काय होतो?",
+          "choices": [
+            "ते वाढते",
+            "ते कमी होते",
+            "ते अचल राहते",
+            "ते शून्य होते"
+          ],
+          "solution": "कमी होत जाणारी सीमांत उपयोगाच्या कायद्यानुसार, एका वस्तूच्या उपभोगात वाढ झाल्यास, प्रत्येक अतिरिक्त एककापासून मिळणारा सीमांत उपयोग कमी होतो. हे असे असते कारण उपभोक्ता जास्त उपभोग करत जातो तसे प्रत्येक अतिरिक्त एककापासून मिळणारा संतोष कमी होतो. इतर विकल्प या तत्त्वाशी जुमानत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi economic terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Misunderstands the concept of diminishing marginal utility",
+        null,
+        "Fails to recognize that marginal utility decreases with increased consumption",
+        "Confuses the law of diminishing marginal utility with other economic principles"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question correctly identifies the law of diminishing marginal utility, and the key is accurate. The reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/12/economics/leec202.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 1,
+          "headingPath": [
+            "Chapter 2: Theory of Consumer"
+          ]
+        },
+        {
+          "document": "ncert/12/economics/leec202.pdf",
+          "ordinal": 1,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 2: Theory of Consumer",
+            "2.1"
+          ]
+        },
+        {
+          "document": "ncert/12/economics/leec202.pdf",
+          "ordinal": 2,
+          "pageStart": 2,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 2: Theory of Consumer",
+            "2.1"
+          ]
+        },
+        {
+          "document": "ncert/12/economics/leec202.pdf",
+          "ordinal": 3,
+          "pageStart": 3,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 2: Theory of Consumer",
+            "2.1"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T20:27:51.873Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "At the consumer's optimum bundle, what must be true about the marginal rate of substitution (MRS) and the price ratio?",
+      "choices": [
+        "MRS is equal to the price ratio",
+        "MRS is greater than the price ratio",
+        "MRS is less than the price ratio",
+        "MRS is unrelated to the price ratio"
+      ],
+      "answerIndex": 0,
+      "solution": "At the consumer's optimum bundle, the marginal rate of substitution (MRS) must be equal to the price ratio. This is because the consumer is maximizing utility when the rate at which they are willing to trade one good for another matches the market's rate of exchange. If MRS were greater or less than the price ratio, the consumer could reallocate their spending to increase utility.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "उपभोक्ता के अधिकतम संतुलन बिंदु पर, सीमांत प्रतिस्थापन दर (MRS) और मूल्य अनुपात के बारे में क्या सही होना चाहिए?",
+          "choices": [
+            "MRS मूल्य अनुपात के बराबर होता है",
+            "MRS मूल्य अनुपात से अधिक होता है",
+            "MRS मूल्य अनुपात से कम होता है",
+            "MRS मूल्य अनुपात से संबंधित नहीं होता है"
+          ],
+          "solution": "उपभोक्ता के अधिकतम संतुलन बिंदु पर, सीमांत प्रतिस्थापन दर (MRS) के मूल्य अनुपात के बराबर होना चाहिए। ऐसा इसलिए है क्योंकि उपभोक्ता तब अपने उपयोगिता को अधिकतम करता है जब वह एक वस्तु के लिए दूसरे वस्तु के बदले के दर के साथ बाजार के दर के अनुरूप होता है। यदि MRS मूल्य अनुपात से अधिक या कम होता, तो उपभोक्ता अपने व्यय को फिर से विनियोजित करके उपयोगिता बढ़ा सकता था।",
+          "imageAlt": "एक अवतल दर्पण का चित्र जिसमें इसका मुख्य अक्ष, फोकस, केंद्र और ध्रुव दिखाए गए हैं।",
+          "critique": "The Hindi translation accurately reflects the original English question and solution, with appropriate economic terminology used in a Hindi-medium context.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "उपभोक्त्याच्या उत्कृष्ट वस्तुसंचात, सीमांत बदल प्रमाण (MRS) आणि किंमत गुणोत्तराबद्दल काय खरे असावे?",
+          "choices": [
+            "MRS किंमत गुणोत्तराबरोबर असतो",
+            "MRS किंमत गुणोत्तरापेक्षा जास्त असतो",
+            "MRS किंमत गुणोत्तरापेक्षा कमी असतो",
+            "MRS किंमत गुणोत्तराशी असंबंधित असतो"
+          ],
+          "solution": "उपभोक्त्याच्या उत्कृष्ट वस्तुसंचात, सीमांत बदल प्रमाण (MRS) चे किंमत गुणोत्तराबरोबर असावे. हे कारण उपभोक्ता त्यांचे उपयोग जेव्हा एका वस्तूचा दुसरीकडे बदल करण्याच्या दराने अधिकतम करतो तेव्हा असते. जर MRS किंमत गुणोत्तरापेक्षा जास्त किंवा कमी असेल तर उपभोक्ता आपल्या खर्चाचे पुनर्वितरण करून उपयोग वाढवू शकतो.",
+          "imageAlt": "एक अवतल दर्पणाचा आकृती ज्यात त्याचा प्रमुख अक्ष, फोकस, केंद्र आणि ध्रुव दर्शवले आहेत.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi economic terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": "A diagram showing a concave mirror with its principal axis, focus, centre, and pole.",
+      "figure": {
+        "kind": "diagram",
+        "spec": {
+          "parts": [
+            {
+              "part": "concaveMirror",
+              "x": 50,
+              "y": 30,
+              "size": 20,
+              "labels": [
+                "principalAxis",
+                "focus",
+                "centre",
+                "pole"
+              ],
+              "text": {
+                "principalAxis": "x",
+                "focus": "y",
+                "centre": "z",
+                "pole": "w"
+              }
+            }
+          ]
+        },
+        "labels": {
+          "principalAxis": {
+            "en": "Principal Axis",
+            "hi": "मुख्य अक्ष",
+            "mr": "प्रमुख अक्ष"
+          },
+          "focus": {
+            "en": "Focus",
+            "hi": "फोकस",
+            "mr": "फोकस"
+          },
+          "centre": {
+            "en": "Centre",
+            "hi": "केंद्र",
+            "mr": "केंद्र"
+          },
+          "pole": {
+            "en": "Pole",
+            "hi": "ध्रुव",
+            "mr": "ध्रुव"
+          }
+        }
+      },
+      "needsFigure": true,
+      "distractorReason": [
+        null,
+        "Believes MRS is greater than the price ratio based on a misunderstanding of the explanation",
+        "Believes MRS is less than the price ratio based on a misunderstanding of the explanation",
+        "Misinterprets the relationship between MRS and the price ratio"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is about consumer theory, specifically the condition for consumer equilibrium. The correct answer is that MRS equals the price ratio, which is consistent with standard microeconomic theory. The author's solution and reasoning are sound, and the distractors reflect common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/12/economics/leec202.pdf",
+          "ordinal": 12,
+          "pageStart": 9,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 2: Theory of Consumer",
+            "2.2"
+          ]
+        },
+        {
+          "document": "ncert/12/economics/leec202.pdf",
+          "ordinal": 13,
+          "pageStart": 10,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 2: Theory of Consumer",
+            "2.2"
+          ]
+        },
+        {
+          "document": "ncert/12/economics/leec202.pdf",
+          "ordinal": 14,
+          "pageStart": 11,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 2: Theory of Consumer",
+            "2.3"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T20:27:51.873Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "If a consumer wants to increase her consumption of bananas while keeping her expenditure the same, what must she do?",
+      "choices": [
+        "Buy fewer mangoes",
+        "Buy more mangoes",
+        "Keep the same quantity of mangoes",
+        "Buy more of both goods"
+      ],
+      "answerIndex": 0,
+      "solution": "To increase banana consumption without changing total spending, the consumer must reduce spending on another good, like mangoes. Buying more mangoes or keeping the same quantity would require more money, which is not allowed. Buying more of both goods would also increase expenditure. Therefore, buying fewer mangoes is the correct choice.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक उपभोक्ता अपने केलों के उपभोग को बढ़ाना चाहती है लेकिन अपने व्यय को समान रखना चाहती है, तो वह क्या करने के लिए मजबूर होगी?",
+          "choices": [
+            "कम आम खरीदें",
+            "अधिक आम खरीदें",
+            "आम की समान मात्रा बनाए रखें",
+            "दोनों वस्तुओं की अधिक मात्रा खरीदें"
+          ],
+          "solution": "केलों के उपभोग को बढ़ाए बिना कुल व्यय को बदले बिना रखने के लिए, उपभोक्ता को दूसरी वस्तु पर खर्च कम करना होगा, जैसे कि आम। आम अधिक खरीदना या समान मात्रा बनाए रखना अधिक धन की आवश्यकता होगी, जो अनुमति नहीं है। दोनों वस्तुओं की अधिक मात्रा खरीदना भी व्यय बढ़ाएगा। इसलिए, कम आम खरीदना सही विकल्प है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate economic terminology as found in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका ग्राहकाला तिच्या खर्चात बदल करण्याच्या बदल्यात बनाना खाण्याची खात्री करायची असेल, तर तिने काय करावे लागेल?",
+          "choices": [
+            "मोर ओंगडे कमी खरेदी करावे",
+            "मोर ओंगडे जास्त खरेदी करावे",
+            "मोर ओंगडे तितकेच प्रमाण ठेवावे",
+            "दोन्ही वस्तूंचे जास्त प्रमाण खरेदी करावे"
+          ],
+          "solution": "बनाना खाण्याची खात्री करायची असेल आणि खर्चात बदल करायचा नसेल, तर ग्राहकाने दुसरी वस्तू जसे मोर ओंगडे खर्च कमी करावा लागेल. मोर ओंगडे जास्त खरेदी करणे किंवा तितकेच प्रमाण ठेवणे खर्च वाढवेल. दोन्ही वस्तूंचे जास्त प्रमाण खरेदी करणे खर्च वाढवेल. म्हणून, मोर ओंगडे कमी खरेदी करणे ही योग्य निवड आहे.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the original meaning, and uses appropriate economic terminology in Marathi.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Thinks more of the other good is needed",
+        "Misunderstands the trade-off",
+        "Believes no change is required"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct. The consumer must give up some mangoes to buy more bananas while keeping expenditure constant, which aligns with the budget constraint. The reasoning for the wrong options reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/12/economics/leec202.pdf",
+          "ordinal": 8,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 2: Theory of Consumer",
+            "2.1"
+          ]
+        },
+        {
+          "document": "ncert/12/economics/leec202.pdf",
+          "ordinal": 9,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 2: Theory of Consumer",
+            "2.1"
+          ]
+        },
+        {
+          "document": "ncert/12/economics/leec202.pdf",
+          "ordinal": 10,
+          "pageStart": 8,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 2: Theory of Consumer",
+            "2.2"
+          ]
+        },
+        {
+          "document": "ncert/12/economics/leec202.pdf",
+          "ordinal": 11,
+          "pageStart": 8,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 2: Theory of Consumer",
+            "2.2"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T20:27:51.873Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
     }
   ]
 }

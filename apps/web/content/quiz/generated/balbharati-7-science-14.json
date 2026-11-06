@@ -976,6 +976,766 @@
       "generatedAt": "2026-11-02T04:25:53.430Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is the term used for a single kind of matter in scientific language?",
+      "choices": [
+        "Mixture",
+        "Compound",
+        "Element",
+        "Substance"
+      ],
+      "answerIndex": 3,
+      "solution": "A single kind of matter is referred to as a 'substance' because it consists of only one type of material with consistent properties. 'Mixture' is incorrect because it involves two or more substances combined without chemical bonding. 'Compound' is wrong because it is made of two or more elements chemically bonded. 'Element' is incorrect because it refers to a pure substance made of only one type of atom, not a general term for any single kind of matter.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "वैज्ञानिक भाषा में एक प्रकार के पदार्थ के लिए शब्द क्या है?",
+          "choices": [
+            "मिश्रण",
+            "यौगिक",
+            "तत्व",
+            "पदार्थ"
+          ],
+          "solution": "एक प्रकार के पदार्थ को 'पदार्थ' कहा जाता है क्योंकि इसमें केवल एक प्रकार के पदार्थ होते हैं जिनके स्थिर गुण होते हैं। 'मिश्रण' गलत है क्योंकि इसमें रासायनिक बंधन के बिना दो या अधिक पदार्थ मिले होते हैं। 'यौगिक' गलत है क्योंकि यह दो या अधिक तत्वों के रासायनिक बंधन से बना होता है। 'तत्व' गलत है क्योंकि यह केवल एक प्रकार के परमाणु से बना एक शुद्ध पदार्थ होता है, कोई सामान्य शब्द के रूप में कोई भी एक प्रकार के पदार्थ के लिए नहीं होता।",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the scientific terminology used in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "वैज्ञानिक भाषेत एक प्रकारच्या द्रव्याच्या नावासाठी वापरलेले शब्द काय आहे?",
+          "choices": [
+            "मिश्रण",
+            "यौगिक",
+            "तत्व",
+            "द्रव्य"
+          ],
+          "solution": "एक प्रकारच्या द्रव्याला 'द्रव्य' म्हणतात कारण ते एकाच प्रकारच्या पदार्थापासून बनलेले असते आणि त्याच्या गुणधर्म एकरूप असतात. 'मिश्रण' अयोग्य आहे कारण त्यात दोन किंवा अधिक द्रव्यांचे रासायनिक बंधन न ठेवता जोडले जाते. 'यौगिक' अयोग्य आहे कारण ते दोन किंवा अधिक तत्वांच्या रासायनिक बंधनाने बनलेले असते. 'तत्व' अयोग्य आहे कारण ते केवळ एक प्रकारच्या परमाणूंनी बनलेले शुद्ध द्रव्य असते, नियमितपणे कोणत्याही एक प्रकारच्या द्रव्याचे सामान्य नाव नसते.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the original meaning, and uses appropriate scientific terminology as used in Marathi textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses 'substance' with 'mixture'",
+        "Confuses 'substance' with 'compound'",
+        "Confuses 'substance' with 'element'",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-constructed and the solution is correct. The term 'substance' is indeed used to describe a single kind of matter, and the author's reasoning for the distractors aligns with common student misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 102,
+          "pageStart": 102,
+          "pageEnd": 102,
+          "headingPath": [
+            "14. Elements, Compounds and Mixtures"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 103,
+          "pageStart": 103,
+          "pageEnd": 103,
+          "headingPath": [
+            "14. Elements, Compounds and Mixtures"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 104,
+          "pageStart": 103,
+          "pageEnd": 104,
+          "headingPath": [
+            "14. Elements, Compounds and Mixtures"
+          ]
+        }
+      ],
+      "edition": "First Edition 2017",
+      "generatedAt": "2026-10-31T17:26:17.926Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "Which of the following is an example of a compound?",
+      "choices": [
+        "Sugar",
+        "Iron",
+        "Carbon",
+        "Oxygen"
+      ],
+      "answerIndex": 0,
+      "solution": "Sugar is a compound because it is made up of different elements chemically combined. Iron and oxygen are elements, while carbon is also an element. The correct answer is sugar.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन एक यौगिक का उदाहरण है?",
+          "choices": [
+            "शर्करा",
+            "लोहा",
+            "कार्बन",
+            "ऑक्सीजन"
+          ],
+          "solution": "शर्करा एक यौगिक है क्योंकि यह विभिन्न तत्वों से रासायनिक रूप से जुड़ा होता है। लोहा और ऑक्सीजन तत्व हैं, जबकि कार्बन भी एक तत्व है। सही उत्तर शर्करा है।",
+          "imageAlt": null,
+          "critique": "Translation accurately reflects the original meaning with appropriate Hindi scientific terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते एक यौगिकाचे उदाहरण आहे?",
+          "choices": [
+            "शर्करा",
+            "लोह",
+            "कार्बन",
+            "ऑक्सीजन"
+          ],
+          "solution": "शर्करा एक यौगिक आहे कारण ती वेगवेगळ्या घटकांच्या रासायनिक एकत्रित बनलेली असते. लोह आणि ऑक्सीजन घटक असतात, तर कार्बन देखील घटक आहे. योग्य उत्तर शर्करा आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses a compound with a metal",
+        "Thinks all substances are elements",
+        "Confuses a compound with an element"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct. Sugar is a compound (sucrose, C12H22O11), while iron, carbon, and oxygen are elements. The reasoning aligns with the correct scientific understanding.",
+      "sources": [
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 105,
+          "pageStart": 104,
+          "pageEnd": 105,
+          "headingPath": [
+            "14. Elements, Compounds and Mixtures"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 106,
+          "pageStart": 105,
+          "pageEnd": 106,
+          "headingPath": [
+            "14. Elements, Compounds and Mixtures"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 107,
+          "pageStart": 106,
+          "pageEnd": 107,
+          "headingPath": [
+            "14. Elements, Compounds and Mixtures"
+          ]
+        }
+      ],
+      "edition": "First Edition 2017",
+      "generatedAt": "2026-10-31T17:26:17.926Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "Which of the following is made of only one type of atom?",
+      "choices": [
+        "Water",
+        "Carbon dioxide",
+        "Oxygen gas",
+        "Salt"
+      ],
+      "answerIndex": 2,
+      "solution": "Oxygen gas is made of only one type of atom because it is an element, and elements consist of a single type of atom. Water and carbon dioxide are compounds made of different types of atoms, and salt is a compound composed of sodium and chlorine atoms.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन एक ही प्रकार के परमाणु से बना हुआ है?",
+          "choices": [
+            "पानी",
+            "कार्बन डाइऑक्साइड",
+            "ऑक्सीजन गैस",
+            "नमक"
+          ],
+          "solution": "ऑक्सीजन गैस केवल एक ही प्रकार के परमाणु से बनी हुई है क्योंकि यह एक तत्व है और तत्वों में केवल एक प्रकार के परमाणु होते हैं। पानी और कार्बन डाइऑक्साइड विभिन्न प्रकार के परमाणुओं से बने यौगिक हैं और नमक सोडियम और क्लोरीन परमाणुओं से बना एक यौगिक है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate scientific terminology in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते फक्त एक प्रकारचे परमाणूने बनलेले आहे?",
+          "choices": [
+            "पाणी",
+            "कार्बन डायऑक्साइड",
+            "ऑक्सीजन वायू",
+            "खारा"
+          ],
+          "solution": "ऑक्सीजन वायू फक्त एक प्रकारचे परमाणूने बनलेला आहे कारण तो एक घटक आहे आणि घटकांमध्ये फक्त एक प्रकारचे परमाणू असतात. पाणी आणि कार्बन डायऑक्साइड हे विविध प्रकारचे परमाणूंनी बनलेले अणु आहेत, आणि खारा हा सोडियम आणि क्लोरिनच्या परमाणूंनी बनलेला अणू आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Chooses a compound instead of an element",
+        "Chooses a compound instead of an element",
+        null,
+        "Chooses a compound instead of an element"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-constructed and the solution is correct. Oxygen gas (O₂) is an element composed of only one type of atom, while the other options are compounds. The author's reasoning for the distractors is valid, as students often confuse compounds with elements.",
+      "sources": [
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 102,
+          "pageStart": 102,
+          "pageEnd": 102,
+          "headingPath": [
+            "14. Elements, Compounds and Mixtures"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 103,
+          "pageStart": 103,
+          "pageEnd": 103,
+          "headingPath": [
+            "14. Elements, Compounds and Mixtures"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 104,
+          "pageStart": 103,
+          "pageEnd": 104,
+          "headingPath": [
+            "14. Elements, Compounds and Mixtures"
+          ]
+        }
+      ],
+      "edition": "First Edition 2017",
+      "generatedAt": "2026-10-31T17:26:17.926Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "What happens when a magnesium ribbon is burned in a flame?",
+      "choices": [
+        "It turns black",
+        "It produces a loud sound",
+        "It forms a white powder",
+        "It becomes softer"
+      ],
+      "answerIndex": 2,
+      "solution": "When a magnesium ribbon is burned in a flame, it forms a white powder. This is a chemical reaction. The correct answer is it forms a white powder.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "जब मैग्नीशियम की पट्टी एक ज्वाला में जलती है तो क्या होता है?",
+          "choices": [
+            "यह काली हो जाती है",
+            "यह एक तीव्र ध्वनि उत्पन्न करती है",
+            "यह एक सफेद चूर्ण बन जाती है",
+            "यह नरम हो जाती है"
+          ],
+          "solution": "जब मैग्नीशियम की पट्टी एक ज्वाला में जलती है, तो यह एक सफेद चूर्ण बन जाती है। यह एक रासायनिक अभिक्रिया है। सही उत्तर यह है कि यह एक सफेद चूर्ण बन जाती है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriately translated.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जेव्हा मॅग्नेशियम बार एका ज्वालेत जाळली जाते तेव्हा काय होते?",
+          "choices": [
+            "ती काळी होते",
+            "ती जास्त आवाज करते",
+            "ती एका सफेद चूर्णाची निर्मिती करते",
+            "ती नरम होते"
+          ],
+          "solution": "जेव्हा मॅग्नेशियम बार एका ज्वालेत जाळली जाते तेव्हा ती सफेद चूर्णाची निर्मिती करते. हे रासायनिक अभिक्रिया आहे. योग्य उत्तर ती सफेद चूर्णाची निर्मिती करते आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Thinks the ribbon turns black",
+        "Confuses sonority with a chemical change",
+        null,
+        "Thinks the ribbon becomes softer"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 2, as magnesium burns with a bright white light and forms magnesium oxide, a white powder. The distractors reflect common misconceptions about the physical and chemical changes involved.",
+      "sources": [
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 105,
+          "pageStart": 104,
+          "pageEnd": 105,
+          "headingPath": [
+            "14. Elements, Compounds and Mixtures"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 106,
+          "pageStart": 105,
+          "pageEnd": 106,
+          "headingPath": [
+            "14. Elements, Compounds and Mixtures"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 107,
+          "pageStart": 106,
+          "pageEnd": 107,
+          "headingPath": [
+            "14. Elements, Compounds and Mixtures"
+          ]
+        }
+      ],
+      "edition": "First Edition 2017",
+      "generatedAt": "2026-10-31T17:26:17.926Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "What is the term used to describe the smallest particles of substances?",
+      "choices": [
+        "Molecules",
+        "Atoms",
+        "Ions",
+        "Compounds"
+      ],
+      "answerIndex": 1,
+      "solution": "Atoms are the smallest particles of substances that retain their chemical identity. Molecules are groups of atoms bonded together, ions are atoms or molecules with a charge, and compounds are substances formed by chemically combining two or more elements. Atoms are the fundamental building blocks of all matter.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "किस पद का उपयोग पदार्थों के सबसे छोटे कणों के लिए किया जाता है?",
+          "choices": [
+            "अणु",
+            "परमाणु",
+            "आयन",
+            "यौगिक"
+          ],
+          "solution": "परमाणु पदार्थों के सबसे छोटे कण होते हैं जो अपनी रासायनिक पहचान बरकरार रखते हैं। अणु परमाणुओं के समूह होते हैं जो एक दूसरे से बंधे रहते हैं, आयन परमाणु या अणु होते हैं जिनमें आवेश होता है और यौगिक दो या अधिक तत्वों के रासायनिक रूप से संयोजन से बने पदार्थ होते हैं। परमाणु सभी पदार्थों के मूल निर्माण ब्लॉक होते हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi scientific terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "पदार्थांच्या सर्वात लहान कणांच्या नावाचा शब्द काय आहे?",
+          "choices": [
+            "अणू",
+            "परमाणू",
+            "आयन",
+            "यौगिक"
+          ],
+          "solution": "परमाणू पदार्थांच्या सर्वात लहान कणांच्या नावाचा शब्द आहे जे त्यांची रासायनिक ओळख टिकवून ठेवतात. अणू अणूंच्या बंधनात बनलेल्या गटांच्या नावाचा शब्द आहे, आयन परमाणू किंवा अणू ज्यांचा आवेश असतो, आणि यौगिक दोन किंवा अधिक घटकांच्या रासायनिक जोडणीने बनलेल्या पदार्थांच्या नावाचा शब्द आहे. परमाणू हे सर्व पदार्थांच्या मूलभूत बांधकाम कणांच्या नावाचा शब्द आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the scientific terminology used in Marathi textbooks. The solution correctly identifies 'Atoms' as the correct answer and explains why the other options are incorrect.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Chooses a term for a group of atoms",
+        null,
+        "Believes that charged particles are the smallest unit of matter",
+        "Student thinks compounds are the basic unit of matter, not realizing they are made of atoms"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 'Atoms' as the smallest particles of substances. The author's reasoning is sound, and the misconceptions listed for the wrong options are plausible for students at this level.",
+      "sources": [
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 102,
+          "pageStart": 102,
+          "pageEnd": 102,
+          "headingPath": [
+            "14. Elements, Compounds and Mixtures"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 103,
+          "pageStart": 103,
+          "pageEnd": 103,
+          "headingPath": [
+            "14. Elements, Compounds and Mixtures"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 104,
+          "pageStart": 103,
+          "pageEnd": 104,
+          "headingPath": [
+            "14. Elements, Compounds and Mixtures"
+          ]
+        }
+      ],
+      "edition": "First Edition 2017",
+      "generatedAt": "2026-10-31T17:26:17.926Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "Which of the following is a metalloid?",
+      "choices": [
+        "Sulfur",
+        "Phosphorus",
+        "Silicon",
+        "Chlorine"
+      ],
+      "answerIndex": 2,
+      "solution": "Silicon is a metalloid because it shows properties of both metals and non-metals. Sulfur, phosphorus, and chlorine are non-metals.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन एक अर्धधातु है?",
+          "choices": [
+            "सल्फर",
+            "फॉस्फोरस",
+            "सिलिकॉन",
+            "क्लोरीन"
+          ],
+          "solution": "सिलिकॉन एक अर्धधातु है क्योंकि यह धातुओं और अधातुओं दोनों के गुण प्रदर्शित करता है। सल्फर, फॉस्फोरस और क्लोरीन अधातु हैं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, technical terms are correctly used in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणता अल्पधातू आहे?",
+          "choices": [
+            "सल्फर",
+            "फॉस्फरस",
+            "सिलिकॉन",
+            "क्लोरिन"
+          ],
+          "solution": "सिलिकॉन अल्पधातू आहे कारण तो धातू आणि अधातू दोन्हीच्या गुणांचा दर्शवतो. सल्फर, फॉस्फरस आणि क्लोरिन अधातू आहेत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi technical terms used for elements and concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "A non-metal",
+        "A non-metal",
+        null,
+        "Confuses metalloids with metals"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is Silicon (option 2), which is a metalloid. The other options are non-metals, and the author's reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 105,
+          "pageStart": 104,
+          "pageEnd": 105,
+          "headingPath": [
+            "14. Elements, Compounds and Mixtures"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 106,
+          "pageStart": 105,
+          "pageEnd": 106,
+          "headingPath": [
+            "14. Elements, Compounds and Mixtures"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 107,
+          "pageStart": 106,
+          "pageEnd": 107,
+          "headingPath": [
+            "14. Elements, Compounds and Mixtures"
+          ]
+        }
+      ],
+      "edition": "First Edition 2017",
+      "generatedAt": "2026-10-31T17:26:17.926Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Which of the following statements about elements is correct?",
+      "choices": [
+        "They can be broken down into simpler substances by chemical means",
+        "They are made of only one type of atom",
+        "They are made of two or more different elements",
+        "They are made of two or more substances"
+      ],
+      "answerIndex": 1,
+      "solution": "Elements are defined as substances made of only one type of atom, which is why this statement is correct. Elements cannot be broken down into simpler substances by chemical means, and they are not composed of multiple elements or substances.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा कथन तत्वों के बारे में सही है?",
+          "choices": [
+            "उन्हें रासायनिक विधियों द्वारा सरल अवयवों में अलग किया जा सकता है",
+            "वे केवल एक प्रकार के परमाणु से बने होते हैं",
+            "वे दो या अधिक विभिन्न तत्वों से बने होते हैं",
+            "वे दो या अधिक अवयवों से बने होते हैं"
+          ],
+          "solution": "तत्वों को केवल एक प्रकार के परमाणु से बने हुए पदार्थ के रूप में परिभाषित किया जाता है, इसलिए यह कथन सही है। तत्वों को रासायनिक विधियों द्वारा सरल अवयवों में अलग नहीं किया जा सकता है, और वे कई तत्वों या अवयवों से निर्मित नहीं होते हैं।",
+          "imageAlt": null,
+          "critique": "Hindi translation accurately reflects the original English question and solution, with appropriate scientific terminology used in a Hindi-medium context.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी घटकांबद्दलचा कोणता विधान बरोबर आहे?",
+          "choices": [
+            "त्यांना रासायनिक पद्धतीने सोपे केले जाऊ शकते",
+            "ते केवळ एक प्रकारच्या परमाणूंनी बनलेले असतात",
+            "ते दोन किंवा अधिक वेगवेगळ्या घटकांनी बनलेले असतात",
+            "ते दोन किंवा अधिक द्रव्यांनी बनलेले असतात"
+          ],
+          "solution": "घटक म्हणजे केवळ एक प्रकारच्या परमाणूंनी बनलेले द्रव्य असतात, ज्यामुळे हे विधान बरोबर आहे. घटक रासायनिक पद्धतीने सोपे करता येत नाहीत, आणि ते अनेक घटक किंवा द्रव्यांनी बनलेले नसतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses elements with compounds",
+        null,
+        "Chooses a statement about compounds",
+        "Chooses a definition of a mixture"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is option 1, as elements are defined as substances made of only one type of atom. The other options confuse elements with compounds or mixtures, which aligns with the author's reasoning.",
+      "sources": [
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 102,
+          "pageStart": 102,
+          "pageEnd": 102,
+          "headingPath": [
+            "14. Elements, Compounds and Mixtures"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 103,
+          "pageStart": 103,
+          "pageEnd": 103,
+          "headingPath": [
+            "14. Elements, Compounds and Mixtures"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 104,
+          "pageStart": 103,
+          "pageEnd": 104,
+          "headingPath": [
+            "14. Elements, Compounds and Mixtures"
+          ]
+        }
+      ],
+      "edition": "First Edition 2017",
+      "generatedAt": "2026-10-31T17:26:17.926Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "What happens when a compound is formed from its constituent elements?",
+      "choices": [
+        "It gains new properties",
+        "It loses all its properties",
+        "It retains the properties of its elements",
+        "It has properties different from its elements"
+      ],
+      "answerIndex": 3,
+      "solution": "When a compound is formed, it has properties different from its constituent elements. For example, water, a compound, has properties different from hydrogen and oxygen. This is because the elements are chemically combined in a new way.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "जब कोई यौगिक अपने घटक तत्वों से बनता है तो क्या होता है?",
+          "choices": [
+            "इसके नए गुण हो जाते हैं",
+            "इसके सभी गुण खो जाते हैं",
+            "इसके तत्वों के गुण बरकरार रहते हैं",
+            "इसके गुण इसके तत्वों से अलग होते हैं"
+          ],
+          "solution": "जब कोई यौगिक बनता है, तो इसके गुण अपने घटक तत्वों से अलग होते हैं। उदाहरण के लिए, पानी, एक यौगिक, हाइड्रोजन और ऑक्सीजन के गुणों से अलग होता है। इसका कारण यह है कि तत्व नए तरीके से रासायनिक रूप से जुड़े होते हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate scientific terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका यौगिकाच्या घटक घटकांपासून तयार होत असताना काय होते?",
+          "choices": [
+            "त्याला नवीन गुणधर्म मिळतात",
+            "त्याला सर्व गुणधर्म गमवितात",
+            "त्याला त्याच्या घटकांचे गुणधर्म टिकतात",
+            "त्याला त्याच्या घटकांपेक्षा वेगळे गुणधर्म असतात"
+          ],
+          "solution": "एका यौगिकाच्या तयार होत असताना त्याला त्याच्या घटक घटकांपेक्षा वेगळे गुणधर्म असतात. उदाहरणार्थ, जल, एका यौगिकाचे, हायड्रोजन आणि ऑक्सिजनपेक्षा वेगळे गुणधर्म असतात. हे त्यामुळे होते कारण घटक नवीन प्रकारे रासायनिकरित्या जोडले जातात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the scientific meaning. The term 'यौगिक' is the standard Marathi term for 'compound' and 'गुणधर्म' is the correct term for 'properties'.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Thinks compounds retain properties of elements",
+        "Thinks compounds lose properties of elements",
+        "Confuses compounds with mixtures",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 3, as compounds have properties different from their constituent elements. The author's reasoning is sound and aligns with scientific understanding. The distractors reflect common misconceptions about compounds and mixtures.",
+      "sources": [
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 105,
+          "pageStart": 104,
+          "pageEnd": 105,
+          "headingPath": [
+            "14. Elements, Compounds and Mixtures"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 106,
+          "pageStart": 105,
+          "pageEnd": 106,
+          "headingPath": [
+            "14. Elements, Compounds and Mixtures"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 107,
+          "pageStart": 106,
+          "pageEnd": 107,
+          "headingPath": [
+            "14. Elements, Compounds and Mixtures"
+          ]
+        }
+      ],
+      "edition": "First Edition 2017",
+      "generatedAt": "2026-10-31T17:26:17.926Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
     }
   ]
 }

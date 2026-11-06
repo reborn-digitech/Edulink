@@ -386,6 +386,576 @@
       "generatedAt": "2026-10-28T06:08:21.136Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Why did the guard ant let the first ant in?",
+      "choices": [
+        "Because the guard ant was tired",
+        "Because the first ant had the same smell as the others",
+        "Because the first ant was stronger",
+        "Because the first ant was a friend"
+      ],
+      "answerIndex": 1,
+      "solution": "Ants use chemical signals to recognize members of their colony. The guard ant allowed the first ant in because it had the same smell as the others, which is how ants identify friends. The other options do not relate to how ants communicate or recognize each other.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "गार्ड एंट ने पहले एंट को क्यों अंदर जाने दिया?",
+          "choices": [
+            "क्योंकि गार्ड एंट थक गया था",
+            "क्योंकि पहले एंट के अन्य के समान गंध थी",
+            "क्योंकि पहले एंट मजबूत था",
+            "क्योंकि पहले एंट एक दोस्त था"
+          ],
+          "solution": "एंट अपने झुंड के सदस्यों की पहचान करने के लिए रासायनिक संकेतों का उपयोग करते हैं। गार्ड एंट ने पहले एंट को अंदर जाने की अनुमति दे दी क्योंकि उसकी गंध अन्य के समान थी, जो एंट के दोस्तों की पहचान करने का तरीका है। अन्य विकल्प एंट के आपसी संचार या पहचान के तरीके से संबंधित नहीं हैं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains original meaning, and uses appropriate Hindi terminology for ant behavior.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "रक्षक चावला लहान चावल्याला का प्रवेश दिला?",
+          "choices": [
+            "कारण रक्षक चावला थकलेला होता",
+            "कारण लहान चावल्याला इतरांसारखा वास होता",
+            "कारण लहान चावला जबरदस्त होता",
+            "कारण लहान चावला मित्र होता"
+          ],
+          "solution": "चावल्यांनी रासायनिक संकेतांचा वापर आपल्या समाजातील सदस्यांची ओळख करण्यासाठी केला जातो. रक्षक चावल्याने लहान चावल्याला प्रवेश दिला कारण त्याला इतरांसारखा वास होता, हे चावल्यांच्या मित्र ओळखण्याचा उपाय आहे. इतर विकल्प चावल्यांच्या संदेश देण्याच्या किंवा ओळखण्याच्या प्रक्रियेशी संबंधित नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for ants and their behavior.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "A pupil might think the guard ant let the ant in because it was lazy or not paying attention",
+        null,
+        "students may think strength determines acceptance in ant groups",
+        "Believes ants recognize friends by sight rather than smell"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 1, as the passage explains that ants recognize each other by smell. The other options reflect common misconceptions about ant behavior.",
+      "sources": [
+        {
+          "document": "ncert/5/environmental-studies/eeap101.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 1: Super Senses"
+          ]
+        },
+        {
+          "document": "ncert/5/environmental-studies/eeap101.pdf",
+          "ordinal": 1,
+          "pageStart": 3,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 1: Super Senses"
+          ]
+        },
+        {
+          "document": "ncert/5/environmental-studies/eeap101.pdf",
+          "ordinal": 2,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 1: Super Senses"
+          ]
+        }
+      ],
+      "edition": "2024 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-23T01:04:56.199Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Why do tigers have sensitive whiskers?",
+      "choices": [
+        "To sense vibrations in the air",
+        "To see in the dark",
+        "To hear sounds",
+        "To smell other tigers"
+      ],
+      "answerIndex": 0,
+      "solution": "Tigers have sensitive whiskers to detect vibrations in the air, which helps them sense their surroundings. Whiskers are not used for seeing in the dark, as vision in low light is handled by other parts of the eye. They also do not function as ears or for smelling, as those are handled by different sensory structures.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "बाघों के संवेदनशील बाल क्यों होते हैं?",
+          "choices": [
+            "हवा में कंपन का अनुभव करने के लिए",
+            "अंधेरे में देखने के लिए",
+            "ध्वनि सुनने के लिए",
+            "अन्य बाघों की गंध महसूस करने के लिए"
+          ],
+          "solution": "बाघों के संवेदनशील बाल हवा में कंपन का अनुभव करने के लिए होते हैं, जो उन्हें अपने आसपास के वातावरण का अनुभव करने में सहायता करते हैं। बाल अंधेरे में देखने के लिए उपयोग नहीं किए जाते हैं, क्योंकि कम प्रकाश में दृष्टि आंख के अन्य भागों द्वारा संभाली जाती है। वे कान के रूप में भी काम नहीं करते हैं और गंध महसूस करने के लिए भी नहीं, क्योंकि वे अलग-अलग संवेदनशील संरचनाओं द्वारा संभाले जाते हैं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, with appropriate Hindi terminology used for biological concepts.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "बाघांच्या अतिसंवेदनशील बोंबड्या का असतात?",
+          "choices": [
+            "हवेतील कंपने ओळखण्यासाठी",
+            "गडगडत असताना दिसण्यासाठी",
+            "आवाज ऐकण्यासाठी",
+            "इतर बाघांचे वास ओळखण्यासाठी"
+          ],
+          "solution": "बाघांच्या अतिसंवेदनशील बोंबड्या हवेतील कंपने ओळखण्यासाठी असतात, जे त्यांना आजूबाजूचे ज्ञान देते. बोंबड्या गडगडत असताना दिसण्यासाठी वापरल्या जात नाहीत, कारण कमी ज्योतीत दृष्टी ही डोळ्याच्या इतर भागांकडून व्यवस्थापित केली जाते. त्या ऐकण्यासाठी किंवा वास ओळखण्यासाठी काम करत नाहीत, कारण ते वेगळ्या अंगांच्या संवेदना संरचनांमध्ये व्यवस्थापित केले जातात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for biological features.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "confuses the function of whiskers with other senses",
+        "refers to the tiger's vision",
+        "refers to the tiger's hearing abilities"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 0, as whiskers are indeed used to sense vibrations. The other options represent common misconceptions about tiger senses.",
+      "sources": [
+        {
+          "document": "ncert/5/environmental-studies/eeap101.pdf",
+          "ordinal": 3,
+          "pageStart": 7,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 1: Super Senses"
+          ]
+        },
+        {
+          "document": "ncert/5/environmental-studies/eeap101.pdf",
+          "ordinal": 4,
+          "pageStart": 10,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 1: Super Senses"
+          ]
+        },
+        {
+          "document": "ncert/5/environmental-studies/eeap101.pdf",
+          "ordinal": 5,
+          "pageStart": 11,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 1: Super Senses"
+          ]
+        }
+      ],
+      "edition": "2024 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-23T01:04:56.199Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the purpose of a langur's warning call?",
+      "choices": [
+        "To attract a mate",
+        "To find food",
+        "To warn of danger",
+        "To communicate with other animals"
+      ],
+      "answerIndex": 2,
+      "solution": "A langur's warning call is used to alert others in the group about potential threats, such as predators. This behavior helps the group stay safe by responding to danger. Attracting a mate, finding food, and general communication are not the specific functions of this type of call.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक लंगूर के चिंता के आवाज का उद्देश्य क्या है?",
+          "choices": [
+            "एक जोड़ा आकर्षित करना",
+            "भोजन खोजना",
+            "खतरे की चेतावनी देना",
+            "अन्य जानवरों के साथ संचार करना"
+          ],
+          "solution": "एक लंगूर के चिंता के आवाज का उपयोग समूह में अन्य लोगों को संभावित खतरों, जैसे शिकारी के बारे में चेतावनी देने के लिए किया जाता है। इस व्यवहार से समूह के सुरक्षित रहने में मदद मिलती है खतरे के प्रति प्रतिक्रिया करने के लिए। एक जोड़ा आकर्षित करना, भोजन खोजना और सामान्य संचार इस प्रकार के आवाज के विशिष्ट कार्य नहीं हैं।",
+          "imageAlt": null,
+          "critique": "Translation accurately preserves meaning and technical terms; correct answer remains option 2.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "लंगूरच्या चेतावणीच्या आवाजाचा उद्देश काय आहे?",
+          "choices": [
+            "एका जोडीदाराला आकर्षित करणे",
+            "खाद्य शोधणे",
+            "गंभीर धोक्याची चेतावणी देणे",
+            "इतर प्राण्यांशी संपर्क साधणे"
+          ],
+          "solution": "लंगूरच्या चेतावणीच्या आवाजाचा उद्देश समूहातील इतर लोकांना जोखमीची चेतावणी देणे आहे, जसे की शिकारी. हे वर्तन समूहाला सुरक्षित ठेवण्यास मदत करते. जोडीदाराला आकर्षित करणे, खाद्य शोधणे आणि सामान्य संप्रेषण हे या प्रकारच्या आवाजाचे विशिष्ट कार्य नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for biological concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the purpose of animal calls",
+        "Ignores the specific warning aspect",
+        null,
+        "Believes all animal calls are for communication"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 2, as the passage explicitly states that the langur's warning call is to alert others of danger. The other options represent common misconceptions about animal communication.",
+      "sources": [
+        {
+          "document": "ncert/5/environmental-studies/eeap101.pdf",
+          "ordinal": 3,
+          "pageStart": 7,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 1: Super Senses"
+          ]
+        },
+        {
+          "document": "ncert/5/environmental-studies/eeap101.pdf",
+          "ordinal": 4,
+          "pageStart": 10,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 1: Super Senses"
+          ]
+        },
+        {
+          "document": "ncert/5/environmental-studies/eeap101.pdf",
+          "ordinal": 5,
+          "pageStart": 11,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 1: Super Senses"
+          ]
+        }
+      ],
+      "edition": "2024 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-23T01:04:56.199Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If a dog smells a person, what can it determine?",
+      "choices": [
+        "The person's age",
+        "The person's weight",
+        "Whether the person is a friend or a stranger",
+        "The person's favourite food"
+      ],
+      "answerIndex": 2,
+      "solution": "Dogs can determine whether a person is a friend or a stranger based on scent, as their sense of smell allows them to recognize familiar or unfamiliar individuals. Other options like age, weight, or favorite food cannot be determined through smell alone. There is no scientific evidence that dogs can detect such specific personal details through scent.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "अगर एक कुत्ता किसी व्यक्ति की गंध सुगंधित करता है, तो यह क्या निर्धारित कर सकता है?",
+          "choices": [
+            "व्यक्ति की आयु",
+            "व्यक्ति का वजन",
+            "क्या व्यक्ति दोस्त है या अजनबी",
+            "व्यक्ति का पसंदीदा भोजन"
+          ],
+          "solution": "कुत्ते गंध के आधार पर यह निर्धारित कर सकते हैं कि क्या व्यक्ति दोस्त है या अजनबी, क्योंकि उनकी गंध की भांति संवेदना उन्हें परिचित या अपरिचित व्यक्तियों की पहचान करने की अनुमति देती है। आयु, वजन या पसंदीदा भोजन जैसे अन्य विकल्प गंध के आधार पर निर्धारित नहीं किए जा सकते हैं। गंध के माध्यम से ऐसी विशिष्ट व्यक्तिगत विवरणों के निर्धारण के लिए कोई वैज्ञानिक साक्ष्य नहीं है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर कुत्रा एका माणसाला वास घेईल तर तो काय ठरवू शकतो?",
+          "choices": [
+            "माणसाचे वय",
+            "माणसाचा वजन",
+            "माणूस मित्र आहे की अज्ञात व्यक्ती आहे",
+            "माणसाचे आवडते खाद्य"
+          ],
+          "solution": "कुत्र्यांना वासावरून माणूस मित्र आहे की अज्ञात व्यक्ती आहे हे ठरवता येते, कारण त्यांच्या घासाच्या अंगामुळे ते ओळखता येणारे किंवा अनोळखी व्यक्तींना ओळखू शकतात. वय, वजन किंवा आवडते खाद्य अशा विशिष्ट वैयक्तिक माहिती घासावरून ठरवता येत नाहीत. कुत्र्यांना वासावरून अशा विशिष्ट माहितीचे निरीक्षण करण्याचे वैज्ञानिक पुरावा नाही.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate terminology. The correct answer remains option (2), and the distractors are still incorrect.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "A pupil might think that a dog can determine a person's age through smell, confusing scent with physical characteristics.",
+        "students may think dogs can determine physical characteristics like weight through smell",
+        null,
+        "Believes animals can determine personal preferences through smell"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 2, as the passage implies dogs can recognize familiar or unfamiliar individuals through scent. The other options represent common misconceptions about what dogs can infer from smell.",
+      "sources": [
+        {
+          "document": "ncert/5/environmental-studies/eeap101.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 1: Super Senses"
+          ]
+        },
+        {
+          "document": "ncert/5/environmental-studies/eeap101.pdf",
+          "ordinal": 1,
+          "pageStart": 3,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 1: Super Senses"
+          ]
+        },
+        {
+          "document": "ncert/5/environmental-studies/eeap101.pdf",
+          "ordinal": 2,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 1: Super Senses"
+          ]
+        }
+      ],
+      "edition": "2024 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-23T01:04:56.199Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If a student puts their hands behind their ears and listens to a soft sound, what will happen?",
+      "choices": [
+        "The sound will become louder",
+        "The sound will become softer",
+        "The sound will change in pitch",
+        "The sound will be the same"
+      ],
+      "answerIndex": 0,
+      "solution": "When a student puts their hands behind their ears, the sound waves are reflected and focused toward the ear, making the sound seem louder. The sound does not become softer because the hands do not block the sound. It does not change in pitch because the frequency of the sound remains unchanged. The sound also does not stay the same because the physical positioning affects how the sound is perceived.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक छात्र अपने कानों के पीछे हाथ रखकर एक हल्की ध्वनि सुनता है, तो क्या होगा?",
+          "choices": [
+            "ध्वनि अधिक लम्बी हो जाएगी",
+            "ध्वनि अधिक हल्की हो जाएगी",
+            "ध्वनि की ऊंचाई बदल जाएगी",
+            "ध्वनि वही रहेगी"
+          ],
+          "solution": "जब एक छात्र अपने कानों के पीछे हाथ रखता है, तो ध्वनि तरंगें परावर्तित और कान की ओर फोकस की जाती हैं, जिससे ध्वनि अधिक लम्बी लगती है। हाथ ध्वनि को नहीं रोकते हैं, इसलिए ध्वनि हल्की नहीं होती है। ध्वनि की ऊंचाई नहीं बदलती है क्योंकि ध्वनि की आवृत्ति अपरिवर्तित रहती है। ध्वनि वही नहीं रहती है क्योंकि भौतिक स्थिति ध्वनि के अनुभव को प्रभावित करती है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms. The correct answer (option 1) is in the same position as in the English version. All distractors remain incorrect in the Hindi version.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका विद्यार्थीने आपल्या कानां मागे हात ठेवून निर्जल आवाज ऐकला, तर काय होईल?",
+          "choices": [
+            "आवाज जास्त जास्त ऐकू येईल",
+            "आवाज कमी ऐकू येईल",
+            "आवाजाचा ताल बदलेल",
+            "आवाज तसाच राहील"
+          ],
+          "solution": "जेव्हा एका विद्यार्थीने आपल्या कानां मागे हात ठेवते, तेव्हा आवाजाच्या तरंगांचे परावर्तन होते आणि कानाकडे फोकस केले जाते, ज्यामुळे आवाज जास्त ऐकू येतो. हात आवाज अडवत नसल्यामुळे आवाज कमी होत नाही. आवाजाचा ताल बदलत नाही कारण आवाजाची आवृत्ती अचल राहते. आवाज तसाच राहत नाही कारण शारीरिक स्थिती आवाजाच्या गतीवर प्रभाव टाकते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Thinks covering ears reduces sound",
+        "Confuses pitch with loudness",
+        "Believes sound remains unchanged"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly interprets the passage, which states that the sound becomes 'sharper,' implying it becomes louder. The reasoning for the distractors aligns with common misconceptions about sound perception.",
+      "sources": [
+        {
+          "document": "ncert/5/environmental-studies/eeap101.pdf",
+          "ordinal": 3,
+          "pageStart": 7,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 1: Super Senses"
+          ]
+        },
+        {
+          "document": "ncert/5/environmental-studies/eeap101.pdf",
+          "ordinal": 4,
+          "pageStart": 10,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 1: Super Senses"
+          ]
+        },
+        {
+          "document": "ncert/5/environmental-studies/eeap101.pdf",
+          "ordinal": 5,
+          "pageStart": 11,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 1: Super Senses"
+          ]
+        }
+      ],
+      "edition": "2024 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-23T01:04:56.199Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "How do snakes hear?",
+      "choices": [
+        "They use their ears to listen",
+        "They feel vibrations on the ground",
+        "They use their nose to detect sounds",
+        "They use their eyes to sense sound"
+      ],
+      "answerIndex": 1,
+      "solution": "Snakes do not have external ears, so they cannot hear sounds in the same way humans do. Instead, they detect vibrations through the ground, which is how they sense their environment. The other options are incorrect because snakes do not use their nose or eyes to detect sound, and they lack the structures needed for traditional hearing.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "सांप कैसे सुनते हैं?",
+          "choices": [
+            "वे अपने कानों का उपयोग सुनने के लिए करते हैं",
+            "वे जमीन पर कंपन महसूस करते हैं",
+            "वे अपनी नाक का उपयोग ध्वनि का पता लगाने के लिए करते हैं",
+            "वे अपनी आंखों का उपयोग ध्वनि का अनुभव करने के लिए करते हैं"
+          ],
+          "solution": "सांप के बाहरी कान नहीं होते हैं, इसलिए वे मनुष्यों की तरह ध्वनि को सुन नहीं पाते। बजाय इसके, वे जमीन से कंपन का पता लगाते हैं, जिससे वे अपने वातावरण को समझते हैं। अन्य विकल्प गलत हैं क्योंकि सांप अपनी नाक या आंखों का उपयोग ध्वनि का पता लगाने के लिए नहीं करते हैं और आम तौर पर सुनने की संरचना के लिए अक्षम होते हैं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "मांजर कशाने ऐकतात?",
+          "choices": [
+            "ते आपल्या कानांचा वापर करून ऐकतात",
+            "ते जमिनीवर झालेल्या कंपनांची जाणीव करतात",
+            "ते आपल्या नाकाचा वापर करून आवाज ओळखतात",
+            "ते आपल्या डोळ्यांचा वापर करून आवाज जाणवतात"
+          ],
+          "solution": "मांजरांमध्ये बाह्य कान नसतात, म्हणून ते माणसांप्रमाणे आवाज ऐकू शकत नाहीत. बरोबर, ते जमिनीवरील कंपनांची जाणीव करतात, ज्यामुळे ते आवरणाची जाणीव करतात. इतर विकल्प चुकीचे आहेत कारण मांजरांनी आवाज ओळखण्यासाठी त्यांच्या नाकांचा किंवा डोळ्यांचा वापर केलेला नाही आणि त्यांच्याकडे पारंपारिक ऐकण्याच्या संरचना नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi terminology for biological concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Believes snakes have ears like humans",
+        null,
+        "Confuses sense of smell with hearing",
+        "Thinks vision is used to sense sound"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is well-constructed, with a clear correct answer and plausible misconceptions in the distractors. The solution accurately reflects the scientific understanding of how snakes perceive sound.",
+      "sources": [
+        {
+          "document": "ncert/5/environmental-studies/eeap101.pdf",
+          "ordinal": 3,
+          "pageStart": 7,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 1: Super Senses"
+          ]
+        },
+        {
+          "document": "ncert/5/environmental-studies/eeap101.pdf",
+          "ordinal": 4,
+          "pageStart": 10,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 1: Super Senses"
+          ]
+        },
+        {
+          "document": "ncert/5/environmental-studies/eeap101.pdf",
+          "ordinal": 5,
+          "pageStart": 11,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 1: Super Senses"
+          ]
+        }
+      ],
+      "edition": "2024 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-23T01:04:56.199Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
     }
   ]
 }

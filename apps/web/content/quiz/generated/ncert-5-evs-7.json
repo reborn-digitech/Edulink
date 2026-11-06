@@ -273,6 +273,291 @@
       "generatedAt": "2026-10-28T06:27:05.035Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If a steel plate is put on water, what would happen?",
+      "choices": [
+        "It would sink",
+        "It would float",
+        "It would dissolve",
+        "It would evaporate"
+      ],
+      "answerIndex": 0,
+      "solution": "Steel is denser than water, so an object made of steel would sink when placed on water. The correct answer is that it would sink. Floating requires an object to be less dense than the liquid, and steel is not. Dissolving or evaporating does not occur because steel is a solid metal that does not mix with water or turn into a gas under normal conditions.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक स्टील के प्लेट को पानी पर रखा जाए, तो क्या होगा?",
+          "choices": [
+            "यह डूब जाएगा",
+            "यह तैर जाएगा",
+            "यह घुल जाएगा",
+            "यह वाष्पित हो जाएगा"
+          ],
+          "solution": "स्टील पानी के के घनत्व से अधिक होता है, इसलिए पानी पर रखे जाने पर स्टील से बना वस्तु डूब जाएगा। सही उत्तर यह है कि यह डूब जाएगा। तैरने के लिए एक वस्तु के द्रव के घनत्व से कम होना आवश्यक है, और स्टील ऐसा नहीं है। घुलना या वाष्पित होना नहीं होता क्योंकि स्टील एक ठोस धातु है जो पानी के साथ मिश्रित नहीं होती या सामान्य परिस्थितियों में गैस में बदल नहीं जाती।",
+          "imageAlt": null,
+          "critique": "Translation accurately reflects the original meaning, technical terms are appropriate for Hindi-medium curriculum, and the structure matches the original question.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर इस्पाताचा पट्टा पाण्यावर ठेवला तर काय होईल?",
+          "choices": [
+            "तो डुबेल",
+            "तो तरंगेल",
+            "तो विरघळेल",
+            "तो वास्तविक होईल"
+          ],
+          "solution": "इस्पात पाण्यापेक्षा जास्त घन असतो, म्हणून पाण्यावर ठेवल्यास इस्पाताचा वस्तू डुबेल. तरंगण्यासाठी वस्तू पाण्यापेक्षा कमी घन असावी लागते, आणि इस्पात असे नाही. विरघळणे किंवा वास्तविक होणे होत नाही कारण इस्पात एक घन धातू आहे जो पाण्याशी मिसळत नाही किंवा सामान्य परिस्थितीत वाफेत बदलत नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning. Technical terms like 'घन' (dense) and 'विरघळेल' (dissolve) are appropriately used in a Marathi science context.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "thinks steel floats on water",
+        "thinks steel dissolves in water",
+        "thinks steel evaporates in water"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct. Steel is denser than water, so it sinks. The other options reflect common misconceptions about material behavior in water.",
+      "sources": [
+        {
+          "document": "ncert/5/environmental-studies/eeap107.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 7: Experiments with Water"
+          ]
+        },
+        {
+          "document": "ncert/5/environmental-studies/eeap107.pdf",
+          "ordinal": 1,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 7: Experiments with Water"
+          ]
+        },
+        {
+          "document": "ncert/5/environmental-studies/eeap107.pdf",
+          "ordinal": 2,
+          "pageStart": 4,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 7: Experiments with Water"
+          ]
+        }
+      ],
+      "edition": "2024 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-23T01:27:51.411Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "Why did the eggs come up and start floating in salty water?",
+      "choices": [
+        "Because the salt made the water lighter",
+        "Because the salt made the water heavier",
+        "Because the salt made the eggs heavier",
+        "Because the salt made the eggs float by itself"
+      ],
+      "answerIndex": 1,
+      "solution": "The correct answer is because the salt made the water heavier. Adding salt increases the density of water, allowing objects like eggs to float. The other options are incorrect because salt does not make water lighter, nor does it make the eggs heavier or cause them to float without the change in water density.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "अंडे नमकीन पानी में क्यों ऊपर आ गए और तैरने लगे?",
+          "choices": [
+            "क्योंकि नमक ने पानी को हल्का बना दिया",
+            "क्योंकि नमक ने पानी को भारी बना दिया",
+            "क्योंकि नमक ने अंडे को भारी बना दिया",
+            "क्योंकि नमक ने अंडे को अकेले तैरने लगा दिया"
+          ],
+          "solution": "सही उत्तर यह है क्योंकि नमक ने पानी को भारी बना दिया। नमक जोड़ने से पानी का घनत्व बढ़ जाता है, जिससे अंडे जैसी वस्तुएं तैरने लगती हैं। अन्य विकल्प गलत हैं क्योंकि नमक पानी को हल्का नहीं बनाता है, न ही यह अंडे को भारी बनाता है या अंडों को बिना पानी के घनत्व में परिवर्तन के तैरने लगाता है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the scientific terminology, and preserves the logical structure of the question and answer.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "अंडी खार्या पाण्यात उपसरली आणि ती तरंगत राहिली कारण काय?",
+          "choices": [
+            "कारण खारट पाणी हलके बनले",
+            "कारण खारट पाणी भारी बनले",
+            "कारण खारट अंडी भारी बनले",
+            "कारण खारट अंडी स्वतः तरंगत राहिले"
+          ],
+          "solution": "बरोबर उत्तर हे खारट पाणी भारी बनले. खारट पाणी वाढवल्याने पाण्याची घनता वाढते, ज्यामुळे अंडी सारख्या वस्तू तरंगत राहतात. इतर विकल्प अयोग्य आहेत कारण खारट पाणी हलके बनवत नाही, आणि खारट अंडी भारी बनवत नाही किंवा त्यांना घनतेच्या बदलाशिवाय तरंगत राहण्यास सक्षम करत नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the scientific concepts, and uses appropriate Marathi terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "This is incorrect because salt increases the density of water.",
+        null,
+        "Believes adding salt increases the weight of objects, not the density of the water",
+        "The eggs do not change weight, so this is incorrect.', "
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 1, as salt increases the density of water, making it easier for objects like eggs to float. The other options reflect common misconceptions about the effects of salt on water and objects.",
+      "sources": [
+        {
+          "document": "ncert/5/environmental-studies/eeap107.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 7: Experiments with Water"
+          ]
+        },
+        {
+          "document": "ncert/5/environmental-studies/eeap107.pdf",
+          "ordinal": 1,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 7: Experiments with Water"
+          ]
+        },
+        {
+          "document": "ncert/5/environmental-studies/eeap107.pdf",
+          "ordinal": 2,
+          "pageStart": 4,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 7: Experiments with Water"
+          ]
+        }
+      ],
+      "edition": "2024 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-23T01:27:51.411Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "What did Ayesha observe when she put eggs in saltwater?",
+      "choices": [
+        "The eggs sank to the bottom",
+        "The eggs floated",
+        "The eggs dissolved",
+        "The eggs turned red"
+      ],
+      "answerIndex": 1,
+      "solution": "When eggs are placed in saltwater, they float because the salt increases the water's density, making it easier for the eggs to buoy up. The correct answer is that the eggs floated. The other options are incorrect because eggs do not sink in saltwater, they do not dissolve in it, and there is no chemical reaction that would cause them to turn red.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "अयेशा ने नमक के पानी में अंडे डाले जब वह क्या देखी?",
+          "choices": [
+            "अंडे तले डूब गए",
+            "अंडे तैरने लगे",
+            "अंडे घुल गए",
+            "अंडे लाल हो गए"
+          ],
+          "solution": "जब अंडे नमक के पानी में रखे जाते हैं, तो वे तैरने लगते हैं क्योंकि नमक पानी के घनत्व को बढ़ा देता है, जिससे अंडों के ऊपर उठने में सुविधा होती है। सही उत्तर यह है कि अंडे तैरने लगे। अन्य विकल्प गलत हैं क्योंकि अंडे नमक के पानी में डूब नहीं जाते, वे इसमें घुल नहीं जाते, और इसमें कोई रासायनिक अभिक्रिया नहीं होती जो उन्हें लाल बना दे।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains original meaning, and uses appropriate Hindi scientific terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "अयेशाने लवंगाच्या अंड्यांना लवंगाच्या पाण्यात ठेवल्यावर काय निरीक्षण केले?",
+          "choices": [
+            "अंडी तळापर्यंत खाली पडली",
+            "अंडी तरंगली",
+            "अंडी विरघळली",
+            "अंडी लाल झाली"
+          ],
+          "solution": "जेव्हा अंडी लवंगाच्या पाण्यात ठेवल्या जातात तेव्हा त्या तरंगतात कारण लवंगाने पाण्याची घनता वाढवली जाते, ज्यामुळे अंड्यांना तरंगणे सोपे होते. अंडी तरंगल्याचा योग्य उत्तर आहे. इतर विकल्प अयोग्य आहेत कारण अंडी लवंगाच्या पाण्यात खाली पडत नाहीत, त्या त्यात विरघळत नाहीत आणि त्यांचा लाल होण्यासाठी कोणताही रासायनिक प्रतिक्रिया नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the scientific meaning. 'लवंगाच्या पाण्यात' (saltwater) is the correct Marathi term used in educational contexts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "thinks the eggs sank in saltwater",
+        null,
+        "thinks the eggs dissolve in water",
+        "thinks the eggs change color in saltwater"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 1, as the passage states the eggs floated. The other options represent plausible misconceptions about the behavior of eggs in saltwater.",
+      "sources": [
+        {
+          "document": "ncert/5/environmental-studies/eeap107.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 7: Experiments with Water"
+          ]
+        },
+        {
+          "document": "ncert/5/environmental-studies/eeap107.pdf",
+          "ordinal": 1,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 7: Experiments with Water"
+          ]
+        },
+        {
+          "document": "ncert/5/environmental-studies/eeap107.pdf",
+          "ordinal": 2,
+          "pageStart": 4,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 7: Experiments with Water"
+          ]
+        }
+      ],
+      "edition": "2024 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-23T01:27:51.411Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
     }
   ]
 }

@@ -1240,6 +1240,593 @@
       "generatedAt": "2026-10-29T03:31:55.619Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of the following is an example of an evolutionary development that allowed organisms to live on land and water?",
+      "choices": [
+        "Lobefins evolving into fish",
+        "Amphibians evolving into reptiles",
+        "Lobefins evolving into amphibians",
+        "Reptiles evolving into fish"
+      ],
+      "answerIndex": 2,
+      "solution": "Lobefins evolving into amphibians is correct because amphibians were the first vertebrates to live both on land and in water, showing an evolutionary adaptation to dual environments. Lobefins evolving into fish and reptiles evolving into fish are incorrect because fish are aquatic and reptiles did not evolve from fish. Amphibians evolving into reptiles is incorrect because reptiles evolved from amphibians, not the other way around.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा एक ऐसा विकासीय विकल्प है जिसके कारण जीव भूमि और पानी दोनों में रह सके?",
+          "choices": [
+            "लोबेफिन्स के मछली में विकसित होना",
+            "एम्फीबियन्स के सांप में विकसित होना",
+            "लोबेफिन्स के एम्फीबियन में विकसित होना",
+            "सांप के मछली में विकसित होना"
+          ],
+          "solution": "लोबेफिन्स के एम्फीबियन में विकसित होना सही है क्योंकि एम्फीबियन्स पहले वर्टीब्रेट थे जो भूमि और पानी दोनों में रह सके, जो दोनों वातावरणों के लिए विकासीय अनुकूलन दर्शाता है। लोबेफिन्स के मछली में विकसित होना और सांप के मछली में विकसित होना गलत है क्योंकि मछली जलीय हैं और सांप मछली से विकसित नहीं हुए। एम्फीबियन्स के सांप में विकसित होना गलत है क्योंकि सांप एम्फीबियन्स से विकसित हुए, न कि इसके विपरीत।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate biological terminology in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते उत्क्रांतिक विकासाचे उदाहरण आहे जे जीवांना जमीन आणि पाणी दोन्ही वातावरणात राहण्यास परवानगी देते?",
+          "choices": [
+            "लोबेफिन्स च्या मासे मध्ये विकास",
+            "उभयचरांचा सापांमध्ये विकास",
+            "लोबेफिन्स च्या उभयचरांमध्ये विकास",
+            "सापांचा मासे मध्ये विकास"
+          ],
+          "solution": "लोबेफिन्स च्या उभयचरांमध्ये विकास हा बरोबर आहे कारण उभयचर जमीन आणि पाणी दोन्ही वातावरणात राहणारे पहिले हाडक्यांचे जीव होते, जे दोन्ही वातावरणांच्या अनुकूलनाचे द्योतक आहे. लोबेफिन्स च्या मासे मध्ये विकास आणि सापांचा मासे मध्ये विकास चुकीचे आहेत कारण मासे जलीय आहेत आणि साप मासे मधून विकसित झाले नाहीत. उभयचरांचा सापांमध्ये विकास चुकीचा आहे कारण साप उभयचरांमधून विकसित झाले, नाहीतर उलटपक्षी.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the scientific terminology appropriate for a Marathi-medium curriculum.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the role of lobefins",
+        "Misinterprets the evolution of amphibians",
+        null,
+        "Confusing the direction of evolution and thinking reptiles reverted back to aquatic forms"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 2, as lobefins evolving into amphibians is a well-established evolutionary transition that enabled life on both land and water. The other options represent misconceptions about the direction or nature of evolution.",
+      "sources": [
+        {
+          "document": "ncert/12/biology/lebo106.pdf",
+          "ordinal": 14,
+          "pageStart": 12,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 6: Evolution",
+            "6.8 A B"
+          ]
+        },
+        {
+          "document": "ncert/12/biology/lebo106.pdf",
+          "ordinal": 15,
+          "pageStart": 15,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 6: Evolution",
+            "6.8 A B"
+          ]
+        },
+        {
+          "document": "ncert/12/biology/lebo106.pdf",
+          "ordinal": 16,
+          "pageStart": 15,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 6: Evolution",
+            "6.9"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T16:05:41.847Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of the following best describes the phenomenon of adaptive radiation?",
+      "choices": [
+        "The development of similar traits in different species due to similar environments",
+        "The evolution of different species from a common ancestor in a geographical area",
+        "The random change in allele frequency in a population",
+        "The process by which organisms change over time to become more complex"
+      ],
+      "answerIndex": 1,
+      "solution": "Adaptive radiation refers to the process where a single common ancestor gives rise to multiple species that evolve to occupy different ecological niches within a geographical area. This occurs as species adapt to varying environmental conditions. The other options describe different biological processes: convergent evolution, genetic drift, and general evolution, none of which match the specific definition of adaptive radiation.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा अनुकूलनीय विकिरण की घटना का सबसे अच्छा वर्णन करता है?",
+          "choices": [
+            "समान पर्यावरण के कारण विभिन्न प्रजातियों में समान लक्षणों का विकास",
+            "एक भौगोलिक क्षेत्र में एक सामान्य पूर्वज से विभिन्न प्रजातियों का विकास",
+            "एक जनसंख्या में एलिल आवृत्ति में यादृच्छिक परिवर्तन",
+            "जीवों द्वारा समय के साथ बदले जाने की प्रक्रिया जिससे वे अधिक जटिल हो जाते हैं"
+          ],
+          "solution": "अनुकूलनीय विकिरण की प्रक्रिया के अंतर्गत एक ही सामान्य पूर्वज से बहुत सी प्रजातियां बनती हैं जो भौगोलिक क्षेत्र में विभिन्न पारिस्थितिक निक में रहती हैं। यह तब होता है जब प्रजातियां अलग-अलग पर्यावरणीय स्थितियों में अनुकूलित होती हैं। अन्य विकल्प अलग जैविक प्रक्रियाओं का वर्णन करते हैं: समान विकास, आनुवंशिक विस्थापन और सामान्य विकास, जिनमें से कोई भी अनुकूलनीय विकिरण के विशिष्ट परिभाषा के अनुरूप नहीं है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains original meaning, and uses standard Hindi biological terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते अॅडॅप्टिव्ह रेडिएशनच्या घटनेचे सर्वात चांगले वर्णन करते?",
+          "choices": [
+            "समान वातावरणामुळे विविध प्रजातींमध्ये समान लक्षणांचा विकास",
+            "एका भौगोलिक क्षेत्रात एका सामान्य पूर्वजापासून विविध प्रजातींचा विकास",
+            "एका लहान लोकसंख्येत अलिल वारंवारतेचा अयोग्य बदल",
+            "जीवांमध्ये समयानुसार बदल होण्याची प्रक्रिया जी अधिक जटिल होत जाते"
+          ],
+          "solution": "अॅडॅप्टिव्ह रेडिएशन म्हणजे एका सामान्य पूर्वजापासून अनेक प्रजाती उद्भवण्याची प्रक्रिया आहे, जी भौगोलिक क्षेत्रातील विविध पारिस्थितिक निकांमध्ये विकसित होतात. हे घडते जेव्हा प्रजाती विविध पर्यावरणीय अटींमध्ये समायोजित होतात. इतर विकल्पांमध्ये विविध जैविक प्रक्रियांचे वर्णन केले गेले आहे: समान विकास, जेनेटिक ड्रिफ्ट आणि सामान्य विकास, ज्यापैकी कोणताही अॅडॅप्टिव्ह रेडिएशनच्या विशिष्ट व्याख्येसह मेळ नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi biological terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses adaptive radiation with convergent evolution",
+        null,
+        "Misinterprets the concept as a random change in allele frequency",
+        "Chooses a general definition of evolution rather than the specific process"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 1, as adaptive radiation refers to the evolution of different species from a common ancestor in a geographical area. The other options correspond to convergent evolution, genetic drift, and general evolution, which are distinct concepts.",
+      "sources": [
+        {
+          "document": "ncert/12/biology/lebo106.pdf",
+          "ordinal": 7,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 6: Evolution",
+            "6.3"
+          ]
+        },
+        {
+          "document": "ncert/12/biology/lebo106.pdf",
+          "ordinal": 8,
+          "pageStart": 7,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 6: Evolution",
+            "6.4"
+          ]
+        },
+        {
+          "document": "ncert/12/biology/lebo106.pdf",
+          "ordinal": 9,
+          "pageStart": 9,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 6: Evolution",
+            "6.5"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T16:05:41.847Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "A scientist observes that certain species of moths have developed darker wings over time. What is this phenomenon called?",
+      "choices": [
+        "Natural Selection",
+        "Genetic Drift",
+        "Mutation",
+        "Adaptive Radiation"
+      ],
+      "answerIndex": 0,
+      "solution": "Natural selection is the process where traits that improve survival and reproduction become more common in a population over time. Darker wings in moths likely provide a survival advantage, such as better camouflage, leading to their increased prevalence. Genetic drift is random and unrelated to survival, mutation refers to changes in DNA, and adaptive radiation involves the development of many species from a common ancestor.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक वैज्ञानिक देखता है कि कुछ मोथ की प्रजातियां समय के साथ अंधेरे पंख विकसित कर लेती हैं। इस घटना को क्या कहा जाता है?",
+          "choices": [
+            "प्राकृतिक चयन",
+            "आनुवंशिक विस्थापन",
+            "यूटेशन",
+            "अनुकूलनी विकिरण"
+          ],
+          "solution": "प्राकृतिक चयन वह प्रक्रिया है जिसमें जीवन और प्रजनन में सुधार करने वाले लक्षण आबादी में समय के साथ अधिक सामान्य हो जाते हैं। मोथ के अंधेरे पंख जीवन के लिए एक लाभदायक लक्षण हो सकते हैं, जैसे कि बेहतर छिपाई, जिसके कारण उनकी बढ़ती हुई आम बात हो जाती है। आनुवंशिक विस्थापन यादृच्छिक होता है और जीवन के साथ संबंधित नहीं होता, यूटेशन डीएनए में परिवर्तन को संदर्भित करता है, और अनुकूलनी विकिरण एक सामान्य पूर्वज से बहुत सारे प्रजातियों के विकास को संदर्भित करता है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains original meaning, and uses standard Hindi scientific terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका वैज्ञानिकाने असे निरीक्षण केले की काही कीटकांच्या पंख वेळेसह गडद होत गेले आहेत. हे घटनाक्रम काय म्हणतात?",
+          "choices": [
+            "प्राकृतिक निवड",
+            "जेनेटिक ड्रिफ्ट",
+            "म्यूटेशन",
+            "अॅडॅप्टिव्ह रेडिएशन"
+          ],
+          "solution": "प्राकृतिक निवड ही अशी प्रक्रिया आहे जेथे जीवांच्या जीवनाच्या आणि प्रजोत्पादनाच्या वाढीसाठी उपयुक्त लक्षणांची संख्या वेळेसह वाढत जाते. कीटकांच्या गडद पंखांमध्ये जीवनाच्या आवश्यकतेसाठी फायदा असू शकतो, जसे की चांगला छल बनवणे, ज्यामुळे त्यांची वाढ होते. जेनेटिक ड्रिफ्ट हा अयोग्य आहे आणि जीवनाशी संबंधित नाही, म्यूटेशन हा डीएनए मध्ये बदल दर्शवतो आणि अॅडॅप्टिव्ह रेडिएशन हा सामान्य पूर्वजापासून अनेक प्रजातींच्या विकासाचा अर्थ आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the scientific terminology used in Marathi textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses natural selection with genetic drift, which is a random process.",
+        "Thinks mutation is the main cause of trait change, but mutation is just a source of variation.",
+        "Misunderstands adaptive radiation as the process of darkening wings, which is not what it refers to."
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-constructed. The correct answer is 'Natural Selection' as it accurately describes the process of advantageous traits becoming more common in a population. The author's explanations for the incorrect options are valid and reflect common student misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/12/biology/lebo106.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 1,
+          "headingPath": [
+            "Chapter 6: Evolution"
+          ]
+        },
+        {
+          "document": "ncert/12/biology/lebo106.pdf",
+          "ordinal": 1,
+          "pageStart": 1,
+          "pageEnd": 1,
+          "headingPath": [
+            "Chapter 6: Evolution",
+            "6.1"
+          ]
+        },
+        {
+          "document": "ncert/12/biology/lebo106.pdf",
+          "ordinal": 2,
+          "pageStart": 2,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 6: Evolution",
+            "6.1"
+          ]
+        },
+        {
+          "document": "ncert/12/biology/lebo106.pdf",
+          "ordinal": 3,
+          "pageStart": 2,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 6: Evolution",
+            "6.1"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T16:05:41.847Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "In a population of insects, a new mutation leads to a trait that improves survival in a polluted environment. Over time, this trait becomes more common in the population. Which of the following best explains this change?",
+      "choices": [
+        "Genetic drift",
+        "Natural selection",
+        "Gene flow",
+        "Mutational bias"
+      ],
+      "answerIndex": 1,
+      "solution": "Natural selection explains the increase in the trait because individuals with traits that improve survival are more likely to live and pass on their genes. Genetic drift involves random changes in allele frequency, which is not the case here. Gene flow refers to the transfer of genetic material between populations, which is not described. Mutational bias is not a direct cause of trait frequency change in this scenario.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक कीटों की आबादी में, एक नया उत्परिवर्तन एक ऐसा लक्षण उत्पन्न करता है जो प्रदूषित वातावरण में जीवित रहने में सहायता करता है। समय के साथ, इस लक्षण की आबादी में अधिक आम हो जाती है। निम्नलिखित में से कौन-सा इस परिवर्तन की बेस्ट व्याख्या करता है?",
+          "choices": [
+            "जेनेटिक ड्रिफ्ट",
+            "प्राकृतिक चयन",
+            "जीन प्रवाह",
+            "उत्परिवर्तन झुकाव"
+          ],
+          "solution": "प्राकृतिक चयन लक्षण में वृद्धि की व्याख्या करता है क्योंकि जीवित रहने में सहायता करने वाले लक्षण वाले व्यक्ति अपने जीन अगली पीढ़ी में छोड़ने की संभावना अधिक होती है। जेनेटिक ड्रिफ्ट एलिल आवृत्ति में यादृच्छिक परिवर्तन के बारे में होता है, जो यहां नहीं है। जीन प्रवाह आबादी के बीच आनुवंशिक सामग्री के स्थानांतरण के बारे में होता है, जो यहां वर्णित नहीं है। उत्परिवर्तन झुकाव इस परिदृश्य में लक्षण आवृत्ति परिवर्तन का सीधा कारण नहीं है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the scientific terminology used in Hindi biology textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका कीटांच्या लोकसंख्येत नवीन उत्परिवर्तन एका लक्षणाच्या उद्भवाला कारणीभूत होते जे दूषित वातावरणात जीवन टिकवून ठेवण्यास मदत करते. वेळेसह, हे लक्षण लोकसंख्येत अधिक सामायिक होते. खालीलपैकी कोणते या बदलाचे सर्वात चांगले स्पष्टीकरण देते?",
+          "choices": [
+            "जीन विचलन",
+            "प्राकृतिक निवड",
+            "जीन प्रवाह",
+            "उत्परिवर्तन असमानता"
+          ],
+          "solution": "प्राकृतिक निवड हे लक्षणाच्या वाढीचे स्पष्टीकरण देते कारण जीवन टिकवून ठेवण्यास मदत करणारे लक्षण असलेल्या व्यक्ती अधिक जीवून राहतात आणि त्यांचे जीन पुढील पिढीला पाठवतात. जीन विचलन हे जीन विकल्पांच्या वाढीचे अनियमित बदल आहे, जे येथे नाही. जीन प्रवाह हा लोकसंख्यांमध्ये जीन विकल्पांच्या आदान-प्रदानाचा विषय आहे, जे वर्णन केलेले नाही. उत्परिवर्तन असमानता हे या परिस्थितीत लक्षणाच्या वाढीचे सीधा कारण नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi biological terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Misunderstands the role of random chance in genetic changes.",
+        null,
+        "Confuses the concept of natural selection with other genetic processes.",
+        "Misinterprets the role of mutations as the primary factor in trait frequency."
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is well-constructed and the solution correctly identifies natural selection as the mechanism. The distractors are plausible misconceptions that students might hold.",
+      "sources": [
+        {
+          "document": "ncert/12/biology/lebo106.pdf",
+          "ordinal": 10,
+          "pageStart": 10,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 6: Evolution",
+            "6.5"
+          ]
+        },
+        {
+          "document": "ncert/12/biology/lebo106.pdf",
+          "ordinal": 11,
+          "pageStart": 10,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 6: Evolution",
+            "6.6"
+          ]
+        },
+        {
+          "document": "ncert/12/biology/lebo106.pdf",
+          "ordinal": 12,
+          "pageStart": 11,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 6: Evolution",
+            "6.7"
+          ]
+        },
+        {
+          "document": "ncert/12/biology/lebo106.pdf",
+          "ordinal": 13,
+          "pageStart": 12,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 6: Evolution",
+            "6.7"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T16:05:41.847Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "A population of fish in a river has a wide variety of body shapes. Over time, some fish develop streamlined bodies that help them swim faster. Which of the following best explains the evolutionary process taking place?",
+      "choices": [
+        "Genetic drift",
+        "Convergent evolution",
+        "Adaptive radiation",
+        "Natural selection"
+      ],
+      "answerIndex": 3,
+      "solution": "Natural selection is the process where individuals with traits that improve survival and reproduction are more likely to pass on their genes. The streamlined body shape provides a survival advantage, so fish with this trait would be more likely to survive and reproduce. Genetic drift involves random changes in allele frequency, which is not described here. Convergent evolution refers to unrelated species developing similar traits, and adaptive radiation involves diversification into multiple ecological niches, neither of which match the scenario.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक नदी में मछलियों की एक आबादी में विभिन्न शरीर आकृतियाँ हैं। समय के साथ, कुछ मछलियाँ ऐसी आकृति विकसित करती हैं जो उन्हें तेजी से तैरने में सक्षम बनाती हैं। निम्नलिखित में से कौन-सा उत्तर विकास की प्रक्रिया को सबसे अच्छा समझाता है?",
+          "choices": [
+            "जीन विचलन",
+            "समान विकास",
+            "अनुकूली विविधीकरण",
+            "प्राकृतिक चयन"
+          ],
+          "solution": "प्राकृतिक चयन एक प्रक्रिया है जहाँ उन व्यक्तियों के अनुकूल लक्षण होते हैं जो जीवित रहने और प्रजनन में सक्षम होते हैं। एक आकृति जो जीवित रहने में सहायता करती है, तो इस लक्षण वाले मछलियाँ जीवित रहने और प्रजनन करने में अधिक संभावना रखती हैं। जीन विचलन एलिल आवृत्ति में यादृच्छिक परिवर्तन होता है, जो यहाँ वर्णित नहीं है। समान विकास असंबंधित प्रजातियों के समान लक्षण विकसित करने के बारे में होता है, और अनुकूली विविधीकरण में कई पारिस्थितिक निक्षेत्रों में विविधीकरण शामिल होता है, जो दोनों दृश्य अनुकूल नहीं हैं।",
+          "imageAlt": null,
+          "critique": "Translation accurately reflects the original meaning, technical terms are appropriately used in Hindi, and the correct answer remains option 3.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका नदीतील मासे लहान विविध शरीर आकृती असलेल्या लहान लोकसंख्येचा असतात. वेळ जाऊन अनेक मासे वेगवान तर जाणारी विस्तृत शरीर आकृती विकसित करतात. खालीलपैकी कोणते उत्तम उत्क्रांती प्रक्रिया वर्णन करते?",
+          "choices": [
+            "जनीन विचलन",
+            "समान उत्क्रांती",
+            "अनुकूलनी विविधता",
+            "प्राकृतिक निवड"
+          ],
+          "solution": "प्राकृतिक निवड ही प्रक्रिया आहे जेथे जीव ज्यांच्या लक्षणांमुळे जीवन आणि प्रजोत्पादनात फायदा होतो ते आपल्या जीन्स पुढे जाण्याची शक्यता असते. विस्तृत शरीर आकृती जीवनात फायदा करते, म्हणून या लक्षणाच्या असलेल्या मासांना जीवन आणि प्रजोत्पादनाची शक्यता जास्त असते. जनीन विचलन हे अलेल वारंवारतेत यादृच्छिक बदल असतात, जे येथे वर्णन केले जात नाही. समान उत्क्रांती हा असंबद्ध प्राणी एकसारखी लक्षणे विकसित करण्याचा अर्थ असतो, आणि अनुकूलनी विविधता हा अनेक पारिस्थितिक निकांमध्ये विविधता विकसित करण्याचा अर्थ असतो, जे दोन्ही दिसत नाहीत.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the original meaning, and uses appropriate biological terminology as used in Marathi textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Incorrectly applies genetic drift",
+        "Incorrectly applies convergent evolution",
+        "Incorrectly applies adaptive radiation",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 3 (Natural selection), as the scenario describes a trait (streamlined body) that provides a survival advantage, which is the core concept of natural selection. The other options are correctly dismissed by the author.",
+      "sources": [
+        {
+          "document": "ncert/12/biology/lebo106.pdf",
+          "ordinal": 17,
+          "pageStart": 17,
+          "pageEnd": 17,
+          "headingPath": [
+            "Chapter 6: Evolution",
+            "EXERCISES"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T16:05:41.847Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "A group of scientists observed that in an isolated island, a species of bird evolved different beak shapes to adapt to various food sources. Which term best describes this process?",
+      "choices": [
+        "Convergent evolution",
+        "Adaptive radiation",
+        "Genetic drift",
+        "Natural selection"
+      ],
+      "answerIndex": 1,
+      "solution": "Adaptive radiation occurs when a single species evolves into multiple forms that occupy different ecological niches, often due to varying environmental conditions. In this case, the birds developed different beak shapes to exploit various food sources, which matches this process. Convergent evolution involves unrelated species developing similar traits, genetic drift is a random change in gene frequency, and natural selection is the mechanism that drives evolutionary change, not the process itself.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक समूह वैज्ञानिकों ने देखा कि एक अलगाव वाले द्वीप पर, एक पक्षी की प्रजाति विभिन्न खाद्य स्रोतों के अनुकूलन के लिए अलग-अलग चोंच के आकार विकसित कर गई। इस प्रक्रिया के लिए सबसे अच्छा शब्द कौन-सा है?",
+          "choices": [
+            "समानांतर विकास",
+            "अनुकूली विविधता",
+            "जेनेटिक ड्रिफ्ट",
+            "प्राकृतिक चयन"
+          ],
+          "solution": "अनुकूली विविधता तब होती है जब एक ही प्रजाति विभिन्न पारिस्थितिक जगहों में रहने वाले विभिन्न रूपों में विकसित हो जाती है, आमतौर पर विविध पर्यावरणीय स्थितियों के कारण। इस मामले में, पक्षियों ने विभिन्न खाद्य स्रोतों का उपयोग करने के लिए अलग-अलग चोंच के आकार विकसित किए, जो इस प्रक्रिया के अनुरूप है। समानांतर विकास असंबंधित प्रजातियों के समान गुण विकसित करने के लिए होता है, जेनेटिक ड्रिफ्ट आनुवंशिक आवृत्ति में यादृच्छिक परिवर्तन है, और प्राकृतिक चयन विकासात्मक परिवर्तन के यांत्रिक तंत्र है, न कि प्रक्रिया के रूप में।",
+          "imageAlt": null,
+          "critique": "Translation accurately reflects the original meaning, technical terms are appropriately translated, and the correct answer remains option (2).",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका विशिष्ट ज्ञानकोशाच्या अभ्यासानुसार, एका विलग द्वीपावर एका पक्ष्याच्या प्रजातीच्या अंगात विविध खाद्य स्रोतांच्या अनुकूलनासाठी विविध तांबड्या आकाराचे बदल झाले. हा प्रक्रिया योग्य शब्दाने कशाने दर्शविली जाते?",
+          "choices": [
+            "संयुक्त विकास",
+            "अनुकूली विविधता",
+            "जीन विचलन",
+            "प्राकृतिक निवड"
+          ],
+          "solution": "अनुकूली विविधता ही एका प्रजातीच्या एका प्रकारातून विविध प्रकारांमध्ये विकास होतो, जे विविध पर्यावरणीय अटींमुळे होतो. येथे पक्ष्यांनी विविध खाद्य स्रोतांचा उपयोग करून घेण्यासाठी विविध तांबड्या आकार विकसित केले, जे या प्रक्रियेस अनुरूप आहे. संयुक्त विकास हा असंगत प्रजातींमध्ये समान गुणधर्म विकसित होणे आहे, जीन विचलन हा जीन वारंवारतेत अयोग्य बदल आहे आणि प्राकृतिक निवड ही विकासाच्या बदलाचा यंत्र आहे, परंतु विकासाची प्रक्रिया नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology consistent with standard biology textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses adaptive radiation with convergent evolution",
+        null,
+        "Misunderstands the role of genetic drift in this scenario",
+        "Chooses the mechanism rather than the process"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question correctly identifies adaptive radiation as the process where a single species evolves into multiple forms to adapt to different environmental conditions. The author's solution is accurate and aligns with the correct answer.",
+      "sources": [
+        {
+          "document": "ncert/12/biology/lebo106.pdf",
+          "ordinal": 7,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 6: Evolution",
+            "6.3"
+          ]
+        },
+        {
+          "document": "ncert/12/biology/lebo106.pdf",
+          "ordinal": 8,
+          "pageStart": 7,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 6: Evolution",
+            "6.4"
+          ]
+        },
+        {
+          "document": "ncert/12/biology/lebo106.pdf",
+          "ordinal": 9,
+          "pageStart": 9,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 6: Evolution",
+            "6.5"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T16:05:41.847Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
     }
   ]
 }

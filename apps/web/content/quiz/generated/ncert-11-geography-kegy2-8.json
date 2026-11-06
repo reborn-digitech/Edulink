@@ -690,6 +690,1006 @@
       "generatedAt": "2026-10-28T19:41:48.700Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the term used to describe the lines that connect places with equal temperature?",
+      "choices": [
+        "Isotherms",
+        "Isobars",
+        "Isobaths",
+        "Isolines"
+      ],
+      "answerIndex": 0,
+      "solution": "Isotherms are lines that connect places with the same temperature. Isobars are lines of equal pressure, isobaths are lines of equal depth, and isolines is a general term for lines of equal value.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "तापमान के समान मान वाले स्थानों को जोड़ने वाली रेखाओं के लिए क्या शब्द प्रयोग किया जाता है?",
+          "choices": [
+            "समताप रेखाएँ",
+            "समदाब रेखाएँ",
+            "समगहराई रेखाएँ",
+            "सममान रेखाएँ"
+          ],
+          "solution": "समताप रेखाएँ वे रेखाएँ होती हैं जो समान तापमान वाले स्थानों को जोड़ती हैं। समदाब रेखाएँ समान दाब वाले स्थानों को जोड़ती हैं, समगहराई रेखाएँ समान गहराई वाले स्थानों को जोड़ती हैं और सममान रेखाएँ समान मान वाली रेखाओं के लिए एक सामान्य शब्द है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English original in meaning, terminology, and structure. All technical terms are in standard Hindi usage.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "तापमानाच्या समान मूल्यांना जोडणारी रेषा विषयीचा शब्द काय आहे?",
+          "choices": [
+            "समतापरेषा",
+            "समदाबरेषा",
+            "समगहनरेषा",
+            "सममूल्यरेषा"
+          ],
+          "solution": "समतापरेषा ह्या तापमानाच्या समान मूल्यांना जोडणारी रेषा आहेत. समदाबरेषा ह्या समान दाबाच्या रेषा आहेत, समगहनरेषा ह्या समान गहनतेच्या रेषा आहेत आणि सममूल्यरेषा हा समान मूल्याच्या रेषांचा सामान्य शब्द आहे.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate technical terms as used in Marathi textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Lines of equal pressure",
+        "Lines of equal depth",
+        "General term for lines of equal value"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 'Isotherms' as they connect places with equal temperature. The other options are correctly identified as lines of pressure, depth, and a general term, respectively. All distractors are based on common geographical terminology and represent plausible misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/11/geography/kegy208.pdf",
+          "ordinal": 10,
+          "pageStart": 8,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 8: Solar Radiation, Heat Balance and Temperature",
+            "EAT ALANCE AND EMPERATURE"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T06:53:13.585Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of the following terms refers to the amount of radiation reflected by the Earth?",
+      "choices": [
+        "Albedo",
+        "Convection",
+        "Latent heat",
+        "Terrestrial radiation"
+      ],
+      "answerIndex": 0,
+      "solution": "Albedo refers to the amount of radiation reflected by the Earth, as it is a measure of how much light that hits a surface is reflected without being absorbed. Convection is the transfer of heat through the movement of fluids, latent heat is the energy involved in phase changes of water, and terrestrial radiation is the infrared radiation emitted by the Earth's surface.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा शब्द पृथ्वी द्वारा परावर्तित विकिरण की मात्रा को संदर्भित करता है?",
+          "choices": [
+            "अल्बिडो",
+            "संवहन",
+            "गुप्त ऊष्मा",
+            "भूमिक विकिरण"
+          ],
+          "solution": "अल्बिडो पृथ्वी द्वारा परावर्तित विकिरण की मात्रा को संदर्भित करता है, क्योंकि यह एक ऐसा माप है जो बताता है कि एक सतह पर आने वाले प्रकाश का कितना हिस्सा अवशोषित हुए बिना परावर्तित कर दिया जाता है। संवहन तरल पदार्थों के गतिशीलता के माध्यम से ऊष्मा के स्थानांतरण को संदर्भित करता है, गुप्त ऊष्मा जल के चरण परिवर्तन में शामिल ऊर्जा होती है और भूमिक विकिरण पृथ्वी की सतह द्वारा उत्सर्जित अवरक्त विकिरण होता है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate technical terms as used in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणता शब्द भूमीने परावर्तित केलेल्या विकिरणाच्या प्रमाणाला संदर्भित करतो?",
+          "choices": [
+            "अल्बिडो",
+            "संवाहन",
+            "गुप्त ऊर्जा",
+            "भूमीय विकिरण"
+          ],
+          "solution": "अल्बिडो हा भूमीने परावर्तित केलेल्या विकिरणाच्या प्रमाणाला संदर्भित करतो, कारण तो एखाद्या पृष्ठभागावर आलेल्या प्रकाशाच्या किती प्रमाणात परावर्तित केले जाते याचे मापन आहे. संवाहन हा द्रव्यांच्या गतीमुळे ऊर्जेचा प्रसार आहे, गुप्त ऊर्जा ही पाण्याच्या अवस्था बदलाशी संबंधित ऊर्जा आहे आणि भूमीय विकिरण ही भूमीच्या पृष्ठभागापासून उत्सर्जित अवलोकनयोग्य विकिरण आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology consistent with standard science education in Marathi-medium schools.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses albedo with the process of heat transfer by convection",
+        "Misinterprets latent heat as a measure of reflection",
+        "Incorrectly associates terrestrial radiation with the reflection of sunlight"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is Albedo, which is the measure of reflected radiation. The other options are correctly dismissed as they refer to different processes. The explanations for the wrong options align with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/11/geography/kegy208.pdf",
+          "ordinal": 4,
+          "pageStart": 3,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 8: Solar Radiation, Heat Balance and Temperature",
+            "EAT ALANCE AND EMPERATURE"
+          ]
+        },
+        {
+          "document": "ncert/11/geography/kegy208.pdf",
+          "ordinal": 5,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 8: Solar Radiation, Heat Balance and Temperature",
+            "EAT ALANCE AND EMPERATURE"
+          ]
+        },
+        {
+          "document": "ncert/11/geography/kegy208.pdf",
+          "ordinal": 6,
+          "pageStart": 4,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 8: Solar Radiation, Heat Balance and Temperature",
+            "EAT ALANCE AND EMPERATURE"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T06:53:13.585Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of the following best describes the pattern of isotherms in January over the northern hemisphere?",
+      "choices": [
+        "They bend towards the south over the ocean",
+        "They bend towards the north over the land",
+        "They run parallel to the equator",
+        "They run perpendicular to the latitudes"
+      ],
+      "answerIndex": 0,
+      "solution": "In January, isotherms bend towards the south over the ocean because the ocean retains heat more than land, causing warmer temperatures to shift southward. The other options are incorrect because isotherms do not run parallel or perpendicular to the equator, and they do not bend towards the north over land, which would contradict the thermal properties of land and water.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा जनवरी में उत्तरी गोलार्ध में आइसोथर्म्स के पैटर्न का सबसे अच्छा वर्णन करता है?",
+          "choices": [
+            "वे महासागर पर दक्षिण की ओर मुड़ जाते हैं",
+            "वे भूमि पर उत्तर की ओर मुड़ जाते हैं",
+            "वे भूमध्य रेखा के समानांतर चलते हैं",
+            "वे अक्षांशों के लंबवत चलते हैं"
+          ],
+          "solution": "जनवरी में, आइसोथर्म्स महासागर पर दक्षिण की ओर मुड़ जाते हैं क्योंकि महासागर भूमि की तुलना में अधिक गर्मी बरकरार रखता है, जिसके कारण गर्म तापमान दक्षिण की ओर विस्थापित हो जाता है। अन्य विकल्प गलत हैं क्योंकि आइसोथर्म्स भूमध्य रेखा के समानांतर या लंबवत नहीं चलते हैं, और वे भूमि पर उत्तर की ओर मुड़ नहीं जाते हैं, जो भूमि और पानी के तापीय गुणों के विरुद्ध होगा।",
+          "imageAlt": null,
+          "critique": "Translation accurately reflects the original meaning, technical terms are appropriate for Hindi-medium curriculum, and the correct answer remains in the same position.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते उत्तर उत्तर गोलार्धात जानेवारीत आयसोथर्म्सच्या आकृतीचे सर्वात चांगले वर्णन करते?",
+          "choices": [
+            "ते समुद्रावर दक्षिणेकडे मुडतात",
+            "ते भूमीवर उत्तरेकडे मुडतात",
+            "ते समांतर भूमध्य रेखेशी धावतात",
+            "ते अक्षांशांशी लंबरूप धावतात"
+          ],
+          "solution": "जानेवारीत, समुद्रावर आयसोथर्म्स दक्षिणेकडे मुडतात कारण समुद्र भूमीपेक्षा अधिक उष्णता जमा करतो, ज्यामुळे उष्णता दक्षिणेकडे हलते. इतर विकल्प अयोग्य आहेत कारण आयसोथर्म्स समांतर किंवा लंबरूप भूमध्य रेखेशी धावत नाहीत, आणि भूमीवर उत्तरेकडे मुडत नाहीत, जे भूमी आणि पाण्याच्या तापमान गुणधर्मांच्या विरुद्ध असेल.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for geographical concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses the direction of isotherm deviation over land and ocean",
+        "Incorrectly assumes isotherms run parallel to the equator",
+        "Misunderstands the general orientation of isotherms in January"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 0, as isotherms in January bend toward the south over the ocean due to the cooling effect of the ocean in the northern hemisphere. The solution correctly identifies this and the reasons for the other options are valid misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/11/geography/kegy208.pdf",
+          "ordinal": 7,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 8: Solar Radiation, Heat Balance and Temperature",
+            "EAT ALANCE AND EMPERATURE"
+          ]
+        },
+        {
+          "document": "ncert/11/geography/kegy208.pdf",
+          "ordinal": 8,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 8: Solar Radiation, Heat Balance and Temperature",
+            "EAT ALANCE AND EMPERATURE"
+          ]
+        },
+        {
+          "document": "ncert/11/geography/kegy208.pdf",
+          "ordinal": 9,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 8: Solar Radiation, Heat Balance and Temperature",
+            "EAT ALANCE AND EMPERATURE"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T06:53:13.585Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If a region experiences a higher angle of incidence of solar rays, what can be inferred about its insolation?",
+      "choices": [
+        "It receives less insolation",
+        "It receives the same insolation as other regions",
+        "It receives more insolation",
+        "It receives no insolation"
+      ],
+      "answerIndex": 2,
+      "solution": "A higher angle of incidence means solar rays strike the Earth more directly, concentrating energy over a smaller area and increasing insolation. The other options contradict the physical relationship between the angle of sunlight and the amount of energy received.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि कोई क्षेत्र सौर किरणों के उच्च आपतन कोण का अनुभव करता है, तो इसके अपतित ऊर्जा के बारे में क्या निष्कर्ष निकाला जा सकता है?",
+          "choices": [
+            "इसे कम अपतित ऊर्जा मिलती है",
+            "इसे अन्य क्षेत्रों के समान अपतित ऊर्जा मिलती है",
+            "इसे अधिक अपतित ऊर्जा मिलती है",
+            "इसे कोई अपतित ऊर्जा नहीं मिलती है"
+          ],
+          "solution": "उच्च आपतन कोण का अर्थ है कि सौर किरणें पृथ्वी पर अधिक सीधे प्रहार करती हैं, जो ऊर्जा को छोटे क्षेत्र पर केंद्रित करती हैं और अपतित ऊर्जा बढ़ाती है। अन्य विकल्प सूर्य के प्रकाश के कोण और ऊर्जा की मात्रा के बीच भौतिक संबंध के विरुद्ध हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology for geographical concepts.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका प्रदेशाला सौर किरणांचा उच्च अभिसरण कोन असल्यास, त्याच्या अवकाशातील ऊर्जेबद्दल काय निष्कर्ष काढता येईल?",
+          "choices": [
+            "त्याला कमी अवकाशातील ऊर्जा मिळते",
+            "त्याला इतर प्रदेशांच्या तुलनेत अवकाशातील ऊर्जा एकसारखी मिळते",
+            "त्याला अधिक अवकाशातील ऊर्जा मिळते",
+            "त्याला अवकाशातील ऊर्जा मिळत नाही"
+          ],
+          "solution": "उच्च अभिसरण कोन म्हणजे सौर किरण जास्त थेटपणे पृथ्वीवर आपटतात, ज्यामुळे ऊर्जा लहान क्षेत्रावर केंद्रित होते आणि अवकाशातील ऊर्जा वाढते. इतर विकल्प अभिसरण कोन आणि ऊर्जेच्या मात्रेतील भौतिक संबंधांच्या विरुद्ध आहेत.",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the scientific meaning, with appropriate Marathi terminology used for 'angle of incidence' and 'insolation'.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "misunderstands the relationship between angle and insolation",
+        "incorrectly assumes uniformity of insolation",
+        null,
+        "incorrectly assumes no insolation at all"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly identifies that a higher angle of incidence leads to more direct solar rays and thus more insolation. The reasoning aligns with standard geographical principles.",
+      "sources": [
+        {
+          "document": "ncert/11/geography/kegy208.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 1,
+          "headingPath": [
+            "Chapter 8: Solar Radiation, Heat Balance and Temperature",
+            "EAT ALANCE AND EMPERATURE"
+          ]
+        },
+        {
+          "document": "ncert/11/geography/kegy208.pdf",
+          "ordinal": 1,
+          "pageStart": 1,
+          "pageEnd": 1,
+          "headingPath": [
+            "Chapter 8: Solar Radiation, Heat Balance and Temperature",
+            "EAT ALANCE AND EMPERATURE"
+          ]
+        },
+        {
+          "document": "ncert/11/geography/kegy208.pdf",
+          "ordinal": 2,
+          "pageStart": 2,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 8: Solar Radiation, Heat Balance and Temperature",
+            "EAT ALANCE AND EMPERATURE"
+          ]
+        },
+        {
+          "document": "ncert/11/geography/kegy208.pdf",
+          "ordinal": 3,
+          "pageStart": 2,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 8: Solar Radiation, Heat Balance and Temperature",
+            "EAT ALANCE AND EMPERATURE"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T06:53:13.585Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "Which of the following processes is responsible for the transfer of heat through horizontal movement of air?",
+      "choices": [
+        "Conduction",
+        "Convection",
+        "Radiation",
+        "Advection"
+      ],
+      "answerIndex": 3,
+      "solution": "Advection is the process where heat is transferred through the horizontal movement of air. Conduction involves heat transfer through direct contact, convection involves vertical movement of fluids, and radiation transfers heat through electromagnetic waves without requiring a medium.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सी प्रक्रिया हवा के क्षैतिज गति के माध्यम से ऊष्मा के स्थानांतरण के लिए उत्तरदायी है?",
+          "choices": [
+            "संवहन",
+            "संचालन",
+            "विकिरण",
+            "अनुवहन"
+          ],
+          "solution": "अनुवहन वह प्रक्रिया है जिसमें हवा के क्षैतिज गति के माध्यम से ऊष्मा का स्थानांतरण होता है। संवहन में ऊष्मा का स्थानांतरण सीधे संपर्क के माध्यम से होता है, संचालन में तरल पदार्थों के ऊर्ध्वाधर गति के माध्यम से होता है और विकिरण विद्युत-चुंबकीय तरंगों के माध्यम से होता है जिसके लिए माध्यम की आवश्यकता नहीं होती।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard terminology as found in Hindi-medium science textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणता प्रक्रिया हवेच्या अरूंद गतीमुळे ऊष्मा वाहतूकीसाठी जबाबदार आहे?",
+          "choices": [
+            "संवाहकता",
+            "संवहन",
+            "विकिरण",
+            "अदव्हेशन"
+          ],
+          "solution": "अदव्हेशन ही प्रक्रिया आहे जेथे ऊष्मा हवेच्या अरूंद गतीमुळे वाहतूक करते. संवाहकतेमध्ये ऊष्मा दुरुस्तीच्या संपर्काद्वारे वाहतूक होते, संवहनमध्ये द्रवांच्या उर्ध्व गतीमुळे ऊष्मा वाहतूक होते आणि विकिरणाद्वारे ऊष्मा विद्युत चुंबकीय तरंगांद्वारे माध्यम न वापरता वाहतूक होते.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate and maintains the original meaning, with appropriate technical terms used in Marathi education context.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "confuses conduction with horizontal movement",
+        "confuses convection with horizontal movement",
+        "refers to the general process of heat transfer",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is Advection (option 3), which refers to the horizontal transfer of heat by air movement. The author's solution is accurate, and the reasoning for the distractors reflects common misconceptions about heat transfer mechanisms.",
+      "sources": [
+        {
+          "document": "ncert/11/geography/kegy208.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 1,
+          "headingPath": [
+            "Chapter 8: Solar Radiation, Heat Balance and Temperature",
+            "EAT ALANCE AND EMPERATURE"
+          ]
+        },
+        {
+          "document": "ncert/11/geography/kegy208.pdf",
+          "ordinal": 1,
+          "pageStart": 1,
+          "pageEnd": 1,
+          "headingPath": [
+            "Chapter 8: Solar Radiation, Heat Balance and Temperature",
+            "EAT ALANCE AND EMPERATURE"
+          ]
+        },
+        {
+          "document": "ncert/11/geography/kegy208.pdf",
+          "ordinal": 2,
+          "pageStart": 2,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 8: Solar Radiation, Heat Balance and Temperature",
+            "EAT ALANCE AND EMPERATURE"
+          ]
+        },
+        {
+          "document": "ncert/11/geography/kegy208.pdf",
+          "ordinal": 3,
+          "pageStart": 2,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 8: Solar Radiation, Heat Balance and Temperature",
+            "EAT ALANCE AND EMPERATURE"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T06:53:13.585Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "Which of the following best explains why the equatorial regions do not get progressively heated up despite receiving surplus radiation?",
+      "choices": [
+        "The surplus heat is absorbed by the atmosphere directly",
+        "The surplus heat is redistributed towards the poles",
+        "The surplus heat is reflected back to space by the clouds",
+        "The surplus heat is lost through convection"
+      ],
+      "answerIndex": 1,
+      "solution": "The surplus heat from the equatorial regions is redistributed towards the poles through atmospheric and oceanic circulation, which prevents excessive heating in those areas. The other options are incorrect because heat is not directly absorbed by the atmosphere, nor is it primarily reflected back to space by clouds or lost through convection.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा उत्तर ग्रीष्मकालीन क्षेत्रों के लिए सबसे अच्छा स्पष्टीकरण है कि ये क्षेत्र बराबर विकिरण प्राप्त करने के बावजूद धीरे-धीरे गर्म नहीं होते?",
+          "choices": [
+            "अतिरिक्त ऊष्मा वातावरण द्वारा सीधे अवशोषित कर ली जाती है",
+            "अतिरिक्त ऊष्मा ध्रुवों की ओर पुनर्वितरित कर दी जाती है",
+            "अतिरिक्त ऊष्मा बादलों द्वारा अंतरिक्ष में वापस परावर्तित कर दी जाती है",
+            "अतिरिक्त ऊष्मा संवहन द्वारा खो दी जाती है"
+          ],
+          "solution": "ग्रीष्मकालीन क्षेत्रों से अतिरिक्त ऊष्मा वातावरण एवं महासागरीय परिसंचरण द्वारा ध्रुवों की ओर पुनर्वितरित कर दी जाती है, जो इन क्षेत्रों में अत्यधिक गर्मी को रोकता है। अन्य विकल्प गलत हैं क्योंकि ऊष्मा सीधे वातावरण द्वारा अवशोषित नहीं की जाती है, न ही बादलों द्वारा अंतरिक्ष में वापस परावर्तित की जाती है या संवहन द्वारा खो दी जाती है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate technical terms. The correct answer remains option (1), and the distractors are still incorrect.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खंडांक भागांमध्ये अतिरिक्त विकिरण मिळत असल्यासही ते वाढत नसल्याचे खालीलपैकी कोणते सर्वात चांगले स्पष्टीकरण देते?",
+          "choices": [
+            "अतिरिक्त ऊष्मा वातावरणाद्वारे सीधा शोषली जाते",
+            "अतिरिक्त ऊष्मा ध्रुवांकडे पुनर्वितरित केली जाते",
+            "अतिरिक्त ऊष्मा बादलांद्वारे अंतरिक्षात परत पाठवली जाते",
+            "अतिरिक्त ऊष्मा वाष्पीकरणाद्वारे गमावली जाते"
+          ],
+          "solution": "खंडांक भागांमधून अतिरिक्त ऊष्मा वातावरण आणि समुद्राच्या प्रवाहाद्वारे ध्रुवांकडे पुनर्वितरित केली जाते, ज्यामुळे या भागांमध्ये अतिउष्णता टाळली जाते. इतर विकल्प अयोग्य आहेत कारण ऊष्मा वातावरणाद्वारे सीधा शोषली जात नाही, नाही बादलांद्वारे अंतरिक्षात परत पाठवली जात नाही आणि वाष्पीकरणाद्वारे गमावली जात नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the scientific terminology used in Marathi textbooks. The structure and meaning of the question and options are preserved.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the process of heat redistribution with direct absorption",
+        null,
+        "Misunderstands the role of air-mass circulation in heat distribution",
+        "Incorrectly assumes that clouds reflect all surplus heat back to space instead of redistributing it through air and ocean currents"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 1, as the equatorial regions do not heat up excessively because the surplus heat is redistributed toward the poles. The other options represent common misconceptions about heat transfer and atmospheric processes.",
+      "sources": [
+        {
+          "document": "ncert/11/geography/kegy208.pdf",
+          "ordinal": 4,
+          "pageStart": 3,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 8: Solar Radiation, Heat Balance and Temperature",
+            "EAT ALANCE AND EMPERATURE"
+          ]
+        },
+        {
+          "document": "ncert/11/geography/kegy208.pdf",
+          "ordinal": 5,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 8: Solar Radiation, Heat Balance and Temperature",
+            "EAT ALANCE AND EMPERATURE"
+          ]
+        },
+        {
+          "document": "ncert/11/geography/kegy208.pdf",
+          "ordinal": 6,
+          "pageStart": 4,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 8: Solar Radiation, Heat Balance and Temperature",
+            "EAT ALANCE AND EMPERATURE"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T06:53:13.585Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If a place is located far from the sea, what is the most likely effect on its temperature?",
+      "choices": [
+        "It will experience lower temperatures",
+        "It will have a more moderate climate",
+        "It will have a higher temperature range",
+        "It will have a lower temperature range"
+      ],
+      "answerIndex": 2,
+      "solution": "Places far from the sea are not influenced by the ocean's moderating effect, leading to greater temperature fluctuations between day and night, or season to season. This results in a higher temperature range. A more moderate climate or lower temperature range would be expected near the sea, while lower temperatures are not necessarily linked to distance from the sea.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि कोई स्थान समुद्र से दूर स्थित है, तो इसके तापमान पर सबसे संभावित प्रभाव क्या होगा?",
+          "choices": [
+            "इसका तापमान कम होगा",
+            "इसका जलवायु अधिक मध्यम होगा",
+            "इसका तापमान परास अधिक होगा",
+            "इसका तापमान परास कम होगा"
+          ],
+          "solution": "समुद्र से दूर स्थित स्थान समुद्र के मध्यमकरण प्रभाव से प्रभावित नहीं होते हैं, जिसके कारण दिन और रात या ऋतुओं के बीच तापमान के उतार-चढ़ाव अधिक होते हैं। इससे अधिक तापमान परास के परिणाम होते हैं। समुद्र के पास जलवायु अधिक मध्यम होने की अपेक्षा की जाती है, जबकि कम तापमान समुद्र से दूरी से आवश्यक रूप से जुड़ा हुआ नहीं है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and technical terms. The correct answer remains option 2, and all distractors remain incorrect.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "समुद्रापासून दूर असलेल्या ठिकाणावर तापमानावर सर्वात जास्त परिणाम कोणता असू शकतो?",
+          "choices": [
+            "त्याचे तापमान कमी असेल",
+            "त्याचे जास्वी जलवायू असेल",
+            "त्याचे तापमान विस्तार जास्वी असेल",
+            "त्याचे तापमान विस्तार कमी असेल"
+          ],
+          "solution": "समुद्रापासून दूर असलेल्या ठिकाणांना समुद्राच्या समतोल प्रभावामुळे प्रभावित केले जात नाही, ज्यामुळे दिवस आणि रात्रीत अथवा हंगामांमध्ये तापमानात जास्वी फरक असतो. हे जास्वी तापमान विस्तार निर्माण करते. समुद्राजवळ असलेल्या ठिकाणांवर जास्वी जलवायू किंवा कमी तापमान विस्तार असेल, तर कमी तापमान समुद्रापासून दूर असल्याशी निश्चितपणे संबंधित नसते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for climate and temperature concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Misunderstands the moderating influence of the sea on temperature",
+        "Confuses the effect of distance from the sea with the effect of proximity to the sea",
+        null,
+        "Ignores the impact of location on temperature variation"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct and logically leads to option 2. The reasoning aligns with the concept that inland areas (far from the sea) experience greater temperature variation due to the lack of the sea's moderating effect.",
+      "sources": [
+        {
+          "document": "ncert/11/geography/kegy208.pdf",
+          "ordinal": 4,
+          "pageStart": 3,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 8: Solar Radiation, Heat Balance and Temperature",
+            "EAT ALANCE AND EMPERATURE"
+          ]
+        },
+        {
+          "document": "ncert/11/geography/kegy208.pdf",
+          "ordinal": 5,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 8: Solar Radiation, Heat Balance and Temperature",
+            "EAT ALANCE AND EMPERATURE"
+          ]
+        },
+        {
+          "document": "ncert/11/geography/kegy208.pdf",
+          "ordinal": 6,
+          "pageStart": 4,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 8: Solar Radiation, Heat Balance and Temperature",
+            "EAT ALANCE AND EMPERATURE"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T06:53:13.585Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "Why do the subtropical deserts receive the most insolation?",
+      "choices": [
+        "Because they have the least cloud cover",
+        "Because they are closest to the sun",
+        "Because they have the highest elevation",
+        "Because they are located at the equator"
+      ],
+      "answerIndex": 0,
+      "solution": "Subtropical deserts receive the most insolation because they have the least cloud cover, allowing maximum solar radiation to reach the surface. The other options are incorrect because the distance to the sun and elevation do not significantly affect insolation, and the equator is not the main reason for the high insolation in these deserts.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "उष्णकटिबंधीय मरुस्थल क्यों सबसे अधिक अंतरिक्ष विकिरण प्राप्त करते हैं?",
+          "choices": [
+            "क्योंकि उनमें सबसे कम बादल होते हैं",
+            "क्योंकि वे सूर्य के सबसे निकट होते हैं",
+            "क्योंकि उनका सबसे अधिक ऊंचाई होती है",
+            "क्योंकि वे भूमध्य रेखा पर स्थित होते हैं"
+          ],
+          "solution": "उष्णकटिबंधीय मरुस्थल सबसे अधिक अंतरिक्ष विकिरण प्राप्त करते हैं क्योंकि उनमें सबसे कम बादल होते हैं, जिससे सौर विकिरण की अधिकतम मात्रा सतह तक पहुंच सकती है। अन्य विकल्प गलत हैं क्योंकि सूर्य से दूरी और ऊंचाई अंतरिक्ष विकिरण को निर्णायक रूप से प्रभावित नहीं करते हैं, और भूमध्य रेखा इन मरुस्थलों में उच्च अंतरिक्ष विकिरण का मुख्य कारण नहीं है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "उष्णकटिबंधीय वाळवंटांना सर्वात जास्त उत्ताप का मिळतो?",
+          "choices": [
+            "कारण त्यांचा वादळांचा विचार कमी असतो",
+            "कारण ते सूर्यापासून सर्वात जवळ असतात",
+            "कारण त्यांची उंची सर्वात जास्त असते",
+            "कारण ते भूमध्यरेखेवर असतात"
+          ],
+          "solution": "उष्णकटिबंधीय वाळवंटांना सर्वात जास्त उत्ताप त्यांच्या कमी वादळांमुळे मिळतो, ज्यामुळे सूर्याच्या विकिरणाचा अधिकाधिक भूमीवर पोहोचतो. इतर विकल्प अयोग्य आहेत कारण सूर्यापासून अंतर आणि उंची उत्तापावर अस्पष्ट प्रभाव टाकतात आणि भूमध्यरेखा हे या वाळवंटांमध्ये उच्च उत्तापाचे मुख्य कारण नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for geographical concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Believes that Earth's distance from the sun is the main factor affecting insolation",
+        "Students often confuse elevation with insolation, thinking higher places get more sunlight, not realizing that deserts are typically low-lying and have clear skies.",
+        "Believes that equatorial regions receive the most insolation due to direct sunlight, not considering that deserts are actually located slightly north or south of the equator"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 0, as subtropical deserts receive the most insolation due to minimal cloud cover. The other options reflect common misconceptions about distance to the sun, elevation, and equatorial location.",
+      "sources": [
+        {
+          "document": "ncert/11/geography/kegy208.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 1,
+          "headingPath": [
+            "Chapter 8: Solar Radiation, Heat Balance and Temperature",
+            "EAT ALANCE AND EMPERATURE"
+          ]
+        },
+        {
+          "document": "ncert/11/geography/kegy208.pdf",
+          "ordinal": 1,
+          "pageStart": 1,
+          "pageEnd": 1,
+          "headingPath": [
+            "Chapter 8: Solar Radiation, Heat Balance and Temperature",
+            "EAT ALANCE AND EMPERATURE"
+          ]
+        },
+        {
+          "document": "ncert/11/geography/kegy208.pdf",
+          "ordinal": 2,
+          "pageStart": 2,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 8: Solar Radiation, Heat Balance and Temperature",
+            "EAT ALANCE AND EMPERATURE"
+          ]
+        },
+        {
+          "document": "ncert/11/geography/kegy208.pdf",
+          "ordinal": 3,
+          "pageStart": 2,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 8: Solar Radiation, Heat Balance and Temperature",
+            "EAT ALANCE AND EMPERATURE"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T06:53:13.585Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "If a region experiences a high amount of insolation during the day but has a low temperature, what could be the most likely reason?",
+      "choices": [
+        "The region has a high albedo",
+        "The region has a low albedo",
+        "The region is at a high altitude",
+        "The region is covered in snow"
+      ],
+      "answerIndex": 0,
+      "solution": "A high albedo means the surface reflects more solar radiation, reducing temperature even if insolation is high. The other options do not explain the discrepancy between high insolation and low temperature as directly as albedo does.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि कोई क्षेत्र दिन में उच्च मात्रा में अंतरिक्ष विकिरण प्राप्त करता है लेकिन तापमान कम है, तो सबसे संभावित कारण क्या हो सकता है?",
+          "choices": [
+            "क्षेत्र का अल्बेडो उच्च है",
+            "क्षेत्र का अल्बेडो निम्न है",
+            "क्षेत्र उच्च ऊंचाई पर है",
+            "क्षेत्र बर्फ से ढका हुआ है"
+          ],
+          "solution": "उच्च अल्बेडो का अर्थ है कि सतह अधिक सौर विकिरण परावर्तित करती है, जिससे तापमान कम रहता है भले ही अंतरिक्ष विकिरण उच्च हो। अन्य विकल्प अंतरिक्ष विकिरण के उच्च मान और कम तापमान के बीच अंतर की व्याख्या अल्बेडो की तुलना में कम सीधे रूप से करते हैं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, technical terms like 'albedo' are retained as is, which is standard in Hindi science texts.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका प्रदेशाला दिवसात उच्च प्रमाणात अंतरिक्ष विकिरण मिळत असताना त्याचे तापमान कमी असते, तर त्याचे सर्वात शक्य कारण काय असू शकते?",
+          "choices": [
+            "प्रदेशाचे उच्च अल्बिडो आहे",
+            "प्रदेशाचे निम्न अल्बिडो आहे",
+            "प्रदेश उंच अल्टीट्यूडवर आहे",
+            "प्रदेश बर्फाने झाकलेला आहे"
+          ],
+          "solution": "उच्च अल्बिडो म्हणजे सतह अधिक अंतरिक्ष विकिरण परावर्तित करते, ज्यामुळे तापमान कमी होते जरी अंतरिक्ष विकिरण उच्च असले तरी. इतर विकल्प अंतरिक्ष विकिरण उच्च असताना तापमान कमी असल्याच्या विरोधात अल्बिडो पेक्षा जास्त स्पष्टीकरण देत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for scientific concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Student confuses albedo with heat retention, thinking lower albedo means less heat absorption",
+        "Students may think high altitude regions are always colder, not realizing that high altitude doesn't directly explain low temperature despite high insolation",
+        "Students may think snow reflects sunlight, but confuse reflection with heat absorption"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies that high albedo leads to more reflection of solar radiation, which explains low temperature despite high insolation. The reasoning for the other options is valid as they represent common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/11/geography/kegy208.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 1,
+          "headingPath": [
+            "Chapter 8: Solar Radiation, Heat Balance and Temperature",
+            "EAT ALANCE AND EMPERATURE"
+          ]
+        },
+        {
+          "document": "ncert/11/geography/kegy208.pdf",
+          "ordinal": 1,
+          "pageStart": 1,
+          "pageEnd": 1,
+          "headingPath": [
+            "Chapter 8: Solar Radiation, Heat Balance and Temperature",
+            "EAT ALANCE AND EMPERATURE"
+          ]
+        },
+        {
+          "document": "ncert/11/geography/kegy208.pdf",
+          "ordinal": 2,
+          "pageStart": 2,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 8: Solar Radiation, Heat Balance and Temperature",
+            "EAT ALANCE AND EMPERATURE"
+          ]
+        },
+        {
+          "document": "ncert/11/geography/kegy208.pdf",
+          "ordinal": 3,
+          "pageStart": 2,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 8: Solar Radiation, Heat Balance and Temperature",
+            "EAT ALANCE AND EMPERATURE"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T06:53:13.585Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "Which of the following scenarios best explains why the temperature range between January and July is highest in the north-eastern part of Eurasian continent?",
+      "choices": [
+        "It is located near the equator where solar radiation is strongest",
+        "It experiences frequent temperature inversions due to heavy snowfall",
+        "It has a higher land-to-sea ratio, leading to more extreme temperature differences",
+        "It is affected by cold ocean currents that lower winter temperatures"
+      ],
+      "answerIndex": 2,
+      "solution": "The correct option is that it has a higher land-to-sea ratio, leading to more extreme temperature differences. Land heats up and cools down more rapidly than water, causing larger temperature variations between seasons. The other options are incorrect because being near the equator would not result in a large temperature range, temperature inversions are not a primary cause of seasonal temperature differences, and cold ocean currents would not create the highest temperature range.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा परिदृश्य यूरेशियन महाद्वीप के उत्तर-पूर्वी भाग में जनवरी और जुलाई के बीच तापमान विस्तार के अधिकतम होने की बेस्ट व्याख्या करता है?",
+          "choices": [
+            "यह भूमध्य रेखा के पास स्थित है जहां सौर विकिरण सबसे मजबूत होता है",
+            "इसका भारी बर्फबारी के कारण तापमान उल्टाव अक्सर होता है",
+            "इसका भूमि-सागर अनुपात अधिक होता है, जिसके कारण अधिक तीव्र तापमान अंतर होता है",
+            "इसके ठंडे सागरीय धाराओं द्वारा शीतकालीन तापमान कम हो जाता है"
+          ],
+          "solution": "सही विकल्प यह है कि इसका भूमि-सागर अनुपात अधिक होता है, जिसके कारण अधिक तीव्र तापमान अंतर होता है। भूमि सूर्य के प्रकाश से तेजी से गर्म होती है और ठंडी भी हो जाती है, जिसके कारण मौसमों के बीच अधिक तापमान अंतर होता है। अन्य विकल्प गलत हैं क्योंकि भूमध्य रेखा के पास होने से बड़ा तापमान अंतर नहीं होता, तापमान उल्टाव मौसमी तापमान अंतर के प्रमुख कारण नहीं होते हैं, और ठंडे सागरीय धाराएं अधिकतम तापमान अंतर नहीं बनाती हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate geographical terminology common in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणता परिस्थिती युरेशियन महाद्वीपाच्या उत्तर-पूर्व भागात जानेवारी आणि जुलै दरम्यान तापमान विस्तार उच्चतम असण्याच्या कारणाचे सर्वात चांगले स्पष्टीकरण करतो?",
+          "choices": [
+            "ती भूमध्यरेखेजवळ आहे जेथे सौर विकिरण सर्वात शक्तिशाली असते",
+            "तिथे जास्त बर्फपाऊस कारणे तापमान उलट्या घडतात",
+            "तिथे जमीन-समुद्र गुणोत्तर जास्त असते, जेणेकरून तापमान फरक अधिक असतात",
+            "तिथे थंड समुद्र धारा प्रभावित करतात जेणेकरून उन्हाळ्यात तापमान खाली येते"
+          ],
+          "solution": "सही विकल्प तिथे जमीन-समुद्र गुणोत्तर जास्त असते, जेणेकरून तापमान फरक अधिक असतात. जमीन वर्षांतरात वेगाने गरम होते आणि थंड होते, जेणेकरून वर्षांतरात तापमान फरक अधिक असतात. इतर विकल्प चुकीचे आहेत कारण भूमध्यरेखेजवळ असल्यामुळे तापमान विस्तार उच्चतम असेल नाही, तापमान उलट्या वर्षांतरातील तापमान फरकाचे मुख्य कारण नाहीत, आणि थंड समुद्र धारा उच्चतम तापमान विस्तार तयार करणार नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for geographical concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Misinterprets the location of the region in terms of latitude",
+        "Confuses the cause of temperature inversions with the temperature range",
+        null,
+        "Incorrectly attributes the temperature range to ocean currents"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 2, as the high temperature range in the north-eastern part of Eurasia is due to continentality, which is explained by a higher land-to-sea ratio. The other options are incorrect and reflect common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/11/geography/kegy208.pdf",
+          "ordinal": 7,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 8: Solar Radiation, Heat Balance and Temperature",
+            "EAT ALANCE AND EMPERATURE"
+          ]
+        },
+        {
+          "document": "ncert/11/geography/kegy208.pdf",
+          "ordinal": 8,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 8: Solar Radiation, Heat Balance and Temperature",
+            "EAT ALANCE AND EMPERATURE"
+          ]
+        },
+        {
+          "document": "ncert/11/geography/kegy208.pdf",
+          "ordinal": 9,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 8: Solar Radiation, Heat Balance and Temperature",
+            "EAT ALANCE AND EMPERATURE"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T06:53:13.585Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
     }
   ]
 }

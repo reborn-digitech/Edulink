@@ -404,6 +404,291 @@
       "generatedAt": "2026-10-28T04:18:41.775Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "What did Omana see from the window of the train that made her feel giddy?",
+      "choices": [
+        "A long tunnel",
+        "A very big river on a long bridge",
+        "Many coconut trees",
+        "Small ponds"
+      ],
+      "answerIndex": 1,
+      "solution": "Omana saw a very big river on a long bridge, which made her feel giddy because she could see the water below and the tracks without any ground. A long tunnel would not have made her feel giddy in the same way. Small ponds and many coconut trees are not described as causing this feeling.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "ओमना ट्रेन के खिड़की से क्या देखकर घूम गई?",
+          "choices": [
+            "एक लंबा सुरंग",
+            "एक बहुत बड़ी नदी लंबे पुल पर",
+            "कई तेल के पेड़",
+            "छोटे तालाब"
+          ],
+          "solution": "ओमना ने एक बहुत बड़ी नदी लंबे पुल पर देखी, जिससे उसे घूम गई क्योंकि वह नीचे के पानी और कोई जमीन बिना ट्रैक देख सकी। एक लंबा सुरंग उसे इस तरह से घूम नहीं गई। छोटे तालाब और कई तेल के पेड़ इस भावना के कारण नहीं बताए गए हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms. The correct answer remains option (1), and the distractors are still incorrect.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "ओमनाला ट्रेनच्या बाहेर बघितलेले काय झाले ज्यामुळे तिला घाम आला?",
+          "choices": [
+            "एक लांब टनल",
+            "एक खूप मोठा नदी लांब पुलावर",
+            "खूप तांबूल झाडे",
+            "लहान तलाव"
+          ],
+          "solution": "ओमनाला एक खूप मोठा नदी लांब पुलावर दिसला, ज्यामुळे तिला घाम आला कारण तिला खालच्या पाण्याचा आणि जमिनीशिवाय ट्रॅक दिसला. लांब टनल तिला त्याप्रमाणे घाम घालणार नव्हता. लहान तलाव आणि खूप तांबूल झाडे हे या भावनेचे कारण म्हणून वर्णन केले गेलेले नाहीत.",
+          "imageAlt": null,
+          "critique": "The Marathi translation accurately reflects the English question and solution, with appropriate terminology used in Marathi education context.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "The pupil may confuse the long tunnel with the bridge.",
+        null,
+        "The pupil may not understand the specific description of the river and bridge.",
+        "The pupil may think the coconut trees are the main reason for the feeling."
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 1, as the question refers to a specific description from the text. The reasoning for the wrong options aligns with plausible misconceptions students might have.",
+      "sources": [
+        {
+          "document": "ncert/4/environmental-studies/deap107.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 7: From the Window"
+          ]
+        },
+        {
+          "document": "ncert/4/environmental-studies/deap107.pdf",
+          "ordinal": 1,
+          "pageStart": 4,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 7: From the Window"
+          ]
+        },
+        {
+          "document": "ncert/4/environmental-studies/deap107.pdf",
+          "ordinal": 2,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 7: From the Window"
+          ]
+        }
+      ],
+      "edition": "2024 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-22T23:05:47.197Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "Where did Omana see people wearing white or cream-coloured dhotis and sarees?",
+      "choices": [
+        "In Ahmedabad",
+        "In Goa",
+        "In Kerala",
+        "In Gujarat"
+      ],
+      "answerIndex": 2,
+      "solution": "Omana saw people wearing white or cream-coloured dhotis and sarees in Kerala. This type of clothing is traditionally associated with the region's climate and cultural practices. Ahmedabad and Gujarat are known for different traditional attire, and Goa has its own distinct style of clothing.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "ओमाना ने कहाँ लोगों के सफेद या मटर के रंग के धोतियों और साड़ियों में पहने देखे?",
+          "choices": [
+            "अहमदाबाद में",
+            "गोवा में",
+            "केरल में",
+            "गुजरात में"
+          ],
+          "solution": "ओमाना ने केरल में सफेद या मटर के रंग के धोतियों और साड़ियों में पहने देखे। ऐसा कपड़ा क्षेत्र के जलवायु और सांस्कृतिक प्रथाओं से पारंपरिक रूप से जुड़ा हुआ है। अहमदाबाद और गुजरात अलग-अलग पारंपरिक वस्त्रों के लिए जाने जाते हैं, और गोवा के पास अपनी अलग शैली के कपड़े हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate regional terms. The correct answer (option 2) is correctly placed, and the distractors remain incorrect.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "ओमाना लोकांनी पांढरे किंवा क्रीम रंगाचे धोतरे आणि साड्या घातलेले कुठे पाहिले?",
+          "choices": [
+            "अहमदाबादमध्ये",
+            "गोव्यामध्ये",
+            "केरळमध्ये",
+            "गुजरातमध्ये"
+          ],
+          "solution": "ओमानाने केरळमध्ये पांढरे किंवा क्रीम रंगाचे धोतरे आणि साड्या घातलेले लोक पाहिले. अशा प्रकारचे वस्त्र या प्रदेशाच्या जलवायू आणि सांस्कृतिक प्रथांशी विशिष्टपणे संबंधित आहेत. अहमदाबाद आणि गुजरात वेगळ्या पारंपरिक वस्त्रांनी ओळखले जातात, आणि गोव्याच्या वस्त्रांची आपली विशिष्ट शैली आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for regions and clothing items.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "The pupil may confuse Ahmedabad with Kerala.",
+        "The pupil may not remember the specific location where the clothing was described.",
+        null,
+        "The pupil may think Gujarat is where the clothing was seen."
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is Kerala (option 2). The solution correctly identifies the location based on the passage, and the reasons for the wrong options reflect plausible student misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/4/environmental-studies/deap107.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 7: From the Window"
+          ]
+        },
+        {
+          "document": "ncert/4/environmental-studies/deap107.pdf",
+          "ordinal": 1,
+          "pageStart": 4,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 7: From the Window"
+          ]
+        },
+        {
+          "document": "ncert/4/environmental-studies/deap107.pdf",
+          "ordinal": 2,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 7: From the Window"
+          ]
+        }
+      ],
+      "edition": "2024 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-22T23:05:47.197Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "Which language is spoken in the state where Omana’s Valiyamma lives?",
+      "choices": [
+        "Malayalam",
+        "Konkani",
+        "Marathi",
+        "Gujarati"
+      ],
+      "answerIndex": 0,
+      "solution": "Malayalam is the correct answer because Valiyamma is a term used in the Malayalam language. Konkani is spoken in Goa, Marathi in Maharashtra, and Gujarati in Gujarat, none of which are associated with the term Valiyamma.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "ओमाना के वालियम्मा के रहने वाले राज्य में कौन सी भाषा बोली जाती है?",
+          "choices": [
+            "मलयालम",
+            "कोंकणी",
+            "मराठी",
+            "गुजराती"
+          ],
+          "solution": "मलयालम सही उत्तर है क्योंकि वालियम्मा शब्द मलयालम भाषा में उपयोग किया जाता है। कोंकणी गोवा में, मराठी महाराष्ट्र में और गुजराती गुजरात में बोली जाती है, जिनमें से कोई भी वालियम्मा शब्द से जुड़ा नहीं है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate regional terms as per Hindi-medium curriculum.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "ओमनाच्या वालियाम्माच्या राज्यात कोणता भाषा बोलली जाते?",
+          "choices": [
+            "मलयाळम",
+            "कोंकणी",
+            "मराठी",
+            "गुजराती"
+          ],
+          "solution": "मलयाळम हा बरोबर उत्तर आहे कारण वालियाम्मा हा मलयाळम भाषेतील शब्द आहे. कोंकणी गोव्यात बोलली जाते, मराठी महाराष्ट्रात आणि गुजराती गुजरातमध्ये, जे वालियाम्माशी संबंधित नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, with appropriate Marathi terms for languages and states. The logic in the solution matches the original.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "The pupil may confuse Konkani with the language of Valiyamma.",
+        "The pupil may think Marathi is spoken in the same area as Valiyamma.",
+        "The pupil may think Gujarati is spoken where Valiyamma lives."
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct and aligns with the key. The reasoning about the other options reflects plausible misconceptions students might have.",
+      "sources": [
+        {
+          "document": "ncert/4/environmental-studies/deap107.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 7: From the Window"
+          ]
+        },
+        {
+          "document": "ncert/4/environmental-studies/deap107.pdf",
+          "ordinal": 1,
+          "pageStart": 4,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 7: From the Window"
+          ]
+        },
+        {
+          "document": "ncert/4/environmental-studies/deap107.pdf",
+          "ordinal": 2,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 7: From the Window"
+          ]
+        }
+      ],
+      "edition": "2024 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-22T23:05:47.197Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
     }
   ]
 }

@@ -1,0 +1,516 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-11-06T17:49:58.671Z",
+  "finishedAt": "2026-11-06T18:22:51.170Z",
+  "seconds": 1972,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "१० वी गणित भाग - १ इंग्रजी",
+    "bookCode": "1003000608",
+    "document": "balbharati/10/mathematics/1003000608.pdf",
+    "classLevel": 10,
+    "subject": "Mathematics",
+    "chapter": "Chapter 2 — Quadratic Equations",
+    "edition": "2026 edition",
+    "chunks": 13,
+    "groups": 5
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 0,
+    "6": 0
+  },
+  "style": {
+    "present": false,
+    "excerpts": [],
+    "note": "no past papers in the corpus (ContentDocument source \"papers\"): levels 5 and 6 skipped"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 8,
+      "ms": 274060,
+      "in": 27,
+      "out": 23,
+      "rejects": 6,
+      "promptTokens": 35008,
+      "completionTokens": 6595
+    },
+    "critique": {
+      "calls": 34,
+      "ms": 1140041,
+      "in": 23,
+      "out": 20,
+      "rejects": 3,
+      "promptTokens": 15449,
+      "completionTokens": 5891
+    },
+    "solver": {
+      "calls": 173,
+      "ms": 438637,
+      "in": 20,
+      "out": 14,
+      "rejects": 6,
+      "promptTokens": 36478,
+      "completionTokens": 1942
+    },
+    "form": {
+      "calls": 4,
+      "ms": 20757,
+      "in": 14,
+      "out": 9,
+      "rejects": 5,
+      "promptTokens": 1021,
+      "completionTokens": 328
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 9,
+      "out": 9,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 2,
+      "ms": 1771,
+      "in": 9,
+      "out": 8,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 33,
+      "ms": 1254860,
+      "in": 16,
+      "out": 16,
+      "rejects": 0,
+      "promptTokens": 17744,
+      "completionTokens": 8043
+    }
+  },
+  "kept": 8,
+  "keptByLevel": {
+    "1": 2,
+    "2": 3,
+    "3": 0,
+    "4": 3,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 3,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "If x = 5 is a root of the equation kx^2 - 14x - 5 = 0, what is the value of k?",
+      "ms": {
+        "draft": 14851,
+        "critique": 11273,
+        "solver": 2226
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following represents the general form of a quadratic equation?",
+      "ms": {
+        "draft": 9805,
+        "critique": 11166,
+        "solver": 2487,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which method is used to solve a quadratic equation when the factors cannot be found easily?",
+      "ms": {
+        "draft": 7393,
+        "critique": 13456,
+        "solver": 2639
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a quadratic equation is written as (x - 5)(x + 1) = 0, what are the roots of the equation?",
+      "ms": {
+        "draft": 7393,
+        "critique": 10912,
+        "solver": 20033,
+        "form": 5352
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a quadratic equation has roots that are equal, what is the value of the discriminant?",
+      "ms": {
+        "draft": 9805,
+        "critique": 18136,
+        "solver": 10393,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the sum of the roots of the quadratic equation x^2 - 5x + 6 = 0?",
+      "ms": {
+        "draft": 9805,
+        "critique": 48526,
+        "solver": 118571,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a quadratic equation?",
+      "ms": {
+        "draft": 7849,
+        "critique": 68158
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a quadratic equation?",
+      "ms": {
+        "draft": 7529,
+        "critique": 92311,
+        "solver": 134070
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the roots of a quadratic equation are real and equal, what is the value of the discriminant?",
+      "ms": {
+        "draft": 7849,
+        "critique": 75180,
+        "solver": 34087,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "The sum of two roots of a quadratic equation is 5 and the sum of their cubes is 35. What is the quadratic equation?",
+      "ms": {
+        "draft": 7849,
+        "critique": 42780,
+        "solver": 17182
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a quadratic equation in standard form?",
+      "ms": {
+        "draft": 9928,
+        "critique": 46773
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a quadratic equation?",
+      "ms": {
+        "draft": 9928,
+        "critique": 50154
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the value of x if (x - 3)(x + 2) = 0?",
+      "ms": {
+        "draft": 10298,
+        "critique": 51352,
+        "solver": 65828
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a quadratic equation?",
+      "ms": {
+        "draft": 15950,
+        "critique": 37303,
+        "solver": 80699
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following equations is a quadratic equation?",
+      "ms": {
+        "draft": 9805,
+        "critique": 26207,
+        "solver": 136160,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is the general form of a quadratic equation?",
+      "ms": {
+        "draft": 14851,
+        "critique": 11656,
+        "solver": 26591,
+        "form": 3593,
+        "translation": 190073
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of the method used to solve a quadratic equation by breaking it into linear factors?",
+      "ms": {
+        "draft": 7393,
+        "critique": 10810,
+        "solver": 2400,
+        "form": 7035,
+        "translation": 208864
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a quadratic equation?",
+      "ms": {
+        "draft": 14851,
+        "critique": 12292,
+        "solver": 22229,
+        "form": 1,
+        "translation": 168486
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a correct step in the factorization method for solving a quadratic equation?",
+      "ms": {
+        "draft": 7393,
+        "critique": 11081,
+        "solver": 2486,
+        "form": 6013,
+        "translation": 201499
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If the discriminant of a quadratic equation is zero, what can be said about its roots?",
+      "ms": {
+        "draft": 9928,
+        "critique": 41357,
+        "solver": 10500,
+        "form": 0,
+        "translation": 136233
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following equations can be rewritten in the form ax^2 + bx + c = 0?",
+      "ms": {
+        "draft": 14851,
+        "critique": 16594,
+        "solver": 2880,
+        "form": 0,
+        "translation": 185916
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "If x = 2 is a root of the equation x^2 + kx + 6 = 0, what is the value of k?",
+      "ms": {
+        "draft": 15950,
+        "critique": 39034,
+        "solver": 61585,
+        "form": 1,
+        "translation": 42354
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "Solve the quadratic equation x² - 6x + 5 = 0 using the factorization method.",
+      "ms": {
+        "draft": 10298,
+        "critique": 46237,
+        "solver": 8109,
+        "form": 0,
+        "translation": 99464
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "Which of the following is not a quadratic equation?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "If the roots of the equation x² + kx + k = 0 are real and equal, what is the value of k?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the value of the discriminant for the equation x² - 5x + = 0?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If x = 5 is a root of the equation kx^2 - 14x - 5 = 0, what is the value of k?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following represents the general form of a quadratic equation?",
+      "reason": "options 0 and 1 say the same thing (\"ax + by + c = 0\" / \"ax^2 + by + c = 0\"); distractor 3's reason is not a one-line misconception (\"Correct option is not the longest and has the correct struct…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Which method is used to solve a quadratic equation when the factors cannot be found easily?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a quadratic equation is written as (x - 5)(x + 1) = 0, what are the roots of the equation?",
+      "reason": "options 1 and 3 are the same (\"-5 and -1\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a quadratic equation has roots that are equal, what is the value of the discriminant?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Correct option is not the longest and has the correct struct…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the sum of the roots of the quadratic equation x^2 - 5x + 6 = 0?",
+      "reason": "options 2 and 3 are the same (\"3\"); options 2 and 3 are the same number"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is a quadratic equation?",
+      "reason": "the critic finds option 3 correct, the key is 0; more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following is a quadratic equation?",
+      "reason": "distractor 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If the roots of a quadratic equation are real and equal, what is the value of the discriminant?",
+      "reason": "options mix numbers and words (1 of 4 are numbers); checkExpr \"0\" is a bare literal"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "The sum of two roots of a quadratic equation is 5 and the sum of their cubes is 35. What is the quadratic equation?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "If the discriminant of a quadratic equation is positive but not a perfect square, what can be said about its roots?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 1, round 2)",
+      "reason": "The operation was aborted due to timeout"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 2, round 2)",
+      "reason": "The operation was aborted due to timeout"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is a quadratic equation in standard form?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is a quadratic equation?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "What is the value of x if (x - 3)(x + 2) = 0?",
+      "reason": "distractors 0, 1, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "Which of the following is a quadratic equation?",
+      "reason": "distractor 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "Which of the following equations is a quadratic equation?",
+      "reason": "near-duplicate of batch item \"Which of the following is an example of a quadrati…\" (cosine 0.924 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "no past papers in the corpus (ContentDocument source \"papers\"): levels 5 and 6 skipped",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

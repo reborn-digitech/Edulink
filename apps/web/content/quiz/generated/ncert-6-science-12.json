@@ -709,6 +709,4161 @@
       "generatedAt": "2026-11-01T20:59:24.186Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "Which of the following is a satellite of Earth?",
+      "choices": [
+        "Sirius",
+        "Venus",
+        "Mars",
+        "Moon"
+      ],
+      "answerIndex": 3,
+      "solution": "The Moon is a satellite of Earth because it orbits the planet. Sirius is a star, not a satellite. Venus and Mars are planets, not satellites of Earth.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन पृथ्वी का उपग्रह है?",
+          "choices": [
+            "सिरियस",
+            "शुक्र",
+            "मंगल",
+            "चंद्रमा"
+          ],
+          "solution": "चंद्रमा पृथ्वी का उपग्रह है क्योंकि यह ग्रह के चारों ओर घूमता है। सिरियस एक तारा है, उपग्रह नहीं। शुक्र और मंगल ग्रह हैं, पृथ्वी के उपग्रह नहीं।",
+          "imageAlt": null,
+          "critique": "The translation accurately reflects the original question and solution, with appropriate Hindi terminology for celestial bodies.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते पृथ्वीचे उपग्रह आहे?",
+          "choices": [
+            "सिरियस",
+            "शुक्र",
+            "मंगळ",
+            "चंद्र"
+          ],
+          "solution": "चंद्र पृथ्वीचा उपग्रह आहे कारण तो ग्रहाच्या फिरतो. सिरियस तारा आहे, उपग्रह नाही. शुक्र आणि मंगळ ग्रह आहेत, पृथ्वीचे उपग्रह नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terms for astronomical objects.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "confuses stars with satellites",
+        "names a planet",
+        "names a planet",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": null,
+      "critique": "The question is clear and the correct answer is unambiguous. The distractors are common misconceptions, and the solution correctly identifies the Moon as Earth's satellite.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu112.pdf",
+          "ordinal": 12,
+          "pageStart": 19,
+          "pageEnd": 21,
+          "headingPath": [
+            "Chapter 12: Beyond Earth",
+            "12.5 The Universe",
+            "Let us enhance our learning"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu112.pdf",
+          "ordinal": 13,
+          "pageStart": 21,
+          "pageEnd": 22,
+          "headingPath": [
+            "Chapter 12: Beyond Earth",
+            "12.5 The Universe",
+            "Learning further"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu112.pdf",
+          "ordinal": 14,
+          "pageStart": 23,
+          "pageEnd": 23,
+          "headingPath": [
+            "Chapter 12: Beyond Earth",
+            "12.5 The Universe",
+            "It is not the end, my friend!"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-31T10:03:44.728Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Why do stars other than the Sun appear as bright dots in the night sky?",
+      "choices": [
+        "They are too far away from Earth",
+        "They are smaller than the Sun",
+        "They are not visible during the day",
+        "They are not bright enough"
+      ],
+      "answerIndex": 0,
+      "solution": "Stars other than the Sun appear as bright dots because they are extremely far away from Earth, making them look small despite their actual size and brightness. The other options are incorrect because the size of a star relative to the Sun or its brightness does not explain why it appears as a dot. The visibility of stars during the day is unrelated to their appearance as dots in the night sky.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "सूर्य के अलावा तारे रात के आकाश में चमकीले बिंदु के रूप में क्यों दिखाई देते हैं?",
+          "choices": [
+            "वे पृथ्वी से बहुत दूर हैं",
+            "वे सूर्य के मुकाबले छोटे हैं",
+            "वे दिन में दिखाई नहीं देते",
+            "वे पर्याप्त रूप से चमकीले नहीं हैं"
+          ],
+          "solution": "सूर्य के अलावा तारे चमकीले बिंदु के रूप में दिखाई देते हैं क्योंकि वे पृथ्वी से अत्यधिक दूर हैं, जिसके कारण उनके वास्तविक आकार और चमक के बावजूद वे छोटे दिखाई देते हैं। अन्य विकल्प गलत हैं क्योंकि एक तारे का सूर्य के मुकाबले आकार या चमक उसके बिंदु के रूप में दिखाई देने की व्याख्या नहीं करता है। दिन में तारों की दृश्यता रात के आकाश में उनके बिंदु के रूप में दिखाई देने से संबंधित नहीं है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains original meaning, and uses appropriate Hindi scientific terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "सूर्याबरोबरच्या तारांना रात्रीच्या आकाशात ज्या चमकदार बिंदूंसारखे दिसते का?",
+          "choices": [
+            "ते पृथ्वीपासून खूप दूर असतात",
+            "ते सूर्यापेक्षा लहान असतात",
+            "ते दिवसात दिसत नाहीत",
+            "ते पुरेसे चमकदार नसतात"
+          ],
+          "solution": "सूर्याबरोबरच्या तारांना ज्या चमकदार बिंदूंसारखे दिसते कारण ते पृथ्वीपासून खूप दूर असतात, ज्यामुळे त्यांच्या खर्या आकाराच्या आणि चमकीच्या तुलनेत ते लहान दिसतात. इतर विकल्प अयोग्य आहेत कारण तारांचा सूर्याशी तुलना करून त्यांचा आकार किंवा त्यांची चमक त्यांना बिंदूसारखे दिसण्याच्या कारणाला स्पष्ट करू शकत नाहीत. दिवसात तारांची दृश्यता रात्रीच्या आकाशात त्यांच्या बिंदूसारख्या दिसण्याशी संबंधित नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for astronomical concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Students often think that size directly determines brightness, not considering distance or luminosity",
+        "students confuse visibility with brightness and think stars are only visible at night because they are not bright enough to be seen during the day",
+        "Believes brightness is the main factor, not distance or atmospheric conditions"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 0, as distance is the primary reason stars appear as bright dots. The other options reflect common misconceptions about size, visibility, and brightness.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu112.pdf",
+          "ordinal": 3,
+          "pageStart": 6,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 12: Beyond Earth",
+            "12.2 Night Sky Watching"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu112.pdf",
+          "ordinal": 4,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 12: Beyond Earth",
+            "12.2 Night Sky Watching"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu112.pdf",
+          "ordinal": 5,
+          "pageStart": 8,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 12: Beyond Earth",
+            "12.3 Our Solar System"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-31T10:03:44.728Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "Which of the following is a planet that moves around the Sun and is also called an evening star?",
+      "choices": [
+        "Venus",
+        "Mars",
+        "Jupiter",
+        "Saturn"
+      ],
+      "answerIndex": 0,
+      "solution": "Venus is a planet that moves around the Sun and is commonly known as the evening star. Mars, Jupiter, and Saturn are not referred to as the evening star.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा एक ग्रह है जो सूर्य के चारों ओर घूमता है और शाम का तारा कहा जाता है?",
+          "choices": [
+            "शुक्र",
+            "मंगल",
+            "बृहस्पति",
+            "शनि"
+          ],
+          "solution": "शुक्र सूर्य के चारों ओर घूमने वाला एक ग्रह है और इसे आमतौर पर शाम का तारा कहा जाता है। मंगल, बृहस्पति और शनि को शाम का तारा नहीं कहा जाता है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains original meaning, and uses standard Hindi astronomical terms.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी सूर्याभोवती फिरणारा ग्रह आणि सायंकाळी तारा म्हणून ओळखला जाणारा ग्रह कोणता आहे?",
+          "choices": [
+            "शुक्र",
+            "मंगळ",
+            "बृहस्पती",
+            "शनि"
+          ],
+          "solution": "शुक्र सूर्याभोवती फिरणारा ग्रह आहे आणि सायंकाळी तारा म्हणून सामान्यतः ओळखला जातो. मंगळ, बृहस्पती आणि शनि हे सायंकाळी तारा म्हणून ओळखले जात नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Marathi astronomical terms.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Believes that Mars is referred to as the evening star due to its bright appearance in the sky",
+        "Believes that Jupiter is an evening star due to its brightness and visibility in the night sky",
+        "Confuses the evening star with a gas giant planet"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is Venus, which is indeed called the evening star. The other options are incorrect, and the author's reasons for the distractors reflect common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu112.pdf",
+          "ordinal": 12,
+          "pageStart": 19,
+          "pageEnd": 21,
+          "headingPath": [
+            "Chapter 12: Beyond Earth",
+            "12.5 The Universe",
+            "Let us enhance our learning"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu112.pdf",
+          "ordinal": 13,
+          "pageStart": 21,
+          "pageEnd": 22,
+          "headingPath": [
+            "Chapter 12: Beyond Earth",
+            "12.5 The Universe",
+            "Learning further"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu112.pdf",
+          "ordinal": 14,
+          "pageStart": 23,
+          "pageEnd": 23,
+          "headingPath": [
+            "Chapter 12: Beyond Earth",
+            "12.5 The Universe",
+            "It is not the end, my friend!"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-31T10:03:44.728Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "What is the name of the region where most asteroids are found?",
+      "choices": [
+        "Asteroid Belt",
+        "Comet Zone",
+        "Galaxy Region",
+        "Solar System"
+      ],
+      "answerIndex": 0,
+      "solution": "The region where most asteroids are found is called the asteroid belt, as it is the area between the orbits of Mars and Jupiter where the majority of asteroids reside. The other options, such as Comet Zone, Galaxy Region, and Solar System, do not specifically refer to this area. The Solar System is a much broader term, and Comet Zone is not a recognized scientific term for asteroid locations.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "अधिकांश एस्टेरॉइड किस क्षेत्र में पाए जाते हैं?",
+          "choices": [
+            "एस्टेरॉइड बेल्ट",
+            "कॉमेट क्षेत्र",
+            "गैलेक्सी क्षेत्र",
+            "सौर मंडल"
+          ],
+          "solution": "अधिकांश एस्टेरॉइड के क्षेत्र को एस्टेरॉइड बेल्ट कहा जाता है, क्योंकि यह मंगल और बृहस्पति के कक्षाओं के बीच का क्षेत्र है जहां अधिकांश एस्टेरॉइड रहते हैं। अन्य विकल्प, जैसे कि कॉमेट क्षेत्र, गैलेक्सी क्षेत्र और सौर मंडल, इस क्षेत्र के लिए विशिष्ट रूप से उल्लेख नहीं करते हैं। सौर मंडल एक बहुत व्यापक शब्द है, और कॉमेट क्षेत्र एस्टेरॉइड के स्थानों के लिए एक स्वीकृत वैज्ञानिक शब्द नहीं है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains original meaning, and uses appropriate scientific terminology in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "अस्टेरॉइड्सच्या अधिकांश भागाचे नाव काय आहे?",
+          "choices": [
+            "अस्टेरॉइड बेल्ट",
+            "कॉमेट झोन",
+            "गॅलॅक्सी प्रदेश",
+            "सौरमंडळ"
+          ],
+          "solution": "अस्टेरॉइड्सच्या अधिकांश भागाचे नाव अस्टेरॉइड बेल्ट आहे, कारण हा क्षेत्र मंगळ आणि बृहस्पतीच्या कक्षांमध्ये असतो आणि अधिकांश अस्टेरॉइड येथे राहतात. इतर विकल्प, जसे की कॉमेट झोन, गॅलॅक्सी प्रदेश आणि सौरमंडळ, या क्षेत्राला विशिष्टपणे संदर्भित करत नाहीत. सौरमंडळ हा एक खूप मोठा शब्द आहे, आणि कॉमेट झोन हा अस्टेरॉइड ठिकाणांसाठी एखादा ओळखलेला वैज्ञानिक शब्द नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for astronomical concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "confuses asteroid belt with other regions",
+        "confuses asteroid belt with comets",
+        "confuses asteroid belt with the entire Solar System"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is well-constructed, with a clear correct answer and plausible distractors based on common misconceptions. The solution is accurate and aligns with the correct answer.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu112.pdf",
+          "ordinal": 9,
+          "pageStart": 14,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 12: Beyond Earth",
+            "12.3 Our Solar System"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu112.pdf",
+          "ordinal": 10,
+          "pageStart": 16,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 12: Beyond Earth",
+            "12.3 Our Solar System"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu112.pdf",
+          "ordinal": 11,
+          "pageStart": 17,
+          "pageEnd": 19,
+          "headingPath": [
+            "Chapter 12: Beyond Earth",
+            "12.5 The Universe"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-31T10:03:44.728Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "Which of the following is a famous comet that appears every 76 years?",
+      "choices": [
+        "Halley’s Comet",
+        "Comet Hale-Bopp",
+        "Comet Lovejoy",
+        "Comet NEAT"
+      ],
+      "answerIndex": 0,
+      "solution": "Halley’s Comet is known for its periodic appearance every 76 years, making it the correct answer. Comet Hale-Bopp, Comet Lovejoy, and Comet NEAT do not have this specific 76-year orbital period. The other comets have different orbital periods or are not recognized for this particular cycle.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन एक प्रसिद्ध धूमकेतु है जो हर 76 साल बाद दिखाई देता है?",
+          "choices": [
+            "हैली का धूमकेतु",
+            "हेल-बॉप का धूमकेतु",
+            "लवजॉय का धूमकेतु",
+            "नीट का धूमकेतु"
+          ],
+          "solution": "हैली का धूमकेतु हर 76 साल बाद आवर्ती रूप से दिखाई देता है, जिसके कारण यह सही उत्तर है। हेल-बॉप का धूमकेतु, लवजॉय का धूमकेतु और नीट का धूमकेतु के पास इस विशिष्ट 76 साल का कक्षीय अवधि नहीं है। अन्य धूमकेतुओं के अलग-अलग कक्षीय अवधि होती है या इन्हें इस विशिष्ट चक्र के लिए पहचाना नहीं जाता है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriately translated, and the structure matches the English version.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणता एक 76 वर्षांनी एकदा दिसणारा प्रसिद्ध धूमकेतू आहे?",
+          "choices": [
+            "हॅलीचा धूमकेतू",
+            "धूमकेतू हेल-बॉप",
+            "धूमकेतू लव्हजॉय",
+            "धूमकेतू एनईएटी"
+          ],
+          "solution": "हॅलीचा धूमकेतू 76 वर्षांच्या आवर्तनाने दिसत असल्यामुळे तो योग्य उत्तर आहे. धूमकेतू हेल-बॉप, धूमकेतू लव्हजॉय आणि धूमकेतू एनईएटी यांच्या विशिष्ट 76 वर्षांच्या कक्षेचा अभाव आहे. इतर धूमकेतूंच्या विविध कक्षा आहेत किंवा त्यांच्याकडे या विशिष्ट चक्राची ओळख नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi terminology for astronomical terms.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Believes comets that are visible to the naked eye are the ones that appear every 76 years",
+        "Believes all comets are named after people and assumes Lovejoy is a famous periodic comet",
+        "Believes all comets have short periods and confuse NEAT with a periodic comet"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is Halley's Comet, which is indeed a famous comet that appears every 76 years. The author's reasoning is sound, and the misconceptions listed for the other options are plausible for students.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu112.pdf",
+          "ordinal": 9,
+          "pageStart": 14,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 12: Beyond Earth",
+            "12.3 Our Solar System"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu112.pdf",
+          "ordinal": 10,
+          "pageStart": 16,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 12: Beyond Earth",
+            "12.3 Our Solar System"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu112.pdf",
+          "ordinal": 11,
+          "pageStart": 17,
+          "pageEnd": 19,
+          "headingPath": [
+            "Chapter 12: Beyond Earth",
+            "12.5 The Universe"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-31T10:03:44.728Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "What is the primary reason for the tail of a comet?",
+      "choices": [
+        "Evaporated material",
+        "Reflection of sunlight",
+        "Magnetic field",
+        "Gravity"
+      ],
+      "answerIndex": 0,
+      "solution": "The primary reason for the tail of a comet is evaporated material, which is released as the comet approaches the Sun and heats up. Reflection of sunlight, magnetic field, and gravity do not directly cause the formation of the tail. The tail is formed by the material that vaporizes from the comet's nucleus, not by external forces like gravity or magnetic fields.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक धूमकेतु के पूंछ का प्राथमिक कारण क्या है?",
+          "choices": [
+            "उत्सर्जित सामग्री",
+            "सूर्य के प्रकाश के परावर्तन",
+            "चुंबकीय क्षेत्र",
+            "गुरुत्वाकर्षण"
+          ],
+          "solution": "एक धूमकेतु के पूंछ का प्राथमिक कारण उत्सर्जित सामग्री है, जो धूमकेतु के सूर्य के पास आने और गर्म होने पर छोड़ दी जाती है। प्रकाश के परावर्तन, चुंबकीय क्षेत्र और गुरुत्वाकर्षण धूमकेतु के पूंछ के निर्माण के सीधे कारण नहीं हैं। पूंछ धूमकेतु के नाभिक से वाष्पित सामग्री द्वारा बनती है, गुरुत्वाकर्षण या चुंबकीय क्षेत्र जैसे बाहरी बलों द्वारा नहीं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, technical terms match standard Hindi science terminology, and the logic of the question and solution is preserved.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "कॉमेटच्या पुंजाचे मुख्य कारण काय आहे?",
+          "choices": [
+            "उत्सर्जित वाफ",
+            "सूर्याच्या प्रकाशाचे प्रतिबिंब",
+            "चुंबकीय क्षेत्र",
+            "गुरुत्वाकर्षण"
+          ],
+          "solution": "कॉमेटच्या पुंजाचे मुख्य कारण उत्सर्जित वाफ आहे, जे कॉमेट सूर्याजवळ जाऊन तापल्यावर बाहेर पडते. सूर्याच्या प्रकाशाचे प्रतिबिंब, चुंबकीय क्षेत्र आणि गुरुत्वाकर्षण यांनी पुंजाचे निर्माण सीधा होत नाही. पुंज तयार होतो जेव्हा कॉमेटच्या न्यूक्लियसमधून वाफ बाहेर पडते, गुरुत्वाकर्षण किंवा चुंबकीय क्षेत्रासारख्या बाह्य बलांमुळे नव्हे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "confuses tail formation with other phenomena",
+        "confuses tail formation with reflection",
+        "confuses tail formation with magnetic forces"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 0, as the tail of a comet is formed by evaporated material. The other options represent common misconceptions about comet tails.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu112.pdf",
+          "ordinal": 9,
+          "pageStart": 14,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 12: Beyond Earth",
+            "12.3 Our Solar System"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu112.pdf",
+          "ordinal": 10,
+          "pageStart": 16,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 12: Beyond Earth",
+            "12.3 Our Solar System"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu112.pdf",
+          "ordinal": 11,
+          "pageStart": 17,
+          "pageEnd": 19,
+          "headingPath": [
+            "Chapter 12: Beyond Earth",
+            "12.5 The Universe"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-31T10:03:44.728Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Why is the Sun able to appear larger and brighter than other stars, even though some stars are larger than the Sun?",
+      "choices": [
+        "Because the Sun is the only star that can be seen during the day",
+        "Because the Sun is closer to Earth than other stars",
+        "Because the Sun is made of gases",
+        "Because the Sun is the only star that gives light and heat"
+      ],
+      "answerIndex": 1,
+      "solution": "The Sun appears larger and brighter than other stars because it is much closer to Earth, which makes it seem bigger and brighter despite some stars being physically larger. The other options are incorrect because the visibility of the Sun during the day, its composition of gases, and its role in providing light and heat do not explain its apparent size and brightness compared to other stars.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "सूर्य अन्य तारों की तुलना में बड़ा और चमकदार क्यों दिखाई देता है, भले ही कुछ तारे सूर्य से बड़े हों?",
+          "choices": [
+            "क्योंकि सूर्य दिन में दिखाई देने वाला एकमात्र तारा है",
+            "क्योंकि सूर्य पृथ्वी से अन्य तारों की तुलना में निकट है",
+            "क्योंकि सूर्य गैसों से बना हुआ है",
+            "क्योंकि सूर्य एकमात्र तारा है जो प्रकाश और ऊष्मा प्रदान करता है"
+          ],
+          "solution": "सूर्य अन्य तारों की तुलना में बड़ा और चमकदार दिखाई देता है क्योंकि यह पृथ्वी के बहुत करीब है, जिसके कारण यह बड़ा और चमकदार दिखाई देता है भले ही कुछ तारे शारीरिक रूप से बड़े हों। अन्य विकल्प गलत हैं क्योंकि दिन में सूर्य के दिखाई देने, इसके गैसों से बने होने और इसके प्रकाश और ऊष्मा प्रदान करने के कारण अन्य तारों की तुलना में इसके दिखाई देने वाले आकार और चमक की व्याख्या नहीं करते।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains the same meaning, and uses appropriate scientific terminology in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "सूर्य इतर तारांपेक्षा मोठा आणि उजळ दिसतो का, जरी इतर तारांपैकी काही सूर्यापेक्षा मोठ्या असतील?",
+          "choices": [
+            "कारण सूर्य हा दिवसात दिसणारा एकमेव तारा आहे",
+            "कारण सूर्य इतर तारांपेक्षा पृथ्वीला जास्त जवळ आहे",
+            "कारण सूर्य वायूंनी बनलेला आहे",
+            "कारण सूर्य हा एकमेव तारा आहे जो प्रकाश आणि उष्णता देतो"
+          ],
+          "solution": "सूर्य इतर तारांपेक्षा मोठा आणि उजळ दिसतो कारण तो पृथ्वीला जास्त जवळ असतो, ज्यामुळे तो इतर तारांपेक्षा जास्त मोठा आणि उजळ दिसतो, जरी काही तारांचा वास्तविक आकार मोठा असेल. इतर विकल्प चुकीचे आहेत कारण सूर्य दिवसात दिसतो, त्याचे वायूंनी बनलेले असणे आणि त्याचे प्रकाश आणि उष्णता देण्याचे कार्य इतर तारांपेक्षा त्याच्या दिसणार्या आकार आणि उजळतेच्या तुलनेत व्याख्या करू शकत नाही.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the original meaning, and uses appropriate scientific terminology. The correct answer (option 1) is in the same position as in the English version. All distractors remain incorrect in the Marathi version.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Believes the Sun is unique in being visible during the day, not understanding that all stars are visible during the day but are outshone by sunlight",
+        null,
+        "Misunderstands the reason for the Sun's appearance as being due to its composition, not its distance",
+        "Confuses the Sun's role in providing light and heat with the reason for its appearance in the sky."
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 1, as the Sun appears larger and brighter due to its proximity to Earth. The other options represent common misconceptions about the Sun's visibility, composition, and role.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu112.pdf",
+          "ordinal": 3,
+          "pageStart": 6,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 12: Beyond Earth",
+            "12.2 Night Sky Watching"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu112.pdf",
+          "ordinal": 4,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 12: Beyond Earth",
+            "12.2 Night Sky Watching"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu112.pdf",
+          "ordinal": 5,
+          "pageStart": 8,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 12: Beyond Earth",
+            "12.3 Our Solar System"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-31T10:03:44.728Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Why is Pluto no longer classified as a planet?",
+      "choices": [
+        "Because it is too small",
+        "Because it does not revolve around the Sun",
+        "Because it is not spherical",
+        "Because it has not cleared its orbit"
+      ],
+      "answerIndex": 3,
+      "solution": "The correct answer is because it has not cleared its orbit. This is a key criterion for a planet, as it means Pluto shares its orbital path with other objects. The other options are incorrect because size, orbit around the Sun, and shape are not the primary reasons for its reclassification.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "प्लूटो को ग्रह के रूप में वर्गीकृत क्यों नहीं किया जाता है?",
+          "choices": [
+            "क्योंकि यह बहुत छोटा है",
+            "क्योंकि यह सूर्य के चारों ओर घूमता नहीं है",
+            "क्योंकि यह गोल नहीं है",
+            "क्योंकि यह अपना कक्ष नहीं साफ कर सका है"
+          ],
+          "solution": "सही उत्तर यह है कि यह अपना कक्ष नहीं साफ कर सका है। यह एक मुख्य मानदंड है, क्योंकि इसका अर्थ है कि प्लूटो अपने कक्ष मार्ग में अन्य वस्तुओं के साथ साझा करता है। अन्य विकल्प गलत हैं क्योंकि आकार, सूर्य के चारों ओर घूमना और आकृति मुख्य कारण नहीं हैं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, with appropriate Hindi scientific terminology used.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "प्लूटो आता ग्रह म्हणून वर्गीकृत का नाही?",
+          "choices": [
+            "कारण तो खूप लहान आहे",
+            "कारण तो सूर्याभोवती फिरत नाही",
+            "कारण तो गोल नाही आहे",
+            "कारण त्याने आपला मार्ग साफ केलेला नाही"
+          ],
+          "solution": "योग्य उत्तर हे आहे की त्याने आपला मार्ग साफ केलेला नाही. हे ग्रहाच्या वर्गीकरणाचे मुख्य अट आहे, कारण त्यामुळे प्लूटो इतर वस्तूंसह आपल्या कक्षेत असतो. इतर विकल्प चूक आहेत कारण आकार, सूर्याभोवती फिरणे आणि आकृती हे प्लूटोच्या पुनर्वर्गीकरणाचे प्रमुख कारण नाहीत.",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for scientific concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Students often confuse size with planetary status, thinking that smaller objects cannot be planets.",
+        "Incorrectly assumes Pluto does not revolve around the Sun",
+        "Incorrectly states the shape of Pluto",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 3, as Pluto was reclassified because it has not cleared its orbit, per the IAU definition. The other options are common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu112.pdf",
+          "ordinal": 6,
+          "pageStart": 10,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 12: Beyond Earth",
+            "12.3 Our Solar System"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu112.pdf",
+          "ordinal": 7,
+          "pageStart": 12,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 12: Beyond Earth",
+            "12.3 Our Solar System"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu112.pdf",
+          "ordinal": 8,
+          "pageStart": 13,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 12: Beyond Earth",
+            "12.3 Our Solar System"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-31T10:03:44.728Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is the name of the planet that is commonly called an evening star?",
+      "choices": [
+        "Venus",
+        "Mars",
+        "Earth",
+        "Jupiter"
+      ],
+      "answerIndex": 0,
+      "solution": "The correct answer is Venus. Venus is often referred to as the evening star because it is visible in the western sky after sunset. Mars, Earth, and Jupiter are not commonly called evening stars.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "ग्रह का नाम क्या है जिसे आमतौर पर शाम का तारा कहा जाता है?",
+          "choices": [
+            "शुक्र",
+            "मंगल",
+            "पृथ्वी",
+            "बृहस्पति"
+          ],
+          "solution": "सही उत्तर शुक्र है। शुक्र को आमतौर पर शाम का तारा कहा जाता है क्योंकि यह सूर्यास्त के बाद पश्चिमी आकाश में दिखाई देता है। मंगल, पृथ्वी और बृहस्पति आमतौर पर शाम के तारे कहलाते नहीं हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English original in meaning, terminology, and structure. All options and the solution are correctly translated and maintain the same logical relationships.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "उशीरचा तारा म्हणून सामान्यतः ओळखल्या जाणारा ग्रहाचे नाव काय आहे?",
+          "choices": [
+            "शुक्र",
+            "मंगळ",
+            "भूमी",
+            "बृहस्पती"
+          ],
+          "solution": "योग्य उत्तर शुक्र आहे. शुक्र उशीरचा तारा म्हणून ओळखला जातो कारण तो सूर्याच्या अस्तानंतर पश्चिम आकाशात दिसतो. मंगळ, भूमी आणि बृहस्पती उशीरच्या ताऱ्यांना सामान्यतः म्हणून ओळखले जात नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for celestial bodies.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses Mars with the evening star",
+        "Thinks Earth is the evening star",
+        "Thinks Jupiter is the evening star"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-constructed and the solution is accurate. Venus is indeed commonly called the evening star due to its visibility after sunset.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu112.pdf",
+          "ordinal": 12,
+          "pageStart": 19,
+          "pageEnd": 21,
+          "headingPath": [
+            "Chapter 12: Beyond Earth",
+            "12.5 The Universe",
+            "Let us enhance our learning"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu112.pdf",
+          "ordinal": 13,
+          "pageStart": 21,
+          "pageEnd": 22,
+          "headingPath": [
+            "Chapter 12: Beyond Earth",
+            "12.5 The Universe",
+            "Learning further"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu112.pdf",
+          "ordinal": 14,
+          "pageStart": 23,
+          "pageEnd": 23,
+          "headingPath": [
+            "Chapter 12: Beyond Earth",
+            "12.5 The Universe",
+            "It is not the end, my friend!"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T13:34:09.357Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If a group of stars is used to find the North direction, which star would be the most helpful?",
+      "choices": [
+        "Sirius",
+        "Betelgeuse",
+        "Aldebaran",
+        "Polaris"
+      ],
+      "answerIndex": 3,
+      "solution": "Polaris is the most helpful star for finding the North direction because it remains nearly stationary in the sky, making it a reliable reference point in the Northern Hemisphere. The other stars—Sirius, Betelgeuse, and Aldebaran—do not maintain a fixed position relative to the Earth's axis and are not used for navigation in the same way.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि उत्तर दिशा ज्ञात करने के लिए तारों के समूह का उपयोग किया जाता है, तो सबसे अधिक सहायक तारा कौन-सा होगा?",
+          "choices": [
+            "सिरियस",
+            "बेटेल्जुस",
+            "अल्डेबरन",
+            "पोलरिस"
+          ],
+          "solution": "पोलरिस उत्तर दिशा ज्ञात करने के लिए सबसे अधिक सहायक तारा होता है क्योंकि यह आकाश में लगभग स्थिर रहता है, जिसके कारण उत्तरी गोलार्ध में यह एक विश्वसनीय संदर्भ बिंदु बन जाता है। अन्य तारे- सिरियस, बेटेल्जुस और अल्डेबरन- भूमि के अक्ष के सापेक्ष एक निश्चित स्थिति नहीं रखते हैं और इसी कारण इनका नौवहन में इतना उपयोग नहीं किया जाता है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Hindi astronomical terms.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर तारांच्या गटाचा उत्तर दिशा शोधण्यासाठी वापरला जातो, तर कोणती तारा सर्वात उपयुक्त असेल?",
+          "choices": [
+            "सिरियस",
+            "बेटेल्जेस",
+            "अल्डेबरन",
+            "पोलारिस"
+          ],
+          "solution": "पोलारिस ही उत्तर दिशा शोधण्यासाठी सर्वात उपयुक्त तारा आहे कारण ती आकाशात लगभग अचल राहते, ज्यामुळे उत्तर गोलार्धात तिचा विश्वासार्ह संदर्भ म्हणून वापर केला जातो. इतर तारा-सिरियस, बेटेल्जेस आणि अल्डेबरन- भूमीच्या अक्षाशी तुलनात्मक ठिकाणावर अचल राहत नाहीत आणि त्यांचा वापर त्याप्रमाणे नौसंचालनासाठी केला जात नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi astronomical terms.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses Sirius with the Pole Star",
+        "Confuses Betelgeuse with the Pole Star",
+        "Confuses Aldebaran with the Pole Star",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-constructed, with a clear correct answer (Polaris) and plausible distractors that reflect common misconceptions about stars used for navigation.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu112.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 12: Beyond Earth"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu112.pdf",
+          "ordinal": 1,
+          "pageStart": 3,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 12: Beyond Earth",
+            "12.1 Stars and Constellations"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu112.pdf",
+          "ordinal": 2,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 12: Beyond Earth",
+            "12.1 Stars and Constellations"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T13:34:09.357Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If a student wants to observe the Pole Star, which of the following should they do?",
+      "choices": [
+        "Look for the Big Dipper and follow a line from its cup towards the north",
+        "Look for the brightest star in the night sky",
+        "Look for the constellation Orion and follow its belt",
+        "Look for the Sun during the day"
+      ],
+      "answerIndex": 0,
+      "solution": "The correct option is to look for the Big Dipper and follow a line from its cup towards the north because the Pole Star lies along that line. The brightest star in the night sky is not necessarily the Pole Star, as other stars can be brighter. The constellation Orion and its belt are not used to locate the Pole Star, and the Sun is not visible at night when the Pole Star can be observed.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक छात्र के द्वारा ध्रुव तारा देखने के लिए, निम्नलिखित में से क्या करना चाहिए?",
+          "choices": [
+            "बिग डिपर को ढूंढें और इसके कप से उत्तर की ओर एक रेखा अनुसरण करें",
+            "रात के आकाश में सबसे चमकदार तारा ढूंढें",
+            "ओरियन के तारामंडल और इसके बेल्ट को ढूंढें",
+            "दिन के समय सूर्य को ढूंढें"
+          ],
+          "solution": "सही विकल्प बिग डिपर को ढूंढना और इसके कप से उत्तर की ओर एक रेखा अनुसरण करना है क्योंकि ध्रुव तारा उस रेखा पर स्थित होता है। रात के आकाश में सबसे चमकदार तारा आवश्यक रूप से ध्रुव तारा नहीं होता है, क्योंकि अन्य तारे भी चमकदार हो सकते हैं। ओरियन तारामंडल और इसके बेल्ट का उपयोग ध्रुव तारा की स्थिति निर्धारित करने के लिए नहीं किया जाता है, और सूर्य दिन के समय दिखाई देता है, जबकि ध्रुव तारा रात के समय दिखाई देता है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi astronomical terms.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका विद्यार्थ्याला ध्रुव तारा पाहण्यासाठी, खालीलपैकी काय करावे लागेल?",
+          "choices": [
+            "मोठ्या बालकाच्या भांड्याच्या दिशेने उत्तर दिशेकडे जाणारा रेषा शोधा",
+            "रात्रीच्या आकाशातील सर्वात तीव्र तारा शोधा",
+            "ओरियन या खगोलरूपाच्या घट्टाच्या दिशेने जाणारा रेषा शोधा",
+            "दिवसात तारा शोधा"
+          ],
+          "solution": "सही विकल्प मोठ्या बालकाच्या भांड्याच्या दिशेने उत्तर दिशेकडे जाणारा रेषा शोधणे आहे कारण ध्रुव तारा या रेषेवर असतो. रात्रीच्या आकाशातील सर्वात तीव्र तारा ध्रुव तारा असू शकत नाही, कारण इतर ताराही तीव्र असू शकतात. ओरियन खगोलरूप आणि त्याच्या घट्टाचा उपयोग ध्रुव तारा शोधण्यासाठी केला जात नाही, आणि सूर्य रात्रीत दिसत नाही जेव्हा ध्रुव तारा पाहिला जाऊ शकतो.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi astronomical terms.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses the method of locating the Pole Star with other constellations",
+        "Confuses the Pole Star with the brightest star",
+        "Confuses the method of locating Orion with the Pole Star"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 0, as the Pole Star can be located by following the line from the Big Dipper's cup towards the north. The other options represent common misconceptions or incorrect methods.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu112.pdf",
+          "ordinal": 3,
+          "pageStart": 6,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 12: Beyond Earth",
+            "12.2 Night Sky Watching"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu112.pdf",
+          "ordinal": 4,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 12: Beyond Earth",
+            "12.2 Night Sky Watching"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu112.pdf",
+          "ordinal": 5,
+          "pageStart": 8,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 12: Beyond Earth",
+            "12.3 Our Solar System"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T13:34:09.357Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If a person is observing the sky and sees a bright object that does not twinkle, which planet might they be looking at?",
+      "choices": [
+        "Venus",
+        "Mars",
+        "Mercury",
+        "Saturn"
+      ],
+      "answerIndex": 0,
+      "solution": "Venus is the correct answer because it is often very bright in the sky and does not twinkle, unlike stars. Planets like Venus appear as steady points of light because they are closer to Earth and reflect sunlight consistently. Mars, Mercury, and Saturn are generally less bright or do not match the description of a non-twinkling bright object.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि कोई व्यक्ति आकाश का अवलोकन कर रहा है और एक चमकदार वस्तु देखता है जो झिलमिलाती नहीं है, तो वह कौन सा ग्रह देख सकता है?",
+          "choices": [
+            "शुक्र",
+            "मंगल",
+            "बुध",
+            "शनि"
+          ],
+          "solution": "शुक्र सही उत्तर है क्योंकि यह आकाश में अक्सर बहुत चमकदार रहता है और तारों के विपरीत झिलमिलाता नहीं है। शुक्र जैसे ग्रह धरती के निकट होने के कारण एक स्थिर रोशनी के बिंदु के रूप में दिखाई देते हैं और सूर्य के प्रकाश को परावर्तित करते रहते हैं। मंगल, बुध और शनि आमतौर पर कम चमकदार होते हैं या एक झिलमिलाती हुई चमकदार वस्तु के विवरण के साथ मेल नहीं खाते हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately preserves the meaning, technical terms, and answer structure of the original English question.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका व्यक्तीने आकाशाचा अवलोकन केला आणि एका तीव्र वस्तू दिसली जी टिकटिक करत नाही, तर तो कोणत्या ग्रहाचे निरीक्षण करत असेल?",
+          "choices": [
+            "शुक्र",
+            "मंगळ",
+            "बुध",
+            "शनि"
+          ],
+          "solution": "शुक्र हा बरोबर उत्तर आहे कारण तो आकाशात खूप तीव्र असतो आणि तारांपेक्षा टिकटिक करत नाही. शुक्र जवळ असल्यामुळे पृथ्वीकडून सूर्याचे प्रकाश परावर्तित होतो आणि त्यामुळे तो एक स्थिर बिंदू दिसतो. मंगळ, बुध आणि शनि खूप तीव्र नसतात किंवा त्यांचे वर्णन तीव्र वस्तू जी टिकटिक करत नाही यासारखे नसते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Marathi astronomical terms.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "confuses brightness with twinkling",
+        "does not recognize Venus as the brightest planet",
+        "does not know the characteristics of other planets"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct and aligns with the key. Venus is the brightest planet and does not twinkle, making it the correct answer. The reasoning for the distractors reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu112.pdf",
+          "ordinal": 6,
+          "pageStart": 10,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 12: Beyond Earth",
+            "12.3 Our Solar System"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu112.pdf",
+          "ordinal": 7,
+          "pageStart": 12,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 12: Beyond Earth",
+            "12.3 Our Solar System"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu112.pdf",
+          "ordinal": 8,
+          "pageStart": 13,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 12: Beyond Earth",
+            "12.3 Our Solar System"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T13:34:09.357Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "Which of the following is an example of how constellations have been used historically?",
+      "choices": [
+        "To measure the speed of light",
+        "To determine the distance to the sun",
+        "To navigate across the sea",
+        "To study the movement of galaxies"
+      ],
+      "answerIndex": 2,
+      "solution": "Historically, constellations have been used to navigate across the sea by helping people determine their direction and location. This practice was crucial for sailors who relied on the positions of stars to guide their journeys. The other options, such as measuring the speed of light or studying galaxies, are modern scientific endeavors not related to the historical use of constellations.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा उदाहरण ऐतिहासिक रूप से खगोल-समूहों के उपयोग का है?",
+          "choices": [
+            "प्रकाश की गति को मापना",
+            "सूर्य तक की दूरी निर्धारित करना",
+            "समुद्र के आकाश में नौसंचालन करना",
+            "गैलेक्सियों के गति का अध्ययन करना"
+          ],
+          "solution": "ऐतिहासिक रूप से, खगोल-समूहों का उपयोग समुद्र में नौसंचालन करने के लिए किया जाता था क्योंकि यह लोगों को अपनी दिशा और स्थिति निर्धारित करने में मदद करता था। यह व्यवहार ऐसे जहाज चालकों के लिए महत्वपूर्ण रहा है जो अपनी यात्राओं के लिए तारों की स्थिति पर निर्भर रहते थे। अन्य विकल्प, जैसे प्रकाश की गति को मापना या गैलेक्सियों का अध्ययन करना, आधुनिक वैज्ञानिक उद्यम हैं जो खगोल-समूहों के ऐतिहासिक उपयोग से संबंधित नहीं हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. All options are correctly translated, and the correct answer remains option (2). The distractors remain incorrect, and the technical terms like 'खगोल-समूह' (constellations) are appropriate for a Hindi-medium curriculum.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते तारागटांच्या ऐतिहासिक वापराचे उदाहरण आहे?",
+          "choices": [
+            "प्रकाशाच्या वेगाचे मोजणे",
+            "सूर्याच्या अंतराचे निश्चित करणे",
+            "समुद्रावर नेविगेट करणे",
+            "गॅलेक्सीच्या गतीचे अभ्यास करणे"
+          ],
+          "solution": "ऐतिहासिक काळात, तारागटांचा समुद्रावर नेविगेशन करण्यासाठी वापर केला जात होता, जेणेकरून लोकांना त्यांच्या दिशा आणि स्थानाचे निर्धारण करता येईल. ही प्रथा नाविकांसाठी महत्वपूर्ण होती जे तारांच्या स्थितींवर अवलंबून त्यांच्या प्रवासांचे नेतृत्व करत. उरलेल्या विकल्पांमध्ये, प्रकाशाच्या वेगाचे मोजणे किंवा गॅलेक्सीच्या अभ्यासासारख्या आधुनिक वैज्ञानिक उद्योगांचा तारागटांच्या ऐतिहासिक वापराशी कोणताही संबंध नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for astronomical concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the use of constellations with scientific measurements",
+        "Misunderstands the role of constellations in navigation",
+        null,
+        "Confuses the use of constellations with modern astronomy"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 2, as constellations were historically used for navigation. The other options are either modern scientific pursuits or unrelated to historical use, and the author's reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu112.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 12: Beyond Earth"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu112.pdf",
+          "ordinal": 1,
+          "pageStart": 3,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 12: Beyond Earth",
+            "12.1 Stars and Constellations"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu112.pdf",
+          "ordinal": 2,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 12: Beyond Earth",
+            "12.1 Stars and Constellations"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T13:34:09.357Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "Which of the following statements about the planets is correct?",
+      "choices": [
+        "The inner planets are larger in size than the outer planets.",
+        "The outer planets have solid surfaces.",
+        "The inner planets are farther from the Sun than the outer planets.",
+        "The outer planets are mostly made of gas and ice."
+      ],
+      "answerIndex": 3,
+      "solution": "The outer planets are mostly made of gas and ice, which is correct because they are composed primarily of hydrogen, helium, and other volatile substances, unlike the inner planets, which are rocky and metallic. The other options are incorrect because inner planets are smaller, not larger, and they are closer to the Sun, not farther. Also, outer planets do not have solid surfaces.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा कथन ग्रहों के बारे में सही है?",
+          "choices": [
+            "आंतरिक ग्रह बाहरी ग्रहों की तुलना में बड़े आकार के होते हैं।",
+            "बाहरी ग्रहों की सतह ठोस होती है।",
+            "आंतरिक ग्रह सूर्य से बाहरी ग्रहों की तुलना में दूर होते हैं।",
+            "बाहरी ग्रह लगभग पूरी तरह से गैस और बर्फ से बने होते हैं।"
+          ],
+          "solution": "बाहरी ग्रह लगभग पूरी तरह से गैस और बर्फ से बने होते हैं, जो सही है क्योंकि वे मुख्य रूप से हाइड्रोजन, हीलियम और अन्य वाष्पशील पदार्थों से बने होते हैं, जबकि आंतरिक ग्रह चट्टानी और धातुमय होते हैं। अन्य विकल्प गलत हैं क्योंकि आंतरिक ग्रह बड़े नहीं, बल्कि छोटे होते हैं, और वे सूर्य से बाहरी ग्रहों की तुलना में दूर नहीं होते। साथ ही, बाहरी ग्रहों की सतह ठोस नहीं होती।",
+          "imageAlt": "एक चित्र जिसमें सूर्य, पृथ्वी और चंद्रमा दिखाए गए हैं",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi scientific terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी ग्रहांबद्दलचा कोणता विधान बरोबर आहे?",
+          "choices": [
+            "आंतरिक ग्रह बाह्य ग्रहांपेक्षा मोठे आहेत.",
+            "बाह्य ग्रहांची ठोस सतह आहे.",
+            "आंतरिक ग्रह सूर्यापासून बाह्य ग्रहांपेक्षा जास्त अंतरावर आहेत.",
+            "बाह्य ग्रह मुख्यतः वायू आणि बर्फाने बनलेले असतात."
+          ],
+          "solution": "बाह्य ग्रह मुख्यतः वायू आणि बर्फाने बनलेले असतात, जे बरोबर आहे कारण ते मुख्यतः हायड्रोजन, हेलियम आणि इतर वायुमान घटकांनी बनलेले असतात, जे आंतरिक ग्रहांपेक्षा वेगळे असतात, जे चट्टे आणि धातू आहेत. इतर विधाने चुकीची आहेत कारण आंतरिक ग्रह मोठे नसतात, तर लहान असतात आणि सूर्यापासून बाह्य ग्रहांपेक्षा जास्त अंतरावर नसतात. बाह्य ग्रहांची ठोस सतह असत नाही.",
+          "imageAlt": "एक आकृती जी सूर्य, भूमी आणि चंद्र दर्शवते",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": "A diagram showing the Sun, Earth, and Moon",
+      "figure": {
+        "kind": "diagram",
+        "spec": {
+          "parts": [
+            {
+              "part": "sunEarthMoon",
+              "x": 50,
+              "y": 30,
+              "size": 20
+            }
+          ]
+        },
+        "labels": {}
+      },
+      "needsFigure": true,
+      "distractorReason": [
+        "Confuses the size of inner and outer planets",
+        "Incorrectly states the composition of outer planets",
+        "Confuses the order of planets relative to the Sun",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 3, as the outer planets are indeed mostly made of gas and ice. The other options reflect common misconceptions about planetary structure and position.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu112.pdf",
+          "ordinal": 6,
+          "pageStart": 10,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 12: Beyond Earth",
+            "12.3 Our Solar System"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu112.pdf",
+          "ordinal": 7,
+          "pageStart": 12,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 12: Beyond Earth",
+            "12.3 Our Solar System"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu112.pdf",
+          "ordinal": 8,
+          "pageStart": 13,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 12: Beyond Earth",
+            "12.3 Our Solar System"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T13:34:09.357Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "A group of students in a village in Ladakh noticed that the night sky is very clear and full of stars. They decided to create their own constellation by connecting the stars in a pattern they saw. What is the most likely reason they did this?",
+      "choices": [
+        "To make it easier to find the North direction",
+        "To understand the structure of the solar system",
+        "To share their own stories and imagination",
+        "To predict the next solar eclipse"
+      ],
+      "answerIndex": 2,
+      "solution": "Creating a constellation by connecting stars is a way to express creativity and share personal stories and imagination. This activity is not primarily about navigation, scientific understanding, or predicting celestial events, which are more practical or technical purposes. The act of forming patterns from stars is often linked to storytelling and cultural expression.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "लद्दाख के एक गांव में छात्रों ने अपने रात के आकाश में बहुत साफ और तारों से भरा हुआ देखा। उन्होंने अपना खुद का खगोल बनाने का फैसला किया जिसमें वे देखे गए पैटर्न में तारों को जोड़कर बनाया। उन्होंने इसे सबसे अधिक संभावित कारण क्यों किया?",
+          "choices": [
+            "उत्तर दिशा खोजने में सुविधा के लिए",
+            "सौर मंडल की संरचना समझने के लिए",
+            "अपनी कहानियों और कल्पना को साझा करने के लिए",
+            "अगले सूर्य ग्रहण की भविष्यवाणी करने के लिए"
+          ],
+          "solution": "तारों को जोड़कर खगोल बनाना रचनात्मकता और अपनी कहानियों और कल्पना को साझा करने का एक तरीका है। यह गतिविधि नेविगेशन, वैज्ञानिक समझ या खगोलीय घटनाओं की भविष्यवाणी के लिए अधिक व्यावहारिक या तकनीकी उद्देश्यों के लिए नहीं है। तारों से पैटर्न बनाना अक्सर कहानी के बनाने और सांस्कृतिक अभिव्यक्ति से जुड़ा हुआ है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology. The correct answer remains option (3), and the distractors are still incorrect in the Hindi version.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "लदाख येथील एका गावातील विद्यार्थ्यांनी रात्रीचे आकाश खूप स्पष्ट आणि तारांनी भरलेले असल्याचे लक्षात आले. त्यांनी आपला स्वतःचा अशा तारांचा आकार बनवण्याचा निर्णय घेतला ज्यात त्यांनी दिसलेल्या आकृतीला जोडले. त्यांनी हे करण्याचा सर्वात शक्य कारण काय होते?",
+          "choices": [
+            "उत्तर दिशा शोधणे सोपे करण्यासाठी",
+            "सौर यंत्राच्या संरचनेचे बोध करण्यासाठी",
+            "आपल्या आवडी आणि कल्पनांचे सांगण्यासाठी",
+            "अगोदरच अशा सूर्यग्रहणाचे भविष्यवाणी करण्यासाठी"
+          ],
+          "solution": "तारांचे आकृती जोडून अशा तारांचा आकार बनवणे हे कल्पनाशीलता आणि व्यक्तिगत कथा सांगण्याचा एक मार्ग आहे. ही क्रिया विशेषतः दिशानिर्देशन, वैज्ञानिक समज आणि खगोलीय घटनांच्या भविष्यवाणी यासारख्या व्यावहारिक किंवा तंत्रज्ञानी उद्देशांसाठी नसते. तारांच्या आकृती तयार करण्याची क्रिया अक्सर कथाकल्पना आणि सांस्कृतिक अभिव्यक्तीशी जोडली जाते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology. The structure and intent of the question and answer are preserved.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the purpose of constellations with navigation",
+        "Misunderstands the connection between constellations and the solar system",
+        null,
+        "Confuses the purpose of constellations with storytelling"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 2, as the passage implies that creating constellations was a way to share stories and imagination. The other options are incorrect because they misinterpret the purpose of constellations.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu112.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 12: Beyond Earth"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu112.pdf",
+          "ordinal": 1,
+          "pageStart": 3,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 12: Beyond Earth",
+            "12.1 Stars and Constellations"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu112.pdf",
+          "ordinal": 2,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 12: Beyond Earth",
+            "12.1 Stars and Constellations"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T13:34:09.357Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "If a person is in a dark sky reserve, what is the most likely reason for this?",
+      "choices": [
+        "To reduce light pollution and preserve the night sky",
+        "To study the movement of the Sun during the day",
+        "To observe the rising of the Moon",
+        "To learn about the constellations in the daytime"
+      ],
+      "answerIndex": 0,
+      "solution": "The most likely reason for being in a dark sky reserve is to reduce light pollution and preserve the night sky, as these areas are specifically designated to maintain clear visibility of celestial objects. Studying the Sun during the day, observing the Moon's rise, or learning about constellations in daylight are not the primary purposes of such reserves, as they are focused on nighttime astronomical observation.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि कोई व्यक्ति अंधेरे आकाश आरक्षित क्षेत्र में है, तो इसके लिए सबसे संभावित कारण क्या है?",
+          "choices": [
+            "प्रकाश प्रदूषण कम करने और रात के आकाश को संरक्षित करने के लिए",
+            "दिन में सूर्य के गति का अध्ययन करने के लिए",
+            "चंद्रमा के उदय का अवलोकन करने के लिए",
+            "दिन में तारामंडलों के बारे में जानने के लिए"
+          ],
+          "solution": "अंधेरे आकाश आरक्षित क्षेत्र में रहने के लिए सबसे संभावित कारण प्रकाश प्रदूषण कम करना और रात के आकाश को संरक्षित करना है, क्योंकि ये क्षेत्र खगोलीय वस्तुओं के स्पष्ट दृश्यता के लिए विशेष रूप से निर्धारित होते हैं। दिन में सूर्य के गति का अध्ययन, चंद्रमा के उदय का अवलोकन या दिन में तारामंडलों के बारे में जानना ऐसे आरक्षित क्षेत्रों के मुख्य उद्देश्य नहीं हैं, क्योंकि वे रात्रि के खगोलीय अवलोकन पर केंद्रित हैं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains original meaning, and uses appropriate Hindi terminology for astronomical concepts.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका गृहीत रात्रीच्या आकाशाच्या विशेष क्षेत्रात एखाद्या व्यक्तीचे असणे कोणत्या शक्यतोंमध्ये सर्वात जास्त संभाव्य कारण असू शकते?",
+          "choices": [
+            "प्रकाश दूषण कमी करणे आणि रात्रीच्या आकाशाचे संरक्षण करणे",
+            "दिवसात सूर्याच्या गतीचा अभ्यास करणे",
+            "चंद्राच्या उदयाचे अवलोकन करणे",
+            "दिवसात राशींच्या अभ्यासाचे शिकणे"
+          ],
+          "solution": "गृहीत रात्रीच्या आकाशाच्या विशेष क्षेत्रात राहण्याचे सर्वात जास्त संभाव्य कारण प्रकाश दूषण कमी करणे आणि रात्रीच्या आकाशाचे संरक्षण करणे असू शकते, कारण या क्षेत्रांची विशेषतः खगोलीय वस्तूंच्या स्पष्ट दृश्यतेच्या अभ्यासासाठी नियुक्ती केली जाते. दिवसात सूर्याच्या गतीचा अभ्यास करणे, चंद्राच्या उदयाचे अवलोकन करणे किंवा दिवसात राशींच्या अभ्यासाचे शिकणे हे अशा क्षेत्रांचे प्राथमिक उद्देश नाहीत, कारण ते रात्रीच्या खगोलीय अवलोकनावर केंद्रित असतात.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the original meaning, and uses appropriate technical terms as used in Marathi educational materials.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses the purpose of dark sky reserves with other activities",
+        "Confuses the purpose of dark sky reserves with other activities",
+        "Confuses the purpose of dark sky reserves with other activities"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is clearly supported by the reasoning provided. The other options are all incorrect and the author's reasoning for them is valid as they represent common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu112.pdf",
+          "ordinal": 3,
+          "pageStart": 6,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 12: Beyond Earth",
+            "12.2 Night Sky Watching"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu112.pdf",
+          "ordinal": 4,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 12: Beyond Earth",
+            "12.2 Night Sky Watching"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu112.pdf",
+          "ordinal": 5,
+          "pageStart": 8,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 12: Beyond Earth",
+            "12.3 Our Solar System"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T13:34:09.357Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "Why is Venus called the Morning Star or the Evening Star?",
+      "choices": [
+        "Because it is the brightest object in the sky.",
+        "Because it is the closest planet to the Sun.",
+        "Because it appears to twinkle like a star.",
+        "Because it is seen shining brightly at dawn and dusk."
+      ],
+      "answerIndex": 3,
+      "solution": "Venus is called the Morning Star or the Evening Star because it is seen shining brightly at dawn and dusk. The other options are incorrect because brightness alone does not explain the name, and the planet's proximity to the Sun or twinkling are not the reasons for its common names.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "वीनस को सुबह का तारा या शाम का तारा क्यों कहा जाता है?",
+          "choices": [
+            "क्योंकि यह आकाश में सबसे चमकदार वस्तु है।",
+            "क्योंकि यह सूर्य के सबसे निकट का ग्रह है।",
+            "क्योंकि यह तारे की तरह झिलमिलाता दिखाई देता है।",
+            "क्योंकि यह सुबह और शाम के समय चमकदार दिखाई देता है।"
+          ],
+          "solution": "वीनस को सुबह का तारा या शाम का तारा कहा जाता है क्योंकि यह सुबह और शाम के समय चमकदार दिखाई देता है। अन्य विकल्प गलत हैं क्योंकि चमक अकेले नाम की व्याख्या नहीं करती है, और ग्रह की सूर्य के निकटता या झिलमिलाना इसके सामान्य नामों के कारण नहीं हैं।",
+          "imageAlt": "एक चित्र जिसमें सूर्य, पृथ्वी और चंद्रमा दिखाए गए हैं",
+          "critique": "Translation is accurate, maintains original meaning, and uses appropriate Hindi scientific terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "व्हीनस लहान तारा किंवा संध्याकाळचा तारा म्हणून का ओळखला जातो?",
+          "choices": [
+            "कारण ते आकाशातील सर्वात तीव्र वस्तू आहे.",
+            "कारण ते सूर्याच्या जवळच्या ग्रहापेक्षा जवळ आहे.",
+            "कारण ते ताराप्रमाणे झळकत असते.",
+            "कारण ते सकाळी आणि संध्याकाळी तीव्र तेजाने दिसते."
+          ],
+          "solution": "व्हीनस लहान तारा किंवा संध्याकाळचा तारा म्हणून ओळखला जातो कारण ते सकाळी आणि संध्याकाळी तीव्र तेजाने दिसते. इतर विकल्प अयोग्य आहेत कारण तीव्रता एकटी नावाचे विवरण देत नाही, आणि ग्रहाचा सूर्याशी जवळपास असणे किंवा झळकणे त्याच्या सामान्य नावाचे कारण नाही.",
+          "imageAlt": "एक आकृती जी सूर्य, पृथ्वी आणि चंद्र दर्शवते",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": "A diagram showing the Sun, Earth, and Moon",
+      "figure": {
+        "kind": "diagram",
+        "spec": {
+          "parts": [
+            {
+              "part": "sunEarthMoon",
+              "x": 50,
+              "y": 30,
+              "size": 20
+            }
+          ]
+        },
+        "labels": {}
+      },
+      "needsFigure": true,
+      "distractorReason": [
+        "Knows Venus is bright but not the reason for its name",
+        "Confuses the position of Venus relative to the Sun",
+        "Misunderstands the characteristics of stars",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 3, as Venus is called the Morning Star or Evening Star due to its visibility at dawn and dusk. The other options are incorrect for the reasons stated by the author, and the misconceptions listed are plausible for students.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu112.pdf",
+          "ordinal": 6,
+          "pageStart": 10,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 12: Beyond Earth",
+            "12.3 Our Solar System"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu112.pdf",
+          "ordinal": 7,
+          "pageStart": 12,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 12: Beyond Earth",
+            "12.3 Our Solar System"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu112.pdf",
+          "ordinal": 8,
+          "pageStart": 13,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 12: Beyond Earth",
+            "12.3 Our Solar System"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T13:34:09.357Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Which of the following best explains why the Sun appears as a bright object in the sky while other stars do not?",
+      "choices": [
+        "The Sun is much closer to Earth than other stars",
+        "The Sun is the only star that produces heat and light",
+        "The Sun is the largest star in the universe",
+        "The Sun is the only star that can be seen during the day"
+      ],
+      "answerIndex": 0,
+      "solution": "The Sun appears bright because it is much closer to Earth than other stars, making it seem larger and more luminous. Other stars are so far away that their light appears much dimmer. The other options are incorrect because all stars produce heat and light, the Sun is not the largest star, and other stars can be seen at night, not just during the day.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा सूर्य के आकाश में एक चमकीला वस्तु के रूप में दिखाई देने की व्याख्या सबसे अच्छा करता है जबकि अन्य तारे नहीं दिखाई देते?",
+          "choices": [
+            "सूर्य पृथ्वी से अन्य तारों की तुलना में बहुत करीब है",
+            "सूर्य एकमात्र तारा है जो ऊष्मा और प्रकाश उत्पन्न करता है",
+            "सूर्य ब्रह्मांड का सबसे बड़ा तारा है",
+            "सूर्य दिन में देखा जा सकने वाला एकमात्र तारा है"
+          ],
+          "solution": "सूर्य इसलिए चमकीला दिखाई देता है क्योंकि यह पृथ्वी के बहुत करीब है, जिससे यह बड़ा और अधिक चमकदार लगता है। अन्य तारे इतने दूर हैं कि उनका प्रकाश बहुत कम चमकदार दिखाई देता है। अन्य विकल्प गलत हैं क्योंकि सभी तारे ऊष्मा और प्रकाश उत्पन्न करते हैं, सूर्य सबसे बड़ा तारा नहीं है, और अन्य तारे रात में देखे जा सकते हैं, दिन में नहीं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains original meaning, and uses appropriate Hindi scientific terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते सूर्य आकाशात एक उजळ वस्तू दिसते आणि इतर तारा नसतात याचे उत्तम स्पष्टीकरण देते?",
+          "choices": [
+            "सूर्य पृथ्वीपासून इतर ताऱ्यांपेक्षा खूप जवळ आहे",
+            "सूर्य हा एकमेव तारा आहे जो उष्णता आणि प्रकाश तयार करतो",
+            "सूर्य ब्रह्मांडातील सर्वात मोठा तारा आहे",
+            "सूर्य हा दिवसात फक्त दिसणारा एकमेव तारा आहे"
+          ],
+          "solution": "सूर्य उजळ दिसतो कारण तो पृथ्वीपासून इतर ताऱ्यांपेक्षा खूप जवळ आहे, ज्यामुळे तो जास्त मोठा आणि जास्त उजळ दिसतो. इतर ताऱ्यांचा प्रकाश खूप दूर असल्यामुळे तो खूप दुबळा दिसतो. इतर विकल्प अयोग्य आहेत कारण सर्व ताऱ्यांनी उष्णता आणि प्रकाश तयार केला जातो, सूर्य ब्रह्मांडातील सर्वात मोठा तारा नाही, आणि इतर ताऱ्यांना रात्रीत दिसते, दिवसात नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses the effect of distance on appearance",
+        "Confuses the Sun's role with its visibility",
+        "Confuses the Sun's size with its visibility"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 0, as the Sun's proximity to Earth makes it appear much brighter than other stars. The other options reflect common misconceptions about the Sun's size, uniqueness, and visibility.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu112.pdf",
+          "ordinal": 3,
+          "pageStart": 6,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 12: Beyond Earth",
+            "12.2 Night Sky Watching"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu112.pdf",
+          "ordinal": 4,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 12: Beyond Earth",
+            "12.2 Night Sky Watching"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu112.pdf",
+          "ordinal": 5,
+          "pageStart": 8,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 12: Beyond Earth",
+            "12.3 Our Solar System"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T13:34:09.357Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Why is Venus hotter than Mercury despite being farther from the Sun?",
+      "choices": [
+        "Venus has a thick atmosphere that traps heat",
+        "Venus is closer to the Sun than Mercury",
+        "Venus has more water than Mercury",
+        "Venus rotates faster than Mercury"
+      ],
+      "answerIndex": 0,
+      "solution": "Venus is hotter than Mercury because its thick atmosphere, composed mainly of carbon dioxide, traps heat through a strong greenhouse effect. The other options are incorrect because Venus is farther from the Sun, lacks liquid water, and rotates more slowly than Mercury.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "सूर्य से दूर होने के बावजूद शुक्र, मर्क्युरी की तुलना में गर्म क्यों है?",
+          "choices": [
+            "शुक्र के पास एक मोटी वायुमंडल है जो गर्मी को बंद कर देता है",
+            "शुक्र सूर्य के मर्क्युरी की तुलना में निकट है",
+            "शुक्र मर्क्युरी की तुलना में अधिक पानी रखता है",
+            "शुक्र मर्क्युरी की तुलना में तेजी से घूमता है"
+          ],
+          "solution": "शुक्र मर्क्युरी की तुलना में गर्म है क्योंकि इसका मोटा वायुमंडल, मुख्य रूप से कार्बन डाइऑक्साइड से बना हुआ है, जो एक मजबूत ग्रीनहाउस प्रभाव के माध्यम से गर्मी को बंद कर देता है। अन्य विकल्प गलत हैं क्योंकि शुक्र सूर्य से दूर है, इसके पास तरल पानी नहीं है और मर्क्युरी की तुलना में धीमी गति से घूमता है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the original English question, with appropriate scientific terminology used in a way that aligns with standard Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "व्हीनस मर्क्युरी पेक्षा जास्त उबदार का आहे जरी तो सूर्यापासून दूर असेल?",
+          "choices": [
+            "व्हीनस उष्णता रोखणारा जास्त जास्त वातावरण असतो",
+            "व्हीनस सूर्यापासून मर्क्युरी पेक्षा जास्त जवळ असतो",
+            "व्हीनस मर्क्युरी पेक्षा जास्त पाणी असतो",
+            "व्हीनस मर्क्युरी पेक्षा जास्त वेगाने फिरतो"
+          ],
+          "solution": "व्हीनस मर्क्युरी पेक्षा जास्त उबदार असतो कारण त्याचे जास्त जास्त वातावरण, जे मुख्यतः कार्बन डायऑक्साइड द्वारे बनलेले असते, उष्णता एका मजबूत ग्रीनहाऊस प्रभावाद्वारे रोखते. इतर विकल्प चुकीचे आहेत कारण व्हीनस सूर्यापासून दूर असतो, पाणी नसते आणि मर्क्युरी पेक्षा जास्त वेगाने फिरत नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "does not understand the role of atmosphere in temperature",
+        "misinterprets the distance from the Sun",
+        "confuses planetary features"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 0, as Venus's thick atmosphere traps heat, making it hotter than Mercury. The other options reflect common misconceptions about planetary distance, water content, and rotation speed.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu112.pdf",
+          "ordinal": 6,
+          "pageStart": 10,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 12: Beyond Earth",
+            "12.3 Our Solar System"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu112.pdf",
+          "ordinal": 7,
+          "pageStart": 12,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 12: Beyond Earth",
+            "12.3 Our Solar System"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu112.pdf",
+          "ordinal": 8,
+          "pageStart": 13,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 12: Beyond Earth",
+            "12.3 Our Solar System"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T13:34:09.357Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is the main reason why the night sky in Nubra is clearly visible?",
+      "choices": [
+        "The presence of many clouds",
+        "The high level of air light pollution",
+        "The absence of air light pollution",
+        "The presence of many stars"
+      ],
+      "answerIndex": 2,
+      "solution": "The night sky in Nubra is clearly visible because there is very little air light pollution, allowing more stars to be seen. The absence of air light pollution is the main reason for this clarity. Other options are incorrect because clouds and stars do not directly cause visibility, and light pollution would make the sky less visible.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "नुब्रा में रात के आकाश के स्पष्ट दिखाई देने का मुख्य कारण क्या है?",
+          "choices": [
+            "बहुत सारे बादलों की उपस्थिति",
+            "हवा में प्रकाश प्रदूषण के उच्च स्तर",
+            "हवा में प्रकाश प्रदूषण की अनुपस्थिति",
+            "बहुत सारे तारों की उपस्थिति"
+          ],
+          "solution": "नुब्रा में रात के आकाश के स्पष्ट दिखाई देने का कारण यह है कि हवा में प्रकाश प्रदूषण बहुत कम होता है, जिससे अधिक तारे दिखाई देते हैं। प्रकाश प्रदूषण की अनुपस्थिति इस स्पष्टता का मुख्य कारण है। अन्य विकल्प गलत हैं क्योंकि बादल और तारे सीधे दृश्यता के कारण नहीं होते हैं, और प्रकाश प्रदूषण आकाश को कम दृश्य बना देता है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. All options are correctly translated, and the correct answer remains option (2). The distractors remain incorrect as in the original.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "नुब्रा येथे रात्रीचे आकाश का स्पष्ट दिसते याचा मुख्य कारण काय आहे?",
+          "choices": [
+            "बरेच ढगांचा असणे",
+            "हवेतील प्रकाश दुष्कृत्याचा उच्च पातळी",
+            "हवेतील प्रकाश दुष्कृत्याचा अभाव",
+            "बरेच तारे असणे"
+          ],
+          "solution": "नुब्रा येथे रात्रीचे आकाश स्पष्ट दिसते कारण खूप कमी प्रमाणात हवेतील प्रकाश दुष्कृत्य असते, जे अधिक तारे दिसू देते. हवेतील प्रकाश दुष्कृत्याचा अभाव हा या स्पष्टतेचा मुख्य कारण आहे. ढग आणि तारे दृश्यतेला सीधा परिणाम करत नाहीत आणि प्रकाश दुष्कृत्य आकाश अंधारात ठेवते, म्हणून इतर विकल्प चुकीचे आहेत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for 'light pollution' (प्रकाश दुष्कृत्य).",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Believing that clouds make the sky clearer due to reflection or lack of light",
+        "Thinks light pollution makes the sky clearer",
+        null,
+        "Believes stars cause clarity"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 2, as the absence of air light pollution is the stated reason for the clear visibility of the night sky in Nubra. All other options are clearly incorrect based on the passage. The author's reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu112.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 12: Beyond Earth"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu112.pdf",
+          "ordinal": 1,
+          "pageStart": 3,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 12: Beyond Earth",
+            "12.1 Stars and Constellations"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu112.pdf",
+          "ordinal": 2,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 12: Beyond Earth",
+            "12.1 Stars and Constellations"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T00:28:30.209Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "Which of the following is a reason why stars are not visible in a big city?",
+      "choices": [
+        "Excessive artificial light",
+        "Low altitude of the city",
+        "High temperature of the city",
+        "Strong wind in the city"
+      ],
+      "answerIndex": 0,
+      "solution": "Excessive artificial light is the correct answer because it creates light pollution, which makes it difficult to see stars in urban areas. Low altitude, high temperature, and strong wind do not directly affect the visibility of stars in the same way.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा कारण है कि बड़े शहर में तारे दिखाई नहीं देते?",
+          "choices": [
+            "अत्यधिक कृत्रिम प्रकाश",
+            "शहर की कम ऊंचाई",
+            "शहर का उच्च तापमान",
+            "शहर में मजबूत हवा"
+          ],
+          "solution": "अत्यधिक कृत्रिम प्रकाश सही उत्तर है क्योंकि यह प्रकाश प्रदूषण उत्पन्न करता है, जो शहरी क्षेत्रों में तारों को देखने में कठिनाई पैदा करता है। शहर की कम ऊंचाई, उच्च तापमान और मजबूत हवा तारों के दृश्यता पर इस तरह से प्रभाव नहीं डालते।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriately used in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते एक वास्तविक कारण आहे की एका मोठ्या शहरात तारे दिसत नाहीत?",
+          "choices": [
+            "अतिरिक्त कृत्रिम प्रकाश",
+            "शहराची खालची उंची",
+            "शहराची उच्च तापमान",
+            "शहरात जोरदार हवा"
+          ],
+          "solution": "अतिरिक्त कृत्रिम प्रकाश हे खरे उत्तर आहे कारण ते प्रकाश दुष्परिणाम तयार करते, जे शहरी क्षेत्रांमध्ये तारे दिसण्यास अडथळा आणते. शहराची खालची उंची, उच्च तापमान आणि जोरदार हवा हे तारांच्या दृश्यतेवर त्याचप्रकारे प्रभाव पाडत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for scientific concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Believes elevation affects star visibility more than light pollution",
+        "Believing that heat affects visibility of stars",
+        "Thinking wind affects visibility of stars"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 0, as excessive artificial light is a well-known cause of light pollution, which obscures star visibility. The other options represent common misconceptions about factors affecting stargazing.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu112.pdf",
+          "ordinal": 3,
+          "pageStart": 6,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 12: Beyond Earth",
+            "12.2 Night Sky Watching"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu112.pdf",
+          "ordinal": 4,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 12: Beyond Earth",
+            "12.2 Night Sky Watching"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu112.pdf",
+          "ordinal": 5,
+          "pageStart": 8,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 12: Beyond Earth",
+            "12.3 Our Solar System"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T00:28:30.209Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is the main reason the Sun appears bigger than other stars?",
+      "choices": [
+        "It is the closest star to Earth",
+        "It is the largest star",
+        "It is the hottest star",
+        "It is the oldest star"
+      ],
+      "answerIndex": 0,
+      "solution": "The Sun appears bigger than other stars because it is much closer to Earth, making it seem larger despite other stars potentially being bigger in actual size. Other stars are so far away that they appear as small points of light. The Sun is not necessarily the largest, hottest, or oldest star, which is why those options are incorrect.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "सूर्य अन्य तारों की तुलना में बड़ा क्यों दिखाई देता है?",
+          "choices": [
+            "यह पृथ्वी के सबसे निकट है",
+            "यह सबसे बड़ा तारा है",
+            "यह सबसे गर्म तारा है",
+            "यह सबसे पुराना तारा है"
+          ],
+          "solution": "सूर्य अन्य तारों की तुलना में बड़ा दिखाई देता है क्योंकि यह पृथ्वी के बहुत करीब है, जिससे यह बड़ा लगता है, यहां तक कि अन्य तारे वास्तव में बड़े हो सकते हैं। अन्य तारे इतने दूर होते हैं कि वे छोटे बिंदुओं के रूप में दिखाई देते हैं। सूर्य आवश्यक रूप से सबसे बड़ा, गर्म या पुराना तारा नहीं है, इसलिए इन विकल्प गलत हैं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains original meaning, and uses appropriate Hindi scientific terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "सूर्य इतर तारांपेक्षा जास्त आकाराचा दिसतो याचा मुख्य कारण काय आहे?",
+          "choices": [
+            "तो पृथ्वीला सगळ्यात जवळ असतो",
+            "तो सगळ्यात मोठा तारा आहे",
+            "तो सगळ्यात उष्ण तारा आहे",
+            "तो सगळ्यात जुना तारा आहे"
+          ],
+          "solution": "सूर्य इतर तारांपेक्षा जास्त आकाराचा दिसतो कारण तो पृथ्वीला खूप जवळ असतो, ज्यामुळे तो खरोखर जास्त मोठा असल्यापेक्षा जास्त मोठा दिसतो. इतर तारा इतके दूर असतात की ते लहान बिंदूंच्या रूपात दिसतात. सूर्य सगळ्यात मोठा, उष्ण किंवा जुना तारा नसतो, ज्यामुळे या विकल्पांना चुकीचे मानले जाते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Believes size alone determines appearance",
+        "Confuses the Sun's characteristics with other stars",
+        "Assumes age affects visibility"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 0, as the Sun appears bigger because it is the closest star to Earth. The author's reasoning is sound and matches the scientific explanation. The distractors reflect common misconceptions about the Sun's size, temperature, and age.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu112.pdf",
+          "ordinal": 3,
+          "pageStart": 6,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 12: Beyond Earth",
+            "12.2 Night Sky Watching"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu112.pdf",
+          "ordinal": 4,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 12: Beyond Earth",
+            "12.2 Night Sky Watching"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu112.pdf",
+          "ordinal": 5,
+          "pageStart": 8,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 12: Beyond Earth",
+            "12.3 Our Solar System"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T00:28:30.209Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the significance of the Pole Star in the Northern hemisphere?",
+      "choices": [
+        "It is the brightest star in the sky",
+        "It helps in finding the North direction",
+        "It is part of the Big Dipper",
+        "It is used to predict the weather"
+      ],
+      "answerIndex": 1,
+      "solution": "The Pole Star remains nearly fixed in the sky, making it a reliable reference point for determining the North direction. This is why it is significant for navigation in the Northern hemisphere. The other options are incorrect because the Pole Star is not the brightest star, it is not part of the Big Dipper, and it does not influence weather patterns.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "उत्तरी गोलार्ध में ध्रुव तारा का क्या महत्व है?",
+          "choices": [
+            "यह आकाश में सबसे चमकीला तारा है",
+            "यह उत्तर दिशा ज्ञात करने में सहायता करता है",
+            "यह बड़े घटे का हिस्सा है",
+            "यह मौसम की भविष्यवाणी के लिए उपयोग किया जाता है"
+          ],
+          "solution": "ध्रुव तारा आकाश में लगभग निश्चित रहता है, जिसके कारण यह उत्तर दिशा निर्धारित करने के लिए एक विश्वसनीय संदर्भ बन जाता है। इसी कारण यह उत्तरी गोलार्ध में नेविगेशन के लिए महत्वपूर्ण है। अन्य विकल्प गलत हैं क्योंकि ध्रुव तारा सबसे चमकीला तारा नहीं है, यह बड़े घटे का हिस्सा नहीं है और यह मौसम के पैटर्न पर प्रभाव नहीं डालता है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains original meaning, and uses appropriate Hindi terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "उत्तर गोलार्धात ध्रुव तारा महत्त्व काय आहे?",
+          "choices": [
+            "खालीलपैकी सर्वात तीव्र तारा आहे",
+            "उत्तर दिशा शोधण्यात मदत करते",
+            "मोठ्या घोडापायात भाग आहे",
+            "हवामान अंदाज करण्यासाठी वापरला जातो"
+          ],
+          "solution": "ध्रुव तारा आकाशात लगभग निश्चित राहतो, ज्यामुळे उत्तर दिशा शोधण्यासाठी एक विश्वासार्ह संदर्भ बनतो. यामुळे उत्तर गोलार्धात नेविगेशनसाठी त्याचे महत्त्व आहे. इतर विकल्प चुकीचे आहेत कारण ध्रुव तारा सर्वात तीव्र तारा नाही, तो मोठ्या घोडापायात भाग नाही आणि हवामान वितरणावर प्रभाव पाडत नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for astronomical concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses brightness with significance",
+        null,
+        "Thinks it is part of a different constellation",
+        "Believes it has a predictive role"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 1, as the Pole Star is used for navigation by indicating the North direction. The other options represent common misconceptions about the Pole Star's role.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu112.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 12: Beyond Earth"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu112.pdf",
+          "ordinal": 1,
+          "pageStart": 3,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 12: Beyond Earth",
+            "12.1 Stars and Constellations"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu112.pdf",
+          "ordinal": 2,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 12: Beyond Earth",
+            "12.1 Stars and Constellations"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T00:28:30.209Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which constellation is known as Saptaṛiṣhi in India?",
+      "choices": [
+        "Orion",
+        "Taurus",
+        "Big Dipper",
+        "Little Dipper"
+      ],
+      "answerIndex": 2,
+      "solution": "The Big Dipper is known as Saptaṛiṣhi in India due to its cultural and astronomical significance. This name refers to the seven sages in Hindu mythology, which correspond to the seven bright stars in the constellation. Orion and Taurus are not associated with this specific name, and the Little Dipper is a different constellation altogether.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "कौन-सा राशिचक्र के रूप में भारत में सप्तर्षि के रूप में जाना जाता है?",
+          "choices": [
+            "ओरियन",
+            "टॉरस",
+            "बिग डिपर",
+            "लिटिल डिपर"
+          ],
+          "solution": "भारत में बिग डिपर को सप्तर्षि के रूप में जाना जाता है क्योंकि इसकी सांस्कृतिक और खगोलीय महत्व है। इस नाम का संदर्भ हिंदू पौराणिक कथाओं में सात ऋषियों से होता है, जो राशिचक्र में सात चमकदार तारों के साथ मेल खाते हैं। ओरियन और टॉरस इस विशिष्ट नाम से जुड़े नहीं हैं, और लिटिल डिपर एक अलग राशिचक्र है।",
+          "imageAlt": null,
+          "critique": "The translation accurately preserves the meaning, technical terms, and answer structure. The Hindi version uses standard astronomical terms and cultural references as in the English original.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "साप्तर्षी हे नक्षत्र कोणते आहे?",
+          "choices": [
+            "ओरियन",
+            "टॉरस",
+            "बिग डिपर",
+            "लिटल डिपर"
+          ],
+          "solution": "बिग डिपर भारतात साप्तर्षी म्हणून ओळखले जाते, कारण त्याची सांस्कृतिक आणि खगोलशास्त्रीय महत्त्वाची आहे. हे नाव हिंदू परंपरेतील सात ऋषींना दर्शवते, जे नक्षत्रातील सात उजळ तारांशी संबंधित आहेत. ओरियन आणि टॉरस यांचा या विशिष्ट नावाशी संबंध नाही, आणि लिटल डिपर हे एक वेगळे नक्षत्र आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terms for constellations. The structure and logic of the question and solution are preserved.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses with another constellation",
+        "Thinks Orion is the Indian name",
+        null,
+        "Believes Little Dipper has that name"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 2 (Big Dipper), as the passage explicitly states that the Big Dipper is known as Saptaṛiṣhi in India. The other options are plausible but incorrect, and the author's reasons for the wrong options reflect common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu112.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 12: Beyond Earth"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu112.pdf",
+          "ordinal": 1,
+          "pageStart": 3,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 12: Beyond Earth",
+            "12.1 Stars and Constellations"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu112.pdf",
+          "ordinal": 2,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 12: Beyond Earth",
+            "12.1 Stars and Constellations"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T00:28:30.209Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "Which of the following is a planet that moves around the Sun?",
+      "choices": [
+        "Mars",
+        "Sirius",
+        "Moon",
+        "Comet"
+      ],
+      "answerIndex": 0,
+      "solution": "The correct answer is Mars, as it is a planet that orbits the Sun. Sirius is a star, the Moon is a satellite of Earth, and a comet is a small celestial body that orbits the Sun but is not classified as a planet.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा एक ग्रह है जो सूर्य के चारों ओर घूमता है?",
+          "choices": [
+            "मंगल",
+            "सीरियस",
+            "चंद्रमा",
+            "धूमकेतु"
+          ],
+          "solution": "सही उत्तर मंगल है, क्योंकि यह एक ग्रह है जो सूर्य के चारों ओर घूमता है। सीरियस एक तारा है, चंद्रमा पृथ्वी का उपग्रह है और धूमकेतु सूर्य के चारों ओर घूमने वाला एक छोटा खगोलीय पिंड है लेकिन इसे ग्रह के रूप में वर्गीकृत नहीं किया जाता है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi scientific terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणता सूर्याच्या भोवती फिरणारा ग्रह आहे?",
+          "choices": [
+            "मंगळ",
+            "सिरियस",
+            "चंद्र",
+            "कॉमेट"
+          ],
+          "solution": "बरोबर उत्तर मंगळ आहे, कारण तो सूर्याच्या भोवती फिरणारा ग्रह आहे. सिरियस तारा आहे, चंद्र पृथ्वीचा उपग्रह आहे आणि कॉमेट सूर्याच्या भोवती फिरणारा लहान खगोलीय वस्तू आहे पण तो ग्रह म्हणून वर्गीकृत केलेला नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses a star with a planet",
+        "Confuses a satellite with a planet",
+        "Confuses a satellite with a planet"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct and aligns with the key. Mars is a planet that orbits the Sun, while the other options are not planets.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu112.pdf",
+          "ordinal": 12,
+          "pageStart": 19,
+          "pageEnd": 21,
+          "headingPath": [
+            "Chapter 12: Beyond Earth",
+            "12.5 The Universe",
+            "Let us enhance our learning"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu112.pdf",
+          "ordinal": 13,
+          "pageStart": 21,
+          "pageEnd": 22,
+          "headingPath": [
+            "Chapter 12: Beyond Earth",
+            "12.5 The Universe",
+            "Learning further"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu112.pdf",
+          "ordinal": 14,
+          "pageStart": 23,
+          "pageEnd": 23,
+          "headingPath": [
+            "Chapter 12: Beyond Earth",
+            "12.5 The Universe",
+            "It is not the end, my friend!"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T00:28:30.209Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "Which star is brighter, the Pole Star or Sirius?",
+      "choices": [
+        "Pole Star",
+        "Sirius",
+        "Both are equally bright",
+        "Cannot be determined"
+      ],
+      "answerIndex": 1,
+      "solution": "Sirius is the brightest star in the night sky, making it brighter than the Pole Star. The Pole Star, while important for navigation, has a lower apparent brightness. Therefore, Sirius is the correct answer. The claim that both are equally bright or that it cannot be determined is incorrect based on astronomical observations.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "कौन सा तारा अधिक चमकीला है, ध्रुव तारा या सिरियस?",
+          "choices": [
+            "ध्रुव तारा",
+            "सिरियस",
+            "दोनों बराबर चमकीले हैं",
+            "निर्धारित नहीं किया जा सकता"
+          ],
+          "solution": "सिरियस रात के आकाश में सबसे चमकीला तारा है, जिसके कारण यह ध्रुव तारे से अधिक चमकीला है। ध्रुव तारा, जिसका नेविगेशन में महत्व है, कम दृश्य चमक वाला है। इसलिए, सिरियस सही उत्तर है। दोनों के बराबर चमकीले होने या निर्धारित नहीं किया जा सकता होने का दावा खगोलीय अवलोकनों के आधार पर गलत है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English question and solution, with appropriate astronomical terminology used in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "कोणता तारा जास्त चमकदार असतो, ध्रुव तारा किंवा सिरियस?",
+          "choices": [
+            "ध्रुव तारा",
+            "सिरियस",
+            "दोन्ही समान प्रमाणात चमकदार असतात",
+            "निश्चित करता येत नाही"
+          ],
+          "solution": "सिरियस रात्रीच्या आकाशातील सर्वात जास्त चमकदार तारा आहे, ज्यामुळे तो ध्रुव तारापेक्षा जास्त चमकदार असतो. ध्रुव तारा, ज्याचा दिशा निर्धारणासाठी उपयोग होतो, त्याची दृश्यमान चमक कमी असते. म्हणूनच, सिरियस हे योग्य उत्तर आहे. दोन्ही समान प्रमाणात चमकदार असल्याचा दावा किंवा निश्चित करता येत नाही असा दावा खगोलशास्त्रीय अवलोकनांवर आधारित असून अयोग्य आहे.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate astronomical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Thinks the Pole Star is brighter",
+        null,
+        "Assumes both stars have equal brightness",
+        "Does not know the brightness comparison"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is Sirius, as it is objectively brighter than the Pole Star. The solution is sound and matches the key. The distractors represent common misconceptions about stellar brightness.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu112.pdf",
+          "ordinal": 12,
+          "pageStart": 19,
+          "pageEnd": 21,
+          "headingPath": [
+            "Chapter 12: Beyond Earth",
+            "12.5 The Universe",
+            "Let us enhance our learning"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu112.pdf",
+          "ordinal": 13,
+          "pageStart": 21,
+          "pageEnd": 22,
+          "headingPath": [
+            "Chapter 12: Beyond Earth",
+            "12.5 The Universe",
+            "Learning further"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu112.pdf",
+          "ordinal": 14,
+          "pageStart": 23,
+          "pageEnd": 23,
+          "headingPath": [
+            "Chapter 12: Beyond Earth",
+            "12.5 The Universe",
+            "It is not the end, my friend!"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T00:28:30.209Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If you want to observe the Pole Star, which of the following conditions should you choose?",
+      "choices": [
+        "A night with a full moon",
+        "A night with no clouds and no moon",
+        "A night with heavy rain",
+        "A night with a lot of light pollution"
+      ],
+      "answerIndex": 1,
+      "solution": "The Pole Star is best observed when the sky is clear and dark, allowing for unobstructed visibility. A night with no clouds and no moon provides the ideal conditions because clouds and moonlight can dim or block the view of stars. A full moon or heavy rain would make the sky too bright or cloudy, while light pollution would reduce the contrast needed to see faint stars.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि आप ध्रुव तारा देखना चाहते हैं, तो निम्नलिखित में से कौन सी स्थिति आपको चुननी चाहिए?",
+          "choices": [
+            "एक भरा चांद वाली रात",
+            "बिना बादल और बिना चांद वाली रात",
+            "भारी बारिश वाली रात",
+            "बहुत अधिक प्रकाश प्रदूषण वाली रात"
+          ],
+          "solution": "ध्रुव तारा तब सबसे अच्छा देखा जा सकता है जब आकाश साफ और अंधेरा होता है, जिससे दृश्यता अवरुद्ध न हो। बिना बादल और बिना चांद वाली रात आदर्श स्थिति प्रदान करती है क्योंकि बादल और चांद की रोशनी तारों के दृश्य को छिपा सकती है। भरा चांद या भारी बारिश आकाश को बहुत चमकीला या बादल वाला बना सकती है, जबकि प्रकाश प्रदूषण लाल तारों को देखने के लिए आवश्यक विपरीतता को कम कर सकता है।",
+          "imageAlt": null,
+          "critique": "Translation accurately preserves meaning, technical terms are appropriate, and the correct answer remains option 2.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर तुम्हाला ध्रुव तारा पाहायचा असेल तर खालील पैकी कोणती परिस्थिती निवडाल?",
+          "choices": [
+            "पूर्ण चंद्र असलेला रात्र",
+            "मेघरहित आणि चंद्र नसलेला रात्र",
+            "मोठ्या पाऊस असलेला रात्र",
+            "जास्त ज्योतिर्मय असलेला रात्र"
+          ],
+          "solution": "ध्रुव तारा त्याच्या अवरोधित दृश्यतेसाठी शुद्ध आणि अंधार असलेल्या आकाशात उत्तम दिसतो. मेघरहित आणि चंद्र नसलेला रात्र ही आदर्श परिस्थिती प्रदान करते कारण मेघ आणि चंद्राचे प्रकाश तारांच्या दृश्यतेला गहाळ करू शकतात. पूर्ण चंद्र किंवा मोठा पाऊस आकाशाला जास्त उजळ किंवा मेघाने झांकलेले बनवू शकतात, तर ज्योतिर्मय असलेल्या रात्रीत अंधाराच्या विरोधात दृश्यता कमी होऊ शकते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for astronomical concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Chooses a night with natural light sources that hinder visibility",
+        null,
+        "Confuses weather conditions with visibility",
+        "Ignores the impact of light pollution on star observation"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 1, as a clear, moonless night provides the best visibility for observing the Pole Star. The author's reasoning aligns with the solution and correctly identifies the misconceptions in the other options.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu112.pdf",
+          "ordinal": 3,
+          "pageStart": 6,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 12: Beyond Earth",
+            "12.2 Night Sky Watching"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu112.pdf",
+          "ordinal": 4,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 12: Beyond Earth",
+            "12.2 Night Sky Watching"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu112.pdf",
+          "ordinal": 5,
+          "pageStart": 8,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 12: Beyond Earth",
+            "12.3 Our Solar System"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T00:28:30.209Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "What is the name of the region between Mars and Jupiter that contains many asteroids?",
+      "choices": [
+        "Asteroid Belt",
+        "Comet Zone",
+        "Galactic Ring",
+        "Solar System"
+      ],
+      "answerIndex": 0,
+      "solution": "The correct answer is Asteroid Belt because it is the scientifically recognized region between Mars and Jupiter that contains numerous asteroids. Comet Zone refers to areas where comets originate, Galactic Ring is not a standard term for this region, and Solar System is the entire system containing the planets, not a specific region within it.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "मंगल ग्रह और बृहस्पति के बीच के क्षेत्र का नाम क्या है जिसमें कई उल्कापिंड होते हैं?",
+          "choices": [
+            "उल्कापिंड पट्टी",
+            "उल्का क्षेत्र",
+            "गैलेक्टिक वलय",
+            "सौर प्रणाली"
+          ],
+          "solution": "सही उत्तर उल्कापिंड पट्टी है क्योंकि यह वैज्ञानिक रूप से स्वीकृत क्षेत्र है जो मंगल ग्रह और बृहस्पति के बीच होता है जिसमें कई उल्कापिंड होते हैं। उल्का क्षेत्र उन क्षेत्रों के लिए उपयोग किया जाता है जहां उल्काएं उत्पन्न होती हैं, गैलेक्टिक वलय सामान्य रूप से इस क्षेत्र के लिए एक मानक शब्द नहीं है, और सौर प्रणाली पूरी प्रणाली है जिसमें ग्रह होते हैं, एक विशिष्ट क्षेत्र नहीं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English question and solution, with appropriate terminology used in a Hindi science context.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "मंगळ आणि बुध यांच्या दरम्यानच्या प्रदेशाचे नाव काय आहे ज्यामध्ये अनेक अस्टेरॉइड्स आहेत?",
+          "choices": [
+            "अस्टेरॉइड बेल्ट",
+            "कॉमेट झोन",
+            "गॅलॅक्टिक रिंग",
+            "सौरमंडळ"
+          ],
+          "solution": "बरोबर उत्तर अस्टेरॉइड बेल्ट आहे कारण हा वैज्ञानिकदृष्ट्या ओळखला गेलेला प्रदेश आहे जो मंगळ आणि बुध यांच्या दरम्यान आहे आणि ज्यामध्ये अनेक अस्टेरॉइड्स आहेत. कॉमेट झोन हा असे क्षेत्र आहे जेथून कॉमेट्स उद्भवतात, गॅलॅक्टिक रिंग हा या प्रदेशासाठी मानक शब्द नाही आणि सौरमंडळ हा ग्रहांचा पूर्ण प्रणाली आहे, जो विशिष्ट प्रदेश नाही.",
+          "imageAlt": null,
+          "critique": "The Marathi translation has a critical error: the stem incorrectly states 'मंगळ आणि बुध' (Mars and Mercury) instead of 'मंगळ आणि बुध' (Mars and Jupiter). This changes the question entirely and makes the answer incorrect. The options and solution are otherwise consistent with the English version.",
+          "flag": "translation critique: not one answer at the same position; terms not the board's"
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses the term with other space regions",
+        "Refers to comets, not asteroids",
+        "Refers to the entire system, not a specific region"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is clearly the Asteroid Belt, as it is the well-known region between Mars and Jupiter containing many asteroids. The other options are either incorrect or too general.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu112.pdf",
+          "ordinal": 9,
+          "pageStart": 14,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 12: Beyond Earth",
+            "12.3 Our Solar System"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu112.pdf",
+          "ordinal": 10,
+          "pageStart": 16,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 12: Beyond Earth",
+            "12.3 Our Solar System"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu112.pdf",
+          "ordinal": 11,
+          "pageStart": 17,
+          "pageEnd": 19,
+          "headingPath": [
+            "Chapter 12: Beyond Earth",
+            "12.5 The Universe"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T00:28:30.209Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "If a comet has a tail, what can be inferred about its position relative to the Sun?",
+      "choices": [
+        "It is far away from the Sun",
+        "It is moving away from the Sun",
+        "It is approaching the Sun",
+        "It is orbiting the Earth"
+      ],
+      "answerIndex": 2,
+      "solution": "The correct answer is 'It is approaching the Sun' because comets develop tails when they get close to the Sun due to the heat and solar wind. The other options are incorrect because a comet's tail forms when it is near the Sun, not when it is far away, moving away, or orbiting the Earth.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक धूमकेतु के पूंछ है, तो इसकी सूर्य के सापेक्ष स्थिति के बारे में क्या अनुमान लगाया जा सकता है?",
+          "choices": [
+            "यह सूर्य से दूर है",
+            "यह सूर्य से दूर हो रहा है",
+            "यह सूर्य की ओर आ रहा है",
+            "यह पृथ्वी की परिक्रमा कर रहा है"
+          ],
+          "solution": "सही उत्तर 'यह सूर्य की ओर आ रहा है' है क्योंकि धूमकेतु सूर्य के पास आने पर गर्मी और सौर हवा के कारण पूंछ विकसित करते हैं। अन्य विकल्प गलत हैं क्योंकि धूमकेतु की पूंछ सूर्य के पास होने पर बनती है, न कि दूर होने, दूर जाने या पृथ्वी की परिक्रमा करते समय।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate scientific terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर एका धूमनक्षत्राला पुंज असेल, तर त्याच्या सूर्याच्या संबंधित स्थितीबद्दल काय निष्कर्ष काढता येईल?",
+          "choices": [
+            "ते सूर्यापासून दूर आहे",
+            "ते सूर्यापासून दूर होत आहे",
+            "ते सूर्याकडे जात आहे",
+            "ते पृथ्वीच्या भोवती फिरत आहे"
+          ],
+          "solution": "बरोबर उत्तर 'ते सूर्याकडे जात आहे' आहे कारण धूमनक्षत्राला सूर्याजवळ जाताना उष्णता आणि सूर्याच्या हवेमुळे पुंज तयार होतो. इतर विकल्प चुकीचे आहेत कारण धूमनक्षत्राचा पुंज सूर्याजवळ असताना तयार होतो, सूर्यापासून दूर असताना, दूर होत असताना किंवा पृथ्वीच्या भोवती फिरत असताना नव्हे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Misunderstands the cause of a comet's tail",
+        "Incorrectly assumes the comet is moving away",
+        null,
+        "Confuses the comet's motion with Earth's orbit, "
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 2, as comets develop tails when they approach the Sun due to solar radiation and solar wind. The other options reflect common misconceptions about comet behavior.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu112.pdf",
+          "ordinal": 9,
+          "pageStart": 14,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 12: Beyond Earth",
+            "12.3 Our Solar System"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu112.pdf",
+          "ordinal": 10,
+          "pageStart": 16,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 12: Beyond Earth",
+            "12.3 Our Solar System"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu112.pdf",
+          "ordinal": 11,
+          "pageStart": 17,
+          "pageEnd": 19,
+          "headingPath": [
+            "Chapter 12: Beyond Earth",
+            "12.5 The Universe"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T00:28:30.209Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is the name of the region in Ladakh where Yangdol and Dorjay live?",
+      "choices": [
+        "Nubra",
+        "Ladakh",
+        "Orion",
+        "Canis Major"
+      ],
+      "answerIndex": 0,
+      "solution": "The correct answer is Nubra, as it is the specific region where Yangdol and Dorjay live. The other options are either general names of places or constellations, not the particular area referred to in the question.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "लद्दाख में यांग्डोल और डोरजे के रहने वाले क्षेत्र का नाम क्या है?",
+          "choices": [
+            "नुब्रा",
+            "लद्दाख",
+            "ओरियन",
+            "कैनिस मेजर"
+          ],
+          "solution": "सही उत्तर नुब्रा है क्योंकि यह वह विशिष्ट क्षेत्र है जहां यांग्डोल और डोरजे रहते हैं। अन्य विकल्प या तो सामान्य स्थानों के नाम हैं या खगोलीय नक्षत्र हैं, जो प्रश्न में उल्लिखित विशिष्ट क्षेत्र नहीं हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate regional terms. The answer and distractors are correctly translated and retain their original meaning.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "लदाखमधील यांग्डॉल आणि डॉरजेय राहणारे क्षेत्राचे नाव काय आहे?",
+          "choices": [
+            "नुब्रा",
+            "लदाख",
+            "ओरियन",
+            "कॅनिस मेजॉर"
+          ],
+          "solution": "बरोबर उत्तर नुब्रा आहे, कारण ते असे क्षेत्र आहे जेथे यांग्डॉल आणि डॉरजेय राहतात. इतर विकल्प सामान्य नावे किंवा ताराग्रह असू शकतात, परंतु प्रश्नात उल्लेखित विशिष्ट क्षेत्र नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintaining the original meaning, correct answer position, and appropriate terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses the general region with the specific name",
+        "A student might confuse star constellations with regions in Ladakh.",
+        "Refers to a constellation name"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 0 (Nubra), as the passage explicitly states that Yangdol and Dorjay live in Nubra, a region in Ladakh. The other options are either general terms (Ladakh) or names of constellations (Orion, Canis Major), which are not specific regions in Ladakh.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu112.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 12: Beyond Earth"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu112.pdf",
+          "ordinal": 1,
+          "pageStart": 3,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 12: Beyond Earth",
+            "12.1 Stars and Constellations"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu112.pdf",
+          "ordinal": 2,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 12: Beyond Earth",
+            "12.1 Stars and Constellations"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T02:58:48.265Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "Which of the following is a planet?",
+      "choices": [
+        "Moon",
+        "Sun",
+        "Proxima Centauri",
+        "Earth"
+      ],
+      "answerIndex": 3,
+      "solution": "Earth is a planet because it is a celestial body that orbits the Sun and has cleared its orbit of other debris. The Sun is a star, Proxima Centauri is also a star, and the Moon is a natural satellite of Earth, not a planet. Therefore, the correct answer is Earth.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन एक ग्रह है?",
+          "choices": [
+            "चंद्रमा",
+            "सूर्य",
+            "प्रॉक्सिमा सेंटौरी",
+            "पृथ्वी"
+          ],
+          "solution": "पृथ्वी एक ग्रह है क्योंकि यह सूर्य के चारों ओर घूमने वाला खगोलीय पिंड है और इसके कक्षा से अन्य अपशिष्ट को साफ कर दिया है। सूर्य एक तारा है, प्रॉक्सिमा सेंटौरी भी एक तारा है, और चंद्रमा पृथ्वी का प्राकृतिक उपग्रह है, ग्रह नहीं। इसलिए सही उत्तर पृथ्वी है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. All technical terms (ग्रह, खगोलीय पिंड, तारा, उपग्रह) are standard in Hindi science textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते एक ग्रह आहे?",
+          "choices": [
+            "चंद्र",
+            "सूर्य",
+            "प्रॉक्सिमा सेंटॉरी",
+            "भूमी"
+          ],
+          "solution": "भूमी एक ग्रह आहे कारण ती सूर्याच्या फेरीत फिरणारा खगोलीय वस्तू आहे आणि तिच्या मार्गातील इतर अवशेषांनी स्वच्छ केले आहे. सूर्य तारा आहे, प्रॉक्सिमा सेंटॉरी देखील एक तारा आहे, आणि चंद्र भूमीचा प्राकृतिक उपग्रह आहे, ग्रह नाही. म्हणून, योग्य उत्तर भूमी आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for astronomical terms.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses a natural satellite with a planet",
+        "Confuses a star with a planet",
+        "Confuses a star with a planet",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-constructed, with a clear correct answer (Earth) and reasonable misconceptions for the other options. The solution correctly identifies the planet and explains why the others are not.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu112.pdf",
+          "ordinal": 6,
+          "pageStart": 10,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 12: Beyond Earth",
+            "12.3 Our Solar System"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu112.pdf",
+          "ordinal": 7,
+          "pageStart": 12,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 12: Beyond Earth",
+            "12.3 Our Solar System"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu112.pdf",
+          "ordinal": 8,
+          "pageStart": 13,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 12: Beyond Earth",
+            "12.3 Our Solar System"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T02:58:48.265Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "Which of the following is a natural satellite of the Earth?",
+      "choices": [
+        "Moon",
+        "Chandrayaan-1",
+        "Halley's Comet",
+        "Vikram Lander"
+      ],
+      "answerIndex": 0,
+      "solution": "The Moon is a natural satellite of the Earth, as it orbits the planet naturally without human intervention. Chandrayaan-1 and Vikram Lander are man-made spacecraft, and Halley's Comet is a celestial body that orbits the Sun, not the Earth.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन पृथ्वी का प्राकृतिक उपग्रह है?",
+          "choices": [
+            "चंद्रमा",
+            "चंद्रयान-1",
+            "हैली के धूमकेतु",
+            "विक्रम लैंडर"
+          ],
+          "solution": "चंद्रमा पृथ्वी का प्राकृतिक उपग्रह है, क्योंकि यह मानव हस्तक्षेप के बिना ग्रह के चारों ओर घूमता है। चंद्रयान-1 और विक्रम लैंडर मानव निर्मित अंतरिक्ष यान हैं, और हैली के धूमकेतु एक खगोलीय पिंड है जो सूर्य के चारों ओर घूमता है, पृथ्वी के नहीं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology as found in standard textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी भूमीचे प्राकृतिक उपग्रह कोणता आहे?",
+          "choices": [
+            "चंद्र",
+            "चंद्रायण-१",
+            "हॅलीचा धूमकेतू",
+            "विक्रम लॅंडर"
+          ],
+          "solution": "चंद्र हा भूमीचा प्राकृतिक उपग्रह आहे, कारण तो मानवी हस्तक्षेप शिवाय ग्रहाच्या फेरीत फिरतो. चंद्रायण-१ आणि विक्रम लॅंडर हे मानवनिर्मित अंतरिक्ष यान आहेत, आणि हॅलीचा धूमकेतू हा एक खगोलीय वस्तू आहे जी सूर्याच्या फेरीत फिरते, भूमीच्या फेरीत नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "confuses spacecrafts with satellites",
+        "Believes comets are satellites of Earth due to their periodic appearance in the sky",
+        "Believes a lander that touched down on the Moon is a natural satellite rather than a human-made probe"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The question is straightforward and tests recall of basic astronomy facts. The correct answer is clearly the Moon, and the author's reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu112.pdf",
+          "ordinal": 9,
+          "pageStart": 14,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 12: Beyond Earth",
+            "12.3 Our Solar System"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu112.pdf",
+          "ordinal": 10,
+          "pageStart": 16,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 12: Beyond Earth",
+            "12.3 Our Solar System"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu112.pdf",
+          "ordinal": 11,
+          "pageStart": 17,
+          "pageEnd": 19,
+          "headingPath": [
+            "Chapter 12: Beyond Earth",
+            "12.5 The Universe"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T02:58:48.265Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which planet is referred to as the Red Planet?",
+      "choices": [
+        "Venus",
+        "Mars",
+        "Jupiter",
+        "Saturn"
+      ],
+      "answerIndex": 1,
+      "solution": "Mars is known as the Red Planet due to its reddish appearance caused by iron oxide on its surface. Venus is often called the Evening Star because it is visible in the evening sky, and Jupiter and Saturn are gas giants, not rocky planets. Therefore, the correct answer is Mars.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "कौन सा ग्रह लाल ग्रह के रूप में जाना जाता है?",
+          "choices": [
+            "शुक्र",
+            "मंगल",
+            "बृहस्पति",
+            "शनि"
+          ],
+          "solution": "मंगल को लाल ग्रह के रूप में जाना जाता है क्योंकि इसकी लाल रंगीन दिखाई देने के कारण इसकी सतह पर लौह ऑक्साइड होता है। शुक्र को अक्सर शाम का तारा कहा जाता है क्योंकि यह शाम के आकाश में दिखाई देता है, और बृहस्पति और शनि गैस दानव हैं, चट्टानी ग्रह नहीं। इसलिए सही उत्तर मंगल है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard Hindi terms for planets and astronomical concepts.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "कोणता ग्रह लाल ग्रह म्हणून ओळखला जातो?",
+          "choices": [
+            "शुक्र",
+            "मंगळ",
+            "बृहस्पती",
+            "शनी"
+          ],
+          "solution": "मंगळ लाल ग्रह म्हणून ओळखला जातो कारण त्याच्या सतहीवरील लोह ऑक्साइडमुळे त्याचा लाल रंग असतो. शुक्र रात्रीचा तारा म्हणून ओळखला जातो कारण तो रात्रीच्या आकाशात दिसतो, आणि बृहस्पती आणि शनी वायु दिग्गज आहेत, रॉकी ग्रह नाहीत. म्हणूनच योग्य उत्तर मंगळ आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for celestial bodies.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses Venus with the Red Planet",
+        null,
+        "Incorrectly identifies Jupiter as the Red Planet",
+        "Incorrectly identifies Saturn as the Red Planet"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is Mars, which is commonly known as the Red Planet. The author's reasoning is accurate and matches the scientific knowledge.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu112.pdf",
+          "ordinal": 12,
+          "pageStart": 19,
+          "pageEnd": 21,
+          "headingPath": [
+            "Chapter 12: Beyond Earth",
+            "12.5 The Universe",
+            "Let us enhance our learning"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu112.pdf",
+          "ordinal": 13,
+          "pageStart": 21,
+          "pageEnd": 22,
+          "headingPath": [
+            "Chapter 12: Beyond Earth",
+            "12.5 The Universe",
+            "Learning further"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu112.pdf",
+          "ordinal": 14,
+          "pageStart": 23,
+          "pageEnd": 23,
+          "headingPath": [
+            "Chapter 12: Beyond Earth",
+            "12.5 The Universe",
+            "It is not the end, my friend!"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T02:58:48.265Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the reason behind the Earth being called the Blue Planet?",
+      "choices": [
+        "It is the only planet with water",
+        "It appears blue from space",
+        "It has a blue atmosphere",
+        "It reflects blue light from the Sun"
+      ],
+      "answerIndex": 1,
+      "solution": "The Earth is called the Blue Planet because it appears blue when viewed from space due to the vast amount of water covering its surface. The other options are incorrect because not all planets lack water, the atmosphere is not predominantly blue, and the planet does not reflect blue light from the Sun in a way that would make it appear blue overall.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "पृथ्वी को नीला ग्रह क्यों कहा जाता है?",
+          "choices": [
+            "यह केवल ऐसा ग्रह है जिसमें पानी है",
+            "अंतरिक्ष से देखने पर यह नीला दिखाई देता है",
+            "इसका वातावरण नीला है",
+            "यह सूर्य से नीला प्रकाश परावर्तित करता है"
+          ],
+          "solution": "पृथ्वी को नीला ग्रह इसलिए कहा जाता है क्योंकि इसकी सतह पर बहुत अधिक मात्रा में पानी होने के कारण अंतरिक्ष से देखने पर यह नीला दिखाई देता है। अन्य विकल्प गलत हैं क्योंकि सभी ग्रहों में पानी नहीं होता, वातावरण नीला नहीं होता और ग्रह सूर्य से नीला प्रकाश परावर्तित नहीं करता जिससे यह नीला दिखाई दे।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the original English question and solution. All options are correctly translated, and the correct answer remains option (1). The distractors are still incorrect in Hindi, and the technical terms used are appropriate for a Hindi-medium curriculum.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "भूमीला नीला ग्रह म्हणतात याचा कारण काय आहे?",
+          "choices": [
+            "तिला पाणी असलेला एकमेव ग्रह आहे",
+            "अंतराळातून पाहिल्यास ती निळी दिसते",
+            "तिला निळा वातावरण आहे",
+            "ती सूर्याच्या निळ्या प्रकाशाचे प्रतिबिंब करते"
+          ],
+          "solution": "भूमीला नीला ग्रह म्हणतात कारण ती अंतराळातून पाहिल्यास तिच्या पृष्ठभागावर विशाल पाणी असल्यामुळे निळी दिसते. इतर विकल्प अयोग्य आहेत कारण सर्व ग्रहांना पाणी नसते, वातावरण निळे नसते आणि ग्रह सूर्याच्या निळ्या प्रकाशाचे प्रतिबिंब करत नाही जेणेकरून तो निळा दिसत नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Incorrectly assumes it is the only planet with water",
+        null,
+        "Confuses atmospheric properties with appearance",
+        "Misinterprets light reflection as the reason"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 1, as the Earth appears blue from space due to its large water coverage. The other options are incorrect for the reasons given by the author, and those reasons correspond to common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu112.pdf",
+          "ordinal": 6,
+          "pageStart": 10,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 12: Beyond Earth",
+            "12.3 Our Solar System"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu112.pdf",
+          "ordinal": 7,
+          "pageStart": 12,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 12: Beyond Earth",
+            "12.3 Our Solar System"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu112.pdf",
+          "ordinal": 8,
+          "pageStart": 13,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 12: Beyond Earth",
+            "12.3 Our Solar System"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T02:58:48.265Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the main reason that comets have tails?",
+      "choices": [
+        "They are made of dust and ice that evaporate near the Sun",
+        "They are pulled by the gravity of the planets",
+        "They reflect sunlight from their surfaces",
+        "They are made of metal and rock"
+      ],
+      "answerIndex": 0,
+      "solution": "Comets have tails because they are composed of dust and ice that vaporize when they get close to the Sun, creating the visible tail. The other options are incorrect because planetary gravity does not cause tails, reflection of sunlight does not explain the tail's formation, and comets are not primarily made of metal and rock.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "कमेटियों के पूंछ क्यों होती हैं?",
+          "choices": [
+            "वे धूल और बर्फ से बने होते हैं जो सूर्य के पास वाष्पित हो जाते हैं",
+            "वे ग्रहों के गुरुत्वाकर्षण द्वारा खींचे जाते हैं",
+            "वे अपनी सतह से सूर्य के प्रकाश को परावर्तित करते हैं",
+            "वे धातु और चट्टान से बने होते हैं"
+          ],
+          "solution": "कमेटियां पूंछ इसलिए बनाती हैं क्योंकि वे धूल और बर्फ से बनी होती हैं जो जब सूर्य के पास आती हैं तो वाष्पित हो जाती हैं, जिससे दृश्य पूंछ बनती है। अन्य विकल्प गलत हैं क्योंकि ग्रहों के गुरुत्वाकर्षण द्वारा पूंछ नहीं बनती, सूर्य के प्रकाश के परावर्तन से पूंछ का निर्माण समझाने में असमर्थ है, और कमेटियां धातु और चट्टान से मुख्य रूप से नहीं बनी होती हैं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the scientific terminology used in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "कॉमेट्सच्या पुढे लांब ओंठ असतात त्याचे मुख्य कारण काय आहे?",
+          "choices": [
+            "ते धूल आणि बर्फापासून बनलेले असतात जेणेकरून ते सूर्याजवळ जाताना वाफ बनतात",
+            "ते ग्रहांच्या गुरुत्वाकर्षणामुळे खेचले जातात",
+            "ते त्यांच्या सतहीवरून सूर्याचे प्रकाश परावर्तित करतात",
+            "ते धातू आणि शिलापासून बनलेले असतात"
+          ],
+          "solution": "कॉमेट्सच्या पुढे लांब ओंठ असतात कारण ते धूल आणि बर्फापासून बनलेले असतात जेणेकरून ते सूर्याजवळ जाताना वाफ बनतात, ज्यामुळे दृश्यमान ओंठ तयार होतो. इतर विकल्प चुकीचे आहेत कारण ग्रहांच्या गुरुत्वाकर्षणामुळे ओंठ तयार होत नाहीत, सूर्याचे प्रकाश परावर्तित करणे ओंठाच्या तयारीचे स्पष्टीकरण देत नाही आणि कॉमेट्स धातू आणि शिलापासून मुख्यतः बनलेले नसतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Believes comets' tails are caused by planetary gravitational pull rather than solar heating",
+        "Students often confuse comets with planets or moons, which do reflect sunlight, and fail to understand that comet tails are caused by evaporation, not reflection.",
+        "Students often confuse comets with asteroids, thinking they are solid and metallic rather than icy and dusty."
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 0, as comets' tails are caused by the evaporation of ice and dust when they approach the Sun. The other options reflect common misconceptions about comets, which the author's reasons correctly identify.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu112.pdf",
+          "ordinal": 9,
+          "pageStart": 14,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 12: Beyond Earth",
+            "12.3 Our Solar System"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu112.pdf",
+          "ordinal": 10,
+          "pageStart": 16,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 12: Beyond Earth",
+            "12.3 Our Solar System"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu112.pdf",
+          "ordinal": 11,
+          "pageStart": 17,
+          "pageEnd": 19,
+          "headingPath": [
+            "Chapter 12: Beyond Earth",
+            "12.5 The Universe"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T02:58:48.265Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "What would happen if a planet was not revolving around the Sun?",
+      "choices": [
+        "It would become a star",
+        "It would become a satellite",
+        "It would lose its atmosphere",
+        "It would no longer be considered a planet"
+      ],
+      "answerIndex": 3,
+      "solution": "A planet is defined by its orbit around the Sun. If it stopped revolving, it would no longer meet the criteria for being classified as a planet. The other options are not scientifically accurate based on the nature of planetary motion and celestial bodies.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "सूर्य के चारों ओर घूमना बंद कर देने पर ग्रह क्या हो जाएगा?",
+          "choices": [
+            "यह एक तारा बन जाएगा",
+            "यह एक उपग्रह बन जाएगा",
+            "यह अपनी वातावरण खो देगा",
+            "यह अब एक ग्रह माना जाएगा नहीं"
+          ],
+          "solution": "एक ग्रह की परिभाषा सूर्य के चारों ओर घूमने के लिए है। यदि यह घूमना बंद कर दे तो यह ग्रह के रूप में वर्गीकृत होने के मानदंड पूरे नहीं करेगा। अन्य विकल्प ग्रहीय गति और खगोलीय पिंडों की प्रकृति के आधार पर वैज्ञानिक रूप से सटीक नहीं हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate scientific terminology in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "सूर्याच्या फेरीत फिरत नसल्यास ग्रह काय होईल?",
+          "choices": [
+            "तो तारा होईल",
+            "तो उपग्रह होईल",
+            "त्याची वातावरण गमावील",
+            "तो ग्रह मानला जाणार नाही"
+          ],
+          "solution": "ग्रह सूर्याच्या फेरीत फिरत असल्याच्या ओळखीने निश्चित केला जातो. जर तो फिरणे थांबवले तर तो ग्रह म्हणून वर्गीकृत करण्याच्या मापदंडांना अनुरूप राहणार नाही. इतर विकल्प सौर ग्रहांच्या गती आणि खगोलीय वस्तूंच्या प्रकृतीवर आधारित वैज्ञानिकरित्या अचूक नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses planets with stars",
+        "Confuses satellites with planets",
+        "Incorrectly assumes atmospheric changes are the primary factor",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly identifies that the definition of a planet includes revolving around the Sun, and thus a planet that stops doing so would no longer meet the criteria. The reasoning for the distractors aligns with common student misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu112.pdf",
+          "ordinal": 6,
+          "pageStart": 10,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 12: Beyond Earth",
+            "12.3 Our Solar System"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu112.pdf",
+          "ordinal": 7,
+          "pageStart": 12,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 12: Beyond Earth",
+            "12.3 Our Solar System"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu112.pdf",
+          "ordinal": 8,
+          "pageStart": 13,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 12: Beyond Earth",
+            "12.3 Our Solar System"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T02:58:48.265Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If a comet comes close to the Sun, what happens to its tail?",
+      "choices": [
+        "It disappears",
+        "It becomes longer",
+        "It changes color",
+        "It remains the same"
+      ],
+      "answerIndex": 1,
+      "solution": "When a comet approaches the Sun, the heat causes the frozen materials in the comet to evaporate, creating a tail. As more material evaporates, the tail grows longer. Other options are incorrect because the tail does not disappear, change color, or stay the same under these conditions.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक धूमकेतु सूर्य के निकट आता है, तो इसकी पूंछ क्या होती है?",
+          "choices": [
+            "यह लुप्त हो जाती है",
+            "यह लंबी हो जाती है",
+            "यह रंग बदल जाती है",
+            "यह वही रहती है"
+          ],
+          "solution": "जब एक धूमकेतु सूर्य के निकट आता है, तो गर्मी के कारण धूमकेतु में जमे हुए पदार्थ वाष्पित हो जाते हैं, जिससे एक पूंछ बनती है। जैसे-जैसे अधिक पदार्थ वाष्पित होता है, पूंछ लंबी हो जाती है। अन्य विकल्प गलत हैं क्योंकि पूंछ लुप्त नहीं होती, रंग नहीं बदलती या वही नहीं रहती इन स्थितियों में।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi scientific terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर एक धूम्रग्रह सूर्याजवळ येतो, तर त्याच्या पुंजाचे काय होते?",
+          "choices": [
+            "तो अदृश्य होतो",
+            "तो लांब होतो",
+            "तो रंग बदलतो",
+            "तो त्याच राहतो"
+          ],
+          "solution": "जेव्हा धूम्रग्रह सूर्याजवळ येतो तेव्हा तापामुळे धूम्रग्रहातील जमलेले पदार्थ वाफ बनतात, ज्यामुळे पुंज तयार होतो. जेव्हा अधिक पदार्थ वाफ बनतो तेव्हा पुंज लांब होतो. इतर विकल्प चुकीचे आहेत कारण पुंज अदृश्य होत नाही, रंग बदलत नाही किंवा त्याच राहत नाही या परिस्थितीत.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "incorrectly assumes the tail disappears",
+        null,
+        "incorrectly assumes a change in color",
+        "incorrectly assumes no change"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 1 (It becomes longer), as the tail forms and grows when a comet approaches the Sun due to evaporation of frozen material. The reasoning in the author's solution is sound and matches the scientific understanding.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu112.pdf",
+          "ordinal": 9,
+          "pageStart": 14,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 12: Beyond Earth",
+            "12.3 Our Solar System"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu112.pdf",
+          "ordinal": 10,
+          "pageStart": 16,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 12: Beyond Earth",
+            "12.3 Our Solar System"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu112.pdf",
+          "ordinal": 11,
+          "pageStart": 17,
+          "pageEnd": 19,
+          "headingPath": [
+            "Chapter 12: Beyond Earth",
+            "12.5 The Universe"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T02:58:48.265Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "What is the significance of the Chandrayaan-3 mission?",
+      "choices": [
+        "It was the first mission to the Moon",
+        "It brought back samples from the Moon",
+        "It was the first to land on the Moon's south pole",
+        "It discovered water on the Moon"
+      ],
+      "answerIndex": 2,
+      "solution": "Chandrayaan-3 was the first mission to successfully land on the Moon's south pole, a significant achievement in lunar exploration. The other options are incorrect because the first Moon mission was Apollo 11, sample return missions were conducted by other countries, and water on the Moon was discovered by earlier missions.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "चंद्रयान-3 मिशन का महत्व क्या है?",
+          "choices": [
+            "यह चंद्रमा के लिए पहला मिशन था",
+            "इसने चंद्रमा से नमूने लाए थे",
+            "यह चंद्रमा के दक्षिणी ध्रुव पर उतरने वाला पहला मिशन था",
+            "इसने चंद्रमा पर पानी की खोज की थी"
+          ],
+          "solution": "चंद्रयान-3 चंद्रमा के दक्षिणी ध्रुव पर सफलतापूर्वक उतरने वाला पहला मिशन था, चंद्रमा की खोज में एक महत्वपूर्ण उपलब्धि। अन्य विकल्प गलत हैं क्योंकि पहला चंद्रमा मिशन अपोलो 11 था, नमूना वापस लाने के मिशन अन्य देशों द्वारा किए गए थे, और चंद्रमा पर पानी की खोज पहले के मिशनों द्वारा की गई थी।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms as used in Indian textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "चंद्रायण-3 मिशनचा अर्थ काय आहे?",
+          "choices": [
+            "त्याने चंद्रावर पहिले प्रयाण केले",
+            "त्याने चंद्रावरून नमुने घेतले",
+            "त्याने चंद्राच्या दक्षिण ध्रुवावर उतरले",
+            "त्याने चंद्रावर पाणी शोधले"
+          ],
+          "solution": "चंद्रायण-3 हा चंद्राच्या दक्षिण ध्रुवावर यशस्वीरित्या उतरलेला पहिला मिशन होता, चंद्र अन्वेषणात एक महत्वपूर्ण उपलब्धी. इतर विकल्प चुकीचे आहेत कारण पहिला चंद्र मिशन अपोलो 11 होता, नमुने परत आणणारे मिशन इतर देशांनी केले होते आणि चंद्रावर पाणी शोधण्याचे काम पूर्वीच्या मिशनांनी केले होते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "refers to Chandrayaan-1",
+        "refers to a future mission",
+        null,
+        "confuses with another discovery"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 2, as Chandrayaan-3 was indeed the first mission to land on the Moon's south pole. The other options are either incorrect or not supported by the passage.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu112.pdf",
+          "ordinal": 9,
+          "pageStart": 14,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 12: Beyond Earth",
+            "12.3 Our Solar System"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu112.pdf",
+          "ordinal": 10,
+          "pageStart": 16,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 12: Beyond Earth",
+            "12.3 Our Solar System"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu112.pdf",
+          "ordinal": 11,
+          "pageStart": 17,
+          "pageEnd": 19,
+          "headingPath": [
+            "Chapter 12: Beyond Earth",
+            "12.5 The Universe"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T02:58:48.265Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "If a country launches a mission to bring back samples from the Moon, what can be inferred about the mission?",
+      "choices": [
+        "It will take a long time to complete",
+        "It will be the first of its kind",
+        "It will be very expensive",
+        "It will involve a soft landing"
+      ],
+      "answerIndex": 3,
+      "solution": "A mission to bring back samples from the Moon would require careful handling of the spacecraft to ensure the samples are not damaged. A soft landing is necessary to safely collect and return the samples to Earth. The other options, such as the duration or cost, are not directly related to the nature of the mission itself.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक देश चंद्रमा से नमूने लाने के लिए एक मिशन लॉन्च करता है, तो इस मिशन के बारे में क्या निष्कर्ष निकाला जा सकता है?",
+          "choices": [
+            "इसे पूरा करने में लंबा समय लगेगा",
+            "यह इस तरह के पहला मिशन होगा",
+            "इसकी लागत बहुत अधिक होगी",
+            "इसमें एक नरम उतराव शामिल होगा"
+          ],
+          "solution": "चंद्रमा से नमूने लाने के लिए एक मिशन के लिए अंतरिक्ष यान के सावधानीपूर्वक नियंत्रण की आवश्यकता होती है ताकि नमूने नुकसान न हों। एक नरम उतराव आवश्यक है ताकि नमूनों को पृथ्वी पर वापस लाना सुरक्षित हो सके। अन्य विकल्प, जैसे कि अवधि या लागत, मिशन की प्रकृति से सीधा संबंधित नहीं हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate technical terms.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर एका देशाने चंद्रावरून नमुने परत आणण्यासाठी एका मिशनची घोषणा केली तर त्या मिशनबद्दल काय निष्कर्ष काढता येईल?",
+          "choices": [
+            "त्या मिशनला पूर्ण करण्यास लांब काळ लागेल",
+            "ते प्रथमच असेल",
+            "ते खूप खर्चिक असेल",
+            "त्यामध्ये निर्जंतुक उतराव असेल"
+          ],
+          "solution": "चंद्रावरून नमुने परत आणण्यासाठी एखाद्या मिशनला अत्यंत सावधगिरीने वाहनाची व्यवस्था करावी लागेल जेणेकरून नमुने नुकसान पावू नयेत. नमुने जमिनीवर सुरक्षितपणे एकत्रित करून पृथ्वीवर परत आणण्यासाठी निर्जंतुक उतराव आवश्यक असतो. इतर विकल्प, जसे की कालावधी किंवा खर्च, मिशनच्या प्रकृतीशी सीधा संबंध नसतो.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi technical terms like 'निर्जंतुक उतराव' (soft landing) used correctly.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "assumes time required without evidence",
+        "assumes it is the first without evidence",
+        "assumes cost without evidence",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 3, as a sample return mission would require a soft landing to safely collect and return samples. The other options are not directly supported by the passage and represent assumptions without evidence.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu112.pdf",
+          "ordinal": 9,
+          "pageStart": 14,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 12: Beyond Earth",
+            "12.3 Our Solar System"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu112.pdf",
+          "ordinal": 10,
+          "pageStart": 16,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 12: Beyond Earth",
+            "12.3 Our Solar System"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu112.pdf",
+          "ordinal": 11,
+          "pageStart": 17,
+          "pageEnd": 19,
+          "headingPath": [
+            "Chapter 12: Beyond Earth",
+            "12.5 The Universe"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T02:58:48.265Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Why did the International Astronomical Union define constellation boundaries?",
+      "choices": [
+        "To create more constellations",
+        "To standardize the names of stars",
+        "To make it easier to identify stars",
+        "To replace traditional stories with scientific names"
+      ],
+      "answerIndex": 2,
+      "solution": "The International Astronomical Union defined constellation boundaries to make it easier to identify stars by providing a consistent reference system. This helped astronomers around the world use the same framework for locating and discussing celestial objects. The other options incorrectly suggest the purpose was to increase the number of constellations, rename stars, or eliminate traditional stories.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "अंतरराष्ट्रीय खगोलीय संघ ने उपग्रह के सीमाओं को क्यों परिभाषित किया?",
+          "choices": [
+            "अधिक उपग्रह बनाने के लिए",
+            "तारों के नाम मानकीकृत करने के लिए",
+            "तारों की पहचान करने में सुविधा के लिए",
+            "पारंपरिक कहानियों को वैज्ञानिक नामों से बदलने के लिए"
+          ],
+          "solution": "अंतरराष्ट्रीय खगोलीय संघ ने उपग्रह की सीमाओं को परिभाषित किया ताकि तारों की पहचान करना आसान बन सके और एक स्थिर संदर्भ प्रणाली प्रदान की जा सके। इससे दुनिया भर के खगोलविदों को खगोलीय वस्तुओं की स्थिति और चर्चा के लिए एक ही ढांचा उपयोग करने में सुविधा हुई। अन्य विकल्प गलत तरीके से उद्देश्य को बताते हैं कि उपग्रहों की संख्या बढ़ाना, तारों के नाम बदलना या पारंपरिक कहानियों को हटाना था।",
+          "imageAlt": null,
+          "critique": "Hindi translation accurately reflects the original English question and solution, with appropriate terminology used in Indian educational context.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "अंतरराष्ट्रीय खगोलीय संघाने राशींच्या सीमा का निश्चित केल्या?",
+          "choices": [
+            "अधिक राशी तयार करण्यासाठी",
+            "तारांच्या नावांचे मानकीकरण करण्यासाठी",
+            "तारांची ओळख करणे सोपे करण्यासाठी",
+            "पारंपरिक कथा वैज्ञानिक नावांनी बदलण्यासाठी"
+          ],
+          "solution": "अंतरराष्ट्रीय खगोलीय संघाने राशींच्या सीमा तारांची ओळख करणे सोपे करण्यासाठी निश्चित केल्या. यामुळे जगभरातील खगोलशास्त्रज्ञांना खगोलीय वस्तूंच्या स्थानांचे निर्धारण आणि चर्चा करण्यासाठी एकाच ढाचा वापरता येत होता. इतर विकल्प चुकीचे असून ते राशींची संख्या वाढवण्याच्या, तारांची नावे बदलण्याच्या किंवा पारंपरिक कथा नष्ट करण्याच्या उद्देशाने विचार करतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi astronomical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Assumes the IAU's goal was to increase the number of constellations",
+        "Refers to the naming of stars, not the boundaries of constellations",
+        null,
+        "Misunderstands the IAU's role as replacing traditional stories"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 2, as the IAU defined constellation boundaries to standardize and make it easier to identify stars. The other options reflect common misconceptions about the IAU's purpose.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu112.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 12: Beyond Earth"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu112.pdf",
+          "ordinal": 1,
+          "pageStart": 3,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 12: Beyond Earth",
+            "12.1 Stars and Constellations"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu112.pdf",
+          "ordinal": 2,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 12: Beyond Earth",
+            "12.1 Stars and Constellations"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T02:58:48.265Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Which of the following is an example of a constellation?",
+      "choices": [
+        "Orion",
+        "Moon",
+        "Sun",
+        "Earth"
+      ],
+      "answerIndex": 0,
+      "solution": "Orion is a constellation, while the Moon, Sun, and Earth are not. Hence, the correct answer is Orion.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन एक खगोलीय चित्र का उदाहरण है?",
+          "choices": [
+            "ओरियन",
+            "चंद्रमा",
+            "सूर्य",
+            "पृथ्वी"
+          ],
+          "solution": "ओरियन एक खगोलीय चित्र है, जबकि चंद्रमा, सूर्य और पृथ्वी नहीं हैं। अतः सही उत्तर ओरियन है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English question, with appropriate terminology used for astronomical terms.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते राशिचित्राचे उदाहरण आहे?",
+          "choices": [
+            "ओरियन",
+            "चंद्र",
+            "सूर्य",
+            "भूमी"
+          ],
+          "solution": "ओरियन एक राशिचित्र आहे, जर चंद्र, सूर्य आणि भूमी नाहीत. म्हणून, योग्य उत्तर ओरियन आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terms for astronomical concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses the Moon with a constellation",
+        "Confuses the Sun with a constellation",
+        "Confuses the Earth with a constellation"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct and matches the author's key. Orion is indeed a constellation, while the Moon, Sun, and Earth are not. The misconceptions listed are plausible for students who confuse celestial bodies with constellations.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu112.pdf",
+          "ordinal": 12,
+          "pageStart": 19,
+          "pageEnd": 21,
+          "headingPath": [
+            "Chapter 12: Beyond Earth",
+            "12.5 The Universe",
+            "Let us enhance our learning"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu112.pdf",
+          "ordinal": 13,
+          "pageStart": 21,
+          "pageEnd": 22,
+          "headingPath": [
+            "Chapter 12: Beyond Earth",
+            "12.5 The Universe",
+            "Learning further"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu112.pdf",
+          "ordinal": 14,
+          "pageStart": 23,
+          "pageEnd": 23,
+          "headingPath": [
+            "Chapter 12: Beyond Earth",
+            "12.5 The Universe",
+            "It is not the end, my friend!"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T02:58:48.265Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Why are comets not visible to the naked eye when they are far from the Sun?",
+      "choices": [
+        "They have no light",
+        "They are too far away",
+        "They do not reflect sunlight",
+        "Their tails are too small"
+      ],
+      "answerIndex": 1,
+      "solution": "Comets are not visible to the naked eye when they are far from the Sun because they are too far away for their light to be seen. Comets do reflect sunlight, but when they are distant, the light is too faint to be detected without a telescope. The other options are incorrect because comets do emit light and have tails, even if they are small when far from the Sun.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "चूमी क्यों दृग्य नहीं होती जब वे सूर्य से दूर होती हैं?",
+          "choices": [
+            "उनके पास कोई प्रकाश नहीं होता",
+            "वे बहुत दूर होती हैं",
+            "वे सूर्य के प्रकाश को परावर्तित नहीं करती हैं",
+            "उनके पूंछ बहुत छोटी होती हैं"
+          ],
+          "solution": "जब चूमी सूर्य से दूर होती हैं तो दृग्य नहीं होती क्योंकि वे बहुत दूर होती हैं कि उनके प्रकाश को देखा जा सके। चूमी सूर्य के प्रकाश को परावर्तित करती हैं, लेकिन जब वे दूर होती हैं तो प्रकाश बहुत कमजोर होता है जिसे टेलीस्कोप के बिना नहीं देखा जा सकता। अन्य विकल्प गलत हैं क्योंकि चूमी प्रकाश उत्सर्जित करती हैं और पूंछ भी होती हैं, भले ही वे सूर्य से दूर होने पर छोटी होती हैं।",
+          "imageAlt": null,
+          "critique": "Translation accurately preserves the meaning, technical terms are appropriate, and the correct answer remains in the same position.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "उपग्रह चंद्रापासून दूर असताना नग्न डोळ्याने दिसत नाहेत का?",
+          "choices": [
+            "त्यांना प्रकाश नाही",
+            "ते खूप दूर असतात",
+            "ते सूर्याचा प्रकाश परावर्तित करत नाहीत",
+            "त्यांचे लांबी खूप लहान असते"
+          ],
+          "solution": "उपग्रह चंद्रापासून दूर असताना नग्न डोळ्याने दिसत नाहेत कारण ते खूप दूर असतात जेणेकरून त्यांचा प्रकाश दिसू शकत नाही. उपग्रह सूर्याचा प्रकाश परावर्तित करतात, परंतु जेव्हा ते दूर असतात तेव्हा प्रकाश खूप दुबळा असतो जो दूरदृष्टीशी विना दिसू शकत नाही. इतर विकल्प चुकीचे आहेत कारण उपग्रह प्रकाश उत्सर्जित करतात आणि त्यांना पोटे असतात, चंद्रापासून दूर असताना त्यांच्या पोटांचा आकार लहान असतो.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for astronomical concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "misunderstands how comets shine",
+        null,
+        "confuses distance with visibility",
+        "misunderstands the role of tails"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 1 (They are too far away), as comets are not visible when far from the Sun due to their distance. The author's key and reasoning are correct, and the misconceptions listed for the wrong options are plausible for students.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu112.pdf",
+          "ordinal": 9,
+          "pageStart": 14,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 12: Beyond Earth",
+            "12.3 Our Solar System"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu112.pdf",
+          "ordinal": 10,
+          "pageStart": 16,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 12: Beyond Earth",
+            "12.3 Our Solar System"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu112.pdf",
+          "ordinal": 11,
+          "pageStart": 17,
+          "pageEnd": 19,
+          "headingPath": [
+            "Chapter 12: Beyond Earth",
+            "12.5 The Universe"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T02:58:48.265Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
     }
   ]
 }

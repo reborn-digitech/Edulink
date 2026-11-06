@@ -1223,6 +1223,2537 @@
       "generatedAt": "2026-11-02T14:41:17.354Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "Which figure in the chapter shows the crescent Moon facing towards the Sun?",
+      "choices": [
+        "Fig. 11.10",
+        "Fig. 11.11",
+        "Fig. 11.12",
+        "Fig. 11.2"
+      ],
+      "answerIndex": 2,
+      "solution": "The correct answer is Fig. 11.12, which accurately depicts the crescent Moon with its illuminated side facing the Sun. The other figures do not show the crescent phase with the illuminated part directed toward the Sun, which is a key characteristic of this lunar phase.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "अध्याय में कौन-सी आकृति चंद्रमा के अर्धचंद्र रूप को सूर्य की ओर घुमाए दर्शाती है?",
+          "choices": [
+            "चित्र 11.10",
+            "चित्र 11.11",
+            "चित्र 11.12",
+            "चित्र 11.2"
+          ],
+          "solution": "सही उत्तर चित्र 11.12 है, जो अर्धचंद्र चंद्रमा को सूर्य की ओर चमकते हुए दर्शाता है। अन्य चित्र अर्धचंद्र चरण को सूर्य की ओर चमकते हुए नहीं दर्शाते हैं, जो इस चंद्र चरण की मुख्य विशेषता है।",
+          "imageAlt": "एक आकृति जिसमें सूर्य और अर्धचंद्र चंद्रमा है और प्रकाश की दिशा को दर्शाने वाली तीर है।",
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms. The correct answer remains in the same position (option 2), and the distractors are still incorrect.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "चित्रातील चंद्र चंद्राकडे वळलेला असल्याचे दर्शविणारे कोणते चित्र असेल?",
+          "choices": [
+            "चित्र 11.10",
+            "चित्र 11.11",
+            "चित्र 11.12",
+            "चित्र 11.2"
+          ],
+          "solution": "योग्य उत्तर चित्र 11.12 आहे, जे चंद्राच्या अर्धभागाचे योग्य रूप दर्शवते आणि त्याच्या उजळ बाजूला चंद्राकडे वळलेले असते. इतर चित्रांमध्ये चंद्राचा अर्धभाग चंद्राकडे वळलेला नसतो, हे एक महत्वपूर्ण वैशिष्ट्य आहे.",
+          "imageAlt": "सूर्य आणि अर्धचंद्र चंद्र दर्शविणारे आरेखन, ज्यामध्ये प्रकाशाच्या दिशेचा तीर दर्शविला आहे.",
+          "critique": "The Marathi translation is accurate, maintains the original meaning, and uses appropriate terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": "A diagram showing the Sun and the crescent Moon with an arrow indicating the direction of light.",
+      "figure": {
+        "kind": "diagram",
+        "spec": {
+          "parts": [
+            {
+              "part": "sunEarthMoon",
+              "x": 50,
+              "y": 30,
+              "size": 20,
+              "labels": [
+                "moon",
+                "sun"
+              ],
+              "text": {
+                "moon": "crescent",
+                "sun": "sun"
+              }
+            }
+          ],
+          "arrows": [
+            {
+              "from": [
+                20,
+                30
+              ],
+              "to": [
+                50,
+                30
+              ],
+              "label": "direction",
+              "curved": false
+            }
+          ]
+        },
+        "labels": {
+          "sun": {
+            "en": "Sun",
+            "hi": "सूर्य",
+            "mr": "सूर्य"
+          },
+          "crescent": {
+            "en": "Crescent Moon",
+            "hi": "अर्धचंद्र चंद्रमा",
+            "mr": "अर्धचंद्र चंद्र"
+          },
+          "direction": {
+            "en": "Direction of light",
+            "hi": "प्रकाश की दिशा",
+            "mr": "प्रकाशाची दिशा"
+          }
+        }
+      },
+      "needsFigure": true,
+      "distractorReason": [
+        "Confuses the figure with another that shows the Moon's phases",
+        "Refers to a figure that shows the Moon's phases but not the crescent facing the Sun",
+        null,
+        "Refers to a figure that is not related to the Moon's position relative to the Sun"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is Fig. 11.12, which matches the description of the crescent Moon facing the Sun. The other options are correctly identified as not showing this specific configuration.",
+      "sources": [
+        {
+          "document": "ncert/8/science/hecu111.pdf",
+          "ordinal": 16,
+          "pageStart": 18,
+          "pageEnd": 19,
+          "headingPath": [
+            "Chapter 11: — Keeping Time with the Skies",
+            "11.4 Why Do We Launch Artificial Satellites",
+            "Activity 11.4: Let us identify"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu111.pdf",
+          "ordinal": 17,
+          "pageStart": 19,
+          "pageEnd": 20,
+          "headingPath": [
+            "Chapter 11: — Keeping Time with the Skies",
+            "11.4 Why Do We Launch Artificial Satellites",
+            "Activity 11.4: Let us identify"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu111.pdf",
+          "ordinal": 18,
+          "pageStart": 20,
+          "pageEnd": 20,
+          "headingPath": [
+            "Chapter 11: — Keeping Time with the Skies",
+            "11.4 Why Do We Launch Artificial Satellites",
+            "Activity 11.4: Let us identify"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-30T00:00:58.242Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of the following is a reason for the Sun rising in different directions during different times of the year?",
+      "choices": [
+        "The Earth rotates on its axis",
+        "The Earth revolves around the Sun",
+        "The Earth's axis is tilted",
+        "The Sun moves in a circular orbit"
+      ],
+      "answerIndex": 2,
+      "solution": "The Earth's axis being tilted causes the Sun to rise in different directions throughout the year because it changes the angle at which sunlight reaches different parts of the Earth. The Earth's rotation on its axis only affects the daily cycle of day and night, not the seasonal variation in sunrise direction. The Earth's revolution around the Sun affects the year's length, not the direction of sunrise. The idea that the Sun moves in a circular orbit is incorrect because the Sun remains relatively stationary in our solar system.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा वर्ष के विभिन्न समय पर सूर्य के अलग-अलग दिशाओं में उदय होने का कारण है?",
+          "choices": [
+            "पृथ्वी अपनी धुरी पर घूमती है",
+            "पृथ्वी सूर्य के चारों ओर घूमती है",
+            "पृथ्वी की धुरी झुकी हुई है",
+            "सूर्य एक वृत्ताकार कक्षा में गति करता है"
+          ],
+          "solution": "पृथ्वी की धुरी झुकी होने के कारण वर्ष भर में सूर्य के अलग-अलग दिशाओं में उदय होता है क्योंकि यह पृथ्वी के विभिन्न हिस्सों पर सूर्य के प्रकाश के कोण को बदल देती है। पृथ्वी की धुरी पर घूमना केवल दिन और रात के दैनिक चक्र को प्रभावित करता है, वर्ष के दौरान सूर्य के उदय की दिशा को नहीं। पृथ्वी के सूर्य के चारों ओर घूमने का वर्ष की लंबाई पर प्रभाव पड़ता है, न कि सूर्य के उदय की दिशा पर। सूर्य के एक वृत्ताकार कक्षा में गति करने का विचार गलत है क्योंकि सूर्य हमारे सौर मंडल में लगभग स्थिर रहता है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi scientific terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते वर्षातील विविध कालावधीत सूर्य वेगवेगळ्या दिशेने उगवतो याचे कारण आहे?",
+          "choices": [
+            "भूमी आपल्या अक्षावर फिरते",
+            "भूमी सूर्याभोवती फिरते",
+            "भूमीचा अक्ष झुकलेला असतो",
+            "सूर्य वृत्ताकार मार्गावर गेलेला असतो"
+          ],
+          "solution": "भूमीचा अक्ष झुकलेला असल्यामुळे वर्षातील विविध कालावधीत सूर्य वेगवेगळ्या दिशेने उगवतो, कारण तो भूमीवर प्रकाशाच्या वेगवेगळ्या कोनाने पोहोचतो. भूमीच्या आपल्या अक्षावर फिरण्यामुळे दिवस आणि रात्रीचा दैनिक चक्र बदलतो, परंतु उगम दिशेच्या वैविध्याचा अंतर्गत परिणाम होत नाही. भूमीच्या सूर्याभोवती फिरण्यामुळे वर्षाची लांबी बदलते, परंतु उगम दिशेचा अंतर्गत परिणाम होत नाही. सूर्य वृत्ताकार मार्गावर गेलेला असतो या विचारामुळे चूक आहे, कारण सूर्य आमच्या सौर प्रणालीत तुलनेने स्थिर राहतो.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Describes Earth's rotation, not the tilt",
+        "Describes Earth's revolution, not the tilt",
+        null,
+        "Incorrectly assumes the Sun moves in orbit"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 2, as the Earth's axial tilt causes the Sun to rise in different directions throughout the year. The other options describe phenomena that do not account for the seasonal variation in sunrise direction.",
+      "sources": [
+        {
+          "document": "ncert/8/science/hecu111.pdf",
+          "ordinal": 10,
+          "pageStart": 12,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 11: — Keeping Time with the Skies",
+            "11.2 How Did Calendars Come into Existence?",
+            "भाानैोमामकरेसा सां्ङ््क्राान् ते षण्माासाा उत्त रेायणेमा् । कर्क्‍का कामदाेस्‍तु तथैैव स्‍यात् षण्माासाा दादि णेायनैमा् ।।9।।"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu111.pdf",
+          "ordinal": 11,
+          "pageStart": 12,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 11: — Keeping Time with the Skies",
+            "11.2 How Did Calendars Come into Existence?",
+            "भाानैोमामकरेसा सां्ङ््क्राान् ते षण्माासाा उत्त रेायणेमा् । कर्क्‍का कामदाेस्‍तु तथैैव स्‍यात् षण्माासाा दादि णेायनैमा् ।।9।।"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu111.pdf",
+          "ordinal": 12,
+          "pageStart": 14,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 11: — Keeping Time with the Skies",
+            "11.3 Are Festivals Related to Astronomical",
+            "Phenomena?"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-30T00:00:58.242Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What causes the dates of festivals based on the sidereal calendar to shift over time?",
+      "choices": [
+        "The rotation of the Earth on its axis",
+        "The wobble of the Earth’s axis",
+        "The distance between the Earth and the Moon",
+        "The movement of the Sun"
+      ],
+      "answerIndex": 1,
+      "solution": "The wobble of the Earth’s axis, known as precession, causes the dates of festivals based on the sidereal calendar to shift over time. This wobble gradually changes the orientation of the Earth's axis, leading to a slow drift in the positions of stars relative to the Earth's seasons. The rotation of the Earth, distance between Earth and Moon, and movement of the Sun do not affect the long-term alignment of the calendar with the stars.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "सिद्धांतिक ग्रहण के आधार पर त्योहारों की तारीखें समय के साथ क्यों बदल जाती हैं?",
+          "choices": [
+            "पृथ्वी के अपने अक्ष पर घूर्णन",
+            "पृथ्वी के अक्ष का झुकाव",
+            "पृथ्वी और चंद्रमा के बीच की दूरी",
+            "सूर्य का गति"
+          ],
+          "solution": "पृथ्वी के अक्ष का झुकाव, जिसे प्रीसेशन कहा जाता है, सिद्धांतिक ग्रहण के आधार पर त्योहारों की तारीखें समय के साथ बदल जाती हैं। इस झुकाव के कारण पृथ्वी के अक्ष की दिशा धीरे-धीरे बदल जाती है, जिसके कारण तारों की पृथ्वी के मौसमों के सापेक्ष स्थिति में धीमा विस्थापन होता है। पृथ्वी के घूर्णन, पृथ्वी और चंद्रमा के बीच की दूरी और सूर्य की गति तारों के साथ कैलेंडर के लंबे समय तक संरेखण पर प्रभाव नहीं डालती है।",
+          "imageAlt": null,
+          "critique": "Translation accurately preserves meaning, technical terms are standard in Hindi textbooks, and the correct answer remains option 1.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "सिदरियल कॅलेंडर वर आधारित उत्सवांच्या तारखा वेळेनुसार कशामुळे बदलतात?",
+          "choices": [
+            "पृथ्वीचे आपल्या अक्षावर फिरणे",
+            "पृथ्वीच्या अक्षाचा झुकावा",
+            "पृथ्वी आणि चंद्रमाच्या अंतराचा",
+            "सूर्याचा गती"
+          ],
+          "solution": "पृथ्वीच्या अक्षाचा झुकावा, जो प्रिसेशन म्हणून ओळखला जातो, सिदरियल कॅलेंडर वर आधारित उत्सवांच्या तारखा वेळेनुसार बदलतात. हा झुकावा पृथ्वीच्या अक्षाच्या दिशेत धीमा बदल करतो, ज्यामुळे तारांची पृथ्वीच्या ऋतूंशी तुलना करताना धीमा विस्थापन होते. पृथ्वीचे फिरणे, पृथ्वी आणि चंद्रमाच्या अंतराचा आणि सूर्याच्या गतीमुळे तारांशी तुलनेचा लांबकाळाचा अभिसरण प्रभावित होत नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the scientific terminology appropriate for a Marathi-medium curriculum.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses rotation with axial wobble",
+        null,
+        "Ignores the role of axial wobble",
+        "Misunderstands the cause of calendar shifts"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 1, as the wobble of the Earth's axis (precession) causes the shift in sidereal calendar dates. The other options are incorrect and represent common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/8/science/hecu111.pdf",
+          "ordinal": 13,
+          "pageStart": 15,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 11: — Keeping Time with the Skies",
+            "11.3 Are Festivals Related to Astronomical",
+            "Phenomena?"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu111.pdf",
+          "ordinal": 14,
+          "pageStart": 15,
+          "pageEnd": 17,
+          "headingPath": [
+            "Chapter 11: — Keeping Time with the Skies",
+            "11.4 Why Do We Launch Artificial Satellites",
+            "in Space?"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu111.pdf",
+          "ordinal": 15,
+          "pageStart": 17,
+          "pageEnd": 18,
+          "headingPath": [
+            "Chapter 11: — Keeping Time with the Skies",
+            "11.4 Why Do We Launch Artificial Satellites",
+            "Activity 11.4: Let us identify"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-30T00:00:58.242Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If the Moon is in a position where its illuminated side faces away from the Earth, what phase of the Moon would it be?",
+      "choices": [
+        "Full Moon",
+        "New Moon",
+        "Waxing Crescent",
+        "Waning Gibbous"
+      ],
+      "answerIndex": 1,
+      "solution": "When the Moon is in a position where its illuminated side faces away from the Earth, we cannot see the illuminated part, which is the New Moon phase. The Full Moon occurs when the illuminated side faces the Earth. The other options describe phases where part of the illuminated side is visible, not when none is visible.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि चंद्रमा की ऐसी स्थिति है जहां इसका उज्ज्वल पक्ष पृथ्वी से दूर है, तो चंद्रमा की कौन सी अवस्था होगी?",
+          "choices": [
+            "पूर्णिमा",
+            "अमावस्या",
+            "बढ़ती अर्द्धचंद्र",
+            "घटती अर्द्धचंद्र"
+          ],
+          "solution": "जब चंद्रमा की ऐसी स्थिति होती है कि इसका उज्ज्वल पक्ष पृथ्वी से दूर होता है, तो हम उज्ज्वल भाग को नहीं देख सकते, जो कि अमावस्या के चरण होता है। पूर्णिमा तब होती है जब उज्ज्वल पक्ष पृथ्वी की ओर होता है। अन्य विकल्प ऐसे चरणों का वर्णन करते हैं जहां केवल उज्ज्वल पक्ष का एक हिस्सा दिखाई देता है, न कि जब कोई भी उज्ज्वल पक्ष दिखाई नहीं देता।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the scientific meaning, with appropriate Hindi terminology used for lunar phases.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "चंद्र अशा स्थितीत असल्यास जेव्हा त्याचा उजळ भाग पृथ्वीपासून दूर असतो, तेव्हा चंद्राचा कोणता फेरा असेल?",
+          "choices": [
+            "पूर्ण चंद्र",
+            "नवीन चंद्र",
+            "वॉकिंग क्रेसेंट",
+            "वॉनिंग गिब्बस"
+          ],
+          "solution": "जेव्हा चंद्र अशा स्थितीत असतो जेव्हा त्याचा उजळ भाग पृथ्वीपासून दूर असतो, तेव्हा आम्ही उजळ भाग पाहू शकत नाही, जो नवीन चंद्र फेरा असतो. पूर्ण चंद्र तेव्हा होतो जेव्हा उजळ भाग पृथ्वीकडे असतो. इतर विकल्प फेर्यांचे वर्णन करतात जेव्हा उजळ भागाचा एक भाग दृश्यमान असतो, नाहीतर जेव्हा कोणताही भाग दृश्यमान नसतो.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for lunar phases.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Pupils might confuse the Full Moon with the New Moon",
+        null,
+        "Pupils might think the Waxing Crescent is when the Moon is not visible",
+        "Pupils might not understand the difference between waxing and waning phases"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-constructed and the solution is correct. The correct answer is New Moon (option 1), as the illuminated side facing away from Earth means no light is visible from Earth. The author's reasoning for the distractors aligns with common student misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/8/science/hecu111.pdf",
+          "ordinal": 3,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 11: — Keeping Time with the Skies",
+            "11.1 How Does the Moon’s Appearance",
+            "Activity 11.1: Let us explore"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu111.pdf",
+          "ordinal": 4,
+          "pageStart": 5,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 11: — Keeping Time with the Skies",
+            "11.1 How Does the Moon’s Appearance",
+            "Activity 11.2: Let us explore"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu111.pdf",
+          "ordinal": 5,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 11: — Keeping Time with the Skies",
+            "11.1 How Does the Moon’s Appearance",
+            "Activity 11.2: Let us explore"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-30T00:00:58.242Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Why do festivals based on the sidereal calendar gradually move away from the solstices and equinoxes?",
+      "choices": [
+        "Because of the Earth's rotation",
+        "Because of the Earth's wobble",
+        "Because of the Moon's orbit",
+        "Because of the Sun's movement"
+      ],
+      "answerIndex": 1,
+      "solution": "The correct answer is because of the Earth's wobble. The Earth's axis slowly wobbles over time, causing the position of the equinoxes and solstices to shift relative to the fixed stars. This wobble leads to the gradual movement of festivals based on the sidereal calendar away from these astronomical events. The other options do not account for this long-term shift in the Earth's orientation.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "सिदेरियल कैलेंडर पर आधारित त्योहार धीरे-धीरे उत्तरायण और विषुव के बाहर क्यों चले जाते हैं?",
+          "choices": [
+            "पृथ्वी के घूर्णन के कारण",
+            "पृथ्वी के झूलने के कारण",
+            "चंद्रमा के कक्षा के कारण",
+            "सूर्य की गति के कारण"
+          ],
+          "solution": "सही उत्तर पृथ्वी के झूलने के कारण है। पृथ्वी के अक्ष धीरे-धीरे समय के साथ झूलता रहता है, जिसके कारण विषुव और उत्तरायण की स्थिति निर्धारित तारों के सापेक्ष बदल जाती है। इस झूलने के कारण सिदेरियल कैलेंडर पर आधारित त्योहार इन खगोलीय घटनाओं से धीरे-धीरे दूर हो जाते हैं। अन्य विकल्प इस लंबे समय तक पृथ्वी के अभिमुखीकरण में परिवर्तन की व्याख्या नहीं करते हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the scientific terminology appropriate for a Hindi-medium curriculum.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "सिडेरियल कॅलेंडरवर आधारित उत्सव का उन्नती आणि विषुववर्ती वरून धीरे धीरे हटतात?",
+          "choices": [
+            "भूमीच्या फिरत जाण्यामुळे",
+            "भूमीच्या झुलण्यामुळे",
+            "चंद्राच्या फिरत जाण्यामुळे",
+            "सूर्याच्या चलत जाण्यामुळे"
+          ],
+          "solution": "योग्य उत्तर भूमीच्या झुलण्यामुळे आहे. भूमीचा अक्ष वेळेच्या साथी झुलत जातो, ज्यामुळे विषुववर्ती आणि उन्नतीच्या स्थानांचा निश्चित तारांच्या तुलनेत स्थान बदलत जातो. हे झुलणे सिडेरियल कॅलेंडरवर आधारित उत्सवांना या खगोलीय घटनांपासून धीरे धीरे हटवते. इतर विकल्प भूमीच्या ओरिएंटेशनच्या लांब मुदतीच्या बदलाची व्याख्या करत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for astronomical concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses rotation with axial wobble",
+        null,
+        "Ignores the role of axial wobble",
+        "Misunderstands the cause of calendar shifts"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 1, as the Earth's axial wobble (precession) causes the sidereal calendar to shift relative to the solstices and equinoxes. The other options are incorrect and reflect common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/8/science/hecu111.pdf",
+          "ordinal": 13,
+          "pageStart": 15,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 11: — Keeping Time with the Skies",
+            "11.3 Are Festivals Related to Astronomical",
+            "Phenomena?"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu111.pdf",
+          "ordinal": 14,
+          "pageStart": 15,
+          "pageEnd": 17,
+          "headingPath": [
+            "Chapter 11: — Keeping Time with the Skies",
+            "11.4 Why Do We Launch Artificial Satellites",
+            "in Space?"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu111.pdf",
+          "ordinal": 15,
+          "pageStart": 17,
+          "pageEnd": 18,
+          "headingPath": [
+            "Chapter 11: — Keeping Time with the Skies",
+            "11.4 Why Do We Launch Artificial Satellites",
+            "Activity 11.4: Let us identify"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-30T00:00:58.242Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is the name of the extra month added to some calendars to keep them in sync with the solar year?",
+      "choices": [
+        "Adhika Maasa",
+        "Kartika",
+        "Chaitra",
+        "Vaisakha"
+      ],
+      "answerIndex": 0,
+      "solution": "Adhika Maasa is the name of the extra month added to some calendars to align them with the solar year. This adjustment is necessary because the lunar year is shorter than the solar year. Kartika, Chaitra, and Vaisakha are regular months in the traditional calendar and do not serve this purpose.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "कुछ कैलेंडरों में सौर वर्ष के साथ समायोजित रखने के लिए जोड़े गए अतिरिक्त महीने का नाम क्या है?",
+          "choices": [
+            "अधिक मास",
+            "कार्तिक",
+            "चैत्र",
+            "वैशाख"
+          ],
+          "solution": "अधिक मास कुछ कैलेंडरों में सौर वर्ष के साथ समायोजित रखने के लिए जोड़े गए अतिरिक्त महीने का नाम है। यह समायोजन आवश्यक है क्योंकि चांदी वर्ष सौर वर्ष के मुकाबले छोटा होता है। कार्तिक, चैत्र और वैशाख पारंपरिक कैलेंडर में सामान्य महीने हैं और इस उद्देश्य के लिए उपयोग नहीं किए जाते हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "सौर वर्षाशी सुसंगत ठेवण्यासाठी काही गणितांमध्ये जोडल्या जाणारा अतिरिक्त महिन्याचे नाव काय आहे?",
+          "choices": [
+            "अधिक मास",
+            "कार्तिक",
+            "चैत्र",
+            "वैशाख"
+          ],
+          "solution": "अधिक मास हा काही गणितांमध्ये सौर वर्षाशी सुसंगत ठेवण्यासाठी जोडल्या जाणारा अतिरिक्त महिन्याचे नाव आहे. ही अंतर्गत बदल आवश्यक आहे कारण चंद्र वर्ष सौर वर्षापेक्षा लहान आहे. कार्तिक, चैत्र आणि वैशाख हे पारंपरिक गणितांमधील सामान्य महिने आहेत आणि या उद्देशासाठी काम करत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for calendar terms.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "mistakes the name of the month",
+        "confuses the names of months",
+        "confuses the names of months"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-constructed and the correct answer is clearly supported. The distractors are plausible and reflect common misconceptions about month names in traditional calendars.",
+      "sources": [
+        {
+          "document": "ncert/8/science/hecu111.pdf",
+          "ordinal": 10,
+          "pageStart": 12,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 11: — Keeping Time with the Skies",
+            "11.2 How Did Calendars Come into Existence?",
+            "भाानैोमामकरेसा सां्ङ््क्राान् ते षण्माासाा उत्त रेायणेमा् । कर्क्‍का कामदाेस्‍तु तथैैव स्‍यात् षण्माासाा दादि णेायनैमा् ।।9।।"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu111.pdf",
+          "ordinal": 11,
+          "pageStart": 12,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 11: — Keeping Time with the Skies",
+            "11.2 How Did Calendars Come into Existence?",
+            "भाानैोमामकरेसा सां्ङ््क्राान् ते षण्माासाा उत्त रेायणेमा् । कर्क्‍का कामदाेस्‍तु तथैैव स्‍यात् षण्माासाा दादि णेायनैमा् ।।9।।"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu111.pdf",
+          "ordinal": 12,
+          "pageStart": 14,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 11: — Keeping Time with the Skies",
+            "11.3 Are Festivals Related to Astronomical",
+            "Phenomena?"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T10:38:54.909Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "Which of the following is a reason for the shift in the dates of festivals based on the sidereal calendar?",
+      "choices": [
+        "The Earth's axis wobbles like a top",
+        "The Moon's orbit around the Earth is elliptical",
+        "The Sun's position in the sky changes daily",
+        "The Earth's rotation speed increases"
+      ],
+      "answerIndex": 0,
+      "solution": "The Earth's axis wobbles like a top, causing a slow shift in the orientation of the axis over time, which affects the dates of festivals based on the sidereal calendar. The Moon's elliptical orbit and the Sun's daily movement do not cause long-term shifts in the calendar. The Earth's rotation speed changing would not affect the alignment of the calendar with the stars.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा एक कारण है जिसके कारण नक्षत्रीय कैलेंडर पर आधारित त्योहारों की तिथियाँ बदल जाती हैं?",
+          "choices": [
+            "पृथ्वी के अक्ष का घूमना एक घूमते हुए टॉप की तरह होता है",
+            "चंद्रमा की पृथ्वी के चारों ओर अंडाकार कक्षा होती है",
+            "सूर्य की स्थिति आकाश में प्रतिदिन बदलती रहती है",
+            "पृथ्वी के घूर्णन की गति बढ़ जाती है"
+          ],
+          "solution": "पृथ्वी के अक्ष का घूमना एक घूमते हुए टॉप की तरह होता है, जिसके कारण समय के साथ अक्ष के अभिमुखीकरण में धीरे-धीरे परिवर्तन होता है, जो नक्षत्रीय कैलेंडर पर आधारित त्योहारों की तिथियों को प्रभावित करता है। चंद्रमा की अंडाकार कक्षा और सूर्य की दैनिक गति लंबे समय तक कैलेंडर में परिवर्तन नहीं लाती है। पृथ्वी के घूर्णन की गति में परिवर्तन कैलेंडर के तारों के साथ संरेखण को प्रभावित नहीं करेगा।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriately used in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणता अंशिक वर्षाच्या आधारे उत्सवांच्या तारखांमध्ये हलत जाण्याचा कारण आहे?",
+          "choices": [
+            "भूमीचा अक्ष टॉप सारखा झुकत जातो",
+            "चंद्राचा भूमीच्या भोवती अंडाकृती मार्ग आहे",
+            "सूर्याचे स्थान दररोज आकाशात बदलते",
+            "भूमीचा घूर्णन वेग वाढतो"
+          ],
+          "solution": "भूमीचा अक्ष टॉप सारखा झुकत जातो, ज्यामुळे अक्षाच्या दिशेत धीमा हलत जातो, जो अंशिक वर्षाच्या आधारे उत्सवांच्या तारखांवर परिणाम करतो. चंद्राचा अंडाकृती मार्ग आणि सूर्याचा दैनिक हलत जाणे अंशिक वर्षाच्या आधारे उत्सवांच्या तारखांमध्ये लांब मुदतीत हलत जाण्याचा कारण नाही. भूमीच्या घूर्णन वेगात बदल होणे तारखांमध्ये तारकांच्या अनुरूपतेवर परिणाम करणार नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for astronomical concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses the Earth's wobble with other phenomena",
+        "Incorrectly assumes the Moon's orbit is the cause",
+        "Misunderstands the Sun's role in the shift\",\"Incorrectly believes the Earth's rotation affects the calendar"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 0, as the Earth's axial wobble (precession) is the actual reason for the shift in sidereal calendar dates. The other options represent common misconceptions about astronomical phenomena.",
+      "sources": [
+        {
+          "document": "ncert/8/science/hecu111.pdf",
+          "ordinal": 13,
+          "pageStart": 15,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 11: — Keeping Time with the Skies",
+            "11.3 Are Festivals Related to Astronomical",
+            "Phenomena?"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu111.pdf",
+          "ordinal": 14,
+          "pageStart": 15,
+          "pageEnd": 17,
+          "headingPath": [
+            "Chapter 11: — Keeping Time with the Skies",
+            "11.4 Why Do We Launch Artificial Satellites",
+            "in Space?"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu111.pdf",
+          "ordinal": 15,
+          "pageStart": 17,
+          "pageEnd": 18,
+          "headingPath": [
+            "Chapter 11: — Keeping Time with the Skies",
+            "11.4 Why Do We Launch Artificial Satellites",
+            "Activity 11.4: Let us identify"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T10:38:54.909Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which month marks the beginning of the Indian National Calendar?",
+      "choices": [
+        "Chaitra",
+        "Vaisakha",
+        "Jyeshtha",
+        "Ashadha"
+      ],
+      "answerIndex": 0,
+      "solution": "The Indian National Calendar begins with the month of Chaitra, which starts on 22 March, the day after the spring equinox. Vaisakha, Jyeshtha, and Ashadha are subsequent months in the calendar and do not mark the beginning. The correct option is Chaitra because it is the first month of the year.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "भारतीय राष्ट्रीय कैलेंडर के शुरू होने का महीना कौन-सा है?",
+          "choices": [
+            "चैत्र",
+            "वैशाख",
+            "ज्येष्ठ",
+            "आषाढ़"
+          ],
+          "solution": "भारतीय राष्ट्रीय कैलेंडर चैत्र महीने से शुरू होता है, जो 22 मार्च को शुरू होता है, जो वसंत विषुव के अगले दिन होता है। वैशाख, ज्येष्ठ और आषाढ़ कैलेंडर में बाद के महीने हैं और शुरू नहीं करते। सही विकल्प चैत्र है क्योंकि यह वर्ष का पहला महीना है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. All options are correctly translated, and the correct answer remains in the same position. The technical terms used are standard in Hindi educational materials.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "भारतीय राष्ट्रीय कॅलेंडरची सुरुवात कोणता महिना दर्शवतो?",
+          "choices": [
+            "चैत्र",
+            "वैशाख",
+            "ज्येष्ठ",
+            "आषाढ"
+          ],
+          "solution": "भारतीय राष्ट्रीय कॅलेंडर चैत्र महिन्याने सुरू होतो, जो 22 मार्च रोजी सुरू होतो, जो वसंत दिनांतराच्या दुसऱ्या दिवसाने सुरू होतो. वैशाख, ज्येष्ठ आणि आषाढ हे कॅलेंडरमधील नंतरचे महिने असून ते सुरुवात दर्शवत नाहीत. बरोबर विकल्प चैत्र आहे कारण हा वर्षाचा पहिला महिना आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Marathi terms for calendar months as used in Indian educational materials.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "confuses the order of months",
+        "confuses the order of months",
+        "confuses the order of months"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 0 (Chaitra), as the Indian National Calendar begins with Chaitra on 22 March. The other options are incorrect because they are later months in the calendar, and the author's reasoning about misreading the passage is valid.",
+      "sources": [
+        {
+          "document": "ncert/8/science/hecu111.pdf",
+          "ordinal": 10,
+          "pageStart": 12,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 11: — Keeping Time with the Skies",
+            "11.2 How Did Calendars Come into Existence?",
+            "भाानैोमामकरेसा सां्ङ््क्राान् ते षण्माासाा उत्त रेायणेमा् । कर्क्‍का कामदाेस्‍तु तथैैव स्‍यात् षण्माासाा दादि णेायनैमा् ।।9।।"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu111.pdf",
+          "ordinal": 11,
+          "pageStart": 12,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 11: — Keeping Time with the Skies",
+            "11.2 How Did Calendars Come into Existence?",
+            "भाानैोमामकरेसा सां्ङ््क्राान् ते षण्माासाा उत्त रेायणेमा् । कर्क्‍का कामदाेस्‍तु तथैैव स्‍यात् षण्माासाा दादि णेायनैमा् ।।9।।"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu111.pdf",
+          "ordinal": 12,
+          "pageStart": 14,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 11: — Keeping Time with the Skies",
+            "11.3 Are Festivals Related to Astronomical",
+            "Phenomena?"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T10:38:54.909Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the main purpose of launching artificial satellites?",
+      "choices": [
+        "To measure time",
+        "To study the Moon's phases",
+        "To monitor Earth's weather",
+        "To observe the tides"
+      ],
+      "answerIndex": 2,
+      "solution": "The main purpose of launching artificial satellites is to monitor Earth's weather, as they provide critical data for forecasting and tracking atmospheric conditions. Measuring time is not a primary function of satellites, studying the Moon's phases is not a major objective, and observing tides is not the main purpose of satellite launches.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "कृत्रिम उपग्रहों के छोड़े जाने का मुख्य उद्देश्य क्या है?",
+          "choices": [
+            "समय का मापन करना",
+            "चंद्रमा के चरणों का अध्ययन करना",
+            "पृथ्वी के मौसम की निगरानी करना",
+            "ज्वार-भाटा का अवलोकन करना"
+          ],
+          "solution": "कृत्रिम उपग्रहों के छोड़े जाने का मुख्य उद्देश्य पृथ्वी के मौसम की निगरानी करना है, क्योंकि वे वातावरणीय स्थितियों के अनुमान और ट्रैकिंग के लिए महत्वपूर्ण डेटा प्रदान करते हैं। समय का मापन उपग्रहों का प्राथमिक कार्य नहीं है, चंद्रमा के चरणों का अध्ययन एक प्रमुख उद्देश्य नहीं है, और ज्वार-भाटा का अवलोकन उपग्रह छोड़े जाने का मुख्य उद्देश्य नहीं है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains original meaning, and uses standard Hindi scientific terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "कृत्रिम उपग्रह लॉन्च करण्याचा मुख्य उद्देश काय आहे?",
+          "choices": [
+            "वेळ मोजणे",
+            "चंद्राच्या फेरी अभ्यास करणे",
+            "पृथ्वीच्या हवामानाचा निरीक्षण करणे",
+            "ज्वारीचा अभ्यास करणे"
+          ],
+          "solution": "कृत्रिम उपग्रह लॉन्च करण्याचा मुख्य उद्देश पृथ्वीच्या हवामानाचा निरीक्षण करणे आहे, कारण ते वातावरणीय स्थितींचे अंदाज आणि ट्रॅकिंगसाठी महत्त्वपूर्ण माहिती प्रदान करतात. वेळ मोजणे हे उपग्रहांचे प्राथमिक कार्य नाही, चंद्राच्या फेरी अभ्यास करणे हे मुख्य उद्देश नाही, आणि ज्वारीचा अभ्यास करणे हा उपग्रह लॉन्चचा मुख्य उद्देश नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for scientific concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the purpose of satellites with time measurement",
+        "Misinterprets the focus on the Moon's phases",
+        null,
+        "Ignores the role of satellites in weather monitoring"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 2 (To monitor Earth's weather), as it is a primary purpose of artificial satellites. The other options are incorrect, and the author's reasons for the wrong options reflect common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/8/science/hecu111.pdf",
+          "ordinal": 16,
+          "pageStart": 18,
+          "pageEnd": 19,
+          "headingPath": [
+            "Chapter 11: — Keeping Time with the Skies",
+            "11.4 Why Do We Launch Artificial Satellites",
+            "Activity 11.4: Let us identify"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu111.pdf",
+          "ordinal": 17,
+          "pageStart": 19,
+          "pageEnd": 20,
+          "headingPath": [
+            "Chapter 11: — Keeping Time with the Skies",
+            "11.4 Why Do We Launch Artificial Satellites",
+            "Activity 11.4: Let us identify"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu111.pdf",
+          "ordinal": 18,
+          "pageStart": 20,
+          "pageEnd": 20,
+          "headingPath": [
+            "Chapter 11: — Keeping Time with the Skies",
+            "11.4 Why Do We Launch Artificial Satellites",
+            "Activity 11.4: Let us identify"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T10:38:54.909Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "How long does it take for the Moon to complete one full cycle of phases?",
+      "choices": [
+        "One week",
+        "One month",
+        "One year",
+        "One day"
+      ],
+      "answerIndex": 1,
+      "solution": "The Moon takes about a month to complete one full cycle of phases because its orbit around Earth takes that long. A week is the time for half the cycle, not the full cycle. A year and a day are unrelated to the Moon's phase cycle.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "चंद्रमा के चरणों के एक पूर्ण चक्र को पूरा करने में कितना समय लगता है?",
+          "choices": [
+            "एक सप्ताह",
+            "एक माह",
+            "एक वर्ष",
+            "एक दिन"
+          ],
+          "solution": "चंद्रमा के पृथ्वी के चारों ओर कक्षा में एक माह लगता है, इसलिए चरणों के एक पूर्ण चक्र को पूरा करने में लगभग एक माह लगता है। एक सप्ताह आधे चक्र के समय के बराबर होता है, न कि पूरे चक्र के लिए। एक वर्ष और एक दिन चंद्रमा के चरण चक्र से संबंधित नहीं हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms as found in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "चंद्राच्या फेरींच्या एकूण चक्राचे पूर्ण करण्यास किती वेळ लागतो?",
+          "choices": [
+            "एक आठवडा",
+            "एक महिना",
+            "एक वर्ष",
+            "एक दिवस"
+          ],
+          "solution": "चंद्राला पृथ्वीच्या फेरींचे एकूण चक्र पूर्ण करण्यास एक महिना लागतो कारण त्याच्या फेरींचे एकूण चक्र पूर्ण करण्यास त्याच्या फेरींचे वेळ लागतो. आठवडा हा अर्धा चक्र असतो, पूर्ण चक्र नाही. वर्ष आणि दिवस चंद्राच्या फेरींच्या चक्राशी संबंधित नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for astronomical concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Believes the cycle takes one week",
+        null,
+        "Believes the cycle takes one year",
+        "Believes the cycle takes one day"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 'One month' as the Moon's full cycle of phases takes about a month. The other options represent common misconceptions about the time it takes for the Moon to go through its phases.",
+      "sources": [
+        {
+          "document": "ncert/8/science/hecu111.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 11: — Keeping Time with the Skies",
+            "Probe and ponder"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu111.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 11: — Keeping Time with the Skies",
+            "11.1 How Does the Moon’s Appearance",
+            "Activity 11.1: Let us explore"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu111.pdf",
+          "ordinal": 2,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 11: — Keeping Time with the Skies",
+            "11.1 How Does the Moon’s Appearance",
+            "Activity 11.1: Let us explore"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T10:38:54.909Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If a student observes the Moon during a Full Moon, which of the following statements is correct?",
+      "choices": [
+        "The entire illuminated portion of the Moon faces the Earth",
+        "Only a part of the illuminated portion of the Moon is visible",
+        "The Moon does not reflect any sunlight",
+        "The Earth is blocking the sunlight from reaching the Moon"
+      ],
+      "answerIndex": 0,
+      "solution": "The correct answer is that the entire illuminated portion of the Moon faces the Earth. During a Full Moon, the Moon is on the opposite side of the Earth from the Sun, so the entire illuminated side is visible from Earth. The other options are incorrect because only a part of the illuminated portion is not visible during a Full Moon, the Moon does reflect sunlight, and the Earth is not blocking the sunlight during a Full Moon, as the Moon is on the opposite side of the Earth from the Sun.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक छात्र फुल मून के दौरान चांद का अवलोकन करता है, तो निम्नलिखित में से कौन-सा कथन सही है?",
+          "choices": [
+            "चांद का पूरा उज्ज्वल भाग पृथ्वी की ओर होता है",
+            "चांद के उज्ज्वल भाग का केवल एक हिस्सा दृश्यमान होता है",
+            "चांद सूर्य के प्रकाश को परावर्तित नहीं करता है",
+            "पृथ्वी सूर्य के प्रकाश को चांद तक नहीं पहुंचने देती है"
+          ],
+          "solution": "सही उत्तर यह है कि चांद का पूरा उज्ज्वल भाग पृथ्वी की ओर होता है। फुल मून के दौरान चांद पृथ्वी के विपरीत दिशा में सूर्य के पास होता है, इसलिए पृथ्वी से चांद के पूरे उज्ज्वल भाग को देखा जा सकता है। अन्य विकल्प गलत हैं क्योंकि फुल मून के दौरान केवल एक हिस्सा दृश्यमान नहीं होता है, चांद सूर्य के प्रकाश को परावर्तित करता है, और फुल मून के दौरान पृथ्वी सूर्य के प्रकाश को चांद तक नहीं रोकती है, क्योंकि चांद पृथ्वी के विपरीत दिशा में सूर्य के पास होता है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate scientific terminology as used in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका विद्यार्थीने पूर्ण चंद्राच्या वेळी चंद्राचा अवलोकन केला, तर खालीलपैकी कोणता विधान बरोबर आहे?",
+          "choices": [
+            "चंद्राच्या उजळलेल्या भागाचा पूर्ण भाग भूमीकडे आहे",
+            "चंद्राच्या उजळलेल्या भागाचा केवळ एक भाग दिसतो",
+            "चंद्र सूर्याच्या प्रकाशाचे प्रतिबिंबित करत नाही",
+            "भूमी सूर्याच्या प्रकाशाला चंद्रवर पोहोचू देत नाही"
+          ],
+          "solution": "भूमीकडे पूर्ण उजळलेला भाग असलेला चंद्र बरोबर आहे. पूर्ण चंद्राच्या वेळी, चंद्र भूमीच्या सूर्याच्या विरुद्ध बाजूवर असतो, त्यामुळे भूमीवरून पूर्ण उजळलेला भाग दिसतो. इतर विधाने चूक आहेत कारण पूर्ण चंद्राच्या वेळी केवळ एक भाग उजळलेला भाग दिसत नाही, चंद्र सूर्याच्या प्रकाशाचे प्रतिबिंबित करतो आणि पूर्ण चंद्राच्या वेळी भूमी सूर्याच्या प्रकाशाला चंद्रवर पोहोचू देत नाही, कारण चंद्र भूमीच्या सूर्याच्या विरुद्ध बाजूवर असतो.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Does not understand that the entire illuminated part is visible during a Full Moon, thinking only a part is visible, which is incorrect",
+        "Believes the Moon does not reflect sunlight, which is false because the Moon reflects sunlight to be visible from Earth",
+        "Thinks the Earth blocks sunlight during a Full Moon, which is incorrect because the Moon is on the opposite side of the Earth from the Sun, so the Earth does not block sunlight during this phase"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct and aligns with the scientific understanding of the Full Moon phase. The correct answer is 0, and the reasoning for the other options reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/8/science/hecu111.pdf",
+          "ordinal": 3,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 11: — Keeping Time with the Skies",
+            "11.1 How Does the Moon’s Appearance",
+            "Activity 11.1: Let us explore"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu111.pdf",
+          "ordinal": 4,
+          "pageStart": 5,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 11: — Keeping Time with the Skies",
+            "11.1 How Does the Moon’s Appearance",
+            "Activity 11.2: Let us explore"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu111.pdf",
+          "ordinal": 5,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 11: — Keeping Time with the Skies",
+            "11.1 How Does the Moon’s Appearance",
+            "Activity 11.2: Let us explore"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T10:38:54.909Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "Meera noticed the Moon during the day. What could explain this?",
+      "choices": [
+        "The Moon is always visible during the day",
+        "The Moon reflects sunlight and can be seen during the day",
+        "The Moon is in a different phase",
+        "The Moon is closer to Earth"
+      ],
+      "answerIndex": 1,
+      "solution": "The Moon reflects sunlight, which allows it to be visible during the day when the Sun is also in the sky. The idea that the Moon is always visible during the day is incorrect because its visibility depends on its position relative to the Earth and Sun. The Moon's phase and distance from Earth do not determine its visibility during the day, as these factors affect its appearance and timing, not whether it can be seen.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "मीरा दिन में चाँद को देखती है। इसकी व्याख्या क्या हो सकती है?",
+          "choices": [
+            "चाँद हमेशा दिन में दिखाई देता है",
+            "चाँद सूर्य के प्रकाश को परावर्तित करता है और दिन में दिखाई दे सकता है",
+            "चाँद के अलग-अलग चरण होते हैं",
+            "चाँद पृथ्वी से निकट है"
+          ],
+          "solution": "चाँद सूर्य के प्रकाश को परावर्तित करता है, जिसके कारण जब सूर्य आकाश में होता है तो चाँद को दिन में देखा जा सकता है। चाँद हमेशा दिन में दिखाई देता है के विचार की गलती है क्योंकि इसकी दृश्यता इसकी स्थिति पृथ्वी और सूर्य के सापेक्ष निर्भर करती है। चाँद के चरण और पृथ्वी से दूरी चाँद की दृश्यता के निर्धारण के लिए नहीं होते हैं, क्योंकि ये कारक इसके दिखाई देने के समय और आकृति को प्रभावित करते हैं, न कि क्या इसे दिन में देखा जा सकता है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains the original meaning, and uses appropriate Hindi scientific terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "मीरा दिवसात चंद्र नोंदवला. हे कसे स्पष्टीकरण देऊ शकते?",
+          "choices": [
+            "चंद्र दिवसात सतत दिसत असतो",
+            "चंद्र सूर्याच्या प्रकाशाचे परावर्तन करतो आणि दिवसात दिसू शकतो",
+            "चंद्र वेगवेगळ्या चंद्र चरणात असतो",
+            "चंद्र पृथ्वीच्या जवळ असतो"
+          ],
+          "solution": "चंद्र सूर्याच्या प्रकाशाचे परावर्तन करतो, ज्यामुळे तो दिवसात सूर्याच्या आकाशात दिसू शकतो. चंद्र दिवसात सतत दिसत असतो या विचाराचे असत्य असते, कारण त्याची दृश्यता त्याच्या पृथ्वी आणि सूर्याशी संबंधित स्थितीवर अवलंबून असते. चंद्राच्या चरण आणि पृथ्वीपासून अंतरामुळे त्याची दृश्यता निश्चित करत नाही, कारण या घटकांमुळे त्याचा दिसण्याचा वेळ आणि दिसण्याचा रूप बदलतो, परंतु तो दिवसात दिसू शकतो का नाही ते निश्चित करत नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Believes the Moon is always visible during the day",
+        null,
+        "Confuses phase with visibility",
+        "Confuses distance with visibility"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 1, as the Moon reflects sunlight and can be seen during the day. The other options represent common misconceptions about the Moon's visibility.",
+      "sources": [
+        {
+          "document": "ncert/8/science/hecu111.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 11: — Keeping Time with the Skies",
+            "Probe and ponder"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu111.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 11: — Keeping Time with the Skies",
+            "11.1 How Does the Moon’s Appearance",
+            "Activity 11.1: Let us explore"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu111.pdf",
+          "ordinal": 2,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 11: — Keeping Time with the Skies",
+            "11.1 How Does the Moon’s Appearance",
+            "Activity 11.1: Let us explore"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T10:38:54.909Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "If a lunar calendar is used, how might the seasons be affected over time?",
+      "choices": [
+        "They will shift by about 50 minutes each year",
+        "They will shift slightly each year",
+        "They will change completely every year",
+        "They will disappear from the calendar"
+      ],
+      "answerIndex": 1,
+      "solution": "A lunar calendar has fewer days than a solar year, so the seasons gradually shift relative to the lunar months each year. The correct option reflects this slow, incremental shift. The other options incorrectly suggest either a large or complete change, which does not align with the difference between lunar and solar year lengths.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक चांदी कैलेंडर का उपयोग किया जाता है, तो समय के साथ मौसम कैसे प्रभावित हो सकते हैं?",
+          "choices": [
+            "वे प्रतिवर्ष लगभग 50 मिनट तक खिसक जाएंगे",
+            "वे प्रतिवर्ष थोड़ा सा खिसक जाएंगे",
+            "वे प्रतिवर्ष पूरी तरह से बदल जाएंगे",
+            "वे कैलेंडर से गायब हो जाएंगे"
+          ],
+          "solution": "एक चांदी कैलेंडर में सौर वर्ष की तुलना में कम दिन होते हैं, इसलिए प्रतिवर्ष चांदी महीनों के सापेक्ष मौसम धीरे-धीरे खिसक जाते हैं। सही विकल्प इस धीमे, आगे बढ़ते खिसकाव को प्रतिबिंबित करता है। अन्य विकल्प गलत रूप से यह सुझाव देते हैं कि यह बड़ा या पूर्ण परिवर्तन होता है, जो चांदी और सौर वर्ष की लंबाई के अंतर के साथ मेल नहीं खाता।",
+          "imageAlt": null,
+          "critique": "Translation accurately conveys the original meaning with appropriate Hindi terminology for lunar/solar calendars.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर चंद्र वर्षांकर वापरला जाईल तर वर्षांच्या वेळेस कशाप्रकारे प्रभाव पडेल?",
+          "choices": [
+            "ते दरवर्षी जवळपास 50 मिनिटे सरकतील",
+            "ते दरवर्षी थोडक्यात सरकतील",
+            "ते दरवर्षी पूर्णपणे बदलतील",
+            "ते वर्षांकरातून अदृश्य होतील"
+          ],
+          "solution": "चंद्र वर्षांकरात सूर्य वर्षापेक्षा कमी दिवस असतात, म्हणून वर्षांच्या वेळा दरवर्षी चंद्र महिन्यांच्या तुलनेत धीम्या प्रकारे सरकतात. योग्य विकल्प हा धीमा, धीमा बदल दर्शवतो. इतर विकल्प चुकीचे आहेत जे जास्त किंवा पूर्ण बदलाचा अंदाज दर्शवतात, जे चंद्र आणि सूर्य वर्षांच्या लांबीतील फरकाशी जुमानत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for astronomical concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the lunar month's drift with the solar year's drift",
+        null,
+        "exaggerates the effect",
+        "implies a complete change"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 1, as the lunar year is shorter than the solar year, causing a gradual shift in the seasons. The other options either exaggerate the effect or misinterpret the relationship between lunar and solar calendars.",
+      "sources": [
+        {
+          "document": "ncert/8/science/hecu111.pdf",
+          "ordinal": 6,
+          "pageStart": 8,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 11: — Keeping Time with the Skies",
+            "11.1 How Does the Moon’s Appearance",
+            "Activity 11.2: Let us explore"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu111.pdf",
+          "ordinal": 7,
+          "pageStart": 9,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 11: — Keeping Time with the Skies",
+            "11.2 How Did Calendars Come into Existence?"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu111.pdf",
+          "ordinal": 8,
+          "pageStart": 10,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 11: — Keeping Time with the Skies",
+            "11.2 How Did Calendars Come into Existence?",
+            "Activity 11.3: Let us measure a day!"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu111.pdf",
+          "ordinal": 9,
+          "pageStart": 11,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 11: — Keeping Time with the Skies",
+            "11.2 How Did Calendars Come into Existence?",
+            "Activity 11.3: Let us measure a day!"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T10:38:54.909Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Why is the full Moon day called Purnima?",
+      "choices": [
+        "Because the Moon is completely visible",
+        "Because the Moon is closest to Earth",
+        "Because the Moon is in a new phase",
+        "Because the Moon is in a waning phase"
+      ],
+      "answerIndex": 0,
+      "solution": "The correct option is because the Moon is completely visible, as this occurs when the Earth is between the Sun and the Moon, making the entire face of the Moon illuminated. The Moon being closest to Earth relates to a supermoon, not Purnima. A new phase means the Moon is not visible, which contradicts the idea of a full Moon. A waning phase means the Moon is decreasing in visibility, which is the opposite of a full Moon.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "पूर्णिमा के दिन पूर्ण चाँद क्यों कहलाता है?",
+          "choices": [
+            "क्योंकि चाँद पूरी तरह से दिखाई देता है",
+            "क्योंकि चाँद पृथ्वी के सबसे निकट होता है",
+            "क्योंकि चाँद एक नए चरण में होता है",
+            "क्योंकि चाँद अवशिष्ट चरण में होता है"
+          ],
+          "solution": "सही विकल्प यह है कि चाँद पूरी तरह से दिखाई देता है, क्योंकि यह तब होता है जब पृथ्वी सूर्य और चाँद के बीच होती है, जिससे चाँद का पूरा भाग उज्ज्वल हो जाता है। चाँद का पृथ्वी के सबसे निकट होना सुपरमून से संबंधित है, न कि पूर्णिमा से। एक नए चरण का अर्थ है कि चाँद दिखाई नहीं देता, जो पूर्ण चाँद के विचार के विरोधी है। अवशिष्ट चरण का अर्थ है कि चाँद की दृश्यता घट रही है, जो पूर्ण चाँद के विपरीत है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English content with appropriate terminology and maintains the correct answer position.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "महापूर्णिमा का म्हणतात ते निम्नलिखित शीर्षक आहे?",
+          "choices": [
+            "कारण चंद्र पूर्णपणे दिसतो",
+            "कारण चंद्र पृथ्वीच्या जवळ असतो",
+            "कारण चंद्र नवीन चरणात असतो",
+            "कारण चंद्र अवशेष चरणात असतो"
+          ],
+          "solution": "योग्य विकल्प असा आहे की चंद्र पूर्णपणे दिसतो, कारण हे तेव्हा होते जेव्हा पृथ्वी सूर्य आणि चंद्र दरम्यान असते, जेणेकरून चंद्रच्या पूर्ण बाजू जाळलेल्या असतात. चंद्र पृथ्वीच्या जवळ असणे हे सुपरमूनशी संबंधित असते, पूर्णिमाशी नाही. नवीन चरणात असलेला चंद्र पाहिजे नाही, जे पूर्ण चंद्राच्या धारणेशी विरोधात आहे. अवशेष चरणात असलेला चंद्र पाहिजे कमी होत असतो, जे पूर्ण चंद्राच्या विरुद्ध आहे.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the original meaning, and uses appropriate terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Believes the Moon is closest to Earth",
+        "Confuses new Moon with full Moon",
+        "Confuses waning with full Moon"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 0, as the full Moon is called Purnima because it is completely visible. The other options reflect common misconceptions about the Moon's phases and distance from Earth.",
+      "sources": [
+        {
+          "document": "ncert/8/science/hecu111.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 11: — Keeping Time with the Skies",
+            "Probe and ponder"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu111.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 11: — Keeping Time with the Skies",
+            "11.1 How Does the Moon’s Appearance",
+            "Activity 11.1: Let us explore"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu111.pdf",
+          "ordinal": 2,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 11: — Keeping Time with the Skies",
+            "11.1 How Does the Moon’s Appearance",
+            "Activity 11.1: Let us explore"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T10:38:54.909Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Why do festivals based on luni-solar calendars have a smaller date shift in the Gregorian calendar compared to purely lunar calendars?",
+      "choices": [
+        "Because luni-solar calendars add an intercalary month every few years",
+        "Because luni-solar calendars are based on the solar year only",
+        "Because luni-solar calendars adjust by removing a month every few years",
+        "Because luni-solar calendars are based on the phases of the Moon only"
+      ],
+      "answerIndex": 0,
+      "solution": "The correct answer is because luni-solar calendars add an intercalary month every few years, which helps align the lunar and solar cycles, reducing the date shift. Luni-solar calendars are not based solely on the solar or lunar year, and they do not remove a month to adjust, which would cause greater shifts instead.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "लूनी-सौर कैलेंडर पर आधारित त्योहार शायद शुरू में ग्रेगोरियन कैलेंडर में छोटा दिनांक स्थानांतरण क्यों होता है, जबकि शुद्ध चांदी कैलेंडर की तुलना में?",
+          "choices": [
+            "क्योंकि लूनी-सौर कैलेंडर कुछ साल में एक अतिरिक्त महीना जोड़ते हैं",
+            "क्योंकि लूनी-सौर कैलेंडर केवल सौर वर्ष पर आधारित होते हैं",
+            "क्योंकि लूनी-सौर कैलेंडर कुछ साल में एक महीना हटा देते हैं",
+            "क्योंकि लूनी-सौर कैलेंडर केवल चांद के चरणों पर आधारित होते हैं"
+          ],
+          "solution": "सही उत्तर यह है कि लूनी-सौर कैलेंडर कुछ साल में एक अतिरिक्त महीना जोड़ते हैं, जो चांदी और सौर चक्रों को समायोजित करने में मदद करते हैं, जिससे दिनांक स्थानांतरण कम हो जाता है। लूनी-सौर कैलेंडर केवल सौर या चांदी वर्ष पर आधारित नहीं होते हैं, और वे कुछ साल में महीना हटाकर समायोजित नहीं करते हैं, जो बड़े स्थानांतरण का कारण बनेगा।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. All options are correctly translated and maintain their original logical status (only option 1 is correct).",
+          "flag": null
+        },
+        "mr": {
+          "stem": "लुनी-सौर कॅलेंडर वर आधारित उत्सवांमध्ये ग्रेगोरियन कॅलेंडरमध्ये लहान तारीख स्थानांतर असते का? कारण शुद्ध चांद्र कॅलेंडरमध्ये तुलनेत लहान तारीख स्थानांतर असते?",
+          "choices": [
+            "कारण लुनी-सौर कॅलेंडरमध्ये काही वर्षांत एक अतिरिक्त महिना जोडला जातो",
+            "कारण लुनी-सौर कॅलेंडर सौर वर्षावर आधारित असतात",
+            "कारण लुनी-सौर कॅलेंडर काही वर्षांत एक महिना काढून टाकतात",
+            "कारण लुनी-सौर कॅलेंडर चंद्राच्या चरणांवर आधारित असतात"
+          ],
+          "solution": "योग्य उत्तर हे आहे की लुनी-सौर कॅलेंडरमध्ये काही वर्षांत एक अतिरिक्त महिना जोडला जातो, ज्यामुळे चंद्र आणि सूर्य चक्रांचे अनुरूपता राखली जाते आणि तारीख स्थानांतर कमी होते. लुनी-सौर कॅलेंडर सौर किंवा चंद्र वर्षांवर फक्त आधारित नसतात आणि ते महिना काढून टाकत नाहीत, जे वाढलेले स्थानांतर निर्माण करेल.",
+          "imageAlt": null,
+          "critique": "The Marathi translation accurately reflects the English content, with appropriate terminology used in a Marathi educational context. The structure and meaning of the question and options are preserved.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Believes luni-solar calendars ignore the moon's phases and only follow the solar year",
+        "Confuses adding and removing months to correct for the lunar-solar difference",
+        "Confuses luni-solar calendars with purely lunar calendars, thinking they don't use the solar year at all"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 0, as luni-solar calendars add an intercalary month to align with the solar year, reducing date shift. The other options reflect common misconceptions about the nature of luni-solar calendars.",
+      "sources": [
+        {
+          "document": "ncert/8/science/hecu111.pdf",
+          "ordinal": 10,
+          "pageStart": 12,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 11: — Keeping Time with the Skies",
+            "11.2 How Did Calendars Come into Existence?",
+            "भाानैोमामकरेसा सां्ङ््क्राान् ते षण्माासाा उत्त रेायणेमा् । कर्क्‍का कामदाेस्‍तु तथैैव स्‍यात् षण्माासाा दादि णेायनैमा् ।।9।।"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu111.pdf",
+          "ordinal": 11,
+          "pageStart": 12,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 11: — Keeping Time with the Skies",
+            "11.2 How Did Calendars Come into Existence?",
+            "भाानैोमामकरेसा सां्ङ््क्राान् ते षण्माासाा उत्त रेायणेमा् । कर्क्‍का कामदाेस्‍तु तथैैव स्‍यात् षण्माासाा दादि णेायनैमा् ।।9।।"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu111.pdf",
+          "ordinal": 12,
+          "pageStart": 14,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 11: — Keeping Time with the Skies",
+            "11.3 Are Festivals Related to Astronomical",
+            "Phenomena?"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T10:38:54.909Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is the main reason the Moon does not emit its own light?",
+      "choices": [
+        "It is made of dark material",
+        "It reflects sunlight",
+        "It is too far from the Sun",
+        "It is smaller than the Sun"
+      ],
+      "answerIndex": 1,
+      "solution": "The correct answer is that it reflects sunlight. The Moon does not emit its own light but shines by reflecting sunlight that falls on it. The other options are incorrect because the Moon's material is not dark, its distance from the Sun is not the reason it does not emit light, and its size is not the reason for the lack of light emission.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "चंद्रमा अपनी खुद की रोशनी उत्सर्जित नहीं करता है, इसका मुख्य कारण क्या है?",
+          "choices": [
+            "यह अंधेरे पदार्थ से बना हुआ है",
+            "यह सूर्य के प्रकाश को परावर्तित करता है",
+            "यह सूर्य से बहुत दूर है",
+            "यह सूर्य से छोटा है"
+          ],
+          "solution": "सही उत्तर यह है कि यह सूर्य के प्रकाश को परावर्तित करता है। चंद्रमा अपनी खुद की रोशनी उत्सर्जित नहीं करता है लेकिन इस पर गिरे सूर्य के प्रकाश के कारण चमकता है। अन्य विकल्प गलत हैं क्योंकि चंद्रमा का पदार्थ अंधेरा नहीं है, इसकी सूर्य से दूरी इसके रोशनी उत्सर्जन के अभाव का कारण नहीं है, और इसका आकार रोशनी उत्सर्जन के अभाव के लिए कारण नहीं है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains original meaning, and uses appropriate scientific terminology in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "चंद्र आपले प्रकाश उत्पन्न करत नाही, तर त्याचे मुख्य कारण काय आहे?",
+          "choices": [
+            "तो काळा पदार्थ बनलेला आहे",
+            "तो सूर्याचा प्रकाश परावर्तित करतो",
+            "तो सूर्यापासून खूप दूर आहे",
+            "तो सूर्यापेक्षा लहान आहे"
+          ],
+          "solution": "योग्य उत्तर हे आहे की तो सूर्याचा प्रकाश परावर्तित करतो. चंद्र आपला प्रकाश उत्पन्न करत नाही परंतु तो त्यावर पडलेल्या सूर्याच्या प्रकाशाने चमकतो. इतर विकल्प चुकीचे आहेत कारण चंद्रचा पदार्थ काळा नाही, त्याची सूर्यापासून अंतर त्याच्या प्रकाश उत्पन्न करण्याचे कारण नाही आणि त्याचा आकार प्रकाश उत्पन्न करण्याचे कारण नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Misunderstands the nature of the Moon's light",
+        null,
+        "Believes the Moon's distance from the Sun is the cause of its lack of light",
+        "Confuses the Moon's size with its ability to emit light"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 1, as the Moon does not emit its own light but reflects sunlight. The other options represent common misconceptions about the Moon's light.",
+      "sources": [
+        {
+          "document": "ncert/8/science/hecu111.pdf",
+          "ordinal": 3,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 11: — Keeping Time with the Skies",
+            "11.1 How Does the Moon’s Appearance",
+            "Activity 11.1: Let us explore"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu111.pdf",
+          "ordinal": 4,
+          "pageStart": 5,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 11: — Keeping Time with the Skies",
+            "11.1 How Does the Moon’s Appearance",
+            "Activity 11.2: Let us explore"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu111.pdf",
+          "ordinal": 5,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 11: — Keeping Time with the Skies",
+            "11.1 How Does the Moon’s Appearance",
+            "Activity 11.2: Let us explore"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T13:11:47.832Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What causes the change in the shape of the Moon as seen from Earth?",
+      "choices": [
+        "The Moon's rotation on its axis",
+        "The Earth's rotation on its axis",
+        "The relative positions of the Sun, Moon, and Earth",
+        "The Moon's distance from the Earth"
+      ],
+      "answerIndex": 2,
+      "solution": "The correct answer is the relative positions of the Sun, Moon, and Earth. The change in the shape of the Moon is due to how much of its illuminated side is visible from Earth, which depends on its position in orbit. The other options are incorrect because the Moon's rotation and Earth's rotation do not directly cause the changing shape, and the Moon's distance from Earth does not affect the shape of the illuminated portion.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "चांद के आकार में पृथ्वी से देखे जाने पर क्या कारण होता है?",
+          "choices": [
+            "चांद का अपने अक्ष पर घूमना",
+            "पृथ्वी का अपने अक्ष पर घूमना",
+            "सूर्य, चांद और पृथ्वी के आपेक्षिक स्थान",
+            "चांद का पृथ्वी से दूरी"
+          ],
+          "solution": "सही उत्तर सूर्य, चांद और पृथ्वी के आपेक्षिक स्थान है। चांद के आकार में परिवर्तन इस बात पर निर्भर करता है कि पृथ्वी से चांद के उज्ज्वल भाग का कितना हिस्सा दिखाई देता है, जो इसकी कक्षा में स्थिति पर निर्भर करता है। अन्य विकल्प गलत हैं क्योंकि चांद के घूमने और पृथ्वी के घूमने से सीधे रूप से आकार में परिवर्तन नहीं होता है, और चांद की पृथ्वी से दूरी उज्ज्वल भाग के आकार पर प्रभाव नहीं डालती है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate scientific terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "भूमीवरून चंद्राच्या आकृतीत कशामुळे बदल होतो?",
+          "choices": [
+            "चंद्राचे आपल्या अक्षावर फिरणे",
+            "भूमीचे आपल्या अक्षावर फिरणे",
+            "सूर्य, चंद्र आणि भूमीच्या सापेक्ष स्थिती",
+            "चंद्राचे भूमीपासून अंतर"
+          ],
+          "solution": "योग्य उत्तर सूर्य, चंद्र आणि भूमीच्या सापेक्ष स्थिती आहे. चंद्राच्या आकृतीत बदल होण्याचे कारण भूमीवरून त्याच्या उजळलेल्या बाजूच्या कितपत दिसणे आहे, जे त्याच्या कक्षेतील स्थितीवर अवलंबून असते. इतर विकल्प अयोग्य आहेत कारण चंद्राचे फिरणे आणि भूमीचे फिरणे बदलत्या आकृतीला थेट प्रभावित करत नाहीत, आणि चंद्राचे भूमीपासून अंतर उजळलेल्या भागाच्या आकृतीला प्रभावित करत नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Believes the Moon's rotation causes the change in shape",
+        "Confuses Earth's rotation with the cause of the Moon's shape change",
+        null,
+        "Misunderstands the relationship between distance and the appearance of the Moon"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is option 2, as the Moon's phases are caused by the changing relative positions of the Sun, Moon, and Earth. The other options reflect common misconceptions about the Moon's rotation, Earth's rotation, and the Moon's distance from Earth.",
+      "sources": [
+        {
+          "document": "ncert/8/science/hecu111.pdf",
+          "ordinal": 3,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 11: — Keeping Time with the Skies",
+            "11.1 How Does the Moon’s Appearance",
+            "Activity 11.1: Let us explore"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu111.pdf",
+          "ordinal": 4,
+          "pageStart": 5,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 11: — Keeping Time with the Skies",
+            "11.1 How Does the Moon’s Appearance",
+            "Activity 11.2: Let us explore"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu111.pdf",
+          "ordinal": 5,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 11: — Keeping Time with the Skies",
+            "11.1 How Does the Moon’s Appearance",
+            "Activity 11.2: Let us explore"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T13:11:47.832Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "A student observes the Moon from Earth and notices that only a part of it is illuminated. What is the reason for this observation?",
+      "choices": [
+        "The Moon does not emit light of its own",
+        "The Earth blocks sunlight from reaching the Moon",
+        "The Moon's position relative to the Earth and Sun changes",
+        "The Moon's surface is not reflective"
+      ],
+      "answerIndex": 2,
+      "solution": "The phases of the Moon occur because we see different parts of the illuminated portion of the Moon as it moves around the Earth. The Moon does not emit its own light, but it reflects sunlight. The Earth's shadow does not cause the phases, as the Moon is not in Earth's shadow during most of its cycle. The Moon's surface is reflective, which is why we can see it. The correct answer is that the Moon's position relative to the Earth and Sun changes.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक छात्र पृथ्वी से चंद्रमा का अवलोकन करता है और ध्यान देता है कि केवल इसका एक हिस्सा उज्ज्वल है। इस अवलोकन के कारण क्या है?",
+          "choices": [
+            "चंद्रमा अपना प्रकाश उत्सर्जित नहीं करता है",
+            "पृथ्वी सूर्य के प्रकाश को चंद्रमा तक पहुंचने से रोकती है",
+            "चंद्रमा की स्थिति पृथ्वी और सूर्य के सापेक्ष बदलती रहती है",
+            "चंद्रमा की सतह चमकदार नहीं है"
+          ],
+          "solution": "चंद्रमा के चरण इसलिए होते हैं क्योंकि वह पृथ्वी के चारों ओर घूमते समय हम चंद्रमा के उज्ज्वल हिस्से के विभिन्न हिस्से देखते हैं। चंद्रमा अपना प्रकाश उत्सर्जित नहीं करता है, लेकिन वह सूर्य के प्रकाश को परावर्तित करता है। पृथ्वी की छाया चरणों के कारण नहीं होती है, क्योंकि चंद्रमा अपने चक्र के अधिकांश भाग में पृथ्वी की छाया में नहीं होता है। चंद्रमा की सतह चमकदार होती है, जिसके कारण हम इसे देख सकते हैं। सही उत्तर यह है कि चंद्रमा की स्थिति पृथ्वी और सूर्य के सापेक्ष बदलती रहती है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate scientific terminology as found in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका विद्यार्थ्याने पृथ्वीमधून चंद्राचे निरीक्षण केले आणि त्याला जाणवले की चंद्राच्या एका भागाचा प्रकाश आहे. हा निरीक्षण करण्याचे कारण काय आहे?",
+          "choices": [
+            "चंद्र आपला प्रकाश उत्सर्जित करत नाही",
+            "पृथ्वी सूर्याच्या प्रकाशाला चंद्रला पोहोचू देत नाही",
+            "चंद्राचे स्थान पृथ्वी आणि सूर्याच्या संदर्भात बदलते",
+            "चंद्राची सतह प्रतिबिंबित करू शकत नाही"
+          ],
+          "solution": "चंद्राच्या चर्माचे उदय होते कारण चंद्र पृथ्वीच्या भोवती फिरत असताना आपण चंद्राच्या उजळलेल्या भागाच्या वेगवेगळ्या भागांना पाहतो. चंद्र आपला प्रकाश उत्सर्जित करत नाही, परंतु तो सूर्याच्या प्रकाशाचा प्रतिबिंब करतो. पृथ्वीच्या छायेमुळे चर्माचे उदय होत नाही, कारण चंद्र आपल्या चक्राच्या बहुतेक भागात पृथ्वीच्या छायेत नसतो. चंद्राची सतह प्रतिबिंबित करते, ज्यामुळे आपण त्याला पाहू शकतो. योग्य उत्तर म्हणजे चंद्राचे स्थान पृथ्वी आणि सूर्याच्या संदर्भात बदलते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the scientific meaning. Technical terms like 'चर्माचे उदय' (phases of the Moon) and 'प्रतिबिंबित करू शकत नाही' (not reflective) are appropriate for a Marathi-medium science curriculum.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the Moon's lack of light emission with the reason for phases",
+        "Believes Earth's shadow causes the phases",
+        null,
+        "Mistakenly thinks the Moon's position is fixed relative to Earth and Sun, not changing with its orbit around Earth, leading to varying illuminated parts seen from Earth"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 2, as the Moon's changing position relative to the Earth and Sun causes the observed phases. The author's reasoning for the distractors is valid and reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/8/science/hecu111.pdf",
+          "ordinal": 13,
+          "pageStart": 15,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 11: — Keeping Time with the Skies",
+            "11.3 Are Festivals Related to Astronomical",
+            "Phenomena?"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu111.pdf",
+          "ordinal": 14,
+          "pageStart": 15,
+          "pageEnd": 17,
+          "headingPath": [
+            "Chapter 11: — Keeping Time with the Skies",
+            "11.4 Why Do We Launch Artificial Satellites",
+            "in Space?"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu111.pdf",
+          "ordinal": 15,
+          "pageStart": 17,
+          "pageEnd": 18,
+          "headingPath": [
+            "Chapter 11: — Keeping Time with the Skies",
+            "11.4 Why Do We Launch Artificial Satellites",
+            "Activity 11.4: Let us identify"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T13:11:47.832Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If a person sees a crescent Moon rising in the East when the Sun is setting, which of the following is most likely to be true?",
+      "choices": [
+        "The person is seeing a waxing crescent Moon",
+        "The person is seeing a waning crescent Moon",
+        "The person is seeing a full Moon",
+        "The person is seeing a new Moon"
+      ],
+      "answerIndex": 0,
+      "solution": "The waxing crescent Moon is visible in the early evening, shortly after sunset, and appears in the eastern sky as the Sun sets. A waning crescent would be visible in the early morning, not in the evening. A full Moon is opposite the Sun and would be visible at night, while a new Moon is not visible because it is too close to the Sun.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि कोई व्यक्ति पूर्व दिशा में चांद के अर्धचंद्र आकार को देखता है जब सूर्य अस्त हो रहा है, तो निम्नलिखित में से कौन-सा सबसे अधिक संभावित रूप से सत्य है?",
+          "choices": [
+            "व्यक्ति एक बढ़ते अर्धचंद्र चांद देख रहा है",
+            "व्यक्ति एक घटते अर्धचंद्र चांद देख रहा है",
+            "व्यक्ति एक पूर्णिमा के चांद देख रहा है",
+            "व्यक्ति एक अमावस्या के चांद देख रहा है"
+          ],
+          "solution": "बढ़ते अर्धचंद्र चांद शाम के शुरू में, सूर्य अस्त होने के ठीक बाद दिखाई देता है और सूर्य अस्त होते समय पूर्व दिशा में दिखाई देता है। घटते अर्धचंद्र केवल प्रातःकाल दिखाई देता है, न कि शाम में। पूर्णिमा के चांद सूर्य के विपरीत होता है और रात में दिखाई देता है, जबकि अमावस्या के चांद को देखा नहीं जा सकता क्योंकि वह सूर्य के बहुत निकट होता है।",
+          "imageAlt": "एक आरेख जिसमें चांद के अर्धचंद्र आकार को सूर्य की ओर दिखाया गया है, सूर्य के रूप में आपतित किरण, चांद के रूप में परावर्तित किरण और एक रेखा के रूप में सामान्य रेखा के साथ।",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi astronomical terms.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर एखादा माणूस उत्तर दिशेत उगवत असलेला अर्धा चंद्र बघत असेल आणि सूर्य अस्ताला जात असेल, तर खालीलपैकी कोणते खात्रीने खरे असू शकते?",
+          "choices": [
+            "माणूस वॉकिंग अर्धा चंद्र बघत आहे",
+            "माणूस वॉकिंग अर्धा चंद्र बघत आहे",
+            "माणूस पूर्ण चंद्र बघत आहे",
+            "माणूस नवीन चंद्र बघत आहे"
+          ],
+          "solution": "वॉकिंग अर्धा चंद्र लहान रात्रीत, सूर्याच्या अस्तानंतर लगेच दिसतो आणि सूर्याच्या अस्तानंतर उत्तर दिशेत दिसतो. वॉकिंग अर्धा चंद्र लहान रात्रीत दिसतो, नक्कीच रात्रीत नाही. पूर्ण चंद्र सूर्याच्या विरुद्ध दिशेत असतो आणि रात्रीत दिसतो, तर नवीन चंद्र दिसत नाही कारण तो सूर्याजवळ असतो.",
+          "imageAlt": "एक आकृती जी चंद्राच्या अर्ध्या भागाची दिशा सूर्याकडे दर्शवते, जेथे सूर्य हा अंतर्गत किरण आहे, चंद्र हा प्रतिबिंबित किरण आहे आणि एक रेषा सामान्य रेषा आहे.",
+          "critique": "Technical terms like 'waxing crescent', 'waning crescent', 'full moon', 'new moon' are not properly translated; they are transliterated as 'वॉकिंग अर्धा चंद्र', 'वॉकिंग अर्धा चंद्र' (duplicate), 'पूर्ण चंद्र', 'नवीन चंद्र'. These should be translated using standard Marathi astronomical terms.",
+          "flag": "translation critique: terms not the board's"
+        }
+      },
+      "imageKey": null,
+      "imageAlt": "A diagram showing the Moon's crescent facing towards the Sun, with the Sun as the incident ray, the Moon as the reflected ray, and a line as the normal.",
+      "figure": {
+        "kind": "diagram",
+        "spec": {
+          "parts": [
+            {
+              "part": "planeMirror",
+              "x": 50,
+              "y": 30,
+              "size": 20,
+              "labels": [
+                "incidentRay",
+                "reflectedRay",
+                "normal"
+              ],
+              "text": {
+                "incidentRay": "Sun",
+                "reflectedRay": "Moon",
+                "normal": "line"
+              }
+            }
+          ]
+        },
+        "labels": {
+          "Sun": {
+            "en": "Sun",
+            "hi": "सूर्य",
+            "mr": "सूर्य"
+          },
+          "Moon": {
+            "en": "Moon",
+            "hi": "चांद",
+            "mr": "चंद्र"
+          },
+          "line": {
+            "en": "line",
+            "hi": "रेखा",
+            "mr": "रेषा"
+          }
+        }
+      },
+      "needsFigure": true,
+      "distractorReason": [
+        null,
+        "Confuses the waxing and waning phases of the Moon",
+        "Does not understand that a waning crescent would not be visible at sunset",
+        "Does not understand that a full or new Moon does not appear as a crescent"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly identifies that a waxing crescent Moon is visible in the early evening, when the Sun is setting and the Moon is rising in the East. The reasoning aligns with the fact that the crescent always faces the Sun.",
+      "sources": [
+        {
+          "document": "ncert/8/science/hecu111.pdf",
+          "ordinal": 16,
+          "pageStart": 18,
+          "pageEnd": 19,
+          "headingPath": [
+            "Chapter 11: — Keeping Time with the Skies",
+            "11.4 Why Do We Launch Artificial Satellites",
+            "Activity 11.4: Let us identify"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu111.pdf",
+          "ordinal": 17,
+          "pageStart": 19,
+          "pageEnd": 20,
+          "headingPath": [
+            "Chapter 11: — Keeping Time with the Skies",
+            "11.4 Why Do We Launch Artificial Satellites",
+            "Activity 11.4: Let us identify"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu111.pdf",
+          "ordinal": 18,
+          "pageStart": 20,
+          "pageEnd": 20,
+          "headingPath": [
+            "Chapter 11: — Keeping Time with the Skies",
+            "11.4 Why Do We Launch Artificial Satellites",
+            "Activity 11.4: Let us identify"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T13:11:47.832Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "A student observes the night sky and notices an artificial satellite passing overhead. The student wants to know when the satellite will be visible again from the same location. Which of the following factors would determine the next visibility of the satellite?",
+      "choices": [
+        "The time it takes for the satellite to complete one orbit",
+        "The time it takes for the Earth to rotate once",
+        "The time it takes for the satellite to move out of the Earth's gravity",
+        "The time it takes for the satellite to reach its farthest point from Earth"
+      ],
+      "answerIndex": 0,
+      "solution": "The next visibility of the satellite from the same location depends on the time it takes for the satellite to complete one orbit. Since the satellite orbits the Earth, its position relative to the Earth and the observer changes. The Earth's rotation and the satellite's orbit are related but not the direct factor determining visibility. The satellite's distance from Earth or the time to move out of Earth's gravity are not factors in its visibility pattern. The correct answer is the time it takes for the satellite to complete one orbit.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक छात्र रात के आकाश को देखता है और एक कृत्रिम उपग्रह के ऊपर से गुजरते हुए देखता है। छात्र जानना चाहता है कि उपग्रह कब फिर से उसी स्थान से दिखाई देगा। निम्नलिखित में से कौन-सा कारक उपग्रह के अगले दृश्यता को निर्धारित करेगा?",
+          "choices": [
+            "उपग्रह द्वारा एक चक्कर पूरा करने में लगा समय",
+            "पृथ्वी द्वारा एक बार घूमने में लगा समय",
+            "उपग्रह द्वारा पृथ्वी के गुरुत्वाकर्षण से बाहर निकलने में लगा समय",
+            "उपग्रह द्वारा पृथ्वी से अपने दूरतम बिंदु तक पहुंचने में लगा समय"
+          ],
+          "solution": "उपग्रह की अगली दृश्यता उसके एक चक्कर पूरा करने में लगे समय पर निर्भर करती है। क्योंकि उपग्रह पृथ्वी के चारों ओर घूमता है, इसकी स्थिति पृथ्वी और निरीक्षक के सापेक्ष बदलती है। पृथ्वी के घूर्णन और उपग्रह के कक्षा में घूमना संबंधित है लेकिन दृश्यता के लिए प्रत्यक्ष कारक नहीं है। उपग्रह की पृथ्वी से दूरी या गुरुत्वाकर्षण से बाहर निकलने में लगा समय उसके दृश्यता पैटर्न में कोई भूमिका नहीं रखता। सही उत्तर उपग्रह द्वारा एक चक्कर पूरा करने में लगा समय है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate technical terms in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका विद्यार्थ्याने रात्रीच्या आकाशाचा अवलोकन केला आणि एका कृत्रिम उपग्रहाला वरून जाताना पाहिले. विद्यार्थी जाणून घेण्याचा प्रयत्न करत आहे की उपग्रह पुन्हा त्याच जागेवर कधी दिसेल. खालीलपैकी कोणता घटक उपग्रहाच्या आगामी दृश्यतेचे निर्धारण करेल?",
+          "choices": [
+            "उपग्रहाला एका वर्तुळात पूर्ण करण्यास लागणारा वेळ",
+            "भूमीला एका फिरत जाण्यास लागणारा वेळ",
+            "उपग्रहाला भूमीच्या गुरुत्वाकर्षणाबाहेर जाण्यास लागणारा वेळ",
+            "उपग्रहाला भूमीपासून आपल्या दूरतम बिंदूपर्यंत पोहोचण्यास लागणारा वेळ"
+          ],
+          "solution": "एका जागेवरून उपग्रहाची आगामी दृश्यता उपग्रहाला एका वर्तुळात पूर्ण करण्यास लागणार्‍या वेळवर अवलंबून असते. कारण उपग्रह भूमीच्या भोवती फिरत असतो, त्याची भूमी आणि अवलोककाच्या संदर्भातील स्थिती बदलत असते. भूमीच्या फिरत जाण्याचा वेळ आणि उपग्रहाच्या वर्तुळाचा वेळ निकटतेने संबंधित असतात परंतु ते दृश्यतेचे सीधे घटक नसतात. उपग्रहाची भूमीपासून अंतर किंवा भूमीच्या गुरुत्वाकर्षणाबाहेर जाण्यास लागणारा वेळ त्याच्या दृश्यतेच्या पॅटर्नचे घटक नसतात. योग्य उत्तर उपग्रहाला एका वर्तुळात पूर्ण करण्यास लागणारा वेळ आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms. The structure and logic of the question and solution are preserved.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses the Earth's rotation with the satellite's visibility cycle",
+        "Believes the satellite's visibility depends on escaping Earth's gravity, which is not true",
+        "Mistakenly thinks the satellite's farthest point from Earth affects its visibility"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is option 0, as the satellite's visibility from the same location depends on its orbital period. The other options reflect common misconceptions about Earth's rotation, gravity, and orbital distance.",
+      "sources": [
+        {
+          "document": "ncert/8/science/hecu111.pdf",
+          "ordinal": 13,
+          "pageStart": 15,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 11: — Keeping Time with the Skies",
+            "11.3 Are Festivals Related to Astronomical",
+            "Phenomena?"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu111.pdf",
+          "ordinal": 14,
+          "pageStart": 15,
+          "pageEnd": 17,
+          "headingPath": [
+            "Chapter 11: — Keeping Time with the Skies",
+            "11.4 Why Do We Launch Artificial Satellites",
+            "in Space?"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu111.pdf",
+          "ordinal": 15,
+          "pageStart": 17,
+          "pageEnd": 18,
+          "headingPath": [
+            "Chapter 11: — Keeping Time with the Skies",
+            "11.4 Why Do We Launch Artificial Satellites",
+            "Activity 11.4: Let us identify"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T13:11:47.832Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "If a student observes the Moon at a time when it is closest to the Sun, what phase of the Moon is it likely to be in?",
+      "choices": [
+        "Full Moon",
+        "New Moon",
+        "Crescent Moon",
+        "Gibbous Moon"
+      ],
+      "answerIndex": 1,
+      "solution": "The correct answer is New Moon. When the Moon is closest to the Sun, it is in the New Moon phase, where the illuminated portion is not visible from Earth. The other options are incorrect because the Full Moon is farthest from the Sun, and Crescent and Gibbous phases occur at other positions in the Moon's orbit.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि कोई छात्र चाँद के उस समय निरीक्षण करता है जब यह सूर्य के सबसे निकट होता है, तो चाँद के चरण कौन सा होने की संभावना है?",
+          "choices": [
+            "पूर्ण चाँद",
+            "नए चाँद",
+            "अर्धचंद चाँद",
+            "अर्द्ध गोल चाँद"
+          ],
+          "solution": "सही उत्तर नए चाँद है। जब चाँद सूर्य के सबसे निकट होता है, तो यह नए चाँद के चरण में होता है, जिसमें उज्ज्वल भाग पृथ्वी से दिखाई नहीं देता। अन्य विकल्प गलत हैं क्योंकि पूर्ण चाँद सूर्य से सबसे दूर होता है, और अर्धचंद और अर्द्ध गोल चरण चाँद की कक्षा में अन्य स्थितियों में होते हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate astronomical terms as used in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर एका विद्यार्थ्याने सूर्याशी जवळ असलेल्या काळात चंद्राचा अवलोकन केला, तर चंद्राची फेस कोणती असेल?",
+          "choices": [
+            "पूर्ण चंद्र",
+            "नवीन चंद्र",
+            "अर्धा चंद्र",
+            "अर्धवट चंद्र"
+          ],
+          "solution": "योग्य उत्तर नवीन चंद्र आहे. जेव्हा चंद्र सूर्याशी जवळ असतो, तेव्हा तो नवीन चंद्र फेसमध्ये असतो, जेथे उजळ भाग धरतीपासून दिसत नाही. इतर विकल्प चुकीचे आहेत कारण पूर्ण चंद्र सूर्यापासून दूर असतो, आणि अर्धा आणि अर्धवट चंद्र फेस चंद्राच्या कक्षेतील इतर स्थितींमध्ये होतात.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate terminology common in Marathi-medium science education.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the position of the Full Moon with the New Moon",
+        null,
+        "Believes the Moon's closest position to the Sun corresponds to a visible illuminated phase",
+        "Misunderstands the sequence of phases and the relation between the Moon's position and its appearance from Earth"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct and aligns with the key. The reasoning about the Moon's position relative to the Sun and Earth is accurate.",
+      "sources": [
+        {
+          "document": "ncert/8/science/hecu111.pdf",
+          "ordinal": 3,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 11: — Keeping Time with the Skies",
+            "11.1 How Does the Moon’s Appearance",
+            "Activity 11.1: Let us explore"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu111.pdf",
+          "ordinal": 4,
+          "pageStart": 5,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 11: — Keeping Time with the Skies",
+            "11.1 How Does the Moon’s Appearance",
+            "Activity 11.2: Let us explore"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu111.pdf",
+          "ordinal": 5,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 11: — Keeping Time with the Skies",
+            "11.1 How Does the Moon’s Appearance",
+            "Activity 11.2: Let us explore"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T13:11:47.832Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "A student observes the shadow of a stick every minute from 11:00 a.m. to 1:10 p.m. and records the time when the shadow is shortest. What can the student conclude about the Sun's position?",
+      "choices": [
+        "The Sun is at its highest point in the sky",
+        "The Sun is about to set",
+        "The Sun is in the west",
+        "The Sun is in the east"
+      ],
+      "answerIndex": 0,
+      "solution": "The Sun is at its highest point in the sky because the shadow is shortest when the Sun is directly overhead. The Sun is not about to set, as this would occur later in the day. The Sun is not in the west or east at this time, as those positions correspond to sunrise and sunset, not midday.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक छात्र लगातार 11:00 बजे से 1:10 बजे तक प्रत्येक मिनट एक छड़ के छाया का अवलोकन करता है और वह समय दर्ज करता है जब छाया सबसे छोटी होती है। छात्र सूर्य की स्थिति के बारे में क्या निष्कर्ष निकाल सकता है?",
+          "choices": [
+            "सूर्य आकाश में अपने सबसे ऊंचे बिंदु पर है",
+            "सूर्य अभी डूबने वाला है",
+            "सूर्य पश्चिम में है",
+            "सूर्य पूर्व में है"
+          ],
+          "solution": "सूर्य आकाश में अपने सबसे ऊंचे बिंदु पर है क्योंकि जब सूर्य सीधे ऊपर होता है तो छाया सबसे छोटी होती है। सूर्य डूबने वाला नहीं है, क्योंकि यह दिन के बाद के समय होता है। इस समय सूर्य पश्चिम या पूर्व में नहीं होता है, क्योंकि ये स्थितियां सूर्योदय और सूर्यास्त के समय होती हैं, न कि मध्याह्न के समय।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the original English question and maintains the same meaning, correct answer, and logical structure. Technical terms like 'सूर्य की स्थिति' (position of the Sun) and 'छाया' (shadow) are appropriately used.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका विद्यार्थीने 11:00 वाजता ते 1:10 वाजता पर्यंत एका लाकडी छडीचे छाया प्रत्येक मिनिटाला निरीक्षण केले आणि छाया सर्वात लहान असताना वेळ नोंदवली. सूर्याच्या स्थितीबद्दल विद्यार्थी काय निष्कर्ष काढू शकते?",
+          "choices": [
+            "सूर्य आकाशात सर्वात वर आहे",
+            "सूर्य अगदी लवकर लोटत आहे",
+            "सूर्य पश्चिमेत आहे",
+            "सूर्य पूर्वेत आहे"
+          ],
+          "solution": "सूर्य आकाशात सर्वात वर आहे कारण जेव्हा सूर्य ठिक वरून असतो तेव्हा छाया सर्वात लहान असते. सूर्य लोटत असल्याचे निष्कर्ष लवकर दुपारी नाही तर दिवसाच्या शेवटी असते. या वेळी सूर्य पश्चिमेत किंवा पूर्वेत नसतो, कारण ते सूर्योदय आणि सूर्यास्त च्या स्थितीशी संबंधित आहेत, मध्यान्हाच्या वेळी नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for astronomical concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses the time of the day with the Sun's position",
+        "Misinterprets the Sun's movement",
+        "Confuses morning and evening positions of the Sun"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 0, as the shadow is shortest when the Sun is at its highest point in the sky. The other options reflect common misconceptions about the Sun's position during the day.",
+      "sources": [
+        {
+          "document": "ncert/8/science/hecu111.pdf",
+          "ordinal": 6,
+          "pageStart": 8,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 11: — Keeping Time with the Skies",
+            "11.1 How Does the Moon’s Appearance",
+            "Activity 11.2: Let us explore"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu111.pdf",
+          "ordinal": 7,
+          "pageStart": 9,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 11: — Keeping Time with the Skies",
+            "11.2 How Did Calendars Come into Existence?"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu111.pdf",
+          "ordinal": 8,
+          "pageStart": 10,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 11: — Keeping Time with the Skies",
+            "11.2 How Did Calendars Come into Existence?",
+            "Activity 11.3: Let us measure a day!"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu111.pdf",
+          "ordinal": 9,
+          "pageStart": 11,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 11: — Keeping Time with the Skies",
+            "11.2 How Did Calendars Come into Existence?",
+            "Activity 11.3: Let us measure a day!"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T13:11:47.832Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "If the Moon is getting farther away from the Earth and slower in its revolution, what will happen to the frequency of intercalary months in luni-solar calendars?",
+      "choices": [
+        "They will occur more often",
+        "They will occur less often",
+        "They will remain the same",
+        "They will stop occurring"
+      ],
+      "answerIndex": 1,
+      "solution": "As the Moon moves farther away and its revolution slows, the length of the lunar month increases, making it less likely to fall out of sync with the solar year. This means fewer intercalary months would be needed to maintain alignment. The other options are incorrect because they do not reflect the relationship between the Moon's orbital changes and calendar adjustments.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि चंद्रमा पृथ्वी से दूर हो रहा है और इसके घूर्णन में धीमी गति हो रही है, तो चंद्र-सौर कैलेंडर में अतिरिक्त महीनों की आवृत्ति पर क्या प्रभाव पड़ेगा?",
+          "choices": [
+            "वे अधिक अक्सर होंगे",
+            "वे कम अक्सर होंगे",
+            "वे एक ही रहेंगे",
+            "वे बंद हो जाएंगे"
+          ],
+          "solution": "जैसे-जैसे चंद्रमा दूर होता है और इसका घूर्णन धीमा होता है, चंद्र मास की अवधि बढ़ जाती है, जिससे यह सौर वर्ष से असंगत होने की संभावना कम हो जाती है। इसका अर्थ है कि संयोजन बनाए रखने के लिए कम अतिरिक्त महीनों की आवश्यकता होगी। अन्य विकल्प गलत हैं क्योंकि वे चंद्रमा के कक्षीय परिवर्तनों और कैलेंडर समायोजनों के बीच संबंध को नहीं दर्शाते हैं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriately translated, and the structure matches the original.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "चंद्र च्या धूळीपासून दूर जाणे आणि त्याच्या फिरत्या गतीत धीमेपणा होणे, तर चंद्र-सूर्य वर्षांमध्ये अतिरिक्त महिन्यांच्या वारंवारतेवर काय परिणाम होईल?",
+          "choices": [
+            "ते जास्त वारंवार होतील",
+            "ते कमी वारंवार होतील",
+            "ते बरोबर राहतील",
+            "ते थांबून जातील"
+          ],
+          "solution": "जेव्हा चंद्र दूर जातो आणि त्याच्या फिरत्या गतीत धीमेपणा होतो, तेव्हा चंद्र महिन्याचा कालावधी वाढतो, ज्यामुळे सूर्य वर्षाशी असंगती निर्माण होणे कमी होते. हे अर्थ असा आहे की समायोजन राखण्यासाठी कमी अतिरिक्त महिन्यांची आवश्यकता असेल. इतर विकल्प चुकीचे आहेत कारण ते चंद्रच्या कक्षीय बदलांच्या आणि वर्षाच्या समायोजनांच्या संबंधाचे प्रतिनिधित्व करत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for astronomical concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Does not understand the impact of the Moon's orbital changes on the calendar",
+        null,
+        "Believes the frequency of intercalary months would increase",
+        "Does not account for the relationship between the Moon's movement and calendar adjustments"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The reasoning is sound: as the Moon's orbital period increases, the mismatch between the lunar and solar year decreases, so fewer intercalary months are needed. The author's solution and reasoning align with this.",
+      "sources": [
+        {
+          "document": "ncert/8/science/hecu111.pdf",
+          "ordinal": 16,
+          "pageStart": 18,
+          "pageEnd": 19,
+          "headingPath": [
+            "Chapter 11: — Keeping Time with the Skies",
+            "11.4 Why Do We Launch Artificial Satellites",
+            "Activity 11.4: Let us identify"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu111.pdf",
+          "ordinal": 17,
+          "pageStart": 19,
+          "pageEnd": 20,
+          "headingPath": [
+            "Chapter 11: — Keeping Time with the Skies",
+            "11.4 Why Do We Launch Artificial Satellites",
+            "Activity 11.4: Let us identify"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu111.pdf",
+          "ordinal": 18,
+          "pageStart": 20,
+          "pageEnd": 20,
+          "headingPath": [
+            "Chapter 11: — Keeping Time with the Skies",
+            "11.4 Why Do We Launch Artificial Satellites",
+            "Activity 11.4: Let us identify"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T13:11:47.832Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "If the Moon's orbit were not tilted with respect to Earth's orbit, what would happen to lunar and solar eclipses?",
+      "choices": [
+        "They would occur every month",
+        "They would not occur at all",
+        "They would occur less frequently",
+        "They would occur more frequently"
+      ],
+      "answerIndex": 0,
+      "solution": "The correct answer is that they would occur every month. The Moon's tilted orbit prevents eclipses from happening every month. If the orbit were not tilted, eclipses would occur regularly. The other options are incorrect because the Moon's tilted orbit is the reason eclipses do not happen every month, not the reason they would not occur at all.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि चंद्रमा की कक्षा पृथ्वी की कक्षा के सापेक्ष झुकी हुई नहीं रहती, तो चंद्रग्रहण और सूर्यग्रहण क्या होगा?",
+          "choices": [
+            "वे हर महीने होते",
+            "वे कभी नहीं होते",
+            "वे कम आम होते",
+            "वे अधिक आम होते"
+          ],
+          "solution": "सही उत्तर यह है कि वे हर महीने होते। चंद्रमा की झुकी हुई कक्षा के कारण ही चंद्रग्रहण और सूर्यग्रहण हर महीने नहीं होते। यदि कक्षा झुकी हुई नहीं रहती, तो ग्रहण नियमित रूप से होते। अन्य विकल्प गलत हैं क्योंकि चंद्रमा की झुकी हुई कक्षा ग्रहण न होने के कारण नहीं है, बल्कि ग्रहण हर महीने न होने के कारण है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms. The correct answer is in the same position (option 1) and the distractors remain incorrect.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर चंद्राचा मार्ग पृथ्वीच्या मार्गापेक्षा झुकलेला नसत तर चंद्र व सूर्यग्रहणांचे काय होईल?",
+          "choices": [
+            "ते प्रत्येक महिन्याला होईल",
+            "ते कधीही होणार नाहीत",
+            "ते कमी वारंवार होईल",
+            "ते जास्त वारंवार होईल"
+          ],
+          "solution": "योग्य उत्तर असे आहे की ते प्रत्येक महिन्याला होईल. चंद्राचा झुकलेला मार्ग हा महिन्याला ग्रहणे होऊ देण्यापासून रोखतो. जर मार्ग झुकलेला नसत तर ग्रहणे नियमितपणे होत असत. इतर विकल्प अयोग्य आहेत कारण चंद्राचा झुकलेला मार्ग हा ग्रहणे महिन्याला होऊ देण्यापासून रोखतो, नाहीतर ते कधीही होणार नाहीत याचा अर्थ नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Misunderstands the role of the Moon's tilt in preventing eclipses",
+        "Confuses the tilt with the reason eclipses do not occur",
+        "Fails to recognize the relationship between the Moon's orbit and the frequency of eclipses"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is sound and correctly identifies that without the Moon's orbital tilt, eclipses would occur every month. The reasoning aligns with the scientific understanding of eclipse cycles.",
+      "sources": [
+        {
+          "document": "ncert/8/science/hecu111.pdf",
+          "ordinal": 3,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 11: — Keeping Time with the Skies",
+            "11.1 How Does the Moon’s Appearance",
+            "Activity 11.1: Let us explore"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu111.pdf",
+          "ordinal": 4,
+          "pageStart": 5,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 11: — Keeping Time with the Skies",
+            "11.1 How Does the Moon’s Appearance",
+            "Activity 11.2: Let us explore"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu111.pdf",
+          "ordinal": 5,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 11: — Keeping Time with the Skies",
+            "11.1 How Does the Moon’s Appearance",
+            "Activity 11.2: Let us explore"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T13:11:47.832Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
     }
   ]
 }

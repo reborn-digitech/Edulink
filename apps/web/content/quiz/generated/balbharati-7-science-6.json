@@ -404,6 +404,676 @@
       "generatedAt": "2026-11-02T03:44:03.604Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "Which of the following is a fundamental physical quantity?",
+      "choices": [
+        "Length",
+        "Speed",
+        "Force",
+        "Volume"
+      ],
+      "answerIndex": 0,
+      "solution": "The correct answer is Length. Length is a fundamental physical quantity as it is not derived from any other quantity. Speed is a derived quantity as it is distance divided by time. Force is also a derived quantity as it is mass multiplied by acceleration. Volume is a derived quantity as it is length cubed.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सी एक मौलिक भौतिक राशि है?",
+          "choices": [
+            "लंबाई",
+            "चाल",
+            "बल",
+            "आयतन"
+          ],
+          "solution": "सही उत्तर लंबाई है। लंबाई एक मौलिक भौतिक राशि है क्योंकि यह किसी अन्य राशि से व्युत्पन्न नहीं है। चाल एक व्युत्पन्न राशि है क्योंकि यह दूरी के समय से भाग दिया जाता है। बल भी एक व्युत्पन्न राशि है क्योंकि यह द्रव्यमान त्वरण से गुणा करके प्राप्त किया जाता है। आयतन एक व्युत्पन्न राशि है क्योंकि यह लंबाई के घन होता है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Hindi terminology used in physics textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते एक मूलभूत भौतिक राशी आहे?",
+          "choices": [
+            "लांबी",
+            "वेग",
+            "बल",
+            "आयतन"
+          ],
+          "solution": "बरोबर उत्तर लांबी आहे. लांबी ही मूलभूत भौतिक राशी आहे कारण ती कोणत्याही इतर राशीपासून विकसित केली जात नाही. वेग ही विकसित राशी आहे कारण ती अंतराच्या वेळेने भागाकार आहे. बल ही देखील विकसित राशी आहे कारण ती द्रव्यमानाच्या त्वरणाने गुणाकार आहे. आयतन ही विकसित राशी आहे कारण ती लांबीच्या घनाकार आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses fundamental quantities with derived quantities",
+        "Confuses fundamental quantities with derived quantities",
+        "Confuses fundamental quantities with derived quantities"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct and aligns with the definition of fundamental physical quantities. Length is indeed a fundamental quantity, while speed, force, and volume are derived.",
+      "sources": [
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 50,
+          "pageStart": 53,
+          "pageEnd": 54,
+          "headingPath": [
+            "6. Measurement of Physical Quantities"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 51,
+          "pageStart": 54,
+          "pageEnd": 55,
+          "headingPath": [
+            "6. Measurement of Physical Quantities"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 52,
+          "pageStart": 55,
+          "pageEnd": 55,
+          "headingPath": [
+            "6. Measurement of Physical Quantities",
+            "t t t"
+          ]
+        }
+      ],
+      "edition": "First Edition 2017",
+      "generatedAt": "2026-10-31T16:18:30.432Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the SI unit of mass?",
+      "choices": [
+        "Kilogram",
+        "Gram",
+        "Pound",
+        "Ton"
+      ],
+      "answerIndex": 0,
+      "solution": "The correct answer is Kilogram. The kilogram is the SI unit of mass. Gram is a smaller unit of mass, but not the SI unit. Pound and ton are not SI units of mass.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "द्रव्यमान का एसआई मात्रक क्या है?",
+          "choices": [
+            "किलोग्राम",
+            "ग्राम",
+            "पाउंड",
+            "टन"
+          ],
+          "solution": "सही उत्तर किलोग्राम है। किलोग्राम द्रव्यमान का एसआई मात्रक है। ग्राम द्रव्यमान का एक छोटा मात्रक है, लेकिन एसआई मात्रक नहीं है। पाउंड और टन द्रव्यमान के एसआई मात्रक नहीं हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard technical terms as found in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "द्रव्यमानाचा एसआय एकक कोणता आहे?",
+          "choices": [
+            "किलोग्राम",
+            "ग्रॅम",
+            "पाउंड",
+            "टन"
+          ],
+          "solution": "बरोबर उत्तर किलोग्राम आहे. किलोग्राम हा द्रव्यमानाचा एसआय एकक आहे. ग्रॅम हा द्रव्यमानाचा लहान एकक आहे, परंतु एसआय एकक नाही. पाउंड आणि टन हे द्रव्यमानाचे एसआय एकक नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses SI units with other units of mass",
+        "Confuses SI units with other units of mass",
+        "Confuses SI units with other units of mass"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The question is straightforward and the solution is correct. The SI unit of mass is indeed the kilogram, and the other options are not SI units.",
+      "sources": [
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 50,
+          "pageStart": 53,
+          "pageEnd": 54,
+          "headingPath": [
+            "6. Measurement of Physical Quantities"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 51,
+          "pageStart": 54,
+          "pageEnd": 55,
+          "headingPath": [
+            "6. Measurement of Physical Quantities"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 52,
+          "pageStart": 55,
+          "pageEnd": 55,
+          "headingPath": [
+            "6. Measurement of Physical Quantities",
+            "t t t"
+          ]
+        }
+      ],
+      "edition": "First Edition 2017",
+      "generatedAt": "2026-10-31T16:18:30.432Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "Which of the following is a scalar quantity?",
+      "choices": [
+        "Force",
+        "Velocity",
+        "Displacement",
+        "Mass"
+      ],
+      "answerIndex": 3,
+      "solution": "A scalar quantity has only magnitude and no direction. Mass is a scalar because it is just a measure of the amount of matter, without any directional component. Force, velocity, and displacement are vectors, as they require both magnitude and direction to be fully described.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन एक अदिश राशि है?",
+          "choices": [
+            "बल",
+            "वेग",
+            "स्थानांतरण",
+            "द्रव्यमान"
+          ],
+          "solution": "एक अदिश राशि के केवल परिमाण होता है और कोई दिशा नहीं होती। द्रव्यमान एक अदिश राशि है क्योंकि यह केवल पदार्थ की मात्रा का माप है, कोई दिशात्मक घटक नहीं होता। बल, वेग और स्थानांतरण सदिश हैं, क्योंकि इन्हें पूरी तरह से वर्णित करने के लिए परिमाण और दिशा दोनों की आवश्यकता होती है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard physics terminology as taught in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते अदिश राशी आहे?",
+          "choices": [
+            "बल",
+            "वेग",
+            "खेच",
+            "द्रव्यमान"
+          ],
+          "solution": "अदिश राशीला केवळ परिमाण असते आणि दिशा नसते. द्रव्यमान हा अदिश आहे कारण तो पदार्थाच्या परिमाणाचा मापन असतो, दिशेचा अभाव असतो. बल, वेग आणि खेच हे सदिश आहेत, कारण त्यांना पूर्णपणे वर्णन करण्यासाठी परिमाण आणि दिशा दोन्ही आवश्यक असतात.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, with appropriate technical terms (e.g., 'खेच' for displacement, 'द्रव्यमान' for mass) that match standard Marathi-medium physics terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Thinks force is scalar",
+        "Thinks velocity is scalar",
+        "Thinks displacement is scalar",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly identifies mass as the scalar quantity, and the misconceptions listed for the other options are common misunderstandings about vectors and scalars.",
+      "sources": [
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 47,
+          "pageStart": 51,
+          "pageEnd": 51,
+          "headingPath": [
+            "6. Measurement of Physical Quantities"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 48,
+          "pageStart": 51,
+          "pageEnd": 52,
+          "headingPath": [
+            "6. Measurement of Physical Quantities"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 49,
+          "pageStart": 52,
+          "pageEnd": 53,
+          "headingPath": [
+            "6. Measurement of Physical Quantities"
+          ]
+        }
+      ],
+      "edition": "First Edition 2017",
+      "generatedAt": "2026-10-31T16:18:30.432Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If a car travels 150 km in 3 hours, what is its average speed?",
+      "choices": [
+        "50 km/h",
+        "40 km/h",
+        "60 km/h",
+        "30 km/h"
+      ],
+      "answerIndex": 0,
+      "solution": "The correct answer is 50 km/h. Average speed is calculated by dividing the total distance by the total time. So, 150 km divided by 3 hours equals 50 km/h. The other options are incorrect calculations based on wrong division.",
+      "checkExpr": "150/3",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक कार 3 घंटे में 150 किमी की दूरी तय करती है, तो इसकी औसत गति क्या है?",
+          "choices": [
+            "50 किमी/घंटा",
+            "40 किमी/घंटा",
+            "60 किमी/घंटा",
+            "30 किमी/घंटा"
+          ],
+          "solution": "सही उत्तर 50 किमी/घंटा है। औसत गति की गणना कुल दूरी को कुल समय से भाग देकर की जाती है। इसलिए, 150 किमी को 3 घंटे से भाग देने पर 50 किमी/घंटा प्राप्त होता है। अन्य विकल्प गलत भाग देने पर प्राप्त गलत गणनाएं हैं।",
+          "imageAlt": null,
+          "critique": "Translation accurately reflects the original question and solution, with appropriate Hindi terminology for speed and calculation.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एक गाडी 3 तासात 150 किमी अंतर जाते, तर तिची सरासरी वेग किती असेल?",
+          "choices": [
+            "50 किमी/तास",
+            "40 किमी/तास",
+            "60 किमी/तास",
+            "30 किमी/तास"
+          ],
+          "solution": "बरोबर उत्तर 50 किमी/तास आहे. सरासरी वेग एकूण अंतराला एकूण वेळेने भागल्याने मिळतो. म्हणून, 150 किमी ला 3 तासाने भागल्याने 50 किमी/तास मिळतो. इतर उत्तरे चुकीच्या भागाकारावर आधारित असतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi technical terms used for 'average speed' and 'km/h'.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Divides the distance by 2 instead of 3",
+        "Adds the distance and time instead of dividing",
+        "Subtracts the time from the distance instead of dividing"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct and matches the key. The calculation of average speed as distance divided by time is accurate. The distractors represent plausible but incorrect operations (dividing by 2, adding, subtracting), which are common misconceptions for students learning this concept.",
+      "sources": [
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 50,
+          "pageStart": 53,
+          "pageEnd": 54,
+          "headingPath": [
+            "6. Measurement of Physical Quantities"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 51,
+          "pageStart": 54,
+          "pageEnd": 55,
+          "headingPath": [
+            "6. Measurement of Physical Quantities"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 52,
+          "pageStart": 55,
+          "pageEnd": 55,
+          "headingPath": [
+            "6. Measurement of Physical Quantities",
+            "t t t"
+          ]
+        }
+      ],
+      "edition": "First Edition 2017",
+      "generatedAt": "2026-10-31T16:18:30.432Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "A student measures the length of a room using a measuring tape. Another student measures the same room using a different measuring tape. What is the most likely outcome?",
+      "choices": [
+        "The measurements will be exactly the same",
+        "The measurements will be different",
+        "One measurement will be longer than the other",
+        "One measurement will be shorter than the other"
+      ],
+      "answerIndex": 1,
+      "solution": "Different measuring tapes may have slight variations in their markings or calibration, leading to different measurements. The most likely outcome is that the measurements will be different. The other options assume a specific direction of difference without justification.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक छात्र कमरे की लंबाई मापने के लिए एक मापन फीता का उपयोग करता है। दूसरा छात्र एक अलग मापन फीता का उपयोग करके उसी कमरे की माप करता है। संभावित परिणाम क्या होगा?",
+          "choices": [
+            "मापन बिल्कुल एक ही होगा",
+            "मापन अलग-अलग होगा",
+            "एक मापन दूसरे से लंबा होगा",
+            "एक मापन दूसरे से छोटा होगा"
+          ],
+          "solution": "अलग-अलग मापन फीतों में मार्किंग या कैलिब्रेशन में थोड़े अंतर हो सकते हैं, जिसके कारण मापन अलग-अलग हो सकते हैं। संभावित परिणाम यह है कि मापन अलग-अलग होगा। अन्य विकल्प बिना कारण के एक विशिष्ट दिशा के अंतर की ओर इशारा करते हैं।",
+          "imageAlt": null,
+          "critique": "Hindi translation accurately reflects the English original in meaning, structure, and terminology. The correct answer remains option (2) and the distractors are still incorrect.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका विद्यार्थ्याने एका खोलीची लांबी मोजण्यासाठी मोजणी फट्टी वापरली. दुसऱ्या विद्यार्थ्याने तीच खोली वेगळ्या मोजणी फट्टी वापरून मोजली. शक्यतो फार निकटतेने काय घडेल?",
+          "choices": [
+            "मोजमाप एकसारखे असतील",
+            "मोजमाप वेगळे असतील",
+            "एक मोजमाप दुसऱ्यापेक्षा लांब असेल",
+            "एक मोजमाप दुसऱ्यापेक्षा लहान असेल"
+          ],
+          "solution": "वेगळ्या मोजणी फट्ट्यांमध्ये थोडे फरक असू शकतो, ज्यामुळे मोजमाप वेगळे होऊ शकतात. शक्यतो फार निकटतेने घडणारी घटना मोजमाप वेगळे असणे आहे. इतर विकल्पांमध्ये फरकाची दिशा अस्पष्ट असते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Believes that all measuring tools are perfectly accurate and identical",
+        null,
+        "Assumes one measurement is always longer than the other without evidence",
+        "Assumes one measurement is always shorter than the other without evidence"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 1, as different measuring tapes may have slight variations, leading to different measurements. The other options assume a specific direction of difference without justification, which is a common misconception.",
+      "sources": [
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 47,
+          "pageStart": 51,
+          "pageEnd": 51,
+          "headingPath": [
+            "6. Measurement of Physical Quantities"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 48,
+          "pageStart": 51,
+          "pageEnd": 52,
+          "headingPath": [
+            "6. Measurement of Physical Quantities"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 49,
+          "pageStart": 52,
+          "pageEnd": 53,
+          "headingPath": [
+            "6. Measurement of Physical Quantities"
+          ]
+        }
+      ],
+      "edition": "First Edition 2017",
+      "generatedAt": "2026-10-31T16:18:30.432Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "Which of the following is a derived physical quantity?",
+      "choices": [
+        "Time",
+        "Mass",
+        "Area",
+        "Length"
+      ],
+      "answerIndex": 2,
+      "solution": "The correct answer is Area. Area is a derived quantity as it is calculated by multiplying two lengths. Time, mass, and length are fundamental quantities that are not derived from other quantities.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सी एक व्युत्पन्न भौतिक राशि है?",
+          "choices": [
+            "समय",
+            "द्रव्यमान",
+            "क्षेत्रफल",
+            "लंबाई"
+          ],
+          "solution": "सही उत्तर क्षेत्रफल है। क्षेत्रफल एक व्युत्पन्न राशि है क्योंकि इसे दो लंबाइयों के गुणनफल द्वारा गणना की जाती है। समय, द्रव्यमान और लंबाई मूल राशियां हैं जो अन्य राशियों से व्युत्पन्न नहीं हैं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, with appropriate Hindi scientific terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते एक व्युत्पन्न भौतिक राशी आहे?",
+          "choices": [
+            "वेळ",
+            "द्रव्यमान",
+            "क्षेत्रफळ",
+            "लांबी"
+          ],
+          "solution": "योग्य उत्तर क्षेत्रफळ आहे. क्षेत्रफळ ही व्युत्पन्न राशी आहे कारण ती दोन लांबींच्या गुणाकाराने गणली जाते. वेळ, द्रव्यमान आणि लांबी ही मूलभूत राशी आहेत ज्या इतर राशींपासून व्युत्पन्न नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for physical quantities.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses fundamental quantities with derived quantities",
+        "Confuses fundamental quantities with derived quantities",
+        null,
+        "Confuses fundamental quantities with derived quantities"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct. Area is a derived quantity as it is calculated from two lengths. Time, mass, and length are fundamental quantities.",
+      "sources": [
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 50,
+          "pageStart": 53,
+          "pageEnd": 54,
+          "headingPath": [
+            "6. Measurement of Physical Quantities"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 51,
+          "pageStart": 54,
+          "pageEnd": 55,
+          "headingPath": [
+            "6. Measurement of Physical Quantities"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 52,
+          "pageStart": 55,
+          "pageEnd": 55,
+          "headingPath": [
+            "6. Measurement of Physical Quantities",
+            "t t t"
+          ]
+        }
+      ],
+      "edition": "First Edition 2017",
+      "generatedAt": "2026-10-31T16:18:30.432Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "If the unit of length is halved and the unit of time is doubled, what happens to the unit of velocity?",
+      "choices": [
+        "It is quartered",
+        "It is multiplied by eight",
+        "It is halved",
+        "It is multiplied by four"
+      ],
+      "answerIndex": 0,
+      "solution": "The correct answer is It is quartered. Velocity is defined as distance divided by time. If the unit of length is halved, the distance becomes twice as large in the new units. If the unit of time is doubled, the time becomes half as large in the new units. Therefore, the unit of velocity becomes (2/0.5) = 4 times larger in the new units, which means it is quartered.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि लंबाई के इकाई को आधा कर दिया जाए और समय के इकाई को दोगुना कर दिया जाए, तो वेग के इकाई पर क्या प्रभाव पड़ता है?",
+          "choices": [
+            "इसे चौथाई कर दिया जाता है",
+            "इसके आठ गुना हो जाता है",
+            "इसे आधा कर दिया जाता है",
+            "इसके चार गुना हो जाता है"
+          ],
+          "solution": "सही उत्तर इसे चौथाई कर दिया जाता है। वेग की परिभाषा दूरी के समय से भाग के रूप में होती है। यदि लंबाई के इकाई को आधा कर दिया जाए, तो नए इकाई में दूरी दोगुना हो जाती है। यदि समय के इकाई को दोगुना कर दिया जाए, तो नए इकाई में समय आधा हो जाता है। इसलिए, नए इकाई में वेग (2/0.5) = 4 गुना बड़ा हो जाता है, जिसका अर्थ है कि इसे चौथाई कर दिया जाता है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the original English question and solution, with appropriate terminology used in a Hindi-medium educational context.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर लांबीचे एकक अर्धे केले जातात आणि वेळेचे एकक दुप्पट केले जातात, तर वेगाचे एकक काय होते?",
+          "choices": [
+            "ते चौथाई केले जाते",
+            "ते आठ पट केले जाते",
+            "ते अर्धे केले जाते",
+            "ते चार पट केले जाते"
+          ],
+          "solution": "योग्य उत्तर ते चौथाई केले जाते. वेग अंतराच्या विभाजनाच्या संज्ञेने व्यक्त केला जातो. जर लांबीचे एकक अर्धे केले जातात, तर नवीन एककांमध्ये अंतर दुप्पट होते. जर वेळेचे एकक दुप्पट केले जातात, तर नवीन एककांमध्ये वेळ अर्धी होते. त्यामुळे नवीन एककांमध्ये वेग (2 / 0.5) = 4 पट जास्त होतो, जे अर्थात ते चौथाई केले जाते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses the effect of changing both length and time units on velocity",
+        "Confuses velocity with a direct proportion to time instead of inverse",
+        "Confuses the effect of halving length with doubling time as additive rather than multiplicative"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        3,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly identifies that halving the length unit makes distance appear twice as large, and doubling the time unit makes time appear half as large. This results in velocity being 4 times larger, meaning the unit of velocity is quartered. The reasoning is sound and matches the key.",
+      "sources": [
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 50,
+          "pageStart": 53,
+          "pageEnd": 54,
+          "headingPath": [
+            "6. Measurement of Physical Quantities"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 51,
+          "pageStart": 54,
+          "pageEnd": 55,
+          "headingPath": [
+            "6. Measurement of Physical Quantities"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 52,
+          "pageStart": 55,
+          "pageEnd": 55,
+          "headingPath": [
+            "6. Measurement of Physical Quantities",
+            "t t t"
+          ]
+        }
+      ],
+      "edition": "First Edition 2017",
+      "generatedAt": "2026-10-31T16:18:30.432Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
     }
   ]
 }

@@ -947,6 +947,852 @@
       "generatedAt": "2026-10-28T08:20:37.050Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "What is the first term of the sequence defined by a = (n – 1)(2 – n)(3 + n)?",
+      "choices": [
+        "0",
+        "1",
+        "2",
+        "3"
+      ],
+      "answerIndex": 0,
+      "solution": "To find the first term, substitute n = 1 into the formula. This gives a = (1 – 1)(2 – 1)(3 + 1) = 0 × 1 × 4 = 0. The other options result from incorrect substitution or misinterpretation of the formula.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "अनुक्रम a = (n – 1)(2 – n)(3 + n) द्वारा परिभाषित है। अनुक्रम का पहला पद क्या है?",
+          "choices": [
+            "0",
+            "1",
+            "2",
+            "3"
+          ],
+          "solution": "पहला पद ज्ञात करने के लिए सूत्र में n = 1 का मान रखें। इससे a = (1 – 1)(2 – 1)(3 + 1) = 0 × 1 × 4 = 0 प्राप्त होता है। अन्य विकल्प गलत प्रतिस्थापन या सूत्र के गलत व्याख्या के कारण प्राप्त होते हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "अनुक्रमाचे पहिले पद काय आहे जो a = (n – 1)(2 – n)(3 + n) द्वारे निश्चित केला जातो?",
+          "choices": [
+            "0",
+            "1",
+            "2",
+            "3"
+          ],
+          "solution": "पहिले पद शोधण्यासाठी, सूत्रात n = 1 ची ठिकाणी ठेवा. हे a = (1 – 1)(2 – 1)(3 + 1) = 0 × 1 × 4 = 0 देते. इतर विकल्प सूत्राच्या चुकीच्या प्रतिस्थापनामुळे किंवा चुकीच्या अर्थामुळे मिळतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "incorrectly assumes the formula starts at n = 0",
+        "mistakenly assumes the first term is the coefficient of n",
+        "incorrectly adds 1 to the formula"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct. Substituting n = 1 into the formula (n – 1)(2 – n)(3 + n) yields 0, making option 0 the correct answer. The author's explanations for the distractors are reasonable misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/11/mathematics/kemh108.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 1,
+          "headingPath": [
+            "Chapter 8: Sequences and Series"
+          ]
+        },
+        {
+          "document": "ncert/11/mathematics/kemh108.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 8: Sequences and Series"
+          ]
+        },
+        {
+          "document": "ncert/11/mathematics/kemh108.pdf",
+          "ordinal": 2,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 8: Sequences and Series"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-23T03:20:47.836Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "The sum of the first three terms of a geometric progression is 13 and their product is -1. What is the common ratio?",
+      "choices": [
+        "-2",
+        "-3",
+        "-4",
+        "-5"
+      ],
+      "answerIndex": 0,
+      "solution": "Let the first three terms be a/r, a, and ar. The sum of these terms is 13 and their product is -1. Solving the equations gives the common ratio as -2. The other options do not satisfy the given conditions.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "पहले तीन पदों के एक गुणोत्तर श्रेढ़ी का योग 13 है और उनका गुणनफल -1 है। सार्वानुपात क्या है?",
+          "choices": [
+            "-2",
+            "-3",
+            "-4",
+            "-5"
+          ],
+          "solution": "मान लीजिए पहले तीन पद a/r, a और ar हैं। इन पदों का योग 13 है और उनका गुणनफल -1 है। समीकरणों को हल करने पर सार्वानुपात -2 प्राप्त होता है। अन्य विकल्प दिए गए शर्तों को संतुष्ट नहीं करते।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "पहिल्या तीन वर्गमापाच्या गुणोत्तर श्रेढीची बेरीज 13 आहे आणि त्यांचा गुणाकार -1 आहे. सामान्य गुणोत्तर काय आहे?",
+          "choices": [
+            "-2",
+            "-3",
+            "-4",
+            "-5"
+          ],
+          "solution": "मानू तीन वर्गमापाच्या पहिल्या तीन पदांची बेरीज 13 आहे आणि त्यांचा गुणाकार -1 आहे. समीकरणे सोडवल्यानंतर सामान्य गुणोत्तर -2 असते. इतर विकल्प दिलेल्या अटींना अनुरूप नाहीत.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate technical terms. The solution and options align correctly with the English version.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "A student might incorrectly assume the common ratio is an integer that satisfies the product condition but neglects the sum condition, leading to a plausible but wrong answer.",
+        "Confuses the relationship between product and sum in geometric sequences",
+        "Believes the common ratio must be an integer and incorrectly assumes the product of terms being negative implies the ratio is a larger negative number"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct and logically leads to the answer -2. The reasoning for the distractors is plausible and reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/11/mathematics/kemh108.pdf",
+          "ordinal": 3,
+          "pageStart": 4,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 8: Sequences and Series"
+          ]
+        },
+        {
+          "document": "ncert/11/mathematics/kemh108.pdf",
+          "ordinal": 4,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 8: Sequences and Series"
+          ]
+        },
+        {
+          "document": "ncert/11/mathematics/kemh108.pdf",
+          "ordinal": 5,
+          "pageStart": 7,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 8: Sequences and Series"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-23T03:20:47.836Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "What is the 20th term of the series 2 × 4 + 4 × 6 + 6 × 8 + ...?",
+      "choices": [
+        "20 × 22",
+        "20 × 21",
+        "19 × 20",
+        "20 × 24"
+      ],
+      "answerIndex": 0,
+      "solution": "The series is formed by multiplying two consecutive even numbers, starting with 2 × 4. The nth term of the series is (2n) × (2n + 2). For the 20th term, this is 20 × 22. The other options incorrectly calculate the term or use incorrect values for n.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "श्रृंखला 2 × 4 + 4 × 6 + 6 × 8 + ... का 20वां पद क्या है?",
+          "choices": [
+            "20 × 22",
+            "20 × 21",
+            "19 × 20",
+            "20 × 24"
+          ],
+          "solution": "श्रृंखला 2 × 4 से शुरू होकर दो लगातार सम संख्याओं के गुणनफल से बनी है। श्रृंखला का nवां पद (2n) × (2n + 2) है। 20वें पद के लिए, यह 20 × 22 है। अन्य विकल्प गलत ढंग से पद की गणना करते हैं या n के गलत मान का उपयोग करते हैं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains original meaning, and uses appropriate mathematical terminology in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "श्रेढी 2 × 4 + 4 × 6 + 6 × 8 + ... चा 20वा पद काय आहे?",
+          "choices": [
+            "20 × 22",
+            "20 × 21",
+            "19 × 20",
+            "20 × 24"
+          ],
+          "solution": "श्रेढी 2 आणि 4 या दोन क्रमागत सम अंकांच्या गुणाकाराने तयार होते. श्रेढीचा n वा पद (2n) × (2n + 2) असतो. 20 व्या पदासाठी हे 20 × 22 असते. इतर विकल्पांमध्ये पदाची गणना चुकीची केली गेली आहे किंवा n च्या चुकीच्या मूल्याचा वापर केला गेला आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses the second number in the product with the term number instead of adding 2 to it",
+        "Confuses the term number with the first factor in the sequence",
+        "Confuses the term number with the next term in the sequence"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies the pattern as (2n) × (2n + 2), and for n = 20, this gives 20 × 22. The reasoning for the distractors is plausible and reflects common student misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/11/mathematics/kemh108.pdf",
+          "ordinal": 9,
+          "pageStart": 14,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 8: Sequences and Series"
+          ]
+        },
+        {
+          "document": "ncert/11/mathematics/kemh108.pdf",
+          "ordinal": 10,
+          "pageStart": 15,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 8: Sequences and Series"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-23T03:20:47.836Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "If the sequence a is defined by a = n^2, what is the 10th term?",
+      "choices": [
+        "100",
+        "99",
+        "101",
+        "110"
+      ],
+      "answerIndex": 0,
+      "solution": "The nth term is given by a = n^2. So, for n = 10, a = 10^2 = 100. The other options are results of incorrect calculations or misinterpretations of the formula.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि अनुक्रम a को a = n^2 द्वारा परिभाषित किया गया है, तो 10वां पद क्या है?",
+          "choices": [
+            "100",
+            "99",
+            "101",
+            "110"
+          ],
+          "solution": "nवां पद a = n^2 द्वारा दिया गया है। अतः n = 10 के लिए, a = 10^2 = 100। अन्य विकल्प गलत गणना या सूत्र के गलत अर्थान्वयन के परिणाम हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology commonly found in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "अनुक्रम a जो a = n^2 नुसार वर्णिला गेला आहे, तर 10वा पद किती आहे?",
+          "choices": [
+            "100",
+            "99",
+            "101",
+            "110"
+          ],
+          "solution": "nवा पद a = n^2 नुसार दिला गेला आहे. म्हणून, n = 10 साठी, a = 10^2 = 100. इतर पर्याय असंगत गणना किंवा सूत्राच्या चुकीच्या अटकला येथून मिळालेले आहेत.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate and maintains the original meaning, with appropriate mathematical terminology used.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "incorrectly subtracts 1 from the square",
+        "incorrectly adds 1 to the square",
+        "adds 10 to the square"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is straightforward and the solution is correct. The reasoning for the distractors aligns with common student misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/11/mathematics/kemh108.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 1,
+          "headingPath": [
+            "Chapter 8: Sequences and Series"
+          ]
+        },
+        {
+          "document": "ncert/11/mathematics/kemh108.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 8: Sequences and Series"
+          ]
+        },
+        {
+          "document": "ncert/11/mathematics/kemh108.pdf",
+          "ordinal": 2,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 8: Sequences and Series"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-23T03:20:47.836Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "The sum of the first n terms of a geometric series is 63 and the sum of the first 2n terms is 126. What is the sum of the first 3n terms?",
+      "choices": [
+        "189",
+        "252",
+        "126",
+        "210"
+      ],
+      "answerIndex": 0,
+      "solution": "The sum of the first n terms is 63 and the sum of the first 2n terms is 126, which is double the sum of the first n terms. This suggests that the common ratio is 2. Using this, the sum of the first 3n terms is 189. The other options are incorrect based on the given information.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "n पदों के एक गुणोत्तर श्रेढ़ी के योग 63 है और पहले 2n पदों के योग 126 है। पहले 3n पदों का योग क्या है?",
+          "choices": [
+            "189",
+            "252",
+            "126",
+            "210"
+          ],
+          "solution": "पहले n पदों के योग 63 है और पहले 2n पदों के योग 126 है, जो पहले n पदों के योग का दोगुना है। इसका अर्थ है कि सार्वअनुपात 2 है। इसका उपयोग करके, पहले 3n पदों के योग 189 है। अन्य विकल्प दिए गए जानकारी के आधार पर गलत हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology as found in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "n पदांच्या गोलीय श्रेढीची बेरीज 63 आहे आणि पहिल्या 2n पदांची बेरीज 126 आहे. पहिल्या 3n पदांची बेरीज किती आहे?",
+          "choices": [
+            "189",
+            "252",
+            "126",
+            "210"
+          ],
+          "solution": "पहिल्या n पदांची बेरीज 63 आहे आणि पहिल्या 2n पदांची बेरीज 126 आहे, जी पहिल्या n पदांच्या बेरजेच्या दुप्पट आहे. हे सूचित करते की सामान्य अनुपात 2 आहे. याचा वापर करून, पहिल्या 3n पदांची बेरीज 189 आहे. दिलेल्या माहितीनुसार इतर विकल्प चुकीचे आहेत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the mathematical meaning, and uses appropriate Marathi terminology for geometric series.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Believes the sum doubles every time the number of terms doubles",
+        "Chooses the sum of the first 2n terms doubled instead of using the pattern.",
+        "Chooses the sum of the first 2n terms as the sum of the first 3n terms, ignoring the pattern in the sums."
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct. The key is 0 (189), and the reasoning is sound. The author's explanation that the common ratio is 2 is valid given the sums of n and 2n terms. The distractors reflect plausible misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/11/mathematics/kemh108.pdf",
+          "ordinal": 3,
+          "pageStart": 4,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 8: Sequences and Series"
+          ]
+        },
+        {
+          "document": "ncert/11/mathematics/kemh108.pdf",
+          "ordinal": 4,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 8: Sequences and Series"
+          ]
+        },
+        {
+          "document": "ncert/11/mathematics/kemh108.pdf",
+          "ordinal": 5,
+          "pageStart": 7,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 8: Sequences and Series"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-23T03:20:47.836Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "If the 5th, 8th, and 11th terms of a G.P. are p, q, and s respectively, what is the relationship between p, q, and s?",
+      "choices": [
+        "q = p + s",
+        "q = p - s",
+        "q = ps",
+        "q² = ps"
+      ],
+      "answerIndex": 3,
+      "solution": "In a geometric progression, the nth term is given by a_n = ar^(n-1). Using this, the 5th, 8th, and 11th terms can be expressed in terms of the first term and the common ratio. It can be shown that q² = ps, where q is the 8th term, p is the 5th term, and s is the 11th term. The correct option is 'q² = ps' because it is a derived relationship from the properties of geometric progressions.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक गुणोत्तर श्रेढ़ी के 5वां, 8वां तथा 11वां पद क्रमशः p, q तथा s हैं, तो p, q तथा s के बीच संबंध क्या है?",
+          "choices": [
+            "q = p + s",
+            "q = p - s",
+            "q = ps",
+            "q² = ps"
+          ],
+          "solution": "एक गुणोत्तर श्रेढ़ी में, nवां पद a_n = ar^(n-1) द्वारा दिया जाता है। इसका उपयोग करके 5वां, 8वां तथा 11वां पद प्रथम पद तथा सार्वअनुपात के पदों में व्यक्त किए जा सकते हैं। यह दिखाया जा सकता है कि q² = ps, जहां q 8वां पद है, p 5वां पद है तथा s 11वां पद है। सही विकल्प 'q² = ps' है क्योंकि यह गुणोत्तर श्रेढ़ियों के गुणों से व्युत्पन्न संबंध है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology as found in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "5 व्या, 8 व्या आणि 11 व्या पदांचे ग. श्रे. चे पद अनुक्रमे p, q आणि s असतील, तर p, q आणि s दरम्यानचे संबंध काय असेल?",
+          "choices": [
+            "q = p + s",
+            "q = p - s",
+            "q = ps",
+            "q² = ps"
+          ],
+          "solution": "गुणोत्तर श्रेढीत, n वे पद a_n = ar^(n-1) द्वारे दिया जातो. याचा उपयोग करून, 5 व्या, 8 व्या आणि 11 व्या पदांचे अवलंबून पहिले पद आणि सामान्य गुणकावर असते. त्यापासून q² = ps असे दाखवता येते, जेथे q हे 8 वे पद आहे, p हे 5 वे पद आहे आणि s हे 11 वे पद आहे. योग्य पर्याय 'q² = ps' असेल कारण हा गुणोत्तर श्रेढीच्या गुणधर्मांमधून विकसित झालेला संबंध आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Thinks the terms are in an arithmetic progression.",
+        "Thinks the terms are in a different relationship.",
+        "Thinks the terms are in a different relationship.",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly derives the relationship q² = ps using the formula for the nth term of a geometric progression. The reasoning is sound and matches the correct answer.",
+      "sources": [
+        {
+          "document": "ncert/11/mathematics/kemh108.pdf",
+          "ordinal": 6,
+          "pageStart": 9,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 8: Sequences and Series"
+          ]
+        },
+        {
+          "document": "ncert/11/mathematics/kemh108.pdf",
+          "ordinal": 7,
+          "pageStart": 11,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 8: Sequences and Series"
+          ]
+        },
+        {
+          "document": "ncert/11/mathematics/kemh108.pdf",
+          "ordinal": 8,
+          "pageStart": 13,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 8: Sequences and Series"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-23T03:20:47.836Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "If the sequence a is defined by a = 2n, what is the sum of the first 5 terms?",
+      "choices": [
+        "30",
+        "25",
+        "20",
+        "15"
+      ],
+      "answerIndex": 0,
+      "solution": "The first 5 terms are 2, 4, 6, 8, 10. Their sum is 2 + 4 + 6 + 8 + 10 = 30. The other options are incorrect sums due to miscalculations or misunderstanding of the pattern.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि अनुक्रम a को a = 2n द्वारा परिभाषित किया गया है, तो प्रथम 5 पदों का योग क्या है?",
+          "choices": [
+            "30",
+            "25",
+            "20",
+            "15"
+          ],
+          "solution": "प्रथम 5 पद 2, 4, 6, 8, 10 हैं। उनका योग 2 + 4 + 6 + 8 + 10 = 30 है। अन्य विकल्प गणना त्रुटि या पैटर्न के असही समझ के कारण गलत हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "अनुक्रम a जो a = 2n असा व्यक्त केला गेला आहे, तर पहिल्या 5 पदांची बेरीज किती आहे?",
+          "choices": [
+            "30",
+            "25",
+            "20",
+            "15"
+          ],
+          "solution": "पहिले 5 पद 2, 4, 6, 8, 10 आहेत. त्यांची बेरीज 2 + 4 + 6 + 8 + 10 = 30 आहे. इतर विकल्प चुकीच्या बेरजा किंवा पॅटर्नच्या चुकीच्या समजुतीमुळे अयोग्य आहेत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the mathematical meaning, and uses appropriate Marathi terminology for sequences and sums.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "incorrectly sums the terms as if they were 5, 5, 5, 5, 5",
+        "incorrectly uses the formula for an arithmetic series with a different common difference",
+        "incorrectly calculates the sum of the first 4 terms"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is well-constructed, with a clear and correct solution. The distractors reflect plausible student errors.",
+      "sources": [
+        {
+          "document": "ncert/11/mathematics/kemh108.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 1,
+          "headingPath": [
+            "Chapter 8: Sequences and Series"
+          ]
+        },
+        {
+          "document": "ncert/11/mathematics/kemh108.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 8: Sequences and Series"
+          ]
+        },
+        {
+          "document": "ncert/11/mathematics/kemh108.pdf",
+          "ordinal": 2,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 8: Sequences and Series"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-23T03:20:47.836Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "In a geometric progression, the 10th term is 1024 and the 15th term is 32768. What is the 5th term?",
+      "choices": [
+        "32",
+        "64",
+        "128",
+        "256"
+      ],
+      "answerIndex": 0,
+      "solution": "The 10th term is 1024 and the 15th term is 32768, which is 32 times the 10th term. This means the common ratio is 2. Using this, the 5th term is 32. The other options are incorrect calculations based on the given terms.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक गुणोत्तर श्रेढ़ी में, 10वां पद 1024 है और 15वां पद 32768 है। 5वां पद क्या है?",
+          "choices": [
+            "32",
+            "64",
+            "128",
+            "256"
+          ],
+          "solution": "10वां पद 1024 है और 15वां पद 32768 है, जो 10वें पद का 32 गुना है। इसका अर्थ है कि सार्व अनुपात 2 है। इसका उपयोग करके, 5वां पद 32 है। अन्य विकल्प दिए गए पदों पर आधारित गलत गणनाएं हैं।",
+          "imageAlt": null,
+          "critique": "Translation accurately reflects the original meaning, technical terms are appropriate for Hindi-medium curriculum, and the correct answer remains in the same position.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "भूमितीय अग्रगतीत 10वा पद 1024 आहे आणि 15वा पद 32768 आहे. 5वा पद किती आहे?",
+          "choices": [
+            "32",
+            "64",
+            "128",
+            "256"
+          ],
+          "solution": "10वा पद 1024 आहे आणि 15वा पद 32768 आहे, जे 10व्या पदाच्या 32 पट आहे. हे अर्थ असा आहे की सामान्य गुणोत्तर 2 आहे. याचा वापर करून 5वा पद 32 आहे. इतर विकल्प दिलेल्या पदांवर आधारित चुकीच्या गणना आहेत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the mathematical meaning, and uses appropriate Marathi terminology for geometric progression and related concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses geometric progression with arithmetic progression, adding 64 instead of multiplying by the common ratio.",
+        "Chooses the 6th term instead of the 5th term.",
+        "Chooses the 7th term instead of the 5th term."
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct. The 15th term is 32 times the 10th term, so the common ratio is 2. The 5th term is 32, which matches the key.",
+      "sources": [
+        {
+          "document": "ncert/11/mathematics/kemh108.pdf",
+          "ordinal": 3,
+          "pageStart": 4,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 8: Sequences and Series"
+          ]
+        },
+        {
+          "document": "ncert/11/mathematics/kemh108.pdf",
+          "ordinal": 4,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 8: Sequences and Series"
+          ]
+        },
+        {
+          "document": "ncert/11/mathematics/kemh108.pdf",
+          "ordinal": 5,
+          "pageStart": 7,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 8: Sequences and Series"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-23T03:20:47.836Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "If the product of the terms of a G.P. is P, and the first and nth terms are a and b respectively, what is the relationship between P, a, and b?",
+      "choices": [
+        "P = ab",
+        "P = a + b",
+        "P = (ab)^n",
+        "P = (ab)^(n/2)"
+      ],
+      "answerIndex": 3,
+      "solution": "The product of the terms of a geometric progression is given by P = (ab)^(n/2), where a is the first term, b is the nth term, and n is the total number of terms. The correct option is 'P = (ab)^(n/2)' because it is derived from the properties of geometric progressions and the product of terms in a G.P.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक गुणोत्तर श्रेढ़ी के पदों का गुणनफल P है, और प्रथम और nवां पद क्रमशः a और b हैं, तो P, a और b के बीच क्या संबंध है?",
+          "choices": [
+            "P = ab",
+            "P = a + b",
+            "P = (ab)^n",
+            "P = (ab)^(n/2)"
+          ],
+          "solution": "एक गुणोत्तर श्रेढ़ी के पदों का गुणनफल P = (ab)^(n/2) द्वारा दिया जाता है, जहां a प्रथम पद है, b nवां पद है, और n कुल पदों की संख्या है। सही विकल्प 'P = (ab)^(n/2)' है क्योंकि इसे गुणोत्तर श्रेढ़ी के गुणों और गुणोत्तर श्रेढ़ी में पदों के गुणनफल से व्युत्पन्न किया गया है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the original English question, with appropriate terminology used for geometric progression (गुणोत्तर श्रेढ़ी) and correct mathematical expressions.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर एका गुणोत्तर श्रेढीच्या पदांचा गुणाकार P आहे, आणि पहिले आणि nवे पद अनुक्रमे a आणि b आहेत, तर P, a आणि b दरम्यान काय संबंध आहे?",
+          "choices": [
+            "P = ab",
+            "P = a + b",
+            "P = (ab)^n",
+            "(ab)^(n/2)"
+          ],
+          "solution": "गुणोत्तर श्रेढीच्या पदांचा गुणाकार P = (ab)^(n/2) असतो, जेथे a हे पहिले पद आहे, b हे nवे पद आहे, आणि n हे एकूण पदांची संख्या आहे. योग्य विकल्प 'P = (ab)^(n/2)' आहे कारण तो गुणोत्तर श्रेढीच्या गुणधर्मांवर आधारित आहे आणि गुणोत्तर श्रेढीमध्ये पदांच्या गुणाकारावर आधारित आहे.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Thinks the product is simply the product of the first and last term.",
+        "Thinks the product is the sum of the first and last term.",
+        "Thinks the product is the product of the first and last term raised to the power of n.",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct. The product of the terms of a geometric progression is indeed (ab)^(n/2), where a is the first term, b is the last term, and n is the number of terms. The reasoning aligns with the properties of geometric sequences.",
+      "sources": [
+        {
+          "document": "ncert/11/mathematics/kemh108.pdf",
+          "ordinal": 6,
+          "pageStart": 9,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 8: Sequences and Series"
+          ]
+        },
+        {
+          "document": "ncert/11/mathematics/kemh108.pdf",
+          "ordinal": 7,
+          "pageStart": 11,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 8: Sequences and Series"
+          ]
+        },
+        {
+          "document": "ncert/11/mathematics/kemh108.pdf",
+          "ordinal": 8,
+          "pageStart": 13,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 8: Sequences and Series"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-23T03:20:47.836Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
     }
   ]
 }

@@ -456,6 +456,330 @@
       "generatedAt": "2026-10-28T05:58:26.630Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the first common multiple of 3 and 4?",
+      "choices": [
+        "6",
+        "8",
+        "12",
+        "16"
+      ],
+      "answerIndex": 2,
+      "solution": "The correct answer is 12 because it is the first number that both 3 and 4 can multiply into without a remainder. 6 is a multiple of 3 but not of 4. 8 is a multiple of 4 but not of 3. 16 is a multiple of 4 but not of 3.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "3 और 4 का पहला सामान्य गुणज क्या है?",
+          "choices": [
+            "6",
+            "8",
+            "12",
+            "16"
+          ],
+          "solution": "सही उत्तर 12 है क्योंकि यह वह पहली संख्या है जिसमें 3 और 4 शेष बिना गुणा कर सकते हैं। 6, 3 का गुणज है लेकिन 4 का नहीं। 8, 4 का गुणज है लेकिन 3 का नहीं। 16, 4 का गुणज है लेकिन 3 का नहीं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "3 आणि 4 चा पहिला सामाईक गुणक कोणता आहे?",
+          "choices": [
+            "6",
+            "8",
+            "12",
+            "16"
+          ],
+          "solution": "बरोबर उत्तर 12 आहे कारण हे 3 आणि 4 दोन्हींनी शिल्लक शिल्लक न राहता गुणले जाऊ शकते. 6 हा 3 चा गुणक आहे पण 4 चा नाही. 8 हा 4 चा गुणक आहे पण 3 चा नाही. 16 हा 4 चा गुणक आहे पण 3 चा नाही.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Thinks 6 is the first common multiple of 3 and 4",
+        "Thinks 8 is the first common multiple of 3 and 4",
+        null,
+        "Confuses 16 with the first common multiple of 3 and 4"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The question is clear and the solution correctly identifies 12 as the least common multiple of 3 and 4. The distractors reflect common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/5/mathematics/eemm113.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 13: Animal Jumps",
+            "Find the hidden numbers."
+          ]
+        },
+        {
+          "document": "ncert/5/mathematics/eemm113.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 13: Animal Jumps",
+            "Let Us Do"
+          ]
+        },
+        {
+          "document": "ncert/5/mathematics/eemm113.pdf",
+          "ordinal": 2,
+          "pageStart": 3,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 13: Animal Jumps",
+            "Let Us Do"
+          ]
+        },
+        {
+          "document": "ncert/5/mathematics/eemm113.pdf",
+          "ordinal": 3,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 13: Animal Jumps",
+            "Let Us Do"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-23T00:55:57.475Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If a rabbit takes a jump of 4 each time, which of the following numbers will it touch?",
+      "choices": [
+        "7",
+        "9",
+        "10",
+        "12"
+      ],
+      "answerIndex": 3,
+      "solution": "The correct answer is 12 because 12 is a multiple of 4. The other numbers, 7, 9, and 10, are not divisible by 4 without a remainder.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक खरगोश प्रत्येक बार 4 की छलांग लेता है, तो निम्नलिखित में से कौन-सा संख्या वह छू जाएगा?",
+          "choices": [
+            "7",
+            "9",
+            "10",
+            "12"
+          ],
+          "solution": "सही उत्तर 12 है क्योंकि 12, 4 का गुणज है। अन्य संख्याएं, 7, 9 और 10, 4 से बिना शेष के विभाज्य नहीं हैं।",
+          "imageAlt": null,
+          "critique": "The translation accurately reflects the original question and solution. All options and the key are correctly translated, and the mathematical terms like 'गुणज' (multiple) and 'विभाज्य' (divisible) are appropriate for a Hindi-medium curriculum.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर एक खरगोश प्रत्येक वेळी 4 चा उछाट घेत असेल, तर खालीलपैकी कोणता संख्या तो स्पर्श करेल?",
+          "choices": [
+            "7",
+            "9",
+            "10",
+            "12"
+          ],
+          "solution": "बरोबर उत्तर 12 आहे कारण 12 ही 4 ची गुणक आहे. इतर संख्या, 7, 9 आणि 10, 4 ने भागल्यास शिल्लक राहतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Thinks 7 is a multiple of 4",
+        "Thinks 9 is a multiple of 4",
+        "Thinks 10 is a multiple of 4",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct and aligns with the key. The rabbit jumps in increments of 4, so only 12 (a multiple of 4) is touched.",
+      "sources": [
+        {
+          "document": "ncert/5/mathematics/eemm113.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 13: Animal Jumps",
+            "Find the hidden numbers."
+          ]
+        },
+        {
+          "document": "ncert/5/mathematics/eemm113.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 13: Animal Jumps",
+            "Let Us Do"
+          ]
+        },
+        {
+          "document": "ncert/5/mathematics/eemm113.pdf",
+          "ordinal": 2,
+          "pageStart": 3,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 13: Animal Jumps",
+            "Let Us Do"
+          ]
+        },
+        {
+          "document": "ncert/5/mathematics/eemm113.pdf",
+          "ordinal": 3,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 13: Animal Jumps",
+            "Let Us Do"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-23T00:55:57.475Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Which of the following numbers is a common multiple of 2 and 3?",
+      "choices": [
+        "4",
+        "6",
+        "8",
+        "10"
+      ],
+      "answerIndex": 1,
+      "solution": "The correct answer is 6 because it is the first number that is a multiple of both 2 and 3. 4, 8, and 10 are multiples of 2 but not of 3.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सी संख्या 2 और 3 का एक सामान्य गुणज है?",
+          "choices": [
+            "4",
+            "6",
+            "8",
+            "10"
+          ],
+          "solution": "सही उत्तर 6 है क्योंकि यह वह पहली संख्या है जो 2 और 3 दोनों का गुणज है। 4, 8 और 10 केवल 2 के गुणज हैं लेकिन 3 के नहीं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English question and solution, with appropriate terminology and correct answer positioning.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणता संख्या 2 आणि 3 चा सामाईक गुणित आहे?",
+          "choices": [
+            "4",
+            "6",
+            "8",
+            "10"
+          ],
+          "solution": "सही उत्तर 6 आहे कारण ते 2 आणि 3 दोन्ही चे पहिले गुणित आहे. 4, 8 आणि 10 ही 2 ची गुणिते आहेत पण 3 ची नाहीत.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Thinks 4 is a multiple of 3",
+        null,
+        "Thinks 8 is a multiple of 3",
+        "Thinks 10 is a multiple of 3"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is well-posed. The correct answer is 6, which is a common multiple of 2 and 3. The other options are multiples of 2 but not of 3, and the author's reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/5/mathematics/eemm113.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 13: Animal Jumps",
+            "Find the hidden numbers."
+          ]
+        },
+        {
+          "document": "ncert/5/mathematics/eemm113.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 13: Animal Jumps",
+            "Let Us Do"
+          ]
+        },
+        {
+          "document": "ncert/5/mathematics/eemm113.pdf",
+          "ordinal": 2,
+          "pageStart": 3,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 13: Animal Jumps",
+            "Let Us Do"
+          ]
+        },
+        {
+          "document": "ncert/5/mathematics/eemm113.pdf",
+          "ordinal": 3,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 13: Animal Jumps",
+            "Let Us Do"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-23T00:55:57.475Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
     }
   ]
 }

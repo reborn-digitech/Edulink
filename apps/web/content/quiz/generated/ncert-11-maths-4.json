@@ -1024,6 +1024,311 @@
       "generatedAt": "2026-10-28T07:44:06.998Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is the term used for the non-negative real number sqrt(a^2 + b^2) for a complex number a + ib?",
+      "choices": [
+        "Modulus",
+        "Conjugate",
+        "Imaginary part",
+        "Real part"
+      ],
+      "answerIndex": 0,
+      "solution": "The modulus of a complex number is the non-negative real number calculated as sqrt(a^2 + b^2). This represents the distance of the complex number from the origin in the complex plane. The conjugate is a - ib, the imaginary part is the coefficient b, and the real part is the coefficient a.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक सम्मिश्र संख्या a + ib के लिए sqrt(a^2 + b^2) के रूप में गणना किए गए गैर-ऋणात्मक वास्तविक संख्या के लिए क्या शब्द प्रयोग किया जाता है?",
+          "choices": [
+            "मापांक",
+            "संयुग्मी",
+            "काल्पनिक भाग",
+            "वास्तविक भाग"
+          ],
+          "solution": "एक सम्मिश्र संख्या का मापांक गैर-ऋणात्मक वास्तविक संख्या होती है जिसे sqrt(a^2 + b^2) के रूप में गणना की जाती है। यह सम्मिश्र संख्या के मूल बिंदु से दूरी का प्रतिनिधित्व करती है। संयुग्मी a - ib होता है, काल्पनिक भाग गुणांक b होता है और वास्तविक भाग गुणांक a होता है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Hindi technical terms used for mathematical concepts.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "a + ib संमिश्र संख्येसाठी sqrt(a^2 + b^2) असे नाव काय दिले जाते?",
+          "choices": [
+            "मॉड्युलस",
+            "संयुग्म",
+            "काल्पनिक भाग",
+            "वास्तविक भाग"
+          ],
+          "solution": "संमिश्र संख्येचा मॉड्युलस हा sqrt(a^2 + b^2) असा गणित केलेला असतो. हा संमिश्र संख्येचा मूलबिंदूपासून अंतर दर्शवतो. संयुग्म हा a - ib असतो, काल्पनिक भाग हा गुणक b असतो आणि वास्तविक भाग हा गुणक a असतो.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and uses standard Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses the definition of conjugate with modulus.",
+        "Refers to the imaginary part of the complex number.",
+        "Refers to the real part of the complex number."
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-constructed and the solution is accurate. The correct answer is 'Modulus,' and the distractors represent common misconceptions about complex numbers.",
+      "sources": [
+        {
+          "document": "ncert/11/mathematics/kemh104.pdf",
+          "ordinal": 3,
+          "pageStart": 6,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 4: Complex Numbers and Quadratic Equations"
+          ]
+        },
+        {
+          "document": "ncert/11/mathematics/kemh104.pdf",
+          "ordinal": 4,
+          "pageStart": 8,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 4: Complex Numbers and Quadratic Equations"
+          ]
+        },
+        {
+          "document": "ncert/11/mathematics/kemh104.pdf",
+          "ordinal": 5,
+          "pageStart": 10,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 4: Complex Numbers and Quadratic Equations"
+          ]
+        },
+        {
+          "document": "ncert/11/mathematics/kemh104.pdf",
+          "ordinal": 6,
+          "pageStart": 12,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 4: Complex Numbers and Quadratic Equations",
+            "Summary"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-23T02:50:51.043Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is the term used for the complex number a - ib, where the original complex number is a + ib?",
+      "choices": [
+        "Conjugate",
+        "Modulus",
+        "Imaginary conjugate",
+        "Imaginary part"
+      ],
+      "answerIndex": 0,
+      "solution": "The term for the complex number a - ib, when the original is a + ib, is the conjugate. This is because the conjugate of a complex number is formed by changing the sign of its imaginary part. The modulus refers to the magnitude of the complex number, the imaginary part is just the coefficient of i, and the imaginary conjugate is not a standard term in mathematics.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "a + ib मूल सम्मिश्र संख्या होने पर a - ib के लिए कौन सा शब्द प्रयोग किया जाता है?",
+          "choices": [
+            "संयुग्मी",
+            "परिमाण",
+            "काल्पनिक संयुग्मी",
+            "काल्पनिक भाग"
+          ],
+          "solution": "जब मूल सम्मिश्र संख्या a + ib होती है तो a - ib के लिए शब्द संयुग्मी होता है। इसका कारण यह है कि सम्मिश्र संख्या का संयुग्मी उसके काल्पनिक भाग के चिह्न को बदलकर बनाया जाता है। परिमाण सम्मिश्र संख्या के परिमाण को संदर्भित करता है, काल्पनिक भाग केवल i के गुणांक होता है और काल्पनिक संयुग्मी गणित में मानक शब्द नहीं है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard mathematical terminology as taught in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "a + ib असलेल्या समज्ञान संख्येच्या a - ib समज्ञान संख्येला कोणते नाव आहे?",
+          "choices": [
+            "संयुग्मक",
+            "मॉड्युलस",
+            "काल्पनिक संयुग्मक",
+            "काल्पनिक भाग"
+          ],
+          "solution": "a + ib असलेल्या समज्ञान संख्येच्या a - ib समज्ञान संख्येला संयुग्मक म्हणतात. कारण समज्ञान संख्येचा संयुग्मक त्याच्या काल्पनिक भागाच्या चिन्हाच्या बदलाने तयार होतो. मॉड्युलस समज्ञान संख्येच्या मोठेपणाला संदर्भित करतो, काल्पनिक भाग म्हणजे i चा गुणक असतो आणि काल्पनिक संयुग्मक हे गणितातील मानक शब्द नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for mathematical concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses the conjugate with the modulus, thinking they are the same concept",
+        "Confuses the concept of conjugate with a non-existent 'imaginary conjugate' term",
+        "Confuses the conjugate with the imaginary component of the complex number"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-constructed and the correct answer is clearly 0 (Conjugate). The author's solution and reasoning for the distractors are accurate and reflect common student misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/11/mathematics/kemh104.pdf",
+          "ordinal": 3,
+          "pageStart": 6,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 4: Complex Numbers and Quadratic Equations"
+          ]
+        },
+        {
+          "document": "ncert/11/mathematics/kemh104.pdf",
+          "ordinal": 4,
+          "pageStart": 8,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 4: Complex Numbers and Quadratic Equations"
+          ]
+        },
+        {
+          "document": "ncert/11/mathematics/kemh104.pdf",
+          "ordinal": 5,
+          "pageStart": 10,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 4: Complex Numbers and Quadratic Equations"
+          ]
+        },
+        {
+          "document": "ncert/11/mathematics/kemh104.pdf",
+          "ordinal": 6,
+          "pageStart": 12,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 4: Complex Numbers and Quadratic Equations",
+            "Summary"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-23T02:50:51.043Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If the complex number z = a + ib has real part 2 and imaginary part 5, what is the value of Re(z) + Im(z)?",
+      "choices": [
+        "2",
+        "5",
+        "7",
+        "10"
+      ],
+      "answerIndex": 2,
+      "solution": "The real part of z is 2 and the imaginary part is 5. Adding them gives 2 + 5 = 7. The correct answer is 7. The option '2' is only the real part, '5' is only the imaginary part, and '10' is the product of the two parts, which is incorrect.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि सम्मिश्र संख्या z = a + ib का वास्तविक भाग 2 और काल्पनिक भाग 5 है, तो Re(z) + Im(z) का मान क्या है?",
+          "choices": [
+            "2",
+            "5",
+            "7",
+            "10"
+          ],
+          "solution": "z का वास्तविक भाग 2 है और काल्पनिक भाग 5 है। इनको जोड़ने पर 2 + 5 = 7 प्राप्त होता है। सही उत्तर 7 है। विकल्प '2' केवल वास्तविक भाग है, '5' केवल काल्पनिक भाग है, और '10' दोनों भागों का गुणनफल है, जो गलत है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard mathematical terminology used in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर सम्मिश्र संख्या z = a + ib चा वास्तविक भाग 2 आहे आणि काल्पनिक भाग 5 आहे, तर Re(z) + Im(z) ची किंमत किती आहे?",
+          "choices": [
+            "2",
+            "5",
+            "7",
+            "10"
+          ],
+          "solution": "z चा वास्तविक भाग 2 आहे आणि काल्पनिक भाग 5 आहे. त्यांच्या बेरजेने 2 + 5 = 7 मिळते. योग्य उत्तर 7 आहे. विकल्प '2' हा केवळ वास्तविक भाग आहे, '5' हा केवळ काल्पनिक भाग आहे आणि '10' हा दोन्ही भागांचा गुणाकार आहे, जो चूक आहे.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the original meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "only the real part is taken",
+        "only the imaginary part is taken",
+        null,
+        "the product of the real and imaginary parts is calculated"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct. The real part is 2 and the imaginary part is 5, so their sum is 7. The correct answer is option 2.",
+      "sources": [
+        {
+          "document": "ncert/11/mathematics/kemh104.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 4: Complex Numbers and Quadratic Equations"
+          ]
+        },
+        {
+          "document": "ncert/11/mathematics/kemh104.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 4: Complex Numbers and Quadratic Equations"
+          ]
+        },
+        {
+          "document": "ncert/11/mathematics/kemh104.pdf",
+          "ordinal": 2,
+          "pageStart": 4,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 4: Complex Numbers and Quadratic Equations"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-23T02:50:51.043Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
     }
   ]
 }

@@ -808,6 +808,816 @@
       "generatedAt": "2026-10-28T18:32:53.171Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "Which event is described as a 'triangular trade' between Britain, India, and China?",
+      "choices": [
+        "The Opium War",
+        "The abolition of the examination system",
+        "The establishment of the Republic of China",
+        "The exchange of silver for tea, silk, and porcelain"
+      ],
+      "answerIndex": 3,
+      "solution": "The triangular trade involved the exchange of silver from Britain to China for goods like tea, silk, and porcelain, which were then sent to Britain. This trade route connected Britain, India, and China, with India supplying opium to China. The other options do not relate to this specific trade network.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "कौन सी घटना ब्रिटेन, भारत और चीन के बीच 'त्रिभुज व्यापार' के रूप में वर्णित की जाती है?",
+          "choices": [
+            "ओपियम युद्ध",
+            "परीक्षा प्रणाली के उन्मूलन",
+            "चीन के गणराज्य की स्थापना",
+            "चाय, सूत और मिट्टी के बर्तन के लिए चांदी का आदान-प्रदान"
+          ],
+          "solution": "त्रिभुज व्यापार में ब्रिटेन से चीन में चांदी के आदान-प्रदान के बदले चाय, सूत और मिट्टी के बर्तन जैसे माल का आयात किया जाता था जो बाद में ब्रिटेन भेज दिया जाता था। इस व्यापार मार्ग को ब्रिटेन, भारत और चीन से जोड़ता था, जहां भारत चीन को एफियम प्रदान करता था। अन्य विकल्प इस विशिष्ट व्यापार जाल के साथ संबंधित नहीं हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. The correct answer remains in the same position (option 3), and the distractors are still incorrect. Technical terms like 'triangular trade' are translated appropriately as 'त्रिभुज व्यापार' which is a standard term in Hindi history textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "ब्रिटन, भारत आणि चीनमधील 'त्रिकोणी व्यापार' म्हणून वर्णन केलेला घटना कोणती आहे?",
+          "choices": [
+            "ऑपियम युद्ध",
+            "परीक्षा पद्धतीचा निषेध",
+            "चीन लोकशाहीची स्थापना",
+            "चिनी चहा, रेशम आणि पार्सल बदल्यात चांदीचा विनिमय"
+          ],
+          "solution": "त्रिकोणी व्यापारात ब्रिटनकडून चीनला चांदीचा विनिमय चहा, रेशम आणि पार्सल यांच्या वस्तूंसाठी केला जात होता, ज्या नंतर ब्रिटनला पाठवल्या जात होत्या. हा व्यापार मार्ग ब्रिटन, भारत आणि चीनला जोडत होता, जेथे भारत चीनला ऑपियम पुरवत होता. इतर विकल्प या विशिष्ट व्यापार जाळ्याशी संबंधित नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for historical events and concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "confuses the Opium War with the triangular trade",
+        "refers to an event unrelated to trade",
+        "refers to a political event, not a trade system",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 3, as the triangular trade involved the exchange of silver for tea, silk, and porcelain from China, with opium from India being sold in China. The other options are unrelated or misrepresent the concept.",
+      "sources": [
+        {
+          "document": "ncert/11/history/kehs107.pdf",
+          "ordinal": 16,
+          "pageStart": 13,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 7: Paths to Modernisation",
+            "CHINA"
+          ]
+        },
+        {
+          "document": "ncert/11/history/kehs107.pdf",
+          "ordinal": 17,
+          "pageStart": 15,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 7: Paths to Modernisation",
+            "CHINA"
+          ]
+        },
+        {
+          "document": "ncert/11/history/kehs107.pdf",
+          "ordinal": 18,
+          "pageStart": 15,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 7: Paths to Modernisation",
+            "Establishing the Republic"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T06:00:44.494Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "What was the main social base of the Guomindang?",
+      "choices": [
+        "Urban areas",
+        "Rural areas",
+        "Industrial workers",
+        "Peasants"
+      ],
+      "answerIndex": 0,
+      "solution": "The Guomindang primarily drew its support from urban areas, where its leadership and key constituencies were concentrated. Rural areas and peasants were largely neglected, and industrial workers did not form a significant base due to limited industrial development.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "गुओमिंडांग का मुख्य सामाजिक आधार क्या था?",
+          "choices": [
+            "शहरी क्षेत्र",
+            "ग्रामीण क्षेत्र",
+            "औद्योगिक कारीगर",
+            "किसान"
+          ],
+          "solution": "गुओमिंडांग का मुख्य समर्थन शहरी क्षेत्रों से आया जहां इसके नेतृत्व और मुख्य वर्ग केंद्रित रहे। ग्रामीण क्षेत्र और किसान लगभग अनदेखे रहे, और औद्योगिक कारीगर अपने एक महत्वपूर्ण आधार के रूप में नहीं रहे क्योंकि औद्योगिक विकास सीमित रहा।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, with appropriate Hindi terminology used for historical context.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "गुओमिनडांगची मुख्य सामाजिक बेस कोणती होती?",
+          "choices": [
+            "शहरी क्षेत्रे",
+            "ग्रामीण क्षेत्रे",
+            "औद्योगिक कामगार",
+            "शेतकरी"
+          ],
+          "solution": "गुओमिनडांग शहरी क्षेत्रांपासून मुख्यतः आपल्या समर्थनाची जागा घेत होता, जेथे त्याच्या नेतृत्वाचे आणि मुख्य निवडणूक बळाचे केंद्र असत. ग्रामीण क्षेत्रे आणि शेतकरी जास्तीत जास्त अनुसूचित केले जात होते, आणि औद्योगिक कामगार त्याच्या मुख्य बेस म्हणून महत्त्वपूर्ण नव्हते कारण औद्योगिक विकास मर्यादित होता.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for political and historical context.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses the social base of the CCP with that of the Guomindang",
+        "Incorrectly assumes the party focused on rural populations",
+        "Refers to the industrial working class, which was small and not the main base"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct and aligns with the author's key. The reasoning for the distractors is based on plausible student misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/11/history/kehs107.pdf",
+          "ordinal": 19,
+          "pageStart": 16,
+          "pageEnd": 17,
+          "headingPath": [
+            "Chapter 7: Paths to Modernisation",
+            "Establishing the Republic"
+          ]
+        },
+        {
+          "document": "ncert/11/history/kehs107.pdf",
+          "ordinal": 20,
+          "pageStart": 17,
+          "pageEnd": 18,
+          "headingPath": [
+            "Chapter 7: Paths to Modernisation",
+            "Establishing the Republic"
+          ]
+        },
+        {
+          "document": "ncert/11/history/kehs107.pdf",
+          "ordinal": 21,
+          "pageStart": 19,
+          "pageEnd": 19,
+          "headingPath": [
+            "Chapter 7: Paths to Modernisation",
+            "The Rise of the Communist Party of China"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T06:00:44.494Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What was the purpose of the 'Imperial Rescript on Education' issued in 1890?",
+      "choices": [
+        "To promote Western-style education in Japan",
+        "To encourage the adoption of European languages",
+        "To urge people to pursue learning and serve the public",
+        "To establish a new school system for all citizens"
+      ],
+      "answerIndex": 2,
+      "solution": "The 'Imperial Rescript on Education' urged people to pursue learning, advance public good, and promote common interests. The other options are incorrect because the rescript did not focus on Western-style education, did not encourage the adoption of European languages, and did not directly establish a new school system.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "1890 में जारी 'साम्राज्यवादी शिक्षा के आदेश' का उद्देश्य क्या था?",
+          "choices": [
+            "जापान में पश्चिमी शैली की शिक्षा को बढ़ावा देना",
+            "यूरोपीय भाषाओं के अपनाने को प्रोत्साहित करना",
+            "लोगों को अध्ययन करने और सार्वजनिक सेवा करने के लिए प्रेरित करना",
+            "सभी नागरिकों के लिए एक नई स्कूल प्रणाली स्थापित करना"
+          ],
+          "solution": "साम्राज्यवादी शिक्षा के आदेश ने लोगों को अध्ययन करने, सार्वजनिक कल्याण में उन्नति करने और सामान्य हित को बढ़ावा देने के लिए प्रेरित किया। अन्य विकल्प गलत हैं क्योंकि आदेश पश्चिमी शैली की शिक्षा पर केंद्रित नहीं था, यूरोपीय भाषाओं के अपनाने को प्रोत्साहित नहीं करता था, और सीधे रूप से एक नई स्कूल प्रणाली स्थापित नहीं करता था।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology for historical education policies.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "1890 मध्ये जापानमध्ये जारी केलेल्या 'साम्राज्य शिक्षणावरील अधिसूचनेचा' उद्देश काय होता?",
+          "choices": [
+            "जापानमध्ये पश्चिमी शैलीचे शिक्षण प्रोत्साहित करणे",
+            "युरोपियन भाषांच्या अपनयनाचा प्रोत्साहन देणे",
+            "लोकांना शिक्षण शोधावे आणि सामाजिक कामगिरी करावी अशी आग्रहपूर्वक विनंती करणे",
+            "सर्व नागरिकांसाठी नवीन शाळा प्रणाली स्थापित करणे"
+          ],
+          "solution": "1890 मध्ये जारी केलेल्या 'साम्राज्य शिक्षणावरील अधिसूचनेचा' उद्देश लोकांना शिक्षण शोधावे, सामाजिक कामगिरी करावी आणि सामान्य हिताचे उत्तम करावे अशी आग्रहपूर्वक विनंती करणे होता. इतर विकल्प अयोग्य आहेत कारण अधिसूचनेने पश्चिमी शैलीचे शिक्षण लक्ष केंद्रित केले नाही, युरोपियन भाषांच्या अपनयनाचा प्रोत्साहन दिला नाही आणि सीधा नवीन शाळा प्रणाली स्थापित केली नाही.",
+          "imageAlt": null,
+          "critique": "The translation accurately reflects the original meaning, with appropriate Marathi terminology and structure. The correct answer remains in the same position, and the distractors are still incorrect.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "This option misinterprets the focus of the rescript.",
+        "This option refers to a suggestion made in the 1880s, not the rescript.",
+        null,
+        "This option is incorrect as the rescript did not directly establish a new school system."
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 2, as the 'Imperial Rescript on Education' emphasized learning for the public good. The other options are incorrect because the rescript did not promote Western-style education, did not encourage European languages, and did not directly establish a new school system.",
+      "sources": [
+        {
+          "document": "ncert/11/history/kehs107.pdf",
+          "ordinal": 6,
+          "pageStart": 6,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 7: Paths to Modernisation",
+            "The Meiji Restoration"
+          ]
+        },
+        {
+          "document": "ncert/11/history/kehs107.pdf",
+          "ordinal": 7,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 7: Paths to Modernisation",
+            "The Meiji Restoration"
+          ]
+        },
+        {
+          "document": "ncert/11/history/kehs107.pdf",
+          "ordinal": 8,
+          "pageStart": 7,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 7: Paths to Modernisation",
+            "The Meiji Restoration"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T06:00:44.494Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "What was the result of the June Democracy Movement of 1987?",
+      "choices": [
+        "The president was directly elected",
+        "The military took over",
+        "The economy collapsed",
+        "The country joined the IMF"
+      ],
+      "answerIndex": 0,
+      "solution": "The June Democracy Movement of 1987 resulted in the president being directly elected, marking a shift toward democratic governance. The military did not take over, as the movement led to civilian leadership. The economy did not collapse, and joining the IMF occurred at a different time, unrelated to this event.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "1987 के जून लोकतांत्रिक आंदोलन का परिणाम क्या रहा?",
+          "choices": [
+            "राष्ट्रपति का सीधे चुनाव हुआ",
+            "सैन्य ने अधिकार हथिया लिया",
+            "अर्थव्यवस्था ढह गई",
+            "देश आईएमएफ में शामिल हो गया"
+          ],
+          "solution": "1987 के जून लोकतांत्रिक आंदोलन के परिणामस्वरूप राष्ट्रपति का सीधे चुनाव हुआ, जो लोकतांत्रिक शासन की ओर एक महत्वपूर्ण ओर रहा। सैन्य ने अधिकार हथिया नहीं लिया, क्योंकि आंदोलन नागरिक नेतृत्व की ओर ले गया। अर्थव्यवस्था ढह नहीं गई, और आईएमएफ में शामिल होना इस घटना से अलग समय पर हुआ, जो इस घटना से संबंधित नहीं रहा।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology. The correct answer remains option (1) and the distractors are still incorrect.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "1987 मधील जून लोकशाही चळवळीचा परिणाम काय होता?",
+          "choices": [
+            "राष्ट्रपती लोकप्रियरीत्या निवडला गेला",
+            "सैन्याने वर्चस्व मिळवले",
+            "अर्थव्यवस्था धसावली",
+            "देश आईएमएफमध्ये सामील झाला"
+          ],
+          "solution": "1987 मधील जून लोकशाही चळवळीमुळे राष्ट्रपती लोकप्रियरीत्या निवडला गेला, ज्यामुळे लोकशाही शासनाकडे वळण आले. सैन्याने वर्चस्व मिळवले नाही, कारण चळवळीमुळे नागरी नेतृत्व आले. अर्थव्यवस्था धसावली नाही, आणि आईएमएफमध्ये सामील होणे हा या घटनेशी असलेल्या वेळेवर घडला नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for political concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "confuses the outcome of the movement",
+        "incorrectly assumes a military takeover",
+        "references a later event"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 0, as the June Democracy Movement of 1987 led to constitutional reforms allowing direct elections. The other options are either incorrect or refer to unrelated events.",
+      "sources": [
+        {
+          "document": "ncert/11/history/kehs107.pdf",
+          "ordinal": 29,
+          "pageStart": 25,
+          "pageEnd": 25,
+          "headingPath": [
+            "Chapter 7: Paths to Modernisation",
+            "Rapid Industrialisation under Strong Leadership"
+          ]
+        },
+        {
+          "document": "ncert/11/history/kehs107.pdf",
+          "ordinal": 30,
+          "pageStart": 26,
+          "pageEnd": 26,
+          "headingPath": [
+            "Chapter 7: Paths to Modernisation",
+            "Continued Economic Growth and Calls for Democratisation"
+          ]
+        },
+        {
+          "document": "ncert/11/history/kehs107.pdf",
+          "ordinal": 31,
+          "pageStart": 26,
+          "pageEnd": 27,
+          "headingPath": [
+            "Chapter 7: Paths to Modernisation",
+            "Korean Democracy and the IMF Crisis"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T06:00:44.494Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "How did the development of a commercial economy in Japan during the Tokugawa period affect society?",
+      "choices": [
+        "It led to the disarming of the peasantry",
+        "It promoted the idea that merit was more important than status",
+        "It increased the power of the shogun",
+        "It reduced the importance of the emperor"
+      ],
+      "answerIndex": 1,
+      "solution": "The development of a commercial economy in Japan during the Tokugawa period encouraged a shift in societal values, where merit began to be valued more than hereditary status. This change reflected the growing influence of economic success and trade, which challenged traditional class hierarchies. The other options are incorrect because the disarming of the peasantry was a separate political measure, the shogun's power remained stable rather than increasing, and the emperor's role was not diminished but rather symbolically reinforced.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "टोकुगावा युग में जापान में व्यापारिक अर्थव्यवस्था के विकास ने समाज पर कैसा प्रभाव डाला?",
+          "choices": [
+            "इसने कृषक वर्ग के हथियार हटाने को बढ़ावा दिया",
+            "इसने योग्यता के स्थान पर स्थिति के महत्व को बढ़ावा दिया",
+            "इसने शोगुन की शक्ति बढ़ा दी",
+            "इसने सम्राट के महत्व को कम कर दिया"
+          ],
+          "solution": "टोकुगावा युग में जापान में व्यापारिक अर्थव्यवस्था के विकास ने सामाजिक मूल्यों में परिवर्तन को बढ़ावा दिया, जहां वंशानुक्रमिक स्थिति के स्थान पर योग्यता के महत्व को बढ़ावा दिया गया। इस परिवर्तन ने आर्थिक सफलता और व्यापार के बढ़ते प्रभाव को दर्शाया, जो पारंपरिक वर्ग असमानता के विरोध में था। अन्य विकल्प गलत हैं क्योंकि कृषक वर्ग के हथियार हटाने को अलग राजनीतिक उपाय के रूप में बढ़ावा दिया गया था, शोगुन की शक्ति स्थिर रही बल्कि बढ़ी नहीं, और सम्राट की भूमिका कम नहीं बल्कि प्रतीकात्मक रूप से मजबूत कर दी गई।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the original English question and solution, with appropriate terminology and logical structure.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "टोकुगावा काळात जपानमध्ये व्यापारी अर्थव्यवस्थेच्या विकासाने समाजावर काय परिणाम झाला?",
+          "choices": [
+            "त्यामुळे शेतकरी लोकांची शस्त्रे घेणे बंद झाले",
+            "त्यामुळे पातळीपेक्षा कर्मठता जास्त महत्वाची असल्याची विचारसरणी प्रोत्साहित झाली",
+            "त्यामुळे शोगूनची शक्ती वाढली",
+            "त्यामुळे सम्राटाची महत्त्वाकांक्षा कमी झाली"
+          ],
+          "solution": "टोकुगावा काळात जपानमध्ये व्यापारी अर्थव्यवस्थेच्या विकासाने समाजाच्या मूल्यांमध्ये बदल घडवून आणला, जेथे कर्मठतेला वंशानुक्रमापेक्षा जास्त महत्व दिले गेले. हा बदल आर्थिक यश आणि व्यापाराच्या वाढत्या प्रभावामुळे घडला, जो पारंपरिक वर्ग व्यवस्थेला आव्हान देत होता. इतर विकल्प अयोग्य आहेत कारण शेतकरी लोकांची शस्त्रे घेणे बंद करणे हा वेगळा राजकीय उपाय होता, शोगूनची शक्ती स्थिर राहिली नव्हे तर वाढली नाही, आणि सम्राटाची भूमिका कमी झाली नाही तर अलंकृतपणे शक्तिशाली राहिली.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for historical concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses an earlier policy with a result",
+        null,
+        "Misinterprets a consequence of the shogun's rule",
+        "Misunderstands the emperor's role during this period"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 1, as the commercial economy's growth led to a shift in values, emphasizing merit over status. The other options are incorrect due to historical inaccuracies or misinterpretations.",
+      "sources": [
+        {
+          "document": "ncert/11/history/kehs107.pdf",
+          "ordinal": 3,
+          "pageStart": 4,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 7: Paths to Modernisation",
+            "Introduction"
+          ]
+        },
+        {
+          "document": "ncert/11/history/kehs107.pdf",
+          "ordinal": 4,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 7: Paths to Modernisation",
+            "The Political System"
+          ]
+        },
+        {
+          "document": "ncert/11/history/kehs107.pdf",
+          "ordinal": 5,
+          "pageStart": 5,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 7: Paths to Modernisation",
+            "The Meiji Restoration"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T06:00:44.494Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "What contributed to the growth of citizens' self-awareness about political rights in South Korea?",
+      "choices": [
+        "Economic development",
+        "Military rule",
+        "International pressure",
+        "A foreign currency crisis"
+      ],
+      "answerIndex": 0,
+      "solution": "Economic development contributed to urbanisation, better education, and media growth, which enhanced citizens' understanding and awareness of their political rights. Military rule and international pressure are not directly linked to increased self-awareness of political rights. A foreign currency crisis would likely have a negative impact rather than promoting political awareness.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "दक्षिण कोरिया में नागरिकों के राजनीतिक अधिकारों के प्रति स्वयं के जागरूकता के विकास में क्या योगदान रहा?",
+          "choices": [
+            "आर्थिक विकास",
+            "सैन्य शासन",
+            "अंतरराष्ट्रीय दबाव",
+            "विदेशी मुद्रा संकट"
+          ],
+          "solution": "आर्थिक विकास ने शहरीकरण, बेहतर शिक्षा और मीडिया के विकास को बढ़ावा दिया, जिससे नागरिकों के अपने राजनीतिक अधिकारों के प्रति जागरूकता बढ़ गई। सैन्य शासन और अंतरराष्ट्रीय दबाव राजनीतिक अधिकारों के बढ़े हुए जागरूकता से सीधा संबंध नहीं रखते। विदेशी मुद्रा संकट के लिए नकारात्मक प्रभाव हो सकता है जबकि राजनीतिक जागरूकता को बढ़ावा नहीं दे सकता।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate terminology commonly found in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "दक्षिण कोरियामध्ये नागरिकांच्या राजकीय हक्कांबद्दल स्व-जागरूकतेच्या वाढीला काय योगदान दिले?",
+          "choices": [
+            "आर्थिक विकास",
+            "सैन्य शासन",
+            "आंतरराष्ट्रीय दबाव",
+            "एका विदेशी मुद्रेचा संकट"
+          ],
+          "solution": "आर्थिक विकास शहरीकरण, चांगली शिक्षण आणि माध्यमांच्या विकासाला जोडला गेला, ज्यामुळे नागरिकांच्या राजकीय हक्कांबद्दलची समज आणि जागरूकता वाढली. सैन्य शासन आणि आंतरराष्ट्रीय दबाव राजकीय हक्कांबद्दल वाढलेल्या स्व-जागरूकतेशी सीधा संबंध नाहीत. विदेशी मुद्रेचा संकट नकारात्मक परिणाम झाला असता आणि राजकीय जागरूकतेला उत्तेजन दिले नसते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for political concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "focuses on a secondary factor",
+        "incorrectly identifies the cause",
+        "references a later event"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies economic development as the main factor contributing to increased political self-awareness, as it leads to urbanization, education, and media growth. The reasoning for the other options is valid: military rule is a secondary factor, international pressure is an incorrect cause, and the currency crisis is a later event.",
+      "sources": [
+        {
+          "document": "ncert/11/history/kehs107.pdf",
+          "ordinal": 29,
+          "pageStart": 25,
+          "pageEnd": 25,
+          "headingPath": [
+            "Chapter 7: Paths to Modernisation",
+            "Rapid Industrialisation under Strong Leadership"
+          ]
+        },
+        {
+          "document": "ncert/11/history/kehs107.pdf",
+          "ordinal": 30,
+          "pageStart": 26,
+          "pageEnd": 26,
+          "headingPath": [
+            "Chapter 7: Paths to Modernisation",
+            "Continued Economic Growth and Calls for Democratisation"
+          ]
+        },
+        {
+          "document": "ncert/11/history/kehs107.pdf",
+          "ordinal": 31,
+          "pageStart": 26,
+          "pageEnd": 27,
+          "headingPath": [
+            "Chapter 7: Paths to Modernisation",
+            "Korean Democracy and the IMF Crisis"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T06:00:44.494Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "What was the significance of the 'black ships' in Japanese history?",
+      "choices": [
+        "They were a symbol of Japanese resistance to foreign influence",
+        "They symbolized the opening of Japan to the outside world",
+        "They were used to transport Japanese students to Europe",
+        "They were a form of traditional Japanese shipbuilding"
+      ],
+      "answerIndex": 1,
+      "solution": "The 'black ships' symbolized the opening of Japan to the outside world. They were a powerful symbol of Japan's 'opening' and represented the arrival of foreign influence. The other options are incorrect because the ships did not represent Chinese culture, were not used to transport students, and were not a form of traditional shipbuilding.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "जापानी इतिहास में 'काले जहाजों' का क्या महत्व रहा?",
+          "choices": [
+            "वे विदेशी प्रभाव के प्रति जापानी प्रतिरोध के प्रतीक थे",
+            "वे जापान के बाहरी दुनिया से खुलने के प्रतीक थे",
+            "वे यूरोप में जापानी छात्रों के परिवहन के लिए उपयोग किए जाते थे",
+            "वे पारंपरिक जापानी जहाज निर्माण के एक रूप थे"
+          ],
+          "solution": "काले जहाज बाहरी दुनिया से जापान के खुलने के प्रतीक थे। वे जापान के 'खुलने' के एक शक्तिशाली प्रतीक थे और विदेशी प्रभाव के आगमन का प्रतिनिधित्व करते थे। अन्य विकल्प गलत हैं क्योंकि जहाज चीनी संस्कृति का प्रतिनिधित्व नहीं करते थे, छात्रों के परिवहन के लिए उपयोग नहीं किए जाते थे, और पारंपरिक जहाज निर्माण के एक रूप नहीं थे।",
+          "imageAlt": "एक जापानी लकड़ी के छाप के अनुसार 'काले जहाजों' का चित्रण जापान के बाहरी दुनिया से खुलने के प्रतीक के रूप में किया गया है।",
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Hindi terminology used for historical concepts.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "भारतीय इतिहासात 'काळे जहाज' ची महत्त्वाची आहे?",
+          "choices": [
+            "ते विदेशी प्रभावाविरुद्ध जपानी प्रतिकाराचे प्रतीक होते",
+            "ते जपानला बाहेरील जगाशी खुलण्याचे प्रतीक होते",
+            "ते जपानी विद्यार्थ्यांना युरोपला वाहून नेण्यासाठी वापरले जात होते",
+            "ते पारंपरिक जपानी जहाज बांधकामाचा एक प्रकार होते"
+          ],
+          "solution": "काळे जहाज जपानला बाहेरील जगाशी खुलण्याचे प्रतीक होते. ते जपानच्या 'खुलण्याचे' एक शक्तिशाली प्रतीक होते आणि विदेशी प्रभावाच्या आगमनाचे प्रतीक होते. इतर विकल्प अयोग्य आहेत कारण जहाज चीनी संस्कृतीचे प्रतीक नव्हते, विद्यार्थ्यांना वाहून नेण्यासाठी वापरले जात नव्हते आणि पारंपरिक जहाज बांधकामाचा एक प्रकार नव्हते.",
+          "imageAlt": "एक जपानी लाकडाचा छाप जो 'काळे जहाज' ला जपानच्या बाहेरील जगाशी खुलण्याचे प्रतीक दर्शवतो.",
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for historical concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": "A Japanese woodblock print depicting 'black ships' as a symbol of Japan's 'opening' to the outside world.",
+      "figure": {
+        "kind": "diagram",
+        "spec": {
+          "parts": [
+            {
+              "part": "spiritLamp",
+              "x": 50,
+              "y": 30,
+              "size": 30,
+              "labels": [
+                "lamp",
+                "flame"
+              ],
+              "text": {
+                "flame": "black_ships"
+              }
+            }
+          ]
+        },
+        "labels": {
+          "black_ships": {
+            "en": "black ships",
+            "hi": "काले जहाज",
+            "mr": "काळे जहाज"
+          }
+        }
+      },
+      "needsFigure": true,
+      "distractorReason": [
+        "students may confuse the 'black ships' with a symbol of resistance rather than opening",
+        null,
+        "This option refers to a different historical event or practice.",
+        "This option is incorrect as the 'black ships' were not used for transporting students."
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 1, as the 'black ships' symbolized Japan's opening to the outside world. The other options are clearly incorrect, and the author's reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/11/history/kehs107.pdf",
+          "ordinal": 6,
+          "pageStart": 6,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 7: Paths to Modernisation",
+            "The Meiji Restoration"
+          ]
+        },
+        {
+          "document": "ncert/11/history/kehs107.pdf",
+          "ordinal": 7,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 7: Paths to Modernisation",
+            "The Meiji Restoration"
+          ]
+        },
+        {
+          "document": "ncert/11/history/kehs107.pdf",
+          "ordinal": 8,
+          "pageStart": 7,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 7: Paths to Modernisation",
+            "The Meiji Restoration"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T06:00:44.494Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "Which of the following events led to the peaceful transfer of power in South Korea?",
+      "choices": [
+        "The June Democracy Movement",
+        "The Gwangju Democratisation Movement",
+        "The Gold Collection Movement",
+        "The impeachment of Park Geun-hye"
+      ],
+      "answerIndex": 0,
+      "solution": "The June Democracy Movement led to significant political reforms, including direct elections, which facilitated a peaceful transfer of power. The Gwangju Democratisation Movement was a significant protest but did not directly lead to a peaceful transfer of power. The Gold Collection Movement was a religious movement and unrelated to political transitions. The impeachment of Park Geun-hye resulted in her removal but was not the event that led to a peaceful transfer of power.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सी घटना दक्षिण कोरिया में शांतिपूर्ण शक्ति हस्तांतरण के कारण बनी?",
+          "choices": [
+            "जून लोकतंत्र आंदोलन",
+            "ग्वांगजू लोकतंत्र आंदोलन",
+            "सोना एकत्र करने का आंदोलन",
+            "पार्क गुन-ह्ये के हटाए जाने की घटना"
+          ],
+          "solution": "जून लोकतंत्र आंदोलन ने प्रत्यक्ष चुनावों सहित महत्वपूर्ण राजनीतिक सुधारों के कारण शांतिपूर्ण शक्ति हस्तांतरण को सुविधाजनक बना दिया। ग्वांगजू लोकतंत्र आंदोलन एक महत्वपूर्ण प्रदर्शन रहा, लेकिन शांतिपूर्ण शक्ति हस्तांतरण के लिए सीधे उत्तरदायी नहीं रहा। सोना एकत्र करने का आंदोलन एक धार्मिक आंदोलन रहा और राजनीतिक संक्रमण से असंबंधित रहा। पार्क गुन-ह्ये के हटाए जाने की घटना उनके हटाए जाने के कारण हुई, लेकिन शांतिपूर्ण शक्ति हस्तांतरण के लिए घटना नहीं रही।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology for political events.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणत्या घटनेमुळे दक्षिण कोरियामध्ये शांततेने शक्तीचा हस्तांतर होऊ शकला?",
+          "choices": [
+            "जून लोकशाही चळवळ",
+            "ग्वांग्जू लोकशाही चळवळ",
+            "सोने संग्रह चळवळ",
+            "पार्क गीउन-ह्येच्या अपात्रतेची कार्यवाही"
+          ],
+          "solution": "जून लोकशाही चळवळने लोकशाही सुधारणा, विशेषतः सीध्या निवडणुकांच्या माध्यमातून शांततेने शक्तीचा हस्तांतर शक्य केला. ग्वांग्जू लोकशाही चळवळ ही महत्त्वपूर्ण प्रतिरोध असली तरी ती शांततेने शक्तीचा हस्तांतर झाल्याची घटना नव्हती. सोने संग्रह चळवळ ही धार्मिक चळवळ होती आणि राजकीय संकटाशी संबंधित नव्हती. पार्क गीउन-ह्येच्या अपात्रतेची कार्यवाही तिच्या अपात्रतेमुळे झाली, परंतु ती शांततेने शक्तीचा हस्तांतर झाल्याची घटना नव्हती.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for political events.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "refers to a movement that led to reforms",
+        "focuses on a protest that did not result in a transfer of power",
+        "mentions a movement that was a response to a crisis"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 0, as the June Democracy Movement in 1987 led to the peaceful transfer of power in South Korea by forcing the government to hold direct elections. The other options are either not directly linked to a peaceful transfer of power or are mischaracterized.",
+      "sources": [
+        {
+          "document": "ncert/11/history/kehs107.pdf",
+          "ordinal": 29,
+          "pageStart": 25,
+          "pageEnd": 25,
+          "headingPath": [
+            "Chapter 7: Paths to Modernisation",
+            "Rapid Industrialisation under Strong Leadership"
+          ]
+        },
+        {
+          "document": "ncert/11/history/kehs107.pdf",
+          "ordinal": 30,
+          "pageStart": 26,
+          "pageEnd": 26,
+          "headingPath": [
+            "Chapter 7: Paths to Modernisation",
+            "Continued Economic Growth and Calls for Democratisation"
+          ]
+        },
+        {
+          "document": "ncert/11/history/kehs107.pdf",
+          "ordinal": 31,
+          "pageStart": 26,
+          "pageEnd": 27,
+          "headingPath": [
+            "Chapter 7: Paths to Modernisation",
+            "Korean Democracy and the IMF Crisis"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T06:00:44.494Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
     }
   ]
 }

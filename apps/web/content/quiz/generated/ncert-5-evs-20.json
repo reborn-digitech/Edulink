@@ -630,6 +630,101 @@
       "generatedAt": "2026-10-28T07:10:25.955Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Why does Suryamani say that if the forests are not there, they too will not remain?",
+      "choices": [
+        "Because the forest provides them with food and shelter",
+        "Because the forest is a place for fun and games",
+        "Because the forest is a place to cut trees",
+        "Because the forest is a place to build houses"
+      ],
+      "answerIndex": 0,
+      "solution": "Suryamani says that if the forests are not there, they too will not remain because the forest provides them with food and shelter. This is essential for their survival. The other options do not address the fundamental needs that the forest fulfills for their existence.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "सूर्यमानी क्यों कहती है कि अगर वन नहीं हैं तो वे भी नहीं रहेंगे?",
+          "choices": [
+            "क्योंकि वन उन्हें भोजन और आश्रय प्रदान करते हैं",
+            "क्योंकि वन मनोरंजन और खेल का स्थान है",
+            "क्योंकि वन पेड़ काटने का स्थान है",
+            "क्योंकि वन घर बनाने का स्थान है"
+          ],
+          "solution": "सूर्यमानी कहती है कि अगर वन नहीं हैं तो वे भी नहीं रहेंगे क्योंकि वन उन्हें भोजन और आश्रय प्रदान करते हैं। यह उनके जीवित रहने के लिए आवश्यक है। अन्य विकल्प उनके अस्तित्व के लिए वन द्वारा पूरा किए जाने वाले मूलभूत आवश्यकताओं को नहीं बताते।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology consistent with textbook language.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "सूर्यमानी म्हणते की जर जंगल नसतील तर त्यांच्याही राहणार नाहीत कारण काय?",
+          "choices": [
+            "कारण जंगल त्यांना खाद्य आणि आश्रय पुरवते",
+            "कारण जंगल खेळाचे जागा आहे",
+            "कारण जंगल झाडे कापण्याची जागा आहे",
+            "कारण जंगल घरे बांधण्याची जागा आहे"
+          ],
+          "solution": "सूर्यमानी म्हणते की जर जंगल नसतील तर त्यांच्याही राहणार नाहीत कारण जंगल त्यांना खाद्य आणि आश्रय पुरवते. हे त्यांच्या जीवनासाठी आवश्यक आहे. इतर विकल्प त्यांच्या अस्तित्वासाठी जंगल भूमिका पूर्ण करणाऱ्या मूलभूत आवश्यकतांचा उल्लेख करत नाहीत.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the original meaning, and uses appropriate terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Believes the forest's main purpose is recreation, not survival or cultural identity",
+        "students may confuse the idea of forest destruction with the purpose of the forest",
+        "Believes forests are only for human development and not for survival"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 0, as the forest provides food and shelter, which aligns with the passage. The other options reflect common misconceptions about the purpose of forests.",
+      "sources": [
+        {
+          "document": "ncert/5/environmental-studies/eeap120.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 20: Whose Forests?"
+          ]
+        },
+        {
+          "document": "ncert/5/environmental-studies/eeap120.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 20: Whose Forests?"
+          ]
+        },
+        {
+          "document": "ncert/5/environmental-studies/eeap120.pdf",
+          "ordinal": 2,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 20: Whose Forests?"
+          ]
+        }
+      ],
+      "edition": "2024 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-23T02:22:36.557Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
     }
   ]
 }

@@ -386,6 +386,488 @@
       "generatedAt": "2026-10-30T01:29:20.202Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is the formula for the volume of a cylinder?",
+      "choices": [
+        "V = πr^2h",
+        "V = 2πr",
+        "V = 4/3πr^3",
+        "V = πr^2"
+      ],
+      "answerIndex": 0,
+      "solution": "The correct formula for the volume of a cylinder is V = πr^2h, which represents the area of the circular base multiplied by the height. The option V = 2πr is the circumference of a circle, V = 4/3πr^3 is the volume of a sphere, and V = πr^2 is the area of a circle, none of which apply to a cylinder.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "बेलन के आयतन का सूत्र क्या है?",
+          "choices": [
+            "V = πr^2h",
+            "V = 2πr",
+            "V = 4/3πr^3",
+            "V = πr^2"
+          ],
+          "solution": "बेलन के आयतन का सही सूत्र V = πr^2h है, जो वृत्ताकार आधार के क्षेत्रफल और ऊँचाई के गुणनफल को दर्शाता है। विकल्प V = 2πr वृत्त की परिधि है, V = 4/3πr^3 गोले का आयतन है, और V = πr^2 वृत्त का क्षेत्रफल है, जो कोई भी बेलन के लिए लागू नहीं होता।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology as taught in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका वर्तुळाकार वर्तुळाकार शिंकाच्या आयतनाचा सूत्र कोणता आहे?",
+          "choices": [
+            "V = πr^2h",
+            "V = 2πr",
+            "V = 4/3πr^3",
+            "V = πr^2"
+          ],
+          "solution": "एका वर्तुळाकार शिंकाच्या आयतनाचा योग्य सूत्र V = πr^2h आहे, जो वर्तुळाच्या तलाच्या क्षेत्रफळाला उंचीने गुणल्याने मिळतो. V = 2πr हा वर्तुळाच्या परिधीचा सूत्र आहे, V = 4/3πr^3 हा गोलाच्या आयतनाचा सूत्र आहे, आणि V = πr^2 हा वर्तुळाच्या क्षेत्रफळाचा सूत्र आहे, जे शिंकासाठी अनुरूप नाहीत.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate technical terms. The structure and logic of the question and solution are preserved.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "confuses the formula for the circumference of a circle with the volume of a cylinder",
+        "confuses the formula for the volume of a sphere with the volume of a cylinder",
+        "confuses the formula for the area of a circle with the volume of a cylinder"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is V = πr²h, which matches the author's key. The other options are standard misconceptions: circumference, sphere volume, and circle area, respectively.",
+      "sources": [
+        {
+          "document": "ncert/9/mathematics/iemh206.pdf",
+          "ordinal": 12,
+          "pageStart": 19,
+          "pageEnd": 20,
+          "headingPath": [
+            "Chapter 14: Math of Space: Surface Area and Volume",
+            "14.6 Areas and Volumes Around Us"
+          ]
+        },
+        {
+          "document": "ncert/9/mathematics/iemh206.pdf",
+          "ordinal": 13,
+          "pageStart": 20,
+          "pageEnd": 21,
+          "headingPath": [
+            "Chapter 14: Math of Space: Surface Area and Volume",
+            "14.6 Areas and Volumes Around Us"
+          ]
+        },
+        {
+          "document": "ncert/9/mathematics/iemh206.pdf",
+          "ordinal": 14,
+          "pageStart": 22,
+          "pageEnd": 23,
+          "headingPath": [
+            "Chapter 14: Math of Space: Surface Area and Volume",
+            "End-of-c"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-22T12:51:57.603Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of the following is an example of a guesstimate problem?",
+      "choices": [
+        "Calculating the exact volume of a cylinder",
+        "Estimating the number of tennis balls that can fit in a classroom",
+        "Finding the surface area of a sphere",
+        "Calculating the exact height of a cone"
+      ],
+      "answerIndex": 1,
+      "solution": "An example of a guesstimate problem is estimating the number of tennis balls that can fit in a classroom. This involves making approximations and assumptions about the size of the classroom and the tennis balls, as exact measurements are not typically available. The other options require precise mathematical calculations rather than estimations.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा एक अनुमान समस्या का उदाहरण है?",
+          "choices": [
+            "एक बेलन के ठीक-ठीक आयतन की गणना करना",
+            "एक कक्षा में टेनिस बॉल की संख्या का अनुमान लगाना",
+            "एक गोले के पृष्ठीय क्षेत्रफल की खोज करना",
+            "एक शंकु की ठीक-ठीक ऊंचाई की गणना करना"
+          ],
+          "solution": "एक अनुमान समस्या का उदाहरण एक कक्षा में टेनिस बॉल की संख्या का अनुमान लगाना है। इसमें कक्षा और टेनिस बॉल के आकार के बारे में अनुमान लगाना और मान लेना शामिल होता है, क्योंकि ठीक-ठीक माप आमतौर पर उपलब्ध नहीं होती हैं। अन्य विकल्प सटीक गणितीय गणनाओं की आवश्यकता होती है, जबकि अनुमान नहीं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate technical terms as used in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते एक अंदाजपत्रकाचे उदाहरण आहे?",
+          "choices": [
+            "एका वृत्ताकार बेलूनच्या खास आकारमानाची गणना करणे",
+            "एका खोलीत जागा घेणाऱ्या टेनिस बॉलची अंदाज ठरवणे",
+            "गोलाच्या पृष्ठभागाच्या क्षेत्रफळाची शोध घेणे",
+            "एका शंकूच्या खास उंचीची गणना करणे"
+          ],
+          "solution": "एका खोलीत जागा घेणाऱ्या टेनिस बॉलची अंदाज ठरवणे हे अंदाजपत्रकाचे उदाहरण आहे. यामध्ये खोली आणि टेनिस बॉलच्या आकाराबद्दल अंदाज आणि अनुमान घेणे आवश्यक असते, कारण खास मापदंड असत नाहीत. इतर विकल्पांमध्ये अंदाज नसताना खास गणितीय गणना आवश्यक असतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi technical terms used for mathematical concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "confuses exact calculations with guesstimates",
+        null,
+        "does not understand the purpose of guesstimate problems",
+        "does not understand the purpose of guesstimate problems"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 1, as estimating the number of tennis balls in a classroom involves approximation and assumptions, which aligns with the definition of a guesstimate. The other options involve exact calculations, which is consistent with the author's reasoning.",
+      "sources": [
+        {
+          "document": "ncert/9/mathematics/iemh206.pdf",
+          "ordinal": 12,
+          "pageStart": 19,
+          "pageEnd": 20,
+          "headingPath": [
+            "Chapter 14: Math of Space: Surface Area and Volume",
+            "14.6 Areas and Volumes Around Us"
+          ]
+        },
+        {
+          "document": "ncert/9/mathematics/iemh206.pdf",
+          "ordinal": 13,
+          "pageStart": 20,
+          "pageEnd": 21,
+          "headingPath": [
+            "Chapter 14: Math of Space: Surface Area and Volume",
+            "14.6 Areas and Volumes Around Us"
+          ]
+        },
+        {
+          "document": "ncert/9/mathematics/iemh206.pdf",
+          "ordinal": 14,
+          "pageStart": 22,
+          "pageEnd": 23,
+          "headingPath": [
+            "Chapter 14: Math of Space: Surface Area and Volume",
+            "End-of-c"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-22T12:51:57.603Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If the radius of a cylinder is increased by 1 unit, what is the change in its volume?",
+      "choices": [
+        "πr²h cubic units",
+        "π(r + 1)²h cubic units",
+        "πr²h + 2πrh + πh cubic units",
+        "2πrh + 2πh cubic units"
+      ],
+      "answerIndex": 2,
+      "solution": "The original volume of the cylinder is πr²h. When the radius is increased by 1 unit, the new radius becomes (r + 1), and the new volume is π(r + 1)²h. Expanding this gives π(r² + 2r + 1)h = πr²h + 2πrh + πh, which is the change in volume. The other options either miss some terms or incorrectly simplify the expression.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक बेलन की त्रिज्या में 1 इकाई की वृद्धि होती है, तो इसके आयतन में क्या परिवर्तन होता है?",
+          "choices": [
+            "πr²h घन इकाई",
+            "π(r + 1)²h घन इकाई",
+            "πr²h + 2πrh + πh घन इकाई",
+            "2πrh + 2πh घन इकाई"
+          ],
+          "solution": "बेलन का मूल आयतन πr²h है। जब त्रिज्या में 1 इकाई की वृद्धि होती है, तो नई त्रिज्या (r + 1) हो जाती है, और नया आयतन π(r + 1)²h हो जाता है। इसे विस्तारित करने पर π(r² + 2r + 1)h = πr²h + 2πrh + πh प्राप्त होता है, जो आयतन में परिवर्तन है। अन्य विकल्प या तो कुछ पद छोड़ देते हैं या व्यंजक को गलत तरीके से सरल कर देते हैं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains mathematical meaning, and uses standard Hindi technical terms.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर एका वृत्ताकार वर्तुळाच्या त्रिज्येमध्ये 1 एककाने वाढ होत असेल, तर त्याच्या आयतनात काय बदल होईल?",
+          "choices": [
+            "πr²h घन एकके",
+            "π(r + 1)²h घन एकके",
+            "πr²h + 2πrh + πh घन एकके",
+            "2πrh + 2πh घन एकके"
+          ],
+          "solution": "वर्तुळाचा मूळ आयतन πr²h असतो. जेव्हा त्रिज्येमध्ये 1 एककाने वाढ होते, तेव्हा नवीन त्रिज्या (r + 1) होते आणि नवीन आयतन π(r + 1)²h असतो. याचे विस्तार करून π(r² + 2r + 1)h = πr²h + 2πrh + πh मिळते, जो आयतनातील बदल असतो. इतर विकल्प कमी शब्द असतात किंवा व्यंजक चुकीच्या पद्धतीने सोपे केलेले असतात.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate technical terms as used in Marathi-medium textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Fails to expand the square of (r + 1)",
+        "Only calculates the new volume without subtracting the original",
+        null,
+        "Incorrectly assumes the change is linear with radius"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly calculates the change in volume by subtracting the original volume from the new volume after expanding (r + 1)². The correct answer is option 2.",
+      "sources": [
+        {
+          "document": "ncert/9/mathematics/iemh206.pdf",
+          "ordinal": 15,
+          "pageStart": 23,
+          "pageEnd": 24,
+          "headingPath": [
+            "Chapter 14: Math of Space: Surface Area and Volume",
+            "End-of-c"
+          ]
+        },
+        {
+          "document": "ncert/9/mathematics/iemh206.pdf",
+          "ordinal": 16,
+          "pageStart": 24,
+          "pageEnd": 26,
+          "headingPath": [
+            "Chapter 14: Math of Space: Surface Area and Volume",
+            "End-of-c"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-22T12:51:57.603Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "A cuboid has length 10 cm, width 8 cm, and height 6 cm. What is its total surface area?",
+      "choices": [
+        "284 cm²",
+        "376 cm²",
+        "448 cm²",
+        "512 cm²"
+      ],
+      "answerIndex": 1,
+      "solution": "The total surface area of a cuboid is given by the formula 2(lw + lh + wh). Substituting the values l = 10 cm, w = 8 cm, and h = 6 cm, we calculate 2(10×8 + 10×6 + 8×6) = 2(80 + 60 + 48) = 2(188) = 376 cm². The option '284 cm²' is incorrect because it may result from adding only two pairs of areas. The option '448 cm²' is incorrect because it may result from a miscalculation of the product terms. The option '512 cm²' is incorrect because it may result from doubling the sum of the dimensions instead of the products.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक घनाभ की लंबाई 10 सेमी, चौड़ाई 8 सेमी और ऊंचाई 6 सेमी है। इसके कुल पृष्ठीय क्षेत्रफल क्या है?",
+          "choices": [
+            "284 सेमी²",
+            "376 सेमी²",
+            "448 सेमी²",
+            "512 सेमी²"
+          ],
+          "solution": "एक घनाभ के कुल पृष्ठीय क्षेत्रफल का सूत्र 2(lw + lh + wh) होता है। मान रखने पर l = 10 सेमी, w = 8 सेमी और h = 6 सेमी, हम गणना करते हैं 2(10×8 + 10×6 + 8×6) = 2(80 + 60 + 48) = 2(188) = 376 सेमी²। विकल्प '284 सेमी²' गलत है क्योंकि यह केवल दो जोड़े क्षेत्रफल के योग से प्राप्त हो सकता है। विकल्प '448 सेमी²' गलत है क्योंकि यह गुणन के मानों की गलत गणना से प्राप्त हो सकता है। विकल्प '512 सेमी²' गलत है क्योंकि यह विमाओं के योग को दोगुना करने से प्राप्त हो सकता है बजाय गुणन के।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms as used in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका घनाची लांबी 10 सेमी, रुंदी 8 सेमी आणि उंची 6 सेमी आहे. त्याचे एकूण पृष्ठभाग किती आहे?",
+          "choices": [
+            "284 सेमी²",
+            "376 सेमी²",
+            "448 सेमी²",
+            "512 सेमी²"
+          ],
+          "solution": "घनाचे एकूण पृष्ठभाग फॉर्म्युला 2(lw + lh + wh) नुसार दिले जाते. l = 10 सेमी, w = 8 सेमी आणि h = 6 सेमी मूल्ये ठेवल्यास, आम्ही 2(10×8 + 10×6 + 8×6) = 2(80 + 60 + 48) = 2(188) = 376 सेमी² गणना करतो. '284 सेमी²' अपयशी असतो कारण ते फक्त दोन जोड्या क्षेत्रफळांची बेरीज असू शकते. '448 सेमी²' अपयशी असतो कारण ते उत्पादक शब्दांच्या चुकीच्या गणनेमुळे असू शकते. '512 सेमी²' अपयशी असतो कारण ते मापांच्या बेरजेचे दुप्पट करण्याऐवजी उत्पादकांचे दुप्पट करण्यामुळे असू शकते.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate technical terms. The solution and distractors are correctly translated and retain their original intent.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "adds only two pairs of areas",
+        null,
+        "miscalculates product terms",
+        "doubles sum of dimensions instead of products"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly applies the formula for the total surface area of a cuboid and arrives at the correct answer. The author's reasoning for the distractors is valid and reflects common student misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/9/mathematics/iemh206.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 14: Math of Space: Surface Area and Volume",
+            "14.1 Cuboids and Cubes"
+          ]
+        },
+        {
+          "document": "ncert/9/mathematics/iemh206.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 14: Math of Space: Surface Area and Volume",
+            "14.1 Cuboids and Cubes",
+            "Think and Reflect"
+          ]
+        },
+        {
+          "document": "ncert/9/mathematics/iemh206.pdf",
+          "ordinal": 2,
+          "pageStart": 4,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 14: Math of Space: Surface Area and Volume",
+            "14.1 Cuboids and Cubes",
+            "Think and Reflect"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-22T12:51:57.603Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "The radius of a sphere is increased by x%. The volume of the sphere increases by 72.8%. What is the value of x?",
+      "choices": [
+        "20%",
+        "30%",
+        "40%",
+        "50%"
+      ],
+      "answerIndex": 0,
+      "solution": "The volume of a sphere is proportional to the cube of its radius. If the volume increases by 72.8%, the new volume is 1.728 times the original volume. Taking the cube root of 1.728 gives 1.2, which means the radius increased by 20%. The option '30%' is the cube root of 2.7, '40%' and '50%' are incorrect calculations based on different percentage increases.",
+      "checkExpr": "100*(1.728^(1/3)-1)",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक गोले की त्रिज्या x% बढ़ा दी जाती है। गोले का आयतन 72.8% बढ़ जाता है। x का मान क्या है?",
+          "choices": [
+            "20%",
+            "30%",
+            "40%",
+            "50%"
+          ],
+          "solution": "एक गोले का आयतन इसकी त्रिज्या के घन के समानुपाती होता है। यदि आयतन 72.8% बढ़ जाता है, तो नया आयतन मूल आयतन का 1.728 गुना होता है। 1.728 का घनमूल लेने पर 1.2 प्राप्त होता है, जिसका अर्थ है कि त्रिज्या 20% बढ़ गई। विकल्प '30%' 2.7 के घनमूल है, '40%' और '50%' अलग-अलग प्रतिशत वृद्धि पर गलत गणनाएं हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms. The structure and logic of the question and solution are preserved.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका गोलाचा त्रिज्या x% ने वाढते. गोलाचा आयतन 72.8% ने वाढतो. x ची किंमत काय आहे?",
+          "choices": [
+            "20%",
+            "30%",
+            "40%",
+            "50%"
+          ],
+          "solution": "एका गोलाचा आयतन त्याच्या त्रिज्येच्या घनाच्या अनुपातात असतो. जर आयतन 72.8% ने वाढला असेल, तर नवीन आयतन मूळ आयतनाच्या 1.728 पट असेल. 1.728 चा घनमूळ घेतल्यास 1.2 मिळतो, जे त्रिज्येत 20% वाढ दर्शवतो. '30%' हा विकल्प 2.7 चा घनमूळ असतो, '40%' आणि '50%' हे विकल्प वेगवेगळ्या शतमान वाढीवर आधारित असलेल्या चुकीच्या गणना आहेत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the mathematical meaning, and uses appropriate Marathi technical terms like 'घनमूळ' (cube root) and 'अनुपातात' (proportional).",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "confuses the cube root of 2.7 with 1.728",
+        "uses a wrong percentage increase for cube root calculation",
+        "uses a wrong percentage increase for cube root calculation"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly uses the fact that volume is proportional to the cube of the radius. The cube root of 1.728 is 1.2, which corresponds to a 20% increase in radius. The other options are based on incorrect cube roots or misinterpretations of percentage increase.",
+      "sources": [
+        {
+          "document": "ncert/9/mathematics/iemh206.pdf",
+          "ordinal": 9,
+          "pageStart": 13,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 14: Math of Space: Surface Area and Volume",
+            "14.5 Spheres and Hemispheres"
+          ]
+        },
+        {
+          "document": "ncert/9/mathematics/iemh206.pdf",
+          "ordinal": 10,
+          "pageStart": 15,
+          "pageEnd": 17,
+          "headingPath": [
+            "Chapter 14: Math of Space: Surface Area and Volume",
+            "14.5 Spheres and Hemispheres"
+          ]
+        },
+        {
+          "document": "ncert/9/mathematics/iemh206.pdf",
+          "ordinal": 11,
+          "pageStart": 17,
+          "pageEnd": 19,
+          "headingPath": [
+            "Chapter 14: Math of Space: Surface Area and Volume",
+            "14.5 Spheres and Hemispheres"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-22T12:51:57.603Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
     }
   ]
 }

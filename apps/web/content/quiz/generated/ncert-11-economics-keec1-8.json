@@ -338,6 +338,830 @@
       "generatedAt": "2026-10-28T23:19:21.614Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "Which country introduced economic reforms in 1978?",
+      "choices": [
+        "India",
+        "China",
+        "Pakistan",
+        "Bangladesh"
+      ],
+      "answerIndex": 1,
+      "solution": "In 1978, China implemented significant economic reforms that shifted the country's economic policies toward market-oriented practices. India's major reforms occurred in 1991, and Pakistan's reforms were introduced in 1988. Bangladesh is not associated with major economic reforms in 1978. The correct answer is China.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "1978 में आर्थिक सुधार किस देश ने लागू किए?",
+          "choices": [
+            "भारत",
+            "चीन",
+            "पाकिस्तान",
+            "बांग्लादेश"
+          ],
+          "solution": "1978 में चीन ने महत्वपूर्ण आर्थिक सुधार किए जो देश की आर्थिक नीतियों को बाजार-उन्मुख अभियान की ओर ले गए। भारत के प्रमुख सुधार 1991 में हुए, और पाकिस्तान के सुधार 1988 में पेश किए गए। बांग्लादेश 1978 में महत्वपूर्ण आर्थिक सुधार के साथ जुड़ा नहीं है। सही उत्तर चीन है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate terminology as found in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "1978 मध्ये आर्थिक सुधारणा कोणत्या देशाने सुरू केल्या?",
+          "choices": [
+            "भारत",
+            "चीन",
+            "पाकिस्तान",
+            "बांगलादेश"
+          ],
+          "solution": "1978 मध्ये चीनने महत्त्वपूर्ण आर्थिक सुधारणा केल्या ज्यामुळे देशाच्या आर्थिक धोरणांचा विस्तार बाजार-ओरिएंटेड प्रकाराकडे झाला. भारताच्या मुख्य सुधारणा 1991 मध्ये झाल्या आणि पाकिस्तानच्या सुधारणा 1988 मध्ये सुरू केल्या गेल्या. बांगलादेश 1978 मध्ये महत्त्वपूर्ण आर्थिक सुधारणांशी जोडला जात नाही. योग्य उत्तर चीन आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for economic reforms.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the year of reforms in India with China",
+        null,
+        "Does not remember the year of reforms in China",
+        "Confuses Pakistan's reform year with China's"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-constructed and the solution is accurate. The correct answer is China, and the distractors reflect common misconceptions about the years of economic reforms in the region.",
+      "sources": [
+        {
+          "document": "ncert/11/economics/keec108.pdf",
+          "ordinal": 10,
+          "pageStart": 12,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 8: Comparative Development Experiences of India and Its Neighbours",
+            "In today’s globalised world, where geographical boundaries are slowly becoming meaningless, it is important for neighbouring countries in the developing world to understand the development strategies being pursued by their neighbours. This is more so because they share the relatively limited economic space in world markets. In this unit, we will compare India’s developmental experiences with two of its important and strategic neighbours — Pakistan and China."
+          ]
+        },
+        {
+          "document": "ncert/11/economics/keec108.pdf",
+          "ordinal": 11,
+          "pageStart": 13,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 8: Comparative Development Experiences of India and Its Neighbours",
+            "In today’s globalised world, where geographical boundaries are slowly becoming meaningless, it is important for neighbouring countries in the developing world to understand the development strategies being pursued by their neighbours. This is more so because they share the relatively limited economic space in world markets. In this unit, we will compare India’s developmental experiences with two of its important and strategic neighbours — Pakistan and China."
+          ]
+        },
+        {
+          "document": "ncert/11/economics/keec108.pdf",
+          "ordinal": 12,
+          "pageStart": 13,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 8: Comparative Development Experiences of India and Its Neighbours",
+            "In today’s globalised world, where geographical boundaries are slowly becoming meaningless, it is important for neighbouring countries in the developing world to understand the development strategies being pursued by their neighbours. This is more so because they share the relatively limited economic space in world markets. In this unit, we will compare India’s developmental experiences with two of its important and strategic neighbours — Pakistan and China."
+          ]
+        },
+        {
+          "document": "ncert/11/economics/keec108.pdf",
+          "ordinal": 13,
+          "pageStart": 14,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 8: Comparative Development Experiences of India and Its Neighbours",
+            "In today’s globalised world, where geographical boundaries are slowly becoming meaningless, it is important for neighbouring countries in the developing world to understand the development strategies being pursued by their neighbours. This is more so because they share the relatively limited economic space in world markets. In this unit, we will compare India’s developmental experiences with two of its important and strategic neighbours — Pakistan and China."
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T10:34:15.598Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "In which year did India introduce economic reforms?",
+      "choices": [
+        "1978",
+        "1988",
+        "1991",
+        "1997"
+      ],
+      "answerIndex": 2,
+      "solution": "India introduced economic reforms in 1991, which marked a significant shift in the country's economic policy. This year is widely recognized as the beginning of major liberalization efforts. The other options correspond to different countries or incorrect timeframes.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "भारत ने आर्थिक सुधार किस वर्ष में शुरू किए?",
+          "choices": [
+            "1978",
+            "1988",
+            "1991",
+            "1997"
+          ],
+          "solution": "भारत ने 1991 में आर्थिक सुधार शुरू किए, जो देश की आर्थिक नीति में महत्वपूर्ण परिवर्तन के रूप में जाना जाता है। इस वर्ष को व्यापक लिबरलाइजेशन प्रयासों की शुरुआत के रूप में व्यापक रूप से मान्यता प्राप्त है। अन्य विकल्प अलग देशों या गलत समय अवधि के संबंध में हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate terminology. The correct answer remains in the same position (option 2), and the distractors are still incorrect.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "भारताने आर्थिक सुधारणा कोणत्या वर्षी सुरू केल्या?",
+          "choices": [
+            "1978",
+            "1988",
+            "1991",
+            "1997"
+          ],
+          "solution": "भारताने 1991 मध्ये आर्थिक सुधारणा सुरू केल्या, जे देशाच्या आर्थिक नीतीत महत्त्वपूर्ण बदलाचे प्रतीक होते. हे वर्ष मोठ्या स्वायत्तता प्रयत्नांच्या सुरुवातीचे मानले जाते. इतर विकल्पांमध्ये वेगळ्या देशांचे किंवा चुकीच्या कालावधीचे वर्ष आहेत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for economic reforms.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Mistakes China's reform year for India's",
+        "Mistakes Pakistan's reform year for India's",
+        null,
+        "Confuses the year with another decade"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 1991, as India introduced economic reforms in that year. The author's solution is accurate, and the reasons for the wrong options reflect common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/11/economics/keec108.pdf",
+          "ordinal": 10,
+          "pageStart": 12,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 8: Comparative Development Experiences of India and Its Neighbours",
+            "In today’s globalised world, where geographical boundaries are slowly becoming meaningless, it is important for neighbouring countries in the developing world to understand the development strategies being pursued by their neighbours. This is more so because they share the relatively limited economic space in world markets. In this unit, we will compare India’s developmental experiences with two of its important and strategic neighbours — Pakistan and China."
+          ]
+        },
+        {
+          "document": "ncert/11/economics/keec108.pdf",
+          "ordinal": 11,
+          "pageStart": 13,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 8: Comparative Development Experiences of India and Its Neighbours",
+            "In today’s globalised world, where geographical boundaries are slowly becoming meaningless, it is important for neighbouring countries in the developing world to understand the development strategies being pursued by their neighbours. This is more so because they share the relatively limited economic space in world markets. In this unit, we will compare India’s developmental experiences with two of its important and strategic neighbours — Pakistan and China."
+          ]
+        },
+        {
+          "document": "ncert/11/economics/keec108.pdf",
+          "ordinal": 12,
+          "pageStart": 13,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 8: Comparative Development Experiences of India and Its Neighbours",
+            "In today’s globalised world, where geographical boundaries are slowly becoming meaningless, it is important for neighbouring countries in the developing world to understand the development strategies being pursued by their neighbours. This is more so because they share the relatively limited economic space in world markets. In this unit, we will compare India’s developmental experiences with two of its important and strategic neighbours — Pakistan and China."
+          ]
+        },
+        {
+          "document": "ncert/11/economics/keec108.pdf",
+          "ordinal": 13,
+          "pageStart": 14,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 8: Comparative Development Experiences of India and Its Neighbours",
+            "In today’s globalised world, where geographical boundaries are slowly becoming meaningless, it is important for neighbouring countries in the developing world to understand the development strategies being pursued by their neighbours. This is more so because they share the relatively limited economic space in world markets. In this unit, we will compare India’s developmental experiences with two of its important and strategic neighbours — Pakistan and China."
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T10:34:15.598Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the main reason for the decline in China's population growth rate?",
+      "choices": [
+        "One-child norm",
+        "High fertility rate",
+        "Urbanisation",
+        "Low sex ratio"
+      ],
+      "answerIndex": 0,
+      "solution": "The one-child norm, implemented in China in the late 1970s, significantly reduced the number of children per family, leading to a decline in population growth. A high fertility rate would increase population growth, not decrease it. Urbanisation may affect population distribution but does not directly cause a decline in growth rate. A low sex ratio is a consequence of the one-child policy, not a cause of declining growth.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "चीन के जनसंख्या वृद्धि दर में गिरावट का मुख्य कारण क्या है?",
+          "choices": [
+            "एक-बच्चा नीति",
+            "उच्च जन्म दर",
+            "शहरीकरण",
+            "निम्न लिंग अनुपात"
+          ],
+          "solution": "एक-बच्चा नीति, जिसे चीन में 1970 के दशक के अंत में लागू किया गया था, परिवार में बच्चों की संख्या को काफी कम कर दिया, जिसके कारण जनसंख्या वृद्धि दर में गिरावट आई। उच्च जन्म दर जनसंख्या वृद्धि को बढ़ाएगी, न कि कम करेगी। शहरीकरण जनसंख्या वितरण पर प्रभाव डाल सकता है लेकिन जनसंख्या वृद्धि दर में गिरावट का सीधा कारण नहीं है। निम्न लिंग अनुपात एक-बच्चा नीति का परिणाम है, न कि जनसंख्या वृद्धि दर में गिरावट का कारण।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains original meaning, and uses appropriate Hindi terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "चीनच्या लोकसंख्या वाढीच्या दरात घट होण्याचे मुख्य कारण काय आहे?",
+          "choices": [
+            "एक-मुलाची नीती",
+            "उच्च उत्पादकता दर",
+            "शहरीकरण",
+            "निम्न लिंग गुणोत्तर"
+          ],
+          "solution": "एक-मुलाची नीती, जी चीनमध्ये 1970 च्या दशकात लागू करण्यात आली होती, कुटुंबातील मुलांच्या संख्येमध्ये मोठ्या प्रमाणात घट आणली, ज्यामुळे लोकसंख्या वाढीच्या दरात घट झाली. उच्च उत्पादकता दर लोकसंख्या वाढीला वाढविणारा असतो, नाहीतर घटविणारा. शहरीकरण लोकसंख्या वितरणावर परिणाम करू शकते परंतु लोकसंख्या वाढीच्या दरात घट होण्यास सीधा कारण नसते. निम्न लिंग गुणोत्तर एक-मुलाच्या नीतीचे परिणाम असते, नाहीतर लोकसंख्या वाढीच्या दरात घट होण्याचे कारण नसते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for demographic concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses the one-child norm with the cause of high fertility rate",
+        "Misinterprets the high fertility rate as the reason for population growth decline",
+        "Associates urbanisation with population growth decline"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 0 (One-child norm), as the passage clearly states this as the main reason for the decline in population growth. The other options are correctly identified as misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/11/economics/keec108.pdf",
+          "ordinal": 4,
+          "pageStart": 6,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 8: Comparative Development Experiences of India and Its Neighbours",
+            "In today’s globalised world, where geographical boundaries are slowly becoming meaningless, it is important for neighbouring countries in the developing world to understand the development strategies being pursued by their neighbours. This is more so because they share the relatively limited economic space in world markets. In this unit, we will compare India’s developmental experiences with two of its important and strategic neighbours — Pakistan and China."
+          ]
+        },
+        {
+          "document": "ncert/11/economics/keec108.pdf",
+          "ordinal": 5,
+          "pageStart": 7,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 8: Comparative Development Experiences of India and Its Neighbours",
+            "In today’s globalised world, where geographical boundaries are slowly becoming meaningless, it is important for neighbouring countries in the developing world to understand the development strategies being pursued by their neighbours. This is more so because they share the relatively limited economic space in world markets. In this unit, we will compare India’s developmental experiences with two of its important and strategic neighbours — Pakistan and China."
+          ]
+        },
+        {
+          "document": "ncert/11/economics/keec108.pdf",
+          "ordinal": 6,
+          "pageStart": 7,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 8: Comparative Development Experiences of India and Its Neighbours",
+            "In today’s globalised world, where geographical boundaries are slowly becoming meaningless, it is important for neighbouring countries in the developing world to understand the development strategies being pursued by their neighbours. This is more so because they share the relatively limited economic space in world markets. In this unit, we will compare India’s developmental experiences with two of its important and strategic neighbours — Pakistan and China."
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T10:34:15.598Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "Which country is mentioned as having a command economy that has recently started moving towards a democratic system?",
+      "choices": [
+        "India",
+        "China",
+        "Pakistan",
+        "Nepal"
+      ],
+      "answerIndex": 1,
+      "solution": "China is the correct answer because it is a country with a command economy that has undergone significant political and economic reforms, moving toward more democratic practices. India, Pakistan, and Nepal do not fit the description of a command economy with recent moves toward democracy.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "कौन सा देश उल्लेखित है जिसकी आदेश अर्थव्यवस्था है जो हाल ही में लोकतांत्रिक प्रणाली की ओर बढ़ रही है?",
+          "choices": [
+            "भारत",
+            "चीन",
+            "पाकिस्तान",
+            "नेपाल"
+          ],
+          "solution": "चीन सही उत्तर है क्योंकि यह एक आदेश अर्थव्यवस्था वाला देश है जिसके राजनीतिक एवं आर्थिक सुधार हुए हैं जो लोकतांत्रिक प्रथाओं की ओर बढ़ रहे हैं। भारत, पाकिस्तान एवं नेपाल आदेश अर्थव्यवस्था के विवरण के अनुरूप नहीं हैं जिसमें हाल ही में लोकतांत्रिक प्रणाली की ओर बढ़ रही है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, with appropriate Hindi terminology for economic and political systems.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "कोणत्या देशाचे नाव आर्थिक नियंत्रण अर्थव्यवस्था असलेल्या देशाचे नाव दिले गेले आहे जो आधी लोकशाही प्रणालीकडे जाण्यास सुरुवात केली आहे?",
+          "choices": [
+            "भारत",
+            "चीन",
+            "पाकिस्तान",
+            "नेपाळ"
+          ],
+          "solution": "चीन हा बरोबर उत्तर आहे कारण तो एक आर्थिक नियंत्रण अर्थव्यवस्था असलेला देश आहे जो लोकशाही प्रणालीकडे जाण्यासाठी मोठ्या राजकीय आणि आर्थिक सुधारणा केल्या आहेत. भारत, पाकिस्तान आणि नेपाळ आर्थिक नियंत्रण अर्थव्यवस्था असलेल्या देशांच्या वर्णनास अनुरूप नाहीत.",
+          "imageAlt": null,
+          "critique": "The Marathi translation accurately reflects the English question and solution. Technical terms like 'command economy' are translated appropriately as 'आर्थिक नियंत्रण अर्थव्यवस्था', which is the term used in Marathi textbooks. The correct answer (2) remains in the same position, and the distractors are still incorrect.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses India with China",
+        null,
+        "Mistakes Pakistan for the correct answer",
+        "Incorrectly names another country"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is China, as it is the only country described in the text as having a command economy that has recently started moving toward a democratic system. The other options are incorrect based on the passage.",
+      "sources": [
+        {
+          "document": "ncert/11/economics/keec108.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 8: Comparative Development Experiences of India and Its Neighbours",
+            "In today’s globalised world, where geographical boundaries are slowly becoming meaningless, it is important for neighbouring countries in the developing world to understand the development strategies being pursued by their neighbours. This is more so because they share the relatively limited economic space in world markets. In this unit, we will compare India’s developmental experiences with two of its important and strategic neighbours — Pakistan and China."
+          ]
+        },
+        {
+          "document": "ncert/11/economics/keec108.pdf",
+          "ordinal": 1,
+          "pageStart": 4,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 8: Comparative Development Experiences of India and Its Neighbours",
+            "In today’s globalised world, where geographical boundaries are slowly becoming meaningless, it is important for neighbouring countries in the developing world to understand the development strategies being pursued by their neighbours. This is more so because they share the relatively limited economic space in world markets. In this unit, we will compare India’s developmental experiences with two of its important and strategic neighbours — Pakistan and China."
+          ]
+        },
+        {
+          "document": "ncert/11/economics/keec108.pdf",
+          "ordinal": 2,
+          "pageStart": 5,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 8: Comparative Development Experiences of India and Its Neighbours",
+            "In today’s globalised world, where geographical boundaries are slowly becoming meaningless, it is important for neighbouring countries in the developing world to understand the development strategies being pursued by their neighbours. This is more so because they share the relatively limited economic space in world markets. In this unit, we will compare India’s developmental experiences with two of its important and strategic neighbours — Pakistan and China."
+          ]
+        },
+        {
+          "document": "ncert/11/economics/keec108.pdf",
+          "ordinal": 3,
+          "pageStart": 5,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 8: Comparative Development Experiences of India and Its Neighbours",
+            "In today’s globalised world, where geographical boundaries are slowly becoming meaningless, it is important for neighbouring countries in the developing world to understand the development strategies being pursued by their neighbours. This is more so because they share the relatively limited economic space in world markets. In this unit, we will compare India’s developmental experiences with two of its important and strategic neighbours — Pakistan and China."
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T10:34:15.598Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "Which country has the highest density of population among India, China, and Pakistan?",
+      "choices": [
+        "China",
+        "India",
+        "Pakistan",
+        "All have the same density"
+      ],
+      "answerIndex": 1,
+      "solution": "India has the highest population density among the three countries because it has a large population concentrated in a relatively smaller area compared to China and Pakistan. China, despite having a large population, has a lower density due to its vast land area. Pakistan has a lower density than India because it has fewer people spread over a larger area than India.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "भारत, चीन और पाकिस्तान में से कौन-सा देश जनसंख्या के सबसे अधिक घनत्व वाला है?",
+          "choices": [
+            "चीन",
+            "भारत",
+            "पाकिस्तान",
+            "सभी के समान घनत्व है"
+          ],
+          "solution": "भारत तीनों देशों में सबसे अधिक जनसंख्या घनत्व वाला है क्योंकि इसकी बड़ी जनसंख्या चीन और पाकिस्तान की तुलना में आपेक्षिक रूप से छोटे क्षेत्र में केंद्रित है। चीन के पास बड़ी जनसंख्या होने के बावजूद इसका घनत्व कम है क्योंकि इसके बहुत बड़े भूभाग हैं। पाकिस्तान भारत की तुलना में कम घनत्व वाला है क्योंकि इसकी जनसंख्या भारत की तुलना में बड़े क्षेत्र में फैली हुई है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology for population density and related concepts.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "भारत, चीन आणि पाकिस्तान यांमध्ये कोणत्या देशाची लोकसंख्या घनता सर्वात जास्त आहे?",
+          "choices": [
+            "चीन",
+            "भारत",
+            "पाकिस्तान",
+            "सर्वांची घनता समान आहे"
+          ],
+          "solution": "भारताची लोकसंख्या घनता तीन देशांमध्ये सर्वात जास्त आहे कारण त्याची मोठी लोकसंख्या चीन आणि पाकिस्तानच्या तुलनेत अपेक्षाकृत लहान क्षेत्रात केंद्रित आहे. चीनला त्याच्या मोठ्या भूभागामुळे लोकसंख्या घनता कमी आहे. पाकिस्तानची घनता भारतापेक्षा कमी आहे कारण त्याची लोकसंख्या भारतापेक्षा जास्त क्षेत्रात विस्तारली आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for population density and related concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses population density with land area",
+        null,
+        "Selects the country with the largest population instead of the highest density",
+        "Assumes all countries have the same population density"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is India (option 1). The author's reasoning is sound, as it aligns with the general understanding that India has a higher population density than China and Pakistan, even if the passage does not provide exact figures. The distractors reflect common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/11/economics/keec108.pdf",
+          "ordinal": 4,
+          "pageStart": 6,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 8: Comparative Development Experiences of India and Its Neighbours",
+            "In today’s globalised world, where geographical boundaries are slowly becoming meaningless, it is important for neighbouring countries in the developing world to understand the development strategies being pursued by their neighbours. This is more so because they share the relatively limited economic space in world markets. In this unit, we will compare India’s developmental experiences with two of its important and strategic neighbours — Pakistan and China."
+          ]
+        },
+        {
+          "document": "ncert/11/economics/keec108.pdf",
+          "ordinal": 5,
+          "pageStart": 7,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 8: Comparative Development Experiences of India and Its Neighbours",
+            "In today’s globalised world, where geographical boundaries are slowly becoming meaningless, it is important for neighbouring countries in the developing world to understand the development strategies being pursued by their neighbours. This is more so because they share the relatively limited economic space in world markets. In this unit, we will compare India’s developmental experiences with two of its important and strategic neighbours — Pakistan and China."
+          ]
+        },
+        {
+          "document": "ncert/11/economics/keec108.pdf",
+          "ordinal": 6,
+          "pageStart": 7,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 8: Comparative Development Experiences of India and Its Neighbours",
+            "In today’s globalised world, where geographical boundaries are slowly becoming meaningless, it is important for neighbouring countries in the developing world to understand the development strategies being pursued by their neighbours. This is more so because they share the relatively limited economic space in world markets. In this unit, we will compare India’s developmental experiences with two of its important and strategic neighbours — Pakistan and China."
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T10:34:15.598Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "What is the significance of the 'market system' in China's development?",
+      "choices": [
+        "It helped maintain political freedom",
+        "It ensured equitable distribution of resources",
+        "It allowed economic growth without losing political commitment",
+        "It reduced the role of the government"
+      ],
+      "answerIndex": 2,
+      "solution": "The market system in China's development allowed for economic growth while maintaining political control, which is crucial for the country's overall strategy. This option reflects the balance between economic reforms and political stability. The other options are incorrect because political freedom and equitable resource distribution are not primary outcomes of the market system in this context, and the government still plays a significant role.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "चीन के विकास में 'बाजार प्रणाली' का क्या महत्व है?",
+          "choices": [
+            "इसने राजनीतिक स्वतंत्रता बनाए रखने में सहायता की",
+            "इसने संसाधनों के समान वितरण की गारंटी दी",
+            "इसने राजनीतिक प्रतिबद्धता खोए बिना आर्थिक वृद्धि की अनुमति दी",
+            "इसने सरकार की भूमिका कम कर दी"
+          ],
+          "solution": "चीन के विकास में बाजार प्रणाली आर्थिक वृद्धि की अनुमति देती है जबकि राजनीतिक नियंत्रण बना रहता है, जो देश की समग्र रणनीति के लिए महत्वपूर्ण है। इस विकल्प में आर्थिक सुधारों और राजनीतिक स्थिरता के बीच संतुलन का प्रतिनिधित्व किया जाता है। अन्य विकल्प गलत हैं क्योंकि राजनीतिक स्वतंत्रता और संसाधनों के समान वितरण इस संदर्भ में बाजार प्रणाली के प्राथमिक परिणाम नहीं हैं और सरकार अभी भी महत्वपूर्ण भूमिका निभाती है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. The correct answer remains option (2), and the distractors remain incorrect. Technical terms like 'बाजार प्रणाली' (market system) and 'राजनीतिक प्रतिबद्धता' (political commitment) are appropriately translated and match standard Hindi academic usage.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "चीनच्या विकासात 'बाजार व्यवस्था'चे महत्व काय आहे?",
+          "choices": [
+            "त्याने राजकीय स्वातंत्र्य टिकवून ठेवले",
+            "त्याने संसाधनांचे न्याय्य वितरण खात्री केले",
+            "त्याने राजकीय प्रतिबद्धता गमावल्याशिवाय आर्थिक विकास संभव केला",
+            "त्याने सरकारची भूमिका कमी केली"
+          ],
+          "solution": "चीनच्या विकासात बाजार व्यवस्थेमुळे आर्थिक विकास झाला आणि राजकीय नियंत्रण टिकवून ठेवले गेले, जे देशाच्या समग्र रणनीतीसाठी महत्वाचे आहे. ही विकल्प आर्थिक सुधारणा आणि राजकीय स्थिरतेमधील संतुलन दर्शवतो. इतर विकल्प चुकीचे आहेत कारण राजकीय स्वातंत्र्य आणि संसाधनांचे न्याय्य वितरण हे बाजार व्यवस्थेचे प्राथमिक उत्पादन नाहीत आणि सरकार अजूनही महत्वाची भूमिका बजावत आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for political and economic concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the impact of the market system on political freedom",
+        "Misunderstands the role of the market system",
+        null,
+        "Misinterprets the role of the government in China's economy"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 2, as it aligns with the passage's emphasis on China's economic growth while maintaining political control. The other options reflect common misconceptions about the role of the market system and government in China's development.",
+      "sources": [
+        {
+          "document": "ncert/11/economics/keec108.pdf",
+          "ordinal": 10,
+          "pageStart": 12,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 8: Comparative Development Experiences of India and Its Neighbours",
+            "In today’s globalised world, where geographical boundaries are slowly becoming meaningless, it is important for neighbouring countries in the developing world to understand the development strategies being pursued by their neighbours. This is more so because they share the relatively limited economic space in world markets. In this unit, we will compare India’s developmental experiences with two of its important and strategic neighbours — Pakistan and China."
+          ]
+        },
+        {
+          "document": "ncert/11/economics/keec108.pdf",
+          "ordinal": 11,
+          "pageStart": 13,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 8: Comparative Development Experiences of India and Its Neighbours",
+            "In today’s globalised world, where geographical boundaries are slowly becoming meaningless, it is important for neighbouring countries in the developing world to understand the development strategies being pursued by their neighbours. This is more so because they share the relatively limited economic space in world markets. In this unit, we will compare India’s developmental experiences with two of its important and strategic neighbours — Pakistan and China."
+          ]
+        },
+        {
+          "document": "ncert/11/economics/keec108.pdf",
+          "ordinal": 12,
+          "pageStart": 13,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 8: Comparative Development Experiences of India and Its Neighbours",
+            "In today’s globalised world, where geographical boundaries are slowly becoming meaningless, it is important for neighbouring countries in the developing world to understand the development strategies being pursued by their neighbours. This is more so because they share the relatively limited economic space in world markets. In this unit, we will compare India’s developmental experiences with two of its important and strategic neighbours — Pakistan and China."
+          ]
+        },
+        {
+          "document": "ncert/11/economics/keec108.pdf",
+          "ordinal": 13,
+          "pageStart": 14,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 8: Comparative Development Experiences of India and Its Neighbours",
+            "In today’s globalised world, where geographical boundaries are slowly becoming meaningless, it is important for neighbouring countries in the developing world to understand the development strategies being pursued by their neighbours. This is more so because they share the relatively limited economic space in world markets. In this unit, we will compare India’s developmental experiences with two of its important and strategic neighbours — Pakistan and China."
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T10:34:15.598Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "If the sex ratio in Pakistan is low and biased against females, which of the following is most likely to be a consequence?",
+      "choices": [
+        "High population growth",
+        "Low fertility rate",
+        "High urbanisation",
+        "Economic underdevelopment"
+      ],
+      "answerIndex": 3,
+      "solution": "A low sex ratio, indicating a bias against females, can hinder economic development by limiting the participation of women in the workforce and reducing the overall human capital of the country. High population growth is more related to fertility rates than sex ratio. Low fertility rate would likely result in a higher sex ratio, not lower. High urbanisation is not directly linked to sex ratio in this context.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "अगर पाकिस्तान में लिंग अनुपात कम है और महिलाओं के पक्ष में असमानता है, तो निम्नलिखित में से कौन-सा एक परिणाम सबसे अधिक संभावित है?",
+          "choices": [
+            "उच्च जनसंख्या वृद्धि",
+            "निम्न जन्मदर",
+            "उच्च शहरीकरण",
+            "आर्थिक अपेक्षाकृत विकास न होना"
+          ],
+          "solution": "कम लिंग अनुपात, जो महिलाओं के प्रति असमानता को इंगित करता है, महिलाओं के श्रम बाजार में भाग लेने को रोककर आर्थिक विकास को बाधित कर सकता है और देश के कुल मानव पूंजी को कम कर सकता है। उच्च जनसंख्या वृद्धि लिंग अनुपात के बजाय जन्मदर से अधिक संबंधित है। निम्न जन्मदर एक उच्च लिंग अनुपात के परिणामस्वरूप होगा, न कि निम्न। उच्च शहरीकरण इस संदर्भ में लिंग अनुपात से सीधा संबंध नहीं है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, with appropriate Hindi terminology used.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "पाकिस्तानमध्ये लिंग गुणोत्तर कमी आहे आणि महिलांवर अन्याय आहे, तर खालीलपैकी कोणते असणे शक्य आहे?",
+          "choices": [
+            "उच्च लोकसंख्या वाढ",
+            "कमी जननशक्ती",
+            "उच्च शहरीकरण",
+            "आर्थिक अपुर्णता"
+          ],
+          "solution": "कमी लिंग गुणोत्तर, महिलांवर अन्याय दर्शवितो, जे महिलांच्या श्रमबाजारात सहभागाला आणि देशाच्या सर्वसामान्य मानवी पावलांमध्ये कमी झाल्यामुळे आर्थिक विकासाला अडथळा निर्माण करू शकते. उच्च लोकसंख्या वाढ ही जननशक्तीशी संबंधित असते, लिंग गुणोत्तराशी नाही. कमी जननशक्ती अधिक लिंग गुणोत्तराची निर्मिती करेल, नाही कमी. उच्च शहरीकरण या संदर्भात लिंग गुणोत्तराशी सीधा संबंध नाही.",
+          "imageAlt": null,
+          "critique": "The translation accurately reflects the original meaning, with appropriate Marathi terminology for demographic concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the cause and effect of low sex ratio and high population growth",
+        "Assumes a direct link between sex ratio and fertility rate",
+        "Misinterprets the relationship between sex ratio and urbanisation",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 3 (Economic underdevelopment). The reasoning aligns with the author's explanation that a low sex ratio, due to son preference, can hinder overall development. The other options represent common misconceptions about the relationships between sex ratio, population growth, fertility rate, and urbanisation.",
+      "sources": [
+        {
+          "document": "ncert/11/economics/keec108.pdf",
+          "ordinal": 4,
+          "pageStart": 6,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 8: Comparative Development Experiences of India and Its Neighbours",
+            "In today’s globalised world, where geographical boundaries are slowly becoming meaningless, it is important for neighbouring countries in the developing world to understand the development strategies being pursued by their neighbours. This is more so because they share the relatively limited economic space in world markets. In this unit, we will compare India’s developmental experiences with two of its important and strategic neighbours — Pakistan and China."
+          ]
+        },
+        {
+          "document": "ncert/11/economics/keec108.pdf",
+          "ordinal": 5,
+          "pageStart": 7,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 8: Comparative Development Experiences of India and Its Neighbours",
+            "In today’s globalised world, where geographical boundaries are slowly becoming meaningless, it is important for neighbouring countries in the developing world to understand the development strategies being pursued by their neighbours. This is more so because they share the relatively limited economic space in world markets. In this unit, we will compare India’s developmental experiences with two of its important and strategic neighbours — Pakistan and China."
+          ]
+        },
+        {
+          "document": "ncert/11/economics/keec108.pdf",
+          "ordinal": 6,
+          "pageStart": 7,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 8: Comparative Development Experiences of India and Its Neighbours",
+            "In today’s globalised world, where geographical boundaries are slowly becoming meaningless, it is important for neighbouring countries in the developing world to understand the development strategies being pursued by their neighbours. This is more so because they share the relatively limited economic space in world markets. In this unit, we will compare India’s developmental experiences with two of its important and strategic neighbours — Pakistan and China."
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T10:34:15.598Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Which of the following best explains why China's GDP (PPP) is significantly higher than India's and Pakistan's?",
+      "choices": [
+        "China has a larger population than India and Pakistan combined",
+        "China has a higher density of population than India and Pakistan",
+        "China has a higher rate of urbanisation than India and Pakistan",
+        "China has maintained a higher rate of economic growth over several decades"
+      ],
+      "answerIndex": 3,
+      "solution": "China's GDP (PPP) is significantly higher than India's and Pakistan's because it has maintained a higher rate of economic growth over several decades. This is supported by the data in Table 8.2, which shows that China achieved near double-digit growth during the 1980s, whereas India and Pakistan had lower growth rates. The other options are incorrect because they do not directly explain the difference in GDP. A larger population does not necessarily mean a higher GDP, higher population density is not the main factor in GDP, and higher urbanisation is not the primary reason for economic growth.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन सा भारत के गौरवान्वित अर्थव्यवस्था (PPP) के बराबर भारत और पाकिस्तान के मुकाबले बहुत अधिक होने की व्याख्या करता है?",
+          "choices": [
+            "चीन की जनसंख्या भारत और पाकिस्तान के संयुक्त जनसंख्या से अधिक है",
+            "चीन में जनसंख्या का घनत्व भारत और पाकिस्तान के मुकाबले अधिक है",
+            "चीन में शहरीकरण की दर भारत और पाकिस्तान के मुकाबले अधिक है",
+            "चीन ने कई दशकों तक अधिक आर्थिक वृद्धि की दर बनाए रखी है"
+          ],
+          "solution": "चीन के गौरवान्वित अर्थव्यवस्था (PPP) भारत और पाकिस्तान के मुकाबले बहुत अधिक है क्योंकि इसने कई दशकों तक अधिक आर्थिक वृद्धि की दर बनाए रखी है। यह तालिका 8.2 में दिए गए आंकड़ों द्वारा समर्थित है, जो बताता है कि 1980 के दशक में चीन ने लगभग दोगुनी वृद्धि हासिल की, जबकि भारत और पाकिस्तान की वृद्धि दर कम रही। अन्य विकल्प गलत हैं क्योंकि वे आर्थिक व्यवस्था में अंतर की व्याख्या नहीं करते। अधिक जनसंख्या आवश्यक रूप से अधिक आर्थिक व्यवस्था का कारण नहीं होती है, जनसंख्या घनत्व आर्थिक व्यवस्था के लिए मुख्य कारक नहीं है, और शहरीकरण की उच्च दर आर्थिक वृद्धि के लिए मुख्य कारण नहीं है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology for economic concepts.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणता भारताच्या आणि पाकिस्तानच्या तुलनेत चीनच्या GDP (PPP) चा जास्त असण्याचे सर्वात चांगले स्पष्टीकरण दर्शवतो?",
+          "choices": [
+            "चीनची लोकसंख्या भारत आणि पाकिस्तानच्या एकत्रित लोकसंख्येपेक्षा जास्त आहे",
+            "चीनची लोकसंख्या घनता भारत आणि पाकिस्तानपेक्षा जास्त आहे",
+            "चीनचा शहरीकरणाचा दर भारत आणि पाकिस्तानपेक्षा जास्त आहे",
+            "चीनने काही दशकांत जास्त आर्थिक विकासाचा दर राखला आहे"
+          ],
+          "solution": "चीनच्या GDP (PPP) चा भारत आणि पाकिस्तानपेक्षा जास्त असण्याचे कारण त्याने काही दशकांत जास्त आर्थिक विकासाचा दर राखला आहे. याचे समर्थन टेबल 8.2 मधील डेटाने केले गेले आहे, जे दर्शवते की चीनने 1980 च्या दशकात लगभग दुहेरी वाढ प्राप्त केली होती, तर भारत आणि पाकिस्तानने कमी वाढ नोंदवली होती. इतर विकल्प चुकीचे आहेत कारण ते GDP मधील फरकाचे सीधे स्पष्टीकरण देत नाहीत. जास्त लोकसंख्या जास्त GDP चे निश्चित संकेत नाही, जास्त लोकसंख्या घनता GDP चा मुख्य कारण नाही आणि जास्त शहरीकरण आर्थिक विकासाचा मुख्य कारण नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for economic concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses population size with economic output",
+        "Misinterprets population density as a factor in GDP",
+        "Focuses on urbanisation instead of growth rates as the key factor in GDP growth",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 3, as sustained higher economic growth directly explains the higher GDP (PPP). The other options are incorrect because they conflate population size, density, and urbanisation with economic output, which are not direct determinants of GDP.",
+      "sources": [
+        {
+          "document": "ncert/11/economics/keec108.pdf",
+          "ordinal": 4,
+          "pageStart": 6,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 8: Comparative Development Experiences of India and Its Neighbours",
+            "In today’s globalised world, where geographical boundaries are slowly becoming meaningless, it is important for neighbouring countries in the developing world to understand the development strategies being pursued by their neighbours. This is more so because they share the relatively limited economic space in world markets. In this unit, we will compare India’s developmental experiences with two of its important and strategic neighbours — Pakistan and China."
+          ]
+        },
+        {
+          "document": "ncert/11/economics/keec108.pdf",
+          "ordinal": 5,
+          "pageStart": 7,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 8: Comparative Development Experiences of India and Its Neighbours",
+            "In today’s globalised world, where geographical boundaries are slowly becoming meaningless, it is important for neighbouring countries in the developing world to understand the development strategies being pursued by their neighbours. This is more so because they share the relatively limited economic space in world markets. In this unit, we will compare India’s developmental experiences with two of its important and strategic neighbours — Pakistan and China."
+          ]
+        },
+        {
+          "document": "ncert/11/economics/keec108.pdf",
+          "ordinal": 6,
+          "pageStart": 7,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 8: Comparative Development Experiences of India and Its Neighbours",
+            "In today’s globalised world, where geographical boundaries are slowly becoming meaningless, it is important for neighbouring countries in the developing world to understand the development strategies being pursued by their neighbours. This is more so because they share the relatively limited economic space in world markets. In this unit, we will compare India’s developmental experiences with two of its important and strategic neighbours — Pakistan and China."
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T10:34:15.598Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
     }
   ]
 }

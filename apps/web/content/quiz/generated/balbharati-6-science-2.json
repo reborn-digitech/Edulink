@@ -406,6 +406,1497 @@
       "generatedAt": "2026-11-01T16:46:21.948Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "Which instrument is used to measure body temperature accurately?",
+      "choices": [
+        "Thermometer",
+        "Barometer",
+        "Hygrometer",
+        "Seismograph"
+      ],
+      "answerIndex": 0,
+      "solution": "A thermometer is designed to measure body temperature accurately based on its function in detecting heat. A barometer measures atmospheric pressure, a hygrometer measures humidity, and a seismograph detects earthquakes, none of which are related to body temperature.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "कौन सा यंत्र शरीर के तापमान को सटीक रूप से मापने के लिए प्रयोग किया जाता है?",
+          "choices": [
+            "थर्मामीटर",
+            "बैरोमीटर",
+            "हाइग्रोमीटर",
+            "सीस्मोग्राफ"
+          ],
+          "solution": "थर्मामीटर को शरीर के तापमान को सटीक रूप से मापने के लिए डिज़ाइन किया गया है, इसके कार्य में गर्मी का पता लगाना शामिल है। बैरोमीटर वातावरणीय दबाव को मापता है, हाइग्रोमीटर आर्द्रता को मापता है, और सीस्मोग्राफ भूकंप का पता लगाता है, जो कोई भी शरीर के तापमान से संबंधित नहीं है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard technical terms as found in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "शरीराच्या तापमानाचे तपासण्यासाठी कोणता उपकरण वापरला जातो?",
+          "choices": [
+            "थर्मॉमीटर",
+            "बॅरोमीटर",
+            "हायग्रॉमीटर",
+            "सिस्मोग्राफ"
+          ],
+          "solution": "थर्मॉमीटर हा उपकरण तापमान तपासण्यासाठी डिझाइन केलेला आहे. बॅरोमीटर हा वातावरणाचा दाब मोजतो, हायग्रॉमीटर हा आर्द्रता मोजतो आणि सिस्मोग्राफ हा भूकंप ओळखतो, जे सर्व शरीराच्या तापमानाशी संबंधित नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses thermometer with other measuring instruments",
+        "Confuses thermometer with an instrument for measuring air pressure",
+        "Confuses thermometer with an instrument for measuring humidity levels in the air"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The question is straightforward and the correct answer is clearly 0. The distractors are all common instruments for different measurements, and the author's reasons for the wrong options align with typical misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 21,
+          "pageStart": 28,
+          "pageEnd": 29,
+          "headingPath": [
+            "2. Measurement"
+          ]
+        },
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 22,
+          "pageStart": 30,
+          "pageEnd": 30,
+          "headingPath": [
+            "2. Measurement"
+          ]
+        },
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 23,
+          "pageStart": 31,
+          "pageEnd": 31,
+          "headingPath": [
+            "2. Measurement"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-10-31T04:01:24.987Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is the SI unit of temperature?",
+      "choices": [
+        "Celsius",
+        "Fahrenheit",
+        "Kelvin",
+        "Meters"
+      ],
+      "answerIndex": 2,
+      "solution": "Kelvin is the SI unit of temperature, used in scientific contexts for absolute temperature measurements. Celsius and Fahrenheit are commonly used but not the standard SI unit. Meters measure length, not temperature, making them irrelevant to this question. Therefore, the correct answer is Kelvin.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "तापमान की एसआई इकाई क्या है?",
+          "choices": [
+            "सेल्सियस",
+            "फारेनहाइट",
+            "केल्विन",
+            "मीटर"
+          ],
+          "solution": "केल्विन तापमान की एसआई इकाई है, जिसका वैज्ञानिक संदर्भ में परम तापमान मापन के लिए उपयोग किया जाता है। सेल्सियस और फारेनहाइट सामान्य रूप से उपयोग में लिए जाते हैं लेकिन एसआई इकाई के रूप में मान्य नहीं हैं। मीटर लंबाई मापता है, तापमान के लिए असंबंधित है, इसलिए इस प्रश्न के लिए अनुपयुक्त है। अतः सही उत्तर केल्विन है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard scientific terminology as taught in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "तापमानाचे एसआय एकक काय आहे?",
+          "choices": [
+            "सेल्सियस",
+            "फॅरेनहाइट",
+            "केल्विन",
+            "मीटर"
+          ],
+          "solution": "केल्विन हे तापमानाचे एसआय एकक आहे, जे वैज्ञानिक वापरासाठी निरपेक्ष तापमान मोजण्यासाठी वापरले जाते. सेल्सियस आणि फॅरेनहाइट सामान्यतः वापरले जातात परंतु एसआय एकक म्हणून मान्य नाहीत. मीटर लांबी मोजतात, तापमान मोजण्यासाठी अनुरूप नाहीत, त्यामुळे या प्रश्नाशी संबंधित नाहीत. त्यामुळे योग्य उत्तर केल्विन आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses Kelvin with Celsius",
+        "Confuses temperature scales with non-SI units commonly taught in some regions",
+        null,
+        "Confuses temperature units with units of length"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The question is straightforward and tests recall of SI units. The correct answer is Kelvin, and the author's reasoning aligns with standard scientific knowledge.",
+      "sources": [
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 24,
+          "pageStart": 31,
+          "pageEnd": 32,
+          "headingPath": [
+            "2. Measurement"
+          ]
+        },
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 25,
+          "pageStart": 33,
+          "pageEnd": 34,
+          "headingPath": [
+            "2. Measurement",
+            "Exercises"
+          ]
+        },
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 26,
+          "pageStart": 34,
+          "pageEnd": 34,
+          "headingPath": [
+            "2. Measurement",
+            "Exercises"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-10-31T04:01:24.987Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of the following is a non-standard unit of measurement?",
+      "choices": [
+        "Metre",
+        "Kilometre",
+        "Hand span",
+        "Centimetre"
+      ],
+      "answerIndex": 2,
+      "solution": "The correct answer is 'Hand span' because it is a non-standard unit that varies from person to person. 'Metre', 'Kilometre', and 'Centimetre' are standard units of measurement. A pupil who confuses non-standard units with standard ones might choose 'Metre'. A pupil who is not familiar with the concept might pick 'Kilometre'. A pupil who thinks all units are standard might choose 'Centimetre'.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा मापन की गैर-मानक इकाई है?",
+          "choices": [
+            "मीटर",
+            "किलोमीटर",
+            "हाथ की लंबाई",
+            "सेंटीमीटर"
+          ],
+          "solution": "सही उत्तर 'हाथ की लंबाई' है क्योंकि यह एक गैर-मानक इकाई है जो व्यक्ति-विशेष से व्यक्ति-विशेष भिन्न हो सकती है। 'मीटर', 'किलोमीटर' और 'सेंटीमीटर' मानक मापन इकाइयाँ हैं। एक छात्र जो गैर-मानक इकाइयों को मानक इकाइयों से भ्रमित कर सकता है, 'मीटर' चुन सकता है। एक छात्र जो अवधारणा से परिचित नहीं हो सकता है, 'किलोमीटर' चुन सकता है। एक छात्र जो सोचता है कि सभी इकाइयाँ मानक हैं, 'सेंटीमीटर' चुन सकता है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology for standard and non-standard units.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते एक अमानक तापमापन एकक आहे?",
+          "choices": [
+            "मीटर",
+            "किलोमीटर",
+            "हाताचे अंतर",
+            "सेंटीमीटर"
+          ],
+          "solution": "बरोबर उत्तर 'हाताचे अंतर' आहे कारण हे अमानक एकक आहे जे व्यक्तीपासून व्यक्तीला बदलते. 'मीटर', 'किलोमीटर' आणि 'सेंटीमीटर' हे मानक तापमापन एकक आहेत. एखादा विद्यार्थी अमानक एककांच्या बरोबरीत मानक एककांची चूक करू शकतो आणि 'मीटर' निवडू शकतो. एखादा विद्यार्थी जो अवधारणेच्या अज्ञानामुळे 'किलोमीटर' निवडू शकतो. एखादा विद्यार्थी जो सर्व एकके मानक असतील असे विचार करतो तो 'सेंटीमीटर' निवडू शकतो.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for standard units of measurement.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "confuses standard with non-standard units",
+        "not familiar with the concept",
+        null,
+        "thinks all units are standard"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-constructed, with a clear distinction between standard and non-standard units. 'Hand span' is indeed a non-standard unit, and the reasoning for the other options aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 18,
+          "pageStart": 24,
+          "pageEnd": 25,
+          "headingPath": [
+            "2. Measurement"
+          ]
+        },
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 19,
+          "pageStart": 25,
+          "pageEnd": 26,
+          "headingPath": [
+            "2. Measurement"
+          ]
+        },
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 20,
+          "pageStart": 26,
+          "pageEnd": 28,
+          "headingPath": [
+            "2. Measurement"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-10-31T04:01:24.987Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the main reason for using a thermometer to measure temperature?",
+      "choices": [
+        "To feel the warmth of an object",
+        "To get an accurate measurement of temperature",
+        "To estimate the temperature by touch",
+        "To determine the weight of an object"
+      ],
+      "answerIndex": 1,
+      "solution": "A thermometer is used to get an accurate measurement of temperature, which is essential for precise scientific observations. Estimating temperature by touch is unreliable because human perception varies. Feeling warmth or determining weight are unrelated to the function of a thermometer.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "तापमान को मापने के लिए थर्मामीटर का उपयोग करने का मुख्य कारण क्या है?",
+          "choices": [
+            "किसी वस्तु के गर्म होने का अनुभव करने के लिए",
+            "तापमान के एक सटीक माप के प्राप्त करने के लिए",
+            "स्पर्श द्वारा तापमान का अनुमान लगाने के लिए",
+            "किसी वस्तु के भार का निर्धारण करने के लिए"
+          ],
+          "solution": "एक थर्मामीटर का उपयोग तापमान के एक सटीक माप के प्राप्त करने के लिए किया जाता है, जो वैज्ञानिक अवलोकनों के लिए आवश्यक है। स्पर्श द्वारा तापमान का अनुमान अनिश्चित होता है क्योंकि मानव अनुभूति भिन्न-भिन्न होती है। गर्मी का अनुभव करना या भार का निर्धारण करना थर्मामीटर के कार्य से संबंधित नहीं है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate scientific terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "तापमान मोजण्यासाठी थर्मॉमीटर वापरण्याचा मुख्य कारण काय आहे?",
+          "choices": [
+            "एखाद्या वस्तूच्या उष्णतेचा अनुभव घेण्यासाठी",
+            "तापमानाचे अचूक मोजमाप मिळविण्यासाठी",
+            "स्पर्शाने तापमानाचा अंदाज बांधण्यासाठी",
+            "वस्तूचा वजन ठरविण्यासाठी"
+          ],
+          "solution": "थर्मॉमीटर तापमानाचे अचूक मोजमाप मिळविण्यासाठी वापरला जातो, जे शास्त्रीय अवलोकनासाठी आवश्यक आहे. स्पर्शाने तापमानाचा अंदाज बांधणे अनिश्चित असते कारण मानवी ज्ञान विविध असतो. उष्णतेचा अनुभव घेणे किंवा वजन ठरविणे थर्मॉमीटरच्या कार्याशी संबंधित नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Misunderstands the purpose of a thermometer",
+        null,
+        "Refers to the method of estimating temperature by touch",
+        "Confuses temperature measurement with weight measurement"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 1, as thermometers are used for accurate temperature measurement. The other options reflect common misconceptions or unrelated functions.",
+      "sources": [
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 21,
+          "pageStart": 28,
+          "pageEnd": 29,
+          "headingPath": [
+            "2. Measurement"
+          ]
+        },
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 22,
+          "pageStart": 30,
+          "pageEnd": 30,
+          "headingPath": [
+            "2. Measurement"
+          ]
+        },
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 23,
+          "pageStart": 31,
+          "pageEnd": 31,
+          "headingPath": [
+            "2. Measurement"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-10-31T04:01:24.987Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "If a student measures the length of a table using a broken ruler, which step should they take to get the correct measurement?",
+      "choices": [
+        "Ignore the broken part and measure from the end",
+        "Measure from the first visible mark and subtract it from the final reading",
+        "Measure only the unbroken part of the ruler",
+        "Measure from the middle of the ruler"
+      ],
+      "answerIndex": 1,
+      "solution": "The correct answer is 'Measure from the first visible mark and subtract it from the final reading' because this accounts for the broken part. 'Ignore the broken part and measure from the end' would give an incorrect result. 'Measure only the unbroken part of the ruler' would not give the full length. 'Measure from the middle of the ruler' is not a correct method. A pupil who does not understand how to use a broken ruler might choose 'Ignore the broken part and measure from the end'. A pupil who is not aware of how to handle a broken ruler might pick 'Measure only the unbroken part of the ruler'. A pupil who does not know the correct technique might choose 'Measure from the middle of the ruler'.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि कोई छात्र एक टूटे हुए लकड़ी के पैमाने का उपयोग करके एक मेज की लंबाई मापता है, तो वह सही माप प्राप्त करने के लिए कौन सी कदम उठाए?",
+          "choices": [
+            "टूटे हुए हिस्से को अनदेखा करें और अंत से मापें",
+            "पहले दिखाई देने वाले चिह्न से मापें और अंतिम पाठ्यक्रम से घटाएं",
+            "केवल अटूट हिस्से के पैमाने को मापें",
+            "पैमाने के मध्य से मापें"
+          ],
+          "solution": "सही उत्तर 'पहले दिखाई देने वाले चिह्न से मापें और अंतिम पाठ्यक्रम से घटाएं' है क्योंकि यह टूटे हुए हिस्से को ध्यान में रखता है। 'टूटे हुए हिस्से को अनदेखा करें और अंत से मापें' गलत परिणाम देगा। 'केवल अटूट हिस्से के पैमाने को मापें' पूरी लंबाई नहीं देगा। 'पैमाने के मध्य से मापें' सही विधि नहीं है। एक छात्र जो पैमाने के टूटे हुए हिस्से का उपयोग कैसे करना है, इसके बारे में नहीं जानता है, वह 'टूटे हुए हिस्से को अनदेखा करें और अंत से मापें' चुन सकता है। एक छात्र जो पैमाने के टूटे हुए हिस्से के साथ कैसे निपटे, इसके बारे में अज्ञानी है, वह 'केवल अटूट हिस्से के पैमाने को मापें' चुन सकता है। एक छात्र जो सही तकनीक नहीं जानता है, वह 'पैमाने के मध्य से मापें' चुन सकता है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate technical terms commonly found in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका विद्यार्थ्याने एका मेजाची लांबी एका तुटलेल्या रुळाचा वापर करून मोजली, तर त्यांनी योग्य मोजणी मिळविण्यासाठी कोणता टप्पा घ्यावा?",
+          "choices": [
+            "तुटलेल्या भागाला नजर न देता शेवटपासून मोजा",
+            "पहिल्या दिसणाऱ्या चिन्हापासून मोजा आणि अंतिम वाचनापासून ते वजा करा",
+            "रुळाच्या अखंड भागापासून मात्र मोजा",
+            "रुळाच्या मध्यापासून मोजा"
+          ],
+          "solution": "योग्य उत्तर 'पहिल्या दिसणाऱ्या चिन्हापासून मोजा आणि अंतिम वाचनापासून ते वजा करा' असे आहे कारण ते तुटलेल्या भागाचा विचार करते. 'तुटलेल्या भागाला नजर न देता शेवटपासून मोजा' असे करणे अयोग्य निकाल देईल. 'रुळाच्या अखंड भागापासून मात्र मोजा' असे करणे पूर्ण लांबी मिळविण्यास मदत करणार नाही. 'रुळाच्या मध्यापासून मोजा' हा योग्य पद्धत नाही. एखादा विद्यार्थी जो तुटलेल्या रुळाच्या वापराचा योग्य पद्धत जाणून न घेता 'तुटलेल्या भागाला नजर न देता शेवटपासून मोजा' निवडू शकतो. एखादा विद्यार्थी जो तुटलेल्या रुळाच्या वापराचा योग्य पद्धत जाणून न घेता 'रुळाच्या अखंड भागापासून मात्र मोजा' निवडू शकतो. एखादा विद्यार्थी जो योग्य तंत्र जाणून न घेता 'रुळाच्या मध्यापासून मोजा' निवडू शकतो.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for measuring instruments.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "does not understand how to use a broken ruler",
+        null,
+        "not aware of how to handle a broken ruler",
+        "does not know the correct technique"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 1, as measuring from the first visible mark and subtracting it from the final reading accounts for the broken part of the ruler. The other options represent common misconceptions about using a broken ruler.",
+      "sources": [
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 18,
+          "pageStart": 24,
+          "pageEnd": 25,
+          "headingPath": [
+            "2. Measurement"
+          ]
+        },
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 19,
+          "pageStart": 25,
+          "pageEnd": 26,
+          "headingPath": [
+            "2. Measurement"
+          ]
+        },
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 20,
+          "pageStart": 26,
+          "pageEnd": 28,
+          "headingPath": [
+            "2. Measurement"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-10-31T04:01:24.987Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "In a science fair, a student uses a measuring tape to measure the length of a table. The tape has markings that are not evenly spaced. What will be the effect of this on the measurement?",
+      "choices": [
+        "The measurement will be accurate",
+        "The measurement will be incorrect",
+        "The measurement will be more precise",
+        "The measurement will remain the same"
+      ],
+      "answerIndex": 1,
+      "solution": "The correct answer is 'The measurement will be incorrect' because uneven markings on the tape will lead to inaccurate readings. 'The measurement will be accurate' is incorrect because the markings are not reliable. 'The measurement will be more precise' is incorrect because uneven markings reduce precision. 'The measurement will remain the same' is incorrect because the tape is faulty. A pupil who thinks that the tape is reliable might choose 'The measurement will be accurate'. A pupil who misunderstands precision might pick 'The measurement will be more precise'. A pupil who does not realize that the tape is faulty might choose 'The measurement will remain the same'.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक विज्ञान मेले में, एक छात्र एक मापन टेप का उपयोग मेज की लंबाई मापने के लिए करता है। टेप पर चिह्न असमान रूप से अंतरित हैं। इसका मापन पर क्या प्रभाव होगा?",
+          "choices": [
+            "मापन सही होगा",
+            "मापन गलत होगा",
+            "मापन अधिक सटीक होगा",
+            "मापन एक ही रहेगा"
+          ],
+          "solution": "सही उत्तर 'मापन गलत होगा' है क्योंकि टेप पर असमान चिह्न असही पाठ ले जाएंगे। 'मापन सही होगा' गलत है क्योंकि चिह्न विश्वसनीय नहीं हैं। 'मापन अधिक सटीक होगा' गलत है क्योंकि असमान चिह्न सटीकता कम करते हैं। 'मापन एक ही रहेगा' गलत है क्योंकि टेप खराब है। एक छात्र जो सोचता है कि टेप विश्वसनीय है, 'मापन सही होगा' चुन सकता है। एक छात्र जो सटीकता को गलत समझता है, 'मापन अधिक सटीक होगा' चुन सकता है। एक छात्र जो नहीं समझता कि टेप खराब है, 'मापन एक ही रहेगा' चुन सकता है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. All options and the solution are correctly translated, with technical terms like 'सटीक' (precise) and 'गलत' (incorrect) matching standard Hindi science terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "विज्ञान प्रदर्शनात, एक विद्यार्थी टेबलच्या लांबीचे मोजण्यासाठी मोजणीच्या फटाचा वापर करतो. फटावर चिन्हे समान अंतरावर नाहीत. याचा मोजमापावर काय परिणाम होईल?",
+          "choices": [
+            "मोजमाप अचूक राहील",
+            "मोजमाप चुकीचा राहील",
+            "मोजमाप अधिक तपशीलवार राहील",
+            "मोजमाप बरोबर राहील"
+          ],
+          "solution": "बरोबर उत्तर 'मोजमाप चुकीचा राहील' आहे कारण फटावरील असमान चिन्हे अचूक वाचनांमुळे असंभव आहे. 'मोजमाप अचूक राहील' चुकीचे आहे कारण चिन्हे विश्वासार्ह नाहीत. 'मोजमाप अधिक तपशीलवार राहील' चुकीचे आहे कारण असमान चिन्हे तपशीलवारता कमी करतात. 'मोजमाप बरोबर राहील' चुकीचे आहे कारण फटा खराब आहे. एखादा विद्यार्थी जो फटाची विश्वासार्हता ओळखत नाही तो 'मोजमाप अचूक राहील' निवडू शकतो. एखादा विद्यार्थी जो तपशीलवारतेचा अपाय ओळखत नाही तो 'मोजमाप अधिक तपशीलवार राहील' निवडू शकतो. एखादा विद्यार्थी जो फटाची खराबी ओळखत नाही तो 'मोजमाप बरोबर राहील' निवडू शकतो.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "thinks the tape is reliable",
+        null,
+        "misunderstands precision",
+        "does not realize that the tape is faulty"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is sound and correctly identifies option 1 as the correct answer. The reasoning aligns with the scientific understanding that uneven markings on a measuring tape will lead to incorrect measurements.",
+      "sources": [
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 18,
+          "pageStart": 24,
+          "pageEnd": 25,
+          "headingPath": [
+            "2. Measurement"
+          ]
+        },
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 19,
+          "pageStart": 25,
+          "pageEnd": 26,
+          "headingPath": [
+            "2. Measurement"
+          ]
+        },
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 20,
+          "pageStart": 26,
+          "pageEnd": 28,
+          "headingPath": [
+            "2. Measurement"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-10-31T04:01:24.987Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "Which type of thermometer is used to measure body temperature quickly without touching the person?",
+      "choices": [
+        "Digital thermometer",
+        "Infrared thermometer",
+        "Laboratory thermometer",
+        "Clinical thermometer"
+      ],
+      "answerIndex": 1,
+      "solution": "An infrared thermometer measures body temperature from a distance without physical contact, making it ideal for quick and hygienic readings. Digital thermometers, laboratory thermometers, and clinical thermometers typically require direct contact with the body to function accurately.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "किस प्रकार के थर्मामीटर का उपयोग व्यक्ति के संपर्क में आए बिना तेजी से शरीर के तापमान को मापने के लिए किया जाता है?",
+          "choices": [
+            "डिजिटल थर्मामीटर",
+            "अवरक्त थर्मामीटर",
+            "प्रयोगशाला थर्मामीटर",
+            "क्लिनिकल थर्मामीटर"
+          ],
+          "solution": "एक अवरक्त थर्मामीटर शरीर के तापमान को दूर से मापता है बिना शारीरिक संपर्क के, जो तेज और जीवित रहने के लिए आदर्श होता है। डिजिटल थर्मामीटर, प्रयोगशाला थर्मामीटर और क्लिनिकल थर्मामीटर आमतौर पर शरीर के सीधे संपर्क में होने के बिना सटीक रूप से काम नहीं करते हैं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriately translated, and the correct answer remains in the same position.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "शरीराच्या तापमानाचे तापमापक वापरून व्यक्तीला स्पर्श करण्याशिवाय वेगाने कसे मोजले जाते?",
+          "choices": [
+            "डिजिटल तापमापक",
+            "अतिनील प्रकाश तापमापक",
+            "प्रयोगशाळा तापमापक",
+            "निदान तापमापक"
+          ],
+          "solution": "अतिनील प्रकाश तापमापक व्यक्तीला स्पर्श करण्याशिवाय दूरूनून शरीराचे तापमान मोजतो, जे वेगवान आणि जीवनसंचार विरोधी वाचनासाठी उपयुक्त आहे. डिजिटल तापमापक, प्रयोगशाळा तापमापक आणि निदान तापमापक यांना शरीराशी सीधा स्पर्श करणे आवश्यक असते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Chooses a thermometer that requires direct contact",
+        null,
+        "Chooses a thermometer used for general temperature measurement",
+        "Chooses a thermometer used for body temperature but not for non-contact use"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 1 (Infrared thermometer), as it measures temperature without direct contact. The author's reasoning aligns with this, and the misconceptions described for the other options are plausible for students.",
+      "sources": [
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 21,
+          "pageStart": 28,
+          "pageEnd": 29,
+          "headingPath": [
+            "2. Measurement"
+          ]
+        },
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 22,
+          "pageStart": 30,
+          "pageEnd": 30,
+          "headingPath": [
+            "2. Measurement"
+          ]
+        },
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 23,
+          "pageStart": 31,
+          "pageEnd": 31,
+          "headingPath": [
+            "2. Measurement"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-10-31T04:01:24.987Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "A student measures the length of a thread using a ruler. They start measuring from the 2 cm mark instead of the 0 cm mark. If the reading at the end of the thread is 15 cm, what is the actual length of the thread?",
+      "choices": [
+        "13 cm",
+        "15 cm",
+        "17 cm",
+        "20 cm"
+      ],
+      "answerIndex": 0,
+      "solution": "The correct answer is '13 cm' because the student started from the 2 cm mark, so the actual length is 15 cm - 2 cm = 13 cm. '15 cm' is incorrect because it does not account for the starting position. '17 cm' is incorrect because it adds the starting position instead of subtracting. '20 cm' is incorrect because it is not based on the given data. A pupil who does not account for the starting position might choose '15 cm'. A pupil who adds the starting position instead of subtracting might pick '17 cm'. A pupil who miscalculates might choose '20 cm'.",
+      "checkExpr": "15-2",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "mr": {
+          "stem": "एका विद्यार्थ्याने एका तारेची लांबी रुळाने मोजली. त्यांनी 0 सें.मी. च्या ठिकाणापेक्षा 2 सें.मी. च्या ठिकाणापासून मोजणी सुरू केली. जर तारेच्या अंतावरील वाचन 15 सें.मी. असेल, तर तारेची खरी लांबी किती असेल?",
+          "choices": [
+            "13 सें.मी.",
+            "15 सें.मी.",
+            "17 सें.मी.",
+            "20 सें.मी."
+          ],
+          "solution": "सही उत्तर '13 सें.मी.' असेल कारण विद्यार्थी 2 सें.मी. च्या ठिकाणापासून सुरू केले, म्हणून खरी लांबी 15 सें.मी. - 2 सें.मी. = 13 सें.मी. असेल. '15 सें.मी.' चूक असेल कारण त्यात प्रारंभिक स्थानाचा विचार केला गेलेला नाही. '17 सें.मी.' चूक असेल कारण त्यात प्रारंभिक स्थान जोडले गेले असेल आणि वजा केले गेले नाही. '20 सें.मी.' चूक असेल कारण ते दिलेल्या माहितीवर आधारित नाही. एखादा विद्यार्थी जो प्रारंभिक स्थानाचा विचार करत नाही तो '15 सें.मी.' निवडेल. एखादा विद्यार्थी जो प्रारंभिक स्थान जोडतो आणि वजा करत नाही तो '17 सें.मी.' निवडेल. एखादा विद्यार्थी जो गणना चूक करतो तो '20 सें.मी.' निवडेल.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for measurements and scientific concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "does not account for the starting position",
+        "adds the starting position instead of subtracting",
+        "miscalculates"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct and the reasoning aligns with the actual calculation. The correct answer is 13 cm, as the student started measuring from the 2 cm mark instead of 0 cm.",
+      "sources": [
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 18,
+          "pageStart": 24,
+          "pageEnd": 25,
+          "headingPath": [
+            "2. Measurement"
+          ]
+        },
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 19,
+          "pageStart": 25,
+          "pageEnd": 26,
+          "headingPath": [
+            "2. Measurement"
+          ]
+        },
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 20,
+          "pageStart": 26,
+          "pageEnd": 28,
+          "headingPath": [
+            "2. Measurement"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-10-31T04:01:24.987Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Which unit would you use to measure the thickness of a key?",
+      "choices": [
+        "Metre",
+        "Centimetre",
+        "Millimetre",
+        "Kilometre"
+      ],
+      "answerIndex": 2,
+      "solution": "Millimetres are used to measure very small lengths, such as the thickness of a key, because they are much smaller than centimetres or metres. Metres and centimetres are too large for such a small measurement, and kilometres are used for extremely long distances, not for objects like a key.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "आप एक कुंडली की मोटाई मापने के लिए किस इकाई का उपयोग करेंगे?",
+          "choices": [
+            "मीटर",
+            "सेंटीमीटर",
+            "मिलीमीटर",
+            "किलोमीटर"
+          ],
+          "solution": "मिलीमीटर का उपयोग बहुत छोटी लंबाई, जैसे कि एक कुंडली की मोटाई मापने के लिए किया जाता है, क्योंकि वे सेंटीमीटर या मीटर की तुलना में बहुत छोटे होते हैं। मीटर और सेंटीमीटर ऐसी छोटी माप के लिए बहुत बड़े होते हैं, और किलोमीटर का उपयोग अत्यधिक लंबी दूरियों के लिए किया जाता है, एक कुंडली जैसी वस्तुओं के लिए नहीं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, technical terms are standard in Hindi textbooks, and the logic of the solution matches the original.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एखाद्या कीच्या जाडीचे मोजण्यासाठी तुम्ही कोणता एकक वापराल?",
+          "choices": [
+            "मीटर",
+            "सेंटीमीटर",
+            "मिलीमीटर",
+            "किलोमीटर"
+          ],
+          "solution": "मिलीमीटर लहान लांबींचे मोजण्यासाठी वापरले जातात, जसे की एखाद्या कीच्या जाडीचे. कारण ते सेंटीमीटर किंवा मीटर पेक्षा खूप लहान आहेत. मीटर आणि सेंटीमीटर अशा लहान मोजणीसाठी खूप मोठे आहेत आणि किलोमीटर खूप दूर अंतरांसाठी वापरले जातात, एखाद्या कीसारख्या वस्तूसाठी नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses millimetre with metre",
+        "Confuses millimetre with centimetre",
+        null,
+        "Confuses millimetre with kilometre"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is sound and correctly identifies millimetre as the appropriate unit for measuring the thickness of a key. The reasoning aligns with standard scientific measurement practices.",
+      "sources": [
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 24,
+          "pageStart": 31,
+          "pageEnd": 32,
+          "headingPath": [
+            "2. Measurement"
+          ]
+        },
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 25,
+          "pageStart": 33,
+          "pageEnd": 34,
+          "headingPath": [
+            "2. Measurement",
+            "Exercises"
+          ]
+        },
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 26,
+          "pageStart": 34,
+          "pageEnd": 34,
+          "headingPath": [
+            "2. Measurement",
+            "Exercises"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-10-31T04:01:24.987Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which unit is used to measure the length of a classroom?",
+      "choices": [
+        "Kilometre",
+        "Millimetre",
+        "Centimetre",
+        "Metre"
+      ],
+      "answerIndex": 3,
+      "solution": "The metre is the standard unit for measuring lengths of rooms or classrooms because it is appropriately sized for such dimensions. A kilometre is far too large, used for much greater distances, while millimetres and centimetres are too small for measuring spaces of that scale. Therefore, the correct option is 'Metre'.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "कक्षा की लंबाई मापने के लिए कौन सा इकाई प्रयोग किया जाता है?",
+          "choices": [
+            "किलोमीटर",
+            "मिलीमीटर",
+            "सेंटीमीटर",
+            "मीटर"
+          ],
+          "solution": "मीटर कक्षाओं या कक्षा की लंबाई मापने के लिए मानक इकाई है क्योंकि यह ऐसे आयामों के लिए उपयुक्त आकार की होती है। किलोमीटर बहुत बड़ा होता है, जो बहुत बड़ी दूरियों के लिए उपयोग किया जाता है, जबकि मिलीमीटर और सेंटीमीटर इस पैमाने के स्थानों के लिए बहुत छोटे होते हैं। इसलिए सही विकल्प 'मीटर' है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses standard Indian educational terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका शाळेच्या खोलीच्या लांबीचे मोजण्यास कोणते एकक वापरले जाते?",
+          "choices": [
+            "किलोमीटर",
+            "मिलीमीटर",
+            "सेंटीमीटर",
+            "मीटर"
+          ],
+          "solution": "मीटर हे खोली किंवा शाळेच्या लांबीच्या मोजण्यासाठी मानक एकक आहे कारण ते अशा अंतरांसाठी योग्य आकाराचे आहे. किलोमीटर खूप जास्त मोठे आहे, जे खूप मोठ्या अंतरांसाठी वापरले जाते, तर मिलीमीटर आणि सेंटीमीटर अशा अंतरांच्या मोजण्यासाठी खूप लहान आहेत. म्हणून, योग्य पर्याय 'मीटर' आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for units of measurement.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses kilometre with metre for medium distances",
+        "Confuses small measurements with larger ones",
+        "Confuses centimetre with metre for larger objects",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-constructed, with a clear correct answer and plausible distractors based on common misconceptions about unit sizes.",
+      "sources": [
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 17,
+          "pageStart": 25,
+          "pageEnd": 26,
+          "headingPath": [
+            "2. Measurement"
+          ]
+        },
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 18,
+          "pageStart": 26,
+          "pageEnd": 28,
+          "headingPath": [
+            "2. Measurement"
+          ]
+        },
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 19,
+          "pageStart": 28,
+          "pageEnd": 29,
+          "headingPath": [
+            "2. Measurement"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-10-30T18:52:10.816Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the purpose of an infrared thermometer?",
+      "choices": [
+        "To measure the temperature of a liquid",
+        "To measure body temperature by direct contact",
+        "To measure temperature from a distance without touching",
+        "To measure the temperature of the sun"
+      ],
+      "answerIndex": 2,
+      "solution": "An infrared thermometer measures temperature from a distance without touching the object, which is useful for quick and non-contact readings. Measuring a liquid's temperature, body temperature by direct contact, or the sun's temperature does not align with how infrared thermometers function, as they rely on detecting heat radiation.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "अंतर-दृश्य तापमापी का उद्देश्य क्या है?",
+          "choices": [
+            "तरल के तापमान को मापना",
+            "सीधे संपर्क द्वारा शरीर के तापमान को मापना",
+            "स्पर्श किए बिना दूर से तापमान मापना",
+            "सूर्य के तापमान को मापना"
+          ],
+          "solution": "एक अंतर-दृश्य तापमापी वस्तु के बिना स्पर्श किए दूर से तापमान मापता है, जो तेज और अस्पर्शीय पठन के लिए उपयोगी है। एक तरल के तापमान को मापना, सीधे संपर्क द्वारा शरीर के तापमान को मापना या सूर्य के तापमान को मापना अंतर-दृश्य तापमापी के कार्य के अनुरूप नहीं है, क्योंकि वे ऊष्मा विकिरण के पता लगाने पर निर्भर करते हैं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriately used in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "अयक्तिक तापमापकाचा उद्देश काय आहे?",
+          "choices": [
+            "तरल पदार्थाचा तापमान मोजणे",
+            "सीधा स्पर्श करून शारीरिक तापमान मोजणे",
+            "स्पर्श करण्यावाचून अंतरावरून तापमान मोजणे",
+            "सूर्याचा तापमान मोजणे"
+          ],
+          "solution": "अयक्तिक तापमापक वस्तूला स्पर्श करण्यावाचून अंतरावरून तापमान मोजतो, जे त्वरित आणि अस्पर्शी वाचनासाठी उपयुक्त आहे. तरल पदार्थाचा तापमान मोजणे, सीधा स्पर्श करून शारीरिक तापमान मोजणे किंवा सूर्याचा तापमान मोजणे अयक्तिक तापमापकाच्या कार्यपद्धतीशी जुळत नाही, कारण ते ताप विकिरण ओळखण्यावर अवलंबून असतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Student thinks infrared thermometers are only for liquids, not for measuring body temperature from a distance",
+        "Confuses with a digital thermometer",
+        null,
+        "Believes infrared thermometers can measure extremely hot objects like the sun"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 2, as it accurately describes the purpose of an infrared thermometer. The author's reasoning for the wrong options reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 20,
+          "pageStart": 30,
+          "pageEnd": 30,
+          "headingPath": [
+            "2. Measurement"
+          ]
+        },
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 21,
+          "pageStart": 31,
+          "pageEnd": 31,
+          "headingPath": [
+            "2. Measurement"
+          ]
+        },
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 22,
+          "pageStart": 31,
+          "pageEnd": 32,
+          "headingPath": [
+            "2. Measurement"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-10-30T18:52:10.816Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of the following is used to measure the length of a pencil?",
+      "choices": [
+        "Ruler",
+        "Measuring tape",
+        "Protractor",
+        "Balance scale"
+      ],
+      "answerIndex": 0,
+      "solution": "A ruler is used to measure the length of a pencil because it is designed for short, straight measurements. A measuring tape is better suited for longer distances, a protractor measures angles, and a balance scale measures mass or weight.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से किसका उपयोग पेंसिल की लंबाई मापने के लिए किया जाता है?",
+          "choices": [
+            "रूलर",
+            "मापन टेप",
+            "प्रोट्रैक्टर",
+            "तौल स्केल"
+          ],
+          "solution": "रूलर पेंसिल की लंबाई मापने के लिए उपयोग किया जाता है क्योंकि यह छोटे और सीधे माप के लिए डिज़ाइन किया गया है। मापन टेप लंबी दूरियों के लिए अधिक उपयुक्त है, प्रोट्रैक्टर कोणों को मापता है और तौल स्केल द्रव्यमान या भार को मापता है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, with appropriate Hindi technical terms used.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते पेन्सिलची लांबी मोजण्यासाठी वापरले जाते?",
+          "choices": [
+            "रूलर",
+            "मोजणीचे तारा",
+            "प्रोट्रॅक्टर",
+            "भारमापक तावडी"
+          ],
+          "solution": "रूलर पेन्सिलची लांबी मोजण्यासाठी वापरला जातो कारण तो लहान, सरळ मोजण्यासाठी डिझाइन केला गेला आहे. मोजणीचे तारा लांब अंतरांसाठी योग्य आहे, प्रोट्रॅक्टर कोन मोजतो आणि भारमापक तावडी द्रव्यमान किंवा वजन मोजते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi technical terms used for measuring instruments.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Chooses a tool for measuring longer distances",
+        "Chooses a tool for measuring angles",
+        "Chooses a tool for measuring weight"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The question is clear and the correct answer is unambiguous. The distractors represent common misconceptions about the functions of measuring tools.",
+      "sources": [
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 23,
+          "pageStart": 33,
+          "pageEnd": 34,
+          "headingPath": [
+            "2. Measurement",
+            "Exercises"
+          ]
+        },
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 24,
+          "pageStart": 34,
+          "pageEnd": 35,
+          "headingPath": [
+            "2. Measurement",
+            "Exercises"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-10-30T18:52:10.816Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If a laboratory thermometer has a range from 0°C to 100°C and there are 10 divisions between each 10°C mark, what is the value of each small division?",
+      "choices": [
+        "1°C",
+        "5°C",
+        "10°C",
+        "20°C"
+      ],
+      "answerIndex": 0,
+      "solution": "The thermometer has a range of 100°C, with 10 divisions between each 10°C mark. This means each small division represents 1°C. The correct answer is 1°C because 10°C divided by 10 divisions equals 1°C per division. The other options do not match this calculation.",
+      "checkExpr": "10/10",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक प्रयोगशाला थर्मामीटर की सीमा 0°C से 100°C तक है और प्रत्येक 10°C चिह्न के बीच 10 विभाजन हैं, तो प्रत्येक छोटे विभाजन का मान क्या है?",
+          "choices": [
+            "1°C",
+            "5°C",
+            "10°C",
+            "20°C"
+          ],
+          "solution": "थर्मामीटर की सीमा 100°C है, जिसमें प्रत्येक 10°C चिह्न के बीच 10 विभाजन हैं। इसका अर्थ है कि प्रत्येक छोटा विभाजन 1°C के बराबर होता है। सही उत्तर 1°C है क्योंकि 10°C को 10 विभाजन में विभाजित करने पर प्रति विभाजन 1°C प्राप्त होता है। अन्य विकल्प इस गणना के अनुरूप नहीं हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology for a science textbook.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर एखाद्या प्रयोगशाळा थर्मॉमीटरचा श्रेणी 0°C ते 100°C असेल आणि प्रत्येक 10°C च्या चिन्हात 10 विभाग असतील, तर प्रत्येक लहान विभागाची किंमत किती असेल?",
+          "choices": [
+            "1°C",
+            "5°C",
+            "10°C",
+            "20°C"
+          ],
+          "solution": "थर्मॉमीटरचा श्रेणी 100°C असून प्रत्येक 10°C च्या चिन्हात 10 विभाग असतात. ह्यामुळे प्रत्येक लहान विभाग 1°C ला बरोबर असतो. योग्य उत्तर 1°C असेल कारण 10°C ला 10 विभागांनी भागल्यास प्रत्येक विभागाला 1°C ची किंमत येते. इतर उत्तरे ह्या गणनेशी जुळत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Student divides the total range by the number of marked intervals instead of the number of divisions",
+        "Student assumes each large mark is 10°C and miscounts the divisions",
+        "Student assumes each division is 100°C divided by 5 intervals, not 10 divisions"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-constructed. The correct answer is 1°C, as there are 10 divisions between 10°C, so each division is 1°C. The author's reasoning for the distractors is valid and reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 20,
+          "pageStart": 30,
+          "pageEnd": 30,
+          "headingPath": [
+            "2. Measurement"
+          ]
+        },
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 21,
+          "pageStart": 31,
+          "pageEnd": 31,
+          "headingPath": [
+            "2. Measurement"
+          ]
+        },
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 22,
+          "pageStart": 31,
+          "pageEnd": 32,
+          "headingPath": [
+            "2. Measurement"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-10-30T18:52:10.816Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "What should be done to measure the temperature of a leaf on a tree?",
+      "choices": [
+        "Hold the thermometer vertically",
+        "Place the thermometer in the armpit",
+        "Use a digital thermometer",
+        "Ensure the bulb touches the leaf"
+      ],
+      "answerIndex": 3,
+      "solution": "To accurately measure the temperature of a leaf, the bulb of the thermometer must directly touch the leaf to ensure proper heat transfer and an accurate reading. Holding the thermometer vertically or placing it in the armpit is not relevant to measuring a leaf's temperature. Using a digital thermometer is not inherently correct unless the bulb is in contact with the leaf.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक पेड़ पर पत्ती के तापमान को मापने के लिए क्या करना चाहिए?",
+          "choices": [
+            "थर्मामीटर को लंबवत रखें",
+            "थर्मामीटर को ऊंगली में रखें",
+            "डिजिटल थर्मामीटर का उपयोग करें",
+            "यह सुनिश्चित करें कि बल्ब पत्ती से स्पर्श करे"
+          ],
+          "solution": "एक पत्ती के तापमान को सटीक रूप से मापने के लिए, थर्मामीटर के बल्ब को पत्ती सीधे स्पर्श करना चाहिए ताकि उचित ऊष्मा स्थानांतरण हो और सटीक पठन हो। थर्मामीटर को लंबवत रखना या इसे ऊंगली में रखना पत्ती के तापमान को मापने के लिए संबंधित नहीं है। डिजिटल थर्मामीटर का उपयोग तभी सही है जब बल्ब पत्ती से स्पर्श में हो।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the original English question and solution, with appropriate technical terms and correct answer positioning.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका वृक्षावरील पानाच्या तापमानाचे मोजमाप करायला काय करावे लागेल?",
+          "choices": [
+            "थर्मॉमीटर उभे ठेवावे",
+            "थर्मॉमीटर मानेत ठेवावे",
+            "डिजिटल थर्मॉमीटर वापरावा",
+            "तापमापकाचा गोला पानाला स्पर्श करत असल्याची खात्री करावी"
+          ],
+          "solution": "पानाच्या तापमानाचे अचूक मोजमाप करण्यासाठी, थर्मॉमीटरचा गोला पानाला सीधा स्पर्श करावा लागतो जेणेकरून उष्णता हस्तांतरण योग्य रीतीने होऊ शकेल आणि अचूक वाचन मिळू शकेल. थर्मॉमीटर उभे ठेवणे किंवा ते मानेत ठेवणे पानाच्या तापमानाचे मोजमाप करण्यासाठी संबंधित नाही. डिजिटल थर्मॉमीटर वापरणे अचूक नाही, जर गोला पानाला स्पर्श करत नसेल तर.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi technical terms used for thermometer components.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "confuses method for measuring body temperature with measuring a leaf",
+        "method for measuring body temperature",
+        "not specific to measuring a leaf",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 3, as the bulb must touch the leaf to measure its temperature. The other options are either for body temperature or not specific to the task. The author's reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 20,
+          "pageStart": 30,
+          "pageEnd": 30,
+          "headingPath": [
+            "2. Measurement"
+          ]
+        },
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 21,
+          "pageStart": 31,
+          "pageEnd": 31,
+          "headingPath": [
+            "2. Measurement"
+          ]
+        },
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 22,
+          "pageStart": 31,
+          "pageEnd": 32,
+          "headingPath": [
+            "2. Measurement"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-10-30T18:52:10.816Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "Which of the following is true about a clinical thermometer?",
+      "choices": [
+        "It can measure temperatures up to 110°C",
+        "It is used to measure the temperature of boiling liquids",
+        "It is used to measure body temperature",
+        "It is not accurate"
+      ],
+      "answerIndex": 2,
+      "solution": "A clinical thermometer is specifically designed to measure body temperature, which is its primary use. It has a limited range, typically between 35°C and 42°C, making it unsuitable for measuring higher temperatures like those of boiling liquids. The other options are incorrect because they either describe different types of thermometers or misrepresent the accuracy and purpose of a clinical thermometer.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा एक नैदानिक थर्मामीटर के बारे में सही है?",
+          "choices": [
+            "यह 110°C तक के तापमान को माप सकता है",
+            "यह उबलते द्रवों के तापमान को मापने के लिए प्रयोग किया जाता है",
+            "यह शारीरिक तापमान को मापने के लिए प्रयोग किया जाता है",
+            "यह अपर्याप्त शुद्धता वाला है"
+          ],
+          "solution": "एक नैदानिक थर्मामीटर का मुख्य उपयोग शारीरिक तापमान को मापना है। इसकी सीमा आमतौर पर 35°C से 42°C के बीच होती है, जिसके कारण इसका उपयोग उबलते द्रवों के तापमान को मापने के लिए उपयुक्त नहीं होता है। अन्य विकल्प गलत हैं क्योंकि वे अलग-अलग प्रकार के थर्मामीटर का वर्णन करते हैं या नैदानिक थर्मामीटर के शुद्धता और उद्देश्य का गलत वर्णन करते हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate technical terms as found in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते नैदानिक थर्मॉमीटरबद्दल खरे आहे?",
+          "choices": [
+            "ते 110°C पर्यंत तापमान मोजू शकते",
+            "ते उकळत असलेल्या द्रवांचे तापमान मोजण्यासाठी वापरले जाते",
+            "ते शरीराचे तापमान मोजण्यासाठी वापरले जाते",
+            "ते अचूक नाही"
+          ],
+          "solution": "नैदानिक थर्मॉमीटर शरीराचे तापमान मोजण्यासाठी विशेषतः डिझाइन केले गेले आहे, जे त्याचे प्राथमिक उद्देश आहे. त्याचा विस्तार सीमित असतो, सामान्यतः 35°C ते 42°C च्या दरम्यान, ज्यामुळे उकळत असलेल्या द्रवांचे तापमान मोजण्यासाठी अयोग्य ठरते. इतर विकल्प चुकीचे आहेत कारण ते वेगळ्या प्रकारच्या थर्मॉमीटर्सचे वर्णन करतात किंवा नैदानिक थर्मॉमीटरच्या अचूकतेचे आणि उद्देशाचे अपुरे वर्णन करतात.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the original meaning, and uses appropriate technical terms. The correct answer remains in the same position (option 2). All distractors are still incorrect and distinct.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Chooses a description for a laboratory thermometer",
+        "Chooses a description for a laboratory thermometer",
+        null,
+        "Chooses an inaccurate statement about the thermometer"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is option 2, as clinical thermometers are specifically designed to measure body temperature. The other options describe either laboratory thermometers or incorrect claims about accuracy.",
+      "sources": [
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 17,
+          "pageStart": 25,
+          "pageEnd": 26,
+          "headingPath": [
+            "2. Measurement"
+          ]
+        },
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 18,
+          "pageStart": 26,
+          "pageEnd": 28,
+          "headingPath": [
+            "2. Measurement"
+          ]
+        },
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 19,
+          "pageStart": 28,
+          "pageEnd": 29,
+          "headingPath": [
+            "2. Measurement"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-10-30T18:52:10.816Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Why is a thermometer necessary to measure temperature accurately?",
+      "choices": [
+        "Because our hands can feel heat but not measure it precisely",
+        "Because it is a commonly used instrument",
+        "Because it is used only in schools",
+        "Because it can measure a wide range of temperatures"
+      ],
+      "answerIndex": 0,
+      "solution": "A thermometer is necessary because our hands can detect heat but cannot provide precise temperature readings. Other options are incorrect because they do not explain why a thermometer is needed for accuracy. The other choices are either too general or unrelated to the purpose of measuring temperature precisely.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "mr": {
+          "stem": "तापमान चुकशी न करता मोजण्यासाठी थर्मॉमीटर आवश्यक का आहे?",
+          "choices": [
+            "कारण आमच्या हातांनी उष्णता जाणवू शकते पण त्याचे तपशीलवार मोजमाप करू शकत नाहीत",
+            "कारण ते सामान्यतः वापरले जाणारे उपकरण आहे",
+            "कारण ते फक्त शाळांमध्ये वापरले जाते",
+            "कारण ते विस्तृत तापमान परिसर मोजू शकते"
+          ],
+          "solution": "थर्मॉमीटर आवश्यक आहे कारण आमच्या हातांनी उष्णता जाणवू शकते पण त्याचे तपशीलवार मोजमाप करू शकत नाहीत. इतर विकल्प चुकीचे आहेत कारण ते थर्मॉमीटर आवश्यकतेचे कारण स्पष्ट करत नाहीत. इतर निवडा सामान्य आहेत किंवा तापमान मोजण्याच्या उद्देशाशी संबंधित नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms. The correct answer remains option (1) and the distractors are still incorrect.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "students may think that popularity equals accuracy",
+        "a student might think thermometers are only for educational settings, not for real-world use",
+        "students may confuse the range of measurement with the accuracy of measurement"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 0, as the question emphasizes the need for a thermometer to measure temperature accurately, not just to feel heat. The other options are either irrelevant or based on misconceptions about the purpose and use of thermometers.",
+      "sources": [
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 17,
+          "pageStart": 25,
+          "pageEnd": 26,
+          "headingPath": [
+            "2. Measurement"
+          ]
+        },
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 18,
+          "pageStart": 26,
+          "pageEnd": 28,
+          "headingPath": [
+            "2. Measurement"
+          ]
+        },
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 19,
+          "pageStart": 28,
+          "pageEnd": 29,
+          "headingPath": [
+            "2. Measurement"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-10-30T18:52:10.816Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
     }
   ]
 }

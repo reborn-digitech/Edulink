@@ -1,0 +1,807 @@
+{
+  "subject": "MATHS",
+  "classLevel": 10,
+  "chapter": "Chapter 1 — Linear Equations in Two Variables",
+  "name": "Linear Equations in Two Variables",
+  "slug": "balbharati-maths-10-linear-equations-in-two-variables",
+  "summary": "This chapter teaches how to solve linear equations in two variables using different methods.",
+  "position": 1,
+  "source": "generated against Balbharati Mathematics, Class 10, chapter 1 (\"१० वी गणित भाग - १ इंग्रजी\", chapter 1) (2026 edition)",
+  "licence": "Original questions written for Shalaghar · CC BY-SA 4.0",
+  "translations": {
+    "hi": {
+      "name": "अध्याय 1 - दो चरों में रैखिक समीकरण",
+      "summary": "इस अध्याय में दो चरों में रैखिक समीकरणों को हल करने के विभिन्न विधियों का अध्ययन करते हैं।"
+    },
+    "mr": {
+      "name": "अध्याय 1 - दो चरांमध्ये रेषीय समीकरणे",
+      "summary": "हा अध्याय दो चरांमध्ये रेषीय समीकरणे सोडविण्याच्या विविध पद्धती शिकवतो."
+    }
+  },
+  "board": "BALBHARATI",
+  "book": "१० वी गणित भाग - १ इंग्रजी",
+  "edition": "2026 edition",
+  "generatedAt": "2026-11-06T17:21:50.934Z",
+  "model": "qwen3-30b-a3b",
+  "topicIsNew": true,
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "What is the value of x in the equation 4x = 19?",
+      "choices": [
+        "(A) 4",
+        "(B) 3",
+        "(C) 2",
+        "(D) 19/4"
+      ],
+      "answerIndex": 3,
+      "solution": "The correct answer is 19/4, which is obtained by dividing both sides of the equation by 4. The other options are incorrect because they do not represent the solution to the equation.",
+      "checkExpr": "19/4",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "समीकरण 4x = 19 में x का मान क्या है?",
+          "choices": [
+            "4",
+            "3",
+            "2",
+            "19/4"
+          ],
+          "solution": "सही उत्तर 19/4 है, जो समीकरण के दोनों पक्षों को 4 से विभाजित करके प्राप्त किया जाता है। अन्य विकल्प गलत हैं क्योंकि वे समीकरण के हल का प्रतिनिधित्व नहीं करते हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, with correct mathematical terminology and structure matching the English version.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "समीकरण 4x = 19 मध्ये x ची किंमत काय आहे?",
+          "choices": [
+            "4",
+            "3",
+            "2",
+            "19/4"
+          ],
+          "solution": "बरोबर उत्तर 19/4 आहे, जे समीकरणाच्या दोन्ही बाजूंना 4 ने भागल्याने मिळते. इतर उत्तरे समीकरणाचे उत्तर नाहीत.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the coefficient with the solution",
+        "Fails to divide correctly",
+        "Assumes the solution is the same as the constant term",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct. Dividing both sides of the equation 4x = 19 by 4 gives x = 19/4, which matches the key.",
+      "sources": [
+        {
+          "document": "balbharati/10/mathematics/1003000608.pdf",
+          "ordinal": 13,
+          "pageStart": 37,
+          "pageEnd": 39,
+          "headingPath": [
+            "1. Linear Equations in Two Variables",
+            "Problem Set - 1"
+          ]
+        },
+        {
+          "document": "balbharati/10/mathematics/1003000608.pdf",
+          "ordinal": 14,
+          "pageStart": 39,
+          "pageEnd": 39,
+          "headingPath": [
+            "1. Linear Equations in Two Variables",
+            "Problem Set - 1"
+          ]
+        }
+      ],
+      "edition": "2026 edition",
+      "generatedAt": "2026-11-06T17:21:50.934Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the value of y when x = 3 for the equation 4x + y = 19?",
+      "choices": [
+        "7",
+        "6",
+        "5",
+        "4"
+      ],
+      "answerIndex": 0,
+      "solution": "Substituting x = 3 into 4x + y = 19 gives 4(3) + y = 19, which simplifies to 12 + y = 19. Solving for y gives y = 7. The other options are incorrect because they do not satisfy the equation when x = 3.",
+      "checkExpr": "19 - 4*3",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "x = 3 के लिए समीकरण 4x + y = 19 के लिए y का मान क्या है?",
+          "choices": [
+            "7",
+            "6",
+            "5",
+            "4"
+          ],
+          "solution": "x = 3 के स्थान पर 4x + y = 19 में रखने पर 4(3) + y = 19 प्राप्त होता है, जो 12 + y = 19 में सरलीकृत हो जाता है। y के लिए हल करने पर y = 7 प्राप्त होता है। अन्य विकल्प गलत हैं क्योंकि जब x = 3 होता है तो वे समीकरण को संतुष्ट नहीं करते।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "x = 3 माटे 4x + y = 19 समीकरणासाठी y ची किंमत किती आहे?",
+          "choices": [
+            "7",
+            "6",
+            "5",
+            "4"
+          ],
+          "solution": "x = 3 ची 4x + y = 19 मध्ये ठिकाणी ठेवल्यास 4(3) + y = 19 हा असतो, जो 12 + y = 19 अशा रूपात सोपा केला जातो. y ची किंमत मिळविण्यासाठी y = 7 मिळतो. इतर विकल्प अयोग्य आहेत कारण x = 3 ची ठिकाणी ठेवल्यास समीकरण पूर्ण होत नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "adds 4 to 3 instead of multiplying",
+        "subtracts 3 from 19 instead of 12",
+        "uses 4x = 19 directly"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct and matches the key. The reasoning for the distractors is plausible and reflects common student misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/10/mathematics/1003000608.pdf",
+          "ordinal": 13,
+          "pageStart": 37,
+          "pageEnd": 39,
+          "headingPath": [
+            "1. Linear Equations in Two Variables",
+            "Problem Set - 1"
+          ]
+        },
+        {
+          "document": "balbharati/10/mathematics/1003000608.pdf",
+          "ordinal": 14,
+          "pageStart": 39,
+          "pageEnd": 39,
+          "headingPath": [
+            "1. Linear Equations in Two Variables",
+            "Problem Set - 1"
+          ]
+        }
+      ],
+      "edition": "2026 edition",
+      "generatedAt": "2026-11-06T17:21:50.934Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of the following is an example of a linear equation in two variables?",
+      "choices": [
+        "4x + 3y = 12",
+        "4x + 3y^2 = 12",
+        "x^2 + y = 12",
+        "x + y^3 = 12"
+      ],
+      "answerIndex": 0,
+      "solution": "A linear equation in two variables has terms where the degree of each variable is 1. The equation 4x + 3y = 12 satisfies this condition. The other options include terms with higher degrees or products of variables, which make them non-linear.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन दो चरों में रैखिक समीकरण का उदाहरण है?",
+          "choices": [
+            "4x + 3y = 12",
+            "4x + 3y^2 = 12",
+            "x^2 + y = 12",
+            "x + y^3 = 12"
+          ],
+          "solution": "दो चरों में रैखिक समीकरण में प्रत्येक चर की घात 1 होती है। समीकरण 4x + 3y = 12 इस स्थिति को पूरा करता है। अन्य विकल्पों में उच्च घात वाले पद या चरों के गुणनफल होते हैं, जो इन्हें अरैखिक बना देते हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते दोन चलांतील रेषीय समीकरणाचे उदाहरण आहे?",
+          "choices": [
+            "4x + 3y = 12",
+            "4x + 3y^2 = 12",
+            "x^2 + y = 12",
+            "x + y^3 = 12"
+          ],
+          "solution": "दोन चलांतील रेषीय समीकरणामध्ये प्रत्येक चलाचा घात 1 असतो. 4x + 3y = 12 हा समीकरण ह्या अटीला अनुरूप आहे. उरलेल्या विकल्पांमध्ये उच्च घात असलेले पद किंवा चलांचे गुणाकार असल्याने ते अरेषीय बनतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the mathematical meaning, with appropriate Marathi terminology for 'linear equation' and 'degree'.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses the degree of the variable, thinking that a single variable can have a higher exponent while still being linear",
+        "Student thinks only one variable needs to be squared, not both",
+        "Thinking that any equation with two variables is linear, regardless of the exponents on the variables."
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 0, as it is the only equation where both variables have degree 1. The other options contain terms with higher degrees, making them non-linear. The author's reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/10/mathematics/1003000608.pdf",
+          "ordinal": 4,
+          "pageStart": 11,
+          "pageEnd": 13,
+          "headingPath": [
+            "1. Linear Equations in Two Variables"
+          ]
+        },
+        {
+          "document": "balbharati/10/mathematics/1003000608.pdf",
+          "ordinal": 5,
+          "pageStart": 14,
+          "pageEnd": 16,
+          "headingPath": [
+            "1. Linear Equations in Two Variables"
+          ]
+        },
+        {
+          "document": "balbharati/10/mathematics/1003000608.pdf",
+          "ordinal": 6,
+          "pageStart": 16,
+          "pageEnd": 18,
+          "headingPath": [
+            "1. Linear Equations in Two Variables"
+          ]
+        }
+      ],
+      "edition": "2026 edition",
+      "generatedAt": "2026-11-06T17:21:50.934Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If the speed of a boat in still water is 8 km/hr and the speed of the water current is 4 km/hr, what is the speed of the boat downstream?",
+      "choices": [
+        "4 km/hr",
+        "8 km/hr",
+        "12 km/hr",
+        "16 km/hr"
+      ],
+      "answerIndex": 2,
+      "solution": "The speed of the boat downstream is the sum of the speed of the boat in still water and the speed of the water current, which is 8 + 4 = 12 km/hr. The other options are incorrect calculations.",
+      "checkExpr": "8+4",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि शांत जल में एक नाव की गति 8 किमी/घंटा है और जल प्रवाह की गति 4 किमी/घंटा है, तो नाव की धारा के अनुकूल गति क्या है?",
+          "choices": [
+            "4 किमी/घंटा",
+            "8 किमी/घंटा",
+            "12 किमी/घंटा",
+            "16 किमी/घंटा"
+          ],
+          "solution": "धारा के अनुकूल नाव की गति शांत जल में नाव की गति और जल प्रवाह की गति के योग के बराबर होती है, जो 8 + 4 = 12 किमी/घंटा है। अन्य विकल्प गलत गणनाएं हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Hindi technical terms used.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर शांत पाण्यात नाविकाचा वेग 8 किमी/तास आहे आणि पाण्याच्या वाहनाचा वेग 4 किमी/तास आहे, तर नाविकाचा वेग खालच्या दिशेने किती असेल?",
+          "choices": [
+            "4 किमी/तास",
+            "8 किमी/तास",
+            "12 किमी/तास",
+            "16 किमी/तास"
+          ],
+          "solution": "शांत पाण्यात नाविकाचा वेग आणि पाण्याच्या वाहनाचा वेग यांच्या बेरजेने नाविकाचा खालच्या दिशेने वेग मिळतो, जो 8 + 4 = 12 किमी/तास आहे. इतर विकल्प चुकीच्या गणनांचे आहेत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms for 'still water' and 'water current'.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Subtracts the speeds instead of adding",
+        "Chooses the speed in still water",
+        null,
+        "Chooses twice the speed in still water"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly adds the boat's speed in still water to the current's speed to get the downstream speed. The reasoning for the distractors aligns with common student misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/10/mathematics/1003000608.pdf",
+          "ordinal": 10,
+          "pageStart": 28,
+          "pageEnd": 31,
+          "headingPath": [
+            "1. Linear Equations in Two Variables",
+            "2x+y=16 3x-2y=3"
+          ]
+        },
+        {
+          "document": "balbharati/10/mathematics/1003000608.pdf",
+          "ordinal": 11,
+          "pageStart": 31,
+          "pageEnd": 35,
+          "headingPath": [
+            "1. Linear Equations in Two Variables",
+            "2x+y=16 3x-2y=3"
+          ]
+        },
+        {
+          "document": "balbharati/10/mathematics/1003000608.pdf",
+          "ordinal": 12,
+          "pageStart": 35,
+          "pageEnd": 36,
+          "headingPath": [
+            "1. Linear Equations in Two Variables",
+            "x y x y"
+          ]
+        }
+      ],
+      "edition": "2026 edition",
+      "generatedAt": "2026-11-06T17:21:50.934Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If two equations have a determinant D = 0 and D_x = 0, what can be said about their solutions?",
+      "choices": [
+        "Only one common solution.",
+        "No solution.",
+        "Infinite number of solutions.",
+        "Only two solutions."
+      ],
+      "answerIndex": 2,
+      "solution": "When D = 0 and D_x = 0, the system of equations has infinite solutions because the equations are dependent. The other options are incorrect because they do not match the conditions for the determinant method.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि दो समीकरणों के अन्तर्गत निर्धारक D = 0 और D_x = 0 हो, तो उनके हलों के बारे में क्या कहा जा सकता है?",
+          "choices": [
+            "केवल एक सामान्य हल होता है।",
+            "कोई हल नहीं होता है।",
+            "अनंत संख्या में हल होते हैं।",
+            "केवल दो हल होते हैं।"
+          ],
+          "solution": "जब D = 0 और D_x = 0 होता है, तो समीकरणों की प्रणाली के अनंत हल होते हैं क्योंकि समीकरण आश्रित होते हैं। अन्य विकल्प गलत हैं क्योंकि वे निर्धारक विधि के लिए शर्तों के अनुरूप नहीं होते हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर दोन समीकरणांचे निर्देशक D = 0 आणि D_x = 0 असतील, तर त्यांच्या उकलीबद्दल काय म्हणता येईल?",
+          "choices": [
+            "केवळ एक सामायिक उकल असते.",
+            "उकल नाही.",
+            "अनंत संख्येने उकल असतात.",
+            "केवळ दोन उकल असतात."
+          ],
+          "solution": "जेव्हा D = 0 आणि D_x = 0 असते, तेव्हा समीकरणांच्या प्रणालीला अनंत उकल असतात कारण समीकरणे आश्रित असतात. इतर विकल्प असतात कारण ते निर्देशक पद्धतीच्या अटींना अनुरूप नसतात.",
+          "imageAlt": null,
+          "critique": "The Marathi translation accurately reflects the original English question, with appropriate terminology used in a Marathi-medium educational context.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "confuses the conditions for a unique solution",
+        "thinks D = 0 implies no solution",
+        null,
+        "assumes only two solutions are possible"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly identifies that when D = 0 and D_x = 0, the system has infinite solutions. The reasoning aligns with the properties of linear equations in two variables.",
+      "sources": [
+        {
+          "document": "balbharati/10/mathematics/1003000608.pdf",
+          "ordinal": 13,
+          "pageStart": 37,
+          "pageEnd": 39,
+          "headingPath": [
+            "1. Linear Equations in Two Variables",
+            "Problem Set - 1"
+          ]
+        },
+        {
+          "document": "balbharati/10/mathematics/1003000608.pdf",
+          "ordinal": 14,
+          "pageStart": 39,
+          "pageEnd": 39,
+          "headingPath": [
+            "1. Linear Equations in Two Variables",
+            "Problem Set - 1"
+          ]
+        }
+      ],
+      "edition": "2026 edition",
+      "generatedAt": "2026-11-06T17:21:50.934Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "If the equations ax + by = c and dx + ey = f have a unique solution, what condition must be satisfied?",
+      "choices": [
+        "(A) ae ≠ bd",
+        "(B) ae = bd",
+        "(C) ae + bd = 0",
+        "(D) ae - bd = 0"
+      ],
+      "answerIndex": 0,
+      "solution": "For the equations to have a unique solution, the determinant of the coefficients must not be zero, i.e., ae ≠ bd. The other options are incorrect because they do not represent the condition for a unique solution.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि समीकरण ax + by = c और dx + ey = f का एक अद्वितीय हल हो, तो कौन-सी शर्त पूरी होनी चाहिए?",
+          "choices": [
+            "ae ≠ bd",
+            "ae = bd",
+            "ae + bd = 0",
+            "ae - bd = 0"
+          ],
+          "solution": "हल के अद्वितीय होने के लिए गुणांकों के सारणिक का शून्य नहीं होना चाहिए, अर्थात् ae ≠ bd। अन्य विकल्प गलत हैं क्योंकि वे अद्वितीय हल की शर्त का प्रतिनिधित्व नहीं करते।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर समीकरणे ax + by = c आणि dx + ey = f एक अद्वितीय समाधान असतील, तर कोणता अट पूर्ण करावा लागेल?",
+          "choices": [
+            "ae ≠ bd",
+            "ae = bd",
+            "ae + bd = 0",
+            "ae - bd = 0"
+          ],
+          "solution": "समीकरणांना एक अद्वितीय समाधान असावे, तर सहगुणकांचा निर्णायक शून्य नसावा, अर्थात् ae ≠ bd. इतर विकल्प अयोग्य आहेत कारण ते अद्वितीय समाधानाची अट दर्शवत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, technical terms, and structure. The correct answer remains option (1), and the distractors are still incorrect in Marathi.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses the condition for no solution",
+        "Incorrectly assumes the determinant is zero",
+        "Adds the coefficients instead of comparing them"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct condition for a unique solution is that the determinant of the coefficient matrix (ae - bd) is not zero. The author's solution correctly identifies this as ae ≠ bd, and the reasoning for the other options aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/10/mathematics/1003000608.pdf",
+          "ordinal": 13,
+          "pageStart": 37,
+          "pageEnd": 39,
+          "headingPath": [
+            "1. Linear Equations in Two Variables",
+            "Problem Set - 1"
+          ]
+        },
+        {
+          "document": "balbharati/10/mathematics/1003000608.pdf",
+          "ordinal": 14,
+          "pageStart": 39,
+          "pageEnd": 39,
+          "headingPath": [
+            "1. Linear Equations in Two Variables",
+            "Problem Set - 1"
+          ]
+        }
+      ],
+      "edition": "2026 edition",
+      "generatedAt": "2026-11-06T17:21:50.934Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "Using the graphical method, if the lines representing the equations x + y = 6 and x - y = 4 intersect at (5, 1), which of the following is the solution to the equations?",
+      "choices": [
+        "(5, 1)",
+        "(1, 5)",
+        "(2, 4)",
+        "(4, 2)"
+      ],
+      "answerIndex": 0,
+      "solution": "The point of intersection (5, 1) represents the solution to the system of equations. The other options do not match the intersection point found from the graph. A pupil might confuse the coordinates of x and y or make an error in reading the graph.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "ग्राफिकल विधि का उपयोग करके, यदि समीकरणों x + y = 6 और x - y = 4 के प्रतिनिधित्व करने वाली रेखाएं (5, 1) पर प्रतिच्छेद करती हैं, तो निम्नलिखित में से कौन सा समीकरणों का हल है?",
+          "choices": [
+            "(5, 1)",
+            "(1, 5)",
+            "(2, 4)",
+            "(4, 2)"
+          ],
+          "solution": "प्रतिच्छेद बिंदु (5, 1) समीकरणों के प्रणाली के हल का प्रतिनिधित्व करता है। अन्य विकल्प ग्राफ से प्राप्त प्रतिच्छेद बिंदु के अनुरूप नहीं हैं। एक छात्र एक्स और वाई के निर्देशांक को गलती से बदल सकता है या ग्राफ को पढ़ने में त्रुटि कर सकता है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "आलेखीय पद्धतीने, जर समीकरणांच्या रेषा x + y = 6 आणि x - y = 4 (5, 1) वर छेदत असतील, तर खालीलपैकी कोणते समीकरणांचे उकल आहे?",
+          "choices": [
+            "(5, 1)",
+            "(1, 5)",
+            "(2, 4)",
+            "(4, 2)"
+          ],
+          "solution": "छेद बिंदू (5, 1) हे समीकरणांच्या प्रणालीचे उकल दर्शवते. इतर विकल्प आलेखावरून मिळालेल्या छेद बिंदूशी जुळत नाहीत. एका विद्यार्थी शक्यतो x आणि y च्या निर्देशकांचा गोंधळ करू शकतो किंवा आलेख वाचण्यात चूक करू शकतो.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses the x and y values of the intersection point",
+        "confuses x and y coordinates",
+        "incorrectly assumes values based on a miscalculation"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is straightforward. The point of intersection (5, 1) is explicitly given, so the correct answer is (5, 1). The other options are incorrect, and the author's reasoning for the distractors aligns with common student misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/10/mathematics/1003000608.pdf",
+          "ordinal": 4,
+          "pageStart": 11,
+          "pageEnd": 13,
+          "headingPath": [
+            "1. Linear Equations in Two Variables"
+          ]
+        },
+        {
+          "document": "balbharati/10/mathematics/1003000608.pdf",
+          "ordinal": 5,
+          "pageStart": 14,
+          "pageEnd": 16,
+          "headingPath": [
+            "1. Linear Equations in Two Variables"
+          ]
+        },
+        {
+          "document": "balbharati/10/mathematics/1003000608.pdf",
+          "ordinal": 6,
+          "pageStart": 16,
+          "pageEnd": 18,
+          "headingPath": [
+            "1. Linear Equations in Two Variables"
+          ]
+        }
+      ],
+      "edition": "2026 edition",
+      "generatedAt": "2026-11-06T17:21:50.934Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "What is the conclusion when the graphs of two linear equations are the same line?",
+      "choices": [
+        "No solution",
+        "One solution",
+        "Infinitely many solutions",
+        "Two solutions"
+      ],
+      "answerIndex": 2,
+      "solution": "When the graphs of two linear equations are the same line, there are infinitely many solutions because every point on the line satisfies both equations. The correct option is 'Infinitely many solutions'. The other options are incorrect as they do not match the situation described.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "जब दो रैखिक समीकरणों के ग्राफ एक ही रेखा होते हैं, तो निष्कर्ष क्या होता है?",
+          "choices": [
+            "कोई हल नहीं",
+            "एक हल",
+            "अनंत रूप से कई हल",
+            "दो हल"
+          ],
+          "solution": "जब दो रैखिक समीकरणों के ग्राफ एक ही रेखा होते हैं, तो अनंत रूप से कई हल होते हैं क्योंकि रेखा पर प्रत्येक बिंदु दोनों समीकरणों को संतुष्ट करता है। सही विकल्प 'अनंत रूप से कई हल' है। अन्य विकल्प गलत हैं क्योंकि वे वर्णित स्थिति के अनुरूप नहीं हैं।",
+          "imageAlt": "एक ग्राफ जिसमें दो ओवरलैपिंग रेखाएं हैं",
+          "critique": "The Hindi translation accurately reflects the meaning, structure, and terminology of the original English question. All options and the solution are correctly translated, with the correct answer remaining in the same position. The terminology used is standard in Hindi-medium mathematics education.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "दोन रेषीय समीकरणांच्या आलेखांच्या समान रेषा असताना निष्कर्ष काय असतो?",
+          "choices": [
+            "कोणताही उत्तर नाही",
+            "एक उत्तर",
+            "अनंत उत्तरे",
+            "दोन उत्तरे"
+          ],
+          "solution": "जेव्हा दोन रेषीय समीकरणांच्या आलेखांच्या समान रेषा असतात, तेव्हा अनंत उत्तरे असतात कारण रेषेवरील प्रत्येक बिंदू दोन्ही समीकरणांना पूर्ण करतो. योग्य विकल्प 'अनंत उत्तरे' आहे. इतर विकल्प असे नाहीत जे वर्णन केलेल्या स्थितीशी जुळत नाहीत.",
+          "imageAlt": "एक आलेख ज्यात दोन ओव्हरलॅपिंग रेषा दाखवल्या आहेत.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": "A graph showing two overlapping lines.",
+      "figure": {
+        "kind": "graph",
+        "spec": {
+          "x": {
+            "min": -5,
+            "max": 5,
+            "step": 1,
+            "label": "x"
+          },
+          "y": {
+            "min": -5,
+            "max": 5,
+            "step": 1,
+            "label": "y"
+          },
+          "grid": true,
+          "curves": [
+            {
+              "poly": [
+                1,
+                2,
+                3
+              ],
+              "label": "L1"
+            },
+            {
+              "poly": [
+                2,
+                4,
+                6
+              ],
+              "label": "L2"
+            }
+          ]
+        },
+        "labels": {
+          "x": {
+            "en": "x-axis"
+          },
+          "y": {
+            "en": "y-axis"
+          }
+        }
+      },
+      "needsFigure": true,
+      "distractorReason": [
+        "incorrectly states there is no solution",
+        "incorrectly states there is one solution",
+        null,
+        "incorrectly states there are two solutions"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is clear and the solution is correct. The correct answer is 'Infinitely many solutions' because overlapping lines represent the same equation, and every point on the line is a solution.",
+      "sources": [
+        {
+          "document": "balbharati/10/mathematics/1003000608.pdf",
+          "ordinal": 7,
+          "pageStart": 18,
+          "pageEnd": 21,
+          "headingPath": [
+            "1. Linear Equations in Two Variables"
+          ]
+        },
+        {
+          "document": "balbharati/10/mathematics/1003000608.pdf",
+          "ordinal": 8,
+          "pageStart": 21,
+          "pageEnd": 24,
+          "headingPath": [
+            "1. Linear Equations in Two Variables"
+          ]
+        },
+        {
+          "document": "balbharati/10/mathematics/1003000608.pdf",
+          "ordinal": 9,
+          "pageStart": 24,
+          "pageEnd": 28,
+          "headingPath": [
+            "1. Linear Equations in Two Variables"
+          ]
+        }
+      ],
+      "edition": "2026 edition",
+      "generatedAt": "2026-11-06T17:21:50.934Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    }
+  ]
+}

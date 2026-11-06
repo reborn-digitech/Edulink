@@ -1004,6 +1004,1071 @@
       "generatedAt": "2026-10-30T05:55:41.665Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is the formula used in the step-deviation method to find the mean?",
+      "choices": [
+        "x = a + h u",
+        "x = a + d",
+        "x = a + f",
+        "x = a + f d"
+      ],
+      "answerIndex": 0,
+      "solution": "The formula used in the step-deviation method to find the mean is x = a + h u. The other formulas are not used in the step-deviation method. The formula x = a + d is used in the assumed mean method. The formula x = a + f is not a valid formula for finding the mean. The formula x = a + f d is also not a valid formula for finding the mean.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "माध्य ज्ञात करने के लिए चर-विचलन विधि में कौन-सा सूत्र प्रयोग किया जाता है?",
+          "choices": [
+            "x = a + h u",
+            "x = a + d",
+            "x = a + f",
+            "x = a + f d"
+          ],
+          "solution": "माध्य ज्ञात करने के लिए चर-विचलन विधि में प्रयोग किया जाने वाला सूत्र x = a + h u है। अन्य सूत्र चर-विचलन विधि में प्रयोग नहीं किए जाते हैं। सूत्र x = a + d अनुमानित माध्य विधि में प्रयोग किया जाता है। सूत्र x = a + f माध्य ज्ञात करने के लिए वैध सूत्र नहीं है। सूत्र x = a + f d भी माध्य ज्ञात करने के लिए वैध सूत्र नहीं है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology as used in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "मध्य शोधण्यासाठी चरण-विचलन पद्धतीत वापरल्या जाणार्‍या सूत्राचे नाव काय आहे?",
+          "choices": [
+            "x = a + h u",
+            "x = a + d",
+            "x = a + f",
+            "x = a + f d"
+          ],
+          "solution": "मध्य शोधण्यासाठी चरण-विचलन पद्धतीत वापरल्या जाणार्‍या सूत्राचे नाव x = a + h u आहे. इतर सूत्रे चरण-विचलन पद्धतीत वापरली जात नाहीत. x = a + d सूत्र अनुमानी मध्य पद्धतीत वापरले जाते. x = a + f सूत्र मध्य शोधण्यासाठी वैध सूत्र नाही. x = a + f d सूत्र देखील मध्य शोधण्यासाठी वैध सूत्र नाही.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate and maintains the original meaning, with appropriate terminology used in a Marathi-medium educational context.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses step-deviation formula with assumed mean formula",
+        "Confuses step-deviation formula with incorrect formula",
+        "Confuses step-deviation formula with incorrect formula"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct formula for the step-deviation method is x = a + h u. The other options are incorrect, and the author's reasoning aligns with common misconceptions students might have.",
+      "sources": [
+        {
+          "document": "ncert/10/mathematics/jemh113.pdf",
+          "ordinal": 3,
+          "pageStart": 5,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 13: Statistics"
+          ]
+        },
+        {
+          "document": "ncert/10/mathematics/jemh113.pdf",
+          "ordinal": 4,
+          "pageStart": 8,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 13: Statistics"
+          ]
+        },
+        {
+          "document": "ncert/10/mathematics/jemh113.pdf",
+          "ordinal": 5,
+          "pageStart": 10,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 13: Statistics"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T18:44:53.475Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the purpose of using class marks in grouped data?",
+      "choices": [
+        "To represent the entire class interval",
+        "To find the total number of observations",
+        "To calculate the range of data",
+        "To determine the mode of data"
+      ],
+      "answerIndex": 0,
+      "solution": "Class marks are used to represent the entire class interval in grouped data. They serve as a central value for each class, making it easier to calculate measures like the mean. The other options are incorrect because they describe different statistical concepts.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "समूहीकृत डेटा में वर्ग चिह्नों का उपयोग करने का उद्देश्य क्या है?",
+          "choices": [
+            "पूरे वर्ग अंतराल का प्रतिनिधित्व करना",
+            "अवलोकनों की कुल संख्या ज्ञात करना",
+            "डेटा की श्रेणी की गणना करना",
+            "डेटा के बहुलक का निर्धारण करना"
+          ],
+          "solution": "समूहीकृत डेटा में वर्ग चिह्नों का उपयोग पूरे वर्ग अंतराल का प्रतिनिधित्व करने के लिए किया जाता है। वे प्रत्येक वर्ग के लिए केंद्रीय मान के रूप में कार्य करते हैं, जिससे औसत जैसे माप की गणना करना आसान हो जाता है। अन्य विकल्प गलत हैं क्योंकि वे अलग-अलग सांख्यिकीय अवधारणाओं का वर्णन करते हैं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriate for Hindi-medium curriculum.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "गटबद्ध डेटामध्ये क्लास मार्क्स वापरण्याचा उद्देश काय आहे?",
+          "choices": [
+            "पूर्ण क्लास अंतर दर्शविण्यासाठी",
+            "अवलोकनांची एकूण संख्या शोधण्यासाठी",
+            "डेटाचा रेंज काढण्यासाठी",
+            "डेटाचा मोड ठरवण्यासाठी"
+          ],
+          "solution": "गटबद्ध डेटामध्ये क्लास मार्क्स वापरले जातात कारण ते पूर्ण क्लास अंतर दर्शवितात. त्यांचा उपयोग प्रत्येक क्लाससाठी केंद्रीय मूल्य म्हणून केला जातो, ज्यामुळे माध्यासारख्या मापदंडांची गणना करणे सोपे होते. इतर विकल्प चुकीचे आहेत कारण ते वेगळ्या सांख्यिकीय संकल्पनांचे वर्णन करतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi statistical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses the purpose of class marks with another statistical concept.",
+        "Misunderstands the role of class marks in data analysis.",
+        "Misinterprets the function of class marks in statistical calculations."
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 0, as class marks are used to represent the entire class interval. The reasoning provided by the author is sound and aligns with statistical principles.",
+      "sources": [
+        {
+          "document": "ncert/10/mathematics/jemh113.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 13: Statistics"
+          ]
+        },
+        {
+          "document": "ncert/10/mathematics/jemh113.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 13: Statistics"
+          ]
+        },
+        {
+          "document": "ncert/10/mathematics/jemh113.pdf",
+          "ordinal": 2,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 13: Statistics"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T18:44:53.475Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the term used for the sum of the frequencies of all the classes preceding the median class?",
+      "choices": [
+        "Cumulative frequency",
+        "Class frequency",
+        "Frequency density",
+        "Relative frequency"
+      ],
+      "answerIndex": 0,
+      "solution": "The term used for the sum of the frequencies of all the classes preceding the median class is 'cumulative frequency' because it represents the total frequency up to a certain point. Class frequency refers to the number of observations in a single class, frequency density is the frequency divided by the class width, and relative frequency is the proportion of the total number of observations.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "माध्यिका वर्ग के पूर्व में आने वाले सभी वर्गों की बारम्बारताओं के योग के लिए किस शब्द का उपयोग किया जाता है?",
+          "choices": [
+            "संचयी बारम्बारता",
+            "वर्ग बारम्बारता",
+            "बारम्बारता घनत्व",
+            "सापेक्ष बारम्बारता"
+          ],
+          "solution": "माध्यिका वर्ग के पूर्व में आने वाले सभी वर्गों की बारम्बारताओं के योग के लिए 'संचयी बारम्बारता' शब्द का उपयोग किया जाता है क्योंकि यह एक निश्चित बिंदु तक कुल बारम्बारता का प्रतिनिधित्व करता है। वर्ग बारम्बारता एक विशेष वर्ग में अवलोकनों की संख्या को संदर्भित करती है, बारम्बारता घनत्व बारम्बारता को वर्ग चौड़ाई से विभाजित करना है और सापेक्ष बारम्बारता कुल अवलोकनों की संख्या के अनुपात को संदर्भित करती है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Hindi terminology as found in textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "मध्य वर्गापूर्वीच्या सर्व वर्गांच्या बारमासींच्या बेरजेला कशाने ओळखले जाते?",
+          "choices": [
+            "संचयी बारमासी",
+            "वर्ग बारमासी",
+            "बारमासी घनता",
+            "सापेक्ष बारमासी"
+          ],
+          "solution": "मध्य वर्गापूर्वीच्या सर्व वर्गांच्या बारमासींच्या बेरजेला 'संचयी बारमासी' म्हणतात कारण ते एखाद्या निश्चित बिंदूपर्यंत एकूण बारमासी दर्शवते. वर्ग बारमासी हा एका वर्गातील निरीक्षणांची संख्या दर्शवतो, बारमासी घनता ही बारमासी वर्ग रुंदीने भागलेली असते आणि सापेक्ष बारमासी ही एकूण निरीक्षणांच्या प्रमाणात असते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi statistical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Student confuses cumulative frequency with the frequency of a single class",
+        "Confuses cumulative frequency with frequency density, thinking it's a measure of frequency per class width",
+        "Student confuses cumulative frequency with relative frequency, thinking it refers to the proportion of the total rather than the sum of previous frequencies"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 'Cumulative frequency' as it refers to the sum of frequencies up to a certain point. The other options are correctly identified as misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/10/mathematics/jemh113.pdf",
+          "ordinal": 12,
+          "pageStart": 24,
+          "pageEnd": 26,
+          "headingPath": [
+            "Chapter 13: Statistics"
+          ]
+        },
+        {
+          "document": "ncert/10/mathematics/jemh113.pdf",
+          "ordinal": 13,
+          "pageStart": 26,
+          "pageEnd": 27,
+          "headingPath": [
+            "Chapter 13: Statistics"
+          ]
+        },
+        {
+          "document": "ncert/10/mathematics/jemh113.pdf",
+          "ordinal": 14,
+          "pageStart": 28,
+          "pageEnd": 30,
+          "headingPath": [
+            "Chapter 13: Statistics"
+          ]
+        },
+        {
+          "document": "ncert/10/mathematics/jemh113.pdf",
+          "ordinal": 15,
+          "pageStart": 31,
+          "pageEnd": 31,
+          "headingPath": [
+            "Chapter 13: Statistics",
+            "A NOTE TO THE READER"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T18:44:53.475Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of the following is a measure of central tendency?",
+      "choices": [
+        "Mean",
+        "Range",
+        "Standard deviation",
+        "Variance"
+      ],
+      "answerIndex": 0,
+      "solution": "The mean is a measure of central tendency, which represents the average of a data set. Range, standard deviation, and variance are measures of dispersion, not central tendency.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा केंद्रीय प्रवृत्ति का माप है?",
+          "choices": [
+            "माध्य",
+            "परास",
+            "मानक विचलन",
+            "परिक्षेपण"
+          ],
+          "solution": "माध्य केंद्रीय प्रवृत्ति का एक माप है, जो डेटा सेट के औसत का प्रतिनिधित्व करता है। परास, मानक विचलन और परिक्षेपण केंद्रीय प्रवृत्ति के स्थान पर विस्तार के माप हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English original in meaning, terminology, and structure. All options and the solution are correctly translated, with the correct answer (1) being the same position as in the English version. The technical terms used are standard in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते एक केंद्रीय प्रवृत्तीचे माप आहे?",
+          "choices": [
+            "मध्यमान",
+            "श्रेणी",
+            "मानक विचलन",
+            "विचलन"
+          ],
+          "solution": "मध्यमान हे केंद्रीय प्रवृत्तीचे माप आहे, जे डेटा सेटच्या सरासरीला दर्शवते. श्रेणी, मानक विचलन आणि विचलन हे विस्ताराचे माप आहेत, केंद्रीय प्रवृत्ती नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and uses standard Marathi statistical terms.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "confuses measures of central tendency with measures of dispersion",
+        "confuses measures of central tendency with measures of dispersion",
+        "confuses measures of central tendency with measures of dispersion"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly identifies mean as a measure of central tendency and correctly classifies the other options as measures of dispersion. The reasoning aligns with standard statistical definitions.",
+      "sources": [
+        {
+          "document": "ncert/10/mathematics/jemh113.pdf",
+          "ordinal": 6,
+          "pageStart": 12,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 13: Statistics"
+          ]
+        },
+        {
+          "document": "ncert/10/mathematics/jemh113.pdf",
+          "ordinal": 7,
+          "pageStart": 14,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 13: Statistics"
+          ]
+        },
+        {
+          "document": "ncert/10/mathematics/jemh113.pdf",
+          "ordinal": 8,
+          "pageStart": 15,
+          "pageEnd": 17,
+          "headingPath": [
+            "Chapter 13: Statistics"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T18:44:53.475Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "In the formula for the mean of grouped data, what does the symbol Σ represent?",
+      "choices": [
+        "Summation",
+        "Difference",
+        "Product",
+        "Quotient"
+      ],
+      "answerIndex": 0,
+      "solution": "In the formula for the mean of grouped data, the symbol Σ represents 'summation' because it is a mathematical notation used to indicate the sum of a series of numbers. The other options—difference, product, and quotient—refer to subtraction, multiplication, and division, which are not related to the function of Σ.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "समूहीकृत डेटा के माध्य के सूत्र में, प्रतीक Σ क्या प्रस्तुत करता है?",
+          "choices": [
+            "योग",
+            "अंतर",
+            "गुणनफल",
+            "भागफल"
+          ],
+          "solution": "समूहीकृत डेटा के माध्य के सूत्र में, प्रतीक Σ 'योग' को प्रस्तुत करता है क्योंकि यह एक गणितीय प्रतीक है जिसका उपयोग एक श्रृंखला के संख्याओं के योग को दर्शाने के लिए किया जाता है। अन्य विकल्पों- अंतर, गुणनफल और भागफल- का संबंध प्रतीक Σ के कार्य से नहीं होता है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses standard mathematical terminology as found in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "गुंफलेल्या डेटाच्या माध्याच्या सूत्रात, Σ संकेताचा अर्थ काय आहे?",
+          "choices": [
+            "बेरीज",
+            "फरक",
+            "गुणाकार",
+            "भागाकार"
+          ],
+          "solution": "गुंफलेल्या डेटाच्या माध्याच्या सूत्रात, Σ संकेताचा अर्थ 'बेरीज' असतो कारण तो एक गणितीय नोटेशन आहे जे क्रमानुसार अनेक संख्यांच्या बेरीजचा दाखला देतो. इतर विकल्प - फरक, गुणाकार आणि भागाकार - वजाबाद, गुणाकार आणि भागाकराच्या संदर्भात आहेत, जे Σ च्या कार्याशी संबंधित नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "confuses summation with difference",
+        "confuses summation with product",
+        "confuses summation with quotient"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The question is clear and the correct answer is unambiguous. The explanation provided by the author is accurate and matches the standard mathematical meaning of the symbol Σ.",
+      "sources": [
+        {
+          "document": "ncert/10/mathematics/jemh113.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 13: Statistics"
+          ]
+        },
+        {
+          "document": "ncert/10/mathematics/jemh113.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 13: Statistics"
+          ]
+        },
+        {
+          "document": "ncert/10/mathematics/jemh113.pdf",
+          "ordinal": 2,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 13: Statistics"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T18:44:53.475Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "Which of the following measures of central tendency is best suited for situations where extreme values are present?",
+      "choices": [
+        "Mean",
+        "Median",
+        "Mode",
+        "Range"
+      ],
+      "answerIndex": 1,
+      "solution": "The median is best suited for situations where extreme values are present, as it is less affected by outliers. The mean is influenced by extreme values, while mode and range are not measures of central tendency.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा केंद्रीय प्रवृत्ति का माप चरम मानों की उपस्थिति में स्थितियों के लिए सबसे उपयुक्त है?",
+          "choices": [
+            "माध्य",
+            "माध्यिका",
+            "बहुलक",
+            "परास"
+          ],
+          "solution": "चरम मानों की उपस्थिति में स्थितियों के लिए माध्यिका सबसे उपयुक्त है, क्योंकि यह बाहरी बिंदुओं से कम प्रभावित होती है। माध्य चरम मानों द्वारा प्रभावित होता है, जबकि बहुलक और परास केंद्रीय प्रवृत्ति के माप नहीं हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Hindi terminology used for statistical concepts.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणता केंद्रीय प्रवृत्तीचा मापदंड चरम मूल्ये असलेल्या स्थितींसाठी योग्य आहे?",
+          "choices": [
+            "माध्य",
+            "मध्यमान",
+            "बहुलक",
+            "परिसर"
+          ],
+          "solution": "चरम मूल्ये असलेल्या स्थितींसाठी मध्यमान योग्य आहे, कारण ते बाह्य मूल्यांपासून कमी प्रभावित होते. माध्य चरम मूल्यांपासून प्रभावित होतो, तर बहुलक आणि परिसर केंद्रीय प्रवृत्तीचे मापदंड नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for statistical concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Chooses the mean, which is affected by extreme values",
+        null,
+        "Chooses the mode, which is not a measure of central tendency in this context",
+        "Chooses the range, which is a measure of spread, not central tendency"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct. The median is indeed less affected by extreme values, making it the best measure of central tendency in such cases. The explanation correctly identifies that mean is affected by outliers, mode is not always a good measure of central tendency, and range is a measure of spread, not central tendency.",
+      "sources": [
+        {
+          "document": "ncert/10/mathematics/jemh113.pdf",
+          "ordinal": 12,
+          "pageStart": 24,
+          "pageEnd": 26,
+          "headingPath": [
+            "Chapter 13: Statistics"
+          ]
+        },
+        {
+          "document": "ncert/10/mathematics/jemh113.pdf",
+          "ordinal": 13,
+          "pageStart": 26,
+          "pageEnd": 27,
+          "headingPath": [
+            "Chapter 13: Statistics"
+          ]
+        },
+        {
+          "document": "ncert/10/mathematics/jemh113.pdf",
+          "ordinal": 14,
+          "pageStart": 28,
+          "pageEnd": 30,
+          "headingPath": [
+            "Chapter 13: Statistics"
+          ]
+        },
+        {
+          "document": "ncert/10/mathematics/jemh113.pdf",
+          "ordinal": 15,
+          "pageStart": 31,
+          "pageEnd": 31,
+          "headingPath": [
+            "Chapter 13: Statistics",
+            "A NOTE TO THE READER"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T18:44:53.475Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "A grouped frequency distribution table is used to find the mean of a data set. The assumed mean is 50, the class size is 10, the sum of f u is -3 with a total frequency of 15. What is the mean of the data?",
+      "choices": [
+        "48.00",
+        "50.00",
+        "47.00",
+        "53.00"
+      ],
+      "answerIndex": 0,
+      "solution": "The formula for the mean using the step-deviation method is x = a + h * (Σf u / Σf). Substituting the given values (a = 50, h = 10, Σf u = -3, Σf = 15), we calculate 50 + 10 * (-3 / 15) = 50 - 2 = 48.00. The option 50.00 is incorrect because it assumes no adjustment. The option 47.00 is incorrect because it subtracts 3 instead of 2. The option 53.00 is incorrect because it adds 3 instead of subtracting 2.",
+      "checkExpr": "50+10*(-3/15)",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक समूहित बारंबारता वितरण तालिका का उपयोग डेटा सेट के माध्य को ज्ञात करने के लिए किया जाता है। अपना माध्य 50 है, वर्ग आकार 10 है, f u का योग -3 है और कुल बारंबारता 15 है। डेटा का माध्य क्या है?",
+          "choices": [
+            "48.00",
+            "50.00",
+            "47.00",
+            "53.00"
+          ],
+          "solution": "स्टेप-डेविएशन विधि के लिए माध्य का सूत्र x = a + h * (Σf u / Σf) है। दिए गए मानों (a = 50, h = 10, Σf u = -3, Σf = 15) को प्रतिस्थापित करने पर हम गणना करते हैं 50 + 10 * (-3 / 15) = 50 - 2 = 48.00। विकल्प 50.00 गलत है क्योंकि इसमें कोई समायोजन नहीं माना गया है। विकल्प 47.00 गलत है क्योंकि इसमें 3 के बजाय 2 को घटाया गया है। विकल्प 53.00 गलत है क्योंकि इसमें 2 के बजाय 3 को जोड़ा गया है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका गटलेल्या बारंबारता वितरण टेबलचा वापर डेटा सेटच्या माध्याच्या शोधण्यासाठी केला जातो. अंदाजित माध्य 50 आहे, वर्ग आकार 10 आहे, f u ची बेरीज -3 आहे आणि एकूण बारंबारता 15 आहे. डेटाचा माध्य किती आहे?",
+          "choices": [
+            "48.00",
+            "50.00",
+            "47.00",
+            "53.00"
+          ],
+          "solution": "स्टेप-डेव्हिएशन पद्धतीने माध्याचा सूत्र x = a + h * (Σf u / Σf) आहे. दिलेल्या मूल्यांचा (a = 50, h = 10, Σf u = -3, Σf = 15) वापर करून, आम्ही 50 + 10 * (-3 / 15) = 50 - 2 = 48.00 गणना करतो. 50.00 चा विकल्प अयोग्य आहे कारण तो अभिकल्पना करतो की कोणताही सुधारणा नाही. 47.00 चा विकल्प अयोग्य आहे कारण तो 3 वजा करतो जेव्हा 2 वजा करावा लागतो. 53.00 चा विकल्प अयोग्य आहे कारण तो 3 जोडतो जेव्हा 2 वजा करावा लागतो.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "assumes no adjustment",
+        "subtracts 3 instead of 2",
+        "adds 3 instead of subtracting 2"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly applies the step-deviation method for calculating the mean. The correct answer is 48.00, and the author's reasoning for the incorrect options aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/10/mathematics/jemh113.pdf",
+          "ordinal": 3,
+          "pageStart": 5,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 13: Statistics"
+          ]
+        },
+        {
+          "document": "ncert/10/mathematics/jemh113.pdf",
+          "ordinal": 4,
+          "pageStart": 8,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 13: Statistics"
+          ]
+        },
+        {
+          "document": "ncert/10/mathematics/jemh113.pdf",
+          "ordinal": 5,
+          "pageStart": 10,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 13: Statistics"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T18:44:53.475Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "The following frequency distribution gives the concentration of SO2 in the air (in ppm) for 30 localities. What is the modal class?",
+      "choices": [
+        "127 - 135",
+        "136 - 144",
+        "145 - 153",
+        "154 - 162"
+      ],
+      "answerIndex": 0,
+      "solution": "The modal class is the class with the highest frequency. In the given data, the class 127 - 135 has the highest frequency, so it is the modal class.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित बारंबारता वितरण वायु में SO2 के सांद्रण (ppm में) को दर्शाता है जो 30 स्थानों के लिए है। मोड क्लास क्या है?",
+          "choices": [
+            "127 - 135",
+            "136 - 144",
+            "145 - 153",
+            "154 - 162"
+          ],
+          "solution": "मोड क्लास वह क्लास होती है जिसकी सबसे अधिक बारंबारता होती है। दिए गए आंकड़ों में, 127 - 135 क्लास की सबसे अधिक बारंबारता है, इसलिए यह मोड क्लास है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains original meaning, and uses appropriate Hindi terminology for statistical concepts.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालील बारंबारता वितरणामध्ये वायूमध्ये SO2 ची एकाग्रता (ppm मध्ये) 30 ठिकाणांसाठी दर्शवली आहे. त्याचा मोड वर्ग कोणता आहे?",
+          "choices": [
+            "127 - 135",
+            "136 - 144",
+            "145 - 153",
+            "154 - 162"
+          ],
+          "solution": "मोड वर्ग हा उच्चतम बारंबारतेचा वर्ग असतो. दिलेल्या माहितीमध्ये 127 - 135 वर्गाची उच्चतम बारंबारता आहे, म्हणून तो मोड वर्ग आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi technical terms.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses the modal class with the class containing the middle value of the data range",
+        "Confuses the modal class with the class having the highest lower limit",
+        "chooses a class that is not listed in the data"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is valid and the solution is correct. The modal class is indeed the one with the highest frequency, and the author's reasoning aligns with standard statistical definitions.",
+      "sources": [
+        {
+          "document": "ncert/10/mathematics/jemh113.pdf",
+          "ordinal": 6,
+          "pageStart": 12,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 13: Statistics"
+          ]
+        },
+        {
+          "document": "ncert/10/mathematics/jemh113.pdf",
+          "ordinal": 7,
+          "pageStart": 14,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 13: Statistics"
+          ]
+        },
+        {
+          "document": "ncert/10/mathematics/jemh113.pdf",
+          "ordinal": 8,
+          "pageStart": 15,
+          "pageEnd": 17,
+          "headingPath": [
+            "Chapter 13: Statistics"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T18:44:53.475Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "In the step deviation method, what is the purpose of choosing an assumed mean?",
+      "choices": [
+        "To simplify calculations",
+        "To increase accuracy",
+        "To reduce the number of classes",
+        "To eliminate the need for frequencies"
+      ],
+      "answerIndex": 0,
+      "solution": "The purpose of choosing an assumed mean in the step deviation method is to simplify calculations. This approach reduces the complexity of working with large numbers by using deviations from a central value. The other options do not accurately describe the primary function of an assumed mean in this method.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "चरण विचलन विधि में, एक अनुमानित माध्य चुनने का उद्देश्य क्या है?",
+          "choices": [
+            "गणना को सरल बनाना",
+            "सटीकता बढ़ाना",
+            "कक्षाओं की संख्या कम करना",
+            "आवृत्तियों के बिना काम करने की आवश्यकता खत्म करना"
+          ],
+          "solution": "चरण विचलन विधि में एक अनुमानित माध्य चुनने का उद्देश्य गणना को सरल बनाना है। इस प्रक्रिया में बड़ी संख्याओं के साथ काम करने की जटिलता कम करने के लिए एक केंद्रीय मान से विचलन का उपयोग किया जाता है। अन्य विकल्प इस विधि में एक अनुमानित माध्य के मुख्य कार्य का सही वर्णन नहीं करते हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms as found in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "पद्धतीनुसार विचलन पद्धतीत, अंदाजित माध्य निवडण्याचा उद्देश काय आहे?",
+          "choices": [
+            "गणना सोपी करणे",
+            "अचूकता वाढवणे",
+            "वर्गांची संख्या कमी करणे",
+            "बारमासींच्या आवश्यकतेचा निराकरण करणे"
+          ],
+          "solution": "पद्धतीनुसार विचलन पद्धतीत अंदाजित माध्य निवडण्याचा उद्देश गणना सोपी करणे आहे. ही पद्धती मोठ्या संख्यांशी काम करण्याच्या जटिलतेला कमी करते आणि एका मध्यम मूल्यापासून विचलनांचा वापर करते. इतर विकल्प या पद्धतीत अंदाजित माध्यच्या प्राथमिक कार्याचे योग्य वर्णन करत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for statistical concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "confuses simplification with accuracy",
+        "confuses simplification with reducing classes",
+        "confuses simplification with eliminating frequencies"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 0, as the assumed mean is used to simplify calculations. The other options reflect common misconceptions about the purpose of the assumed mean.",
+      "sources": [
+        {
+          "document": "ncert/10/mathematics/jemh113.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 13: Statistics"
+          ]
+        },
+        {
+          "document": "ncert/10/mathematics/jemh113.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 13: Statistics"
+          ]
+        },
+        {
+          "document": "ncert/10/mathematics/jemh113.pdf",
+          "ordinal": 2,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 13: Statistics"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T18:44:53.475Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Why is the mean calculated using the direct method considered more accurate than the mean calculated using the assumed mean method?",
+      "choices": [
+        "Because it uses actual values",
+        "Because it uses frequencies",
+        "Because it uses class marks",
+        "Because it uses assumed mean"
+      ],
+      "answerIndex": 0,
+      "solution": "The mean calculated using the direct method is considered more accurate because it uses actual values rather than approximations. The assumed mean method relies on a guessed value, which can introduce errors. Frequencies and class marks are used in both methods and do not affect the accuracy.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "माध्य की गणना सीधे विधि के द्वारा क्यों अधिक सटीक माना जाता है, जबकि अंदाजी माध्य विधि के द्वारा किया जाता है?",
+          "choices": [
+            "क्योंकि यह वास्तविक मानों का उपयोग करता है",
+            "क्योंकि यह बारम्बारताओं का उपयोग करता है",
+            "क्योंकि यह वर्ग चिन्हों का उपयोग करता है",
+            "क्योंकि यह अंदाजी माध्य का उपयोग करता है"
+          ],
+          "solution": "सीधे विधि के द्वारा गणना किया गया माध्य अधिक सटीक माना जाता है क्योंकि यह अनुमानों के बजाय वास्तविक मानों का उपयोग करता है। अंदाजी माध्य विधि एक अनुमानित मान पर निर्भर करती है, जो त्रुटियों को ला सकती है। बारम्बारताएं और वर्ग चिन्ह दोनों विधियों में उपयोग किए जाते हैं और ये सटीकता को प्रभावित नहीं करते।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English question and solution, with appropriate terminology used in a Hindi-medium educational context.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "मध्यमान गणना करण्यासाठी दृश्य पद्धती वापरल्यास अधिक अचूक मानली जाते कारण काय?",
+          "choices": [
+            "कारण ती खर्या मूल्यांचा वापर करते",
+            "कारण ती बारंबारतांचा वापर करते",
+            "कारण ती वर्ग चिन्हांचा वापर करते",
+            "कारण ती अनुमानित माध्याचा वापर करते"
+          ],
+          "solution": "दृश्य पद्धती वापरून माध्यमान गणना अधिक अचूक मानली जाते कारण ती अंदाजांऐवजी खर्या मूल्यांचा वापर करते. अनुमानित माध्य पद्धती अनुमानित मूल्यांवर अवलंबून असते, जे चूका निर्माण करू शकतात. बारंबारता आणि वर्ग चिन्हे दोन्ही पद्धतींमध्ये वापरली जातात आणि अचूकतेवर परिणाम करत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi terminology for statistical concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "confuses accuracy with using actual values",
+        "confuses accuracy with using frequencies",
+        "confuses accuracy with using class marks"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 0, as the direct method uses actual values, making it more accurate. The other options are incorrect because they confuse different aspects of the methods.",
+      "sources": [
+        {
+          "document": "ncert/10/mathematics/jemh113.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 13: Statistics"
+          ]
+        },
+        {
+          "document": "ncert/10/mathematics/jemh113.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 13: Statistics"
+          ]
+        },
+        {
+          "document": "ncert/10/mathematics/jemh113.pdf",
+          "ordinal": 2,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 13: Statistics"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T18:44:53.475Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "In a data set, the mean was calculated using the step-deviation method. The assumed mean is 30, the class size is 10, and the sum of f u is -5 with a total frequency of 50. What is the mean of the data?",
+      "choices": [
+        "29.00",
+        "30.00",
+        "25.00",
+        "35.00"
+      ],
+      "answerIndex": 0,
+      "solution": "The formula for the mean using the step-deviation method is x = a + h * (Σf u / Σf). Substituting the given values (a = 30, h = 10, Σf u = -5, Σf = 50), we calculate 30 + 10 * (-5 / 50) = 30 - 1 = 29.00. The option 30.00 is incorrect because it assumes no adjustment. The option 25.00 is incorrect because it subtracts 5 instead of 1. The option 35.00 is incorrect because it adds 5 instead of subtracting 1.",
+      "checkExpr": "30+10*(-5/50)",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक डेटा सेट में, माध्य की गणना चर-विचलन विधि के द्वारा की गई थी। अनुमानित माध्य 30 है, वर्ग आकार 10 है, और f u के योग -5 है तथा कुल बारंबारता 50 है। डेटा का माध्य क्या है?",
+          "choices": [
+            "29.00",
+            "30.00",
+            "25.00",
+            "35.00"
+          ],
+          "solution": "चर-विचलन विधि के द्वारा माध्य का सूत्र x = a + h * (Σf u / Σf) है। दिए गए मानों (a = 30, h = 10, Σf u = -5, Σf = 50) को प्रतिस्थापित करने पर, हम गणना करते हैं 30 + 10 * (-5 / 50) = 30 - 1 = 29.00। विकल्प 30.00 गलत है क्योंकि इसमें कोई समायोजन नहीं माना गया। विकल्प 25.00 गलत है क्योंकि इसमें 5 को घटाया बजाय 1 को घटाया गया। विकल्प 35.00 गलत है क्योंकि इसमें 5 जोड़ा बजाय 1 को घटाया गया।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate statistical terminology as found in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "माहितीच्या सेटमध्ये माध्य चरण-विचलन पद्धतीने काढला गेला. अंदाजित माध्य 30 आहे, वर्ग आकार 10 आहे, आणि f u ची बेरीज -5 आहे आणि एकूण बारमासी 50 आहे. माहितीचा माध्य किती आहे?",
+          "choices": [
+            "29.00",
+            "30.00",
+            "25.00",
+            "35.00"
+          ],
+          "solution": "चरण-विचलन पद्धतीने माध्याचा सूत्र x = a + h * (Σf u / Σf) आहे. दिलेल्या मूल्यां (a = 30, h = 10, Σf u = -5, Σf = 50) चा वापर करून, आम्ही 30 + 10 * (-5 / 50) = 30 - 1 = 29.00 गणना करतो. 30.00 चा विकल्प चुकीचा आहे कारण तो अभिकल्पित माध्याच्या समायोजनाचा अंदाज घेत नाही. 25.00 चा विकल्प चुकीचा आहे कारण तो 5 कमी करतो तर 1 कमी करावा. 35.00 चा विकल्प चुकीचा आहे कारण तो 5 जोडतो तर 1 कमी करावा.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi statistical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "assumes no adjustment",
+        "subtracts 5 instead of 1",
+        "adds 5 instead of subtracting 1"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly applies the step-deviation formula and arrives at the correct answer. The reasoning for the distractors reflects common student misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/10/mathematics/jemh113.pdf",
+          "ordinal": 3,
+          "pageStart": 5,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 13: Statistics"
+          ]
+        },
+        {
+          "document": "ncert/10/mathematics/jemh113.pdf",
+          "ordinal": 4,
+          "pageStart": 8,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 13: Statistics"
+          ]
+        },
+        {
+          "document": "ncert/10/mathematics/jemh113.pdf",
+          "ordinal": 5,
+          "pageStart": 10,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 13: Statistics"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T18:44:53.475Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
     }
   ]
 }

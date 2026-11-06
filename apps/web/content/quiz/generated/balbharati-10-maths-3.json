@@ -1,0 +1,850 @@
+{
+  "subject": "MATHS",
+  "classLevel": 10,
+  "chapter": "Chapter 3 — Arithmetic Progression",
+  "name": "Arithmetic Progression",
+  "slug": "balbharati-maths-10-arithmetic-progression",
+  "summary": "This chapter explains arithmetic progression, its terms, and how to find the nth term and sum of terms.",
+  "position": 3,
+  "source": "generated against Balbharati Mathematics, Class 10, chapter 3 (\"१० वी गणित भाग - १ इंग्रजी\", chapter 3) (2026 edition)",
+  "licence": "Original questions written for Shalaghar · CC BY-SA 4.0",
+  "translations": {
+    "hi": {
+      "name": "अध्याय 3 - समांतर श्रेढ़ी।",
+      "summary": "इस अध्याय में समांतर श्रेढ़ी, इसके पद और nवाँ पद तथा पदों के योग की गणना कैसे करें, इसकी व्याख्या की गई है।"
+    },
+    "mr": {
+      "name": "अध्याय 3 - समांतर श्रेढी.",
+      "summary": "हा अध्याय समांतर श्रेढी, तिचे पद आणि nवे पद आणि पदांच्या बेरजेची गणना कशी करायची, याचे विवरण आहे."
+    }
+  },
+  "board": "BALBHARATI",
+  "book": "१० वी गणित भाग - १ इंग्रजी",
+  "edition": "2026 edition",
+  "generatedAt": "2026-11-06T18:23:31.250Z",
+  "model": "qwen3-30b-a3b",
+  "topicIsNew": true,
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "What is the formula to find the nth term of an arithmetic progression?",
+      "choices": [
+        "a + (n - 1)d",
+        "a + nd",
+        "a + n",
+        "a + d"
+      ],
+      "answerIndex": 0,
+      "solution": "The nth term of an arithmetic progression is calculated using the formula a + (n - 1)d, where 'a' is the first term and 'd' is the common difference. The other options incorrectly omit the subtraction of 1 from n or use incorrect terms.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक समांतर श्रेढ़ी के nवें पद का सूत्र क्या है?",
+          "choices": [
+            "a + (n - 1)d",
+            "a + nd",
+            "a + n",
+            "a + d"
+          ],
+          "solution": "समांतर श्रेढ़ी के nवें पद की गणना सूत्र a + (n - 1)d द्वारा की जाती है, जहां 'a' प्रथम पद है और 'd' सार्व अंतर है। अन्य विकल्प गलती से n से 1 को घटाना भूल जाते हैं या गलत पदों का उपयोग करते हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology as used in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "अरिथमॅटिक प्रगतीच्या nव्या पदाचे सूत्र काय आहे?",
+          "choices": [
+            "a + (n - 1)d",
+            "a + nd",
+            "a + n",
+            "a + d"
+          ],
+          "solution": "अरिथमॅटिक प्रगतीच्या nव्या पदाचे गणना सूत्र a + (n - 1)d वापरून केली जाते, जेथे 'a' पहिले पद आहे आणि 'd' सामान्य फरक आहे. इतर विकल्पांमध्ये n मधून 1 वजा करणे चूकीचे आहे किंवा चूकीची शब्द वापरले आहेत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "omits the subtraction of 1 from n",
+        "uses 'nd' instead of (n - 1)d",
+        "ignores the common difference completely"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct formula for the nth term of an arithmetic progression is a + (n - 1)d. The author's reasoning for the distractors aligns with common misconceptions students might have.",
+      "sources": [
+        {
+          "document": "balbharati/10/mathematics/1003000608.pdf",
+          "ordinal": 31,
+          "pageStart": 71,
+          "pageEnd": 73,
+          "headingPath": [
+            "3. Arithmetic Progression"
+          ]
+        },
+        {
+          "document": "balbharati/10/mathematics/1003000608.pdf",
+          "ordinal": 32,
+          "pageStart": 73,
+          "pageEnd": 75,
+          "headingPath": [
+            "3. Arithmetic Progression"
+          ]
+        },
+        {
+          "document": "balbharati/10/mathematics/1003000608.pdf",
+          "ordinal": 33,
+          "pageStart": 75,
+          "pageEnd": 77,
+          "headingPath": [
+            "3. Arithmetic Progression"
+          ]
+        }
+      ],
+      "edition": "2026 edition",
+      "generatedAt": "2026-11-06T18:23:31.250Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is the formula used to find the sum of the first n terms of an arithmetic progression?",
+      "choices": [
+        "S = a + (n-1)d",
+        "S = n/2 [2a + (n-1)d]",
+        "S = a + nd",
+        "S = n(a + d)"
+      ],
+      "answerIndex": 1,
+      "solution": "The correct formula for the sum of the first n terms of an arithmetic progression is S = n/2 [2a + (n-1)d]. The other options incorrectly represent the formula, either by omitting the division by 2 or by using an incorrect combination of terms.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "पहले n पदों के योग का सूत्र अंकगणितीय प्रगति के लिए क्या होता है?",
+          "choices": [
+            "S = a + (n-1)d",
+            "S = n/2 [2a + (n-1)d]",
+            "S = a + nd",
+            "S = n(a + d)"
+          ],
+          "solution": "अंकगणितीय प्रगति के पहले n पदों के योग का सही सूत्र S = n/2 [2a + (n-1)d] होता है। अन्य विकल्प योग के सूत्र को गलत ढंग से प्रस्तुत करते हैं, या तो 2 से भाग देना भूल जाते हैं या असही संयोजन का उपयोग करते हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Hindi mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "सर्वात आधी n पदांच्या अंकगणितीय अनुक्रमाच्या बेरजेचे सूत्र काय आहे?",
+          "choices": [
+            "S = a + (n-1)d",
+            "S = n/2 [2a + (n-1)d]",
+            "S = a + nd",
+            "S = n(a + d)"
+          ],
+          "solution": "अंकगणितीय अनुक्रमाच्या पहिल्या n पदांच्या बेरजेचे योग्य सूत्र S = n/2 [2a + (n-1)d] आहे. इतर विकल्प चुकीच्या पद्धतीने सूत्र दर्शवतात, जे 2 ने भाग देण्याच्या गोष्टीचा अभाव किंवा चुकीच्या पदांच्या जोडण्याच्या पद्धतीमुळे असतात.",
+          "imageAlt": null,
+          "critique": "The Marathi translation accurately reflects the English original in meaning, structure, and terminology. The correct answer remains option (2), and the distractors are still incorrect. Technical terms like 'अंकगणितीय अनुक्रम' (arithmetic progression) are appropriately used.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "omits the division by 2",
+        null,
+        "uses an incorrect formula",
+        "uses an incorrect formula"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct formula for the sum of the first n terms of an arithmetic progression is indeed S = n/2 [2a + (n-1)d]. The other options are incorrect, and the author's reasoning for why they are wrong aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/10/mathematics/1003000608.pdf",
+          "ordinal": 37,
+          "pageStart": 84,
+          "pageEnd": 86,
+          "headingPath": [
+            "3. Arithmetic Progression"
+          ]
+        },
+        {
+          "document": "balbharati/10/mathematics/1003000608.pdf",
+          "ordinal": 38,
+          "pageStart": 86,
+          "pageEnd": 88,
+          "headingPath": [
+            "3. Arithmetic Progression"
+          ]
+        },
+        {
+          "document": "balbharati/10/mathematics/1003000608.pdf",
+          "ordinal": 39,
+          "pageStart": 88,
+          "pageEnd": 89,
+          "headingPath": [
+            "3. Arithmetic Progression"
+          ]
+        }
+      ],
+      "edition": "2026 edition",
+      "generatedAt": "2026-11-06T18:23:31.250Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is the sum of the first 10 natural numbers?",
+      "choices": [
+        "55",
+        "45",
+        "15",
+        "75"
+      ],
+      "answerIndex": 0,
+      "solution": "The sum of the first n natural numbers is given by the formula n(n + 1)/2. For n = 10, 10 × 11 / 2 = 55. The other options are incorrect calculations or values not matching the formula.",
+      "checkExpr": "10*11/2",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "पहले 10 प्राकृत संख्याओं का योग क्या है?",
+          "choices": [
+            "55",
+            "45",
+            "15",
+            "75"
+          ],
+          "solution": "पहली n प्राकृत संख्याओं का योग सूत्र n(n + 1)/2 द्वारा दिया जाता है। n = 10 के लिए, 10 × 11 / 2 = 55। अन्य विकल्प गलत गणना या सूत्र के अनुरूप नहीं होते।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard mathematical terminology common in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "पहिल्या 10 प्राकृतिक संख्यांची बेरीज किती आहे?",
+          "choices": [
+            "55",
+            "45",
+            "15",
+            "75"
+          ],
+          "solution": "पहिल्या n प्राकृतिक संख्यांची बेरीज सूत्र n(n + 1)/2 ने दिली जाते. n = 10 साठी, 10 × 11 / 2 = 55. इतर विकल्प अयोग्य गणना किंवा सूत्राशी जुळत नसलेल्या मूल्यांचे आहेत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "confuses the formula with n(n - 1)/2",
+        "uses the formula for the sum of the first 9 numbers",
+        "uses an incorrect value for n"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly applies the formula for the sum of the first n natural numbers. The reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/10/mathematics/1003000608.pdf",
+          "ordinal": 40,
+          "pageStart": 89,
+          "pageEnd": 90,
+          "headingPath": [
+            "3. Arithmetic Progression",
+            "Problem Set - 3"
+          ]
+        }
+      ],
+      "edition": "2026 edition",
+      "generatedAt": "2026-11-06T18:23:31.250Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of the following sequences is an arithmetic progression?",
+      "choices": [
+        "3, 6, 12, 24",
+        "2, 5, 8, 11",
+        "4, 9, 16, 25",
+        "1, 3, 5, 7"
+      ],
+      "answerIndex": 1,
+      "solution": "The sequence 2, 5, 8, 11 has a constant difference of 3 between consecutive terms, making it an arithmetic progression. The other sequences either have varying differences or are not arithmetic progressions.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सी अनुक्रम समान्तर श्रेढ़ी है?",
+          "choices": [
+            "3, 6, 12, 24",
+            "2, 5, 8, 11",
+            "4, 9, 16, 25",
+            "1, 3, 5, 7"
+          ],
+          "solution": "अनुक्रम 2, 5, 8, 11 में क्रमागत पदों के बीच नियत अंतर 3 है, जिसके कारण यह समान्तर श्रेढ़ी है। अन्य अनुक्रमों में अंतर बदलता है या वे समान्तर श्रेढ़ी नहीं हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate terminology as found in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणती अनुक्रम अंकगणितीय प्रगती आहे?",
+          "choices": [
+            "3, 6, 12, 24",
+            "2, 5, 8, 11",
+            "4, 9, 16, 25",
+            "1, 3, 5, 7"
+          ],
+          "solution": "अनुक्रम 2, 5, 8, 11 मध्ये क्रमागत अंकांमध्ये 3 चा स्थिर फरक असतो, ज्यामुळे तो अंकगणितीय प्रगती बनतो. इतर अनुक्रमांमध्ये फरक बदलत असतो किंवा ते अंकगणितीय प्रगती नसतात.",
+          "imageAlt": null,
+          "critique": "The Marathi translation accurately reflects the English question, with correct mathematical terminology and equivalent meaning. The solution and options are correctly aligned.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses geometric progression with arithmetic progression",
+        null,
+        "Confuses squares of integers with an arithmetic progression",
+        "Confuses arithmetic progression with a sequence of odd numbers"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is option 1 (2, 5, 8, 11), as it has a constant difference of 3. The other options are incorrect: option 0 is a geometric progression, option 2 is a sequence of squares, and option 3 is a sequence of odd numbers, not an arithmetic progression with a constant difference.",
+      "sources": [
+        {
+          "document": "balbharati/10/mathematics/1003000608.pdf",
+          "ordinal": 31,
+          "pageStart": 71,
+          "pageEnd": 73,
+          "headingPath": [
+            "3. Arithmetic Progression"
+          ]
+        },
+        {
+          "document": "balbharati/10/mathematics/1003000608.pdf",
+          "ordinal": 32,
+          "pageStart": 73,
+          "pageEnd": 75,
+          "headingPath": [
+            "3. Arithmetic Progression"
+          ]
+        },
+        {
+          "document": "balbharati/10/mathematics/1003000608.pdf",
+          "ordinal": 33,
+          "pageStart": 75,
+          "pageEnd": 77,
+          "headingPath": [
+            "3. Arithmetic Progression"
+          ]
+        }
+      ],
+      "edition": "2026 edition",
+      "generatedAt": "2026-11-06T18:23:31.250Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of the following is an example of an arithmetic progression?",
+      "choices": [
+        "2, 4, 8, 16",
+        "3, 6, 9, 12",
+        "5, 10, 20, 40",
+        "1, 3, 5, 9"
+      ],
+      "answerIndex": 1,
+      "solution": "An arithmetic progression is a sequence where the difference between consecutive terms is constant. The sequence 3, 6, 9, 12 has a common difference of 3. The other options either have a varying difference or are not arithmetic progressions.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन एक समांतर श्रेढ़ी का उदाहरण है?",
+          "choices": [
+            "2, 4, 8, 16",
+            "3, 6, 9, 12",
+            "5, 10, 20, 40",
+            "1, 3, 5, 9"
+          ],
+          "solution": "एक समांतर श्रेढ़ी एक अनुक्रम होती है जिसमें क्रमागत पदों के बीच अंतर नियत होता है। अनुक्रम 3, 6, 9, 12 के बीच एक सामान्य अंतर 3 है। अन्य विकल्पों में बदलता हुआ अंतर होता है या वे समांतर श्रेढ़ी नहीं होतीं।",
+          "imageAlt": null,
+          "critique": "Hindi translation accurately reflects the original English question and solution, with appropriate terminology used in Indian curriculum.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते अंकगणितीय प्रगतीचे उदाहरण आहे?",
+          "choices": [
+            "2, 4, 8, 16",
+            "3, 6, 9, 12",
+            "5, 10, 20, 40",
+            "1, 3, 5, 9"
+          ],
+          "solution": "अंकगणितीय प्रगती ही अशी अनुक्रम आहे ज्यात क्रमागत पदांच्या फरकाची स्थिरता असते. 3, 6, 9, 12 अशी स्थिर फरक 3 असतो. इतर विकल्प क्रमागत पदांच्या फरकाची अस्थिरता असतात किंवा अंकगणितीय प्रगती नसतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for mathematical concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses geometric progression with arithmetic progression",
+        null,
+        "Confuses geometric progression with arithmetic progression",
+        "Believes the common difference can change between terms"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 1 (3, 6, 9, 12), as it has a constant difference of 3. The other options are geometric progressions or have varying differences, which aligns with the author's reasoning.",
+      "sources": [
+        {
+          "document": "balbharati/10/mathematics/1003000608.pdf",
+          "ordinal": 34,
+          "pageStart": 77,
+          "pageEnd": 78,
+          "headingPath": [
+            "3. Arithmetic Progression"
+          ]
+        },
+        {
+          "document": "balbharati/10/mathematics/1003000608.pdf",
+          "ordinal": 35,
+          "pageStart": 79,
+          "pageEnd": 81,
+          "headingPath": [
+            "3. Arithmetic Progression"
+          ]
+        },
+        {
+          "document": "balbharati/10/mathematics/1003000608.pdf",
+          "ordinal": 36,
+          "pageStart": 81,
+          "pageEnd": 83,
+          "headingPath": [
+            "3. Arithmetic Progression"
+          ]
+        }
+      ],
+      "edition": "2026 edition",
+      "generatedAt": "2026-11-06T18:23:31.250Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "In an arithmetic progression, what does the term 'd' represent?",
+      "choices": [
+        "The sum of the terms",
+        "The first term",
+        "The common difference",
+        "The number of terms"
+      ],
+      "answerIndex": 2,
+      "solution": "In an arithmetic progression, the term 'd' represents the common difference between consecutive terms. The other options refer to different parts of the formula. The sum of the terms is represented by S, the first term is 'a', and the number of terms is 'n'.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक समांतर श्रेढ़ी में, शब्द 'd' क्या प्रतिनिधित्व करता है?",
+          "choices": [
+            "पदों का योग",
+            "पहला पद",
+            "सामान्य अंतर",
+            "पदों की संख्या"
+          ],
+          "solution": "एक समांतर श्रेढ़ी में, शब्द 'd' क्रमागत पदों के बीच सामान्य अंतर का प्रतिनिधित्व करता है। अन्य विकल्प सूत्र के अलग-अलग भागों को संदर्भित करते हैं। पदों के योग को S द्वारा प्रतिनिधित्व किया जाता है, पहला पद 'a' द्वारा और पदों की संख्या 'n' द्वारा।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses standard mathematical terminology as found in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "अंकगणिती श्रेढीत, 'd' हा शब्द काय प्रतिनिधित्व करतो?",
+          "choices": [
+            "पदांची बेरीज",
+            "पहिले पद",
+            "सामान्य फरक",
+            "पदांची संख्या"
+          ],
+          "solution": "अंकगणिती श्रेढीत, 'd' हा शब्द क्रमागत पदांमधील सामान्य फरक प्रतिनिधित्व करतो. इतर विकल्पांना सूत्राच्या इतर भागांचे प्रतिनिधित्व करते. पदांची बेरीज 'S' द्वारे, पहिले पद 'a' द्वारे आणि पदांची संख्या 'n' द्वारे प्रतिनिधित्व केली जाते.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the original meaning, and uses standard mathematical terminology as taught in Marathi-medium textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses 'd' with the sum of the terms",
+        "Confuses 'd' with the first term",
+        null,
+        "Confuses 'd' with the number of terms"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The question is clear and the solution correctly identifies 'd' as the common difference. The distractors are typical misconceptions that students might have.",
+      "sources": [
+        {
+          "document": "balbharati/10/mathematics/1003000608.pdf",
+          "ordinal": 37,
+          "pageStart": 84,
+          "pageEnd": 86,
+          "headingPath": [
+            "3. Arithmetic Progression"
+          ]
+        },
+        {
+          "document": "balbharati/10/mathematics/1003000608.pdf",
+          "ordinal": 38,
+          "pageStart": 86,
+          "pageEnd": 88,
+          "headingPath": [
+            "3. Arithmetic Progression"
+          ]
+        },
+        {
+          "document": "balbharati/10/mathematics/1003000608.pdf",
+          "ordinal": 39,
+          "pageStart": 88,
+          "pageEnd": 89,
+          "headingPath": [
+            "3. Arithmetic Progression"
+          ]
+        }
+      ],
+      "edition": "2026 edition",
+      "generatedAt": "2026-11-06T18:23:31.250Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "If the first term of an A.P. is 5 and the common difference is 3, what is the fourth term?",
+      "choices": [
+        "14",
+        "11",
+        "8",
+        "17"
+      ],
+      "answerIndex": 0,
+      "solution": "The nth term of an A.P. is given by a + (n - 1)d. Here, a = 5, d = 3, and n = 4. So, 5 + (4 - 1) × 3 = 5 + 9 = 14. The correct answer is '14'. '11' is the third term, '8' is the second term, and '17' is the fifth term.",
+      "checkExpr": "5+(4-1)*3",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक समांतर श्रेढ़ी का प्रथम पद 5 है और सार्वअंतर 3 है, तो चौथा पद क्या है?",
+          "choices": [
+            "14",
+            "11",
+            "8",
+            "17"
+          ],
+          "solution": "समांतर श्रेढ़ी का nवाँ पद a + (n - 1)d द्वारा दिया जाता है। यहाँ, a = 5, d = 3, और n = 4। अतः, 5 + (4 - 1) × 3 = 5 + 9 = 14। सही उत्तर '14' है। '11' तीसरा पद है, '8' द्वितीय पद है, और '17' पांचवाँ पद है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard mathematical terminology as found in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका अंकगणिती श्रेढीचा पहिला पद 5 आहे आणि सामान्य फरक 3 आहे, तर चौथा पद किती आहे?",
+          "choices": [
+            "14",
+            "11",
+            "8",
+            "17"
+          ],
+          "solution": "अंकगणिती श्रेढीचा n वा पद a + (n - 1)d नुसार दिला जातो. इथे, a = 5, d = 3, आणि n = 4. म्हणून, 5 + (4 - 1) × 3 = 5 + 9 = 14. योग्य उत्तर '14' आहे. '11' हा तिसरा पद आहे, '8' हा दुसरा पद आहे आणि '17' हा पाचवा पद आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "calculates the third term instead of the fourth",
+        "calculates the second term instead of the fourth",
+        "calculates the fifth term instead of the fourth"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly applies the formula for the nth term of an arithmetic progression and identifies the correct answer. The reasoning for the distractors is accurate and reflects common student misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/10/mathematics/1003000608.pdf",
+          "ordinal": 40,
+          "pageStart": 89,
+          "pageEnd": 90,
+          "headingPath": [
+            "3. Arithmetic Progression",
+            "Problem Set - 3"
+          ]
+        }
+      ],
+      "edition": "2026 edition",
+      "generatedAt": "2026-11-06T18:23:31.250Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "What is the sum of the first 100 natural numbers?",
+      "choices": [
+        "5000",
+        "5050",
+        "5100",
+        "5150"
+      ],
+      "answerIndex": 1,
+      "solution": "The sum of the first 100 natural numbers can be calculated using the formula for the sum of an arithmetic progression, where the first term is 1, the last term is 100, and the number of terms is 100. The formula is S = n × (first term + last term) / 2. Substituting the values, S = 100 × (1 + 100) / 2 = 5050. The option '5000' is incorrect because it does not account for the correct sum of the numbers. The option '5100' is incorrect because it adds 100 extra. The option '5150' is incorrect because it overestimates the sum.",
+      "checkExpr": "(100*(1+100))/2",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "प्रथम 100 प्राकृत संख्याओं का योग क्या है?",
+          "choices": [
+            "5000",
+            "5050",
+            "5100",
+            "5150"
+          ],
+          "solution": "प्रथम 100 प्राकृत संख्याओं का योग समांतर श्रेढ़ी के योग के सूत्र का उपयोग करके गणना की जा सकती है, जहां पहला पद 1, अंतिम पद 100 और पदों की संख्या 100 है। सूत्र S = n × (पहला पद + अंतिम पद) / 2 है। मान रखने पर, S = 100 × (1 + 100) / 2 = 5050। विकल्प '5000' गलत है क्योंकि यह संख्याओं के सही योग को ध्यान में नहीं रखता। विकल्प '5100' गलत है क्योंकि यह 100 अतिरिक्त जोड़ता है। विकल्प '5150' गलत है क्योंकि यह योग का अतिरेक अनुमान लगाता है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "पहिल्या 100 प्राकृतिक संख्यांची बेरीज किती असते?",
+          "choices": [
+            "5000",
+            "5050",
+            "5100",
+            "5150"
+          ],
+          "solution": "पहिल्या 100 प्राकृतिक संख्यांची बेरीज अंकगणितीय श्रेढीच्या सूत्राने काढता येते, जेथे पहिली संख्या 1, शेवटची संख्या 100 आणि एकूण संख्या 100 असतात. सूत्र म्हणजे S = n × (पहिली संख्या + शेवटची संख्या) / 2. मूल्यांचा वापर केल्यास, S = 100 × (1 + 100) / 2 = 5050. '5000' विकल्प चुकीचा आहे कारण तो संख्यांची बरोबर बेरीज ध्यानात घेत नाही. '5100' विकल्प चुकीचा आहे कारण तो 100 अतिरिक्त जोडतो. '5150' विकल्प चुकीचा आहे कारण तो बेरीज अतिरिक्त अंदाजे करतो.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "does not use the correct formula",
+        null,
+        "does not account for the full range of numbers",
+        "overestimates the sum"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly applies the arithmetic progression sum formula, and the reasoning for the incorrect options aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/10/mathematics/1003000608.pdf",
+          "ordinal": 34,
+          "pageStart": 77,
+          "pageEnd": 78,
+          "headingPath": [
+            "3. Arithmetic Progression"
+          ]
+        },
+        {
+          "document": "balbharati/10/mathematics/1003000608.pdf",
+          "ordinal": 35,
+          "pageStart": 79,
+          "pageEnd": 81,
+          "headingPath": [
+            "3. Arithmetic Progression"
+          ]
+        },
+        {
+          "document": "balbharati/10/mathematics/1003000608.pdf",
+          "ordinal": 36,
+          "pageStart": 81,
+          "pageEnd": 83,
+          "headingPath": [
+            "3. Arithmetic Progression"
+          ]
+        }
+      ],
+      "edition": "2026 edition",
+      "generatedAt": "2026-11-06T18:23:31.250Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If the first term of an arithmetic progression is 5 and the common difference is 3, what is the 10th term?",
+      "choices": [
+        "32",
+        "35",
+        "29",
+        "30"
+      ],
+      "answerIndex": 0,
+      "solution": "The 10th term can be calculated using the formula t = a + (n-1)d. Substituting a = 5, d = 3, and n = 10, we get t = 5 + (10-1) × 3 = 5 + 27 = 32. The other options either use incorrect values for 'n' or miscalculate the multiplication.",
+      "checkExpr": "5 + (10-1)*3",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक समांतर श्रेढ़ी का प्रथम पद 5 है और सार्व अंतर 3 है, तो 10वां पद क्या है?",
+          "choices": [
+            "32",
+            "35",
+            "29",
+            "30"
+          ],
+          "solution": "10वां पद सूत्र t = a + (n-1)d के उपयोग से गणना की जा सकती है। a = 5, d = 3 और n = 10 के मान प्रतिस्थापित करने पर हमें t = 5 + (10-1) × 3 = 5 + 27 = 32 प्राप्त होता है। अन्य विकल्प 'n' के गलत मान का उपयोग करते हैं या गुणन की गणना गलत करते हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर अंकगणिती श्रेढीचा पहिला पद 5 आहे आणि सामान्य फरक 3 आहे, तर 10वा पद काय असेल?",
+          "choices": [
+            "32",
+            "35",
+            "29",
+            "30"
+          ],
+          "solution": "10वा पद वापरून गणित केला जाऊ शकतो t = a + (n-1)d. a = 5, d = 3 आणि n = 10 च्या मूल्यांचा वापर करून, आम्ही t = 5 + (10-1) × 3 = 5 + 27 = 32 मिळतो. इतर विकल्पांमध्ये 'n' च्या चुकीच्या मूल्यांचा वापर केला गेला आहे किंवा गुणाकार चुकीचा केला गेला आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for arithmetic progression.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Uses n = 9 instead of 10",
+        "Adds 3 instead of multiplying by 3",
+        "Miscalculates 9 × 3 as 25"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly uses the formula for the nth term of an arithmetic progression and arrives at the correct answer. The reasoning for the distractors is plausible and reflects common student misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/10/mathematics/1003000608.pdf",
+          "ordinal": 37,
+          "pageStart": 84,
+          "pageEnd": 86,
+          "headingPath": [
+            "3. Arithmetic Progression"
+          ]
+        },
+        {
+          "document": "balbharati/10/mathematics/1003000608.pdf",
+          "ordinal": 38,
+          "pageStart": 86,
+          "pageEnd": 88,
+          "headingPath": [
+            "3. Arithmetic Progression"
+          ]
+        },
+        {
+          "document": "balbharati/10/mathematics/1003000608.pdf",
+          "ordinal": 39,
+          "pageStart": 88,
+          "pageEnd": 89,
+          "headingPath": [
+            "3. Arithmetic Progression"
+          ]
+        }
+      ],
+      "edition": "2026 edition",
+      "generatedAt": "2026-11-06T18:23:31.250Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    }
+  ]
+}

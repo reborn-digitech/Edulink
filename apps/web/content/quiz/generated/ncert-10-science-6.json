@@ -1074,6 +1074,1354 @@
       "generatedAt": "2026-10-30T07:42:35.610Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is the main function of the nervous system?",
+      "choices": [
+        "To provide structural support",
+        "To control and coordinate body functions",
+        "To transport oxygen",
+        "To remove waste"
+      ],
+      "answerIndex": 1,
+      "solution": "The main function of the nervous system is to control and coordinate body functions. It is responsible for receiving sensory information, processing it, and generating appropriate responses. This system includes the brain, spinal cord, and nerves, which work together to regulate various bodily activities.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "न्यूरोसिस का मुख्य कार्य क्या है?",
+          "choices": [
+            "संरचनात्मक समर्थन प्रदान करना",
+            "शरीर के कार्यों को नियंत्रित एवं समन्वित करना",
+            "ऑक्सीजन परिवहन करना",
+            "अपशिष्ट को हटाना"
+          ],
+          "solution": "न्यूरोसिस का मुख्य कार्य शरीर के कार्यों को नियंत्रित एवं समन्वित करना है। यह संवेदी सूचना प्राप्त करता है, इसका प्रक्रमण करता है एवं उपयुक्त प्रतिक्रियाएं उत्पन्न करता है। इस प्रणाली में मस्तिष्क, कम्प्रान तंत्र एवं तंत्रिकाएं शामिल होती हैं, जो विभिन्न शारीरिक गतिविधियों को नियंत्रित करने के लिए एक साथ कार्य करते हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate and maintains the original meaning, with appropriate terminology used in Indian science education.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "न्यूरोसिस्टमचे मुख्य कार्य काय आहे?",
+          "choices": [
+            "संरचनात्मक समर्थन प्रदान करणे",
+            "शरीराचे कार्य नियंत्रित करणे आणि समन्वयित करणे",
+            "ऑक्सिजन परिवहन करणे",
+            "अपशिष्ट दूर करणे"
+          ],
+          "solution": "न्यूरोसिस्टमचे मुख्य कार्य शरीराचे कार्य नियंत्रित करणे आणि समन्वयित करणे आहे. ते संवेदनशील माहिती घेण्यास, त्याचे प्रक्रिया करण्यास आणि योग्य प्रतिक्रिया तयार करण्यास जबाबदार आहे. हा प्रणाली मेंदू, मेरुदंड आणि तंतू यांचा समावेश करते, जे शरीराच्या विविध क्रियांचा नियंत्रण करण्यासाठी एकत्र कार्य करतात.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the original meaning, and uses appropriate terminology consistent with Marathi-medium science education.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the function of the skeletal system",
+        null,
+        "Thinks the nervous system is involved in oxygen transport",
+        "Believes the nervous system is responsible for waste removal"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-constructed and the correct answer is clearly 1. The distractors are based on common misconceptions about the functions of other body systems, which is appropriate for a recall-level question.",
+      "sources": [
+        {
+          "document": "ncert/10/science/jesc106.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 1,
+          "headingPath": [
+            "Chapter 6: Control and Coordination"
+          ]
+        },
+        {
+          "document": "ncert/10/science/jesc106.pdf",
+          "ordinal": 1,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 6: Control and Coordination",
+            "6 . 16 . 1 ANIMALS – NERVOUS SYSTEM6 . 1ANIMALS – NERVOUS SYSTEM"
+          ]
+        },
+        {
+          "document": "ncert/10/science/jesc106.pdf",
+          "ordinal": 2,
+          "pageStart": 2,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 6: Control and Coordination",
+            "6.1.1 What happens in Reflex Actions?"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T19:41:33.645Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "The gap between two neurons is called a",
+      "choices": [
+        "dendrite",
+        "synapse",
+        "axon",
+        "impulse"
+      ],
+      "answerIndex": 1,
+      "solution": "The correct answer is synapse. A synapse is the gap between two neurons where signals are transmitted. Dendrites are the parts of a neuron that receive signals, axons are the parts that carry signals away, and impulses are the electrical signals themselves.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "दो तंत्रिका कोशिकाओं के बीच का अंतर कहलाता है",
+          "choices": [
+            "डेंड्राइट",
+            "सिनैप्स",
+            "एक्सॉन",
+            "आवेग"
+          ],
+          "solution": "सही उत्तर सिनैप्स है। सिनैप्स दो तंत्रिका कोशिकाओं के बीच का स्थान होता है जहां संकेत प्रसारित होते हैं। डेंड्राइट वे भाग होते हैं जो संकेत प्राप्त करते हैं, एक्सॉन वे भाग होते हैं जो संकेत दूर ले जाते हैं, और आवेग विद्युत संकेत होते हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate terminology as found in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "दोन न्यूरॉनमधील अंतर ओळखा",
+          "choices": [
+            "डेंड्राइट",
+            "सिनॅप्स",
+            "एक्सॉन",
+            "आवेग"
+          ],
+          "solution": "बरोबर उत्तर सिनॅप्स आहे. सिनॅप्स हा दोन न्यूरॉनमधील अंतर आहे जेथे संदेश प्रसारित होतो. डेंड्राइट हे न्यूरॉनचे भाग आहेत जे संदेश घेतात, एक्सॉन हे भाग आहेत जे संदेश बाहेर काढतात आणि आवेग हे विद्युत संदेश आहेत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for biological concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses parts of a neuron",
+        null,
+        "Confuses parts of a neuron",
+        "Confuses parts of a neuron"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The question is straightforward and tests recall of basic neuroscience terminology. The correct answer is 'synapse,' and the author's reasoning for the distractors is valid, as they all relate to common misconceptions about neuron structure and function.",
+      "sources": [
+        {
+          "document": "ncert/10/science/jesc106.pdf",
+          "ordinal": 15,
+          "pageStart": 11,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 6: Control and Coordination",
+            "6.3 HORMONES IN ANIMALS",
+            "Do You Know?"
+          ]
+        },
+        {
+          "document": "ncert/10/science/jesc106.pdf",
+          "ordinal": 16,
+          "pageStart": 12,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 6: Control and Coordination",
+            "6.3 HORMONES IN ANIMALS",
+            "Do You Know?"
+          ]
+        },
+        {
+          "document": "ncert/10/science/jesc106.pdf",
+          "ordinal": 17,
+          "pageStart": 12,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 6: Control and Coordination",
+            "6.3 HORMONES IN ANIMALS",
+            "What you have learnt"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T19:41:33.645Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the function of receptors in our body?",
+      "choices": [
+        "They carry electrical impulses",
+        "They detect stimuli",
+        "They release hormones",
+        "They regulate metabolism"
+      ],
+      "answerIndex": 1,
+      "solution": "The correct answer is They detect stimuli. Receptors in our body detect stimuli such as light, sound, and touch, and send this information to the nervous system. They do not carry electrical impulses, release hormones, or regulate metabolism.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "हमारे शरीर में अनुवेदक का कार्य क्या है?",
+          "choices": [
+            "वे विद्युत आवेग ले जाते हैं",
+            "वे उत्तेजना का पता लगाते हैं",
+            "वे हार्मोन उत्पन्न करते हैं",
+            "वे उपापचय को नियंत्रित करते हैं"
+          ],
+          "solution": "सही उत्तर वे उत्तेजना का पता लगाते हैं है। हमारे शरीर में अनुवेदक उत्तेजना जैसे प्रकाश, ध्वनि और स्पर्श का पता लगाते हैं और इस जानकारी को तंत्रिका तंत्र में भेजते हैं। वे विद्युत आवेग नहीं ले जाते, हार्मोन उत्पन्न नहीं करते और उपापचय को नियंत्रित नहीं करते।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English original in meaning, terminology, and structure. Technical terms like 'अनुवेदक' (receptors) and 'उत्तेजना' (stimuli) are appropriately used in a Hindi science context.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "आमच्या शरीरातील रिसेप्टर्सचे कार्य काय आहे?",
+          "choices": [
+            "ते विद्युत आवेग प्रवाहित करतात",
+            "ते उत्तेजन ओळखतात",
+            "ते हॉर्मोन बाहेर काढतात",
+            "ते मेटाबॉलिझम नियंत्रित करतात"
+          ],
+          "solution": "योग्य उत्तर ते उत्तेजन ओळखतात. आमच्या शरीरातील रिसेप्टर्स उत्तेजन ओळखतात जसे की प्रकाश, आवाज आणि स्पर्श, आणि ते माहिती तंत्रिका प्रणालीला पाठवतात. ते विद्युत आवेग प्रवाहित करत नाहीत, हॉर्मोन बाहेर काढत नाहीत किंवा मेटाबॉलिझम नियंत्रित करत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for biological concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the function of neurons with receptors",
+        null,
+        "Confuses the function of endocrine glands with receptors",
+        "Confuses the function of metabolic processes with receptors"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-constructed, with a clear correct answer and plausible distractors based on common misconceptions. The solution is accurate and matches the reasoning provided.",
+      "sources": [
+        {
+          "document": "ncert/10/science/jesc106.pdf",
+          "ordinal": 15,
+          "pageStart": 11,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 6: Control and Coordination",
+            "6.3 HORMONES IN ANIMALS",
+            "Do You Know?"
+          ]
+        },
+        {
+          "document": "ncert/10/science/jesc106.pdf",
+          "ordinal": 16,
+          "pageStart": 12,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 6: Control and Coordination",
+            "6.3 HORMONES IN ANIMALS",
+            "Do You Know?"
+          ]
+        },
+        {
+          "document": "ncert/10/science/jesc106.pdf",
+          "ordinal": 17,
+          "pageStart": 12,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 6: Control and Coordination",
+            "6.3 HORMONES IN ANIMALS",
+            "What you have learnt"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T19:41:33.645Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of the following is an example of a voluntary action?",
+      "choices": [
+        "Salivating at the smell of food",
+        "Closing the eye when an object approaches",
+        "Walking in a straight line",
+        "Pupil shrinking in bright light"
+      ],
+      "answerIndex": 2,
+      "solution": "Walking in a straight line is a voluntary action because it involves conscious control and decision-making. Salivating at the smell of food, closing the eye when an object approaches, and pupil shrinking in bright light are all automatic responses that occur without conscious thought.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा इच्छापूर्वक क्रिया का उदाहरण है?",
+          "choices": [
+            "खाद्य की गंध पर लार बनना",
+            "जब कोई वस्तु आती है तो आंख बंद करना",
+            "सीधी रेखा में चलना",
+            "उज्ज्वल प्रकाश में नेत्र द्वारक का संकुचित होना"
+          ],
+          "solution": "सीधी रेखा में चलना इच्छापूर्वक क्रिया है क्योंकि इसमें जागरूक नियंत्रण और निर्णय लेना शामिल होता है। खाद्य की गंध पर लार बनना, जब कोई वस्तु आती है तो आंख बंद करना और उज्ज्वल प्रकाश में नेत्र द्वारक का संकुचित होना सभी अनैच्छिक प्रतिक्रियाएं हैं जो जागरूक विचार के बिना होती हैं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriately used in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते अनैसर्गिक क्रियेचे उदाहरण आहे?",
+          "choices": [
+            "खाद्याच्या वासाने लाळ वाहणे",
+            "वस्तू जवळ येत असल्यास डोळा बंद करणे",
+            "सरळ रेषेत चालणे",
+            "तीव्र प्रकाशात नेत्राच्या दृष्टीचे लहान होणे"
+          ],
+          "solution": "सरळ रेषेत चालणे ही अनैसर्गिक क्रिया आहे कारण ती जाणीवपूर्वक नियंत्रण आणि निर्णय घेण्यास संबंधित आहे. खाद्याच्या वासाने लाळ वाहणे, वस्तू जवळ येत असल्यास डोळा बंद करणे आणि तीव्र प्रकाशात नेत्राच्या दृष्टीचे लहान होणे ही जाणीवपूर्वक विचाराशिवाय होणारी स्वाभाविक प्रतिक्रिया आहेत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for biological concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses involuntary actions with voluntary ones.",
+        "Confuses reflex actions with voluntary ones.",
+        null,
+        "Misunderstands the nature of reflexes."
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 2 (Walking in a straight line), as it is a voluntary action that requires conscious control. The other options are involuntary or reflex actions, which aligns with the author's reasoning.",
+      "sources": [
+        {
+          "document": "ncert/10/science/jesc106.pdf",
+          "ordinal": 3,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 6: Control and Coordination",
+            "6.1.1 What happens in Reflex Actions?"
+          ]
+        },
+        {
+          "document": "ncert/10/science/jesc106.pdf",
+          "ordinal": 4,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 6: Control and Coordination",
+            "6.1.2 Human Brain"
+          ]
+        },
+        {
+          "document": "ncert/10/science/jesc106.pdf",
+          "ordinal": 5,
+          "pageStart": 5,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 6: Control and Coordination",
+            "6.1.2 Human Brain"
+          ]
+        },
+        {
+          "document": "ncert/10/science/jesc106.pdf",
+          "ordinal": 6,
+          "pageStart": 6,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 6: Control and Coordination",
+            "6.1.3 How are these Tissues protected?"
+          ]
+        },
+        {
+          "document": "ncert/10/science/jesc106.pdf",
+          "ordinal": 7,
+          "pageStart": 6,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 6: Control and Coordination",
+            "6.1.4 How does the Nervous Tissue cause Action?"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T19:41:33.645Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which type of movement in plants is caused by growth?",
+      "choices": [
+        "Quick movement in response to touch",
+        "Directional movement in response to stimuli",
+        "Movement that occurs without any change in cell structure",
+        "Movement that happens instantly when touched"
+      ],
+      "answerIndex": 1,
+      "solution": "Directional movement in response to stimuli is caused by growth, as plants gradually adjust their growth direction based on external factors like light or gravity. Quick movement in response to touch and movement that happens instantly when touched are rapid responses not involving growth. Movement that occurs without any change in cell structure is also not related to growth, as it does not involve cellular changes.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "पौधों में किस प्रकार की गति वृद्धि के कारण होती है?",
+          "choices": [
+            "स्पर्श के प्रति तीव्र गति",
+            "उत्तेजना के प्रति दिशात्मक गति",
+            "कोशिका संरचना में कोई परिवर्तन बिना गति",
+            "स्पर्श के कारण तत्काल गति"
+          ],
+          "solution": "उत्तेजना के प्रति दिशात्मक गति वृद्धि के कारण होती है, क्योंकि पौधे बाह्य कारकों जैसे प्रकाश या गुरुत्वाकर्षण के आधार पर अपनी वृद्धि की दिशा को धीरे-धीरे समायोजित करते हैं। स्पर्श के प्रति तीव्र गति और स्पर्श के कारण तत्काल गति वृद्धि के बिना तेज प्रतिक्रियाएं हैं। कोशिका संरचना में कोई परिवर्तन बिना गति भी वृद्धि से संबंधित नहीं है, क्योंकि इसमें कोशिकीय परिवर्तन नहीं होते।",
+          "imageAlt": "एक पौधे का चित्र जिसमें जड़, तना और पत्ती है, ऊपर और नीचे की गति की दिशाएं दिखाई गई हैं।",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi botanical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "वनस्पतीमध्ये वाढीमुळे कोणत्या प्रकारचा गती घडतो?",
+          "choices": [
+            "स्पर्शाच्या प्रतिक्रियेमुळे झालेली त्वरित गती",
+            "उत्तेजनाच्या प्रतिक्रियेमुळे होणारी दिशात्मक गती",
+            "कोणत्याही कोशिका संरचनेत बदल न करता होणारी गती",
+            "स्पर्शानंतर ताबडतोब होणारी गती"
+          ],
+          "solution": "उत्तेजनाच्या प्रतिक्रियेमुळे होणारी दिशात्मक गती वाढीमुळे होते, कारण वनस्पती बाह्य कारकांमुळे त्यांच्या वाढीच्या दिशेत धीरे-धीरे समायोजन करतात जसे की प्रकाश किंवा गुरुत्वाकर्षण. स्पर्शाच्या प्रतिक्रियेमुळे झालेली त्वरित गती आणि स्पर्शानंतर ताबडतोब होणारी गती ह्या वाढीशिवाय त्वरित प्रतिक्रिया आहेत. कोणत्याही कोशिका संरचनेत बदल न करता होणारी गती वाढीशी संबंधित नाही, कारण त्यात कोशिकांत बदल होत नाही.",
+          "imageAlt": "एका वनस्पतीचा चित्र ज्यामध्ये जड आणि तंतू आणि पान असतात, जे वर आणि खाली गतीच्या दिशा दर्शवतात.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi botanical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": "A diagram of a plant with root, stem, and leaf, showing upward and downward movement directions.",
+      "figure": {
+        "kind": "diagram",
+        "spec": {
+          "parts": [
+            {
+              "part": "plant",
+              "x": 50,
+              "y": 30,
+              "size": 40,
+              "labels": [
+                "root",
+                "stem",
+                "leaf"
+              ],
+              "text": {
+                "stem": "stem",
+                "leaf": "leaf"
+              }
+            }
+          ],
+          "arrows": [
+            {
+              "from": [
+                50,
+                30
+              ],
+              "to": [
+                50,
+                10
+              ],
+              "label": "up",
+              "curved": false
+            },
+            {
+              "from": [
+                50,
+                30
+              ],
+              "to": [
+                50,
+                50
+              ],
+              "label": "down",
+              "curved": false
+            }
+          ]
+        },
+        "labels": {
+          "root": {
+            "en": "Root",
+            "hi": "जड़",
+            "mr": "जड"
+          },
+          "stem": {
+            "en": "Stem",
+            "hi": "तना",
+            "mr": "तंतू"
+          },
+          "leaf": {
+            "en": "Leaf",
+            "hi": "पत्ती",
+            "mr": "पान"
+          },
+          "up": {
+            "en": "Upward",
+            "hi": "ऊपर",
+            "mr": "वर"
+          },
+          "down": {
+            "en": "Downward",
+            "hi": "नीचे",
+            "mr": "खाली"
+          }
+        }
+      },
+      "needsFigure": true,
+      "distractorReason": [
+        "Confuses quick movement with growth-dependent movement",
+        null,
+        "Confuses growth-based movement with structural changes rather than cellular expansion",
+        "Misunderstands the role of growth in plant movement"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 1, as directional movement in response to stimuli (like phototropism or gravitropism) is caused by growth. The other options describe non-growth-related movements, which aligns with the author's explanation.",
+      "sources": [
+        {
+          "document": "ncert/10/science/jesc106.pdf",
+          "ordinal": 8,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 6: Control and Coordination",
+            "6.2 COORDINA6.2 COORDINATION IN PL6.2 COORDINATION IN PLTION IN PL ANTSTION IN PLANTS"
+          ]
+        },
+        {
+          "document": "ncert/10/science/jesc106.pdf",
+          "ordinal": 9,
+          "pageStart": 7,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 6: Control and Coordination",
+            "6.2 COORDINA6.2 COORDINATION IN PL6.2 COORDINATION IN PLTION IN PL ANTSTION IN PLANTS",
+            "6.2.1 Immediate Response to Stimulus"
+          ]
+        },
+        {
+          "document": "ncert/10/science/jesc106.pdf",
+          "ordinal": 10,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 6: Control and Coordination",
+            "6.2 COORDINA6.2 COORDINATION IN PL6.2 COORDINATION IN PLTION IN PL ANTSTION IN PLANTS",
+            "6.2.2 Movement Due to Growth"
+          ]
+        },
+        {
+          "document": "ncert/10/science/jesc106.pdf",
+          "ordinal": 11,
+          "pageStart": 8,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 6: Control and Coordination",
+            "6.2 COORDINA6.2 COORDINATION IN PL6.2 COORDINATION IN PLTION IN PL ANTSTION IN PLANTS",
+            "6.2.2 Movement Due to Growth"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T19:41:33.645Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "What happens when a person blocks their nose while tasting sugar?",
+      "choices": [
+        "The taste becomes stronger",
+        "The taste remains the same",
+        "The taste becomes weaker",
+        "The taste disappears"
+      ],
+      "answerIndex": 2,
+      "solution": "When a person blocks their nose while tasting sugar, the taste becomes weaker. This is because the sense of taste is enhanced by the sense of smell, and blocking the nose reduces the ability to detect the full flavor of the substance. The taste buds on the tongue detect basic tastes, but the overall perception of flavor is influenced by the olfactory receptors in the nose.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "जब कोई व्यक्ति चीनी का स्वाद लेते समय अपनी नाक बंद कर देता है तो क्या होता है?",
+          "choices": [
+            "स्वाद मजबूत हो जाता है",
+            "स्वाद वही रहता है",
+            "स्वाद कमजोर हो जाता है",
+            "स्वाद गायब हो जाता है"
+          ],
+          "solution": "जब कोई व्यक्ति चीनी का स्वाद लेते समय अपनी नाक बंद कर देता है तो स्वाद कमजोर हो जाता है। ऐसा इसलिए होता है क्योंकि स्वाद की भावना गंध की भावना द्वारा बढ़ाई जाती है, और नाक बंद करने से पदार्थ के पूर्ण स्वाद की अनुभूति करने की क्षमता कम हो जाती है। जीभ पर स्थित स्वाद ग्राही मूल स्वादों की पहचान करते हैं, लेकिन स्वाद की समग्र अनुभूति नाक में स्थित गंध ग्राही द्वारा प्रभावित होती है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology for sensory perception.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "माणूस चक्कीचा स्वाद घेताना त्याच्या नाकाला बंदी घालतो तर काय होते?",
+          "choices": [
+            "स्वाद अधिक तीव्र होतो",
+            "स्वाद त्याच राहतो",
+            "स्वाद कमी होतो",
+            "स्वाद नाहीसा होतो"
+          ],
+          "solution": "जेव्हा माणूस चक्कीचा स्वाद घेताना त्याच्या नाकाला बंदी घालतो तेव्हा स्वाद कमी होतो. हे त्यामुळे आहे की स्वादाची भावना ही घासाच्या भावनेने वाढते, आणि नाकाला बंदी घालणे द्रव्याच्या पूर्ण स्वादाची ओळख कमी करते. जीभेवरील स्वाद ग्राहक सामान्य स्वाद ओळखतात, परंतु स्वादाची एकूण भावना हायलाईन नाकातील घासाच्या ग्राहकांद्वारे प्रभावित होते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for sensory perception.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Believes that blocking the nose enhances taste perception",
+        "Thinks that taste is independent of smell",
+        null,
+        "Assumes that taste is completely lost when the nose is blocked"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        3,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly explains that taste perception is influenced by smell, and blocking the nose reduces the full flavor, making the taste weaker. The reasoning aligns with the scientific understanding of taste and smell interaction.",
+      "sources": [
+        {
+          "document": "ncert/10/science/jesc106.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 1,
+          "headingPath": [
+            "Chapter 6: Control and Coordination"
+          ]
+        },
+        {
+          "document": "ncert/10/science/jesc106.pdf",
+          "ordinal": 1,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 6: Control and Coordination",
+            "6 . 16 . 1 ANIMALS – NERVOUS SYSTEM6 . 1ANIMALS – NERVOUS SYSTEM"
+          ]
+        },
+        {
+          "document": "ncert/10/science/jesc106.pdf",
+          "ordinal": 2,
+          "pageStart": 2,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 6: Control and Coordination",
+            "6.1.1 What happens in Reflex Actions?"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T19:41:33.645Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "Which type of plant movement is caused by the change in water content of cells?",
+      "choices": [
+        "Phototropism",
+        "Hydrotropism",
+        "Thigmotropism",
+        "Nastic movement"
+      ],
+      "answerIndex": 3,
+      "solution": "The movement of leaves of the sensitive plant is caused by changes in the water content of cells, which leads to swelling or shrinking. This type of movement is classified as nastic movement. Phototropism is growth towards light, hydrotropism is growth towards water, and thigmotropism is growth in response to touch. None of these match the described mechanism.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "किस प्रकार के पौधे के गति के कारण कोशिकाओं में जल की मात्रा में परिवर्तन होता है?",
+          "choices": [
+            "फोटोट्रॉपिज्म",
+            "हाइड्रोट्रॉपिज्म",
+            "थिग्मोट्रॉपिज्म",
+            "नैस्टिक गति"
+          ],
+          "solution": "संवेदनशील पौधे के पत्तियों की गति कोशिकाओं में जल की मात्रा में परिवर्तन के कारण होती है, जिसके कारण फूलना या सिकुड़ना होता है। इस प्रकार की गति को नैस्टिक गति कहा जाता है। फोटोट्रॉपिज्म प्रकाश की ओर वृद्धि है, हाइड्रोट्रॉपिज्म पानी की ओर वृद्धि है, और थिग्मोट्रॉपिज्म छूने के प्रति वृद्धि है। इनमें से कोई भी विवरण में वर्णित यांत्रिकी के अनुरूप नहीं है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English original in meaning, technical terms, and structure. All options and the solution are correctly translated and maintain their original intent.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "कोणत्या वनस्पतीच्या गतीमध्ये सेलमधील पाणी विषयक बदलामुळे होते?",
+          "choices": [
+            "फोटोट्रॉपिझम",
+            "हायड्रोट्रॉपिझम",
+            "थिग्मोट्रॉपिझम",
+            "नॅस्टिक गती"
+          ],
+          "solution": "संवेदनशील वनस्पतीच्या पानांची गती सेलमधील पाणी विषयक बदलामुळे होते, ज्यामुळे सेल फुगतात किंवा खुंटतात. ही गती नॅस्टिक गती म्हणून वर्गीकृत केली जाते. फोटोट्रॉपिझम ही प्रकाशाकडे वाढ होणे आहे, हायड्रोट्रॉपिझम ही पाण्याकडे वाढ होणे आहे आणि थिग्मोट्रॉपिझम ही स्पर्शावर प्रतिक्रिया असलेली वाढ आहे. यापैकी कोणतेही वर्णन केलेल्या यंत्रणेशी जुळत नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the scientific terminology used in Marathi textbooks. The structure and meaning of the question and answer are preserved.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses growth towards light with the mechanism described",
+        "Confuses growth towards water with the mechanism described",
+        "Confuses touch-induced movement with the mechanism described",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly identifies nastic movement as the type of plant movement caused by changes in water content. The reasoning aligns with the definition of nastic movements, which are non-directional responses to stimuli and often involve changes in turgor pressure.",
+      "sources": [
+        {
+          "document": "ncert/10/science/jesc106.pdf",
+          "ordinal": 12,
+          "pageStart": 9,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 6: Control and Coordination",
+            "6.2 COORDINA6.2 COORDINATION IN PL6.2 COORDINATION IN PLTION IN PL ANTSTION IN PLANTS",
+            "6.2.2 Movement Due to Growth"
+          ]
+        },
+        {
+          "document": "ncert/10/science/jesc106.pdf",
+          "ordinal": 13,
+          "pageStart": 9,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 6: Control and Coordination",
+            "6.3 HORMONES IN ANIMALS"
+          ]
+        },
+        {
+          "document": "ncert/10/science/jesc106.pdf",
+          "ordinal": 14,
+          "pageStart": 10,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 6: Control and Coordination",
+            "6.3 HORMONES IN ANIMALS"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T19:41:33.645Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "What happens to a muscle cell when a nerve impulse reaches it?",
+      "choices": [
+        "It expands in size",
+        "It changes shape and shortens",
+        "It becomes rigid and immobile",
+        "It releases more oxygen"
+      ],
+      "answerIndex": 1,
+      "solution": "When a nerve impulse reaches a muscle cell, the cell changes shape and shortens due to the interaction of actin and myosin filaments, which slide past each other during contraction. Expanding in size, becoming rigid, or releasing oxygen do not occur as direct results of a nerve impulse. These changes are not part of the normal process of muscle contraction.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक मांसपेशी कोशिका पर एक तंत्रिका आवेग के पहुंचने पर क्या होता है?",
+          "choices": [
+            "इसका आकार बढ़ जाता है",
+            "इसका आकार बदल जाता है और छोटा हो जाता है",
+            "इसका अकड़ जाता है और गतिहीन हो जाता है",
+            "इसके द्वारा अधिक ऑक्सीजन निकल जाती है"
+          ],
+          "solution": "जब एक तंत्रिका आवेग एक मांसपेशी कोशिका तक पहुंचता है, तो कोशिका एक्टिन और मायोसिन फाइबर के परस्पर क्रिया के कारण आकार बदल जाती है और छोटी हो जाती है। आकार में वृद्धि, कठोर होना या ऑक्सीजन के निकलना तंत्रिका आवेग के सीधे परिणाम नहीं हैं। इन परिवर्तन मांसपेशी संकुचन की सामान्य प्रक्रिया का हिस्सा नहीं हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology for biology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका मांसपेशी कोशिकेला एका तांत्रिक उत्तेजनाने पोहोचल्यास काय होते?",
+          "choices": [
+            "ती आकाराने वाढते",
+            "ती आकृती बदलते आणि छोटी होते",
+            "ती कडक आणि गतिहीन होते",
+            "ती अधिक ऑक्सीजन बाहेर काढते"
+          ],
+          "solution": "एका मांसपेशी कोशिकेला एका तांत्रिक उत्तेजनाने पोहोचल्यास, कोशिका आकृती बदलते आणि छोटी होते, कारण एक्टिन आणि मायोसिन फाइलामेंट्सच्या परस्पर क्रियेमुळे होते. आकाराने वाढणे, कडक आणि गतिहीन होणे किंवा ऑक्सीजन बाहेर काढणे हे तांत्रिक उत्तेजनाचे सीधे निर्णय नाहीत. हे बदल मांसपेशी संकुचनाच्या सामान्य प्रक्रियेचा भाग नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation accurately reflects the original meaning, with appropriate Marathi terminology for biological processes.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Believes muscles expand when stimulated.",
+        null,
+        "Thinks muscles become rigid upon receiving impulses.",
+        "Misunderstands the role of oxygen in muscle movement."
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 1, as muscle cells contract (change shape and shorten) in response to nerve impulses. The other options reflect common misconceptions about muscle function.",
+      "sources": [
+        {
+          "document": "ncert/10/science/jesc106.pdf",
+          "ordinal": 3,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 6: Control and Coordination",
+            "6.1.1 What happens in Reflex Actions?"
+          ]
+        },
+        {
+          "document": "ncert/10/science/jesc106.pdf",
+          "ordinal": 4,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 6: Control and Coordination",
+            "6.1.2 Human Brain"
+          ]
+        },
+        {
+          "document": "ncert/10/science/jesc106.pdf",
+          "ordinal": 5,
+          "pageStart": 5,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 6: Control and Coordination",
+            "6.1.2 Human Brain"
+          ]
+        },
+        {
+          "document": "ncert/10/science/jesc106.pdf",
+          "ordinal": 6,
+          "pageStart": 6,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 6: Control and Coordination",
+            "6.1.3 How are these Tissues protected?"
+          ]
+        },
+        {
+          "document": "ncert/10/science/jesc106.pdf",
+          "ordinal": 7,
+          "pageStart": 6,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 6: Control and Coordination",
+            "6.1.4 How does the Nervous Tissue cause Action?"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T19:41:33.645Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "Why is the movement of a sensitive plant different from the movement of an animal?",
+      "choices": [
+        "Because the plant's movement is due to growth",
+        "Because the plant's movement is controlled by the brain",
+        "Because the plant's movement is due to electrical impulses",
+        "Because the plant's movement is voluntary"
+      ],
+      "answerIndex": 0,
+      "solution": "The movement of a sensitive plant is different from the movement of an animal because it is due to growth. Unlike animals, plants do not have nervous or muscular tissues to control their movement. Instead, their responses to stimuli, such as touch, are due to changes in turgor pressure, which is a result of water movement in the cells. Animals, on the other hand, rely on nervous and muscular tissues for movement.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक संवेदनशील पौधे की गति एक जंतु की गति से क्यों अलग होती है?",
+          "choices": [
+            "क्योंकि पौधे की गति वृद्धि के कारण होती है",
+            "क्योंकि पौधे की गति मस्तिष्क द्वारा नियंत्रित होती है",
+            "क्योंकि पौधे की गति विद्युत आवेगों के कारण होती है",
+            "क्योंकि पौधे की गति स्वैच्छिक होती है"
+          ],
+          "solution": "एक संवेदनशील पौधे की गति एक जंतु की गति से अलग होती है क्योंकि यह वृद्धि के कारण होती है। जंतुओं के विपरीत, पौधों में गति के नियंत्रण के लिए तंत्रिका या मांसपेशी ऊतक नहीं होते हैं। बल्कि, उनकी उत्तेजना, जैसे छूने के प्रति उत्तर, ट्यूर्गर दबाव में परिवर्तन के कारण होता है, जो कोशिकाओं में पानी के गति के परिणामस्वरूप होता है। जंतुओं के विपरीत, उनकी गति के लिए तंत्रिका और मांसपेशी ऊतकों पर निर्भर करते हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English content with appropriate terminology used in Indian school textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका संवेदनशील वनस्पतीचा गती एका प्राण्याच्या गतीपेक्षा का वेगळी असते?",
+          "choices": [
+            "कारण वनस्पतीची गती वाढीमुळे असते",
+            "कारण वनस्पतीची गती मेंदूकडून नियंत्रित असते",
+            "कारण वनस्पतीची गती विद्युत आवेगामुळे असते",
+            "कारण वनस्पतीची गती इच्छेनुसार असते"
+          ],
+          "solution": "संवेदनशील वनस्पतीची गती प्राण्याच्या गतीपेक्षा वेगळी असते कारण ती वाढीमुळे असते. प्राण्यांप्रमाणे वनस्पतींमध्ये तंत्रिका आणि मांसपेशी विषयक ऊती नसतात. त्यांच्या उत्तरांमध्ये, जसे की छेदनाच्या स्पर्शाच्या, त्यांच्या कोशिकांमध्ये पाण्याच्या गतीमुळे टर्गर दाबात बदल होतो. प्राण्यांना गतीसाठी तंत्रिका आणि मांसपेशी ऊती असतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the scientific terminology appropriate for a Marathi-medium textbook.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Thinks the plant's movement is controlled by a brain",
+        "Believes that plants use electrical impulses like animals",
+        "Assumes that plant movement is voluntary, like in animals"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 0, as the movement of a sensitive plant is due to changes in turgor pressure, not growth. The explanation provided by the author is accurate and aligns with the correct answer. The distractors reflect common misconceptions about plant biology.",
+      "sources": [
+        {
+          "document": "ncert/10/science/jesc106.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 1,
+          "headingPath": [
+            "Chapter 6: Control and Coordination"
+          ]
+        },
+        {
+          "document": "ncert/10/science/jesc106.pdf",
+          "ordinal": 1,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 6: Control and Coordination",
+            "6 . 16 . 1 ANIMALS – NERVOUS SYSTEM6 . 1ANIMALS – NERVOUS SYSTEM"
+          ]
+        },
+        {
+          "document": "ncert/10/science/jesc106.pdf",
+          "ordinal": 2,
+          "pageStart": 2,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 6: Control and Coordination",
+            "6.1.1 What happens in Reflex Actions?"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T19:41:33.645Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "A student observes that a plant bends towards light. Which hormone is responsible for this movement and how does it work?",
+      "choices": [
+        "Auxin, which causes cells on the shaded side to elongate",
+        "Gibberellin, which causes cells on the shaded side to shrink",
+        "Cytokinin, which causes cells on the illuminated side to elongate",
+        "Abscisic acid, which causes cells on the illuminated side to shrink"
+      ],
+      "answerIndex": 0,
+      "solution": "Auxin is responsible for the plant bending towards light. It is synthesised at the shoot tip and diffuses to the shaded side, causing those cells to elongate. This makes the plant appear to bend towards the light. The other options are incorrect because gibberellins promote stem growth, cytokinins promote cell division, and abscisic acid inhibits growth.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक छात्रा देखती है कि एक पौधा प्रकाश की ओर झुक जाता है। इस गति के लिए कौन-सा हार्मोन जिम्मेदार है और यह कैसे काम करता है?",
+          "choices": [
+            "एक्सिन, जो छायादार तरफ कोशिकाओं को लंबा कर देता है",
+            "जिबरेलिन, जो छायादार तरफ कोशिकाओं को सिकुड़ जाता है",
+            "साइटोकाइनिन, जो प्रकाशित तरफ कोशिकाओं को लंबा कर देता है",
+            "एब्सिसिक एसिड, जो प्रकाशित तरफ कोशिकाओं को सिकुड़ जाता है"
+          ],
+          "solution": "एक्सिन पौधे के प्रकाश की ओर झुकने के लिए जिम्मेदार है। यह शूट टिप पर संश्लेषित होता है और छायादार तरफ फैल जाता है, जिससे वहां की कोशिकाएं लंबा हो जाती हैं। इससे पौधा प्रकाश की ओर झुके दिखाई देता है। अन्य विकल्प गलत हैं क्योंकि जिबरेलिन कोमल तने के विकास को बढ़ाता है, साइटोकाइनिन कोशिका विभाजन को बढ़ाता है, और एब्सिसिक एसिड विकास को रोकता है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, technical terms are correctly used in Hindi as per standard biology textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका विद्यार्थ्याला असे निरीक्षण होते की एका वनस्पती ज्या बाजूने प्रकाश येतो त्या बाजूकडे वाकते. हा गती जबाबदार असलेला हॉर्मोन कोणता असून तो कसा कार्य करतो?",
+          "choices": [
+            "ऑक्सिन, जो छायेच्या बाजूच्या कोशिका लांब होण्यास कारणीभूत होतो",
+            "जिबेरेलिन, जो छायेच्या बाजूच्या कोशिका छोट्या होण्यास कारणीभूत होतो",
+            "साइटोकायिनिन, जो प्रकाशाच्या बाजूच्या कोशिका लांब होण्यास कारणीभूत होतो",
+            "एब्सिसिक ऍसिड, जो प्रकाशाच्या बाजूच्या कोशिका छोट्या होण्यास कारणीभूत होतो"
+          ],
+          "solution": "ऑक्सिन वनस्पतीच्या प्रकाशाकडे वाकण्यास जबाबदार असतो. तो शूट टिपवर तयार होतो आणि छायेच्या बाजूला विसर्जित होतो, ज्यामुळे त्या कोशिका लांब होतात. हे वनस्पतीला प्रकाशाकडे वाकलेल्यासारखे दिसते. इतर विकल्प अयोग्य असतात कारण जिबेरेलिन तंतू वाढीस प्रोत्साहन देतात, साइटोकायिनिन कोशिका विभाजनास प्रोत्साहन देतात आणि एब्सिसिक ऍसिड वाढीला थांबवतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Marathi botanical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses the effect of auxin with shrinking cells",
+        "Confuses the role of gibberellin with the mechanism described",
+        "Confuses the role of abscisic acid with the mechanism described"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is option 0, as auxin causes elongation on the shaded side, leading to phototropism. The distractors reflect common misconceptions about other plant hormones.",
+      "sources": [
+        {
+          "document": "ncert/10/science/jesc106.pdf",
+          "ordinal": 12,
+          "pageStart": 9,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 6: Control and Coordination",
+            "6.2 COORDINA6.2 COORDINATION IN PL6.2 COORDINATION IN PLTION IN PL ANTSTION IN PLANTS",
+            "6.2.2 Movement Due to Growth"
+          ]
+        },
+        {
+          "document": "ncert/10/science/jesc106.pdf",
+          "ordinal": 13,
+          "pageStart": 9,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 6: Control and Coordination",
+            "6.3 HORMONES IN ANIMALS"
+          ]
+        },
+        {
+          "document": "ncert/10/science/jesc106.pdf",
+          "ordinal": 14,
+          "pageStart": 10,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 6: Control and Coordination",
+            "6.3 HORMONES IN ANIMALS"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T19:41:33.645Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "In which part of the brain are decisions made about how to respond to sensory information?",
+      "choices": [
+        "Cerebellum",
+        "Mid-brain",
+        "Fore-brain",
+        "Hind-brain"
+      ],
+      "answerIndex": 2,
+      "solution": "The fore-brain is responsible for processing sensory information and making decisions based on that input. The cerebellum is involved in motor control and balance, the mid-brain is more related to reflexes and sensory processing, and the hind-brain manages automatic functions like breathing. The fore-brain's role in higher cognitive functions makes it the correct answer.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "मस्तिष्क के किस भाग में संवेदी जानकारी के लिए कैसे प्रतिक्रिया करने का निर्णय लिया जाता है?",
+          "choices": [
+            "सेरिबेलम",
+            "मध्य मस्तिष्क",
+            "अग्र मस्तिष्क",
+            "पश्च मस्तिष्क"
+          ],
+          "solution": "अग्र मस्तिष्क संवेदी जानकारी के प्रसंस्करण और उस इनपुट पर आधारित निर्णय लेने के लिए जिम्मेदार होता है। सेरिबेलम गति नियंत्रण और संतुलन में शामिल होता है, मध्य मस्तिष्क अधिक मूलभूत प्रतिक्रियाओं और संवेदी प्रसंस्करण से जुड़ा होता है, और पश्च मस्तिष्क श्वास जैसे स्वाभाविक कार्यों के प्रबंधन में सहायता करता है। अग्र मस्तिष्क की उच्च बौद्धिक कार्यों में भूमिका होने के कारण यह सही उत्तर है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Hindi terminology for brain regions.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "मानसाच्या कोणत्या भागात अनुभवांच्या माहितीवर प्रतिक्रिया करण्याचे निर्णय घेतले जातात?",
+          "choices": [
+            "सेरेबेलम",
+            "मिड-ब्रेन",
+            "फॉर-ब्रेन",
+            "हिंड-ब्रेन"
+          ],
+          "solution": "फॉर-ब्रेन हा अनुभवांच्या माहितीचे प्रक्रिया करण्यासाठी जबाबदार असतो आणि त्यावर आधारित निर्णय घेतो. सेरेबेलम हा चलन आणि संतुलनासाठी जबाबदार असतो, मिड-ब्रेन हा अनुक्रियां आणि अनुभवांच्या प्रक्रियेशी संबंधित असतो, आणि हिंड-ब्रेन हा श्वास आणि इतर स्वाभाविक कार्यांच्या व्यवस्थापनासाठी जबाबदार असतो. फॉर-ब्रेन च्या उच्च बौद्धिक कार्यांमुळे तो योग्य उत्तर असतो.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for brain regions.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the role of the cerebellum with decision-making.",
+        "Confuses the role of the mid-brain with decision-making.",
+        null,
+        "Misunderstands the role of the hind-brain in decision-making."
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct. The fore-brain is indeed responsible for decision-making based on sensory information, and the author's reasoning aligns with standard neuroscience knowledge.",
+      "sources": [
+        {
+          "document": "ncert/10/science/jesc106.pdf",
+          "ordinal": 3,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 6: Control and Coordination",
+            "6.1.1 What happens in Reflex Actions?"
+          ]
+        },
+        {
+          "document": "ncert/10/science/jesc106.pdf",
+          "ordinal": 4,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 6: Control and Coordination",
+            "6.1.2 Human Brain"
+          ]
+        },
+        {
+          "document": "ncert/10/science/jesc106.pdf",
+          "ordinal": 5,
+          "pageStart": 5,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 6: Control and Coordination",
+            "6.1.2 Human Brain"
+          ]
+        },
+        {
+          "document": "ncert/10/science/jesc106.pdf",
+          "ordinal": 6,
+          "pageStart": 6,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 6: Control and Coordination",
+            "6.1.3 How are these Tissues protected?"
+          ]
+        },
+        {
+          "document": "ncert/10/science/jesc106.pdf",
+          "ordinal": 7,
+          "pageStart": 6,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 6: Control and Coordination",
+            "6.1.4 How does the Nervous Tissue cause Action?"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T19:41:33.645Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Why do muscles change their shape when a nerve impulse reaches them?",
+      "choices": [
+        "To produce energy",
+        "To store information",
+        "To shorten and create movement",
+        "To increase size"
+      ],
+      "answerIndex": 2,
+      "solution": "Muscles change shape when a nerve impulse reaches them because the muscle fibers contract, shortening to create movement. This is a fundamental biological process where muscle cells respond to signals by altering their structure. Producing energy, storing information, or increasing size are not functions of muscle shape change during contraction.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "मांसपेशियां तब क्यों आकार बदल जाती हैं जब एक तंत्रिका आवेग उन तक पहुंचता है?",
+          "choices": [
+            "ऊर्जा उत्पन्न करना",
+            "जानकारी संग्रहित करना",
+            "छोटा होकर गति पैदा करना",
+            "आकार बढ़ाना"
+          ],
+          "solution": "मांसपेशियां तब आकार बदल जाती हैं जब एक तंत्रिका आवेग उन तक पहुंचता है, क्योंकि मांसपेशी तंतु सिकुड़ जाते हैं, गति पैदा करने के लिए छोटे हो जाते हैं। यह एक मूलभूत जैविक प्रक्रिया है जहां मांसपेशी कोशिकाएं संकेतों के प्रति प्रतिक्रिया करती हैं और उनकी संरचना बदल देती हैं। ऊर्जा उत्पन्न करना, जानकारी संग्रहित करना या आकार बढ़ाना मांसपेशी के आकार बदलने के लिए एक संकुचन के दौरान कार्य नहीं हैं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains original meaning, and uses appropriate Hindi biological terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "का एका नर्व उत्तेजन त्यांच्याकडे पोहोचताना मांसपेशी आकृती बदलतात?",
+          "choices": [
+            "ऊर्जा उत्पादन करणे",
+            "माहिती भंडारण करणे",
+            "लघून जाणे आणि गती तयार करणे",
+            "मोठेपणा वाढवणे"
+          ],
+          "solution": "मांसपेशी नर्व उत्तेजन त्यांच्याकडे पोहोचताना आकृती बदलतात कारण मांसपेशी फायबर कुंचित होतात, गती तयार करण्यासाठी लघून जातात. हे एक मूलभूत जैविक प्रक्रिया आहे जेथे मांसपेशी कोशिका संकेतांवर प्रतिक्रिया देतात आणि त्यांची संरचना बदलतात. ऊर्जा उत्पादन, माहिती भंडारण किंवा मोठेपणा वाढवणे हे मांसपेशी आकृती बदलण्याचे कार्य नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and natural, with appropriate Marathi terminology for biological concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Misunderstands the function of muscle cells",
+        "Misunderstands the role of nerve impulses in muscle movement",
+        null,
+        "Confuses muscle cell changes with growth or energy production"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 2, as muscle cells shorten to create movement. The other options reflect common misconceptions about muscle function.",
+      "sources": [
+        {
+          "document": "ncert/10/science/jesc106.pdf",
+          "ordinal": 3,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 6: Control and Coordination",
+            "6.1.1 What happens in Reflex Actions?"
+          ]
+        },
+        {
+          "document": "ncert/10/science/jesc106.pdf",
+          "ordinal": 4,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 6: Control and Coordination",
+            "6.1.2 Human Brain"
+          ]
+        },
+        {
+          "document": "ncert/10/science/jesc106.pdf",
+          "ordinal": 5,
+          "pageStart": 5,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 6: Control and Coordination",
+            "6.1.2 Human Brain"
+          ]
+        },
+        {
+          "document": "ncert/10/science/jesc106.pdf",
+          "ordinal": 6,
+          "pageStart": 6,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 6: Control and Coordination",
+            "6.1.3 How are these Tissues protected?"
+          ]
+        },
+        {
+          "document": "ncert/10/science/jesc106.pdf",
+          "ordinal": 7,
+          "pageStart": 6,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 6: Control and Coordination",
+            "6.1.4 How does the Nervous Tissue cause Action?"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T19:41:33.645Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
     }
   ]
 }

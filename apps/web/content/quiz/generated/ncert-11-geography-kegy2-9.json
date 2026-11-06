@@ -659,6 +659,1092 @@
       "generatedAt": "2026-10-28T19:50:54.823Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "Which type of air mass is warm?",
+      "choices": [
+        "Tropical air mass",
+        "Polar air mass",
+        "Continental air mass",
+        "Arctic air mass"
+      ],
+      "answerIndex": 0,
+      "solution": "Tropical air masses are warm because they form over warm regions near the equator. Polar and Arctic air masses are cold as they originate from higher latitudes. Continental air masses can vary but are not specifically classified as warm.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "कौन सा हवा के द्रव्यमान गर्म होता है?",
+          "choices": [
+            "उष्णकटिबंधीय हवा का द्रव्यमान",
+            "ध्रुवीय हवा का द्रव्यमान",
+            "महाद्वीपीय हवा का द्रव्यमान",
+            "आर्कटिक हवा का द्रव्यमान"
+          ],
+          "solution": "उष्णकटिबंधीय हवा के द्रव्यमान गर्म होते हैं क्योंकि वे भूमध्य रेखा के पास गर्म क्षेत्रों में बनते हैं। ध्रुवीय और आर्कटिक हवा के द्रव्यमान ठंडे होते हैं क्योंकि वे उच्च अक्षांशों से उत्पन्न होते हैं। महाद्वीपीय हवा के द्रव्यमान भिन्न हो सकते हैं लेकिन विशेष रूप से गर्म के रूप में वर्गीकृत नहीं होते।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology for air masses.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "कोणत्या प्रकारच्या हवामान द्रव्याची तापमान उंच असते?",
+          "choices": [
+            "उष्णकटिबंधीय हवामान द्रव्य",
+            "ध्रुवीय हवामान द्रव्य",
+            "महाद्वीपीय हवामान द्रव्य",
+            "आर्क्टिक हवामान द्रव्य"
+          ],
+          "solution": "उष्णकटिबंधीय हवामान द्रव्य उष्ण असतात कारण ते भूमध्यरेखेजवळ उष्ण क्षेत्रांमध्ये तयार होतात. ध्रुवीय आणि आर्क्टिक हवामान द्रव्य थंड असतात कारण ते उंच अक्षांशांमधून उत्पन्न होतात. महाद्वीपीय हवामान द्रव्य बदलू शकतात परंतु त्यांना विशिष्टपणे उष्ण असे वर्गीकृत केले जात नाही.",
+          "imageAlt": null,
+          "critique": "The Marathi translation accurately reflects the English content with appropriate terminology used in Marathi science textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses tropical with polar air mass",
+        "Confuses continental with tropical air mass",
+        "Confuses arctic with tropical air mass"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 0 (Tropical air mass), as tropical air masses are indeed warm. The other options are cold or not described as warm. The author's reasoning for the wrong options aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/11/geography/kegy209.pdf",
+          "ordinal": 8,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 9: Atmospheric Circulation and Weather Systems"
+          ]
+        },
+        {
+          "document": "ncert/11/geography/kegy209.pdf",
+          "ordinal": 9,
+          "pageStart": 7,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 9: Atmospheric Circulation and Weather Systems"
+          ]
+        },
+        {
+          "document": "ncert/11/geography/kegy209.pdf",
+          "ordinal": 10,
+          "pageStart": 8,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 9: Atmospheric Circulation and Weather Systems"
+          ]
+        },
+        {
+          "document": "ncert/11/geography/kegy209.pdf",
+          "ordinal": 11,
+          "pageStart": 8,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 9: Atmospheric Circulation and Weather Systems"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T07:01:50.649Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of the following is the correct direction of wind around a low pressure system in the northern hemisphere?",
+      "choices": [
+        "clockwise",
+        "perpendicular to isobars",
+        "anti-clockwise",
+        "parallel to isobars"
+      ],
+      "answerIndex": 2,
+      "solution": "The correct direction of wind around a low pressure system in the northern hemisphere is anti-clockwise. This is due to the Coriolis effect, which deflects the wind to the right in the northern hemisphere. Clockwise is the direction around a high pressure system. Perpendicular to isobars is the direction of the pressure gradient force, not the wind. Parallel to isobars is incorrect as wind does not flow directly along isobars.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सी उत्तरी गोलार्ध में एक कम दबाव प्रणाली के चारों ओर हवा की दिशा सही है?",
+          "choices": [
+            "घड़ी की सुई के दिशा में",
+            "समदबाव रेखाओं के लंबवत",
+            "विपरीत घड़ी की सुई के दिशा में",
+            "समदबाव रेखाओं के समांतर"
+          ],
+          "solution": "उत्तरी गोलार्ध में एक कम दबाव प्रणाली के चारों ओर हवा की सही दिशा विपरीत घड़ी की सुई के दिशा में है। इसका कारण कोरिओलिस प्रभाव है, जो उत्तरी गोलार्ध में हवा को दाहिनी ओर विचलित कर देता है। घड़ी की सुई के दिशा में हवा कम दबाव प्रणाली के चारों ओर होती है। समदबाव रेखाओं के लंबवत हवा का दिशा दबाव प्रवणता बल के कारण होता है, न कि हवा के कारण। समदबाव रेखाओं के समांतर हवा का दिशा गलत है क्योंकि हवा सीधे समदबाव रेखाओं के साथ नहीं बहती।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate meteorological terms as used in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणता उत्तर गोलार्धातील कमी दाबाच्या प्रणालीमध्ये हवेच्या दिशेचा योग्य असेल?",
+          "choices": [
+            "घड्याळाच्या दिशेने",
+            "समदाब रेषांच्या लंबरूपात",
+            "घड्याळाच्या विरुद्ध दिशेने",
+            "समदाब रेषांच्या समांतर"
+          ],
+          "solution": "उत्तर गोलार्धातील कमी दाबाच्या प्रणालीमध्ये हवेच्या दिशेचा योग्य असेल तो घड्याळाच्या विरुद्ध दिशेने. हे कॉरिओलिस प्रभावामुळे होते, जो उत्तर गोलार्धात हवेला उजवीकडे वाहून नेतो. घड्याळाच्या दिशेने उच्च दाबाच्या प्रणालीमध्ये हवेची दिशा असते. समदाब रेषांच्या लंबरूपात हा दाबाच्या प्रवणतेच्या बलाची दिशा असते, हवेची नव्हे. समदाब रेषांच्या समांतर हा अयोग्य असतो कारण हवा समदाब रेषांच्या समांतर वाहत नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the technical terms used in Marathi textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "confuses the direction of wind around a high pressure system",
+        "refers to the pressure gradient force",
+        null,
+        "incorrectly states the effect of the Coriolis force in the northern hemisphere"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly identifies the anti-clockwise direction of wind around a low pressure system in the northern hemisphere due to the Coriolis effect. The explanations for the distractors are accurate and reflect common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/11/geography/kegy209.pdf",
+          "ordinal": 12,
+          "pageStart": 9,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 9: Atmospheric Circulation and Weather Systems"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T07:01:50.649Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of the following is the correct source region for the formation of air masses?",
+      "choices": [
+        "the Equatorial forest",
+        "the Himalayas",
+        "the Siberian Plain",
+        "the Deccan Plateau"
+      ],
+      "answerIndex": 2,
+      "solution": "The Siberian Plain is a correct source region for the formation of air masses due to its large, uniform surface and stable climate. The Equatorial forest has a different climate. The Himalayas are too mountainous and variable. The Deccan Plateau is not as large or uniform as the Siberian Plain.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा वायु द्रव्यमान के निर्माण के लिए सही स्रोत क्षेत्र है?",
+          "choices": [
+            "भूमध्य वन",
+            "हिमालय",
+            "साइबेरियाई मैदान",
+            "दक्कन के पठार"
+          ],
+          "solution": "साइबेरियाई मैदान वायु द्रव्यमान के निर्माण के लिए एक सही स्रोत क्षेत्र है क्योंकि इसकी बड़ी एवं एकरूप सतह एवं स्थिर जलवायु है। भूमध्य वन की जलवायु अलग है। हिमालय अत्यधिक पर्वतीय एवं चरम है। दक्कन के पठार की बड़ाई एवं एकरूपता साइबेरियाई मैदान के समान नहीं है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate geographical terminology as found in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणता हवामान विभागाच्या निर्मितीसाठी योग्य स्रोत क्षेत्र आहे?",
+          "choices": [
+            "समतापीय जंगल",
+            "हिमालय",
+            "साइबेरियन मैदान",
+            "दक्षिण भारतीय पठार"
+          ],
+          "solution": "साइबेरियन मैदान हवामान विभागाच्या निर्मितीसाठी योग्य स्रोत क्षेत्र आहे कारण त्याचा मोठा, एकरूप पृष्ठभाग आणि स्थिर जलवायू आहे. समतापीय जंगलाचा वेगळा जलवायू आहे. हिमालय खूप उंच आणि बदलता आहे. दक्षिण भारतीय पठार साइबेरियन मैदानापेक्षा मोठा किंवा एकरूप नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for geographical features.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "refers to a region with a different climate",
+        "refers to a mountainous region",
+        null,
+        "refers to a smaller and less uniform area"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 2 (Siberian Plain) as it is a large, uniform area suitable for air mass formation. The other options are incorrect due to their climatic or topographic characteristics, which align with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/11/geography/kegy209.pdf",
+          "ordinal": 12,
+          "pageStart": 9,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 9: Atmospheric Circulation and Weather Systems"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T07:01:50.649Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which force is primarily responsible for the movement of winds in the upper atmosphere, away from the effects of surface friction?",
+      "choices": [
+        "Pressure gradient force",
+        "Coriolis force",
+        "Gravitational force",
+        "Frictional force"
+      ],
+      "answerIndex": 0,
+      "solution": "The pressure gradient force is the primary force that drives wind movement in the upper atmosphere by creating differences in air pressure that cause air to move. The Coriolis force affects wind direction but does not initiate movement. Gravitational force acts vertically and does not directly influence horizontal wind movement. Frictional force is negligible in the upper atmosphere, where winds are not significantly slowed by surface interactions.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "ऊपरी वायुमंडल में हवाओं के गति के लिए मुख्य रूप से कौन सा बल उत्तरदायी है, जो सतह के घर्षण के प्रभाव से दूर है?",
+          "choices": [
+            "दबाव प्रवणता बल",
+            "कोरिओलिस बल",
+            "गुरुत्वाकर्षण बल",
+            "घर्षण बल"
+          ],
+          "solution": "दबाव प्रवणता बल ऊपरी वायुमंडल में हवाओं के गति को धकेलने वाला मुख्य बल है क्योंकि यह हवा के दबाव में अंतर पैदा करता है जिसके कारण हवा गति करती है। कोरिओलिस बल हवा की दिशा को प्रभावित करता है लेकिन गति की शुरुआत नहीं करता। गुरुत्वाकर्षण बल ऊर्ध्वाधर दिशा में कार्य करता है और क्षैतिज हवा के गति को सीधे रूप से प्रभावित नहीं करता। घर्षण बल ऊपरी वायुमंडल में नगण्य होता है, जहां हवाओं को सतही अंतःक्रियाओं द्वारा धीमा नहीं किया जाता।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains the original meaning, and uses standard Hindi terminology for physics concepts.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "उच्च वातावरणातील हवांच्या गतीच्या वरच्या पृष्ठभागाच्या घर्षणाच्या प्रभावापासून दूर जाण्यासाठी मुख्यतः कोणता बल जबाबदार आहे?",
+          "choices": [
+            "दाब ढाल बल",
+            "कोरिओलिस बल",
+            "गुरुत्वाकर्षण बल",
+            "घर्षण बल"
+          ],
+          "solution": "उच्च वातावरणात हवांच्या गतीला चालना देणारे मुख्य बल दाब ढाल बल आहे, जे हवेच्या दाबातील फरकामुळे हवा गती करते. कोरिओलिस बल हवांच्या दिशेला प्रभावित करते परंतु गतीला सुरुवात करत नाही. गुरुत्वाकर्षण बल खालच्या दिशेने कार्य करते आणि व्हर्टिकल दिशेने हवांच्या गतीला प्रभावित करत नाही. घर्षण बल उच्च वातावरणात नगण्य असते, जेथे हवांची गती पृष्ठभागाच्या अवलंबित नसते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology consistent with standard science education.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses the main driver of wind movement with a secondary factor",
+        "Misunderstands the role of the Coriolis force",
+        "Overlooks the absence of friction in the upper atmosphere and assumes gravity is the main force of wind movement"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 0 (Pressure gradient force), as it is the primary force driving wind movement. The author's solution is accurate, and the reasons for the wrong options reflect common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/11/geography/kegy209.pdf",
+          "ordinal": 4,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 9: Atmospheric Circulation and Weather Systems"
+          ]
+        },
+        {
+          "document": "ncert/11/geography/kegy209.pdf",
+          "ordinal": 5,
+          "pageStart": 5,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 9: Atmospheric Circulation and Weather Systems"
+          ]
+        },
+        {
+          "document": "ncert/11/geography/kegy209.pdf",
+          "ordinal": 6,
+          "pageStart": 5,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 9: Atmospheric Circulation and Weather Systems"
+          ]
+        },
+        {
+          "document": "ncert/11/geography/kegy209.pdf",
+          "ordinal": 7,
+          "pageStart": 6,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 9: Atmospheric Circulation and Weather Systems"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T07:01:50.649Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the primary function of the Coriolis force in atmospheric circulation?",
+      "choices": [
+        "It causes air to rise",
+        "It influences wind direction",
+        "It creates high pressure zones",
+        "It cools the air"
+      ],
+      "answerIndex": 1,
+      "solution": "The Coriolis force affects the direction of moving air, causing it to deflect from a straight path. This deflection is responsible for the curved patterns of wind circulation. Other options, such as causing air to rise or cooling the air, are not direct effects of the Coriolis force. High pressure zones are influenced by different atmospheric processes, not the Coriolis force.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "कोरिओलिस बल का प्राथमिक कार्य वायुमंडलीय परिसंचरण में क्या है?",
+          "choices": [
+            "यह हवा को ऊपर उठाता है",
+            "यह हवा की दिशा को प्रभावित करता है",
+            "यह उच्च दबाव क्षेत्र बनाता है",
+            "यह हवा को ठंडा करता है"
+          ],
+          "solution": "कोरिओलिस बल गतिशील हवा की दिशा को प्रभावित करता है, जिससे यह सीधे मार्ग से विचलित हो जाता है। इस विचलन के कारण हवा परिसंचरण के वक्र पैटर्न बनते हैं। अन्य विकल्प, जैसे हवा को ऊपर उठाना या हवा को ठंडा करना, कोरिओलिस बल के सीधे प्रभाव नहीं हैं। उच्च दबाव क्षेत्र अलग वायुमंडलीय प्रक्रियाओं द्वारा प्रभावित होते हैं, कोरिओलिस बल द्वारा नहीं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains original meaning, and uses appropriate Hindi terminology for atmospheric science.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "वातावरणीय वाहतूकेत कोरिओलिस बलाचे प्राथमिक कार्य काय आहे?",
+          "choices": [
+            "ते हवा वर उठवते",
+            "ते हवाच्या दिशेवर प्रभाव टाकते",
+            "ते उच्च दाबाच्या क्षेत्रांची निर्मिती करते",
+            "ते हवा थंड करते"
+          ],
+          "solution": "कोरिओलिस बल हवेच्या गतीच्या दिशेवर प्रभाव टाकते, ज्यामुळे ते सीध्या मार्गापासून विचलित होते. ही विचलन वाहतूक वारा वितरणाच्या वक्र आकृतींसाठी जबाबदार आहे. इतर विकल्प, जसे की हवा वर उठवणे किंवा हवा थंड करणे, कोरिओलिस बलाचे सीधे परिणाम नाहीत. उच्च दाबाच्या क्षेत्रांवर वेगळ्या वातावरणीय प्रक्रियांचा प्रभाव पडतो, कोरिओलिस बलाचा नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for atmospheric science concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the role of the Coriolis force with a process that causes air to rise",
+        null,
+        "Misunderstands the Coriolis force as a pressure-related factor",
+        "Overlooks the directional impact of the Coriolis force and assumes it causes cooling"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-constructed, with a clear correct answer and reasonable distractors that reflect common misconceptions. The solution correctly identifies the role of the Coriolis force in influencing wind direction.",
+      "sources": [
+        {
+          "document": "ncert/11/geography/kegy209.pdf",
+          "ordinal": 4,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 9: Atmospheric Circulation and Weather Systems"
+          ]
+        },
+        {
+          "document": "ncert/11/geography/kegy209.pdf",
+          "ordinal": 5,
+          "pageStart": 5,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 9: Atmospheric Circulation and Weather Systems"
+          ]
+        },
+        {
+          "document": "ncert/11/geography/kegy209.pdf",
+          "ordinal": 6,
+          "pageStart": 5,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 9: Atmospheric Circulation and Weather Systems"
+          ]
+        },
+        {
+          "document": "ncert/11/geography/kegy209.pdf",
+          "ordinal": 7,
+          "pageStart": 6,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 9: Atmospheric Circulation and Weather Systems"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T07:01:50.649Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If the surface air pressure is 1,000 mb, what is the approximate air pressure at 1 km above the surface?",
+      "choices": [
+        "700 mb",
+        "900 mb",
+        "1,100 mb",
+        "1,300 mb"
+      ],
+      "answerIndex": 1,
+      "solution": "The air pressure decreases by about 100 mb for every 1 km increase in altitude. So, if the surface air pressure is 1,000 mb, the pressure at 1 km above the surface is approximately 900 mb. 700 mb is too low, 1,100 mb is higher than the surface, and 1,300 mb is even higher.",
+      "checkExpr": "1000-100",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि सतह के वायु दाब 1,000 मिलीबार है, तो सतह से 1 किमी ऊपर वायु दाब लगभग कितना होगा?",
+          "choices": [
+            "700 मिलीबार",
+            "900 मिलीबार",
+            "1,100 मिलीबार",
+            "1,300 मिलीबार"
+          ],
+          "solution": "वायु दाब लगभग 1 किमी ऊंचाई में वृद्धि के साथ 100 मिलीबार घट जाता है। इसलिए, यदि सतह का वायु दाब 1,000 मिलीबार है, तो 1 किमी ऊपर वायु दाब लगभग 900 मिलीबार होगा। 700 मिलीबार बहुत कम है, 1,100 मिलीबार सतह के दाब से अधिक है और 1,300 मिलीबार अधिक ही है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms like 'मिलीबार' (millibar) which is the standard term in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर सतही वायु दाब 1,000 mb असेल, तर सतही पासून 1 किमी वरील वायु दाबाचे अंदाजे मूल्य किती असेल?",
+          "choices": [
+            "700 mb",
+            "900 mb",
+            "1,100 mb",
+            "1,300 mb"
+          ],
+          "solution": "वायु दाब 1 किमी उंचीत वाढताना अंदाजे 100 mb ने कमी होतो. म्हणून, जर सतही वायु दाब 1,000 mb असेल, तर सतही पासून 1 किमी वरील दाब अंदाजे 900 mb असेल. 700 mb खूप कमी आहे, 1,100 mb सतही पेक्षा जास्त आहे आणि 1,300 mb तर अधिक जास्त आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi terminology for atmospheric pressure.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "assumes a greater decrease in pressure",
+        null,
+        "incorrectly assumes pressure increases with height",
+        "overestimates the pressure drop"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The solution is sound and aligns with the correct answer. The reasoning that pressure decreases by about 100 mb per km is a reasonable approximation for this context.",
+      "sources": [
+        {
+          "document": "ncert/11/geography/kegy209.pdf",
+          "ordinal": 12,
+          "pageStart": 9,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 9: Atmospheric Circulation and Weather Systems"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T07:01:50.649Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "What happens to the air at the Inter Tropical Convergence Zone (ITCZ) due to high insolation?",
+      "choices": [
+        "It rises due to convection",
+        "It sinks due to cooling",
+        "It remains stationary",
+        "It moves horizontally away from the zone"
+      ],
+      "answerIndex": 0,
+      "solution": "High insolation heats the air at the ITCZ, causing it to warm and rise due to convection. This process creates a low-pressure area near the surface. The other options are incorrect because cooling would cause sinking, stationary air would not form a convergence zone, and horizontal movement does not accurately describe the primary motion at the ITCZ.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "इंटर ट्रॉपिकल कॉन्वर्जेंस ज़ोन (ITCZ) पर उच्च अक्षय ऊर्जा के कारण हवा क्या होती है?",
+          "choices": [
+            "यह संवहन के कारण ऊपर उठती है",
+            "यह ठंडा होने के कारण नीचे गिरती है",
+            "यह स्थिर रहती है",
+            "यह जोन से क्षैतिज रूप से दूर जाती है"
+          ],
+          "solution": "उच्च अक्षय ऊर्जा ITCZ पर हवा को गर्म करती है, जिसके कारण संवहन के कारण हवा ऊपर उठती है। यह प्रक्रिया सतह पर एक कम दबाव क्षेत्र बनाती है। अन्य विकल्प गलत हैं क्योंकि ठंडा होने पर नीचे गिरती है, स्थिर हवा के कारण एक अभिसरण क्षेत्र नहीं बनता है और क्षैतिज गति ITCZ पर मुख्य गति का सही वर्णन नहीं करती है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains the scientific terminology used in Hindi textbooks, and preserves the logical structure of the question and solution.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "इंटर ट्रॉपिकल कॉन्वर्जन्स झोन (ITCZ) वर उच्च असोलेशनमुळे हवेचा काय फरक पडतो?",
+          "choices": [
+            "ती उष्णता वाढवून उसळते",
+            "ती थंड होऊन खाली येते",
+            "ती स्थिर राहते",
+            "ती झोनपासून व्हाटीकरून जाते"
+          ],
+          "solution": "ITCZ वर उच्च असोलेशन हवेला गरम करते, ज्यामुळे ती उष्णता वाढवून उसळते. हा प्रक्रिया पृष्ठभागावर निम्न दाबाचा क्षेत्र तयार करते. इतर विकल्प अयोग्य आहेत कारण थंड होणे खाली येण्यास कारणीभूत ठरेल, स्थिर हवा एकत्रित झोन तयार करणार नाही, आणि व्हाटीकरून जाणे ITCZ वर मुख्य गतीला अचूक वर्णन करत नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the scientific meaning, with appropriate Marathi terminology used for meteorological concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Incorrectly assumes the effect of high insolation is to cool and sink air",
+        "Fails to recognize the relationship between high insolation and convection",
+        "Misinterprets the movement of air at the ITCZ as horizontal instead of vertical"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 0, as high insolation at the ITCZ causes air to rise due to convection. The author's reasoning for the other options reflects common misconceptions about atmospheric behavior.",
+      "sources": [
+        {
+          "document": "ncert/11/geography/kegy209.pdf",
+          "ordinal": 4,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 9: Atmospheric Circulation and Weather Systems"
+          ]
+        },
+        {
+          "document": "ncert/11/geography/kegy209.pdf",
+          "ordinal": 5,
+          "pageStart": 5,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 9: Atmospheric Circulation and Weather Systems"
+          ]
+        },
+        {
+          "document": "ncert/11/geography/kegy209.pdf",
+          "ordinal": 6,
+          "pageStart": 5,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 9: Atmospheric Circulation and Weather Systems"
+          ]
+        },
+        {
+          "document": "ncert/11/geography/kegy209.pdf",
+          "ordinal": 7,
+          "pageStart": 6,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 9: Atmospheric Circulation and Weather Systems"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T07:01:50.649Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "The Inter Tropical Convergence Zone (ITCZ) normally occurs near which of the following?",
+      "choices": [
+        "the Equator",
+        "the Tropic of Cancer",
+        "the Tropic of Capricorn",
+        "the Arctic Circle"
+      ],
+      "answerIndex": 0,
+      "solution": "The Inter Tropical Convergence Zone (ITCZ) normally occurs near the Equator. This is where the trade winds from the northern and southern hemispheres converge. The Tropic of Cancer and Tropic of Capricorn are at higher latitudes. The Arctic Circle is much farther north.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "अंतर उष्णकटिबंधीय अभिसरण क्षेत्र (ITCZ) सामान्य रूप से निम्नलिखित में से किसके पास होता है?",
+          "choices": [
+            "भूमध्य रेखा",
+            "कर्क रेखा",
+            "मकर रेखा",
+            "आर्कटिक वृत्त"
+          ],
+          "solution": "अंतर उष्णकटिबंधीय अभिसरण क्षेत्र (ITCZ) सामान्य रूप से भूमध्य रेखा के पास होता है। यह वह स्थान है जहां उत्तरी और दक्षिणी गोलार्ध के व्यापारिक हवाएं अभिसरित होती हैं। कर्क रेखा और मकर रेखा उच्च अक्षांश पर होती हैं। आर्कटिक वृत्त बहुत दूर उत्तर में होता है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard geographical terms as taught in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "इंटर ट्रॉपिकल कॉन्व्हर्जन झोन (ITCZ) सामान्यतः खालीलपैकी कोठे असते?",
+          "choices": [
+            "समदक्षिणरेखा",
+            "कर्क रेखा",
+            "मकर रेखा",
+            "आर्क्टिक वर्तुळ"
+          ],
+          "solution": "इंटर ट्रॉपिकल कॉन्व्हर्जन झोन (ITCZ) सामान्यतः समदक्षिणरेखेजवळ असते. ही जागा असते जेथे उत्तर आणि दक्षिण गोलार्धातील व्यापारी वाऱ्यांचा एकत्रित होतो. कर्क आणि मकर रेखा उंच अक्षांशावर असतात. आर्क्टिक वर्तुळ उत्तरेकडे खूप दूर असते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for geographical terms.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "refers to a different latitude",
+        "refers to a different latitude in the northern hemisphere",
+        "refers to a much higher latitude"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is well-constructed, with a clear and correct answer. The distractors are plausible but incorrect, and the reasons provided by the author align with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/11/geography/kegy209.pdf",
+          "ordinal": 12,
+          "pageStart": 9,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 9: Atmospheric Circulation and Weather Systems"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T07:01:50.649Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "A coastal district is preparing for an approaching cyclone. The disaster management team needs real-time information on cloud movement and storm intensity. Which satellite system will provide the most reliable support for this purpose?",
+      "choices": [
+        "IRS – Indian Remote Sensing Satellite",
+        "INSAT – Indian National Satellite System",
+        "GSAT – Communication satellite for TV channels",
+        "PSLV – Launch vehicle for satellites"
+      ],
+      "answerIndex": 1,
+      "solution": "INSAT provides real-time weather monitoring and data on cloud movement and storm intensity, which is essential for disaster management during a cyclone. IRS is used for remote sensing and resource management, not real-time weather tracking. GSAT is designed for communication purposes like TV broadcasting, not weather observation. PSLV is a launch vehicle, not a satellite system for weather data.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक तटीय जिला एक आगामी चक्रवात के लिए तैयारी कर रहा है। आपदा प्रबंधन टीम को बादल के गति और तूफान की तीव्रता पर वास्तविक समय की जानकारी की आवश्यकता होती है। इस उद्देश्य के लिए सबसे विश्वसनीय समर्थन कौन सा उपग्रह प्रणाली प्रदान करेगा?",
+          "choices": [
+            "IRS – भारतीय दूरसंस्थान उपग्रह",
+            "INSAT – भारतीय राष्ट्रीय उपग्रह प्रणाली",
+            "GSAT – टेलीविजन चैनलों के लिए संचार उपग्रह",
+            "PSLV – उपग्रहों के लिए लॉन्च वाहन"
+          ],
+          "solution": "INSAT वास्तविक समय में मौसम की निगरानी और बादल के गति और तूफान की तीव्रता पर डेटा प्रदान करता है, जो चक्रवात के दौरान आपदा प्रबंधन के लिए आवश्यक है। IRS दूरसंस्थान और संसाधन प्रबंधन के लिए उपयोग किया जाता है, वास्तविक समय मौसम ट्रैकिंग के लिए नहीं। GSAT टेलीविजन प्रसारण जैसे संचार उद्देश्यों के लिए डिज़ाइन किया गया है, मौसम अवलोकन के लिए नहीं। PSLV एक लॉन्च वाहन है, मौसम डेटा के लिए उपग्रह प्रणाली नहीं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate technical terms as per Indian curriculum.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एक तटीय जिल्हा एका आगामी चक्रीवादळासाठी तयारी करत आहे. विनाश व्यवस्थापन टीमला बादलांच्या गती आणि वादळाच्या तीव्रतेबद्दल वास्तविक वेळेत माहिती आवश्यक आहे. या उद्देशासाठी सर्वात विश्वासार्ह सहाय्य पुरवणारा उपग्रह प्रणाली कोणती असेल?",
+          "choices": [
+            "IRS – भारतीय दूरसंस्थान उपग्रह",
+            "INSAT – भारतीय राष्ट्रीय उपग्रह प्रणाली",
+            "GSAT – टीव्ही चॅनलांसाठी संचार उपग्रह",
+            "PSLV – उपग्रहांसाठी लॉन्च वाहन"
+          ],
+          "solution": "INSAT वास्तविक वेळेत हवामान निरीक्षण करतो आणि बादलांच्या गती आणि वादळाच्या तीव्रतेबद्दल माहिती पुरवतो, जी चक्रीवादळादरम्यान विनाश व्यवस्थापनासाठी आवश्यक आहे. IRS दूरसंस्थान आणि संसाधन व्यवस्थापनासाठी वापरला जातो, वास्तविक वेळेत हवामान ट्रॅकिंगसाठी नाही. GSAT टीव्ही प्रसारणासारख्या संचार उद्देशांसाठी डिझाइन केला गेला आहे, हवामान निरीक्षणासाठी नाही. PSLV एक लॉन्च वाहन आहे, हवामान डेटासाठी उपग्रह प्रणाली नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms consistent with Indian educational materials.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the purpose of remote sensing satellites with weather satellites",
+        null,
+        "Misunderstands the function of communication satellites as weather monitoring tools",
+        "Ignores the role of launch vehicles in satellite deployment and assumes they provide weather data directly"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 1 (INSAT) as it is designed for weather monitoring and real-time data. The other options are either for remote sensing (IRS), communication (GSAT), or launch vehicles (PSLV), which do not provide weather data. The author's reasoning aligns with the correct understanding of satellite functions.",
+      "sources": [
+        {
+          "document": "ncert/11/geography/kegy209.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 1,
+          "headingPath": [
+            "Chapter 9: Atmospheric Circulation and Weather Systems"
+          ]
+        },
+        {
+          "document": "ncert/11/geography/kegy209.pdf",
+          "ordinal": 1,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 9: Atmospheric Circulation and Weather Systems"
+          ]
+        },
+        {
+          "document": "ncert/11/geography/kegy209.pdf",
+          "ordinal": 2,
+          "pageStart": 3,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 9: Atmospheric Circulation and Weather Systems"
+          ]
+        },
+        {
+          "document": "ncert/11/geography/kegy209.pdf",
+          "ordinal": 3,
+          "pageStart": 4,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 9: Atmospheric Circulation and Weather Systems"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T07:01:50.649Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Why are the winds north easterlies in the tropics, even though the pressure gradient force is from north to south?",
+      "choices": [
+        "Because of the Coriolis effect",
+        "Because of the rotation of the Earth",
+        "Because of the frictional force",
+        "Because of the temperature gradient"
+      ],
+      "answerIndex": 0,
+      "solution": "The correct answer is 'Because of the Coriolis effect' because the Earth's rotation deflects the wind to the right in the northern hemisphere, causing the winds to blow from the northeast towards the southwest, resulting in north-easterlies. The rotation of the Earth is a broader concept, frictional force is not the main factor, and the temperature gradient influences pressure, not the direction of wind directly.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "क्योंकि उष्णकटिबंध में हवाएं उत्तर-पूर्वी होती हैं, यद्यपि दाब प्रवणता बल उत्तर से दक्षिण की ओर होता है?",
+          "choices": [
+            "कोरिओलिस प्रभाव के कारण",
+            "पृथ्वी के घूर्णन के कारण",
+            "घर्षण बल के कारण",
+            "तापमान प्रवणता के कारण"
+          ],
+          "solution": "सही उत्तर 'कोरिओलिस प्रभाव के कारण' है क्योंकि पृथ्वी के घूर्णन के कारण हवाओं को उत्तरी गोलार्ध में दाहिनी ओर विक्षेपित कर दिया जाता है, जिसके कारण हवाएं उत्तर-पूर्व से दक्षिण-पश्चिम की ओर बहती हैं, जिसके परिणामस्वरूप उत्तर-पूर्वी हवाएं बनती हैं। पृथ्वी के घूर्णन एक व्यापक अवधारणा है, घर्षण बल मुख्य कारक नहीं है, और तापमान प्रवणता दाब को प्रभावित करती है, लेकिन हवा की दिशा को सीधे प्रभावित नहीं करती।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English question and solution, with appropriate terminology used in a Hindi-medium context.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "उष्णकटिबंधात वाऱ्या उत्तर-पूर्व असतात, तरीही दाब ढाल बल उत्तर ते दक्षिण असतो कारण काय?",
+          "choices": [
+            "कॉरिओलिस प्रभावामुळे",
+            "भूमीच्या फिरत्या कारणामुळे",
+            "घर्षण बलामुळे",
+            "तापमान ढालामुळे"
+          ],
+          "solution": "बरोबर उत्तर 'कॉरिओलिस प्रभावामुळे' आहे कारण भूमीच्या फिरत्यामुळे वाऱ्यांना उत्तर गोलार्धात उजवीकडे वळवले जाते, ज्यामुळे वाऱ्या उत्तर-पूर्वापासून दक्षिण-पश्चिमकडे वाहतात, ज्यामुळे उत्तर-पूर्व वाऱ्या बनतात. भूमीच्या फिरत्याचा एक व्यापक अर्थ आहे, घर्षण बल हा मुख्य कारण नाही आणि तापमान ढाल दाबावर प्रभाव टाकतो, वाऱ्यांच्या दिशेवर थेट प्रभाव टाकत नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for geographical concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "confuses the Coriolis effect with Earth's rotation",
+        "overlooks the specific role of the Coriolis effect in wind direction",
+        "misunderstands the role of friction in wind movement"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies the Coriolis effect as the reason for the wind direction, and the author's reasoning aligns with standard meteorological principles. The distractors reflect common misconceptions about the roles of Earth's rotation, friction, and temperature gradients.",
+      "sources": [
+        {
+          "document": "ncert/11/geography/kegy209.pdf",
+          "ordinal": 12,
+          "pageStart": 9,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 9: Atmospheric Circulation and Weather Systems"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T07:01:50.649Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Why do tropical cyclones originate over the seas and not over land?",
+      "choices": [
+        "because the sea has a higher temperature",
+        "because the sea provides a continuous supply of warm, moist air",
+        "because the sea has a lower pressure",
+        "because the sea has more wind"
+      ],
+      "answerIndex": 1,
+      "solution": "Tropical cyclones originate over the seas because the sea provides a continuous supply of warm, moist air, which is essential for their formation. While the sea may be warmer, the key factor is the supply of moisture. Lower pressure and more wind are not the main reasons for cyclone formation.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "क्यों उष्णकटिबंधीय चक्रवात समुद्र पर नहीं बल्कि भूमि पर उत्पन्न होते हैं?",
+          "choices": [
+            "क्योंकि समुद्र के पास अधिक तापमान होता है",
+            "क्योंकि समुद्र गर्म, आर्द्र हवा की लगातार आपूर्ति प्रदान करता है",
+            "क्योंकि समुद्र में कम वायुदाब होता है",
+            "क्योंकि समुद्र में अधिक हवा होती है"
+          ],
+          "solution": "उष्णकटिबंधीय चक्रवात समुद्र पर उत्पन्न होते हैं क्योंकि समुद्र उनके निर्माण के लिए आवश्यक गर्म, आर्द्र हवा की लगातार आपूर्ति प्रदान करता है। हालांकि समुद्र गर्म हो सकता है, आवश्यकता नमी की आपूर्ति है। कम वायुदाब और अधिक हवा चक्रवात निर्माण के मुख्य कारण नहीं हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate technical terms common in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "कोकिल चक्रीय वादळे समुद्रावर उत्पन्न होतात आणि जमीनीवर का नाही?",
+          "choices": [
+            "कारण समुद्राचा तापमान जास्त असतो",
+            "कारण समुद्र उष्ण, आर्द्र हवा चिरला पुरवतो",
+            "कारण समुद्राचा दाब कमी असतो",
+            "कारण समुद्राला जास्त वाऱ्या असतात"
+          ],
+          "solution": "कोकिल चक्रीय वादळे समुद्रावर उत्पन्न होतात कारण समुद्र उष्ण, आर्द्र हवा चिरला पुरवतो, जे त्यांच्या उत्पत्तीसाठी आवश्यक आहे. समुद्र उष्ण असल्याचे खरे असले तरी, मुख्य कारण हवेतील आर्द्रता आहे. कमी दाब आणि जास्त वाऱ्या चक्रीय वादळांच्या उत्पत्तीचे मुख्य कारण नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for meteorological concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "focuses on temperature rather than moisture supply",
+        null,
+        "misinterprets the role of pressure",
+        "incorrectly assumes wind is the main factor"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 1, as tropical cyclones require a continuous supply of warm, moist air, which is provided by the sea. The other options reflect common misconceptions about temperature, pressure, and wind.",
+      "sources": [
+        {
+          "document": "ncert/11/geography/kegy209.pdf",
+          "ordinal": 12,
+          "pageStart": 9,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 9: Atmospheric Circulation and Weather Systems"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T07:01:50.649Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Why do extra tropical cyclones affect a larger area compared to tropical cyclones?",
+      "choices": [
+        "Because they form over land and sea",
+        "Because they have a clear frontal system",
+        "Because they move faster",
+        "Because they have a smaller diameter"
+      ],
+      "answerIndex": 1,
+      "solution": "Extra tropical cyclones have a clear frontal system, which allows them to affect a larger area as the system extends over a broader region. Tropical cyclones lack this frontal structure, limiting their area of impact. The other options are incorrect because the speed and size of the cyclones do not directly explain the difference in affected area.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "अतिरिक्त उष्णकटिबंधीय चक्रवात उष्णकटिबंधीय चक्रवातों की तुलना में एक बड़े क्षेत्र को प्रभावित क्यों करते हैं?",
+          "choices": [
+            "क्योंकि वे भूमि और समुद्र पर बनते हैं",
+            "क्योंकि उनमें स्पष्ट अग्र सिस्टम होता है",
+            "क्योंकि वे तेजी से चलते हैं",
+            "क्योंकि उनका व्यास छोटा होता है"
+          ],
+          "solution": "अतिरिक्त उष्णकटिबंधीय चक्रवातों में स्पष्ट अग्र सिस्टम होता है, जिसके कारण यह एक व्यापक क्षेत्र तक फैल जाता है। उष्णकटिबंधीय चक्रवातों में इस अग्र संरचना की कमी होती है, जिसके कारण इनका प्रभाव क्षेत्र सीमित रहता है। अन्य विकल्प गलत हैं क्योंकि चक्रवातों की गति और आकार अंतर में प्रभाव क्षेत्र की व्याख्या सीधे नहीं करते।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriately used in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "अतिरिक्त उष्णकटिबंधीय चक्रीय वादळांना उष्णकटिबंधीय चक्रीय वादळांपेक्षा जास्त क्षेत्र वादळांचा प्रभाव पाडतात का?",
+          "choices": [
+            "कारण ते जमीन आणि समुद्रावर तयार होतात",
+            "कारण त्यांचा स्पष्ट अग्र विभाजक प्रणाली असतो",
+            "कारण ते जास्त वेगाने चालतात",
+            "कारण त्यांचा छोटा व्यास असतो"
+          ],
+          "solution": "अतिरिक्त उष्णकटिबंधीय चक्रीय वादळांमध्ये स्पष्ट अग्र विभाजक प्रणाली असते, ज्यामुळे ते जास्त क्षेत्र वादळांचा प्रभाव पाडतात कारण या प्रणाली विस्तृत क्षेत्रावर पसरते. उष्णकटिबंधीय चक्रीय वादळांमध्ये अशा अग्र विभाजक संरचनेची कमतरता असते, जी त्यांच्या प्रभावित क्षेत्राची मर्यादा ठरवते. इतर विकल्प चुकीचे आहेत कारण वादळांचा वेग आणि आकार जास्त क्षेत्राच्या फरकाच्या स्पष्टीकरणासाठी थेट नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the technical terminology used in Marathi textbooks. The meaning, options, and solution align perfectly with the English version.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Misunderstands the formation of extra tropical cyclones",
+        null,
+        "Thinks movement speed determines area of influence",
+        "Confuses diameter with area affected"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 1, as extra-tropical cyclones have a clear frontal system that contributes to their larger area of influence. The author's reasoning for the other options aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/11/geography/kegy209.pdf",
+          "ordinal": 8,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 9: Atmospheric Circulation and Weather Systems"
+          ]
+        },
+        {
+          "document": "ncert/11/geography/kegy209.pdf",
+          "ordinal": 9,
+          "pageStart": 7,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 9: Atmospheric Circulation and Weather Systems"
+          ]
+        },
+        {
+          "document": "ncert/11/geography/kegy209.pdf",
+          "ordinal": 10,
+          "pageStart": 8,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 9: Atmospheric Circulation and Weather Systems"
+          ]
+        },
+        {
+          "document": "ncert/11/geography/kegy209.pdf",
+          "ordinal": 11,
+          "pageStart": 8,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 9: Atmospheric Circulation and Weather Systems"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T07:01:50.649Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
     }
   ]
 }

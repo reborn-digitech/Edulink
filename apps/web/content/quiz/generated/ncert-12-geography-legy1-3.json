@@ -214,6 +214,101 @@
       "generatedAt": "2026-10-29T05:41:31.808Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "Which of the following best describes the concept of empowerment in the context of human development?",
+      "choices": [
+        "Having access to resources",
+        "Being able to make choices",
+        "Having high income",
+        "Receiving government welfare"
+      ],
+      "answerIndex": 1,
+      "solution": "Being able to make choices is the best description of empowerment in human development because it reflects the ability to act on one's own decisions and shape one's life. Having access to resources or high income may support empowerment but do not define it directly. Receiving government welfare is a form of support, not an expression of empowerment itself.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "मानव विकास के संदर्भ में शक्तिकरण के अवधारणा का सबसे अच्छा वर्णन निम्नलिखित में से कौन-सा है?",
+          "choices": [
+            "संसाधनों तक पहुंच होना",
+            "चयन करने में सक्षम होना",
+            "उच्च आय होना",
+            "सरकारी लाभ प्राप्त करना"
+          ],
+          "solution": "मानव विकास में शक्तिकरण के अवधारणा का सबसे अच्छा वर्णन चयन करने में सक्षम होना है क्योंकि यह अपने निर्णयों पर कार्य करने और अपने जीवन को आकार देने की क्षमता को दर्शाता है। संसाधनों तक पहुंच या उच्च आय शक्तिकरण के समर्थन में हो सकते हैं लेकिन इसकी सीधी परिभाषा नहीं होते। सरकारी लाभ प्राप्त करना एक समर्थन के रूप में हो सकता है, लेकिन शक्तिकरण के स्वयं के अभिव्यक्ति नहीं होता।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, with appropriate Hindi terminology used for concepts like 'empowerment' and 'human development'.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "मानव विकासाच्या संदर्भात विकासाच्या अभिवृद्धीच्या संकल्पनेचे खालीलपैकी कोणते सर्वात चांगले वर्णन करते?",
+          "choices": [
+            "संसाधनांचा प्रवेश",
+            "निवड करण्याची क्षमता",
+            "उच्च उत्पन्न",
+            "सरकारी लाभ मिळणे"
+          ],
+          "solution": "मानव विकासात अभिवृद्धीचे सर्वात चांगले वर्णन निवड करण्याची क्षमता आहे कारण ते आपल्या निर्णयांवर कार्य करण्याची क्षमता आणि आपल्या जीवनाचे आकार देण्याची क्षमता दर्शवते. संसाधनांचा प्रवेश किंवा उच्च उत्पन्न अभिवृद्धीला समर्थन करू शकते परंतु ते सीधे परिभाषित करत नाहीत. सरकारी लाभ मिळणे समर्थनाचा एक प्रकार आहे, परंतु अभिवृद्धीचे एक व्यक्तीकरण नाही.",
+          "imageAlt": null,
+          "critique": "The translation accurately reflects the original meaning, with appropriate Marathi terminology for 'empowerment' and related concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "This is related to access to resources, not the definition of empowerment.",
+        null,
+        "This is more about income, which is part of the income approach.",
+        "This is part of government welfare, which is not the definition of empowerment."
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 1, as empowerment in human development is about the ability to make choices. The other options represent related but distinct concepts, and the author's reasoning aligns with standard definitions of empowerment in development studies.",
+      "sources": [
+        {
+          "document": "ncert/12/geography/legy103.pdf",
+          "ordinal": 4,
+          "pageStart": 4,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 3: Human Development"
+          ]
+        },
+        {
+          "document": "ncert/12/geography/legy103.pdf",
+          "ordinal": 5,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 3: Human Development"
+          ]
+        },
+        {
+          "document": "ncert/12/geography/legy103.pdf",
+          "ordinal": 6,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 3: Human Development"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T18:08:56.926Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
     }
   ]
 }

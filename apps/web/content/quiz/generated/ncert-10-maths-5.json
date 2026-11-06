@@ -414,6 +414,576 @@
       "generatedAt": "2026-10-30T04:51:11.833Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of the following is an example of an arithmetic progression?",
+      "choices": [
+        "5, 10, 15, 20",
+        "5, 10, 20, 40",
+        "5, 15, 45, 135",
+        "5, 10, 15, 30"
+      ],
+      "answerIndex": 0,
+      "solution": "The first option, 5, 10, 15, 20, is an arithmetic progression because each term increases by 5, which is the common difference. The other options involve multiplication or irregular increases, which do not fit the definition of an AP. A pupil might mistake a geometric progression for an AP if they focus only on the numbers without checking the differences.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन एक समांतर श्रेढ़ी का उदाहरण है?",
+          "choices": [
+            "5, 10, 15, 20",
+            "5, 10, 20, 40",
+            "5, 15, 45, 135",
+            "5, 10, 15, 30"
+          ],
+          "solution": "पहला विकल्प, 5, 10, 15, 20, एक समांतर श्रेढ़ी है क्योंकि प्रत्येक पद 5 बढ़ता है, जो सामान्य अंतर है। अन्य विकल्प गुणन या अनियमित वृद्धि को दर्शाते हैं, जो समांतर श्रेढ़ी के परिभाषा के अनुरूप नहीं हैं। एक छात्र अगर केवल संख्याओं पर ध्यान केंद्रित करता है और अंतर की जांच नहीं करता है तो वह एक गुणोत्तर श्रेढ़ी को समांतर श्रेढ़ी में गलत तरीके से देख सकता है।",
+          "imageAlt": null,
+          "critique": "Hindi translation accurately reflects the original English question, with appropriate terminology and structure.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते अंकगणितीय प्रगतीचे उदाहरण आहे?",
+          "choices": [
+            "5, 10, 15, 20",
+            "5, 10, 20, 40",
+            "5, 15, 45, 135",
+            "5, 10, 15, 30"
+          ],
+          "solution": "पहिला विकल्प, 5, 10, 15, 20, अंकगणितीय प्रगती आहे कारण प्रत्येक पद 5 ने वाढते, जो सामान्य फरक आहे. इतर विकल्पांमध्ये गुणाकार किंवा अनियमित वाढ आहे, जे एपी च्या व्याख्येला अनुरूप नाहीत. एक विद्यार्थी जर फक्त संख्यांवर लक्ष देत असेल तर तो गुणोत्तर प्रगतीला एपी मानू शकतो.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate terminology. The solution and options are correctly aligned with the English version.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses geometric progression with arithmetic progression by doubling each term instead of adding a common difference",
+        "Confuses GP with AP",
+        "Confuses GP with AP"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 0, as it has a constant difference of 5 between terms. The other options involve multiplication or irregular differences, which are not arithmetic progressions. The author's reasoning for the distractors is valid, as they reflect common misconceptions about the difference between arithmetic and geometric progressions.",
+      "sources": [
+        {
+          "document": "ncert/10/mathematics/jemh105.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 5: Arithmetic Progressions"
+          ]
+        },
+        {
+          "document": "ncert/10/mathematics/jemh105.pdf",
+          "ordinal": 1,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 5: Arithmetic Progressions"
+          ]
+        },
+        {
+          "document": "ncert/10/mathematics/jemh105.pdf",
+          "ordinal": 2,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 5: Arithmetic Progressions"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T17:28:23.556Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "If the first term of an AP is 2 and the common difference is 5, what is the 10th term?",
+      "choices": [
+        "40",
+        "47",
+        "50",
+        "52"
+      ],
+      "answerIndex": 1,
+      "solution": "Using the formula for the nth term of an AP, a = a + (n - 1) d, the 10th term is 2 + (10 - 1) × 5 = 2 + 45 = 47. The other options are incorrect calculations based on different values for the multiplier of the common difference or the first term.",
+      "checkExpr": "2+(10-1)*5",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक समांतर श्रेढ़ी का प्रथम पद 2 है और सार्व अंतर 5 है, तो 10वाँ पद क्या है?",
+          "choices": [
+            "40",
+            "47",
+            "50",
+            "52"
+          ],
+          "solution": "समांतर श्रेढ़ी के nवें पद के सूत्र a = a + (n - 1) d का उपयोग करके, 10वाँ पद 2 + (10 - 1) × 5 = 2 + 45 = 47 है। अन्य विकल्प सार्व अंतर के गुणक या प्रथम पद के अलग-अलग मानों पर गलत गणनाएँ हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard mathematical terminology used in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका अंकगणितीय अनुक्रमाचा पहिला पद 2 आहे आणि सामान्य फरक 5 आहे, तर 10वा पद किती असेल?",
+          "choices": [
+            "40",
+            "47",
+            "50",
+            "52"
+          ],
+          "solution": "एका अंकगणितीय अनुक्रमाच्या n व्या पदाच्या सूत्राचा वापर करून, a = a + (n - 1) d, 10वा पद 2 + (10 - 1) × 5 = 2 + 45 = 47 असेल. इतर पर्याय विचारात घेतलेल्या सामान्य फरकाच्या गुणकाच्या विविध मूल्यांमुळे अशुद्ध गणना आहेत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Miscalculates the nth term formula as a + n*d instead of a + (n-1)*d",
+        null,
+        "uses n = 10 but incorrectly calculates 2 + 10 × 5",
+        "uses n = 10 but adds 5 to 2 and multiplies by 10"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct and matches the formula for the nth term of an arithmetic progression. The reasoning for the distractors is valid and reflects common student misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/10/mathematics/jemh105.pdf",
+          "ordinal": 3,
+          "pageStart": 5,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 5: Arithmetic Progressions"
+          ]
+        },
+        {
+          "document": "ncert/10/mathematics/jemh105.pdf",
+          "ordinal": 4,
+          "pageStart": 7,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 5: Arithmetic Progressions"
+          ]
+        },
+        {
+          "document": "ncert/10/mathematics/jemh105.pdf",
+          "ordinal": 5,
+          "pageStart": 9,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 5: Arithmetic Progressions"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T17:28:23.556Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "If the first term of an arithmetic progression is 100 and the common difference is 50, what is the sum of the first 21 terms?",
+      "choices": [
+        "12600",
+        "12000",
+        "11500",
+        "12500"
+      ],
+      "answerIndex": 0,
+      "solution": "Using the formula S = (n/2)[2a + (n - 1)d], where a = 100, d = 50, and n = 21, we get S = (21/2)[2*100 + (21 - 1)*50] = 12600. The other options are incorrect because they either use incorrect values for a, d, or n, or make calculation errors.",
+      "checkExpr": "(21/2)*(2*100 + (21-1)*50)",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक समांतर श्रेढ़ी का पहला पद 100 है और सार्व अंतर 50 है, तो प्रथम 21 पदों का योग क्या है?",
+          "choices": [
+            "12600",
+            "12000",
+            "11500",
+            "12500"
+          ],
+          "solution": "सूत्र S = (n/2)[2a + (n - 1)d] का उपयोग करके, जहां a = 100, d = 50, और n = 21, हमें S = (21/2)[2*100 + (21 - 1)*50] = 12600 मिलता है। अन्य विकल्प गलत हैं क्योंकि वे या तो a, d या n के गलत मान का उपयोग करते हैं या गणना त्रुटि करते हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology as used in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका अंकगणिती श्रेढीचा पहिला वर्ण 100 आहे आणि सामान्य फरक 50 आहे, तर पहिल्या 21 वर्णांची बेरीज किती असेल?",
+          "choices": [
+            "12600",
+            "12000",
+            "11500",
+            "12500"
+          ],
+          "solution": "सूत्र S = (n/2)[2a + (n - 1)d] वापरून, जेथे a = 100, d = 50, आणि n = 21, आम्ही S = (21/2)[2*100 + (21 - 1)*50] = 12600 मिळतो. इतर विकल्प अयोग्य आहेत कारण ते कदाचित a, d किंवा n च्या चुकीच्या मूल्यांचा वापर करतात किंवा गणना चुकीची करतात.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology as used in Marathi-medium textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Uses the correct formula but makes a calculation error",
+        "Uses the incorrect value of d as 40 instead of 50",
+        "Uses the incorrect value of a as 90 instead of 100"
+      ],
+      "solverAnswers": [
+        0,
+        3,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly applies the arithmetic progression sum formula. The correct answer is 12600, and the author's reasoning for the distractors aligns with common student errors.",
+      "sources": [
+        {
+          "document": "ncert/10/mathematics/jemh105.pdf",
+          "ordinal": 9,
+          "pageStart": 16,
+          "pageEnd": 17,
+          "headingPath": [
+            "Chapter 5: Arithmetic Progressions"
+          ]
+        },
+        {
+          "document": "ncert/10/mathematics/jemh105.pdf",
+          "ordinal": 10,
+          "pageStart": 17,
+          "pageEnd": 19,
+          "headingPath": [
+            "Chapter 5: Arithmetic Progressions"
+          ]
+        },
+        {
+          "document": "ncert/10/mathematics/jemh105.pdf",
+          "ordinal": 11,
+          "pageStart": 19,
+          "pageEnd": 20,
+          "headingPath": [
+            "Chapter 5: Arithmetic Progressions"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T17:28:23.556Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "What is the common difference of the AP: 2, 7, 12, ...?",
+      "choices": [
+        "5",
+        "2",
+        "7",
+        "12"
+      ],
+      "answerIndex": 0,
+      "solution": "The common difference of the AP is 5, which is calculated as 7 - 2 = 5. The other options are either the first term or other terms in the sequence, not the common difference.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "AP: 2, 7, 12, ... का सामान्य अंतर क्या है?",
+          "choices": [
+            "5",
+            "2",
+            "7",
+            "12"
+          ],
+          "solution": "AP का सामान्य अंतर 5 है, जो 7 - 2 = 5 के रूप में गणना की गई है। अन्य विकल्प प्रथम पद या अनुक्रम में अन्य पद हैं, सामान्य अंतर नहीं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology as used in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "ए.पी. 2, 7, 12, ... चा सामान्य फरक काय आहे?",
+          "choices": [
+            "5",
+            "2",
+            "7",
+            "12"
+          ],
+          "solution": "ए.पी. चा सामान्य फरक 5 आहे, जो 7 - 2 = 5 असा गणला जातो. इतर विकल्प प्रथम पद किंवा अनुक्रमातील इतर पद असतात, सामान्य फरक नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "selects the first term of the AP",
+        "selects the second term of the AP",
+        "selects the third term of the AP"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct. The common difference is indeed 5, calculated as 7 - 2. The other options are simply terms in the sequence, not the common difference.",
+      "sources": [
+        {
+          "document": "ncert/10/mathematics/jemh105.pdf",
+          "ordinal": 3,
+          "pageStart": 5,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 5: Arithmetic Progressions"
+          ]
+        },
+        {
+          "document": "ncert/10/mathematics/jemh105.pdf",
+          "ordinal": 4,
+          "pageStart": 7,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 5: Arithmetic Progressions"
+          ]
+        },
+        {
+          "document": "ncert/10/mathematics/jemh105.pdf",
+          "ordinal": 5,
+          "pageStart": 9,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 5: Arithmetic Progressions"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T17:28:23.556Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "What is the 10th term of the AP: 2, 7, 12, ...?",
+      "choices": [
+        "47",
+        "52",
+        "57",
+        "62"
+      ],
+      "answerIndex": 0,
+      "solution": "The 10th term is found using the formula a_n = a + (n - 1)d. Here, a = 2, d = 5, and n = 10. So, a_10 = 2 + (10 - 1) * 5 = 47. The other options are incorrect calculations or misinterpretations of the formula.",
+      "checkExpr": "2 + (10 - 1)*5",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "AP: 2, 7, 12, ... का 10वां पद क्या है?",
+          "choices": [
+            "47",
+            "52",
+            "57",
+            "62"
+          ],
+          "solution": "10वां पद सूत्र a_n = a + (n - 1)d का उपयोग करके ज्ञात किया जाता है। यहां, a = 2, d = 5, और n = 10। इसलिए, a_10 = 2 + (10 - 1) * 5 = 47। अन्य विकल्प सूत्र की गलत गणना या गलत व्याख्या हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, with no changes in meaning, correct option position, and appropriate use of Hindi mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "ए.पी. 2, 7, 12, ... चा 10वा पद किती आहे?",
+          "choices": [
+            "47",
+            "52",
+            "57",
+            "62"
+          ],
+          "solution": "10वा पद सूत्र a_n = a + (n - 1)d वापरून शोधला जातो. इथे, a = 2, d = 5, आणि n = 10. म्हणून, a_10 = 2 + (10 - 1) * 5 = 47. इतर विकल्प चूकीच्या गणना किंवा सूत्राच्या चुकीच्या अटकला आहेत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "adds the common difference once instead of nine times",
+        "adds the common difference ten times",
+        "adds the common difference eleven times"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        2,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct. The formula a_n = a + (n - 1)d is applied properly, and the correct answer is 47. The distractors reflect common misconceptions about how many times the common difference should be added.",
+      "sources": [
+        {
+          "document": "ncert/10/mathematics/jemh105.pdf",
+          "ordinal": 3,
+          "pageStart": 5,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 5: Arithmetic Progressions"
+          ]
+        },
+        {
+          "document": "ncert/10/mathematics/jemh105.pdf",
+          "ordinal": 4,
+          "pageStart": 7,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 5: Arithmetic Progressions"
+          ]
+        },
+        {
+          "document": "ncert/10/mathematics/jemh105.pdf",
+          "ordinal": 5,
+          "pageStart": 9,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 5: Arithmetic Progressions"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T17:28:23.556Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "If the nth term of a sequence is given by a = 3 + 2n, what is the sum of the first 24 terms?",
+      "choices": [
+        "672",
+        "660",
+        "670",
+        "680"
+      ],
+      "answerIndex": 0,
+      "solution": "The sequence forms an arithmetic progression with a = 5 and d = 2. Using the formula S = (n/2)[2a + (n - 1)d], we find that the sum of the first 24 terms is 672. The other options are incorrect because they use incorrect values for a or d, or make calculation errors.",
+      "checkExpr": "(24/2)*(2*5 + (24-1)*2)",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि किसी अनुक्रम का nवां पद a = 3 + 2n द्वारा दिया जाता है, तो प्रथम 24 पदों का योग क्या है?",
+          "choices": [
+            "672",
+            "660",
+            "670",
+            "680"
+          ],
+          "solution": "अनुक्रम समांतर श्रेढ़ी बनाता है जिसमें a = 5 और d = 2 है। सूत्र S = (n/2)[2a + (n - 1)d] का उपयोग करके, हम पाते हैं कि प्रथम 24 पदों का योग 672 है। अन्य विकल्प गलत a या d के मान का उपयोग करते हैं या गणना त्रुटि करते हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology as used in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर अनुक्रमाचे nवे पद a = 3 + 2n असेल, तर पहिल्या 24 पदांची बेरीज किती असेल?",
+          "choices": [
+            "672",
+            "660",
+            "670",
+            "680"
+          ],
+          "solution": "अनुक्रम अंकगणिती श्रेढी बनवतो ज्यात a = 5 आणि d = 2 आहे. सूत्र S = (n/2)[2a + (n - 1)d] वापरून, पहिल्या 24 पदांची बेरीज 672 असेल. इतर विकल्प अशा चुकीच्या मूल्यांसाठी असतात की ज्यामुळे a किंवा d ची चुकीची किंमत वापरली जाते किंवा गणना चूक असते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Uses the incorrect value of a as 4 instead of 5",
+        "Uses the incorrect value of d as 1 instead of 2",
+        "Uses the incorrect value of d as 3 instead of 2"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct. The nth term is 3 + 2n, so the first term is 5 (when n=1) and the common difference is 2. Using the formula for the sum of an arithmetic progression gives 672.",
+      "sources": [
+        {
+          "document": "ncert/10/mathematics/jemh105.pdf",
+          "ordinal": 9,
+          "pageStart": 16,
+          "pageEnd": 17,
+          "headingPath": [
+            "Chapter 5: Arithmetic Progressions"
+          ]
+        },
+        {
+          "document": "ncert/10/mathematics/jemh105.pdf",
+          "ordinal": 10,
+          "pageStart": 17,
+          "pageEnd": 19,
+          "headingPath": [
+            "Chapter 5: Arithmetic Progressions"
+          ]
+        },
+        {
+          "document": "ncert/10/mathematics/jemh105.pdf",
+          "ordinal": 11,
+          "pageStart": 19,
+          "pageEnd": 20,
+          "headingPath": [
+            "Chapter 5: Arithmetic Progressions"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T17:28:23.556Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
     }
   ]
 }

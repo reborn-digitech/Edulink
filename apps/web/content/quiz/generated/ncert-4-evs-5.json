@@ -219,6 +219,396 @@
       "generatedAt": "2026-10-28T04:12:46.973Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is the name of the village where Anita Khushwaha lives?",
+      "choices": [
+        "Bochaha",
+        "Muzzafarpur",
+        "Bihar",
+        "India"
+      ],
+      "answerIndex": 0,
+      "solution": "The correct answer is Bochaha because it is the specific village where Anita Khushwaha resides. Muzzafarpur is a larger administrative region, Bihar is a state, and India is a country, none of which are the exact name of the village.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "अनिता खुशवाहा के गाँव का नाम क्या है?",
+          "choices": [
+            "बोचहा",
+            "मुजफ्फरपुर",
+            "बिहार",
+            "भारत"
+          ],
+          "solution": "सही उत्तर बोचहा है क्योंकि यह वह विशिष्ट गाँव है जहाँ अनिता खुशवाहा रहती है। मुजफ्फरपुर एक बड़ा प्रशासनिक क्षेत्र है, बिहार एक राज्य है और भारत एक देश है, जो कोई भी गाँव के ठीक नाम के बराबर नहीं है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, with appropriate Hindi terminology for administrative divisions.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "अनिता खुशवहाच्या गावाचे नाव काय आहे?",
+          "choices": [
+            "बोचहा",
+            "मुजफ्फरपूर",
+            "बिहार",
+            "भारत"
+          ],
+          "solution": "बरोबर उत्तर बोचहा आहे कारण अनिता खुशवहा येथे राहते. मुजफ्फरपूर एक विस्तारित प्रशासकीय क्षेत्र आहे, बिहार एक राज्य आहे आणि भारत देश आहे, जे कोणतेही गावाचे नक्की नाव नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terms for administrative divisions.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "confuses the village with the district",
+        "confuses the district with the state",
+        "confuses the state with the country"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is clearly stated in the passage as Bochaha. The other options represent larger administrative divisions, which is a common misconception for students who confuse village names with district or state names.",
+      "sources": [
+        {
+          "document": "ncert/4/environmental-studies/deap105.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 1,
+          "headingPath": [
+            "Chapter 5: Anita and the Honeybees"
+          ]
+        },
+        {
+          "document": "ncert/4/environmental-studies/deap105.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 5: Anita and the Honeybees",
+            "A Dream of School"
+          ]
+        },
+        {
+          "document": "ncert/4/environmental-studies/deap105.pdf",
+          "ordinal": 2,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 5: Anita and the Honeybees",
+            "Staying in School"
+          ]
+        },
+        {
+          "document": "ncert/4/environmental-studies/deap105.pdf",
+          "ordinal": 3,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 5: Anita and the Honeybees",
+            "From School to Bee-keeping"
+          ]
+        },
+        {
+          "document": "ncert/4/environmental-studies/deap105.pdf",
+          "ordinal": 4,
+          "pageStart": 5,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 5: Anita and the Honeybees",
+            "Becoming a Bee-keeper"
+          ]
+        }
+      ],
+      "edition": "2024 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-22T23:01:15.470Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Why did Anita want to go to school?",
+      "choices": [
+        "To become a teacher",
+        "To learn about honeybees",
+        "To study and gain knowledge",
+        "To help her parents"
+      ],
+      "answerIndex": 2,
+      "solution": "Anita wanted to go to school because she was eager to study and gain knowledge, which is a fundamental reason for education. The other options, such as becoming a teacher or helping her parents, are not directly supported by the reasoning provided. Learning about honeybees is not mentioned as her primary motivation.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "अनिता स्कूल जाना क्यों चाहती थी?",
+          "choices": [
+            "एक अध्यापिका बनने के लिए",
+            "मधुमक्खी के बारे में जानने के लिए",
+            "अध्ययन करने और ज्ञान प्राप्त करने के लिए",
+            "अपने माता-पिता की सहायता करने के लिए"
+          ],
+          "solution": "अनिता स्कूल जाना चाहती थी क्योंकि वह अध्ययन करने और ज्ञान प्राप्त करने के लिए उत्सुक थी, जो शिक्षा के लिए एक मूल कारण है। अन्य विकल्प, जैसे एक अध्यापिका बनना या अपने माता-पिता की सहायता करना, आपूर्ति की गई तर्क के सीधे समर्थन में नहीं हैं। मधुमक्खी के बारे में जानना उसके प्राथमिक प्रेरणा के रूप में उल्लेख नहीं किया गया है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, with appropriate Hindi terminology used.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "अनिताला शाळेत जायचे का वाटले?",
+          "choices": [
+            "शिक्षिका बनण्यासाठी",
+            "मधमाशांबद्दल शिकण्यासाठी",
+            "अभ्यास करून ज्ञान मिळवण्यासाठी",
+            "आपल्या पालकांना मदत करण्यासाठी"
+          ],
+          "solution": "अनिताला शाळेत जायचे वाटले कारण ती अभ्यास करून ज्ञान मिळवण्याच्या इच्छेने भरलेली होती, जे शिक्षणाचे मूलभूत कारण आहे. शिक्षिका बनणे किंवा पालकांना मदत करणे अशा इतर विकल्पांचे त्याच्या दृष्टीने समर्थन केले जात नाही. मधमाशांबद्दल शिकणे तिच्या प्राथमिक प्रेरणाच्या बाबतीत उल्लेखले गेले नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for educational concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "focuses on a later activity",
+        "focuses on a later interest",
+        null,
+        "focuses on her family"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 2, as the passage explicitly states that Anita wanted to go to school to study and gain knowledge. The other options are not the main reason given and represent plausible but incorrect interpretations.",
+      "sources": [
+        {
+          "document": "ncert/4/environmental-studies/deap105.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 1,
+          "headingPath": [
+            "Chapter 5: Anita and the Honeybees"
+          ]
+        },
+        {
+          "document": "ncert/4/environmental-studies/deap105.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 5: Anita and the Honeybees",
+            "A Dream of School"
+          ]
+        },
+        {
+          "document": "ncert/4/environmental-studies/deap105.pdf",
+          "ordinal": 2,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 5: Anita and the Honeybees",
+            "Staying in School"
+          ]
+        },
+        {
+          "document": "ncert/4/environmental-studies/deap105.pdf",
+          "ordinal": 3,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 5: Anita and the Honeybees",
+            "From School to Bee-keeping"
+          ]
+        },
+        {
+          "document": "ncert/4/environmental-studies/deap105.pdf",
+          "ordinal": 4,
+          "pageStart": 5,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 5: Anita and the Honeybees",
+            "Becoming a Bee-keeper"
+          ]
+        }
+      ],
+      "edition": "2024 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-22T23:01:15.470Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of the following is an example of insects living together in a group?",
+      "choices": [
+        "A butterfly flying alone",
+        "A group of ants working together",
+        "A group of bees flying together",
+        "A lone wasp searching for food"
+      ],
+      "answerIndex": 1,
+      "solution": "The correct answer is a group of ants working together because ants are known to live in organized colonies where they collaborate on tasks. A group of bees flying together may appear to be in a group, but they are not necessarily living together in a structured society. Butterfly flying alone and a lone wasp searching for food both show solitary behavior, not group living.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा एक समूह में रहने वाले कीटों का उदाहरण है?",
+          "choices": [
+            "अकेला एक तितली उड़ रहा है",
+            "एक समूह में काम करते हुए चींटियां",
+            "एक समूह में उड़ते हुए मधुमक्खी",
+            "खाना खोजने के लिए अकेला एक वास्प"
+          ],
+          "solution": "सही उत्तर एक समूह में काम करते हुए चींटियां है क्योंकि चींटियां ज्ञात हैं कि वे संगठित समुदाय में रहती हैं जहां वे कार्यों पर सहयोग करती हैं। एक समूह में उड़ते हुए मधुमक्खी एक समूह में लग सकते हैं, लेकिन वे आवश्यक रूप से एक संरचित समाज में रहते हैं। अकेला एक तितली उड़ रहा है और एक अकेला वास्प खाना खोज रहा है, दोनों अकेला व्यवहार दिखाते हैं, न कि समूह में रहना।",
+          "imageAlt": null,
+          "critique": "Hindi translation accurately reflects the English original in meaning, structure, and terminology. The correct answer remains option 2, and all distractors remain incorrect.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते एक विशिष्ट समूहात एकत्र काम करणार्या कीटकांचे उदाहरण आहे?",
+          "choices": [
+            "एकटी बारा उडत असलेली",
+            "एकत्र काम करणारा मार्जारांचा गट",
+            "एकत्र उडत असलेला गार गट",
+            "खाली खाद्याच्या शोधात एकटा वॉस्प"
+          ],
+          "solution": "सही उत्तर मार्जारांचा गट आहे कारण मार्जारे संगठित बस्स्यांमध्ये राहतात आणि कामावर सहकार्य करतात. एकत्र उडत असलेला गार गट एकत्र राहण्याच्या संरचनात्मक समाजामध्ये नसल्याचे दिसू शकते. एकटी बारा उडत असलेली आणि एकटा वॉस्प खाद्याच्या शोधात असलेला एकटा व्यक्ती वर्तन दर्शवतो, जे समूह जीवनाचे नाही.",
+          "imageAlt": null,
+          "critique": "The key is incorrect in Marathi version (key says 1, but correct answer is 2).",
+          "flag": "translation critique: not one answer at the same position"
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Describes a solitary insect",
+        null,
+        "Believes that any group of bees is a social group, not recognizing that individual bees may not be part of a hive or colony",
+        "Describes the behavior of a single bee"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 1, as ants are known to live and work in groups. The other options describe solitary or non-social behavior. The author's reasoning is sound and matches common misconceptions about insect social behavior.",
+      "sources": [
+        {
+          "document": "ncert/4/environmental-studies/deap105.pdf",
+          "ordinal": 5,
+          "pageStart": 7,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 5: Anita and the Honeybees",
+            "Becoming a Bee-keeper"
+          ]
+        }
+      ],
+      "edition": "2024 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-22T23:01:15.470Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If there were no worker bees, what would happen to the hive?",
+      "choices": [
+        "The hive would have more space",
+        "The hive would have more nectar",
+        "The hive would not have enough food",
+        "The hive would be more protected"
+      ],
+      "answerIndex": 2,
+      "solution": "Worker bees are responsible for collecting nectar, which is essential for the hive's food supply. Without them, the hive would not be able to gather enough food to sustain the colony. The other options are incorrect because they suggest positive outcomes that do not align with the role of worker bees in maintaining the hive's resources.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "अगर कोई कार्यकर्ता मधुमक्खी न हो, तो छत्ता पर क्या प्रभाव पड़ेगा?",
+          "choices": [
+            "छत्ता में अधिक स्थान होगा",
+            "छत्ता में अधिक जल्दी होगा",
+            "छत्ता में पर्याप्त भोजन नहीं होगा",
+            "छत्ता अधिक सुरक्षित होगा"
+          ],
+          "solution": "कार्यकर्ता मधुमक्खी छत्ते के भोजन के आधार के रूप में नेक्टर को एकत्र करती है। बिना उनके, छत्ता समूह के भोजन के लिए पर्याप्त भोजन एकत्र करने में असमर्थ होगा। अन्य विकल्प गलत हैं क्योंकि वे छत्ते के संसाधनों के बनाए रखने की भूमिका के साथ संगत नहीं हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English question and options, with appropriate terminology used for bee-related concepts.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर कामगार मधुमक्खी नसतील तर मधाच्या घरावर काय परिणाम होईल?",
+          "choices": [
+            "मधाच्या घराला अधिक जागा असेल",
+            "मधाच्या घराला अधिक नेक्टर असेल",
+            "मधाच्या घराला पुरेसा खाद्य पदार्थ नसेल",
+            "मधाच्या घराला अधिक सुरक्षा असेल"
+          ],
+          "solution": "कामगार मधुमक्खी नेक्टर एकत्रित करण्याची जबाबदारी घेतात, जो मधाच्या घराच्या खाद्य पुरवठ्यासाठी आवश्यक आहे. त्यांच्या अनुपस्थितीत, मधाच्या घराला समाजाच्या जीवनासाठी पुरेसा खाद्य पदार्थ एकत्रित करता येणार नाही. इतर विकल्प चुकीचे आहेत कारण ते मधाच्या घराच्या संसाधनांच्या व्यवस्थापनात कामगार मधुमक्खीच्या भूमिकेशी संगत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for beekeeping concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "students may think fewer bees mean more room for others",
+        "Believes worker bees do not collect nectar, so removing them would increase nectar availability",
+        null,
+        "Believes worker bees are only for foraging and not for defense"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 2, as worker bees are responsible for collecting nectar, and without them, the hive would lack food. The author's reasoning for the distractors aligns with common misconceptions about bee roles.",
+      "sources": [
+        {
+          "document": "ncert/4/environmental-studies/deap105.pdf",
+          "ordinal": 5,
+          "pageStart": 7,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 5: Anita and the Honeybees",
+            "Becoming a Bee-keeper"
+          ]
+        }
+      ],
+      "edition": "2024 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-22T23:01:15.470Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
     }
   ]
 }

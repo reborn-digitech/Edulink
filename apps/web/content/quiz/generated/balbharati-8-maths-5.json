@@ -214,6 +214,101 @@
       "generatedAt": "2026-11-02T07:15:48.460Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "What is the value of (x + 2y)^2?",
+      "choices": [
+        "x + 2xy + 4y",
+        "x + 4xy + 4y",
+        "x + 4xy + 2y",
+        "x + 2xy + 2y"
+      ],
+      "answerIndex": 1,
+      "solution": "The correct expansion is x² + 4xy + 4y². This is derived by applying the formula (a + b)^2 = a² + 2ab + b². The other options either have incorrect coefficients or miss the square of the second term.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "(x + 2y)^2 का मान क्या है?",
+          "choices": [
+            "x + 2xy + 4y",
+            "x + 4xy + 4y",
+            "x + 4xy + 2y",
+            "x + 2xy + 2y"
+          ],
+          "solution": "सही विस्तार x² + 4xy + 4y² है। यह सूत्र (a + b)^2 = a² + 2ab + b² के अनुप्रयोग से प्राप्त किया गया है। अन्य विकल्प या तो गलत गुणांक रखते हैं या दूसरे पद के वर्ग को छोड़ देते हैं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, with appropriate mathematical terminology in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "x + 2y)^2 ची किंमत किती आहे?",
+          "choices": [
+            "x + 2xy + 4y",
+            "x + 4xy + 4y",
+            "x + 4xy + 2y",
+            "x + 2xy + 2y"
+          ],
+          "solution": "सही विस्तार x² + 4xy + 4y² आहे. हा सूत्र (a + b)^2 = a² + 2ab + b² च्या अनुप्रयोगाने मिळतो. इतर विकल्पांमध्ये चुकीचे गुणक किंवा दुसऱ्या पदाचा वर्ग नसतो.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Omits the correct coefficient of the middle term.",
+        null,
+        "Correctly includes the middle term but incorrectly writes the square of the second term as 2y instead of 4y².",
+        "Incorrectly writes the square of the first term as x instead of x²."
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct expansion of (x + 2y)^2 is x² + 4xy + 4y², which matches option 1. The author's solution and reasoning are accurate and align with standard algebraic expansion.",
+      "sources": [
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 21,
+          "pageStart": 33,
+          "pageEnd": 35,
+          "headingPath": [
+            "5. Expansion formulae"
+          ]
+        },
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 22,
+          "pageStart": 35,
+          "pageEnd": 38,
+          "headingPath": [
+            "5. Expansion formulae"
+          ]
+        },
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 23,
+          "pageStart": 38,
+          "pageEnd": 38,
+          "headingPath": [
+            "5. Expansion formulae"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-11-01T00:22:00.844Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
     }
   ]
 }

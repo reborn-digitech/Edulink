@@ -982,6 +982,2966 @@
       "generatedAt": "2026-11-02T06:12:23.931Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is the primary purpose of a sundial?",
+      "choices": [
+        "To measure the flow of water",
+        "To measure the burning of a candle",
+        "To measure the movement of a pendulum",
+        "To measure time using the shadow of an object"
+      ],
+      "answerIndex": 3,
+      "solution": "A sundial measures time by tracking the position of the Sun's shadow, which changes throughout the day. This method relies on the consistent movement of the Sun across the sky. The other options involve different mechanisms that do not relate to the function of a sundial.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक सूर्य घड़ी का प्राथमिक उद्देश्य क्या है?",
+          "choices": [
+            "पानी के प्रवाह को मापना",
+            "मोमबत्ती के जलने को मापना",
+            "एक लोलक के गति को मापना",
+            "किसी वस्तु के छाया के आधार पर समय को मापना"
+          ],
+          "solution": "एक सूर्य घड़ी सूर्य की छाया के स्थान की निगरानी करके समय को मापती है, जो दिन में बदलता रहता है। इस विधि सूर्य के आकाश में नियमित गति पर निर्भर करती है। अन्य विकल्पों में अलग-अलग यंत्र होते हैं जो सूर्य घड़ी के कार्य से संबंधित नहीं होते।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriate for Hindi-medium curriculum.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "सूर्यघडीचा प्राथमिक उद्देश काय आहे?",
+          "choices": [
+            "पाण्याच्या प्रवाहाचे मोजणे",
+            "मोमबत्तीच्या जाळण्याचे मोजणे",
+            "लटकणाच्या गतीचे मोजणे",
+            "वस्तूच्या छायेचा वापर करून वेळ मोजणे"
+          ],
+          "solution": "एका सूर्यघडीने वेळ मोजली जाते जेव्हा सूर्याच्या छायेच्या स्थितीचे अनुसरण केले जाते, जी दिवसभर बदलते. ह्या पद्धतीवर विश्वास ठेवला जातो की सूर्य आकाशात नियमित गतीने गेला जातो. इतर विकल्पांमध्ये वेगळ्या कार्यप्रणाली आहेत जी सूर्यघडीच्या कार्याशी संबंधित नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for scientific concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses sundials with water clocks",
+        "Confuses sundials with candle clocks",
+        "Confuses sundials with pendulum clocks",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is clearly supported by the definition of a sundial. The distractors reflect common misconceptions about other time-measuring devices.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu108.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 8: Measurement of Time and Motion"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu108.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 8: Measurement of Time and Motion"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu108.pdf",
+          "ordinal": 2,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 8: Measurement of Time and Motion"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu108.pdf",
+          "ordinal": 3,
+          "pageStart": 4,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 8: Measurement of Time and Motion"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-31T22:18:07.948Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the main property of a pendulum that helps in measuring time?",
+      "choices": [
+        "It moves in a straight line",
+        "It moves in a circular path",
+        "It has a constant time period",
+        "It has a variable time period"
+      ],
+      "answerIndex": 2,
+      "solution": "The main property of a pendulum that helps in measuring time is that it has a constant time period. The option 'It moves in a straight line' is incorrect because a pendulum moves in an arc. The option 'It moves in a circular path' is incorrect because a pendulum does not move in a full circle. The option 'It has a variable time period' is incorrect because the time period is constant for a given length.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक लोलक के मुख्य गुण क्या है जो समय के मापन में सहायता करता है?",
+          "choices": [
+            "यह एक सीधी रेखा में गति करता है",
+            "यह एक वृत्ताकार पथ में गति करता है",
+            "इसका समान समयांतराल होता है",
+            "इसका चर समयांतराल होता है"
+          ],
+          "solution": "समय के मापन में सहायता करने वाले लोलक का मुख्य गुण यह है कि इसका समान समयांतराल होता है। विकल्प 'यह एक सीधी रेखा में गति करता है' गलत है क्योंकि एक लोलक एक चाप में गति करता है। विकल्प 'यह एक वृत्ताकार पथ में गति करता है' गलत है क्योंकि एक लोलक एक पूर्ण वृत्त में नहीं गति करता है। विकल्प 'इसका चर समयांतराल होता है' गलत है क्योंकि दी गई लंबाई के लिए समयांतराल स्थिर होता है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate technical terms as used in Hindi-medium science textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "काळ मोजण्यासाठी पेंडूलमचा मुख्य गुण काय आहे?",
+          "choices": [
+            "ते सरळ रेषेत चालते",
+            "ते वर्तुळाकार मार्गात चालते",
+            "त्याचा खास वेळ अविचलित असतो",
+            "त्याचा खास वेळ बदलतो"
+          ],
+          "solution": "काळ मोजण्यासाठी पेंडूलमचा मुख्य गुण हा आहे की त्याचा खास वेळ अविचलित असतो. 'ते सरळ रेषेत चालते' हा विकल्प अयोग्य आहे कारण पेंडूलम एका वक्रात चालते. 'ते वर्तुळाकार मार्गात चालते' हा विकल्प अयोग्य आहे कारण पेंडूलम पूर्ण वर्तुळात चालत नाही. 'त्याचा खास वेळ बदलतो' हा विकल्प अयोग्य आहे कारण दिलेल्या लांबीसाठी वेळ अविचलित असतो.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "incorrectly assumes straight-line motion",
+        "incorrectly assumes circular motion",
+        null,
+        "confuses constant time period with variable time period"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct and aligns with the key. The pendulum's constant time period is the key property for timekeeping, and the explanations for the incorrect options are valid misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu108.pdf",
+          "ordinal": 4,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 8: Measurement of Time and Motion",
+            "8.1.1 A simple pendulum"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu108.pdf",
+          "ordinal": 5,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 8: Measurement of Time and Motion",
+            "8.1.1 A simple pendulum"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu108.pdf",
+          "ordinal": 6,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 8: Measurement of Time and Motion",
+            "8.1.2 SI unit of time"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu108.pdf",
+          "ordinal": 7,
+          "pageStart": 8,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 8: Measurement of Time and Motion",
+            "8.2 Slow or Fast"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-31T22:18:07.948Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of the following is the SI unit of time?",
+      "choices": [
+        "Hour",
+        "Minute",
+        "Second",
+        "Day"
+      ],
+      "answerIndex": 2,
+      "solution": "The SI unit of time is the second. The option 'Hour' is incorrect because it is a larger unit of time. The option 'Minute' is incorrect because it is also a larger unit of time. The option 'Day' is incorrect because it is not the SI unit of time.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन सा समय का एसआई मात्रक है?",
+          "choices": [
+            "घंटा",
+            "मिनट",
+            "सेकंड",
+            "दिन"
+          ],
+          "solution": "समय का एसआई मात्रक सेकंड है। विकल्प 'घंटा' गलत है क्योंकि यह समय का एक बड़ा मात्रक है। विकल्प 'मिनट' गलत है क्योंकि यह भी समय का एक बड़ा मात्रक है। विकल्प 'दिन' गलत है क्योंकि यह समय का एसआई मात्रक नहीं है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard Indian educational terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते समयाचे SI एकक आहे?",
+          "choices": [
+            "तास",
+            "मिनिट",
+            "सेकंद",
+            "दिवस"
+          ],
+          "solution": "समयाचे SI एकक सेकंद आहे. 'तास' विकल्प अयोग्य आहे कारण तो समयाचे मोठे एकक आहे. 'मिनिट' विकल्प अयोग्य आहे कारण तो समयाचे मोठे एकक आहे. 'दिवस' विकल्प अयोग्य आहे कारण तो समयाचे SI एकक नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi technical terms for SI units.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "confuses hour with SI unit",
+        "confuses minute with SI unit",
+        null,
+        "confuses day with SI unit"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The question is clear and the solution is correct. The SI unit of time is indeed the second, and the other options are commonly confused with it.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu108.pdf",
+          "ordinal": 4,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 8: Measurement of Time and Motion",
+            "8.1.1 A simple pendulum"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu108.pdf",
+          "ordinal": 5,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 8: Measurement of Time and Motion",
+            "8.1.1 A simple pendulum"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu108.pdf",
+          "ordinal": 6,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 8: Measurement of Time and Motion",
+            "8.1.2 SI unit of time"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu108.pdf",
+          "ordinal": 7,
+          "pageStart": 8,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 8: Measurement of Time and Motion",
+            "8.2 Slow or Fast"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-31T22:18:07.948Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If a clock shows 1 hour and 30 minutes, how many seconds is this?",
+      "choices": [
+        "180 seconds",
+        "1800 seconds",
+        "5400 seconds",
+        "9000 seconds"
+      ],
+      "answerIndex": 2,
+      "solution": "1 hour is 3600 seconds and 30 minutes is 1800 seconds. So, 1 hour and 30 minutes is 3600 + 1800 = 5400 seconds. The option '180 seconds' is wrong because it assumes 3 minutes instead of 30 minutes. The option '1800 seconds' is wrong because it assumes only 30 minutes. The option '9000 seconds' is wrong because it multiplies incorrectly.",
+      "checkExpr": "3600+1800",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि घड़ी 1 घंटा और 30 मिनट दिखाती है, तो यह कितने सेकंड है?",
+          "choices": [
+            "180 सेकंड",
+            "1800 सेकंड",
+            "5400 सेकंड",
+            "9000 सेकंड"
+          ],
+          "solution": "1 घंटा 3600 सेकंड होता है और 30 मिनट 1800 सेकंड होता है। इसलिए, 1 घंटा और 30 मिनट 3600 + 1800 = 5400 सेकंड होता है। विकल्प '180 सेकंड' गलत है क्योंकि यह 3 मिनट के बजाय 30 मिनट को मान लेता है। विकल्प '1800 सेकंड' गलत है क्योंकि यह केवल 30 मिनट को मान लेता है। विकल्प '9000 सेकंड' गलत है क्योंकि यह गलत तरीके से गुणा करता है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriately used in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर घड्याळावर 1 तास आणि 30 मिनिटे दाखवली जात असतील, तर हे किती सेकंद असेल?",
+          "choices": [
+            "180 सेकंद",
+            "1800 सेकंद",
+            "5400 सेकंद",
+            "9000 सेकंद"
+          ],
+          "solution": "1 तास 3600 सेकंद आहे आणि 30 मिनिटे 1800 सेकंद आहेत. म्हणून, 1 तास आणि 30 मिनिटे हे 3600 + 1800 = 5400 सेकंद आहेत. '180 सेकंद' असा विकल्प चूक आहे कारण तो 3 मिनिटे बरोबर 30 मिनिटे असल्याचा अंदाज घेतो. '1800 सेकंद' असा विकल्प चूक आहे कारण तो केवळ 30 मिनिटे असल्याचा अंदाज घेतो. '9000 सेकंद' असा विकल्प चूक आहे कारण तो गुणाकार चुकीचा करतो.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for time units.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "assumes 3 minutes instead of 30 minutes",
+        "assumes only 30 minutes",
+        null,
+        "multiplies incorrectly"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct and the key is accurate. The reasoning for the distractors aligns with common misconceptions students might have.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu108.pdf",
+          "ordinal": 4,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 8: Measurement of Time and Motion",
+            "8.1.1 A simple pendulum"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu108.pdf",
+          "ordinal": 5,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 8: Measurement of Time and Motion",
+            "8.1.1 A simple pendulum"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu108.pdf",
+          "ordinal": 6,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 8: Measurement of Time and Motion",
+            "8.1.2 SI unit of time"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu108.pdf",
+          "ordinal": 7,
+          "pageStart": 8,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 8: Measurement of Time and Motion",
+            "8.2 Slow or Fast"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-31T22:18:07.948Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "Based on the table, is the motion of the car uniform?",
+      "choices": [
+        "Yes, because it covers equal distances in equal intervals",
+        "No, because it covers different distances in equal intervals",
+        "Yes, because it moves in a straight line",
+        "No, because it has no speed"
+      ],
+      "answerIndex": 1,
+      "solution": "The car covers 60 km in the first hour, 70 km in the second, and 50 km in the third, so it does not cover equal distances in equal intervals. This indicates non-uniform motion. The other options are incorrect due to misunderstanding the definition of uniform motion.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "तालिका के आधार पर, कार के गति समान है क्या?",
+          "choices": [
+            "हाँ, क्योंकि यह समान अंतराल में समान दूरी तय करता है",
+            "नहीं, क्योंकि यह समान अंतराल में अलग-अलग दूरी तय करता है",
+            "हाँ, क्योंकि यह सीधी रेखा में गति करता है",
+            "नहीं, क्योंकि इसकी गति नहीं है"
+          ],
+          "solution": "कार पहले घंटे में 60 किमी, दूसरे घंटे में 70 किमी और तीसरे घंटे में 50 किमी तय करता है, इसलिए यह समान अंतराल में समान दूरी तय नहीं करता है। यह असमान गति को दर्शाता है। अन्य विकल्प गति की परिभाषा के गलत समझ के कारण गलत हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms. The correct answer remains option 1, and all distractors are still incorrect.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "टेबल वर आधारित, कारचा गती एकसारखी आहे का?",
+          "choices": [
+            "होय, कारण तो समान अंतरात समान अंतर गेला आहे",
+            "नाही, कारण तो समान अंतरात वेगवेगळे अंतर गेला आहे",
+            "होय, कारण तो सरळ रेषेत गेला आहे",
+            "नाही, कारण त्याला वेग नाही"
+          ],
+          "solution": "कार १ तासात ६० किमी, २ तासात ७० किमी आणि ३ तासात ५० किमी जातो, म्हणून तो समान अंतरात समान अंतर जात नाही. हे असमान गतीचे द्योतक आहे. इतर विकल्प असमान गतीच्या व्याख्येच्या चुकीच्या समजामुळे अयोग्य आहेत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms for motion and uniform motion.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Misunderstands the definition of uniform motion",
+        null,
+        "Confuses uniform motion with straight-line motion, not considering speed variation",
+        "Confuses uniform motion with straight-line motion"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies that the car's motion is non-uniform because it covers different distances in equal time intervals. The reasoning for the distractors aligns with common misconceptions about uniform motion.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu108.pdf",
+          "ordinal": 12,
+          "pageStart": 13,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 8: Measurement of Time and Motion",
+            "8.4 Uniform and Non-uniform Linear Motion"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu108.pdf",
+          "ordinal": 13,
+          "pageStart": 14,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 8: Measurement of Time and Motion",
+            "8.4 Uniform and Non-uniform Linear Motion",
+            "Let Us Enhance Our Learning"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu108.pdf",
+          "ordinal": 14,
+          "pageStart": 15,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 8: Measurement of Time and Motion",
+            "8.4 Uniform and Non-uniform Linear Motion",
+            "Exploratory Projects"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-31T22:18:07.948Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "If a water clock is used to measure time, and the rate of water dripping decreases as the water level falls, what will happen to the time intervals marked on the clock?",
+      "choices": [
+        "They will become longer",
+        "They will become shorter",
+        "They will stay the same",
+        "They will be inaccurate"
+      ],
+      "answerIndex": 0,
+      "solution": "If the rate of water dripping decreases as the water level falls, the time it takes for each drop to fall increases, causing the time intervals marked on the clock to become longer. A slower flow means each interval represents more actual time than it should. The other options do not match this behavior, as the intervals would not stay the same or become shorter, and inaccuracy is a broader concept not directly explained by the dripping rate.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि जल घड़ी का उपयोग समय मापने के लिए किया जाता है, और जल के स्तर घटने के साथ-साथ जल के बूंदने की दर घट जाती है, तो घड़ी पर अंकित समय अंतराल क्या होगा?",
+          "choices": [
+            "वे लंबे हो जाएंगे",
+            "वे छोटे हो जाएंगे",
+            "वे एक ही रहेंगे",
+            "वे असही हो जाएंगे"
+          ],
+          "solution": "यदि जल के स्तर घटने के साथ-साथ जल के बूंदने की दर घट जाती है, तो प्रत्येक बूंद गिरने में लगा समय बढ़ जाता है, जिसके कारण घड़ी पर अंकित समय अंतराल लंबे हो जाते हैं। धीमी धारा के कारण प्रत्येक अंतराल वास्तविक समय से अधिक होता है। अन्य विकल्प सही व्यवहार के अनुरूप नहीं हैं, क्योंकि अंतराल एक ही रहेंगे या छोटे नहीं होंगे, और असही होना एक व्यापक अवधारणा है जो बूंदने की दर द्वारा सीधे स्पष्ट नहीं किया जा सकता।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and technical terms. The correct answer remains in the same position, and the distractors remain incorrect.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर जल घडी वेळ मोजण्यासाठी वापरली जात असेल आणि पाण्याच्या पातळी घटत जात असताना पाण्याच्या थेंबांचा दर कमी होत जात असेल, तर घडीवर नोंदवलेल्या वेळेच्या अंतरांवर काय परिणाम होईल?",
+          "choices": [
+            "ते लांब होतील",
+            "ते लहान होतील",
+            "ते एकसारखे राहतील",
+            "ते अचूक नसतील"
+          ],
+          "solution": "जर पाण्याच्या पातळी घटत जात असताना पाण्याच्या थेंबांचा दर कमी होत असेल, तर प्रत्येक थेंब पडण्यास लागणारा वेळ वाढतो, ज्यामुळे घडीवर नोंदवलेल्या वेळेच्या अंतरांवर वाढ होते. जलाचा वेग कमी असल्याने प्रत्येक अंतराचा खरा वेळ त्यापेक्षा जास्त असतो. इतर विकल्प या वर्तनाशी जुमानत नाहीत, कारण अंतरांवर बदल होणार नाही किंवा लहान होणार नाहीत आणि अचूकता हा एक व्यापक शब्द आहे जो थेंबांच्या दराशी सीधा संबंध नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms. The structure and logic of the question and solution are preserved.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses the effect of decreasing flow rate",
+        "Misunderstands the concept of time intervals",
+        "Assumes the flow rate remains constant"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies that a decreasing flow rate leads to longer time intervals. The reasoning aligns with the behavior of water clocks and the given scenario.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu108.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 8: Measurement of Time and Motion"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu108.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 8: Measurement of Time and Motion"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu108.pdf",
+          "ordinal": 2,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 8: Measurement of Time and Motion"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu108.pdf",
+          "ordinal": 3,
+          "pageStart": 4,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 8: Measurement of Time and Motion"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-31T22:18:07.948Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "A train starts from station A and moves to station D. It moves at a slow speed from A to B, a faster speed from B to C, and slows down again from C to D. What can be said about the train's motion?",
+      "choices": [
+        "It is in uniform linear motion throughout",
+        "It is in non-uniform linear motion throughout",
+        "It is in uniform linear motion from A to B only",
+        "It is in uniform linear motion from C to D only"
+      ],
+      "answerIndex": 1,
+      "solution": "The train's speed changes during its journey, which means it is not moving at a constant speed. Non-uniform linear motion occurs when speed varies, which is the case here. Uniform linear motion requires constant speed, which does not happen in any segment of the train's trip.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक ट्रेन स्टेशन A से शुरू होती है और स्टेशन D तक जाती है। यह A से B तक धीमी गति से चलती है, B से C तक तेज गति से चलती है, और C से D तक फिर धीमी हो जाती है। ट्रेन की गति के बारे में क्या कहा जा सकता है?",
+          "choices": [
+            "इसकी गति पूरी तरह से एकसमान रैखिक गति है",
+            "इसकी गति पूरी तरह से असमान रैखिक गति है",
+            "इसकी गति केवल A से B तक एकसमान रैखिक गति है",
+            "इसकी गति केवल C से D तक एकसमान रैखिक गति है"
+          ],
+          "solution": "ट्रेन की गति अपनी यात्रा के दौरान बदलती है, जिसका अर्थ है कि यह एक स्थिर गति पर नहीं चल रही है। जब गति बदलती है, तो असमान रैखिक गति होती है, जो यहां घटित हो रहा है। एकसमान रैखिक गति के लिए गति स्थिर होनी चाहिए, जो ट्रेन की यात्रा के किसी भी खंड में नहीं होती है।",
+          "imageAlt": null,
+          "critique": "Translation accurately conveys the original meaning with appropriate Hindi technical terms.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एक रेल्वे स्टेशन A पासून सुरू होऊन स्टेशन D पर्यंत जाते. ती A ते B पर्यंत धीम्या वेगाने, B ते C पर्यंत जलद वेगाने आणि C ते D पर्यंत पुन्हा धीम्या वेगाने जाते. रेल्वेच्या गतीबद्दल काय म्हणता येईल?",
+          "choices": [
+            "ती एकसारख्या रेषीय गतीत राहते",
+            "ती असमान रेषीय गतीत राहते",
+            "ती A ते B पर्यंत एकसारख्या रेषीय गतीत राहते",
+            "ती C ते D पर्यंत एकसारख्या रेषीय गतीत राहते"
+          ],
+          "solution": "रेल्वेचा वेग त्याच्या प्रवासादरम्यान बदलतो, जे तिच्या एकसारख्या वेगाच्या अभावाचा अर्थ आहे. जेव्हा वेग बदलतो तेव्हा असमान रेषीय गती होते, जे येथे लागू होते. एकसारख्या रेषीय गतीसाठी वेग एकसारखा असणे आवश्यक असते, जे रेल्वेच्या प्रवासाच्या कोणत्याही खंडात होत नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms for motion.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "incorrectly assumes that the train was in uniform motion at some point",
+        null,
+        "Student believes uniform motion only occurs when speed is constant, but incorrectly assumes it only applies to the first segment",
+        "Student thinks that slowing down implies uniform motion because they confuse deceleration with constant speed"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies that the train's changing speed across all segments means it is in non-uniform linear motion throughout. The reasoning for the distractors aligns with common misconceptions about uniform motion.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu108.pdf",
+          "ordinal": 8,
+          "pageStart": 9,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 8: Measurement of Time and Motion",
+            "8.3 Speed"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu108.pdf",
+          "ordinal": 9,
+          "pageStart": 10,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 8: Measurement of Time and Motion",
+            "8.3 Speed"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu108.pdf",
+          "ordinal": 10,
+          "pageStart": 11,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 8: Measurement of Time and Motion",
+            "8.3 Speed",
+            "8.3.1 Relationship between speed, distance,",
+            "and time"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu108.pdf",
+          "ordinal": 11,
+          "pageStart": 12,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 8: Measurement of Time and Motion",
+            "8.4 Uniform and Non-uniform Linear Motion"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-31T22:18:07.948Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Why is the time period of a simple pendulum constant at a given place?",
+      "choices": [
+        "Because the length of the pendulum remains the same",
+        "Because the gravitational acceleration is constant",
+        "Because the amplitude of the pendulum remains the same",
+        "Because the mass of the pendulum remains the same"
+      ],
+      "answerIndex": 1,
+      "solution": "The time period of a simple pendulum is constant at a given place because gravitational acceleration does not change there. Other factors like length, amplitude, or mass do not affect the period in a consistent way. Changes in these would not maintain a constant period as gravitational acceleration does.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक साधारण लोलक का समय अवधि एक दिए गए स्थान पर क्यों नियत रहता है?",
+          "choices": [
+            "क्योंकि लोलक की लंबाई समान रहती है",
+            "क्योंकि गुरुत्वीय त्वरण नियत रहता है",
+            "क्योंकि लोलक के आयाम समान रहते हैं",
+            "क्योंकि लोलक के द्रव्यमान समान रहते हैं"
+          ],
+          "solution": "एक साधारण लोलक का समय अवधि एक दिए गए स्थान पर नियत रहता है क्योंकि वहाँ गुरुत्वीय त्वरण बदलता नहीं है। अन्य कारक जैसे लंबाई, आयाम या द्रव्यमान अवधि के साथ एक समान तरीके से प्रभावित नहीं होते हैं। इनके बदलने से गुरुत्वीय त्वरण की तरह नियत अवधि बनाए रखना संभव नहीं होता।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriately used in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका साध्या लटकत असलेल्या लटकत असलेल्या लांबीच्या वेळेची अवधी एका दिलेल्या जागी स्थिर का असते?",
+          "choices": [
+            "कारण लटकत असलेल्या लांबीचा बदल होत नाही",
+            "कारण गुरुत्वीय त्वरण स्थिर राहते",
+            "कारण लटकत असलेल्या आयामाचा बदल होत नाही",
+            "कारण लटकत असलेल्या द्रव्यमानाचा बदल होत नाही"
+          ],
+          "solution": "एका साध्या लटकत असलेल्या लांबीच्या वेळेची अवधी एका दिलेल्या जागी स्थिर असते कारण गुरुत्वीय त्वरण तेथे बदलत नाही. लांबी, आयाम किंवा द्रव्यमान यांच्या बदलामुळे वेळेची अवधी स्थिर राहत नाही जेव्हा गुरुत्वीय त्वरण बदलत नाही.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the original meaning, and uses appropriate technical terms as used in Marathi textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Believes that constancy of length ensures constant time period, not considering the actual formula T = 2π√(l/g)",
+        null,
+        "Believes that constant amplitude ensures a constant time period, not realizing that the time period is independent of amplitude for small swings",
+        "Students often confuse the factors affecting a pendulum's period with those of other systems, like mass affecting motion in linear systems."
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 1, as the time period of a simple pendulum depends on gravitational acceleration and length, not on amplitude, mass, or length alone. The author's reasoning for the distractors aligns with common student misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu108.pdf",
+          "ordinal": 12,
+          "pageStart": 13,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 8: Measurement of Time and Motion",
+            "8.4 Uniform and Non-uniform Linear Motion"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu108.pdf",
+          "ordinal": 13,
+          "pageStart": 14,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 8: Measurement of Time and Motion",
+            "8.4 Uniform and Non-uniform Linear Motion",
+            "Let Us Enhance Our Learning"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu108.pdf",
+          "ordinal": 14,
+          "pageStart": 15,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 8: Measurement of Time and Motion",
+            "8.4 Uniform and Non-uniform Linear Motion",
+            "Exploratory Projects"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-31T22:18:07.948Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is the SI unit of time?",
+      "choices": [
+        "Minute",
+        "Hour",
+        "Second",
+        "Ghatika"
+      ],
+      "answerIndex": 2,
+      "solution": "The SI unit of time is the second, which is the standard unit used in scientific measurements. Minutes and hours are commonly used but are not part of the International System of Units. Ghatika is an ancient unit of time and not an SI unit.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "समय का एसआई मात्रक क्या है?",
+          "choices": [
+            "मिनट",
+            "घंटा",
+            "सेकंड",
+            "घटिका"
+          ],
+          "solution": "समय का एसआई मात्रक सेकंड है, जो वैज्ञानिक मापन में मानक मात्रक है। मिनट और घंटा सामान्य रूप से उपयोग में लिए जाते हैं लेकिन इंटरनेशनल यूनिट सिस्टम के हिस्से नहीं हैं। घटिका एक प्राचीन समय का मात्रक है और एसआई मात्रक नहीं है।",
+          "imageAlt": null,
+          "critique": "All terms are standard in Hindi science textbooks. 'घटिका' is a recognized ancient unit, not an SI unit. 'सेकंड' is the standard translation for 'second'.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "वेळेचे एसआय एकक कोणते आहे?",
+          "choices": [
+            "मिनिट",
+            "तास",
+            "सेकंद",
+            "घटिका"
+          ],
+          "solution": "वेळेचे एसआय एकक सेकंद आहे, जे वैज्ञानिक मोजणीसाठी मानक एकक आहे. मिनिट आणि तास सामान्यतः वापरले जातात पण ते आंतरराष्ट्रीय एकक प्रणालीचा भाग नाहीत. घटिका एक जुने वेळेचे एकक आहे आणि एसआय एकक नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi equivalents for technical terms like 'second' (सेकंद) and 'ghatika' (घटिका).",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses derived units with SI units",
+        "Misinterprets historical units as SI units",
+        null,
+        "Confuses time units with other units"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The question is straightforward and tests recall of SI units. The correct answer is 'Second' and the reasoning provided by the author is accurate.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu108.pdf",
+          "ordinal": 4,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 8: Measurement of Time and Motion",
+            "8.1.1 A simple pendulum"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu108.pdf",
+          "ordinal": 5,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 8: Measurement of Time and Motion",
+            "8.1.1 A simple pendulum"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu108.pdf",
+          "ordinal": 6,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 8: Measurement of Time and Motion",
+            "8.1.2 SI unit of time"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu108.pdf",
+          "ordinal": 7,
+          "pageStart": 8,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 8: Measurement of Time and Motion",
+            "8.2 Slow or Fast"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T16:58:40.681Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the average speed of an object?",
+      "choices": [
+        "The total distance covered divided by the total time taken",
+        "The distance covered in a specific time interval",
+        "The maximum speed attained by the object",
+        "The minimum speed attained by the object"
+      ],
+      "answerIndex": 0,
+      "solution": "The average speed of an object is the total distance covered divided by the total time taken. The other options do not match the definition of average speed.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "किसी वस्तु की औसत गति क्या होती है?",
+          "choices": [
+            "कुल दूरी को कुल लिए गए समय से भाग देने पर प्राप्त होने वाली गति",
+            "एक विशिष्ट समय अंतराल में तय की गई दूरी",
+            "वस्तु द्वारा प्राप्त की गई अधिकतम गति",
+            "वस्तु द्वारा प्राप्त की गई न्यूनतम गति"
+          ],
+          "solution": "किसी वस्तु की औसत गति कुल दूरी को कुल लिए गए समय से भाग देने पर प्राप्त होती है। अन्य विकल्प औसत गति के परिभाषा के अनुरूप नहीं हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi technical terms.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका वस्तूची सरासरी वेग किती आहे?",
+          "choices": [
+            "एकूण अंतर एकूण वेळेने भागले",
+            "एका विशिष्ट वेळ अंतरालात झालेले अंतर",
+            "वस्तूने प्राप्त केलेला अधिकतम वेग",
+            "वस्तूने प्राप्त केलेला न्यूनतम वेग"
+          ],
+          "solution": "एका वस्तूचा सरासरी वेग एकूण अंतर एकूण वेळेने भागले असतो. इतर विकल्प सरासरी वेगाच्या व्याख्येशी जुळत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation accurately reflects the original meaning, with appropriate Marathi terminology for physics concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "confuses average speed with instantaneous speed",
+        "does not understand the definition of average speed",
+        "confuses average speed with maximum or minimum speed"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is clearly defined as total distance divided by total time. The other options represent common misconceptions about average speed.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu108.pdf",
+          "ordinal": 12,
+          "pageStart": 13,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 8: Measurement of Time and Motion",
+            "8.4 Uniform and Non-uniform Linear Motion"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu108.pdf",
+          "ordinal": 13,
+          "pageStart": 14,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 8: Measurement of Time and Motion",
+            "8.4 Uniform and Non-uniform Linear Motion",
+            "Let Us Enhance Our Learning"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu108.pdf",
+          "ordinal": 14,
+          "pageStart": 15,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 8: Measurement of Time and Motion",
+            "8.4 Uniform and Non-uniform Linear Motion",
+            "Exploratory Projects"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T16:58:40.681Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "A car covers 60 km in the first hour, 70 km in the second hour, and 50 km in the third hour. What can be said about the car's motion?",
+      "choices": [
+        "The car is in uniform motion",
+        "The car's speed is constant throughout",
+        "The car is in non-uniform motion",
+        "The car's average speed is 60 km/h"
+      ],
+      "answerIndex": 2,
+      "solution": "The car is in non-uniform motion because it covers unequal distances in equal intervals of time. The first option is incorrect as uniform motion requires equal distances in equal intervals. The second option is incorrect as the speed changes. The fourth option is incorrect as the average speed would be (60+70+50)/3 = 60 km/h, but the motion is still non-uniform.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक कार पहले घंटे में 60 किमी, दूसरे घंटे में 70 किमी और तीसरे घंटे में 50 किमी की दूरी तय करती है। कार की गति के बारे में क्या कहा जा सकता है?",
+          "choices": [
+            "कार एक समान गति में है",
+            "कार की गति पूरे दौरान स्थिर रहती है",
+            "कार असमान गति में है",
+            "कार की औसत गति 60 किमी/घंटा है"
+          ],
+          "solution": "कार असमान गति में है क्योंकि यह समान समय अंतराल में असमान दूरी तय करती है। पहला विकल्प गलत है क्योंकि समान गति के लिए समान समय अंतराल में समान दूरी तय करना आवश्यक है। दूसरा विकल्प गलत है क्योंकि गति बदलती है। चौथा विकल्प गलत है क्योंकि औसत गति (60+70+50)/3 = 60 किमी/घंटा होगी, लेकिन गति अभी भी असमान है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriate for Hindi-medium curriculum, and the correct answer remains option 2.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एक गाडी पहिल्या तासात 60 किमी, दुसऱ्या तासात 70 किमी आणि तिसऱ्या तासात 50 किमी अंतर कापते. गाडीच्या गतीबद्दल काय म्हणायला शकता?",
+          "choices": [
+            "गाडी समान गतीत आहे",
+            "गाडीची गती संपूर्ण वेळा स्थिर आहे",
+            "गाडी असमान गतीत आहे",
+            "गाडीची सरासरी गती 60 किमी/तास आहे"
+          ],
+          "solution": "गाडी असमान गतीत आहे कारण ती समान वेळेच्या अंतरात असमान अंतर कापते. पहिला विकल्प चुकीचा आहे कारण समान गतीमध्ये समान वेळेच्या अंतरात समान अंतर कापले पाहिजे. दुसरा विकल्प चुकीचा आहे कारण गती बदलते. चौथा विकल्प चुकीचा आहे कारण सरासरी गती (60+70+50)/3 = 60 किमी/तास असेल, परंतु गती असमान राहील.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi technical terms used.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "fails to recognize non-uniform motion",
+        "does not understand that changing distance implies changing speed",
+        null,
+        "calculates average speed but ignores the nature of motion"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly identifies that the car is in non-uniform motion due to covering unequal distances in equal time intervals. The average speed calculation is also correct, but the key point is the nature of the motion, not just the average speed.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu108.pdf",
+          "ordinal": 12,
+          "pageStart": 13,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 8: Measurement of Time and Motion",
+            "8.4 Uniform and Non-uniform Linear Motion"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu108.pdf",
+          "ordinal": 13,
+          "pageStart": 14,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 8: Measurement of Time and Motion",
+            "8.4 Uniform and Non-uniform Linear Motion",
+            "Let Us Enhance Our Learning"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu108.pdf",
+          "ordinal": 14,
+          "pageStart": 15,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 8: Measurement of Time and Motion",
+            "8.4 Uniform and Non-uniform Linear Motion",
+            "Exploratory Projects"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T16:58:40.681Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "What is the SI unit of speed?",
+      "choices": [
+        "m/s",
+        "km/h",
+        "cm/s",
+        "km/s"
+      ],
+      "answerIndex": 0,
+      "solution": "The SI unit of speed is metre per second, or m/s. km/h and cm/s are other units, but not the SI unit. km/s is not a standard unit for speed in this context.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "गति का एसआई मात्रक क्या है?",
+          "choices": [
+            "मीटर/सेकंड",
+            "किमी/घंटा",
+            "सेमी/सेकंड",
+            "किमी/सेकंड"
+          ],
+          "solution": "गति का एसआई मात्रक मीटर प्रति सेकंड है, या मीटर/सेकंड। किमी/घंटा और सेमी/सेकंड अन्य मात्रक हैं, लेकिन एसआई मात्रक नहीं हैं। किमी/सेकंड इस संदर्भ में गति के लिए मानक मात्रक नहीं है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. All options and the solution are correctly translated and maintain the same logical relationships.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "गतीचे एसआय एकक कोणते आहे?",
+          "choices": [
+            "मी/से",
+            "किमी/तास",
+            "सेमी/से",
+            "किमी/से"
+          ],
+          "solution": "गतीचे एसआय एकक मीटर प्रति सेकंद, किंवा मी/से आहे. किमी/तास आणि सेमी/से इतर एकक आहेत, परंतु एसआय एकक नाहीत. किमी/से हे या संदर्भात विशिष्ट एकक नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi technical terms used for units of speed.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "confuses with other units",
+        "confuses with other units",
+        "confuses with other units"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The question is clear and the correct answer is unambiguous. The solution correctly identifies m/s as the SI unit of speed and explains why the other options are not SI units.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu108.pdf",
+          "ordinal": 8,
+          "pageStart": 9,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 8: Measurement of Time and Motion",
+            "8.3 Speed"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu108.pdf",
+          "ordinal": 9,
+          "pageStart": 10,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 8: Measurement of Time and Motion",
+            "8.3 Speed"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu108.pdf",
+          "ordinal": 10,
+          "pageStart": 11,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 8: Measurement of Time and Motion",
+            "8.3 Speed",
+            "8.3.1 Relationship between speed, distance,",
+            "and time"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu108.pdf",
+          "ordinal": 11,
+          "pageStart": 12,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 8: Measurement of Time and Motion",
+            "8.4 Uniform and Non-uniform Linear Motion"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T16:58:40.681Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "The table shows the distance covered by an object in different time intervals. What can be said about the object's motion?",
+      "choices": [
+        "The object is in uniform motion",
+        "The object is in non-uniform motion",
+        "The object is at rest",
+        "The object is moving with increasing speed"
+      ],
+      "answerIndex": 1,
+      "solution": "The object is in non-uniform motion because the distance covered in equal intervals of time is not the same. The first option is incorrect as uniform motion requires equal distances in equal intervals. The third option is incorrect as the object is moving. The fourth option is incorrect as the speed is not necessarily increasing.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "सारणी विभिन्न समय अंतराल में एक वस्तु द्वारा तय की गई दूरी दर्शाती है। वस्तु की गति के बारे में क्या कहा जा सकता है?",
+          "choices": [
+            "वस्तु समान गति में है",
+            "वस्तु असमान गति में है",
+            "वस्तु विरामावस्था में है",
+            "वस्तु बढ़ती गति से चल रही है"
+          ],
+          "solution": "वस्तु असमान गति में है क्योंकि समान समय अंतराल में तय की गई दूरी समान नहीं है। पहला विकल्प गलत है क्योंकि समान गति के लिए समान समय अंतराल में समान दूरी तय करना आवश्यक है। तीसरा विकल्प गलत है क्योंकि वस्तु गतिशील है। चौथा विकल्प गलत है क्योंकि गति आवश्यक रूप से बढ़ रही हो यह आवश्यक नहीं है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology for motion concepts.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "तालिका विविध वेळेच्या अंतरांमध्ये वस्तूने कापलेल्या अंतराचे दर्शविते. वस्तूच्या गतीबद्दल काय म्हणता येईल?",
+          "choices": [
+            "वस्तू समान गतीत आहे",
+            "वस्तू असमान गतीत आहे",
+            "वस्तू विश्रांतीत आहे",
+            "वस्तू वाढत्या वेगाने चालत आहे"
+          ],
+          "solution": "वस्तू असमान गतीत आहे कारण समान वेळेच्या अंतरांमध्ये कापलेले अंतर समान नाही. पहिला विकल्प चुकीचा आहे कारण समान गतीसाठी समान वेळेच्या अंतरांमध्ये समान अंतर असावे. तिसरा विकल्प चुकीचा आहे कारण वस्तू चालत आहे. चौथा विकल्प चुकीचा आहे कारण वेग अवश्य वाढत असेल असे नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms for motion concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "fails to recognize non-uniform motion",
+        null,
+        "does not understand the definition of motion",
+        "misinterprets the data as increasing speed"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies that non-uniform motion is indicated by unequal distances covered in equal time intervals. The reasoning for the incorrect options aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu108.pdf",
+          "ordinal": 12,
+          "pageStart": 13,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 8: Measurement of Time and Motion",
+            "8.4 Uniform and Non-uniform Linear Motion"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu108.pdf",
+          "ordinal": 13,
+          "pageStart": 14,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 8: Measurement of Time and Motion",
+            "8.4 Uniform and Non-uniform Linear Motion",
+            "Let Us Enhance Our Learning"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu108.pdf",
+          "ordinal": 14,
+          "pageStart": 15,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 8: Measurement of Time and Motion",
+            "8.4 Uniform and Non-uniform Linear Motion",
+            "Exploratory Projects"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T16:58:40.681Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "In a 100 m race, runner A covers the distance in 10 seconds, and runner B covers the same distance in 12 seconds. Who is faster?",
+      "choices": [
+        "Runner A",
+        "Runner B",
+        "Both are equally fast",
+        "Cannot be determined"
+      ],
+      "answerIndex": 0,
+      "solution": "Runner A is faster because they covered the same distance in less time, which means they have a higher speed. Runner B took longer to cover the same distance, so they are slower. The other options either contradict the relationship between time and speed or are not supported by the given information.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "100 मीटर की दौड़ में, धावक A दूरी 10 सेकंड में तय करता है, और धावक B उसी दूरी को 12 सेकंड में तय करता है। कौन तेज है?",
+          "choices": [
+            "धावक A",
+            "धावक B",
+            "दोनों समान रूप से तेज हैं",
+            "निर्धारित नहीं किया जा सकता"
+          ],
+          "solution": "धावक A तेज है क्योंकि वह समान दूरी को कम समय में तय करता है, जिसका अर्थ है कि उसकी गति अधिक है। धावक B ने समान दूरी तय करने में अधिक समय लिया, इसलिए वह धीमा है। अन्य विकल्प या तो समय और गति के संबंध के विरोधी हैं या दिए गए जानकारी के समर्थन में नहीं हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate technical terms like 'गति' (speed) and 'समय' (time) as used in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "100 मीटर धावण्यात, धावक A 10 सेकंदात अंतर पूर्ण करतो आणि धावक B ते अंतर 12 सेकंदात पूर्ण करतो. कोण जास्त वेगाने धावतो?",
+          "choices": [
+            "धावक A",
+            "धावक B",
+            "दोन्ही समान वेगाने धावतात",
+            "निश्चित करता येत नाही"
+          ],
+          "solution": "धावक A जास्त वेगाने धावतो कारण तो समान अंतर पूर्ण करण्यास कमी वेळ घेतो, जे त्याच्या जास्त वेगाचा सूचक आहे. धावक B ने समान अंतर पूर्ण करण्यास जास्त वेळ घेतला, म्हणून तो धीमा आहे. इतर विकल्प वेळ आणि वेग यांच्या संबंधाच्या विरुद्ध आहेत किंवा दिलेल्या माहितीशी संबंधित नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for speed and time.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses time with distance",
+        "Misinterprets the definition of speed",
+        "Incorrectly assumes both runners are equally fast"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct. Runner A is faster because they cover the same distance in less time. The reasoning for the wrong options aligns with common misconceptions about speed and time.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu108.pdf",
+          "ordinal": 4,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 8: Measurement of Time and Motion",
+            "8.1.1 A simple pendulum"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu108.pdf",
+          "ordinal": 5,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 8: Measurement of Time and Motion",
+            "8.1.1 A simple pendulum"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu108.pdf",
+          "ordinal": 6,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 8: Measurement of Time and Motion",
+            "8.1.2 SI unit of time"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu108.pdf",
+          "ordinal": 7,
+          "pageStart": 8,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 8: Measurement of Time and Motion",
+            "8.2 Slow or Fast"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T16:58:40.681Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "A car travels 100 km in 2 hours. It then travels 150 km in 3 hours. What is the average speed of the car for the entire journey?",
+      "choices": [
+        "40 km/h",
+        "50 km/h",
+        "60 km/h",
+        "70 km/h"
+      ],
+      "answerIndex": 1,
+      "solution": "The total distance is 100 km + 150 km = 250 km, and the total time is 2 hours + 3 hours = 5 hours. Average speed = total distance / total time = 250 km / 5 h = 50 km/h. 40 km/h and 60 km/h are incorrect calculations, and 70 km/h is not supported by the data.",
+      "checkExpr": "(100+150)/(2+3)",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक कार 2 घंटे में 100 किमी की दूरी तय करती है। फिर वह 3 घंटे में 150 किमी की दूरी तय करती है। पूरी यात्रा के लिए कार की औसत गति क्या है?",
+          "choices": [
+            "40 किमी/घंटा",
+            "50 किमी/घंटा",
+            "60 किमी/घंटा",
+            "70 किमी/घंटा"
+          ],
+          "solution": "कुल दूरी 100 किमी + 150 किमी = 250 किमी है, और कुल समय 2 घंटे + 3 घंटे = 5 घंटे है। औसत गति = कुल दूरी / कुल समय = 250 किमी / 5 घंटा = 50 किमी/घंटा। 40 किमी/घंटा और 60 किमी/घंटा गलत गणना हैं, और 70 किमी/घंटा आंकड़ों द्वारा समर्थित नहीं है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard Hindi technical terms for speed and distance.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एक गाडी 2 तासात 100 किमी जाते. नंतर ती 3 तासात 150 किमी जाते. पूर्ण प्रवासासाठी गाडीची सरासरी वेग किती असेल?",
+          "choices": [
+            "40 किमी/तास",
+            "50 किमी/तास",
+            "60 किमी/तास",
+            "70 किमी/तास"
+          ],
+          "solution": "एकूण अंतर 100 किमी + 150 किमी = 250 किमी आहे आणि एकूण वेळ 2 तास + 3 तास = 5 तास आहे. सरासरी वेग = एकूण अंतर / एकूण वेळ = 250 किमी / 5 तास = 50 किमी/तास. 40 किमी/तास आणि 60 किमी/तास चुकीच्या गणना आहेत, आणि 70 किमी/तास डेटाने समर्थित नाही.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate technical terms as would be found in a Marathi-medium textbook.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Calculates average speed by taking the average of the two speeds instead of total distance divided by total time",
+        null,
+        "Calculates average speed by averaging the two speeds instead of using total distance divided by total time",
+        "Calculates average speed by adding the two speeds and dividing by 2 instead of total distance over total time"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct and matches the key. The average speed is calculated properly as total distance divided by total time.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu108.pdf",
+          "ordinal": 8,
+          "pageStart": 9,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 8: Measurement of Time and Motion",
+            "8.3 Speed"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu108.pdf",
+          "ordinal": 9,
+          "pageStart": 10,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 8: Measurement of Time and Motion",
+            "8.3 Speed"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu108.pdf",
+          "ordinal": 10,
+          "pageStart": 11,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 8: Measurement of Time and Motion",
+            "8.3 Speed",
+            "8.3.1 Relationship between speed, distance,",
+            "and time"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu108.pdf",
+          "ordinal": 11,
+          "pageStart": 12,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 8: Measurement of Time and Motion",
+            "8.4 Uniform and Non-uniform Linear Motion"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T16:58:40.681Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "Which of the following is a device used to measure time in ancient times?",
+      "choices": [
+        "Stopwatch",
+        "Mobile phone",
+        "Sundial",
+        "Braille watch"
+      ],
+      "answerIndex": 2,
+      "solution": "A sundial is a device used to measure time by the position of the sun's shadow, which was commonly used in ancient times. A stopwatch and mobile phone are modern inventions not available in ancient periods. A Braille watch is also a modern device designed for accessibility, not used in ancient times.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा एक ऐसा उपकरण है जिसका प्रयोग प्राचीन काल में समय मापने के लिए किया जाता था?",
+          "choices": [
+            "स्टॉपवॉच",
+            "मोबाइल फोन",
+            "सूर्य घड़ी",
+            "ब्रेल घड़ी"
+          ],
+          "solution": "एक सूर्य घड़ी सूर्य की छाया के स्थान द्वारा समय मापने के लिए एक उपकरण है, जिसका आमतौर पर प्राचीन काल में प्रयोग किया जाता था। स्टॉपवॉच और मोबाइल फोन आधुनिक आविष्कार हैं जो प्राचीन काल में उपलब्ध नहीं थे। ब्रेल घड़ी भी एक आधुनिक उपकरण है जो सुविधा के लिए डिज़ाइन की गई है, प्राचीन काल में इसका उपयोग नहीं किया जाता था।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi technical terms.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणता उपकरण जुन्या काळात वेळ मोजण्यासाठी वापरले जात होते?",
+          "choices": [
+            "स्टॉपवॉच",
+            "मोबाईल फोन",
+            "सूर्यघडी",
+            "ब्रेल घडी"
+          ],
+          "solution": "सूर्यघडी हे उपकरण सूर्याच्या छायेच्या स्थितीद्वारे वेळ मोजण्यासाठी वापरले जात होते, जे जुन्या काळात सामान्यपणे वापरले जात होते. स्टॉपवॉच आणि मोबाईल फोन हे आधुनिक शोध आहेत जे जुन्या काळात उपलब्ध नव्हते. ब्रेल घडी ही दृष्टिहीन व्यक्तींसाठी विशेषतः डिझाइन केलेले आधुनिक उपकरण आहे, जे जुन्या काळात वापरले जात नव्हते.",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, with appropriate Marathi technical terms used.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses modern devices with ancient ones",
+        "Confuses modern devices with ancient ones",
+        null,
+        "Confuses ancient timekeeping devices with modern ones that serve similar functions"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-constructed and the solution is accurate. The correct answer is clearly 2 (Sundial), and the distractors are all modern devices that could be confused with ancient ones, which is a reasonable misconception for a Class 7 student.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu108.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 8: Measurement of Time and Motion"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu108.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 8: Measurement of Time and Motion"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu108.pdf",
+          "ordinal": 2,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 8: Measurement of Time and Motion"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu108.pdf",
+          "ordinal": 3,
+          "pageStart": 4,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 8: Measurement of Time and Motion"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T03:00:22.584Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is the term used to describe the time taken by a pendulum to complete one oscillation?",
+      "choices": [
+        "Frequency",
+        "Amplitude",
+        "Time period",
+        "Wavelength"
+      ],
+      "answerIndex": 2,
+      "solution": "The time period is the correct term for the time taken by a pendulum to complete one full oscillation. Frequency refers to the number of oscillations per second, amplitude is the maximum displacement from the rest position, and wavelength is a property of waves, not pendulums.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक लोलक द्वारा एक दोलन पूरा करने में लगे समय के लिए उपयोग किए जाने वाले शब्द क्या है?",
+          "choices": [
+            "आवृत्ति",
+            "आयाम",
+            "समय अवधि",
+            "तरंग दैर्ध्य"
+          ],
+          "solution": "समय अवधि एक लोलक द्वारा एक पूर्ण दोलन पूरा करने में लगे समय के लिए सही शब्द है। आवृत्ति प्रति सेकंड दोलनों की संख्या को संदर्भित करती है, आयाम आराम की स्थिति से अधिकतम विस्थापन है और तरंग दैर्ध्य तरंगों के गुण हैं, लोलकों के लिए नहीं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Hindi technical terms used.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका लटकत असलेल्या दोलकाने एका दोलन पूर्ण करण्यासाठी लागणारा वेळ म्हणून कोणता शब्द वापरला जातो?",
+          "choices": [
+            "आवृत्ती",
+            "आयाम",
+            "कालावधी",
+            "तरंगलांबी"
+          ],
+          "solution": "कालावधी हा दोलकाने एका पूर्ण दोलन पूर्ण करण्यासाठी लागणार्या वेळासाठी योग्य शब्द आहे. आवृत्ती हा सेकंदातील दोलनांच्या संख्येला संदर्भित करते, आयाम हा विराम स्थितीपासून अधिकतम विस्थापन आहे आणि तरंगलांबी हा तरंगांच्या गुणधर्मांपैकी एक आहे, जे दोलकांशी संबंधित नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, with appropriate Marathi technical terms used for physics concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses time period with frequency, which is the number of oscillations per second.",
+        "Confuses amplitude with time period, which is the maximum displacement from the mean position.",
+        null,
+        "Confusing wave terms with pendulum motion"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-constructed and the correct answer is clearly supported by the definition provided. The distractors are common misconceptions related to the concepts of frequency, amplitude, and wavelength.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu108.pdf",
+          "ordinal": 4,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 8: Measurement of Time and Motion",
+            "8.1.1 A simple pendulum"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu108.pdf",
+          "ordinal": 5,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 8: Measurement of Time and Motion",
+            "8.1.1 A simple pendulum"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu108.pdf",
+          "ordinal": 6,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 8: Measurement of Time and Motion",
+            "8.1.2 SI unit of time"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu108.pdf",
+          "ordinal": 7,
+          "pageStart": 8,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 8: Measurement of Time and Motion",
+            "8.2 Slow or Fast"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T03:00:22.584Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the definition of uniform linear motion?",
+      "choices": [
+        "Motion with changing speed",
+        "Motion with constant speed along a straight line",
+        "Motion with constant direction along a straight line",
+        "Motion with constant direction along a curved path"
+      ],
+      "answerIndex": 1,
+      "solution": "Uniform linear motion is defined as motion with constant speed along a straight line. A pupil with a misconception might think it is motion with changing speed or changing direction, or confuse it with zero speed.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "समान रेखीय गति की परिभाषा क्या है?",
+          "choices": [
+            "बदलती गति के साथ गति",
+            "सीधी रेखा के साथ नियत गति के साथ गति",
+            "सीधी रेखा के साथ नियत दिशा के साथ गति",
+            "वक्र पथ के साथ नियत दिशा के साथ गति"
+          ],
+          "solution": "समान रेखीय गति की परिभाषा सीधी रेखा के साथ नियत गति के साथ गति है। एक छात्र जिसका गलत धारणा हो सकता है, वह बदलती गति या बदलती दिशा के साथ गति को समझ सकता है, या इसे शून्य गति के साथ गलत तरीके से जान सकता है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English original in meaning, with appropriate technical terms used in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "समान रेखीय गतीची व्याख्या काय आहे?",
+          "choices": [
+            "बदलत्या वेगाने गती",
+            "सरळ रेषेवर स्थिर वेगाने गती",
+            "सरळ रेषेवर स्थिर दिशेने गती",
+            "वक्र मार्गावर स्थिर दिशेने गती"
+          ],
+          "solution": "समान रेखीय गती ही सरळ रेषेवर स्थिर वेगाने गती असते. एका विद्यार्थीने चूक करू शकतो जर तो बदलत्या वेगाने गती किंवा बदलत्या दिशेने गती विचार करत असेल, किंवा शून्य वेगाच्या गतीशी तुलना करत असेल.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses uniform motion with changing speed",
+        null,
+        "Confuses uniform motion with just straight-line motion, ignoring the constant speed requirement",
+        "Confuses direction with path shape, thinking motion can be uniform if direction is constant but path is not straight"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is option 1, which accurately defines uniform linear motion as motion with constant speed along a straight line. The other options reflect common misconceptions about motion, direction, and path shape.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu108.pdf",
+          "ordinal": 12,
+          "pageStart": 13,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 8: Measurement of Time and Motion",
+            "8.4 Uniform and Non-uniform Linear Motion"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu108.pdf",
+          "ordinal": 13,
+          "pageStart": 14,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 8: Measurement of Time and Motion",
+            "8.4 Uniform and Non-uniform Linear Motion",
+            "Let Us Enhance Our Learning"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu108.pdf",
+          "ordinal": 14,
+          "pageStart": 15,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 8: Measurement of Time and Motion",
+            "8.4 Uniform and Non-uniform Linear Motion",
+            "Exploratory Projects"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T03:00:22.584Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If a car moves at a speed of 60 km/h, how much distance will it cover in 1.5 hours?",
+      "choices": [
+        "60 km",
+        "90 km",
+        "120 km",
+        "150 km"
+      ],
+      "answerIndex": 1,
+      "solution": "Distance is calculated as speed multiplied by time. Here, 60 km/h multiplied by 1.5 hours gives 90 km. The other options are incorrect because they result from errors in calculation or multiplication.",
+      "checkExpr": "60*1.5",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक कार 60 किमी/घंटा की गति से चलती है, तो यह 1.5 घंटे में कितनी दूरी तय करेगी?",
+          "choices": [
+            "60 किमी",
+            "90 किमी",
+            "120 किमी",
+            "150 किमी"
+          ],
+          "solution": "दूरी की गणना गति के गुणनफल द्वारा की जाती है। यहां, 60 किमी/घंटा को 1.5 घंटे से गुणा करने पर 90 किमी प्राप्त होता है। अन्य विकल्प गणना या गुणा में त्रुटि के कारण गलत हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms as found in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एक गाडी 60 किमी/तास वेगाने चालत असल्यास, 1.5 तासात ती किती अंतर कापेल?",
+          "choices": [
+            "60 किमी",
+            "90 किमी",
+            "120 किमी",
+            "150 किमी"
+          ],
+          "solution": "अंतर वेगाच्या वेळेने गुणाकार करून काढले जाते. येथे, 60 किमी/तास वेगाने 1.5 तास गुणाकार करून 90 किमी मिळते. इतर विकल्प गणना किंवा गुणाकारातील चूकीमुळे अयोग्य आहेत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi technical terms used for 'speed', 'time', and 'distance'.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "multiplies 60 by 1 instead of 1.5",
+        null,
+        "multiplies 60 by 2 instead of 1.5",
+        "multiplies 60 by 2.5 instead of 1.5"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct, as distance = speed × time = 60 × 1.5 = 90 km. The distractors reflect common calculation errors.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu108.pdf",
+          "ordinal": 8,
+          "pageStart": 9,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 8: Measurement of Time and Motion",
+            "8.3 Speed"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu108.pdf",
+          "ordinal": 9,
+          "pageStart": 10,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 8: Measurement of Time and Motion",
+            "8.3 Speed"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu108.pdf",
+          "ordinal": 10,
+          "pageStart": 11,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 8: Measurement of Time and Motion",
+            "8.3 Speed",
+            "8.3.1 Relationship between speed, distance,",
+            "and time"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu108.pdf",
+          "ordinal": 11,
+          "pageStart": 12,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 8: Measurement of Time and Motion",
+            "8.4 Uniform and Non-uniform Linear Motion"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T03:00:22.584Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "A student made a water clock by filling a bottle with water and letting it drip through a small hole. The student marked the level of water after every 2 minutes. If the bottle takes 10 minutes to empty completely, how many marks should the student make?",
+      "choices": [
+        "4",
+        "5",
+        "6",
+        "10"
+      ],
+      "answerIndex": 1,
+      "solution": "If the bottle takes 10 minutes to empty and the student marks the water level every 2 minutes, the student should make 5 marks (after 2, 4, 6, 8, and 10 minutes). The other options are incorrect because they do not match the time interval and total time given.",
+      "checkExpr": "10/2",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक छात्र ने एक बोतल में पानी भरकर एक जल घड़ी बनाई और इसे एक छोटे छिद्र से बहाने दिया। छात्र ने हर 2 मिनट के बाद पानी के स्तर को चिह्नित किया। यदि बोतल को खाली होने में 10 मिनट लगते हैं, तो छात्र को कितने चिह्न बनाने चाहिए?",
+          "choices": [
+            "4",
+            "5",
+            "6",
+            "10"
+          ],
+          "solution": "यदि बोतल को खाली होने में 10 मिनट लगते हैं और छात्र हर 2 मिनट के बाद पानी के स्तर को चिह्नित करता है, तो छात्र को 5 चिह्न बनाने चाहिए (2, 4, 6, 8 और 10 मिनट के बाद)। अन्य विकल्प गलत हैं क्योंकि वे समय अंतराल और कुल समय के अनुरूप नहीं हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology for a textbook context.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका विद्यार्थ्याने पाणी घडी तयार केली आहे. त्याने एका बाटलीत पाणी भरून ती छोट्या छिद्रातून थेंब थेंब वाहू दिले. विद्यार्थ्याने प्रत्येक 2 मिनिटांनंतर पाण्याचा तिरास नोंदवला. जर बाटलीला खाली खाली जाण्यास 10 मिनिट लागत असेल, तर विद्यार्थ्याने किती चिन्हे नोंदवावीत?",
+          "choices": [
+            "4",
+            "5",
+            "6",
+            "10"
+          ],
+          "solution": "जर बाटलीला खाली खाली जाण्यास 10 मिनिट लागत असेल आणि विद्यार्थ्याने पाण्याचा तिरास प्रत्येक 2 मिनिटांनी नोंदवला असेल, तर विद्यार्थ्याने 5 चिन्हे नोंदवावीत (2, 4, 6, 8 आणि 10 मिनिटांनंतर). इतर विकल्प चुकीचे आहेत कारण ते दिलेल्या समय अंतर आणि एकूण वेळेशी मेळ बसत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for a textbook context.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "counts the number of intervals instead of marks",
+        null,
+        "adds 1 to the correct answer",
+        "uses the total time as the number of marks"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct. The student makes a mark after each 2-minute interval, resulting in 5 marks (at 2, 4, 6, 8, and 10 minutes). The distractors reflect common misconceptions: counting intervals instead of marks, adding 1 erroneously, and using total time directly.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu108.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 8: Measurement of Time and Motion"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu108.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 8: Measurement of Time and Motion"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu108.pdf",
+          "ordinal": 2,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 8: Measurement of Time and Motion"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu108.pdf",
+          "ordinal": 3,
+          "pageStart": 4,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 8: Measurement of Time and Motion"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T03:00:22.584Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "A student made a water clock using a bottle with a small hole at the top. The water dripped at a constant rate into the lower part of the bottle. If the student marks the water level every minute, which of the following best describes the relationship between the water level and time?",
+      "choices": [
+        "The water level decreases linearly with time",
+        "The water level increases linearly with time",
+        "The water level remains constant with time",
+        "The water level decreases exponentially with time"
+      ],
+      "answerIndex": 0,
+      "solution": "The water level decreases linearly with time because the water drips at a constant rate, meaning the volume of water lost per unit time is steady. The second option is incorrect because the water level is not increasing. The third option is wrong because the level is not staying the same. The fourth option is incorrect because exponential decrease would require the rate of loss to change over time, which is not the case here.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक छात्र ने एक बोतल का उपयोग करके जल घड़ी बनाई, जिसमें शीर्ष पर एक छोटा छेद है। पानी बोतल के निचले हिस्से में एक स्थिर दर पर बूंदता रहता है। यदि छात्र प्रति मिनट पानी के स्तर को चिह्नित करता है, तो निम्नलिखित में से कौन-सा पानी के स्तर और समय के बीच के संबंध का सबसे अच्छा वर्णन करता है?",
+          "choices": [
+            "पानी का स्तर समय के साथ रैखिक रूप से कम होता है",
+            "पानी का स्तर समय के साथ रैखिक रूप से बढ़ता है",
+            "पानी का स्तर समय के साथ स्थिर रहता है",
+            "पानी का स्तर समय के साथ घातीय रूप से कम होता है"
+          ],
+          "solution": "पानी का स्तर समय के साथ रैखिक रूप से कम होता है क्योंकि पानी एक स्थिर दर पर बूंदता है, जिसका अर्थ है कि प्रति इकाई समय में खोए गए पानी का आयतन स्थिर रहता है। दूसरा विकल्प गलत है क्योंकि पानी का स्तर बढ़ नहीं रहा है। तीसरा विकल्प गलत है क्योंकि स्तर स्थिर नहीं रहता है। चौथा विकल्प गलत है क्योंकि घातीय कमी के लिए खोए गए पानी की दर समय के साथ बदलनी चाहिए, जो यहां नहीं होता है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi technical terms.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका विद्यार्थीने एका बाटलीचा वापर करून पाणी घडी तयार केली, ज्याच्या वरच्या बाजूला छोटा छिद्र आहे. पाणी बाटलीच्या खालच्या भागात एकसारख्या दराने टपटप करत वाहत आहे. जर विद्यार्थी प्रत्येक मिनिटाला पाण्याच्या पातळीची नोंद करत असेल, तर खालीलपैकी कोणते पाण्याच्या पातळी आणि वेळेच्या संबंधाचे सर्वात चांगले वर्णन करते?",
+          "choices": [
+            "पाण्याची पातळी वेळानुसार रेषीयपणे कमी होत आहे",
+            "पाण्याची पातळी वेळानुसार रेषीयपणे वाढत आहे",
+            "पाण्याची पातळी वेळानुसार अचल राहत आहे",
+            "पाण्याची पातळी वेळानुसार एक्स्पोनेन्शियलपणे कमी होत आहे"
+          ],
+          "solution": "पाण्याची पातळी वेळानुसार रेषीयपणे कमी होत आहे कारण पाणी एकसारख्या दराने टपटप करत आहे, ज्यामुळे एकूण वेळेत पाण्याचा विसर्ग एकरूप राहतो. दुसरा विकल्प अयोग्य आहे कारण पाण्याची पातळी वाढत नाही. तिसरा विकल्प अयोग्य आहे कारण पातळी स्थिर राहत नाही. चौथा विकल्प अयोग्य आहे कारण एक्स्पोनेन्शियल कमी होण्यासाठी पाण्याच्या विसर्गाचा दर वेळेनुसार बदलला पाहिजे, जे येथे नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms. The structure and logic of the question and solution are preserved.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses the relationship between water level and time",
+        "Confuses the relationship between water level and time",
+        "Confuses the relationship between water level and time"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct. Since the water drips at a constant rate, the volume of water decreases linearly, and so does the water level. The correct answer is 0.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu108.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 8: Measurement of Time and Motion"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu108.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 8: Measurement of Time and Motion"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu108.pdf",
+          "ordinal": 2,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 8: Measurement of Time and Motion"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu108.pdf",
+          "ordinal": 3,
+          "pageStart": 4,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 8: Measurement of Time and Motion"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T03:00:22.584Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "If the length of a pendulum is doubled, what happens to its time period?",
+      "choices": [
+        "It doubles",
+        "It becomes half",
+        "It remains the same",
+        "It increases by a factor of √2"
+      ],
+      "answerIndex": 3,
+      "solution": "The time period of a pendulum is proportional to the square root of its length. When the length is doubled, the time period increases by a factor of √2. Doubling the time period would require the length to be quadrupled, and halving it would require the length to be reduced to a quarter. The time period does not remain the same because the relationship between length and period is not linear.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक लोलक की लंबाई दुगुनी कर दी जाए, तो इसके आवर्तकाल पर क्या प्रभाव पड़ता है?",
+          "choices": [
+            "यह दुगुना हो जाता है",
+            "यह आधा हो जाता है",
+            "यह समान रहता है",
+            "यह √2 के गुणक से बढ़ जाता है"
+          ],
+          "solution": "लोलक का आवर्तकाल इसकी लंबाई के वर्गमूल के समानुपाती होता है। जब लंबाई दुगुनी कर दी जाती है, तो आवर्तकाल √2 के गुणक से बढ़ जाता है। आवर्तकाल को दुगुना करने के लिए लंबाई को चार गुना करना पड़ता है, और आधा करने के लिए लंबाई को चौथाई तक कम करना पड़ता है। आवर्तकाल समान नहीं रहता क्योंकि लंबाई और आवर्तकाल के बीच संबंध रैखिक नहीं है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms as found in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर एका लटकत दोराच्या लांबीची दुप्पट केली जाते, तर त्याचा वेळांतर बदलतो का?",
+          "choices": [
+            "तो दुप्पट होतो",
+            "तो अर्धा होतो",
+            "तो एकसारखा रहातो",
+            "तो √2 ने वाढतो"
+          ],
+          "solution": "लटकत दोराचा वेळांतर त्याच्या लांबीच्या वर्गमूळाशी समानुपाती असतो. जेव्हा लांबीची दुप्पट केली जाते, तेव्हा वेळांतर √2 ने वाढतो. वेळांतर दुप्पट करण्यासाठी लांबी चौपट करावी लागते, आणि अर्धा करायचा असेल तर लांबी चौथाई करावी लागते. वेळांतर एकसारखा राहत नाही कारण लांबी आणि वेळांतर यांच्यातील संबंध रेषीय नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the scientific meaning, with appropriate Marathi terminology for physics concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Incorrectly assumes a linear relationship between length and time period.",
+        "Incorrectly assumes an inverse relationship between length and time period.",
+        "Confuses the effect of length on time period.",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly applies the physics formula for the time period of a simple pendulum, T = 2π√(l/g), showing that the time period is proportional to the square root of the length. Doubling the length increases the time period by √2, making option 3 correct.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu108.pdf",
+          "ordinal": 4,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 8: Measurement of Time and Motion",
+            "8.1.1 A simple pendulum"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu108.pdf",
+          "ordinal": 5,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 8: Measurement of Time and Motion",
+            "8.1.1 A simple pendulum"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu108.pdf",
+          "ordinal": 6,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 8: Measurement of Time and Motion",
+            "8.1.2 SI unit of time"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu108.pdf",
+          "ordinal": 7,
+          "pageStart": 8,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 8: Measurement of Time and Motion",
+            "8.2 Slow or Fast"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T03:00:22.584Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the term used for the distance covered by an object in a unit time?",
+      "choices": [
+        "Distance",
+        "Time",
+        "Speed",
+        "Acceleration"
+      ],
+      "answerIndex": 2,
+      "solution": "Speed is the term used for the distance covered by an object in a unit time. Distance refers to the total path length traveled, time is the duration of motion, and acceleration measures the rate of change of velocity, not distance over time.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "किसी वस्तु द्वारा एक इकाई समय में तय की गई दूरी के लिए क्या शब्द प्रयोग किया जाता है?",
+          "choices": [
+            "दूरी",
+            "समय",
+            "गति",
+            "त्वरण"
+          ],
+          "solution": "गति किसी वस्तु द्वारा एक इकाई समय में तय की गई दूरी के लिए प्रयोग किया जाने वाला शब्द है। दूरी कुल पथ की लंबाई को संदर्भित करती है, समय गति के अवधि को संदर्भित करता है और त्वरण वेग के परिवर्तन की दर को मापता है, न कि दूरी के समय के साथ।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard physics terminology as taught in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका वस्तूने एकक वेळात कापलेल्या अंतराच्या नावाचा शब्द काय आहे?",
+          "choices": [
+            "अंतर",
+            "वेळ",
+            "वेग",
+            "त्वरण"
+          ],
+          "solution": "वेग हा एका वस्तूने एकक वेळात कापलेल्या अंतराच्या नावाचा शब्द आहे. अंतर हा एकूण मार्गाच्या लांबीला संदर्भित करतो, वेळ हा गतीच्या कालावधीला संदर्भित करतो आणि त्वरण हा वेगाच्या बदलाच्या दराला संदर्भित करतो, अंतराच्या वेळात नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for scientific concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "refers to the total distance covered",
+        "refers to the duration of motion",
+        null,
+        "Confuses speed with acceleration, thinking it measures change in distance over time"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-constructed. The correct answer is 'Speed,' as it is defined as the distance covered in a unit time. The other options represent related but distinct concepts, and the author's explanations for the distractors align with common student misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu108.pdf",
+          "ordinal": 8,
+          "pageStart": 9,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 8: Measurement of Time and Motion",
+            "8.3 Speed"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu108.pdf",
+          "ordinal": 9,
+          "pageStart": 10,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 8: Measurement of Time and Motion",
+            "8.3 Speed"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu108.pdf",
+          "ordinal": 10,
+          "pageStart": 11,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 8: Measurement of Time and Motion",
+            "8.3 Speed",
+            "8.3.1 Relationship between speed, distance,",
+            "and time"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu108.pdf",
+          "ordinal": 11,
+          "pageStart": 12,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 8: Measurement of Time and Motion",
+            "8.4 Uniform and Non-uniform Linear Motion"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T05:32:14.416Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If a pendulum takes 10 seconds to complete 5 oscillations, what is its time period?",
+      "choices": [
+        "2 seconds",
+        "5 seconds",
+        "10 seconds",
+        "15 seconds"
+      ],
+      "answerIndex": 0,
+      "solution": "The time period is the time taken for one oscillation. If 5 oscillations take 10 seconds, then each oscillation takes 2 seconds. The other options are incorrect because they do not divide the total time by the number of oscillations.",
+      "checkExpr": "10/5",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक लोलक 5 दोलन पूरा करने में 10 सेकंड लेता है, तो इसका समय अवधि क्या है?",
+          "choices": [
+            "2 सेकंड",
+            "5 सेकंड",
+            "10 सेकंड",
+            "15 सेकंड"
+          ],
+          "solution": "समय अवधि एक दोलन के लिए लिए गए समय के बराबर होता है। यदि 5 दोलन 10 सेकंड लेते हैं, तो प्रत्येक दोलन 2 सेकंड लेता है। अन्य विकल्प गलत हैं क्योंकि वे कुल समय को दोलनों की संख्या से विभाजित नहीं करते।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriately translated.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर एका लटकत्या वस्तूला 5 दोलन पूर्ण करण्यास 10 सेकंद लागत असतील, तर तिचा वेळ अवधी किती असेल?",
+          "choices": [
+            "2 सेकंद",
+            "5 सेकंद",
+            "10 सेकंद",
+            "15 सेकंद"
+          ],
+          "solution": "वेळ अवधी हा एका दोलनासाठी लागणारा वेळ आहे. जर 5 दोलनांना 10 सेकंद लागत असतील, तर प्रत्येक दोलनासाठी 2 सेकंद लागतो. इतर विकल्प चुकीचे आहेत कारण ते एकूण वेळेचे दोलनांच्या संख्येने भाग देत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi technical terms.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Student divides the number of oscillations by the time instead of the time by the number of oscillations.",
+        "Fails to divide the total time by the number of oscillations.",
+        "Confuses the total time with the time period."
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct and aligns with the definition of time period. The reasoning for the distractors is valid and reflects common student misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu108.pdf",
+          "ordinal": 4,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 8: Measurement of Time and Motion",
+            "8.1.1 A simple pendulum"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu108.pdf",
+          "ordinal": 5,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 8: Measurement of Time and Motion",
+            "8.1.1 A simple pendulum"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu108.pdf",
+          "ordinal": 6,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 8: Measurement of Time and Motion",
+            "8.1.2 SI unit of time"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu108.pdf",
+          "ordinal": 7,
+          "pageStart": 8,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 8: Measurement of Time and Motion",
+            "8.2 Slow or Fast"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T05:32:14.416Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "Which of the following is an example of uniform linear motion?",
+      "choices": [
+        "A car moving on a straight highway with no traffic",
+        "A car moving in city traffic",
+        "A ball thrown upwards",
+        "A train moving with varying speed"
+      ],
+      "answerIndex": 0,
+      "solution": "Uniform linear motion is when an object moves along a straight line with a constant speed. A car moving on a straight highway with no traffic is an example of uniform linear motion. The other options involve varying speeds or non-linear paths.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा समरूप रेखीय गति का उदाहरण है?",
+          "choices": [
+            "एक सीधे राजमार्ग पर बिना ट्रैफिक के कार चल रहा है",
+            "शहर के ट्रैफिक में चल रहा कार",
+            "ऊपर की ओर फेंका गया एक गेंद",
+            "असमान गति के साथ चल रही एक ट्रेन"
+          ],
+          "solution": "समरूप रेखीय गति तब होती है जब एक वस्तु सीधी रेखा के साथ नियत गति से चलती है। एक सीधे राजमार्ग पर बिना ट्रैफिक के कार चल रहा है, समरूप रेखीय गति का एक उदाहरण है। अन्य विकल्पों में गति के असमान मान या गैर-रेखीय पथ शामिल हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and technical terminology. All options are correctly translated and maintain their original logical status as correct or incorrect. The term 'समरूप रेखीय गति' is the standard Hindi term used in textbooks for 'uniform linear motion'.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते समान रेखीय गतीचे उदाहरण आहे?",
+          "choices": [
+            "संचार नसलेल्या सीध्या महामार्गावर चालणारा गाडी",
+            "शहरातील जागा चालणारा गाडी",
+            "ऊर्ध्वाक्षित केलेला गोला",
+            "वेगात बदल होणारा रेल्वेचा गाडी"
+          ],
+          "solution": "समान रेखीय गती ही अशी गती आहे जेव्हा वस्तू एका सीध्या रेषेवर स्थिर वेगाने चालते. संचार नसलेल्या सीध्या महामार्गावर चालणारा गाडी समान रेखीय गतीचे उदाहरण आहे. इतर विकल्पांमध्ये वेगात बदल किंवा अरेखीय मार्ग असतो.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi technical terms used.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses uniform motion with non-uniform motion",
+        "Confuses non-uniform motion with uniform motion",
+        "Confuses vertical motion with linear motion"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 0, as a car moving on a straight highway with no traffic can maintain a constant speed, fulfilling the criteria for uniform linear motion. The other options involve either non-linear paths or varying speeds, which disqualify them. The author's reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu108.pdf",
+          "ordinal": 12,
+          "pageStart": 13,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 8: Measurement of Time and Motion",
+            "8.4 Uniform and Non-uniform Linear Motion"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu108.pdf",
+          "ordinal": 13,
+          "pageStart": 14,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 8: Measurement of Time and Motion",
+            "8.4 Uniform and Non-uniform Linear Motion",
+            "Let Us Enhance Our Learning"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu108.pdf",
+          "ordinal": 14,
+          "pageStart": 15,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 8: Measurement of Time and Motion",
+            "8.4 Uniform and Non-uniform Linear Motion",
+            "Exploratory Projects"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T05:32:14.416Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "In a race, two runners cover different distances in the same time. Which runner is faster?",
+      "choices": [
+        "The runner who covers more distance.",
+        "The runner who covers less distance.",
+        "The runner with a higher time period.",
+        "The runner with a lower time period."
+      ],
+      "answerIndex": 0,
+      "solution": "The runner who covers more distance in the same time is faster. This is based on the concept that speed is determined by the distance covered in a given time. The other options are incorrect because they do not align with this definition of speed.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक दौड़ में, दो धावक एक ही समय में अलग-अलग दूरी तय करते हैं। कौन धावक तेज है?",
+          "choices": [
+            "वह धावक जो अधिक दूरी तय करता है।",
+            "वह धावक जो कम दूरी तय करता है।",
+            "वह धावक जिसका अधिक समय अवधि है।",
+            "वह धावक जिसका कम समय अवधि है।"
+          ],
+          "solution": "एक ही समय में अधिक दूरी तय करने वाला धावक तेज होता है। यह चाल की अवधारणा पर आधारित है कि चाल दिए गए समय में तय की गई दूरी द्वारा निर्धारित की जाती है। अन्य विकल्प गलत हैं क्योंकि वे चाल की इस परिभाषा के साथ मेल नहीं खाते।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, with appropriate Hindi terminology used for physics concepts.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका धावण्यात, दोन धावक एकसारख्या वेळेत वेगवेगळी अंतरे कापतात. कोणता धावक जास्त वेगाने धावतो?",
+          "choices": [
+            "जो धावक जास्त अंतर कापतो.",
+            "जो धावक कमी अंतर कापतो.",
+            "ज्या धावकाचा जास्त वेळाचा कालावधी असतो.",
+            "ज्या धावकाचा कमी वेळाचा कालावधी असतो."
+          ],
+          "solution": "एकसारख्या वेळेत जो धावक जास्त अंतर कापतो तो जास्त वेगाने धावतो. हे वेगाच्या निर्धारावर आधारित आहे जो दिलेल्या वेळेत कापलेले अंतर आहे. इतर विकल्प चुकीचे आहेत कारण ते वेगाच्या या व्याख्येशी जुळत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for physics concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses the relationship between distance and speed.",
+        "Fails to understand that more distance in the same time means higher speed.",
+        "Misinterprets the time period as a measure of speed."
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 0, as speed is defined as distance divided by time. If two runners cover different distances in the same time, the one who covers more distance is faster. The other options reflect common misconceptions about the relationship between distance, time, and speed.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu108.pdf",
+          "ordinal": 4,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 8: Measurement of Time and Motion",
+            "8.1.1 A simple pendulum"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu108.pdf",
+          "ordinal": 5,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 8: Measurement of Time and Motion",
+            "8.1.1 A simple pendulum"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu108.pdf",
+          "ordinal": 6,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 8: Measurement of Time and Motion",
+            "8.1.2 SI unit of time"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu108.pdf",
+          "ordinal": 7,
+          "pageStart": 8,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 8: Measurement of Time and Motion",
+            "8.2 Slow or Fast"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T05:32:14.416Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "A bus travels at a speed of 60 km/h for the first 2 hours and then at 40 km/h for the next 3 hours. What is the average speed of the bus?",
+      "choices": [
+        "48 km/h",
+        "50 km/h",
+        "52 km/h",
+        "54 km/h"
+      ],
+      "answerIndex": 0,
+      "solution": "To find the average speed, we need to calculate the total distance and divide it by the total time. The bus travels 120 km in the first 2 hours (60 km/h × 2 h) and 120 km in the next 3 hours (40 km/h × 3 h). Total distance is 240 km, and total time is 5 hours. So, average speed is 240 ÷ 5 = 48 km/h. The other options are incorrect because they do not match this calculation.",
+      "checkExpr": "(60*2 + 40*3)/(2+3)",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक बस पहले 2 घंटे के लिए 60 किमी/घंटा की गति से यात्रा करती है और फिर अगले 3 घंटे के लिए 40 किमी/घंटा की गति से यात्रा करती है। बस की औसत गति क्या है?",
+          "choices": [
+            "48 किमी/घंटा",
+            "50 किमी/घंटा",
+            "52 किमी/घंटा",
+            "54 किमी/घंटा"
+          ],
+          "solution": "औसत गति ज्ञात करने के लिए, हमें कुल दूरी की गणना करनी होती है और इसे कुल समय से विभाजित करना होता है। बस पहले 2 घंटे में 120 किमी तय करती है (60 किमी/घंटा × 2 घंटा) और अगले 3 घंटे में 120 किमी तय करती है (40 किमी/घंटा × 3 घंटा)। कुल दूरी 240 किमी है और कुल समय 5 घंटा है। इसलिए, औसत गति 240 ÷ 5 = 48 किमी/घंटा है। अन्य विकल्प गलत हैं क्योंकि वे इस गणना के साथ मेल नहीं खाते।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms as found in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एक बस पहिल्या 2 तासांसाठी 60 किमी/तास वेगाने जाते आणि नंतर अगदी 3 तासांसाठी 40 किमी/तास वेगाने जाते. बसचा सरासरी वेग किती आहे?",
+          "choices": [
+            "48 किमी/तास",
+            "50 किमी/तास",
+            "52 किमी/तास",
+            "54 किमी/तास"
+          ],
+          "solution": "सरासरी वेग शोधण्यासाठी, आम्हाला एकूण अंतर आणि एकूण वेळ विभाजित करावी लागते. बस पहिल्या 2 तासांत 120 किमी जाते (60 किमी/तास × 2 तास) आणि नंतर अगदी 3 तासांत 120 किमी जाते (40 किमी/तास × 3 तास). एकूण अंतर 240 किमी आहे, आणि एकूण वेळ 5 तास आहे. म्हणून, सरासरी वेग 240 ÷ 5 = 48 किमी/तास आहे. इतर विकल्प चुकीचे आहेत कारण ते या गणनेशी जुळत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Calculates average of the two speeds without considering the different time intervals",
+        "Calculates average speed by averaging the two speeds instead of using total distance divided by total time",
+        "Calculates average speed by averaging the two speeds without considering the different time intervals"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct. The average speed is calculated properly by dividing total distance (240 km) by total time (5 hours), resulting in 48 km/h. The distractors reflect common misconceptions, such as averaging speeds without considering time intervals.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu108.pdf",
+          "ordinal": 8,
+          "pageStart": 9,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 8: Measurement of Time and Motion",
+            "8.3 Speed"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu108.pdf",
+          "ordinal": 9,
+          "pageStart": 10,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 8: Measurement of Time and Motion",
+            "8.3 Speed"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu108.pdf",
+          "ordinal": 10,
+          "pageStart": 11,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 8: Measurement of Time and Motion",
+            "8.3 Speed",
+            "8.3.1 Relationship between speed, distance,",
+            "and time"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu108.pdf",
+          "ordinal": 11,
+          "pageStart": 12,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 8: Measurement of Time and Motion",
+            "8.4 Uniform and Non-uniform Linear Motion"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T05:32:14.416Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "A pendulum is moved to a location where the gravitational acceleration is higher. How will this affect its time period?",
+      "choices": [
+        "It will increase",
+        "It will decrease",
+        "It will remain the same",
+        "It will become zero"
+      ],
+      "answerIndex": 1,
+      "solution": "The time period of a pendulum is inversely proportional to the square root of the gravitational acceleration. If the gravitational acceleration increases, the time period will decrease. A pupil who does not understand this relationship might think the time period will increase or remain the same, but the correct answer is that it will decrease.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक लोलक को एक ऐसे स्थान पर ले जाया जाता है जहां गुरुत्वीय त्वरण अधिक होता है। इसके काल अवधि पर क्या प्रभाव पड़ेगा?",
+          "choices": [
+            "यह बढ़ जाएगा",
+            "यह घट जाएगा",
+            "यह समान रहेगा",
+            "यह शून्य हो जाएगा"
+          ],
+          "solution": "लोलक का काल अवधि गुरुत्वीय त्वरण के वर्गमूल के व्युत्क्रमानुपाती होता है। यदि गुरुत्वीय त्वरण बढ़ जाता है, तो काल अवधि घट जाएगा। एक छात्र जो इस संबंध को समझ नहीं पाता है, वह सोच सकता है कि काल अवधि बढ़ जाएगी या समान रहेगी, लेकिन सही उत्तर यह है कि यह घट जाएगा।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains original meaning, and uses standard Hindi scientific terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका लटकत असलेल्या गोलाच्या जागी गुरुत्वीय त्वरण जास्त असलेल्या ठिकाणी नेले जाते. त्याचा त्वरणाचा कालावधी काय प्रभावित करेल?",
+          "choices": [
+            "तो वाढेल",
+            "तो घटेल",
+            "तो बरोबर राहील",
+            "तो शून्य होईल"
+          ],
+          "solution": "लटकत असलेल्या गोलाचा त्वरणाचा कालावधी गुरुत्वीय त्वरणाच्या वर्गमूळाच्या व्यस्त असतो. जर गुरुत्वीय त्वरण वाढले तर त्वरणाचा कालावधी घटेल. जर कोणताही विद्यार्थी ही संबंध न समजला तर तो त्वरणाचा कालावधी वाढेल किंवा बरोबर राहील असे समजू शकतो, परंतु योग्य उत्तर असे आहे की तो घटेल.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate technical terms. The correct answer remains option (2) and the distractors are still incorrect.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "confuses the effect of gravity on pendulum motion",
+        null,
+        "thinks that the time period is independent of gravity",
+        "believes that the time period can become zero under any condition"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies that the time period of a pendulum is inversely proportional to the square root of gravitational acceleration. The reasoning aligns with the physics of pendulums and the author's key.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu108.pdf",
+          "ordinal": 4,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 8: Measurement of Time and Motion",
+            "8.1.1 A simple pendulum"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu108.pdf",
+          "ordinal": 5,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 8: Measurement of Time and Motion",
+            "8.1.1 A simple pendulum"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu108.pdf",
+          "ordinal": 6,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 8: Measurement of Time and Motion",
+            "8.1.2 SI unit of time"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu108.pdf",
+          "ordinal": 7,
+          "pageStart": 8,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 8: Measurement of Time and Motion",
+            "8.2 Slow or Fast"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T05:32:14.416Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
     }
   ]
 }

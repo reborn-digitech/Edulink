@@ -318,6 +318,908 @@
       "generatedAt": "2026-10-29T01:02:05.451Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "Which of the following is a source of energy in the interior of stars?",
+      "choices": [
+        "Chemical reactions",
+        "Nuclear fission",
+        "Nuclear fusion",
+        "Gravitational collapse"
+      ],
+      "answerIndex": 2,
+      "solution": "Nuclear fusion is the correct answer because it involves combining light atomic nuclei to form heavier ones, which releases a significant amount of energy. Chemical reactions do not generate enough energy to sustain a star, nuclear fission is not the primary energy source in stars, and gravitational collapse is a process that contributes to star formation, not a direct energy source.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन तारों के आंतरिक भाग में ऊर्जा का स्रोत है?",
+          "choices": [
+            "रासायनिक अभिक्रियाएं",
+            "नाभिकीय विखंडन",
+            "नाभिकीय संलयन",
+            "गुरुत्वीय पतन"
+          ],
+          "solution": "नाभिकीय संलयन सही उत्तर है क्योंकि इसमें हल्के परमाणु नाभिकों के एकत्र होकर भारी नाभिक बनाने की प्रक्रिया होती है जो बहुत अधिक ऊर्जा उत्पन्न करती है। रासायनिक अभिक्रियाएं तारे को चलाने के लिए पर्याप्त ऊर्जा उत्पन्न नहीं करतीं, नाभिकीय विखंडन तारों में प्राथमिक ऊर्जा स्रोत नहीं है, और गुरुत्वीय पतन तारे के निर्माण में योगदान देता है, लेकिन सीधा ऊर्जा स्रोत नहीं है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, technical terms are standard in Hindi science textbooks, and the logic of the solution matches the original.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खगोलातील तारांच्या आंतरिक भागातील ऊर्जेचा स्रोत कोणता आहे?",
+          "choices": [
+            "रासायनिक प्रतिक्रिया",
+            "न्यूक्लियर विभाजन",
+            "न्यूक्लियर संलयन",
+            "गुरुत्वीय कोसळण"
+          ],
+          "solution": "न्यूक्लियर संलयन हे बरोबर उत्तर आहे कारण त्यामध्ये हलक्या परमाणूंच्या नाभिकांचे जोडून भारी नाभिक तयार करणे होते, जे मोठ्या प्रमाणात ऊर्जा बाहेर काढते. रासायनिक प्रतिक्रिया तारांच्या पाठीमागे ऊर्जा उत्पन्न करू शकत नाहीत, न्यूक्लियर विभाजन तारांच्या मुख्य ऊर्जा स्रोताचा असत नाही आणि गुरुत्वीय कोसळण हा तारांच्या निर्मितीमध्ये योगदान देतो, ऊर्जेचा सीधा स्रोत नाही.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the original meaning, and uses appropriate scientific terminology as used in Marathi textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses nuclear fusion with chemical reactions",
+        "Thinks nuclear fission is the main process in stars",
+        null,
+        "Believes gravitational collapse is the direct source of energy"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is nuclear fusion, as it is the primary energy source in stars. The reasoning provided by the author is accurate and aligns with the scientific understanding of stellar energy production.",
+      "sources": [
+        {
+          "document": "ncert/12/physics/leph205.pdf",
+          "ordinal": 14,
+          "pageStart": 11,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 5: Nuclei",
+            "13.7"
+          ]
+        },
+        {
+          "document": "ncert/12/physics/leph205.pdf",
+          "ordinal": 15,
+          "pageStart": 11,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 5: Nuclei",
+            "13.7"
+          ]
+        },
+        {
+          "document": "ncert/12/physics/leph205.pdf",
+          "ordinal": 16,
+          "pageStart": 12,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 5: Nuclei",
+            "13.7"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T13:00:03.746Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the primary reason for the constancy of binding energy per nucleon in medium-sized nuclei?",
+      "choices": [
+        "The nuclear force becomes stronger with increasing size",
+        "The nuclear force is short-ranged and saturates in large nuclei",
+        "The Coulomb force dominates in large nuclei",
+        "The gravitational force becomes significant in large nuclei"
+      ],
+      "answerIndex": 1,
+      "solution": "The nuclear force is short-ranged and only acts between nearby nucleons, leading to saturation in large nuclei, which keeps the binding energy per nucleon relatively constant. The nuclear force does not become stronger with size, the Coulomb force is not dominant enough to affect this constancy, and gravitational force is far too weak to have any significant impact on nuclear binding.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "मध्यम आकार के नाभिकों में बंधन ऊर्जा प्रति न्यूक्लियॉन के स्थिर होने का प्राथमिक कारण क्या है?",
+          "choices": [
+            "नाभिकीय बल आकार बढ़ने के साथ मजबूत हो जाता है",
+            "नाभिकीय बल अल्प परास वाला होता है और बड़े नाभिकों में संतृप्त हो जाता है",
+            "बड़े नाभिकों में कूलॉम बल प्रभावशाली होता है",
+            "बड़े नाभिकों में गुरुत्वाकर्षण बल महत्वपूर्ण हो जाता है"
+          ],
+          "solution": "नाभिकीय बल अल्प परास वाला होता है और केवल निकटवर्ती न्यूक्लियॉनों के बीच कार्य करता है, जिसके कारण बड़े नाभिकों में संतृप्ति हो जाती है, जो बंधन ऊर्जा प्रति न्यूक्लियॉन के लगभग स्थिर रहने को सुनिश्चित करती है। नाभिकीय बल आकार के साथ मजबूत नहीं होता है, कूलॉम बल बस इतना प्रभावशाली नहीं होता कि इस स्थिरता को प्रभावित कर सके, और गुरुत्वाकर्षण बल नाभिकीय बंधन पर कोई महत्वपूर्ण प्रभाव डालने के लिए बहुत कमजोर होता है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains original meaning, and uses standard Hindi physics terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "मध्यम आकाराच्या न्यूक्लियसमध्ये बंधन ऊर्जा प्रति न्यूक्लियॉनच्या स्थिरतेचे प्राथमिक कारण काय आहे?",
+          "choices": [
+            "न्यूक्लियर बल मोठेपणासह अधिक शक्तिशाली होते",
+            "न्यूक्लियर बल लहान अंतरावर कार्य करते आणि मोठ्या न्यूक्लियसमध्ये संतृप्त होते",
+            "मोठ्या न्यूक्लियसमध्ये कूलॉम बल प्रमुख असते",
+            "मोठ्या न्यूक्लियसमध्ये गुरुत्वीय बल महत्वाचे होते"
+          ],
+          "solution": "न्यूक्लियर बल लहान अंतरावर कार्य करते आणि केवळ जवळच्या न्यूक्लियॉनमध्ये कार्य करते, ज्यामुळे मोठ्या न्यूक्लियसमध्ये संतृप्ती होते, ज्यामुळे बंधन ऊर्जा प्रति न्यूक्लियॉन अपेक्षाकृत स्थिर राहते. न्यूक्लियर बल मोठेपणासह शक्तिशाली होत नाही, कूलॉम बल मोठ्या न्यूक्लियसमध्ये इतके प्रमुख नाही की या स्थिरतेवर प्रभाव पाडू शकेल आणि गुरुत्वीय बल नाही तर खूपच कमजोर असते जेणेकरून ते न्यूक्लियर बंधनावर कोणताही महत्वाचा प्रभाव टाकू शकत नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for nuclear physics concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Misunderstands the nature of the nuclear force",
+        null,
+        "Confuses the cause of constant binding energy per nucleon",
+        "Incorrectly assumes Coulomb force dominates in large nuclei"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 1, as the saturation of the short-ranged nuclear force explains the constancy of binding energy per nucleon. The other options reflect common misconceptions about nuclear forces and other interactions.",
+      "sources": [
+        {
+          "document": "ncert/12/physics/leph205.pdf",
+          "ordinal": 10,
+          "pageStart": 8,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 5: Nuclei",
+            "13.5"
+          ]
+        },
+        {
+          "document": "ncert/12/physics/leph205.pdf",
+          "ordinal": 11,
+          "pageStart": 9,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 5: Nuclei",
+            "13.6"
+          ]
+        },
+        {
+          "document": "ncert/12/physics/leph205.pdf",
+          "ordinal": 12,
+          "pageStart": 9,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 5: Nuclei",
+            "13.7"
+          ]
+        },
+        {
+          "document": "ncert/12/physics/leph205.pdf",
+          "ordinal": 13,
+          "pageStart": 10,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 5: Nuclei",
+            "13.7"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T13:00:03.746Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of the following best describes the binding energy of a nucleus?",
+      "choices": [
+        "The energy required to break the nucleus into its constituent protons and neutrons",
+        "The energy released when a nucleus undergoes fission",
+        "The total mass of the nucleus",
+        "The charge of the nucleus"
+      ],
+      "answerIndex": 0,
+      "solution": "The binding energy of a nucleus is the energy required to break it into its individual protons and neutrons. It is a measure of how strongly the nucleons are held together. The other options describe different concepts, such as fission energy, mass, and charge, which are not the same as binding energy.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा नाभिक की बंधन ऊर्जा का सबसे अच्छा वर्णन करता है?",
+          "choices": [
+            "नाभिक के प्रोटॉन एवं न्यूट्रॉन में अलग करने के लिए आवश्यक ऊर्जा",
+            "जब नाभिक विखंडन के द्वारा ऊर्जा उत्सर्जित करता है",
+            "नाभिक का कुल द्रव्यमान",
+            "नाभिक का आवेश"
+          ],
+          "solution": "नाभिक की बंधन ऊर्जा उस ऊर्जा को कहते हैं जो नाभिक के प्रोटॉन एवं न्यूट्रॉन में अलग करने के लिए आवश्यक होती है। यह न्यूक्लियॉन्स के कितने मजबूती से बंधे हुए हैं, का माप है। अन्य विकल्प विखंडन ऊर्जा, द्रव्यमान एवं आवेश जैसी अलग अवधारणाओं का वर्णन करते हैं जो बंधन ऊर्जा के समान नहीं हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology for nuclear physics concepts.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खोलीच्या बांधकाम ऊर्जेचे खालीलपैकी कोणते सर्वात चांगले वर्णन करते?",
+          "choices": [
+            "खोलीला तिच्या घटक प्रोटॉन आणि न्यूट्रॉनमध्ये तोडण्यासाठी आवश्यक ऊर्जा",
+            "खोली विभाजन करताना ऊर्जा सोडली जाते",
+            "खोलीचा एकूण द्रव्यमान",
+            "खोलीचा आवेश"
+          ],
+          "solution": "खोलीच्या बांधकाम ऊर्जा ही खोलीला तिच्या विशिष्ट प्रोटॉन आणि न्यूट्रॉनमध्ये तोडण्यासाठी आवश्यक ऊर्जा आहे. ती न्यूक्लियॉन्स एकत्र बांधलेल्या ऊर्जेचे मापन आहे. इतर विकल्प विभाजन ऊर्जा, द्रव्यमान आणि आवेश या वेगळ्या संकल्पना वर्णन करतात, जी बांधकाम ऊर्जेपेक्षा वेगळ्या आहेत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for nuclear physics concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "confuses binding energy with fission energy",
+        "misunderstands the definition of binding energy",
+        "confuses binding energy with mass"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is option 0, as binding energy is indeed the energy required to disassemble a nucleus into its individual nucleons. The other options represent common misconceptions or unrelated concepts.",
+      "sources": [
+        {
+          "document": "ncert/12/physics/leph205.pdf",
+          "ordinal": 17,
+          "pageStart": 13,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 5: Nuclei",
+            "13.7"
+          ]
+        },
+        {
+          "document": "ncert/12/physics/leph205.pdf",
+          "ordinal": 18,
+          "pageStart": 14,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 5: Nuclei",
+            "13.7"
+          ]
+        },
+        {
+          "document": "ncert/12/physics/leph205.pdf",
+          "ordinal": 19,
+          "pageStart": 15,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 5: Nuclei",
+            "13.7"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T13:00:03.746Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the term used for a proton or a neutron in the context of a nucleus?",
+      "choices": [
+        "Nucleus",
+        "Nucleon",
+        "Isotope",
+        "Isobar"
+      ],
+      "answerIndex": 1,
+      "solution": "The term 'nucleon' refers to either a proton or a neutron found within a nucleus. 'Nucleus' is the entire central part of an atom, not a single particle. 'Isotope' refers to different forms of the same element with varying numbers of neutrons. 'Isobar' refers to atoms with the same total number of protons and neutrons but different elements.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "नाभिक के संदर्भ में प्रोटॉन या न्यूट्रॉन के लिए क्या शब्द प्रयोग किया जाता है?",
+          "choices": [
+            "नाभिक",
+            "न्यूक्लियॉन",
+            "समस्थानिक",
+            "समभारिक"
+          ],
+          "solution": "शब्द 'न्यूक्लियॉन' नाभिक के भीतर पाए जाने वाले प्रोटॉन या न्यूट्रॉन के लिए प्रयोग किया जाता है। 'नाभिक' परमाणु का पूरा केंद्रीय भाग होता है, एक एकल कण नहीं। 'समस्थानिक' एक ही तत्व के विभिन्न रूप होते हैं जिनमें न्यूट्रॉनों की संख्या अलग-अलग होती है। 'समभारिक' एक ही कुल प्रोटॉन और न्यूट्रॉन संख्या वाले परमाणु होते हैं लेकिन अलग-अलग तत्व होते हैं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the scientific terminology used in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "परमाणूच्या नाभिकाच्या संदर्भात एक प्रोटॉन किंवा न्यूट्रॉन साठी वापरलेला शब्द काय आहे?",
+          "choices": [
+            "नाभिक",
+            "न्यूक्लिऑन",
+            "समस्थानिक",
+            "समभारी"
+          ],
+          "solution": "न्यूक्लिऑन शब्दाचा अर्थ नाभिकामध्ये असलेल्या प्रोटॉन किंवा न्यूट्रॉन यांचा आहे. 'नाभिक' हा अणूच्या एकूण केंद्रीय भागाचा शब्द आहे, एकल कण नाही. 'समस्थानिक' हा एका घटकाच्या विविध रूपांना संबोधित करतो ज्यांच्या न्यूट्रॉनची संख्या वेगवेगळी असते. 'समभारी' हा एका घटकाच्या विविध रूपांना संबोधित करतो ज्यांच्या प्रोटॉन आणि न्यूट्रॉनची एकूण संख्या समान असते पण घटक वेगळे असतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "confuses 'nucleus' with 'nucleon'",
+        null,
+        "thinks 'isotope' refers to a proton or neutron",
+        "does not understand the difference between 'nucleon' and 'isobar'"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 'nucleon' for a proton or neutron in the context of a nucleus. The author's explanation of the misconceptions is accurate and relevant.",
+      "sources": [
+        {
+          "document": "ncert/12/physics/leph205.pdf",
+          "ordinal": 4,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 5: Nuclei",
+            "13.2"
+          ]
+        },
+        {
+          "document": "ncert/12/physics/leph205.pdf",
+          "ordinal": 5,
+          "pageStart": 4,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 5: Nuclei",
+            "13.3"
+          ]
+        },
+        {
+          "document": "ncert/12/physics/leph205.pdf",
+          "ordinal": 6,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 5: Nuclei",
+            "13.4"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T13:00:03.746Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "A nucleus with a mass number of 30 has a binding energy of 240 MeV. What is the binding energy per nucleon?",
+      "choices": [
+        "8 MeV",
+        "12 MeV",
+        "15 MeV",
+        "20 MeV"
+      ],
+      "answerIndex": 0,
+      "solution": "The binding energy per nucleon is calculated by dividing the total binding energy by the mass number. Here, the total binding energy is 240 MeV, and the mass number is 30. So, 240 MeV / 30 = 8 MeV per nucleon. The other options result from incorrect division or miscalculations.",
+      "checkExpr": "240/30",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "30 द्रव्यमान संख्या वाले एक नाभिक के बंधन ऊर्जा 240 MeV है। प्रति न्यूक्लियॉन बंधन ऊर्जा क्या है?",
+          "choices": [
+            "8 MeV",
+            "12 MeV",
+            "15 MeV",
+            "20 MeV"
+          ],
+          "solution": "प्रति न्यूक्लियॉन बंधन ऊर्जा की गणना कुल बंधन ऊर्जा को द्रव्यमान संख्या से विभाजित करके की जाती है। यहां कुल बंधन ऊर्जा 240 MeV है और द्रव्यमान संख्या 30 है। अतः 240 MeV / 30 = 8 MeV प्रति न्यूक्लियॉन। अन्य विकल्प गलत विभाजन या गणना से प्राप्त होते हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms. The correct answer remains option (1) and the distractors are still incorrect.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "30 च्या द्रव्यमान संख्येचा एक नाभिक 240 MeV बंधन ऊर्जा असतो. प्रति न्यूक्लियॉन बंधन ऊर्जा किती आहे?",
+          "choices": [
+            "8 MeV",
+            "12 MeV",
+            "15 MeV",
+            "20 MeV"
+          ],
+          "solution": "प्रति न्यूक्लियॉन बंधन ऊर्जा एकूण बंधन ऊर्जा विभागून द्रव्यमान संख्या असते. इथे, एकूण बंधन ऊर्जा 240 MeV आहे आणि द्रव्यमान संख्या 30 आहे. म्हणून, 240 MeV / 30 = 8 MeV प्रति न्यूक्लियॉन. इतर विकल्प अयोग्य विभाजन किंवा गणना करून मिळतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "divides 240 by 10 instead of 30",
+        "divides 240 by 20 instead of 30",
+        "divides 240 by 12 instead of 30"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The question is straightforward and the solution is correct. The binding energy per nucleon is indeed 240 MeV divided by 30, which equals 8 MeV. The distractors are based on common division errors, which are plausible misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/12/physics/leph205.pdf",
+          "ordinal": 17,
+          "pageStart": 13,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 5: Nuclei",
+            "13.7"
+          ]
+        },
+        {
+          "document": "ncert/12/physics/leph205.pdf",
+          "ordinal": 18,
+          "pageStart": 14,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 5: Nuclei",
+            "13.7"
+          ]
+        },
+        {
+          "document": "ncert/12/physics/leph205.pdf",
+          "ordinal": 19,
+          "pageStart": 15,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 5: Nuclei",
+            "13.7"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T13:00:03.746Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If a nucleus has 79 protons and 118 neutrons, what is its mass number?",
+      "choices": [
+        "118",
+        "197",
+        "79",
+        "196"
+      ],
+      "answerIndex": 1,
+      "solution": "The mass number is calculated by adding the number of protons and neutrons in a nucleus. With 79 protons and 118 neutrons, the total is 197. Choosing 118 would ignore the protons, while 79 would ignore the neutrons. Subtracting 1 from the sum would be an incorrect calculation.",
+      "checkExpr": "79+118",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक नाभिक में 79 प्रोटॉन और 118 न्यूट्रॉन हैं, तो इसकी द्रव्यमान संख्या क्या है?",
+          "choices": [
+            "118",
+            "197",
+            "79",
+            "196"
+          ],
+          "solution": "द्रव्यमान संख्या नाभिक में प्रोटॉन और न्यूट्रॉन की संख्या को जोड़कर गणना की जाती है। 79 प्रोटॉन और 118 न्यूट्रॉन के साथ, कुल योग 197 है। 118 का चयन प्रोटॉन को अनदेखा कर देगा, जबकि 79 न्यूट्रॉन को अनदेखा कर देगा। योग से 1 घटाना एक गलत गणना होगी।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard scientific terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका न्यूक्लियसमध्ये 79 प्रोटॉन आणि 118 न्यूट्रॉन असतील, तर त्याचा द्रव्यमान संख्या किती असेल?",
+          "choices": [
+            "118",
+            "197",
+            "79",
+            "196"
+          ],
+          "solution": "द्रव्यमान संख्या ही न्यूक्लियसमधील प्रोटॉन आणि न्यूट्रॉनच्या संख्या जोडून मिळते. 79 प्रोटॉन आणि 118 न्यूट्रॉन असल्यास, एकूण 197 असते. 118 निवडल्यास प्रोटॉन नजरअंदाज केले जातात, तर 79 निवडल्यास न्यूट्रॉन नजरअंदाज केले जातात. बेरीजमधून 1 वजा करणे हे अयोग्य गणना असते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "only adds the number of neutrons",
+        null,
+        "adds the number of protons only",
+        "incorrectly adds 79 and 118 and subtracts 1"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 197, which is the sum of 79 protons and 118 neutrons. The author's reasoning for the distractors is accurate and reflects common student misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/12/physics/leph205.pdf",
+          "ordinal": 4,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 5: Nuclei",
+            "13.2"
+          ]
+        },
+        {
+          "document": "ncert/12/physics/leph205.pdf",
+          "ordinal": 5,
+          "pageStart": 4,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 5: Nuclei",
+            "13.3"
+          ]
+        },
+        {
+          "document": "ncert/12/physics/leph205.pdf",
+          "ordinal": 6,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 5: Nuclei",
+            "13.4"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T13:00:03.746Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "A nucleus undergoes a reaction and emits a beta particle. What happens to the atomic number of the nucleus after the emission?",
+      "choices": [
+        "It increases by 1",
+        "It decreases by 1",
+        "It remains the same",
+        "It doubles"
+      ],
+      "answerIndex": 0,
+      "solution": "When a nucleus emits a beta particle (an electron), a neutron in the nucleus is converted into a proton. This increases the atomic number by 1. The other options do not correctly describe the effect of beta decay on the atomic number.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक नाभिक एक अभिक्रिया के दौरान बीटा कण उत्सर्जित करता है। उत्सर्जन के बाद नाभिक की परमाणु संख्या क्या होती है?",
+          "choices": [
+            "इसका मान एक से बढ़ जाता है",
+            "इसका मान एक से घट जाता है",
+            "इसका मान वही रहता है",
+            "इसका मान दोगुना हो जाता है"
+          ],
+          "solution": "जब एक नाभिक बीटा कण (इलेक्ट्रॉन) उत्सर्जित करता है, तो नाभिक में एक न्यूट्रॉन प्रोटॉन में परिवर्तित हो जाता है। इससे परमाणु संख्या एक से बढ़ जाती है। अन्य विकल्प परमाणु संख्या पर बीटा क्षय के प्रभाव को सही ढंग से वर्णित नहीं करते हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the scientific meaning, and uses appropriate Hindi terminology for nuclear physics.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एक न्यूक्लियस एका अभिक्रियेत जाऊन बीटा कण उत्सर्जित करतो. उत्सर्जनानंतर न्यूक्लियसचा परमाणु क्रमांक काय होतो?",
+          "choices": [
+            "तो 1 ने वाढतो",
+            "तो 1 ने कमी होतो",
+            "तो त्याच राहतो",
+            "तो दुप्पट होतो"
+          ],
+          "solution": "जेव्हा न्यूक्लियस बीटा कण (इलेक्ट्रॉन) उत्सर्जित करतो, तेव्हा न्यूक्लियसमधील एक न्यूट्रॉन प्रोटॉनमध्ये बदलतो. हे परमाणु क्रमांक 1 ने वाढतो. इतर विकल्प परमाणु क्रमांकावर बीटा विघटनाचा परिणाम योग्यरित्या वर्णन करत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation accurately reflects the original meaning, technical terms are appropriate for Marathi-medium education, and the structure matches the original.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "confuses beta decay with alpha decay",
+        "misunderstands the nature of beta decay",
+        "mistakenly believes the atomic number does not change"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly explains that beta decay involves the conversion of a neutron to a proton, increasing the atomic number by 1. The reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/12/physics/leph205.pdf",
+          "ordinal": 17,
+          "pageStart": 13,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 5: Nuclei",
+            "13.7"
+          ]
+        },
+        {
+          "document": "ncert/12/physics/leph205.pdf",
+          "ordinal": 18,
+          "pageStart": 14,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 5: Nuclei",
+            "13.7"
+          ]
+        },
+        {
+          "document": "ncert/12/physics/leph205.pdf",
+          "ordinal": 19,
+          "pageStart": 15,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 5: Nuclei",
+            "13.7"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T13:00:03.746Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "The mass of a nucleus of an element is less than the sum of the masses of its individual protons and neutrons. What is the reason for this difference?",
+      "choices": [
+        "Energy is released when the nucleus is formed",
+        "The nucleus is in a stable state",
+        "The nucleus is made up of only protons",
+        "The nucleus is not affected by external forces"
+      ],
+      "answerIndex": 0,
+      "solution": "The difference in mass, known as the mass defect, is due to the energy released when the nucleus is formed. According to Einstein's equation, E = mc², this energy comes from the mass of the nucleus. The option 'The nucleus is in a stable state' is a true statement but does not explain the mass difference. The option 'The nucleus is made up of only protons' is incorrect because it contains neutrons as well. The option 'The nucleus is not affected by external forces' is irrelevant to the mass difference.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "किसी तत्व के नाभिक का द्रव्यमान इसके व्यक्तिगत प्रोटॉन और न्यूट्रॉन के द्रव्यमान के योग से कम होता है। इस अंतर का क्या कारण है?",
+          "choices": [
+            "जब नाभिक बनता है तो ऊर्जा निकलती है",
+            "नाभिक एक स्थिर अवस्था में होता है",
+            "नाभिक केवल प्रोटॉन से बना होता है",
+            "नाभिक बाह्य बलों से प्रभावित नहीं होता"
+          ],
+          "solution": "द्रव्यमान में अंतर, जिसे द्रव्यमान दोष कहा जाता है, नाभिक बनाए जाने पर ऊर्जा निकलने के कारण होता है। आइंस्टीन के समीकरण, E = mc² के अनुसार, यह ऊर्जा नाभिक के द्रव्यमान से आती है। 'नाभिक एक स्थिर अवस्था में होता है' वाला विकल्प सही कथन है लेकिन द्रव्यमान अंतर की व्याख्या नहीं करता है। 'नाभिक केवल प्रोटॉन से बना होता है' वाला विकल्प गलत है क्योंकि इसमें न्यूट्रॉन भी होते हैं। 'नाभिक बाह्य बलों से प्रभावित नहीं होता' वाला विकल्प द्रव्यमान अंतर के लिए असंबंधित है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Hindi terminology used for scientific concepts.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एखाद्या घटकाच्या न्यूक्लियसचा द्रव्यमान त्याच्या विभक्त प्रोटॉन आणि न्यूट्रॉनच्या द्रव्यमानाच्या बेरजेपेक्षा कमी असतो. ह्या फरकाचे कारण काय आहे?",
+          "choices": [
+            "न्यूक्लियस तयार होत असताना ऊर्जा बाहेर पडते",
+            "न्यूक्लियस स्थिर अवस्थेत असतो",
+            "न्यूक्लियस केवळ प्रोटॉनांनी बनलेला असतो",
+            "न्यूक्लियस बाह्य बलांपासून प्रभावित होत नाही"
+          ],
+          "solution": "द्रव्यमान विचलन म्हणून ओळखल्या जाणार्या द्रव्यमानाच्या फरकाचे कारण न्यूक्लियस तयार होत असताना ऊर्जा बाहेर पडणे आहे. आइंस्टाईनच्या समीकरणानुसार, E = mc², ही ऊर्जा न्यूक्लियसच्या द्रव्यमानापासून येते. 'न्यूक्लियस स्थिर अवस्थेत असतो' हा विकल्प खरा असला तरी द्रव्यमानाच्या फरकाचे विवरण देत नाही. 'न्यूक्लियस केवळ प्रोटॉनांनी बनलेला असतो' हा विकल्प चूक आहे कारण त्यामध्ये न्यूट्रॉन देखील असतात. 'न्यूक्लियस बाह्य बलांपासून प्रभावित होत नाही' हा विकल्प द्रव्यमानाच्या फरकाशी संबंधित नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for nuclear physics concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "confuses energy release with stability",
+        "incorrectly assumes the nucleus contains only protons",
+        "ignores the effect of external forces"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 0, as the mass defect is due to energy released during nucleus formation, consistent with E=mc². The other options represent common misconceptions or irrelevant statements.",
+      "sources": [
+        {
+          "document": "ncert/12/physics/leph205.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 1,
+          "headingPath": [
+            "Chapter 5: Nuclei",
+            "Chapter Thirteen"
+          ]
+        },
+        {
+          "document": "ncert/12/physics/leph205.pdf",
+          "ordinal": 1,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 5: Nuclei",
+            "13.2"
+          ]
+        },
+        {
+          "document": "ncert/12/physics/leph205.pdf",
+          "ordinal": 2,
+          "pageStart": 2,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 5: Nuclei",
+            "13.2"
+          ]
+        },
+        {
+          "document": "ncert/12/physics/leph205.pdf",
+          "ordinal": 3,
+          "pageStart": 3,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 5: Nuclei",
+            "13.2"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T13:00:03.746Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Why is the binding energy per nucleon higher for medium-mass nuclei compared to light or heavy nuclei?",
+      "choices": [
+        "Because the nuclear force is short-ranged and only affects nearby nucleons",
+        "Because the nuclear force is long-ranged and affects all nucleons",
+        "Because the nuclear force is repulsive for light nuclei and attractive for heavy nuclei",
+        "Because the nuclear force is independent of the number of nucleons"
+      ],
+      "answerIndex": 0,
+      "solution": "The correct option is because the nuclear force is short-ranged and only affects nearby nucleons. This explains why medium-mass nuclei have higher binding energy per nucleon, as the force is effective within a limited range, maximizing stability. The other options are incorrect because the nuclear force is not long-ranged, not repulsive for light nuclei, and not independent of the number of nucleons.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "मध्य-द्रव्यमान नाभिकों के लिए प्रति न्यूक्लियॉन बंधन ऊर्जा लाइट या भारी नाभिकों की तुलना में अधिक क्यों होती है?",
+          "choices": [
+            "क्योंकि नाभिकीय बल अल्प परास वाला होता है और केवल निकटवर्ती न्यूक्लियॉनों पर प्रभाव डालता है",
+            "क्योंकि नाभिकीय बल लंबा परास वाला होता है और सभी न्यूक्लियॉनों पर प्रभाव डालता है",
+            "क्योंकि नाभिकीय बल हल्के नाभिकों के लिए प्रतिकर्षी होता है और भारी नाभिकों के लिए आकर्षी होता है",
+            "क्योंकि नाभिकीय बल न्यूक्लियॉनों की संख्या पर निर्भर नहीं करता"
+          ],
+          "solution": "सही विकल्प यह है कि नाभिकीय बल अल्प परास वाला होता है और केवल निकटवर्ती न्यूक्लियॉनों पर प्रभाव डालता है। इसके कारण मध्य-द्रव्यमान नाभिकों के लिए प्रति न्यूक्लियॉन बंधन ऊर्जा अधिक होती है, क्योंकि बल एक सीमित परास में प्रभावी होता है, जो स्थिरता को अधिकतम करता है। अन्य विकल्प गलत हैं क्योंकि नाभिकीय बल लंबा परास वाला नहीं होता, हल्के नाभिकों के लिए प्रतिकर्षी नहीं होता, और न्यूक्लियॉनों की संख्या पर निर्भर नहीं करता।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate technical terms as found in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "मध्यम-द्रव्यमान न्यूक्लियसच्या प्रति न्यूक्लियन बांधकाम ऊर्जा कमी किंवा भारी न्यूक्लियसच्या तुलनेत जास्त का असते?",
+          "choices": [
+            "कारण न्यूक्लियर बल लहान अंतरावर कार्य करते आणि केवळ जवळच्या न्यूक्लियनशी जुडते",
+            "कारण न्यूक्लियर बल लांब अंतरावर कार्य करते आणि सर्व न्यूक्लियनशी जुडते",
+            "कारण न्यूक्लियर बल हलक्या न्यूक्लियनसाठी प्रतिकर्षक आणि भारी न्यूक्लियनसाठी आकर्षक असते",
+            "कारण न्यूक्लियर बल न्यूक्लियनच्या संख्येवर अवलंबून नसते"
+          ],
+          "solution": "योग्य विकल्प हा आहे कारण न्यूक्लियर बल लहान अंतरावर कार्य करते आणि केवळ जवळच्या न्यूक्लियनशी जुडते. हे मध्यम-द्रव्यमान न्यूक्लियसच्या प्रति न्यूक्लियन बांधकाम ऊर्जेच्या जास्तीच्या व्याख्येचे कारण आहे, कारण बल एका मर्यादित अंतरावर प्रभावी असते, ज्यामुळे स्थिरता वाढते. इतर विकल्प अयोग्य आहेत कारण न्यूक्लियर बल लांब अंतरावर कार्य करत नाही, हलक्या न्यूक्लियनसाठी प्रतिकर्षक नाही आणि न्यूक्लियनच्या संख्येवर अवलंबून नसते.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate technical terminology as used in Marathi textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Incorrectly assumes the nuclear force is long-ranged",
+        "Misunderstands the nature of the nuclear force",
+        "Incorrectly assumes the nuclear force behaves differently for light and heavy nuclei"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 0, as the short-range nature of the nuclear force explains why medium-mass nuclei have higher binding energy per nucleon. The other options reflect common misconceptions about the nuclear force.",
+      "sources": [
+        {
+          "document": "ncert/12/physics/leph205.pdf",
+          "ordinal": 7,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 5: Nuclei",
+            "13.4"
+          ]
+        },
+        {
+          "document": "ncert/12/physics/leph205.pdf",
+          "ordinal": 8,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 5: Nuclei",
+            "13.4"
+          ]
+        },
+        {
+          "document": "ncert/12/physics/leph205.pdf",
+          "ordinal": 9,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 5: Nuclei",
+            "13.4"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T13:00:03.746Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
     }
   ]
 }

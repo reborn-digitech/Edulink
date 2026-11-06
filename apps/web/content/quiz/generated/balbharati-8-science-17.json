@@ -220,6 +220,1637 @@
       "generatedAt": "2026-11-02T12:34:07.492Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "Why are plastic tanks used for storage of chemicals?",
+      "choices": [
+        "Because they are lightweight",
+        "Because they are non-corrosive",
+        "Because they are easily available",
+        "Because they are cheap"
+      ],
+      "answerIndex": 1,
+      "solution": "Plastic is non-corrosive, which means it does not react with chemicals. This makes it suitable for storing chemicals. While plastic is lightweight and cheap, the main reason for its use in chemical storage is its non-corrosive nature. Easily available is not the primary reason.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "रासायनिक पदार्थों के भंडारण के लिए प्लास्टिक के टैंक क्यों उपयोग किए जाते हैं?",
+          "choices": [
+            "क्योंकि वे हल्के होते हैं",
+            "क्योंकि वे अम्लीय नहीं होते हैं",
+            "क्योंकि वे आसानी से उपलब्ध होते हैं",
+            "क्योंकि वे सस्ते होते हैं"
+          ],
+          "solution": "प्लास्टिक अम्लीय नहीं होता, जिसका अर्थ है कि यह रासायनिक पदार्थों के साथ अभिक्रिया नहीं करता। इसके कारण यह रासायनिक पदार्थों के भंडारण के लिए उपयुक्त होता है। यद्यपि प्लास्टिक हल्का और सस्ता होता है, लेकिन रासायनिक भंडारण में इसके उपयोग का मुख्य कारण इसकी अम्लीय न होने की विशेषता है। आसानी से उपलब्ध होना मुख्य कारण नहीं है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English original in meaning, with appropriate technical terms like 'अम्लीय नहीं' (non-acidic) used instead of transliterated terms. The correct answer remains in the same position (option 1). All distractors remain incorrect in the Hindi version.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "रसायनांच्या भंडारणासाठी प्लास्टिकच्या टॅंकचा वापर का केला जातो?",
+          "choices": [
+            "कारण ते हलके असतात",
+            "कारण ते अक्षयोद्भवी असतात",
+            "कारण ते सहज उपलब्ध असतात",
+            "कारण ते स्वस्त असतात"
+          ],
+          "solution": "प्लास्टिक अक्षयोद्भवी असते, जे अर्थात ते रसायनांशी प्रतिक्रिया करत नाही. हे रसायनांच्या भंडारणासाठी योग्य बनवते. प्लास्टिक हलके आणि स्वस्त असल्याने, त्याचा वापर रसायनांच्या भंडारणासाठी करतात. सहज उपलब्ध असणे हे मुख्य कारण नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi technical terms used.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Focuses on the lightness of plastic",
+        null,
+        "Focuses on the cost and availability of plastic",
+        "Focuses on the cost and availability of plastic"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 1, as plastic's non-corrosive nature is the primary reason for its use in chemical storage. The other options, while possibly true, are not the main reason. The author's reasoning for the distractors is valid and reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 149,
+          "pageStart": 126,
+          "pageEnd": 126,
+          "headingPath": [
+            "17. Man made Materials"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 150,
+          "pageStart": 126,
+          "pageEnd": 127,
+          "headingPath": [
+            "17. Man made Materials",
+            "Wooden chair Wood Comb Plastic"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 151,
+          "pageStart": 127,
+          "pageEnd": 128,
+          "headingPath": [
+            "17. Man made Materials",
+            "Wooden chair Wood Comb Plastic"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 152,
+          "pageStart": 128,
+          "pageEnd": 129,
+          "headingPath": [
+            "17. Man made Materials",
+            "Wooden chair Wood Comb Plastic"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-29T21:38:27.682Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "Which of the following is an example of a degradable material?",
+      "choices": [
+        "Polyethylene",
+        "Thermocol",
+        "PVC",
+        "Jute"
+      ],
+      "answerIndex": 3,
+      "solution": "Jute is a natural material that can be easily degraded in the environment. Polyethylene, Thermocol, and PVC are non-degradable plastics. Hence, the correct answer is Jute.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा विघटनीय पदार्थ का उदाहरण है?",
+          "choices": [
+            "पॉलीथीन",
+            "थर्मोकॉल",
+            "पीवीसी",
+            "जूट"
+          ],
+          "solution": "जूट एक प्राकृतिक पदार्थ है जो पर्यावरण में आसानी से विघटित हो जाता है। पॉलीथीन, थर्मोकॉल और पीवीसी अविघटनीय प्लास्टिक हैं। अतः सही उत्तर जूट है।",
+          "imageAlt": null,
+          "critique": "All terms are standard in Hindi science textbooks. 'जूट' is the correct term for 'jute', and 'विघटनीय' is the standard term for 'degradable'.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते एक विघटनीय सामग्रीचे उदाहरण आहे?",
+          "choices": [
+            "पॉलिएथिलीन",
+            "थर्मोकॉल",
+            "PVC",
+            "जूत"
+          ],
+          "solution": "जूत ही प्राकृतिक सामग्री आहे जी पर्यावरणात सहज विघटित होऊ शकते. पॉलिएथिलीन, थर्मोकॉल आणि PVC ही अविघटनीय प्लास्टिक आहेत. म्हणूनच, योग्य उत्तर जूत आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms. The correct answer remains in the same position (option 4). All distractors are still incorrect in Marathi.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "It is a type of plastic, which is non-degradable",
+        "It is a type of plastic, which is non-degradable",
+        "It is a type of plastic, which is non-degradable",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct. Jute is a natural, biodegradable material, while polyethylene, thermocol, and PVC are synthetic plastics that are not easily degraded.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 149,
+          "pageStart": 126,
+          "pageEnd": 126,
+          "headingPath": [
+            "17. Man made Materials"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 150,
+          "pageStart": 126,
+          "pageEnd": 127,
+          "headingPath": [
+            "17. Man made Materials",
+            "Wooden chair Wood Comb Plastic"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 151,
+          "pageStart": 127,
+          "pageEnd": 128,
+          "headingPath": [
+            "17. Man made Materials",
+            "Wooden chair Wood Comb Plastic"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 152,
+          "pageStart": 128,
+          "pageEnd": 129,
+          "headingPath": [
+            "17. Man made Materials",
+            "Wooden chair Wood Comb Plastic"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-29T21:38:27.682Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "Which of the following is a thermoplastic?",
+      "choices": [
+        "Bakelite",
+        "PVC",
+        "Melamine",
+        "Epoxy resin"
+      ],
+      "answerIndex": 1,
+      "solution": "PVC is a thermoplastic, which means it can be softened and reshaped when heated. A pupil who confuses thermoplastics with thermosetting plastics might choose the wrong option. Bakelite, melamine, and epoxy resin are thermosetting plastics, which do not soften when heated.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन एक थर्मोप्लास्टिक है?",
+          "choices": [
+            "बैकेलाइट",
+            "पीवीसी",
+            "मेलामिन",
+            "एपॉक्सी रेजिन"
+          ],
+          "solution": "पीवीसी एक थर्मोप्लास्टिक है, जिसका अर्थ है कि जब इसे गर्म किया जाता है तो इसे नरम करके फिर से आकार दिया जा सकता है। एक छात्र जो थर्मोप्लास्टिक को थर्मोसेटिंग प्लास्टिक से गलती से जानता है, गलत विकल्प चुन सकता है। बैकेलाइट, मेलामिन और एपॉक्सी रेजिन थर्मोसेटिंग प्लास्टिक हैं, जो गर्म करने पर नरम नहीं होते।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, with proper use of Hindi technical terms for plastics. The structure and meaning match the original English question.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते एक थर्मोप्लास्टिक आहे?",
+          "choices": [
+            "बॅकेलाइट",
+            "पीव्हीसी",
+            "मेलामाइन",
+            "इपॉक्सी रेजिन"
+          ],
+          "solution": "पीव्हीसी हे थर्मोप्लास्टिक आहे, जे उष्णता दिल्यास मऊ होऊन पुन्हा आकार देता येतो. एखादा विद्यार्थी थर्मोप्लास्टिक आणि थर्मोसेटिंग प्लास्टिक यांच्यात चूक करू शकतो आणि चुकीचा विकल्प निवडू शकतो. बॅकेलाइट, मेलामाइन आणि इपॉक्सी रेजिन हे थर्मोसेटिंग प्लास्टिक आहेत, जे उष्णता दिल्यास मऊ होत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms for plastics.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "confuses bakelite with thermoplastic",
+        null,
+        "confuses melamine with thermoplastic",
+        "confuses epoxy resin with thermoplastic"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct. PVC is a thermoplastic, while Bakelite, melamine, and epoxy resin are thermosetting plastics. The author's reasoning for the distractors is valid, as students often confuse the two types of plastics.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 153,
+          "pageStart": 129,
+          "pageEnd": 129,
+          "headingPath": [
+            "17. Man made Materials",
+            "Wooden chair Wood Comb Plastic"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 154,
+          "pageStart": 129,
+          "pageEnd": 130,
+          "headingPath": [
+            "17. Man made Materials",
+            "Wooden chair Wood Comb Plastic"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 155,
+          "pageStart": 130,
+          "pageEnd": 131,
+          "headingPath": [
+            "17. Man made Materials",
+            "Exercises"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-29T21:38:27.682Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Why is glass considered non-degradable?",
+      "choices": [
+        "It does not dissolve in water",
+        "It is very hard",
+        "It does not break down naturally",
+        "It is transparent"
+      ],
+      "answerIndex": 2,
+      "solution": "Glass is considered non-degradable because it does not break down naturally over time. A pupil who thinks it is because it does not dissolve in water might choose the wrong option. It is hard, but that is not the reason for non-degradability. Transparency also has no connection to it.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "कांच को अपशिष्ट नहीं माना जाता क्यों?",
+          "choices": [
+            "यह पानी में घुल जाता है",
+            "यह बहुत कठोर होता है",
+            "यह प्राकृतिक रूप से टूट नहीं जाता",
+            "यह पारदर्शी होता है"
+          ],
+          "solution": "कांच को अपशिष्ट नहीं माना जाता क्योंकि यह समय के साथ प्राकृतिक रूप से टूट नहीं जाता। एक छात्र जो यह सोचता है कि यह पानी में घुल जाता है तो गलत विकल्प चुन सकता है। यह कठोर होता है, लेकिन यह अपशिष्ट न होने का कारण नहीं है। पारदर्शिता का इससे कोई संबंध नहीं है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriate for Hindi-medium curriculum.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "काच अघटनीय मानली जाते कारण काय?",
+          "choices": [
+            "ती पाण्यात विरघळत नाही",
+            "ती खूप कठीण असते",
+            "ती प्राकृतिकरित्या विघटित होत नाही",
+            "ती पारदर्शक असते"
+          ],
+          "solution": "काच अघटनीय मानली जाते कारण ती समयाच्या आधारे प्राकृतिकरित्या विघटित होत नाही. एखादा विद्यार्थी जर ती पाण्यात विरघळत नसल्यामुळे असे मानत असेल तर तो चूक करेल. ती कठीण असते, परंतु ते अघटनीयतेचे कारण नाही. पारदर्शकता देखील त्याशी संबंधित नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "thinks it does not dissolve in water",
+        "thinks it is hard",
+        null,
+        "thinks it is transparent"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 2, as glass is non-degradable because it does not break down naturally. The other options represent common misconceptions about the properties of glass.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 153,
+          "pageStart": 129,
+          "pageEnd": 129,
+          "headingPath": [
+            "17. Man made Materials",
+            "Wooden chair Wood Comb Plastic"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 154,
+          "pageStart": 129,
+          "pageEnd": 130,
+          "headingPath": [
+            "17. Man made Materials",
+            "Wooden chair Wood Comb Plastic"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 155,
+          "pageStart": 130,
+          "pageEnd": 131,
+          "headingPath": [
+            "17. Man made Materials",
+            "Exercises"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-29T21:38:27.682Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of the following is a property of plastic?",
+      "choices": [
+        "It is a good conductor of heat",
+        "It decomposes easily in the environment",
+        "It can be molded into any shape",
+        "It is heavy in weight"
+      ],
+      "answerIndex": 2,
+      "solution": "Plastic can be molded into any shape because it is malleable when heated, which is a key property of plastics. It is not a good conductor of heat, as it insulates well; it does not decompose easily, as it is resistant to natural breakdown; and it is not heavy, as it is generally lightweight compared to materials like metal or glass.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा प्लास्टिक का गुण है?",
+          "choices": [
+            "यह ऊष्मा का अच्छा चालक है",
+            "यह पर्यावरण में आसानी से अपघटित हो जाता है",
+            "इसे किसी भी आकृति में ढाला जा सकता है",
+            "इसका वजन भारी होता है"
+          ],
+          "solution": "प्लास्टिक को गर्म करने पर ढाला जा सकता है, जो प्लास्टिक का मुख्य गुण है। यह ऊष्मा का अच्छा चालक नहीं है, क्योंकि यह अच्छी तरह से ऊष्मा का रोध करता है; यह पर्यावरण में आसानी से अपघटित नहीं होता, क्योंकि यह प्राकृतिक अपघटन के प्रति प्रतिरोधी होता है; और यह भारी नहीं होता, क्योंकि यह धातु या कांच की तुलना में आमतौर पर हल्का होता है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate technical terms as used in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते प्लास्टिकचे गुणधर्म आहे?",
+          "choices": [
+            "ते उष्णतेचे चांगले वाहक आहे",
+            "ते पर्यावरणात सहज विघटित होते",
+            "ते कोणत्याही आकृतीत ढासळू शकते",
+            "ते वजनाने भारी असते"
+          ],
+          "solution": "प्लास्टिक कोणत्याही आकृतीत ढासळू शकते कारण ते उबवल्यावर चक्कर घालते, हे प्लास्टिकचे मुख्य गुणधर्म आहे. ते उष्णतेचे चांगले वाहक नाही, कारण ते चांगले अवाहक असते; ते पर्यावरणात सहज विघटित होत नाही, कारण ते प्राकृतिक विघटनास प्रतिरोधक असते; आणि ते वजनाने भारी नसते, कारण ते धातू किंवा काचेच्या तुलनेत सामान्यतः हलके असते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses plastic with metals",
+        "Misunderstands the concept of biodegradability",
+        null,
+        "Students often confuse plastic with heavier materials like metal or glass"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 2, as plastic is indeed moldable. The author's reasoning for the other options aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 149,
+          "pageStart": 126,
+          "pageEnd": 126,
+          "headingPath": [
+            "17. Man made Materials"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 150,
+          "pageStart": 126,
+          "pageEnd": 127,
+          "headingPath": [
+            "17. Man made Materials",
+            "Wooden chair Wood Comb Plastic"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 151,
+          "pageStart": 127,
+          "pageEnd": 128,
+          "headingPath": [
+            "17. Man made Materials",
+            "Wooden chair Wood Comb Plastic"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 152,
+          "pageStart": 128,
+          "pageEnd": 129,
+          "headingPath": [
+            "17. Man made Materials",
+            "Wooden chair Wood Comb Plastic"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-22T08:15:05.507Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which property of plastic allows it to be moulded into any shape?",
+      "choices": [
+        "Hardness",
+        "Brittleness",
+        "Malleability",
+        "Plasticity"
+      ],
+      "answerIndex": 3,
+      "solution": "Plastic can be moulded into any shape because it is plastic. The correct answer is 'Plasticity'. Malleability refers to the ability to be hammered into shapes, which is a property of metals. Hardness and brittleness are not related to shaping plastic.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "प्लास्टिक के किस गुण के कारण इसे किसी भी आकृति में ढाला जा सकता है?",
+          "choices": [
+            "कठोरता",
+            "भंगुरता",
+            "आघातवर्ध्यता",
+            "प्लास्टिकता"
+          ],
+          "solution": "प्लास्टिक को किसी भी आकृति में ढाला जा सकता है क्योंकि यह प्लास्टिक है। सही उत्तर 'प्लास्टिकता' है। आघातवर्ध्यता धातुओं के ढालने की क्षमता के लिए होती है। कठोरता और भंगुरता प्लास्टिक के आकृति बनाने से संबंधित नहीं हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English question and solution, with appropriate technical terms used in a Hindi-medium educational context.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "प्लास्टिकच्या कोणत्या गुणधर्मामुळे त्याला कोणत्याही आकृतीत बनवता येते?",
+          "choices": [
+            "कठोरता",
+            "भंगुरता",
+            "कुंचितता",
+            "प्लास्टिकता"
+          ],
+          "solution": "प्लास्टिकला कोणत्याही आकृतीत बनवता येते कारण ते प्लास्टिक आहे. योग्य उत्तर 'प्लास्टिकता' आहे. कुंचितता हा धातूंचा गुणधर्म आहे जो त्यांना आकृतीत बनवण्याची क्षमता दर्शवते. कठोरता आणि भंगुरता प्लास्टिकच्या आकृतीत बनवण्याशी संबंधित नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, with appropriate Marathi technical terms used. 'कुंचितता' (malleability) and 'प्लास्टिकता' (plasticity) are correctly used as per Marathi science terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses plasticity with malleability",
+        "Confuses plasticity with hardness",
+        "Confuses plasticity with brittleness",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct, as plasticity refers to the ability to be shaped or moulded, which matches the question. The explanation correctly distinguishes plasticity from malleability, hardness, and brittleness.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 153,
+          "pageStart": 129,
+          "pageEnd": 129,
+          "headingPath": [
+            "17. Man made Materials",
+            "Wooden chair Wood Comb Plastic"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 154,
+          "pageStart": 129,
+          "pageEnd": 130,
+          "headingPath": [
+            "17. Man made Materials",
+            "Wooden chair Wood Comb Plastic"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 155,
+          "pageStart": 130,
+          "pageEnd": 131,
+          "headingPath": [
+            "17. Man made Materials",
+            "Exercises"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-22T08:15:05.507Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the main reason for the use of borosilicate glass in medicine bottles?",
+      "choices": [
+        "It is very transparent",
+        "It is not affected by acid and alkali",
+        "It is very strong",
+        "It is very light"
+      ],
+      "answerIndex": 1,
+      "solution": "Borosilicate glass is used in medicine bottles because it is not affected by acid and alkali. This makes it suitable for storing medicines. Transparency, strength, and lightness are not the primary reasons for its use in this context.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "औषधि के बोतलों में बोरोसिलिकेट कांच के उपयोग का मुख्य कारण क्या है?",
+          "choices": [
+            "यह बहुत भारी होता है",
+            "यह अम्ल एवं क्षार से प्रभावित नहीं होता है",
+            "यह बहुत मजबूत होता है",
+            "यह बहुत हल्का होता है"
+          ],
+          "solution": "बोरोसिलिकेट कांच का उपयोग औषधि के बोतलों में इसलिए किया जाता है क्योंकि यह अम्ल एवं क्षार से प्रभावित नहीं होता है। इससे यह औषधि के भंडारण के लिए उपयुक्त होता है। पारदर्शिता, मजबूती और हल्कापन इसके इस संदर्भ में उपयोग के प्रमुख कारण नहीं हैं।",
+          "imageAlt": null,
+          "critique": "Option (1) in Hindi is incorrectly translated as 'It is very heavy' instead of 'It is very transparent'. This changes the meaning and makes the answer incorrect.",
+          "flag": "translation critique: not one answer at the same position"
+        },
+        "mr": {
+          "stem": "औषधी बाटल्या मध्ये बोरोसिलिकेट काच वापरण्याचा मुख्य कारण काय आहे?",
+          "choices": [
+            "ती खूप अस्पष्ट आहे",
+            "ती अम्ल आणि क्षाराने प्रभावित होत नाही",
+            "ती खूप मजबूत आहे",
+            "ती खूप हलकी आहे"
+          ],
+          "solution": "बोरोसिलिकेट काच औषधी बाटल्यांमध्ये वापरली जाते कारण ती अम्ल आणि क्षाराने प्रभावित होत नाही. हे औषधांच्या जतनासाठी योग्य बनवते. पारदर्शकता, मजबूती आणि हलकेपणा हे या वापरासाठी प्राथमिक कारण नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, with appropriate Marathi terminology for scientific concepts. The meaning, options, and solution align perfectly with the English version.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses transparency with chemical resistance",
+        null,
+        "Confuses strength with chemical resistance",
+        "Confuses lightness with chemical resistance"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 1, as borosilicate glass is valued for its chemical resistance, not transparency, strength, or lightness. The author's reasoning aligns with the scientific properties of the material.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 153,
+          "pageStart": 129,
+          "pageEnd": 129,
+          "headingPath": [
+            "17. Man made Materials",
+            "Wooden chair Wood Comb Plastic"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 154,
+          "pageStart": 129,
+          "pageEnd": 130,
+          "headingPath": [
+            "17. Man made Materials",
+            "Wooden chair Wood Comb Plastic"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 155,
+          "pageStart": 130,
+          "pageEnd": 131,
+          "headingPath": [
+            "17. Man made Materials",
+            "Exercises"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-22T08:15:05.507Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which type of glass is used in vehicles to avoid injuries in accidents?",
+      "choices": [
+        "Optic glass",
+        "Lead glass",
+        "Reinforced glass",
+        "Coloured glass"
+      ],
+      "answerIndex": 2,
+      "solution": "Reinforced glass is used in vehicles to avoid injuries in accidents. It is designed to be stronger and more resistant to breaking. Optic glass is used for lenses, lead glass for bulbs, and coloured glass for aesthetics.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "किस प्रकार के शीशे का उपयोग दुर्घटनाओं में चोटों से बचने के लिए वाहनों में किया जाता है?",
+          "choices": [
+            "प्रकाशिक शीशा",
+            "लेड शीशा",
+            "प्रबलित शीशा",
+            "रंगीन शीशा"
+          ],
+          "solution": "दुर्घटनाओं में चोटों से बचने के लिए वाहनों में प्रबलित शीशा का उपयोग किया जाता है। इसे अधिक मजबूत और टूटने से अधिक प्रतिरोधी बनाया गया है। प्रकाशिक शीशा लेंस के लिए उपयोग किया जाता है, लेड शीशा बल्ब के लिए और रंगीन शीशा सजावट के लिए।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi technical terms.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "वाहनांमध्ये अपघातांमध्ये जखमी होणे टाळण्यासाठी कोणत्या प्रकारचे काच वापरले जाते?",
+          "choices": [
+            "ऑप्टिक काच",
+            "लेड काच",
+            "पुष्टीकृत काच",
+            "रंगीत काच"
+          ],
+          "solution": "वाहनांमध्ये अपघातांमध्ये जखमी होणे टाळण्यासाठी पुष्टीकृत काच वापरली जाते. ती जास्त शक्तिशाली आणि तुटण्यास प्रतिरोधक असते. ऑप्टिक काच लेंसांसाठी वापरली जाते, लेड काच बल्बसाठी आणि रंगीत काच सजावटीसाठी.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses optic glass with reinforced glass",
+        "Confuses lead glass with reinforced glass",
+        null,
+        "Confuses coloured glass with reinforced glass"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is reinforced glass, which is used in vehicles for safety. The author's solution is accurate, and the reasons for the wrong options align with common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 153,
+          "pageStart": 129,
+          "pageEnd": 129,
+          "headingPath": [
+            "17. Man made Materials",
+            "Wooden chair Wood Comb Plastic"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 154,
+          "pageStart": 129,
+          "pageEnd": 130,
+          "headingPath": [
+            "17. Man made Materials",
+            "Wooden chair Wood Comb Plastic"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 155,
+          "pageStart": 130,
+          "pageEnd": 131,
+          "headingPath": [
+            "17. Man made Materials",
+            "Exercises"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-22T08:15:05.507Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "Which type of plastic can be remolded after being shaped?",
+      "choices": [
+        "Thermosetting plastic",
+        "Bakelite",
+        "Melamine",
+        "Thermoplastic"
+      ],
+      "answerIndex": 3,
+      "solution": "Thermoplastic can be remolded when heated because its molecular structure allows it to soften and change shape. Thermosetting plastic, bakelite, and melamine have a rigid structure that does not allow them to be remolded once formed.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "किस प्लास्टिक के पुनः आकार देने की क्षमता होती है जब इसे आकार दे दिया जाता है?",
+          "choices": [
+            "थर्मोसेटिंग प्लास्टिक",
+            "बैकेलाइट",
+            "मेलामाइन",
+            "थर्मोप्लास्टिक"
+          ],
+          "solution": "थर्मोप्लास्टिक के गर्म करने पर पुनः आकार देने की क्षमता होती है क्योंकि इसकी अणु संरचना इसे नरम होकर आकार बदलने की अनुमति देती है। थर्मोसेटिंग प्लास्टिक, बैकेलाइट और मेलामाइन की एक कठोर संरचना होती है जो इन्हें बनाए जाने के बाद पुनः आकार नहीं देने देती है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the technical terminology used in Hindi science textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "कोणत्या प्रकारच्या प्लास्टिकचे आकृती देऊन पुन्हा बदलता येऊ शकते?",
+          "choices": [
+            "थर्मोसेटिंग प्लास्टिक",
+            "बॅकेलाइट",
+            "मेलामाइन",
+            "थर्मोप्लास्टिक"
+          ],
+          "solution": "थर्मोप्लास्टिक गरम केल्यास पुन्हा बदलता येते कारण त्याची अणू संरचना त्याला नरम होऊ देते आणि आकृती बदलते. थर्मोसेटिंग प्लास्टिक, बॅकेलाइट आणि मेलामाइन अशी अणू संरचना असते जी त्यांना एकदा बनल्यानंतर पुन्हा बदलता येण्यास अनुमती देत नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate technical terms as used in Marathi science textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses thermosetting plastic with thermoplastic",
+        "Confuses the names of thermosetting plastics like bakelite and melamine with thermoplastic",
+        "Confuses the names of thermosetting plastics like bakelite and melamine with thermoplastic",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": null,
+      "critique": "The question is clear and the solution correctly identifies thermoplastic as the correct answer. The reasoning for the distractors is valid and reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 149,
+          "pageStart": 126,
+          "pageEnd": 126,
+          "headingPath": [
+            "17. Man made Materials"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 150,
+          "pageStart": 126,
+          "pageEnd": 127,
+          "headingPath": [
+            "17. Man made Materials",
+            "Wooden chair Wood Comb Plastic"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 151,
+          "pageStart": 127,
+          "pageEnd": 128,
+          "headingPath": [
+            "17. Man made Materials",
+            "Wooden chair Wood Comb Plastic"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 152,
+          "pageStart": 128,
+          "pageEnd": 129,
+          "headingPath": [
+            "17. Man made Materials",
+            "Wooden chair Wood Comb Plastic"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-22T08:15:05.507Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "Why are plastic tanks used for storing chemicals?",
+      "choices": [
+        "Because they are heavy",
+        "Because they are non-corrosive",
+        "Because they are easily biodegradable",
+        "Because they are conductive"
+      ],
+      "answerIndex": 1,
+      "solution": "Plastic tanks are non-corrosive, which prevents them from reacting with chemicals and getting damaged. They are not heavy, so they are not chosen for that reason. They are not easily biodegradable, which would make them unsuitable for long-term storage. They are also not conductive, which is not a factor in their use for storing chemicals.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "रासायनिक पदार्थों के भंडारण के लिए प्लास्टिक के टैंक क्यों उपयोग किए जाते हैं?",
+          "choices": [
+            "क्योंकि वे भारी होते हैं",
+            "क्योंकि वे अम्ल-क्षरण-रहित होते हैं",
+            "क्योंकि वे आसानी से जैव-अपघटनीय होते हैं",
+            "क्योंकि वे विद्युत-सुचालक होते हैं"
+          ],
+          "solution": "प्लास्टिक के टैंक अम्ल-क्षरण-रहित होते हैं, जो उन्हें रासायनिक पदार्थों के साथ प्रतिक्रिया करने से रोकता है और उन्हें नुकसान पहुंचाने से बचाता है। वे भारी नहीं होते, इसलिए इस कारण से उनका चयन नहीं किया जाता है। वे आसानी से जैव-अपघटनीय नहीं होते, जो लंबे समय तक भंडारण के लिए अनुपयुक्त बना देता है। वे विद्युत-सुचालक भी नहीं होते, जो रासायनिक पदार्थों के भंडारण के लिए उनके उपयोग के लिए एक कारण नहीं है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the original English question and solution, with appropriate technical terms used in a Hindi-medium context.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "रसायनांच्या भंडारणासाठी प्लॅस्टिकच्या टॅंकचा वापर का केला जातो?",
+          "choices": [
+            "कारण ते भारी असतात",
+            "कारण ते अक्षय असतात",
+            "कारण ते सहज जैव विघटन होऊ शकतात",
+            "कारण ते वाहक असतात"
+          ],
+          "solution": "प्लॅस्टिकच्या टॅंक अक्षय असतात, जे त्यांना रसायनांसोबत प्रतिक्रिया करू नका आणि नुकसान होऊ नका. ते भारी नसतात, म्हणून त्यांचा त्या कारणासाठी निवड केला जात नाही. ते सहज जैव विघटन होऊ शकत नाहीत, जे त्यांना लांब वेळासाठी भंडारणासाठी अयोग्य बनवते. ते वाहक देखील नसतात, जे रसायनांच्या भंडारणासाठी त्यांच्या वापराचा एक मुद्दा नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi technical terms used.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the property of plastic with weight",
+        null,
+        "Confuses the property of biodegradability with storage suitability",
+        "Confuses the property of conductivity with non-conductivity"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 1, as plastics are non-corrosive and suitable for storing chemicals. The other options reflect common misconceptions about plastic properties.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 149,
+          "pageStart": 126,
+          "pageEnd": 126,
+          "headingPath": [
+            "17. Man made Materials"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 150,
+          "pageStart": 126,
+          "pageEnd": 127,
+          "headingPath": [
+            "17. Man made Materials",
+            "Wooden chair Wood Comb Plastic"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 151,
+          "pageStart": 127,
+          "pageEnd": 128,
+          "headingPath": [
+            "17. Man made Materials",
+            "Wooden chair Wood Comb Plastic"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 152,
+          "pageStart": 128,
+          "pageEnd": 129,
+          "headingPath": [
+            "17. Man made Materials",
+            "Wooden chair Wood Comb Plastic"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-22T08:15:05.507Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which type of plastic can be reshaped when heated?",
+      "choices": [
+        "Thermosetting plastic",
+        "Bakelite",
+        "Melamine",
+        "Thermoplastic"
+      ],
+      "answerIndex": 3,
+      "solution": "Thermoplastics can be reshaped when heated because their molecular structure allows them to soften and reform. Thermosetting plastics, bakelite, and melamine have a rigid, cross-linked structure that does not allow them to be reshaped once formed.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "कौन-सा प्लास्टिक गर्म करने पर पुनः आकार दिया जा सकता है?",
+          "choices": [
+            "थर्मोसेटिंग प्लास्टिक",
+            "बैकेलाइट",
+            "मेलामीन",
+            "थर्मोप्लास्टिक"
+          ],
+          "solution": "थर्मोप्लास्टिक को गर्म करने पर पुनः आकार दिया जा सकता है क्योंकि इनकी आणविक संरचना इसकी अनुमति देती है कि ये नरम होकर पुनः आकार ले सकें। थर्मोसेटिंग प्लास्टिक, बैकेलाइट और मेलामीन की एक कठोर, क्रॉस-लिंक्ड संरचना होती है जो इन्हें बनाए जाने के बाद पुनः आकार नहीं दे सकती।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English content, with appropriate technical terms used as in Indian curriculum.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "कोणत्या प्रकारच्या प्लास्टिकचे उष्णतेने पुन्हा आकार देता येतो?",
+          "choices": [
+            "थर्मोसेटिंग प्लास्टिक",
+            "बॅकेलाइट",
+            "मेलामीन",
+            "थर्मोप्लास्टिक"
+          ],
+          "solution": "थर्मोप्लास्टिकचे उष्णतेने पुन्हा आकार देता येतो कारण त्यांची अणू संरचना तापल्याने नरम होऊन पुन्हा आकार देण्यास परवानगी देते. थर्मोसेटिंग प्लास्टिक, बॅकेलाइट आणि मेलामीन यांची अणू संरचना अतिशय कठीण आहे आणि त्यांचा आकार बनल्यानंतर बदलत नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Marathi technical terms for plastics.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses thermosetting with thermoplastic",
+        "Confuses the name of a type of plastic with its property",
+        "Confuses the name of a type of plastic with its property', ",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is thermoplastic, as it can be reshaped when heated. The author's solution is accurate, and the reasons for the wrong options reflect common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 149,
+          "pageStart": 126,
+          "pageEnd": 126,
+          "headingPath": [
+            "17. Man made Materials"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 150,
+          "pageStart": 126,
+          "pageEnd": 127,
+          "headingPath": [
+            "17. Man made Materials",
+            "Wooden chair Wood Comb Plastic"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 151,
+          "pageStart": 127,
+          "pageEnd": 128,
+          "headingPath": [
+            "17. Man made Materials",
+            "Wooden chair Wood Comb Plastic"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 152,
+          "pageStart": 128,
+          "pageEnd": 129,
+          "headingPath": [
+            "17. Man made Materials",
+            "Wooden chair Wood Comb Plastic"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-19T10:36:45.841Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which type of glass is used to store medicines?",
+      "choices": [
+        "Soda-lime glass",
+        "Borosilicate glass",
+        "Lead glass",
+        "Optical glass"
+      ],
+      "answerIndex": 1,
+      "solution": "Borosilicate glass is used to store medicines because it does not react with them. The other options are used for different purposes. The question asks for the type used for storing medicines, and the correct answer is borosilicate glass.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "किस प्रकार के कांच का उपयोग दवाओं के भंडारण के लिए किया जाता है?",
+          "choices": [
+            "सोडा-लाइम कांच",
+            "बोरोसिलिकेट कांच",
+            "लेड कांच",
+            "ऑप्टिकल कांच"
+          ],
+          "solution": "बोरोसिलिकेट कांच का उपयोग दवाओं के भंडारण के लिए किया जाता है क्योंकि यह उनसे अभिक्रिया नहीं करता। अन्य विकल्पों का उपयोग अलग-अलग उद्देश्यों के लिए किया जाता है। प्रश्न दवाओं के भंडारण के लिए उपयोग किए जाने वाले प्रकार के कांच के बारे में पूछता है और सही उत्तर बोरोसिलिकेट कांच है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard technical terms as found in Hindi-medium science textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "औषधे जमा करण्यासाठी कोणत्या प्रकारचे काच वापरले जाते?",
+          "choices": [
+            "सोडा-लाइम काच",
+            "बोरोसिलिकेट काच",
+            "लेड काच",
+            "ऑप्टिकल काच"
+          ],
+          "solution": "औषधे जमा करण्यासाठी बोरोसिलिकेट काच वापरली जाते कारण ती त्यांच्याशी प्रतिक्रिया दर्शवत नाही. इतर विकल्पांचा वापर वेगवेगळ्या उद्देशांसाठी केला जातो. प्रश्नामध्ये औषधे जमा करण्यासाठी वापरल्या जाणार्‍या प्रकाराचा विचार केला गेला आहे आणि योग्य उत्तर बोरोसिलिकेट काच आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate technical terms as used in Marathi textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses borosilicate glass with soda-lime glass",
+        null,
+        "Confuses borosilicate glass with lead glass",
+        "Confuses borosilicate glass with optical glass"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct. Borosilicate glass is indeed used for storing medicines due to its chemical resistance. The reasoning for the other options is valid as they are used for different purposes.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 153,
+          "pageStart": 129,
+          "pageEnd": 129,
+          "headingPath": [
+            "17. Man made Materials",
+            "Wooden chair Wood Comb Plastic"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 154,
+          "pageStart": 129,
+          "pageEnd": 130,
+          "headingPath": [
+            "17. Man made Materials",
+            "Wooden chair Wood Comb Plastic"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 155,
+          "pageStart": 130,
+          "pageEnd": 131,
+          "headingPath": [
+            "17. Man made Materials",
+            "Exercises"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-19T10:36:45.841Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "Which of the following is a thermosetting plastic?",
+      "choices": [
+        "Polyethylene",
+        "Polyvinyl chloride",
+        "Polypropylene",
+        "Bakelite"
+      ],
+      "answerIndex": 3,
+      "solution": "Bakelite is a thermosetting plastic because it undergoes a chemical change when heated and cannot be remolded. Polyethylene, polyvinyl chloride, and polypropylene are thermoplastics that soften and can be reshaped when heated.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन एक थर्मोसेटिंग प्लास्टिक है?",
+          "choices": [
+            "पॉलीथीन",
+            "पॉलीविनाइल क्लोराइड",
+            "पॉलीप्रोपाइलीन",
+            "बैकेलाइट"
+          ],
+          "solution": "बैकेलाइट एक थर्मोसेटिंग प्लास्टिक है क्योंकि यह गर्म करने पर रासायनिक परिवर्तन गुजरता है और पुनः आकार दिया नहीं जा सकता। पॉलीथीन, पॉलीविनाइल क्लोराइड और पॉलीप्रोपाइलीन थर्मोप्लास्टिक हैं जो गर्म करने पर नरम हो जाते हैं और पुनः आकार दिया जा सकता है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, technical terms are correctly used in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणता एक उष्मास्थैतिक प्लास्टिक आहे?",
+          "choices": [
+            "पॉलिएथिलीन",
+            "पॉलिव्हिनिल क्लोराइड",
+            "पॉलिप्रोपाइलीन",
+            "बॅकेलाइट"
+          ],
+          "solution": "बॅकेलाइट हा उष्मास्थैतिक प्लास्टिक आहे कारण तो उष्मा घेतल्यास रासायनिक बदल घेतो आणि पुन्हा आकार देता येत नाही. पॉलिएथिलीन, पॉलिव्हिनिल क्लोराइड आणि पॉलिप्रोपाइलीन हे उष्माप्रसारक प्लास्टिक आहेत जे उष्मा घेतल्यास नरम होतात आणि पुन्हा आकार देता येतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Marathi technical terms for plastics.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Student thinks all plastics are thermoplastics and confuses thermosetting with thermoplastic",
+        "confuses thermoplastic with thermosetting plastic",
+        "confuses thermoplastic with thermosetting plastic', ",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is Bakelite, a thermosetting plastic. The author's solution is accurate, and the misconceptions listed for the wrong options are plausible and relevant to students.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 149,
+          "pageStart": 126,
+          "pageEnd": 126,
+          "headingPath": [
+            "17. Man made Materials"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 150,
+          "pageStart": 126,
+          "pageEnd": 127,
+          "headingPath": [
+            "17. Man made Materials",
+            "Wooden chair Wood Comb Plastic"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 151,
+          "pageStart": 127,
+          "pageEnd": 128,
+          "headingPath": [
+            "17. Man made Materials",
+            "Wooden chair Wood Comb Plastic"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 152,
+          "pageStart": 128,
+          "pageEnd": 129,
+          "headingPath": [
+            "17. Man made Materials",
+            "Wooden chair Wood Comb Plastic"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-19T10:36:45.841Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "Which of the following is a reason for the environmental impact of glass production?",
+      "choices": [
+        "It releases greenhouse gases",
+        "It uses a lot of water",
+        "It produces a lot of noise",
+        "It requires a lot of sunlight"
+      ],
+      "answerIndex": 0,
+      "solution": "Glass production releases greenhouse gases, which contribute to environmental impact by increasing atmospheric pollution and climate change. The other options, such as water usage, noise, and sunlight requirements, are not directly linked to the primary environmental concerns associated with glass manufacturing.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा कांच के उत्पादन के पर्यावरणीय प्रभाव का कारण है?",
+          "choices": [
+            "यह ग्रीनहाउस गैसें उत्सर्जित करता है",
+            "यह बहुत सारा पानी उपयोग करता है",
+            "यह बहुत सारा शोर उत्पन्न करता है",
+            "यह बहुत सारा सूर्य प्रकाश की आवश्यकता होती है"
+          ],
+          "solution": "कांच के उत्पादन ग्रीनहाउस गैसों को उत्सर्जित करता है, जो वातावरणीय प्रभाव के कारण वायु प्रदूषण और जलवायु परिवर्तन में वृद्धि करती है। अन्य विकल्प, जैसे पानी के उपयोग, शोर और सूर्य प्रकाश की आवश्यकता, कांच निर्माण से जुड़े मुख्य पर्यावरणीय समस्याओं से सीधे जुड़े नहीं हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi technical terms.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते ग्लास उत्पादनाच्या वातावरणीय प्रभावाचे कारण आहे?",
+          "choices": [
+            "ते ग्रीनहाउस वायू निर्माण करते",
+            "ते खूप पाणी वापरते",
+            "ते खूप आवाज निर्माण करते",
+            "त्याला खूप सूर्यप्रकाश आवश्यक असतो"
+          ],
+          "solution": "ग्लास उत्पादन ग्रीनहाउस वायू निर्माण करते, जे वातावरणीय प्रभावामुळे वातावरणीय प्रदूषण आणि जलवायू बदलांमुळे वाढते. इतर विकल्प, जसे की पाणी वापर, आवाज आणि सूर्यप्रकाशाची आवश्यकता, ग्लास तयार करण्याशी जोडलेल्या मुख्य वातावरणीय समस्यांशी सीधा संबंध नाही.",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for environmental concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses environmental impact with water usage",
+        "Confuses environmental impact with noise pollution",
+        "Confuses environmental impact with sunlight requirement"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 0, as glass production does release greenhouse gases like CO2 and SO2, which have environmental impacts. The other options are not valid environmental impacts of glass production, and the author's reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 153,
+          "pageStart": 129,
+          "pageEnd": 129,
+          "headingPath": [
+            "17. Man made Materials",
+            "Wooden chair Wood Comb Plastic"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 154,
+          "pageStart": 129,
+          "pageEnd": 130,
+          "headingPath": [
+            "17. Man made Materials",
+            "Wooden chair Wood Comb Plastic"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 155,
+          "pageStart": 130,
+          "pageEnd": 131,
+          "headingPath": [
+            "17. Man made Materials",
+            "Exercises"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-19T10:36:45.841Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Why does glass not conduct electricity?",
+      "choices": [
+        "It is a metal",
+        "It is a non-metal",
+        "It is a good conductor",
+        "It is a bad conductor"
+      ],
+      "answerIndex": 3,
+      "solution": "Glass does not conduct electricity because it is a bad conductor, which means it does not allow electric current to flow through it easily. Metals are good conductors, and non-metals can vary, but glass specifically resists the flow of electricity. Being a good conductor would mean it allows electricity to pass, which is not the case for glass.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "काँच बिजली का चालक क्यों नहीं होता?",
+          "choices": [
+            "यह धातु है",
+            "यह अधातु है",
+            "यह अच्छा चालक है",
+            "यह खराब चालक है"
+          ],
+          "solution": "काँच बिजली का चालक नहीं होता क्योंकि यह खराब चालक होता है, जिसका अर्थ है कि यह बिजली के धारा के प्रवाह को आसानी से अनुमति नहीं देता। धातुएँ अच्छे चालक होती हैं, और अधातुएँ भिन्न हो सकती हैं, लेकिन काँच विशेष रूप से बिजली के प्रवाह का विरोध करता है। अच्छा चालक होने का अर्थ है कि यह बिजली के पार जाने की अनुमति देता है, जो कि काँच के लिए सही नहीं है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Hindi scientific terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "काच विद्युत का नहीं चालाते?",
+          "choices": [
+            "ते धातू आहे",
+            "ते अधातू आहे",
+            "ते चांगला वाहक आहे",
+            "ते खराब वाहक आहे"
+          ],
+          "solution": "काच विद्युत नहीं चालाते क्योंकि यह एक खराब वाहक है, जिसका अर्थ है कि यह विद्युत धारा के प्रवाह को आसानी से अनुमति नहीं देता है. धातुएं अच्छे वाहक होती हैं, और अधातुएं भिन्न हो सकती हैं, लेकिन काच विशेष रूप से विद्युत के प्रवाह का विरोध करती है. एक अच्छा वाहक होना अर्थ है कि यह विद्युत के पार जाने की अनुमति देता है, जो काच के लिए सही नहीं है.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the scientific terminology used in Marathi textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses glass with metals",
+        "Student thinks non-metals always conduct electricity",
+        "Student thinks that all solids are good conductors of electricity",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 3, as glass is indeed a bad conductor of electricity and is used as an insulator. The reasoning in the author's solution is sound and matches the correct answer. The distractors reflect common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 153,
+          "pageStart": 129,
+          "pageEnd": 129,
+          "headingPath": [
+            "17. Man made Materials",
+            "Wooden chair Wood Comb Plastic"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 154,
+          "pageStart": 129,
+          "pageEnd": 130,
+          "headingPath": [
+            "17. Man made Materials",
+            "Wooden chair Wood Comb Plastic"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 155,
+          "pageStart": 130,
+          "pageEnd": 131,
+          "headingPath": [
+            "17. Man made Materials",
+            "Exercises"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-19T10:36:45.841Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Why is silica glass used for laboratory equipment?",
+      "choices": [
+        "It expands a lot when heated",
+        "It is affected by acids and alkalis",
+        "It does not expand much when heated",
+        "It is easily broken"
+      ],
+      "answerIndex": 2,
+      "solution": "Silica glass is used in laboratories because it does not expand much when heated, making it suitable for precise experiments. The other options are incorrect. The question asks for the reason for its use, and the correct answer is that it does not expand much when heated.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "सिलिका ग्लास का प्रयोग प्रयोगशाला उपकरणों के लिए क्यों किया जाता है?",
+          "choices": [
+            "यह गर्म होने पर बहुत फैलता है",
+            "यह अम्लों और क्षारों से प्रभावित होता है",
+            "यह गर्म होने पर बहुत कम फैलता है",
+            "यह आसानी से टूट जाता है"
+          ],
+          "solution": "सिलिका ग्लास का प्रयोग प्रयोगशाला में इसलिए किया जाता है क्योंकि यह गर्म होने पर बहुत कम फैलता है, जिसके कारण यह सटीक प्रयोगों के लिए उपयुक्त होता है। अन्य विकल्प गलत हैं। प्रश्न इसके उपयोग के कारण के बारे में पूछता है, और सही उत्तर यह है कि यह गर्म होने पर बहुत कम फैलता है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and technical terminology. The correct answer remains option (2) and the distractors are still incorrect.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "सिलिका ग्लास वैज्ञानिक उपकरणांसाठी का वापरले जाते?",
+          "choices": [
+            "तापल्यावर ते जास्त फैलते",
+            "ते अम्ले आणि क्षारांनी प्रभावित होते",
+            "तापल्यावर ते थोडे फैलते",
+            "ते सहज तुटते"
+          ],
+          "solution": "सिलिका ग्लास वैज्ञानिक उपकरणांसाठी वापरले जाते कारण ते तापल्यावर थोडे फैलते, जे अचूक प्रयोगांसाठी उपयुक्त आहे. इतर विकल्प चुकीचे आहेत. प्रश्नामध्ये त्याचा वापर का केला जातो याचे कारण विचारले गेले आहे आणि योग्य उत्तर असे आहे की ते तापल्यावर थोडे फैलते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi technical terms.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses silica glass with a material that expands a lot when heated",
+        "Confuses silica glass with a material affected by acids and alkalis",
+        null,
+        "Confuses silica glass with a material that is easily broken"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 2, as silica glass has low thermal expansion, making it suitable for lab equipment. The other options reflect common misconceptions about materials.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 153,
+          "pageStart": 129,
+          "pageEnd": 129,
+          "headingPath": [
+            "17. Man made Materials",
+            "Wooden chair Wood Comb Plastic"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 154,
+          "pageStart": 129,
+          "pageEnd": 130,
+          "headingPath": [
+            "17. Man made Materials",
+            "Wooden chair Wood Comb Plastic"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 155,
+          "pageStart": 130,
+          "pageEnd": 131,
+          "headingPath": [
+            "17. Man made Materials",
+            "Exercises"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-19T10:36:45.841Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
     }
   ]
 }

@@ -1057,6 +1057,886 @@
       "generatedAt": "2026-10-29T09:06:32.959Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is the condition for market equilibrium when there is free entry and exit of firms?",
+      "choices": [
+        "Price is greater than minimum average cost",
+        "Price is less than minimum average cost",
+        "Price is equal to minimum average cost",
+        "Price is equal to total cost"
+      ],
+      "answerIndex": 2,
+      "solution": "In a perfectly competitive market with free entry and exit, firms adjust until they earn only normal profit, which occurs when the market price equals the minimum average cost. If the price were higher, new firms would enter, increasing supply and lowering the price. If the price were lower, firms would exit, reducing supply and raising the price. The only stable situation is when price equals minimum average cost.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "मुक्त प्रवेश एवं निकास के साथ बाजार संतुलन की स्थिति क्या है?",
+          "choices": [
+            "मूल्य न्यूनतम औसत लागत से अधिक है",
+            "मूल्य न्यूनतम औसत लागत से कम है",
+            "मूल्य न्यूनतम औसत लागत के बराबर है",
+            "मूल्य कुल लागत के बराबर है"
+          ],
+          "solution": "पूर्ण प्रतिस्पर्धी बाजार में मुक्त प्रवेश एवं निकास के साथ, फर्में तब तक समायोजित करती हैं जब तक कि वे केवल सामान्य लाभ नहीं कमाती हैं, जो तब होता है जब बाजार मूल्य न्यूनतम औसत लागत के बराबर होता है। यदि मूल्य अधिक होता, तो नए फर्म प्रवेश करते और आपूर्ति बढ़ाते, जिससे मूल्य घट जाता। यदि मूल्य कम होता, तो फर्में बाहर निकल जाती और आपूर्ति घट जाती, जिससे मूल्य बढ़ जाता। केवल स्थिर स्थिति तब होती है जब मूल्य न्यूनतम औसत लागत के बराबर होता है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, technical terms are appropriately used in Hindi, and the correct answer remains option 2.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "मुक्त प्रवेश आणि निर्गम असलेल्या बाजारात बाजार संतुलनाची अट काय असते?",
+          "choices": [
+            "किंमत मिनिमम ओसत खर्चापेक्षा जास्त असते",
+            "किंमत मिनिमम ओसत खर्चापेक्षा कमी असते",
+            "किंमत मिनिमम ओसत खर्चाबरोबर असते",
+            "किंमत एकूण खर्चाबरोबर असते"
+          ],
+          "solution": "पूर्णतः स्पर्धात्मक बाजारात मुक्त प्रवेश आणि निर्गम असल्यास, उत्पादक नियमितपणे सामान्य नफा मिळवतात, जो बाजार किंमत मिनिमम ओसत खर्चाबरोबर असताना होतो. जर किंमत जास्त असल्यास, नवीन उत्पादक प्रवेश करतील, पुरवठा वाढेल आणि किंमत कमी होईल. जर किंमत कमी असल्यास, उत्पादक बाहेर पडतील, पुरवठा कमी होईल आणि किंमत वाढेल. एकमेव स्थिर स्थिती ही आहे की किंमत मिनिमम ओसत खर्चाबरोबर असते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi economic terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses normal profit with supernormal profit",
+        "Confuses normal profit with loss",
+        null,
+        "Does not understand the relationship between price and average cost in equilibrium"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly identifies that in long-run equilibrium with free entry and exit, firms earn normal profit, which occurs when price equals minimum average cost. The reasoning aligns with standard microeconomic theory.",
+      "sources": [
+        {
+          "document": "ncert/12/economics/leec205.pdf",
+          "ordinal": 12,
+          "pageStart": 9,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 5: Market Equilibrium"
+          ]
+        },
+        {
+          "document": "ncert/12/economics/leec205.pdf",
+          "ordinal": 13,
+          "pageStart": 10,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 5: Market Equilibrium"
+          ]
+        },
+        {
+          "document": "ncert/12/economics/leec205.pdf",
+          "ordinal": 14,
+          "pageStart": 11,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 5: Market Equilibrium"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T20:56:19.559Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is the term used to describe the point where the labour supply curve and the labour demand curve intersect?",
+      "choices": [
+        "Equilibrium point",
+        "Market clearing",
+        "Price floor",
+        "Price ceiling"
+      ],
+      "answerIndex": 0,
+      "solution": "The equilibrium wage rate is determined at the point where the labour supply curve and the labour demand curve intersect. This point represents the wage rate at which the quantity of labour supplied equals the quantity of labour demanded. The other options are incorrect because they do not describe the intersection of supply and demand curves.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "श्रम के पूर्ति वक्र और श्रम के मांग वक्र के प्रतिच्छेदन बिंदु के लिए क्या शब्द प्रयोग किया जाता है?",
+          "choices": [
+            "संतुलन बिंदु",
+            "बाजार समाप्ति",
+            "मूल्य नीचे की सीमा",
+            "मूल्य ऊपरी सीमा"
+          ],
+          "solution": "संतुलन मजदूरी दर उस बिंदु पर निर्धारित की जाती है जहां श्रम के पूर्ति वक्र और श्रम के मांग वक्र प्रतिच्छेद करते हैं। यह बिंदु मजदूरी दर को दर्शाता है जिस पर श्रम की मात्रा पूर्ति की जाती है और श्रम की मात्रा मांग की जाती है। अन्य विकल्प गलत हैं क्योंकि वे पूर्ति और मांग वक्रों के प्रतिच्छेदन का वर्णन नहीं करते हैं।",
+          "imageAlt": null,
+          "critique": "Hindi translation accurately reflects the English original in meaning, terminology, and structure. All options are correctly translated and maintain their original logical status as correct or incorrect.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "श्रम ऑफर कर्व आणि श्रम मागणी कर्व यांच्या छेदनबिंदूला कोणत्या शब्दाने ओळखले जाते?",
+          "choices": [
+            "संतुलन बिंदू",
+            "बाजार समायोजन",
+            "किंमत पायथ्याचा",
+            "किंमत शीर्षाचा"
+          ],
+          "solution": "श्रम ऑफर कर्व आणि श्रम मागणी कर्व यांच्या छेदनबिंदूवर संतुलन वेतन दर निश्चित केला जातो. हा बिंदू एखाद्या वेतन दराला दर्शवतो ज्यावर श्रम ऑफर केलेली मात्रा श्रम मागणी केलेली मात्राशी समान असते. इतर विकल्प चुकीचे आहेत कारण ते ऑफर आणि मागणी कर्व यांच्या छेदनबिंदूला वर्णन करत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi economic terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses the concept of equilibrium with market clearing",
+        "Misunderstands the definition of price floor",
+        "Misunderstands the definition of price ceiling"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 'Equilibrium point' as it accurately describes the intersection of supply and demand curves. The author's reasoning for the other options is valid and reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/12/economics/leec205.pdf",
+          "ordinal": 6,
+          "pageStart": 6,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 5: Market Equilibrium"
+          ]
+        },
+        {
+          "document": "ncert/12/economics/leec205.pdf",
+          "ordinal": 7,
+          "pageStart": 6,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 5: Market Equilibrium"
+          ]
+        },
+        {
+          "document": "ncert/12/economics/leec205.pdf",
+          "ordinal": 8,
+          "pageStart": 7,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 5: Market Equilibrium"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T20:56:19.559Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "What happens to the equilibrium wage rate when the demand for labour increases?",
+      "choices": [
+        "It decreases",
+        "It increases",
+        "It remains the same",
+        "It becomes zero"
+      ],
+      "answerIndex": 1,
+      "solution": "When the demand for labour increases, the equilibrium wage rate increases. This is because the higher demand for labour leads to more competition among employers, which drives up the wage rate. The other options are incorrect because they do not reflect the effect of an increase in demand on the equilibrium wage rate.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "जब श्रम की मांग बढ़ती है तो संतुलन मजदूरी दर क्या होती है?",
+          "choices": [
+            "यह कम हो जाता है",
+            "यह बढ़ जाता है",
+            "यह एक ही रहता है",
+            "यह शून्य हो जाता है"
+          ],
+          "solution": "जब श्रम की मांग बढ़ती है, तो संतुलन मजदूरी दर बढ़ जाती है। इसका कारण यह है कि श्रम की अधिक मांग नियोक्ताओं के बीच अधिक प्रतिस्पर्धा पैदा करती है, जो मजदूरी दर को बढ़ा देती है। अन्य विकल्प गलत हैं क्योंकि वे श्रम की मांग में वृद्धि के प्रभाव को दर्शाने में असमर्थ हैं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, with appropriate Hindi economic terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "श्रमाच्या मागणी वाढत असताना संतुलन वेतन दरावर काय परिणाम होतो?",
+          "choices": [
+            "तो कमी होतो",
+            "तो वाढतो",
+            "तो एकसारखा रहातो",
+            "तो शून्य होतो"
+          ],
+          "solution": "जेव्हा श्रमाची मागणी वाढते, तेव्हा संतुलन वेतन दर वाढतो. हे असे आहे कारण श्रमाची जास्त मागणी वेतन दर वाढविण्यासाठी नोकरदात्यांमध्ये जास्त प्रतिस्पर्धा निर्माण करते. इतर विकल्प अयोग्य आहेत कारण ते श्रमाच्या मागणीत वाढीचा संतुलन वेतन दरावर कसा परिणाम होतो याचे प्रतिबिंबित नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi economic terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Incorrectly assumes that demand and price are inversely related",
+        null,
+        "Belief that equilibrium wage is fixed regardless of changes in demand or supply",
+        "Confuses the effect of supply and demand on price"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly explains that an increase in labor demand leads to a higher equilibrium wage rate due to increased competition among employers. The reasoning for the distractors aligns with common misconceptions about supply and demand.",
+      "sources": [
+        {
+          "document": "ncert/12/economics/leec205.pdf",
+          "ordinal": 6,
+          "pageStart": 6,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 5: Market Equilibrium"
+          ]
+        },
+        {
+          "document": "ncert/12/economics/leec205.pdf",
+          "ordinal": 7,
+          "pageStart": 6,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 5: Market Equilibrium"
+          ]
+        },
+        {
+          "document": "ncert/12/economics/leec205.pdf",
+          "ordinal": 8,
+          "pageStart": 7,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 5: Market Equilibrium"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T20:56:19.559Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What happens when the market price is below the equilibrium price?",
+      "choices": [
+        "There is excess supply",
+        "There is excess demand",
+        "Prices fall further",
+        "Prices remain the same"
+      ],
+      "answerIndex": 1,
+      "solution": "The correct answer is 'There is excess demand' because when the market price is below the equilibrium price, the quantity demanded exceeds the quantity supplied. The other options are incorrect because they do not describe the situation accurately.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "जब बाजार मूल्य समायोजन मूल्य से नीचे होता है तो क्या होता है?",
+          "choices": [
+            "अतिरिक्त आपूर्ति होती है",
+            "अतिरिक्त मांग होती है",
+            "मूल्य और नीचे गिरता है",
+            "मूल्य एक ही रहता है"
+          ],
+          "solution": "सही उत्तर 'अतिरिक्त मांग होती है' है क्योंकि जब बाजार मूल्य समायोजन मूल्य से नीचे होता है तो मांगी गई मात्रा आपूर्ति की मात्रा से अधिक होती है। अन्य विकल्प गलत हैं क्योंकि वे स्थिति का सही वर्णन नहीं करते।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English question and options, with appropriate economic terminology used in a Hindi-medium context.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "बाजार दर विसंगतीच्या दरापेक्षा खाली असतो तेव्हा काय होते?",
+          "choices": [
+            "उत्पादनाची अतिरिक्त पूर्तता असते",
+            "मागणीची अतिरिक्त पूर्तता असते",
+            "दर आणखी खाली जातात",
+            "दर त्याच राहतात"
+          ],
+          "solution": "बरोबर उत्तर 'मागणीची अतिरिक्त पूर्तता असते' आहे कारण जेव्हा बाजार दर विसंगतीच्या दरापेक्षा खाली असतो तेव्हा मागणीची राशी उत्पादनाच्या राशीपेक्षा जास्त असते. इतर उत्तरे चुकीची आहेत कारण ते स्थितीचे योग्य वर्णन करत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi economic terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses excess supply with excess demand",
+        null,
+        "Ignores the effect of price below equilibrium",
+        "Misunderstands the relationship between price and demand"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct. When the market price is below equilibrium, demand exceeds supply, leading to excess demand. The other options are incorrect as they misrepresent the market dynamics.",
+      "sources": [
+        {
+          "document": "ncert/12/economics/leec205.pdf",
+          "ordinal": 18,
+          "pageStart": 14,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 5: Market Equilibrium",
+            "5.2"
+          ]
+        },
+        {
+          "document": "ncert/12/economics/leec205.pdf",
+          "ordinal": 19,
+          "pageStart": 15,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 5: Market Equilibrium",
+            "5.2",
+            "Summary"
+          ]
+        },
+        {
+          "document": "ncert/12/economics/leec205.pdf",
+          "ordinal": 20,
+          "pageStart": 16,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 5: Market Equilibrium",
+            "5.2",
+            "Exercises"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T20:56:19.559Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the definition of equilibrium in a market?",
+      "choices": [
+        "When prices are controlled by the government",
+        "When supply is greater than demand",
+        "When supply equals demand",
+        "When there is no competition"
+      ],
+      "answerIndex": 2,
+      "solution": "The correct answer is 'When supply equals demand' because market equilibrium is defined as the point where the quantity supplied equals the quantity demanded. The other options are incorrect because they either misrepresent the concept or are unrelated to equilibrium.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "बाजार में संतुलन की परिभाषा क्या है?",
+          "choices": [
+            "जब सरकार द्वारा मूल्य नियंत्रित किए जाते हैं",
+            "जब आपूर्ति मांग से अधिक होती है",
+            "जब आपूर्ति मांग के बराबर होती है",
+            "जब प्रतिस्पर्धा नहीं होती"
+          ],
+          "solution": "सही उत्तर 'जब आपूर्ति मांग के बराबर होती है' है क्योंकि बाजार संतुलन की परिभाषा वह बिंदु है जहां आपूर्ति की गई मात्रा मांग के बराबर होती है। अन्य विकल्प गलत हैं क्योंकि वे अवधारणा को गलत तरीके से प्रस्तुत करते हैं या संतुलन से संबंधित नहीं हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. All options and the solution are correctly translated and maintain their original intent and correctness.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "बाजारातील संतुलनाची व्याख्या काय आहे?",
+          "choices": [
+            "जेव्हा सरकार दर कंट्रोल करतो",
+            "जेव्हा पुरवठा मागणीपेक्षा जास्त असतो",
+            "जेव्हा पुरवठा मागणीस समान असतो",
+            "जेव्हा प्रतिस्पर्धा नसते"
+          ],
+          "solution": "योग्य उत्तर 'जेव्हा पुरवठा मागणीस समान असतो' आहे कारण बाजार संतुलन असे बिंदू आहे जेथे पुरवल्या गेलेल्या परिमाणाचा विषय असतो. इतर विकल्प चुकीचे आहेत कारण ते संकल्पनेचे अपुरे वर्णन करतात किंवा संतुलनशी संबंधित नाहीत.",
+          "imageAlt": null,
+          "critique": "The Marathi translation accurately reflects the English original in meaning, structure, and terminology. All options are correctly translated, and the correct answer remains in the same position. The technical terms like 'पुरवठा' (supply) and 'मागणी' (demand) are standard in Marathi economics education.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses government intervention with equilibrium",
+        "Ignores the relationship between supply and demand",
+        null,
+        "Misunderstands the role of competition in the market"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The question is clear and the correct answer is unambiguously option 2. The author's reasoning for the distractors is valid and reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/12/economics/leec205.pdf",
+          "ordinal": 18,
+          "pageStart": 14,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 5: Market Equilibrium",
+            "5.2"
+          ]
+        },
+        {
+          "document": "ncert/12/economics/leec205.pdf",
+          "ordinal": 19,
+          "pageStart": 15,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 5: Market Equilibrium",
+            "5.2",
+            "Summary"
+          ]
+        },
+        {
+          "document": "ncert/12/economics/leec205.pdf",
+          "ordinal": 20,
+          "pageStart": 16,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 5: Market Equilibrium",
+            "5.2",
+            "Exercises"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T20:56:19.559Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "A market is in equilibrium when:",
+      "choices": [
+        "Price is set by the government",
+        "Supply equals demand",
+        "Consumers have unlimited income",
+        "Firms charge the highest possible price"
+      ],
+      "answerIndex": 1,
+      "solution": "The correct answer is 'Supply equals demand' because equilibrium in a market occurs when the quantity supplied equals the quantity demanded. The other options are incorrect because they either contradict the concept of equilibrium or are not related to it.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक बाजार संतुलन में होता है जब:",
+          "choices": [
+            "सरकार द्वारा मूल्य निर्धारित किया जाता है",
+            "आपूर्ति मांग के बराबर होती है",
+            "उपभोक्ता के पास असीमित आय होती है",
+            "कंपनियां अधिकतम संभव मूल्य लेती हैं"
+          ],
+          "solution": "सही उत्तर 'आपूर्ति मांग के बराबर होती है' है क्योंकि बाजार में संतुलन तब होता है जब आपूर्ति की गई मात्रा मांग की गई मात्रा के बराबर होती है। अन्य विकल्प गलत हैं क्योंकि वे संतुलन की अवधारणा के विरोधी हैं या इससे संबंधित नहीं हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. All options and the solution are correctly translated and maintain their logical relationship.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "बाजार असंतुलनात असतो जेव्हा:",
+          "choices": [
+            "सरकार दर ठरवतो",
+            "पुरवठा मागणीस समान असतो",
+            "उपभोक्त्यांकडे असीमित उत्पन्न असते",
+            "कंपन्या उच्चतम शक्य किंमत ठरवतात"
+          ],
+          "solution": "योग्य उत्तर 'पुरवठा मागणीस समान असतो' आहे कारण बाजारातील संतुलन तेव्हा होतो जेव्हा पुरवठा केलेली मात्रा मागणीस समान असते. इतर विकल्प चुकीचे आहेत कारण ते संतुलनाच्या संकल्पनेशी विरोधाभासी असतात किंवा ते त्याशी संबंधित नसतात.",
+          "imageAlt": null,
+          "critique": "The Marathi translation accurately reflects the English original in meaning, structure, and terminology. All options are correctly translated, and the correct answer remains in the same position. The technical terms like 'पुरवठा' (supply) and 'मागणी' (demand) are standard in Marathi economics textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses price setting with government intervention",
+        null,
+        "Misunderstands the definition of equilibrium",
+        "Ignores the role of consumer income in equilibrium analysis"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 'Supply equals demand,' which is the standard definition of market equilibrium. The other options represent common misconceptions or outright incorrect statements about equilibrium.",
+      "sources": [
+        {
+          "document": "ncert/12/economics/leec205.pdf",
+          "ordinal": 18,
+          "pageStart": 14,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 5: Market Equilibrium",
+            "5.2"
+          ]
+        },
+        {
+          "document": "ncert/12/economics/leec205.pdf",
+          "ordinal": 19,
+          "pageStart": 15,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 5: Market Equilibrium",
+            "5.2",
+            "Summary"
+          ]
+        },
+        {
+          "document": "ncert/12/economics/leec205.pdf",
+          "ordinal": 20,
+          "pageStart": 16,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 5: Market Equilibrium",
+            "5.2",
+            "Exercises"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T20:56:19.559Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "What is the effect of a price floor set above the equilibrium price?",
+      "choices": [
+        "It leads to excess demand",
+        "It leads to excess supply",
+        "It stabilises prices",
+        "It reduces consumer demand"
+      ],
+      "answerIndex": 1,
+      "solution": "The correct answer is 'It leads to excess supply' because a price floor set above the equilibrium price causes the quantity supplied to exceed the quantity demanded. The other options are incorrect because they misrepresent the effects of a price floor.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "समायोजन मूल्य से ऊपर निर्धारित मूल्य फ्लोर का क्या प्रभाव होता है?",
+          "choices": [
+            "इसके कारण अतिरेक मांग होती है",
+            "इसके कारण अतिरेक पूर्ति होती है",
+            "इसके कारण मूल्य स्थिर रहते हैं",
+            "इसके कारण उपभोक्ता मांग कम हो जाती है"
+          ],
+          "solution": "सही उत्तर 'इसके कारण अतिरेक पूर्ति होती है' है क्योंकि समायोजन मूल्य से ऊपर निर्धारित मूल्य फ्लोर मांग की गई मात्रा की तुलना में पूर्ति की गई मात्रा को बढ़ा देता है। अन्य विकल्प गलत हैं क्योंकि वे मूल्य फ्लोर के प्रभावों को गलत तरीके से प्रस्तुत करते हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the original English question and maintains the correct answer and distractors. Technical terms like 'मूल्य फ्लोर' (price floor), 'समायोजन मूल्य' (equilibrium price), 'अतिरेक पूर्ति' (excess supply) are appropriately used in the context of economics in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "समतोल किंमतीपेक्षा वर ठेवलेल किंमतीच्या फ्लोरचा परिणाम काय असतो?",
+          "choices": [
+            "ते अतिरिक्त मागणीला नेमका करते",
+            "ते अतिरिक्त पुरवठ्याला नेमका करते",
+            "ते किंमतींचे स्थिरीकरण करते",
+            "ते ग्राहक मागणी कमी करते"
+          ],
+          "solution": "बरोबर उत्तर 'ते अतिरिक्त पुरवठ्याला नेमका करते' आहे कारण समतोल किंमतीपेक्षा वर ठेवलेल किंमतीच्या फ्लोरमुळे पुरवठ्याची प्रमाण विक्रीच्या प्रमाणापेक्षा जास्त होते. इतर विकल्प चुकीचे आहेत कारण ते किंमतीच्या फ्लोरच्या परिणामांचे खोटे प्रतिनिधित्व करतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi economic terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the effect of a price ceiling with a price floor",
+        null,
+        "Ignores the impact of price floors on supply and demand",
+        "Misunderstands the role of price floors in the market"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly identifies that a price floor above equilibrium causes excess supply. The reasoning for the distractors aligns with common student misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/12/economics/leec205.pdf",
+          "ordinal": 18,
+          "pageStart": 14,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 5: Market Equilibrium",
+            "5.2"
+          ]
+        },
+        {
+          "document": "ncert/12/economics/leec205.pdf",
+          "ordinal": 19,
+          "pageStart": 15,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 5: Market Equilibrium",
+            "5.2",
+            "Summary"
+          ]
+        },
+        {
+          "document": "ncert/12/economics/leec205.pdf",
+          "ordinal": 20,
+          "pageStart": 16,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 5: Market Equilibrium",
+            "5.2",
+            "Exercises"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T20:56:19.559Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "If the equilibrium price in a market is above the minimum average cost of firms, what will happen if free entry and exit of firms is allowed?",
+      "choices": [
+        "The price will rise further",
+        "The price will fall to the minimum average cost",
+        "The price will remain unchanged",
+        "The price will increase with demand"
+      ],
+      "answerIndex": 1,
+      "solution": "The correct answer is 'The price will fall to the minimum average cost' because with free entry and exit, new firms will enter the market, increasing supply and driving the price down to the minimum average cost. The other options are incorrect because they do not account for the long-run adjustments in a perfectly competitive market.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि बाजार में संतुलन मूल्य फर्मों के न्यूनतम औसत लागत से ऊपर है, तो मुक्त प्रवेश और निकास की अनुमति देने पर क्या होगा?",
+          "choices": [
+            "मूल्य आगे बढ़ेगा",
+            "मूल्य न्यूनतम औसत लागत तक गिर जाएगा",
+            "मूल्य अपरिवर्तित रहेगा",
+            "मूल्य मांग के साथ बढ़ेगा"
+          ],
+          "solution": "सही उत्तर 'मूल्य न्यूनतम औसत लागत तक गिर जाएगा' है क्योंकि मुक्त प्रवेश और निकास के साथ, नए फर्म बाजार में प्रवेश करेंगे, आपूर्ति बढ़ाएंगे और मूल्य को न्यूनतम औसत लागत तक ले जाएंगे। अन्य विकल्प गलत हैं क्योंकि वे पूर्ण प्रतिस्पर्धी बाजार में लंबे समय में समायोजनों को ध्यान में नहीं रखते।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English original in meaning, technical terms, and structure. All options and the solution are correctly translated and maintain their original intent and correctness.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर बाजारातील समतोल किंमत कंपन्यांच्या न्यूनतम औसत खर्चापेक्षा जास्त असेल, तर मुक्त प्रवेश आणि निर्गमन असल्यास काय होईल?",
+          "choices": [
+            "किंमत आणखी वाढेल",
+            "किंमत न्यूनतम औसत खर्चापर्यंत घसरेल",
+            "किंमत अचल राहील",
+            "किंमत मागणीसोबत वाढेल"
+          ],
+          "solution": "सही उत्तर 'किंमत न्यूनतम औसत खर्चापर्यंत घसरेल' आहे कारण मुक्त प्रवेश आणि निर्गमन असल्यास नवीन कंपन्या बाजारात प्रवेश करतील, पुरवठा वाढवतील आणि किंमत न्यूनतम औसत खर्चापर्यंत घसरेल. इतर विकल्प चुकीचे आहेत कारण ते पूर्णपणे स्पर्धात्मक बाजारात लांबकाळी समायोजनांचा अंदाज घेत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi economic terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Believes that higher prices will attract more firms, leading to even higher prices instead of equilibrium",
+        null,
+        "Ignores the role of minimum average cost in pricing",
+        "Confuses the relationship between price and demand"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies that in a perfectly competitive market with free entry and exit, the equilibrium price will adjust to the minimum average cost in the long run. The reasoning aligns with standard microeconomic theory.",
+      "sources": [
+        {
+          "document": "ncert/12/economics/leec205.pdf",
+          "ordinal": 18,
+          "pageStart": 14,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 5: Market Equilibrium",
+            "5.2"
+          ]
+        },
+        {
+          "document": "ncert/12/economics/leec205.pdf",
+          "ordinal": 19,
+          "pageStart": 15,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 5: Market Equilibrium",
+            "5.2",
+            "Summary"
+          ]
+        },
+        {
+          "document": "ncert/12/economics/leec205.pdf",
+          "ordinal": 20,
+          "pageStart": 16,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 5: Market Equilibrium",
+            "5.2",
+            "Exercises"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T20:56:19.559Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "In a market with free entry and exit, what happens to the number of firms in the market if the market price is above the minimum average cost?",
+      "choices": [
+        "The number of firms increases",
+        "The number of firms decreases",
+        "The number of firms remains the same",
+        "The number of firms becomes zero"
+      ],
+      "answerIndex": 0,
+      "solution": "When the market price is above the minimum average cost, firms can earn profits, which encourages new firms to enter the market, increasing the number of firms. The other options are incorrect because if the price were below the minimum average cost, firms would exit, and if it were equal, the number of firms would remain stable. A zero number of firms would only occur if no firms could operate profitably.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "मुक्त प्रवेश एवं निकास वाले बाजार में, यदि बाजार मूल्य न्यूनतम औसत लागत से ऊपर हो तो बाजार में फर्मों की संख्या क्या होती है?",
+          "choices": [
+            "फर्मों की संख्या बढ़ जाती है",
+            "फर्मों की संख्या घट जाती है",
+            "फर्मों की संख्या समान रहती है",
+            "फर्मों की संख्या शून्य हो जाती है"
+          ],
+          "solution": "जब बाजार मूल्य न्यूनतम औसत लागत से ऊपर होता है, तो फर्में लाभ कमा सकती हैं, जो नए फर्मों के बाजार में प्रवेश करने के लिए प्रेरित करता है, जिससे फर्मों की संख्या बढ़ जाती है। अन्य विकल्प गलत हैं क्योंकि यदि मूल्य न्यूनतम औसत लागत से नीचे होता तो फर्में बाजार छोड़ देतीं और यदि बराबर होता तो फर्मों की संख्या स्थिर रहती। शून्य फर्में केवल तभी होती हैं जब कोई भी फर्म लाभदायक रूप से काम नहीं कर सकती।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi economic terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "मुक्त प्रवेश आणि निर्गम असलेल्या बाजारात, जर बाजार किंमत कमाल औसत खर्चापेक्षा जास्त असेल तर बाजारातील फर्मची संख्या काय होते?",
+          "choices": [
+            "फर्मची संख्या वाढते",
+            "फर्मची संख्या घटते",
+            "फर्मची संख्या तितकीच रहाते",
+            "फर्मची संख्या शून्य होते"
+          ],
+          "solution": "जर बाजार किंमत कमाल औसत खर्चापेक्षा जास्त असेल तर फर्म लाभ कमावू शकतात, जे नवीन फर्मला बाजारात प्रवेश करण्यास प्रोत्साहित करते, ज्यामुळे फर्मची संख्या वाढते. इतर विकल्प चुकीचे आहेत कारण जर किंमत कमाल औसत खर्चापेक्षा कमी असेल तर फर्म बाजार सोडतील आणि जर ती समान असेल तर फर्मची संख्या स्थिर रहाईल. शून्य फर्मची संख्या फक्त तेव्हा होईल जेव्हा कोणतीही फर्म लाभदायकरित्या काम करू शकत नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the economic concepts correctly in Marathi. Technical terms like 'कमाल औसत खर्च' (minimum average cost) are appropriately used.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Believes firms will exit when they earn profit",
+        "Thinks the number of firms is fixed",
+        "Does not understand the effect of supernormal profit on entry"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies that when the market price is above the minimum average cost, firms earn supernormal profits, which attract new entrants. This leads to an increase in the number of firms, making option 0 correct.",
+      "sources": [
+        {
+          "document": "ncert/12/economics/leec205.pdf",
+          "ordinal": 12,
+          "pageStart": 9,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 5: Market Equilibrium"
+          ]
+        },
+        {
+          "document": "ncert/12/economics/leec205.pdf",
+          "ordinal": 13,
+          "pageStart": 10,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 5: Market Equilibrium"
+          ]
+        },
+        {
+          "document": "ncert/12/economics/leec205.pdf",
+          "ordinal": 14,
+          "pageStart": 11,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 5: Market Equilibrium"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T20:56:19.559Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
     }
   ]
 }

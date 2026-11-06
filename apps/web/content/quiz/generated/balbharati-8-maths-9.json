@@ -463,6 +463,816 @@
       "generatedAt": "2026-11-02T07:29:33.363Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the meaning of 'Marked Price' of an item?",
+      "choices": [
+        "The price after discount is applied",
+        "The price after profit is added",
+        "The original price of the item",
+        "The price after tax is added"
+      ],
+      "answerIndex": 2,
+      "solution": "The 'Marked Price' is the original price of the item before any discount is applied. The other options describe different prices that are not the definition of marked price.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "किसी वस्तु के 'चिह्नित मूल्य' का अर्थ क्या है?",
+          "choices": [
+            "छूट लगाए जाने के बाद की कीमत",
+            "लाभ जोड़े जाने के बाद की कीमत",
+            "वस्तु की मूल कीमत",
+            "कर जोड़े जाने के बाद की कीमत"
+          ],
+          "solution": "‘चिह्नित मूल्य’ वस्तु की मूल कीमत होती है जिस पर कोई छूट लगाए जाने से पहले होती है। अन्य विकल्प चिह्नित मूल्य के परिभाषा के अलावा अलग कीमतों का वर्णन करते हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English meaning, with appropriate terminology used in Hindi educational context.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एखाद्या वस्तूच्या 'टाकीदार किंमत'चा अर्थ काय आहे?",
+          "choices": [
+            "डिस्काउंट लागू केल्यानंतरची किंमत",
+            "लाभ जोडल्यानंतरची किंमत",
+            "वस्तूची मूळ किंमत",
+            "कर जोडल्यानंतरची किंमत"
+          ],
+          "solution": "'टाकीदार किंमत' ही वस्तूची मूळ किंमत आहे ज्यावर कोणताही डिस्काउंट लागू केलेला नाही. इतर विकल्पांमध्ये टाकीदार किंमतचा अर्थ नाही अशा वेगवेगळ्या किंमतींचे वर्णन आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for business concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses marked price with selling price",
+        "Confuses marked price with cost price plus profit",
+        null,
+        "Confuses marked price with final price including tax"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-constructed, with a clear definition of 'Marked Price' and plausible distractors that reflect common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 38,
+          "pageStart": 61,
+          "pageEnd": 62,
+          "headingPath": [
+            "9. Discount and Commission"
+          ]
+        },
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 39,
+          "pageStart": 62,
+          "pageEnd": 64,
+          "headingPath": [
+            "9. Discount and Commission"
+          ]
+        },
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 40,
+          "pageStart": 64,
+          "pageEnd": 65,
+          "headingPath": [
+            "9. Discount and Commission"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-11-01T00:40:17.879Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "If a broker receives commission from both the buyer and the seller, what is this called?",
+      "choices": [
+        "Commission",
+        "Brokerage",
+        "Discount",
+        "Rebate"
+      ],
+      "answerIndex": 1,
+      "solution": "Brokerage refers to the fee a broker earns for facilitating a transaction, which can come from both the buyer and the seller. Commission is a general term for payment based on a percentage of a sale, but in this context, the specific term is brokerage. Discount and rebate are reductions or returns of money, not fees earned by a broker.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक ब्रोकर खरीदार और बिक्रेता दोनों से कमीशन प्राप्त करता है, तो इसे क्या कहा जाता है?",
+          "choices": [
+            "कमीशन",
+            "ब्रोकरेज",
+            "डिस्काउंट",
+            "रिबेट"
+          ],
+          "solution": "ब्रोकरेज वह शुल्क होता है जो ब्रोकर एक लेन-देन के लिए अदा करता है, जो खरीदार और बिक्रेता दोनों से आ सकता है। कमीशन एक बिक्री के एक प्रतिशत के आधार पर भुगतान के लिए एक सामान्य शब्द है, लेकिन इस संदर्भ में विशिष्ट शब्द ब्रोकरेज है। डिस्काउंट और रिबेट छूट या पैसा वापस करना होता है, न कि ब्रोकर द्वारा कमाया गया शुल्क।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. All technical terms are correctly translated and match standard Hindi financial vocabulary.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका ब्रोकरला खरेदीदार आणि विक्रेत्याकडून एजेंसी फी मिळते, त्याला काय म्हणतात?",
+          "choices": [
+            "एजेंसी फी",
+            "ब्रोकरेज",
+            "सवलत",
+            "परतफेड"
+          ],
+          "solution": "ब्रोकरेज ही एजेंट ज्याने व्यवहार व्यवस्थापित केला आहे त्याची एजेंसी फी आहे, जी खरेदीदार आणि विक्रेत्याकडून मिळू शकते. एजेंसी फी हा विक्रीच्या शेकडा टक्क्यावर आधारित भरपाईचा सामान्य शब्द आहे, परंतु या संदर्भात विशिष्ट शब्द ब्रोकरेज आहे. सवलत आणि परतफेड ही रक्कमेची कमी किंवा परतफेड आहेत, जी एजेंटला मिळणारी एजेंसी फी नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation accurately preserves the meaning, technical terms, and answer structure. 'Brokerage' is correctly translated as 'ब्रोकरेज' and 'Commission' as 'एजेंसी फी', which are standard terms in Marathi financial contexts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "uses the general term 'commission' instead of 'brokerage'",
+        null,
+        "confuses 'discount' with 'brokerage'",
+        "confuses 'rebate' with 'brokerage'"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 'Brokerage' as per the question's wording. The other options represent common misconceptions, and the author's reasoning aligns with typical student misunderstandings.",
+      "sources": [
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 41,
+          "pageStart": 66,
+          "pageEnd": 67,
+          "headingPath": [
+            "9. Discount and Commission"
+          ]
+        },
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 42,
+          "pageStart": 67,
+          "pageEnd": 68,
+          "headingPath": [
+            "9. Discount and Commission"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-11-01T00:40:17.879Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If the marked price of a fan is Rs. 1500 and the shopkeeper gives a 12% discount, what is the selling price of the fan?",
+      "choices": [
+        "Rs. 1200",
+        "Rs. 1300",
+        "Rs. 1320",
+        "Rs. 1350"
+      ],
+      "answerIndex": 2,
+      "solution": "12% of 1500 is 180. Subtracting this from 1500 gives 1320. The other options are incorrect calculations or misunderstandings of the discount percentage. The correct answer is the result of subtracting the discount from the marked price, which is a direct application of the concept.",
+      "checkExpr": "1500 - 1500 * 0.12",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक पंखे का चिह्नित मूल्य 1500 रुपये है और दुकानदार 12% छूट देता है, तो पंखे का बिक्री मूल्य क्या है?",
+          "choices": [
+            "1200 रुपये",
+            "1300 रुपये",
+            "1320 रुपये",
+            "1350 रुपये"
+          ],
+          "solution": "1500 का 12% 180 है। इसे 1500 में से घटाने पर 1320 प्राप्त होता है। अन्य विकल्प गलत गणना या छूट प्रतिशत के गलत समझ के कारण हैं। सही उत्तर चिह्नित मूल्य से छूट के घटाने के परिणाम है, जो अवधारणा के सीधे लागू होने के रूप में है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate terminology commonly found in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका विंचरची निर्धारित किंमत 1500 रुपये आहे आणि दुकानदाराने 12% छूट दिली, तर विंचरची विक्री किंमत काय असेल?",
+          "choices": [
+            "1200 रुपये",
+            "1300 रुपये",
+            "1320 रुपये",
+            "1350 रुपये"
+          ],
+          "solution": "1500 चा 12% हा 180 आहे. हा 1500 मधून वजा केल्यास 1320 मिळतो. इतर विकल्प छूट शेकडा च्या चुकीच्या गणना किंवा अपात्रतेमुळे असतात. योग्य उत्तर हे निर्धारित किंमत मधून छूट वजा करण्याच्या अनुप्रयोगाचे फलित असते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi terminology for mathematical concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Student subtracts 12% of 1000 instead of 12% of 1500",
+        "Calculates 10% of 1500 instead of 12%",
+        null,
+        "Calculates 12% of 1500 as 180 and subtracts it from 1500 but mistakenly adds 30 instead of subtracting"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly calculates 12% of 1500 as 180 and subtracts it from 1500 to get 1320. The reasoning for the distractors is plausible and reflects common student misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 38,
+          "pageStart": 61,
+          "pageEnd": 62,
+          "headingPath": [
+            "9. Discount and Commission"
+          ]
+        },
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 39,
+          "pageStart": 62,
+          "pageEnd": 64,
+          "headingPath": [
+            "9. Discount and Commission"
+          ]
+        },
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 40,
+          "pageStart": 64,
+          "pageEnd": 65,
+          "headingPath": [
+            "9. Discount and Commission"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-11-01T00:40:17.879Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "A book has a marked price of Rs. 360. It is sold for Rs. 306. What is the percentage discount given?",
+      "choices": [
+        "12%",
+        "15%",
+        "18%",
+        "20%"
+      ],
+      "answerIndex": 1,
+      "solution": "The discount is calculated as 360 - 306 = 54. The percentage discount is (54/360) * 100 = 15%. The other options are incorrect because they do not match the calculated value. 10% would give a discount of 36, 20% would give a discount of 72, and 25% would give a discount of 90.",
+      "checkExpr": "54*100/360",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक पुस्तक का चिह्नित मूल्य 360 रुपए है। इसे 306 रुपए में बेचा जाता है। दिए गए छूट का प्रतिशत क्या है?",
+          "choices": [
+            "12%",
+            "15%",
+            "18%",
+            "20%"
+          ],
+          "solution": "छूट की गणना 360 - 306 = 54 के रूप में की जाती है। छूट का प्रतिशत (54/360) * 100 = 15% है। अन्य विकल्प गलत हैं क्योंकि वे गणना मान के साथ मेल नहीं खाते। 10% के लिए छूट 36 होगी, 20% के लिए छूट 72 होगी, और 25% के लिए छूट 90 होगी।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains the same meaning, and uses appropriate Hindi terminology for discounts and percentages.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका पुस्तकाची निर्धारित किंमत 360 रुपये आहे. ते 306 रुपयांना विकले गेले. दिलेला टक्का सवलत किती आहे?",
+          "choices": [
+            "12%",
+            "15%",
+            "18%",
+            "20%"
+          ],
+          "solution": "सवलत 360 - 306 = 54 असते. टक्का सवलत (54/360) * 100 = 15% असते. इतर विकल्प चुकीचे आहेत कारण ते गणितानुसार मिळालेल्या मूल्याशी मेळ नाहीत. 10% ची सवलत 36 असती, 20% ची सवलत 72 असती आणि 25% ची सवलत 90 असती.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate terminology common in Marathi-medium textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Calculates discount as (360 - 306) / 360 * 100, but miscalculates 54/360 as 12% instead of 15%",
+        null,
+        "Calculates discount as (360 - 306) / 306 * 100 instead of (360 - 306) / 360 * 100",
+        "Pupil calculates discount as (360 - 306) / 306 instead of (360 - 306) / 360"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 15%, as the discount is 54, and 54/360 * 100 = 15%. The author's solution is correct, and the reasoning for the distractors reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 38,
+          "pageStart": 61,
+          "pageEnd": 62,
+          "headingPath": [
+            "9. Discount and Commission"
+          ]
+        },
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 39,
+          "pageStart": 62,
+          "pageEnd": 64,
+          "headingPath": [
+            "9. Discount and Commission"
+          ]
+        },
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 40,
+          "pageStart": 64,
+          "pageEnd": 65,
+          "headingPath": [
+            "9. Discount and Commission"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-11-01T00:40:17.879Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If a seller sells an item for Rs. 250,000 and the broker receives 2% brokerage, how much total brokerage does the broker get if they receive it from both the buyer and the seller?",
+      "choices": [
+        "Rs. 5,000",
+        "Rs. 10,000",
+        "Rs. 25,000",
+        "Rs. 50,000"
+      ],
+      "answerIndex": 1,
+      "solution": "The total brokerage is calculated by taking 2% of Rs. 250,000, which is Rs. 5,000. Since the broker receives this amount from both the buyer and the seller, the total is 5,000 + 5,000 = Rs. 10,000. Choosing Rs. 5,000 would be incorrect because it only accounts for one side of the transaction, while Rs. 25,000 and Rs. 50,000 are much larger than the correct percentage calculation.",
+      "checkExpr": "250000*0.02*2",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि कोई विक्रेता एक वस्तु को 250,000 रुपये में बेचता है और ब्रोकर 2% ब्रोकरेज प्राप्त करता है, तो ब्रोकर को कुल कितना ब्रोकरेज मिलता है यदि वह खरीदार और विक्रेता दोनों से इसे प्राप्त करता है?",
+          "choices": [
+            "250,000 रुपये के 2% ब्रोकरेज",
+            "10,000 रुपये",
+            "25,000 रुपये",
+            "50,000 रुपये"
+          ],
+          "solution": "कुल ब्रोकरेज की गणना 250,000 रुपये के 2% लेकर की जाती है, जो 5,000 रुपये है। चूंकि ब्रोकर को इस राशि को खरीदार और विक्रेता दोनों से प्राप्त होती है, तो कुल राशि 5,000 + 5,000 = 10,000 रुपये होती है। 5,000 रुपये चुनना गलत होगा क्योंकि यह केवल लेन-देन के एक पक्ष को ही ध्यान में रखता है, जबकि 25,000 रुपये और 50,000 रुपये सही प्रतिशत गणना के बराबर नहीं हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the original English question and solution, with appropriate terminology and logical structure.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका विक्रेत्याने एक वस्तू 250,000 रुपयांना विकली आणि एजंटला 2% एजेंसी शुल्क मिळाले, तर जर एजंटला खरेदीदार आणि विक्रेत्याकडून दोन्हीकडून एजेंसी शुल्क मिळत असेल तर एजंटला एकूण किती एजेंसी शुल्क मिळेल?",
+          "choices": [
+            "250,000 रुपये",
+            "10,000 रुपये",
+            "25,000 रुपये",
+            "50,000 रुपये"
+          ],
+          "solution": "एजेंसी शुल्क गणना 250,000 रुपयांच्या 2% घेऊन केली जाते, जे 5,000 रुपये आहे. जर एजंटला खरेदीदार आणि विक्रेत्याकडून दोन्हीकडून एजेंसी शुल्क मिळत असेल तर एकूण 5,000 + 5,000 = 10,000 रुपये असेल. 5,000 रुपये निवडणे चूक असेल कारण ते केवळ एका बाजूच्या व्यवहाराचा विचार करते, तर 25,000 आणि 50,000 रुपये अचूक शेकडा गणनेपेक्षा खूप जास्त आहेत.",
+          "imageAlt": null,
+          "critique": "The Marathi translation accurately reflects the English question and solution, with appropriate terminology and correct numerical values. The structure and meaning are preserved.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "calculates only one side of the brokerage",
+        null,
+        "miscalculates the percentage",
+        "adds the percentage as a whole number instead of calculating it"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly calculates 2% of 250,000 as 5,000 and doubles it for both buyer and seller, resulting in 10,000. The reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 41,
+          "pageStart": 66,
+          "pageEnd": 67,
+          "headingPath": [
+            "9. Discount and Commission"
+          ]
+        },
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 42,
+          "pageStart": 67,
+          "pageEnd": 68,
+          "headingPath": [
+            "9. Discount and Commission"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-11-01T00:40:17.879Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "Rajesh sold a house for Rs. 5,00,000 through a broker who charged 2% commission. How much total commission did the broker receive?",
+      "choices": [
+        "Rs. 5,000",
+        "Rs. 10,000",
+        "Rs. 20,000",
+        "Rs. 50,000"
+      ],
+      "answerIndex": 1,
+      "solution": "The commission is 2% of Rs. 5,00,000, which is Rs. 10,000. The other options are incorrect calculations or misinterpretations of the percentage.",
+      "checkExpr": "500000*0.02",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "राजेश ने एक ब्रोकर के माध्यम से एक घर 5,00,000 रुपए में बेचा, जिसने 2% कमीशन लिया। ब्रोकर को कुल कितना कमीशन मिला?",
+          "choices": [
+            "5,000 रुपए",
+            "10,000 रुपए",
+            "20,000 रुपए",
+            "50,000 रुपए"
+          ],
+          "solution": "कमीशन 5,00,000 रुपए के 2% है, जो 10,000 रुपए है। अन्य विकल्प गलत गणना या प्रतिशत के गलत अर्थ के हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate terminology. The correct answer remains option (2) and the distractors are still incorrect.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "राजेश एका ब्रोकरमार्फत घर ५,००,००० रुपयांना विकला ज्याने २% विक्री शुल्क घेतले. ब्रोकरला किती एकूण विक्री शुल्क मिळाले?",
+          "choices": [
+            "५,००० रुपये",
+            "१०,००० रुपये",
+            "२०,००० रुपये",
+            "५०,००० रुपये"
+          ],
+          "solution": "विक्री शुल्क ५,००,००० रुपयांच्या २% आहे, जे १०,००० रुपये आहे. इतर विकल्प चुकीच्या गणना किंवा शेकडा गणिताच्या चुकीच्या अटींमुळे असतात.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate local terminology. The correct answer remains in the same position, and the distractors are still incorrect.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "calculates 1% instead of 2%",
+        null,
+        "incorrectly doubles the amount",
+        "uses the full amount without applying the percentage"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct calculation is 2% of 5,00,000, which is 10,000. The other options represent common errors like calculating 1% instead of 2%, doubling the amount, or using the full amount without applying the percentage.",
+      "sources": [
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 41,
+          "pageStart": 66,
+          "pageEnd": 67,
+          "headingPath": [
+            "9. Discount and Commission"
+          ]
+        },
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 42,
+          "pageStart": 67,
+          "pageEnd": 68,
+          "headingPath": [
+            "9. Discount and Commission"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-11-01T00:40:17.879Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "If Sukhdeo sold 10 quintals of wheat at Rs. 4050 per quintal and the commission was 1%, how much did he receive after paying the commission?",
+      "choices": [
+        "Rs. 40,095",
+        "Rs. 40,500",
+        "Rs. 40,905",
+        "Rs. 41,000"
+      ],
+      "answerIndex": 0,
+      "solution": "The total selling price is 10 × 4050 = Rs. 40,500. The commission is 1% of 40,500, which is Rs. 405. Subtracting this from the selling price gives 40,500 - 405 = Rs. 40,095. A pupil who forgets to subtract the commission might pick 'Rs. 40,500', while others might add the commission or miscalculate it.",
+      "checkExpr": "4050*10 - 4050*10*0.01",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि सुखदेव ने 10 क्विंटल गेहूँ 4050 रुपए प्रति क्विंटल पर बेचा और आयोग 1% था, तो आयोग के भुगतान के बाद उसे कितना प्राप्त हुआ?",
+          "choices": [
+            "40,095 रुपए",
+            "40,500 रुपए",
+            "40,905 रुपए",
+            "41,000 रुपए"
+          ],
+          "solution": "कुल बिक्री मूल्य 10 × 4050 = 40,500 रुपए है। आयोग 40,500 के 1% है, जो 405 रुपए है। इसे बिक्री मूल्य में से घटाने पर 40,500 - 405 = 40,095 रुपए प्राप्त होता है। आयोग को घटाना भूल जाने वाला छात्र '40,500 रुपए' चुन सकता है, जबकि अन्य आयोग जोड़ सकते हैं या गलती से निकाल सकते हैं।",
+          "imageAlt": null,
+          "critique": "Hindi translation accurately reflects the English question, with appropriate terminology and logical structure. The correct answer remains option (1) and the distractors are still incorrect.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "सुखदेवने 10 क्विंटल गहू 4050 रुपये प्रति क्विंटल किंमतीने विकला आणि एजंटचा शेकडा 1 टक्के होता, तर एजंटला पैसे दिल्यानंतर त्याला किती पैसे मिळाले?",
+          "choices": [
+            "40,095 रुपये",
+            "40,500 रुपये",
+            "40,905 रुपये",
+            "41,000 रुपये"
+          ],
+          "solution": "एकूण विक्री किंमत 10 × 4050 = 40,500 रुपये आहे. एजंटचा शेकडा 40,500 चा 1 टक्का आहे, जो 405 रुपये आहे. विक्री किंमतीतून तो वजा करून 40,500 - 405 = 40,095 रुपये मिळतात. एजंटचा शेकडा वजा करण्याचा विसर केल्यास विद्यार्थी '40,500 रुपये' निवडू शकतो, तर इतर लोक एजंटचा शेकडा जोडतात किंवा चुकीचा गणना करतात.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate local terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "forgets to subtract the commission",
+        "calculates the commission incorrectly",
+        "adds the commission instead of subtracting it"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct. The total selling price is Rs. 40,500, and 1% commission is Rs. 405. Subtracting the commission gives Rs. 40,095, which matches the correct answer.",
+      "sources": [
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 41,
+          "pageStart": 66,
+          "pageEnd": 67,
+          "headingPath": [
+            "9. Discount and Commission"
+          ]
+        },
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 42,
+          "pageStart": 67,
+          "pageEnd": 68,
+          "headingPath": [
+            "9. Discount and Commission"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-11-01T00:40:17.879Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "A saree is sold for Rs. 1120 after a 20% discount. What is the marked price of the saree?",
+      "choices": [
+        "Rs. 1400",
+        "Rs. 1300",
+        "Rs. 1450",
+        "Rs. 1200"
+      ],
+      "answerIndex": 0,
+      "solution": "If the selling price is 80% of the marked price (after a 20% discount), then the marked price is (1120 / 80) * 100 = Rs. 1400. The other options are incorrect because they do not reflect the correct calculation. Rs. 1300 would be 80% of Rs. 1625, Rs. 1250 would be 80% of Rs. 1562.5, and Rs. 1200 would be 80% of Rs. 1500.",
+      "checkExpr": "1120*100/80",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक साड़ी को 20% की छूट के बाद 1120 रुपए में बेचा जाता है। साड़ी का अंकित मूल्य क्या है?",
+          "choices": [
+            "1400 रुपए",
+            "1300 रुपए",
+            "1450 रुपए",
+            "1200 रुपए"
+          ],
+          "solution": "यदि बिक्री मूल्य अंकित मूल्य का 80% है (20% छूट के बाद), तो अंकित मूल्य (1120 / 80) * 100 = 1400 रुपए है। अन्य विकल्प गलत हैं क्योंकि वे सही गणना को प्रतिबिंबित नहीं करते। 1300 रुपए 1625 रुपए का 80% होगा, 1250 रुपए 1562.5 रुपए का 80% होगा, और 1200 रुपए 1500 रुपए का 80% होगा।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Hindi terminology for mathematical concepts.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका साडीची विक्री 20% छूट दिल्यानंतर रु. 1120 ला झाली. साडीची बेरजेची किंमत किती आहे?",
+          "choices": [
+            "रु. 1400",
+            "रु. 1300",
+            "रु. 1450",
+            "रु. 1200"
+          ],
+          "solution": "जर विक्री किंमत बेरजेच्या किंमतीच्या 80% असेल (20% छूट दिल्यानंतर), तर बेरजेची किंमत (1120 / 80) * 100 = रु. 1400 आहे. इतर पर्याय चुकीचे आहेत कारण ते योग्य गणना प्रतिबिंबित करत नाहीत. रु. 1300 ही रु. 1625 च्या 80% असेल, रु. 1250 ही रु. 1562.5 च्या 80% असेल आणि रु. 1200 ही रु. 1500 च्या 80% असेल.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate terminology as used in Marathi-medium textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Thinking that 20% discount means 20% of the selling price, not of the marked price",
+        "Pupil adds 20% of the selling price to the selling price instead of calculating the original price based on the discount",
+        "Calculates 20% of the discounted price instead of the original marked price"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct. The marked price is calculated by recognizing that 1120 is 80% of the marked price, so dividing by 0.8 gives 1400. The author's reasoning for the distractors is valid and reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 38,
+          "pageStart": 61,
+          "pageEnd": 62,
+          "headingPath": [
+            "9. Discount and Commission"
+          ]
+        },
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 39,
+          "pageStart": 62,
+          "pageEnd": 64,
+          "headingPath": [
+            "9. Discount and Commission"
+          ]
+        },
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 40,
+          "pageStart": 64,
+          "pageEnd": 65,
+          "headingPath": [
+            "9. Discount and Commission"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-11-01T00:40:17.879Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "A broker receives 3% commission on the sale of a house worth Rs. 7,50,000. If the broker receives the commission from both the buyer and the seller, what is the total commission received by the broker?",
+      "choices": [
+        "Rs. 22,500",
+        "Rs. 45,000",
+        "Rs. 75,000",
+        "Rs. 1,50,000"
+      ],
+      "answerIndex": 1,
+      "solution": "The commission is 3% of 7,50,000, which is Rs. 22,500. Since the broker receives it from both the buyer and the seller, the total is 22,500 × 2 = Rs. 45,000. A pupil who forgets to double the amount might pick 'Rs. 22,500', while others might miscalculate the percentage or add the values incorrectly.",
+      "checkExpr": "750000*0.03*2",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक ब्रोकर के द्वारा 7,50,000 रुपए के मूल्य के एक घर के बिक्री पर 3% कमीशन प्राप्त होता है। यदि ब्रोकर कमीशन खरीदार और बेचने वाले दोनों से प्राप्त करता है, तो ब्रोकर द्वारा प्राप्त कुल कमीशन क्या है?",
+          "choices": [
+            "22,500 रुपए",
+            "45,000 रुपए",
+            "75,000 रुपए",
+            "1,50,000 रुपए"
+          ],
+          "solution": "कमीशन 7,50,000 का 3% है, जो 22,500 रुपए है। चूंकि ब्रोकर कमीशन खरीदार और बेचने वाले दोनों से प्राप्त करता है, तो कुल राशि 22,500 × 2 = 45,000 रुपए है। एक छात्र जो राशि को दोगुना करना भूल जाए तो '22,500 रुपए' चुन सकता है, जबकि अन्य लोग प्रतिशत की गणना गलत कर सकते हैं या मानों को गलत तरीके से जोड़ सकते हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the original English question with appropriate terminology and structure.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका व्यापारीला 7,50,000 रुपयांच्या घराच्या विक्रीवर 3% व्याज मिळते. जर व्यापारीला खरेदीदार आणि विक्रेत्याकडून व्याज मिळत असेल, तर व्यापारीला मिळणारा एकूण व्याज किती असेल?",
+          "choices": [
+            "75,000 रुपये",
+            "45,000 रुपये",
+            "22,500 रुपये",
+            "1,50,000 रुपये"
+          ],
+          "solution": "व्याज 7,50,000 च्या 3% आहे, जो 22,500 रुपये आहे. जर व्यापारीला खरेदीदार आणि विक्रेत्याकडून व्याज मिळत असेल, तर एकूण 22,500 × 2 = 45,000 रुपये असेल. एखादा विद्यार्थी जर दुप्पट करण्याचा विसर केला तर तो '22,500 रुपये' निवडेल, तर इतर लोक शेकडा गणना करण्याचा चूक करतील किंवा एकूण रक्कम जोडून चूक करतील.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate terminology. The solution and options are correctly translated and retain their original intent.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "calculates only one side of the commission",
+        null,
+        "miscalculates the percentage",
+        "adds the percentage as a whole number instead of calculating it"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct. The commission is 3% of 7,50,000, which is Rs. 22,500. Since the broker receives this from both the buyer and the seller, the total is 22,500 × 2 = Rs. 45,000. The author's reasoning for the distractors is valid and reflects common student misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 41,
+          "pageStart": 66,
+          "pageEnd": 67,
+          "headingPath": [
+            "9. Discount and Commission"
+          ]
+        },
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 42,
+          "pageStart": 67,
+          "pageEnd": 68,
+          "headingPath": [
+            "9. Discount and Commission"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-11-01T00:40:17.879Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
     }
   ]
 }

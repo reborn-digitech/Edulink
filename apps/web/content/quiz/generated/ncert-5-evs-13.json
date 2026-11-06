@@ -902,6 +902,368 @@
       "generatedAt": "2026-10-28T06:46:48.230Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the main source of income for the Changpa tribe?",
+      "choices": [
+        "Farming",
+        "Fishing",
+        "Goat rearing",
+        "Mining"
+      ],
+      "answerIndex": 2,
+      "solution": "Goat rearing is the main source of income for the Changpa tribe because they depend on goats for essential resources like milk, meat, skin, and wool. Farming and fishing are not suitable in their environment, and mining is not a primary activity for them.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "चंगपा जनजाति के लिए मुख्य आय का स्रोत क्या है?",
+          "choices": [
+            "कृषि",
+            "मत्स्य पालन",
+            "बकरी पालन",
+            "खनन"
+          ],
+          "solution": "बकरी पालन चंगपा जनजाति के लिए मुख्य आय का स्रोत है क्योंकि वे दूध, मांस, खाल और बाल के लिए बकरियों पर निर्भर करते हैं। उनके वातावरण में कृषि और मत्स्य पालन उपयुक्त नहीं हैं, और खनन उनके लिए मुख्य गतिविधि नहीं है।",
+          "imageAlt": null,
+          "critique": "Translation accurately reflects original meaning with appropriate Hindi terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "चंगपा जातीचा मुख्य उपजीविका कशाचा असतो?",
+          "choices": [
+            "शेती",
+            "मासेमारी",
+            "गाय लावणे",
+            "खनिज खोदकाम"
+          ],
+          "solution": "चंगपा जातीचा मुख्य उपजीविका गाय लावणे असतो कारण त्यांना गायांपासून आवश्यक सामग्री जसे की दूध, मांस, चरबी आणि रोल यांची आवश्यकता असते. त्यांच्या वातावरणात शेती आणि मासेमारी योग्य नसतात आणि खनिज खोदकाम त्यांच्या मुख्य क्रियाकलापांपैकी नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for the concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Thinks they farm crops",
+        "Thinks they depend on fishing",
+        null,
+        "Believes the tribe's income comes from extracting natural resources"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 2 (Goat rearing), as the passage clearly states that the Changpa tribe gets all their needs from their goats. The other options are incorrect and represent plausible misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/5/environmental-studies/eeap113.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 13: A Shelter so High!"
+          ]
+        },
+        {
+          "document": "ncert/5/environmental-studies/eeap113.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 13: A Shelter so High!"
+          ]
+        },
+        {
+          "document": "ncert/5/environmental-studies/eeap113.pdf",
+          "ordinal": 2,
+          "pageStart": 4,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 13: A Shelter so High!"
+          ]
+        }
+      ],
+      "edition": "2024 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-23T01:51:31.062Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Why do the Changpas carry oxygen cylinders when they go to higher altitudes?",
+      "choices": [
+        "To keep warm in the cold",
+        "To make their tents stronger",
+        "To help them breathe",
+        "To protect their animals"
+      ],
+      "answerIndex": 2,
+      "solution": "The correct answer is 'To help them breathe' because at higher altitudes, the air contains less oxygen, making it harder to breathe. The other options are unrelated to the physiological effects of high altitude.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "चांगपास ऊंचाई पर जाते समय ऑक्सीजन सिलेंडर क्यों ले जाते हैं?",
+          "choices": [
+            "ठंड में गर्म रहने के लिए",
+            "अपने झोपड़ियों को मजबूत बनाने के लिए",
+            "उन्हें सांस लेने में सहायता करने के लिए",
+            "अपने जानवरों की रक्षा करने के लिए"
+          ],
+          "solution": "सही उत्तर 'उन्हें सांस लेने में सहायता करने के लिए' है क्योंकि ऊंचाई पर हवा में कम ऑक्सीजन होती है, जिसके कारण सांस लेना कठिन हो जाता है। अन्य विकल्प ऊंचाई के शारीरिक प्रभावों से संबंधित नहीं हैं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, with appropriate Hindi terminology used.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "चांगपास उंच अंतरावर जाताना ऑक्सीजन सिलेंडर का घेतात?",
+          "choices": [
+            "ठिणगीत गरम राहण्यासाठी",
+            "त्यांच्या तंबूंना जास्त शक्तिशाली करण्यासाठी",
+            "त्यांना श्वास घेण्यास मदत करण्यासाठी",
+            "त्यांच्या प्राण्यांची रक्षण करण्यासाठी"
+          ],
+          "solution": "सही उत्तर 'त्यांना श्वास घेण्यास मदत करण्यासाठी' आहे कारण उंच अंतरावर वातावरणामध्ये ऑक्सीजनचे प्रमाण कमी असते, जे श्वास घेण्यास अवघड करते. इतर विकल्प उंच अंतराच्या शारीरिक परिणामांशी संबंधित नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "mistakenly relates oxygen to warmth",
+        "confuses the function of oxygen cylinders with tent construction",
+        null,
+        "mistakenly thinks oxygen is for animals"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-constructed and the correct answer is clearly supported by the reasoning provided. The distractors reflect common misconceptions that students might have.",
+      "sources": [
+        {
+          "document": "ncert/5/environmental-studies/eeap113.pdf",
+          "ordinal": 3,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 13: A Shelter so High!"
+          ]
+        },
+        {
+          "document": "ncert/5/environmental-studies/eeap113.pdf",
+          "ordinal": 4,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 13: A Shelter so High!"
+          ]
+        },
+        {
+          "document": "ncert/5/environmental-studies/eeap113.pdf",
+          "ordinal": 5,
+          "pageStart": 8,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 13: A Shelter so High!"
+          ]
+        }
+      ],
+      "edition": "2024 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-23T01:51:31.062Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If a house is made of stone and mud, what could be a reason for this?",
+      "choices": [
+        "It is easy to get materials",
+        "It is suitable for cold weather",
+        "It is suitable for hot and cold weather",
+        "It is used for temporary shelter"
+      ],
+      "answerIndex": 0,
+      "solution": "Houses made of stone and mud are often constructed because these materials are readily available in many regions, making the building process easier. The other options, such as suitability for cold or hot weather, or being used for temporary shelter, are not directly related to the availability of materials.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक घर पत्थर और मिट्टी से बना हो, तो इसका क्या कारण हो सकता है?",
+          "choices": [
+            "इन सामग्रियों को प्राप्त करना आसान है",
+            "यह ठंडे मौसम के लिए उपयुक्त है",
+            "यह गर्म और ठंडे मौसम के लिए उपयुक्त है",
+            "इसे अस्थायी आवास के लिए उपयोग किया जाता है"
+          ],
+          "solution": "पत्थर और मिट्टी के घर अक्सर इसलिए बनाए जाते हैं क्योंकि इन सामग्रियों की उपलब्धता बहुत स्थानों पर होती है, जिससे निर्माण प्रक्रिया सरल हो जाती है। अन्य विकल्प, जैसे ठंडे मौसम के लिए उपयुक्त होना या अस्थायी आवास के लिए उपयोग किया जाना, सामग्री की उपलब्धता से सीधा संबंध नहीं रखते हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर एक घर पाणी आणि मातीचे बनलेले असेल, तर याचे कारण काय असू शकते?",
+          "choices": [
+            "सामग्री मिळणे सोपे आहे",
+            "हे थंड हवामानास उपयुक्त आहे",
+            "हे उष्ण आणि थंड हवामानास उपयुक्त आहे",
+            "हे अस्थायी आश्रयासाठी वापरले जाते"
+          ],
+          "solution": "पाणी आणि मातीचे घर बांधण्यासाठी असे सामग्री बरीच ठिकाणी उपलब्ध असल्यामुळे बांधकाम प्रक्रिया सोपी होते. थंड हवामानास उपयुक्त असणे, उष्ण आणि थंड हवामानास उपयुक्त असणे किंवा अस्थायी आश्रयासाठी वापरले जाणे हे इतर विकल्प आहेत, जे सामग्रीच्या उपलब्धतेशी सीधा संबंध नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "students may think that stone and mud are good insulators for cold climates",
+        "students may think that mud and stone can handle both extreme temperatures",
+        "students may think that stone and mud houses are only for short-term use"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 0, as the passage implies that stone and mud are used because the materials are readily available. The other options are plausible but not directly supported by the passage, and the author's reasoning for the distractors reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/5/environmental-studies/eeap113.pdf",
+          "ordinal": 6,
+          "pageStart": 10,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 13: A Shelter so High!"
+          ]
+        }
+      ],
+      "edition": "2024 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-23T01:51:31.062Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "What is the main reason for the different types of houses in different regions?",
+      "choices": [
+        "The availability of local materials",
+        "The number of people living in the house",
+        "The color of the house",
+        "The shape of the roof"
+      ],
+      "answerIndex": 0,
+      "solution": "The main reason for different types of houses in various regions is the availability of local materials, as this directly affects what can be used for construction. The number of people, color, and roof shape are not primary factors in determining house design. These other options do not influence the structural or material choices as significantly as local resources do.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "विभिन्न क्षेत्रों में विभिन्न प्रकार के घरों के मुख्य कारण क्या है?",
+          "choices": [
+            "स्थानीय सामग्री की उपलब्धता",
+            "घर में रहने वाले लोगों की संख्या",
+            "घर के रंग",
+            "छत के आकार"
+          ],
+          "solution": "विभिन्न क्षेत्रों में विभिन्न प्रकार के घरों का मुख्य कारण स्थानीय सामग्री की उपलब्धता है, क्योंकि यह निर्माण के लिए क्या उपयोग किया जा सकता है, इस पर सीधा प्रभाव डालता है। लोगों की संख्या, रंग और छत के आकार घर के डिज़ाइन निर्धारित करने में प्रमुख कारक नहीं हैं। इन अन्य विकल्पों में स्थानीय संसाधनों के मुकाबले निर्माण या सामग्री चयन में इतना प्रभाव नहीं होता।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains original meaning, and uses appropriate Hindi terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "विविध प्रांतांमध्ये विविध प्रकारच्या घरांचा मुख्य कारण काय आहे?",
+          "choices": [
+            "स्थानिक सामग्रीची उपलब्धता",
+            "घरात राहणाऱ्या लोकांची संख्या",
+            "घराचा रंग",
+            "छताचा आकार"
+          ],
+          "solution": "विविध प्रांतांमध्ये विविध प्रकारच्या घरांचा मुख्य कारण स्थानिक सामग्रीची उपलब्धता आहे, कारण ही बाब बांधकामासाठी वापरता येणाऱ्या सामग्रीवर सीधा परिणाम करते. लोकांची संख्या, रंग आणि छताचा आकार घराच्या डिझाइनच्या मुख्य कारणांमध्ये समाविष्ट नाहीत. या इतर विकल्पांमुळे घराच्या संरचनात्मक किंवा सामग्रीच्या निवडेवर स्थानिक संसाधनांपेक्षा जास्त परिणाम होत नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology consistent with educational materials.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Students may think that house size and type depend on family size rather than environmental factors",
+        "refers to a physical characteristic not mentioned",
+        "mentions a feature not discussed"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 0, as the availability of local materials is a key factor in house design, as stated in the passage. The other options are not supported and represent plausible misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/5/environmental-studies/eeap113.pdf",
+          "ordinal": 3,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 13: A Shelter so High!"
+          ]
+        },
+        {
+          "document": "ncert/5/environmental-studies/eeap113.pdf",
+          "ordinal": 4,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 13: A Shelter so High!"
+          ]
+        },
+        {
+          "document": "ncert/5/environmental-studies/eeap113.pdf",
+          "ordinal": 5,
+          "pageStart": 8,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 13: A Shelter so High!"
+          ]
+        }
+      ],
+      "edition": "2024 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-23T01:51:31.062Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
     }
   ]
 }

@@ -499,6 +499,196 @@
       "generatedAt": "2026-11-01T23:16:52.736Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the area of a rectangle with a length of 15 cm and a breadth of 5 cm?",
+      "choices": [
+        "75 sqcm",
+        "30 sqcm",
+        "15 sqcm",
+        "5 sqcm"
+      ],
+      "answerIndex": 0,
+      "solution": "The area of a rectangle is calculated as length × breadth. So, 15 cm × 5 cm = 75 sqcm. The other options are incorrect because they either multiply incorrectly (30, 15, 5) or use wrong values.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "15 सेमी लंबाई और 5 सेमी चौड़ाई वाले आयत का क्षेत्रफल क्या है?",
+          "choices": [
+            "75 वर्ग सेमी",
+            "30 वर्ग सेमी",
+            "15 वर्ग सेमी",
+            "5 वर्ग सेमी"
+          ],
+          "solution": "एक आयत का क्षेत्रफल लंबाई × चौड़ाई के रूप में गणना किया जाता है। इसलिए, 15 सेमी × 5 सेमी = 75 वर्ग सेमी। अन्य विकल्प गलत हैं क्योंकि वे गलत रूप से गुणा करते हैं (30, 15, 5) या गलत मानों का उपयोग करते हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard mathematical terminology as found in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "15 सेमी लांबी आणि 5 सेमी रुंदी असलेल्या चौरसाचे क्षेत्रफळ किती आहे?",
+          "choices": [
+            "75 चौ.सेमी",
+            "30 चौ.सेमी",
+            "15 चौ.सेमी",
+            "5 चौ.सेमी"
+          ],
+          "solution": "चौरसाचे क्षेत्रफळ लांबी × रुंदी असे गणले जाते. म्हणून, 15 सेमी × 5 सेमी = 75 चौ.सेमी. इतर विकल्प चुकीचे आहेत कारण ते चुकीच्या पद्धतीने गुणाकार करतात (30, 15, 5) किंवा चुकीच्या मूल्यांचा वापर करतात.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "incorrect multiplication",
+        "uses only one dimension",
+        "uses one dimension as area"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 75 sqcm, as area of a rectangle is length × breadth. The distractors reflect common misconceptions like incorrect multiplication, using only one dimension, or misinterpreting a single dimension as area.",
+      "sources": [
+        {
+          "document": "balbharati/7/mathematics/703020004.pdf",
+          "ordinal": 58,
+          "pageStart": 90,
+          "pageEnd": 91,
+          "headingPath": [
+            "12. Perimeter and Area"
+          ]
+        },
+        {
+          "document": "balbharati/7/mathematics/703020004.pdf",
+          "ordinal": 59,
+          "pageStart": 91,
+          "pageEnd": 92,
+          "headingPath": [
+            "12. Perimeter and Area"
+          ]
+        },
+        {
+          "document": "balbharati/7/mathematics/703020004.pdf",
+          "ordinal": 60,
+          "pageStart": 92,
+          "pageEnd": 94,
+          "headingPath": [
+            "12. Perimeter and Area"
+          ]
+        }
+      ],
+      "edition": "2026 edition",
+      "generatedAt": "2026-10-31T12:18:45.663Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "A rectangle has a length of 17 cm and a breadth of 15 cm. What is its perimeter?",
+      "choices": [
+        "64 cm",
+        "32 cm",
+        "17 cm",
+        "24 cm"
+      ],
+      "answerIndex": 0,
+      "solution": "The perimeter of a rectangle is calculated as 2 × (length + breadth). So, 2 × (17 cm + 15 cm) = 2 × 32 cm = 64 cm. The other options are incorrect because they either add the length and breadth once (32 cm), use the length alone (17 cm), or use the side of a square (24 cm).",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक आयत की लंबाई 17 सेमी और चौड़ाई 15 सेमी है। इसका परिमाप क्या है?",
+          "choices": [
+            "64 सेमी",
+            "32 सेमी",
+            "17 सेमी",
+            "24 सेमी"
+          ],
+          "solution": "एक आयत का परिमाप 2 × (लंबाई + चौड़ाई) के रूप में गणना किया जाता है। इसलिए, 2 × (17 सेमी + 15 सेमी) = 2 × 32 सेमी = 64 सेमी। अन्य विकल्प गलत हैं क्योंकि वे लंबाई और चौड़ाई को एक बार जोड़ते हैं (32 सेमी), लंबाई के एकल उपयोग (17 सेमी) या वर्ग की भुजा के उपयोग (24 सेमी) करते हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Hindi mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका चौकोनाची लांबी 17 सेमी आणि रुंदी 15 सेमी आहे. त्याची परिमिती किती आहे?",
+          "choices": [
+            "64 सेमी",
+            "32 सेमी",
+            "17 सेमी",
+            "24 सेमी"
+          ],
+          "solution": "चौकोनाची परिमिती 2 × (लांबी + रुंदी) असे काढली जाते. म्हणून, 2 × (17 सेमी + 15 सेमी) = 2 × 32 सेमी = 64 सेमी. इतर विकल्प चुकीचे आहेत कारण ते लांबी आणि रुंदी एकदा जोडतात (32 सेमी), लांबी एकटीच वापरतात (17 सेमी), किंवा चौरसाच्या बाजूचा वापर करतात (24 सेमी).",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms for geometry.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "adds the length and breadth once",
+        "uses only the length",
+        "confuses with side of a square"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly applies the formula for the perimeter of a rectangle. The reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/7/mathematics/703020004.pdf",
+          "ordinal": 58,
+          "pageStart": 90,
+          "pageEnd": 91,
+          "headingPath": [
+            "12. Perimeter and Area"
+          ]
+        },
+        {
+          "document": "balbharati/7/mathematics/703020004.pdf",
+          "ordinal": 59,
+          "pageStart": 91,
+          "pageEnd": 92,
+          "headingPath": [
+            "12. Perimeter and Area"
+          ]
+        },
+        {
+          "document": "balbharati/7/mathematics/703020004.pdf",
+          "ordinal": 60,
+          "pageStart": 92,
+          "pageEnd": 94,
+          "headingPath": [
+            "12. Perimeter and Area"
+          ]
+        }
+      ],
+      "edition": "2026 edition",
+      "generatedAt": "2026-10-31T12:18:45.663Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
     }
   ]
 }

@@ -273,6 +273,748 @@
       "generatedAt": "2026-10-28T17:03:10.078Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "Which of the following is mentioned as a source of food by early humans?",
+      "choices": [
+        "Cultivated wheat",
+        "Processed meat",
+        "Refined sugar",
+        "Industrial grains"
+      ],
+      "answerIndex": 0,
+      "solution": "Cultivated wheat is correct because early humans transitioned from gathering to farming, and wheat was one of the first crops they cultivated. Processed meat, refined sugar, and industrial grains are not consistent with the diets of early humans, who did not have the technology or need for such processed foods.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा भोजन के स्रोत के रूप में प्राचीन मनुष्यों द्वारा उल्लिखित किया गया है?",
+          "choices": [
+            "खेती की गई गेहूं",
+            "प्रक्रिया किए गए मांस",
+            "शुद्धिकृत चीनी",
+            "औद्योगिक अनाज"
+          ],
+          "solution": "खेती की गई गेहूं सही है क्योंकि प्राचीन मनुष्यों ने एकत्र करने से खेती में संक्रमण किया और गेहूं उनके द्वारा खेती करने वाले पहले फसलों में से एक था। प्रक्रिया किए गए मांस, शुद्धिकृत चीनी और औद्योगिक अनाज प्राचीन मनुष्यों के आहार के साथ संगत नहीं हैं, जिनके पास ऐसे प्रक्रिया भोजन के लिए तकनीक या आवश्यकता नहीं थी।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains original meaning, and uses appropriate Hindi terminology for a textbook context.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते जेवणाचे स्रोत व्हायरस मानवांनी उल्लेखले आहे?",
+          "choices": [
+            "खतरोपाचे गहू",
+            "प्रक्रियाकृत मांस",
+            "शुद्धीकृत चीनी",
+            "औद्योगिक शेंगदाणे"
+          ],
+          "solution": "खतरोपाचे गहू बरोबर आहे कारण व्हायरस मानवांनी गोळा करण्यापासून शेतीकडे वळले आणि गहू हे त्यांनी शेती करण्यासाठी पहिले शेती केलेले फळ असल्याचे दिसते. प्रक्रियाकृत मांस, शुद्धीकृत चीनी आणि औद्योगिक शेंगदाणे व्हायरस मानवांच्या आहाराशी असंगत आहेत, कारण त्यांच्याकडे अशा प्रक्रियाकृत खाद्यपदार्थांच्या तंत्रज्ञानाची किंवा आवश्यकतेची नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for agricultural and food-related concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses modern agricultural products with early practices",
+        "Implies advanced processing not mentioned",
+        "Suggests industrialization in early times"
+      ],
+      "solverAnswers": [
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 0 (cultivated wheat), as the passage explicitly mentions early humans growing plants like wheat. The other options reflect misconceptions about the level of technological or agricultural development in early societies.",
+      "sources": [
+        {
+          "document": "ncert/11/history/kehs101.pdf",
+          "ordinal": 0,
+          "pageStart": 2,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 1: early societies",
+            "Writing and City Life"
+          ]
+        },
+        {
+          "document": "ncert/11/history/kehs101.pdf",
+          "ordinal": 1,
+          "pageStart": 3,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 1: early societies",
+            "Writing and City Life"
+          ]
+        },
+        {
+          "document": "ncert/11/history/kehs101.pdf",
+          "ordinal": 2,
+          "pageStart": 3,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 1: early societies",
+            "Writing and City Life"
+          ]
+        },
+        {
+          "document": "ncert/11/history/kehs101.pdf",
+          "ordinal": 3,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 1: early societies",
+            "Timeline i",
+            "This timeline focuses on the emergence of humans and the domestication of plants and animals. It highlights some major technological developments such as the use of fire, metals, plough agriculture and the wheel. Other processes that are shown include the emergence of cities and the use of writing. You will also find mention of some of the earliest empires – a theme that will be developed in Timeline II."
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T05:10:32.398Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "Which of the following was the earliest known temple in Mesopotamia?",
+      "choices": [
+        "A small shrine made of unbaked bricks",
+        "A large temple with several rooms around open courtyards",
+        "A temple with an open courtyard and in-and-out façade",
+        "A temple with a defensive wall"
+      ],
+      "answerIndex": 0,
+      "solution": "The earliest known temple in Mesopotamia was a small shrine made of unbaked bricks, as this structure predates more complex architectural forms. Later temples featured courtyards, multiple rooms, and defensive walls, which were not part of the earliest designs.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "मेसोपोटामिया में ज्ञात सबसे पुराना मंदिर निम्न में से कौन-सा था?",
+          "choices": [
+            "अनबेकड़ी ईंटों से बना एक छोटा मंदिर",
+            "कई कमरों वाला एक बड़ा मंदिर जिसके चारों ओर खुले बगीचे हैं",
+            "खुले बगीचे वाला एक मंदिर जिसका पार्श्व भाग आगे-पीछे है",
+            "एक रक्षात्मक दीवार वाला मंदिर"
+          ],
+          "solution": "मेसोपोटामिया में ज्ञात सबसे पुराना मंदिर अनबेकड़ी ईंटों से बना एक छोटा मंदिर था, क्योंकि यह संरचना बाद में जटिल वास्तुकला के आगे थी। बाद के मंदिरों में बगीचे, कई कमरे और रक्षात्मक दीवारें शामिल थीं, जो प्रारंभिक डिज़ाइनों के हिस्से नहीं थीं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains original meaning, and uses appropriate Hindi terminology for archaeological concepts.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "मेसोपोटामियामधील ज्ञात झालेला सर्वात पहिला मंदिर कोणता होता?",
+          "choices": [
+            "अनबेकड इट्स ब्रिक्स बनवलेला छोटा मंदिर",
+            "अनेक कोरिडॉर आणि खुल्या बागाच्या आजूबाजूच्या कमर्यांसह एक मोठा मंदिर",
+            "खुल्या बागेसह आणि आत-बाहेर फॅसेड असलेला मंदिर",
+            "रक्षक भिंती असलेला मंदिर"
+          ],
+          "solution": "मेसोपोटामियामधील सर्वात पहिला ज्ञात मंदिर अनबेकड इट्स ब्रिक्स बनवलेला छोटा मंदिर होता, कारण ही रचना अधिक जटिल वास्तुरचना पूर्वी असलेली होती. नंतरच्या मंदिरांमध्ये कोरिडॉर, अनेक कमर्या आणि रक्षक भिंती होत्या, ज्या प्रारंभिक रचनांमध्ये नव्हत्या.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for architectural features.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses later developments with the earliest known temple",
+        "Refers to a later period's temple structure",
+        "Mentions a defensive wall, which was added later in Uruk's history, not in the earliest temples of Mesopotamia"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 0, as the passage explicitly states that the earliest known temple was a small shrine made of unbaked bricks. The other options describe later developments, which aligns with the author's reasoning.",
+      "sources": [
+        {
+          "document": "ncert/11/history/kehs101.pdf",
+          "ordinal": 13,
+          "pageStart": 16,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 1: early societies",
+            "Timeline i",
+            "Urbanisation in Southern Mesopotamia: Temples and Kings"
+          ]
+        },
+        {
+          "document": "ncert/11/history/kehs101.pdf",
+          "ordinal": 14,
+          "pageStart": 16,
+          "pageEnd": 17,
+          "headingPath": [
+            "Chapter 1: early societies",
+            "Timeline i",
+            "Urbanisation in Southern Mesopotamia: Temples and Kings"
+          ]
+        },
+        {
+          "document": "ncert/11/history/kehs101.pdf",
+          "ordinal": 15,
+          "pageStart": 18,
+          "pageEnd": 18,
+          "headingPath": [
+            "Chapter 1: early societies",
+            "Timeline i",
+            "Urbanisation in Southern Mesopotamia: Temples and Kings"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T05:10:32.398Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If a historian is studying the social practices of early societies, which of the following would be a suitable source?",
+      "choices": [
+        "Modern city records",
+        "Ancient written texts",
+        "Folklore of the 21st century",
+        "Contemporary news reports"
+      ],
+      "answerIndex": 1,
+      "solution": "Ancient written texts are suitable because they provide direct evidence of the beliefs, customs, and daily life of early societies. Modern city records, 21st-century folklore, and contemporary news reports are not related to the time periods and cultures being studied.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक ऐतिहासिक शुरुआती समाजों के सामाजिक अभ्यासों का अध्ययन कर रहा है, तो निम्नलिखित में से कौन-सा एक उपयुक्त स्रोत होगा?",
+          "choices": [
+            "आधुनिक शहर के रिकॉर्ड",
+            "प्राचीन लिखित पाठ",
+            "21वीं शताब्दी के लोककथाएं",
+            "आधुनिक समाचार रिपोर्ट्स"
+          ],
+          "solution": "प्राचीन लिखित पाठ उपयुक्त होते हैं क्योंकि वे शुरुआती समाजों के विश्वासों, रीति-रिवाजों और दैनिक जीवन के लिए सीधा प्रमाण प्रदान करते हैं। आधुनिक शहर के रिकॉर्ड, 21वीं शताब्दी की लोककथाएं और आधुनिक समाचार रिपोर्ट्स अध्ययन किए जा रहे समय काल और संस्कृतियों से संबंधित नहीं हैं।",
+          "imageAlt": null,
+          "critique": "Translation accurately preserves meaning, technical terms are appropriate for Hindi-medium curriculum, and the correct answer remains option (2) in the same position.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर इतिहासवेत्ता जुन्या समाजांच्या सामाजिक पद्धतींचा अभ्यास करत असेल, तर खालीलपैकी कोणते एक उपयुक्त स्रोत असेल?",
+          "choices": [
+            "आधुनिक शहराचे नोंदणी कागदपत्र",
+            "जुन्या लिखित वस्तुंचा अभ्यास",
+            "21 व्या शतकाचे लोककथा",
+            "आधुनिक बातम्यांचे वृत्त"
+          ],
+          "solution": "जुन्या लिखित वस्तुंचा अभ्यास उपयुक्त आहे कारण ते जुन्या समाजांच्या विश्वास, संस्कृती आणि दैनिक जीवनाचे प्रत्यक्ष पुरावा प्रदान करतात. आधुनिक शहराचे नोंदणी कागदपत्र, 21 व्या शतकाचे लोककथा आणि आधुनिक बातम्यांचे वृत्त अभ्यास करण्यात येणार्या काळ आणि संस्कृतींशी संबंधित नाहीत.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the original meaning, and uses appropriate terminology consistent with Marathi-medium education.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses modern sources with ancient ones",
+        null,
+        "Relies on recent cultural practices",
+        "Implies current events as historical sources"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 1 (Ancient written texts), as they are the most direct and relevant sources for studying early societies. The other options are modern or contemporary and not suitable for this purpose. The author's reasoning for the wrong options is valid and reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/11/history/kehs101.pdf",
+          "ordinal": 0,
+          "pageStart": 2,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 1: early societies",
+            "Writing and City Life"
+          ]
+        },
+        {
+          "document": "ncert/11/history/kehs101.pdf",
+          "ordinal": 1,
+          "pageStart": 3,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 1: early societies",
+            "Writing and City Life"
+          ]
+        },
+        {
+          "document": "ncert/11/history/kehs101.pdf",
+          "ordinal": 2,
+          "pageStart": 3,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 1: early societies",
+            "Writing and City Life"
+          ]
+        },
+        {
+          "document": "ncert/11/history/kehs101.pdf",
+          "ordinal": 3,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 1: early societies",
+            "Timeline i",
+            "This timeline focuses on the emergence of humans and the domestication of plants and animals. It highlights some major technological developments such as the use of fire, metals, plough agriculture and the wheel. Other processes that are shown include the emergence of cities and the use of writing. You will also find mention of some of the earliest empires – a theme that will be developed in Timeline II."
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T05:10:32.398Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If Mesopotamians did not have access to metal resources, which of the following would have been the most likely outcome?",
+      "choices": [
+        "They would have stopped building cities",
+        "They would have focused on developing agriculture only",
+        "They would have engaged in trade with other regions",
+        "They would have stopped using bronze tools"
+      ],
+      "answerIndex": 2,
+      "solution": "Without access to metal resources, Mesopotamians would have needed to obtain metals from other areas, making trade a necessary and likely response. The other options are incorrect because cities and bronze tools were central to their society, so they would not have abandoned them entirely. Focusing only on agriculture would not have addressed their need for metal-based tools and weapons.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि मेसोपोटामियाईयों के पास धातु संसाधन नहीं थे, तो निम्नलिखित में से कौन-सा सबसे संभावित परिणाम होता?",
+          "choices": [
+            "वे शहर बनाना बंद कर देते",
+            "वे केवल कृषि के विकास पर ध्यान केंद्रित करते",
+            "वे अन्य क्षेत्रों के साथ व्यापार में लग जाते",
+            "वे कांस्य उपकरणों के उपयोग को बंद कर देते"
+          ],
+          "solution": "धातु संसाधनों के अभाव में, मेसोपोटामियाईयों को धातुओं को अन्य क्षेत्रों से प्राप्त करने की आवश्यकता होती, जिसके कारण व्यापार आवश्यक और संभावित प्रतिक्रिया बन जाता। अन्य विकल्प गलत हैं क्योंकि शहर और कांस्य उपकरण उनके समाज के केंद्रीय हिस्से थे, इसलिए वे उन्हें पूरी तरह छोड़ देने की संभावना नहीं रखते। केवल कृषि पर ध्यान केंद्रित करना धातु-आधारित उपकरणों और हथियारों की आवश्यकता को पूरा नहीं करता।",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Hindi terminology used for historical concepts.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "मेसोपोटामियन्सला धातूच्या संसाधनांचा प्रवेश नसल्यास, खालीलपैकी कोणता फायदा असणे शक्य होते?",
+          "choices": [
+            "त्यांनी शहरे बांधणे थांबवले असते",
+            "त्यांनी केवळ शेतीच्या विकासावर लक्ष केंद्रित केले असते",
+            "त्यांनी इतर प्रदेशांशी व्यापार केला असता",
+            "त्यांनी ब्रॉन्झच्या उपकरणांचा वापर थांबवला असता"
+          ],
+          "solution": "धातूच्या संसाधनांच्या अभावामुळे मेसोपोटामियन्सला धातू इतर भागांमधून मिळवावा लागला असता, ज्यामुळे व्यापार आवश्यक आणि शक्य पर्याय ठरला असता. इतर विकल्प चुकीचे आहेत कारण शहरे आणि ब्रॉन्झची उपकरणे त्यांच्या समाजाच्या मुख्य भागात होती, ज्यामुळे त्यांनी त्यांचा त्याग करणार नाहीत. केवळ शेतीवर लक्ष केंद्रित करणे त्यांच्या धातू आधारित उपकरणांच्या आणि हथियारांच्या आवश्यकतेला समाधान करणार नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for historical and technical concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Believes cities depended solely on metal availability",
+        "Assumes Mesopotamians could not develop without metals",
+        null,
+        "Thinks bronze tools were not necessary for urban life"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The solution is sound and logically leads to the correct answer. The reasoning aligns with historical understanding of Mesopotamian reliance on trade for metal resources.",
+      "sources": [
+        {
+          "document": "ncert/11/history/kehs101.pdf",
+          "ordinal": 7,
+          "pageStart": 10,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 1: early societies",
+            "Timeline i",
+            "Mesopotamia and its Geography"
+          ]
+        },
+        {
+          "document": "ncert/11/history/kehs101.pdf",
+          "ordinal": 8,
+          "pageStart": 11,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 1: early societies",
+            "Timeline i",
+            "The Significance of Urbanism"
+          ]
+        },
+        {
+          "document": "ncert/11/history/kehs101.pdf",
+          "ordinal": 9,
+          "pageStart": 12,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 1: early societies",
+            "Timeline i",
+            "The Warka Head"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T05:10:32.398Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "If a historian is trying to understand the lives of early people, which of the following would they most likely study?",
+      "choices": [
+        "Modern technology",
+        "Archaeological remains",
+        "Fictional stories",
+        "Contemporary art"
+      ],
+      "answerIndex": 1,
+      "solution": "Archaeological remains provide direct evidence of how early people lived, such as through bones and tools. Modern technology, fictional stories, and contemporary art do not offer insights into the lives of early people. These remains help scientists reconstruct past human activities and environments.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक इतिहासकार जीवित लोगों के जीवन को समझने की कोशिश कर रहा है, तो निम्नलिखित में से कौन-सा वह अधिक संभावना से अध्ययन करेगा?",
+          "choices": [
+            "आधुनिक प्रौद्योगिकी",
+            "प्राचीन अवशेष",
+            "काल्पनिक कहानियां",
+            "आधुनिक कला"
+          ],
+          "solution": "प्राचीन अवशेष जैसे हड्डियां और उपकरण जैसे जीवित लोगों के जीवन के सीधे साक्ष्य प्रदान करते हैं। आधुनिक प्रौद्योगिकी, काल्पनिक कहानियां और आधुनिक कला जीवित लोगों के जीवन के बारे में जानकारी प्रदान नहीं करते। इन अवशेषों में वैज्ञानिकों को पूर्व के मानव गतिविधियों और पर्यावरण के पुनर्निर्माण में मदद मिलती है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology for archaeological remains and related concepts.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका इतिहासकाराला प्राचीन लोकांच्या जीवनाचे अध्ययन करताना खालीलपैकी काय अध्ययन करण्याची शक्यता असेल?",
+          "choices": [
+            "आधुनिक तंत्रज्ञान",
+            "काल्पनिक कथा",
+            "इतिहासाचे अवशेष",
+            "आधुनिक कला"
+          ],
+          "solution": "इतिहासाचे अवशेष प्राचीन लोकांच्या जीवनाबद्दल थेट पुरावा प्रदान करतात, जसे की हड्ड्यांचे आणि उपकरणांचे. आधुनिक तंत्रज्ञान, काल्पनिक कथा आणि आधुनिक कला प्राचीन लोकांच्या जीवनाबद्दल ज्ञान देत नाहीत. या अवशेषांमुळे वैज्ञानिक प्राचीन मानवी क्रियाकलाप आणि पर्यावरणाचे पुनर्निर्माण करू शकतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for historical concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses modern sources with ancient evidence",
+        null,
+        "Relies on non-historical content",
+        "Implies current artistic practices as historical sources"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 1 (Archaeological remains), as it is the only option that directly relates to the study of early people through material evidence. The other options are not valid historical sources for this purpose.",
+      "sources": [
+        {
+          "document": "ncert/11/history/kehs101.pdf",
+          "ordinal": 0,
+          "pageStart": 2,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 1: early societies",
+            "Writing and City Life"
+          ]
+        },
+        {
+          "document": "ncert/11/history/kehs101.pdf",
+          "ordinal": 1,
+          "pageStart": 3,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 1: early societies",
+            "Writing and City Life"
+          ]
+        },
+        {
+          "document": "ncert/11/history/kehs101.pdf",
+          "ordinal": 2,
+          "pageStart": 3,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 1: early societies",
+            "Writing and City Life"
+          ]
+        },
+        {
+          "document": "ncert/11/history/kehs101.pdf",
+          "ordinal": 3,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 1: early societies",
+            "Timeline i",
+            "This timeline focuses on the emergence of humans and the domestication of plants and animals. It highlights some major technological developments such as the use of fire, metals, plough agriculture and the wheel. Other processes that are shown include the emergence of cities and the use of writing. You will also find mention of some of the earliest empires – a theme that will be developed in Timeline II."
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T05:10:32.398Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "If a historian wants to understand the social practices of early societies, which of the following would be the most useful source?",
+      "choices": [
+        "A modern textbook on history",
+        "A fictional story set in ancient times",
+        "An ancient epic like the Mahabharata",
+        "A recent documentary about ancient civilizations"
+      ],
+      "answerIndex": 2,
+      "solution": "An ancient epic like the Mahabharata provides direct insight into the beliefs, values, and social structures of the time it was created, making it a primary source for understanding early societies. Modern textbooks and documentaries are secondary sources that may interpret or simplify historical information. Fictional stories, while potentially reflective of cultural themes, are not reliable for factual historical understanding.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक इतिहासकार ज्ञात करना चाहता है कि प्रारंभिक समाजों के सामाजिक अभ्यास क्या थे, तो निम्नलिखित में से कौन-सा सबसे उपयोगी स्रोत होगा?",
+          "choices": [
+            "इतिहास पर एक आधुनिक पाठ्यपुस्तक",
+            "प्राचीन समय में सेट एक काल्पनिक कहानी",
+            "महाभारत जैसा प्राचीन महाकाव्य",
+            "प्राचीन सभ्यताओं पर हाल के डॉक्यूमेंटरी"
+          ],
+          "solution": "महाभारत जैसा प्राचीन महाकाव्य उस समय के विश्वासों, मूल्यों और सामाजिक संरचना में सीधा दृष्टिकोण प्रदान करता है, जिस समय इसकी रचना की गई थी, जो प्रारंभिक समाजों को समझने के लिए एक प्राथमिक स्रोत है। आधुनिक पाठ्यपुस्तकें और डॉक्यूमेंटरी द्वितीयक स्रोत हैं जो ऐतिहासिक जानकारी को अनुमान लगा सकते हैं या सरल बना सकते हैं। काल्पनिक कहानियां, यद्यपि सांस्कृतिक विषयों के प्रतिबिंब हो सकती हैं, लेकिन ऐतिहासिक रूप से विश्वसनीय नहीं होती हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. The correct answer remains option (2), and all distractors are still incorrect. Technical terms like 'महाकाव्य' (epic) and 'प्राथमिक स्रोत' (primary source) are appropriately used in a Hindi academic context.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर इतिहासकार जुन्या समाजांच्या सामाजिक प्रथा समजू इच्छित असेल, तर खालीलपैकी कोणते स्रोत सर्वात उपयुक्त असेल?",
+          "choices": [
+            "इतिहासावर आधुनिक शैक्षणिक पुस्तक",
+            "जुन्या काळात घडलेल्या काल्पनिक कथा",
+            "जुन्या काळातील एखादा प्राचीन काव्य जसे की महाभारत",
+            "जुन्या सभ्यतांबद्दल नुकत्याच व्हिडिओ कॉन्फरन्स"
+          ],
+          "solution": "जुन्या काळातील एखादा प्राचीन काव्य जसे की महाभारत हा त्या काळातील विश्वास, मूल्ये आणि सामाजिक संरचना बद्दल सीधा दृष्टिकोन प्रदान करतो, ज्यामुळे तो जुन्या समाजांच्या समजूतीसाठी प्राथमिक स्रोत म्हणून उपयुक्त असतो. आधुनिक शैक्षणिक पुस्तके आणि व्हिडिओ कॉन्फरन्स हे द्वितीयक स्रोत असतात जे इतिहासाची व्याख्या किंवा सोपीकरण करू शकतात. काल्पनिक कथा जरी सांस्कृतिक विषयांचे प्रतिबिंब दाखवू शकत असल्या तरी त्या इतिहासाच्या वास्तविक तथ्यांसाठी विश्वासार्ह नसतात.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the original meaning, and uses appropriate historical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "chooses a modern source over an ancient one",
+        "selects a fictional work instead of an actual historical text",
+        null,
+        "prefers a modern interpretation over an original source"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 2, as ancient epics like the Mahabharata provide direct insight into the social practices of early societies. The author's reasoning is sound and aligns with the correct answer.",
+      "sources": [
+        {
+          "document": "ncert/11/history/kehs101.pdf",
+          "ordinal": 19,
+          "pageStart": 21,
+          "pageEnd": 23,
+          "headingPath": [
+            "Chapter 1: early societies",
+            "Timeline i",
+            "A Trading Town in a Pastoral Zone"
+          ]
+        },
+        {
+          "document": "ncert/11/history/kehs101.pdf",
+          "ordinal": 20,
+          "pageStart": 24,
+          "pageEnd": 24,
+          "headingPath": [
+            "Chapter 1: early societies",
+            "Timeline i",
+            "A Trading Town in a Pastoral Zone"
+          ]
+        },
+        {
+          "document": "ncert/11/history/kehs101.pdf",
+          "ordinal": 21,
+          "pageStart": 24,
+          "pageEnd": 24,
+          "headingPath": [
+            "Chapter 1: early societies",
+            "Timeline i",
+            "Excavating Mesopotamian Towns"
+          ]
+        },
+        {
+          "document": "ncert/11/history/kehs101.pdf",
+          "ordinal": 22,
+          "pageStart": 25,
+          "pageEnd": 25,
+          "headingPath": [
+            "Chapter 1: early societies",
+            "Timeline i",
+            "Cities in Mesopotamian Culture"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T05:10:32.398Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "What can be inferred about the relationship between war leaders and the community in early Mesopotamia?",
+      "choices": [
+        "War leaders were chosen solely based on their ability to read and write cuneiform",
+        "War leaders were seen as temporary figures who could not maintain long-term influence",
+        "War leaders gained influence by distributing loot and organizing temple activities",
+        "War leaders were not involved in the community's daily life"
+      ],
+      "answerIndex": 2,
+      "solution": "War leaders in early Mesopotamia gained influence by distributing loot and organizing temple activities, which helped them build support and establish a more permanent role in society. This is supported by evidence that their power was tied to their ability to provide resources and maintain religious institutions. The other options are incorrect because they either overstate or misrepresent the nature of their influence, such as suggesting they were chosen only for literacy or not involved in daily life.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "प्रारंभिक मेसोपोटामिया में युद्ध नेताओं और समुदाय के बीच संबंध के बारे में क्या निष्कर्ष निकाला जा सकता है?",
+          "choices": [
+            "युद्ध नेताओं को केवल उनकी कुनीफॉर्म लिखने और पढ़ने की क्षमता के आधार पर चुना जाता था",
+            "युद्ध नेताओं को अस्थायी व्यक्ति माना जाता था जो लंबे समय तक प्रभाव नहीं रख सकते थे",
+            "युद्ध नेताओं ने लूट के वितरण और मंदिर के कार्यक्रमों के आयोजन द्वारा प्रभाव प्राप्त किया",
+            "युद्ध नेताओं समुदाय के दैनिक जीवन में शामिल नहीं थे"
+          ],
+          "solution": "प्रारंभिक मेसोपोटामिया में युद्ध नेताओं ने लूट के वितरण और मंदिर के कार्यक्रमों के आयोजन द्वारा प्रभाव प्राप्त किया, जिससे उन्हें समाज में एक अधिक स्थायी भूमिका बनाने में सहायता मिली। इसका समर्थन यह है कि उनकी शक्ति उनकी संसाधन प्रदान करने और धार्मिक संस्थानों को बनाए रखने में सक्षम होने पर निर्भर थी। अन्य विकल्प गलत हैं क्योंकि वे उनके प्रभाव की प्रकृति को अतिरंजित करते हैं या गलत तरीके से प्रस्तुत करते हैं, जैसे कि यह सुझाव देते हैं कि उन्हें केवल साक्षरता के आधार पर चुना जाता था या वे दैनिक जीवन में शामिल नहीं थे।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains the original meaning, and uses appropriate terminology. The correct answer remains option (2), and the distractors are still incorrect.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "प्राचीन मेसोपोटामियामध्ये युद्ध नेत्यांचे समाजाशी कसे संबंध होते याचे अंदाज काय करता येईल?",
+          "choices": [
+            "युद्ध नेत्यांना केवळ चांगल्या लेखनाच्या क्षमतेवर निवडले जात असे",
+            "युद्ध नेत्यांना अस्थायी व्यक्तिमत्व मानले जात असे ज्यांचा लांबलचक प्रभाव ठेवता येत नसे",
+            "युद्ध नेत्यांनी लूट वितरित करून आणि मंदिर क्रियाकलाप संघटित करून प्रभाव मिळवला",
+            "युद्ध नेत्यांना समाजाच्या दैनंदिन जीवनात सहभागी होण्याचा प्रसंग नसे"
+          ],
+          "solution": "प्राचीन मेसोपोटामियामध्ये युद्ध नेत्यांनी लूट वितरित करून आणि मंदिर क्रियाकलाप संघटित करून प्रभाव मिळवला, ज्यामुळे त्यांना समाजात अधिक स्थायी भूमिका निर्माण करण्यास मदत झाली. याचे समर्थन असे आहे की त्यांचा शक्ती त्यांच्या संसाधने पुरविण्याच्या क्षमतेवर आणि धार्मिक संस्थांचे नियंत्रण ठेवण्यावर अवलंबून होते. इतर विकल्प चुकीचे आहेत कारण ते त्यांच्या प्रभावाच्या प्रकृतीचे अतिशयोक्ती किंवा चुकीचे प्रतिनिधित्व करतात, जसे की त्यांना फक्त लेखन क्षमतेवर निवडले जात असे किंवा ते दैनंदिन जीवनात सहभागी नसत असे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for historical concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "belief that literacy was the primary qualification for leadership in ancient societies",
+        "Believes that leadership in early societies was not stable or respected beyond short-term roles",
+        null,
+        "Belief that religious or military figures were separate from everyday community activities"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 2, as it aligns with the idea that war leaders gained influence through resource distribution and temple activities. The other options reflect common misconceptions about leadership in early Mesopotamia.",
+      "sources": [
+        {
+          "document": "ncert/11/history/kehs101.pdf",
+          "ordinal": 13,
+          "pageStart": 16,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 1: early societies",
+            "Timeline i",
+            "Urbanisation in Southern Mesopotamia: Temples and Kings"
+          ]
+        },
+        {
+          "document": "ncert/11/history/kehs101.pdf",
+          "ordinal": 14,
+          "pageStart": 16,
+          "pageEnd": 17,
+          "headingPath": [
+            "Chapter 1: early societies",
+            "Timeline i",
+            "Urbanisation in Southern Mesopotamia: Temples and Kings"
+          ]
+        },
+        {
+          "document": "ncert/11/history/kehs101.pdf",
+          "ordinal": 15,
+          "pageStart": 18,
+          "pageEnd": 18,
+          "headingPath": [
+            "Chapter 1: early societies",
+            "Timeline i",
+            "Urbanisation in Southern Mesopotamia: Temples and Kings"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T05:10:32.398Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
     }
   ]
 }

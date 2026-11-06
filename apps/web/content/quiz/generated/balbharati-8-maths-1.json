@@ -445,6 +445,104 @@
       "generatedAt": "2026-11-02T07:00:12.003Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "Which of the following numbers lies between 1 and 2 on the number line?",
+      "choices": [
+        "1.2",
+        "3.5",
+        "0.5",
+        "-1.5"
+      ],
+      "answerIndex": 0,
+      "solution": "On the number line, 1.2 lies between 1 and 2. The other options are either less than 1 or greater than 2, so they do not lie between 1 and 2.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सी संख्या संख्या रेखा पर 1 और 2 के बीच में है?",
+          "choices": [
+            "1.2",
+            "3.5",
+            "0.5",
+            "-1.5"
+          ],
+          "solution": "संख्या रेखा पर 1.2, 1 और 2 के बीच में है। अन्य विकल्प या तो 1 से कम हैं या 2 से अधिक हैं, इसलिए वे 1 और 2 के बीच में नहीं हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Hindi mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणता संख्या संख्या रेषेवर 1 आणि 2 च्या मध्ये आहे?",
+          "choices": [
+            "1.2",
+            "3.5",
+            "0.5",
+            "-1.5"
+          ],
+          "solution": "संख्या रेषेवर, 1.2 च्या 1 आणि 2 च्या मध्ये आहे. इतर विकल्प 1 पेक्षा कमी किंवा 2 पेक्षा जास्त आहेत, म्हणून ते 1 आणि 2 च्या मध्ये नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Chooses a number that is greater than 2",
+        "Chooses a number that is less than 1",
+        "Chooses a negative number"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The question is straightforward and the solution is correct. Option 0 (1.2) is indeed between 1 and 2. The other options are correctly identified as not lying between 1 and 2.",
+      "sources": [
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 8,
+          "pageStart": 11,
+          "pageEnd": 13,
+          "headingPath": [
+            "1. Rational and Irrational numbers",
+            "Part 1"
+          ]
+        },
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 9,
+          "pageStart": 13,
+          "pageEnd": 15,
+          "headingPath": [
+            "1. Rational and Irrational numbers",
+            "Part 1"
+          ]
+        },
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 10,
+          "pageStart": 15,
+          "pageEnd": 16,
+          "headingPath": [
+            "1. Rational and Irrational numbers",
+            "Part 1"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-11-01T00:02:57.615Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
     }
   ]
 }

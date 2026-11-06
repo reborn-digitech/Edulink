@@ -196,6 +196,350 @@
       "generatedAt": "2026-10-28T04:54:04.824Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "Which spice is described in the riddle: 'Small and round like a pearl, I am black when I am whole'",
+      "choices": [
+        "Cumin",
+        "Turmeric",
+        "Chilli",
+        "Black Pepper"
+      ],
+      "answerIndex": 3,
+      "solution": "The riddle describes a spice that is small and round like a pearl and black when whole, which is black pepper. Cumin is small but not black, turmeric is yellow, and chilli is red.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "रहस्य में कौन सी मसाला बताया गया है: 'मुर्गी के समान छोटा और गोल, मैं पूरा होने पर काला हूं'?",
+          "choices": [
+            "जीरा",
+            "हल्दी",
+            "मिर्च",
+            "काला पीपर"
+          ],
+          "solution": "रहस्य में एक मसाला बताया गया है जो मुर्गी के समान छोटा और गोल है और पूरा होने पर काला है, जो काला पीपर है। जीरा छोटा होता है लेकिन काला नहीं, हल्दी पीली होती है और मिर्च लाल होती है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology, with appropriate Hindi equivalents for spices.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "कोणता मसाला रहस्यात वर्णन केला आहे: 'मोठा आणि गोल जसे रत्नासारखा, मी पूर्ण असताना काळा असतो'",
+          "choices": [
+            "कुमीन",
+            "हळद",
+            "मिरची",
+            "काळा मसाला"
+          ],
+          "solution": "रहस्यात वर्णन केलेला मसाला मोठा आणि गोल असतो आणि पूर्ण असताना काळा असतो, जो काळा मसाला आहे. कुमीन मोठा असतो पण काळा नसतो, हळद पिवळी असते आणि मिरची लाल असते.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate local terminology for spices.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses cumin with black pepper",
+        "Confuses turmeric with black pepper",
+        "Confuses chilli with black pepper",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct. The riddle accurately describes black pepper, which is small, round, and black when whole. The other options are correctly dismissed based on color and appearance.",
+      "sources": [
+        {
+          "document": "ncert/4/environmental-studies/deap125.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 25: Spicy Riddles"
+          ]
+        },
+        {
+          "document": "ncert/4/environmental-studies/deap125.pdf",
+          "ordinal": 1,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 25: Spicy Riddles"
+          ]
+        }
+      ],
+      "edition": "2024 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-22T23:48:04.257Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which spice is described as looking like a nail but being a bud?",
+      "choices": [
+        "Cinnamon",
+        "Cloves",
+        "Cardamom",
+        "Cumin"
+      ],
+      "answerIndex": 1,
+      "solution": "Cloves are described as looking like a nail but being a bud, which matches their physical appearance and botanical classification. Cinnamon is a dried bark, cardamom is a seed pod, and cumin is a small seed. The correct answer is cloves.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "कौन सी मसाला एक कील के दिखता है लेकिन एक कली होता है?",
+          "choices": [
+            "सींग की छाल",
+            "लौंग",
+            "इलायची",
+            "जीरा"
+          ],
+          "solution": "लौंग एक कील के दिखता है लेकिन एक कली होता है, जो इसके शारीरिक आकार और वनस्पति वर्गीकरण के साथ मेल खाता है। सींग की छाल एक सूखी छाल है, इलायची एक बीज कोशिका है और जीरा एक छोटा बीज है। सही उत्तर लौंग है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the original English question, with appropriate terminology used for spices. The correct answer remains in the same position, and all distractors are still incorrect.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "कोणता मसाला एका नालासारखा दिसतो पण एका पानाचा भाग आहे?",
+          "choices": [
+            "किराडा",
+            "लौकी",
+            "गुळाचा फुला",
+            "कुमीन"
+          ],
+          "solution": "लौकी एका नालासारखा दिसते पण एका पानाचा भाग आहे, जे त्याच्या भौतिक दिसावयाच्या आणि वनस्पती वर्गीकरणाशी जुळते. किराडा एका झाल्याचा झाला आहे, गुळाचा फुला एका बीच्या खोकळ्यासारखा आहे आणि कुमीन एका लहान बीसारखा आहे. योग्य उत्तर लौकी आहे.",
+          "imageAlt": null,
+          "critique": "The Marathi translation accurately conveys the meaning of the original English question. Technical terms like 'cloves' (लौकी) and 'cardamom' (गुळाचा फुला) are correctly used in Marathi, matching standard textbook terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses cinnamon with a bud",
+        null,
+        "Thinks cardamom is the only bud",
+        "Mistakes cumin for a bud"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct and matches the key. The reasoning aligns with the description of cloves as a bud that resembles a nail.",
+      "sources": [
+        {
+          "document": "ncert/4/environmental-studies/deap125.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 25: Spicy Riddles"
+          ]
+        },
+        {
+          "document": "ncert/4/environmental-studies/deap125.pdf",
+          "ordinal": 1,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 25: Spicy Riddles"
+          ]
+        }
+      ],
+      "edition": "2024 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-22T23:48:04.257Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If a spice is added to food and makes it taste sour, what is that spice likely to be?",
+      "choices": [
+        "Red chilly powder",
+        "Mango powder",
+        "Cumin seeds",
+        "Ginger"
+      ],
+      "answerIndex": 1,
+      "solution": "Mango powder has a naturally sour taste due to its high citric acid content, which makes food taste sour. Red chilly powder adds heat, cumin seeds provide a warm and earthy flavor, and ginger has a spicy and slightly tangy taste but not a sour one. Therefore, mango powder is the correct answer.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक मसाला खाने में मिलाया जाता है और इसे खट्टा बना देता है, तो वह मसाला संभवतः क्या हो सकता है?",
+          "choices": [
+            "लाल मिर्च का पाउडर",
+            "आम का पाउडर",
+            "जीरा के बीज",
+            "अदरक"
+          ],
+          "solution": "आम के पाउडर में प्राकृतिक रूप से खट्टा स्वाद होता है क्योंकि इसमें उच्च मात्रा में सिट्रिक एसिड होता है, जो खाने को खट्टा बना देता है। लाल मिर्च का पाउडर गर्मी जोड़ता है, जीरा के बीज एक गर्म और भूमि जैसा स्वाद प्रदान करते हैं, और अदरक का एक मसालेदार और थोड़ा खट्टा स्वाद होता है लेकिन खट्टा नहीं होता। इसलिए, आम का पाउडर सही उत्तर है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terms commonly found in textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर एखादा मसाला खाद्यपदार्थात जोडला जातो आणि तो खाद्यपदार्थाला तीव्र वाटतो, तर तो मसाला शक्यतो कोणता असेल?",
+          "choices": [
+            "लाल मिरची पावडर",
+            "आंबा पावडर",
+            "गाजराचे बीज",
+            "अदरख"
+          ],
+          "solution": "आंबा पावडरमध्ये उच्च अम्लीय आम्लाच्या कारणामुळे प्राकृतिक तीव्र छाप असतो, जे खाद्यपदार्थाला तीव्र वाटते. लाल मिरची पावडर उष्णता जोडते, गाजराचे बीज एक उष्ण आणि खोल छाप देते आणि अदरख एक तीव्र आणि थोडा तीव्र छाप देते परंतु तीव्र नाही. म्हणून आंबा पावडर हे योग्य उत्तर आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terms for the spices.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Thinks red chilly powder adds sourness",
+        null,
+        "Confuses cumin with a sour spice",
+        "Associates ginger with sour taste"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is mango powder (option 1), as it is commonly used to add a sour taste. The other options are incorrect: red chili adds heat, cumin adds warmth, and ginger adds spiciness and tang, but not sourness. The author's reasoning aligns with the correct solution.",
+      "sources": [
+        {
+          "document": "ncert/4/environmental-studies/deap125.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 25: Spicy Riddles"
+          ]
+        },
+        {
+          "document": "ncert/4/environmental-studies/deap125.pdf",
+          "ordinal": 1,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 25: Spicy Riddles"
+          ]
+        }
+      ],
+      "edition": "2024 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-22T23:48:04.257Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "Which spice is described as being black when it is whole and having a sharp and spicy taste?",
+      "choices": [
+        "Black pepper",
+        "Cumin",
+        "Cardamom",
+        "Cloves"
+      ],
+      "answerIndex": 0,
+      "solution": "Black pepper is described as being black when whole and having a sharp and spicy taste. Cumin is typically brown in color and has a more earthy flavor, cardamom is green and has a sweet, aromatic taste, and cloves are reddish-brown with a strong, sweet, and spicy flavor. The correct answer is black pepper.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "कौन सी मसाला ऐसा है जो पूरा होने पर काला रहता है और एक तीखा और मसालेदार स्वाद होता है?",
+          "choices": [
+            "काली मिर्च",
+            "जीरा",
+            "इलायची",
+            "लौंग"
+          ],
+          "solution": "काली मिर्च को पूरा होने पर काला रहता है और एक तीखा और मसालेदार स्वाद होता है। जीरा आमतौर पर भूरा रंग का होता है और एक अधिक मिट्टी वाला स्वाद होता है, इलायची हरा होता है और एक मीठा, सुगंधित स्वाद होता है, और लौंग लाली भूरा रंग का होता है और एक मजबूत, मीठा और मसालेदार स्वाद होता है। सही उत्तर काली मिर्च है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains original meaning, and uses standard Hindi terms for spices.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "कोणता मसाला अखंड असताना काळा असतो आणि तीव्र आणि मसालेदार वाटतो?",
+          "choices": [
+            "काळे मिरी",
+            "जीरा",
+            "हिरवा इलाच",
+            "तुपी"
+          ],
+          "solution": "काळे मिरी अखंड असताना काळा असतो आणि तीव्र आणि मसालेदार वाटतो. जीरा सामान्यतः भूरा रंग असतो आणि त्याचा स्वाद जमीनीवर असतो, हिरवा इलाच हिरवा असतो आणि त्याचा स्वाद मीठ आणि सुगंधी असतो, आणि तुपी लालभूरा असतात आणि त्यांचा तीव्र, मीठ आणि मसालेदार स्वाद असतो. योग्य उत्तर काळे मिरी आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for spices.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses cumin with a black spice",
+        "Thinks cardamom is black",
+        "Mistakes cloves for a black spice"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is black pepper, which is black when whole and has a sharp, spicy taste. The other options are all different colors and have distinct flavor profiles. The author's reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/4/environmental-studies/deap125.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 25: Spicy Riddles"
+          ]
+        },
+        {
+          "document": "ncert/4/environmental-studies/deap125.pdf",
+          "ordinal": 1,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 25: Spicy Riddles"
+          ]
+        }
+      ],
+      "edition": "2024 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-22T23:48:04.257Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
     }
   ]
 }

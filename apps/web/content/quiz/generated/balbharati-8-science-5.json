@@ -1112,6 +1112,2992 @@
       "generatedAt": "2026-11-02T11:00:11.075Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is the atomic number (Z) of an element?",
+      "choices": [
+        "The number of protons in the nucleus",
+        "The number of neutrons in the nucleus",
+        "The number of electrons in the outermost shell",
+        "The total mass of the atom"
+      ],
+      "answerIndex": 0,
+      "solution": "The atomic number (Z) of an element is the number of protons in its nucleus. This is a fundamental property that defines the element. The other options are incorrect because the number of neutrons varies among isotopes, the number of electrons in the outermost shell relates to valency, and the total mass of the atom is the atomic mass, not the atomic number.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "किसी तत्व की परमाणु संख्या (Z) क्या होती है?",
+          "choices": [
+            "नाभिक में प्रोटॉनों की संख्या",
+            "नाभिक में न्यूट्रॉनों की संख्या",
+            "बाह्यतम कोश में इलेक्ट्रॉनों की संख्या",
+            "परमाणु के कुल द्रव्यमान"
+          ],
+          "solution": "किसी तत्व की परमाणु संख्या (Z) इसके नाभिक में प्रोटॉनों की संख्या होती है। यह तत्व को परिभाषित करने वाली एक मूलभूत गुण है। अन्य विकल्प गलत हैं क्योंकि न्यूट्रॉनों की संख्या समस्थानिकों में भिन्न होती है, बाह्यतम कोश में इलेक्ट्रॉनों की संख्या संयोजकता से संबंधित होती है, और परमाणु के कुल द्रव्यमान को परमाणु द्रव्यमान कहा जाता है, परमाणु संख्या नहीं।",
+          "imageAlt": null,
+          "critique": "Translation accurately reflects the original meaning with appropriate Hindi scientific terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका घटकाचा परमाणु क्रमांक (Z) काय आहे?",
+          "choices": [
+            "नाभिकातील प्रोटॉनची संख्या",
+            "नाभिकातील न्यूट्रॉनची संख्या",
+            "बाह्यतम कक्षेतील इलेक्ट्रॉनची संख्या",
+            "अणूचा एकूण द्रव्यमान"
+          ],
+          "solution": "एका घटकाचा परमाणु क्रमांक (Z) हा त्याच्या नाभिकातील प्रोटॉनची संख्या आहे. हे घटकाचे मूलभूत गुणधर्म आहे. इतर विकल्प चुकीचे आहेत कारण न्यूट्रॉनची संख्या समस्थानिकांमध्ये बदलते, बाह्यतम कक्षेतील इलेक्ट्रॉनची संख्या वैयक्तिकतेशी संबंधित आहे आणि अणूचा एकूण द्रव्यमान हा परमाणु द्रव्यमान आहे, परमाणु क्रमांक नाही.",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, with appropriate Marathi scientific terminology used.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses atomic number with number of neutrons",
+        "Confuses atomic number with valency",
+        "Confuses atomic number with atomic mass"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-constructed and the solution is accurate. The correct answer is clearly the number of protons in the nucleus, and the distractors represent common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 51,
+          "pageStart": 45,
+          "pageEnd": 46,
+          "headingPath": [
+            "5. Inside the Atom"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 52,
+          "pageStart": 46,
+          "pageEnd": 47,
+          "headingPath": [
+            "5. Inside the Atom"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 53,
+          "pageStart": 47,
+          "pageEnd": 48,
+          "headingPath": [
+            "5. Inside the Atom"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-24T19:41:26.368Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of the following elements has an electronic configuration of 2, 8, 1?",
+      "choices": [
+        "Oxygen",
+        "Sodium",
+        "Chlorine",
+        "Fluorine"
+      ],
+      "answerIndex": 1,
+      "solution": "The electronic configuration 2, 8, 1 means there are 2 electrons in the K shell, 8 in the L shell, and 1 in the M shell. Sodium has 11 electrons in total, which matches this configuration. The other options have different numbers of electrons and therefore different configurations.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा तत्व एक इलेक्ट्रॉनिक विन्यास 2, 8, 1 के साथ होता है?",
+          "choices": [
+            "ऑक्सीजन",
+            "सोडियम",
+            "क्लोरीन",
+            "फ्लोरीन"
+          ],
+          "solution": "इलेक्ट्रॉनिक विन्यास 2, 8, 1 का अर्थ है कि K कोश में 2 इलेक्ट्रॉन, L कोश में 8 इलेक्ट्रॉन और M कोश में 1 इलेक्ट्रॉन होते हैं। सोडियम में कुल 11 इलेक्ट्रॉन होते हैं, जो इस विन्यास के साथ मेल खाते हैं। अन्य विकल्पों में इलेक्ट्रॉनों की संख्या अलग होती है और इसलिए विन्यास भी अलग होता है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Hindi scientific terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणता घटक इलेक्ट्रॉन वितरण 2, 8, 1 असतो?",
+          "choices": [
+            "ऑक्सीजन",
+            "सोडियम",
+            "क्लोरीन",
+            "फ्लोरीन"
+          ],
+          "solution": "इलेक्ट्रॉन वितरण 2, 8, 1 म्हणजे K कोशात 2 इलेक्ट्रॉन, L कोशात 8 इलेक्ट्रॉन आणि M कोशात 1 इलेक्ट्रॉन असतात. सोडियम ला एकूण 11 इलेक्ट्रॉन असतात, जे या वितरणाशी जुळतात. उरलेल्या विकल्पांमध्ये इलेक्ट्रॉनची संख्या वेगळी असते आणि म्हणूनच वितरणही वेगळे असते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Oxygen has an electronic configuration of 2, 6",
+        null,
+        "Chlorine has an electronic configuration of 2, 8, 7",
+        "Fluorine has an electronic configuration of 2, 7"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is sodium (option 1), as it has 11 electrons, matching the configuration 2, 8, 1. The other options have different electron counts and configurations, as stated.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 48,
+          "pageStart": 42,
+          "pageEnd": 43,
+          "headingPath": [
+            "5. Inside the Atom"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 49,
+          "pageStart": 43,
+          "pageEnd": 44,
+          "headingPath": [
+            "5. Inside the Atom"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 50,
+          "pageStart": 44,
+          "pageEnd": 45,
+          "headingPath": [
+            "5. Inside the Atom"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-24T19:41:26.368Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "Which of the following best describes the structure of an atom according to Rutherford's nuclear model?",
+      "choices": [
+        "An atom is a solid, indivisible sphere",
+        "An atom has a positively charged nucleus surrounded by electrons",
+        "An atom has a positively charged nucleus with electrons orbiting around it in fixed paths",
+        "An atom has a negatively charged nucleus with positively charged electrons"
+      ],
+      "answerIndex": 1,
+      "solution": "Rutherford's nuclear model proposed that the atom has a positively charged nucleus at its center, with electrons orbiting around it. This model was based on his alpha particle scattering experiment, where most particles passed through the gold foil, indicating that the atom is mostly empty space. The correct option reflects this understanding. The first option is Dalton's model, the third is Thomson's plum pudding model, and the fourth is incorrect as electrons are negatively charged and orbit the nucleus.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा परमाणु की संरचना का वर्णन रदरफोर्ड के परमाणु नाभिक मॉडल के अनुसार सबसे अच्छा करता है?",
+          "choices": [
+            "एक परमाणु एक ठोस, अविभाज्य गोला होता है",
+            "एक परमाणु में धनावेशित नाभिक होता है जिसके चारों ओर इलेक्ट्रॉन होते हैं",
+            "एक परमाणु में धनावेशित नाभिक होता है जिसके चारों ओर इलेक्ट्रॉन निश्चित पथों में घूमते हैं",
+            "एक परमाणु में ऋणावेशित नाभिक होता है जिसके चारों ओर धनावेशित इलेक्ट्रॉन होते हैं"
+          ],
+          "solution": "रदरफोर्ड के परमाणु नाभिक मॉडल के अनुसार, परमाणु के केंद्र में धनावेशित नाभिक होता है जिसके चारों ओर इलेक्ट्रॉन घूमते हैं। यह मॉडल उनके अल्फा कण प्रकीर्णन प्रयोग पर आधारित था, जिसमें अधिकांश कण सोने की पन्नी से गुजर गए, जिसका अर्थ है कि परमाणु मुख्य रूप से खाली स्थान है। सही विकल्प इस समझ को प्रतिबिंबित करता है। पहला विकल्प डाल्टन के मॉडल के अनुरूप है, तीसरा विकल्प थॉमसन के प्लम पुड्डिंग मॉडल के अनुरूप है और चौथा विकल्प गलत है क्योंकि इलेक्ट्रॉन ऋणावेशित होते हैं और नाभिक के चारों ओर घूमते हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate scientific terminology common in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "रदरफोर्डच्या न्यूक्लियस मॉडेलनुसार अणूची संरचना खालीलपैकी कोणत्या प्रकारे सर्वात चांगल्या प्रकारे वर्णन करता येईल?",
+          "choices": [
+            "अणू एक घन, अविभाज्य गोला आहे",
+            "अणूचा धनावेशित न्यूक्लियस असतो आणि इलेक्ट्रॉन त्याच्या भोवती असतात",
+            "अणूचा धनावेशित न्यूक्लियस असतो आणि इलेक्ट्रॉन त्याच्या भोवती निश्चित मार्गावर फिरतात",
+            "अणूचा ऋणावेशित न्यूक्लियस असतो आणि धनावेशित इलेक्ट्रॉन असतात"
+          ],
+          "solution": "रदरफोर्डच्या न्यूक्लियस मॉडेलमध्ये अणूचा धनावेशित न्यूक्लियस त्याच्या केंद्रावर असतो आणि इलेक्ट्रॉन त्याच्या भोवती फिरतात. हा मॉडेल त्याच्या अल्फा कणांच्या प्रकाशन प्रयोगावर आधारित होता, जेथे अधिकांश कण गोल्ड फॉइलमधून जात होते, जे अणूमध्ये जास्तीत जास्त खालील स्थान असल्याचे सूचित करते. योग्य पर्याय या समजाला जुमानतो. पहिला पर्याय डॅल्टनचा मॉडेल आहे, तिसरा पर्याय थॉमसनच्या प्लम पुड्डिंग मॉडेलचा आहे आणि चौथा पर्याय अयोग्य आहे कारण इलेक्ट्रॉन ऋणावेशित असतात आणि न्यूक्लियसच्या भोवती फिरतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses Dalton's model with Rutherford's",
+        null,
+        "Believes electrons orbit the nucleus like planets around the sun, ignoring quantum principles",
+        "Believes in Thomson's plum pudding model of electrons embedded in a positive charge distribution"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is option 1, which accurately reflects Rutherford's nuclear model. The other options represent different atomic models (Dalton's, Thomson's, and a misinterpretation of Rutherford's model). The author's reasoning for the distractors aligns with common student misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 42,
+          "pageStart": 38,
+          "pageEnd": 38,
+          "headingPath": [
+            "5. Inside the Atom"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 43,
+          "pageStart": 38,
+          "pageEnd": 39,
+          "headingPath": [
+            "5. Inside the Atom"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 44,
+          "pageStart": 39,
+          "pageEnd": 40,
+          "headingPath": [
+            "5. Inside the Atom"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-24T19:41:26.368Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "In Rutherford's experiment, why did most alpha particles pass through the gold foil without deflection?",
+      "choices": [
+        "Because the gold foil was too thick",
+        "Because the atom was mostly empty space",
+        "Because the alpha particles were not charged",
+        "Because the nucleus was very light"
+      ],
+      "answerIndex": 1,
+      "solution": "Rutherford's experiment showed that most alpha particles passed through the gold foil without deflection, which suggested that the atom is mostly empty space. This is a key point of his nuclear model. The first option is incorrect because the foil was very thin. The third option is false because alpha particles are positively charged. The fourth option is incorrect as the nucleus is heavy.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "रदरफोर्ड के प्रयोग में, सोने की पन्नी से बिना विचलन के लुढ़कने वाले अधिकांश अल्फा कणों के कारण क्या था?",
+          "choices": [
+            "क्योंकि सोने की पन्नी बहुत मोटी थी",
+            "क्योंकि परमाणु मुख्य रूप से खोखला स्थान था",
+            "क्योंकि अल्फा कण आवेशित नहीं थे",
+            "क्योंकि नाभिक बहुत हल्का था"
+          ],
+          "solution": "रदरफोर्ड के प्रयोग में यह देखा गया कि अधिकांश अल्फा कण सोने की पन्नी से बिना विचलन के लुढ़क गए, जिसका अर्थ यह था कि परमाणु मुख्य रूप से खोखला स्थान है। यह उनके परमाणु मॉडल का महत्वपूर्ण बिंदु है। पहला विकल्प गलत है क्योंकि पन्नी बहुत पतली थी। तीसरा विकल्प गलत है क्योंकि अल्फा कण धनावेशित होते हैं। चौथा विकल्प गलत है क्योंकि नाभिक भारी होता है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English content, with appropriate technical terms and correct answer positioning. All distractors remain incorrect as in the original.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "रदरफोर्डच्या प्रयोगात, सोन्याच्या पानातून अल्फा कण विक्षेपण शिवाय जाण्याचे कारण काय होते?",
+          "choices": [
+            "कारण सोन्याचे पान खूप जास्त मोठे होते",
+            "कारण अणू मुख्यतः खालील जागा होता",
+            "कारण अल्फा कण आवेशरहित होते",
+            "कारण नाभिक खूप हलके होते"
+          ],
+          "solution": "रदरफोर्डच्या प्रयोगात अल्फा कण सोन्याच्या पानातून विक्षेपण शिवाय जाणे दर्शवले की अणू मुख्यतः खालील जागा होता. हे त्याच्या नाभिकीय मॉडेलचा महत्वपूर्ण बिंदू आहे. पहिला विकल्प अयोग्य आहे कारण पान खूप जास्त पातळ होते. तिसरा विकल्प खोटा आहे कारण अल्फा कण धनावेशित होते. चौथा विकल्प अयोग्य आहे कारण नाभिक भारी होते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the scientific terminology appropriate for a Marathi-medium curriculum.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Misunderstands the thickness of the gold foil",
+        null,
+        "Belief that alpha particles are neutral instead of positively charged",
+        "Incorrectly assumes alpha particles are uncharged"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 1, as Rutherford's experiment demonstrated that atoms are mostly empty space. The reasoning in the author's solution is accurate and matches the scientific understanding.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 42,
+          "pageStart": 38,
+          "pageEnd": 38,
+          "headingPath": [
+            "5. Inside the Atom"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 43,
+          "pageStart": 38,
+          "pageEnd": 39,
+          "headingPath": [
+            "5. Inside the Atom"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 44,
+          "pageStart": 39,
+          "pageEnd": 40,
+          "headingPath": [
+            "5. Inside the Atom"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-24T19:41:26.368Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "In the electronic configuration of an element, which shell is considered the valence shell?",
+      "choices": [
+        "The shell with the lowest energy",
+        "The shell with the highest energy",
+        "The first shell",
+        "The second shell"
+      ],
+      "answerIndex": 1,
+      "solution": "The valence shell is the outermost shell, which has the highest energy. The other options are incorrect because the first and second shells are not always the valence shell, and the shell with the lowest energy is the innermost shell.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "इलेक्ट्रॉन विन्यास में किस शेल को बाह्यतम शेल माना जाता है?",
+          "choices": [
+            "सबसे कम ऊर्जा वाला शेल",
+            "सबसे अधिक ऊर्जा वाला शेल",
+            "पहला शेल",
+            "दूसरा शेल"
+          ],
+          "solution": "बाह्यतम शेल जो सबसे अधिक ऊर्जा वाला होता है, वह वैलेंस शेल माना जाता है। अन्य विकल्प गलत हैं क्योंकि पहला और दूसरा शेल हमेशा वैलेंस शेल नहीं होता है और सबसे कम ऊर्जा वाला शेल आंतरिक शेल होता है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Hindi scientific terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "इलेक्ट्रॉन वितरणात एका घटकाच्या कोणत्या कक्षेला वैधता कक्ष मानले जाते?",
+          "choices": [
+            "सर्वात कमी ऊर्जा असलेली कक्ष",
+            "सर्वात जास्त ऊर्जा असलेली कक्ष",
+            "पहिली कक्ष",
+            "दुसरी कक्ष"
+          ],
+          "solution": "वैधता कक्ष ही बाह्यतम कक्ष आहे, जी सर्वात जास्त ऊर्जा असते. इतर विकल्प चुकीचे आहेत कारण पहिली आणि दुसरी कक्ष नेहमी वैधता कक्ष नसते आणि सर्वात कमी ऊर्जा असलेली कक्ष ही आंतरिकतम कक्ष असते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for chemistry.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "The shell with the lowest energy is the innermost shell",
+        null,
+        "The first shell is not always the valence shell",
+        "The second shell is not always the valence shell"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is option 1, as the valence shell is the outermost shell with the highest energy. The author's reasoning is accurate and aligns with standard chemistry concepts.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 48,
+          "pageStart": 42,
+          "pageEnd": 43,
+          "headingPath": [
+            "5. Inside the Atom"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 49,
+          "pageStart": 43,
+          "pageEnd": 44,
+          "headingPath": [
+            "5. Inside the Atom"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 50,
+          "pageStart": 44,
+          "pageEnd": 45,
+          "headingPath": [
+            "5. Inside the Atom"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-24T19:41:26.368Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "What conclusion can be drawn from the observation that a few alpha particles were deflected at large angles during Rutherford's experiment?",
+      "choices": [
+        "The nucleus is negatively charged",
+        "The nucleus is very small and massive",
+        "The atom has a uniform positive charge",
+        "The electrons are spread throughout the atom"
+      ],
+      "answerIndex": 1,
+      "solution": "The large deflection of a few alpha particles suggested that they encountered a very small, massive, positively charged region within the atom. This led Rutherford to conclude that the nucleus is small and massive. The first option is incorrect as the nucleus is positively charged. The third and fourth options describe Thomson's model, not Rutherford's.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "रदरफोर्ड के प्रयोग में कुछ अल्फा कणों के बड़े कोण पर विचलित होने के अवलोकन से कौन-सा निष्कर्ष निकाला जा सकता है?",
+          "choices": [
+            "नाभिक ऋणात्मक आवेशित है",
+            "नाभिक बहुत छोटा और भारी है",
+            "परमाणु में एकसमान धनात्मक आवेश है",
+            "इलेक्ट्रॉन परमाणु में बराबर रूप से फैले हुए हैं"
+          ],
+          "solution": "कुछ अल्फा कणों के बड़े कोण पर विचलित होने के कारण यह सुझाव दिया गया कि उन्हें परमाणु के भीतर बहुत छोटे, भारी, धनात्मक आवेशित क्षेत्र से टक्कर हुई। इसके कारण रदरफोर्ड ने निष्कर्ष निकाला कि नाभिक छोटा और भारी है। पहला विकल्प गलत है क्योंकि नाभिक धनात्मक आवेशित है। तीसरा और चौथा विकल्प थॉमसन के मॉडल को दर्शाते हैं, न कि रदरफोर्ड के।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the original English question and solution, with appropriate terminology used in a Hindi-medium educational context.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "रदरफोर्डच्या प्रयोगात थोड्या अल्फा कणांचा मोठ्या कोनांवर विचलन झाल्याच्या अवलोकनावरून कोणता निष्कर्ष काढता येईल?",
+          "choices": [
+            "नाभिक ऋणात्मक आहे",
+            "नाभिक खूप लहान आणि भारी आहे",
+            "परमाणूला समान धनात्मक आवेश आहे",
+            "इलेक्ट्रॉन परमाणूमध्ये वितरित आहेत"
+          ],
+          "solution": "थोड्या अल्फा कणांचा मोठ्या कोनांवर विचलन झाल्याने त्यांना परमाणूमध्ये खूप लहान, भारी आणि धनात्मक आवेश असलेल्या क्षेत्राशी भिडल्याचे सूचित होते. यामुळे रदरफोर्डने नाभिक लहान आणि भारी असल्याचा निष्कर्ष काढला. पहिला विकल्प चुकीचा आहे कारण नाभिक धनात्मक आहे. तिसरा आणि चौथा विकल्प थॉमसनच्या मॉडेलचे वर्णन करतात, रदरफोर्डच्या नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Incorrectly assumes the nucleus is negatively charged",
+        null,
+        "Confuses the size and mass of the nucleus",
+        "Believes in Thomson's model of charge distribution"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 1, as Rutherford's experiment showed that the nucleus is small and massive. The other options reflect common misconceptions about atomic structure.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 42,
+          "pageStart": 38,
+          "pageEnd": 38,
+          "headingPath": [
+            "5. Inside the Atom"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 43,
+          "pageStart": 38,
+          "pageEnd": 39,
+          "headingPath": [
+            "5. Inside the Atom"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 44,
+          "pageStart": 39,
+          "pageEnd": 40,
+          "headingPath": [
+            "5. Inside the Atom"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-24T19:41:26.368Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "An element has 17 electrons. What is its atomic number and how many valence electrons does it have?",
+      "choices": [
+        "Atomic number = 17, Valence electrons = 7",
+        "Atomic number = 17, Valence electrons = 5",
+        "Atomic number = 17, Valence electrons = 3",
+        "Atomic number = 17, Valence electrons = 1"
+      ],
+      "answerIndex": 0,
+      "solution": "The atomic number of an element is equal to the number of protons, which in a neutral atom is equal to the number of electrons. Therefore, an element with 17 electrons has an atomic number of 17. Valence electrons are the electrons in the outermost energy level. For elements in the third period, the number of valence electrons corresponds to the group number minus 10, which gives 7 for this element. The other options provide incorrect numbers of valence electrons.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक तत्व में 17 इलेक्ट्रॉन हैं। इसकी परमाणु संख्या क्या है और इसके कितने संयोजी इलेक्ट्रॉन हैं?",
+          "choices": [
+            "परमाणु संख्या = 17, संयोजी इलेक्ट्रॉन = 7",
+            "परमाणु संख्या = 17, संयोजी इलेक्ट्रॉन = 5",
+            "परमाणु संख्या = 17, संयोजी इलेक्ट्रॉन = 3",
+            "परमाणु संख्या = 17, संयोजी इलेक्ट्रॉन = 1"
+          ],
+          "solution": "किसी तत्व की परमाणु संख्या प्रोटॉन की संख्या के बराबर होती है, जो उदासीन परमाणु में इलेक्ट्रॉन की संख्या के बराबर होती है। अतः 17 इलेक्ट्रॉन वाले तत्व की परमाणु संख्या 17 है। संयोजी इलेक्ट्रॉन बाह्यतम ऊर्जा स्तर में इलेक्ट्रॉन होते हैं। तीसरी आवर्त के तत्वों के लिए, संयोजी इलेक्ट्रॉन की संख्या समूह संख्या में से 10 घटाने पर प्राप्त होती है, जो इस तत्व के लिए 7 है। अन्य विकल्प गलत संयोजी इलेक्ट्रॉन संख्या प्रदान करते हैं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains original meaning, and uses standard Hindi science terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एक घटकात 17 इलेक्ट्रॉन आहेत. त्याचा परमाणु क्रमांक किती असेल आणि त्याचे बाह्य इलेक्ट्रॉन किती असतील?",
+          "choices": [
+            "परमाणु क्रमांक = 17, बाह्य इलेक्ट्रॉन = 7",
+            "परमाणु क्रमांक = 17, बाह्य इलेक्ट्रॉन = 5",
+            "परमाणु क्रमांक = 17, बाह्य इलेक्ट्रॉन = 3",
+            "परमाणु क्रमांक = 17, बाह्य इलेक्ट्रॉन = 1"
+          ],
+          "solution": "एका घटकाचा परमाणु क्रमांक प्रोटॉनच्या संख्येबरोबर असतो, जो निरोगी परमाणूत इलेक्ट्रॉनच्या संख्येबरोबर असतो. म्हणून, 17 इलेक्ट्रॉन असलेल्या घटकाचा परमाणु क्रमांक 17 असेल. बाह्य इलेक्ट्रॉन हे बाह्य ऊर्जा स्तरातील इलेक्ट्रॉन असतात. तिसऱ्या आवर्तातील घटकांसाठी, बाह्य इलेक्ट्रॉनची संख्या समूह क्रमांकाच्या 10 ने वजा केल्याने मिळते, जो या घटकासाठी 7 असेल. इतर विकल्प बाह्य इलेक्ट्रॉनच्या चुकीच्या संख्या दर्शवतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses valence electrons with the number of electrons needed to complete an octet",
+        "Confuses the valence electrons with the valency",
+        "Confuses the number of valence electrons with the total number of electrons"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct. The atomic number is 17 because the element has 17 electrons, and the valence electrons are 7. The distractors reflect common misconceptions about valence electrons, octet rule, and valency.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 51,
+          "pageStart": 45,
+          "pageEnd": 46,
+          "headingPath": [
+            "5. Inside the Atom"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 52,
+          "pageStart": 46,
+          "pageEnd": 47,
+          "headingPath": [
+            "5. Inside the Atom"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 53,
+          "pageStart": 47,
+          "pageEnd": 48,
+          "headingPath": [
+            "5. Inside the Atom"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-24T19:41:26.368Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of the following best describes the relationship between the number of valence electrons and the valency of an element?",
+      "choices": [
+        "Valency is always equal to the number of valence electrons.",
+        "Valency is 8 minus the number of valence electrons when there are more than four valence electrons.",
+        "Valency is twice the number of valence electrons.",
+        "Valency is the same as the number of electrons in the innermost shell."
+      ],
+      "answerIndex": 1,
+      "solution": "The correct answer is that valency is 8 minus the number of valence electrons when there are more than four valence electrons. This is because elements with more than four valence electrons tend to gain electrons to achieve a stable configuration, and their valency reflects the number of electrons needed to reach eight. The first option is incorrect because valency does not always equal the number of valence electrons, especially for elements that gain electrons. The third and fourth options are incorrect because valency is not determined by doubling the valence electrons or by the number of electrons in the innermost shell.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा तत्व के संयोजकता इलेक्ट्रॉनों की संख्या और तत्व की संयोजकता के बीच संबंध का सबसे अच्छा वर्णन करता है?",
+          "choices": [
+            "संयोजकता हमेशा संयोजकता इलेक्ट्रॉनों की संख्या के बराबर होती है।",
+            "जब संयोजकता इलेक्ट्रॉनों की संख्या चार से अधिक होती है तो संयोजकता संयोजकता इलेक्ट्रॉनों की संख्या के 8 में से घटाने से प्राप्त होती है।",
+            "संयोजकता संयोजकता इलेक्ट्रॉनों की संख्या के दोगुने के बराबर होती है।",
+            "संयोजकता आंतरिकतम कोश में इलेक्ट्रॉनों की संख्या के बराबर होती है।"
+          ],
+          "solution": "सही उत्तर यह है कि जब संयोजकता इलेक्ट्रॉनों की संख्या चार से अधिक होती है तो संयोजकता संयोजकता इलेक्ट्रॉनों की संख्या के 8 में से घटाने से प्राप्त होती है। इसका कारण यह है कि चार से अधिक संयोजकता इलेक्ट्रॉन वाले तत्व एक स्थिर विन्यास प्राप्त करने के लिए इलेक्ट्रॉन ग्रहण करते हैं, और उनकी संयोजकता आठ तक पहुंचने के लिए आवश्यक इलेक्ट्रॉनों की संख्या को दर्शाती है। पहला विकल्प गलत है क्योंकि संयोजकता हमेशा संयोजकता इलेक्ट्रॉनों की संख्या के बराबर नहीं होती है, विशेष रूप से जब तत्व इलेक्ट्रॉन ग्रहण करते हैं। तीसरा और चौथा विकल्प गलत हैं क्योंकि संयोजकता संयोजकता इलेक्ट्रॉनों की संख्या के दोगुने के बराबर नहीं होती है या आंतरिकतम कोश में इलेक्ट्रॉनों की संख्या के बराबर नहीं होती है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Hindi terminology used for scientific concepts.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते विधान एका घटकाच्या वैलेन्स इलेक्ट्रॉनच्या संख्या आणि त्याच्या वैलेन्सीमधील संबंधाचे सर्वात चांगले वर्णन करते?",
+          "choices": [
+            "वैलेन्सी ही वैलेन्स इलेक्ट्रॉनच्या संख्येइतकी असते.",
+            "जेव्हा वैलेन्स इलेक्ट्रॉनची संख्या चारपेक्षा जास्त असते तेव्हा वैलेन्सी ही 8 माइनस वैलेन्स इलेक्ट्रॉनच्या संख्या असते.",
+            "वैलेन्सी ही वैलेन्स इलेक्ट्रॉनच्या संख्येच्या दुप्पट असते.",
+            "वैलेन्सी ही आंतरतम कक्षेतील इलेक्ट्रॉनच्या संख्येइतकी असते."
+          ],
+          "solution": "योग्य उत्तर हे आहे की जेव्हा वैलेन्स इलेक्ट्रॉनची संख्या चारपेक्षा जास्त असते तेव्हा वैलेन्सी ही 8 माइनस वैलेन्स इलेक्ट्रॉनच्या संख्या असते. हे कारण असे आहे की चारपेक्षा जास्त वैलेन्स इलेक्ट्रॉन असलेले घटक एक स्थिर विन्यास मिळविण्यासाठी इलेक्ट्रॉन जोडून घेतात आणि त्यांची वैलेन्सी आठ इलेक्ट्रॉन मिळविण्यासाठी आवश्यक इलेक्ट्रॉनांची संख्या दर्शवते. पहिले विधान खोटे आहे कारण वैलेन्सी वैलेन्स इलेक्ट्रॉनच्या संख्येइतकी असत नाही, विशेषतः जेव्हा घटक इलेक्ट्रॉन जोडून घेतात. तिसरे आणि चौथे विधान खोटे आहेत कारण वैलेन्सी वैलेन्स इलेक्ट्रॉनच्या संख्येच्या दुप्पट असत नाही किंवा आंतरतम कक्षेतील इलेक्ट्रॉनच्या संख्येशी संबंधित नसते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for scientific concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "confuses the general rule with a specific case",
+        null,
+        "incorrectly assumes a fixed formula for valency",
+        "incorrectly relates valency to the innermost shell instead of valence electrons"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is option 1, as valency is indeed 8 minus the number of valence electrons for elements with more than four valence electrons. The other options reflect common misconceptions about valency.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 51,
+          "pageStart": 45,
+          "pageEnd": 46,
+          "headingPath": [
+            "5. Inside the Atom"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 52,
+          "pageStart": 46,
+          "pageEnd": 47,
+          "headingPath": [
+            "5. Inside the Atom"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 53,
+          "pageStart": 47,
+          "pageEnd": 48,
+          "headingPath": [
+            "5. Inside the Atom"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-29T20:10:41.426Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of the following is a characteristic of the nucleus in an atom?",
+      "choices": [
+        "It contains electrons",
+        "It is neutral in charge",
+        "It is positively charged",
+        "It is the lightest part of the atom"
+      ],
+      "answerIndex": 2,
+      "solution": "The nucleus is positively charged because it contains protons, which have a positive charge. Electrons are outside the nucleus and are negatively charged, so the first option is incorrect. The nucleus is not neutral, so the second option is wrong. The nucleus is the heaviest part of the atom, not the lightest, so the fourth option is also incorrect.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा परमाणु के नाभिक का गुण है?",
+          "choices": [
+            "इसमें इलेक्ट्रॉन होते हैं",
+            "यह आवेश रहित होता है",
+            "यह धनावेशित होता है",
+            "यह परमाणु का सबसे हल्का भाग होता है"
+          ],
+          "solution": "नाभिक धनावेशित होता है क्योंकि इसमें प्रोटॉन होते हैं, जो धनावेशित होते हैं। इलेक्ट्रॉन नाभिक के बाहर होते हैं और ऋणावेशित होते हैं, इसलिए पहला विकल्प गलत है। नाभिक आवेश रहित नहीं होता, इसलिए दूसरा विकल्प गलत है। नाभिक परमाणु का सबसे भारी भाग होता है, न कि सबसे हल्का, इसलिए चौथा विकल्प भी गलत है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Hindi scientific terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी अणुमधील न्यूक्लियसचा वैशिष्ट्य आहे?",
+          "choices": [
+            "त्यामध्ये इलेक्ट्रॉन असतात",
+            "ते विद्युतरहित असते",
+            "ते धनावेशित असते",
+            "ते अणूचे सर्वात हलके भाग असते"
+          ],
+          "solution": "न्यूक्लियस धनावेशित असतो कारण त्यामध्ये प्रोटॉन असतात, जे धनावेशित असतात. इलेक्ट्रॉन न्यूक्लियसबाहेर असतात आणि ऋणावेशित असतात, म्हणून पहिला विकल्प चुकीचा आहे. न्यूक्लियस विद्युतरहित नसतो, म्हणून दुसरा विकल्प चुकीचा आहे. न्यूक्लियस अणूचे सर्वात भारी भाग असतो, नक्कीच सर्वात हलके नसतो, म्हणून चौथा विकल्प देखील चुकीचा आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the location of electrons",
+        "Misunderstands the charge of the nucleus",
+        null,
+        "No reason (correct answer is not a distractor here, but the third option is correct by elimination and scientific knowledge)."
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct and aligns with scientific understanding. The nucleus is positively charged due to protons, making option 2 correct. The other options reflect common misconceptions about the structure and charge of atoms.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 54,
+          "pageStart": 48,
+          "pageEnd": 48,
+          "headingPath": [
+            "5. Inside the Atom",
+            "Exercises"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-29T20:10:41.426Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the valency of an element if it has 2 valence electrons?",
+      "choices": [
+        "2",
+        "4",
+        "6",
+        "8"
+      ],
+      "answerIndex": 0,
+      "solution": "Valency is the number of valence electrons in an atom. If an element has 2 valence electrons, its valency is 2. The other options are incorrect because they do not match the number of valence electrons.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "किसी तत्व की संयोजकता क्या होगी यदि इसमें 2 संयोजक इलेक्ट्रॉन हैं?",
+          "choices": [
+            "2",
+            "4",
+            "6",
+            "8"
+          ],
+          "solution": "संयोजकता किसी परमाणु में संयोजक इलेक्ट्रॉनों की संख्या होती है। यदि किसी तत्व में 2 संयोजक इलेक्ट्रॉन हैं, तो इसकी संयोजकता 2 होगी। अन्य विकल्प गलत हैं क्योंकि वे संयोजक इलेक्ट्रॉनों की संख्या के साथ मेल नहीं खाते।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard scientific terminology as taught in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका घटकाची वैलेन्सी किती आहे जर त्याच्याकडे 2 वैलेन्स इलेक्ट्रॉन असतील?",
+          "choices": [
+            "2",
+            "4",
+            "6",
+            "8"
+          ],
+          "solution": "वैलेन्सी हा परमाणूमधील वैलेन्स इलेक्ट्रॉनची संख्या आहे. जर एका घटकाच्याकडे 2 वैलेन्स इलेक्ट्रॉन असतील, तर त्याची वैलेन्सी 2 असते. इतर विकल्प अयोग्य आहेत कारण ते वैलेन्स इलेक्ट्रॉनच्या संख्येशी जुळत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for scientific concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses valency with the number of electrons in the outer shell plus the number of electrons needed to fill the shell",
+        "Confuses the valency with the total number of electrons.",
+        "Confuses the valency with the number of protons or neutrons."
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct. Valency is indeed the number of valence electrons an atom has, so the correct answer is 2. The author's reasoning for the distractors is valid and reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 54,
+          "pageStart": 48,
+          "pageEnd": 48,
+          "headingPath": [
+            "5. Inside the Atom",
+            "Exercises"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-29T20:10:41.426Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "In Rutherford's experiment, what did the observation that most alpha particles passed through the gold foil suggest about the structure of an atom?",
+      "choices": [
+        "The atom has a dense, positively charged nucleus",
+        "The atom is mostly empty space",
+        "The atom has a uniform distribution of mass",
+        "The atom contains electrons"
+      ],
+      "answerIndex": 1,
+      "solution": "The observation that most alpha particles passed through the gold foil suggests that the atom is mostly empty space, as there was little to obstruct their path. The other options are incorrect because a dense, positively charged nucleus would have caused significant deflection, a uniform distribution of mass would have led to more scattering, and the presence of electrons was not directly inferred from this specific observation.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "रदरफोर्ड के प्रयोग में, सोने की पन्नी से अधिकांश अल्फा कण पार हो जाने के अवलोकन ने परमाणु की संरचना के बारे में क्या सुझाव दिया?",
+          "choices": [
+            "परमाणु में घना, धनात्मक आवेशित नाभिक होता है",
+            "परमाणु अधिकांशतः खोखला होता है",
+            "परमाणु में द्रव्यमान का समान वितरण होता है",
+            "परमाणु में इलेक्ट्रॉन होते हैं"
+          ],
+          "solution": "सोने की पन्नी से अधिकांश अल्फा कण पार हो जाने के अवलोकन दर्शाता है कि परमाणु अधिकांशतः खोखला होता है, क्योंकि उनके मार्ग में कम बाधा थी। अन्य विकल्प गलत हैं क्योंकि घना, धनात्मक आवेशित नाभिक के कारण अधिक विचलन होता, समान द्रव्यमान वितरण के कारण अधिक प्रकीर्णन होता और इलेक्ट्रॉन की उपस्थिति इस विशिष्ट अवलोकन से सीधे निष्कर्ष नहीं निकाला जा सकता था।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate scientific terminology in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "रदरफोर्डच्या प्रयोगात, सोन्याच्या पानातून अल्फा कण जाण्याचा अवलोकन काय सूचित करतो अणूच्या संरचनेबद्दल?",
+          "choices": [
+            "अणूचा घन, धनावेशित नाभी असतो",
+            "अणू मुख्यतः रिकामा जागा आहे",
+            "अणूमध्ये द्रव्यमानाचे समान वितरण असते",
+            "अणूमध्ये इलेक्ट्रॉन असतात"
+          ],
+          "solution": "सोन्याच्या पानातून अल्फा कण जाण्याचा अवलोकन अणू मुख्यतः रिकामा जागा असल्याचे सूचित करतो, कारण त्यांच्या मार्गात थोडेच अडथळा होत होता. इतर विकल्प अयोग्य आहेत कारण घन, धनावेशित नाभी असल्याने त्यांचा मोठ्या प्रमाणात विचलन होणार आणि समान द्रव्यमान वितरण असल्याने अधिक बिखरण होणार. इलेक्ट्रॉनचा उपस्थिती ह्या विशिष्ट अवलोकनावरून सीधा निष्कर्ष काढता आला नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Incorrectly assumes the nucleus is the main conclusion",
+        null,
+        "Does not understand the implication of alpha particles passing through",
+        "Confuses the mass distribution described in Dalton's theory with the experiment's conclusion"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 1, as Rutherford's experiment showed that most alpha particles passed through the gold foil without deflection, suggesting the atom is mostly empty space. The other options are incorrect because they misinterpret the experiment's findings.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 42,
+          "pageStart": 38,
+          "pageEnd": 38,
+          "headingPath": [
+            "5. Inside the Atom"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 43,
+          "pageStart": 38,
+          "pageEnd": 39,
+          "headingPath": [
+            "5. Inside the Atom"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 44,
+          "pageStart": 39,
+          "pageEnd": 40,
+          "headingPath": [
+            "5. Inside the Atom"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-29T20:10:41.426Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "An element 'X' has 50% of the electrons filled in the 3rd shell as in the 2nd shell. What is the atomic number of 'X'?",
+      "choices": [
+        "10",
+        "12",
+        "14",
+        "18"
+      ],
+      "answerIndex": 2,
+      "solution": "The 2nd shell can hold up to 8 electrons, and if the 3rd shell has 50% of that, it contains 4 electrons. Adding the electrons from the first and second shells (2 + 8 + 4) gives an atomic number of 14. Option 10 has only 2 + 8 = 10 electrons, 12 has 2 + 8 + 2 = 12, and 18 has 2 + 8 + 8 = 18, which do not match the 50% condition.",
+      "checkExpr": "2+8+4",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक तत्व 'X' में तीसरे कोश में इलेक्ट्रॉनों की संख्या दूसरे कोश में इलेक्ट्रॉनों की संख्या के 50% है। 'X' की परमाणु संख्या क्या है?",
+          "choices": [
+            "10",
+            "12",
+            "14",
+            "18"
+          ],
+          "solution": "द्वितीय कोश में अधिकतम 8 इलेक्ट्रॉन भरे जा सकते हैं, और यदि तीसरे कोश में इनके 50% हैं, तो इसमें 4 इलेक्ट्रॉन होते हैं। पहले और दूसरे कोश के इलेक्ट्रॉनों को जोड़ने पर (2 + 8 + 4) कुल परमाणु संख्या 14 होती है। विकल्प 10 में केवल 2 + 8 = 10 इलेक्ट्रॉन हैं, 12 में 2 + 8 + 2 = 12 हैं, और 18 में 2 + 8 + 8 = 18 हैं, जो 50% की स्थिति के अनुरूप नहीं हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately preserves the meaning, technical terms, and structure of the original English question. All options and the solution align correctly.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एक घटक 'X' च्या 3 व्या कक्षातील इलेक्ट्रॉन 2 व्या कक्षातील इलेक्ट्रॉनच्या 50% आहेत. 'X' चा परमाणु क्रमांक किती आहे?",
+          "choices": [
+            "10",
+            "12",
+            "14",
+            "18"
+          ],
+          "solution": "2 व्या कक्षामध्ये 8 इलेक्ट्रॉन ठेवता येतात आणि 3 व्या कक्षामध्ये त्याच्या 50% म्हणजे 4 इलेक्ट्रॉन असतात. पहिल्या आणि दुसऱ्या कक्षातील इलेक्ट्रॉन जोडल्यास (2 + 8 + 4) चा परमाणु क्रमांक 14 होतो. ऑप्शन 10 मध्ये केवळ 2 + 8 = 10 इलेक्ट्रॉन असतात, 12 मध्ये 2 + 8 + 2 = 12 आणि 18 मध्ये 2 + 8 + 8 = 18, जे 50% च्या अटीला अनुरूप नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi terminology for atomic structure.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Assumes the 2nd shell holds 10 electrons",
+        "Confuses the electron configuration",
+        null,
+        "Incorrectly calculates the number of electrons in the shells"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct based on standard electron configuration rules. The 2nd shell holds 8 electrons, so 50% of that is 4 electrons in the 3rd shell. The total electrons (atomic number) would be 2 (1st shell) + 8 (2nd shell) + 4 (3rd shell) = 14.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 42,
+          "pageStart": 38,
+          "pageEnd": 38,
+          "headingPath": [
+            "5. Inside the Atom"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 43,
+          "pageStart": 38,
+          "pageEnd": 39,
+          "headingPath": [
+            "5. Inside the Atom"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 44,
+          "pageStart": 39,
+          "pageEnd": 40,
+          "headingPath": [
+            "5. Inside the Atom"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-29T20:10:41.426Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "If an element has 10 electrons and 12 protons, what can be said about its charge and atomic number?",
+      "choices": [
+        "It is neutral with atomic number 10.",
+        "It is positively charged with atomic number 12.",
+        "It is negatively charged with atomic number 12.",
+        "It is neutral with atomic number 12."
+      ],
+      "answerIndex": 1,
+      "solution": "The atomic number is the number of protons, which is 12. Since the number of protons (12) is greater than the number of electrons (10), the atom is positively charged. The first and fourth options incorrectly state the atomic number as 10. The third option incorrectly states that the atom is negatively charged.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि किसी तत्व में 10 इलेक्ट्रॉन और 12 प्रोटॉन हैं, तो इसके आवेश और परमाणु संख्या के बारे में क्या कहा जा सकता है?",
+          "choices": [
+            "यह उदासीन है और परमाणु संख्या 10 है।",
+            "यह धनावेशित है और परमाणु संख्या 12 है।",
+            "यह ऋणावेशित है और परमाणु संख्या 12 है।",
+            "यह उदासीन है और परमाणु संख्या 12 है।"
+          ],
+          "solution": "परमाणु संख्या प्रोटॉन की संख्या होती है, जो 12 है। चूंकि प्रोटॉन की संख्या (12) इलेक्ट्रॉन की संख्या (10) से अधिक है, तो परमाणु धनावेशित है। पहला और चौथा विकल्प परमाणु संख्या को गलत रूप से 10 बताते हैं। तीसरा विकल्प परमाणु के ऋणावेशित होने का गलत दावा करता है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate scientific terminology as found in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका घटकाच्या 10 इलेक्ट्रॉन आणि 12 प्रोटॉन असतील तर त्याच्या आवेशाचे आणि परमाणू क्रमांकाचे काय म्हणायचे?",
+          "choices": [
+            "तो निर्विष असून परमाणू क्रमांक 10 आहे.",
+            "तो धनावेशित असून परमाणू क्रमांक 12 आहे.",
+            "तो ऋणावेशित असून परमाणू क्रमांक 12 आहे.",
+            "तो निर्विष असून परमाणू क्रमांक 12 आहे."
+          ],
+          "solution": "परमाणू क्रमांक हा प्रोटॉनचा संख्या आहे, जो 12 आहे. प्रोटॉनची संख्या (12) इलेक्ट्रॉनच्या संख्येपेक्षा जास्त आहे (10), त्यामुळे परमाणू धनावेशित आहे. पहिल्या आणि चौथ्या विकल्पांमध्ये परमाणू क्रमांक 10 च्या चुकीच्या व्याख्या आहेत. तिसरा विकल्प चुकीच्या परमाणू ऋणावेशित असल्याचे म्हणतो.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "confuses the atomic number with the number of electrons",
+        null,
+        "correctly identifies the atomic number but incorrectly states the charge",
+        "incorrectly identifies the charge and the atomic number"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct. The atomic number is the number of protons (12), and since there are more protons than electrons (12 vs. 10), the atom is positively charged. The correct answer is option 1.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 45,
+          "pageStart": 40,
+          "pageEnd": 41,
+          "headingPath": [
+            "5. Inside the Atom"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 46,
+          "pageStart": 41,
+          "pageEnd": 41,
+          "headingPath": [
+            "5. Inside the Atom"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 47,
+          "pageStart": 41,
+          "pageEnd": 42,
+          "headingPath": [
+            "5. Inside the Atom"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-29T20:10:41.426Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "An element has 12 electrons and 12 protons. Which of the following is true about this element?",
+      "choices": [
+        "It is a positively charged ion",
+        "It is a negatively charged ion",
+        "It is neutral",
+        "It has no charge"
+      ],
+      "answerIndex": 2,
+      "solution": "An atom is neutral when the number of protons (positive charge) equals the number of electrons (negative charge). Since this element has 12 protons and 12 electrons, it is neutral. The first two options are incorrect because the element is not an ion. The fourth option is not the correct scientific term.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक तत्व में 12 इलेक्ट्रॉन और 12 प्रोटॉन हैं। इस तत्व के बारे में निम्नलिखित में से कौन-सा सही है?",
+          "choices": [
+            "यह एक धनात्मक आयन है",
+            "यह एक ऋणात्मक आयन है",
+            "यह उदासीन है",
+            "यह कोई आवेश नहीं रखता है"
+          ],
+          "solution": "एक परमाणु उदासीन होता है जब प्रोटॉनों (धनात्मक आवेश) की संख्या इलेक्ट्रॉनों (ऋणात्मक आवेश) की संख्या के बराबर होती है। चूंकि इस तत्व में 12 प्रोटॉन और 12 इलेक्ट्रॉन हैं, इसलिए यह उदासीन है। पहले दो विकल्प गलत हैं क्योंकि तत्व आयन नहीं है। चौथा विकल्प सही वैज्ञानिक शब्द नहीं है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the scientific terminology, and preserves the logical structure of the question and solution.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एक घटकाला 12 इलेक्ट्रॉन आणि 12 प्रोटॉन आहेत. खालीलपैकी कोणते या घटकाबद्दल खरे आहे?",
+          "choices": [
+            "तो धनावेशित आयन आहे",
+            "तो ऋणावेशित आयन आहे",
+            "तो निर्विवाद आहे",
+            "त्याला कोणताही आवेश नाही"
+          ],
+          "solution": "एक परमाणू निर्विवाद असतो जेव्हा प्रोटॉनांची संख्या (धनावेश) इलेक्ट्रॉनांच्या संख्येसह (ऋणावेश) समान असते. या घटकाला 12 प्रोटॉन आणि 12 इलेक्ट्रॉन आहेत, म्हणून तो निर्विवाद आहे. पहिले दोन विकल्प चुकीचे आहेत कारण घटक आयन नाही. चौथा विकल्प वैज्ञानिक शब्द नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the scientific meaning. 'निर्विवाद' is the correct Marathi term for 'neutral' in this context.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Misunderstands the concept of ions.",
+        "Misunderstands the concept of ions.",
+        null,
+        "Chooses the less precise term 'no charge' instead of 'neutral'."
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct and aligns with the scientific principle that an atom is neutral when the number of protons equals the number of electrons. The reasoning for the distractors is valid, as they reflect common misconceptions about ions and terminology.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 54,
+          "pageStart": 48,
+          "pageEnd": 48,
+          "headingPath": [
+            "5. Inside the Atom",
+            "Exercises"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-29T20:10:41.426Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "What conclusion did Rutherford's gold foil experiment directly support?",
+      "choices": [
+        "An atom is mostly empty space with a dense, positively charged nucleus.",
+        "An atom is composed of at least three types of subatomic particles.",
+        "An electron has a positive charge and is located inside the nucleus.",
+        "An electron has properties of both waves and particles."
+      ],
+      "answerIndex": 0,
+      "solution": "Rutherford's experiment showed that most alpha particles passed through the gold foil without deflection, indicating that atoms are mostly empty space. A few particles were deflected, suggesting the presence of a dense, positively charged nucleus. The other options are incorrect because they refer to different experiments or concepts not directly supported by Rutherford's findings.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "रदरफोर्ड के सोने के पत्ते प्रयोग ने सीधे रूप से कौन सा निष्कर्ष समर्थित किया?",
+          "choices": [
+            "एक परमाणु अधिकांशतः खाली स्थान होता है जिसमें घना, धनात्मक आवेशित नाभिक होता है।",
+            "एक परमाणु कम से कम तीन प्रकार के उप-परमाण्विक कणों से बना होता है।",
+            "इलेक्ट्रॉन का धनात्मक आवेश होता है और यह नाभिक के अंदर स्थित होता है।",
+            "इलेक्ट्रॉन के तरंग और कण दोनों के गुण होते हैं।"
+          ],
+          "solution": "रदरफोर्ड के प्रयोग ने दिखाया कि अधिकांश अल्फा कण सोने के पत्ते से बिना विचलन के गुजर गए, जो दर्शाता है कि परमाणु अधिकांशतः खाली स्थान होता है। कुछ कणों का विचलन हुआ, जो घने, धनात्मक आवेशित नाभिक की उपस्थिति को संकेत देता है। अन्य विकल्प गलत हैं क्योंकि वे रदरफोर्ड के परिणामों के सीधे समर्थन में आए अन्य प्रयोगों या अवधारणाओं के संदर्भ में हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate scientific terminology in Hindi.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses the conclusion of the gold foil experiment with other atomic models.",
+        "Refers to the composition of atoms, which is not the main conclusion of Rutherford's experiment.",
+        "Incorrectly states the charge of an electron, which is known from other experiments like J.J. Thomson's work on cathode rays, not Rutherford's experiment alone."
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 0, as Rutherford's experiment directly supported the idea that atoms are mostly empty space with a dense, positively charged nucleus. The other options are incorrect for the reasons stated, and the misconceptions listed are plausible for students.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 42,
+          "pageStart": 38,
+          "pageEnd": 38,
+          "headingPath": [
+            "5. Inside the Atom"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 43,
+          "pageStart": 38,
+          "pageEnd": 39,
+          "headingPath": [
+            "5. Inside the Atom"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 44,
+          "pageStart": 39,
+          "pageEnd": 40,
+          "headingPath": [
+            "5. Inside the Atom"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-29T20:10:41.426Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "If an atom has an atomic number of 17, what would be its electronic configuration?",
+      "choices": [
+        "2, 8, 7",
+        "2, 8, 8",
+        "2, 8, 6",
+        "2, 8, 5"
+      ],
+      "answerIndex": 0,
+      "solution": "An atom with an atomic number of 17 has 17 electrons. According to the formula 2n², the K shell holds 2 electrons, the L shell holds 8, and the remaining 7 electrons go into the M shell. So, the electronic configuration is 2, 8, 7. The other options do not match the total number of electrons for an atomic number of 17.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि किसी परमाणु की परमाणु संख्या 17 है, तो इसका इलेक्ट्रॉनिक विन्यास क्या होगा?",
+          "choices": [
+            "2, 8, 7",
+            "2, 8, 8",
+            "2, 8, 6",
+            "2, 8, 5"
+          ],
+          "solution": "परमाणु संख्या 17 वाले परमाणु में 17 इलेक्ट्रॉन होते हैं। सूत्र 2n² के अनुसार, K कोश में 2 इलेक्ट्रॉन, L कोश में 8 इलेक्ट्रॉन और शेष 7 इलेक्ट्रॉन M कोश में जाते हैं। अतः इलेक्ट्रॉनिक विन्यास 2, 8, 7 होता है। अन्य विकल्प परमाणु संख्या 17 के लिए कुल इलेक्ट्रॉनों की संख्या के अनुरूप नहीं हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका परमाणूचा परमाणु क्रमांक 17 असल्यास त्याचे इलेक्ट्रॉनिक वितरण काय असेल?",
+          "choices": [
+            "2, 8, 7",
+            "2, 8, 8",
+            "2, 8, 6",
+            "2, 8, 5"
+          ],
+          "solution": "परमाणु क्रमांक 17 असलेल्या परमाणूमध्ये 17 इलेक्ट्रॉन असतात. 2n² च्या सूत्रानुसार, K कक्ष 2 इलेक्ट्रॉन धरतो, L कक्ष 8 इलेक्ट्रॉन धरतो आणि उरलेले 7 इलेक्ट्रॉन M कक्षामध्ये जातात. म्हणून इलेक्ट्रॉनिक वितरण 2, 8, 7 असते. इतर विकल्प परमाणु क्रमांक 17 च्या इलेक्ट्रॉनच्या एकूण संख्येशी जुमानत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the scientific terminology used in Marathi textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "thinks the M shell holds 8 electrons instead of 7",
+        "mistakenly assumes the M shell is full",
+        "confuses the electron count in the M shell"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly calculates the electronic configuration based on the atomic number and the 2n² rule. The correct answer is 2, 8, 7, and the author's reasoning for the distractors aligns with common student misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 48,
+          "pageStart": 42,
+          "pageEnd": 43,
+          "headingPath": [
+            "5. Inside the Atom"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 49,
+          "pageStart": 43,
+          "pageEnd": 44,
+          "headingPath": [
+            "5. Inside the Atom"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 50,
+          "pageStart": 44,
+          "pageEnd": 45,
+          "headingPath": [
+            "5. Inside the Atom"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-29T20:10:41.426Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "Which subatomic particle has no charge?",
+      "choices": [
+        "Electron",
+        "Proton",
+        "Neutron",
+        "Photon"
+      ],
+      "answerIndex": 2,
+      "solution": "The neutron is the subatomic particle that has no charge. Electrons are negatively charged, protons are positively charged, and photons are not subatomic particles.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "कौन सा उपपरमाणु कण बिना आवेश का होता है?",
+          "choices": [
+            "इलेक्ट्रॉन",
+            "प्रोटॉन",
+            "न्यूट्रॉन",
+            "फोटॉन"
+          ],
+          "solution": "न्यूट्रॉन उपपरमाणु कण है जिसका कोई आवेश नहीं होता है। इलेक्ट्रॉन ऋणात्मक आवेश वाले होते हैं, प्रोटॉन धनात्मक आवेश वाले होते हैं, और फोटॉन उपपरमाणु कण नहीं होते हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Hindi scientific terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "कोणता अणुमध्य घटक विद्युत आवेश नसतो?",
+          "choices": [
+            "इलेक्ट्रॉन",
+            "प्रोटॉन",
+            "न्यूट्रॉन",
+            "फोटॉन"
+          ],
+          "solution": "न्यूट्रॉन हा अणुमध्य घटक आहे ज्याला विद्युत आवेश नसतो. इलेक्ट्रॉन ऋणात्मक आवेश असतात, प्रोटॉन धनात्मक आवेश असतात आणि फोटॉन अणुमध्य घटक नसतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Electrons are negatively charged",
+        "Protons are positively charged",
+        null,
+        "Confuses photons with subatomic particles"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The question is straightforward and tests basic recall. The correct answer is neutron, and the author's reasoning is accurate. The distractors are all based on common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 45,
+          "pageStart": 40,
+          "pageEnd": 41,
+          "headingPath": [
+            "5. Inside the Atom"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 46,
+          "pageStart": 41,
+          "pageEnd": 41,
+          "headingPath": [
+            "5. Inside the Atom"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 47,
+          "pageStart": 41,
+          "pageEnd": 42,
+          "headingPath": [
+            "5. Inside the Atom"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-22T06:39:13.816Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "Which symbol represents the first shell in the atomic model?",
+      "choices": [
+        "K",
+        "L",
+        "M",
+        "N"
+      ],
+      "answerIndex": 0,
+      "solution": "The first shell in an atomic model is represented by the symbol 'K' because it corresponds to the lowest energy level, n = 1. The symbols K, L, M, and N represent increasing energy levels, with K being the first. The other options correspond to higher shells and are therefore incorrect.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "परमाणु मॉडल में पहला कोश किस प्रतीक द्वारा निरूपित किया जाता है?",
+          "choices": [
+            "K",
+            "L",
+            "M",
+            "N"
+          ],
+          "solution": "परमाणु मॉडल में पहला कोश 'K' प्रतीक द्वारा निरूपित किया जाता है क्योंकि यह निम्नतम ऊर्जा स्तर, n = 1 के संगत होता है। प्रतीक K, L, M और N बढ़ते हुए ऊर्जा स्तरों के अनुरूप होते हैं, जहां K पहला होता है। अन्य विकल्प उच्च कोशों के अनुरूप होते हैं और इसलिए गलत हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. The technical terms like 'कोश' (shell) and 'ऊर्जा स्तर' (energy level) are standard in Hindi science textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "परमाणु मॉडेलमध्ये पहिले शेल कोणत्या प्रतीकाने दर्शविले जाते?",
+          "choices": [
+            "K",
+            "L",
+            "M",
+            "N"
+          ],
+          "solution": "परमाणु मॉडेलमध्ये पहिले शेल 'K' प्रतीकाने दर्शविले जाते कारण ते निम्नतम ऊर्जा स्तर, n = 1 ला अनुरूप असते. 'K', 'L', 'M' आणि 'N' हे प्रतीक वाढत्या ऊर्जा स्तरांना दर्शवितात, जेथे 'K' पहिले असते. इतर विकल्प उच्च शेलसाठी असतात आणि म्हणूनच अयोग्य असतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for atomic shells.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "confuses the second shell with the first",
+        "confuses the third shell with the first",
+        "confuses the fourth shell with the first"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The question is straightforward and aligns with standard atomic structure knowledge. The correct answer is K for the first shell, and the distractors correctly reflect common misconceptions about shell numbering.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 48,
+          "pageStart": 42,
+          "pageEnd": 43,
+          "headingPath": [
+            "5. Inside the Atom"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 49,
+          "pageStart": 43,
+          "pageEnd": 44,
+          "headingPath": [
+            "5. Inside the Atom"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 50,
+          "pageStart": 44,
+          "pageEnd": 45,
+          "headingPath": [
+            "5. Inside the Atom"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-22T06:39:13.816Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is the charge of an electron?",
+      "choices": [
+        "Positive",
+        "Negative",
+        "Neutral",
+        "No charge"
+      ],
+      "answerIndex": 1,
+      "solution": "Electrons are fundamental particles that are known to carry a negative charge. This is a well-established fact in physics. Protons have a positive charge, and neutrons are neutral, which makes the other options incorrect.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "इलेक्ट्रॉन का आवेश क्या होता है?",
+          "choices": [
+            "धनात्मक",
+            "ऋणात्मक",
+            "उदासीन",
+            "कोई आवेश नहीं"
+          ],
+          "solution": "इलेक्ट्रॉन मूलभूत कण होते हैं जिन्हें ऋणात्मक आवेश ले जाने के लिए जाना जाता है। यह भौतिकी में एक अच्छी तरह से स्थापित तथ्य है। प्रोटॉन धनात्मक आवेश रखते हैं और न्यूट्रॉन उदासीन होते हैं, जिसके कारण अन्य विकल्प गलत हो जाते हैं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, technical terms match standard Hindi physics vocabulary, and the structure aligns with the original.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "इलेक्ट्रॉनचा आवेश किती आहे?",
+          "choices": [
+            "धनात्मक",
+            "ऋणात्मक",
+            "न्यूट्रल",
+            "कोणताही आवेश नाही"
+          ],
+          "solution": "इलेक्ट्रॉन मूलभूत कण आहेत जे ऋणात्मक आवेश वहन करतात. हे भौतिकीमध्ये चांगल्या प्रकारे स्थापित आहे. प्रोटॉन धनात्मक आवेश असतात आणि न्यूट्रॉन न्यूट्रल असतात, ज्यामुळे इतर विकल्प अयोग्य ठरतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for scientific concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses electrons with protons",
+        null,
+        "Incorrect understanding of electron properties",
+        "Incorrectly assumes electrons are neutral"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The question is straightforward and tests basic recall. The correct answer is clearly 'Negative' (option 1), and the author's reasoning for the distractors aligns with common student misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 54,
+          "pageStart": 48,
+          "pageEnd": 48,
+          "headingPath": [
+            "5. Inside the Atom",
+            "Exercises"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-22T06:39:13.816Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of the following is true about the mass of an atom?",
+      "choices": [
+        "It is mainly due to the electrons",
+        "It is mainly due to the protons and neutrons",
+        "It is mainly due to the neutrons",
+        "It is mainly due to the protons"
+      ],
+      "answerIndex": 1,
+      "solution": "The mass of an atom is mainly due to the protons and neutrons in the nucleus. Electrons have a negligible mass compared to protons and neutrons.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा परमाणु के द्रव्यमान के बारे में सही है?",
+          "choices": [
+            "इसका मुख्य कारण इलेक्ट्रॉन है",
+            "इसका मुख्य कारण प्रोटॉन और न्यूट्रॉन है",
+            "इसका मुख्य कारण न्यूट्रॉन है",
+            "इसका मुख्य कारण प्रोटॉन है"
+          ],
+          "solution": "परमाणु का द्रव्यमान नाभिक में प्रोटॉन और न्यूट्रॉन के कारण मुख्य रूप से होता है। इलेक्ट्रॉन का द्रव्यमान प्रोटॉन और न्यूट्रॉन की तुलना में नगण्य होता है।",
+          "imageAlt": null,
+          "critique": "Hindi translation is accurate, but the key is incorrect (should be 2, not 1).",
+          "flag": "translation critique: not one answer at the same position"
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते अणूच्या द्रव्यमानाबद्दल खरे आहे?",
+          "choices": [
+            "ते इलेक्ट्रॉनमुळे असते",
+            "ते प्रोटॉन आणि न्यूट्रॉनमुळे असते",
+            "ते न्यूट्रॉनमुळे असते",
+            "ते प्रोटॉनमुळे असते"
+          ],
+          "solution": "अणूचे द्रव्यमान नाभिकातील प्रोटॉन आणि न्यूट्रॉनमुळे असते. इलेक्ट्रॉनचे द्रव्यमान प्रोटॉन आणि न्यूट्रॉनच्या तुलनेत नगण्य असते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the scientific meaning. The terms used are standard in Marathi science education.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Electrons have negligible mass",
+        null,
+        "Neutrons alone do not account for the mass",
+        "Protons alone do not account for the mass"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly identifies that the mass of an atom is mainly due to protons and neutrons, and the reasons for the other options are valid misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 45,
+          "pageStart": 40,
+          "pageEnd": 41,
+          "headingPath": [
+            "5. Inside the Atom"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 46,
+          "pageStart": 41,
+          "pageEnd": 41,
+          "headingPath": [
+            "5. Inside the Atom"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 47,
+          "pageStart": 41,
+          "pageEnd": 42,
+          "headingPath": [
+            "5. Inside the Atom"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-22T06:39:13.816Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the relationship between the number of valence electrons and the valency of an element when the number of valence electrons is more than 4?",
+      "choices": [
+        "Valency is equal to the number of valence electrons",
+        "Valency is 8 minus the number of valence electrons",
+        "Valency is 4 plus the number of valence electrons",
+        "Valency is the same as the number of electrons in the outermost shell"
+      ],
+      "answerIndex": 1,
+      "solution": "When the number of valence electrons is more than 4, the valency is determined by how many electrons an atom needs to gain to complete its outer shell, which is 8 minus the number of valence electrons. This reflects the tendency of atoms to achieve a stable electron configuration. The other options incorrectly suggest valency is directly equal to the number of valence electrons or uses an unrelated formula.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "जब बाह्यतम कोश में वैलेंस इलेक्ट्रॉनों की संख्या 4 से अधिक होती है तो वैलेंस इलेक्ट्रॉनों की संख्या और तत्व की वैलेंसी के बीच क्या संबंध होता है?",
+          "choices": [
+            "वैलेंसी वैलेंस इलेक्ट्रॉनों की संख्या के बराबर होती है",
+            "वैलेंसी बाह्यतम कोश में वैलेंस इलेक्ट्रॉनों की संख्या के 8 में से घटाने से प्राप्त होती है",
+            "वैलेंसी वैलेंस इलेक्ट्रॉनों की संख्या में 4 जोड़ने से प्राप्त होती है",
+            "वैलेंसी बाह्यतम कोश में इलेक्ट्रॉनों की संख्या के बराबर होती है"
+          ],
+          "solution": "जब वैलेंस इलेक्ट्रॉनों की संख्या 4 से अधिक होती है, तो वैलेंसी उन इलेक्ट्रॉनों की संख्या के बराबर होती है जिन्हें बाह्यतम कोश को पूरा करने के लिए अणु द्वारा लिया जाता है, जो 8 में से वैलेंस इलेक्ट्रॉनों की संख्या घटाने से प्राप्त होती है। यह अणुओं के स्थायी इलेक्ट्रॉन विन्यास प्राप्त करने के प्रवृत्ति को प्रतिबिंबित करता है। अन्य विकल्प गलत रूप से वैलेंसी के वैलेंस इलेक्ट्रॉनों की संख्या के बराबर होने या असंबंधित सूत्र के बारे में कहते हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi scientific terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "संयोजकता इलेक्ट्रॉनांच्या संख्या आणि घटकाच्या संयोजकतेमधील संबंध काय असतो, जेव्हा संयोजकता इलेक्ट्रॉनांच्या संख्या 4 पेक्षा जास्त असते?",
+          "choices": [
+            "संयोजकता संयोजकता इलेक्ट्रॉनांच्या संख्येइतकी असते",
+            "संयोजकता 8 मधून संयोजकता इलेक्ट्रॉनांच्या संख्या वजा केल्यापेक्षा असते",
+            "संयोजकता 4 मधून संयोजकता इलेक्ट्रॉनांच्या संख्या जोडल्यापेक्षा असते",
+            "संयोजकता बाह्यतम कक्षेतील इलेक्ट्रॉनांच्या संख्येइतकी असते"
+          ],
+          "solution": "जेव्हा संयोजकता इलेक्ट्रॉनांच्या संख्या 4 पेक्षा जास्त असते, तेव्हा संयोजकता अणूला बाह्य कक्ष पूर्ण करण्यासाठी आवश्यक इलेक्ट्रॉनांच्या संख्येनुसार निश्चित केली जाते, जी 8 मधून संयोजकता इलेक्ट्रॉनांच्या संख्या वजा केल्यापेक्षा असते. हे अणूंच्या स्थिर इलेक्ट्रॉन विन्यास प्राप्त करण्याच्या प्रवृत्तीला प्रतिबिंबित करते. इतर विकल्प चुकीच्या पद्धतीने संयोजकता संयोजकता इलेक्ट्रॉनांच्या संख्येइतकी असते किंवा असंबंधित सूत्र वापरतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Fails to recognize the rule for valency when electrons are more than 4",
+        null,
+        "Misunderstands the concept of valency",
+        "Confuses valency with the number of electrons in the outermost shell"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is option 1, as valency for elements with more than 4 valence electrons is calculated as 8 minus the number of valence electrons. The author's reasoning aligns with standard chemistry principles.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 51,
+          "pageStart": 45,
+          "pageEnd": 46,
+          "headingPath": [
+            "5. Inside the Atom"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 52,
+          "pageStart": 46,
+          "pageEnd": 47,
+          "headingPath": [
+            "5. Inside the Atom"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 53,
+          "pageStart": 47,
+          "pageEnd": 48,
+          "headingPath": [
+            "5. Inside the Atom"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-22T06:39:13.816Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What does the term 'valency' mean?",
+      "choices": [
+        "The number of protons in an atom",
+        "The number of electrons in the outermost shell",
+        "The number of neutrons in an atom",
+        "The mass of an atom"
+      ],
+      "answerIndex": 1,
+      "solution": "Valency refers to the number of electrons in the outermost shell of an atom, as these electrons determine how the atom interacts with other atoms. The number of protons or neutrons relates to the atom's identity or mass, not its ability to form bonds. The mass of an atom is determined by the sum of protons and neutrons, not by valency.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "शब्द 'संयोजकता' का अर्थ क्या है?",
+          "choices": [
+            "एक परमाणु में प्रोटॉन की संख्या",
+            "बाह्यतम कोश में इलेक्ट्रॉन की संख्या",
+            "एक परमाणु में न्यूट्रॉन की संख्या",
+            "परमाणु का द्रव्यमान"
+          ],
+          "solution": "संयोजकता एक परमाणु के बाह्यतम कोश में इलेक्ट्रॉन की संख्या को संदर्भित करती है, क्योंकि ये इलेक्ट्रॉन परमाणु के अन्य परमाणुओं के साथ अंतःक्रिया करने में निर्णायक भूमिका निभाते हैं। प्रोटॉन या न्यूट्रॉन की संख्या परमाणु की पहचान या द्रव्यमान से संबंधित होती है, न कि बंधन बनाने की क्षमता से। परमाणु का द्रव्यमान प्रोटॉन और न्यूट्रॉन के योग द्वारा निर्धारित किया जाता है, न कि संयोजकता द्वारा।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. All options are correctly translated, and the correct answer remains option (2). The solution explains the concept correctly using standard Hindi scientific terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "शब्द 'वैलेंसी' म्हणजे काय?",
+          "choices": [
+            "एका परमाणूमधील प्रोटॉनची संख्या",
+            "बाह्यतम कक्षेतील इलेक्ट्रॉनची संख्या",
+            "एका परमाणूमधील न्यूट्रॉनची संख्या",
+            "परमाणूचा द्रव्यमान"
+          ],
+          "solution": "वैलेंसी म्हणजे परमाणूच्या बाह्यतम कक्षेतील इलेक्ट्रॉनची संख्या, कारण या इलेक्ट्रॉनमुळे परमाणू इतर परमाणूंशी अवलंबून राहतो. प्रोटॉन किंवा न्यूट्रॉनची संख्या परमाणूच्या ओळखीशी किंवा द्रव्यमानाशी संबंधित असते, परंतु बंध बनविण्याच्या क्षमतेशी नाही. परमाणूचा द्रव्यमान प्रोटॉन आणि न्यूट्रॉनच्या बेरजेने ठरतो, वैलेंसीशी नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for scientific concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses valency with protons",
+        null,
+        "Incorrectly defines valency",
+        "Confuses valency with atomic mass"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 1, as valency refers to the number of electrons in the outermost shell. The author's reasoning aligns with standard scientific definitions and the misconceptions listed are common among students.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 54,
+          "pageStart": 48,
+          "pageEnd": 48,
+          "headingPath": [
+            "5. Inside the Atom",
+            "Exercises"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-22T06:39:13.816Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "An atom has an electronic configuration of 2, 8, 7. Which shell is the valence shell?",
+      "choices": [
+        "K",
+        "L",
+        "M",
+        "N"
+      ],
+      "answerIndex": 2,
+      "solution": "The valence shell is the outermost shell that contains electrons. In the electronic configuration 2, 8, 7, the shells are filled in order: K (2), L (8), and M (7). The M shell is the outermost shell, so it is the valence shell. The other options are incorrect because the K and L shells are inner shells and not the outermost one.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक परमाणु का इलेक्ट्रॉनिक विन्यास 2, 8, 7 है। इसका संयोजी कोश कौन-सा है?",
+          "choices": [
+            "K",
+            "L",
+            "M",
+            "N"
+          ],
+          "solution": "संयोजी कोश वह बाहरी कोश होता है जिसमें इलेक्ट्रॉन होते हैं। इलेक्ट्रॉनिक विन्यास 2, 8, 7 में कोश क्रम से भरे जाते हैं: K (2), L (8), और M (7)। M कोश बाहरी कोश है, इसलिए यह संयोजी कोश है। अन्य विकल्प गलत हैं क्योंकि K और L कोश आंतरिक कोश हैं और बाहरी नहीं हैं।",
+          "imageAlt": null,
+          "critique": "Translation accurately reflects the original meaning, technical terms are appropriate for Hindi-medium curriculum, and the correct answer remains option (2).",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एक अणूचे इलेक्ट्रॉनिक वितरण 2, 8, 7 आहे. अणूचे वैधता खोली कोणती आहे?",
+          "choices": [
+            "K",
+            "L",
+            "M",
+            "N"
+          ],
+          "solution": "वैधता खोली अशी बाह्यतम खोली आहे जी इलेक्ट्रॉन धारण करते. इलेक्ट्रॉनिक वितरण 2, 8, 7 मध्ये, खोल्या क्रमाने भरल्या जातात: K (2), L (8), आणि M (7). M खोली बाह्यतम खोली आहे, म्हणून ती वैधता खोली आहे. इतर विकल्प अयोग्य आहेत कारण K आणि L खोल्या आंतरिक खोल्या आहेत आणि बाह्यतम नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for atomic structure.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "confuses the K shell with the valence shell",
+        "mistakes the L shell for the valence shell",
+        null,
+        "thinks the N shell is the valence shell"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies the valence shell as the outermost shell with electrons, which is the M shell (option 2). The reasoning is sound and matches the standard understanding of electronic configuration.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 48,
+          "pageStart": 42,
+          "pageEnd": 43,
+          "headingPath": [
+            "5. Inside the Atom"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 49,
+          "pageStart": 43,
+          "pageEnd": 44,
+          "headingPath": [
+            "5. Inside the Atom"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 50,
+          "pageStart": 44,
+          "pageEnd": 45,
+          "headingPath": [
+            "5. Inside the Atom"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-22T06:39:13.816Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "Which part of the atom is responsible for the positive charge?",
+      "choices": [
+        "Electron",
+        "Neutron",
+        "Proton",
+        "Nucleus"
+      ],
+      "answerIndex": 2,
+      "solution": "Protons are positively charged particles found in the nucleus of an atom, making them responsible for the positive charge. Electrons have a negative charge, and neutrons have no charge. While the nucleus contains protons and thus has a positive charge overall, the specific part responsible for the positive charge is the proton itself.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "परमाणु का कौन-सा भाग धनावेश के लिए उत्तरदायी है?",
+          "choices": [
+            "इलेक्ट्रॉन",
+            "न्यूट्रॉन",
+            "प्रोटॉन",
+            "नाभिक"
+          ],
+          "solution": "प्रोटॉन परमाणु के नाभिक में पाए जाने वाले धनावेशित कण होते हैं, जिसके कारण वे धनावेश के लिए उत्तरदायी होते हैं। इलेक्ट्रॉन ऋणावेशित होते हैं, और न्यूट्रॉन का कोई आवेश नहीं होता है। यद्यपि नाभिक में प्रोटॉन होते हैं और इसका कुल आवेश धनात्मक होता है, लेकिन धनावेश के लिए विशिष्ट भाग प्रोटॉन स्वयं होता है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard scientific terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "परमाणूच्या कोणत्या भागामुळे धनावेश असतो?",
+          "choices": [
+            "इलेक्ट्रॉन",
+            "न्यूट्रॉन",
+            "प्रोटॉन",
+            "न्यूक्लियस"
+          ],
+          "solution": "प्रोटॉन हे धनावेश असलेले कण असतात जे परमाणूच्या न्यूक्लियसमध्ये असतात, ज्यामुळे ते धनावेशाची जबाबदारी घेतात. इलेक्ट्रॉन ऋणावेश असतात आणि न्यूट्रॉनला कोणताही आवेश नसतो. न्यूक्लियसमध्ये प्रोटॉन असल्यामुळे तो एकत्रितपणे धनावेश असतो, परंतु धनावेशाची जबाबदारी खास करून प्रोटॉनच असते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses protons with electrons",
+        "Confuses neutrons with protons",
+        null,
+        "Answers the nucleus instead of the proton"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies protons as the positively charged particles in the atom. The reasoning for the distractors is valid and reflects common student misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 54,
+          "pageStart": 48,
+          "pageEnd": 48,
+          "headingPath": [
+            "5. Inside the Atom",
+            "Exercises"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-22T06:39:13.816Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "The electronic configuration of an element is 2, 8, 8. Which of the following elements could it be?",
+      "choices": [
+        "Sodium",
+        "Chlorine",
+        "Argon",
+        "Calcium"
+      ],
+      "answerIndex": 2,
+      "solution": "The electronic configuration 2, 8, 8 indicates that the element has 18 electrons in total. Argon has an atomic number of 18, which matches this configuration. Sodium has 11 electrons, chlorine has 17 electrons, and calcium has 20 electrons, so they do not match. The correct answer is argon. Sodium and chlorine have incomplete outer shells, and calcium has an extra electron in the M shell.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक तत्व का इलेक्ट्रॉनिक विन्यास 2, 8, 8 है। निम्नलिखित में से कौन-सा तत्व इसका हो सकता है?",
+          "choices": [
+            "सोडियम",
+            "क्लोरीन",
+            "आर्गॉन",
+            "कैल्शियम"
+          ],
+          "solution": "इलेक्ट्रॉनिक विन्यास 2, 8, 8 दर्शाता है कि तत्व के पास कुल 18 इलेक्ट्रॉन हैं। आर्गॉन का परमाणु क्रमांक 18 होता है, जो इस विन्यास के साथ मेल खाता है। सोडियम के पास 11 इलेक्ट्रॉन होते हैं, क्लोरीन के पास 17 इलेक्ट्रॉन होते हैं, और कैल्शियम के पास 20 इलेक्ट्रॉन होते हैं, इसलिए वे मेल नहीं खाते। सही उत्तर आर्गॉन है। सोडियम और क्लोरीन के बाहरी कोश अपूर्ण होते हैं, और कैल्शियम के M कोश में एक अतिरिक्त इलेक्ट्रॉन होता है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate scientific terminology as found in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका घटकाची इलेक्ट्रॉन वितरण 2, 8, 8 आहे. खालीलपैकी कोणता घटक त्याचा असू शकतो?",
+          "choices": [
+            "सोडियम",
+            "क्लोरीन",
+            "आर्गॉन",
+            "कॅल्शियम"
+          ],
+          "solution": "इलेक्ट्रॉन वितरण 2, 8, 8 असल्याने घटकाला एकूण 18 इलेक्ट्रॉन असतात. आर्गॉन चा परमाणु क्रमांक 18 असल्याने तो या वितरणाशी जुळतो. सोडियम ला 11 इलेक्ट्रॉन, क्लोरीन ला 17 इलेक्ट्रॉन आणि कॅल्शियम ला 20 इलेक्ट्रॉन असतात, म्हणून ते जुळत नाहीत. योग्य उत्तर आर्गॉन आहे. सोडियम आणि क्लोरीन चे बाह्य शेल अपूर्ण असतात आणि कॅल्शियम ला M शेल मध्ये अतिरिक्त इलेक्ट्रॉन असतो.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "has an electronic configuration of 2, 8, 1",
+        "has an electronic configuration of 2, 8, 7",
+        null,
+        "has an electronic configuration of 2, 8, 8, 2"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies that the element with electronic configuration 2, 8, 8 has 18 electrons, matching argon (atomic number 18). The other options are correctly dismissed based on their actual electron counts.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 48,
+          "pageStart": 42,
+          "pageEnd": 43,
+          "headingPath": [
+            "5. Inside the Atom"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 49,
+          "pageStart": 43,
+          "pageEnd": 44,
+          "headingPath": [
+            "5. Inside the Atom"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 50,
+          "pageStart": 44,
+          "pageEnd": 45,
+          "headingPath": [
+            "5. Inside the Atom"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-22T06:39:13.816Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "An element has 12 electrons. What is the valency of this element?",
+      "choices": [
+        "2",
+        "1",
+        "3",
+        "4"
+      ],
+      "answerIndex": 0,
+      "solution": "An element with 12 electrons has an electronic configuration of 2, 8, 2. The valence shell contains 2 electrons, which determines the element's valency. The correct answer is 2 because valency is based on the number of electrons in the outermost shell. Options 1, 3, and 4 do not match the electron count in the valence shell.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक तत्व में 12 इलेक्ट्रॉन हैं। इस तत्व की संयोजकता क्या है?",
+          "choices": [
+            "2",
+            "1",
+            "3",
+            "4"
+          ],
+          "solution": "12 इलेक्ट्रॉन वाला एक तत्व इलेक्ट्रॉनिक विन्यास 2, 8, 2 के साथ होता है। संयोजकता कोश में 2 इलेक्ट्रॉन होते हैं, जो तत्व की संयोजकता निर्धारित करते हैं। सही उत्तर 2 है क्योंकि संयोजकता बाह्यतम कोश में इलेक्ट्रॉनों की संख्या पर आधारित होती है। विकल्प 1, 3 और 4 बाह्यतम कोश में इलेक्ट्रॉनों की संख्या के साथ मेल नहीं खाते।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate scientific terminology as used in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एक घटकास 12 इलेक्ट्रॉन आहेत. या घटकाची वैधता किती आहे?",
+          "choices": [
+            "2",
+            "1",
+            "3",
+            "4"
+          ],
+          "solution": "12 इलेक्ट्रॉन असलेला घटक इलेक्ट्रॉनिक वितरण 2, 8, 2 असते. बाह्य शेलमध्ये 2 इलेक्ट्रॉन असतात, जे घटकाची वैधता ठरवतात. बरोबर उत्तर 2 आहे कारण वैधता बाह्य शेलमधील इलेक्ट्रॉनच्या संख्येवर आधारित असते. ऑप्शन 1, 3 आणि 4 बाह्य शेलमधील इलेक्ट्रॉनच्या संख्येशी मेळ नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate use of Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "confuses the electron count in the L shell with the valency",
+        "assumes one electron in the valence shell",
+        "assumes four electrons in the valence shell"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct. The element with 12 electrons is magnesium, which has an electronic configuration of 2, 8, 2. Its valency is 2, matching option 0. The reasoning for the distractors is valid and reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 48,
+          "pageStart": 42,
+          "pageEnd": 43,
+          "headingPath": [
+            "5. Inside the Atom"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 49,
+          "pageStart": 43,
+          "pageEnd": 44,
+          "headingPath": [
+            "5. Inside the Atom"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 50,
+          "pageStart": 44,
+          "pageEnd": 45,
+          "headingPath": [
+            "5. Inside the Atom"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-22T06:39:13.816Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "In a nuclear reactor, what is the role of a moderator?",
+      "choices": [
+        "To absorb neutrons and control the reaction",
+        "To increase the speed of neutrons",
+        "To reduce the speed of neutrons",
+        "To generate electricity"
+      ],
+      "answerIndex": 2,
+      "solution": "In a nuclear reactor, the role of a moderator is to reduce the speed of neutrons, which helps sustain the chain reaction. The other options describe different functions, such as controlling the reaction, which is the role of the controller, or generating electricity, which is the result of the process, not the role of the moderator.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक नाभिकीय रिएक्टर में, एक माध्यम की भूमिका क्या है?",
+          "choices": [
+            "न्यूट्रॉनों को अवशोषित करना और प्रतिक्रिया को नियंत्रित करना",
+            "न्यूट्रॉनों की गति बढ़ाना",
+            "न्यूट्रॉनों की गति कम करना",
+            "विद्युत उत्पन्न करना"
+          ],
+          "solution": "एक नाभिकीय रिएक्टर में, माध्यम की भूमिका न्यूट्रॉनों की गति कम करना होता है, जो श्रृंखला प्रतिक्रिया को बनाए रखने में मदद करता है। अन्य विकल्प अलग-अलग कार्यों का वर्णन करते हैं, जैसे कि प्रतिक्रिया को नियंत्रित करना, जो नियंत्रक की भूमिका है, या विद्युत उत्पादन, जो प्रक्रिया का परिणाम है, माध्यम की भूमिका नहीं है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Hindi terminology for nuclear physics concepts.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "न्यूक्लियर रिअॅक्टरमध्ये मॉडरेटरचा भाग काय आहे?",
+          "choices": [
+            "न्यूट्रॉन्स शोषून अभिक्रिया नियंत्रित करणे",
+            "न्यूट्रॉन्सच्या वेगाची वाढ करणे",
+            "न्यूट्रॉन्सच्या वेगाची घट करणे",
+            "विद्युत उत्पादन करणे"
+          ],
+          "solution": "न्यूकलियर रिअॅक्टरमध्ये मॉडरेटरचा भाग न्यूट्रॉन्सच्या वेगाची घट करणे आहे, जे श्रृंखला अभिक्रिया स्थिर करण्यात मदत करते. इतर विकल्पांमध्ये विविध कार्यांचे वर्णन आहे, जसे की अभिक्रिया नियंत्रित करणे, जे कंट्रोलरचा भाग आहे, किंवा विद्युत उत्पादन करणे, जे प्रक्रियेचा फलितांश आहे, मॉडरेटरचा भाग नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms for nuclear reactor components.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the role of the controller with that of the moderator",
+        "Misunderstands the function of a moderator",
+        null,
+        "Misinterprets the overall purpose of the nuclear reactor"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 2, as the moderator's role is to slow down neutrons to sustain the chain reaction. The author's reasoning aligns with standard nuclear physics and the misconceptions students might have.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 51,
+          "pageStart": 45,
+          "pageEnd": 46,
+          "headingPath": [
+            "5. Inside the Atom"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 52,
+          "pageStart": 46,
+          "pageEnd": 47,
+          "headingPath": [
+            "5. Inside the Atom"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 53,
+          "pageStart": 47,
+          "pageEnd": 48,
+          "headingPath": [
+            "5. Inside the Atom"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-22T06:39:13.816Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "If the electronic configuration of an element is 2, 8, 7, what is the valency of the element?",
+      "choices": [
+        "1",
+        "7",
+        "8",
+        "15"
+      ],
+      "answerIndex": 0,
+      "solution": "The valency of an element is determined by the number of electrons in its outermost shell. For an element with an electronic configuration of 2, 8, 7, the outermost shell has 7 electrons. However, since it is easier for the atom to gain 1 electron to complete its octet, the valency is 1. Adding 7 electrons would be less likely.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि किसी तत्व की इलेक्ट्रॉन विन्यास 2, 8, 7 है, तो तत्व की संयोजकता क्या है?",
+          "choices": [
+            "1",
+            "7",
+            "8",
+            "15"
+          ],
+          "solution": "किसी तत्व की संयोजकता उसके बाह्यतम कोश में इलेक्ट्रॉनों की संख्या द्वारा निर्धारित की जाती है। 2, 8, 7 इलेक्ट्रॉन विन्यास वाले तत्व के बाह्यतम कोश में 7 इलेक्ट्रॉन हैं। हालांकि, चूंकि परमाणु के लिए अपने ऑक्टेट को पूरा करने के लिए 1 इलेक्ट्रॉन ग्रहण करना आसान होता है, इसलिए संयोजकता 1 होती है। 7 इलेक्ट्रॉन जोड़ना कम संभावित होता है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the scientific meaning, with appropriate Hindi terminology used for 'valency' and 'electronic configuration'.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका घटकाची इलेक्ट्रॉन विन्यास 2, 8, 7 असल्यास, घटकाची वैधता किती असेल?",
+          "choices": [
+            "1",
+            "7",
+            "8",
+            "15"
+          ],
+          "solution": "एका घटकाची वैधता त्याच्या बाह्यतम कक्षातील इलेक्ट्रॉनांच्या संख्येवर अवलंबून असते. 2, 8, 7 इलेक्ट्रॉन विन्यास असलेल्या घटकासाठी, बाह्यतम कक्षात 7 इलेक्ट्रॉन असतात. मात्र, ओक्टेट पूर्ण करण्यासाठी अणूला 1 इलेक्ट्रॉन मिळवणे अधिक सोपे असते, म्हणून वैधता 1 असते. 7 इलेक्ट्रॉन जोडणे कमी शक्य असते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the scientific terminology used in Marathi textbooks, and preserves the logical structure of the question and solution.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses the number of valence electrons with the valency",
+        "Fails to consider the concept of gaining or losing electrons to complete the octet",
+        "Adds electrons in the outer shells incorrectly"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies that the valency is determined by the number of electrons needed to complete the octet, not the number of valence electrons. The reasoning is sound and aligns with standard chemistry principles.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 54,
+          "pageStart": 48,
+          "pageEnd": 48,
+          "headingPath": [
+            "5. Inside the Atom",
+            "Exercises"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-22T06:39:13.816Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Why is an atom electrically neutral?",
+      "choices": [
+        "Because it has no charge",
+        "Because the number of protons equals the number of electrons",
+        "Because the number of protons equals the number of neutrons",
+        "Because the nucleus is neutral"
+      ],
+      "answerIndex": 1,
+      "solution": "The correct answer is because the number of protons equals the number of electrons. Protons have a positive charge and electrons have a negative charge, so when their numbers are equal, the charges cancel out, making the atom electrically neutral. The other options are incorrect because having no charge is not a scientific explanation, protons and neutrons have different charges, and the nucleus itself is positively charged.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक परमाणु विद्युत उदासीन क्यों होता है?",
+          "choices": [
+            "क्योंकि इसमें कोई आवेश नहीं होता",
+            "क्योंकि प्रोटॉनों की संख्या इलेक्ट्रॉनों की संख्या के बराबर होती है",
+            "क्योंकि प्रोटॉनों की संख्या न्यूट्रॉनों की संख्या के बराबर होती है",
+            "क्योंकि नाभिक उदासीन होता है"
+          ],
+          "solution": "सही उत्तर यह है कि प्रोटॉनों की संख्या इलेक्ट्रॉनों की संख्या के बराबर होती है। प्रोटॉनों में धनावेश और इलेक्ट्रॉनों में ऋणावेश होता है, इसलिए जब इनकी संख्या समान होती है, तो आवेश एक दूसरे को निरस्त कर देते हैं, जिससे परमाणु विद्युत उदासीन हो जाता है। अन्य विकल्प गलत हैं क्योंकि कोई आवेश न होना वैज्ञानिक स्पष्टीकरण नहीं है, प्रोटॉन और न्यूट्रॉन अलग-अलग आवेश वाले होते हैं, और नाभिक स्वयं धनावेशित होता है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate scientific terminology as found in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एक परमाणू का विद्युतीय रूपात उदासीन असतो?",
+          "choices": [
+            "कारण त्याला कोणताही आवेश नाही",
+            "कारण प्रोटॉनची संख्या इलेक्ट्रॉनच्या संख्येसारखी असते",
+            "कारण प्रोटॉनची संख्या न्यूट्रॉनच्या संख्येसारखी असते",
+            "कारण नाभिक उदासीन असते"
+          ],
+          "solution": "योग्य उत्तर हे असे आहे की प्रोटॉनची संख्या इलेक्ट्रॉनच्या संख्येसारखी असते. प्रोटॉन धनावेश असतात आणि इलेक्ट्रॉन ऋणावेश असतात, म्हणून जेव्हा त्यांची संख्या समान असते तेव्हा आवेश रद्द होतो, ज्यामुळे परमाणू विद्युतीय रूपात उदासीन असतो. इतर विकल्प चुकीचे आहेत कारण आवेश नसणे हे वैज्ञानिक स्पष्टीकरण नाही, प्रोटॉन आणि न्यूट्रॉन वेगवेगळ्या आवेश असतात आणि नाभिक स्वतः धनावेश असते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses with the nucleus",
+        null,
+        "Confuses protons and neutrons",
+        "Misunderstands the concept of neutrality"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 1, as the neutrality of an atom is due to the equal number of protons and electrons. The other options reflect common misconceptions about atomic structure.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 54,
+          "pageStart": 48,
+          "pageEnd": 48,
+          "headingPath": [
+            "5. Inside the Atom",
+            "Exercises"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-22T06:39:13.816Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "In Rutherford's atomic model, where is the mass of the atom mainly concentrated?",
+      "choices": [
+        "In the electrons",
+        "In the empty space between the nucleus and electrons",
+        "In the nucleus",
+        "In the orbit of the electrons"
+      ],
+      "answerIndex": 2,
+      "solution": "In Rutherford's atomic model, the mass of the atom is primarily found in the nucleus because it contains protons and neutrons, which are much heavier than electrons. Electrons have negligible mass in comparison, and the space between the nucleus and electrons is mostly empty, contributing little to the overall mass. The orbit of the electrons also does not contain significant mass.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "रदरफोर्ड के परमाणु मॉडल में, परमाणु का द्रव्यमान मुख्य रूप से कहाँ केंद्रित होता है?",
+          "choices": [
+            "इलेक्ट्रॉन में",
+            "नाभिक और इलेक्ट्रॉन के बीच खाली स्थान में",
+            "नाभिक में",
+            "इलेक्ट्रॉन के कक्ष में"
+          ],
+          "solution": "रदरफोर्ड के परमाणु मॉडल में, परमाणु का द्रव्यमान मुख्य रूप से नाभिक में पाया जाता है क्योंकि यह प्रोटॉन और न्यूट्रॉन से बना होता है, जो इलेक्ट्रॉन की तुलना में बहुत भारी होते हैं। इलेक्ट्रॉन का द्रव्यमान नगण्य होता है, और नाभिक और इलेक्ट्रॉन के बीच का स्थान अधिकतर खाली होता है, जो कुल द्रव्यमान में लगभग कोई योगदान नहीं देता। इलेक्ट्रॉन के कक्ष में भी महत्वपूर्ण द्रव्यमान नहीं होता।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, technical terms are appropriate for Hindi-medium curriculum, and the structure matches the original.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "रदरफोर्ड अणू मॉडेलमध्ये, अणूचा द्रव्यमान मुख्यतः कुठे एकत्रित केला जातो?",
+          "choices": [
+            "इलेक्ट्रॉनमध्ये",
+            "न्यूक्लियस आणि इलेक्ट्रॉनमधील खालील जागेत",
+            "न्यूक्लियसमध्ये",
+            "इलेक्ट्रॉनच्या कक्षेत"
+          ],
+          "solution": "रदरफोर्ड अणू मॉडेलमध्ये, अणूचा द्रव्यमान मुख्यतः न्यूक्लियसमध्ये असतो कारण त्यामध्ये प्रोटॉन आणि न्यूट्रॉन असतात, जे इलेक्ट्रॉनच्या तुलनेत खूप भारी असतात. इलेक्ट्रॉनचा द्रव्यमान नगण्य असतो आणि न्यूक्लियस आणि इलेक्ट्रॉनमधील जागा जास्तीत जास्त खालील असते, ज्यामुळे एकूण द्रव्यमानावर थोडा द्रव्यमान योगदान देते. इलेक्ट्रॉनच्या कक्षेत द्रव्यमान अस्तित्वात नसतो.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the scientific terminology used in Marathi textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "A pupil might think that electrons, being part of the atom, hold the majority of the mass.",
+        "A pupil might confuse the empty space with being the location of mass.",
+        null,
+        "A pupil might think the orbit itself holds the mass, not the nucleus."
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-constructed and the solution is accurate. The correct answer is clearly 'In the nucleus' as per Rutherford's model, and the distractors reflect common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 45,
+          "pageStart": 40,
+          "pageEnd": 41,
+          "headingPath": [
+            "5. Inside the Atom"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 46,
+          "pageStart": 41,
+          "pageEnd": 41,
+          "headingPath": [
+            "5. Inside the Atom"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 47,
+          "pageStart": 41,
+          "pageEnd": 42,
+          "headingPath": [
+            "5. Inside the Atom"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-19T08:49:59.403Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "What is the charge of a neutron?",
+      "choices": [
+        "Positive",
+        "Negative",
+        "Zero",
+        "Both positive and negative"
+      ],
+      "answerIndex": 2,
+      "solution": "A neutron is a subatomic particle that does not carry any electric charge. Therefore, the correct answer is 'Zero'. The other options are incorrect because neutrons are not positively or negatively charged, and they do not possess both types of charge simultaneously.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "न्यूट्रॉन का आवेश क्या होता है?",
+          "choices": [
+            "धनात्मक",
+            "ऋणात्मक",
+            "शून्य",
+            "धनात्मक और ऋणात्मक दोनों"
+          ],
+          "solution": "एक न्यूट्रॉन एक उपपरमाणु कण होता है जिसमें कोई विद्युत आवेश नहीं होता। इसलिए सही उत्तर 'शून्य' है। अन्य विकल्प गलत हैं क्योंकि न्यूट्रॉन धनात्मक या ऋणात्मक आवेश नहीं ले जाते हैं और वे दोनों प्रकार के आवेश एक साथ नहीं रखते हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard scientific terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "न्यूट्रॉनचा आवेश काय आहे?",
+          "choices": [
+            "सकारात्मक",
+            "ऋणात्मक",
+            "शून्य",
+            "सकारात्मक आणि ऋणात्मक दोन्ही"
+          ],
+          "solution": "न्यूट्रॉन हा उपपरमाण्विक कण आहे जो कोणताही विद्युत आवेश नियंत्रित करत नाही. त्यामुळे, योग्य उत्तर 'शून्य' आहे. इतर विकल्प चुकीचे आहेत कारण न्यूट्रॉन सकारात्मक किंवा ऋणात्मक आवेश नसतात आणि ते दोन्ही प्रकारचे आवेश एकत्रितपणे असतात असे नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "A pupil might confuse the charge of a neutron with that of a proton.",
+        "A pupil might think neutrons are negatively charged.",
+        null,
+        "A pupil might think neutrons have both positive and negative charges."
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The question is clear and the solution correctly identifies the charge of a neutron as zero. The distractors are based on common misconceptions about subatomic particles.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 45,
+          "pageStart": 40,
+          "pageEnd": 41,
+          "headingPath": [
+            "5. Inside the Atom"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 46,
+          "pageStart": 41,
+          "pageEnd": 41,
+          "headingPath": [
+            "5. Inside the Atom"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 47,
+          "pageStart": 41,
+          "pageEnd": 42,
+          "headingPath": [
+            "5. Inside the Atom"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-19T08:49:59.403Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "Which of the following is true about the nucleus in Rutherford’s atomic model?",
+      "choices": [
+        "It is negatively charged",
+        "It contains electrons",
+        "It is positively charged",
+        "It is electrically neutral"
+      ],
+      "answerIndex": 2,
+      "solution": "In Rutherford’s atomic model, the nucleus is considered to be positively charged because it contains protons, which carry a positive charge. Electrons are not part of the nucleus but orbit around it, and the nucleus is not electrically neutral since it has a net positive charge. The option stating it is negatively charged is also incorrect because protons, not electrons, are the primary charge carriers in the nucleus.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "रदरफोर्ड के परमाणु मॉडल में केंद्रक के बारे में निम्नलिखित में से कौन-सा सही है?",
+          "choices": [
+            "इसका ऋणात्मक आवेश होता है",
+            "इसमें इलेक्ट्रॉन होते हैं",
+            "इसका धनात्मक आवेश होता है",
+            "यह विद्युत उदासीन होता है"
+          ],
+          "solution": "रदरफोर्ड के परमाणु मॉडल में, केंद्रक को धनात्मक आवेश वाला माना जाता है क्योंकि इसमें प्रोटॉन होते हैं, जो धनात्मक आवेश ले लेते हैं। इलेक्ट्रॉन केंद्रक का हिस्सा नहीं होते, बल्कि इनका चक्कर केंद्रक के चारों ओर होता है, और केंद्रक विद्युत उदासीन नहीं होता क्योंकि इसका शुद्ध धनात्मक आवेश होता है। इसका ऋणात्मक आवेश होने का विकल्प भी गलत है क्योंकि प्रोटॉन, इलेक्ट्रॉन के बजाय, केंद्रक में मुख्य आवेश वाहक होते हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "रदरफोर्ड अणू मॉडेलमध्ये न्यूक्लियसबद्दल खालीलपैकी कोणते खरे आहे?",
+          "choices": [
+            "ते ऋणात्मक आवेश असते",
+            "त्यामध्ये इलेक्ट्रॉन असतात",
+            "ते धनात्मक आवेश असते",
+            "ते विद्युतरहित असते"
+          ],
+          "solution": "रदरफोर्ड अणू मॉडेलमध्ये, न्यूक्लियस धनात्मक आवेश असल्याचा विचार केला जातो कारण त्यामध्ये प्रोटॉन असतात, जे धनात्मक आवेश असतात. इलेक्ट्रॉन न्यूक्लियसचा भाग नसतात परंतु ते त्याच्या भोवती फिरतात, आणि न्यूक्लियस विद्युतरहित नसते कारण त्यामध्ये एकूण धनात्मक आवेश असतो. ते ऋणात्मक आवेश असल्याचा विचार देखील चूकीचा आहे कारण प्रोटॉन, न की इलेक्ट्रॉन, न्यूक्लियसमध्ये मुख्य आवेश वाहक असतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "A pupil might confuse the charge of the nucleus with that of the electrons.",
+        "A pupil might think electrons are part of the nucleus.",
+        null,
+        "A pupil might think the nucleus is neutral because it contains both protons and neutrons."
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies that Rutherford's model features a positively charged nucleus containing protons, and correctly explains why the other options are wrong. All distractors are based on plausible misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 45,
+          "pageStart": 40,
+          "pageEnd": 41,
+          "headingPath": [
+            "5. Inside the Atom"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 46,
+          "pageStart": 41,
+          "pageEnd": 41,
+          "headingPath": [
+            "5. Inside the Atom"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 47,
+          "pageStart": 41,
+          "pageEnd": 42,
+          "headingPath": [
+            "5. Inside the Atom"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-19T08:49:59.403Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "If the mass of an atom is mainly due to protons and neutrons, what can we infer about the mass of an electron?",
+      "choices": [
+        "It is the same as the mass of a proton",
+        "It is much greater than the mass of a proton",
+        "It is negligible compared to the mass of a proton",
+        "It is equal to the mass of a neutron"
+      ],
+      "answerIndex": 2,
+      "solution": "The correct answer is 'It is negligible compared to the mass of a proton'. Electrons have a much smaller mass than protons, so their contribution to an atom's total mass is minimal. The other options are incorrect because electrons are not as massive as protons or neutrons.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि किसी परमाणु का द्रव्यमान मुख्य रूप से प्रोटॉन और न्यूट्रॉन के कारण होता है, तो हम इलेक्ट्रॉन के द्रव्यमान के बारे में क्या निष्कर्ष निकाल सकते हैं?",
+          "choices": [
+            "इसका द्रव्यमान प्रोटॉन के द्रव्यमान के समान है",
+            "इसका द्रव्यमान प्रोटॉन के द्रव्यमान से बहुत अधिक है",
+            "इसका द्रव्यमान प्रोटॉन के द्रव्यमान की तुलना में नगण्य है",
+            "इसका द्रव्यमान न्यूट्रॉन के द्रव्यमान के बराबर है"
+          ],
+          "solution": "सही उत्तर 'इसका द्रव्यमान प्रोटॉन के द्रव्यमान की तुलना में नगण्य है' है। इलेक्ट्रॉन प्रोटॉन की तुलना में बहुत कम द्रव्यमान वाले होते हैं, इसलिए एक परमाणु के कुल द्रव्यमान में उनका योगदान नगण्य होता है। अन्य विकल्प गलत हैं क्योंकि इलेक्ट्रॉन प्रोटॉन या न्यूट्रॉन के बराबर द्रव्यमान वाले नहीं होते।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the original English question and solution, with appropriate scientific terminology used in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका परमाणूचा द्रव्यमान मुख्यतः प्रोटॉन आणि न्यूट्रॉनमुळे असतो, तर इलेक्ट्रॉनचा द्रव्यमान काय असू शकतो?",
+          "choices": [
+            "तो प्रोटॉनच्या द्रव्यमानाइतकाच असतो",
+            "तो प्रोटॉनच्या द्रव्यमानापेक्षा जास्त असतो",
+            "तो प्रोटॉनच्या द्रव्यमानापेक्षा नगण्य असतो",
+            "तो न्यूट्रॉनच्या द्रव्यमानाइतकाच असतो"
+          ],
+          "solution": "सही उत्तर 'तो प्रोटॉनच्या द्रव्यमानापेक्षा नगण्य असतो' आहे. इलेक्ट्रॉनचा द्रव्यमान प्रोटॉनपेक्षा जास्त लहान असतो, म्हणून त्याचा परमाणूच्या एकूण द्रव्यमानावर थोडाच वाटा असतो. इतर विकल्प चुकीचे आहेत कारण इलेक्ट्रॉन प्रोटॉन किंवा न्यूट्रॉनपेक्षा जास्त द्रव्यमान नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Misunderstands the relative mass of electrons and protons",
+        "Confuses electron mass with proton mass",
+        null,
+        "Confusing the mass of electrons with that of neutrons, thinking all subatomic particles have similar masses"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is sound and correctly identifies option 2 as the correct answer. The reasoning aligns with the known fact that electrons have a much smaller mass than protons and neutrons.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 45,
+          "pageStart": 40,
+          "pageEnd": 41,
+          "headingPath": [
+            "5. Inside the Atom"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 46,
+          "pageStart": 41,
+          "pageEnd": 41,
+          "headingPath": [
+            "5. Inside the Atom"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 47,
+          "pageStart": 41,
+          "pageEnd": 42,
+          "headingPath": [
+            "5. Inside the Atom"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-19T08:49:59.403Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
     }
   ]
 }

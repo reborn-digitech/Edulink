@@ -980,6 +980,1535 @@
       "generatedAt": "2026-11-02T04:16:14.089Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "Which part of the body is responsible for the contraction and relaxation of the heart?",
+      "choices": [
+        "Skeletal muscles",
+        "Smooth muscles",
+        "Cardiac muscles",
+        "Voluntary muscles"
+      ],
+      "answerIndex": 2,
+      "solution": "Cardiac muscles are responsible for the contraction and relaxation of the heart because they are specialized muscle tissue found only in the heart and are designed for continuous, rhythmic activity. Skeletal muscles are attached to bones and are under voluntary control, smooth muscles are found in internal organs and are involuntary, and voluntary muscles refer to skeletal muscles, which are not involved in heart function.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "हृदय के संकुचन एवं औच्छ्वास के लिए शरीर का कौन-सा भाग जिम्मेदार होता है?",
+          "choices": [
+            "अस्थि मांसपेशियाँ",
+            "चिकनी मांसपेशियाँ",
+            "हृदय मांसपेशियाँ",
+            "स्वेच्छा द्वारा नियंत्रित मांसपेशियाँ"
+          ],
+          "solution": "हृदय मांसपेशियाँ हृदय के संकुचन एवं औच्छ्वास के लिए जिम्मेदार होती हैं क्योंकि वे केवल हृदय में पाई जाने वाली विशेषित मांसपेशी ऊतक हैं और लगातार, धारा के रूप में काम करने के लिए डिज़ाइन की गई हैं। अस्थि मांसपेशियाँ हड्डियों से जुड़ी होती हैं और स्वेच्छा द्वारा नियंत्रित होती हैं, चिकनी मांसपेशियाँ आंतरिक अंगों में पाई जाती हैं और अस्वेच्छा द्वारा नियंत्रित होती हैं, और स्वेच्छा द्वारा नियंत्रित मांसपेशियाँ अस्थि मांसपेशियों को संदर्भित करती हैं, जो हृदय के कार्य में शामिल नहीं होती हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the technical terms used in Hindi textbooks. The correct answer remains option (2) and the explanations are consistent with the original English version.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "हृदयाच्या खीळण्याच्या आणि आरामाच्या क्रियेसाठी शरीराचा कोणता भाग जबाबदार आहे?",
+          "choices": [
+            "अस्थिमांस",
+            "मृदूमांस",
+            "हृदयमांस",
+            "स्वयंचलित मांस"
+          ],
+          "solution": "हृदयमांस हृदयाच्या खीळण्याच्या आणि आरामाच्या क्रियेसाठी जबाबदार आहे कारण ते फक्त हृदयात आढळून येणारे विशेषीकृत मांसपेशी ऊती आहे आणि ते सतत, तालवार गतीसाठी डिझाइन केलेले असते. अस्थिमांस हड्ड्यांशी जुळलेले असतात आणि ते स्वयंचलित नियंत्रणाखाली असतात, मृदूमांस आंतरिक अवयवांमध्ये आढळून येतात आणि ते अस्वयंचलित असतात, आणि स्वयंचलित मांस हे अस्थिमांसच्या बरोबरीत असतात, जे हृदयाच्या क्रियांमध्ये सहभागी होत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi medical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses skeletal muscles with heart muscles",
+        "Refers to smooth muscles found in internal organs",
+        null,
+        "Refers to muscles that are under conscious control"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-constructed, with a clear correct answer (cardiac muscles) and plausible distractors based on common misconceptions about muscle types.",
+      "sources": [
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 91,
+          "pageStart": 91,
+          "pageEnd": 92,
+          "headingPath": [
+            "12. The Muscular System and Digestive System in Human Beings"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 92,
+          "pageStart": 92,
+          "pageEnd": 93,
+          "headingPath": [
+            "12. The Muscular System and Digestive System in Human Beings"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 93,
+          "pageStart": 93,
+          "pageEnd": 94,
+          "headingPath": [
+            "12. The Muscular System and Digestive System in Human Beings"
+          ]
+        }
+      ],
+      "edition": "First Edition 2017",
+      "generatedAt": "2026-10-31T17:12:01.807Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is the function of the biceps muscle?",
+      "choices": [
+        "To relax the arm",
+        "To bend the arm",
+        "To straighten the arm",
+        "To rotate the arm"
+      ],
+      "answerIndex": 1,
+      "solution": "The biceps muscle is located on the front of the upper arm and is responsible for bending the arm at the elbow when it contracts. The triceps, which are on the back of the upper arm, are responsible for straightening the arm. Rotating the arm involves different muscles, and relaxing the arm is not a specific function of the biceps.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "बाइसेप्स मांसल का क्या कार्य है?",
+          "choices": [
+            "हाथ को ढीला करना",
+            "हाथ को मोड़ना",
+            "हाथ को सीधा करना",
+            "हाथ को घुमाना"
+          ],
+          "solution": "बाइसेप्स मांसल ऊपरी बाहु के सामने में स्थित होता है और जब यह संकुचित होता है तो बाहु के कोहनी पर मोड़ने के लिए जिम्मेदार होता है। ट्राइसेप्स, जो ऊपरी बाहु के पीछे में होते हैं, हाथ को सीधा करने के लिए जिम्मेदार होते हैं। हाथ को घुमाना अलग मांसलों के द्वारा किया जाता है, और हाथ को ढीला करना बाइसेप्स का एक विशिष्ट कार्य नहीं है।",
+          "imageAlt": null,
+          "critique": "All terms are standard Hindi medical terminology. The translation is accurate and maintains the original meaning, with the correct answer in the same position (option 1).",
+          "flag": null
+        },
+        "mr": {
+          "stem": "बाइसिप्स मांसपेशीचे कार्य काय आहे?",
+          "choices": [
+            "हात शिथिल करणे",
+            "हात मोडणे",
+            "हात सरळ करणे",
+            "हात फिरवणे"
+          ],
+          "solution": "बाइसिप्स मांसपेशी हाताच्या वरच्या बाजूस असते आणि जेव्हा ती खाली येते तेव्हा हाताच्या बाजूला मोडते. ट्रायसिप्स, जे हाताच्या खालच्या बाजूस असतात, हात सरळ करण्याचे कार्य करतात. हात फिरवणे हे इतर मांसपेशींचे कार्य असते, आणि हात शिथिल करणे हे बाइसिप्सचे विशिष्ट कार्य नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for anatomical terms.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Incorrectly associates the biceps with relaxation.",
+        null,
+        "Confuses biceps with triceps, thinking it straightens the arm instead of bending it",
+        "Confuses the function of the triceps with the biceps."
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 1 (To bend the arm), as the biceps are responsible for flexing the elbow. The other options reflect common misconceptions about the roles of biceps and triceps.",
+      "sources": [
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 91,
+          "pageStart": 91,
+          "pageEnd": 92,
+          "headingPath": [
+            "12. The Muscular System and Digestive System in Human Beings"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 92,
+          "pageStart": 92,
+          "pageEnd": 93,
+          "headingPath": [
+            "12. The Muscular System and Digestive System in Human Beings"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 93,
+          "pageStart": 93,
+          "pageEnd": 94,
+          "headingPath": [
+            "12. The Muscular System and Digestive System in Human Beings"
+          ]
+        }
+      ],
+      "edition": "First Edition 2017",
+      "generatedAt": "2026-10-31T17:12:01.807Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "Which part of the digestive system is responsible for the initial breakdown of carbohydrates?",
+      "choices": [
+        "Stomach",
+        "Liver",
+        "Mouth",
+        "Small intestine"
+      ],
+      "answerIndex": 2,
+      "solution": "The initial breakdown of carbohydrates occurs in the mouth, where saliva contains enzymes that start breaking down starch into simpler sugars. The stomach is primarily involved in protein digestion, the liver produces bile for fat digestion, and the small intestine is mainly for nutrient absorption. Therefore, the correct answer is mouth.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "पाचन तंत्र का कौन-सा भाग कार्बोहाइड्रेट के प्रारंभिक अपघटन के लिए उत्तरदायी है?",
+          "choices": [
+            "आमाशय",
+            "यकृत",
+            "मुंह",
+            "छोटी आंत"
+          ],
+          "solution": "कार्बोहाइड्रेट का प्रारंभिक अपघटन मुंह में होता है, जहां लार में एंजाइम होते हैं जो स्टार्च के अपघटन की शुरुआत करते हैं। आमाशय प्रोटीन के पाचन में मुख्य रूप से शामिल होता है, यकृत वसा के पाचन के लिए बाइल उत्पादित करता है, और छोटी आंत मुख्य रूप से पोषक तत्वों के अवशोषण में शामिल होती है। इसलिए, सही उत्तर मुंह है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. All options are correctly translated and maintain their original meaning. The correct answer is in the same position (option 3), and the distractors remain incorrect. Technical terms like 'मुंह' (mouth), 'आमाशय' (stomach), 'यकृत' (liver), and 'छोटी आंत' (small intestine) are standard in Hindi biology textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "पाचन प्रणालीच्या कोणत्या भागाची अणुशिल्पाच्या प्रारंभिक तोडक्यासाठी जबाबदारी आहे?",
+          "choices": [
+            "आतडे",
+            "यकृत",
+            "मुख",
+            "लहान आतडे"
+          ],
+          "solution": "अणुशिल्पाच्या प्रारंभिक तोडक्याची जबाबदारी मुखात होते, जेथे लाळामध्ये एन्झाइम असतात जे स्टार्चला सोप्पा साखरांमध्ये तोडतात. आतडे प्रोटीनच्या पाचनासाठी जबाबदार असते, यकृत चरबीच्या पाचनासाठी बायल तयार करते आणि लहान आतडे पोषक तत्वांच्या अवशोषणासाठी जबाबदार असते. त्यामुळे, योग्य उत्तर मुख आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for anatomical parts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the role of the stomach in digestion",
+        "Incorrectly identifies the liver as the site of carbohydrate digestion",
+        null,
+        "Chooses the small intestine, which is for absorption, not initial breakdown"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly identifies the mouth as the site of initial carbohydrate breakdown due to salivary amylase, and the reasoning for the distractors aligns with common student misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 94,
+          "pageStart": 94,
+          "pageEnd": 95,
+          "headingPath": [
+            "12. The Muscular System and Digestive System in Human Beings"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 95,
+          "pageStart": 95,
+          "pageEnd": 96,
+          "headingPath": [
+            "12. The Muscular System and Digestive System in Human Beings"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 96,
+          "pageStart": 96,
+          "pageEnd": 97,
+          "headingPath": [
+            "12. The Muscular System and Digestive System in Human Beings",
+            "t t t"
+          ]
+        }
+      ],
+      "edition": "First Edition 2017",
+      "generatedAt": "2026-10-31T17:12:01.807Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the main function of the digestive system?",
+      "choices": [
+        "To pump blood throughout the body",
+        "To convert food into a soluble form and absorb it into the blood",
+        "To provide structure and support to the body",
+        "To regulate body temperature"
+      ],
+      "answerIndex": 1,
+      "solution": "The main function of the digestive system is to break down food into a form that can be absorbed into the bloodstream, allowing the body to use nutrients. Pumping blood is the role of the circulatory system, providing structure is the role of the skeletal system, and regulating temperature is handled by the integumentary and nervous systems.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "पाचन तंत्र का मुख्य कार्य क्या है?",
+          "choices": [
+            "शरीर के भीतर रक्त को पम्प करना",
+            "भोजन को विलेय रूप में बदलकर रक्त में अवशोषित करना",
+            "शरीर के लिए संरचना और समर्थन प्रदान करना",
+            "शरीर के तापमान को नियंत्रित करना"
+          ],
+          "solution": "पाचन तंत्र का मुख्य कार्य भोजन को एक ऐसे रूप में तोड़ना है जिसे रक्त में अवशोषित किया जा सके, जिससे शरीर अपने पोषक तत्वों का उपयोग कर सके। रक्त को पम्प करना परिसंचरण तंत्र की भूमिका है, संरचना प्रदान करना हड्डी तंत्र की भूमिका है, और तापमान को नियंत्रित करना त्वचा और तंत्रिका तंत्र की भूमिका है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. All options are correctly translated, and the correct answer remains option (2). The distractors are still incorrect in the Hindi version, and technical terms like 'पाचन तंत्र' (digestive system) and 'रक्त' (blood) are standard in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "पाचक प्रणालीचे मुख्य कार्य काय आहे?",
+          "choices": [
+            "शरीरात सार्वत्रिक रक्त पंप करणे",
+            "खाद्य पदार्थ विलेय रूपात बदलून तो रक्तात शोषून घेणे",
+            "शरीराला संरचना आणि समर्थन प्रदान करणे",
+            "शरीराचे तापमान नियंत्रित करणे"
+          ],
+          "solution": "पाचक प्रणालीचे मुख्य कार्य खाद्य पदार्थांना रक्तात शोषून घेता येईल अशा रूपात तुकडे करणे आहे, जेणेकरून शरीर अन्नाचे पोषक घटक वापरू शकेल. रक्त पंप करणे हा परिसंचरण प्रणालीचा कार्य आहे, संरचना प्रदान करणे हा अस्थिपंजर प्रणालीचा कार्य आहे, आणि तापमान नियंत्रित करणे हा त्वचा आणि तंत्रिका प्रणालीचा कार्य आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi medical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Describes the function of the circulatory system",
+        null,
+        "Describes the function of the muscular system",
+        "Describes the function of the thermoregulatory system"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 1, as the digestive system's main function is to convert food into a soluble form and absorb it into the blood. The other options describe functions of the circulatory, muscular, and thermoregulatory systems, which are correctly identified as misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 91,
+          "pageStart": 91,
+          "pageEnd": 92,
+          "headingPath": [
+            "12. The Muscular System and Digestive System in Human Beings"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 92,
+          "pageStart": 92,
+          "pageEnd": 93,
+          "headingPath": [
+            "12. The Muscular System and Digestive System in Human Beings"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 93,
+          "pageStart": 93,
+          "pageEnd": 94,
+          "headingPath": [
+            "12. The Muscular System and Digestive System in Human Beings"
+          ]
+        }
+      ],
+      "edition": "First Edition 2017",
+      "generatedAt": "2026-10-31T17:12:01.807Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the function of bile in the digestive system?",
+      "choices": [
+        "To break down proteins",
+        "To emulsify fats",
+        "To digest carbohydrates",
+        "To absorb water"
+      ],
+      "answerIndex": 1,
+      "solution": "Bile is responsible for breaking down large fat droplets into smaller ones, which increases the surface area for fat-digesting enzymes to work more effectively. It does not break down proteins or carbohydrates, as those are handled by other enzymes. Water absorption occurs in the large intestine, not by bile. Therefore, the correct answer is to emulsify fats.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "पाचन तंत्र में पित्त का कार्य क्या है?",
+          "choices": [
+            "प्रोटीन का अपघटन करना",
+            "वसा का एमल्सीकरण करना",
+            "कार्बोहाइड्रेट का पाचन करना",
+            "जल का अवशोषण करना"
+          ],
+          "solution": "पित्त बड़े वसा के बूंदों के छोटे टुकड़ों में टूटने के लिए जिम्मेदार होता है जो वसा-पाचक एंजाइमों के काम करने के लिए सतह क्षेत्र को बढ़ाता है। यह प्रोटीन या कार्बोहाइड्रेट के अपघटन करता नहीं है, क्योंकि इनका पाचन अन्य एंजाइमों द्वारा किया जाता है। जल का अवशोषण बड़ी आंत में होता है, न कि पित्त द्वारा। इसलिए सही उत्तर वसा का एमल्सीकरण करना है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, technical terms are appropriately used in Hindi, and the logic of the solution matches the original.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "पाचन प्रणालीमध्ये बाइलचे कार्य काय आहे?",
+          "choices": [
+            "प्रोटीन तोडणे",
+            "तेल एमल्सिफाई करणे",
+            "कार्बोहायड्रेट तोडणे",
+            "पाणी शोषून घेणे"
+          ],
+          "solution": "बाइल मोठ्या तेलाच्या थेंबांना लहान थेंबांमध्ये तोडते, ज्यामुळे तेलाच्या एन्झाइम्सने कार्य करण्यासाठी पृष्ठभागाची पृष्ठभाग वाढते. ते प्रोटीन किंवा कार्बोहायड्रेट तोडत नाही, कारण ते इतर एन्झाइम्सद्वारे विघटित केले जातात. पाण्याचा शोष जीर्णनाच्या अंतर्गत आतड्यामध्ये होतो, बाइलद्वारे नाही. त्यामुळे, योग्य उत्तर तेल एमल्सिफाई करणे आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the scientific terminology appropriate for a Marathi-medium textbook.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the role of gastric juice with bile",
+        null,
+        "Chooses a function of pancreatic enzymes",
+        "Identifies the function of the large intestine"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly identifies the function of bile as emulsifying fats, and the reasons for the incorrect options align with common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 94,
+          "pageStart": 94,
+          "pageEnd": 95,
+          "headingPath": [
+            "12. The Muscular System and Digestive System in Human Beings"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 95,
+          "pageStart": 95,
+          "pageEnd": 96,
+          "headingPath": [
+            "12. The Muscular System and Digestive System in Human Beings"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 96,
+          "pageStart": 96,
+          "pageEnd": 97,
+          "headingPath": [
+            "12. The Muscular System and Digestive System in Human Beings",
+            "t t t"
+          ]
+        }
+      ],
+      "edition": "First Edition 2017",
+      "generatedAt": "2026-10-31T17:12:01.807Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If a person's stomach muscles do not move, what would happen?",
+      "choices": [
+        "The person would be unable to breathe",
+        "The person would be unable to digest food properly",
+        "The person would lose their ability to walk",
+        "The person would experience rapid heartbeat"
+      ],
+      "answerIndex": 1,
+      "solution": "Stomach muscles play a key role in mixing and moving food through the digestive system, so if they do not move, digestion would be impaired. Breathing is controlled by the diaphragm and other respiratory muscles, not stomach muscles. Walking depends on skeletal muscles in the legs, and a rapid heartbeat is related to the heart's function, not the stomach.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि किसी व्यक्ति के पेट के मांसपेशियाँ गति नहीं करती हैं, तो क्या होगा?",
+          "choices": [
+            "व्यक्ति श्वास लेने में असमर्थ हो जाएगा",
+            "व्यक्ति भोजन को ठीक से पचाने में असमर्थ हो जाएगा",
+            "व्यक्ति चलने की क्षमता खो देगा",
+            "व्यक्ति का हृदय गति तेज हो जाएगी"
+          ],
+          "solution": "पेट की मांसपेशियाँ भोजन के मिश्रण और पाचन तंत्र में गति के मुख्य भूमिका निभाती हैं, इसलिए यदि वे गति नहीं करती हैं, तो पाचन बाधित हो जाएगा। श्वास डायफ्राम और अन्य श्वसन मांसपेशियों द्वारा नियंत्रित किया जाता है, न कि पेट की मांसपेशियों द्वारा। चलना टांगों में स्केलेटल मांसपेशियों पर निर्भर करता है, और तेज हृदय गति पेट के कार्य से नहीं, बल्कि हृदय के कार्य से संबंधित है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, with appropriate Hindi medical terminology used.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर एखाद्या व्यक्तीच्या आतड्याच्या मांसपेशी चालू नाहीत, तर काय होईल?",
+          "choices": [
+            "व्यक्ती श्वास घेण्यास असमर्थ होईल",
+            "व्यक्ती खाद्य पचन करण्यास असमर्थ होईल",
+            "व्यक्ती चालण्याची क्षमता गमावील",
+            "व्यक्तीला तीव्र हृदय ठोका होईल"
+          ],
+          "solution": "आतड्याच्या मांसपेशी खाद्य पचन प्रक्रियेत मिश्रण आणि खाद्य वाहतूक करण्याच्या मुख्य भूमिकेत असतात, म्हणून जर त्या चालू नाहीत तर पचन अडथळा येईल. श्वास घेणे डायफ्राम आणि इतर श्वासोच्छ्वास अंगाच्या मांसपेशी द्वारे नियंत्रित केले जाते, आतड्याच्या मांसपेशी द्वारे नाही. चालणे अंगाच्या पायातील अस्थिमांसपेशी वर अवलंबून असते आणि तीव्र हृदय ठोका हृदयाच्या कार्याशी संबंधित असतो, आतड्याशी नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi medical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Describes the function of respiratory muscles",
+        null,
+        "Describes the function of leg muscles",
+        "Describes the function of the heart"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly identifies that stomach muscles are involved in digestion, and the other options relate to different body systems. The reasoning for the distractors is based on common misconceptions about the functions of other muscle groups.",
+      "sources": [
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 91,
+          "pageStart": 91,
+          "pageEnd": 92,
+          "headingPath": [
+            "12. The Muscular System and Digestive System in Human Beings"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 92,
+          "pageStart": 92,
+          "pageEnd": 93,
+          "headingPath": [
+            "12. The Muscular System and Digestive System in Human Beings"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 93,
+          "pageStart": 93,
+          "pageEnd": 94,
+          "headingPath": [
+            "12. The Muscular System and Digestive System in Human Beings"
+          ]
+        }
+      ],
+      "edition": "First Edition 2017",
+      "generatedAt": "2026-10-31T17:12:01.807Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "Which organ is responsible for storing bile?",
+      "choices": [
+        "Pancreas",
+        "Liver",
+        "Gall bladder",
+        "Stomach"
+      ],
+      "answerIndex": 2,
+      "solution": "The gall bladder is responsible for storing bile, which is produced by the liver. The pancreas produces digestive enzymes, and the stomach does not store bile. Therefore, the correct answer is the gall bladder.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "कौन-सा अंग बिली को भंडारित करता है?",
+          "choices": [
+            "अग्नाशय",
+            "यकृत",
+            "पित्ताशय",
+            "आमाशय"
+          ],
+          "solution": "पित्ताशय बिली को भंडारित करता है, जो यकृत द्वारा उत्पन्न की जाती है। अग्नाशय एंजाइम उत्पन्न करता है, और आमाशय बिली को नहीं भंडारित करता है। इसलिए सही उत्तर पित्ताशय है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English content, with appropriate medical terminology used in the context of a Hindi-medium textbook.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "कोणता अवयव बायल साठवतो?",
+          "choices": [
+            "अग्न्याशय",
+            "यकृत",
+            "कोल्याचे रोगाचे बॉल",
+            "जठर"
+          ],
+          "solution": "कोल्याचे रोगाचे बॉल बायल साठवते, जे यकृत द्वारा उत्पन्न केले जाते. अग्न्याशय अंतर्गत एंजाइम उत्पन्न करते, आणि जठर बायल साठवत नाही. म्हणून, योग्य उत्तर कोल्याचे रोगाचे बॉल आहे.",
+          "imageAlt": null,
+          "critique": "The Marathi translation accurately conveys the meaning of the original English question. The technical terms used are appropriate for a Marathi-medium biology curriculum.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the liver with the gall bladder",
+        "Chooses the liver, which produces bile, not stores it",
+        null,
+        "Identifies the stomach, which is not involved in bile storage"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The solution is accurate and aligns with the correct answer. The gall bladder is indeed responsible for storing bile, while the liver produces it, the pancreas produces enzymes, and the stomach is not involved in bile storage.",
+      "sources": [
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 94,
+          "pageStart": 94,
+          "pageEnd": 95,
+          "headingPath": [
+            "12. The Muscular System and Digestive System in Human Beings"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 95,
+          "pageStart": 95,
+          "pageEnd": 96,
+          "headingPath": [
+            "12. The Muscular System and Digestive System in Human Beings"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 96,
+          "pageStart": 96,
+          "pageEnd": 97,
+          "headingPath": [
+            "12. The Muscular System and Digestive System in Human Beings",
+            "t t t"
+          ]
+        }
+      ],
+      "edition": "First Edition 2017",
+      "generatedAt": "2026-10-31T17:12:01.807Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "Which part of the digestive system is responsible for the majority of digestion and absorption of food?",
+      "choices": [
+        "Stomach",
+        "Liver",
+        "Small intestine",
+        "Large intestine"
+      ],
+      "answerIndex": 2,
+      "solution": "The small intestine is the main site for digestion and absorption of nutrients. The stomach mainly digests proteins, the liver produces bile to help break down fats, and the large intestine mainly absorbs water. Therefore, the small intestine is the correct answer.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "पाचन तंत्र का कौन-सा भाग भोजन के अधिकांश पाचन और अवशोषण के लिए उत्तरदायी है?",
+          "choices": [
+            "आमाशय",
+            "यकृत",
+            "छोटी आंत",
+            "बड़ी आंत"
+          ],
+          "solution": "छोटी आंत पोषक तत्वों के पाचन और अवशोषण का मुख्य स्थल है। आमाशय मुख्य रूप से प्रोटीन के पाचन के लिए उत्तरदायी है, यकृत वसा के टूटने में मदद करने वाले बिलियर रस का उत्पादन करता है, और बड़ी आंत मुख्य रूप से पानी के अवशोषण के लिए उत्तरदायी है। इसलिए, छोटी आंत सही उत्तर है।",
+          "imageAlt": null,
+          "critique": "Translation accurately reflects the original meaning with appropriate Hindi medical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "पोषणाच्या प्रणालीचा कोणता भाग अन्नाच्या अधिकांश शोषण आणि पाचनास जबाबदार आहे?",
+          "choices": [
+            "आतडे",
+            "यकृत",
+            "लहान आतडे",
+            "मोठे आतडे"
+          ],
+          "solution": "लहान आतडे पोषक घटकांच्या पाचन आणि शोषणाचे मुख्य स्थान आहे. आतडे प्रथिनांचे पाचन करते, यकृत चरबी तोडण्यास मदत करणारे बाइल तयार करते, आणि मोठे आतडे मुख्यतः पाणी शोषते. म्हणून, लहान आतडे हे योग्य उत्तर आहे.",
+          "imageAlt": null,
+          "critique": "The Marathi translation accurately reflects the English original in meaning, structure, and terminology. All technical terms are in line with standard Marathi medical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the function of the stomach with the small intestine.",
+        "Confuses the function of the liver with the small intestine.",
+        null,
+        "Does not understand the role of the small intestine in digestion and absorption."
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly identifies the small intestine as the main site of digestion and absorption, and the reasons for the incorrect options align with common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 94,
+          "pageStart": 94,
+          "pageEnd": 95,
+          "headingPath": [
+            "12. The Muscular System and Digestive System in Human Beings"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 95,
+          "pageStart": 95,
+          "pageEnd": 96,
+          "headingPath": [
+            "12. The Muscular System and Digestive System in Human Beings"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 96,
+          "pageStart": 96,
+          "pageEnd": 97,
+          "headingPath": [
+            "12. The Muscular System and Digestive System in Human Beings",
+            "t t t"
+          ]
+        }
+      ],
+      "edition": "First Edition 2017",
+      "generatedAt": "2026-10-31T17:12:01.807Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "Which of the following is a function of the liver in the digestive system?",
+      "choices": [
+        "Secretes gastric juice",
+        "Stores bile",
+        "Absorbs water",
+        "Breaks down proteins"
+      ],
+      "answerIndex": 1,
+      "solution": "The liver produces bile, which is stored in the gallbladder. Bile helps in the digestion of fats. The stomach secretes gastric juice, the large intestine absorbs water, and the stomach breaks down proteins. Therefore, storing bile is the correct answer.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा यकृत का पाचन तंत्र में कार्य है?",
+          "choices": [
+            "जठर रस उत्पन्न करता है",
+            "पित्त को संग्रहित करता है",
+            "जल को अवशोषित करता है",
+            "प्रोटीन के अपघटन करता है"
+          ],
+          "solution": "यकृत पित्त उत्पन्न करता है, जिसे पित्ताशय में संग्रहित किया जाता है। पित्त वसाओं के पाचन में सहायता करता है। आमाशय जठर रस उत्पन्न करता है, बड़ी आंत जल को अवशोषित करती है, और आमाशय प्रोटीन के अपघटन करता है। अतः पित्त को संग्रहित करना सही उत्तर है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi medical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खाद्यप्रणालीत लिव्हरचे कार्य खालीलपैकी कोणते आहे?",
+          "choices": [
+            "जठर रस निर्मित करते",
+            "कॉलॉन जास्तीत जास्त द्रव शोषते",
+            "जल शोषते",
+            "प्रोटीन विघटित करते"
+          ],
+          "solution": "लिव्हर बाइल तयार करते, जो कॉलॉनमध्ये जमा होतो. बाइल चरबीच्या पचनामध्ये मदत करते. जठर जठर रस निर्मित करते, मोठ्या आतड्याने जल शोषते आणि जठर प्रोटीन विघटित करते. म्हणून, बाइल जमा करणे हे योग्य उत्तर आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for anatomical terms.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the function of the stomach with the liver.",
+        null,
+        "Does not understand the role of the liver in digestion.",
+        "Confuses the function of the stomach with the liver."
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 1 (Stores bile), as the liver produces bile, which is stored in the gallbladder. The other options are incorrectly attributed to the liver, and the author's reasons for the wrong options reflect common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 94,
+          "pageStart": 94,
+          "pageEnd": 95,
+          "headingPath": [
+            "12. The Muscular System and Digestive System in Human Beings"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 95,
+          "pageStart": 95,
+          "pageEnd": 96,
+          "headingPath": [
+            "12. The Muscular System and Digestive System in Human Beings"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 96,
+          "pageStart": 96,
+          "pageEnd": 97,
+          "headingPath": [
+            "12. The Muscular System and Digestive System in Human Beings",
+            "t t t"
+          ]
+        }
+      ],
+      "edition": "First Edition 2017",
+      "generatedAt": "2026-10-31T17:12:01.807Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "Which of the following best describes the function of the biceps and triceps?",
+      "choices": [
+        "They are responsible for breathing",
+        "They help in the movement of the arm",
+        "They help in the digestion of food",
+        "They are part of the heart muscles"
+      ],
+      "answerIndex": 1,
+      "solution": "The biceps and triceps are muscles located in the arm that work together to enable movement by contracting and relaxing. They are not involved in breathing, which is controlled by the diaphragm, nor in digestion, which involves the stomach and intestines. They are also not part of the heart muscles, which are responsible for pumping blood.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा बाइसिप्स और ट्राइसिप्स के कार्य का सबसे अच्छा वर्णन करता है?",
+          "choices": [
+            "वे श्वसन के लिए जिम्मेदार हैं",
+            "वे बाजू के गति में मदद करते हैं",
+            "वे भोजन के पाचन में मदद करते हैं",
+            "वे हृदय मांसपेशियों के हिस्से हैं"
+          ],
+          "solution": "बाइसिप्स और ट्राइसिप्स बाजू में स्थित मांसपेशियां हैं जो सिकुड़ने और ढीला होने से गति को संभव बनाती हैं। वे श्वसन में शामिल नहीं हैं, जो डायाफ्राम द्वारा नियंत्रित किया जाता है, न ही भोजन के पाचन में, जो आमाशय और आंतों के साथ संबंधित है। वे हृदय मांसपेशियों के हिस्से भी नहीं हैं, जो रक्त के पंप करने के लिए जिम्मेदार हैं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains original meaning, and uses standard Hindi medical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते बाइसिप्स आणि ट्रायसिप्सच्या कार्याचे सर्वात चांगले वर्णन करते?",
+          "choices": [
+            "ते श्वास घेण्याची जबाबदारी घेतात",
+            "ते बाजूच्या गतीमध्ये मदत करतात",
+            "ते खाद्याच्या पाचनामध्ये मदत करतात",
+            "ते हृदयाच्या मांसांचा भाग आहेत"
+          ],
+          "solution": "बाइसिप्स आणि ट्रायसिप्स हे बाजूत असलेले मांस असतात जे खिंचणे आणि आराम घेण्याच्या माध्यमातून गतीला अनुमती देण्यासाठी एकत्र कार्य करतात. ते श्वास घेण्यासाठी जबाबदार नसतात, जे डायफ्राम द्वारे नियंत्रित केले जाते, आणि खाद्याच्या पाचनामध्ये नसतात, जे आतडे आणि आतड्याच्या जबाबदारीत असते. ते हृदयाच्या मांसांचा भाग नसतात, जे रक्ताचे पंप करण्यासाठी जबाबदार असतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi medical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Describes the function of respiratory muscles",
+        null,
+        "Describes the function of digestive organs",
+        "Describes the function of cardiac muscles"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is well-constructed, with a clear correct answer and plausible distractors based on common misconceptions about muscle functions.",
+      "sources": [
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 91,
+          "pageStart": 91,
+          "pageEnd": 92,
+          "headingPath": [
+            "12. The Muscular System and Digestive System in Human Beings"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 92,
+          "pageStart": 92,
+          "pageEnd": 93,
+          "headingPath": [
+            "12. The Muscular System and Digestive System in Human Beings"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 93,
+          "pageStart": 93,
+          "pageEnd": 94,
+          "headingPath": [
+            "12. The Muscular System and Digestive System in Human Beings"
+          ]
+        }
+      ],
+      "edition": "First Edition 2017",
+      "generatedAt": "2026-10-31T17:12:01.807Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "Which part of the digestive system is described as being about 6 meters long and responsible for most digestion and absorption?",
+      "choices": [
+        "Large intestine",
+        "Stomach",
+        "Oesophagus",
+        "Small intestine"
+      ],
+      "answerIndex": 3,
+      "solution": "The small intestine is approximately 6 meters long and is the primary site for digestion and nutrient absorption. The large intestine mainly absorbs water, the stomach is a muscular sac for food storage and initial digestion, and the oesophagus is a muscular tube that transports food to the stomach. Therefore, the correct answer is the small intestine.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "पाचन तंत्र का कौन-सा भाग लगभग 6 मीटर लंबा होता है और अधिकांश पाचन और अवशोषण के लिए उत्तरदायी होता है?",
+          "choices": [
+            "बड़ी आंत",
+            "आमाशय",
+            "पेशीय भोजननाल",
+            "छोटी आंत"
+          ],
+          "solution": "छोटी आंत लगभग 6 मीटर लंबी होती है और पाचन और पोषक तत्वों के अवशोषण के मुख्य स्थल के रूप में कार्य करती है। बड़ी आंत मुख्य रूप से पानी के अवशोषण के लिए उत्तरदायी होती है, आमाशय भोजन के भंडारण और प्रारंभिक पाचन के लिए एक पेशीय थैला होता है, और पेशीय भोजननाल भोजन को आमाशय तक पहुंचाने वाला पेशीय नली होता है। इसलिए सही उत्तर छोटी आंत है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Hindi medical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जे अंतर्गत प्रणालीच्या भागाचे वर्णन 6 मीटर लांब असून अधिकांश पचन आणि अवशोषणाची जबाबदारी असते तो कोणता भाग आहे?",
+          "choices": [
+            "मोठी आंत्र",
+            "जठर",
+            "हृदयनाल",
+            "लहान आंत्र"
+          ],
+          "solution": "लहान आंत्र अंदाजे 6 मीटर लांब असते आणि पचन आणि पोषक घटकांच्या अवशोषणाचे मुख्य स्थान असते. मोठी आंत्र मुख्यतः पाणी अवशोषित करते, जठर खाद्य पाचन आणि प्रारंभिक पचनाच्या जबाबदारी असते आणि हृदयनाल खाद्य जठरमध्ये वाहून नेण्याच्या जबाबदारी असते. त्यामुळे योग्य उत्तर लहान आंत्र आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi medical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Chooses the large intestine, which is shorter and for water absorption",
+        "Chooses the stomach, which is not the site of most digestion",
+        "Chooses the oesophagus, which is a transport tube",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is well-constructed and the solution is accurate. The small intestine is indeed about 6 meters long and is the primary site of digestion and absorption. The distractors reflect common misconceptions about the roles of other digestive organs.",
+      "sources": [
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 94,
+          "pageStart": 94,
+          "pageEnd": 95,
+          "headingPath": [
+            "12. The Muscular System and Digestive System in Human Beings"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 95,
+          "pageStart": 95,
+          "pageEnd": 96,
+          "headingPath": [
+            "12. The Muscular System and Digestive System in Human Beings"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 96,
+          "pageStart": 96,
+          "pageEnd": 97,
+          "headingPath": [
+            "12. The Muscular System and Digestive System in Human Beings",
+            "t t t"
+          ]
+        }
+      ],
+      "edition": "First Edition 2017",
+      "generatedAt": "2026-10-31T17:12:01.807Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "Which of the following is an example of an involuntary muscle?",
+      "choices": [
+        "Biceps",
+        "Triceps",
+        "Stomach muscles",
+        "Leg muscles"
+      ],
+      "answerIndex": 2,
+      "solution": "Stomach muscles are involuntary because they work without conscious control to aid in digestion. Biceps, triceps, and leg muscles are all skeletal muscles that are under voluntary control. Involuntary muscles are found in internal organs and function automatically.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन अस्वैच्छिक मांसपेशी का उदाहरण है?",
+          "choices": [
+            "बाइसेप्स",
+            "ट्राइसेप्स",
+            "आमाशय की मांसपेशियाँ",
+            "टांग की मांसपेशियाँ"
+          ],
+          "solution": "आमाशय की मांसपेशियाँ अस्वैच्छिक होती हैं क्योंकि वे पाचन में सहायता करने के लिए ज्ञानपूर्वक नियंत्रण के बिना कार्य करती हैं। बाइसेप्स, ट्राइसेप्स और टांग की मांसपेशियाँ सभी अस्थि मांसपेशियाँ होती हैं जो स्वैच्छिक नियंत्रण में होती हैं। अस्वैच्छिक मांसपेशियाँ आंतरिक अंगों में पाई जाती हैं और स्वतः कार्य करती हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Hindi terminology used for biological concepts.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते अस्वच्छेदी मांसल उदाहरण आहे?",
+          "choices": [
+            "बाइसिप्स",
+            "ट्रायसिप्स",
+            "जठराचे मांसपेशी",
+            "पायाचे मांसपेशी"
+          ],
+          "solution": "जठराचे मांसपेशी अस्वच्छेदी आहेत कारण ते पाचनामुळे जाणीवपूर्वक नियंत्रणाबाहेर कार्य करतात. बाइसिप्स, ट्रायसिप्स आणि पायाचे मांसपेशी सर्वसाधारण मांसपेशी आहेत जे जाणीवपूर्वक नियंत्रणाखाली असतात. अस्वच्छेदी मांसपेशी अंतर्गत अवयवांमध्ये असतात आणि स्वतःच चालतात.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the original meaning, and uses appropriate medical terminology commonly found in Marathi textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Refers to voluntary muscles in the arm",
+        "Refers to voluntary muscles in the arm",
+        null,
+        "Refers to voluntary muscles in the legs"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 2 (Stomach muscles), as they are involuntary. The other options are all skeletal muscles, which are voluntary. The author's reasoning aligns with standard biology knowledge.",
+      "sources": [
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 91,
+          "pageStart": 91,
+          "pageEnd": 92,
+          "headingPath": [
+            "12. The Muscular System and Digestive System in Human Beings"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 92,
+          "pageStart": 92,
+          "pageEnd": 93,
+          "headingPath": [
+            "12. The Muscular System and Digestive System in Human Beings"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 93,
+          "pageStart": 93,
+          "pageEnd": 94,
+          "headingPath": [
+            "12. The Muscular System and Digestive System in Human Beings"
+          ]
+        }
+      ],
+      "edition": "First Edition 2017",
+      "generatedAt": "2026-10-31T17:12:01.807Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "If a person's large intestine is not absorbing water properly, what would be the most likely effect on their health?",
+      "choices": [
+        "Diarrhea",
+        "Constipation",
+        "Acidity",
+        "Jaundice"
+      ],
+      "answerIndex": 0,
+      "solution": "The large intestine is responsible for absorbing water from digested food. If it does not absorb water properly, the stool remains loose and watery, leading to diarrhea. Constipation occurs when too much water is absorbed, acidity is related to the stomach's digestive process, and jaundice is caused by issues with the liver. Therefore, the correct answer is diarrhea.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक व्यक्ति के बड़ी आंत जल के अवशोषण को सही तरह से नहीं कर रही है, तो उनके स्वास्थ्य पर सबसे संभावित प्रभाव क्या होगा?",
+          "choices": [
+            "दस्त",
+            "आंत के बंद होने की समस्या",
+            "एसिडिटी",
+            "जैंडिस"
+          ],
+          "solution": "बड़ी आंत अपचे भोजन से जल के अवशोषण के लिए जिम्मेदार होती है। यदि यह सही तरह से जल के अवशोषण नहीं करती है, तो बर्तन नम और पानी वाला रहता है, जिसके कारण दस्त होता है। आंत के बंद होने की समस्या तब होती है जब ज्यादा जल के अवशोषण होता है, एसिडिटी पेट के पाचन प्रक्रिया से संबंधित होती है, और जैंडिस यकृत की समस्या के कारण होती है। इसलिए, सही उत्तर दस्त है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate terminology as found in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर एखाद्या व्यक्तीच्या मोठ्या आतड्यांनी पाणी योग्यरित्या शोषून घेतले नाही, तर त्यांच्या आरोग्यावर सर्वात जास्त परिणाम काय असेल?",
+          "choices": [
+            "डायरिया",
+            "कोलेस्टेरॉल",
+            "एसिडिटी",
+            "जैंडिस"
+          ],
+          "solution": "मोठ्या आतड्यांची जबाबदारी चालू खाद्यातून पाणी शोषून घेण्याची असते. जर ते पाणी योग्यरित्या शोषून घेत नसेल तर बर्याच वेळा खाद्यपदार्थ निर्जल राहतो आणि डायरियाची लक्षणे दिसू लागतात. कोलेस्टेरॉल होतो जेव्हा खूप पाणी शोषले जाते, एसिडिटी ही आतड्यांच्या पाचन प्रक्रियेशी संबंधित असते आणि जैंडिस हा लिव्हरच्या समस्यांमुळे होतो. म्हणूनच योग्य उत्तर डायरिया आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi medical terminology used.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Believes that poor water absorption leads to harder stool and difficulty passing it",
+        "Confuses constipation with water absorption issues",
+        "Chooses a condition related to the stomach or liver"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies that improper water absorption in the large intestine leads to loose stools and diarrhea. The reasoning for the other options is also sound, as constipation results from excessive water absorption, acidity is a stomach issue, and jaundice relates to the liver.",
+      "sources": [
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 94,
+          "pageStart": 94,
+          "pageEnd": 95,
+          "headingPath": [
+            "12. The Muscular System and Digestive System in Human Beings"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 95,
+          "pageStart": 95,
+          "pageEnd": 96,
+          "headingPath": [
+            "12. The Muscular System and Digestive System in Human Beings"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 96,
+          "pageStart": 96,
+          "pageEnd": 97,
+          "headingPath": [
+            "12. The Muscular System and Digestive System in Human Beings",
+            "t t t"
+          ]
+        }
+      ],
+      "edition": "First Edition 2017",
+      "generatedAt": "2026-10-31T17:12:01.807Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "If a person consumes a large amount of alcohol, which part of the digestive system is most affected?",
+      "choices": [
+        "Small intestine",
+        "Liver",
+        "Stomach",
+        "Pancreas"
+      ],
+      "answerIndex": 1,
+      "solution": "The liver is responsible for processing and detoxifying alcohol. Excessive alcohol consumption can damage the liver, leading to conditions like cirrhosis. The small intestine, stomach, and pancreas are not directly responsible for detoxifying alcohol. Therefore, the liver is the correct answer.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि कोई व्यक्ति बड़ी मात्रा में शराब का सेवन करता है, तो पाचन तंत्र का कौन-सा भाग सबसे अधिक प्रभावित होता है?",
+          "choices": [
+            "छोटी आंत",
+            "यकृत",
+            "आमाशय",
+            "अग्नाशय"
+          ],
+          "solution": "यकृत शराब के प्रसंस्करण और डिटॉक्सीकरण के लिए जिम्मेदार होता है। अत्यधिक शराब के सेवन से यकृत क्षतिग्रस्त हो सकता है, जिसके कारण सरकोसिस जैसी स्थिति हो सकती है। छोटी आंत, आमाशय और अग्नाशय शराब के डिटॉक्सीकरण के लिए सीधे जिम्मेदार नहीं होते हैं। इसलिए, यकृत सही उत्तर है।",
+          "imageAlt": null,
+          "critique": "All terms are standard Hindi medical terms used in textbooks. The translation is accurate and maintains the original meaning and structure.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर एखादा व्यक्ती जास्त प्रमाणात अल्कोहॉल घेत असेल, तर अंतर्गत पचन संस्थेचा कोणता भाग सर्वाधिक प्रभावित होतो?",
+          "choices": [
+            "लहान आतडे",
+            "यकृत",
+            "जठर",
+            "अग्न्याशय"
+          ],
+          "solution": "यकृत अल्कोहॉलचे प्रक्रिया करण्यास आणि विषारी घटकांचे निर्मूलन करण्यास जबाबदार आहे. जास्त प्रमाणात अल्कोहॉल घेणे यकृतला नुकसान पोहोचू शकते, ज्यामुळे सर्क्योसिस अशा अवस्था उद्भवू शकतात. लहान आतडे, जठर आणि अग्न्याशय अल्कोहॉलचे निर्मूलन करण्यासाठी सीधा जबाबदार नाहीत. म्हणूनच यकृत हे बरोबर उत्तर आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi medical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the function of the small intestine with the liver.",
+        null,
+        "Does not understand the role of the liver in processing alcohol.",
+        "Confuses the function of the stomach with the liver."
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct and aligns with the key. The liver is indeed the primary organ responsible for processing and detoxifying alcohol. The other options represent common misconceptions about the roles of the small intestine, stomach, and pancreas in alcohol metabolism.",
+      "sources": [
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 94,
+          "pageStart": 94,
+          "pageEnd": 95,
+          "headingPath": [
+            "12. The Muscular System and Digestive System in Human Beings"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 95,
+          "pageStart": 95,
+          "pageEnd": 96,
+          "headingPath": [
+            "12. The Muscular System and Digestive System in Human Beings"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 96,
+          "pageStart": 96,
+          "pageEnd": 97,
+          "headingPath": [
+            "12. The Muscular System and Digestive System in Human Beings",
+            "t t t"
+          ]
+        }
+      ],
+      "edition": "First Edition 2017",
+      "generatedAt": "2026-10-31T17:12:01.807Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Why are muscles important for maintaining the structure of the body?",
+      "choices": [
+        "They provide energy",
+        "They allow for involuntary movement",
+        "They give the body shape and posture",
+        "They help in the absorption of food"
+      ],
+      "answerIndex": 2,
+      "solution": "Muscles give the body shape and posture by maintaining its structure through contraction and support. While muscles do contribute to movement and energy, and the digestive system is responsible for absorbing food, the primary role in maintaining body structure is directly linked to shape and posture.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "शरीर की संरचना बनाए रखने के लिए मांसपेशियां क्यों महत्वपूर्ण हैं?",
+          "choices": [
+            "वे ऊर्जा प्रदान करती हैं",
+            "वे अस्वच्छेद्य गति की अनुमति देती हैं",
+            "वे शरीर के आकार और स्थिति देती हैं",
+            "वे भोजन के अवशोषण में सहायता करती हैं"
+          ],
+          "solution": "मांसपेशियां संकुचन और समर्थन के माध्यम से शरीर की संरचना के बरकरार रखकर शरीर के आकार और स्थिति प्रदान करती हैं। यद्यपि मांसपेशियां गति और ऊर्जा में योगदान करती हैं, और पाचन तंत्र भोजन के अवशोषण के लिए जिम्मेदार होता है, शरीर की संरचना बनाए रखने की मुख्य भूमिका सीधे आकार और स्थिति से जुड़ी होती है।",
+          "imageAlt": null,
+          "critique": "Translation accurately reflects the original meaning with appropriate Hindi terminology. The correct answer remains option (2) and all distractors remain incorrect.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "शारीरिक संरचना बनविण्यासाठी मांसपेशी का महत्वाच्या आहेत?",
+          "choices": [
+            "त्या ऊर्जा पुरवतात",
+            "त्या अस्वच्छंद गतीसाठी अनुमती देतात",
+            "त्या शरीराला आकृती आणि स्थिती देतात",
+            "त्या खाद्याच्या अवशोषणामध्ये मदत करतात"
+          ],
+          "solution": "मांसपेशी आकृती आणि स्थिती बनविण्यासाठी आवश्यक असलेल्या संरचनेच्या समर्थनासाठी आणि खिंचण्यामुळे शरीराला आकृती देतात. मांसपेशी गती आणि ऊर्जेसाठी योगदान देतात, आणि पाचन तंत्र खाद्याच्या अवशोषणासाठी जबाबदार आहे, परंतु शरीराच्या संरचनेच्या जोडीने आकृती आणि स्थिती बनविण्याचा प्राथमिक भाग लक्षात घेणे आवश्यक आहे.",
+          "imageAlt": null,
+          "critique": "The Marathi translation accurately reflects the English original in meaning, structure, and terminology. The correct answer remains in the same position, and all distractors are still incorrect. Technical terms like 'आकृती' (shape) and 'स्थिती' (posture) are appropriate for a Marathi-medium textbook.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Students may confuse muscles with energy sources, thinking they produce energy instead of enabling movement",
+        "students confuse voluntary and involuntary muscle functions",
+        null,
+        "Describes the function of the digestive system"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies that the question asks about the role of muscles in maintaining body structure, and option 2 directly addresses this. The other options are either incorrect or describe functions of other systems.",
+      "sources": [
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 91,
+          "pageStart": 91,
+          "pageEnd": 92,
+          "headingPath": [
+            "12. The Muscular System and Digestive System in Human Beings"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 92,
+          "pageStart": 92,
+          "pageEnd": 93,
+          "headingPath": [
+            "12. The Muscular System and Digestive System in Human Beings"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 93,
+          "pageStart": 93,
+          "pageEnd": 94,
+          "headingPath": [
+            "12. The Muscular System and Digestive System in Human Beings"
+          ]
+        }
+      ],
+      "edition": "First Edition 2017",
+      "generatedAt": "2026-10-31T17:12:01.807Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Why are cardiac muscles considered involuntary?",
+      "choices": [
+        "They contract quickly",
+        "They are controlled by the brain",
+        "They do not tire easily",
+        "They are controlled by the autonomic nervous system"
+      ],
+      "answerIndex": 3,
+      "solution": "Cardiac muscles are considered involuntary because they are controlled by the autonomic nervous system, which operates without conscious effort. The other options describe features like speed, fatigue, or brain control, which do not define involuntary action.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "कार्डियक मांसपेशियाँ अस्वच्छेद्य कहलाती क्यों हैं?",
+          "choices": [
+            "वे तेजी से सिकुड़ती हैं",
+            "उन्हें मस्तिष्क द्वारा नियंत्रित किया जाता है",
+            "वे थकान कम लेती हैं",
+            "उन्हें ऑटोनॉमिक तंत्रिका तंत्र द्वारा नियंत्रित किया जाता है"
+          ],
+          "solution": "कार्डियक मांसपेशियाँ अस्वच्छेद्य कहलाती हैं क्योंकि उन्हें ऑटोनॉमिक तंत्रिका तंत्र द्वारा नियंत्रित किया जाता है, जो जागरूक प्रयास के बिना कार्य करता है। अन्य विकल्प गति, थकान या मस्तिष्क नियंत्रण के लक्षणों का वर्णन करते हैं, जो अस्वच्छेद्य क्रिया को परिभाषित नहीं करते।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriate for Hindi-medium curriculum.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "कार्डियक मांसपेशी अस्वच्छेष्य मानल्या जातात का?",
+          "choices": [
+            "त्या जलद आकुंचित होतात",
+            "त्या मेंदूने नियंत्रित केल्या जातात",
+            "त्या थकू नयेल एवढ्या सहजतेने",
+            "त्या स्वायत्त तंत्रिका प्रणालीने नियंत्रित केल्या जातात"
+          ],
+          "solution": "कार्डियक मांसपेशी अस्वच्छेष्य मानल्या जातात कारण त्या स्वायत्त तंत्रिका प्रणालीने नियंत्रित केल्या जातात, जी जाणीवपूर्वक प्रयत्नाशिवाय कार्य करते. इतर विकल्पांमध्ये वेग, थकू नयेल एवढ्या सहजतेने किंवा मेंदूने नियंत्रित केल्याचा विशेष वर्णन आहे, जो अस्वच्छेष्य क्रिया वर्णन करत नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for biological concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Describes skeletal muscle characteristics",
+        "Incorrectly assumes voluntary control",
+        "Chooses a characteristic of skeletal muscles",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 3, as cardiac muscles are indeed controlled by the autonomic nervous system and not by conscious control, making them involuntary. The author's reasoning is sound and aligns with scientific understanding.",
+      "sources": [
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 94,
+          "pageStart": 94,
+          "pageEnd": 95,
+          "headingPath": [
+            "12. The Muscular System and Digestive System in Human Beings"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 95,
+          "pageStart": 95,
+          "pageEnd": 96,
+          "headingPath": [
+            "12. The Muscular System and Digestive System in Human Beings"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 96,
+          "pageStart": 96,
+          "pageEnd": 97,
+          "headingPath": [
+            "12. The Muscular System and Digestive System in Human Beings",
+            "t t t"
+          ]
+        }
+      ],
+      "edition": "First Edition 2017",
+      "generatedAt": "2026-10-31T17:12:01.807Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
     }
   ]
 }

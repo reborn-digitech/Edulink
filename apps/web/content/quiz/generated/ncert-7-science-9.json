@@ -1472,6 +1472,4144 @@
       "generatedAt": "2026-11-02T06:24:01.689Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "Which of the following is a life process essential for the survival of living beings?",
+      "choices": [
+        "Nutrition",
+        "Sleeping",
+        "Playing",
+        "Dancing"
+      ],
+      "answerIndex": 0,
+      "solution": "Nutrition is a life process essential for survival because it involves taking in and using food for energy and growth. Sleeping, playing, and dancing are not essential life processes as they do not directly support the basic functions needed for survival.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सी जीवन प्रक्रिया जीवों के जीवित रहने के लिए आवश्यक है?",
+          "choices": [
+            "पोषण",
+            "नींद लेना",
+            "खेलना",
+            "नाचना"
+          ],
+          "solution": "पोषण जीवन प्रक्रिया है जो जीवित रहने के लिए आवश्यक है क्योंकि यह ऊर्जा और वृद्धि के लिए भोजन लेने और इसका उपयोग करने में सहायता करता है। नींद लेना, खेलना और नाचना जीवन प्रक्रियाएं नहीं हैं क्योंकि ये जीवित रहने के लिए आवश्यक मूल कार्यों के सीधे समर्थन में नहीं आते।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Hindi terminology from textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते जीवनाचे प्रक्रिया जीवनासाठी आवश्यक आहे?",
+          "choices": [
+            "पोषण",
+            "शयन",
+            "खेळणे",
+            "नाचणे"
+          ],
+          "solution": "पोषण ही जीवनासाठी आवश्यक जीवन प्रक्रिया आहे कारण ती ऊर्जा आणि वाढीसाठी खाद्य पदार्थ घेण्याच्या आणि वापरण्याच्या प्रक्रियेशी संबंधित आहे. शयन, खेळणे आणि नाचणे ही जीवनासाठी आवश्यक जीवन प्रक्रिया नाहीत कारण त्यांनी जीवनासाठी आवश्यक असलेल्या मूलभूत कार्यांना सीधा समर्थन करत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for biological concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses daily activities with life processes",
+        "Confuses a state with a process",
+        "Confuses a behavior with a process"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-constructed and the solution is sound. 'Nutrition' is indeed a fundamental life process, while the other options are not. The distractors reflect common misconceptions about what constitutes a life process.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu109.pdf",
+          "ordinal": 13,
+          "pageStart": 14,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 9: Life Processes in Animals",
+            "9.2 Respiration in Animals",
+            "9.2.2 Do other animals breathe the same way as",
+            "In a Nutshell"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu109.pdf",
+          "ordinal": 14,
+          "pageStart": 15,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 9: Life Processes in Animals",
+            "9.2 Respiration in Animals",
+            "9.2.2 Do other animals breathe the same way as",
+            "Let Us Enhance Our Learning"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu109.pdf",
+          "ordinal": 15,
+          "pageStart": 16,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 9: Life Processes in Animals",
+            "9.2 Respiration in Animals",
+            "9.2.2 Do other animals breathe the same way as",
+            "Exploratory Projects"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-31T22:35:06.171Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is the process called when grass-eating animals like cows partially chew food, swallow it, and then regurgitate it for further chewing?",
+      "choices": [
+        "Swallowing",
+        "Digestion",
+        "Rumination",
+        "Regurgitation"
+      ],
+      "answerIndex": 2,
+      "solution": "The process described is called rumination, where animals like cows regurgitate and re-chew their food. Swallowing is just the act of taking food into the stomach. Digestion refers to the breakdown of food in the stomach. Regeneration is the ability to regrow lost body parts, which is not mentioned here.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "घास खाने वाले जानवरों जैसे गायों में आंशिक रूप से भोजन कुचलने, उसे निगलने और फिर से कुचलने के लिए फिर से उलटने की प्रक्रिया क्या कहलाती है?",
+          "choices": [
+            "निगलना",
+            "पाचन",
+            "अग्निमंथन",
+            "उलटना"
+          ],
+          "solution": "वर्णित प्रक्रिया को अग्निमंथन कहते हैं, जिसमें गाय जैसे जानवर भोजन को उलटते हैं और फिर से कुचलते हैं। निगलना केवल भोजन के पेट में ले जाने की क्रिया है। पाचन भोजन के पेट में टूटने के अर्थ में आता है। पुनर्जनन नष्ट हुए शरीर के हिस्सों को फिर से बढ़ाने की क्षमता है, जो यहां उल्लेख नहीं किया गया है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English question and solution, with appropriate terminology used in a Hindi-medium biology context.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "गाय आणि इतर घास खाणारे प्राणी अर्धवट खाल्लेले खाद्य पाणी घेऊन जाऊन त्याची पुन्हा चावणे वाटून देण्याच्या प्रक्रियेला काय म्हणतात?",
+          "choices": [
+            "पोटात घेणे",
+            "पचन",
+            "रूमिनेशन",
+            "पुन्हा पोटात घेणे"
+          ],
+          "solution": "वर्णन केलेली प्रक्रिया रूमिनेशन म्हणतात, जेथे गाय आणि इतर प्राणी आपले खाद्य पुन्हा चावून देतात. पोटात घेणे हे खाद्य पोटात घेण्याचे कार्य आहे. पचन हे पोटात खाद्याच्या विघटनाचे नाव आहे. पुन्हा निर्माण हे नष्ट झालेल्या शरीराच्या भागांच्या पुनर्निर्माणाची क्षमता आहे, जे येथे उल्लेखिले जात नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "confuses the process of taking food into the stomach",
+        "refers to the general breakdown of food in the stomach",
+        null,
+        "Confuses the process of bringing food back up with the actual term for the chewing process"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-constructed and the correct answer is clearly 2 (Rumination). The author's explanation and reasoning for the distractors are accurate and reflect common student misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu109.pdf",
+          "ordinal": 6,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 9: Life Processes in Animals",
+            "9.1 Nutrition in Animals",
+            "9.1.2 Do all animals digest food the same way as",
+            "humans do?"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu109.pdf",
+          "ordinal": 7,
+          "pageStart": 8,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 9: Life Processes in Animals",
+            "9.2 Respiration in Animals"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu109.pdf",
+          "ordinal": 8,
+          "pageStart": 9,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 9: Life Processes in Animals",
+            "9.2 Respiration in Animals",
+            "9.2.1 Respiration in humans"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu109.pdf",
+          "ordinal": 9,
+          "pageStart": 9,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 9: Life Processes in Animals",
+            "9.2 Respiration in Animals",
+            "9.2.1 Respiration in humans"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-31T22:35:06.171Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which part of the digestive system is responsible for partially digesting proteins?",
+      "choices": [
+        "Stomach",
+        "Small intestine",
+        "Liver",
+        "Pancreas"
+      ],
+      "answerIndex": 0,
+      "solution": "The stomach contains acids and enzymes that begin the breakdown of proteins. The small intestine, liver, and pancreas are involved in other stages of digestion but do not primarily digest proteins. The stomach is the correct answer because it is the primary site where protein digestion starts.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "पाचन तंत्र का कौन-सा भाग प्रोटीन के आंशिक अपचयन के लिए उत्तरदायी है?",
+          "choices": [
+            "आमाशय",
+            "छोटी आंत",
+            "यकृत",
+            "अग्नाशय"
+          ],
+          "solution": "आमाशय में अम्ल और एंजाइम होते हैं जो प्रोटीन के अपघटन की शुरुआत करते हैं। छोटी आंत, यकृत और अग्नाशय पाचन के अन्य चरणों में शामिल हैं लेकिन प्रोटीन के मुख्य अपचयन में भाग नहीं लेते। आमाशय प्रोटीन के अपचयन की शुरुआत के लिए मुख्य स्थान है।",
+          "imageAlt": null,
+          "critique": "All terms are standard Hindi medical terminology used in textbooks. The translation is accurate and maintains the original meaning and structure.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "पाचक प्रणालीच्या कोणत्या भागाची जबाबदारी प्रोटीनच्या अंशतः पाचनाची असते?",
+          "choices": [
+            "आतडे",
+            "लहान आतडे",
+            "यकृत",
+            "अग्न्याशय"
+          ],
+          "solution": "आतड्यात अम्ल आणि एन्झाइम असतात जे प्रोटीनच्या बायोडेग्रेशनला सुरुवात करतात. लहान आतडे, यकृत आणि अग्न्याशय हे पाचनाच्या इतर टप्प्यांमध्ये सहभागी असतात परंतु प्रोटीनचे पाचन प्राथमिकपणे करत नाहीत. आतडे हे प्रोटीनच्या पाचनाच्या सुरुवातीचे मुख्य स्थान असल्यामुळे ते योग्य उत्तर आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for anatomical parts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses the role of the small intestine, which is mainly for absorption",
+        "Misunderstands the function of the liver, which produces bile",
+        "Misconceives the role of the pancreas, which is to neutralise acids and break down nutrients"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly identifies the stomach as the site of partial protein digestion, and the reasons for the other options align with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu109.pdf",
+          "ordinal": 3,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 9: Life Processes in Animals",
+            "9.1 Nutrition in Animals",
+            "9.1.1 Digestion in human beings"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu109.pdf",
+          "ordinal": 4,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 9: Life Processes in Animals",
+            "9.1 Nutrition in Animals",
+            "9.1.1 Digestion in human beings"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu109.pdf",
+          "ordinal": 5,
+          "pageStart": 7,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 9: Life Processes in Animals",
+            "9.1 Nutrition in Animals",
+            "9.1.1 Digestion in human beings",
+            "Large intestine"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-31T22:35:06.171Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the function of mucus in the stomach?",
+      "choices": [
+        "To break down proteins",
+        "To neutralise acid",
+        "To protect the stomach lining",
+        "To absorb nutrients"
+      ],
+      "answerIndex": 2,
+      "solution": "Mucus in the stomach forms a protective layer that prevents the acidic environment from damaging the stomach lining. While digestive enzymes break down proteins and the small intestine absorbs nutrients, mucus specifically serves a protective role. The acid is neutralized by other mechanisms, not by mucus.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "मार्ग के आमाशय में गाढ़ा क्या कार्य करता है?",
+          "choices": [
+            "प्रोटीन को अलग करना",
+            "एसिड को उदासीन करना",
+            "आमाशय की आंतरिक सतह की रक्षा करना",
+            "पोषक तत्वों का अवशोषण करना"
+          ],
+          "solution": "आमाशय में गाढ़ा एक सुरक्षात्मक परत बनाता है जो अम्लीय वातावरण के क्षति से आमाशय की आंतरिक सतह की रक्षा करता है। जबकि पाचन एंजाइम प्रोटीन को अलग करते हैं और छोटी आंत पोषक तत्वों का अवशोषण करती है, गाढ़ा विशेष रूप से सुरक्षात्मक भूमिका निभाता है। अम्ल को अन्य यांत्रिकी द्वारा उदासीन किया जाता है, गाढ़ा द्वारा नहीं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriate for Hindi-medium curriculum, and the correct answer remains option 2.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "आतड्यातील घाण चाचणीचे कार्य काय आहे?",
+          "choices": [
+            "प्रोटीन विघटित करणे",
+            "अम्ल उदासीन करणे",
+            "आतड्याच्या आतल्या भिंतीची रक्षण करणे",
+            "पोषक घटक शोषून घेणे"
+          ],
+          "solution": "आतड्यातील घाण एका रक्षक परत बनवते जे आम्लयुक्त वातावरणामुळे आतड्याच्या आतल्या भिंतीचे नुकसान होऊ देत नाही. पाचक एन्झाइम प्रोटीन विघटित करतात आणि लहान आतड्यात पोषक घटक शोषून घेतात, परंतु घाण विशेषतः रक्षक भूमिका बजावते. अम्ल घाण द्वारे उदासीन केले जात नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for biological concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the role of digestive juice in breaking down proteins",
+        "Misunderstands the role of bile in neutralising acid",
+        null,
+        "Misconceives the function of the small intestine in nutrient absorption"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly identifies that mucus protects the stomach lining from acid, and the reasons for the wrong options align with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu109.pdf",
+          "ordinal": 3,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 9: Life Processes in Animals",
+            "9.1 Nutrition in Animals",
+            "9.1.1 Digestion in human beings"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu109.pdf",
+          "ordinal": 4,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 9: Life Processes in Animals",
+            "9.1 Nutrition in Animals",
+            "9.1.1 Digestion in human beings"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu109.pdf",
+          "ordinal": 5,
+          "pageStart": 7,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 9: Life Processes in Animals",
+            "9.1 Nutrition in Animals",
+            "9.1.1 Digestion in human beings",
+            "Large intestine"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-31T22:35:06.171Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "What happens to starchy food like chapati when it is chewed for a long time in the mouth?",
+      "choices": [
+        "It becomes bitter",
+        "It becomes sweet",
+        "It turns blue-black",
+        "It loses its texture"
+      ],
+      "answerIndex": 1,
+      "solution": "When starchy food like chapati is chewed for a long time, it becomes sweet because the enzyme in saliva breaks down starch into simpler sugars. This chemical change alters the taste, making it sweet. The other options do not accurately describe the chemical reaction that occurs during chewing.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "चपाती जैसे स्टार्च वाले भोजन के मुंह में लंबे समय तक चबाने पर क्या होता है?",
+          "choices": [
+            "यह खट्टा हो जाता है",
+            "यह मीठा हो जाता है",
+            "यह नीला-काला हो जाता है",
+            "यह अपनी बनावट खो देता है"
+          ],
+          "solution": "चपाती जैसे स्टार्च वाले भोजन के मुंह में लंबे समय तक चबाने पर यह मीठा हो जाता है क्योंकि लार में एंजाइम स्टार्च को सरल शर्करा में तोड़ देता है। यह रासायनिक परिवर्तन स्वाद में परिवर्तन ला देता है, जिससे यह मीठा हो जाता है। अन्य विकल्प चबाने के दौरान होने वाले रासायनिक अभिक्रिया का सही वर्णन नहीं करते हैं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains the original meaning, and uses appropriate Hindi scientific terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "चपाती सारख्या स्टार्चयुक्त खाद्यपदार्थाचे मुखात लांब वेळ चावल्यानंतर काय होते?",
+          "choices": [
+            "ते तीखट होते",
+            "ते मीठ बनते",
+            "ते नील-काळे होते",
+            "ते त्याची ताकद गमावते"
+          ],
+          "solution": "चपाती सारख्या स्टार्चयुक्त खाद्यपदार्थाचे मुखात लांब वेळ चावल्यानंतर ते मीठ बनते, कारण लाळेतील एन्झाईम स्टार्चला सोप्या साखरांमध्ये विघटित करतात. हा रासायनिक बदल छानसा बदलतो, ज्यामुळे ते मीठ बनते. इतर पर्याय चावण्यादरम्यान होणाऱ्या रासायनिक अभिक्रियेचे योग्य वर्णन करत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the scientific meaning. 'मीठ' (sweet) is the correct Marathi term for 'sweet' in this context, and 'तीखट' (bitter) is correctly used for 'bitter'. The technical terms like 'एन्झाईम' (enzyme) and 'रासायनिक बदल' (chemical change) are appropriate for a Marathi-medium science curriculum.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the effect of saliva on starch",
+        null,
+        "Confuses starch test with iodine reaction",
+        "Incorrectly assumes the effect of starch on iodine test results, which is not the focus of the question, but the question is about taste changes in the mouth, not the iodine test results."
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct. Saliva contains amylase, which breaks down starch into simpler sugars, causing the food to taste sweet. The other options reflect common misconceptions about starch digestion and testing.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu109.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 9: Life Processes in Animals"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu109.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 9: Life Processes in Animals",
+            "9.1 Nutrition in Animals",
+            "9.1.1 Digestion in human beings"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu109.pdf",
+          "ordinal": 2,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 9: Life Processes in Animals",
+            "9.1 Nutrition in Animals",
+            "9.1.1 Digestion in human beings"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-31T22:35:06.171Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "What is the main difference between breathing and respiration?",
+      "choices": [
+        "Breathing is a physical process, respiration is chemical",
+        "Breathing brings in oxygen, respiration uses oxygen",
+        "Breathing involves the lungs, respiration involves the heart",
+        "Breathing is external, respiration is internal"
+      ],
+      "answerIndex": 0,
+      "solution": "Breathing is a physical process where air is inhaled and exhaled, while respiration is a chemical process that occurs inside the body where oxygen is used to break down food and release energy. The other options are partially true but do not capture the fundamental difference between the two processes.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "श्वास और श्वसन में मुख्य अंतर क्या है?",
+          "choices": [
+            "श्वास एक भौतिक प्रक्रिया है, श्वसन रासायनिक है",
+            "श्वास ऑक्सीजन लाता है, श्वसन ऑक्सीजन का उपयोग करता है",
+            "श्वास फेफड़ों के साथ होता है, श्वसन हृदय के साथ होता है",
+            "श्वास बाहरी है, श्वसन आंतरिक है"
+          ],
+          "solution": "श्वास एक भौतिक प्रक्रिया है जहां हवा को अंदर लाया जाता है और बाहर निकाला जाता है, जबकि श्वसन शरीर के अंदर एक रासायनिक प्रक्रिया है जहां ऑक्सीजन का उपयोग भोजन के विघटन और ऊर्जा के उत्पादन में किया जाता है। अन्य विकल्प आंशिक रूप से सही हैं लेकिन दोनों प्रक्रियाओं के बीच मूल अंतर को नहीं दर्शाते हैं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains original meaning, and uses standard Hindi terminology from textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "श्वास आणि श्वसन यामध्ये मुख्य फरक काय आहे?",
+          "choices": [
+            "श्वास भौतिक प्रक्रिया आहे, श्वसन रासायनिक आहे",
+            "श्वास ऑक्सीजन घेतो, श्वसन ऑक्सीजन वापरतो",
+            "श्वास फुफ्फुसांसह जुडलेला असतो, श्वसन हृदयासह जुडलेला असतो",
+            "श्वास बाह्य आहे, श्वसन आंतरिक आहे"
+          ],
+          "solution": "श्वास भौतिक प्रक्रिया आहे जेथे हवा श्वास घेतली जाते आणि बाहेर काढली जाते, जेथे श्वसन शरीराच्या आत ऑक्सीजन वापरून खाद्य पदार्थ विघटित करून ऊर्जा सोडली जाते. इतर विकल्प आंशिकपणे खरे असतात परंतु दोन प्रक्रियांमध्ये मूलभूत फरक ओळखत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for biological processes.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "mixes up the definitions of the two processes",
+        "focuses on the function of oxygen but not the process type",
+        "confuses the organs involved in each process"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 0, as breathing is indeed a physical process involving the exchange of gases, while respiration is a chemical process involving the breakdown of food for energy. The other options contain partial truths but fail to capture the fundamental distinction.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu109.pdf",
+          "ordinal": 10,
+          "pageStart": 11,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 9: Life Processes in Animals",
+            "9.2 Respiration in Animals",
+            "9.2.1 Respiration in humans"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu109.pdf",
+          "ordinal": 11,
+          "pageStart": 12,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 9: Life Processes in Animals",
+            "9.2 Respiration in Animals",
+            "9.2.1 Respiration in humans"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu109.pdf",
+          "ordinal": 12,
+          "pageStart": 13,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 9: Life Processes in Animals",
+            "9.2 Respiration in Animals",
+            "9.2.2 Do other animals breathe the same way as",
+            "humans do?"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-31T22:35:06.171Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "Which of the following best describes the process of respiration in the body?",
+      "choices": [
+        "It is the process of taking in oxygen and releasing carbon dioxide",
+        "It is the process of breaking down food to release energy",
+        "It is the process of transporting oxygen through the circulatory system",
+        "It is the process of exchanging gases in the alveoli"
+      ],
+      "answerIndex": 1,
+      "solution": "Respiration is the process of breaking down food to release energy, which occurs at the cellular level. While taking in oxygen and releasing carbon dioxide is part of the process, it is more accurately described as breathing. Transporting oxygen and gas exchange in the alveoli are parts of the respiratory system but not the full definition of respiration. The core of respiration is the chemical reaction that releases energy from food.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा शरीर में श्वसन की प्रक्रिया का सबसे अच्छा वर्णन करता है?",
+          "choices": [
+            "यह ऑक्सीजन लेने और कार्बन डाइऑक्साइड छोड़ने की प्रक्रिया है",
+            "यह ऊर्जा के रूप में ऊर्जा छोड़ने के लिए भोजन के विघटन की प्रक्रिया है",
+            "यह परिसंचरण प्रणाली में ऑक्सीजन के परिवहन की प्रक्रिया है",
+            "यह एल्विओली में गैसों के आदान-प्रदान की प्रक्रिया है"
+          ],
+          "solution": "श्वसन ऊर्जा के रूप में ऊर्जा छोड़ने के लिए भोजन के विघटन की प्रक्रिया है, जो कोशिका स्तर पर होती है। ऑक्सीजन लेना और कार्बन डाइऑक्साइड छोड़ना प्रक्रिया का हिस्सा है, लेकिन इसे अधिक सटीक रूप से श्वास लेना कहा जाता है। ऑक्सीजन के परिवहन और एल्विओली में गैसों के आदान-प्रदान श्वसन प्रणाली के हिस्से हैं लेकिन श्वसन की पूरी परिभाषा नहीं हैं। श्वसन की केंद्रीय प्रक्रिया भोजन से ऊर्जा के रूप में ऊर्जा छोड़ने वाली रासायनिक अभिक्रिया है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology consistent with standard biology textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते शरीरातील श्वसनाच्या प्रक्रियेचे उत्तम वर्णन करते?",
+          "choices": [
+            "हे ऑक्सिजन घेणे आणि कार्बन डायऑक्साइड बाहेर काढण्याची प्रक्रिया आहे",
+            "हे ऊर्जा मुक्त करण्यासाठी खाद्य पदार्थ तोडण्याची प्रक्रिया आहे",
+            "हे परिसंचरण प्रणालीमार्फत ऑक्सिजन परिवहनाची प्रक्रिया आहे",
+            "हे अल्विओलीमध्ये वायूंच्या विनिमयाची प्रक्रिया आहे"
+          ],
+          "solution": "श्वसन ही ऊर्जा मुक्त करण्यासाठी खाद्य पदार्थ तोडण्याची प्रक्रिया आहे, जी कोशिकास्तरावर घडते. ऑक्सिजन घेणे आणि कार्बन डायऑक्साइड बाहेर काढणे ही प्रक्रियेचा एक भाग आहे, परंतु ती अधिक शुद्धपणे श्वासोच्छ्वास असे वर्णन केले जाते. ऑक्सिजन परिवहन आणि अल्विओलीमध्ये वायूंचा विनिमय ही श्वसन प्रणालीच्या भागांची नोंद आहेत परंतु श्वसनाचे पूर्ण वर्णन नाहीत. श्वसनाचा मुख्य भाग ऊर्जा खाद्य पदार्थापासून मुक्त करणारी रासायनिक प्रतिक्रिया आहे.",
+          "imageAlt": null,
+          "critique": "The translation accurately reflects the original English content with appropriate Marathi terminology for biological processes.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "confuses breathing with respiration",
+        null,
+        "thinks respiration is about transporting oxygen",
+        "thinks respiration is about gas exchange in the alveoli"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 1, as respiration refers to the cellular process of breaking down food to release energy. The other options describe aspects of breathing or gas exchange, not the core definition of respiration.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu109.pdf",
+          "ordinal": 10,
+          "pageStart": 11,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 9: Life Processes in Animals",
+            "9.2 Respiration in Animals",
+            "9.2.1 Respiration in humans"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu109.pdf",
+          "ordinal": 11,
+          "pageStart": 12,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 9: Life Processes in Animals",
+            "9.2 Respiration in Animals",
+            "9.2.1 Respiration in humans"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu109.pdf",
+          "ordinal": 12,
+          "pageStart": 13,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 9: Life Processes in Animals",
+            "9.2 Respiration in Animals",
+            "9.2.2 Do other animals breathe the same way as",
+            "humans do?"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-31T22:35:06.171Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "If a person has celiac disease, what is the most likely effect on their small intestine?",
+      "choices": [
+        "It becomes longer",
+        "It absorbs more nutrients",
+        "It is damaged and cannot absorb properly",
+        "It produces more mucus"
+      ],
+      "answerIndex": 2,
+      "solution": "Celiac disease causes the immune system to attack the lining of the small intestine when gluten is consumed, leading to damage that impairs nutrient absorption. The other options are incorrect because the small intestine does not become longer, absorb more nutrients, or produce more mucus as a result of the condition.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि किसी व्यक्ति को सीलिएक रोग होता है, तो उनकी छोटी आंत पर सबसे अधिक संभावित प्रभाव क्या होगा?",
+          "choices": [
+            "यह लंबी हो जाती है",
+            "यह अधिक पोषक तत्व अवशोषित करती है",
+            "यह क्षतिग्रस्त हो जाती है और सही तरीके से अवशोषित नहीं कर सकती",
+            "यह अधिक म्यूसस उत्पन्न करती है"
+          ],
+          "solution": "सीलिएक रोग में पाचन तंत्र के लिए ग्लूटेन एक विषाक्त पदार्थ होता है, जिसके कारण प्रतिरक्षा प्रणाली छोटी आंत के आवरण पर हमला करती है, जिसके परिणामस्वरूप क्षति होती है जो पोषक तत्वों के अवशोषण को बाधित करती है। अन्य विकल्प गलत हैं क्योंकि छोटी आंत लंबी नहीं हो जाती, पोषक तत्वों का अधिक अवशोषण नहीं करती है और इस अवस्था के कारण म्यूसस का अधिक उत्पादन नहीं होता है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriately translated, and the correct answer remains option 2.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Misunderstands the effect of celiac disease on the length of the intestine",
+        "Confuses the role of the small intestine in nutrient absorption",
+        null,
+        "Misconceives the role of mucus, which is produced by the stomach, not the small intestine"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is well-constructed, with a clear and accurate explanation of celiac disease. The correct answer is supported by the passage, and the distractors reflect common misconceptions about the disease.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu109.pdf",
+          "ordinal": 3,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 9: Life Processes in Animals",
+            "9.1 Nutrition in Animals",
+            "9.1.1 Digestion in human beings"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu109.pdf",
+          "ordinal": 4,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 9: Life Processes in Animals",
+            "9.1 Nutrition in Animals",
+            "9.1.1 Digestion in human beings"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu109.pdf",
+          "ordinal": 5,
+          "pageStart": 7,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 9: Life Processes in Animals",
+            "9.1 Nutrition in Animals",
+            "9.1.1 Digestion in human beings",
+            "Large intestine"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-31T22:35:06.171Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "Which of the following best explains why birds have a gizzard in their digestive system?",
+      "choices": [
+        "To store food",
+        "To absorb nutrients",
+        "To grind food",
+        "To produce enzymes"
+      ],
+      "answerIndex": 2,
+      "solution": "Birds have a gizzard that helps grind food, often with the help of swallowed grit. Birds do not have teeth, so the gizzard functions as a mechanical digestive organ. Storing food is the role of the stomach, and enzymes are produced by the pancreas and other organs.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा विवरण पक्षियों के पाचन तंत्र में एक गज़िया (gizzard) होने के कारण के लिए सबसे अच्छा स्पष्टीकरण प्रस्तुत करता है?",
+          "choices": [
+            "खाद्य को संग्रहित करना",
+            "पोषक तत्वों को अवशोषित करना",
+            "खाद्य को चूर्ण करना",
+            "एंजाइम उत्पादित करना"
+          ],
+          "solution": "पक्षी गज़िया के साथ खाद्य को चूर्ण करते हैं, जिसके साथ अक्सर गिरीट (कच्चा बजरा) के साथ मदद मिलती है। पक्षियों के दांत नहीं होते, इसलिए गज़िया एक यांत्रिक पाचन अंग के रूप में कार्य करता है। खाद्य को संग्रहित करना पेट का कार्य होता है, और एंजाइम पैंक्रियास और अन्य अंगों द्वारा उत्पादित किए जाते हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English content with appropriate biological terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते शक्यतो बकरींच्या पचन प्रणालीमध्ये एक गजिया असल्याचे कारण सांगते?",
+          "choices": [
+            "खाद्य जमा करणे",
+            "पोषक घटक शोषून घेणे",
+            "खाद्य चिरून घेणे",
+            "एन्झाइम तयार करणे"
+          ],
+          "solution": "बकरींमध्ये गजिया खाद्य चिरून घेण्यास मदत करते, जे अक्सर घेतलेल्या रेतीच्या मदतीने होते. बकरींमध्ये दात नसतात, म्हणून गजिया एक यांत्रिक पचन अंग म्हणून काम करते. खाद्य जमा करणे हा आतड्याचा विशिष्ट कार्य आहे, आणि एन्झाइम पॅन्क्रियास आणि इतर अंगांद्वारे तयार केले जातात.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the original meaning, and uses appropriate terminology common in Marathi science textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "refers to the function of the stomach",
+        "refers to the role of the small intestine",
+        null,
+        "Believes the gizzard is responsible for enzyme production like the pancreas"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies the gizzard's role in grinding food, and the reasons for the wrong options align with common misconceptions about digestive system functions.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu109.pdf",
+          "ordinal": 6,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 9: Life Processes in Animals",
+            "9.1 Nutrition in Animals",
+            "9.1.2 Do all animals digest food the same way as",
+            "humans do?"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu109.pdf",
+          "ordinal": 7,
+          "pageStart": 8,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 9: Life Processes in Animals",
+            "9.2 Respiration in Animals"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu109.pdf",
+          "ordinal": 8,
+          "pageStart": 9,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 9: Life Processes in Animals",
+            "9.2 Respiration in Animals",
+            "9.2.1 Respiration in humans"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu109.pdf",
+          "ordinal": 9,
+          "pageStart": 9,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 9: Life Processes in Animals",
+            "9.2 Respiration in Animals",
+            "9.2.1 Respiration in humans"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-31T22:35:06.171Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Why is the process of respiration considered a chemical process?",
+      "choices": [
+        "Because it involves the movement of air in and out of the lungs",
+        "Because it requires energy to break down food",
+        "Because it involves the breakdown of glucose to release energy",
+        "Because it takes place in the alveoli of the lungs"
+      ],
+      "answerIndex": 2,
+      "solution": "Respiration is considered a chemical process because it involves the breakdown of glucose in the presence of oxygen to release energy, which is a chemical reaction. The other options describe physical movements, energy requirements, or locations, but do not explain the chemical changes that define the process.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "रेस्पिरेशन की प्रक्रिया को रासायनिक प्रक्रिया क्यों माना जाता है?",
+          "choices": [
+            "क्योंकि यह फेफड़ों में हवा के आवागमन के कारण होता है",
+            "क्योंकि भोजन के टूटने के लिए ऊर्जा की आवश्यकता होती है",
+            "क्योंकि यह ग्लूकोज के टूटने और ऊर्जा के उत्पादन के कारण होता है",
+            "क्योंकि यह फेफड़ों के एल्विओली में होता है"
+          ],
+          "solution": "रेस्पिरेशन को एक रासायनिक प्रक्रिया माना जाता है क्योंकि यह ऑक्सीजन की उपस्थिति में ग्लूकोज के टूटने और ऊर्जा के उत्पादन के कारण होता है, जो एक रासायनिक अभिक्रिया है। अन्य विकल्प भौतिक गतियों, ऊर्जा की आवश्यकता या स्थान के बारे में बताते हैं, लेकिन प्रक्रिया को परिभाषित करने वाले रासायनिक परिवर्तन के बारे में नहीं बताते।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriately translated, and the correct answer remains in the same position.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "रेसिपरेशनची प्रक्रिया रासायनिक प्रक्रिया मानली जाते कारण काय?",
+          "choices": [
+            "कारण ती फुफ्फुसात वायूच्या आवाजाच्या गतीमध्ये समाविष्ट असते",
+            "कारण खाद्य पदार्थ तोडण्यासाठी ऊर्जा आवश्यक असते",
+            "कारण ऊर्जा सोडण्यासाठी ग्लूकोजच्या विघटनामध्ये समाविष्ट असते",
+            "कारण ती फुफ्फुसाच्या एल्विओलीमध्ये होते"
+          ],
+          "solution": "रेसिपरेशन रासायनिक प्रक्रिया मानली जाते कारण ऑक्सीजनच्या उपस्थितीत ग्लूकोजच्या विघटनामध्ये ऊर्जा सोडली जाते, ही रासायनिक अभिक्रिया आहे. इतर विकल्प भौतिक गती, ऊर्जा आवश्यकता किंवा स्थान वर्णन करतात, परंतु प्रक्रियेच्या रासायनिक बदलांचे वर्णन करत नाहीत.",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriate for Marathi-medium curriculum.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "thinks respiration is a physical process because it involves air movement",
+        "confuses the role of energy in respiration with the process itself",
+        null,
+        "thinks respiration is a structural process that happens in the alveoli"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 2 because respiration involves chemical reactions that break down glucose to release energy. The other options describe physical or structural aspects rather than the chemical nature of the process.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu109.pdf",
+          "ordinal": 10,
+          "pageStart": 11,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 9: Life Processes in Animals",
+            "9.2 Respiration in Animals",
+            "9.2.1 Respiration in humans"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu109.pdf",
+          "ordinal": 11,
+          "pageStart": 12,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 9: Life Processes in Animals",
+            "9.2 Respiration in Animals",
+            "9.2.1 Respiration in humans"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu109.pdf",
+          "ordinal": 12,
+          "pageStart": 13,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 9: Life Processes in Animals",
+            "9.2 Respiration in Animals",
+            "9.2.2 Do other animals breathe the same way as",
+            "humans do?"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-31T22:35:06.171Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the main function of saliva in the digestive process?",
+      "choices": [
+        "To absorb nutrients",
+        "To break down starch into sugar",
+        "To store food temporarily",
+        "To produce energy"
+      ],
+      "answerIndex": 1,
+      "solution": "The main function of saliva in the digestive process is to break down starch into sugar. Saliva contains enzymes that start the chemical breakdown of carbohydrates, which is why starchy foods can taste sweeter as they are chewed. Absorbing nutrients, storing food, and producing energy are not functions of saliva.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "पाचन प्रक्रिया में लार का मुख्य कार्य क्या है?",
+          "choices": [
+            "पोषक तत्वों का अवशोषण करना",
+            "स्टार्च को शर्करा में तोड़ना",
+            "भोजन को अस्थायी रूप से संग्रहित करना",
+            "ऊर्जा का उत्पादन करना"
+          ],
+          "solution": "पाचन प्रक्रिया में लार का मुख्य कार्य स्टार्च को शर्करा में तोड़ना है। लार में एंजाइम होते हैं जो कार्बोहाइड्रेट के रासायनिक विघटन की शुरुआत करते हैं, इसलिए जब आटा वाले भोजन को चबाया जाता है तो वे मीठे लगने लगते हैं। पोषक तत्वों का अवशोषण, भोजन का संग्रहण और ऊर्जा का उत्पादन लार के कार्य नहीं हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. All options are correctly translated, and the correct answer remains option (2) in the same position. The distractors remain incorrect, and the technical terms used are consistent with standard Hindi science textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "विघटन प्रक्रियेत लाळेचे मुख्य कार्य काय आहे?",
+          "choices": [
+            "पोषक घटक शोषून घेणे",
+            "स्टार्चला शर्करेमध्ये तोडणे",
+            "खाद्य पाणी अस्थायीपणे ठेवणे",
+            "ऊर्जा तयार करणे"
+          ],
+          "solution": "विघटन प्रक्रियेत लाळेचे मुख्य कार्य स्टार्चला शर्करेमध्ये तोडणे आहे. लाळेत एन्झाइम असतात जे कार्बोहाइड्रेटच्या रासायनिक विघटनाला सुरुवात करतात, ज्यामुळे अन्न चावल्यानंतर त्याचा स्वाद खारट वाटू लागतो. पोषक घटक शोषून घेणे, खाद्य पाणी अस्थायीपणे ठेवणे आणि ऊर्जा तयार करणे हे लाळेचे कार्य नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for biological concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the role of saliva with absorption of nutrients",
+        null,
+        "Student thinks saliva's role is to hold food in the mouth before swallowing",
+        "Misunderstands the function of saliva as storing food or producing energy."
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 1, as saliva's main function is to break down starch into sugar via the enzyme amylase. The author's reasoning is sound and aligns with the scientific understanding of saliva's role in digestion.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu109.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 9: Life Processes in Animals"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu109.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 9: Life Processes in Animals",
+            "9.1 Nutrition in Animals",
+            "9.1.1 Digestion in human beings"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu109.pdf",
+          "ordinal": 2,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 9: Life Processes in Animals",
+            "9.1 Nutrition in Animals",
+            "9.1.1 Digestion in human beings"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T17:11:04.043Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which part of the digestive system absorbs most of the water from the undigested food?",
+      "choices": [
+        "Stomach",
+        "Small intestine",
+        "Large intestine",
+        "Oesophagus"
+      ],
+      "answerIndex": 2,
+      "solution": "The large intestine is responsible for absorbing most of the water from undigested food, as it processes the remaining material after nutrients have been absorbed. The small intestine mainly absorbs nutrients, not water. The stomach and oesophagus do not play a role in water absorption.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "पाचन तंत्र का कौन-सा भाग अपचीत भोजन से अधिकांश पानी के अवशोषण के लिए उत्तरदायी है?",
+          "choices": [
+            "आमाशय",
+            "छोटी आंत",
+            "बड़ी आंत",
+            "पेशी नली"
+          ],
+          "solution": "बड़ी आंत अपचीत भोजन से अधिकांश पानी के अवशोषण के लिए उत्तरदायी है, क्योंकि यह पोषक तत्वों के अवशोषण के बाद शेष सामग्री के प्रक्रमण के लिए उत्तरदायी है। छोटी आंत मुख्य रूप से पोषक तत्वों के अवशोषण के लिए होती है, पानी के नहीं। आमाशय और पेशी नली पानी के अवशोषण में कोई भूमिका नहीं निभाती है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, technical terms match standard Hindi medical terminology, and the logic of the solution aligns with the original.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "अपच्या खाद्यातील अधिकांश पाणी कोणत्या भागाने शोषून घेते?",
+          "choices": [
+            "आतडे",
+            "लहान आतडे",
+            "मोठे आतडे",
+            "हृदयाचे नल"
+          ],
+          "solution": "मोठे आतडे अपच्या खाद्यातील अधिकांश पाणी शोषून घेते, कारण ते पोषक घटक शोषून घेतल्यानंतर उरलेल्या सामग्रीचे प्रक्रमण करते. लहान आतडे मुख्यतः पोषक घटक शोषून घेते, पाणी नाही. आतडे आणि हृदयाचे नल पाणी शोषणात कोणतीही भूमिका बजावत नाही.",
+          "imageAlt": null,
+          "critique": "The Marathi translation accurately reflects the English question and solution, with appropriate terminology used for digestive system parts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "confuses the function of the stomach",
+        "thinks the small intestine absorbs water",
+        null,
+        "does not know the role of the oesophagus"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-constructed, with a clear correct answer and plausible distractors based on common misconceptions. The solution is accurate and aligns with the correct answer.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu109.pdf",
+          "ordinal": 13,
+          "pageStart": 14,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 9: Life Processes in Animals",
+            "9.2 Respiration in Animals",
+            "9.2.2 Do other animals breathe the same way as",
+            "In a Nutshell"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu109.pdf",
+          "ordinal": 14,
+          "pageStart": 15,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 9: Life Processes in Animals",
+            "9.2 Respiration in Animals",
+            "9.2.2 Do other animals breathe the same way as",
+            "Let Us Enhance Our Learning"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu109.pdf",
+          "ordinal": 15,
+          "pageStart": 16,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 9: Life Processes in Animals",
+            "9.2 Respiration in Animals",
+            "9.2.2 Do other animals breathe the same way as",
+            "Exploratory Projects"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T17:11:04.043Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which part of the alimentary canal is responsible for the partial digestion of food and the mixing of food with digestive secretions?",
+      "choices": [
+        "Stomach",
+        "Small intestine",
+        "Liver",
+        "Large intestine"
+      ],
+      "answerIndex": 0,
+      "solution": "The stomach is responsible for partially digesting food and mixing it with digestive secretions through the action of acids and enzymes. The small intestine is mainly for further digestion and nutrient absorption, the liver produces bile to aid in fat digestion, and the large intestine absorbs water. Therefore, the correct answer is the stomach.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "आहारनाल का कौन-सा भाग भोजन के आंशिक पाचन और पाचन रसों के साथ भोजन के मिश्रण के लिए उत्तरदायी है?",
+          "choices": [
+            "आमाशय",
+            "छोटी आंत",
+            "यकृत",
+            "बड़ी आंत"
+          ],
+          "solution": "आमाशय भोजन के आंशिक पाचन और पाचन रसों के साथ भोजन के मिश्रण के लिए उत्तरदायी है। छोटी आंत के मुख्य रूप से आगे के पाचन और पोषक तत्वों के अवशोषण के लिए होता है, यकृत वसा के पाचन में सहायता के लिए पित्त उत्पादित करता है, और बड़ी आंत जल के अवशोषण के लिए होती है। इसलिए सही उत्तर आमाशय है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, technical terms match standard Hindi medical terminology, and the question structure is preserved.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "आहारनालाचा कोणता भाग खाद्याच्या आंशिक पचनास आणि खाद्याला पाचक रसांसह मिसळण्यास जबाबदार आहे?",
+          "choices": [
+            "आतडा",
+            "लहान आतडा",
+            "यकृत",
+            "मोठा आतडा"
+          ],
+          "solution": "आतडा खाद्याच्या आंशिक पचनास आणि पाचक रसांसह खाद्याला मिसळण्यास जबाबदार आहे. लहान आतडा खाद्याच्या आंशिक पचनास आणि पोषक घटकांच्या अवशोषणास जबाबदार आहे. यकृत चरबीच्या पचनास मदत करणारा पित्त तयार करते. मोठा आतडा पाणी अवशोषित करतो. त्यामुळे योग्य उत्तर आतडा आहे.",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriately used in Marathi.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses the functions of the small intestine with the stomach",
+        "Misunderstands the role of the liver in digestion",
+        "Misinterprets the function of the large intestine"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-constructed, and the correct answer is clearly the stomach. The author's reasoning aligns with scientific understanding, and the distractors reflect common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu109.pdf",
+          "ordinal": 3,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 9: Life Processes in Animals",
+            "9.1 Nutrition in Animals",
+            "9.1.1 Digestion in human beings"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu109.pdf",
+          "ordinal": 4,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 9: Life Processes in Animals",
+            "9.1 Nutrition in Animals",
+            "9.1.1 Digestion in human beings"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu109.pdf",
+          "ordinal": 5,
+          "pageStart": 7,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 9: Life Processes in Animals",
+            "9.1 Nutrition in Animals",
+            "9.1.1 Digestion in human beings",
+            "Large intestine"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T17:11:04.043Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If a person eats a chapati and then chews it thoroughly, what would happen to the starch in the chapati?",
+      "choices": [
+        "It would be converted into sugar",
+        "It would be converted into protein",
+        "It would remain unchanged",
+        "It would be converted into fat"
+      ],
+      "answerIndex": 0,
+      "solution": "Saliva contains enzymes that begin breaking down starch into simpler sugars during chewing. This process converts the starch into sugar, making the first option correct. The other options are incorrect because starch is not converted into protein or fat, and it is not left unchanged during digestion.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि कोई व्यक्ति एक चावली खाता है और फिर इसे ठीक से कुचलता है, तो चावली में नमक के साथ क्या होगा?",
+          "choices": [
+            "इसे शर्करा में बदल दिया जाएगा",
+            "इसे प्रोटीन में बदल दिया जाएगा",
+            "इसका कोई बदलाव नहीं होगा",
+            "इसे वसा में बदल दिया जाएगा"
+          ],
+          "solution": "लार में एंजाइम होते हैं जो कुचलते समय स्टार्च के टूटने शुरू कर देते हैं। इस प्रक्रिया में स्टार्च शर्करा में बदल जाता है, जिससे पहला विकल्प सही हो जाता है। अन्य विकल्प गलत हैं क्योंकि स्टार्च प्रोटीन या वसा में नहीं बदलता है, और पाचन के दौरान इसका कोई बदलाव नहीं होता है।",
+          "imageAlt": null,
+          "critique": "Hindi translation accurately reflects the English question and solution, with appropriate terminology used for biological processes.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एखाद्या व्यक्तीने एका पावडरीचा खाऊन ती चांगल्या प्रकारे चावल्यास पावडरीमधील स्टार्चला काय होईल?",
+          "choices": [
+            "ते शर्करेमध्ये बदलेल",
+            "ते प्रोटीनमध्ये बदलेल",
+            "ते अपरिवर्तित राहील",
+            "ते तेलामध्ये बदलेल"
+          ],
+          "solution": "लाळेमध्ये एन्झाइम असतात जे चावण्यादरम्यान स्टार्चला सोप्या शर्करेमध्ये तोडतात. हा प्रक्रिया स्टार्चला शर्करेमध्ये बदलते, ज्यामुळे पहिला विकल्प बरोबर ठरतो. इतर विकल्प चुकीचे आहेत कारण स्टार्च प्रोटीन किंवा तेलामध्ये बदलत नाही आणि चावण्यादरम्यान ते अपरिवर्तित राहत नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the scientific terminology appropriate for a Marathi-medium curriculum.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "thinks starch is converted into protein",
+        "does not know the role of enzymes",
+        "thinks starch remains unchanged"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-constructed and the solution is accurate. The correct answer is 0, as saliva contains amylase which breaks starch into sugars. The distractors reflect common misconceptions about digestion.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu109.pdf",
+          "ordinal": 13,
+          "pageStart": 14,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 9: Life Processes in Animals",
+            "9.2 Respiration in Animals",
+            "9.2.2 Do other animals breathe the same way as",
+            "In a Nutshell"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu109.pdf",
+          "ordinal": 14,
+          "pageStart": 15,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 9: Life Processes in Animals",
+            "9.2 Respiration in Animals",
+            "9.2.2 Do other animals breathe the same way as",
+            "Let Us Enhance Our Learning"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu109.pdf",
+          "ordinal": 15,
+          "pageStart": 16,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 9: Life Processes in Animals",
+            "9.2 Respiration in Animals",
+            "9.2.2 Do other animals breathe the same way as",
+            "Exploratory Projects"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T17:11:04.043Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "After the small intestine, where does the semi-liquid mass of food go next?",
+      "choices": [
+        "Stomach",
+        "Liver",
+        "Large intestine",
+        "Pancreas"
+      ],
+      "answerIndex": 2,
+      "solution": "After the small intestine, the semi-liquid mass of food moves into the large intestine, where water and salts are absorbed, forming semi-solid waste. The stomach is involved in initial digestion, the liver produces bile, and the pancreas releases enzymes for digestion. These functions do not align with the next step after the small intestine. Therefore, the correct answer is the large intestine.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "छोटी आंत के बाद खाद्य के अर्धतरल द्रव्य कहाँ जाता है?",
+          "choices": [
+            "आमाशय",
+            "यकृत",
+            "बड़ी आंत",
+            "अग्नाशय"
+          ],
+          "solution": "छोटी आंत के बाद खाद्य के अर्धतरल द्रव्य बड़ी आंत में जाता है, जहाँ पानी और लवण अवशोषित हो जाते हैं, अर्धतरल अपशिष्ट बन जाता है। आमाशय प्रारंभिक पाचन में भाग लेता है, यकृत बिल्ली उत्पन्न करता है, और अग्नाशय पाचन के लिए एंजाइम छोड़ता है। इन कार्यों का छोटी आंत के बाद के अगले चरण के साथ मेल नहीं खाता। इसलिए सही उत्तर बड़ी आंत है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Hindi medical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "लहान आंतानंतर, अर्ध-तरल खाद्य पदार्थाचा द्रव्यमान कुठे जातो?",
+          "choices": [
+            "मार्गशीर्ष",
+            "यकृत",
+            "मोठा आंत",
+            "अग्न्याशय"
+          ],
+          "solution": "लहान आंतानंतर, अर्ध-तरल खाद्य पदार्थाचा द्रव्यमान मोठ्या आंतमध्ये जातो, जेथे पाणी आणि लवण शोषले जातात, अर्ध-ठोस कचरा तयार होतो. मार्गशीर्ष प्रारंभिक पाचनात सहभागी आहे, यकृत बाइल तयार करते आणि अग्न्याशय पाचनासाठी एन्झाइम विसर्जित करते. या कार्यांचा लहान आंतानंतरच्या अगल्या टप्प्याशी कोणताही संबंध नाही. म्हणून, योग्य उत्तर मोठा आंत आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Marathi medical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the stomach with the next part of the digestive system",
+        "Mistakenly identifies the liver as a part of the digestive tract that processes food",
+        null,
+        "Misunderstands the role of the pancreas in digestion"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct and aligns with the anatomical sequence of the digestive system. The large intestine is indeed the next part after the small intestine, where water and salts are absorbed.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu109.pdf",
+          "ordinal": 3,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 9: Life Processes in Animals",
+            "9.1 Nutrition in Animals",
+            "9.1.1 Digestion in human beings"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu109.pdf",
+          "ordinal": 4,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 9: Life Processes in Animals",
+            "9.1 Nutrition in Animals",
+            "9.1.1 Digestion in human beings"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu109.pdf",
+          "ordinal": 5,
+          "pageStart": 7,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 9: Life Processes in Animals",
+            "9.1 Nutrition in Animals",
+            "9.1.1 Digestion in human beings",
+            "Large intestine"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T17:11:04.043Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "What is the role of the mucus secreted in the stomach?",
+      "choices": [
+        "To break down proteins",
+        "To kill harmful bacteria",
+        "To protect the stomach lining from acid",
+        "To neutralise acids from the food"
+      ],
+      "answerIndex": 2,
+      "solution": "The mucus in the stomach protects the stomach lining from the acidic environment, which is essential for preventing damage. Breaking down proteins is the function of digestive enzymes, not mucus. Killing harmful bacteria is primarily done by stomach acid, and neutralising acids is the role of bicarbonate, not mucus.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "मार्ग के द्वारा स्रावित म्यूसस की भूमिका क्या है?",
+          "choices": [
+            "प्रोटीन के विघटन करना",
+            "हानिकारक बैक्टीरिया को मारना",
+            "मार्ग के आवरण को एसिड से सुरक्षित रखना",
+            "खाद्य पदार्थों से एसिड को उदासीन करना"
+          ],
+          "solution": "मार्ग में स्रावित म्यूसस मार्ग के आवरण को एसिडी वातावरण से सुरक्षित रखता है, जो क्षति से बचाने के लिए आवश्यक है। प्रोटीन के विघटन का कार्य पाचन एंजाइमों का होता है, म्यूसस का नहीं। हानिकारक बैक्टीरिया को मारना लगभग पूरी तरह से आमाशय अम्ल द्वारा किया जाता है, और एसिड को उदासीन करना बाइकार्बोनेट का कार्य होता है, म्यूसस का नहीं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "आमाशयात खालील कार्यासाठी निर्माण होणारा घाणरस काय काम करतो?",
+          "choices": [
+            "प्रोटीनचे विघटन करणे",
+            "हानिकारक जीवाणू मारणे",
+            "आमाशयाच्या आतल्या भिंतीला अम्लापासून बचाव करणे",
+            "खाद्यातील अम्लाचे उदासीनीकरण करणे"
+          ],
+          "solution": "आमाशयातील घाणरस आमाशयाच्या आतल्या भिंतीला अम्लीय वातावरणापासून बचाव करतो, जे नुकसान रोखण्यासाठी आवश्यक आहे. प्रोटीनचे विघटन हे पाचक एंजाइमचे कार्य आहे, न की घाणरसाचे. हानिकारक जीवाणू मारणे हे आमाशयाच्या अम्लाचे कार्य आहे, आणि अम्लाचे उदासीनीकरण हे बायकार्बोनेटचे कार्य आहे, न की घाणरसाचे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology consistent with textbook language.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the role of digestive juice with mucus.",
+        "Confuses the role of acid with mucus.",
+        null,
+        "Confuses the role of bile with mucus."
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 2, as mucus protects the stomach lining from acid. The author's reasoning aligns with standard biology knowledge, and the misconceptions described for the other options are plausible for students.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu109.pdf",
+          "ordinal": 3,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 9: Life Processes in Animals",
+            "9.1 Nutrition in Animals",
+            "9.1.1 Digestion in human beings"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu109.pdf",
+          "ordinal": 4,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 9: Life Processes in Animals",
+            "9.1 Nutrition in Animals",
+            "9.1.1 Digestion in human beings"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu109.pdf",
+          "ordinal": 5,
+          "pageStart": 7,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 9: Life Processes in Animals",
+            "9.1 Nutrition in Animals",
+            "9.1.1 Digestion in human beings",
+            "Large intestine"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T17:11:04.043Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "Which of the following is an example of a physical process that occurs during respiration?",
+      "choices": [
+        "Breaking down glucose to release energy",
+        "Exchanging oxygen and carbon dioxide in the lungs",
+        "Using oxygen to digest food",
+        "Producing waste products"
+      ],
+      "answerIndex": 1,
+      "solution": "Exchanging oxygen and carbon dioxide in the lungs is a physical process that occurs during breathing. Respiration includes both the physical process of breathing and the chemical process of breaking down glucose. The other options describe chemical processes or functions unrelated to the physical process of respiration.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सी श्वसन के दौरान होने वाली एक भौतिक प्रक्रिया का उदाहरण है?",
+          "choices": [
+            "ग्लूकोज के विघटन से ऊर्जा के मुक्त होना",
+            "फेफड़ों में ऑक्सीजन एवं कार्बन डाइऑक्साइड के विनिमय",
+            "भोजन के पाचन के लिए ऑक्सीजन का उपयोग करना",
+            "अपशिष्ट उत्पादों का उत्पादन करना"
+          ],
+          "solution": "फेफड़ों में ऑक्सीजन एवं कार्बन डाइऑक्साइड के विनिमय श्वास लेने की एक भौतिक प्रक्रिया है। श्वसन में श्वास लेने की भौतिक प्रक्रिया एवं ग्लूकोज के विघटन की रासायनिक प्रक्रिया दोनों शामिल हैं। अन्य विकल्प रासायनिक प्रक्रियाओं या श्वसन की भौतिक प्रक्रिया से संबंधित अन्य कार्यों का वर्णन करते हैं।",
+          "imageAlt": null,
+          "critique": "The translation accurately preserves the meaning, correct answer position, and scientific terminology. The solution correctly identifies option (2) as the physical process, and the distractors remain incorrect in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते श्वासोच्छ्वासादरम्यान होणारा भौतिक प्रक्रियेचे उदाहरण आहे?",
+          "choices": [
+            "ग्लूकोजचे विघटन करून ऊर्जा सोडणे",
+            "फुफ्फुसात ऑक्सीजन आणि कार्बन डायऑक्साइडचा विनिमय करणे",
+            "खाद्य पचनासाठी ऑक्सीजन वापरणे",
+            "अपवाद उत्पादने तयार करणे"
+          ],
+          "solution": "फुफ्फुसात ऑक्सीजन आणि कार्बन डायऑक्साइडचा विनिमय श्वासोच्छ्वासादरम्यान होणारी भौतिक प्रक्रिया आहे. श्वासोच्छ्वासात श्वास घेण्याची भौतिक प्रक्रिया आणि ग्लूकोजचे विघटन करून ऊर्जा सोडण्याची रासायनिक प्रक्रिया दोन्ही समाविष्ट आहेत. इतर विकल्प रासायनिक प्रक्रिया किंवा भौतिक प्रक्रियेशी संबंधित नसलेल्या कार्यांचे वर्णन करतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for biological processes.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Thinks the breakdown of glucose is a physical process",
+        null,
+        "Confuses the function of digestion with respiration",
+        "Thinks producing waste is part of the physical process of respiration"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 1, as exchanging oxygen and carbon dioxide in the lungs is a physical process. The other options describe chemical processes or unrelated functions. The author's reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu109.pdf",
+          "ordinal": 10,
+          "pageStart": 11,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 9: Life Processes in Animals",
+            "9.2 Respiration in Animals",
+            "9.2.1 Respiration in humans"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu109.pdf",
+          "ordinal": 11,
+          "pageStart": 12,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 9: Life Processes in Animals",
+            "9.2 Respiration in Animals",
+            "9.2.1 Respiration in humans"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu109.pdf",
+          "ordinal": 12,
+          "pageStart": 13,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 9: Life Processes in Animals",
+            "9.2 Respiration in Animals",
+            "9.2.2 Do other animals breathe the same way as",
+            "humans do?"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T17:11:04.043Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "If a student inhales air rich in carbon dioxide, what would happen to their breathing rate?",
+      "choices": [
+        "It would decrease",
+        "It would increase",
+        "It would remain the same",
+        "It would stop"
+      ],
+      "answerIndex": 1,
+      "solution": "When a student inhales air rich in carbon dioxide, the body detects the increased levels of CO2 in the blood, which triggers the respiratory center in the brain to increase the breathing rate. This helps expel the excess carbon dioxide and maintain proper gas exchange. The other options are incorrect because the body would not decrease, stop, or keep the same breathing rate in response to higher CO2 levels.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक छात्र कार्बन डाइऑक्साइड से समृद्ध हवा के साथ श्वास लेता है, तो उनकी श्वास दर पर क्या प्रभाव पड़ेगा?",
+          "choices": [
+            "यह कम हो जाएगी",
+            "यह बढ़ जाएगी",
+            "यह वही रहेगी",
+            "यह रुक जाएगी"
+          ],
+          "solution": "जब एक छात्र कार्बन डाइऑक्साइड से समृद्ध हवा के साथ श्वास लेता है, तो शरीर के रक्त में CO2 के स्तर में वृद्धि का पता लगाता है, जिसके कारण मस्तिष्क में श्वसन केंद्र श्वास दर बढ़ा देता है। इससे अतिरिक्त कार्बन डाइऑक्साइड के निष्कासन और सही गैस विनिमय के लिए मदद मिलती है। अन्य विकल्प गलत हैं क्योंकि शरीर कार्बन डाइऑक्साइड के उच्च स्तर पर श्वास दर कम नहीं करेगा, रुक नहीं जाएगी या वही रहेगी।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate terminology as found in Hindi-medium biology textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका विद्यार्थीने कार्बन डायऑक्साइडमध्ये समृद्ध हवा घेतल्यास त्यांच्या श्वासाच्या दरावर काय परिणाम होईल?",
+          "choices": [
+            "तो कमी होईल",
+            "तो वाढेल",
+            "तो बरोबर राहील",
+            "तो थांबेल"
+          ],
+          "solution": "जेव्हा एका विद्यार्थीने कार्बन डायऑक्साइडमध्ये समृद्ध हवा घेतली जाते, तेव्हा शरीराच्या रक्तातील CO2 च्या पातळीत वाढ होते, जी मेंदूमधील श्वास केंद्राला श्वासाच्या दराची वाढ करण्यास प्रेरित करते. हे अतिरिक्त कार्बन डायऑक्साइड बाहेर काढण्यास आणि योग्य गॅस विनिमय ठेवण्यास मदत करते. इतर विकल्प अयोग्य आहेत कारण शरीराला उच्च CO2 च्या पातळीवर प्रतिक्रिया म्हणून श्वासाचा दर कमी करणार नाही, थांबवणार नाही किंवा बरोबर राहणार नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the scientific terminology used in Marathi textbooks, and preserves the logical structure of the question and solution.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "thinks breathing rate decreases with more carbon dioxide",
+        null,
+        "does not understand the body's response to carbon dioxide",
+        "thinks breathing would stop"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies that increased CO2 levels trigger an increase in breathing rate to expel the excess CO2. The reasoning aligns with basic respiratory physiology.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu109.pdf",
+          "ordinal": 13,
+          "pageStart": 14,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 9: Life Processes in Animals",
+            "9.2 Respiration in Animals",
+            "9.2.2 Do other animals breathe the same way as",
+            "In a Nutshell"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu109.pdf",
+          "ordinal": 14,
+          "pageStart": 15,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 9: Life Processes in Animals",
+            "9.2 Respiration in Animals",
+            "9.2.2 Do other animals breathe the same way as",
+            "Let Us Enhance Our Learning"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu109.pdf",
+          "ordinal": 15,
+          "pageStart": 16,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 9: Life Processes in Animals",
+            "9.2 Respiration in Animals",
+            "9.2.2 Do other animals breathe the same way as",
+            "Exploratory Projects"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T17:11:04.043Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "A student is given a diagram of the digestive system and is asked to identify the organ that produces bile. Which organ is most likely to be the correct answer?",
+      "choices": [
+        "Stomach",
+        "Liver",
+        "Pancreas",
+        "Small intestine"
+      ],
+      "answerIndex": 1,
+      "solution": "The liver is responsible for producing bile, a substance that aids in the digestion of fats. The stomach produces acidic digestive juices, the pancreas releases enzymes for breaking down food, and the small intestine is mainly involved in nutrient absorption. Therefore, the correct answer is the liver.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक छात्र को पाचन तंत्र का एक चित्र दिया जाता है और उसे ऐसे अंग की पहचान करने के लिए कहा जाता है जो पित्त उत्पन्न करता है। सबसे संभावित सही उत्तर कौन सा अंग है?",
+          "choices": [
+            "आमाशय",
+            "यकृत",
+            "अग्नाशय",
+            "छोटी आंत"
+          ],
+          "solution": "यकृत पित्त उत्पन्न करता है, जो वसा के पाचन में सहायता करता है। आमाशय अम्लीय पाचन रस उत्पन्न करता है, अग्नाशय भोजन के विघटन के लिए एंजाइम छोड़ता है, और छोटी आंत मुख्य रूप से पोषक तत्वों के अवशोषण में लगी हुई है। इसलिए, सही उत्तर यकृत है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains original meaning, and uses standard Hindi medical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका विद्यार्थ्याला पाचक प्रणालीचा आकृती दिला जातो आणि त्याला त्या अंगाची ओळख करून देण्यास सांगितले जाते जे बायल तयार करते. कोणते अंग अधिक शक्यतो योग्य उत्तर असेल?",
+          "choices": [
+            "आतडे",
+            "यकृत",
+            "अग्न्याशय",
+            "लहान आंत"
+          ],
+          "solution": "यकृत वस्तूंच्या पचनास मदत करणारा बायल तयार करते. आतडे अम्लीय पाचक रस तयार करते, अग्न्याशय खाद्य पचविण्यासाठी एन्झाइम विसर्जित करते, आणि लहान आंत मुख्यतः पोषक घटक अवशोषित करते. म्हणून, योग्य उत्तर यकृत आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Marathi medical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the function of the stomach with that of the liver",
+        null,
+        "Mistakenly identifies the pancreas as the organ that produces bile",
+        "Misunderstands the role of the small intestine in digestion"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct and aligns with the correct answer. The liver is the organ that produces bile, and the reasoning for the other options is valid.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu109.pdf",
+          "ordinal": 3,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 9: Life Processes in Animals",
+            "9.1 Nutrition in Animals",
+            "9.1.1 Digestion in human beings"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu109.pdf",
+          "ordinal": 4,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 9: Life Processes in Animals",
+            "9.1 Nutrition in Animals",
+            "9.1.1 Digestion in human beings"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu109.pdf",
+          "ordinal": 5,
+          "pageStart": 7,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 9: Life Processes in Animals",
+            "9.1 Nutrition in Animals",
+            "9.1.1 Digestion in human beings",
+            "Large intestine"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T17:11:04.043Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Why is the diaphragm important in the process of breathing?",
+      "choices": [
+        "It filters the air",
+        "It produces sound",
+        "It helps in inhalation and exhalation",
+        "It absorbs oxygen"
+      ],
+      "answerIndex": 2,
+      "solution": "The diaphragm is a muscle that contracts and relaxes to change the volume of the thoracic cavity, which directly facilitates the movement of air into and out of the lungs during breathing. Filtering air is the role of the nasal passages and other structures in the respiratory system, not the diaphragm. Producing sound is the function of the vocal cords, and absorbing oxygen occurs in the alveoli, not the diaphragm.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "श्वसन की प्रक्रिया में डायफ्राम क्यों महत्वपूर्ण है?",
+          "choices": [
+            "यह हवा को छानता है",
+            "यह ध्वनि उत्पन्न करता है",
+            "यह श्वास लेने और छोड़ने में सहायता करता है",
+            "यह ऑक्सीजन को अवशोषित करता है"
+          ],
+          "solution": "डायफ्राम एक मांसपेशी है जो छाती के आयतन को बदलने के लिए संकुचित और आराम करती है, जो श्वसन के दौरान फेफड़ों में हवा के गति को सीधे सुगम बनाती है। हवा को छानना श्वसन प्रणाली के अन्य संरचनाओं जैसे नासिका गुहा का कार्य है, डायफ्राम का नहीं। ध्वनि उत्पन्न करना वाक्य डोरियों का कार्य है, और ऑक्सीजन का अवशोषण एल्वियोली में होता है, डायफ्राम में नहीं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate medical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "श्वासोच्छ्वासाच्या प्रक्रियेत डायफ्राम महत्वाचा का आहे?",
+          "choices": [
+            "तो हवा फिल्टर करतो",
+            "तो आवाज तयार करतो",
+            "तो श्वासोच्छ्वासामध्ये मदत करतो",
+            "तो ऑक्सीजन शोषतो"
+          ],
+          "solution": "डायफ्राम हा एक मांसपेशी आहे जो थोरॅकिक कॅव्हिटीच्या आयतनात बदल करतो, जो श्वासोच्छ्वासादरम्यान फुफ्फुसांमध्ये हवा जाण्याच्या आणि बाहेर पडण्याच्या गतीला थेट प्रोत्साहन देतो. हवा फिल्टर करणे हा श्वासनली आणि श्वास व्यवस्थेमधील इतर संरचनांचा भाग आहे, डायफ्रामचा नाही. आवाज तयार करणे हा आवाजाच्या ताणांचा कार्य आहे, आणि ऑक्सीजन शोषण हा एल्विओलाइ च्या कार्यामध्ये होते, डायफ्राममध्ये नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi medical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "confuses the function of the diaphragm with the nose",
+        "thinks the diaphragm produces sound",
+        null,
+        "does not know the role of the diaphragm in breathing"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies option 2 as the correct answer, explaining that the diaphragm's role is in inhalation and exhalation. The reasons for the other options align with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu109.pdf",
+          "ordinal": 13,
+          "pageStart": 14,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 9: Life Processes in Animals",
+            "9.2 Respiration in Animals",
+            "9.2.2 Do other animals breathe the same way as",
+            "In a Nutshell"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu109.pdf",
+          "ordinal": 14,
+          "pageStart": 15,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 9: Life Processes in Animals",
+            "9.2 Respiration in Animals",
+            "9.2.2 Do other animals breathe the same way as",
+            "Let Us Enhance Our Learning"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu109.pdf",
+          "ordinal": 15,
+          "pageStart": 16,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 9: Life Processes in Animals",
+            "9.2 Respiration in Animals",
+            "9.2.2 Do other animals breathe the same way as",
+            "Exploratory Projects"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T17:11:04.043Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "Which gas causes lime water to turn milky?",
+      "choices": [
+        "Oxygen",
+        "Nitrogen",
+        "Carbon dioxide",
+        "Hydrogen"
+      ],
+      "answerIndex": 2,
+      "solution": "Carbon dioxide causes lime water to turn milky because it reacts with calcium hydroxide in the water to form calcium carbonate, which is insoluble and creates a milky appearance. Oxygen, nitrogen, and hydrogen do not react with lime water in this way. None of the other gases produce the same chemical reaction that leads to the milky color change.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "कौन सी गैस चूने के पानी को दूधिया बना देती है?",
+          "choices": [
+            "ऑक्सीजन",
+            "नाइट्रोजन",
+            "कार्बन डाइऑक्साइड",
+            "हाइड्रोजन"
+          ],
+          "solution": "कार्बन डाइऑक्साइड चूने के पानी को दूधिया बना देती है क्योंकि यह पानी में कैल्शियम हाइड्रॉक्साइड के साथ अभिक्रिया करके कैल्शियम कार्बोनेट बनाती है, जो अविलेय होता है और दूधिया दिखाई देता है। ऑक्सीजन, नाइट्रोजन और हाइड्रोजन इस तरह से चूने के पानी के साथ अभिक्रिया नहीं करते हैं। अन्य किसी गैस द्वारा दूधिया रंग परिवर्तन के कारण ऐसी रासायनिक अभिक्रिया उत्पन्न नहीं होती।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English content, with appropriate scientific terminology used in a way that aligns with standard Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "कोणता वायू चूना पाणी दूधी बनवतो?",
+          "choices": [
+            "ऑक्सीजन",
+            "नायट्रोजन",
+            "कार्बन डायऑक्साइड",
+            "हायड्रोजन"
+          ],
+          "solution": "कार्बन डायऑक्साइड चूना पाणी दूधी बनवतो कारण तो पाण्यातील कॅल्शियम हायड्रॉक्साइडशी अभिक्रिया करून कॅल्शियम कार्बोनेट तयार करतो, जे अविलीन असून दूधी रंग तयार करते. ऑक्सीजन, नायट्रोजन आणि हायड्रोजन हे चूना पाण्याशी अशा प्रकारे अभिक्रिया करत नाहीत. इतर वायूंपैकी कोणाचीही अशी रासायनिक अभिक्रिया होत नाही जी दूधी रंग बदलाच्या निर्मितीला कारणीभूत होते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the scientific terminology used in Marathi textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the role of oxygen in the reaction",
+        "Ignores the chemical property of lime water",
+        null,
+        "Confuses the gas that reacts with lime water with a common flammable gas"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-constructed and the solution is accurate. The correct answer is clearly carbon dioxide, and the distractors are plausible misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu109.pdf",
+          "ordinal": 10,
+          "pageStart": 11,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 9: Life Processes in Animals",
+            "9.2 Respiration in Animals",
+            "9.2.1 Respiration in humans"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu109.pdf",
+          "ordinal": 11,
+          "pageStart": 12,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 9: Life Processes in Animals",
+            "9.2 Respiration in Animals",
+            "9.2.1 Respiration in humans"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu109.pdf",
+          "ordinal": 12,
+          "pageStart": 13,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 9: Life Processes in Animals",
+            "9.2 Respiration in Animals",
+            "9.2.2 Do other animals breathe the same way as",
+            "humans do?"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T03:12:55.139Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is the name of the chamber in the digestive system of birds that helps in breaking down food?",
+      "choices": [
+        "Gizzard",
+        "Stomach",
+        "Liver",
+        "Intestine"
+      ],
+      "answerIndex": 0,
+      "solution": "The gizzard is a specialized chamber in the digestive system of birds that grinds food using muscular contractions and small particles like grit. Unlike the stomach, liver, and intestine, the gizzard is specifically adapted for mechanical digestion. Therefore, the correct answer is gizzard.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "पक्षियों के पाचन तंत्र में भोजन के टूटने में सहायता करने वाले कक्ष का नाम क्या है?",
+          "choices": [
+            "जिज्जा",
+            "आमाशय",
+            "यकृत",
+            "आंत"
+          ],
+          "solution": "जिज्जा पक्षियों के पाचन तंत्र में एक विशेष कक्ष होता है जो मांसपेशी संकुचन और छोटे कणों जैसे बजरी के उपयोग से भोजन को चूरा करता है। आमाशय, यकृत और आंत के विपरीत, जिज्जा यांत्रिक पाचन के लिए विशेष रूप से अनुकूलित होता है। इसलिए सही उत्तर जिज्जा है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the same meaning, and uses standard Hindi terminology for biological terms.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "पक्ष्यांच्या पाचक प्रणालीमधील खोलीचे नाव काय आहे जी खाद्य पदार्थ विघटित करण्यामध्ये मदत करते?",
+          "choices": [
+            "गज्जर",
+            "आतडे",
+            "यकृत",
+            "पेशी"
+          ],
+          "solution": "गज्जर ही पक्ष्यांच्या पाचक प्रणालीमधील एक विशेषीकृत खोली आहे जी अंतःक्रिया आणि छोट्या कणांच्या मदतीने खाद्य पदार्थ विघटित करते. आतडे, यकृत आणि पेशी यांच्यापेक्षा गज्जर यांचा शारीरिक पाचनासाठी विशेष रूपाने अभ्यास केला गेला आहे. म्हणूनच, योग्य उत्तर गज्जर आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for biological structures.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Refers to the general term for the digestive organ.",
+        "Refers to the organ that produces bile for digestion.",
+        "Misidentifies the organ responsible for food breakdown in birds."
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-constructed and the correct answer is clearly supported by the explanation. The distractors represent common misconceptions about bird anatomy.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu109.pdf",
+          "ordinal": 6,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 9: Life Processes in Animals",
+            "9.1 Nutrition in Animals",
+            "9.1.2 Do all animals digest food the same way as",
+            "humans do?"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu109.pdf",
+          "ordinal": 7,
+          "pageStart": 8,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 9: Life Processes in Animals",
+            "9.2 Respiration in Animals"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu109.pdf",
+          "ordinal": 8,
+          "pageStart": 9,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 9: Life Processes in Animals",
+            "9.2 Respiration in Animals",
+            "9.2.1 Respiration in humans"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu109.pdf",
+          "ordinal": 9,
+          "pageStart": 9,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 9: Life Processes in Animals",
+            "9.2 Respiration in Animals",
+            "9.2.1 Respiration in humans"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T03:12:55.139Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the main purpose of chewing food in the mouth?",
+      "choices": [
+        "To increase the surface area of food",
+        "To absorb nutrients",
+        "To store food",
+        "To produce saliva"
+      ],
+      "answerIndex": 0,
+      "solution": "Chewing food in the mouth helps to break it down into smaller pieces, increasing the surface area for better digestion. This is part of mechanical digestion. The other options are incorrect because nutrient absorption happens mainly in the small intestine, food is not stored in the mouth, and saliva is secreted by glands, not produced by chewing.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "मुंह में भोजन के चबाने का मुख्य उद्देश्य क्या है?",
+          "choices": [
+            "भोजन के सतह क्षेत्र को बढ़ाना",
+            "पोषक तत्वों का अवशोषण करना",
+            "भोजन को संग्रहित करना",
+            "लार का उत्पादन करना"
+          ],
+          "solution": "मुंह में भोजन के चबाने से इसे छोटे टुकड़ों में तोड़ा जाता है, जिससे बेहतर पाचन के लिए सतह क्षेत्र बढ़ जाता है। यह यांत्रिक पाचन का हिस्सा है। अन्य विकल्प गलत हैं क्योंकि पोषक तत्वों का अवशोषण मुख्य रूप से छोटी आंत में होता है, भोजन को मुंह में संग्रहित नहीं किया जाता है, और लार ग्रंथियों द्वारा स्रावित की जाती है, न कि चबाने द्वारा।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate terminology common in Hindi-medium science textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "मुखात खाद्य पदार्थांचे काचणे हे मुख्य उद्देश काय आहे?",
+          "choices": [
+            "खाद्य पदार्थाचे पृष्ठभाग क्षेत्र वाढविणे",
+            "पोषक द्रव्ये अवशोषित करणे",
+            "खाद्य पदार्थ भंडारित करणे",
+            "लाळ उत्पन्न करणे"
+          ],
+          "solution": "मुखात खाद्य पदार्थांचे काचणे त्यांना लहान तुकड्यांमध्ये तुटू देण्यास मदत करते, जेणेकरून चांगल्या पचनासाठी पृष्ठभाग क्षेत्र वाढतो. हे शारीरिक पचनाचा भाग आहे. इतर विकल्प अयोग्य आहेत कारण पोषक द्रव्यांचा अवशोषण मुख्यतः लहान आंतड्यात होतो, खाद्य पदार्थ मुखात भंडारित केले जात नाहीत आणि लाळ ग्रंथींमार्फत खाजगी केली जाते, न की काचण्यामुळे उत्पन्न होते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for biological processes.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Thinks chewing is for nutrient absorption",
+        "Believes the mouth is a storage organ",
+        "Confuses the function of saliva with that of chewing"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 0, as chewing increases surface area for digestion. The other options reflect common misconceptions about digestion and saliva.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu109.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 9: Life Processes in Animals"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu109.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 9: Life Processes in Animals",
+            "9.1 Nutrition in Animals",
+            "9.1.1 Digestion in human beings"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu109.pdf",
+          "ordinal": 2,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 9: Life Processes in Animals",
+            "9.1 Nutrition in Animals",
+            "9.1.1 Digestion in human beings"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T03:12:55.139Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which part of the respiratory system is responsible for the exchange of gases?",
+      "choices": [
+        "Nostrils",
+        "Nasal passages",
+        "Windpipe",
+        "Alveoli"
+      ],
+      "answerIndex": 3,
+      "solution": "The alveoli are tiny air sacs in the lungs where the exchange of oxygen and carbon dioxide occurs. The other options are incorrect because nostrils and nasal passages are involved in filtering and warming air, and the windpipe is a passageway for air to the lungs.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "श्वसन प्रणाली का कौन-सा भाग गैसों के आदान-प्रदान के लिए उत्तरदायी है?",
+          "choices": [
+            "नासिका छिद्र",
+            "नासिका गुहा",
+            "श्वासनली",
+            "एल्वियोली"
+          ],
+          "solution": "एल्वियोली फेफड़ों में छोटे हवा के थैले होते हैं जहां ऑक्सीजन और कार्बन डाइऑक्साइड का आदान-प्रदान होता है। अन्य विकल्प गलत हैं क्योंकि नासिका छिद्र और नासिका गुहा हवा के छानने और गर्म करने में शामिल होते हैं और श्वासनली फेफड़ों तक हवा के लिए एक पासा होती है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English original in meaning, terminology, and structure. All options and the solution are correctly translated and maintain the same logical relationships.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "श्वसन प्रणालीच्या कोणत्या भागाची वायूंच्या विनिमयाची जबाबदारी असते?",
+          "choices": [
+            "नाकाचे छिद्र",
+            "नाकीय रस्ता",
+            "श्वासनाली",
+            "अल्विओली"
+          ],
+          "solution": "अल्विओली हे फुफ्फुसातील छोटे हवाचे बुड्डे असतात जेथे ऑक्सीजन आणि कार्बन डायऑक्साइडचा विनिमय होतो. इतर विकल्प चुकीचे आहेत कारण नाकाचे छिद्र आणि नाकीय रस्ता हवा शुद्ध करण्यासाठी आणि उबवण्यासाठी जबाबदार असतात आणि श्वासनाली हवा फुफ्फुसात जाण्याचा मार्ग असतो.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for biological structures.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "confuses the function of nostrils with gas exchange",
+        "confuses the function of nasal passages with gas exchange",
+        "confuses the function of windpipe with gas exchange",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": null,
+      "critique": "The solution is accurate and correctly identifies alveoli as the site of gas exchange. The reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu109.pdf",
+          "ordinal": 13,
+          "pageStart": 14,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 9: Life Processes in Animals",
+            "9.2 Respiration in Animals",
+            "9.2.2 Do other animals breathe the same way as",
+            "In a Nutshell"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu109.pdf",
+          "ordinal": 14,
+          "pageStart": 15,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 9: Life Processes in Animals",
+            "9.2 Respiration in Animals",
+            "9.2.2 Do other animals breathe the same way as",
+            "Let Us Enhance Our Learning"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu109.pdf",
+          "ordinal": 15,
+          "pageStart": 16,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 9: Life Processes in Animals",
+            "9.2 Respiration in Animals",
+            "9.2.2 Do other animals breathe the same way as",
+            "Exploratory Projects"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T03:12:55.139Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of the following is a characteristic of ruminants?",
+      "choices": [
+        "They have a gizzard for grinding food",
+        "They chew food thoroughly before swallowing",
+        "They do not have a stomach",
+        "They regurgitate and re-chew their food"
+      ],
+      "answerIndex": 3,
+      "solution": "Ruminants, like cows, chew their food partially and then swallow it. Later, they regurgitate the food and chew it again. This process is called rumination. The other options are incorrect because they describe birds (gizzard), humans (chew thoroughly), or are false (no stomach).",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा एक रूमिनेंट की विशेषता है?",
+          "choices": [
+            "उनके पास भोजन को चबाने के लिए एक गज़िया होता है",
+            "वे निगलने से पहले भोजन को ठीक से चबाते हैं",
+            "उनके पास पेट नहीं होता",
+            "वे अपने भोजन को वापस उलटते हैं और फिर से चबाते हैं"
+          ],
+          "solution": "रूमिनेंट, जैसे गाय, भोजन को आंशिक रूप से चबाती हैं और फिर निगल लेती हैं। बाद में, वे भोजन को वापस उलटती हैं और फिर से चबाती हैं। इस प्रक्रिया को रूमिनेशन कहते हैं। अन्य विकल्प गलत हैं क्योंकि वे पक्षियों (गज़िया) का वर्णन करते हैं, मनुष्यों (ठीक से चबाना) का वर्णन करते हैं, या गलत हैं (कोई पेट नहीं)।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, technical terms are appropriately translated, and the question structure matches the original.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते रूमिनंटचे लक्षण आहे?",
+          "choices": [
+            "त्यांना खाद्य चवीने घासण्यासाठी गज्जेची आवश्यकता असते",
+            "ते खाद्य निर्जीव करून घालतात",
+            "त्यांना पोट नसते",
+            "ते आपले खाद्य पुन्हा घासतात"
+          ],
+          "solution": "रूमिनंट, जसे की गाय, खाद्य आंशिकपणे चवीने घासतात आणि नंतर ते खाद्य पुन्हा घासतात. हा प्रक्रिया रूमिनेशन म्हणतात. इतर विकल्प चुकीचे आहेत कारण ते पक्ष्यांना (गज्जेची) व्यक्त करतात, माणसांना (खाद्य निर्जीव करून घालतात) किंवा खोटे (पोट नाही) व्यक्त करतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for biological concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses gizzard with ruminants",
+        "Thinks all animals chew thoroughly before swallowing",
+        "Incorrectly assumes ruminants lack a stomach",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 3, as ruminants regurgitate and re-chew their food. The other options are incorrect: gizzards are found in birds, not ruminants; all animals do not chew thoroughly before swallowing; and ruminants do have a complex stomach.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu109.pdf",
+          "ordinal": 6,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 9: Life Processes in Animals",
+            "9.1 Nutrition in Animals",
+            "9.1.2 Do all animals digest food the same way as",
+            "humans do?"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu109.pdf",
+          "ordinal": 7,
+          "pageStart": 8,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 9: Life Processes in Animals",
+            "9.2 Respiration in Animals"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu109.pdf",
+          "ordinal": 8,
+          "pageStart": 9,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 9: Life Processes in Animals",
+            "9.2 Respiration in Animals",
+            "9.2.1 Respiration in humans"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu109.pdf",
+          "ordinal": 9,
+          "pageStart": 9,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 9: Life Processes in Animals",
+            "9.2 Respiration in Animals",
+            "9.2.1 Respiration in humans"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T03:12:55.139Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If a person chews food for a longer time, what change would you expect in the iodine test result?",
+      "choices": [
+        "The colour change would be more intense",
+        "The colour change would be less intense",
+        "The colour would not change at all",
+        "The colour would change to red"
+      ],
+      "answerIndex": 1,
+      "solution": "When food is chewed for a longer time, more starch is broken down into sugar by the action of saliva. This means less starch remains to react with iodine, resulting in a less intense blue-black colour. Therefore, the correct answer is 'The colour change would be less intense'. The other options are incorrect because they either suggest a stronger reaction (which is not the case) or an entirely different colour change (which is not possible with iodine).",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि कोई व्यक्ति खाना अधिक समय तक चबाता है, तो आयोडीन परीक्षण के परिणाम में क्या परिवर्तन आप अपेक्षा करेंगे?",
+          "choices": [
+            "रंग परिवर्तन अधिक तीव्र होगा",
+            "रंग परिवर्तन कम तीव्र होगा",
+            "रंग बिल्कुल नहीं बदलेगा",
+            "रंग लाल हो जाएगा"
+          ],
+          "solution": "जब खाना अधिक समय तक चबाया जाता है, तो लार के कार्य द्वारा अधिक स्टार्च शर्करा में बदल जाता है। इसका अर्थ है कि आयोडीन के साथ अभिक्रिया के लिए कम स्टार्च बचता है, जिसके परिणामस्वरूप एक कम तीव्र नील-काला रंग बनता है। अतः सही उत्तर 'रंग परिवर्तन कम तीव्र होगा' है। अन्य विकल्प गलत हैं क्योंकि वे एक मजबूत प्रतिक्रिया का सुझाव देते हैं (जो इस मामले में नहीं है) या एक पूरी तरह से अलग रंग परिवर्तन का सुझाव देते हैं (जो आयोडीन के साथ संभव नहीं है)।",
+          "imageAlt": null,
+          "critique": "Translation accurately reflects the original meaning, technical terms are appropriate for Hindi-medium curriculum, and the correct answer remains in the same position.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर एखाद्या व्यक्तीने खाद्य पदार्थ लांब काळ चावला, तर आयोडीन परीक्षणाच्या निकालात कोणता बदल अपेक्षित असेल?",
+          "choices": [
+            "रंगाचा बदल अधिक तीव्र असेल",
+            "रंगाचा बदल कमी तीव्र असेल",
+            "रंग एकही बदलेल नाही",
+            "रंग लाल होईल"
+          ],
+          "solution": "जेव्हा खाद्य पदार्थ लांब काळ चावला जातो तेव्हा लाळेच्या क्रियेमुळे अधिक स्टार्च शर्करेमध्ये बदलतो. हा अर्थ असा की आयोडीनसह ऍक्ट करण्यासाठी कमी स्टार्च उरतो, ज्यामुळे ओलं गुलाबी रंग अधिक तीव्र नसतो. त्यामुळे योग्य उत्तर 'रंगाचा बदल कमी तीव्र असेल' आहे. इतर विकल्प चुकीचे आहेत कारण ते जास्त तीव्र प्रतिक्रिया सूचित करतात (जे नाहीये) किंवा आयोडीनसह एकूण वेगळा रंग बदल सूचित करतात (जे शक्य नाही).",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Thinks longer chewing increases starch content",
+        null,
+        "Believes the iodine reaction is unaffected by chewing",
+        "Assumes iodine changes colour to red in this context"
+      ],
+      "solverAnswers": [
+        0,
+        1,
+        1,
+        1,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly explains that longer chewing breaks down starch, reducing the iodine reaction. The reasoning aligns with the correct answer and the misconceptions listed for the distractors.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu109.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 9: Life Processes in Animals"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu109.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 9: Life Processes in Animals",
+            "9.1 Nutrition in Animals",
+            "9.1.1 Digestion in human beings"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu109.pdf",
+          "ordinal": 2,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 9: Life Processes in Animals",
+            "9.1 Nutrition in Animals",
+            "9.1.1 Digestion in human beings"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T03:12:55.139Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If a student adds iodine solution to a test tube containing chewed chapati, what would be the expected result?",
+      "choices": [
+        "It turns blue-black",
+        "It turns red",
+        "It turns purple",
+        "It remains colourless"
+      ],
+      "answerIndex": 0,
+      "solution": "Chewed chapati contains starch, which reacts with iodine to form a blue-black colour. Therefore, the correct result is that the solution turns blue-black. The other options are incorrect because red and purple are not the typical colours produced by starch and iodine, and the solution would not remain colourless.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक छात्र जिसमें चबाए गए चावल के एक परीक्षण नली में आयोडीन घोल मिलाता है, तो अपेक्षित परिणाम क्या होगा?",
+          "choices": [
+            "यह नीला-काला हो जाता है",
+            "यह लाल हो जाता है",
+            "यह बैंगनी हो जाता है",
+            "यह बिना रंग का रह जाता है"
+          ],
+          "solution": "चबाए गए चावल में स्टार्च होता है, जो आयोडीन के साथ अभिक्रिया करके नीला-काला रंग बनाता है। इसलिए, अपेक्षित परिणाम यह है कि घोल नीला-काला हो जाता है। अन्य विकल्प गलत हैं क्योंकि लाल और बैंगनी स्टार्च और आयोडीन द्वारा उत्पादित आम रंग नहीं हैं, और घोल बिना रंग का नहीं रह सकता।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English content with appropriate scientific terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका विद्यार्थीने चावलेल्या चावलाच्या ट्यूबमध्ये आयोडीन द्रावण मिसळते, तर अपेक्षित फलित असेल?",
+          "choices": [
+            "ते निळा-काळा होते",
+            "ते लाल होते",
+            "ते बैगनी होते",
+            "ते रंगहीन रहाते"
+          ],
+          "solution": "चावलेल्या चावलामध्ये स्टार्च असतो, जे आयोडीनसह एकत्रित होऊन निळा-काळा रंग बनवतो. त्यामुळे अपेक्षित फलित असे की द्रावण निळा-काळा होते. इतर विकल्प अयोग्य आहेत कारण लाल आणि बैगनी स्टार्च आणि आयोडीनमुळे तयार होणारा सामान्य रंग नाहीत आणि द्रावण रंगहीन रहाणार नाही.",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains the scientific terminology, and preserves the logic of the question and solution.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "incorrectly identifies the reaction of iodine with starch",
+        "incorrectly identifies the reaction of iodine with starch",
+        "incorrectly identifies the reaction of iodine with starch"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The question is accurate and the solution correctly identifies the starch-iodine reaction. The distractors are plausible misconceptions about the color change in this test.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu109.pdf",
+          "ordinal": 13,
+          "pageStart": 14,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 9: Life Processes in Animals",
+            "9.2 Respiration in Animals",
+            "9.2.2 Do other animals breathe the same way as",
+            "In a Nutshell"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu109.pdf",
+          "ordinal": 14,
+          "pageStart": 15,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 9: Life Processes in Animals",
+            "9.2 Respiration in Animals",
+            "9.2.2 Do other animals breathe the same way as",
+            "Let Us Enhance Our Learning"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu109.pdf",
+          "ordinal": 15,
+          "pageStart": 16,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 9: Life Processes in Animals",
+            "9.2 Respiration in Animals",
+            "9.2.2 Do other animals breathe the same way as",
+            "Exploratory Projects"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T03:12:55.139Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "Where does the absorption of nutrients mainly take place?",
+      "choices": [
+        "In the stomach",
+        "In the large intestine",
+        "In the small intestine",
+        "In the food pipe"
+      ],
+      "answerIndex": 2,
+      "solution": "The absorption of nutrients mainly takes place in the small intestine. The other options are incorrect because the stomach only partially digests food, the large intestine absorbs water, and the food pipe only transports food.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "पोषक तत्वों के अवशोषण का मुख्य स्थान क्या है?",
+          "choices": [
+            "आमाशय में",
+            "बड़ी आंत में",
+            "छोटी आंत में",
+            "भोजन नली में"
+          ],
+          "solution": "पोषक तत्वों का अवशोषण मुख्य रूप से छोटी आंत में होता है। अन्य विकल्प गलत हैं क्योंकि आमाशय भोजन का केवल आंशिक अपचयन करता है, बड़ी आंत जल का अवशोषण करती है, और भोजन नली केवल भोजन के परिवहन के लिए होती है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English content with appropriate terminology used in Indian school textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "पोषक घटकांचे अवशोषण मुख्यतः कुठे होते?",
+          "choices": [
+            "जठरात",
+            "मोठ्या आंत्रात",
+            "लहान आंत्रात",
+            "खाद्यनालीत"
+          ],
+          "solution": "पोषक घटकांचे अवशोषण मुख्यतः लहान आंत्रात होते. इतर विकल्प अयोग्य आहेत कारण जठर खाद्याचे अर्धवट पाचन करते, मोठ्या आंत्रात पाणी अवशोषले जाते आणि खाद्यनाली फक्त खाद्य वाहून नेते.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate terminology as found in Marathi-medium textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the function of the stomach with the small intestine",
+        "Misunderstands the role of the large intestine",
+        null,
+        "Confuses the food pipe with the site of nutrient absorption"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The solution is accurate and aligns with the correct answer. All distractors are based on common misconceptions about the digestive system.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu109.pdf",
+          "ordinal": 3,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 9: Life Processes in Animals",
+            "9.1 Nutrition in Animals",
+            "9.1.1 Digestion in human beings"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu109.pdf",
+          "ordinal": 4,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 9: Life Processes in Animals",
+            "9.1 Nutrition in Animals",
+            "9.1.1 Digestion in human beings"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu109.pdf",
+          "ordinal": 5,
+          "pageStart": 7,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 9: Life Processes in Animals",
+            "9.1 Nutrition in Animals",
+            "9.1.1 Digestion in human beings",
+            "Large intestine"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T03:12:55.139Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "How do birds break down their food?",
+      "choices": [
+        "Using their teeth",
+        "Using their gizzard",
+        "Using their liver",
+        "Using their pancreas"
+      ],
+      "answerIndex": 1,
+      "solution": "Birds do not have teeth, so they use a special chamber called the gizzard to break down food. The gizzard helps grind the food, often with the help of swallowed grit. The other options are not involved in the mechanical breakdown of food.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "पक्षियां अपना भोजन कैसे टूटा देते हैं?",
+          "choices": [
+            "अपने दांतों का उपयोग करके",
+            "अपने पेट के एक विशेष कक्ष का उपयोग करके",
+            "अपने यकृत का उपयोग करके",
+            "अपने अग्न्याशय का उपयोग करके"
+          ],
+          "solution": "पक्षियों के दांत नहीं होते, इसलिए वे भोजन के टूटने के लिए एक विशेष कक्ष जिसे पेट कहा जाता है, का उपयोग करते हैं। पेट भोजन को चूरा करता है, जिसके साथ अक्सर निगले गए बजरी की सहायता ली जाती है। अन्य विकल्प भोजन के यांत्रिक टूटने में शामिल नहीं होते।",
+          "imageAlt": null,
+          "critique": "Hindi translation accurately conveys the original meaning with appropriate biological terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "पक्ष्यांनी आपले खाद्य पाचन कसे करतात?",
+          "choices": [
+            "त्यांच्या दातांचा वापर करून",
+            "त्यांच्या पेशीचा वापर करून",
+            "त्यांच्या यकृताचा वापर करून",
+            "त्यांच्या अग्न्याशयाचा वापर करून"
+          ],
+          "solution": "पक्ष्यांमध्ये दात नसतात, म्हणून ते खाद्य पाचनासाठी एक विशिष्ट खोली जी गज्जर म्हणून ओळखली जाते, त्याचा वापर करतात. गज्जर खाद्याचे चिरडण्यास मदत करते, जे अक्सर घेतलेल्या रेतीच्या मदतीने होते. इतर विकल्प खाद्याच्या यांत्रिक पाचनात संलग्न नसतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the scientific terminology appropriate for Marathi-medium education.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Thinks birds use teeth like mammals",
+        null,
+        "confusing digestive organs with metabolic organs",
+        "Confusing the role of the pancreas in digestion with the mechanical breakdown of food"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct and aligns with biological facts. Birds lack teeth and use the gizzard for mechanical digestion, while the liver and pancreas are involved in chemical digestion and metabolism, not mechanical breakdown.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu109.pdf",
+          "ordinal": 6,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 9: Life Processes in Animals",
+            "9.1 Nutrition in Animals",
+            "9.1.2 Do all animals digest food the same way as",
+            "humans do?"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu109.pdf",
+          "ordinal": 7,
+          "pageStart": 8,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 9: Life Processes in Animals",
+            "9.2 Respiration in Animals"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu109.pdf",
+          "ordinal": 8,
+          "pageStart": 9,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 9: Life Processes in Animals",
+            "9.2 Respiration in Animals",
+            "9.2.1 Respiration in humans"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu109.pdf",
+          "ordinal": 9,
+          "pageStart": 9,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 9: Life Processes in Animals",
+            "9.2 Respiration in Animals",
+            "9.2.1 Respiration in humans"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T03:12:55.139Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "Which of the following is an example of an animal that regenerates a lost body part?",
+      "choices": [
+        "Cow",
+        "Bird",
+        "Planaria",
+        "Human"
+      ],
+      "answerIndex": 2,
+      "solution": "Planaria, a type of flatworm, has the ability to regenerate lost body parts. This is a known example of regeneration in the animal kingdom. Cows, birds, and humans do not have this ability to the same extent.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा एक ऐसे जीव का उदाहरण है जो खोए गए शारीरिक भाग की पुनर्जनन करता है?",
+          "choices": [
+            "गाय",
+            "पक्षी",
+            "प्लैनारिया",
+            "मनुष्य"
+          ],
+          "solution": "प्लैनारिया, एक प्रकार के समतल कृमि होता है, जिसके पास खोए गए शारीरिक भागों की पुनर्जनन की क्षमता होती है। यह जीवाणु जगत में पुनर्जनन का एक ज्ञात उदाहरण है। गाय, पक्षी और मनुष्य इस क्षमता के साथ इतना नहीं होते हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate biological terminology as used in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणता एक असा प्राणी आहे जो गमावलेला शरीराचा भाग पुन्हा बनवू शकतो?",
+          "choices": [
+            "गाय",
+            "पक्षी",
+            "प्लॅनारिया",
+            "माणूस"
+          ],
+          "solution": "प्लॅनारिया, एक प्रकारचा समुद्री फ्लॅटवार्म आहे, ज्याला गमावलेल्या शरीराच्या भागाचे पुनर्निर्माण करण्याची क्षमता आहे. हे प्राणीजगतातील पुनर्जन्माचे एक ओळखलेले उदाहरण आहे. गाय, पक्षी आणि माणसांना यापेक्षा अधिक या क्षमतेचा अभाव आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for biological concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Thinks cows can regenerate body parts",
+        "Confuses birds with regenerating animals",
+        null,
+        "Believes humans have regenerative abilities"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is Planaria, which is a known regenerating organism. The other options are incorrect as cows, birds, and humans do not regenerate body parts to the same extent. The author's reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu109.pdf",
+          "ordinal": 6,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 9: Life Processes in Animals",
+            "9.1 Nutrition in Animals",
+            "9.1.2 Do all animals digest food the same way as",
+            "humans do?"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu109.pdf",
+          "ordinal": 7,
+          "pageStart": 8,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 9: Life Processes in Animals",
+            "9.2 Respiration in Animals"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu109.pdf",
+          "ordinal": 8,
+          "pageStart": 9,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 9: Life Processes in Animals",
+            "9.2 Respiration in Animals",
+            "9.2.1 Respiration in humans"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu109.pdf",
+          "ordinal": 9,
+          "pageStart": 9,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 9: Life Processes in Animals",
+            "9.2 Respiration in Animals",
+            "9.2.1 Respiration in humans"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T03:12:55.139Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Anil says that respiration and breathing are the same process. What is the most appropriate question Sanvi can ask to clarify this misconception?",
+      "choices": [
+        "What is the difference between breathing and respiration?",
+        "What is the role of the diaphragm in respiration?",
+        "How does the diaphragm help in exhalation?",
+        "Why do we breathe in oxygen and breathe out carbon dioxide?"
+      ],
+      "answerIndex": 0,
+      "solution": "The most appropriate question to clarify the misconception is to ask about the difference between breathing and respiration, as this directly addresses the confusion. The other options are unrelated to the distinction between breathing and respiration.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "अनिल कहता है कि श्वसन और श्वास एक ही प्रक्रिया है। संविधान को स्पष्ट करने के लिए सांवी कौन सा सबसे उपयुक्त प्रश्न पूछ सकती है?",
+          "choices": [
+            "श्वास और श्वसन में क्या अंतर है?",
+            "श्वसन में डायाफ्राम की भूमिका क्या है?",
+            "डायाफ्राम उत्सर्जन में कैसे सहायता करता है?",
+            "हम ऑक्सीजन क्यों लेते हैं और कार्बन डाइऑक्साइड क्यों छोड़ते हैं?"
+          ],
+          "solution": "संविधान को स्पष्ट करने के लिए सबसे उपयुक्त प्रश्न श्वास और श्वसन में अंतर के बारे में पूछना है, क्योंकि यह सीधे भ्रम को संबोधित करता है। अन्य विकल्प श्वास और श्वसन के अंतर से संबंधित नहीं हैं।",
+          "imageAlt": null,
+          "critique": "Hindi translation accurately reflects the English original in meaning, structure, and terminology. 'श्वसन' and 'श्वास' are standard terms used in Indian science textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "अनिल म्हणतो की प्राणायाम आणि श्वासोच्छ्वास हे एकसारखे प्रक्रिया आहेत. या चूकलेल्या धारणेची स्पष्टता करण्यासाठी संवी मागे कोणते सर्वात उपयुक्त प्रश्न विचारू शकते?",
+          "choices": [
+            "श्वासोच्छ्वास आणि प्राणायाम यांमध्ये काय फरक आहे?",
+            "प्राणायामात डायफ्रामची भूमिका काय आहे?",
+            "डायफ्राम उच्छ्वासामध्ये कशी मदत करतो?",
+            "आम्ही ऑक्सीजन श्वास घेतो आणि कार्बन डायऑक्साइड बाहेर का फेकतो?"
+          ],
+          "solution": "चूकलेल्या धारणेची स्पष्टता करण्यासाठी श्वासोच्छ्वास आणि प्राणायाम यांमध्ये काय फरक आहे याबद्दल विचारलेला प्रश्न सर्वात उपयुक्त आहे, कारण हा गोंधळाच्या विषयाला सीधा विषय घेतो. इतर प्रश्न प्राणायाम आणि श्वासोच्छ्वास यांच्या विषयाला असंबंधित आहेत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for biological concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses breathing with respiration and focuses on a part of the breathing process",
+        "A student might confuse the role of the diaphragm in breathing with its role in respiration.",
+        "Believes respiration is only about exchanging gases, not a chemical process"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is option 0, as it directly asks about the distinction between breathing and respiration, which is the core of Anil's misconception. The other options focus on specific aspects of breathing or respiration that do not address the fundamental misunderstanding.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu109.pdf",
+          "ordinal": 13,
+          "pageStart": 14,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 9: Life Processes in Animals",
+            "9.2 Respiration in Animals",
+            "9.2.2 Do other animals breathe the same way as",
+            "In a Nutshell"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu109.pdf",
+          "ordinal": 14,
+          "pageStart": 15,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 9: Life Processes in Animals",
+            "9.2 Respiration in Animals",
+            "9.2.2 Do other animals breathe the same way as",
+            "Let Us Enhance Our Learning"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu109.pdf",
+          "ordinal": 15,
+          "pageStart": 16,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 9: Life Processes in Animals",
+            "9.2 Respiration in Animals",
+            "9.2.2 Do other animals breathe the same way as",
+            "Exploratory Projects"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T03:12:55.139Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Why is breathing essential for survival?",
+      "choices": [
+        "It provides energy directly",
+        "It helps in digestion",
+        "It supplies oxygen for respiration",
+        "It removes waste products from the body"
+      ],
+      "answerIndex": 2,
+      "solution": "Breathing supplies oxygen to the body, which is essential for respiration, the process that releases energy from nutrients. The other options are not the primary function of breathing.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "श्वास लेना जीवित रहने के लिए क्यों आवश्यक है?",
+          "choices": [
+            "यह सीधे ऊर्जा प्रदान करता है",
+            "यह पाचन में सहायता करता है",
+            "यह श्वसन के लिए ऑक्सीजन प्रदान करता है",
+            "यह शरीर से अपशिष्ट पदार्थ निकालता है"
+          ],
+          "solution": "श्वास शरीर को ऑक्सीजन प्रदान करता है, जो पोषक तत्वों से ऊर्जा निकालने वाली प्रक्रिया, श्वसन के लिए आवश्यक है। अन्य विकल्प श्वास के प्राथमिक कार्य नहीं हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Hindi terminology used for biological processes.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "शारीरिक जीवनासाठी श्वास घेणे का आवश्यक आहे?",
+          "choices": [
+            "ते ऊर्जा सीधा पुरवते",
+            "ते पचनामध्ये मदत करते",
+            "ते श्वसनासाठी ऑक्सीजन पुरवते",
+            "ते शरीरातून अपशिष्ट पदार्थ दूर करते"
+          ],
+          "solution": "श्वास घेणे शरीराला ऑक्सीजन पुरवते, जे पोषक द्रव्यांपासून ऊर्जा मुक्त करण्याच्या प्रक्रियेसाठी आवश्यक आहे. इतर विकल्प श्वास घेण्याचे प्राथमिक कार्य नाहीत.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the original meaning, and uses appropriate terminology as found in Marathi-medium science textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Thinks breathing provides energy directly",
+        "Confuses digestion with breathing",
+        null,
+        "Believes breathing removes waste products"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 2, as breathing supplies oxygen for cellular respiration. The other options represent common misconceptions about the role of breathing.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu109.pdf",
+          "ordinal": 6,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 9: Life Processes in Animals",
+            "9.1 Nutrition in Animals",
+            "9.1.2 Do all animals digest food the same way as",
+            "humans do?"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu109.pdf",
+          "ordinal": 7,
+          "pageStart": 8,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 9: Life Processes in Animals",
+            "9.2 Respiration in Animals"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu109.pdf",
+          "ordinal": 8,
+          "pageStart": 9,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 9: Life Processes in Animals",
+            "9.2 Respiration in Animals",
+            "9.2.1 Respiration in humans"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu109.pdf",
+          "ordinal": 9,
+          "pageStart": 9,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 9: Life Processes in Animals",
+            "9.2 Respiration in Animals",
+            "9.2.1 Respiration in humans"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T03:12:55.139Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is the name of the long tube in which food is broken down into simpler forms?",
+      "choices": [
+        "Alimentary canal",
+        "Digestive system",
+        "Stomach",
+        "Mouth"
+      ],
+      "answerIndex": 0,
+      "solution": "The alimentary canal is the long tube where food is broken down into simpler forms. The digestive system refers to the entire group of organs involved in digestion, not just the tube. The stomach is a part of the alimentary canal, not the entire structure. The mouth is where digestion begins, not where it is completed.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "खाद्य के सरल रूप में टूटने के लिए लंबी नली का नाम क्या है?",
+          "choices": [
+            "आहार नली",
+            "पाचन तंत्र",
+            "आमाशय",
+            "मुंह"
+          ],
+          "solution": "आहार नली वह लंबी नली है जहां खाद्य को सरल रूप में टूट जाता है। पाचन तंत्र का अर्थ पाचन में शामिल सभी अंगों के समूह का होता है, केवल नली नहीं। आमाशय आहार नली का एक हिस्सा होता है, पूरी संरचना नहीं। मुंह पाचन की शुरुआत करता है, न कि अंत।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. Technical terms like 'आहार नली' (alimentary canal) and 'पाचन तंत्र' (digestive system) are standard in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खाद्य पदार्थांचे सोपे रूपात विघटन करणारा लांब नळीचे नाव काय आहे?",
+          "choices": [
+            "अलिमेंटरी कॅनल",
+            "पाचन प्रणाली",
+            "मार्ग",
+            "मुख"
+          ],
+          "solution": "अलिमेंटरी कॅनल ही लांब नळी आहे जेथे खाद्य पदार्थ सोप्या रूपात विघटन होते. पाचन प्रणाली ही पाचनाशी संबंधित असलेल्या सर्व अवयवांची पूर्ण प्रणाली आहे, केवळ नळी नाही. मार्ग ही अलिमेंटरी कॅनलचा एक भाग आहे, पूर्ण संरचना नाही. मुख हे पाचनाचे सुरुवातीचे ठिकाण आहे, पूर्ण पाचनाचे ठिकाण नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for biological concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses the alimentary canal with the broader term 'digestive system'.",
+        "Misunderstands the role of the stomach as the main site of digestion.",
+        "Thinks the mouth is where digestion ends, not where it starts."
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-constructed and the key is correct. The solution accurately identifies the alimentary canal as the long tube where food is broken down, and the distractors reflect common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu109.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 9: Life Processes in Animals"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu109.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 9: Life Processes in Animals",
+            "9.1 Nutrition in Animals",
+            "9.1.1 Digestion in human beings"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu109.pdf",
+          "ordinal": 2,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 9: Life Processes in Animals",
+            "9.1 Nutrition in Animals",
+            "9.1.1 Digestion in human beings"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T05:42:35.700Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is the primary function of the mucus secreted by the stomach lining?",
+      "choices": [
+        "To break down proteins into simpler components",
+        "To neutralise the acid in the stomach",
+        "To protect the stomach lining from the acid",
+        "To help in the absorption of nutrients"
+      ],
+      "answerIndex": 2,
+      "solution": "The mucus in the stomach protects the lining from the acidic environment, preventing damage. The acid helps break down proteins, and the digestive juice also breaks them down. Nutrient absorption occurs in the small intestine, not the stomach.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "मार्ग के आवरण द्वारा बनाए गए म्यूसस का प्राथमिक कार्य क्या है?",
+          "choices": [
+            "प्रोटीन के अणुओं को सरल घटकों में तोड़ना",
+            "आमाशय में अम्ल को उदासीन करना",
+            "आमाशय के आवरण को अम्ल से बचाना",
+            "पोषक तत्वों के अवशोषण में सहायता करना"
+          ],
+          "solution": "आमाशय के आवरण द्वारा बनाए गए म्यूसस आमाशय के आवरण को अम्लीय वातावरण से बचाता है, जो क्षति से बचाता है। अम्ल प्रोटीन के अणुओं को तोड़ता है, और पाचन रस भी उन्हें तोड़ता है। पोषक तत्वों के अवशोषण क्षुद्रांत्र में होता है, न कि आमाशय में।",
+          "imageAlt": null,
+          "critique": "Hindi translation accurately reflects the original English question and solution, with appropriate terminology used in Indian medical education context.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "आंत्रपेशीच्या आतड्याच्या आतल्या बाजूच्या घटकांमधून घालवल्या जाणार्‍या घाणट्याचे प्राथमिक कार्य काय आहे?",
+          "choices": [
+            "प्रोटीन लहान घटकांमध्ये तोडणे",
+            "आतड्यातील अम्लाचे उदासीनीकरण करणे",
+            "आतड्याच्या आतल्या बाजूच्या घटकांचे अम्लापासून बचाव करणे",
+            "पोषक घटकांच्या अवशोषणामध्ये मदत करणे"
+          ],
+          "solution": "आतड्यातील घाणटा आतल्या बाजूच्या घटकांचे अम्लीय वातावरणापासून बचाव करते, ज्यामुळे नुकसान होऊ नये. अम्ल प्रोटीन तोडतो, आणि पचनरसही त्यांना तोडतो. पोषक घटकांचे अवशोषण आतड्यात नसून लहान आतड्यात होते.",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriate for Marathi-medium curriculum, and the correct answer remains option 2.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the function of the digestive juice with mucus",
+        "Thinks mucus neutralises acid, but it actually protects the lining",
+        null,
+        "Believes mucus plays a role in nutrient absorption rather than protection"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly identifies the protective role of mucus and explains why the other options are incorrect. The reasoning aligns with standard biology knowledge.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu109.pdf",
+          "ordinal": 3,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 9: Life Processes in Animals",
+            "9.1 Nutrition in Animals",
+            "9.1.1 Digestion in human beings"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu109.pdf",
+          "ordinal": 4,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 9: Life Processes in Animals",
+            "9.1 Nutrition in Animals",
+            "9.1.1 Digestion in human beings"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu109.pdf",
+          "ordinal": 5,
+          "pageStart": 7,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 9: Life Processes in Animals",
+            "9.1 Nutrition in Animals",
+            "9.1.1 Digestion in human beings",
+            "Large intestine"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T05:42:35.700Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the main purpose of saliva in the mouth?",
+      "choices": [
+        "To give food a sweet taste",
+        "To break down starch into sugar",
+        "To keep the mouth moist and prevent drying",
+        "To neutralize harmful bacteria in the mouth"
+      ],
+      "answerIndex": 1,
+      "solution": "Saliva contains enzymes that help break down starch into simpler sugars, which is why starchy foods like chapati may taste sweet after chewing. While saliva does help with taste and keeping the mouth moist, its primary role in digestion is to break down starch. The other options are not accurate representations of the main function of saliva.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "मुंह में लार का मुख्य उद्देश्य क्या है?",
+          "choices": [
+            "खाद्य को मीठा स्वाद देना",
+            "स्टार्च को शर्करा में तोड़ना",
+            "मुंह को नम रखना और सूखने से रोकना",
+            "मुंह में हानिकारक जीवाणुओं को उदासीन करना"
+          ],
+          "solution": "लार में एंजाइम होते हैं जो स्टार्च को सरल शर्करा में तोड़ने में मदद करते हैं, इसलिए चावल जैसे स्टार्च युक्त खाद्य पदार्थों का स्वाद चबाने के बाद मीठा हो जाता है। यहां तक कि लार स्वाद और मुंह को नम रखने में मदद करता है, लेकिन पाचन में इसका मुख्य कार्य स्टार्च को तोड़ना है। अन्य विकल्प मुख्य रूप से लार के कार्य का सही प्रतिनिधित्व नहीं करते हैं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains original meaning, and uses appropriate Hindi terminology for biological concepts.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "मुखातील लाळेचा मुख्य उद्देश काय आहे?",
+          "choices": [
+            "खाद्य पदार्थाला मीठाचा स्वाद देणे",
+            "स्टार्चला शर्करेमध्ये विघटित करणे",
+            "मुख निर्जलित राहू नये म्हणून नमलेले ठेवणे",
+            "मुखातील हानिकारक जीवाणूंचे उद्रेक निरोध करणे"
+          ],
+          "solution": "लाळेमध्ये एन्झाइम असतात जे स्टार्चला सोप्पा शर्करेमध्ये विघटित करतात, ज्यामुळे चावलेल्या स्टार्चयुक्त खाद्यपदार्थांचा स्वाद मीठाचा वाटतो. लाळ मुख्यतः पचनामध्ये स्टार्च विघटित करण्याचे कार्य करते, जे तिचे मुख्य कार्य आहे. इतर विकल्प लाळेच्या मुख्य कार्याचे योग्य प्रतिनिधित्व नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for biological concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Believes saliva is mainly for taste, which is not its primary function.",
+        null,
+        "students may think saliva's main role is to keep the mouth wet rather than aiding digestion",
+        "Believes saliva's main role is to protect against germs rather than aid digestion"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 1, as saliva contains enzymes (like amylase) that break down starch into sugar. The other options represent common misconceptions about saliva's role.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu109.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 9: Life Processes in Animals"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu109.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 9: Life Processes in Animals",
+            "9.1 Nutrition in Animals",
+            "9.1.1 Digestion in human beings"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu109.pdf",
+          "ordinal": 2,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 9: Life Processes in Animals",
+            "9.1 Nutrition in Animals",
+            "9.1.1 Digestion in human beings"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T05:42:35.700Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "Which part of the human digestive system is responsible for the initial mechanical breakdown of food?",
+      "choices": [
+        "Mouth",
+        "Stomach",
+        "Small intestine",
+        "Large intestine"
+      ],
+      "answerIndex": 0,
+      "solution": "The mouth is where food is chewed and broken down into smaller pieces by the action of teeth, which is known as mechanical digestion. The stomach is responsible for further breaking down food using acids and enzymes, the small intestine for absorption, and the large intestine for water absorption. Therefore, the correct answer is the mouth.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "मानव पाचन तंत्र का कौन-सा भाग भोजन के प्रारंभिक यांत्रिक अपघटन के लिए उत्तरदायी है?",
+          "choices": [
+            "मुंह",
+            "आमाशय",
+            "छोटी आंत",
+            "बड़ी आंत"
+          ],
+          "solution": "मुंह वह स्थान है जहां भोजन को काटा जाता है और दांतों के कार्य से छोटे टुकड़ों में तोड़ा जाता है, जिसे यांत्रिक पाचन कहा जाता है। आमाशय अम्ल और एंजाइम के उपयोग से भोजन के आगे टूटने के लिए उत्तरदायी है, छोटी आंत अवशोषण के लिए और बड़ी आंत जल के अवशोषण के लिए। इसलिए सही उत्तर मुंह है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, technical terms match standard Hindi biology terminology, and the structure mirrors the original.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "मानवी पाचन प्रणालीच्या कोणत्या भागाची जबाबदारी अन्नाच्या प्रारंभिक यांत्रिक विघटनाची असते?",
+          "choices": [
+            "मुख",
+            "जठर",
+            "लहान आंत",
+            "मोठा आंत"
+          ],
+          "solution": "मुख हा भाग आहे जेथे अन्न चावले जाते आणि दातांच्या क्रियेमुळे ते लहान तुकड्यांमध्ये विघटित होते, ज्याला यांत्रिक पाचन म्हणतात. जठर अन्नाचे आम्ल आणि एन्झाईमच्या वापराने आणखी विघटित करते, लहान आंत अवशोषणासाठी आहे आणि मोठा आंत पाणी अवशोषित करण्यासाठी जबाबदार असतो. त्यामुळे योग्य उत्तर मुख आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for the digestive system.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses the role of the mouth with the stomach, which is more involved in chemical digestion.",
+        "Misunderstands the function of the small intestine, which is primarily for absorption.",
+        "Confuses the large intestine with the site of initial food breakdown."
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly identifies the mouth as the site of initial mechanical breakdown due to chewing. The reasoning for the distractors is valid and reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu109.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 9: Life Processes in Animals"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu109.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 9: Life Processes in Animals",
+            "9.1 Nutrition in Animals",
+            "9.1.1 Digestion in human beings"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu109.pdf",
+          "ordinal": 2,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 9: Life Processes in Animals",
+            "9.1 Nutrition in Animals",
+            "9.1.1 Digestion in human beings"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T05:42:35.700Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If a person has a damaged diaphragm, what would be the most likely effect on their breathing?",
+      "choices": [
+        "They would not be able to inhale",
+        "They would not be able to exhale",
+        "They would breathe more slowly",
+        "They would breathe more quickly"
+      ],
+      "answerIndex": 0,
+      "solution": "The diaphragm is crucial for inhalation. If it is damaged, the person would not be able to inhale properly, as the diaphragm contracts to create space for air to enter the lungs.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि किसी व्यक्ति का डायफ्राम क्षतिग्रस्त हो जाए, तो उनकी सांस लेने पर सबसे संभावित प्रभाव क्या होगा?",
+          "choices": [
+            "वे श्वास ले नहीं पाएंगे",
+            "वे श्वास छोड़ नहीं पाएंगे",
+            "वे धीरे-धीरे सांस लेंगे",
+            "वे तेजी से सांस लेंगे"
+          ],
+          "solution": "डायफ्राम सांस लेने के लिए आवश्यक है। यदि यह क्षतिग्रस्त हो जाता है, तो व्यक्ति श्वास लेने में असमर्थ हो जाएगा, क्योंकि डायफ्राम संकुचित होकर फेफड़ों में हवा प्रवेश के लिए जगह बनाता है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate medical terminology as used in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका व्यक्तीचा डायफ्राम नुकसान झाल्यास त्यांच्या श्वासावर सर्वात जास्त परिणाम काय असेल?",
+          "choices": [
+            "त्यांना श्वास घेणे शक्य होणार नाही",
+            "त्यांना श्वास बाहेर काढणे शक्य होणार नाही",
+            "त्यांना धीम्या गतीने श्वास घेणे शक्य होणार नाही",
+            "त्यांना जलद गतीने श्वास घेणे शक्य होणार नाही"
+          ],
+          "solution": "डायफ्राम श्वासाच्या घेण्यासाठी खूप महत्वाचा आहे. जर तो नुकसान झाला असेल तर व्यक्ती श्वास घेण्यास असमर्थ होईल, कारण डायफ्राम संकुचित होऊन फुफ्फुसांमध्ये हवा घेण्यासाठी जागा तयार करतो.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi medical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Student thinks the diaphragm is only responsible for exhalation, not inhalation",
+        "Confuses the role of the diaphragm in exhalation",
+        "Incorrectly assumes the body compensates by breathing faster"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly identifies the diaphragm's role in inhalation and explains why damage would prevent inhalation. The distractors reflect common misconceptions about the diaphragm's function.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu109.pdf",
+          "ordinal": 13,
+          "pageStart": 14,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 9: Life Processes in Animals",
+            "9.2 Respiration in Animals",
+            "9.2.2 Do other animals breathe the same way as",
+            "In a Nutshell"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu109.pdf",
+          "ordinal": 14,
+          "pageStart": 15,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 9: Life Processes in Animals",
+            "9.2 Respiration in Animals",
+            "9.2.2 Do other animals breathe the same way as",
+            "Let Us Enhance Our Learning"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu109.pdf",
+          "ordinal": 15,
+          "pageStart": 16,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 9: Life Processes in Animals",
+            "9.2 Respiration in Animals",
+            "9.2.2 Do other animals breathe the same way as",
+            "Exploratory Projects"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T05:42:35.700Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "If a student observes that the iodine solution in a test tube does not change colour after adding a food sample, what can be concluded about the food sample?",
+      "choices": [
+        "It contains no starch",
+        "It contains only proteins",
+        "It contains no carbohydrates",
+        "It contains only fats"
+      ],
+      "answerIndex": 0,
+      "solution": "The iodine test for starch turns blue-black if starch is present. If there is no colour change, the food sample does not contain starch.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि कोई छात्र देखता है कि एक परीक्षण नली में आयोडीन घोल में खाद्य नमूना जोड़ने के बाद रंग में परिवर्तन नहीं होता, तो खाद्य नमूने के बारे में क्या निष्कर्ष निकाला जा सकता है?",
+          "choices": [
+            "इसमें कोई स्टार्च नहीं है",
+            "इसमें केवल प्रोटीन है",
+            "इसमें कोई कार्बोहाइड्रेट नहीं है",
+            "इसमें केवल वसा है"
+          ],
+          "solution": "स्टार्च के लिए आयोडीन परीक्षण में स्टार्च उपस्थित होने पर नीला-काला रंग बनता है। यदि कोई रंग परिवर्तन नहीं होता, तो खाद्य नमूने में स्टार्च नहीं होता।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the same meaning, and uses standard Hindi scientific terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका विद्यार्थीने एका टेस्ट ट्यूबमधील आयोडीन द्रावणाला खाद्य नमुना जोडल्यानंतर रंग बदलत नसल्याचे निरीक्षण केले, तर खाद्य नमुनाबद्दल काय निष्कर्ष काढता येईल?",
+          "choices": [
+            "त्यामध्ये स्टार्च नाही",
+            "त्यामध्ये केवळ प्रोटीन आहेत",
+            "त्यामध्ये कार्बोहायड्रेट नाही",
+            "त्यामध्ये केवळ वसा आहेत"
+          ],
+          "solution": "स्टार्चसाठी आयोडीन चाचणी जर स्टार्च असेल तर नील-काळा रंग होतो. जर रंग बदलत नसेल तर खाद्य नमुन्यामध्ये स्टार्च नसतो.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the scientific terminology used in Marathi textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses protein testing with starch testing, thinking iodine reacts with proteins",
+        "Mistakenly assumes all carbohydrates are starch",
+        "Confuses starch with other types of carbohydrates"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is well-constructed, with a clear and correct solution. The reasoning for the distractors aligns with common misconceptions students might have about the iodine test for starch.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu109.pdf",
+          "ordinal": 13,
+          "pageStart": 14,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 9: Life Processes in Animals",
+            "9.2 Respiration in Animals",
+            "9.2.2 Do other animals breathe the same way as",
+            "In a Nutshell"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu109.pdf",
+          "ordinal": 14,
+          "pageStart": 15,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 9: Life Processes in Animals",
+            "9.2 Respiration in Animals",
+            "9.2.2 Do other animals breathe the same way as",
+            "Let Us Enhance Our Learning"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu109.pdf",
+          "ordinal": 15,
+          "pageStart": 16,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 9: Life Processes in Animals",
+            "9.2 Respiration in Animals",
+            "9.2.2 Do other animals breathe the same way as",
+            "Exploratory Projects"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T05:42:35.700Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "What is the main reason the large intestine is called 'large'?",
+      "choices": [
+        "It is the longest part of the alimentary canal",
+        "It is the widest part of the alimentary canal",
+        "It absorbs the most nutrients",
+        "It contains the most bacteria"
+      ],
+      "answerIndex": 1,
+      "solution": "The large intestine is called 'large' because it is the widest part of the alimentary canal, not the longest. Nutrient absorption primarily occurs in the small intestine, and bacteria are found in both the small and large intestines. This makes the width the defining characteristic of its name.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "बड़ी आंत को 'बड़ी' क्यों कहा जाता है?",
+          "choices": [
+            "यह आहारनाल का सबसे लंबा भाग है",
+            "यह आहारनाल का सबसे चौड़ा भाग है",
+            "यह सबसे अधिक पोषक तत्व अवशोषित करता है",
+            "इसमें सबसे अधिक बैक्टीरिया होते हैं"
+          ],
+          "solution": "बड़ी आंत को 'बड़ी' इसलिए कहा जाता है क्योंकि यह आहारनाल का सबसे चौड़ा भाग है, न कि सबसे लंबा। पोषक तत्वों का अवशोषण मुख्य रूप से छोटी आंत में होता है, और बैक्टीरिया छोटी आंत और बड़ी आंत दोनों में पाए जाते हैं। इसलिए इसके नाम की विशेषता चौड़ाई है।",
+          "imageAlt": null,
+          "critique": "Translation accurately reflects the original meaning with appropriate Hindi medical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "मोठी आंत या नावाने का ओळखले जाते?",
+          "choices": [
+            "ते अन्ननालाचे सर्वात लांब भाग आहे",
+            "ते अन्ननालाचे सर्वात रुंद भाग आहे",
+            "ते सर्वात जास्त पोषक घटक अवशोषित करते",
+            "त्यामध्ये सर्वात जास्त जीवाणू असतात"
+          ],
+          "solution": "मोठी आंत या नावाने ओळखले जाते कारण ते अन्ननालाचे सर्वात रुंद भाग आहे, नाही की सर्वात लांब. पोषक घटक अवशोषण मुख्यतः लहान आंत मध्ये होते, आणि जीवाणू लहान आणि मोठी आंत दोन्हीमध्ये असतात. हे त्याच्या नावाचा निर्णायक लक्षण बनवते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi medical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses length with width",
+        null,
+        "Thinks nutrient absorption determines the name",
+        "Misunderstands the role of bacteria in the large intestine"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 1, as the large intestine is called 'large' due to its width, not length, nutrient absorption, or bacterial content. The author's solution and reasoning are accurate.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu109.pdf",
+          "ordinal": 3,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 9: Life Processes in Animals",
+            "9.1 Nutrition in Animals",
+            "9.1.1 Digestion in human beings"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu109.pdf",
+          "ordinal": 4,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 9: Life Processes in Animals",
+            "9.1 Nutrition in Animals",
+            "9.1.1 Digestion in human beings"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu109.pdf",
+          "ordinal": 5,
+          "pageStart": 7,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 9: Life Processes in Animals",
+            "9.1 Nutrition in Animals",
+            "9.1.1 Digestion in human beings",
+            "Large intestine"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T05:42:35.700Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "A student places a piece of bread in a test tube and adds iodine. The solution turns blue-black. What does this indicate about the bread?",
+      "choices": [
+        "It contains starch",
+        "It contains proteins",
+        "It contains fats",
+        "It contains vitamins"
+      ],
+      "answerIndex": 0,
+      "solution": "The iodine test for starch turns blue-black if starch is present. This indicates that the bread contains starch.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक छात्र एक परीक्षण नली में एक ब्रेड के टुकड़े को रखता है और आयोडीन जोड़ता है। विलयन नीले-काले हो जाता है। इसका अर्थ ब्रेड के बारे में क्या है?",
+          "choices": [
+            "इसमें स्टार्च है",
+            "इसमें प्रोटीन है",
+            "इसमें वसा है",
+            "इसमें विटामिन है"
+          ],
+          "solution": "स्टार्च के आयोडीन परीक्षण में यदि स्टार्च उपस्थित होता है तो विलयन नीले-काले हो जाता है। इसका अर्थ है कि ब्रेड में स्टार्च है।",
+          "imageAlt": null,
+          "critique": "The translation accurately reflects the original meaning, technical terms are appropriately used in Hindi, and the structure matches the original question.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका विद्यार्थ्याने एका टेस्ट ट्यूबमध्ये एका रोटीचा तुकडा ठेवला आणि आयोडीन जोडले. द्रावण नील-काळे होते. हे रोटीबद्दल काय सूचित करते?",
+          "choices": [
+            "त्यामध्ये स्टार्च आहे",
+            "त्यामध्ये प्रोटीन आहे",
+            "त्यामध्ये तेल आहे",
+            "त्यामध्ये व्हिटॅमिन आहे"
+          ],
+          "solution": "स्टार्चसाठी आयोडीन चाचणी जर स्टार्च असेल तर नील-काळे होते. हे दर्शवते की रोटीमध्ये स्टार्च आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the scientific terminology appropriate for a Marathi-medium curriculum.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses iodine test for proteins with the starch test",
+        "Confuses the iodine test for starch with a test for fats",
+        "Believing that iodine tests for vitamins instead of starch"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is well-constructed and the solution is correct. The iodine test is a standard method to detect starch, and the reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu109.pdf",
+          "ordinal": 13,
+          "pageStart": 14,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 9: Life Processes in Animals",
+            "9.2 Respiration in Animals",
+            "9.2.2 Do other animals breathe the same way as",
+            "In a Nutshell"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu109.pdf",
+          "ordinal": 14,
+          "pageStart": 15,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 9: Life Processes in Animals",
+            "9.2 Respiration in Animals",
+            "9.2.2 Do other animals breathe the same way as",
+            "Let Us Enhance Our Learning"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu109.pdf",
+          "ordinal": 15,
+          "pageStart": 16,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 9: Life Processes in Animals",
+            "9.2 Respiration in Animals",
+            "9.2.2 Do other animals breathe the same way as",
+            "Exploratory Projects"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T05:42:35.700Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
     }
   ]
 }

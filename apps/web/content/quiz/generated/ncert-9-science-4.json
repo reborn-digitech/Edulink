@@ -424,6 +424,2083 @@
       "generatedAt": "2026-10-30T02:27:59.080Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is the acceleration due to gravitational force by the Earth called?",
+      "choices": [
+        "Magnetic acceleration",
+        "Centripetal acceleration",
+        "Gravitational acceleration",
+        "Electrostatic acceleration"
+      ],
+      "answerIndex": 2,
+      "solution": "Gravitational acceleration is the term used to describe the acceleration experienced by an object due to the Earth's gravitational force. Magnetic acceleration involves magnetic fields, which are not related to gravity. Centripetal acceleration refers to the acceleration directed toward the center of a circular path, and electrostatic acceleration involves electric charges, neither of which are related to gravitational force.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "पृथ्वी द्वारा गुरुत्वाकर्षण बल के कारण त्वरण क्या कहलाता है?",
+          "choices": [
+            "चुंबकीय त्वरण",
+            "अभिकेंद्रीय त्वरण",
+            "गुरुत्वीय त्वरण",
+            "स्थिर वैद्युत त्वरण"
+          ],
+          "solution": "गुरुत्वीय त्वरण शब्द का उपयोग पृथ्वी के गुरुत्वाकर्षण बल के कारण वस्तु द्वारा अनुभव किए गए त्वरण के वर्णन के लिए किया जाता है। चुंबकीय त्वरण में चुंबकीय क्षेत्र शामिल होते हैं, जो गुरुत्व से संबंधित नहीं होते हैं। अभिकेंद्रीय त्वरण एक वृत्ताकार पथ के केंद्र की ओर दिशा में त्वरण के लिए उपयोग किया जाता है, और स्थिर वैद्युत त्वरण विद्युत आवेशों से संबंधित होता है, जो गुरुत्वाकर्षण बल से संबंधित नहीं होते हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms as found in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "भूमीच्या गुरुत्वीय बलामुळे होणार्‍या वेगवाढीला काय म्हणतात?",
+          "choices": [
+            "चुंबकीय वेगवाढ",
+            "अभिकेंद्रीय वेगवाढ",
+            "गुरुत्वीय वेगवाढ",
+            "विद्युतस्थैतिक वेगवाढ"
+          ],
+          "solution": "गुरुत्वीय वेगवाढ हा शब्द भूमीच्या गुरुत्वीय बलामुळे वस्तूला जाणवणार्‍या वेगवाढीसाठी वापरला जातो. चुंबकीय वेगवाढ हा चुंबकीय क्षेत्राशी संबंधित असतो, जो गुरुत्वाशी संबंधित नसतो. अभिकेंद्रीय वेगवाढ हा वर्तुळाकार मार्गाच्या केंद्राकडे दिशित असलेल्या वेगवाढीस संबोधतो, आणि विद्युतस्थैतिक वेगवाढ हा विद्युत आवेशाशी संबंधित असतो, जे गुरुत्वीय बलाशी संबंधित नसते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for scientific concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses gravitational force with magnetic effects",
+        "Associates acceleration with circular motion",
+        null,
+        "Confuses gravitational force with electric force"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-constructed and the correct answer is clearly 2. The author's reasoning for the distractors aligns with common misconceptions students might have.",
+      "sources": [
+        {
+          "document": "ncert/9/science/iesc104.pdf",
+          "ordinal": 10,
+          "pageStart": 8,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 4: Describing Motion Around Us",
+            "4.1 Motion in a Straight Line",
+            "4.1.4 Average acceleration"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc104.pdf",
+          "ordinal": 11,
+          "pageStart": 9,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 4: Describing Motion Around Us",
+            "4.2 Graphical Representation of Motion"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc104.pdf",
+          "ordinal": 12,
+          "pageStart": 10,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 4: Describing Motion Around Us",
+            "4.2 Graphical Representation of Motion",
+            "4.2.1 Plotting graph"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-22T14:12:29.054Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "What does the slope of a velocity-time graph represent?",
+      "choices": [
+        "Acceleration",
+        "Displacement",
+        "Distance",
+        "Speed"
+      ],
+      "answerIndex": 0,
+      "solution": "The slope of a velocity-time graph represents the rate of change of velocity with time, which is acceleration. Displacement is calculated from the area under the graph, not the slope. Distance is not directly represented by the slope. Speed is the magnitude of velocity, not the slope of the graph.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "वेग-समय ग्राफ की ढलान क्या प्रतिनिधित्व करती है?",
+          "choices": [
+            "त्वरण",
+            "विस्थापन",
+            "दूरी",
+            "चाल"
+          ],
+          "solution": "वेग-समय ग्राफ की ढलान वेग में समय के साथ परिवर्तन की दर को प्रतिनिधित्व करती है, जो त्वरण है। विस्थापन ग्राफ के नीचे के क्षेत्रफल से गणना किया जाता है, न कि ढलान से। दूरी ढलान द्वारा सीधे प्रतिनिधित्व नहीं की जाती है। चाल वेग के परिमाण है, न कि ग्राफ की ढलान।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard physics terminology used in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "वेग-वेळ आलेखाचा ढाल काय प्रतिनिधित्व करतो?",
+          "choices": [
+            "त्वरण",
+            "खेच",
+            "अंतर",
+            "वेग"
+          ],
+          "solution": "वेग-वेळ आलेखाचा ढाल वेगाच्या वेळेनुसार बदलाचा दर दर्शवतो, जो त्वरण आहे. खेच आलेखाच्या क्षेत्रफळावरून गणले जाते, ढालावरून नाही. अंतर ढालावरून सीधा प्रतिनिधित्व केले जात नाही. वेग हा वेगाचा परिमाण आहे, ढाल नाही.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate technical terms as found in Marathi-medium textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses displacement with the slope of a velocity-time graph",
+        "Student confuses distance with the area under the velocity-time graph instead of recognizing that slope represents acceleration",
+        "Confuses speed with the slope of a velocity-time graph, not recognizing that speed is the magnitude of velocity, not derived from the slope."
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-constructed, with a clear correct answer and plausible misconceptions for the wrong options. The solution correctly identifies acceleration as the slope of a velocity-time graph.",
+      "sources": [
+        {
+          "document": "ncert/9/science/iesc104.pdf",
+          "ordinal": 16,
+          "pageStart": 13,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 4: Describing Motion Around Us",
+            "4.2 Graphical Representation of Motion",
+            "4.2.3 Velocity-time graphs"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc104.pdf",
+          "ordinal": 17,
+          "pageStart": 14,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 4: Describing Motion Around Us",
+            "4.2 Graphical Representation of Motion",
+            "4.2.3 Velocity-time graphs"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc104.pdf",
+          "ordinal": 18,
+          "pageStart": 15,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 4: Describing Motion Around Us",
+            "4.2 Graphical Representation of Motion",
+            "4.2.3 Velocity-time graphs"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-22T14:12:29.054Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "A girl is preparing for a marathon and her velocity-time graph is given. How can she estimate the distance she ran based on the graph?",
+      "choices": [
+        "By calculating the area under the graph",
+        "By measuring the height of the graph",
+        "By counting the number of peaks",
+        "By calculating the slope of the graph"
+      ],
+      "answerIndex": 0,
+      "solution": "The distance travelled can be estimated by calculating the area under the velocity-time graph. This is because the area under the graph represents the total displacement, which is equal to the distance travelled when the direction is constant. The other options are incorrect because they do not represent the correct method for calculating distance from a velocity-time graph.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक लड़की मैराथन की तैयारी कर रही है और उसके वेग-समय ग्राफ दिया गया है। वह ग्राफ के आधार पर दौड़ी गई दूरी का अनुमान कैसे लगा सकती है?",
+          "choices": [
+            "ग्राफ के नीचे के क्षेत्रफल की गणना करके",
+            "ग्राफ की ऊंचाई को मापकर",
+            "शीर्षों की संख्या की गणना करके",
+            "ग्राफ के ढलान की गणना करके"
+          ],
+          "solution": "गति-समय ग्राफ के नीचे के क्षेत्रफल की गणना करके दूरी का अनुमान लगाया जा सकता है। ऐसा इसलिए है क्योंकि ग्राफ के नीचे का क्षेत्रफल कुल विस्थापन के बराबर होता है, जो दिशा स्थिर रहने पर दूरी के बराबर होता है। अन्य विकल्प गलत हैं क्योंकि वे वेग-समय ग्राफ से दूरी की गणना के सही तरीके का प्रतिनिधित्व नहीं करते।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate technical terms as found in Hindi-medium physics textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका तरुणीने मॅरेथॉनसाठी तयारी केली आहे आणि तिच्या वेग-वेळाचा आलेख दिला आहे. तिने आलेखावरून धावलेली अंतर कशी अंदाज करू शकेल?",
+          "choices": [
+            "आलेखाच्या खालील क्षेत्रफळाची गणना करून",
+            "आलेखाच्या उंचीचे मोजमाप करून",
+            "शिखरांची संख्या गणना करून",
+            "आलेखाच्या ढालाची गणना करून"
+          ],
+          "solution": "अंतर प्रवेग-वेळाच्या आलेखाच्या खालील क्षेत्रफळाची गणना करून अंदाज करता येते. हे कारण असे आहे की आलेखाच्या खालील क्षेत्रफळामुळे एकूण विस्थापन दर्शवले जाते, जे दिशा स्थिर असल्यास अंतरास समान असते. इतर पर्याय चुकीचे आहेत कारण ते वेग-वेळाच्या आलेखावरून अंतर गणना करण्याच्या योग्य पद्धतीला दर्शवत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms like 'क्षेत्रफळ' (area) and 'ढाल' (slope) that are standard in Marathi textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses velocity with distance",
+        "Thinks the height of the graph gives the distance",
+        "Fails to understand the relationship between velocity and distance"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is option 0, as the area under a velocity-time graph represents distance. The other options reflect common misconceptions about the relationship between velocity, distance, and graph features.",
+      "sources": [
+        {
+          "document": "ncert/9/science/iesc104.pdf",
+          "ordinal": 25,
+          "pageStart": 21,
+          "pageEnd": 22,
+          "headingPath": [
+            "Chapter 4: Describing Motion Around Us",
+            "4.4 Motion in a Plane",
+            "4.4.1 Uniform circular motion",
+            "Revise, Reflect, Refine"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc104.pdf",
+          "ordinal": 26,
+          "pageStart": 22,
+          "pageEnd": 23,
+          "headingPath": [
+            "Chapter 4: Describing Motion Around Us",
+            "4.4 Motion in a Plane",
+            "4.4.1 Uniform circular motion",
+            "गति सीमा"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc104.pdf",
+          "ordinal": 27,
+          "pageStart": 23,
+          "pageEnd": 24,
+          "headingPath": [
+            "Chapter 4: Describing Motion Around Us",
+            "4.4 Motion in a Plane",
+            "4.4.1 Uniform circular motion",
+            "The Journey Beyond"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc104.pdf",
+          "ordinal": 28,
+          "pageStart": 24,
+          "pageEnd": 24,
+          "headingPath": [
+            "Chapter 4: Describing Motion Around Us",
+            "4.4 Motion in a Plane",
+            "4.4.1 Uniform circular motion",
+            "The Journey Beyond"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-22T14:12:29.054Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "A car is moving on a straight road and its velocity increases from 10 m/s to 20 m/s in 5 seconds. What is the acceleration of the car?",
+      "choices": [
+        "1 m/s²",
+        "2 m/s²",
+        "5 m/s²",
+        "10 m/s²"
+      ],
+      "answerIndex": 1,
+      "solution": "Acceleration is calculated by dividing the change in velocity by the time taken. The change in velocity is 20 m/s minus 10 m/s, which equals 10 m/s, and dividing that by 5 seconds gives 2 m/s². The other options result from incorrect calculations or misinterpretations of the formula.",
+      "checkExpr": "(20-10)/5",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक कार सीधी सड़क पर गति कर रही है और इसका वेग 5 सेकंड में 10 मी/से से 20 मी/से तक बढ़ जाता है। कार का त्वरण क्या है?",
+          "choices": [
+            "1 मी/से²",
+            "2 मी/से²",
+            "5 मी/से²",
+            "10 मी/से²"
+          ],
+          "solution": "त्वरण की गणना वेग में परिवर्तन को समय लेने पर विभाजित करके की जाती है। वेग में परिवर्तन 20 मी/से माइनस 10 मी/से है, जो 10 मी/से के बराबर है, और इसे 5 सेकंड से विभाजित करने पर 2 मी/से² प्राप्त होता है। अन्य विकल्प गलत गणना या सूत्र के गलत अर्थ के कारण होते हैं।",
+          "imageAlt": null,
+          "critique": "Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एक गाडी सरळ रस्त्यावर चालू आहे आणि तिच्या वेगात 10 मी/से ते 20 मी/से 5 सेकंदात वाढ होते. गाडीचे वेगाच्या वाढीचे त्वरण किती आहे?",
+          "choices": [
+            "1 मी/से²",
+            "2 मी/से²",
+            "5 मी/से²",
+            "10 मी/से²"
+          ],
+          "solution": "त्वरण हे वेगातील बदलाला वेळेने भागल्याने मिळते. वेगातील बदल हा 20 मी/से वजा 10 मी/से, जे 10 मी/से आहे, आणि त्याला 5 सेकंदाने भागल्याने 2 मी/से² मिळते. इतर विकल्प अपयशी गणना किंवा सूत्राच्या चुकीच्या व्याख्येमुळे मिळतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms for physics concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the change in velocity (10 m/s) with the acceleration by dividing by time without subtracting initial velocity",
+        null,
+        "Confuses the change in velocity (10 m/s) with the time (5 s) and divides them directly without considering the time interval.",
+        "Uses the final velocity directly as acceleration"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 2 m/s², calculated as (20 - 10)/5. The author's solution is correct and the reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/9/science/iesc104.pdf",
+          "ordinal": 10,
+          "pageStart": 8,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 4: Describing Motion Around Us",
+            "4.1 Motion in a Straight Line",
+            "4.1.4 Average acceleration"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc104.pdf",
+          "ordinal": 11,
+          "pageStart": 9,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 4: Describing Motion Around Us",
+            "4.2 Graphical Representation of Motion"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc104.pdf",
+          "ordinal": 12,
+          "pageStart": 10,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 4: Describing Motion Around Us",
+            "4.2 Graphical Representation of Motion",
+            "4.2.1 Plotting graph"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-22T14:12:29.054Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If a child moves along a circular path and completes one revolution, what is their displacement?",
+      "choices": [
+        "Equal to the circumference of the circle",
+        "Zero",
+        "Equal to the diameter of the circle",
+        "Equal to twice the radius of the circle"
+      ],
+      "answerIndex": 1,
+      "solution": "Displacement is the straight-line distance from the starting point to the ending point. Since the child returns to the starting point after one revolution, the displacement is zero. The circumference, diameter, and twice the radius are all measures of distance or length, not displacement.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक बच्चा एक वृत्ताकार पथ पर चलता है और एक चक्कर पूरा करता है, तो उसका विस्थापन क्या होगा?",
+          "choices": [
+            "वृत्त की परिधि के बराबर",
+            "शून्य",
+            "वृत्त के व्यास के बराबर",
+            "वृत्त की त्रिज्या के दोगुने के बराबर"
+          ],
+          "solution": "विस्थापन आरंभिक बिंदु से अंतिम बिंदु तक की सीधी दूरी होती है। चूंकि बच्चा एक चक्कर के बाद आरंभिक बिंदु पर वापस आ जाता है, इसलिए विस्थापन शून्य होता है। परिधि, व्यास और त्रिज्या के दोगुने सभी दूरी या लंबाई के माप हैं, विस्थापन नहीं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Hindi technical terms for physics concepts.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका मुलाने वर्तुळाकार मार्गावर चालत एक पूर्ण फेरा घातला, तर त्याचा विस्थापन किती असेल?",
+          "choices": [
+            "वर्तुळाच्या परिघाइतका",
+            "शून्य",
+            "वर्तुळाच्या व्यासाइतका",
+            "वर्तुळाच्या त्रिज्येच्या दुप्पट इतका"
+          ],
+          "solution": "विस्थापन हे सुरुवातीच्या बिंदूपासून अंतिम बिंदूपर्यंतच्या सरळ अंतराला म्हणतात. मुलगा एक पूर्ण फेरा घालून सुरुवातीच्या बिंदूवर परत येतो, म्हणून विस्थापन शून्य असतो. परिघ, व्यास आणि त्रिज्येच्या दुप्पट हे सर्व अंतर किंवा लांबीचे मापन असतात, विस्थापन नाही.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate technical terms as used in Marathi-medium science textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses distance with displacement",
+        null,
+        "Confuses displacement with diameter instead of recognizing it as zero due to returning to the starting point",
+        "Confuses radius with displacement"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-posed and the solution correctly identifies that displacement is zero after one full revolution, as the object returns to its starting point. The distractors reflect common misconceptions about the difference between distance and displacement.",
+      "sources": [
+        {
+          "document": "ncert/9/science/iesc104.pdf",
+          "ordinal": 22,
+          "pageStart": 19,
+          "pageEnd": 20,
+          "headingPath": [
+            "Chapter 4: Describing Motion Around Us",
+            "4.4 Motion in a Plane",
+            "4.4.1 Uniform circular motion"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc104.pdf",
+          "ordinal": 23,
+          "pageStart": 20,
+          "pageEnd": 20,
+          "headingPath": [
+            "Chapter 4: Describing Motion Around Us",
+            "4.4 Motion in a Plane",
+            "4.4.1 Uniform circular motion"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc104.pdf",
+          "ordinal": 24,
+          "pageStart": 20,
+          "pageEnd": 21,
+          "headingPath": [
+            "Chapter 4: Describing Motion Around Us",
+            "4.4 Motion in a Plane",
+            "4.4.1 Uniform circular motion"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-22T14:12:29.054Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "A graph shows the velocity of an object at different times. The velocity increases by equal amounts in equal intervals of time. What can be said about the acceleration of the object?",
+      "choices": [
+        "It is zero",
+        "It is decreasing",
+        "It is increasing",
+        "It is constant"
+      ],
+      "answerIndex": 3,
+      "solution": "If the velocity of an object increases by equal amounts in equal intervals of time, the rate of change of velocity, or acceleration, remains the same throughout. This means the acceleration is constant. The other options suggest changes in acceleration, which would result in unequal changes in velocity over equal time intervals.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक ग्राफ विभिन्न समयों पर एक वस्तु के वेग को दर्शाता है। वेग समान समय अंतराल में समान मात्रा में बढ़ता है। वस्तु के त्वरण के बारे में क्या कहा जा सकता है?",
+          "choices": [
+            "यह शून्य है",
+            "यह घट रहा है",
+            "यह बढ़ रहा है",
+            "यह नियत है"
+          ],
+          "solution": "यदि एक वस्तु के वेग के समान समय अंतराल में समान मात्रा में वृद्धि होती है, तो वेग के परिवर्तन की दर, अर्थात त्वरण, पूरे दौरान समान रहता है। इसका अर्थ है कि त्वरण नियत है। अन्य विकल्प त्वरण में परिवर्तन के संकेत देते हैं, जो समान समय अंतराल में वेग में असमान परिवर्तन के कारण होते हैं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the scientific meaning and structure of the original question.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एक आलेख वस्तूच्या वेगाचे विविध काळांमध्ये दर्शन करतो. वेग समान अंतरांमध्ये समान प्रमाणात वाढतो. वस्तूच्या छापाचे काय म्हणायचे?",
+          "choices": [
+            "तो शून्य आहे",
+            "तो कमी होत आहे",
+            "तो वाढत आहे",
+            "तो अचल आहे"
+          ],
+          "solution": "जर वस्तूचा वेग समान काळांमध्ये समान प्रमाणात वाढत असेल, तर वेगाच्या दराचा, किंवा छापाचा, बदल हा संपूर्ण वेळ एकसारखा राहतो. हे असे दर्शवते की छाप अचल आहे. इतर विकल्प छापाच्या बदलाचा सूचित करतात, जे समान काळांमध्ये वेगाच्या असमान बदलाचे कारण होतील.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the scientific meaning. 'छापा' is the correct Marathi term for 'acceleration' used in textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses zero acceleration with no change in velocity",
+        "Assumes acceleration changes with velocity",
+        "Assumes acceleration changes with time",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is well-constructed. The correct answer is 3, as constant acceleration is defined by equal changes in velocity over equal time intervals. The author's reasoning for the distractors aligns with common student misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/9/science/iesc104.pdf",
+          "ordinal": 10,
+          "pageStart": 8,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 4: Describing Motion Around Us",
+            "4.1 Motion in a Straight Line",
+            "4.1.4 Average acceleration"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc104.pdf",
+          "ordinal": 11,
+          "pageStart": 9,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 4: Describing Motion Around Us",
+            "4.2 Graphical Representation of Motion"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc104.pdf",
+          "ordinal": 12,
+          "pageStart": 10,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 4: Describing Motion Around Us",
+            "4.2 Graphical Representation of Motion",
+            "4.2.1 Plotting graph"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-22T14:12:29.054Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "What happens to the direction of velocity in uniform circular motion?",
+      "choices": [
+        "It remains constant",
+        "It changes continuously",
+        "It becomes zero",
+        "It becomes perpendicular to the direction of motion"
+      ],
+      "answerIndex": 1,
+      "solution": "In uniform circular motion, the direction of velocity changes continuously because the object is constantly moving along a circular path, and the direction of motion at each point is along the tangent to the circle. The velocity vector is always tangent to the circle, so it cannot remain constant or become zero. It also does not become perpendicular to the direction of motion, as the direction of motion itself is along the tangent. Therefore, the correct answer is that it changes continuously.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक समान वृत्तीय गति में वेग की दिशा क्या होती है?",
+          "choices": [
+            "यह स्थिर रहता है",
+            "यह निरंतर बदलता रहता है",
+            "यह शून्य हो जाता है",
+            "यह गति की दिशा के लंबवत हो जाता है"
+          ],
+          "solution": "समान वृत्तीय गति में, वेग की दिशा निरंतर बदलती रहती है क्योंकि वस्तु निरंतर एक वृत्ताकार पथ पर गति करती है और प्रत्येक बिंदु पर गति की दिशा वृत्त के स्पर्शरेखा के अनुदिश होती है। वेग सदिश हमेशा वृत्त के स्पर्शरेखा के अनुदिश रहता है, इसलिए यह स्थिर नहीं रह सकता या शून्य नहीं हो सकता। यह गति की दिशा के लंबवत भी नहीं होता, क्योंकि गति की दिशा स्पर्शरेखा के अनुदिश ही होती है। अतः सही उत्तर यह है कि यह निरंतर बदलता रहता है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Hindi terminology used for physics concepts.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "समान परिघाती वर्तुळीय गतीत वेगाच्या दिशेवर काय परिणाम होतो?",
+          "choices": [
+            "तो अचल रहातो",
+            "तो अविरत बदलतो",
+            "तो शून्य होतो",
+            "तो गतीच्या दिशेला लंब बनतो"
+          ],
+          "solution": "समान परिघाती वर्तुळीय गतीत, वेगाची दिशा अविरत बदलते कारण वस्तू निरंतर वर्तुळाकृती मार्गावर गतिमान असते आणि प्रत्येक बिंदूवर गतीची दिशा वर्तुळाच्या स्पर्श रेषेने असते. वेगाचा सदिश नेहमी वर्तुळाच्या स्पर्श रेषेने असतो, म्हणून तो अचल रहाऊ शकत नाही किंवा शून्य होऊ शकत नाही. गतीच्या दिशेला लंब बनत नाही, कारण गतीची दिशा स्वतः वर्तुळाच्या स्पर्श रेषेने असते. म्हणूनच योग्य उत्तर म्हणजे तो अविरत बदलतो.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Believes that the direction of velocity remains constant in circular motion",
+        null,
+        "Confuses average velocity with instantaneous velocity in circular motion",
+        "Confuses the direction of velocity with perpendicularity"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct and aligns with the physics of uniform circular motion, where velocity direction changes continuously even though speed is constant. All distractors represent common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/9/science/iesc104.pdf",
+          "ordinal": 22,
+          "pageStart": 19,
+          "pageEnd": 20,
+          "headingPath": [
+            "Chapter 4: Describing Motion Around Us",
+            "4.4 Motion in a Plane",
+            "4.4.1 Uniform circular motion"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc104.pdf",
+          "ordinal": 23,
+          "pageStart": 20,
+          "pageEnd": 20,
+          "headingPath": [
+            "Chapter 4: Describing Motion Around Us",
+            "4.4 Motion in a Plane",
+            "4.4.1 Uniform circular motion"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc104.pdf",
+          "ordinal": 24,
+          "pageStart": 20,
+          "pageEnd": 21,
+          "headingPath": [
+            "Chapter 4: Describing Motion Around Us",
+            "4.4 Motion in a Plane",
+            "4.4.1 Uniform circular motion"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-22T14:12:29.054Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "A car moving with a velocity of 30 m/s applies its brakes and comes to a stop in 10 seconds. What is the acceleration of the car?",
+      "choices": [
+        "-3 m/s²",
+        "-5 m/s²",
+        "-15 m/s²",
+        "-30 m/s²"
+      ],
+      "answerIndex": 0,
+      "solution": "The correct answer is -3 m/s². Using the equation v = u + at, where v = 0 (final velocity), u = 30 m/s (initial velocity), and t = 10 s (time), we solve for a (acceleration). The other options are incorrect due to calculation errors or misinterpretation of the formula.",
+      "checkExpr": "(0 - 30)/10",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक कार 30 मी/से के वेग से चल रही है और अपने ब्रेक का उपयोग करती है और 10 सेकंड में रुक जाती है। कार का त्वरण क्या है?",
+          "choices": [
+            "-3 मी/से²",
+            "-5 मी/से²",
+            "-15 मी/से²",
+            "-30 मी/से²"
+          ],
+          "solution": "सही उत्तर -3 मी/से² है। समीकरण v = u + at का उपयोग करके, जहां v = 0 (अंतिम वेग), u = 30 मी/से (प्रारंभिक वेग), और t = 10 से (समय), हम a (त्वरण) का हल निकालते हैं। अन्य विकल्प गणना त्रुटि या सूत्र के गलत अर्थ के कारण गलत हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms as found in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एक गाडी 30 मी/से वेगाने चालत असताना तिच्या ब्रेक लावल्यामुळे 10 सेकंदात थांबते. गाडीचा वेग वाढ शोधा?",
+          "choices": [
+            "-3 मी/से²",
+            "-5 मी/से²",
+            "-15 मी/से²",
+            "-30 मी/से²"
+          ],
+          "solution": "योग्य उत्तर -3 मी/से² आहे. समीकरण v = u + at वापरून, जेथे v = 0 (अंतिम वेग), u = 30 मी/से (प्रारंभिक वेग), आणि t = 10 से (वेळ), आम्ही a (त्वरण) शोधतो. इतर विकल्प गणना चूक किंवा सूत्राच्या चुकीच्या अटीत असल्यामुळे चूक आहेत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi technical terms for physics concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses acceleration with change in velocity divided by distance instead of time",
+        "Confuses the time interval with the velocity change, using 30/2 instead of 30/10",
+        "Confuses the change in velocity with the initial velocity, using 30 m/s instead of the change (30 m/s - 0 m/s) in the acceleration formula."
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct and matches the key. The calculation using v = u + at is accurate, and the reasoning for the distractors aligns with common student misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/9/science/iesc104.pdf",
+          "ordinal": 19,
+          "pageStart": 16,
+          "pageEnd": 17,
+          "headingPath": [
+            "Chapter 4: Describing Motion Around Us",
+            "4.3 Kinematic Equations for Motion in a Straight",
+            "Line with Constant Acceleration"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc104.pdf",
+          "ordinal": 20,
+          "pageStart": 17,
+          "pageEnd": 18,
+          "headingPath": [
+            "Chapter 4: Describing Motion Around Us",
+            "4.3 Kinematic Equations for Motion in a Straight",
+            "Line with Constant Acceleration"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc104.pdf",
+          "ordinal": 21,
+          "pageStart": 18,
+          "pageEnd": 19,
+          "headingPath": [
+            "Chapter 4: Describing Motion Around Us",
+            "4.4 Motion in a Plane"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-22T14:12:29.054Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "A car is moving with a constant acceleration of -2 m/s² and comes to a stop after 5 seconds. What is the initial velocity of the car?",
+      "choices": [
+        "10 m/s",
+        "5 m/s",
+        "2 m/s",
+        "1 m/s"
+      ],
+      "answerIndex": 0,
+      "solution": "The correct answer is 10 m/s. Using the equation v = u + at, where v = 0 (final velocity), a = -2 m/s² (acceleration), and t = 5 s (time), we solve for u (initial velocity). The other options are incorrect due to miscalculations or misunderstanding of the equation.",
+      "checkExpr": "0 - (-2 * 5)",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक कार -2 मी/से² के नियत त्वरण से गति कर रही है और 5 सेकंड के बाद रुक जाती है। कार का प्रारंभिक वेग क्या है?",
+          "choices": [
+            "10 मी/से",
+            "5 मी/से",
+            "2 मी/से",
+            "1 मी/से"
+          ],
+          "solution": "सही उत्तर 10 मी/से है। समीकरण v = u + at का उपयोग करके, जहां v = 0 (अंतिम वेग), a = -2 मी/से² (त्वरण), और t = 5 से (समय), हम u (प्रारंभिक वेग) के लिए हल करते हैं। अन्य विकल्प गणना त्रुटि या समीकरण के असही समझ के कारण गलत हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard physics terminology as taught in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एक गाडी -2 मी/से² च्या अकरणाने एकसारख्या गतीने जात आहे आणि 5 सेकंदानंतर थांबत आहे. गाडीची प्रारंभिक वेग किती आहे?",
+          "choices": [
+            "10 मी/से",
+            "5 मी/से",
+            "2 मी/से",
+            "1 मी/से"
+          ],
+          "solution": "योग्य उत्तर 10 मी/से आहे. समीकरण v = u + at वापरून, जेथे v = 0 (अंतिम वेग), a = -2 मी/से² (अकरण), आणि t = 5 से (वेळ), आम्ही u (प्रारंभिक वेग) शोधतो. इतर उत्तरे समीकरणाच्या चुकीच्या अर्थामुळे किंवा गणनेच्या चुकीमुळे अयोग्य आहेत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi technical terms for physics concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "uses acceleration without considering the sign",
+        "uses time incorrectly in the equation",
+        "ignores the negative sign of acceleration"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly applies the kinematic equation v = u + at, with v = 0, a = -2, and t = 5, leading to u = 10 m/s. The author's reasoning for the distractors is valid and reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/9/science/iesc104.pdf",
+          "ordinal": 19,
+          "pageStart": 16,
+          "pageEnd": 17,
+          "headingPath": [
+            "Chapter 4: Describing Motion Around Us",
+            "4.3 Kinematic Equations for Motion in a Straight",
+            "Line with Constant Acceleration"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc104.pdf",
+          "ordinal": 20,
+          "pageStart": 17,
+          "pageEnd": 18,
+          "headingPath": [
+            "Chapter 4: Describing Motion Around Us",
+            "4.3 Kinematic Equations for Motion in a Straight",
+            "Line with Constant Acceleration"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc104.pdf",
+          "ordinal": 21,
+          "pageStart": 18,
+          "pageEnd": 19,
+          "headingPath": [
+            "Chapter 4: Describing Motion Around Us",
+            "4.4 Motion in a Plane"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-22T14:12:29.054Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "Which of the following is a kinematic equation for motion with constant acceleration?",
+      "choices": [
+        "v = u + at",
+        "v = u + a",
+        "s = ut + at",
+        "s = ut + a"
+      ],
+      "answerIndex": 0,
+      "solution": "The correct equation is v = u + at, which is derived from the definition of average acceleration. The other options are incorrect because they omit the time variable (t) in the acceleration term or incorrectly add acceleration without multiplying by time.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा नियत त्वरण के साथ गति के लिए गतिकी समीकरण है?",
+          "choices": [
+            "v = u + at",
+            "v = u + a",
+            "s = ut + at",
+            "s = ut + a"
+          ],
+          "solution": "सही समीकरण v = u + at है, जो औसत त्वरण के परिभाषा से व्युत्पन्न है। अन्य विकल्प गलत हैं क्योंकि वे त्वरण पद में समय चर (t) को छोड़ देते हैं या समय द्वारा गुणा किए बिना त्वरण को गलत रूप से जोड़ देते हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms as found in Hindi-medium physics textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते एक अचल वेगाच्या गतीसाठी गतिशास्त्रीय समीकरण आहे?",
+          "choices": [
+            "v = u + at",
+            "v = u + a",
+            "s = ut + at",
+            "s = ut + a"
+          ],
+          "solution": "सही समीकरण v = u + at आहे, जे औसत वेगाच्या परिभाषेपासून विकसित केले गेले आहे. इतर विकल्प अशक्य आहेत कारण ते वेगाच्या घटकात समय चल (t) विसरले आहेत किंवा वेगाशी बेरीज करताना समयाने गुणले नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for physics concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "confuses the equation by omitting time",
+        "incorrectly assumes acceleration is constant without time",
+        "omits the time variable in the acceleration term"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is option 0 (v = u + at), which is a standard kinematic equation for constant acceleration. The other options are invalid due to missing or incorrect terms. The author's reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/9/science/iesc104.pdf",
+          "ordinal": 19,
+          "pageStart": 16,
+          "pageEnd": 17,
+          "headingPath": [
+            "Chapter 4: Describing Motion Around Us",
+            "4.3 Kinematic Equations for Motion in a Straight",
+            "Line with Constant Acceleration"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc104.pdf",
+          "ordinal": 20,
+          "pageStart": 17,
+          "pageEnd": 18,
+          "headingPath": [
+            "Chapter 4: Describing Motion Around Us",
+            "4.3 Kinematic Equations for Motion in a Straight",
+            "Line with Constant Acceleration"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc104.pdf",
+          "ordinal": 21,
+          "pageStart": 18,
+          "pageEnd": 19,
+          "headingPath": [
+            "Chapter 4: Describing Motion Around Us",
+            "4.4 Motion in a Plane"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-19T16:03:27.943Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is the SI unit of average speed and average velocity?",
+      "choices": [
+        "metre per second",
+        "kilometre per hour",
+        "centimetre per second",
+        "metre per minute"
+      ],
+      "answerIndex": 0,
+      "solution": "The SI unit of average speed and average velocity is metre per second. This is the standard unit used in physics for measuring both speed and velocity. Kilometre per hour is a common unit in everyday use but not the SI unit. Centimetre per second and metre per minute are smaller or less standard units that are not typically used for these measurements.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "औसत चाल और औसत वेग का एसआई मात्रक क्या है?",
+          "choices": [
+            "मीटर प्रति सेकंड",
+            "किलोमीटर प्रति घंटा",
+            "सेंटीमीटर प्रति सेकंड",
+            "मीटर प्रति मिनट"
+          ],
+          "solution": "औसत चाल और औसत वेग का एसआई मात्रक मीटर प्रति सेकंड है। यह भौतिकी में दोनों चाल और वेग के मापन के लिए मानक मात्रक है। किलोमीटर प्रति घंटा दैनिक उपयोग में एक सामान्य मात्रक है लेकिन एसआई मात्रक नहीं है। सेंटीमीटर प्रति सेकंड और मीटर प्रति मिनट छोटे या कम मानक मात्रक हैं जिनका इन मापन के लिए आम तौर पर उपयोग नहीं किया जाता है।",
+          "imageAlt": null,
+          "critique": "All elements match the original. Hindi translation uses standard Indian textbook terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "सरासरी वेग आणि सरासरी वेगता चे एसआय एकक काय आहे?",
+          "choices": [
+            "मीटर प्रति सेकंद",
+            "किलोमीटर प्रति तास",
+            "सेंटीमीटर प्रति सेकंद",
+            "मीटर प्रति मिनिट"
+          ],
+          "solution": "सरासरी वेग आणि सरासरी वेगता चे एसआय एकक मीटर प्रति सेकंद आहे. हे भौतिकी मध्ये दोन्ही वेग आणि वेगता मापनासाठी वापरले जाणारे मानक एकक आहे. किलोमीटर प्रति तास हे रोजच्या वापरातील सामान्य एकक आहे परंतु एसआय एकक नाही. सेंटीमीटर प्रति सेकंद आणि मीटर प्रति मिनिट हे लहान किंवा कमी मानक एकक आहेत जे या मापनासाठी सामान्यतः वापरले जात नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms for physics concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses SI unit with a common unit",
+        "Does not know the correct SI unit",
+        "Misunderstands the unit of speed and velocity"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The question is straightforward and the correct answer is clearly metre per second. The author's reasoning for the distractors is valid and reflects common misconceptions among students.",
+      "sources": [
+        {
+          "document": "ncert/9/science/iesc104.pdf",
+          "ordinal": 3,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 4: Describing Motion Around Us",
+            "4.1 Motion in a Straight Line",
+            "4.1.2 Distance travelled and displacement"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc104.pdf",
+          "ordinal": 4,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 4: Describing Motion Around Us",
+            "4.1 Motion in a Straight Line",
+            "4.1.2 Distance travelled and displacement"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc104.pdf",
+          "ordinal": 5,
+          "pageStart": 5,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 4: Describing Motion Around Us",
+            "4.1 Motion in a Straight Line",
+            "4.1.3 Average speed and average velocity"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc104.pdf",
+          "ordinal": 6,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 4: Describing Motion Around Us",
+            "4.1 Motion in a Straight Line",
+            "4.1.3 Average speed and average velocity"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-19T16:03:27.943Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of the following is true about displacement?",
+      "choices": [
+        "It is never zero",
+        "Its magnitude can be greater than the total distance travelled",
+        "Its magnitude is less than or equal to the total distance travelled",
+        "Its magnitude is less than the total distance travelled in all cases"
+      ],
+      "answerIndex": 2,
+      "solution": "The correct statement is that the magnitude of displacement is less than or equal to the total distance travelled. This is because displacement is the straight-line distance between the starting and ending points, while distance is the total path length. The other options are incorrect because displacement can be zero if the starting and ending points are the same, and displacement's magnitude cannot exceed the total distance travelled.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा विस्थापन के बारे में सही है?",
+          "choices": [
+            "इसका मान कभी-भी शून्य नहीं होता",
+            "इसका परिमाण कुल तय की गई दूरी से अधिक हो सकता है",
+            "इसका परिमाण कुल तय की गई दूरी से कम या बराबर होता है",
+            "इसका परिमाण कुल तय की गई दूरी से कम होता है सभी मामलों में"
+          ],
+          "solution": "सही कथन यह है कि विस्थापन का परिमाण कुल तय की गई दूरी से कम या बराबर होता है। इसका कारण यह है कि विस्थापन शुरुआती और अंतिम बिंदुओं के बीच की सीधी दूरी होती है, जबकि दूरी कुल पथ की लंबाई होती है। अन्य विकल्प गलत हैं क्योंकि विस्थापन शून्य हो सकता है यदि शुरुआती और अंतिम बिंदु एक ही हों, और विस्थापन का परिमाण कुल तय की गई दूरी से अधिक नहीं हो सकता।",
+          "imageAlt": null,
+          "critique": "Hindi translation accurately reflects the original English question and solution, with appropriate terminology used in Indian curriculum.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी खालीलपैकी कोणते विस्थापन बद्दल खरे आहे?",
+          "choices": [
+            "ते कधीही शून्य नसते",
+            "त्याचा मापन एकूण पायाच्या लांबीपेक्षा जास्त असू शकते",
+            "त्याचा मापन एकूण पायाच्या लांबीपेक्षा कमी किंवा समान असते",
+            "त्याचा मापन एकूण पायाच्या लांबीपेक्षा कमी असते"
+          ],
+          "solution": "खरा विधान असा आहे की विस्थापनाचा मापन एकूण पायाच्या लांबीपेक्षा कमी किंवा समान असतो. हे कारण विस्थापन हे सुरुवातीच्या आणि अंतिम बिंदूमधील सीधा अंतर असतो, तर अंतर हा कुल पायाच्या लांबीचा असतो. इतर विधाने चुकीची आहेत कारण विस्थापन शून्य असू शकते जेव्हा सुरुवातीच्या आणि अंतिम बिंदू एकसारखे असतात, आणि विस्थापनाचा मापन एकूण पायाच्या लांबीपेक्षा जास्त असू शकत नाही.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the original meaning, and uses appropriate technical terms as used in Marathi-medium textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Believes displacement is never zero",
+        "Thinks displacement can be greater than distance",
+        null,
+        "Thinks displacement is always less than distance"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is option 2, as displacement's magnitude is always less than or equal to the total distance travelled. The other options reflect common misconceptions about displacement.",
+      "sources": [
+        {
+          "document": "ncert/9/science/iesc104.pdf",
+          "ordinal": 3,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 4: Describing Motion Around Us",
+            "4.1 Motion in a Straight Line",
+            "4.1.2 Distance travelled and displacement"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc104.pdf",
+          "ordinal": 4,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 4: Describing Motion Around Us",
+            "4.1 Motion in a Straight Line",
+            "4.1.2 Distance travelled and displacement"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc104.pdf",
+          "ordinal": 5,
+          "pageStart": 5,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 4: Describing Motion Around Us",
+            "4.1 Motion in a Straight Line",
+            "4.1.3 Average speed and average velocity"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc104.pdf",
+          "ordinal": 6,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 4: Describing Motion Around Us",
+            "4.1 Motion in a Straight Line",
+            "4.1.3 Average speed and average velocity"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-19T16:03:27.943Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "A bus moves on a long straight highway. Which of the following is true about its motion?",
+      "choices": [
+        "It is always at rest",
+        "It is moving in a circular path",
+        "Its direction of motion does not change",
+        "Its velocity is always zero"
+      ],
+      "answerIndex": 2,
+      "solution": "The bus is moving on a long straight highway, so its direction of motion remains constant. The other options are incorrect because the bus is in motion, not at rest, and it is not moving in a circular path. Its velocity is not zero since it is moving in a straight line.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक बस एक लंबी सीधी राजमार्ग पर चल रही है। इसकी गति के बारे में निम्नलिखित में से कौन सा सही है?",
+          "choices": [
+            "इसकी गति हमेशा विराम में है",
+            "इसकी गति वृत्ताकार पथ में है",
+            "इसकी गति की दिशा बदलती नहीं है",
+            "इसका वेग हमेशा शून्य है"
+          ],
+          "solution": "बस एक लंबी सीधी राजमार्ग पर चल रही है, अतः इसकी गति की दिशा स्थिर रहती है। अन्य विकल्प गलत हैं क्योंकि बस विराम में नहीं है बल्कि गतिमान है और यह वृत्ताकार पथ पर नहीं चल रही है। इसका वेग शून्य नहीं है क्योंकि यह सीधी रेखा में चल रही है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, technical terms match standard Hindi textbook usage, and the logic of the question and solution is preserved.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एक बस लांब सीध्या राजमार्गावर चालत आहे. तिच्या गतीबद्दल खालीलपैकी काय खरे आहे?",
+          "choices": [
+            "ती नेहमी विरामात आहे",
+            "ती वृत्ताकार मार्गावर चालत आहे",
+            "तिच्या गतीचा दिशा बदलत नाही",
+            "तिचे वेग नेहमी शून्य आहे"
+          ],
+          "solution": "बस लांब सीध्या राजमार्गावर चालत आहे, म्हणून तिच्या गतीची दिशा स्थिर राहते. इतर विकल्प अयोग्य आहेत कारण बस विरामात नाही आहे आणि वृत्ताकार मार्गावर चालत नाही. तिचा वेग शून्य नाही कारण ती सीध्या रेषेत चालत आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology consistent with textbook language.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Pupil might think the bus is not moving",
+        "Pupil might confuse straight motion with circular motion",
+        null,
+        "Pupil might not understand what velocity means when motion is in a straight line"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The question is clear and the correct answer is logically derived from the given information. The author's reasoning aligns with the physics of motion on a straight path.",
+      "sources": [
+        {
+          "document": "ncert/9/science/iesc104.pdf",
+          "ordinal": 7,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 4: Describing Motion Around Us",
+            "4.1 Motion in a Straight Line",
+            "4.1.3 Average speed and average velocity"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc104.pdf",
+          "ordinal": 8,
+          "pageStart": 7,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 4: Describing Motion Around Us",
+            "4.1 Motion in a Straight Line",
+            "4.1.4 Average acceleration"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc104.pdf",
+          "ordinal": 9,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 4: Describing Motion Around Us",
+            "4.1 Motion in a Straight Line",
+            "4.1.4 Average acceleration"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-19T16:03:27.943Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the SI unit of average acceleration?",
+      "choices": [
+        "m/s",
+        "m/s²",
+        "km/h",
+        "m/h"
+      ],
+      "answerIndex": 1,
+      "solution": "The SI unit of average acceleration is m/s² because acceleration is defined as the rate of change of velocity over time, and velocity is measured in meters per second. This results in meters per second squared as the correct unit. Other options like m/s, km/h, and m/h do not represent the correct SI unit for acceleration.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "औसत त्वरण का एसआई मात्रक क्या है?",
+          "choices": [
+            "मी/से",
+            "मी/से²",
+            "किमी/घंटा",
+            "मी/घंटा"
+          ],
+          "solution": "औसत त्वरण का एसआई मात्रक मी/से² है क्योंकि त्वरण की परिभाषा वेग में परिवर्तन की दर है और वेग मीटर प्रति सेकंड में मापा जाता है। इससे मीटर प्रति सेकंड वर्ग ठीक मात्रक प्राप्त होता है। अन्य विकल्प जैसे मी/से, किमी/घंटा और मी/घंटा त्वरण के लिए सही एसआई मात्रक नहीं हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard Hindi scientific terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "सरासरी त्वरणाचे एसआय एकक काय आहे?",
+          "choices": [
+            "मी/से",
+            "मी/से²",
+            "किमी/तास",
+            "मी/तास"
+          ],
+          "solution": "सरासरी त्वरणाचे एसआय एकक मी/से² आहे कारण त्वरण वेगाच्या वेळेच्या दराचे मापन आहे आणि वेग मीटर प्रति सेकंदमध्ये मोजला जातो. हे मीटर प्रति सेकंद वर्ग असे योग्य एकक बनते. मी/से, किमी/तास आणि मी/तास या विकल्पांमध्ये त्वरणासाठी योग्य एसआय एकक नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi technical terms for physics concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Pupil might confuse speed with acceleration",
+        null,
+        "Pupil might not know the correct SI unit for acceleration",
+        "Pupil might think the unit is similar to speed"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is m/s², which is the SI unit of acceleration. The other options are incorrect, and the author's reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/9/science/iesc104.pdf",
+          "ordinal": 7,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 4: Describing Motion Around Us",
+            "4.1 Motion in a Straight Line",
+            "4.1.3 Average speed and average velocity"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc104.pdf",
+          "ordinal": 8,
+          "pageStart": 7,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 4: Describing Motion Around Us",
+            "4.1 Motion in a Straight Line",
+            "4.1.4 Average acceleration"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc104.pdf",
+          "ordinal": 9,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 4: Describing Motion Around Us",
+            "4.1 Motion in a Straight Line",
+            "4.1.4 Average acceleration"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-19T16:03:27.943Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If an athlete runs 100 m forward and then 60 m back, what is the total distance covered?",
+      "choices": [
+        "40 m",
+        "60 m",
+        "100 m",
+        "160 m"
+      ],
+      "answerIndex": 3,
+      "solution": "The total distance is the sum of all the distances covered. The athlete runs 100 m forward and 60 m back, so the total distance is 100 + 60 = 160 m. Displacement would be 40 m, but the question asks for total distance, not displacement.",
+      "checkExpr": "100+60",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक एथलीट 100 मीटर आगे दौड़ता है और फिर 60 मीटर पीछे लौटता है, तो कुल दूरी क्या है?",
+          "choices": [
+            "40 मीटर",
+            "60 मीटर",
+            "100 मीटर",
+            "160 मीटर"
+          ],
+          "solution": "कुल दूरी सभी दूरियों के योग के बराबर होती है। एथलीट 100 मीटर आगे और 60 मीटर पीछे दौड़ता है, इसलिए कुल दूरी 100 + 60 = 160 मीटर है। विस्थापन 40 मीटर होगा, लेकिन प्रश्न कुल दूरी के बजाय विस्थापन के बारे में नहीं पूछता है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology for physics concepts like 'distance' and 'displacement'.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका खेळाडूने 100 मीटर आगेकूच केल्यानंतर 60 मीटर पाठीमागे जाऊन, एकूण अंतर किती असेल?",
+          "choices": [
+            "40 मीटर",
+            "60 मीटर",
+            "100 मीटर",
+            "160 मीटर"
+          ],
+          "solution": "एकूण अंतर हे सर्व अंतरांच्या बेरजेने दर्शवले जाते. खेळाडूने 100 मीटर आगेकूच केली आणि 60 मीटर पाठीमागे जाऊन, तर एकूण अंतर 100 + 60 = 160 मीटर असेल. विस्थापन 40 मीटर असेल, परंतु प्रश्नात एकूण अंतर विचारले आहे, नाही की विस्थापन.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for physics concepts like 'एकूण अंतर' (total distance) and 'विस्थापन' (displacement).",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Calculates displacement instead of distance",
+        "Adds only the forward distance",
+        "Subtracts the distances instead of adding them",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": null,
+      "critique": "The question correctly distinguishes between distance and displacement. The solution is sound and matches the key.",
+      "sources": [
+        {
+          "document": "ncert/9/science/iesc104.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 4: Describing Motion Around Us"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc104.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 4: Describing Motion Around Us",
+            "4.1 Motion in a Straight Line"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc104.pdf",
+          "ordinal": 2,
+          "pageStart": 3,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 4: Describing Motion Around Us",
+            "4.1 Motion in a Straight Line",
+            "4.1.2 Distance travelled and displacement"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-19T16:03:27.943Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "A girl is riding her scooter with a constant speedometer reading. Can her scooter still be accelerating?",
+      "choices": [
+        "No, acceleration is zero if speed is constant",
+        "Yes, if the direction of motion changes",
+        "Yes, if the speed increases",
+        "No, acceleration is always zero when speed is constant"
+      ],
+      "answerIndex": 1,
+      "solution": "A scooter can be accelerating even if the speedometer shows a constant reading if the direction of motion changes. This is because acceleration involves a change in velocity, which includes both speed and direction. The other options are incorrect because they do not account for the possibility of a change in direction, which is a form of acceleration.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक लड़की अचर गति मापक वाली स्कूटर पर सवार है। क्या इस स्कूटर के त्वरण हो सकता है?",
+          "choices": [
+            "नहीं, यदि गति अचर है तो त्वरण शून्य होता है",
+            "हाँ, यदि गति की दिशा बदल जाए",
+            "हाँ, यदि गति बढ़ जाए",
+            "नहीं, जब गति अचर होती है तो त्वरण हमेशा शून्य होता है"
+          ],
+          "solution": "जब गति मापक अचर रीडिंग दिखाता है तो भी स्कूटर के त्वरण हो सकता है यदि गति की दिशा बदल जाए। यह त्वरण के बराबर वेग में परिवर्तन के कारण होता है, जिसमें गति और दिशा दोनों शामिल होते हैं। अन्य विकल्प गलत हैं क्योंकि वे दिशा में परिवर्तन की संभावना को ध्यान में नहीं रखते, जो त्वरण के एक रूप है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms. The correct answer remains option (2) as in the original.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका मुलीने स्कूटर चालविला आहे आणि वेगमापक वाचन अचल आहे. स्कूटर अजूनही त्वरणात असू शकतो का?",
+          "choices": [
+            "नाही, जर वेग अचल असेल तर त्वरण शून्य असते",
+            "होय, जर गतीचा दिशा बदलेल",
+            "होय, जर वेग वाढेल",
+            "नाही, जर वेग अचल असेल तर त्वरण सदैव शून्य असते"
+          ],
+          "solution": "जर गतीचा दिशा बदलला तर स्कूटर अचल वेगमापक वाचन असताना देखील त्वरणात असू शकतो. हे त्वरण वेगाच्या बदलाशी जुळते, जो वेग आणि दिशा दोन्ही वापरतो. इतर विकल्प अचल वेगाच्या बदलाच्या शक्यतेचा विचार करत नाहीत, जो त्वरणाचा एक प्रकार आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi physics terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses speed with velocity",
+        null,
+        "Assumes acceleration is only when speed changes",
+        "Incorrectly believes speed and acceleration are always related"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The question correctly identifies that acceleration can occur even with constant speed if direction changes. The solution is sound and aligns with the correct answer. The distractors reflect common misconceptions about the difference between speed and velocity, and the nature of acceleration.",
+      "sources": [
+        {
+          "document": "ncert/9/science/iesc104.pdf",
+          "ordinal": 25,
+          "pageStart": 21,
+          "pageEnd": 22,
+          "headingPath": [
+            "Chapter 4: Describing Motion Around Us",
+            "4.4 Motion in a Plane",
+            "4.4.1 Uniform circular motion",
+            "Revise, Reflect, Refine"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc104.pdf",
+          "ordinal": 26,
+          "pageStart": 22,
+          "pageEnd": 23,
+          "headingPath": [
+            "Chapter 4: Describing Motion Around Us",
+            "4.4 Motion in a Plane",
+            "4.4.1 Uniform circular motion",
+            "गति सीमा"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc104.pdf",
+          "ordinal": 27,
+          "pageStart": 23,
+          "pageEnd": 24,
+          "headingPath": [
+            "Chapter 4: Describing Motion Around Us",
+            "4.4 Motion in a Plane",
+            "4.4.1 Uniform circular motion",
+            "The Journey Beyond"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc104.pdf",
+          "ordinal": 28,
+          "pageStart": 24,
+          "pageEnd": 24,
+          "headingPath": [
+            "Chapter 4: Describing Motion Around Us",
+            "4.4 Motion in a Plane",
+            "4.4.1 Uniform circular motion",
+            "The Journey Beyond"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-19T16:03:27.943Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "A car starts from rest and reaches 24 m/s in 6 seconds. What is the average acceleration of the car?",
+      "choices": [
+        "2 m/s²",
+        "4 m/s²",
+        "6 m/s²",
+        "8 m/s²"
+      ],
+      "answerIndex": 1,
+      "solution": "Average acceleration is calculated by dividing the change in velocity by the time taken. The change in velocity is 24 m/s - 0 m/s = 24 m/s. Dividing by 6 seconds gives 4 m/s². The other options are incorrect because they do not match the calculation of 24 m/s divided by 6 s.",
+      "checkExpr": "24/6",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक कार विराम अवस्था से शुरू होकर 6 सेकंड में 24 मी/से की गति तक पहुंच जाती है। कार का औसत त्वरण क्या है?",
+          "choices": [
+            "2 मी/से²",
+            "4 मी/से²",
+            "6 मी/से²",
+            "8 मी/से²"
+          ],
+          "solution": "औसत त्वरण को वेग में परिवर्तन को समय लेने पर विभाजित करके गणना की जाती है। वेग में परिवर्तन 24 मी/से - 0 मी/से = 24 मी/से है। 6 सेकंड से विभाजित करने पर 4 मी/से² प्राप्त होता है। अन्य विकल्प गलत हैं क्योंकि वे 24 मी/से के 6 से विभाजन के हिसाब से मेल नहीं खाते।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard physics terminology as taught in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एक गाडी विश्रांतीपासून सुरू होऊन 6 सेकंदात 24 मी/से पर्यंत पोहोचते. गाडीचे औसत वेगाच्या वाढीचे मूल्य किती आहे?",
+          "choices": [
+            "2 मी/से²",
+            "4 मी/से²",
+            "6 मी/से²",
+            "8 मी/से²"
+          ],
+          "solution": "औसत वेगाच्या वाढीचे मूल्य वेगातील बदलाला वेळेने भागल्याने मिळते. वेगातील बदल 24 मी/से - 0 मी/से = 24 मी/से आहे. 6 सेकंदाने भागल्याने 4 मी/से² मिळते. इतर विकल्प चुकीचे आहेत कारण ते 24 मी/से भागले 6 से या गणनेशी मेळ नाही बसत.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate technical terms. The correct answer remains option (2) and the distractors are still incorrect.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Divides 24 by 3 instead of 6",
+        null,
+        "Adds the velocity and time instead of dividing",
+        "Multiplies 24 by 6 instead of dividing"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct. Average acceleration is calculated as (final velocity - initial velocity) / time, which is (24 - 0)/6 = 4 m/s². The author's reasoning for the distractors is valid and reflects common student misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/9/science/iesc104.pdf",
+          "ordinal": 25,
+          "pageStart": 21,
+          "pageEnd": 22,
+          "headingPath": [
+            "Chapter 4: Describing Motion Around Us",
+            "4.4 Motion in a Plane",
+            "4.4.1 Uniform circular motion",
+            "Revise, Reflect, Refine"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc104.pdf",
+          "ordinal": 26,
+          "pageStart": 22,
+          "pageEnd": 23,
+          "headingPath": [
+            "Chapter 4: Describing Motion Around Us",
+            "4.4 Motion in a Plane",
+            "4.4.1 Uniform circular motion",
+            "गति सीमा"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc104.pdf",
+          "ordinal": 27,
+          "pageStart": 23,
+          "pageEnd": 24,
+          "headingPath": [
+            "Chapter 4: Describing Motion Around Us",
+            "4.4 Motion in a Plane",
+            "4.4.1 Uniform circular motion",
+            "The Journey Beyond"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc104.pdf",
+          "ordinal": 28,
+          "pageStart": 24,
+          "pageEnd": 24,
+          "headingPath": [
+            "Chapter 4: Describing Motion Around Us",
+            "4.4 Motion in a Plane",
+            "4.4.1 Uniform circular motion",
+            "The Journey Beyond"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-19T16:03:27.943Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "A bus is moving on a long straight highway at a constant speed. Which of the following is true about its acceleration?",
+      "choices": [
+        "It is accelerating in the direction of motion",
+        "It is accelerating in the opposite direction",
+        "It is not accelerating",
+        "It is accelerating in both directions"
+      ],
+      "answerIndex": 2,
+      "solution": "If the bus is moving at a constant speed in a straight line, its acceleration is zero. The other options are incorrect because acceleration is not present if speed and direction are constant.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक बस एक लंबी सीधी सड़क पर एक स्थिर गति से चल रही है। इसके संबंध में निम्नलिखित में से कौन सा सही है?",
+          "choices": [
+            "यह गति की दिशा में त्वरित हो रहा है",
+            "यह विपरीत दिशा में त्वरित हो रहा है",
+            "यह त्वरित नहीं हो रहा है",
+            "यह दोनों दिशाओं में त्वरित हो रहा है"
+          ],
+          "solution": "यदि बस एक सीधी रेखा में नियत गति से चल रही है तो इसका त्वरण शून्य होता है। अन्य विकल्प गलत हैं क्योंकि यदि गति और दिशा नियत हो तो त्वरण नहीं होता।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses standard physics terminology appropriate for Hindi-medium education.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एक बस एका लांब सीध्या रस्त्यावर एकसारख्या वेगाने चालत आहे. तिच्या त्वरणाबद्दल खालीलपैकी काय खरे आहे?",
+          "choices": [
+            "ती गतीच्या दिशेने त्वरित आहे",
+            "ती विरुद्ध दिशेने त्वरित आहे",
+            "ती त्वरित नाही आहे",
+            "ती दोन्ही दिशांमध्ये त्वरित आहे"
+          ],
+          "solution": "जर बस एका सीध्या रस्त्यावर एकसारख्या वेगाने चालत असेल तर तिचे त्वरण शून्य असेल. इतर विकल्प असतात कारण जेव्हा वेग आणि दिशा एकसारख्या असतात तेव्हा त्वरण असत नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for physics concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Pupil might think that motion always involves acceleration",
+        "Pupil might confuse acceleration with direction",
+        null,
+        "Pupil might think acceleration is always present in motion"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is well-constructed. The correct answer is 2, as acceleration is zero when speed and direction are constant. The distractors reflect common misconceptions about acceleration.",
+      "sources": [
+        {
+          "document": "ncert/9/science/iesc104.pdf",
+          "ordinal": 7,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 4: Describing Motion Around Us",
+            "4.1 Motion in a Straight Line",
+            "4.1.3 Average speed and average velocity"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc104.pdf",
+          "ordinal": 8,
+          "pageStart": 7,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 4: Describing Motion Around Us",
+            "4.1 Motion in a Straight Line",
+            "4.1.4 Average acceleration"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc104.pdf",
+          "ordinal": 9,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 4: Describing Motion Around Us",
+            "4.1 Motion in a Straight Line",
+            "4.1.4 Average acceleration"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-19T16:03:27.943Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "A student plots a velocity-time graph for an object moving in a straight line. The graph shows a straight line with a positive slope. What can the student conclude about the motion?",
+      "choices": [
+        "The object is moving with constant velocity",
+        "The object is moving with constant speed",
+        "The object is moving with constant acceleration",
+        "The object is moving in a circle"
+      ],
+      "answerIndex": 2,
+      "solution": "A straight line with a positive slope on a velocity-time graph indicates constant acceleration. The other options are incorrect because constant velocity would have a horizontal line, rest would have zero velocity, and circular motion would not be represented on a straight-line graph.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक छात्र एक सीधी रेखा में गतिमान वस्तु के वेग-समय ग्राफ को खींचता है। ग्राफ एक सीधी रेखा के साथ धनात्मक ढाल दिखाता है। छात्र गति के बारे में क्या निष्कर्ष निकाल सकता है?",
+          "choices": [
+            "वस्तु नियत वेग से गतिमान है",
+            "वस्तु नियत चाल से गतिमान है",
+            "वस्तु नियत त्वरण से गतिमान है",
+            "वस्तु एक वृत्त में गतिमान है"
+          ],
+          "solution": "वेग-समय ग्राफ पर धनात्मक ढाल वाली सीधी रेखा स्थिर त्वरण को दर्शाती है। अन्य विकल्प गलत हैं क्योंकि नियत वेग के लिए क्षैतिज रेखा होती है, आराम के लिए शून्य वेग होता है और वृत्ताकार गति एक सीधी रेखा ग्राफ पर प्रस्तुत नहीं की जा सकती है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English original in meaning, technical terms, and structure. The correct answer remains option (2), and all distractors are still incorrect.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका विद्यार्थीने एका वस्तूच्या गती-वेळ आलेख आखला. आलेखात एक सरळ रेषा आहे जी धनात्मक ढाल असते. विद्यार्थी गतीबद्दल काय निष्कर्ष काढू शकते?",
+          "choices": [
+            "वस्तू स्थिर वेगाने चालत आहे",
+            "वस्तू स्थिर वेगाने चालत आहे",
+            "वस्तू स्थिर त्वरणाने चालत आहे",
+            "वस्तू वर्तुळाकार रस्त्यावर चालत आहे"
+          ],
+          "solution": "गती-वेळ आलेखावर धनात्मक ढाल असलेली सरळ रेषा स्थिर त्वरणाची दुर्लक्ष करते. इतर विकल्प अयोग्य आहेत कारण स्थिर वेगासाठी क्षैतिज रेषा असते, विश्रांतीसाठी शून्य वेग असतो आणि वर्तुळाकार गती एका सरळ रेषेवर दर्शविली जात नाही.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate technical terms. The correct answer remains option (2), and the distractors are still incorrect.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Thinks a straight line means constant velocity",
+        "Confuses constant velocity with constant speed, not recognizing that acceleration is the rate of change of velocity",
+        null,
+        "Thinks circular motion can be represented on a straight-line graph"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct. A straight line with a positive slope on a velocity-time graph indicates constant acceleration. The other options are correctly dismissed as misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/9/science/iesc104.pdf",
+          "ordinal": 10,
+          "pageStart": 8,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 4: Describing Motion Around Us",
+            "4.1 Motion in a Straight Line",
+            "4.1.4 Average acceleration"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc104.pdf",
+          "ordinal": 11,
+          "pageStart": 9,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 4: Describing Motion Around Us",
+            "4.2 Graphical Representation of Motion"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc104.pdf",
+          "ordinal": 12,
+          "pageStart": 10,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 4: Describing Motion Around Us",
+            "4.2 Graphical Representation of Motion",
+            "4.2.1 Plotting graph"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-19T16:03:27.943Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "A bus moves on a long straight highway and then turns onto a circular path. What happens to its acceleration?",
+      "choices": [
+        "It remains constant",
+        "It changes direction",
+        "It becomes zero",
+        "It increases in magnitude"
+      ],
+      "answerIndex": 1,
+      "solution": "When the bus moves on a circular path, its direction of motion changes continuously, which means its acceleration also changes direction. The other options are incorrect because acceleration is not constant in circular motion and does not become zero unless the bus stops.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक बस लंबी सीधी राजमार्ग पर चलती है और फिर एक वृत्ताकार पथ पर मुड़ जाती है। इसके त्वरण पर क्या प्रभाव पड़ता है?",
+          "choices": [
+            "यह नियत रहता है",
+            "यह दिशा बदलती है",
+            "यह शून्य हो जाता है",
+            "यह परिमाण में बढ़ जाता है"
+          ],
+          "solution": "जब बस एक वृत्ताकार पथ पर चलती है तो इसकी गति की दिशा लगातार बदलती रहती है, जिसके कारण इसका त्वरण भी दिशा बदल जाता है। अन्य विकल्प गलत हैं क्योंकि वृत्ताकार गति में त्वरण नियत नहीं रहता है और बस रुक जाने पर ही यह शून्य हो जाता है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the original English question and solution, with appropriate technical terms used in a Hindi-medium context.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एक बस लांब सीध्या रस्त्यावर जाते आणि नंतर वर्तुळाकार मार्गावर जाते. तिच्या त्वरणावर काय परिणाम होतो?",
+          "choices": [
+            "ते स्थिर रहाते",
+            "ते दिशा बदलते",
+            "ते शून्य होते",
+            "ते मापात वाढते"
+          ],
+          "solution": "जेव्हा बस वर्तुळाकार मार्गावर जाते तेव्हा तिच्या गतीची दिशा सतत बदलते, ज्यामुळे तिच्या त्वरणाची दिशाही बदलते. इतर विकल्प अयोग्य आहेत कारण वर्तुळाकार गतीत त्वरण स्थिर रहात नाही आणि बस थांबल्याशिवाय त्वरण शून्य होत नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi technical terms used for physics concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Pupil might think acceleration is constant in all types of motion",
+        null,
+        "Pupil might not consider the effect of changing direction on acceleration",
+        "Pupil might think acceleration is zero if the speed is constant"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 1. The bus experiences centripetal acceleration when moving in a circular path, which changes direction even if the speed is constant. The solution correctly identifies that acceleration changes direction in circular motion.",
+      "sources": [
+        {
+          "document": "ncert/9/science/iesc104.pdf",
+          "ordinal": 7,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 4: Describing Motion Around Us",
+            "4.1 Motion in a Straight Line",
+            "4.1.3 Average speed and average velocity"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc104.pdf",
+          "ordinal": 8,
+          "pageStart": 7,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 4: Describing Motion Around Us",
+            "4.1 Motion in a Straight Line",
+            "4.1.4 Average acceleration"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc104.pdf",
+          "ordinal": 9,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 4: Describing Motion Around Us",
+            "4.1 Motion in a Straight Line",
+            "4.1.4 Average acceleration"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-19T16:03:27.943Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
     }
   ]
 }

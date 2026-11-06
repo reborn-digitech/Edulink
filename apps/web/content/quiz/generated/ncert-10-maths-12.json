@@ -180,6 +180,104 @@
       "generatedAt": "2026-10-30T05:47:04.818Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "A wooden article was made by scooping out a hemisphere from each end of a solid cylinder. If the height of the cylinder is 10 cm, and its base is of radius 3.5 cm, find the total surface area of the article.",
+      "choices": [
+        "200 cm²",
+        "250 cm²",
+        "275 cm²",
+        "300 cm²"
+      ],
+      "answerIndex": 2,
+      "solution": "The total surface area of the article includes the curved surface area of the cylinder and the curved surface areas of the two hemispheres. The curved surface area of the cylinder is 2πrh = 2π(3.5)(10) = 70π. The curved surface area of the two hemispheres is 2 × 2πr² = 4π(3.5)² = 49π. So, the total surface area is 70π + 49π = 119π ≈ 275 cm². The option 200 cm² is too low. The option 250 cm² is an incorrect approximation. The option 300 cm² is an overestimation.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक लकड़ी का लेख एक ठोस बेलन के दोनों सिरों से एक अर्धगोला निकालकर बनाया गया। यदि बेलन की ऊंचाई 10 सेमी है, और इसका आधार 3.5 सेमी त्रिज्या का है, तो लेख का कुल पृष्ठीय क्षेत्रफल ज्ञात कीजिए।",
+          "choices": [
+            "200 वर्ग सेमी",
+            "250 वर्ग सेमी",
+            "275 वर्ग सेमी",
+            "300 वर्ग सेमी"
+          ],
+          "solution": "लेख का कुल पृष्ठीय क्षेत्रफल बेलन के वक्र पृष्ठीय क्षेत्रफल और दोनों अर्धगोलों के वक्र पृष्ठीय क्षेत्रफल के योग से प्राप्त होता है। बेलन के वक्र पृष्ठीय क्षेत्रफल 2πrh = 2π(3.5)(10) = 70π है। दोनों अर्धगोलों के वक्र पृष्ठीय क्षेत्रफल 2 × 2πr² = 4π(3.5)² = 49π है। अतः कुल पृष्ठीय क्षेत्रफल 70π + 49π = 119π ≈ 275 वर्ग सेमी है। विकल्प 200 वर्ग सेमी बहुत कम है। विकल्प 250 वर्ग सेमी गलत अनुमान है। विकल्प 300 वर्ग सेमी अत्यधिक अनुमान है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms as found in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एक लाकडीचा वस्तू एका घन वर्तुळाकार बेलाच्या प्रत्येक टोकावर एका अर्धगोलाचे खोदणे करून बनवला गेला. जर बेलाची उंची 10 सेमी असेल आणि त्याच्या तळाची त्रिज्या 3.5 सेमी असेल, तर वस्तूचे एकूण पृष्ठभाग क्षेत्र शोधा.",
+          "choices": [
+            "200 सेमी²",
+            "250 सेमी²",
+            "275 सेमी²",
+            "300 सेमी²"
+          ],
+          "solution": "वस्तूचे एकूण पृष्ठभाग क्षेत्र बेलाच्या वक्र पृष्ठभागाचे क्षेत्र आणि दोन अर्धगोलांच्या वक्र पृष्ठभागाचे क्षेत्र यांच्या बेरजेमध्ये समाविष्ट आहे. बेलाच्या वक्र पृष्ठभागाचे क्षेत्र 2πrh = 2π(3.5)(10) = 70π आहे. दोन अर्धगोलांच्या वक्र पृष्ठभागाचे क्षेत्र 2 × 2πr² = 4π(3.5)² = 49π आहे. तर, एकूण पृष्ठभाग क्षेत्र 70π + 49π = 119π ≈ 275 सेमी² आहे. 200 सेमी² च्या पर्यायाचे मूल्य खूप कमी आहे. 250 सेमी² चा पर्याय अपूर्ण मूल्यांकन आहे. 300 सेमी² चा पर्याय अतिमूल्यांकन आहे.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the original meaning, and uses appropriate technical terms as used in Marathi textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "underestimates surface area",
+        "incorrect approximation",
+        null,
+        "overestimates surface area"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly calculates the curved surface area of the cylinder and the two hemispheres, and arrives at the correct answer of 275 cm². The reasoning for the distractors is valid and reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/10/mathematics/jemh112.pdf",
+          "ordinal": 3,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 12: Surface Areas and Volumes",
+            "URFACE REAS AND OLUMES"
+          ]
+        },
+        {
+          "document": "ncert/10/mathematics/jemh112.pdf",
+          "ordinal": 4,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 12: Surface Areas and Volumes",
+            "URFACE REAS AND OLUMES"
+          ]
+        },
+        {
+          "document": "ncert/10/mathematics/jemh112.pdf",
+          "ordinal": 5,
+          "pageStart": 8,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 12: Surface Areas and Volumes",
+            "URFACE REAS AND OLUMES"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T18:39:37.019Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
     }
   ]
 }

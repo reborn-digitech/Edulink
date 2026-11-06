@@ -112,6 +112,284 @@
       "generatedAt": "2026-10-28T06:24:36.675Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "What was the name of the lake shown in the picture?",
+      "choices": [
+        "Ghadsisar",
+        "Jaisalmer",
+        "Al-Biruni",
+        "Rajasthan"
+      ],
+      "answerIndex": 0,
+      "solution": "Ghadsisar is the correct answer because 'sar' means lake in the local language, and the name directly refers to a lake. Jaisalmer is a city, Al-Biruni is a person, and Rajasthan is a state, none of which are names of lakes.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "चित्र में दिखाए गए झील का नाम क्या था?",
+          "choices": [
+            "घाड़सिसर",
+            "जैसलमेर",
+            "अल-बिरूनी",
+            "राजस्थान"
+          ],
+          "solution": "घाड़सिसर सही उत्तर है क्योंकि 'सर' स्थानीय भाषा में झील के अर्थ में आता है, और नाम सीधे झील को संदर्भित करता है। जैसलमेर एक शहर है, अल-बिरूनी एक व्यक्ति है, और राजस्थान एक राज्य है, जो कोई झील के नाम नहीं हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Hindi terminology used for geographical terms.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "चित्रात दर्शविलेल्या तलावाचे नाव काय होते?",
+          "choices": [
+            "घडसिसर",
+            "जैसलमेर",
+            "अल-बिरूनी",
+            "राजस्थान"
+          ],
+          "solution": "घडसिसर हे बरोबर उत्तर आहे कारण 'सर' हा शब्द स्थानिक भाषेत तलाव अर्थ घेतो आणि नाव सीधा तलावाच्या बाबतीत दर्शवितो. जैसलमेर एक शहर आहे, अल-बिरूनी एक व्यक्ती आहे आणि राजस्थान एक राज्य आहे, जे कोणत्याही तलावाचे नाव नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, with appropriate Marathi terms for 'lake' and proper nouns correctly transliterated. The logic of the solution matches the original.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses the name of the place with the name of the lake",
+        "Refers to the person who built the lake",
+        "Refers to the region where the lake is located"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 0 (Ghadsisar), as the passage explicitly states that the lake is named Ghadsisar. The other options are either people, places, or regions, not the name of the lake itself.",
+      "sources": [
+        {
+          "document": "ncert/5/environmental-studies/eeap106.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 6: Every Drop Counts"
+          ]
+        },
+        {
+          "document": "ncert/5/environmental-studies/eeap106.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 6: Every Drop Counts"
+          ]
+        },
+        {
+          "document": "ncert/5/environmental-studies/eeap106.pdf",
+          "ordinal": 2,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 6: Every Drop Counts"
+          ]
+        }
+      ],
+      "edition": "2024 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-23T01:24:03.332Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If a village in Rajasthan has no wells or lakes, what might be the most likely reason?",
+      "choices": [
+        "The area has very little rainfall",
+        "The soil is too hard to dig wells",
+        "The people do not know how to build wells",
+        "The area is too flat for water to collect"
+      ],
+      "answerIndex": 0,
+      "solution": "The area having very little rainfall would make it unlikely for natural water sources like wells or lakes to form. Without sufficient rain, there would be no water to replenish underground sources or collect in lakes. The other options, such as hard soil or lack of knowledge, are not directly related to the absence of water in the region.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "राजस्थान में एक गाँव में कुओं या झीलों के न होने के कारण से सबसे संभावित क्या हो सकता है?",
+          "choices": [
+            "क्षेत्र में बहुत कम बरसात होती है",
+            "मिट्टी बहुत कठोर है जिससे कुओं की खुदाई नहीं की जा सकती",
+            "लोग कुओं के निर्माण के बारे में नहीं जानते",
+            "क्षेत्र बहुत समतल है जहाँ पानी एकत्र नहीं हो सकता"
+          ],
+          "solution": "कम बरसात वाले क्षेत्र में प्राकृतिक जल स्रोत जैसे कुएँ या झीलें बनने की संभावना कम हो जाती है। पर्याप्त बरसात न होने के कारण भूमिगत स्रोतों के पुनर्भरण या झीलों में पानी एकत्र होने में असमर्थता होती है। अन्य विकल्प जैसे कि कठोर मिट्टी या ज्ञान की कमी, क्षेत्र में पानी की अनुपस्थिति से सीधा संबंध नहीं रखते।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains the original meaning, and uses appropriate regional terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "राजस्थानमधील एका गावात वाळवंट असेल आणि त्यात कोणत्याही नाल्या किंवा तलावांची नसतील, तर त्याचे सर्वात शक्य कारण काय असू शकते?",
+          "choices": [
+            "त्या भागात खूप कमी पाऊस पडतो",
+            "माती खोदण्यासाठी खूप कठीण असते",
+            "लोकांना नाल्या बांधण्याची ज्ञान नसते",
+            "त्या भागात पाणी एकत्रित होण्यासाठी खूप सपाट असतो"
+          ],
+          "solution": "त्या भागात खूप कमी पाऊस पडल्यामुळे नैसर्गिक पाणी स्रोतांच्या निर्मितीला अडचण येते. पुरेसा पाऊस नसल्यामुळे खोल पाणी स्रोतांचे पुनर्भरण होत नाही किंवा तलावांमध्ये पाणी एकत्र होत नाही. उरलेल्या विकल्पांमध्ये, कठीण माती किंवा ज्ञानाचा अभाव हे भागातील पाणी अभावाशी सीधा संबंध नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for geographical and hydrological concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Assumes a geographical feature is the main issue",
+        "Incorrectly assumes a lack of knowledge as the cause",
+        "Misinterprets the role of the landscape"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 0, as the passage supports the idea that low rainfall is the most likely reason for a village in Rajasthan having no wells or lakes. The other options are not supported by the passage and represent common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/5/environmental-studies/eeap106.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 6: Every Drop Counts"
+          ]
+        },
+        {
+          "document": "ncert/5/environmental-studies/eeap106.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 6: Every Drop Counts"
+          ]
+        },
+        {
+          "document": "ncert/5/environmental-studies/eeap106.pdf",
+          "ordinal": 2,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 6: Every Drop Counts"
+          ]
+        }
+      ],
+      "edition": "2024 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-23T01:24:03.332Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "What could happen if a person puts a pump directly in the Jal Board pipeline?",
+      "choices": [
+        "Other people may not get enough water",
+        "The water pressure will increase",
+        "The pump will draw water too fast",
+        "The Jal Board will stop providing water"
+      ],
+      "answerIndex": 0,
+      "solution": "If a person puts a pump directly in the pipeline, other people may not get enough water because the pump could take more water than is available, reducing the amount for others. The water pressure might not necessarily increase because the system is designed to handle a certain flow rate. The pump drawing water too fast could cause issues, but the main problem is the limited supply. The Jal Board would not stop providing water simply because one person uses a pump.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक व्यक्ति जल बोर्ड के पाइपलाइन में सीधे पंप लगा दे तो क्या हो सकता है?",
+          "choices": [
+            "अन्य लोगों को पर्याप्त पानी नहीं मिल सकता",
+            "पानी का दबाव बढ़ जाएगा",
+            "पंप बहुत तेजी से पानी खींचेगा",
+            "जल बोर्ड पानी प्रदान करना बंद कर देगा"
+          ],
+          "solution": "अगर कोई व्यक्ति पाइपलाइन में सीधे पंप लगा दे तो अन्य लोगों को पर्याप्त पानी नहीं मिल सकता क्योंकि पंप उपलब्ध पानी से अधिक ले सकता है, जिससे अन्य लोगों के लिए पानी की मात्रा कम हो जाएगी। पानी का दबाव आवश्यक रूप से बढ़ जाएगा क्योंकि प्रणाली एक निश्चित प्रवाह दर को संभालने के लिए डिज़ाइन की गई है। पंप बहुत तेजी से पानी खींचना बर्ताव के कारण समस्या हो सकती है, लेकिन मुख्य समस्या सीमित आपूर्ति है। जल बोर्ड एक व्यक्ति द्वारा पंप के उपयोग के कारण पानी प्रदान करना बंद नहीं करेगा।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate technical terms like 'जल बोर्ड' which is the standard term in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एक व्यक्ती पंप लाइनमध्ये सीधा ठेवल्यास काय होऊ शकते?",
+          "choices": [
+            "इतर लोकांना पुरेसे पाणी मिळणार नाही",
+            "पाण्याचा दाब वाढेल",
+            "पंप पाणी खूप वेगाने ओतेल",
+            "जल बोर्ड पाणी पुरवत थांबवेल"
+          ],
+          "solution": "एक व्यक्ती पंप लाइनमध्ये सीधा ठेवल्यास इतर लोकांना पुरेसे पाणी मिळणार नाही कारण पंप उपलब्ध पाण्यापेक्षा जास्त पाणी घेऊ शकतो, ज्यामुळे इतरांसाठी पाण्याची रक्कम कमी होईल. पाण्याचा दाब खात्रीशीरपणे वाढेल असे नाही कारण प्रणाली निश्चित प्रवाह दराचा विचार करून डिझाइन केली गेली आहे. पंप पाणी खूप वेगाने ओतणे अडचणी निर्माण करू शकते, परंतु मुख्य समस्या ही सीमित पुरवठा आहे. जल बोर्ड फक्त एका व्यक्तीने पंप वापरल्यामुळे पाणी पुरवत थांबवणार नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for technical terms like 'Jal Board' and 'pump'.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Believes adding a pump will increase water pressure instead of causing shortages",
+        "students may think that adding a pump will cause water to be used up more quickly",
+        "Believes that the Jal Board will retaliate by cutting off water supply to the entire colony as punishment"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 0, as the action would lead to unequal distribution of limited water. The other options reflect common misconceptions about water pressure, usage speed, and organizational retaliation.",
+      "sources": [
+        {
+          "document": "ncert/5/environmental-studies/eeap106.pdf",
+          "ordinal": 3,
+          "pageStart": 7,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 6: Every Drop Counts",
+            "This is how we get water"
+          ]
+        },
+        {
+          "document": "ncert/5/environmental-studies/eeap106.pdf",
+          "ordinal": 4,
+          "pageStart": 9,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 6: Every Drop Counts",
+            "This is how we get water"
+          ]
+        }
+      ],
+      "edition": "2024 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-23T01:24:03.332Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
     }
   ]
 }

@@ -847,6 +847,1003 @@
       "generatedAt": "2026-11-02T04:48:04.319Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is the minimum frequency of sound that humans can hear?",
+      "choices": [
+        "20 Hz",
+        "200 Hz",
+        "2000 Hz",
+        "20000 Hz"
+      ],
+      "answerIndex": 0,
+      "solution": "The minimum frequency of sound that humans can hear is 20 Hz, as this is the lowest frequency typically detectable by the human ear. Frequencies higher than 20 Hz, such as 200 Hz, 2000 Hz, and 20000 Hz, are all above this threshold and thus not the minimum. The option '20 Hz' is correct because it represents the lower limit of human auditory perception.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "मनुष्य द्वारा सुने जा सकने वाली ध्वनि की न्यूनतम आवृत्ति क्या है?",
+          "choices": [
+            "20 हर्ट्ज",
+            "200 हर्ट्ज",
+            "2000 हर्ट्ज",
+            "20000 हर्ट्ज"
+          ],
+          "solution": "मनुष्य द्वारा सुने जा सकने वाली ध्वनि की न्यूनतम आवृत्ति 20 हर्ट्ज है, क्योंकि यह मानव कान द्वारा सामान्यतः अनुभव की जा सकने वाली निम्नतम आवृत्ति है। 20 हर्ट्ज से अधिक आवृत्ति, जैसे 200 हर्ट्ज, 2000 हर्ट्ज और 20000 हर्ट्ज, इस सीमा से ऊपर हैं और इसलिए न्यूनतम नहीं हैं। विकल्प '20 हर्ट्ज' सही है क्योंकि यह मानव श्रवण अनुभव की निम्न सीमा का प्रतिनिधित्व करता है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms. The correct answer remains in the same position (option 1).",
+          "flag": null
+        },
+        "mr": {
+          "stem": "माणसांना ऐकता येणारा आवाजाचा न्यूनतम आवृत्ती काय आहे?",
+          "choices": [
+            "20 हर्ट्ज",
+            "200 हर्ट्ज",
+            "2000 हर्ट्ज",
+            "20000 हर्ट्ज"
+          ],
+          "solution": "माणसांना ऐकता येणारा आवाजाचा न्यूनतम आवृत्ती 20 हर्ट्ज आहे, कारण ही मानवी कानाच्या श्रवणाच्या निर्देशकांतील सर्वात खालची आवृत्ती आहे. 20 हर्ट्ज पेक्षा जास्त आवृत्ती, जसे की 200 हर्ट्ज, 2000 हर्ट्ज आणि 20000 हर्ट्ज, या निर्देशकापेक्षा जास्त असल्याने त्या न्यूनतम नाहीत. '20 हर्ट्ज' विकल्प बरोबर आहे कारण तो मानवी श्रवणाच्या निर्देशकाच्या खालच्या मर्यादेला दर्शवतो.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms for frequency (हर्ट्ज) and auditory perception.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "confuses the lower limit of hearing with the upper limit",
+        "selects a frequency that is too high for the lower limit",
+        "Confuses the upper limit of human hearing with the lower limit"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 20 Hz, as it is the lower limit of human hearing. The author's reasoning is sound, and the misconceptions listed for the distractors are plausible for students.",
+      "sources": [
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 136,
+          "pageStart": 134,
+          "pageEnd": 135,
+          "headingPath": [
+            "18. Sound : Production of Sound"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 137,
+          "pageStart": 135,
+          "pageEnd": 135,
+          "headingPath": [
+            "18. Sound : Production of Sound",
+            "t t t"
+          ]
+        }
+      ],
+      "edition": "First Edition 2017",
+      "generatedAt": "2026-10-31T18:58:22.745Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the unit of frequency?",
+      "choices": [
+        "Hertz",
+        "Decibel",
+        "Newton",
+        "Pascal"
+      ],
+      "answerIndex": 0,
+      "solution": "Hertz is the unit used to measure frequency, which is the number of cycles per second. Decibel measures sound intensity, Newton measures force, and Pascal measures pressure. Therefore, Hertz is the correct answer.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "आवृत्ति का मात्रक क्या है?",
+          "choices": [
+            "हर्ट्ज",
+            "डेसीबल",
+            "न्यूटन",
+            "पास्कल"
+          ],
+          "solution": "हर्ट्ज आवृत्ति को मापने के लिए प्रयुक्त मात्रक है जो प्रति सेकंड चक्रों की संख्या है। डेसीबल ध्वनि तीव्रता को मापता है, न्यूटन बल को मापता है और पास्कल दबाव को मापता है। इसलिए हर्ट्ज सही उत्तर है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, with no changes in meaning, correct option position, and appropriate use of Hindi scientific terms.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "आवृत्तीचे एकक काय आहे?",
+          "choices": [
+            "हर्ट्झ",
+            "डेसिबेल",
+            "न्यूटन",
+            "पास्कल"
+          ],
+          "solution": "हर्ट्झ हे आवृत्ती मोजण्यासाठी वापरले जाणारे एकक आहे, जे प्रति सेकंद चक्रांच्या संख्येचे माप आहे. डेसिबेल ध्वनी तीव्रतेचे माप आहे, न्यूटन बलाचे माप आहे आणि पास्कल दाबाचे माप आहे. म्हणून, हर्ट्झ हे योग्य उत्तर आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses frequency with sound level",
+        "Confuses frequency with force",
+        "Confuses frequency with pressure"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is Hertz, as frequency is measured in Hertz. The other options are commonly confused with other physical quantities (sound level, force, pressure), which aligns with typical student misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 133,
+          "pageStart": 131,
+          "pageEnd": 132,
+          "headingPath": [
+            "18. Sound : Production of Sound"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 134,
+          "pageStart": 132,
+          "pageEnd": 133,
+          "headingPath": [
+            "18. Sound : Production of Sound"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 135,
+          "pageStart": 133,
+          "pageEnd": 134,
+          "headingPath": [
+            "18. Sound : Production of Sound"
+          ]
+        }
+      ],
+      "edition": "First Edition 2017",
+      "generatedAt": "2026-10-31T18:58:22.745Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of the following is a use of ultrasonic sound?",
+      "choices": [
+        "To observe internal organs of the body",
+        "To produce music",
+        "To measure temperature",
+        "To create fire"
+      ],
+      "answerIndex": 0,
+      "solution": "Ultrasonic sound is used in medical imaging to observe internal organs of the body because it can penetrate tissues and create detailed images. Producing music, measuring temperature, and creating fire are not applications of ultrasonic sound based on scientific principles.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा पराश्रव्य ध्वनि का उपयोग है?",
+          "choices": [
+            "शरीर के आंतरिक अंगों का अवलोकन करना",
+            "संगीत उत्पन्न करना",
+            "तापमान मापना",
+            "अग्नि उत्पन्न करना"
+          ],
+          "solution": "पराश्रव्य ध्वनि चिकित्सा छवि बनाने में उपयोग की जाती है जिससे शरीर के आंतरिक अंगों का अवलोकन किया जा सकता है क्योंकि यह ऊतकों में प्रवेश कर सकती है और विस्तृत छवियां बना सकती है। संगीत उत्पन्न करना, तापमान मापना और अग्नि उत्पन्न करना वैज्ञानिक सिद्धांतों के आधार पर पराश्रव्य ध्वनि के अनुप्रयोग नहीं हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms as found in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते अल्ट्रासॉनिक ध्वनीचे उपयोग आहे?",
+          "choices": [
+            "शरीराच्या आंतरिक अवयवांचे निरीक्षण करणे",
+            "गाणे तयार करणे",
+            "तापमान मोजणे",
+            "आग तयार करणे"
+          ],
+          "solution": "अल्ट्रासॉनिक ध्वनी चिकित्सा छायाचित्रणात वापरली जाते कारण ती ऊतींमध्ये प्रवेश करू शकते आणि विस्तृत चित्र तयार करू शकते. गाणे तयार करणे, तापमान मोजणे आणि आग तयार करणे हे अल्ट्रासॉनिक ध्वनीचे वैज्ञानिक तत्त्वांवर आधारित उपयोग नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms. The correct answer remains option (1) and the distractors are still incorrect.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses the use of ultrasonic sound with another application",
+        "Mistakes a general activity for a specific use of ultrasonic sound",
+        "Chooses an unrelated activity to the topic"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 0, as ultrasonic sound is indeed used for observing internal organs of the body, such as in medical imaging. The other options are not valid uses of ultrasonic sound, and the author's reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 136,
+          "pageStart": 134,
+          "pageEnd": 135,
+          "headingPath": [
+            "18. Sound : Production of Sound"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 137,
+          "pageStart": 135,
+          "pageEnd": 135,
+          "headingPath": [
+            "18. Sound : Production of Sound",
+            "t t t"
+          ]
+        }
+      ],
+      "edition": "First Edition 2017",
+      "generatedAt": "2026-10-31T18:58:22.745Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If the length of the free part of a ruler is decreased, what happens to the frequency of the sound it produces?",
+      "choices": [
+        "It increases",
+        "It decreases",
+        "It remains the same",
+        "It becomes zero"
+      ],
+      "answerIndex": 0,
+      "solution": "When the length of the free part of a ruler is decreased, the frequency of the sound it produces increases because shorter lengths vibrate more rapidly. A shorter ruler has less mass and a higher natural frequency of vibration. This results in a higher pitch, so the frequency does not decrease, remain the same, or become zero.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक रूलर के मुक्त भाग की लंबाई कम कर दी जाती है, तो उसके द्वारा उत्पन्न ध्वनि की आवृत्ति क्या होती है?",
+          "choices": [
+            "यह बढ़ जाती है",
+            "यह घट जाती है",
+            "यह समान रहती है",
+            "यह शून्य हो जाती है"
+          ],
+          "solution": "जब एक रूलर के मुक्त भाग की लंबाई कम कर दी जाती है, तो उसके द्वारा उत्पन्न ध्वनि की आवृत्ति बढ़ जाती है क्योंकि छोटी लंबाई अधिक तेजी से कंपन करती है। एक छोटा रूलर के पास कम द्रव्यमान होता है और इसकी कंपन की प्राकृतिक आवृत्ति अधिक होती है। इससे उच्च ध्वनि के लिए आवृत्ति घटती नहीं है, समान नहीं रहती है या शून्य नहीं होती है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, technical terms are appropriately used in Hindi, and the logic of the solution matches the English version.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "रुलरच्या मुक्त भागाची लांबी कमी केल्यास त्यामुळे उत्पन्न होणाऱ्या आवाजाची वारंवारता काय होते?",
+          "choices": [
+            "ती वाढते",
+            "ती कमी होते",
+            "ती बरोबर राहते",
+            "ती शून्य होते"
+          ],
+          "solution": "जेव्हा रुलरच्या मुक्त भागाची लांबी कमी केली जाते तेव्हा त्यामुळे उत्पन्न होणाऱ्या आवाजाची वारंवारता वाढते कारण लहान लांबी जलद विद्युत विस्तार करतात. लहान रुलरमध्ये जास्त द्रव्यमान असते आणि त्याची विद्युत विस्ताराची प्राकृतिक वारंवारता जास्त असते. यामुळे उच्च टोन उत्पन्न होतो, म्हणून वारंवारता कमी होत नाही, बरोबर राहत नाही किंवा शून्य होत नाही.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate technical terms. The solution correctly identifies option (1) as the correct answer, and the distractors remain incorrect.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses length with frequency",
+        "Believes length has no effect",
+        "Confuses frequency with zero"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-constructed and the solution is correct. The reasoning aligns with the physics of sound production in vibrating objects, where shorter lengths result in higher frequencies.",
+      "sources": [
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 133,
+          "pageStart": 131,
+          "pageEnd": 132,
+          "headingPath": [
+            "18. Sound : Production of Sound"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 134,
+          "pageStart": 132,
+          "pageEnd": 133,
+          "headingPath": [
+            "18. Sound : Production of Sound"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 135,
+          "pageStart": 133,
+          "pageEnd": 134,
+          "headingPath": [
+            "18. Sound : Production of Sound"
+          ]
+        }
+      ],
+      "edition": "First Edition 2017",
+      "generatedAt": "2026-10-31T18:58:22.745Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If the amplitude of a sound is decreased, what happens to its loudness?",
+      "choices": [
+        "It increases",
+        "It decreases",
+        "It remains the same",
+        "It becomes zero"
+      ],
+      "answerIndex": 1,
+      "solution": "Loudness is directly related to the amplitude of a sound wave. When the amplitude decreases, the energy carried by the wave also decreases, resulting in a quieter sound. Therefore, the correct answer is that it decreases. The other options do not align with the physical relationship between amplitude and loudness.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि ध्वनि के आयाम में कमी आती है, तो इसकी तीव्रता पर क्या प्रभाव पड़ता है?",
+          "choices": [
+            "यह बढ़ जाता है",
+            "यह घट जाता है",
+            "यह समान रहता है",
+            "यह शून्य हो जाता है"
+          ],
+          "solution": "तीव्रता ध्वनि तरंग के आयाम से सीधे संबंधित होती है। जब आयाम कम हो जाता है, तो तरंग द्वारा ले जाए जाने वाली ऊर्जा भी कम हो जाती है, जिसके परिणामस्वरूप ध्वनि कम तीव्र हो जाती है। अतः सही उत्तर यह है कि यह घट जाता है। अन्य विकल्प आयाम और तीव्रता के भौतिक संबंध के साथ मेल नहीं खाते।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. All options are correctly translated, and the correct answer remains option (2). The technical terms like 'आयाम' (amplitude) and 'तीव्रता' (loudness) are standard in Hindi science textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर एखाद्या आवाजाच्या आयामात घट होत असेल, तर त्याच्या तीव्रतेवर काय परिणाम होतो?",
+          "choices": [
+            "ते वाढते",
+            "ते घटते",
+            "ते त्याच राहते",
+            "ते शून्य होते"
+          ],
+          "solution": "तीव्रता आवाजाच्या तरंगाच्या आयामाशी थेट संबंधित असते. जेव्हा आयाम कमी होतो तेव्हा तरंगाद्वारे वाहिलेल्या ऊर्जेतही कमी होते, ज्यामुळे आवाज अधिक निर्जीव होतो. त्यामुळे, योग्य उत्तर म्हणजे ते घटते. इतर विकल्प आयाम आणि तीव्रतेमधील भौतिक संबंधाशी जुळत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Assumes loudness increases with amplitude",
+        null,
+        "Believes loudness is unaffected by amplitude",
+        "Chooses an unrealistic outcome"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 1, as loudness is directly related to the amplitude of a sound wave. The reasoning provided by the author is accurate and aligns with scientific principles.",
+      "sources": [
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 136,
+          "pageStart": 134,
+          "pageEnd": 135,
+          "headingPath": [
+            "18. Sound : Production of Sound"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 137,
+          "pageStart": 135,
+          "pageEnd": 135,
+          "headingPath": [
+            "18. Sound : Production of Sound",
+            "t t t"
+          ]
+        }
+      ],
+      "edition": "First Edition 2017",
+      "generatedAt": "2026-10-31T18:58:22.745Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "Which of the following is an example of a sound with a frequency less than 20 Hz?",
+      "choices": [
+        "The hum of a mosquito",
+        "The roar of a lion",
+        "The sound of a whale",
+        "The sound of a normal conversation"
+      ],
+      "answerIndex": 2,
+      "solution": "The sound of a whale is an example of a sound with a frequency less than 20 Hz because such low-frequency sounds are produced by large animals and are classified as infrasonic. The hum of a mosquito and the roar of a lion are higher in frequency and fall within the range of human hearing. A normal conversation also occurs at frequencies above 20 Hz, which is within the audible range for most people.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सी 20 हर्ट्ज से कम आवृत्ति की ध्वनि का उदाहरण है?",
+          "choices": [
+            "मक्खी का गुरुर",
+            "सिंह की गर्जना",
+            "व्हेल की ध्वनि",
+            "सामान्य बातचीत की ध्वनि"
+          ],
+          "solution": "व्हेल की ध्वनि 20 हर्ट्ज से कम आवृत्ति की ध्वनि का उदाहरण है क्योंकि ऐसी कम आवृत्ति की ध्वनि बड़े जानवरों द्वारा उत्पन्न की जाती है और इन्फ्रासोनिक के रूप में वर्गीकृत की जाती है। मक्खी का गुरुर और सिंह की गर्जना उच्च आवृत्ति में होती है और मानव श्रवण की सीमा के भीतर आती है। एक सामान्य बातचीत भी 20 हर्ट्ज से ऊपर आवृत्ति पर होती है, जो अधिकांश लोगों के लिए श्रवणीय सीमा में होती है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Hindi technical terms.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणता 20 हर्ट्झ पेक्षा कमी विस्ताराचा आवाज असलेल्या आवाजाचा उदाहरण आहे?",
+          "choices": [
+            "माशीचा गुरगुरा",
+            "सिंहाचा गर्जना",
+            "ह्यूमनचा आवाज",
+            "सामान्य वादविवादाचा आवाज"
+          ],
+          "solution": "ह्यूमनचा आवाज 20 हर्ट्झ पेक्षा कमी विस्ताराचा आवाज असलेल्या आवाजाचा उदाहरण आहे कारण अशा कमी विस्ताराच्या आवाजाचे उत्पादन मोठ्या प्राण्यांमार्फत केले जाते आणि त्यांना इन्फ्रासोनिक म्हणतात. माशीचा गुरगुरा आणि सिंहाचा गर्जना उच्च विस्ताराच्या आवाजांचे उदाहरण आहेत आणि मानवी ऐकण्याच्या परिसरात येतात. सामान्य वादविवादाचा आवाज देखील 20 हर्ट्झ पेक्षा जास्त विस्ताराच्या आवाजांमध्ये येतो, जे बहुतेक लोकांसाठी ऐकता येणारा परिसर आहे.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate and maintains the original meaning, with appropriate technical terms used.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the frequency of mosquito sounds with infrasonic sounds.",
+        "Confuses the frequency of lion sounds with infrasonic sounds.",
+        null,
+        "Believes that normal conversation involves infrasonic frequencies, which is incorrect."
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 2 (the sound of a whale), as whales produce infrasonic sounds below 20 Hz. The other options are within the audible range for humans.",
+      "sources": [
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 133,
+          "pageStart": 131,
+          "pageEnd": 132,
+          "headingPath": [
+            "18. Sound : Production of Sound"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 134,
+          "pageStart": 132,
+          "pageEnd": 133,
+          "headingPath": [
+            "18. Sound : Production of Sound"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 135,
+          "pageStart": 133,
+          "pageEnd": 134,
+          "headingPath": [
+            "18. Sound : Production of Sound"
+          ]
+        }
+      ],
+      "edition": "First Edition 2017",
+      "generatedAt": "2026-10-31T18:58:22.745Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "If a student claps near a smartphone and the app records the sound, what does the amplitude of the wave in the app represent?",
+      "choices": [
+        "The frequency of the sound",
+        "The loudness of the sound",
+        "The pitch of the sound",
+        "The speed of the sound"
+      ],
+      "answerIndex": 1,
+      "solution": "The amplitude of a sound wave corresponds to how much the air particles are displaced, which is directly related to the loudness of the sound. Frequency affects pitch, not amplitude, and the speed of sound is not represented by the wave's height on the app. Therefore, the correct answer is the loudness of the sound.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि कोई छात्र एक स्मार्टफोन के पास तालियाँ बजाता है और एप ध्वनि रिकॉर्ड करता है, तो एप में तरंग का आयाम क्या प्रतिनिधित्व करता है?",
+          "choices": [
+            "ध्वनि की आवृत्ति",
+            "ध्वनि की तीव्रता",
+            "ध्वनि की उच्चारण शैली",
+            "ध्वनि की गति"
+          ],
+          "solution": "ध्वनि तरंग के आयाम का अर्थ हवा के कणों के विस्थापन के साथ होता है, जो ध्वनि की तीव्रता से सीधे संबंधित होता है। आवृत्ति उच्चारण शैली को प्रभावित करती है, आयाम को नहीं, और ध्वनि की गति एप पर तरंग की ऊंचाई द्वारा प्रतिनिधित्व नहीं की जाती है। इसलिए, सही उत्तर ध्वनि की तीव्रता है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English content with appropriate technical terms and maintains the correct answer in the same position.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका विद्यार्थीने स्मार्टफोनाजवळ ताल दिला आणि अॅप आवाज रेकॉर्ड करत आहे, तर अॅपमधील लहरीच्या आयामाचा अर्थ काय आहे?",
+          "choices": [
+            "आवाजाची वारंवारता",
+            "आवाजाची तीव्रता",
+            "आवाजाची ताकद",
+            "आवाजाची वेग"
+          ],
+          "solution": "आवाजाच्या लहरीचा आयाम हा हवेच्या कणांच्या विस्थापनाशी संबंधित असतो, जो आवाजाच्या तीव्रतेशी सीधा संबंध असतो. वारंवारता ताकदला प्रभावित करते, आयामाला नाही, आणि आवाजाचा वेग अॅपवरील लहरीच्या उंचीशी नाही. त्यामुळे, योग्य उत्तर आवाजाची तीव्रता आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology consistent with textbook usage.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses amplitude with frequency",
+        null,
+        "Confuses amplitude with pitch",
+        "Confuses amplitude with speed"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies that amplitude corresponds to loudness, and the distractors reflect common misconceptions about sound properties.",
+      "sources": [
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 133,
+          "pageStart": 131,
+          "pageEnd": 132,
+          "headingPath": [
+            "18. Sound : Production of Sound"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 134,
+          "pageStart": 132,
+          "pageEnd": 133,
+          "headingPath": [
+            "18. Sound : Production of Sound"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 135,
+          "pageStart": 133,
+          "pageEnd": 134,
+          "headingPath": [
+            "18. Sound : Production of Sound"
+          ]
+        }
+      ],
+      "edition": "First Edition 2017",
+      "generatedAt": "2026-10-31T18:58:22.745Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "A student hears a sound that is too high for them to hear. What can be said about this sound?",
+      "choices": [
+        "It is infrasonic",
+        "It is audible",
+        "It is ultrasonic",
+        "It is a low-pitched sound"
+      ],
+      "answerIndex": 2,
+      "solution": "Ultrasonic sounds have frequencies above 20,000 Hz, which is beyond the range of human hearing. Since the sound is too high for the student to hear, it must be ultrasonic. The other options describe sounds that are either within the audible range or not related to the frequency characteristics of the sound.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक छात्र एक ऐसी ध्वनि सुनता है जो उसके लिए बहुत ऊंची होती है। इस ध्वनि के बारे में क्या कहा जा सकता है?",
+          "choices": [
+            "यह अवश्रव्य है",
+            "यह श्रव्य है",
+            "यह अति श्रव्य है",
+            "यह निम्न आवृत्ति की ध्वनि है"
+          ],
+          "solution": "अति श्रव्य ध्वनियां 20,000 हर्ट्ज से अधिक आवृत्ति वाली होती हैं, जो मानव सुनने की सीमा से बाहर होती है। चूंकि ध्वनि छात्र के लिए बहुत ऊंची है, इसलिए इसे अति श्रव्य कहा जा सकता है। अन्य विकल्प ध्वनि की आवृत्ति विशेषताओं के संबंध में नहीं हैं या श्रव्य परास में हैं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, technical terms are standard in Hindi science curriculum, and the logic of the solution matches the original.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका विद्यार्थ्याला एका आवाजाची ऐकणे अशक्य झाले कारण तो आवाज खूप उंच आहे. या आवाजाबद्दल काय म्हणता येईल?",
+          "choices": [
+            "तो अवश्रव्य आहे",
+            "तो श्रव्य आहे",
+            "तो अल्ट्राशॉनिक आहे",
+            "तो खालचा ताल असलेला आवाज आहे"
+          ],
+          "solution": "अल्ट्राशॉनिक आवाजाची वारंवारता 20,000 हर्ट्झपेक्षा जास्त असते, जी मानवी ऐकण्याच्या परिसराबाहेर असते. आवाज विद्यार्थ्यासाठी खूप उंच असल्याने तो अल्ट्राशॉनिक असावा. इतर विकल्पांमध्ये श्रव्य परिसरातील आवाज किंवा आवाजाच्या वारंवारतेशी संबंधित नसलेल्या आवाजाचे वर्णन केले आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the technical terminology used in Marathi science education.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses ultrasonic with infrasonic, thinking both are inaudible to humans",
+        "selects a sound that is not in the ultrasonic range",
+        null,
+        "picks a characteristic not related to frequency"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct and aligns with the key. The reasoning correctly identifies ultrasonic sound as inaudible to humans and explains why the other options are incorrect.",
+      "sources": [
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 136,
+          "pageStart": 134,
+          "pageEnd": 135,
+          "headingPath": [
+            "18. Sound : Production of Sound"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 137,
+          "pageStart": 135,
+          "pageEnd": 135,
+          "headingPath": [
+            "18. Sound : Production of Sound",
+            "t t t"
+          ]
+        }
+      ],
+      "edition": "First Edition 2017",
+      "generatedAt": "2026-10-31T18:58:22.745Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "In the experiment with the wire and blocks, what is the relationship between the tension in the wire and the frequency of the sound produced?",
+      "choices": [
+        "They are inversely proportional",
+        "They are directly proportional",
+        "They have no relationship",
+        "They depend on the length of the wire"
+      ],
+      "answerIndex": 1,
+      "solution": "When the tension in the wire is increased, the frequency of the sound produced also increases, showing a direct relationship. This means that as one quantity increases, the other also increases. Inversely proportional would mean the opposite, and there is no evidence to suggest they have no relationship. The length of the wire is not the focus of this specific relationship.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "तार और ब्लॉक के प्रयोग में, तार में तनाव और उत्पन्न ध्वनि की आवृत्ति के बीच संबंध क्या है?",
+          "choices": [
+            "वे व्युत्क्रमानुपाती हैं",
+            "वे सीधे आनुपातिक हैं",
+            "उनके बीच कोई संबंध नहीं है",
+            "वे तार की लंबाई पर निर्भर करते हैं"
+          ],
+          "solution": "जब तार में तनाव बढ़ाया जाता है, तो उत्पन्न ध्वनि की आवृत्ति भी बढ़ जाती है, जो एक सीधा संबंध दर्शाता है। इसका अर्थ है कि एक मात्रा बढ़ती है तो दूसरी भी बढ़ जाती है। व्युत्क्रमानुपाती का अर्थ विपरीत होता है, और कोई साक्ष्य नहीं है कि उनके बीच कोई संबंध नहीं है। तार की लंबाई इस विशिष्ट संबंध के केंद्र में नहीं है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. All options and the solution are correctly translated, with the correct answer (option 1) maintaining its position and validity.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "तार आणि ब्लॉक वर चालवलेल्या प्रयोगात, तारातील ताण आणि उत्पन्न होणाऱ्या आवाजाच्या आवृत्तीमधील संबंध काय आहे?",
+          "choices": [
+            "ते व्यस्त प्रमाणात असतात",
+            "ते सीधा प्रमाणात असतात",
+            "त्यांचा कोणताही संबंध नसतो",
+            "ते ताराच्या लांबीवर अवलंबून असतात"
+          ],
+          "solution": "जेव्हा तारातील ताण वाढतो, तेव्हा उत्पन्न होणाऱ्या आवाजाची आवृत्ती देखील वाढते, जे सीधा संबंध दर्शवते. हे अर्थ असा आहे की एका मात्रेची वाढ होत असताना दुसऱ्याची देखील वाढ होते. व्यस्त प्रमाणात असल्यास विलक्षण परिणाम होत असतो, आणि त्यांचा कोणताही संबंध नसल्याचे कोणतेही पुरावा नाही. ताराच्या लांबीचा हा विशिष्ट संबंधाचा फोकस नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses tension with inverse relationship",
+        null,
+        "Believes there is no relationship",
+        "Confuses length with tension"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies the direct relationship between tension and frequency based on the passage. The reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 133,
+          "pageStart": 131,
+          "pageEnd": 132,
+          "headingPath": [
+            "18. Sound : Production of Sound"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 134,
+          "pageStart": 132,
+          "pageEnd": 133,
+          "headingPath": [
+            "18. Sound : Production of Sound"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 135,
+          "pageStart": 133,
+          "pageEnd": 134,
+          "headingPath": [
+            "18. Sound : Production of Sound"
+          ]
+        }
+      ],
+      "edition": "First Edition 2017",
+      "generatedAt": "2026-10-31T18:58:22.745Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "A person cannot hear a sound, but a dog can. What can be inferred about this sound?",
+      "choices": [
+        "It is audible to humans",
+        "It has a low frequency",
+        "It is ultrasonic",
+        "It is a very loud sound"
+      ],
+      "answerIndex": 2,
+      "solution": "Dogs can hear sounds with higher frequencies than humans, which are called ultrasonic. If a person cannot hear a sound but a dog can, the sound must be ultrasonic. The other options are incorrect because sounds audible to humans would be heard by the person, and loudness does not determine whether a sound is heard by humans or dogs.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक व्यक्ति ध्वनि नहीं सुन सकता, लेकिन कुत्ता सुन सकता है। इस ध्वनि के बारे में क्या निष्कर्ष निकाला जा सकता है?",
+          "choices": [
+            "यह मनुष्यों के लिए श्रव्य है",
+            "इसकी आवृत्ति कम है",
+            "यह पराध्वनिक है",
+            "यह एक बहुत अधिक तीव्र ध्वनि है"
+          ],
+          "solution": "कुत्ते मनुष्यों की तुलना में उच्च आवृत्ति की ध्वनियाँ सुन सकते हैं, जिन्हें पराध्वनिक कहा जाता है। यदि एक व्यक्ति ध्वनि नहीं सुन सकता लेकिन कुत्ता सुन सकता है, तो ध्वनि अवश्य पराध्वनिक होनी चाहिए। अन्य विकल्प गलत हैं क्योंकि मनुष्यों के लिए श्रव्य ध्वनियाँ व्यक्ति द्वारा सुनी जा सकती हैं, और तीव्रता मनुष्यों या कुत्तों द्वारा ध्वनि सुनने के निर्धारण में नहीं होती है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains original meaning, and uses appropriate technical terms as per Hindi curriculum.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका माणसाला आवाज ऐकू नये, पण कुत्रा ऐकू शकतो. या आवाजाबद्दल काय निष्कर्ष काढता येईल?",
+          "choices": [
+            "तो मानवांसाठी ऐकतो आहे",
+            "त्याची आवृत्ती कमी आहे",
+            "तो अल्ट्रासॉनिक आहे",
+            "तो खूप जोराचा आवाज आहे"
+          ],
+          "solution": "कुत्र्यांना मानवांपेक्षा जास्त आवृत्तीचे आवाज ऐकता येतात, ज्यांना अल्ट्रासॉनिक म्हणतात. जर एका माणसाला आवाज ऐकू नये पण कुत्रा ऐकू शकतो, तर आवाज अल्ट्रासॉनिक असावा. इतर विकल्प चुकीचे आहेत कारण मानवांसाठी ऐकतो असे आवाज माणसाला ऐकू येईल, आणि आवाजाची जोरदारपणा मानव आणि कुत्र्यांना ऐकू येण्याच्या निर्णयावर परिणाम करत नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms like 'अल्ट्रासॉनिक' which is the standard term used in Marathi textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "chooses a sound that is audible to humans",
+        "selects a sound with a different characteristic",
+        null,
+        "picks a property that is unrelated to the sound's frequency"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies that the sound must be ultrasonic, as it is inaudible to humans but audible to dogs. The reasoning for the other options aligns with common misconceptions about sound characteristics.",
+      "sources": [
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 136,
+          "pageStart": 134,
+          "pageEnd": 135,
+          "headingPath": [
+            "18. Sound : Production of Sound"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 137,
+          "pageStart": 135,
+          "pageEnd": 135,
+          "headingPath": [
+            "18. Sound : Production of Sound",
+            "t t t"
+          ]
+        }
+      ],
+      "edition": "First Edition 2017",
+      "generatedAt": "2026-10-31T18:58:22.745Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Why do we not hear the sound of a bat flying at night?",
+      "choices": [
+        "Because bats do not produce any sound",
+        "Because bats produce ultrasonic sound",
+        "Because bats produce infrasonic sound",
+        "Because the sound is too quiet"
+      ],
+      "answerIndex": 1,
+      "solution": "Bats produce ultrasonic sound, which has a frequency higher than what humans can hear. This is why we do not hear the sound of a bat flying at night. The other options are incorrect because bats do produce sound, and the issue is not about the loudness but the frequency of the sound.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "हम रात में बैट उड़ते समय उसकी ध्वनि क्यों नहीं सुनते?",
+          "choices": [
+            "क्योंकि बैट कोई ध्वनि उत्पन्न नहीं करते",
+            "क्योंकि बैट अति उच्च आवृत्ति ध्वनि उत्पन्न करते हैं",
+            "क्योंकि बैट अति निम्न आवृत्ति ध्वनि उत्पन्न करते हैं",
+            "क्योंकि ध्वनि बहुत कम तीव्र होती है"
+          ],
+          "solution": "बैट अति उच्च आवृत्ति ध्वनि उत्पन्न करते हैं, जिसकी आवृत्ति मानव द्वारा सुनी जा सकने वाली आवृत्ति से अधिक होती है। इसी कारण रात में बैट उड़ते समय हम उसकी ध्वनि नहीं सुनते। अन्य विकल्प गलत हैं क्योंकि बैट ध्वनि उत्पन्न करते हैं, और समस्या ध्वनि की तीव्रता के बजाय आवृत्ति के है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains original meaning, and uses appropriate Hindi terminology for scientific concepts.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "रात्री बाटली उडत असताना आम्ही तिचा आवाज का ऐकत नाही?",
+          "choices": [
+            "कारण बाटली कोणताही आवाज उत्पन्न करत नाही",
+            "कारण बाटली अल्ट्रासॉनिक आवाज उत्पन्न करतात",
+            "कारण बाटली इंफ्रासॉनिक आवाज उत्पन्न करतात",
+            "कारण आवाज खूप निरुपयोगी असतो"
+          ],
+          "solution": "बाटली अल्ट्रासॉनिक आवाज उत्पन्न करतात, जो माणसांनी ऐकू शकत नाही. हे कारण आहे की आम्ही रात्री बाटली उडत असताना तिचा आवाज का ऐकत नाही. इतर विकल्प चुकीचे आहेत कारण बाटली आवाज उत्पन्न करतात, आणि समस्या आवाजाच्या तीव्रतेबद्दल नाही तर आवाजाच्या आवृत्तीबद्दल आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi technical terms used for 'ultrasonic' and 'infrasonic'.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Incorrectly assumes no sound is produced",
+        null,
+        "Confuses infrasonic with ultrasonic",
+        "Focuses on loudness instead of frequency"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 1, as bats produce ultrasonic sounds that are inaudible to humans. The other options reflect common misconceptions about sound production and perception.",
+      "sources": [
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 136,
+          "pageStart": 134,
+          "pageEnd": 135,
+          "headingPath": [
+            "18. Sound : Production of Sound"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 137,
+          "pageStart": 135,
+          "pageEnd": 135,
+          "headingPath": [
+            "18. Sound : Production of Sound",
+            "t t t"
+          ]
+        }
+      ],
+      "edition": "First Edition 2017",
+      "generatedAt": "2026-10-31T18:58:22.745Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
     }
   ]
 }

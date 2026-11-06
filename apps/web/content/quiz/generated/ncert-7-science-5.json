@@ -1088,6 +1088,2261 @@
       "generatedAt": "2026-11-02T05:42:42.857Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "If a student observes that a piece of chalk turns into powder when crushed, what type of change is this?",
+      "choices": [
+        "Physical change because the color changes",
+        "Chemical change because the texture changes",
+        "Physical change because the material remains the same",
+        "Chemical change because the shape changes"
+      ],
+      "answerIndex": 2,
+      "solution": "Physical change because the material (chalk) remains the same, only its shape and size change. The other options misinterpret the nature of the change.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक छात्र देखता है कि एक चॉक का टुकड़ा चूर्ण में बदल जाता है जब इसे तोड़ा जाता है, तो यह किस प्रकार का परिवर्तन है?",
+          "choices": [
+            "भौतिक परिवर्तन क्योंकि रंग बदल जाता है",
+            "रासायनिक परिवर्तन क्योंकि बर्तन का रूप बदल जाता है",
+            "भौतिक परिवर्तन क्योंकि पदार्थ वही रहता है",
+            "रासायनिक परिवर्तन क्योंकि आकृति बदल जाती है"
+          ],
+          "solution": "भौतिक परिवर्तन क्योंकि पदार्थ (चॉक) वही रहता है, केवल इसके आकार और आकृति बदल जाते हैं। अन्य विकल्प परिवर्तन की प्रकृति को गलत तरीके से समझते हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. The correct answer remains option (2), and all distractors are still incorrect. Technical terms like 'भौतिक परिवर्तन' (physical change) and 'रासायनिक परिवर्तन' (chemical change) are standard in Hindi science textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका विद्यार्थ्याने लक्षात घेतले की चूना चुराडा तयार करण्यासाठी तुकडा तुकडा केला जातो, हा कोणत्या प्रकारचा बदल आहे?",
+          "choices": [
+            "भौतिक बदल कारण रंग बदलतो",
+            "रासायनिक बदल कारण ताकद बदलते",
+            "भौतिक बदल कारण सामग्री बदलत नाही",
+            "रासायनिक बदल कारण आकृती बदलते"
+          ],
+          "solution": "भौतिक बदल कारण सामग्री (चूना) बदलत नाही, केवळ आकृती आणि मोजमाप बदलतात. इतर विकल्प बदलाच्या प्रकृतीला चुकून समजतात.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the original meaning, and uses appropriate terminology as used in Marathi-medium science textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Student thinks color change indicates a physical change, not realizing it's unrelated to the type of change",
+        "confuses texture change with chemical change",
+        null,
+        "Confuses shape change with chemical change"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 2, as the chalk remains chalk, only its size and shape change. The other options reflect common misconceptions about what constitutes a physical or chemical change.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu105.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 5: Changes Around Us: Physical and Chemical"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu105.pdf",
+          "ordinal": 1,
+          "pageStart": 3,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 5: Changes Around Us: Physical and Chemical",
+            "5.1 A Substance May Change in",
+            "Appearance but Remain the Same!"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu105.pdf",
+          "ordinal": 2,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 5: Changes Around Us: Physical and Chemical",
+            "5.2 A Substance May Change in",
+            "Appearance and Not Remain the Same!"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu105.pdf",
+          "ordinal": 3,
+          "pageStart": 5,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 5: Changes Around Us: Physical and Chemical",
+            "5.2 A Substance May Change in",
+            "Appearance and Not Remain the Same!"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-31T21:43:46.209Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is the main characteristic of a chemical change?",
+      "choices": [
+        "No new substance is formed",
+        "Only physical properties change",
+        "A new substance is formed",
+        "The change is reversible"
+      ],
+      "answerIndex": 2,
+      "solution": "A new substance is formed, which is the main characteristic of a chemical change. No new substance is formed in a physical change, and physical changes typically involve only changes in physical properties. Chemical changes are usually irreversible.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "रासायनिक परिवर्तन की मुख्य विशेषता क्या है?",
+          "choices": [
+            "कोई नया पदार्थ नहीं बनता",
+            "केवल भौतिक गुण बदलते हैं",
+            "एक नया पदार्थ बनता है",
+            "परिवर्तन उत्क्रमणीय होता है"
+          ],
+          "solution": "एक नया पदार्थ बनता है, जो रासायनिक परिवर्तन की मुख्य विशेषता है। भौतिक परिवर्तन में कोई नया पदार्थ नहीं बनता है, और भौतिक परिवर्तन आमतौर पर केवल भौतिक गुणों में परिवर्तन शामिल होते हैं। रासायनिक परिवर्तन आमतौर पर अनुत्क्रमणीय होते हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English original in meaning, terminology, and structure. All options and the solution are correctly translated and maintain their intended meaning.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "रासायनिक बदलाची मुख्य वैशिष्ट्ये काय आहे?",
+          "choices": [
+            "कोणताही नवीन द्रव्य तयार होत नाही",
+            "केवळ भौतिक गुण बदलतात",
+            "नवीन द्रव्य तयार होते",
+            "बदल व्युत्क्रमित आहे"
+          ],
+          "solution": "नवीन द्रव्य तयार होते, हे रासायनिक बदलाचे मुख्य वैशिष्ट्य आहे. भौतिक बदलात कोणताही नवीन द्रव्य तयार होत नाही, आणि भौतिक बदलांमध्ये सामान्यतः भौतिक गुणांमध्ये बदल होतो. रासायनिक बदल सामान्यतः अव्युत्क्रमित असतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "confuses physical and chemical changes",
+        "describes a physical change",
+        null,
+        "knows that chemical changes are irreversible"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The question correctly identifies the formation of a new substance as the defining feature of a chemical change. The solution is accurate and the reasoning for the distractors aligns with common student misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu105.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 5: Changes Around Us: Physical and Chemical"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu105.pdf",
+          "ordinal": 1,
+          "pageStart": 3,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 5: Changes Around Us: Physical and Chemical",
+            "5.1 A Substance May Change in",
+            "Appearance but Remain the Same!"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu105.pdf",
+          "ordinal": 2,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 5: Changes Around Us: Physical and Chemical",
+            "5.2 A Substance May Change in",
+            "Appearance and Not Remain the Same!"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu105.pdf",
+          "ordinal": 3,
+          "pageStart": 5,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 5: Changes Around Us: Physical and Chemical",
+            "5.2 A Substance May Change in",
+            "Appearance and Not Remain the Same!"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T16:21:52.491Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the main difference between a physical and a chemical change?",
+      "choices": [
+        "Physical changes are reversible, chemical changes are not",
+        "Physical changes form new substances, chemical changes do not",
+        "Physical changes involve light, chemical changes do not",
+        "Physical changes involve temperature, chemical changes do not"
+      ],
+      "answerIndex": 0,
+      "solution": "The main difference is that physical changes are usually reversible, while chemical changes are not. Physical changes do not form new substances, and chemical changes do form new substances. Light and temperature are not defining characteristics of physical or chemical changes.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "भौतिक और रासायनिक परिवर्तन में मुख्य अंतर क्या है?",
+          "choices": [
+            "भौतिक परिवर्तन उत्क्रमणीय होते हैं, रासायनिक परिवर्तन नहीं",
+            "भौतिक परिवर्तन नए पदार्थ बनाते हैं, रासायनिक परिवर्तन नहीं",
+            "भौतिक परिवर्तन प्रकाश के साथ होते हैं, रासायनिक परिवर्तन नहीं",
+            "भौतिक परिवर्तन तापमान के साथ होते हैं, रासायनिक परिवर्तन नहीं"
+          ],
+          "solution": "मुख्य अंतर यह है कि भौतिक परिवर्तन आमतौर पर उत्क्रमणीय होते हैं, जबकि रासायनिक परिवर्तन नहीं होते। भौतिक परिवर्तन नए पदार्थ नहीं बनाते हैं, जबकि रासायनिक परिवर्तन नए पदार्थ बनाते हैं। प्रकाश और तापमान भौतिक या रासायनिक परिवर्तन के निर्धारक लक्षण नहीं हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate scientific terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "भौतिक आणि रासायनिक बदलांमध्ये मुख्य फरक काय आहे?",
+          "choices": [
+            "भौतिक बदल व्युत्क्रमित असतात, रासायनिक बदल नाहीत",
+            "भौतिक बदल नवीन पदार्थ तयार करतात, रासायनिक बदल करत नाहीत",
+            "भौतिक बदलांमध्ये प्रकाश असतो, रासायनिक बदलांमध्ये नाही",
+            "भौतिक बदलांमध्ये तापमान असतो, रासायनिक बदलांमध्ये नाही"
+          ],
+          "solution": "मुख्य फरक असा आहे की भौतिक बदल सामान्यतः व्युत्क्रमित असतात, तर रासायनिक बदल नाहीत. भौतिक बदल नवीन पदार्थ तयार करत नाहीत, आणि रासायनिक बदल तयार करतात. प्रकाश आणि तापमान भौतिक किंवा रासायनिक बदलांची निर्दिष्ट वैशिष्ट्ये नाहीत.",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Believes that forming new substances is a characteristic of physical changes, not chemical changes",
+        "Confuses the formation of new substances with physical changes",
+        "Confuses characteristics of changes"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 0, as physical changes are typically reversible and do not form new substances, while chemical changes are not reversible and do form new substances. The author's reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu105.pdf",
+          "ordinal": 12,
+          "pageStart": 14,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 5: Changes Around Us: Physical and Chemical",
+            "5.7 Some Slow Natural Changes",
+            "5.7.2 Erosion",
+            "Let Us Enhance Our Learning"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu105.pdf",
+          "ordinal": 13,
+          "pageStart": 15,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 5: Changes Around Us: Physical and Chemical",
+            "5.7 Some Slow Natural Changes",
+            "5.7.2 Erosion",
+            "Exploratory Projects"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T16:21:52.491Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "Which of the following changes is a physical change?",
+      "choices": [
+        "Burning of wood",
+        "Rusting of iron",
+        "Melting of ice",
+        "Cooking of an egg"
+      ],
+      "answerIndex": 2,
+      "solution": "Melting of ice is a physical change because it involves a change in the state of water from solid to liquid without forming a new substance. Burning of wood, rusting of iron, and cooking of an egg are all chemical changes as they involve the formation of new substances.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा परिवर्तन भौतिक परिवर्तन है?",
+          "choices": [
+            "लकड़ी का जलना",
+            "लोहे का जंग लगना",
+            "बर्फ का पिघलना",
+            "अंडे का रसोई में पकना"
+          ],
+          "solution": "बर्फ का पिघलना एक भौतिक परिवर्तन है क्योंकि यह पानी की अवस्था में परिवर्तन के कारण होता है बिना नए पदार्थ के बने। लकड़ी का जलना, लोहे का जंग लगना और अंडे का रसोई में पकना सभी रासायनिक परिवर्तन हैं क्योंकि इनमें नए पदार्थ के बनने के साथ-साथ रासायनिक परिवर्तन होता है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Hindi scientific terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणता बदल भौमितिक बदल आहे?",
+          "choices": [
+            "लाकडाचे जाळे",
+            "लोखंडाचे जंगल लागणे",
+            "हिमाचे पिघलणे",
+            "अंड्याचे शिजवणे"
+          ],
+          "solution": "हिमाचे पिघलणे भौमितिक बदल आहे कारण त्यामुळे पाण्याच्या अवस्थेत बदल होतो आणि नवीन पदार्थ तयार होत नाही. लाकडाचे जाळे, लोखंडाचे जंगल लागणे आणि अंड्याचे शिजवणे या सर्वांमध्ये नवीन पदार्थ तयार होतात म्हणून ते रासायनिक बदल आहेत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Chooses a chemical change as an example of a physical change.",
+        "Chooses a chemical change as an example of a physical change.",
+        null,
+        "Thinks that cooking an egg is a physical change, which is incorrect."
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-constructed. The correct answer is clearly 2 (Melting of ice), as it is a physical change. The other options are all chemical changes, and the author's reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu105.pdf",
+          "ordinal": 8,
+          "pageStart": 10,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 5: Changes Around Us: Physical and Chemical",
+            "5.6 Are All Changes Desirable?"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu105.pdf",
+          "ordinal": 9,
+          "pageStart": 11,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 5: Changes Around Us: Physical and Chemical",
+            "5.7 Some Slow Natural Changes",
+            "5.7.1 Weathering of rocks"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu105.pdf",
+          "ordinal": 10,
+          "pageStart": 12,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 5: Changes Around Us: Physical and Chemical",
+            "5.7 Some Slow Natural Changes",
+            "5.7.2 Erosion"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu105.pdf",
+          "ordinal": 11,
+          "pageStart": 13,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 5: Changes Around Us: Physical and Chemical",
+            "5.7 Some Slow Natural Changes",
+            "5.7.2 Erosion",
+            "Let Us Enhance Our Learning"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T16:21:52.491Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "A student observed that when she added a drop of red ink to a glass of water, the water turned red. What kind of change did she observe?",
+      "choices": [
+        "Physical change",
+        "Chemical change",
+        "Both physical and chemical change",
+        "Neither physical nor chemical change"
+      ],
+      "answerIndex": 0,
+      "solution": "This is a physical change because the red ink dissolves in water, but no new substance is formed. The red colour is due to the mixing of the ink with the water, not a chemical reaction. Chemical changes involve the formation of new substances, which is not the case here.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक छात्रा ने देखा कि जब उसने एक ग्लास पानी में लाल स्याही की एक बूंद मिलाई, तो पानी लाल हो गया। उसने किस प्रकार का परिवर्तन देखा?",
+          "choices": [
+            "भौतिक परिवर्तन",
+            "रासायनिक परिवर्तन",
+            "भौतिक एवं रासायनिक दोनों परिवर्तन",
+            "न भौतिक न रासायनिक परिवर्तन"
+          ],
+          "solution": "यह एक भौतिक परिवर्तन है क्योंकि लाल स्याही पानी में घुल जाती है, लेकिन कोई नया पदार्थ नहीं बनता है। लाल रंग स्याही के पानी के साथ मिश्रण के कारण होता है, रासायनिक अभिक्रिया नहीं। रासायनिक परिवर्तन में नए पदार्थ के बनने की प्रक्रिया होती है, जो यहां नहीं होती।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the scientific terminology used in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका विद्यार्थिनीने लक्षात घेतले की जेव्हा तिने एक थेंब लाल ओली एका ग्लास पाण्यात मिसळली, तेव्हा पाणी लाल झाले. तिने कोणत्या प्रकारचा बदल पाहिला?",
+          "choices": [
+            "भौमितिक बदल",
+            "रासायनिक बदल",
+            "भौमितिक आणि रासायनिक बदल दोन्ही",
+            "भौमितिक किंवा रासायनिक बदल नाही"
+          ],
+          "solution": "हे भौमितिक बदल आहे कारण लाल ओली पाण्यात विरघळते, परंतु कोणताही नवीन पदार्थ तयार होत नाही. लाल रंग पाण्यासोबत ओलीचे मिश्रण कारण आहे, रासायनिक अभिक्रिया नाही. रासायनिक बदलांमध्ये नवीन पदार्थांचा तयार होतो, जो येथे नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Student thinks any visible change is a chemical change",
+        "confuses the concept of physical and chemical changes by thinking that any visible change is chemical",
+        "overgeneralizes the concept of change, thinking that any change is both physical and chemical without understanding the difference between the two, the correct answer is 'Physical change'."
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies the dissolution of ink in water as a physical change, as no new substance is formed. The reasoning aligns with the scientific definition of physical and chemical changes.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu105.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 5: Changes Around Us: Physical and Chemical"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu105.pdf",
+          "ordinal": 1,
+          "pageStart": 3,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 5: Changes Around Us: Physical and Chemical",
+            "5.1 A Substance May Change in",
+            "Appearance but Remain the Same!"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu105.pdf",
+          "ordinal": 2,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 5: Changes Around Us: Physical and Chemical",
+            "5.2 A Substance May Change in",
+            "Appearance and Not Remain the Same!"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu105.pdf",
+          "ordinal": 3,
+          "pageStart": 5,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 5: Changes Around Us: Physical and Chemical",
+            "5.2 A Substance May Change in",
+            "Appearance and Not Remain the Same!"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T16:21:52.491Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "A rock changes from black to red due to exposure to water and air. Based on this, what type of change is this?",
+      "choices": [
+        "Physical change because the rock's color changes.",
+        "Chemical change because the rock's composition changes.",
+        "Physical change because the rock is broken down.",
+        "Chemical change because the rock's texture changes."
+      ],
+      "answerIndex": 1,
+      "solution": "This is a chemical change because the rock's composition changes due to a reaction with water and air, forming a new substance (iron oxide) that gives it a red color. The other options either misidentify the type of change or describe physical characteristics instead of the actual chemical process.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक चट्टान पानी और हवा के संपर्क में आने से काली से लाल हो जाती है। इसके आधार पर, यह किस प्रकार का परिवर्तन है?",
+          "choices": [
+            "भौतिक परिवर्तन क्योंकि चट्टान के रंग में परिवर्तन होता है।",
+            "रासायनिक परिवर्तन क्योंकि चट्टान के संघटन में परिवर्तन होता है।",
+            "भौतिक परिवर्तन क्योंकि चट्टान टूट जाती है।",
+            "रासायनिक परिवर्तन क्योंकि चट्टान की सतह में परिवर्तन होता है।"
+          ],
+          "solution": "यह एक रासायनिक परिवर्तन है क्योंकि चट्टान के संघटन में परिवर्तन होता है जिसके कारण पानी और हवा के साथ अभिक्रिया होने से एक नया पदार्थ (लौह ऑक्साइड) बनता है जो इसे लाल रंग देता है। अन्य विकल्प या तो परिवर्तन के प्रकार को गलत तरीके से पहचानते हैं या वास्तविक रासायनिक प्रक्रिया के बजाय भौतिक विशेषताओं का वर्णन करते हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English original in meaning, technical terms, and structure. The correct answer remains option (2), and the distractors are still incorrect.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एक बट्टा पाण्याच्या आणि हवेच्या प्रभावामुळे काळा ते लाल होतो. यावर आधारित, हा कोणत्या प्रकारचा बदल आहे?",
+          "choices": [
+            "भौमितिक बदल कारण बट्टाचा रंग बदलतो.",
+            "रासायनिक बदल कारण बट्टाची रचना बदलते.",
+            "भौमितिक बदल कारण बट्टा तुटतो.",
+            "रासायनिक बदल कारण बट्टाची ताकद बदलते."
+          ],
+          "solution": "हा रासायनिक बदल आहे कारण बट्टाची रचना पाण्याच्या आणि हवेच्या प्रतिक्रियेमुळे बदलते, ज्यामुळे नवीन पदार्थ (लोह ऑक्साईड) तयार होतो जो त्याला लाल रंग देतो. इतर विकल्प बदलाच्या प्रकारची चुकीची ओळख करतात किंवा खर्या रासायनिक प्रक्रियेऐवजी भौमितिक वैशिष्ट्ये वर्णन करतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Thinks that a change in color is enough to classify it as a physical change.",
+        null,
+        "Believes that the rock's texture change is the key factor, which is not the case.",
+        "Confuses the process of physical weathering with chemical weathering."
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 1, as the change in color is due to a chemical reaction (oxidation), resulting in a new substance. The other options reflect common misconceptions about physical vs. chemical changes.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu105.pdf",
+          "ordinal": 8,
+          "pageStart": 10,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 5: Changes Around Us: Physical and Chemical",
+            "5.6 Are All Changes Desirable?"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu105.pdf",
+          "ordinal": 9,
+          "pageStart": 11,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 5: Changes Around Us: Physical and Chemical",
+            "5.7 Some Slow Natural Changes",
+            "5.7.1 Weathering of rocks"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu105.pdf",
+          "ordinal": 10,
+          "pageStart": 12,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 5: Changes Around Us: Physical and Chemical",
+            "5.7 Some Slow Natural Changes",
+            "5.7.2 Erosion"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu105.pdf",
+          "ordinal": 11,
+          "pageStart": 13,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 5: Changes Around Us: Physical and Chemical",
+            "5.7 Some Slow Natural Changes",
+            "5.7.2 Erosion",
+            "Let Us Enhance Our Learning"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T16:21:52.491Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "In the case of a chameleon, when it changes its skin colour by adjusting the spacing between crystals, what type of change is this?",
+      "choices": [
+        "Physical change because the space between crystals is adjusted",
+        "Chemical change because the wavelength of reflected light changes",
+        "Physical change because light is reflected by crystals",
+        "Chemical change because the colour of skin changes"
+      ],
+      "answerIndex": 0,
+      "solution": "The change in skin colour of a chameleon is a physical change because it involves the adjustment of spacing between crystals, which affects the reflected light's wavelength. The option 'Physical change because the space between crystals is adjusted' is correct. The other options are incorrect because the change does not involve a chemical reaction or the formation of a new substance.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "चमेलियन के मामले में, जब यह क्रिस्टल के बीच की दूरी को समायोजित करके अपने त्वचा का रंग बदल देता है, तो यह किस प्रकार का परिवर्तन है?",
+          "choices": [
+            "भौतिक परिवर्तन क्योंकि क्रिस्टल के बीच की दूरी समायोजित की जाती है",
+            "रासायनिक परिवर्तन क्योंकि परावर्तित प्रकाश की तरंग दैर्ध्य बदल जाती है",
+            "भौतिक परिवर्तन क्योंकि प्रकाश क्रिस्टल द्वारा परावर्तित होता है",
+            "रासायनिक परिवर्तन क्योंकि त्वचा का रंग बदल जाता है"
+          ],
+          "solution": "चमेलियन की त्वचा के रंग में परिवर्तन भौतिक परिवर्तन है क्योंकि यह क्रिस्टल के बीच की दूरी के समायोजन के कारण होता है, जो परावर्तित प्रकाश की तरंग दैर्ध्य को प्रभावित करता है। विकल्प 'भौतिक परिवर्तन क्योंकि क्रिस्टल के बीच की दूरी समायोजित की जाती है' सही है। अन्य विकल्प गलत हैं क्योंकि इस परिवर्तन में रासायनिक अभिक्रिया या नए पदार्थ के निर्माण की प्रक्रिया शामिल नहीं है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate scientific terminology as used in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "चमेलियनच्या बाबतीत, जेव्हा तो क्रिस्टलच्या अंतराच्या समायोजनाद्वारे त्याच्या त्वचेचा रंग बदलतो, तेव्हा हा कोणत्या प्रकारचा बदल आहे?",
+          "choices": [
+            "भौतिक बदल कारण क्रिस्टलमधील अंतर समायोजित केले जाते",
+            "रासायनिक बदल कारण प्रतिबिंबित प्रकाशाच्या तरंगलांबीत बदल होतो",
+            "भौतिक बदल कारण प्रकाश क्रिस्टलद्वारे प्रतिबिंबित केला जातो",
+            "रासायनिक बदल कारण त्वचेचा रंग बदलतो"
+          ],
+          "solution": "चमेलियनच्या त्वचेचा रंग बदलणे भौतिक बदल आहे कारण त्यात क्रिस्टलमधील अंतराच्या समायोजनाचा समावेश आहे, जो प्रतिबिंबित प्रकाशाच्या तरंगलांबीवर प्रभाव टाकतो. 'भौतिक बदल कारण क्रिस्टलमधील अंतर समायोजित केले जाते' ही विकल्प बरोबर आहे. इतर विकल्प चुकीचे आहेत कारण बदलात रासायनिक अभिक्रिया किंवा नवीन पदार्थाच्या निर्माणाचा समावेश नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Thinks the change is chemical because of light reflection.",
+        "Thinks the change is physical but not because of spacing adjustment.",
+        "Confuses the cause of colour change with a chemical reaction."
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies the change as physical due to the adjustment of crystal spacing, which is a physical process. The reasoning for the other options aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu105.pdf",
+          "ordinal": 8,
+          "pageStart": 10,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 5: Changes Around Us: Physical and Chemical",
+            "5.6 Are All Changes Desirable?"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu105.pdf",
+          "ordinal": 9,
+          "pageStart": 11,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 5: Changes Around Us: Physical and Chemical",
+            "5.7 Some Slow Natural Changes",
+            "5.7.1 Weathering of rocks"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu105.pdf",
+          "ordinal": 10,
+          "pageStart": 12,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 5: Changes Around Us: Physical and Chemical",
+            "5.7 Some Slow Natural Changes",
+            "5.7.2 Erosion"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu105.pdf",
+          "ordinal": 11,
+          "pageStart": 13,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 5: Changes Around Us: Physical and Chemical",
+            "5.7 Some Slow Natural Changes",
+            "5.7.2 Erosion",
+            "Let Us Enhance Our Learning"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T16:21:52.491Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "A student conducted an experiment where she mixed two substances, and the mixture started to fizz and release a gas. She then passed the gas through lime water, and it turned milky. What can she conclude about the reaction?",
+      "choices": [
+        "It is a physical change",
+        "It is a chemical change",
+        "It is both a physical and chemical change",
+        "It is neither a physical nor a chemical change"
+      ],
+      "answerIndex": 1,
+      "solution": "The reaction is a chemical change because a new substance (carbon dioxide) is formed, which reacts with lime water to make it milky. This shows that a chemical reaction has taken place, and the formation of a new substance is the key indicator of a chemical change.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक छात्रा ने एक प्रयोग किया जहां उसने दो पदार्थों को मिलाया और मिश्रण फुफकर गया और एक गैस निकली। उसने गैस को चूने के पानी में से गुजारा और यह दूधिया हो गया। वह अपने प्रतिक्रिया के बारे में क्या निष्कर्ष निकाल सकती है?",
+          "choices": [
+            "यह एक भौतिक परिवर्तन है",
+            "यह एक रासायनिक परिवर्तन है",
+            "यह एक भौतिक और रासायनिक परिवर्तन दोनों है",
+            "यह न तो एक भौतिक और न ही एक रासायनिक परिवर्तन है"
+          ],
+          "solution": "प्रतिक्रिया एक रासायनिक परिवर्तन है क्योंकि एक नया पदार्थ (कार्बन डाइऑक्साइड) बनता है, जो चूने के पानी से अभिक्रिया करके उसे दूधिया बना देता है। इससे साबित होता है कि एक रासायनिक प्रतिक्रिया हुई है, और एक नए पदार्थ के बनने के रूप में रासायनिक परिवर्तन की मुख्य चिह्न है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate scientific terminology as found in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका विद्यार्थिनीने एका प्रयोग केला, जेथे तिने दोन द्रव्यांचे मिश्रण केले आणि मिश्रण फुफुंदीत आले आणि एक वायू निर्माण झाला. तिने वायू चूना पाण्यामध्ये वाहून गेला आणि तो दूधासारखा झाला. तिला या अभ्यासाबद्दल काय निष्कर्ष काढता येईल?",
+          "choices": [
+            "हे भौमितिक बदल आहे",
+            "हे रासायनिक बदल आहे",
+            "हे भौमितिक आणि रासायनिक बदल दोन्ही आहेत",
+            "हे भौमितिक किंवा रासायनिक बदल नाही"
+          ],
+          "solution": "प्रतिक्रिया रासायनिक बदल आहे कारण नवीन द्रव्य (कार्बन डायऑक्साइड) तयार होतो, जो चूना पाण्याशी अभिक्रिया करून ते दूधासारखे बनवतो. हे दर्शवते की रासायनिक प्रतिक्रिया झाली आहे आणि नवीन द्रव्याचा निर्माण हा रासायनिक बदलाचा मुख्य संकेत आहे.",
+          "imageAlt": null,
+          "critique": "Translation accurately conveys the scientific concepts and maintains the structure and meaning of the original question.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "fails to recognize that the formation of a new substance indicates a chemical change",
+        null,
+        "Student thinks gas release and lime water reaction are physical changes",
+        "overgeneralizes the concept of change, thinking that any change is both physical and chemical without understanding the difference between the two, the correct answer is 'It is a chemical change'."
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies that the formation of a new substance (carbon dioxide) indicates a chemical change. The reasoning aligns with the scientific understanding of physical vs. chemical changes.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu105.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 5: Changes Around Us: Physical and Chemical"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu105.pdf",
+          "ordinal": 1,
+          "pageStart": 3,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 5: Changes Around Us: Physical and Chemical",
+            "5.1 A Substance May Change in",
+            "Appearance but Remain the Same!"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu105.pdf",
+          "ordinal": 2,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 5: Changes Around Us: Physical and Chemical",
+            "5.2 A Substance May Change in",
+            "Appearance and Not Remain the Same!"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu105.pdf",
+          "ordinal": 3,
+          "pageStart": 5,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 5: Changes Around Us: Physical and Chemical",
+            "5.2 A Substance May Change in",
+            "Appearance and Not Remain the Same!"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T16:21:52.491Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "Which of the following is an example of a physical change?",
+      "choices": [
+        "Melting of ice",
+        "Burning of wood",
+        "Reaction of vinegar and baking soda",
+        "Formation of a new substance"
+      ],
+      "answerIndex": 0,
+      "solution": "Melting of ice is a physical change because the substance (water) changes its state from solid to liquid, but no new substance is formed. Burning wood and the reaction of vinegar and baking soda are chemical changes as new substances are formed. The formation of a new substance is a sign of a chemical change, not a physical one.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन भौतिक परिवर्तन का उदाहरण है?",
+          "choices": [
+            "बर्फ का पिघलना",
+            "लकड़ी का जलना",
+            "सिरका और बेकिंग सोडा की प्रतिक्रिया",
+            "एक नए पदार्थ का निर्माण"
+          ],
+          "solution": "बर्फ का पिघलना भौतिक परिवर्तन है क्योंकि पदार्थ (पानी) अपनी अवस्था को ठोस से द्रव में बदल देता है, लेकिन कोई नया पदार्थ नहीं बनता। लकड़ी का जलना और सिरका और बेकिंग सोडा की प्रतिक्रिया रासायनिक परिवर्तन हैं क्योंकि नए पदार्थ बनते हैं। एक नए पदार्थ का निर्माण रासायनिक परिवर्तन के लक्षण है, भौतिक परिवर्तन नहीं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Hindi scientific terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते भौमितिक बदलाचे उदाहरण आहे?",
+          "choices": [
+            "हिमाचे घनीभवन",
+            "लाकडाचे जाळे",
+            "चारा आणि बेकिंग सोडा च्या ऍसिड च्या प्रतिक्रिया",
+            "नवीन पदार्थाचे निर्माण"
+          ],
+          "solution": "हिमाचे घनीभवन भौमितिक बदल आहे कारण पदार्थ (पाणी) घनीभवनाच्या स्थितीतून द्रवात बदलतो, परंतु नवीन पदार्थ तयार होत नाही. लाकडाचे जाळे आणि चारा आणि बेकिंग सोडा च्या ऍसिड च्या प्रतिक्रिया रासायनिक बदल आहेत कारण नवीन पदार्थ तयार होतात. नवीन पदार्थाचे निर्माण हे रासायनिक बदलाचे लक्षण आहे, भौमितिक बदलाचे नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for scientific concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses physical change with chemical change",
+        "Confuses physical change with chemical change",
+        "Confuses physical change with chemical change"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct and aligns with the key. Melting of ice is a physical change, while the other options involve chemical changes or are definitions of chemical changes.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu105.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 5: Changes Around Us: Physical and Chemical"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu105.pdf",
+          "ordinal": 1,
+          "pageStart": 3,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 5: Changes Around Us: Physical and Chemical",
+            "5.1 A Substance May Change in",
+            "Appearance but Remain the Same!"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu105.pdf",
+          "ordinal": 2,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 5: Changes Around Us: Physical and Chemical",
+            "5.2 A Substance May Change in",
+            "Appearance and Not Remain the Same!"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu105.pdf",
+          "ordinal": 3,
+          "pageStart": 5,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 5: Changes Around Us: Physical and Chemical",
+            "5.2 A Substance May Change in",
+            "Appearance and Not Remain the Same!"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T02:33:39.559Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of the following is an example of a reversible change?",
+      "choices": [
+        "Rusting of iron",
+        "Cooking of food",
+        "Dissolving sugar in water",
+        "Burning of paper"
+      ],
+      "answerIndex": 2,
+      "solution": "Dissolving sugar in water is a reversible change because the sugar can be recovered by evaporating the water. The other options are irreversible changes as they involve the formation of new substances or permanent changes.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन एक उत्क्रमणीय परिवर्तन का उदाहरण है?",
+          "choices": [
+            "लोहे का जंग लगना",
+            "खाना पकाना",
+            "पानी में चीनी का घुलना",
+            "कागज का जलना"
+          ],
+          "solution": "पानी में चीनी का घुलना एक उत्क्रमणीय परिवर्तन है क्योंकि पानी के वाष्पीकरण से चीनी को वापस प्राप्त किया जा सकता है। अन्य विकल्प अनुत्क्रमणीय परिवर्तन हैं क्योंकि इनमें नए पदार्थों के बनने या स्थायी परिवर्तन के कारण होता है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Hindi scientific terminology used.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते एक व्युत्क्रम्य बदलाचे उदाहरण आहे?",
+          "choices": [
+            "लोहाचा जंगलीकरण",
+            "खाद्य पदार्थाचे राखणे",
+            "पाण्यात चरबी विरघळणे",
+            "कागदाचे जाळणे"
+          ],
+          "solution": "पाण्यात चरबी विरघळणे हा व्युत्क्रम्य बदल आहे कारण चरबी पाण्याच्या वाफ बनवून परत मिळवता येऊ शकते. इतर विकल्प अव्युत्क्रम्य बदल आहेत कारण त्यांमध्ये नवीन पदार्थांचा निर्माण किंवा अस्थायी बदल होतो.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Example of a chemical change.",
+        "Example of a chemical change.",
+        null,
+        "Example of a chemical change."
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct. Dissolving sugar in water is a physical change and reversible, while the other options are chemical changes and irreversible. The reasons for the wrong options align with common misconceptions about chemical vs. physical changes.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu105.pdf",
+          "ordinal": 8,
+          "pageStart": 10,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 5: Changes Around Us: Physical and Chemical",
+            "5.6 Are All Changes Desirable?"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu105.pdf",
+          "ordinal": 9,
+          "pageStart": 11,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 5: Changes Around Us: Physical and Chemical",
+            "5.7 Some Slow Natural Changes",
+            "5.7.1 Weathering of rocks"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu105.pdf",
+          "ordinal": 10,
+          "pageStart": 12,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 5: Changes Around Us: Physical and Chemical",
+            "5.7 Some Slow Natural Changes",
+            "5.7.2 Erosion"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu105.pdf",
+          "ordinal": 11,
+          "pageStart": 13,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 5: Changes Around Us: Physical and Chemical",
+            "5.7 Some Slow Natural Changes",
+            "5.7.2 Erosion",
+            "Let Us Enhance Our Learning"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T02:33:39.559Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "What type of change occurs when a rock breaks into smaller pieces due to temperature changes?",
+      "choices": [
+        "Chemical change",
+        "Physical change",
+        "Biological change",
+        "Nuclear change"
+      ],
+      "answerIndex": 1,
+      "solution": "When a rock breaks into smaller pieces due to temperature changes, it is a physical change because the composition of the rock remains the same. The other options do not describe the process accurately.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक चट्टान में तापमान में परिवर्तन के कारण छोटे टुकड़ों में टूटने वाला परिवर्तन किस प्रकार का होता है?",
+          "choices": [
+            "रासायनिक परिवर्तन",
+            "भौतिक परिवर्तन",
+            "जैविक परिवर्तन",
+            "परमाणु परिवर्तन"
+          ],
+          "solution": "जब एक चट्टान तापमान में परिवर्तन के कारण छोटे टुकड़ों में टूट जाती है, तो यह भौतिक परिवर्तन होता है क्योंकि चट्टान का संघटन अपरिवर्तित रहता है। अन्य विकल्प इस प्रक्रिया का सही वर्णन नहीं करते हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the original English question and solution, with appropriate terminology used in a Hindi science curriculum.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका चौकटीच्या तापमानात बदल होऊन एका बटाट्याच्या तुकड्यांमध्ये फाटल्यास कोणत्या प्रकारचा बदल होतो?",
+          "choices": [
+            "रासायनिक बदल",
+            "भौतिक बदल",
+            "जैविक बदल",
+            "न्यूक्लियर बदल"
+          ],
+          "solution": "एका बटाट्याच्या तुकड्यांमध्ये फाटल्यास तो भौतिक बदल असतो कारण बटाट्याचा घटक बदलत नाही. इतर विकल्प या प्रक्रियेला योग्यरित्या वर्णन करत नाहीत.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate terminology. The correct answer remains option (2) and the distractors are still incorrect.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses physical change with chemical change.",
+        null,
+        "Misunderstands the concept of physical change.",
+        "Does not recognize the nature of the process."
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-constructed. The correct answer is 'Physical change' as the rock's composition remains unchanged. The distractors reflect common misconceptions, and the solution is accurate.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu105.pdf",
+          "ordinal": 8,
+          "pageStart": 10,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 5: Changes Around Us: Physical and Chemical",
+            "5.6 Are All Changes Desirable?"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu105.pdf",
+          "ordinal": 9,
+          "pageStart": 11,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 5: Changes Around Us: Physical and Chemical",
+            "5.7 Some Slow Natural Changes",
+            "5.7.1 Weathering of rocks"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu105.pdf",
+          "ordinal": 10,
+          "pageStart": 12,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 5: Changes Around Us: Physical and Chemical",
+            "5.7 Some Slow Natural Changes",
+            "5.7.2 Erosion"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu105.pdf",
+          "ordinal": 11,
+          "pageStart": 13,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 5: Changes Around Us: Physical and Chemical",
+            "5.7 Some Slow Natural Changes",
+            "5.7.2 Erosion",
+            "Let Us Enhance Our Learning"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T02:33:39.559Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "What happens to the properties of a substance during a physical change?",
+      "choices": [
+        "They change completely.",
+        "They remain the same.",
+        "They become new.",
+        "They are reversed."
+      ],
+      "answerIndex": 1,
+      "solution": "During a physical change, the properties of a substance remain the same. The correct answer is 'They remain the same.' The other options describe changes that occur in chemical changes.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "किसी पदार्थ के गुण क्या होते हैं जब एक भौतिक परिवर्तन होता है?",
+          "choices": [
+            "वे पूरी तरह से बदल जाते हैं।",
+            "वे वही रहते हैं।",
+            "वे नए हो जाते हैं।",
+            "वे उलट जाते हैं।"
+          ],
+          "solution": "भौतिक परिवर्तन के दौरान, किसी पदार्थ के गुण वही रहते हैं। सही उत्तर 'वे वही रहते हैं' है। अन्य विकल्प रासायनिक परिवर्तन में होने वाले परिवर्तनों का वर्णन करते हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Hindi terminology used for scientific concepts.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एखाद्या पदार्थाच्या गुणांवर भौमिक बदलामुळे काय परिणाम होतो?",
+          "choices": [
+            "ते पूर्णपणे बदलतात.",
+            "ते त्याच रूपात राहतात.",
+            "ते नवीन होतात.",
+            "ते उलटे होतात."
+          ],
+          "solution": "भौमिक बदलादरम्यान, पदार्थाचे गुण त्याच रूपात राहतात. योग्य उत्तर 'ते त्याच रूपात राहतात.' आहे. इतर विकल्पांमध्ये रासायनिक बदलामध्ये होणारे बदल वर्णन केले आहेत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for scientific concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Misunderstands physical change as a complete transformation",
+        null,
+        "Confuses physical change with chemical change",
+        "Incorrectly assumes change in properties during physical change"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct and aligns with the key. The reasoning is sound and matches the expected understanding of physical changes.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu105.pdf",
+          "ordinal": 8,
+          "pageStart": 10,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 5: Changes Around Us: Physical and Chemical",
+            "5.6 Are All Changes Desirable?"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu105.pdf",
+          "ordinal": 9,
+          "pageStart": 11,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 5: Changes Around Us: Physical and Chemical",
+            "5.7 Some Slow Natural Changes",
+            "5.7.1 Weathering of rocks"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu105.pdf",
+          "ordinal": 10,
+          "pageStart": 12,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 5: Changes Around Us: Physical and Chemical",
+            "5.7 Some Slow Natural Changes",
+            "5.7.2 Erosion"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu105.pdf",
+          "ordinal": 11,
+          "pageStart": 13,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 5: Changes Around Us: Physical and Chemical",
+            "5.7 Some Slow Natural Changes",
+            "5.7.2 Erosion",
+            "Let Us Enhance Our Learning"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T02:33:39.559Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "Which of the following is a physical change that can be reversed?",
+      "choices": [
+        "Burning of a candle",
+        "Melting of ice",
+        "Ripening of fruits",
+        "Formation of soil"
+      ],
+      "answerIndex": 1,
+      "solution": "Melting of ice is a physical change that can be reversed by freezing. The other options are irreversible changes as they involve the formation of new substances or permanent changes.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा एक भौतिक परिवर्तन है जिसे उलटा किया जा सकता है?",
+          "choices": [
+            "मोमबत्ती के जलना",
+            "बर्फ के पिघलना",
+            "फलों का पकना",
+            "मिट्टी के बनने की प्रक्रिया"
+          ],
+          "solution": "बर्फ के पिघलना एक भौतिक परिवर्तन है जिसे हिमीकरण द्वारा उलटा किया जा सकता है। अन्य विकल्प अनुत्क्रमणीय परिवर्तन हैं क्योंकि इनमें नए पदार्थों के बनने या स्थायी परिवर्तन के कारण वे उलटे नहीं किए जा सकते।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate scientific terminology as found in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते एक भौमितिक बदल आहे जे उलटविता येऊ शकते?",
+          "choices": [
+            "मोमबत्ती जाळणे",
+            "हिम वितळणे",
+            "फळांचे पकवणे",
+            "मातीचे निर्माण"
+          ],
+          "solution": "हिम वितळणे हा एक भौमितिक बदल आहे जो थंड करून उलटविता येऊ शकतो. इतर विकल्प हे अनुत्क्रमित बदल आहेत कारण त्यांमध्ये नवीन पदार्थांचे निर्माण किंवा अस्थायी बदल होतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Example of a chemical change.",
+        null,
+        "Misunderstands the concept of reversibility.",
+        "Example of a chemical change."
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is option 1 (Melting of ice), which is a physical change that can be reversed by freezing. The other options are irreversible, as explained by the author.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu105.pdf",
+          "ordinal": 8,
+          "pageStart": 10,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 5: Changes Around Us: Physical and Chemical",
+            "5.6 Are All Changes Desirable?"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu105.pdf",
+          "ordinal": 9,
+          "pageStart": 11,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 5: Changes Around Us: Physical and Chemical",
+            "5.7 Some Slow Natural Changes",
+            "5.7.1 Weathering of rocks"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu105.pdf",
+          "ordinal": 10,
+          "pageStart": 12,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 5: Changes Around Us: Physical and Chemical",
+            "5.7 Some Slow Natural Changes",
+            "5.7.2 Erosion"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu105.pdf",
+          "ordinal": 11,
+          "pageStart": 13,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 5: Changes Around Us: Physical and Chemical",
+            "5.7 Some Slow Natural Changes",
+            "5.7.2 Erosion",
+            "Let Us Enhance Our Learning"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T02:33:39.559Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "Which of the following is a characteristic of a chemical change?",
+      "choices": [
+        "No new substance is formed",
+        "Only physical properties change",
+        "A new substance is formed",
+        "The change is reversible"
+      ],
+      "answerIndex": 2,
+      "solution": "A new substance is formed is a characteristic of a chemical change. No new substance is formed and only physical properties change describe a physical change. The change being reversible is not a defining feature of a chemical change.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा रासायनिक परिवर्तन का लक्षण है?",
+          "choices": [
+            "कोई नया पदार्थ नहीं बनता",
+            "केवल भौतिक गुण बदलते हैं",
+            "एक नया पदार्थ बनता है",
+            "परिवर्तन उत्क्रमणीय होता है"
+          ],
+          "solution": "एक नया पदार्थ बनता है रासायनिक परिवर्तन का लक्षण है। कोई नया पदार्थ नहीं बनता और केवल भौतिक गुण बदलते हैं भौतिक परिवर्तन के वर्णन करते हैं। परिवर्तन उत्क्रमणीय होना रासायनिक परिवर्तन की परिभाषा के लिए आवश्यक नहीं है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate scientific terminology as used in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते रासायनिक बदलाचे लक्षण आहे?",
+          "choices": [
+            "नवीन द्रव्य तयार होत नाही",
+            "केवळ भौतिक गुण बदलतात",
+            "नवीन द्रव्य तयार होते",
+            "बदल व्युत्क्रमित आहे"
+          ],
+          "solution": "नवीन द्रव्य तयार होते हे रासायनिक बदलाचे लक्षण आहे. नवीन द्रव्य तयार होत नाही आणि केवळ भौतिक गुण बदलतात हे भौतिक बदलाचे वर्णन करतात. बदल व्युत्क्रमित असणे हे रासायनिक बदलाचे वैशिष्ट्य नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "confuses physical and chemical changes",
+        "confuses physical and chemical changes",
+        null,
+        "understands the concept of a chemical change but misidentifies it"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 2, as a new substance being formed is a defining characteristic of a chemical change. The other options describe physical changes or are incorrect understandings of chemical changes.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu105.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 5: Changes Around Us: Physical and Chemical"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu105.pdf",
+          "ordinal": 1,
+          "pageStart": 3,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 5: Changes Around Us: Physical and Chemical",
+            "5.1 A Substance May Change in",
+            "Appearance but Remain the Same!"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu105.pdf",
+          "ordinal": 2,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 5: Changes Around Us: Physical and Chemical",
+            "5.2 A Substance May Change in",
+            "Appearance and Not Remain the Same!"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu105.pdf",
+          "ordinal": 3,
+          "pageStart": 5,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 5: Changes Around Us: Physical and Chemical",
+            "5.2 A Substance May Change in",
+            "Appearance and Not Remain the Same!"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T05:04:18.352Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What happens when carbon dioxide gas is passed through lime water?",
+      "choices": [
+        "It turns milky",
+        "It becomes clear",
+        "It becomes blue",
+        "It becomes red"
+      ],
+      "answerIndex": 0,
+      "solution": "When carbon dioxide gas is passed through lime water, it turns milky. This is because carbon dioxide reacts with lime water to form calcium carbonate, which is insoluble and appears as a white precipitate. The other options do not describe the correct reaction.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "कार्बन डाइऑक्साइड गैस के चूने के पानी में पास होने पर क्या होता है?",
+          "choices": [
+            "यह दूधिया हो जाता है",
+            "यह स्पष्ट हो जाता है",
+            "यह नीला हो जाता है",
+            "यह लाल हो जाता है"
+          ],
+          "solution": "जब कार्बन डाइऑक्साइड गैस चूने के पानी में पास होती है, तो यह दूधिया हो जाती है। ऐसा इसलिए होता है क्योंकि कार्बन डाइऑक्साइड चूने के पानी के साथ अभिक्रिया करके कैल्शियम कार्बोनेट बनाती है, जो अविलेय होता है और एक सफेद अवक्षेप के रूप में दिखाई देता है। अन्य विकल्प सही अभिक्रिया का वर्णन नहीं करते हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard scientific terminology appropriate for a Hindi-medium curriculum.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "कार्बन डायऑक्साइड वायू चूना पाण्यामधून जाऊ दिला असता काय होते?",
+          "choices": [
+            "ते दूधासारखे होते",
+            "ते स्पष्ट होते",
+            "ते नील होते",
+            "ते लाल होते"
+          ],
+          "solution": "कार्बन डायऑक्साइड वायू चूना पाण्यामधून जाऊ दिला असता, ते दूधासारखे होते. हे त्यामुळे होते की कार्बन डायऑक्साइड चूना पाण्याशी अभिक्रिया करून कॅल्शियम कार्बोनेट तयार करतो, जे अविलेय असून एक श्वेत अवक्षेप म्हणून दिसते. इतर विकल्प योग्य अभिक्रिया वर्णन करत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the scientific terminology appropriate for a Marathi-medium curriculum.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "does not understand the reaction between carbon dioxide and lime water",
+        "confuses the reaction with a different chemical process",
+        "confuses the color change with another chemical reaction"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 0, as the reaction between CO2 and lime water produces calcium carbonate, which makes the solution milky. The other options reflect common misconceptions about chemical reactions.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu105.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 5: Changes Around Us: Physical and Chemical"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu105.pdf",
+          "ordinal": 1,
+          "pageStart": 3,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 5: Changes Around Us: Physical and Chemical",
+            "5.1 A Substance May Change in",
+            "Appearance but Remain the Same!"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu105.pdf",
+          "ordinal": 2,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 5: Changes Around Us: Physical and Chemical",
+            "5.2 A Substance May Change in",
+            "Appearance and Not Remain the Same!"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu105.pdf",
+          "ordinal": 3,
+          "pageStart": 5,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 5: Changes Around Us: Physical and Chemical",
+            "5.2 A Substance May Change in",
+            "Appearance and Not Remain the Same!"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T05:04:18.352Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of the following changes involves a physical change only?",
+      "choices": [
+        "Melting of ice",
+        "Rusting of iron",
+        "Burning of paper",
+        "Curdling of milk"
+      ],
+      "answerIndex": 0,
+      "solution": "Melting of ice is a physical change because it involves a change in the state of water without forming a new substance. Rusting, burning, and curdling involve the formation of new substances and are therefore chemical changes.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा परिवर्तन केवल भौतिक परिवर्तन को संभालता है?",
+          "choices": [
+            "बर्फ का पिघलना",
+            "लोहे का जंग लगना",
+            "कागज का जलना",
+            "दूध का खट्टा होना"
+          ],
+          "solution": "बर्फ का पिघलना भौतिक परिवर्तन है क्योंकि यह पानी के अवस्था में परिवर्तन को दर्शाता है बिना किसी नए पदार्थ के बनाए। जंग लगना, जलना और खट्टा होना नए पदार्थों के बनने को दर्शाते हैं और इसलिए रासायनिक परिवर्तन हैं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriately used in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणता बदल फक्त भौतिक बदलाचा आहे?",
+          "choices": [
+            "हिमाचे द्रवीकरण",
+            "लोखंडाचे जंगले लागणे",
+            "कागदाचे जाळणे",
+            "दुधाचे घटक बनणे"
+          ],
+          "solution": "हिमाचे द्रवीकरण भौतिक बदल आहे कारण त्यामुळे पाण्याच्या अवस्थेत बदल होतो परंतु नवीन पदार्थ तयार होत नाही. जंगले लागणे, जाळणे आणि घटक बनणे यांमध्ये नवीन पदार्थ तयार होतात आणि त्यामुळे ते रासायनिक बदल आहेत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses the definition of physical change",
+        "Incorrectly identifies a chemical change as physical",
+        "Mistakenly thinks burning is a physical change due to visible changes only"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly identifies melting of ice as a physical change, and the reasons for the other options align with common misconceptions about physical vs. chemical changes.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu105.pdf",
+          "ordinal": 12,
+          "pageStart": 14,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 5: Changes Around Us: Physical and Chemical",
+            "5.7 Some Slow Natural Changes",
+            "5.7.2 Erosion",
+            "Let Us Enhance Our Learning"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu105.pdf",
+          "ordinal": 13,
+          "pageStart": 15,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 5: Changes Around Us: Physical and Chemical",
+            "5.7 Some Slow Natural Changes",
+            "5.7.2 Erosion",
+            "Exploratory Projects"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T05:04:18.352Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "A student observed that when vinegar is mixed with baking soda, carbon dioxide gas is released. What can be inferred about this change?",
+      "choices": [
+        "It is a physical change because the gas is released",
+        "It is a chemical change because a new substance is formed",
+        "It is a physical change because the mixture gets warm",
+        "It is a chemical change because the color changes"
+      ],
+      "answerIndex": 1,
+      "solution": "The release of carbon dioxide gas indicates a chemical change because a new substance is formed. This is different from a physical change, where no new substance is created.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक छात्र ने देखा कि जब सिरका को बेकिंग सोडा के साथ मिलाया जाता है, तो कार्बन डाइऑक्साइड गैस निकलती है। इस परिवर्तन के बारे में क्या निष्कर्ष निकाला जा सकता है?",
+          "choices": [
+            "यह एक भौतिक परिवर्तन है क्योंकि गैस निकलती है",
+            "यह एक रासायनिक परिवर्तन है क्योंकि एक नया पदार्थ बनता है",
+            "यह एक भौतिक परिवर्तन है क्योंकि मिश्रण गर्म हो जाता है",
+            "यह एक रासायनिक परिवर्तन है क्योंकि रंग बदल जाता है"
+          ],
+          "solution": "कार्बन डाइऑक्साइड गैस के निकलने से यह एक रासायनिक परिवर्तन होता है क्योंकि एक नया पदार्थ बनता है। यह भौतिक परिवर्तन से अलग है, जिसमें कोई नया पदार्थ नहीं बनता।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the original English question and maintains the correct answer and distractors.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका विद्यार्थ्याने नोंद केले की व्हिनिगरला बेकिंग सोडासह मिसळल्यास कार्बन डायऑक्साइड वायू मुक्त होतो. या बदलाबद्दल काय अंदाज आहे?",
+          "choices": [
+            "हे भौतिक बदल आहे कारण वायू मुक्त होतो",
+            "हे रासायनिक बदल आहे कारण नवीन पदार्थ तयार होतो",
+            "हे भौतिक बदल आहे कारण मिश्रण गरम होते",
+            "हे रासायनिक बदल आहे कारण रंग बदलतो"
+          ],
+          "solution": "कार्बन डायऑक्साइड वायू मुक्त होणे रासायनिक बदलाचा संकेत दर्शवतो कारण नवीन पदार्थ तयार होतो. हे भौतिक बदलापेक्षा वेगळे आहे, जेथे नवीन पदार्थ तयार होत नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses gas release with a physical change",
+        null,
+        "Incorrectly assumes that temperature change indicates a physical process",
+        "Mistakenly thinks color change is a sign of chemical change"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 1, as the formation of a new substance (carbon dioxide) indicates a chemical change. The reasoning in the solution is sound and matches the key.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu105.pdf",
+          "ordinal": 12,
+          "pageStart": 14,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 5: Changes Around Us: Physical and Chemical",
+            "5.7 Some Slow Natural Changes",
+            "5.7.2 Erosion",
+            "Let Us Enhance Our Learning"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu105.pdf",
+          "ordinal": 13,
+          "pageStart": 15,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 5: Changes Around Us: Physical and Chemical",
+            "5.7 Some Slow Natural Changes",
+            "5.7.2 Erosion",
+            "Exploratory Projects"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T05:04:18.352Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "When a candle burns, what type of changes are involved?",
+      "choices": [
+        "Only physical changes",
+        "Only chemical changes",
+        "Both physical and chemical changes",
+        "Neither physical nor chemical changes"
+      ],
+      "answerIndex": 2,
+      "solution": "When a candle burns, the wax melts and evaporates, which are physical changes, and the wax vapour reacts with oxygen to produce new substances like carbon dioxide and water, which are chemical changes. The option stating only physical changes is incorrect because new substances are formed during burning. The option stating only chemical changes is incorrect because not all processes, like melting, are chemical. The option stating neither is incorrect because both types of changes occur.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "जब मोमबत्ती जलती है, तो किस प्रकार के परिवर्तन शामिल होते हैं?",
+          "choices": [
+            "केवल भौतिक परिवर्तन",
+            "केवल रासायनिक परिवर्तन",
+            "भौतिक एवं रासायनिक दोनों परिवर्तन",
+            "न भौतिक न रासायनिक परिवर्तन"
+          ],
+          "solution": "जब मोमबत्ती जलती है, तो मोम पिघलता एवं वाष्पित होता है, जो भौतिक परिवर्तन हैं, एवं मोम की वाष्प ऑक्सीजन के साथ अभिक्रिया करके कार्बन डाइऑक्साइड एवं जल जैसे नए पदार्थ बनाती है, जो रासायनिक परिवर्तन हैं। केवल भौतिक परिवर्तन के कथन की गलती यह है कि जलने के दौरान नए पदार्थ बनते हैं। केवल रासायनिक परिवर्तन के कथन की गलती यह है कि निर्माण जैसी प्रक्रियाएं, जैसे कि पिघलना, रासायनिक नहीं हैं। न भौतिक न रासायनिक परिवर्तन के कथन की गलती यह है कि दोनों प्रकार के परिवर्तन होते हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Hindi scientific terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "माची जाऊन जात असताना, कोणत्या प्रकारच्या बदलांचा समावेश होतो?",
+          "choices": [
+            "केवळ भौमितिक बदल",
+            "केवळ रासायनिक बदल",
+            "भौमितिक आणि रासायनिक बदल दोन्ही",
+            "भौमितिक किंवा रासायनिक बदल नाहीत"
+          ],
+          "solution": "माची जाऊन जात असताना, मोम घन आणि बाष्पीभूत होतो, जे भौमितिक बदल आहेत, आणि मोमाच्या बाष्पाचा ऑक्सीजनशी अभिक्रिया होऊन नवीन पदार्थ जसे की कार्बन डायऑक्साइड आणि पाणी तयार होतात, जे रासायनिक बदल आहेत. केवळ भौमितिक बदल असल्याचा विकल्प चूक आहे कारण जाळण्यादरम्यान नवीन पदार्थ तयार होतात. केवळ रासायनिक बदल असल्याचा विकल्प चूक आहे कारण जमलेल्या प्रक्रिया, जसे की घन होणे, रासायनिक नाहीत. दोन्ही बदल नाहीत असल्याचा विकल्प चूक आहे कारण दोन्ही प्रकारच्या बदलांचा समावेश होतो.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses all changes as physical",
+        "Confuses all changes as chemical",
+        null,
+        "Does not understand that multiple types of changes can occur in one process"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies that burning a candle involves both physical (melting, evaporation, solidification of wax) and chemical (burning of wax vapor) changes. The reasoning aligns with the scientific understanding of the process.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu105.pdf",
+          "ordinal": 4,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 5: Changes Around Us: Physical and Chemical",
+            "5.3 Some Other Processes Involving",
+            "5.3.2 Combustion"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu105.pdf",
+          "ordinal": 5,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 5: Changes Around Us: Physical and Chemical",
+            "5.3 Some Other Processes Involving",
+            "5.3.2 Combustion"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu105.pdf",
+          "ordinal": 6,
+          "pageStart": 8,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 5: Changes Around Us: Physical and Chemical",
+            "5.4 Can Physical and Chemical Changes",
+            "Occur in the Same Process?"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu105.pdf",
+          "ordinal": 7,
+          "pageStart": 10,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 5: Changes Around Us: Physical and Chemical",
+            "5.5 Are Changes Permanent?"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T05:04:18.352Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "What happens when a rock is exposed to water and air over time, leading to the formation of a red layer?",
+      "choices": [
+        "It undergoes a physical change due to temperature changes.",
+        "It undergoes a chemical change due to the formation of iron oxide.",
+        "It undergoes a physical change due to erosion.",
+        "It undergoes a chemical change due to the breakdown of rocks into sediments"
+      ],
+      "answerIndex": 1,
+      "solution": "The correct answer is 'It undergoes a chemical change due to the formation of iron oxide.' The red layer is formed when the iron in the rock reacts with water and air, forming iron oxide, which is a chemical change. The other options are incorrect because they do not accurately describe the process of chemical change in this context.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "जब एक चट्टान को लंबे समय तक पानी और हवा के संपर्क में रखा जाता है, तो लाल परत के बनने के कारण क्या होता है?",
+          "choices": [
+            "यह तापमान में परिवर्तन के कारण भौतिक परिवर्तन करता है।",
+            "यह लौह ऑक्साइड के बनने के कारण रासायनिक परिवर्तन करता है।",
+            "यह अपरदन के कारण भौतिक परिवर्तन करता है।",
+            "यह चट्टानों के अपघटन के कारण रासायनिक परिवर्तन करता है।"
+          ],
+          "solution": "सही उत्तर 'यह लौह ऑक्साइड के बनने के कारण रासायनिक परिवर्तन करता है।' है। लाल परत तब बनती है जब चट्टान में लौह जल और हवा के संपर्क में आकर लौह ऑक्साइड बनाता है, जो एक रासायनिक परिवर्तन है। अन्य विकल्प इस संदर्भ में रासायनिक परिवर्तन का सही वर्णन नहीं करते हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Hindi scientific terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एक बट्टा जेव्हा वेळेनुसार पाणी आणि हवा यांच्या संपर्कात येतो, तेव्हा त्याच्या बाहेरील लेपाच्या लाल रंगाच्या बनण्याचा परिणाम काय होतो?",
+          "choices": [
+            "त्याचे तापमानाच्या बदलामुळे भौमितिक बदल होतो.",
+            "त्याचे लोह ऑक्साइडच्या निर्माणामुळे रासायनिक बदल होतो.",
+            "त्याचे अपरदनामुळे भौमितिक बदल होतो.",
+            "त्याचे खडकांच्या खडकांमध्ये बदलामुळे रासायनिक बदल होतो."
+          ],
+          "solution": "योग्य उत्तर 'त्याचे लोह ऑक्साइडच्या निर्माणामुळे रासायनिक बदल होतो.' आहे. खडकातील लोह पाणी आणि हवेशी अभिक्रिया करून लोह ऑक्साइड बनवतो, जो रासायनिक बदल आहे. इतर विकल्प या संदर्भात रासायनिक बदलाचे योग्य वर्णन करत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation accurately reflects the original English content with appropriate Marathi terminology for geological processes.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "This describes a physical change, not a chemical change",
+        null,
+        "This describes a physical change due to erosion, not a chemical change",
+        "This describes a physical change, not a chemical change"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is well-constructed. The correct answer is 1, as the red layer is due to the formation of iron oxide, a chemical change. The distractors are plausible but incorrect, and the reasons for their wrongness align with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu105.pdf",
+          "ordinal": 8,
+          "pageStart": 10,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 5: Changes Around Us: Physical and Chemical",
+            "5.6 Are All Changes Desirable?"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu105.pdf",
+          "ordinal": 9,
+          "pageStart": 11,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 5: Changes Around Us: Physical and Chemical",
+            "5.7 Some Slow Natural Changes",
+            "5.7.1 Weathering of rocks"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu105.pdf",
+          "ordinal": 10,
+          "pageStart": 12,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 5: Changes Around Us: Physical and Chemical",
+            "5.7 Some Slow Natural Changes",
+            "5.7.2 Erosion"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu105.pdf",
+          "ordinal": 11,
+          "pageStart": 13,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 5: Changes Around Us: Physical and Chemical",
+            "5.7 Some Slow Natural Changes",
+            "5.7.2 Erosion",
+            "Let Us Enhance Our Learning"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T05:04:18.352Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "A student observes that when carbon dioxide is passed through lime water, the solution turns milky. What type of change is this?",
+      "choices": [
+        "Physical change because the colour of the solution changes.",
+        "Chemical change because a new substance is formed.",
+        "Physical change because the solution becomes cloudy.",
+        "Chemical change because the solution loses its transparency."
+      ],
+      "answerIndex": 1,
+      "solution": "The change is a chemical change because a new substance, calcium carbonate, is formed. This is evident from the milky appearance of the solution, which indicates the formation of an insoluble precipitate. The first option is incorrect because the change in colour is due to a new substance, not just a physical change. The third and fourth options are incorrect because the cloudiness and transparency are effects of the chemical reaction, not the cause.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक छात्र देखता है कि जब कार्बन डाइऑक्साइड चूने के पानी में से गुजरती है, तो घोल दूधिया हो जाता है। यह किस प्रकार का परिवर्तन है?",
+          "choices": [
+            "भौतिक परिवर्तन क्योंकि घोल के रंग में परिवर्तन होता है।",
+            "रासायनिक परिवर्तन क्योंकि एक नया पदार्थ बनता है।",
+            "भौतिक परिवर्तन क्योंकि घोल बादल जैसा हो जाता है।",
+            "रासायनिक परिवर्तन क्योंकि घोल अपारदर्शी हो जाता है।"
+          ],
+          "solution": "यह रासायनिक परिवर्तन है क्योंकि एक नया पदार्थ, कैल्शियम कार्बोनेट, बनता है। घोल के दूधिया दिखाई देने से यह स्पष्ट होता है कि अवक्षेप के अविलेय पदार्थ के बनने के कारण है। पहला विकल्प गलत है क्योंकि रंग में परिवर्तन नए पदार्थ के कारण होता है, न कि केवल भौतिक परिवर्तन के कारण। तीसरा और चौथा विकल्प गलत हैं क्योंकि बादल जैसापन और अपारदर्शिता रासायनिक अभिक्रिया के परिणाम हैं, न कि इसके कारण।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. All options are correctly translated, and the correct answer remains in the same position. The distractors remain incorrect, and the technical terms used are appropriate for a Hindi-medium science curriculum.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका विद्यार्थीने लिम जलात कार्बन डायऑक्साइड वापरल्यावर द्रावण दूधपाणी होते असे निरीक्षण केले. हा प्रकार कोणत्या प्रकारचा बदल आहे?",
+          "choices": [
+            "भौमितिक बदल कारण द्रावणाचा रंग बदलतो.",
+            "रासायनिक बदल कारण नवीन पदार्थ तयार होतो.",
+            "भौमितिक बदल कारण द्रावण ढगाळ होतो.",
+            "रासायनिक बदल कारण द्रावणाची पारदर्शकता गमावतो."
+          ],
+          "solution": "हा बदल रासायनिक बदल आहे कारण नवीन पदार्थ, कॅल्शियम कार्बोनेट तयार होतो. हे द्रावणाच्या दूधपाणी असण्यामुळे स्पष्ट आहे, जे अविलियन प्रकल्पाच्या निर्मितीचा संकेत देते. पहिला विकल्प चुकीचा आहे कारण रंगाचा बदल नवीन पदार्थामुळे होतो, नाहीतर फक्त भौमितिक बदलामुळे. तिसरा आणि चौथा विकल्प चुकीचे आहेत कारण ढगाळता आणि पारदर्शकता हे रासायनिक अभिक्रियेचे परिणाम आहेत, नाहीतर कारण.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses colour change with physical change",
+        null,
+        "Does not recognize that a new substance is formed",
+        "Thinks cloudiness is a physical property change only"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 1, as the formation of calcium carbonate (a new substance) confirms a chemical change. The distractors reflect common misconceptions about physical vs. chemical changes.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu105.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 5: Changes Around Us: Physical and Chemical"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu105.pdf",
+          "ordinal": 1,
+          "pageStart": 3,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 5: Changes Around Us: Physical and Chemical",
+            "5.1 A Substance May Change in",
+            "Appearance but Remain the Same!"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu105.pdf",
+          "ordinal": 2,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 5: Changes Around Us: Physical and Chemical",
+            "5.2 A Substance May Change in",
+            "Appearance and Not Remain the Same!"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu105.pdf",
+          "ordinal": 3,
+          "pageStart": 5,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 5: Changes Around Us: Physical and Chemical",
+            "5.2 A Substance May Change in",
+            "Appearance and Not Remain the Same!"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T05:04:18.352Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "A chameleon changes its color by adjusting the spacing between crystals in its skin. Which of the following best explains why this is a reversible change?",
+      "choices": [
+        "Because the crystals are made of a reversible material",
+        "Because the color change is temporary",
+        "Because no new substance is formed",
+        "Because the change depends on light reflection"
+      ],
+      "answerIndex": 2,
+      "solution": "The change in color is reversible because no new substance is formed. The chameleon can return to its original color when the spacing of the crystals is adjusted back to its original state.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक कैमेलियन अपने त्वचा में क्रिस्टल के बीच की दूरी को समायोजित करके अपना रंग बदल देता है। निम्नलिखित में से कौन-सा इसकी व्याख्या सबसे अच्छा करता है कि यह एक विलोमनीय परिवर्तन क्यों है?",
+          "choices": [
+            "क्योंकि क्रिस्टल एक विलोमनीय सामग्री से बने होते हैं",
+            "क्योंकि रंग परिवर्तन अस्थायी होता है",
+            "क्योंकि कोई नया पदार्थ नहीं बनता है",
+            "क्योंकि परिवर्तन प्रकाश परावर्तन पर निर्भर करता है"
+          ],
+          "solution": "रंग में परिवर्तन विलोमनीय होता है क्योंकि कोई नया पदार्थ नहीं बनता है। जब क्रिस्टल की दूरी को अपनी मूल स्थिति में वापस समायोजित कर दिया जाता है तो कैमेलियन अपने मूल रंग में वापस आ सकता है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate scientific terminology in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका चमेलियनच्या त्वचेतील क्रिस्टलमधील अंतर बदलून तो रंग बदलतो. खालीलपैकी कोणते बदल व्युत्क्रमित आहे याचे सर्वात चांगले स्पष्टीकरण देते?",
+          "choices": [
+            "कारण क्रिस्टल एका व्युत्क्रमित सामग्रीत बनलेले आहेत",
+            "कारण रंग बदल अस्थायी आहे",
+            "कारण कोणताही नवीन पदार्थ तयार होत नाही",
+            "कारण बदल प्रकाश प्रतिबिंबित करणावर अवलंबून आहे"
+          ],
+          "solution": "रंग बदल व्युत्क्रमित आहे कारण कोणताही नवीन पदार्थ तयार होत नाही. जेव्हा क्रिस्टलचे अंतर मूळ स्थितीत बदलले जाते तेव्हा चमेलियन मूळ रंगात परत येऊ शकतो.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the scientific meaning, and uses appropriate Marathi terminology for a textbook context.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Student believes materials have inherent reversibility regardless of the process",
+        "Incorrectly assumes that reversibility depends on the color being temporary",
+        null,
+        "Misunderstands the role of light in the color change"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 2 because the change is physical and no new substance is formed. The reasoning in the solution is sound and aligns with the correct explanation.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu105.pdf",
+          "ordinal": 12,
+          "pageStart": 14,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 5: Changes Around Us: Physical and Chemical",
+            "5.7 Some Slow Natural Changes",
+            "5.7.2 Erosion",
+            "Let Us Enhance Our Learning"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu105.pdf",
+          "ordinal": 13,
+          "pageStart": 15,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 5: Changes Around Us: Physical and Chemical",
+            "5.7 Some Slow Natural Changes",
+            "5.7.2 Erosion",
+            "Exploratory Projects"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T05:04:18.352Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
     }
   ]
 }

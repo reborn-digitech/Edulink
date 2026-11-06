@@ -1030,6 +1030,2201 @@
       "generatedAt": "2026-11-02T14:00:45.404Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is a mixture?",
+      "choices": [
+        "It is a substance formed by two or more elements combined chemically.",
+        "It is a combination of two or more substances that do not chemically react.",
+        "It is a pure substance that cannot be broken down into simpler substances.",
+        "It is a substance that has a fixed chemical composition."
+      ],
+      "answerIndex": 1,
+      "solution": "A mixture is a combination of two or more substances that do not chemically react. The other options describe compounds, elements, or pure substances, which are different from mixtures. The correct answer is the second option.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "मिश्रण क्या है?",
+          "choices": [
+            "यह दो या अधिक तत्वों के रासायनिक रूप से संयोजित होकर बना एक पदार्थ है।",
+            "यह दो या अधिक पदार्थों का संयोजन है जो रासायनिक रूप से अभिक्रिया नहीं करते हैं।",
+            "यह एक शुद्ध पदार्थ है जिसे सरल पदार्थों में विभक्त नहीं किया जा सकता है।",
+            "यह एक पदार्थ है जिसका निश्चित रासायनिक संघटन है।"
+          ],
+          "solution": "मिश्रण दो या अधिक पदार्थों का संयोजन है जो रासायनिक रूप से अभिक्रिया नहीं करते हैं। अन्य विकल्प यौगिक, तत्व या शुद्ध पदार्थों का वर्णन करते हैं, जो मिश्रण से अलग हैं। सही उत्तर दूसरा विकल्प है।",
+          "imageAlt": null,
+          "critique": "Hindi text has correct meaning, but answer key is wrong (should be option 2, not 1).",
+          "flag": "translation critique: not one answer at the same position"
+        },
+        "mr": {
+          "stem": "मिश्रण काय आहे?",
+          "choices": [
+            "ते दोन किंवा अधिक घटकांचे रासायनिकरित्या जोडलेले एक पदार्थ आहे.",
+            "ते दोन किंवा अधिक पदार्थांचे संयोजन आहे जे रासायनिकरित्या प्रतिक्रिया करत नाहीत.",
+            "ते एक शुद्ध पदार्थ आहे जो सोप्पा पदार्थांमध्ये विभक्त करता येत नाही.",
+            "ते एक पदार्थ आहे ज्याचे निश्चित रासायनिक रचना आहे."
+          ],
+          "solution": "मिश्रण हे दोन किंवा अधिक पदार्थांचे संयोजन आहे जे रासायनिकरित्या प्रतिक्रिया करत नाहीत. इतर विकल्प यांच्या बदल्यात अणू, घटक किंवा शुद्ध पदार्थ वर्णन करतात, जे मिश्रणापेक्षा वेगळे आहेत. योग्य उत्तर दुसरा विकल्प आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses mixtures with compounds",
+        null,
+        "Incorrectly defines a pure substance",
+        "Confuses elements with mixtures"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-constructed and the solution correctly identifies option 1 as the correct definition of a mixture. The distractors are common misconceptions, and the author's reasoning aligns with typical student errors.",
+      "sources": [
+        {
+          "document": "ncert/8/science/hecu108.pdf",
+          "ordinal": 13,
+          "pageStart": 15,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 8: — Nature of Matter: Elements, Compounds, and Mixtures",
+            "8.5 What Are Minerals?"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu108.pdf",
+          "ordinal": 14,
+          "pageStart": 16,
+          "pageEnd": 18,
+          "headingPath": [
+            "Chapter 8: — Nature of Matter: Elements, Compounds, and Mixtures",
+            "8.5 What Are Minerals?"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu108.pdf",
+          "ordinal": 15,
+          "pageStart": 18,
+          "pageEnd": 18,
+          "headingPath": [
+            "Chapter 8: — Nature of Matter: Elements, Compounds, and Mixtures",
+            "8.5 What Are Minerals?"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T23:24:26.578Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of the following best describes a compound?",
+      "choices": [
+        "A substance made of only one type of atom",
+        "A substance made of two or more elements chemically combined in a fixed ratio",
+        "A substance that can be separated into its components by physical means",
+        "A substance that is not made of elements"
+      ],
+      "answerIndex": 1,
+      "solution": "A compound is formed when two or more elements chemically bond in a fixed proportion, creating a new substance with distinct properties. This definition distinguishes compounds from elements, which consist of only one type of atom, and from mixtures, which can be separated by physical means. The other options incorrectly describe elements or mixtures instead of compounds.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा एक यौगिक का सबसे अच्छा वर्णन करता है?",
+          "choices": [
+            "केवल एक प्रकार के परमाणु से बना एक पदार्थ",
+            "दो या दो से अधिक तत्वों के निश्चित अनुपात में रासायनिक रूप से संयोजित होकर बना एक पदार्थ",
+            "जिस पदार्थ को भौतिक विधियों द्वारा इसके घटकों में अलग किया जा सकता है",
+            "जिस पदार्थ के तत्वों से निर्मित नहीं होता"
+          ],
+          "solution": "एक यौगिक तब बनता है जब दो या दो से अधिक तत्व एक निश्चित अनुपात में रासायनिक रूप से जुड़ जाते हैं, जिससे एक नए पदार्थ का निर्माण होता है जिसके अलग गुण होते हैं। इस परिभाषा के द्वारा यौगिकों का अलगाव तत्वों, जो केवल एक प्रकार के परमाणु से बने होते हैं, और मिश्रणों, जिन्हें भौतिक विधियों द्वारा अलग किया जा सकता है, से होता है। अन्य विकल्प यौगिकों के बजाय तत्वों या मिश्रणों का गलत वर्णन करते हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Hindi scientific terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते एक यौगिकाचे श्रेष्ठ वर्णन करते?",
+          "choices": [
+            "एका प्रकारच्या परमाणूने बनलेले द्रव्य",
+            "दोन किंवा अधिक घटकांच्या निश्चित अनुपातात रासायनिकरित्या जोडलेल्या द्रव्याने बनलेले द्रव्य",
+            "ज्याचे घटक भौतिक पद्धतीने विभक्त करता येतात असे द्रव्य",
+            "जे घटकांनी बनलेले नाही असे द्रव्य"
+          ],
+          "solution": "एक यौगिक तयार होतो जेव्हा दोन किंवा अधिक घटक निश्चित प्रमाणात रासायनिकरित्या बांधले जातात, ज्यामुळे एक नवीन द्रव्य तयार होतो ज्याच्या विशिष्ट गुणधर्म असतात. या वर्णनामुळे यौगिकाचा विशिष्ट विशिष्ट गुणधर्म असतात. या वर्णनामुळे यौगिकाचा विशिष्ट गुणधर्म असतात. या वर्णनामुळे यौगिकाचा विशिष्ट गुणधर्म असतात. या वर्णनामुळे यौगिकाचा विशिष्ट गुणधर्म असतात. या वर्णनामुळे यौगिकाचा विशिष्ट गुणधर्म असतात. या वर्णनामुळे यौगिकाचा विशिष्ट गुणधर्म असतात. या वर्णनामुळे यौगिकाचा विशिष्ट गुणधर्म असतात. या वर्णनामुळे यौगिकाचा विशिष्ट गुणधर्म असतात. या वर्णनामुळे यौगिकाचा विशिष्ट गुणधर्म असतात. या वर्णनामुळे यौगिकाचा विशिष्ट गुणधर्म असतात.",
+          "imageAlt": null,
+          "critique": "The solution text is duplicated multiple times (repeated 9 times) and contains errors. The correct answer should be option (2), not (1).",
+          "flag": "translation critique: not one answer at the same position"
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the definition of an element",
+        null,
+        "Incorrectly states that compounds can be separated by physical means",
+        "Incorrectly states that compounds are not made of elements"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is option 1, which accurately defines a compound as a substance made of two or more elements chemically combined in a fixed ratio. The other options incorrectly describe elements, mixtures, or misunderstand the nature of compounds.",
+      "sources": [
+        {
+          "document": "ncert/8/science/hecu108.pdf",
+          "ordinal": 7,
+          "pageStart": 8,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 8: — Nature of Matter: Elements, Compounds, and Mixtures",
+            "8.3 What Are the Types of Pure Substances?",
+            "Activity 8.3: Let us experiment (Demonstration activity)"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu108.pdf",
+          "ordinal": 8,
+          "pageStart": 9,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 8: — Nature of Matter: Elements, Compounds, and Mixtures",
+            "8.3 What Are the Types of Pure Substances?",
+            "Activity 8.4: Let us experiment"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu108.pdf",
+          "ordinal": 9,
+          "pageStart": 10,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 8: — Nature of Matter: Elements, Compounds, and Mixtures",
+            "8.3 What Are the Types of Pure Substances?",
+            "Activity 8.5: Let us experiment (Demonstration activity)"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T23:24:26.578Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "Which of the following is an example of a mixture that is not a pure substance?",
+      "choices": [
+        "Sugar",
+        "Water",
+        "Salt dissolved in water",
+        "Calcium oxide"
+      ],
+      "answerIndex": 2,
+      "solution": "The correct answer is 'Salt dissolved in water' because it is a mixture of two pure substances—salt and water. Sugar, water, and calcium oxide are all pure substances on their own.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा एक मिश्रण का उदाहरण है जो शुद्ध पदार्थ नहीं है?",
+          "choices": [
+            "शर्करा",
+            "जल",
+            "जल में घुली हुई नमक",
+            "कैल्शियम ऑक्साइड"
+          ],
+          "solution": "सही उत्तर 'जल में घुली हुई नमक' है क्योंकि यह दो शुद्ध पदार्थों—नमक और जल का मिश्रण है। शर्करा, जल और कैल्शियम ऑक्साइड अपने आप में शुद्ध पदार्थ हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the original English question and solution, with appropriate terminology used in Hindi science education.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते शुद्ध पदार्थ नसलेल्या मिश्रणाचे उदाहरण आहे?",
+          "choices": [
+            "शक्कर",
+            "पाणी",
+            "पाण्यात विरघळलेले खाली",
+            "कॅल्शियम ऑक्साइड"
+          ],
+          "solution": "सही उत्तर 'पाण्यात विरघळलेले खाली' आहे कारण ते दोन शुद्ध पदार्थांचे मिश्रण आहे- खाली आणि पाणी. शक्कर, पाणी आणि कॅल्शियम ऑक्साइड एकटे शुद्ध पदार्थ आहेत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning. 'खाली' (salt) is the correct Marathi term for 'salt' in this context.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Student thinks pure substances like elements or compounds are mixtures because they are made of different atoms",
+        "Believes that pure substances cannot be mixed, and assumes water is not a mixture because it appears uniform",
+        null,
+        "Student thinks compounds are also mixtures because they are made of different elements"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 2, as salt dissolved in water is a homogeneous mixture. The other options are all pure substances. The author's reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/8/science/hecu108.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 8: — Nature of Matter: Elements, Compounds, and Mixtures",
+            "Probe and ponder"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu108.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 8: — Nature of Matter: Elements, Compounds, and Mixtures",
+            "Probe and ponder"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu108.pdf",
+          "ordinal": 2,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 8: — Nature of Matter: Elements, Compounds, and Mixtures",
+            "Activity 8.1: Let us experiment"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T23:24:26.578Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "If a student wants to determine if a substance is a pure substance, which of the following observations would be most useful?",
+      "choices": [
+        "It has a uniform appearance",
+        "It can be separated into other substances by physical means",
+        "It has a distinct taste",
+        "It cannot be separated into other substances by any physical process"
+      ],
+      "answerIndex": 3,
+      "solution": "The observation that a substance cannot be separated into other substances by any physical process is the most useful in determining if it is a pure substance. Pure substances consist of only one type of matter and cannot be broken down into simpler substances through physical means. Other observations, like uniform appearance or taste, may vary and do not definitively indicate purity.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक छात्र किसी पदार्थ के शुद्ध पदार्थ होने का निर्धारण करना चाहता है, तो निम्नलिखित में से कौन-सा अवलोकन सबसे उपयोगी होगा?",
+          "choices": [
+            "इसका एकसमान दृश्य है",
+            "इसे भौतिक विधियों द्वारा अन्य पदार्थों में अलग किया जा सकता है",
+            "इसका एक अलग स्वाद है",
+            "इसे किसी भी भौतिक प्रक्रिया द्वारा अन्य पदार्थों में अलग नहीं किया जा सकता"
+          ],
+          "solution": "किसी पदार्थ के किसी भी भौतिक प्रक्रिया द्वारा अन्य पदार्थों में अलग न किए जा सकने का अवलोकन शुद्ध पदार्थ होने का निर्धारण करने में सबसे उपयोगी होता है। शुद्ध पदार्थ केवल एक प्रकार के पदार्थ से बने होते हैं और भौतिक विधियों द्वारा सरल पदार्थों में विभक्त नहीं किए जा सकते। एकसमान दृश्य या स्वाद जैसे अन्य अवलोकन भिन्न हो सकते हैं और शुद्धता के निर्धारण के लिए निश्चित नहीं होते।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi scientific terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका विद्यार्थ्याला एखाद्या पदार्थाच्या शुद्धतेचा निर्णय घ्यायचा असेल, तर खालीलपैकी कोणती नोंद अधिक उपयुक्त असेल?",
+          "choices": [
+            "त्याचा एकरूप दिसावा",
+            "तो भौतिक प्रक्रियेद्वारे इतर पदार्थांमध्ये विभक्त करता येऊ शकतो",
+            "त्याचा विशिष्ट स्वाद असेल",
+            "तो कोणत्याही भौतिक प्रक्रियेद्वारे इतर पदार्थांमध्ये विभक्त करता येऊ शकत नाही"
+          ],
+          "solution": "एखाद्या पदार्थाला कोणत्याही भौतिक प्रक्रियेद्वारे इतर पदार्थांमध्ये विभक्त करता येऊ शकत नाही अशी नोंद त्याच्या शुद्धतेचा निर्णय घेण्यासाठी सर्वात उपयुक्त असते. शुद्ध पदार्थ फक्त एक प्रकारच्या द्रव्यापासून बनलेला असतो आणि भौतिक प्रक्रियेद्वारे सोप्या पदार्थांमध्ये विभक्त करता येत नाही. एकरूप दिसावा किंवा स्वाद अशा इतर नोंदी बदलू शकतात आणि शुद्धतेची निश्चिती करत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the appearance of a pure substance with its definition",
+        "Misunderstands the definition of a pure substance as one that can be separated",
+        "Incorrectly assumes taste is a measure of purity",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 3, as a pure substance cannot be separated by physical means. The author's reasoning aligns with scientific definitions. All distractors represent common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/8/science/hecu108.pdf",
+          "ordinal": 3,
+          "pageStart": 5,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 8: — Nature of Matter: Elements, Compounds, and Mixtures",
+            "Activity 8.2: Let us explore"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu108.pdf",
+          "ordinal": 4,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 8: — Nature of Matter: Elements, Compounds, and Mixtures",
+            "8.2 What Are Pure Substances?"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu108.pdf",
+          "ordinal": 5,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 8: — Nature of Matter: Elements, Compounds, and Mixtures",
+            "8.3 What Are the Types of Pure Substances?"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu108.pdf",
+          "ordinal": 6,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 8: — Nature of Matter: Elements, Compounds, and Mixtures",
+            "8.3 What Are the Types of Pure Substances?",
+            "Activity 8.3: Let us experiment (Demonstration activity)"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T23:24:26.578Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "What can be inferred about the properties of a compound compared to its constituent elements?",
+      "choices": [
+        "They are the same as the elements",
+        "They are completely different from the elements",
+        "They are a mixture of the elements",
+        "They are not affected by the elements"
+      ],
+      "answerIndex": 1,
+      "solution": "A compound has properties that are not the same as the elements it is made from because the chemical bonds between the elements create new characteristics. The other options are incorrect because compounds are not just mixtures of elements, nor do they retain the same properties as the original elements, and their properties are indeed affected by the elements they contain.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "किसी यौगिक के गुणों के बारे में क्या निष्कर्ष निकाला जा सकता है जब इसके घटक तत्वों की तुलना में?",
+          "choices": [
+            "वे तत्वों के समान होते हैं",
+            "वे तत्वों से पूरी तरह अलग होते हैं",
+            "वे तत्वों के मिश्रण होते हैं",
+            "वे तत्वों से प्रभावित नहीं होते"
+          ],
+          "solution": "एक यौगिक के गुण उन तत्वों से अलग होते हैं जिनसे यह बना होता है क्योंकि तत्वों के बीच रासायनिक बंधन नए विशेषताएं बनाते हैं। अन्य विकल्प गलत हैं क्योंकि यौगिक केवल तत्वों के मिश्रण नहीं होते हैं, और वे मूल तत्वों के समान गुण नहीं रखते हैं, और उनके गुण वास्तव में उन तत्वों से प्रभावित होते हैं जिनमें यह शामिल होता है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate scientific terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका यौगिकाच्या गुणधर्मांबद्दल त्याच्या घटक घटकांच्या तुलनेत काय निष्कर्ष काढता येईल?",
+          "choices": [
+            "ते घटकांसारखेच असतात",
+            "ते घटकांपासून पूर्णतः वेगळे असतात",
+            "ते घटकांचे मिश्रण असतात",
+            "ते घटकांमुळे प्रभावित होत नाहीत"
+          ],
+          "solution": "एका यौगिकाचे गुणधर्म त्याच्या घटकांपासून वेगळे असतात कारण घटकांमधील रासायनिक बंध नवीन वैशिष्ट्ये तयार करतात. इतर विकल्प चुकीचे आहेत कारण यौगिक घटकांचे मिश्रण नसतात, तसेच ते मूळ घटकांच्या सारखे गुणधर्म ठेवत नाहीत आणि त्यांचे गुणधर्म त्यांमध्ये असलेल्या घटकांमुळे प्रभावित होतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Misunderstands the concept of compounds",
+        null,
+        "Confuses compounds with mixtures",
+        "Incorrectly states that compounds retain the properties of elements"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 1, as compounds have properties that are distinct from their constituent elements. The other options reflect common misconceptions, such as confusing compounds with mixtures or believing that compounds retain the properties of their elements.",
+      "sources": [
+        {
+          "document": "ncert/8/science/hecu108.pdf",
+          "ordinal": 7,
+          "pageStart": 8,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 8: — Nature of Matter: Elements, Compounds, and Mixtures",
+            "8.3 What Are the Types of Pure Substances?",
+            "Activity 8.3: Let us experiment (Demonstration activity)"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu108.pdf",
+          "ordinal": 8,
+          "pageStart": 9,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 8: — Nature of Matter: Elements, Compounds, and Mixtures",
+            "8.3 What Are the Types of Pure Substances?",
+            "Activity 8.4: Let us experiment"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu108.pdf",
+          "ordinal": 9,
+          "pageStart": 10,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 8: — Nature of Matter: Elements, Compounds, and Mixtures",
+            "8.3 What Are the Types of Pure Substances?",
+            "Activity 8.5: Let us experiment (Demonstration activity)"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T23:24:26.578Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of the following is a compound?",
+      "choices": [
+        "Oxygen",
+        "Nitrogen",
+        "Carbon dioxide",
+        "Iron"
+      ],
+      "answerIndex": 2,
+      "solution": "A compound is formed when two or more elements combine chemically in a fixed ratio. Carbon dioxide is made of carbon and oxygen. Oxygen and nitrogen are elements, and iron is an element. Hence, the correct answer is carbon dioxide.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन एक यौगिक है?",
+          "choices": [
+            "ऑक्सीजन",
+            "नाइट्रोजन",
+            "कार्बन डाइऑक्साइड",
+            "लोहा"
+          ],
+          "solution": "एक यौगिक तब बनता है जब दो या दो से अधिक तत्व रासायनिक रूप से एक निश्चित अनुपात में जुड़ जाते हैं। कार्बन डाइऑक्साइड कार्बन और ऑक्सीजन से बना होता है। ऑक्सीजन और नाइट्रोजन तत्व हैं, और लोहा एक तत्व है। इसलिए, सही उत्तर कार्बन डाइऑक्साइड है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the scientific terminology appropriate for a Hindi-medium curriculum.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते एक यौगिक आहे?",
+          "choices": [
+            "ऑक्सीजन",
+            "नाइट्रोजन",
+            "कार्बन डायऑक्साइड",
+            "लोह"
+          ],
+          "solution": "एक यौगिक हा दोन किंवा अधिक घटकांच्या रासायनिक बंधनामुळे तयार होतो. कार्बन डायऑक्साइड हा कार्बन आणि ऑक्सीजन यांचा बनलेला असतो. ऑक्सीजन आणि नाइट्रोजन घटक आहेत आणि लोह घटक आहे. म्हणून, योग्य उत्तर कार्बन डायऑक्साइड आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses elements with compounds",
+        "Does not recognize the chemical combination of elements",
+        null,
+        "Thinks elements are compounds"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct and aligns with the definition of a compound. The reasoning is sound and matches the key.",
+      "sources": [
+        {
+          "document": "ncert/8/science/hecu108.pdf",
+          "ordinal": 13,
+          "pageStart": 15,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 8: — Nature of Matter: Elements, Compounds, and Mixtures",
+            "8.5 What Are Minerals?"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu108.pdf",
+          "ordinal": 14,
+          "pageStart": 16,
+          "pageEnd": 18,
+          "headingPath": [
+            "Chapter 8: — Nature of Matter: Elements, Compounds, and Mixtures",
+            "8.5 What Are Minerals?"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu108.pdf",
+          "ordinal": 15,
+          "pageStart": 18,
+          "pageEnd": 18,
+          "headingPath": [
+            "Chapter 8: — Nature of Matter: Elements, Compounds, and Mixtures",
+            "8.5 What Are Minerals?"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T09:54:40.838Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of the following is a mixture?",
+      "choices": [
+        "Water",
+        "Sugar",
+        "Air",
+        "Salt"
+      ],
+      "answerIndex": 2,
+      "solution": "A mixture consists of two or more substances that are not chemically combined. Air is a mixture of gases like nitrogen, oxygen, and others. Water and salt are compounds, and sugar is also a compound. Hence, the correct answer is air.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन एक मिश्रण है?",
+          "choices": [
+            "पानी",
+            "शर्करा",
+            "हवा",
+            "नमक"
+          ],
+          "solution": "एक मिश्रण दो या अधिक पदार्थों से मिलकर बना होता है जो रासायनिक रूप से जुड़े नहीं होते। हवा नाइट्रोजन, ऑक्सीजन आदि गैसों का मिश्रण है। पानी और नमक यौगिक हैं, और शर्करा भी एक यौगिक है। अतः सही उत्तर हवा है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate scientific terminology as found in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते एक असंयोजन आहे?",
+          "choices": [
+            "पाणी",
+            "शर्करा",
+            "वायू",
+            "खारट पाणी"
+          ],
+          "solution": "असंयोजनामध्ये दोन किंवा अधिक द्रव्य असतात जे रासायनिकरित्या जोडलेले नसतात. वायूमध्ये नायट्रोजन, ऑक्सिजन आणि इतर वायू असतात. पाणी आणि खारट पाणी अणु आहेत आणि शर्करा देखील अणु आहे. म्हणूनच, योग्य उत्तर वायू आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for scientific concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses compounds with mixtures",
+        "Believes that any solid substance is a mixture, not recognizing that sugar is a pure compound.",
+        null,
+        "Thinks compounds are mixtures"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly identifies air as a mixture and explains that water, sugar, and salt are compounds. The reasoning aligns with standard scientific understanding.",
+      "sources": [
+        {
+          "document": "ncert/8/science/hecu108.pdf",
+          "ordinal": 13,
+          "pageStart": 15,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 8: — Nature of Matter: Elements, Compounds, and Mixtures",
+            "8.5 What Are Minerals?"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu108.pdf",
+          "ordinal": 14,
+          "pageStart": 16,
+          "pageEnd": 18,
+          "headingPath": [
+            "Chapter 8: — Nature of Matter: Elements, Compounds, and Mixtures",
+            "8.5 What Are Minerals?"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu108.pdf",
+          "ordinal": 15,
+          "pageStart": 18,
+          "pageEnd": 18,
+          "headingPath": [
+            "Chapter 8: — Nature of Matter: Elements, Compounds, and Mixtures",
+            "8.5 What Are Minerals?"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T09:54:40.838Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "What happens when dilute hydrochloric acid is added to Sample A?",
+      "choices": [
+        "It forms a black mass",
+        "It releases a gas with a rotten egg smell",
+        "It does not react",
+        "It releases a gas with a 'pop' sound"
+      ],
+      "answerIndex": 3,
+      "solution": "Sample A is a mixture of iron and sulfur. When dilute hydrochloric acid is added, the iron reacts to form hydrogen gas, which burns with a 'pop' sound. The sulfur does not react. This matches the correct option. The other options are incorrect because Sample A does not form a black mass (that happens in Sample B), does not release a gas with a rotten egg smell (that happens in Sample B), and does react with the acid.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "जब तनु हाइड्रोक्लोरिक अम्ल को नमूना A में मिलाया जाता है, तो क्या होता है?",
+          "choices": [
+            "यह एक काला द्रव्य बनाता है",
+            "यह एक अंडे के सड़े हुए गंध वाला गैस छोड़ता है",
+            "यह प्रतिक्रिया नहीं करता",
+            "यह एक 'पॉप' ध्वनि वाली गैस छोड़ता है"
+          ],
+          "solution": "नमूना A लोहे और सल्फर के मिश्रण है। जब तनु हाइड्रोक्लोरिक अम्ल मिलाया जाता है, तो लोहा हाइड्रोजन गैस बनाता है, जो 'पॉप' ध्वनि के साथ जलती है। सल्फर प्रतिक्रिया नहीं करता। यह सही विकल्प के साथ मेल खाता है। अन्य विकल्प गलत हैं क्योंकि नमूना A एक काला द्रव्य नहीं बनाता (यह नमूना B में होता है), एक अंडे के सड़े हुए गंध वाला गैस नहीं छोड़ता (यह नमूना B में होता है), और अम्ल के साथ प्रतिक्रिया करता है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi scientific terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जेव्हा दुर्बल हायड्रोक्लोरिक अम्ल नमुना A मध्ये जोडला जातो तेव्हा काय होते?",
+          "choices": [
+            "तो काळा द्रव्य बनतो",
+            "तो एक अंड्याच्या खराब वासाचा वायू बाहेर काढतो",
+            "त्याला अभिक्रिया होत नाही",
+            "तो एक 'पॉप' आवाजाचा वायू बाहेर काढतो"
+          ],
+          "solution": "नमुना A हा लोह आणि सल्फर चा मिश्रण आहे. जेव्हा दुर्बल हायड्रोक्लोरिक अम्ल जोडला जातो तेव्हा लोह हायड्रोजन वायू तयार करण्यासाठी अभिक्रिया करतो, जो 'पॉप' आवाजासह जाळतो. सल्फर अभिक्रिया करत नाही. हे योग्य पर्यायाशी जुळते. इतर पर्याय चुकीचे आहेत कारण नमुना A काळा द्रव्य बनत नाही (हे नमुना B मध्ये होते), एक अंड्याच्या खराब वासाचा वायू बाहेर काढत नाही (हे नमुना B मध्ये होते), आणि अम्लासह अभिक्रिया करतो.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, technical terms, and logical structure. The correct answer remains option (3), and the distractors are still incorrect as per the context.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses Sample A with Sample B, which forms a black mass",
+        "Confuses the gas from Sample B with that from Sample A",
+        "Does not understand that Sample A reacts with acid due to the presence of iron, which is a reactive metal, and therefore, the statement that it does not react is incorrect.",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": null,
+      "critique": "The solution is sound and correctly identifies the reaction of iron with hydrochloric acid, leading to the 'pop' sound of hydrogen gas. The reasoning for the distractors aligns with plausible student misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/8/science/hecu108.pdf",
+          "ordinal": 10,
+          "pageStart": 12,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 8: — Nature of Matter: Elements, Compounds, and Mixtures",
+            "8.3 What Are the Types of Pure Substances?",
+            "Activity 8.5: Let us experiment (Demonstration activity)"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu108.pdf",
+          "ordinal": 11,
+          "pageStart": 13,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 8: — Nature of Matter: Elements, Compounds, and Mixtures",
+            "8.4 How Do We Use Elements, Compounds,",
+            "and Mixtures?"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu108.pdf",
+          "ordinal": 12,
+          "pageStart": 14,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 8: — Nature of Matter: Elements, Compounds, and Mixtures",
+            "8.5 What Are Minerals?"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T09:54:40.838Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If two elements combine chemically to form a new substance, what is the nature of the new substance?",
+      "choices": [
+        "It is an element",
+        "It is a mixture",
+        "It is a compound",
+        "It is a pure substance"
+      ],
+      "answerIndex": 2,
+      "solution": "When two or more elements combine chemically in a fixed ratio, the new substance formed is a compound. Compounds have different properties from their constituent elements. Hence, the correct answer is it is a compound.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि दो तत्व रासायनिक रूप से मिलकर एक नए पदार्थ का निर्माण करते हैं, तो नए पदार्थ की प्रकृति क्या होती है?",
+          "choices": [
+            "यह एक तत्व है",
+            "यह एक मिश्रण है",
+            "यह एक यौगिक है",
+            "यह एक शुद्ध पदार्थ है"
+          ],
+          "solution": "जब दो या दो से अधिक तत्व निश्चित अनुपात में रासायनिक रूप से मिलते हैं, तो बना हुआ नया पदार्थ यौगिक होता है। यौगिक अपने संघटक तत्वों से अलग गुण रखते हैं। अतः सही उत्तर यह है कि यह एक यौगिक है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard scientific terminology as found in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "दोन घटक रासायनिकरित्या एकत्र येऊन नवीन पदार्थ तयार करतात, तर नवीन पदार्थाची प्रकृती काय असते?",
+          "choices": [
+            "तो घटक आहे",
+            "तो मिश्रण आहे",
+            "तो यौगिक आहे",
+            "तो शुद्ध पदार्थ आहे"
+          ],
+          "solution": "एका घटकाच्या दोन किंवा अधिक घटकांनी निश्चित अनुपातात रासायनिकरित्या जोडल्याने तयार होणारा नवीन पदार्थ यौगिक असतो. यौगिकांच्या गुणधर्मांचा त्यांच्या घटक घटकांच्या गुणधर्मांपेक्षा फरक असतो. म्हणूनच योग्य उत्तर तो यौगिक आहे असे आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, with appropriate Marathi scientific terminology used (e.g., 'यौगिक' for 'compound', 'मिश्रण' for 'mixture'). The structure and meaning of the question and options match the English version.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Thinks the new substance is an element",
+        "Confuses mixtures with compounds",
+        null,
+        "Thinks pure substance is the same as compound"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-constructed and the solution is accurate. The correct answer is 2 (compound), and the distractors reflect common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/8/science/hecu108.pdf",
+          "ordinal": 13,
+          "pageStart": 15,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 8: — Nature of Matter: Elements, Compounds, and Mixtures",
+            "8.5 What Are Minerals?"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu108.pdf",
+          "ordinal": 14,
+          "pageStart": 16,
+          "pageEnd": 18,
+          "headingPath": [
+            "Chapter 8: — Nature of Matter: Elements, Compounds, and Mixtures",
+            "8.5 What Are Minerals?"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu108.pdf",
+          "ordinal": 15,
+          "pageStart": 18,
+          "pageEnd": 18,
+          "headingPath": [
+            "Chapter 8: — Nature of Matter: Elements, Compounds, and Mixtures",
+            "8.5 What Are Minerals?"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T09:54:40.838Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "Which of the following statements is true about a pure substance?",
+      "choices": [
+        "It can be separated into components by physical means",
+        "It has variable composition",
+        "It has a fixed composition",
+        "It is always a compound"
+      ],
+      "answerIndex": 2,
+      "solution": "A pure substance has a fixed composition because it is made up of only one type of particle, which gives it consistent properties. The other options are incorrect because pure substances cannot be separated by physical means, and their composition does not vary. Also, not all pure substances are compounds, as they can also be elements.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा कथन शुद्ध पदार्थ के बारे में सही है?",
+          "choices": [
+            "इसे भौतिक विधियों द्वारा घटकों में अलग किया जा सकता है",
+            "इसका संघटन चर होता है",
+            "इसका संघटन निश्चित होता है",
+            "यह हमेशा यौगिक होता है"
+          ],
+          "solution": "एक शुद्ध पदार्थ का संघटन निश्चित होता है क्योंकि यह केवल एक प्रकार के कणों से बना होता है, जो इसे एकसमान गुण प्रदान करता है। अन्य विकल्प गलत हैं क्योंकि शुद्ध पदार्थों को भौतिक विधियों द्वारा अलग नहीं किया जा सकता है, और इनका संघटन नहीं बदलता है। साथ ही, सभी शुद्ध पदार्थ यौगिक नहीं होते, क्योंकि ये तत्व भी हो सकते हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the original English question, with appropriate scientific terminology used in the context of a Hindi-medium textbook.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणता विधान शुद्ध पदार्थाबद्दल खरा आहे?",
+          "choices": [
+            "त्याला भौमितिक पद्धतीने घटकांमध्ये विभक्त केले जाऊ शकते",
+            "त्याचा अस्तित्वात बदलता घटक असतो",
+            "त्याचा घटक निश्चित असतो",
+            "तो नेहमी अणुमात्रा असतो"
+          ],
+          "solution": "शुद्ध पदार्थाचा घटक निश्चित असतो कारण तो केवळ एक प्रकारच्या कणांनी बनलेला असतो, ज्यामुळे त्याच्या गुणधर्मांमध्ये स्थिरता असते. इतर विधाने खोटी आहेत कारण शुद्ध पदार्थाला भौमितिक पद्धतीने विभक्त करता येत नाही, आणि त्याचा घटक बदलत नाही. शिवाय, सर्व शुद्ध पदार्थ अणुमात्रा नसतात, ते घटक असू शकतात.",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriately used in Marathi.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses mixtures with pure substances",
+        "Misunderstands the definition of pure substances",
+        null,
+        "Thinks only compounds are pure substances"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is well-constructed and the solution correctly identifies the fixed composition of a pure substance. The distractors reflect common misconceptions about pure substances.",
+      "sources": [
+        {
+          "document": "ncert/8/science/hecu108.pdf",
+          "ordinal": 13,
+          "pageStart": 15,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 8: — Nature of Matter: Elements, Compounds, and Mixtures",
+            "8.5 What Are Minerals?"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu108.pdf",
+          "ordinal": 14,
+          "pageStart": 16,
+          "pageEnd": 18,
+          "headingPath": [
+            "Chapter 8: — Nature of Matter: Elements, Compounds, and Mixtures",
+            "8.5 What Are Minerals?"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu108.pdf",
+          "ordinal": 15,
+          "pageStart": 18,
+          "pageEnd": 18,
+          "headingPath": [
+            "Chapter 8: — Nature of Matter: Elements, Compounds, and Mixtures",
+            "8.5 What Are Minerals?"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T09:54:40.838Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Which of the following mixtures would you expect to be homogeneous?",
+      "choices": [
+        "Poha",
+        "Sprout salad",
+        "Lime water",
+        "Dust in air"
+      ],
+      "answerIndex": 2,
+      "solution": "The correct answer is lime water because it is a homogeneous mixture where the components are evenly distributed and cannot be seen separately. Poha and sprout salad are non-uniform mixtures, and dust in air is a heterogeneous mixture of particles suspended in air.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा मिश्रण आपकी अपेक्षा होमोजीनस होगा?",
+          "choices": [
+            "पोहा",
+            "स्प्राउट सलाद",
+            "नींबू पानी",
+            "हवा में धूल"
+          ],
+          "solution": "सही उत्तर नींबू पानी है क्योंकि यह एक होमोजीनस मिश्रण है जहां घटक समान रूप से वितरित होते हैं और अलग-अलग दिखाई नहीं देते। पोहा और स्प्राउट सलाद असमान मिश्रण हैं, और हवा में धूल हवा में लटके कणों का असमान मिश्रण है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the scientific terminology appropriate for Hindi-medium curriculum.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणता असमान असेल असे तुम्हाला अपेक्षित असेल?",
+          "choices": [
+            "पोहा",
+            "बियाणे वाटलेला शाक",
+            "नीर चूर्ण",
+            "वायूमधील धूल"
+          ],
+          "solution": "योग्य उत्तर नीर चूर्ण आहे कारण हे एक समान असमान असते जेथे घटक बरोबरीने वितरित केले जातात आणि अलग दिसत नाहीत. पोहा आणि बियाणे वाटलेला शाक असमान असमान आहेत, आणि वायूमधील धूल हवेत विसरलेल्या कणांचे असमान असमान आहे.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate terminology. The solution correctly identifies option 3 as the correct answer, and the distractors remain incorrect.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Thinks poha is a homogeneous mixture",
+        "Confuses sprout salad with a homogeneous mixture",
+        null,
+        "Believes that suspended particles in air form a uniform mixture due to lack of visible separation"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct. Lime water is a homogeneous mixture, while poha, sprout salad, and dust in air are all heterogeneous. The reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/8/science/hecu108.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 8: — Nature of Matter: Elements, Compounds, and Mixtures",
+            "Probe and ponder"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu108.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 8: — Nature of Matter: Elements, Compounds, and Mixtures",
+            "Probe and ponder"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu108.pdf",
+          "ordinal": 2,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 8: — Nature of Matter: Elements, Compounds, and Mixtures",
+            "Activity 8.1: Let us experiment"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T09:54:40.838Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Why does the magnet have no effect on Sample B, which is iron sulfide?",
+      "choices": [
+        "Because it is a mixture",
+        "Because it is not a magnetic material",
+        "Because it is an element",
+        "Because it is a compound"
+      ],
+      "answerIndex": 3,
+      "solution": "Sample B is a compound (iron sulfide), and compounds do not retain the magnetic properties of their individual elements. Unlike mixtures, compounds have new properties. Therefore, the correct answer is that the magnet has no effect because it is a compound.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "नमकीन नमूना B पर कोई प्रभाव नहीं डालता, क्योंकि यह लोहा सल्फाइड है?",
+          "choices": [
+            "क्योंकि यह एक मिश्रण है",
+            "क्योंकि यह एक चुंबकीय सामग्री नहीं है",
+            "क्योंकि यह एक तत्व है",
+            "क्योंकि यह एक यौगिक है"
+          ],
+          "solution": "नमूना B एक यौगिक (लोहा सल्फाइड) है, और यौगिक अपने व्यक्तिगत तत्वों के चुंबकीय गुण नहीं रखते हैं। मिश्रण के विपरीत, यौगिकों के नए गुण होते हैं। इसलिए, सही उत्तर यह है कि चुंबक के प्रभाव नहीं होते क्योंकि यह एक यौगिक है।",
+          "imageAlt": null,
+          "critique": "Hindi translation accurately reflects the original English question and solution, with appropriate scientific terminology used in Indian curriculum.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "नमुना B वर चुंबक कार्य करत नाही, कारण तो लोह सल्फाईड आहे? का?",
+          "choices": [
+            "कारण तो मिश्रण आहे",
+            "कारण तो चुंबकीय पदार्थ नाही",
+            "कारण तो घटक आहे",
+            "कारण तो यौगिक आहे"
+          ],
+          "solution": "नमुना B एक यौगिक (लोह सल्फाईड) आहे, आणि यौगिकांमध्ये त्यांच्या विशिष्ट घटकांच्या चुंबकीय गुणांचा अवशेष राहत नाही. मिश्रणांपेक्षा, यौगिकांमध्ये नवीन गुण असतात. त्यामुळे, चुंबक कार्य करत नाही कारण तो यौगिक आहे असे योग्य उत्तर आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Incorrectly assumes it is a mixture",
+        "Incorrectly assumes it is not magnetic",
+        "Incorrectly assumes it is an element",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is well-constructed. The correct answer is 3, as iron sulfide is a compound and does not retain the magnetic properties of iron. The author's reasoning is sound, and the distractors reflect common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/8/science/hecu108.pdf",
+          "ordinal": 10,
+          "pageStart": 12,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 8: — Nature of Matter: Elements, Compounds, and Mixtures",
+            "8.3 What Are the Types of Pure Substances?",
+            "Activity 8.5: Let us experiment (Demonstration activity)"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu108.pdf",
+          "ordinal": 11,
+          "pageStart": 13,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 8: — Nature of Matter: Elements, Compounds, and Mixtures",
+            "8.4 How Do We Use Elements, Compounds,",
+            "and Mixtures?"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu108.pdf",
+          "ordinal": 12,
+          "pageStart": 14,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 8: — Nature of Matter: Elements, Compounds, and Mixtures",
+            "8.5 What Are Minerals?"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T09:54:40.838Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Why is sugar classified as a compound?",
+      "choices": [
+        "Because it is made up of more than one element",
+        "Because it is a solid at room temperature",
+        "Because it is used in food",
+        "Because it is found naturally"
+      ],
+      "answerIndex": 0,
+      "solution": "Sugar is classified as a compound because it is made up of more than one element—carbon, hydrogen, and oxygen—combined in a fixed ratio. The other options are not valid reasons for classifying sugar as a compound.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "चीनी के यौगिक के रूप में वर्गीकरण क्यों किया जाता है?",
+          "choices": [
+            "क्योंकि यह एक से अधिक तत्व से बना होता है",
+            "क्योंकि यह कमरे के तापमान पर ठोस होता है",
+            "क्योंकि इसका उपयोग खाद्य में किया जाता है",
+            "क्योंकि यह प्राकृतिक रूप से पाया जाता है"
+          ],
+          "solution": "चीनी के यौगिक के रूप में वर्गीकरण किया जाता है क्योंकि यह एक से अधिक तत्व- कार्बन, हाइड्रोजन और ऑक्सीजन- से बना होता है, जो निश्चित अनुपात में संयुक्त होते हैं। अन्य विकल्प चीनी के यौगिक के रूप में वर्गीकरण के लिए वैध कारण नहीं हैं।",
+          "imageAlt": null,
+          "critique": "Translation accurately reflects the original meaning, technical terms are appropriate for Hindi-medium curriculum, and the structure matches the original.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "शुगरला योगिक म्हणून वर्गीकृत केले जाते कारण?",
+          "choices": [
+            "कारण ते एकापेक्षा जास्त घटकांचे बनलेले असते",
+            "कारण ते कमरा तापमानावर घन असते",
+            "कारण ते खाद्यामध्ये वापरले जाते",
+            "कारण ते प्राकृतिकरित्या आढळते"
+          ],
+          "solution": "शुगरला योगिक म्हणून वर्गीकृत केले जाते कारण ते एकापेक्षा जास्त घटकां—कार्बन, हायड्रोजन आणि ऑक्सिजन—चे बनलेले असते, जे फक्त अनुपातात जुळलेले असतात. इतर विकल्प शुगरला योगिक म्हणून वर्गीकृत करण्याच्या वैध कारणांचे नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses physical properties with chemical classification",
+        "Confuses physical properties with chemical classification",
+        "Confuses usage with chemical classification"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 0, as sugar is a compound because it is made of multiple elements in a fixed ratio. The other options relate to physical properties or usage, not chemical classification.",
+      "sources": [
+        {
+          "document": "ncert/8/science/hecu108.pdf",
+          "ordinal": 7,
+          "pageStart": 8,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 8: — Nature of Matter: Elements, Compounds, and Mixtures",
+            "8.3 What Are the Types of Pure Substances?",
+            "Activity 8.3: Let us experiment (Demonstration activity)"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu108.pdf",
+          "ordinal": 8,
+          "pageStart": 9,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 8: — Nature of Matter: Elements, Compounds, and Mixtures",
+            "8.3 What Are the Types of Pure Substances?",
+            "Activity 8.4: Let us experiment"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu108.pdf",
+          "ordinal": 9,
+          "pageStart": 10,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 8: — Nature of Matter: Elements, Compounds, and Mixtures",
+            "8.3 What Are the Types of Pure Substances?",
+            "Activity 8.5: Let us experiment (Demonstration activity)"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T09:54:40.838Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "Which of the following is an example of a uniform mixture?",
+      "choices": [
+        "Sprout salad",
+        "Poha",
+        "Sugar dissolved in water",
+        "Stainless steel"
+      ],
+      "answerIndex": 2,
+      "solution": "Sugar dissolved in water is a uniform mixture because the sugar and water are evenly mixed at a molecular level, making the mixture appear the same throughout. Sprout salad is a non-uniform mixture because its components are visibly separate. Poha is a mixture but not uniform as it contains distinct ingredients. Stainless steel is a homogeneous alloy, but it is not classified as a uniform mixture in the same sense as a solution.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन एक समांगी मिश्रण का उदाहरण है?",
+          "choices": [
+            "स्प्राउट सलाद",
+            "पोहा",
+            "पानी में घुला चीनी",
+            "स्टेनलेस स्टील"
+          ],
+          "solution": "पानी में घुला चीनी एक समांगी मिश्रण है क्योंकि चीनी और पानी अणु स्तर पर बराबर रूप से मिश्रित होते हैं, जिससे मिश्रण पूरी तरह से एक जैसा दिखाई देता है। स्प्राउट सलाद एक असमांगी मिश्रण है क्योंकि इसके घटक दृश्य रूप से अलग-अलग होते हैं। पोहा एक मिश्रण है लेकिन यह समांगी नहीं है क्योंकि इसमें अलग-अलग घटक होते हैं। स्टेनलेस स्टील एक समांगी मिश्र धातु है, लेकिन इसे एक समांगी मिश्रण के रूप में वर्गीकृत नहीं किया जाता है जैसा कि एक विलयन के रूप में किया जाता है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms as found in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते एक समजावू मिश्रणाचे उदाहरण आहे?",
+          "choices": [
+            "ब्रोकली सलाड",
+            "पोहा",
+            "पाण्यात विरघळलेले चरबी",
+            "स्टेनलेस स्टील"
+          ],
+          "solution": "पाण्यात विरघळलेले चरबी हे समजावू मिश्रण आहे कारण चरबी आणि पाणी अणुस्तरावर समानरूपे मिसळलेले असतात, ज्यामुळे मिश्रण सर्वत्र समान दिसते. ब्रोकली सलाड हे असमजावू मिश्रण आहे कारण त्याचे घटक दृश्यमानरूपे विलग असतात. पोहा हे मिश्रण आहे परंतु समजावू नाही कारण त्यात विशिष्ट घटक असतात. स्टेनलेस स्टील हे समजावू अलॉय आहे, परंतु त्याला घटक मिश्रणाच्या समान अर्थाने समजावू मिश्रण म्हणून वर्गीकृत केले जात नाही.",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the scientific meaning. 'Poha' and 'stainless steel' are correctly translated and retain their original meaning as mixtures.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses non-uniform mixtures with uniform ones",
+        "Confuses a food item with a mixture",
+        null,
+        "Student thinks alloys are not mixtures because they are solid and not visibly mixed"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly identifies sugar dissolved in water as a uniform mixture, and the reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/8/science/hecu108.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 8: — Nature of Matter: Elements, Compounds, and Mixtures",
+            "Probe and ponder"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu108.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 8: — Nature of Matter: Elements, Compounds, and Mixtures",
+            "Probe and ponder"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu108.pdf",
+          "ordinal": 2,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 8: — Nature of Matter: Elements, Compounds, and Mixtures",
+            "Activity 8.1: Let us experiment"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T12:29:51.145Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of the following is an example of a compound?",
+      "choices": [
+        "Air",
+        "Oxygen",
+        "Water",
+        "Sand"
+      ],
+      "answerIndex": 2,
+      "solution": "Water is a compound because it is made of two or more elements chemically combined in a fixed ratio. Air and sand are mixtures, and oxygen is an element.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन एक यौगिक का उदाहरण है?",
+          "choices": [
+            "हवा",
+            "ऑक्सीजन",
+            "पानी",
+            "रेत"
+          ],
+          "solution": "पानी एक यौगिक है क्योंकि यह दो या अधिक तत्वों के एक निश्चित अनुपात में रासायनिक रूप से संयोजित होता है। हवा और रेत मिश्रण हैं और ऑक्सीजन एक तत्व है।",
+          "imageAlt": null,
+          "critique": "The translation accurately reflects the original question and solution, with appropriate Hindi terminology for chemical concepts.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते एक यौगिकाचे उदाहरण आहे?",
+          "choices": [
+            "वायू",
+            "ऑक्सीजन",
+            "पाणी",
+            "रेणू"
+          ],
+          "solution": "पाणी एक यौगिक आहे कारण ते दोन किंवा अधिक घटकांच्या रासायनिक बंधनामुळे बनलेले असते. वायू आणि रेणू मिश्रणे आहेत आणि ऑक्सीजन एक घटक आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the scientific terminology appropriate for a Marathi-medium curriculum.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses a compound with a mixture",
+        "Confuses a compound with an element",
+        null,
+        "Confuses a compound with another mixture"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct. Water is a compound, while air and sand are mixtures, and oxygen is an element. The reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/8/science/hecu108.pdf",
+          "ordinal": 13,
+          "pageStart": 15,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 8: — Nature of Matter: Elements, Compounds, and Mixtures",
+            "8.5 What Are Minerals?"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu108.pdf",
+          "ordinal": 14,
+          "pageStart": 16,
+          "pageEnd": 18,
+          "headingPath": [
+            "Chapter 8: — Nature of Matter: Elements, Compounds, and Mixtures",
+            "8.5 What Are Minerals?"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu108.pdf",
+          "ordinal": 15,
+          "pageStart": 18,
+          "pageEnd": 18,
+          "headingPath": [
+            "Chapter 8: — Nature of Matter: Elements, Compounds, and Mixtures",
+            "8.5 What Are Minerals?"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T12:29:51.145Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "Which of the following is a non-uniform mixture?",
+      "choices": [
+        "Air",
+        "Seawater",
+        "Brass",
+        "Muddy water"
+      ],
+      "answerIndex": 3,
+      "solution": "Muddy water is a non-uniform mixture because the particles are not evenly distributed throughout the mixture. Air, seawater, and brass are uniform mixtures.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन एक असमान मिश्रण है?",
+          "choices": [
+            "हवा",
+            "समुद्र का पानी",
+            "ब्रॉन्ज",
+            "गंदा पानी"
+          ],
+          "solution": "गंदा पानी एक असमान मिश्रण है क्योंकि कण लगभग मिश्रण में बराबर रूप से वितरित नहीं होते। हवा, समुद्र का पानी और ब्रॉन्ज एक समान मिश्रण हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the scientific terminology appropriate for a Hindi-medium curriculum.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते असमान मिश्रण आहे?",
+          "choices": [
+            "वायू",
+            "समुद्राचे पाणी",
+            "कांस्य",
+            "मातीचे पाणी"
+          ],
+          "solution": "मातीचे पाणी असमान मिश्रण आहे कारण त्यातील कण एका जागी एकसारखे वितरित नाहीत. वायू, समुद्राचे पाणी आणि कांस्य हे समान मिश्रण आहेत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the correct answer position, and uses appropriate Marathi terms for scientific concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "confuses uniform mixture with non-uniform",
+        "confuses uniform mixture with non-uniform",
+        "confuses uniform mixture with non-uniform",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct. Muddy water is a heterogeneous (non-uniform) mixture because the particles are not evenly distributed. Air, seawater, and brass are homogeneous (uniform) mixtures.",
+      "sources": [
+        {
+          "document": "ncert/8/science/hecu108.pdf",
+          "ordinal": 13,
+          "pageStart": 15,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 8: — Nature of Matter: Elements, Compounds, and Mixtures",
+            "8.5 What Are Minerals?"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu108.pdf",
+          "ordinal": 14,
+          "pageStart": 16,
+          "pageEnd": 18,
+          "headingPath": [
+            "Chapter 8: — Nature of Matter: Elements, Compounds, and Mixtures",
+            "8.5 What Are Minerals?"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu108.pdf",
+          "ordinal": 15,
+          "pageStart": 18,
+          "pageEnd": 18,
+          "headingPath": [
+            "Chapter 8: — Nature of Matter: Elements, Compounds, and Mixtures",
+            "8.5 What Are Minerals?"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T12:29:51.145Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "What happens when sugar is heated in a boiling tube?",
+      "choices": [
+        "It turns into a gas",
+        "It decomposes into carbon and water",
+        "It melts and forms a liquid",
+        "It reacts with air to form new compounds"
+      ],
+      "answerIndex": 1,
+      "solution": "When sugar is heated, it decomposes into carbon and water. It does not turn into a gas or melt and form a liquid in the same way as water. It also does not react with air to form new compounds, but rather breaks down into its constituent elements. The correct answer is that it decomposes into carbon and water.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "चीनी के गर्म करने पर बोइलिंग ट्यूब में क्या होता है?",
+          "choices": [
+            "यह एक गैस में बदल जाता है",
+            "यह कार्बन और पानी में विघटित हो जाता है",
+            "यह पिघल जाता है और एक तरल बन जाता है",
+            "यह हवा के साथ अभिक्रिया करके नए यौगिक बना लेता है"
+          ],
+          "solution": "जब चीनी को गर्म किया जाता है, तो यह कार्बन और पानी में विघटित हो जाता है। यह पानी के समान तरल बन जाता है या गैस में बदल जाता है नहीं। यह हवा के साथ अभिक्रिया करके नए यौगिक नहीं बनाता है, बल्कि इसके घटक तत्वों में विघटित हो जाता है। सही उत्तर यह है कि यह कार्बन और पानी में विघटित हो जाता है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and technical terms. The correct answer remains option (2), and the distractors are still incorrect as in the original.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "कांसर गरम केल्यास त्याचा काय फायदा होतो?",
+          "choices": [
+            "तो वाफ म्हणून बदलतो",
+            "तो कार्बन आणि पाणी मध्ये विघटित होतो",
+            "तो घाणेरडा बनतो आणि द्रव बनतो",
+            "तो हवा सोबत एकत्र येऊन नवीन द्रव्य बनतो"
+          ],
+          "solution": "कांसर गरम केल्यास तो कार्बन आणि पाणी मध्ये विघटित होतो. तो वाफ म्हणून बदलत नाही किंवा पाण्याप्रमाणे घाणेरडा बनून द्रव बनत नाही. तो हवा सोबत एकत्र येऊन नवीन द्रव्य बनत नाही, तर तो त्याच्या घटक घटकांमध्ये विघटित होतो. योग्य उत्तर तो कार्बन आणि पाणी मध्ये विघटित होतो असे आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the scientific meaning. The term 'कांसर' is correctly used for 'sugar' in Marathi, and the technical terms like 'विघटित होतो' (decomposes) are appropriate for a Marathi-medium science context.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Misunderstands the process of heating sugar",
+        null,
+        "Thinks sugar melts like water",
+        "Confuses decomposition with reaction with air"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 1, as sugar decomposes into carbon and water when heated. The other options reflect common misconceptions about the behavior of sugar when heated.",
+      "sources": [
+        {
+          "document": "ncert/8/science/hecu108.pdf",
+          "ordinal": 7,
+          "pageStart": 8,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 8: — Nature of Matter: Elements, Compounds, and Mixtures",
+            "8.3 What Are the Types of Pure Substances?",
+            "Activity 8.3: Let us experiment (Demonstration activity)"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu108.pdf",
+          "ordinal": 8,
+          "pageStart": 9,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 8: — Nature of Matter: Elements, Compounds, and Mixtures",
+            "8.3 What Are the Types of Pure Substances?",
+            "Activity 8.4: Let us experiment"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu108.pdf",
+          "ordinal": 9,
+          "pageStart": 10,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 8: — Nature of Matter: Elements, Compounds, and Mixtures",
+            "8.3 What Are the Types of Pure Substances?",
+            "Activity 8.5: Let us experiment (Demonstration activity)"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T12:29:51.145Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "Which of the following is a correct characteristic of a compound?",
+      "choices": [
+        "Its components can be separated by physical means",
+        "It has a uniform composition throughout",
+        "It shows the properties of its components",
+        "It is made up of only one type of atom"
+      ],
+      "answerIndex": 1,
+      "solution": "A compound has a uniform composition throughout and its properties are different from those of its components. Its components cannot be separated by physical means, and it is made up of two or more elements chemically combined. Hence, the correct answer is 'It has a uniform composition throughout'.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा एक यौगिक का सही गुण है?",
+          "choices": [
+            "इसके घटक भौतिक विधियों द्वारा अलग किए जा सकते हैं",
+            "इसका संघटन समान रूप से पूरे में होता है",
+            "इसके घटकों के गुण प्रदर्शित करता है",
+            "यह केवल एक प्रकार के परमाणु से बना होता है"
+          ],
+          "solution": "एक यौगिक का संघटन समान रूप से पूरे में होता है और इसके गुण इसके घटकों के गुणों से भिन्न होते हैं। इसके घटक भौतिक विधियों द्वारा अलग नहीं किए जा सकते हैं और यह दो या अधिक तत्वों के रासायनिक संयोजन से बना होता है। अतः सही उत्तर 'इसका संघटन समान रूप से पूरे में होता है' है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate scientific terminology in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते एक यौगिकाचे योग्य लक्षण आहे?",
+          "choices": [
+            "त्याचे घटक भौमितिक पद्धतीने विलग केले जाऊ शकतात",
+            "त्याची एकरूप रचना आहे",
+            "त्याला त्याच्या घटकांचे गुणधर्म दाखवते",
+            "तो एकापेक्षा जास्त प्रकारच्या परमाणूने बनलेला असतो"
+          ],
+          "solution": "एक यौगिकाची एकरूप रचना असते आणि त्याचे गुणधर्म त्याच्या घटकांपेक्षा वेगळे असतात. त्याचे घटक भौमितिक पद्धतीने विलग करता येत नाहीत, आणि तो दोन किंवा अधिक घटक रासायनिकरित्या जोडलेल्या असतात. म्हणून, योग्य उत्तर 'त्याची एकरूप रचना आहे' आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses mixture with compound",
+        null,
+        "Confuses mixture with compound",
+        "Confuses mixture with compound"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is option 1, as compounds have a uniform composition and their properties differ from their components. The other options describe mixtures or elements, which is a common misconception.",
+      "sources": [
+        {
+          "document": "ncert/8/science/hecu108.pdf",
+          "ordinal": 10,
+          "pageStart": 12,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 8: — Nature of Matter: Elements, Compounds, and Mixtures",
+            "8.3 What Are the Types of Pure Substances?",
+            "Activity 8.5: Let us experiment (Demonstration activity)"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu108.pdf",
+          "ordinal": 11,
+          "pageStart": 13,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 8: — Nature of Matter: Elements, Compounds, and Mixtures",
+            "8.4 How Do We Use Elements, Compounds,",
+            "and Mixtures?"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu108.pdf",
+          "ordinal": 12,
+          "pageStart": 14,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 8: — Nature of Matter: Elements, Compounds, and Mixtures",
+            "8.5 What Are Minerals?"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T12:29:51.145Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "Which of the following can be used to distinguish between a mixture and a compound?",
+      "choices": [
+        "Smell",
+        "Appearance",
+        "Magnetic properties",
+        "Reaction with acid"
+      ],
+      "answerIndex": 3,
+      "solution": "A compound reacts with acid to form new substances, while a mixture may not react or may show different reactions. Magnetic properties and appearance may not be reliable, and smell is not always a good indicator. Hence, reaction with acid is the best way to distinguish between a mixture and a compound.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा एक मिश्रण और यौगिक के बीच अंतर करने के लिए प्रयोग किया जा सकता है?",
+          "choices": [
+            "गंध",
+            "दिखावा",
+            "चुंबकीय गुण",
+            "अम्ल के साथ प्रतिक्रिया"
+          ],
+          "solution": "एक यौगिक अम्ल के साथ नए पदार्थ बनाता है, जबकि एक मिश्रण अम्ल के साथ प्रतिक्रिया नहीं कर सकता या अलग-अलग प्रतिक्रिया दिखा सकता है। चुंबकीय गुण और दिखावा विश्वसनीय नहीं हो सकते हैं, और गंध हमेशा एक अच्छा संकेतक नहीं होता है। इसलिए, अम्ल के साथ प्रतिक्रिया मिश्रण और यौगिक के बीच अंतर करने के लिए सबसे अच्छा तरीका है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriate for Hindi-medium curriculum.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते एक अंश आणि यौगिक दरम्यान फरक काढून देण्यासाठी वापरता येऊ शकते?",
+          "choices": [
+            "वास",
+            "दिसावा",
+            "चुंबकीय गुण",
+            "अम्लास प्रतिक्रिया"
+          ],
+          "solution": "एक यौगिक अम्लास प्रतिक्रिया करून नवीन पदार्थ तयार करतो, तर अंश अम्लास प्रतिक्रिया करू शकत नाही किंवा वेगळ्या प्रतिक्रिया दाखवू शकतो. चुंबकीय गुण आणि दिसावा विश्वासार्ह नसू शकतात, आणि वास हमखास एक चांगला संकेतक नसू शकतो. म्हणूनच अम्लास प्रतिक्रिया हा अंश आणि यौगिक दरम्यान फरक काढून देण्यासाठी सर्वोत्तम मार्ग आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Relies on smell, which is not reliable",
+        "Relies on appearance, which is not reliable",
+        "Relies on magnetic properties, which may not be present in all mixtures",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 3 (Reaction with acid), as compounds can react with acids to form new substances, while mixtures may not. The other options (smell, appearance, magnetic properties) are not reliable indicators for distinguishing between mixtures and compounds.",
+      "sources": [
+        {
+          "document": "ncert/8/science/hecu108.pdf",
+          "ordinal": 10,
+          "pageStart": 12,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 8: — Nature of Matter: Elements, Compounds, and Mixtures",
+            "8.3 What Are the Types of Pure Substances?",
+            "Activity 8.5: Let us experiment (Demonstration activity)"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu108.pdf",
+          "ordinal": 11,
+          "pageStart": 13,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 8: — Nature of Matter: Elements, Compounds, and Mixtures",
+            "8.4 How Do We Use Elements, Compounds,",
+            "and Mixtures?"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu108.pdf",
+          "ordinal": 12,
+          "pageStart": 14,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 8: — Nature of Matter: Elements, Compounds, and Mixtures",
+            "8.5 What Are Minerals?"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T12:29:51.145Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "What is the main difference between elements and compounds?",
+      "choices": [
+        "Elements are made of one type of atom and compounds are made of two or more types of atoms",
+        "Elements are always solids and compounds are always liquids",
+        "Elements cannot be broken down into simpler substances and compounds can be broken down into elements",
+        "Elements are pure and compounds are impure"
+      ],
+      "answerIndex": 0,
+      "solution": "Elements are made of only one type of atom, while compounds are made of two or more types of atoms chemically combined. The other options are incorrect because elements can be in any state of matter, compounds cannot always be broken down into simpler substances by physical means, and purity is not the defining factor. The correct answer is that elements are made of one type of atom and compounds are made of two or more types of atoms.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "तत्वों और यौगिकों के बीच मुख्य अंतर क्या है?",
+          "choices": [
+            "तत्व एक प्रकार के परमाणु से बने होते हैं और यौगिक दो या अधिक प्रकार के परमाणुओं से बने होते हैं",
+            "तत्व हमेशा ठोस होते हैं और यौगिक हमेशा तरल होते हैं",
+            "तत्वों को सरल पदार्थों में विभाजित नहीं किया जा सकता है और यौगिकों को तत्वों में विभाजित किया जा सकता है",
+            "तत्व शुद्ध होते हैं और यौगिक अशुद्ध होते हैं"
+          ],
+          "solution": "तत्व केवल एक प्रकार के परमाणु से बने होते हैं, जबकि यौगिक दो या अधिक प्रकार के परमाणुओं के रासायनिक रूप से संयोजित होते हैं। अन्य विकल्प गलत हैं क्योंकि तत्व किसी भी अवस्था में हो सकते हैं, यौगिकों को हमेशा भौतिक विधि से सरल पदार्थों में विभाजित नहीं किया जा सकता है और शुद्धता निर्णायक कारक नहीं है। सही उत्तर यह है कि तत्व एक प्रकार के परमाणु से बने होते हैं और यौगिक दो या अधिक प्रकार के परमाणुओं से बने होते हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate scientific terminology in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "घटक आणि यौगिकांमध्ये मुख्य फरक काय आहे?",
+          "choices": [
+            "घटक एका प्रकारच्या परमाणूने बनलेले असतात आणि यौगिकांमध्ये दोन किंवा अधिक प्रकारच्या परमाणू असतात",
+            "घटक सदैव घन असतात आणि यौगिक सदैव द्रव असतात",
+            "घटक सोप्या पदार्थांमध्ये विभक्त करता येत नाहीत आणि यौगिकांमध्ये घटकांमध्ये विभक्त करता येतात",
+            "घटक शुद्ध असतात आणि यौगिक अशुद्ध असतात"
+          ],
+          "solution": "घटक केवळ एका प्रकारच्या परमाणूने बनलेले असतात, जर जो यौगिकांमध्ये दोन किंवा अधिक प्रकारच्या परमाणू असतात. इतर पर्याय चुकीचे आहेत कारण घटक अवस्था मध्ये कोणतीही असू शकतात, यौगिकांना भौतिक पद्धतीने सोप्या पदार्थांमध्ये विभक्त करता येत नाही आणि शुद्धता निर्णायक घटक नाही. योग्य उत्तर असे आहे की घटक एका प्रकारच्या परमाणूने बनलेले असतात आणि यौगिकांमध्ये दोन किंवा अधिक प्रकारच्या परमाणू असतात.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the original meaning, and uses appropriate scientific terminology. The structure and logic of the question and solution are preserved.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Student thinks all elements are solids and all compounds are liquids based on examples like oxygen and water",
+        "Confuses the definition of compounds as being able to be broken down into elements",
+        "Confuses purity with composition, thinking that compounds are less pure than elements"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is option 0, which accurately defines elements and compounds based on atomic composition. The other options reflect common misconceptions about states of matter, decomposition, and purity.",
+      "sources": [
+        {
+          "document": "ncert/8/science/hecu108.pdf",
+          "ordinal": 7,
+          "pageStart": 8,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 8: — Nature of Matter: Elements, Compounds, and Mixtures",
+            "8.3 What Are the Types of Pure Substances?",
+            "Activity 8.3: Let us experiment (Demonstration activity)"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu108.pdf",
+          "ordinal": 8,
+          "pageStart": 9,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 8: — Nature of Matter: Elements, Compounds, and Mixtures",
+            "8.3 What Are the Types of Pure Substances?",
+            "Activity 8.4: Let us experiment"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu108.pdf",
+          "ordinal": 9,
+          "pageStart": 10,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 8: — Nature of Matter: Elements, Compounds, and Mixtures",
+            "8.3 What Are the Types of Pure Substances?",
+            "Activity 8.5: Let us experiment (Demonstration activity)"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T12:29:51.145Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Why is iron sulfide not attracted by a magnet?",
+      "choices": [
+        "Because it is a compound",
+        "Because it is an element",
+        "Because it is a mixture",
+        "Because it is a gas"
+      ],
+      "answerIndex": 0,
+      "solution": "Iron sulfide is a compound formed by the chemical combination of iron and sulfur. Since it is a compound, it does not retain the magnetic properties of iron. Hence, it is not attracted by a magnet. The other options are incorrect because iron sulfide is not an element, a mixture, or a gas.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "लोहे के सल्फाइड को चुंबक आकर्षित नहीं करता क्योंकि?",
+          "choices": [
+            "क्योंकि यह यौगिक है",
+            "क्योंकि यह तत्व है",
+            "क्योंकि यह मिश्रण है",
+            "क्योंकि यह गैस है"
+          ],
+          "solution": "लोहे के सल्फाइड लोहे और सल्फर के रासायनिक संयोजन से बना एक यौगिक है। चूंकि यह एक यौगिक है, इसलिए यह लोहे के चुंबकीय गुण नहीं रखता। इसलिए यह चुंबक द्वारा आकर्षित नहीं किया जाता है। अन्य विकल्प गलत हैं क्योंकि लोहे के सल्फाइड एक तत्व, मिश्रण या गैस नहीं है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate scientific terminology as found in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "लोह सल्फाईड चुंबकाने आकर्षित का होत नाही?",
+          "choices": [
+            "कारण ते एक यौगिक आहे",
+            "कारण ते एक घटक आहे",
+            "कारण ते एक मिश्रण आहे",
+            "कारण ते एक वायू आहे"
+          ],
+          "solution": "लोह सल्फाईड लोह आणि सल्फर यांच्या रासायनिक संयोगाने तयार होतो. त्यामुळे ते लोहच्या चुंबकीय गुणांना राखत नाही. म्हणून ते चुंबकाने आकर्षित होत नाही. इतर विकल्प चुकीचे आहेत कारण लोह सल्फाईड घटक, मिश्रण किंवा वायू नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses compound with element",
+        "Confuses compound with element",
+        "Student thinks that only gases are not magnetic, ignoring the nature of compounds"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is well-constructed. The correct answer is 0, and the reasoning is sound. The distractors reflect common misconceptions, such as confusing compounds with elements or assuming only gases are non-magnetic.",
+      "sources": [
+        {
+          "document": "ncert/8/science/hecu108.pdf",
+          "ordinal": 10,
+          "pageStart": 12,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 8: — Nature of Matter: Elements, Compounds, and Mixtures",
+            "8.3 What Are the Types of Pure Substances?",
+            "Activity 8.5: Let us experiment (Demonstration activity)"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu108.pdf",
+          "ordinal": 11,
+          "pageStart": 13,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 8: — Nature of Matter: Elements, Compounds, and Mixtures",
+            "8.4 How Do We Use Elements, Compounds,",
+            "and Mixtures?"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu108.pdf",
+          "ordinal": 12,
+          "pageStart": 14,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 8: — Nature of Matter: Elements, Compounds, and Mixtures",
+            "8.5 What Are Minerals?"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T12:29:51.145Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Why is it not possible to separate the elements in water by physical means?",
+      "choices": [
+        "Because water is a gas at room temperature",
+        "Because the elements in water are chemically bonded",
+        "Because water is a pure substance",
+        "Because water has a fixed composition"
+      ],
+      "answerIndex": 1,
+      "solution": "The elements in water, hydrogen and oxygen, are chemically bonded, which means they cannot be separated by physical means. The other options are incorrect because water is not always a gas, it is not necessarily pure, and a fixed composition does not explain why it cannot be separated by physical means. The correct answer is that the elements in water are chemically bonded.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "जल में तत्वों को भौतिक विधियों द्वारा क्यों अलग नहीं किया जा सकता है?",
+          "choices": [
+            "क्योंकि जल कमरे के तापमान पर गैस होता है",
+            "क्योंकि जल में तत्व रासायनिक रूप से बंधे होते हैं",
+            "क्योंकि जल एक शुद्ध पदार्थ है",
+            "क्योंकि जल का स्थिर संघटन होता है"
+          ],
+          "solution": "जल में तत्व, हाइड्रोजन और ऑक्सीजन, रासायनिक रूप से बंधे होते हैं, जिसका अर्थ है कि उन्हें भौतिक विधियों द्वारा अलग नहीं किया जा सकता है। अन्य विकल्प गलत हैं क्योंकि जल हमेशा गैस नहीं होता, यह आवश्यक रूप से शुद्ध नहीं होता है, और एक स्थिर संघटन यह बताने में सक्षम नहीं होता कि इसे भौतिक विधियों द्वारा क्यों अलग नहीं किया जा सकता है। सही उत्तर यह है कि जल में तत्व रासायनिक रूप से बंधे होते हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the original English question and solution, with appropriate technical terms used in a Hindi-medium context.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "पाण्यातील घटकांना भौतिक पद्धतीने का वेगळे करता येत नाही?",
+          "choices": [
+            "कारण पाणी खोलीच्या तापमानावर वायू असते",
+            "कारण पाण्यातील घटक रासायनिकरित्या बांधलेले असतात",
+            "कारण पाणी शुद्ध पदार्थ असते",
+            "कारण पाणी निश्चित घटनांचे असते"
+          ],
+          "solution": "पाण्यातील घटक, हायड्रोजन आणि ऑक्सिजन, रासायनिकरित्या बांधलेले असतात, ज्यामुळे त्यांना भौतिक पद्धतीने वेगळे करता येत नाही. इतर विकल्प चुकीचे आहेत कारण पाणी नेहमी वायू नसते, ते शुद्ध असणे आवश्यक नसते आणि निश्चित घटना भौतिक पद्धतीने वेगळे करता येणार नाही याचे कारण नसते. योग्य उत्तर असे आहे की पाण्यातील घटक रासायनिकरित्या बांधलेले असतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the state of matter with the method of separation",
+        null,
+        "Thinks purity prevents separation",
+        "Misunderstands the concept of fixed composition"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 1, as the elements in water are chemically bonded and cannot be separated by physical means. The other options are incorrect for the reasons stated by the author, and the misconceptions are plausible for students.",
+      "sources": [
+        {
+          "document": "ncert/8/science/hecu108.pdf",
+          "ordinal": 7,
+          "pageStart": 8,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 8: — Nature of Matter: Elements, Compounds, and Mixtures",
+            "8.3 What Are the Types of Pure Substances?",
+            "Activity 8.3: Let us experiment (Demonstration activity)"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu108.pdf",
+          "ordinal": 8,
+          "pageStart": 9,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 8: — Nature of Matter: Elements, Compounds, and Mixtures",
+            "8.3 What Are the Types of Pure Substances?",
+            "Activity 8.4: Let us experiment"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu108.pdf",
+          "ordinal": 9,
+          "pageStart": 10,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 8: — Nature of Matter: Elements, Compounds, and Mixtures",
+            "8.3 What Are the Types of Pure Substances?",
+            "Activity 8.5: Let us experiment (Demonstration activity)"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T12:29:51.145Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
     }
   ]
 }

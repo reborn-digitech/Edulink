@@ -499,6 +499,386 @@
       "generatedAt": "2026-11-01T21:12:42.876Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is the product of two negative integers?",
+      "choices": [
+        "Positive integer",
+        "Negative integer",
+        "Zero",
+        "Fraction"
+      ],
+      "answerIndex": 0,
+      "solution": "The product of two negative integers is a positive integer because multiplying two negative numbers results in a positive number due to the rules of sign multiplication. A negative integer is incorrect because the negatives cancel each other out. Zero and fractions are not possible because the product of two integers is always an integer, and two negatives cannot result in zero.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "दो ऋणात्मक पूर्णांकों का गुणनफल क्या होता है?",
+          "choices": [
+            "धनात्मक पूर्णांक",
+            "ऋणात्मक पूर्णांक",
+            "शून्य",
+            "भिन्न"
+          ],
+          "solution": "दो ऋणात्मक पूर्णांकों का गुणनफल एक धनात्मक पूर्णांक होता है क्योंकि दो ऋणात्मक संख्याओं को गुणा करने पर धनात्मक संख्या प्राप्त होती है क्योंकि चिन्ह गुणन के नियमों के अनुसार ऋणात्मक एक दूसरे को निरस्त कर देते हैं। ऋणात्मक पूर्णांक गलत है क्योंकि ऋणात्मक एक दूसरे को निरस्त कर देते हैं। शून्य और भिन्न संभव नहीं हैं क्योंकि दो पूर्णांकों का गुणनफल हमेशा एक पूर्णांक होता है, और दो ऋणात्मक संख्याएं शून्य नहीं दे सकतीं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology as used in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "दोन ऋण पूर्णांकांचा गुणाकार किती असतो?",
+          "choices": [
+            "धन पूर्णांक",
+            "ऋण पूर्णांक",
+            "शून्य",
+            "अपूर्णांक"
+          ],
+          "solution": "दोन ऋण पूर्णांकांचा गुणाकार धन पूर्णांक असतो कारण दोन ऋण संख्यांचा गुणाकार चिन्हांच्या नियमांमुळे धन संख्या असते. ऋण पूर्णांक अयोग्य आहे कारण ऋण चिन्ह एकमेकांना रद्द करतात. शून्य आणि अपूर्णांक शक्य नाहीत कारण दोन पूर्णांकांचा गुणाकार हमेशा एक पूर्णांक असतो आणि दोन ऋण चिन्हांमुळे शून्य मिळू शकत नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses the rule for positive and negative products",
+        "Believes that negative numbers always result in negative products",
+        "Thinks that multiplying two numbers always results in zero or a fraction"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 0 (positive integer), as the product of two negative integers is always positive. The author's solution and reasoning are accurate.",
+      "sources": [
+        {
+          "document": "balbharati/7/mathematics/703020004.pdf",
+          "ordinal": 14,
+          "pageStart": 21,
+          "pageEnd": 22,
+          "headingPath": [
+            "2. Multiplication and Division of Integers"
+          ]
+        },
+        {
+          "document": "balbharati/7/mathematics/703020004.pdf",
+          "ordinal": 15,
+          "pageStart": 22,
+          "pageEnd": 24,
+          "headingPath": [
+            "2. Multiplication and Division of Integers"
+          ]
+        },
+        {
+          "document": "balbharati/7/mathematics/703020004.pdf",
+          "ordinal": 16,
+          "pageStart": 24,
+          "pageEnd": 24,
+          "headingPath": [
+            "2. Multiplication and Division of Integers"
+          ]
+        }
+      ],
+      "edition": "2026 edition",
+      "generatedAt": "2026-10-31T10:29:42.802Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of the following is an example of the product of a positive and a negative integer?",
+      "choices": [
+        "(−5) × (−3)",
+        "6 × 4",
+        "(−7) × 2",
+        "8 × (−3)"
+      ],
+      "answerIndex": 2,
+      "solution": "The product of a positive and a negative integer is always negative. (−7) × 2 results in a negative number, making it the correct example. (−5) × (−3) and 6 × 4 result in positive numbers, while 8 × (−3) is also a valid example of a negative product, but (−7) × 2 is explicitly the correct choice here.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा एक धनात्मक और एक ऋणात्मक पूर्णांक के गुणन का उदाहरण है?",
+          "choices": [
+            "(−5) × (−3)",
+            "6 × 4",
+            "(−7) × 2",
+            "8 × (−3)"
+          ],
+          "solution": "एक धनात्मक और एक ऋणात्मक पूर्णांक का गुणन हमेशा ऋणात्मक होता है। (−7) × 2 एक ऋणात्मक संख्या देता है, जो सही उदाहरण बन जाता है। (−5) × (−3) और 6 × 4 धनात्मक संख्याएं देते हैं, जबकि 8 × (−3) भी एक ऋणात्मक गुणन का वैध उदाहरण है, लेकिन (−7) × 2 यहां स्पष्ट रूप से सही चयन है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते एक धनात्मक आणि ऋणात्मक पूर्णांकाच्या गुणाकाराचे उदाहरण आहे?",
+          "choices": [
+            "(−5) × (−3)",
+            "6 × 4",
+            "(−7) × 2",
+            "8 × (−3)"
+          ],
+          "solution": "एक धनात्मक आणि ऋणात्मक पूर्णांकाचा गुणाकार हमेशा ऋणात्मक असतो. (−7) × 2 चा गुणाकार ऋणात्मक असतो, जे योग्य उदाहरण बनतो. (−5) × (−3) आणि 6 × 4 चा गुणाकार धनात्मक असतो, तर 8 × (−3) हा देखील ऋणात्मक गुणाकाराचा योग्य उदाहरण आहे, परंतु (−7) × 2 हा येथे स्पष्टपणे योग्य निवड आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Chooses the product of two negative numbers",
+        "Chooses the product of two positive numbers",
+        null,
+        "Chooses the product of two negative numbers"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 2, as it is the product of a positive and a negative integer. The solution correctly identifies this and explains the other options as being products of two positives or two negatives.",
+      "sources": [
+        {
+          "document": "balbharati/7/mathematics/703020004.pdf",
+          "ordinal": 14,
+          "pageStart": 21,
+          "pageEnd": 22,
+          "headingPath": [
+            "2. Multiplication and Division of Integers"
+          ]
+        },
+        {
+          "document": "balbharati/7/mathematics/703020004.pdf",
+          "ordinal": 15,
+          "pageStart": 22,
+          "pageEnd": 24,
+          "headingPath": [
+            "2. Multiplication and Division of Integers"
+          ]
+        },
+        {
+          "document": "balbharati/7/mathematics/703020004.pdf",
+          "ordinal": 16,
+          "pageStart": 24,
+          "pageEnd": 24,
+          "headingPath": [
+            "2. Multiplication and Division of Integers"
+          ]
+        }
+      ],
+      "edition": "2026 edition",
+      "generatedAt": "2026-10-31T10:29:42.802Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "If (−6) × x = −18, what is the value of x?",
+      "choices": [
+        "−3",
+        "3",
+        "6",
+        "−6"
+      ],
+      "answerIndex": 1,
+      "solution": "To solve (−6) × x = −18, divide both sides by −6, which gives x = 3. This is correct because multiplying −6 by 3 results in −18. Choosing −3 would result in a positive 18, 6 would result in −36, and −6 would result in 36, none of which match the equation.",
+      "checkExpr": "(-18)/(-6)",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि (−6) × x = −18, तो x का मान क्या है?",
+          "choices": [
+            "−3",
+            "3",
+            "6",
+            "−6"
+          ],
+          "solution": "समीकरण (−6) × x = −18 को हल करने के लिए दोनों ओर −6 से भाग देते हैं, जिससे x = 3 प्राप्त होता है। यह सही है क्योंकि −6 को 3 से गुणा करने पर −18 प्राप्त होता है। −3 चुनने पर धनात्मक 18 प्राप्त होता है, 6 चुनने पर −36 प्राप्त होता है और −6 चुनने पर 36 प्राप्त होता है, जो कोई भी समीकरण के साथ मेल नहीं खाता।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर (−6) × x = −18, तर x ची किंमत काय आहे?",
+          "choices": [
+            "−3",
+            "3",
+            "6",
+            "−6"
+          ],
+          "solution": "जर (−6) × x = −18 तर दोन्ही बाजूंना −6 ने भागल्यास x = 3 मिळतो. हे बरोबर आहे कारण −6 ला 3 ने गुणल्यास −18 मिळतो. −3 ने गुणल्यास धनात्मक 18 मिळेल, 6 ने गुणल्यास −36 मिळेल आणि −6 ने गुणल्यास 36 मिळेल, जे समीकरणाशी जुळत नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the mathematical meaning, with appropriate Marathi terms for 'divide', 'multiply', and 'equation'.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Fails to consider the sign of the result",
+        null,
+        "Chooses the negative of the correct value",
+        "Chooses the absolute value without considering the sign"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct. Dividing both sides of the equation (−6) × x = −18 by −6 gives x = 3. The author's reasoning is sound and matches the correct answer.",
+      "sources": [
+        {
+          "document": "balbharati/7/mathematics/703020004.pdf",
+          "ordinal": 14,
+          "pageStart": 21,
+          "pageEnd": 22,
+          "headingPath": [
+            "2. Multiplication and Division of Integers"
+          ]
+        },
+        {
+          "document": "balbharati/7/mathematics/703020004.pdf",
+          "ordinal": 15,
+          "pageStart": 22,
+          "pageEnd": 24,
+          "headingPath": [
+            "2. Multiplication and Division of Integers"
+          ]
+        },
+        {
+          "document": "balbharati/7/mathematics/703020004.pdf",
+          "ordinal": 16,
+          "pageStart": 24,
+          "pageEnd": 24,
+          "headingPath": [
+            "2. Multiplication and Division of Integers"
+          ]
+        }
+      ],
+      "edition": "2026 edition",
+      "generatedAt": "2026-10-31T10:29:42.802Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "If (−4) × (−7) = 28, which of the following is also true?",
+      "choices": [
+        "(−7) × (−4) = −28",
+        "(−7) × (−4) = 28",
+        "(−7) × 4 = 28",
+        "(−7) × 4 = −28"
+      ],
+      "answerIndex": 1,
+      "solution": "The commutative property of multiplication states that changing the order of the numbers does not change the product, so (−7) × (−4) = 28, just like (−4) × (−7) = 28. The other options incorrectly change the sign of the product or the order of the numbers, which would alter the result.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि (−4) × (−7) = 28, तो निम्नलिखित में से कौन-सा सत्य है?",
+          "choices": [
+            "(−7) × (−4) = −28",
+            "(−7) × (−4) = 28",
+            "(−7) × 4 = 28",
+            "(−7) × 4 = −28"
+          ],
+          "solution": "गुणन के क्रमविनिमेय गुण के अनुसार, संख्याओं के क्रम को बदलने से गुणनफल में कोई परिवर्तन नहीं होता, अतः (−7) × (−4) = 28, जैसा कि (−4) × (−7) = 28 है। अन्य विकल्प गुणनफल के चिह्न या संख्याओं के क्रम को गलत तरीके से बदल देते हैं, जिससे परिणाम बदल जाएगा।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर (−4) × (−7) = 28, तर खालीलपैकी कोणते बरोबर आहे?",
+          "choices": [
+            "(−7) × (−4) = −28",
+            "(−7) × (−4) = 28",
+            "(−7) × 4 = 28",
+            "(−7) × 4 = −28"
+          ],
+          "solution": "गुणनाच्या क्रमविनिमय गुणधर्मामुळे संख्यांच्या क्रमात बदल केल्याने गुणाकार बदलत नाही, त्यामुळे (−7) × (−4) = 28, जसे की (−4) × (−7) = 28. इतर विकल्पांमध्ये गुणाकाराचा चिन्ह किंवा संख्यांचा क्रम चुकीचा बदलला आहे, जेणेकरून फलितात बदल होतो.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Believes the commutative property does not hold for negative numbers",
+        null,
+        "Chooses the wrong sign for the product",
+        "Confuses the sign of the second factor"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question correctly applies the commutative property of multiplication, and the author's reasoning aligns with standard mathematical principles. The distractors reflect common misconceptions about sign rules and the commutative property.",
+      "sources": [
+        {
+          "document": "balbharati/7/mathematics/703020004.pdf",
+          "ordinal": 14,
+          "pageStart": 21,
+          "pageEnd": 22,
+          "headingPath": [
+            "2. Multiplication and Division of Integers"
+          ]
+        },
+        {
+          "document": "balbharati/7/mathematics/703020004.pdf",
+          "ordinal": 15,
+          "pageStart": 22,
+          "pageEnd": 24,
+          "headingPath": [
+            "2. Multiplication and Division of Integers"
+          ]
+        },
+        {
+          "document": "balbharati/7/mathematics/703020004.pdf",
+          "ordinal": 16,
+          "pageStart": 24,
+          "pageEnd": 24,
+          "headingPath": [
+            "2. Multiplication and Division of Integers"
+          ]
+        }
+      ],
+      "edition": "2026 edition",
+      "generatedAt": "2026-10-31T10:29:42.802Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
     }
   ]
 }

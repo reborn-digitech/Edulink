@@ -995,6 +995,3464 @@
       "generatedAt": "2026-11-02T06:00:31.601Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "What happens to the air around a candle flame in Activity 7.2?",
+      "choices": [
+        "It contracts and becomes heavier",
+        "It expands and becomes lighter",
+        "It contracts and becomes colder",
+        "It becomes colder"
+      ],
+      "answerIndex": 1,
+      "solution": "When air is heated by a candle flame, it expands and becomes less dense, which makes it lighter and causes it to rise. This is a result of thermal expansion, where heating increases the volume of a gas without changing its mass, reducing its density. The other options are incorrect because heating causes expansion, not contraction, and the air does not become colder when exposed to a flame.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "गतिविधि 7.2 में एक मोमबत्ती के ज्वाला के आसपास की हवा क्या होती है?",
+          "choices": [
+            "यह सिकुड़ जाती है और भारी हो जाती है",
+            "यह फैल जाती है और हल्की हो जाती है",
+            "यह सिकुड़ जाती है और ठंडी हो जाती है",
+            "यह ठंडी हो जाती है"
+          ],
+          "solution": "जब मोमबत्ती की ज्वाला द्वारा हवा को गर्म किया जाता है तो यह फैल जाती है और कम घनत्व वाली हो जाती है, जिसके कारण यह हल्की हो जाती है और ऊपर उठ जाती है। यह तापीय प्रसार के परिणामस्वरूप होता है, जहां गर्म करने से एक गैस का आयतन बिना द्रव्यमान के बदले बढ़ जाता है, जिससे घनत्व कम हो जाता है। अन्य विकल्प गलत हैं क्योंकि गर्मी फैलाव का कारण बनती है, न कि सिकुड़ना, और ज्वाला के संपर्क में आने पर हवा ठंडी नहीं होती।",
+          "imageAlt": null,
+          "critique": "Translation accurately reflects the original meaning, technical terms are appropriate for Hindi-medium curriculum, and the correct answer remains option 1.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "कॅंडल ज्वालेच्या आजूबाजूचे हवा काय होतो?",
+          "choices": [
+            "ते खुंजवते आणि भारी होते",
+            "ते विस्तारते आणि हलके होते",
+            "ते खुंजवते आणि थंड होते",
+            "ते थंड होते"
+          ],
+          "solution": "जेव्हा कॅंडल ज्वालेने हवा गरम होते, तेव्हा ती विस्तारते आणि घनता कमी होते, ज्यामुळे ती हलकी होते आणि वर जाते. हे उष्णता विस्ताराचा परिणाम आहे, जेथे गरमी वायूच्या आयत वाढवते जे त्याच्या द्रव्यमानात बदल करत नाही, घनता कमी करते. इतर विकल्प अयोग्य आहेत कारण गरमी विस्ताराचा कारण आहे, खुंजवण्याचा नाही, आणि ज्वालेच्या संपर्कात आल्याने हवा थंड होत नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Believes that heating causes contraction, which is incorrect.",
+        null,
+        "Confuses heating with cooling and assumes air contracts when heated",
+        "Misunderstands the effect of heating, thinking it makes air colder, which is false."
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 1, as heating causes air to expand and become less dense. The distractors reflect common misconceptions about heating and air behavior.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu107.pdf",
+          "ordinal": 4,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 7: Heat Transfer in Nature",
+            "7.2 Convection"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu107.pdf",
+          "ordinal": 5,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 7: Heat Transfer in Nature",
+            "7.2 Convection"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu107.pdf",
+          "ordinal": 6,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 7: Heat Transfer in Nature",
+            "7.2 Convection",
+            "7.2.1 Land and Sea Breeze"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu107.pdf",
+          "ordinal": 7,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 7: Heat Transfer in Nature",
+            "7.2 Convection",
+            "7.2.1 Land and Sea Breeze"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-31T22:05:58.193Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "In the water cycle, which process is responsible for the formation of clouds?",
+      "choices": [
+        "Evaporation",
+        "Transpiration",
+        "Condensation",
+        "Precipitation"
+      ],
+      "answerIndex": 2,
+      "solution": "Condensation is the process by which water vapor turns into liquid droplets, forming clouds. Evaporation is the process of water turning into vapor, transpiration is the release of water vapor from plants, and precipitation is the falling of water back to the Earth. Therefore, the correct answer is condensation.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "जल चक्र में, बादलों के निर्माण के लिए कौन सी प्रक्रिया उत्तरदायी है?",
+          "choices": [
+            "वाष्पीकरण",
+            "वाष्पोत्सर्जन",
+            "तरलीकरण",
+            "अपक्षय"
+          ],
+          "solution": "तरलीकरण वह प्रक्रिया है जिसमें जल वाष्प तरल बूंदों में बदल जाता है, जो बादल बनाता है। वाष्पीकरण जल के वाष्प में बदलने की प्रक्रिया है, वाष्पोत्सर्जन पौधों से जल वाष्प के उत्सर्जन की प्रक्रिया है, और अपक्षय जल के पृथ्वी पर वापस गिरने की प्रक्रिया है। इसलिए, सही उत्तर तरलीकरण है।",
+          "imageAlt": "जल चक्र का आरेख जिसमें सूर्य, वाष्पीकरण, तरलीकरण और अपक्षय दिखाए गए हैं।",
+          "critique": "All terms are standard in Hindi science textbooks. 'तरलीकरण' is the correct term for 'condensation', and 'अपक्षय' is the correct term for 'precipitation'.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "पाण्याच्या चक्रात, बादलांच्या निर्मितीसाठी कोणती प्रक्रिया जबाबदार आहे?",
+          "choices": [
+            "वाष्पीकरण",
+            "वाफीकरण",
+            "घनीकरण",
+            "वर्षण"
+          ],
+          "solution": "घनीकरण ही प्रक्रिया आहे ज्यामुळे जल वाफ द्रव थेंबांमध्ये बदलते, बादले तयार होतात. वाष्पीकरण ही प्रक्रिया आहे ज्यामुळे पाणी वाफेमध्ये बदलते, वाफीकरण ही वनस्पतींमधून जल वाफ बाहेर पडते आणि वर्षण ही पाणी पृथ्वीवर परत पडते. म्हणून, योग्य उत्तर घनीकरण आहे.",
+          "imageAlt": "पाण्याच्या चक्राचा आकृतिमय दाखला सूर्य, वाष्पीकरण, घनीकरण आणि वर्षण दर्शवतो.",
+          "critique": "The Marathi translation is accurate, uses standard terminology, and maintains the same meaning and structure as the English original.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": "Diagram of the water cycle showing the sun, evaporation, condensation, and precipitation.",
+      "figure": {
+        "kind": "diagram",
+        "spec": {
+          "parts": [
+            {
+              "part": "waterCycle",
+              "x": 50,
+              "y": 31.25,
+              "size": 70,
+              "labels": [
+                "sun",
+                "evaporation",
+                "condensation",
+                "precipitation"
+              ]
+            }
+          ],
+          "texts": [
+            {
+              "x": 10,
+              "y": 50,
+              "label": "sun"
+            },
+            {
+              "x": 30,
+              "y": 40,
+              "label": "evaporation"
+            },
+            {
+              "x": 50,
+              "y": 30,
+              "label": "condensation"
+            },
+            {
+              "x": 70,
+              "y": 20,
+              "label": "precipitation"
+            }
+          ]
+        },
+        "labels": {
+          "sun": {
+            "en": "Sun",
+            "hi": "सूर्य",
+            "mr": "सूर्य"
+          },
+          "evaporation": {
+            "en": "Evaporation",
+            "hi": "वाष्पीकरण",
+            "mr": "वाष्पीकरण"
+          },
+          "condensation": {
+            "en": "Condensation",
+            "hi": "तरलीकरण",
+            "mr": "घनीकरण"
+          },
+          "precipitation": {
+            "en": "Precipitation",
+            "hi": "अपक्षय",
+            "mr": "वर्षण"
+          }
+        }
+      },
+      "needsFigure": true,
+      "distractorReason": [
+        "Confuses evaporation with condensation",
+        "Confuses transpiration with condensation",
+        null,
+        "Confuses precipitation with condensation"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is well-constructed. The correct answer is condensation, as it is the process by which water vapor forms liquid droplets, leading to cloud formation. The distractors reflect common misconceptions about the water cycle.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu107.pdf",
+          "ordinal": 8,
+          "pageStart": 8,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 7: Heat Transfer in Nature",
+            "7.3 Radiation"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu107.pdf",
+          "ordinal": 9,
+          "pageStart": 9,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 7: Heat Transfer in Nature",
+            "7.3 Radiation"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu107.pdf",
+          "ordinal": 10,
+          "pageStart": 10,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 7: Heat Transfer in Nature",
+            "7.4 Water Cycle"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-31T22:05:58.193Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "If a person uses a thin aluminium foil to keep food warm, what is the main way it prevents heat loss?",
+      "choices": [
+        "By blocking conduction",
+        "By blocking convection",
+        "By blocking radiation",
+        "By blocking evaporation"
+      ],
+      "answerIndex": 2,
+      "solution": "Aluminium foil is highly reflective, which means it reflects infrared radiation, preventing heat loss through radiation. It does not block conduction because it is a good conductor of heat. It also does not prevent convection because it does not stop air movement. Evaporation is not significantly affected by the foil in this context.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि कोई व्यक्ति खाद्य पदार्थ को गर्म रखने के लिए पतली एल्यूमीनियम फिल्म का उपयोग करता है, तो यह ऊष्मा हानि को रोकने का मुख्य तरीका क्या है?",
+          "choices": [
+            "अपवाह को रोककर",
+            "संवहन को रोककर",
+            "विकिरण को रोककर",
+            "वाष्पीकरण को रोककर"
+          ],
+          "solution": "एल्यूमीनियम फिल्म अत्यधिक परावर्तक होती है, जिसका अर्थ है कि यह अवरक्त विकिरण को परावर्तित करती है, जिससे विकिरण द्वारा ऊष्मा हानि रोकी जाती है। यह अपवाह को नहीं रोकती क्योंकि यह ऊष्मा का अच्छा चालक होती है। यह संवहन को भी रोकती नहीं क्योंकि यह हवा के गति को रोकती नहीं है। इस संदर्भ में वाष्पीकरण फिल्म द्वारा उल्लेखनीय रूप से प्रभावित नहीं होता है।",
+          "imageAlt": "एक बीकर पर एक बार चुंबक के ऊपर, जो एल्यूमीनियम फिल्म से ढके खाद्य पदार्थ का प्रतिनिधित्व करता है",
+          "critique": "All terms are standard in Hindi science textbooks. 'संवहन' (convection) is the correct answer, matching the English. The solution correctly explains that radiation is blocked, not conduction or convection.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एक व्यक्ती खाद्य पदार्थ गरम ठेवण्यासाठी जास्तीत जास्त एल्युमिनियम फॉइल वापरते, तर ती ताप निर्माणाच्या मुख्य प्रकाराला रोखते?",
+          "choices": [
+            "कंडक्शन रोखण्यासाठी",
+            "कंवेक्शन रोखण्यासाठी",
+            "विकिरण रोखण्यासाठी",
+            "वाफीकरण रोखण्यासाठी"
+          ],
+          "solution": "एल्युमिनियम फॉइल उच्च प्रतिबिंबक आहे, जे अवरक्त विकिरण फिरवते, ताप निर्माणाच्या विकिरणाद्वारे रोखते. ते कंडक्शन रोखत नाही कारण ते तापाचे चांगले वाहक आहे. ते कंवेक्शन रोखत नाही कारण ते हवेच्या गतीला रोखत नाही. या संदर्भात वाफीकरण फॉइलमुळे जास्त प्रमाणात प्रभावित होत नाही.",
+          "imageAlt": "एक बेकर ज्यावर एक बार मॅग्नेट आहे, जे एल्युमिनियम फॉइलने झाकलेल्या खाद्याचे प्रतिनिधित्व करते",
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi technical terms used.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": "A beaker with a bar magnet on top, representing food covered with aluminium foil",
+      "figure": {
+        "kind": "diagram",
+        "spec": {
+          "parts": [
+            {
+              "part": "beaker",
+              "x": 50,
+              "y": 30,
+              "size": 30,
+              "labels": [
+                "liquid"
+              ]
+            },
+            {
+              "part": "barMagnet",
+              "x": 50,
+              "y": 20,
+              "size": 30,
+              "labels": [
+                "north",
+                "south"
+              ]
+            }
+          ]
+        },
+        "labels": {
+          "liquid": {
+            "en": "Food",
+            "hi": "खाद्य पदार्थ",
+            "mr": "खाद्य"
+          },
+          "north": {
+            "en": "Aluminium foil",
+            "hi": "एल्यूमीनियम फिल्म",
+            "mr": "एल्युमिनियम फॉइल"
+          },
+          "south": {
+            "en": "Aluminium foil",
+            "hi": "एल्यूमीनियम फिल्म",
+            "mr": "एल्युमिनियम फॉइल"
+          }
+        }
+      },
+      "needsFigure": true,
+      "distractorReason": [
+        "Confuses conduction with radiation",
+        "Believes convection is the main cause of heat loss",
+        null,
+        "Student thinks heat loss is mainly due to evaporation rather than radiation"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies that aluminium foil prevents heat loss primarily by blocking radiation, as it is reflective. The reasoning for the other options aligns with common misconceptions about heat transfer mechanisms.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu107.pdf",
+          "ordinal": 11,
+          "pageStart": 11,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 7: Heat Transfer in Nature",
+            "7.4 Water Cycle",
+            "7.4.1 Seepage of water beneath the",
+            "Earth"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu107.pdf",
+          "ordinal": 12,
+          "pageStart": 12,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 7: Heat Transfer in Nature",
+            "7.4 Water Cycle",
+            "7.4.1 Seepage of water beneath the",
+            "Earth"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu107.pdf",
+          "ordinal": 13,
+          "pageStart": 13,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 7: Heat Transfer in Nature",
+            "7.4 Water Cycle",
+            "7.4.1 Seepage of water beneath the",
+            "In a Nutshell"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-31T22:05:58.193Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Why are hollow bricks used in the construction of houses?",
+      "choices": [
+        "They are lighter",
+        "They are cheaper",
+        "They trap air and reduce heat transfer",
+        "They are easier to build"
+      ],
+      "answerIndex": 2,
+      "solution": "Hollow bricks trap air, which is a poor conductor of heat, helping to insulate buildings and reduce heat transfer. This makes them effective for maintaining indoor temperatures. The other options do not address the fundamental principle of thermal insulation.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "घरों के निर्माण में खोखली ईंटों का उपयोग क्यों किया जाता है?",
+          "choices": [
+            "वे हल्की होती हैं",
+            "वे सस्ती होती हैं",
+            "वे हवा को फंसा लेती हैं और ऊष्मा संचरण को कम करती हैं",
+            "वे बनाने में आसान होती हैं"
+          ],
+          "solution": "खोखली ईंटें हवा को फंसा लेती हैं, जो ऊष्मा का खराब संवाहक होता है, जो इमारतों के ऊष्मा इन्सुलेशन में मदद करता है और ऊष्मा संचरण को कम करता है। इससे आंतरिक तापमान बनाए रखने में मदद मिलती है। अन्य विकल्प ऊष्मा इन्सुलेशन के मूल सिद्धांत को नहीं बताते।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate technical terms.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "घरांच्या बांधकामामध्ये खोल इटी वापरल्या जातात का?",
+          "choices": [
+            "त्या हलक्या असतात",
+            "त्या स्वस्त असतात",
+            "त्या वायू असतात आणि ऊष्मा हस्तांतरण कमी करतात",
+            "त्या बांधण्यास सोप्या असतात"
+          ],
+          "solution": "खोल इटी वायू असतात, जो ऊष्मा चांगला वाहक नसतो, ज्यामुळे इमारतींचे थर्मल आइसोलेशन होते आणि ऊष्मा हस्तांतरण कमी होते. हे आंतरिक तापमान ठेवण्यास अत्यंत प्रभावी असते. इतर विकल्प तापमान आइसोलेशनच्या मूलभूत तत्वाला नकारतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms like 'ऊष्मा हस्तांतरण' and 'थर्मल आइसोलेशन'.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "focuses on weight instead of thermal properties",
+        "focuses on cost instead of thermal properties",
+        null,
+        "focuses on ease of construction instead of thermal properties"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 2, as hollow bricks trap air, which is a poor conductor of heat, reducing heat transfer. The other options are not related to the principle of heat transfer, and the author's reasoning for the wrong options reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu107.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 7: Heat Transfer in Nature"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu107.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 7: Heat Transfer in Nature",
+            "7.1 Conduction of Heat"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu107.pdf",
+          "ordinal": 2,
+          "pageStart": 3,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 7: Heat Transfer in Nature",
+            "7.1 Conduction of Heat"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu107.pdf",
+          "ordinal": 3,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 7: Heat Transfer in Nature",
+            "7.1 Conduction of Heat"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-31T22:05:58.193Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "Where should a smoke detector be placed in a room?",
+      "choices": [
+        "Near the floor",
+        "In the middle of a wall",
+        "On the ceiling",
+        "Anywhere in the room"
+      ],
+      "answerIndex": 2,
+      "solution": "Smoke rises because it is hot and less dense. A smoke detector should be placed on the ceiling to detect smoke as soon as it rises. Placing it near the floor or in the middle of a wall would delay detection. Placing it anywhere in the room is not specific to its function.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक कमरे में धुआं डिटेक्टर कहां रखा जाना चाहिए?",
+          "choices": [
+            "फर्श के पास",
+            "दीवार के मध्य में",
+            "छत पर",
+            "कमरे में कहीं भी"
+          ],
+          "solution": "धुआं ऊपर उठता है क्योंकि यह गर्म और कम घनत्व वाला होता है। धुआं डिटेक्टर को छत पर रखा जाना चाहिए ताकि धुआं ऊपर उठते ही पता लग सके। फर्श के पास या दीवार के मध्य में रखने से डिटेक्शन में देर हो सकती है। कमरे में कहीं भी रखना इसके कार्य के अनुरूप नहीं होता।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, technical terms are appropriate for Hindi-medium curriculum, and the logic of the solution aligns with the English version.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका खोलीत धूम डिटेक्टर कुठे ठेवावा?",
+          "choices": [
+            "मागे फरशीजवळ",
+            "काठाच्या मध्यात",
+            "छतावर",
+            "खोलीत कुठेही"
+          ],
+          "solution": "धूम उष्ण आणि कमी घनता असल्याने वर जाते. धूम डिटेक्टर छतावर ठेवला पाहिजे कारण त्यामुळे धूम वर जाताच त्याचा शोध घेता येईल. फरशीजवळ किंवा काठाच्या मध्यात ठेवल्याने शोध उशीर होईल. खोलीत कुठेही ठेवणे हे त्याच्या कार्यासाठी विशिष्ट नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the behavior of smoke with other substances",
+        "Does not consider the density of smoke",
+        null,
+        "Ignores the need for early detection"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly explains that smoke rises due to being hot and less dense, and that placing the detector on the ceiling allows for early detection. All distractors are based on plausible misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu107.pdf",
+          "ordinal": 14,
+          "pageStart": 15,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 7: Heat Transfer in Nature",
+            "7.4 Water Cycle",
+            "7.4.1 Seepage of water beneath the",
+            "Let Us Enhance Our Learning"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu107.pdf",
+          "ordinal": 15,
+          "pageStart": 16,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 7: Heat Transfer in Nature",
+            "7.4 Water Cycle",
+            "7.4.1 Seepage of water beneath the",
+            "Exploratory Projects"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T16:44:21.511Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "Which process of heat transfer does not require a medium?",
+      "choices": [
+        "Conduction",
+        "Convection",
+        "Radiation",
+        "All three"
+      ],
+      "answerIndex": 2,
+      "solution": "Radiation is the process of heat transfer that does not require a medium. Unlike conduction and convection, which need a material medium to transfer heat, radiation can occur through a vacuum. Conduction involves the transfer of heat through direct contact, and convection involves the movement of particles in a fluid.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "ऊष्मा संचरण की कौन सी प्रक्रिया के लिए माध्यम की आवश्यकता नहीं होती है?",
+          "choices": [
+            "चालन",
+            "संवहन",
+            "विकिरण",
+            "तीनों"
+          ],
+          "solution": "विकिरण ऊष्मा संचरण की वह प्रक्रिया है जिसके लिए माध्यम की आवश्यकता नहीं होती है। चालन और संवहन के विपरीत, जो ऊष्मा के संचरण के लिए एक आवश्यक भौतिक माध्यम की आवश्यकता होती है, विकिरण निर्वात में भी हो सकता है। चालन में सीधे संपर्क के माध्यम से ऊष्मा का संचरण होता है, और संवहन में एक द्रव में कणों के गति के माध्यम से ऊष्मा का संचरण होता है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the original English question and solution, with appropriate technical terms used in Hindi medium education.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "तापाच्या हस्तांतरणाचा कोणता प्रक्रिया माध्यमाची आवश्यकता नाही?",
+          "choices": [
+            "संवाहन",
+            "संवाहकता",
+            "विकिरण",
+            "तीनही"
+          ],
+          "solution": "विकिरण ही ताप हस्तांतरणाची प्रक्रिया आहे जी माध्यमाची आवश्यकता नाही. संवाहन आणि संवाहकता या दोन्ही प्रक्रियांमध्ये ताप हस्तांतरित करण्यासाठी एक वस्तुमान माध्यम आवश्यक असतो, तर विकिरण एका निर्वातातून होऊ शकते. संवाहन हा तापाचा प्रसार थेट संपर्काद्वारे होतो आणि संवाहकता हा द्रव अथवा वायूमध्ये कणांच्या गतीद्वारे होतो.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses conduction with radiation",
+        "Confuses convection with radiation",
+        null,
+        "Understands radiation but incorrectly includes all three processes as not needing a medium, which is false for conduction and convection"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-constructed and the key is correct. Radiation is the only form of heat transfer that does not require a medium, and the author's reasoning aligns with scientific understanding.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu107.pdf",
+          "ordinal": 8,
+          "pageStart": 8,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 7: Heat Transfer in Nature",
+            "7.3 Radiation"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu107.pdf",
+          "ordinal": 9,
+          "pageStart": 9,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 7: Heat Transfer in Nature",
+            "7.3 Radiation"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu107.pdf",
+          "ordinal": 10,
+          "pageStart": 10,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 7: Heat Transfer in Nature",
+            "7.4 Water Cycle"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T16:44:21.511Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which type of heat transfer is demonstrated in Activity 7.1 using a metal strip?",
+      "choices": [
+        "Convection",
+        "Radiation",
+        "Conduction",
+        "Evaporation"
+      ],
+      "answerIndex": 2,
+      "solution": "In the activity, heat moves along the metal strip from the hotter end to the colder end, which is a direct transfer of thermal energy through the material. Conduction occurs when heat is transferred through a substance without the movement of its particles. Convection involves the movement of fluids, radiation is heat transfer through space, and evaporation is a cooling process, not a method of heat transfer. Therefore, the correct answer is conduction.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "किस प्रकार के ऊष्मा संचरण को गतिविधि 7.1 में धातु के पट्टे के साथ दर्शाया गया है?",
+          "choices": [
+            "संवहन",
+            "विकिरण",
+            "चालन",
+            "वाष्पीकरण"
+          ],
+          "solution": "गतिविधि में, ऊष्मा धातु के पट्टे के गर्म सिरे से ठंडे सिरे तक गति करती है, जो पदार्थ के माध्यम से तापीय ऊर्जा के सीधे संचरण का एक उदाहरण है। चालन तब होता है जब ऊष्मा किसी पदार्थ के माध्यम से बिना उसके कणों के गति के संचारित होती है। संवहन में तरल पदार्थों की गति शामिल होती है, विकिरण अंतरिक्ष के माध्यम से ऊष्मा संचरण है और वाष्पीकरण एक शीतलन प्रक्रिया है, ऊष्मा संचरण की विधि नहीं है। इसलिए, सही उत्तर चालन है।",
+          "imageAlt": "एक धातु का पट्टा जिस पर चार पिन I, II, III और IV बराबर दूरी पर रखे गए हैं।",
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Hindi scientific terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "कोणत्या प्रकारच्या उष्णता हस्तांतरित करण्याची प्रक्रिया धातूच्या फलकाचा वापर करून क्रियाकलाप 7.1 मध्ये दाखवली जाते?",
+          "choices": [
+            "संवहन",
+            "विकिरण",
+            "संवाहन",
+            "वाष्पीकरण"
+          ],
+          "solution": "क्रियाकलापात, उष्णता धातूच्या फलकावरून उष्णतर टोकापासून थंड टोकापर्यंत जाते, जे द्रव्यामधून तापमान ऊर्जेचे सीधा हस्तांतरण आहे. संवाहन हा एखाद्या पदार्थामधून उष्णता हस्तांतरित होत असताना त्याच्या कणांच्या गतीशी निगडीत असतो. संवहन हा द्रवांच्या गतीशी संबंधित असतो, विकिरण हा अंतरामधून उष्णता हस्तांतरित होत असतो आणि वाष्पीकरण हा थंडी घालणारा प्रक्रिया असते, उष्णता हस्तांतरित करण्याचा प्रकार नसतो. म्हणूनच योग्य उत्तर संवाहन आहे.",
+          "imageAlt": "एक धातूचा फलक ज्यावर चार पिन एकसारख्या अंतरावर ठेवलेले आहेत.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms for heat transfer processes.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": "A metal strip with four pins labeled I, II, III, and IV placed at equal distances along it.",
+      "figure": {
+        "kind": "geometry",
+        "spec": {
+          "frame": {
+            "xMin": 0,
+            "xMax": 10,
+            "yMin": 0,
+            "yMax": 7,
+            "unit": "cm"
+          },
+          "points": [
+            {
+              "id": "A",
+              "x": 1,
+              "y": 1,
+              "label": "I"
+            },
+            {
+              "id": "B",
+              "x": 3,
+              "y": 1,
+              "label": "II"
+            },
+            {
+              "id": "C",
+              "x": 5,
+              "y": 1,
+              "label": "III"
+            },
+            {
+              "id": "D",
+              "x": 7,
+              "y": 1,
+              "label": "IV"
+            }
+          ],
+          "segments": [
+            {
+              "from": "A",
+              "to": "D",
+              "kind": "segment",
+              "dashed": false,
+              "length": {
+                "value": 6,
+                "unit": "cm"
+              }
+            }
+          ],
+          "arcs": []
+        },
+        "labels": {
+          "I": {
+            "en": "Pin I"
+          },
+          "II": {
+            "en": "Pin II",
+            "hi": "पिन II",
+            "mr": "पिन II"
+          },
+          "III": {
+            "en": "Pin III",
+            "hi": "पिन III",
+            "mr": "पिन III"
+          },
+          "IV": {
+            "en": "Pin IV",
+            "hi": "पिन IV",
+            "mr": "पिन IV"
+          }
+        }
+      },
+      "needsFigure": true,
+      "distractorReason": [
+        "Confuses heat transfer through fluid movement with conduction",
+        "Thinks heat transfer happens through space without a medium",
+        null,
+        "Does not understand that heat moves through solids without particle movement"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The question correctly identifies conduction as the heat transfer mechanism in the described activity. The solution is sound and aligns with the correct answer. The distractors are based on common misconceptions about heat transfer.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu107.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 7: Heat Transfer in Nature"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu107.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 7: Heat Transfer in Nature",
+            "7.1 Conduction of Heat"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu107.pdf",
+          "ordinal": 2,
+          "pageStart": 3,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 7: Heat Transfer in Nature",
+            "7.1 Conduction of Heat"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu107.pdf",
+          "ordinal": 3,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 7: Heat Transfer in Nature",
+            "7.1 Conduction of Heat"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T16:44:21.511Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of the following statements is true about heat transfer?",
+      "choices": [
+        "Heat transfer takes place in solids through convection",
+        "Heat transfer through convection takes place by the actual movement of particles",
+        "Areas with clay materials allow more seepage of water than those with sandy materials",
+        "The movement of cooler air from land to sea is called land breeze"
+      ],
+      "answerIndex": 1,
+      "solution": "The correct answer is 'Heat transfer through convection takes place by the actual movement of particles.' Convection involves the movement of particles, whereas conduction does not. The other options are incorrect because they either contradict the chapter's explanation or are factually wrong.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा कथन ऊष्मा संचरण के बारे में सही है?",
+          "choices": [
+            "ऊष्मा संचरण ठोस में प्राकृतिक संवहन द्वारा होता है",
+            "संवहन द्वारा ऊष्मा संचरण कणों के वास्तविक गति द्वारा होता है",
+            "क्ले सामग्री वाले क्षेत्र रेतीली सामग्री वाले क्षेत्रों की तुलना में अधिक पानी के अपवर्तन की अनुमति देते हैं",
+            "भूमि से समुद्र की ओर शीतल हवा के गति को भूमि हवा कहा जाता है"
+          ],
+          "solution": "सही उत्तर 'संवहन द्वारा ऊष्मा संचरण कणों के वास्तविक गति द्वारा होता है।' संवहन में कणों की गति होती है, जबकि चालन में नहीं। अन्य विकल्प अपने अध्याय के विवरण के विरोधी हैं या तथ्यात्मक रूप से गलत हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms. The correct answer is in the same position (option 2), and the distractors remain incorrect.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणता विधान उष्णता हस्तांतरणाबद्दल खरा आहे?",
+          "choices": [
+            "उष्णता हस्तांतरण घन पदार्थांमध्ये संवाहकतेद्वारे होते",
+            "संवाहकतेद्वारे उष्णता हस्तांतरण हा कणांच्या खर्च गतीद्वारे होते",
+            "क्ले वस्तू असलेल्या क्षेत्रांमध्ये पाण्याचा अधिक जमा होतो जेव्हा रेती वस्तू असलेल्या क्षेत्रांमध्ये जमा होतो",
+            "जमिनीतून समुद्राकडे थंड हवा चालते त्याला जमीनीचा हवा म्हणतात"
+          ],
+          "solution": "बरोबर उत्तर 'संवाहकतेद्वारे उष्णता हस्तांतरण हा कणांच्या खर्च गतीद्वारे होते' आहे. संवाहकता कणांच्या गतीचा वापर करते, तर अंतर्गत हस्तांतरण करत नाही. इतर विकल्प चॅप्टरच्या व्याख्येशी विरोधाभास किंवा तथ्याशी विरोधाभास असल्यामुळे चुकीचे आहेत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for scientific concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses conduction with convection",
+        null,
+        "Believes seepage is more in sandy materials",
+        "Misunderstands the concept of land breeze"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is option 1, which accurately describes convection. The other options contain common misconceptions about heat transfer and soil permeability.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu107.pdf",
+          "ordinal": 14,
+          "pageStart": 15,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 7: Heat Transfer in Nature",
+            "7.4 Water Cycle",
+            "7.4.1 Seepage of water beneath the",
+            "Let Us Enhance Our Learning"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu107.pdf",
+          "ordinal": 15,
+          "pageStart": 16,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 7: Heat Transfer in Nature",
+            "7.4 Water Cycle",
+            "7.4.1 Seepage of water beneath the",
+            "Exploratory Projects"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T16:44:21.511Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "Will putting a leaky tumbler inside another tumbler help keep the lassi cold for a longer time?",
+      "choices": [
+        "Yes, because the outer tumbler acts as an insulator",
+        "No, because the outer tumbler does not prevent heat transfer",
+        "Yes, because the outer tumbler makes the lassi colder",
+        "No, because the outer tumbler is made of the same material"
+      ],
+      "answerIndex": 0,
+      "solution": "The correct answer is 'Yes, because the outer tumbler acts as an insulator.' The outer tumbler reduces the transfer of heat from the surroundings to the lassi, thus helping it stay cold for a longer time. The other options are incorrect because they either misunderstand the role of the outer tumbler or assume it has no effect.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "क्या एक रिसते हुए टमाटर को दूसरे टमाटर के अंदर रखने से लस्सी को लंबे समय तक ठंडा रखने में मदद मिलेगी?",
+          "choices": [
+            "हाँ, क्योंकि बाहरी टमाटर एक ऊष्मारोधक के रूप में कार्य करता है",
+            "नहीं, क्योंकि बाहरी टमाटर ऊष्मा संचरण को रोकता नहीं है",
+            "हाँ, क्योंकि बाहरी टमाटर लस्सी को ठंडा बना देता है",
+            "नहीं, क्योंकि बाहरी टमाटर एक ही सामग्री से बना है"
+          ],
+          "solution": "सही उत्तर 'हाँ, क्योंकि बाहरी टमाटर एक ऊष्मारोधक के रूप में कार्य करता है।' बाहरी टमाटर वातावरण से लस्सी में ऊष्मा के संचरण को कम करता है, इसलिए लस्सी को लंबे समय तक ठंडा रखने में मदद करता है। अन्य विकल्प गलत हैं क्योंकि वे बाहरी टमाटर की भूमिका को गलत समझते हैं या यह मानते हैं कि इसका कोई प्रभाव नहीं है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate technical terms like 'ऊष्मारोधक' (insulator) as used in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "लसी थंड ठेवण्यासाठी एका तुटलेल्या टम्हाळ्याला दुसऱ्या टम्हाळ्यात ठेवणे फायदेशीर ठरेल का?",
+          "choices": [
+            "होय, कारण बाहेरील टम्हाळा अवाहक असतो",
+            "नाही, कारण बाहेरील टम्हाळा ऊष्मा हस्तांतरण रोखत नाही",
+            "होय, कारण बाहेरील टम्हाळा लसीला थंड करतो",
+            "नाही, कारण बाहेरील टम्हाळा एकाच पदार्थाचा असतो"
+          ],
+          "solution": "बरोबर उत्तर 'होय, कारण बाहेरील टम्हाळा अवाहक असतो.' बाहेरील टम्हाळा लसीला बाहेरील ऊष्मा हस्तांतरण घटवतो, जेणेकरून ती थंड राहते. इतर उत्तरे चुकीची आहेत कारण ते बाहेरील टम्हाळाच्या भूमिकेचा चुकीचा अर्थ काढतात किंवा त्याचा कोणताही परिणाम नसल्याचा अंदाज घेतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms like 'अवाहक' for 'insulator'.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Believes the outer tumbler has no insulating effect",
+        "Fails to recognize the insulating property of the outer tumbler",
+        "Assumes the outer tumbler has no effect on temperature"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        1,
+        1,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 0. The outer tumbler acts as an insulator, reducing heat transfer. The other options reflect common misconceptions about insulation and heat transfer.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu107.pdf",
+          "ordinal": 14,
+          "pageStart": 15,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 7: Heat Transfer in Nature",
+            "7.4 Water Cycle",
+            "7.4.1 Seepage of water beneath the",
+            "Let Us Enhance Our Learning"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu107.pdf",
+          "ordinal": 15,
+          "pageStart": 16,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 7: Heat Transfer in Nature",
+            "7.4 Water Cycle",
+            "7.4.1 Seepage of water beneath the",
+            "Exploratory Projects"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T16:44:21.511Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "What happens to the wax holding the pins in Activity 7.1 when the metal strip is heated?",
+      "choices": [
+        "It turns into a solid",
+        "It melts",
+        "It expands",
+        "It contracts"
+      ],
+      "answerIndex": 1,
+      "solution": "As the metal strip is heated, the heat is transferred along the strip, causing the wax near the heated end to melt. This melting allows the pins to fall. The other options do not match the physical behavior of wax when heated. Hence, the correct answer is that it melts.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "गतिविधि 7.1 में पिन को रखे रहने वाली मोम क्या हो जाती है जब धातु की पट्टी को गर्म किया जाता है?",
+          "choices": [
+            "यह एक ठोस में बदल जाती है",
+            "यह पिघल जाती है",
+            "यह फैल जाती है",
+            "यह सिकुड़ जाती है"
+          ],
+          "solution": "जैसे-जैसे धातु की पट्टी को गर्म किया जाता है, गर्मी पट्टी के साथ फैलती है, जिसके कारण गर्म किए गए सिरे के पास के मोम का पिघलना होता है। इस पिघलने के कारण पिन गिर जाते हैं। अन्य विकल्प मोम के गर्म होने पर भौतिक व्यवहार के साथ मेल नहीं खाते हैं। अतः सही उत्तर यह है कि यह पिघल जाती है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate scientific terminology in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "क्रियाकलाप 7.1 मध्ये दिलेल्या पिन्स ठेवणारा मोम काय होतो जेव्हा धातूचा पट्टा गरम केला जातो?",
+          "choices": [
+            "तो घन होतो",
+            "तो वितळतो",
+            "तो विस्तारतो",
+            "तो अवक्षय होतो"
+          ],
+          "solution": "जेव्हा धातूचा पट्टा गरम केला जातो तेव्हा ताप त्या पट्ट्यावरून पसरतो, ज्यामुळे गरम छेदाजवळचा मोम वितळतो. हे वितळणे पिन्स खाली पडण्यास परवानगी देते. इतर विकल्प मोमच्या गरम केल्यास भौतिक वर्तनाशी जुमानत नाहीत. त्यामुळे योग्य उत्तर तो वितळतो असे आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses melting with solidification",
+        null,
+        "Does not understand the effect of heat on wax",
+        "Misinterprets thermal expansion"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies that heating the metal strip transfers heat to the wax, causing it to melt. The reasoning aligns with the physical behavior of wax when exposed to heat.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu107.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 7: Heat Transfer in Nature"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu107.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 7: Heat Transfer in Nature",
+            "7.1 Conduction of Heat"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu107.pdf",
+          "ordinal": 2,
+          "pageStart": 3,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 7: Heat Transfer in Nature",
+            "7.1 Conduction of Heat"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu107.pdf",
+          "ordinal": 3,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 7: Heat Transfer in Nature",
+            "7.1 Conduction of Heat"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T16:44:21.511Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "Based on the diagram, what process is responsible for the movement of water from the ocean to the atmosphere?",
+      "choices": [
+        "Evaporation",
+        "Condensation",
+        "Precipitation",
+        "Transpiration"
+      ],
+      "answerIndex": 0,
+      "solution": "Evaporation is the process where water from the ocean changes into water vapor and enters the atmosphere. This occurs when heat from the sun causes water molecules to gain enough energy to escape into the air. Condensation forms clouds, precipitation is the falling of water from clouds, and transpiration involves water released by plants, not the ocean.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "आरेख के आधार पर, महासागर से वायुमंडल में पानी के गति के लिए कौन सी प्रक्रिया उत्तरदायी है?",
+          "choices": [
+            "वाष्पीकरण",
+            "संघनन",
+            "अपक्षेपण",
+            "वाष्पोत्सर्जन"
+          ],
+          "solution": "वाष्पीकरण वह प्रक्रिया है जिसमें महासागर के पानी जल वाष्प में बदल जाता है और वायुमंडल में प्रवेश कर जाता है। यह सूर्य के ऊष्मा से होता है जो पानी के अणुओं को वायु में भागने के लिए पर्याप्त ऊर्जा प्रदान करता है। संघनन बादल बनाता है, अपक्षेपण बादलों से पानी के गिरने के रूप में होता है, और वाष्पोत्सर्जन में पौधों द्वारा जल छोड़ा जाता है, न कि महासागर से।",
+          "imageAlt": "एक आरेख जो जल चक्र को दर्शाता है जिसमें सूर्य और चक्र दोनों शामिल हैं।",
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard scientific terminology appropriate for a Hindi-medium curriculum.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "आकृतीवरून, समुद्रातून वातावरणात पाण्याच्या गतीसाठी कोणता प्रक्रिया जबाबदार आहे?",
+          "choices": [
+            "वाष्पीकरण",
+            "घनीकरण",
+            "वृष्टिपात",
+            "वाष्पोत्सर्जन"
+          ],
+          "solution": "वाष्पीकरण ही प्रक्रिया आहे जेव्हा समुद्रातील पाणी जलवाष्प मध्ये बदलते आणि वातावरणात प्रवेश करते. हे तेजस्वी उन्हामुळे पाणी अणूंना पाणी वायू मध्ये जाण्यासाठी पुरेसा ऊर्जा मिळतो. घनीकरण बादले तयार करते, वृष्टिपात हे बादल्यांमधून पाण्याचा वर्षा आहे आणि वाष्पोत्सर्जन ही वनस्पतींमार्फत पाण्याचा बाहेर जाणारा प्रक्रिया आहे, समुद्राच्या नाही.",
+          "imageAlt": "पाणी चक्राची आकृती आणि सूर्य आणि चक्राचा दर्शन करून देणारी आकृती.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": "A diagram showing the water cycle with the sun and the cycle itself.",
+      "figure": {
+        "kind": "diagram",
+        "spec": {
+          "parts": [
+            {
+              "part": "sunEarthMoon",
+              "x": 10,
+              "y": 20,
+              "size": 15
+            },
+            {
+              "part": "waterCycle",
+              "x": 50,
+              "y": 40,
+              "size": 50
+            }
+          ]
+        },
+        "labels": {
+          "sunEarthMoon": {
+            "en": "Sun",
+            "hi": "सूर्य",
+            "mr": "सूर्य"
+          },
+          "waterCycle": {
+            "en": "Water Cycle",
+            "hi": "जल चक्र",
+            "mr": "पाणी चक्र"
+          }
+        }
+      },
+      "needsFigure": true,
+      "distractorReason": [
+        null,
+        "Chooses condensation, which is the process of water vapor turning into liquid",
+        "Chooses precipitation, which is the falling of water from the sky",
+        "Chooses transpiration, which is the release of water vapor from plants"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is well-constructed. The correct answer is clearly evaporation, and the distractors represent common misconceptions about the water cycle.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu107.pdf",
+          "ordinal": 8,
+          "pageStart": 8,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 7: Heat Transfer in Nature",
+            "7.3 Radiation"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu107.pdf",
+          "ordinal": 9,
+          "pageStart": 9,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 7: Heat Transfer in Nature",
+            "7.3 Radiation"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu107.pdf",
+          "ordinal": 10,
+          "pageStart": 10,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 7: Heat Transfer in Nature",
+            "7.4 Water Cycle"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T16:44:21.511Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "Why does a thin aluminium foil prevent food from getting cold?",
+      "choices": [
+        "It conducts heat away from the food",
+        "It reflects heat away from the food",
+        "It traps heat and prevents loss",
+        "It absorbs heat from the surroundings"
+      ],
+      "answerIndex": 2,
+      "solution": "Aluminium foil is a good reflector of heat, which means it bounces heat back towards the food, preventing it from escaping. This helps keep the food warm by reducing heat loss. The other options are incorrect because the foil does not conduct heat away, absorb heat from the surroundings, or act like a conductor in this context.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक पतला एल्यूमीनियम फोली भोजन के ठंडा होने से क्यों रोकता है?",
+          "choices": [
+            "यह भोजन से ऊष्मा को दूर करता है",
+            "यह भोजन से ऊष्मा को दूर करता है",
+            "यह ऊष्मा को बर्तने और नुकसान रोकता है",
+            "यह वातावरण से ऊष्मा को अवशोषित करता है"
+          ],
+          "solution": "एल्यूमीनियम फोली ऊष्मा का एक अच्छा परावर्तक है, जिसका अर्थ है कि यह ऊष्मा को भोजन की ओर वापस बाउंस करता है, जिससे यह भोजन से बाहर नहीं निकलता। इससे भोजन को गर्म रखने में मदद मिलती है क्योंकि ऊष्मा के नुकसान को कम कर दिया जाता है। अन्य विकल्प गलत हैं क्योंकि फोली ऊष्मा को दूर नहीं करता, वातावरण से ऊष्मा को अवशोषित नहीं करता, या इस संदर्भ में एक चालक के रूप में कार्य नहीं करता।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms. Option 2 is the correct answer in the same position. All distractors remain incorrect.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खाद्य पदार्थ थंड होणे टाळण्यासाठी एका पातळ अल्यूमिनियम फॉइलचा वापर का केला जातो?",
+          "choices": [
+            "ते खाद्य पदार्थापासून ऊष्मा दूर करते",
+            "ते खाद्य पदार्थापासून ऊष्मा परावर्तित करते",
+            "ते ऊष्मा अडकवते आणि निर्गमन रोखते",
+            "ते आजूबाजूच्या ऊष्मा शोषते"
+          ],
+          "solution": "अल्यूमिनियम फॉइल ऊष्मा ची चांगली परावर्तक आहे, जे खाद्य पदार्थाकडे ऊष्मा परावर्तित करते, जेणेकरून ती बाहेर पसरू शकत नाही. हे ऊष्मा निर्गमन कमी करून खाद्य पदार्थ उबदार ठेवण्यात मदत करते. इतर विकल्प चुकीचे आहेत कारण फॉइल ऊष्मा दूर करत नाही, आजूबाजूच्या ऊष्मा शोषत नाही किंवा या संदर्भात एक वाहक म्हणून कार्य करत नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Misunderstands the role of conductors",
+        "Confuses reflection with heat absorption",
+        null,
+        "Does not recognize the insulating role of the foil"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 2, as the foil acts as an insulator by trapping heat. The author's reasoning is sound, and the misconceptions listed for the wrong options are valid.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu107.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 7: Heat Transfer in Nature"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu107.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 7: Heat Transfer in Nature",
+            "7.1 Conduction of Heat"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu107.pdf",
+          "ordinal": 2,
+          "pageStart": 3,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 7: Heat Transfer in Nature",
+            "7.1 Conduction of Heat"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu107.pdf",
+          "ordinal": 3,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 7: Heat Transfer in Nature",
+            "7.1 Conduction of Heat"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T16:44:21.511Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "Why do dark-colored clothes feel warmer in winters?",
+      "choices": [
+        "They absorb less heat",
+        "They reflect more heat",
+        "They absorb more heat",
+        "They conduct heat more slowly"
+      ],
+      "answerIndex": 2,
+      "solution": "Dark-colored clothes absorb more heat, which makes them feel warmer in winters. Light-colored clothes reflect more heat, which is why they are preferred in summers. The other options are incorrect because they contradict the principle of heat absorption by dark surfaces.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "सर्दियों में काले रंग के कपड़े गर्म क्यों महसूस होते हैं?",
+          "choices": [
+            "वे कम ऊष्मा अवशोषित करते हैं",
+            "वे अधिक ऊष्मा परावर्तित करते हैं",
+            "वे अधिक ऊष्मा अवशोषित करते हैं",
+            "वे ऊष्मा के चालन को धीमा करते हैं"
+          ],
+          "solution": "काले रंग के कपड़े अधिक ऊष्मा अवशोषित करते हैं, जिसके कारण सर्दियों में वे गर्म महसूस होते हैं। हल्के रंग के कपड़े अधिक ऊष्मा परावर्तित करते हैं, जिसके कारण गर्मियों में उनका उपयोग किया जाता है। अन्य विकल्प गलत हैं क्योंकि वे काली सतहों द्वारा ऊष्मा अवशोषण के सिद्धांत के विरोधी हैं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains original meaning, and uses standard Hindi scientific terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "हिवाळ्यात गडद रंगाच्या कपड्यांचा जास्त खारटपणा का वाटतो?",
+          "choices": [
+            "ते कमी उष्णता शोषतात",
+            "ते जास्त उष्णता परावर्तित करतात",
+            "ते जास्त उष्णता शोषतात",
+            "ते उष्णता जास्त धीम्याने वाहतात"
+          ],
+          "solution": "गडद रंगाच्या कपड्यांनी जास्त उष्णता शोषली जाते, ज्यामुळे हिवाळ्यात त्यांचा जास्त खारटपणा वाटतो. पांढरा रंग जास्त उष्णता परावर्तित करतात, ज्यामुळे उन्हाळ्यात त्यांचा वापर केला जातो. इतर विकल्प चुकीचे आहेत कारण ते गडद सततांमार्फत उष्णता शोषणाच्या तत्वाशी विरोधात आहेत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the scientific terminology appropriate for a Marathi-medium curriculum.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Incorrectly assumes dark clothes reflect heat",
+        "Incorrectly assumes dark clothes reflect heat",
+        null,
+        "Believes dark colors insulate better due to a confusion between absorption and insulation"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 2, as dark-colored clothes absorb more heat, making them feel warmer. The distractors reflect common misconceptions about heat absorption and insulation.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu107.pdf",
+          "ordinal": 8,
+          "pageStart": 8,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 7: Heat Transfer in Nature",
+            "7.3 Radiation"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu107.pdf",
+          "ordinal": 9,
+          "pageStart": 9,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 7: Heat Transfer in Nature",
+            "7.3 Radiation"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu107.pdf",
+          "ordinal": 10,
+          "pageStart": 10,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 7: Heat Transfer in Nature",
+            "7.4 Water Cycle"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T16:44:21.511Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Why are houses made with hollow bricks able to stay warm in winter and cool in summer?",
+      "choices": [
+        "Hollow bricks are made of a special material",
+        "Hollow bricks reduce heat transfer through air trapped inside",
+        "Hollow bricks reflect more sunlight",
+        "Hollow bricks are lighter in weight"
+      ],
+      "answerIndex": 1,
+      "solution": "Hollow bricks reduce heat transfer because the air trapped inside them acts as an insulator, slowing the movement of heat. Air is a poor conductor of heat, so it helps keep the inside of the house warm in winter and cool in summer. The other options do not explain how heat transfer is reduced.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "शीतकाल में घरों को गर्म रखने और गर्मी में ठंडा रखने वाली खोखली ईटों से क्यों बनाया जाता है?",
+          "choices": [
+            "खोखली ईटें एक विशेष सामग्री से बनी होती हैं",
+            "खोखली ईटें अंदर फंसे हवा के कारण ऊष्मा संचरण को कम करती हैं",
+            "खोखली ईटें अधिक सूर्य प्रकाश को परावर्तित करती हैं",
+            "खोखली ईटें भारी नहीं होती हैं"
+          ],
+          "solution": "खोखली ईटें ऊष्मा संचरण को कम करती हैं क्योंकि उनके अंदर फंसी हवा एक ऊष्मा का रोधक के रूप में कार्य करती है, जो ऊष्मा के गति को धीमा कर देती है। हवा ऊष्मा की एक खराब चालक होती है, इसलिए यह घर के अंदर शीतकाल में गर्म रखने और गर्मी में ठंडा रखने में मदद करती है। अन्य विकल्प ऊष्मा संचरण के कम होने की व्याख्या नहीं करते हैं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the scientific meaning, with appropriate Hindi terminology used.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "होलो इटल ब्लॉकमुळे घरे सर्दीत उबदार आणि उन्हात थंड का राहतात?",
+          "choices": [
+            "होलो इटल ब्लॉक एक विशेष सामग्रीत बनलेले असतात",
+            "होलो इटल ब्लॉकमध्ये अडकलेल्या हवेमुळे ऊष्मा हस्तांतरण कमी होते",
+            "होलो इटल ब्लॉक अधिक सूर्यप्रकाश परावर्तित करतात",
+            "होलो इटल ब्लॉक वजनाने हलके असतात"
+          ],
+          "solution": "होलो इटल ब्लॉक ऊष्मा हस्तांतरण कमी करतात कारण त्यांच्या आत अडकलेली हवा एक अवाहक असते, जी ऊष्मा चालनेच्या गतीला धीमा करते. हवा ऊष्मेची चांगली वाहक नसल्यामुळे, घराच्या आत ऊब राखण्यास आणि उन्हात थंड राखण्यास मदत होते. इतर विकल्प ऊष्मा हस्तांतरण कमी करण्याच्या प्रकाराचे विवरण देत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Focuses on material properties rather than air insulation",
+        null,
+        "Misunderstands the role of reflection in heat transfer",
+        "Ignores the insulating effect of air"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies that the air trapped in hollow bricks acts as an insulator, reducing heat transfer. The reasoning aligns with the scientific principle that air is a poor conductor of heat.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu107.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 7: Heat Transfer in Nature"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu107.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 7: Heat Transfer in Nature",
+            "7.1 Conduction of Heat"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu107.pdf",
+          "ordinal": 2,
+          "pageStart": 3,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 7: Heat Transfer in Nature",
+            "7.1 Conduction of Heat"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu107.pdf",
+          "ordinal": 3,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 7: Heat Transfer in Nature",
+            "7.1 Conduction of Heat"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T16:44:21.511Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "If a person is wearing a black shirt on a sunny day, why does the shirt feel hotter compared to a white shirt?",
+      "choices": [
+        "Black shirts absorb more heat",
+        "Black shirts reflect more heat",
+        "Black shirts are made of heavier fabric",
+        "Black shirts are less breathable"
+      ],
+      "answerIndex": 0,
+      "solution": "Black shirts absorb more heat because dark surfaces absorb more radiation than light-colored surfaces. This is why a black shirt feels hotter on a sunny day. Light-colored clothes reflect more heat, keeping the person cooler. The other options are unrelated to the principle of heat absorption.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि कोई व्यक्ति सूरज के दिन एक काला कमीज पहने हुए है, तो काली कमीज गहरे रंग की कमीज की तुलना में अधिक गर्म क्यों लगती है?",
+          "choices": [
+            "काली कमीज अधिक गर्मी अवशोषित करती है",
+            "काली कमीज अधिक गर्मी परावर्तित करती है",
+            "काली कमीज भारी कपड़े से बनी होती है",
+            "काली कमीज कम श्वास लेने वाली होती है"
+          ],
+          "solution": "काली कमीज अधिक गर्मी अवशोषित करती है क्योंकि गहरी सतहें हल्के रंग की सतहों की तुलना में अधिक विकिरण अवशोषित करती हैं। इसलिए एक सूरज के दिन काली कमीज गर्म लगती है। हल्के रंग के कपड़े अधिक गर्मी परावर्तित करते हैं, जो व्यक्ति को ठंडा रखते हैं। अन्य विकल्प गर्मी अवशोषण के सिद्धांत से संबंधित नहीं हैं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains original meaning, and uses appropriate Hindi terminology for physics concepts.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका व्यक्तीने सूर्याच्या दिवसात काळा शर्ट घातला असतो, तर तो श्वेत शर्टपेक्षा जास्त गरम वाटतो कारण काय?",
+          "choices": [
+            "काळे शर्ट जास्त उष्णता शोषतात",
+            "काळे शर्ट जास्त उष्णता परावर्तित करतात",
+            "काळे शर्ट भारी वस्त्रापासून बनलेले असतात",
+            "काळे शर्ट कमी श्वासोच्छ्वासक्षम असतात"
+          ],
+          "solution": "काळे शर्ट जास्त उष्णता शोषतात कारण गडद सतही जास्त विकिरण शोषतात जेणेकरून पांढर्या रंगाच्या सतही पेक्षा जास्त उष्णता शोषतात. त्यामुळे सूर्याच्या दिवसात काळा शर्ट जास्त गरम वाटतो. पांढर्या रंगाच्या कपड्यांनी जास्त उष्णता परावर्तित केली जाते, जेणेकरून व्यक्ती थंड राहते. इतर विकल्प उष्णता शोषणाच्या तत्वाशी संबंधित नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for scientific concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Chooses a distractor that contradicts the principle of heat absorption",
+        "Chooses a distractor based on fabric weight rather than heat absorption",
+        "Chooses a distractor based on breathability rather than heat absorption"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is well-constructed, with a clear correct answer and plausible distractors based on common misconceptions. The solution correctly explains that dark colors absorb more heat, and the distractors are appropriately labeled as unrelated to heat absorption.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu107.pdf",
+          "ordinal": 8,
+          "pageStart": 8,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 7: Heat Transfer in Nature",
+            "7.3 Radiation"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu107.pdf",
+          "ordinal": 9,
+          "pageStart": 9,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 7: Heat Transfer in Nature",
+            "7.3 Radiation"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu107.pdf",
+          "ordinal": 10,
+          "pageStart": 10,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 7: Heat Transfer in Nature",
+            "7.4 Water Cycle"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T16:44:21.511Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Why do houses in the Himalayas use walls made of two wooden layers filled with cow dung and mud?",
+      "choices": [
+        "To allow maximum heat to escape",
+        "To prevent heat loss by acting as insulators",
+        "To increase the temperature inside the house",
+        "To make the walls stronger"
+      ],
+      "answerIndex": 1,
+      "solution": "The materials used, such as wood and mud, are poor conductors of heat, which helps to reduce heat loss by acting as insulators. This keeps the house warmer inside. The other options are incorrect because they suggest the materials would allow heat to escape, increase temperature unnecessarily, or simply strengthen the walls, none of which align with the insulating properties of the materials.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "हिमालय में घरों में लकड़ी की दो परतों के साथ गाय के गोबर और मिट्टी से भरे दीवार क्यों उपयोग किए जाते हैं?",
+          "choices": [
+            "अधिकतम गर्मी के बाहर निकलने के लिए",
+            "गर्मी के नुकसान को रोकने के लिए ऊष्मारोधक के रूप में कार्य करने के लिए",
+            "घर के अंदर तापमान को बढ़ाने के लिए",
+            "दीवारों को मजबूत बनाने के लिए"
+          ],
+          "solution": "उपयोग किए गए सामग्री, जैसे लकड़ी और मिट्टी, गर्मी के खराब चालक होते हैं, जो ऊष्मारोधक के रूप में कार्य करके गर्मी के नुकसान को कम करते हैं। इससे घर के अंदर गर्मी रहती है। अन्य विकल्प गलत हैं क्योंकि वे सुझाव देते हैं कि सामग्री गर्मी के बाहर निकलने के लिए होगी, अनावश्यक रूप से तापमान बढ़ाएगी, या सिर्फ दीवारों को मजबूत बनाएगी, जो इन सामग्रियों के ऊष्मारोधक गुणों के साथ मेल नहीं खाता।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate technical terms like 'ऊष्मारोधक' (insulator) as used in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "हिमालयातील घरांमध्ये लाकडाच्या दोन थरांमध्ये गायीच्या गोंद आणि मातीने भरलेले दिवाल का वापरले जातात?",
+          "choices": [
+            "उष्णता जास्तीत जास्त बाहेर जाऊ देण्यासाठी",
+            "उष्णता निर्माण करून बचत करण्यासाठी अवाहक म्हणून कार्य करण्यासाठी",
+            "घरातील तापमान वाढवण्यासाठी",
+            "दिवाल जास्त शक्तिशाली करण्यासाठी"
+          ],
+          "solution": "वापरलेल्या सामग्री, जसे की लाकड आणि माती, उष्णतेच्या खराब वाहक असतात, जे अवाहक म्हणून कार्य करून उष्णता निर्माण करून बचत करतात. हे घरात आत उबदार ठेवते. इतर विकल्प अयोग्य आहेत कारण ते सामग्री उष्णता बाहेर जाऊ देण्याचा सुचवतात, अवांछित रीतीने तापमान वाढवतात किंवा सामग्री फक्त दिवाल जास्त शक्तिशाली करतात, जे वस्तुस्थितीच्या अवाहक गुणधर्मांशी जुळत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for insulation and heat conduction.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the role of materials that allow heat to pass",
+        null,
+        "Incorrectly assumes the materials increase temperature",
+        "Misunderstands the purpose of structural strength"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 1, as the materials mentioned (wood and mud) are poor conductors of heat and act as insulators, preventing heat loss. The other options represent common misconceptions about the function of these materials.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu107.pdf",
+          "ordinal": 4,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 7: Heat Transfer in Nature",
+            "7.2 Convection"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu107.pdf",
+          "ordinal": 5,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 7: Heat Transfer in Nature",
+            "7.2 Convection"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu107.pdf",
+          "ordinal": 6,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 7: Heat Transfer in Nature",
+            "7.2 Convection",
+            "7.2.1 Land and Sea Breeze"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu107.pdf",
+          "ordinal": 7,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 7: Heat Transfer in Nature",
+            "7.2 Convection",
+            "7.2.1 Land and Sea Breeze"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T02:50:44.558Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "What is the process of surface water seeping through soil and rocks called?",
+      "choices": [
+        "Infiltration",
+        "Evaporation",
+        "Condensation",
+        "Precipitation"
+      ],
+      "answerIndex": 0,
+      "solution": "Infiltration is the process where surface water moves into the ground through soil and rocks. Evaporation is the change of water from liquid to gas, condensation is the change from gas to liquid, and precipitation is the falling of water from the sky. Infiltration directly describes water moving into the ground, making it the correct answer.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "सतह के पानी के मिट्टी और चट्टानों में छिसकने की प्रक्रिया क्या कहलाती है?",
+          "choices": [
+            "अपोसरण",
+            "वाष्पीकरण",
+            "संघनन",
+            "वर्षा"
+          ],
+          "solution": "अपोसरण एक प्रक्रिया है जिसमें सतह के पानी मिट्टी और चट्टानों में छिसक जाता है। वाष्पीकरण पानी के तरल से गैस में बदलने की प्रक्रिया है, संघनन गैस से तरल में बदलने की प्रक्रिया है और वर्षा आकाश से पानी के गिरने की प्रक्रिया है। अपोसरण सीधे पानी के जमीन में छिसकने का वर्णन करता है, इसलिए यह सही उत्तर है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate with appropriate Hindi terminology. All options correctly reflect the original meaning.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "पृष्ठभागाच्या पाण्याच्या जमिनीतून खोदण्याच्या प्रक्रियेला काय म्हणतात?",
+          "choices": [
+            "प्रवेश",
+            "वाष्पीभवन",
+            "घनीभवन",
+            "अवक्षेपण"
+          ],
+          "solution": "प्रवेश ही प्रक्रिया आहे जेव्हा पृष्ठभागाचे पाणी जमिनीतून खोदते. वाष्पीभवन ही पाण्याची द्रवापासून वाफेमध्ये बदल आहे, घनीभवन ही वाफेपासून पाण्यामध्ये बदल आहे आणि अवक्षेपण ही आकाशातून पाण्याच्या पडण्याची प्रक्रिया आहे. प्रवेश हे जमिनीत पाण्याच्या खोदण्याचे थेट वर्णन करते, ज्यामुळे ते योग्य उत्तर बनते.",
+          "imageAlt": null,
+          "critique": "Translation is accurate, technical terms match Marathi educational usage, and the question structure is preserved.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "confuses infiltration with evaporation",
+        "confuses infiltration with condensation",
+        "confuses infiltration with precipitation"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is well-constructed and the correct answer is clearly 0 (Infiltration). The author's reasoning for the distractors aligns with common misconceptions about the water cycle.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu107.pdf",
+          "ordinal": 11,
+          "pageStart": 11,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 7: Heat Transfer in Nature",
+            "7.4 Water Cycle",
+            "7.4.1 Seepage of water beneath the",
+            "Earth"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu107.pdf",
+          "ordinal": 12,
+          "pageStart": 12,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 7: Heat Transfer in Nature",
+            "7.4 Water Cycle",
+            "7.4.1 Seepage of water beneath the",
+            "Earth"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu107.pdf",
+          "ordinal": 13,
+          "pageStart": 13,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 7: Heat Transfer in Nature",
+            "7.4 Water Cycle",
+            "7.4.1 Seepage of water beneath the",
+            "In a Nutshell"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T02:50:44.558Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "Which of the following is a good conductor of heat?",
+      "choices": [
+        "Wood",
+        "Plastic",
+        "Copper",
+        "Glass"
+      ],
+      "answerIndex": 2,
+      "solution": "Copper is a good conductor of heat because it allows heat to flow through it easily due to its atomic structure and the movement of free electrons. Wood, plastic, and glass are poor conductors because their structures do not allow heat to pass through as efficiently. Copper is a metal, and metals are generally known for their high thermal conductivity.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन ऊष्मा का अच्छा चालक है?",
+          "choices": [
+            "लकड़ी",
+            "प्लास्टिक",
+            "तांबा",
+            "कांच"
+          ],
+          "solution": "तांबा ऊष्मा का अच्छा चालक है क्योंकि इसकी परमाणु संरचना और स्वतंत्र इलेक्ट्रॉनों के गति के कारण यह ऊष्मा के प्रवाह की अनुमति देता है। लकड़ी, प्लास्टिक और कांच खराब चालक हैं क्योंकि इनकी संरचना ऊष्मा के पारगमन की अनुमति नहीं देती है। तांबा धातु है और धातुओं को आमतौर पर उच्च ऊष्मीय चालकता के लिए जाना जाता है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms as found in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोण उष्णतेचा चांगला वाहक आहे?",
+          "choices": [
+            "लाकूड",
+            "प्लास्टिक",
+            "तांबे",
+            "काच"
+          ],
+          "solution": "तांबे उष्णतेचा चांगला वाहक आहे कारण त्याच्या अणु संरचनेमुळे आणि मुक्त इलेक्ट्रॉनच्या गतीमुळे उष्णता त्यामधून सहज वाहते. लाकूड, प्लास्टिक आणि काच खराब वाहक आहेत कारण त्यांच्या संरचनेमुळे उष्णता त्यांमधून इतकी सहज वाहत नाही. तांबे धातू आहे आणि धातू उष्णताच्या उच्च वाहकतेसाठी ओळखल्या जातात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi technical terms used (e.g., 'वाहक' for 'conductor', 'धातू' for 'metal').",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "mistakenly identifies wood as a conductor",
+        "mistakenly identifies plastic as a conductor",
+        null,
+        "mistakenly identifies glass as a conductor"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct. Copper is a good conductor of heat, while wood, plastic, and glass are poor conductors. The reasoning aligns with standard scientific knowledge.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu107.pdf",
+          "ordinal": 11,
+          "pageStart": 11,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 7: Heat Transfer in Nature",
+            "7.4 Water Cycle",
+            "7.4.1 Seepage of water beneath the",
+            "Earth"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu107.pdf",
+          "ordinal": 12,
+          "pageStart": 12,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 7: Heat Transfer in Nature",
+            "7.4 Water Cycle",
+            "7.4.1 Seepage of water beneath the",
+            "Earth"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu107.pdf",
+          "ordinal": 13,
+          "pageStart": 13,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 7: Heat Transfer in Nature",
+            "7.4 Water Cycle",
+            "7.4.1 Seepage of water beneath the",
+            "In a Nutshell"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T02:50:44.558Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "Why is groundwater important for human use?",
+      "choices": [
+        "It is the main source of drinking water in cities",
+        "It is the only source of water in the world",
+        "It is used for generating electricity",
+        "It is the main source of water for agriculture"
+      ],
+      "answerIndex": 0,
+      "solution": "Groundwater is the main source of drinking water in cities because it is accessible and often treated for human consumption. The claim that it is the only source of water is incorrect because surface water and other sources also exist. Using groundwater for generating electricity is not its primary use, as it is more commonly used for drinking and irrigation. The main source of water for agriculture is typically surface water, not groundwater.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "मानव उपयोग के लिए भूजल क्यों महत्वपूर्ण है?",
+          "choices": [
+            "यह शहरों में पीने के पानी का मुख्य स्रोत है",
+            "यह दुनिया में एकमात्र पानी का स्रोत है",
+            "इसका उपयोग बिजली उत्पादन के लिए किया जाता है",
+            "यह कृषि के लिए पानी का मुख्य स्रोत है"
+          ],
+          "solution": "भूजल शहरों में पीने के पानी का मुख्य स्रोत है क्योंकि यह पहुंचयोग्य होता है और आमतौर पर मानव उपभोग के लिए इसका उपचार किया जाता है। यह कथन कि यह दुनिया का एकमात्र पानी का स्रोत है, गलत है क्योंकि सतही जल और अन्य स्रोत भी मौजूद हैं। बिजली उत्पादन के लिए भूजल का उपयोग इसका प्राथमिक उपयोग नहीं है, क्योंकि इसका अधिकांश उपयोग पीने के पानी और सिंचाई के लिए किया जाता है। कृषि के लिए पानी का मुख्य स्रोत आमतौर पर सतही जल होता है, न कि भूजल।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate technical terms as found in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "भूजल मानव उपयोगासाठी महत्वपूर्ण का आहे?",
+          "choices": [
+            "ते शहरांमधील पिण्याच्या पाण्याचा मुख्य स्रोत आहे",
+            "ते जगातील एकमेव पाण्याचा स्रोत आहे",
+            "ते विद्युत उत्पादनासाठी वापरले जाते",
+            "ते शेतीसाठी पाण्याचा मुख्य स्रोत आहे"
+          ],
+          "solution": "भूजल शहरांमधील पिण्याच्या पाण्याचा मुख्य स्रोत आहे कारण ते प्राप्त करण्यास सोपे असते आणि मानव उपभोगासाठी तयार केले जाते. ते जगातील एकमेव पाण्याचा स्रोत आहे असा दावा अयोग्य आहे कारण पृष्ठभागाचे पाणी आणि इतर स्रोतही असतात. विद्युत उत्पादनासाठी भूजल वापरणे हे त्याचा प्राथमिक उपयोग नाही, कारण त्याचा अधिकतर उपयोग पिण्याच्या पाण्यासाठी आणि सिंचनासाठी केला जातो. शेतीसाठी पाण्याचा मुख्य स्रोत सामान्यतः पृष्ठभागाचे पाणी असते, नाही की भूजल.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology. The structure and logic of the question and solution are preserved.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "overstates the role of groundwater in cities",
+        "overstates the exclusivity of groundwater as a water source",
+        "confuses the use of groundwater with electricity generation"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 0, as groundwater is indeed a major source of drinking water in both urban and rural areas. The other options contain clear misconceptions: option 1 overstates its role in cities, option 2 incorrectly claims it's the only source, and option 3 misattributes its primary use.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu107.pdf",
+          "ordinal": 11,
+          "pageStart": 11,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 7: Heat Transfer in Nature",
+            "7.4 Water Cycle",
+            "7.4.1 Seepage of water beneath the",
+            "Earth"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu107.pdf",
+          "ordinal": 12,
+          "pageStart": 12,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 7: Heat Transfer in Nature",
+            "7.4 Water Cycle",
+            "7.4.1 Seepage of water beneath the",
+            "Earth"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu107.pdf",
+          "ordinal": 13,
+          "pageStart": 13,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 7: Heat Transfer in Nature",
+            "7.4 Water Cycle",
+            "7.4.1 Seepage of water beneath the",
+            "In a Nutshell"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T02:50:44.558Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "In Activity 7.2, the cup with the candle below it rises up. What is the most likely reason for this observation?",
+      "choices": [
+        "The cup becomes heavier as it absorbs heat",
+        "The air inside the cup expands and becomes lighter",
+        "The cup is filled with water that evaporates",
+        "The candle produces a strong wind that lifts the cup"
+      ],
+      "answerIndex": 1,
+      "solution": "The air inside the cup warms up, expands, and becomes less dense, which makes it lighter and causes the cup to rise. The other options are incorrect because heat does not make the cup heavier, evaporation does not significantly affect the cup's weight, and a candle does not produce enough wind to lift the cup.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "क्रियाकलाप 7.2 में, बर्तन के नीचे मोमबत्ती होने पर बर्तन ऊपर उठ जाता है। इस अवलोकन के लिए सबसे संभावित कारण क्या है?",
+          "choices": [
+            "बर्तन गर्मी को अवशोषित करने के कारण भारी हो जाता है",
+            "बर्तन के भीतर वायु प्रसारित हो जाती है और हल्की हो जाती है",
+            "बर्तन पानी से भर जाता है जो वाष्पित हो जाता है",
+            "मोमबत्ती बर्तन को उठाने के लिए मजबूत हवा उत्पन्न करती है"
+          ],
+          "solution": "बर्तन के भीतर वायु गर्म हो जाती है, प्रसारित हो जाती है और कम घनत्व वाली हो जाती है, जिसके कारण यह हल्की हो जाती है और बर्तन ऊपर उठ जाता है। अन्य विकल्प गलत हैं क्योंकि गर्मी बर्तन को भारी नहीं बनाती है, वाष्पन बर्तन के भार पर निर्णायक प्रभाव नहीं डालता है और मोमबत्ती बर्तन को उठाने के लिए पर्याप्त हवा उत्पन्न नहीं करती है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi scientific terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "क्रियाकलाप 7.2 मध्ये, वाटीत खाली असलेल्या मोमबत्तीच्या खाली वाटी वर उठते. ह्या निरीक्षणाचे सर्वात शक्य कारण काय आहे?",
+          "choices": [
+            "वाटी ताप शोषून भारी होते",
+            "वाटीतील हवा विस्तारते आणि हलकी होते",
+            "वाटीत पाणी भरले जाते जे वाफ होते",
+            "मोमबत्ती वाटीला उंच करणारा जोरदार हवा तयार करते"
+          ],
+          "solution": "वाटीतील हवा उबते, विस्तारते आणि घनता कमी होते, ज्यामुळे ही हलकी होऊन वाटी वर उठते. इतर विकल्प अयोग्य आहेत कारण ताप वाटीला भारी करत नाही, वाफीकरण वाटीच्या वजनावर महत्त्वपूर्ण प्रभाव टाकत नाही, आणि मोमबत्ती वाटीला उंच करण्यासाठी जोरदार हवा तयार करत नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Assumes heat increases weight",
+        null,
+        "Misinterprets evaporation as the cause",
+        "Believes wind from the candle is the reason"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 1, as heating air causes it to expand and become less dense, leading to buoyancy. The other options reflect common misconceptions about heat and air behavior.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu107.pdf",
+          "ordinal": 4,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 7: Heat Transfer in Nature",
+            "7.2 Convection"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu107.pdf",
+          "ordinal": 5,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 7: Heat Transfer in Nature",
+            "7.2 Convection"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu107.pdf",
+          "ordinal": 6,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 7: Heat Transfer in Nature",
+            "7.2 Convection",
+            "7.2.1 Land and Sea Breeze"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu107.pdf",
+          "ordinal": 7,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 7: Heat Transfer in Nature",
+            "7.2 Convection",
+            "7.2.1 Land and Sea Breeze"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T02:50:44.558Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "If a student uses a metal rod to conduct heat, and places pins at equal intervals along the rod, what will happen when heat is applied at one end?",
+      "choices": [
+        "All pins will fall at the same time",
+        "Pins closer to the heat source will fall first",
+        "Pins farther from the heat source will fall first",
+        "Pins will not fall at all"
+      ],
+      "answerIndex": 1,
+      "solution": "Heat travels through conduction from the hotter end of the rod to the cooler end. As heat moves along the rod, the pins closer to the heat source will reach the melting point of the wax first, causing them to fall. Pins farther away take longer to receive enough heat to melt the wax, so they fall later. The pins will not all fall at the same time, nor will those farther from the heat source fall first.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक छात्र धातु की छड़ के माध्यम से ऊष्मा के संचरण के लिए प्रयोग करता है, और छड़ के आसपास समान अंतराल पर पिन लगाता है, तो जब एक छड़ के एक सिरे पर ऊष्मा लगाई जाती है, तो क्या होगा?",
+          "choices": [
+            "सभी पिन एक ही समय में गिर जाएंगे",
+            "ऊष्मा स्रोत के करीब पिन पहले गिरेंगे",
+            "ऊष्मा स्रोत से दूर पिन पहले गिरेंगे",
+            "पिन कभी भी नहीं गिरेंगे"
+          ],
+          "solution": "ऊष्मा छड़ के गर्म छोर से ठंडे छोर तक संवहन के माध्यम से यात्रा करती है। जैसे-जैसे ऊष्मा छड़ के आसपास गति करती है, ऊष्मा स्रोत के करीब के पिन पहले मिट्टी के वाल्व के गलन बिंदु तक पहुंचेंगे, जिसके कारण वे गिर जाएंगे। ऊष्मा स्रोत से दूर के पिन के पास पर्याप्त ऊष्मा प्राप्त करने में अधिक समय लगेगा, इसलिए वे बाद में गिरेंगे। सभी पिन एक ही समय में नहीं गिरेंगे, और ऊष्मा स्रोत से दूर के पिन पहले नहीं गिरेंगे।",
+          "imageAlt": "एक आरेख जिसमें एक बार चुंबक के साथ पिन 1, पिन 2, पिन 3 और पिन 4 लेबल किए गए हैं, और ऊष्मा स्रोत के रूप में स्पिरिट लैंप का प्रतिनिधित्व करता है।",
+          "critique": "The Hindi translation accurately reflects the English original in meaning, technical terms, and structure. All options and the solution are correctly translated, with the correct answer remaining in the same position. The distractors remain incorrect and distinct.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एक विद्यार्थी उष्णता वाहून नेण्यासाठी धातूच्या छडीचा वापर करतो आणि छडीवर बरोबर अंतरावर पिन्स ठेवतो, तर एका छडीच्या टोकाला उष्णता लावल्यास काय होईल?",
+          "choices": [
+            "सर्व पिन्स एकाच वेळी पडतील",
+            "उष्णता स्रोताजवळचे पिन्स प्रथम पडतील",
+            "उष्णता स्रोतापासून दूरचे पिन्स प्रथम पडतील",
+            "पिन्स कधीही पडणार नाहीत"
+          ],
+          "solution": "उष्णता छडीच्या उष्ण टोकापासून थंड टोकाकडे अंतर्गत वाहून नेली जाते. जेव्हा उष्णता छडीवर जाते, तेव्हा उष्णता स्रोताजवळचे पिन्स प्रथम वॉक्सच्या वितळन बिंदूला पोहोचतात, ज्यामुळे ते पडतात. उष्णता स्रोतापासून दूरचे पिन्स उष्णता मिळाल्यानंतर वॉक्स वितळण्यासाठी जास्त वेळ घेतात, त्यामुळे ते नंतर पडतात. सर्व पिन्स एकाच वेळी पडत नाहीत, आणि उष्णता स्रोतापासून दूरचे पिन्स प्रथम पडत नाहीत.",
+          "imageAlt": "एक चौकट चुंबक दर्शविणारा आकृती, ज्यावर पिन 1, पिन 2, पिन 3 आणि पिन 4 असे नावे आहेत, आणि उष्णता स्रोत दर्शविणारा स्पिरिट लॅम्प आहे.",
+          "critique": "The translation is accurate and maintains the scientific meaning. Technical terms like 'वॉक्स' (wax) and 'उष्णता' (heat) are correctly used.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": "A diagram showing a bar magnet with pins labeled Pin 1, Pin 2, Pin 3, and Pin 4, and a spirit lamp representing the heat source.",
+      "figure": {
+        "kind": "diagram",
+        "spec": {
+          "parts": [
+            {
+              "part": "barMagnet",
+              "x": 30,
+              "y": 30,
+              "size": 50,
+              "labels": [
+                "north",
+                "south"
+              ]
+            },
+            {
+              "part": "spiritLamp",
+              "x": 20,
+              "y": 30,
+              "size": 10,
+              "labels": [
+                "lamp",
+                "wick",
+                "flame"
+              ]
+            }
+          ]
+        },
+        "labels": {
+          "north": {
+            "en": "Pin 1",
+            "hi": "पिन 1",
+            "mr": "पिन 1"
+          },
+          "south": {
+            "en": "Pin 2",
+            "hi": "पिन 2",
+            "mr": "पिन 2"
+          },
+          "lamp": {
+            "en": "Candle",
+            "hi": "मोमबत्ती",
+            "mr": "मोमबत्ती"
+          },
+          "wick": {
+            "en": "Pin 3",
+            "hi": "पिन 3",
+            "mr": "पिन 3"
+          },
+          "flame": {
+            "en": "Pin 4",
+            "hi": "पिन 4",
+            "mr": "पिन 4"
+          }
+        }
+      },
+      "needsFigure": true,
+      "distractorReason": [
+        "Assumes heat spreads evenly and pins fall together",
+        null,
+        "Misunderstands the direction of heat transfer",
+        "Thinks that pins farther from heat source receive heat first"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is well-constructed. The correct answer is 1, as heat travels through conduction from the heat source, causing pins closer to the source to fall first. The distractors reflect common misconceptions about heat transfer.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu107.pdf",
+          "ordinal": 11,
+          "pageStart": 11,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 7: Heat Transfer in Nature",
+            "7.4 Water Cycle",
+            "7.4.1 Seepage of water beneath the",
+            "Earth"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu107.pdf",
+          "ordinal": 12,
+          "pageStart": 12,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 7: Heat Transfer in Nature",
+            "7.4 Water Cycle",
+            "7.4.1 Seepage of water beneath the",
+            "Earth"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu107.pdf",
+          "ordinal": 13,
+          "pageStart": 13,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 7: Heat Transfer in Nature",
+            "7.4 Water Cycle",
+            "7.4.1 Seepage of water beneath the",
+            "In a Nutshell"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T02:50:44.558Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Why does the water in a pan heat up more quickly near the bottom than at the top?",
+      "choices": [
+        "Because the bottom is closer to the heat source",
+        "Because of convection currents",
+        "Because of radiation",
+        "Because the top is insulated"
+      ],
+      "answerIndex": 1,
+      "solution": "The water in a pan heats up more quickly near the bottom because of convection currents. When water is heated, it becomes less dense and rises, while cooler, denser water sinks, creating a circulation pattern. This movement transfers heat throughout the water, causing the bottom to heat faster. Radiation and insulation are not the primary mechanisms for heat transfer in this situation, and being closer to the heat source does not fully explain the temperature difference.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक पात्र में पानी नीचे की तुलना में ऊपर अधिक तेजी से क्यों गर्म हो जाता है?",
+          "choices": [
+            "क्योंकि तल गर्मी स्रोत के करीब होता है",
+            "क्योंकि संवहन धाराएं होती हैं",
+            "क्योंकि विकिरण होता है",
+            "क्योंकि ऊपर ऊष्मारोध होता है"
+          ],
+          "solution": "एक पात्र में पानी नीचे की तुलना में ऊपर अधिक तेजी से गर्म हो जाता है क्योंकि संवहन धाराएं होती हैं। जब पानी को गर्म किया जाता है, तो यह कम घनत्व वाला हो जाता है और ऊपर उठ जाता है, जबकि ठंडा और अधिक घनत्व वाला पानी नीचे डूब जाता है, जिससे एक घूर्णन पैटर्न बनता है। इस गति के माध्यम से ऊष्मा पूरे पानी में स्थानांतरित हो जाती है, जिससे नीचे गर्म होने में तेजी आ जाती है। इस स्थिति में विकिरण और ऊष्मारोध मुख्य ऊष्मा स्थानांतरण के तरीके नहीं होते हैं, और गर्मी स्रोत के करीब होना पूरी तरह से तापमान अंतर की व्याख्या नहीं कर सकता।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English content, with appropriate technical terms like 'संवहन धाराएं' (convection currents) and 'ऊष्मारोध' (insulation) used as in standard Hindi science textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "पानमधील पाणी खाली वर वर जास्त वेगाने का गरम होते?",
+          "choices": [
+            "कारण खाली उष्णता स्रोतापासून जवळ आहे",
+            "कारण अंतर्निहित धारा",
+            "कारण विकिरण",
+            "कारण वरचा भाग अवाहक आहे"
+          ],
+          "solution": "पानमधील पाणी खाली जास्त वेगाने गरम होते कारण अंतर्निहित धारा. जेव्हा पाणी गरम होते तेव्हा ते कमी घनता असलेले होते आणि वर जाते, तर थंड आणि जास्त घनता असलेले पाणी खाली जाते, ज्यामुळे परिसंचरणाचा आदर्श तयार होतो. ही गती पाण्यातील उष्णता हस्तांतरित करते, ज्यामुळे खाली जास्त वेगाने गरम होते. या स्थितीत विकिरण आणि अवाहकता हे प्राथमिक उष्णता हस्तांतरणाचे यंत्रणा नाहीत, आणि उष्णता स्रोतापासून जवळ असणे हे तापमान फरकाचे पूर्ण स्पष्टीकरण नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses conduction with convection",
+        null,
+        "Student confuses heat transfer methods and thinks radiation causes direct heating at the bottom",
+        "Confuses radiation with convection"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 1 (convection currents), as the question involves heat transfer in a liquid, which primarily occurs through convection. The other options represent common misconceptions about heat transfer methods.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu107.pdf",
+          "ordinal": 8,
+          "pageStart": 8,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 7: Heat Transfer in Nature",
+            "7.3 Radiation"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu107.pdf",
+          "ordinal": 9,
+          "pageStart": 9,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 7: Heat Transfer in Nature",
+            "7.3 Radiation"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu107.pdf",
+          "ordinal": 10,
+          "pageStart": 10,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 7: Heat Transfer in Nature",
+            "7.4 Water Cycle"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T02:50:44.558Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "Where do ice cubes get heat from to melt into water?",
+      "choices": [
+        "From the air around them",
+        "From the dish they are placed on",
+        "From the water they are in",
+        "From the surroundings"
+      ],
+      "answerIndex": 3,
+      "solution": "Ice cubes absorb heat from their surroundings, which includes the air and the dish they are placed on, to melt into water. The correct answer is 'From the surroundings'. The other options are incorrect because they limit the source of heat to only one part of the surroundings.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "बर्फ के टुकड़े पानी में पिघलने के लिए ऊष्मा कहाँ से प्राप्त करते हैं?",
+          "choices": [
+            "आसपास के हवा से",
+            "उस प्लेट से जिस पर वे रखे जाते हैं",
+            "उस पानी से जिसमें वे होते हैं",
+            "आसपास के स्थान से"
+          ],
+          "solution": "बर्फ के टुकड़े अपने आसपास के स्थान से ऊष्मा अवशोषित करते हैं, जिसमें वायु और उस प्लेट शामिल है जिस पर वे रखे जाते हैं, जिससे वे पानी में पिघल जाते हैं। सही उत्तर 'आसपास के स्थान से' है। अन्य विकल्प गलत हैं क्योंकि वे ऊष्मा के स्रोत को केवल आसपास के एक हिस्से तक सीमित कर देते हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English question and solution, with appropriate terminology used in a Hindi-medium educational context.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "हिम चिकट्या पाण्यात बदलण्यासाठी ताप कुठून मिळतो?",
+          "choices": [
+            "त्यांच्या आजूबाजूच्या हवेपासून",
+            "त्यांना ठेवलेल्या प्लेटपासून",
+            "त्यांना ठेवलेल्या पाण्यापासून",
+            "आजूबाजूपासून"
+          ],
+          "solution": "हिम चिकट्या आजूबाजूपासून ताप शोषून घेतात, जे हवा आणि त्यांना ठेवलेल्या प्लेट यांचा समावेश करते, पाण्यात बदलण्यासाठी. योग्य उत्तर 'आजूबाजूपासून' आहे. इतर विकल्प खोटे आहेत कारण ते तापाच्या स्रोताला आजूबाजूच्या एका भागापर्यंत मर्यादित करतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology commonly found in textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Believes heat comes from the immediate environment rather than the surroundings",
+        "Student believes heat comes from the immediate object the ice is in contact with, not the surrounding environment.",
+        "Believes heat comes from the same substance it is part of",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct. Ice absorbs heat from its surroundings, which includes the air and the dish, making option 3 the best answer. The other options are incorrect because they limit the source of heat to only one part of the surroundings.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu107.pdf",
+          "ordinal": 14,
+          "pageStart": 15,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 7: Heat Transfer in Nature",
+            "7.4 Water Cycle",
+            "7.4.1 Seepage of water beneath the",
+            "Let Us Enhance Our Learning"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu107.pdf",
+          "ordinal": 15,
+          "pageStart": 16,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 7: Heat Transfer in Nature",
+            "7.4 Water Cycle",
+            "7.4.1 Seepage of water beneath the",
+            "Exploratory Projects"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T05:20:36.948Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is the main way heat is transferred in solids?",
+      "choices": [
+        "Conduction",
+        "Convection",
+        "Radiation",
+        "Reflection"
+      ],
+      "answerIndex": 0,
+      "solution": "Heat is mainly transferred in solids through conduction. This is because the particles in solids are tightly packed and can transfer heat through direct contact. The other options are incorrect because convection requires fluid movement and radiation does not require a medium.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "ठोस में ऊष्मा का मुख्य तरीका क्या है?",
+          "choices": [
+            "चालन",
+            "संवहन",
+            "विकिरण",
+            "परावर्तन"
+          ],
+          "solution": "ठोस में ऊष्मा का मुख्य तरीका चालन है। इसका कारण यह है कि ठोस में कण घनीभूत रूप से बंधे रहते हैं और सीधे संपर्क के माध्यम से ऊष्मा का संचरण कर सकते हैं। अन्य विकल्प गलत हैं क्योंकि संवहन में द्रव के गति की आवश्यकता होती है और विकिरण के लिए माध्यम की आवश्यकता नहीं होती।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, with appropriate technical terms used in Hindi. The structure and meaning match the original English question.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "ठोस माध्यमात ऊष्मा वाहतुकीचा मुख्य प्रकार कोणता आहे?",
+          "choices": [
+            "संवाहन",
+            "संवहन",
+            "विकिरण",
+            "प्रतिबिंब"
+          ],
+          "solution": "ठोस माध्यमात ऊष्मा मुख्यतः संवाहनाद्वारे पसरते. हे कारण ठोसांमधील कण संपूर्णपणे एकमेकांशी जोडलेले असतात आणि त्यांच्या सीधा संपर्काद्वारे ऊष्मा पसरू शकते. इतर विकल्प अयोग्य आहेत कारण संवहनास द्रवांच्या गतीची आवश्यकता असते आणि विकिरणाला माध्यमाची आवश्यकता नसते.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate technical terms as used in Marathi-medium science textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses conduction with convection",
+        "Confuses conduction with radiation",
+        "Confuses conduction with reflection"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-constructed and the solution is accurate. The correct answer is conduction, and the distractors reflect common misconceptions about heat transfer mechanisms.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu107.pdf",
+          "ordinal": 14,
+          "pageStart": 15,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 7: Heat Transfer in Nature",
+            "7.4 Water Cycle",
+            "7.4.1 Seepage of water beneath the",
+            "Let Us Enhance Our Learning"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu107.pdf",
+          "ordinal": 15,
+          "pageStart": 16,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 7: Heat Transfer in Nature",
+            "7.4 Water Cycle",
+            "7.4.1 Seepage of water beneath the",
+            "Exploratory Projects"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T05:20:36.948Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Why are cooking utensils generally made of metals?",
+      "choices": [
+        "They are light in weight",
+        "They are good conductors of heat",
+        "They are cheap",
+        "They are easy to clean"
+      ],
+      "answerIndex": 1,
+      "solution": "Metals are good conductors of heat, allowing them to transfer heat efficiently, which is essential for cooking. Other options like being light, cheap, or easy to clean are not related to the primary function of cooking utensils. The correct answer is based on the scientific property of heat conduction.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "रसोई के बर्तन आमतौर पर धातुओं से क्यों बनाए जाते हैं?",
+          "choices": [
+            "वे भारी होते हैं",
+            "वे ऊष्मा के अच्छे चालक होते हैं",
+            "वे सस्ते होते हैं",
+            "वे साफ करने में आसान होते हैं"
+          ],
+          "solution": "धातुएं ऊष्मा की अच्छी चालक होती हैं, जो ऊष्मा के प्रभावी अंतरण की अनुमति देती है, जो रसोई के लिए आवश्यक है। अन्य विकल्प जैसे हल्के होना, सस्ता होना या साफ करना आसान होना रसोई के बर्तन के मुख्य कार्य से संबंधित नहीं हैं। सही उत्तर ऊष्मा चालन के वैज्ञानिक गुण पर आधारित है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English question and solution, with appropriate technical terms like 'ऊष्मा के अच्छे चालक' (good conductors of heat) used in line with standard Hindi science terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "रसोईच्या वस्तू जास्तीत जास्त धातूंमधून का बनवल्या जातात?",
+          "choices": [
+            "त्या वजनाने हलक्या असतात",
+            "त्या ऊष्मा चांगल्या वाहक असतात",
+            "त्या स्वस्त असतात",
+            "त्या साफ करणे सोपे असते"
+          ],
+          "solution": "धातू ऊष्मा चांगल्या वाहक असतात, ज्यामुळे त्या ऊष्मा उत्तम रीतीने प्रसारित करू शकतात, जे रसोईसाठी आवश्यक आहे. इतर विकल्प जसे की हलके, स्वस्त किंवा साफ करणे सोपे असणे हे रसोईच्या वस्तूंच्या प्राथमिक कार्याशी संबंधित नाहीत. योग्य उत्तर ऊष्मा वाहकतेच्या वैज्ञानिक गुणधर्मावर आधारित आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms for 'good conductors of heat' and 'heat conduction'.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "focuses on weight, not heat transfer",
+        null,
+        "focuses on cost, not heat transfer",
+        "focuses on cleanliness, not heat transfer"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 1 because metals are good conductors of heat, which is essential for cooking. The other options are not related to heat transfer, which is the key concept in the question.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu107.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 7: Heat Transfer in Nature"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu107.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 7: Heat Transfer in Nature",
+            "7.1 Conduction of Heat"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu107.pdf",
+          "ordinal": 2,
+          "pageStart": 3,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 7: Heat Transfer in Nature",
+            "7.1 Conduction of Heat"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu107.pdf",
+          "ordinal": 3,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 7: Heat Transfer in Nature",
+            "7.1 Conduction of Heat"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T05:20:36.948Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If a student uses a wooden strip instead of a metal strip in the activity, what will happen to the pins?",
+      "choices": [
+        "All the pins will fall immediately",
+        "The pins will fall in the same order as with the metal strip",
+        "The pins will not fall at all",
+        "Only the first pin will fall"
+      ],
+      "answerIndex": 2,
+      "solution": "Wood is a poor conductor of heat, so it will not transfer the heat efficiently to the pins. This means the pins will not receive enough heat to fall. The other options suggest the pins will fall, which would only happen if heat were conducted effectively, as in a metal strip.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक छात्र गतिविधि में लकड़ी के टुकड़े के स्थान पर धातु के टुकड़े का उपयोग करता है, तो पिन क्या होगा?",
+          "choices": [
+            "सभी पिन तुरंत गिर जाएंगे",
+            "पिन धातु के टुकड़े के समान क्रम में गिरेंगे",
+            "पिन पूरी तरह से गिरेंगे नहीं",
+            "केवल पहला पिन गिरेगा"
+          ],
+          "solution": "लकड़ी ऊष्मा की खराब चालक है, इसलिए यह पिन तक ऊष्मा के प्रभावी रूप से संचारण के लिए नहीं होगी। इसका अर्थ है कि पिन को पर्याप्त ऊष्मा नहीं मिलेगी जो उन्हें गिरने के लिए पर्याप्त हो। अन्य विकल्प बताते हैं कि पिन गिरेंगे, जो केवल तभी होगा जब ऊष्मा के प्रभावी संचारण हो, जैसा कि धातु के टुकड़े में होता है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriately translated, and the correct answer remains in the same position.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका विद्यार्थीने वर्तमान चाकू बदली लाकडाच्या पट्टीचा वापर केला तर पिन्स काय होईल?",
+          "choices": [
+            "सर्व पिन्स तात्काळ पडतील",
+            "पिन्स लोखंडाच्या पट्टीसारख्या तयारीत पडतील",
+            "पिन्स कधीही पडणार नाहीत",
+            "मात्र पहिला पिनच पडेल"
+          ],
+          "solution": "लाकड उष्णतेचा खराब वाहक आहे, म्हणून ते उष्णता पिन्समध्ये असमायोजितपणे पाठवेल. हे अर्थ असा की पिन्सला पुरेसा उष्णता मिळणार नाही. इतर विकल्प पिन्स पडतील असे सूचित करतात, जे लोखंडाच्या पट्टीसारख्या उष्णता प्रसारासाठी घडेल.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "incorrectly assumes heat transfer occurs quickly",
+        "incorrectly assumes the same order of falling",
+        null,
+        "incorrectly assumes only the first pin is affected"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 2, as wood is a poor conductor of heat and would not allow the pins to fall. The reasoning in the solution is sound and matches the explanation provided.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu107.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 7: Heat Transfer in Nature"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu107.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 7: Heat Transfer in Nature",
+            "7.1 Conduction of Heat"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu107.pdf",
+          "ordinal": 2,
+          "pageStart": 3,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 7: Heat Transfer in Nature",
+            "7.1 Conduction of Heat"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu107.pdf",
+          "ordinal": 3,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 7: Heat Transfer in Nature",
+            "7.1 Conduction of Heat"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T05:20:36.948Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "Why do we feel more comfortable wearing light-colored clothes in summer?",
+      "choices": [
+        "They absorb more heat",
+        "They reflect more heat",
+        "They are cooler in color",
+        "They are lighter in weight"
+      ],
+      "answerIndex": 1,
+      "solution": "Light-colored clothes reflect more heat, which prevents the body from absorbing too much heat from the sun. This makes us feel more comfortable during summers. Dark-colored clothes absorb more heat, which is why they are preferred in winters.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "गर्मियों में हम लाल रंग के कपड़े पहनने से अधिक आरामदायक क्यों महसूस करते हैं?",
+          "choices": [
+            "वे अधिक गर्मी अवशोषित करते हैं",
+            "वे अधिक गर्मी परावर्तित करते हैं",
+            "वे रंग में ठंडे होते हैं",
+            "वे भारी वजन वाले होते हैं"
+          ],
+          "solution": "लाल रंग के कपड़े अधिक गर्मी परावर्तित करते हैं, जो शरीर के सूर्य से अधिक गर्मी अवशोषित करने से रोकता है। इससे गर्मियों में हम अधिक आरामदायक महसूस करते हैं। गहरे रंग के कपड़े अधिक गर्मी अवशोषित करते हैं, जिसके कारण उन्हें शीतकाल में पसंद किया जाता है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English question, with appropriate technical terms and correct answer placement.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "उन्हात रंगीत कपडे घालणे आम्हाला अधिक आरामदायक का वाटते?",
+          "choices": [
+            "ते जास्त उष्णता शोषतात",
+            "ते जास्त उष्णता परावर्तित करतात",
+            "त्यांचा रंग थंड असतो",
+            "ते भारी असतात"
+          ],
+          "solution": "रंगीत कपडे जास्त उष्णता परावर्तित करतात, जेणेकरून शरीर आकाशापासून जास्त उष्णता शोषू शकत नाही. हे उन्हाळ्यात आम्हाला अधिक आरामदायक वाटते. गडद रंगाच्या कपड्यांनी जास्त उष्णता शोषली जाते, ज्यामुळे ते शीतकाळात वापरले जातात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for heat absorption and reflection.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "confuses absorption with reflection",
+        null,
+        "Confuses the color's temperature with the actual thermal properties of the material",
+        "describes color without explaining the effect on heat"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 1, as light-colored clothes reflect more heat, reducing heat absorption. The distractors reflect common misconceptions about color and heat, which are valid and relevant.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu107.pdf",
+          "ordinal": 8,
+          "pageStart": 8,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 7: Heat Transfer in Nature",
+            "7.3 Radiation"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu107.pdf",
+          "ordinal": 9,
+          "pageStart": 9,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 7: Heat Transfer in Nature",
+            "7.3 Radiation"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu107.pdf",
+          "ordinal": 10,
+          "pageStart": 10,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 7: Heat Transfer in Nature",
+            "7.4 Water Cycle"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T05:20:36.948Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "What is the main reason that woollen clothes keep us warm in winter?",
+      "choices": [
+        "They absorb sunlight",
+        "They trap heat",
+        "They reflect heat",
+        "They release heat"
+      ],
+      "answerIndex": 1,
+      "solution": "Woollen clothes keep us warm because they trap heat, which is retained close to the body. This happens because the fibers in wool create tiny air pockets that act as insulators, preventing heat from escaping. Options like absorbing or reflecting heat are incorrect because wool does not actively interact with heat in those ways, and releasing heat would make us colder.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "शीतकाल में ऊनी कपड़े हमें गर्म क्यों रखते हैं?",
+          "choices": [
+            "वे सूर्य के प्रकाश को अवशोषित कर लेते हैं",
+            "वे ऊष्मा को बंद कर लेते हैं",
+            "वे ऊष्मा को परावर्तित कर देते हैं",
+            "वे ऊष्मा को छोड़ देते हैं"
+          ],
+          "solution": "ऊनी कपड़े हमें गर्म रखते हैं क्योंकि वे ऊष्मा को बंद कर लेते हैं, जो शरीर के पास बनी रहती है। ऊन के तंतु छोटे-छोटे हवा के बुलबुले बनाते हैं जो ऊष्मा के अपवर्तन को रोकते हैं। ऊष्मा के अवशोषण या परावर्तन के विकल्प गलत हैं क्योंकि ऊन ऊष्मा के साथ ऐसे व्यवहार नहीं करता है, और ऊष्मा के छोड़ने से हम ठंडे हो जाएंगे।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains original meaning, and uses appropriate Hindi technical terms.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "उन्हाळ्यात ऊन वस्त्रे आम्हाला गरम का ठेवतात?",
+          "choices": [
+            "ते सूर्यप्रकाश शोषतात",
+            "ते ऊष्मा अडवतात",
+            "ते ऊष्मा परावर्तित करतात",
+            "ते ऊष्मा सोडतात"
+          ],
+          "solution": "ऊन वस्त्रे आम्हाला गरम ठेवतात कारण ते ऊष्मा अडवतात, जी शरीराजवळ राहते. हे ऊनाच्या फाईबरमुळे होते जे छोटे वायू बुड्यांचे निर्माण करतात जे अवायु द्वारे ऊष्मा बाहेर पसरू देत नाहीत. सूर्यप्रकाश शोषणे किंवा ऊष्मा परावर्तित करणे अशा प्रकारे ऊन न करत असल्याने या विकल्प चुकीचे आहेत आणि ऊष्मा सोडणे आम्हाला थंड करेल.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms like 'ऊष्मा अडवतात' (trap heat) which align with standard Marathi science terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "incorrectly assumes absorption of sunlight",
+        null,
+        "incorrectly assumes reflection of heat",
+        "incorrectly assumes release of heat"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 1, as wool traps air, which is a poor conductor of heat, thus retaining body heat. The other options represent common misconceptions about heat transfer.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu107.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 7: Heat Transfer in Nature"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu107.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 7: Heat Transfer in Nature",
+            "7.1 Conduction of Heat"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu107.pdf",
+          "ordinal": 2,
+          "pageStart": 3,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 7: Heat Transfer in Nature",
+            "7.1 Conduction of Heat"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu107.pdf",
+          "ordinal": 3,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 7: Heat Transfer in Nature",
+            "7.1 Conduction of Heat"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T05:20:36.948Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "In the water cycle, which process involves the transformation of water from liquid to gas?",
+      "choices": [
+        "Condensation",
+        "Precipitation",
+        "Evaporation",
+        "Transpiration"
+      ],
+      "answerIndex": 2,
+      "solution": "Evaporation is the process where water changes from liquid to gas. In the water cycle, this happens when the Sun's heat causes water from oceans, lakes, and rivers to turn into water vapour. Transpiration is the evaporation of water from plants, but the question specifically refers to the transformation of water from liquid to gas, making evaporation the correct answer.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "जल चक्र में, कौन सी प्रक्रिया जल के तरल से गैस में रूपांतरण को दर्शाती है?",
+          "choices": [
+            "संघनन",
+            "अवक्षेपण",
+            "वाष्पीकरण",
+            "वाष्पोत्सर्जन"
+          ],
+          "solution": "वाष्पीकरण वह प्रक्रिया है जिसमें जल तरल से गैस में बदल जाता है। जल चक्र में, यह तब होता है जब सूर्य की गर्मी के कारण समुद्र, झील और नदियों के जल के जल वाष्प में बदल जाता है। वाष्पोत्सर्जन पौधों से जल के वाष्पीकरण को कहते हैं, लेकिन प्रश्न विशेष रूप से जल के तरल से गैस में रूपांतरण के बारे में बताता है, जिसके कारण वाष्पीकरण सही उत्तर है।",
+          "imageAlt": "जल चक्र का एक आरेख जिसमें वाष्पीकरण, संघनन और अवक्षेपण के लेबल हैं।",
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses standard scientific terminology as taught in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जल चक्रात, पाणी द्रवापासून वायूमध्ये रूपांतरित होण्याच्या प्रक्रियेचे नाव काय?",
+          "choices": [
+            "घनीकरण",
+            "वृष्टीपात",
+            "वाष्पीकरण",
+            "वाष्पोत्सर्जन"
+          ],
+          "solution": "वाष्पीकरण ही प्रक्रिया आहे जेथे पाणी द्रवापासून वायूमध्ये बदलते. जल चक्रात, हे सूर्याच्या उष्णतेमुळे विसर्जित होते जेव्हा समुद्र, तलाव आणि नद्यांमधील पाणी जल वाष्पामध्ये बदलते. वाष्पोत्सर्जन हे वनस्पतींमधून पाणी वाष्पीकरण आहे, परंतु प्रश्न विशिष्टपणे पाणी द्रवापासून वायूमध्ये रूपांतरित होण्याच्या प्रक्रियेबद्दल बोलत असल्याने वाष्पीकरण हे योग्य उत्तर आहे.",
+          "imageAlt": "जल चक्राचा आकृतिमय आकृती ज्यामध्ये वाष्पीकरण, घनीकरण आणि वृष्टीपात यांचे निर्देश आहेत.",
+          "critique": "The translation is accurate and maintains the scientific terminology appropriate for a Marathi-medium curriculum.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": "A diagram of the water cycle with labels for evaporation, condensation, and precipitation.",
+      "figure": {
+        "kind": "diagram",
+        "spec": {
+          "parts": [
+            {
+              "part": "waterCycle",
+              "x": 50,
+              "y": 30,
+              "size": 40,
+              "labels": [
+                "sun",
+                "evaporation",
+                "condensation",
+                "precipitation"
+              ],
+              "text": {
+                "evaporation": "evaporation",
+                "condensation": "condensation",
+                "precipitation": "precipitation"
+              }
+            }
+          ]
+        },
+        "labels": {
+          "sun": {
+            "en": "Sun",
+            "hi": "सूर्य",
+            "mr": "सूर्य"
+          },
+          "evaporation": {
+            "en": "Evaporation",
+            "hi": "वाष्पीकरण",
+            "mr": "वाष्पीकरण"
+          },
+          "condensation": {
+            "en": "Condensation",
+            "hi": "संघनन",
+            "mr": "घनीकरण"
+          },
+          "precipitation": {
+            "en": "Precipitation",
+            "hi": "अवक्षेपण",
+            "mr": "वृष्टीपात"
+          }
+        }
+      },
+      "needsFigure": true,
+      "distractorReason": [
+        "Confuses evaporation with condensation, which is the reverse process.",
+        "Confuses evaporation with precipitation, which is the result of condensation.",
+        null,
+        "Includes transpiration, which is a related but different process."
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is clear and the correct answer is evaporation (option 2). The author's reasoning is accurate and the distractors are based on common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu107.pdf",
+          "ordinal": 8,
+          "pageStart": 8,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 7: Heat Transfer in Nature",
+            "7.3 Radiation"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu107.pdf",
+          "ordinal": 9,
+          "pageStart": 9,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 7: Heat Transfer in Nature",
+            "7.3 Radiation"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu107.pdf",
+          "ordinal": 10,
+          "pageStart": 10,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 7: Heat Transfer in Nature",
+            "7.4 Water Cycle"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T05:20:36.948Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "A student places a metal pan on a hot stove and then touches the handle. The handle becomes hot. What is the main reason for this?",
+      "choices": [
+        "Conduction",
+        "Convection",
+        "Radiation",
+        "Conduction and radiation"
+      ],
+      "answerIndex": 0,
+      "solution": "The main reason the handle becomes hot is conduction. Heat from the stove is transferred through the metal pan by conduction, as metal is a good conductor of heat. This heat then moves through the pan to the handle, making it hot. Radiation and convection are not the main causes in this scenario.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक छात्र एक धातु के तवे को एक गर्म चुलहर पर रखता है और फिर हैंडल को छूता है। हैंडल गर्म हो जाता है। इसका मुख्य कारण क्या है?",
+          "choices": [
+            "चालन",
+            "संवहन",
+            "विकिरण",
+            "चालन और विकिरण"
+          ],
+          "solution": "हैंडल गर्म होने का मुख्य कारण चालन है। चुलहर से ऊष्मा धातु के तवे द्वारा चालन द्वारा स्थानांतरित होती है, क्योंकि धातु ऊष्मा का अच्छा चालक है। इस ऊष्मा के तवे से हैंडल तक जाने के कारण हैंडल गर्म हो जाता है। इस परिदृश्य में विकिरण और संवहन मुख्य कारण नहीं हैं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains the original meaning, and uses standard Hindi scientific terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका विद्यार्थीने एका गरम चूलीवर धातूचा पॅन ठेवतो आणि नंतर त्याच्या हाताच्या भागाला स्पर्श करतो. हाताचा भाग गरम होतो. हे का होते याचे मुख्य कारण काय आहे?",
+          "choices": [
+            "संवाहन",
+            "संवाहकता",
+            "विकिरण",
+            "संवाहन आणि विकिरण"
+          ],
+          "solution": "हाताचा भाग गरम होण्याचे मुख्य कारण संवाहन आहे. चूलीमार्फत उष्णता धातूच्या पॅनमार्फत संवाहनाद्वारे पसरते, कारण धातू उष्णतेचा चांगला वाहक आहे. या उष्णतेमुळे पॅनमार्फत हाताच्या भागापर्यंत पोहोचते आणि तो गरम होतो. या परिस्थितीत विकिरण आणि संवाहकता मुख्य कारण नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi scientific terminology used.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Student confuses heat transfer through a solid with heat transfer through fluids",
+        "Confuses conduction with convection, which involves the movement of particles.",
+        "Includes radiation, which does not play a major role in this direct heat transfer."
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies conduction as the primary method of heat transfer in this scenario. The reasoning aligns with the physical properties of metals as conductors of heat.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu107.pdf",
+          "ordinal": 8,
+          "pageStart": 8,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 7: Heat Transfer in Nature",
+            "7.3 Radiation"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu107.pdf",
+          "ordinal": 9,
+          "pageStart": 9,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 7: Heat Transfer in Nature",
+            "7.3 Radiation"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu107.pdf",
+          "ordinal": 10,
+          "pageStart": 10,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 7: Heat Transfer in Nature",
+            "7.4 Water Cycle"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T05:20:36.948Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Why are hollow bricks used in houses in hot or cold climates?",
+      "choices": [
+        "They are cheaper",
+        "They allow heat to escape easily",
+        "They trap air which is a poor conductor",
+        "They are more durable"
+      ],
+      "answerIndex": 2,
+      "solution": "Hollow bricks trap air, which is a poor conductor of heat, helping to insulate the house and maintain a stable temperature. This makes them effective in both hot and cold climates. The other options, such as being cheaper or more durable, are not related to the thermal properties that make hollow bricks useful for insulation.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "गर्म या ठंडे जलवायु में घरों में खोखली ईंटें क्यों उपयोग की जाती हैं?",
+          "choices": [
+            "वे सस्ती होती हैं",
+            "वे गर्मी को आसानी से बाहर निकालती हैं",
+            "वे हवा को फंसा लेती हैं जो एक खराब चालक होता है",
+            "वे अधिक टिकाऊ होती हैं"
+          ],
+          "solution": "खोखली ईंटें हवा को फंसा लेती हैं जो ऊष्मा का खराब चालक होता है, जो घर को ऊष्मा के बाहर रखता है और स्थिर तापमान बनाए रखता है। इस कारण वे गर्म और ठंडे जलवायु में दोनों के लिए प्रभावी होती हैं। अन्य विकल्प, जैसे कि सस्ती या अधिक टिकाऊ होना, खोखली ईंटों के ऊष्मा अलगाव के गुणों से संबंधित नहीं हैं।",
+          "imageAlt": null,
+          "critique": "Translation accurately reflects the original meaning with appropriate technical terms in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "उष्ण किंवा थंड वातावरणातील घरांमध्ये खोल इट्स का वापरल्या जातात?",
+          "choices": [
+            "त्या स्वस्त असतात",
+            "त्या उष्णता जास्तीत जास्त बाहेर पसरवतात",
+            "त्यांमध्ये वायू असतो जो खराब वाहक असतो",
+            "त्या अधिक टिकाऊ असतात"
+          ],
+          "solution": "खोल इट्स वायू असतो, जो उष्णतेचा खराब वाहक असतो, ज्यामुळे घराचे तापमान स्थिर राखण्यास मदत होते. हे उष्ण आणि थंड वातावरणात दोन्ही ठिकाणी उपयुक्त असते. इतर विकल्प, जसे की स्वस्त किंवा अधिक टिकाऊ असणे, खोल इट्स उष्णता अलग करण्यासाठी उपयुक्त असल्याच्या तापमान गुणधर्मांशी संबंधित नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms like 'वायू' (air) and 'खराब वाहक' (poor conductor).",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "focuses on cost, not heat transfer",
+        "incorrectly assumes heat escape",
+        null,
+        "focuses on durability, not heat transfer"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 2, as hollow bricks trap air, which is a poor conductor of heat, making them effective for insulation. The other options are unrelated to heat transfer.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu107.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 7: Heat Transfer in Nature"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu107.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 7: Heat Transfer in Nature",
+            "7.1 Conduction of Heat"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu107.pdf",
+          "ordinal": 2,
+          "pageStart": 3,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 7: Heat Transfer in Nature",
+            "7.1 Conduction of Heat"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu107.pdf",
+          "ordinal": 3,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 7: Heat Transfer in Nature",
+            "7.1 Conduction of Heat"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T05:20:36.948Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
     }
   ]
 }

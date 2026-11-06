@@ -1064,6 +1064,1251 @@
       "generatedAt": "2026-10-29T01:19:38.654Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is the term used to describe the rotating vector that represents the amplitude and phase of an alternating current or voltage?",
+      "choices": [
+        "Vector",
+        "Phasor",
+        "Magnitude",
+        "Amplitude"
+      ],
+      "answerIndex": 1,
+      "solution": "The term used to describe the rotating vector that represents the amplitude and phase of an alternating current or voltage is 'phasor'. A phasor is a vector that rotates with angular frequency, capturing both the magnitude and phase of the signal. The other options do not refer to this specific concept; 'vector' is too general, 'magnitude' refers only to size, and 'amplitude' refers only to the maximum value.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक प्रत्यावर्ती धारा या वोल्टता के आयाम और कला का प्रतिनिधित्व करने वाले घूमते हुए सदिश के लिए उपयोग किया जाने वाला शब्द क्या है?",
+          "choices": [
+            "सदिश",
+            "फेजर",
+            "आयाम",
+            "आवेश"
+          ],
+          "solution": "एक प्रत्यावर्ती धारा या वोल्टता के आयाम और कला का प्रतिनिधित्व करने वाले घूमते हुए सदिश के लिए उपयोग किया जाने वाला शब्द 'फेजर' है। एक फेजर एक सदिश होता है जो कोणीय आवृत्ति के साथ घूमता है, जो संकेत के आयाम और कला दोनों को दर्शाता है। अन्य विकल्प इस विशिष्ट अवधारणा के लिए संदर्भ नहीं होते हैं; 'सदिश' बहुत सामान्य है, 'आयाम' केवल आकार के लिए होता है, और 'आवेश' केवल अधिकतम मान के लिए होता है।",
+          "imageAlt": null,
+          "critique": "Hindi translation accurately reflects the English original in meaning, technical terms, and answer position. 'फेजर' is the correct technical term used in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका विद्युत धारा किंवा विद्युत विभवाच्या क्षमता आणि फेझ दर्शविणारा घुमता वेक्टर म्हणून ओळखला जाणारा शब्द काय आहे?",
+          "choices": [
+            "वेक्टर",
+            "फेझर",
+            "मॅग्निट्यूड",
+            "अम्प्लिट्यूड"
+          ],
+          "solution": "एका विद्युत धारा किंवा विद्युत विभवाच्या क्षमता आणि फेझ दर्शविणारा घुमता वेक्टर म्हणून ओळखला जाणारा शब्द 'फेझर' आहे. एका फेझर हा घुमता वेक्टर आहे जो कोनीय वेगाने घुमतो आहे, जो चिन्हाच्या विस्तार आणि फेझ दोन्ही दर्शवतो. इतर विकल्प या विशिष्ट संकल्पनेला संबोधित करत नाहीत; 'वेक्टर' खूप व्यापक आहे, 'मॅग्निट्यूड' मात्र आकाराला संबोधित करतो आणि 'अम्प्लिट्यूड' मात्र अधिकतम मूल्याला संबोधित करतो.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, with appropriate Marathi technical terms used (e.g., 'फेझर' for 'phasor'). The structure and meaning match the original English question.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "General term for any vector",
+        null,
+        "Incorrect term for the concept",
+        "Incorrectly refers to the amplitude of the wave"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-posed and the correct answer is clearly 'phasor'. The distractors are plausible but incorrect, and the author's reasoning for why they are wrong aligns with common student misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/12/physics/leph107.pdf",
+          "ordinal": 4,
+          "pageStart": 5,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 7: Alternating Current",
+            "7.3",
+            "AC C"
+          ]
+        },
+        {
+          "document": "ncert/12/physics/leph107.pdf",
+          "ordinal": 5,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 7: Alternating Current",
+            "7.4 AC V"
+          ]
+        },
+        {
+          "document": "ncert/12/physics/leph107.pdf",
+          "ordinal": 6,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 7: Alternating Current",
+            "7.4 AC V"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T13:28:30.005Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is the term used to describe a vector that rotates about the origin with angular speed and represents the sinusoidally varying quantities in an AC circuit?",
+      "choices": [
+        "Phasor",
+        "Vector",
+        "Rotator",
+        "Magnitude"
+      ],
+      "answerIndex": 0,
+      "solution": "A phasor is a vector that rotates about the origin with angular speed and is used to represent sinusoidally varying quantities in AC circuits. A vector is a general term for a directed quantity, not specifically related to AC circuits. A rotator is not a standard term in this context. Magnitude refers to the size of a quantity, not a rotating vector.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एसी परिपथ में बदलती हुई ज्यावक्रीय मात्राओं का प्रतिनिधित्व करने वाले मूल बिंदु के चारों ओर कोणीय गति के साथ घूमने वाले सदिश के लिए उपयोग किया जाने वाला शब्द क्या है?",
+          "choices": [
+            "फेजर",
+            "सदिश",
+            "घूर्णक",
+            "आकार"
+          ],
+          "solution": "एक फेजर मूल बिंदु के चारों ओर कोणीय गति के साथ घूमने वाला एक सदिश है जिसका उपयोग एसी परिपथ में बदलती हुई ज्यावक्रीय मात्राओं का प्रतिनिधित्व करने के लिए किया जाता है। सदिश एक दिशात्मक मात्रा के लिए सामान्य शब्द है, जो विशेष रूप से एसी परिपथ से संबंधित नहीं है। घूर्णक इस संदर्भ में मानक शब्द नहीं है। आकार किसी मात्रा के आकार को संदर्भित करता है, एक घूमने वाले सदिश को नहीं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate technical terms in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "ए.सी. परिपथातील जास्तीत जास्त बदलणाऱ्या राशींचे वर्णन करण्यासाठी मूळाभोवती कोनीय वेगाने फिरणाऱ्या वेक्टरचा वापर केला जातो, त्यास काय म्हणतात?",
+          "choices": [
+            "फेझर",
+            "वेक्टर",
+            "रोटेटर",
+            "मॅग्निट्यूड"
+          ],
+          "solution": "एक फेझर मूळाभोवती कोनीय वेगाने फिरणाऱ्या वेक्टर आहे आणि ए.सी. परिपथातील जास्तीत जास्त बदलणाऱ्या राशींचे वर्णन करण्यासाठी वापरला जातो. वेक्टर हा एक सामान्य शब्द आहे, जो विशिष्टरीत्या ए.सी. परिपथाशी संबंधित नाही. रोटेटर हा या संदर्भात एक मानक शब्द नाही. मॅग्निट्यूड हा राशीच्या मोठेपणाचा दिशाहीन विचार आहे, जो फिरत नसलेल्या वेक्टरशी संबंधित नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate technical terms in Marathi.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses phasor with general vector",
+        "Does not understand the specific term for rotating vector",
+        "Does not know the correct terminology"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-constructed and the correct answer is clearly 0. The reasoning for the distractors aligns with common student misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/12/physics/leph107.pdf",
+          "ordinal": 4,
+          "pageStart": 5,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 7: Alternating Current",
+            "7.3",
+            "AC C"
+          ]
+        },
+        {
+          "document": "ncert/12/physics/leph107.pdf",
+          "ordinal": 5,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 7: Alternating Current",
+            "7.4 AC V"
+          ]
+        },
+        {
+          "document": "ncert/12/physics/leph107.pdf",
+          "ordinal": 6,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 7: Alternating Current",
+            "7.4 AC V"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T13:28:30.005Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "In an AC circuit, what happens to the power dissipated in a purely inductive or capacitive circuit?",
+      "choices": [
+        "It is maximum",
+        "It is zero",
+        "It is equal to the source voltage",
+        "It is equal to the current"
+      ],
+      "answerIndex": 1,
+      "solution": "In a purely inductive or capacitive circuit, the power dissipated is zero because the phase difference between the voltage and current is 90 degrees, making the cosine of the phase angle zero. This results in no real power being dissipated. The other options are incorrect because they do not account for the phase difference.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक ए.सी. परिपथ में, शुद्ध प्रेरक या संधारित्र परिपथ में शक्ति के विसर्जन के साथ क्या होता है?",
+          "choices": [
+            "यह अधिकतम होता है",
+            "यह शून्य होता है",
+            "यह स्रोत वोल्टता के बराबर होता है",
+            "यह धारा के बराबर होता है"
+          ],
+          "solution": "शुद्ध प्रेरक या संधारित्र परिपथ में शक्ति के विसर्जन शून्य होता है क्योंकि वोल्टता और धारा के बीच कला अंतर 90 डिग्री होता है, जिसके कारण कला कोण के कोसाइन शून्य हो जाता है। इससे वास्तविक शक्ति के विसर्जन का कोई अंश नहीं होता। अन्य विकल्प गलत हैं क्योंकि वे कला अंतर की गणना नहीं करते।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms as used in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "ए.सी. परिपथात, शुद्ध प्रेरक किंवा संधारित्र वापरल्यास शक्तीचा विखराव काय होतो?",
+          "choices": [
+            "ती अधिकतम असते",
+            "ती शून्य असते",
+            "ती स्रोत विद्युत विभवाइतक असते",
+            "ती विद्युत प्रवाहाइतक असते"
+          ],
+          "solution": "शुद्ध प्रेरक किंवा संधारित्र वापरल्यास शक्तीचा विखराव शून्य असतो कारण विद्युत विभव आणि विद्युत प्रवाह यांच्यातील फेझ फरक 90 अंश असतो, ज्यामुळे फेझ कोनाचा कोसाइन शून्य होतो. यामुळे खरी शक्ती विखरली जात नाही. इतर विकल्प अयोग्य असतात कारण ते फेझ फरकाचा विचार करत नाहीत.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the original meaning, and uses appropriate technical terms as used in Marathi textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Assumes maximum power is dissipated, which is incorrect for purely reactive components.",
+        null,
+        "Misunderstands the concept of power dissipation in reactive circuits.",
+        "Confuses power dissipation with voltage or current values."
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly identifies that in a purely inductive or capacitive circuit, the power dissipated is zero due to a 90-degree phase difference between voltage and current. The reasoning aligns with standard AC circuit theory.",
+      "sources": [
+        {
+          "document": "ncert/12/physics/leph107.pdf",
+          "ordinal": 13,
+          "pageStart": 13,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 7: Alternating Current",
+            "7.7",
+            "AC C"
+          ]
+        },
+        {
+          "document": "ncert/12/physics/leph107.pdf",
+          "ordinal": 14,
+          "pageStart": 15,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 7: Alternating Current",
+            "7.7",
+            "AC C"
+          ]
+        },
+        {
+          "document": "ncert/12/physics/leph107.pdf",
+          "ordinal": 15,
+          "pageStart": 16,
+          "pageEnd": 17,
+          "headingPath": [
+            "Chapter 7: Alternating Current",
+            "7.7",
+            "AC C"
+          ]
+        },
+        {
+          "document": "ncert/12/physics/leph107.pdf",
+          "ordinal": 16,
+          "pageStart": 17,
+          "pageEnd": 17,
+          "headingPath": [
+            "Chapter 7: Alternating Current",
+            "7.7",
+            "AC C"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T13:28:30.005Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the term used for the effective value of an alternating current?",
+      "choices": [
+        "Amplitude",
+        "Peak value",
+        "RMS value",
+        "Average value"
+      ],
+      "answerIndex": 2,
+      "solution": "The term used for the effective value of an alternating current is RMS value. This is because the RMS value is the equivalent direct current value that would produce the same heating effect. Amplitude is the maximum value of the current, peak value is the same as amplitude, and average value is not used for effective comparison.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "प्रत्यावर्ती धारा के प्रभावी मान के लिए उपयोग किए जाने वाले शब्द क्या है?",
+          "choices": [
+            "आयाम",
+            "शीर्ष मान",
+            "आरएमएस मान",
+            "औसत मान"
+          ],
+          "solution": "प्रत्यावर्ती धारा के प्रभावी मान के लिए उपयोग किए जाने वाला शब्द आरएमएस मान है। इसका कारण यह है कि आरएमएस मान वह समान दिष्ट धारा मान है जो समान तापन प्रभाव उत्पन्न कर सकती है। आयाम धारा के अधिकतम मान के लिए होता है, शीर्ष मान आयाम के समान होता है और औसत मान प्रभावी तुलना के लिए उपयोग नहीं किया जाता है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the technical terminology used in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका प्रतिक्रमण विद्युत प्रवाहाच्या प्रभावी मूल्यासाठी वापरलेला शब्द काय आहे?",
+          "choices": [
+            "आयाम",
+            "शिखर मूल्य",
+            "आरएमएस मूल्य",
+            "सरासरी मूल्य"
+          ],
+          "solution": "प्रतिक्रमण विद्युत प्रवाहाच्या प्रभावी मूल्यासाठी वापरलेला शब्द आरएमएस मूल्य आहे. हे कारण आरएमएस मूल्य हे त्याच उष्णता प्रभाव उत्पन्न करणारे दिष्ट विद्युत प्रवाहाचे तुल्य मूल्य आहे. आयाम हे प्रवाहाचे अधिकतम मूल्य आहे, शिखर मूल्य हे आयामासारखेच आहे आणि सरासरी मूल्य हे प्रभावी तुलनेसाठी वापरले जात नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses amplitude with effective value",
+        "Uses the term peak value instead of RMS value",
+        null,
+        "Does not understand the concept of effective value in AC circuits"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct and aligns with the key. The RMS value is indeed the effective value of an AC current, and the explanations for the distractors are valid misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/12/physics/leph107.pdf",
+          "ordinal": 20,
+          "pageStart": 20,
+          "pageEnd": 22,
+          "headingPath": [
+            "Chapter 7: Alternating Current",
+            "7.8"
+          ]
+        },
+        {
+          "document": "ncert/12/physics/leph107.pdf",
+          "ordinal": 21,
+          "pageStart": 22,
+          "pageEnd": 23,
+          "headingPath": [
+            "Chapter 7: Alternating Current",
+            "7.8"
+          ]
+        },
+        {
+          "document": "ncert/12/physics/leph107.pdf",
+          "ordinal": 22,
+          "pageStart": 23,
+          "pageEnd": 23,
+          "headingPath": [
+            "Chapter 7: Alternating Current",
+            "7.8"
+          ]
+        },
+        {
+          "document": "ncert/12/physics/leph107.pdf",
+          "ordinal": 23,
+          "pageStart": 24,
+          "pageEnd": 24,
+          "headingPath": [
+            "Chapter 7: Alternating Current",
+            "7.8",
+            "EXERCISES"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T13:28:30.005Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the unit of capacitive reactance?",
+      "choices": [
+        "Ohm",
+        "Ampere",
+        "Volt",
+        "Farad"
+      ],
+      "answerIndex": 0,
+      "solution": "Capacitive reactance is a measure of opposition to alternating current, and like resistance, it is measured in ohms. Ampere is the unit of current, volt is the unit of electric potential, and farad is the unit of capacitance. Therefore, the correct unit is ohm.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "कैपैसिटिव प्रतिघात की इकाई क्या है?",
+          "choices": [
+            "ओम",
+            "एम्पियर",
+            "वोल्ट",
+            "फैराड"
+          ],
+          "solution": "कैपैसिटिव प्रतिघात एल्टरनेटिंग करंट के प्रतिरोध का माप है, और प्रतिरोध के समान इसकी इकाई ओम में मापी जाती है। एम्पियर धारा की इकाई है, वोल्ट विद्युत विभव की इकाई है, और फैराड कैपैसिटेंस की इकाई है। इसलिए सही इकाई ओम है।",
+          "imageAlt": null,
+          "critique": "All terms are standard Hindi equivalents used in Indian textbooks. The translation is accurate and maintains the original meaning and structure.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "कॅपॅसिटिव्ह प्रतिकाराची एकक कोणती आहे?",
+          "choices": [
+            "ओहम",
+            "अम्पिअर",
+            "व्हॉल्ट",
+            "फॅरड"
+          ],
+          "solution": "कॅपॅसिटिव्ह प्रतिकार हा वैयक्तिक विद्युत प्रवाहाच्या प्रतिबंधाचा मोजमाप आहे, आणि प्रतिरोधाप्रमाणे तो ओहममध्ये मोजला जातो. अम्पिअर हा विद्युत धारेचे एकक आहे, व्हॉल्ट हा विद्युत विभवाचे एकक आहे, आणि फॅरड हा कॅपॅसिटन्सचे एकक आहे. म्हणून, योग्य एकक ओहम आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Marathi technical terms for electrical concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Incorrectly assumes the unit is ampere, which is the unit of current",
+        "Incorrectly assumes the unit is volt, which is the unit of voltage",
+        "Incorrectly assumes the unit is farad, which is the unit of capacitance"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-constructed. The correct answer is 'Ohm' and the reasoning is sound. The distractors are common misconceptions related to units of current, voltage, and capacitance.",
+      "sources": [
+        {
+          "document": "ncert/12/physics/leph107.pdf",
+          "ordinal": 7,
+          "pageStart": 7,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 7: Alternating Current",
+            "7.4 AC V",
+            "AC V"
+          ]
+        },
+        {
+          "document": "ncert/12/physics/leph107.pdf",
+          "ordinal": 8,
+          "pageStart": 9,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 7: Alternating Current",
+            "7.4 AC V",
+            "AC V"
+          ]
+        },
+        {
+          "document": "ncert/12/physics/leph107.pdf",
+          "ordinal": 9,
+          "pageStart": 10,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 7: Alternating Current",
+            "7.6 AC V",
+            "LCR C"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T13:28:30.005Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If the frequency of the AC source is doubled, what happens to the capacitive reactance?",
+      "choices": [
+        "It is doubled",
+        "It is halved",
+        "It becomes infinite",
+        "It becomes zero"
+      ],
+      "answerIndex": 1,
+      "solution": "Capacitive reactance is inversely proportional to frequency, so when the frequency is doubled, the reactance is halved. Doubling the frequency does not double the reactance, nor does it make it infinite or zero, as those outcomes do not align with the inverse relationship between frequency and capacitive reactance.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि AC स्रोत की आवृत्ति दुगुनी कर दी जाए, तो धारिता प्रतिरोध पर क्या प्रभाव पड़ता है?",
+          "choices": [
+            "यह दुगुना हो जाता है",
+            "यह आधा हो जाता है",
+            "यह अनंत हो जाता है",
+            "यह शून्य हो जाता है"
+          ],
+          "solution": "धारिता प्रतिरोध आवृत्ति के व्युत्क्रमानुपाती होता है, अतः जब आवृत्ति दुगुनी कर दी जाती है, तो प्रतिरोध आधा हो जाता है। आवृत्ति को दुगुना करने से प्रतिरोध को दुगुना नहीं किया जाता है, न ही इसे अनंत या शून्य बना दिया जाता है, क्योंकि ये परिणाम आवृत्ति और धारिता प्रतिरोध के व्युत्क्रमानुपाती संबंध के साथ मेल नहीं खाते हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms as found in Hindi-medium physics textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर ए.सी. स्रोताची वारंवारता दुप्पट केली गेली तर धारिता प्रतिकार काय होतो?",
+          "choices": [
+            "तो दुप्पट होतो",
+            "तो अर्धा होतो",
+            "तो अनंत होतो",
+            "तो शून्य होतो"
+          ],
+          "solution": "धारिता प्रतिकार वारंवारतेच्या व्यस्त प्रमाणात असतो, म्हणून जेव्हा वारंवारता दुप्पट केली जाते तेव्हा प्रतिकार अर्धा होतो. वारंवारता दुप्पट करणे प्रतिकार दुप्पट करत नाही, नाहीच तो अनंत किंवा शून्य होतो, कारण ते वारंवारता आणि धारिता प्रतिकार यांच्या व्यस्त संबंधाशी जुळत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Incorrectly assumes that capacitive reactance increases with frequency",
+        null,
+        "student confuses capacitive reactance with impedance or thinks it increases without bound as frequency increases",
+        "Incorrectly assumes that capacitive reactance remains constant with frequency changes"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly identifies that capacitive reactance is inversely proportional to frequency, and thus halving it when frequency is doubled. The reasoning for the wrong options aligns with common student misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/12/physics/leph107.pdf",
+          "ordinal": 7,
+          "pageStart": 7,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 7: Alternating Current",
+            "7.4 AC V",
+            "AC V"
+          ]
+        },
+        {
+          "document": "ncert/12/physics/leph107.pdf",
+          "ordinal": 8,
+          "pageStart": 9,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 7: Alternating Current",
+            "7.4 AC V",
+            "AC V"
+          ]
+        },
+        {
+          "document": "ncert/12/physics/leph107.pdf",
+          "ordinal": 9,
+          "pageStart": 10,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 7: Alternating Current",
+            "7.6 AC V",
+            "LCR C"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T13:28:30.005Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "What is the average power dissipated in a purely capacitive AC circuit?",
+      "choices": [
+        "Zero",
+        "Maximum",
+        "Minimum",
+        "Depends on frequency"
+      ],
+      "answerIndex": 0,
+      "solution": "In a purely capacitive circuit, the phase difference between voltage and current is 90 degrees, so the power factor is zero. Therefore, the average power dissipated is zero. The option 'Maximum' is for a resistive circuit. The option 'Minimum' is incorrect. The option 'Depends on frequency' is not the correct answer for average power.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक शुद्ध धारिता AC परिपथ में औसत शक्ति क्षय क्या है?",
+          "choices": [
+            "शून्य",
+            "अधिकतम",
+            "न्यूनतम",
+            "आवृत्ति पर निर्भर करता है"
+          ],
+          "solution": "शुद्ध धारिता परिपथ में वोल्टता एवं धारा के बीच कलांतर 90 डिग्री होता है, अतः शक्ति गुणांक शून्य होता है। इसलिए औसत शक्ति क्षय शून्य होती है। विकल्प 'अधिकतम' प्रतिरोधी परिपथ के लिए है। विकल्प 'न्यूनतम' गलत है। विकल्प 'आवृत्ति पर निर्भर करता है' औसत शक्ति के लिए सही उत्तर नहीं है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms as found in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एक शुद्ध धारिता AC परिपथात किती ओसत क्षमता निर्गत होते?",
+          "choices": [
+            "शून्य",
+            "महामान",
+            "न्यूनतम",
+            "आवृत्तीवर अवलंबून असते"
+          ],
+          "solution": "शुद्ध धारिता परिपथात वोल्टेज आणि विद्युतप्रवाह दरम्यानचा टक्कर 90 अंश असतो, म्हणून शक्ती घटक शून्य असतो. त्यामुळे ओसत क्षमता निर्गत होते शून्य. 'महामान' विद्युतरोधक परिपथासाठी असतो. 'न्यूनतम' अयोग्य आहे. 'आवृत्तीवर अवलंबून असते' हा ओसत क्षमतेसाठी योग्य उत्तर नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses resistive circuit condition",
+        "Incorrect understanding of power in capacitive circuit",
+        "Confuses the effect of frequency on power"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies that in a purely capacitive AC circuit, the average power is zero due to a 90-degree phase difference, leading to a power factor of zero. The reasoning for the distractors is valid and reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/12/physics/leph107.pdf",
+          "ordinal": 13,
+          "pageStart": 13,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 7: Alternating Current",
+            "7.7",
+            "AC C"
+          ]
+        },
+        {
+          "document": "ncert/12/physics/leph107.pdf",
+          "ordinal": 14,
+          "pageStart": 15,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 7: Alternating Current",
+            "7.7",
+            "AC C"
+          ]
+        },
+        {
+          "document": "ncert/12/physics/leph107.pdf",
+          "ordinal": 15,
+          "pageStart": 16,
+          "pageEnd": 17,
+          "headingPath": [
+            "Chapter 7: Alternating Current",
+            "7.7",
+            "AC C"
+          ]
+        },
+        {
+          "document": "ncert/12/physics/leph107.pdf",
+          "ordinal": 16,
+          "pageStart": 17,
+          "pageEnd": 17,
+          "headingPath": [
+            "Chapter 7: Alternating Current",
+            "7.7",
+            "AC C"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T13:28:30.005Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "In a purely inductive AC circuit, how does the current relate to the voltage in terms of phase angle?",
+      "choices": [
+        "Current leads voltage by π/2",
+        "Current lags voltage by π/2",
+        "Current is in phase with voltage",
+        "Current is out of phase with voltage by π"
+      ],
+      "answerIndex": 1,
+      "solution": "In a purely inductive AC circuit, the current lags the voltage by π/2 because the inductor resists changes in current, causing it to reach its peak after the voltage does. Current leading voltage by π/2 occurs in capacitive circuits, where the capacitor resists changes in voltage. Current being in phase with voltage is characteristic of resistive circuits, not inductive ones. A phase difference of π is not typical for an inductive circuit, as it would imply the current is completely out of sync, which is not the case.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक शुद्ध प्रेरक ए.सी. परिपथ में, धारा वोल्टेज के संदर्भ में फेज कोण के संदर्भ में कैसे संबंधित होती है?",
+          "choices": [
+            "धारा वोल्टेज से π/2 से आगे रहती है",
+            "धारा वोल्टेज से π/2 से पीछे रहती है",
+            "धारा वोल्टेज के साथ एक ही फेज में होती है",
+            "धारा वोल्टेज से π के अंतर से बाहर होती है"
+          ],
+          "solution": "शुद्ध प्रेरक ए.सी. परिपथ में, धारा वोल्टेज से π/2 से पीछे रहती है क्योंकि प्रेरक धारा में परिवर्तन का विरोध करता है, जिसके कारण यह वोल्टेज के चरम मान तक पहुंचने से पहले अपना चरम मान प्राप्त कर लेती है। π/2 से आगे रहना धारा का विशेषता होता है कैपेसिटिव परिपथ में, जहां कैपेसिटर वोल्टेज में परिवर्तन का विरोध करता है। वोल्टेज के साथ एक ही फेज में धारा होना प्रतिरोधी परिपथ की विशेषता होती है, प्रेरक परिपथ के लिए नहीं। π के अंतर से बाहर होना प्रेरक परिपथ के लिए सामान्य नहीं होता, क्योंकि इसका अर्थ होता है कि धारा पूरी तरह से असंगत है, जो ऐसे परिपथ के लिए सही नहीं होता।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the technical meaning. All options and solution align with the original English version.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "शुद्ध प्रेरक ए.सी. परिपथात, विद्युतप्रवाह विद्युत विभवाशी फेझ कोनाच्या दृष्टीने कसा संबंधित आहे?",
+          "choices": [
+            "विद्युतप्रवाह विद्युत विभवापेक्षा π/2 ने आगेकूक करतो",
+            "विद्युतप्रवाह विद्युत विभवापेक्षा π/2 ने मागे राहतो",
+            "विद्युतप्रवाह विद्युत विभवाशी समान फेझात असतो",
+            "विद्युतप्रवाह विद्युत विभवापासून π ने विसंगत असतो"
+          ],
+          "solution": "शुद्ध प्रेरक ए.सी. परिपथात, विद्युतप्रवाह विद्युत विभवापेक्षा π/2 ने मागे राहतो, कारण प्रेरक विद्युतप्रवाहातील बदलांचा विरोध करतो, ज्यामुळे तो विद्युत विभवापेक्षा शिखरावर पोहोचतो. π/2 ने विद्युतप्रवाह विद्युत विभवापेक्षा आगेकूक करणे कॅपॅसिटीव्ह परिपथात होते, जेथे कॅपॅसिटर विद्युत विभवातील बदलांचा विरोध करतो. विद्युतप्रवाह विद्युत विभवाशी समान फेझात असणे हे प्रतिरोधी परिपथाचे वैशिष्ट्य आहे, नाही की प्रेरक परिपथाचे. π ने विसंगत असणे हे प्रेरक परिपथासाठी सामान्य नाही, कारण ते विद्युतप्रवाह एकदम असंगत असल्याचा अर्थ असतो, जे प्रेरक परिपथासाठी नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the technical terminology used in Marathi physics textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses inductive with capacitive behavior",
+        null,
+        "Does not understand the phase relationship in an inductive circuit",
+        "Misunderstands the phase difference in inductive circuits"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct and aligns with standard electrical theory. In a purely inductive circuit, the current lags the voltage by π/2, which is accurately reflected in the key and explanation.",
+      "sources": [
+        {
+          "document": "ncert/12/physics/leph107.pdf",
+          "ordinal": 4,
+          "pageStart": 5,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 7: Alternating Current",
+            "7.3",
+            "AC C"
+          ]
+        },
+        {
+          "document": "ncert/12/physics/leph107.pdf",
+          "ordinal": 5,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 7: Alternating Current",
+            "7.4 AC V"
+          ]
+        },
+        {
+          "document": "ncert/12/physics/leph107.pdf",
+          "ordinal": 6,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 7: Alternating Current",
+            "7.4 AC V"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T13:28:30.005Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "In an AC circuit, if the current leads the voltage by π/2, what type of component is likely to be present?",
+      "choices": [
+        "Resistor",
+        "Capacitor",
+        "Inductor",
+        "Transformer"
+      ],
+      "answerIndex": 1,
+      "solution": "In an AC circuit, when the current leads the voltage by π/2, it indicates the presence of a capacitor. This is because capacitors store and release energy in an electric field, causing the current to lead the voltage. Resistors do not cause any phase shift, inductors cause the current to lag, and transformers are not components that directly affect the phase relationship between current and voltage.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक ए.सी. परिपथ में, यदि धारा वोल्टता से π/2 द्वारा आगे रहती है, तो कौन-सा घटक संभवतः उपस्थित होता है?",
+          "choices": [
+            "प्रतिरोधक",
+            "संधारित्र",
+            "प्रेरक",
+            "ट्रांसफॉर्मर"
+          ],
+          "solution": "एक ए.सी. परिपथ में, जब धारा वोल्टता से π/2 द्वारा आगे रहती है, तो इसका अर्थ है कि संधारित्र की उपस्थिति होती है। यह इसलिए है क्योंकि संधारित्र विद्युत क्षेत्र में ऊर्जा संचित करता है और छोड़ता है, जिसके कारण धारा वोल्टता के आगे रहती है। प्रतिरोधक कोई चरण विस्थापन उत्पन्न नहीं करते, प्रेरक धारा के पीछे रहते हैं और ट्रांसफॉर्मर धारा और वोल्टता के बीच चरण संबंध को सीधे प्रभावित नहीं करते।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms as found in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "AC परिपथात, जर विद्युतप्रवाह विद्युत विभवापेक्षा π/2 कोनाने आगेकूक असेल, तर त्यात कोणता घटक असण्याची शक्यता असते?",
+          "choices": [
+            "प्रतिरोधक",
+            "संधारिता",
+            "प्रेरक",
+            "ट्रान्सफॉर्मर"
+          ],
+          "solution": "AC परिपथात, जर विद्युतप्रवाह विद्युत विभवापेक्षा π/2 कोनाने आगेकूक असेल, तर त्यात संधारिता असण्याची शक्यता असते. हे कारण संधारिता विद्युत क्षेत्रात ऊर्जा जमा करून विद्युतप्रवाह विद्युत विभवापेक्षा आगेकूक करते. प्रतिरोधकामुळे कोन बदलत नाही, प्रेरकामुळे विद्युतप्रवाह विलंबित होतो आणि ट्रान्सफॉर्मर हे विद्युतप्रवाह आणि विद्युत विभव यांच्या कलांमध्ये बदल घडवून आणणारा घटक नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the technical terms used in Marathi textbooks, and preserves the logical structure of the question and solution.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the phase relationship for a resistor",
+        null,
+        "Incorrectly assumes inductors cause leading current",
+        "Misunderstands the role of transformers in phase shifts"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies that a capacitor causes current to lead voltage by π/2. The reasoning for the distractors aligns with common misconceptions about resistors, inductors, and transformers.",
+      "sources": [
+        {
+          "document": "ncert/12/physics/leph107.pdf",
+          "ordinal": 7,
+          "pageStart": 7,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 7: Alternating Current",
+            "7.4 AC V",
+            "AC V"
+          ]
+        },
+        {
+          "document": "ncert/12/physics/leph107.pdf",
+          "ordinal": 8,
+          "pageStart": 9,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 7: Alternating Current",
+            "7.4 AC V",
+            "AC V"
+          ]
+        },
+        {
+          "document": "ncert/12/physics/leph107.pdf",
+          "ordinal": 9,
+          "pageStart": 10,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 7: Alternating Current",
+            "7.6 AC V",
+            "LCR C"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T13:28:30.005Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "In an AC circuit, if the current lags the voltage by a phase angle φ, what is the effect of connecting a capacitor in parallel on the power factor?",
+      "choices": [
+        "Power factor decreases",
+        "Power factor increases",
+        "Power factor remains the same",
+        "Power factor becomes zero"
+      ],
+      "answerIndex": 1,
+      "solution": "Connecting a capacitor in parallel in a circuit where current lags the voltage introduces a leading current, which reduces the phase difference and increases the power factor. The option 'Power factor decreases' is incorrect. The option 'Power factor remains the same' is incorrect. The option 'Power factor becomes zero' is incorrect.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक ए.सी. परिपथ में, यदि धारा वोल्टता से चरण कोण φ द्वारा पीछे रहती है, तो समांतर में संधारित्र के जुड़ने से शक्ति गुणक पर क्या प्रभाव पड़ता है?",
+          "choices": [
+            "शक्ति गुणक कम हो जाता है",
+            "शक्ति गुणक बढ़ जाता है",
+            "शक्ति गुणक अपरिवर्तित रहता है",
+            "शक्ति गुणक शून्य हो जाता है"
+          ],
+          "solution": "धारा वोल्टता से पीछे रहती है, ऐसे परिपथ में समांतर में संधारित्र जुड़ने से एक अग्रगामी धारा प्रवेश करती है, जो चरण अंतर को कम करती है और शक्ति गुणक को बढ़ाती है। विकल्प 'शक्ति गुणक कम हो जाता है' गलत है। विकल्प 'शक्ति गुणक अपरिवर्तित रहता है' गलत है। विकल्प 'शक्ति गुणक शून्य हो जाता है' गलत है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains technical terms, and preserves the logical structure of the question and solution.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "ए.सी. परिपथात, जर विद्युतप्रवाह वोल्टेजपेक्षा फेझ कोन φ ने मागे राहतो, तर समांतर मध्ये कॅपॅसिटर जोडल्याने शक्ती गुणांकावर काय परिणाम होतो?",
+          "choices": [
+            "शक्ती गुणांक कमी होतो",
+            "शक्ती गुणांक वाढतो",
+            "शक्ती गुणांक बरोबर राहतो",
+            "शक्ती गुणांक शून्य होतो"
+          ],
+          "solution": "विद्युतप्रवाह वोल्टेजपेक्षा मागे राहिल्यास ए.सी. परिपथात कॅपॅसिटर समांतर मध्ये जोडल्याने एक नेतृत्वात्मक विद्युतप्रवाह जोडला जातो, जो फेझ फरक कमी करतो आणि शक्ती गुणांक वाढतो. 'शक्ती गुणांक कमी होतो' हा विकल्प चूकीचा आहे. 'शक्ती गुणांक बरोबर राहतो' हा विकल्प चूकीचा आहे. 'शक्ती गुणांक शून्य होतो' हा विकल्प चूकीचा आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the technical terms used in Marathi textbooks, and preserves the logical structure and meaning of the original question.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the effect of inductor on power factor",
+        null,
+        "Does not understand the role of capacitor in power factor improvement",
+        "Incorrect understanding of power factor"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly explains that adding a capacitor in parallel reduces the phase difference between voltage and current, thereby increasing the power factor. The reasoning for the wrong options is valid and reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/12/physics/leph107.pdf",
+          "ordinal": 13,
+          "pageStart": 13,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 7: Alternating Current",
+            "7.7",
+            "AC C"
+          ]
+        },
+        {
+          "document": "ncert/12/physics/leph107.pdf",
+          "ordinal": 14,
+          "pageStart": 15,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 7: Alternating Current",
+            "7.7",
+            "AC C"
+          ]
+        },
+        {
+          "document": "ncert/12/physics/leph107.pdf",
+          "ordinal": 15,
+          "pageStart": 16,
+          "pageEnd": 17,
+          "headingPath": [
+            "Chapter 7: Alternating Current",
+            "7.7",
+            "AC C"
+          ]
+        },
+        {
+          "document": "ncert/12/physics/leph107.pdf",
+          "ordinal": 16,
+          "pageStart": 17,
+          "pageEnd": 17,
+          "headingPath": [
+            "Chapter 7: Alternating Current",
+            "7.7",
+            "AC C"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T13:28:30.005Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "A capacitor is connected to an AC source. If the frequency of the source is increased, what happens to the current in the circuit?",
+      "choices": [
+        "It increases",
+        "It decreases",
+        "It remains the same",
+        "It becomes zero"
+      ],
+      "answerIndex": 0,
+      "solution": "In an AC circuit, the current through a capacitor increases when the frequency increases because capacitive reactance decreases with frequency. This is due to the inverse relationship between reactance and frequency in capacitors. Lower reactance allows more current to flow. The other options are incorrect because they suggest the current would not change or decrease, which does not align with the behavior of capacitors in AC circuits.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक संधारित्र को एसी स्रोत से जोड़ा गया है। यदि स्रोत की आवृत्ति बढ़ा दी जाए, तो परिपथ में धारा पर क्या प्रभाव पड़ता है?",
+          "choices": [
+            "यह बढ़ जाता है",
+            "यह घट जाता है",
+            "यह एक समान रहता है",
+            "यह शून्य हो जाता है"
+          ],
+          "solution": "एसी परिपथ में, संधारित्र के माध्यम से धारा आवृत्ति बढ़ने पर बढ़ जाती है क्योंकि संधारित्र में प्रतिघात आवृत्ति के साथ घटता है। यह संधारित्र में प्रतिघात और आवृत्ति के व्युत्क्रम संबंध के कारण होता है। कम प्रतिघात अधिक धारा प्रवाह की अनुमति देता है। अन्य विकल्प गलत हैं क्योंकि वे धारा के बदले या घटे रहने का सुझाव देते हैं, जो एसी परिपथ में संधारित्र के व्यवहार के साथ मेल नहीं खाता।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms as used in Hindi-medium physics textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एक कॅपॅसिटर ए.सी. स्रोतला जोडला गेला आहे. जर स्रोताची वारंवारता वाढवली गेली तर परिपथातील विद्युतप्रवाह काय होतो?",
+          "choices": [
+            "तो वाढतो",
+            "तो घटतो",
+            "तो एकसारखा रहातो",
+            "तो शून्य होतो"
+          ],
+          "solution": "ए.सी. परिपथात, कॅपॅसिटरमार्फत विद्युतप्रवाह वारंवारता वाढल्यास वाढतो कारण कॅपॅसिटिव्ह प्रतिकार वारंवारतेसह घटतो. हे कॅपॅसिटरमध्ये प्रतिकार आणि वारंवारतेमध्ये व्यस्त संबंध असल्यामुळे आहे. कमी प्रतिकार अधिक विद्युतप्रवाह वाहून नेतो. इतर विकल्प चुकीचे आहेत कारण ते सूचित करतात की विद्युतप्रवाह बदलणार नाही किंवा घटेल, जे कॅपॅसिटरच्या ए.सी. परिपथातील वर्तनाशी जुमानत नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms for capacitors and reactance.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Incorrectly assumes that capacitive reactance increases with frequency",
+        "Incorrectly assumes that current is independent of frequency",
+        "Incorrectly assumes that current becomes zero at high frequencies"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies that capacitive reactance decreases with increasing frequency, leading to an increase in current. The reasoning aligns with standard physics principles and the author's key.",
+      "sources": [
+        {
+          "document": "ncert/12/physics/leph107.pdf",
+          "ordinal": 4,
+          "pageStart": 5,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 7: Alternating Current",
+            "7.3",
+            "AC C"
+          ]
+        },
+        {
+          "document": "ncert/12/physics/leph107.pdf",
+          "ordinal": 5,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 7: Alternating Current",
+            "7.4 AC V"
+          ]
+        },
+        {
+          "document": "ncert/12/physics/leph107.pdf",
+          "ordinal": 6,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 7: Alternating Current",
+            "7.4 AC V"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T13:28:30.005Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "In a purely capacitive AC circuit, the power supplied to the capacitor over a complete cycle is zero. Why is this the case?",
+      "choices": [
+        "Because the capacitor stores energy and releases it back to the circuit",
+        "Because the capacitor does not consume energy",
+        "Because the capacitor blocks the flow of current",
+        "Because the capacitor is not connected to the circuit"
+      ],
+      "answerIndex": 0,
+      "solution": "The correct option is because the capacitor stores energy and releases it back to the circuit. This happens because during one half-cycle, the capacitor charges and stores energy, and during the other half-cycle, it discharges and returns the energy to the circuit, resulting in zero net power consumption over a full cycle. The other options are incorrect because capacitors do consume energy temporarily, they do allow current to flow, and they are typically connected to the circuit.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक शुद्ध धारिता ए.सी. परिपथ में, धारिता पर एक पूर्ण चक्र में आपूर्ति की गई शक्ति शून्य होती है। ऐसा क्यों होता है?",
+          "choices": [
+            "क्योंकि संधारिता ऊर्जा संचित करती है और इसे परिपथ में वापस कर देती है",
+            "क्योंकि संधारिता ऊर्जा का उपभोग नहीं करती है",
+            "क्योंकि संधारिता धारा के प्रवाह को रोक देती है",
+            "क्योंकि संधारिता परिपथ से जुड़ी नहीं होती है"
+          ],
+          "solution": "सही विकल्प यह है कि संधारिता ऊर्जा संचित करती है और इसे परिपथ में वापस कर देती है। ऐसा इसलिए होता है क्योंकि एक अर्ध चक्र में, संधारिता आवेशित होती है और ऊर्जा संचित कर लेती है, और दूसरे अर्ध चक्र में, यह ऊर्जा को परिपथ में वापस कर देती है, जिससे एक पूर्ण चक्र में शक्ति की शुद्ध उपभोग शून्य हो जाती है। अन्य विकल्प गलत हैं क्योंकि संधारिता अस्थायी रूप से ऊर्जा का उपभोग करती है, यह धारा के प्रवाह को अनुमति देती है, और यह आमतौर पर परिपथ से जुड़ी रहती है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms like 'संधारिता' for 'capacitor' and 'ऊर्जा' for 'energy'.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "शुद्ध धारिता असलेल्या AC परिपथात, एकूण चक्रासाठी कॅपॅसिटरला दिलेला ऊर्जा शून्य असतो. हे का असते?",
+          "choices": [
+            "कारण कॅपॅसिटर ऊर्जा जमा करतो आणि ती परत परिपथाला देतो",
+            "कारण कॅपॅसिटर ऊर्जा खातो नाही",
+            "कारण कॅपॅसिटर विद्युत प्रवाहाचा प्रवाह अडवतो",
+            "कारण कॅपॅसिटर परिपथाशी जोडलेला नाही"
+          ],
+          "solution": "योग्य विकल्प कॅपॅसिटर ऊर्जा जमा करतो आणि ती परत परिपथाला देतो. हे घडते कारण एका अर्ध-चक्रात, कॅपॅसिटर चार्ज होतो आणि ऊर्जा जमा करतो, आणि दुसर्‍या अर्ध-चक्रात, ते डिस्चार्ज होतो आणि ऊर्जा परिपथाला परत देतो, ज्यामुळे एकूण चक्रासाठी ऊर्जा खर्च शून्य होतो. इतर विकल्प अयोग्य असतात कारण कॅपॅसिटर अस्थायी ऊर्जा खातो, ते विद्युत प्रवाहाचा प्रवाह अडवत नाहीत आणि ते सामान्यतः परिपथाशी जोडलेले असतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms. The structure and logic of the question and solution are preserved.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Incorrectly assumes that the capacitor does not store energy",
+        "Incorrectly assumes that the capacitor does not consume energy, but fails to explain the reason for zero average power",
+        "Incorrectly believes that the capacitor blocks current, which is not the case in an AC circuit"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 0, as the capacitor stores and returns energy over a cycle, resulting in zero net power. The other options contain misconceptions about capacitors in AC circuits.",
+      "sources": [
+        {
+          "document": "ncert/12/physics/leph107.pdf",
+          "ordinal": 7,
+          "pageStart": 7,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 7: Alternating Current",
+            "7.4 AC V",
+            "AC V"
+          ]
+        },
+        {
+          "document": "ncert/12/physics/leph107.pdf",
+          "ordinal": 8,
+          "pageStart": 9,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 7: Alternating Current",
+            "7.4 AC V",
+            "AC V"
+          ]
+        },
+        {
+          "document": "ncert/12/physics/leph107.pdf",
+          "ordinal": 9,
+          "pageStart": 10,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 7: Alternating Current",
+            "7.6 AC V",
+            "LCR C"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T13:28:30.005Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
     }
   ]
 }

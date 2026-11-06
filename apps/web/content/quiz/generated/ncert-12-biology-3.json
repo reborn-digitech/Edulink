@@ -918,6 +918,689 @@
       "generatedAt": "2026-10-29T03:02:43.396Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "Which of the following is a method of contraception that is inserted into the uterus?",
+      "choices": [
+        "Copper T",
+        "Condom",
+        "Pill",
+        "Injectable"
+      ],
+      "answerIndex": 0,
+      "solution": "Copper T is a type of intrauterine device that is placed inside the uterus to prevent pregnancy. It works by creating an environment that is hostile to sperm and fertilized eggs. Condoms are external barriers, pills and injectables are hormonal methods that prevent ovulation, so they are not inserted into the uterus.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सी गर्भनिरोधक विधि गर्भाशय में प्रविष्ट की जाती है?",
+          "choices": [
+            "कॉपर टी",
+            "कंडोम",
+            "गोली",
+            "इंजेक्शन"
+          ],
+          "solution": "कॉपर टी गर्भाशय में स्थापित किए जाने वाले एक गर्भनिरोधक उपकरण के प्रकार है। यह गर्भाशय में एक ऐसा वातावरण बनाता है जो स्पर्म और निषेचित अंडे के लिए अनुपयुक्त होता है। कंडोम बाहरी अवरोध हैं, गोली और इंजेक्शन हॉर्मोनल विधियां हैं जो अंडोत्सर्ग को रोकती हैं, इसलिए इन्हें गर्भाशय में प्रविष्ट नहीं किया जाता।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Hindi terminology for medical concepts.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणता गर्भनिरोधकाचा पद्धत रोगीच्या गर्भाशयात ठेवला जातो?",
+          "choices": [
+            "कॉपर टी",
+            "कंडोम",
+            "गोळी",
+            "इंजेक्शन"
+          ],
+          "solution": "कॉपर टी ही गर्भाशयांतर्गत उपकरणाची एक प्रकार आहे जी गर्भधारणा रोखण्यासाठी गर्भाशयात ठेवली जाते. ती शुक्राणू आणि निर्मित अंडाकोशिकेसाठी अनुकूल वातावरण तयार करते. कंडोम हे बाह्य अवरोध आहेत, गोळ्या आणि इंजेक्शन हे हॉर्मोनल पद्धती आहेत जी अंडाकोशिकेच्या निर्मिती रोखतात, म्हणून ते गर्भाशयात ठेवली जात नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the technical terms used in Marathi medical education.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses IUDs with barrier methods",
+        "Confuses oral contraceptive with an intrauterine device",
+        "Confuses hormonal methods with IUDs"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is clearly Copper T, which is an IUD inserted into the uterus. The other options are correctly identified as different types of contraception. The author's reasoning aligns with standard biological knowledge.",
+      "sources": [
+        {
+          "document": "ncert/12/biology/lebo103.pdf",
+          "ordinal": 12,
+          "pageStart": 9,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 3: Reproductive Health",
+            "3.4",
+            "SUMMARY"
+          ]
+        },
+        {
+          "document": "ncert/12/biology/lebo103.pdf",
+          "ordinal": 13,
+          "pageStart": 10,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 3: Reproductive Health",
+            "EXERCISES"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T15:37:08.762Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "Which contraceptive method is described as a thin rubber/latex sheath used to cover the penis in males or the vagina and cervix in females?",
+      "choices": [
+        "Lactational amenorrhea",
+        "Condom",
+        "IUD",
+        "Barrier method"
+      ],
+      "answerIndex": 1,
+      "solution": "The correct answer is Condom, as it is a thin rubber or latex sheath designed to cover the penis in males or the vagina and cervix in females. Lactational amenorrhea is a natural method based on breastfeeding, IUD is a small device inserted into the uterus, and barrier method refers to a general category of contraceptives, not a specific device.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "कौन सी गर्भनिरोधक विधि को पुरुषों में शिश्न को कवर करने वाले पतले रबर/लैटेक्स के थैले या महिलाओं में जननांग और गर्भाशय ग्रीवा को कवर करने वाले थैले के रूप में वर्णित किया जाता है?",
+          "choices": [
+            "लैक्टेशनल अमेनोरिया",
+            "कंडोम",
+            "आईयूडी",
+            "अवरोधक विधि"
+          ],
+          "solution": "सही उत्तर कंडोम है, क्योंकि यह एक पतला रबर या लैटेक्स का थैला है जिसका उपयोग पुरुषों में शिश्न या महिलाओं में जननांग और गर्भाशय ग्रीवा को कवर करने के लिए किया जाता है। लैक्टेशनल अमेनोरिया स्वाभाविक विधि है जो स्तनपान पर आधारित है, आईयूडी गर्भाशय में स्थापित एक छोटा उपकरण है, और अवरोधक विधि गर्भनिरोधक के एक सामान्य श्रेणी को संदर्भित करती है, एक विशिष्ट उपकरण नहीं।",
+          "imageAlt": null,
+          "critique": "Translation accurately reflects the original meaning, technical terms are appropriate for Hindi-medium curriculum, and the correct answer remains option (2) in both versions.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "कोणता विरोधी गर्भधारणा पद्धती अल्प रबर/लॅटेक्स बॅग वापरली जाते जी पुरुषांमध्ये शिश्नावर किंवा स्त्रियांमध्ये वाइट आणि गर्भाशयाच्या ग्रीवा वर ठेवली जाते?",
+          "choices": [
+            "लॅक्टेशनल अमेनॉरिया",
+            "कॉन्डोम",
+            "आय.यू.डी.",
+            "अवरोध पद्धती"
+          ],
+          "solution": "सही उत्तर कॉन्डोम आहे, कारण ते अल्प रबर किंवा लॅटेक्स बॅग आहे जी पुरुषांमध्ये शिश्नावर किंवा स्त्रियांमध्ये वाइट आणि गर्भाशयाच्या ग्रीवा वर ठेवली जाते. लॅक्टेशनल अमेनॉरिया ही स्तनपानावर आधारित प्राकृतिक पद्धती आहे, आय.यू.डी. हा गर्भाशयात ठेवलेला लहान उपकरण आहे, आणि अवरोध पद्धती ही विरोधी गर्भधारणा उपायांची सामान्य श्रेणी दर्शवते, निश्चित उपकरण नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi medical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses a natural method with a physical barrier",
+        null,
+        "Incorrectly identifies a general category as a specific device",
+        "Misunderstands the description of IUDs as a specific device"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-constructed and the correct answer is clearly 1 (Condom). The distractors are plausible and reflect common misconceptions about contraceptive methods.",
+      "sources": [
+        {
+          "document": "ncert/12/biology/lebo103.pdf",
+          "ordinal": 3,
+          "pageStart": 3,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 3: Reproductive Health",
+            "3.2"
+          ]
+        },
+        {
+          "document": "ncert/12/biology/lebo103.pdf",
+          "ordinal": 4,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 3: Reproductive Health",
+            "3.2"
+          ]
+        },
+        {
+          "document": "ncert/12/biology/lebo103.pdf",
+          "ordinal": 5,
+          "pageStart": 4,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 3: Reproductive Health",
+            "3.2"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T15:37:08.762Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the primary purpose of using condoms as a contraceptive method?",
+      "choices": [
+        "To prevent STIs and AIDS",
+        "To block the entry of microbes and sperms into the cervix",
+        "To increase phagocytosis of sperms in the uterus",
+        "To suppress sperm motility and fertilising capacity"
+      ],
+      "answerIndex": 1,
+      "solution": "The primary purpose of condoms is to block the entry of microbes and sperms into the cervix, preventing both pregnancy and the transmission of infections. While they do offer protection against STIs and AIDS, their main function is physical barrier prevention. The other options describe mechanisms of different contraceptive methods, not condoms.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "कॉन्डोम के उपयोग का प्राथमिक उद्देश्य क्या है?",
+          "choices": [
+            "एस टी आई और एड्स को रोकना",
+            "गर्भाशय ग्रीवा में रोगाणुओं और शुक्राणुओं के प्रवेश को रोकना",
+            "गर्भाशय में शुक्राणुओं के फैगोसाइटोसिस को बढ़ाना",
+            "शुक्राणुओं की गतिशीलता और निषेचन क्षमता को दबाना"
+          ],
+          "solution": "कॉन्डोम का प्राथमिक उद्देश्य गर्भाशय ग्रीवा में रोगाणुओं और शुक्राणुओं के प्रवेश को रोकना है, जो कि गर्भावस्था और संक्रमण के संचरण को रोकता है। यह एस टी आई और एड्स के लिए सुरक्षा भी प्रदान करते हैं, लेकिन उनका मुख्य कार्य भौतिक अवरोध रोकथाम है। अन्य विकल्प अलग गर्भनिरोधक विधियों के तरीकों का वर्णन करते हैं, कॉन्डोम के नहीं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi medical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "कॉन्डोमचा वापर करून नियंत्रक विधी म्हणून वापरल्याचा प्राथमिक उद्देश काय आहे?",
+          "choices": [
+            "एचआयव्ही आणि एसटीआय रोखणे",
+            "माइक्रोब्स आणि शुक्राणूंच्या ग्रीवा मार्गे प्रवेशाला अवरोध घालणे",
+            "गर्भाशयात शुक्राणूंच्या फॅगोसाइटोसिसला वाढवणे",
+            "शुक्राणूंच्या गतिशीलतेला आणि निषेचन क्षमतेला अवरोधित करणे"
+          ],
+          "solution": "कॉन्डोमचा प्राथमिक उद्देश ग्रीवा मार्गे माइक्रोब्स आणि शुक्राणूंच्या प्रवेशाला अवरोध घालणे आहे, जेणेकरून गर्भधारणा आणि संसर्गाचे संक्रमण रोखले जाऊ शकते. ते एसटीआय आणि एचआयव्ही रोखण्यासाठी देखील संरक्षण प्रदान करतात, परंतु त्यांचे मुख्य कार्य भौतिक अवरोध रोखणे आहे. इतर विकल्प वेगळ्या नियंत्रक विधींच्या कार्यप्रणालींचे वर्णन करतात, कॉन्डोमच्या नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi medical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Focuses on the additional benefit of condoms",
+        null,
+        "Confuses the function of IUDs with condoms",
+        "Misunderstands the function of IUDs in the reproductive system"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 1, as condoms primarily function to block the entry of sperms and microbes into the cervix. The author's reasoning is sound, and the misconceptions described for the other options are plausible for students.",
+      "sources": [
+        {
+          "document": "ncert/12/biology/lebo103.pdf",
+          "ordinal": 3,
+          "pageStart": 3,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 3: Reproductive Health",
+            "3.2"
+          ]
+        },
+        {
+          "document": "ncert/12/biology/lebo103.pdf",
+          "ordinal": 4,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 3: Reproductive Health",
+            "3.2"
+          ]
+        },
+        {
+          "document": "ncert/12/biology/lebo103.pdf",
+          "ordinal": 5,
+          "pageStart": 4,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 3: Reproductive Health",
+            "3.2"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T15:37:08.762Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "Which contraceptive method is described as being effective only for a maximum of six months after childbirth?",
+      "choices": [
+        "IUD",
+        "Condom",
+        "Lactational amenorrhea",
+        "Barrier method"
+      ],
+      "answerIndex": 2,
+      "solution": "Lactational amenorrhea is effective only for a maximum of six months after childbirth because it relies on the natural postpartum infertility that occurs when a woman is exclusively breastfeeding. IUDs and condoms provide long-term protection, and barrier methods refer to a category of contraceptives that do not have a six-month time limit.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "गर्भनिरोधक विधि कौन सी है जिसे जन्म के बाद छह महीने तक के लिए केवल प्रभावी माना जाता है?",
+          "choices": [
+            "आई.यू.डी.",
+            "कंडोम",
+            "लैक्टेशनल एमेनोरिया",
+            "अवरोधक विधि"
+          ],
+          "solution": "लैक्टेशनल एमेनोरिया जन्म के बाद छह महीने तक केवल प्रभावी होती है क्योंकि यह एक महिला के एकाधिक ब्रेस्टफीडिंग के कारण होने वाली प्राकृतिक परिणामी अनिषेचन पर निर्भर करती है। आई.यू.डी. और कंडोम लंबे समय तक सुरक्षा प्रदान करते हैं, और अवरोधक विधि एक गर्भनिरोधक वर्ग है जिसके पास छह महीने की समय सीमा नहीं होती।",
+          "imageAlt": null,
+          "critique": "The translation accurately reflects the original English content, with appropriate Hindi terminology used for medical concepts.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जनननियोजनाच्या कोणत्या विधीचा वर्णन जननानंतर छह महिन्यांपर्यंत फक्त कार्यक्षम असल्याचे केले जाते?",
+          "choices": [
+            "IUD",
+            "कंडोम",
+            "लॅक्टेशनल अमेनॉरिया",
+            "अवरोधन पद्धत"
+          ],
+          "solution": "लॅक्टेशनल अमेनॉरिया जननानंतर छह महिन्यांपर्यंत फक्त कार्यक्षम असते कारण ती एका स्तनपान करणारी स्त्रीच्या प्राक्काळीन अनुप्रासाच्या नैसर्गिक अकार्यक्षमतेवर अवलंबून असते. IUD आणि कंडोम लांबकाळ रक्षण प्रदान करतात, आणि अवरोधन पद्धती एका वर्गाच्या जनननियोजनाच्या विधींना संदर्भित करतात ज्यांच्याकडे छह महिन्यांचा समय सीमा नसते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi medical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses IUDs with the lactational amenorrhea method",
+        "Incorrectly identifies a general category as a specific method",
+        null,
+        "Misunderstands the description of barrier methods as a specific device"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 2 (Lactational amenorrhea), as the solution correctly identifies that this method is only effective for up to six months postpartum. The reasoning for the other options is valid and reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/12/biology/lebo103.pdf",
+          "ordinal": 3,
+          "pageStart": 3,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 3: Reproductive Health",
+            "3.2"
+          ]
+        },
+        {
+          "document": "ncert/12/biology/lebo103.pdf",
+          "ordinal": 4,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 3: Reproductive Health",
+            "3.2"
+          ]
+        },
+        {
+          "document": "ncert/12/biology/lebo103.pdf",
+          "ordinal": 5,
+          "pageStart": 4,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 3: Reproductive Health",
+            "3.2"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T15:37:08.762Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If a person is infected with an STI and does not seek treatment, which of the following is a likely consequence?",
+      "choices": [
+        "Infertility",
+        "Improved immunity",
+        "Increased fertility",
+        "No long-term effects"
+      ],
+      "answerIndex": 0,
+      "solution": "Untreated STIs can cause damage to the reproductive system, which may lead to infertility. Improved immunity and increased fertility are not consequences of untreated infections. There are often long-term effects due to the damage caused by the infection.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि कोई व्यक्ति एक एसटीआई से संक्रमित हो जाता है और इलाज नहीं करवाता है, तो निम्नलिखित में से कौन-सा एक संभावित परिणाम हो सकता है?",
+          "choices": [
+            "अक्षमता",
+            "प्रतिरोधक क्षमता में सुधार",
+            "उत्पादकता में वृद्धि",
+            "कोई लंबे समय तक प्रभाव नहीं"
+          ],
+          "solution": "अप्रभावित एसटीआई जनन प्रणाली को नुकसान पहुंचा सकती है, जिसके कारण अक्षमता हो सकती है। प्रतिरोधक क्षमता में सुधार और उत्पादकता में वृद्धि अप्रभावित संक्रमण के परिणाम नहीं हैं। संक्रमण द्वारा होने वाले नुकसान के कारण लंबे समय तक प्रभाव होते हैं।",
+          "imageAlt": null,
+          "critique": "Translation accurately conveys the original meaning with appropriate Hindi medical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर एखाद्या व्यक्तीला STI झाला असेल आणि त्याला उपचार करू नये, तर खालीलपैकी कोणता एक शक्य परिणाम असू शकतो?",
+          "choices": [
+            "अनिषेच्यता",
+            "उत्तम प्रतिकारक क्षमता",
+            "वाढलेली निषेच्यता",
+            "काही दीर्घकाळी असर नाही"
+          ],
+          "solution": "अपुरा उपचार केलेल्या STI मुळे प्रजनन प्रणालीचे नुकसान होऊ शकते, जे अनिषेच्यतेकडे नेऊ शकते. उत्तम प्रतिकारक क्षमता आणि वाढलेली निषेच्यता अपुर्या संसर्गाचे परिणाम नाहीत. संसर्गामुळे झालेल्या नुकसानामुळे अक्सर दीर्घकाळी असर असतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi medical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Belief that STIs somehow strengthen the immune system",
+        "Incorrectly assumes STIs improve immunity",
+        "Incorrectly assumes STIs increase fertility\",\"Incorrectly assumes STIs have no long-term effects"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 0 (Infertility), as untreated STIs can lead to serious reproductive complications. The other options reflect common misconceptions about STIs.",
+      "sources": [
+        {
+          "document": "ncert/12/biology/lebo103.pdf",
+          "ordinal": 9,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 3: Reproductive Health",
+            "3.4",
+            "(STI"
+          ]
+        },
+        {
+          "document": "ncert/12/biology/lebo103.pdf",
+          "ordinal": 10,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 3: Reproductive Health",
+            "3.4",
+            "(STI"
+          ]
+        },
+        {
+          "document": "ncert/12/biology/lebo103.pdf",
+          "ordinal": 11,
+          "pageStart": 8,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 3: Reproductive Health",
+            "3.4",
+            "(STI"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T15:37:08.762Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "Which contraceptive method is described as a barrier that prevents the entry of sperms through the cervix and is reusable?",
+      "choices": [
+        "Condom",
+        "IUD",
+        "Oral pills",
+        "Diaphragm"
+      ],
+      "answerIndex": 3,
+      "solution": "The diaphragm is a reusable barrier method that covers the cervix to prevent sperm from entering the uterus. Unlike condoms, which are disposable, or IUDs, which are implanted in the uterus, the diaphragm physically blocks the cervix. Oral pills work by altering hormone levels, not by creating a physical barrier.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "कौन सी गर्भनिरोधक विधि एक बाधा के रूप में वर्णित है जो शिश्न के माध्यम से शुक्राणुओं के प्रवेश को रोकती है और पुन: उपयोग की जा सकती है?",
+          "choices": [
+            "कंडोम",
+            "आई.यू.डी.",
+            "मौखिक गोलियां",
+            "डायाफ्राम"
+          ],
+          "solution": "डायाफ्राम एक पुन: उपयोग की जा सकने वाली बाधा विधि है जो गर्भाशय ग्रीवा को कवर करती है ताकि शुक्राणु गर्भाशय में प्रवेश न कर सकें। कंडोम के विपरीत, जो एक बार के उपयोग के लिए होते हैं, या आई.यू.डी., जो गर्भाशय में लगाई जाती है, डायाफ्राम शारीरिक रूप से ग्रीवा को ब्लॉक करती है। मौखिक गोलियां हार्मोन स्तर को बदलकर काम करती हैं, न कि एक शारीरिक बाधा बनाकर।",
+          "imageAlt": null,
+          "critique": "Translation accurately preserves meaning, technical terms are appropriate for Hindi curriculum, and the correct answer remains option 3.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "कोणता गर्भनिरोधक पद्धती एखादा अवरोध असतो जो शिश्नाच्या मार्गाने वीर्याच्या दाबाला रोखतो आणि पुन्हा वापरता येतो?",
+          "choices": [
+            "कॉन्डोम",
+            "आय.यू.डी.",
+            "ओरल पिल्स",
+            "डायफ्राम"
+          ],
+          "solution": "डायफ्राम ही पुन्हा वापरता येणारी अवरोध पद्धती असते जी शिश्नाच्या मार्गाने वीर्याच्या दाबाला रोखते आणि गर्भाशयात जाण्यापासून रोखते. कॉन्डोम, जे एकूण वापरानंतर नष्ट होतात, किंवा आय.यू.डी., जी गर्भाशयात रूपट केली जाते, यापेक्षा डायफ्राम शारीरिक रूपाने शिश्नाच्या मार्गाला अवरोध करते. ओरल पिल्स हार्मोनच्या पातळीत बदल करून काम करतात, शारीरिक अवरोध तयार करून नाही.",
+          "imageAlt": null,
+          "critique": "The translation accurately reflects the original English content with appropriate Marathi medical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses condoms with barriers that are not reusable",
+        "Refers to IUDs as barriers, which are inserted into the uterus",
+        "Refers to oral pills, which are not barriers at all",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies the diaphragm as the reusable barrier method that prevents sperm entry through the cervix. The reasoning for the other options is accurate and reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/12/biology/lebo103.pdf",
+          "ordinal": 3,
+          "pageStart": 3,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 3: Reproductive Health",
+            "3.2"
+          ]
+        },
+        {
+          "document": "ncert/12/biology/lebo103.pdf",
+          "ordinal": 4,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 3: Reproductive Health",
+            "3.2"
+          ]
+        },
+        {
+          "document": "ncert/12/biology/lebo103.pdf",
+          "ordinal": 5,
+          "pageStart": 4,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 3: Reproductive Health",
+            "3.2"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T15:37:08.762Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Why are STIs a major threat to a healthy society?",
+      "choices": [
+        "Because they are always fatal",
+        "Because they can lead to serious complications",
+        "Because they are always curable",
+        "Because they are not preventable"
+      ],
+      "answerIndex": 1,
+      "solution": "STIs are a major threat to a healthy society because they can lead to serious complications such as pelvic inflammatory disease, infertility, or cancer of the reproductive tract. These health issues can have long-term effects on individuals and reduce overall public health. The other options are incorrect because not all STIs are fatal, not all are curable, and many are preventable with proper measures.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "क्योंकि एसटीआई स्वस्थ समाज के लिए एक प्रमुख खतरा हैं?",
+          "choices": [
+            "क्योंकि वे हमेशा मृत्यु के कारण होते हैं",
+            "क्योंकि वे गंभीर समस्याओं का कारण बन सकते हैं",
+            "क्योंकि वे हमेशा ठीक हो जाते हैं",
+            "क्योंकि वे रोके नहीं जा सकते"
+          ],
+          "solution": "एसटीआई स्वस्थ समाज के लिए एक प्रमुख खतरा हैं क्योंकि वे गंभीर समस्याओं जैसे पेल्विक सूजन बीमारी, बांझपन या जनन तंत्र के कैंसर का कारण बन सकते हैं। ये स्वास्थ्य समस्याएं व्यक्तिगत और सामाजिक स्वास्थ्य पर लंबे समय तक प्रभाव डाल सकती हैं। अन्य विकल्प गलत हैं क्योंकि सभी एसटीआई मृत्यु के कारण नहीं होते, सभी ठीक नहीं हो सकते और बहुत सारे उचित उपायों के साथ रोके जा सकते हैं।",
+          "imageAlt": null,
+          "critique": "The translation accurately reflects the original meaning, with appropriate Hindi terminology for medical concepts.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "STIs म्हणजे एक आरोग्यपूर्ण समाजासाठी मोठा धोका का आहेत?",
+          "choices": [
+            "कारण ते हमेशा मृत्यू घेतात",
+            "कारण ते गंभीर अवस्थांमध्ये जाऊ शकतात",
+            "कारण ते हमेशा उपचारायोग्य असतात",
+            "कारण ते रोखता येत नाहीत"
+          ],
+          "solution": "STIs एक आरोग्यपूर्ण समाजासाठी मोठा धोका आहेत कारण ते गंभीर अवस्थांमध्ये जाऊ शकतात जसे की पेल्विक इन्फ्लामेटरी रोग, बालोत्पादन विकार अथवा बालोत्पादन विकाराचा कॅन्सर. या आरोग्य समस्यांचा व्यक्तींवर लांबलचक परिणाम होऊ शकतो आणि सामान्य आरोग्यावर घट होऊ शकते. इतर विकल्प अयोग्य आहेत कारण सर्व STIs मृत्यू घेत नाहीत, सर्व उपचारायोग्य नाहीत आणि बर्याच उचित उपायांनी रोखता येतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for medical concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Believing that all STIs are fatal, ignoring the fact that many are treatable",
+        null,
+        "Believing that all STIs can be completely cured, ignoring the fact that some, like HIV and hepatitis B, are chronic and not curable",
+        "believes that STIs cannot be prevented through safe sex practices or education"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 1, as STIs can lead to serious complications. The author's solution is sound and matches the reasoning. All three distractors reflect common misconceptions about STIs.",
+      "sources": [
+        {
+          "document": "ncert/12/biology/lebo103.pdf",
+          "ordinal": 9,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 3: Reproductive Health",
+            "3.4",
+            "(STI"
+          ]
+        },
+        {
+          "document": "ncert/12/biology/lebo103.pdf",
+          "ordinal": 10,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 3: Reproductive Health",
+            "3.4",
+            "(STI"
+          ]
+        },
+        {
+          "document": "ncert/12/biology/lebo103.pdf",
+          "ordinal": 11,
+          "pageStart": 8,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 3: Reproductive Health",
+            "3.4",
+            "(STI"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T15:37:08.762Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
     }
   ]
 }

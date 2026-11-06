@@ -2057,6 +2057,1594 @@
       "generatedAt": "2026-10-28T16:18:55.738Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is the name of the structure that connects a motor neuron to a muscle fibre?",
+      "choices": [
+        "Neuromuscular junction",
+        "Synapse",
+        "Axon terminal",
+        "Myelin sheath"
+      ],
+      "answerIndex": 0,
+      "solution": "The neuromuscular junction is the correct answer because it is the specific point where a motor neuron communicates with a muscle fibre. A synapse is a general term for a connection between nerve cells, not specifically between a neuron and a muscle. An axon terminal is part of a neuron, not the connection itself, and a myelin sheath is a protective covering around nerve cells, not a site of connection.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक मोटर न्यूरॉन और मांसपेशी फाइबर को जोड़ने वाली संरचना का नाम क्या है?",
+          "choices": [
+            "न्यूरोमुस्कुलर जंक्शन",
+            "सिनैप्स",
+            "एक्सॉन टर्मिनल",
+            "मायलिन कोशिका"
+          ],
+          "solution": "न्यूरोमुस्कुलर जंक्शन सही उत्तर है क्योंकि यह एक मोटर न्यूरॉन और मांसपेशी फाइबर के बीच संचार के विशिष्ट बिंदु है। सिनैप्स एक न्यूरॉन के बीच संबंध के लिए एक सामान्य शब्द है, जो विशेष रूप से एक न्यूरॉन और मांसपेशी के बीच नहीं है। एक्सॉन टर्मिनल एक न्यूरॉन का हिस्सा है, न कि संबंध के बिंदु के रूप में। मायलिन कोशिका न्यूरॉन को आवरित करने वाली एक सुरक्षात्मक कोशिका है, जो जुड़ाव के स्थान के रूप में नहीं है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate terminology as found in Hindi-medium biology textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "मोटर न्यूरॉन आणि मास्कल फायबर दरम्यान जोडणारा संरचनेचे नाव काय आहे?",
+          "choices": [
+            "न्यूरोमस्क्युलर जंक्शन",
+            "सिनॅप्स",
+            "एक्सॉन टर्मिनल",
+            "मायलिन शीथ"
+          ],
+          "solution": "न्यूरोमस्क्युलर जंक्शन हे बरोबर उत्तर आहे कारण हे एक विशिष्ट बिंदू आहे जेथे मोटर न्यूरॉन मास्कल फायबरशी संपर्क साधते. सिनॅप्स हे न्यूरॉन्समधील संपर्काचे सामान्य नाव आहे, मास्कल फायबर आणि न्यूरॉन दरम्यान संपर्कासाठी नाही. एक्सॉन टर्मिनल न्यूरॉनचा भाग आहे, जो संपर्क नाही. मायलिन शीथ हे न्यूरॉनच्या बाहेरच्या आवरणाचे नाव आहे, जो संपर्काचा ठिकाण नाही.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate terminology as used in Marathi science textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "confuses general terms with specific ones",
+        "refers to a part of a neuron",
+        "describes a covering around a nerve"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 'Neuromuscular junction' as it is the specific site of connection between a motor neuron and a muscle fiber. The other options are either general terms (synapse), parts of neurons (axon terminal), or coverings (myelin sheath), which are all incorrect in this context.",
+      "sources": [
+        {
+          "document": "ncert/11/biology/kebo117.pdf",
+          "ordinal": 4,
+          "pageStart": 4,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 17: Locomotion and Movement",
+            "HAPTER"
+          ]
+        },
+        {
+          "document": "ncert/11/biology/kebo117.pdf",
+          "ordinal": 5,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 17: Locomotion and Movement",
+            "HAPTER"
+          ]
+        },
+        {
+          "document": "ncert/11/biology/kebo117.pdf",
+          "ordinal": 6,
+          "pageStart": 8,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 17: Locomotion and Movement",
+            "HAPTER"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T04:45:57.549Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "Which part of the skeleton is formed by the fusion of the ilium, ischium and pubis?",
+      "choices": [
+        "Humerus",
+        "Patella",
+        "Pelvic girdle",
+        "Pectoral girdle"
+      ],
+      "answerIndex": 2,
+      "solution": "The pelvic girdle is formed by the fusion of the ilium, ischium, and pubis, which together create the structure that supports the lower body and connects the legs to the spine. The humerus is a bone in the upper arm, the patella is a bone in the knee, and the pectoral girdle is part of the shoulder structure, not the lower body.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "हड्डी के कौन से भाग के एकीकरण से इलियम, इस्कियम और पबिस बनता है?",
+          "choices": [
+            "ह्यूमरस",
+            "पैटेला",
+            "कोटिल गर्डल",
+            "कंधा गर्डल"
+          ],
+          "solution": "कोटिल गर्डल इलियम, इस्कियम और पबिस के एकीकरण द्वारा बनता है, जो निचले शरीर का समर्थन करता है और टांगों को स्पाइन से जोड़ता है। ह्यूमरस ऊपरी बाजू की हड्डी है, पैटेला घुटने की हड्डी है, और कंधा गर्डल कंधे की संरचना का हिस्सा है, निचले शरीर का नहीं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, with appropriate Hindi terminology used for anatomical structures. The correct answer remains option (3) in both languages.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "हाडांच्या पेशीमधील कोणत्या भागाची बनावट इलियम, इस्कियम आणि पबिस च्या संयोजनामुळे होते?",
+          "choices": [
+            "ह्यूमरस",
+            "पॅटेला",
+            "पेल्विक गर्डल",
+            "पेक्टोरल गर्डल"
+          ],
+          "solution": "पेल्विक गर्डल इलियम, इस्कियम आणि पबिस च्या संयोजनामुळे बनते, जे खालच्या शरीराचे समर्थन करते आणि वाकड्यांना स्पाईनशी जोडते. ह्यूमरस हा उजव्या हाताचा हाड आहे, पॅटेला हा घुटण्याचा हाड आहे आणि पेक्टोरल गर्डल हा कंठाच्या संरचनेचा भाग आहे, खालच्या शरीराचा भाग नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi anatomical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the pelvic girdle with the upper limb bones",
+        "Misunderstands the structure of the knee",
+        null,
+        "Confuses pelvic girdle with pectoral girdle, thinking both are formed by fusion of bones in the same way"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-constructed and the solution is accurate. The correct answer is the pelvic girdle, which is formed by the fusion of the ilium, ischium, and pubis. The distractors reflect common misconceptions about limb girdles and knee anatomy.",
+      "sources": [
+        {
+          "document": "ncert/11/biology/kebo117.pdf",
+          "ordinal": 7,
+          "pageStart": 9,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 17: Locomotion and Movement",
+            "HAPTER"
+          ]
+        },
+        {
+          "document": "ncert/11/biology/kebo117.pdf",
+          "ordinal": 8,
+          "pageStart": 10,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 17: Locomotion and Movement",
+            "HAPTER"
+          ]
+        },
+        {
+          "document": "ncert/11/biology/kebo117.pdf",
+          "ordinal": 9,
+          "pageStart": 11,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 17: Locomotion and Movement",
+            "HAPTER"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T04:45:57.549Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the primary function of cilia in the trachea?",
+      "choices": [
+        "To remove dust particles and foreign substances",
+        "To facilitate the movement of food",
+        "To control the contraction of muscles",
+        "To transport ova through the female reproductive tract"
+      ],
+      "answerIndex": 0,
+      "solution": "Cilia in the trachea move in a coordinated manner to sweep away dust and other foreign particles that are inhaled, helping to keep the airways clean. The function of moving food is handled by the esophagus, not the trachea. Controlling muscle contraction is the role of muscle cells, and transporting ova is a function of the female reproductive system, not the trachea.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "ट्रैकिया में सिलिया का प्राथमिक कार्य क्या है?",
+          "choices": [
+            "डस्ट कणों और विदेशी पदार्थों को हटाना",
+            "भोजन के गति को सुविधाजनक बनाना",
+            "मांसपेशियों के संकुचन को नियंत्रित करना",
+            "मादा जनन तंत्र में अंडाणु के परिवहन को संचालित करना"
+          ],
+          "solution": "ट्रैकिया में सिलिया समन्वित ढंग से गति करते हैं ताकि श्वसन के द्वारा आए डस्ट और अन्य विदेशी कणों को हटा दिया जाए, जिससे श्वासनली साफ रहे। भोजन के गति का कार्य आहारनली द्वारा किया जाता है, न कि ट्रैकिया द्वारा। मांसपेशियों के संकुचन का नियंत्रण मांसपेशी कोशिकाओं का कार्य है, और अंडाणु के परिवहन का कार्य मादा जनन तंत्र के द्वारा किया जाता है, न कि ट्रैकिया द्वारा।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains original meaning, and uses appropriate Hindi medical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "त्राकिया मध्ये किलिया चे प्राथमिक कार्य काय आहे?",
+          "choices": [
+            "धूल कण आणि विदेशी पदार्थ दूर करणे",
+            "खाद्य पदार्थांच्या गतीला सुविधा देणे",
+            "मांसपेशींच्या संकोचनाचे नियंत्रण करणे",
+            "महिला जनन प्रणालीमध्ये अंडास वहन करणे"
+          ],
+          "solution": "त्राकिया मध्ये किलिया समन्वित पद्धतीने चालतात जेणेकरून श्वासाद्वारे घेतलेल्या धूल आणि इतर विदेशी कण दूर करतात, जेणेकरून श्वासनली स्वच्छ राहतात. खाद्य पदार्थांच्या गतीला सुविधा देण्याचे कार्य अंतःकोशिका करते, त्राकिया नाही. मांसपेशींच्या संकोचनाचे नियंत्रण मांसपेशी कोशिकांचे कार्य आहे आणि अंडास वहन करणे हे महिला जनन प्रणालीचे कार्य आहे, त्राकिया नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi medical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses ciliary movement with the function of the digestive system",
+        "Confuses cilia function with muscle control, thinking cilia are involved in muscle regulation",
+        "Confuses ciliary function in the trachea with that in the female reproductive system"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 0, as cilia in the trachea are primarily responsible for removing dust and foreign particles. The other options represent common misconceptions about ciliary functions in different systems.",
+      "sources": [
+        {
+          "document": "ncert/11/biology/kebo117.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 1,
+          "headingPath": [
+            "Chapter 17: Locomotion and Movement",
+            "HAPTER"
+          ]
+        },
+        {
+          "document": "ncert/11/biology/kebo117.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 17: Locomotion and Movement",
+            "HAPTER"
+          ]
+        },
+        {
+          "document": "ncert/11/biology/kebo117.pdf",
+          "ordinal": 2,
+          "pageStart": 2,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 17: Locomotion and Movement",
+            "HAPTER"
+          ]
+        },
+        {
+          "document": "ncert/11/biology/kebo117.pdf",
+          "ordinal": 3,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 17: Locomotion and Movement",
+            "HAPTER"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T04:45:57.549Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the main function of the neuromuscular junction in muscle contraction?",
+      "choices": [
+        "It stores ATP for muscle energy",
+        "It provides structural support to the muscle fibre",
+        "It transmits nerve signals to the muscle fibre",
+        "It produces lactic acid during muscle fatigue"
+      ],
+      "answerIndex": 2,
+      "solution": "The neuromuscular junction is the point where a motor neuron connects to a muscle fibre. It transmits nerve signals that initiate muscle contraction. The other options are incorrect because ATP is stored in the sarcoplasm, structural support is provided by the sarcomere, and lactic acid is a byproduct of anaerobic respiration, not produced at the neuromuscular junction.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "मांसपेशी संकुचन में तंत्रिका-मांसपेशी संयोजक का मुख्य कार्य क्या है?",
+          "choices": [
+            "यह मांसपेशी ऊर्जा के लिए ATP को संग्रहीत करता है",
+            "यह मांसपेशी तंतु के लिए संरचनात्मक समर्थन प्रदान करता है",
+            "यह तंत्रिका संकेतों को मांसपेशी तंतु तक संचारित करता है",
+            "यह मांसपेशी थकान के दौरान लैक्टिक एसिड का उत्पादन करता है"
+          ],
+          "solution": "तंत्रिका-मांसपेशी संयोजक एक मोटर तंत्रिका न्यूरॉन के एक मांसपेशी तंतु से जुड़े बिंदु होता है। यह मांसपेशी संकुचन की शुरुआत करने वाले तंत्रिका संकेतों को संचारित करता है। अन्य विकल्प गलत हैं क्योंकि ATP सैर्कोप्लाज्म में संग्रहीत होता है, संरचनात्मक समर्थन सार्कोमियर द्वारा प्रदान किया जाता है, और लैक्टिक एसिड एनारोबिक श्वसन का एक उत्पाद होता है, जो तंत्रिका-मांसपेशी संयोजक पर उत्पादित नहीं होता है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate technical terms as found in Hindi-medium biology textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "मांसपेशी संकुचनात न्यूरोमस्क्युलर जॉइंटचे मुख्य कार्य काय आहे?",
+          "choices": [
+            "ते मांसपेशी ऊर्जेसाठी ATP चे भंडार ठेवते",
+            "ते मांसपेशी तारेला आकार देण्यासाठी सहायता करते",
+            "ते मांसपेशी तारेला तांत्रिक संकेत पाठवते",
+            "ते मांसपेशी थकलेल्या वेळी लॅक्टिक अॅसिड तयार करते"
+          ],
+          "solution": "न्यूरोमस्क्युलर जॉइंट हे एक असे बिंदू आहे जेथे मोटर न्यूरॉन मांसपेशी तारेशी जुडलेला असतो. ते मांसपेशी संकुचन सुरू करणारे तांत्रिक संकेत पाठवते. इतर विकल्प चुकीचे आहेत कारण ATP चे भंडार सार्कोप्लाझममध्ये ठेवले जाते, आकार देण्यासाठी सार्कोमेअरची भूमिका असते आणि लॅक्टिक अॅसिड हे अॅनारोबिक श्वसनाचा उत्पाद असतो, जे न्यूरोमस्क्युलर जॉइंटवर तयार होत नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi medical terminology used.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the role of the neuromuscular junction with that of ATP storage",
+        "Misunderstands the structural role of the muscle fibre",
+        null,
+        "Does not understand the function of the neuromuscular junction in signal transmission"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 2. The neuromuscular junction's main function is to transmit nerve signals to the muscle fiber. The author's solution is accurate and aligns with the correct answer.",
+      "sources": [
+        {
+          "document": "ncert/11/biology/kebo117.pdf",
+          "ordinal": 4,
+          "pageStart": 4,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 17: Locomotion and Movement",
+            "HAPTER"
+          ]
+        },
+        {
+          "document": "ncert/11/biology/kebo117.pdf",
+          "ordinal": 5,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 17: Locomotion and Movement",
+            "HAPTER"
+          ]
+        },
+        {
+          "document": "ncert/11/biology/kebo117.pdf",
+          "ordinal": 6,
+          "pageStart": 8,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 17: Locomotion and Movement",
+            "HAPTER"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T04:45:57.549Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the role of troponin in the muscle contraction process?",
+      "choices": [
+        "It provides structural support to the muscle",
+        "It acts as an ATPase enzyme",
+        "It binds to calcium ions and exposes actin binding sites",
+        "It stores energy in the form of ATP"
+      ],
+      "answerIndex": 2,
+      "solution": "Troponin binds to calcium ions, which causes a conformational change that exposes the active binding sites on actin for myosin. The other options are incorrect because troponin does not provide structural support, it is not an ATPase enzyme, and it does not store energy in the form of ATP.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "मांसपेशी संकुचन प्रक्रिया में ट्रोपोनिन की भूमिका क्या है?",
+          "choices": [
+            "यह मांसपेशी के लिए संरचनात्मक समर्थन प्रदान करता है",
+            "यह एटीपीएज एंजाइम के रूप में कार्य करता है",
+            "यह कैल्शियम आयनों से जुड़ता है और एक्टिन बांधने के स्थान को उजागर करता है",
+            "यह एटीपी के रूप में ऊर्जा को संग्रहीत करता है"
+          ],
+          "solution": "ट्रोपोनिन कैल्शियम आयनों से जुड़ता है, जिससे एक आकृति परिवर्तन होता है जो मायोसिन के लिए एक्टिन पर सक्रिय बांधने के स्थान को उजागर करता है। अन्य विकल्प गलत हैं क्योंकि ट्रोपोनिन संरचनात्मक समर्थन प्रदान नहीं करता है, यह एटीपीएज एंजाइम नहीं है, और यह एटीपी के रूप में ऊर्जा को संग्रहीत नहीं करता है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate technical terms as found in Hindi-medium biology textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "मासल अस्फूर्तीच्या प्रक्रियेत ट्रोपोनिनचा भूमिका काय आहे?",
+          "choices": [
+            "ते मासलच्या विस्तारासाठी विशिष्ट समर्थन प्रदान करते",
+            "ते एटीपीएज एंजाइम म्हणून कार्य करते",
+            "ते कॅल्शियम आयनांसह जोडले जाते आणि एक्टिन बाइंडिंग साइट्स उघडते",
+            "ते एटीपीच्या रूपात ऊर्जा साठवते"
+          ],
+          "solution": "ट्रोपोनिन कॅल्शियम आयनांसह जोडले जाते, ज्यामुळे एक्टिनवर सक्रिय बाइंडिंग साइट्स उघडतात मायोसिनसाठी. इतर विकल्प अयोग्य आहेत कारण ट्रोपोनिन मासलच्या विस्तारासाठी विशिष्ट समर्थन प्रदान करत नाही, ते एटीपीएज एंजाइम नाही आणि एटीपीच्या रूपात ऊर्जा साठवत नाही.",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains original meaning, and uses appropriate Marathi terminology for biological concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Misunderstands the structural role of troponin",
+        "Confuses troponin with an ATPase enzyme",
+        null,
+        "Thinks troponin is responsible for energy storage"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The solution is accurate and aligns with the correct answer. All distractors are based on common misconceptions about troponin's role.",
+      "sources": [
+        {
+          "document": "ncert/11/biology/kebo117.pdf",
+          "ordinal": 4,
+          "pageStart": 4,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 17: Locomotion and Movement",
+            "HAPTER"
+          ]
+        },
+        {
+          "document": "ncert/11/biology/kebo117.pdf",
+          "ordinal": 5,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 17: Locomotion and Movement",
+            "HAPTER"
+          ]
+        },
+        {
+          "document": "ncert/11/biology/kebo117.pdf",
+          "ordinal": 6,
+          "pageStart": 8,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 17: Locomotion and Movement",
+            "HAPTER"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T04:45:57.549Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the function of the intervertebral disc?",
+      "choices": [
+        "To protect the brain",
+        "To allow movement between vertebrae",
+        "To form the rib cage",
+        "To support the skull"
+      ],
+      "answerIndex": 1,
+      "solution": "The intervertebral disc allows movement between vertebrae by acting as a cushion and enabling flexibility in the spine. It does not protect the brain, as that is the role of the skull and meninges. It is not involved in forming the rib cage, which is made of bones and cartilage, nor does it support the skull, which is held by the vertebral column and muscles.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "अंतर-कशेरुक डिस्क का कार्य क्या है?",
+          "choices": [
+            "मस्तिष्क की रक्षा करना",
+            "कशेरुकास्थियों के बीच गति की अनुमति देना",
+            "कंकाल के बनाना",
+            "मस्तिष्क को समर्थन देना"
+          ],
+          "solution": "अंतर-कशेरुक डिस्क कशेरुकास्थियों के बीच गति की अनुमति देता है क्योंकि यह एक सुरक्षात्मक आधार के रूप में कार्य करता है और कशेरुकास्थि की लचीलापन प्रदान करता है। यह मस्तिष्क की रक्षा नहीं करता है, जो कि कंकाल और मेनिंजीज का कार्य है। यह कंकाल के बनाने में शामिल नहीं है, जो कि हड्डियों और कार्टिलेज से बना होता है, और यह मस्तिष्क को समर्थन नहीं देता, जो कि कशेरुकास्थि स्तंभ और मांसपेशियों द्वारा धारित होता है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate medical terminology in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "अंतर-स्थानीय डिस्कची कार्ये काय आहेत?",
+          "choices": [
+            "मेंदूची रक्षण करणे",
+            "हड्ड्यांमध्ये गती अनुमती देणे",
+            "कंठपट्टी तयार करणे",
+            "खांद्याचे समर्थन करणे"
+          ],
+          "solution": "अंतर-स्थानीय डिस्क हड्ड्यांमध्ये गती अनुमती देण्यासाठी एक आरामदायक आणि लचका देणारे घटक म्हणून कार्य करते. मेंदूचे रक्षण करणे हे खोपरा आणि मेनिंजीसचे कार्य आहे. ते कंठपट्टी तयार करण्यात सहभागी नाही, जी हड्ड्यां आणि कॉर्टिलेजमधून तयार होते. खोपरा समर्थन करण्यात ते सहभागी नाही, जो वर्टेब्रल कॉलम आणि मांसपेशींद्वारे धारण केला जातो.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi medical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the function of the brain with that of the intervertebral disc",
+        null,
+        "Misunderstands the role of the rib cage",
+        "Incorrectly assumes the disc supports the skull"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 1, as intervertebral discs are indeed responsible for allowing movement between vertebrae. The other options represent common misconceptions about the functions of the brain, rib cage, and skull.",
+      "sources": [
+        {
+          "document": "ncert/11/biology/kebo117.pdf",
+          "ordinal": 7,
+          "pageStart": 9,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 17: Locomotion and Movement",
+            "HAPTER"
+          ]
+        },
+        {
+          "document": "ncert/11/biology/kebo117.pdf",
+          "ordinal": 8,
+          "pageStart": 10,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 17: Locomotion and Movement",
+            "HAPTER"
+          ]
+        },
+        {
+          "document": "ncert/11/biology/kebo117.pdf",
+          "ordinal": 9,
+          "pageStart": 11,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 17: Locomotion and Movement",
+            "HAPTER"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T04:45:57.549Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "Which of the following is a type of movement that occurs in human cells?",
+      "choices": [
+        "Ciliary movement",
+        "Looping movement",
+        "Alternate contraction of circular and longitudinal muscles",
+        "Movement of multiple limbs"
+      ],
+      "answerIndex": 0,
+      "solution": "Ciliary movement is a type of movement that occurs in human cells, such as in the respiratory tract, where cilia help move mucus. Looping movement and alternate contraction of circular and longitudinal muscles are not cellular movements but rather patterns seen in larger organisms or organs. Movement of multiple limbs refers to whole-body locomotion, not movement at the cellular level.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा गति का एक प्रकार है जो मानव कोशिकाओं में होता है?",
+          "choices": [
+            "किलियर गति",
+            "लूपिंग गति",
+            "वृत्ताकार एवं अनुदैर्ध्य मांसपेशियों का वैकल्पिक संकुचन",
+            "बहुत अंगों की गति"
+          ],
+          "solution": "किलियर गति मानव कोशिकाओं में होने वाली गति का एक प्रकार है, जैसे कि श्वसन तंत्र में, जहां किलिया म्यूकस को ले जाने में सहायता करते हैं। लूपिंग गति एवं वृत्ताकार एवं अनुदैर्ध्य मांसपेशियों के वैकल्पिक संकुचन कोशिकीय गति नहीं हैं, बल्कि बड़े जीवों या अंगों में देखी जाने वाली पैटर्न हैं। बहुत अंगों की गति पूरे शरीर के गति के लिए है, कोशिकीय स्तर पर नहीं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriately translated, and the structure matches the original.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणता गतीचा प्रकार मानवी कोशिकांमध्ये घडतो?",
+          "choices": [
+            "किलीय गती",
+            "लूपिंग गती",
+            "वृत्ताकार आणि लंबवर्तुळ मांसपेशींची अद्वितीय संकोचने",
+            "अनेक अंगांची गती"
+          ],
+          "solution": "किलीय गती ही मानवी कोशिकांमध्ये घडणारी गती आहे, उदाहरणार्थ श्वासनलीत किलीय मार्गदर्शन करतात. लूपिंग गती आणि वृत्ताकार आणि लंबवर्तुळ मांसपेशींची अद्वितीय संकोचने ही कोशिकांच्या पातळीवरील गती नाहीत तर जास्तीत जास्त जीवांच्या अवयवांमध्ये दिसणारी पॅटर्न आहेत. अनेक अंगांची गती ही पूर्ण शरीराच्या गतीची वर्णन आहे, कोशिकांच्या पातळीवरील गती नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for biological concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses cell-level movement with locomotion in organisms.",
+        "Refers to movements in invertebrates like earthworms.",
+        "Describes a type of locomotion seen in invertebrates, not cell-level movement in humans."
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 0 (Ciliary movement), as it is explicitly mentioned as a type of movement in human cells. The other options refer to locomotion or movements in other organisms, which aligns with the author's reasoning.",
+      "sources": [
+        {
+          "document": "ncert/11/biology/kebo117.pdf",
+          "ordinal": 10,
+          "pageStart": 11,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 17: Locomotion and Movement",
+            "HAPTER"
+          ]
+        },
+        {
+          "document": "ncert/11/biology/kebo117.pdf",
+          "ordinal": 11,
+          "pageStart": 12,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 17: Locomotion and Movement",
+            "HAPTER"
+          ]
+        },
+        {
+          "document": "ncert/11/biology/kebo117.pdf",
+          "ordinal": 12,
+          "pageStart": 13,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 17: Locomotion and Movement",
+            "HAPTER"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T04:45:57.549Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "Which type of muscle is found in the walls of the stomach?",
+      "choices": [
+        "Skeletal muscle",
+        "Cardiac muscle",
+        "Smooth muscle",
+        "Striated muscle"
+      ],
+      "answerIndex": 2,
+      "solution": "Smooth muscle is found in the walls of the stomach because it is nonstriated and involuntary, which is characteristic of muscles in internal organs. Skeletal muscle is voluntary and attached to bones, cardiac muscle is found in the heart, and striated muscle refers to skeletal and cardiac muscles, not the stomach.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "आमाशय की दीवारों में किस प्रकार की मांसपेशी पाई जाती है?",
+          "choices": [
+            "स्केलेटल मांसपेशी",
+            "कार्डिएक मांसपेशी",
+            "चिकनी मांसपेशी",
+            "स्ट्राइएटेड मांसपेशी"
+          ],
+          "solution": "आमाशय की दीवारों में चिकनी मांसपेशी पाई जाती है क्योंकि यह अनियंत्रित और गैर-स्ट्राइएटेड होती है, जो आंतरिक अंगों की मांसपेशियों की विशेषता है। स्केलेटल मांसपेशी स्वेच्छा द्वारा नियंत्रित होती है और हड्डियों से जुड़ी रहती है, कार्डिएक मांसपेशी दिल में पाई जाती है, और स्ट्राइएटेड मांसपेशी स्केलेटल और कार्डिएक मांसपेशियों के लिए उपयोग की जाती है, आमाशय के लिए नहीं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English content with appropriate terminology used in Indian medical/health education.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "आतड्याच्या भिंतीवर कोणत्या प्रकारचे मांसपेशी आढळतात?",
+          "choices": [
+            "कंकाल मांसपेशी",
+            "हृदय मांसपेशी",
+            "सुस्पष्ट नस",
+            "स्ट्रायेटेड मांसपेशी"
+          ],
+          "solution": "आतड्याच्या भिंतीवर सुस्पष्ट नस असतात कारण ते अस्पष्ट आणि अस्वच्छ असतात, जे आंतरिक अवयवांच्या मांसपेशींचे वैशिष्ट्य आहे. कंकाल मांसपेशी ही स्वच्छ आणि हड्ड्यांशी जोडलेली असतात, हृदय मांसपेशी हृदयात असतात आणि स्ट्रायेटेड मांसपेशी ही कंकाल आणि हृदय मांसपेशींच्या विषयी असतात, आतड्याच्या भिंतीवर नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the scientific terminology used in Marathi textbooks. The solution correctly identifies 'smooth muscle' as the answer, and the distractors remain incorrect as in the original.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses skeletal muscle with the type found in the stomach.",
+        "Refers to the heart muscle, not the stomach.",
+        null,
+        "Uses a general term for striated muscles, not a specific type."
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-constructed. The correct answer is smooth muscle, and the reasoning provided by the author is accurate. The distractors reflect common misconceptions about muscle types.",
+      "sources": [
+        {
+          "document": "ncert/11/biology/kebo117.pdf",
+          "ordinal": 10,
+          "pageStart": 11,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 17: Locomotion and Movement",
+            "HAPTER"
+          ]
+        },
+        {
+          "document": "ncert/11/biology/kebo117.pdf",
+          "ordinal": 11,
+          "pageStart": 12,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 17: Locomotion and Movement",
+            "HAPTER"
+          ]
+        },
+        {
+          "document": "ncert/11/biology/kebo117.pdf",
+          "ordinal": 12,
+          "pageStart": 13,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 17: Locomotion and Movement",
+            "HAPTER"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T04:45:57.549Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If a muscle fibre is not receiving signals from the nervous system, what would happen to the contraction process?",
+      "choices": [
+        "It would contract continuously",
+        "It would not contract",
+        "It would contract more forcefully",
+        "It would contract but with less energy"
+      ],
+      "answerIndex": 1,
+      "solution": "The contraction process begins when a nerve signal is received at the neuromuscular junction. Without this signal, the muscle fibre cannot initiate contraction. The other options are incorrect because continuous contraction would require constant signals, more force would require additional signals, and energy levels are not directly affected by the absence of signals.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक मांसपेशी तंत्रिका तंत्र से संकेत नहीं प्राप्त कर रही है, तो संकुचन प्रक्रिया पर क्या प्रभाव पड़ेगा?",
+          "choices": [
+            "यह लगातार संकुचित हो जाएगी",
+            "यह संकुचित नहीं होगी",
+            "यह अधिक शक्तिशाली रूप से संकुचित हो जाएगी",
+            "यह संकुचित हो जाएगी लेकिन कम ऊर्जा के साथ"
+          ],
+          "solution": "संकुचन प्रक्रिया तब शुरू होती है जब एक तंत्रिका संकेत न्यूरोमुस्कुलर जंक्शन पर पहुंचता है। इस संकेत के बिना, मांसपेशी तंतु संकुचन शुरू नहीं कर सकता। अन्य विकल्प गलत हैं क्योंकि लगातार संकुचन के लिए निरंतर संकेत की आवश्यकता होती है, अधिक शक्ति के लिए अतिरिक्त संकेत की आवश्यकता होती है, और ऊर्जा स्तर निर्देशों के अभाव में सीधे प्रभावित नहीं होते।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and technical terminology. All options and the solution are correctly translated, with the correct answer remaining in the same position (option 1). The distractors remain incorrect in the Hindi version, and the terminology used is consistent with standard Hindi medical/physiology textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर एका मांसपेशी तार नर्वस सिस्टममधून संकेत प्राप्त करत नसेल, तर खिचली प्रक्रियेवर काय परिणाम होईल?",
+          "choices": [
+            "ती सतत खिचली जाईल",
+            "ती खिचली नाही करेल",
+            "ती अधिक शक्तिशाली खिचली जाईल",
+            "ती खिचली जाईल परंतु कमी ऊर्जेने"
+          ],
+          "solution": "खिचली प्रक्रिया न्यूरोमस्क्युलर जंक्शनवर एका नर्वस संकेताच्या प्राप्तीनंतर सुरू होते. या संकेताशिवाय, मांसपेशी तार खिचली सुरू करू शकत नाही. इतर विकल्प चुकीचे आहेत कारण सतत खिचली संतत संकेतांची आवश्यकता असते, अधिक शक्ती अतिरिक्त संकेतांची आवश्यकता असते आणि ऊर्जा पातळी अनुपस्थित संकेतामुळे थोडी बदलत नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for biological concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Believes that muscle fibres can contract without nerve signals",
+        null,
+        "Assumes that lack of signals increases contraction strength",
+        "Thinks that energy levels are independent of nerve signals"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly identifies that without a nerve signal, the muscle cannot contract. The reasoning for the distractors aligns with common misconceptions about neuromuscular function.",
+      "sources": [
+        {
+          "document": "ncert/11/biology/kebo117.pdf",
+          "ordinal": 4,
+          "pageStart": 4,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 17: Locomotion and Movement",
+            "HAPTER"
+          ]
+        },
+        {
+          "document": "ncert/11/biology/kebo117.pdf",
+          "ordinal": 5,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 17: Locomotion and Movement",
+            "HAPTER"
+          ]
+        },
+        {
+          "document": "ncert/11/biology/kebo117.pdf",
+          "ordinal": 6,
+          "pageStart": 8,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 17: Locomotion and Movement",
+            "HAPTER"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T04:45:57.549Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If a person has a damaged synovial joint, which activity would be most affected?",
+      "choices": [
+        "Walking",
+        "Breathing",
+        "Swallowing",
+        "Reading"
+      ],
+      "answerIndex": 0,
+      "solution": "Synovial joints are responsible for a wide range of movements, particularly those involving the limbs. Walking requires the use of synovial joints like the knees and hips, which would be significantly impaired if damaged. Breathing, swallowing, and reading do not primarily involve synovial joints and would not be as affected.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि किसी व्यक्ति के सिनोवियल जॉइंट क्षतिग्रस्त हो जाता है, तो कौन-सी गतिविधि सबसे अधिक प्रभावित होगी?",
+          "choices": [
+            "चलना",
+            "श्वास लेना",
+            "निगलना",
+            "पढ़ना"
+          ],
+          "solution": "सिनोवियल जॉइंट विस्तृत गतियों के लिए उत्तरदायी होते हैं, विशेष रूप से उन गतियों के लिए जो अंगों के साथ जुड़े होते हैं। चलना में घुटनों और कमर के सिनोवियल जॉइंट का उपयोग किया जाता है, जो क्षतिग्रस्त होने पर बहुत अधिक प्रभावित हो जाएगा। श्वास लेना, निगलना और पढ़ना मुख्य रूप से सिनोवियल जॉइंट के साथ जुड़े नहीं होते हैं और इन पर इतना प्रभाव नहीं पड़ेगा।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains original meaning, and uses appropriate Hindi medical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर एखाद्या व्यक्तीला नुकसान झालेले सिनोवियल जॉइंट असेल, तर कोणती क्रिया सर्वात जास्त प्रभावित होईल?",
+          "choices": [
+            "चालणे",
+            "श्वास घेणे",
+            "खाणे",
+            "वाचणे"
+          ],
+          "solution": "सिनोवियल जॉइंट हे विस्तृत गतींसाठी जबाबदार असतात, विशेषतः अंगांच्या गतींसाठी. चालण्यासाठी कूर्ची आणि हिपसारख्या सिनोवियल जॉइंटचा वापर होतो, जे नुकसान झाल्यास खूप गंभीरपणे अस्वस्थ होईल. श्वास घेणे, खाणे आणि वाचणे ही क्रिया सिनोवियल जॉइंटच्या मुख्य गतींसह जुळत नाहीत आणि त्यांना असे प्रभावित करणार नाहीत.",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, with appropriate Marathi medical terminology used.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Focuses on other body functions not related to movement",
+        "Ignores the role of joints in locomotion",
+        "Overlooks the connection between joints and movement"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct and aligns with the key. Synovial joints are indeed crucial for locomotion, and walking is the most affected activity when they are damaged.",
+      "sources": [
+        {
+          "document": "ncert/11/biology/kebo117.pdf",
+          "ordinal": 7,
+          "pageStart": 9,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 17: Locomotion and Movement",
+            "HAPTER"
+          ]
+        },
+        {
+          "document": "ncert/11/biology/kebo117.pdf",
+          "ordinal": 8,
+          "pageStart": 10,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 17: Locomotion and Movement",
+            "HAPTER"
+          ]
+        },
+        {
+          "document": "ncert/11/biology/kebo117.pdf",
+          "ordinal": 9,
+          "pageStart": 11,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 17: Locomotion and Movement",
+            "HAPTER"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T04:45:57.549Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "Which of the following is an example of a locomotory movement in a multicellular organism?",
+      "choices": [
+        "Streaming of protoplasm in Amoeba",
+        "Ciliary movement in the trachea",
+        "Muscular movement in limbs",
+        "Movement of cilia in the digestive tract"
+      ],
+      "answerIndex": 2,
+      "solution": "Muscular movement in limbs is an example of locomotory movement because it involves the contraction and relaxation of muscles to produce movement of the body. Streaming of protoplasm occurs in unicellular organisms and is not used for locomotion. Ciliary movement in the trachea and digestive tract is for moving substances, not for the organism's own movement.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा बहुकोशिक जीव में गमन गति का उदाहरण है?",
+          "choices": [
+            "अमीबा में प्रोटोप्लाज्म का प्रवाह",
+            "श्वासनली में झिल्ली गति",
+            "अंगों में मांसपेशी गति",
+            "पाचन तंत्र में झिल्ली की गति"
+          ],
+          "solution": "अंगों में मांसपेशी गति गमन गति का उदाहरण है क्योंकि यह मांसपेशियों के संकुचन और आराम के कारण शरीर की गति के उत्पादन में शामिल होती है। प्रोटोप्लाज्म का प्रवाह एककोशिक जीवों में होता है और गमन के लिए उपयोग नहीं किया जाता है। श्वासनली और पाचन तंत्र में झिल्ली गति पदार्थों के गति के लिए होती है, न कि जीव के स्वयं की गति के लिए।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains original meaning, and uses appropriate Hindi terminology for biological concepts.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते बहुकोशिकीय जीवातील गतिशीलतेचे उदाहरण आहे?",
+          "choices": [
+            "अमीबामधील प्रोटोप्लाझमचे स्ट्रीमिंग",
+            "श्वासनालीतील झिल्लीचे गतिविधी",
+            "मांसपेशी गतिविधी अंगात",
+            "पाचक व्यवस्थेतील झिल्लीचे गतिविधी"
+          ],
+          "solution": "मांसपेशी गतिविधी अंगात गतिशीलतेचे उदाहरण आहे कारण त्यात मांसपेशींच्या संकोचन आणि शिथिलतेमुळे शरीराचा गतिविधी होतो. प्रोटोप्लाझमचे स्ट्रीमिंग एककोशिकीय जीवांमध्ये होते आणि गतिशीलतेसाठी वापरले जात नाही. श्वासनाली आणि पाचक व्यवस्थेतील झिल्लीचे गतिविधी पदार्थ गतिविधी करण्यासाठी असतात, जीवाच्या स्वतःच्या गतिविधीसाठी नसतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for biological concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Refers to a simple movement in a unicellular organism",
+        "Refers to a function of cilia, not locomotion",
+        null,
+        "Refers to a function of cilia, not locomotion"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is muscular movement in limbs, as it is a true example of locomotion in multicellular organisms. The other options describe non-locomotory movements, which aligns with the author's reasoning.",
+      "sources": [
+        {
+          "document": "ncert/11/biology/kebo117.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 1,
+          "headingPath": [
+            "Chapter 17: Locomotion and Movement",
+            "HAPTER"
+          ]
+        },
+        {
+          "document": "ncert/11/biology/kebo117.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 17: Locomotion and Movement",
+            "HAPTER"
+          ]
+        },
+        {
+          "document": "ncert/11/biology/kebo117.pdf",
+          "ordinal": 2,
+          "pageStart": 2,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 17: Locomotion and Movement",
+            "HAPTER"
+          ]
+        },
+        {
+          "document": "ncert/11/biology/kebo117.pdf",
+          "ordinal": 3,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 17: Locomotion and Movement",
+            "HAPTER"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T04:45:57.549Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "In the sliding filament theory of muscle contraction, what is the role of calcium ions?",
+      "choices": [
+        "They activate the actin filaments to bind with myosin heads",
+        "They prevent the formation of cross bridges between actin and myosin",
+        "They provide the energy required for muscle contraction",
+        "They maintain the resting state of the muscle"
+      ],
+      "answerIndex": 0,
+      "solution": "In the sliding filament theory, calcium ions play a crucial role by activating the actin filaments, allowing them to bind with the myosin heads and form cross bridges. This binding is necessary for the sliding of actin over myosin, which leads to muscle contraction. The option that says calcium prevents cross bridge formation is incorrect because calcium is essential for it. The option that says calcium provides energy is wrong because ATP, not calcium, is the energy source. The option that says calcium maintains the resting state is incorrect because calcium is released from the sarcoplasmic reticulum during contraction, not during rest.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "स्लाइडिंग फिलामेंट सिद्धांत में मांसपेशी संकुचन में कैल्शियम आयनों की भूमिका क्या है?",
+          "choices": [
+            "वे एक्टिन फाइलामेंट को मायोसिन हेड्स के साथ जुड़ने के लिए सक्रिय करते हैं",
+            "वे एक्टिन और मायोसिन के बीच क्रॉस ब्रिज के निर्माण को रोकते हैं",
+            "वे मांसपेशी संकुचन के लिए आवश्यक ऊर्जा प्रदान करते हैं",
+            "वे मांसपेशी की आराम की स्थिति को बनाए रखते हैं"
+          ],
+          "solution": "स्लाइडिंग फिलामेंट सिद्धांत में, कैल्शियम आयन एक महत्वपूर्ण भूमिका निभाते हैं क्योंकि वे एक्टिन फाइलामेंट को सक्रिय करते हैं, जिससे वे मायोसिन हेड्स के साथ जुड़ सकते हैं और क्रॉस ब्रिज बना सकते हैं। यह जुड़ाव मांसपेशी संकुचन के लिए आवश्यक है। वह विकल्प गलत है जो कहता है कि कैल्शियम क्रॉस ब्रिज के निर्माण को रोकता है क्योंकि कैल्शियम के बिना यह नहीं हो सकता। वह विकल्प गलत है जो कहता है कि कैल्शियम ऊर्जा प्रदान करता है क्योंकि एटीपी, कैल्शियम के बजाय, ऊर्जा स्रोत है। वह विकल्प गलत है जो कहता है कि कैल्शियम आराम की स्थिति को बनाए रखता है क्योंकि कैल्शियम आराम के समय बर्तन से बाहर नहीं निकलता, बल्कि संकुचन के समय निकलता है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology. The correct answer (option 1) is in the same position as in the English version. All distractors remain incorrect in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "स्लाइडिंग फिलामेंट सिद्धांतामध्ये मासे कर्कशतेच्या भूमिका काल्शियम आयनांची काय आहे?",
+          "choices": [
+            "ते एक्टिन फाइलामेंट्स ला मायोसिन हेड्स शिंकण्यास एक्टिव्हेट करतात",
+            "ते एक्टिन आणि मायोसिन दरम्यान क्रॉस ब्रिज तयार होऊ देत नाहीत",
+            "ते मासे कर्कशतेसाठी आवश्यक ऊर्जा पुरवतात",
+            "ते मासे च्या रेस्टिंग अवस्था बरोबर ठेवतात"
+          ],
+          "solution": "स्लाइडिंग फिलामेंट सिद्धांतामध्ये कॅल्शियम आयनांची एक महत्वपूर्ण भूमिका असते, ज्यामुळे एक्टिन फाइलामेंट्स एक्टिव्हेट होतात आणि मायोसिन हेड्स शिंकतात आणि क्रॉस ब्रिज तयार होतात. ही शिंकणे मासे कर्कशतेसाठी आवश्यक असते. एक्टिन आणि मायोसिन दरम्यान क्रॉस ब्रिज तयार होऊ देणारा विधान अयोग्य आहे कारण कॅल्शियम त्यासाठी आवश्यक असते. एक्टिन आणि मायोसिन दरम्यान क्रॉस ब्रिज तयार होऊ देणारा विधान अयोग्य आहे कारण कॅल्शियम त्यासाठी आवश्यक असते. ऊर्जा पुरविणारा विधान अयोग्य आहे कारण ऊर्जा स्रोत ATP आहे, कॅल्शियम नाही. मासे च्या रेस्टिंग अवस्था बरोबर ठेवणारा विधान अयोग्य आहे कारण कॅल्शियम रेस्टिंग दरम्यान नाही तर कर्कशतेदरम्यान सार्कोप्लाज्मिक रेटिक्युलममधून सुटतो.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the scientific terminology appropriate for a Marathi-medium textbook. The solution explanation is consistent with the original English version.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses the role of calcium with that of ATP",
+        "Misunderstands the process of cross bridge formation",
+        "Incorrectly assumes calcium is involved in maintaining the resting state instead of initiating contraction"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 0, as calcium ions activate actin filaments to bind with myosin heads. The author's solution is accurate and aligns with the correct biological mechanism.",
+      "sources": [
+        {
+          "document": "ncert/11/biology/kebo117.pdf",
+          "ordinal": 10,
+          "pageStart": 11,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 17: Locomotion and Movement",
+            "HAPTER"
+          ]
+        },
+        {
+          "document": "ncert/11/biology/kebo117.pdf",
+          "ordinal": 11,
+          "pageStart": 12,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 17: Locomotion and Movement",
+            "HAPTER"
+          ]
+        },
+        {
+          "document": "ncert/11/biology/kebo117.pdf",
+          "ordinal": 12,
+          "pageStart": 13,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 17: Locomotion and Movement",
+            "HAPTER"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T04:45:57.549Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "In a scenario where calcium ions are not released in the sarcoplasm, what would be the effect on muscle contraction?",
+      "choices": [
+        "The muscle would contract continuously",
+        "The muscle would contract more forcefully",
+        "The muscle would not contract",
+        "The muscle would contract but with less energy"
+      ],
+      "answerIndex": 2,
+      "solution": "Calcium ions are essential for exposing the active sites on actin filaments. Without calcium release, the myosin heads cannot bind to actin, and contraction cannot occur. The other options are incorrect because continuous contraction requires constant signals, increased force would require more calcium, and energy levels are not directly affected by the absence of calcium.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक ऐसे परिदृश्य में जहां सार्कोप्लाज्म में कैल्शियम आयन नहीं छोड़े जाते हैं, मांसपेशी संकुचन पर क्या प्रभाव पड़ेगा?",
+          "choices": [
+            "मांसपेशी लगातार संकुचित हो जाएगी",
+            "मांसपेशी अधिक शक्तिशाली रूप से संकुचित हो जाएगी",
+            "मांसपेशी संकुचित नहीं होगी",
+            "मांसपेशी संकुचित हो जाएगी लेकिन कम ऊर्जा के साथ"
+          ],
+          "solution": "कैल्शियम आयन एक्टिन फाइलामेंट पर सक्रिय साइटों को खोलने के लिए आवश्यक होते हैं। कैल्शियम के बिना छोड़े जाने पर, मायोसिन सिरे एक्टिन से जुड़ नहीं सकते हैं और संकुचन नहीं हो सकता है। अन्य विकल्प गलत हैं क्योंकि लगातार संकुचन के लिए निरंतर संकेत आवश्यक हैं, अधिक शक्ति के लिए अधिक कैल्शियम की आवश्यकता होती है और ऊर्जा स्तर लगभग कैल्शियम के अभाव में सीधे प्रभावित नहीं होते हैं।",
+          "imageAlt": null,
+          "critique": "The translation accurately reflects the original meaning, technical terms are appropriately used in Hindi, and the correct answer remains option (2).",
+          "flag": null
+        },
+        "mr": {
+          "stem": "सार्कोप्लाझ्ममध्ये कॅल्शियम आयन निर्मुक्त होऊ नये असे असते, तर मांसपेशी विस्तारावर काय परिणाम होईल?",
+          "choices": [
+            "मांसपेशी सतत विस्तारेल",
+            "मांसपेशी अधिक शक्तिशाली विस्तारेल",
+            "मांसपेशी विस्तारणार नाही",
+            "मांसपेशी विस्तारेल परंतु कमी ऊर्जेने"
+          ],
+          "solution": "कॅल्शियम आयन अॅक्टिन फाइबरवरील सक्रिय स्थाने खुलविण्यासाठी आवश्यक आहेत. कॅल्शियम निर्मुक्त होऊ नये असल्यास, मायोसिन हेड्स अॅक्टिनशी बांधले जाऊ शकत नाहीत आणि विस्तार होऊ शकत नाही. इतर विकल्प चुकीचे आहेत कारण सतत विस्तारासाठी सतत संकेत आवश्यक आहेत, अधिक शक्तीसाठी जास्त कॅल्शियम आवश्यक आहे आणि ऊर्जा स्तरांवर कॅल्शियमच्या अभावामुळे थोडाच परिणाम होतो.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the scientific terminology appropriate for a Marathi-medium textbook.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Believes that calcium is responsible for continuous contraction",
+        "Assumes that lack of calcium increases muscle force",
+        null,
+        "Thinks that energy levels are independent of calcium"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies that calcium is necessary for muscle contraction by enabling myosin-actin interaction. The reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/11/biology/kebo117.pdf",
+          "ordinal": 4,
+          "pageStart": 4,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 17: Locomotion and Movement",
+            "HAPTER"
+          ]
+        },
+        {
+          "document": "ncert/11/biology/kebo117.pdf",
+          "ordinal": 5,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 17: Locomotion and Movement",
+            "HAPTER"
+          ]
+        },
+        {
+          "document": "ncert/11/biology/kebo117.pdf",
+          "ordinal": 6,
+          "pageStart": 8,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 17: Locomotion and Movement",
+            "HAPTER"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T04:45:57.549Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Which of the following is a correct explanation of the difference between red and white muscle fibers?",
+      "choices": [
+        "Red muscles have a higher number of mitochondria and myoglobin, enabling them to contract for longer durations",
+        "White muscles have a higher number of mitochondria and myoglobin, enabling them to contract for shorter durations",
+        "Red muscles have fewer mitochondria and myoglobin, leading to faster fatigue",
+        "White muscles have fewer mitochondria and myoglobin, leading to slower fatigue"
+      ],
+      "answerIndex": 0,
+      "solution": "Red muscle fibers have a higher number of mitochondria and myoglobin, which allows them to sustain contractions for longer periods. This is because myoglobin stores oxygen, and mitochondria produce energy through aerobic respiration. The option that says white muscles have more mitochondria and myoglobin is incorrect as white fibers rely more on anaerobic respiration and fatigue quickly. The option that says red muscles have fewer mitochondria is incorrect because more mitochondria are found in red fibers. The option that says white muscles have fewer mitochondria but lead to slower fatigue is incorrect because white fibers fatigue quickly due to their reliance on anaerobic processes.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा लाल एवं सफेद मांसपेशी तंतुओं के अंतर की सही व्याख्या है?",
+          "choices": [
+            "लाल मांसपेशी तंतुओं में माइटोकॉन्ड्रिया एवं मायोग्लोबिन की संख्या अधिक होती है, जिससे लंबे समय तक संकुचन करना संभव होता है",
+            "सफेद मांसपेशी तंतुओं में माइटोकॉन्ड्रिया एवं मायोग्लोबिन की संख्या अधिक होती है, जिससे छोटे समय तक संकुचन करना संभव होता है",
+            "लाल मांसपेशी तंतुओं में माइटोकॉन्ड्रिया एवं मायोग्लोबिन की संख्या कम होती है, जिससे तेजी से थकान होती है",
+            "सफेद मांसपेशी तंतुओं में माइटोकॉन्ड्रिया एवं मायोग्लोबिन की संख्या कम होती है, जिससे थकान धीमी होती है"
+          ],
+          "solution": "लाल मांसपेशी तंतुओं में माइटोकॉन्ड्रिया एवं मायोग्लोबिन की संख्या अधिक होती है, जो लंबे समय तक संकुचन करने की अनुमति देती है। यह इसलिए है क्योंकि मायोग्लोबिन ऑक्सीजन को भंडारित करता है, एवं माइटोकॉन्ड्रिया एरोबिक श्वसन द्वारा ऊर्जा उत्पन्न करते हैं। वह विकल्प गलत है जो कहता है कि सफेद तंतुओं में अधिक माइटोकॉन्ड्रिया एवं मायोग्लोबिन होते हैं क्योंकि सफेद तंतु अनैरोबिक श्वसन पर अधिक निर्भर करते हैं एवं तेजी से थक जाते हैं। वह विकल्प गलत है जो कहता है कि लाल तंतुओं में माइटोकॉन्ड्रिया कम होते हैं क्योंकि अधिक माइटोकॉन्ड्रिया लाल तंतुओं में पाए जाते हैं। वह विकल्प गलत है जो कहता है कि सफेद तंतुओं में माइटोकॉन्ड्रिया कम होते हैं लेकिन थकान धीमी होती है क्योंकि सफेद तंतु अनैरोबिक प्रक्रियाओं पर निर्भर होने के कारण तेजी से थक जाते हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology for biological concepts.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते लाल आणि पांढरे मास्कल फायबरमध्ये होणार्‍या फरकाचे योग्य स्पष्टीकरण आहे?",
+          "choices": [
+            "लाल मास्कलमध्ये मायटोकॉन्ड्रिया आणि मायोग्लोबिनची जास्त संख्या असते, ज्यामुळे ते लांब कालावधीसाठी संकुचित होऊ शकतात",
+            "पांढरे मास्कलमध्ये मायटोकॉन्ड्रिया आणि मायोग्लोबिनची जास्त संख्या असते, ज्यामुळे ते लहान कालावधीसाठी संकुचित होऊ शकतात",
+            "लाल मास्कलमध्ये मायटोकॉन्ड्रिया आणि मायोग्लोबिनची कमी संख्या असते, ज्यामुळे ते जलद थकवा होतो",
+            "पांढरे मास्कलमध्ये मायटोकॉन्ड्रिया आणि मायोग्लोबिनची कमी संख्या असते, ज्यामुळे ते जलद थकवा होतो"
+          ],
+          "solution": "लाल मास्कल फायबरमध्ये मायटोकॉन्ड्रिया आणि मायोग्लोबिनची जास्त संख्या असते, ज्यामुळे ते लांब कालावधीसाठी संकुचित होऊ शकतात. हे त्यामुळे आहे कारण मायोग्लोबिन ऑक्सीजन जमा करते आणि मायटोकॉन्ड्रिया ऑक्सिजन वापरून ऊर्जा तयार करतात. पांढरे फायबर अनॉक्सिक प्रक्रियांवर अधिक अवलंबून असतात आणि लवकर थकतात, म्हणून पांढरे मास्कलमध्ये जास्त मायटोकॉन्ड्रिया आणि मायोग्लोबिन असते असे विधान चूकीचे आहे. लाल मास्कलमध्ये कमी मायटोकॉन्ड्रिया असतात असे विधान चूकीचे आहे कारण लाल फायबरमध्ये जास्त मायटोकॉन्ड्रिया असतात. पांढरे मास्कलमध्ये कमी मायटोकॉन्ड्रिया असतात परंतु जलद थकवा होतो असे विधान चूकीचे आहे कारण पांढरे फायबर अनॉक्सिक प्रक्रियांवर अवलंबून असल्यामुळे ते जलद थकतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for biological concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses the characteristics of red and white muscle fibers",
+        "Misunderstands the role of myoglobin and mitochondria in muscle fatigue",
+        "Incorrectly assumes white muscles are less fatigable due to fewer mitochondria"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is option 0, as red muscle fibers indeed have more mitochondria and myoglobin, allowing for sustained contractions. The author's explanations for the incorrect options are valid and reflect common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/11/biology/kebo117.pdf",
+          "ordinal": 10,
+          "pageStart": 11,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 17: Locomotion and Movement",
+            "HAPTER"
+          ]
+        },
+        {
+          "document": "ncert/11/biology/kebo117.pdf",
+          "ordinal": 11,
+          "pageStart": 12,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 17: Locomotion and Movement",
+            "HAPTER"
+          ]
+        },
+        {
+          "document": "ncert/11/biology/kebo117.pdf",
+          "ordinal": 12,
+          "pageStart": 13,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 17: Locomotion and Movement",
+            "HAPTER"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T04:45:57.549Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Why do red muscle fibres have a higher number of mitochondria compared to white muscle fibres?",
+      "choices": [
+        "To store more oxygen",
+        "To produce more ATP through aerobic respiration",
+        "To store more lactic acid",
+        "To increase the speed of contraction"
+      ],
+      "answerIndex": 1,
+      "solution": "Red muscle fibres rely on aerobic respiration for energy production, which requires a high number of mitochondria. White muscle fibres use anaerobic respiration, which does not require as many mitochondria. The other options are incorrect because oxygen storage is done by myoglobin, lactic acid is a byproduct of anaerobic respiration, and speed is not directly related to mitochondrial count.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "लाल मांसपेशी तंतु क्यों श्वेत मांसपेशी तंतुओं की तुलना में अधिक संख्या में माइटोकॉन्ड्रिया रखते हैं?",
+          "choices": [
+            "अधिक ऑक्सीजन के भंडारण के लिए",
+            "एरोबिक श्वसन द्वारा अधिक ATP उत्पादन के लिए",
+            "अधिक लैक्टिक एसिड के भंडारण के लिए",
+            "संकुचन की गति बढ़ाने के लिए"
+          ],
+          "solution": "लाल मांसपेशी तंतु ऊर्जा उत्पादन के लिए एरोबिक श्वसन पर निर्भर करते हैं, जिसके लिए उच्च संख्या में माइटोकॉन्ड्रिया की आवश्यकता होती है। श्वेत मांसपेशी तंतु एनारोबिक श्वसन का उपयोग करते हैं, जिसके लिए माइटोकॉन्ड्रिया की आवश्यकता नहीं होती। अन्य विकल्प गलत हैं क्योंकि ऑक्सीजन के भंडारण का कार्य मायोग्लोबिन करता है, लैक्टिक एसिड एनारोबिक श्वसन का एक उत्पाद है और गति सीधे माइटोकॉन्ड्रिया की संख्या से संबंधित नहीं है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology for biological concepts.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "लाल मांसपेशी तारे ब्लू मांसपेशी तारांच्या तुलनेत जास्त संख्येने माइटोकॉन्ड्रिया का असतात?",
+          "choices": [
+            "अधिक ऑक्सीजन भंडारित करण्यासाठी",
+            "ऊर्जा उत्पादनासाठी ऑक्सिजन वापरून अधिक ATP तयार करण्यासाठी",
+            "अधिक लॅक्टिक ऍसिड भंडारित करण्यासाठी",
+            "संकुचनाच्या वेगात वाढ करण्यासाठी"
+          ],
+          "solution": "लाल मांसपेशी तारे ऊर्जा उत्पादनासाठी वायुमार्गीय श्वसनावर अवलंबून असतात, ज्यासाठी माइटोकॉन्ड्रियांची उच्च संख्या आवश्यक असते. ब्लू मांसपेशी तारा अवायुमार्गीय श्वसनावर अवलंबून असतात, ज्यासाठी माइटोकॉन्ड्रियांची जास्त संख्या आवश्यक नसते. इतर विकल्प चुकीचे आहेत कारण ऑक्सीजन भंडारण मायोग्लोबिन द्वारे केले जाते, लॅक्टिक ऍसिड अवायुमार्गीय श्वसनाचा उत्पाद असतो आणि वेग थेट माइटोकॉन्ड्रियांच्या संख्येशी संबंधित नसतो.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the scientific terminology used in Marathi textbooks. The structure and meaning of the question and options are preserved.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the role of mitochondria with oxygen storage",
+        null,
+        "Thinks mitochondria are involved in lactic acid storage",
+        "Believes mitochondrial count affects contraction speed"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies that red muscle fibers rely on aerobic respiration, which requires more mitochondria. The reasoning for the distractors aligns with common student misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/11/biology/kebo117.pdf",
+          "ordinal": 4,
+          "pageStart": 4,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 17: Locomotion and Movement",
+            "HAPTER"
+          ]
+        },
+        {
+          "document": "ncert/11/biology/kebo117.pdf",
+          "ordinal": 5,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 17: Locomotion and Movement",
+            "HAPTER"
+          ]
+        },
+        {
+          "document": "ncert/11/biology/kebo117.pdf",
+          "ordinal": 6,
+          "pageStart": 8,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 17: Locomotion and Movement",
+            "HAPTER"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T04:45:57.549Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Why is the vertebral column described as having a 'dorsally placed' structure?",
+      "choices": [
+        "Because it is located on the back side of the body",
+        "Because it is responsible for movement",
+        "Because it is involved in breathing",
+        "Because it is related to the nervous system"
+      ],
+      "answerIndex": 0,
+      "solution": "The correct answer is because it is located on the back side of the body, as 'dorsally placed' refers to the anatomical position of the structure. The other options describe functions or relationships but do not explain the directional term 'dorsally placed.' Anatomical terms like this are based on standard body orientation, not function or system involvement.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "क्यों शरीर के पीछे की ओर स्थित संरचना के रूप में वृष्णि वक्रता का वर्णन किया जाता है?",
+          "choices": [
+            "क्योंकि यह शरीर के पीछे की ओर स्थित है",
+            "क्योंकि यह गति के लिए जिम्मेदार है",
+            "क्योंकि यह सांस लेने में शामिल है",
+            "क्योंकि यह तंत्रिका तंत्र से संबंधित है"
+          ],
+          "solution": "सही उत्तर यह है कि यह शरीर के पीछे की ओर स्थित है, क्योंकि 'पीछे की ओर स्थित' शब्द इस संरचना के एनाटॉमिक स्थिति को संदर्भित करता है। अन्य विकल्प कार्य या संबंध का वर्णन करते हैं लेकिन 'पीछे की ओर स्थित' दिशात्मक शब्द की व्याख्या नहीं करते। ऐसे एनाटॉमिक शब्द मानक शरीर के अवस्थिति पर आधारित होते हैं, कार्य या प्रणाली संलग्नता नहीं।",
+          "imageAlt": null,
+          "critique": "The translation accurately reflects the original meaning, with appropriate anatomical terminology used in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "व्हर्टेब्रल कॉलम ला 'डॉर्सली प्लेस्ड' संरचना म्हणून वर्णन का केले जाते?",
+          "choices": [
+            "कारण ती शरीराच्या मागील बाजूवर असते",
+            "कारण ती गतीसाठी जबाबदार असते",
+            "कारण ती श्वासाच्या प्रक्रियेत सहभागी असते",
+            "कारण ती तंत्रिका प्रणालीशी संबंधित असते"
+          ],
+          "solution": "योग्य उत्तर मागील बाजूवर असलेल्या शरीराच्या अभिकल्पीक स्थितीमुळे आहे. 'डॉर्सली प्लेस्ड' हा शब्द संरचनेच्या अभिकल्पीक स्थितीवर आधारित असतो. इतर विकल्प विविध कार्यांचे वर्णन करतात परंतु 'डॉर्सली प्लेस्ड' हा दिशात्मक शब्द स्पष्ट करत नाहीत. अशा अभिकल्पीक शब्दांचा वापर मूळ शरीराच्या स्थितीवर आधारित असतो, कार्यावर किंवा प्रणालीशी संबंधिततेवर नाही.",
+          "imageAlt": null,
+          "critique": "The translation accurately conveys the original meaning with appropriate anatomical terminology in Marathi.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Misinterprets the term 'dorsally placed' as related to movement",
+        "Confuses the function of the vertebral column with breathing",
+        "Overlooks the anatomical basis of the term"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 0, as 'dorsally placed' directly refers to the location on the back side of the body. The other options describe functions or associations, not the anatomical positioning described in the term.",
+      "sources": [
+        {
+          "document": "ncert/11/biology/kebo117.pdf",
+          "ordinal": 7,
+          "pageStart": 9,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 17: Locomotion and Movement",
+            "HAPTER"
+          ]
+        },
+        {
+          "document": "ncert/11/biology/kebo117.pdf",
+          "ordinal": 8,
+          "pageStart": 10,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 17: Locomotion and Movement",
+            "HAPTER"
+          ]
+        },
+        {
+          "document": "ncert/11/biology/kebo117.pdf",
+          "ordinal": 9,
+          "pageStart": 11,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 17: Locomotion and Movement",
+            "HAPTER"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T04:45:57.549Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
     }
   ]
 }

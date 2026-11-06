@@ -1464,6 +1464,630 @@
       "generatedAt": "2026-10-29T02:18:48.649Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "Which of the following is the most common oxidation state of lanthanides?",
+      "choices": [
+        "+1",
+        "+2",
+        "+3",
+        "+4"
+      ],
+      "answerIndex": 2,
+      "solution": "Lanthanides commonly exhibit a +3 oxidation state because they tend to lose two electrons from the 6s orbital and one electron from the 5d orbital, resulting in a stable +3 charge. Other oxidation states like +1, +2, or +4 are less common due to the stability of the +3 configuration. This makes +3 the most typical oxidation state for these elements.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा लैंथेनाइड्स का सबसे सामान्य ऑक्सीकरण अवस्था है?",
+          "choices": [
+            "+1",
+            "+2",
+            "+3",
+            "+4"
+          ],
+          "solution": "लैंथेनाइड्स सामान्य रूप से +3 ऑक्सीकरण अवस्था प्रदर्शित करते हैं क्योंकि वे 6s कक्षक से दो इलेक्ट्रॉन तथा 5d कक्षक से एक इलेक्ट्रॉन खो देते हैं, जिसके परिणामस्वरूप +3 आवेश की स्थिर अवस्था बनती है। +1, +2 या +4 ऑक्सीकरण अवस्थाएं इस अवस्था की स्थिरता के कारण कम सामान्य होती हैं। इस कारण इन तत्वों के लिए +3 सबसे सामान्य ऑक्सीकरण अवस्था होती है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate terminology as found in Hindi-medium science textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी लॅन्थेनाइड्सचा सर्वात सामान्य ऑक्सिडेशन अवस्था कोणती आहे?",
+          "choices": [
+            "+1",
+            "+2",
+            "+3",
+            "+4"
+          ],
+          "solution": "लॅन्थेनाइड्स सामान्यतः +3 ऑक्सिडेशन अवस्था दर्शवतात कारण ते 6s कक्षकातून दोन इलेक्ट्रॉन आणि 5d कक्षकातून एक इलेक्ट्रॉन गमावतात, ज्यामुळे +3 चार्जची स्थिर अवस्था तयार होते. +1, +2 किंवा +4 अशा इतर ऑक्सिडेशन अवस्था +3 अवस्थेच्या स्थिरतेमुळे कमी सामान्य आहेत. हे लॅन्थेनाइड्स साठी ही अत्यंत सामान्य ऑक्सिडेशन अवस्था बनवते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses lanthanides with other elements",
+        "Misremember the oxidation state",
+        null,
+        "Incorrectly assumes a higher oxidation state is more common"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is +3, which is the most common oxidation state of lanthanides. The solution correctly explains that this is due to losing 6s² and 5d¹ electrons. The reasons for the wrong options align with common student misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/12/chemistry/lech104.pdf",
+          "ordinal": 7,
+          "pageStart": 7,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 4: The d- and f- Block Elements",
+            "The d- and f-",
+            "4.2 Electronic4.2Electronic",
+            "(d-Block)"
+          ]
+        },
+        {
+          "document": "ncert/12/chemistry/lech104.pdf",
+          "ordinal": 8,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 4: The d- and f- Block Elements",
+            "The d- and f-",
+            "4.2 Electronic4.2Electronic",
+            "(d-Block)"
+          ]
+        },
+        {
+          "document": "ncert/12/chemistry/lech104.pdf",
+          "ordinal": 9,
+          "pageStart": 8,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 4: The d- and f- Block Elements",
+            "The d- and f-",
+            "4.2 Electronic4.2Electronic",
+            "(d-Block)"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T14:54:16.643Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of the following is an example of an alloy formed by mixing transition metals?",
+      "choices": [
+        "Brass",
+        "Stainless steel",
+        "Bronze",
+        "Copper"
+      ],
+      "answerIndex": 1,
+      "solution": "Stainless steel is an alloy formed by mixing transition metals like chromium, vanadium, tungsten, molybdenum, and manganese with iron. Brass and bronze are alloys of transition metals with non-transition metals, while copper is a pure metal, not an alloy.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा संक्रमण धातुओं के मिश्रण द्वारा बने एक मिश्र धातु का उदाहरण है?",
+          "choices": [
+            "ब्रॉन्ज",
+            "स्टेनलेस स्टील",
+            "ब्रॉन्ज",
+            "ताँबा"
+          ],
+          "solution": "स्टेनलेस स्टील संक्रमण धातुओं जैसे क्रोमियम, वैनेडियम, टंगस्टन, मॉलिब्डिनम और मैंगनीज के साथ लोहे के मिश्रण द्वारा बना एक मिश्र धातु है। ब्रॉन्ज और ब्रॉन्ज संक्रमण धातुओं और अ-संक्रमण धातुओं के मिश्रण द्वारा बने मिश्र धातु हैं, जबकि ताँबा एक शुद्ध धातु है, मिश्र धातु नहीं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation has errors: (1) and (3) are both 'ब्रॉन्ज' (bronze), making two options identical. The correct answer (2) is 'स्टेनलेस स्टील' (stainless steel), which matches the English. The solution incorrectly states that both 'ब्रॉन्ज' and 'ब्रॉन्ज' are alloys of transition and non-transition metals, which is redundant and confusing. The term 'मिश्र धातु' (alloy) is correctly used.",
+          "flag": "translation critique: meaning changed; not one answer at the same position; a distractor no longer wrong"
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते एक संक्रमण धातूंच्या मिश्रणाद्वारे तयार होणारा अलॉय आहे?",
+          "choices": [
+            "कांस्य",
+            "स्टेनलेस स्टील",
+            "कांस्य",
+            "तांबे"
+          ],
+          "solution": "स्टेनलेस स्टील हा एक अलॉय आहे जो संक्रमण धातूंच्या जसे की क्रोमियम, वॅनेडियम, टंगस्टन, मॉलिब्डिनम आणि मॅंगनीज असलेल्या लोहाच्या मिश्रणाद्वारे तयार होतो. कांस्य आणि ब्रॉन्झ हे संक्रमण धातूंच्या आणि अ-संक्रमण धातूंच्या मिश्रणाद्वारे तयार होतात, तर तांबे हे शुद्ध धातू आहे, अलॉय नाही.",
+          "imageAlt": null,
+          "critique": "The Marathi translation has a critical error: option (1) and (3) are both 'कांस्य' (brass/bronze), making the question invalid. The correct answer in English is (1) Brass, but in Marathi, both (1) and (3) are the same, so there is no unique correct answer.",
+          "flag": "translation critique: not one answer at the same position; a distractor no longer wrong"
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses alloys with mixtures of metals and non-metals",
+        null,
+        "Incorrectly assumes all alloys are made of non-transition metals",
+        "Thinks copper is an alloy instead of a pure metal"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct. Stainless steel is an alloy of iron (a transition metal) with other transition metals like chromium. Brass and bronze are alloys of copper (a transition metal) with zinc (non-transition) and tin (non-transition), respectively. Copper is a pure metal, not an alloy.",
+      "sources": [
+        {
+          "document": "ncert/12/chemistry/lech104.pdf",
+          "ordinal": 16,
+          "pageStart": 16,
+          "pageEnd": 17,
+          "headingPath": [
+            "Chapter 4: The d- and f- Block Elements",
+            "The d- and f-",
+            "4.2 Electronic4.2Electronic",
+            "Intext Questions"
+          ]
+        },
+        {
+          "document": "ncert/12/chemistry/lech104.pdf",
+          "ordinal": 17,
+          "pageStart": 17,
+          "pageEnd": 18,
+          "headingPath": [
+            "Chapter 4: The d- and f- Block Elements",
+            "The d- and f-",
+            "4.2 Electronic4.2Electronic",
+            "Elements"
+          ]
+        },
+        {
+          "document": "ncert/12/chemistry/lech104.pdf",
+          "ordinal": 18,
+          "pageStart": 18,
+          "pageEnd": 19,
+          "headingPath": [
+            "Chapter 4: The d- and f- Block Elements",
+            "The d- and f-",
+            "4.2 Electronic4.2Electronic",
+            "Elements"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T14:54:16.643Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What causes the lanthanoid contraction?",
+      "choices": [
+        "Perfect shielding of 4f electrons",
+        "Imperfect shielding of 4f electrons",
+        "Increase in nuclear charge",
+        "Decrease in atomic number"
+      ],
+      "answerIndex": 1,
+      "solution": "The lanthanoid contraction occurs because the 4f electrons do not shield each other effectively from the increasing nuclear charge, causing the atomic radius to decrease. Perfect shielding would prevent this effect, so it is incorrect. An increase in nuclear charge alone does not account for the contraction, and a decrease in atomic number is unrelated to the phenomenon.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "लैंथेनॉइड संकुचन किसके कारण होता है?",
+          "choices": [
+            "4f इलेक्ट्रॉनों का पूर्ण बल्कन बनाना",
+            "4f इलेक्ट्रॉनों का अपूर्ण बल्कन बनाना",
+            "परमाणु केंद्रक के आवेश में वृद्धि",
+            "परमाणु संख्या में कमी"
+          ],
+          "solution": "लैंथेनॉइड संकुचन इसलिए होता है क्योंकि 4f इलेक्ट्रॉन बढ़ते परमाणु केंद्रक के आवेश से एक दूसरे को अच्छी तरह से बल्कन नहीं करते हैं, जिसके कारण परमाणु त्रिज्या घट जाती है। पूर्ण बल्कन इस प्रभाव को रोक देगा, इसलिए यह गलत है। परमाणु केंद्रक के आवेश में वृद्धि अकेले संकुचन की व्याख्या नहीं करती है, और परमाणु संख्या में कमी घटना से असंबंधित है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate technical terms as used in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "लॅंथेनॉइड अपसारण कोणत्या कारणामुळे होतो?",
+          "choices": [
+            "4f इलेक्ट्रॉनचे पूर्ण शिल्डिंग",
+            "4f इलेक्ट्रॉनचे अपूर्ण शिल्डिंग",
+            "न्यूक्लियस चार्जमध्ये वाढ",
+            "अणु संख्येमध्ये कमी"
+          ],
+          "solution": "लॅंथेनॉइड अपसारण होतो कारण 4f इलेक्ट्रॉन वाढत्या न्यूक्लियस चार्जपासून एकमेकांना पूर्णपणे शिल्ड करत नाहीत, ज्यामुळे परमाण्वीय त्रिज्या कमी होते. पूर्ण शिल्डिंग या परिणामाला रोखते, म्हणून ते चुकीचे आहे. न्यूक्लियस चार्जमध्ये वाढच अपसारणाचे कारण नाही, आणि अणु संख्येमध्ये कमी हा घटनेशी संबंधित नाही.",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the scientific meaning. Technical terms like 'शिल्डिंग' (shielding) are correctly used in Marathi context.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "misunderstands the concept of shielding",
+        null,
+        "confuses the cause of contraction",
+        "incorrectly identifies a factor not related to contraction"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 1, as the lanthanoid contraction is indeed due to the imperfect shielding of 4f electrons, which results in an effective increase in nuclear charge. The reasoning in the solution is sound and aligns with the correct explanation.",
+      "sources": [
+        {
+          "document": "ncert/12/chemistry/lech104.pdf",
+          "ordinal": 19,
+          "pageStart": 19,
+          "pageEnd": 20,
+          "headingPath": [
+            "Chapter 4: The d- and f- Block Elements",
+            "The d- and f-",
+            "4.2 Electronic4.2Electronic",
+            "Elements"
+          ]
+        },
+        {
+          "document": "ncert/12/chemistry/lech104.pdf",
+          "ordinal": 20,
+          "pageStart": 20,
+          "pageEnd": 21,
+          "headingPath": [
+            "Chapter 4: The d- and f- Block Elements",
+            "The d- and f-",
+            "4.2 Electronic4.2Electronic",
+            "Elements"
+          ]
+        },
+        {
+          "document": "ncert/12/chemistry/lech104.pdf",
+          "ordinal": 21,
+          "pageStart": 21,
+          "pageEnd": 21,
+          "headingPath": [
+            "Chapter 4: The d- and f- Block Elements",
+            "The d- and f-",
+            "4.2 Electronic4.2Electronic",
+            "Lanthanoids"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T14:54:16.643Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "Why do transition metals have high enthalpies of atomisation?",
+      "choices": [
+        "Because they have completely filled d orbitals",
+        "Because they have a large number of unpaired electrons",
+        "Because they have a low number of valence electrons",
+        "Because they are not metallic in nature"
+      ],
+      "answerIndex": 1,
+      "solution": "The correct answer is because they have a large number of unpaired electrons, which contribute to strong metallic bonding and high enthalpies of atomisation. Completely filled d orbitals would result in weaker bonding, a low number of valence electrons would not support strong interactions, and not being metallic contradicts the nature of transition metals.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "संक्रमण धातुओं में परमाणुकरण की ऊर्जा उच्च क्यों होती है?",
+          "choices": [
+            "क्योंकि उनमें पूर्ण रूप से भरे हुए d कक्षक होते हैं",
+            "क्योंकि उनमें अयुग्मित इलेक्ट्रॉनों की बड़ी संख्या होती है",
+            "क्योंकि उनमें कम संख्या में संयोजी इलेक्ट्रॉन होते हैं",
+            "क्योंकि वे धात्विक प्रकृति के नहीं होते"
+          ],
+          "solution": "सही उत्तर यह है कि उनमें अयुग्मित इलेक्ट्रॉनों की बड़ी संख्या होती है, जो मजबूत धात्विक बंधन बनाती है और उच्च परमाणुकरण ऊर्जा के कारण बनती है। पूर्ण रूप से भरे हुए d कक्षक कमजोर बंधन के कारण होते हैं, कम संख्या में संयोजी इलेक्ट्रॉन मजबूत अंतःक्रिया का समर्थन नहीं करते हैं और धात्विक प्रकृति के नहीं होना संक्रमण धातुओं की प्रकृति के विरुद्ध है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate technical terms as found in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "संक्रमण धातूंमध्ये उच्च अणुसंलयन एन्थॅल्पी का असतात?",
+          "choices": [
+            "कारण त्यांच्याकडे पूर्णपणे भरलेले डी ऑर्बिटल असतात",
+            "कारण त्यांच्याकडे जास्तीत जास्त अयुग्मित इलेक्ट्रॉन असतात",
+            "कारण त्यांच्याकडे थोडे अल्पइलेक्ट्रॉन असतात",
+            "कारण ते धातूंच्या प्रकृतीचे नसतात"
+          ],
+          "solution": "योग्य उत्तर असे आहे की त्यांच्याकडे जास्तीत जास्त अयुग्मित इलेक्ट्रॉन असतात, जे तांत्रिक बंध बलाच्या अभावी उच्च अणुसंलयन एन्थॅल्पी बनवतात. पूर्णपणे भरलेले डी ऑर्बिटल असल्यास दुर्बल बंध बल असते, थोडे अल्पइलेक्ट्रॉन असल्यास तांत्रिक अंतर्क्रिया समर्थन करत नाहीत, आणि धातूंच्या प्रकृतीचे नसल्यास ते संक्रमण धातूंच्या प्रकृतीच्या विरुद्ध असतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the scientific meaning, with appropriate Marathi terminology for chemistry concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Misunderstands the reason for high enthalpy of atomisation, thinking it is due to completely filled d orbitals",
+        null,
+        "Confuses the concept of unpaired electrons with that of valence electrons",
+        "Incorrectly assumes that low valence electrons lead to high enthalpy of atomisation"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 1, as transition metals have high enthalpies of atomisation due to strong metallic bonding, which is facilitated by a large number of unpaired electrons. The other options contain misconceptions about d-orbital filling, valence electrons, and metallic character.",
+      "sources": [
+        {
+          "document": "ncert/12/chemistry/lech104.pdf",
+          "ordinal": 4,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 4: The d- and f- Block Elements",
+            "The d- and f-",
+            "4.2 Electronic4.2Electronic",
+            "Configurations"
+          ]
+        },
+        {
+          "document": "ncert/12/chemistry/lech104.pdf",
+          "ordinal": 5,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 4: The d- and f- Block Elements",
+            "The d- and f-",
+            "4.2 Electronic4.2Electronic",
+            "(d-Block)"
+          ]
+        },
+        {
+          "document": "ncert/12/chemistry/lech104.pdf",
+          "ordinal": 6,
+          "pageStart": 5,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 4: The d- and f- Block Elements",
+            "The d- and f-",
+            "4.2 Electronic4.2Electronic",
+            "(d-Block)"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T14:54:16.643Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "Why does zinc have a lower enthalpy of atomisation compared to other elements in the 3d series?",
+      "choices": [
+        "It has a stable d^10 configuration",
+        "It has a higher nuclear charge",
+        "It has more unpaired electrons",
+        "It has a lower atomic radius"
+      ],
+      "answerIndex": 0,
+      "solution": "Zinc has a lower enthalpy of atomisation because its d-orbitals are completely filled, giving it a stable d^10 configuration, which reduces the energy needed to separate its atoms. A higher nuclear charge would increase the attraction between the nucleus and electrons, making atomisation harder. More unpaired electrons would generally lead to stronger metallic bonding and higher enthalpy of atomisation. A lower atomic radius would also increase the strength of metallic bonds, not decrease them.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "जिंक अन्य 3d श्रेणी के तत्वों की तुलना में कम एन्थैल्पी ऑफ़ एटमाइजेशन क्यों होती है?",
+          "choices": [
+            "इसके पास एक स्थायी d^10 विन्यास होता है",
+            "इसके पास उच्च परमाणु केंद्र का आवेश होता है",
+            "इसके पास अधिक अयुग्मित इलेक्ट्रॉन होते हैं",
+            "इसके पास कम परमाणु त्रिज्या होती है"
+          ],
+          "solution": "जिंक की एन्थैल्पी ऑफ़ एटमाइजेशन कम होती है क्योंकि इसके d-कक्षक पूरी तरह से भरे हुए होते हैं, जिससे इसके एक स्थायी d^10 विन्यास के कारण परमाणुओं को अलग करने के लिए आवश्यक ऊर्जा कम हो जाती है। उच्च परमाणु केंद्र का आवेश परमाणु के नाभिक और इलेक्ट्रॉनों के बीच आकर्षण बढ़ा देता है, जिससे एटमाइजेशन कठिन हो जाता है। अधिक अयुग्मित इलेक्ट्रॉन आमतौर पर अधिक मजबूत धात्विक बंधन के कारण एटमाइजेशन की एन्थैल्पी बढ़ा देते हैं। कम परमाणु त्रिज्या धात्विक बंधन की ताकत बढ़ा देती है, न कि कम करती है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate terminology as found in Hindi-medium science textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जिंकचे 3d श्रेणीमधील इतर घटकांपेक्षा अणू एन्थॅल्पी कमी का असते?",
+          "choices": [
+            "त्याचे d^10 विन्यास स्थिर असते",
+            "त्याचे अणुकेंद्रीय आवेश जास्त असते",
+            "त्याच्याकडे जास्त अयुग्मित इलेक्ट्रॉन असतात",
+            "त्याचे परमाणु त्रिज्या कमी असते"
+          ],
+          "solution": "जिंकची अणू एन्थॅल्पी कमी असते कारण त्याच्या d-कक्षकांमध्ये पूर्णपणे भरलेले विन्यास असतो, ज्यामुळे d^10 विन्यास स्थिर असतो आणि त्याच्या अणूंचे विलगीकरण करण्यासाठी आवश्यक ऊर्जा कमी होते. जास्त अणुकेंद्रीय आवेशामुळे न्यूक्लियस आणि इलेक्ट्रॉनमधील आकर्षण वाढते, ज्यामुळे अणू विलगीकरण कठीण होते. जास्त अयुग्मित इलेक्ट्रॉन असल्यास सामान्यतः अधिक धातू बंध असतात आणि अणू एन्थॅल्पी जास्त असते. कमी परमाणु त्रिज्या धातू बंध जास्त शक्तिशाली करते, नकारात्मक नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the scientific terminology used in Marathi textbooks. All options and the solution align with the original English content.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses the reason for lower enthalpy",
+        "Incorrectly attributes the cause to nuclear charge",
+        "Misinterprets the role of unpaired electrons in atomisation energy"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 0, as the stable d^10 configuration of zinc leads to lower enthalpy of atomisation. The other options are incorrect and reflect common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/12/chemistry/lech104.pdf",
+          "ordinal": 7,
+          "pageStart": 7,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 4: The d- and f- Block Elements",
+            "The d- and f-",
+            "4.2 Electronic4.2Electronic",
+            "(d-Block)"
+          ]
+        },
+        {
+          "document": "ncert/12/chemistry/lech104.pdf",
+          "ordinal": 8,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 4: The d- and f- Block Elements",
+            "The d- and f-",
+            "4.2 Electronic4.2Electronic",
+            "(d-Block)"
+          ]
+        },
+        {
+          "document": "ncert/12/chemistry/lech104.pdf",
+          "ordinal": 9,
+          "pageStart": 8,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 4: The d- and f- Block Elements",
+            "The d- and f-",
+            "4.2 Electronic4.2Electronic",
+            "(d-Block)"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T14:54:16.643Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "What is the effect of lanthanoid contraction on the properties of transition elements?",
+      "choices": [
+        "It increases the atomic radii of the third d series",
+        "It decreases the density of the transition elements",
+        "It causes the third d series to have similar properties to the second d series",
+        "It increases the number of unpaired electrons in the third d series"
+      ],
+      "answerIndex": 2,
+      "solution": "Lanthanoid contraction refers to the decrease in atomic size of the lanthanoid elements, which results in the third d series having similar properties to the second d series due to comparable atomic radii. The other options are incorrect because atomic radii do not increase, density is not necessarily decreased, and the number of unpaired electrons is not directly affected by lanthanoid contraction.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "लैंथेनॉइड संकुचन के प्रभाव से संक्रमण तत्वों के गुण कैसे प्रभावित होते हैं?",
+          "choices": [
+            "यह तीसरे d श्रेणी के परमाणु त्रिज्या को बढ़ाता है",
+            "यह संक्रमण तत्वों के घनत्व को कम करता है",
+            "यह तीसरे d श्रेणी के समान गुण द्वितीय d श्रेणी के समान होने के कारण होता है",
+            "यह तीसरे d श्रेणी में अयुग्मित इलेक्ट्रॉनों की संख्या को बढ़ाता है"
+          ],
+          "solution": "लैंथेनॉइड संकुचन का अर्थ है लैंथेनॉइड तत्वों के परमाणु आकार में कमी होना, जिसके परिणामस्वरूप तीसरे d श्रेणी के गुण द्वितीय d श्रेणी के समान हो जाते हैं क्योंकि इनके परमाणु त्रिज्या लगभग समान होते हैं। अन्य विकल्प गलत हैं क्योंकि परमाणु त्रिज्या बढ़ती नहीं है, घनत्व आवश्यक रूप से कम नहीं होता है और अयुग्मित इलेक्ट्रॉनों की संख्या लैंथेनॉइड संकुचन से सीधे प्रभावित नहीं होती है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate technical terms as used in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "लॅन्थेनॉइड अपक्षयाचा विस्तारित घटकांच्या गुणधर्मांवर काय परिणाम होतो?",
+          "choices": [
+            "तिसऱ्या डी श्रेणीच्या परमाणू त्रिज्या वाढतात",
+            "विस्तारित घटकांची घनता कमी होते",
+            "तिसऱ्या डी श्रेणीला दुसऱ्या डी श्रेणीसारखे गुणधर्म असतात",
+            "तिसऱ्या डी श्रेणीमध्ये अयुग्मित इलेक्ट्रॉनची संख्या वाढते"
+          ],
+          "solution": "लॅन्थेनॉइड अपक्षय हा लॅन्थेनॉइड घटकांच्या परमाणू आकारात घट होण्याचा अर्थ आहे, जे तिसऱ्या डी श्रेणीला दुसऱ्या डी श्रेणीसारखे गुणधर्म देते कारण त्यांच्या परमाणू त्रिज्या तुलनात्मक असतात. इतर विकल्प अयोग्य आहेत कारण परमाणू त्रिज्या वाढत नाही, घनता निश्चितपणे कमी होत नाही आणि अयुग्मित इलेक्ट्रॉनची संख्या लॅन्थेनॉइड अपक्षयामुळे प्रत्यक्षपणे प्रभावित होत नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for chemistry.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Misinterprets the effect of lanthanoid contraction as increasing atomic radii",
+        "Confuses the effect of lanthanoid contraction with that of density",
+        null,
+        "Incorrectly assumes that lanthanoid contraction affects the number of unpaired electrons"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 2, as lanthanoid contraction reduces the atomic radii of the third d-series elements, making them similar in size to the second d-series, thus leading to similar properties. The other options reflect common misconceptions about the effects of lanthanoid contraction.",
+      "sources": [
+        {
+          "document": "ncert/12/chemistry/lech104.pdf",
+          "ordinal": 4,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 4: The d- and f- Block Elements",
+            "The d- and f-",
+            "4.2 Electronic4.2Electronic",
+            "Configurations"
+          ]
+        },
+        {
+          "document": "ncert/12/chemistry/lech104.pdf",
+          "ordinal": 5,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 4: The d- and f- Block Elements",
+            "The d- and f-",
+            "4.2 Electronic4.2Electronic",
+            "(d-Block)"
+          ]
+        },
+        {
+          "document": "ncert/12/chemistry/lech104.pdf",
+          "ordinal": 6,
+          "pageStart": 5,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 4: The d- and f- Block Elements",
+            "The d- and f-",
+            "4.2 Electronic4.2Electronic",
+            "(d-Block)"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T14:54:16.643Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
     }
   ]
 }

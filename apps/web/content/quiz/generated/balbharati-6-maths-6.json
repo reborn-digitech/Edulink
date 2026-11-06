@@ -752,6 +752,630 @@
       "generatedAt": "2026-11-01T13:05:11.931Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "What part of the plot is made for the garden if a house is built on 1/3 of the plot?",
+      "choices": [
+        "1/3",
+        "2/3",
+        "2: 3/4",
+        "1/4"
+      ],
+      "answerIndex": 1,
+      "solution": "If a house is built on 1/3 of the plot, the remaining part for the garden is 1 - 1/3 = 2/3. The other options do not represent the remaining part of the plot.",
+      "checkExpr": "1 - 1/3",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि घर के लिए भूखंड के 1/3 भाग पर निर्माण किया जाता है, तो बगीचे के लिए कितना भाग बनाया जाता है?",
+          "choices": [
+            "1/3",
+            "2/3",
+            "3/4",
+            "1/4"
+          ],
+          "solution": "यदि घर के लिए भूखंड के 1/3 भाग पर निर्माण किया जाता है, तो बगीचे के लिए शेष भाग 1 - 1/3 = 2/3 होता है। अन्य विकल्प भूखंड के शेष भाग का प्रतिनिधित्व नहीं करते हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the mathematical meaning, and uses appropriate Hindi terms for fractions and parts of a plot.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "भूखंडाच्या किती भागात बाग बांधली जाईल जर घर भूखंडाच्या 1/3 भागात बांधले जाईल?",
+          "choices": [
+            "1/3",
+            "2/3",
+            "3/4",
+            "1/4"
+          ],
+          "solution": "जर घर भूखंडाच्या 1/3 भागात बांधले जाईल तर बागासाठी उरलेला भाग 1 - 1/3 = 2/3 आहे. इतर विकल्प भूखंडाच्या उरलेल्या भागाचे प्रतिनिधित्व करत नाहीत.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Chooses the part used for the house",
+        null,
+        "Student incorrectly adds the fraction of the house to the remaining plot instead of subtracting it.",
+        "Incorrectly assumes equal division"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct: 1 - 1/3 = 2/3. The reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 39,
+          "pageStart": 57,
+          "pageEnd": 58,
+          "headingPath": [
+            "6. Fractions"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 40,
+          "pageStart": 58,
+          "pageEnd": 61,
+          "headingPath": [
+            "6. Fractions"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 41,
+          "pageStart": 61,
+          "pageEnd": 63,
+          "headingPath": [
+            "6. Fractions"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 42,
+          "pageStart": 63,
+          "pageEnd": 63,
+          "headingPath": [
+            "6. Fractions"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-10-31T00:11:04.721Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of the following represents a unit fraction?",
+      "choices": [
+        "3/4",
+        "1/5",
+        "2/3",
+        "5/6"
+      ],
+      "answerIndex": 1,
+      "solution": "A unit fraction is a fraction with 1 as the numerator. Among the options, 1/5 is a unit fraction. 3/4, 2/3, and 5/6 have numerators greater than 1, so they are not unit fractions.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन एक इकाई भिन्न का प्रतिनिधित्व करता है?",
+          "choices": [
+            "3/4",
+            "1/5",
+            "2/3",
+            "5/6"
+          ],
+          "solution": "एक इकाई भिन्न वह भिन्न होती है जिसका अंश 1 होता है। विकल्पों में, 1/5 एक इकाई भिन्न है। 3/4, 2/3 और 5/6 के अंश 1 से अधिक हैं, अतः वे इकाई भिन्न नहीं हैं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, with appropriate Hindi mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते एकक अपूर्णांक दर्शविते?",
+          "choices": [
+            "3/4",
+            "1/5",
+            "2/3",
+            "5/6"
+          ],
+          "solution": "एकक अपूर्णांक हा अपूर्णांक आहे ज्याचा अंश 1 असतो. पर्यायांमध्ये 1/5 हा एकक अपूर्णांक आहे. 3/4, 2/3 आणि 5/6 चा अंश 1 पेक्षा मोठा असल्याने ते एकक अपूर्णांक नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "confuses numerator with denominator",
+        null,
+        "confuses numerator with denominator",
+        "confuses numerator with denominator"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly identifies 1/5 as the unit fraction, as it has a numerator of 1. The reasons for the wrong options are valid misconceptions, as they suggest students may confuse numerator and denominator.",
+      "sources": [
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 39,
+          "pageStart": 57,
+          "pageEnd": 58,
+          "headingPath": [
+            "6. Fractions"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 40,
+          "pageStart": 58,
+          "pageEnd": 61,
+          "headingPath": [
+            "6. Fractions"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 41,
+          "pageStart": 61,
+          "pageEnd": 63,
+          "headingPath": [
+            "6. Fractions"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 42,
+          "pageStart": 63,
+          "pageEnd": 63,
+          "headingPath": [
+            "6. Fractions"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-10-30T22:33:25.782Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "What is the sum of 1/3 and 1/6?",
+      "choices": [
+        "1/2",
+        "2/3",
+        "1/3",
+        "5/6"
+      ],
+      "answerIndex": 0,
+      "solution": "To add 1/3 and 1/6, find the least common denominator, which is 6. Convert 1/3 to 2/6 and add it to 1/6, resulting in 3/6, which simplifies to 1/2. The other options do not result from this addition.",
+      "checkExpr": "1/3 + 1/6",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "1/3 और 1/6 का योग क्या है?",
+          "choices": [
+            "1/2",
+            "2/3",
+            "1/3",
+            "5/6"
+          ],
+          "solution": "1/3 और 1/6 को जोड़ने के लिए, सबसे छोटा सामान्य हर ज्ञात करें, जो 6 है। 1/3 को 2/6 में बदलें और इसे 1/6 में जोड़ें, जिससे 3/6 प्राप्त होता है, जो 1/2 में सरलीकृत हो जाता है। अन्य विकल्प इस योग से प्राप्त नहीं होते।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "1/3 आणि 1/6 ची बेरीज किती आहे?",
+          "choices": [
+            "1/2",
+            "2/3",
+            "1/3",
+            "5/6"
+          ],
+          "solution": "1/3 आणि 1/6 जोडण्यासाठी, सर्वात लहान सामान्य छेद शोधा, जो 6 आहे. 1/3 ला 2/6 मध्ये बदला आणि 1/6 शी जोडा, जे 3/6 देते, जे 1/2 मध्ये सोपे केले जाते. इतर विकल्प ह्या जोडणीमुळे मिळत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "adds numerators and denominators separately",
+        "Confuses adding fractions with keeping the same denominator",
+        "adds numerators incorrectly"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct and matches the key. The reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 39,
+          "pageStart": 57,
+          "pageEnd": 58,
+          "headingPath": [
+            "6. Fractions"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 40,
+          "pageStart": 58,
+          "pageEnd": 61,
+          "headingPath": [
+            "6. Fractions"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 41,
+          "pageStart": 61,
+          "pageEnd": 63,
+          "headingPath": [
+            "6. Fractions"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 42,
+          "pageStart": 63,
+          "pageEnd": 63,
+          "headingPath": [
+            "6. Fractions"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-10-30T22:33:25.782Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "Which of the following fractions is the largest?",
+      "choices": [
+        "1/2",
+        "3/4",
+        "2/5",
+        "5/8"
+      ],
+      "answerIndex": 1,
+      "solution": "To compare the fractions, convert them to have a common denominator. 1/2 is 4/8, 3/4 is 6/8, 2/5 is 3.2/8, and 5/8 remains 5/8. Thus, 3/4 is the largest. The other options are smaller when converted.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्न में से कौन-सा भिन्न सबसे बड़ा है?",
+          "choices": [
+            "1/2",
+            "3/4",
+            "2/5",
+            "5/8"
+          ],
+          "solution": "भिन्नों की तुलना करने के लिए, उन्हें एक समान हर बनाएं। 1/2 बराबर 4/8 है, 3/4 बराबर 6/8 है, 2/5 बराबर 3.2/8 है, और 5/8 स्वयं 5/8 है। इसलिए, 3/4 सबसे बड़ा है। अन्य विकल्प जब बदल जाते हैं तो छोटे होते हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणता अपूर्णांक सर्वात मोठा आहे?",
+          "choices": [
+            "1/2",
+            "3/4",
+            "2/5",
+            "5/8"
+          ],
+          "solution": "अपूर्णांक तुलना करण्यासाठी, त्यांना एकसारखा छेद असलेले बदला. 1/2 हा 4/8 आहे, 3/4 हा 6/8 आहे, 2/5 हा 3.2/8 आहे आणि 5/8 चा छेद बदलत नाही. म्हणून, 3/4 सर्वात मोठा आहे. इतर विकल्प बदलल्यानंतर लहान असतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "compares numerators without common denominator",
+        null,
+        "compares denominators instead of numerators",
+        "confuses equivalent fractions"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct, and the key is accurate. The reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 39,
+          "pageStart": 57,
+          "pageEnd": 58,
+          "headingPath": [
+            "6. Fractions"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 40,
+          "pageStart": 58,
+          "pageEnd": 61,
+          "headingPath": [
+            "6. Fractions"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 41,
+          "pageStart": 61,
+          "pageEnd": 63,
+          "headingPath": [
+            "6. Fractions"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 42,
+          "pageStart": 63,
+          "pageEnd": 63,
+          "headingPath": [
+            "6. Fractions"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-10-30T22:33:25.782Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "A house is built on 3/5 of a plot. What part of the plot is left for the garden?",
+      "choices": [
+        "1/5",
+        "2/5",
+        "3/5",
+        "4/5"
+      ],
+      "answerIndex": 1,
+      "solution": "If the house is built on 3/5 of the plot, the remaining part is 1 - 3/5 = 2/5. The other options do not correctly represent the remaining part of the plot.",
+      "checkExpr": "1 - 3/5",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक घर 3/5 भूखंड पर बनाया गया है। बाग में कितना भाग बचा है?",
+          "choices": [
+            "1/5",
+            "2/5",
+            "3/5",
+            "4/5"
+          ],
+          "solution": "यदि घर 3/5 भूखंड पर बनाया गया है, तो शेष भाग 1 - 3/5 = 2/5 है। अन्य विकल्प भूखंड के शेष भाग को सही ढंग से नहीं दर्शाते हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the original English question and solution, with appropriate mathematical terminology and correct answer positioning.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका जमीनीच्या 3/5 भागावर घर बांधले गेले. बागेसाठी किती भाग उरतो?",
+          "choices": [
+            "1/5",
+            "2/5",
+            "3/5",
+            "4/5"
+          ],
+          "solution": "जर घर 3/5 जमीनीवर बांधले गेले असेल तर उरलेला भाग 1 - 3/5 = 2/5 असेल. इतर विकल्प जमीनीच्या उरलेल्या भागाचे योग्य निरूपण करत नाहीत.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "subtracts numerator incorrectly",
+        null,
+        "adds instead of subtracts",
+        "confuses numerator with denominator"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct and matches the key. The reasoning is sound and the misconceptions listed for the distractors are plausible for students at this level.",
+      "sources": [
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 39,
+          "pageStart": 57,
+          "pageEnd": 58,
+          "headingPath": [
+            "6. Fractions"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 40,
+          "pageStart": 58,
+          "pageEnd": 61,
+          "headingPath": [
+            "6. Fractions"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 41,
+          "pageStart": 61,
+          "pageEnd": 63,
+          "headingPath": [
+            "6. Fractions"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 42,
+          "pageStart": 63,
+          "pageEnd": 63,
+          "headingPath": [
+            "6. Fractions"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-10-30T22:33:25.782Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Which of the following fractions is equivalent to 2/3?",
+      "choices": [
+        "4/6",
+        "3/6",
+        "6/12",
+        "8/12"
+      ],
+      "answerIndex": 0,
+      "solution": "To find an equivalent fraction, multiply both numerator and denominator by the same number. 2/3 is equivalent to 4/6 (multiplied by 2). 6/9 and 8/12 are also equivalent, but 4/6 is the simplest form. 3/4 is not equivalent.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा भिन्न 2/3 के बराबर है?",
+          "choices": [
+            "4/6",
+            "3/6",
+            "6/12",
+            "8/12"
+          ],
+          "solution": "एक समतुल्य भिन्न ज्ञात करने के लिए, अंश और हर को एक ही संख्या से गुणा करें। 2/3, 4/6 के बराबर है (2 से गुणा करने पर)। 6/9 और 8/12 भी समतुल्य हैं, लेकिन 4/6 सरलतम रूप है। 3/4 समतुल्य नहीं है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English question and solution, with appropriate mathematical terminology and correct answer positioning.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणता अपूर्णांक 2/3 च्या समतुल्य आहे?",
+          "choices": [
+            "4/6",
+            "3/6",
+            "6/12",
+            "8/12"
+          ],
+          "solution": "समतुल्य अपूर्णांक शोधण्यासाठी, अंश आणि हर यांना एकसारख्या संख्येने गुणावे. 2/3 ला 4/6 च्या समतुल्य आहे (2 ने गुणले). 6/9 आणि 8/12 देखील समतुल्य आहेत, परंतु 4/6 हा सरळ रूप आहे. 3/4 समतुल्य नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Believes that adding the same number to numerator and denominator keeps the fraction equivalent",
+        "Confuses numerator and denominator when scaling fractions",
+        "Believes that multiplying numerator and denominator by the same number only affects the numerator"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 4/6, as it is obtained by multiplying both numerator and denominator of 2/3 by 2. The author's solution is correct, and the reasons for the wrong options align with common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 39,
+          "pageStart": 57,
+          "pageEnd": 58,
+          "headingPath": [
+            "6. Fractions"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 40,
+          "pageStart": 58,
+          "pageEnd": 61,
+          "headingPath": [
+            "6. Fractions"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 41,
+          "pageStart": 61,
+          "pageEnd": 63,
+          "headingPath": [
+            "6. Fractions"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 42,
+          "pageStart": 63,
+          "pageEnd": 63,
+          "headingPath": [
+            "6. Fractions"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-10-30T22:33:25.782Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
     }
   ]
 }

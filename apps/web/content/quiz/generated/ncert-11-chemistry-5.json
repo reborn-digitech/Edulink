@@ -1449,6 +1449,1241 @@
       "generatedAt": "2026-10-28T12:04:21.515Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is the main purpose of a calorimeter in thermodynamics?",
+      "choices": [
+        "To measure the volume of a reaction",
+        "To measure the pressure of a reaction",
+        "To measure the temperature changes during a reaction",
+        "To measure the mass of a reaction"
+      ],
+      "answerIndex": 2,
+      "solution": "The main purpose of a calorimeter is to measure the temperature changes during a reaction. A calorimeter is used to determine the heat evolved or absorbed during a chemical or physical process by monitoring the temperature changes in the surrounding liquid. The other options are incorrect because a calorimeter does not measure volume, pressure, or mass directly.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "थर्मोडायनामिक्स में एक कैलोरीमीटर का मुख्य उद्देश्य क्या है?",
+          "choices": [
+            "अभिक्रिया के आयतन को मापना",
+            "अभिक्रिया के दबाव को मापना",
+            "अभिक्रिया के दौरान तापमान में परिवर्तन को मापना",
+            "अभिक्रिया के द्रव्यमान को मापना"
+          ],
+          "solution": "कैलोरीमीटर का मुख्य उद्देश्य अभिक्रिया के दौरान तापमान में परिवर्तन को मापना होता है। कैलोरीमीटर का उपयोग रासायनिक या भौतिक प्रक्रिया में उत्पन्न या अवशोषित ऊष्मा को निर्धारित करने के लिए किया जाता है, जिसके लिए विलयन में तापमान में परिवर्तन को निरीक्षित किया जाता है। अन्य विकल्प गलत हैं क्योंकि कैलोरीमीटर सीधे आयतन, दबाव या द्रव्यमान को नहीं मापता है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains original meaning, and uses standard Hindi scientific terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "तापक्रमशास्त्रात कॅलोरीमीटरचा मुख्य उद्देश काय आहे?",
+          "choices": [
+            "एका अभिक्रियेचा आयतन मोजणे",
+            "एका अभिक्रियेचा दाब मोजणे",
+            "अभिक्रियेदरम्यान तापमानातील बदल मोजणे",
+            "एका अभिक्रियेचा द्रव्यमान मोजणे"
+          ],
+          "solution": "कॅलोरीमीटरचा मुख्य उद्देश अभिक्रियेदरम्यान तापमानातील बदल मोजणे आहे. कॅलोरीमीटर रासायनिक किंवा भौमितिक प्रक्रियेदरम्यान उत्पन्न होणाऱ्या ऊष्मेचे निर्धारण करण्यासाठी वापरला जातो ज्यामुळे आजूबाजूच्या द्रवातील तापमानातील बदलाचे निरीक्षण केले जाते. इतर विकल्प अयोग्य आहेत कारण कॅलोरीमीटर आयतन, दाब किंवा द्रव्यमान सीधा मोजत नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses calorimeter with a device that measures volume",
+        "Confuses calorimeter with a device that measures pressure",
+        null,
+        "Confuses calorimetry with mass measurement, thinking heat is related to mass rather than temperature change"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-constructed, with a clear correct answer and plausible misconceptions for the distractors. The solution correctly identifies the purpose of a calorimeter as measuring temperature changes.",
+      "sources": [
+        {
+          "document": "ncert/11/chemistry/kech105.pdf",
+          "ordinal": 13,
+          "pageStart": 10,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 5: Thermodynamics"
+          ]
+        },
+        {
+          "document": "ncert/11/chemistry/kech105.pdf",
+          "ordinal": 14,
+          "pageStart": 11,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 5: Thermodynamics"
+          ]
+        },
+        {
+          "document": "ncert/11/chemistry/kech105.pdf",
+          "ordinal": 15,
+          "pageStart": 12,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 5: Thermodynamics"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-23T06:26:42.292Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the main focus of the study of thermodynamics?",
+      "choices": [
+        "The rate of chemical reactions",
+        "The energy changes in macroscopic systems",
+        "The microscopic properties of molecules",
+        "The structure of atoms"
+      ],
+      "answerIndex": 1,
+      "solution": "Thermodynamics primarily examines how energy is transferred and transformed within large-scale systems composed of many particles. This focus on energy changes in such systems distinguishes it from other fields. The other options relate to different areas of study, such as reaction rates, molecular properties, or atomic structure, which are not the central concern of thermodynamics.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "थर्मोडायनामिक्स के अध्ययन का मुख्य फोकस क्या है?",
+          "choices": [
+            "रासायनिक अभिक्रियाओं की दर",
+            "मैक्रोस्कोपिक प्रणालियों में ऊर्जा परिवर्तन",
+            "अणुओं के छोटे पैमाने के गुण",
+            "परमाणुओं की संरचना"
+          ],
+          "solution": "थर्मोडायनामिक्स मुख्य रूप से बड़े पैमाने पर बहुत सारे कणों से बनी प्रणालियों में ऊर्जा के स्थानांतरण एवं रूपांतरण की जांच करता है। ऐसी प्रणालियों में ऊर्जा परिवर्तन पर ध्यान केंद्रित करना इसे अन्य क्षेत्रों से अलग करता है। अन्य विकल्प अभिक्रिया दर, अणुगत गुण या परमाणु संरचना जैसे अलग-अलग अध्ययन क्षेत्रों से संबंधित हैं, जो थर्मोडायनामिक्स के केंद्रीय ध्यान के विषय नहीं हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology, with no inconsistencies or ambiguities.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "तापीय गतिशास्त्राचा अभ्यासाचा मुख्य लक्ष्य काय आहे?",
+          "choices": [
+            "रासायनिक अभिक्रियांच्या दराचा अभ्यास",
+            "महाकाय प्रणालीमधील ऊर्जा बदल",
+            "अणूच्या अणुमात्र गुणधर्मांचा अभ्यास",
+            "अणूच्या रचनेचा अभ्यास"
+          ],
+          "solution": "तापीय गतिशास्त्र विशाल प्रणालीमध्ये ऊर्जेच्या हस्तांतरणाच्या आणि रूपांतराच्या अभ्यासावर लक्ष केंद्रित करते. हा विषय इतर विषयांपासून भिन्न आहे. इतर विकल्प अभिक्रियांच्या दराच्या, अणूच्या अणुमात्र गुणधर्मांच्या किंवा अणूच्या रचनेच्या अभ्यासाशी संबंधित आहेत, जे तापीय गतिशास्त्राच्या मुख्य लक्ष्याशी संबंधित नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Focuses on reaction rates, which is not the main focus",
+        null,
+        "Incorrectly focuses on microscopic systems",
+        "Incorrectly focuses on atomic structure"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The question correctly identifies the main focus of thermodynamics as energy changes in macroscopic systems. The other options are clearly incorrect, and the author's reasoning for the wrong options aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/11/chemistry/kech105.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 1,
+          "headingPath": [
+            "Chapter 5: Thermodynamics"
+          ]
+        },
+        {
+          "document": "ncert/11/chemistry/kech105.pdf",
+          "ordinal": 1,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 5: Thermodynamics"
+          ]
+        },
+        {
+          "document": "ncert/11/chemistry/kech105.pdf",
+          "ordinal": 2,
+          "pageStart": 2,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 5: Thermodynamics"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-23T06:26:42.292Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the correct sign convention for work done by the system in thermodynamics?",
+      "choices": [
+        "Positive",
+        "Negative",
+        "Zero",
+        "Cannot be determined"
+      ],
+      "answerIndex": 1,
+      "solution": "The correct sign convention is that work done by the system is negative. This is because work done on the system is considered positive, and work done by the system is the opposite. Positive and zero do not follow the IUPAC convention, and it is not impossible to determine the sign.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "थर्मोडायनामिक्स में प्रणोद द्वारा प्रणाली द्वारा किए गए कार्य के सही चिह्न संप्रदाय क्या है?",
+          "choices": [
+            "धनात्मक",
+            "ऋणात्मक",
+            "शून्य",
+            "निर्धारित नहीं किया जा सकता"
+          ],
+          "solution": "सही चिह्न संप्रदाय यह है कि प्रणाली द्वारा किया गया कार्य ऋणात्मक होता है। इसका कारण यह है कि प्रणाली पर किया गया कार्य धनात्मक माना जाता है, और प्रणाली द्वारा किया गया कार्य इसके विपरीत होता है। धनात्मक और शून्य IUPAC संप्रदाय के अनुसार नहीं हैं, और चिह्न को निर्धारित करना संभव नहीं है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and technical terminology. All options are correctly translated and maintain their original logical relationship. The correct answer remains option (1) and the explanation is consistent.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "थर्मोडायनॅमिक्स मध्ये प्रणालीद्वारे केलेल्या कार्यासाठी योग्य चिन्ह परंपरा काय आहे?",
+          "choices": [
+            "धनात्मक",
+            "ऋणात्मक",
+            "शून्य",
+            "निश्चित करता येत नाही"
+          ],
+          "solution": "प्रणालीद्वारे केलेल्या कार्यासाठी योग्य चिन्ह परंपरा ऋणात्मक आहे. हे कारण की प्रणालीवर केलेले कार्य धनात्मक मानले जाते, आणि प्रणालीद्वारे केलेले कार्य हे त्याच्या विरुद्ध आहे. धनात्मक आणि शून्य IUPAC परंपरेनुसार येत नाहीत, आणि चिन्ह निश्चित करणे अशक्य नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for thermodynamics.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Assumes work done by the system is positive",
+        null,
+        "Chooses zero incorrectly",
+        "Thinks the sign cannot be determined"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly identifies that work done by the system is negative under the IUPAC convention, and the reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/11/chemistry/kech105.pdf",
+          "ordinal": 3,
+          "pageStart": 3,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 5: Thermodynamics"
+          ]
+        },
+        {
+          "document": "ncert/11/chemistry/kech105.pdf",
+          "ordinal": 4,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 5: Thermodynamics"
+          ]
+        },
+        {
+          "document": "ncert/11/chemistry/kech105.pdf",
+          "ordinal": 5,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 5: Thermodynamics"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-23T06:26:42.292Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If a system undergoes a process where no heat is exchanged with the surroundings, what type of process is it?",
+      "choices": [
+        "Isothermal",
+        "Adiabatic",
+        "Isobaric",
+        "Isochoric"
+      ],
+      "answerIndex": 1,
+      "solution": "An adiabatic process is one in which no heat is exchanged between the system and surroundings. Isothermal involves constant temperature, isobaric involves constant pressure, and isochoric involves constant volume. None of these describe the absence of heat transfer.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि कोई प्रणाली ऐसे प्रक्रम में गुजरती है जिसमें वातावरण के साथ कोई ऊष्मा का आदान-प्रदान नहीं होता है, तो ऐसा प्रक्रम किस प्रकार का होता है?",
+          "choices": [
+            "समतापी",
+            "रेडिएटिक",
+            "समदाबी",
+            "समआयतनी"
+          ],
+          "solution": "एक एडियाबेटिक प्रक्रम वह होता है जिसमें प्रणाली और वातावरण के बीच कोई ऊष्मा का आदान-प्रदान नहीं होता है। समतापी में तापमान स्थिर रहता है, समदाबी में दाब स्थिर रहता है और समआयतनी में आयतन स्थिर रहता है। इनमें से कोई भी ऊष्मा स्थानांतरण के अभाव का वर्णन नहीं करता है।",
+          "imageAlt": null,
+          "critique": "Hindi translation accurately conveys the technical terms and meaning of the original English question. The correct answer remains option (2) and all distractors are still incorrect.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका प्रक्रियेत जेव्हा प्रणाली आजूबाजूच्या उष्णतेशी कोणतीही बदलाची नाही, तेव्हा ती प्रक्रिया कोणत्या प्रकारची असते?",
+          "choices": [
+            "समतापी",
+            "आदिअबॅटिक",
+            "समदाबी",
+            "समआयतनी"
+          ],
+          "solution": "आदिअबॅटिक प्रक्रिया ही एक अशी प्रक्रिया आहे जेथे प्रणाली आणि आजूबाजूमध्ये उष्णतेचा बदल होत नाही. समतापी प्रक्रियेत तापमान अचूक राहते, समदाबी प्रक्रियेत दाब अचूक राहतो आणि समआयतनी प्रक्रियेत आयतन अचूक राहतो. यापैकी कोणतीही प्रक्रिया उष्णतेच्या हस्तांतरणाच्या अभावाचे वर्णन करत नाही.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate technical terms as used in Marathi-medium science textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses isothermal with adiabatic",
+        null,
+        "Chooses isobaric by mistake",
+        "Chooses isochoric by mistake"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-posed and the solution is correct. The key is accurate, and the distractors are based on common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/11/chemistry/kech105.pdf",
+          "ordinal": 3,
+          "pageStart": 3,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 5: Thermodynamics"
+          ]
+        },
+        {
+          "document": "ncert/11/chemistry/kech105.pdf",
+          "ordinal": 4,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 5: Thermodynamics"
+          ]
+        },
+        {
+          "document": "ncert/11/chemistry/kech105.pdf",
+          "ordinal": 5,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 5: Thermodynamics"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-23T06:26:42.292Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "For a process occurring under adiabatic conditions, which of the following is true?",
+      "choices": [
+        "∆T = 0",
+        "∆p = 0",
+        "q = 0",
+        "w = 0"
+      ],
+      "answerIndex": 2,
+      "solution": "Under adiabatic conditions, no heat is exchanged with the surroundings, so the correct condition is q = 0. ∆T and ∆p can vary, and work (w) can be non-zero. The correct answer is 'q = 0' because it directly reflects the definition of adiabatic processes.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एडियाबैटिक स्थितियों के तहत एक प्रक्रिया हो रही है, निम्नलिखित में से कौन सा सत्य है?",
+          "choices": [
+            "∆T = 0",
+            "∆p = 0",
+            "q = 0",
+            "w = 0"
+          ],
+          "solution": "एडियाबैटिक स्थितियों में, पर्यावरण के साथ कोई ऊष्मा का आदान-प्रदान नहीं होता है, इसलिए सही स्थिति q = 0 है। ∆T और ∆p बदल सकते हैं, और कार्य (w) शून्य नहीं हो सकता है। सही उत्तर 'q = 0' है क्योंकि यह एडियाबैटिक प्रक्रियाओं की परिभाषा को सीधे दर्शाता है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate technical terms as found in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "अद्वितीय परिस्थितीत एक प्रक्रिया घडत असताना, खालीलपैकी कोणते खरे आहे?",
+          "choices": [
+            "∆T = 0",
+            "∆p = 0",
+            "q = 0",
+            "w = 0"
+          ],
+          "solution": "अद्वितीय परिस्थितीत, परिसराशी ऊष्मा बदलली जात नाही, त्यामुळे योग्य अट q = 0 आहे. ∆T आणि ∆p बदलू शकतात, आणि कार्य (w) शून्य नसू शकते. योग्य उत्तर 'q = 0' आहे कारण ते अद्वितीय प्रक्रियांच्या व्याख्येला सीधा प्रतिबिंबित करते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses temperature change with adiabatic conditions",
+        "Confuses pressure change with adiabatic conditions",
+        null,
+        "Misunderstands work as the defining condition"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly identifies that in an adiabatic process, no heat is exchanged (q = 0), which matches the definition. The other options represent common misconceptions about temperature, pressure, and work in adiabatic processes.",
+      "sources": [
+        {
+          "document": "ncert/11/chemistry/kech105.pdf",
+          "ordinal": 34,
+          "pageStart": 27,
+          "pageEnd": 29,
+          "headingPath": [
+            "Chapter 5: Thermodynamics"
+          ]
+        },
+        {
+          "document": "ncert/11/chemistry/kech105.pdf",
+          "ordinal": 35,
+          "pageStart": 29,
+          "pageEnd": 29,
+          "headingPath": [
+            "Chapter 5: Thermodynamics"
+          ]
+        },
+        {
+          "document": "ncert/11/chemistry/kech105.pdf",
+          "ordinal": 36,
+          "pageStart": 29,
+          "pageEnd": 30,
+          "headingPath": [
+            "Chapter 5: Thermodynamics"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-23T06:26:42.292Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "What does the term 'surroundings' refer to in thermodynamics?",
+      "choices": [
+        "The system itself",
+        "The boundary between the system and surroundings",
+        "The rest of the universe excluding the system",
+        "The energy changes in the system"
+      ],
+      "answerIndex": 2,
+      "solution": "In thermodynamics, the surroundings refer to everything outside of the system, which together makes up the universe. This means the surroundings are the rest of the universe excluding the system itself. Other options incorrectly describe the system, its boundary, or its energy changes, rather than what lies outside the system.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "थर्मोडायनामिक्स में 'परिवेश' शब्द का अर्थ क्या होता है?",
+          "choices": [
+            "प्रणाली स्वयं",
+            "प्रणाली और परिवेश के बीच की सीमा",
+            "प्रणाली के बाहर के संपूर्ण ब्रह्मांड",
+            "प्रणाली में ऊर्जा परिवर्तन"
+          ],
+          "solution": "थर्मोडायनामिक्स में परिवेश प्रणाली के बाहर के सभी चीजों को संदर्भित करता है जो ब्रह्मांड के अन्य हिस्सों के साथ एक साथ बनाते हैं। इसका अर्थ है कि परिवेश प्रणाली के बाहर के संपूर्ण ब्रह्मांड होता है। अन्य विकल्प गलत तरीके से प्रणाली, इसकी सीमा या इसके ऊर्जा परिवर्तन का वर्णन करते हैं, जबकि प्रणाली के बाहर के चीजों का वर्णन नहीं करते।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. All options are correctly translated, and the correct answer remains in the same position. The distractors remain incorrect, and technical terms like 'प्रणाली' (system) and 'ब्रह्मांड' (universe) are appropriately used.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "थर्मोडायनॅमिक्समध्ये 'संस्थिती' शब्दाचा अर्थ काय आहे?",
+          "choices": [
+            "सिस्टम स्वतः",
+            "सिस्टम आणि संस्थितीमधील सीमा",
+            "सिस्टम वगळून जगाचा बाकीचा भाग",
+            "सिस्टममधील ऊर्जा बदल"
+          ],
+          "solution": "थर्मोडायनॅमिक्समध्ये, संस्थिती सिस्टमबाहेरील सर्व काही असते, जे एकत्रितपणे जगाचा भाग बनते. हा अर्थ संस्थिती हा सिस्टम वगळून जगाचा बाकीचा भाग असतो. इतर विकल्प सिस्टम, त्याच्या सीमा किंवा ऊर्जा बदलांचे चुकीचे वर्णन करतात, जे सिस्टमबाहेरील गोष्टींचे नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for thermodynamics.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "This is the definition of the system",
+        "This is the definition of the boundary",
+        null,
+        "This is a description of energy changes, not surroundings"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is well-constructed, with a clear and accurate definition of 'surroundings' as the rest of the universe excluding the system. The distractors correctly target common misconceptions about the system, boundary, and energy changes.",
+      "sources": [
+        {
+          "document": "ncert/11/chemistry/kech105.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 1,
+          "headingPath": [
+            "Chapter 5: Thermodynamics"
+          ]
+        },
+        {
+          "document": "ncert/11/chemistry/kech105.pdf",
+          "ordinal": 1,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 5: Thermodynamics"
+          ]
+        },
+        {
+          "document": "ncert/11/chemistry/kech105.pdf",
+          "ordinal": 2,
+          "pageStart": 2,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 5: Thermodynamics"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-23T06:26:42.292Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "Which of the following statements about the Gibbs free energy change (∆G) of a reaction is correct?",
+      "choices": [
+        "If ∆G is positive, the reaction is spontaneous.",
+        "If ∆G is negative, the reaction is non-spontaneous.",
+        "If ∆G is zero, the reaction is at equilibrium.",
+        "If ∆G is negative, the reaction is at equilibrium."
+      ],
+      "answerIndex": 2,
+      "solution": "The correct statement is that if ∆G is zero, the reaction is at equilibrium. This is because Gibbs free energy change determines the spontaneity of a reaction; a negative ∆G indicates a spontaneous process, while a positive ∆G indicates a non-spontaneous one. When ∆G is zero, the system is in equilibrium. The other options are incorrect because they contradict the established relationship between ∆G and reaction spontaneity.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा कथन अभिक्रिया के गिब्स मुक्त ऊर्जा परिवर्तन (∆G) के बारे में सही है?",
+          "choices": [
+            "यदि ∆G धनात्मक है, तो अभिक्रिया स्वतः होती है।",
+            "यदि ∆G ऋणात्मक है, तो अभिक्रिया अस्वतः होती है।",
+            "यदि ∆G शून्य है, तो अभिक्रिया साम्य में होती है।",
+            "यदि ∆G ऋणात्मक है, तो अभिक्रिया साम्य में होती है।"
+          ],
+          "solution": "सही कथन यह है कि यदि ∆G शून्य है, तो अभिक्रिया साम्य में होती है। इसका कारण यह है कि गिब्स मुक्त ऊर्जा परिवर्तन अभिक्रिया की स्वतः प्रवृत्ति को निर्धारित करता है; ऋणात्मक ∆G एक स्वतः प्रवृत्ति प्रक्रिया को इंगित करता है, जबकि धनात्मक ∆G एक अस्वतः प्रक्रिया को इंगित करता है। जब ∆G शून्य होता है, तो प्रणाली साम्य में होती है। अन्य विकल्प गलत हैं क्योंकि वे ∆G और अभिक्रिया की स्वतः प्रवृत्ति के बीच स्थापित संबंध के विरोध में हैं।",
+          "imageAlt": null,
+          "critique": "Translation accurately reflects the original meaning with appropriate Hindi scientific terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी अभिक्रियेच्या गिब्स मुक्त ऊर्जा बदल (∆G) बद्दल कोणता विधान बरोबर आहे?",
+          "choices": [
+            "जर ∆G धनात्मक असेल, तर अभिक्रिया स्वतःच घडते.",
+            "जर ∆G ऋणात्मक असेल, तर अभिक्रिया अस्वतःच घडते.",
+            "जर ∆G शून्य असेल, तर अभिक्रिया साम्यावस्थेत असते.",
+            "जर ∆G ऋणात्मक असेल, तर अभिक्रिया साम्यावस्थेत असते."
+          ],
+          "solution": "बरोबर विधान असे आहे की जर ∆G शून्य असेल, तर अभिक्रिया साम्यावस्थेत असते. हे गिब्स मुक्त ऊर्जा बदल अभिक्रियेच्या स्वतःच घडण्याच्या विधानाचे निर्धारण करते; ऋणात्मक ∆G स्वतःच घडणारी प्रक्रिया दर्शवते, तर धनात्मक ∆G अस्वतःच घडणारी प्रक्रिया दर्शवते. जेव्हा ∆G शून्य असते, तेव्हा प्रणाली साम्यावस्थेत असते. इतर विधाने चुकीची आहेत कारण ते ∆G आणि अभिक्रियेच्या स्वतःच घडण्याच्या संबंधाशी विरोधाभास आहेत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for thermodynamics.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the sign of ∆G with spontaneity.",
+        "Confuses the sign of ∆G with spontaneity.",
+        null,
+        "Misunderstands the meaning of ∆G being zero."
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is option 2, as ∆G = 0 indicates equilibrium. The other options incorrectly associate the sign of ∆G with spontaneity or equilibrium, which reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/11/chemistry/kech105.pdf",
+          "ordinal": 31,
+          "pageStart": 25,
+          "pageEnd": 26,
+          "headingPath": [
+            "Chapter 5: Thermodynamics"
+          ]
+        },
+        {
+          "document": "ncert/11/chemistry/kech105.pdf",
+          "ordinal": 32,
+          "pageStart": 26,
+          "pageEnd": 26,
+          "headingPath": [
+            "Chapter 5: Thermodynamics"
+          ]
+        },
+        {
+          "document": "ncert/11/chemistry/kech105.pdf",
+          "ordinal": 33,
+          "pageStart": 26,
+          "pageEnd": 27,
+          "headingPath": [
+            "Chapter 5: Thermodynamics"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-23T06:26:42.292Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "Which of the following statements is true about the enthalpies of all elements in their standard states?",
+      "choices": [
+        "Unity",
+        "Zero",
+        "< 0",
+        "Different for each element"
+      ],
+      "answerIndex": 1,
+      "solution": "The enthalpies of all elements in their standard states are defined as zero because they are in their most stable form. The correct answer is 'Zero' because this is a fundamental concept in thermodynamics.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा कथन मानक अवस्थाओं में सभी तत्वों के एन्थैल्पियों के बारे में सत्य है?",
+          "choices": [
+            "एक",
+            "शून्य",
+            "< 0",
+            "प्रत्येक तत्व के लिए अलग-अलग"
+          ],
+          "solution": "मानक अवस्थाओं में सभी तत्वों की एन्थैल्पियाँ शून्य के रूप में परिभाषित की जाती हैं क्योंकि वे अपने सबसे स्थायी रूप में होते हैं। सही उत्तर 'शून्य' है क्योंकि यह थर्मोडायनामिक्स की एक मूलभूत अवधारणा है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate scientific terminology as found in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणता विधान मानक अवस्थेतील सर्व घटकांच्या एन्थॅल्पीबद्दल खरे आहे?",
+          "choices": [
+            "एक",
+            "शून्य",
+            "< 0",
+            "प्रत्येक घटकासाठी वेगळे"
+          ],
+          "solution": "मानक अवस्थेतील सर्व घटकांच्या एन्थॅल्पी शून्य मानल्या जातात कारण ते त्यांच्या सर्वात स्थिर रूपात असतात. योग्य उत्तर 'शून्य' आहे कारण हे थर्मोडायनॅमिक्समधील एक मूलभूत संकल्पना आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for thermodynamics.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses enthalpy with a non-zero value",
+        null,
+        "Misunderstands the definition of standard enthalpy",
+        "Confuses different elements with different enthalpies"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 1 (Zero), as the standard enthalpy of formation for elements in their most stable form is defined as zero. The reasoning provided by the author is accurate and aligns with standard thermodynamic principles.",
+      "sources": [
+        {
+          "document": "ncert/11/chemistry/kech105.pdf",
+          "ordinal": 34,
+          "pageStart": 27,
+          "pageEnd": 29,
+          "headingPath": [
+            "Chapter 5: Thermodynamics"
+          ]
+        },
+        {
+          "document": "ncert/11/chemistry/kech105.pdf",
+          "ordinal": 35,
+          "pageStart": 29,
+          "pageEnd": 29,
+          "headingPath": [
+            "Chapter 5: Thermodynamics"
+          ]
+        },
+        {
+          "document": "ncert/11/chemistry/kech105.pdf",
+          "ordinal": 36,
+          "pageStart": 29,
+          "pageEnd": 30,
+          "headingPath": [
+            "Chapter 5: Thermodynamics"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-23T06:26:42.292Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "For the reaction N2(g) + 3H2(g) → 2NH3(g), what is the sign of ∆S?",
+      "choices": [
+        "Positive",
+        "Negative",
+        "Zero",
+        "Cannot be determined"
+      ],
+      "answerIndex": 1,
+      "solution": "The reaction involves a decrease in the number of gas molecules, leading to a decrease in entropy. Therefore, ∆S is negative. The other options incorrectly assume the entropy change is positive or zero.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "अभिक्रिया N2(g) + 3H2(g) → 2NH3(g) के लिए ∆S का चिह्न क्या है?",
+          "choices": [
+            "धनात्मक",
+            "ऋणात्मक",
+            "शून्य",
+            "निर्धारित नहीं किया जा सकता"
+          ],
+          "solution": "अभिक्रिया में गैस अणुओं की संख्या में कमी होती है, जिसके कारण एंट्रॉपी में कमी होती है। इसलिए ∆S ऋणात्मक है। अन्य विकल्प गलत ढंग से एंट्रॉपी परिवर्तन को धनात्मक या शून्य मान लेते हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate scientific terminology as found in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "अभिक्रिया N2(g) + 3H2(g) → 2NH3(g) साठी ∆S चा चिन्ह काय आहे?",
+          "choices": [
+            "धनात्मक",
+            "ऋणात्मक",
+            "शून्य",
+            "निश्चित करता येत नाही"
+          ],
+          "solution": "अभिक्रियेमध्ये गॅस अणूंची संख्या घटते, ज्यामुळे एंट्रॉपी घटते. म्हणून ∆S ऋणात्मक आहे. इतर विकल्प चूकीने एंट्रॉपी बदल धनात्मक किंवा शून्य असल्याचा अंदाज घेतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "incorrectly assumes the reaction increases disorder",
+        null,
+        "incorrectly assumes no change in entropy",
+        "does not consider the change in the number of gas molecules"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies that the reaction reduces the number of gas molecules, leading to a decrease in entropy. The reasoning is sound and matches the expected understanding of entropy change in gaseous reactions.",
+      "sources": [
+        {
+          "document": "ncert/11/chemistry/kech105.pdf",
+          "ordinal": 37,
+          "pageStart": 30,
+          "pageEnd": 32,
+          "headingPath": [
+            "Chapter 5: Thermodynamics"
+          ]
+        },
+        {
+          "document": "ncert/11/chemistry/kech105.pdf",
+          "ordinal": 38,
+          "pageStart": 32,
+          "pageEnd": 32,
+          "headingPath": [
+            "Chapter 5: Thermodynamics"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-23T06:26:42.292Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "A reaction has a positive ∆H and a positive ∆S. At what temperature range will the reaction be spontaneous?",
+      "choices": [
+        "Low temperatures",
+        "High temperatures",
+        "All temperatures",
+        "No temperature"
+      ],
+      "answerIndex": 1,
+      "solution": "When ∆H is positive and ∆S is positive, the reaction will be spontaneous at high temperatures because the T∆S term becomes large enough to make ∆G negative. At low temperatures, the positive ∆H dominates, making ∆G positive and the reaction non-spontaneous. The reaction is not spontaneous at all temperatures, nor is it never spontaneous.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक अभिक्रिया में ∆H धनात्मक और ∆S धनात्मक है। किस तापमान सीमा में अभिक्रिया स्वतः होगी?",
+          "choices": [
+            "निम्न तापमान",
+            "उच्च तापमान",
+            "सभी तापमान",
+            "कोई भी तापमान नहीं"
+          ],
+          "solution": "जब ∆H धनात्मक और ∆S धनात्मक होता है तो अभिक्रिया उच्च तापमान पर स्वतः होती है क्योंकि T∆S पद बड़ा हो जाता है जिससे ∆G ऋणात्मक हो जाता है। निम्न तापमान पर, धनात्मक ∆H अधिकता रखता है, जिससे ∆G धनात्मक हो जाता है और अभिक्रिया अस्वतः होती है। अभिक्रिया सभी तापमान पर स्वतः नहीं होती है, न ही कभी स्वतः नहीं होती है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains original meaning, and uses appropriate Hindi scientific terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका अभिक्रियेचे ∆H धनात्मक आहे आणि ∆S धनात्मक आहे. कोणत्या तापमानाच्या श्रेणीत अभिक्रिया स्वाभाविक होईल?",
+          "choices": [
+            "निम्न तापमान",
+            "उच्च तापमान",
+            "सर्व तापमान",
+            "कोणतेही तापमान नाही"
+          ],
+          "solution": "जेव्हा ∆H धनात्मक आहे आणि ∆S धनात्मक आहे, तेव्हा अभिक्रिया उच्च तापमानावर स्वाभाविक होईल कारण T∆S चा घटक डायनॅमिक नकारात्मक बनवण्यासाठी पुरेसा होतो. निम्न तापमानावर, धनात्मक ∆H चा घटक वरच्या बाजूला असतो, ज्यामुळे ∆G धनात्मक होतो आणि अभिक्रिया अस्वाभाविक होते. अभिक्रिया सर्व तापमानांवर स्वाभाविक नाही, नाही तर कधीही स्वाभाविक नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "At low temperatures, the T∆S term is not large enough to overcome the positive ∆H, so the reaction is non-spontaneous",
+        null,
+        "This would be true if the reaction were exothermic and had a negative ∆S",
+        "This is incorrect because the reaction will only be spontaneous at high temperatures, not at all temperatures."
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly applies the Gibbs free energy equation (∆G = ∆H - T∆S) and explains that when both ∆H and ∆S are positive, the reaction is spontaneous only at high temperatures where T∆S dominates and makes ∆G negative.",
+      "sources": [
+        {
+          "document": "ncert/11/chemistry/kech105.pdf",
+          "ordinal": 10,
+          "pageStart": 8,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 5: Thermodynamics"
+          ]
+        },
+        {
+          "document": "ncert/11/chemistry/kech105.pdf",
+          "ordinal": 11,
+          "pageStart": 9,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 5: Thermodynamics"
+          ]
+        },
+        {
+          "document": "ncert/11/chemistry/kech105.pdf",
+          "ordinal": 12,
+          "pageStart": 9,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 5: Thermodynamics"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-23T06:26:42.292Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "What is the definition of internal energy (U) in thermodynamics?",
+      "choices": [
+        "The energy of the surroundings",
+        "The total energy of the system",
+        "The energy exchanged with the surroundings",
+        "The energy of the boundary"
+      ],
+      "answerIndex": 1,
+      "solution": "Internal energy (U) is defined as the total energy contained within a system, including all kinetic and potential energies of its particles. This distinguishes it from the energy of the surroundings or the energy exchanged with them. The other options describe different concepts and do not represent the complete energy of the system.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "थर्मोडायनामिक्स में आंतरिक ऊर्जा (U) की परिभाषा क्या है?",
+          "choices": [
+            "परिवेश की ऊर्जा",
+            "प्रणाली की कुल ऊर्जा",
+            "परिवेश के साथ विनिमय की गई ऊर्जा",
+            "सीमा की ऊर्जा"
+          ],
+          "solution": "आंतरिक ऊर्जा (U) की परिभाषा प्रणाली में निहित कुल ऊर्जा के रूप में की जाती है, जिसमें इसके कणों की सभी गतिज और स्थितिज ऊर्जाएं शामिल होती हैं। इसकी परिवेश की ऊर्जा या उनके साथ विनिमय की गई ऊर्जा के विपरीत होती है। अन्य विकल्प अलग अवधारणाओं का वर्णन करते हैं और प्रणाली की पूर्ण ऊर्जा का प्रतिनिधित्व नहीं करते।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriately used in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "थर्मोडायनॅमिक्स मध्ये आंतरिक ऊर्जा (U) ची व्याख्या काय आहे?",
+          "choices": [
+            "संसाधनांची ऊर्जा",
+            "तंत्राची एकूण ऊर्जा",
+            "संसाधनांशी बदलली गेलेली ऊर्जा",
+            "सीमेची ऊर्जा"
+          ],
+          "solution": "आंतरिक ऊर्जा (U) ही तंत्रामध्ये समाविष्ट असलेल्या एकूण ऊर्जेची व्याख्या आहे, ज्यामध्ये त्याच्या कणांच्या सर्व गतीशील आणि स्थितिज ऊर्जांचा समावेश होतो. हे संसाधनांच्या ऊर्जेच्या किंवा त्यांच्याशी बदललेल्या ऊर्जेच्या ऊर्जेपेक्षा वेगळे असते. इतर विकल्पांमध्ये वेगवेगळे संकल्पना वर्णन केल्या गेल्या आहेत आणि ते तंत्राच्या पूर्ण ऊर्जेचे प्रतिनिधित्व करत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for thermodynamics.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "This refers to the surroundings, not the system",
+        null,
+        "This refers to energy exchange, not internal energy",
+        "This refers to the boundary, not the system"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 'The total energy of the system' (option 1). The other options incorrectly describe the surroundings, energy exchange, or the boundary, which are not the definition of internal energy.",
+      "sources": [
+        {
+          "document": "ncert/11/chemistry/kech105.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 1,
+          "headingPath": [
+            "Chapter 5: Thermodynamics"
+          ]
+        },
+        {
+          "document": "ncert/11/chemistry/kech105.pdf",
+          "ordinal": 1,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 5: Thermodynamics"
+          ]
+        },
+        {
+          "document": "ncert/11/chemistry/kech105.pdf",
+          "ordinal": 2,
+          "pageStart": 2,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 5: Thermodynamics"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-23T06:26:42.292Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Which of the following statements about thermodynamic processes is correct?",
+      "choices": [
+        "Work done on the system is always positive",
+        "Heat transfer is a state function",
+        "Internal energy changes only if work is done",
+        "Internal energy is independent of the process"
+      ],
+      "answerIndex": 3,
+      "solution": "Internal energy is a state function, meaning it depends only on the initial and final states of the system, not on the path taken. The other options are incorrect because work done on the system can be negative depending on the direction, heat transfer is not a state function, and internal energy can change due to heat transfer, not just work.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा थर्मोडायनामिक प्रक्रियाओं के बारे में कथन सही है?",
+          "choices": [
+            "प्रणाली पर किया गया कार्य हमेशा धनात्मक होता है",
+            "ऊष्मा स्थिति फलन है",
+            "आंतरिक ऊर्जा केवल तभी बदलती है जब कार्य किया जाता है",
+            "आंतरिक ऊर्जा प्रक्रिया पर निर्भर नहीं करती"
+          ],
+          "solution": "आंतरिक ऊर्जा एक स्थिति फलन है, जिसका अर्थ है कि यह केवल प्रणाली की प्रारंभिक और अंतिम स्थिति पर निर्भर करती है, पथ पर नहीं। अन्य विकल्प गलत हैं क्योंकि प्रणाली पर किया गया कार्य दिशा के आधार पर ऋणात्मक भी हो सकता है, ऊष्मा स्थिति फलन नहीं है, और आंतरिक ऊर्जा ऊष्मा स्थानांतरण के कारण बदल सकती है, केवल कार्य के कारण नहीं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the original English question and solution, with appropriate technical terms used in a Hindi-medium context.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणता उष्मागतिशास्त्रीय प्रक्रियांबद्दलचा विधान बरोबर आहे?",
+          "choices": [
+            "प्रणालीवर केलेले कार्य नेहमी धनात्मक असते",
+            "ऊष्मा हस्तांतरण एक अवस्था फलन आहे",
+            "आंतरिक ऊर्जा फक्त कार्य केल्यास बदलते",
+            "आंतरिक ऊर्जा प्रक्रियेवर अवलंबून नसते"
+          ],
+          "solution": "आंतरिक ऊर्जा एक अवस्था फलन आहे, जे प्रणालीच्या प्रारंभिक आणि अंतिम अवस्थांवर अवलंबून असते, प्रक्रियेच्या मार्गावर नाही. इतर विधाने अयोग्य आहेत कारण प्रणालीवर केलेले कार्य दिशेनुसार ऋणात्मक असू शकते, ऊष्मा हस्तांतरण अवस्था फलन नाही, आणि आंतरिक ऊर्जा कार्य केल्यावर बदलू शकते नाही तर ऊष्मा हस्तांतरणामुळे बदलू शकते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the technical terminology used in Marathi science education.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Believes work is always positive",
+        "Confuses heat transfer with a state function",
+        "Thinks internal energy changes only with work",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 3, as internal energy is a state function and does not depend on the process. The other options reflect common misconceptions about work, heat, and internal energy.",
+      "sources": [
+        {
+          "document": "ncert/11/chemistry/kech105.pdf",
+          "ordinal": 3,
+          "pageStart": 3,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 5: Thermodynamics"
+          ]
+        },
+        {
+          "document": "ncert/11/chemistry/kech105.pdf",
+          "ordinal": 4,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 5: Thermodynamics"
+          ]
+        },
+        {
+          "document": "ncert/11/chemistry/kech105.pdf",
+          "ordinal": 5,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 5: Thermodynamics"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-23T06:26:42.292Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "For an adiabatic process, what is the relationship between the change in internal energy and the work done?",
+      "choices": [
+        "ΔU = q",
+        "ΔU = -q",
+        "ΔU = -w",
+        "ΔU = q + w"
+      ],
+      "answerIndex": 2,
+      "solution": "For an adiabatic process, there is no heat transfer, so q = 0. Therefore, the change in internal energy is equal to the negative of the work done. The other options are incorrect because ΔU = q would mean no work is done, ΔU = w would mean the work is done on the system, and ΔU = q + w would imply heat transfer which is not present in an adiabatic process.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक एडियाबैटिक प्रक्रिया के लिए, आंतरिक ऊर्जा में परिवर्तन और किए गए कार्य के बीच संबंध क्या है?",
+          "choices": [
+            "ΔU = q",
+            "ΔU = -q",
+            "ΔU = -w",
+            "ΔU = q + w"
+          ],
+          "solution": "एक एडियाबैटिक प्रक्रिया के लिए, कोई ऊष्मा स्थानांतरण नहीं होता है, इसलिए q = 0। इसलिए, आंतरिक ऊर्जा में परिवर्तन कार्य के ऋणात्मक के बराबर होता है। अन्य विकल्प गलत हैं क्योंकि ΔU = q का अर्थ होगा कि कोई कार्य नहीं किया गया है, ΔU = w का अर्थ होगा कि प्रणाली पर कार्य किया गया है, और ΔU = q + w का अर्थ होगा कि ऊष्मा स्थानांतरण हुआ है जो एक एडियाबैटिक प्रक्रिया में उपस्थित नहीं होता है।",
+          "imageAlt": null,
+          "critique": "Hindi translation accurately reflects the English original in meaning, terminology, and structure. All options and the solution are correctly translated and maintain the same logical relationships.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका एडियाबॅटिक प्रक्रियेसाठी, अंतर्गत ऊर्जेच्या बदलाचे कार्य करण्याच्या बरोबरीत काय संबंध आहे?",
+          "choices": [
+            "ΔU = q",
+            "ΔU = -q",
+            "ΔU = -w",
+            "ΔU = q + w"
+          ],
+          "solution": "एडियाबॅटिक प्रक्रियेसाठी, उष्णता हस्तांतरण नसते, म्हणून q = 0. म्हणूनच, अंतर्गत ऊर्जेचा बदल कार्याच्या नकारात्मक बरोबरीत असतो. इतर विकल्प अयोग्य आहेत कारण ΔU = q असेल तर कार्य करण्याचे नसेल, ΔU = w असेल तर प्रणालीवर कार्य केले जाईल आणि ΔU = q + w असेल तर उष्णता हस्तांतरण असेल जे एडियाबॅटिक प्रक्रियेत नसते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Incorrectly assumes the change in internal energy is equal to the heat transferred",
+        "Confuses the signs of heat and work in the first law of thermodynamics",
+        null,
+        "Incorrectly assumes the change in internal energy is equal to the work done on the system, "
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly applies the first law of thermodynamics for an adiabatic process (q = 0), leading to ΔU = -w. The reasoning for the distractors is valid and reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/11/chemistry/kech105.pdf",
+          "ordinal": 6,
+          "pageStart": 5,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 5: Thermodynamics"
+          ]
+        },
+        {
+          "document": "ncert/11/chemistry/kech105.pdf",
+          "ordinal": 7,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 5: Thermodynamics"
+          ]
+        },
+        {
+          "document": "ncert/11/chemistry/kech105.pdf",
+          "ordinal": 8,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 5: Thermodynamics"
+          ]
+        },
+        {
+          "document": "ncert/11/chemistry/kech105.pdf",
+          "ordinal": 9,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 5: Thermodynamics"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-23T06:26:42.292Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
     }
   ]
 }

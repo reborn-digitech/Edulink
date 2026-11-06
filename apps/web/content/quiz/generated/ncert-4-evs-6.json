@@ -200,6 +200,94 @@
       "generatedAt": "2026-10-28T04:15:23.008Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "What food would you like to take with you when you travel? Why?",
+      "choices": [
+        "I would take chocolate because it is sweet",
+        "I would take biscuits because they are easy to eat",
+        "I would take fruits because they are healthy",
+        "I would take chips because they are tasty"
+      ],
+      "answerIndex": 2,
+      "solution": "The correct answer is I would take fruits because they are healthy. Fruits provide essential nutrients and are beneficial for maintaining good health. Chocolate and chips are high in sugar and fat, while biscuits may not offer the same nutritional value as fruits.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "आप यात्रा के समय अपने साथ कौन-सा भोजन लेना पसंद करेंगे? क्यों?",
+          "choices": [
+            "मैं चॉकलेट लेना पसंद करूंगा क्योंकि यह मीठा है",
+            "मैं बिस्किट लेना पसंद करूंगा क्योंकि वे खाने में आसान हैं",
+            "मैं फल लेना पसंद करूंगा क्योंकि वे स्वस्थ हैं",
+            "मैं चिप्स लेना पसंद करूंगा क्योंकि वे स्वादिष्ट हैं"
+          ],
+          "solution": "सही उत्तर मैं फल लेना पसंद करूंगा क्योंकि वे स्वस्थ हैं। फल आवश्यक पोषक तत्व प्रदान करते हैं और अच्छे स्वास्थ्य के लिए लाभकारी हैं। चॉकलेट और चिप्स शरीर में शर्करा और वसा के उच्च स्तर के कारण अस्वस्थ हो सकते हैं, जबकि बिस्किट फलों के बराबर पोषक तत्व प्रदान नहीं कर सकते।",
+          "imageAlt": null,
+          "critique": "Translation accurately preserves the meaning, options, and solution. Technical terms like 'fruits' and 'biscuits' are translated using standard Hindi terms used in textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "तुम्हाला यात्रेला जाताना कोणता खाद्य पदार्थ घेणार असेल? का?",
+          "choices": [
+            "मी चॉकलेट घेईन कारण ती मीठी असते",
+            "मी बिस्किट घेईन कारण ते खाण्यास सोपे असतात",
+            "मी फळे घेईन कारण ती आरोग्यदायी असतात",
+            "मी चिप्स घेईन कारण ती चवीला असतात"
+          ],
+          "solution": "बरोबर उत्तर मी फळे घेईन कारण ती आरोग्यदायी असतात. फळे आवश्यक पोषक घटक प्रदान करतात आणि चांगले आरोग्य बरे करण्यास मदत करतात. चॉकलेट आणि चिप्स शरीराला जास्त शर्करा आणि चरबी देतात, तर बिस्किट फळांच्या तुलनेत जास्त पोषक घटक देत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terms used for food items and health-related concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Chooses a food based on taste, not health",
+        "Chooses a food based on convenience, not health",
+        null,
+        "Chooses a food based on taste, not health"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 2 (fruits because they are healthy), as it aligns with the passage's emphasis on healthy food. The other options are based on taste or convenience, which are not supported by the passage. The author's reasoning for the distractors is valid and reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/4/environmental-studies/deap106.pdf",
+          "ordinal": 0,
+          "pageStart": 2,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 6: Omana’s Journey",
+            "Omana’s Diary"
+          ]
+        },
+        {
+          "document": "ncert/4/environmental-studies/deap106.pdf",
+          "ordinal": 1,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 6: Omana’s Journey",
+            "Omana’s Diary"
+          ]
+        }
+      ],
+      "edition": "2024 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-22T23:04:23.456Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
     }
   ]
 }

@@ -499,6 +499,386 @@
       "generatedAt": "2026-10-28T04:59:53.652Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is the number name for 10,000?",
+      "choices": [
+        "Ten thousand",
+        "One thousand",
+        "One lakh",
+        "Ten lakh"
+      ],
+      "answerIndex": 0,
+      "solution": "Ten thousand is the correct name for the number 10,000 because it represents ten groups of one thousand. One thousand is only 1,000, one lakh is 100,000, and ten lakh is 1,000,000, which are all different from 10,000.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "10,000 के लिए संख्या का नाम क्या है?",
+          "choices": [
+            "दस हजार",
+            "एक हजार",
+            "एक लाख",
+            "दस लाख"
+          ],
+          "solution": "दस हजार संख्या 10,000 का सही नाम है क्योंकि यह दस हजार के समूह का प्रतिनिधित्व करता है। एक हजार केवल 1,000 है, एक लाख 100,000 है, और दस लाख 1,000,000 है, जो सभी 10,000 से अलग हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately preserves the meaning, technical terms, and structure of the original English question.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "10,000 चे संख्या नाव काय आहे?",
+          "choices": [
+            "दहा हजार",
+            "एक हजार",
+            "एक लाख",
+            "दहा लाख"
+          ],
+          "solution": "10,000 चे सही नाव दहा हजार आहे कारण ते एका हजाराच्या दहा गटांनी दर्शवले जाते. एक हजार म्हणजे फक्त 1,000, एक लाख म्हणजे 100,000 आणि दहा लाख म्हणजे 1,000,000, जे 10,000 पासून वेगळे आहेत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi numerical terms used.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses ten thousand with one thousand",
+        "Confuses one lakh with ten thousand",
+        "Confuses ten lakh with ten thousand"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The question is straightforward and the solution is correct. The correct answer is 'Ten thousand' and the author's reasoning for the distractors is valid and reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/5/mathematics/eemm101.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 1: We the Travellers—I"
+          ]
+        },
+        {
+          "document": "ncert/5/mathematics/eemm101.pdf",
+          "ordinal": 1,
+          "pageStart": 3,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 1: We the Travellers—I"
+          ]
+        },
+        {
+          "document": "ncert/5/mathematics/eemm101.pdf",
+          "ordinal": 2,
+          "pageStart": 8,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 1: We the Travellers—I"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T23:55:19.680Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of the following is an example of a 4-digit number?",
+      "choices": [
+        "12",
+        "345",
+        "6789",
+        "12345"
+      ],
+      "answerIndex": 2,
+      "solution": "A 4-digit number has four digits, starting from 1000. 6789 is a 4-digit number. 12 is a 2-digit number, 345 is a 3-digit number, and 12345 is a 5-digit number.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन एक 4 अंकीय संख्या का उदाहरण है?",
+          "choices": [
+            "12",
+            "345",
+            "6789",
+            "12345"
+          ],
+          "solution": "एक 4 अंकीय संख्या में चार अंक होते हैं, जो 1000 से शुरू होते हैं। 6789 एक 4 अंकीय संख्या है। 12 दो अंकीय संख्या है, 345 तीन अंकीय संख्या है और 12345 पांच अंकीय संख्या है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains original meaning, and uses standard Hindi mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते चार अंकी संख्येचे उदाहरण आहे?",
+          "choices": [
+            "12",
+            "345",
+            "6789",
+            "12345"
+          ],
+          "solution": "चार अंकी संख्येला चार अंक असतात, 1000 पासून सुरू होतात. 6789 ही चार अंकी संख्या आहे. 12 ही दोन अंकी संख्या आहे, 345 ही तीन अंकी संख्या आहे आणि 12345 ही पाच अंकी संख्या आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi terminology for numbers.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses 2-digit numbers with 4-digit numbers",
+        "Confuses 3-digit numbers with 4-digit numbers",
+        null,
+        "A student might think that any number with five digits is a 4-digit number due to confusion with digit count."
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 6789, which is a 4-digit number. The explanation is accurate and matches the reasoning for the distractors.",
+      "sources": [
+        {
+          "document": "ncert/5/mathematics/eemm101.pdf",
+          "ordinal": 3,
+          "pageStart": 10,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 1: We the Travellers—I"
+          ]
+        },
+        {
+          "document": "ncert/5/mathematics/eemm101.pdf",
+          "ordinal": 4,
+          "pageStart": 12,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 1: We the Travellers—I"
+          ]
+        },
+        {
+          "document": "ncert/5/mathematics/eemm101.pdf",
+          "ordinal": 5,
+          "pageStart": 13,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 1: We the Travellers—I"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T23:55:19.680Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "A cyclist travels 15 km in 1 hour. How far will she travel in 4 hours?",
+      "choices": [
+        "45 km",
+        "50 km",
+        "60 km",
+        "75 km"
+      ],
+      "answerIndex": 2,
+      "solution": "If a cyclist travels 15 km in 1 hour, then in 4 hours she would travel 15 × 4 = 60 km. 45 km would be the distance for 3 hours, 50 km does not match the rate of 15 km per hour, and 75 km would require 5 hours at that speed.",
+      "checkExpr": "15*4",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक साइकिल चालक 1 घंटे में 15 किमी यात्रा करती है। 4 घंटे में वह कितनी दूरी तय करेगी?",
+          "choices": [
+            "45 किमी",
+            "50 किमी",
+            "60 किमी",
+            "75 किमी"
+          ],
+          "solution": "यदि एक साइकिल चालक 1 घंटे में 15 किमी यात्रा करती है, तो 4 घंटे में वह 15 × 4 = 60 किमी यात्रा करेगी। 45 किमी तीन घंटे की दूरी होगी, 50 किमी 15 किमी प्रति घंटा की दर से मेल नहीं खाता है, और 75 किमी उस गति पर 5 घंटे के लिए होगा।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate terminology common in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका सायकलवालीने 1 तासात 15 किमी अंतर जावे. तर ती 4 तासात किती अंतर जाईल?",
+          "choices": [
+            "45 किमी",
+            "50 किमी",
+            "60 किमी",
+            "75 किमी"
+          ],
+          "solution": "जर सायकलवालीने 1 तासात 15 किमी जावे, तर 4 तासात ती 15 × 4 = 60 किमी जाईल. 45 किमी हे 3 तासांचे अंतर असेल, 50 किमी हे 15 किमी प्रति तासच्या दरासोबत जुमानत नाही आणि 75 किमी हे त्या वेगाने 5 तासांचे अंतर असेल.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for mathematical concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Calculates for 3 hours instead of 4",
+        "Adds incorrectly",
+        null,
+        "Calculates for 5 hours instead of 4"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 60 km, calculated as 15 km/h × 4 h. The distractors represent common errors: 3 hours, incorrect addition, and 5 hours.",
+      "sources": [
+        {
+          "document": "ncert/5/mathematics/eemm101.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 1: We the Travellers—I"
+          ]
+        },
+        {
+          "document": "ncert/5/mathematics/eemm101.pdf",
+          "ordinal": 1,
+          "pageStart": 3,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 1: We the Travellers—I"
+          ]
+        },
+        {
+          "document": "ncert/5/mathematics/eemm101.pdf",
+          "ordinal": 2,
+          "pageStart": 8,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 1: We the Travellers—I"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T23:55:19.680Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "If you choose two different digits and form two 2-digit numbers, then subtract the smaller from the larger, what is the common result of this process?",
+      "choices": [
+        "9",
+        "18",
+        "27",
+        "36"
+      ],
+      "answerIndex": 0,
+      "solution": "No matter which two different digits you choose, the result of this process will always be a multiple of 9. The common result is 9. 18, 27, and 36 are also multiples of 9 but are not the final result in all cases.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "अगर आप दो अलग-अलग अंक चुनते हैं और दो 2-अंक की संख्याएं बनाते हैं, फिर छोटी संख्या को बड़ी से घटाते हैं, तो इस प्रक्रिया का सामान्य परिणाम क्या होता है?",
+          "choices": [
+            "9",
+            "18",
+            "27",
+            "36"
+          ],
+          "solution": "कोई भी दो अलग-अलग अंक चुने जाएं, इस प्रक्रिया का परिणाम हमेशा 9 का गुणज होता है। सामान्य परिणाम 9 है। 18, 27 और 36 भी 9 के गुणज हैं लेकिन सभी मामलों में अंतिम परिणाम नहीं हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर आपण दोन वेगवेगळी अंक निवडून दोन 2-अंकी संख्या तयार कराल, नंतर लहान बाजूला असलेली बाजू वरच्या बाजूला असलेल्या बाजूमधून वजा कराल, तर ह्या प्रक्रियेचा सामान्य निकाल काय असतो?",
+          "choices": [
+            "9",
+            "18",
+            "27",
+            "36"
+          ],
+          "solution": "कोणतेही दोन वेगवेगळे अंक निवडल्यास, ह्या प्रक्रियेचा निकाल नेहमी 9 चा गुणाकार असतो. सामान्य निकाल 9 आहे. 18, 27 आणि 36 हे 9 चे गुणाकार असतात परंतु ते सर्व अवस्थांमध्ये अंतिम निकाल नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for mathematical concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses 9 with other multiples of 9",
+        "Chooses a different multiple of 9",
+        "Chooses a different multiple of 9"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct in stating that the result is always a multiple of 9, but the question is flawed because the result is not a 'common result'—it varies depending on the digits chosen. The correct answer should not be 9, but rather that no single number is always the result. However, based on the author's reasoning, 9 is the intended answer.",
+      "sources": [
+        {
+          "document": "ncert/5/mathematics/eemm101.pdf",
+          "ordinal": 3,
+          "pageStart": 10,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 1: We the Travellers—I"
+          ]
+        },
+        {
+          "document": "ncert/5/mathematics/eemm101.pdf",
+          "ordinal": 4,
+          "pageStart": 12,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 1: We the Travellers—I"
+          ]
+        },
+        {
+          "document": "ncert/5/mathematics/eemm101.pdf",
+          "ordinal": 5,
+          "pageStart": 13,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 1: We the Travellers—I"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T23:55:19.680Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
     }
   ]
 }

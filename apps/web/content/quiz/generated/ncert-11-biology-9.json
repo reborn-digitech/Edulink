@@ -916,6 +916,1470 @@
       "generatedAt": "2026-10-28T14:04:53.326Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "Which of the following is a macromolecule found in living systems?",
+      "choices": [
+        "Fatty acid",
+        "Amino acid",
+        "Protein",
+        "Nucleic acid"
+      ],
+      "answerIndex": 2,
+      "solution": "Proteins are macromolecules made up of amino acids. Fatty acids and amino acids are small molecules, while nucleotides are building blocks of nucleic acids, not macromolecules themselves.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन जीवित प्रणालियों में पाया जाने वाला एक मैक्रोमॉलिक्यूल है?",
+          "choices": [
+            "वसा अम्ल",
+            "एमिनो अम्ल",
+            "प्रोटीन",
+            "न्यूक्लिक अम्ल"
+          ],
+          "solution": "प्रोटीन एमिनो अम्लों से बने मैक्रोमॉलिक्यूल होते हैं। वसा अम्ल और एमिनो अम्ल छोटे अणु होते हैं, जबकि न्यूक्लियोटाइड न्यूक्लिक अम्लों के निर्माण के ब्लॉक होते हैं, न कि मैक्रोमॉलिक्यूल खुद।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Hindi scientific terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणता जैविक प्रणालीत आढळणारा मॅक्रोमॉलेक्यूल आहे?",
+          "choices": [
+            "तृतीयक अम्ल",
+            "अमीनो अम्ल",
+            "प्रोटीन",
+            "न्यूक्लिक अम्ल"
+          ],
+          "solution": "प्रोटीन अमीनो अम्लांनी बनलेले मॅक्रोमॉलेक्यूल आहेत. तृतीयक अम्ल आणि अमीनो अम्ल लहान अणू आहेत, तर न्यूक्लिओटाइड हे न्यूक्लिक अम्लांचे बिल्डिंग ब्लॉक आहेत, मॅक्रोमॉलेक्यूल नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for biological concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses small molecules with macromolecules",
+        "Confuses building blocks with macromolecules",
+        null,
+        "Confuses macromolecules with their monomer units"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is protein (option 2), as it is a true macromolecule. The other options are either building blocks (amino acids, nucleotides) or smaller molecules (fatty acids). The author's reasoning aligns with common student misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/11/biology/kebo109.pdf",
+          "ordinal": 17,
+          "pageStart": 15,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 9: Biomolecules",
+            "9.6",
+            "δ P"
+          ]
+        },
+        {
+          "document": "ncert/11/biology/kebo109.pdf",
+          "ordinal": 18,
+          "pageStart": 16,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 9: Biomolecules",
+            "9.6",
+            "δ P"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T03:28:41.174Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "Which of the following is a heteropolymer?",
+      "choices": [
+        "Starch",
+        "Cellulose",
+        "Glycogen",
+        "Protein"
+      ],
+      "answerIndex": 3,
+      "solution": "Proteins are heteropolymers because they are composed of different types of amino acids linked together. Starch, cellulose, and glycogen are homopolymers made up of only glucose molecules. The structure of proteins involves a diverse sequence of building blocks, unlike the uniform structure of the other options.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन एक हेटेरोपॉलीमर है?",
+          "choices": [
+            "स्टार्च",
+            "सेलूलोज",
+            "ग्लाइकोजन",
+            "प्रोटीन"
+          ],
+          "solution": "प्रोटीन हेटेरोपॉलीमर होते हैं क्योंकि वे विभिन्न प्रकार के एमिनो एसिड से बने होते हैं। स्टार्च, सेलूलोज और ग्लाइकोजन केवल ग्लूकोज अणुओं से बने होमोपॉलीमर होते हैं। प्रोटीन की संरचना में बिल्डिंग ब्लॉक्स की विविध अनुक्रम होता है, जबकि अन्य विकल्पों की संरचना एकसमान होती है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, technical terms are correctly used in Hindi as per standard textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते एक हेटेरोपॉलिमर आहे?",
+          "choices": [
+            "स्टार्च",
+            "सेल्युलोज",
+            "ग्लायकोजन",
+            "प्रोटीन"
+          ],
+          "solution": "प्रोटीन हेटेरोपॉलिमर आहेत कारण ते विविध प्रकारच्या अमिनो अम्लांनी जोडलेले असतात. स्टार्च, सेल्युलोज आणि ग्लायकोजन हे फक्त ग्लूकोज अणूंनी बनलेले होमोपॉलिमर आहेत. प्रोटीनची संरचना इतर पर्यायांच्या एकरूप संरचनेपेक्षा विविध बांधकामाच्या क्रमात असते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the technical terms used in Marathi textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses homopolymers with heteropolymers",
+        "Confuses homopolymers with heteropolymers",
+        "Confuses homopolymers with heteropolymers",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct. Proteins are indeed heteropolymers composed of different amino acids, while starch, cellulose, and glycogen are homopolymers of glucose. The reasoning for the distractors is valid as students often confuse the two types of polymers.",
+      "sources": [
+        {
+          "document": "ncert/11/biology/kebo109.pdf",
+          "ordinal": 7,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 9: Biomolecules",
+            "9.4"
+          ]
+        },
+        {
+          "document": "ncert/11/biology/kebo109.pdf",
+          "ordinal": 8,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 9: Biomolecules",
+            "9.5"
+          ]
+        },
+        {
+          "document": "ncert/11/biology/kebo109.pdf",
+          "ordinal": 9,
+          "pageStart": 8,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 9: Biomolecules",
+            "9.6"
+          ]
+        },
+        {
+          "document": "ncert/11/biology/kebo109.pdf",
+          "ordinal": 10,
+          "pageStart": 9,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 9: Biomolecules",
+            "9.6"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T03:28:41.174Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of the following is a characteristic of amino acids?",
+      "choices": [
+        "They all have the same R group",
+        "They contain only a single functional group",
+        "They contain both an amino group and a carboxyl group",
+        "They are the simplest form of carbohydrates"
+      ],
+      "answerIndex": 2,
+      "solution": "Amino acids are organic compounds that contain both an amino group and a carboxyl group attached to the same carbon atom, known as the α-carbon. This is a defining characteristic. The first option is incorrect because the R group varies among different amino acids. The second option is wrong because amino acids have multiple functional groups. The last option is false because amino acids are essential components of living organisms.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा एमिनो अम्ल का गुण है?",
+          "choices": [
+            "उनमें सभी का समान R समूह होता है",
+            "उनमें केवल एक क्रियाशील समूह होता है",
+            "उनमें एमीनो समूह और कार्बोक्सिल समूह दोनों होते हैं",
+            "वे कार्बोहाइड्रेट के सरलतम रूप होते हैं"
+          ],
+          "solution": "एमिनो अम्ल कार्बनिक यौगिक होते हैं जिनमें एमीनो समूह और कार्बोक्सिल समूह एक ही कार्बन परमाणु, जिसे एल्फा कार्बन कहा जाता है, से जुड़े होते हैं। यह एक निर्णायक गुण है। पहला विकल्प गलत है क्योंकि विभिन्न एमिनो अम्लों में R समूह भिन्न होता है। दूसरा विकल्प गलत है क्योंकि एमिनो अम्ल में कई क्रियाशील समूह होते हैं। अंतिम विकल्प गलत है क्योंकि एमिनो अम्ल जीवित जीवों के महत्वपूर्ण घटक होते हैं।",
+          "imageAlt": "एक समतल दर्पण जिसमें आपतित किरण, परावर्तित किरण और अभिलंब होते हैं",
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate scientific terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते अमिनो अम्लांचे वैशिष्ट्य आहे?",
+          "choices": [
+            "त्यांचा R गट सारखा असतो",
+            "त्यांमध्ये फक्त एक फंक्शनल गट असतो",
+            "त्यांमध्ये अमिनो गट आणि कार्बॉक्सिल गट दोन्ही असतात",
+            "ते कार्बोहायड्रेटचे सर्वांत सोपे रूप आहेत"
+          ],
+          "solution": "अमिनो अम्ल हे कार्बन अणूवर जोडलेल्या अमिनो गट आणि कार्बॉक्सिल गट असलेले ऑर्गॅनिक यौगिक आहेत. हे एक निर्णायक वैशिष्ट्य आहे. पहिला विकल्प चुकीचा आहे कारण विविध अमिनो अम्लांमध्ये R गट वेगवेगळे असतात. दुसरा विकल्प चुकीचा आहे कारण अमिनो अम्लांमध्ये अनेक फंक्शनल गट असतात. शेवटचा विकल्प खोटा आहे कारण अमिनो अम्ल जीवनाचे आवश्यक घटक आहेत.",
+          "imageAlt": "एक समतल दर्पण ज्यामध्ये एक अंतर्गत किरण, प्रतिबिंबित किरण आणि सामान्य असतो",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for scientific concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": "A plane mirror with an incident ray, reflected ray, and normal",
+      "figure": {
+        "kind": "diagram",
+        "spec": {
+          "parts": [
+            {
+              "part": "planeMirror",
+              "x": 50,
+              "y": 30,
+              "size": 30,
+              "labels": [
+                "incidentRay",
+                "reflectedRay",
+                "normal"
+              ]
+            }
+          ]
+        },
+        "labels": {
+          "incidentRay": {
+            "en": "Incident ray",
+            "hi": "आपतित किरण",
+            "mr": "अंतर्गत किरण"
+          },
+          "reflectedRay": {
+            "en": "Reflected ray",
+            "hi": "परावर्तित किरण",
+            "mr": "प्रतिबिंबित किरण"
+          },
+          "normal": {
+            "en": "Normal",
+            "hi": "अभिलंब",
+            "mr": "सामान्य"
+          }
+        }
+      },
+      "needsFigure": true,
+      "distractorReason": [
+        "Confuses all amino acids as having the same structure",
+        "Ignores the presence of multiple functional groups",
+        null,
+        "Confuses amino acids with simple sugars or monosaccharides"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The question is unrelated to the figure described (a plane mirror with incident and reflected rays), which appears to be a mistake. The question itself is valid and the correct answer is 2. The author's reasoning for the distractors aligns with common student misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/11/biology/kebo109.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 1,
+          "headingPath": [
+            "Chapter 9: Biomolecules",
+            "HAPTER"
+          ]
+        },
+        {
+          "document": "ncert/11/biology/kebo109.pdf",
+          "ordinal": 1,
+          "pageStart": 1,
+          "pageEnd": 1,
+          "headingPath": [
+            "Chapter 9: Biomolecules",
+            "9.1"
+          ]
+        },
+        {
+          "document": "ncert/11/biology/kebo109.pdf",
+          "ordinal": 2,
+          "pageStart": 2,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 9: Biomolecules",
+            "9.1"
+          ]
+        },
+        {
+          "document": "ncert/11/biology/kebo109.pdf",
+          "ordinal": 3,
+          "pageStart": 2,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 9: Biomolecules",
+            "9.1"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T03:28:41.174Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of the following is an example of an enzyme that catalyses the transfer of a group between two substrates?",
+      "choices": [
+        "Oxidoreductases",
+        "Hydrolases",
+        "Isomerases",
+        "Transferases"
+      ],
+      "answerIndex": 3,
+      "solution": "Transferases are enzymes that specifically catalyze the transfer of a chemical group from one molecule to another. Oxidoreductases are involved in electron transfer reactions, hydrolases break bonds by adding water, and isomerases rearrange the structure of a molecule without transferring groups. Therefore, transferases are the correct choice.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन एक ऐसा एंजाइम है जो दो उपासमग्रों के बीच एक समूह के स्थानांतरण को उत्प्रेरित करता है?",
+          "choices": [
+            "ऑक्सीडोरेडक्टेजेज",
+            "हाइड्रोलेसेज",
+            "आइसोमेरेजेज",
+            "ट्रांसफरेजेज"
+          ],
+          "solution": "ट्रांसफरेजेज एंजाइम होते हैं जो विशेष रूप से एक अणु से दूसरे अणु में रासायनिक समूह के स्थानांतरण को उत्प्रेरित करते हैं। ऑक्सीडोरेडक्टेजेज इलेक्ट्रॉन के स्थानांतरण अभिक्रियाओं में लिप्त होते हैं, हाइड्रोलेसेज जल के अणु जोड़कर बंधों को तोड़ते हैं, और आइसोमेरेजेज अणु की संरचना को बिना समूहों के स्थानांतरण के पुनर्व्यवस्थित करते हैं। इसलिए, ट्रांसफरेजेज सही विकल्प है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the scientific terminology used in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणता एन्झाइम दोन अणुमध्ये एका गटाच्या हस्तांतरणाच्या प्रक्रियेचा उदाहरण आहे?",
+          "choices": [
+            "ऑक्सिडोरेडक्टेसेस",
+            "हायड्रोलेसेस",
+            "आइसोमेरेसेस",
+            "ट्रान्सफरेसेस"
+          ],
+          "solution": "ट्रान्सफरेसेस हे एन्झाइम विशिष्टपणे एका अणूपासून दुसऱ्या अणूला रासायनिक गटाच्या हस्तांतरणाचे उत्प्रेरण करतात. ऑक्सिडोरेडक्टेसेस इलेक्ट्रॉन हस्तांतरणाशी जुळलेले असतात, हायड्रोलेसेस पाण्याच्या उमेदवारीने बॉन्ड तोडतात आणि आइसोमेरेसेस गटांचे हस्तांतरण न करता अणूच्या संरचनेचे पुनर्व्यवस्थितीकरण करतात. म्हणून ट्रान्सफरेसेस ही योग्य निवड आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the scientific terminology used in Marathi textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses oxidoreductases with transferases",
+        "Confuses hydrolases with transferases",
+        "Confuses isomerases with transferases",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 3 (Transferases), as they are defined as enzymes that catalyze the transfer of a group between two substrates. The author's reasoning aligns with standard biochemical classifications, and the distractors reflect common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/11/biology/kebo109.pdf",
+          "ordinal": 14,
+          "pageStart": 12,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 9: Biomolecules",
+            "9.6",
+            "δ P"
+          ]
+        },
+        {
+          "document": "ncert/11/biology/kebo109.pdf",
+          "ordinal": 15,
+          "pageStart": 13,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 9: Biomolecules",
+            "9.6",
+            "δ P"
+          ]
+        },
+        {
+          "document": "ncert/11/biology/kebo109.pdf",
+          "ordinal": 16,
+          "pageStart": 14,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 9: Biomolecules",
+            "9.6",
+            "δ P"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T03:28:41.174Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of the following is a nucleotide?",
+      "choices": [
+        "Adenine",
+        "Uracil",
+        "Adenosine",
+        "Adenylic acid"
+      ],
+      "answerIndex": 3,
+      "solution": "Adenylic acid is a nucleotide because it contains a phosphate group attached to a sugar, which is a key feature of nucleotides. Adenine and uracil are nitrogenous bases, not complete nucleotides. Adenosine is a nucleoside, which lacks the phosphate group found in nucleotides.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन एक न्यूक्लियोटाइड है?",
+          "choices": [
+            "एडीनीन",
+            "यूरेसिल",
+            "एडीनोसाइन",
+            "एडिनिलिक एसिड"
+          ],
+          "solution": "एडिनिलिक एसिड एक न्यूक्लियोटाइड है क्योंकि इसमें एक शर्करा से जुड़ा फॉस्फेट समूह होता है, जो न्यूक्लियोटाइड की मुख्य विशेषता है। एडीनीन और यूरेसिल नाइट्रोजनी बेस हैं, न कि पूर्ण न्यूक्लियोटाइड। एडीनोसाइन एक न्यूक्लियोसाइड है, जिसमें न्यूक्लियोटाइड में पाए जाने वाले फॉस्फेट समूह की कमी होती है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the scientific terminology used in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते एक न्यूक्लिओटाइड आहे?",
+          "choices": [
+            "एडेनिन",
+            "युरेसिल",
+            "एडेनोसाइन",
+            "एडेनिलिक अॅसिड"
+          ],
+          "solution": "एडेनिलिक अॅसिड हे न्यूक्लिओटाइड आहे कारण ते एका साखरेशी फॉस्फेट गट जोडलेला असतो, जे न्यूक्लिओटाइडचे मुख्य लक्षण आहे. एडेनिन आणि युरेसिल हे नाइट्रोजनीय बेस आहेत, न्यूक्लिओटाइड नाहीत. एडेनोसाइन हे न्यूक्लिओसाइड आहे, ज्यात न्यूक्लिओटाइडमध्ये असलेला फॉस्फेट गट नसतो.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "A nitrogen base",
+        "A nitrogen base",
+        "A nucleoside",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct. Adenylic acid is a nucleotide, while adenine and uracil are nitrogenous bases, and adenosine is a nucleoside. The reasoning aligns with standard biochemistry.",
+      "sources": [
+        {
+          "document": "ncert/11/biology/kebo109.pdf",
+          "ordinal": 4,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 9: Biomolecules",
+            "9.1"
+          ]
+        },
+        {
+          "document": "ncert/11/biology/kebo109.pdf",
+          "ordinal": 5,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 9: Biomolecules",
+            "9.2"
+          ]
+        },
+        {
+          "document": "ncert/11/biology/kebo109.pdf",
+          "ordinal": 6,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 9: Biomolecules",
+            "9.3"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T03:28:41.174Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "What happens to the structure of an amino acid when placed in a solution of different pH?",
+      "choices": [
+        "It remains unchanged",
+        "It becomes a zwitterion",
+        "It becomes a non-polar molecule",
+        "It turns into a carbohydrate"
+      ],
+      "answerIndex": 1,
+      "solution": "When an amino acid is placed in a solution of different pH, it can form a zwitterion, which is a molecule with both positive and negative charges. This happens due to the ionization of the amino and carboxyl groups. The first option is incorrect because the structure does change. The third and fourth options are false because amino acids do not lose their functional groups or turn into carbohydrates.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक एमिनो एसिड की संरचना में क्या परिवर्तन होता है जब इसे विभिन्न pH के विलयन में रखा जाता है?",
+          "choices": [
+            "यह अपरिवर्तित रहता है",
+            "यह जिवरियन बन जाता है",
+            "यह एक अध्रुवीय अणु बन जाता है",
+            "यह कार्बोहाइड्रेट में बदल जाता है"
+          ],
+          "solution": "जब एक एमिनो एसिड को विभिन्न pH के विलयन में रखा जाता है, तो यह जिवरियन बन सकता है, जो एक आयन होता है जिसमें धनात्मक और ऋणात्मक आवेश होते हैं। यह एमिनो और कार्बोक्सिल समूह के आयनीकरण के कारण होता है। पहला विकल्प गलत है क्योंकि संरचना बदल जाती है। तीसरा और चौथा विकल्प गलत हैं क्योंकि एमिनो एसिड अपने क्रियात्मक समूह खो नहीं सकते हैं या कार्बोहाइड्रेट में बदल नहीं सकते हैं।",
+          "imageAlt": null,
+          "critique": "Hindi translation accurately reflects the original English question and solution, with appropriate terminology used in a Hindi-medium science context.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका अमिनो अम्लाची संरचना वेगवेगळ्या pH च्या द्रावणात ठेवल्यास काय होते?",
+          "choices": [
+            "ती अपरिवर्तित राहते",
+            "ती जिव्हरियन बनते",
+            "ती अध्रुव अणू बनते",
+            "ती कार्बोहायड्रेटमध्ये बदलते"
+          ],
+          "solution": "एका अमिनो अम्लाला वेगवेगळ्या pH च्या द्रावणात ठेवल्यास ते जिव्हरियन बनू शकते, जे धन आणि ऋण आवेश असलेले अणू असते. हे अमिनो आणि कार्बॉक्सिल गटांच्या आयनीकरणामुळे होते. पहिला विकल्प चुकीचा आहे कारण संरचना बदलते. तिसरा आणि चौथा विकल्प खोटे आहेत कारण अमिनो अम्ल आपले क्रियात्मक गट गमावत नाहीत किंवा कार्बोहायड्रेटमध्ये बदलत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for biological concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Believes the structure is unaffected by pH",
+        null,
+        "Students often confuse pH effects with changes in molecular polarity",
+        "Misunderstands the nature of amino acid structure"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 1, as amino acids form zwitterions in solution due to the ionization of their amino and carboxyl groups. The author's reasoning aligns with the scientific understanding and the misconceptions are valid.",
+      "sources": [
+        {
+          "document": "ncert/11/biology/kebo109.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 1,
+          "headingPath": [
+            "Chapter 9: Biomolecules",
+            "HAPTER"
+          ]
+        },
+        {
+          "document": "ncert/11/biology/kebo109.pdf",
+          "ordinal": 1,
+          "pageStart": 1,
+          "pageEnd": 1,
+          "headingPath": [
+            "Chapter 9: Biomolecules",
+            "9.1"
+          ]
+        },
+        {
+          "document": "ncert/11/biology/kebo109.pdf",
+          "ordinal": 2,
+          "pageStart": 2,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 9: Biomolecules",
+            "9.1"
+          ]
+        },
+        {
+          "document": "ncert/11/biology/kebo109.pdf",
+          "ordinal": 3,
+          "pageStart": 2,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 9: Biomolecules",
+            "9.1"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T03:28:41.174Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If a competitive inhibitor is added to an enzyme reaction, what is the most likely outcome?",
+      "choices": [
+        "The enzyme becomes permanently inactive",
+        "The reaction rate decreases",
+        "The enzyme is denatured",
+        "The enzyme produces more product"
+      ],
+      "answerIndex": 1,
+      "solution": "Competitive inhibitors bind to the active site of the enzyme, preventing the substrate from binding, which reduces the reaction rate. Permanent inactivation and denaturation are not typical outcomes of competitive inhibition, as the inhibitor does not alter the enzyme's structure irreversibly. Increased product formation would not occur because the inhibitor blocks the reaction pathway.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक प्रतिस्पर्धी अवरोधक एंजाइम अभिक्रिया में जोड़ा जाता है, तो सबसे संभावित परिणाम क्या होगा?",
+          "choices": [
+            "एंजाइम स्थायी रूप से अक्रिय हो जाता है",
+            "अभिक्रिया दर कम हो जाती है",
+            "एंजाइम विकृत हो जाता है",
+            "एंजाइम अधिक उत्पाद बनाता है"
+          ],
+          "solution": "प्रतिस्पर्धी अवरोधक एंजाइम के सक्रिय स्थल पर बंध जाते हैं, जिससे अभिकर्मक के बंधन की अनुमति नहीं होती, जिससे अभिक्रिया दर कम हो जाती है। प्रतिस्पर्धी अवरोधन के सामान्य परिणाम में स्थायी अक्रियता और विकृति शामिल नहीं होती हैं, क्योंकि अवरोधक एंजाइम की संरचना को अनुत्क्रमणीय रूप से नहीं बदलता है। उत्पाद के अधिक बनने की संभावना नहीं होती क्योंकि अवरोधक अभिक्रिया पथ को अवरुद्ध कर देता है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the scientific meaning, with appropriate Hindi terminology used for biological concepts.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एंजाइम अभिक्रियेत एक प्रतिस्पर्धी अवरोधक जोडल्यास, त्याचा सर्वात शक्य निकाल काय असेल?",
+          "choices": [
+            "एंजाइम अस्थायी निष्क्रिय होतो",
+            "अभिक्रिया दर कमी होतो",
+            "एंजाइम निष्क्रिय होतो",
+            "एंजाइम जास्त उत्पादन तयार करतो"
+          ],
+          "solution": "प्रतिस्पर्धी अवरोधक एंजाइमच्या सक्रिय स्थानावर बांधले जातात, ज्यामुळे अणुविशेष (सब्स्ट्रेट) बांधण्यास अडथळा येतो, ज्यामुळे अभिक्रिया दर कमी होतो. प्रतिस्पर्धी अवरोधनामुळे एंजाइमची रचना अस्थायीपणे बदलली जात नाही, त्यामुळे अस्थायी निष्क्रियता आणि निष्क्रियता हे सामान्य निकाल नाहीत. अवरोधक अभिक्रिया मार्गाला अडथळा आणतो, त्यामुळे उत्पादन वाढणार नाही.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the original meaning, and uses appropriate terminology. The correct answer remains option (1) and the distractors are still incorrect.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Believes competitive inhibitors cause permanent inactivity",
+        null,
+        "Thinks denaturation is the result of competitive inhibition",
+        "Assumes competitive inhibitors increase product formation"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly identifies that competitive inhibitors reduce reaction rate by competing for the active site. The reasoning for the incorrect options aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/11/biology/kebo109.pdf",
+          "ordinal": 14,
+          "pageStart": 12,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 9: Biomolecules",
+            "9.6",
+            "δ P"
+          ]
+        },
+        {
+          "document": "ncert/11/biology/kebo109.pdf",
+          "ordinal": 15,
+          "pageStart": 13,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 9: Biomolecules",
+            "9.6",
+            "δ P"
+          ]
+        },
+        {
+          "document": "ncert/11/biology/kebo109.pdf",
+          "ordinal": 16,
+          "pageStart": 14,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 9: Biomolecules",
+            "9.6",
+            "δ P"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T03:28:41.174Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If a protein is denatured, which of the following is most likely to happen?",
+      "choices": [
+        "It will lose its three-dimensional structure",
+        "It will become a different type of protein",
+        "It will start functioning as a different enzyme",
+        "It will become more stable"
+      ],
+      "answerIndex": 0,
+      "solution": "Denaturation refers to the disruption of a protein's three-dimensional structure, which is critical for its proper function. This structural change typically leads to loss of function, but not necessarily to becoming a different type of protein or a more stable one. The other options do not align with the fundamental definition of denaturation.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक प्रोटीन अनुच्छेदित हो जाता है, तो निम्नलिखित में से क्या सबसे अधिक संभावना है?",
+          "choices": [
+            "इसकी त्रिआयामी संरचना खो देगा",
+            "इसके एक अलग प्रकार के प्रोटीन बन जाएगा",
+            "इसके एक अलग एंजाइम के रूप में कार्य करना शुरू कर देगा",
+            "इसकी स्थिरता बढ़ जाएगी"
+          ],
+          "solution": "अनुच्छेदन का अर्थ है प्रोटीन की त्रिआयामी संरचना के विघटन के लिए, जो इसके सही कार्य के लिए महत्वपूर्ण है। यह संरचनात्मक परिवर्तन आमतौर पर कार्य के नुकसान के कारण होता है, लेकिन आवश्यक रूप से एक अलग प्रकार के प्रोटीन या अधिक स्थिर होने के कारण नहीं होता है। अन्य विकल्प अनुच्छेदन की मूल अवधारणा के साथ मेल नहीं खाते हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology for biological concepts.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर एखादा प्रोटीन निष्क्रिय झाला, तर खालीलपैकी काय असण्याची शक्यता सर्वात जास्त असेल?",
+          "choices": [
+            "तो त्याचे त्रिपरिमाणीय बनावट गमावेल",
+            "तो वेगळ्या प्रकारचा प्रोटीन होईल",
+            "तो वेगळ्या एन्झाइम म्हणून कार्य करू लागेल",
+            "तो अधिक स्थिर होईल"
+          ],
+          "solution": "निष्क्रियीकरण म्हणजे प्रोटीनच्या त्रिपरिमाणीय बनावटच्या अस्तित्वाचा विघटन आहे, जे त्याच्या योग्य कार्यासाठी महत्वाचे आहे. ही संरचनात्मक बदलामुळे कार्य गमावले जाते, परंतु त्याचे वेगळ्या प्रकारचे प्रोटीन किंवा अधिक स्थिर बनण्याची शक्यता नसते. इतर विकल्प निष्क्रियीकरणाच्या मूलभूत विधानाशी संगत नसतात.",
+          "imageAlt": null,
+          "critique": "The translation accurately reflects the original meaning, with appropriate Marathi terminology for biological concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "belief that denaturation changes a protein's identity rather than its structure",
+        "Believes denaturation can change a protein's function into a new, different one",
+        "Believes denaturation increases stability due to confusion between denaturation and protein folding"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 0, as denaturation involves the loss of a protein's three-dimensional structure. The author's reasoning for the distractors aligns with common misconceptions students might have.",
+      "sources": [
+        {
+          "document": "ncert/11/biology/kebo109.pdf",
+          "ordinal": 17,
+          "pageStart": 15,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 9: Biomolecules",
+            "9.6",
+            "δ P"
+          ]
+        },
+        {
+          "document": "ncert/11/biology/kebo109.pdf",
+          "ordinal": 18,
+          "pageStart": 16,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 9: Biomolecules",
+            "9.6",
+            "δ P"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T03:28:41.174Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "Which of the following is a function of proteins?",
+      "choices": [
+        "Energy storage",
+        "Cellulose formation",
+        "Transport of nutrients",
+        "DNA replication"
+      ],
+      "answerIndex": 2,
+      "solution": "Proteins carry out many functions, including the transport of nutrients across the cell membrane. Energy storage is a function of carbohydrates, cellulose formation is a function of polysaccharides, and DNA replication is a function of nucleic acids.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा प्रोटीन का कार्य है?",
+          "choices": [
+            "ऊर्जा संग्रहण",
+            "सेलुलोज़ का निर्माण",
+            "पोषक तत्वों का परिवहन",
+            "डीएनए प्रतिकृति"
+          ],
+          "solution": "प्रोटीन विभिन्न कार्य करते हैं, जिनमें कोशिका झिल्ली के पार पोषक तत्वों का परिवहन शामिल है। ऊर्जा संग्रहण कार्बोहाइड्रेट का कार्य है, सेलुलोज़ का निर्माण पॉलीसैकराइड का कार्य है और डीएनए प्रतिकृति न्यूक्लिक अम्ल का कार्य है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate scientific terminology as used in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते प्रोटीनचे कार्य आहे?",
+          "choices": [
+            "ऊर्जा भंडारण",
+            "सेल्यूलोज तयार करणे",
+            "पोषक द्रव्यांचा परिवहन",
+            "डीएनए प्रतिकृती"
+          ],
+          "solution": "प्रोटीन विविध कार्य करतात, ज्यामध्ये कोशिका कलामधून पोषक द्रव्यांचा परिवहन समाविष्ट आहे. ऊर्जा भंडारण हे कार्बोहायड्रेटचे कार्य आहे, सेल्यूलोज तयार करणे हे पॉलीसॅकराइडचे कार्य आहे आणि डीएनए प्रतिकृती हे न्यूक्लिक अॅसिडचे कार्य आहे.",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for biological concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses functions of carbohydrates",
+        "Confuses functions of polysaccharides",
+        null,
+        "Confuses functions of nucleic acids"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 2 (Transport of nutrients), as proteins do play a role in transporting nutrients across cell membranes. The other options are correctly identified as functions of other biomolecules, and the misconceptions are valid.",
+      "sources": [
+        {
+          "document": "ncert/11/biology/kebo109.pdf",
+          "ordinal": 7,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 9: Biomolecules",
+            "9.4"
+          ]
+        },
+        {
+          "document": "ncert/11/biology/kebo109.pdf",
+          "ordinal": 8,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 9: Biomolecules",
+            "9.5"
+          ]
+        },
+        {
+          "document": "ncert/11/biology/kebo109.pdf",
+          "ordinal": 9,
+          "pageStart": 8,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 9: Biomolecules",
+            "9.6"
+          ]
+        },
+        {
+          "document": "ncert/11/biology/kebo109.pdf",
+          "ordinal": 10,
+          "pageStart": 9,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 9: Biomolecules",
+            "9.6"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T03:28:41.174Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "Which of the following would be the most suitable for a thermophilic organism's enzyme?",
+      "choices": [
+        "Enzyme that works best at 25°C",
+        "Enzyme that works best at 40°C",
+        "Enzyme that works best at 80°C",
+        "Enzyme that works best at 100°C"
+      ],
+      "answerIndex": 2,
+      "solution": "Thermophilic organisms thrive in high-temperature environments, so their enzymes are adapted to function optimally at elevated temperatures. An enzyme that works best at 80°C is most suitable because it matches the optimal temperature range for such organisms. Enzymes that work best at lower temperatures, like 25°C or 40°C, would not function effectively in these extreme conditions, and an enzyme that works best at 100°C would likely denature or lose function at that temperature.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन सा एक थर्मोफिलिक जीव के एंजाइम के लिए सबसे उपयुक्त होगा?",
+          "choices": [
+            "25°C पर सबसे अच्छा काम करने वाला एंजाइम",
+            "40°C पर सबसे अच्छा काम करने वाला एंजाइम",
+            "80°C पर सबसे अच्छा काम करने वाला एंजाइम",
+            "100°C पर सबसे अच्छा काम करने वाला एंजाइम"
+          ],
+          "solution": "थर्मोफिलिक जीव उच्च तापमान के वातावरण में जीवित रहते हैं, इसलिए उनके एंजाइम उच्च तापमान पर अच्छी तरह से काम करने के लिए अनुकूलित होते हैं। 80°C पर सबसे अच्छा काम करने वाला एंजाइम सबसे उपयुक्त होगा क्योंकि यह ऐसे जीवों के लिए उपयुक्त तापमान की सीमा के साथ मेल खाता है। 25°C या 40°C पर सबसे अच्छा काम करने वाले एंजाइम इन चरम परिस्थितियों में अच्छी तरह से काम नहीं करेंगे, और 100°C पर सबसे अच्छा काम करने वाला एंजाइम इस तापमान पर निष्क्रिय हो जाएगा या कार्य करना बंद कर देगा।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate biological terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणता उष्णताप्रिय जीवाच्या एंजाइमसाठी सर्वात योग्य असेल?",
+          "choices": [
+            "25°C वर सर्वात चांगला कार्य करणारा एंजाइम",
+            "40°C वर सर्वात चांगला कार्य करणारा एंजाइम",
+            "80°C वर सर्वात चांगला कार्य करणारा एंजाइम",
+            "100°C वर सर्वात चांगला कार्य करणारा एंजाइम"
+          ],
+          "solution": "उष्णताप्रिय जीव उच्च तापमानाच्या वातावरणात जगतात, म्हणून त्यांच्या एंजाइम उच्च तापमानावर आदत बसलेले असतात. 80°C वर सर्वात चांगला कार्य करणारा एंजाइम सर्वात योग्य असेल कारण तो अशा जीवांच्या आदर्श तापमान परिसराशी जुळतो. 25°C किंवा 40°C वर सर्वात चांगला कार्य करणारा एंजाइम या चरम परिस्थितीत चांगला कार्य करू शकत नाहीत, आणि 100°C वर सर्वात चांगला कार्य करणारा एंजाइम त्या तापमानावर निर्जीव होऊ शकतो किंवा कार्य गमावू शकतो.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for biological concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Chooses a temperature too low for a thermophilic enzyme",
+        "Chooses a temperature that is typical for most enzymes",
+        null,
+        "Selects a temperature that exceeds the stability range of the enzyme"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 2, as thermophilic enzymes are adapted to function optimally at high temperatures, typically around 80°C. The author's reasoning aligns with this, and the distractors reflect common misconceptions about enzyme temperature optima.",
+      "sources": [
+        {
+          "document": "ncert/11/biology/kebo109.pdf",
+          "ordinal": 11,
+          "pageStart": 10,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 9: Biomolecules",
+            "9.6"
+          ]
+        },
+        {
+          "document": "ncert/11/biology/kebo109.pdf",
+          "ordinal": 12,
+          "pageStart": 10,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 9: Biomolecules",
+            "9.6",
+            "δ P"
+          ]
+        },
+        {
+          "document": "ncert/11/biology/kebo109.pdf",
+          "ordinal": 13,
+          "pageStart": 11,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 9: Biomolecules",
+            "9.6",
+            "δ P"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T03:28:41.174Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "If an enzyme is exposed to a temperature above its optimum, what is the most likely effect on the reaction?",
+      "choices": [
+        "The reaction rate increases continuously",
+        "The enzyme becomes permanently inactive",
+        "The reaction rate decreases gradually",
+        "The enzyme's structure remains unchanged"
+      ],
+      "answerIndex": 1,
+      "solution": "Enzymes are proteins, and high temperatures can cause them to lose their specific three-dimensional shape, which is essential for their function. This process, called denaturation, typically results in the enzyme becoming permanently inactive. The other options are incorrect because reaction rates do not increase with excessive heat, and the enzyme's structure is not maintained under such conditions.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक एंजाइम को उसके अनुकूल तापमान से ऊपर तापमान में उपस्थित किया जाए, तो अभिक्रिया पर सबसे संभावित प्रभाव क्या होगा?",
+          "choices": [
+            "अभिक्रिया दर लगातार बढ़ती है",
+            "एंजाइम स्थायी रूप से अक्रिय हो जाता है",
+            "अभिक्रिया दर धीरे-धीरे कम हो जाती है",
+            "एंजाइम की संरचना अपरिवर्तित रहती है"
+          ],
+          "solution": "एंजाइम प्रोटीन होते हैं, और उच्च तापमान उनके विशिष्ट त्रि-आयामी आकार को खो सकता है, जो उनके कार्य के लिए आवश्यक होता है। इस प्रक्रिया, जिसे विकृतीकरण कहा जाता है, आमतौर पर एंजाइम के स्थायी रूप से अक्रिय हो जाने के कारण होता है। अन्य विकल्प गलत हैं क्योंकि अत्यधिक गर्मी के साथ अभिक्रिया दर बढ़ती नहीं है, और इस तापमान में एंजाइम की संरचना बरकरार नहीं रहती है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English content with appropriate technical terms and maintains the correct answer position.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका एन्झाइमला त्याच्या अनुकूल तापमानापेक्षा जास्त तापमानात उपस्थित केल्यास, प्रतिक्रियेवर सर्वात शक्य परिणाम काय असेल?",
+          "choices": [
+            "प्रतिक्रियेचा दर सतत वाढतो",
+            "एन्झाइम अस्थायीपणे अक्रिय होतो",
+            "प्रतिक्रियेचा दर धीमपणे कमी होतो",
+            "एन्झाइमची संरचना अपरिवर्तित राहते"
+          ],
+          "solution": "एन्झाइम प्रोटीन असतात आणि उच्च तापमानामुळे त्यांची विशिष्ट त्रिपरिमाणीय आकृती गमावली जाऊ शकते, जी त्यांच्या कार्यासाठी आवश्यक असते. हा प्रक्रिया, जी निष्क्रियीकरण म्हणून ओळखली जाते, सामान्यतः एन्झाइम अस्थायीपणे अक्रिय होण्याचा परिणाम देते. इतर विकल्प अयोग्य आहेत कारण अतिशय उष्णतेमुळे प्रतिक्रियेचा दर वाढत नाही, आणि अशा परिस्थितीत एन्झाइमची संरचना अपरिवर्तित राहत नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Thinks the reaction rate increases with temperature",
+        null,
+        "Believes the reaction rate decreases gradually",
+        "Assumes the enzyme structure is unaffected by high temperature"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 1, as high temperature denatures enzymes, leading to permanent inactivation. The author's reasoning aligns with standard biochemical principles, and the distractors reflect common misconceptions about enzyme behavior under heat.",
+      "sources": [
+        {
+          "document": "ncert/11/biology/kebo109.pdf",
+          "ordinal": 14,
+          "pageStart": 12,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 9: Biomolecules",
+            "9.6",
+            "δ P"
+          ]
+        },
+        {
+          "document": "ncert/11/biology/kebo109.pdf",
+          "ordinal": 15,
+          "pageStart": 13,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 9: Biomolecules",
+            "9.6",
+            "δ P"
+          ]
+        },
+        {
+          "document": "ncert/11/biology/kebo109.pdf",
+          "ordinal": 16,
+          "pageStart": 14,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 9: Biomolecules",
+            "9.6",
+            "δ P"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T03:28:41.174Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "Which of the following biomolecules is most likely to pass through a plasma membrane easily?",
+      "choices": [
+        "K+",
+        "DNA",
+        "Glucose",
+        "O2"
+      ],
+      "answerIndex": 3,
+      "solution": "O2 is a small, non-polar molecule that can easily diffuse through the plasma membrane. K+ is a charged ion and cannot pass through the membrane without a transport protein. DNA is a large molecule that cannot pass through the membrane. Glucose requires a transport protein to cross the membrane.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित जैव अणुओं में से कौन-सा सबसे अधिक संभावना से प्लाज्मा झिल्ली से गुजर सकता है?",
+          "choices": [
+            "K+",
+            "DNA",
+            "ग्लूकोज",
+            "O2"
+          ],
+          "solution": "O2 एक छोटा, ध्रुवीय नहीं अणु है जो प्लाज्मा झिल्ली से आसानी से विसरित हो सकता है। K+ एक आवेशित आयन है जो ट्रांसपोर्ट प्रोटीन के बिना झिल्ली से नहीं गुजर सकता। DNA एक बड़ा अणु है जो झिल्ली से गुजर नहीं सकता। ग्लूकोज झिल्ली पार करने के लिए ट्रांसपोर्ट प्रोटीन की आवश्यकता होती है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology as found in standard biology textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणता जैव अणू प्लाझ्मा झिल्लीमधून सहज जाऊ शकतो?",
+          "choices": [
+            "K+",
+            "DNA",
+            "ग्लूकोज",
+            "O2"
+          ],
+          "solution": "O2 हा लहान, अधुल्य अणू आहे आणि प्लाझ्मा झिल्लीमधून सहज विसर्जित होऊ शकतो. K+ हा आवेशित आयन आहे आणि ट्रान्सपोर्ट प्रोटीनशिवाय झिल्लीमधून जाऊ शकत नाही. DNA हा मोठा अणू आहे आणि झिल्लीमधून जाऊ शकत नाही. ग्लूकोज झिल्लीमधून जाण्यासाठी ट्रान्सपोर्ट प्रोटीनची आवश्यकता असते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses ion transport with diffusion",
+        "Confuses large molecule transport with diffusion",
+        "Confuses glucose transport with diffusion",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies O2 as the only molecule that can pass through the plasma membrane by simple diffusion due to its small size and non-polar nature. The reasoning for the other options aligns with common student misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/11/biology/kebo109.pdf",
+          "ordinal": 7,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 9: Biomolecules",
+            "9.4"
+          ]
+        },
+        {
+          "document": "ncert/11/biology/kebo109.pdf",
+          "ordinal": 8,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 9: Biomolecules",
+            "9.5"
+          ]
+        },
+        {
+          "document": "ncert/11/biology/kebo109.pdf",
+          "ordinal": 9,
+          "pageStart": 8,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 9: Biomolecules",
+            "9.6"
+          ]
+        },
+        {
+          "document": "ncert/11/biology/kebo109.pdf",
+          "ordinal": 10,
+          "pageStart": 9,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 9: Biomolecules",
+            "9.6"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T03:28:41.174Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "If a competitive inhibitor is structurally similar to a substrate, which of the following is most likely to happen?",
+      "choices": [
+        "The inhibitor will bind to the active site and prevent the substrate from binding",
+        "The inhibitor will bind to a different site and change the enzyme's shape",
+        "The inhibitor will increase the reaction rate",
+        "The inhibitor will denature the enzyme"
+      ],
+      "answerIndex": 0,
+      "solution": "A competitive inhibitor, being structurally similar to the substrate, can bind to the active site of the enzyme, blocking the substrate from doing so. This directly interferes with the enzyme's ability to catalyze the reaction. The other options describe effects of non-competitive inhibition, enzyme activation, or structural damage, which do not apply to competitive inhibitors.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक प्रतियोगी अवरोधक आवश्यकता के समान संरचनात्मक रूप से समान है, तो निम्नलिखित में से कौन-सा सबसे अधिक संभावना है?",
+          "choices": [
+            "अवरोधक सक्रिय स्थल पर बंध जाएगा और आवश्यकता के बंधन को रोक देगा",
+            "अवरोधक एक अलग स्थल पर बंध जाएगा और एंजाइम के आकार को बदल देगा",
+            "अवरोधक अभिक्रिया दर को बढ़ा देगा",
+            "अवरोधक एंजाइम को अकार्य कर देगा"
+          ],
+          "solution": "एक प्रतियोगी अवरोधक, जो आवश्यकता के समान संरचनात्मक रूप से समान है, एंजाइम के सक्रिय स्थल पर बंध सकता है, जिससे आवश्यकता के बंधन को रोक दिया जाता है। यह सीधे एंजाइम के अभिक्रिया के उत्प्रेरण क्षमता को प्रभावित करता है। अन्य विकल्प अप्रतियोगी अवरोधन, एंजाइम सक्रियण या संरचनात्मक क्षति के प्रभावों का वर्णन करते हैं, जो प्रतियोगी अवरोधक के लिए लागू नहीं होते।",
+          "imageAlt": null,
+          "critique": "Translation accurately reflects the original meaning, technical terms are appropriately used in Hindi, and the structure matches the original question.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर एक प्रतिस्पर्धी अवरोधक अणु प्रतिक्रियेच्या पदार्थासारखा असेल, तर खालीलपैकी काय घडेल?",
+          "choices": [
+            "अवरोधक सक्रिय स्थानावर बांधला जाईल आणि पदार्थाच्या बांधण्यास अडथळा आणेल",
+            "अवरोधक वेगळ्या स्थानावर बांधला जाईल आणि एंजाइमच्या आकारात बदल करेल",
+            "अवरोधक प्रतिक्रियेच्या दराला वाढवेल",
+            "अवरोधक एंजाइमचे निर्मूलन करेल"
+          ],
+          "solution": "प्रतिस्पर्धी अवरोधक, पदार्थासारखा रचनात्मक रूपात असल्यामुळे, एंजाइमच्या सक्रिय स्थानावर बांधला जाऊ शकतो, ज्यामुळे पदार्थाच्या बांधण्यास अडथळा येतो. हे एंजाइमच्या प्रतिक्रिया करण्याच्या क्षमतेला सीधा अडथळा आणते. इतर विकल्पांमध्ये अन्य-प्रतिस्पर्धी अवरोधन, एंजाइम एक्टिव्हेशन किंवा संरचनात्मक नुकसान यांच्या परिणामांचे वर्णन आहे, जे प्रतिस्पर्धी अवरोधकांसाठी लागू होत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the scientific terminology used in Marathi textbooks, and preserves the logical structure of the question and solution.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Believes the inhibitor binds to a different site",
+        "Thinks the inhibitor increases the reaction rate",
+        "Assumes the inhibitor causes denaturation"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is well-constructed and the solution is accurate. The correct answer is 0, as competitive inhibitors bind to the active site, preventing substrate binding. The other options correspond to misconceptions about non-competitive inhibition, activation, and denaturation.",
+      "sources": [
+        {
+          "document": "ncert/11/biology/kebo109.pdf",
+          "ordinal": 14,
+          "pageStart": 12,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 9: Biomolecules",
+            "9.6",
+            "δ P"
+          ]
+        },
+        {
+          "document": "ncert/11/biology/kebo109.pdf",
+          "ordinal": 15,
+          "pageStart": 13,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 9: Biomolecules",
+            "9.6",
+            "δ P"
+          ]
+        },
+        {
+          "document": "ncert/11/biology/kebo109.pdf",
+          "ordinal": 16,
+          "pageStart": 14,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 9: Biomolecules",
+            "9.6",
+            "δ P"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T03:28:41.174Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Which of the following is true about the quaternary structure of a protein?",
+      "choices": [
+        "It refers to the sequence of amino acids",
+        "It refers to the three-dimensional structure",
+        "It refers to the arrangement of subunits",
+        "It refers to the folding of a single polypeptide chain"
+      ],
+      "answerIndex": 2,
+      "solution": "The quaternary structure refers to how the individual subunits of a protein are arranged with respect to each other. The primary structure is the sequence of amino acids, the secondary and tertiary structures refer to the folding of a single polypeptide chain, and the quaternary structure involves multiple subunits.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा एक प्रोटीन के चतुर्थक संरचना के बारे में सही है?",
+          "choices": [
+            "इसका अर्थ एमिनो एसिड के क्रम से होता है",
+            "इसका अर्थ त्रिआयामी संरचना से होता है",
+            "इसका अर्थ उपइकाइयों की व्यवस्था से होता है",
+            "इसका अर्थ एकल पॉलीपेप्टाइड श्रृंखला के मोड़ने से होता है"
+          ],
+          "solution": "चतुर्थक संरचना एक प्रोटीन की व्यक्तिगत उपइकाइयों के एक दूसरे के सापेक्ष व्यवस्था के बारे में होती है। प्राथमिक संरचना एमिनो एसिड के क्रम के बारे में होती है, द्वितीयक एवं तृतीयक संरचना एकल पॉलीपेप्टाइड श्रृंखला के मोड़ने के बारे में होती है, एवं चतुर्थक संरचना में कई उपइकाइयाँ शामिल होती हैं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the scientific terminology used in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते प्रोटीनच्या चतुर्थ रचनेबद्दल खरे आहे?",
+          "choices": [
+            "त्याचा अर्थ अमीनो अम्लांचा क्रम आहे",
+            "त्याचा अर्थ त्रिपरिमाणीय रचना आहे",
+            "त्याचा अर्थ सबयुनिट्सची व्यवस्थित व्यवस्था आहे",
+            "त्याचा अर्थ एका पॉलिपेप्टाइड शृंखलेचे फोल्डिंग आहे"
+          ],
+          "solution": "चतुर्थ रचना ही प्रोटीनच्या विशिष्ट सबयुनिट्सच्या एकमेकांशी असलेल्या व्यवस्थित व्यवस्थेचा अर्थ आहे. प्राथमिक रचना ही अमीनो अम्लांचा क्रम आहे, द्वितीय आणि तृतीय रचना ही एका पॉलिपेप्टाइड शृंखलेचे फोल्डिंग आहे, आणि चतुर्थ रचना बहुसबयुनिट्सच्या संबंधात असते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for biological structures.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses primary structure with quaternary",
+        "Confuses tertiary structure with quaternary",
+        null,
+        "Confuses secondary structure with quaternary"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies that quaternary structure refers to the arrangement of subunits, and the reasons for the wrong options align with common misconceptions about protein structure.",
+      "sources": [
+        {
+          "document": "ncert/11/biology/kebo109.pdf",
+          "ordinal": 7,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 9: Biomolecules",
+            "9.4"
+          ]
+        },
+        {
+          "document": "ncert/11/biology/kebo109.pdf",
+          "ordinal": 8,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 9: Biomolecules",
+            "9.5"
+          ]
+        },
+        {
+          "document": "ncert/11/biology/kebo109.pdf",
+          "ordinal": 9,
+          "pageStart": 8,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 9: Biomolecules",
+            "9.6"
+          ]
+        },
+        {
+          "document": "ncert/11/biology/kebo109.pdf",
+          "ordinal": 10,
+          "pageStart": 9,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 9: Biomolecules",
+            "9.6"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T03:28:41.174Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
     }
   ]
 }

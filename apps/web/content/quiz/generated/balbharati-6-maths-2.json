@@ -404,6 +404,1583 @@
       "generatedAt": "2026-11-01T12:43:49.659Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is the name of a line that is written using any two points on the line?",
+      "choices": [
+        "Line AB",
+        "Line a",
+        "Line P",
+        "Line Q"
+      ],
+      "answerIndex": 0,
+      "solution": "A line is named using any two points on it, which is why Line AB is correct. This follows the standard geometric convention where two points define a line. Line a, Line P, and Line Q do not follow this method as they use a single letter or a single point for naming.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "किसी रेखा का नाम क्या होता है जिसे रेखा पर किन्हीं दो बिंदुओं के द्वारा लिखा जाता है?",
+          "choices": [
+            "रेखा AB",
+            "रेखा a",
+            "रेखा P",
+            "रेखा Q"
+          ],
+          "solution": "एक रेखा किसी भी दो बिंदुओं के द्वारा नामित की जाती है, इसलिए रेखा AB सही है। यह मानक ज्यामितीय परंपरा के अनुसार है कि दो बिंदु एक रेखा को परिभाषित करते हैं। रेखा a, रेखा P और रेखा Q इस विधि का अनुसरण नहीं करते क्योंकि वे एक अक्षर या एक बिंदु के द्वारा नामित करते हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard geometric terminology in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "कोणत्या रेषेचे नाव रेषेवरील कोणत्याही दोन बिंदूंनी दिले जाते?",
+          "choices": [
+            "रेषा AB",
+            "रेषा a",
+            "रेषा P",
+            "रेषा Q"
+          ],
+          "solution": "रेषा कोणत्याही दोन बिंदूंनी नाव दिले जाते, म्हणून रेषा AB बरोबर आहे. हे मानक भूमितीच्या पद्धतीनुसार आहे जेथे दोन बिंदू रेषा निश्चित करतात. रेषा a, रेषा P आणि रेषा Q ही पद्धतीचे अनुसरण करत नाहीत कारण त्यांनी एक अक्षर किंवा एक बिंदू वापरला आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Marathi geometric terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses lowercase letters with proper notation for lines",
+        "Confuses line naming with lowercase letters",
+        "Confuses line naming with single letters"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 0 (Line AB), as it follows the convention of naming a line using two points. The other options incorrectly use lowercase or single letters, which is not the standard notation for lines.",
+      "sources": [
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 18,
+          "pageStart": 23,
+          "pageEnd": 24,
+          "headingPath": [
+            "2. Lines and Angles"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 19,
+          "pageStart": 24,
+          "pageEnd": 26,
+          "headingPath": [
+            "2. Lines and Angles"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 20,
+          "pageStart": 26,
+          "pageEnd": 28,
+          "headingPath": [
+            "2. Lines and Angles"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-10-30T23:46:37.657Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of the following is an example of a reflex angle?",
+      "choices": [
+        "45°",
+        "90°",
+        "180°",
+        "270°"
+      ],
+      "answerIndex": 3,
+      "solution": "A reflex angle is an angle that is greater than 180° but less than 360°. Among the options, 270° is a reflex angle. The other options represent acute, right, and straight angles respectively.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन एक प्रतिवर्ती कोण का उदाहरण है?",
+          "choices": [
+            "45°",
+            "90°",
+            "180°",
+            "270°"
+          ],
+          "solution": "एक प्रतिवर्ती कोण वह कोण होता है जो 180° से अधिक लेकिन 360° से कम होता है। विकल्पों में 270° एक प्रतिवर्ती कोण है। अन्य विकल्प क्रमशः न्यून कोण, समकोण और सीधा कोण दर्शाते हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English question, with appropriate terminology used for angles.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते एक अपक्रमण कोनाचे उदाहरण आहे?",
+          "choices": [
+            "45°",
+            "90°",
+            "180°",
+            "270°"
+          ],
+          "solution": "अपक्रमण कोन हा एखादा कोन आहे जो 180° पेक्षा जास्त पण 360° पेक्षा कमी असतो. निवडक पर्यायांमध्ये 270° अपक्रमण कोन आहे. उरलेल्या पर्यायांमध्ये तिन्ही तीन कोन लहान कोन, समकोन आणि सरळ कोन दर्शवितात क्रमाने.",
+          "imageAlt": null,
+          "critique": "The Marathi translation accurately reflects the English question and solution, with appropriate terminology used for angles.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "represents an acute angle",
+        "represents a right angle",
+        "represents a straight angle",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly identifies 270° as a reflex angle, which is between 180° and 360°, and correctly labels the other options as acute, right, and straight angles.",
+      "sources": [
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 21,
+          "pageStart": 28,
+          "pageEnd": 30,
+          "headingPath": [
+            "2. Lines and Angles"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 22,
+          "pageStart": 30,
+          "pageEnd": 31,
+          "headingPath": [
+            "2. Lines and Angles"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 23,
+          "pageStart": 31,
+          "pageEnd": 31,
+          "headingPath": [
+            "2. Lines and Angles"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-10-30T23:46:37.657Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "If a straight angle is divided into three equal parts, what type of angle is each part?",
+      "choices": [
+        "Right angle",
+        "Acute angle",
+        "Obtuse angle",
+        "Reflex angle"
+      ],
+      "answerIndex": 1,
+      "solution": "A straight angle measures 180°, so dividing it into three equal parts gives 60°, which is an acute angle. Other options do not match the measure of 60°.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक सीधा कोण तीन बराबर भागों में विभाजित किया जाता है, तो प्रत्येक भाग किस प्रकार का कोण होता है?",
+          "choices": [
+            "समकोण",
+            "न्यून कोण",
+            "अधिक कोण",
+            "प्रतिवर्ती कोण"
+          ],
+          "solution": "एक सीधा कोण 180° का होता है, इसलिए इसे तीन बराबर भागों में विभाजित करने पर 60° प्राप्त होता है, जो एक न्यून कोण है। अन्य विकल्प 60° के माप के साथ मेल नहीं खाते।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, technical terms are standard in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर एक सरळ कोन तीन समान भागांमध्ये विभागला जाईल, तर प्रत्येक भाग कोणत्या प्रकारचा कोन असेल?",
+          "choices": [
+            "समकोन",
+            "कूटिल कोन",
+            "अधिक कोन",
+            "प्रतिकूटिल कोन"
+          ],
+          "solution": "एक सरळ कोन 180° मोजतो, म्हणून त्याला तीन समान भागांमध्ये विभागल्यास 60° मिळतो, जो कूटिल कोन आहे. इतर विकल्प 60° च्या मापासह जुळत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi technical terms used for angles.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses with right angle",
+        null,
+        "Incorrectly assumes the angle is obtuse",
+        "Misunderstands the classification of angles"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct. A straight angle is 180°, and dividing it into three equal parts gives 60°, which is an acute angle. The reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 21,
+          "pageStart": 28,
+          "pageEnd": 30,
+          "headingPath": [
+            "2. Lines and Angles"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 22,
+          "pageStart": 30,
+          "pageEnd": 31,
+          "headingPath": [
+            "2. Lines and Angles"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 23,
+          "pageStart": 31,
+          "pageEnd": 31,
+          "headingPath": [
+            "2. Lines and Angles"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-10-30T23:46:37.657Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If a paper fan is closed, what type of angle is formed between the two edges of the fan?",
+      "choices": [
+        "Acute angle",
+        "Right angle",
+        "Zero angle",
+        "Reflex angle"
+      ],
+      "answerIndex": 2,
+      "solution": "When a paper fan is closed, the two edges of the fan lie directly on top of each other, forming a zero angle. An acute angle is less than 90 degrees, a right angle is exactly 90 degrees, and a reflex angle is greater than 180 degrees, none of which match the situation when the fan is fully closed.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक कागज के पंखा बंद कर दिया जाए, तो पंखे के दो किनारों के बीच किस प्रकार का कोण बनता है?",
+          "choices": [
+            "न्यून कोण",
+            "समकोण",
+            "शून्य कोण",
+            "प्रतिवर्ती कोण"
+          ],
+          "solution": "जब एक कागज का पंखा बंद कर दिया जाता है, तो पंखे के दो किनारे सीधे एक दूसरे पर रहते हैं, जिससे शून्य कोण बनता है। एक न्यून कोण 90 डिग्री से कम होता है, समकोण ठीक 90 डिग्री होता है, और प्रतिवर्ती कोण 180 डिग्री से अधिक होता है, जो कि पंखे के पूरी तरह से बंद होने की स्थिति के अनुरूप नहीं है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Hindi terminology used for angles.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "कागदाचा पंखा बंद असताना, पंख्याच्या दोन किनारांमध्ये कोणता कोन तयार होतो?",
+          "choices": [
+            "तीक्ष्ण कोन",
+            "समकोन",
+            "शून्य कोन",
+            "प्रतिकूल कोन"
+          ],
+          "solution": "जेव्हा कागदाचा पंखा बंद असतो तेव्हा पंख्याच्या दोन किनारा एकमेकांवर ठेवल्या जातात, जे शून्य कोन तयार करतात. तीक्ष्ण कोन 90 अंशापेक्षा कमी असतो, समकोन तर 90 अंश असतो आणि प्रतिकूल कोन 180 अंशापेक्षा जास्त असतो, जे पंखा पूर्णपणे बंद असताना घडत नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses with acute angle",
+        "Confuses with right angle",
+        null,
+        "Misunderstands the classification of angles"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The question is valid and the correct answer is 'Zero angle' (option 2). The reasoning aligns with the definition of a zero angle, which is formed when two lines or edges are in the same direction, as in a closed fan. The distractors represent common misconceptions about angle types.",
+      "sources": [
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 21,
+          "pageStart": 28,
+          "pageEnd": 30,
+          "headingPath": [
+            "2. Lines and Angles"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 22,
+          "pageStart": 30,
+          "pageEnd": 31,
+          "headingPath": [
+            "2. Lines and Angles"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 23,
+          "pageStart": 31,
+          "pageEnd": 31,
+          "headingPath": [
+            "2. Lines and Angles"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-10-30T23:46:37.657Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "What type of angle is formed between the hour hand and the minute hand of a clock when it is 04:00?",
+      "choices": [
+        "Acute angle",
+        "Right angle",
+        "Obtuse angle",
+        "Reflex angle"
+      ],
+      "answerIndex": 2,
+      "solution": "At 04:00, the hour hand is at 4 and the minute hand is at 12, forming an obtuse angle. Other options are incorrect as they do not match the angle formed at this time.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "समय 04:00 पर घड़ी के घंटा सूई और मिनट सूई के बीच कौन सा कोण बनता है?",
+          "choices": [
+            "न्यून कोण",
+            "समकोण",
+            "अधिक कोण",
+            "प्रतिवर्ती कोण"
+          ],
+          "solution": "04:00 पर, घंटा सूई 4 पर और मिनट सूई 12 पर होती है, जो एक अधिक कोण बनाती है। अन्य विकल्प गलत हैं क्योंकि इनमें से कोई भी इस समय बने कोण के साथ मेल नहीं खाता।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the original English question and options, with appropriate terminology used in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "तासाच्या सूचक आणि मिनिटाच्या सूचक दरम्यान कोणता प्रकारचा कोन तयार होतो जेव्हा वेळ 04:00 असतो?",
+          "choices": [
+            "तीव्र कोन",
+            "समकोन",
+            "अधिक कोन",
+            "प्रतिकूल कोन"
+          ],
+          "solution": "04:00 वाजताना, तासाचा सूचक 4 वर असतो आणि मिनिटाचा सूचक 12 वर असतो, जे अधिक कोन तयार करतो. या वेळी तयार होणारा कोन यांच्याशी जुळत नाही म्हणून इतर विकल्प अयोग्य आहेत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, with appropriate Marathi technical terms used for angles.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses with acute angle",
+        "Confuses with right angle",
+        null,
+        "Misunderstands the classification of angles"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct. At 4:00, the hour hand is at 4 and the minute hand is at 12, forming an angle of 120 degrees, which is an obtuse angle. The other options are incorrect.",
+      "sources": [
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 21,
+          "pageStart": 28,
+          "pageEnd": 30,
+          "headingPath": [
+            "2. Lines and Angles"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 22,
+          "pageStart": 30,
+          "pageEnd": 31,
+          "headingPath": [
+            "2. Lines and Angles"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 23,
+          "pageStart": 31,
+          "pageEnd": 31,
+          "headingPath": [
+            "2. Lines and Angles"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-10-30T23:46:37.657Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "If an angle is formed by rotating a ray from one position to another, and the rotation is more than 180° but less than 360°, what type of angle is it?",
+      "choices": [
+        "acute angle",
+        "right angle",
+        "obtuse angle",
+        "reflex angle"
+      ],
+      "answerIndex": 3,
+      "solution": "A reflex angle is defined as an angle that is greater than 180° but less than 360°. The other options do not match this range of measures: acute angles are less than 90°, right angles are 90°, and obtuse angles are between 90° and 180°.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि कोण एक किरण के एक स्थिति से दूसरी स्थिति तक घूमने से बनता है, और घूर्णन 180° से अधिक लेकिन 360° से कम है, तो यह किस प्रकार का कोण है?",
+          "choices": [
+            "न्यून कोण",
+            "समकोण",
+            "अधिक कोण",
+            "प्रतिवर्ती कोण"
+          ],
+          "solution": "एक प्रतिवर्ती कोण की परिभाषा एक कोण है जो 180° से अधिक लेकिन 360° से कम होता है। अन्य विकल्प इस विस्तार के माप के अनुरूप नहीं होते हैं: न्यून कोण 90° से कम होता है, समकोण 90° होता है, और अधिक कोण 90° से 180° के बीच होता है।",
+          "imageAlt": null,
+          "critique": "All terms are standard Hindi mathematical terms used in textbooks. The translation is accurate and maintains the original meaning and structure.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर एक कोन एका रेशीच्या एका स्थितीतून दुसऱ्या स्थितीत फिरविल्यामुळे तयार होतो, आणि फिरवणी 180° पेक्षा जास्त पण 360° पेक्षा कमी असेल, तर तो कोन कोणत्या प्रकारचा असेल?",
+          "choices": [
+            "तीव्र कोन",
+            "समकोन",
+            "अधिक कोन",
+            "प्रतिबिंब कोन"
+          ],
+          "solution": "प्रतिबिंब कोन म्हणजे 180° पेक्षा जास्त पण 360° पेक्षा कमी असलेला कोन आहे. इतर विकल्प या श्रेणीशी जुळत नाहीत: तीव्र कोन 90° पेक्षा कमी असतात, समकोन 90° असतात आणि अधिक कोन 90° आणि 180° दरम्यान असतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and uses standard Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "represents an acute angle",
+        "represents a right angle",
+        "represents an obtuse angle",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is well-posed and the solution is correct. The correct answer is 'reflex angle,' and the author's reasoning for the distractors aligns with common misconceptions about angle types.",
+      "sources": [
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 21,
+          "pageStart": 28,
+          "pageEnd": 30,
+          "headingPath": [
+            "2. Lines and Angles"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 22,
+          "pageStart": 30,
+          "pageEnd": 31,
+          "headingPath": [
+            "2. Lines and Angles"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 23,
+          "pageStart": 31,
+          "pageEnd": 31,
+          "headingPath": [
+            "2. Lines and Angles"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-10-30T23:46:37.657Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is the term for a mark that has no length, width or thickness?",
+      "choices": [
+        "Line",
+        "Plane",
+        "Ray",
+        "Point"
+      ],
+      "answerIndex": 3,
+      "solution": "A point is a mathematical concept that has no length, width, or thickness. Unlike a line, which has length, or a plane, which has length and width, a point exists only as a location. A ray, being part of a line, also has length, making it different from a point.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "किस शब्द का उपयोग ऐसे चिह्न के लिए किया जाता है जिसकी लंबाई, चौड़ाई या मोटाई नहीं होती?",
+          "choices": [
+            "रेखा",
+            "तल",
+            "किरण",
+            "बिंदु"
+          ],
+          "solution": "एक बिंदु एक गणितीय अवधारणा है जिसकी लंबाई, चौड़ाई या मोटाई नहीं होती। एक रेखा के विपरीत, जिसकी लंबाई होती है, या एक तल, जिसकी लंबाई और चौड़ाई होती है, एक बिंदु केवल एक स्थान के रूप में अस्तित्व में होता है। एक किरण, जो रेखा का एक हिस्सा होता है, भी लंबाई के साथ होता है, जिससे यह बिंदु से अलग हो जाता है।",
+          "imageAlt": null,
+          "critique": "All terms (बिंदु, रेखा, तल, किरण) are standard mathematical terms used in Hindi textbooks, consistent with the English equivalents.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "लांबी, रुंदी किंवा मोजणी नसलेल्या नोंदीला काय म्हणतात?",
+          "choices": [
+            "रेषा",
+            "तल",
+            "किरण",
+            "बिंदू"
+          ],
+          "solution": "बिंदू हा गणितीय संकल्पना आहे ज्याला लांबी, रुंदी किंवा मोजणी नाही. रेषेपेक्षा ज्याला लांबी आहे, तलाला लांबी आणि रुंदी आहे, तर बिंदू हा केवळ स्थान म्हणून असतो. किरण, रेषेचा भाग असल्यामुळे त्याला लांबी असते, जे बिंदूपेक्षा वेगळे असते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi mathematical terminology used.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses a line with a point",
+        "Confuses a plane with a point",
+        "Confuses a ray with a point",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly identifies 'Point' as the term for a mark with no length, width, or thickness. The reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 18,
+          "pageStart": 23,
+          "pageEnd": 24,
+          "headingPath": [
+            "2. Lines and Angles"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 19,
+          "pageStart": 24,
+          "pageEnd": 26,
+          "headingPath": [
+            "2. Lines and Angles"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 20,
+          "pageStart": 26,
+          "pageEnd": 28,
+          "headingPath": [
+            "2. Lines and Angles"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-10-30T22:10:31.880Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of the following is a part of a line that has two endpoints?",
+      "choices": [
+        "Line",
+        "Ray",
+        "Line segment",
+        "Angle"
+      ],
+      "answerIndex": 2,
+      "solution": "A line segment is a part of a line that has two distinct endpoints, making it finite in length. A line extends infinitely in both directions and does not have endpoints. A ray has one endpoint and extends infinitely in one direction. An angle is formed by two rays or line segments meeting at a common point, but it is not itself a part of a line. Therefore, the correct answer is line segment.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन एक रेखा का भाग है जिसके दो अंत बिंदु हैं?",
+          "choices": [
+            "रेखा",
+            "किरण",
+            "रेखाखंड",
+            "कोण"
+          ],
+          "solution": "एक रेखाखंड एक रेखा का भाग है जिसके दो अलग-अलग अंत बिंदु होते हैं, जिसके कारण इसकी लंबाई सीमित होती है। एक रेखा दोनों दिशाओं में अनंत तक फैली रहती है और इसके अंत बिंदु नहीं होते। एक किरण के एक अंत बिंदु होता है और यह एक दिशा में अनंत तक फैलती रहती है। एक कोण दो किरणों या रेखाखंडों द्वारा एक सामान्य बिंदु पर मिलने से बनता है, लेकिन यह खुद एक रेखा का भाग नहीं होता है। इसलिए सही उत्तर रेखाखंड है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses standard mathematical terminology as taught in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते रेषेचे एक भाग आहे ज्याला दोन अंतबिंदू असतात?",
+          "choices": [
+            "रेषा",
+            "किरण",
+            "रेषाखंड",
+            "कोन"
+          ],
+          "solution": "रेषाखंड हा रेषेचा भाग आहे ज्याला दोन विशिष्ट अंतबिंदू असतात, ज्यामुळे त्याची लांबी मर्यादित असते. रेषा दोन्ही दिशांमध्ये अनंतपर्यंत विस्तारते आणि अंतबिंदू नसतात. किरणला एक अंतबिंदू असतो आणि एका दिशेने अनंतपर्यंत विस्तारतो. कोन हा दोन किरण किंवा रेषाखंडांमधून एका सामान्य बिंदूवर तयार होतो, परंतु तो स्वतः रेषेचा भाग नसतो. म्हणूनच योग्य उत्तर रेषाखंड आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses a line with a line segment",
+        "Confuses a ray with a line segment",
+        null,
+        "Confuses an angle with a line segment"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-constructed and the solution is accurate. The correct answer is 'Line segment,' which is the only option that has two endpoints. The distractors reflect common misconceptions about geometric terms.",
+      "sources": [
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 18,
+          "pageStart": 23,
+          "pageEnd": 24,
+          "headingPath": [
+            "2. Lines and Angles"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 19,
+          "pageStart": 24,
+          "pageEnd": 26,
+          "headingPath": [
+            "2. Lines and Angles"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 20,
+          "pageStart": 26,
+          "pageEnd": 28,
+          "headingPath": [
+            "2. Lines and Angles"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-10-30T22:10:31.880Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If a single line passes through three or more points, what are these points called?",
+      "choices": [
+        "Collinear points",
+        "Non-collinear points",
+        "Parallel points",
+        "Intersecting points"
+      ],
+      "answerIndex": 0,
+      "solution": "Collinear points are points that lie on the same straight line. If a single line passes through three or more points, those points are defined as collinear. Non-collinear points do not lie on the same line, while parallel and intersecting refer to relationships between lines, not points.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक रेखा तीन या अधिक बिंदुओं से गुजरती है, तो इन बिंदुओं को क्या कहा जाता है?",
+          "choices": [
+            "संरेख बिंदु",
+            "असंरेख बिंदु",
+            "समांतर बिंदु",
+            "प्रतिच्छेदी बिंदु"
+          ],
+          "solution": "संरेख बिंदु वे बिंदु होते हैं जो एक ही सीधी रेखा पर स्थित होते हैं। यदि एक रेखा तीन या अधिक बिंदुओं से गुजरती है, तो उन बिंदुओं को संरेख कहा जाता है। असंरेख बिंदु एक ही रेखा पर नहीं होते हैं, जबकि समांतर और प्रतिच्छेदी रेखाओं के संबंधों को दर्शाते हैं, बिंदुओं के नहीं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses standard mathematical terminology used in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका रेषेने तीन किंवा अधिक बिंदूंमार्गे जात असल्यास, या बिंदूंना काय म्हणतात?",
+          "choices": [
+            "सरळरेषीय बिंदू",
+            "असरळरेषीय बिंदू",
+            "समांतर बिंदू",
+            "छेदक बिंदू"
+          ],
+          "solution": "सरळरेषीय बिंदू हे बिंदू आहेत जे एका सरळ रेषेवर असतात. जर एका रेषेने तीन किंवा अधिक बिंदूंमार्गे जात असेल तर त्या बिंदूंना सरळरेषीय म्हणतात. असरळरेषीय बिंदू एका रेषेवर नसतात, तर समांतर आणि छेदक रेषांच्या संबंधांवर आधारित असतात, बिंदूंच्या संबंधांवर नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi technical terms used.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses non-collinear points with collinear points",
+        "Confuses parallel points with collinear points",
+        "Confuses intersecting points with collinear points"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-posed and the solution is correct. The term 'collinear points' is the correct answer, and the author's reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 18,
+          "pageStart": 23,
+          "pageEnd": 24,
+          "headingPath": [
+            "2. Lines and Angles"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 19,
+          "pageStart": 24,
+          "pageEnd": 26,
+          "headingPath": [
+            "2. Lines and Angles"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 20,
+          "pageStart": 26,
+          "pageEnd": 28,
+          "headingPath": [
+            "2. Lines and Angles"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-10-30T22:10:31.880Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the term used to describe points that lie on the same line?",
+      "choices": [
+        "Non-collinear points",
+        "Parallel points",
+        "Collinear points",
+        "Intersecting points"
+      ],
+      "answerIndex": 2,
+      "solution": "The term used to describe points that lie on the same line is 'collinear points'. 'Non-collinear points' refers to points that do not lie on the same line. 'Parallel points' and 'Intersecting points' are not standard geometric terms.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक ही रेखा पर स्थित बिंदुओं के लिए क्या शब्द प्रयोग किया जाता है?",
+          "choices": [
+            "असंरेख बिंदु",
+            "समांतर बिंदु",
+            "संरेख बिंदु",
+            "प्रतिच्छेदी बिंदु"
+          ],
+          "solution": "एक ही रेखा पर स्थित बिंदुओं के लिए 'संरेख बिंदु' शब्द प्रयोग किया जाता है। 'असंरेख बिंदु' वे बिंदु होते हैं जो एक ही रेखा पर नहीं होते। 'समांतर बिंदु' और 'प्रतिच्छेदी बिंदु' मानक ज्यामितीय शब्द नहीं हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate and uses standard geometric terminology in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका रेषेवर असलेल्या बिंदूंना कोणत्या शब्दाने ओळखले जाते?",
+          "choices": [
+            "असंरेषी बिंदू",
+            "समांतर बिंदू",
+            "संरेषी बिंदू",
+            "छेदक बिंदू"
+          ],
+          "solution": "एका रेषेवर असलेल्या बिंदूंना 'संरेषी बिंदू' असे म्हणतात. 'असंरेषी बिंदू' हे बिंदू जे एका रेषेवर नसतात. 'समांतर बिंदू' आणि 'छेदक बिंदू' हे भौमितिक शब्द नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, with appropriate Marathi geometric terminology used. The correct answer remains in the same position (option 3), and the distractors remain incorrect as in the original.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Refers to points that do not lie on the same line",
+        "Not a standard geometric term",
+        null,
+        "Students often confuse 'intersecting' with 'lying on the same line' due to misunderstanding the difference between lines crossing and points being aligned."
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 'Collinear points' as they are defined as points lying on the same line. The other options are either incorrect terms or based on misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 17,
+          "pageStart": 23,
+          "pageEnd": 25,
+          "headingPath": [
+            "2. Lines and Angles"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 18,
+          "pageStart": 25,
+          "pageEnd": 28,
+          "headingPath": [
+            "2. Lines and Angles"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 19,
+          "pageStart": 28,
+          "pageEnd": 29,
+          "headingPath": [
+            "2. Lines and Angles"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-10-30T12:14:08.212Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "What is the starting point of ray OP and ray OQ?",
+      "choices": [
+        "O",
+        "P",
+        "Q",
+        "P and Q"
+      ],
+      "answerIndex": 0,
+      "solution": "The starting point of ray OP and ray OQ is O, as both rays originate from point O. P and Q are points on the rays, but not the starting point.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "रे OP और रे OQ का प्रारंभिक बिंदु क्या है?",
+          "choices": [
+            "O",
+            "P",
+            "Q",
+            "P और Q"
+          ],
+          "solution": "रे OP और रे OQ का प्रारंभिक बिंदु O है, क्योंकि दोनों किरणें बिंदु O से उत्पन्न होती हैं। P और Q किरणों पर बिंदु हैं, लेकिन प्रारंभिक बिंदु नहीं हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English question and solution, with appropriate use of mathematical terminology like 'रे' (ray) and 'बिंदु' (point).",
+          "flag": null
+        },
+        "mr": {
+          "stem": "कोन OP आणि कोन OQ चा प्रारंभ बिंदू कोणता आहे?",
+          "choices": [
+            "O",
+            "P",
+            "Q",
+            "P आणि Q"
+          ],
+          "solution": "कोन OP आणि कोन OQ चा प्रारंभ बिंदू O आहे, कारण दोन्ही कोन बिंदू O पासून उत्पन्न होतात. P आणि Q हे कोनावरील बिंदू आहेत, परंतु प्रारंभ बिंदू नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for geometric terms like 'कोन' (ray) and 'बिंदू' (point).",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses point P with the starting point",
+        "Confuses point Q with the starting point",
+        "Confuses both P and Q with the starting point"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The question is clear and the solution correctly identifies O as the starting point of both rays. The distractors reflect common misconceptions about the definition of a ray.",
+      "sources": [
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 20,
+          "pageStart": 29,
+          "pageEnd": 30,
+          "headingPath": [
+            "2. Lines and Angles"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 21,
+          "pageStart": 31,
+          "pageEnd": 32,
+          "headingPath": [
+            "2. Lines and Angles"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-10-30T12:14:08.212Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "Which of the following is infinite on both sides?",
+      "choices": [
+        "Line",
+        "Line segment",
+        "Ray",
+        "Plane"
+      ],
+      "answerIndex": 0,
+      "solution": "A line is infinite on both sides. A line segment has two endpoints and is finite. A ray has one endpoint and is infinite in one direction. A plane is a flat surface that extends infinitely in all directions but is not a line.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन दोनों ओर अनंत है?",
+          "choices": [
+            "रेखा",
+            "रेखाखंड",
+            "किरण",
+            "समतल"
+          ],
+          "solution": "एक रेखा दोनों ओर अनंत होती है। एक रेखाखंड के दो अंत बिंदु होते हैं और यह सीमित होता है। एक किरण के एक अंत बिंदु होता है और यह एक दिशा में अनंत होता है। एक समतल एक तली वाली सतह है जो सभी दिशाओं में अनंत तक फैली होती है लेकिन यह एक रेखा नहीं है।",
+          "imageAlt": null,
+          "critique": "All terms and concepts are accurately translated and match standard Hindi geometry terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते दोन्ही बाजूंनी अनंत आहे?",
+          "choices": [
+            "रेषा",
+            "रेषाखंड",
+            "किरण",
+            "तल"
+          ],
+          "solution": "रेषा दोन्ही बाजूंनी अनंत आहे. रेषाखंडाला दोन अंतबिंदू असतात आणि ते परिमित आहेत. किरणाला एक अंतबिंदू असतो आणि तो एका दिशेने अनंत आहे. तल हा एक तलावर आहे जो सर्व दिशांनी अनंत विस्तारलेला आहे पण तो रेषा नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses line segment with a line",
+        "Confuses ray with a line",
+        "Confuses plane with a line"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 'Line' as it is infinite on both sides. The author's solution is accurate and the misconceptions listed for the wrong options are valid.",
+      "sources": [
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 20,
+          "pageStart": 29,
+          "pageEnd": 30,
+          "headingPath": [
+            "2. Lines and Angles"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 21,
+          "pageStart": 31,
+          "pageEnd": 32,
+          "headingPath": [
+            "2. Lines and Angles"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-10-30T12:14:08.212Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "Which of the following is a line that extends indefinitely in one direction?",
+      "choices": [
+        "Line segment",
+        "Line",
+        "Ray",
+        "Plane"
+      ],
+      "answerIndex": 2,
+      "solution": "A ray is defined as a line that starts at a point and continues infinitely in one direction. A line segment has two distinct endpoints, a line extends infinitely in both directions, and a plane is a flat, two-dimensional surface. Therefore, the correct answer is ray.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सी एक रेखा है जो एक दिशा में अनंत रूप से फैली हुई है?",
+          "choices": [
+            "रेखा खंड",
+            "रेखा",
+            "किरण",
+            "तल"
+          ],
+          "solution": "किरण की परिभाषा एक रेखा है जो एक बिंदु से शुरू होती है और एक दिशा में अनंत रूप से चलती रहती है। एक रेखा खंड के दो अलग-अलग अंत बिंदु होते हैं, एक रेखा दोनों दिशाओं में अनंत रूप से फैली हुई होती है और एक तल एक समतल, द्वि-आयामी सतह होती है। अतः सही उत्तर किरण है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the original English question and solution, with appropriate mathematical terminology used in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणता एक रेषा आहे जी एका दिशेने अनंतपर्यंत विस्तारते?",
+          "choices": [
+            "रेखाखंड",
+            "रेषा",
+            "किरण",
+            "तल"
+          ],
+          "solution": "किरण म्हणजे एका बिंदूपासून सुरू होऊन एका दिशेने अनंतपर्यंत जाणारी रेषा आहे. रेखाखंडाला दोन विशिष्ट अंतबिंदू असतात, रेषा दोन्ही दिशांमध्ये अनंतपर्यंत विस्तारते आणि तल हा एक समतल, द्विमितीय सतह आहे. म्हणून, योग्य उत्तर किरण आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses ray with line segment",
+        "Confuses ray with line",
+        null,
+        "Confuses ray with plane"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is well-constructed. The correct answer is 'Ray' (option 2), and the reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 20,
+          "pageStart": 29,
+          "pageEnd": 30,
+          "headingPath": [
+            "2. Lines and Angles"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 21,
+          "pageStart": 31,
+          "pageEnd": 32,
+          "headingPath": [
+            "2. Lines and Angles"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-10-30T12:14:08.212Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "What type of angle is formed between the hour hand and the minute hand of a clock when it is 3 o'clock?",
+      "choices": [
+        "Acute angle",
+        "Right angle",
+        "Obtuse angle",
+        "Reflex angle"
+      ],
+      "answerIndex": 1,
+      "solution": "At 3 o'clock, the hour hand is at 3 and the minute hand is at 12, forming a 90-degree angle, which is a right angle. An acute angle is less than 90 degrees, an obtuse angle is more than 90 but less than 180, and a reflex angle is more than 180 but less than 360 degrees.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "तीन बजे के समय घड़ी के घंटिया सुई और मिनट सुई के बीच कौन सा कोण बनता है?",
+          "choices": [
+            "न्यून कोण",
+            "समकोण",
+            "अधिक कोण",
+            "प्रतिवर्ती कोण"
+          ],
+          "solution": "तीन बजे, घंटिया सुई 3 पर होती है और मिनट सुई 12 पर होती है, जो 90 डिग्री का कोण बनाती है, जो एक समकोण होता है। एक न्यून कोण 90 डिग्री से कम होता है, एक अधिक कोण 90 डिग्री से अधिक लेकिन 180 डिग्री से कम होता है, और एक प्रतिवर्ती कोण 180 डिग्री से अधिक लेकिन 360 डिग्री से कम होता है।",
+          "imageAlt": "एक घड़ी का चित्र जिसमें घंटिया सुई 3 पर और मिनट सुई 12 पर है, केंद्र पर एक समकोण बनाती है।",
+          "critique": "Translation is accurate, technical terms match standard Hindi textbook usage, and the answer remains consistent.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "तासाच्या सुई आणि मिनिटाच्या सुईमध्ये किती प्रकारचा कोन तयार होतो जेव्हा तास 3 असतो?",
+          "choices": [
+            "तीव्र कोन",
+            "समकोन",
+            "अधिक कोन",
+            "प्रतिकूल कोन"
+          ],
+          "solution": "3 वाजताना, तासाची सुई 3 वर आहे आणि मिनिटाची सुई 12 वर आहे, जे 90 अंशाचा कोन तयार करते, जो समकोन आहे. तीव्र कोन 90 अंशापेक्षा कमी असतो, अधिक कोन 90 अंशापेक्षा जास्त पण 180 अंशापेक्षा कमी असतो, आणि प्रतिकूल कोन 180 अंशापेक्षा जास्त पण 360 अंशापेक्षा कमी असतो.",
+          "imageAlt": "एक घड्याळाचा चित्र ज्यात तासाची सुई 3 वर आहे आणि मिनिटाची सुई 12 वर आहे, जे केंद्रावर समकोन तयार करते.",
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for angles.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": "A clock face with the hour hand pointing at 3 and the minute hand pointing at 12, forming a right angle at the center.",
+      "figure": {
+        "kind": "geometry",
+        "spec": {
+          "frame": {
+            "xMin": 0,
+            "xMax": 10,
+            "yMin": 0,
+            "yMax": 7,
+            "unit": "units"
+          },
+          "points": [
+            {
+              "id": "O",
+              "x": 5,
+              "y": 3.5,
+              "label": "O"
+            },
+            {
+              "id": "H",
+              "x": 5,
+              "y": 1,
+              "label": "H"
+            },
+            {
+              "id": "M",
+              "x": 5,
+              "y": 6,
+              "label": "M"
+            }
+          ],
+          "segments": [
+            {
+              "from": "O",
+              "to": "H",
+              "label": "H"
+            },
+            {
+              "from": "O",
+              "to": "M",
+              "label": "M"
+            }
+          ],
+          "angles": [
+            {
+              "vertex": "O",
+              "from": "H",
+              "to": "M",
+              "mark": "right",
+              "label": "angle"
+            }
+          ]
+        },
+        "labels": {
+          "H": {
+            "en": "hour hand"
+          },
+          "M": {
+            "en": "minute hand"
+          },
+          "O": {
+            "en": "center"
+          },
+          "angle": {
+            "en": "angle between hands",
+            "hi": "सुइयों के बीच कोण",
+            "mr": "सुईमधील कोन"
+          }
+        }
+      },
+      "needsFigure": true,
+      "distractorReason": [
+        "Confuses acute angle with a right angle",
+        null,
+        "Confuses obtuse angle with a right angle",
+        "Confuses reflex angle with a right angle"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct. At 3 o'clock, the hour hand is at 3 and the minute hand is at 12, forming a 90-degree angle, which is a right angle. The reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 20,
+          "pageStart": 29,
+          "pageEnd": 30,
+          "headingPath": [
+            "2. Lines and Angles"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 21,
+          "pageStart": 31,
+          "pageEnd": 32,
+          "headingPath": [
+            "2. Lines and Angles"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-10-30T12:14:08.212Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "If two rays OA and OB form an angle, what is the term used to describe the point O?",
+      "choices": [
+        "Vertex",
+        "Endpoint",
+        "Midpoint",
+        "Intersection point"
+      ],
+      "answerIndex": 0,
+      "solution": "The point O is called the vertex of the angle. The vertex is the common point of the two rays that form the angle. 'Endpoint' and 'Midpoint' are terms used for line segments, not angles. 'Intersection point' is not a standard term for the common point of two rays.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि दो किरणें OA और OB एक कोण बनाती हैं, तो बिंदु O के लिए क्या शब्द प्रयोग किया जाता है?",
+          "choices": [
+            "शीर्ष",
+            "अंत बिंदु",
+            "मध्य बिंदु",
+            "प्रतिच्छेद बिंदु"
+          ],
+          "solution": "बिंदु O को कोण के शीर्ष कहा जाता है। शीर्ष वह सामान्य बिंदु है जहां दो किरणें कोण बनाती हैं। 'अंत बिंदु' और 'मध्य बिंदु' शब्द रेखा खंडों के लिए प्रयोग किए जाते हैं, कोणों के लिए नहीं। 'प्रतिच्छेद बिंदु' दो किरणों के सामान्य बिंदु के लिए एक मानक शब्द नहीं है।",
+          "imageAlt": "एक समतल दर्पण जिसमें आपतित किरण, परावर्तित किरण और अभिलंब है",
+          "critique": "The Hindi translation accurately reflects the English original in meaning, terminology, and structure. All terms are standard in Hindi mathematics textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर दोन किरण OA आणि OB कोन तयार करतात, तर बिंदू O च्या वर्णनासाठी वापरलेले शब्द काय आहे?",
+          "choices": [
+            "शीर्ष",
+            "अंतबिंदू",
+            "मध्यबिंदू",
+            "छेदनबिंदू"
+          ],
+          "solution": "बिंदू O ला कोनाचे शीर्ष म्हणतात. शीर्ष हा दोन किरणांचा सामान्य बिंदू आहे जो कोन तयार करतो. 'अंतबिंदू' आणि 'मध्यबिंदू' हे रेषाखंडांसाठी वापरलेले शब्द आहेत, कोनांसाठी नाही. 'छेदनबिंदू' हा दोन किरणांच्या सामान्य बिंदूसाठी मानक शब्द नाही.",
+          "imageAlt": "एक समतल दर्पण ज्यामध्ये अभिसरण किरण, प्रतिबिंबित किरण आणि सामान्य रेषा आहे",
+          "critique": "The Marathi translation is accurate, uses standard terminology, and maintains the same meaning and structure as the English original.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": "A plane mirror with incident ray, reflected ray, and normal",
+      "figure": {
+        "kind": "diagram",
+        "spec": {
+          "parts": [
+            {
+              "part": "planeMirror",
+              "x": 50,
+              "y": 30,
+              "size": 30,
+              "labels": [
+                "incidentRay",
+                "reflectedRay",
+                "normal"
+              ]
+            }
+          ]
+        },
+        "labels": {
+          "incidentRay": {
+            "en": "incident ray",
+            "hi": "आपतित किरण",
+            "mr": "अभिसरण किरण"
+          },
+          "reflectedRay": {
+            "en": "reflected ray",
+            "hi": "परावर्तित किरण",
+            "mr": "प्रतिबिंबित किरण"
+          },
+          "normal": {
+            "en": "normal",
+            "hi": "अभिलंब",
+            "mr": "सामान्य रेषा"
+          }
+        }
+      },
+      "needsFigure": true,
+      "distractorReason": [
+        null,
+        "Student thinks the starting point of a ray is called an endpoint, not realizing that endpoints are for line segments.",
+        "Term used for line segments, not angles",
+        "Term used for line segments, not angles"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is well-constructed and the solution is accurate. The correct answer is 'Vertex', and the reasoning for the distractors aligns with common student misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 17,
+          "pageStart": 23,
+          "pageEnd": 25,
+          "headingPath": [
+            "2. Lines and Angles"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 18,
+          "pageStart": 25,
+          "pageEnd": 28,
+          "headingPath": [
+            "2. Lines and Angles"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 19,
+          "pageStart": 28,
+          "pageEnd": 29,
+          "headingPath": [
+            "2. Lines and Angles"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-10-30T12:14:08.212Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "A complete angle contains how many right angles?",
+      "choices": [
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "answerIndex": 2,
+      "solution": "A complete angle measures 360 degrees. Since a right angle is 90 degrees, 360 divided by 90 is 4. So, a complete angle contains 4 right angles. 2, 3, and 5 are incorrect because they do not divide evenly into 360 degrees.",
+      "checkExpr": "360/90",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक पूर्ण कोण में कितने समकोण होते हैं?",
+          "choices": [
+            "2",
+            "3",
+            "4",
+            "5"
+          ],
+          "solution": "एक पूर्ण कोण 360 डिग्री मापता है। चूंकि एक समकोण 90 डिग्री होता है, 360 को 90 से भाग देने पर 4 प्राप्त होता है। अतः एक पूर्ण कोण में 4 समकोण होते हैं। 2, 3 और 5 गलत हैं क्योंकि वे 360 डिग्री में बराबर भाग नहीं डालते।",
+          "imageAlt": null,
+          "critique": "Hindi translation is accurate, maintains the same meaning, and uses standard mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एक पूर्ण कोनामध्ये किती समकोन असतात?",
+          "choices": [
+            "2",
+            "3",
+            "4",
+            "5"
+          ],
+          "solution": "एक पूर्ण कोन 360 अंशांचा मोजतो. समकोन 90 अंशांचा असतो, म्हणून 360 ला 90 ने भागल्यास 4 मिळतो. म्हणून, एक पूर्ण कोनामध्ये 4 समकोन असतात. 2, 3 आणि 5 अचूक नाहीत कारण ते 360 अंशांमध्ये समान भाग नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses complete angle with 180 degrees",
+        "Confuses complete angle with 270 degrees",
+        null,
+        "Confuses complete angle with 450 degrees"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct, as a complete angle (360°) divided by a right angle (90°) equals 4. The author's reasoning for the distractors is plausible and reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 20,
+          "pageStart": 29,
+          "pageEnd": 30,
+          "headingPath": [
+            "2. Lines and Angles"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 21,
+          "pageStart": 31,
+          "pageEnd": 32,
+          "headingPath": [
+            "2. Lines and Angles"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-10-30T12:14:08.212Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
     }
   ]
 }

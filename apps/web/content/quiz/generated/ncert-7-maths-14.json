@@ -1832,6 +1832,910 @@
       "generatedAt": "2026-11-02T02:54:59.106Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is the primary tool used in the construction methods described in the Śulba-Sūtras?",
+      "choices": [
+        "Ruler",
+        "Compass",
+        "Rope",
+        "Square"
+      ],
+      "answerIndex": 2,
+      "solution": "The primary tool used in the construction methods described is a rope, as it was historically used to create precise geometric shapes and measurements. A rope allows for drawing circles, arcs, and straight lines, which are essential in these techniques. A compass, ruler, or square are not the main tools described in this context.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "शुल्ब-सूत्र में वर्णित निर्माण विधियों में प्राथमिक उपकरण क्या है?",
+          "choices": [
+            "रूलर",
+            "कम्पास",
+            "रस्सी",
+            "वर्ग"
+          ],
+          "solution": "शुल्ब-सूत्र में वर्णित निर्माण विधियों में प्राथमिक उपकरण रस्सी है, क्योंकि इसका ऐतिहासिक रूप से ठीक ज्यामितीय आकृतियों और माप के निर्माण के लिए उपयोग किया गया है। रस्सी के द्वारा वृत्त, चाप और सीधी रेखाएं खींची जा सकती हैं, जो इन तकनीकों में आवश्यक हैं। कम्पास, रूलर या वर्ग इस संदर्भ में मुख्य उपकरण नहीं हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. All options are correctly translated, and the correct answer remains option (3) 'रस्सी' (rope), as in the English version. The distractors remain incorrect, and technical terms like 'कम्पास' (compass), 'रूलर' (ruler), and 'वर्ग' (square) are the standard Hindi terms used in textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "शूलबा-सूत्रांमध्ये वर्णिलेल्या रचना पद्धतीत कोणता मुख्य उपकरण वापरला जातो?",
+          "choices": [
+            "रूलर",
+            "कॉम्पास",
+            "स्ट्रिंग",
+            "चौरस"
+          ],
+          "solution": "शूलबा-सूत्रांमध्ये वर्णिलेल्या रचना पद्धतीत मुख्य उपकरण रस्सी आहे, कारण तिचा ऐतिहासिक रीतीने चक्र, वक्र आणि सरळ रेषा आखण्यासाठी वापर केला जात होता, जे या तंत्रांमध्ये आवश्यक आहे. कॉम्पास, रूलर किंवा चौरस हे या संदर्भात वर्णिलेले मुख्य उपकरण नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, with appropriate Marathi terms (e.g., 'रस्सी' for 'rope') and maintains the original meaning and structure.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the tool with a ruler",
+        "Misunderstands the role of a compass",
+        null,
+        "Misinterprets the tool as a square"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-constructed and the correct answer is clearly supported by the historical context of the Śulba-Sūtras, which used ropes for geometric constructions. The distractors reflect common misconceptions about ancient construction tools.",
+      "sources": [
+        {
+          "document": "ncert/7/mathematics/gegp206.pdf",
+          "ordinal": 3,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 6: Constructions and Tilings",
+            "6.1 Geometric Constructions"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp206.pdf",
+          "ordinal": 4,
+          "pageStart": 8,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 6: Constructions and Tilings",
+            "6.1 Geometric Constructions"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp206.pdf",
+          "ordinal": 5,
+          "pageStart": 10,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 6: Constructions and Tilings",
+            "6.1 Geometric Constructions"
+          ]
+        }
+      ],
+      "edition": "2025 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-31T15:19:19.943Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "Which of the following is a property of a regular hexagon?",
+      "choices": [
+        "It has 5 sides",
+        "It has 7 sides",
+        "All its angles are equal",
+        "It has unequal sides"
+      ],
+      "answerIndex": 2,
+      "solution": "A regular hexagon has all its angles equal and all its sides equal. The option 'All its angles are equal' correctly describes this property. The other options are incorrect because a hexagon has 6 sides, not 5 or 7, and it cannot have unequal sides and still be regular.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा एक नियमित षट्भुज का गुण है?",
+          "choices": [
+            "इसके 5 भुजाएँ हैं",
+            "इसके 7 भुजाएँ हैं",
+            "इसके सभी कोण बराबर हैं",
+            "इसकी असमान भुजाएँ हैं"
+          ],
+          "solution": "एक नियमित षट्भुज के सभी कोण बराबर होते हैं और सभी भुजाएँ बराबर होती हैं। विकल्प 'इसके सभी कोण बराबर हैं' इस गुण को सही ढंग से वर्णित करता है। अन्य विकल्प गलत हैं क्योंकि एक षट्भुज के 6 भुजाएँ होती हैं, 5 या 7 नहीं, और इसकी भुजाएँ असमान नहीं हो सकतीं और फिर भी नियमित रह सकती हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate mathematical terminology in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते एक सामान्य षट्कोनाचे गुणधर्म आहे?",
+          "choices": [
+            "त्याला 5 बाजू आहेत",
+            "त्याला 7 बाजू आहेत",
+            "त्याचे सर्व कोन समान आहेत",
+            "त्याला असमान बाजू आहेत"
+          ],
+          "solution": "एका सामान्य षट्कोनाला सर्व कोन समान आहेत आणि सर्व बाजू समान असतात. विकल्प 'त्याचे सर्व कोन समान आहेत' हा या गुणधर्माचे योग्य वर्णन करतो. इतर विकल्प अयोग्य आहेत कारण षट्कोनाला 6 बाजू असतात, 5 किंवा 7 नाहीत, आणि तो सामान्य असेल तर असमान बाजू असू शकत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for geometric terms like 'षट्कोन' (hexagon) and 'कोन' (angle).",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the number of sides of a hexagon",
+        "Confuses the number of sides of a hexagon",
+        null,
+        "Misunderstands the definition of a regular hexagon"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is option 2, as a regular hexagon has all angles equal. The other options are incorrect due to misconceptions about the number of sides or the definition of a regular polygon.",
+      "sources": [
+        {
+          "document": "ncert/7/mathematics/gegp206.pdf",
+          "ordinal": 6,
+          "pageStart": 13,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 6: Constructions and Tilings",
+            "6.1 Geometric Constructions"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp206.pdf",
+          "ordinal": 7,
+          "pageStart": 16,
+          "pageEnd": 18,
+          "headingPath": [
+            "Chapter 6: Constructions and Tilings",
+            "6.1 Geometric Constructions"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp206.pdf",
+          "ordinal": 8,
+          "pageStart": 18,
+          "pageEnd": 20,
+          "headingPath": [
+            "Chapter 6: Constructions and Tilings",
+            "6.1 Geometric Constructions"
+          ]
+        }
+      ],
+      "edition": "2025 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-31T15:19:19.943Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of the following is the correct method to construct a 60° angle?",
+      "choices": [
+        "By constructing an isosceles triangle",
+        "By constructing a right-angled triangle",
+        "By constructing an equilateral triangle",
+        "By constructing a scalene triangle"
+      ],
+      "answerIndex": 2,
+      "solution": "A 60° angle can be constructed by constructing an equilateral triangle, as all angles in an equilateral triangle are 60°. The other options are incorrect because they do not produce a 60° angle.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सी विधि 60° के कोण के निर्माण के लिए सही है?",
+          "choices": [
+            "एक समद्विबाहु त्रिभुज के निर्माण द्वारा",
+            "एक समकोण त्रिभुज के निर्माण द्वारा",
+            "एक समबाहु त्रिभुज के निर्माण द्वारा",
+            "एक विषमबाहु त्रिभुज के निर्माण द्वारा"
+          ],
+          "solution": "60° के कोण को समबाहु त्रिभुज के निर्माण द्वारा बनाया जा सकता है, क्योंकि समबाहु त्रिभुज में सभी कोण 60° होते हैं। अन्य विकल्प गलत हैं क्योंकि वे 60° के कोण नहीं बनाते हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses standard geometric terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणता एक 60° कोन बनवण्याचा योग्य पद्धत आहे?",
+          "choices": [
+            "समद्विभुज त्रिकोण बनवून",
+            "समकोनी त्रिकोण बनवून",
+            "समभुज त्रिकोण बनवून",
+            "विषमभुज त्रिकोण बनवून"
+          ],
+          "solution": "60° कोन समभुज त्रिकोण बनवून बनवता येतो, कारण समभुज त्रिकोणाचे सर्व कोन 60° असतात. इतर पर्याय अयोग्य आहेत कारण ते 60° कोन तयार करत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi technical terms used for triangle types.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the properties of an isosceles triangle",
+        "Confuses the properties of a right-angled triangle",
+        null,
+        "Misunderstands the construction of a 60° angle"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is option 2, as an equilateral triangle has all angles equal to 60°. The other options are incorrect because isosceles triangles can have a 60° angle but are not guaranteed, right-angled triangles have a 90° angle, and scalene triangles do not inherently have 60° angles.",
+      "sources": [
+        {
+          "document": "ncert/7/mathematics/gegp206.pdf",
+          "ordinal": 6,
+          "pageStart": 13,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 6: Constructions and Tilings",
+            "6.1 Geometric Constructions"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp206.pdf",
+          "ordinal": 7,
+          "pageStart": 16,
+          "pageEnd": 18,
+          "headingPath": [
+            "Chapter 6: Constructions and Tilings",
+            "6.1 Geometric Constructions"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp206.pdf",
+          "ordinal": 8,
+          "pageStart": 18,
+          "pageEnd": 20,
+          "headingPath": [
+            "Chapter 6: Constructions and Tilings",
+            "6.1 Geometric Constructions"
+          ]
+        }
+      ],
+      "edition": "2025 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-31T15:19:19.943Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the term used to describe covering a region using a set of shapes, without gaps or overlaps?",
+      "choices": [
+        "Tessellation",
+        "Bisection",
+        "Rotation",
+        "Symmetry"
+      ],
+      "answerIndex": 0,
+      "solution": "Tessellation is the term used to describe covering a region with shapes that fit together perfectly without gaps or overlaps. Bisection refers to dividing something into two parts, rotation involves turning a shape around a point, and symmetry relates to balanced proportions. Tessellation specifically involves repeated patterns of shapes filling a space completely.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "किसी क्षेत्र को आकृतियों के एक समूह द्वारा कवर करने के लिए प्रयुक्त शब्द क्या है, बिना अंतराल या ओवरलैप के?",
+          "choices": [
+            "टेसेलेशन",
+            "बाइसेक्शन",
+            "रोटेशन",
+            "सममिति"
+          ],
+          "solution": "टेसेलेशन किसी क्षेत्र को आकृतियों के एक समूह द्वारा कवर करने के लिए प्रयुक्त शब्द है, जो बिना अंतराल या ओवरलैप के एक दूसरे के साथ पूरी तरह से फिट होते हैं। बाइसेक्शन का अर्थ कुछ चीज को दो भागों में विभाजित करना होता है, रोटेशन किसी आकृति को एक बिंदु के चारों ओर घुमाना होता है, और सममिति संतुलित अनुपात से संबंधित होता है। टेसेलेशन विशेष रूप से अंतराल बिना आकृतियों के द्वारा एक स्थान को पूरी तरह से भरने के द्वारा दोहराए गए पैटर्न के साथ संबंधित होता है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Hindi terminology used for mathematical concepts.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "कोणत्या शब्दाने एका प्रदेशाला अंतर्गत आकृत्यांच्या सेट वापरून खालीलप्रमाणे ढकलण्याचा विचार केला जातो की खालीलप्रमाणे अंतर नाही किंवा ओव्हरलॅप नाही?",
+          "choices": [
+            "टेसेलेशन",
+            "बायसेक्शन",
+            "रोटेशन",
+            "सममिती"
+          ],
+          "solution": "टेसेलेशन हा शब्द एका प्रदेशाला आकृत्यांच्या सेट वापरून ढकलण्याच्या विचाराला संबोधित करतो ज्यामुळे खालीलप्रमाणे अंतर नाही किंवा ओव्हरलॅप नाही. बायसेक्शन हा एक गोष्ट दोन भागांमध्ये विभाजित करण्याच्या विचाराला संबोधित करतो, रोटेशन हा एका आकृतीला एका बिंदू भोवती फिरवण्याच्या विचाराला संबोधित करतो आणि सममिती हा संतुलित अनुपाताशी संबंधित आहे. टेसेलेशन हा विशिष्ट आकृतींच्या पुनरावृत्ती वापरून एका जागेचा पूर्णपणे भरण्याच्या विचाराला संबोधित करतो.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning. Technical terms like 'टेसेलेशन' (tessellation) are correctly used as per Marathi educational terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses tiling with tessellation",
+        "Does not understand the definition of tiling",
+        "Thinks tiling involves movement of shapes like rotation, which it does not, and symmetry is unrelated"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 'Tessellation' (option 0), which is the term used to describe covering a region with shapes without gaps or overlaps. The author's solution is slightly misleading, as 'tessellation' and 'tiling' are often used interchangeably, but the question specifically asks for the term used in the passage. The explanation for option 1 is a valid misconception, as some students may confuse 'tiling' and 'tessellation'.",
+      "sources": [
+        {
+          "document": "ncert/7/mathematics/gegp206.pdf",
+          "ordinal": 9,
+          "pageStart": 20,
+          "pageEnd": 24,
+          "headingPath": [
+            "Chapter 6: Constructions and Tilings",
+            "6.2 Tiling"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp206.pdf",
+          "ordinal": 10,
+          "pageStart": 24,
+          "pageEnd": 27,
+          "headingPath": [
+            "Chapter 6: Constructions and Tilings",
+            "6.2 Tiling"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp206.pdf",
+          "ordinal": 11,
+          "pageStart": 27,
+          "pageEnd": 27,
+          "headingPath": [
+            "Chapter 6: Constructions and Tilings",
+            "6.2 Tiling"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp206.pdf",
+          "ordinal": 12,
+          "pageStart": 28,
+          "pageEnd": 28,
+          "headingPath": [
+            "Chapter 6: Constructions and Tilings",
+            "6.2 Tiling",
+            "SUMMARY"
+          ]
+        }
+      ],
+      "edition": "2025 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-31T15:19:19.943Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "Which of the following is a method to construct a regular hexagon?",
+      "choices": [
+        "Drawing a circle and marking six equal points on it",
+        "Drawing a triangle and extending its sides to form six sides",
+        "Drawing a square and connecting its sides to form six sides",
+        "Drawing a pentagon and adjusting its sides to make six sides"
+      ],
+      "answerIndex": 0,
+      "solution": "A regular hexagon can be constructed by drawing a circle and marking six equal points on its circumference, as each side of the hexagon will be equal to the radius of the circle. The other options involve shapes that cannot naturally form six equal sides without distortion or additional steps not aligned with geometric principles.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सी एक विधि एक समषट्भुज के निर्माण के लिए है?",
+          "choices": [
+            "एक वृत्त खींचना और उस पर छह समान बिंदु चिह्नित करना",
+            "एक त्रिभुज खींचना और उसके भुजाओं को छह भुजाएँ बनाने के लिए बढ़ाना",
+            "एक वर्ग खींचना और उसकी भुजाओं को छह भुजाएँ बनाने के लिए जोड़ना",
+            "एक पंचभुज खींचना और उसकी भुजाओं को छह भुजाएँ बनाने के लिए समायोजित करना"
+          ],
+          "solution": "एक समषट्भुज को एक वृत्त खींचकर उसकी परिधि पर छह समान बिंदु चिह्नित करके निर्मित किया जा सकता है, क्योंकि षट्भुज की प्रत्येक भुजा वृत्त की त्रिज्या के बराबर होती है। अन्य विकल्पों में ऐसे आकृतियाँ शामिल हैं जो विकृति या ज्यामितीय सिद्धांतों के अनुरूप अतिरिक्त कदमों के बिना छह समान भुजाएँ निर्मित करने में असमर्थ हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the original English question and maintains the same meaning, correct answer, and technical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणता एक सामान्य षट्कोन बनविण्याचा पद्धत आहे?",
+          "choices": [
+            "एका वर्तुळाचा आखर आणि त्यावर छह समान बिंदू नोंदविणे",
+            "एका त्रिकोणाचा आखर आणि त्याच्या बाजू वाढवून छह बाजू बनविणे",
+            "एका चौरसाचा आखर आणि त्याच्या बाजू जोडून छह बाजू बनविणे",
+            "एका पंचभुजाचा आखर आणि त्याच्या बाजू बदलून छह बाजू बनविणे"
+          ],
+          "solution": "सामान्य षट्कोन वर्तुळ आखून त्याच्या परिघावर छह समान बिंदू नोंदवून बनविता येतो, कारण षट्कोनाच्या प्रत्येक बाजू वर्तुळाच्या त्रिज्येइतकी असते. इतर विकल्पांमध्ये बदल न करता छह समान बाजू तयार करणे शक्य नाही किंवा त्यासाठी भूमितीच्या तत्वांशी जुळत नसलेल्या अतिरिक्त कृती आवश्यक असतात.",
+          "imageAlt": null,
+          "critique": "Translation accurately conveys the original meaning with appropriate Marathi geometric terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Believes extending sides of a triangle can generate a hexagon by some geometric transformation",
+        "Believes that adding sides to a square can create a hexagon without understanding the geometric properties required",
+        "Student mistakenly believes that modifying a pentagon can create a hexagon by simply adding a side."
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct method is to draw a circle and mark six equal points on it, which aligns with the construction of a regular hexagon. The other options represent common misconceptions about how polygons can be constructed.",
+      "sources": [
+        {
+          "document": "ncert/7/mathematics/gegp206.pdf",
+          "ordinal": 6,
+          "pageStart": 13,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 6: Constructions and Tilings",
+            "6.1 Geometric Constructions"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp206.pdf",
+          "ordinal": 7,
+          "pageStart": 16,
+          "pageEnd": 18,
+          "headingPath": [
+            "Chapter 6: Constructions and Tilings",
+            "6.1 Geometric Constructions"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp206.pdf",
+          "ordinal": 8,
+          "pageStart": 18,
+          "pageEnd": 20,
+          "headingPath": [
+            "Chapter 6: Constructions and Tilings",
+            "6.1 Geometric Constructions"
+          ]
+        }
+      ],
+      "edition": "2025 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-31T15:19:19.943Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "In the figure, if ∠CAX is 60°, what type of triangle is triangle ACX?",
+      "choices": [
+        "Isosceles triangle",
+        "Right-angled triangle",
+        "Scalene triangle (with two equal sides)",
+        "Equilateral triangle"
+      ],
+      "answerIndex": 3,
+      "solution": "If ∠CAX is 60°, and the triangle is formed by two equal arcs, then triangle ACX is equilateral. This is because all angles in an equilateral triangle are 60°. The other options are incorrect as they do not match the properties of the triangle described.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "आकृति में, यदि ∠CAX 60° है, तो त्रिभुज ACX किस प्रकार का त्रिभुज है?",
+          "choices": [
+            "समद्विबाहु त्रिभुज",
+            "समकोण त्रिभुज",
+            "विषमबाहु त्रिभुज (दो समान भुजाओं वाला)",
+            "समबाहु त्रिभुज"
+          ],
+          "solution": "यदि ∠CAX 60° है, और त्रिभुज दो समान चापों द्वारा बना है, तो त्रिभुज ACX समबाहु है। इसका कारण यह है कि समबाहु त्रिभुज में सभी कोण 60° होते हैं। अन्य विकल्प गलत हैं क्योंकि वे वर्णित त्रिभुज के गुणों के अनुरूप नहीं हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard Hindi mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "आकृतीत, जर ∠CAX 60° असेल, तर त्रिकोण ACX कोणत्या प्रकारचा असेल?",
+          "choices": [
+            "समद्विभुज त्रिकोण",
+            "समकोनी त्रिकोण",
+            "विषमभुज त्रिकोण (दोन समान बाजू असलेला)",
+            "समभुज त्रिकोण"
+          ],
+          "solution": "जर ∠CAX 60° असेल, आणि त्रिकोण दोन समान चापांद्वारे तयार होत असेल, तर त्रिकोण ACX समभुज असेल. हे कारण आहे की समभुज त्रिकोणात सर्व कोन 60° असतात. इतर विकल्प चुकीचे आहेत कारण ते वर्णन केलेल्या त्रिकोणच्या गुणधर्मांसोबत मेळ बसत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Believes that any triangle with one 60° angle must be isosceles",
+        "Believes that a 60° angle automatically makes a triangle right-angled",
+        "Student assumes that a triangle with one 60° angle must have two equal sides, confusing isosceles with equilateral",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct, as an equilateral triangle has all angles equal to 60°. However, the question lacks sufficient information to definitively conclude that triangle ACX is equilateral, as the figure is not provided and the construction details are unclear.",
+      "sources": [
+        {
+          "document": "ncert/7/mathematics/gegp206.pdf",
+          "ordinal": 6,
+          "pageStart": 13,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 6: Constructions and Tilings",
+            "6.1 Geometric Constructions"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp206.pdf",
+          "ordinal": 7,
+          "pageStart": 16,
+          "pageEnd": 18,
+          "headingPath": [
+            "Chapter 6: Constructions and Tilings",
+            "6.1 Geometric Constructions"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp206.pdf",
+          "ordinal": 8,
+          "pageStart": 18,
+          "pageEnd": 20,
+          "headingPath": [
+            "Chapter 6: Constructions and Tilings",
+            "6.1 Geometric Constructions"
+          ]
+        }
+      ],
+      "edition": "2025 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-31T15:19:19.943Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "A craftsman is creating a floor pattern using regular octagons, squares, and triangles. If the side length of each octagon is 2 cm, what is the total perimeter of one octagon?",
+      "choices": [
+        "12 cm",
+        "14 cm",
+        "16 cm",
+        "18 cm"
+      ],
+      "answerIndex": 2,
+      "solution": "A regular octagon has 8 equal sides. If the side length is 2 cm, the total perimeter is 8 × 2 cm = 16 cm. The other options are incorrect as they do not match the calculation.",
+      "checkExpr": "8*2",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक कलाकार नियमित अष्टभुज, वर्ग और त्रिभुज का उपयोग करके फर्श के पैटर्न बना रहा है। यदि प्रत्येक अष्टभुज की भुजा की लंबाई 2 सेमी है, तो एक अष्टभुज का कुल परिमाप क्या है?",
+          "choices": [
+            "12 सेमी",
+            "14 सेमी",
+            "16 सेमी",
+            "18 सेमी"
+          ],
+          "solution": "एक नियमित अष्टभुज में 8 समान भुजाएं होती हैं। यदि भुजा की लंबाई 2 सेमी है, तो कुल परिमाप 8 × 2 सेमी = 16 सेमी है। अन्य विकल्प गलत हैं क्योंकि वे गणना के साथ मेल नहीं खाते।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एक शिल्पकार सामान्य अष्टभुज, चौरस आणि त्रिकोण वापरून फ्लोर पॅटर्न तयार करत आहे. जर प्रत्येक अष्टभुजाच्या बाजूची लांबी 2 सें.मी. असेल, तर एका अष्टभुजाचा एकूण परिमाण किती असेल?",
+          "choices": [
+            "12 सें.मी.",
+            "14 सें.मी.",
+            "16 सें.मी.",
+            "18 सें.मी."
+          ],
+          "solution": "एक सामान्य अष्टभुजाच्या 8 समान बाजू असतात. जर बाजूची लांबी 2 सें.मी. असेल, तर एकूण परिमाण 8 × 2 सें.मी. = 16 सें.मी. असेल. इतर विकल्प चुकीचे आहेत कारण ते गणनेशी जुळत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Incorrectly counts the number of sides of the octagon",
+        "Adds the side length incorrectly",
+        null,
+        "Confuses the side length with another value"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is straightforward and the solution is correct. The perimeter of a regular octagon with 8 sides of 2 cm each is indeed 16 cm.",
+      "sources": [
+        {
+          "document": "ncert/7/mathematics/gegp206.pdf",
+          "ordinal": 6,
+          "pageStart": 13,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 6: Constructions and Tilings",
+            "6.1 Geometric Constructions"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp206.pdf",
+          "ordinal": 7,
+          "pageStart": 16,
+          "pageEnd": 18,
+          "headingPath": [
+            "Chapter 6: Constructions and Tilings",
+            "6.1 Geometric Constructions"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp206.pdf",
+          "ordinal": 8,
+          "pageStart": 18,
+          "pageEnd": 20,
+          "headingPath": [
+            "Chapter 6: Constructions and Tilings",
+            "6.1 Geometric Constructions"
+          ]
+        }
+      ],
+      "edition": "2025 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-31T15:19:19.943Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "If six congruent equilateral triangles are placed together with a common vertex, what is the total angle around that vertex?",
+      "choices": [
+        "180°",
+        "240°",
+        "300°",
+        "360°"
+      ],
+      "answerIndex": 3,
+      "solution": "When six congruent equilateral triangles are placed together with a common vertex, their angles add up to 360°, as the total angle around a point is 360°. The other options are incorrect as they do not match this geometric principle.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि छह सर्वांगसम समबाहु त्रिभुज एक ही शीर्ष के साथ एक साथ रखे जाते हैं, तो उस शीर्ष पर कुल कोण क्या होता है?",
+          "choices": [
+            "180°",
+            "240°",
+            "300°",
+            "360°"
+          ],
+          "solution": "जब छह सर्वांगसम समबाहु त्रिभुज एक ही शीर्ष के साथ एक साथ रखे जाते हैं, तो उनके कोण एक साथ जुड़कर 360° बनाते हैं, क्योंकि एक बिंदु पर कुल कोण 360° होता है। अन्य विकल्प गलत हैं क्योंकि वे इस ज्यामितीय सिद्धांत के अनुरूप नहीं हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "सहा सर्वसम एकसारखे त्रिकोण एकाच शिरोबिंदू एकत्र ठेवल्यास त्या शिरोबिंदू भोवती एकूण कोन किती असेल?",
+          "choices": [
+            "180°",
+            "240°",
+            "300°",
+            "360°"
+          ],
+          "solution": "सहा सर्वसम एकसारखे त्रिकोण एकाच शिरोबिंदू एकत्र ठेवल्यास त्यांचे कोन 360° च्या बेरजेने जमतात, कारण बिंदू भोवतीचा एकूण कोन 360° असतो. इतर विकल्प चूकीचे आहेत कारण ते या भौमितिक तत्वाशी जुमानत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation accurately reflects the original English question and maintains the correct answer and distractors. Technical terms like 'सर्वसम' (congruent) and 'एकसारखे' (equilateral) are appropriately used in Marathi.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Misunderstands the total angle around a point",
+        "Confuses the properties of the triangles",
+        "Misinterprets the arrangement of the triangles",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 360°, as the total angle around a point is always 360°, regardless of the number of shapes meeting at that point. The author's reasoning is sound and matches the geometric principle.",
+      "sources": [
+        {
+          "document": "ncert/7/mathematics/gegp206.pdf",
+          "ordinal": 6,
+          "pageStart": 13,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 6: Constructions and Tilings",
+            "6.1 Geometric Constructions"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp206.pdf",
+          "ordinal": 7,
+          "pageStart": 16,
+          "pageEnd": 18,
+          "headingPath": [
+            "Chapter 6: Constructions and Tilings",
+            "6.1 Geometric Constructions"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp206.pdf",
+          "ordinal": 8,
+          "pageStart": 18,
+          "pageEnd": 20,
+          "headingPath": [
+            "Chapter 6: Constructions and Tilings",
+            "6.1 Geometric Constructions"
+          ]
+        }
+      ],
+      "edition": "2025 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-31T15:19:19.943Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "If a 5 × 3 grid has one unit square removed, making it have an even number of squares, can it still be tileable with 2 × 1 tiles?",
+      "choices": [
+        "Yes, because the number of squares is even.",
+        "No, because the black-and-white pattern is unbalanced.",
+        "Yes, because the grid is now even in size.",
+        "No, because the grid is still odd in both dimensions."
+      ],
+      "answerIndex": 1,
+      "solution": "The correct answer is 'No, because the black-and-white pattern is unbalanced.' A 5 × 3 grid has 15 squares, and removing one leaves 14. However, the checkerboard pattern results in an unequal number of black and white squares, making it impossible for 2 × 1 tiles to cover them all. The other options incorrectly assume that evenness alone determines tileability, ignoring the color balance required for tiling.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि 5 × 3 ग्रिड में एक इकाई वर्ग हटा दिया जाता है, जिससे इसके वर्गों की संख्या सम हो जाती है, तो क्या इसे 2 × 1 टाइल्स से ढका जा सकता है?",
+          "choices": [
+            "हाँ, क्योंकि वर्गों की संख्या सम है।",
+            "नहीं, क्योंकि काले-सफेद पैटर्न असंतुलित है।",
+            "हाँ, क्योंकि ग्रिड अब सम आकार में है।",
+            "नहीं, क्योंकि ग्रिड अब भी दोनों आयामों में विषम है।"
+          ],
+          "solution": "सही उत्तर 'नहीं, क्योंकि काले-सफेद पैटर्न असंतुलित है।' एक 5 × 3 ग्रिड में 15 वर्ग होते हैं, और एक को हटाने से 14 बच जाते हैं। हालांकि, चेसबोर्ड पैटर्न के कारण काले और सफेद वर्गों की संख्या असमान हो जाती है, जिसके कारण 2 × 1 टाइल्स इन्हें पूरी तरह से ढक नहीं सकते। अन्य विकल्प गलत ढंग से यह मान लेते हैं कि समता अकेले टाइलिंग के निर्धारण में निर्णायक है, जबकि टाइलिंग के लिए रंग के संतुलन की आवश्यकता होती है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the original English question, with appropriate terminology and logical structure.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "5 × 3 जाळीमधून एक एकक चौरस काढून टाकल्यास, ज्यामुळे ती सम चौरस बनते, तर ती 2 × 1 टाइल्स ने टाइल करता येईल का?",
+          "choices": [
+            "होय, कारण चौरसांची संख्या सम आहे.",
+            "नाही, कारण काळा-कांदा पॅटर्न असंतुलित आहे.",
+            "होय, कारण जाळी आता सम आकारात आहे.",
+            "नाही, कारण जाळी अजूनही दोन्ही आकारात विषम आहे."
+          ],
+          "solution": "हे बरोबर उत्तर 'नाही, कारण काळा-कांदा पॅटर्न असंतुलित आहे.' आहे. 5 × 3 जाळीमध्ये 15 चौरस असतात, आणि एक काढून टाकल्याने 14 बरोबर राहतात. मात्र, चेसबोर्ड पॅटर्नमुळे काळा आणि कांदा चौरसांची संख्या असमान असते, ज्यामुळे 2 × 1 टाइल्स त्यांना पूर्णपणे झाकू शकत नाहीत. इतर विकल्प सम असल्याने टाइल करता येईल असे चुकीचे मानतात, जे टाइलिंगसाठी आवश्यक रंग संतुलन नकारतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for the checkerboard pattern ('काळा-कांदा पॅटर्न').",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Overlooks the effect of the black-and-white pattern on tiling",
+        null,
+        "Believes that any even number of squares is sufficient for tiling",
+        "Misunderstands the dimensions of the grid after a square is removed"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies that the checkerboard pattern is the key factor, not just the number of squares or grid dimensions. The reasoning aligns with standard tiling theory.",
+      "sources": [
+        {
+          "document": "ncert/7/mathematics/gegp206.pdf",
+          "ordinal": 9,
+          "pageStart": 20,
+          "pageEnd": 24,
+          "headingPath": [
+            "Chapter 6: Constructions and Tilings",
+            "6.2 Tiling"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp206.pdf",
+          "ordinal": 10,
+          "pageStart": 24,
+          "pageEnd": 27,
+          "headingPath": [
+            "Chapter 6: Constructions and Tilings",
+            "6.2 Tiling"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp206.pdf",
+          "ordinal": 11,
+          "pageStart": 27,
+          "pageEnd": 27,
+          "headingPath": [
+            "Chapter 6: Constructions and Tilings",
+            "6.2 Tiling"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp206.pdf",
+          "ordinal": 12,
+          "pageStart": 28,
+          "pageEnd": 28,
+          "headingPath": [
+            "Chapter 6: Constructions and Tilings",
+            "6.2 Tiling",
+            "SUMMARY"
+          ]
+        }
+      ],
+      "edition": "2025 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-31T15:19:19.943Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
     }
   ]
 }

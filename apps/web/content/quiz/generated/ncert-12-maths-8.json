@@ -178,6 +178,445 @@
       "generatedAt": "2026-10-28T23:36:12.365Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is the formula to calculate the area under a curve x = g(y) between y = c and y = d?",
+      "choices": [
+        "∫ g(x) dx from c to d",
+        "∫ g(y) dy from c to d",
+        "∫ g(x) dx from 0 to 1",
+        "∫ g(y) dy from 0 to 1"
+      ],
+      "answerIndex": 1,
+      "solution": "The correct formula is ∫ g(y) dy from c to d. This is because when the curve is expressed as x = g(y), the area under the curve is calculated by integrating x with respect to y. The other options are incorrect because they use x instead of y as the variable of integration or integrate over inappropriate limits.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "वक्र x = g(y) के नीचे क्षेत्र की गणना करने का सूत्र क्या है जब y = c और y = d के बीच होता है?",
+          "choices": [
+            "∫ g(x) dx c से d तक",
+            "∫ g(y) dy c से d तक",
+            "∫ g(x) dx 0 से 1 तक",
+            "∫ g(y) dy 0 से 1 तक"
+          ],
+          "solution": "सही सूत्र ∫ g(y) dy c से d तक है। इसका कारण यह है कि जब वक्र x = g(y) के रूप में व्यक्त किया जाता है, तो वक्र के नीचे क्षेत्र की गणना y के सापेक्ष x के समाकलन द्वारा की जाती है। अन्य विकल्प गलत हैं क्योंकि वे x के स्थान पर y के रूप में समाकलन के चर का उपयोग करते हैं या अनुचित सीमाओं पर समाकलन करते हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the original English question, with appropriate mathematical terminology and structure.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "वक्र x = g(y) च्या y = c आणि y = d दरम्यानच्या क्षेत्रफळाचे सूत्र काय आहे?",
+          "choices": [
+            "∫ g(x) dx c ते d",
+            "∫ g(y) dy c ते d",
+            "∫ g(x) dx 0 ते 1",
+            "∫ g(y) dy 0 ते 1"
+          ],
+          "solution": "सही सूत्र ∫ g(y) dy c ते d आहे. हे कारण वक्र x = g(y) असल्यास क्षेत्रफळ y च्या संदर्भात x चे समाकलन करून गणले जाते. इतर विकल्प अयोग्य आहेत कारण ते समाकलनाच्या चलासाठी x वापरतात किंवा अनुपयुक्त सीमा वापरतात.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the original meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Uses the wrong function variable",
+        null,
+        "Confuses the limits of integration",
+        "Uses arbitrary limits instead of c and d"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is option 1, as the area under the curve x = g(y) between y = c and y = d is given by ∫ g(y) dy from c to d. The other options are incorrect due to either using the wrong variable or incorrect limits.",
+      "sources": [
+        {
+          "document": "ncert/12/mathematics/lemh202.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 2: Application of Integrals"
+          ]
+        },
+        {
+          "document": "ncert/12/mathematics/lemh202.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 2: Application of Integrals"
+          ]
+        },
+        {
+          "document": "ncert/12/mathematics/lemh202.pdf",
+          "ordinal": 2,
+          "pageStart": 4,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 2: Application of Integrals"
+          ]
+        },
+        {
+          "document": "ncert/12/mathematics/lemh202.pdf",
+          "ordinal": 3,
+          "pageStart": 7,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 2: Application of Integrals"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T10:57:28.676Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is the term used for the inverse of differentiation in calculus?",
+      "choices": [
+        "Derivative",
+        "Integral",
+        "Antiderivative",
+        "Limit"
+      ],
+      "answerIndex": 2,
+      "solution": "The term used for the inverse of differentiation in calculus is 'antiderivative' because it refers to a function whose derivative is the original function. 'Derivative' is the process of finding the rate of change, not the inverse. 'Integral' is related but refers to the accumulation of quantities, not specifically the inverse of differentiation. 'Limit' is a fundamental concept but does not represent the inverse operation of differentiation.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "कलन में अवकलन के व्युत्क्रम के लिए उपयोग किया जाने वाला शब्द क्या है?",
+          "choices": [
+            "अवकलज",
+            "समाकल",
+            "अन्तःअवकलज",
+            "सीमा"
+          ],
+          "solution": "कलन में अवकलन के व्युत्क्रम के लिए उपयोग किया जाने वाला शब्द 'अन्तःअवकलज' है क्योंकि यह एक ऐसा फलन है जिसका अवकलज मूल फलन होता है। 'अवकलज' एक अवकलन प्रक्रिया है जो दर के परिवर्तन को खोजती है, न कि व्युत्क्रम। 'समाकल' संचय की मात्रा से संबंधित है लेकिन विशेष रूप से अवकलन के व्युत्क्रम के रूप में नहीं। 'सीमा' एक मूलभूत अवधारणा है लेकिन अवकलन के व्युत्क्रम संक्रिया का प्रतिनिधित्व नहीं करती।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English original in meaning, terminology, and structure. All options are correctly translated and maintain their original logical relationships. The correct answer remains in the same position (option 3).",
+          "flag": null
+        },
+        "mr": {
+          "stem": "कॅल्क्युलसमध्ये व्युत्क्रम अवकलनासाठी वापरलेले शब्द काय आहे?",
+          "choices": [
+            "अवकलज",
+            "समाकल",
+            "अंतर्अवकलज",
+            "सीमा"
+          ],
+          "solution": "कॅल्क्युलसमध्ये व्युत्क्रम अवकलनासाठी वापरलेले शब्द 'अंतर्अवकलज' आहे कारण तो एक फलन आहे ज्याचा अवकलज मूळ फलन आहे. 'अवकलज' हा दर बदलाचा शोध घेण्याचा प्रक्रिया आहे, व्युत्क्रम नाही. 'समाकल' जवळ आहे परंतु विशिष्टपणे अवकलनाचा व्युत्क्रम नाही. 'सीमा' हा मूलभूत संकल्पना आहे परंतु अवकलनाचा व्युत्क्रम कार्य नाही.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate and maintains the original meaning, with appropriate technical terms used in Marathi-medium education.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the inverse of differentiation with the derivative itself.",
+        "Refers to the general term for integration, not the inverse of differentiation.",
+        null,
+        "Refers to a fundamental concept in calculus but not directly the inverse of differentiation."
+      ],
+      "solverAnswers": [
+        2,
+        1,
+        2,
+        1,
+        2
+      ],
+      "levelFlag": "level 1 but the solver missed it 2 of 5 times",
+      "critique": "The question is straightforward and the solution is correct. The term 'antiderivative' is indeed the inverse of differentiation, and the explanations for the other options are valid.",
+      "sources": [
+        {
+          "document": "ncert/12/mathematics/lemh202.pdf",
+          "ordinal": 4,
+          "pageStart": 8,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 2: Application of Integrals"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T10:57:28.676Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "In which century did the systematic approach to the theory of Calculus begin?",
+      "choices": [
+        "16th century",
+        "17th century",
+        "18th century",
+        "19th century"
+      ],
+      "answerIndex": 1,
+      "solution": "The systematic approach to the theory of Calculus began in the 17th century, as this is when foundational work by mathematicians like Newton and Leibniz laid the groundwork for calculus. The 16th century predates this development, the 18th century saw further advancements but not the systematic foundation, and the 19th century focused on rigorizing calculus through limits.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "कलन के सिद्धांत के प्रणालीगत दृष्टिकोण किस शताब्दी में शुरू हुआ?",
+          "choices": [
+            "16 वीं शताब्दी",
+            "17 वीं शताब्दी",
+            "18 वीं शताब्दी",
+            "19 वीं शताब्दी"
+          ],
+          "solution": "कलन के सिद्धांत के प्रणालीगत दृष्टिकोण 17 वीं शताब्दी में शुरू हुआ, क्योंकि इस समय न्यूटन और लाइबनिज जैसे गणितज्ञों द्वारा आधारभूत कार्य ने कलन के आधार को रख दिया। 16 वीं शताब्दी इस विकास से पहले है, 18 वीं शताब्दी में आगे के विकास हुए लेकिन प्रणालीगत आधार नहीं, और 19 वीं शताब्दी में कलन के विवेकपूर्ण करने पर ध्यान केंद्रित किया गया।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriately used in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "कलनाच्या सिद्धांताच्या पद्धतशीर दृष्टिकोनाची सुरुवात कोणत्या शतकात झाली?",
+          "choices": [
+            "16 व्या शतकात",
+            "17 व्या शतकात",
+            "18 व्या शतकात",
+            "19 व्या शतकात"
+          ],
+          "solution": "कलनाच्या सिद्धांताच्या पद्धतशीर दृष्टिकोनाची सुरुवात 17 व्या शतकात झाली, कारण न्यूटन आणि लाइबनिझ यांसारख्या गणितज्ञांनी याची आधारभूत कामे केली. 16 व्या शतकात ही विकासाची पूर्व वेळ होती, 18 व्या शतकात कलनाच्या आधारभूत विकासाच्या पुढे अधिक विकास झाला परंतु पद्धतशीर आधार नव्हता आणि 19 व्या शतकात कलनाच्या अंमलात आणण्यावर भर देण्यात आला.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Refers to the time before the systematic development of calculus.",
+        null,
+        "Refers to the time when calculus was further developed but not the beginning of the systematic approach.",
+        "Refers to the time when calculus was justified through limits, not the start of the systematic approach."
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is factually accurate. The systematic approach to calculus began in the 17th century with the work of Newton and Leibniz. The author's reasoning for the distractors is also valid and reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/12/mathematics/lemh202.pdf",
+          "ordinal": 4,
+          "pageStart": 8,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 2: Application of Integrals"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T10:57:28.676Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is the formula for the area of a region bounded by a curve x = g(y), the y-axis, and the lines y = c and y = d?",
+      "choices": [
+        "∫ g(x) dy from c to d",
+        "∫ g(y) dx from c to d",
+        "∫ g(y) dy from c to d",
+        "∫ g(x) dx from c to d"
+      ],
+      "answerIndex": 2,
+      "solution": "The correct formula is ∫ g(y) dy from c to d, as the area is calculated by integrating the function x = g(y) with respect to y. The other options incorrectly use x instead of y in the integral or mix up the variables of integration.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक वक्र x = g(y) द्वारा घिरे क्षेत्र के क्षेत्रफल का सूत्र क्या है, जो y-अक्ष तथा रेखाओं y = c एवं y = d द्वारा घिरा हुआ है?",
+          "choices": [
+            "∫ g(x) dy सी से डी तक",
+            "∫ g(y) dx सी से डी तक",
+            "∫ g(y) dy सी से डी तक",
+            "∫ g(x) dx सी से डी तक"
+          ],
+          "solution": "सही सूत्र ∫ g(y) dy सी से डी तक है, क्योंकि क्षेत्रफल की गणना चर y के सापेक्ष फलन x = g(y) के समाकलन द्वारा की जाती है। अन्य विकल्प गलती से समाकलन के चर में x का उपयोग करते हैं या चरों के समाकलन के लिए गलत चर लेते हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "वक्र x = g(y), y-अक्ष आणि y = c आणि y = d रेषा यांमुळे घेरलेल्या प्रदेशाच्या क्षेत्रफळाचे सूत्र काय आहे?",
+          "choices": [
+            "∫ g(x) dy c ते d",
+            "∫ g(y) dx c ते d",
+            "∫ g(y) dy c ते d",
+            "∫ g(x) dx c ते d"
+          ],
+          "solution": "सही सूत्र ∫ g(y) dy c ते d आहे, कारण क्षेत्रफळ फलन x = g(y) चे y नुसार समाकल करून गणित केले जाते. इतर विकल्पांमध्ये समाकलनाच्या चलाचे अपूर्ण वापर केले आहे किंवा चलांचे मिश्रण केले आहे.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology as used in Marathi textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the variable of integration with x instead of y",
+        "Confuses the variable of integration with x instead of y",
+        null,
+        "Confuses the variable of integration with the function's input"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is ∫ g(y) dy from c to d. The other options incorrectly use x instead of y in the integrand or the differential, which reflects common misconceptions about variable of integration.",
+      "sources": [
+        {
+          "document": "ncert/12/mathematics/lemh202.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 2: Application of Integrals"
+          ]
+        },
+        {
+          "document": "ncert/12/mathematics/lemh202.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 2: Application of Integrals"
+          ]
+        },
+        {
+          "document": "ncert/12/mathematics/lemh202.pdf",
+          "ordinal": 2,
+          "pageStart": 4,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 2: Application of Integrals"
+          ]
+        },
+        {
+          "document": "ncert/12/mathematics/lemh202.pdf",
+          "ordinal": 3,
+          "pageStart": 7,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 2: Application of Integrals"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-11T02:09:38.266Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If the area under a curve is represented by the integral of a function, which of the following is used to compute the definite integral?",
+      "choices": [
+        "Antiderivative",
+        "Derivative",
+        "Function",
+        "Limit"
+      ],
+      "answerIndex": 0,
+      "solution": "The antiderivative is used to compute the definite integral because it reverses the process of differentiation, allowing the area under a curve to be calculated. The derivative is the inverse operation of the antiderivative and does not compute the integral. A function alone does not provide the value of the integral without further calculation. A limit is part of the definition of the integral but not the method used to compute it directly.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक वक्र के नीचे क्षेत्रफल के द्वारा एक फलन के समाकल के द्वारा निरूपित किया जाता है, तो निम्नलिखित में से कौन-सा निश्चित समाकल की गणना करने के लिए प्रयोग किया जाता है?",
+          "choices": [
+            "अवकलज",
+            "अवकलन",
+            "फलन",
+            "सीमा"
+          ],
+          "solution": "अवकलज का उपयोग निश्चित समाकल की गणना करने के लिए किया जाता है क्योंकि यह अवकलन की प्रक्रिया के विपरीत होता है, जिससे वक्र के नीचे क्षेत्रफल की गणना संभव हो जाती है। अवकलन अवकलज के विपरीत क्रिया है और समाकल की गणना नहीं करता है। फलन के अकेले होने से समाकल का मान नहीं मिलता है। सीमा समाकल की परिभाषा का हिस्सा है लेकिन सीधे रूप से इसकी गणना करने के लिए उपयोग नहीं किया जाता है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English original in meaning, with appropriate technical terms used in a Hindi-medium context.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर वक्राच्या क्षेत्रफळाचे निरूपण एका फलनाच्या समाकलनाद्वारे केले जाते, तर खालीलपैकी कोणते निश्चित समाकलन काढण्यासाठी वापरले जाते?",
+          "choices": [
+            "अवकलन निरसन",
+            "अवकलज",
+            "फलन",
+            "मर्यादा"
+          ],
+          "solution": "अवकलन निरसन निश्चित समाकलन काढण्यासाठी वापरले जाते कारण ते अवकलनाच्या प्रक्रियेचे उलटे करते, ज्यामुळे वक्राच्या क्षेत्रफळाची गणना करता येते. अवकलज हे अवकलन निरसनाच्या विलोम क्रिया आहे आणि समाकलन काढत नाही. फलन एकटे समाकलनाचे मूल्य देत नाही. मर्यादा हे समाकलनाच्या व्याख्येचा भाग आहे परंतु ती सीधा समाकलन काढण्यासाठी वापरली जात नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi technical terms used.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses antiderivative with derivative",
+        "Misunderstands the role of the function in integration",
+        "Does not recognize the role of the limit in integration"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 0 (Antiderivative), as the Fundamental Theorem of Calculus connects the definite integral to the antiderivative. The author's reasoning is sound, and the misconceptions listed for the distractors are plausible for students.",
+      "sources": [
+        {
+          "document": "ncert/12/mathematics/lemh202.pdf",
+          "ordinal": 4,
+          "pageStart": 8,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 2: Application of Integrals"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-11T02:09:38.266Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
     }
   ]
 }

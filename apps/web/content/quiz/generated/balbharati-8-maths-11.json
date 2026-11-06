@@ -273,6 +273,812 @@
       "generatedAt": "2026-11-02T07:36:56.435Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "Which of the following is a type of bar graph that shows percentages of different categories within a single bar?",
+      "choices": [
+        "Subdivided bar graph",
+        "Histogram",
+        "Line graph",
+        "Pie chart"
+      ],
+      "answerIndex": 0,
+      "solution": "A subdivided bar graph is a type of bar graph that displays percentages of different categories within a single bar, making it the correct answer. A histogram is used to represent distributions of continuous data, a line graph shows changes in data over time, and a pie chart represents parts of a whole as slices.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा एक बार ग्राफ का प्रकार है जो एक बार में विभिन्न श्रेणियों के प्रतिशत को दर्शाता है?",
+          "choices": [
+            "उपविभाजित बार ग्राफ",
+            "हिस्टोग्राम",
+            "रेखा ग्राफ",
+            "चारा चित्र"
+          ],
+          "solution": "एक उपविभाजित बार ग्राफ एक बार ग्राफ का प्रकार है जो एक बार में विभिन्न श्रेणियों के प्रतिशत को दर्शाता है, जिसके कारण यह सही उत्तर है। एक हिस्टोग्राम लगातार डेटा के वितरण के लिए उपयोग किया जाता है, एक रेखा ग्राफ डेटा में समय के साथ परिवर्तन को दर्शाता है, और एक चारा चित्र एक पूर्ण के भागों को टुकड़ों के रूप में दर्शाता है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English original in meaning, terminology, and structure. All technical terms are correctly translated and match standard Hindi textbook usage.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणता बार ग्राफचा प्रकार आहे जो एका बारमध्ये विविध श्रेणींच्या टक्केवारी दर्शवतो?",
+          "choices": [
+            "उपविभागित बार ग्राफ",
+            "हिस्टोग्राम",
+            "रेखा ग्राफ",
+            "पाय चार्ट"
+          ],
+          "solution": "उपविभागित बार ग्राफ हा बार ग्राफचा प्रकार आहे जो एका बारमध्ये विविध श्रेणींच्या टक्केवारी दर्शवतो, ज्यामुळे तो योग्य उत्तर ठरतो. हिस्टोग्राम अविच्छिन्न डेटाच्या वितरणाच्या दर्शविण्यासाठी वापरला जातो, रेखा ग्राफ वेळेच्या बदलासह डेटाचे बदल दर्शवतो आणि पाय चार्ट पूर्णांच्या भागांना छेदांमध्ये दर्शवतो.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for statistical concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses histogram with bar graphs",
+        "Does not understand the purpose of a line graph",
+        "Incorrectly identifies pie chart as a bar graph type"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 0 (Subdivided bar graph), as it is a type of bar graph that shows percentages of different categories within a single bar. The author's reasoning is sound and aligns with the definition of a subdivided bar graph. The distractors are all common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 51,
+          "pageStart": 83,
+          "pageEnd": 84,
+          "headingPath": [
+            "11. Statistics"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-11-01T00:49:50.127Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the term used for the average of numerical data in statistics?",
+      "choices": [
+        "Mean",
+        "Mode",
+        "Median",
+        "Range"
+      ],
+      "answerIndex": 0,
+      "solution": "The term for the average of numerical data in statistics is called the 'mean,' which is calculated by summing all values and dividing by the number of values. 'Mode' refers to the most frequently occurring value, 'Median' is the middle value when data is ordered, and 'Range' is the difference between the highest and lowest values.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "सांख्यिकी में संख्यात्मक डेटा के औसत के लिए प्रयुक्त शब्द क्या है?",
+          "choices": [
+            "माध्य",
+            "बहुलक",
+            "माध्यिका",
+            "परास"
+          ],
+          "solution": "सांख्यिकी में संख्यात्मक डेटा के औसत के लिए 'माध्य' शब्द का उपयोग किया जाता है, जो सभी मानों के योग को मानों की संख्या से विभाजित करके गणना की जाती है। 'बहुलक' सबसे अधिक बार घटित होने वाले मान को संदर्भित करता है, 'माध्यिका' डेटा को क्रम में रखने पर मध्य मान होता है, और 'परास' उच्चतम और निम्नतम मान के बीच के अंतर को संदर्भित करता है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, uses standard statistical terminology, and maintains the same meaning and structure as the English version.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "सांख्यिकीत अंकीय डेटाच्या सरासरीसाठी वापरल्या जाणार्‍या शब्दाचे नाव काय आहे?",
+          "choices": [
+            "मीन",
+            "मोड",
+            "मिडियन",
+            "रेंज"
+          ],
+          "solution": "सांख्यिकीत अंकीय डेटाच्या सरासरीसाठी वापरल्या जाणार्‍या शब्दाचे नाव 'मीन' आहे, जे सर्व मूल्यांच्या बेरजेला मूल्यांच्या संख्येने भागल्याने मिळते. 'मोड' हा सर्वात जास्त वेळा घटना घडलेल्या मूल्याला संबोधित करते, 'मिडियन' हा डेटा व्यवस्थित केल्यानंतर मध्यम मूल्य आहे आणि 'रेंज' हा सर्वोच्च आणि सर्वात कमी मूल्यांमधील फरक आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, with appropriate Marathi equivalents for statistical terms. 'Mean' is correctly translated as 'मीन', which is the standard term used in Marathi textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses 'mean' with 'mode'",
+        "Confuses 'mean' with 'median'",
+        "Confuses 'mean' with 'range'"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The question is clear and the solution is correct. The term 'mean' is indeed the average in statistics, and the explanations for the other options are accurate and reflect common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 48,
+          "pageStart": 77,
+          "pageEnd": 78,
+          "headingPath": [
+            "11. Statistics"
+          ]
+        },
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 49,
+          "pageStart": 79,
+          "pageEnd": 81,
+          "headingPath": [
+            "11. Statistics"
+          ]
+        },
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 50,
+          "pageStart": 81,
+          "pageEnd": 83,
+          "headingPath": [
+            "11. Statistics"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-11-01T00:49:50.127Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the main purpose of a percentage bar graph?",
+      "choices": [
+        "To show the total number of items in different categories",
+        "To compare the percentage of each category in a whole",
+        "To show the exact number of items in each category",
+        "To show the difference between two sets of data"
+      ],
+      "answerIndex": 1,
+      "solution": "A percentage bar graph is used to compare the percentage of each category in a whole. It shows how each part contributes to the total. The other options describe different types of graphs or data representations, not the specific purpose of a percentage bar graph.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "प्रतिशत बार ग्राफ का मुख्य उद्देश्य क्या है?",
+          "choices": [
+            "अलग-अलग श्रेणियों में वस्तुओं की कुल संख्या दिखाना",
+            "एक पूर्ण में प्रत्येक श्रेणी के प्रतिशत की तुलना करना",
+            "प्रत्येक श्रेणी में वस्तुओं की शुद्ध संख्या दिखाना",
+            "दो सेट डेटा के बीच अंतर दिखाना"
+          ],
+          "solution": "एक प्रतिशत बार ग्राफ का उपयोग एक पूर्ण में प्रत्येक श्रेणी के प्रतिशत की तुलना करने के लिए किया जाता है। यह दिखाता है कि प्रत्येक हिस्सा कुल में कैसे योगदान देता है। अन्य विकल्प अलग-अलग प्रकार के ग्राफ या डेटा प्रस्तुतीकरण का वर्णन करते हैं, लेकिन एक प्रतिशत बार ग्राफ के विशिष्ट उद्देश्य का वर्णन नहीं करते।",
+          "imageAlt": null,
+          "critique": "The translation accurately reflects the original meaning, with appropriate Hindi terminology for statistical concepts.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका शतमान बार ग्राफचा मुख्य उद्देश काय आहे?",
+          "choices": [
+            "विविध वर्गांमध्ये वस्तूंची एकूण संख्या दाखवणे",
+            "एकूण वर्गांमध्ये प्रत्येक वर्गाचा शतमान तुलना करणे",
+            "प्रत्येक वर्गामध्ये वस्तूंची अचूक संख्या दाखवणे",
+            "दोन सेट डेटामध्ये फरक दाखवणे"
+          ],
+          "solution": "एका शतमान बार ग्राफचा उपयोग एकूण वर्गांमध्ये प्रत्येक वर्गाचा शतमान तुलना करण्यासाठी केला जातो. तो दर भाग किती एकूणात योगदान देतो ते दाखवतो. इतर विकल्पांमध्ये वेगवेगळ्या प्रकारच्या ग्राफ किंवा डेटा प्रतिनिधित्वाचे वर्णन केले गेले आहे, जे शतमान बार ग्राफच्या विशिष्ट उद्देशाशी संबंधित नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for statistical concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses total number with percentages",
+        null,
+        "Does not understand the purpose of percentage representation",
+        "Thinks it shows exact numbers instead of percentages, which is not the case for percentage bar graphs"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 1, as a percentage bar graph is designed to compare the proportion of each category within a whole. The other options describe different types of graphs or misinterpret the purpose of percentage representation.",
+      "sources": [
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 51,
+          "pageStart": 83,
+          "pageEnd": 84,
+          "headingPath": [
+            "11. Statistics"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-11-01T00:49:50.127Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the difference between a percentage bar graph and a subdivided bar graph?",
+      "choices": [
+        "A percentage bar graph shows percentages, while a subdivided bar graph shows actual numbers",
+        "There is no difference because both show the same data in different ways",
+        "A percentage bar graph shows parts, while a subdivided bar graph shows the total",
+        "A percentage bar graph is only for one category, while a subdivided bar graph is for multiple categories"
+      ],
+      "answerIndex": 0,
+      "solution": "A percentage bar graph shows the percentage of each category, while a subdivided bar graph shows the actual numbers or counts of each category. The other options either confuse the two types of graphs or suggest they are the same. The difference lies in the representation of the data.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक प्रतिशत बार ग्राफ और एक उपविभाजित बार ग्राफ में क्या अंतर है?",
+          "choices": [
+            "एक प्रतिशत बार ग्राफ प्रतिशत दिखाता है, जबकि एक उपविभाजित बार ग्राफ वास्तविक संख्याएं दिखाता है",
+            "कोई अंतर नहीं है क्योंकि दोनों एक ही डेटा को अलग-अलग तरीकों से दिखाते हैं",
+            "एक प्रतिशत बार ग्राफ हिस्से दिखाता है, जबकि एक उपविभाजित बार ग्राफ कुल दिखाता है",
+            "एक प्रतिशत बार ग्राफ केवल एक श्रेणी के लिए होता है, जबकि एक उपविभाजित बार ग्राफ कई श्रेणियों के लिए होता है"
+          ],
+          "solution": "एक प्रतिशत बार ग्राफ प्रत्येक श्रेणी के प्रतिशत को दिखाता है, जबकि एक उपविभाजित बार ग्राफ प्रत्येक श्रेणी की वास्तविक संख्या या गणना को दिखाता है। अन्य विकल्प दोनों प्रकार के ग्राफ को गलत तरीके से समझते हैं या यह सुझाव देते हैं कि वे एक ही हैं। डेटा के प्रस्तुतीकरण में अंतर है।",
+          "imageAlt": null,
+          "critique": "The translation accurately reflects the original meaning, maintains the correct answer position, and uses appropriate Hindi terminology for statistical graphs.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "टक्केवारी बार ग्राफ आणि उपविभाजित बार ग्राफमध्ये काय फरक आहे?",
+          "choices": [
+            "टक्केवारी बार ग्राफ टक्केवारी दर्शवतो, तर उपविभाजित बार ग्राफ खर्च नंबर दर्शवतो",
+            "कोणताही फरक नाही कारण दोन्ही एकाच माहिती वेगवेगळ्या पद्धतीने दर्शवतात",
+            "टक्केवारी बार ग्राफ भाग दर्शवतो, तर उपविभाजित बार ग्राफ एकूण दर्शवतो",
+            "टक्केवारी बार ग्राफ एका श्रेणीसाठी असतो, तर उपविभाजित बार ग्राफ बहुश्रेणीसाठी असतो"
+          ],
+          "solution": "टक्केवारी बार ग्राफ प्रत्येक श्रेणीच्या टक्केवारी दर्शवतो, तर उपविभाजित बार ग्राफ प्रत्येक श्रेणीच्या खर्च नंबर किंवा गणना दर्शवतो. इतर विकल्पांमध्ये दोन्ही प्रकारच्या ग्राफच्या विषयी गोंधळ असतो किंवा ते दोन्ही समान असल्याचा अंदाज दर्शवतात. डेटाच्या प्रतिनिधित्वात फरक आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for statistical graphs.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confusion between types of bar graphs and misunderstanding that they are essentially the same",
+        "Confuses the roles of percentage and subdivided bars, thinking percentage bars represent parts and subdivided bars represent totals",
+        "Confuses the purpose of percentage vs. subdivided bars with the number of categories displayed"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 0, as a percentage bar graph shows percentages and a subdivided bar graph shows actual numbers. The other options reflect common misconceptions about the purpose and structure of these graphs.",
+      "sources": [
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 51,
+          "pageStart": 83,
+          "pageEnd": 84,
+          "headingPath": [
+            "11. Statistics"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-11-01T00:49:50.127Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If a bar in a percentage bar graph represents 70% of survived trees, what percentage of trees did not survive?",
+      "choices": [
+        "30%",
+        "70%",
+        "100%",
+        "50%"
+      ],
+      "answerIndex": 0,
+      "solution": "In a percentage bar graph, the total height of the bar is always 100%. If 70% of trees survived, then the remaining 30% did not survive. The other options do not add up to 100% or are not the correct calculation.",
+      "checkExpr": "100-70",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक प्रतिशत बार ग्राफ में एक बार 70% बचे हुए पेड़ों का प्रतिनिधित्व करता है, तो कितने प्रतिशत पेड़ बच नहीं पाए?",
+          "choices": [
+            "30%",
+            "70%",
+            "100%",
+            "50%"
+          ],
+          "solution": "एक प्रतिशत बार ग्राफ में, बार की कुल ऊंचाई हमेशा 100% होती है। यदि 70% पेड़ बच गए, तो शेष 30% पेड़ बच नहीं पाए। अन्य विकल्प 100% जोड़ नहीं पाते या सही गणना नहीं हैं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains original meaning, and uses standard Hindi terminology for percentage bar graphs.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका टक्केवारी बार आलेखातील बार 70% जिवंत झालेल्या वृक्षांना दर्शवतो, तर वृक्षांचा किती टक्का जिवंत राहिला नाही?",
+          "choices": [
+            "30%",
+            "70%",
+            "100%",
+            "50%"
+          ],
+          "solution": "टक्केवारी बार आलेखात, बारची एकूण उंची नेहमी 100% असते. जर 70% वृक्ष जिवंत राहिले, तर उरलेले 30% जिवंत राहिले नाहीत. इतर विकल्प 100% मिळून येत नाहीत किंवा चुकीचा गणना आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for statistical concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Adds the percentages instead of subtracting",
+        "Chooses the percentage of survived trees",
+        "Assumes the graph is split evenly"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The question is straightforward and the solution is correct. The correct answer is 30%, and the reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 51,
+          "pageStart": 83,
+          "pageEnd": 84,
+          "headingPath": [
+            "11. Statistics"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-11-01T00:49:50.127Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "In a percentage bar graph, what does the height of each bar represent?",
+      "choices": [
+        "The total number of items",
+        "The percentage of items in each category",
+        "The actual count of items",
+        "The difference between categories"
+      ],
+      "answerIndex": 1,
+      "solution": "In a percentage bar graph, the height of each bar represents the percentage of items in each category. This is because the graph is designed to show how each category contributes to the total. The other options describe different types of graphs or data representations, not the specific feature of a percentage bar graph.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक प्रतिशत बार ग्राफ में, प्रत्येक बार की ऊंचाई क्या प्रस्तुत करती है?",
+          "choices": [
+            "आइटम की कुल संख्या",
+            "प्रत्येक श्रेणी में आइटम का प्रतिशत",
+            "आइटम की वास्तविक गणना",
+            "श्रेणियों के बीच अंतर"
+          ],
+          "solution": "एक प्रतिशत बार ग्राफ में, प्रत्येक बार की ऊंचाई प्रत्येक श्रेणी में आइटम के प्रतिशत को प्रस्तुत करती है। इसका कारण यह है कि ग्राफ को कुल में प्रत्येक श्रेणी के योगदान को दिखाने के लिए डिज़ाइन किया गया है। अन्य विकल्प अलग-अलग प्रकार के ग्राफ या डेटा प्रस्तुतीकरण का वर्णन करते हैं, लेकिन एक प्रतिशत बार ग्राफ की विशिष्ट विशेषता नहीं है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology for statistical concepts.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "टक्केवारी बार ग्राफमध्ये, प्रत्येक बारची उंची काय प्रतिनिधित्व करते?",
+          "choices": [
+            "वस्तूंची एकूण संख्या",
+            "प्रत्येक वर्गातील वस्तूंचा टक्का",
+            "वस्तूंची खरी गणना",
+            "वर्गांमध्ये फरक"
+          ],
+          "solution": "टक्केवारी बार ग्राफमध्ये, प्रत्येक बारची उंची प्रत्येक वर्गातील वस्तूंचा टक्का प्रतिनिधित्व करते. हे त्या ग्राफच्या डिझाइनमुळे असते कारण तो वर्गांच्या एकूण योगदानाचे दर्शन करतो. इतर विकल्पांमध्ये वेगवेगळ्या प्रकारच्या ग्राफ किंवा डेटा प्रतिनिधित्वाचे वर्णन होते, परंतु टक्केवारी बार ग्राफच्या विशिष्ट वैशिष्ट्याचे नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for statistical concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses total count with percentage representation",
+        null,
+        "Thinks the height shows actual numbers instead of percentages",
+        "Does not understand that the bar's height is relative to the total"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is well-constructed, and the correct answer is clearly 1. The reasoning provided by the author aligns with the correct understanding of percentage bar graphs.",
+      "sources": [
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 51,
+          "pageStart": 83,
+          "pageEnd": 84,
+          "headingPath": [
+            "11. Statistics"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-11-01T00:49:50.127Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "In a school, a random sample of 145 students is taken to check whether a student’s average calory intake is 1500 or not. The collected data of average calories intake of sample students is presented in a frequency distribution. What is this frequency distribution called?",
+      "choices": [
+        "Statistic",
+        "Sampling",
+        "Parameter",
+        "Population"
+      ],
+      "answerIndex": 0,
+      "solution": "A statistic is a numerical value calculated from a sample of data, and the frequency distribution of the sample's calorie intake is an example of a statistic. Sampling refers to the process of selecting the sample, not the distribution itself. A parameter is a characteristic of a population, not a sample, and population refers to the entire group being studied, not the data collected from a sample.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक स्कूल में, किसी छात्र के औसत कैलोरी आहार के 1500 होने की जांच करने के लिए 145 छात्रों के एक यादृच्छिक नमूने को लिया जाता है। नमूना छात्रों के औसत कैलोरी आहार के डेटा को एक बारंबारता वितरण में प्रस्तुत किया गया है। इस बारंबारता वितरण को क्या कहा जाता है?",
+          "choices": [
+            "सांख्यिकी",
+            "नमूनाकरण",
+            "अनुकूलक",
+            "जनसंख्या"
+          ],
+          "solution": "एक सांख्यिकी डेटा के एक नमूने से गणितीय मान होता है, और नमूना के कैलोरी आहार के बारंबारता वितरण एक सांख्यिकी का उदाहरण है। नमूनाकरण नमूने के चयन की प्रक्रिया है, न कि वितरण ही। एक अनुकूलक जनसंख्या की विशेषता होती है, न कि नमूने की, और जनसंख्या अध्ययन के पूरे समूह को संदर्भित करती है, न कि नमूने से एकत्रित डेटा को।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard statistical terminology in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका शाळेत, एका विद्यार्थ्याच्या दैनिक ऊर्जा खाद्यपदार्थांच्या सरासरी खातु नक्की 1500 आहे की नाही याची तपासणी करण्यासाठी 145 विद्यार्थ्यांचे यादृच्छिक नमुना घेतला जातो. नमुना विद्यार्थ्यांच्या दैनिक ऊर्जा खाद्यपदार्थांच्या सरासरी खातुचे एकत्रित डेटा एका बारमाही वितरणात दाखवला जातो. हे बारमाही वितरण किंवा बारमाही वितरण कोणत्या माहितीचे उदाहरण आहे?",
+          "choices": [
+            "सांख्यिकी",
+            "नमुना",
+            "अभिलेख",
+            "लोकसंख्या"
+          ],
+          "solution": "सांख्यिकी हा नमुना डेटाच्या आधारे गणितीय मूल्य असतो आणि नमुना विद्यार्थ्यांच्या ऊर्जा खाद्यपदार्थांच्या सरासरी खातुचे बारमाही वितरण हा सांख्यिकीचा उदाहरण आहे. नमुना हा नमुना निवडण्याच्या प्रक्रियेला संदर्भित करतो, नाही की बारमाही वितरणाला. अभिलेख हा लोकसंख्येच्या वैशिष्ट्याला संदर्भित करतो, नाही की नमुन्याला, आणि लोकसंख्या ही अभ्यास केलेल्या पूर्ण गटाला संदर्भित करते, नाही की नमुन्यापासून एकत्रित केलेल्या डेटाला.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for statistical concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses 'statistic' with 'sampling'",
+        "Confuses 'statistic' with 'parameter'",
+        "Confuses 'statistic' with 'population'"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 'Statistic' as the frequency distribution of sample data is a statistic. The author's reasoning aligns with standard statistical definitions and the misconceptions identified are common among students.",
+      "sources": [
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 48,
+          "pageStart": 77,
+          "pageEnd": 78,
+          "headingPath": [
+            "11. Statistics"
+          ]
+        },
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 49,
+          "pageStart": 79,
+          "pageEnd": 81,
+          "headingPath": [
+            "11. Statistics"
+          ]
+        },
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 50,
+          "pageStart": 81,
+          "pageEnd": 83,
+          "headingPath": [
+            "11. Statistics"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-11-01T00:49:50.127Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "A percentage bar graph is drawn for three towns, and the bar for Arvi shows 70% of trees survived. If the total number of trees in Arvi is 1000, how many trees survived?",
+      "choices": [
+        "70",
+        "700",
+        "1000",
+        "7000"
+      ],
+      "answerIndex": 1,
+      "solution": "If 70% of the trees survived and the total number of trees is 1000, then the number of trees that survived is 70% of 1000, which is 700. The other options either give the percentage as a number or incorrectly scale the value. This question requires a simple percentage calculation.",
+      "checkExpr": "1000*0.7",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक प्रतिशत बार ग्राफ तीन शहरों के लिए खींचा गया है, और अरवि के बार के 70% पेड़ बच गए। यदि अरवि में कुल पेड़ों की संख्या 1000 है, तो कितने पेड़ बच गए?",
+          "choices": [
+            "70",
+            "700",
+            "1000",
+            "7000"
+          ],
+          "solution": "यदि 70% पेड़ बच गए और कुल पेड़ों की संख्या 1000 है, तो बचे पेड़ों की संख्या 1000 के 70% होगी, जो 700 है। अन्य विकल्प या तो प्रतिशत के रूप में संख्या देते हैं या माप को गलत ढंग से बढ़ा देते हैं। इस प्रश्न में एक सरल प्रतिशत गणना की आवश्यकता होती है।",
+          "imageAlt": null,
+          "critique": "The translation accurately preserves the meaning, structure, and technical terms of the original question. All options and the solution align correctly with the English version.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका शहरातील वृक्षांच्या टक्केवारी बार ग्राफचे आकृती काढले गेले आहेत आणि अरवी शहराच्या बारमध्ये 70% वृक्ष जिवंत राहिले आहेत. जर अरवी शहरातील एकूण वृक्षांची संख्या 1000 असेल तर किती वृक्ष जिवंत राहिले?",
+          "choices": [
+            "70",
+            "700",
+            "1000",
+            "7000"
+          ],
+          "solution": "जर 70% वृक्ष जिवंत राहिले आणि एकूण वृक्षांची संख्या 1000 असेल तर जिवंत राहिलेल्या वृक्षांची संख्या 70% चा 1000 असेल, जो 700 आहे. इतर विकल्पांमध्ये टक्केवारी नंबर म्हणून दाखवली गेली आहे किंवा चुकीच्या प्रमाणात मूल्य वापरले गेले आहे. हे प्रश्न साधे टक्केवारी कॅल्क्युलेशन आवश्यक आहे.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate terminology. The correct answer remains in the same position (option 2), and the distractors are still incorrect.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Takes the percentage as the actual number",
+        null,
+        "Does not scale the percentage correctly",
+        "Multiplies by 10 instead of 100"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is straightforward and the solution correctly calculates 70% of 1000 as 700. The author's reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 51,
+          "pageStart": 83,
+          "pageEnd": 84,
+          "headingPath": [
+            "11. Statistics"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-11-01T00:49:50.127Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "In a percentage bar graph, if the bar for a category is divided into two parts, one representing 30% and the other 70%, what does this indicate about the data?",
+      "choices": [
+        "The category is the main focus of the data",
+        "The total is divided into two parts",
+        "The data is incomplete",
+        "The graph is not accurate"
+      ],
+      "answerIndex": 1,
+      "solution": "The bar being divided into two parts indicates that the total is divided into those two percentages, 30% and 70%. This is a fundamental feature of percentage bar graphs. The other options suggest incorrect interpretations or problems with the graph that are not supported by the information provided.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक प्रतिशत बार ग्राफ में, यदि किसी श्रेणी के बार को दो भागों में विभाजित किया गया है, जिनमें एक 30% और दूसरा 70% प्रतिनिधित्व करता है, तो इसका अर्थ डेटा के बारे में क्या है?",
+          "choices": [
+            "श्रेणी डेटा का मुख्य केंद्र है",
+            "कुल को दो भागों में विभाजित किया गया है",
+            "डेटा अधूरा है",
+            "ग्राफ असत्य है"
+          ],
+          "solution": "बार के दो भागों में विभाजित होने का अर्थ है कि कुल को उन दो प्रतिशतों, 30% और 70% में विभाजित किया गया है। यह प्रतिशत बार ग्राफ की आधारभूत विशेषता है। अन्य विकल्प ग्राफ के बारे में गलत व्याख्या या समस्याओं को संकेत देते हैं जो दी गई जानकारी द्वारा समर्थित नहीं है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology for statistical concepts.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका शतमान बार आलेखात, जर कोणत्याही श्रेणीचा बार दोन भागांमध्ये विभाजित असेल, ज्यापैकी एक 30% दर्शवतो आणि दुसरा 70% दर्शवतो, तर हे डेटाबद्दल काय सूचित करते?",
+          "choices": [
+            "ही श्रेणी डेटाचा मुख्य लक्ष केंद्र आहे",
+            "एकूण दोन भागांमध्ये विभाजित आहे",
+            "डेटा अपूर्ण आहे",
+            "आलेख अचूक नाही"
+          ],
+          "solution": "बार दोन भागांमध्ये विभाजित असल्यामुळे एकूण त्या दोन शतमानांमध्ये विभाजित आहे, 30% आणि 70%. हे शतमान बार आलेखाचे मूलभूत वैशिष्ट्य आहे. इतर विकल्प चुकीच्या अर्थांचा दावा करतात किंवा आलेखाबद्दल अस्पष्टता सूचित करतात जे दिलेल्या माहितीशी संबंधित नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for statistical concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Misunderstands the division as a focus indicator",
+        null,
+        "Thinks the division implies missing data",
+        "Assumes the graph is flawed without evidence"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is well-constructed, and the correct answer is clearly 1. The reasoning provided by the author aligns with the correct interpretation of percentage bar graphs.",
+      "sources": [
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 51,
+          "pageStart": 83,
+          "pageEnd": 84,
+          "headingPath": [
+            "11. Statistics"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-11-01T00:49:50.127Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "If a percentage bar graph is used to show the percentage of students in different streams, what is the significance of the total height of the bar?",
+      "choices": [
+        "It represents the total number of students",
+        "It represents the percentage of students in each stream",
+        "It represents the number of students in the science stream",
+        "It represents the average number of students"
+      ],
+      "answerIndex": 0,
+      "solution": "The total height of the bar in a percentage bar graph is always 100%, representing the total number of students. The different segments of the bar represent the percentage of students in each stream. The other options do not correctly interpret the significance of the total height of the bar.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि विभिन्न स्ट्रीम में छात्रों के प्रतिशत को दर्शाने के लिए एक प्रतिशत बार ग्राफ का उपयोग किया जाता है, तो बार की कुल ऊंचाई का क्या अर्थ है?",
+          "choices": [
+            "यह कुल छात्रों की संख्या का प्रतिनिधित्व करता है",
+            "यह प्रत्येक स्ट्रीम में छात्रों के प्रतिशत का प्रतिनिधित्व करता है",
+            "यह विज्ञान स्ट्रीम में छात्रों की संख्या का प्रतिनिधित्व करता है",
+            "यह छात्रों की औसत संख्या का प्रतिनिधित्व करता है"
+          ],
+          "solution": "एक प्रतिशत बार ग्राफ में बार की कुल ऊंचाई हमेशा 100% होती है, जो कुल छात्रों की संख्या का प्रतिनिधित्व करती है। बार के विभिन्न खंड प्रत्येक स्ट्रीम में छात्रों के प्रतिशत का प्रतिनिधित्व करते हैं। अन्य विकल्प बार की कुल ऊंचाई के महत्व की गलत व्याख्या करते हैं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology for statistical concepts.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर विविध प्रवाहांमधील विद्यार्थ्यांच्या टक्केवारी दर्शविण्यासाठी टक्केवारी बार ग्राफ वापरला जातो, तर बारच्या एकूण उंचीचा अर्थ काय आहे?",
+          "choices": [
+            "ते एकूण विद्यार्थ्यांची संख्या दर्शविते",
+            "ते प्रत्येक प्रवाहातील विद्यार्थ्यांची टक्केवारी दर्शविते",
+            "ते विज्ञान प्रवाहातील विद्यार्थ्यांची संख्या दर्शविते",
+            "ते विद्यार्थ्यांची सरासरी संख्या दर्शविते"
+          ],
+          "solution": "टक्केवारी बार ग्राफमध्ये बारच्या एकूण उंची नेहमी 100% असते, जी एकूण विद्यार्थ्यांची संख्या दर्शविते. बारच्या विविध खंडांमध्ये प्रत्येक प्रवाहातील विद्यार्थ्यांची टक्केवारी दर्शविली जाते. इतर विकल्प बारच्या एकूण उंचीचा अर्थ चुकीचा समजतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for statistical concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses the total height with the percentage of students in each stream",
+        "Chooses a specific stream instead of the total",
+        "Does not understand the purpose of the bar graph"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies that the total height of a percentage bar graph represents 100%, or the total number of students. The reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 51,
+          "pageStart": 83,
+          "pageEnd": 84,
+          "headingPath": [
+            "11. Statistics"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-11-01T00:49:50.127Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
     }
   ]
 }

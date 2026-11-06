@@ -220,6 +220,976 @@
       "generatedAt": "2026-10-29T05:18:24.036Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "Which of the following is a symbol used to represent the Buddha's first sermon?",
+      "choices": [
+        "A tree",
+        "An empty seat",
+        "A stupa",
+        "A wheel"
+      ],
+      "answerIndex": 3,
+      "solution": "The correct answer is 'A wheel'. Historians identified the wheel as a symbol of the Buddha's first sermon delivered at Sarnath. A tree was used to symbolise the meditation of the Buddha, an empty seat represented his presence, and a stupa represented his mahaparinibbana.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा प्रतीक बुद्ध के प्रथम धर्म चक्र प्रचार का प्रतिनिधित्व करता है?",
+          "choices": [
+            "एक पेड़",
+            "एक खाली सीट",
+            "एक स्तूप",
+            "एक चक्र"
+          ],
+          "solution": "सही उत्तर 'एक चक्र' है। इतिहासवेत्ताओं ने चक्र को बुद्ध के सारनाथ में दिए गए प्रथम धर्म चक्र प्रचार के प्रतीक के रूप में पहचाना। एक पेड़ बुद्ध के ध्यान का प्रतिनिधित्व करता था, एक खाली सीट उनकी उपस्थिति का प्रतिनिधित्व करती थी, और एक स्तूप उनके महापरिनिर्वाण का प्रतिनिधित्व करता था।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणता प्रतीक बुद्धाच्या पहिल्या उपदेशाचे प्रतिनिधित्व करण्यासाठी वापरला जातो?",
+          "choices": [
+            "एक वृक्ष",
+            "खालील एक खुर्ची",
+            "एक स्तूप",
+            "एक चक्र"
+          ],
+          "solution": "बरोबर उत्तर 'चक्र' आहे. इतिहासतज्ञांनी सारणथ येथे बुद्धाच्या पहिल्या उपदेशाचे प्रतीक म्हणून चक्र ओळखले. वृक्ष बुद्धाच्या ध्यानाचे प्रतिनिधित्व करण्यासाठी वापरला जात होता, खालील खुर्ची बुद्धाच्या उपस्थितीचे प्रतिनिधित्व करत होती आणि स्तूप बुद्धाच्या महापरिनिर्वाणाचे प्रतिनिधित्व करत होता.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for religious symbols.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the symbol of meditation with the wheel",
+        "Confuses the symbol of the Buddha's presence with the wheel",
+        "Confuses the symbol of mahaparinibbana with the wheel",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct and matches the key. The wheel is indeed the symbol for the Buddha's first sermon, while the other options represent different aspects of Buddhist symbolism.",
+      "sources": [
+        {
+          "document": "ncert/12/history/lehs104.pdf",
+          "ordinal": 16,
+          "pageStart": 18,
+          "pageEnd": 19,
+          "headingPath": [
+            "Chapter 4: Thinkers, Beliefs and Buildings FOUR",
+            "The Fate of Amaravati and Sanchi"
+          ]
+        },
+        {
+          "document": "ncert/12/history/lehs104.pdf",
+          "ordinal": 17,
+          "pageStart": 19,
+          "pageEnd": 20,
+          "headingPath": [
+            "Chapter 4: Thinkers, Beliefs and Buildings FOUR",
+            "9. Sculpture"
+          ]
+        },
+        {
+          "document": "ncert/12/history/lehs104.pdf",
+          "ordinal": 18,
+          "pageStart": 20,
+          "pageEnd": 22,
+          "headingPath": [
+            "Chapter 4: Thinkers, Beliefs and Buildings FOUR",
+            "Paintings from the past"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T17:44:47.642Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "What was the main reason for the survival of Sanchi compared to Amaravati?",
+      "choices": [
+        "It was discovered later",
+        "It was not taken to Europe",
+        "It was not understood by scholars",
+        "It was not valuable"
+      ],
+      "answerIndex": 1,
+      "solution": "The correct answer is 'It was not taken to Europe'. Sanchi survived because scholars eventually realised the importance of preserving sites in situ. Amaravati was not preserved because it was taken to Europe before this understanding was reached. The other options are incorrect as they do not explain why Sanchi survived.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "सांची के अमरावती के मुकाबले जीवित रहने का मुख्य कारण क्या था?",
+          "choices": [
+            "इसे बाद में खोजा गया था",
+            "इसे यूरोप नहीं ले जाया गया था",
+            "इसे विद्वानों द्वारा समझ में नहीं लाया गया था",
+            "इसकी कीमत नहीं थी"
+          ],
+          "solution": "सही उत्तर 'इसे यूरोप नहीं ले जाया गया था' है। सांची के बचे रहने का कारण यह था कि विद्वानों ने अंततः यह समझ लिया कि स्थान पर स्थायी रूप से स्थान बनाए रखना महत्वपूर्ण है। अमरावती को नहीं बचाया गया क्योंकि इसे इस समझ आने से पहले यूरोप ले जाया गया था। अन्य विकल्प गलत हैं क्योंकि वे सांची के बचे रहने का कारण नहीं बताते।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains original meaning, and uses appropriate Hindi terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "संचीच्या तुलनेत अमरावतीच्या उत्तरांमध्ये जीवन टिकवून ठेवण्याचे मुख्य कारण काय होते?",
+          "choices": [
+            "त्याची शोध नंतर लागली",
+            "त्याला युरोपमध्ये नेण्यात आले नाही",
+            "शिक्षकांनी त्याचे अर्थ समजले नाही",
+            "त्याला मूल्य नव्हते"
+          ],
+          "solution": "बरोबर उत्तर 'त्याला युरोपमध्ये नेण्यात आले नाही' आहे. संची टिकून राहिला कारण शिक्षकांनी अखेर तेथे स्थानिकपणे स्थानांचे संरक्षण महत्वाचे असल्याचे जाणले. अमरावती टिकून राहिली नाही कारण या ज्ञानापूर्वी तिला युरोपमध्ये नेण्यात आले होते. इतर विकल्प अयोग्य आहेत कारण ते संचीच्या जीवनाचे कारण स्पष्ट करत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for academic context.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Believes discovery time determines survival",
+        null,
+        "Believes lack of scholarly understanding led to survival",
+        "Believes lack of value led to survival"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 1, as the survival of Sanchi was due to the realization of preserving sites in situ, while Amaravati was taken to Europe. The other options reflect misconceptions about discovery, scholarly understanding, and value.",
+      "sources": [
+        {
+          "document": "ncert/12/history/lehs104.pdf",
+          "ordinal": 16,
+          "pageStart": 18,
+          "pageEnd": 19,
+          "headingPath": [
+            "Chapter 4: Thinkers, Beliefs and Buildings FOUR",
+            "The Fate of Amaravati and Sanchi"
+          ]
+        },
+        {
+          "document": "ncert/12/history/lehs104.pdf",
+          "ordinal": 17,
+          "pageStart": 19,
+          "pageEnd": 20,
+          "headingPath": [
+            "Chapter 4: Thinkers, Beliefs and Buildings FOUR",
+            "9. Sculpture"
+          ]
+        },
+        {
+          "document": "ncert/12/history/lehs104.pdf",
+          "ordinal": 18,
+          "pageStart": 20,
+          "pageEnd": 22,
+          "headingPath": [
+            "Chapter 4: Thinkers, Beliefs and Buildings FOUR",
+            "Paintings from the past"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T17:44:47.642Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "What does the term 'Bodhisatta' refer to in Mahayana Buddhism?",
+      "choices": [
+        "A human being who attained enlightenment through self-effort",
+        "A compassionate being who helps others instead of attaining nibbana",
+        "A deity worshipped in Vaishnavism",
+        "A type of temple structure"
+      ],
+      "answerIndex": 1,
+      "solution": "In Mahayana Buddhism, a Bodhisatta is a compassionate being who accumulates merit to help others rather than attaining nibbana. The earlier tradition focused on self-effort. Vaishnavism involves worship of Vishnu. Temples are not related to this term.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "महायान बौद्ध धर्म में 'बोधिसत्त्व' शब्द क्या संदर्भित करता है?",
+          "choices": [
+            "एक मनुष्य जो स्वयं के प्रयास से ज्ञान प्राप्त कर लेता है",
+            "एक दयालु प्राणी जो अपने निर्वाण प्राप्त करने के बजाय अन्य लोगों की सहायता करता है",
+            "वैष्णववाद में पूजित एक देवता",
+            "एक प्रकार की मंदिर संरचना"
+          ],
+          "solution": "महायान बौद्ध धर्म में, एक बोधिसत्त्व एक दयालु प्राणी होता है जो अपने निर्वाण प्राप्त करने के बजाय अन्य लोगों की सहायता करने के लिए पुण्य एकत्र करता है। पूर्व विचारधारा स्वयं के प्रयास पर केंद्रित रही। वैष्णववाद में विष्णु की पूजा की जाती है। मंदिर इस शब्द से संबंधित नहीं हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. All options are correctly translated, and the correct answer remains in the same position. The distractors remain incorrect, and the technical terms used are consistent with standard Hindi Buddhist terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "महायान बौद्ध धर्मात 'बोधिसत्त्व' शब्दाचा अर्थ काय आहे?",
+          "choices": [
+            "स्व-प्रयत्नाने ज्ञान प्राप्त केलेला मानव",
+            "दुसर्यांना मदत करणारा दयाळू अस्तित्व, निर्वाणाची शोध न करता",
+            "वैष्णवसमाजात आराधिलेला देव",
+            "एक प्रकारची मंदिर रचना"
+          ],
+          "solution": "महायान बौद्ध धर्मात, बोधिसत्त्व हा दयाळू अस्तित्व आहे जो निर्वाणाची शोध न करता दुसर्यांना मदत करण्यासाठी गुणांचा आढावा घेतो. जुन्या परंपरेचा भाग आहे स्व-प्रयत्नांवर. वैष्णवसमाजात विष्णूची आराधना केली जाते. मंदिर या शब्दाशी संबंधित नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for Buddhist concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Refers to the earlier tradition of self-effort",
+        null,
+        "Confuses a concept from Vaishnavism",
+        "Misunderstands the term for a temple structure"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is option 1, which accurately describes a Bodhisatta in Mahayana Buddhism as a compassionate being who helps others rather than attaining nibbana. The other options reflect common misconceptions or confusion with other traditions.",
+      "sources": [
+        {
+          "document": "ncert/12/history/lehs104.pdf",
+          "ordinal": 19,
+          "pageStart": 22,
+          "pageEnd": 22,
+          "headingPath": [
+            "Chapter 4: Thinkers, Beliefs and Buildings FOUR",
+            "10. New Religious Traditions"
+          ]
+        },
+        {
+          "document": "ncert/12/history/lehs104.pdf",
+          "ordinal": 20,
+          "pageStart": 23,
+          "pageEnd": 23,
+          "headingPath": [
+            "Chapter 4: Thinkers, Beliefs and Buildings FOUR",
+            "Hinayana or Theravada?"
+          ]
+        },
+        {
+          "document": "ncert/12/history/lehs104.pdf",
+          "ordinal": 21,
+          "pageStart": 24,
+          "pageEnd": 25,
+          "headingPath": [
+            "Chapter 4: Thinkers, Beliefs and Buildings FOUR",
+            "Hinayana or Theravada?"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T17:44:47.642Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If a teacher from the Ajivika tradition was asked about the role of individual effort in achieving liberation, what would they most likely say?",
+      "choices": [
+        "Individual effort plays a major role in liberation",
+        "Liberation is determined by one's birth and social status",
+        "Everything is predetermined and cannot be altered",
+        "Liberation can be achieved through rituals and sacrifices"
+      ],
+      "answerIndex": 2,
+      "solution": "The Ajivikas believed in strict determinism, meaning all events are predestined and unchangeable, which makes the third option correct. The first option suggests free will, which contradicts their philosophy. The second option reflects a different tradition's view on social hierarchy. The fourth option implies that rituals can influence fate, which the Ajivikas would reject.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक आजीविक परंपरा के शिक्षक को मुक्ति प्राप्त करने में व्यक्तिगत प्रयास की भूमिका के बारे में पूछा जाए, तो वे सबसे अधिक संभावना से क्या कहेंगे?",
+          "choices": [
+            "व्यक्तिगत प्रयास मुक्ति में मुख्य भूमिका निभाता है",
+            "मुक्ति एक व्यक्ति के जन्म और सामाजिक स्थिति द्वारा निर्धारित की जाती है",
+            "सब कुछ पूर्वनिर्धारित है और बदला नहीं जा सकता",
+            "मुक्ति रीति-रिवाजों और बलिदानों द्वारा प्राप्त की जा सकती है"
+          ],
+          "solution": "आजीविकों के पास कठोर निर्धारणवाद की धारणा थी, जिसका अर्थ है कि सभी घटनाएं पूर्वनिर्धारित और अपरिवर्तनीय हैं, जिसके कारण तीसरा विकल्प सही है। पहला विकल्प मुक्ति के स्वतंत्र इच्छा को संकेत देता है, जो उनके दर्शन के विरोधी है। दूसरा विकल्प एक अलग परंपरा के सामाजिक वर्ग के दृष्टिकोण को प्रतिबिंबित करता है। चौथा विकल्प रीति-रिवाजों के द्वारा भाग्य को प्रभावित करने का अंतर्निहित अर्थ रखता है, जिसे आजीविक अस्वीकार करेंगे।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate terminology consistent with Indian history textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर आजीविका परंपरेच्या शिक्षकाला मुक्ती प्राप्त करण्यासाठी व्यक्तिगत प्रयत्नाच्या भूमिकेबद्दल विचारले गेले तर ते सर्वात जास्त काय म्हणतील?",
+          "choices": [
+            "व्यक्तिगत प्रयत्न मुक्तीत महत्त्वाची भूमिका बजावतात",
+            "मुक्ती ही जन्म आणि सामाजिक स्थितीवर अवलंबून असते",
+            "सर्व काही ठरलेले असते आणि बदलता येत नाही",
+            "मुक्ती रिती-कर्मांमुळे प्राप्त करता येते"
+          ],
+          "solution": "आजीविकांनी कठोर निर्धारवादाचा विश्वास असे, ज्यामुळे सर्व घटना अगोदर ठरलेल्या आणि बदलता येणार नाहीत, ज्यामुळे तिसरा विकल्प बरोबर असतो. पहिला विकल्प मुक्त इच्छाचा सूचित करतो, जो त्यांच्या दर्शनाशी विरोधी असतो. दुसरा विकल्प वेगळ्या परंपरेच्या सामाजिक वर्गवारीबद्दलच्या दृष्टिकोनाला प्रतिबिंबित करतो. चौथा विकल्प रिती-कर्मांमुळे भविष्यावर प्रभाव पाडता येतो, असा अर्थ देतो, जो आजीविकांनी नाकारतील.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for philosophical concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "reflects the view of individual agency in other traditions",
+        "refers to the Brahmanical perspective on social status",
+        null,
+        "fails to recognize the fatalistic nature of the Ajivika tradition"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 2, as the Ajivikas were fatalists who believed in predestination. The author's solution is correct, and the reasons for the wrong options align with common misconceptions about other traditions.",
+      "sources": [
+        {
+          "document": "ncert/12/history/lehs104.pdf",
+          "ordinal": 3,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 4: Thinkers, Beliefs and Buildings FOUR",
+            "Sacrifices and Debates"
+          ]
+        },
+        {
+          "document": "ncert/12/history/lehs104.pdf",
+          "ordinal": 4,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 4: Thinkers, Beliefs and Buildings FOUR",
+            "How Buddhist texts were prepared and preserved"
+          ]
+        },
+        {
+          "document": "ncert/12/history/lehs104.pdf",
+          "ordinal": 5,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 4: Thinkers, Beliefs and Buildings FOUR",
+            "How Buddhist texts were prepared and preserved"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T17:44:47.642Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "What does the term 'in situ' mean in the context of archaeological sites?",
+      "choices": [
+        "On the spot",
+        "In the museum",
+        "In the capital",
+        "In the temple"
+      ],
+      "answerIndex": 0,
+      "solution": "The correct answer is 'On the spot'. In archaeology, 'in situ' refers to the original position of an object, meaning it has not been moved from where it was found. The other options do not align with the scientific definition of the term.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "किसी विशेष जियोलॉजिकल स्थल के संदर्भ में 'इन साइटू' शब्द का अर्थ क्या होता है?",
+          "choices": [
+            "स्थान पर",
+            "म्यूजियम में",
+            "राजधानी में",
+            "मंदिर में"
+          ],
+          "solution": "सही उत्तर 'स्थान पर' है। जियोलॉजी में, 'इन साइटू' एक वस्तु की मूल स्थिति को संदर्भित करता है, जिसका अर्थ है कि इसे जहां खोजा गया था, वहीं रखा गया है। अन्य विकल्प शब्द के वैज्ञानिक परिभाषा के साथ मेल नहीं खाते।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "अभिलेखीय स्थळांच्या संदर्भात 'इन सिटू' शब्दाचा अर्थ काय आहे?",
+          "choices": [
+            "जागेवर",
+            "म्युझियममध्ये",
+            "राजधानीत",
+            "मंदिरात"
+          ],
+          "solution": "बरोबर उत्तर 'जागेवर' आहे. अभिलेखशास्त्रात, 'इन सिटू' वस्तूच्या मूळ स्थितीला संदर्भित करते, ज्याचा अर्थ ती तिथे शोधली गेलेल्या जागेपासून हलवली गेलेली नाही. इतर विकल्प शब्दाच्या वैज्ञानिक व्याख्येशी सुसंगत नाहीत.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the original meaning, and uses appropriate terminology common in Marathi-medium textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses preservation in museums with in situ",
+        "Confuses location in the capital with in situ",
+        "Confuses location in the temple with in situ"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 'On the spot' as 'in situ' is a Latin term meaning 'in the original place' or 'on the spot'. The other options represent common misconceptions about the term.",
+      "sources": [
+        {
+          "document": "ncert/12/history/lehs104.pdf",
+          "ordinal": 16,
+          "pageStart": 18,
+          "pageEnd": 19,
+          "headingPath": [
+            "Chapter 4: Thinkers, Beliefs and Buildings FOUR",
+            "The Fate of Amaravati and Sanchi"
+          ]
+        },
+        {
+          "document": "ncert/12/history/lehs104.pdf",
+          "ordinal": 17,
+          "pageStart": 19,
+          "pageEnd": 20,
+          "headingPath": [
+            "Chapter 4: Thinkers, Beliefs and Buildings FOUR",
+            "9. Sculpture"
+          ]
+        },
+        {
+          "document": "ncert/12/history/lehs104.pdf",
+          "ordinal": 18,
+          "pageStart": 20,
+          "pageEnd": 22,
+          "headingPath": [
+            "Chapter 4: Thinkers, Beliefs and Buildings FOUR",
+            "Paintings from the past"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T17:44:47.642Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "Based on the chapter, which of the following can be inferred about the role of religious traditions in shaping the built environment?",
+      "choices": [
+        "Religious texts were the only influence on the construction of temples",
+        "The design of temples was unrelated to the beliefs of the time",
+        "Temples and stupas reflected the religious and philosophical ideas of the period",
+        "Temples were built solely for political reasons"
+      ],
+      "answerIndex": 2,
+      "solution": "The chapter suggests that the development of sculpture and architecture, such as temples and stupas, was closely linked to religious traditions and philosophical ideas. This implies that religious and philosophical beliefs influenced the built environment. The other options contradict the chapter's content.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "अध्याय के आधार पर, निम्नलिखित में से कौन-सा धार्मिक परंपराओं के भूताकाश वातावरण के आकार बनाने में भूमिका के बारे में निष्कर्ष निकाला जा सकता है?",
+          "choices": [
+            "धार्मिक पाठ धर्मस्थलों के निर्माण पर एकमात्र प्रभाव थे",
+            "मंदिरों के डिज़ाइन उस समय के विश्वासों से असंबद्ध थे",
+            "मंदिर और स्तूप उस अवधि के धार्मिक और दार्शनिक विचारों का प्रतिनिधित्व करते थे",
+            "मंदिर केवल राजनीतिक कारणों के लिए बनाए गए थे"
+          ],
+          "solution": "अध्याय बताता है कि मूर्ति और वास्तुकला, जैसे मंदिर और स्तूप के विकास, धार्मिक परंपराओं और दार्शनिक विचारों से घनिष्ठ रूप से जुड़े रहे। इसका अर्थ है कि धार्मिक और दार्शनिक विचार भूताकाश वातावरण को प्रभावित करते रहे। अन्य विकल्प अध्याय के सामग्री के विरोधी हैं।",
+          "imageAlt": null,
+          "critique": "The translation accurately reflects the original meaning, with appropriate Hindi terminology and logical structure.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "अध्यायानुसार, धार्मिक परंपरांच्या भूतकाळातील बांधकाम वातावरणाच्या भूमिकेबद्दल खालीलपैकी काय अंदाज लावता येईल?",
+          "choices": [
+            "धार्मिक ग्रंथांनी मंदिरांच्या बांधकामावर एकट्याच प्रभाव टाकला",
+            "मंदिरांचा डिझाइन त्या काळातील विश्वासांशी संबंधित नव्हता",
+            "मंदिरे आणि स्तूप त्या काळातील धार्मिक आणि दर्शनशास्त्रीय विचारांचे प्रतिबिंबित करत होते",
+            "मंदिरे राजकीय कारणांसाठी एकटीच बांधली गेली होती"
+          ],
+          "solution": "अध्यायाने मंदिरे आणि स्तूप यांसारख्या शिल्प आणि वास्तुकलेच्या विकासाचा धार्मिक परंपरांच्या आणि दर्शनशास्त्रीय विचारांशी घनिष्ठ संबंध असल्याचे सूचित केले आहे. हे अंदाज लावते की धार्मिक आणि दर्शनशास्त्रीय विचार बांधकाम वातावरणावर प्रभाव टाकत होते. इतर पर्याय अध्यायाच्या सामग्रीच्या विरुद्ध आहेत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for religious and philosophical concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Overstates the influence of religious texts",
+        "Incorrectly states that religious influence was absent",
+        null,
+        "Misrepresents the purpose of temples"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 2, as it aligns with the chapter's emphasis on the influence of religious and philosophical ideas on architecture. The other options are clearly incorrect and represent common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/12/history/lehs104.pdf",
+          "ordinal": 25,
+          "pageStart": 31,
+          "pageEnd": 33,
+          "headingPath": [
+            "Chapter 4: Thinkers, Beliefs and Buildings FOUR",
+            "Project (any one)"
+          ]
+        },
+        {
+          "document": "ncert/12/history/lehs104.pdf",
+          "ordinal": 26,
+          "pageStart": 33,
+          "pageEnd": 33,
+          "headingPath": [
+            "Chapter 4: Thinkers, Beliefs and Buildings FOUR",
+            "Credits for Illustrations"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T17:44:47.642Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "Which of the following best explains why the rulers of Bhopal were interested in preserving the Sanchi Stupa?",
+      "choices": [
+        "They wanted to use the site for religious festivals",
+        "They believed in the religious significance of the site",
+        "They wanted to attract European tourists to Bhopal",
+        "They wanted to establish a museum in Bhopal"
+      ],
+      "answerIndex": 1,
+      "solution": "The correct option is based on the belief that the Sanchi Stupa held religious importance, which would have motivated its preservation. The other options suggest practical or tourist-related reasons, which are not supported by the historical context of the rulers' actions.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा सबसे अच्छा स्पष्टीकरण बताता है कि भोपाल के शासक क्यों सांची स्तूप के संरक्षण में रुचि रखते थे?",
+          "choices": [
+            "उन्हें धार्मिक उत्सवों के लिए साइट का उपयोग करना चाहिए था",
+            "उन्हें उस साइट के धार्मिक महत्व में विश्वास था",
+            "उन्हें भोपाल में यूरोपीय पर्यटकों को आकर्षित करना चाहिए था",
+            "उन्हें भोपाल में एक संग्रहालय स्थापित करना चाहिए था"
+          ],
+          "solution": "सही विकल्प उस विश्वास पर आधारित है कि सांची स्तूप के धार्मिक महत्व था, जिसके कारण इसके संरक्षण की प्रेरणा रही होगी। अन्य विकल्प व्यावहारिक या पर्यटक संबंधी कारणों को दर्शाते हैं, जो शासकों के कार्यों के ऐतिहासिक संदर्भ में समर्थित नहीं हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the original English question and maintains the same meaning, structure, and intent. Technical terms like 'स्तूप' (stupa) and 'धार्मिक महत्व' (religious significance) are appropriately used in a Hindi educational context.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते सर्वात चांगले स्पष्टीकरण बोपाळच्या शासकांनी सांची स्तूप जिवंत ठेवण्यासाठी राजकीय आवश्यकता कशी असेल?",
+          "choices": [
+            "त्यांनी त्या ठिकाणी धार्मिक उत्सवांसाठी वापरायचे होते",
+            "त्यांना त्या ठिकाणाच्या धार्मिक महत्त्वाबद्दल विश्वास होता",
+            "त्यांनी बोपाळला युरोपियन पर्यटकांना आकर्षित करायचे होते",
+            "त्यांनी बोपाळमध्ये संग्रहालय स्थापन करायचे होते"
+          ],
+          "solution": "योग्य विकल्प त्या ठिकाणाच्या धार्मिक महत्त्वाबद्दल विश्वासावर आधारित आहे, ज्यामुळे त्याच्या अस्तित्वाची व्यवस्था करण्याचे प्रेरणा दिली जाऊ शकते. इतर विकल्प व्यावहारिक किंवा पर्यटक संबंधित कारणांवर आधारित आहेत, जे शासकांच्या कृतींच्या ऐतिहासिक संदर्भाने समर्थित नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for historical and religious concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Students may think that historical sites were preserved primarily for ongoing religious practices rather than for cultural or historical reasons.",
+        null,
+        "Students may think that the rulers preserved the site for economic or tourist reasons, not understanding its religious or historical value.",
+        "They confused the purpose of preservation with the establishment of a museum, not realizing it was about protection, not display"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 1, as the rulers of Bhopal preserved the Sanchi Stupa due to its religious significance. The other options are incorrect because they reflect misconceptions about the purpose of preservation, such as assuming it was for festivals, tourism, or museum purposes.",
+      "sources": [
+        {
+          "document": "ncert/12/history/lehs104.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 1,
+          "headingPath": [
+            "Chapter 4: Thinkers, Beliefs and Buildings FOUR",
+            "Cultural DeCultural Deal Deval Devvelopments"
+          ]
+        },
+        {
+          "document": "ncert/12/history/lehs104.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 4: Thinkers, Beliefs and Buildings FOUR",
+            "Sanchi in the nineteenth century"
+          ]
+        },
+        {
+          "document": "ncert/12/history/lehs104.pdf",
+          "ordinal": 2,
+          "pageStart": 3,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 4: Thinkers, Beliefs and Buildings FOUR",
+            "Sacrifices and Debates"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T17:44:47.642Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "If a historian wanted to understand the beliefs of the Lokayatas, which of the following would be the most reliable source?",
+      "choices": [
+        "Buddhist texts that mention them",
+        "Vedic texts that describe them",
+        "Ancient manuscripts found in monasteries",
+        "Modern translations of Sanskrit texts"
+      ],
+      "answerIndex": 0,
+      "solution": "Buddhist texts that mention them are the most reliable because they are direct references to the Lokayatas from another tradition. Vedic texts that describe them are not reliable as they do not originate from the Lokayata tradition itself. Ancient manuscripts found in monasteries may not specifically relate to the Lokayatas. Modern translations of Sanskrit texts are secondary sources and not original records of the Lokayatas.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक इतिहासवेत्ता लोकायत के विश्वासों को समझना चाहता है, तो निम्नलिखित में से कौन-सा सबसे विश्वसनीय स्रोत होगा?",
+          "choices": [
+            "उनके बारे में उल्लेख करने वाले बौद्ध पाठ",
+            "उनका वर्णन करने वाले वैदिक पाठ",
+            "मठों में पाए गए प्राचीन हस्तलिखित पाठ",
+            "संस्कृत पाठों के आधुनिक अनुवाद"
+          ],
+          "solution": "बौद्ध पाठ जो उनके बारे में उल्लेख करते हैं, सबसे विश्वसनीय हैं क्योंकि वे अन्य परंपरा से लोकायत के सीधे संदर्भ हैं। वैदिक पाठ जो उनका वर्णन करते हैं, विश्वसनीय नहीं हैं क्योंकि वे लोकायत परंपरा से उत्पन्न नहीं हैं। मठों में पाए गए प्राचीन हस्तलिखित पाठ लोकायत से विशेष रूप से संबंधित नहीं हो सकते। संस्कृत पाठों के आधुनिक अनुवाद द्वितीयक स्रोत हैं और लोकायत के मूल रिकॉर्ड नहीं हैं।",
+          "imageAlt": null,
+          "critique": "Translation accurately preserves meaning, technical terms are appropriate for Hindi-medium curriculum, and the structure matches the original.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका इतिहासकाराला लोकायतांच्या विश्वासांचे ज्ञान करून देणारा सर्वात विश्वासार्ह स्रोत कोणता असेल?",
+          "choices": [
+            "लोकायतांना उल्लेख करणारी बौद्ध लेखने",
+            "लोकायतांचे वर्णन करणारी वैदिक लेखने",
+            "मठांमध्ये आढळलेली प्राचीन हस्तलिखिते",
+            "संस्कृत लेखनांचे आधुनिक अनुवाद"
+          ],
+          "solution": "बौद्ध लेखने ज्या लोकायतांना उल्लेख करतात त्या सर्वात विश्वासार्ह आहेत कारण त्या लोकायतांच्या इतर परंपरेतून थेट उल्लेख आहेत. वैदिक लेखने ज्या लोकायतांचे वर्णन करतात त्या विश्वासार्ह नाहीत कारण त्या लोकायतांच्या परंपरेतून उत्पन्न झालेल्या नाहीत. मठांमध्ये आढळलेली प्राचीन हस्तलिखिते लोकायतांशी विशिष्टपणे संबंधित असू शकत नाहीत. संस्कृत लेखनांचे आधुनिक अनुवाद द्वितीयक स्रोत आहेत आणि लोकायतांच्या मूळ नोंदी नाहीत.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the original meaning, and uses appropriate terminology. The structure and logic of the question and solution are preserved.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "confuses the source of information about the Lokayatas",
+        "misinterprets the availability of Vedic texts",
+        "overlooks the lack of original texts from the Lokayata tradition"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 0, as the question states that Lokayata texts have not survived and we know about them only through other traditions. The author's reasoning aligns with this, and the distractors reflect common misconceptions about the sources of information on the Lokayatas.",
+      "sources": [
+        {
+          "document": "ncert/12/history/lehs104.pdf",
+          "ordinal": 3,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 4: Thinkers, Beliefs and Buildings FOUR",
+            "Sacrifices and Debates"
+          ]
+        },
+        {
+          "document": "ncert/12/history/lehs104.pdf",
+          "ordinal": 4,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 4: Thinkers, Beliefs and Buildings FOUR",
+            "How Buddhist texts were prepared and preserved"
+          ]
+        },
+        {
+          "document": "ncert/12/history/lehs104.pdf",
+          "ordinal": 5,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 4: Thinkers, Beliefs and Buildings FOUR",
+            "How Buddhist texts were prepared and preserved"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T17:44:47.642Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Which of the following most accurately explains why stupas were built in ancient India?",
+      "choices": [
+        "To serve as royal tombs for kings and queens",
+        "To house relics of the Buddha and other sacred objects",
+        "To act as places of royal worship and ceremony",
+        "To mark the boundaries of kingdoms and territories"
+      ],
+      "answerIndex": 1,
+      "solution": "Stupas were built to house relics of the Buddha and other sacred objects, as this practice was central to their religious significance. Other options are incorrect because there is no scientific or historical evidence linking stupas to royal tombs, worship, or territorial markers. The primary purpose of stupas was spiritual and related to preserving sacred items.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा विकल्प प्राचीन भारत में स्तूपों के निर्माण के कारण की अधिक सटीक व्याख्या करता है?",
+          "choices": [
+            "राजाओं और रानियों के राजकीय कब्र के रूप में काम करना",
+            "बुद्ध के अवशेष और अन्य पवित्र वस्तुओं को रखना",
+            "राजकीय पूजा और समारोह के स्थान के रूप में काम करना",
+            "राज्यों और क्षेत्रों की सीमाओं को चिह्नित करना"
+          ],
+          "solution": "स्तूपों का निर्माण बुद्ध के अवशेष और अन्य पवित्र वस्तुओं को रखने के लिए किया गया था, क्योंकि इस प्रथा को उनके धार्मिक महत्व के केंद्र में रखा गया था। अन्य विकल्प गलत हैं क्योंकि राजकीय कब्र, पूजा या सीमा चिह्नों से स्तूपों के संबंध के वैज्ञानिक या ऐतिहासिक प्रमाण नहीं हैं। स्तूपों का मुख्य उद्देश्य आध्यात्मिक था और पवित्र वस्तुओं के संरक्षण से संबंधित था।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate terminology common in Hindi history textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते विधान जुन्या भारतात स्तूप बांधल्याच्या कारणाचे सर्वात अचूक स्पष्टीकरण देते?",
+          "choices": [
+            "राजांच्या आणि राणींच्या राजकीय शमशानांच्या रूपात काम करणे",
+            "बुद्धाच्या आणि इतर आध्यात्मिक वस्तूंच्या अवशेषांच्या ठिकाणी राखणे",
+            "राजकीय पूजा आणि समारंभांच्या जागा म्हणून काम करणे",
+            "राज्यांच्या आणि क्षेत्रांच्या सीमा दर्शविण्यासाठी"
+          ],
+          "solution": "स्तूप बुद्धाच्या आणि इतर आध्यात्मिक वस्तूंच्या अवशेषांच्या ठिकाणी राखण्यासाठी बांधले गेले, कारण ही प्रथा त्यांच्या धार्मिक महत्त्वाच्या भागात होती. इतर विकल्प चुकीचे आहेत कारण राजकीय शमशानां, पूजा आणि सीमा चिन्हांशी संबंधित स्तूपांच्या विषयी वैज्ञानिक किंवा इतिहासातील कोणताही पुरावा नाही. स्तूपांचा मुख्य उद्देश आध्यात्मिक आणि आध्यात्मिक वस्तूंच्या संरक्षणाशी संबंधित होता.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for historical and religious concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses stupas with royal tombs",
+        null,
+        "Misunderstands the purpose of stupas",
+        "Misinterprets the role of stupas in royal contexts"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 1, as stupas were indeed built to house relics of the Buddha. The other options represent common misconceptions about the function of stupas.",
+      "sources": [
+        {
+          "document": "ncert/12/history/lehs104.pdf",
+          "ordinal": 12,
+          "pageStart": 13,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 4: Thinkers, Beliefs and Buildings FOUR",
+            "7. Stupas"
+          ]
+        },
+        {
+          "document": "ncert/12/history/lehs104.pdf",
+          "ordinal": 13,
+          "pageStart": 15,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 4: Thinkers, Beliefs and Buildings FOUR",
+            "7. Stupas"
+          ]
+        },
+        {
+          "document": "ncert/12/history/lehs104.pdf",
+          "ordinal": 14,
+          "pageStart": 15,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 4: Thinkers, Beliefs and Buildings FOUR",
+            "7. Stupas"
+          ]
+        },
+        {
+          "document": "ncert/12/history/lehs104.pdf",
+          "ordinal": 15,
+          "pageStart": 17,
+          "pageEnd": 17,
+          "headingPath": [
+            "Chapter 4: Thinkers, Beliefs and Buildings FOUR",
+            "The Fate of Amaravati and Sanchi"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T17:44:47.642Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "The chapter discusses the influence of religious traditions on the development of art and architecture. Which of the following best explains why this influence is significant?",
+      "choices": [
+        "It shows how religion shaped economic activities",
+        "It reflects the philosophical and spiritual values of the time",
+        "It illustrates the political power of religious leaders",
+        "It demonstrates the technical skills of artisans"
+      ],
+      "answerIndex": 1,
+      "solution": "The chapter highlights how religious traditions influenced art and architecture, which in turn reflected the philosophical and spiritual values of the time. This is the core idea behind the chapter's discussion. The other options, while possibly true, are not the primary focus of the chapter.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "अध्याय कला एवं वास्तुकला के विकास पर धार्मिक परंपराओं के प्रभाव के बारे में चर्चा करता है। निम्नलिखित में से कौन-सा इस प्रभाव के महत्व की बेस्ट व्याख्या करता है?",
+          "choices": [
+            "यह धर्म द्वारा आर्थिक गतिविधियों के आकार को दर्शाता है",
+            "यह उस समय के दार्शनिक एवं आध्यात्मिक मूल्यों को प्रतिबिंबित करता है",
+            "यह धार्मिक नेताओं के राजनीतिक शक्ति को दर्शाता है",
+            "यह कलाकारों के तकनीकी कौशल को दर्शाता है"
+          ],
+          "solution": "अध्याय धार्मिक परंपराओं के कला एवं वास्तुकला पर प्रभाव के बारे में चर्चा करता है, जो उस समय के दार्शनिक एवं आध्यात्मिक मूल्यों को प्रतिबिंबित करता है। यह अध्याय की चर्चा के मूल विचार है। अन्य विकल्प, यद्यपि सत्य हो सकते हैं, अध्याय का प्रमुख ध्यान नहीं है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the original English question and solution, with appropriate terminology used in a Hindi-medium educational context.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "अध्यायात धार्मिक परंपरांचा कला आणि वास्तुकला विकासावर होणारा प्रभाव चर्चा केला आहे. खालीलपैकी कोणता शब्द या प्रभावाच्या महत्त्वाचे सर्वात चांगले स्पष्टीकरण करतो?",
+          "choices": [
+            "ते धर्माने आर्थिक क्रियाकलापांचा आधार दर्शवते",
+            "ते त्या काळातील दार्शनिक आणि आध्यात्मिक किंमतींचे प्रतिबिंबित करते",
+            "ते धार्मिक नेत्यांच्या राजकीय शक्तीचे दर्शवते",
+            "ते कारागीरांच्या तंत्रज्ञानाचे दर्शवते"
+          ],
+          "solution": "अध्यायात धार्मिक परंपरांचा कला आणि वास्तुकलावर होणारा प्रभाव अधिक चर्चा केली गेली आहे, जी त्या काळातील दार्शनिक आणि आध्यात्मिक किंमतींचे प्रतिबिंबित करते. हा अध्यायाच्या चर्चेचा मुख्य विचार आहे. इतर विकल्प, जरी खरे असले तरी, अध्यायाचा मुख्य लक्ष नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology. The correct answer remains option (2), and the distractors are still incorrect.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Focuses on economic impact, not spiritual values",
+        null,
+        "Emphasizes political power, not artistic or philosophical influence",
+        "Highlights technical skills, not the deeper significance of the influence"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 1, as it directly addresses the philosophical and spiritual values reflected in art and architecture, which aligns with the chapter's focus. The other options, while potentially true in other contexts, are not the primary focus of the chapter as described.",
+      "sources": [
+        {
+          "document": "ncert/12/history/lehs104.pdf",
+          "ordinal": 25,
+          "pageStart": 31,
+          "pageEnd": 33,
+          "headingPath": [
+            "Chapter 4: Thinkers, Beliefs and Buildings FOUR",
+            "Project (any one)"
+          ]
+        },
+        {
+          "document": "ncert/12/history/lehs104.pdf",
+          "ordinal": 26,
+          "pageStart": 33,
+          "pageEnd": 33,
+          "headingPath": [
+            "Chapter 4: Thinkers, Beliefs and Buildings FOUR",
+            "Credits for Illustrations"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T17:44:47.642Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
     }
   ]
 }

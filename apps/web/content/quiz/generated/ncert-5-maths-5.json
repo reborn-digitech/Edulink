@@ -309,6 +309,400 @@
       "generatedAt": "2026-10-28T05:22:27.428Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of the following is the correct relationship between units of length?",
+      "choices": [
+        "10 mm = 1 m",
+        "100 mm = 1 m",
+        "10 cm = 1 m",
+        "100 cm = 1 m"
+      ],
+      "answerIndex": 3,
+      "solution": "The correct relationship is 100 cm = 1 m because 1 meter is defined as 100 centimeters. The other options are incorrect because 10 mm equals 1 cm, not 1 m, and 10 cm equals 100 mm, not 1 m.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा लंबाई के इकाई के बीच सही संबंध है?",
+          "choices": [
+            "10 मिमी = 1 मी",
+            "100 मिमी = 1 मी",
+            "10 सेमी = 1 मी",
+            "100 सेमी = 1 मी"
+          ],
+          "solution": "सही संबंध 100 सेमी = 1 मी है क्योंकि 1 मीटर को 100 सेंटीमीटर के रूप में परिभाषित किया गया है। अन्य विकल्प गलत हैं क्योंकि 10 मिमी के बराबर 1 सेमी होता है, न कि 1 मी और 10 सेमी के बराबर 100 मिमी होता है, न कि 1 मी।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, technical terms are standard in Hindi textbooks, and the logic of the solution matches the original.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणता लांबीच्या एककांमधील योग्य संबंध आहे?",
+          "choices": [
+            "10 मिमी = 1 मी",
+            "100 मिमी = 1 मी",
+            "10 सेमी = 1 मी",
+            "100 सेमी = 1 मी"
+          ],
+          "solution": "100 सेमी = 1 मी हा योग्य संबंध आहे कारण 1 मीटर ला 100 सेंटीमीटर म्हणतात. इतर विकल्प अयोग्य आहेत कारण 10 मिमी हा 1 सेमी आहे, 1 मी नाही आणि 10 सेमी हा 100 मिमी आहे, 1 मी नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Marathi terminology for units of length.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses millimetres with centimetres",
+        "Confuses millimetres with centimetres",
+        "Confuses centimetres with millimetres",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 3 (100 cm = 1 m). The solution is sound and matches the correct answer. The distractors are all incorrect, and the author's reasons for the misconceptions are valid.",
+      "sources": [
+        {
+          "document": "ncert/5/mathematics/eemm105.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 5: Far and Near"
+          ]
+        },
+        {
+          "document": "ncert/5/mathematics/eemm105.pdf",
+          "ordinal": 1,
+          "pageStart": 3,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 5: Far and Near"
+          ]
+        },
+        {
+          "document": "ncert/5/mathematics/eemm105.pdf",
+          "ordinal": 2,
+          "pageStart": 5,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 5: Far and Near"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-23T00:17:18.881Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If a rope is 5 m 30 cm long, what is its length in centimetres?",
+      "choices": [
+        "530 cm",
+        "53 cm",
+        "503 cm",
+        "5300 cm"
+      ],
+      "answerIndex": 0,
+      "solution": "To convert meters to centimeters, remember that 1 meter equals 100 centimeters. Therefore, 5 meters is 500 centimeters, and adding 30 centimeters gives a total of 530 centimeters. The other options are incorrect because they either misapply the conversion or add the values incorrectly.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक रस्सी 5 मी 30 सेमी लंबी है, तो इसकी लंबाई सेमी में क्या होगी?",
+          "choices": [
+            "530 सेमी",
+            "53 सेमी",
+            "503 सेमी",
+            "5300 सेमी"
+          ],
+          "solution": "मीटर को सेमी में बदलने के लिए, ध्यान रखें कि 1 मीटर में 100 सेमी होते हैं। इसलिए, 5 मीटर 500 सेमी होता है, और 30 सेमी जोड़ने से कुल 530 सेमी प्राप्त होता है। अन्य विकल्प गलत हैं क्योंकि वे या तो संकलन के नियम का गलत उपयोग करते हैं या मानों को गलत तरीके से जोड़ते हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi technical terms for units of measurement.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर एक रस्ता 5 मी 30 सेमी लांब असेल, तर त्याची लांबी सेमी मध्ये किती असेल?",
+          "choices": [
+            "530 सेमी",
+            "53 सेमी",
+            "503 सेमी",
+            "5300 सेमी"
+          ],
+          "solution": "मीटर ते सेमी रूपांतरित करण्यासाठी, 1 मीटर 100 सेमी बरोबर आहे हे लक्षात ठेवा. त्यामुळे 5 मीटर 500 सेमी असतात आणि 30 सेमी मिळविल्याने एकूण 530 सेमी असतात. इतर विकल्प चूक आहेत कारण ते रूपांतरित करण्याच्या विधी चुकीच्या पद्धतीने लागू करतात किंवा मूल्ये चुकीच्या पद्धतीने जोडतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the correct answer position, and uses appropriate Marathi terminology for units of measurement.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Adds 5 and 30 incorrectly",
+        "Thinks 5 m is 50 cm",
+        "Thinks 5 m is 5000 cm"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The question is straightforward and the solution is correct. The conversion from meters to centimeters is properly applied, and the reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/5/mathematics/eemm105.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 5: Far and Near"
+          ]
+        },
+        {
+          "document": "ncert/5/mathematics/eemm105.pdf",
+          "ordinal": 1,
+          "pageStart": 3,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 5: Far and Near"
+          ]
+        },
+        {
+          "document": "ncert/5/mathematics/eemm105.pdf",
+          "ordinal": 2,
+          "pageStart": 5,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 5: Far and Near"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-23T00:17:18.881Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "Look at the double number line given. What is the missing value in the second row?",
+      "choices": [
+        "25 mm",
+        "250 mm",
+        "2500 mm",
+        "25000 mm"
+      ],
+      "answerIndex": 1,
+      "solution": "The pattern shows that each value in the second row is 10 times the corresponding value in the first row. Since the first row has 25 cm, multiplying by 10 gives 250 mm. The other options do not follow this consistent multiplication by 10.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "दिए गए डबल संख्या रेखा को देखें। दूसरी पंक्ति में लुप्त मान क्या है?",
+          "choices": [
+            "25 मिमी",
+            "250 मिमी",
+            "2500 मिमी",
+            "25000 मिमी"
+          ],
+          "solution": "पैटर्न दर्शाता है कि दूसरी पंक्ति का प्रत्येक मान पहली पंक्ति के संगत मान का 10 गुना है। चूंकि पहली पंक्ति में 25 सेमी है, 10 से गुणा करने पर 250 मिमी प्राप्त होता है। अन्य विकल्प इस संगत 10 गुना के नियम का अनुसरण नहीं करते हैं।",
+          "imageAlt": "एक संख्या रेखा जो 0 से 500 तक मान दर्शाती है जिस पर x चिह्न द्वारा 250 पर एक बिंदु चिह्नित किया गया है",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology for mathematical concepts.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "दिलेल्या डबल नंबर लाईन बघा. दुसऱ्या ओळीत अपूर्ण मूल्य काय आहे?",
+          "choices": [
+            "25 मिमी",
+            "250 मिमी",
+            "2500 मिमी",
+            "25000 मिमी"
+          ],
+          "solution": "आकृतीतील पॅटर्न दर्शवितो की दुसऱ्या ओळीतील प्रत्येक मूल्य पहिल्या ओळीतील संगत मूल्याच्या 10 पट आहे. पहिल्या ओळीत 25 सेमी आहे, 10 ने गुणल्यास 250 मिमी मिळते. इतर विकल्प 10 ने गुणित नसल्यामुळे योग्य नाहीत.",
+          "imageAlt": "एक नंबर लाईन जी 0 ते 500 पर्यंत दर्शवते आणि 250 वर x नावाचा बिंदू आहे",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms for units (मिमी, सेमी).",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": "A number line showing values from 0 to 500 with a point labeled x at 250",
+      "figure": {
+        "kind": "numberline",
+        "spec": {
+          "min": 0,
+          "max": 500,
+          "step": 50,
+          "points": [
+            {
+              "value": 250,
+              "label": "x"
+            }
+          ]
+        },
+        "labels": {}
+      },
+      "needsFigure": true,
+      "distractorReason": [
+        "Thinks 25 cm is 25 mm",
+        null,
+        "Thinks 25 cm is 2500 mm",
+        "Thinks 25 cm is 25000 mm"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is ambiguous due to the lack of a visible double number line, but the author's solution assumes a 1 cm = 10 mm conversion. The correct answer is 250 mm (25 cm), and the distractors reflect common unit conversion errors.",
+      "sources": [
+        {
+          "document": "ncert/5/mathematics/eemm105.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 5: Far and Near"
+          ]
+        },
+        {
+          "document": "ncert/5/mathematics/eemm105.pdf",
+          "ordinal": 1,
+          "pageStart": 3,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 5: Far and Near"
+          ]
+        },
+        {
+          "document": "ncert/5/mathematics/eemm105.pdf",
+          "ordinal": 2,
+          "pageStart": 5,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 5: Far and Near"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-23T00:17:18.881Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "The distance from Bhopal to Sanchi is 48 km 700 m. The waterfall is 17 km 900 m away from Bhopal. How far is Sanchi from the waterfall?",
+      "choices": [
+        "30 km 800 m",
+        "30 km 900 m",
+        "31 km 800 m",
+        "31 km 900 m"
+      ],
+      "answerIndex": 0,
+      "solution": "The correct answer is 30 km 800 m. Subtracting 17 km 900 m from 48 km 700 m gives 30 km 800 m. The other options are incorrect because they do not subtract the units correctly.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "भोपाल से सांची की दूरी 48 किमी 700 मीटर है। झरना भोपाल से 17 किमी 900 मीटर की दूरी पर है। सांची झरने से कितनी दूर है?",
+          "choices": [
+            "30 किमी 800 मीटर",
+            "30 किमी 900 मीटर",
+            "31 किमी 800 मीटर",
+            "31 किमी 900 मीटर"
+          ],
+          "solution": "सही उत्तर 30 किमी 800 मीटर है। 48 किमी 700 मीटर में से 17 किमी 900 मीटर को घटाने पर 30 किमी 800 मीटर प्राप्त होता है। अन्य विकल्प गलत हैं क्योंकि वे इकाईयां सही तरह से घटाने में असमर्थ हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard Indian metric terms.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "भोपाळ ते सांची पर्यंत अंतर 48 किमी 700 मी आहे. झरा भोपाळपासून 17 किमी 900 मी अंतरावर आहे. सांची झर्यापासून किती अंतरावर आहे?",
+          "choices": [
+            "30 किमी 800 मी",
+            "30 किमी 900 मी",
+            "31 किमी 800 मी",
+            "31 किमी 900 मी"
+          ],
+          "solution": "बरोबर उत्तर 30 किमी 800 मी आहे. 48 किमी 700 मी मधून 17 किमी 900 मी वजा करणे अंतर 30 किमी 800 मी देते. इतर उत्तरे अशी आहेत की ते एकके योग्यरित्या वजा करत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi terms for measurements.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Subtracting the meters first without borrowing, 700 m - 900 m = -200 m, but the student incorrectly writes 900 m instead of borrowing 1 km",
+        "Adding the kilometers and meters separately without considering the need to subtract the smaller distance from the larger one",
+        "Adding the kilometers and meters separately without considering the need to borrow when subtracting"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 30 km 800 m, as 48 km 700 m minus 17 km 900 m requires borrowing 1 km (1000 m) to subtract 900 m from 1700 m, resulting in 30 km 800 m. The author's solution and reasoning are correct.",
+      "sources": [
+        {
+          "document": "ncert/5/mathematics/eemm105.pdf",
+          "ordinal": 3,
+          "pageStart": 8,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 5: Far and Near"
+          ]
+        },
+        {
+          "document": "ncert/5/mathematics/eemm105.pdf",
+          "ordinal": 4,
+          "pageStart": 10,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 5: Far and Near"
+          ]
+        },
+        {
+          "document": "ncert/5/mathematics/eemm105.pdf",
+          "ordinal": 5,
+          "pageStart": 12,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 5: Far and Near"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-23T00:17:18.881Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
     }
   ]
 }

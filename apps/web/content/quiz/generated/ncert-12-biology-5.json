@@ -1059,6 +1059,901 @@
       "generatedAt": "2026-10-29T03:21:32.504Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "Which type of DNA replication was proposed by Watson and Crick?",
+      "choices": [
+        "Conservative replication",
+        "Semi-conservative replication",
+        "Dispersive replication",
+        "Full replication"
+      ],
+      "answerIndex": 1,
+      "solution": "Watson and Crick proposed that DNA replication is semi-conservative, meaning each new DNA molecule contains one original strand and one newly synthesized strand. Conservative replication would keep the original DNA strands together, which contradicts the structure they proposed. Dispersive replication suggests the DNA is fragmented and reassembled, which is not supported by their model. Full replication is not a recognized type of DNA replication in this context.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "डीएनए प्रतिकृति के किस प्रकार का प्रस्ताव वॉटसन एवं क्रिक द्वारा किया गया था?",
+          "choices": [
+            "संरक्षी प्रतिकृति",
+            "अर्धसंरक्षी प्रतिकृति",
+            "विसरित प्रतिकृति",
+            "पूर्ण प्रतिकृति"
+          ],
+          "solution": "वॉटसन एवं क्रिक ने डीएनए प्रतिकृति के अर्धसंरक्षी प्रकार का प्रस्ताव दिया था, जिसका अर्थ है कि प्रत्येक नए डीएनए अणु में एक मूल श्रृंखला एवं एक नए रूप से संश्लेषित श्रृंखला होती है। संरक्षी प्रतिकृति मूल डीएनए श्रृंखलाओं को एक साथ रखेगी, जो उनके द्वारा प्रस्तावित संरचना के विरोधी होगा। विसरित प्रतिकृति के अनुसार डीएनए अणु टुकड़ों में विभाजित हो जाएगा एवं पुनः संयोजित हो जाएगा, जो उनके मॉडल द्वारा समर्थित नहीं है। पूर्ण प्रतिकृति इस संदर्भ में डीएनए प्रतिकृति के किसी भी मान्य प्रकार के रूप में अपरिचित है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the original English question and solution, with appropriate technical terms used in a way that aligns with standard Hindi-medium biology textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "वॉटसन आणि क्रिक द्वारे कोणत्या प्रकारच्या डीएनए प्रतिकृतीचा अभ्यास केला गेला?",
+          "choices": [
+            "संरक्षक प्रतिकृती",
+            "अर्धसंरक्षक प्रतिकृती",
+            "विसर्जित प्रतिकृती",
+            "पूर्ण प्रतिकृती"
+          ],
+          "solution": "वॉटसन आणि क्रिक द्वारे डीएनए प्रतिकृती अर्धसंरक्षक असल्याचा अभ्यास केला गेला, ज्यामध्ये प्रत्येक नवीन डीएनए अणूमध्ये एक मूळ स्ट्रॅंड आणि एक नवीन तयार झालेला स्ट्रॅंड असतो. संरक्षक प्रतिकृतीमध्ये मूळ डीएनए स्ट्रॅंड एकत्र राहतात, जे त्यांनी घोषित केलेल्या संरचनेशी विरोधात आहे. विसर्जित प्रतिकृतीमध्ये डीएनए तुकड्यांमध्ये विभक्त आहे आणि पुन्हा एकत्र केला जातो, जे त्यांच्या मॉडेलने समर्थित नाही. पूर्ण प्रतिकृती हा या संदर्भात ओळखली जाणारी प्रतिकृतीची प्रकार नाही.",
+          "imageAlt": null,
+          "critique": "The Marathi translation accurately reflects the English content, with appropriate terminology used in a Marathi science context.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the type of replication with another",
+        null,
+        "Does not understand the term 'semiconservative'",
+        "Misinterprets the process of replication as dispersal of DNA strands"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-constructed, with a clear correct answer and plausible distractors based on common misconceptions about DNA replication mechanisms.",
+      "sources": [
+        {
+          "document": "ncert/12/biology/lebo105.pdf",
+          "ordinal": 10,
+          "pageStart": 10,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 5: Molecular Basis of Inheritance",
+            "5.4"
+          ]
+        },
+        {
+          "document": "ncert/12/biology/lebo105.pdf",
+          "ordinal": 11,
+          "pageStart": 11,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 5: Molecular Basis of Inheritance",
+            "5.4"
+          ]
+        },
+        {
+          "document": "ncert/12/biology/lebo105.pdf",
+          "ordinal": 12,
+          "pageStart": 12,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 5: Molecular Basis of Inheritance",
+            "5.4"
+          ]
+        },
+        {
+          "document": "ncert/12/biology/lebo105.pdf",
+          "ordinal": 13,
+          "pageStart": 13,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 5: Molecular Basis of Inheritance",
+            "5.4"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T15:56:10.538Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "What was the result of the DNA extracted from the culture one generation after the transfer from N to N medium?",
+      "choices": [
+        "It had light density DNA only",
+        "It had heavy density DNA only",
+        "It had hybrid or intermediate density DNA",
+        "It had a mix of heavy and light DNA"
+      ],
+      "answerIndex": 2,
+      "solution": "The DNA extracted one generation after the transfer had a hybrid or intermediate density because it contained both original and newly synthesized strands. Light density DNA only would imply no new DNA was made, which is incorrect. Heavy density DNA only would suggest no dilution of the original DNA, which also doesn't match the results. A mix of heavy and light DNA would not occur because the replication process forms hybrids.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "N से N माध्यम में स्थानांतरण के एक पीढ़ी बाद निकाले गए DNA का परिणाम क्या रहा?",
+          "choices": [
+            "इसमें केवल हल्का घनत्व DNA था",
+            "इसमें केवल भारी घनत्व DNA था",
+            "इसमें हाइब्रिड या मध्यम घनत्व DNA था",
+            "इसमें भारी और हल्का DNA का मिश्रण था"
+          ],
+          "solution": "N से N माध्यम में स्थानांतरण के एक पीढ़ी बाद निकाले गए DNA में हाइब्रिड या मध्यम घनत्व था क्योंकि इसमें मूल और नए रूप से संश्लेषित स्ट्रैंड दोनों शामिल थे। केवल हल्का घनत्व DNA इसका अर्थ होता है कि कोई नया DNA नहीं बना, जो गलत है। केवल भारी घनत्व DNA इसका अर्थ होता है कि मूल DNA का कोई तनाव नहीं हुआ, जो परिणामों के अनुरूप नहीं है। भारी और हल्का DNA का मिश्रण तब नहीं होता क्योंकि प्रतिकृति प्रक्रिया हाइब्रिड बनाती है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate biological terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "N माध्यमातून N माध्यमात बदलल्यानंतर एका पिढीनंतर बाजूला घेतलेल्या DNA चा निकाल काय होता?",
+          "choices": [
+            "त्यात केवळ हलके घनत्वाचे DNA होते",
+            "त्यात केवळ भारी घनत्वाचे DNA होते",
+            "त्यात हायब्रिड किंवा मध्यम घनत्वाचे DNA होते",
+            "त्यात भारी आणि हलके DNA चा मिश्रण होते"
+          ],
+          "solution": "बदलल्यानंतर एका पिढीनंतर बाजूला घेतलेल्या DNA चा निकाल हायब्रिड किंवा मध्यम घनत्वाचा होता, कारण त्यात मूळ आणि नवीन संश्लेषित स्ट्रॅंड दोन्ही होते. केवळ हलके घनत्वाचे DNA होते असे म्हणणे नवीन DNA बनला नसल्याचा अर्थ आहे, जे चूक आहे. केवळ भारी घनत्वाचे DNA होते असे म्हणणे मूळ DNA च्या विरलीकरणाचा अर्थ आहे, जे निकालाशी मेळ बसत नाही. भारी आणि हलके DNA चा मिश्रण होणार नाही कारण प्रतिकृती प्रक्रिया हायब्रिड तयार करते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Thinks the DNA was completely light",
+        "Thinks the DNA was completely heavy",
+        null,
+        "Does not understand the concept of hybrid DNA"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The question refers to the classic Meselson-Stahl experiment, where DNA was labeled with heavy nitrogen (15N) and then transferred to light nitrogen (14N) medium. After one generation, the DNA was found to be hybrid (15N-14N), not purely light or heavy. The reasoning in the author's solution is accurate and matches the expected understanding of semi-conservative replication.",
+      "sources": [
+        {
+          "document": "ncert/12/biology/lebo105.pdf",
+          "ordinal": 10,
+          "pageStart": 10,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 5: Molecular Basis of Inheritance",
+            "5.4"
+          ]
+        },
+        {
+          "document": "ncert/12/biology/lebo105.pdf",
+          "ordinal": 11,
+          "pageStart": 11,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 5: Molecular Basis of Inheritance",
+            "5.4"
+          ]
+        },
+        {
+          "document": "ncert/12/biology/lebo105.pdf",
+          "ordinal": 12,
+          "pageStart": 12,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 5: Molecular Basis of Inheritance",
+            "5.4"
+          ]
+        },
+        {
+          "document": "ncert/12/biology/lebo105.pdf",
+          "ordinal": 13,
+          "pageStart": 13,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 5: Molecular Basis of Inheritance",
+            "5.4"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T15:56:10.538Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Why is DNA considered more stable than RNA as a genetic material?",
+      "choices": [
+        "DNA has a 2-OH group at each nucleotide",
+        "RNA is double-stranded, whereas DNA is single-stranded",
+        "DNA has thymine, whereas RNA has uracil",
+        "DNA is not reactive and is less prone to degradation"
+      ],
+      "answerIndex": 3,
+      "solution": "DNA is considered more stable than RNA because it is less reactive and less prone to degradation. The 2-OH group in RNA makes it labile and easily degradable, while DNA lacks this group. DNA is not single-stranded, and RNA does not have thymine; it has uracil. The presence of thymine in DNA also adds stability, but the main reason is the lack of the reactive 2-OH group in DNA.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "DNA को आनुवंशिक पदार्थ के रूप में RNA की तुलना में अधिक स्थायी क्यों माना जाता है?",
+          "choices": [
+            "DNA में प्रत्येक न्यूक्लियोटाइड में 2-OH समूह होता है",
+            "RNA द्विस्ट्रैंडेड होता है, जबकि DNA एकल-स्ट्रैंडेड होता है",
+            "DNA में थायमिन होता है, जबकि RNA में यूरेसिल होता है",
+            "DNA अभिक्रियाशील नहीं होता है और अपघटन के लिए कम प्रवण होता है"
+          ],
+          "solution": "DNA को RNA की तुलना में अधिक स्थायी माना जाता है क्योंकि यह कम अभिक्रियाशील होता है और अपघटन के लिए कम प्रवण होता है। RNA में 2-OH समूह होने के कारण यह अस्थायी और आसानी से अपघटित हो जाता है, जबकि DNA में इस समूह की कमी होती है। DNA एकल-स्ट्रैंडेड नहीं होता है, और RNA में थायमिन नहीं होता है, बल्कि यूरेसिल होता है। DNA में थायमिन की उपस्थिति भी स्थायित्व जोड़ती है, लेकिन मुख्य कारण DNA में अभिक्रियाशील 2-OH समूह की कमी है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate biological terminology as taught in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "DNA लहान जीनेटिक पदार्थ म्हणून रीतसर निश्चित केला जातो कारण काय?",
+          "choices": [
+            "DNA मध्ये प्रत्येक न्यूक्लिओटाइडमध्ये 2-OH गट असतो",
+            "RNA दुहेरी रांगेत असतो, तर DNA एक रांगेत असतो",
+            "DNA मध्ये थायमिन असतो, तर RNA मध्ये यूरेसिल असतो",
+            "DNA अप्रतिक्रियाशील असतो आणि विघटनापासून कमी प्रतिकूल असतो"
+          ],
+          "solution": "DNA लहान जीनेटिक पदार्थ म्हणून रीतसर निश्चित केला जातो कारण तो कमी प्रतिक्रियाशील आणि कमी विघटनापासून प्रतिकूल असतो. RNA मध्ये 2-OH गट असल्यामुळे तो अस्थिर आणि सहज विघटित होतो, तर DNA मध्ये या गटाची अनुपस्थिती असते. DNA एक रांगेत नसतो, आणि RNA मध्ये थायमिन नसतो; त्यामध्ये यूरेसिल असतो. DNA मध्ये थायमिन असल्यामुळे स्थिरता वाढते, परंतु मुख्य कारण हे आहे की DNA मध्ये प्रतिक्रियाशील 2-OH गट नसतो.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for biological concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "incorrectly states a feature of RNA",
+        "misrepresents the structure of DNA and RNA",
+        "partially correct but not the main reason for DNA's stability",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 3, as DNA's lack of the 2-OH group makes it less reactive and more stable. The other options contain misconceptions about RNA's structure, DNA's structure, and the role of thymine versus uracil.",
+      "sources": [
+        {
+          "document": "ncert/12/biology/lebo105.pdf",
+          "ordinal": 6,
+          "pageStart": 7,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 5: Molecular Basis of Inheritance",
+            "5.2"
+          ]
+        },
+        {
+          "document": "ncert/12/biology/lebo105.pdf",
+          "ordinal": 7,
+          "pageStart": 8,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 5: Molecular Basis of Inheritance",
+            "5.2"
+          ]
+        },
+        {
+          "document": "ncert/12/biology/lebo105.pdf",
+          "ordinal": 8,
+          "pageStart": 9,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 5: Molecular Basis of Inheritance",
+            "5.2"
+          ]
+        },
+        {
+          "document": "ncert/12/biology/lebo105.pdf",
+          "ordinal": 9,
+          "pageStart": 10,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 5: Molecular Basis of Inheritance",
+            "5.3 RNA W"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T15:56:10.538Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If a DNA molecule has a sequence of bases on one strand, what can be said about the sequence on the other strand?",
+      "choices": [
+        "It is completely random and unrelated",
+        "It is identical to the first strand",
+        "It is complementary to the first strand",
+        "It is the reverse of the first strand"
+      ],
+      "answerIndex": 2,
+      "solution": "The sequence on the other DNA strand is complementary because each base pairs specifically with its complement—adenine with thymine and cytosine with guanine. This ensures that the two strands are not random, identical, or reversed, but rather mirror each other in a specific way. The correct option reflects the fundamental principle of DNA structure.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि डीएनए अणु के एक स्ट्रैंड पर बेस का अनुक्रम है, तो दूसरे स्ट्रैंड पर बेस के अनुक्रम के बारे में क्या कहा जा सकता है?",
+          "choices": [
+            "यह पूरी तरह से यादृच्छिक और असंबंधित है",
+            "यह पहले स्ट्रैंड के समान है",
+            "यह पहले स्ट्रैंड के पूरक है",
+            "यह पहले स्ट्रैंड के विपरीत है"
+          ],
+          "solution": "दूसरे डीएनए स्ट्रैंड पर अनुक्रम पूरक होता है क्योंकि प्रत्येक बेस अपने पूरक के साथ विशिष्ट रूप से जुड़ता है-एडीनीन थायमीन के साथ और साइटोसीन ग्वानीन के साथ। इससे यह सुनिश्चित होता है कि दोनों स्ट्रैंड यादृच्छिक, समान या विपरीत नहीं होते, बल्कि एक विशिष्ट तरीके से एक दूसरे के दर्पण होते हैं। सही विकल्प डीएनए संरचना के मूल स principio को प्रतिबिंबित करता है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate biological terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका डीएनए अणूच्या एका तारेवरील बेसचा क्रम काय असेल तर दुसर्‍या तारेवरील बेसचा क्रम काय म्हणता येईल?",
+          "choices": [
+            "तो पूर्णपणे अयोग्य आणि असंबद्ध असतो",
+            "तो पहिल्या तारेसारखा असतो",
+            "तो पहिल्या तारेच्या पूरक असतो",
+            "तो पहिल्या तारेचा उलटा असतो"
+          ],
+          "solution": "दुसर्‍या डीएनए तारेवरील क्रम पूरक असतो कारण प्रत्येक बेस त्याच्या पूरकशी विशिष्टपणे जोडलेला असतो- एडिनीन थायमिनशी आणि सायटोसिन ग्वॅनिनशी. हे खात्री करते की दोन्ही तारा अयोग्य, समान किंवा उलट्या नसतात, परंतु विशिष्ट प्रकारे एकमेकांच्या दर्पणासारख्या असतात. योग्य पर्याय डीएनएच्या संरचनेच्या मूलभूत तत्त्वाला दर्शवतो.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the scientific terminology used in Marathi textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Misunderstands the concept of complementarity",
+        "Believes that both strands are the same, not complementary",
+        null,
+        "Thinks that the strands are reversed, not complementary\",\"Does not understand the concept of complementary base pairing in DNA."
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 2, as DNA strands are complementary, not identical or reversed. The author's reasoning aligns with standard biology and correctly identifies the misconceptions behind the other options.",
+      "sources": [
+        {
+          "document": "ncert/12/biology/lebo105.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 5: Molecular Basis of Inheritance"
+          ]
+        },
+        {
+          "document": "ncert/12/biology/lebo105.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 5: Molecular Basis of Inheritance",
+            "5.1",
+            "DNA"
+          ]
+        },
+        {
+          "document": "ncert/12/biology/lebo105.pdf",
+          "ordinal": 2,
+          "pageStart": 3,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 5: Molecular Basis of Inheritance",
+            "5.1",
+            "DNA"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T15:56:10.538Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "Which of the following best describes the role of histones in the packaging of DNA in eukaryotic cells?",
+      "choices": [
+        "They provide a rigid framework for DNA to attach to",
+        "They help in the replication of DNA",
+        "They neutralize the negative charge of DNA",
+        "They prevent DNA from being transcribed"
+      ],
+      "answerIndex": 2,
+      "solution": "Histones are positively charged proteins that bind to the negatively charged DNA, helping to package it into a compact structure. This neutralization of charge allows DNA to be organized into nucleosomes and further into chromatin. The other options are incorrect because histones do not provide a rigid framework, they are not directly involved in DNA replication, and they do not prevent transcription.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा यूकैरियोटिक कोशिकाओं में डीएनए के पैकेजिंग में हिस्टोन्स के कार्य का सबसे अच्छा वर्णन करता है?",
+          "choices": [
+            "वे डीएनए के लिए एक कठोर ढांचा प्रदान करते हैं",
+            "वे डीएनए के प्रतिकृति में सहायता करते हैं",
+            "वे डीएनए के ऋणात्मक आवेश को उदासीन करते हैं",
+            "वे डीएनए के अनुलेखन को रोकते हैं"
+          ],
+          "solution": "हिस्टोन्स धनात्मक आवेश वाले प्रोटीन होते हैं जो ऋणात्मक आवेश वाले डीएनए से बंधते हैं, जिससे डीएनए को एक संकुचित संरचना में पैक करने में सहायता मिलती है। इस आवेश के उदासीनीकरण के कारण डीएनए न्यूक्लियोसोम में और आगे चीनी में संगठित हो जाता है। अन्य विकल्प गलत हैं क्योंकि हिस्टोन्स एक कठोर ढांचा प्रदान नहीं करते, वे डीएनए की प्रतिकृति में सीधे शामिल नहीं होते, और वे अनुलेखन को रोकते नहीं हैं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains original meaning, and uses appropriate Hindi biological terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते एककोशिक जीवांमध्ये DNA च्या पॅकेजिंगमध्ये हिस्टोनच्या भूमिकेचे सर्वात चांगले वर्णन करते?",
+          "choices": [
+            "ते DNA ला जुळविण्यासाठी एक कठोर ढाचा पुरवतात",
+            "ते DNA च्या प्रतिकृतीमध्ये मदत करतात",
+            "ते DNA च्या ऋणात्मक आवेशाचे न्यूट्रलीकरण करतात",
+            "ते DNA च्या अनुलेखनाला रोखतात"
+          ],
+          "solution": "हिस्टोन धनात्मक आवेश असलेले प्रोटीन असतात जे ऋणात्मक आवेश असलेल्या DNA ला जुळवतात, जेणेकरून ते एका संपूर्ण रचनेत पॅकेज केले जाते. आवेशाचे न्यूट्रलीकरण DNA ला न्यूक्लिओसोममध्ये आणि त्यानंतर क्रोमॅटिनमध्ये संगोपन करण्यास मदत करते. इतर विकल्प अयोग्य आहेत कारण हिस्टोन एक कठोर ढाचा पुरवत नाहीत, ते DNA प्रतिकृतीमध्ये सीधा संलग्न नाहीत आणि ते अनुलेखन रोखत नाहीत.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the original meaning, and uses appropriate biological terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Pupils may think histones only provide structural support",
+        "Pupils might confuse the role of histones with enzymes involved in replication",
+        null,
+        "Pupils may not understand the electrostatic interaction between histones and DNA"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly identifies that histones neutralize DNA's negative charge through electrostatic interactions, which is the primary mechanism for DNA packaging. The reasoning for the distractors aligns with common student misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/12/biology/lebo105.pdf",
+          "ordinal": 3,
+          "pageStart": 3,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 5: Molecular Basis of Inheritance",
+            "5.1",
+            "DNA"
+          ]
+        },
+        {
+          "document": "ncert/12/biology/lebo105.pdf",
+          "ordinal": 4,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 5: Molecular Basis of Inheritance",
+            "5.1",
+            "DNA"
+          ]
+        },
+        {
+          "document": "ncert/12/biology/lebo105.pdf",
+          "ordinal": 5,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 5: Molecular Basis of Inheritance",
+            "5.2"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T15:56:10.538Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "What is the sequence of mRNA if the coding strand of a transcription unit is 5 -ATGCATGCATGCATGCATGCATGCATGC-3?",
+      "choices": [
+        "5 -UACGUACGUACGUACGUACGUACGUACG-3",
+        "5 -ATGCATGCATGCATGCATGCATGCATGC-3",
+        "5 -GCATGCATGCATGCATGCATGCATGCA-3",
+        "5 -CGUACGUACGUACGUACGUACGUACGU-3"
+      ],
+      "answerIndex": 0,
+      "solution": "The mRNA sequence is the same as the coding strand, except thymine is replaced by uracil. The correct sequence is 5 -UACGUACGUACGUACGUACGUACGUACG-3.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "mRNA के क्रम क्या है यदि एक अनुलेखन इकाई का कोडिंग स्ट्रैंड 5 -ATGCATGCATGCATGCATGCATGCATGC-3 है?",
+          "choices": [
+            "5 -UACGUACGUACGUACGUACGUACGUACG-3",
+            "5 -ATGCATGCATGCATGCATGCATGCATGC-3",
+            "5 -GCATGCATGCATGCATGCATGCATGCA-3",
+            "5 -CGUACGUACGUACGUACGUACGUACGU-3"
+          ],
+          "solution": "mRNA का क्रम कोडिंग स्ट्रैंड के समान होता है, बस थायमिन के स्थान पर यूरेसिल होता है। सही क्रम 5 -UACGUACGUACGUACGUACGUACGUACG-3 है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the scientific meaning, with appropriate Hindi terminology for biological concepts.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "mRNA ची अनुक्रम काय असेल जर एका ट्रान्सक्रिप्शन युनिट चा कोडिंग स्ट्रँड 5 -ATGCATGCATGCATGCATGCATGCATGC-3 असेल?",
+          "choices": [
+            "5 -UACGUACGUACGUACGUACGUACGUACG-3",
+            "5 -ATGCATGCATGCATGCATGCATGCATGC-3",
+            "5 -GCATGCATGCATGCATGCATGCATGCA-3",
+            "5 -CGUACGUACGUACGUACGUACGUACGU-3"
+          ],
+          "solution": "mRNA चा अनुक्रम कोडिंग स्ट्रँड च्या समान असतो, तथापि थायमिन ला युरेसिल ने बदलले जाते. योग्य अनुक्रम 5 -UACGUACGUACGUACGUACGUACGUACG-3 असतो.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the scientific terminology appropriate for a Marathi-medium biology curriculum.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Fails to replace thymine with uracil",
+        "Fails to understand that the coding strand is the same as the mRNA sequence",
+        "Confuses the directionality of the mRNA."
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is option 0, as mRNA is complementary to the template strand and identical to the coding strand except with uracil instead of thymine. The author's solution and reasoning are accurate.",
+      "sources": [
+        {
+          "document": "ncert/12/biology/lebo105.pdf",
+          "ordinal": 34,
+          "pageStart": 31,
+          "pageEnd": 31,
+          "headingPath": [
+            "Chapter 5: Molecular Basis of Inheritance",
+            "EXERCISES"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T15:56:10.538Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "What did the Hershey-Chase experiment demonstrate about the role of DNA in viral infection?",
+      "choices": [
+        "DNA is the only genetic material in viruses",
+        "Proteins are the primary genetic material",
+        "DNA is the material that enters the bacterial cell during infection",
+        "RNA is the only genetic material in viruses"
+      ],
+      "answerIndex": 2,
+      "solution": "The Hershey-Chase experiment demonstrated that DNA is the material that enters the bacterial cell during infection. This was shown by using radioactive labeling and separating the viral coats from the bacteria. The experiment ruled out proteins as the genetic material and showed that DNA is the key to viral replication. RNA is not the only genetic material, and DNA is clearly involved in viral replication.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "हर्शी-चेस प्रयोग ने विषाणु संक्रमण में डीएनए की भूमिका के बारे में क्या साबित किया?",
+          "choices": [
+            "विषाणुओं में डीएनए ही एकमात्र आनुवंशिक पदार्थ है",
+            "प्रोटीन आनुवंशिक पदार्थ के मुख्य स्रोत हैं",
+            "संक्रमण के दौरान बैक्टीरियल कोशिका में प्रवेश करने वाला पदार्थ डीएनए है",
+            "विषाणुओं में आरएनए ही एकमात्र आनुवंशिक पदार्थ है"
+          ],
+          "solution": "हर्शी-चेस प्रयोग दिखाया कि संक्रमण के दौरान बैक्टीरियल कोशिका में प्रवेश करने वाला पदार्थ डीएनए है। इसे रेडियोएक्टिव लेबलिंग के उपयोग और विषाणु कोट को बैक्टीरिया से अलग करके दिखाया गया। प्रयोग ने प्रोटीन को आनुवंशिक पदार्थ के रूप में अस्वीकृत कर दिया और डीएनए को विषाणु प्रतिकृति के लिए मुख्य पदार्थ दिखाया। आरएनए एकमात्र आनुवंशिक पदार्थ नहीं है, और डीएनए स्पष्ट रूप से विषाणु प्रतिकृति में शामिल है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains the original meaning, and uses standard biological terminology in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "हर्शी-चेस प्रयोगाने व्हायरल संसर्गातील डीएनएच्या भूमिकेबद्दल काय दर्शविले?",
+          "choices": [
+            "व्हायरसमधील एकमात्र आनुवंशिक पदार्थ डीएनए आहे",
+            "प्रोटीन्स हे प्राथमिक आनुवंशिक पदार्थ आहेत",
+            "संसर्गादरम्यान बॅक्टेरियल कोशिकेत प्रवेश करणारा पदार्थ डीएनए आहे",
+            "व्हायरसमधील एकमात्र आनुवंशिक पदार्थ आरएनए आहे"
+          ],
+          "solution": "हर्शी-चेस प्रयोगाने दर्शविले की संसर्गादरम्यान बॅक्टेरियल कोशिकेत प्रवेश करणारा पदार्थ डीएनए आहे. हे रेडिओएक्टिव्ह लेबलिंग वापरून आणि व्हायरल कोट्स आणि बॅक्टेरियांमध्ये विभाजन करून दर्शविले गेले. हा प्रयोग प्रोटीन्स ला आनुवंशिक पदार्थ म्हणून नकारले आणि डीएनए हा व्हायरल प्रतिकृतीचा मुख्य भाग असल्याचे दर्शविले. आरएनए हा एकमात्र आनुवंशिक पदार्थ नाही आणि डीएनए व्हायरल प्रतिकृतीमध्ये स्पष्टपणे संलग्न आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the scientific terminology used in Marathi textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "confusion between DNA being the genetic material in bacteria and viruses",
+        "Confuses the role of proteins and DNA, thinking proteins are the main genetic material due to their visible structure",
+        null,
+        "incorrectly generalizes the results to all viruses"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 2, as the Hershey-Chase experiment showed that DNA, not protein, enters the bacterial cell during viral infection. The other options reflect common misconceptions about the role of DNA, RNA, and proteins in viral genetics.",
+      "sources": [
+        {
+          "document": "ncert/12/biology/lebo105.pdf",
+          "ordinal": 6,
+          "pageStart": 7,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 5: Molecular Basis of Inheritance",
+            "5.2"
+          ]
+        },
+        {
+          "document": "ncert/12/biology/lebo105.pdf",
+          "ordinal": 7,
+          "pageStart": 8,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 5: Molecular Basis of Inheritance",
+            "5.2"
+          ]
+        },
+        {
+          "document": "ncert/12/biology/lebo105.pdf",
+          "ordinal": 8,
+          "pageStart": 9,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 5: Molecular Basis of Inheritance",
+            "5.2"
+          ]
+        },
+        {
+          "document": "ncert/12/biology/lebo105.pdf",
+          "ordinal": 9,
+          "pageStart": 10,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 5: Molecular Basis of Inheritance",
+            "5.3 RNA W"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T15:56:10.538Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "If the sequence of the coding strand is 5 -ATGCATGCATGCATGCATGCATGCATGC-3, and the lac operon is induced by lactose, how will the expression of the operon be affected?",
+      "choices": [
+        "It will be repressed",
+        "It will be activated",
+        "It will be inhibited",
+        "It will be silenced"
+      ],
+      "answerIndex": 1,
+      "solution": "The lac operon is activated in the presence of lactose. When lactose is added, the repressor protein is inactivated, allowing RNA polymerase to transcribe the operon. Therefore, the expression will be activated.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि कोडिंग स्ट्रैंड का अनुक्रम 5 -ATGCATGCATGCATGCATGCATGCATGC-3 है, और लैक ऑपेरॉन लैक्टोज द्वारा प्रेरित होता है, तो ऑपेरॉन के व्यवहार पर क्या प्रभाव पड़ेगा?",
+          "choices": [
+            "इसे अवरुद्ध कर दिया जाएगा",
+            "इसे सक्रिय कर दिया जाएगा",
+            "इसे अवरुद्ध कर दिया जाएगा",
+            "इसे बंद कर दिया जाएगा"
+          ],
+          "solution": "लैक ऑपेरॉन लैक्टोज की उपस्थिति में सक्रिय होता है। जब लैक्टोज जोड़ा जाता है, तो अवरोधक प्रोटीन अक्रिय हो जाता है, जिससे आरएनए पॉलीमरेज ऑपेरॉन के अनुलेखन के लिए अनुमति देता है। इसलिए, ऑपेरॉन के व्यवहार को सक्रिय कर दिया जाएगा।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English original in meaning, with correct technical terms and consistent answer positioning. The solution correctly identifies option 2 as the correct answer, and the distractors remain incorrect.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर कोडिंग स्ट्रँडचा क्रम 5 -ATGCATGCATGCATGCATGCATGCATGC-3 असेल, आणि लॅक ऑपेरॉन लॅक्टोजमुळे उत्प्रेरित होत असेल, तर ऑपेरॉनची व्यवस्थापन कशी प्रभावित होईल?",
+          "choices": [
+            "त्याची अवरोधन होईल",
+            "त्याची सक्रियता होईल",
+            "त्याची अवरोधन होईल",
+            "त्याची निष्क्रियता होईल"
+          ],
+          "solution": "लॅक ऑपेरॉन लॅक्टोजच्या उपस्थितीत सक्रिय होते. जेव्हा लॅक्टोज जोडला जातो तेव्हा अवरोधक प्रोटीन अक्रिय होते, ज्यामुळे आरएनए पॉलिमरेज ऑपेरॉनचे अनुलेखन करू शकते. त्यामुळे, ऑपेरॉनची व्यवस्थापन सक्रिय होईल.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the scientific terminology used in Marathi textbooks. The solution and options are correctly aligned with the English version.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the role of the repressor protein",
+        null,
+        "Fails to understand the function of lactose in the lac operon",
+        "Confuses the mechanism of gene regulation in prokaryotes."
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question correctly identifies that lactose induces the lac operon by inactivating the repressor, leading to activation. The solution is accurate and matches the key. The distractors reflect common misconceptions about the lac operon mechanism.",
+      "sources": [
+        {
+          "document": "ncert/12/biology/lebo105.pdf",
+          "ordinal": 34,
+          "pageStart": 31,
+          "pageEnd": 31,
+          "headingPath": [
+            "Chapter 5: Molecular Basis of Inheritance",
+            "EXERCISES"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T15:56:10.538Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "A scientist found that a virus's genetic material can be both DNA and RNA. Which of the following is most likely true about this virus?",
+      "choices": [
+        "It is a retrovirus that can convert RNA to DNA",
+        "It has a protein coat that contains both DNA and RNA",
+        "It can only replicate in host cells with both DNA and RNA",
+        "It cannot express its genetic material"
+      ],
+      "answerIndex": 0,
+      "solution": "A virus that can have both DNA and RNA as genetic material is most likely a retrovirus, which uses reverse transcriptase to convert RNA into DNA. Retroviruses can have RNA as their genome and then form DNA. The other options do not accurately describe the nature of such a virus. Retroviruses are known for this property, and the question implies an understanding beyond the textbook, which is typical of a competitive level question.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक वैज्ञानिक ने पाया कि एक वायरस के आनुवंशिक सामग्री दोनों डीएनए और आरएनए हो सकते हैं। इस वायरस के बारे में निम्नलिखित में से कौन सा सबसे अधिक संभावित सत्य है?",
+          "choices": [
+            "यह एक रिट्रोवायरस है जो आरएनए को डीएनए में परिवर्तित कर सकता है",
+            "इसकी प्रोटीन कोट दोनों डीएनए और आरएनए को समाहित करती है",
+            "इसके पास केवल डीएनए और आरएनए दोनों वाले होस्ट सेल में अपनी प्रतिकृति बनाने की क्षमता है",
+            "इसके पास अपनी आनुवंशिक सामग्री को व्यक्त नहीं करने की क्षमता है"
+          ],
+          "solution": "जिस वायरस के आनुवंशिक सामग्री दोनों डीएनए और आरएनए हो सकते हैं, वह अधिक संभावना रिट्रोवायरस होता है, जो आरएनए को डीएनए में परिवर्तित करने के लिए रिवर्स ट्रांसक्रिप्टेज का उपयोग करता है। रिट्रोवायरस आरएनए के जीनोम के साथ हो सकते हैं और फिर डीएनए बना सकते हैं। अन्य विकल्प ऐसे वायरस की प्रकृति का सही वर्णन नहीं करते हैं। रिट्रोवायरस इस गुण के लिए जाने जाते हैं, और प्रश्न एक प्रतियोगी स्तर के प्रश्न के अनुरूप एक पाठ्यपुस्तक से आगे की समझ को इंगित करता है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, technical terms are appropriately used in Hindi, and the correct answer remains in the same position.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका विज्ञानीने असे शोधले की एका व्हायरसचे जीनेटिक पदार्थ डीएनए आणि आरएनए दोन्ही असू शकतात. खालीलपैकी कोणते असे व्हायरसबद्दल सर्वात जास्त खरे असू शकते?",
+          "choices": [
+            "तो रेट्रोव्हायरस असू शकतो जो आरएनए ला डीएनए मध्ये बदलू शकतो",
+            "त्याचा प्रोटीन कोट डीएनए आणि आरएनए दोन्ही असतो",
+            "तो माता-जीवामध्ये डीएनए आणि आरएनए दोन्ही असल्यास फक्त प्रतिकृती करू शकतो",
+            "तो त्याचे जीनेटिक पदार्थ व्यक्त करू शकत नाही"
+          ],
+          "solution": "जीनेटिक पदार्थ म्हणून डीएनए आणि आरएनए दोन्ही असलेला व्हायरस रेट्रोव्हायरस असण्याची शक्यता असते, जो आरएनए ला डीएनए मध्ये बदलण्यासाठी रिव्हर्स ट्रान्सक्रिप्टेज वापरतो. रेट्रोव्हायरस आरएनए ला जीनोम म्हणून घेऊ शकतात आणि नंतर डीएनए बनवू शकतात. इतर विकल्प अशा व्हायरसच्या प्रकृतीचे योग्य वर्णन करत नाहीत. रेट्रोव्हायरस या गुणामुळे ओळखले जातात आणि प्रश्नामध्ये आता पाठ्यपुस्तकापेक्षा अधिक ज्ञानाचे सूचना दिली जाते, हे असे प्रश्न जे प्रतियोगी पातळीचे असतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "incorrectly assumes the virus has both DNA and RNA in its coat",
+        "misunderstands the function of the virus's genetic material",
+        "contradicts the ability of viruses to express genetic material"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 0, as retroviruses like HIV have RNA as their genetic material and use reverse transcriptase to convert it into DNA. The other options reflect common misconceptions about viral structure and function.",
+      "sources": [
+        {
+          "document": "ncert/12/biology/lebo105.pdf",
+          "ordinal": 6,
+          "pageStart": 7,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 5: Molecular Basis of Inheritance",
+            "5.2"
+          ]
+        },
+        {
+          "document": "ncert/12/biology/lebo105.pdf",
+          "ordinal": 7,
+          "pageStart": 8,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 5: Molecular Basis of Inheritance",
+            "5.2"
+          ]
+        },
+        {
+          "document": "ncert/12/biology/lebo105.pdf",
+          "ordinal": 8,
+          "pageStart": 9,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 5: Molecular Basis of Inheritance",
+            "5.2"
+          ]
+        },
+        {
+          "document": "ncert/12/biology/lebo105.pdf",
+          "ordinal": 9,
+          "pageStart": 10,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 5: Molecular Basis of Inheritance",
+            "5.3 RNA W"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T15:56:10.538Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
     }
   ]
 }

@@ -325,6 +325,615 @@
       "generatedAt": "2026-10-28T06:30:00.117Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is the main way to find out if someone has malaria?",
+      "choices": [
+        "By taking a blood test",
+        "By seeing if the person has a fever",
+        "By looking for mosquito bites",
+        "By asking the person how they feel"
+      ],
+      "answerIndex": 0,
+      "solution": "The main way to find out if someone has malaria is by taking a blood test because malaria is caused by a parasite that can only be detected in blood samples. Fever and mosquito bites are symptoms or potential causes, not definitive diagnostic methods. Asking how the person feels is subjective and not scientifically reliable for confirming malaria.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "मलेरिया होने का पता लगाने का मुख्य तरीका क्या है?",
+          "choices": [
+            "रक्त परीक्षण लेकर",
+            "देखकर कि व्यक्ति को बुखार है कि नहीं",
+            "मच्छर के काटे हुए स्थान ढूंढकर",
+            "व्यक्ति से यह पूछकर कि वे कैसा महसूस कर रहे हैं"
+          ],
+          "solution": "मलेरिया होने का पता लगाने का मुख्य तरीका रक्त परीक्षण लेना है क्योंकि मलेरिया एक परजीवी के कारण होता है जिसे केवल रक्त के नमूनों में पता लगाया जा सकता है। बुखार और मच्छर के काटे हुए स्थान लक्षण या संभावित कारण हैं, लेकिन निश्चित निदान के लिए नहीं। व्यक्ति से यह पूछना कि वे कैसा महसूस कर रहे हैं व्यक्तिगत है और मलेरिया की पुष्टि करने के लिए वैज्ञानिक रूप से भरोसेमंद नहीं है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, with appropriate Hindi medical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "मलेरिया असल्याचे निदान करण्याचा मुख्य प्रकार काय आहे?",
+          "choices": [
+            "रक्त तपासणी करून",
+            "जर व्यक्तीला ताप असेल किंवा नाही ते पाहून",
+            "माशांच्या कातड्यांचे निरीक्षण करून",
+            "व्यक्तीला त्याच्या अनुभवाबद्दल विचारून"
+          ],
+          "solution": "मलेरिया असल्याचे निदान करण्याचा मुख्य प्रकार रक्त तपासणी करणे आहे कारण मलेरिया हा परजीवीमुळे होतो जो रक्त नमुन्यात फक्त ओळखता येतो. ताप आणि माशांच्या कातड्या लक्षणे किंवा संभाव्य कारण आहेत, परंतु निश्चित निदानाचे पद्धती नाहीत. व्यक्तीला त्याच्या अनुभवाबद्दल विचारणे वैज्ञानिकदृष्ट्या विश्वासार्ह नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi medical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses symptoms with diagnostic methods",
+        "Mistakes fever as the main way to detect malaria",
+        "Thinks mosquito bites are the main way to detect malaria (but they are a cause, not a test)"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 0 (By taking a blood test), as the question asks for the main way to find out if someone has malaria. The other options are either symptoms (fever), causes (mosquito bites), or subjective (how the person feels), which are not reliable diagnostic methods.",
+      "sources": [
+        {
+          "document": "ncert/5/environmental-studies/eeap108.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 8: A Treat for Mosquitoes"
+          ]
+        },
+        {
+          "document": "ncert/5/environmental-studies/eeap108.pdf",
+          "ordinal": 1,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 8: A Treat for Mosquitoes"
+          ]
+        },
+        {
+          "document": "ncert/5/environmental-studies/eeap108.pdf",
+          "ordinal": 2,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 8: A Treat for Mosquitoes"
+          ]
+        },
+        {
+          "document": "ncert/5/environmental-studies/eeap108.pdf",
+          "ordinal": 3,
+          "pageStart": 5,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 8: A Treat for Mosquitoes",
+            "BEWARE!"
+          ]
+        }
+      ],
+      "edition": "2024 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-23T01:31:53.762Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "How does a blood test help in finding out if a person has malaria?",
+      "choices": [
+        "It shows the presence of germs in the blood",
+        "It checks for the presence of malaria-causing germs in the blood",
+        "It measures the amount of blood in the body",
+        "It checks for the presence of iron in the blood"
+      ],
+      "answerIndex": 1,
+      "solution": "The correct option is right because a blood test can identify the specific germs that cause malaria. The other options are wrong because they refer to general germs, blood volume, or iron levels, which are not directly related to detecting malaria-causing organisms.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक रक्त परीक्षण मलेरिया होने के कारण कैसे ज्ञात करता है?",
+          "choices": [
+            "यह रक्त में जीवाणुओं की उपस्थिति दिखाता है",
+            "यह रक्त में मलेरिया के कारक जीवाणुओं की उपस्थिति की जांच करता है",
+            "यह शरीर में रक्त की मात्रा का मापन करता है",
+            "यह रक्त में लौह की उपस्थिति की जांच करता है"
+          ],
+          "solution": "सही विकल्प तब है क्योंकि एक रक्त परीक्षण विशिष्ट जीवाणुओं की पहचान कर सकता है जो मलेरिया के कारण होते हैं। अन्य विकल्प गलत हैं क्योंकि वे सामान्य जीवाणुओं, रक्त की मात्रा या लौह स्तर के संदर्भ में बताते हैं, जो मलेरिया के कारक जीवाणुओं के निर्धारण से सीधे संबंधित नहीं हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate medical terminology as used in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "रक्त परीक्षणामुळे एखाद्या व्यक्तीला मलेरिया आहे की नाही हे कशाने ओळखता येते?",
+          "choices": [
+            "रक्तात जीवाणूंच्या उपस्थितीचे दर्शवते",
+            "रक्तात मलेरियाच्या जीवाणूंच्या उपस्थितीची तपासणी करते",
+            "शरीरातील रक्ताच्या प्रमाणाचे मोजते",
+            "रक्तात लोहाच्या उपस्थितीची तपासणी करते"
+          ],
+          "solution": "बरोबर विकल्प बरोबर आहे कारण रक्त परीक्षणामुळे मलेरियाच्या जीवाणूंची ओळख करता येते. इतर विकल्प चुकीचे आहेत कारण ते सामान्य जीवाणूंच्या, रक्ताच्या प्रमाणाच्या किंवा लोहाच्या पातळीच्या उल्लेखाच्या आहेत, जे मलेरियाच्या जीवाणूंच्या शोधाशी संबंधित नाहीत.",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, with appropriate Marathi medical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses general germs with specific malaria-causing germs",
+        null,
+        "Thinks the test measures blood volume",
+        "Confuses anaemia with malaria"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 1, as it accurately reflects that a blood test checks for the specific germs that cause malaria. The other options represent common misconceptions, such as confusing general germs with specific pathogens, measuring blood volume, or confusing anaemia with malaria.",
+      "sources": [
+        {
+          "document": "ncert/5/environmental-studies/eeap108.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 8: A Treat for Mosquitoes"
+          ]
+        },
+        {
+          "document": "ncert/5/environmental-studies/eeap108.pdf",
+          "ordinal": 1,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 8: A Treat for Mosquitoes"
+          ]
+        },
+        {
+          "document": "ncert/5/environmental-studies/eeap108.pdf",
+          "ordinal": 2,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 8: A Treat for Mosquitoes"
+          ]
+        },
+        {
+          "document": "ncert/5/environmental-studies/eeap108.pdf",
+          "ordinal": 3,
+          "pageStart": 5,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 8: A Treat for Mosquitoes",
+            "BEWARE!"
+          ]
+        }
+      ],
+      "edition": "2024 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-23T01:31:53.762Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If a person has anaemia, what is the most likely reason?",
+      "choices": [
+        "They have less iron in their blood",
+        "They have a high fever",
+        "They have been bitten by a mosquito",
+        "They have a lot of germs in their blood"
+      ],
+      "answerIndex": 0,
+      "solution": "Anaemia occurs when there is a reduced ability to carry oxygen, often due to low iron levels, which are necessary for haemoglobin production. A high fever, mosquito bites, and germs in the blood do not directly affect the body's ability to produce or carry oxygen in the blood.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "अगर किसी व्यक्ति को एनीमिया हो जाए, तो संभावित कारण क्या हो सकता है?",
+          "choices": [
+            "उनके रक्त में कम लोहा होता है",
+            "उनको उच्च बुखार होता है",
+            "उनके मच्छर के काटे हुए होते हैं",
+            "उनके रक्त में बहुत अधिक जीवाणु होते हैं"
+          ],
+          "solution": "एनीमिया तब होता है जब ऑक्सीजन के परिवहन की क्षमता कम हो जाती है, जो आमतौर पर कम लोहे के कारण होता है, जो हीमोग्लोबिन उत्पादन के लिए आवश्यक होता है। उच्च बुखार, मच्छर के काटे और रक्त में जीवाणु रक्त में ऑक्सीजन के परिवहन या उत्पादन के सीधे प्रभावित नहीं करते हैं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriately used in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एखाद्या व्यक्तीला एनीमियाचा त्रास असल्यास, त्याचे सर्वात शक्य कारण काय असू शकते?",
+          "choices": [
+            "त्यांच्या रक्तात कमी लोह असते",
+            "त्यांना उच्च तापमान असते",
+            "त्यांना एका मच्छारीने कातडा लागला असतो",
+            "त्यांच्या रक्तात जास्त जीवाणू असतात"
+          ],
+          "solution": "एनीमिया होतो जेव्हा ऑक्सीजन वहन करण्याची क्षमता कमी होते, जे लोहाच्या कमतरतेमुळे होऊ शकते, जे हिमोग्लोबिन तयार करण्यासाठी आवश्यक असते. उच्च तापमान, मच्छारीने कातडा लागणे आणि रक्तात जास्त जीवाणू असणे रक्तात ऑक्सीजन वहन करण्याच्या शक्यतेवर सीधा परिणाम करत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi medical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses symptoms of other diseases with causes of anaemia",
+        "Thinks fever is a cause of anaemia",
+        "Mistakes mosquito bites as a cause of anaemia"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 0, as anaemia is caused by low iron or haemoglobin. The other options are incorrect, and the author's reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/5/environmental-studies/eeap108.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 8: A Treat for Mosquitoes"
+          ]
+        },
+        {
+          "document": "ncert/5/environmental-studies/eeap108.pdf",
+          "ordinal": 1,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 8: A Treat for Mosquitoes"
+          ]
+        },
+        {
+          "document": "ncert/5/environmental-studies/eeap108.pdf",
+          "ordinal": 2,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 8: A Treat for Mosquitoes"
+          ]
+        },
+        {
+          "document": "ncert/5/environmental-studies/eeap108.pdf",
+          "ordinal": 3,
+          "pageStart": 5,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 8: A Treat for Mosquitoes",
+            "BEWARE!"
+          ]
+        }
+      ],
+      "edition": "2024 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-23T01:31:53.762Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "What can be done to prevent mosquitoes from breeding near a school?",
+      "choices": [
+        "Keep the area clean and dry",
+        "Leave the area with standing water",
+        "Keep the area with standing water",
+        "Ignore the problem"
+      ],
+      "answerIndex": 0,
+      "solution": "Keeping the area clean and dry prevents water from collecting, which is essential because mosquitoes need stagnant water to lay their eggs. Leaving or keeping the area with standing water provides a perfect environment for mosquito breeding. Ignoring the problem allows mosquitoes to thrive and multiply.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "स्कूल के पास मच्छरों के प्रजनन को रोकने के लिए क्या किया जा सकता है?",
+          "choices": [
+            "क्षेत्र को साफ और शुष्क रखें",
+            "स्थिर जल वाले क्षेत्र को छोड़ दें",
+            "स्थिर जल वाले क्षेत्र को रखें",
+            "समस्या की अनदेखी करें"
+          ],
+          "solution": "क्षेत्र को साफ और शुष्क रखने से पानी एकत्र नहीं होता, जो आवश्यक है क्योंकि मच्छर अपने अंडे डालने के लिए स्थिर जल की आवश्यकता करते हैं। स्थिर जल वाले क्षेत्र को छोड़ देना या रखे रखना मच्छरों के प्रजनन के लिए एक आदर्श वातावरण प्रदान करता है। समस्या की अनदेखी करने से मच्छर बढ़ते और बढ़ते रहते हैं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains original meaning, and uses appropriate Hindi terminology for a school-level science context.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "शाळेजवळ वाघळ्यांच्या प्रसाराला रोखण्यासाठी काय केले जाऊ शकते?",
+          "choices": [
+            "क्षेत्र शुद्ध आणि शुष्क ठेवा",
+            "उभ्या पाण्यासह क्षेत्र सोडा",
+            "उभ्या पाण्यासह क्षेत्र ठेवा",
+            "समस्येला नकार द्या"
+          ],
+          "solution": "क्षेत्र शुद्ध आणि शुष्क ठेवणे पाणी एकत्रित होण्याला रोखते, जे महत्वाचे आहे कारण वाघळ्यांना त्यांचे अंडी ठेवण्यासाठी स्थिर पाणी आवश्यक असते. उभ्या पाण्यासह क्षेत्र सोडणे किंवा ठेवणे वाघळ्यांच्या प्रसारासाठी एक आदर्श वातावरण प्रदान करते. समस्येला नकार देणे वाघळ्यांच्या वाढीला आणि प्रसाराला प्रोत्साहन देते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for mosquito breeding and prevention.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "students might think that water is necessary for the ecosystem and not realize it's a breeding ground for mosquitoes",
+        "Believes standing water is necessary for mosquito breeding, not a problem",
+        "Believes that problems will resolve themselves without action"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 0, as keeping the area clean and dry prevents water from collecting, which stops mosquito breeding. The other options are clearly incorrect and reflect common misconceptions about mosquito breeding.",
+      "sources": [
+        {
+          "document": "ncert/5/environmental-studies/eeap108.pdf",
+          "ordinal": 4,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 8: A Treat for Mosquitoes",
+            "BEWARE!"
+          ]
+        },
+        {
+          "document": "ncert/5/environmental-studies/eeap108.pdf",
+          "ordinal": 5,
+          "pageStart": 8,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 8: A Treat for Mosquitoes",
+            "BEWARE!"
+          ]
+        },
+        {
+          "document": "ncert/5/environmental-studies/eeap108.pdf",
+          "ordinal": 6,
+          "pageStart": 9,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 8: A Treat for Mosquitoes",
+            "BEWARE!"
+          ]
+        }
+      ],
+      "edition": "2024 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-23T01:31:53.762Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "What did the scientist do to find out if mosquitoes spread malaria?",
+      "choices": [
+        "He watched where mosquitoes landed and bit people",
+        "He studied the plants in water",
+        "He cut open the stomach of a mosquito and looked inside",
+        "He asked a doctor to help him"
+      ],
+      "answerIndex": 2,
+      "solution": "The correct answer is that the scientist cut open the mosquito’s stomach and looked inside, which allows direct observation of its contents. Watching where mosquitoes landed or asking a doctor does not provide evidence of malaria transmission. Studying plants is unrelated to understanding how mosquitoes spread disease.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "वैज्ञानिक ने मच्छरों द्वारा मलेरिया फैलाने के बारे में पता लगाने के लिए क्या किया?",
+          "choices": [
+            "उसने देखा कि मच्छर कहाँ बैठते हैं और लोगों को काटते हैं",
+            "उसने पानी में पौधों का अध्ययन किया",
+            "उसने मच्छर के पेट को काटा और अंदर देखा",
+            "उसने एक डॉक्टर से मदद मांगी"
+          ],
+          "solution": "सही उत्तर यह है कि वैज्ञानिक ने मच्छर के पेट को काटा और अंदर देखा, जिससे इसके आंतरिक भागों का सीधा अवलोकन संभव हो गया। मच्छर के बैठने के स्थान को देखना या डॉक्टर से मदद मांगना मलेरिया के प्रसार के बारे में सबूत प्रदान नहीं करता है। पौधों का अध्ययन मच्छरों द्वारा बीमारी के फैलाव के बारे में समझने से असंबंधित है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate scientific terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "वैज्ञानिकाने मालेरिया फैलवतात का याची तपासणी करण्यासाठी काय केले?",
+          "choices": [
+            "त्याने मादकांनी लोकांना काणे कुठे घातले हे पाहिले",
+            "त्याने पाण्यातील वनस्पतींचा अभ्यास केला",
+            "त्याने मादकाच्या आतड्याचे उघडले आणि त्यात बघितले",
+            "त्याने डॉक्टरांना मदत करण्यास सांगितले"
+          ],
+          "solution": "बरोबर उत्तर असे आहे की वैज्ञानिकाने मादकाच्या आतड्याचे उघडले आणि त्यात बघितले, जे त्याच्या आतील वस्तूंच्या सीधा निरीक्षणासाठी अनुमती देते. मादकांच्या लैंगिक जागा पाहणे किंवा डॉक्टरांना मदत मागणे मालेरिया पसरविण्याच्या पुराव्यासाठी अयोग्य आहे. वनस्पतींचा अभ्यास मादकांनी रोग पसरविण्याच्या पद्धतीशी संबंधित नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for scientific concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Believes observation of mosquito behavior is sufficient to prove disease transmission",
+        "Believes that mosquitoes spread malaria through plants rather than through their bites",
+        null,
+        "Believes doctors are the only ones who can solve scientific problems"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 2, as the passage explicitly states the scientist cut open the mosquito's stomach. The other options are invalid because the passage does not mention them. The author's reasons for the wrong options reflect plausible misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/5/environmental-studies/eeap108.pdf",
+          "ordinal": 4,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 8: A Treat for Mosquitoes",
+            "BEWARE!"
+          ]
+        },
+        {
+          "document": "ncert/5/environmental-studies/eeap108.pdf",
+          "ordinal": 5,
+          "pageStart": 8,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 8: A Treat for Mosquitoes",
+            "BEWARE!"
+          ]
+        },
+        {
+          "document": "ncert/5/environmental-studies/eeap108.pdf",
+          "ordinal": 6,
+          "pageStart": 9,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 8: A Treat for Mosquitoes",
+            "BEWARE!"
+          ]
+        }
+      ],
+      "edition": "2024 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-23T01:31:53.762Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "Why did the scientist spend a lot of time chasing mosquitoes?",
+      "choices": [
+        "To study how they spread malaria",
+        "To catch them for food",
+        "To kill them",
+        "To study their behavior in the rain"
+      ],
+      "answerIndex": 0,
+      "solution": "The scientist spent time chasing mosquitoes to study how they spread malaria, as this was the primary focus of his research. Catching them for food, killing them, or studying their behavior in the rain are not supported by the scientific reasoning behind the action.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "वैज्ञानिक ने मच्छरों के पीछे बहुत समय क्यों बिताया?",
+          "choices": [
+            "उनके मलेरिया फैलाने के तरीके का अध्ययन करने के लिए",
+            "उन्हें खाने के लिए पकड़ने के लिए",
+            "उन्हें मारने के लिए",
+            "बरसात में उनके व्यवहार का अध्ययन करने के लिए"
+          ],
+          "solution": "वैज्ञानिक ने मलेरिया फैलाने के तरीके का अध्ययन करने के लिए मच्छरों के पीछे बहुत समय बिताया, क्योंकि यह उसके अनुसंधान का प्रमुख लक्ष्य था। उन्हें खाने के लिए पकड़ना, उन्हें मारना या बरसात में उनके व्यवहार का अध्ययन करना इस कार्य के वैज्ञानिक तर्क के साथ समर्थित नहीं है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. All options are correctly translated, and the correct answer remains in the same position. The distractors are still incorrect, and the technical terms used are appropriate for a Hindi-medium curriculum.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "वैज्ञानिक मादक नक्षत्रांच्या शोधासाठी खूप वेळ घालवला का?",
+          "choices": [
+            "त्यांनी मलेरिया कसा पसरवतात ते अभ्यास करण्यासाठी",
+            "त्यांना खाण्यासाठी पकडण्यासाठी",
+            "त्यांना मारण्यासाठी",
+            "वारा तिच्या वर्तनाचा अभ्यास करण्यासाठी"
+          ],
+          "solution": "वैज्ञानिक मादक नक्षत्रांच्या शोधासाठी खूप वेळ घालवला, कारण हे त्याच्या अनुसंधानाचा प्राथमिक लक्ष्य होता. खाण्यासाठी पकडणे, मारणे किंवा वारा तिच्या वर्तनाचा अभ्यास करणे ही त्या कृतीच्या वैज्ञानिक कारणांनी समर्थित नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for scientific concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "thinks the scientist studied them for food",
+        "thinks the scientist killed them",
+        "thinks the scientist studied them in the rain"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 0, as the passage implies the scientist chased mosquitoes to study how they spread malaria. The other options are plausible but not supported by the text.",
+      "sources": [
+        {
+          "document": "ncert/5/environmental-studies/eeap108.pdf",
+          "ordinal": 4,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 8: A Treat for Mosquitoes",
+            "BEWARE!"
+          ]
+        },
+        {
+          "document": "ncert/5/environmental-studies/eeap108.pdf",
+          "ordinal": 5,
+          "pageStart": 8,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 8: A Treat for Mosquitoes",
+            "BEWARE!"
+          ]
+        },
+        {
+          "document": "ncert/5/environmental-studies/eeap108.pdf",
+          "ordinal": 6,
+          "pageStart": 9,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 8: A Treat for Mosquitoes",
+            "BEWARE!"
+          ]
+        }
+      ],
+      "edition": "2024 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-23T01:31:53.762Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
     }
   ]
 }
