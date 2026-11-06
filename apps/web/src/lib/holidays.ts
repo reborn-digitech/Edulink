@@ -3,6 +3,7 @@ import { db } from "./db";
 import { AccessError } from "./tenancy";
 import { audit } from "./audit";
 import { isDateKey, dateKeyRange, isTeachingDay, parseTeachingDays, DEFAULT_TEACHING_DAYS } from "./dates";
+import { removeEventRows } from "./competition-events";
 import type { ActiveContext } from "./session";
 
 /**
@@ -31,7 +32,10 @@ import type { ActiveContext } from "./session";
  * KIND. Only HOLIDAY closes the school. EXAM and EVENT are on the same calendar
  * because that is where a parent looks for them, but the school is open and a
  * register is expected — which is exactly why they are a separate kind rather
- * than a colour.
+ * than a colour. COMPETITION (decision 0007, 6 Nov 2026) is an EVENT the school
+ * runs as a competition: its row is the calendar half of a Competition and is
+ * written only by competition-events.ts, so the plain writes below refuse the
+ * kind and the delete keeps the two in step.
  */
 
 import { HOLIDAY_KINDS, HOLIDAY_KIND_META, type HolidayKind } from "./holiday-kinds";
@@ -307,6 +311,9 @@ function normalise(input: HolidayInput): HolidayInput {
   if (!HOLIDAY_KINDS.includes(input.kind)) {
     throw new AccessError("access.pickHolidayExamOrEvent");
   }
+  // A competition is made with its competition, from the calendar's competition form (competition-events.ts),
+  // never as a bare calendar row: a COMPETITION row without one would be an event nobody can enrol in.
+  if (input.kind === "COMPETITION") throw new AccessError("access.competitionEventHasItsOwnForm");
 
   return {
     name,
@@ -374,9 +381,12 @@ export async function updateHoliday(
   // but a silent zero-row update is indistinguishable from success to a caller.
   const existing = await db.holiday.findFirst({
     where: { id: holidayId, schoolId },
-    select: { id: true },
+    select: { id: true, competitionId: true },
   });
   if (!existing) throw new AccessError("access.calendarEntryNotFound", "NOT_FOUND");
+  // The competition's row is edited with its competition (competition-events.ts updateCompetitionEvent), so the
+  // two never drift: a date changed here alone would leave the competition's own dates behind.
+  if (existing.competitionId) throw new AccessError("access.competitionEventHasItsOwnForm");
 
   await db.holiday.update({
     where: { id: holidayId },
@@ -407,18 +417,21 @@ export async function deleteHoliday(
 
   const existing = await db.holiday.findFirst({
     where: { id: holidayId, schoolId },
-    select: { id: true, name: true, startDateKey: true },
+    select: { id: true, name: true, startDateKey: true, competitionId: true },
   });
   if (!existing) throw new AccessError("access.calendarEntryNotFound", "NOT_FOUND");
 
-  await db.holiday.delete({ where: { id: holidayId } });
+  // A competition's row goes with its competition (decision 0007): deleted while nobody has entered, archived
+  // otherwise, in one tenant transaction, so the plain calendar door and the competition form do the same thing.
+  const competition = existing.competitionId ? await removeEventRows(schoolId, existing.id, existing.competitionId) : null;
+  if (!competition) await db.holiday.delete({ where: { id: holidayId } });
 
   await audit({
     schoolId,
     actorUserId: session.user.id,
-    action: "holiday.delete",
+    action: competition === "ARCHIVED" ? "competition.event.archive" : competition === "DELETED" ? "competition.event.delete" : "holiday.delete",
     targetType: "Holiday",
     targetId: holidayId,
-    meta: { name: existing.name, from: existing.startDateKey },
+    meta: { name: existing.name, from: existing.startDateKey, ...(existing.competitionId ? { competitionId: existing.competitionId } : {}) },
   });
 }

@@ -38,7 +38,7 @@ const ADMIN_BEFORE = [
   "/admin/records", "/admin/filings", "/admin/admissions", "/admin/syllabus", "/admin/attendance", "/admin/staff-attendance", "/admin/attendance-devices",
   "/admin/fees/tally", "/admin/substitutions", "/admin/calendar", "/admin/fees", "/admin/messaging", "/admin/circulars", "/admin/incidents",
   "/admin/transport", "/principal/leave", "/principal/trends", "/admin/reviews", "/admin/safety", "/admin/settings", "/admin/alumni", "/admin/website",
-  "/remarks", "/joins", "/bulletin", "/bulletin/council", "/experts", "/admin/vacancies", "/enquiries", "/mentoring", "/admin/sessions", "/competitions",
+  "/remarks", "/joins", "/bulletin", "/bulletin/council", "/experts", "/admin/vacancies", "/enquiries", "/mentoring", "/admin/sessions",
   "/archive", "/admin/inventory", "/admin/payroll", "/account/payslips", "/account/letters", "/account/items", "/library", "/admin/hostel",
   "/admin/academics", "/admin/college-admissions", "/accounts", "/admin/college-campus", "/exam-cell", "/placement", "/iqac", "/admin/committees",
   "/admin/faculty-records", "/principal/college", "/admin/stream-records",
@@ -49,7 +49,7 @@ const PRINCIPAL_BEFORE = [
   "/admin/records", "/admin/filings", "/admin/admissions", "/admin/syllabus", "/principal/timetable", "/principal/decisions", "/principal/trends",
   "/admin/staff-attendance", "/admin/attendance-devices", "/admin/substitutions", "/admin/calendar", "/admin/fees", "/admin/messaging", "/admin/circulars",
   "/admin/website", "/admin/incidents", "/admin/transport", "/remarks", "/joins", "/bulletin", "/bulletin/council", "/admin/vacancies", "/enquiries",
-  "/competitions", "/admin/sessions", "/archive", "/account", "/admin/payroll", "/admin/inventory", "/account/payslips", "/account/letters", "/account/items",
+  "/admin/sessions", "/archive", "/account", "/admin/payroll", "/admin/inventory", "/account/payslips", "/account/letters", "/account/items",
   "/library", "/admin/hostel", "/admin/academics", "/accounts", "/admin/college-admissions", "/exam-cell", "/placement", "/principal/accreditation",
   "/admin/committees", "/admin/faculty-records", "/admin/stream-records",
   // owner-batch-item9 (27 Oct 2026): the safety centre is one of the head's pages, which the head always holds.
@@ -107,7 +107,8 @@ describe("the office's seven groups hold what the owner listed", () => {
 
   it("puts each page in the group of its work", () => {
     expect(rail.groups.map((g) => g.group)).toEqual([...OFFICE_GROUPS]);
-    expect(group("teaching").sort()).toEqual(["/admin/report-cards", "/admin/syllabus", "/admin/substitutions", "/competitions"].sort());
+    // decision 0007 (6 Nov 2026): competitions are calendar events; the Competitions entry is gone from every role.
+    expect(group("teaching").sort()).toEqual(["/admin/report-cards", "/admin/syllabus", "/admin/substitutions"].sort());
     expect(group("people").sort()).toEqual(["/admin/certificates", "/admin/records", "/admin/admissions", "/admin/alumni", "/joins", "/enquiries", "/archive"].sort());
     expect(group("attendance").sort()).toEqual(["/admin/attendance", "/admin/staff-attendance", "/principal/leave", "/admin/calendar"].sort());
     expect(group("money").sort()).toEqual(["/admin/fees", "/admin/payroll", "/admin/inventory", "/admin/fees/tally"].sort());

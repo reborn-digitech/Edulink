@@ -233504,7 +233504,7 @@
     },
     "/api/v1/appadmin/quiz-review": {
       "get": {
-        "summary": "The generated questions, served, taken down or held for a figure, by board, class, subject, chapter and level (filters ?board=&grade=&subject=&topic=&level=&state=), with the bank's counts and each person's edits and take-downs",
+        "summary": "The whole bank, curated and generated, served, taken down or held for a figure, by board, class, subject, chapter and level (filters ?board=&grade=&subject=&topic=&level=&state=), with the bank's counts and their split by kind, and each person's edits and take-downs",
         "description": "The content team.",
         "security": [
           {
@@ -233524,6 +233524,12 @@
                       "type": "integer",
                       "minimum": 0
                     },
+                    "curated": {
+                      "$ref": "#/properties/total"
+                    },
+                    "generated": {
+                      "$ref": "#/properties/total"
+                    },
                     "served": {
                       "$ref": "#/properties/total"
                     },
@@ -233535,6 +233541,43 @@
                     },
                     "filtered": {
                       "$ref": "#/properties/total"
+                    },
+                    "split": {
+                      "type": "object",
+                      "properties": {
+                        "served": {
+                          "type": "object",
+                          "properties": {
+                            "curated": {
+                              "$ref": "#/properties/total"
+                            },
+                            "generated": {
+                              "$ref": "#/properties/total"
+                            }
+                          },
+                          "required": [
+                            "curated",
+                            "generated"
+                          ],
+                          "additionalProperties": false
+                        },
+                        "takenDown": {
+                          "$ref": "#/properties/split/properties/served"
+                        },
+                        "held": {
+                          "$ref": "#/properties/split/properties/served"
+                        },
+                        "filtered": {
+                          "$ref": "#/properties/split/properties/served"
+                        }
+                      },
+                      "required": [
+                        "served",
+                        "takenDown",
+                        "held",
+                        "filtered"
+                      ],
+                      "additionalProperties": false
                     },
                     "boards": {
                       "type": "array",
@@ -233585,6 +233628,12 @@
                           "total": {
                             "$ref": "#/properties/total"
                           },
+                          "curated": {
+                            "$ref": "#/properties/total"
+                          },
+                          "generated": {
+                            "$ref": "#/properties/total"
+                          },
                           "down": {
                             "$ref": "#/properties/total"
                           },
@@ -233604,6 +233653,8 @@
                           "name",
                           "levels",
                           "total",
+                          "curated",
+                          "generated",
                           "down",
                           "held",
                           "first"
@@ -233665,10 +233716,13 @@
                   },
                   "required": [
                     "total",
+                    "curated",
+                    "generated",
                     "served",
                     "takenDown",
                     "held",
                     "filtered",
+                    "split",
                     "boards",
                     "subjects",
                     "groups",
@@ -233801,6 +233855,17 @@
                           "minLength": 1,
                           "maxLength": 64
                         },
+                        "kind": {
+                          "type": "string",
+                          "enum": [
+                            "CURATED",
+                            "GENERATED"
+                          ]
+                        },
+                        "file": {
+                          "type": "string",
+                          "nullable": true
+                        },
                         "board": {
                           "type": "string",
                           "nullable": true
@@ -233810,6 +233875,9 @@
                           "properties": {
                             "id": {
                               "$ref": "#/properties/item/properties/id"
+                            },
+                            "slug": {
+                              "type": "string"
                             },
                             "name": {
                               "type": "string"
@@ -233826,6 +233894,7 @@
                           },
                           "required": [
                             "id",
+                            "slug",
                             "name",
                             "chapter",
                             "subject",
@@ -234115,6 +234184,8 @@
                       },
                       "required": [
                         "id",
+                        "kind",
+                        "file",
                         "board",
                         "topic",
                         "difficulty",
@@ -234257,7 +234328,7 @@
     },
     "/api/v1/appadmin/quiz-review/{questionId}": {
       "get": {
-        "summary": "One generated item in any state: the key, the solution, the check, the distractor reasons, the solver's answers, the figure, the Hindi and Marathi rows, pupils' answers so far and everything done to it",
+        "summary": "One item of either kind in any state: the key, the solution, the check, the figure, the Hindi and Marathi rows, pupils' answers so far and everything done to it; a generated item with the distractor reasons and the solver's answers, a curated one read-only with the file its words are changed in",
         "description": "The content team.",
         "security": [
           {
@@ -234281,6 +234352,17 @@
                           "minLength": 1,
                           "maxLength": 64
                         },
+                        "kind": {
+                          "type": "string",
+                          "enum": [
+                            "CURATED",
+                            "GENERATED"
+                          ]
+                        },
+                        "file": {
+                          "type": "string",
+                          "nullable": true
+                        },
                         "board": {
                           "type": "string",
                           "nullable": true
@@ -234290,6 +234372,9 @@
                           "properties": {
                             "id": {
                               "$ref": "#/properties/item/properties/id"
+                            },
+                            "slug": {
+                              "type": "string"
                             },
                             "name": {
                               "type": "string"
@@ -234306,6 +234391,7 @@
                           },
                           "required": [
                             "id",
+                            "slug",
                             "name",
                             "chapter",
                             "subject",
@@ -234595,6 +234681,8 @@
                       },
                       "required": [
                         "id",
+                        "kind",
+                        "file",
                         "board",
                         "topic",
                         "difficulty",
@@ -234695,7 +234783,7 @@
     },
     "/api/v1/appadmin/quiz-review/{questionId}/edit": {
       "post": {
-        "summary": "Correct the item in English and, when sent, in Hindi and Marathi: served as edited at once; the earlier words kept on the record and named in the audit log, the solver's answers kept with an edited-after-solving mark",
+        "summary": "Correct a generated item in English and, when sent, in Hindi and Marathi: served as edited at once; the earlier words kept on the record and named in the audit log, the solver's answers kept with an edited-after-solving mark; a curated item is refused 403 (its words are changed in its file under content/quiz and imported again)",
         "description": "The content team.",
         "security": [
           {
@@ -234917,7 +235005,7 @@
     },
     "/api/v1/appadmin/quiz-review/{questionId}/take-down": {
       "post": {
-        "summary": "Take the item down with a reason from the coded list: not served from this moment, the answers pupils gave kept; taking it down again changes nothing",
+        "summary": "Take an item of either kind down with a reason from the coded list: not served from this moment, the answers pupils gave kept; taking it down again changes nothing",
         "description": "The content team.",
         "security": [
           {
@@ -235075,7 +235163,7 @@
     },
     "/api/v1/appadmin/quiz-review/matrix": {
       "get": {
-        "summary": "The practice bank by class and subject (?board= NCERT or BALBHARATI, absent both): for classes 3 to 12 and each subject the generator has a code for, the questions served, the chapters and how many have reached the target (the running generation's, else 100); a college row per stream when the bank has college chapters",
+        "summary": "The practice bank by class and subject (?board= NCERT or BALBHARATI, absent both): for classes 3 to 12 and each subject the generator has a code for, the questions served with their split into curated and generated, the chapters and how many have reached the target (the running generation's, else 100); a college row per stream when the bank has college chapters",
         "description": "The content team.",
         "security": [
           {
@@ -235133,6 +235221,12 @@
                                   "type": "integer",
                                   "minimum": 0
                                 },
+                                "curated": {
+                                  "$ref": "#/properties/rows/items/properties/cells/items/properties/served"
+                                },
+                                "generated": {
+                                  "$ref": "#/properties/rows/items/properties/cells/items/properties/served"
+                                },
                                 "chapters": {
                                   "$ref": "#/properties/rows/items/properties/cells/items/properties/served"
                                 },
@@ -235143,6 +235237,8 @@
                               "required": [
                                 "subject",
                                 "served",
+                                "curated",
+                                "generated",
                                 "chapters",
                                 "atTarget"
                               ],
@@ -235150,6 +235246,12 @@
                             }
                           },
                           "served": {
+                            "$ref": "#/properties/rows/items/properties/cells/items/properties/served"
+                          },
+                          "curated": {
+                            "$ref": "#/properties/rows/items/properties/cells/items/properties/served"
+                          },
+                          "generated": {
                             "$ref": "#/properties/rows/items/properties/cells/items/properties/served"
                           },
                           "chapters": {
@@ -235163,6 +235265,8 @@
                           "grade",
                           "cells",
                           "served",
+                          "curated",
+                          "generated",
                           "chapters",
                           "atTarget"
                         ],
@@ -235196,6 +235300,12 @@
                               "served": {
                                 "$ref": "#/properties/rows/items/properties/cells/items/properties/served"
                               },
+                              "curated": {
+                                "$ref": "#/properties/rows/items/properties/cells/items/properties/served"
+                              },
+                              "generated": {
+                                "$ref": "#/properties/rows/items/properties/cells/items/properties/served"
+                              },
                               "chapters": {
                                 "$ref": "#/properties/rows/items/properties/cells/items/properties/served"
                               },
@@ -235207,6 +235317,8 @@
                               "stream",
                               "cells",
                               "served",
+                              "curated",
+                              "generated",
                               "chapters",
                               "atTarget"
                             ],
@@ -235299,7 +235411,7 @@
     },
     "/api/v1/appadmin/quiz-review/chapters": {
       "get": {
-        "summary": "The practice bank's chapters grouped by class, subject and board in their book's order (?board=&grade=&subject=), each with its served questions by level, what is taken down or held, and whether the generator, the authored bank or both made them",
+        "summary": "The practice bank's chapters grouped by class, subject and board in their book's order (?board=&grade=&subject=), each with its served questions by level and by kind (curated, generated), what is taken down or held, and whether the generator, the curated bank or both made them",
         "description": "The content team.",
         "security": [
           {
@@ -235338,6 +235450,9 @@
                           "served": {
                             "type": "integer",
                             "minimum": 0
+                          },
+                          "generated": {
+                            "$ref": "#/properties/groups/items/properties/served"
                           },
                           "chapters": {
                             "type": "array",
@@ -235387,6 +235502,12 @@
                                 "total": {
                                   "$ref": "#/properties/groups/items/properties/served"
                                 },
+                                "curated": {
+                                  "$ref": "#/properties/groups/items/properties/served"
+                                },
+                                "generated": {
+                                  "$ref": "#/properties/groups/items/properties/served"
+                                },
                                 "down": {
                                   "$ref": "#/properties/groups/items/properties/served"
                                 },
@@ -235415,6 +235536,8 @@
                                 "book",
                                 "levels",
                                 "total",
+                                "curated",
+                                "generated",
                                 "down",
                                 "held",
                                 "maker"
@@ -235428,6 +235551,7 @@
                           "subject",
                           "board",
                           "served",
+                          "generated",
                           "chapters"
                         ],
                         "additionalProperties": false
@@ -235518,7 +235642,7 @@
     },
     "/api/v1/appadmin/quiz-review/chapters/{slug}": {
       "get": {
-        "summary": "One chapter's questions, fifty a page (?page=), served unless ?state= asks for the taken-down or held ones, in English, Hindi or Marathi (?lang=): each with its level, options and key, solution, figure, who made it and when, and a note where the language's words are missing, stale or were taken down as wrong",
+        "summary": "One chapter's questions, curated and generated together, fifty a page (?page=), served unless ?state= asks for the taken-down or held ones, in English, Hindi or Marathi (?lang=): each with its kind, level, options and key, solution, figure, who made it and when, and a note where the language's words are missing, stale or were taken down as wrong",
         "description": "The content team.",
         "security": [
           {
@@ -235606,12 +235730,20 @@
                         },
                         "held": {
                           "$ref": "#/properties/counts/properties/served"
+                        },
+                        "curated": {
+                          "$ref": "#/properties/counts/properties/served"
+                        },
+                        "generated": {
+                          "$ref": "#/properties/counts/properties/served"
                         }
                       },
                       "required": [
                         "served",
                         "down",
-                        "held"
+                        "held",
+                        "curated",
+                        "generated"
                       ],
                       "additionalProperties": false
                     },
@@ -235636,6 +235768,13 @@
                           },
                           "generated": {
                             "type": "boolean"
+                          },
+                          "kind": {
+                            "type": "string",
+                            "enum": [
+                              "CURATED",
+                              "GENERATED"
+                            ]
                           },
                           "difficulty": {
                             "type": "integer",
@@ -235722,6 +235861,7 @@
                         "required": [
                           "id",
                           "generated",
+                          "kind",
                           "difficulty",
                           "language",
                           "stem",
@@ -235845,7 +235985,7 @@
     },
     "/api/v1/appadmin/quiz-review/{questionId}/put-back": {
       "post": {
-        "summary": "Put a taken-down item back: served again at once (unless its figure is still to be drawn); putting it back again changes nothing",
+        "summary": "Put a taken-down item of either kind back: served again at once (unless its figure is still to be drawn); putting it back again changes nothing",
         "description": "The content team.",
         "security": [
           {

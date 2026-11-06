@@ -42,10 +42,38 @@ not the app role's grants or the row-level security policies, and a database
 without them answers every query with permission denied. The script puts both
 back and proves the app role can read before it exits 0.
 
+## The dev machine (7 November 2026)
+
+The laptop's dev database was lost on 6 November 2026 with no dump anywhere: a builder ran `prisma migrate diff`
+with a shadow database URL that a failed sed had left pointing at `edulink_dev`, and Prisma reset it. What was
+rebuildable came back from the scripts in two hours; the rest (hand-entered data, the audit log, review marks,
+5,378 generated questions whose only full copy was the database) did not. Four things now stand in the way:
+
+- **The fence** (`apps/web/scripts/db-fence.mjs`, asked by `with-admin-db.mjs` on every db script): a shadow
+  database URL, a `migrate diff` against migration folders, and a reset outside `npm run db:reset` are refused,
+  and every command prints the database it touches. Migration SQL comes from the live datasource:
+  `node scripts/with-admin-db.mjs npx prisma migrate diff --from-schema-datasource prisma/schema.prisma --to-schema-datamodel prisma/schema.prisma --script`.
+- **A dump first**: `db:migrate`, `db:push` and `db:reset` run `npm run db:backup` before anything and stop if it
+  fails. The dump lands in `apps/web/storage/backups` (ignored by git) and a copy in
+  `~/Desktop/OffMachineCopy/edulink-backups`, which the owner's Desktop syncs to iCloud Drive, so the copy
+  leaves the machine with no account in any script. Fourteen days kept in both.
+- **Every morning** the scheduled task takes the same dump, and on Mondays `npm run db:basebackup`: a base backup
+  into `apps/web/storage/pitr` with a copy in the off-machine folder, for point-in-time recovery with the WAL
+  archive (`postgresql.conf`: `archive_mode = on`, `archive_command` copying each segment into
+  `storage/pitr/wal`; the archive stays on this disk because a heavy ingest writes gigabytes a day). Restore to a
+  moment: stop Postgres, move the data directory aside, unpack the newest base into a fresh data directory, add
+  `restore_command = 'cp /Users/chinmaykulkarni/Documents/Relay/apps/web/storage/pitr/wal/%f %p'` and
+  `recovery_target_time = '<moment>'` to its `postgresql.conf`, touch `recovery.signal`, start.
+- **The drill**: `npm run db:drill` restores the newest off-machine dump into `edulink_drill`, compares the table
+  count and six key tables with the live database, and drops the scratch. The first of each month from the task;
+  it must pass.
+
 ## Drill record
 
 | Date | Source | Dump | Restore | Policies after grants | Rows checked | Total |
 | --- | --- | --- | --- | --- | --- | --- |
 | 2026-09-07 | dev database (1,293 users, 15 schools, 147,589 notifications) | 34 MB in 5 s | 9 s | 91 | User, School, Membership, Notification, Conversation, JobRun, _prisma_migrations — all identical | 15 s |
+
+| 2026-11-07 | dev database, the Desktop copy (23 schools, 777 users, 15,358 questions, 462 MB) | 97 MB in 215 s | 1,480 s into edulink_drill, under a corpus ingest | not re-granted (the drill reads as the owner) | tables 350 = 350; School, QuizTopic, Competition identical; User, Membership, QuizQuestion short by the rows written since the dump | passed |
 
 Staging and production rows are added here as they are rehearsed.

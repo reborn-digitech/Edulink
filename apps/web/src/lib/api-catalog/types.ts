@@ -312,6 +312,9 @@ export type SweepFixture = {
   conversationId: string | null;
   remarkThreadId: string | null;
   competitionId: string | null;
+  /** decision 0007: the fixture competition's calendar row, and the event's own values for an idempotent edit. */
+  competitionEventHolidayId: string | null;
+  competitionEvent: Record<string, unknown> | null;
   vacancyId: string | null;
   enquiryId: string | null;
   meetingSlotId: string | null;

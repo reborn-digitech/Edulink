@@ -3176,7 +3176,8 @@ async function main() {
     await check(actor, "/competitions");
   }
   await check(student, "/competitions?show=all", 200, "including closed ones");
-  await check(admin, "/competitions/new", 200, "posting one");
+  // decision 0007 (6 Nov 2026): a competition is added on the calendar; the old form sends the office there (307).
+  await check(admin, "/competitions/new", 307, "the office is sent to the calendar to add one");
   await check(teacher, "/competitions/new", 307, "a teacher cannot post one");
   await check(student, "/competitions/new", 307, "nor can a pupil");
 

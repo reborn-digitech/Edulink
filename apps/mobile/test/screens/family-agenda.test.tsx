@@ -50,6 +50,28 @@ describe("the fortnight agenda", () => {
     expect(mockRouter.push).toHaveBeenCalledWith({ pathname: "/(app)/assignments", params: { child: ID.child } });
   });
 
+  it("a competition row offers Enrol (decision 0007): a guardian enrols the agenda's child, a pupil themself; the other states are said in words", async () => {
+    const rows = [
+      ROW("calendar:c1", "COMPETITION", "2026-10-06", "ZZ Inter-house quiz", { href: `/competitions/czz0000000000000000comp1?child=${ID.child}`, competition: { competitionId: "czz0000000000000000comp1", enrol: "OPEN", entryId: null } }),
+      ROW("calendar:c2", "COMPETITION", "2026-10-07", "ZZ Spelling bee", { href: "/competitions/czz0000000000000000comp2", competition: { competitionId: "czz0000000000000000comp2", enrol: "CONSENT_WAITING", entryId: "e2" } }),
+      ROW("calendar:c3", "COMPETITION", "2026-10-08", "ZZ Chess", { href: "/competitions/czz0000000000000000comp3", competition: { competitionId: "czz0000000000000000comp3", enrol: "CLOSED", entryId: null } }),
+    ];
+    const ENTER = "/api/v1/shared/competitions/czz0000000000000000comp1/enter";
+    const { fetch } = await renderFamily(<FamilyAgenda />, ME_PARENT, { [PATH]: () => AGENDA("PARENT", rows), [ENTER]: () => ({ entryId: "e1", awaitingConsent: false }) });
+    expect(await screen.findByText("ZZ Inter-house quiz")).toBeTruthy();
+    expect(screen.getAllByText("Competition").length).toBe(3);
+    expect(screen.getByText("Consent waiting")).toBeTruthy();
+    expect(screen.getByText("Closed")).toBeTruthy();
+    await press(screen.getByRole("button", { name: "Enrol: ZZ Inter-house quiz" }));
+    const sent = calls(fetch, ENTER)[0]!;
+    expect(sent.init?.method).toBe("POST");
+    expect(JSON.parse(String(sent.init?.body))).toEqual({ studentMembershipId: ID.child });
+    // The pupil sends no child: they enrol themself.
+    const second = await renderFamily(<FamilyAgenda />, ME_STUDENT, { [PATH]: () => AGENDA("STUDENT", rows), [ENTER]: () => ({ entryId: "e1", awaitingConsent: true }) });
+    await press(await screen.findByRole("button", { name: "Enrol: ZZ Inter-house quiz" }));
+    expect(JSON.parse(String(calls(second.fetch, ENTER)[0]!.init?.body))).toEqual({});
+  });
+
   it("a pupil sees their own days; a longer window is asked for; nothing in the window says so", async () => {
     const { fetch } = await renderFamily(<FamilyAgenda />, ME_STUDENT, { [PATH]: (_init, url) => (url.searchParams.get("days") === "30" ? AGENDA("STUDENT", []) : AGENDA("STUDENT")) });
     expect(await screen.findByText(/Your next 14 days/)).toBeTruthy();

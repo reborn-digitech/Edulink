@@ -3,6 +3,7 @@ import { LOCALES } from "@edulink/i18n";
 import { QUIZ_BANK_PAGE_SIZE, QUIZ_BANK_STATES, quizBankChapterQuerySchema, type QuizBankChapterQuery, type QuizBankState } from "@edulink/contracts";
 import { requireAppAdmin } from "@/lib/tenancy";
 import { bankChapter } from "@/lib/bank-desk";
+import { CURATED_FOLDER, curatedFileOf } from "@/lib/quiz-review";
 import { getLocale, getT } from "@/lib/i18n/server";
 import { formatInZone } from "@/lib/dates";
 import { ChipLink } from "@/components/ui/chip";
@@ -30,6 +31,10 @@ function queryOf(sp: Params): QuizBankChapterQuery {
  * tabs), with a language toggle — English, हिन्दी, मराठी — that switches every stem, option and solution to that
  * language's stored translation and says plainly where there is none or it was taken down as wrong. The language, the
  * standing and the page live in the URL (?lang=&state=&page=). A chapter nobody may see is the app's 404.
+ *
+ * One bank (7 Nov 2026): the list has always held the curated and the generated questions together; each now carries its
+ * kind badge, Take down and Put back work on either, and a curated item says the file its words are changed in
+ * (content/quiz/<slug>.json, re-imported) or, for one written in the app, the folder, the chapter's slug and the bank editor.
  */
 export async function ChapterQuestionsPage({ base, slug, searchParams, bankEditor }: { base: string; slug: string; searchParams: Promise<Params>; bankEditor: boolean }) {
   const session = await requireAppAdmin();
@@ -53,6 +58,7 @@ export async function ChapterQuestionsPage({ base, slug, searchParams, bankEdito
     ...item,
     n: first + i + 1,
     made: t(item.generated ? "bankDesk.madeGenerated" : "bankDesk.madeAuthored", { date: formatInZone(new Date(item.madeAt), "Asia/Kolkata", { day: "numeric", month: "short", year: "numeric" }, locale) }),
+    file: curatedFileOf(item, data.topic.slug),
   }));
 
   return (
@@ -77,9 +83,11 @@ export async function ChapterQuestionsPage({ base, slug, searchParams, bankEdito
           ))}
         </nav>
       </div>
-      <p className="text-sm text-fg-muted">{t("bankDesk.countsLine", { served: data.counts.served, down: data.counts.down, held: data.counts.held })}</p>
+      <p className="text-sm text-fg-muted">
+        {t("bankDesk.countsLine", { served: data.counts.served, down: data.counts.down, held: data.counts.held })} · {t("bankDesk.kindsLine", { curated: data.counts.curated, generated: data.counts.generated })}
+      </p>
 
-      {items.length === 0 ? <EmptyState title={t("quizReview.empty")} description={t("bankDesk.itemsNone")} /> : <ChapterItems items={items} topicId={data.topic.id} bankEditor={bankEditor} />}
+      {items.length === 0 ? <EmptyState title={t("quizReview.empty")} description={t("bankDesk.itemsNone")} /> : <ChapterItems items={items} topicId={data.topic.id} slug={data.topic.slug} folder={CURATED_FOLDER} bankEditor={bankEditor} />}
 
       {data.pages > 1 && (
         <nav aria-label={t("bankDesk.pageOf", { page: data.page, pages: data.pages })} className="flex flex-wrap items-center justify-between gap-2">

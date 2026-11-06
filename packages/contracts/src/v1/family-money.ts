@@ -96,7 +96,19 @@ export const feeStructureSelfEnrolBodySchema = z.object({ open: z.boolean() });
 /* ---------------------------------------------------------------------- */
 
 export const familyAgendaQuerySchema = z.object({ student: id.optional(), childId: id.optional(), days: z.coerce.number().int().min(1).max(60).optional() });
-export const familyAgendaKindSchema = z.enum(["EXAM", "WORK", "SESSION", "MEETING", "CLOSURE", "EVENT", "FEE"]);
+export const familyAgendaKindSchema = z.enum(["EXAM", "WORK", "SESSION", "MEETING", "CLOSURE", "EVENT", "FEE", "COMPETITION"]);
+/**
+ * What the viewer may do about a COMPETITION row (decision 0007, 6 Nov 2026): OPEN (an Enrol button: the pupil
+ * enrols themself, the guardian enrols the agenda's child), ENROLLED, CONSENT_WAITING (the pupil asked and a guardian
+ * has not said yes), CLOSED (enrolment off, closed, or not for the pupil's class).
+ */
+export const familyAgendaEnrolSchema = z.enum(["OPEN", "ENROLLED", "CONSENT_WAITING", "CLOSED"]);
+export const familyAgendaCompetitionSchema = z.object({
+  competitionId: z.string(),
+  enrol: familyAgendaEnrolSchema,
+  /** The pupil's entry when there is one. */
+  entryId: z.string().nullable(),
+});
 export const familyAgendaRowSchema = z.object({
   id: z.string(),
   kind: familyAgendaKindSchema,
@@ -110,6 +122,8 @@ export const familyAgendaRowSchema = z.object({
   amountPaise: paise.nullable(),
   /** The web page the row opens — the role's own path; the phone maps it to a screen. */
   href: z.string(),
+  /** A COMPETITION row's competition and whether the viewer may enrol; absent on every other kind and on an older server. */
+  competition: familyAgendaCompetitionSchema.nullable().optional(),
 });
 export const familyAgendaSchema = z.object({
   children: z.array(z.object({ studentMembershipId: z.string(), name: z.string(), schoolName: z.string(), leftAt: z.string().nullable() })),

@@ -1,18 +1,23 @@
 "use client";
 
 import { useState, useTransition } from "react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { TrashIcon, PencilSimpleIcon, CheckIcon, XIcon } from "@phosphor-icons/react";
+import { TrashIcon, PencilSimpleIcon, CheckIcon, XIcon, TrophyIcon } from "@phosphor-icons/react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { DateField, SelectField, TextField } from "@/components/ui/field";
 import { useToast } from "@/components/ui/toast";
 import { formatDateKey } from "@/lib/dates";
 import { cn } from "@/lib/cn";
-import { editCalendarEntry, removeCalendarEntry } from "./actions";
+import { editCalendarEntry, editCompetitionEvent, removeCalendarEntry, removeCompetitionEventAction } from "./actions";
 import { HOLIDAY_KINDS, HOLIDAY_KIND_META, type HolidayKind } from "@/lib/holiday-kinds";
 import { actionError } from "@/lib/action-error";
 import { useLocale, useT } from "@/lib/i18n";
+import { BOARD_OPTION_KEY, competitionBody, CompetitionFieldset, type CompetitionFields } from "./competition-fields";
+
+/** A COMPETITION row's competition half (decision 0007): what the office set, and how many have entered. */
+export type EntryCompetition = CompetitionFields & { competitionId: string; status: string; entered: number };
 
 export type Entry = {
   id: string;
@@ -21,6 +26,7 @@ export type Entry = {
   endDateKey: string;
   kind: HolidayKind;
   note: string | null;
+  competition?: EntryCompetition | null;
 };
 
 /**
@@ -80,6 +86,8 @@ function EntryRow({ entry, past }: { entry: Entry; past: boolean }) {
   const [start, setStart] = useState(entry.startDateKey);
   const [end, setEnd] = useState(entry.endDateKey);
   const [kind, setKind] = useState<HolidayKind>(entry.kind);
+  const competition = entry.competition ?? null;
+  const [fields, setFields] = useState<CompetitionFields>(competition ?? { summary: "", registrationClosesDateKey: "", gradeLow: "", gradeHigh: "", enrolmentOpen: true, internalBoard: "OFF", requiresParentConsent: true, body: "" });
   const [error, setError] = useState<string | null>(null);
 
   const single = entry.startDateKey === entry.endDateKey;
@@ -95,12 +103,15 @@ function EntryRow({ entry, past }: { entry: Entry; past: boolean }) {
       return;
     }
     startTransition(async () => {
-      const result = await editCalendarEntry(entry.id, {
-        name: name.trim(),
-        startDateKey: start,
-        endDateKey: end,
-        kind,
-      });
+      // A competition's row is edited with its competition, in one transaction (decision 0007); the kind cannot change.
+      const result = competition
+        ? await editCompetitionEvent(entry.id, competitionBody({ name: name.trim(), startDateKey: start, endDateKey: end, note: entry.note ?? "" }, fields))
+        : await editCalendarEntry(entry.id, {
+            name: name.trim(),
+            startDateKey: start,
+            endDateKey: end,
+            kind,
+          });
       if (!result.ok) {
         setError(actionError(t, result, "calendar.couldNotSave"));
         return;
@@ -113,12 +124,16 @@ function EntryRow({ entry, past }: { entry: Entry; past: boolean }) {
 
   function remove() {
     startTransition(async () => {
-      const result = await removeCalendarEntry(entry.id);
+      const result = competition ? await removeCompetitionEventAction(entry.id) : await removeCalendarEntry(entry.id);
       if (!result.ok) {
         toast({ tone: "warn", title: t("calendar.couldNotRemove"), description: actionError(t, result) });
         return;
       }
-      toast({ tone: "ok", title: t("calendar.removed", { name: entry.name }) });
+      toast({
+        tone: "ok",
+        title: t("calendar.removed", { name: entry.name }),
+        description: competition ? ("competition" in result && result.competition === "ARCHIVED" ? t("calendar.competitionArchived") : t("calendar.competitionDeleted")) : undefined,
+      });
       router.refresh();
     });
   }
@@ -136,17 +151,21 @@ function EntryRow({ entry, past }: { entry: Entry; past: boolean }) {
           value={name}
           onChange={(e) => setName(e.target.value)}
         />
-        <SelectField
-          label={t("calendar.kind")}
-          value={kind}
-          onChange={(e) => setKind(e.target.value as HolidayKind)}
-        >
-          {HOLIDAY_KINDS.map((option) => (
-            <option key={option} value={option}>
-              {t(HOLIDAY_KIND_META[option].optionKey)}
-            </option>
-          ))}
-        </SelectField>
+        {competition ? (
+          <p className="text-xs text-fg-muted">{t("calendar.competitionKindFixed")}</p>
+        ) : (
+          <SelectField
+            label={t("calendar.kind")}
+            value={kind}
+            onChange={(e) => setKind(e.target.value as HolidayKind)}
+          >
+            {HOLIDAY_KINDS.filter((option) => option !== "COMPETITION").map((option) => (
+              <option key={option} value={option}>
+                {t(HOLIDAY_KIND_META[option].optionKey)}
+              </option>
+            ))}
+          </SelectField>
+        )}
         <div className="grid gap-3 sm:grid-cols-2">
           <DateField
             label={t("calendar.starts")}
@@ -159,6 +178,7 @@ function EntryRow({ entry, past }: { entry: Entry; past: boolean }) {
             onChange={(e) => setEnd(e.target.value)}
           />
         </div>
+        {competition && <CompetitionFieldset value={fields} onChange={setFields} compact />}
         <div className="flex gap-2">
           <Button size="sm" loading={pending} icon={<CheckIcon weight="bold" className="size-4" />} onClick={save}>
             {t("common.save")}
@@ -198,6 +218,18 @@ function EntryRow({ entry, past }: { entry: Entry; past: boolean }) {
             : `${formatDateKey(entry.startDateKey, { day: "numeric", month: "short" })} – ${formatDateKey(entry.endDateKey, { day: "numeric", month: "short" })}`}
           {entry.note ? ` · ${entry.note}` : ""}
         </p>
+        {competition && (
+          /* The competition half, in a line: enrolment, the board, who has entered, and the way to its page. */
+          <p className="mt-0.5 flex flex-wrap items-center gap-x-2 gap-y-0.5 text-xs text-fg-muted" data-testid="competition-line">
+            <span>{competition.enrolmentOpen ? t("calendar.enrolmentOpenShort", { date: formatDateKey(competition.registrationClosesDateKey, { day: "numeric", month: "short" }, locale) }) : t("calendar.enrolmentOffShort")}</span>
+            <span>· {t(BOARD_OPTION_KEY[competition.internalBoard])}</span>
+            <span>· {competition.entered === 1 ? t("competitions.pupilsTakingPartOne") : t("competitions.pupilsTakingPartMany", { count: competition.entered })}</span>
+            <Link href={`/competitions/${competition.competitionId}`} className="inline-flex items-center gap-1 font-medium text-accent-strong underline underline-offset-2">
+              <TrophyIcon weight="bold" className="size-3.5" />
+              {t("calendar.openCompetition")}
+            </Link>
+          </p>
+        )}
       </div>
 
       {/* Label as well as tone — the difference between an exam and a holiday is

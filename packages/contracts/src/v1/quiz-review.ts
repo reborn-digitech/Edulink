@@ -2,14 +2,27 @@ import { z } from "zod";
 import { quizBoardSchema } from "./quiz-board"; // quiz-board (11 Oct 2026)
 
 /**
- * THE GENERATED BANK'S DESK (docs/plans/assistant-and-quiz-bank.md, Phase 1 "Output and review", as
+ * THE QUESTION BANK'S DESK (docs/plans/assistant-and-quiz-bank.md, Phase 1 "Output and review", as
  * the owner decided on 11 October 2026; it was a review queue from 10 October): the generator's items
  * are PUBLISHED WITHOUT REVIEW — an item that passed the pipeline's own checks is served, with its Hindi
  * and Marathi, the moment it is loaded — and the app admins and the operator, never teachers, walk the
  * bank afterwards: Edit (audited, all three languages), Take down (stops serving at once, with a coded
  * reason; reversible with Put back), Skip. Every door is app-admin (the content team, and the operator,
  * who passes that gate too); none names a school.
+ *
+ * ONE BANK ON THE DESK (the owner's ask of 7 November 2026): the list, the one-item door, the matrix, the
+ * chapters and a chapter's page answer the WHOLE bank — the curated questions of content/quiz/*.json
+ * (`generated` false, scripts/import-quiz.ts) and the generated ones of content/quiz/generated/*.json
+ * (`generated` true, scripts/quiz-queue-load.ts) together, each item with its `kind` and every count
+ * with its split. Take down and Put back act on either kind (the flags are the row's); Edit stays the
+ * generated item's, and on a curated one answers 403 with quizReview.refuseEditCurated: its words are
+ * changed in its file and imported again. Next keeps walking the generated items alone.
  */
+
+/** Where a question came from: the content team's files (curated) or the generator. */
+export const QUIZ_BANK_KINDS = ["CURATED", "GENERATED"] as const;
+export type QuizBankKind = (typeof QUIZ_BANK_KINDS)[number];
+export const quizBankKindSchema = z.enum(QUIZ_BANK_KINDS);
 
 const id = z.string().min(1).max(64);
 const iso = z.string().datetime();
@@ -75,18 +88,28 @@ export type QuizReviewQuery = z.infer<typeof quizReviewQuerySchema>;
 
 const reviewerCountSchema = z.object({ name: z.string(), role: z.enum(QUIZ_REVIEW_ROLES), edits: count, takenDown: count, putBack: count });
 
-/** GET /api/v1/appadmin/quiz-review — the generated bank by chapter and level, with the counts the desk works against. */
+/** A count split by kind: the two add up to the count beside it. */
+export const quizBankKindSplitSchema = z.object({ curated: count, generated: count });
+export type QuizBankKindSplit = z.infer<typeof quizBankKindSplitSchema>;
+
+/** GET /api/v1/appadmin/quiz-review — the whole bank by chapter and level, with the counts the desk works against (one bank, 7 Nov 2026). */
 export const quizReviewListSchema = z.object({
-  /** Every generated item, whatever the filter. */
+  /** Every question in the bank, curated and generated, whatever the filter. */
   total: count,
-  /** Served to pupils now. */
+  /** Of those, from the content team's files. */
+  curated: count,
+  /** Of those, the generator's. */
+  generated: count,
+  /** Served to pupils now, either kind. */
   served: count,
-  /** Taken down. */
+  /** Taken down, either kind. */
   takenDown: count,
-  /** Loaded but held until the figure it needs is drawn. */
+  /** Loaded but held until the figure it needs is drawn (a generated item only). */
   held: count,
-  /** Under the filter given. */
+  /** Under the filter given, either kind. */
   filtered: count,
+  /** Each of the counts above the whole bank's, by kind; `filtered.generated` is what Next walks. */
+  split: z.object({ served: quizBankKindSplitSchema, takenDown: quizBankKindSplitSchema, held: quizBankKindSplitSchema, filtered: quizBankKindSplitSchema }),
   boards: z.array(z.string()),
   subjects: z.array(z.string()),
   groups: z.array(
@@ -97,9 +120,12 @@ export const quizReviewListSchema = z.object({
       grade: z.number().int(),
       chapter: z.string(),
       name: z.string(),
-      /** Items under the filter at levels 1 to 6. */
+      /** Items under the filter at levels 1 to 6, either kind. */
       levels: z.array(count).length(6),
       total: count,
+      /** Of the total, by kind. */
+      curated: count,
+      generated: count,
       /** Of those, taken down and held for a figure. */
       down: count,
       held: count,
@@ -135,8 +161,15 @@ export const quizReviewStampSchema = z.object({
 
 export const quizReviewItemSchema = z.object({
   id,
+  /** CURATED (content/quiz/*.json, or typed in the app) or GENERATED; the desk edits a generated item only. */
+  kind: quizBankKindSchema,
+  /**
+   * A curated item's file, "content/quiz/<slug>.json", where its words are changed and imported again; null for a
+   * generated item and for a curated one written in the app (no file holds it: the bank editor changes it).
+   */
+  file: z.string().nullable(),
   board: z.string().nullable(),
-  topic: z.object({ id, name: z.string(), chapter: z.string(), subject: z.string(), grade: z.number().int() }),
+  topic: z.object({ id, slug: z.string(), name: z.string(), chapter: z.string(), subject: z.string(), grade: z.number().int() }),
   difficulty: z.number().int().min(1).max(6),
   stem: z.string(),
   choices: z.array(z.string()),

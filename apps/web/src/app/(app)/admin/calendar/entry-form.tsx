@@ -5,10 +5,11 @@ import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { DateField, SelectField, TextAreaField, TextField } from "@/components/ui/field";
 import { useToast } from "@/components/ui/toast";
-import { addCalendarEntry } from "./actions";
+import { addCalendarEntry, addCompetitionEvent } from "./actions";
 import { HOLIDAY_KINDS, HOLIDAY_KIND_META, type HolidayKind } from "@/lib/holiday-kinds";
 import { actionError } from "@/lib/action-error";
 import { useT } from "@/lib/i18n";
+import { competitionBody, CompetitionFieldset, EMPTY_COMPETITION_FIELDS, type CompetitionFields } from "./competition-fields";
 
 /**
  * Adding a day, or a stretch of days.
@@ -20,7 +21,9 @@ import { useT } from "@/lib/i18n";
  *
  * The kind is a select rather than a colour swatch because the difference is
  * behavioural, not decorative: only HOLIDAY makes the register warn a teacher
- * that the school is shut.
+ * that the school is shut. COMPETITION (decision 0007, 6 Nov 2026) grows the
+ * form by the competition's own fields and makes the competition pupils enrol
+ * in together with the calendar row, in one transaction.
  */
 export function EntryForm({ today }: { today: string }) {
   const t = useT();
@@ -34,6 +37,7 @@ export function EntryForm({ today }: { today: string }) {
   const [kind, setKind] = useState<HolidayKind>("HOLIDAY");
   const [note, setNote] = useState("");
   const [multiDay, setMultiDay] = useState(false);
+  const [competition, setCompetition] = useState<CompetitionFields>(EMPTY_COMPETITION_FIELDS);
   const [error, setError] = useState<string | null>(null);
 
   function submit(event: React.FormEvent) {
@@ -55,25 +59,29 @@ export function EntryForm({ today }: { today: string }) {
       return;
     }
 
+    if (kind === "COMPETITION" && competition.summary.trim().length < 3) {
+      setError(t("competitions.oneLinePlease"));
+      return;
+    }
+
     startTransition(async () => {
-      const result = await addCalendarEntry({
-        name: name.trim(),
-        startDateKey: start,
-        endDateKey: multiDay && end ? end : start,
-        kind,
-        note: note.trim(),
-      });
+      const entry = { name: name.trim(), startDateKey: start, endDateKey: multiDay && end ? end : start, note: note.trim() };
+      const result =
+        kind === "COMPETITION"
+          ? await addCompetitionEvent(competitionBody(entry, competition))
+          : await addCalendarEntry({ ...entry, kind });
 
       if (!result.ok) {
         setError(actionError(t, result, "calendar.couldNotAdd"));
         return;
       }
 
-      toast({ tone: "ok", title: t("calendar.added", { name: name.trim() }) });
+      toast({ tone: "ok", title: t("calendar.added", { name: name.trim() }), description: kind === "COMPETITION" ? t("calendar.competitionAdded") : undefined });
       setName("");
       setNote("");
       setEnd("");
       setMultiDay(false);
+      setCompetition(EMPTY_COMPETITION_FIELDS);
       router.refresh();
     });
   }
@@ -116,6 +124,8 @@ export function EntryForm({ today }: { today: string }) {
         value={start}
         onChange={(e) => setStart(e.target.value)}
       />
+
+      {kind === "COMPETITION" && <CompetitionFieldset value={competition} onChange={setCompetition} />}
 
       {multiDay ? (
         <DateField

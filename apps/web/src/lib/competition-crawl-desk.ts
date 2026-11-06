@@ -20,6 +20,7 @@ import {
 import { cleanTopicStreams, sourceKindAudience } from "@edulink/contracts"; // college-content (12 Oct 2026)
 import type { TranslationKey } from "@/lib/i18n/dictionary";
 import { db } from "./db";
+import { assertFeatureOn } from "./platform-features";
 import { audit } from "./audit";
 import { reviewerRole } from "./quiz-review";
 import { isHttpsUrl } from "./app-admin";
@@ -71,6 +72,8 @@ export async function deskCrawl(session: ActiveContext, jobId: string): Promise<
 
 export async function deskStartCrawl(session: ActiveContext, request: CompetitionCrawlRequest): Promise<CompetitionCrawlJob> {
   const role = reviewerRole(session);
+  // decision 0007 (6 Nov 2026): the crawler is the marketplace's and does not run while the platform has it off.
+  await assertFeatureOn("COMPETITIONS", null);
   const job = await startCrawl(jobDb, { userId: session.user.id, role }, request, deps);
   await audit({ schoolId: null, actorUserId: session.user.id, action: "appadmin.competitionCrawl.start", targetType: "CompetitionCrawlJob", targetId: job.id, meta: { role, request, startedServers: job.startedServers } });
   return job;

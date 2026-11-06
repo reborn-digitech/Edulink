@@ -35,7 +35,7 @@ export const apiErrorSchema = z.object({
   // end plans
   // fix-mediums-C (QA-18, 24 Oct 2026)
   /** With PLAN_REQUIRED: the feature the door belongs to, so the phone's plan card names it as the web's does (v1/platform-features.ts PLATFORM_FEATURES). */
-  feature: z.enum(["ASSISTANT", "QUESTION_BANK", "QUESTION_GIG", "EXPERT_SESSIONS", "TEACHER_SESSIONS", "JOB_BOARD", "TEXT_MESSAGING"]).optional(),
+  feature: z.enum(["ASSISTANT", "QUESTION_BANK", "QUESTION_GIG", "EXPERT_SESSIONS", "TEACHER_SESSIONS", "JOB_BOARD", "TEXT_MESSAGING", "COMPETITIONS"]).optional(),
   // end fix-mediums-C
 });
 export type ApiError = z.infer<typeof apiErrorSchema>;

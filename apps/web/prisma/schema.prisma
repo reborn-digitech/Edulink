@@ -2247,6 +2247,30 @@ model Competition {
   streams  String[] @default([])
   // ---- end college-content ----
 
+  // ---- competitions on the calendar (decision 0007, 6 November 2026) ----
+  /// THE INTERNAL BOARD, chosen by the organising school's office when the calendar event is made
+  /// (COMPETITION_INTERNAL_BOARDS in packages/contracts v1/contest.ts): "OFF" (no internal board),
+  /// "STAFF" (the organising school's ADMIN, PRINCIPAL and TEACHER read the full board of the school's own
+  /// entries: name, class, score, place), "SCHOOL" (staff read the full board; a pupil and a guardian of that
+  /// school additionally read the pupil's own place and the top places by FIRST NAME and class). Every read is
+  /// under the tenant fence and the person binding: the board is built from `CompetitionEntry`, which is the
+  /// entrant's school's and policied, so it never shows one school another school's children, and a guardian
+  /// reads only their own child's place, a pupil their own. The cross-school `CompetitionStanding` board and
+  /// its rule (schools ranked, children never named across schools) are unchanged by this field. Meaningless on
+  /// a platform competition (organizerSchoolId null), where it stays OFF.
+  internalBoard String  @default("OFF") // OFF | STAFF | SCHOOL
+  /// Whether pupils may enrol at all (the office's "enrolment on/off" on the calendar event). Off: the event is
+  /// on the agenda and the detail page for information, and no entry can be made, whatever the dates say. The
+  /// dates (registrationOpensAt/ClosesAt) still decide WHEN an open enrolment takes entries. True for every row
+  /// that existed before 6 November 2026, which changes nothing for them.
+  enrolmentOpen Boolean @default(true)
+  /// The school calendar row this competition is the event of (Holiday.kind COMPETITION): the office makes the
+  /// two together in one tenant transaction, edits them in step, and removing the event with entries archives
+  /// the competition rather than deleting them (src/lib/competition-events.ts). Null for a platform
+  /// competition and for one posted before 6 November 2026.
+  calendarEntry Holiday?
+  // ---- end competitions on the calendar ----
+
   @@index([status, registrationClosesAt])
   @@index([organizerSchoolId])
 }
@@ -2940,14 +2964,21 @@ model Holiday {
   startDateKey   String
   /// Inclusive. Equal to startDateKey for a single day.
   endDateKey     String
-  kind           String  @default("HOLIDAY") // HOLIDAY | EXAM | EVENT
+  /// COMPETITION (decision 0007, 6 Nov 2026) is an EVENT the school runs as a competition: the school is open,
+  /// and the row carries `competitionId`, the Competition that holds the entries, results and boards.
+  kind           String  @default("HOLIDAY") // HOLIDAY | EXAM | EVENT | COMPETITION
   note           String?
+  /// The school's own Competition this calendar row is the event of; set only on a COMPETITION row, one row per
+  /// competition. Made, edited and removed together with it (src/lib/competition-events.ts); SetNull so a
+  /// competition row that goes first never takes a calendar day with it.
+  competitionId  String? @unique
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
   school       School        @relation(fields: [schoolId], references: [id], onDelete: Cascade)
   academicYear AcademicYear? @relation(fields: [academicYearId], references: [id], onDelete: SetNull)
+  competition  Competition?  @relation(fields: [competitionId], references: [id], onDelete: SetNull)
 
   @@index([schoolId, startDateKey])
 }

@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { competitionInternalBoardSchema } from "./contest";
 import { roleSchema } from "./auth";
 import { expertRatingSchema } from "./experts";
 import { audienceTargetSchema } from "./college-office";
@@ -435,6 +436,11 @@ export const competitionCardSchema = z.object({
   startsAt: isoOrNull,
   endsAt: isoOrNull,
   entry: competitionEntrySchema.nullable(),
+  // competitions on the calendar (decision 0007, 6 Nov 2026): the office's switches; optional for an older server.
+  enrolmentOpen: z.boolean().optional(),
+  internalBoard: competitionInternalBoardSchema.optional(),
+  /** The school calendar row the competition is the event of; null for a platform one or one posted before. */
+  calendarEntryId: z.string().nullable().optional(),
   // competitions-crawler (12 Oct 2026): a competition suggested from the web and published says where it was read and when it was last checked; null for one posted by hand.
   source: z.object({ organiser: z.string(), lastCheckedAt: z.string() }).nullable().optional(),
   // college-content (12 Oct 2026): who it is for (SCHOOL, COLLEGE, or null: not set, everyone) and a COLLEGE one's streams; optional for an older server.
@@ -457,6 +463,8 @@ export const competitionsPageSchema = z.object({
   platform: z.array(competitionCardSchema),
   /** A guardian's children's entries waiting on their yes; empty for everyone else. */
   waiting: z.array(competitionConsentSchema),
+  /** decision 0007: the plan this reader lacks for the platform's competitions while the marketplace is on (a pupil without the STUDENT plan), else null; optional for an older server. */
+  platformLock: z.enum(["STUDENT", "TEACHER", "EXPERT"]).nullable().optional(),
 });
 
 export const competitionStandingSchema = z.object({
@@ -485,8 +493,42 @@ export const competitionDetailSchema = competitionCardSchema.extend({
   board: z.array(competitionStandingSchema),
 });
 
-/** POST /api/v1/shared/competitions/{competitionId}/enter */
+/**
+ * POST /api/v1/shared/competitions/{competitionId}/enter — a pupil enrols themself (no body needed), or a guardian
+ * enrols one of their own children (decision 0007, 6 Nov 2026), which counts as the guardian's consent. A pupil's
+ * body is ignored: they can only ever enrol themself.
+ */
+export const competitionEnterBodySchema = z.object({ studentMembershipId: z.string().min(1).max(64).optional() }).optional();
 export const competitionEnterResultSchema = z.object({ entryId: z.string(), awaitingConsent: z.boolean() });
+
+/**
+ * GET /api/v1/shared/competitions/{competitionId}/board — the internal board of a school's own competition
+ * (decision 0007): `setting` as the office chose it; `rows` the places the reader may see — staff of the
+ * organising school every entry with a result (full name, class, score, place) under STAFF or SCHOOL; a pupil or a
+ * guardian of that school, under SCHOOL only, the top places by first name and class with `mine` the pupil's own
+ * place; empty under OFF, for a platform competition, and for anyone outside the school. Never another school's
+ * children: the rows come from CompetitionEntry, which is the entrant's school's and policied.
+ */
+export const competitionBoardRowSchema = z.object({
+  /** 1-based place on this board (by rank, then score). */
+  place: z.number().int().min(1),
+  /** The full name for staff; the first name for a pupil or a guardian. */
+  name: z.string(),
+  className: z.string().nullable(),
+  scoreMilli: z.number().int().nullable(),
+  rank: z.number().int().nullable(),
+  /** The reader's own (a pupil) or their child's (a guardian) row. */
+  mine: z.boolean(),
+});
+export const competitionBoardSchema = z.object({
+  setting: competitionInternalBoardSchema,
+  /** Whether the reader sees every entry (staff) or the top places and their own. */
+  full: z.boolean(),
+  rows: z.array(competitionBoardRowSchema),
+  /** The reader's own place (a pupil) or their child's (a guardian) when it is not among the rows; null otherwise. */
+  mine: competitionBoardRowSchema.nullable(),
+});
+export type CompetitionBoard = z.infer<typeof competitionBoardSchema>;
 
 /* -------------------------------------------------------------------------- */
 /* Enquiries                                                                   */

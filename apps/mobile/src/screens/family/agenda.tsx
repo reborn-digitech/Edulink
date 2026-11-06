@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { View } from "react-native";
 import { useLocalSearchParams, useRouter } from "expo-router";
-import { useQuery } from "@tanstack/react-query";
-import { familyAgendaSchema, type FamilyAgendaRow } from "@edulink/contracts";
-import { Button, Card, Empty, Failed, Loading, Row, Screen, Text } from "@/components";
-import { api } from "@/lib/api";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { competitionEnterResultSchema, familyAgendaSchema, type FamilyAgendaRow } from "@edulink/contracts";
+import { Button, Card, Empty, Failed, Loading, Row, Screen, Text, useToast } from "@/components";
+import { api, errorText } from "@/lib/api";
 import { screenFor } from "@/lib/links";
 import { unwrap } from "@/lib/query";
 import { useLocale, useT } from "@/lib/i18n";
@@ -19,8 +19,10 @@ import { money } from "../shared/fees";
  * date order, each row opening the screen that owns it. A guardian picks
  * the child as on the other family screens; a pupil sees their own.
  */
-const KIND_KEY = { EXAM: "agenda.kindExam", WORK: "agenda.kindWork", SESSION: "agenda.kindSession", MEETING: "agenda.kindMeeting", CLOSURE: "agenda.kindClosure", EVENT: "agenda.kindEvent", FEE: "agenda.kindFee" } as const;
-const KIND_TONE: Record<FamilyAgendaRow["kind"], "muted" | "ok" | "warn" | "danger" | "accent"> = { EXAM: "danger", WORK: "warn", SESSION: "accent", MEETING: "accent", CLOSURE: "muted", EVENT: "ok", FEE: "warn" };
+const KIND_KEY = { EXAM: "agenda.kindExam", WORK: "agenda.kindWork", SESSION: "agenda.kindSession", MEETING: "agenda.kindMeeting", CLOSURE: "agenda.kindClosure", EVENT: "agenda.kindEvent", FEE: "agenda.kindFee", COMPETITION: "agenda.kindCompetition" } as const;
+const KIND_TONE: Record<FamilyAgendaRow["kind"], "muted" | "ok" | "warn" | "danger" | "accent"> = { EXAM: "danger", WORK: "warn", SESSION: "accent", MEETING: "accent", CLOSURE: "muted", EVENT: "ok", FEE: "warn", COMPETITION: "accent" };
+/** decision 0007 (6 Nov 2026): what a COMPETITION row says beside its kind when it is not an Enrol button. */
+const ENROL_KEY = { ENROLLED: "agenda.enrolled", CONSENT_WAITING: "agenda.consentWaiting", CLOSED: "agenda.enrolClosed" } as const;
 
 /** Where a row's web href goes on the phone: a screen when the app has one, the web otherwise. Exported for the test. */
 export function agendaTarget(href: string): { pathname: string; params?: Record<string, string> } | null {
@@ -34,6 +36,8 @@ export function FamilyAgenda() {
   const { locale } = useLocale();
   const role = useRole();
   const router = useRouter();
+  const toast = useToast();
+  const qc = useQueryClient();
   const params = useLocalSearchParams() as Record<string, string | string[] | undefined>;
   const [childId, setChildId] = useState<string | null>(param(params.childId) ?? param(params.child) ?? null);
   const [days, setDays] = useState<"14" | "30">("14");
@@ -43,6 +47,20 @@ export function FamilyAgenda() {
     enabled: role === "PARENT" || role === "STUDENT",
   });
   const d = query.data;
+  // decision 0007: a pupil enrols themself, a guardian the agenda's child, from the row; the agenda then re-reads.
+  const enrol = useMutation({
+    mutationFn: async ({ competitionId }: { competitionId: string; title: string }) => {
+      const result = await api().post(`/api/v1/shared/competitions/${competitionId}/enter`, role === "PARENT" && d ? { studentMembershipId: d.student.studentMembershipId } : {});
+      if (!result.ok) throw new Error(errorText(result, t("competitions.thatDidNotGo")));
+      return competitionEnterResultSchema.parse(result.data);
+    },
+    onSuccess: (res, { title }) => {
+      toast.show(role === "PARENT" ? t("competitions.childCanTakePart", { child: d?.student.name ?? "", title }) : res.awaitingConsent ? t("competitions.grownUpMustYes", { title }) : t("competitions.takingPartIn", { title }));
+      void qc.invalidateQueries({ queryKey: ["family", "agenda"] });
+      void qc.invalidateQueries({ queryKey: ["shared", "competitions"] });
+    },
+    onError: (e) => toast.show(e.message, "danger"),
+  });
   const open = (row: FamilyAgendaRow) => {
     const target = agendaTarget(row.href);
     if (target) router.push((target.params ? { pathname: target.pathname, params: target.params } : target.pathname) as never);
@@ -71,9 +89,19 @@ export function FamilyAgenda() {
               right={
                 <View style={{ alignItems: "flex-end", gap: th.space[1] }}>
                   <Pill label={t(KIND_KEY[row.kind])} tone={KIND_TONE[row.kind]} />
-                  <Text variant="xs" tone="muted">
-                    {t("agenda.open")}
-                  </Text>
+                  {row.kind === "COMPETITION" && row.competition ? (
+                    row.competition.enrol === "OPEN" ? (
+                      <Button label={t("agenda.enrol")} variant="secondary" busy={enrol.isPending && enrol.variables?.competitionId === row.competition.competitionId} onPress={() => enrol.mutate({ competitionId: row.competition!.competitionId, title: row.title })} accessibilityLabel={`${t("agenda.enrol")}: ${row.title}`} />
+                    ) : (
+                      <Text variant="xs" tone={row.competition.enrol === "ENROLLED" ? "ok" : row.competition.enrol === "CONSENT_WAITING" ? "warn" : "muted"}>
+                        {t(ENROL_KEY[row.competition.enrol])}
+                      </Text>
+                    )
+                  ) : (
+                    <Text variant="xs" tone="muted">
+                      {t("agenda.open")}
+                    </Text>
+                  )}
                 </View>
               }
               onPress={() => open(row)}

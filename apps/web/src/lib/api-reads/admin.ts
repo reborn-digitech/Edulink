@@ -514,6 +514,8 @@ export async function adminCalendar(ctx: Scoped, opts: { all?: boolean }) {
       kind: entry.kind,
       note: entry.note,
       academicYearId: entry.academicYearId,
+      // decision 0007: a COMPETITION row's competition, so the phone can open it.
+      competitionId: entry.competitionId,
     })),
     leave: leave.map(shapeLeaveQuietly),
     birthdays,

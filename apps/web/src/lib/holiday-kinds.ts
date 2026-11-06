@@ -21,7 +21,12 @@ import type { TranslationKey } from "./i18n/dictionary";
  * matters more than the noun; a badge on a list has no room for it.
  */
 
-export const HOLIDAY_KINDS = ["HOLIDAY", "EXAM", "EVENT"] as const;
+/**
+ * COMPETITION (decision 0007, 6 Nov 2026): an event the school runs as a competition. The school is open, and the
+ * row is the calendar half of a Competition (Holiday.competitionId): made, edited and removed through
+ * src/lib/competition-events.ts, never through the plain holiday writes, which refuse the kind.
+ */
+export const HOLIDAY_KINDS = ["HOLIDAY", "EXAM", "EVENT", "COMPETITION"] as const;
 export type HolidayKind = (typeof HOLIDAY_KINDS)[number];
 
 export const HOLIDAY_KIND_META: Record<
@@ -49,6 +54,12 @@ export const HOLIDAY_KIND_META: Record<
     labelKey: "calendar.event",
     descriptionKey: "calendar.eventHint",
     optionKey: "calendar.eventOption",
+    closesSchool: false,
+  },
+  COMPETITION: {
+    labelKey: "calendar.competition",
+    descriptionKey: "calendar.competitionHint",
+    optionKey: "calendar.competitionOption",
     closesSchool: false,
   },
 };

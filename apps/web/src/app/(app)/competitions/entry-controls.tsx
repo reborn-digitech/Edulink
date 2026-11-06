@@ -72,6 +72,38 @@ export function EnterButton({
   );
 }
 
+/**
+ * A guardian enrols their own child (decision 0007, 6 Nov 2026): one press, which is their consent — no
+ * second question, because the person pressing IS the person the consent would have been asked of.
+ */
+export function EnterChildButton({ competitionId, studentMembershipId, childName, title }: { competitionId: string; studentMembershipId: string; childName: string; title: string }) {
+  const t = useT();
+  const router = useRouter();
+  const { toast } = useToast();
+  const [pending, startTransition] = useTransition();
+  return (
+    <Button
+      size="sm"
+      icon={<TrophyIcon weight="bold" />}
+      disabled={pending}
+      data-testid="enrol-child"
+      onClick={() =>
+        startTransition(async () => {
+          const result = await enterAction({ id: competitionId, studentMembershipId });
+          if (!result.ok) {
+            toast({ tone: "danger", title: t("competitions.thatDidNotGo"), description: result.error });
+            return;
+          }
+          toast({ tone: "ok", title: t("competitions.consentGiven"), description: t("competitions.childCanTakePart", { child: childName, title }) });
+          router.refresh();
+        })
+      }
+    >
+      {pending ? t("competitions.justAMoment") : t("competitions.enrolChild", { child: childName })}
+    </Button>
+  );
+}
+
 /** What the child sees once they have asked. */
 export function EntryStatus({
   entryId,

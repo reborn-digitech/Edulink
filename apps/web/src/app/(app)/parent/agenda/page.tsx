@@ -42,7 +42,7 @@ export default async function ParentAgendaPage({ searchParams }: { searchParams:
           { key: "30", href: `${base}&days=30`, label: t("agenda.days30") },
         ]}
       />
-      <AgendaList agenda={agenda} />
+      <AgendaList agenda={agenda} role="PARENT" />
     </div>
   );
 }

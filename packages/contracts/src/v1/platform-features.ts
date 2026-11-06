@@ -14,11 +14,14 @@ import { z } from "zod";
  *   TEACHER_SESSIONS a teacher's guidance one-to-ones for their own school's pupils
  *   JOB_BOARD        vacancies: posting, the board, enquiring about a post
  *   TEXT_MESSAGING   SMS and WhatsApp through the provider (in-app notices and push are untouched)
+ *   COMPETITIONS     the competition marketplace (decision 0007, 6 Nov 2026): the platform competitions the
+ *                    content team posts and the crawler suggests, their desk and doors, and the crawler itself;
+ *                    a school's own competitions, which are calendar events, are never behind this switch
  *
- * (The brief that asked for them said "six" and named these seven; all seven are here.) Every one is OFF until switched on. Later (not yet built) the operator sells subscriptions that open a
+ * (The brief that asked for them said "six" and named these seven; all seven are here, and the eighth followed on 6 November 2026.) Every one is OFF until switched on. Later (not yet built) the operator sells subscriptions that open a
  * feature per person; that check is ANDed in at one seam (`mayUse` in apps/web/src/lib/platform-features.ts).
  */
-export const PLATFORM_FEATURES = ["ASSISTANT", "QUESTION_BANK", "QUESTION_GIG", "EXPERT_SESSIONS", "TEACHER_SESSIONS", "JOB_BOARD", "TEXT_MESSAGING"] as const;
+export const PLATFORM_FEATURES = ["ASSISTANT", "QUESTION_BANK", "QUESTION_GIG", "EXPERT_SESSIONS", "TEACHER_SESSIONS", "JOB_BOARD", "TEXT_MESSAGING", "COMPETITIONS"] as const;
 export const platformFeatureSchema = z.enum(PLATFORM_FEATURES);
 export type FeatureCode = z.infer<typeof platformFeatureSchema>;
 

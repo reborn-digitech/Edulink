@@ -40,6 +40,9 @@ export const SWEEP_DOOR_IDS = {
   mentorship: "zz-fixture-mentorship",
   competition: "zz-fixture-competition",
   competitionEntry: "zz-fixture-competition-entry",
+  /** decision 0007 (6 Nov 2026): the competition's calendar row, and pupil 02's entry waiting on a guardian. */
+  competitionEvent: "zz-fixture-competition-event",
+  competitionEntryPending: "zz-fixture-competition-entry-pending",
   archivedFeeStructure: "zz-fixture-fee-structure-archived",
   revokedConcession: "zz-fixture-concession-revoked",
   planTemplate: "zz-fixture-plan-template",
@@ -59,11 +62,12 @@ async function cast(db: PrismaClient, schoolId: string) {
   const member = (email: string, role: string) => db.membership.findFirst({ where: { schoolId, role, status: "ACTIVE", user: { email } }, select: { id: true, userId: true } });
   const user = (email: string) => db.user.findUnique({ where: { email }, select: { id: true } });
   const expert = (email: string) => db.expertProfile.findFirst({ where: { user: { email } }, select: { id: true, userId: true } });
-  const [school, admin, principal, pupil01, parent01, lead, year, otherParent, expert1, expert3] = await Promise.all([
+  const [school, admin, principal, pupil01, pupil02, parent01, lead, year, otherParent, expert1, expert3] = await Promise.all([
     db.school.findUnique({ where: { id: schoolId }, select: { name: true, timezone: true } }),
     member("zz.admin@zz.test", "ADMIN"),
     member("zz.principal@zz.test", "PRINCIPAL"),
     member("zz.pupil01@zz.test", "STUDENT"),
+    member("zz.pupil02@zz.test", "STUDENT"),
     user("zz.parent01@zz.test"),
     db.classTeacher.findFirst({ where: { role: "LEAD", class: { schoolId, gradeLevel: "3", archivedAt: null } }, select: { teacherMembershipId: true, teacher: { select: { userId: true } } } }),
     db.academicYear.findFirst({ where: { schoolId, isCurrent: true }, select: { id: true, name: true } }),
@@ -71,7 +75,7 @@ async function cast(db: PrismaClient, schoolId: string) {
     expert("zz.expert1@zz.test"),
     expert("zz.expert3@zz.test"),
   ]);
-  return { school, admin, principal, pupil01, parent01, lead, year, otherParent, expert1, expert3 };
+  return { school, admin, principal, pupil01, pupil02, parent01, lead, year, otherParent, expert1, expert3 };
 }
 
 /**
@@ -152,12 +156,26 @@ export async function buildSweepDoors(db: PrismaClient, schoolId: string): Promi
     made.push("an active mentorship");
   }
 
-  // The school's own competition, open for entries (the dates move with the run so it never closes): pupil 01's entry consented.
-  const now = Date.now();
+  // The school's own competition — since decision 0007 (6 Nov 2026) a CALENDAR EVENT: the competition (enrolment
+  // on, the SCHOOL board) and its Holiday row of kind COMPETITION, the dates moving with the run so it never closes
+  // and the event sits on the fortnight agenda (it starts in ten days). Pupil 01's entry consented by the guardian;
+  // pupil 02's waiting on one (the pending entry the agenda's "Consent waiting" shows).
+  const tz = c.school.timezone;
+  const startKey = addDaysToKey(todayKey(tz), 10);
+  const endKey = addDaysToKey(startKey, 1);
+  const closesKey = addDaysToKey(startKey, -1);
+  const dayStart = (key: string) => zonedStartOfDay(key, tz);
+  const dayEnd = (key: string) => new Date(zonedStartOfDay(addDaysToKey(key, 1), tz).getTime() - 1);
+  const competitionDates = { registrationOpensAt: past, registrationClosesAt: dayEnd(closesKey), startsAt: dayStart(startKey), endsAt: dayEnd(endKey), enrolmentOpen: true, internalBoard: "SCHOOL", audience: "SCHOOL" };
   await db.competition.upsert({
     where: { id: ids.competition },
-    create: { id: ids.competition, organizerSchoolId: schoolId, organizerName: c.school.name, title: "ZZ Sweep Quiz", summary: "ZZ fixture: a quiz the school runs for its own pupils.", status: "PUBLISHED", requiresParentConsent: true, registrationOpensAt: past, registrationClosesAt: new Date(now + 180 * DAY), startsAt: new Date(now + 190 * DAY), endsAt: new Date(now + 200 * DAY), createdAt: past },
-    update: { status: "PUBLISHED", registrationOpensAt: past, registrationClosesAt: new Date(now + 180 * DAY), startsAt: new Date(now + 190 * DAY), endsAt: new Date(now + 200 * DAY) },
+    create: { id: ids.competition, organizerSchoolId: schoolId, organizerName: c.school.name, title: "ZZ Sweep Quiz", summary: "ZZ fixture: a quiz the school runs for its own pupils.", status: "PUBLISHED", requiresParentConsent: true, createdAt: past, ...competitionDates },
+    update: { status: "PUBLISHED", ...competitionDates },
+  });
+  await db.holiday.upsert({
+    where: { id: ids.competitionEvent },
+    create: { id: ids.competitionEvent, schoolId, academicYearId: c.year?.id ?? null, name: "ZZ Sweep Quiz", startDateKey: startKey, endDateKey: endKey, kind: "COMPETITION", note: "ZZ fixture: a quiz the school runs for its own pupils.", competitionId: ids.competition },
+    update: { name: "ZZ Sweep Quiz", startDateKey: startKey, endDateKey: endKey, kind: "COMPETITION", competitionId: ids.competition },
   });
   if (c.pupil01 && c.parent01) {
     await db.competitionEntry.upsert({
@@ -166,7 +184,14 @@ export async function buildSweepDoors(db: PrismaClient, schoolId: string): Promi
       update: { parentConsentAt: past, parentConsentBy: c.parent01.id },
     });
   }
-  made.push("an open competition with pupil 01's consented entry");
+  if (c.pupil02) {
+    await db.competitionEntry.upsert({
+      where: { competitionId_studentMembershipId: { competitionId: ids.competition, studentMembershipId: c.pupil02.id } },
+      create: { id: ids.competitionEntryPending, competitionId: ids.competition, studentMembershipId: c.pupil02.id, schoolId, status: "REGISTERED", parentConsentAt: null, parentConsentBy: null, createdAt: past },
+      update: { parentConsentAt: null, parentConsentBy: null },
+    });
+  }
+  made.push("a competition event on the calendar (enrolment on, the SCHOOL board) with pupil 01's consented entry and pupil 02's waiting");
 
   // Money, as it stands: an archived structure (archiving again changes nothing) and a revoked concession (revoking again is a no-op). Neither is on any pupil's demands.
   if (c.year) {

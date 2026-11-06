@@ -14,8 +14,9 @@ export { PLATFORM_FEATURES, type FeatureCode };
 /**
  * THE PLATFORM'S FEATURE SWITCHES (the owner's ask of 15 October 2026).
  *
- * Seven parts of the platform — the assistant, the question bank's practice, the teachers' question gig,
- * expert sessions, teacher sessions, the job board and text messaging — are dark on the WHOLE platform
+ * Eight parts of the platform — the assistant, the question bank's practice, the teachers' question gig,
+ * expert sessions, teacher sessions, the job board, text messaging and (decision 0007, 6 Nov 2026) the
+ * competition marketplace — are dark on the WHOLE platform
  * until the operator switches each on at /root/features (packages/contracts v1/platform-features.ts has
  * the list). One PlatformFeature row per code, OFF by default; a missing row is created, off, on first
  * read. Switching off deletes nothing: every page, door, row and key comes back as it was when it is
@@ -238,6 +239,9 @@ async function explainingCount(ctx: ActiveContext, code: FeatureCode, now: Date)
       const since = monthStartIndia(now);
       return acrossSchools(ctx, (schoolId) => db.outboundMessage.count({ where: { schoolId, status: "SKIPPED", skipReason: "feature-off", createdAt: { gte: since } } }));
     }
+    case "COMPETITIONS":
+      // The platform's published competitions (the content team's and the crawler's), waiting behind the switch.
+      return db.competition.count({ where: { organizerSchoolId: null, status: "PUBLISHED" } });
   }
 }
 

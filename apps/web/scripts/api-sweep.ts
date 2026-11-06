@@ -68,7 +68,7 @@ import { declaredStatus, doorForKind, featuresOf, permits, reachRefusalFor } fro
 import { COLLEGE_DOORS } from "./college-doors";
 import { dutiesForRole, isCollegeKind, isDutyRole, parseDuties } from "@edulink/contracts";
 import { ROLES, type Role } from "../src/lib/constants";
-import { parseTeachingDays } from "../src/lib/dates";
+import { dateKeyInZone, parseTeachingDays } from "../src/lib/dates";
 import { HOLIDAY_KIND_META, type HolidayKind } from "../src/lib/holiday-kinds";
 import { restoreSweepThrowaways, SWEEP_APPRAISAL, SWEEP_DOOR_IDS } from "./sweep-doors";
 import { inOwnWindow } from "./sweep-window";
@@ -307,7 +307,7 @@ async function admissionFixture(s: string): Promise<Pick<SweepFixture, "admissio
  * than a 404 that passes. One write here: a session minted for the office actor alone, so the
  * sign-out door signs out something real (200) and is a 404 to everyone whose session it is not.
  */
-type DoorFields = "mySessionId" | "revokedInviteId" | "publishedExamSeriesId" | "archivedExamSeriesId" | "closedEnquiryId" | "mentorThreadId" | "competitionEntryId" | "appraisalId" | "appraisal" | "goneAppraisalId" | "gonePlanTemplateId" | "goneAbsenceNoteId" | "goneExpertSlotId" | "familyReportCardId" | "expertCalendarToken" | "periodId" | "period" | "archivedFeeStructureId" | "revokedConcessionId" | "familyPaymentId" | "quietBroadcastId" | "expertProfileId" | "notContentTeamUserId" | "globalPostId" | "bankTopicId" | "bankQuestionId" | "fileId";
+type DoorFields = "mySessionId" | "revokedInviteId" | "publishedExamSeriesId" | "archivedExamSeriesId" | "closedEnquiryId" | "mentorThreadId" | "competitionEntryId" | "competitionEventHolidayId" | "competitionEvent" | "appraisalId" | "appraisal" | "goneAppraisalId" | "gonePlanTemplateId" | "goneAbsenceNoteId" | "goneExpertSlotId" | "familyReportCardId" | "expertCalendarToken" | "periodId" | "period" | "archivedFeeStructureId" | "revokedConcessionId" | "familyPaymentId" | "quietBroadcastId" | "expertProfileId" | "notContentTeamUserId" | "globalPostId" | "bankTopicId" | "bankQuestionId" | "fileId";
 async function doorFixture(s: string, applicationId: string | null): Promise<Pick<SweepFixture, DoorFields>> {
   const ids = SWEEP_DOOR_IDS;
   const has = async (q: Promise<{ id: string } | null>) => (await q)?.id ?? null;
@@ -322,6 +322,9 @@ async function doorFixture(s: string, applicationId: string | null): Promise<Pic
   const parent01 = await db.user.findUnique({ where: { email: "zz.parent01@zz.test" }, select: { id: true } });
   const competition = await db.competition.findFirst({ where: { id: ids.competition, status: "PUBLISHED", registrationClosesAt: { gt: new Date() } }, select: { id: true } });
   const entry = (studentEmail: string) => (competition ? db.competitionEntry.findFirst({ where: { competitionId: competition.id, schoolId: s, student: { user: { email: studentEmail } } }, select: { id: true } }) : Promise.resolve(null));
+  // decision 0007: the competition's calendar row and the event's own values, so the edit door's sampleBody rewrites what stands.
+  const event = competition ? await db.holiday.findFirst({ where: { id: ids.competitionEvent, schoolId: s, competitionId: competition.id }, select: { id: true, startDateKey: true, endDateKey: true, note: true, competition: { select: { title: true, summary: true, body: true, gradeLow: true, gradeHigh: true, enrolmentOpen: true, internalBoard: true, requiresParentConsent: true, registrationClosesAt: true } } } }) : null;
+  const eventTz = (await db.school.findUnique({ where: { id: s }, select: { timezone: true } }))?.timezone ?? "Asia/Kolkata";
   const appraisal = await has(db.staffAppraisal.findFirst({ where: { id: ids.appraisal, schoolId: s }, select: { id: true } }));
   const period = await db.timetablePeriod.findFirst({ where: { schoolId: s, archivedAt: null }, orderBy: { position: "asc" }, select: { id: true, name: true, startMinute: true, endMinute: true, kind: true } });
   const expert = await db.expertProfile.findFirst({ where: { user: { email: "zz.expert1@zz.test" } }, select: { id: true, calendarToken: true } });
@@ -345,6 +348,11 @@ async function doorFixture(s: string, applicationId: string | null): Promise<Pic
     closedEnquiryId: await has(db.enquiry.findFirst({ where: { id: ids.closedEnquiry, schoolId: s, status: "CLOSED" }, select: { id: true } })),
     mentorThreadId: pupil01 ? await has(db.mentorThread.findFirst({ where: { schoolId: s, studentMembershipId: pupil01.id, status: "ACTIVE", expert: { user: { email: "zz.expert3@zz.test" } } }, select: { id: true } })) : null,
     competitionEntryId: await has(entry("zz.pupil01@zz.test")),
+    competitionEventHolidayId: event?.id ?? null,
+    competitionEvent:
+      event?.competition
+        ? { title: event.competition.title, summary: event.competition.summary, startDateKey: event.startDateKey, endDateKey: event.endDateKey, registrationClosesDateKey: event.competition.registrationClosesAt ? dateKeyInZone(event.competition.registrationClosesAt, eventTz) : event.endDateKey, ...(event.competition.gradeLow ? { gradeLow: event.competition.gradeLow } : {}), ...(event.competition.gradeHigh ? { gradeHigh: event.competition.gradeHigh } : {}), enrolmentOpen: event.competition.enrolmentOpen, internalBoard: event.competition.internalBoard, requiresParentConsent: event.competition.requiresParentConsent, ...(event.competition.body ? { body: event.competition.body } : {}), ...(event.note ? { note: event.note } : {}) }
+        : null,
     appraisalId: appraisal,
     appraisal: appraisal ? { ...SWEEP_APPRAISAL } : null,
     goneAppraisalId: await has(db.staffAppraisal.findFirst({ where: { id: ids.goneAppraisal, schoolId: s }, select: { id: true } })),

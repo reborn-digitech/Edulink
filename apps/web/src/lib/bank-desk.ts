@@ -24,7 +24,7 @@ import {
 import { db } from "./db";
 import { AccessError } from "./tenancy";
 import { SERVED_QUESTION } from "./quiz-served";
-import { readGeneration, reviewerRole, stateOfRow, stateWhere } from "./quiz-review";
+import { kindOf, readGeneration, reviewerRole, stateOfRow, stateWhere } from "./quiz-review";
 import { fixtureTopicsWhere, reviewerSeesFixtureTopics } from "./quiz-fixtures";
 import { clampLevel, parseChoices } from "./quiz";
 import { fixTitleCase } from "./chapter-title-case";
@@ -53,6 +53,11 @@ import type { ActiveContext } from "./session";
  * target together; a topic whose line has no number is a chapter of its own. A line that names its book beside the number
  * (owner-batch-item8: "Chapter 5 (Contemporary World Politics) — …") is that book's chapter N, counted apart from the
  * other book's, and the chapter's row carries the book.
+ *
+ * One bank (7 Nov 2026): every count was already over the curated and the generated questions together (the serving
+ * rule knows no kind); now each carries the generated share beside it — a cell and a chapter row say `curated` and
+ * `generated` of their served questions, a group and a chapter's counts the generator's — and a chapter's item carries
+ * its `kind` for the badge.
  */
 
 /** The school bank's classes, the matrix's rows. */
@@ -92,36 +97,42 @@ const streamRank = (s: string | null) => (s === null ? STREAMS.length + 1 : (STR
 
 export type MatrixTopic = { id: string; board: string | null; grade: number; subject: string; chapter: string; audience: string; streams: string[] };
 
-type Tally = { served: number; chapters: Map<string, number> };
+type Tally = { served: number; generated: number; chapters: Map<string, number> };
+
+/** A chapter's served questions: a bare number is all curated (the pure tests' shorthand), else the count with the generator's share. */
+export type TopicServed = number | { served: number; generated: number };
 
 function cellOf(subject: string, tally: Tally | undefined, target: number): QuizBankCell {
-  if (!tally) return { subject, served: 0, chapters: 0, atTarget: 0 };
-  return { subject, served: tally.served, chapters: tally.chapters.size, atTarget: [...tally.chapters.values()].filter((n) => n >= target).length };
+  if (!tally) return { subject, served: 0, curated: 0, generated: 0, chapters: 0, atTarget: 0 };
+  return { subject, served: tally.served, curated: tally.served - tally.generated, generated: tally.generated, chapters: tally.chapters.size, atTarget: [...tally.chapters.values()].filter((n) => n >= target).length };
 }
 
 function rowTotals(cells: QuizBankCell[]) {
-  return { served: cells.reduce((n, c) => n + c.served, 0), chapters: cells.reduce((n, c) => n + c.chapters, 0), atTarget: cells.reduce((n, c) => n + c.atTarget, 0) };
+  const sum = (pick: (c: QuizBankCell) => number) => cells.reduce((n, c) => n + pick(c), 0);
+  return { served: sum((c) => c.served), curated: sum((c) => c.curated), generated: sum((c) => c.generated), chapters: sum((c) => c.chapters), atTarget: sum((c) => c.atTarget) };
 }
 
 /**
- * The matrix from the chapters (topics) and each one's served count. A SCHOOL topic of a class from 3 to 12 and a
- * subject in QUIZ_GEN_SUBJECTS lands in its cell, keyed by board and chapter number so two topics of one book's chapter
- * count once; a COLLEGE topic lands in each of its streams' rows (null: the college-wide banks) under its subject.
- * Anything else (a school subject the generator has no code for) is not in the matrix. Pure.
+ * The matrix from the chapters (topics) and each one's served count (with the generator's share). A SCHOOL topic of a
+ * class from 3 to 12 and a subject in QUIZ_GEN_SUBJECTS lands in its cell, keyed by board and chapter number so two
+ * topics of one book's chapter count once; a COLLEGE topic lands in each of its streams' rows (null: the college-wide
+ * banks) under its subject. Anything else (a school subject the generator has no code for) is not in the matrix. Pure.
  */
-export function buildMatrix(topics: readonly MatrixTopic[], served: ReadonlyMap<string, number>, target: number, board: QuizBankMatrix["board"] = null, targetFromRun = false): QuizBankMatrix {
+export function buildMatrix(topics: readonly MatrixTopic[], served: ReadonlyMap<string, TopicServed>, target: number, board: QuizBankMatrix["board"] = null, targetFromRun = false): QuizBankMatrix {
   const school = new Map<string, Tally>();
   const college = new Map<string, Tally>();
   const collegeSubjects = new Set<string>();
   const collegeStreams = new Set<string | null>();
-  const add = (into: Map<string, Tally>, cell: string, chapterKey: string, n: number) => {
-    const tally = into.get(cell) ?? { served: 0, chapters: new Map<string, number>() };
-    tally.served += n;
-    tally.chapters.set(chapterKey, (tally.chapters.get(chapterKey) ?? 0) + n);
+  const add = (into: Map<string, Tally>, cell: string, chapterKey: string, n: { served: number; generated: number }) => {
+    const tally = into.get(cell) ?? { served: 0, generated: 0, chapters: new Map<string, number>() };
+    tally.served += n.served;
+    tally.generated += n.generated;
+    tally.chapters.set(chapterKey, (tally.chapters.get(chapterKey) ?? 0) + n.served);
     into.set(cell, tally);
   };
   for (const t of topics) {
-    const n = served.get(t.id) ?? 0;
+    const raw = served.get(t.id) ?? 0;
+    const n = typeof raw === "number" ? { served: raw, generated: 0 } : raw;
     if (t.audience === "COLLEGE") {
       collegeSubjects.add(t.subject);
       for (const stream of t.streams.length ? t.streams : [null]) {
@@ -186,7 +197,7 @@ export function groupChapters(topics: readonly ChapterTopic[], counts: ReadonlyM
   });
   for (const t of ordered) {
     const key = `${t.grade}|${t.subject}|${t.board ?? ""}`;
-    const group = groups.get(key) ?? { grade: t.grade, subject: t.subject, board: t.board, served: 0, chapters: [] };
+    const group = groups.get(key) ?? { grade: t.grade, subject: t.subject, board: t.board, served: 0, generated: 0, chapters: [] };
     const c = counts.get(t.id) ?? { levels: [0, 0, 0, 0, 0, 0], served: 0, down: 0, held: 0, generated: 0, authored: 0 };
     const row: QuizBankChapterRow = {
       topicId: t.id,
@@ -200,12 +211,15 @@ export function groupChapters(topics: readonly ChapterTopic[], counts: ReadonlyM
       book: chapterBookOfLine(t.chapter),
       levels: c.levels,
       total: c.served,
+      curated: c.authored,
+      generated: c.generated,
       down: c.down,
       held: c.held,
       maker: makerOf(c, all.get(t.id) ?? { generated: 0, authored: 0 }),
     };
     group.chapters.push(row);
     group.served += c.served;
+    group.generated += c.generated;
     groups.set(key, group);
   }
   return { target, groups: [...groups.values()] };
@@ -239,11 +253,18 @@ export async function bankMatrix(session: ActiveContext, query: QuizBankMatrixQu
   const where: Prisma.QuizTopicWhereInput = { AND: [{ retiredAt: null }, scope, boardWhere(query.board)] };
   const [topics, served] = await Promise.all([
     db.quizTopic.findMany({ where, select: { id: true, board: true, classLevel: true, subject: true, chapter: true, audience: true, streams: true } }),
-    db.quizQuestion.groupBy({ by: ["topicId"], where: { AND: [SERVED_QUESTION, { topic: where }] }, _count: { _all: true } }),
+    db.quizQuestion.groupBy({ by: ["topicId", "generated"], where: { AND: [SERVED_QUESTION, { topic: where }] }, _count: { _all: true } }),
   ]);
+  const servedOf = new Map<string, { served: number; generated: number }>();
+  for (const s of served) {
+    const n = servedOf.get(s.topicId) ?? { served: 0, generated: 0 };
+    n.served += s._count._all;
+    if (s.generated) n.generated += s._count._all;
+    servedOf.set(s.topicId, n);
+  }
   return buildMatrix(
     topics.map((t) => ({ id: t.id, board: t.board, grade: t.classLevel, subject: t.subject, chapter: t.chapter, audience: t.audience, streams: t.streams })),
-    new Map(served.map((s) => [s.topicId, s._count._all])),
+    servedOf,
     target,
     query.board ?? null,
     fromRun,
@@ -262,7 +283,7 @@ export async function bankChapters(session: ActiveContext, query: QuizBankChapte
     db.quizTopic.findMany({ where, select: { id: true, slug: true, board: true, classLevel: true, subject: true, chapter: true, name: true, position: true } }),
     db.quizQuestion.groupBy({ by: ["topicId", "difficulty", "generated"], where: { AND: [SERVED_QUESTION, inTopics] }, _count: { _all: true } }),
     db.quizQuestion.groupBy({ by: ["topicId"], where: { AND: [stateWhere("DOWN"), inTopics] }, _count: { _all: true } }),
-    db.quizQuestion.groupBy({ by: ["topicId"], where: { AND: [{ generated: true }, stateWhere("HELD"), inTopics] }, _count: { _all: true } }),
+    db.quizQuestion.groupBy({ by: ["topicId"], where: { AND: [stateWhere("HELD"), inTopics] }, _count: { _all: true } }),
     db.quizQuestion.groupBy({ by: ["topicId", "generated"], where: inTopics, _count: { _all: true } }),
   ]);
   const counts = new Map<string, ChapterCounts>();
@@ -333,14 +354,16 @@ export async function bankChapter(session: ActiveContext, slug: string, query: Q
   if (!topic) throw new AccessError("bankDesk.noSuchChapter", "NOT_FOUND");
   const language = query.lang ?? "en";
   const state: QuizBankState = query.state ?? "SERVED";
-  const stateRule: Prisma.QuizQuestionWhereInput = state === "SERVED" ? SERVED_QUESTION : state === "HELD" ? { AND: [{ generated: true }, stateWhere("HELD")] } : stateWhere("DOWN");
-  const where: Prisma.QuizQuestionWhereInput = { AND: [{ topicId: topic.id }, stateRule] };
-  const [served, down, held, total] = await Promise.all([
-    db.quizQuestion.count({ where: { AND: [{ topicId: topic.id }, SERVED_QUESTION] } }),
+  const where: Prisma.QuizQuestionWhereInput = { AND: [{ topicId: topic.id }, stateWhere(state)] };
+  const [served, down, held, total, kinds] = await Promise.all([
+    db.quizQuestion.count({ where: { AND: [{ topicId: topic.id }, stateWhere("SERVED")] } }),
     db.quizQuestion.count({ where: { AND: [{ topicId: topic.id }, stateWhere("DOWN")] } }),
-    db.quizQuestion.count({ where: { AND: [{ topicId: topic.id }, { generated: true }, stateWhere("HELD")] } }),
+    db.quizQuestion.count({ where: { AND: [{ topicId: topic.id }, stateWhere("HELD")] } }),
     db.quizQuestion.count({ where }),
+    db.quizQuestion.groupBy({ by: ["generated"], where: { topicId: topic.id }, _count: { _all: true } }),
   ]);
+  const curated = kinds.find((k) => !k.generated)?._count._all ?? 0;
+  const generated = kinds.find((k) => k.generated)?._count._all ?? 0;
   const pages = Math.max(1, Math.ceil(total / QUIZ_BANK_PAGE_SIZE));
   const page = Math.min(query.page ?? 1, pages);
   const rows = await db.quizQuestion.findMany({
@@ -381,6 +404,7 @@ export async function bankChapter(session: ActiveContext, slug: string, query: Q
     return {
       id: r.id,
       generated: r.generated,
+      kind: kindOf(r.generated),
       difficulty: clampLevel(r.difficulty),
       ...words,
       answerIndex: r.answerIndex,
@@ -397,7 +421,7 @@ export async function bankChapter(session: ActiveContext, slug: string, query: Q
     topic: { id: topic.id, slug: topic.slug, name: translatedName || fixTitleCase(topic.name), chapter: fixTitleCase(topic.chapter), subject: topic.subject, grade: topic.classLevel, board: topic.board, book: chapterBookOfLine(topic.chapter) },
     language,
     state,
-    counts: { served, down, held },
+    counts: { served, down, held, curated, generated },
     page,
     pages,
     total,

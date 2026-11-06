@@ -6,7 +6,8 @@ import { platformFeatureSchema, type FeatureCode } from "./platform-features";
  * Not the plans a SCHOOL is put on (caps and a recorded price, the `Plan` table and apps/web src/lib/plans.ts):
  * these three are bought by one person for themselves, or by a guardian for a pupil under eighteen.
  *
- *   STUDENT  the question bank's practice and the assistant
+ *   STUDENT  the question bank's practice, the assistant and, since decision 0007 (6 Nov 2026), the platform's
+ *            competition marketplace (a school's own competitions, which are calendar events, are free)
  *   TEACHER  the teachers' question gig, offering teaching sessions, the job board as a reader, the assistant
  *   EXPERT   offering time as an expert (sessions and mentoring)
  *
@@ -20,7 +21,7 @@ export type PlanCode = z.infer<typeof personPlanSchema>;
 
 /** The features each plan opens, in the contracts' feature order. The plan rows start from this list. */
 export const PLAN_FEATURES: Record<PlanCode, readonly FeatureCode[]> = {
-  STUDENT: ["ASSISTANT", "QUESTION_BANK"],
+  STUDENT: ["ASSISTANT", "QUESTION_BANK", "COMPETITIONS"],
   TEACHER: ["ASSISTANT", "QUESTION_GIG", "TEACHER_SESSIONS", "JOB_BOARD"],
   EXPERT: ["EXPERT_SESSIONS"],
 };

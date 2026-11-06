@@ -8,6 +8,7 @@ import { addDaysToKey, dateKeyInZone, todayKey } from "./dates";
 import { ownWorkScope, workLabel } from "./grading";
 import { dateToDay } from "./fees";
 import { pupilMaySeeFees } from "./fees-family";
+import { enrolStateFor, type EnrolState } from "./competitions";
 import type { ActiveContext } from "./session";
 
 /**
@@ -26,7 +27,14 @@ import type { ActiveContext } from "./session";
  * to pay.
  */
 
-export type AgendaKind = "EXAM" | "WORK" | "SESSION" | "MEETING" | "CLOSURE" | "EVENT" | "FEE";
+export type AgendaKind = "EXAM" | "WORK" | "SESSION" | "MEETING" | "CLOSURE" | "EVENT" | "FEE" | "COMPETITION";
+
+/**
+ * decision 0007 (6 Nov 2026): a COMPETITION row carries its competition and what the viewer may do about it —
+ * OPEN (an Enrol button: the pupil enrols themself, the guardian the agenda's child), ENROLLED, CONSENT_WAITING
+ * or CLOSED — so the agenda is where a family enrols, without a Competitions section.
+ */
+export type AgendaCompetition = { competitionId: string; enrol: EnrolState; entryId: string | null };
 
 export type AgendaRow = {
   id: string;
@@ -38,6 +46,7 @@ export type AgendaRow = {
   detail: string | null;
   amountPaise: number | null;
   href: string;
+  competition?: AgendaCompetition | null;
 };
 
 export type Agenda = {
@@ -53,7 +62,7 @@ export type Agenda = {
 export const AGENDA_DEFAULT_DAYS = 14;
 export const AGENDA_MAX_DAYS = 60;
 
-const KIND_ORDER: Record<AgendaKind, number> = { CLOSURE: 0, EVENT: 1, EXAM: 2, SESSION: 3, MEETING: 4, WORK: 5, FEE: 6 };
+const KIND_ORDER: Record<AgendaKind, number> = { CLOSURE: 0, EVENT: 1, COMPETITION: 2, EXAM: 3, SESSION: 4, MEETING: 5, WORK: 6, FEE: 7 };
 
 /** Date first, then the timed ones in time order with the untimed after, then a steady order of kinds. Exported for the test. */
 export function sortAgenda(rows: AgendaRow[]): AgendaRow[] {
@@ -159,11 +168,24 @@ export async function familyAgenda(ctx: ActiveContext, input: { student?: string
       }
     }
 
-    // Closures and events from the school's calendar, clipped to the window.
-    const holidays = await db.holiday.findMany({ where: { schoolId: viewer.schoolId, startDateKey: { lte: toKey }, endDateKey: { gte: fromKey } }, select: { id: true, name: true, kind: true, startDateKey: true, endDateKey: true, note: true }, orderBy: [{ startDateKey: "asc" }, { name: "asc" }] });
+    // Closures and events from the school's calendar, clipped to the window — and the school's competitions
+    // (decision 0007), each with whether this pupil may enrol, from the competition the row is the event of.
+    const holidays = await db.holiday.findMany({
+      where: { schoolId: viewer.schoolId, startDateKey: { lte: toKey }, endDateKey: { gte: fromKey } },
+      select: { id: true, name: true, kind: true, startDateKey: true, endDateKey: true, note: true, competition: { select: { id: true, status: true, enrolmentOpen: true, registrationOpensAt: true, registrationClosesAt: true, gradeLow: true, gradeHigh: true, requiresParentConsent: true, entries: { where: { studentMembershipId: viewer.studentMembershipId }, select: { id: true, parentConsentAt: true }, take: 1 } } } },
+      orderBy: [{ startDateKey: "asc" }, { name: "asc" }],
+    });
     for (const h of holidays) {
       const dateKey = h.startDateKey < fromKey ? fromKey : h.startDateKey;
-      out.push({ id: `calendar:${h.id}`, kind: h.kind === "HOLIDAY" ? "CLOSURE" : "EVENT", dateKey, at: null, endDateKey: h.endDateKey > dateKey ? h.endDateKey : null, title: h.name, detail: h.note, amountPaise: null, href: viewer.role === "PARENT" ? "/parent/timetable" : "/timetable" });
+      const endDateKey = h.endDateKey > dateKey ? h.endDateKey : null;
+      if (h.kind === "COMPETITION" && h.competition && h.competition.status === "PUBLISHED") {
+        const c = h.competition;
+        const entry = c.entries[0] ?? null;
+        out.push({ id: `calendar:${h.id}`, kind: "COMPETITION", dateKey, at: null, endDateKey, title: h.name, detail: h.note, amountPaise: null, href: `/competitions/${c.id}${parentChild}`, competition: { competitionId: c.id, enrol: enrolStateFor(c, entry, grades[0] ?? viewer.gradeLevel, now), entryId: entry?.id ?? null } });
+        continue;
+      }
+      if (h.kind === "COMPETITION") continue; // a withdrawn competition's row is gone with it; an orphan is not an event
+      out.push({ id: `calendar:${h.id}`, kind: h.kind === "HOLIDAY" ? "CLOSURE" : "EVENT", dateKey, at: null, endDateKey, title: h.name, detail: h.note, amountPaise: null, href: viewer.role === "PARENT" ? "/parent/timetable" : "/timetable" });
     }
 
     // Fee instalments falling due, with what is still outstanding on them.

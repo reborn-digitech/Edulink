@@ -51,10 +51,22 @@ async function run(
   }
 }
 
+const enterSchema = z.object({ id: z.string().cuid(), studentMembershipId: z.string().min(1).max(64).optional() });
+
+/**
+ * A pupil enrols themself; a guardian enrols their own child (decision 0007, 6 Nov 2026), which is their consent.
+ * The agenda's rows call this too, so the agenda pages are revalidated with the competition's.
+ */
 export async function enterAction(input: unknown): Promise<CompetitionActionState> {
   const t = await getT();
-  return run(input, async (session, id) => {
-    const result = await enterCompetition(session, id);
+  const parsed = enterSchema.safeParse(input);
+  if (!parsed.success) return { ok: false, error: t("competitions.notValidCompetition") };
+  const child = parsed.data.studentMembershipId ?? null;
+  return run({ id: parsed.data.id }, async (session, id) => {
+    const result = await enterCompetition(session, id, { studentMembershipId: child });
+    revalidatePath("/student/agenda");
+    revalidatePath("/parent/agenda");
+    if (session.role === "PARENT") return t("competitions.childEnrolledDot");
     return result.awaitingConsent
       ? t("competitions.askedToEnterMsg")
       : t("competitions.youAreEnteredDot");

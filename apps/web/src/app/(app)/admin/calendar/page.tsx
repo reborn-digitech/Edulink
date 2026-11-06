@@ -4,6 +4,7 @@ import { requireRole } from "@/lib/tenancy";
 import { approvedLeaveBetween, LEAVE_KIND_LABEL_KEY, type LeaveKind } from "@/lib/leave";
 import { db } from "@/lib/db";
 import { listHolidays, type HolidayKind } from "@/lib/holidays";
+import { listCompetitionEvents } from "@/lib/competition-events";
 import { listAcademicYears } from "@/lib/academic-year";
 import { todayKey, addDaysToKey, isoToDisplayDate, formatDateKey } from "@/lib/dates";
 import { birthdaysBetween } from "@/lib/birthdays";
@@ -54,10 +55,13 @@ export default async function CalendarPage({
   });
   const today = todayKey(school.timezone);
 
-  const [years, entries] = await Promise.all([
+  const [years, entries, competitionEvents] = await Promise.all([
     listAcademicYears(ctx),
     listHolidays(ctx.schoolId),
+    // decision 0007: the competition half of each COMPETITION row, for the list to show and edit in place.
+    listCompetitionEvents(ctx),
   ]);
+  const competitionByHoliday = new Map(competitionEvents.map((e) => [e.holidayId, e]));
 
   const current = years.find((year) => year.isCurrent) ?? null;
   const terms = current ? await termsOfYear(ctx.schoolId!, current.id, school.timezone) : [];
@@ -186,6 +190,12 @@ export default async function CalendarPage({
                    would resolve it in nobody's language in particular. */
                 kind: entry.kind as HolidayKind,
                 note: entry.note,
+                competition: (() => {
+                  const c = competitionByHoliday.get(entry.id);
+                  return c
+                    ? { competitionId: c.competitionId, status: c.status, entered: c.entered, summary: c.summary, registrationClosesDateKey: c.registrationClosesDateKey, gradeLow: c.gradeLow ?? "", gradeHigh: c.gradeHigh ?? "", enrolmentOpen: c.enrolmentOpen, internalBoard: c.internalBoard, requiresParentConsent: c.requiresParentConsent, body: c.body }
+                    : null;
+                })(),
               }))}
             />
           )}

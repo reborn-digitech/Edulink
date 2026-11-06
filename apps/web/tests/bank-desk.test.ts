@@ -139,13 +139,14 @@ describe("the matrix and the grouping, pure", () => {
     expect(m.rows.map((r) => r.grade)).toEqual([3, 4, 5, 6, 7, 8, 9, 10, 11, 12]);
     const six = m.rows.find((r) => r.grade === 6)!;
     // NCERT 1 (60 + 50 = 110, at target), NCERT 2 (20), Balbharati 1 (100, at target): three chapters, two at 100.
-    expect(six.cells.find((c) => c.subject === "MATHS")).toEqual({ subject: "MATHS", served: 230, chapters: 3, atTarget: 2 });
-    expect(six.cells.find((c) => c.subject === "SCIENCE")).toEqual({ subject: "SCIENCE", served: 0, chapters: 0, atTarget: 0 });
+    // one-bank (7 Nov 2026): a bare number in the served map is all curated; the cell says the split.
+    expect(six.cells.find((c) => c.subject === "MATHS")).toEqual({ subject: "MATHS", served: 230, curated: 230, generated: 0, chapters: 3, atTarget: 2 });
+    expect(six.cells.find((c) => c.subject === "SCIENCE")).toEqual({ subject: "SCIENCE", served: 0, curated: 0, generated: 0, chapters: 0, atTarget: 0 });
     // English has no column: not in the matrix.
     expect(six.served).toBe(230);
     expect(m.college.subjects).toEqual(["APTITUDE", "LAW"]);
     expect(m.college.rows.map((r) => r.stream)).toEqual(["LAW", null]);
-    expect(m.college.rows[0]!.cells.find((c) => c.subject === "LAW")).toEqual({ subject: "LAW", served: 7, chapters: 1, atTarget: 0 });
+    expect(m.college.rows[0]!.cells.find((c) => c.subject === "LAW")).toEqual({ subject: "LAW", served: 7, curated: 7, generated: 0, chapters: 1, atTarget: 0 });
     expect(buildMatrix(topics, served, 50).rows.find((r) => r.grade === 6)!.cells[0]!.atTarget).toBe(2);
     expect(chapterNumberOfLine("Chapter 12 — Ratio")).toBe(12);
     expect(chapterNumberOfLine("ZZ Extra")).toBeNull();
@@ -188,7 +189,7 @@ describe("the matrix and the grouping, pure", () => {
       { id: "p1", board: "NCERT", grade: 12, subject: "CIVICS", chapter: `Chapter 1 (${pii}) — Challenges of Nation Building`, audience: "SCHOOL", streams: [] },
     ];
     const twelve = buildMatrix(civics, new Map([["w5", 100], ["p5", 40], ["p1", 100]]), 100).rows.find((r) => r.grade === 12)!;
-    expect(twelve.cells.find((c) => c.subject === "CIVICS")).toEqual({ subject: "CIVICS", served: 240, chapters: 3, atTarget: 2 });
+    expect(twelve.cells.find((c) => c.subject === "CIVICS")).toEqual({ subject: "CIVICS", served: 240, curated: 240, generated: 0, chapters: 3, atTarget: 2 });
     expect(chapterBookOfLine(civics[0]!.chapter)).toBe(cwp);
     expect(chapterBookOfLine("Chapter 5 — Rights")).toBeNull();
     expect(chapterNumberOfLine(civics[0]!.chapter)).toBe(5);
@@ -220,7 +221,7 @@ describe("the bank desk on the database (a ZZ cell: Balbharati class 3 physics)"
     expect(m.target).toBe(target);
     const cell = m.rows.find((r) => r.grade === 3)!.cells.find((c) => c.subject === "PHYSICS")!;
     // 4 (3 authored + 1 generated) + 2 served of the second topic + the target in chapter 2; the down and the held do not count.
-    expect(cell).toEqual({ subject: "PHYSICS", served: 4 + 2 + target, chapters: 3, atTarget: 1 });
+    expect(cell).toEqual({ subject: "PHYSICS", served: 4 + 2 + target, curated: 3, generated: 1 + 2 + target, chapters: 3, atTarget: 1 });
     const ncert = await bankMatrix(curator(), { board: "NCERT" });
     expect(ncert.rows.find((r) => r.grade === 3)!.cells.find((c) => c.subject === "PHYSICS")!.chapters).toBe(0);
   });
@@ -231,16 +232,17 @@ describe("the bank desk on the database (a ZZ cell: Balbharati class 3 physics)"
     const rows = data.groups[0]!.chapters;
     expect(rows.map((r) => r.slug)).toEqual([slug("again"), slug("light"), slug("lines"), slug("extra")]);
     expect(rows.map((r) => r.maker)).toEqual(["GENERATED", "MIXED", "GENERATED", null]);
-    expect(rows[0]).toMatchObject({ levels: [0, 0, 2, 0, 0, 0], total: 2, down: 1, held: 1, number: 1 });
-    expect(rows[1]).toMatchObject({ levels: [2, 2, 0, 0, 0, 0], total: 4 });
+    expect(rows[0]).toMatchObject({ levels: [0, 0, 2, 0, 0, 0], total: 2, curated: 0, generated: 2, down: 1, held: 1, number: 1 });
+    expect(rows[1]).toMatchObject({ levels: [2, 2, 0, 0, 0, 0], total: 4, curated: 3, generated: 1 });
+    expect(data.groups[0]!.generated).toBe(2 + 1 + target);
     expect(rows[2]).toMatchObject({ name: "ZZ lines and angles", chapter: "Chapter 2 — ZZ lines and angles", total: target });
   });
 
   it("a chapter's page in English, Hindi and Marathi, with the notes, the standings and fifty a page", async () => {
     const en = await bankChapter(curator(), slug("again"), {});
-    expect(en.counts).toEqual({ served: 2, down: 1, held: 1 });
+    expect(en.counts).toEqual({ served: 2, down: 1, held: 1, curated: 0, generated: 4 });
     expect(en.items.map((i) => i.id).sort()).toEqual([q.hiOnly, q.none].sort());
-    expect(en.items.every((i) => i.language === "en" && i.notes.length === 0 && i.generated && i.madeAt === "2026-10-19T10:00:00.000Z")).toBe(true);
+    expect(en.items.every((i) => i.language === "en" && i.notes.length === 0 && i.generated && i.kind === "GENERATED" && i.madeAt === "2026-10-19T10:00:00.000Z")).toBe(true);
 
     const hi = await bankChapter(curator(), slug("again"), { lang: "hi" });
     const hiOne = hi.items.find((i) => i.id === q.hiOnly)!;
@@ -259,6 +261,8 @@ describe("the bank desk on the database (a ZZ cell: Balbharati class 3 physics)"
 
     const authored = await bankChapter(curator(), slug("light"), {});
     expect(authored.items.filter((i) => !i.generated)).toHaveLength(3);
+    expect(authored.items.filter((i) => i.kind === "CURATED")).toHaveLength(3);
+    expect(authored.counts).toMatchObject({ curated: 3, generated: 1 });
 
     const page1 = await bankChapter(curator(), slug("lines"), {});
     const page2 = await bankChapter(curator(), slug("lines"), { page: 2 });

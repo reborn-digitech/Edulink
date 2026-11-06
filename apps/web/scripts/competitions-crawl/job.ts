@@ -60,6 +60,10 @@ export async function runCrawlJob(jobId: string): Promise<void> {
       return;
     }
     log(`crawl ${jobId}: ${JSON.stringify(row.request)}`);
+    // decision 0007 (6 Nov 2026): the crawler is the marketplace's and does not run while the platform has the
+    // COMPETITIONS feature off — the desk refuses to start one, and a runner reaching here anyway stops here.
+    const feature = await db.platformFeature.findUnique({ where: { code: "COMPETITIONS" }, select: { enabled: true } });
+    if (!feature?.enabled) return await end("FAILED", "the competition marketplace is off (/root/features)");
     const cfg = readAssistantConfig();
     if (!cfg.ok) return await end("FAILED", "the model endpoints are not configured (ASSISTANT_* in .env)");
 

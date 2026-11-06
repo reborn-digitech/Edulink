@@ -1,14 +1,26 @@
-import { competitionEnterResultSchema } from "@edulink/contracts";
+import { competitionEnterBodySchema, competitionEnterResultSchema } from "@edulink/contracts";
 import { requireApiRole } from "@/lib/tenancy";
 import { enterCompetition } from "@/lib/competitions";
-import { apiFailure, ok } from "@/lib/api-v1";
+import { apiFailure, apiInvalid, ok } from "@/lib/api-v1";
+import { underRules } from "@/lib/api-rule-failure";
 
-/** POST /api/v1/shared/competitions/{competitionId}/enter — a pupil enters; a second call returns the same entry. */
-export async function POST(_request: Request, { params }: { params: Promise<{ competitionId: string }> }) {
+/**
+ * POST /api/v1/shared/competitions/{competitionId}/enter — a pupil enrols themself (a second call returns the
+ * same entry), or, since decision 0007 (6 Nov 2026), a guardian enrols one of their own children by
+ * `studentMembershipId`, which counts as the guardian's consent. A pupil's body is ignored. A guardian naming no
+ * child, or a closed enrolment, is a 422 in words; another family's child is a 404.
+ */
+export async function POST(request: Request, { params }: { params: Promise<{ competitionId: string }> }) {
   try {
-    const ctx = await requireApiRole("STUDENT");
+    const ctx = await requireApiRole("STUDENT", "PARENT");
     const { competitionId } = await params;
-    return ok(competitionEnterResultSchema.parse(await enterCompetition(ctx, competitionId)));
+    const raw = await request.text();
+    const parsed = competitionEnterBodySchema.safeParse(raw.trim().length === 0 ? undefined : JSON.parse(raw));
+    if (!parsed.success) return apiInvalid(parsed);
+    const body = parsed.data ?? {};
+    return await underRules("api/v1/shared/competitions/[competitionId]/enter", async () =>
+      ok(competitionEnterResultSchema.parse(await enterCompetition(ctx, competitionId, { studentMembershipId: ctx.role === "PARENT" ? (body.studentMembershipId ?? null) : null }))),
+    );
   } catch (error) {
     return apiFailure(error, "api/v1/shared/competitions/[competitionId]/enter");
   }

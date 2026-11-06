@@ -22,6 +22,59 @@ const dateInput = z.string().max(40).nullable().optional();
 export const contestStatusValueSchema = z.enum(["DRAFT", "PUBLISHED", "ARCHIVED"]);
 
 /* ---------------------------------------------------------------------- */
+/* A competition on the school calendar (decision 0007, 6 November 2026)    */
+/* ---------------------------------------------------------------------- */
+
+/**
+ * THE INTERNAL BOARD of a school's own competition (Competition.internalBoard), chosen by the office when the
+ * calendar event is made: OFF (none), STAFF (the organising school's office, head and teachers read the full
+ * board of the school's entries: name, class, score, place), SCHOOL (staff the full board; a pupil and a
+ * guardian of that school their own place and the top places by first name and class). The cross-school
+ * standings board (schools ranked, never children) is a different thing and is unchanged by this.
+ */
+export const COMPETITION_INTERNAL_BOARDS = ["OFF", "STAFF", "SCHOOL"] as const;
+export const competitionInternalBoardSchema = z.enum(COMPETITION_INTERNAL_BOARDS);
+export type CompetitionInternalBoard = z.infer<typeof competitionInternalBoardSchema>;
+
+const realDateKey = z.string().regex(/^\d{4}-\d{2}-\d{2}$/).refine((k) => !Number.isNaN(Date.parse(`${k}T00:00:00Z`)) && new Date(`${k}T00:00:00Z`).toISOString().startsWith(k), { message: "date" });
+
+/**
+ * POST /api/v1/admin/calendar/competitions — the office adds a competition to the school calendar: the event's
+ * day or span, when enrolment closes (the day before the event starts when left out), the classes it is for,
+ * whether pupils may enrol at all, and the internal board. One tenant transaction makes the Competition
+ * (published, the school's own) and the calendar row together. POST …/{holidayId} edits both in step with the
+ * same body; DELETE …/{holidayId} takes the event off the calendar and archives the competition when it has
+ * entries (deletes it when it has none).
+ */
+export const competitionEventBodySchema = z
+  .object({
+    title: z.string().trim().min(3).max(140),
+    summary: z.string().trim().min(3).max(200),
+    startDateKey: realDateKey,
+    /** The event's last day; the start when left out. */
+    endDateKey: realDateKey.optional(),
+    /** The last day pupils may enrol; the day before the event when left out. */
+    registrationClosesDateKey: realDateKey.optional(),
+    gradeLow: z.string().trim().max(10).optional(),
+    gradeHigh: z.string().trim().max(10).optional(),
+    enrolmentOpen: z.boolean(),
+    internalBoard: competitionInternalBoardSchema,
+    /** A guardian must say yes to a pupil's own enrolment (a guardian's own enrolment is the yes). On unless said. */
+    requiresParentConsent: z.boolean().optional(),
+    body: z.string().trim().max(5000).optional(),
+    note: z.string().trim().max(500).optional(),
+  })
+  .refine((b) => !b.endDateKey || b.startDateKey <= b.endDateKey, { path: ["endDateKey"], message: "date" })
+  .refine((b) => !b.registrationClosesDateKey || b.registrationClosesDateKey <= (b.endDateKey ?? b.startDateKey), { path: ["registrationClosesDateKey"], message: "date" });
+export type CompetitionEventBody = z.infer<typeof competitionEventBodySchema>;
+
+/** The two ids a competition event is made of. */
+export const competitionEventCreatedSchema = z.object({ holidayId: id, competitionId: id });
+/** DELETE …/{holidayId}: what became of the competition. */
+export const competitionEventRemovedSchema = z.object({ ok: z.literal(true), competition: z.enum(["DELETED", "ARCHIVED"]) });
+
+
+/* ---------------------------------------------------------------------- */
 /* A pupil and a guardian                                                  */
 /* ---------------------------------------------------------------------- */
 

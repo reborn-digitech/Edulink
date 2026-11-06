@@ -1,8 +1,11 @@
 import "server-only";
 import { fixtureTopicsWhere, reviewerSeesFixtureTopics } from "./quiz-fixtures";
-import type { Prisma } from "@prisma/client";
+import { Prisma } from "@prisma/client";
 import {
+  FIXTURE_TOPIC_SLUG_PREFIX,
   QUIZ_TAKEDOWN_REASONS,
+  type QuizBankKind,
+  type QuizBankKindSplit,
   type QuizBankStanding,
   type QuizBankState,
   type QuizReviewAction,
@@ -19,12 +22,14 @@ import { db } from "./db";
 import { audit } from "./audit";
 import { AccessError } from "./tenancy";
 import { assertAppAdmin, type BankResult } from "./app-admin";
+import { AUTHORED_IN_THE_APP } from "./bank-source";
+import { SERVED_QUESTION } from "./quiz-served";
 import { clampLevel, parseChoices } from "./quiz";
 import { evaluate, numberIn } from "../../scripts/quiz-arith";
 import type { ActiveContext } from "./session";
 
 /**
- * THE GENERATED BANK'S DESK (docs/plans/assistant-and-quiz-bank.md, Phase 1 "Output and review"), as
+ * THE QUESTION BANK'S DESK (docs/plans/assistant-and-quiz-bank.md, Phase 1 "Output and review"), as
  * the owner decided on 11 October 2026: the generator's items are PUBLISHED WITHOUT REVIEW — loaded by
  * scripts/quiz-queue-load.ts and served at once with their Hindi and Marathi (src/lib/quiz-served.ts) —
  * and the app admins and the operator, never teachers, walk the bank afterwards at /appadmin/quiz-review
@@ -46,26 +51,53 @@ import type { ActiveContext } from "./session";
  *
  * The walk's order is the plan's (section 8 item 9): grades 6 to 10 mathematics and science first, then
  * the rest; within each band by grade, subject, the chapter's position, the level and the id.
+ *
+ * ONE BANK ON THE DESK (the owner's ask of 7 November 2026). The desk had counted, listed and acted on the
+ * generated rows alone while the curated bank (content/quiz/*.json through scripts/import-quiz.ts) sat
+ * beside it unseen. Now the list (`listQueue`) and the one-item door (`getItem`) answer the whole bank,
+ * curated and generated together, each item with its `kind` and every count with its split; TAKE_DOWN
+ * and PUT_BACK act on either kind, since the flags they set are the row's and quiz-served.ts reads them
+ * the same for both; EDIT stays the generated item's and refuses a curated one with
+ * quizReview.refuseEditCurated (its words are changed in its file and imported again; a curated row
+ * typed in the app is the bank editor's, app-admin.ts). `nextItem` keeps walking the generated items:
+ * that is the review queue's purpose. Provenance is untouched: `generated` is never flipped here.
  */
 
 export const FIRST_BAND = { classLevel: { gte: 6, lte: 10 }, subject: { in: ["MATHS", "SCIENCE"] } } satisfies Prisma.QuizTopicWhereInput;
 
-/** The desk's bank: every generated item in a chapter that still lists, served or not. */
-export const BANK = { generated: true, topic: { retiredAt: null } } satisfies Prisma.QuizQuestionWhereInput;
+/** What Next walks: the generated items of the bank (the review queue's purpose). */
+export const QUEUE = { generated: true, topic: { retiredAt: null } } satisfies Prisma.QuizQuestionWhereInput;
 
-/** Held: the figure the item needs is not drawn (src/lib/quiz-served.ts). */
-const HELD = { takenDownAt: null, needsFigure: true, imageKey: null } satisfies Prisma.QuizQuestionWhereInput;
+/** Held: a generated item whose figure is not drawn (src/lib/quiz-served.ts isHeldForFigure, the same rule). */
+const HELD = { generated: true, takenDownAt: null, needsFigure: true, imageKey: null } satisfies Prisma.QuizQuestionWhereInput;
 
+/** A standing as a where clause, the one serving rule (quiz-served.ts) for SERVED and HELD, so a curated row is never between the two. */
 export function stateWhere(state: QuizBankState): Prisma.QuizQuestionWhereInput {
   if (state === "DOWN") return { takenDownAt: { not: null } };
   if (state === "HELD") return HELD;
-  return { takenDownAt: null, NOT: { needsFigure: true, imageKey: null } };
+  return SERVED_QUESTION;
 }
 
-export function stateOfRow(row: { takenDownAt: Date | null; needsFigure: boolean; imageKey: string | null }): QuizBankState {
+export function stateOfRow(row: { generated: boolean; takenDownAt: Date | null; needsFigure: boolean; imageKey: string | null }): QuizBankState {
   if (row.takenDownAt) return "DOWN";
-  if (row.needsFigure && !row.imageKey) return "HELD";
+  if (row.generated && row.needsFigure && !row.imageKey) return "HELD";
   return "SERVED";
+}
+
+export const kindOf = (generated: boolean): QuizBankKind => (generated ? "GENERATED" : "CURATED");
+
+/** The curated bank's folder; a chapter's file in it is named by the chapter's slug (scripts/import-quiz.ts reads them all). */
+export const CURATED_FOLDER = "content/quiz";
+
+/**
+ * The file a curated item's words are changed in and imported again, "content/quiz/<slug>.json" (every file of the
+ * folder is named by its chapter's slug; the importer matches its questions by stem). Null for a generated item, and
+ * for a curated row written in the app (the content team's bank page, its sheet, a teacher's contribution:
+ * bank-source.ts), which no file holds and the importer never orphans. Pure.
+ */
+export function curatedFileOf(row: { generated: boolean; source: string }, slug: string): string | null {
+  if (row.generated || AUTHORED_IN_THE_APP.has(row.source)) return null;
+  return `${CURATED_FOLDER}/${slug}.json`;
 }
 
 const ORDER: Prisma.QuizQuestionOrderByWithRelationInput[] = [
@@ -106,7 +138,8 @@ async function fixtureScope(session: ActiveContext): Promise<Prisma.QuizQuestion
 
 function filterWhere(q: Omit<QuizReviewQuery, "skip">): Prisma.QuizQuestionWhereInput[] {
   const and: Prisma.QuizQuestionWhereInput[] = [];
-  if (q.board) and.push({ generatedBoard: q.board });
+  // A generated item's board is its own (the file's); a curated item's is its chapter's (the importer's, NCERT unless the file names one).
+  if (q.board) and.push({ OR: [{ generatedBoard: q.board }, { generated: false, topic: { board: q.board } }] });
   if (q.topic) and.push({ topicId: q.topic });
   if (q.level) and.push({ difficulty: q.level });
   if (q.grade || q.subject) and.push({ topic: { ...(q.grade ? { classLevel: q.grade } : {}), ...(q.subject ? { subject: q.subject } : {}) } });
@@ -211,7 +244,7 @@ const ITEM_SELECT = {
   takenDownAt: true,
   takenDownReason: true,
   takenDownBy: true,
-  topic: { select: { id: true, name: true, chapter: true, subject: true, classLevel: true } },
+  topic: { select: { id: true, slug: true, name: true, chapter: true, subject: true, classLevel: true } },
   translations: { where: { language: { in: ["hi", "mr"] } }, select: { language: true, stem: true, choices: true, solution: true, updatedAt: true } },
   reviewStamps: { orderBy: { at: "asc" }, take: 50, select: { action: true, language: true, reason: true, reviewerUserId: true, role: true, at: true } },
   stats: { select: { asked: true, correct: true } },
@@ -247,8 +280,10 @@ async function toItem(row: ItemRow): Promise<QuizReviewItem> {
   };
   return {
     id: row.id,
+    kind: kindOf(row.generated),
+    file: curatedFileOf(row, row.topic.slug),
     board: row.generatedBoard,
-    topic: { id: row.topic.id, name: row.topic.name, chapter: row.topic.chapter, subject: row.topic.subject, grade: row.topic.classLevel },
+    topic: { id: row.topic.id, slug: row.topic.slug, name: row.topic.name, chapter: row.topic.chapter, subject: row.topic.subject, grade: row.topic.classLevel },
     difficulty: clampLevel(row.difficulty),
     stem: row.stem,
     choices: parseChoices(row.choices),
@@ -286,47 +321,83 @@ async function toItem(row: ItemRow): Promise<QuizReviewItem> {
   };
 }
 
-/** The generated bank by chapter and level under the filter, with the counts the desk works against. */
+/**
+ * THE BANK IN ONE QUERY. The list's counts were thirteen parallel groupBy calls, each a tenant transaction of its own
+ * (db.ts runs every model query inside one), which starved the pool the moment the bank was the whole 15,000 rows and
+ * the suites ran beside the generation run ("unable to start a transaction in the given time", 7 Nov 2026). The quiz
+ * tables carry no policy (prisma/rls.sql), so one plain GROUP BY over the bank — per chapter, kind, level, board and
+ * standing, a few thousand rows at most however large the bank grows — serves every count, and the desk's filters are
+ * applied to those rows here. The standing is the serving rule's (quiz-served.ts): taken down, else held when the
+ * generator asked for a figure nobody drew, else served.
+ */
+type BankCell = { topicId: string; generated: boolean; difficulty: number; generatedBoard: string | null; down: boolean; held: boolean; n: number };
+
+async function bankCells(sees: boolean): Promise<BankCell[]> {
+  const scope = sees ? Prisma.empty : Prisma.sql`AND t."slug" NOT LIKE ${`${FIXTURE_TOPIC_SLUG_PREFIX}%`}`;
+  return db.$queryRaw<BankCell[]>`
+    SELECT q."topicId", q."generated", q."difficulty", q."generatedBoard",
+           (q."takenDownAt" IS NOT NULL) AS "down",
+           (q."takenDownAt" IS NULL AND q."generated" AND q."needsFigure" AND q."imageKey" IS NULL) AS "held",
+           COUNT(*)::int AS "n"
+    FROM "QuizQuestion" q JOIN "QuizTopic" t ON t."id" = q."topicId"
+    WHERE t."retiredAt" IS NULL ${scope}
+    GROUP BY 1, 2, 3, 4, 5, 6`;
+}
+
+const cellState = (c: BankCell): QuizBankState => (c.down ? "DOWN" : c.held ? "HELD" : "SERVED");
+
+type BankTopic = { id: string; name: string; chapter: string; subject: string; classLevel: number; position: number; board: string | null };
+
+/** Whether a cell is under the desk's filters: a generated item by its own board, a curated one by its chapter's. */
+function underFilter(c: BankCell, topic: BankTopic, q: Omit<QuizReviewQuery, "skip">): boolean {
+  if (q.topic && c.topicId !== q.topic) return false;
+  if (q.level && c.difficulty !== q.level) return false;
+  if (q.grade && topic.classLevel !== q.grade) return false;
+  if (q.subject && topic.subject !== q.subject) return false;
+  if (q.board && (c.generated ? c.generatedBoard : topic.board) !== q.board) return false;
+  if (q.state && cellState(c) !== q.state) return false;
+  return true;
+}
+
+const emptySplit = (): QuizBankKindSplit => ({ curated: 0, generated: 0 });
+const addTo = (split: QuizBankKindSplit, c: BankCell) => {
+  split[c.generated ? "generated" : "curated"] += c.n;
+};
+const sumOf = (split: QuizBankKindSplit) => split.curated + split.generated;
+
+/** The whole bank by chapter and level under the filter, curated and generated together, with the counts the desk works against. */
 export async function listQueue(session: ActiveContext, query: Omit<QuizReviewQuery, "skip"> = {}): Promise<QuizReviewList> {
   reviewerRole(session);
-  const scope = await fixtureScope(session);
-  const bank: Prisma.QuizQuestionWhereInput = { AND: [BANK, ...scope] };
-  const filtered: Prisma.QuizQuestionWhereInput = { AND: [BANK, ...scope, ...filterWhere(query)] };
+  const sees = await reviewerSeesFixtureTopics(session.user.id);
   const dayStart = startOfIndianDay();
   const mineWhere = { reviewerUserId: session.user.id, action: { in: [...DESK_ACTIONS] } };
-
-  const [total, served, takenDown, held, filteredCount, byGroup, downByTopic, heldByTopic, everyTopic, boardRows, myToday, myTotal, perReviewer] = await Promise.all([
-    db.quizQuestion.count({ where: bank }),
-    db.quizQuestion.count({ where: { AND: [bank, stateWhere("SERVED")] } }),
-    db.quizQuestion.count({ where: { AND: [bank, stateWhere("DOWN")] } }),
-    db.quizQuestion.count({ where: { AND: [bank, stateWhere("HELD")] } }),
-    db.quizQuestion.count({ where: filtered }),
-    db.quizQuestion.groupBy({ by: ["topicId", "generatedBoard", "difficulty"], where: filtered, _count: { _all: true } }),
-    db.quizQuestion.groupBy({ by: ["topicId", "generatedBoard"], where: { AND: [filtered, stateWhere("DOWN")] }, _count: { _all: true } }),
-    db.quizQuestion.groupBy({ by: ["topicId", "generatedBoard"], where: { AND: [filtered, stateWhere("HELD")] }, _count: { _all: true } }),
-    db.quizQuestion.groupBy({ by: ["topicId"], where: bank, _count: { _all: true } }),
-    db.quizQuestion.groupBy({ by: ["generatedBoard"], where: { generated: true } }),
+  const [cells, topics, myToday, myTotal, perReviewer] = await Promise.all([
+    bankCells(sees),
+    db.quizTopic.findMany({ where: { AND: [{ retiredAt: null }, fixtureTopicsWhere(sees)] }, select: { id: true, name: true, chapter: true, subject: true, classLevel: true, position: true, board: true } }),
     db.quizReviewStamp.count({ where: { ...mineWhere, at: { gte: dayStart } } }),
     db.quizReviewStamp.count({ where: mineWhere }),
     db.quizReviewStamp.groupBy({ by: ["reviewerUserId", "role", "action"], where: { action: { in: [...DESK_ACTIONS] } }, _count: { _all: true } }),
   ]);
+  const topicById = new Map<string, BankTopic>(topics.map((t) => [t.id, t]));
 
-  const topicIds = [...new Set([...byGroup.map((g) => g.topicId), ...everyTopic.map((g) => g.topicId)])];
-  const topics = topicIds.length
-    ? await db.quizTopic.findMany({ where: { id: { in: topicIds } }, select: { id: true, name: true, chapter: true, subject: true, classLevel: true, position: true } })
-    : [];
-  const topicById = new Map(topics.map((t) => [t.id, t]));
-  const keyOf = (topicId: string, board: string | null) => `${topicId}|${board ?? ""}`;
-  const downOf = new Map(downByTopic.map((g) => [keyOf(g.topicId, g.generatedBoard), g._count._all]));
-  const heldOf = new Map(heldByTopic.map((g) => [keyOf(g.topicId, g.generatedBoard), g._count._all]));
-
+  const whole = emptySplit();
+  const split = { served: emptySplit(), takenDown: emptySplit(), held: emptySplit(), filtered: emptySplit() };
+  const subjects = new Set<string>();
+  const boards = new Set<string>();
+  // One group per chapter (a curated row carries no generated board, so the chapter's board is its own, else the generator's).
   const groups = new Map<string, QuizReviewList["groups"][number] & { position: number }>();
-  for (const g of byGroup) {
-    const topic = topicById.get(g.topicId);
+  for (const c of cells) {
+    const topic = topicById.get(c.topicId);
     if (!topic) continue;
-    const key = keyOf(g.topicId, g.generatedBoard);
-    const row = groups.get(key) ?? {
-      board: g.generatedBoard,
+    subjects.add(topic.subject);
+    if (c.generatedBoard) boards.add(c.generatedBoard);
+    addTo(whole, c);
+    const state = cellState(c);
+    addTo(state === "DOWN" ? split.takenDown : state === "HELD" ? split.held : split.served, c);
+    if (!underFilter(c, topic, query)) continue;
+    addTo(split.filtered, c);
+    const row = groups.get(c.topicId) ?? {
+      board: topic.board ?? c.generatedBoard,
       topicId: topic.id,
       subject: topic.subject,
       grade: topic.classLevel,
@@ -334,19 +405,26 @@ export async function listQueue(session: ActiveContext, query: Omit<QuizReviewQu
       name: topic.name,
       levels: [0, 0, 0, 0, 0, 0],
       total: 0,
-      down: downOf.get(key) ?? 0,
-      held: heldOf.get(key) ?? 0,
+      curated: 0,
+      generated: 0,
+      down: 0,
+      held: 0,
       first: inFirstBand(topic),
       position: topic.position,
     };
-    row.levels[clampLevel(g.difficulty) - 1]! += g._count._all;
-    row.total += g._count._all;
-    groups.set(key, row);
+    if (!row.board && c.generatedBoard) row.board = c.generatedBoard;
+    row.levels[clampLevel(c.difficulty) - 1]! += c.n;
+    row.total += c.n;
+    row[c.generated ? "generated" : "curated"] += c.n;
+    if (state === "DOWN") row.down += c.n;
+    else if (state === "HELD") row.held += c.n;
+    groups.set(c.topicId, row);
   }
+  for (const t of topics) if (t.board) boards.add(t.board);
   const ordered = [...groups.values()]
     .sort((a, b) => Number(b.first) - Number(a.first) || a.grade - b.grade || a.subject.localeCompare(b.subject) || a.position - b.position || (a.board ?? "").localeCompare(b.board ?? ""))
     .slice(0, MAX_GROUPS)
-    .map((g) => ({ board: g.board, topicId: g.topicId, subject: g.subject, grade: g.grade, chapter: g.chapter, name: g.name, levels: g.levels, total: g.total, down: g.down, held: g.held, first: g.first }));
+    .map((g) => ({ board: g.board, topicId: g.topicId, subject: g.subject, grade: g.grade, chapter: g.chapter, name: g.name, levels: g.levels, total: g.total, curated: g.curated, generated: g.generated, down: g.down, held: g.held, first: g.first }));
 
   const reviewers = new Map<string, { role: QuizReviewRole; edits: number; takenDown: number; putBack: number }>();
   for (const r of perReviewer) {
@@ -359,13 +437,16 @@ export async function listQueue(session: ActiveContext, query: Omit<QuizReviewQu
   const names = await namesOf([...reviewers.keys()]);
 
   return {
-    total,
-    served,
-    takenDown,
-    held,
-    filtered: filteredCount,
-    boards: boardRows.map((b) => b.generatedBoard).filter((b): b is string => !!b).sort(),
-    subjects: [...new Set(everyTopic.map((g) => topicById.get(g.topicId)?.subject).filter((s): s is string => !!s))].sort(),
+    total: sumOf(whole),
+    curated: whole.curated,
+    generated: whole.generated,
+    served: sumOf(split.served),
+    takenDown: sumOf(split.takenDown),
+    held: sumOf(split.held),
+    filtered: sumOf(split.filtered),
+    split,
+    boards: [...boards].sort(),
+    subjects: [...subjects].sort(),
     groups: ordered,
     mine: { today: myToday, total: myTotal },
     reviewers: [...reviewers.entries()]
@@ -375,12 +456,12 @@ export async function listQueue(session: ActiveContext, query: Omit<QuizReviewQu
   };
 }
 
-/** The next item under the filter, skipping those skipped this sitting: the first band, then the rest. */
+/** The next GENERATED item under the filter, skipping those skipped this sitting: the first band, then the rest. */
 export async function nextItem(session: ActiveContext, query: QuizReviewQuery = {}): Promise<QuizReviewNext> {
   reviewerRole(session);
   const skip = parseSkip(query.skip);
   const scope = await fixtureScope(session);
-  const base: Prisma.QuizQuestionWhereInput[] = [BANK, ...scope, ...filterWhere(query), ...(skip.length ? [{ id: { notIn: skip } }] : [])];
+  const base: Prisma.QuizQuestionWhereInput[] = [QUEUE, ...scope, ...filterWhere(query), ...(skip.length ? [{ id: { notIn: skip } }] : [])];
   const pick = async (band: Prisma.QuizQuestionWhereInput) =>
     db.quizQuestion.findFirst({ where: { AND: [...base, band] }, orderBy: ORDER, select: ITEM_SELECT });
   const row = (await pick({ topic: FIRST_BAND })) ?? (await pick({ NOT: { topic: FIRST_BAND } }));
@@ -388,10 +469,10 @@ export async function nextItem(session: ActiveContext, query: QuizReviewQuery = 
   return { item: row ? await toItem(row) : null, remaining };
 }
 
-/** One generated item, in any state; anything else is not found. */
+/** One item of either kind, in any state (a curated one read-only, with its file); anything else is not found. */
 export async function getItem(session: ActiveContext, questionId: string): Promise<QuizReviewItem> {
   reviewerRole(session);
-  const row = await db.quizQuestion.findFirst({ where: { id: questionId, generated: true }, select: ITEM_SELECT });
+  const row = await db.quizQuestion.findFirst({ where: { id: questionId }, select: ITEM_SELECT });
   if (!row) throw new AccessError("quizReview.noSuchItem", "NOT_FOUND");
   return toItem(row);
 }
@@ -403,7 +484,7 @@ export async function getItem(session: ActiveContext, questionId: string): Promi
 type Tx = typeof db;
 
 async function standingOf(questionId: string): Promise<QuizBankStanding> {
-  const s = await db.quizQuestion.findUniqueOrThrow({ where: { id: questionId }, select: { takenDownAt: true, takenDownReason: true, needsFigure: true, imageKey: true, editedAfterSolvingAt: true } });
+  const s = await db.quizQuestion.findUniqueOrThrow({ where: { id: questionId }, select: { generated: true, takenDownAt: true, takenDownReason: true, needsFigure: true, imageKey: true, editedAfterSolvingAt: true } });
   return {
     ok: true,
     state: stateOfRow(s),
@@ -449,7 +530,9 @@ export function checkTranslationEdit(t: { choices: string[] }, optionCount: numb
 }
 
 /**
- * EDIT, in all three languages at once, in any state (served, taken down, held). The English as corrected;
+ * EDIT, a GENERATED item's alone (a curated one is refused with quizReview.refuseEditCurated: its words are changed
+ * in its file under content/quiz and imported again, or in the bank editor when it was written in the app),
+ * in all three languages at once, in any state (served, taken down, held). The English as corrected;
  * the Hindi and the Marathi rows as corrected when sent. The stamp keeps every field as it stood (`before`),
  * the audit log names the fields changed ("stem", "hi.choices", …); an English change keeps the solver's
  * answers and sets editedAfterSolvingAt (they were given to the old words), and a language row not
@@ -464,7 +547,8 @@ export async function editItem(session: ActiveContext, questionId: string, input
       where: { id: questionId },
       select: { generated: true, difficulty: true, stem: true, choices: true, answerIndex: true, solution: true, checkExpr: true, translations: { where: { language: { in: ["hi", "mr"] } }, select: { language: true, stem: true, choices: true, solution: true } } },
     });
-    if (!row || !row.generated) throw new Refusal("quizReview.noSuchItem");
+    if (!row) throw new Refusal("quizReview.noSuchItem");
+    if (!row.generated) throw new Refusal("quizReview.refuseEditCurated");
     const before = { difficulty: row.difficulty, stem: row.stem, choices: parseChoices(row.choices), answerIndex: row.answerIndex, solution: row.solution, checkExpr: row.checkExpr };
     const problem = checkEdit(input, before.choices.length);
     if (problem) throw new Refusal(problem);
@@ -523,14 +607,14 @@ export async function editItem(session: ActiveContext, questionId: string, input
   return standingOf(questionId);
 }
 
-/** TAKE DOWN with a coded reason: not served from this moment, anywhere; the answers given stay. Again changes nothing. */
+/** TAKE DOWN an item of either kind with a coded reason: not served from this moment, anywhere; the answers given stay. Again changes nothing. */
 export async function takeDownItem(session: ActiveContext, questionId: string, reason: QuizTakeDownReason): Promise<BankResult<QuizBankStanding>> {
   const role = reviewerRole(session);
   if (!(QUIZ_TAKEDOWN_REASONS as readonly string[]).includes(reason)) return { ok: false, errorKey: "quizReview.reasonNeeded" };
   const now = new Date();
   const result = await inTransaction(async (tx) => {
-    const row = await tx.quizQuestion.findUnique({ where: { id: questionId }, select: { generated: true } });
-    if (!row || !row.generated) throw new Refusal("quizReview.noSuchItem");
+    const row = await tx.quizQuestion.findUnique({ where: { id: questionId }, select: { id: true } });
+    if (!row) throw new Refusal("quizReview.noSuchItem");
     // Conditional on still being up, so two people pressing together make one stamp.
     const { count } = await tx.quizQuestion.updateMany({ where: { id: questionId, takenDownAt: null }, data: { takenDownAt: now, takenDownReason: reason, takenDownBy: session.user.id } });
     if (count === 0) return false;
@@ -542,13 +626,13 @@ export async function takeDownItem(session: ActiveContext, questionId: string, r
   return standingOf(questionId);
 }
 
-/** PUT BACK a taken-down item: served again at once (unless its figure is still to be drawn). Again changes nothing. */
+/** PUT BACK a taken-down item of either kind: served again at once (unless its figure is still to be drawn). Again changes nothing. */
 export async function putBackItem(session: ActiveContext, questionId: string): Promise<BankResult<QuizBankStanding>> {
   const role = reviewerRole(session);
   const now = new Date();
   const result = await inTransaction(async (tx) => {
-    const row = await tx.quizQuestion.findUnique({ where: { id: questionId }, select: { generated: true } });
-    if (!row || !row.generated) throw new Refusal("quizReview.noSuchItem");
+    const row = await tx.quizQuestion.findUnique({ where: { id: questionId }, select: { id: true } });
+    if (!row) throw new Refusal("quizReview.noSuchItem");
     const { count } = await tx.quizQuestion.updateMany({ where: { id: questionId, takenDownAt: { not: null } }, data: { takenDownAt: null, takenDownReason: null, takenDownBy: null } });
     if (count === 0) return false;
     await tx.quizReviewStamp.create({ data: { questionId, reviewerUserId: session.user.id, role, action: "PUT_BACK", at: now } });

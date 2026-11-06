@@ -197,7 +197,6 @@ export const NAV: Record<Role, NavItem[]> = {
     { href: "/admin/report-cards", labelKey: "nav.reportCards", icon: "clipboard", prefix: true, group: "teaching" },
     // Who covers the lessons of staff who are away: the board the staff register feeds.
     { href: "/admin/substitutions", labelKey: "nav.substitutions", icon: "users", prefix: true, group: "teaching", kinds: SCHOOL_KINDS },
-    { href: "/competitions", labelKey: "nav.competitions", icon: "trophy", prefix: true, group: "teaching" },
     // The college's academics (4 Oct 2026): structure, offerings, timetable, registration, attendance and condonations.
     { href: "/admin/academics", labelKey: "academics.title", icon: "graduationCap", prefix: true, group: "teaching", module: "ACADEMICS" },
     // The college exam cell (4 Oct 2026): the office reads sessions, forms, results and analytics.
@@ -297,7 +296,6 @@ export const NAV: Record<Role, NavItem[]> = {
     { href: "/admin/report-cards", labelKey: "nav.reportCards", icon: "clipboard", prefix: true, group: "teaching" },
     // Who covers the lessons of staff who are away: the board the staff register feeds.
     { href: "/admin/substitutions", labelKey: "nav.substitutions", icon: "users", prefix: true, group: "teaching", kinds: SCHOOL_KINDS },
-    { href: "/competitions", labelKey: "nav.competitions", icon: "trophy", prefix: true, group: "teaching" },
     // The college's academics, read; late registrations and forwarded condonations decided (4 Oct 2026).
     { href: "/admin/academics", labelKey: "academics.title", icon: "graduationCap", prefix: true, group: "teaching", module: "ACADEMICS" },
     // The college exam cell (4 Oct 2026): results and analytics to read, grace proposals to decide.
@@ -392,7 +390,6 @@ export const NAV: Record<Role, NavItem[]> = {
     { href: "/enquiries", labelKey: "nav.enquiries", icon: "envelope", prefix: true, group: "school" },
     { href: "/mentoring", labelKey: "nav.mentoring", icon: "chat", prefix: true, group: "school", feature: "EXPERT_SESSIONS" },
     { href: "/teacher/guidance", labelKey: "nav.guidance", icon: "calendar", prefix: true, group: "school", feature: "TEACHER_SESSIONS" },
-    { href: "/competitions", labelKey: "nav.competitions", icon: "trophy", prefix: true, group: "school" },
     { href: "/archive", labelKey: "nav.pastYears", icon: "archive", prefix: true, group: "school" },
     // My own payslips and what the stores issued to me (3 Oct 2026), while the school has the module on.
     { href: "/account/payslips", labelKey: "payroll.myTitle", icon: "receipt", prefix: true, group: "me", module: "PAYROLL" },
@@ -425,7 +422,6 @@ export const NAV: Record<Role, NavItem[]> = {
     { href: "/bulletin/council", labelKey: "councilNotices.navTitle", icon: "megaphone", group: "school" },
     { href: "/mentoring", labelKey: "nav.mentoring", icon: "chat", prefix: true, group: "school", feature: "EXPERT_SESSIONS" },
     { href: "/sessions", labelKey: "nav.sessions", icon: "calendar", prefix: true, group: "school", feature: SESSION_FEATURES },
-    { href: "/competitions", labelKey: "nav.competitions", icon: "trophy", prefix: true, group: "school" },
     { href: "/archive", labelKey: "nav.pastYears", icon: "archive", prefix: true, group: "school" },
     { href: "/student/profile", labelKey: "nav.me", icon: "user", prefix: true, group: "me" },
     // What a student lets their guardians see (4 Oct 2026): an adult at a college decides. Under ACADEMICS, which every
@@ -479,7 +475,6 @@ export const NAV: Record<Role, NavItem[]> = {
     { href: "/explore", labelKey: "nav.explore", icon: "buildings", prefix: true, group: "school" },
     { href: "/parent/applications", labelKey: "nav.applications", icon: "clipboard", prefix: true, group: "school" },
     { href: "/enquiries", labelKey: "nav.enquiries", icon: "envelope", prefix: true, group: "school" },
-    { href: "/competitions", labelKey: "nav.competitions", icon: "trophy", prefix: true, group: "school" },
     { href: "/mentoring", labelKey: "nav.mentoring", icon: "chat", prefix: true, group: "school", feature: "EXPERT_SESSIONS" },
     { href: "/sessions", labelKey: "nav.sessions", icon: "calendar", prefix: true, group: "school", feature: SESSION_FEATURES },
     { href: "/archive", labelKey: "nav.pastYears", icon: "archive", prefix: true, group: "school" },

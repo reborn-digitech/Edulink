@@ -179,6 +179,8 @@ export function ReviewDesk({ initial, query, subjectLabels }: { initial: QuizRev
             <Badge tone="danger">{item.takenDownBy ? t("quizReview.statusDownBy", { name: item.takenDownBy, reason: reasonLabel(item.takenDownReason) }) : t("quizReview.statusDown", { reason: reasonLabel(item.takenDownReason) })}</Badge>
           )}
           {item.state === "HELD" && <Badge tone="warn">{t("quizReview.statusHeld")}</Badge>}
+          {/* One bank (7 Nov 2026): the walk is the generated items', but the item's kind is said as on the chapter's page. */}
+          <Badge tone={item.kind === "GENERATED" ? "info" : "outline"}>{t(`quizReview.kind${item.kind}`)}</Badge>
           {item.board && <Badge tone="info">{quizBoardKey(item.board) ? t(quizBoardKey(item.board)!) : item.board}</Badge>}
           <Badge tone="accent">{t("quizReview.levelOption", { level: item.difficulty })}</Badge>
           {item.levelFlag && <Badge tone="warn">{t("quizReview.levelFlag", { flag: item.levelFlag })}</Badge>}

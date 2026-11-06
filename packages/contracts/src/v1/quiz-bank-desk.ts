@@ -1,6 +1,6 @@
 import { z } from "zod";
 import { quizBoardSchema } from "./quiz-board";
-import { QUIZ_BANK_STATES, QUIZ_TAKEDOWN_REASONS } from "./quiz-review";
+import { QUIZ_BANK_STATES, QUIZ_TAKEDOWN_REASONS, quizBankKindSchema } from "./quiz-review";
 
 /**
  * THE BANK DESK BY CLASS AND SUBJECT (the owner's ask of 20 October 2026): the whole practice bank, authored and
@@ -8,6 +8,10 @@ import { QUIZ_BANK_STATES, QUIZ_TAKEDOWN_REASONS } from "./quiz-review";
  * served questions and the chapters at the target, the chapters grouped by class and subject in their book's order,
  * and one chapter's served questions in English, Hindi or Marathi. Every door is app-admin (the content team, and the
  * operator, who passes that gate too); none names a school, and none is a person's data.
+ *
+ * One bank (7 Nov 2026): every count here is over the curated and the generated questions together, with the
+ * generated share beside it (`generated`, and `curated` where the cell prints both), and a chapter's item carries
+ * its `kind`.
  */
 
 const id = z.string().min(1).max(64);
@@ -39,8 +43,11 @@ export type QuizBankMatrixQuery = z.infer<typeof quizBankMatrixQuerySchema>;
 
 const cellSchema = z.object({
   subject: z.string(),
-  /** Questions served to pupils now (src/lib/quiz-served.ts). */
+  /** Questions served to pupils now (src/lib/quiz-served.ts), curated and generated together. */
   served: count,
+  /** Of the served, by kind: the two add up to `served`. */
+  curated: count,
+  generated: count,
   /** Chapters in the cell: a book's chapter number counts once, as the generation run counts it. */
   chapters: count,
   /** Of those, the chapters whose served questions have reached the target. */
@@ -55,12 +62,12 @@ export const quizBankMatrixSchema = z.object({
   targetFromRun: z.boolean(),
   /** The school columns, in the order of QUIZ_GEN_SUBJECTS. */
   subjects: z.array(z.string()),
-  /** Classes 3 to 12, one cell per column, an empty cell with zero chapters. */
-  rows: z.array(z.object({ grade: z.number().int(), cells: z.array(cellSchema), served: count, chapters: count, atTarget: count })),
+  /** Classes 3 to 12, one cell per column, an empty cell with zero chapters; the row's totals with the generated share. */
+  rows: z.array(z.object({ grade: z.number().int(), cells: z.array(cellSchema), served: count, curated: count, generated: count, chapters: count, atTarget: count })),
   /** The college bank by stream (null: the college-wide banks), its own columns; empty when the bank has no college chapter. */
   college: z.object({
     subjects: z.array(z.string()),
-    rows: z.array(z.object({ stream: z.string().nullable(), cells: z.array(cellSchema), served: count, chapters: count, atTarget: count })),
+    rows: z.array(z.object({ stream: z.string().nullable(), cells: z.array(cellSchema), served: count, curated: count, generated: count, chapters: count, atTarget: count })),
   }),
 });
 export type QuizBankMatrix = z.infer<typeof quizBankMatrixSchema>;
@@ -86,9 +93,12 @@ export const quizBankChapterRowSchema = z.object({
   number: z.number().int().nullable(),
   /** owner-batch-item8: the book the chapter line names beside its number, where two books of the class share chapter numbers; null otherwise. */
   book: z.string().nullable(),
-  /** Served questions at levels 1 to 6, and in all. */
+  /** Served questions at levels 1 to 6, and in all, curated and generated together. */
   levels: z.array(count).length(6),
   total: count,
+  /** Of the total, by kind. */
+  curated: count,
+  generated: count,
   /** Not served: taken down, and held until a figure is drawn. */
   down: count,
   held: count,
@@ -105,6 +115,8 @@ export const quizBankChaptersSchema = z.object({
       subject: z.string(),
       board: z.string().nullable(),
       served: count,
+      /** Of the served, the generator's. */
+      generated: count,
       chapters: z.array(quizBankChapterRowSchema),
     }),
   ),
@@ -124,6 +136,8 @@ export const QUIZ_BANK_PAGE_SIZE = 50;
 export const quizBankChapterItemSchema = z.object({
   id,
   generated: z.boolean(),
+  /** The same as a badge: CURATED or GENERATED (one bank, 7 Nov 2026). */
+  kind: quizBankKindSchema,
   difficulty: z.number().int().min(1).max(6),
   /** The words in `language`: the translation's when one is stored, else the English (with the note MISSING). */
   language: z.enum(QUIZ_BANK_LANGUAGES),
@@ -149,7 +163,8 @@ export const quizBankChapterSchema = z.object({
   topic: z.object({ id, slug: z.string(), name: z.string(), chapter: z.string(), subject: z.string(), grade: z.number().int(), board: z.string().nullable(), book: z.string().nullable() }),
   language: z.enum(QUIZ_BANK_LANGUAGES),
   state: z.enum(QUIZ_BANK_STATES),
-  counts: z.object({ served: count, down: count, held: count }),
+  /** The chapter's standings, either kind, and how many of all its questions are the generator's. */
+  counts: z.object({ served: count, down: count, held: count, curated: count, generated: count }),
   page: z.number().int().min(1),
   pages: z.number().int().min(1),
   /** Items in this standing, across the pages. */

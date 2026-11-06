@@ -1,29 +1,13 @@
-import type { Metadata } from "next";
+import { redirect } from "next/navigation";
 import { requireRole } from "@/lib/tenancy";
-import { db } from "@/lib/db";
-import { NewCompetitionForm } from "./form";
-import { getT } from "@/lib/i18n/server";
-import { PageHeader } from "@/components/ui/page-header";
 
-export async function generateMetadata(): Promise<Metadata> {
-  const t = await getT();
-  return { title: t("meta.postCompetition") };
-}
-
+/**
+ * decision 0007 (6 Nov 2026): a school's competition is added as a calendar event, so the separate "Post a
+ * competition" page sends the office to the calendar, where the competition's fields sit beside the dates. The
+ * phone's older door (POST /api/v1/contest/competitions) still makes a draft, which gets its calendar row when
+ * published with a start date.
+ */
 export default async function NewCompetitionPage() {
-  const t = await getT();
-  const ctx = await requireRole("ADMIN");
-  const school = await db.school.findUniqueOrThrow({
-    where: { id: ctx.schoolId },
-    select: { name: true },
-  });
-
-  return (
-    <div className="mx-auto max-w-xl space-y-5">
-      <PageHeader title={t("competitions.postACompetition")} description={t("competitions.postIntro")} back={{ href: "/competitions", label: t("competitions.title") }} />
-
-
-      <NewCompetitionForm schoolName={school.name} />
-    </div>
-  );
+  await requireRole("ADMIN");
+  redirect("/admin/calendar");
 }

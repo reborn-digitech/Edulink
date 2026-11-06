@@ -14,4 +14,6 @@ export const FEATURE_META: Record<FeatureCode, { nameKey: TranslationKey; whatKe
   TEACHER_SESSIONS: { nameKey: "platformFeatures.teacherSessionsName", whatKey: "platformFeatures.teacherSessionsWhat", countKey: "platformFeatures.teacherSessionsCount" },
   JOB_BOARD: { nameKey: "platformFeatures.jobBoardName", whatKey: "platformFeatures.jobBoardWhat", countKey: "platformFeatures.jobBoardCount" },
   TEXT_MESSAGING: { nameKey: "platformFeatures.textMessagingName", whatKey: "platformFeatures.textMessagingWhat", countKey: "platformFeatures.textMessagingCount" },
+  // decision 0007 (6 Nov 2026): the competition marketplace; a school's own competitions are calendar events and never behind it.
+  COMPETITIONS: { nameKey: "platformFeatures.competitionsName", whatKey: "platformFeatures.competitionsWhat", countKey: "platformFeatures.competitionsCount" },
 };

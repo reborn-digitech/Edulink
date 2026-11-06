@@ -551,6 +551,8 @@ export const adminCalendarSchema = z.object({
       kind: z.string(),
       note: z.string().nullable(),
       academicYearId: id.nullable(),
+      /** A COMPETITION row's competition (decision 0007); null on every other kind. Optional for an older server. */
+      competitionId: id.nullable().optional(),
     }),
   ),
   /** Approved staff leave over the next 120 days. */

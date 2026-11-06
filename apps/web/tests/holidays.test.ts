@@ -441,6 +441,12 @@ describe("creating calendar entries", () => {
       }),
     ).rejects.toThrow("access.pickHolidayExamOrEvent");
   });
+
+  it("⚠ refuses the kind COMPETITION on the plain write: a competition is made with its competition (decision 0007)", async () => {
+    await expect(
+      createHoliday(adminA, { name: "ZZ Quiz", startDateKey: "2026-12-01", endDateKey: "2026-12-01", kind: "COMPETITION" }),
+    ).rejects.toThrow("access.competitionEventHasItsOwnForm");
+  });
 });
 
 describe("editing and removing", () => {

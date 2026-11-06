@@ -11,6 +11,7 @@ import { formatDate } from "@/lib/dates";
 import { getT } from "@/lib/i18n/server";
 import { DataToolbar } from "@/components/ui/data-toolbar";
 import { PageHeader } from "@/components/ui/page-header";
+import { PlanCard } from "@/components/plan-card";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -18,7 +19,10 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 /**
- * The marketplace.
+ * The list of competitions — since decision 0007 (6 Nov 2026) a plain list with no menu entry of its own: the
+ * school's own competitions are calendar events, reached from the agenda and the office's calendar, and this
+ * page is what a competition's "back" leads to. The platform's marketplace below it is behind the COMPETITIONS
+ * switch and, for a pupil, the STUDENT plan (the plan card stands where it would be); the school's own never are.
  *
  * Open to every role because a competition is not school-owned: the same maths
  * challenge is the same challenge at both schools. What differs per person is
@@ -35,7 +39,7 @@ export default async function CompetitionsPage({
   const { show, subject: rawSubject } = await searchParams;
   const openOnly = show !== "all";
 
-  const [{ school: allSchool, platform: allPlatform }, waiting] = await Promise.all([
+  const [{ school: allSchool, platform: allPlatform, platformLock }, waiting] = await Promise.all([
     listCompetitions(session, { openOnly }),
     pendingConsents(session),
   ]);
@@ -43,7 +47,7 @@ export default async function CompetitionsPage({
   const subject = rawSubject && subjects.includes(rawSubject) ? rawSubject : null;
   const school = subject ? allSchool.filter((c) => c.subject === subject) : allSchool;
   const platform = subject ? allPlatform.filter((c) => c.subject === subject) : allPlatform;
-  const nothing = school.length === 0 && platform.length === 0;
+  const nothing = school.length === 0 && platform.length === 0 && !platformLock;
 
   // competitions-crawler (12 Oct 2026): class 13 is how a competition open to college students is stored.
   const grade = (g: string) => (g === "13" ? t("practice.collegeLevel") : g);
@@ -117,8 +121,9 @@ export default async function CompetitionsPage({
         description={t("competitions.intro")}
         actions={
           session.role === "ADMIN" ? (
+            /* The office adds one as a calendar event (decision 0007). */
             <Button asChild size="sm">
-              <Link href="/competitions/new">{t("competitions.postOne")}</Link>
+              <Link href="/admin/calendar">{t("competitions.addToCalendar")}</Link>
             </Button>
           ) : undefined
         }
@@ -202,6 +207,15 @@ export default async function CompetitionsPage({
             </section>
           )}
 
+          {platformLock && (
+            /* The marketplace is on and this pupil lacks the plan that carries it: the card, where the list would be. */
+            <section aria-labelledby="platform-competitions-locked" className="space-y-2.5">
+              <h2 id="platform-competitions-locked" className="text-sm font-semibold text-fg">
+                {t("competitions.forEverySchool")}
+              </h2>
+              <PlanCard plan={platformLock} feature="COMPETITIONS" />
+            </section>
+          )}
           {platform.length > 0 && (
             <section aria-labelledby="platform-competitions" className="space-y-2.5">
               <div>

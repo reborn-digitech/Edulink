@@ -34,6 +34,7 @@ let pupilId = "";
 let otherPupilId = "";
 let classId = "";
 let otherClassId = "";
+let competitionId = "";
 
 function ctx(over: Partial<ActiveContext> & { userId: string }): ActiveContext {
   return {
@@ -101,6 +102,11 @@ beforeAll(async () => {
   await db.holiday.create({ data: { schoolId, name: "ZZ Sports day", startDateKey: day(12), endDateKey: day(12), kind: "EVENT" } });
   await db.holiday.create({ data: { schoolId, name: "ZZ Old break", startDateKey: day(-30), endDateKey: day(-28), kind: "HOLIDAY" } });
 
+  // decision 0007: the school's competition on day +13, enrolment on for classes 5–6 — the pupil's class, so OPEN.
+  const quiz = await db.competition.create({ data: { organizerSchoolId: schoolId, organizerName: "ZZ Agenda School", title: "ZZ Agenda quiz", summary: "ZZ a quiz", status: "PUBLISHED", gradeLow: "5", gradeHigh: "6", enrolmentOpen: true, internalBoard: "SCHOOL", registrationClosesAt: new Date(`${day(13)}T18:29:59.000Z`), startsAt: new Date(`${day(13)}T00:00:00.000Z`) }, select: { id: true } });
+  competitionId = quiz.id;
+  await db.holiday.create({ data: { schoolId, name: "ZZ Agenda quiz", startDateKey: day(13), endDateKey: day(13), kind: "COMPETITION", note: "ZZ a quiz", competitionId: quiz.id } });
+
   // A fee instalment due on day +11, another on day +60.
   const tuition = await saveHead(admin(), { name: "Tuition", code: "TUI", kind: "TUITION" });
   const structureId = await createStructure(admin(), {
@@ -135,8 +141,12 @@ describe("the guardian's fortnight", () => {
       [day(9), "CLOSURE", "ZZ Founders' day break"],
       [day(11), "FEE", "ZZ Term 2"],
       [day(12), "EVENT", "ZZ Sports day"],
+      [day(13), "COMPETITION", "ZZ Agenda quiz"],
     ]);
     const byKind = Object.fromEntries(agenda.rows.map((r) => [r.kind, r]));
+    // decision 0007: the competition row carries its competition and that this child may enrol, and opens the competition with the child.
+    expect(byKind.COMPETITION!.competition).toEqual({ competitionId, enrol: "OPEN", entryId: null });
+    expect(byKind.COMPETITION!.href).toBe(`/competitions/${competitionId}?child=${pupilId}`);
     expect(byKind.EXAM!.href).toBe("/exams");
     expect(byKind.EXAM!.detail).toBe("ZZ Unit Test 1");
     expect(byKind.EXAM!.at).toBe(`${day(3)}T04:30:00.000Z`);
@@ -166,12 +176,13 @@ describe("the pupil's own fortnight", () => {
   it("is the same list without the guardian's meeting, with the pupil's own links, and fee dates only when the school lets their age see fees", async () => {
     let agenda = await familyAgenda(pupil(), { days: 14 });
     expect(agenda.children).toEqual([]);
-    expect(agenda.rows.map((r) => r.kind)).toEqual(["EXAM", "WORK", "SESSION", "CLOSURE", "EVENT"]);
+    expect(agenda.rows.map((r) => r.kind)).toEqual(["EXAM", "WORK", "SESSION", "CLOSURE", "EVENT", "COMPETITION"]);
+    expect(agenda.rows.find((r) => r.kind === "COMPETITION")!.href).toBe(`/competitions/${competitionId}`);
     expect(agenda.rows.find((r) => r.kind === "WORK")!.href).toBe("/student/assignments");
     expect(agenda.rows.find((r) => r.kind === "CLOSURE")!.href).toBe("/timetable");
     await saveFeeSettings(admin(), { pupilFeeViewAge: 14 });
     agenda = await familyAgenda(pupil(), { days: 14 });
-    expect(agenda.rows.map((r) => r.kind)).toEqual(["EXAM", "WORK", "SESSION", "CLOSURE", "FEE", "EVENT"]);
+    expect(agenda.rows.map((r) => r.kind)).toEqual(["EXAM", "WORK", "SESSION", "CLOSURE", "FEE", "EVENT", "COMPETITION"]);
     expect(agenda.rows.find((r) => r.kind === "FEE")!.href).toBe("/student/fees");
     await saveFeeSettings(admin(), { pupilFeeViewAge: 18 });
     agenda = await familyAgenda(pupil(), { days: 14 });

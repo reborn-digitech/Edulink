@@ -14,13 +14,20 @@
  * held until a figure is stored; the operator's take-down records the role OPERATOR; the review queue's
  * accepted items stay served; and the gig flag hides the nav entry, 404s the pages and the doors, and is
  * in the catalog for the sweep. Every row is a ZZ row made here and removed after; nothing else is touched.
+ *
+ * One bank (the owner's ask of 7 November 2026): the desk's tiles, list, matrix, chapters and a chapter's page count
+ * and list the curated and the generated questions together, each item with its kind and each count with its split;
+ * take-down and put-back act on a curated item as on a generated one; an edit on a curated item is refused 403 with
+ * quizReview.refuseEditCurated and the file its words are changed in; Next walks the generated items alone.
  */
 import { afterAll, beforeAll, describe, expect, it, vi } from "vitest";
 import { PrismaClient } from "@prisma/client";
-import { QUESTION_GIG_FOR_TEACHERS, practiceBeganSchema, practiceNextSchema, quizBankStandingSchema, quizReviewListSchema, quizReviewNextSchema } from "@edulink/contracts";
+import { QUESTION_GIG_FOR_TEACHERS, practiceBeganSchema, practiceNextSchema, quizBankChapterSchema, quizBankStandingSchema, quizReviewListSchema, quizReviewNextSchema } from "@edulink/contracts";
 import { createSession, type ActiveContext } from "@/lib/session";
 import { __resetCookies } from "../tests/stubs/next-headers";
-import { checkEdit, checkTranslationEdit, editItem, getItem, inFirstBand, listQueue, nextItem, parseSkip, putBackItem, readGeneration, startOfIndianDay, stateOfRow, takeDownItem } from "@/lib/quiz-review";
+import { checkEdit, checkTranslationEdit, curatedFileOf, editItem, getItem, inFirstBand, kindOf, listQueue, nextItem, parseSkip, putBackItem, readGeneration, startOfIndianDay, stateOfRow, takeDownItem } from "@/lib/quiz-review";
+import { bankChapter, bankChapters, bankMatrix, buildMatrix, type TopicServed } from "@/lib/bank-desk";
+import { CONTENT_TEAM_SOURCE, TEACHER_CONTRIBUTION_SOURCE } from "@/lib/bank-source";
 import { isHeldForFigure, isServed, SERVED_QUESTION } from "@/lib/quiz-served";
 import { listTopics } from "@/lib/quiz";
 import { reviseQuestion, revisionQueue } from "@/lib/practice-insights";
@@ -37,6 +44,7 @@ import { GET as oneGet } from "@/app/api/v1/appadmin/quiz-review/[questionId]/ro
 import { POST as editPost } from "@/app/api/v1/appadmin/quiz-review/[questionId]/edit/route";
 import { POST as takeDownPost } from "@/app/api/v1/appadmin/quiz-review/[questionId]/take-down/route";
 import { POST as putBackPost } from "@/app/api/v1/appadmin/quiz-review/[questionId]/put-back/route";
+import { GET as chapterGet } from "@/app/api/v1/appadmin/quiz-review/chapters/[slug]/route";
 import { POST as beginPost } from "@/app/api/v1/practice/attempts/route";
 import { GET as practiceNextGet } from "@/app/api/v1/practice/next/route";
 import { POST as answerPost } from "@/app/api/v1/practice/answer/route";
@@ -170,9 +178,11 @@ describe("the serving rules, pure", () => {
     expect(isServed({ ...up, needsFigure: true })).toBe(false);
     expect(isServed({ ...up, needsFigure: true, imageKey: "a-file" })).toBe(true);
     expect(isHeldForFigure({ ...up, needsFigure: true })).toBe(true);
-    expect(stateOfRow({ takenDownAt: null, needsFigure: false, imageKey: null })).toBe("SERVED");
-    expect(stateOfRow({ takenDownAt: new Date(), needsFigure: true, imageKey: null })).toBe("DOWN");
-    expect(stateOfRow({ takenDownAt: null, needsFigure: true, imageKey: null })).toBe("HELD");
+    expect(stateOfRow({ generated: true, takenDownAt: null, needsFigure: false, imageKey: null })).toBe("SERVED");
+    expect(stateOfRow({ generated: true, takenDownAt: new Date(), needsFigure: true, imageKey: null })).toBe("DOWN");
+    expect(stateOfRow({ generated: true, takenDownAt: null, needsFigure: true, imageKey: null })).toBe("HELD");
+    // A curated row is never held: the serving rule holds one for its figure only when the generator asked for it.
+    expect(stateOfRow({ generated: false, takenDownAt: null, needsFigure: true, imageKey: null })).toBe("SERVED");
     // The one filter: no stamp column in it any more.
     expect(JSON.stringify(SERVED_QUESTION)).not.toContain("reviewedAt");
   });
@@ -215,8 +225,10 @@ describe("the doors by role", () => {
       const list = await listGet(get(`${P}?topic=${topicId}`));
       expect(list.status, who).toBe(200);
       const body = quizReviewListSchema.parse(await list.json());
-      expect(body.filtered).toBe(4);
-      expect(body.groups.find((g) => g.topicId === topicId)).toMatchObject({ levels: [4, 0, 0, 0, 0, 0], held: 1, down: 0 });
+      // One bank: the chapter's authored row and its four generated ones (one-bank, 7 Nov 2026).
+      expect(body.filtered).toBe(5);
+      expect(body.split.filtered).toEqual({ curated: 1, generated: 4 });
+      expect(body.groups.find((g) => g.topicId === topicId)).toMatchObject({ levels: [5, 0, 0, 0, 0, 0], total: 5, curated: 1, generated: 4, held: 1, down: 0 });
       const held = quizReviewListSchema.parse(await (await listGet(get(`${P}?topic=${topicId}&state=HELD`))).json());
       expect(held.filtered).toBe(1);
       const next = await nextGet(get(`${P}/next?topic=${topicId}`));
@@ -230,7 +242,12 @@ describe("the doors by role", () => {
       expect(item.distractorReasons[2]).toBe("confuses the sign");
       expect(item.translations.hi?.stem).toContain("कितना");
       expect(item.translations.mr).toBeNull();
-      expect((await oneGet(get(`${P}/${q.authored}`), params(q.authored))).status, "an authored question is not the desk's").toBe(404);
+      const curatedOne = await oneGet(get(`${P}/${q.authored}`), params(q.authored));
+      expect(curatedOne.status, "a curated question is the desk's too, read-only (one-bank, 7 Nov 2026)").toBe(200);
+      expect(quizReviewNextSchema.parse(await curatedOne.json()).item).toMatchObject({ kind: "CURATED", file: `content/quiz/${SLUG}.json`, state: "SERVED", topic: { slug: SLUG } });
+      expect(item.kind).toBe("GENERATED");
+      expect(item.file).toBeNull();
+      expect((await oneGet(get(`${P}/zz-no-such`), params("zz-no-such"))).status).toBe(404);
       expect((await takeDownPost(post(`${P}/zz-no-such/take-down`, { reason: "WRONG_KEY" }), params("zz-no-such"))).status).toBe(404);
       expect((await putBackPost(post(`${P}/zz-no-such/put-back`), params("zz-no-such"))).status).toBe(404);
     }
@@ -384,6 +401,118 @@ describe("published without review, taken down and put back", () => {
     for (const row of accepted) expect(isServed(row), row.topic.slug).toBe(true);
     const force = accepted.filter((r) => r.topic.slug === "balbharati-science-8-force-and-pressure");
     if (force.length) expect(force.every((r) => isServed(r))).toBe(true);
+  });
+});
+
+describe("one bank on the desk: curated and generated together (7 Nov 2026)", () => {
+  it("the kind, the file a curated item is changed in, and the matrix's split, pure", () => {
+    expect(kindOf(false)).toBe("CURATED");
+    expect(kindOf(true)).toBe("GENERATED");
+    expect(curatedFileOf({ generated: false, source: "NCERT Class 7 Mathematics syllabus (topic coverage)" }, "maths-7-integers")).toBe("content/quiz/maths-7-integers.json");
+    // Written in the app: no file holds it, and the importer never orphans it (bank-source.ts).
+    expect(curatedFileOf({ generated: false, source: CONTENT_TEAM_SOURCE }, "maths-7-integers")).toBeNull();
+    expect(curatedFileOf({ generated: false, source: TEACHER_CONTRIBUTION_SOURCE }, "maths-7-integers")).toBeNull();
+    expect(curatedFileOf({ generated: true, source: "generated against ZZ" }, "maths-7-integers")).toBeNull();
+    // The matrix: a bare number is all curated, an object carries the generator's share; the cell adds them up.
+    const topics = [
+      { id: "a", board: "NCERT", grade: 7, subject: "MATHS", chapter: "Chapter 1 — ZZ Integers", audience: "SCHOOL", streams: [] },
+      { id: "b", board: "NCERT", grade: 7, subject: "MATHS", chapter: "Chapter 2 — ZZ Fractions", audience: "SCHOOL", streams: [] },
+    ];
+    const m = buildMatrix(topics, new Map<string, TopicServed>([["a", 30], ["b", { served: 128, generated: 41 }]]), 100);
+    const seven = m.rows.find((r) => r.grade === 7)!;
+    expect(seven.cells.find((c) => c.subject === "MATHS")).toEqual({ subject: "MATHS", served: 158, curated: 117, generated: 41, chapters: 2, atTarget: 1 });
+    expect(seven).toMatchObject({ served: 158, curated: 117, generated: 41, chapters: 2, atTarget: 1 });
+  });
+
+  it("the tiles count every question with the split, the chapter's group both kinds, and the board filter reads a curated row's chapter", async () => {
+    const list = await listQueue(curator(), { topic: topicId });
+    // The chapter: the authored row and four generated ones, one of them held for its figure.
+    expect(list.filtered).toBe(5);
+    expect(list.split.filtered).toEqual({ curated: 1, generated: 4 });
+    expect(list.groups.find((g) => g.topicId === topicId)).toMatchObject({ total: 5, curated: 1, generated: 4, levels: [5, 0, 0, 0, 0, 0], held: 1, down: 0 });
+    expect((await listQueue(curator(), { topic: topicId, state: "SERVED" })).split.filtered).toEqual({ curated: 1, generated: 3 });
+    expect((await listQueue(curator(), { topic: topicId, state: "HELD" })).split.filtered).toEqual({ curated: 0, generated: 1 });
+    // The whole bank: in the bank = curated + generated = served + taken down + held, and every split adds up.
+    expect(list.total).toBe(list.curated + list.generated);
+    expect(list.total).toBe(list.served + list.takenDown + list.held);
+    expect(list.curated).toBeGreaterThanOrEqual(1);
+    expect(list.generated).toBeGreaterThanOrEqual(5);
+    expect(list.split.served.curated + list.split.served.generated).toBe(list.served);
+    expect(list.split.takenDown.curated + list.split.takenDown.generated).toBe(list.takenDown);
+    expect(list.split.held).toEqual({ curated: 0, generated: list.held });
+    // A board filter: a generated item by its own board, a curated one by its chapter's (the ZZ chapter has none).
+    const ncert = await listQueue(curator(), { topic: topicId, board: "NCERT" });
+    expect(ncert.split.filtered).toEqual({ curated: 0, generated: 4 });
+    await signInAs("OPERATOR");
+    const body = quizReviewListSchema.parse(await (await listGet(get(`${P}?topic=${topicId}`))).json());
+    expect(body.split.filtered).toEqual({ curated: 1, generated: 4 });
+    expect(body.total).toBe(body.curated + body.generated);
+  });
+
+  it("the matrix and the chapters carry the generated share, and a chapter's page lists both kinds with the badge", async () => {
+    const chapters = await bankChapters(curator(), { grade: 7, subject: "MATHS" });
+    const row = chapters.groups.flatMap((g) => g.chapters).find((c) => c.slug === SLUG)!;
+    // Served: the authored row, g1, g2 (put back) and g3 (edited); g4 is held for its figure.
+    expect(row).toMatchObject({ total: 4, curated: 1, generated: 3, held: 1, down: 0, maker: "MIXED" });
+    const group = chapters.groups.find((g) => g.chapters.some((c) => c.slug === SLUG))!;
+    expect(group.generated).toBeGreaterThanOrEqual(3);
+    expect(group.served).toBeGreaterThanOrEqual(group.generated + 1);
+    const m = await bankMatrix(curator(), {});
+    const cell = m.rows.find((r) => r.grade === 7)!.cells.find((c) => c.subject === "MATHS")!;
+    expect(cell.served).toBe(cell.curated + cell.generated);
+    expect(cell.curated).toBeGreaterThanOrEqual(1);
+    expect(cell.generated).toBeGreaterThanOrEqual(3);
+    const seven = m.rows.find((r) => r.grade === 7)!;
+    expect(seven.served).toBe(seven.curated + seven.generated);
+    const page = await bankChapter(curator(), SLUG, {});
+    expect(page.counts).toEqual({ served: 4, down: 0, held: 1, curated: 1, generated: 4 });
+    expect(page.items.map((i) => `${i.id}:${i.kind}`).sort()).toEqual([`${q.authored}:CURATED`, `${q.g1}:GENERATED`, `${q.g2}:GENERATED`, `${q.g3}:GENERATED`].sort());
+    await signInAs("CURATOR");
+    const door = quizBankChapterSchema.parse(await (await chapterGet(get(`${P}/chapters/${SLUG}`), { params: Promise.resolve({ slug: SLUG }) })).json());
+    expect(door.items.find((i) => i.id === q.authored)).toMatchObject({ kind: "CURATED", generated: false });
+    expect(door.counts.curated).toBe(1);
+  });
+
+  it("take down and put back work on a curated item as on a generated one; an edit on it is refused 403 with the code; Next walks the generated alone", async () => {
+    await signInAs("OPERATOR");
+    const res = await takeDownPost(post(`${P}/${q.authored}/take-down`, { reason: "OFF_SYLLABUS" }), params(q.authored));
+    expect(res.status).toBe(200);
+    expect(quizBankStandingSchema.parse(await res.json())).toMatchObject({ state: "DOWN", takenDownReason: "OFF_SYLLABUS" });
+    expect((await sitting(SLUG, "en")).some((s) => s.id === q.authored), "not served to a pupil").toBe(false);
+    expect((await listTopics(pupilCtx, { subject: "MATHS", classLevel: 7 })).find((t) => t.slug === SLUG)?.questionCount).toBe(3);
+    const item = await getItem(curator(), q.authored);
+    expect(item).toMatchObject({ kind: "CURATED", state: "DOWN", takenDownReason: "OFF_SYLLABUS", takenDownBy: "ZZ RQ Operator", file: `content/quiz/${SLUG}.json`, solverAnswers: [], distractorReasons: [], model: null });
+    expect(item.topic.slug).toBe(SLUG);
+    expect((await listQueue(curator(), { topic: topicId })).split.takenDown).toEqual({ curated: 1, generated: 0 });
+    expect((await bankChapter(curator(), SLUG, { state: "DOWN" })).items.map((i) => i.kind)).toEqual(["CURATED"]);
+    // Edit is the generated item's: a curated one is refused 403 with the coded sentence, and nothing changes.
+    await signInAs("CURATOR");
+    const body = { stem: "ZZ RQ a curated stem rewritten here", choices: ["4", "5"], answerIndex: 0, solution: "ZZ: two and two, rewritten.", difficulty: 1 };
+    const edit = await editPost(post(`${P}/${q.authored}/edit`, body), params(q.authored));
+    expect(edit.status).toBe(403);
+    const refusal = (await edit.json()) as { code: string; error: string };
+    expect(refusal.code).toBe("FORBIDDEN");
+    expect(refusal.error).toContain("content/quiz");
+    expect(await editItem(curator(), q.authored, body)).toEqual({ ok: false, errorKey: "quizReview.refuseEditCurated" });
+    expect(await db.quizQuestion.findUniqueOrThrow({ where: { id: q.authored }, select: { stem: true, generated: true } })).toEqual({ stem: `ZZ RQ ${STAMP}: authored, what is 2+2?`, generated: false });
+    expect(await db.quizReviewStamp.count({ where: { questionId: q.authored, action: "EDIT" } })).toBe(0);
+    // Put back: served again, the provenance untouched, the two stamps and the two audit rows on the row.
+    const back = await putBackPost(post(`${P}/${q.authored}/put-back`), params(q.authored));
+    expect(back.status).toBe(200);
+    expect(quizBankStandingSchema.parse(await back.json())).toMatchObject({ state: "SERVED", takenDownAt: null });
+    expect((await sitting(SLUG, "en")).some((s) => s.id === q.authored)).toBe(true);
+    expect((await db.quizReviewStamp.findMany({ where: { questionId: q.authored }, orderBy: { at: "asc" }, select: { action: true, role: true } })).map((r) => `${r.action}/${r.role}`)).toEqual(["TAKE_DOWN/OPERATOR", "PUT_BACK/APP_ADMIN"]);
+    expect(await db.auditLog.count({ where: { targetId: q.authored, action: { in: ["appadmin.quizBank.takeDown", "appadmin.quizBank.putBack"] } } })).toBe(2);
+    expect((await db.quizQuestion.findUniqueOrThrow({ where: { id: q.authored }, select: { generated: true } })).generated).toBe(false);
+    // Next walks the generated items alone: the curated row is never handed to the desk.
+    const seen: string[] = [];
+    let walk = await nextItem(curator(), { topic: topicId });
+    while (walk.item && seen.length < 10) {
+      expect(walk.item.kind).toBe("GENERATED");
+      seen.push(walk.item.id);
+      walk = await nextItem(curator(), { topic: topicId, skip: seen.join(",") });
+    }
+    expect(seen.sort()).toEqual([q.g1, q.g2, q.g3, q.g4].sort());
   });
 });
 

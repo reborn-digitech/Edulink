@@ -5,6 +5,10 @@ import { notify, notifyGuardians } from "./notify";
 import { audit } from "./audit";
 import type { ActiveContext } from "./session";
 import { fitsAnyTenant, readerTenants } from "./competition-audience"; // college-content (12 Oct 2026)
+// competitions on the calendar (decision 0007, 6 Nov 2026)
+import { COMPETITION_INTERNAL_BOARDS, type CompetitionBoard, type CompetitionInternalBoard, type PlanCode } from "@edulink/contracts";
+import { assertChildMayUse, assertFeatureOn, featureOn, lockOf } from "./platform-features";
+import { syncCalendarRow } from "./competition-events";
 
 /**
  * The competitions marketplace.
@@ -30,6 +34,14 @@ import { fitsAnyTenant, readerTenants } from "./competition-audience"; // colleg
  * for it, and it counts for nothing until a guardian says yes. `enteredCount`
  * and every "who is going" list therefore ask for consent, not for existence —
  * an entry that skipped the gate must never be able to pass for a real one.
+ *
+ * SINCE DECISION 0007 (6 November 2026) a school's own competition is a CALENDAR EVENT (competition-events.ts
+ * makes the Competition and its Holiday row together) and the family enrols from the agenda: a pupil for
+ * themself, as before, or a GUARDIAN for their own child, which counts as the guardian's consent. The office's
+ * `enrolmentOpen` switch stands above the dates, and the office may choose an INTERNAL BOARD (`internalBoard`:
+ * OFF, STAFF or SCHOOL) of the school's own entries — read under the tenant fence and the person binding, never
+ * across schools. The platform's marketplace (organizerSchoolId null) is behind the COMPETITIONS feature switch
+ * and in the STUDENT plan; a school's own competitions are never behind either.
  */
 
 export type CompetitionSummary = {
@@ -48,6 +60,10 @@ export type CompetitionSummary = {
   endsAt: Date | null;
   /** Null when this caller has no entry. Students and guardians only. */
   entry: EntryState | null;
+  /** decision 0007: the office's switches on a school's own competition, and its calendar row. */
+  enrolmentOpen: boolean;
+  internalBoard: CompetitionInternalBoard;
+  calendarEntryId: string | null;
   /**
    * competitions-crawler (12 Oct 2026): where a competition suggested from the web was read, and when the
    * crawler last checked its page; null for one posted by hand. It is shown, never a reason to treat the
@@ -96,6 +112,53 @@ export function registrationOpen(
 }
 
 /**
+ * Whether anyone may enrol now: the office's switch (decision 0007; off, the event is for information) AND the
+ * dates. A platform competition has the switch on, so for it this is `registrationOpen` as before.
+ */
+export function enrolmentAllowed(
+  competition: { enrolmentOpen: boolean; registrationOpensAt: Date | null; registrationClosesAt: Date | null },
+  now: Date = new Date(),
+): boolean {
+  return competition.enrolmentOpen && registrationOpen(competition, now);
+}
+
+/** The office's board setting as the row holds it, read as the coded list. */
+export function boardSettingOf(value: string): CompetitionInternalBoard {
+  return (COMPETITION_INTERNAL_BOARDS as readonly string[]).includes(value) ? (value as CompetitionInternalBoard) : "OFF";
+}
+
+/** Whether a pupil's class is inside the competition's band; a band left open, or a grade not known, fits. */
+export function gradeFits(competition: { gradeLow: string | null; gradeHigh: string | null }, gradeLevel: string | null | undefined): boolean {
+  if (!competition.gradeLow && !competition.gradeHigh) return true;
+  const grade = Number(gradeLevel ?? NaN);
+  if (!Number.isFinite(grade)) return true;
+  const low = competition.gradeLow ? Number(competition.gradeLow) : NaN;
+  const high = competition.gradeHigh ? Number(competition.gradeHigh) : NaN;
+  if (Number.isFinite(low) && grade < low) return false;
+  if (Number.isFinite(high) && grade > high) return false;
+  return true;
+}
+
+export type EnrolState = "OPEN" | "ENROLLED" | "CONSENT_WAITING" | "CLOSED";
+
+/**
+ * What the agenda's row offers (decision 0007): ENROLLED or CONSENT_WAITING by the pupil's entry, else OPEN while
+ * the office's switch, the dates and the class band allow, else CLOSED.
+ */
+export function enrolStateFor(
+  competition: { enrolmentOpen: boolean; registrationOpensAt: Date | null; registrationClosesAt: Date | null; gradeLow: string | null; gradeHigh: string | null; requiresParentConsent: boolean; status: string },
+  entry: { parentConsentAt: Date | null } | null,
+  gradeLevel: string | null | undefined,
+  now: Date = new Date(),
+): EnrolState {
+  if (entry) return competition.requiresParentConsent && entry.parentConsentAt === null ? "CONSENT_WAITING" : "ENROLLED";
+  if (competition.status !== "PUBLISHED") return "CLOSED";
+  if (!enrolmentAllowed(competition, now)) return "CLOSED";
+  if (!gradeFits(competition, gradeLevel)) return "CLOSED";
+  return "OPEN";
+}
+
+/**
  * Which schools' OWN competitions this session may see.
  *
  * The visibility rule of the whole surface: a school-posted competition
@@ -123,8 +186,14 @@ async function visibleSchoolIds(session: ActiveContext): Promise<string[]> {
 export type CompetitionSections = {
   /** Posted by this school's admins — its own students only. */
   school: CompetitionSummary[];
-  /** Posted by the platform (operator or app admin) — every school. */
+  /** Posted by the platform (operator or app admin) — every school. Empty while the COMPETITIONS feature is off. */
   platform: CompetitionSummary[];
+  /**
+   * decision 0007: the plan this reader lacks for the platform's competitions while the feature is on (a pupil
+   * without the STUDENT plan), or null. The page draws the plan card where the platform section would be; the
+   * school's own competitions above it are never locked.
+   */
+  platformLock: PlanCode | null;
 };
 
 /**
@@ -137,15 +206,18 @@ export async function listCompetitions(
   opts: { openOnly?: boolean } = {},
 ): Promise<CompetitionSections> {
   const schoolIds = await visibleSchoolIds(session);
+  // decision 0007: the marketplace is behind the platform's COMPETITIONS switch; the school's own never are.
+  const marketplaceOn = await featureOn("COMPETITIONS");
+  const platformLock = marketplaceOn ? await lockOf("COMPETITIONS", session) : null;
 
   const competitions = await db.competition.findMany({
     where: {
       status: "PUBLISHED",
-      OR: [{ organizerSchoolId: null }, { organizerSchoolId: { in: schoolIds } }],
+      OR: [...(marketplaceOn && platformLock === null ? [{ organizerSchoolId: null }] : []), { organizerSchoolId: { in: schoolIds } }],
     },
     orderBy: [{ registrationClosesAt: "asc" }, { createdAt: "desc" }],
     take: 200,
-    include: { crawl: CRAWL_SOURCE },
+    include: { crawl: CRAWL_SOURCE, calendarEntry: { select: { id: true } } },
   });
 
   const now = new Date();
@@ -174,6 +246,9 @@ export async function listCompetitions(
     startsAt: c.startsAt,
     endsAt: c.endsAt,
     entry: entries.get(c.id) ?? null,
+    enrolmentOpen: c.enrolmentOpen,
+    internalBoard: boardSettingOf(c.internalBoard),
+    calendarEntryId: c.calendarEntry?.id ?? null,
     source: crawlSourceOf(c.crawl),
     // college-content (12 Oct 2026)
     audience: c.audience,
@@ -183,6 +258,7 @@ export async function listCompetitions(
   return {
     school: summaries.filter((c) => c.organizerSchoolId !== null),
     platform: summaries.filter((c) => c.organizerSchoolId === null),
+    platformLock,
   };
 }
 
@@ -195,9 +271,13 @@ export async function listCompetitions(
  * see their draft to publish it.
  */
 export async function getCompetition(session: ActiveContext, competitionId: string) {
-  const found = await db.competition.findUnique({ where: { id: competitionId }, include: { crawl: CRAWL_SOURCE } });
+  const found = await db.competition.findUnique({ where: { id: competitionId }, include: { crawl: CRAWL_SOURCE, calendarEntry: { select: { id: true } } } });
   if (!found) throw new AccessError("access.competitionNotFound", "NOT_FOUND");
-  const { crawl, ...competition } = found;
+  const { crawl, calendarEntry, ...competition } = found;
+
+  // decision 0007: a platform competition is not here while the marketplace is off (FeatureOffError, NOT_FOUND), and
+  // meets the plan (PlanRequiredError) for a role whose plan carries it; the school's own are never asked.
+  if (competition.organizerSchoolId === null) await assertFeatureOn("COMPETITIONS", session);
 
   const isOrganiser =
     session.role === "ADMIN" &&
@@ -226,9 +306,12 @@ export async function getCompetition(session: ActiveContext, competitionId: stri
 
   return {
     ...competition,
+    internalBoard: boardSettingOf(competition.internalBoard),
+    calendarEntryId: calendarEntry?.id ?? null,
     source: crawlSourceOf(crawl),
     isOrganiser,
-    open: registrationOpen(competition),
+    /** The office's switch and the dates together (decision 0007). */
+    open: enrolmentAllowed(competition),
     acceptingWork: submissionOpen(competition),
     entry: entries.get(competition.id) ?? null,
     /** Only ever this school's, because CompetitionEntry is policied. */
@@ -303,22 +386,45 @@ async function ownStudentMembershipIds(session: ActiveContext): Promise<string[]
 export type EnterResult = { entryId: string; awaitingConsent: boolean };
 
 /**
- * A child asks to enter.
+ * A child asks to enter — or, since decision 0007, a guardian enrols their own child.
  *
  * Deliberately idempotent: the unique constraint on
  * (competitionId, studentMembershipId) already makes a second press impossible,
  * so this returns the existing entry rather than an error. A child pressing a
  * button twice because the first tap felt slow should not be told off.
  *
- * The entry is created WITHOUT consent even when a guardian will obviously give
- * it. Nothing here may set `parentConsentAt` — only `giveConsent` does, and only
- * for somebody proved to be that child's guardian.
+ * A PUPIL'S entry is created WITHOUT consent even when a guardian will obviously
+ * give it. Nothing on the pupil's path may set `parentConsentAt` — only a
+ * guardian does, through `giveConsent` or by enrolling the child themself here,
+ * and only once proved to be that child's guardian (`assertGuardianAccess`). A
+ * GUARDIAN'S enrolment IS the consent: the entry is made with `parentConsentAt`
+ * and `parentConsentBy` stamped, and a pupil's entry still waiting is stamped
+ * rather than refused. A pupil's body naming a child is ignored: they enrol
+ * themself and nobody else.
+ *
+ * The office's `enrolmentOpen` switch stands above the dates (enrolmentAllowed);
+ * the platform's competitions are behind the COMPETITIONS feature and, for a
+ * pupil, the STUDENT plan — a guardian's own role needs no plan, but the CHILD
+ * must hold it (assertChildMayUse), as for a child's practice.
  */
 export async function enterCompetition(
   session: ActiveContext,
   competitionId: string,
+  opts: { studentMembershipId?: string | null } = {},
 ): Promise<EnterResult> {
-  if (session.role !== "STUDENT" || !session.membershipId || !session.schoolId) {
+  let who: { studentMembershipId: string; schoolId: string; gradeLevel: string | null; byGuardian: boolean };
+  if (session.role === "STUDENT" && session.membershipId && session.schoolId) {
+    const me = await db.membership.findUnique({
+      where: { id: session.membershipId },
+      select: { gradeLevel: true, enrollments: { where: { status: "ACTIVE" }, select: { class: { select: { gradeLevel: true } } }, take: 1 } },
+    });
+    who = { studentMembershipId: session.membershipId, schoolId: session.schoolId, gradeLevel: me?.gradeLevel ?? me?.enrollments[0]?.class.gradeLevel ?? null, byGuardian: false };
+  } else if (session.role === "PARENT") {
+    if (!opts.studentMembershipId) throw new AccessError("competitions.chooseAChild");
+    // Throws NOT_FOUND when this is not their child: a route param cannot widen a guardian past their own.
+    const link = await assertGuardianAccess(session.user.id, opts.studentMembershipId);
+    who = { studentMembershipId: link.studentMembershipId, schoolId: link.student.schoolId, gradeLevel: link.student.gradeLevel, byGuardian: true };
+  } else {
     throw new AccessError("access.onlyAStudentCanEnterACompetition");
   }
 
@@ -329,66 +435,77 @@ export async function enterCompetition(
     where: {
       id: competitionId,
       status: "PUBLISHED",
-      OR: [{ organizerSchoolId: null }, { organizerSchoolId: session.schoolId }],
+      OR: [{ organizerSchoolId: null }, { organizerSchoolId: who.schoolId }],
     },
   });
   if (!competition) throw new AccessError("access.competitionNotFound", "NOT_FOUND");
 
-  if (!registrationOpen(competition)) {
+  // decision 0007: the marketplace's switch and the pupil's plan, for a platform competition alone.
+  if (competition.organizerSchoolId === null) {
+    if (who.byGuardian) await assertChildMayUse("COMPETITIONS", who.studentMembershipId);
+    else await assertFeatureOn("COMPETITIONS", session);
+  }
+
+  if (!enrolmentAllowed(competition)) {
     throw new AccessError("access.entriesForThisCompetitionHaveClosed");
   }
 
   // The grade band, when the organiser set one and the pupil's grade is
   // known: a Class 3 child cannot enter a Classes 9–12 olympiad.
-  if (competition.gradeLow || competition.gradeHigh) {
-    const me = await db.membership.findUnique({
-      where: { id: session.membershipId },
-      select: {
-        gradeLevel: true,
-        enrollments: { where: { status: "ACTIVE" }, select: { class: { select: { gradeLevel: true } } }, take: 1 },
-      },
-    });
-    const grade = Number(me?.gradeLevel ?? me?.enrollments[0]?.class.gradeLevel ?? NaN);
-    const low = competition.gradeLow ? Number(competition.gradeLow) : NaN;
-    const high = competition.gradeHigh ? Number(competition.gradeHigh) : NaN;
-    if (Number.isFinite(grade) && ((Number.isFinite(low) && grade < low) || (Number.isFinite(high) && grade > high))) {
-      throw new AccessError("access.notForYourGrade");
-    }
-  }
+  if (!gradeFits(competition, who.gradeLevel)) throw new AccessError("access.notForYourGrade");
 
+  const now = new Date();
   const existing = await db.competitionEntry.findUnique({
-    where: {
-      competitionId_studentMembershipId: {
-        competitionId,
-        studentMembershipId: session.membershipId,
-      },
-    },
+    where: { competitionId_studentMembershipId: { competitionId, studentMembershipId: who.studentMembershipId } },
   });
   if (existing) {
+    if (who.byGuardian && existing.parentConsentAt === null) {
+      // The child asked first; the guardian's enrolment is their yes.
+      await giveConsent(session, existing.id);
+      return { entryId: existing.id, awaitingConsent: false };
+    }
     return { entryId: existing.id, awaitingConsent: existing.parentConsentAt === null };
   }
 
   const entry = await db.competitionEntry.create({
     data: {
       competitionId,
-      studentMembershipId: session.membershipId,
-      schoolId: session.schoolId,
+      studentMembershipId: who.studentMembershipId,
+      schoolId: who.schoolId,
       status: "REGISTERED",
+      ...(who.byGuardian ? { parentConsentAt: now, parentConsentBy: session.user.id } : {}),
     },
   });
 
   await audit({
-    schoolId: session.schoolId,
+    schoolId: who.schoolId,
     actorUserId: session.user.id,
     action: "competition.enter",
-    meta: { competitionId, entryId: entry.id, title: competition.title },
+    meta: { competitionId, entryId: entry.id, title: competition.title, by: who.byGuardian ? "PARENT" : "STUDENT", studentMembershipId: who.studentMembershipId },
   });
+
+  if (who.byGuardian) {
+    // The child learns they are in, as they do when a guardian says yes to their own ask.
+    const student = await db.membership.findUnique({ where: { id: who.studentMembershipId }, select: { userId: true } });
+    if (student) {
+      await notify({
+        userId: student.userId,
+        schoolId: who.schoolId,
+        kind: "COMPETITION",
+        titleKey: "notifTitle.youAreEntered",
+        titleVars: { competition: competition.title },
+        bodyKey: "notifBody.grownUpEnrolledYou",
+        url: `/competitions/${competitionId}`,
+      });
+    }
+    return { entryId: entry.id, awaitingConsent: false };
+  }
 
   if (competition.requiresParentConsent) {
     // The one link that proves this moved: without it a child presses "Enter"
     // and nothing whatsoever happens anywhere a grown-up can see.
-    await notifyGuardians(session.membershipId, (childName) => ({
-      schoolId: session.schoolId,
+    await notifyGuardians(who.studentMembershipId, (childName) => ({
+      schoolId: who.schoolId,
       kind: "COMPETITION",
       titleKey: "notifTitle.childWantsToEnter",
       titleVars: { name: childName, competition: competition.title },
@@ -862,6 +979,9 @@ export async function setCompetitionStatus(
 
   if (updated.count === 0) throw new AccessError("access.competitionNotFound", "NOT_FOUND");
 
+  // decision 0007: a published school competition with a start date is on the calendar; a withdrawn one is not.
+  await syncCalendarRow(competitionId);
+
   await audit({
     schoolId: session.schoolId,
     actorUserId: session.user.id,
@@ -895,16 +1015,18 @@ export async function pendingConsents(session: ActiveContext) {
   const rows = await db.competitionEntry.findMany({
     where: { studentMembershipId: { in: membershipIds }, parentConsentAt: null },
     include: {
-      competition: { select: { id: true, title: true, organizerName: true, registrationClosesAt: true, status: true } },
+      competition: { select: { id: true, title: true, organizerName: true, registrationClosesAt: true, status: true, organizerSchoolId: true } },
       student: { include: { user: { select: { name: true, preferredName: true } } } },
     },
     orderBy: { createdAt: "asc" },
   });
 
   // A competition pulled after a child asked should not sit on a parent's home
-  // page forever asking them to approve something that no longer exists.
+  // page forever asking them to approve something that no longer exists; nor a
+  // platform one while the marketplace is off (decision 0007).
+  const marketplaceOn = await featureOn("COMPETITIONS");
   return rows
-    .filter((r) => r.competition.status === "PUBLISHED")
+    .filter((r) => r.competition.status === "PUBLISHED" && (marketplaceOn || r.competition.organizerSchoolId !== null))
     .map((r) => ({
       entryId: r.id,
       competitionId: r.competition.id,
@@ -1121,4 +1243,112 @@ export async function setLeaderboard(
     action: enabled ? "competition.leaderboard.on" : "competition.leaderboard.off",
     meta: { competitionId },
   });
+}
+
+/* -------------------------------------------------------------------------- */
+/* The internal board (decision 0007, 6 November 2026)                        */
+/* -------------------------------------------------------------------------- */
+
+/**
+ * THE SCHOOL'S OWN BOARD, OPTIONAL, AND NEVER ACROSS SCHOOLS.
+ *
+ * The office chooses it when the calendar event is made (`Competition.internalBoard`): OFF, STAFF or SCHOOL. It
+ * is built from `CompetitionEntry`, which is the ENTRANT's school's and policied — so whatever the setting, the
+ * rows can only ever be this school's own pupils, and the cross-school rule (`CompetitionStanding`: schools
+ * ranked, children never named across schools) is untouched by it.
+ *
+ *   STAFF   the organising school's ADMIN, PRINCIPAL and TEACHER read every entry with a result: full name,
+ *           class, score, place (the entries page already showed them that much).
+ *   SCHOOL  staff as above; a PUPIL of that school and a GUARDIAN of a pupil there additionally read the top
+ *           places by FIRST NAME and class, and their own (the pupil's own, the guardian's child's) place.
+ *   OFF     nobody reads a board; the entries page stays the staff's.
+ *
+ * The person binding: a pupil's "mine" is their own membership; a guardian's is a child of theirs at the school
+ * (the one asked for, else the first with an entry), proved by the guardianship. Anyone outside the organising
+ * school, and every reader of a platform competition, gets the setting and no rows.
+ */
+const BOARD_TOP = 5;
+
+export async function internalBoard(
+  session: ActiveContext,
+  competitionId: string,
+  opts: { studentMembershipId?: string | null } = {},
+): Promise<CompetitionBoard> {
+  const competition = await db.competition.findUnique({
+    where: { id: competitionId },
+    select: { id: true, organizerSchoolId: true, status: true, internalBoard: true, requiresParentConsent: true },
+  });
+  if (!competition) throw new AccessError("access.competitionNotFound", "NOT_FOUND");
+  const setting = boardSettingOf(competition.internalBoard);
+  const none: CompetitionBoard = { setting, full: false, rows: [], mine: null };
+  if (setting === "OFF" || competition.organizerSchoolId === null || competition.status === "DRAFT") return none;
+  const schoolId = competition.organizerSchoolId;
+
+  // Who is asking, and which pupil is "mine".
+  let full = false;
+  let mineId: string | null = null;
+  if (session.role === "ADMIN" || session.role === "PRINCIPAL" || session.role === "TEACHER") {
+    if (session.schoolId !== schoolId) return none;
+    full = true;
+  } else if (session.role === "STUDENT") {
+    if (session.schoolId !== schoolId || !session.membershipId || setting !== "SCHOOL") return none;
+    mineId = session.membershipId;
+  } else if (session.role === "PARENT") {
+    if (setting !== "SCHOOL") return none;
+    const links = await db.guardianship.findMany({ where: { parentUserId: session.user.id, status: "ACTIVE", studentSchoolId: schoolId }, select: { studentMembershipId: true } });
+    const ids = links.map((l) => l.studentMembershipId);
+    if (ids.length === 0) return none;
+    if (opts.studentMembershipId && ids.includes(opts.studentMembershipId)) mineId = opts.studentMembershipId;
+    else {
+      const withEntry = await db.competitionEntry.findFirst({ where: { competitionId, studentMembershipId: { in: ids } }, select: { studentMembershipId: true } });
+      mineId = withEntry?.studentMembershipId ?? ids[0]!;
+    }
+  } else {
+    return none;
+  }
+
+  // The school's results, in board order. Scoped by the policy and by the organiser's school alike.
+  const rows = await db.competitionEntry.findMany({
+    where: {
+      competitionId,
+      schoolId,
+      OR: [{ rank: { not: null } }, { scoreMilli: { not: null } }],
+      ...(competition.requiresParentConsent ? { parentConsentAt: { not: null } } : {}),
+    },
+    select: {
+      studentMembershipId: true,
+      scoreMilli: true,
+      rank: true,
+      student: { select: { user: { select: { name: true, preferredName: true } }, enrollments: { where: { status: "ACTIVE" }, select: { class: { select: { name: true } } }, take: 1 } } },
+    },
+  });
+  rows.sort((a, b) => {
+    if (a.rank !== b.rank) {
+      if (a.rank === null) return 1;
+      if (b.rank === null) return -1;
+      return a.rank - b.rank;
+    }
+    if (a.scoreMilli !== b.scoreMilli) {
+      if (a.scoreMilli === null) return 1;
+      if (b.scoreMilli === null) return -1;
+      return b.scoreMilli - a.scoreMilli;
+    }
+    return (a.student.user.preferredName ?? a.student.user.name).localeCompare(b.student.user.preferredName ?? b.student.user.name);
+  });
+  const nameOf = (r: (typeof rows)[number]) => {
+    const whole = r.student.user.preferredName ?? r.student.user.name;
+    return full ? whole : (whole.trim().split(/\s+/)[0] ?? whole);
+  };
+  const shaped = rows.map((r, i) => ({
+    place: i + 1,
+    name: nameOf(r),
+    className: r.student.enrollments[0]?.class.name ?? null,
+    scoreMilli: r.scoreMilli,
+    rank: r.rank,
+    mine: r.studentMembershipId === mineId,
+  }));
+  if (full) return { setting, full: true, rows: shaped, mine: null };
+  const top = shaped.slice(0, BOARD_TOP);
+  const own = shaped.find((r) => r.mine) ?? null;
+  return { setting, full: false, rows: top, mine: own && !top.includes(own) ? own : null };
 }

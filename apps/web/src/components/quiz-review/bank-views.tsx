@@ -58,6 +58,11 @@ export function BankBoardSwitch({ base, current, t }: { base: string; current: P
   );
 }
 
+/** The generated share under a served figure (one bank, 7 Nov 2026): a cell, a row's total, a group, a chapter's row. */
+function GeneratedLine({ generated, t }: { generated: number; t: Translate }) {
+  return <span className="block text-[0.6875rem] leading-tight text-fg-muted">{t("bankDesk.cellGenerated", { generated })}</span>;
+}
+
 function Cell({ cell, href, title, t, chosen }: { cell: QuizBankMatrix["rows"][number]["cells"][number]; href: string; title: string; t: Translate; chosen: boolean }) {
   if (cell.chapters === 0) {
     return (
@@ -81,16 +86,17 @@ function Cell({ cell, href, title, t, chosen }: { cell: QuizBankMatrix["rows"][n
         )}
       >
         <span className="text-sm font-semibold text-fg">{cell.served}</span>
+        <GeneratedLine generated={cell.generated} t={t} />
         <span className="text-[0.6875rem] leading-tight text-fg-muted">{t("bankDesk.cellChapters", { atTarget: cell.atTarget, chapters: cell.chapters })}</span>
       </Link>
     </td>
   );
 }
 
-/** Classes by subjects: the served questions in each cell, and its chapters at the target; a cell opens its chapters. */
+/** Classes by subjects: the served questions in each cell with the generated share, and its chapters at the target; a cell opens its chapters. */
 export function BankMatrixCard({ matrix, base, current, t }: { matrix: QuizBankMatrix; base: string; current: Params; t: Translate }) {
-  const cellTitle = (subject: string, row: string, c: { served: number; chapters: number; atTarget: number }) =>
-    t("bankDesk.cellTitle", { subject: bankSubjectLabel(subject, t), row, served: c.served, chapters: c.chapters, atTarget: c.atTarget, target: matrix.target });
+  const cellTitle = (subject: string, row: string, c: { served: number; generated: number; chapters: number; atTarget: number }) =>
+    t("bankDesk.cellTitle", { subject: bankSubjectLabel(subject, t), row, served: c.served, generated: c.generated, chapters: c.chapters, atTarget: c.atTarget, target: matrix.target });
   const grade = current.grade ? Number(current.grade) : null;
   return (
     <Card>
@@ -136,6 +142,7 @@ export function BankMatrixCard({ matrix, base, current, t }: { matrix: QuizBankM
                     ))}
                     <td className="py-1 pl-2 text-right tabular-nums">
                       <span className="font-semibold">{r.served}</span>
+                      {r.chapters > 0 && <GeneratedLine generated={r.generated} t={t} />}
                       {r.chapters > 0 && <span className="block text-[0.6875rem] text-fg-muted">{t("bankDesk.cellChapters", { atTarget: r.atTarget, chapters: r.chapters })}</span>}
                     </td>
                   </tr>
@@ -176,7 +183,10 @@ export function BankMatrixCard({ matrix, base, current, t }: { matrix: QuizBankM
                         {r.cells.map((c) => (
                           <Cell key={c.subject} cell={c} t={t} title={cellTitle(c.subject, row, c)} chosen={grade === COLLEGE_CLASS_LEVEL && current.subject === c.subject} href={deskHref(base, current, { grade: COLLEGE_CLASS_LEVEL, subject: c.subject }, "#chapters")} />
                         ))}
-                        <td className="py-1 pl-2 text-right font-semibold tabular-nums">{r.served}</td>
+                        <td className="py-1 pl-2 text-right tabular-nums">
+                          <span className="font-semibold">{r.served}</span>
+                          {r.chapters > 0 && <GeneratedLine generated={r.generated} t={t} />}
+                        </td>
                       </tr>
                     );
                   })}
@@ -209,7 +219,9 @@ export function BankChapterGroups({ data, base, t }: { data: QuizBankChapters; b
           <section key={`${g.grade}|${g.subject}|${g.board ?? ""}`} aria-label={heading} className="space-y-2">
             <h3 className="flex flex-wrap items-baseline justify-between gap-2 text-sm font-semibold">
               <span>{heading}</span>
-              <span className="text-xs font-normal text-fg-muted">{t("bankDesk.groupServed", { served: g.served })}</span>
+              <span className="text-xs font-normal text-fg-muted">
+                {t("bankDesk.groupServed", { served: g.served })} · {t("bankDesk.cellGenerated", { generated: g.generated })}
+              </span>
             </h3>
             <TableScroll>
               <table className="w-full text-sm">
@@ -257,7 +269,10 @@ export function BankChapterGroups({ data, base, t }: { data: QuizBankChapters; b
                           {n || ""}
                         </td>
                       ))}
-                      <td className="py-2 pl-3 text-right font-semibold tabular-nums">{c.total}</td>
+                      <td className="py-2 pl-3 text-right tabular-nums">
+                        <span className="font-semibold">{c.total}</span>
+                        {c.total > 0 && <GeneratedLine generated={c.generated} t={t} />}
+                      </td>
                     </tr>
                   ))}
                 </tbody>

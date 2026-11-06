@@ -11,6 +11,7 @@ import {
 } from "@/lib/holidays";
 import { createAcademicYear, closeAcademicYear, reopenAcademicYear, academicYearName } from "@/lib/academic-year";
 import { createTerm, deleteTerm, finishTerm, reopenTerm } from "@/lib/terms";
+import { createCompetitionEvent, removeCompetitionEvent, updateCompetitionEvent, type CompetitionEventInput } from "@/lib/competition-events";
 
 /**
  * The school calendar and the academic year, from the admin's side.
@@ -47,6 +48,53 @@ function refresh() {
   // The register shows the closed-day banner, so it must not serve a cached
   // page that still thinks today is an ordinary Tuesday.
   revalidatePath("/teacher/attendance");
+}
+
+/* -------------------------------------------------------------------------- */
+/* A competition on the calendar (decision 0007, 6 November 2026)              */
+/* -------------------------------------------------------------------------- */
+
+/** The agenda and the competition pages show the event too. */
+function refreshCompetition(competitionId?: string) {
+  refresh();
+  revalidatePath("/student/agenda");
+  revalidatePath("/parent/agenda");
+  revalidatePath("/competitions");
+  if (competitionId) revalidatePath(`/competitions/${competitionId}`);
+}
+
+export async function addCompetitionEvent(input: CompetitionEventInput): Promise<ActionResult & { competitionId?: string }> {
+  try {
+    const ctx = await requireApiRole("ADMIN");
+    const made = await createCompetitionEvent(ctx, input);
+    refreshCompetition(made.competitionId);
+    return { ok: true, id: made.holidayId, competitionId: made.competitionId };
+  } catch (error) {
+    return failure(error);
+  }
+}
+
+export async function editCompetitionEvent(holidayId: string, input: CompetitionEventInput): Promise<ActionResult> {
+  try {
+    const ctx = await requireApiRole("ADMIN");
+    await updateCompetitionEvent(ctx, holidayId, input);
+    refreshCompetition();
+    return { ok: true };
+  } catch (error) {
+    return failure(error);
+  }
+}
+
+/** Off the calendar; the competition is deleted while nobody has entered, archived otherwise. */
+export async function removeCompetitionEventAction(holidayId: string): Promise<ActionResult & { competition?: "DELETED" | "ARCHIVED" }> {
+  try {
+    const ctx = await requireApiRole("ADMIN");
+    const competition = await removeCompetitionEvent(ctx, holidayId);
+    refreshCompetition();
+    return { ok: true, competition };
+  } catch (error) {
+    return failure(error);
+  }
 }
 
 export async function addCalendarEntry(input: {

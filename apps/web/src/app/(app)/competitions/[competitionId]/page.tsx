@@ -1,17 +1,22 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowSquareOutIcon, CalendarBlankIcon, SealCheckIcon, ShieldCheckIcon } from "@phosphor-icons/react/ssr";
+import { ArrowSquareOutIcon, CalendarBlankIcon, SealCheckIcon, ShieldCheckIcon, TrophyIcon } from "@phosphor-icons/react/ssr";
 import { formatDate } from "@/lib/dates";
 import { getT } from "@/lib/i18n/server";
 import { requireUser } from "@/lib/tenancy";
 import { AccessError } from "@/lib/tenancy";
-import { getCompetition, pendingConsents, leaderboard, ordinal } from "@/lib/competitions";
+import { PlanRequiredError } from "@/lib/access-error";
+import { getCompetition, pendingConsents, leaderboard, internalBoard, ordinal } from "@/lib/competitions";
+import { listContexts } from "@/lib/session";
+import { PlanCard } from "@/components/plan-card";
+import { formatMilli } from "@/lib/validation";
 import { Card, CardBody } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import {
   ConsentControls,
   EnterButton,
+  EnterChildButton,
   EntryStatus,
   OrganiserControls,
   ResultBadge,
@@ -31,22 +36,43 @@ function when(date: Date | null): string | null {
 
 export default async function CompetitionPage({
   params,
+  searchParams,
 }: {
   params: Promise<{ competitionId: string }>;
+  searchParams: Promise<{ child?: string }>;
 }) {
   const t = await getT();
   const session = await requireUser();
   const { competitionId } = await params;
+  const { child: childParam } = await searchParams;
 
   let competition;
   try {
     competition = await getCompetition(session, competitionId);
   } catch (error) {
+    // decision 0007: a platform competition a pupil lacks the plan for shows the plan card, not a 404.
+    if (error instanceof PlanRequiredError) {
+      return (
+        <div className="mx-auto max-w-2xl space-y-5">
+          <PlanCard plan={error.plan} feature={error.feature} />
+        </div>
+      );
+    }
     // NOT_FOUND for a draft as well as a missing row — a distinguishable error
     // would confirm the row exists, which is itself a disclosure.
     if (error instanceof AccessError) notFound();
     throw error;
   }
+
+  // decision 0007: the internal board (empty unless the office set one and this reader may see it), and, for a
+  // guardian, the children of theirs at the organising school who could be enrolled.
+  const board = await internalBoard(session, competition.id, { studentMembershipId: childParam ?? null });
+  const children =
+    session.role === "PARENT" && competition.organizerSchoolId
+      ? (await listContexts(session.user.id)).children.filter((c) => c.schoolId === competition.organizerSchoolId && !c.leftAt)
+      : [];
+  const selectedChild = children.find((c) => c.studentMembershipId === childParam) ?? null;
+  const parentChild = session.role === "PARENT" && childParam ? `?child=${childParam}` : "";
 
   const waiting = (await pendingConsents(session)).filter(
     (w) => w.competitionId === competition.id,
@@ -55,7 +81,7 @@ export default async function CompetitionPage({
   // Empty unless the organiser has switched the board on — and the policy on
   // CompetitionStanding refuses other schools' rows regardless, so this is the
   // second lock rather than the only one.
-  const board = await leaderboard(session, competition.id);
+  const standings = await leaderboard(session, competition.id);
 
   const closes = when(competition.registrationClosesAt);
   const starts = when(competition.startsAt);
@@ -66,7 +92,7 @@ export default async function CompetitionPage({
       <div className="space-y-2">
         <PageHeader
           title={competition.title}
-          back={{ href: "/competitions", label: t("competitions.title") }}
+          back={session.role === "PARENT" ? { href: `/parent/agenda${parentChild}`, label: t("agenda.title") } : session.role === "STUDENT" ? { href: "/student/agenda", label: t("agenda.title") } : { href: "/competitions", label: t("competitions.title") }}
           meta={
             <>
               {competition.verified && (
@@ -161,9 +187,28 @@ export default async function CompetitionPage({
                   rank={competition.entry.rank}
                 />
               </>
+            ) : competition.open && children.length > 0 ? (
+              /* decision 0007: a guardian enrols their own child, which is their consent. */
+              <div className="space-y-2">
+                <p className="text-sm text-fg-muted">{t("competitions.enrolChildIntro")}</p>
+                <div className="flex flex-wrap gap-2">
+                  {(selectedChild ? [selectedChild] : children).map((c) => (
+                    <EnterChildButton key={c.studentMembershipId} competitionId={competition.id} studentMembershipId={c.studentMembershipId} childName={c.name} title={competition.title} />
+                  ))}
+                </div>
+              </div>
             ) : (
-              <p className="text-sm text-fg-muted">{t("competitions.noChildAsked")}</p>
+              <p className="text-sm text-fg-muted">{competition.open ? t("competitions.noChildAsked") : t("competitions.entriesClosed")}</p>
             ))}
+
+          {competition.isOrganiser && competition.calendarEntryId && (
+            <Button asChild variant="secondary" size="sm">
+              <Link href="/admin/calendar">
+                <CalendarBlankIcon weight="bold" className="size-4" />
+                {t("competitions.onTheCalendar")}
+              </Link>
+            </Button>
+          )}
 
           {competition.isOrganiser && (
             <OrganiserControls
@@ -243,7 +288,37 @@ export default async function CompetitionPage({
         </Card>
       )}
 
-      {board.length > 0 && (
+      {board.setting !== "OFF" && (board.rows.length > 0 || board.mine) && (
+        /* decision 0007: the school's own board — staff every result by name; a pupil or a guardian the top places by first name and their own. */
+        <Card data-testid="internal-board" data-setting={board.setting}>
+          <CardBody>
+            <h2 className="inline-flex items-center gap-1.5 text-sm font-semibold">
+              <TrophyIcon weight="duotone" className="size-4" />
+              {t("competitions.internalBoard")}
+            </h2>
+            <p className="mt-0.5 text-xs leading-relaxed text-fg-muted">{board.full ? t("competitions.internalBoardStaff") : t("competitions.internalBoardSchool")}</p>
+            <ol className="mt-3 divide-y divide-border">
+              {[...board.rows, ...(board.mine ? [board.mine] : [])].map((row) => (
+                <li key={`${row.place}-${row.name}`} className={row.mine ? "flex items-baseline gap-3 rounded-[var(--radius-sm)] bg-accent-soft px-2 py-2.5" : "flex items-baseline gap-3 px-2 py-2.5"} data-mine={row.mine ? "yes" : undefined}>
+                  <span className="w-6 shrink-0 text-sm font-semibold tabular-nums text-fg-muted">{row.place}</span>
+                  <span className="min-w-0 flex-1">
+                    <span className="block truncate text-sm font-medium text-fg">
+                      {row.name}
+                      {row.className ? <span className="ml-1.5 text-xs font-normal text-fg-muted">{row.className}</span> : null}
+                      {row.mine && <span className="ml-1.5 text-xs font-normal text-accent-strong">{t("competitions.you")}</span>}
+                    </span>
+                    <span className="block text-xs text-fg-muted">
+                      {[row.rank !== null ? t("competitions.placeLabel", { n: ordinal(row.rank) }) : null, row.scoreMilli !== null ? t("competitions.pointsLabel", { n: formatMilli(row.scoreMilli) }) : null].filter(Boolean).join(" · ")}
+                    </span>
+                  </span>
+                </li>
+              ))}
+            </ol>
+          </CardBody>
+        </Card>
+      )}
+
+      {standings.length > 0 && (
         <Card>
           <CardBody>
             <h2 className="text-sm font-semibold">{t("competitions.schoolsDoing")}</h2>
@@ -258,7 +333,7 @@ export default async function CompetitionPage({
                 : t("competitions.rankedNotNamed")}
             </p>
             <ol className="mt-3 divide-y divide-border">
-              {board.map((row, index) => (
+              {standings.map((row, index) => (
                 <li
                   key={row.schoolId}
                   className={

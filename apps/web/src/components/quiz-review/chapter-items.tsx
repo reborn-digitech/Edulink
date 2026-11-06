@@ -15,19 +15,20 @@ import type { TranslationKey } from "@/lib/i18n/dictionary";
 import { editAction, itemAction, putBackAction, takeDownHereAction } from "@/app/appadmin/quiz-review/actions";
 import { ItemEditForm } from "./edit-form";
 
-/** An item as the page hands it over: the contract's, its position on the page and the "made" line already in words. */
-export type ChapterListItem = QuizBankChapterItem & { n: number; made: string };
+/** An item as the page hands it over: the contract's, its position on the page, the "made" line already in words, and a curated item's file (null: none holds it). */
+export type ChapterListItem = QuizBankChapterItem & { n: number; made: string; file: string | null };
 
 type Mode = { id: string; kind: "edit"; item: QuizReviewItem } | { id: string; kind: "takeDown" } | null;
 
 /**
- * A chapter's questions on the bank desk (the owner's ask of 20 October 2026): each with its level, the four options
- * with the key marked, the solution folded, the figure in the language read, a note where the language's words are not
- * the translation's, who made it, and — for a generated item — the desk's Edit (all three languages), Take down with a
- * coded reason and Put back, through the desk's own server actions (src/lib/quiz-review.ts is the one writer). An
- * authored item is changed in the bank editor, to which it links.
+ * A chapter's questions on the bank desk (the owner's ask of 20 October 2026): each with its kind, its level, the four
+ * options with the key marked, the solution folded, the figure in the language read, a note where the language's words
+ * are not the translation's, who made it, and the desk's presses through its own server actions (src/lib/quiz-review.ts
+ * is the one writer): Take down with a coded reason and Put back for either kind (one bank, 7 Nov 2026), Edit (all
+ * three languages) for a generated item alone. A curated item names the file its words are changed in and imported
+ * again; one written in the app names the folder and the chapter's slug and links to the bank editor instead.
  */
-export function ChapterItems({ items, topicId, bankEditor }: { items: ChapterListItem[]; topicId: string; bankEditor: boolean }) {
+export function ChapterItems({ items, topicId, slug, folder, bankEditor }: { items: ChapterListItem[]; topicId: string; slug: string; folder: string; bankEditor: boolean }) {
   const t = useT();
   const router = useRouter();
   const { toast } = useToast();
@@ -75,8 +76,8 @@ export function ChapterItems({ items, topicId, bankEditor }: { items: ChapterLis
                   <Badge tone="accent" size="sm">
                     {t("quizReview.levelOption", { level: item.difficulty })}
                   </Badge>
-                  <Badge tone={item.generated ? "info" : "outline"} size="sm">
-                    {t(item.generated ? "bankDesk.makerGENERATED" : "bankDesk.makerAUTHORED")}
+                  <Badge tone={item.kind === "GENERATED" ? "info" : "outline"} size="sm">
+                    {t(`quizReview.kind${item.kind}`)}
                   </Badge>
                   {item.state === "DOWN" && (
                     <Badge tone="danger" size="sm">
@@ -157,32 +158,39 @@ export function ChapterItems({ items, topicId, bankEditor }: { items: ChapterLis
                 )}
 
                 {!editing && !takingDown && (
-                  <div className="flex flex-wrap items-center gap-2">
-                    {item.generated ? (
-                      <>
+                  <div className="space-y-2">
+                    <div className="flex flex-wrap items-center gap-2">
+                      {item.kind === "GENERATED" && (
                         <Button size="sm" variant="secondary" onClick={() => openEdit(item.id)} disabled={pending}>
                           <PencilSimpleIcon aria-hidden="true" />
                           {t("quizReview.edit")}
                         </Button>
-                        {item.state === "DOWN" ? (
-                          <Button size="sm" onClick={() => run(() => putBackAction(item.id), "quizReview.putBackDone")} disabled={pending}>
-                            <ArrowArcLeftIcon aria-hidden="true" />
-                            {t("quizReview.putBack")}
-                          </Button>
+                      )}
+                      {item.state === "DOWN" ? (
+                        <Button size="sm" onClick={() => run(() => putBackAction(item.id), "quizReview.putBackDone")} disabled={pending}>
+                          <ArrowArcLeftIcon aria-hidden="true" />
+                          {t("quizReview.putBack")}
+                        </Button>
+                      ) : (
+                        <Button size="sm" variant="secondary" onClick={() => setMode({ id: item.id, kind: "takeDown" })} disabled={pending}>
+                          <ProhibitIcon aria-hidden="true" />
+                          {t("quizReview.takeDown")}
+                        </Button>
+                      )}
+                    </div>
+                    {item.kind === "CURATED" && (
+                      <p className="text-sm text-fg-muted" data-testid="curated-note">
+                        {item.file ? (
+                          t("bankDesk.curatedFileNote", { file: item.file })
                         ) : (
-                          <Button size="sm" variant="secondary" onClick={() => setMode({ id: item.id, kind: "takeDown" })} disabled={pending}>
-                            <ProhibitIcon aria-hidden="true" />
-                            {t("quizReview.takeDown")}
-                          </Button>
-                        )}
-                      </>
-                    ) : (
-                      <p className="text-sm text-fg-muted">
-                        {t("bankDesk.authoredEditHint")}{" "}
-                        {bankEditor && (
-                          <Link href={`/appadmin/bank/${encodeURIComponent(topicId)}`} className="inline-flex min-h-11 items-center text-accent-strong underline underline-offset-4">
-                            {t("bankDesk.openBankEditor")}
-                          </Link>
+                          <>
+                            {t("bankDesk.curatedNoFileNote", { folder, slug })}{" "}
+                            {bankEditor && (
+                              <Link href={`/appadmin/bank/${encodeURIComponent(topicId)}`} className="inline-flex min-h-11 items-center text-accent-strong underline underline-offset-4">
+                                {t("bankDesk.openBankEditor")}
+                              </Link>
+                            )}
+                          </>
                         )}
                       </p>
                     )}

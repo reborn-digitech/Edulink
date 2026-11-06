@@ -29,12 +29,12 @@ function flatOf(sp: Params): Record<string, string | undefined> {
 }
 
 /**
- * The generated bank's desk, one page for the content team (/appadmin/quiz-review) and the operator
+ * The question bank's desk, one page for the content team (/appadmin/quiz-review) and the operator
  * (/root/quiz-review), as the owner decided on 11 October 2026 (it was the review queue): the bank's
- * counts (generated, served, taken down, held for a figure, under the filter, the reader's own changes),
- * the filters, the desk with one item (Edit, Take down, Put back, Skip), the generation card (Start,
- * Stop, the live line, the model servers), the items by chapter and level in the plan's order, and who
- * changed what.
+ * counts (in the bank, of which curated and generated, served, taken down, held for a figure — each over
+ * the whole bank since 7 November 2026 — and under the filter, the reader's own changes), the filters,
+ * the desk with one item (Edit, Take down, Put back, Skip), the generation card (Start, Stop, the live
+ * line, the model servers), the items by chapter and level in the plan's order, and who changed what.
  *
  * Since 20 October 2026 (bank-desk, the owner's ask) the page reads the whole bank by class and subject under the
  * generation card: a matrix of classes by subjects with a board switch, then every chapter grouped by class and subject
@@ -68,10 +68,13 @@ export async function QuizReviewQueuePage({ base, searchParams }: { base: string
     <div className="space-y-5">
       <PageHeader title={t("quizReview.title")} description={t("quizReview.intro")} />
 
-      <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+      {/* One bank (7 Nov 2026): every tile counts the curated and the generated questions together; the second and third are the split. */}
+      <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6" data-testid="bank-tiles">
         <StatTile label={t("quizReview.total")} value={list.total} tone="accent" />
-        <StatTile label={t("quizReview.served")} value={list.served} tone="ok" />
-        <StatTile label={t("quizReview.takenDown")} value={list.takenDown} tone={list.takenDown > 0 ? "danger" : "neutral"} />
+        <StatTile label={t("quizReview.curated")} value={list.curated} />
+        <StatTile label={t("quizReview.generated")} value={list.generated} />
+        <StatTile label={t("quizReview.served")} value={list.served} tone="ok" hint={t("quizReview.ofGenerated", { generated: list.split.served.generated })} />
+        <StatTile label={t("quizReview.takenDown")} value={list.takenDown} tone={list.takenDown > 0 ? "danger" : "neutral"} hint={t("quizReview.ofGenerated", { generated: list.split.takenDown.generated })} />
         <StatTile label={t("quizReview.held")} value={list.held} tone={list.held > 0 ? "warn" : "neutral"} />
       </div>
       <GenerationCard initial={jobs} subjectLabels={genSubjects} college={college} />
@@ -107,7 +110,8 @@ export async function QuizReviewQueuePage({ base, searchParams }: { base: string
           </h2>
           <p className="text-sm text-fg-muted">{t("bankDesk.walkHint")}</p>
           <p className="text-sm text-fg-muted">
-            {t("quizReview.filtered", { count: list.filtered })} · {t("quizReview.mineToday")}: {list.mine.today} · {t("quizReview.mineTotal")}: {list.mine.total}
+            {/* The walk is the generated items' (the review queue's purpose), so its count is the generated share under the filters. */}
+            {t("quizReview.filtered", { count: list.split.filtered.generated })} · {t("quizReview.mineToday")}: {list.mine.today} · {t("quizReview.mineTotal")}: {list.mine.total}
           </p>
         </div>
         <DataToolbar

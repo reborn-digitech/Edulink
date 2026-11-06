@@ -53,7 +53,8 @@ export const OPERATOR: Endpoint[] = [
   { method: "POST", path: "/api/v1/operator/content-team", summary: "Appoint the account behind an email to the content team", access: "operator", request: c.operatorAppointBodySchema, response: c.okSchema },
   { method: "DELETE", path: "/api/v1/operator/content-team/{userId}", summary: "Take the content-team flag off an account; the account stays", access: "operator", response: c.okSchema, sample: (f) => (f.notContentTeamUserId ? `/api/v1/operator/content-team/${f.notContentTeamUserId}` : null) },
   // ---- /appadmin -------------------------------------------------------------
-  { method: "GET", path: "/api/v1/appadmin/competitions", summary: "The platform competitions, posted for every school at once", access: "app-admin", response: c.appAdminCompetitionsSchema },
+  // decision 0007 (6 Nov 2026): the marketplace is behind the COMPETITIONS switch; 404 FEATURE_OFF while off.
+  { method: "GET", path: "/api/v1/appadmin/competitions", summary: "The platform competitions, posted for every school at once", access: "app-admin", feature: "COMPETITIONS", response: c.appAdminCompetitionsSchema },
   // ---- /root/plans, usage, support and metrics (2026-10-01) --------------------
   // A sample and no sampleBody on the writes, as above: every sweep role is refused before the id is read; tests/plans.test.ts, tests/support-tools.test.ts and tests/metrics.test.ts prove the 2xx.
   { method: "GET", path: "/api/v1/operator/plans", summary: "Every plan the operator offers, with how many live schools are on each", access: "operator", response: c.operatorPlansSchema },

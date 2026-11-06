@@ -17,6 +17,7 @@
  */
 import { spawn } from "node:child_process";
 import { readFileSync } from "node:fs";
+import { describeDatabase, fenceVerdict } from "./db-fence.mjs";
 
 function readEnvFile() {
   try {
@@ -46,6 +47,15 @@ if (!command) {
   process.stderr.write("Usage: node scripts/with-admin-db.mjs <command> [args...]\n");
   process.exit(1);
 }
+
+// THE FENCE (scripts/db-fence.mjs, 7 November 2026): no shadow database, no diff against migration folders, no
+// reset outside npm run db:reset; and the database named before anything runs, so a wrong URL is seen first.
+const verdict = fenceVerdict([command, ...args], { resetConsent: process.env.EDULINK_DB_RESET === "1" });
+if (!verdict.ok) {
+  process.stderr.write(`with-admin-db: refused — ${verdict.why}\n`);
+  process.exit(2);
+}
+if (!process.env.EDULINK_DB_QUIET) process.stderr.write(`with-admin-db: ${describeDatabase(adminUrl)} ← ${[command, ...args].join(" ").slice(0, 120)}\n`);
 
 // The ENVIRONMENT WINS over .env, the way dotenv itself works: a crontab line
 // that says STORAGE_DIR=/mnt/files must mean it. The file fills gaps; it does

@@ -30,6 +30,8 @@ const FEATURE_NAME_KEY = {
   TEACHER_SESSIONS: "platformFeatures.teacherSessionsName",
   JOB_BOARD: "platformFeatures.jobBoardName",
   TEXT_MESSAGING: "platformFeatures.textMessagingName",
+  // decision 0007 (6 Nov 2026): the competition marketplace, in the STUDENT plan.
+  COMPETITIONS: "platformFeatures.competitionsName",
 } as const satisfies Record<FeatureCode, string>;
 
 /** `message` is the server's own sentence ("This needs the Expert plan…"), said when the answer names no feature. */

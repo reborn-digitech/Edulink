@@ -36,7 +36,7 @@ export default async function StudentAgendaPage({ searchParams }: { searchParams
           { key: "30", href: "/student/agenda?days=30", label: t("agenda.days30") },
         ]}
       />
-      <AgendaList agenda={agenda} />
+      <AgendaList agenda={agenda} role="STUDENT" />
     </div>
   );
 }

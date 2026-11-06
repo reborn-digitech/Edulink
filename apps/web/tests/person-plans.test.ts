@@ -107,7 +107,8 @@ const DAY = 86_400_000;
 describe("the seam's table", () => {
   // The owner's model, written out cell by cell (16 Oct 2026).
   const NEEDS: Partial<Record<Role, { plan: PlanCode; features: FeatureCode[] }>> = {
-    STUDENT: { plan: "STUDENT", features: ["QUESTION_BANK", "ASSISTANT"] },
+    // decision 0007 (6 Nov 2026): the competition marketplace is in the pupil's plan beside the bank and the assistant.
+    STUDENT: { plan: "STUDENT", features: ["QUESTION_BANK", "ASSISTANT", "COMPETITIONS"] },
     TEACHER: { plan: "TEACHER", features: ["QUESTION_GIG", "TEACHER_SESSIONS", "JOB_BOARD", "ASSISTANT"] },
     EXPERT: { plan: "EXPERT", features: ["EXPERT_SESSIONS"] },
   };

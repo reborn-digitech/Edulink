@@ -74,6 +74,8 @@ const FEATURE_DOORS: { feature: FeatureCode; match: (e: Endpoint) => boolean }[]
   },
   { feature: "TEACHER_SESSIONS", match: (e) => e.path === "/api/v1/gigs/school/guidance" || ["/api/v1/gigs/sessions", "/api/v1/gigs/sessions/book", "/api/v1/gigs/slots", "/api/v1/gigs/school"].includes(e.path) || /^\/api\/v1\/gigs\/(sessions\/\{bookingId\}\/(consent|cancel|unheld|rate|close)|slots\/\{slotId\})/.test(e.path) },
   { feature: "JOB_BOARD", match: (e) => e.path.startsWith("/api/v1/admin/vacancies") || e.path === "/api/v1/shared/vacancies" || e.path === "/api/v1/community/vacancies/{postingId}" || (e.method === "POST" && e.path === "/api/v1/shared/enquiries") },
+  // decision 0007 (6 Nov 2026): the marketplace's doors — the content team's competitions and the crawler. The shared and contest doors stay unmarked: a school's own competitions are never behind the switch, and their handlers hide the platform's.
+  { feature: "COMPETITIONS", match: (e) => e.path.startsWith("/api/v1/appadmin/competition") },
 ];
 
 describe("the catalog marks every door of a feature", () => {
@@ -92,10 +94,11 @@ describe("the catalog marks every door of a feature", () => {
     expect(stray).toEqual([]);
   });
 
-  it("leaves the operator's and the content team's tooling unmarked (the bank desk, the generator, the crawler, the gig's review)", () => {
+  it("leaves the operator's and the content team's tooling unmarked (the bank desk, the generator, the gig's review) — except the competition marketplace's, which is a feature of its own (decision 0007)", () => {
     const tooling = ENDPOINTS.filter((e) => e.access === "operator" || e.access === "app-admin");
     expect(tooling.length).toBeGreaterThan(20);
-    expect(tooling.filter((e) => e.feature).map((e) => e.path)).toEqual([]);
+    expect(tooling.filter((e) => e.feature && !e.path.startsWith("/api/v1/appadmin/competition")).map((e) => e.path)).toEqual([]);
+    expect(tooling.filter((e) => e.path.startsWith("/api/v1/appadmin/competition") && featuresOf(e).includes("COMPETITIONS")).length).toBeGreaterThan(10);
   });
 
   it("keeps the handler-decided doors explained, and their access as it was", () => {
@@ -224,9 +227,10 @@ describe("every feature starts off, and the operator switches it", () => {
   it("defaults off: the column's default, the migration's rows, and a new school without the assistant module", () => {
     const schema = readFileSync("prisma/schema.prisma", "utf8");
     expect(schema).toMatch(/model PlatformFeature \{[^}]*enabled\s+Boolean\s+@default\(false\)/);
-    const dir = readdirSync("prisma/migrations").find((d) => d.endsWith("_platform_features"));
-    expect(dir).toBeTruthy();
-    const sql = readFileSync(join("prisma/migrations", dir!, "migration.sql"), "utf8");
+    // The seven of 15 October in the platform_features migration; a feature added since (COMPETITIONS, decision 0007) in the migration that names it.
+    const dirs = readdirSync("prisma/migrations").filter((d) => d.endsWith("_platform_features") || d.startsWith("20261106130000_platform_feature_"));
+    expect(dirs.length).toBeGreaterThanOrEqual(2);
+    const sql = dirs.map((d) => readFileSync(join("prisma/migrations", d, "migration.sql"), "utf8")).join("\n");
     for (const code of PLATFORM_FEATURES) expect(sql).toContain(`('${code}', false)`);
     expect(sql).not.toMatch(/, true\)/);
     expect(DEFAULT_SCHOOL_MODULES).not.toContain("ASSISTANT");

@@ -362,9 +362,10 @@ function summaryOut<T extends { registrationClosesAt: Date | null; startsAt: Dat
 const waitingOut = (rows: Awaited<ReturnType<typeof pendingConsents>>) => rows.map((w) => ({ ...w, closesAt: isoOrNull(w.closesAt) }));
 
 export async function readCompetitions(ctx: ActiveContext, opts: { openOnly: boolean; subject?: string }) {
-  const [{ school, platform }, waiting] = await Promise.all([listCompetitions(ctx, { openOnly: opts.openOnly }), pendingConsents(ctx)]);
+  const [{ school, platform, platformLock }, waiting] = await Promise.all([listCompetitions(ctx, { openOnly: opts.openOnly }), pendingConsents(ctx)]);
   const keep = (c: { subject: string | null }) => !opts.subject || c.subject === opts.subject;
-  return { school: school.filter(keep).map(summaryOut), platform: platform.filter(keep).map(summaryOut), waiting: waitingOut(waiting) };
+  // decision 0007: the plan a pupil lacks for the platform's competitions, so the phone draws its plan card where they would be.
+  return { school: school.filter(keep).map(summaryOut), platform: platform.filter(keep).map(summaryOut), waiting: waitingOut(waiting), platformLock };
 }
 
 export async function readCompetition(ctx: ActiveContext, competitionId: string) {

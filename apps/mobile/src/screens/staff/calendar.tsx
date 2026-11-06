@@ -24,7 +24,8 @@ export function calendarPath(when: When): string {
 
 function kindLabel(t: (key: TranslationKey) => string, kind: string): string {
   const k = kind.toLowerCase();
-  return ["holiday", "exam", "event"].includes(k) ? t(`calendar.${k}` as TranslationKey) : kind;
+  // decision 0007 (6 Nov 2026): a COMPETITION row is made on the web's calendar with its competition; the phone names it.
+  return ["holiday", "exam", "event", "competition"].includes(k) ? t(`calendar.${k}` as TranslationKey) : kind;
 }
 
 /**

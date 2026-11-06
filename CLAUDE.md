@@ -14,6 +14,18 @@ learned the hard way and are not negotiable without saying so in the commit.
 
 ## Database and fixtures
 - Never run `db:seed` or `db:reset` against a database with data in it; never bypass the reset consent guard.
+- NEVER a shadow database. `prisma migrate diff --shadow-database-url …` drops and recreates whatever database
+  the URL names, and on 6 November 2026 a URL a failed sed had left pointing at the dev database wiped it with no
+  backup anywhere. Migration SQL comes from the live datasource, which writes nothing:
+  `node scripts/with-admin-db.mjs npx prisma migrate diff --from-schema-datasource prisma/schema.prisma --to-schema-datamodel prisma/schema.prisma --script`.
+  Never build a connection URL with sed or by hand; print the database name before any command that takes one.
+  scripts/with-admin-db.mjs enforces this (scripts/db-fence.mjs): shadow URLs, diffs against migration folders and
+  resets outside `db:reset` are refused, and every command prints the database it touches.
+- A dump before anything touches the schema: `db:migrate`, `db:push` and `db:reset` run `npm run db:backup` first
+  and stop if it fails. Dumps go to apps/web/storage/backups and a copy to ~/Desktop/OffMachineCopy (iCloud-synced),
+  fourteen days kept; the morning task takes one daily and a weekly base backup (`db:basebackup`) for point-in-time
+  recovery; `npm run db:drill` restores the newest copy into a scratch database and must pass monthly. Runbook:
+  docs/runbooks/backup-restore.md.
 - Only ZZ-prefixed schools/people and `@demo.relay.test` accounts may be created or destroyed by tests and
   scripts. Never touch other seed data. Test cleanups must be scoped to their own school (an unscoped
   delete once took every school's 2025 registers).

@@ -86,6 +86,7 @@ import { buildCollegeExtras } from "./zz-college-extras";
 import { buildCollegeHomework } from "./zz-college-homework";
 import { buildPlanItems } from "./zz-plan-items";
 import { seedCompetitionSources } from "./competitions-crawl/sources"; // competitions-crawler (12 Oct 2026)
+import { addDaysToKey, zonedStartOfDay } from "../src/lib/dates"; // decision 0007 (6 Nov 2026)
 import { openAlumnus } from "../src/lib/alumni-membership";
 import { SCHOOL_MODULES, DEFAULT_SCHOOL_MODULES, SCHOOL_VERSION_MODULES, modulesForKind } from "@edulink/contracts";
 import { refuseUnlessLocalDatabase } from "./local-db-guard.mjs";
@@ -2169,6 +2170,44 @@ export async function buildDepartures(
     scheduled = 1;
   }
   return { leaverMembershipId: membership.id, recordId: record.id, scheduled };
+}
+
+/**
+ * A COMPETITION EVENT on the school's calendar (decision 0007, 6 Nov 2026): the school's own competition
+ * (published, enrolment on, the board as asked) and its Holiday row of kind COMPETITION, made together as the
+ * office's calendar form makes them, with one guardian-consented entry so the board has a name once a result is
+ * recorded. Idempotent by title: a second run leaves what stands. The dates are given as date keys in the
+ * school's zone; the competition's instants are the days' edges, as competition-events.ts writes them.
+ */
+export async function buildCompetitionEvent(
+  school: { id: string; timezone?: string },
+  spec: { title: string; summary: string; startKey: string; endKey?: string; closesKey?: string; gradeLow?: string; gradeHigh?: string; internalBoard?: "OFF" | "STAFF" | "SCHOOL"; note?: string; academicYearId?: string | null; entrant?: { studentMembershipId: string; parentUserId: string | null; scoreMilli?: number; rank?: number } | null },
+): Promise<{ competitionId: string; holidayId: string; made: boolean }> {
+  const tz = school.timezone ?? (await db.school.findUniqueOrThrow({ where: { id: school.id }, select: { timezone: true } })).timezone;
+  const endKey = spec.endKey ?? spec.startKey;
+  const closesKey = spec.closesKey ?? endKey;
+  const dayStart = (key: string) => zonedStartOfDay(key, tz);
+  const dayEnd = (key: string) => new Date(zonedStartOfDay(addDaysToKey(key, 1), tz).getTime() - 1);
+  const existing = await db.competition.findFirst({ where: { organizerSchoolId: school.id, title: spec.title }, select: { id: true, calendarEntry: { select: { id: true } } } });
+  if (existing?.calendarEntry) return { competitionId: existing.id, holidayId: existing.calendarEntry.id, made: false };
+  const name = (await db.school.findUniqueOrThrow({ where: { id: school.id }, select: { name: true } })).name;
+  const competitionId =
+    existing?.id ??
+    (
+      await db.competition.create({
+        data: { organizerSchoolId: school.id, organizerName: name, title: spec.title, summary: spec.summary, status: "PUBLISHED", audience: "SCHOOL", requiresParentConsent: true, enrolmentOpen: true, internalBoard: spec.internalBoard ?? "SCHOOL", gradeLow: spec.gradeLow ?? null, gradeHigh: spec.gradeHigh ?? null, registrationClosesAt: dayEnd(closesKey), startsAt: dayStart(spec.startKey), endsAt: dayEnd(endKey) },
+        select: { id: true },
+      })
+    ).id;
+  const holiday = await db.holiday.create({ data: { schoolId: school.id, academicYearId: spec.academicYearId ?? null, name: spec.title, startDateKey: spec.startKey, endDateKey: endKey, kind: "COMPETITION", note: spec.note ?? spec.summary, competitionId }, select: { id: true } });
+  if (spec.entrant) {
+    await db.competitionEntry.upsert({
+      where: { competitionId_studentMembershipId: { competitionId, studentMembershipId: spec.entrant.studentMembershipId } },
+      create: { competitionId, studentMembershipId: spec.entrant.studentMembershipId, schoolId: school.id, status: spec.entrant.rank !== undefined || spec.entrant.scoreMilli !== undefined ? "RESULTS" : "REGISTERED", parentConsentAt: spec.entrant.parentUserId ? new Date() : null, parentConsentBy: spec.entrant.parentUserId, scoreMilli: spec.entrant.scoreMilli ?? null, rank: spec.entrant.rank ?? null },
+      update: {},
+    });
+  }
+  return { competitionId, holidayId: holiday.id, made: true };
 }
 
 /**

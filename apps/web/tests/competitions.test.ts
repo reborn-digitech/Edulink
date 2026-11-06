@@ -350,9 +350,39 @@ describe("entering", () => {
     await expect(enterCompetition(child, draft)).rejects.toMatchObject({ code: "NOT_FOUND" });
   });
 
-  it("⚠ refuses everyone who is not a student — including the guardian", async () => {
-    await expect(enterCompetition(guardian, published)).rejects.toBeInstanceOf(AccessError);
+  it("⚠ refuses everyone who is neither a pupil nor a guardian naming a child of theirs", async () => {
+    // decision 0007: a guardian may enrol, but only a child of theirs, named; nobody else enrols anybody.
+    await expect(enterCompetition(guardian, published)).rejects.toThrow("competitions.chooseAChild");
+    await expect(enterCompetition(guardian, published, { studentMembershipId: classmate.membershipId })).rejects.toMatchObject({ code: "NOT_FOUND" });
     await expect(enterCompetition(admin, published)).rejects.toBeInstanceOf(AccessError);
+    await expect(enterCompetition(admin, published, { studentMembershipId: child.membershipId })).rejects.toBeInstanceOf(AccessError);
+  });
+
+  it("⚠ a guardian enrolling their own child IS the consent: stamped by the guardian, never by the pupil's path (decision 0007)", async () => {
+    await db.competitionEntry.deleteMany({ where: { competitionId: published, studentMembershipId: child.membershipId! } });
+    const result = await enterCompetition(guardian, published, { studentMembershipId: child.membershipId });
+    expect(result.awaitingConsent).toBe(false);
+    const row = await db.competitionEntry.findUniqueOrThrow({ where: { id: result.entryId } });
+    expect(row.parentConsentBy).toBe(guardian.user.id);
+    expect(row.parentConsentAt).not.toBeNull();
+    expect((await getCompetition(child, published)).enteredCount).toBe(1);
+    // The child asked first; the guardian's enrolment is their yes, on the same row.
+    await db.competitionEntry.update({ where: { id: row.id }, data: { parentConsentAt: null, parentConsentBy: null } });
+    const again = await enterCompetition(guardian, published, { studentMembershipId: child.membershipId });
+    expect(again.entryId).toBe(row.id);
+    expect((await db.competitionEntry.findUniqueOrThrow({ where: { id: row.id } })).parentConsentBy).toBe(guardian.user.id);
+    // Back to the pupil's own ask for the consent cases below.
+    await db.competitionEntry.deleteMany({ where: { id: row.id } });
+    await db.notification.deleteMany({ where: { userId: child.user.id, kind: "COMPETITION", title: { contains: TITLE } } });
+    await enterCompetition(child, published);
+  }, 20_000); // three enrolments with their notifications: past five seconds under a loaded machine
+
+  it("⚠ the office's enrolment switch stands above the dates (decision 0007)", async () => {
+    await db.competition.update({ where: { id: noConsentNeeded }, data: { enrolmentOpen: false } });
+    await expect(enterCompetition(child, noConsentNeeded)).rejects.toThrow("access.entriesForThisCompetitionHaveClosed");
+    expect((await getCompetition(child, noConsentNeeded)).open).toBe(false);
+    await db.competition.update({ where: { id: noConsentNeeded }, data: { enrolmentOpen: true } });
+    expect((await getCompetition(child, noConsentNeeded)).open).toBe(true);
   });
 
   it("needs no consent when nothing leaves the school", async () => {

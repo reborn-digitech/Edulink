@@ -35,8 +35,10 @@ export function ordinal(n: number): string {
  * rules. Withdrawing, a guardian's no and publishing ask twice.
  */
 export function CompetitionDetail() {
-  const params = useLocalSearchParams<{ competitionId?: string }>();
+  const params = useLocalSearchParams<{ competitionId?: string; child?: string }>();
   const competitionId = param(params.competitionId);
+  // decision 0007 (6 Nov 2026): the agenda opens the detail with the child it showed; a guardian enrols that child here.
+  const child = param(params.child) ?? null;
   const t = useT();
   const th = useTheme();
   const role = useRole();
@@ -58,13 +60,14 @@ export function CompetitionDetail() {
   };
   const enter = useMutation({
     mutationFn: async () => {
-      const result = await api().post(`/api/v1/shared/competitions/${competitionId}/enter`, {});
+      // A guardian names the child (their enrolment is their consent); a pupil sends nothing and enrols themself.
+      const result = await api().post(`/api/v1/shared/competitions/${competitionId}/enter`, role === "PARENT" && child ? { studentMembershipId: child } : {});
       if (!result.ok) throw new Error(errorText(result, t("competitions.thatDidNotGo")));
       return competitionEnterResultSchema.parse(result.data);
     },
     onSuccess: (res) => {
       const title = query.data?.title ?? "";
-      setNote(res.awaitingConsent ? `${t("competitions.askedToEnter")} ${t("competitions.grownUpMustYes", { title })}` : `${t("competitions.enteredToast")} ${t("competitions.takingPartIn", { title })}`);
+      setNote(role === "PARENT" ? `${t("competitions.consentGiven")} ${t("competitions.takingPartIn", { title })}` : res.awaitingConsent ? `${t("competitions.askedToEnter")} ${t("competitions.grownUpMustYes", { title })}` : `${t("competitions.enteredToast")} ${t("competitions.takingPartIn", { title })}`);
       refresh();
     },
   });
@@ -216,9 +219,17 @@ export function CompetitionDetail() {
                     {entryPill(c.entry.awaitingConsent)}
                     {result(c.entry.scoreMilli, c.entry.rank)}
                   </>
+                ) : c.open && child ? (
+                  <>
+                    {enter.isError ? <Failed message={enter.error.message} onRetry={() => enter.mutate()} /> : null}
+                    <Text variant="sm" tone="muted">
+                      {t("competitions.enrolChildIntro")}
+                    </Text>
+                    <Button label={t("agenda.enrol")} onPress={() => enter.mutate()} busy={enter.isPending} />
+                  </>
                 ) : (
                   <Text variant="sm" tone="muted">
-                    {t("competitions.noChildAsked")}
+                    {c.open ? t("competitions.noChildAsked") : t("competitions.entriesClosed")}
                   </Text>
                 )
               ) : null}

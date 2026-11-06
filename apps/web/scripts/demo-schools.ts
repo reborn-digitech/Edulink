@@ -34,7 +34,7 @@ import { join } from "node:path";
 import { classCode, studentCode } from "../src/lib/codes";
 import { bandFor, combineTerms, DEFAULT_REPORT_CARD_CONFIG, meanPercent, meanPoints, shownPercent } from "../src/lib/report-card-rules";
 import {
-  attachTeacher, buildAdmissions, buildCertificates, buildCircular, buildSignatures, buildCompetitionEntry, buildDepartures, buildExams, buildUpcomingExam, buildFeeAdjustments, buildFees, buildHealth, buildHolidays, buildIncidents,
+  attachTeacher, buildAdmissions, buildCertificates, buildCircular, buildSignatures, buildCompetitionEntry, buildCompetitionEvent, buildDepartures, buildExams, buildUpcomingExam, buildFeeAdjustments, buildFees, buildHealth, buildHolidays, buildIncidents,
   buildInvite, buildMessaging, buildPracticeAssignment, buildRemarkThread, buildReport, buildRollNumbers, buildStaffAttendance, buildStaffRecords, buildSubstitutions, buildSyllabus, buildTimetable,
   CALENDAR_2025_26, CALENDAR_2026_27, CLASS_COLOURS, closedDays, db, enrol, link, setTag, staffDates, teachingDaysBetween, THIS_YEAR, upsertClass, upsertMembership, upsertSchool, upsertUser, type Ctx, fakePen, refuseUnlessLocal, switchModulesOn } from "./zz-fixtures";
 import { PLATFORM_FEATURES, SCHOOL_MODULES } from "@edulink/contracts";
@@ -1083,7 +1083,8 @@ ${input.expert.anjali ? `| ${ANJALI_EMAIL} | Dr Anjali Rao (existing demo expert
 | A remark thread between the grade-7 form teacher and a parent, the reply unread by the teacher | /teacher/remarks, /parent/remarks |
 | An OPEN report on a comment under the robotics post | /admin/safety (or the review queue) |
 | A practice assignment for grade 6 with a target level | /teacher/practice, /student/practice |
-| A grade-9 entry in the platform's "Autumn Science Fair" with a result and the school's standing | /competitions, /admin/competitions |
+| A grade-9 entry in the platform's "Autumn Science Fair" with a result and the school's standing | /competitions (the platform's section, while the operator has the COMPETITIONS feature on) |
+| A competition event on the calendar — the inter-house quiz on 11 December, enrolment open until the 8th for classes 5–10, the SCHOOL board — with a grade-9 entry placed 2nd (decision 0007) | /admin/calendar, /student/agenda, /parent/agenda, /competitions/{id} |
 | A pupil who left in August with a transfer record (\`<school>.pupil49\`, ${sunrise.spec.leaver.name} / ${saraswati.spec.leaver.name}); a grade-8 departure scheduled for 30 April | /admin/people → departures, /admin/certificates |
 | Pupil records with coded category and religion, caste, parents' occupations, income, the previous school's TC; staff records with dates of birth and of joining service; roll numbers in every class | /admin/records, /admin/filings, /student/record |
 ${/* owner-batch-item4a: Sunrise's bus, hostel and library rows */ campusRosterRows(SUNRISE_CAMPUS)}
@@ -1194,8 +1195,23 @@ async function main() {
     const practice = await buildPracticeAssignment(b.school, { classId: g6.id, classLevel: 6, createdByMembershipId: g6.teacher.membership.id, preferSlugs: ["maths-6-integers", "maths-6-knowing-our-numbers"], targetLevel: 3, note: en ? "Reach level 3 before the unit test on the 16th." : "१६ तारखेच्या घटक चाचणीपूर्वी पातळी ३ गाठा.", dueAt: new Date("2026-10-16T12:30:00Z") });
     const competitor = b.pupils.find((p) => p.grade === "9" && p.seat === 1)!;
     const competition = await buildCompetitionEntry(b.school, { title: "Autumn Science Fair", studentMembershipId: competitor.membershipId, parentUserId: competitor.parentUserId, rank: spec.key === "sunrise" ? 3 : 7, scoreMilli: spec.key === "sunrise" ? 84_500 : 78_250, submissionUrl: `https://sciencefair.example.org/entries/${spec.key}-2026-09`, enteredOn: new Date("2026-07-15T04:30:00Z") });
+    // decision 0007 (6 Nov 2026): the school's own competition is a calendar event — the inter-house quiz in
+    // December, enrolment open until the 8th, classes 5–10, the SCHOOL board, with the grade-9 second seat entered
+    // (consented) and placed, so the agenda shows an Enrol button to the others and the board a first name.
+    const quizzer = b.pupils.find((p) => p.grade === "9" && p.seat === 2)!;
+    const event = await buildCompetitionEvent(b.school, {
+      title: en ? "Inter-house quiz" : "आंतरगृह प्रश्नमंजुषा",
+      summary: en ? "The houses' general-knowledge quiz; two rounds in the hall, prizes at assembly." : "गृहांची सामान्यज्ञान प्रश्नमंजुषा; सभागृहात दोन फेऱ्या, प्रार्थनेच्या वेळी बक्षिसे.",
+      startKey: "2026-12-11",
+      closesKey: "2026-12-08",
+      gradeLow: "5",
+      gradeHigh: "10",
+      internalBoard: "SCHOOL",
+      academicYearId: b.years.current.id,
+      entrant: { studentMembershipId: quizzer.membershipId, parentUserId: quizzer.parentUserId, scoreMilli: 42_000, rank: 2 },
+    });
     const rolls = await buildRollNumbers(b.school);
-    b.counts = { calendar, lastYearCards: lastYear.cards, lastYearRegisters: lastYear.sessions, lastYearDays: lastYear.days, timetableSlots: timetable.slots, staffRecords: records.records + 3, registers: registers.sessions, feeStructures: fees.structures.length, feePupils: fees.pupils, receipts: fees.receipts, concessions: adjustments.concessions, refunds: adjustments.refunds, textsNumbered: texts.numbered, health: health.cards + 1, incidents: incidents.incidents, circular: circular.postId, staffMarks: staffAtt.marked, syllabus: syllabus6.units + syllabus9.units, subs: subs.covered, exams: `${exams6.series + exams9.series} series, ${exams6.papers + exams9.papers} papers, ${exams6.marks + exams9.marks} marks, ${exams6.cards + exams9.cards} cards`, certs: `${certs.templates} templates, ${certs.records} records, ${certs.issued} issued, ${certs.requests} asks`, leave: leave.requests, meetingSlots: meetings.slots, posts: feed.posts, comments: feed.comments, reportId: feed.reportId, quizAttempts: quizzes.attempts, quizResponses: quizzes.responses, badges: quizzes.badges, invite: invite.status, remarkThread: remarks.threadId, practice: practice.topic ?? "none (no bank imported)", competition: competition.skipped ?? `1 entry in "Autumn Science Fair", standing written`, leaver: departures.leaverMembershipId, scheduledDepartures: departures.scheduled, rolls: rolls.numbered };
+    b.counts = { calendar, competitionEvent: `"${en ? "Inter-house quiz" : "आंतरगृह प्रश्नमंजुषा"}" on 11 Dec (${event.made ? "made" : "present"}), 1 entry placed 2nd`, lastYearCards: lastYear.cards, lastYearRegisters: lastYear.sessions, lastYearDays: lastYear.days, timetableSlots: timetable.slots, staffRecords: records.records + 3, registers: registers.sessions, feeStructures: fees.structures.length, feePupils: fees.pupils, receipts: fees.receipts, concessions: adjustments.concessions, refunds: adjustments.refunds, textsNumbered: texts.numbered, health: health.cards + 1, incidents: incidents.incidents, circular: circular.postId, staffMarks: staffAtt.marked, syllabus: syllabus6.units + syllabus9.units, subs: subs.covered, exams: `${exams6.series + exams9.series} series, ${exams6.papers + exams9.papers} papers, ${exams6.marks + exams9.marks} marks, ${exams6.cards + exams9.cards} cards`, certs: `${certs.templates} templates, ${certs.records} records, ${certs.issued} issued, ${certs.requests} asks`, leave: leave.requests, meetingSlots: meetings.slots, posts: feed.posts, comments: feed.comments, reportId: feed.reportId, quizAttempts: quizzes.attempts, quizResponses: quizzes.responses, badges: quizzes.badges, invite: invite.status, remarkThread: remarks.threadId, practice: practice.topic ?? "none (no bank imported)", competition: competition.skipped ?? `1 entry in "Autumn Science Fair", standing written`, leaver: departures.leaverMembershipId, scheduledDepartures: departures.scheduled, rolls: rolls.numbered };
     built.push(b);
   }
   const [sunrise, saraswati] = built as [Built, Built];

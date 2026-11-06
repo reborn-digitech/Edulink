@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { CalendarXIcon, ChalkboardTeacherIcon, ClipboardTextIcon, ConfettiIcon, ExamIcon, ReceiptIcon, UsersThreeIcon } from "@phosphor-icons/react/ssr";
+import { CalendarXIcon, ChalkboardTeacherIcon, ClipboardTextIcon, ConfettiIcon, ExamIcon, ReceiptIcon, TrophyIcon, UsersThreeIcon } from "@phosphor-icons/react/ssr";
 import { formatPaise } from "@edulink/i18n";
 import type { Agenda, AgendaKind, AgendaRow } from "@/lib/agenda";
 import { addDaysToKey, formatDateKey, formatInZone } from "@/lib/dates";
@@ -7,6 +7,7 @@ import { Badge } from "@/components/ui/badge";
 import { EmptyState } from "@/components/ui/states";
 import { getLocale, getT } from "@/lib/i18n/server";
 import type { TranslationKey } from "@/lib/i18n/dictionary";
+import { EnrolButton } from "./enrol-button";
 
 /**
  * The fortnight as a dated list: one group per day that has something,
@@ -21,6 +22,7 @@ export const AGENDA_KIND_KEY: Record<AgendaKind, TranslationKey> = {
   CLOSURE: "agenda.kindClosure",
   EVENT: "agenda.kindEvent",
   FEE: "agenda.kindFee",
+  COMPETITION: "agenda.kindCompetition",
 };
 
 const KIND_TONE: Record<AgendaKind, "neutral" | "accent" | "ok" | "warn" | "danger" | "info" | "outline"> = {
@@ -31,6 +33,7 @@ const KIND_TONE: Record<AgendaKind, "neutral" | "accent" | "ok" | "warn" | "dang
   CLOSURE: "neutral",
   EVENT: "ok",
   FEE: "warn",
+  COMPETITION: "accent",
 };
 
 function KindIcon({ kind }: { kind: AgendaKind }) {
@@ -50,6 +53,8 @@ function KindIcon({ kind }: { kind: AgendaKind }) {
       return <ConfettiIcon weight="duotone" className={className} />;
     case "FEE":
       return <ReceiptIcon weight="duotone" className={className} />;
+    case "COMPETITION":
+      return <TrophyIcon weight="duotone" className={className} />;
   }
 }
 
@@ -64,7 +69,8 @@ export function groupByDay(rows: AgendaRow[]): { dateKey: string; rows: AgendaRo
   return out;
 }
 
-export async function AgendaList({ agenda }: { agenda: Agenda }) {
+/** `role`: whose agenda, for the competition rows' Enrol button (decision 0007): the pupil enrols themself, the guardian the agenda's child. */
+export async function AgendaList({ agenda, role }: { agenda: Agenda; role: "STUDENT" | "PARENT" }) {
   const t = await getT();
   const locale = await getLocale();
   const tomorrow = addDaysToKey(agenda.fromKey, 1);
@@ -99,6 +105,9 @@ export async function AgendaList({ agenda }: { agenda: Agenda }) {
                         .join(" · ")}
                     </span>
                   </span>
+                  {row.kind === "COMPETITION" && row.competition && (
+                    <EnrolButton competitionId={row.competition.competitionId} state={row.competition.enrol} studentMembershipId={agenda.student.studentMembershipId} role={role} />
+                  )}
                   <Badge tone={KIND_TONE[row.kind]} size="sm">
                     {t(AGENDA_KIND_KEY[row.kind])}
                   </Badge>
