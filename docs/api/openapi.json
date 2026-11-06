@@ -1321,7 +1321,8 @@
                           "EXPERT_SESSIONS",
                           "TEACHER_SESSIONS",
                           "JOB_BOARD",
-                          "TEXT_MESSAGING"
+                          "TEXT_MESSAGING",
+                          "COMPETITIONS"
                         ]
                       }
                     },
@@ -1639,7 +1640,8 @@
                           "EXPERT_SESSIONS",
                           "TEACHER_SESSIONS",
                           "JOB_BOARD",
-                          "TEXT_MESSAGING"
+                          "TEXT_MESSAGING",
+                          "COMPETITIONS"
                         ]
                       }
                     },
@@ -8655,6 +8657,14 @@
                               }
                             ],
                             "nullable": true
+                          },
+                          "competitionId": {
+                            "allOf": [
+                              {
+                                "$ref": "#/properties/years/items/properties/id"
+                              }
+                            ],
+                            "nullable": true
                           }
                         },
                         "required": [
@@ -8960,6 +8970,409 @@
             }
           }
         }
+      }
+    },
+    "/api/v1/admin/calendar/competitions": {
+      "post": {
+        "summary": "Add a competition to the school calendar: the event and the competition pupils enrol in, together",
+        "description": "Roles: ADMIN.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "holidayId": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 64
+                    },
+                    "competitionId": {
+                      "$ref": "#/properties/holidayId"
+                    }
+                  },
+                  "required": [
+                    "holidayId",
+                    "competitionId"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "title": {
+                    "type": "string",
+                    "minLength": 3,
+                    "maxLength": 140
+                  },
+                  "summary": {
+                    "type": "string",
+                    "minLength": 3,
+                    "maxLength": 200
+                  },
+                  "startDateKey": {
+                    "type": "string",
+                    "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+                  },
+                  "endDateKey": {
+                    "$ref": "#/properties/startDateKey"
+                  },
+                  "registrationClosesDateKey": {
+                    "$ref": "#/properties/startDateKey"
+                  },
+                  "gradeLow": {
+                    "type": "string",
+                    "maxLength": 10
+                  },
+                  "gradeHigh": {
+                    "type": "string",
+                    "maxLength": 10
+                  },
+                  "enrolmentOpen": {
+                    "type": "boolean"
+                  },
+                  "internalBoard": {
+                    "type": "string",
+                    "enum": [
+                      "OFF",
+                      "STAFF",
+                      "SCHOOL"
+                    ]
+                  },
+                  "requiresParentConsent": {
+                    "type": "boolean"
+                  },
+                  "body": {
+                    "type": "string",
+                    "maxLength": 5000
+                  },
+                  "note": {
+                    "type": "string",
+                    "maxLength": 500
+                  }
+                },
+                "required": [
+                  "title",
+                  "summary",
+                  "startDateKey",
+                  "enrolmentOpen",
+                  "internalBoard"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/admin/calendar/competitions/{holidayId}": {
+      "post": {
+        "summary": "Edit a competition event and its competition in step",
+        "description": "Roles: ADMIN.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ok": {
+                      "type": "boolean",
+                      "enum": [
+                        true
+                      ]
+                    }
+                  },
+                  "required": [
+                    "ok"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "title": {
+                    "type": "string",
+                    "minLength": 3,
+                    "maxLength": 140
+                  },
+                  "summary": {
+                    "type": "string",
+                    "minLength": 3,
+                    "maxLength": 200
+                  },
+                  "startDateKey": {
+                    "type": "string",
+                    "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+                  },
+                  "endDateKey": {
+                    "$ref": "#/properties/startDateKey"
+                  },
+                  "registrationClosesDateKey": {
+                    "$ref": "#/properties/startDateKey"
+                  },
+                  "gradeLow": {
+                    "type": "string",
+                    "maxLength": 10
+                  },
+                  "gradeHigh": {
+                    "type": "string",
+                    "maxLength": 10
+                  },
+                  "enrolmentOpen": {
+                    "type": "boolean"
+                  },
+                  "internalBoard": {
+                    "type": "string",
+                    "enum": [
+                      "OFF",
+                      "STAFF",
+                      "SCHOOL"
+                    ]
+                  },
+                  "requiresParentConsent": {
+                    "type": "boolean"
+                  },
+                  "body": {
+                    "type": "string",
+                    "maxLength": 5000
+                  },
+                  "note": {
+                    "type": "string",
+                    "maxLength": 500
+                  }
+                },
+                "required": [
+                  "title",
+                  "summary",
+                  "startDateKey",
+                  "enrolmentOpen",
+                  "internalBoard"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "holidayId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      },
+      "delete": {
+        "summary": "Take a competition event off the calendar; its competition is deleted while nobody has entered, archived otherwise",
+        "description": "Roles: ADMIN.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ok": {
+                      "type": "boolean",
+                      "enum": [
+                        true
+                      ]
+                    },
+                    "competition": {
+                      "type": "string",
+                      "enum": [
+                        "DELETED",
+                        "ARCHIVED"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "ok",
+                    "competition"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "holidayId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       }
     },
     "/api/v1/admin/reviews": {
@@ -25616,7 +26029,8 @@
                               "MEETING",
                               "CLOSURE",
                               "EVENT",
-                              "FEE"
+                              "FEE",
+                              "COMPETITION"
                             ]
                           },
                           "dateKey": {
@@ -25649,6 +26063,34 @@
                           },
                           "href": {
                             "type": "string"
+                          },
+                          "competition": {
+                            "type": "object",
+                            "properties": {
+                              "competitionId": {
+                                "type": "string"
+                              },
+                              "enrol": {
+                                "type": "string",
+                                "enum": [
+                                  "OPEN",
+                                  "ENROLLED",
+                                  "CONSENT_WAITING",
+                                  "CLOSED"
+                                ]
+                              },
+                              "entryId": {
+                                "type": "string",
+                                "nullable": true
+                              }
+                            },
+                            "required": [
+                              "competitionId",
+                              "enrol",
+                              "entryId"
+                            ],
+                            "additionalProperties": false,
+                            "nullable": true
                           }
                         },
                         "required": [
@@ -30626,6 +31068,21 @@
                             "additionalProperties": false,
                             "nullable": true
                           },
+                          "enrolmentOpen": {
+                            "type": "boolean"
+                          },
+                          "internalBoard": {
+                            "type": "string",
+                            "enum": [
+                              "OFF",
+                              "STAFF",
+                              "SCHOOL"
+                            ]
+                          },
+                          "calendarEntryId": {
+                            "type": "string",
+                            "nullable": true
+                          },
                           "source": {
                             "type": "object",
                             "properties": {
@@ -30717,6 +31174,15 @@
                         ],
                         "additionalProperties": false
                       }
+                    },
+                    "platformLock": {
+                      "type": "string",
+                      "enum": [
+                        "STUDENT",
+                        "TEACHER",
+                        "EXPERT"
+                      ],
+                      "nullable": true
                     }
                   },
                   "required": [
@@ -30881,6 +31347,21 @@
                         "rank"
                       ],
                       "additionalProperties": false,
+                      "nullable": true
+                    },
+                    "enrolmentOpen": {
+                      "type": "boolean"
+                    },
+                    "internalBoard": {
+                      "type": "string",
+                      "enum": [
+                        "OFF",
+                        "STAFF",
+                        "SCHOOL"
+                      ]
+                    },
+                    "calendarEntryId": {
+                      "type": "string",
                       "nullable": true
                     },
                     "source": {
@@ -31114,16 +31595,21 @@
     },
     "/api/v1/shared/competitions/{competitionId}/enter": {
       "post": {
-        "summary": "A pupil enters a competition",
-        "description": "Roles: STUDENT.",
+        "summary": "A pupil enrols in a competition, or a guardian enrols their own child",
+        "description": "Roles: STUDENT, PARENT.",
         "security": [
           {
             "bearer": []
           }
         ],
         "x-access": [
-          "STUDENT"
+          "STUDENT",
+          "PARENT"
         ],
+        "x-reach": {
+          "STUDENT": "self",
+          "PARENT": "ownChild"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -31142,6 +31628,172 @@
                   "required": [
                     "entryId",
                     "awaitingConsent"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "anyOf": [
+                  {
+                    "not": {}
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "studentMembershipId": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 64
+                      }
+                    },
+                    "additionalProperties": false
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "competitionId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/shared/competitions/{competitionId}/board": {
+      "get": {
+        "summary": "The internal board of a school's own competition, as the office set it and as the reader may see it",
+        "description": "Any signed-in session but a limited role's (the module roles DRIVER, LIBRARIAN, WARDEN, ALUMNUS; the college's FACULTY, HOD, EXAM_CONTROLLER, IQAC, TPO, ACCOUNTS; RECRUITER; and SUPPORT, the support staff).",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": "signed-in",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "setting": {
+                      "type": "string",
+                      "enum": [
+                        "OFF",
+                        "STAFF",
+                        "SCHOOL"
+                      ]
+                    },
+                    "full": {
+                      "type": "boolean"
+                    },
+                    "rows": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "place": {
+                            "type": "integer",
+                            "minimum": 1
+                          },
+                          "name": {
+                            "type": "string"
+                          },
+                          "className": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "scoreMilli": {
+                            "type": "integer",
+                            "nullable": true
+                          },
+                          "rank": {
+                            "type": "integer",
+                            "nullable": true
+                          },
+                          "mine": {
+                            "type": "boolean"
+                          }
+                        },
+                        "required": [
+                          "place",
+                          "name",
+                          "className",
+                          "scoreMilli",
+                          "rank",
+                          "mine"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "mine": {
+                      "allOf": [
+                        {
+                          "$ref": "#/properties/rows/items"
+                        }
+                      ],
+                      "nullable": true
+                    }
+                  },
+                  "required": [
+                    "setting",
+                    "full",
+                    "rows",
+                    "mine"
                   ],
                   "additionalProperties": false
                 }
@@ -34837,7 +35489,8 @@
                               "EXPERT_SESSIONS",
                               "TEACHER_SESSIONS",
                               "JOB_BOARD",
-                              "TEXT_MESSAGING"
+                              "TEXT_MESSAGING",
+                              "COMPETITIONS"
                             ]
                           },
                           "enabled": {
@@ -34946,7 +35599,8 @@
                         "EXPERT_SESSIONS",
                         "TEACHER_SESSIONS",
                         "JOB_BOARD",
-                        "TEXT_MESSAGING"
+                        "TEXT_MESSAGING",
+                        "COMPETITIONS"
                       ]
                     },
                     "enabled": {
@@ -37910,6 +38564,10 @@
           }
         ],
         "x-access": "app-admin",
+        "x-feature": "COMPETITIONS",
+        "x-plans": [
+          "STUDENT"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -37977,6 +38635,16 @@
           },
           "401": {
             "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "PLAN_REQUIRED: the feature is on and this person's role needs a plan they do not hold; `plan` names it",
             "content": {
               "application/json": {
                 "schema": {
@@ -43249,7 +43917,8 @@
                                 "EXPERT_SESSIONS",
                                 "TEACHER_SESSIONS",
                                 "JOB_BOARD",
-                                "TEXT_MESSAGING"
+                                "TEXT_MESSAGING",
+                                "COMPETITIONS"
                               ]
                             }
                           },
@@ -43385,7 +44054,8 @@
                               "EXPERT_SESSIONS",
                               "TEACHER_SESSIONS",
                               "JOB_BOARD",
-                              "TEXT_MESSAGING"
+                              "TEXT_MESSAGING",
+                              "COMPETITIONS"
                             ]
                           }
                         },
@@ -43569,7 +44239,8 @@
                               "EXPERT_SESSIONS",
                               "TEACHER_SESSIONS",
                               "JOB_BOARD",
-                              "TEXT_MESSAGING"
+                              "TEXT_MESSAGING",
+                              "COMPETITIONS"
                             ]
                           },
                           "source": {
@@ -55893,6 +56564,10 @@
           }
         ],
         "x-access": "app-admin",
+        "x-feature": "COMPETITIONS",
+        "x-plans": [
+          "STUDENT"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -55924,6 +56599,16 @@
           },
           "401": {
             "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "PLAN_REQUIRED: the feature is on and this person's role needs a plan they do not hold; `plan` names it",
             "content": {
               "application/json": {
                 "schema": {
@@ -56064,6 +56749,10 @@
           }
         ],
         "x-access": "app-admin",
+        "x-feature": "COMPETITIONS",
+        "x-plans": [
+          "STUDENT"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -56098,6 +56787,16 @@
           },
           "401": {
             "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "PLAN_REQUIRED: the feature is on and this person's role needs a plan they do not hold; `plan` names it",
             "content": {
               "application/json": {
                 "schema": {
@@ -239036,6 +239735,10 @@
           }
         ],
         "x-access": "app-admin",
+        "x-feature": "COMPETITIONS",
+        "x-plans": [
+          "STUDENT"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -239334,6 +240037,16 @@
               }
             }
           },
+          "402": {
+            "description": "PLAN_REQUIRED: the feature is on and this person's role needs a plan they do not hold; `plan` names it",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
           "403": {
             "description": "This role may not",
             "content": {
@@ -239375,6 +240088,10 @@
           }
         ],
         "x-access": "app-admin",
+        "x-feature": "COMPETITIONS",
+        "x-plans": [
+          "STUDENT"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -239626,6 +240343,16 @@
               }
             }
           },
+          "402": {
+            "description": "PLAN_REQUIRED: the feature is on and this person's role needs a plan they do not hold; `plan` names it",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
           "403": {
             "description": "This role may not",
             "content": {
@@ -239691,6 +240418,10 @@
           }
         ],
         "x-access": "app-admin",
+        "x-feature": "COMPETITIONS",
+        "x-plans": [
+          "STUDENT"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -239874,6 +240605,16 @@
               }
             }
           },
+          "402": {
+            "description": "PLAN_REQUIRED: the feature is on and this person's role needs a plan they do not hold; `plan` names it",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
           "403": {
             "description": "This role may not",
             "content": {
@@ -239915,6 +240656,10 @@
           }
         ],
         "x-access": "app-admin",
+        "x-feature": "COMPETITIONS",
+        "x-plans": [
+          "STUDENT"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -240095,6 +240840,16 @@
               }
             }
           },
+          "402": {
+            "description": "PLAN_REQUIRED: the feature is on and this person's role needs a plan they do not hold; `plan` names it",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
           "403": {
             "description": "This role may not",
             "content": {
@@ -240210,6 +240965,10 @@
           }
         ],
         "x-access": "app-admin",
+        "x-feature": "COMPETITIONS",
+        "x-plans": [
+          "STUDENT"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -240393,6 +241152,16 @@
               }
             }
           },
+          "402": {
+            "description": "PLAN_REQUIRED: the feature is on and this person's role needs a plan they do not hold; `plan` names it",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
           "403": {
             "description": "This role may not",
             "content": {
@@ -240470,6 +241239,10 @@
           }
         ],
         "x-access": "app-admin",
+        "x-feature": "COMPETITIONS",
+        "x-plans": [
+          "STUDENT"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -240713,6 +241486,16 @@
           },
           "401": {
             "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "PLAN_REQUIRED: the feature is on and this person's role needs a plan they do not hold; `plan` names it",
             "content": {
               "application/json": {
                 "schema": {
@@ -240774,6 +241557,10 @@
           }
         ],
         "x-access": "app-admin",
+        "x-feature": "COMPETITIONS",
+        "x-plans": [
+          "STUDENT"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -241025,6 +241812,16 @@
               }
             }
           },
+          "402": {
+            "description": "PLAN_REQUIRED: the feature is on and this person's role needs a plan they do not hold; `plan` names it",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
           "403": {
             "description": "This role may not",
             "content": {
@@ -241078,6 +241875,10 @@
           }
         ],
         "x-access": "app-admin",
+        "x-feature": "COMPETITIONS",
+        "x-plans": [
+          "STUDENT"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -241351,6 +242152,16 @@
               }
             }
           },
+          "402": {
+            "description": "PLAN_REQUIRED: the feature is on and this person's role needs a plan they do not hold; `plan` names it",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
           "403": {
             "description": "This role may not",
             "content": {
@@ -241394,6 +242205,10 @@
           }
         ],
         "x-access": "app-admin",
+        "x-feature": "COMPETITIONS",
+        "x-plans": [
+          "STUDENT"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -241426,6 +242241,16 @@
           },
           "401": {
             "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "PLAN_REQUIRED: the feature is on and this person's role needs a plan they do not hold; `plan` names it",
             "content": {
               "application/json": {
                 "schema": {
@@ -241571,6 +242396,10 @@
           }
         ],
         "x-access": "app-admin",
+        "x-feature": "COMPETITIONS",
+        "x-plans": [
+          "STUDENT"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -241810,6 +242639,16 @@
               }
             }
           },
+          "402": {
+            "description": "PLAN_REQUIRED: the feature is on and this person's role needs a plan they do not hold; `plan` names it",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
           "403": {
             "description": "This role may not",
             "content": {
@@ -241891,6 +242730,10 @@
           }
         ],
         "x-access": "app-admin",
+        "x-feature": "COMPETITIONS",
+        "x-plans": [
+          "STUDENT"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -241936,6 +242779,16 @@
           },
           "401": {
             "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "PLAN_REQUIRED: the feature is on and this person's role needs a plan they do not hold; `plan` names it",
             "content": {
               "application/json": {
                 "schema": {
@@ -242043,6 +242896,10 @@
           }
         ],
         "x-access": "app-admin",
+        "x-feature": "COMPETITIONS",
+        "x-plans": [
+          "STUDENT"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -242274,6 +243131,16 @@
           },
           "401": {
             "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "PLAN_REQUIRED: the feature is on and this person's role needs a plan they do not hold; `plan` names it",
             "content": {
               "application/json": {
                 "schema": {
