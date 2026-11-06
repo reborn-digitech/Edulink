@@ -1,5 +1,5 @@
 import { competitionEnterBodySchema, competitionEnterResultSchema } from "@edulink/contracts";
-import { requireApiRole } from "@/lib/tenancy";
+import { requireApiRoles } from "@/lib/api-roles";
 import { enterCompetition } from "@/lib/competitions";
 import { apiFailure, apiInvalid, ok } from "@/lib/api-v1";
 import { underRules } from "@/lib/api-rule-failure";
@@ -12,7 +12,7 @@ import { underRules } from "@/lib/api-rule-failure";
  */
 export async function POST(request: Request, { params }: { params: Promise<{ competitionId: string }> }) {
   try {
-    const ctx = await requireApiRole("STUDENT", "PARENT");
+    const ctx = await requireApiRoles("STUDENT", "PARENT"); // a guardian's session names no school: the child in the body names it
     const { competitionId } = await params;
     const raw = await request.text();
     const parsed = competitionEnterBodySchema.safeParse(raw.trim().length === 0 ? undefined : JSON.parse(raw));

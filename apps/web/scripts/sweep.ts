@@ -3181,18 +3181,21 @@ async function main() {
   await check(teacher, "/competitions/new", 307, "a teacher cannot post one");
   await check(student, "/competitions/new", 307, "nor can a pupil");
 
+  // decision 0007 (6 Nov 2026): the platform's competitions are the marketplace, behind the COMPETITIONS switch — not
+  // found by anyone while the operator has it off (a page under a plan lock is still a 200: the plan card).
+  const marketplace = gate.on.has("COMPETITIONS") ? 200 : 404;
   if (openComp) {
     // EVERY role, at BOTH schools. A competition is not school-owned, and this
     // is the check that would fail if somebody "helpfully" scoped it.
     for (const actor of [admin, teacher, student, parent, otherAdmin]) {
-      await check(actor, `/competitions/${openComp.id}`, 200, "the catalogue is shared");
+      await check(actor, `/competitions/${openComp.id}`, marketplace, marketplace === 200 ? "the catalogue is shared" : "the marketplace is off for everyone (COMPETITIONS)");
     }
   }
   if (openComp) {
     // The results page is staff-only, and school-scoped by the policy rather
     // than by anything the page does.
-    await check(admin, `/competitions/${openComp.id}/entries`, 200, "this school's entries");
-    await check(teacher, `/competitions/${openComp.id}/entries`, 200, "staff record results");
+    await check(admin, `/competitions/${openComp.id}/entries`, marketplace, "this school's entries");
+    await check(teacher, `/competitions/${openComp.id}/entries`, marketplace, "staff record results");
     await check(student, `/competitions/${openComp.id}/entries`, 404, "not a pupil's page");
     await check(parent, `/competitions/${openComp.id}/entries`, 404, "nor a guardian's");
   }

@@ -1142,6 +1142,18 @@ export const en = {
     /** The example date is a VALUE and stays as written. */
     dateHint: "Year-month-day, e.g. 2026-10-01. Leave a date empty if there is none.",
     declineConfirm: "{child} will be taken out of {title}. They can always ask again.",
+    closesAfterEnd: "Enrolment cannot close after the event ends.",
+    pickABoard: "Pick who may see the internal board.",
+    chooseAChild: "Choose which child to enrol.",
+    addToCalendar: "Add one to the calendar",
+    childEnrolledDot: "Enrolled, with your consent.",
+    enrolChildIntro: "Enrolling your child counts as your consent.",
+    enrolChild: "Enrol {child}",
+    onTheCalendar: "On the calendar",
+    internalBoard: "This school's board",
+    internalBoardStaff: "Every entry with a result, as the office set the board to show staff.",
+    internalBoardSchool: "The top places by first name and class, and your own.",
+    you: "you",
   },
 
   /* ---------------------------------------------------------------------- */
@@ -3334,6 +3346,9 @@ export const en = {
     solutionTooShort: "Write the worked solution out.",
     noSuchTopic: "No such chapter.",
     noSuchQuestion: "No such question.",
+    marketplaceOffTitle: "The competition marketplace is off",
+    marketplaceOffBody: "The platform's competitions, the suggestions from the web and the crawler wait until the operator switches the feature on.",
+    marketplaceOffWhere: "The switch is on the operator's features page.",
   },
 
   /* ---------------------------------------------------------------------- */
@@ -3711,7 +3726,7 @@ export const en = {
     onlyTheSchoolOrAGuardianCan: "Only the school or a guardian can end a mentorship",
     onlyThisClassSTeacherCanWrite: "Only this class's teacher can write its report cards",
     pickADifferentYearToMoveInto: "Pick a different year to move into",
-    pickHolidayExamOrEvent: "Pick holiday, exam or event",
+    pickHolidayExamOrEvent: "Pick holiday, exam, event or competition",
     pleaseLogInAgain: "Please log in again",
     postNotFound: "Post not found",
     postingToTheGlobalFeedIsNot: "Posting to the global feed is not available yet.",
@@ -3785,6 +3800,7 @@ export const en = {
     youAreNotInThatClass: "You are not in that class",
     youCannotReviewPosts: "You cannot review posts",
     youHaveNotEnteredThisCompetition: "You have not entered this competition",
+    competitionEventHasItsOwnForm: "A competition is added with its own details: pick Competition as the kind.",
   },
 
   push: {
@@ -5900,6 +5916,31 @@ export const en = {
     confirmClose: "Yes, close {name}",
     notYet: "Not yet",
     closeTheYear: "Close the year",
+    competition: "Competition",
+    competitionHint: "A competition the school runs; pupils enrol from their agenda.",
+    competitionOption: "Competition — the school is open; pupils may enrol",
+    boardOff: "No internal board",
+    boardStaff: "Board for staff only",
+    boardSchool: "Board for the whole school",
+    boardOffHint: "Nobody sees a ranking; staff still record results on the entries page.",
+    boardStaffHint: "The office, the head and teachers see every entry with its name, class, score and place.",
+    boardSchoolHint: "Staff see everything; pupils and guardians of this school see the top places by first name and class, and their own place.",
+    competitionSummary: "One line about it",
+    competitionSummaryPlaceholder: "Two rounds in the hall; prizes at assembly",
+    enrolmentCloses: "Enrolment closes",
+    enrolmentClosesHint: "Leave empty to take enrolments until the event's last day.",
+    enrolmentOn: "Pupils may enrol",
+    enrolmentOnHint: "Off, the event is on the agenda for information only.",
+    board: "Internal board",
+    consentNeeded: "A pupil's own enrolment waits for a guardian's yes",
+    consentNeededHint: "A guardian who enrols the child has already said yes.",
+    competitionAdded: "The competition is on the calendar and on every pupil's agenda.",
+    competitionKindFixed: "A competition stays a competition; edit its details below.",
+    competitionArchived: "Pupils had entered, so the competition is kept, withdrawn from the list.",
+    competitionDeleted: "Nobody had entered, so the competition is gone with the event.",
+    enrolmentOpenShort: "Enrol by {date}",
+    enrolmentOffShort: "Enrolment off",
+    openCompetition: "Open the competition",
   },
   /* ---------------------------------------------------------------------- */
   /* The admin's surface — setting a school up, and keeping it running       */
@@ -8548,6 +8589,7 @@ export const en = {
     operatorResentInvite: "At the office's request, the Shalaghar team sent the administrator invitation for {email} again with a fresh link. The earlier link no longer works.",
     operatorSignInLink: "At the office's request, the Shalaghar team emailed {name} a one-time sign-in link for {school}. No password was set or seen. If nobody asked for this, tell the office.",
     operatorSignedOut: "At the office's request, the Shalaghar team signed {name} out of every device at {school}. They sign in again with what they know.",
+    grownUpEnrolledYou: "A grown-up at home enrolled you.",
   },
   digest: {
     attendedDays: "attended {n}/{total} days",
@@ -10258,6 +10300,12 @@ export const en = {
     link: "What is coming up",
     days14: "Next 14 days",
     days30: "Next 30 days",
+    kindCompetition: "Competition",
+    enrolled: "Enrolled",
+    consentWaiting: "Consent waiting",
+    enrolClosed: "Closed",
+    enrol: "Enrol",
+    enrolDone: "Done",
   },
   totp: {
     title: "Two-step sign-in",
@@ -18684,6 +18732,9 @@ export const en = {
     textMessagingName: "Text messaging",
     textMessagingWhat: "SMS and WhatsApp to families through the provider. Notices in the app and on phones are not affected.",
     textMessagingCount: "Texts not sent this month because this is off: {count}",
+    competitionsName: "Competition marketplace",
+    competitionsWhat: "The platform's competitions for every school, the content team's desk and the crawler. A school's own competitions are calendar events and are never behind this switch.",
+    competitionsCount: "{count} platform competitions published",
   },
   // ---- end feature-switches ----
   // website-builder B (15 Oct 2026): a school's own domain for its public website, and the operator's sites table.
