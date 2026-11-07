@@ -30,3 +30,18 @@ Policy 0002's reasoning carries through: an entry still names a child to the org
 - No board beyond the top five for a pupil or a guardian, and no board on the phone's detail yet (the door `GET …/board` is there).
 - The platform competitions' audience, the crawler and the desk are as they were; only the switch and the plan are new. The crawler's sources stay seeded.
 - Not decided: whether a school's competition with enrolment off should still count the pupils a teacher records results for (today it does: results are the staff's, enrolment the family's).
+
+## The owner's answers (7 November 2026)
+
+Asked after the batch landed, decided the same day:
+
+1. **A competition with enrolment off still counts the results staff record.** Enrolment off means the office
+   picks the entrants, as for a selected team; their results are results. No change.
+2. **The pupils' and guardians' board stays at the top five** plus the reader's own place: a child sees their place
+   and a sense of the top without the board becoming a ranking of the class (decision 0002).
+3. **The phone's office calendar will get the competition form** with the next phone batch; the doors exist, the
+   screen waits. Noted, not built here.
+4. **The /competitions list page stays for one term.** When the agenda has carried enrolment through a term, its
+   visits decide whether it goes; removing it is a one-line change then.
+5. **A guardian may not enrol a child into a platform competition without the child's plan.** The marketplace is the
+   paid part of the pupil plan; the school's own competitions stay free, which is the fairness case.
