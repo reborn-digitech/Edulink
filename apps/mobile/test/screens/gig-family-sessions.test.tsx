@@ -182,3 +182,24 @@ describe("sessions and workshops, for a family", () => {
     expect(await screen.findByText("The link opens once the seat is paid for.")).toBeTruthy();
   });
 });
+
+/* decision 0008 (7 Nov 2026): sessions in series — each session its own seat; "book the rest" is one order of individual seats. */
+describe("a series, for a family", () => {
+  const SERIES = { id: "ser1", kind: "WORKSHOP", title: "ZZ Bridges, a series of three", providerName: "ZZ Dr Rao", providerKind: "EXPERT", providerHeadline: "ZZ Careers in engineering", pricePaise: 0, sessions: [{ slotId: "s10", startsAt: "2030-10-10T10:00:00.000Z", endsAt: "2030-10-10T11:00:00.000Z", seatsLeft: 19, booked: true, bookingId: "b10" }, { slotId: "s11", startsAt: "2030-10-17T10:00:00.000Z", endsAt: "2030-10-17T11:00:00.000Z", seatsLeft: 19, booked: false, bookingId: null }, { slotId: "s12", startsAt: "2030-10-24T10:00:00.000Z", endsAt: "2030-10-24T11:00:00.000Z", seatsLeft: 0, booked: false, bookingId: null }], remaining: 1 };
+
+  it("lists the series with each session booked, open or full, and books the rest in one order with what is wanted from it", async () => {
+    const { calls } = await mountStaff(<FamilySessions />, "PARENT", {
+      [`GET ${PATH}`]: () => json(view([], [OPEN], { series: [SERIES] })),
+      [`POST /api/v1/gigs/series/ser1/book`]: () => json({ bookings: [{ slotId: "s11", bookingId: "b11", status: "CONFIRMED", checkout: null }], refused: [] }, 201),
+    });
+    expect(await screen.findByText("ZZ Bridges, a series of three")).toBeTruthy();
+    expect(screen.getByText(/3 sessions, 1 open to book/)).toBeTruthy();
+    expect(screen.getByText(/· Booked$/)).toBeTruthy();
+    expect(screen.getByText(/· Full$/)).toBeTruthy();
+    await fireEvent.press(screen.getByRole("button", { name: "Book the rest (1): ZZ Bridges, a series of three" }));
+    await fireEvent.changeText(screen.getByLabelText("What do you want from it?"), "ZZ The rest of the bridge series.");
+    await fireEvent.press(screen.getByRole("button", { name: "Book the rest (1)" }));
+    expect(await screen.findByText("1 sessions booked.")).toBeTruthy();
+    expect(calls().find((c) => c.line === "POST /api/v1/gigs/series/ser1/book")?.body).toEqual({ studentMembershipId: "m-child", purpose: "ZZ The rest of the bridge series." });
+  });
+});

@@ -874,6 +874,8 @@ export async function buildGigSessions(northgate: { id: string }, southbank: { i
   await db.school.updateMany({ where: { id: { in: [northgate.id, southbank.id] } }, data: { teacherGuidanceOn: true, selfReadAge: 8, pupilFeeViewAge: 8 } });
   const providers = [expert?.id, lead?.teacher.userId, otherTeacher?.userId].filter((id): id is string => Boolean(id));
   await db.gigSlot.deleteMany({ where: { providerUserId: { in: providers }, title: { startsWith: "ZZ " } } });
+  // Sessions in series (decision 0008): the series rows go with their sessions; a rebuild writes both afresh.
+  await db.gigSeries.deleteMany({ where: { providerUserId: { in: providers }, title: { startsWith: "ZZ " } } });
   if (!expert?.expertProfile?.publishedAt) return { confirmed: null };
   const pupil = async (email: string) => db.membership.findFirst({ where: { schoolId: northgate.id, role: "STUDENT", status: "ACTIVE", user: { email } }, select: { id: true, guardianships: { where: { status: "ACTIVE" }, take: 1, select: { parentUserId: true } } } });
   const [p1, p2] = [await pupil(`zz.pupil01@${DOMAIN}`), await pupil(`zz.pupil02@${DOMAIN}`)];
@@ -933,6 +935,21 @@ export async function buildGigSessions(northgate: { id: string }, southbank: { i
   }
   await slot(expert.id, "EXPERT", null, "ONE_TO_ONE", "ZZ Careers in applied science", at(14), 30, 1, 0);
   if (lead) await slot(lead.teacher.userId, "TEACHER", northgate.id, "ONE_TO_ONE", "ZZ Reading aloud, a half hour", at(5, 9), 30, 1, 0);
+  // ONE SERIES PER PROVIDER KIND (decision 0008, 7 Nov 2026): the expert's three dated workshops, pupil 01 holding a
+  // seat in the first (the sweep's parent books the rest), and the lead teacher's two dated half hours. Each session is
+  // a slot of its own, joined to the series by seriesId, exactly as offerSeries writes them.
+  const series = async (providerUserId: string, providerKind: string, teacherSchoolId: string | null, kind: string, title: string, starts: Date[], minutes: number, seats: number) => {
+    const row = await db.gigSeries.create({ data: { providerUserId, providerKind, teacherSchoolId, kind, title, meetingUrl: `https://meet.jit.si/${title.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`, minutes, seats, pricePaise: 0, rule: "DATES", ruleJson: JSON.stringify({ mode: "DATES", startsAt: starts.map((d) => d.toISOString()) }) }, select: { id: true } });
+    const slots: { id: string }[] = [];
+    for (const startsAt of starts) slots.push(await db.gigSlot.create({ data: { providerUserId, providerKind, teacherSchoolId, kind, title, startsAt, endsAt: new Date(startsAt.getTime() + minutes * 60_000), meetingUrl: `https://meet.jit.si/${title.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`, seats, seatsTaken: 0, seriesId: row.id }, select: { id: true } }));
+    return { id: row.id, slots };
+  };
+  const expertSeries = await series(expert.id, "EXPERT", null, "WORKSHOP", "ZZ Bridges, a series of three", [at(12, 11), at(19, 11), at(26, 11)], 60, 20);
+  if (p1 && expertSeries.slots[0]) {
+    await db.gigSlot.update({ where: { id: expertSeries.slots[0].id }, data: { seatsTaken: 1 } });
+    await seat(northgate.id, expertSeries.slots[0].id, p1.id, expert.id, "WORKSHOP", "CONFIRMED", p1.guardianships[0]?.parentUserId ?? expert.id, yearN, "ZZ The first of the bridge series.");
+  }
+  if (lead) await series(lead.teacher.userId, "TEACHER", northgate.id, "ONE_TO_ONE", "ZZ Reading aloud, two Fridays", [at(8, 9), at(15, 9)], 30, 1);
   const southPupil = await db.membership.findFirst({ where: { schoolId: southbank.id, role: "STUDENT", status: "ACTIVE", leftAt: null }, orderBy: { id: "asc" }, select: { id: true, userId: true } });
   if (otherTeacher && southPupil) {
     const f = await slot(otherTeacher.userId, "TEACHER", southbank.id, "ONE_TO_ONE", "ZZ Fractions before the unit test", at(6, 9), 30, 1, 1);

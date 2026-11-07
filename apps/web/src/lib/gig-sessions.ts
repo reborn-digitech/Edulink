@@ -8,6 +8,8 @@ import { AccessError } from "./tenancy";
 import { forSchool } from "./tenant-context";
 import { currentAcademicYear } from "./academic-year";
 import { isMeetingLink, meetingCapFor, meetingCapsOf, MEETING_SERVICE_NAMES, type MeetingCaps } from "./meeting-links";
+import { dateKeyRange, isDateKey, weekdayOfKey, zonedStartOfDay } from "./dates";
+import type { GigSeriesRule } from "@edulink/contracts";
 import { gigSettings, monthKey, type GigResult, type GigSettingsView } from "./gig-questions";
 import { HOLD_HOURS, UNPAID_SEAT_EXPIRY_MS, markCaptured, openCheckout, paymentSettings, paymentsOn, payoutAccountOf, refundSeatPayment, releaseDue, rupees, scheduleRelease, type PaymentSettings, type PayoutAccountView, type ReleaseRun, type SeatCheckout } from "./gig-payments";
 import type { ActiveContext } from "./session";
@@ -351,10 +353,16 @@ export async function teacherPaidGate(teacherUserId: string, settings?: PaymentS
   return { paymentsOn: on, payeeSaved: Boolean(payee?.upiId), canCharge: on && Boolean(payee?.upiId), seatPriceMinPaise: pay.seatPriceMinPaise, seatPriceMaxPaise: pay.seatPriceMaxPaise, commissionPercent: pay.commissionPercent };
 }
 
-/** A provider offers a time. */
-export async function offerSlot(ctx: ActiveContext, input: SlotInput, now: Date = new Date()): Promise<GigResult<{ slotId: string }>> {
-  const me = await provider(ctx);
-  const settings = await gigSettings();
+/** The shape of an offer once checked: what offerSlot writes as one slot and offerSeries as each session of a series. */
+type OfferShape = { title: string; minutes: number; seats: number; meetingUrl: string; pricePaise: number };
+
+/**
+ * THE CHECKS A TIME MUST PASS BEFORE IT IS OFFERED, the same for a single session and for each session of a series
+ * (decision 0008): the kind a teacher may offer, the price behind the provider's paid gate and within the band, the
+ * title, the length, the seats, the room on one of the four services, and the free-account cap of that service.
+ * The start and the clash with what the provider already offers are the caller's: a slot has one start, a series many.
+ */
+async function shapeOffer(me: Provider, input: Omit<SlotInput, "startsAt">, settings: GigSettingsView, now: Date): Promise<GigResult<{ shape: OfferShape }>> {
   if (me.kind === "TEACHER" && input.kind !== "ONE_TO_ONE") return { ok: false, errorKey: "gigs.refuseTeacherWorkshop" };
   const pricePaise = Math.round(input.pricePaise ?? 0);
   if (pricePaise < 0) return { ok: false, errorKey: "gigs.refusePrice", vars: { min: "", max: "" } };
@@ -380,10 +388,6 @@ export async function offerSlot(ctx: ActiveContext, input: SlotInput, now: Date 
   }
   const title = input.title.trim();
   if (title.length < 5 || title.length > 120) return { ok: false, errorKey: "gigs.refuseSlotTitle" };
-  const startsAt = new Date(input.startsAt);
-  if (Number.isNaN(startsAt.getTime())) return { ok: false, errorKey: "gigs.refuseSlotTime" };
-  if (startsAt.getTime() < now.getTime() + HOUR) return { ok: false, errorKey: "gigs.refuseSlotTooSoon" };
-  if (startsAt.getTime() > now.getTime() + 120 * 24 * HOUR) return { ok: false, errorKey: "gigs.refuseSlotTooFar" };
   const minutes = input.kind === "ONE_TO_ONE" ? ONE_TO_ONE_MINUTES : Math.round(input.minutes ?? 60);
   if (minutes < 30 || minutes > 180) return { ok: false, errorKey: "gigs.refuseSlotLength" };
   const seats = input.kind === "ONE_TO_ONE" ? 1 : Math.round(input.seats ?? settings.workshopMaxSeats);
@@ -394,12 +398,206 @@ export async function offerSlot(ctx: ActiveContext, input: SlotInput, now: Date 
   // The free-account length cap of the room's service, unless the provider has said their account is premium (decision 0008).
   const capped = await assertMeetingCap(me.userId, meetingUrl, minutes, settings);
   if (capped) return capped;
+  return { ok: true, shape: { title, minutes, seats, meetingUrl, pricePaise } };
+}
+
+/** A start a provider may offer: at least an hour from now, within 120 days. */
+function startRefusal(startsAt: Date, now: Date): GigResult<never> | null {
+  if (Number.isNaN(startsAt.getTime())) return { ok: false, errorKey: "gigs.refuseSlotTime" };
+  if (startsAt.getTime() < now.getTime() + HOUR) return { ok: false, errorKey: "gigs.refuseSlotTooSoon" };
+  if (startsAt.getTime() > now.getTime() + 120 * 24 * HOUR) return { ok: false, errorKey: "gigs.refuseSlotTooFar" };
+  return null;
+}
+
+/** A provider offers a time. */
+export async function offerSlot(ctx: ActiveContext, input: SlotInput, now: Date = new Date()): Promise<GigResult<{ slotId: string }>> {
+  const me = await provider(ctx);
+  const settings = await gigSettings();
+  const checked = await shapeOffer(me, input, settings, now);
+  if (!checked.ok) return checked;
+  const { title, minutes, seats, meetingUrl, pricePaise } = checked.shape;
+  const startsAt = new Date(input.startsAt);
+  const bad = startRefusal(startsAt, now);
+  if (bad) return bad;
   const endsAt = new Date(startsAt.getTime() + minutes * 60_000);
   const clash = await db.gigSlot.findFirst({ where: { providerUserId: me.userId, cancelledAt: null, startsAt: { lt: endsAt }, endsAt: { gt: startsAt } }, select: { id: true } });
   if (clash) return { ok: false, errorKey: "gigs.refuseSlotOverlap" };
   const slot = await db.gigSlot.create({ data: { providerUserId: me.userId, providerKind: me.kind, teacherSchoolId: me.schoolId, kind: input.kind, title, startsAt, endsAt, meetingUrl, seats, pricePaise }, select: { id: true } });
   await audit({ schoolId: me.schoolId, actorUserId: me.userId, action: "gig.slot.offer", targetType: "GigSlot", targetId: slot.id, meta: { kind: input.kind, seats, pricePaise } });
   return { ok: true, slotId: slot.id };
+}
+
+/* -------------------------------------------------------------------------- */
+/* Sessions in series (decision 0008, 7 November 2026)                          */
+/* -------------------------------------------------------------------------- */
+
+/** A series holds this many sessions at least and at most. */
+export const SERIES_MIN_SESSIONS = 2;
+export const SERIES_MAX_SESSIONS = 24;
+
+/**
+ * THE RULE'S STARTS, pure: a fixed list of instants, or every day of the chosen weekdays from one day to another at a
+ * wall-clock time in the provider's own zone (the expert's, or the teacher's school's). Sorted, repeats dropped; an
+ * unreadable rule gives nothing, which the offer refuses.
+ */
+export function expandSeriesRule(rule: GigSeriesRule, timeZone: string): Date[] {
+  const out: Date[] = [];
+  if (rule.mode === "DATES") {
+    for (const raw of rule.startsAt) {
+      const d = new Date(raw);
+      if (!Number.isNaN(d.getTime())) out.push(d);
+    }
+  } else {
+    const [hh, mm] = rule.time.split(":").map(Number) as [number, number];
+    if (!isDateKey(rule.from) || !isDateKey(rule.until) || rule.from > rule.until) return [];
+    if (!(hh >= 0 && hh < 24 && mm >= 0 && mm < 60)) return [];
+    for (const key of dateKeyRange(rule.from, rule.until, 200)) {
+      if (!rule.weekdays.includes(weekdayOfKey(key))) continue;
+      out.push(new Date(zonedStartOfDay(key, timeZone).getTime() + (hh * 60 + mm) * 60_000));
+    }
+  }
+  return [...new Map(out.map((d) => [d.getTime(), d])).values()].sort((a, b) => a.getTime() - b.getTime());
+}
+
+export type SeriesInput = { kind: SessionKind; title: string; meetingUrl: string; minutes?: number; seats?: number; pricePaise?: number; rule: GigSeriesRule };
+
+/**
+ * A provider offers a series: the shape of every session checked as one slot's is (shapeOffer: the kind, the paid
+ * gate and the band, the room, the free-account cap), the rule expanded in the provider's own zone to between two and
+ * twenty-four starts, each at least an hour ahead and within 120 days, none overlapping another or a time already
+ * offered; then the series row and its sessions in one transaction, each session a GigSlot as before — its own seats,
+ * its own price, its own cancellation. No pass: every seat is still bought one by one.
+ */
+export async function offerSeries(ctx: ActiveContext, input: SeriesInput, now: Date = new Date()): Promise<GigResult<{ seriesId: string; slotIds: string[] }>> {
+  const me = await provider(ctx);
+  const settings = await gigSettings();
+  const checked = await shapeOffer(me, input, settings, now);
+  if (!checked.ok) return checked;
+  const { title, minutes, seats, meetingUrl, pricePaise } = checked.shape;
+  const starts = expandSeriesRule(input.rule, me.timeZone ?? "Asia/Kolkata");
+  if (starts.length < SERIES_MIN_SESSIONS) return { ok: false, errorKey: "gigs.refuseSeriesFew", vars: { count: SERIES_MIN_SESSIONS } };
+  if (starts.length > SERIES_MAX_SESSIONS) return { ok: false, errorKey: "gigs.refuseSeriesMany", vars: { count: SERIES_MAX_SESSIONS } };
+  for (const startsAt of starts) {
+    const bad = startRefusal(startsAt, now);
+    if (bad) return bad;
+  }
+  const length = minutes * 60_000;
+  for (let i = 1; i < starts.length; i++) if (starts[i]!.getTime() < starts[i - 1]!.getTime() + length) return { ok: false, errorKey: "gigs.refuseSlotOverlap" };
+  const first = starts[0]!;
+  const lastEnd = new Date(starts[starts.length - 1]!.getTime() + length);
+  const existing = await db.gigSlot.findMany({ where: { providerUserId: me.userId, cancelledAt: null, startsAt: { lt: lastEnd }, endsAt: { gt: first } }, select: { startsAt: true, endsAt: true } });
+  for (const startsAt of starts) {
+    const endsAt = startsAt.getTime() + length;
+    if (existing.some((e) => e.startsAt.getTime() < endsAt && e.endsAt.getTime() > startsAt.getTime())) return { ok: false, errorKey: "gigs.refuseSlotOverlap" };
+  }
+  const made = await db.$tenantTransaction(async (raw) => {
+    const tx = raw as typeof db;
+    const series = await tx.gigSeries.create({ data: { providerUserId: me.userId, providerKind: me.kind, teacherSchoolId: me.schoolId, kind: input.kind, title, meetingUrl, minutes, seats, pricePaise, rule: input.rule.mode, ruleJson: JSON.stringify(input.rule) }, select: { id: true } });
+    const slotIds: string[] = [];
+    for (const startsAt of starts) {
+      const slot = await tx.gigSlot.create({ data: { providerUserId: me.userId, providerKind: me.kind, teacherSchoolId: me.schoolId, kind: input.kind, title, startsAt, endsAt: new Date(startsAt.getTime() + length), meetingUrl, seats, pricePaise, seriesId: series.id }, select: { id: true } });
+      slotIds.push(slot.id);
+    }
+    return { seriesId: series.id, slotIds };
+  });
+  await audit({ schoolId: me.schoolId, actorUserId: me.userId, action: "gig.series.offer", targetType: "GigSeries", targetId: made.seriesId, meta: { kind: input.kind, seats, pricePaise, sessions: made.slotIds.length, rule: input.rule.mode } });
+  return { ok: true, ...made };
+}
+
+/** The provider takes a whole series back: every session not yet begun is cancelled as one slot is (its seats given back, refunded, each family told), and the series is marked. */
+export async function cancelSeries(ctx: ActiveContext, seriesId: string, reason: string, now: Date = new Date()): Promise<GigResult<{ cancelled: number }>> {
+  const me = await offerer(ctx);
+  const series = await db.gigSeries.findFirst({ where: { id: seriesId, providerUserId: me.userId }, select: { id: true, cancelledAt: true } });
+  if (!series) throw new AccessError("gigs.noSuchSeries", "NOT_FOUND");
+  const why = reason.trim().slice(0, 300);
+  if (why.length < 3) return { ok: false, errorKey: "gigs.needReason" };
+  const slots = await db.gigSlot.findMany({ where: { seriesId: series.id, cancelledAt: null, startsAt: { gt: now } }, orderBy: { startsAt: "asc" }, select: { id: true } });
+  let cancelled = 0;
+  for (const slot of slots) {
+    const r = await cancelSlot(ctx, slot.id, why);
+    if (r.ok) cancelled += 1;
+  }
+  if (!series.cancelledAt) {
+    await db.gigSeries.update({ where: { id: series.id }, data: { cancelledAt: now, cancelReason: why } });
+    await audit({ schoolId: me.schoolId, actorUserId: me.userId, action: "gig.series.cancel", targetType: "GigSeries", targetId: series.id, meta: { cancelled } });
+  }
+  return { ok: true, cancelled };
+}
+
+export type ProviderSeries = { id: string; kind: SessionKind; title: string; rule: GigSeriesRule; minutes: number; seats: number; pricePaise: number; sessions: number; remaining: number; cancelled: boolean };
+
+/** A provider's series, newest first, each with how many sessions it holds and how many are still ahead. */
+async function seriesOf(providerUserId: string, now: Date): Promise<ProviderSeries[]> {
+  const rows = await db.gigSeries.findMany({ where: { providerUserId }, orderBy: { createdAt: "desc" }, take: 50 });
+  if (rows.length === 0) return [];
+  const ids = rows.map((r) => r.id);
+  const [all, ahead] = await Promise.all([
+    db.gigSlot.groupBy({ by: ["seriesId"], where: { seriesId: { in: ids } }, _count: { _all: true } }),
+    db.gigSlot.groupBy({ by: ["seriesId"], where: { seriesId: { in: ids }, cancelledAt: null, startsAt: { gt: now } }, _count: { _all: true } }),
+  ]);
+  const count = (list: { seriesId: string | null; _count: { _all: number } }[], id: string) => list.find((g) => g.seriesId === id)?._count._all ?? 0;
+  return rows.map((r) => ({ id: r.id, kind: r.kind as SessionKind, title: r.title, rule: readRule(r.ruleJson, r.rule), minutes: r.minutes, seats: r.seats, pricePaise: r.pricePaise, sessions: count(all, r.id), remaining: count(ahead, r.id), cancelled: r.cancelledAt !== null }));
+}
+
+/** The stored rule, read back; an unreadable one is an empty list of dates. */
+function readRule(json: string, mode: string): GigSeriesRule {
+  try {
+    const parsed = JSON.parse(json) as GigSeriesRule;
+    if (parsed && typeof parsed === "object" && (parsed.mode === "DATES" || parsed.mode === "WEEKLY")) return parsed;
+  } catch {
+    /* fall through */
+  }
+  return mode === "WEEKLY" ? { mode: "WEEKLY", weekdays: [], time: "00:00", from: "2000-01-01", until: "2000-01-01" } : { mode: "DATES", startsAt: [] };
+}
+
+export type FamilySeries = { id: string; kind: SessionKind; title: string; providerName: string; providerKind: "EXPERT" | "TEACHER" | "ALUMNUS"; providerHeadline: string | null; pricePaise: number; sessions: { slotId: string; startsAt: string; endsAt: string; seatsLeft: number; booked: boolean; bookingId: string | null }[]; remaining: number };
+
+/**
+ * The series a pupil may book into, from the open list: every series with a session open to them, each of its
+ * sessions ahead (open, full or already theirs), and how many "book the rest" would take.
+ */
+async function familySeriesOf(c: Child, open: OpenSlot[], now: Date): Promise<FamilySeries[]> {
+  const ids = [...new Set(open.map((s) => s.seriesId).filter((id): id is string => Boolean(id)))];
+  if (ids.length === 0) return [];
+  const rows = await db.gigSeries.findMany({ where: { id: { in: ids }, cancelledAt: null }, select: { id: true, kind: true, title: true, pricePaise: true, providerKind: true, provider: { select: { name: true, expertProfile: { select: { headline: true } } } }, slots: { where: { cancelledAt: null, startsAt: { gt: now } }, orderBy: { startsAt: "asc" }, select: { id: true, startsAt: true, endsAt: true, seats: true, seatsTaken: true } } } });
+  const mine = new Map((await db.gigBooking.findMany({ where: { schoolId: c.schoolId, studentMembershipId: c.membershipId, status: { in: LIVE }, slot: { seriesId: { in: ids } } }, select: { id: true, slotId: true } })).map((b) => [b.slotId, b.id]));
+  return rows.map((r) => {
+    const sessions = r.slots.map((s) => ({ slotId: s.id, startsAt: s.startsAt.toISOString(), endsAt: s.endsAt.toISOString(), seatsLeft: s.seats - s.seatsTaken, booked: mine.has(s.id), bookingId: mine.get(s.id) ?? null }));
+    return { id: r.id, kind: r.kind as SessionKind, title: r.title, providerName: r.provider.name, providerKind: r.providerKind as "EXPERT" | "TEACHER" | "ALUMNUS", providerHeadline: r.providerKind === "EXPERT" ? (r.provider.expertProfile?.headline ?? null) : null, pricePaise: r.pricePaise, sessions, remaining: sessions.filter((s) => !s.booked && s.seatsLeft > 0).length };
+  });
+}
+
+export type SeriesBooked = { bookings: { slotId: string; bookingId: string; status: BookingStatus; checkout: SeatCheckout | null }[]; refused: { slotId: string; errorKey: TranslationKey; vars?: Record<string, string | number> }[] };
+
+/**
+ * "BOOK THE REST" (decision 0008): one order of individual seats — every session of the series still ahead and not
+ * yet this pupil's, or the ones named — each booked exactly as a single seat is (bookSeat: the allowance for a free
+ * time, a guardian's consent or a pupil's ask, a paid seat's own order), in start order, a session that cannot be
+ * booked set aside with its reason and the rest still taken. Nothing is a pass: each booking is the guardian's choice
+ * and cancels, refunds and joins on its own.
+ */
+export async function bookSeries(ctx: ActiveContext, input: { seriesId: string; studentMembershipId?: string | null; purpose: string; slotIds?: string[] | null }, now: Date = new Date()): Promise<GigResult<SeriesBooked>> {
+  const c = await child(ctx, input.studentMembershipId);
+  const series = await db.gigSeries.findFirst({ where: { id: input.seriesId, cancelledAt: null }, select: { id: true } });
+  if (!series) throw new AccessError("gigs.noSuchSeries", "NOT_FOUND");
+  const mine = new Set((await db.gigBooking.findMany({ where: { schoolId: c.schoolId, studentMembershipId: c.membershipId, status: { in: LIVE }, slot: { seriesId: series.id } }, select: { slotId: true } })).map((b) => b.slotId));
+  const chosen = input.slotIds && input.slotIds.length > 0 ? new Set(input.slotIds) : null;
+  const slots = await db.gigSlot.findMany({ where: { seriesId: series.id, cancelledAt: null, startsAt: { gt: now } }, orderBy: { startsAt: "asc" }, select: { id: true } });
+  const targets = slots.filter((s) => !mine.has(s.id) && (!chosen || chosen.has(s.id)));
+  if (targets.length === 0) return { ok: false, errorKey: "gigs.refuseSeriesNothing" };
+  const out: SeriesBooked = { bookings: [], refused: [] };
+  for (const slot of targets) {
+    try {
+      const r = await bookSeat(ctx, { slotId: slot.id, studentMembershipId: c.membershipId, purpose: input.purpose }, now);
+      if (r.ok) out.bookings.push({ slotId: slot.id, bookingId: r.bookingId, status: r.status, checkout: r.checkout });
+      else out.refused.push({ slotId: slot.id, errorKey: r.errorKey, vars: r.vars });
+    } catch (error) {
+      if (error instanceof AccessError) out.refused.push({ slotId: slot.id, errorKey: error.key, vars: error.vars });
+      else throw error;
+    }
+  }
+  if (out.bookings.length === 0 && out.refused[0]) return { ok: false, errorKey: out.refused[0].errorKey, vars: out.refused[0].vars };
+  return { ok: true, ...out };
 }
 
 type BookingRow = { id: string; schoolId: string; slotId: string; studentMembershipId: string; providerUserId: string; kind: string; status: string; purpose: string; lateCancel: boolean; paid: boolean; rating: number | null; feedback: string | null; createdAt: Date };
@@ -430,6 +628,8 @@ export type ProviderSlot = {
   cancelled: boolean;
   /** It has begun, so its seats can be marked. */
   started: boolean;
+  /** The series it is one of (decision 0008); null for a single session. */
+  seriesId: string | null;
   bookings: { id: string; pupilName: string; schoolName: string; purpose: string; status: BookingStatus; paid: boolean; rating: number | null; feedback: string | null }[];
 };
 export type Duty = { deliveredOneToOnes: number; heldWorkshops: number; oneToOnesThisMonth: number; workshopsThisQuarter: number; startOneToOnes: number; startWorkshops: number; monthlyOneToOnes: number; quarterlyWorkshops: number };
@@ -437,7 +637,7 @@ export type Duty = { deliveredOneToOnes: number; heldWorkshops: number; oneToOne
 export type ProviderEarnings = { heldPaise: number; duePaise: number; paidPaise: number; refundedPaise: number; seats: number };
 /** The provider's meeting account (decision 0008, 7 Nov 2026): their word that it is premium, and the free-account cap per service in minutes (0 none) that holds a session's length while it is not. */
 export type MeetingAccount = { premium: boolean; caps: MeetingCaps };
-export type ProviderView = { enabled: boolean; kind: "EXPERT" | "TEACHER"; /** The clock the times are read in: the expert's own, or the teacher's school's. */ timeZone: string; duty: Duty | null; /** An expert's standing to charge, condition by condition; null for a teacher. */ gate: PaidGate | null; /** A teacher's standing to price guidance (seats, 17 Oct 2026); null for an expert. */ teacherGate: TeacherPaidGate | null; earnings: ProviderEarnings | null; meeting: MeetingAccount; slots: ProviderSlot[] };
+export type ProviderView = { enabled: boolean; kind: "EXPERT" | "TEACHER"; /** The clock the times are read in: the expert's own, or the teacher's school's. */ timeZone: string; duty: Duty | null; /** An expert's standing to charge, condition by condition; null for a teacher. */ gate: PaidGate | null; /** A teacher's standing to price guidance (seats, 17 Oct 2026); null for an expert. */ teacherGate: TeacherPaidGate | null; earnings: ProviderEarnings | null; meeting: MeetingAccount; /** The provider's series (decision 0008). */ series: ProviderSeries[]; slots: ProviderSlot[] };
 
 /** The provider's meeting account as the forms read it: the person's word and the operator's caps. */
 export async function meetingAccountOf(userId: string, settings?: GigSettingsView): Promise<MeetingAccount> {
@@ -486,7 +686,7 @@ const quarterStart = (at: Date) => new Date(Date.UTC(at.getUTCFullYear(), Math.f
 export async function mySlots(ctx: ActiveContext, now: Date = new Date()): Promise<ProviderView> {
   const me = await providerOrOff(ctx);
   const settings = await gigSettings();
-  if (!me) return { enabled: false, kind: "TEACHER", timeZone: "Asia/Kolkata", duty: null, gate: null, teacherGate: null, earnings: null, meeting: { premium: false, caps: meetingCapsOf(settings) }, slots: [] };
+  if (!me) return { enabled: false, kind: "TEACHER", timeZone: "Asia/Kolkata", duty: null, gate: null, teacherGate: null, earnings: null, meeting: { premium: false, caps: meetingCapsOf(settings) }, series: [], slots: [] };
   const slots = await db.gigSlot.findMany({ where: { providerUserId: me.userId, startsAt: { gte: new Date(now.getTime() - 60 * 24 * HOUR) } }, orderBy: { startsAt: "asc" }, take: 300 });
   const bookings: BookingRow[] = slots.length ? await db.gigBooking.findMany({ where: { providerUserId: me.userId, slotId: { in: slots.map((s) => s.id) }, status: { not: "CANCELLED" } }, orderBy: { createdAt: "asc" }, select: BOOKING_SELECT }) : [];
   const names = await pupilNames(bookings);
@@ -514,6 +714,7 @@ export async function mySlots(ctx: ActiveContext, now: Date = new Date()): Promi
     teacherGate: me.kind === "TEACHER" ? await teacherPaidGate(me.userId) : null,
     earnings: await providerEarnings(me.userId),
     meeting: await meetingAccountOf(me.userId, settings),
+    series: await seriesOf(me.userId, now),
     slots: slots.map((s) => ({
       id: s.id,
       kind: s.kind as SessionKind,
@@ -526,6 +727,7 @@ export async function mySlots(ctx: ActiveContext, now: Date = new Date()): Promi
       pricePaise: s.pricePaise,
       cancelled: s.cancelledAt !== null,
       started: s.startsAt <= now,
+      seriesId: s.seriesId,
       bookings: bookings
         .filter((b) => b.slotId === s.id)
         .map((b) => ({ id: b.id, pupilName: names.get(b.studentMembershipId)?.name ?? "", schoolName: names.get(b.studentMembershipId)?.schoolName ?? "", purpose: b.purpose, status: b.status as BookingStatus, paid: b.paid, rating: b.rating, feedback: b.feedback })),
@@ -606,7 +808,7 @@ export function mayJoin(b: { status: string; paid: boolean; payment: { status: s
   return b.status === "CONFIRMED" && (!b.paid || (b.payment !== null && MONEY_IN.has(b.payment.status)));
 }
 
-export type OpenSlot = { id: string; kind: SessionKind; title: string; startsAt: string; endsAt: string; seatsLeft: number; providerName: string; providerKind: "EXPERT" | "TEACHER" | "ALUMNUS"; providerHeadline: string | null; /** What a seat costs past the pupil's allowance; 0 is free. */ pricePaise: number; /** This pupil still has a free seat of this kind, so the price is not asked. */ freeSeat: boolean };
+export type OpenSlot = { id: string; kind: SessionKind; title: string; startsAt: string; endsAt: string; seatsLeft: number; providerName: string; providerKind: "EXPERT" | "TEACHER" | "ALUMNUS"; providerHeadline: string | null; /** What a seat costs past the pupil's allowance; 0 is free. */ pricePaise: number; /** This pupil still has a free seat of this kind, so the price is not asked. */ freeSeat: boolean; /** The series it is one of (decision 0008); null for a single session. */ seriesId: string | null };
 
 /** The times a pupil could take a seat in: published experts' and their own school's teachers', not begun, not full, not already theirs. */
 async function openFor(c: Child, now: Date, allowance: Allowance, kinds: Set<string>): Promise<OpenSlot[]> {
@@ -614,12 +816,12 @@ async function openFor(c: Child, now: Date, allowance: Allowance, kinds: Set<str
     where: { cancelledAt: null, startsAt: { gt: now }, OR: [{ providerKind: "EXPERT" }, { providerKind: { in: ["TEACHER", "ALUMNUS"] }, teacherSchoolId: c.schoolId }], ...(await readerIsFixture(c.schoolId) ? {} : { provider: { isTestFixture: false } }) },
     orderBy: { startsAt: "asc" },
     take: 300,
-    select: { id: true, kind: true, title: true, startsAt: true, endsAt: true, seats: true, seatsTaken: true, pricePaise: true, providerKind: true, providerUserId: true, provider: { select: { name: true, expertProfile: { select: { headline: true, publishedAt: true, disabledAt: true } } } } },
+    select: { id: true, kind: true, title: true, startsAt: true, endsAt: true, seats: true, seatsTaken: true, pricePaise: true, providerKind: true, providerUserId: true, seriesId: true, provider: { select: { name: true, expertProfile: { select: { headline: true, publishedAt: true, disabledAt: true } } } } },
   });
   const mine = new Set((await db.gigBooking.findMany({ where: { schoolId: c.schoolId, studentMembershipId: c.membershipId, status: { in: LIVE } }, select: { slotId: true } })).map((b) => b.slotId));
   return slots
     .filter((s) => kinds.has(s.providerKind) && s.seatsTaken < s.seats && !mine.has(s.id) && (s.providerKind !== "EXPERT" || Boolean(s.provider.expertProfile?.publishedAt && !s.provider.expertProfile.disabledAt)) && s.providerUserId !== c.userId)
-    .map((s) => ({ id: s.id, kind: s.kind as SessionKind, title: s.title, startsAt: s.startsAt.toISOString(), endsAt: s.endsAt.toISOString(), seatsLeft: s.seats - s.seatsTaken, providerName: s.provider.name, providerKind: s.providerKind as "EXPERT" | "TEACHER" | "ALUMNUS", providerHeadline: s.providerKind === "EXPERT" ? (s.provider.expertProfile?.headline ?? null) : null, pricePaise: s.pricePaise, freeSeat: isFreeSeat(s.providerKind, s.pricePaise, allowance[s.kind as SessionKind].left) }));
+    .map((s) => ({ id: s.id, kind: s.kind as SessionKind, title: s.title, startsAt: s.startsAt.toISOString(), endsAt: s.endsAt.toISOString(), seatsLeft: s.seats - s.seatsTaken, providerName: s.provider.name, providerKind: s.providerKind as "EXPERT" | "TEACHER" | "ALUMNUS", providerHeadline: s.providerKind === "EXPERT" ? (s.provider.expertProfile?.headline ?? null) : null, pricePaise: s.pricePaise, freeSeat: isFreeSeat(s.providerKind, s.pricePaise, allowance[s.kind as SessionKind].left), seriesId: s.seriesId }));
 }
 
 export type FamilyBooking = {
@@ -649,7 +851,7 @@ export type FamilyBooking = {
   canRate: boolean;
   canReportUnheld: boolean;
 };
-export type FamilyChild = { id: string; name: string; schoolName: string; /** The school's clock, which the times are read in. */ timeZone: string; /** Who reads this pays for a priced seat themselves: a guardian, or a pupil of eighteen or more; a pupil under eighteen asks a parent (seats, 17 Oct 2026). */ selfPays: boolean; allowance: Allowance; bookings: FamilyBooking[]; open: OpenSlot[] };
+export type FamilyChild = { id: string; name: string; schoolName: string; /** The school's clock, which the times are read in. */ timeZone: string; /** Who reads this pays for a priced seat themselves: a guardian, or a pupil of eighteen or more; a pupil under eighteen asks a parent (seats, 17 Oct 2026). */ selfPays: boolean; allowance: Allowance; bookings: FamilyBooking[]; open: OpenSlot[]; /** The series with a session open to this pupil (decision 0008). */ series: FamilySeries[] };
 
 /** Everything a pupil, or a guardian for each of their children, sees of sessions: the allowance, their seats, and what is open. */
 export async function familySessions(ctx: ActiveContext, now: Date = new Date()): Promise<{ children: FamilyChild[]; /** A confirmed seat given up inside this many hours of the start still counts. */ freeCancelHours: number; /** The operator's switch: a priced seat past the allowance can be bought. */ paymentsOn: boolean }> {
@@ -667,6 +869,7 @@ export async function familySessions(ctx: ActiveContext, now: Date = new Date())
     });
     const allowance = await allowanceOf(c, settings);
     const selfPays = ctx.role === "PARENT" || !c.isMinor;
+    const open = await openFor(c, now, allowance, kinds);
     out.push({
       id: c.membershipId,
       name: c.name,
@@ -674,7 +877,8 @@ export async function familySessions(ctx: ActiveContext, now: Date = new Date())
       timeZone: c.timeZone,
       selfPays,
       allowance,
-      open: await openFor(c, now, allowance, kinds),
+      open,
+      series: await familySeriesOf(c, open, now),
       bookings: rows.filter((b) => kinds.has(b.slot.providerKind)).map((b) => {
         const status = b.status as BookingStatus;
         const begun = b.slot.startsAt <= now;

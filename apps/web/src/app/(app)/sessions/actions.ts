@@ -4,7 +4,7 @@ import { revalidatePath } from "next/cache";
 import { getT } from "@/lib/i18n/server";
 import { AccessError } from "@/lib/tenancy";
 import { requireApiSession } from "@/lib/api-reads/shared";
-import { bookSeat, cancelBooking, cancelSlot, closeBooking, consentToBooking, offerSlot, rateBooking, reportUnheld, seatCheckout, setPremiumMeeting, setTeacherGuidance, type SlotInput } from "@/lib/gig-sessions";
+import { bookSeat, bookSeries, cancelBooking, cancelSeries, cancelSlot, closeBooking, consentToBooking, offerSeries, offerSlot, rateBooking, reportUnheld, seatCheckout, setPremiumMeeting, setTeacherGuidance, type SeriesInput, type SlotInput } from "@/lib/gig-sessions";
 import type { GigResult } from "@/lib/gig-questions";
 import { assertFeatureForAction } from "@/lib/feature-page";
 import { SESSION_FEATURES } from "@/lib/nav";
@@ -63,6 +63,23 @@ export async function closeSeatAction(bookingId: string, outcome: "DELIVERED" | 
 export async function seatCheckoutAction(bookingId: string) {
   return run(async () => seatCheckout(await requireApiSession(), bookingId));
 }
+/* ---- sessions in series (decision 0008, 7 Nov 2026) ---- */
+export async function offerSeriesAction(input: SeriesInput) {
+  return run(async () => offerSeries(await requireApiSession(), input));
+}
+export async function cancelSeriesAction(seriesId: string, reason: string) {
+  return run(async () => cancelSeries(await requireApiSession(), seriesId, reason));
+}
+/** One order of individual seats: every remaining session of the series, or the ticked ones; each refusal comes back as the reader's sentence. */
+export async function bookSeriesAction(input: { seriesId: string; studentMembershipId: string; purpose: string; slotIds?: string[] }) {
+  return run(async () => {
+    const result = await bookSeries(await requireApiSession(), input);
+    if (!result.ok) return result;
+    const t = await getT();
+    return { ok: true as const, bookings: result.bookings, refused: result.refused.map((r) => ({ slotId: r.slotId, reason: t(r.errorKey, r.vars) })) };
+  });
+}
+
 /** The provider's word that their meeting account is premium (decision 0008), which lifts the service's free-account length cap. */
 export async function premiumMeetingAction(premium: boolean) {
   return run(async () => setPremiumMeeting(await requireApiSession(), premium));

@@ -200,6 +200,23 @@ export function ProviderSessions() {
               ))
             )}
           </Card>
+          {/* Sessions in series (decision 0008): offered on the web in one go; listed and taken back here. */}
+          {(d.series ?? []).length > 0 ? (
+            <Card title={t("gigs.yourSeries")}>
+              {(d.series ?? []).map((s) => (
+                <View key={s.id} style={{ gap: th.space[2], paddingVertical: th.space[2], borderTopWidth: 1, borderTopColor: th.border }}>
+                  <Text variant="base" bold>
+                    {s.title}
+                  </Text>
+                  <Text variant="xs" tone="muted">
+                    {[t(SESSION_KIND[s.kind]), s.rule.mode === "DATES" ? t("gigs.seriesRuleDATES", { count: s.rule.startsAt.length }) : t("gigs.seriesRuleWEEKLY", { days: s.rule.weekdays.map((day) => t(`gigs.weekday${day}` as never)).join(", "), time: s.rule.time, until: s.rule.until }), t("gigs.seriesLine", { sessions: s.sessions, remaining: s.remaining }), s.pricePaise > 0 ? t("gigs.seatPrice", { amount: money(s.pricePaise, locale) }) : null].filter(Boolean).join(" · ")}
+                  </Text>
+                  {s.cancelled ? <Pill label={t("gigs.seriesIsCancelled")} /> : null}
+                  {!s.cancelled && s.remaining > 0 ? <ReasonThen label={t("gigs.seriesCancel")} about={s.title} busy={running(`/api/v1/gigs/series/${s.id}/cancel`)} onSubmit={(reason) => act.mutate({ path: `/api/v1/gigs/series/${s.id}/cancel`, body: { reason }, done: t("gigs.slotCancelled") })} /> : null}
+                </View>
+              ))}
+            </Card>
+          ) : null}
           {d.kind === "EXPERT" ? (
             <>
               <GetPaidCard />

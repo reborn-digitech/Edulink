@@ -99580,7 +99580,7 @@
     },
     "/api/v1/gigs/sessions": {
       "get": {
-        "summary": "For a pupil, or each of a guardian's children: the free allowance of the school year (spent on free times alone), their seats (the meeting link only once one is confirmed and, when priced, paid), who pays for a priced seat, and the times open to book (never with a link)",
+        "summary": "For a pupil, or each of a guardian's children: the free allowance of the school year (spent on free times alone), their seats (the meeting link only once one is confirmed and, when priced, paid), who pays for a priced seat, the times open to book (never with a link), and the series with a session open to them, each session with whether it is already theirs (decision 0008)",
         "description": "Roles: STUDENT, PARENT.",
         "security": [
           {
@@ -99857,6 +99857,14 @@
                                 },
                                 "freeSeat": {
                                   "type": "boolean"
+                                },
+                                "seriesId": {
+                                  "allOf": [
+                                    {
+                                      "$ref": "#/properties/children/items/properties/id"
+                                    }
+                                  ],
+                                  "nullable": true
                                 }
                               },
                               "required": [
@@ -99871,6 +99879,91 @@
                                 "providerHeadline",
                                 "pricePaise",
                                 "freeSeat"
+                              ],
+                              "additionalProperties": false
+                            }
+                          },
+                          "series": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "id": {
+                                  "$ref": "#/properties/children/items/properties/id"
+                                },
+                                "kind": {
+                                  "$ref": "#/properties/children/items/properties/bookings/items/properties/kind"
+                                },
+                                "title": {
+                                  "type": "string"
+                                },
+                                "providerName": {
+                                  "type": "string"
+                                },
+                                "providerKind": {
+                                  "$ref": "#/properties/children/items/properties/bookings/items/properties/providerKind"
+                                },
+                                "providerHeadline": {
+                                  "type": "string",
+                                  "nullable": true
+                                },
+                                "pricePaise": {
+                                  "type": "integer"
+                                },
+                                "sessions": {
+                                  "type": "array",
+                                  "items": {
+                                    "type": "object",
+                                    "properties": {
+                                      "slotId": {
+                                        "$ref": "#/properties/children/items/properties/id"
+                                      },
+                                      "startsAt": {
+                                        "type": "string"
+                                      },
+                                      "endsAt": {
+                                        "type": "string"
+                                      },
+                                      "seatsLeft": {
+                                        "type": "integer"
+                                      },
+                                      "booked": {
+                                        "type": "boolean"
+                                      },
+                                      "bookingId": {
+                                        "allOf": [
+                                          {
+                                            "$ref": "#/properties/children/items/properties/id"
+                                          }
+                                        ],
+                                        "nullable": true
+                                      }
+                                    },
+                                    "required": [
+                                      "slotId",
+                                      "startsAt",
+                                      "endsAt",
+                                      "seatsLeft",
+                                      "booked",
+                                      "bookingId"
+                                    ],
+                                    "additionalProperties": false
+                                  }
+                                },
+                                "remaining": {
+                                  "type": "integer"
+                                }
+                              },
+                              "required": [
+                                "id",
+                                "kind",
+                                "title",
+                                "providerName",
+                                "providerKind",
+                                "providerHeadline",
+                                "pricePaise",
+                                "sessions",
+                                "remaining"
                               ],
                               "additionalProperties": false
                             }
@@ -101666,7 +101759,7 @@
                       ],
                       "additionalProperties": false
                     },
-                    "slots": {
+                    "series": {
                       "type": "array",
                       "items": {
                         "type": "object",
@@ -101682,6 +101775,124 @@
                               "ONE_TO_ONE",
                               "WORKSHOP"
                             ]
+                          },
+                          "title": {
+                            "type": "string"
+                          },
+                          "rule": {
+                            "anyOf": [
+                              {
+                                "type": "object",
+                                "properties": {
+                                  "mode": {
+                                    "type": "string",
+                                    "enum": [
+                                      "DATES"
+                                    ]
+                                  },
+                                  "startsAt": {
+                                    "type": "array",
+                                    "items": {
+                                      "type": "string",
+                                      "maxLength": 40
+                                    },
+                                    "minItems": 1,
+                                    "maxItems": 40
+                                  }
+                                },
+                                "required": [
+                                  "mode",
+                                  "startsAt"
+                                ],
+                                "additionalProperties": false
+                              },
+                              {
+                                "type": "object",
+                                "properties": {
+                                  "mode": {
+                                    "type": "string",
+                                    "enum": [
+                                      "WEEKLY"
+                                    ]
+                                  },
+                                  "weekdays": {
+                                    "type": "array",
+                                    "items": {
+                                      "type": "integer",
+                                      "minimum": 0,
+                                      "maximum": 6
+                                    },
+                                    "minItems": 1,
+                                    "maxItems": 7
+                                  },
+                                  "time": {
+                                    "type": "string",
+                                    "pattern": "^\\d{2}:\\d{2}$"
+                                  },
+                                  "from": {
+                                    "type": "string",
+                                    "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+                                  },
+                                  "until": {
+                                    "type": "string",
+                                    "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+                                  }
+                                },
+                                "required": [
+                                  "mode",
+                                  "weekdays",
+                                  "time",
+                                  "from",
+                                  "until"
+                                ],
+                                "additionalProperties": false
+                              }
+                            ]
+                          },
+                          "minutes": {
+                            "type": "integer"
+                          },
+                          "seats": {
+                            "type": "integer"
+                          },
+                          "pricePaise": {
+                            "type": "integer"
+                          },
+                          "sessions": {
+                            "type": "integer"
+                          },
+                          "remaining": {
+                            "type": "integer"
+                          },
+                          "cancelled": {
+                            "type": "boolean"
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "kind",
+                          "title",
+                          "rule",
+                          "minutes",
+                          "seats",
+                          "pricePaise",
+                          "sessions",
+                          "remaining",
+                          "cancelled"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "slots": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "$ref": "#/properties/series/items/properties/id"
+                          },
+                          "kind": {
+                            "$ref": "#/properties/series/items/properties/kind"
                           },
                           "title": {
                             "type": "string"
@@ -101710,13 +101921,21 @@
                           "started": {
                             "type": "boolean"
                           },
+                          "seriesId": {
+                            "allOf": [
+                              {
+                                "$ref": "#/properties/series/items/properties/id"
+                              }
+                            ],
+                            "nullable": true
+                          },
                           "bookings": {
                             "type": "array",
                             "items": {
                               "type": "object",
                               "properties": {
                                 "id": {
-                                  "$ref": "#/properties/slots/items/properties/id"
+                                  "$ref": "#/properties/series/items/properties/id"
                                 },
                                 "pupilName": {
                                   "type": "string"
@@ -102141,6 +102360,607 @@
             }
           }
         }
+      }
+    },
+    "/api/v1/gigs/series": {
+      "post": {
+        "summary": "Offer a series of sessions in one go — a fixed list of dates, or a weekly pattern (days of the week at a time, from a day until a day) — each session a slot of its own with the series' title, length, seats, room and price, two to twenty-four of them, each checked as a single time is (the paid gate, the band, the room's service and its free-account cap, no overlap)",
+        "description": "Roles: EXPERT, TEACHER.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "EXPERT",
+          "TEACHER"
+        ],
+        "x-feature": [
+          "EXPERT_SESSIONS",
+          "TEACHER_SESSIONS"
+        ],
+        "x-plans": [
+          "TEACHER",
+          "EXPERT"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "seriesId": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 64
+                    },
+                    "slotIds": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/properties/seriesId"
+                      }
+                    }
+                  },
+                  "required": [
+                    "seriesId",
+                    "slotIds"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "PLAN_REQUIRED: the feature is on and this person's role needs a plan they do not hold; `plan` names it",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "kind": {
+                    "type": "string",
+                    "enum": [
+                      "ONE_TO_ONE",
+                      "WORKSHOP"
+                    ]
+                  },
+                  "title": {
+                    "type": "string",
+                    "maxLength": 200
+                  },
+                  "meetingUrl": {
+                    "type": "string",
+                    "maxLength": 600
+                  },
+                  "minutes": {
+                    "type": "integer"
+                  },
+                  "seats": {
+                    "type": "integer"
+                  },
+                  "pricePaise": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 10000000
+                  },
+                  "rule": {
+                    "anyOf": [
+                      {
+                        "type": "object",
+                        "properties": {
+                          "mode": {
+                            "type": "string",
+                            "enum": [
+                              "DATES"
+                            ]
+                          },
+                          "startsAt": {
+                            "type": "array",
+                            "items": {
+                              "type": "string",
+                              "maxLength": 40
+                            },
+                            "minItems": 1,
+                            "maxItems": 40
+                          }
+                        },
+                        "required": [
+                          "mode",
+                          "startsAt"
+                        ],
+                        "additionalProperties": false
+                      },
+                      {
+                        "type": "object",
+                        "properties": {
+                          "mode": {
+                            "type": "string",
+                            "enum": [
+                              "WEEKLY"
+                            ]
+                          },
+                          "weekdays": {
+                            "type": "array",
+                            "items": {
+                              "type": "integer",
+                              "minimum": 0,
+                              "maximum": 6
+                            },
+                            "minItems": 1,
+                            "maxItems": 7
+                          },
+                          "time": {
+                            "type": "string",
+                            "pattern": "^\\d{2}:\\d{2}$"
+                          },
+                          "from": {
+                            "type": "string",
+                            "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+                          },
+                          "until": {
+                            "type": "string",
+                            "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+                          }
+                        },
+                        "required": [
+                          "mode",
+                          "weekdays",
+                          "time",
+                          "from",
+                          "until"
+                        ],
+                        "additionalProperties": false
+                      }
+                    ]
+                  }
+                },
+                "required": [
+                  "kind",
+                  "title",
+                  "meetingUrl",
+                  "rule"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/gigs/series/{seriesId}/cancel": {
+      "post": {
+        "summary": "The provider takes a whole series back with a reason: every session not yet begun is cancelled as one time is, each seat given back or refunded and each family told; anybody else's series is not found",
+        "description": "Roles: EXPERT, TEACHER.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "EXPERT",
+          "TEACHER"
+        ],
+        "x-feature": [
+          "EXPERT_SESSIONS",
+          "TEACHER_SESSIONS"
+        ],
+        "x-plans": [
+          "TEACHER",
+          "EXPERT"
+        ],
+        "x-reach": {
+          "EXPERT": "self",
+          "TEACHER": "self"
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "cancelled": {
+                      "type": "integer"
+                    }
+                  },
+                  "required": [
+                    "cancelled"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "PLAN_REQUIRED: the feature is on and this person's role needs a plan they do not hold; `plan` names it",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "reason": {
+                    "type": "string",
+                    "maxLength": 300
+                  }
+                },
+                "required": [
+                  "reason"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "seriesId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/gigs/series/{seriesId}/book": {
+      "post": {
+        "summary": "One order of individual seats: every remaining session of the series, or the ones named, each booked as a single seat is (a guardian's booking confirmed or waiting for its payment, a pupil's ask waiting for a guardian), a session that cannot be booked set aside with its reason; no pass and no standing access",
+        "description": "Roles: STUDENT, PARENT.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "STUDENT",
+          "PARENT"
+        ],
+        "x-feature": [
+          "EXPERT_SESSIONS",
+          "TEACHER_SESSIONS"
+        ],
+        "x-plans": [
+          "TEACHER",
+          "EXPERT"
+        ],
+        "x-reach": {
+          "STUDENT": "self",
+          "PARENT": "ownChild"
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "bookings": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "slotId": {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 64
+                          },
+                          "bookingId": {
+                            "$ref": "#/properties/bookings/items/properties/slotId"
+                          },
+                          "status": {
+                            "type": "string",
+                            "enum": [
+                              "PENDING_CONSENT",
+                              "PENDING_PAYMENT",
+                              "CONFIRMED",
+                              "CANCELLED",
+                              "DELIVERED",
+                              "MISSED",
+                              "UNHELD"
+                            ]
+                          },
+                          "checkout": {
+                            "type": "object",
+                            "properties": {
+                              "paymentId": {
+                                "$ref": "#/properties/bookings/items/properties/slotId"
+                              },
+                              "bookingId": {
+                                "$ref": "#/properties/bookings/items/properties/slotId"
+                              },
+                              "orderId": {
+                                "type": "string"
+                              },
+                              "keyId": {
+                                "type": "string"
+                              },
+                              "amountPaise": {
+                                "type": "integer"
+                              },
+                              "currency": {
+                                "type": "string",
+                                "enum": [
+                                  "INR"
+                                ]
+                              },
+                              "transport": {
+                                "type": "string",
+                                "enum": [
+                                  "devbox",
+                                  "razorpay",
+                                  "off"
+                                ]
+                              },
+                              "title": {
+                                "type": "string"
+                              },
+                              "pupilName": {
+                                "type": "string"
+                              },
+                              "payerName": {
+                                "type": "string"
+                              },
+                              "payerEmail": {
+                                "type": "string",
+                                "nullable": true
+                              }
+                            },
+                            "required": [
+                              "paymentId",
+                              "bookingId",
+                              "orderId",
+                              "keyId",
+                              "amountPaise",
+                              "currency",
+                              "transport",
+                              "title",
+                              "pupilName",
+                              "payerName",
+                              "payerEmail"
+                            ],
+                            "additionalProperties": false,
+                            "nullable": true
+                          }
+                        },
+                        "required": [
+                          "slotId",
+                          "bookingId",
+                          "status",
+                          "checkout"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "refused": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "slotId": {
+                            "$ref": "#/properties/bookings/items/properties/slotId"
+                          },
+                          "reason": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "slotId",
+                          "reason"
+                        ],
+                        "additionalProperties": false
+                      }
+                    }
+                  },
+                  "required": [
+                    "bookings",
+                    "refused"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "PLAN_REQUIRED: the feature is on and this person's role needs a plan they do not hold; `plan` names it",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "studentMembershipId": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 64,
+                    "nullable": true
+                  },
+                  "purpose": {
+                    "type": "string",
+                    "maxLength": 500
+                  },
+                  "slotIds": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/properties/studentMembershipId"
+                    },
+                    "maxItems": 40
+                  }
+                },
+                "required": [
+                  "purpose"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "seriesId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       }
     },
     "/api/v1/gigs/slots/{slotId}/cancel": {

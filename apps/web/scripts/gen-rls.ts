@@ -81,6 +81,8 @@ const NO_SCHOOL_POLICY = new Set([
   // src/lib/gig-sessions.ts. What a PUPIL did with a slot, GigBooking, is the
   // pupil's school's row and is scoped normally.
   "GigSlot",
+  // A series of sessions (decision 0008, 7 Nov 2026) is no school's row for the same reason its slots are not.
+  "GigSeries",
   // Paid seats (decision 0004, amended 2026-10-02): an expert's linked account
   // at the company's gateway, a guardian's payment for one seat with its
   // transfer held for the expert, the transfers released to an expert, and

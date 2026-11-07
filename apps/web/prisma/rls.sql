@@ -3680,6 +3680,7 @@ CREATE TRIGGER "OperatorAccess_close_only"
 --   GigInvoice
 --   GigPayee
 --   GigPayment
+--   GigSeries
 --   GigSettings
 --   GigSlot
 --   Guardianship

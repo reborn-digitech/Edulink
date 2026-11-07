@@ -7,7 +7,15 @@ import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { PageHeader } from "@/components/ui/page-header";
 import type { ActiveContext } from "@/lib/session";
 import { formatPaise } from "@edulink/i18n";
-import { CancelWithReason, CloseSeat, OfferForm, PremiumMeetingSwitch } from "./provider-forms";
+import { CancelSeries, CancelWithReason, CloseSeat, OfferForm, PremiumMeetingSwitch, SeriesForm } from "./provider-forms";
+import type { GigSeriesRule } from "@edulink/contracts";
+
+const WEEKDAY_KEYS = ["gigs.weekday0", "gigs.weekday1", "gigs.weekday2", "gigs.weekday3", "gigs.weekday4", "gigs.weekday5", "gigs.weekday6"] as const;
+/** The rule in words: "4 dated sessions", or "Every week on Mon, Wed, 17:00, until 2026-12-20". */
+function ruleWords(t: Awaited<ReturnType<typeof getT>>, rule: GigSeriesRule): string {
+  if (rule.mode === "DATES") return t("gigs.seriesRuleDATES", { count: rule.startsAt.length });
+  return t("gigs.seriesRuleWEEKLY", { days: rule.weekdays.map((d) => t(WEEKDAY_KEYS[d] ?? "gigs.weekday0")).join(", "), time: rule.time, until: rule.until });
+}
 import { PaidGateList, TeacherGateList } from "./paid-gate";
 
 const TONE: Record<BookingStatus, "info" | "ok" | "neutral" | "warn" | "danger"> = { PENDING_CONSENT: "info", PENDING_PAYMENT: "warn", CONFIRMED: "ok", CANCELLED: "neutral", DELIVERED: "ok", MISSED: "warn", UNHELD: "danger" };
@@ -66,6 +74,29 @@ export async function ProviderScreen({ ctx }: { ctx: ActiveContext }) {
                   <p className="mb-2 text-xs text-fg-muted">{t("seats.teacherGateIntro")}</p>
                   <TeacherGateList gate={teacherGate} />
                 </div>
+              )}
+            </CardBody>
+          </Card>
+          {/* Sessions in series (decision 0008): offered in one go, each session a time of its own below. */}
+          <Card>
+            <CardHeader title={t("gigs.seriesTitle")} />
+            <CardBody className="space-y-4">
+              <SeriesForm workshops={view.kind === "EXPERT"} maxSeats={settings.workshopMaxSeats} gate={gate ?? teacherGate} meeting={view.meeting} />
+              {view.series.length > 0 && (
+                <ul className="divide-y divide-border" data-testid="provider-series">
+                  {view.series.map((s) => (
+                    <li key={s.id} className="flex flex-wrap items-start justify-between gap-2 py-3" data-testid="provider-series-row">
+                      <div className="min-w-0 flex-1">
+                        <p className="break-words text-sm font-medium text-fg">{s.title}</p>
+                        <p className="text-xs text-fg-muted">
+                          {t(`gigs.kind${s.kind}`)} · {ruleWords(t, s.rule)} · {t("gigs.seriesLine", { sessions: s.sessions, remaining: s.remaining })}
+                          {s.pricePaise > 0 ? ` · ${t("gigs.seatPrice", { amount: formatPaise(s.pricePaise, locale) })}` : ""}
+                        </p>
+                      </div>
+                      {s.cancelled ? <Badge tone="neutral">{t("gigs.seriesIsCancelled")}</Badge> : s.remaining > 0 && <CancelSeries seriesId={s.id} title={s.title} />}
+                    </li>
+                  ))}
+                </ul>
               )}
             </CardBody>
           </Card>

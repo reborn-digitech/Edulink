@@ -9,7 +9,7 @@ import { useLocale, useT } from "@/lib/i18n";
 import { formatPaise } from "@edulink/i18n";
 import type { GigCheckout } from "@edulink/contracts";
 import { SeatCheckout } from "@/components/gigs/seat-checkout";
-import { bookSeatAction, cancelSeatAction, consentAction, rateAction, seatCheckoutAction, unheldAction } from "./actions";
+import { bookSeatAction, bookSeriesAction, cancelSeatAction, consentAction, rateAction, seatCheckoutAction, unheldAction } from "./actions";
 
 /** A checkout the phone started, picked up on the web where the gateway's script runs. */
 export function ResumeCheckout({ paymentId }: { paymentId: string }) {
@@ -189,6 +189,87 @@ export function SeatActions({ bookingId, title, canConsent, canPay = false, payA
           <TextAreaField label={t("gigs.feedbackLabel")} rows={1} maxLength={500} value={feedback} onChange={(e) => setFeedback(e.target.value)} />
           <Button type="submit" size="sm" disabled={pending}>
             {t("gigs.sendRating")}
+          </Button>
+        </form>
+      )}
+    </div>
+  );
+}
+
+/**
+ * "BOOK THE REST" (decision 0008): the sessions of a series, each ticked or all the remaining ones, booked in one
+ * order of individual seats — a guardian's confirmed (or waiting for its own payment), a pupil's ask waiting for a
+ * guardian; a session that cannot be booked is said with its reason and the rest stand. A paid seat's order opens for
+ * the first one here; the others are paid from the seats list, one by one.
+ */
+export function BookSeries({ seriesId, childId, selfPays, remaining, sessions }: { seriesId: string; childId: string; selfPays: boolean; remaining: number; sessions: { slotId: string; label: string; booked: boolean; full: boolean }[] }) {
+  const t = useT();
+  const router = useRouter();
+  const { toast } = useToast();
+  const [pending, startTransition] = useTransition();
+  const [open, setOpen] = useState(false);
+  const [purpose, setPurpose] = useState("");
+  const [ticked, setTicked] = useState<string[]>([]);
+  const [error, setError] = useState<string | null>(null);
+  const [checkout, setCheckout] = useState<GigCheckout | null>(null);
+  const verb = selfPays ? t("gigs.seriesBookRest", { count: remaining }) : t("gigs.seriesAskRest", { count: remaining });
+  if (checkout)
+    return (
+      <SeatCheckout
+        checkout={checkout}
+        onClose={() => {
+          setCheckout(null);
+          setOpen(false);
+          router.refresh();
+        }}
+      />
+    );
+  return (
+    <div className="space-y-2">
+      <ul className="flex flex-wrap gap-2 text-xs" data-testid="session-series-sessions">
+        {sessions.map((x) => (
+          <li key={x.slotId}>
+            {x.booked || x.full || !open ? (
+              <span className={`inline-flex min-h-8 items-center rounded-full px-3 ${x.booked ? "bg-ok-soft text-fg" : "bg-surface-muted text-fg-muted"}`} data-booked={x.booked ? "yes" : "no"}>
+                {x.label}
+                {x.booked ? ` · ${t("gigs.seriesBooked")}` : x.full ? ` · ${t("gigs.seriesFull")}` : ""}
+              </span>
+            ) : (
+              <label className="inline-flex min-h-8 items-center gap-1.5 rounded-full bg-surface-muted px-3 text-fg">
+                <input type="checkbox" className="size-4" checked={ticked.includes(x.slotId)} onChange={(e) => setTicked((list) => (e.target.checked ? [...list, x.slotId] : list.filter((id) => id !== x.slotId)))} />
+                {x.label}
+              </label>
+            )}
+          </li>
+        ))}
+      </ul>
+      {remaining === 0 ? null : !open ? (
+        <Button type="button" variant="secondary" size="sm" onClick={() => setOpen(true)} data-testid="session-series-open">
+          {verb}
+        </Button>
+      ) : (
+        <form
+          noValidate
+          onSubmit={(event) => {
+            event.preventDefault();
+            setError(null);
+            startTransition(async () => {
+              const result = await bookSeriesAction({ seriesId, studentMembershipId: childId, purpose, ...(ticked.length > 0 ? { slotIds: ticked } : {}) });
+              if (!result.ok) return setError(result.error);
+              const first = result.bookings.find((b) => b.checkout)?.checkout ?? null;
+              toast({ tone: result.refused.length > 0 ? "warn" : "ok", title: result.refused.length > 0 ? t("gigs.seriesBookedPartly", { booked: result.bookings.length, refused: result.refused.length, reasons: result.refused.map((r) => r.reason).join(" ") }) : t("gigs.seriesBookedResult", { booked: result.bookings.length }) });
+              if (first) return setCheckout(first);
+              setOpen(false);
+              router.refresh();
+            });
+          }}
+          className="w-full space-y-2"
+          data-testid="session-series-form"
+        >
+          <p className="text-xs text-fg-muted">{t("gigs.seriesPickHint")}</p>
+          <TextAreaField label={t("gigs.purposeLabel")} hint={t("gigs.purposeHint")} rows={2} maxLength={500} value={purpose} error={error ?? undefined} onChange={(e) => setPurpose(e.target.value)} data-testid="session-series-purpose" />
+          <Button type="submit" size="sm" disabled={pending} data-testid="session-series-book">
+            {pending ? t("common.saving") : ticked.length > 0 ? t("gigs.seriesBookChosen") : verb}
           </Button>
         </form>
       )}

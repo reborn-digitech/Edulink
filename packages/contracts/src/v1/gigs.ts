@@ -441,6 +441,46 @@ export const gigPayoutRetriedSchema = z.object({ outcome: z.string() });
 export const gigProviderKindSchema = z.enum(["EXPERT", "TEACHER", "ALUMNUS"]);
 const gigAllowanceRowSchema = z.object({ allowed: z.number().int(), used: z.number().int(), left: z.number().int() });
 
+/* ---------------------------------------------------------------------- */
+/* Sessions in series (decision 0008, 7 November 2026)                      */
+/* ---------------------------------------------------------------------- */
+
+/** A fixed list of start instants, or a weekly pattern: the days of the week (0 Sunday … 6 Saturday) at a wall-clock time in the provider's own zone, from a day until a day. */
+export const gigSeriesRuleSchema = z.discriminatedUnion("mode", [
+  z.object({ mode: z.literal("DATES"), startsAt: z.array(z.string().max(40)).min(1).max(40) }),
+  z.object({ mode: z.literal("WEEKLY"), weekdays: z.array(z.number().int().min(0).max(6)).min(1).max(7), time: z.string().regex(/^\d{2}:\d{2}$/), from: z.string().regex(/^\d{4}-\d{2}-\d{2}$/), until: z.string().regex(/^\d{4}-\d{2}-\d{2}$/) }),
+]);
+export type GigSeriesRule = z.infer<typeof gigSeriesRuleSchema>;
+/** POST /api/v1/gigs/series — a series offered in one go: the shape of every session (as a slot's body, without a start) and the rule that gives their starts. */
+export const gigSeriesBodySchema = z.object({ kind: gigSessionKindSchema, title: z.string().max(200), meetingUrl: z.string().max(600), minutes: z.number().int().optional(), seats: z.number().int().optional(), pricePaise: z.number().int().min(0).max(10_000_000).optional(), rule: gigSeriesRuleSchema });
+export type GigSeriesBody = z.infer<typeof gigSeriesBodySchema>;
+export const gigSeriesMadeSchema = z.object({ seriesId: id, slotIds: z.array(id) });
+/** POST /api/v1/gigs/series/{seriesId}/cancel — every session not yet begun is taken back, each seat refunded and each family told. */
+export const gigSeriesCancelBodySchema = z.object({ reason: z.string().max(300) });
+export const gigSeriesCancelledSchema = z.object({ cancelled: z.number().int() });
+/** A provider's series as GET /api/v1/gigs/slots lists it: the rule's words are the client's; the sessions are the slots that carry its id. */
+export const gigProviderSeriesSchema = z.object({ id, kind: gigSessionKindSchema, title: z.string(), rule: gigSeriesRuleSchema, minutes: z.number().int(), seats: z.number().int(), pricePaise: z.number().int(), sessions: z.number().int(), /** Sessions not begun and not cancelled. */ remaining: z.number().int(), cancelled: z.boolean() });
+/** A series as a family sees it on GET /api/v1/gigs/sessions: each session with its seats left and whether this pupil already holds one. */
+export const gigFamilySeriesSchema = z.object({
+  id,
+  kind: gigSessionKindSchema,
+  title: z.string(),
+  providerName: z.string(),
+  providerKind: gigProviderKindSchema,
+  providerHeadline: z.string().nullable(),
+  pricePaise: z.number().int(),
+  sessions: z.array(z.object({ slotId: id, startsAt: z.string(), endsAt: z.string(), seatsLeft: z.number().int(), /** This pupil holds a live seat in it. */ booked: z.boolean(), bookingId: id.nullable() })),
+  /** Sessions not begun, not full and not yet this pupil's: what "book the rest" would book. */
+  remaining: z.number().int(),
+});
+/** POST /api/v1/gigs/series/{seriesId}/book — one order of individual seats: every remaining session, or the ones named; each a booking as POST /gigs/sessions/book makes it. */
+export const gigSeriesBookBodySchema = z.object({ studentMembershipId: id.nullable().optional(), purpose: z.string().max(500), slotIds: z.array(id).max(40).optional() });
+export const gigSeriesBookedSchema = z.object({
+  bookings: z.array(z.object({ slotId: id, bookingId: id, status: gigBookingStatusSchema, checkout: gigCheckoutSchema.nullable() })),
+  /** Sessions the order could not book, each with the server's sentence. */
+  refused: z.array(z.object({ slotId: id, reason: z.string() })),
+});
+
 /** GET /api/v1/gigs/sessions — for a pupil, or for each of a guardian's children: the free allowance, their seats, and what is open to book. */
 export const gigFamilySessionsSchema = z.object({
   /** A confirmed seat given up inside this many hours of the start still counts against the allowance. */
@@ -484,7 +524,9 @@ export const gigFamilySessionsSchema = z.object({
           canReportUnheld: z.boolean(),
         }),
       ),
-      open: z.array(z.object({ id, kind: gigSessionKindSchema, title: z.string(), startsAt: z.string(), endsAt: z.string(), seatsLeft: z.number().int(), providerName: z.string(), providerKind: gigProviderKindSchema, providerHeadline: z.string().nullable(), pricePaise: z.number().int(), freeSeat: z.boolean() })),
+      open: z.array(z.object({ id, kind: gigSessionKindSchema, title: z.string(), startsAt: z.string(), endsAt: z.string(), seatsLeft: z.number().int(), providerName: z.string(), providerKind: gigProviderKindSchema, providerHeadline: z.string().nullable(), pricePaise: z.number().int(), freeSeat: z.boolean(), /** The series this session is one of (decision 0008); null for a single session. */ seriesId: id.nullable().optional() })),
+      /** The series with a session open to this pupil (decision 0008); absent from an older server. */
+      series: z.array(gigFamilySeriesSchema).optional(),
     }),
   ),
 });
@@ -522,6 +564,8 @@ export const gigProviderSchema = z.object({
   earnings: z.object({ heldPaise: z.number().int(), duePaise: z.number().int(), paidPaise: z.number().int(), refundedPaise: z.number().int(), seats: z.number().int() }).nullable().optional(),
   /** The provider's meeting account and the free-account caps (decision 0008, 7 Nov 2026); absent from an older server. */
   meeting: gigMeetingAccountSchema.optional(),
+  /** The provider's series (decision 0008); absent from an older server. */
+  series: z.array(gigProviderSeriesSchema).optional(),
   slots: z.array(
     z.object({
       id,
@@ -535,6 +579,8 @@ export const gigProviderSchema = z.object({
       pricePaise: z.number().int(),
       cancelled: z.boolean(),
       started: z.boolean(),
+      /** The series this session is one of (decision 0008); null for a single session. */
+      seriesId: id.nullable().optional(),
       bookings: z.array(z.object({ id, pupilName: z.string(), schoolName: z.string(), purpose: z.string(), status: gigBookingStatusSchema, paid: z.boolean(), rating: z.number().int().nullable(), feedback: z.string().nullable() })),
     }),
   ),

@@ -369,6 +369,8 @@ export type SweepFixture = {
   gigBookingId: string | null;
   gigUnheldBookingId: string | null;
   gigSlotId: string | null;
+  /** The ZZ expert's series of sessions (zz-fixtures.ts `buildGigSessions`, decision 0008): its cancel and its book answer the sweep's empty body 422, and the role variants' probes are refused. */
+  gigSeriesId: string | null;
   /** The sweep's parent's own paid seat payment, on hold (zz-fixtures.ts `buildGigSessions`): read by its payer (and its receipt), retried by the operator as a no-op. */
   gigPaymentId: string | null;
   /** The fixture's PAID payout to the ZZ expert with its invoice (zz-fixtures.ts `buildGigSessions`): recording it again is refused as already paid; the invoice PDF is read by the expert. The ZZ expert's own user id, whose payee suspension the sweep's empty body answers 422. */

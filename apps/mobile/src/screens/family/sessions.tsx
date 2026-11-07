@@ -77,8 +77,11 @@ export function FamilySessions() {
     mutationFn: async (job: Job) => {
       const result = await api().post(job.path, job.body);
       if (!result.ok) throw new Error(errorText(result, t("common.somethingWrong")));
-      // A booking, a consent or a checkout that hands back an order: the pay step opens instead of a line.
-      const checkout = (result.data as { checkout?: unknown } | null)?.checkout;
+      // A booking, a consent or a checkout that hands back an order: the pay step opens instead of a line. A series
+      // booked (decision 0008) hands back one booking per seat; the first with an order opens the pay step, the rest are
+      // paid from the seats list one by one.
+      const data = result.data as { checkout?: unknown; bookings?: { checkout?: unknown }[] } | null;
+      const checkout = data?.checkout ?? data?.bookings?.find((b) => b.checkout)?.checkout;
       if (checkout) return { checkout: gigCheckoutSchema.parse(checkout) };
       return typeof job.done === "string" ? job.done : job.done(result.data);
     },
@@ -214,6 +217,57 @@ export function FamilySessions() {
                 ))
               )}
             </Card>
+
+            {/* Sessions in series (decision 0008): each session its own seat; "book the rest" is one order of individual seats. */}
+            {(c.series ?? []).length > 0 ? (
+              <Card title={t("gigs.familySeriesTitle")}>
+                <Text variant="xs" tone="muted">
+                  {t("gigs.seriesPayNote")}
+                </Text>
+                {(c.series ?? []).map((s) => {
+                  const key = [c.id, "series", s.id].join(":");
+                  const selfPays = c.selfPays ?? byGuardian;
+                  const verb = selfPays ? t("gigs.seriesBookRest", { count: s.remaining }) : t("gigs.seriesAskRest", { count: s.remaining });
+                  return (
+                    <View key={s.id} style={{ gap: th.space[2], paddingVertical: th.space[2], borderTopWidth: 1, borderTopColor: th.border }}>
+                      <Text variant="base" bold>
+                        {s.title}
+                      </Text>
+                      <Text variant="xs" tone="muted">
+                        {[t(SESSION_KIND[s.kind]), [t("gigs.withProvider", { name: s.providerName }), `(${t(PROVIDER_KIND[s.providerKind])})`].join(" "), t("gigs.seriesSessions", { count: s.sessions.length, remaining: s.remaining }), s.pricePaise > 0 ? t("gigs.seatPrice", { amount: money(s.pricePaise, locale) }) : null].filter(Boolean).join(" · ")}
+                      </Text>
+                      <View style={{ flexDirection: "row", flexWrap: "wrap", gap: th.space[1] }}>
+                        {s.sessions.map((x) => (
+                          <Pill key={x.slotId} label={[when(x.startsAt), x.booked ? t("gigs.seriesBooked") : x.seatsLeft <= 0 ? t("gigs.seriesFull") : null].filter(Boolean).join(" · ")} tone={x.booked ? "ok" : "muted"} />
+                        ))}
+                      </View>
+                      {s.remaining > 0 ? (
+                        asking === key ? (
+                          <>
+                            <Field label={t("gigs.purposeLabel")} hint={t("gigs.purposeHint")} value={purpose} onChangeText={setPurpose} maxLength={500} multiline />
+                            <Button
+                              label={verb}
+                              busy={running(`/api/v1/gigs/series/${s.id}/book`)}
+                              onPress={() => act.mutate({ path: `/api/v1/gigs/series/${s.id}/book`, body: { studentMembershipId: c.id, purpose }, done: (data) => t("gigs.seriesBookedResult", { booked: ((data as { bookings?: unknown[] }).bookings ?? []).length }) })}
+                            />
+                          </>
+                        ) : (
+                          <Button
+                            label={verb}
+                            variant="secondary"
+                            accessibilityLabel={[verb, s.title].join(": ")}
+                            onPress={() => {
+                              setAsking(key);
+                              setPurpose("");
+                            }}
+                          />
+                        )
+                      ) : null}
+                    </View>
+                  );
+                })}
+              </Card>
+            ) : null}
 
             <Card title={t("gigs.openTitle")}>
               {c.open.length === 0 ? (

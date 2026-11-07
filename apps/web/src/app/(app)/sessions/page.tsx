@@ -8,7 +8,7 @@ import { Badge } from "@/components/ui/badge";
 import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { PageHeader } from "@/components/ui/page-header";
 import { formatPaise } from "@edulink/i18n";
-import { BookSeat, ResumeCheckout, SeatActions } from "./family-forms";
+import { BookSeat, BookSeries, ResumeCheckout, SeatActions } from "./family-forms";
 
 export async function generateMetadata(): Promise<Metadata> {
   return { title: (await getT())("gigs.sessionsTitle"), robots: { index: false, follow: false } };
@@ -96,6 +96,34 @@ export default async function SessionsPage({ searchParams }: { searchParams: Pro
                 )}
               </CardBody>
             </Card>
+            {/* Sessions in series (decision 0008): each session its own seat; "book the rest" is one order of individual seats. */}
+            {c.series.length > 0 && (
+              <Card>
+                <CardHeader title={t("gigs.familySeriesTitle")} description={t("gigs.seriesPayNote")} />
+                <CardBody>
+                  <ul className="divide-y divide-border" data-testid="session-series">
+                    {c.series.map((s) => (
+                      <li key={s.id} className="space-y-2 py-3" data-testid="session-series-row">
+                        <div className="min-w-0">
+                          <p className="break-words text-sm font-medium text-fg">{s.title}</p>
+                          <p className="text-xs text-fg-muted">
+                            {t(`gigs.kind${s.kind}`)} · {t("gigs.withProvider", { name: s.providerName })} ({t(`gigs.provider${s.providerKind}`)}) · {t("gigs.seriesSessions", { count: s.sessions.length, remaining: s.remaining })}
+                            {s.pricePaise > 0 ? ` · ${t("gigs.seatPrice", { amount: money(s.pricePaise) })}` : ""}
+                          </p>
+                        </div>
+                        <BookSeries
+                          seriesId={s.id}
+                          childId={c.id}
+                          selfPays={Boolean(c.selfPays)}
+                          remaining={s.remaining}
+                          sessions={s.sessions.map((x) => ({ slotId: x.slotId, label: when(x.startsAt), booked: x.booked, full: !x.booked && x.seatsLeft <= 0 }))}
+                        />
+                      </li>
+                    ))}
+                  </ul>
+                </CardBody>
+              </Card>
+            )}
             <Card>
               <CardHeader title={t("gigs.openTitle")} />
               <CardBody>

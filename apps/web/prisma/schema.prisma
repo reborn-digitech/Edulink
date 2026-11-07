@@ -727,6 +727,7 @@ model User {
   gigPaymentsReceived  GigPayment[]              @relation("GigPaymentPayee")
   gigPayee             GigPayee?
   gigSlots             GigSlot[]                 @relation("GigSlotProvider")
+  gigSeries GigSeries[] @relation("GigSeriesProvider")
   payoutAccount        ExpertPayoutAccount?      @relation("ExpertPayoutAccountOwner")
   seatPaymentsMade     SessionPayment[]          @relation("SessionPaymentPayer")
   seatPaymentsEarned   SessionPayment[]          @relation("SessionPaymentExpert")
@@ -5806,21 +5807,61 @@ model GigSlot {
   /// only while the provider passes the paid gate in src/lib/gig-sessions.ts (KYC, a payout account or a
   /// UPI id for a teacher, an open free offer, the period's free duties given).
   pricePaise      Int       @default(0)
+  /// The series this session belongs to (decision 0008, 7 November 2026): a fixed set of dated sessions or a weekly
+  /// pattern, written together by src/lib/gig-sessions.ts offerSeries. Null for a single session. The slot stays the
+  /// unit of everything — its own seats, its own price, its own cancellation and refund.
+  seriesId        String?
   cancelledAt     DateTime?
   cancelReason    String?
   createdAt       DateTime  @default(now())
   updatedAt       DateTime  @updatedAt
 
   provider User             @relation("GigSlotProvider", fields: [providerUserId], references: [id], onDelete: Cascade)
+  series   GigSeries?       @relation(fields: [seriesId], references: [id], onDelete: SetNull)
   bookings GigBooking[]
   payments SessionPayment[] @relation("SessionPaymentSlot")
 
   @@index([providerUserId, startsAt])
   @@index([startsAt])
   @@index([teacherSchoolId, startsAt])
+  @@index([seriesId])
 }
 
 /// A pupil's seat in a slot. It is the pupil's school's row: the school is told, reads it and may cancel it.
+/// A SERIES OF SESSIONS (decision 0008, the owner's decision of 7 November 2026): a provider offers a fixed set of
+/// dated sessions, or a weekly pattern until a date, in one go; each session is a GigSlot as before — its own seats,
+/// its own price within the band, its own cancellation refunding the seat — joined here by GigSlot.seriesId. There is
+/// no pass and no standing access: a guardian books each session (or every remaining one in one order of individual
+/// seats), and the meeting link shows per seat after payment and consent, as for a single session. No school's row:
+/// an expert's series is open to every school, a teacher's names its school in teacherSchoolId and is held to it in
+/// the library, exactly as GigSlot is (NO_SCHOOL_POLICY in scripts/gen-rls.ts).
+model GigSeries {
+  id              String    @id @default(cuid())
+  providerUserId  String
+  /// EXPERT | TEACHER
+  providerKind    String
+  teacherSchoolId String?
+  /// ONE_TO_ONE | WORKSHOP
+  kind            String
+  title           String
+  meetingUrl      String
+  minutes         Int
+  seats           Int       @default(1)
+  pricePaise      Int       @default(0)
+  /// DATES (a fixed list) or WEEKLY (days of the week at a time, from a day until a day); the rule itself is ruleJson.
+  rule            String
+  ruleJson        String    @default("{}")
+  cancelledAt     DateTime?
+  cancelReason    String?
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+
+  provider User      @relation("GigSeriesProvider", fields: [providerUserId], references: [id], onDelete: Cascade)
+  slots    GigSlot[]
+
+  @@index([providerUserId, createdAt])
+}
+
 model GigBooking {
   id                  String    @id @default(cuid())
   schoolId            String

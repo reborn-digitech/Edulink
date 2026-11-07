@@ -11,7 +11,8 @@ import type { GigMeetingAccount } from "@edulink/contracts";
 import { meetingCapFor, MEETING_SERVICE_NAMES } from "@/lib/meeting-links";
 /** What the price box needs of a provider's paid gate: an expert's (PaidGate) or a teacher's (TeacherPaidGate). */
 type PriceGate = { canCharge: boolean; seatPriceMinPaise: number; seatPriceMaxPaise: number; commissionPercent: number };
-import { cancelSeatAction, cancelSlotAction, closeSeatAction, offerSlotAction, premiumMeetingAction } from "@/app/(app)/sessions/actions";
+import type { GigSeriesRule } from "@edulink/contracts";
+import { cancelSeatAction, cancelSeriesAction, cancelSlotAction, closeSeatAction, offerSeriesAction, offerSlotAction, premiumMeetingAction } from "@/app/(app)/sessions/actions";
 
 /**
  * The free-account cap sentence beside the time (decision 0008, 7 Nov 2026): once the link names a service with a
@@ -224,5 +225,187 @@ export function CloseSeat({ bookingId, pupilName }: { bookingId: string; pupilNa
         </span>
       )}
     </span>
+  );
+}
+
+/* -------------------------------------------------------------------------- */
+/* Sessions in series (decision 0008, 7 Nov 2026)                              */
+/* -------------------------------------------------------------------------- */
+
+const WEEKDAY_KEYS = ["gigs.weekday0", "gigs.weekday1", "gigs.weekday2", "gigs.weekday3", "gigs.weekday4", "gigs.weekday5", "gigs.weekday6"] as const;
+
+/**
+ * A series offered in one go: the shape of every session (as the single form takes it) and the rule — a list of
+ * dates typed one by one, or every week on the ticked days at a time, from a day until a day. The server expands the
+ * rule in the provider's own zone and checks each session as a single time is.
+ */
+export function SeriesForm({ workshops, maxSeats, gate = null, meeting = null }: { workshops: boolean; maxSeats: number; gate?: PriceGate | null; meeting?: GigMeetingAccount | null }) {
+  const t = useT();
+  const locale = useLocale();
+  const router = useRouter();
+  const { toast } = useToast();
+  const [pending, startTransition] = useTransition();
+  const [kind, setKind] = useState<"ONE_TO_ONE" | "WORKSHOP">("ONE_TO_ONE");
+  const [title, setTitle] = useState("");
+  const [mode, setMode] = useState<"DATES" | "WEEKLY">("WEEKLY");
+  const [dates, setDates] = useState<string[]>(["", ""]);
+  const [weekdays, setWeekdays] = useState<number[]>([]);
+  const [time, setTime] = useState("17:00");
+  const [from, setFrom] = useState("");
+  const [until, setUntil] = useState("");
+  const [minutes, setMinutes] = useState("60");
+  const [seats, setSeats] = useState("20");
+  const [meetingUrl, setMeetingUrl] = useState("");
+  const [price, setPrice] = useState("");
+  const [error, setError] = useState<string | null>(null);
+  const rupeesTyped = price.trim() === "" ? 0 : Math.round(Number(price) * 100);
+  const cap = capSentence(t, meetingUrl, meeting);
+
+  const rule = (): GigSeriesRule | null => {
+    if (mode === "DATES") {
+      const starts = dates.map((d) => d.trim()).filter(Boolean).map((d) => new Date(d));
+      if (starts.length === 0 || starts.some((d) => Number.isNaN(d.getTime()))) return null;
+      return { mode: "DATES", startsAt: starts.map((d) => d.toISOString()) };
+    }
+    if (weekdays.length === 0 || !from || !until || !/^\d{2}:\d{2}$/.test(time)) return null;
+    return { mode: "WEEKLY", weekdays: [...weekdays].sort(), time, from, until };
+  };
+
+  return (
+    <form
+      noValidate
+      onSubmit={(event) => {
+        event.preventDefault();
+        setError(null);
+        const r = rule();
+        if (!r) return setError(t("gigs.refuseSlotTime"));
+        startTransition(async () => {
+          const result = await offerSeriesAction({ kind, title, meetingUrl, rule: r, ...(kind === "WORKSHOP" ? { minutes: Number(minutes), seats: Number(seats) } : {}), ...(gate && rupeesTyped > 0 ? { pricePaise: rupeesTyped } : {}) });
+          if (!result.ok) return setError(result.error);
+          toast({ tone: "ok", title: t("gigs.seriesOffered", { count: result.slotIds.length }) });
+          setTitle("");
+          setDates(["", ""]);
+          setPrice("");
+          router.refresh();
+        });
+      }}
+      className="space-y-3"
+      data-testid="series-form"
+    >
+      <p className="text-xs text-fg-muted">{t("gigs.seriesIntro")}</p>
+      {error && (
+        <p role="alert" className="rounded-[var(--radius-md)] border border-danger/30 bg-danger-soft px-4 py-3 text-sm font-medium text-danger" data-testid="series-error">
+          {error}
+        </p>
+      )}
+      <div className="grid gap-3 sm:grid-cols-2">
+        {workshops && (
+          <SelectField label={t("gigs.slotKind")} value={kind} onChange={(e) => setKind(e.target.value as "ONE_TO_ONE" | "WORKSHOP")} data-testid="series-kind">
+            <option value="ONE_TO_ONE">{t("gigs.kindONE_TO_ONE")}</option>
+            <option value="WORKSHOP">{t("gigs.kindWORKSHOP")}</option>
+          </SelectField>
+        )}
+        <TextField label={t("gigs.slotTitle")} hint={t("gigs.slotTitleHint")} value={title} maxLength={120} autoComplete="off" onChange={(e) => setTitle(e.target.value)} data-testid="series-title" />
+        <SelectField label={t("gigs.seriesModeLabel")} value={mode} onChange={(e) => setMode(e.target.value as "DATES" | "WEEKLY")} data-testid="series-mode">
+          <option value="WEEKLY">{t("gigs.seriesModeWEEKLY")}</option>
+          <option value="DATES">{t("gigs.seriesModeDATES")}</option>
+        </SelectField>
+        {mode === "DATES" ? (
+          <div className="space-y-2 sm:col-span-2" data-typing="en" data-testid="series-dates">
+            {dates.map((d, i) => (
+              <div key={i} className="flex items-end gap-2">
+                <TextField label={t("gigs.seriesDateN", { n: i + 1 })} type="datetime-local" value={d} onChange={(e) => setDates((list) => list.map((x, j) => (j === i ? e.target.value : x)))} className="min-w-0 flex-1" />
+                {dates.length > 2 && (
+                  <Button type="button" size="sm" variant="ghost" onClick={() => setDates((list) => list.filter((_, j) => j !== i))}>
+                    {t("gigs.seriesRemoveDate")}
+                  </Button>
+                )}
+              </div>
+            ))}
+            <Button type="button" size="sm" variant="secondary" onClick={() => setDates((list) => [...list, ""])} data-testid="series-add-date">
+              {t("gigs.seriesAddDate")}
+            </Button>
+          </div>
+        ) : (
+          <>
+            <fieldset className="sm:col-span-2">
+              <legend className="text-sm font-medium text-fg">{t("gigs.seriesWeekdays")}</legend>
+              <div className="mt-1 flex flex-wrap gap-2" data-testid="series-weekdays">
+                {WEEKDAY_KEYS.map((key, day) => (
+                  <label key={key} className="flex min-h-11 items-center gap-1.5 text-sm text-fg">
+                    <input type="checkbox" className="size-4" checked={weekdays.includes(day)} onChange={(e) => setWeekdays((list) => (e.target.checked ? [...list, day] : list.filter((d) => d !== day)))} />
+                    {t(key)}
+                  </label>
+                ))}
+              </div>
+            </fieldset>
+            <div data-typing="en">
+              <TextField label={t("gigs.seriesTime")} type="time" value={time} onChange={(e) => setTime(e.target.value)} data-testid="series-time" />
+            </div>
+            <div className="grid grid-cols-2 gap-3" data-typing="en">
+              <TextField label={t("gigs.seriesFrom")} type="date" value={from} onChange={(e) => setFrom(e.target.value)} data-testid="series-from" />
+              <TextField label={t("gigs.seriesUntil")} type="date" value={until} onChange={(e) => setUntil(e.target.value)} data-testid="series-until" />
+            </div>
+          </>
+        )}
+        {kind === "WORKSHOP" && (
+          <div className="grid grid-cols-2 gap-3" data-typing="en">
+            <TextField label={t("gigs.slotMinutes")} hint={cap ?? undefined} inputMode="numeric" value={minutes} onChange={(e) => setMinutes(e.target.value)} />
+            <TextField label={t("gigs.slotSeats")} hint={["2", String(maxSeats)].join("–")} inputMode="numeric" value={seats} onChange={(e) => setSeats(e.target.value)} />
+          </div>
+        )}
+        {gate && (
+          <div className="sm:col-span-2" data-typing="en">
+            <TextField label={t("gigs.priceLabel")} hint={t("gigs.priceHint", { min: formatPaise(gate.seatPriceMinPaise, locale), max: formatPaise(gate.seatPriceMaxPaise, locale), percent: gate.commissionPercent })} inputMode="decimal" value={price} disabled={!gate.canCharge} onChange={(e) => setPrice(e.target.value)} />
+          </div>
+        )}
+        <div className="sm:col-span-2" data-typing="en">
+          <TextField label={t("gigs.slotLink")} hint={t("seats.linkHint")} type="url" inputMode="url" value={meetingUrl} maxLength={500} autoComplete="off" onChange={(e) => setMeetingUrl(e.target.value)} data-testid="series-link" />
+          {cap && kind === "ONE_TO_ONE" && <p className="mt-1 text-xs text-fg-muted">{cap}</p>}
+        </div>
+      </div>
+      <Button type="submit" disabled={pending} data-testid="series-offer">
+        {pending ? t("common.saving") : t("gigs.seriesOffer")}
+      </Button>
+    </form>
+  );
+}
+
+/** The whole series taken back with a reason: every session not yet begun is cancelled, each family told. */
+export function CancelSeries({ seriesId, title }: { seriesId: string; title: string }) {
+  const t = useT();
+  const router = useRouter();
+  const { toast } = useToast();
+  const [pending, startTransition] = useTransition();
+  const [open, setOpen] = useState(false);
+  const [reason, setReason] = useState("");
+  const [error, setError] = useState<string | null>(null);
+  if (!open)
+    return (
+      <Button type="button" size="sm" variant="ghost" onClick={() => setOpen(true)} aria-label={[t("gigs.seriesCancel"), title].join(": ")} data-testid="series-cancel-open">
+        {t("gigs.seriesCancel")}
+      </Button>
+    );
+  return (
+    <form
+      noValidate
+      onSubmit={(event) => {
+        event.preventDefault();
+        setError(null);
+        startTransition(async () => {
+          const result = await cancelSeriesAction(seriesId, reason);
+          if (!result.ok) return setError(result.error);
+          toast({ tone: "ok", title: t("gigs.seriesCancelled", { count: result.cancelled }) });
+          setOpen(false);
+          router.refresh();
+        });
+      }}
+      className="flex w-full flex-wrap items-end gap-2"
+    >
+      <TextField label={t("gigs.reasonLabel")} className="min-w-0 flex-1" value={reason} maxLength={300} error={error ?? undefined} onChange={(e) => setReason(e.target.value)} data-testid="series-cancel-reason" />
+      <Button type="submit" size="sm" variant="secondary" disabled={pending} data-testid="series-cancel">
+        {t("gigs.seriesCancel")}
+      </Button>
+    </form>
   );
 }

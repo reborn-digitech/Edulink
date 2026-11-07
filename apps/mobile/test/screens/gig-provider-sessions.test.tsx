@@ -180,3 +180,26 @@ describe("a provider's sessions", () => {
     expect(await screen.findByRole("alert")).toHaveTextContent("ZZ broke");
   });
 });
+
+/* decision 0008 (7 Nov 2026): a provider's series are listed with their rule and taken back with a reason; offering one is the web's. */
+describe("a provider's series", () => {
+  it("lists a weekly series and a dated one with their sessions ahead, and takes one back with a reason", async () => {
+    const series = [
+      { id: "ser1", kind: "WORKSHOP", title: "ZZ Bridges, every week", rule: { mode: "WEEKLY", weekdays: [1, 3], time: "17:00", from: "2030-10-07", until: "2030-10-20" }, minutes: 60, seats: 20, pricePaise: 0, sessions: 4, remaining: 4, cancelled: false },
+      { id: "ser2", kind: "ONE_TO_ONE", title: "ZZ Three dated half hours", rule: { mode: "DATES", startsAt: ["2030-10-07T10:00:00.000Z", "2030-10-14T10:00:00.000Z", "2030-10-21T10:00:00.000Z"] }, minutes: 30, seats: 1, pricePaise: 0, sessions: 3, remaining: 0, cancelled: true },
+    ];
+    const { calls } = await mountStaff(<ProviderSessions />, "EXPERT", {
+      ...SIDE,
+      [`GET ${PATH}`]: () => json(view({ series })),
+      [`POST /api/v1/gigs/series/ser1/cancel`]: () => json({ cancelled: 4 }),
+    });
+    expect(await screen.findByText("ZZ Bridges, every week")).toBeTruthy();
+    expect(screen.getByText(/Every week on Mon, Wed, 17:00, until 2030-10-20 · 4 sessions, 4 still ahead/)).toBeTruthy();
+    expect(screen.getByText(/3 dated sessions · 3 sessions, 0 still ahead/)).toBeTruthy();
+    expect(screen.getAllByText("Cancelled").length).toBeGreaterThan(0);
+    await fireEvent.press(screen.getByRole("button", { name: "Cancel the series: ZZ Bridges, every week" }));
+    await fireEvent.changeText(screen.getByLabelText("Reason"), "ZZ The bridge is closed");
+    await fireEvent.press(screen.getByRole("button", { name: "Cancel the series" }));
+    await waitFor(() => expect(calls().find((c) => c.line === "POST /api/v1/gigs/series/ser1/cancel")?.body).toEqual({ reason: "ZZ The bridge is closed" }));
+  });
+});
