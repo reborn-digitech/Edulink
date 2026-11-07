@@ -4,7 +4,7 @@ import { revalidatePath } from "next/cache";
 import { getT } from "@/lib/i18n/server";
 import { AccessError } from "@/lib/tenancy";
 import { requireApiSession } from "@/lib/api-reads/shared";
-import { bookSeat, cancelBooking, cancelSlot, closeBooking, consentToBooking, offerSlot, rateBooking, reportUnheld, seatCheckout, setTeacherGuidance, type SlotInput } from "@/lib/gig-sessions";
+import { bookSeat, cancelBooking, cancelSlot, closeBooking, consentToBooking, offerSlot, rateBooking, reportUnheld, seatCheckout, setPremiumMeeting, setTeacherGuidance, type SlotInput } from "@/lib/gig-sessions";
 import type { GigResult } from "@/lib/gig-questions";
 import { assertFeatureForAction } from "@/lib/feature-page";
 import { SESSION_FEATURES } from "@/lib/nav";
@@ -62,6 +62,10 @@ export async function closeSeatAction(bookingId: string, outcome: "DELIVERED" | 
 /** The order for a seat waiting for its payer's payment: the panel was closed, or the gateway was down at booking. Either session feature: a teacher's guidance may be sold too (seats, 17 Oct 2026). */
 export async function seatCheckoutAction(bookingId: string) {
   return run(async () => seatCheckout(await requireApiSession(), bookingId));
+}
+/** The provider's word that their meeting account is premium (decision 0008), which lifts the service's free-account length cap. */
+export async function premiumMeetingAction(premium: boolean) {
+  return run(async () => setPremiumMeeting(await requireApiSession(), premium));
 }
 export async function guidanceAction(on: boolean) {
   return run(async () => setTeacherGuidance(await requireApiSession(), on), "TEACHER_SESSIONS");

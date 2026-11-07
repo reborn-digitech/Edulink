@@ -3,7 +3,7 @@ import { expertEarningsSchema, expertPayoutSchema, gigMyContributionsSchema, gig
 /** What GET /api/v1/gigs/questions answers a teacher, for the two screens that read it. Only ZZ data. */
 const TEXT = { stem: "ZZ How many sides has a triangle?", choices: ["Two", "Three"], solution: "ZZ Three sides." };
 const question = (over: Record<string, unknown>) => ({ id: "q1", topic: { id: "t1", name: "ZZ Shapes", subject: "MATHS", classLevel: 3, chapter: "ZZ Chapter 5" }, difficulty: 1, answerIndex: 1, en: TEXT, hi: TEXT, mr: TEXT, status: "SUBMITTED", reviewNote: null, reviewedAt: null, submittedAt: "2026-09-30T10:00:00.000Z", questionId: null, earning: null, open: true, ...over });
-const SETTINGS = { questionRatePaise: 1000, questionFreeCount: 20, questionMonthlyCap: 200, questionMonthlyBudgetPaise: 500000, questionDailyLimit: 20, questionPendingLimit: 50, pupilFreeOneToOnes: 2, pupilFreeWorkshops: 2, expertStartOneToOnes: 10, expertStartWorkshops: 2, expertMonthlyOneToOnes: 2, expertQuarterlyWorkshops: 1, teacherMonthlyGuidance: 2, freeCancelHours: 12, workshopMaxSeats: 30 };
+const SETTINGS = { questionRatePaise: 1000, questionFreeCount: 20, questionMonthlyCap: 200, questionMonthlyBudgetPaise: 500000, questionDailyLimit: 20, questionPendingLimit: 50, pupilFreeOneToOnes: 2, pupilFreeWorkshops: 2, expertStartOneToOnes: 10, expertStartWorkshops: 2, expertMonthlyOneToOnes: 2, expertQuarterlyWorkshops: 1, teacherMonthlyGuidance: 2, freeCancelHours: 12, workshopMaxSeats: 30, freeLimitZoomMinutes: 40, freeLimitMeetMinutes: 60, freeLimitTeamsMinutes: 60, freeLimitJitsiMinutes: 0 };
 export const MINE = (over: Record<string, unknown> = {}) =>
   gigMyContributionsSchema.parse({
     settings: SETTINGS,

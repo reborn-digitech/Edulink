@@ -53,8 +53,35 @@ export const gigSettingsSchema = z.object({
   teacherMonthlyGuidance: z.number().int(),
   freeCancelHours: z.number().int(),
   workshopMaxSeats: z.number().int(),
+  /**
+   * THE FREE-ACCOUNT LENGTH CAP PER MEETING SERVICE, in minutes (decision 0008, 7 Nov 2026): a session on a
+   * provider's free Zoom, Meet, Teams or Jitsi account may not be longer than the service's own free limit;
+   * 0 is no cap. A provider who has said their account is premium (POST /api/v1/gigs/meeting-account) is not held
+   * to it. Defaults Zoom 40, Meet 60, Teams 60, Jitsi 0.
+   */
+  freeLimitZoomMinutes: z.number().int(),
+  freeLimitMeetMinutes: z.number().int(),
+  freeLimitTeamsMinutes: z.number().int(),
+  freeLimitJitsiMinutes: z.number().int(),
 });
 export type GigSettings = z.infer<typeof gigSettingsSchema>;
+
+/** The four meeting services a slot's room may be on (apps/web src/lib/meeting-links.ts). */
+export const MEETING_SERVICES = ["MEET", "ZOOM", "TEAMS", "JITSI"] as const;
+export const meetingServiceSchema = z.enum(MEETING_SERVICES);
+export type MeetingService = z.infer<typeof meetingServiceSchema>;
+/** Each service's name as a person knows it, the same in every language (a product name, not a sentence), for the cap's sentence on the web and the phone. */
+export const MEETING_SERVICE_NAMES: Record<MeetingService, string> = { MEET: "Google Meet", ZOOM: "Zoom", TEAMS: "Microsoft Teams", JITSI: "Jitsi" };
+
+/**
+ * A provider's meeting account (decision 0008): whether they have said it is premium, and the free-account cap
+ * per service in minutes (0 is none) that holds a session's length while they have not. On GET /api/v1/gigs/slots.
+ */
+export const gigMeetingAccountSchema = z.object({ premium: z.boolean(), caps: z.object({ MEET: z.number().int(), ZOOM: z.number().int(), TEAMS: z.number().int(), JITSI: z.number().int() }) });
+export type GigMeetingAccount = z.infer<typeof gigMeetingAccountSchema>;
+/** POST /api/v1/gigs/meeting-account — the provider says once whether their meeting account is premium; no check is made. */
+export const gigMeetingAccountBodySchema = z.object({ premium: z.boolean() });
+export const gigMeetingAccountSetSchema = z.object({ meeting: gigMeetingAccountSchema });
 
 export const gigContributionSchema = z.object({
   id,
@@ -493,6 +520,8 @@ export const gigProviderSchema = z.object({
   teacherGate: z.object({ paymentsOn: z.boolean(), payeeSaved: z.boolean(), canCharge: z.boolean(), seatPriceMinPaise: z.number().int(), seatPriceMaxPaise: z.number().int(), commissionPercent: z.number().int() }).nullable().optional(),
   /** The provider's sold seats by where their money stands: the net held, due and paid, and the gross refunded. */
   earnings: z.object({ heldPaise: z.number().int(), duePaise: z.number().int(), paidPaise: z.number().int(), refundedPaise: z.number().int(), seats: z.number().int() }).nullable().optional(),
+  /** The provider's meeting account and the free-account caps (decision 0008, 7 Nov 2026); absent from an older server. */
+  meeting: gigMeetingAccountSchema.optional(),
   slots: z.array(
     z.object({
       id,

@@ -528,7 +528,7 @@ function checkoutOf(p: PaymentRow, about: { title: string; pupilName: string; pa
 }
 
 /** The three figures from a gross under today's dials; what a capture freezes. */
-function figuresOf(amountPaise: number, s: { commissionPercent: number; gstPercent: number }): { commissionPaise: number; gstPaise: number; netPaise: number } {
+export function figuresOf(amountPaise: number, s: { commissionPercent: number; gstPercent: number }): { commissionPaise: number; gstPaise: number; netPaise: number } {
   const commissionPaise = commissionOf(amountPaise, s.commissionPercent);
   const gstPaise = gstOf(commissionPaise, s.gstPercent);
   return { commissionPaise, gstPaise, netPaise: amountPaise - commissionPaise - gstPaise };

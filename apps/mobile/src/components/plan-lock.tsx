@@ -22,6 +22,8 @@ import { Icon } from "./icon";
  */
 const NAME_KEY = { STUDENT: "plans.nameStudent", TEACHER: "plans.nameTeacher", EXPERT: "plans.nameExpert" } as const satisfies Record<PlanCode, string>;
 const WHO_KEY = { STUDENT: "plans.whoStudent", TEACHER: "plans.whoTeacher", EXPERT: "plans.whoExpert" } as const satisfies Record<PlanCode, string>;
+/** decision 0008 (7 Nov 2026): what each plan includes, in one sentence under the feature list, as the web's card says it. */
+const INCLUDES_KEY = { STUDENT: "plans.includesStudent", TEACHER: "plans.includesTeacher", EXPERT: "plans.includesExpert" } as const satisfies Record<PlanCode, string>;
 const FEATURE_NAME_KEY = {
   ASSISTANT: "platformFeatures.assistantName",
   QUESTION_BANK: "platformFeatures.questionBankName",
@@ -71,6 +73,9 @@ export function PlanLock({ plan, feature, message }: PlanLockInfo & { message?: 
             </View>
           ))}
         </View>
+        <Text variant="sm" tone="muted">
+          {t(INCLUDES_KEY[plan])}
+        </Text>
         {priced === true ? (
           <Text variant="sm">
             {t("plans.priceMonthly", { amount: formatPaise(price("MONTH"), locale) })} · {t("plans.priceYearly", { amount: formatPaise(price("YEAR"), locale) })}

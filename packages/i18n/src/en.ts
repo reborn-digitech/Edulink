@@ -4280,6 +4280,10 @@ export const en = {
     setTeacherMonthly: "Half-hours asked of a teacher a month",
     setCancelHours: "Hours before the start a seat is given up free",
     setMaxSeats: "Most seats at a workshop",
+    setFreeLimitZoom: "Longest session on a free Zoom account (minutes, 0 for no cap)",
+    setFreeLimitMeet: "Longest session on a free Google Meet account (minutes, 0 for no cap)",
+    setFreeLimitTeams: "Longest session on a free Microsoft Teams account (minutes, 0 for no cap)",
+    setFreeLimitJitsi: "Longest session on a free Jitsi account (minutes, 0 for no cap)",
     sessionsLine: "On offer: {slots} times ahead, {taken} of {seats} seats taken.",
     refuseGuidanceOff: "Your school has not switched on teachers' guidance.",
     noSuchChild: "That pupil was not found.",
@@ -19073,6 +19077,10 @@ export const en = {
     whoStudent: "For a pupil or a college student. A guardian subscribes for a pupil under eighteen; a college student subscribes for themselves.",
     whoTeacher: "For a teacher, who subscribes for themselves. A school posting a vacancy needs no plan.",
     whoExpert: "For an expert, who subscribes for themselves before offering any time to schools.",
+    // decision 0008 (7 Nov 2026): what each plan includes, in one sentence under the feature list.
+    includesStudent: "The assistant, the question bank — practice, your journey and revision — and the platform's competitions. A set your teacher assigns opens once without the plan.",
+    includesTeacher: "The assistant, the question bank — work set for any pupil, worksheets — writing questions for the bank, offering sessions (a single session, a series or a weekly session, each sold per seat) and reading the job board.",
+    includesExpert: "Offering your time to every school's pupils — a single session, a series or a weekly session, each sold per seat — and mentoring.",
     unknownPlan: "There is no such plan.",
     priceInvalid: "Write each price in rupees, as a whole amount or with paise, from zero up to one lakh.",
     monthsInvalid: "Choose 1, 3, 6 or 12 months.",
@@ -19498,6 +19506,13 @@ export const en = {
   // seats (17 Oct 2026): pay per seat for every session, the meeting link and the join reminder (src/lib/gig-sessions.ts).
   seats: {
     refuseMeetingLink: "The meeting link must be a Google Meet, Zoom, Microsoft Teams or Jitsi room that starts with https://.",
+    // decision 0008 (7 Nov 2026): the free-account length cap, and the provider's word that their account is premium.
+    refuseFreeLimit: "A session on a free {service} account is at most {minutes} minutes. Shorten it, or say on this page that your account is premium.",
+    freeLimitHint: "On a free {service} account a session is at most {minutes} minutes.",
+    premiumTitle: "Your meeting account",
+    premiumNote: "A session on a free account is held to the service's own limit ({caps} minutes). Tick this if your account is a paid one; nobody checks it, and a session the service cuts short is yours to answer for.",
+    premiumLabel: "My Google Meet, Zoom, Teams or Jitsi account is premium",
+    premiumSaved: "Saved.",
     refuseTeacherPayee: "Save the UPI ID the company pays you at before you put a price on guidance.",
     askYourParent: "A seat with a price is paid for by your parent or guardian. Ask them from your sessions page.",
     askParent: "Ask your parent",

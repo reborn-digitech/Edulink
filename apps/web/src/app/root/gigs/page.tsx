@@ -183,6 +183,27 @@ export default async function RootGigsPage() {
                 label: t("gigs.setMaxSeats"),
                 value: s.workshopMaxSeats,
               },
+              // decision 0008 (7 Nov 2026): the free-account length cap per meeting service, 0 for none.
+              {
+                key: "freeLimitZoomMinutes",
+                label: t("gigs.setFreeLimitZoom"),
+                value: s.freeLimitZoomMinutes,
+              },
+              {
+                key: "freeLimitMeetMinutes",
+                label: t("gigs.setFreeLimitMeet"),
+                value: s.freeLimitMeetMinutes,
+              },
+              {
+                key: "freeLimitTeamsMinutes",
+                label: t("gigs.setFreeLimitTeams"),
+                value: s.freeLimitTeamsMinutes,
+              },
+              {
+                key: "freeLimitJitsiMinutes",
+                label: t("gigs.setFreeLimitJitsi"),
+                value: s.freeLimitJitsiMinutes,
+              },
             ]}
           />
         </CardBody>

@@ -14844,7 +14844,8 @@
         ],
         "x-feature": "QUESTION_BANK",
         "x-plans": [
-          "STUDENT"
+          "STUDENT",
+          "TEACHER"
         ],
         "x-reach": {
           "TEACHER": "formTeacher"
@@ -15207,7 +15208,8 @@
         ],
         "x-feature": "QUESTION_BANK",
         "x-plans": [
-          "STUDENT"
+          "STUDENT",
+          "TEACHER"
         ],
         "x-reach": {
           "TEACHER": "teachesClass"
@@ -15339,7 +15341,8 @@
         ],
         "x-feature": "QUESTION_BANK",
         "x-plans": [
-          "STUDENT"
+          "STUDENT",
+          "TEACHER"
         ],
         "x-reach": {
           "TEACHER": "teachesClass"
@@ -20468,7 +20471,8 @@
         ],
         "x-feature": "QUESTION_BANK",
         "x-plans": [
-          "STUDENT"
+          "STUDENT",
+          "TEACHER"
         ],
         "responses": {
           "200": {
@@ -22196,7 +22200,8 @@
         ],
         "x-feature": "QUESTION_BANK",
         "x-plans": [
-          "STUDENT"
+          "STUDENT",
+          "TEACHER"
         ],
         "x-reach": {
           "PARENT": "ownChild"
@@ -45101,7 +45106,8 @@
         ],
         "x-feature": "QUESTION_BANK",
         "x-plans": [
-          "STUDENT"
+          "STUDENT",
+          "TEACHER"
         ],
         "x-reach": {
           "STUDENT": "ownWork"
@@ -45374,7 +45380,8 @@
         ],
         "x-feature": "QUESTION_BANK",
         "x-plans": [
-          "STUDENT"
+          "STUDENT",
+          "TEACHER"
         ],
         "responses": {
           "200": {
@@ -45544,7 +45551,8 @@
         ],
         "x-feature": "QUESTION_BANK",
         "x-plans": [
-          "STUDENT"
+          "STUDENT",
+          "TEACHER"
         ],
         "x-reach": {
           "STUDENT": "self"
@@ -45715,7 +45723,8 @@
         ],
         "x-feature": "QUESTION_BANK",
         "x-plans": [
-          "STUDENT"
+          "STUDENT",
+          "TEACHER"
         ],
         "x-reach": {
           "STUDENT": "self"
@@ -45849,7 +45858,8 @@
         ],
         "x-feature": "QUESTION_BANK",
         "x-plans": [
-          "STUDENT"
+          "STUDENT",
+          "TEACHER"
         ],
         "responses": {
           "200": {
@@ -45983,7 +45993,8 @@
         ],
         "x-feature": "QUESTION_BANK",
         "x-plans": [
-          "STUDENT"
+          "STUDENT",
+          "TEACHER"
         ],
         "responses": {
           "200": {
@@ -46134,7 +46145,8 @@
         ],
         "x-feature": "QUESTION_BANK",
         "x-plans": [
-          "STUDENT"
+          "STUDENT",
+          "TEACHER"
         ],
         "responses": {
           "200": {
@@ -46291,7 +46303,8 @@
         ],
         "x-feature": "QUESTION_BANK",
         "x-plans": [
-          "STUDENT"
+          "STUDENT",
+          "TEACHER"
         ],
         "responses": {
           "200": {
@@ -46450,7 +46463,8 @@
         ],
         "x-feature": "QUESTION_BANK",
         "x-plans": [
-          "STUDENT"
+          "STUDENT",
+          "TEACHER"
         ],
         "responses": {
           "200": {
@@ -46587,7 +46601,8 @@
         ],
         "x-feature": "QUESTION_BANK",
         "x-plans": [
-          "STUDENT"
+          "STUDENT",
+          "TEACHER"
         ],
         "responses": {
           "200": {
@@ -97061,6 +97076,18 @@
                         },
                         "workshopMaxSeats": {
                           "type": "integer"
+                        },
+                        "freeLimitZoomMinutes": {
+                          "type": "integer"
+                        },
+                        "freeLimitMeetMinutes": {
+                          "type": "integer"
+                        },
+                        "freeLimitTeamsMinutes": {
+                          "type": "integer"
+                        },
+                        "freeLimitJitsiMinutes": {
+                          "type": "integer"
                         }
                       },
                       "required": [
@@ -97078,7 +97105,11 @@
                         "expertQuarterlyWorkshops",
                         "teacherMonthlyGuidance",
                         "freeCancelHours",
-                        "workshopMaxSeats"
+                        "workshopMaxSeats",
+                        "freeLimitZoomMinutes",
+                        "freeLimitMeetMinutes",
+                        "freeLimitTeamsMinutes",
+                        "freeLimitJitsiMinutes"
                       ],
                       "additionalProperties": false
                     },
@@ -100733,7 +100764,7 @@
     },
     "/api/v1/gigs/slots": {
       "get": {
-        "summary": "A provider's offered times, who has a seat in each, and what they have given free against what is asked; a teacher whose school has not switched guidance on is told so",
+        "summary": "A provider's offered times, who has a seat in each, what they have given free against what is asked, and their meeting account with the free-account caps (decision 0008); a teacher whose school has not switched guidance on is told so",
         "description": "Roles: EXPERT, TEACHER.",
         "security": [
           {
@@ -100930,6 +100961,43 @@
                       "additionalProperties": false,
                       "nullable": true
                     },
+                    "meeting": {
+                      "type": "object",
+                      "properties": {
+                        "premium": {
+                          "type": "boolean"
+                        },
+                        "caps": {
+                          "type": "object",
+                          "properties": {
+                            "MEET": {
+                              "type": "integer"
+                            },
+                            "ZOOM": {
+                              "type": "integer"
+                            },
+                            "TEAMS": {
+                              "type": "integer"
+                            },
+                            "JITSI": {
+                              "type": "integer"
+                            }
+                          },
+                          "required": [
+                            "MEET",
+                            "ZOOM",
+                            "TEAMS",
+                            "JITSI"
+                          ],
+                          "additionalProperties": false
+                        }
+                      },
+                      "required": [
+                        "premium",
+                        "caps"
+                      ],
+                      "additionalProperties": false
+                    },
                     "slots": {
                       "type": "array",
                       "items": {
@@ -101113,7 +101181,7 @@
         }
       },
       "post": {
-        "summary": "Offer a time on the provider's own Meet, Zoom, Teams or Jitsi link (https, refused on any other host): a one-to-one of thirty minutes or (an expert) a workshop with its length and seats; a price within the operator's band on either kind, behind the provider's paid gate (an expert's four conditions; a teacher's payments on and a UPI id saved); 0 is a free time, which draws on a pupil's allowance",
+        "summary": "Offer a time on the provider's own Meet, Zoom, Teams or Jitsi link (https, refused on any other host): a one-to-one of thirty minutes or (an expert) a workshop with its length and seats, held to the service's free-account length unless the provider has said their account is premium (decision 0008); a price within the operator's band on either kind, behind the provider's paid gate (an expert's four conditions; a teacher's payments on and a UPI id saved); 0 is a free time, which draws on a pupil's allowance",
         "description": "Roles: EXPERT, TEACHER.",
         "security": [
           {
@@ -101248,6 +101316,157 @@
                   "title",
                   "startsAt",
                   "meetingUrl"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/gigs/meeting-account": {
+      "post": {
+        "summary": "The provider says once whether their Google Meet, Zoom, Microsoft Teams or Jitsi account is premium; while it is not said, a session they offer is held to the service's free-account length (the operator's caps, Zoom 40, Meet 60, Teams 60 minutes to begin); nothing verifies it",
+        "description": "Roles: EXPERT, TEACHER.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "EXPERT",
+          "TEACHER"
+        ],
+        "x-feature": [
+          "EXPERT_SESSIONS",
+          "TEACHER_SESSIONS"
+        ],
+        "x-plans": [
+          "TEACHER",
+          "EXPERT"
+        ],
+        "x-reach": {
+          "EXPERT": "self",
+          "TEACHER": "self"
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "meeting": {
+                      "type": "object",
+                      "properties": {
+                        "premium": {
+                          "type": "boolean"
+                        },
+                        "caps": {
+                          "type": "object",
+                          "properties": {
+                            "MEET": {
+                              "type": "integer"
+                            },
+                            "ZOOM": {
+                              "type": "integer"
+                            },
+                            "TEAMS": {
+                              "type": "integer"
+                            },
+                            "JITSI": {
+                              "type": "integer"
+                            }
+                          },
+                          "required": [
+                            "MEET",
+                            "ZOOM",
+                            "TEAMS",
+                            "JITSI"
+                          ],
+                          "additionalProperties": false
+                        }
+                      },
+                      "required": [
+                        "premium",
+                        "caps"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "meeting"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "PLAN_REQUIRED: the feature is on and this person's role needs a plan they do not hold; `plan` names it",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "premium": {
+                    "type": "boolean"
+                  }
+                },
+                "required": [
+                  "premium"
                 ],
                 "additionalProperties": false
               }
@@ -104280,6 +104499,18 @@
                         },
                         "workshopMaxSeats": {
                           "type": "integer"
+                        },
+                        "freeLimitZoomMinutes": {
+                          "type": "integer"
+                        },
+                        "freeLimitMeetMinutes": {
+                          "type": "integer"
+                        },
+                        "freeLimitTeamsMinutes": {
+                          "type": "integer"
+                        },
+                        "freeLimitJitsiMinutes": {
+                          "type": "integer"
                         }
                       },
                       "required": [
@@ -104297,7 +104528,11 @@
                         "expertQuarterlyWorkshops",
                         "teacherMonthlyGuidance",
                         "freeCancelHours",
-                        "workshopMaxSeats"
+                        "workshopMaxSeats",
+                        "freeLimitZoomMinutes",
+                        "freeLimitMeetMinutes",
+                        "freeLimitTeamsMinutes",
+                        "freeLimitJitsiMinutes"
                       ],
                       "additionalProperties": false
                     },
@@ -104561,6 +104796,18 @@
                         },
                         "workshopMaxSeats": {
                           "type": "integer"
+                        },
+                        "freeLimitZoomMinutes": {
+                          "type": "integer"
+                        },
+                        "freeLimitMeetMinutes": {
+                          "type": "integer"
+                        },
+                        "freeLimitTeamsMinutes": {
+                          "type": "integer"
+                        },
+                        "freeLimitJitsiMinutes": {
+                          "type": "integer"
                         }
                       },
                       "required": [
@@ -104578,7 +104825,11 @@
                         "expertQuarterlyWorkshops",
                         "teacherMonthlyGuidance",
                         "freeCancelHours",
-                        "workshopMaxSeats"
+                        "workshopMaxSeats",
+                        "freeLimitZoomMinutes",
+                        "freeLimitMeetMinutes",
+                        "freeLimitTeamsMinutes",
+                        "freeLimitJitsiMinutes"
                       ],
                       "additionalProperties": false
                     }
@@ -104683,6 +104934,18 @@
                   },
                   "workshopMaxSeats": {
                     "type": "integer"
+                  },
+                  "freeLimitZoomMinutes": {
+                    "type": "integer"
+                  },
+                  "freeLimitMeetMinutes": {
+                    "type": "integer"
+                  },
+                  "freeLimitTeamsMinutes": {
+                    "type": "integer"
+                  },
+                  "freeLimitJitsiMinutes": {
+                    "type": "integer"
                   }
                 },
                 "required": [
@@ -104700,7 +104963,11 @@
                   "expertQuarterlyWorkshops",
                   "teacherMonthlyGuidance",
                   "freeCancelHours",
-                  "workshopMaxSeats"
+                  "workshopMaxSeats",
+                  "freeLimitZoomMinutes",
+                  "freeLimitMeetMinutes",
+                  "freeLimitTeamsMinutes",
+                  "freeLimitJitsiMinutes"
                 ],
                 "additionalProperties": false
               }
@@ -223229,7 +223496,8 @@
         ],
         "x-feature": "QUESTION_BANK",
         "x-plans": [
-          "STUDENT"
+          "STUDENT",
+          "TEACHER"
         ],
         "x-reach": {
           "STUDENT": "self"

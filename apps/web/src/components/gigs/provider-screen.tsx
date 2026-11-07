@@ -7,7 +7,7 @@ import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { PageHeader } from "@/components/ui/page-header";
 import type { ActiveContext } from "@/lib/session";
 import { formatPaise } from "@edulink/i18n";
-import { CancelWithReason, CloseSeat, OfferForm } from "./provider-forms";
+import { CancelWithReason, CloseSeat, OfferForm, PremiumMeetingSwitch } from "./provider-forms";
 import { PaidGateList, TeacherGateList } from "./paid-gate";
 
 const TONE: Record<BookingStatus, "info" | "ok" | "neutral" | "warn" | "danger"> = { PENDING_CONSENT: "info", PENDING_PAYMENT: "warn", CONFIRMED: "ok", CANCELLED: "neutral", DELIVERED: "ok", MISSED: "warn", UNHELD: "danger" };
@@ -50,7 +50,9 @@ export async function ProviderScreen({ ctx }: { ctx: ActiveContext }) {
           <Card>
             <CardHeader title={t("gigs.offerTitle")} />
             <CardBody className="space-y-4">
-              <OfferForm workshops={view.kind === "EXPERT"} maxSeats={settings.workshopMaxSeats} gate={gate ?? teacherGate} />
+              <OfferForm workshops={view.kind === "EXPERT"} maxSeats={settings.workshopMaxSeats} gate={gate ?? teacherGate} meeting={view.meeting} />
+              {/* The provider's meeting account (decision 0008): premium lifts the free-account length cap. */}
+              <PremiumMeetingSwitch meeting={view.meeting} />
               {gate && (
                 <div className="rounded-[var(--radius-md)] border border-border bg-surface-muted px-4 py-3" data-testid="paid-gate">
                   <p className="text-sm font-medium text-fg">{t("gigs.gateTitle")}</p>

@@ -1,3 +1,4 @@
+import { MEETING_SERVICE_NAMES } from "@edulink/contracts";
 /**
  * WHERE A SESSION IS HELD (seats, 17 October 2026). Every slot — an expert's, a teacher's guidance, an alumnus
  * mentor's — carries the provider's own meeting room, and the platform takes only the rooms of the four services
@@ -41,3 +42,24 @@ export function meetingServiceOf(raw: string): MeetingService | null {
 
 /** A link the platform will hold for a slot: a Meet, Zoom, Teams or Jitsi room on https. */
 export const isMeetingLink = (raw: string): boolean => meetingServiceOf(raw) !== null;
+
+/** Each service's name as a person knows it, for a sentence about their account: the contracts' (a product name, the same in every language). */
+export { MEETING_SERVICE_NAMES };
+
+/** The four dials of the free-account cap (GigSettings), by service; 0 is no cap. */
+export type MeetingCaps = Record<MeetingService, number>;
+export const meetingCapsOf = (s: { freeLimitMeetMinutes: number; freeLimitZoomMinutes: number; freeLimitTeamsMinutes: number; freeLimitJitsiMinutes: number }): MeetingCaps => ({ MEET: s.freeLimitMeetMinutes, ZOOM: s.freeLimitZoomMinutes, TEAMS: s.freeLimitTeamsMinutes, JITSI: s.freeLimitJitsiMinutes });
+
+/**
+ * THE FREE-ACCOUNT LENGTH CAP (decision 0008, 7 November 2026): a session on a free Zoom, Meet, Teams or Jitsi
+ * account may not be longer than the service's own free limit (the operator's dials, 0 for none); a provider who has
+ * said their account is premium (User.premiumMeeting) is not held to it. Answers the cap that holds this link, in
+ * minutes, or null when none does: an unknown link, a service with no cap, or a premium account. Pure, for the test.
+ */
+export function meetingCapFor(meetingUrl: string, caps: MeetingCaps, premium: boolean): { service: MeetingService; minutes: number } | null {
+  if (premium) return null;
+  const service = meetingServiceOf(meetingUrl);
+  if (!service) return null;
+  const minutes = caps[service];
+  return minutes > 0 ? { service, minutes } : null;
+}

@@ -80,8 +80,8 @@ beforeAll(async () => {
   setActivePlansForTests([]);
   saved = await gigSettings();
   savedRow = (await db.gigSettings.findUniqueOrThrow({ where: { id: "gigs" }, select: { paymentsEnabled: true, companyLegalName: true, companyGstin: true, companyAddress: true, companyStateCode: true, invoiceSacCode: true, invoicePrefix: true, gstPercent: true, commissionPercent: true, seatPriceMinPaise: true, seatPriceMaxPaise: true } })) as Record<string, unknown>;
-  // ₹50–300 a seat, 15 % and 18 % GST; no free duty owed, so an expert's gate is read from KYC, the account and a mentoring offer.
-  await db.gigSettings.update({ where: { id: "gigs" }, data: { pupilFreeOneToOnes: 2, pupilFreeWorkshops: 2, freeCancelHours: 12, workshopMaxSeats: 30, expertStartOneToOnes: 0, expertStartWorkshops: 0, expertMonthlyOneToOnes: 0, expertQuarterlyWorkshops: 0, paymentsEnabled: true, seatPriceMinPaise: 5000, seatPriceMaxPaise: 30000, commissionPercent: 15, gstPercent: 18, companyLegalName: "ZZ Shalaghar Seats Test Private Limited", companyGstin: "27AAACZ1234A1Z5", companyAddress: "ZZ 1 Test Road, Pune", companyStateCode: "27", invoicePrefix: PREFIX } });
+  // ₹50–300 a seat, 20 % (decision 0008) and 18 % GST; no free duty owed, so an expert's gate is read from KYC, the account and a mentoring offer.
+  await db.gigSettings.update({ where: { id: "gigs" }, data: { pupilFreeOneToOnes: 2, pupilFreeWorkshops: 2, freeCancelHours: 12, workshopMaxSeats: 30, expertStartOneToOnes: 0, expertStartWorkshops: 0, expertMonthlyOneToOnes: 0, expertQuarterlyWorkshops: 0, paymentsEnabled: true, seatPriceMinPaise: 5000, seatPriceMaxPaise: 30000, commissionPercent: 20, gstPercent: 18, companyLegalName: "ZZ Shalaghar Seats Test Private Limited", companyGstin: "27AAACZ1234A1Z5", companyAddress: "ZZ 1 Test Road, Pune", companyStateCode: "27", invoicePrefix: PREFIX } });
   schoolId = (await db.school.create({ data: { name: `ZZ Seats School ${STAMP}`, slug: `zz-seats-${STAMP}`, code: `ZZS${String(STAMP).slice(-6)}`, contactEmail: `zz-seats-${STAMP}@test.invalid`, teacherGuidanceOn: true }, select: { id: true } })).id;
   await db.academicYear.create({ data: { schoolId, name: "2026–27", startDate: new Date("2026-06-01T00:00:00Z"), endDate: new Date("2027-04-30T00:00:00Z"), isCurrent: true } });
   const person = async (key: string, role: string | null, flags: Record<string, unknown> = {}) => {
@@ -277,8 +277,8 @@ describe("a teacher's sold seat", () => {
     expect(await db.sessionPayment.findUniqueOrThrow({ where: { bookingId: seat.bookingId } })).toMatchObject({ path: "COMPANY", status: "INITIATED", transferId: null });
     expect(await settleSeatPayment({ orderId: seat.checkout!.orderId, gatewayPaymentId: `pay_zzseats${STAMP}t`, amountPaise: 10000 })).toMatchObject({ outcome: "settled" });
     const held = await db.sessionPayment.findUniqueOrThrow({ where: { bookingId: seat.bookingId } });
-    expect(held).toMatchObject({ status: "HELD", path: "COMPANY", commissionPaise: 1500, gstPaise: 270, netPaise: 8230 });
-    expect((await mySlots(teacher())).earnings).toMatchObject({ heldPaise: 8230, seats: 1 });
+    expect(held).toMatchObject({ status: "HELD", path: "COMPANY", commissionPaise: 2000, gstPaise: 360, netPaise: 7640 });
+    expect((await mySlots(teacher())).earnings).toMatchObject({ heldPaise: 7640, seats: 1 });
     const startsAt = (await db.gigSlot.findUniqueOrThrow({ where: { id: priced } })).startsAt;
     const closedAt = new Date(startsAt.getTime() + 10 * 60_000);
     expect(await closeBooking(teacher(), seat.bookingId, "DELIVERED", closedAt)).toMatchObject({ ok: true });
@@ -287,13 +287,13 @@ describe("a teacher's sold seat", () => {
     await releaseSeatPayments(new Date(closedAt.getTime() + (HOLD_HOURS + 1) * HOUR));
     const due = await db.sessionPayment.findUniqueOrThrow({ where: { bookingId: seat.bookingId } });
     expect(due).toMatchObject({ status: "DUE" });
-    expect((await mySlots(teacher())).earnings).toMatchObject({ heldPaise: 0, duePaise: 8230 });
+    expect((await mySlots(teacher())).earnings).toMatchObject({ heldPaise: 0, duePaise: 7640 });
     const paid = await recordPayout(operator(), due.payoutId!, { reference: `ZZSEATS${String(STAMP).slice(-8)}` });
-    expect(paid).toMatchObject({ ok: true, payout: { netPaise: 8230, paymentsCount: 1 } });
+    expect(paid).toMatchObject({ ok: true, payout: { netPaise: 7640, paymentsCount: 1 } });
     const invoice = await db.gigInvoice.findFirstOrThrow({ where: { payoutId: due.payoutId! } });
     expect(JSON.parse(invoice.buyerJson)).toMatchObject({ name: "ZZ Sunita Kale", gstin: null });
-    expect(invoice).toMatchObject({ taxableValuePaise: 1500, totalPaise: 1770 });
-    expect((await mySlots(teacher())).earnings).toMatchObject({ duePaise: 0, paidPaise: 8230 });
+    expect(invoice).toMatchObject({ taxableValuePaise: 2000, totalPaise: 2360 });
+    expect((await mySlots(teacher())).earnings).toMatchObject({ duePaise: 0, paidPaise: 7640 });
   });
 });
 
@@ -311,7 +311,7 @@ describe("the thirty-minute reminder", () => {
     const row = (slotId: string, pupil: string, by: string, over: Record<string, unknown> = {}) => db.gigBooking.create({ data: { schoolId, slotId, studentMembershipId: member[pupil]!, providerUserId: id.expert!, kind: "WORKSHOP", status: "CONFIRMED", bookedByUserId: id[by]!, purpose, consentAt: new Date(), consentUserId: id[by]!, ...over }, select: { id: true } });
     const one = await row(workshop, "p1", "g1");
     const unpaid = await row(workshop, "p2", "g2", { paid: true });
-    await db.sessionPayment.create({ data: { bookingId: unpaid.id, slotId: workshop, payerUserId: id.g2!, expertUserId: id.expert!, amountPaise: 10000, commissionPaise: 1500, orderId: `order_zzseats${STAMP}r`, status: "INITIATED" } });
+    await db.sessionPayment.create({ data: { bookingId: unpaid.id, slotId: workshop, payerUserId: id.g2!, expertUserId: id.expert!, amountPaise: 10000, commissionPaise: 2000, orderId: `order_zzseats${STAMP}r`, status: "INITIATED" } });
     const notYet = await row(later.id, "adult", "adult", { kind: "ONE_TO_ONE" });
     const told = (userId: string) => db.notification.count({ where: { userId, titleVars: { contains: `seats remind ${STAMP}` } } });
     const before = { g1: await told(id.g1!), p1: await told(id.p1!), expert: await told(id.expert!), g2: await told(id.g2!) };

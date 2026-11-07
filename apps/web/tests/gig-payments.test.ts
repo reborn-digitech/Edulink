@@ -118,7 +118,7 @@ beforeAll(async () => {
   savedSwitch = row.paymentsEnabled;
   savedCompany = { companyLegalName: row.companyLegalName, companyGstin: row.companyGstin, companyAddress: row.companyAddress, companyStateCode: row.companyStateCode, invoiceSacCode: row.invoiceSacCode, invoicePrefix: row.invoicePrefix, gstPercent: row.gstPercent };
   // No free duty owed, so the gate's other conditions can be read one at a time; ₹50–300 a seat, 15 % and 18 % GST on it; the company's details blank until a test sets them.
-  await db.gigSettings.update({ where: { id: "gigs" }, data: { pupilFreeOneToOnes: 2, pupilFreeWorkshops: 2, freeCancelHours: 12, workshopMaxSeats: 30, expertStartOneToOnes: 0, expertStartWorkshops: 0, expertMonthlyOneToOnes: 0, expertQuarterlyWorkshops: 0, paymentsEnabled: true, seatPriceMinPaise: 5000, seatPriceMaxPaise: 30000, commissionPercent: 15, gstPercent: 18, companyLegalName: null, companyGstin: null, companyAddress: null, companyStateCode: null, invoicePrefix: PREFIX } });
+  await db.gigSettings.update({ where: { id: "gigs" }, data: { pupilFreeOneToOnes: 2, pupilFreeWorkshops: 2, freeCancelHours: 12, workshopMaxSeats: 30, expertStartOneToOnes: 0, expertStartWorkshops: 0, expertMonthlyOneToOnes: 0, expertQuarterlyWorkshops: 0, paymentsEnabled: true, seatPriceMinPaise: 5000, seatPriceMaxPaise: 30000, commissionPercent: 20, gstPercent: 18, companyLegalName: null, companyGstin: null, companyAddress: null, companyStateCode: null, invoicePrefix: PREFIX } });
   const s = await db.school.create({ data: { name: `ZZ Paid School ${STAMP}`, slug: `zz-pay-${STAMP}`, code: `ZZP${String(STAMP).slice(-6)}`, contactEmail: `zz-pay-${STAMP}@test.invalid`, teacherGuidanceOn: true }, select: { id: true } });
   schoolId = s.id;
   await db.academicYear.create({ data: { schoolId, name: "2026–27", startDate: new Date("2026-06-01T00:00:00Z"), endDate: new Date("2027-04-30T00:00:00Z"), isCurrent: true } });
@@ -294,7 +294,7 @@ describe("the paid gate and the switch", () => {
     const priced = await offerSlot(expert(), slot("WORKSHOP", 48, { pricePaise: 10000 }));
     expect(priced.ok).toBe(true);
     const view = await mySlots(expert());
-    expect(view.gate).toMatchObject({ canCharge: true, seatPriceMinPaise: 5000, seatPriceMaxPaise: 30000, commissionPercent: 15 });
+    expect(view.gate).toMatchObject({ canCharge: true, seatPriceMinPaise: 5000, seatPriceMaxPaise: 30000, commissionPercent: 20 });
     expect(view.slots.find((s) => s.id === (priced as { slotId: string }).slotId)?.pricePaise).toBe(10000);
   });
 
@@ -345,7 +345,7 @@ describe("a paid seat, from the order to Razorpay's release", () => {
     bookingId = (booked as { bookingId: string }).bookingId;
     orderId = checkout.orderId;
     expect(await bookingOf(bookingId)).toMatchObject({ status: "PENDING_PAYMENT", paid: true });
-    expect(await paymentOf(bookingId)).toMatchObject({ status: "INITIATED", path: "ROUTE", transferId: null, amountPaise: 10000, commissionPaise: 1500, gstPaise: 270, netPaise: 8230, receiptNumber: null, payerUserId: id.g2, expertUserId: id.expert });
+    expect(await paymentOf(bookingId)).toMatchObject({ status: "INITIATED", path: "ROUTE", transferId: null, amountPaise: 10000, commissionPaise: 2000, gstPaise: 360, netPaise: 7640, receiptNumber: null, payerUserId: id.g2, expertUserId: id.expert });
     const again = await bookSeat(g2(), { slotId: paidSlot, studentMembershipId: member.p2, purpose: "ZZ a third workshop, past the two free ones." });
     expect(again).toMatchObject({ ok: true, bookingId, status: "PENDING_PAYMENT", checkout: { orderId } });
     expect(await seatCheckout(g2(), bookingId)).toMatchObject({ ok: true, checkout: { orderId } });
@@ -384,7 +384,7 @@ describe("a paid seat, from the order to Razorpay's release", () => {
     await db.gigSettings.update({ where: { id: "gigs" }, data: { gstPercent: 18 } });
     expect(await bookingOf(bookingId)).toMatchObject({ status: "CONFIRMED", paid: true });
     const p = await paymentOf(bookingId);
-    expect(p).toMatchObject({ status: "HELD", path: "ROUTE", paymentId: `pay_zz${STAMP}a`, amountPaise: 10000, commissionPaise: 1500, gstPaise: 270, netPaise: 8230, receiptSerial: 1, receiptNumber: `${PREFIX}-R/${financialYearOf(new Date())}/0001` });
+    expect(p).toMatchObject({ status: "HELD", path: "ROUTE", paymentId: `pay_zz${STAMP}a`, amountPaise: 10000, commissionPaise: 2000, gstPaise: 360, netPaise: 7640, receiptSerial: 1, receiptNumber: `${PREFIX}-R/${financialYearOf(new Date())}/0001` });
     expect(p.transferId?.startsWith("trf_devbox")).toBe(true);
     expect(p.paidAt).not.toBeNull();
     expect(p.holdUntil).toBeNull();
@@ -401,7 +401,7 @@ describe("a paid seat, from the order to Razorpay's release", () => {
     await expect(familyPayment(g1(), p.id)).rejects.toBeInstanceOf(AccessError);
     const receipt = await familyReceipt(g2(), p.id);
     expect(receipt).toMatchObject({ receiptNumber: p.receiptNumber, amountPaise: 10000, expertName: `ZZ expert ${STAMP}`, pupilName: `ZZ p2 ${STAMP}`, payerName: `ZZ g2 ${STAMP}`, collectedBy: "ZZ Shalaghar Test Private Limited", refundedAt: null });
-    expect(JSON.stringify(receipt)).not.toContain("8230");
+    expect(JSON.stringify(receipt)).not.toContain("7640");
     await expect(familyReceipt(g1(), p.id)).rejects.toBeInstanceOf(AccessError);
     expect((await renderReceiptPdf(receipt, "mr")).subarray(0, 5).toString()).toBe("%PDF-");
     const other = await heldSeat();
@@ -429,9 +429,9 @@ describe("a paid seat, from the order to Razorpay's release", () => {
     expect(released).toMatchObject({ status: "RELEASED", pendingAction: null });
     expect(released.releasedAt?.getTime()).toBe(at.getTime());
     const payout = await db.expertPayout.findUniqueOrThrow({ where: { id: released.payoutId! }, include: { payments: true, invoice: true } });
-    expect(payout).toMatchObject({ expertUserId: id.expert, status: "RELEASED", netPaise: 8230, paymentsCount: 1, reference: null });
+    expect(payout).toMatchObject({ expertUserId: id.expert, status: "RELEASED", netPaise: 7640, paymentsCount: 1, reference: null });
     expect(payout.paidAt?.getTime()).toBe(at.getTime());
-    expect(payout.invoice).toMatchObject({ number: `${PREFIX}/${fy}/0001`, serial: 1, taxableValuePaise: 1500, cgstPaise: 135, sgstPaise: 135, igstPaise: 0, totalPaise: 1770, sacCode: "998599", locale: "hi" });
+    expect(payout.invoice).toMatchObject({ number: `${PREFIX}/${fy}/0001`, serial: 1, taxableValuePaise: 2000, cgstPaise: 180, sgstPaise: 180, igstPaise: 0, totalPaise: 2360, sacCode: "998599", locale: "hi" });
     expect(JSON.parse(payout.invoice!.sellerJson)).toMatchObject({ name: "ZZ Shalaghar Test Private Limited", gstin: "27AAACZ1234A1Z5", stateCode: "27" });
     expect(JSON.parse(payout.invoice!.buyerJson)).toMatchObject({ name: "ZZ Meenakshi Rao", gstin: null, stateCode: "27" });
     expect(await audits("gig.payment.released", released.id)).toBe(1);
@@ -442,11 +442,11 @@ describe("a paid seat, from the order to Razorpay's release", () => {
     expect((await releaseSeatPayments(new Date(at.getTime() + HOUR))).released).toBe(0);
     // The expert reads it all; another expert reads none of it.
     const e = await expertEarnings(expert());
-    expect(e).toMatchObject({ releasedPaise: 8230, duePaise: 0, paidOutPaise: 0 });
-    expect(e.rows.find((r) => r.bookingId === bookingId)).toMatchObject({ status: "RELEASED", netPaise: 8230, payoutId: payout.id });
+    expect(e).toMatchObject({ releasedPaise: 7640, duePaise: 0, paidOutPaise: 0 });
+    expect(e.rows.find((r) => r.bookingId === bookingId)).toMatchObject({ status: "RELEASED", netPaise: 7640, payoutId: payout.id });
     expect(e.payouts.find((x) => x.id === payout.id)).toMatchObject({ status: "RELEASED", reference: null, invoiceNumber: `${PREFIX}/${fy}/0001` });
     const view = await invoiceView(expert(), payout.invoice!.id);
-    expect(view).toMatchObject({ payout: { reference: null, netPaise: 8230 } });
+    expect(view).toMatchObject({ payout: { reference: null, netPaise: 7640 } });
     expect((await renderInvoicePdf(view)).subarray(0, 5).toString()).toBe("%PDF-");
     await expect(invoiceView(expert2(), payout.invoice!.id)).rejects.toMatchObject({ code: "NOT_FOUND" });
     await expect(invoiceView(g2(), payout.invoice!.id)).rejects.toBeInstanceOf(AccessError);
@@ -454,8 +454,8 @@ describe("a paid seat, from the order to Razorpay's release", () => {
     expect((await operatorInvoices(operator())).invoices.find((i) => i.id === payout.invoice!.id)).toMatchObject({ expertName: `ZZ expert ${STAMP}` });
     const op = await operatorPayouts(operator());
     expect(op.paid.find((x) => x.id === payout.id)).toMatchObject({ status: "RELEASED", invoiceNumber: `${PREFIX}/${fy}/0001` });
-    expect(op.releasedThisMonthPaise).toBeGreaterThanOrEqual(8230);
-    expect(op.commissionThisMonthPaise).toBeGreaterThanOrEqual(1500);
+    expect(op.releasedThisMonthPaise).toBeGreaterThanOrEqual(7640);
+    expect(op.commissionThisMonthPaise).toBeGreaterThanOrEqual(2000);
     expect(JSON.stringify(op)).not.toContain("bankAccountEnc");
     await expect(operatorPayouts(expert())).rejects.toBeInstanceOf(AccessError);
   });
@@ -468,7 +468,7 @@ describe("a paid seat, from the order to Razorpay's release", () => {
     expect(await saveCompanyDetails(operator(), company({ gstin: "29AAACZ1234A1Z5", stateCode: "29" }))).toMatchObject({ ok: true });
     const b = await releasedSeat();
     expect(b.payoutId).not.toBe(a.payoutId);
-    expect(await db.gigInvoice.findUniqueOrThrow({ where: { payoutId: b.payoutId } })).toMatchObject({ number: `${PREFIX}/${fy}/0003`, taxableValuePaise: 1500, cgstPaise: 0, sgstPaise: 0, igstPaise: 270, totalPaise: 1770 });
+    expect(await db.gigInvoice.findUniqueOrThrow({ where: { payoutId: b.payoutId } })).toMatchObject({ number: `${PREFIX}/${fy}/0003`, taxableValuePaise: 2000, cgstPaise: 0, sgstPaise: 0, igstPaise: 360, totalPaise: 2360 });
     expect(await saveCompanyDetails(operator(), company({ legalName: "ZZ Renamed Limited" }))).toMatchObject({ ok: true });
     expect(JSON.parse((await db.gigInvoice.findUniqueOrThrow({ where: { payoutId: a.payoutId } })).sellerJson).name).toBe("ZZ Shalaghar Test Private Limited");
     await saveCompanyDetails(operator(), company());
@@ -568,14 +568,14 @@ describe("a paid seat, from the order to Razorpay's release", () => {
     const body = captured((fresh as { checkout: { orderId: string } }).checkout.orderId, 6000, `pay_zz${STAMP}r`);
     expect(await (await deliver(body, signSessionsWebhook(body))).json()).toMatchObject({ outcome: "settled" });
     expect(await bookingOf(booked.bookingId)).toMatchObject({ status: "CONFIRMED" });
-    expect(await paymentOf(booked.bookingId)).toMatchObject({ status: "HELD", commissionPaise: 900, gstPaise: 162, netPaise: 4938 });
+    expect(await paymentOf(booked.bookingId)).toMatchObject({ status: "HELD", commissionPaise: 1200, gstPaise: 216, netPaise: 4584 });
     expect(await settleSeatPayment({ orderId: (fresh as { checkout: { orderId: string } }).checkout.orderId, gatewayPaymentId: "pay_x", amountPaise: 6000 })).toMatchObject({ outcome: "already" });
     expect(await settleSeatPayment({ orderId: "order_nobody", gatewayPaymentId: "pay_x", amountPaise: 6000 })).toMatchObject({ outcome: "unknown-order" });
     expect(await cancelBooking(g2(), booked.bookingId)).toMatchObject({ ok: true });
     const refunded = await paymentOf(booked.bookingId);
     expect(refunded).toMatchObject({ status: "REFUNDED", netPaise: 0 });
     expect(await signed({ event: "refund.failed", payload: { refund: { entity: { id: refunded.refundId, error_description: "ZZ bank bounced it" } } } })).toMatchObject({ outcome: "refund-failed" });
-    expect(await paymentOf(booked.bookingId)).toMatchObject({ status: "HELD", pendingAction: "REFUND", netPaise: 4938 });
+    expect(await paymentOf(booked.bookingId)).toMatchObject({ status: "HELD", pendingAction: "REFUND", netPaise: 4584 });
     expect((await operatorPayouts(operator())).failures.find((f) => f.paymentId === refunded.id)).toMatchObject({ action: "REFUND", amountPaise: 6000 });
     expect(await retrySeatPayment(operator(), refunded.id)).toMatchObject({ ok: true, outcome: "refunded" });
     expect(await paymentOf(booked.bookingId)).toMatchObject({ status: "REFUNDED", pendingAction: null });
@@ -595,7 +595,7 @@ describe("a paid seat, from the order to Razorpay's release", () => {
     const p = await paymentOf(seat.bookingId);
     expect(await signed({ event: "transfer.failed", payload: { transfer: { entity: { id: `trf_zz${STAMP}t`, source: p.paymentId, error: { description: "ZZ the linked account was closed" } } } } })).toMatchObject({ outcome: "transfer-failed" });
     expect(await paymentOf(seat.bookingId)).toMatchObject({ status: "PAID", transferId: null, pendingAction: "TRANSFER", lastError: "ZZ the linked account was closed" });
-    expect((await operatorPayouts(operator())).failures.find((f) => f.paymentId === p.id)).toMatchObject({ action: "TRANSFER", amountPaise: 8230 });
+    expect((await operatorPayouts(operator())).failures.find((f) => f.paymentId === p.id)).toMatchObject({ action: "TRANSFER", amountPaise: 7640 });
     expect(await retrySeatPayment(operator(), p.id)).toMatchObject({ ok: true, outcome: "held" });
     const remade = await paymentOf(seat.bookingId);
     expect(remade).toMatchObject({ status: "HELD", pendingAction: null });
@@ -615,16 +615,16 @@ describe("the company-collects rows of the second amendment", () => {
     const seat = await deliveredSeat();
     await db.sessionPayment.update({ where: { bookingId: seat.bookingId }, data: { path: "COMPANY", transferId: null } });
     const run = await releaseSeatPayments(new Date(seat.holdEnds.getTime() + HOUR));
-    expect(run).toMatchObject({ due: 1, duePaise: 8230 });
+    expect(run).toMatchObject({ due: 1, duePaise: 7640 });
     const due = await paymentOf(seat.bookingId);
     expect(due).toMatchObject({ status: "DUE" });
     expect(await expertNotes("due")).toBe(1);
     const op = await operatorPayouts(operator());
-    expect(op.toPay.find((x) => x.id === due.payoutId)).toMatchObject({ netPaise: 8230, paymentsCount: 1 });
+    expect(op.toPay.find((x) => x.id === due.payoutId)).toMatchObject({ netPaise: 7640, paymentsCount: 1 });
     expect(await recordPayout(operator(), due.payoutId!, { reference: "short" })).toMatchObject({ ok: false, errorKey: "gigs.refuseUtr" });
     await expect(recordPayout(expert(), due.payoutId!, { reference: `ZZUTR${STAMP}A` })).rejects.toBeInstanceOf(AccessError);
     const recorded = await recordPayout(operator(), due.payoutId!, { reference: `zzutr${STAMP}a`, note: "ZZ paid by NEFT" });
-    expect(recorded).toMatchObject({ ok: true, payout: { netPaise: 8230, paymentsCount: 1, reference: `ZZUTR${STAMP}A` } });
+    expect(recorded).toMatchObject({ ok: true, payout: { netPaise: 7640, paymentsCount: 1, reference: `ZZUTR${STAMP}A` } });
     const number = (recorded as { invoice: { number: string } }).invoice.number;
     expect(number.startsWith(`${PREFIX}/${fy}/`)).toBe(true);
     expect(await paymentOf(seat.bookingId)).toMatchObject({ status: "PAID_OUT" });

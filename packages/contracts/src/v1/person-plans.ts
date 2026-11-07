@@ -8,10 +8,13 @@ import { platformFeatureSchema, type FeatureCode } from "./platform-features";
  *
  *   STUDENT  the question bank's practice, the assistant and, since decision 0007 (6 Nov 2026), the platform's
  *            competition marketplace (a school's own competitions, which are calendar events, are free)
- *   TEACHER  the teachers' question gig, offering teaching sessions, the job board as a reader, the assistant
- *   EXPERT   offering time as an expert (sessions and mentoring)
+ *   TEACHER  the assistant, the question bank (setting work from it, worksheets), the teachers' question gig,
+ *            offering teaching sessions (a single session, a series or a weekly session, each sold per seat),
+ *            the job board as a reader — decision 0008 (7 Nov 2026) added the bank
+ *   EXPERT   offering time as an expert (sessions and mentoring), the same session shapes
  *
- * Sessions are sold per seat for everyone and are in no plan; a school posting a vacancy needs none. The
+ * Every plan is ₹99 a month or ₹999 a year (decision 0008; PLAN_PRICE_PAISE below seeds a plan row the operator
+ * has not priced). Sessions are sold per seat for everyone and are in no plan; a school posting a vacancy needs none. The
  * platform's feature switches (v1/platform-features.ts) stay above the plans: a feature the operator has off
  * is off for everyone, plan or not. What each word says to a person is a dictionary key (`plans.<CODE>.name`).
  */
@@ -22,9 +25,16 @@ export type PlanCode = z.infer<typeof personPlanSchema>;
 /** The features each plan opens, in the contracts' feature order. The plan rows start from this list. */
 export const PLAN_FEATURES: Record<PlanCode, readonly FeatureCode[]> = {
   STUDENT: ["ASSISTANT", "QUESTION_BANK", "COMPETITIONS"],
-  TEACHER: ["ASSISTANT", "QUESTION_GIG", "TEACHER_SESSIONS", "JOB_BOARD"],
+  TEACHER: ["ASSISTANT", "QUESTION_BANK", "QUESTION_GIG", "TEACHER_SESSIONS", "JOB_BOARD"],
   EXPERT: ["EXPERT_SESSIONS"],
 };
+
+/**
+ * THE PRICE LIST (decision 0008, the owner's decision of 7 November 2026): every plan ₹99 a month and ₹999 a year.
+ * The migration of that day wrote these onto the three PersonPlan rows; the library seeds a missing row with them;
+ * the operator may still change a row's prices on /root/features, which is then what the card shows.
+ */
+export const PLAN_PRICE_PAISE = { MONTH: 9900, YEAR: 99900 } as const;
 
 /**
  * Where an entitlement came from: ORDER (a paid pass, the second half's Razorpay order), GRANT (the operator's

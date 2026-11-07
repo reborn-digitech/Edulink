@@ -7,16 +7,29 @@ import { SelectField, TextField } from "@/components/ui/field";
 import { useToast } from "@/components/ui/toast";
 import { useLocale, useT } from "@/lib/i18n";
 import { formatPaise } from "@edulink/i18n";
+import type { GigMeetingAccount } from "@edulink/contracts";
+import { meetingCapFor, MEETING_SERVICE_NAMES } from "@/lib/meeting-links";
 /** What the price box needs of a provider's paid gate: an expert's (PaidGate) or a teacher's (TeacherPaidGate). */
 type PriceGate = { canCharge: boolean; seatPriceMinPaise: number; seatPriceMaxPaise: number; commissionPercent: number };
-import { cancelSeatAction, cancelSlotAction, closeSeatAction, offerSlotAction } from "@/app/(app)/sessions/actions";
+import { cancelSeatAction, cancelSlotAction, closeSeatAction, offerSlotAction, premiumMeetingAction } from "@/app/(app)/sessions/actions";
+
+/**
+ * The free-account cap sentence beside the time (decision 0008, 7 Nov 2026): once the link names a service with a
+ * cap and the provider has not said their account is premium, the session is held to that many minutes. Pure over
+ * meetingCapFor, so the sentence and the server's refusal cannot disagree about which link is capped.
+ */
+export function capSentence(t: (key: "seats.freeLimitHint", vars: Record<string, string | number>) => string, meetingUrl: string, meeting: GigMeetingAccount | null | undefined): string | null {
+  if (!meeting) return null;
+  const cap = meetingCapFor(meetingUrl, meeting.caps, meeting.premium);
+  return cap ? t("seats.freeLimitHint", { service: MEETING_SERVICE_NAMES[cap.service], minutes: cap.minutes }) : null;
+}
 
 /**
  * A provider offers a time: a one-to-one of thirty minutes, or (an expert) a workshop with its length and seats; and —
  * past the paid gate — a seat's price on either kind (seats, 17 Oct 2026: a one-to-one and a teacher's guidance may be
  * priced). The room is a Meet, Zoom, Teams or Jitsi link, checked again on the server.
  */
-export function OfferForm({ workshops, maxSeats, gate = null }: { workshops: boolean; maxSeats: number; gate?: PriceGate | null }) {
+export function OfferForm({ workshops, maxSeats, gate = null, meeting = null }: { workshops: boolean; maxSeats: number; gate?: PriceGate | null; meeting?: GigMeetingAccount | null }) {
   const t = useT();
   const locale = useLocale();
   const router = useRouter();
@@ -31,6 +44,7 @@ export function OfferForm({ workshops, maxSeats, gate = null }: { workshops: boo
   const [price, setPrice] = useState("");
   const [error, setError] = useState<string | null>(null);
   const rupeesTyped = price.trim() === "" ? 0 : Math.round(Number(price) * 100);
+  const cap = capSentence(t, meetingUrl, meeting);
 
   return (
     <form
@@ -72,7 +86,7 @@ export function OfferForm({ workshops, maxSeats, gate = null }: { workshops: boo
         </div>
         {kind === "WORKSHOP" && (
           <div className="grid grid-cols-2 gap-3" data-typing="en">
-            <TextField label={t("gigs.slotMinutes")} inputMode="numeric" value={minutes} onChange={(e) => setMinutes(e.target.value)} data-testid="slot-minutes" />
+            <TextField label={t("gigs.slotMinutes")} hint={cap ?? undefined} inputMode="numeric" value={minutes} onChange={(e) => setMinutes(e.target.value)} data-testid="slot-minutes" />
             <TextField label={t("gigs.slotSeats")} hint={["2", String(maxSeats)].join("–")} inputMode="numeric" value={seats} onChange={(e) => setSeats(e.target.value)} data-testid="slot-seats" />
           </div>
         )}
@@ -83,12 +97,61 @@ export function OfferForm({ workshops, maxSeats, gate = null }: { workshops: boo
         )}
         <div className="sm:col-span-2" data-typing="en">
           <TextField label={t("gigs.slotLink")} hint={t("seats.linkHint")} type="url" inputMode="url" value={meetingUrl} maxLength={500} autoComplete="off" onChange={(e) => setMeetingUrl(e.target.value)} data-testid="slot-link" />
+          {/* The cap is said where the time is set (decision 0008): under the minutes of a workshop, and here for a one-to-one, which is thirty minutes and so inside every cap. */}
+          {cap && kind === "ONE_TO_ONE" && (
+            <p className="mt-1 text-xs text-fg-muted" data-testid="slot-cap">
+              {cap}
+            </p>
+          )}
         </div>
       </div>
       <Button type="submit" disabled={pending} data-testid="slot-offer">
         {pending ? t("common.saving") : t("gigs.offer")}
       </Button>
     </form>
+  );
+}
+
+/**
+ * THE PROVIDER'S WORD THAT THEIR MEETING ACCOUNT IS PREMIUM (decision 0008): one switch, said once, lifting the
+ * service's free-account length cap on what they offer. Nothing verifies it, and the note says so.
+ */
+export function PremiumMeetingSwitch({ meeting }: { meeting: GigMeetingAccount }) {
+  const t = useT();
+  const router = useRouter();
+  const { toast } = useToast();
+  const [pending, startTransition] = useTransition();
+  const [error, setError] = useState<string | null>(null);
+  const caps = (Object.keys(meeting.caps) as (keyof typeof meeting.caps)[]).filter((k) => meeting.caps[k] > 0).map((k) => `${MEETING_SERVICE_NAMES[k]} ${meeting.caps[k]}`).join(", ");
+  return (
+    <div className="space-y-2 rounded-[var(--radius-md)] border border-border bg-surface-muted px-4 py-3" data-testid="premium-meeting">
+      <p className="text-sm font-medium text-fg">{t("seats.premiumTitle")}</p>
+      <p className="text-xs text-fg-muted">{t("seats.premiumNote", { caps })}</p>
+      <label className="flex min-h-11 items-center gap-2 text-sm text-fg">
+        <input
+          type="checkbox"
+          className="size-4"
+          checked={meeting.premium}
+          disabled={pending}
+          onChange={(e) =>
+            startTransition(async () => {
+              setError(null);
+              const result = await premiumMeetingAction(e.target.checked);
+              if (!result.ok) return setError(result.error);
+              toast({ tone: "ok", title: t("seats.premiumSaved") });
+              router.refresh();
+            })
+          }
+          data-testid="premium-meeting-switch"
+        />
+        {t("seats.premiumLabel")}
+      </label>
+      {error && (
+        <p role="alert" className="text-sm font-medium text-danger">
+          {error}
+        </p>
+      )}
+    </div>
   );
 }
 

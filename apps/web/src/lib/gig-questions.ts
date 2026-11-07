@@ -89,11 +89,14 @@ export type GigSettingsView = {
   questionRatePaise: number; questionFreeCount: number; questionMonthlyCap: number; questionMonthlyBudgetPaise: number; questionDailyLimit: number; questionPendingLimit: number;
   /** Sessions (src/lib/gig-sessions.ts): a pupil's free allowance in a school year, what a provider owes free, and the cancelling window. */
   pupilFreeOneToOnes: number; pupilFreeWorkshops: number; expertStartOneToOnes: number; expertStartWorkshops: number; expertMonthlyOneToOnes: number; expertQuarterlyWorkshops: number; teacherMonthlyGuidance: number; freeCancelHours: number; workshopMaxSeats: number;
+  /** The free-account length cap per meeting service, in minutes, 0 for none (decision 0008; src/lib/meeting-links.ts meetingCapFor). */
+  freeLimitZoomMinutes: number; freeLimitMeetMinutes: number; freeLimitTeamsMinutes: number; freeLimitJitsiMinutes: number;
 };
 
 const SETTINGS_SELECT = {
   questionRatePaise: true, questionFreeCount: true, questionMonthlyCap: true, questionMonthlyBudgetPaise: true, questionDailyLimit: true, questionPendingLimit: true,
   pupilFreeOneToOnes: true, pupilFreeWorkshops: true, expertStartOneToOnes: true, expertStartWorkshops: true, expertMonthlyOneToOnes: true, expertQuarterlyWorkshops: true, teacherMonthlyGuidance: true, freeCancelHours: true, workshopMaxSeats: true,
+  freeLimitZoomMinutes: true, freeLimitMeetMinutes: true, freeLimitTeamsMinutes: true, freeLimitJitsiMinutes: true,
 } as const;
 
 /** The one row, made with the schema's defaults the first time anybody asks. */
@@ -117,6 +120,11 @@ const SETTING_BOUNDS: Record<keyof GigSettingsView, [number, number]> = {
   teacherMonthlyGuidance: [0, 100],
   freeCancelHours: [0, 168],
   workshopMaxSeats: [2, 500],
+  // A session is 30 to 180 minutes; a cap above 180 holds nothing, 0 is no cap (decision 0008).
+  freeLimitZoomMinutes: [0, 180],
+  freeLimitMeetMinutes: [0, 180],
+  freeLimitTeamsMinutes: [0, 180],
+  freeLimitJitsiMinutes: [0, 180],
 };
 
 export async function saveGigSettings(ctx: ActiveContext, input: GigSettingsView): Promise<GigResult<{ settings: GigSettingsView }>> {

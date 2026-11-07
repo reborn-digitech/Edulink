@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { PageHeader } from "@/components/ui/page-header";
 import { FEATURE_META } from "@/lib/feature-meta";
-import { PLAN_NAME_KEY, PLAN_WHO_KEY, planForCard } from "@/lib/person-plans";
+import { PLAN_INCLUDES_KEY, PLAN_NAME_KEY, PLAN_WHO_KEY, planForCard } from "@/lib/person-plans";
 import { getLocale, getT } from "@/lib/i18n/server";
 
 /**
@@ -69,6 +69,10 @@ export async function PlanCard({
                 </li>
               ))}
             </ul>
+            {/* decision 0008 (7 Nov 2026): the plan's contents in a sentence, beside the feature names. */}
+            <p className="mt-2 text-sm text-fg-muted" data-testid="plan-card-includes">
+              {t(PLAN_INCLUDES_KEY[plan])}
+            </p>
           </div>
           {priced ? (
             <p

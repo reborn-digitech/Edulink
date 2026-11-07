@@ -109,7 +109,8 @@ describe("the seam's table", () => {
   const NEEDS: Partial<Record<Role, { plan: PlanCode; features: FeatureCode[] }>> = {
     // decision 0007 (6 Nov 2026): the competition marketplace is in the pupil's plan beside the bank and the assistant.
     STUDENT: { plan: "STUDENT", features: ["QUESTION_BANK", "ASSISTANT", "COMPETITIONS"] },
-    TEACHER: { plan: "TEACHER", features: ["QUESTION_GIG", "TEACHER_SESSIONS", "JOB_BOARD", "ASSISTANT"] },
+    // decision 0008 (7 Nov 2026): the TEACHER plan includes the question bank.
+    TEACHER: { plan: "TEACHER", features: ["QUESTION_BANK", "QUESTION_GIG", "TEACHER_SESSIONS", "JOB_BOARD", "ASSISTANT"] },
     EXPERT: { plan: "EXPERT", features: ["EXPERT_SESSIONS"] },
   };
 

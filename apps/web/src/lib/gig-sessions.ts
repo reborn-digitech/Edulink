@@ -7,7 +7,7 @@ import { notify, notifyGuardians } from "./notify";
 import { AccessError } from "./tenancy";
 import { forSchool } from "./tenant-context";
 import { currentAcademicYear } from "./academic-year";
-import { isMeetingLink } from "./meeting-links";
+import { isMeetingLink, meetingCapFor, meetingCapsOf, MEETING_SERVICE_NAMES, type MeetingCaps } from "./meeting-links";
 import { gigSettings, monthKey, type GigResult, type GigSettingsView } from "./gig-questions";
 import { HOLD_HOURS, UNPAID_SEAT_EXPIRY_MS, markCaptured, openCheckout, paymentSettings, paymentsOn, payoutAccountOf, refundSeatPayment, releaseDue, rupees, scheduleRelease, type PaymentSettings, type PayoutAccountView, type ReleaseRun, type SeatCheckout } from "./gig-payments";
 import type { ActiveContext } from "./session";
@@ -391,6 +391,9 @@ export async function offerSlot(ctx: ActiveContext, input: SlotInput, now: Date 
   const meetingUrl = input.meetingUrl.trim();
   // A Meet, Zoom, Teams or Jitsi room on https, and nothing else (seats, 17 Oct 2026; meeting-links.ts).
   if (!isMeetingLink(meetingUrl)) return { ok: false, errorKey: "seats.refuseMeetingLink" };
+  // The free-account length cap of the room's service, unless the provider has said their account is premium (decision 0008).
+  const capped = await assertMeetingCap(me.userId, meetingUrl, minutes, settings);
+  if (capped) return capped;
   const endsAt = new Date(startsAt.getTime() + minutes * 60_000);
   const clash = await db.gigSlot.findFirst({ where: { providerUserId: me.userId, cancelledAt: null, startsAt: { lt: endsAt }, endsAt: { gt: startsAt } }, select: { id: true } });
   if (clash) return { ok: false, errorKey: "gigs.refuseSlotOverlap" };
@@ -432,7 +435,43 @@ export type ProviderSlot = {
 export type Duty = { deliveredOneToOnes: number; heldWorkshops: number; oneToOnesThisMonth: number; workshopsThisQuarter: number; startOneToOnes: number; startWorkshops: number; monthlyOneToOnes: number; quarterlyWorkshops: number };
 /** What the provider's sold seats stand at (seats, 17 Oct 2026): the net held for them, due, paid, and the gross refunded; an expert's statement is /expert/earnings, a teacher's is this. */
 export type ProviderEarnings = { heldPaise: number; duePaise: number; paidPaise: number; refundedPaise: number; seats: number };
-export type ProviderView = { enabled: boolean; kind: "EXPERT" | "TEACHER"; /** The clock the times are read in: the expert's own, or the teacher's school's. */ timeZone: string; duty: Duty | null; /** An expert's standing to charge, condition by condition; null for a teacher. */ gate: PaidGate | null; /** A teacher's standing to price guidance (seats, 17 Oct 2026); null for an expert. */ teacherGate: TeacherPaidGate | null; earnings: ProviderEarnings | null; slots: ProviderSlot[] };
+/** The provider's meeting account (decision 0008, 7 Nov 2026): their word that it is premium, and the free-account cap per service in minutes (0 none) that holds a session's length while it is not. */
+export type MeetingAccount = { premium: boolean; caps: MeetingCaps };
+export type ProviderView = { enabled: boolean; kind: "EXPERT" | "TEACHER"; /** The clock the times are read in: the expert's own, or the teacher's school's. */ timeZone: string; duty: Duty | null; /** An expert's standing to charge, condition by condition; null for a teacher. */ gate: PaidGate | null; /** A teacher's standing to price guidance (seats, 17 Oct 2026); null for an expert. */ teacherGate: TeacherPaidGate | null; earnings: ProviderEarnings | null; meeting: MeetingAccount; slots: ProviderSlot[] };
+
+/** The provider's meeting account as the forms read it: the person's word and the operator's caps. */
+export async function meetingAccountOf(userId: string, settings?: GigSettingsView): Promise<MeetingAccount> {
+  const [user, s] = await Promise.all([db.user.findUnique({ where: { id: userId }, select: { premiumMeeting: true } }), settings ?? gigSettings()]);
+  return { premium: user?.premiumMeeting ?? false, caps: meetingCapsOf(s) };
+}
+
+/**
+ * THE PROVIDER SAYS ONCE WHETHER THEIR MEETING ACCOUNT IS PREMIUM (decision 0008): an expert or a teacher, on their
+ * own row; nothing verifies it, and the sentence on the page says so. While it is not said, a session they offer is
+ * held to the service's free-account length (`assertMeetingCap`). Audited "gig.meeting.premium"; a repeat of what
+ * stands writes nothing.
+ */
+export async function setPremiumMeeting(ctx: ActiveContext, premium: boolean): Promise<GigResult<{ meeting: MeetingAccount }>> {
+  if (ctx.role !== "EXPERT" && ctx.role !== "TEACHER") return { ok: false, errorKey: "access.wrongRoleForThisAction" };
+  const before = await db.user.findUnique({ where: { id: ctx.user.id }, select: { premiumMeeting: true } });
+  if (before && before.premiumMeeting !== premium) {
+    await db.user.update({ where: { id: ctx.user.id }, data: { premiumMeeting: premium } });
+    await audit({ schoolId: ctx.schoolId ?? null, actorUserId: ctx.user.id, action: "gig.meeting.premium", targetType: "User", targetId: ctx.user.id, meta: { premium } });
+  }
+  return { ok: true, meeting: await meetingAccountOf(ctx.user.id) };
+}
+
+/**
+ * The free-account cap on a session's length (decision 0008): a room on a service with a cap, offered by a provider
+ * who has not said their account is premium, may not run longer than the cap. The sentence names the service and
+ * its minutes; the page says the same beside the time once the link is typed. Null when the length is allowed.
+ */
+export async function assertMeetingCap(providerUserId: string, meetingUrl: string, minutes: number, settings: GigSettingsView): Promise<GigResult<never> | null> {
+  const account = await meetingAccountOf(providerUserId, settings);
+  const cap = meetingCapFor(meetingUrl, account.caps, account.premium);
+  if (cap && minutes > cap.minutes) return { ok: false, errorKey: "seats.refuseFreeLimit", vars: { service: MEETING_SERVICE_NAMES[cap.service], minutes: cap.minutes } };
+  return null;
+}
 
 /** The provider's sold seats, summed by where their money stands. */
 async function providerEarnings(providerUserId: string): Promise<ProviderEarnings> {
@@ -446,8 +485,8 @@ const quarterStart = (at: Date) => new Date(Date.UTC(at.getUTCFullYear(), Math.f
 /** A provider's offered times, who has a seat in each, and what they have given free against what is asked. */
 export async function mySlots(ctx: ActiveContext, now: Date = new Date()): Promise<ProviderView> {
   const me = await providerOrOff(ctx);
-  if (!me) return { enabled: false, kind: "TEACHER", timeZone: "Asia/Kolkata", duty: null, gate: null, teacherGate: null, earnings: null, slots: [] };
   const settings = await gigSettings();
+  if (!me) return { enabled: false, kind: "TEACHER", timeZone: "Asia/Kolkata", duty: null, gate: null, teacherGate: null, earnings: null, meeting: { premium: false, caps: meetingCapsOf(settings) }, slots: [] };
   const slots = await db.gigSlot.findMany({ where: { providerUserId: me.userId, startsAt: { gte: new Date(now.getTime() - 60 * 24 * HOUR) } }, orderBy: { startsAt: "asc" }, take: 300 });
   const bookings: BookingRow[] = slots.length ? await db.gigBooking.findMany({ where: { providerUserId: me.userId, slotId: { in: slots.map((s) => s.id) }, status: { not: "CANCELLED" } }, orderBy: { createdAt: "asc" }, select: BOOKING_SELECT }) : [];
   const names = await pupilNames(bookings);
@@ -474,6 +513,7 @@ export async function mySlots(ctx: ActiveContext, now: Date = new Date()): Promi
     gate: me.kind === "EXPERT" ? await paidGate(me.userId, now) : null,
     teacherGate: me.kind === "TEACHER" ? await teacherPaidGate(me.userId) : null,
     earnings: await providerEarnings(me.userId),
+    meeting: await meetingAccountOf(me.userId, settings),
     slots: slots.map((s) => ({
       id: s.id,
       kind: s.kind as SessionKind,

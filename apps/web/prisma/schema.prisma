@@ -623,6 +623,13 @@ model User {
   // notification channels, quietHours.
   prefs String @default("{}")
 
+  /// THE PROVIDER'S MEETING ACCOUNT IS PREMIUM (decision 0008, 7 November 2026): an expert's or a teacher's own
+  /// word, said once, that their Google Meet, Zoom, Teams or Jitsi account is a paid one. Without it a session they
+  /// offer is held to the service's free-account length (GigSettings.freeLimit*Minutes, read by
+  /// src/lib/gig-sessions.ts offerSlot and the series). On the person, not a profile: a teacher has no profile row
+  /// of their own, and the room is the person's whichever school or kind they offer under. Nothing verifies it.
+  premiumMeeting Boolean @default(false)
+
   /// Whoever runs the server, not whoever runs a school.
   ///
   /// A FLAG, NOT A ROLE, and deliberately. A role is something a session is
@@ -5598,6 +5605,14 @@ model GigSettings {
   /// A seat given up at least this many hours before the start is not counted against the pupil's allowance.
   freeCancelHours            Int      @default(12)
   workshopMaxSeats           Int      @default(30)
+  /// THE FREE-ACCOUNT LENGTH CAP PER MEETING SERVICE, in minutes (decision 0008, 7 November 2026): a session on a
+  /// provider's free account may not be longer than the service's own free limit — Zoom 40, Meet 60, Teams 60,
+  /// Jitsi none (0 is no cap). A provider who has said their account is premium (User.premiumMeeting) is not held
+  /// to it. Applied when a slot or a series is offered (src/lib/gig-sessions.ts); the operator's dials on /root/gigs.
+  freeLimitZoomMinutes       Int      @default(40)
+  freeLimitMeetMinutes       Int      @default(60)
+  freeLimitTeamsMinutes      Int      @default(60)
+  freeLimitJitsiMinutes      Int      @default(0)
   /// THE KILL SWITCH for paid sessions (decision 0004, amended 2026-10-02): off, and no price is
   /// stored, no order is made and no transfer is released, whatever the gateway is set to. Read by
   /// every paid path through src/lib/gig-payments.ts; turned by the operator alone.
@@ -5605,8 +5620,10 @@ model GigSettings {
   /// A workshop seat's price must lie between these, in paise (₹50–300 to begin).
   seatPriceMinPaise          Int      @default(5000)
   seatPriceMaxPaise          Int      @default(30000)
-  /// The company's share of a paid seat, in whole percent; the gateway's fee comes out of it.
-  commissionPercent          Int      @default(15)
+  /// The company's share of a paid seat, in whole percent; the gateway's fee comes out of it. 20 since
+  /// decision 0008 (7 November 2026; 15 before), a teacher's seat and an expert's alike; the migration of that
+  /// day moved the row, and every SessionPayment freezes the figure it was made under.
+  commissionPercent          Int      @default(20)
   /// GST on the company's commission, in whole percent (18 to begin). The seat fee itself carries
   /// no GST here: the company collects it on the expert's behalf and invoices only its own share
   /// (decision 0004, second amendment of 2 October 2026).

@@ -5,6 +5,7 @@ import {
   PLAN_FEATURES,
   PLATFORM_FEATURES,
   PLAN_PRICE_MAX_PAISE,
+  PLAN_PRICE_PAISE,
   type Entitlement as EntitlementView,
   type FeatureCode,
   type OperatorPersonPlan,
@@ -38,11 +39,16 @@ export { PERSON_PLANS, PLAN_FEATURES, type PlanCode };
  * CHILD is entitled: platform-features.ts `assertChildMayUse`), the family booking a seat (sold per seat, never in
  * a plan), a college's staff roles, the operator and the content team.
  *
- *   STUDENT  → QUESTION_BANK, ASSISTANT                                     (the STUDENT plan)
- *   TEACHER  → QUESTION_GIG, TEACHER_SESSIONS (offering), JOB_BOARD (reading), ASSISTANT   (the TEACHER plan)
+ *   STUDENT  → QUESTION_BANK, ASSISTANT, COMPETITIONS                       (the STUDENT plan)
+ *   TEACHER  → QUESTION_BANK (setting work, worksheets), QUESTION_GIG, TEACHER_SESSIONS (offering), JOB_BOARD
+ *              (reading), ASSISTANT                                         (the TEACHER plan; the bank since 0008)
  *   EXPERT   → EXPERT_SESSIONS (offering)                                   (the EXPERT plan)
  *
- * AN INACTIVE PLAN ASKS NOTHING. The rows are created inactive at no price; while a plan is inactive its features
+ * A pupil without the plan still opens a set a teacher assigned once, scored (practice-once.ts, decision 0008):
+ * that door is `planFree` and decides for itself; the bank, the journey and revision stay behind the card.
+ *
+ * AN INACTIVE PLAN ASKS NOTHING. The rows are created inactive at the decided price (₹99 a month, ₹999 a year,
+ * PLAN_PRICE_PAISE, decision 0008; no price before 7 Nov 2026); while a plan is inactive its features
  * follow the platform switch alone, exactly as before this file existed, so the migration locks nobody out. The
  * operator makes a plan active at /root/features when it is to be asked for (the builder's reading of "active",
  * written in the report for the owner to confirm).
@@ -66,6 +72,8 @@ const isFeature = (code: string): code is FeatureCode => (PLATFORM_FEATURES as r
 /** The words of a plan, for the card, the account page and the operator's page. */
 export const PLAN_NAME_KEY: Record<PlanCode, TranslationKey> = { STUDENT: "plans.nameStudent", TEACHER: "plans.nameTeacher", EXPERT: "plans.nameExpert" };
 export const PLAN_WHO_KEY: Record<PlanCode, TranslationKey> = { STUDENT: "plans.whoStudent", TEACHER: "plans.whoTeacher", EXPERT: "plans.whoExpert" };
+/** What each plan includes, in one sentence under the feature list (decision 0008, 7 Nov 2026). */
+export const PLAN_INCLUDES_KEY: Record<PlanCode, TranslationKey> = { STUDENT: "plans.includesStudent", TEACHER: "plans.includesTeacher", EXPERT: "plans.includesExpert" };
 
 /* -------------------------------------------------------------------------- */
 /* For the test suites                                                         */
@@ -96,12 +104,12 @@ function activePlansForTests(): PlanCode[] | null {
 type PlanRow = { id: string; code: string; pricePaise: number; yearlyPricePaise: number; features: unknown; active: boolean; updatedAt: Date; updatedByUserId: string | null };
 const PLAN_SELECT = { id: true, code: true, pricePaise: true, yearlyPricePaise: true, features: true, active: true, updatedAt: true, updatedByUserId: true } as const;
 
-/** The three plan rows, the missing ones created first (inactive, at no price, with the contracts' features). */
+/** The three plan rows, the missing ones created first (inactive, at the decided price, with the contracts' features). */
 async function planRows(): Promise<PlanRow[]> {
   const found = await db.personPlan.findMany({ select: PLAN_SELECT });
   const missing = PERSON_PLANS.filter((code) => !found.some((r) => r.code === code));
   if (missing.length === 0) return found;
-  await db.personPlan.createMany({ data: missing.map((code) => ({ code, features: [...PLAN_FEATURES[code]], active: false })), skipDuplicates: true });
+  await db.personPlan.createMany({ data: missing.map((code) => ({ code, features: [...PLAN_FEATURES[code]], active: false, pricePaise: PLAN_PRICE_PAISE.MONTH, yearlyPricePaise: PLAN_PRICE_PAISE.YEAR })), skipDuplicates: true });
   return db.personPlan.findMany({ select: PLAN_SELECT });
 }
 
