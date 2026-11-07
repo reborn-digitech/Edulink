@@ -6,6 +6,10 @@ import {
   practiceAnsweredSchema,
   practiceBeganSchema,
   practiceNextSchema,
+  practiceOnceAnsweredSchema,
+  practiceOnceSchema,
+  type PracticeOnce,
+  type PracticeOnceAnswered,
   practiceRevealedSchema,
   practiceRevisionAnsweredSchema,
   practiceRevisionQuestionSchema,
@@ -51,7 +55,7 @@ import { QuestionFigure } from "./figure";
  * the same idempotent endpoint whenever the outbox flushes. The NEXT question
  * genuinely needs the server, and the screen says so rather than spinning.
  */
-export type QuizMode = "topic" | "revision" | "assigned";
+export type QuizMode = "topic" | "revision" | "assigned" | "once";
 
 const LETTER = (i: number) => String.fromCharCode(65 + i);
 
@@ -86,6 +90,8 @@ export function PracticeQuiz() {
     );
   }
   if (mode === "revision") return <RevisionQuiz />;
+  // decision 0008 (7 Nov 2026): a set a teacher assigned, opened once by a pupil without the plan.
+  if (mode === "once" && assignmentId) return <OnceQuiz assignmentId={assignmentId} />;
   if (mode === "assigned" && assignmentId) return <TopicQuiz assignmentId={assignmentId} />;
   if (slug) return <TopicQuiz slug={slug} />;
   return (
@@ -399,6 +405,129 @@ function Player({ began, refreshing, onRefresh, onFreshRun }: { began: PracticeB
         ) : queued ? null : (
           <Button label={t("practice.showMeHow")} variant="ghost" icon={<Icon name="eye" size={18} weight="bold" color={th.accentStrong} />} disabled={busy !== null} onPress={() => setConfirmReveal(true)} />
         )}
+      </Card>
+    </Screen>
+  );
+}
+
+/* ------------------------------------------------------------------------- */
+/* One-time practice (decision 0008): a set opened once, scored                */
+/* ------------------------------------------------------------------------- */
+
+/**
+ * A pupil WITHOUT the Student plan opens a set a teacher assigned ONCE: the server fixes the draw at the first
+ * open and records each answer once; the last answer fixes the score, and a second open shows it. No reveal (no
+ * badge to forfeit), no rung, no outbox: an answer offline is refused and tried again by hand.
+ */
+function OnceQuiz({ assignmentId }: { assignmentId: string }) {
+  const t = useT();
+  const { locale } = useLocale();
+  const opened = useQuery({
+    queryKey: ["practice", "once", assignmentId, locale],
+    queryFn: async () => practiceOnceSchema.parse(unwrap(await api().post("/api/v1/practice/once", { assignmentId, language: locale }))),
+    staleTime: Infinity,
+    gcTime: 0,
+    refetchOnWindowFocus: false,
+    refetchOnReconnect: false,
+  });
+  if (!opened.data) {
+    return (
+      <Screen title={t("practiceOnce.title")} refreshing={opened.isRefetching} onRefresh={() => void opened.refetch()}>
+        {opened.isPending ? <Loading /> : null}
+        {opened.isError ? <Failed message={failText(opened.error, t)} planFrom={opened.error} onRetry={() => void opened.refetch()} /> : null}
+      </Screen>
+    );
+  }
+  return <OncePlayer key={opened.data.onceId} opened={opened.data} />;
+}
+
+function OncePlayer({ opened }: { opened: PracticeOnce }) {
+  const t = useT();
+  const th = useTheme();
+  const router = useRouter();
+  const qc = useQueryClient();
+  const { locale } = useLocale();
+  const [set, setSet] = useState(opened.set);
+  const [question, setQuestion] = useState<PracticeQuestion | null>(opened.question);
+  const [chosen, setChosen] = useState<number | null>(null);
+  const [outcome, setOutcome] = useState<PracticeOnceAnswered | null>(null);
+  const [busy, setBusy] = useState(false);
+  const [refusal, setRefusal] = useState<Refusal | null>(null);
+  // Leaving: the practice screen's list of sets has moved.
+  useEffect(() => () => void qc.invalidateQueries({ queryKey: ["practice", "once"] }), [qc]);
+
+  const choose = async (index: number) => {
+    if (!question || outcome || busy) return;
+    setChosen(index);
+    setRefusal(null);
+    setBusy(true);
+    const body = { onceId: opened.onceId, questionId: question.questionId, chosenIndex: index, clientId: newClientId(), language: locale };
+    const result = await api().post("/api/v1/practice/once/answer", body);
+    setBusy(false);
+    if (!result.ok) {
+      setChosen(null);
+      setRefusal({ message: errorText(result, t("common.somethingWrong")), retry: () => void choose(index) });
+      return;
+    }
+    const answered = practiceOnceAnsweredSchema.parse(result.data);
+    if (answered.correct) haptics.success();
+    else haptics.error();
+    setOutcome(answered);
+    setSet(answered.set);
+  };
+  const next = () => {
+    setQuestion(outcome?.question ?? null);
+    setOutcome(null);
+    setChosen(null);
+  };
+  const back = () => router.back();
+
+  if (!question && !outcome) {
+    return (
+      <Screen title={set.topicName}>
+        <Card title={t("practiceOnce.doneTitle")}>
+          <Text variant="2xl" bold>
+            {t("practiceOnce.score", { correct: set.correct, total: set.total })}
+          </Text>
+          <Text variant="sm" tone="muted">
+            {t("practiceOnce.doneBody")}
+          </Text>
+          <View style={{ flexDirection: "row", flexWrap: "wrap", gap: th.space[2] }}>
+            <Stat label={t("practice.summaryAnswered")} value={set.answered} />
+            <Stat label={t("practice.summaryRight")} value={set.correct} tone="ok" />
+          </View>
+        </Card>
+        <Button label={t("practice.backToPractice")} onPress={back} />
+      </Screen>
+    );
+  }
+  if (!question) return null;
+  return (
+    <Screen title={set.topicName} description={t("practiceOnce.pageIntro", { tier: set.targetTierName, level: set.targetLevel })}>
+      <View style={{ flexDirection: "row", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: th.space[2] }}>
+        <Pill label={`L${question.difficulty} · ${levelName(t, question.difficulty)}`} tone="accent" />
+        <Text variant="xs" tone="muted">
+          {t("practice.nOfTotal", { n: question.askedCount + 1, total: question.totalCount })}
+        </Text>
+      </View>
+      <Bar now={question.askedCount} max={Math.max(1, question.totalCount)} label={t("practice.questionsAnswered")} />
+      <Card>
+        {question.image ? <QuestionFigure fileId={question.image.fileId} alt={question.image.alt} /> : null}
+        <Text variant="lg" bold>
+          {question.stem}
+        </Text>
+        <Choices choices={question.choices} chosen={chosen} answerIndex={outcome ? outcome.answerIndex : null} disabled={busy || outcome !== null} busy={busy} onChoose={(i) => void choose(i)} />
+        {outcome ? <Verdict correct={outcome.correct} /> : null}
+        {outcome ? (
+          <View style={{ backgroundColor: th.surfaceMuted, borderRadius: th.radius.md, padding: th.space[3], gap: th.space[1] }}>
+            <Text variant="xs" tone="muted" bold>
+              {t("practice.howItWorks")}
+            </Text>
+            <Text variant="sm">{outcome.solution}</Text>
+          </View>
+        ) : null}
+        {refusal ? <Failed message={refusal.message} onRetry={refusal.retry} /> : null}
+        {outcome ? <Button label={outcome.question ? t("practice.nextQuestion") : t("practiceOnce.result")} onPress={next} /> : null}
       </Card>
     </Screen>
   );

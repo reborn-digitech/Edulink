@@ -16,6 +16,8 @@ import type { ActiveContext } from "@/lib/session";
 import { reviseQuestion, revisionAttempt } from "@/lib/practice-insights";
 import type { ServedFigure } from "@/lib/quiz-figure";
 import { assertFeatureForAction } from "@/lib/feature-page";
+import { assertFeatureSwitchOn } from "@/lib/platform-features";
+import { answerOnce, openOnce, type OnceAnswered, type OnceView } from "@/lib/practice-once";
 
 /**
  * Practice, from the child's side.
@@ -135,6 +137,31 @@ export async function reviseAnswer(
     const { attemptId } = await revisionAttempt(ctx, questionId, languageOf(ctx));
     const result = await submitAnswer(ctx, attemptId, questionId, chosenIndex, languageOf(ctx));
     return { ok: true, result };
+  } catch (error) {
+    return failure(error);
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/* One-time practice (decision 0008): a pupil without the plan, once per set   */
+/* -------------------------------------------------------------------------- */
+
+/** The platform switch alone, never the plan: the set is for the pupil WITHOUT the plan (the catalog's planFree). */
+export async function onceOpen(assignmentId: string): Promise<Ok<{ view: OnceView }> | Failure> {
+  try {
+    const ctx = await requireApiRole("STUDENT");
+    await assertFeatureSwitchOn(["QUESTION_BANK"]);
+    return { ok: true, view: await openOnce(ctx, assignmentId, languageOf(ctx)) };
+  } catch (error) {
+    return failure(error);
+  }
+}
+
+export async function onceAnswer(onceId: string, questionId: string, chosenIndex: number): Promise<Ok<{ result: OnceAnswered }> | Failure> {
+  try {
+    const ctx = await requireApiRole("STUDENT");
+    await assertFeatureSwitchOn(["QUESTION_BANK"]);
+    return { ok: true, result: await answerOnce(ctx, onceId, questionId, chosenIndex, languageOf(ctx)) };
   } catch (error) {
     return failure(error);
   }

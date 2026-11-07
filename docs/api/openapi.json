@@ -46449,6 +46449,674 @@
         }
       }
     },
+    "/api/v1/practice/once": {
+      "get": {
+        "summary": "The sets a teacher assigned to the pupil's classes, with where each one-time attempt stands: not opened, open with so many answered, or done with the score",
+        "description": "Roles: STUDENT.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "STUDENT"
+        ],
+        "x-feature": "QUESTION_BANK",
+        "x-plan-free": "a pupil without the Student plan opens a set a teacher assigned once, scored (decision 0008); the bank itself stays behind the plan",
+        "x-reach": {
+          "STUDENT": "self"
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "sets": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "assignmentId": {
+                            "type": "string",
+                            "pattern": "^c[a-z0-9]{20,}$"
+                          },
+                          "topicSlug": {
+                            "type": "string"
+                          },
+                          "topicName": {
+                            "type": "string"
+                          },
+                          "subject": {
+                            "type": "string"
+                          },
+                          "classLevel": {
+                            "type": "integer"
+                          },
+                          "targetLevel": {
+                            "type": "integer"
+                          },
+                          "targetTierName": {
+                            "type": "string"
+                          },
+                          "note": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "dueAt": {
+                            "type": "string",
+                            "format": "date-time",
+                            "nullable": true
+                          },
+                          "state": {
+                            "type": "string",
+                            "enum": [
+                              "NOT_OPENED",
+                              "OPEN",
+                              "DONE"
+                            ]
+                          },
+                          "total": {
+                            "type": "integer"
+                          },
+                          "answered": {
+                            "type": "integer"
+                          },
+                          "correct": {
+                            "type": "integer"
+                          }
+                        },
+                        "required": [
+                          "assignmentId",
+                          "topicSlug",
+                          "topicName",
+                          "subject",
+                          "classLevel",
+                          "targetLevel",
+                          "targetTierName",
+                          "note",
+                          "dueAt",
+                          "state",
+                          "total",
+                          "answered",
+                          "correct"
+                        ],
+                        "additionalProperties": false
+                      }
+                    }
+                  },
+                  "required": [
+                    "sets"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "language": {
+                    "type": "string",
+                    "enum": [
+                      "en",
+                      "hi",
+                      "mr"
+                    ]
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Open an assigned set once — a fixed draw of the chapter's questions nearest the target rung, at most ten — or read it back as it stands; a finished set answers with no question and the score",
+        "description": "Roles: STUDENT.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "STUDENT"
+        ],
+        "x-feature": "QUESTION_BANK",
+        "x-plan-free": "a pupil without the Student plan opens a set a teacher assigned once, scored (decision 0008); the bank itself stays behind the plan",
+        "x-reach": {
+          "STUDENT": "self"
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "onceId": {
+                      "type": "string",
+                      "pattern": "^c[a-z0-9]{20,}$"
+                    },
+                    "set": {
+                      "type": "object",
+                      "properties": {
+                        "assignmentId": {
+                          "$ref": "#/properties/onceId"
+                        },
+                        "topicSlug": {
+                          "type": "string"
+                        },
+                        "topicName": {
+                          "type": "string"
+                        },
+                        "subject": {
+                          "type": "string"
+                        },
+                        "classLevel": {
+                          "type": "integer"
+                        },
+                        "targetLevel": {
+                          "type": "integer"
+                        },
+                        "targetTierName": {
+                          "type": "string"
+                        },
+                        "note": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "dueAt": {
+                          "type": "string",
+                          "format": "date-time",
+                          "nullable": true
+                        },
+                        "state": {
+                          "type": "string",
+                          "enum": [
+                            "NOT_OPENED",
+                            "OPEN",
+                            "DONE"
+                          ]
+                        },
+                        "total": {
+                          "type": "integer"
+                        },
+                        "answered": {
+                          "type": "integer"
+                        },
+                        "correct": {
+                          "type": "integer"
+                        }
+                      },
+                      "required": [
+                        "assignmentId",
+                        "topicSlug",
+                        "topicName",
+                        "subject",
+                        "classLevel",
+                        "targetLevel",
+                        "targetTierName",
+                        "note",
+                        "dueAt",
+                        "state",
+                        "total",
+                        "answered",
+                        "correct"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "question": {
+                      "type": "object",
+                      "properties": {
+                        "questionId": {
+                          "type": "string"
+                        },
+                        "stem": {
+                          "type": "string"
+                        },
+                        "choices": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        },
+                        "difficulty": {
+                          "type": "integer"
+                        },
+                        "askedCount": {
+                          "type": "integer"
+                        },
+                        "totalCount": {
+                          "type": "integer"
+                        },
+                        "image": {
+                          "type": "object",
+                          "properties": {
+                            "fileId": {
+                              "type": "string",
+                              "pattern": "^[0-9a-f-]{36}\\.(?:png|jpg|webp)$"
+                            },
+                            "alt": {
+                              "type": "string",
+                              "minLength": 1,
+                              "maxLength": 2000
+                            }
+                          },
+                          "required": [
+                            "fileId",
+                            "alt"
+                          ],
+                          "additionalProperties": false,
+                          "nullable": true
+                        }
+                      },
+                      "required": [
+                        "questionId",
+                        "stem",
+                        "choices",
+                        "difficulty",
+                        "askedCount",
+                        "totalCount"
+                      ],
+                      "additionalProperties": false,
+                      "nullable": true
+                    }
+                  },
+                  "required": [
+                    "onceId",
+                    "set",
+                    "question"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "assignmentId": {
+                    "type": "string",
+                    "pattern": "^c[a-z0-9]{20,}$"
+                  },
+                  "language": {
+                    "type": "string",
+                    "enum": [
+                      "en",
+                      "hi",
+                      "mr"
+                    ]
+                  }
+                },
+                "required": [
+                  "assignmentId"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/practice/once/answer": {
+      "post": {
+        "summary": "Answer one question of a one-time set, with the verdict and the working, and the next question; replay-safe, and the last answer fixes the score; nothing moves a rung or earns a badge",
+        "description": "Roles: STUDENT.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "STUDENT"
+        ],
+        "x-feature": "QUESTION_BANK",
+        "x-plan-free": "a pupil without the Student plan opens a set a teacher assigned once, scored (decision 0008); the bank itself stays behind the plan",
+        "x-reach": {
+          "STUDENT": "self"
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "replayed": {
+                      "type": "boolean"
+                    },
+                    "correct": {
+                      "type": "boolean"
+                    },
+                    "answerIndex": {
+                      "type": "integer"
+                    },
+                    "solution": {
+                      "type": "string"
+                    },
+                    "set": {
+                      "type": "object",
+                      "properties": {
+                        "assignmentId": {
+                          "type": "string",
+                          "pattern": "^c[a-z0-9]{20,}$"
+                        },
+                        "topicSlug": {
+                          "type": "string"
+                        },
+                        "topicName": {
+                          "type": "string"
+                        },
+                        "subject": {
+                          "type": "string"
+                        },
+                        "classLevel": {
+                          "type": "integer"
+                        },
+                        "targetLevel": {
+                          "type": "integer"
+                        },
+                        "targetTierName": {
+                          "type": "string"
+                        },
+                        "note": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "dueAt": {
+                          "type": "string",
+                          "format": "date-time",
+                          "nullable": true
+                        },
+                        "state": {
+                          "type": "string",
+                          "enum": [
+                            "NOT_OPENED",
+                            "OPEN",
+                            "DONE"
+                          ]
+                        },
+                        "total": {
+                          "type": "integer"
+                        },
+                        "answered": {
+                          "type": "integer"
+                        },
+                        "correct": {
+                          "type": "integer"
+                        }
+                      },
+                      "required": [
+                        "assignmentId",
+                        "topicSlug",
+                        "topicName",
+                        "subject",
+                        "classLevel",
+                        "targetLevel",
+                        "targetTierName",
+                        "note",
+                        "dueAt",
+                        "state",
+                        "total",
+                        "answered",
+                        "correct"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "question": {
+                      "type": "object",
+                      "properties": {
+                        "questionId": {
+                          "type": "string"
+                        },
+                        "stem": {
+                          "type": "string"
+                        },
+                        "choices": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        },
+                        "difficulty": {
+                          "type": "integer"
+                        },
+                        "askedCount": {
+                          "type": "integer"
+                        },
+                        "totalCount": {
+                          "type": "integer"
+                        },
+                        "image": {
+                          "type": "object",
+                          "properties": {
+                            "fileId": {
+                              "type": "string",
+                              "pattern": "^[0-9a-f-]{36}\\.(?:png|jpg|webp)$"
+                            },
+                            "alt": {
+                              "type": "string",
+                              "minLength": 1,
+                              "maxLength": 2000
+                            }
+                          },
+                          "required": [
+                            "fileId",
+                            "alt"
+                          ],
+                          "additionalProperties": false,
+                          "nullable": true
+                        }
+                      },
+                      "required": [
+                        "questionId",
+                        "stem",
+                        "choices",
+                        "difficulty",
+                        "askedCount",
+                        "totalCount"
+                      ],
+                      "additionalProperties": false,
+                      "nullable": true
+                    }
+                  },
+                  "required": [
+                    "replayed",
+                    "correct",
+                    "answerIndex",
+                    "solution",
+                    "set",
+                    "question"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "onceId": {
+                    "type": "string",
+                    "pattern": "^c[a-z0-9]{20,}$"
+                  },
+                  "questionId": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 80
+                  },
+                  "chosenIndex": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 50
+                  },
+                  "clientId": {
+                    "type": "string",
+                    "minLength": 8,
+                    "maxLength": 64
+                  },
+                  "language": {
+                    "type": "string",
+                    "enum": [
+                      "en",
+                      "hi",
+                      "mr"
+                    ]
+                  }
+                },
+                "required": [
+                  "onceId",
+                  "questionId",
+                  "chosenIndex",
+                  "clientId"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/v1/practice/worksheets": {
       "get": {
         "summary": "The chapters a worksheet can be built from, the rungs, and the most a paper holds",

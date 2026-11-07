@@ -1453,6 +1453,25 @@ export const en = {
     CODING: "Coding",
   },
 
+  // practiceOnce (decision 0008, 7 Nov 2026): a pupil without the Student plan opens a set a teacher assigned once, scored (src/lib/practice-once.ts).
+  practiceOnce: {
+    title: "Sets your teacher assigned",
+    intro: "Without the Student plan a set opens once: up to {n} questions, each answered once, and your score at the end. The chapter itself, your journey and revision are in the plan.",
+    pageIntro: "Target: {tier} · L{level}. One attempt, scored at the end.",
+    open: "Open once",
+    continue: "Continue",
+    result: "See the result",
+    score: "{correct} of {total} right",
+    stateNotOpened: "Not opened yet",
+    stateOpen: "{answered} of {total} answered",
+    stateDone: "Done: {correct} of {total}",
+    doneTitle: "That was your one attempt",
+    doneBody: "The set does not open again. The chapter itself, with every question and your rung on it, is part of the Student plan.",
+    refuseEmpty: "This chapter has no questions to draw from yet.",
+    teacherOnce: "Once: {correct}/{total}",
+    teacherOnceOpen: "Once: {answered} of {total} answered",
+    lockedNote: "Each set below opens once, scored. The chapter itself needs the Student plan.",
+  },
   practice: {
     intro: "Practice that follows you. Get two right and it gets harder; get two wrong and it eases off.",
     allSubjects: "All",

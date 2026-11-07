@@ -5,6 +5,8 @@ import {
   practiceAnsweredSchema,
   practiceBeganSchema,
   practiceNextSchema,
+  practiceOnceAnsweredSchema,
+  practiceOnceSchema,
   practiceRevealBodySchema,
   practiceRevealedSchema,
   practiceRevisionAnswerBodySchema,
@@ -299,5 +301,54 @@ describe("smart revision", () => {
     expect(await screen.findByRole("alert")).toHaveTextContent("Not now.");
     await fireEvent.press(screen.getByRole("button", { name: "Try again" }));
     await waitFor(() => expect(calls().filter((c) => c.line.startsWith(`GET ${P}/revision`)).length).toBe(2));
+  });
+});
+
+/* decision 0008 (7 Nov 2026): a set a teacher assigned, opened once by a pupil without the plan. */
+describe("one-time practice", () => {
+  const ONCE = "czz00000000000000000onc1";
+  const set = (over: Record<string, unknown> = {}) => ({ assignmentId: SET, topicSlug: "zz-fractions", topicName: "ZZ Fractions", subject: "MATHS", classLevel: 5, targetLevel: 2, targetTierName: "Learner", note: null, dueAt: null, state: "OPEN", total: 2, answered: 0, correct: 0, ...over });
+  const OQ1 = { ...Q1, totalCount: 2 };
+  const OQ2 = { ...Q2, totalCount: 2 };
+
+  it("opens the set, marks an answer with the working, serves the next, and ends in the score; nothing goes through the outbox", async () => {
+    mockRouter.params = { mode: "once", assignmentId: SET };
+    const { calls } = await mountStaff(<PracticeQuiz />, "STUDENT", {
+      [`POST ${P}/once`]: () => json(practiceOnceSchema.parse({ onceId: ONCE, set: set(), question: OQ1 })),
+      [`POST ${P}/once/answer`]: ({ init }) => {
+        const body = JSON.parse(String(init.body)) as { questionId: string };
+        return body.questionId === "zzq1"
+          ? json(practiceOnceAnsweredSchema.parse({ replayed: false, correct: true, answerIndex: 0, solution: "ZZ 8 ÷ 2 = 4.", set: set({ answered: 1, correct: 1 }), question: OQ2 }))
+          : json(practiceOnceAnsweredSchema.parse({ replayed: false, correct: false, answerIndex: 1, solution: "ZZ a quarter of 8 is 2.", set: set({ answered: 2, correct: 1, state: "DONE" }), question: null }));
+      },
+    });
+    await screen.findByText("ZZ What is half of 8?");
+    expect(calls().find((c) => c.line === `POST ${P}/once`)?.body).toEqual({ assignmentId: SET, language: "en" });
+    expect(screen.getByText("1 of 2")).toBeTruthy();
+    await fireEvent.press(screen.getByRole("button", { name: "A. 4" }));
+    expect(await screen.findByText("Got it right!")).toBeTruthy();
+    expect(screen.getByText("ZZ 8 ÷ 2 = 4.")).toBeTruthy();
+    const answer = calls().find((c) => c.line === `POST ${P}/once/answer`)!;
+    expect(answer.body).toEqual({ onceId: ONCE, questionId: "zzq1", chosenIndex: 0, clientId: expect.any(String), language: "en" });
+    await fireEvent.press(screen.getByRole("button", { name: "Next question" }));
+    await screen.findByText("ZZ What is a quarter of 8?");
+    await fireEvent.press(screen.getByRole("button", { name: "A. 2" }));
+    expect(await screen.findByText("Not this time — the working is below.")).toBeTruthy();
+    await fireEvent.press(screen.getByRole("button", { name: "See the result" }));
+    expect(await screen.findByText("That was your one attempt")).toBeTruthy();
+    expect(screen.getByText("1 of 2 right")).toBeTruthy();
+    expect(await listQueued(`practice:${ONCE}`)).toEqual([]);
+  });
+
+  it("a finished set opens on its result, not on the questions", async () => {
+    mockRouter.params = { mode: "once", assignmentId: SET };
+    await mountStaff(<PracticeQuiz />, "STUDENT", {
+      [`POST ${P}/once`]: () => json(practiceOnceSchema.parse({ onceId: ONCE, set: set({ state: "DONE", answered: 2, correct: 2 }), question: null })),
+    });
+    expect(await screen.findByText("That was your one attempt")).toBeTruthy();
+    expect(screen.getByText("2 of 2 right")).toBeTruthy();
+    expect(screen.queryByText("ZZ What is half of 8?")).toBeNull();
+    await fireEvent.press(screen.getByRole("button", { name: "Back to practice" }));
+    expect(mockRouter.back).toHaveBeenCalled();
   });
 });

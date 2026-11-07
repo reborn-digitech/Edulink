@@ -2,10 +2,10 @@ import { useState } from "react";
 import { View } from "react-native";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import { useQuery } from "@tanstack/react-query";
-import { collegeTermParts, familyParentPracticeSchema, familyStudentPracticeSchema, isCollegeClassLevel, quizBoardOrder, QUIZ_BOARD_BOTH, sortCollegeTerms, STREAMS, topicOnBoard, type CollegeTerm, type PracticeSection, type QuizBoard, type QuizBoardChoice } from "@edulink/contracts";
+import { collegeTermParts, familyParentPracticeSchema, familyStudentPracticeSchema, isCollegeClassLevel, practiceOnceListSchema, quizBoardOrder, QUIZ_BOARD_BOTH, sortCollegeTerms, STREAMS, topicOnBoard, type CollegeTerm, type PracticeSection, type QuizBoard, type QuizBoardChoice } from "@edulink/contracts";
 import { Button, Card, Empty, Failed, Icon, Loading, Row, Screen, Text } from "@/components";
 import { api } from "@/lib/api";
-import { unwrap } from "@/lib/query";
+import { planLockOf, unwrap } from "@/lib/query";
 import { useT } from "@/lib/i18n";
 import { useTheme } from "@/lib/theme";
 import { useRole } from "@/lib/session";
@@ -57,7 +57,34 @@ export function FamilyPractice() {
   );
 }
 
-type QuizParams = { mode: "topic" | "revision" | "assigned"; slug?: string; assignmentId?: string };
+type QuizParams = { mode: "topic" | "revision" | "assigned" | "once"; slug?: string; assignmentId?: string };
+
+/**
+ * ONE-TIME PRACTICE (decision 0008, 7 Nov 2026): a pupil without the Student plan — the practice read answered 402 —
+ * still sees the sets a teacher assigned, each of which opens ONCE in the player's "once" mode, scored, and shows
+ * its score here when done. Drawn above the plan card, as the web's practice layout draws it. The door is planFree.
+ */
+function OnceSets({ play }: { play: (params: QuizParams) => void }) {
+  const t = useT();
+  const query = useQuery({ queryKey: ["practice", "once"], queryFn: async () => practiceOnceListSchema.parse(unwrap(await api().get("/api/v1/practice/once"))) });
+  const sets = query.data?.sets ?? [];
+  if (sets.length === 0) return null;
+  return (
+    <Card title={t("practiceOnce.title")}>
+      <Text variant="xs" tone="muted">
+        {t("practiceOnce.lockedNote")}
+      </Text>
+      {sets.map((s) => (
+        <Row
+          key={s.assignmentId}
+          title={s.topicName}
+          caption={`${t("practice.assignedTarget", { tier: s.targetTierName, level: s.targetLevel })} · ${s.state === "DONE" ? t("practiceOnce.stateDone", { correct: s.correct, total: s.total }) : s.state === "OPEN" ? t("practiceOnce.stateOpen", { answered: s.answered, total: s.total }) : t("practiceOnce.stateNotOpened")}`}
+          onPress={() => play({ mode: "once", assignmentId: s.assignmentId })}
+        />
+      ))}
+    </Card>
+  );
+}
 
 /**
  * quiz-board (11 Oct 2026): the board switch, as on the web — the school's board first, then the other,
@@ -182,6 +209,8 @@ function PupilPractice() {
   return (
     <Screen title={t("feature.practice")} description={t("practice.intro")} refreshing={query.isRefetching} onRefresh={() => void query.refetch()}>
       {query.isPending ? <Loading /> : null}
+      {/* decision 0008: a pupil without the plan sees the sets a teacher assigned above the plan card. */}
+      {query.isError && planLockOf(query.error) ? <OnceSets play={play} /> : null}
       {query.isError ? <Failed error={query.error} onRetry={() => void query.refetch()} /> : null}
       {/* My own journey (A3-inventory-14): the web's link beside the page title, here the first thing under it. */}
       {d ? <Button variant="secondary" label={t("journey.title")} onPress={() => router.push("/(app)/practice-journey" as never)} /> : null}

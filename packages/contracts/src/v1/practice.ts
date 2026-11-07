@@ -236,3 +236,57 @@ export const practiceJourneySchema = z.object({
   totalTiers: z.number().int(),
 });
 export type PracticeJourney = z.infer<typeof practiceJourneySchema>;
+
+/* ------------------------------------------------------------------------- */
+/* One-time practice (decision 0008, 7 November 2026)                          */
+/* ------------------------------------------------------------------------- */
+
+/**
+ * A pupil WITHOUT the Student plan opens a set a teacher assigned ONCE: a fixed draw of the chapter's questions
+ * nearest the target rung, each answered once, scored, and a second open shows the result rather than the
+ * questions. It counts toward nothing else (no rung, no badge, no journey). The doors are open whatever plan the
+ * pupil holds (the catalog's `planFree`); the web and the phone draw the sets beside the plan card for a locked
+ * pupil, and a pupil with the plan plays the chapter itself.
+ */
+export const practiceOnceStateSchema = z.enum(["NOT_OPENED", "OPEN", "DONE"]);
+export type PracticeOnceState = z.infer<typeof practiceOnceStateSchema>;
+export const practiceOnceSetSchema = z.object({
+  assignmentId: cuid,
+  topicSlug: z.string(),
+  topicName: z.string(),
+  subject: z.string(),
+  classLevel: z.number().int(),
+  targetLevel: z.number().int(),
+  targetTierName: z.string(),
+  note: z.string().nullable(),
+  dueAt: iso.nullable(),
+  state: practiceOnceStateSchema,
+  /** Questions in the set: the draw's size once opened, else how many the open would draw. */
+  total: z.number().int(),
+  answered: z.number().int(),
+  correct: z.number().int(),
+});
+export type PracticeOnceSet = z.infer<typeof practiceOnceSetSchema>;
+/** GET /api/v1/practice/once — the pupil's assigned sets with where each one-time attempt stands. */
+export const practiceOnceListSchema = z.object({ sets: z.array(practiceOnceSetSchema) });
+/** POST /api/v1/practice/once — open a set once (the draw is fixed at the first open), or read it back as it stands. */
+export const practiceOnceOpenBodySchema = z.object({ assignmentId: cuid, language: localeSchema.optional() });
+export const practiceOnceSchema = z.object({
+  onceId: cuid,
+  set: practiceOnceSetSchema,
+  /** The question to answer now (never with its answer); null once every question is answered. */
+  question: practiceQuestionSchema.nullable(),
+});
+export type PracticeOnce = z.infer<typeof practiceOnceSchema>;
+/** POST /api/v1/practice/once/answer — one answer, replay-safe on (set, question). */
+export const practiceOnceAnswerBodySchema = z.object({ onceId: cuid, questionId, chosenIndex: z.number().int().min(0).max(50), clientId, language: localeSchema.optional() });
+export type PracticeOnceAnswerBody = z.infer<typeof practiceOnceAnswerBodySchema>;
+export const practiceOnceAnsweredSchema = z.object({
+  replayed: z.boolean(),
+  correct: z.boolean(),
+  answerIndex: z.number().int(),
+  solution: z.string(),
+  set: practiceOnceSetSchema,
+  question: practiceQuestionSchema.nullable(),
+});
+export type PracticeOnceAnswered = z.infer<typeof practiceOnceAnsweredSchema>;

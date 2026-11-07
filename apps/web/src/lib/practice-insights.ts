@@ -10,6 +10,7 @@ import { servedFigure, type ServedFigure } from "./quiz-figure";
 import { audit } from "./audit";
 // college-content (12 Oct 2026): what a tenant lists, on every practice read here too.
 import { practiceTenantOf, practiceTopicsWhere } from "./practice-audience";
+import { onceResultsFor } from "./practice-once";
 import { asCollegeTerm, practiceSectionOf, type CollegeTerm, type PracticeKind, type PracticeSection } from "@edulink/contracts";
 
 /**
@@ -440,6 +441,7 @@ export async function classPracticeHeatmap(
 
 export type PracticeAssignmentView = {
   id: string;
+  topicId: string;
   topicSlug: string;
   topicName: string;
   subject: string;
@@ -514,7 +516,7 @@ export async function assignmentsForClass(
   (PracticeAssignmentView & {
     reached: number;
     pupilCount: number;
-    pupils: { name: string; level: number; reached: boolean }[];
+    pupils: { name: string; level: number; reached: boolean; /** The pupil's one-time attempt without the plan (decision 0008): the score, or null when never opened. */ once: { correct: number; total: number; answered: number; finished: boolean } | null }[];
   })[]
 > {
   await assertClassAccess(requireScope(ctx), classId);
@@ -542,6 +544,8 @@ export async function assignmentsForClass(
     select: { studentMembershipId: true, topicId: true, level: true },
   });
   const levelOf = new Map(masteries.map((m) => [`${m.studentMembershipId}|${m.topicId}`, m.level]));
+  // decision 0008: a pupil without the plan opened the set once; the teacher reads the score beside the rung.
+  const once = await onceResultsFor(ctx.schoolId!, assignments.map((a) => a.id), pupilIds);
 
   return assignments.map((a) => {
     const pupils = enrolled.map((e) => {
@@ -553,10 +557,12 @@ export async function assignmentsForClass(
         name: e.student.user.preferredName ?? e.student.user.name,
         level,
         reached: level >= a.targetLevel,
+        once: once.get(`${e.studentMembershipId}|${a.id}`) ?? null,
       };
     });
     return {
       id: a.id,
+      topicId: a.topicId,
       topicSlug: a.topic.slug,
       topicName: topicName(a.topic),
       subject: a.topic.subject,
@@ -601,6 +607,7 @@ export async function assignmentsForStudent(
     const myLevel = raw === undefined ? 0 : clampLevel(raw);
     return {
       id: a.id,
+      topicId: a.topicId,
       topicSlug: a.topic.slug,
       topicName: topicName(a.topic),
       subject: a.topic.subject,

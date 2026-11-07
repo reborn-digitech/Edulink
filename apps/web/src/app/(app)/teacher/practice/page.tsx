@@ -316,6 +316,11 @@ export default async function TeacherPracticePage({
                           <CheckCircleIcon weight="fill" className="size-3.5" />
                           L{p.level}
                         </span>
+                      ) : p.once ? (
+                        // decision 0008: a pupil without the plan opened the set once; the score stands beside the rung.
+                        <span className="text-xs text-fg-muted" data-testid="pupil-once">
+                          {p.once.finished ? t("practiceOnce.teacherOnce", { correct: p.once.correct, total: p.once.total }) : t("practiceOnce.teacherOnceOpen", { answered: p.once.answered, total: p.once.total })}
+                        </span>
                       ) : (
                         <span className="text-xs text-fg-muted">{p.level > 0 ? `L${p.level}` : "—"}</span>
                       )}

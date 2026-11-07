@@ -268,6 +268,7 @@ model School {
   quizResponses        QuizResponse[]
   quizMastery          QuizMastery[]
   practiceAssignments  PracticeAssignment[]
+  practiceOnce         PracticeOnce[]
   schoolRecords        SchoolRecord[]
   operatorAccess       OperatorAccess[]
   postAcks             PostAck[]
@@ -851,6 +852,7 @@ model Membership {
   quizAttempts           QuizAttempt[]
   quizMastery            QuizMastery[]
   practiceAssignments    PracticeAssignment[]  @relation("PracticeAssigner")
+  practiceOnce           PracticeOnce[]
   examSeriesCreated      ExamSeries[]          @relation("ExamSeriesAuthor")
   meetingSlots           MeetingSlot[]         @relation("MeetingTeacher")
   meetingsAsStudent      MeetingBooking[]      @relation("MeetingStudent")
@@ -3105,6 +3107,7 @@ model QuizTopic {
   mastery             QuizMastery[]
   translations        QuizTopicTranslation[]
   practiceAssignments PracticeAssignment[]
+  practiceOnce        PracticeOnce[]
   contributions       QuestionContribution[]
 
   @@index([subject, classLevel, position])
@@ -3741,9 +3744,41 @@ model PracticeAssignment {
   topic     QuizTopic  @relation(fields: [topicId], references: [id], onDelete: Cascade)
   createdBy Membership @relation("PracticeAssigner", fields: [createdById], references: [id], onDelete: Cascade)
 
+  once PracticeOnce[]
+
   @@index([schoolId, classId, archivedAt])
   @@index([createdById])
   @@index([classId])
+}
+
+/// ONE-TIME PRACTICE (decision 0008, 7 November 2026): a pupil WITHOUT the Student plan opens a set a teacher
+/// assigned once — a fixed draw of the chapter's questions nearest the target rung, each answered once, scored —
+/// and a second open shows the result rather than the questions. It counts toward nothing else: no QuizAttempt,
+/// no QuizResponse, no QuizMastery, no badge, no journey; the bank, the journey and revision stay behind the plan
+/// card. One row per pupil and assignment (src/lib/practice-once.ts is the one writer).
+model PracticeOnce {
+  id                  String    @id @default(cuid())
+  schoolId            String
+  studentMembershipId String
+  assignmentId        String
+  topicId             String
+  /// The drawn question ids in serving order (a JSON string[]), fixed at the first open.
+  questionIds         Json
+  /// What was answered, in order: { questionId, chosenIndex, correct }[] (a JSON array); one entry per question at most.
+  answers             Json      @default("[]")
+  total               Int
+  correct             Int       @default(0)
+  openedAt            DateTime  @default(now())
+  finishedAt          DateTime?
+  updatedAt           DateTime  @updatedAt
+
+  school     School             @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  student    Membership         @relation(fields: [studentMembershipId], references: [id], onDelete: Cascade)
+  assignment PracticeAssignment @relation(fields: [assignmentId], references: [id], onDelete: Cascade)
+  topic      QuizTopic          @relation(fields: [topicId], references: [id], onDelete: Cascade)
+
+  @@unique([studentMembershipId, assignmentId])
+  @@index([schoolId, assignmentId])
 }
 
 // ---------------------------------------------------------------------------

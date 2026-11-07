@@ -2474,6 +2474,8 @@ async function main() {
     await check(parent, `/student/practice/${topic.slug}`, 307, "nor a guardian's");
   }
   await check(student, "/student/practice/no-such-topic", 404, "an invented topic slug");
+  // decision 0008 (7 Nov 2026): a set a teacher assigned opens once at its own page, outside the practice layout; an invented one is not found.
+  await check(student, "/student/practice-once/czzsweepnoassignment0000000", 404, "an invented one-time set");
 
   /* ---- parent ---- */
   for (const p of [

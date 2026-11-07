@@ -229,3 +229,31 @@ describe("practice", () => {
     expect(screen.queryByRole("button", { name: "Both boards" })).toBeNull();
   });
 });
+
+/* decision 0008 (7 Nov 2026): a pupil without the Student plan sees the sets a teacher assigned beside the plan card, each opening once. */
+describe("one-time practice for a pupil without the plan", () => {
+  const SET2 = "czz00000000000000000set2";
+  const locked = () => new Response(JSON.stringify({ error: "This needs the Student plan, which you do not hold yet.", code: "PLAN_REQUIRED", plan: "STUDENT", feature: "QUESTION_BANK" }), { status: 402 });
+  const sets = {
+    sets: [
+      { assignmentId: SET, topicSlug: "zz-decimals", topicName: "ZZ Decimals", subject: "MATHS", classLevel: 5, targetLevel: 2, targetTierName: "Learner", note: null, dueAt: null, state: "NOT_OPENED", total: 10, answered: 0, correct: 0 },
+      { assignmentId: SET2, topicSlug: "zz-plants", topicName: "ZZ Plants", subject: "SCIENCE", classLevel: 4, targetLevel: 1, targetTierName: "Beginner", note: null, dueAt: null, state: "DONE", total: 10, answered: 10, correct: 7 },
+    ],
+  };
+
+  it("the plan card is drawn, and above it each assigned set with where it stands; a set opens the player's once mode", async () => {
+    await renderFamily(<FamilyPractice />, ME_STUDENT, { [PATH]: locked, "/api/v1/practice/once": () => sets, "/api/v1/account/pass": pending });
+    expect(await screen.findByText("Sets your teacher assigned")).toBeTruthy();
+    expect(screen.getByText("Question bank practice needs a plan")).toBeTruthy();
+    expect(screen.getByText("Student plan")).toBeTruthy();
+    expect(screen.getByRole("button", { name: "ZZ Plants, Target: Beginner · L1 · Done: 7 of 10" })).toBeTruthy();
+    await press(screen.getByRole("button", { name: "ZZ Decimals, Target: Learner · L2 · Not opened yet" }));
+    expect(mockRouter.push).toHaveBeenLastCalledWith({ pathname: "/(app)/quiz", params: { mode: "once", assignmentId: SET } });
+  });
+
+  it("a pupil with the plan (the read answers) sees no one-time card", async () => {
+    await renderFamily(<FamilyPractice />, ME_STUDENT, { [PATH]: () => PRACTICE, "/api/v1/practice/once": () => sets });
+    expect(await screen.findByText("Continue where you left off")).toBeTruthy();
+    expect(screen.queryByText("Sets your teacher assigned")).toBeNull();
+  });
+});
