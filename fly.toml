@@ -8,7 +8,7 @@ primary_region = "bom"
   dockerfile = "apps/web/Dockerfile"
 
 [deploy]
-  release_command = "npm run db:migrate"
+  release_command = "npm run db:release"
   strategy = "rolling"
 
 # Two process groups from one image. `web` serves; `jobs` starts the same

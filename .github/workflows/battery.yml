@@ -677,7 +677,7 @@ jobs:
       # The release step, inside the container, the way fly.toml runs it before
       # the new machines take traffic: migrations, then the grants and policies.
       - name: Release step in the container
-        run: docker run --rm --network host -e DATABASE_URL -e DATABASE_ADMIN_URL edulink-web:ci npm run db:migrate
+        run: docker run --rm --network host -e DATABASE_URL -e DATABASE_ADMIN_URL edulink-web:ci npm run db:release
       - name: Serve, and answer health with the commit
         run: |
           docker run -d --name web --network host \

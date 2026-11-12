@@ -192,10 +192,11 @@ export function ProfileForm({
                 : t("expert.specialismPlaceholder")
             }
             aria-label={t("expert.addSpecialism")}
-            className={fieldClass("w-auto flex-1 disabled:opacity-50")}
+            className={fieldClass("w-auto min-w-0 flex-1 disabled:opacity-50")}
           />
           <Button
             variant="secondary"
+            className="shrink-0"
             disabled={!draft.trim() || tags.length >= MAX_SPECIALISMS}
             icon={<PlusIcon weight="bold" />}
             onClick={addTag}

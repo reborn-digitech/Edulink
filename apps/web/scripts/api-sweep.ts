@@ -694,16 +694,27 @@ function printVariants(): void {
  */
 const CLOSED_DAY_DOORS = ["/api/v1/staff/attendance/check-in", "/api/v1/office/substitutions"];
 /** Whether this door, sent a good body today, is refused by the fixture school's calendar rather than let through. */
-const refusedOnClosedDay = (e: Endpoint): boolean => e.method === "POST" && CLOSED_DAY_DOORS.includes(e.path) && checkInClosedToday;
+const refusedOnClosedDay = (e: Endpoint, role: Role | null): boolean => e.method === "POST" && CLOSED_DAY_DOORS.includes(e.path) && checkInClosedFor(role);
 const CLOSING_KINDS = (Object.keys(HOLIDAY_KIND_META) as HolidayKind[]).filter((k) => HOLIDAY_KIND_META[k].closesSchool);
-let checkInClosedToday = false;
-async function readCheckInClosure(slug = "zz-northgate-school"): Promise<void> {
-  const school = await db.school.findUniqueOrThrow({ where: { slug }, select: { id: true, timezone: true, teachingDays: true } });
-  const key = new Intl.DateTimeFormat("en-CA", { timeZone: school.timezone, year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date());
-  const week = parseTeachingDays(school.teachingDays);
-  const closed = await db.holiday.findFirst({ where: { schoolId: school.id, startDateKey: { lte: key }, endDateKey: { gte: key }, kind: { in: CLOSING_KINDS } }, select: { id: true } });
-  checkInClosedToday = !week.includes(new Date(`${key}T00:00:00Z`).getUTCDay()) || closed !== null;
-  if (checkInClosedToday) console.log(`· ${key} is a closed day for the fixture school: the staff check-in and the substitution assignment are expected to refuse`);
+/** Whether today is a closed day, by fixture school id: each actor's own calendar decides (run 43282364871 on the Diwali
+ *  break, 13 November 2026, expected the college's staff refused by Northgate's holiday, and ZZ Vidya College was open). */
+const checkInClosedAt = new Map<string, boolean>();
+const checkInClosedFor = (role: Role | null): boolean => {
+  const schoolId = role ? (tenantOf[role]?.schoolId ?? null) : null;
+  return checkInClosedAt.get(schoolId ?? "zz-northgate-school") ?? false;
+};
+async function readCheckInClosure(slugs = ["zz-northgate-school", "zz-vidya-college"]): Promise<void> {
+  for (const slug of slugs) {
+    const school = await db.school.findUnique({ where: { slug }, select: { id: true, timezone: true, teachingDays: true } });
+    if (!school) continue;
+    const key = new Intl.DateTimeFormat("en-CA", { timeZone: school.timezone, year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date());
+    const week = parseTeachingDays(school.teachingDays);
+    const closed = await db.holiday.findFirst({ where: { schoolId: school.id, startDateKey: { lte: key }, endDateKey: { gte: key }, kind: { in: CLOSING_KINDS } }, select: { id: true } });
+    const shut = !week.includes(new Date(`${key}T00:00:00Z`).getUTCDay()) || closed !== null;
+    checkInClosedAt.set(school.id, shut);
+    if (slug === "zz-northgate-school") checkInClosedAt.set(slug, shut);
+    if (shut) console.log(`· ${key} is a closed day for ${slug}: its staff check-in and substitution assignment are expected to refuse`);
+  }
 }
 
 function expected(e: Endpoint, role: Role | null): number | number[] {
@@ -719,7 +730,7 @@ function expected(e: Endpoint, role: Role | null): number | number[] {
   // The check-in takes no body, so its empty-body probe meets the calendar;
   // the substitution door's empty body is refused by the parser first (422),
   // and its closed-day answer is what the valid-body probe expects below.
-  if (e.path === "/api/v1/staff/attendance/check-in" && checkInClosedToday) return 403;
+  if (e.path === "/api/v1/staff/attendance/check-in" && checkInClosedFor(role)) return 403;
   // A GET's emptyBodyStatus is the permitted actor's answer to the sample as it stands (catalog types.ts).
   if (e.method === "GET") return e.path === "/api/v1/events" ? 200 : (declaredStatus(e, role) ?? [200, 404]);
   return declaredStatus(e, role) ?? [200, 404, 422];
@@ -1324,7 +1335,7 @@ async function main() {
         // A status the catalog declares for this role (statusByRole: a Northgate sample is another tenant's row to a college
         // actor, an HOD may not write a college-wide visit) is the valid-body answer too; otherwise a permitted role gets through.
         const declared = e.statusByRole?.[role];
-        const want = refusedOnClosedDay(e) ? [403] : declared !== undefined ? declared : [200, 201];
+        const want = refusedOnClosedDay(e, role) ? [403] : declared !== undefined ? declared : [200, 201];
         results.push({ endpoint: `${e.method} ${e.path} (valid body)`, role, expected: byHandler ? `${JSON.stringify(wanted(want, off))} or 404 (its handler, feature off)` : wanted(want, off), got: answer.status, ok: judge(want, off, answer) || handlerOk(answer) });
       }
     }

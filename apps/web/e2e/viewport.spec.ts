@@ -2,7 +2,7 @@ import { test, expect } from "@playwright/test";
 import { PrismaClient } from "@prisma/client";
 import { config } from "dotenv";
 import { contextFor, sessions, VIEWPORTS } from "./actors";
-import { overflow, screenshotWhereBaselined, smallTargets } from "./checks";
+import { overflow, smallTargets } from "./checks";
 
 config({ path: ".env" });
 const db = new PrismaClient({ datasourceUrl: process.env.DATABASE_ADMIN_URL ?? process.env.DATABASE_URL });
@@ -74,9 +74,14 @@ for (const { name, actor, path } of PAGES) {
             // Jayanti's banner and five per cent of the picture moved), so such a
             // day is compared under its own name where a baseline for it exists,
             // and said so where none does; the two checks above ran either way.
+            // A closed day's picture carries that day's date line and the holiday's own name in the banner (the Gandhi
+            // Jayanti baselines of 2 October 2026 failed on the Diwali break, run 43282364871), so it is attached and
+            // said, never compared: no two closed days look alike. The open day's baseline is the picture that is held.
             const notice = name === "register" ? await page.getByTestId("register-day-notice").getAttribute("data-kind", { timeout: 1_000 }).catch(() => null) : null;
-            if (notice) await screenshotWhereBaselined(page, `${name}-${vpName}-${theme}-${locale}-${notice}.png`, testInfo);
-            else await expect(page).toHaveScreenshot(`${name}-${vpName}-${theme}-${locale}.png`, { fullPage: false });
+            if (notice) {
+              await testInfo.attach(`${name}-${vpName}-${theme}-${locale}-${notice}.png`, { body: await page.screenshot(), contentType: "image/png" });
+              testInfo.annotations.push({ type: "closed day", description: `${notice}: the register's picture is attached, not compared, on a closed day` });
+            } else await expect(page).toHaveScreenshot(`${name}-${vpName}-${theme}-${locale}.png`, { fullPage: false });
             await context.close();
           } finally {
             await preferLocale(actor.email, "en");

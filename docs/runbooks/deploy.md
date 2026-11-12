@@ -46,7 +46,7 @@ dies in the release step rather than serving.
    CI's `image` job does the same with a throwaway pair and checks the key
    landed in the client bundle.
 3. Release step, before the new machines take traffic:
-   `npm run db:migrate` — `prisma migrate deploy`, then `db-grants.mjs`, which
+   `npm run db:release` — `prisma migrate deploy`, then `db-grants.mjs`, which
    re-applies `prisma/rls.sql` (every policy is dropped-if-exists and
    recreated, so it is safe to run on every release) and proves the app role
    can read.
@@ -112,7 +112,7 @@ the runner from the built image and asserts the schedule came up.
 ## The image
 
 CI's `image` job builds `apps/web/Dockerfile` on every push to master, runs
-`npm run db:migrate` inside the container against a fresh Postgres (the
+`npm run db:release` inside the container against a fresh Postgres (the
 release step, exactly as `fly.toml` runs it), serves it and checks
 `/api/health` reports the commit, then starts the jobs runner from the same
 image. With the repository variable `PUBLISH_IMAGE` set to `true` it also

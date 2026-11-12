@@ -10,6 +10,8 @@ learned the hard way and are not negotiable without saying so in the commit.
 - Migrations, seeds and fixtures run through the owner connection: `npm run db:migrate` (not a bare
   `prisma migrate deploy`, which fails with "must be owner" and leaves a failed migration row to
   `migrate resolve --rolled-back`). After `npm run rls:generate` run `npm run db:grants`.
+- The container's release step is `npm run db:release` (deploy, then grants, no dump): the image carries no pg_dump and
+  the hosted database's backups are the provider's. `db:migrate` with its dump is the dev machine's.
 - Restart the dev server after a migration or `prisma generate`; a stale client 500s.
 
 ## Database and fixtures
