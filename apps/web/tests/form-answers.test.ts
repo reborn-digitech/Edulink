@@ -319,7 +319,6 @@ describe("no new ?error= redirect (A3-journeys-27's source rule)", () => {
    */
   const STILL_REDIRECTING = [
     "src/app/(app)/remarks/conversation-actions.ts",
-    "src/app/(app)/teacher/exams/actions.ts",
     "src/app/(app)/teacher/practice/actions.ts",
     "src/app/(app)/iqac/documents/council-actions.ts",
     "src/lib/module-actions.ts",

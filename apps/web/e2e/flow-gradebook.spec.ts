@@ -49,21 +49,14 @@ test("the teacher enters two pupils' marks, they are kept, and a mark over the m
   await box(page, pupils[0]!.membershipId).fill("42");
   await box(page, pupils[1]!.membershipId).fill("37.5");
   await page.getByTestId("marks-save").click();
-  await page.waitForURL((url) => url.searchParams.get("saved") === "1", { waitUntil: "networkidle" });
-  // The sheet is rendered again on the server after the save and streams in behind the section's skeleton. On the
-  // shared runner the skeleton stayed for the whole twenty seconds on both attempts of runs 41415675038 and
-  // 41454850718 (2 November 2026), with the action's 303 and the route's 200 both answered within a second and
-  // nothing in the server's log, while the same flow passes on this machine against a production build; the
-  // failure message therefore carries what a fresh document of the same address holds, so the next such run says
-  // whether the server or the soft navigation is at fault.
-  const banner = page.getByTestId("marks-saved");
-  if (!(await banner.isVisible({ timeout: 20_000 }).catch(() => false))) {
-    const fresh = await page.request.get(page.url());
-    const html = await fresh.text();
-    const words = (await page.evaluate(() => document.body.innerText.replace(/\s+/g, " ").slice(0, 300))) || "(no words)";
-    throw new Error(`the saved banner did not appear in 20 s on ${page.url()}; a fresh document answers ${fresh.status()} and ${html.includes("marks-saved") ? "holds" : "lacks"} the banner (${html.length} bytes); the page shows: ${words}`);
-  }
-  await expect(page.getByTestId("marks-error")).toHaveCount(0);
+  // The answer comes back in place (the action is an <ActionForm> one since 13 November 2026): the sheet is drawn
+  // again with what was kept and the saved note shows under it. Until then the action redirected to the same
+  // address with ?saved=1, and the client router took the address but never drew the page — the note stayed away
+  // for the whole twenty seconds on every attempt of runs 41415675038, 41454850718 and 43309259037, and against a
+  // production build here. Twenty seconds for the runner, which renders the sheet beside five other jobs.
+  await expect(page.getByTestId("marks-saved")).toBeVisible({ timeout: 20_000 });
+  expect(new URL(page.url()).searchParams.get("saved")).toBeNull();
+  await expect(page.locator("form [role='alert']")).toHaveCount(0);
   await sound(page, "TEACHER the marks sheet after the save");
 
   await page.reload({ waitUntil: "networkidle" });

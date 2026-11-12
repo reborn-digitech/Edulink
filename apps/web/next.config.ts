@@ -14,6 +14,12 @@ const withSerwist = withSerwistInit({
   // offline page (found by the campaign's offline probe: /offline was not in
   // the manifest). A fresh revision per build keeps it current.
   additionalPrecacheEntries: [{ url: "/offline", revision: `${Date.now()}` }],
+  // The manifest took every client chunk the build wrote, and Next writes one
+  // (empty) for each route handler: 1,090 of the 1,770 entries were
+  // static/chunks/app/api/**, which no page ever loads, so every first visit
+  // fetched a thousand files for nothing (CI run 43309259037's trace). The
+  // first two patterns are serwist's own defaults, kept.
+  exclude: [/\.map$/, /^manifest.*\.js$/, /^static\/chunks\/app\/api\//],
   disable: process.env.NODE_ENV === "development",
   reloadOnOnline: true,
 });

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ExamIcon, CheckCircleIcon, DownloadSimpleIcon, WarningIcon } from "@phosphor-icons/react/ssr";
+import { ExamIcon, DownloadSimpleIcon, WarningIcon } from "@phosphor-icons/react/ssr";
 import { requireRole } from "@/lib/tenancy";
 import { EXAM_CATEGORY, examClassesFor, marksGrid } from "@/lib/exams";
 import { listGradeCategories, weightsAreUsable } from "@/lib/grading";
@@ -31,12 +31,12 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function TeacherExamsPage({
   searchParams,
 }: {
-  searchParams: Promise<{ classId?: string; slotId?: string; error?: string; saved?: string }>;
+  searchParams: Promise<{ classId?: string; slotId?: string }>;
 }) {
   const ctx = await requireRole("TEACHER", "ADMIN");
   const t = await getT();
   const locale = await getLocale();
-  const { classId: requestedClass, slotId: requestedSlot, error, saved } = await searchParams;
+  const { classId: requestedClass, slotId: requestedSlot } = await searchParams;
 
   const classes = await examClassesFor(ctx);
   if (classes.length === 0) {
@@ -100,23 +100,6 @@ export default async function TeacherExamsPage({
             </ChipLink>
           ))}
         </nav>
-      )}
-
-      {error && (
-        <Card data-testid="marks-error">
-          <CardBody className="flex items-center gap-2 text-sm text-danger">
-            <WarningIcon weight="fill" className="size-4 shrink-0" />
-            {error}
-          </CardBody>
-        </Card>
-      )}
-      {saved && (
-        <Card data-testid="marks-saved">
-          <CardBody className="flex items-center gap-2 text-sm text-ok">
-            <CheckCircleIcon weight="fill" className="size-4 shrink-0" />
-            {t("exams.savedNote")}
-          </CardBody>
-        </Card>
       )}
 
       {slots.length === 0 ? (

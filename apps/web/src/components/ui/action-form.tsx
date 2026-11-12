@@ -83,14 +83,22 @@ export function useFormFeedback(name: string | undefined): { error?: string; val
   return feedback.state.field === name ? { error: feedback.state.message, value } : { value };
 }
 
+/** The form's last answer (idle, a refusal or a done), for a child that draws its own note of it; null outside an <ActionForm>. */
+export function useFormAnswer(): FormState | null {
+  return useContext(FeedbackContext)?.state ?? null;
+}
+
 export function ActionForm({
   action,
   children,
   className,
+  intercept,
   ...rest
 }: Omit<FormHTMLAttributes<HTMLFormElement>, "action" | "onSubmit" | "children"> & {
   action: (previous: FormState, form: FormData) => Promise<FormState>;
   children: ReactNode;
+  /** A submit the caller takes over before the action (the marks sheet queues the save offline): true, and nothing else happens. */
+  intercept?: (event: FormEvent<HTMLFormElement>) => boolean;
 }) {
   const t = useT();
   const { toast } = useToast();
@@ -131,6 +139,7 @@ export function ActionForm({
   function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     if (pending) return;
+    if (intercept?.(event)) return;
     const submitter = (event.nativeEvent as SubmitEvent).submitter;
     const data = new FormData(event.currentTarget, submitter ?? undefined);
     startTransition(() => dispatch(data));
