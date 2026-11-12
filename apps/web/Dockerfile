@@ -79,7 +79,7 @@ COPY --from=build --chown=app:app /repo/apps/web/.next/standalone ./
 COPY --from=build --chown=app:app /repo/apps/web/.next/static ./apps/web/.next/static
 COPY --from=build --chown=app:app /repo/apps/web/public ./apps/web/public
 COPY --from=build --chown=app:app /repo/apps/web/prisma ./apps/web/prisma
-COPY --from=build --chown=app:app /repo/apps/web/scripts/with-admin-db.mjs /repo/apps/web/scripts/db-grants.mjs /repo/apps/web/scripts/pg-url.mjs /repo/apps/web/scripts/jobs-runner.mjs ./apps/web/scripts/
+COPY --from=build --chown=app:app /repo/apps/web/scripts/with-admin-db.mjs /repo/apps/web/scripts/db-fence.mjs /repo/apps/web/scripts/db-grants.mjs /repo/apps/web/scripts/pg-url.mjs /repo/apps/web/scripts/jobs-runner.mjs ./apps/web/scripts/
 USER app
 WORKDIR /app/apps/web
 EXPOSE 3000

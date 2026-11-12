@@ -14,4 +14,14 @@ describe("the production image", () => {
     expect(stages.length).toBeGreaterThanOrEqual(2);
     for (const stage of stages) expect(stage).toEqual({ stage: stage.stage, major: pinned });
   });
+
+  it("carries every local module the scripts it copies import (run 43299208835 lost db-fence.mjs under with-admin-db.mjs)", () => {
+    const dockerfile = readFileSync(new URL("../Dockerfile", import.meta.url), "utf8");
+    const copied = new Set([...dockerfile.matchAll(/\/repo\/apps\/web\/scripts\/([\w-]+\.mjs)/g)].map((m) => m[1]!));
+    expect(copied.size).toBeGreaterThanOrEqual(4);
+    for (const file of copied) {
+      const source = readFileSync(new URL(`../scripts/${file}`, import.meta.url), "utf8");
+      for (const m of source.matchAll(/^import .* from "\.\/([\w-]+\.mjs)";/gm)) expect(copied, `${file} imports ${m[1]}, which the image does not copy`).toContain(m[1]!);
+    }
+  });
 });
