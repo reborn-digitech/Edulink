@@ -17715,6 +17715,7 @@ export const hi: Dictionary = {
     pageOf: "पृष्ठ {page} / {pages}",
     previousPage: "पिछला पृष्ठ",
     nextPage: "अगला पृष्ठ",
+    rangeOf: "कुल {total} में से {from}–{to}",
     itemsNone: "इस अध्याय का कोई प्रश्न इस स्थिति में नहीं है।",
     itemNumber: "प्रश्न {n}",
     noteMISSING: "इस भाषा का अनुवाद संग्रहीत नहीं है, इसलिए अंग्रेज़ी दिखाई गई है।",

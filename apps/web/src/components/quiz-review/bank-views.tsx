@@ -19,10 +19,13 @@ import { cn } from "@/lib/cn";
 
 type Params = Record<string, string | undefined>;
 
-/** The desk's URL with some parameters changed (null removes one); the chapter walked on the desk is always cleared. */
+/**
+ * The desk's URL with some parameters changed (null removes one); the chapter walked on the desk is always cleared,
+ * and so is the chapters' page unless the change names one — a filter resets the list to its first page (12 Nov 2026).
+ */
 export function deskHref(base: string, current: Params, changes: Record<string, string | number | null>, hash = ""): string {
   const merged: Record<string, string> = {};
-  for (const [k, v] of Object.entries(current)) if (v && k !== "topic" && k !== "skip") merged[k] = v;
+  for (const [k, v] of Object.entries(current)) if (v && k !== "topic" && k !== "skip" && k !== "page") merged[k] = v;
   for (const [k, v] of Object.entries(changes)) {
     if (v === null || v === "") delete merged[k];
     else merged[k] = String(v);

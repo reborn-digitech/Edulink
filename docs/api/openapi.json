@@ -237866,7 +237866,7 @@
     },
     "/api/v1/appadmin/quiz-review/chapters": {
       "get": {
-        "summary": "The practice bank's chapters grouped by class, subject and board in their book's order (?board=&grade=&subject=), each with its served questions by level and by kind (curated, generated), what is taken down or held, and whether the generator, the curated bank or both made them",
+        "summary": "The practice bank's chapters grouped by class, subject and board in their book's order (?board=&grade=&subject=), fifty chapter rows a page (?page=&pageSize=, the page clamped to the last, a group's counts the whole group's), each with its served questions by level and by kind (curated, generated), what is taken down or held, and whether the generator, the curated bank or both made them",
         "description": "The content team.",
         "security": [
           {
@@ -237887,6 +237887,25 @@
                       "exclusiveMinimum": true,
                       "minimum": 0
                     },
+                    "page": {
+                      "type": "integer",
+                      "exclusiveMinimum": true,
+                      "minimum": 0
+                    },
+                    "pages": {
+                      "type": "integer",
+                      "exclusiveMinimum": true,
+                      "minimum": 0
+                    },
+                    "pageSize": {
+                      "type": "integer",
+                      "exclusiveMinimum": true,
+                      "minimum": 0
+                    },
+                    "chapters": {
+                      "type": "integer",
+                      "minimum": 0
+                    },
                     "groups": {
                       "type": "array",
                       "items": {
@@ -237903,11 +237922,10 @@
                             "nullable": true
                           },
                           "served": {
-                            "type": "integer",
-                            "minimum": 0
+                            "$ref": "#/properties/chapters"
                           },
                           "generated": {
-                            "$ref": "#/properties/groups/items/properties/served"
+                            "$ref": "#/properties/chapters"
                           },
                           "chapters": {
                             "type": "array",
@@ -237949,25 +237967,25 @@
                                 "levels": {
                                   "type": "array",
                                   "items": {
-                                    "$ref": "#/properties/groups/items/properties/served"
+                                    "$ref": "#/properties/chapters"
                                   },
                                   "minItems": 6,
                                   "maxItems": 6
                                 },
                                 "total": {
-                                  "$ref": "#/properties/groups/items/properties/served"
+                                  "$ref": "#/properties/chapters"
                                 },
                                 "curated": {
-                                  "$ref": "#/properties/groups/items/properties/served"
+                                  "$ref": "#/properties/chapters"
                                 },
                                 "generated": {
-                                  "$ref": "#/properties/groups/items/properties/served"
+                                  "$ref": "#/properties/chapters"
                                 },
                                 "down": {
-                                  "$ref": "#/properties/groups/items/properties/served"
+                                  "$ref": "#/properties/chapters"
                                 },
                                 "held": {
-                                  "$ref": "#/properties/groups/items/properties/served"
+                                  "$ref": "#/properties/chapters"
                                 },
                                 "maker": {
                                   "type": "string",
@@ -238015,6 +238033,10 @@
                   },
                   "required": [
                     "target",
+                    "page",
+                    "pages",
+                    "pageSize",
+                    "chapters",
                     "groups"
                   ],
                   "additionalProperties": false
@@ -238086,6 +238108,16 @@
                     "type": "string",
                     "minLength": 1,
                     "maxLength": 40
+                  },
+                  "page": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 1000
+                  },
+                  "pageSize": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 200
                   }
                 },
                 "additionalProperties": false

@@ -5,10 +5,11 @@ import { SUBJECT_KEY, type QuizSubject } from "@/lib/quiz";
 import { getT } from "@/lib/i18n/server";
 import { Badge } from "@/components/ui/badge";
 import { bankChapters, bankMatrix } from "@/lib/bank-desk";
-import { BankChapterGroups, BankMatrixCard, bankSubjectLabel } from "./bank-views";
+import { BankChapterGroups, BankMatrixCard, bankSubjectLabel, deskHref } from "./bank-views";
 import { Card, CardBody, CardHeader, StatTile } from "@/components/ui/card";
 import { DataToolbar } from "@/components/ui/data-toolbar";
 import { PageHeader } from "@/components/ui/page-header";
+import { Pager } from "@/components/ui/pager";
 import { ReviewDesk } from "./desk";
 import { GenerationCard } from "./generation-card";
 import { deskJobs } from "@/lib/quiz-jobs-desk";
@@ -40,6 +41,11 @@ function flatOf(sp: Params): Record<string, string | undefined> {
  * generation card: a matrix of classes by subjects with a board switch, then every chapter grouped by class and subject
  * in its book's order (each opening its own page of questions in three languages, chapter/[slug]), then the one-at-a-time
  * desk. The board, class and subject in the URL narrow all three.
+ *
+ * Paging (the owner's confirmation of 12 Nov 2026): the chapter rows come fifty a page (QUIZ_BANK_PAGE_SIZE, the
+ * chapters door's ?page=), the page in the URL so a reload and the back button keep the place; a board, class or
+ * subject link leaves the page out (deskHref, the toolbar's `extra`) and so starts the list again at 1; the tiles,
+ * the matrix and each group's counts stay the whole set's.
  */
 export async function QuizReviewQueuePage({ base, searchParams }: { base: string; searchParams: Promise<Params> }) {
   const session = await requireAppAdmin();
@@ -47,7 +53,7 @@ export async function QuizReviewQueuePage({ base, searchParams }: { base: string
   const raw = await searchParams;
   const current = flatOf(raw);
   const query = filtersOf(raw);
-  const parsedPick = quizBankChaptersQuerySchema.safeParse({ board: current.board, grade: current.grade, subject: current.subject });
+  const parsedPick = quizBankChaptersQuerySchema.safeParse({ board: current.board, grade: current.grade, subject: current.subject, page: current.page });
   const pick = parsedPick.success ? parsedPick.data : {};
   const [list, first, jobs, college, matrix, chapters] = await Promise.all([
     listQueue(session, query),
@@ -100,6 +106,27 @@ export async function QuizReviewQueuePage({ base, searchParams }: { base: string
             labels={{ clearAll: t("common.clearAll"), clearSearch: t("common.clearSearch"), activeFilters: t("common.activeFilters") }}
           />
           <BankChapterGroups data={chapters} base={base} t={t} />
+          {(() => {
+            const onPage = chapters.groups.reduce((n, g) => n + g.chapters.length, 0);
+            const from = onPage > 0 ? (chapters.page - 1) * chapters.pageSize + 1 : 0;
+            const to = (chapters.page - 1) * chapters.pageSize + onPage;
+            return (
+              <Pager
+                page={chapters.page}
+                pages={chapters.pages}
+                from={from}
+                to={to}
+                total={chapters.chapters}
+                hrefFor={(page) => deskHref(base, current, { page: page > 1 ? page : null }, "#chapters")}
+                labels={{
+                  previous: t("bankDesk.previousPage"),
+                  next: t("bankDesk.nextPage"),
+                  range: t("bankDesk.rangeOf", { from, to, total: chapters.chapters }),
+                  pageOf: t("bankDesk.pageOf", { page: chapters.page, pages: chapters.pages }),
+                }}
+              />
+            );
+          })()}
         </CardBody>
       </Card>
 

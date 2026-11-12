@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { LOCALES } from "@edulink/i18n";
 import { QUIZ_BANK_PAGE_SIZE, QUIZ_BANK_STATES, quizBankChapterQuerySchema, type QuizBankChapterQuery, type QuizBankState } from "@edulink/contracts";
 import { requireAppAdmin } from "@/lib/tenancy";
@@ -9,6 +8,7 @@ import { formatInZone } from "@/lib/dates";
 import { ChipLink } from "@/components/ui/chip";
 import { BackLink, PageHeader } from "@/components/ui/page-header";
 import { EmptyState } from "@/components/ui/states";
+import { Pager } from "@/components/ui/pager";
 import { ChapterItems } from "./chapter-items";
 import { groupHeading } from "./bank-views";
 
@@ -89,25 +89,21 @@ export async function ChapterQuestionsPage({ base, slug, searchParams, bankEdito
 
       {items.length === 0 ? <EmptyState title={t("quizReview.empty")} description={t("bankDesk.itemsNone")} /> : <ChapterItems items={items} topicId={data.topic.id} slug={data.topic.slug} folder={CURATED_FOLDER} bankEditor={bankEditor} />}
 
-      {data.pages > 1 && (
-        <nav aria-label={t("bankDesk.pageOf", { page: data.page, pages: data.pages })} className="flex flex-wrap items-center justify-between gap-2">
-          {data.page > 1 ? (
-            <Link href={href({ page: data.page - 1 })} className="inline-flex min-h-11 items-center text-accent-strong underline-offset-4 hover:underline">
-              {t("bankDesk.previousPage")}
-            </Link>
-          ) : (
-            <span />
-          )}
-          <span className="text-sm text-fg-muted">{t("bankDesk.pageOf", { page: data.page, pages: data.pages })}</span>
-          {data.page < data.pages ? (
-            <Link href={href({ page: data.page + 1 })} className="inline-flex min-h-11 items-center text-accent-strong underline-offset-4 hover:underline">
-              {t("bankDesk.nextPage")}
-            </Link>
-          ) : (
-            <span />
-          )}
-        </nav>
-      )}
+      {/* The shared pager (12 Nov 2026): Previous, "n–m of total", Next; the page in the URL, a language or standing chip back to page 1. */}
+      <Pager
+        page={data.page}
+        pages={data.pages}
+        from={items.length > 0 ? first + 1 : 0}
+        to={first + items.length}
+        total={stateCount[data.state]}
+        hrefFor={(page) => href({ page })}
+        labels={{
+          previous: t("bankDesk.previousPage"),
+          next: t("bankDesk.nextPage"),
+          range: t("bankDesk.rangeOf", { from: items.length > 0 ? first + 1 : 0, to: first + items.length, total: stateCount[data.state] }),
+          pageOf: t("bankDesk.pageOf", { page: data.page, pages: data.pages }),
+        }}
+      />
     </div>
   );
 }

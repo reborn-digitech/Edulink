@@ -178,7 +178,10 @@ export function makerOf(served: { generated: number; authored: number }, all: { 
  * alphabetically), NCERT before Balbharati before none; inside a group the book's order, the chapter number (a line
  * with none after), then the position, then the name. Names and lines under the case rule. Pure.
  */
-export function groupChapters(topics: readonly ChapterTopic[], counts: ReadonlyMap<string, ChapterCounts>, all: ReadonlyMap<string, { generated: number; authored: number }>, target: number): QuizBankChapters {
+/** The chapters grouped, before paging: what groupChapters builds and pageChapters cuts. */
+export type ChapterGroups = Pick<QuizBankChapters, "target" | "groups">;
+
+export function groupChapters(topics: readonly ChapterTopic[], counts: ReadonlyMap<string, ChapterCounts>, all: ReadonlyMap<string, { generated: number; authored: number }>, target: number): ChapterGroups {
   const groups = new Map<string, QuizBankChapters["groups"][number]>();
   const ordered = [...topics].sort((a, b) => {
     const na = chapterNumberOfLine(a.chapter);
@@ -223,6 +226,32 @@ export function groupChapters(topics: readonly ChapterTopic[], counts: ReadonlyM
     groups.set(key, group);
   }
   return { target, groups: [...groups.values()] };
+}
+
+/**
+ * PAGING THE BANK DESK (the owner's confirmation of 12 Nov 2026). The desk listed every chapter under the filter at
+ * once — 735 rows with no filter — so the rows are served a page at a time: QUIZ_BANK_PAGE_SIZE chapter rows in the
+ * grouped order, the page clamped to the last, a group kept on the page only for the rows of it that fall there with
+ * its served and generated counts still the whole group's (the counts on the desk are the whole set's, never the
+ * page's). Pure.
+ */
+export function pageChapters(all: ChapterGroups, page?: number, pageSize?: number): QuizBankChapters {
+  const size = Math.max(1, Math.floor(pageSize ?? QUIZ_BANK_PAGE_SIZE));
+  const total = all.groups.reduce((n, g) => n + g.chapters.length, 0);
+  const pages = Math.max(1, Math.ceil(total / size));
+  const current = Math.min(Math.max(1, Math.floor(page ?? 1)), pages);
+  const first = (current - 1) * size;
+  const last = first + size;
+  const groups: QuizBankChapters["groups"] = [];
+  let seen = 0;
+  for (const g of all.groups) {
+    const start = Math.max(first, seen);
+    const end = Math.min(last, seen + g.chapters.length);
+    if (end > start) groups.push({ ...g, chapters: g.chapters.slice(start - seen, end - seen) });
+    seen += g.chapters.length;
+    if (seen >= last) break;
+  }
+  return { target: all.target, page: current, pages, pageSize: size, chapters: total, groups };
 }
 
 /* -------------------------------------------------------------------------- */
@@ -308,11 +337,15 @@ export async function bankChapters(session: ActiveContext, query: QuizBankChapte
     else a.authored += r._count._all;
     all.set(r.topicId, a);
   }
-  return groupChapters(
-    topics.map((t) => ({ id: t.id, slug: t.slug, board: t.board, grade: t.classLevel, subject: t.subject, chapter: t.chapter, name: t.name, position: t.position })),
-    counts,
-    all,
-    target,
+  return pageChapters(
+    groupChapters(
+      topics.map((t) => ({ id: t.id, slug: t.slug, board: t.board, grade: t.classLevel, subject: t.subject, chapter: t.chapter, name: t.name, position: t.position })),
+      counts,
+      all,
+      target,
+    ),
+    query.page,
+    query.pageSize,
   );
 }
 

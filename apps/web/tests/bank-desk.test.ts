@@ -8,7 +8,8 @@
  * at the target and leaves a cell with no chapter empty, with a college row per stream; the chapters are grouped by
  * class, subject and board in book order (number, then position) with the Generated / Authored / Mixed chip and the
  * name under the case rule; a chapter's page reads every stem, option and solution in English, Hindi or Marathi, says
- * MISSING, STALE and BAD_TRANSLATION where it should, and pages by fifty; the doors answer the content team in their
+ * MISSING, STALE and BAD_TRANSLATION where it should, and pages by fifty; the desk's chapter rows page by fifty too
+ * (12 Nov 2026: the page clamped, a group cut to its rows on the page with its counts whole); the doors answer the content team in their
  * contracts' shapes, a no-such chapter 404 and a signed-out caller 401. Every row is a ZZ row made here (a fixture
  * reviewer, zz- chapters in a cell no real chapter sits in: Balbharati class 3 physics) and removed after.
  */
@@ -18,7 +19,7 @@ import { quizBankChapterSchema, quizBankChaptersSchema, quizBankMatrixSchema, ty
 import { createSession, type ActiveContext } from "@/lib/session";
 import { __resetCookies } from "../tests/stubs/next-headers";
 import { fixTitleCase, fixWordCase } from "@/lib/chapter-title-case";
-import { bankChapter, bankChapters, bankMatrix, bankTarget, buildMatrix, chapterBookOfLine, chapterNumberOfLine, groupChapters, makerOf, wordsIn, type ChapterCounts } from "@/lib/bank-desk";
+import { bankChapter, bankChapters, bankMatrix, bankTarget, buildMatrix, chapterBookOfLine, chapterNumberOfLine, groupChapters, makerOf, pageChapters, wordsIn, type ChapterCounts } from "@/lib/bank-desk";
 import { GET as matrixGet } from "@/app/api/v1/appadmin/quiz-review/matrix/route";
 import { GET as chaptersGet } from "@/app/api/v1/appadmin/quiz-review/chapters/route";
 import { GET as chapterGet } from "@/app/api/v1/appadmin/quiz-review/chapters/[slug]/route";
@@ -180,6 +181,24 @@ describe("the matrix and the grouping, pure", () => {
     expect(makerOf({ generated: 0, authored: 0 }, { generated: 0, authored: 0 })).toBeNull();
   });
 
+  it("pages the chapter rows (12 Nov 2026): fifty a page by default, a page cut across groups keeping each group's whole counts, the page clamped to the last, an empty set one page", () => {
+    const row = (topicId: string) => ({ topicId, slug: topicId, board: "NCERT", grade: 6, subject: "MATHS", chapter: topicId, name: topicId, number: null, book: null, levels: [0, 0, 0, 0, 0, 0], total: 1, curated: 1, generated: 0, down: 0, held: 0, maker: "AUTHORED" as const });
+    const group = (subject: string, ids: string[]) => ({ grade: 6, subject, board: "NCERT", served: ids.length * 7, generated: 3, chapters: ids.map(row) });
+    const all = { target: 100, groups: [group("EVS", ["a", "b", "c"]), group("MATHS", ["d", "e"]), group("SCIENCE", ["f"])] };
+    const page1 = pageChapters(all, 1, 2);
+    expect(page1).toMatchObject({ page: 1, pages: 3, pageSize: 2, chapters: 6 });
+    expect(page1.groups.map((g) => [g.subject, g.chapters.map((c) => c.topicId), g.served])).toEqual([["EVS", ["a", "b"], 21]]);
+    const page2 = pageChapters(all, 2, 2);
+    expect(page2.groups.map((g) => [g.subject, g.chapters.map((c) => c.topicId), g.served])).toEqual([["EVS", ["c"], 21], ["MATHS", ["d"], 14]]);
+    expect(pageChapters(all, 3, 2).groups.map((g) => g.chapters.map((c) => c.topicId))).toEqual([["e"], ["f"]]);
+    // Past the last page is the last page; before the first is the first; no size is fifty.
+    expect(pageChapters(all, 9, 2).page).toBe(3);
+    expect(pageChapters(all, 0, 2).page).toBe(1);
+    expect(pageChapters(all)).toMatchObject({ page: 1, pages: 1, pageSize: 50, chapters: 6 });
+    expect(pageChapters(all).groups).toHaveLength(3);
+    expect(pageChapters({ target: 100, groups: [] }, 4, 10)).toEqual({ target: 100, page: 1, pages: 1, pageSize: 10, chapters: 0, groups: [] });
+  });
+
   it("owner-batch-item8: counts two books' chapter 5 apart and lists one book's chapters, then the other's, each row with its book", () => {
     const cwp = "Contemporary World Politics";
     const pii = "Politics in India Since Independence";
@@ -236,6 +255,13 @@ describe("the bank desk on the database (a ZZ cell: Balbharati class 3 physics)"
     expect(rows[1]).toMatchObject({ levels: [2, 2, 0, 0, 0, 0], total: 4, curated: 3, generated: 1 });
     expect(data.groups[0]!.generated).toBe(2 + 1 + target);
     expect(rows[2]).toMatchObject({ name: "ZZ lines and angles", chapter: "Chapter 2 — ZZ lines and angles", total: target });
+    expect(data).toMatchObject({ page: 1, pages: 1, pageSize: 50, chapters: 4 });
+    // Paged two at a time (12 Nov 2026): the same order cut in two, the group's counts whole on each page, page 9 the last.
+    const second = await bankChapters(curator(), { board: "BALBHARATI", grade: 3, subject: "PHYSICS", page: 2, pageSize: 2 });
+    expect(second).toMatchObject({ page: 2, pages: 2, pageSize: 2, chapters: 4 });
+    expect(second.groups[0]!.chapters.map((r) => r.slug)).toEqual([slug("lines"), slug("extra")]);
+    expect(second.groups[0]!.generated).toBe(data.groups[0]!.generated);
+    expect((await bankChapters(curator(), { board: "BALBHARATI", grade: 3, subject: "PHYSICS", page: 9, pageSize: 2 })).page).toBe(2);
   });
 
   it("a chapter's page in English, Hindi and Marathi, with the notes, the standings and fifty a page", async () => {
@@ -282,6 +308,10 @@ describe("the bank desk on the database (a ZZ cell: Balbharati class 3 physics)"
     const c = await chaptersGet(get(`${P}/chapters?board=BALBHARATI&grade=3&subject=PHYSICS`));
     expect(c.status).toBe(200);
     expect(quizBankChaptersSchema.parse(await c.json()).groups[0]!.chapters).toHaveLength(4);
+    const paged = await chaptersGet(get(`${P}/chapters?board=BALBHARATI&grade=3&subject=PHYSICS&page=2&pageSize=2`));
+    expect(paged.status).toBe(200);
+    expect(quizBankChaptersSchema.parse(await paged.json())).toMatchObject({ page: 2, pages: 2, chapters: 4 });
+    expect((await chaptersGet(get(`${P}/chapters?pageSize=0`))).status).toBe(422);
     const one = await chapterGet(get(`${P}/chapters/${slug("again")}?lang=mr`), { params: Promise.resolve({ slug: slug("again") }) });
     expect(one.status).toBe(200);
     expect(quizBankChapterSchema.parse(await one.json()).language).toBe("mr");

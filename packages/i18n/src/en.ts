@@ -18189,6 +18189,7 @@ export const en = {
     pageOf: "Page {page} of {pages}",
     previousPage: "Previous page",
     nextPage: "Next page",
+    rangeOf: "{from}–{to} of {total}",
     itemsNone: "No question of this chapter stands here.",
     itemNumber: "Question {n}",
     noteMISSING: "No translation in this language is stored, so the English is shown.",

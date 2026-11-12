@@ -72,11 +72,16 @@ export const quizBankMatrixSchema = z.object({
 });
 export type QuizBankMatrix = z.infer<typeof quizBankMatrixSchema>;
 
-/** GET /api/v1/appadmin/quiz-review/chapters?board=&grade=&subject= */
+/** The desk's page size: a chapter's questions and, since 12 Nov 2026, the desk's chapter rows. */
+export const QUIZ_BANK_PAGE_SIZE = 50;
+
+/** GET /api/v1/appadmin/quiz-review/chapters?board=&grade=&subject=&page=&pageSize= — the chapter rows fifty a page (paging the bank desk, 12 Nov 2026). */
 export const quizBankChaptersQuerySchema = z.object({
   board: quizBoardSchema.optional(),
   grade: z.coerce.number().int().min(1).max(13).optional(),
   subject: z.string().trim().min(1).max(40).optional(),
+  page: z.coerce.number().int().min(1).max(1000).optional(),
+  pageSize: z.coerce.number().int().min(1).max(200).optional(),
 });
 export type QuizBankChaptersQuery = z.infer<typeof quizBankChaptersQuerySchema>;
 
@@ -109,6 +114,12 @@ export type QuizBankChapterRow = z.infer<typeof quizBankChapterRowSchema>;
 
 export const quizBankChaptersSchema = z.object({
   target: z.number().int().positive(),
+  /** Paging the bank desk (12 Nov 2026): the page served, how many there are, the size, and every chapter under the filter. */
+  page: z.number().int().positive(),
+  pages: z.number().int().positive(),
+  pageSize: z.number().int().positive(),
+  chapters: count,
+  /** The groups holding this page's chapter rows; a group's served and generated counts are the whole group's, not the page's. */
   groups: z.array(
     z.object({
       grade: z.number().int(),
@@ -130,8 +141,6 @@ export const quizBankChapterQuerySchema = z.object({
   page: z.coerce.number().int().min(1).max(1000).optional(),
 });
 export type QuizBankChapterQuery = z.infer<typeof quizBankChapterQuerySchema>;
-
-export const QUIZ_BANK_PAGE_SIZE = 50;
 
 export const quizBankChapterItemSchema = z.object({
   id,

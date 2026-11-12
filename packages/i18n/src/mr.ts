@@ -17709,6 +17709,7 @@ export const mr: Dictionary = {
     pageOf: "पान {page} / {pages}",
     previousPage: "मागचे पान",
     nextPage: "पुढचे पान",
+    rangeOf: "एकूण {total} पैकी {from}–{to}",
     itemsNone: "या धड्याचा कोणताही प्रश्न या स्थितीत नाही.",
     itemNumber: "प्रश्न {n}",
     noteMISSING: "या भाषेतील भाषांतर साठवलेले नाही, म्हणून इंग्रजी दाखवले आहे.",
