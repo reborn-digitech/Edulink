@@ -77,3 +77,7 @@ rebuildable came back from the scripts in two hours; the rest (hand-entered data
 | 2026-11-07 | dev database, the Desktop copy (23 schools, 777 users, 15,358 questions, 462 MB) | 97 MB in 215 s | 1,480 s into edulink_drill, under a corpus ingest | not re-granted (the drill reads as the owner) | tables 350 = 350; School, QuizTopic, Competition identical; User, Membership, QuizQuestion short by the rows written since the dump | passed |
 
 Staging and production rows are added here as they are rehearsed.
+
+## What the 6 November 2026 loss cost, and the owner's decisions on it (12 November 2026)
+
+The dev database was rebuilt from the scripts on 6–7 November 2026 (schools, people, fixtures, demo schools, help index, corpus). The generated question bank came back from the git snapshots of `content/quiz/generated` at 8,633 of the ~14,000 questions the desk had counted; the rest were passes that had overwritten earlier files before `landChapter` accumulated them, and no snapshot held them. The owner decided on 12 November 2026: the 326 early-October questions generated under chapter titles that no longer match are left out rather than placed by hand; the 48 questions that are exact repeats across NCERT and Balbharati stay on both sides, since each board's pupils see their own; and commit c348f053, which carried 94 of the competitions builder's files under the backup commit's message, stays in history as it is (the content is right; the rewrite was refused).
