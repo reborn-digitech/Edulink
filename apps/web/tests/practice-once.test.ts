@@ -2,7 +2,7 @@ import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { PrismaClient } from "@prisma/client";
 import { PLATFORM_FEATURES, practiceOnceAnsweredSchema, practiceOnceListSchema, practiceOnceSchema } from "@edulink/contracts";
 import { AccessError } from "@/lib/tenancy";
-import { answerOnce, onceSets, openOnce, ONCE_QUESTIONS } from "@/lib/practice-once";
+import { answerOnce, childOnceSets, onceSets, openOnce, ONCE_QUESTIONS } from "@/lib/practice-once";
 import { assignmentsForClass } from "@/lib/practice-insights";
 import { setFeaturesForTests } from "@/lib/platform-features";
 import { setActivePlansForTests } from "@/lib/person-plans";
@@ -17,8 +17,8 @@ import type { ActiveContext } from "@/lib/session";
  * ONE-TIME PRACTICE (decision 0008, 7 November 2026): a pupil without the Student plan opens a set a teacher
  * assigned once — a fixed draw of the chapter's questions nearest the target rung, each answered once, scored — and
  * a second open shows the result; it counts toward nothing else. Everything is ZZ and made here: a fixture school,
- * two pupils in a class, a teacher, a chapter of twelve questions over four rungs and a set targeting the second.
- * Deleted afterwards.
+ * two pupils in a class, a teacher, their guardian and a guardian of nobody here (the follow-up of 12 November 2026),
+ * a chapter of twelve questions over four rungs and a set targeting the second. Deleted afterwards.
  */
 const db = new PrismaClient();
 const STAMP = Date.now();
@@ -58,6 +58,9 @@ beforeAll(async () => {
   await person("p1", "STUDENT", { isMinor: true });
   await person("p2", "STUDENT", { isMinor: true });
   await person("teacher", "TEACHER");
+  // The guardian of both pupils, and a guardian who guards nobody here (a user without a membership, as a guardian is).
+  for (const key of ["guardian", "stranger"]) id[key] = (await db.user.create({ data: { name: `ZZ Once ${key} ${STAMP}`, email: `zz-once-${key}-${STAMP}@test.invalid` }, select: { id: true } })).id;
+  for (const key of ["p1", "p2"]) await db.guardianship.create({ data: { parentUserId: id.guardian!, studentMembershipId: member[key]!, studentSchoolId: schoolId, status: "ACTIVE" } });
   classId = (await db.class.create({ data: { schoolId, name: `ZZ Once Class ${STAMP}`, gradeLevel: "5", joinCode: `ZO${String(STAMP).slice(-6)}` }, select: { id: true } })).id;
   await db.classTeacher.create({ data: { classId, schoolId, teacherMembershipId: member.teacher!, role: "LEAD" } });
   for (const key of ["p1", "p2"]) await db.enrollment.create({ data: { classId, schoolId, studentMembershipId: member[key]!, status: "ACTIVE" } });
@@ -160,6 +163,20 @@ describe("answering once", () => {
     const one = set.pupils.find((p) => p.name === `ZZ Once p1 ${STAMP}`)!;
     expect(one).toMatchObject({ level: 0, reached: false, once: { correct: 9, total: 10, answered: 10, finished: true } });
     expect(set.pupils.find((p) => p.name === `ZZ Once p2 ${STAMP}`)!.once).toBeNull();
+  });
+
+  it("the guardian's read (12 Nov 2026) carries each child's sets with the one-time standing, read-only; a guardian of nobody here is refused, as is an invented child", async () => {
+    const one = await childOnceSets(id.guardian!, member.p1!);
+    expect(one.map((s) => s.assignmentId)).toEqual([assignmentId]);
+    expect(one[0]).toMatchObject({ state: "DONE", correct: 9, total: 10, answered: 10, topicName: `ZZ Once Fractions ${STAMP}`, targetLevel: 2, note: "ZZ climb to L2" });
+    const two = await childOnceSets(id.guardian!, member.p2!);
+    expect(two[0]).toMatchObject({ assignmentId, state: "NOT_OPENED", correct: 0, answered: 0, total: 10 });
+    expect(practiceOnceListSchema.parse({ sets: two })).toBeTruthy();
+    // The guardian's reach is proved, not the id: the stranger reads nothing of either pupil, and the guardian nothing of an invented child.
+    await expect(childOnceSets(id.stranger!, member.p1!)).rejects.toBeInstanceOf(AccessError);
+    await expect(childOnceSets(id.guardian!, "czzoncenosuchmembership0000")).rejects.toBeInstanceOf(AccessError);
+    // The attempt stays the pupil's: nothing the guardian read opened or moved a row.
+    expect(await db.practiceOnce.count({ where: { studentMembershipId: member.p2 } })).toBe(0);
   });
 });
 

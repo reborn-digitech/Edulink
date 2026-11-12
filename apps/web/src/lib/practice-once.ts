@@ -2,8 +2,8 @@ import "server-only";
 import { Prisma } from "@prisma/client";
 import type { PracticeOnceSet } from "@edulink/contracts";
 import { db } from "./db";
-import { AccessError } from "./tenancy";
-import { assignmentsForStudent } from "./practice-insights";
+import { AccessError, assertGuardianAccess } from "./tenancy";
+import { assignmentsForMembership, assignmentsForStudent } from "./practice-insights";
 import { parseChoices, QUIZ_LEVELS, clampLevel, type QuizLanguage, type ServedQuestion } from "./quiz";
 import { SERVED_QUESTION } from "./quiz-served";
 import { servedFigure } from "./quiz-figure";
@@ -200,7 +200,42 @@ export async function answerOnce(ctx: ActiveContext, onceId: string, questionId:
   return { replayed: false, correct, answerIndex: question.answerIndex, solution, set: setView(set, fresh, fresh.total), question: await nextOnce(fresh, language) };
 }
 
-/** For the teacher's class view: each pupil's one-time result on each assignment, by `${membershipId}|${assignmentId}`. */
+/**
+ * THE GUARDIAN'S READ (decision 0008's follow-up, the owner's confirmation of 12 November 2026): the child's assigned
+ * sets with where each one-time attempt stands — not opened, open with so many answered, done with the score — for
+ * the guardian of a pupil without the plan, beside the plan card on /parent/practice. Read-only: a guardian opens
+ * nothing and plays nothing; the set is the pupil's own. The guardian's reach is proved here (assertGuardianAccess
+ * under RESULTS, as the child's practice progress is), never by a bare pupil id, and the rows are read exactly as
+ * the teacher's page reads them (onceResultsFor).
+ */
+export async function childOnceSets(parentUserId: string, studentMembershipId: string, language: QuizLanguage = "en"): Promise<PracticeOnceSet[]> {
+  const link = await assertGuardianAccess(parentUserId, studentMembershipId, "RESULTS");
+  const schoolId = link.student.school.id;
+  const assigned = await assignmentsForMembership(schoolId, studentMembershipId, language);
+  if (assigned.length === 0) return [];
+  const results = await onceResultsFor(schoolId, assigned.map((a) => a.id), [studentMembershipId]);
+  const drawable = await drawableOf([...new Set(assigned.filter((a) => !results.has(`${studentMembershipId}|${a.id}`)).map((a) => a.topicId))]);
+  return assigned.map((a) => {
+    const r = results.get(`${studentMembershipId}|${a.id}`) ?? null;
+    return {
+      assignmentId: a.id,
+      topicSlug: a.topicSlug,
+      topicName: a.topicName,
+      subject: a.subject,
+      classLevel: a.classLevel,
+      targetLevel: a.targetLevel,
+      targetTierName: a.targetTierName,
+      note: a.note,
+      dueAt: a.dueAt ? a.dueAt.toISOString() : null,
+      state: !r ? "NOT_OPENED" : r.finished ? "DONE" : "OPEN",
+      total: r ? r.total : (drawable.get(a.topicId) ?? 0),
+      answered: r ? r.answered : 0,
+      correct: r ? r.correct : 0,
+    };
+  });
+}
+
+/** For the teacher's class view and the guardian's: each pupil's one-time result on each assignment, by `${membershipId}|${assignmentId}`. */
 export async function onceResultsFor(schoolId: string, assignmentIds: string[], membershipIds: string[]): Promise<Map<string, { correct: number; total: number; answered: number; finished: boolean }>> {
   if (assignmentIds.length === 0 || membershipIds.length === 0) return new Map();
   const rows = await db.practiceOnce.findMany({ where: { schoolId, assignmentId: { in: assignmentIds }, studentMembershipId: { in: membershipIds } }, select: { assignmentId: true, studentMembershipId: true, correct: true, total: true, answers: true, finishedAt: true } });

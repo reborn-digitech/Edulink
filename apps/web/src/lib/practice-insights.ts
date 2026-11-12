@@ -585,8 +585,21 @@ export async function assignmentsForStudent(
   language: QuizLanguage = "en",
 ): Promise<(PracticeAssignmentView & { myLevel: number; reached: boolean })[]> {
   if (!ctx.membershipId || !ctx.schoolId) return [];
+  return assignmentsForMembership(ctx.schoolId, ctx.membershipId, language);
+}
+
+/**
+ * The same list for one pupil's membership, for a reader who is not the pupil and has already proved their reach —
+ * the guardian's practice page (decision 0008's follow-up, 12 Nov 2026) after assertGuardianAccess. Never called from
+ * a handler on a bare id: the caller binds the person first.
+ */
+export async function assignmentsForMembership(
+  schoolId: string,
+  membershipId: string,
+  language: QuizLanguage = "en",
+): Promise<(PracticeAssignmentView & { myLevel: number; reached: boolean })[]> {
   const enrolments = await db.enrollment.findMany({
-    where: { studentMembershipId: ctx.membershipId, schoolId: ctx.schoolId, status: "ACTIVE" },
+    where: { studentMembershipId: membershipId, schoolId, status: "ACTIVE" },
     select: { classId: true },
   });
   if (enrolments.length === 0) return [];
@@ -598,7 +611,7 @@ export async function assignmentsForStudent(
   });
   if (assignments.length === 0) return [];
   const masteries = await db.quizMastery.findMany({
-    where: { studentMembershipId: ctx.membershipId, topicId: { in: assignments.map((a) => a.topicId) } },
+    where: { studentMembershipId: membershipId, topicId: { in: assignments.map((a) => a.topicId) } },
     select: { topicId: true, level: true },
   });
   const levelOf = new Map(masteries.map((m) => [m.topicId, m.level]));

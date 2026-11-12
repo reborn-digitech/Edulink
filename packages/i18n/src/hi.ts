@@ -1342,6 +1342,8 @@ export const hi: Dictionary = {
     teacherOnce: "एक बार: {correct}/{total}",
     teacherOnceOpen: "एक बार: {total} में से {answered} के उत्तर दिए",
     lockedNote: "नीचे का हर सेट एक बार खुलता है, स्कोर के साथ। अध्याय स्वयं के लिए विद्यार्थी योजना चाहिए।",
+    guardianTitle: "{name} के शिक्षक द्वारा दिए गए सेट",
+    guardianIntro: "विद्यार्थी योजना के बिना {name} हर सेट एक बार खोलता है, स्कोर के साथ। पूरा होने पर स्कोर यहाँ दिखता है; सेट केवल {name} ही खोल सकता है।",
   },
   practice: {
     allClasses: "सभी कक्षाएँ",

@@ -13,6 +13,7 @@ import { ChildSwitcher } from "../child-switcher";
 import { getT } from "@/lib/i18n/server";
 import { PageHeader } from "@/components/ui/page-header";
 import { PlanCard } from "@/components/plan-card";
+import { ChildOnceSetsCard } from "@/components/practice/child-once-sets";
 import { childLock } from "@/lib/platform-features";
 import { quizBoardChoice, topicOnBoard, type QuizBoardChoice } from "@edulink/contracts";
 import { classLevelLabel, QUIZ_BOARD_KEY, quizBoardKey, quizBoardOptions } from "@/lib/quiz-board";
@@ -64,13 +65,16 @@ export default async function ParentPracticePage({
   }
 
   // plans (16 Oct 2026): the child's practice is the child's plan; while the STUDENT plan is asked for and the child
-  // does not hold it, the guardian sees the plan card for the child (a guardian subscribes for a pupil under eighteen).
+  // does not hold it, the guardian sees the plan card for the child (a guardian subscribes for a pupil under eighteen)
+  // — and under it, since decision 0008's follow-up (12 Nov 2026), the sets a teacher assigned with the child's
+  // one-time score on each, read-only (ChildOnceSetsCard proves the guardianship itself).
   const childPlan = await childLock("QUESTION_BANK", selectedId);
   if (childPlan) {
     return (
       <div className="space-y-5">
         {children.length > 1 && <ChildSwitcher pupils={children} selectedId={selectedId} basePath="/parent/practice" />}
         <PlanCard plan={childPlan} feature="QUESTION_BANK" child={chosen.name} childId={chosen.studentMembershipId} />
+        <ChildOnceSetsCard parentUserId={session.user.id} studentMembershipId={selectedId} name={chosen.name} locale={session.user.prefs.locale} />
       </div>
     );
   }

@@ -1338,6 +1338,8 @@ export const mr: Dictionary = {
     teacherOnce: "एकदा: {correct}/{total}",
     teacherOnceOpen: "एकदा: {total} पैकी {answered} सोडवले",
     lockedNote: "खालील प्रत्येक संच एकदा उघडतो, स्कोअरसह. धड्यासाठी विद्यार्थी योजना लागते.",
+    guardianTitle: "{name} च्या शिक्षकांनी दिलेले संच",
+    guardianIntro: "विद्यार्थी योजनेशिवाय {name} प्रत्येक संच एकदा उघडतो, स्कोअरसह. पूर्ण झाल्यावर स्कोअर येथे दिसतो; संच फक्त {name} उघडू शकतो.",
   },
   practice: {
     allClasses: "सर्व इयत्ता",

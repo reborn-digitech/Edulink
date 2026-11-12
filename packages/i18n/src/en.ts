@@ -1471,6 +1471,9 @@ export const en = {
     teacherOnce: "Once: {correct}/{total}",
     teacherOnceOpen: "Once: {answered} of {total} answered",
     lockedNote: "Each set below opens once, scored. The chapter itself needs the Student plan.",
+    // The guardian's read (decision 0008's follow-up, 12 Nov 2026): the child's sets beside the plan card on /parent/practice, read-only.
+    guardianTitle: "Sets {name}'s teacher assigned",
+    guardianIntro: "Without the Student plan {name} opens each set once, scored. The score shows here when it is done; only {name} can open a set.",
   },
   practice: {
     intro: "Practice that follows you. Get two right and it gets harder; get two wrong and it eases off.",
