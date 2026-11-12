@@ -70,9 +70,9 @@ const FEATURE_DOORS: { feature: FeatureCode; match: (e: Endpoint) => boolean }[]
     match: (e) =>
       /^\/api\/v1\/(community\/mentoring\/|shared\/mentoring|shared\/expert\/(bookings|availability)|staff\/experts|expert\/(payout|earnings|invoices|free-duty|calendar))/.test(e.path) ||
       ["/api/v1/gigs/sessions", "/api/v1/gigs/sessions/book", "/api/v1/gigs/slots", "/api/v1/gigs/school", "/api/v1/gigs/payments/{paymentId}/confirm"].includes(e.path) ||
-      /^\/api\/v1\/gigs\/(sessions\/\{bookingId\}|slots\/\{slotId\})/.test(e.path),
+      /^\/api\/v1\/gigs\/(sessions\/\{bookingId\}|slots\/\{slotId\}|series|meeting-account)/.test(e.path),
   },
-  { feature: "TEACHER_SESSIONS", match: (e) => e.path === "/api/v1/gigs/school/guidance" || ["/api/v1/gigs/sessions", "/api/v1/gigs/sessions/book", "/api/v1/gigs/slots", "/api/v1/gigs/school"].includes(e.path) || /^\/api\/v1\/gigs\/(sessions\/\{bookingId\}\/(consent|cancel|unheld|rate|close)|slots\/\{slotId\})/.test(e.path) },
+  { feature: "TEACHER_SESSIONS", match: (e) => e.path === "/api/v1/gigs/school/guidance" || ["/api/v1/gigs/sessions", "/api/v1/gigs/sessions/book", "/api/v1/gigs/slots", "/api/v1/gigs/school"].includes(e.path) || /^\/api\/v1\/gigs\/(sessions\/\{bookingId\}\/(consent|cancel|unheld|rate|close)|slots\/\{slotId\}|series|meeting-account)/.test(e.path) },
   { feature: "JOB_BOARD", match: (e) => e.path.startsWith("/api/v1/admin/vacancies") || e.path === "/api/v1/shared/vacancies" || e.path === "/api/v1/community/vacancies/{postingId}" || (e.method === "POST" && e.path === "/api/v1/shared/enquiries") },
   // decision 0007 (6 Nov 2026): the marketplace's doors — the content team's competitions and the crawler. The shared and contest doors stay unmarked: a school's own competitions are never behind the switch, and their handlers hide the platform's.
   { feature: "COMPETITIONS", match: (e) => e.path.startsWith("/api/v1/appadmin/competition") },

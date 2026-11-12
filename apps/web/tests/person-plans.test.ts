@@ -233,10 +233,13 @@ describe("the gate and the envelope", () => {
         "GET /api/v1/expert/payout",
         // seats (17 Oct 2026): the meeting link of a session already booked stays the provider's after their plan ends.
         "GET /api/v1/gigs/sessions/{bookingId}/join",
+        "GET /api/v1/practice/once",
         "GET /api/v1/shared/expert/bookings",
         "POST /api/v1/expert/calendar/token",
         "POST /api/v1/expert/payout",
         "POST /api/v1/expert/payout/link",
+        "POST /api/v1/practice/once",
+        "POST /api/v1/practice/once/answer",
       ].sort(),
     );
     expect(await gateRequest("GET /api/v1/expert/earnings", { role: "EXPERT", schoolId: null, userId: ids.expert })).toBe("pass");
@@ -410,8 +413,11 @@ describe("what a locked person sees", () => {
       const { default: Layout } = await import("@/app/(app)/student/practice/layout");
       const { PlanCard } = await import("@/components/plan-card");
       const page = React.createElement("p", null, "ZZ the page");
-      // The layout hands back the (async) plan card in place of its children; drawn here as Next would.
-      const locked = (await Layout({ children: page })) as React.ReactElement<{ plan: PlanCode; feature: FeatureCode }>;
+      // The layout hands back the (async) plan card in place of its children — since decision 0008 (7 Nov 2026) wrapped
+      // with the sets a teacher assigned, which open once without the plan; the card is the first child. Drawn here as Next would.
+      const wrapped = (await Layout({ children: page })) as React.ReactElement<{ children: React.ReactElement<{ plan: PlanCode; feature: FeatureCode }>[] }>;
+      expect(wrapped.type).toBe("div");
+      const locked = wrapped.props.children[0]!;
       expect(locked.type).toBe(PlanCard);
       expect(locked.props).toMatchObject({ plan: "STUDENT", feature: "QUESTION_BANK" });
       const html = renderToStaticMarkup(await PlanCard(locked.props));

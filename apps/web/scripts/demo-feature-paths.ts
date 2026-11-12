@@ -31,6 +31,8 @@ export const FEATURE_GATED_PAGES: readonly { prefix: string; features: readonly 
   { prefix: "/parent/practice", features: ["QUESTION_BANK"] },
   { prefix: "/sessions", features: SESSIONS },
   { prefix: "/student/practice", features: ["QUESTION_BANK"] },
+  // decision 0008 (7 Nov 2026): the one-time set a locked pupil opens, outside the practice layout so the plan card never covers it.
+  { prefix: "/student/practice-once", features: ["QUESTION_BANK"] },
   { prefix: "/teacher/contributions", features: ["QUESTION_GIG"] },
   { prefix: "/teacher/guidance", features: ["TEACHER_SESSIONS"] },
   { prefix: "/teacher/practice", features: ["QUESTION_BANK"] },

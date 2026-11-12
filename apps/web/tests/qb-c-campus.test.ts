@@ -292,7 +292,11 @@ describe("QB-15: the roster marks the pages a platform switch closes", () => {
       if (!m) continue;
       const arg = m[1]!.trim();
       const features = arg === "SESSION_FEATURES" ? ["EXPERT_SESSIONS", "TEACHER_SESSIONS"] : [...arg.matchAll(/"([A-Z_]+)"/g)].map((x) => x[1]!);
-      const route = `/${relative(root, file).split(sep).slice(0, -1).filter((s) => !/^\(.*\)$/.test(s)).join("/")}`;
+      // The route is the page's folders without the groups, cut before the first dynamic segment: the roster names
+      // "a page and everything under it", so /student/practice-once/[assignmentId] is the prefix /student/practice-once.
+      const segs = relative(root, file).split(sep).slice(0, -1).filter((s) => !/^\(.*\)$/.test(s));
+      const dyn = segs.findIndex((s) => s.startsWith("["));
+      const route = `/${(dyn === -1 ? segs : segs.slice(0, dyn)).join("/")}`;
       found.set(route, features);
     }
     expect(found.size).toBeGreaterThanOrEqual(15);

@@ -24,7 +24,7 @@ vi.mock("@/lib/gig-sessions", async (importOriginal) => ({
   familySessions: async () => ({
     freeCancelHours: 24,
     paymentsOn: false,
-    children: [{ id: "zz-m", name: "ZZ Student", schoolName: "ZZ College", timeZone: "Asia/Kolkata", allowance: { ONE_TO_ONE: { left: 0, allowed: 2 }, WORKSHOP: { left: 1, allowed: 2 } }, bookings: [], open: [slot("zz-expert", "EXPERT"), slot("zz-alumnus", "ALUMNUS")] }],
+    children: [{ id: "zz-m", name: "ZZ Student", schoolName: "ZZ College", timeZone: "Asia/Kolkata", allowance: { ONE_TO_ONE: { left: 0, allowed: 2 }, WORKSHOP: { left: 1, allowed: 2 } }, bookings: [], open: [slot("zz-expert", "EXPERT"), slot("zz-alumnus", "ALUMNUS")], series: [] }],
   }),
 }));
 

@@ -506,7 +506,7 @@ describe("as the admin", () => {
     expect(res.status).toBe(200);
     const body = await res.json();
     expect(body.years).toEqual([]);
-    expect(body.entries).toEqual([{ id, name: "ZZ Founders' Day", startDateKey: "2030-01-06", endDateKey: "2030-01-06", kind: "EVENT", note: null, academicYearId: null }]);
+    expect(body.entries).toEqual([{ id, name: "ZZ Founders' Day", startDateKey: "2030-01-06", endDateKey: "2030-01-06", kind: "EVENT", note: null, academicYearId: null, competitionId: null }]);
     expect(body.leave).toEqual([]);
     expect(Array.isArray(body.birthdays)).toBe(true);
     expect((await calendarGet(get(`${P}/calendar?when=soon`))).status).toBe(422);

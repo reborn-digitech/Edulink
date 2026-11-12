@@ -111,7 +111,8 @@ describe("(a) the fixtures' zz- chapters", () => {
     expect(real.groups.map((g) => g.topicId)).not.toContain(ids.topic);
     expect((await nextItem(reviewer(ids.curator), { topic: ids.topic })).item).toBeNull();
     const fixture = await listQueue(reviewer(ids.fixtureCurator), { topic: ids.topic });
-    expect(fixture.filtered).toBe(1);
+    // Two since the desk became one bank (ba3feaf1, 7 Nov 2026): the served curated row and the waiting generated one; a real reviewer still sees neither.
+    expect(fixture.filtered).toBe(2);
     expect((await nextItem(reviewer(ids.fixtureCurator), { topic: ids.topic })).item?.topic.id).toBe(ids.topic);
   });
 });
