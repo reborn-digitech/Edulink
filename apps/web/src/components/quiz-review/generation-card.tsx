@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState, useTransition } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter } from "@/lib/navigation";
 import { CpuIcon, PlayIcon, SparkleIcon, StopIcon } from "@phosphor-icons/react";
 import { QUIZ_BOARDS, QUIZ_GEN_ACTIVE_STATES, QUIZ_GEN_STAGES, QUIZ_GEN_SUBJECTS, type ModelServer, type ModelServerStatus, type QuizBoard, type QuizGenJob, type QuizGenProgress, type QuizGenRequest, type QuizGenSubject, type QuizJobsState } from "@edulink/contracts";
 import type { CollegeSyllabi, StreamCode } from "@edulink/contracts"; // college-content (12 Oct 2026)

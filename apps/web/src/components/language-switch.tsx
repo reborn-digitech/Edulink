@@ -1,7 +1,7 @@
 "use client";
 
 import { useTransition } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter } from "@/lib/navigation";
 import { TranslateIcon } from "@phosphor-icons/react";
 import { cn } from "@/lib/cn";
 import { LOCALES, useLocale, useT, type Locale } from "@/lib/i18n";

@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState, useTransition } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter } from "@/lib/navigation";
 import { FilePdfIcon } from "@phosphor-icons/react";
 import type { SiteConfig } from "@edulink/contracts";
 import { Badge } from "@/components/ui/badge";

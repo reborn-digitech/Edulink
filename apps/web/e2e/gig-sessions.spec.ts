@@ -46,8 +46,12 @@ test("an expert offers a time, a pupil asks, a guardian agrees, the office reads
   await expert.getByTestId("slot-link").fill(LINK);
   await expert.getByTestId("slot-offer").click();
   const mine = expert.getByTestId("provider-slot").filter({ hasText: TITLE });
-  // The offer is a server action and a route refresh; on the shared runner the new slot appeared after the five
-  // seconds the check waited, on both attempts (run 41454850718, 2 November 2026), so it is given twenty.
+  // The offer is a server action and a route refresh. Until 13 November 2026 the redraw after the refresh was held
+  // for five seconds, React's deadline for a starved lane, unless some other state update landed first — on the
+  // runner this line failed at five seconds on both attempts (41454850718, 43282364871, 43330969839's booking and
+  // rating below) and passed when it was given twenty; against a production build here five of six offers drew at
+  // 5.1 s and a keystroke a second after the click drew every one at once. src/lib/navigation.ts now nudges the
+  // router after every refresh, so the twenty seconds are kept only as a margin for the runner.
   await expect(mine).toContainText("0 of 1 seats taken", { timeout: 20_000 });
 
   // The pupil sees it among what is open, with no link, and asks.

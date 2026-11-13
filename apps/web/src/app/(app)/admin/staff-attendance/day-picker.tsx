@@ -1,6 +1,6 @@
 "use client";
 
-import { useRouter } from "next/navigation";
+import { useRouter } from "@/lib/navigation";
 import { DateField } from "@/components/ui/field";
 import { useT } from "@/lib/i18n";
 

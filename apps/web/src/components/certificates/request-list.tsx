@@ -2,7 +2,7 @@
 
 import { useTransition } from "react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useRouter } from "@/lib/navigation";
 import { ArrowUUpLeftIcon, EnvelopeOpenIcon } from "@phosphor-icons/react";
 import type { CertificateRequestStatus, CertificateRequestView } from "@edulink/contracts";
 import type { TranslationKey } from "@/lib/i18n/dictionary";

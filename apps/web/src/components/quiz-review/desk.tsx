@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState, useTransition } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter } from "@/lib/navigation";
 import { ArrowArcLeftIcon, ArrowRightIcon, KeyboardIcon, PencilSimpleIcon, ProhibitIcon, SealCheckIcon } from "@phosphor-icons/react";
 import { isCollegeClassLevel, QUIZ_TAKEDOWN_REASONS, type QuizReviewEditBody, type QuizReviewItem, type QuizReviewNext, type QuizReviewQuery, type QuizTakeDownReason } from "@edulink/contracts";
 import { Card, CardBody } from "@/components/ui/card";

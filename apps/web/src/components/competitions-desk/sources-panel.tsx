@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useTransition } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter } from "@/lib/navigation";
 import { ArrowSquareOutIcon, PlusIcon } from "@phosphor-icons/react";
 import { COMPETITION_SOURCE_KINDS, sourceKindAudience, type CompetitionSource, type CompetitionSourceKind, type StreamCode } from "@edulink/contracts";
 import { StreamPicker } from "./audience-editor"; // college-content (12 Oct 2026)

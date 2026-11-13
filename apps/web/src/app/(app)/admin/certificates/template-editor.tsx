@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState, useTransition } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter } from "@/lib/navigation";
 import { ArrowDownIcon, ArrowUpIcon, DotsSixVerticalIcon, FloppyDiskIcon, TrashIcon } from "@phosphor-icons/react";
 import type { CertificateKind, CertificateLayout, CertificateTemplateSave, CertificateTemplatesView, PaperSigner } from "@edulink/contracts";
 import type { PaletteEntry } from "@/lib/certificates";

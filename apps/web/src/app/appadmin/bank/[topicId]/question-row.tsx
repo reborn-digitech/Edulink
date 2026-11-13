@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useTransition } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter } from "@/lib/navigation";
 import { PencilSimpleIcon, TrashIcon } from "@phosphor-icons/react";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";

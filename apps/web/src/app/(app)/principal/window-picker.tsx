@@ -1,6 +1,7 @@
 "use client";
 
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { usePathname, useSearchParams } from "next/navigation";
+import { useRouter } from "@/lib/navigation";
 import { useTransition } from "react";
 import { cn } from "@/lib/cn";
 import { useT } from "@/lib/i18n";

@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useRouter } from "@/lib/navigation";
 import { WalletIcon } from "@phosphor-icons/react";
 import { expertPayoutSchema, expertRouteLinkedSchema, type ExpertPayout } from "@edulink/contracts";
 import { Badge } from "@/components/ui/badge";

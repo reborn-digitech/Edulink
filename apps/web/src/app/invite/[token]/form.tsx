@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState, useTransition } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter } from "@/lib/navigation";
 import { ArrowRightIcon, XIcon } from "@phosphor-icons/react";
 import { Button } from "@/components/ui/button";
 import { DateField, TextField, TextAreaField } from "@/components/ui/field";

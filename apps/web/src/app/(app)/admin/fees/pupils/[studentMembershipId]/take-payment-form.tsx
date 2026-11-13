@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useTransition } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter } from "@/lib/navigation";
 import { formatPaise, parseRupees } from "@edulink/i18n";
 import { Button } from "@/components/ui/button";
 import { CheckboxField, DateField, SelectField, TextAreaField, TextField } from "@/components/ui/field";

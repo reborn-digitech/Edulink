@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState, useTransition } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter } from "@/lib/navigation";
 import { ArrowsClockwiseIcon, ProhibitIcon } from "@phosphor-icons/react";
 import { useToast } from "@/components/ui/toast";
 import { Button } from "@/components/ui/button";

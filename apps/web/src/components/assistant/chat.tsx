@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useRouter } from "@/lib/navigation";
 import { useCallback, useEffect, useId, useRef, useState, type FormEvent, type KeyboardEvent, type ReactNode } from "react";
 import { ArrowSquareOutIcon, BookOpenTextIcon, ChatsCircleIcon, CompassIcon, LightbulbIcon, LinkSimpleIcon, PaperPlaneRightIcon, ThumbsDownIcon, ThumbsUpIcon, UserCircleIcon, WarningCircleIcon, WifiSlashIcon } from "@phosphor-icons/react";
 import type { AssistantAbout, AssistantChip, AssistantMessage, AssistantStatus, AssistantSuggestions } from "@edulink/contracts";

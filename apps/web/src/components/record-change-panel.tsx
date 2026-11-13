@@ -1,7 +1,7 @@
 "use client";
 
 import { useId, useState, useTransition } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter } from "@/lib/navigation";
 import { ArrowUUpLeftIcon, CheckIcon, XIcon } from "@phosphor-icons/react";
 import type { RecordChangeView } from "@edulink/contracts";
 import { Badge } from "@/components/ui/badge";

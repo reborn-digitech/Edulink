@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter } from "@/lib/navigation";
 import Link from "next/link";
 import { ArrowRightIcon, MagnifyingGlassIcon } from "@phosphor-icons/react";
 import { searchResultsSchema, type SearchHit, type SearchKind } from "@edulink/contracts";

@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter } from "@/lib/navigation";
 import { CheckCircleIcon, CopyIcon, DeviceMobileIcon, WarningIcon } from "@phosphor-icons/react";
 import { Button, Spinner } from "@/components/ui/button";
 import { TextField } from "@/components/ui/field";

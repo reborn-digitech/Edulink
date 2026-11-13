@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useTransition } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter } from "@/lib/navigation";
 import { CheckIcon, PaperPlaneRightIcon, TrashIcon, XCircleIcon } from "@phosphor-icons/react";
 import { VIDURA_ROLES, type AssistantLanguage, type ViduraAnswer, type ViduraAnswers } from "@edulink/contracts";
 import { Card, CardBody, CardHeader } from "@/components/ui/card";

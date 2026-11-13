@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useCallback, useEffect, useMemo, useRef, useState, useTransition, type DragEvent, type ReactNode } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter } from "@/lib/navigation";
 import { ArrowDownIcon, ArrowUpIcon, DotsSixVerticalIcon, PlusIcon } from "@phosphor-icons/react";
 import { LOCALES } from "@edulink/i18n";
 import { SITE_CUSTOM_PAGES_MAX, type SiteConfig, type SiteLanguage, type SitePage } from "@edulink/contracts";

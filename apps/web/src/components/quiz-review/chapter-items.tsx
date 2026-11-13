@@ -2,7 +2,7 @@
 
 import { useState, useTransition } from "react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useRouter } from "@/lib/navigation";
 import { ArrowArcLeftIcon, PencilSimpleIcon, ProhibitIcon } from "@phosphor-icons/react";
 import { QUIZ_TAKEDOWN_REASONS, type QuizBankChapterItem, type QuizReviewEditBody, type QuizReviewItem, type QuizTakeDownReason } from "@edulink/contracts";
 import { Badge } from "@/components/ui/badge";

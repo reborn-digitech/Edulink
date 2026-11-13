@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useTransition } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter } from "@/lib/navigation";
 import Link from "next/link";
 import { ArrowSquareOutIcon, DownloadSimpleIcon, FloppyDiskIcon, SparkleIcon, WarningIcon } from "@phosphor-icons/react";
 import { Button } from "@/components/ui/button";

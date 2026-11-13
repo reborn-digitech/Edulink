@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState, useTransition } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter } from "@/lib/navigation";
 import { PlusIcon, TrashIcon } from "@phosphor-icons/react";
 import { formatPaise, parseRupees } from "@edulink/i18n";
 import { Button } from "@/components/ui/button";

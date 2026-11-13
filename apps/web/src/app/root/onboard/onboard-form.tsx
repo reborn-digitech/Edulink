@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useTransition } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter } from "@/lib/navigation";
 import { RocketLaunchIcon } from "@phosphor-icons/react";
 import { INSTITUTION_KINDS, isCollegeKind, SCHOOL_BOARDS, type InstitutionKind, type OperatorOnboardBody, type StreamCode } from "@edulink/contracts";
 import { StreamPicker } from "@/components/college/stream-picker";

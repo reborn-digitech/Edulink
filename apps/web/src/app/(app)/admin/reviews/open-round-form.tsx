@@ -2,7 +2,7 @@
 
 import { DateField } from "@/components/ui/field";
 import { useState, useTransition } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter } from "@/lib/navigation";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/toast";
 import { openRound } from "./actions";

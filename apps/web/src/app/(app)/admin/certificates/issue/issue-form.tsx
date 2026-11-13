@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState, useTransition } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter } from "@/lib/navigation";
 import { SealCheckIcon } from "@phosphor-icons/react";
 import type { CertificateKind } from "@edulink/contracts";
 import { Button } from "@/components/ui/button";

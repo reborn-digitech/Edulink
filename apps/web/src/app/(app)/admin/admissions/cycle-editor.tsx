@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useTransition } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter } from "@/lib/navigation";
 import { FloppyDiskIcon, PlusIcon, TrashIcon } from "@phosphor-icons/react";
 import type { CycleSave, CycleView } from "@edulink/contracts";
 import { Button } from "@/components/ui/button";

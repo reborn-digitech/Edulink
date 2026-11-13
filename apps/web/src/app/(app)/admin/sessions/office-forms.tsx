@@ -1,7 +1,7 @@
 "use client";
 
 import { useTransition } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter } from "@/lib/navigation";
 import { CheckboxField } from "@/components/ui/field";
 import { useToast } from "@/components/ui/toast";
 import { useT } from "@/lib/i18n";

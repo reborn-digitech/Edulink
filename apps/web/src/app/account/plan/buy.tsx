@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter } from "@/lib/navigation";
 import { formatPaise } from "@edulink/i18n";
 import type { GigCheckout, PassCheckout, PassOffer, PassPeriod } from "@edulink/contracts";
 import { Button } from "@/components/ui/button";

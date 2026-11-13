@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useTransition } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter } from "@/lib/navigation";
 import { CheckCircleIcon, FloppyDiskIcon, ClockIcon } from "@phosphor-icons/react";
 import { STAFF_ATTENDANCE_STATUSES } from "@edulink/contracts";
 import { Button } from "@/components/ui/button";

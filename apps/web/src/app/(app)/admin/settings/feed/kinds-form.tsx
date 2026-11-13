@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useTransition } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter } from "@/lib/navigation";
 import { GLOBAL_FEED_KIND_CHOICES, type GlobalFeedKindChoice } from "@edulink/contracts";
 import { Button } from "@/components/ui/button";
 import { SelectField } from "@/components/ui/field";

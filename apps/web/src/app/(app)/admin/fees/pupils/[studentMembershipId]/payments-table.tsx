@@ -2,7 +2,7 @@
 
 import { useState, useTransition } from "react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useRouter } from "@/lib/navigation";
 import { formatPaise, parseRupees } from "@edulink/i18n";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";

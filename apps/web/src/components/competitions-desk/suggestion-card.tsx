@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useTransition } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter } from "@/lib/navigation";
 import { ArrowSquareOutIcon, CheckIcon, PencilSimpleIcon, XIcon } from "@phosphor-icons/react";
 import { COMPETITION_DISMISS_REASONS, COMPETITION_SUBJECTS, type CompetitionDismissReason, type CompetitionDraftEdit, type CompetitionSuggestion } from "@edulink/contracts";
 import { Card, CardBody } from "@/components/ui/card";

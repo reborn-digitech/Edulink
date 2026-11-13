@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useTransition } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter } from "@/lib/navigation";
 import { Button } from "@/components/ui/button";
 import { reply, close } from "../actions";
 import { useT } from "@/lib/i18n";

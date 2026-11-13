@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState, useTransition } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter } from "@/lib/navigation";
 import { CpuIcon, GlobeIcon, PlayIcon, StopIcon } from "@phosphor-icons/react";
 import { COMPETITION_CRAWL_ACTIVE_STATES, CRAWL_REJECT_REASONS, type CompetitionCrawlJob, type CompetitionCrawlState } from "@edulink/contracts";
 import { Card, CardBody, CardHeader } from "@/components/ui/card";

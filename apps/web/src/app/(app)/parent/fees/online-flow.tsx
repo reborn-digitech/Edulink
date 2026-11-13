@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useRouter } from "@/lib/navigation";
 import { CheckCircleIcon, WarningIcon } from "@phosphor-icons/react";
 import { Button, Spinner } from "@/components/ui/button";
 import { formatPaise } from "@edulink/i18n";

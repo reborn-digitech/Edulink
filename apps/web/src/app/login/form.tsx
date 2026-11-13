@@ -2,7 +2,7 @@
 
 import { useState, useTransition } from "react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useRouter } from "@/lib/navigation";
 import { EnvelopeSimpleIcon, LockKeyIcon, PaperPlaneTiltIcon } from "@phosphor-icons/react";
 import { Button } from "@/components/ui/button";
 import { TextField } from "@/components/ui/field";

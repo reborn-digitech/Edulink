@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter } from "@/lib/navigation";
 import { IdentificationCardIcon } from "@phosphor-icons/react";
 import { expertKycSchema, uploadResultSchema, EXPERT_KYC_MAX_DOCUMENTS, type ExpertKyc } from "@edulink/contracts";
 import { Badge } from "@/components/ui/badge";

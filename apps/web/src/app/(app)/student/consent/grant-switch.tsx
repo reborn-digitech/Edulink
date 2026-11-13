@@ -1,7 +1,7 @@
 "use client";
 
 import { useTransition } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter } from "@/lib/navigation";
 import type { StudentConsentGrant } from "@edulink/contracts";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/toast";

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useTransition } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter } from "@/lib/navigation";
 import { ArrowsLeftRightIcon, PencilSimpleIcon, XIcon } from "@phosphor-icons/react";
 import type { SubstitutionBoard, SubstitutionLesson } from "@edulink/contracts";
 import { Badge } from "@/components/ui/badge";

@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useState, useTransition } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter } from "@/lib/navigation";
 import { CheckCircleIcon, CircleIcon } from "@phosphor-icons/react";
 import type { SiteCheck, SiteConfig } from "@edulink/contracts";
 import { Badge } from "@/components/ui/badge";

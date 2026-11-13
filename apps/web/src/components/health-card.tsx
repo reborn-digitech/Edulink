@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useTransition } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter } from "@/lib/navigation";
 import { FloppyDiskIcon, PencilSimpleIcon, PlusIcon, XIcon } from "@phosphor-icons/react";
 import { BLOOD_GROUPS, type HealthCardSave, type HealthCardView, type HealthContact } from "@edulink/contracts";
 import { Button } from "@/components/ui/button";

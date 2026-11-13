@@ -2,7 +2,7 @@
 
 import { useState, useTransition } from "react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useRouter } from "@/lib/navigation";
 import { FloppyDiskIcon } from "@phosphor-icons/react";
 import { Button } from "@/components/ui/button";
 import { CheckboxField } from "@/components/ui/field";

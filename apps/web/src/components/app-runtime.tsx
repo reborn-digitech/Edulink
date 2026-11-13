@@ -5,6 +5,7 @@ import { flushQueue, onQueueEvent, setOutboxOwner } from "@/lib/offline-queue";
 import { useToast } from "@/components/ui/toast";
 import { cn } from "@/lib/cn";
 import { useT } from "@/lib/i18n";
+import { RouterNudge } from "@/lib/navigation";
 
 /**
  * Cross-cutting client runtime, mounted once in the root layout:
@@ -167,6 +168,7 @@ export function AppRuntime({ owner }: { owner: string | null }) {
 
   return (
     <>
+      <RouterNudge />
       {/*
         Two elements for one banner, and the split is the accessibility fix.
         The visual bar has to STAY MOUNTED while online — the slide-out is a

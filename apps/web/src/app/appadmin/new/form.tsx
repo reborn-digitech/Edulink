@@ -1,7 +1,7 @@
 "use client";
 
 import { useTransition } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter } from "@/lib/navigation";
 import { TrophyIcon } from "@phosphor-icons/react";
 import { Button } from "@/components/ui/button";
 import { CheckboxField, DateField, TextAreaField, TextField } from "@/components/ui/field";

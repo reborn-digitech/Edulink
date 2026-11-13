@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useTransition } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter } from "@/lib/navigation";
 import { BookmarkSimpleIcon, CopyIcon, TrashIcon } from "@phosphor-icons/react";
 import type { PlanTemplate } from "@edulink/contracts";
 import { Button } from "@/components/ui/button";

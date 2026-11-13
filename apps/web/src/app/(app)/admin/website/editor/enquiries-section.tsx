@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useTransition } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter } from "@/lib/navigation";
 import { LOCALES } from "@edulink/i18n";
 import { SITE_ENQUIRY_STATUSES, type SiteEnquiryRow, type SiteEnquiryStatus } from "@edulink/contracts";
 import { Badge } from "@/components/ui/badge";

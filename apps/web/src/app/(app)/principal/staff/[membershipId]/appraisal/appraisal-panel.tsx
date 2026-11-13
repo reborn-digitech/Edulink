@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useTransition } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter } from "@/lib/navigation";
 import { EyeIcon, EyeSlashIcon, PencilSimpleIcon, PlusIcon, TrashIcon } from "@phosphor-icons/react";
 import { APPRAISAL_KINDS, type AppraisalEntry, type AppraisalKind } from "@edulink/contracts";
 import { Badge } from "@/components/ui/badge";

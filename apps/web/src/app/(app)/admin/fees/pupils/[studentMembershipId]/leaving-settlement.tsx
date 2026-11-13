@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useTransition } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter } from "@/lib/navigation";
 import type { LeavingSettlementView, SettlementChoice } from "@edulink/contracts";
 import { formatPaise, type Locale } from "@edulink/i18n";
 import { Badge } from "@/components/ui/badge";

@@ -2,7 +2,7 @@
 
 import { CWSN_NONE, MOTHER_TONGUES, NATIONALITIES, PUPIL_STREAMS, RECORD_CHANGE_FIELDS } from "@edulink/contracts";
 import { useState, useTransition } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter } from "@/lib/navigation";
 import { FloppyDiskIcon, PaperPlaneTiltIcon, PencilSimpleLineIcon } from "@phosphor-icons/react";
 import { CWSN_TYPES, RECORD_BLOOD_GROUPS, type PupilRecordField, type PupilRecordSave, type PupilRecordView, PUPIL_CATEGORIES, PUPIL_RELIGIONS } from "@edulink/contracts";
 import { Button } from "@/components/ui/button";

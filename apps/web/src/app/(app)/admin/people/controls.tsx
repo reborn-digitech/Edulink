@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useRef, useState, useTransition } from "react";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
+import { useRouter } from "@/lib/navigation";
 import { MagnifyingGlassIcon, XIcon } from "@phosphor-icons/react";
 import { Spinner } from "@/components/ui/button";
 import { useT } from "@/lib/i18n";

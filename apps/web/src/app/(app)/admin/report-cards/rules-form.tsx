@@ -1,7 +1,7 @@
 "use client";
 
 import { useId, useState, useTransition } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter } from "@/lib/navigation";
 import { ArrowDownIcon, ArrowUpIcon, FloppyDiskIcon, PlusIcon, TrashIcon, WarningCircleIcon } from "@phosphor-icons/react";
 import type { CardSigner, GradeBand, ReportCardConfig, ReportCardConfigView, ReportCardLayout } from "@edulink/contracts";
 import { Button } from "@/components/ui/button";

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useTransition } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter } from "@/lib/navigation";
 import { ArrowDownIcon, ArrowUpIcon, PlusIcon, TrashIcon } from "@phosphor-icons/react";
 import type { BusView, TransportOverview, TransportRoute, TransportStopInput } from "@edulink/contracts";
 import { Button } from "@/components/ui/button";

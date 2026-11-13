@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState, useTransition } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter } from "@/lib/navigation";
 import { CaretDownIcon, CaretUpIcon, GraduationCapIcon, PlusIcon, XIcon } from "@phosphor-icons/react";
 import type { Destination, PromotionClass, PromotionMove } from "@/lib/promotion";
 import { Button } from "@/components/ui/button";

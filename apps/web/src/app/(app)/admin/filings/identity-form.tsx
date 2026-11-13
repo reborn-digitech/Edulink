@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useTransition } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter } from "@/lib/navigation";
 import { FloppyDiskIcon } from "@phosphor-icons/react";
 import { MANAGEMENT_TYPES, SCHOOL_BOARDS, type FilingIdentitySave, type FilingsView } from "@edulink/contracts";
 import { Button } from "@/components/ui/button";

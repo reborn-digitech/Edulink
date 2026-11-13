@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useTransition } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter } from "@/lib/navigation";
 import { CheckCircleIcon } from "@phosphor-icons/react";
 import { formatPaise } from "@edulink/i18n";
 import type { FamilyFeePlans } from "@edulink/contracts";

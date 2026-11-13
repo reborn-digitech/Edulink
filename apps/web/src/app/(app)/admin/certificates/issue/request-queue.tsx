@@ -2,7 +2,7 @@
 
 import { useState, useTransition } from "react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useRouter } from "@/lib/navigation";
 import { ProhibitIcon, SealCheckIcon, TrayIcon } from "@phosphor-icons/react";
 import type { CertificateRequestView } from "@edulink/contracts";
 import { formatDate } from "@/lib/dates";

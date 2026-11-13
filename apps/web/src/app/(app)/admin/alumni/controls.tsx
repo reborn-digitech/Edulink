@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useTransition } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter } from "@/lib/navigation";
 import { ALUMNI_FEED_MODES, type AlumniFeedMode } from "@edulink/contracts";
 import { Button } from "@/components/ui/button";
 import { SelectField, TextAreaField, TextField } from "@/components/ui/field";

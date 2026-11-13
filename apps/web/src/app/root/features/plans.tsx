@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useTransition } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter } from "@/lib/navigation";
 import { GRANT_MONTHS, PERSON_PLANS, type PlanCode } from "@edulink/contracts";
 import { Button } from "@/components/ui/button";
 import { SelectField, TextField } from "@/components/ui/field";
