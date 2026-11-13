@@ -16,12 +16,18 @@
  *
  * These functions never parse the metadata they remove. They locate whole
  * segments by marker and drop them, so a malformed or hostile EXIF payload is
- * discarded rather than interpreted.
+ * discarded rather than interpreted. The one exception is a JPEG's EXIF
+ * orientation (TA-136): one number, read with every offset bounds-checked and
+ * written back alone in a fresh block, because without it a portrait phone
+ * photograph is stored on its side.
  *
  * On anything unexpected the remainder of the file is passed through unchanged:
  * a corrupt upload should fail later, on decode, rather than be silently
  * truncated into a file that half-renders.
  */
+
+/** JPEG APP1 holds EXIF (and XMP); only its orientation survives the strip (TA-136). */
+const JPEG_APP1 = 0xe1;
 
 /** JPEG APP2 holds the ICC colour profile; dropping it visibly shifts colours. */
 const JPEG_APP2 = 0xe2;
@@ -61,6 +67,7 @@ function stripJpeg(bytes: Buffer): Buffer {
 
   const out: Buffer[] = [bytes.subarray(0, 2)];
   let i = 2;
+  let keptOrientation = false;
 
   while (i + 1 < bytes.length) {
     if (bytes[i] !== 0xff) break;
@@ -86,6 +93,15 @@ function stripJpeg(bytes: Buffer): Buffer {
     const drop = (isAppSegment && marker !== 0xe0 && marker !== JPEG_APP2) || isComment;
 
     if (!drop) out.push(bytes.subarray(i, i + 2 + length));
+    // EXIF's orientation is how a phone stores a portrait picture as landscape pixels (TA-136): the block goes, the
+    // one number is put back in a block of its own, in the same place, so the picture is drawn upright.
+    if (marker === JPEG_APP1 && !keptOrientation) {
+      const orientation = exifOrientation(bytes.subarray(i + 4, i + 2 + length));
+      if (orientation !== null) {
+        out.push(orientationSegment(orientation));
+        keptOrientation = true;
+      }
+    }
     i += 2 + length;
   }
 
@@ -93,6 +109,52 @@ function stripJpeg(bytes: Buffer): Buffer {
   // verbatim so the image still decodes.
   if (i < bytes.length) out.push(bytes.subarray(i));
   return Buffer.concat(out);
+}
+
+/**
+ * The EXIF Orientation (tag 0x0112 of IFD0) of an APP1 payload, when it is one of the seven turns or flips (2–8);
+ * null for 1, for no such tag, and for anything malformed. The one value read out of the block being dropped, every
+ * offset checked against the payload before it is read.
+ */
+function exifOrientation(payload: Buffer): number | null {
+  if (payload.length < 6 + 8 || payload.toString("latin1", 0, 6) !== "Exif\0\0") return null;
+  const tiff = payload.subarray(6);
+  const order = tiff.toString("latin1", 0, 2);
+  if (order !== "II" && order !== "MM") return null;
+  const u16 = (at: number) => (order === "II" ? tiff.readUInt16LE(at) : tiff.readUInt16BE(at));
+  const u32 = (at: number) => (order === "II" ? tiff.readUInt32LE(at) : tiff.readUInt32BE(at));
+  if (u16(2) !== 42) return null;
+  const ifd = u32(4);
+  if (ifd < 8 || ifd + 2 > tiff.length) return null;
+  const count = u16(ifd);
+  for (let k = 0; k < count; k += 1) {
+    const entry = ifd + 2 + k * 12;
+    if (entry + 12 > tiff.length) return null;
+    if (u16(entry) !== 0x0112) continue;
+    // SHORT, one value, held in the entry itself.
+    if (u16(entry + 2) !== 3 || u32(entry + 4) !== 1) return null;
+    const value = u16(entry + 8);
+    return value >= 2 && value <= 8 ? value : null;
+  }
+  return null;
+}
+
+/** An APP1 segment holding nothing but the orientation: "Exif", a big-endian TIFF header and an IFD0 of one entry. */
+function orientationSegment(orientation: number): Buffer {
+  const tiff = Buffer.alloc(8 + 2 + 12 + 4);
+  tiff.write("MM", 0, "latin1");
+  tiff.writeUInt16BE(42, 2);
+  tiff.writeUInt32BE(8, 4);
+  tiff.writeUInt16BE(1, 8);
+  tiff.writeUInt16BE(0x0112, 10);
+  tiff.writeUInt16BE(3, 12);
+  tiff.writeUInt32BE(1, 14);
+  tiff.writeUInt16BE(orientation, 18);
+  // Bytes 20–21 pad the value; 22–25, the next IFD's offset, stay 0: there is none.
+  const payload = Buffer.concat([Buffer.from("Exif\0\0", "latin1"), tiff]);
+  const head = Buffer.from([0xff, JPEG_APP1, 0, 0]);
+  head.writeUInt16BE(payload.length + 2, 2);
+  return Buffer.concat([head, payload]);
 }
 
 /** PNG is an 8-byte signature then length/type/data/CRC chunks. */

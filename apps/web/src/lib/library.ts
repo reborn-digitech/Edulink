@@ -1134,6 +1134,9 @@ export function accessionsOf(raw: string, copies: number): string[] | null {
   if (listed.length === 0) return copies > 0 ? null : [];
   const one = listed[0]!;
   if (copies <= 1) return [one];
+  // An accession is at most 30 characters (importCatalogue refuses longer), and the pattern below backtracks in time
+  // growing with the square of a long one (TA-247), so a long one is refused before it is matched.
+  if (one.length > 30) return null;
   const m = /^(.*?)(\d+)$/.exec(one);
   if (!m) return null;
   const width = m[2]!.length;

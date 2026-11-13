@@ -68,6 +68,12 @@ export class UploadError extends Error {
 }
 
 /**
+ * The major brands of the ISO-box still-image formats (HEIF and its HEVC and AV1 forms, image sequences included):
+ * ISO/IEC 23008-12 and the AVIF specification. Their ftyp box is the one an MP4 opens with.
+ */
+const STILL_IMAGE_BRANDS = new Set(["heic", "heix", "heim", "heis", "hevc", "hevx", "hevm", "hevs", "mif1", "mif2", "msf1", "miaf", "avif", "avis", "avio"]);
+
+/**
  * Magic-byte check. A browser-supplied Content-Type is attacker-controlled, so
  * an "image/png" that actually starts with `<?php` or `<svg onload=` must not
  * be trusted. SVG is deliberately absent from the whitelist — it is an
@@ -85,8 +91,13 @@ function sniff(bytes: Uint8Array): string | null {
   }
   // MP4-family: a size-prefixed "ftyp" box at offset 4. The brand after it
   // varies (isom, mp42, avc1, M4V…) and does not need distinguishing — every
-  // brand the box admits is the same container to the <video> element.
+  // brand the box admits is the same container to the <video> element —
+  // except a still picture in the same box (TA-340): a HEIC, HEIF or AVIF
+  // photograph is no video, would keep its EXIF and place unstripped under
+  // the video cap, and is refused as a type we do not take.
   if (bytes[4] === 0x66 && bytes[5] === 0x74 && bytes[6] === 0x79 && bytes[7] === 0x70) {
+    const brand = String.fromCharCode(bytes[8] ?? 0, bytes[9] ?? 0, bytes[10] ?? 0, bytes[11] ?? 0);
+    if (STILL_IMAGE_BRANDS.has(brand)) return null;
     return "video/mp4";
   }
   // WebM/Matroska: the EBML header. Served as webm; a raw .mkv that slips the
@@ -159,6 +170,19 @@ export async function deleteStoredFile(fileId: string): Promise<void> {
   const safe = sanitizeFileId(fileId);
   if (!safe) return;
   await blobStore("files").delete(nameFor(safe));
+  await deleteStoredVariants(safe);
+}
+
+/**
+ * The resized copies of one stored picture (TA-139): a picture said to be deleted must not live on as its 320, 640
+ * and 1280 pixel copies. Deleting a copy that was never made is the desired end state, as for the original.
+ */
+export async function deleteStoredVariants(fileId: string): Promise<void> {
+  const safe = sanitizeFileId(fileId);
+  // Only a JPEG, PNG or WebP is ever resized (readStoredVariant); anything else has no copies to remove.
+  if (!safe || !/\.(jpg|png|webp)$/i.test(safe)) return;
+  const variants = blobStore("variants");
+  await Promise.all(VARIANT_WIDTHS.map((width) => variants.delete(variantNameFor(safe, width))));
 }
 
 /**
@@ -216,7 +240,7 @@ export async function readStoredVariant(
   if (!/^image\/(jpeg|png|webp)$/.test(original.mime)) return original;
 
   const variants = blobStore("variants");
-  const name = `${safe.slice(0, 2)}/${safe}.w${width}.webp`;
+  const name = variantNameFor(safe, width);
   const cached = await variants.get(name);
   if (cached) return { bytes: cached, mime: "image/webp" };
   const bytes = await sharp(original.bytes, { failOn: "none" })
@@ -226,4 +250,9 @@ export async function readStoredVariant(
     .toBuffer();
   await variants.put(name, bytes, "image/webp");
   return { bytes, mime: "image/webp" };
+}
+
+/** A copy's name in the variants namespace: the one readStoredVariant writes and deleteStoredVariants removes. */
+function variantNameFor(safeFileId: string, width: VariantWidth): string {
+  return `${safeFileId.slice(0, 2)}/${safeFileId}.w${width}.webp`;
 }

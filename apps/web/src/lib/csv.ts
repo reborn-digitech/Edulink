@@ -181,6 +181,14 @@ export type InviteCsvResult = {
 const EMAIL_RE = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
 
 /**
+ * The longest address there is (RFC 5321's 320). Checked BEFORE the pattern, never after (TA-247): on "a@", a long run
+ * of dots and "@" the pattern backtracks in time growing with the square of the length, on the one thread that serves
+ * every school, and nothing caps one cell of a 500,000-character paste.
+ */
+const EMAIL_MAX = 320;
+const emailShaped = (value: string): boolean => value.length <= EMAIL_MAX && EMAIL_RE.test(value);
+
+/**
  * Maps a pasted or uploaded CSV onto invite rows.
  *
  * Bad rows are COLLECTED and reported, never skipped silently — a school
@@ -214,7 +222,7 @@ export function parseInviteCsv(input: string): InviteCsvResult {
     // in the first column; "name,email,subjects" puts it in the second.
     // Reading a fixed column rejected the simplest paste with "No email".
     const cells = headerless ? [row.__0 ?? "", row.__1 ?? "", row.__2 ?? ""] : [];
-    const emailIndex = headerless ? cells.findIndex((c) => EMAIL_RE.test(c.trim())) : -1;
+    const emailIndex = headerless ? cells.findIndex((c) => emailShaped(c.trim())) : -1;
     // A lone cell that is not an address is still "their email, mistyped" —
     // reported as invalid with the value shown, not as a blank row.
     const nonEmpty = cells.filter((c) => c.trim().length > 0);
@@ -235,12 +243,12 @@ export function parseInviteCsv(input: string): InviteCsvResult {
       problems.push({ line, value: name, reasonKey: "invites.noEmail" });
       continue;
     }
-    if (!EMAIL_RE.test(email)) {
-      problems.push({ line, value: email, reasonKey: "invites.invalidEmail" });
+    if (email.length > EMAIL_MAX) {
+      problems.push({ line, value: email.slice(0, 40) + "…", reasonKey: "invites.emailTooLong" });
       continue;
     }
-    if (email.length > 320) {
-      problems.push({ line, value: email.slice(0, 40) + "…", reasonKey: "invites.emailTooLong" });
+    if (!EMAIL_RE.test(email)) {
+      problems.push({ line, value: email, reasonKey: "invites.invalidEmail" });
       continue;
     }
 
@@ -461,12 +469,12 @@ export function parseIntakeCsv(input: string, today: string): IntakeCsvResult {
     }
 
     const pupilEmail = cell(col.pupilEmail).toLowerCase() || null;
-    if (pupilEmail && !EMAIL_RE.test(pupilEmail)) {
+    if (pupilEmail && !emailShaped(pupilEmail)) {
       problems.push({ line, value: pupilEmail, reasonKey: "invites.invalidEmail" });
       return;
     }
     const guardianEmail = cell(col.guardianEmail).toLowerCase() || null;
-    if (guardianEmail && !EMAIL_RE.test(guardianEmail)) {
+    if (guardianEmail && !emailShaped(guardianEmail)) {
       problems.push({ line, value: guardianEmail, reasonKey: "intake.badGuardianEmail" });
       return;
     }

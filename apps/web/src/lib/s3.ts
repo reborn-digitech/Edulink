@@ -188,7 +188,10 @@ export class S3Client {
         const block = m[1]!;
         const key = unescapeXml(block.match(/<Key>([\s\S]*?)<\/Key>/)?.[1] ?? "");
         const size = Number(block.match(/<Size>(\d+)<\/Size>/)?.[1] ?? "0");
-        const lastModified = new Date(block.match(/<LastModified>([^<]*)<\/LastModified>/)?.[1] ?? 0);
+        // A listing with no LastModified, or one that does not parse, is taken as written just now, never as 1970
+        // (TA-586): the reclaim's one-hour grace is all that keeps an upload not yet attached from being deleted.
+        const stamped = new Date(block.match(/<LastModified>([^<]*)<\/LastModified>/)?.[1] ?? Number.NaN);
+        const lastModified = Number.isNaN(stamped.getTime()) ? new Date() : stamped;
         if (key) yield { key, size, lastModified };
       }
       const truncated = /<IsTruncated>true<\/IsTruncated>/.test(xml);

@@ -86,7 +86,10 @@ async function teachesOffering(offeringId: string, membershipId: string, role: s
  * also match a record referencing `aa.png`.
  */
 function jsonRef(fileId: string): string {
-  return `"fileId":"${fileId}"`;
+  // The reference goes into LIKE (Prisma's `contains`), whose own wildcards in an id are letters, not patterns
+  // (TA-138, as A3-S-15 in accounts-lookup.ts): "<prefix>%" matched the caller's own post and made the link door a
+  // yes/no question about other people's attachment JSON.
+  return `"fileId":"${fileId.replace(/[\\%_]/g, (c) => `\\${c}`)}"`;
 }
 
 /**
@@ -255,10 +258,11 @@ export async function authorizeFileRead(
   }
 
   // ---- 2d. a purchase record's scanned bill (the INVENTORY module): the
-  // office and the head of the school whose bill it is, nobody else.
+  // office, the accounts desk that records purchases (TA-291) and the head of
+  // the school whose bill it is, nobody else.
   const bill = await db.purchaseRecord.findFirst({ where: { billFileId: fileId }, select: { schoolId: true } });
   if (bill) {
-    if ((role === "ADMIN" || role === "PRINCIPAL") && schoolId === bill.schoolId) return { allowed: true, kind: "purchase", public: false };
+    if ((role === "ADMIN" || role === "PRINCIPAL" || role === "ACCOUNTS") && schoolId === bill.schoolId) return { allowed: true, kind: "purchase", public: false };
     return DENY;
   }
 

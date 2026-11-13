@@ -48,7 +48,9 @@ export async function inviteParent(
   const schoolId = requireAdmin(ctx);
 
   const email = input.email.trim().toLowerCase();
-  if (!EMAIL_RE.test(email)) return { ok: false, errorKey: "refusal.thatIsNotAnEmailAddress" };
+  // The length before the pattern (TA-247): the pattern backtracks quadratically on a long run of dots, and the
+  // office's server action caps no length.
+  if (email.length > 320 || !EMAIL_RE.test(email)) return { ok: false, errorKey: "refusal.thatIsNotAnEmailAddress" };
   if (!GUARDIAN_RELATIONS.includes(input.relation)) return { ok: false, errorKey: "refusal.sayHowTheyAreRelated" };
 
   const pupil = await db.membership.findFirst({
