@@ -57,23 +57,31 @@ export async function publishSlots(
   const location = input.location?.trim().slice(0, 120) || null;
   const note = input.note?.trim().slice(0, 300) || null;
 
-  let created = 0;
-  for (let i = 0; i < count; i++) {
-    const startsAt = new Date(input.startsAt.getTime() + i * duration * 60_000);
-    const endsAt = new Date(startsAt.getTime() + duration * 60_000);
-    // Two published runs may overlap; that is the teacher's own diary to
-    // manage. What is refused is the exact duplicate, so double-submitting
-    // the form does not double the afternoon.
-    const exists = await db.meetingSlot.findFirst({
-      where: { schoolId, teacherMembershipId: membershipId, startsAt, cancelledAt: null },
-      select: { id: true },
-    });
-    if (exists) continue;
-    await db.meetingSlot.create({
-      data: { schoolId, teacherMembershipId: membershipId, startsAt, endsAt, location, note },
-    });
-    created += 1;
-  }
+  // One publish of this teacher's at a time (TA-390): the check and the creates share a transaction under a
+  // lock, so two presses at once (a double tap, a retry while the first runs) see each other's slots rather
+  // than both finding none and both making the run. MeetingSlot has no unique key to lean on.
+  const created = await db.$tenantTransaction(async (raw) => {
+    const tx = raw as typeof db;
+    await tx.$queryRaw`SELECT 1 FROM pg_advisory_xact_lock(hashtext(${`meeting-slots:${membershipId}`}))`;
+    let made = 0;
+    for (let i = 0; i < count; i++) {
+      const startsAt = new Date(input.startsAt.getTime() + i * duration * 60_000);
+      const endsAt = new Date(startsAt.getTime() + duration * 60_000);
+      // Two published runs may overlap; that is the teacher's own diary to
+      // manage. What is refused is the exact duplicate, so double-submitting
+      // the form does not double the afternoon.
+      const exists = await tx.meetingSlot.findFirst({
+        where: { schoolId, teacherMembershipId: membershipId, startsAt, cancelledAt: null },
+        select: { id: true },
+      });
+      if (exists) continue;
+      await tx.meetingSlot.create({
+        data: { schoolId, teacherMembershipId: membershipId, startsAt, endsAt, location, note },
+      });
+      made += 1;
+    }
+    return made;
+  });
 
   await audit({
     schoolId,

@@ -7,6 +7,7 @@ import { notify } from "./notify";
 import { audit } from "./audit";
 import { AccessError, assertRemarkAccess, assertStudentAccess, taughtClassWhere } from "./tenancy";
 import type { ActiveContext } from "./session";
+import type { Role } from "./constants";
 import { assertParentMaySee, parentMaySee, studentsGuardiansMaySee } from "./student-consent";
 
 /**
@@ -200,18 +201,24 @@ export async function markThreadRead(session: ActiveContext, threadId: string): 
  * Shared classes, ACTIVE on both sides. A teacher who has left the class and a
  * pupil who has left the roll are both correctly no longer connected — which is
  * what stops a conversation being opened with somebody's last-year teacher.
+ *
+ * TEACHES BY THE SAME LINE FROM BOTH ENDS (TA-389): a school's TEACHER who
+ * takes the class only on the timetable passes the teacher's own check
+ * (taughtClassWhere), so the pupil and the guardian reach them by it too.
  */
 async function teacherTeaches(
   schoolId: string,
   teacherMembershipId: string,
   studentMembershipId: string,
 ): Promise<boolean> {
+  const teacher = await db.membership.findFirst({ where: { id: teacherMembershipId, schoolId }, select: { role: true } });
+  if (!teacher) return false;
   const shared = await db.enrollment.count({
     where: {
       schoolId,
       studentMembershipId,
       status: "ACTIVE",
-      class: { teachers: { some: { teacherMembershipId } } },
+      class: taughtClassWhere(teacher.role as Role, teacherMembershipId),
     },
   });
   return shared > 0;
@@ -434,8 +441,10 @@ export async function replyToThread(
     },
   });
 
-  await db.remarkThread.update({
-    where: { id: thread.id },
+  // Forward only (TA-559): of two replies landing together, the older one's update may commit second, and
+  // an unconditional write would leave the thread sorted on the older message until the next reply.
+  await db.remarkThread.updateMany({
+    where: { id: thread.id, lastMessageAt: { lt: message.createdAt } },
     data: { lastMessageAt: message.createdAt },
   });
 
@@ -493,7 +502,9 @@ export async function studentsForTeacher(schoolId: string, membershipId: string)
         where: { status: "ACTIVE" },
         include: { class: { select: { name: true } } },
       },
-      guardianships: { where: { status: "ACTIVE" }, select: { id: true } },
+      // The family's own: the school's stand-in (relation SCHOOL) is the class teacher or an admin, not
+      // somebody a message to the family reaches, so it does not hide the warning (TA-391).
+      guardianships: { where: { status: "ACTIVE", relation: { not: "SCHOOL" } }, select: { id: true } },
     },
     orderBy: { user: { name: "asc" } },
   });
@@ -541,6 +552,21 @@ export async function teachersForStudent(schoolId: string, studentMembershipId: 
               },
             },
           },
+          // A school's TEACHER who takes the class on the timetable teaches its pupils too (TA-389), as
+          // teacherTeaches and the teacher's own side (taughtClassWhere) say; a college's faculty do not.
+          timetableSlots: {
+            where: { teacherMembershipId: { not: null }, teacher: { role: "TEACHER" } },
+            select: {
+              subject: true,
+              teacherMembershipId: true,
+              teacher: {
+                select: {
+                  title: true,
+                  user: { select: { name: true, preferredName: true, avatarKey: true } },
+                },
+              },
+            },
+          },
         },
       },
     },
@@ -571,6 +597,25 @@ export async function teachersForStudent(schoolId: string, studentMembershipId: 
         avatarKey: link.teacher.user.avatarKey,
         classes: [className],
         lead: link.role === "LEAD",
+      });
+    }
+    for (const slot of enrolment.class.timetableSlots) {
+      if (!slot.teacherMembershipId || !slot.teacher) continue;
+      const className = `${enrolment.class.name} · ${slot.subject.trim()}`;
+      const existing = byTeacher.get(slot.teacherMembershipId);
+      if (existing) {
+        // One of the class's own keeps the class's label; another subject of the timetable is one more line.
+        const ownOfClass = enrolment.class.teachers.some((link) => link.teacherMembershipId === slot.teacherMembershipId);
+        if (!ownOfClass && !existing.classes.includes(className)) existing.classes.push(className);
+        continue;
+      }
+      byTeacher.set(slot.teacherMembershipId, {
+        membershipId: slot.teacherMembershipId,
+        name: slot.teacher.user.preferredName ?? slot.teacher.user.name,
+        title: slot.teacher.title,
+        avatarKey: slot.teacher.user.avatarKey,
+        classes: [className],
+        lead: false,
       });
     }
   }

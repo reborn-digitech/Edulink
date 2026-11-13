@@ -4,7 +4,7 @@ import type { trendsSchema, trendTermSchema, cohortComparisonSchema } from "@edu
 import { db } from "./db";
 import { AccessError } from "./tenancy";
 import { readReportCardConfig } from "./report-card-config";
-import { addDaysToKey, dateKeyInZone, zonedStartOfDay } from "./dates";
+import { addDaysToKey, dateKeyInZone, todayKey, zonedStartOfDay } from "./dates";
 import type { ActiveContext } from "./session";
 import type { Role } from "./constants";
 
@@ -50,7 +50,8 @@ export function passLineOf(bands: { minPercent: number }[]): number {
 
 type Span = { fromDateKey: string; toDateKey: string };
 type Paper = { studentMembershipId: string; classId: string; gradeLevel: string; subject: string; dateKey: string; percent: number };
-type Mark = { dateKey: string; here: boolean; gradeLevel: string | null };
+/** One register session's marks, counted: how many were here (present or late) of how many marked. */
+type Mark = { dateKey: string; here: number; total: number; gradeLevel: string | null };
 
 /** Every marked exam paper of the school in the span, as a percent, with the class, grade and subject it belongs to. */
 async function papersIn(schoolId: string, span: Span): Promise<Paper[]> {
@@ -71,14 +72,31 @@ async function papersIn(schoolId: string, span: Span): Promise<Paper[]> {
   return out;
 }
 
-/** Every register mark of the school in the span: here or not, with the class's grade. */
+/**
+ * Every register session of the school in the span, its marks counted, with the class's grade.
+ *
+ * COUNTED IN THE DATABASE (TA-214), as insights.ts counts the head's other page: three years of
+ * registers for a school of a thousand pupils is most of a million marks, and reading each one into
+ * the web process as an object on every open is how one head's page slows the service for every
+ * school. A session is one class's day, so the rows that come back are sessions, not pupils.
+ */
 async function marksIn(schoolId: string, span: Span): Promise<Mark[]> {
-  const records = await db.attendanceRecord.findMany({
-    where: { schoolId, session: { dateKey: { gte: span.fromDateKey, lte: span.toDateKey } } },
-    select: { status: true, session: { select: { dateKey: true, class: { select: { gradeLevel: true } } } } },
-  });
-  return records.map((r) => ({ dateKey: r.session.dateKey, here: r.status === "PRESENT" || r.status === "LATE", gradeLevel: r.session.class.gradeLevel }));
+  const inSpan = { gte: span.fromDateKey, lte: span.toDateKey };
+  const [sessions, counts] = await Promise.all([
+    db.attendanceSession.findMany({ where: { schoolId, dateKey: inSpan }, select: { id: true, dateKey: true, class: { select: { gradeLevel: true } } } }),
+    db.attendanceRecord.groupBy({ by: ["sessionId", "status"], where: { schoolId, session: { dateKey: inSpan } }, _count: true }),
+  ]);
+  const bySession = new Map<string, Mark>(sessions.map((s) => [s.id, { dateKey: s.dateKey, here: 0, total: 0, gradeLevel: s.class.gradeLevel }]));
+  for (const row of counts) {
+    const mark = bySession.get(row.sessionId);
+    if (!mark) continue;
+    mark.total += row._count;
+    if (row.status === "PRESENT" || row.status === "LATE") mark.here += row._count;
+  }
+  return [...bySession.values()].filter((m) => m.total > 0);
 }
+
+const sum = (ms: Mark[], key: "here" | "total") => ms.reduce((n, m) => n + m[key], 0);
 
 /** Who teaches a class's subject, by the timetable; the class's lead teacher when the timetable does not say. */
 async function teacherOf(schoolId: string): Promise<(classId: string, subject: string) => string | null> {
@@ -100,7 +118,9 @@ export async function longitudinalTrends(ctx: ActiveContext, years = 2): Promise
   const school = await db.school.findUniqueOrThrow({ where: { id: caller.schoolId }, select: { timezone: true } });
   const tz = school.timezone;
   const [yearRows, config, teacherFor] = await Promise.all([
-    db.academicYear.findMany({ where: { schoolId: caller.schoolId }, orderBy: { startDate: "desc" }, take: years, select: { id: true, name: true, startDate: true, endDate: true, isCurrent: true } }),
+    // A year entered ahead of time (closing a year needs the next) has not begun: it is not "this year" (TA-387).
+    // The current year counts whatever its first day; any other year only once its first day has come.
+    db.academicYear.findMany({ where: { schoolId: caller.schoolId, OR: [{ isCurrent: true }, { startDate: { lt: zonedStartOfDay(addDaysToKey(todayKey(tz), 1), tz) } }] }, orderBy: { startDate: "desc" }, take: years, select: { id: true, name: true, startDate: true, endDate: true, isCurrent: true } }),
     readReportCardConfig(caller.schoolId),
     teacherOf(caller.schoolId),
   ]);
@@ -152,7 +172,7 @@ export async function longitudinalTrends(ctx: ActiveContext, years = 2): Promise
       termName: p.termName,
       fromDateKey: p.span.fromDateKey,
       toDateKey: p.span.toDateKey,
-      attendancePercent: pct(ms.filter((m) => m.here).length, ms.length),
+      attendancePercent: pct(sum(ms, "here"), sum(ms, "total")),
       examAveragePercent: mean(ps.map((x) => x.percent)),
       passPercent: pct(passed, pupilMeans.length),
       pupilsWithMarks: pupilMeans.length,
@@ -169,7 +189,7 @@ export async function longitudinalTrends(ctx: ActiveContext, years = 2): Promise
   const gradeStats = (span: Span, gradeLevel: string) => {
     const ps = papers.filter((x) => x.gradeLevel === gradeLevel && inSpan(x.dateKey, span));
     const ms = marks.filter((x) => x.gradeLevel === gradeLevel && inSpan(x.dateKey, span));
-    return { attendancePercent: pct(ms.filter((m) => m.here).length, ms.length), examAveragePercent: mean(ps.map((x) => x.percent)), pupils: new Set(ps.map((x) => x.studentMembershipId)).size };
+    return { attendancePercent: pct(sum(ms, "here"), sum(ms, "total")), examAveragePercent: mean(ps.map((x) => x.percent)), pupils: new Set(ps.map((x) => x.studentMembershipId)).size };
   };
   const grades = [...new Set(papers.filter((x) => inSpan(x.dateKey, thisYear) || (lastYear && inSpan(x.dateKey, lastYear))).map((x) => x.gradeLevel))].sort((a, b) => a.localeCompare(b, undefined, { numeric: true }));
   const cohorts: Cohort[] = grades.map((gradeLevel) => ({

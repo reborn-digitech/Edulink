@@ -5,7 +5,7 @@ import { formatDateKey } from "@/lib/dates";
 import { BooksIcon, StarIcon } from "@phosphor-icons/react/ssr";
 import { requireRole } from "@/lib/tenancy";
 import { db } from "@/lib/db";
-import { teacherReviewAggregate } from "@/lib/reviews";
+import { REVIEW_MIN_ANSWERS, teacherReviewAggregate } from "@/lib/reviews";
 import { QUESTION_KEY } from "@/lib/review-questions";
 import { REVIEW_QUESTIONS } from "@/lib/constants";
 import { readJsonArray } from "@/lib/json";
@@ -176,6 +176,9 @@ export default async function TeacherProfilePage() {
                     : t("reviews.answersSoFar", { count: agg.responseCount })}
                 </span>
               </p>
+              {agg.overall === null && (
+                <p className="mt-2 text-sm text-fg-muted">{t("reviews.tooFewToShow", { count: REVIEW_MIN_ANSWERS })}</p>
+              )}
               <ul className="mt-3 space-y-1.5">
                 {REVIEW_QUESTIONS.map((question) => {
                   const value = agg.byQuestion[question];

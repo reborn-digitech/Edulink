@@ -1,7 +1,7 @@
 import { StarIcon, TrendUpIcon, TrendDownIcon, EqualsIcon } from "@phosphor-icons/react/ssr";
 import { REVIEW_QUESTIONS } from "@/lib/constants";
 import { QUESTION_KEY } from "@/lib/review-questions";
-import type { TeacherReviewRow } from "@/lib/reviews";
+import { REVIEW_MIN_ANSWERS, type TeacherReviewRow } from "@/lib/reviews";
 import { getT } from "@/lib/i18n/server";
 
 /**
@@ -43,6 +43,9 @@ export async function ReviewDashboard({ rows }: { rows: TeacherReviewRow[] }) {
               </span>
             </p>
           </div>
+          {row.allTime.overall === null && (
+            <p className="mt-1.5 text-sm text-fg-muted">{t("reviews.tooFewToShow", { count: REVIEW_MIN_ANSWERS })}</p>
+          )}
 
           {/* The change, only when there is one to report: two rated rounds.
               A first round has no direction, and pretending otherwise with a

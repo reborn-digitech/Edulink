@@ -37,6 +37,8 @@ let otherTeacherCtx: ActiveContext;
 let pupilCtx: ActiveContext;
 let outsiderPupilCtx: ActiveContext;
 let parentCtx: ActiveContext;
+/** Four more pupils of the class: no figure is drawn under five answers (TA-213). */
+let classmateCtxs: ActiveContext[] = [];
 let teacherMembershipId = "";
 let otherTeacherMembershipId = "";
 
@@ -102,6 +104,15 @@ beforeAll(async () => {
   pupilCtx = ctx({ userId: pupil.id, membershipId: pupilM.id, role: "STUDENT" });
   outsiderPupilCtx = ctx({ userId: outsider.id, membershipId: outsiderM.id, role: "STUDENT" });
   parentCtx = ctx({ userId: parent.id, membershipId: null, role: "PARENT" });
+
+  classmateCtxs = await Promise.all(
+    ["Classmate A", "Classmate B", "Classmate C", "Classmate D"].map(async (name, i) => {
+      const u = await mkUser(name);
+      const m = await mk(u.id, "STUDENT", `ZRC${i}${STAMP}`);
+      await db.enrollment.create({ data: { classId, schoolId, studentMembershipId: m.id, status: "ACTIVE" } });
+      return ctx({ userId: u.id, membershipId: m.id, role: "STUDENT" });
+    }),
+  );
 });
 
 afterAll(async () => {
@@ -171,13 +182,19 @@ describe("answering", () => {
   });
 
   it("aggregates for the office and the teacher themselves, and for nobody else", async () => {
+    // One answer is that pupil's answer: the count, and no figure (TA-213).
+    expect(await teacherReviewAggregate(adminCtx, teacherMembershipId)).toEqual({ responseCount: 1, byQuestion: {}, overall: null });
+    for (const classmate of classmateCtxs) {
+      expect(await submitReview(classmate, { roundId, teacherMembershipId, scores: { ...full(4), CLARITY: 2 } })).toEqual({ ok: true });
+    }
     const agg = await teacherReviewAggregate(adminCtx, teacherMembershipId);
-    expect(agg.responseCount).toBe(1);
+    expect(agg.responseCount).toBe(5);
     expect(agg.byQuestion.CLARITY).toBe(2);
     expect(agg.byQuestion.SUPPORT).toBe(4);
     // mean of per-question means: (2 + 4 + 4 + 4 + 4) / 5 = 3.6
     expect(agg.overall).toBe(3.6);
-    expect((await teacherReviewAggregate(teacherCtx, teacherMembershipId)).overall).toBe(3.6);
+    // The teacher reads their own figures once the round has closed (TA-213).
+    expect((await teacherReviewAggregate(teacherCtx, teacherMembershipId)).overall).toBeNull();
     await expect(teacherReviewAggregate(otherTeacherCtx, teacherMembershipId)).rejects.toBeInstanceOf(AccessError);
     await expect(teacherReviewAggregate(pupilCtx, teacherMembershipId)).rejects.toBeInstanceOf(AccessError);
     // The unrated teacher has nothing, not a zero.
@@ -194,6 +211,7 @@ describe("closing and the dashboard", () => {
     expect(await submitReview(pupilCtx, { roundId, teacherMembershipId, scores: full(5) })).toEqual({ ok: false, errorKey: "reviews.roundClosed" });
     expect(await listReviewRounds(adminCtx, { status: "OPEN" })).toEqual([]);
     expect(await anyOpenReviews(pupilCtx)).toBe(false);
+    expect((await teacherReviewAggregate(teacherCtx, teacherMembershipId)).overall).toBe(3.6);
   });
 
   it("delta compares the two most recent answered rounds, and an ignored round is not a zero", async () => {
@@ -204,16 +222,20 @@ describe("closing and the dashboard", () => {
     expect((await pendingReviews(parentCtx, schoolId)).map((p) => p.teacherMembershipId)).toEqual([teacherMembershipId]);
     expect(await submitReview(pupilCtx, { roundId: two.roundId!, teacherMembershipId, scores: full(5) })).toEqual({ ok: true });
     expect(await submitReview(parentCtx, { roundId: two.roundId!, teacherMembershipId, scores: full(4) })).toEqual({ ok: true });
+    // And by the four classmates, two higher and two lower, so the round's mean stays 4.5 over six answers.
+    for (const [i, classmate] of classmateCtxs.entries()) {
+      expect(await submitReview(classmate, { roundId: two.roundId!, teacherMembershipId, scores: full(i < 2 ? 5 : 4) })).toEqual({ ok: true });
+    }
     // Round three: opened, ignored by everybody.
     const three = await openReviewRound(adminCtx, { teacherMembershipIds: [teacherMembershipId], audience: "STUDENTS", closesDateKey: "2099-01-01" });
     expect(three.ok).toBe(true);
 
     const rows = await schoolReviewDashboard(adminCtx);
     const row = rows.find((r) => r.membershipId === teacherMembershipId)!;
-    expect(row.latest).toEqual({ overall: 4.5, count: 2 });
-    expect(row.previous).toEqual({ overall: 3.6, count: 1 });
+    expect(row.latest).toEqual({ overall: 4.5, count: 6 });
+    expect(row.previous).toEqual({ overall: 3.6, count: 5 });
     expect(row.delta).toBe(0.9);
-    expect(row.allTime.responseCount).toBe(3);
+    expect(row.allTime.responseCount).toBe(11);
     const other = rows.find((r) => r.membershipId === otherTeacherMembershipId)!;
     expect(other.latest).toBeNull();
     expect(other.delta).toBeNull();

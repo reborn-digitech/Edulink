@@ -1,4 +1,5 @@
 import "server-only";
+import type { Prisma } from "@prisma/client";
 import { db } from "./db";
 import { audit } from "./audit";
 import { notify } from "./notify";
@@ -162,19 +163,36 @@ export async function listReviewRounds(
 /* ------------------------------------------------------------------------- */
 
 export type TeacherReviewAggregate = {
-  /** Answers across every round. */
+  /** Answers across every round (for the teacher's own read, every closed round). */
   responseCount: number;
-  /** Mean per question, 1..5, absent until somebody has answered it. */
+  /** Mean per question, 1..5, drawn only from rounds REVIEW_MIN_ANSWERS people or more answered in. */
   byQuestion: Partial<Record<ReviewQuestion, number>>;
   /** Mean of the per-question means — the one number a card can wear. */
   overall: number | null;
 };
 
 /**
+ * No figure is drawn from fewer answers than this (TA-213). An average of one
+ * answer IS that person's answer, and where the reader can guess who answered
+ * (the one guardian on the app, a class answering in front of its teacher) the
+ * promise that "teachers and the school only see averages" and decision 0002's
+ * "the respondent is never traceable" would be words. Below it a reader is
+ * told how many have answered and nothing of what they said.
+ */
+export const REVIEW_MIN_ANSWERS = 5;
+
+/**
  * Readable by the school's admin and principal, and by the teacher about
  * themselves. Not by other teachers, and not by the people who answered —
  * a respondent's window onto the result is the same public aggregate the
  * teacher sees, later, if the school chooses to share it out of band.
+ *
+ * THE TEACHER READS CLOSED ROUNDS ONLY (TA-213): watching their own figure
+ * move as each pupil answers in the room would tell them, by the difference,
+ * what that pupil gave. A round counts as closed once the office closes it or
+ * its last day has passed. No reader gets figures under REVIEW_MIN_ANSWERS, and
+ * the floor is a round's: a round fewer answered in is counted and left out of
+ * every figure, so it cannot be read off the change in the total.
  */
 export async function teacherReviewAggregate(
   ctx: ActiveContext,
@@ -185,10 +203,23 @@ export async function teacherReviewAggregate(
   const isSelf = ctx.role === "TEACHER" && ctx.membershipId === teacherMembershipId;
   if (!isStaffReader && !isSelf) throw new AccessError("access.notYourPage");
 
-  const rows = await db.reviewResponse.findMany({
-    where: { schoolId: ctx.schoolId, teacherMembershipId },
-    select: { scores: true },
+  let closedRounds: Prisma.ReviewResponseWhereInput = {};
+  if (!isStaffReader) {
+    const school = await db.school.findUnique({ where: { id: ctx.schoolId }, select: { timezone: true } });
+    if (!school) throw new AccessError("access.notYourPage");
+    closedRounds = { round: { OR: [{ status: "CLOSED" }, { closesDateKey: { lt: todayKey(school.timezone) } }] } };
+  }
+
+  const answers = await db.reviewResponse.findMany({
+    where: { schoolId: ctx.schoolId, teacherMembershipId, ...closedRounds },
+    select: { scores: true, roundId: true },
   });
+  // The floor holds round by round, not on the running total: a round that closed with one answer
+  // on top of five earlier ones would otherwise move the figure by exactly that answer (TA-213).
+  const perRound = new Map<string, number>();
+  for (const answer of answers) perRound.set(answer.roundId, (perRound.get(answer.roundId) ?? 0) + 1);
+  const rows = answers.filter((answer) => (perRound.get(answer.roundId) ?? 0) >= REVIEW_MIN_ANSWERS);
+  if (rows.length === 0) return { responseCount: answers.length, byQuestion: {}, overall: null };
 
   const sums = new Map<ReviewQuestion, { total: number; n: number }>();
   for (const row of rows) {
@@ -212,7 +243,7 @@ export async function teacherReviewAggregate(
     ? Math.round((means.reduce((a, b) => a + b, 0) / means.length) * 10) / 10
     : null;
 
-  return { responseCount: rows.length, byQuestion, overall };
+  return { responseCount: answers.length, byQuestion, overall };
 }
 
 /* ------------------------------------------------------------------------- */
@@ -231,7 +262,9 @@ async function rateableTeacherIds(ctx: ActiveContext, schoolId: string): Promise
     classIds = enrollments.map((row) => row.classId);
   } else if (ctx.role === "PARENT") {
     const children = await db.guardianship.findMany({
-      where: { parentUserId: ctx.user.id, status: "ACTIVE", studentSchoolId: schoolId },
+      // A family's own guardianships: the school's stand-in (relation SCHOOL, held by the class teacher or an
+      // admin while no family is on the app) makes the school no parent of its own teachers (TA-209).
+      where: { parentUserId: ctx.user.id, status: "ACTIVE", studentSchoolId: schoolId, relation: { not: "SCHOOL" } },
       select: { student: { select: { enrollments: { where: { status: "ACTIVE" }, select: { classId: true } } } } },
     });
     classIds = children.flatMap((g) => g.student.enrollments.map((e) => e.classId));
@@ -239,7 +272,7 @@ async function rateableTeacherIds(ctx: ActiveContext, schoolId: string): Promise
 
   if (classIds.length === 0) return new Set();
 
-  const [slots, classTeachers] = await Promise.all([
+  const [slots, classTeachers, own] = await Promise.all([
     db.timetableSlot.findMany({
       where: { schoolId, classId: { in: classIds }, teacherMembershipId: { not: null } },
       select: { teacherMembershipId: true },
@@ -248,12 +281,16 @@ async function rateableTeacherIds(ctx: ActiveContext, schoolId: string): Promise
       where: { classId: { in: classIds } },
       select: { teacherMembershipId: true },
     }),
+    // Nobody rates themself: a parent who teaches their own child's class keeps the others (TA-209).
+    db.membership.findMany({ where: { userId: ctx.user.id, schoolId }, select: { id: true } }),
   ]);
 
-  return new Set([
+  const rateable = new Set([
     ...slots.map((slot) => slot.teacherMembershipId!),
     ...classTeachers.map((row) => row.teacherMembershipId),
   ]);
+  for (const membership of own) rateable.delete(membership.id);
+  return rateable;
 }
 
 function audienceAdmits(audience: string, role: string | null): boolean {
@@ -489,7 +526,8 @@ export type TeacherReviewRow = {
 };
 
 function roundOverall(rows: { scores: string }[]): { overall: number; count: number } | null {
-  if (rows.length === 0) return null;
+  // A round under the floor has no figure (TA-213), and so no place in the direction either.
+  if (rows.length < REVIEW_MIN_ANSWERS) return null;
   const sums = new Map<ReviewQuestion, { total: number; n: number }>();
   for (const row of rows) {
     const scores = readJson<Record<string, number>>(row.scores, {});
