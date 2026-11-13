@@ -9,6 +9,7 @@ import { translator } from "./i18n/dictionary";
 import { schoolIdForHost } from "./site-hosts";
 import { normaliseHost, SITE_CSP } from "./site-host-match";
 import { countSiteVisit } from "./site-visits";
+import { readBounded } from "./api-v1";
 
 /**
  * WHAT A SCHOOL WEBSITE'S HOST ANSWERS (website-builder B, 15 October 2026). The middleware rewrites every request
@@ -170,7 +171,10 @@ export async function siteEnquiry(request: Request, host: string): Promise<Respo
   const declared = Number(request.headers.get("content-length") ?? "0");
   let fields: Record<string, string> = {};
   if (!(Number.isFinite(declared) && declared > FORM_LIMIT_BYTES)) {
-    const form = await request.formData().catch(() => null);
+    // TA-423: the cap holds for what arrives, not only for what was declared (a chunked body declares nothing): a body
+    // past it is never parsed, and the form answers as for an empty one.
+    const text = await readBounded(request, FORM_LIMIT_BYTES).catch(() => null);
+    const form = text === null ? null : await new Response(text, { headers: { "content-type": request.headers.get("content-type") ?? "" } }).formData().catch(() => null);
     if (form) fields = Object.fromEntries([...form.entries()].filter((e): e is [string, string] => typeof e[1] === "string"));
   }
   const locale: SiteLanguage = fields.lang === "hi" || fields.lang === "mr" ? fields.lang : "en";

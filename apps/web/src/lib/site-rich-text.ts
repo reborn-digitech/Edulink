@@ -65,8 +65,19 @@ export function sanitiseRichText(input: string): string {
   const out: string[] = [];
   const open: string[] = [];
   let dropping: string | null = null;
+  // TA-429: the page is measured as it is built (escaping makes it longer than what was typed): a piece is added only
+  // while it and the closing tags of everything then open still fit, so the page ends whole, never cut after the fact.
+  let size = 0;
+  let full = false;
+  const closeCost = (names: string[]) => names.reduce((n, name) => n + name.length + 3, 0);
+  const fits = (piece: string, opened: string[] = []) => size + piece.length + closeCost(open) + closeCost(opened) <= SITE_RICH_TEXT_MAX;
+  const push = (piece: string) => {
+    out.push(piece);
+    size += piece.length;
+  };
   const tokens = source.split(/(<!--[\s\S]*?-->|<\/?[a-zA-Z][^>]*>)/);
   for (const token of tokens) {
+    if (full) break;
     if (!token) continue;
     if (token.startsWith("<!--")) continue;
     const tag = /^<(\/?)([a-zA-Z][a-zA-Z0-9]*)([^>]*)>$/.exec(token);
@@ -74,7 +85,17 @@ export function sanitiseRichText(input: string): string {
       if (dropping) continue;
       // Text, or a stray "<" that began no tag: decoded once, escaped again.
       const text = escapeText(decodeEntities(token.replace(/[\u0000-\u0008\u000b\u000c\u000e-\u001f]/g, "")));
-      if (text.trim() || (open.length && text)) out.push(text);
+      if (text.trim() || (open.length && text)) {
+        if (fits(text)) push(text);
+        else {
+          // What room is left, never ending inside an entity.
+          let cut = text.slice(0, Math.max(0, SITE_RICH_TEXT_MAX - size - closeCost(open)));
+          const amp = cut.lastIndexOf("&");
+          if (amp >= 0 && !cut.includes(";", amp)) cut = cut.slice(0, amp);
+          if (cut) push(cut);
+          full = true;
+        }
+      }
       continue;
     }
     const closing = tag[1] === "/";
@@ -88,7 +109,8 @@ export function sanitiseRichText(input: string): string {
       continue;
     }
     if (raw === "br") {
-      out.push("<br>");
+      if (!fits("<br>")) full = true;
+      else push("<br>");
       continue;
     }
     const name = ALIAS[raw] ?? raw;
@@ -96,7 +118,7 @@ export function sanitiseRichText(input: string): string {
     if (closing) {
       const at = open.lastIndexOf(name);
       if (at < 0) continue;
-      while (open.length > at) out.push(`</${open.pop()}>`);
+      while (open.length > at) push(`</${open.pop()}>`);
       continue;
     }
     // Nesting the way a browser would read it: a block never opens inside an inline element or inside a paragraph or a
@@ -104,31 +126,44 @@ export function sanitiseRichText(input: string): string {
     // paragraph or a heading never sits straight inside a list, so the list ends first.
     const top = () => open[open.length - 1];
     if (BLOCK.has(name)) {
-      while (open.length && INLINE.has(top()!)) out.push(`</${open.pop()}>`);
-      while (open.length && (top() === "p" || top() === "h2" || top() === "h3")) out.push(`</${open.pop()}>`);
+      while (open.length && INLINE.has(top()!)) push(`</${open.pop()}>`);
+      while (open.length && (top() === "p" || top() === "h2" || top() === "h3")) push(`</${open.pop()}>`);
     }
     if (name === "li") {
       const list = Math.max(open.lastIndexOf("ul"), open.lastIndexOf("ol"));
       if (list < 0) {
-        out.push("<ul>");
+        if (!fits("<ul><li>", ["ul", "li"])) {
+          full = true;
+          continue;
+        }
+        push("<ul>");
         open.push("ul");
       } else if (open.lastIndexOf("li") > list) {
-        while (open.length && top() !== "li") out.push(`</${open.pop()}>`);
-        out.push(`</${open.pop()}>`);
+        while (open.length && top() !== "li") push(`</${open.pop()}>`);
+        push(`</${open.pop()}>`);
       }
     }
-    if (name === "p" || name === "h2" || name === "h3") while (open.length && (top() === "ul" || top() === "ol")) out.push(`</${open.pop()}>`);
+    if (name === "p" || name === "h2" || name === "h3") while (open.length && (top() === "ul" || top() === "ol")) push(`</${open.pop()}>`);
     if (name === "a") {
       const href = hrefOf(tag[3] ?? "");
       if (!href || open.includes("a")) continue;
-      out.push(`<a href="${escapeText(href)}" rel="noopener">`);
+      const anchor = `<a href="${escapeText(href)}" rel="noopener">`;
+      if (!fits(anchor, ["a"])) {
+        full = true;
+        continue;
+      }
+      push(anchor);
       open.push("a");
       continue;
     }
-    out.push(`<${name}>`);
+    if (!fits(`<${name}>`, [name])) {
+      full = true;
+      continue;
+    }
+    push(`<${name}>`);
     open.push(name);
   }
-  while (open.length) out.push(`</${open.pop()}>`);
+  while (open.length) push(`</${open.pop()}>`);
   return out
     .join("")
     .replace(/<(strong|a)( [^>]*)?><\/\1>/g, "")

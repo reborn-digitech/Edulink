@@ -215,6 +215,9 @@ export async function takeDownPost(
       where: { id: post.id },
       data: { status: "REJECTED", reviewedAt: new Date() },
     });
+    // TA-224: off the school's public website at once, words and picture, if the live site shows it.
+    const { refreshSchoolSite } = await import("./site-publish");
+    await refreshSchoolSite(schoolId);
 
     await audit({
       schoolId,

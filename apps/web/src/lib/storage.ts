@@ -1,7 +1,7 @@
 import "server-only";
 import { createHash, randomUUID } from "node:crypto";
 import sharp from "sharp";
-import { blobStore } from "./blob-store";
+import { blobStore, resolveRange, type ByteRange, type RangeRead } from "./blob-store";
 import { stripImageMetadata } from "./image-metadata";
 import type { TranslationKey } from "@/lib/i18n/dictionary";
 
@@ -201,6 +201,40 @@ export function nameFor(fileId: string): string {
 /** Stable ETag so the file route can answer 304 without re-reading. */
 export function etagFor(bytes: Buffer): string {
   return `"${createHash("sha1").update(bytes).digest("hex")}"`;
+}
+
+/**
+ * TA-341: the file route's ETag, from the name alone. A stored file is never written twice under one name (a fresh
+ * UUID per upload, its sized copies cut from it), so the name says what the bytes are and a revalidation is answered
+ * 304 before anything is read. null for a name that is no stored file's.
+ */
+export function storedFileEtag(fileId: string, width: VariantWidth | null): string | null {
+  const safe = sanitizeFileId(fileId);
+  if (!safe) return null;
+  return `"${createHash("sha1").update(`${safe}|${width ?? ""}`).digest("hex")}"`;
+}
+
+/** A stored file's type by its extension, as readStoredFile reads it. */
+function mimeOf(fileId: string): string {
+  const ext = fileId.split(".").pop() ?? "";
+  return Object.entries(ALLOWED).find(([, spec]) => spec.ext === ext)?.[0] ?? "application/octet-stream";
+}
+
+/** TA-341: the bytes of one stored file that a Range header names, read by offset (or asked of the bucket by range). */
+export async function readStoredRange(fileId: string, range: ByteRange): Promise<(RangeRead & { mime: string }) | null> {
+  const safe = sanitizeFileId(fileId);
+  if (!safe) return null;
+  const store = blobStore("files");
+  const mime = mimeOf(safe);
+  if (store.getRange) {
+    const read = await store.getRange(nameFor(safe), range);
+    return read ? { ...read, mime } : null;
+  }
+  const bytes = await store.get(nameFor(safe));
+  if (!bytes) return null;
+  const span = resolveRange(range, bytes.byteLength);
+  if (!span) return { unsatisfiable: true, total: bytes.byteLength, mime };
+  return { bytes: bytes.subarray(span.start, span.end + 1), start: span.start, end: span.end, total: bytes.byteLength, mime };
 }
 
 /* -------------------------------------------------------------------------- */

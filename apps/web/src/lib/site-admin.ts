@@ -258,6 +258,16 @@ const refuse = (field: string, errorKey: TranslationKey): SiteSaveResult => ({ o
 const STALE: SiteSaveResult = { ok: false, field: "draftVersion", errorKey: "siteThree.refuseStale", stale: true };
 
 /**
+ * TA-397: whether the head's name stays ticked under `next`'s message. The head decides it; for anyone else it stays
+ * only where the draft already had it ticked under the very same message.
+ */
+function headsNameKept(next: Pick<SiteConfig, "principalNamed" | "principalMessage">, current: Pick<SiteConfig, "principalNamed" | "principalMessage">, role: string | null): boolean {
+  if (!next.principalNamed) return false;
+  if (role === "PRINCIPAL") return true;
+  return current.principalNamed && current.principalMessage === next.principalMessage;
+}
+
+/**
  * Save the draft: `patch` is the fields the editor changed (the whole config from PUT). Checked here, field by
  * field; the stored draft is replaced only when everything holds.
  *
@@ -291,6 +301,8 @@ export async function saveSite(ctx: ActiveContext, patch: Partial<SiteConfig>, o
   if (next.announcement.from && next.announcement.to && next.announcement.from > next.announcement.to) return refuse("announcement", "siteEditor.refuseAnnouncementDates");
   // The head's name under the message is the head's own choice: only a PRINCIPAL ticks it (anyone may untick it).
   if (next.principalNamed && !current.principalNamed && ed.role !== "PRINCIPAL") return refuse("principalNamed", "website.refusePrincipalNamed");
+  // TA-397: the head's name stands under the words the head saw: anyone else who rewrites the message takes the name off.
+  next.principalNamed = headsNameKept(next, current, ed.role);
 
   // News and the one-page gallery only from the school's own posts a site may carry.
   const pictures = sitePictures(next);
@@ -455,6 +467,8 @@ export async function restoreSiteVersion(ctx: ActiveContext, versionId: string |
   const school = await db.school.findUniqueOrThrow({ where: { id: ed.schoolId }, select: { logoPath: true } });
   const { config: current } = await draftConfigFor(ed.schoolId, await logoSwatchFor(school.logoPath));
   const config = repairSiteConfig(readJson<Partial<SiteSnapshot>>(version.snapshotJson, {}).config ?? {}, current);
+  // TA-397: only the head brings the head's name back; anyone else's restore keeps it only where it already stands under the same words.
+  config.principalNamed = headsNameKept(config, current, ed.role);
   // website-three (17 Oct 2026): a restore is a save of its own: it counts, so an editor still holding the draft before it reloads.
   await db.schoolSite.upsert({
     where: { schoolId: ed.schoolId },

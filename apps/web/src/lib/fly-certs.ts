@@ -58,12 +58,15 @@ export async function requestCertificate(cfg: FlyConfig, hostname: string, fetch
   return { ok: true, value: certStateOf(r.value.addCertificate?.certificate) };
 }
 
-/** How Fly's certificate for one hostname stands. */
-export async function certificateState(cfg: FlyConfig, hostname: string, fetchImpl: FetchLike = fetch): Promise<FlyOutcome<CertState>> {
+/**
+ * How Fly's certificate for one hostname stands. `missing` (TA-398): Fly has no certificate for the host at all (read as
+ * REQUESTED), so one recorded as asked or issued was taken off the platform and must be asked for again.
+ */
+export async function certificateState(cfg: FlyConfig, hostname: string, fetchImpl: FetchLike = fetch): Promise<FlyOutcome<CertState> & { missing?: boolean }> {
   const query = `query($appName: String!, $hostname: String!) { app(name: $appName) { certificate(hostname: $hostname) { ${CERT_FIELDS} } } }`;
   const r = await call<{ app?: { certificate?: Parameters<typeof certStateOf>[0] } | null }>(cfg, query, { appName: cfg.app, hostname }, fetchImpl);
   if (!r.ok) return r;
-  return { ok: true, value: certStateOf(r.value.app?.certificate) };
+  return { ok: true, value: certStateOf(r.value.app?.certificate), ...(r.value.app?.certificate ? {} : { missing: true }) };
 }
 
 /** Take the certificate for one hostname off the sites app; a hostname Fly does not have is not a failure. */

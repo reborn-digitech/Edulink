@@ -350,12 +350,15 @@ export async function readSchoolProfile(
   const metrics = await forSchool(schoolId, async () => {
     const [pupils, teachers, classes] = await Promise.all([
       db.membership.count({ where: { schoolId, role: "STUDENT", status: "ACTIVE", leftAt: null } }),
-      db.membership.count({
-        where: { schoolId, role: { in: ["TEACHER", "PRINCIPAL"] }, status: "ACTIVE", leftAt: null },
+      // TA-395: the distinct people in every teaching role, a college's FACULTY and HOD too, as the website counts them (site-metrics.ts).
+      db.membership.findMany({
+        where: { schoolId, role: { in: ["TEACHER", "PRINCIPAL", "FACULTY", "HOD"] }, status: "ACTIVE", leftAt: null },
+        select: { userId: true },
+        distinct: ["userId"],
       }),
       db.class.count({ where: { schoolId, archivedAt: null } }),
     ]);
-    return { pupils, teachers, classes };
+    return { pupils, teachers: teachers.length, classes };
   });
 
   // Standings cross on their own policy (board on, platform competition);

@@ -8,6 +8,25 @@ import { retryHintKey } from "@/lib/rate-limit";
 /** Multipart framing around the document and the JSON part: boundaries, headers, a few kilobytes of fields. */
 const MULTIPART_OVERHEAD_BYTES = 64 * 1024;
 
+/** The body's bytes, or null once they have grown past the limit (the rest is never read). */
+async function readBoundedBytes(request: Request, limit: number): Promise<Buffer | null> {
+  if (!request.body) return Buffer.alloc(0);
+  const reader = request.body.getReader();
+  const chunks: Uint8Array[] = [];
+  let size = 0;
+  for (;;) {
+    const { done, value } = await reader.read();
+    if (done) break;
+    size += value.byteLength;
+    if (size > limit) {
+      await reader.cancel().catch(() => {});
+      return null;
+    }
+    chunks.push(value);
+  }
+  return Buffer.concat(chunks);
+}
+
 /**
  * POST /api/v1/public/expert-applications — an expert's application from the login page (15 Oct 2026), the web's
  * /register/expert and, later, the phone's. Signed out is fine and nothing signs in: no account is made.
@@ -21,18 +40,22 @@ const MULTIPART_OVERHEAD_BYTES = 64 * 1024;
 export async function POST(request: Request) {
   try {
     const t = await getT();
-    const declared = Number(request.headers.get("content-length") ?? "");
-    if (Number.isFinite(declared) && declared > EXPERT_APPLICATION_DOCUMENT_MAX_BYTES + MULTIPART_OVERHEAD_BYTES) {
-      return NextResponse.json(
+    const tooLarge = () =>
+      NextResponse.json(
         apiErrorSchema.parse({ error: t("common.checkTheForm"), code: "TOO_LARGE", issues: { document: t("refusal.fileTooLargeLimit", { mb: EXPERT_APPLICATION_DOCUMENT_MAX_BYTES / (1024 * 1024) }) } }),
         { status: 413, headers: { "Cache-Control": "no-store" } },
       );
-    }
+    const declared = Number(request.headers.get("content-length") ?? "");
+    if (Number.isFinite(declared) && declared > EXPERT_APPLICATION_DOCUMENT_MAX_BYTES + MULTIPART_OVERHEAD_BYTES) return tooLarge();
 
     let fields: unknown = null;
     let document: File | null = null;
-    if ((request.headers.get("content-type") ?? "").toLowerCase().startsWith("multipart/form-data")) {
-      const form = await request.formData().catch(() => null);
+    const contentType = request.headers.get("content-type") ?? "";
+    if (contentType.toLowerCase().startsWith("multipart/form-data")) {
+      // TA-423: the cap holds for what arrives, not only for what was declared (a chunked body declares nothing).
+      const bytes = await readBoundedBytes(request, EXPERT_APPLICATION_DOCUMENT_MAX_BYTES + MULTIPART_OVERHEAD_BYTES);
+      if (bytes === null) return tooLarge();
+      const form = await new Response(new Uint8Array(bytes), { headers: { "content-type": contentType } }).formData().catch(() => null);
       const raw = form?.get("application");
       if (typeof raw === "string") {
         try {

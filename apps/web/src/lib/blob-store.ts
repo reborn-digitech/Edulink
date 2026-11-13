@@ -1,4 +1,4 @@
-import { mkdir, readdir, readFile, stat, unlink, writeFile } from "node:fs/promises";
+import { mkdir, open, readdir, readFile, stat, unlink, writeFile } from "node:fs/promises";
 import { dirname, join, resolve } from "node:path";
 import { readStorageConfig } from "./env";
 import { S3Client } from "./s3";
@@ -26,9 +26,28 @@ import { S3Client } from "./s3";
  */
 export type StoredObject = { name: string; size: number; modifiedAt: Date };
 
+/**
+ * A Range header's two numbers (TA-341): `bytes=<first>-<last>`, either empty (null); null for a header that is not a
+ * single byte range at all. Resolved against the object's size by `resolveRange`, the one reading of it.
+ */
+export type ByteRange = { first: number | null; last: number | null } | null;
+/** A ranged read: the bytes from `start` to `end` inclusive, or that the range cannot be satisfied; the object's size either way. */
+export type RangeRead = { bytes: Buffer; start: number; end: number; total: number } | { unsatisfiable: true; total: number };
+
+/** The bytes a range names in an object of `total` bytes, or null when it names none (the file route's rule since Phase 1). */
+export function resolveRange(range: ByteRange, total: number): { start: number; end: number } | null {
+  if (!range) return null;
+  const start = range.first !== null ? range.first : range.last !== null ? total - range.last : NaN;
+  const end = range.first !== null && range.last !== null ? Math.min(range.last, total - 1) : total - 1;
+  if (Number.isNaN(start) || start < 0 || start > end || start >= total) return null;
+  return { start, end };
+}
+
 export type BlobStore = {
   put(name: string, bytes: Uint8Array, contentType: string): Promise<void>;
   get(name: string): Promise<Buffer | null>;
+  /** TA-341: only the bytes a range names, read from the disk by offset or asked of the bucket with Range; null when there is no such object. */
+  getRange?(name: string, range: ByteRange): Promise<RangeRead | null>;
   delete(name: string): Promise<void>;
   /** Every stored object, as `<shard>/<name>` relative names, with size and mtime. */
   list(): AsyncGenerator<StoredObject>;
@@ -67,6 +86,20 @@ function diskStore(root: string): BlobStore {
         return null;
       }
     },
+    async getRange(name, range) {
+      const handle = await open(pathFor(name), "r").catch(() => null);
+      if (!handle) return null;
+      try {
+        const total = (await handle.stat()).size;
+        const span = resolveRange(range, total);
+        if (!span) return { unsatisfiable: true, total };
+        const bytes = Buffer.alloc(span.end - span.start + 1);
+        const { bytesRead } = await handle.read(bytes, 0, bytes.byteLength, span.start);
+        return { bytes: bytes.subarray(0, bytesRead), start: span.start, end: span.start + bytesRead - 1, total };
+      } finally {
+        await handle.close();
+      }
+    },
     async delete(name) {
       await unlink(pathFor(name)).catch(() => {
         // Already gone is the desired end state.
@@ -100,6 +133,21 @@ function s3Store(ns: Namespace, client: S3Client, prefix: string): BlobStore {
   return {
     put: (name, bytes, contentType) => client.put(base + name, bytes, contentType),
     get: (name) => client.get(base + name),
+    async getRange(name, range) {
+      // A header that names no range still needs the size for the 416: the first byte is asked for that.
+      const asked = range && (range.first !== null || range.last !== null) ? `bytes=${range.first ?? ""}-${range.last ?? ""}` : "bytes=0-0";
+      const answer = await client.getRange(base + name, asked);
+      if (!answer) return null;
+      const span = resolveRange(range, answer.total);
+      if (!span) return { unsatisfiable: true, total: answer.total };
+      // The bucket's own answer when it served exactly the range; otherwise (the whole object, or its reading of an
+      // edge case) cut by the rule above from what it sent.
+      if (answer.start === span.start && answer.end === span.end) return { bytes: answer.bytes, start: span.start, end: span.end, total: answer.total };
+      if (answer.start === 0 && answer.bytes.byteLength === answer.total) return { bytes: answer.bytes.subarray(span.start, span.end + 1), start: span.start, end: span.end, total: answer.total };
+      const full = await client.get(base + name);
+      if (!full) return null;
+      return { bytes: full.subarray(span.start, span.end + 1), start: span.start, end: span.end, total: full.byteLength };
+    },
     delete: (name) => client.delete(base + name),
     async *list() {
       for await (const object of client.list(base)) {

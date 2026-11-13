@@ -7,6 +7,7 @@ import { db } from "@/lib/db";
 import { todayKey } from "@/lib/dates";
 import { getT } from "@/lib/i18n/server";
 import { withMetrics } from "@/lib/metrics";
+import { readJson } from "@/lib/api-v1";
 
 /**
  * Attendance endpoint.
@@ -26,7 +27,8 @@ const timed = withMetrics("attendance", async (request: Request) => {
   try {
     const ctx = await requireApiRole("TEACHER", "ADMIN");
 
-    const body = await request.json().catch(() => null);
+    // TA-423: read to the cap, by what arrives (a body past it is no body).
+    const body = await readJson(request).catch(() => null);
     if (!body) {
       return NextResponse.json({ error: "Expected a JSON body." }, { status: 400 });
     }

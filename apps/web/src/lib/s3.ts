@@ -169,6 +169,35 @@ export class S3Client {
     return Buffer.from(await res.arrayBuffer());
   }
 
+  /**
+   * TA-341: a GET with a Range header (`bytes=…`), so a player's range is not a download of the whole object. The bytes
+   * sent with where they start and end and the object's size (from Content-Range); a 416 is no bytes with the size; a
+   * bucket that ignored the range answers the whole object. null for a key that is not there.
+   */
+  async getRange(key: string, range: string): Promise<{ bytes: Buffer; start: number; end: number; total: number } | null> {
+    const res = await this.send("GET", key, { headers: { range } });
+    if (res.status === 404) return null;
+    const contentRange = res.headers.get("content-range") ?? "";
+    if (res.status === 416) {
+      const total = Number(/\/(\d+)$/.exec(contentRange)?.[1]);
+      await res.arrayBuffer().catch(() => null);
+      if (Number.isFinite(total)) return { bytes: Buffer.alloc(0), start: -1, end: -1, total };
+      const whole = await this.get(key);
+      return whole ? { bytes: whole, start: 0, end: whole.byteLength - 1, total: whole.byteLength } : null;
+    }
+    if (!res.ok) throw new S3Error(res.status, "GET", key, await res.text().catch(() => ""));
+    const bytes = Buffer.from(await res.arrayBuffer());
+    const parts = /^bytes (\d+)-(\d+)\/(\d+)$/.exec(contentRange);
+    if (res.status === 206) {
+      if (parts) return { bytes, start: Number(parts[1]), end: Number(parts[2]), total: Number(parts[3]) };
+      // A part with no size said: the whole object, once.
+      const whole = await this.get(key);
+      return whole ? { bytes: whole, start: 0, end: whole.byteLength - 1, total: whole.byteLength } : null;
+    }
+    // A 200: the bucket sent the whole object.
+    return { bytes, start: 0, end: bytes.byteLength - 1, total: bytes.byteLength };
+  }
+
   async delete(key: string): Promise<void> {
     const res = await this.send("DELETE", key);
     // S3 answers 204 whether or not the key existed; anything else is a real refusal.

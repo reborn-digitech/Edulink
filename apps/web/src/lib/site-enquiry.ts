@@ -9,6 +9,7 @@ import { CONTACTABLE_ROLES } from "./constants";
 import { readJson } from "./json";
 import { isEmailish, isPhoneish, sectionOn } from "./site-config";
 import { publishedSiteFor, type SiteSnapshot } from "./site-publish";
+import { SITE_PAGE_PATH } from "./site-content";
 import type { TranslationKey } from "./i18n/dictionary";
 
 /**
@@ -42,8 +43,12 @@ export async function takeSiteEnquiry(schoolId: string | null, body: SiteEnquiry
   const site = schoolId ? await publishedSiteFor(schoolId) : null;
   if (!schoolId || !site) return { ok: false, status: 404, errorKey: "site.notFoundBody" };
   const live = await db.schoolSiteVersion.findFirst({ where: { schoolId, liveAt: { not: null } }, select: { snapshotJson: true } });
-  const config = readJson<Partial<SiteSnapshot>>(live?.snapshotJson, {}).config;
-  if (!config || !sectionOn(config, "ADMISSIONS") || !config.enquiryForm) return { ok: false, status: 404, errorKey: "site.notFoundBody", language: site.language, colour: site.colour };
+  const snapshot = readJson<Partial<SiteSnapshot>>(live?.snapshotJson, {});
+  const config = snapshot.config;
+  // TA-226: the form is taken wherever the published site draws it: the home page's Admissions section, the
+  // Admissions page or the Contact page (the pages rendered are the snapshot's; a version from before it has none).
+  const drawn = (path: string) => (snapshot.pages ?? []).includes(path);
+  if (!config || !config.enquiryForm || !(sectionOn(config, "ADMISSIONS") || drawn(SITE_PAGE_PATH.ADMISSIONS) || drawn(SITE_PAGE_PATH.CONTACT))) return { ok: false, status: 404, errorKey: "site.notFoundBody", language: site.language, colour: site.colour };
   const look = { language: site.language, colour: site.colour };
   const language: SiteLanguage = lang ?? site.language;
 
@@ -80,7 +85,8 @@ export async function takeSiteEnquiry(schoolId: string | null, body: SiteEnquiry
 /** The admissions contact while still contactable, else the school's admins (the shared enquiries' own rule). */
 async function contactsOf(schoolId: string, contactMembershipId: string | null): Promise<string[]> {
   if (contactMembershipId) {
-    const named = await db.membership.findFirst({ where: { id: contactMembershipId, schoolId, status: "ACTIVE", role: { in: [...CONTACTABLE_ROLES] } }, select: { userId: true } });
+    // TA-228: a contact who has left is not told, whatever the membership's status says.
+    const named = await db.membership.findFirst({ where: { id: contactMembershipId, schoolId, status: "ACTIVE", leftAt: null, role: { in: [...CONTACTABLE_ROLES] } }, select: { userId: true } });
     if (named) return [named.userId];
   }
   const admins = await db.membership.findMany({ where: { schoolId, status: "ACTIVE", leftAt: null, role: "ADMIN" }, select: { userId: true } });

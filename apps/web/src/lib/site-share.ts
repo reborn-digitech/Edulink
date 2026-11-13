@@ -6,7 +6,8 @@ import { AccessError } from "./access-error";
 import { forSchool } from "./tenant-context";
 import { isModuleOn } from "./modules";
 import { siteEditor } from "./site-admin";
-import { appUrl } from "./site-publish";
+import { appUrl, draftConfigFor, SITE_POST_WHERE } from "./site-publish";
+import { readJsonArray, type MediaItem } from "./json";
 import type { ActiveContext } from "./session";
 
 /**
@@ -81,6 +82,11 @@ export async function siteReviewFileOpen(fileId: string, token: string | null): 
     const named = await db.schoolSite.count({ where: { schoolId, configJson: { contains: `"fileId":"${fileId}"` } } });
     if (named > 0) return true;
     // website-three (17 Oct 2026): a faculty member's photo on the page they published, which the draft's Faculty page shows.
-    return (await db.facultyPublicProfile.count({ where: { schoolId, publicPhotoFileId: fileId } })) > 0;
+    if ((await db.facultyPublicProfile.count({ where: { schoolId, publicPhotoFileId: fileId } })) > 0) return true;
+    // TA-394: a news item's picture, the first picture of a post the draft names by id only (a first draft never saved too).
+    const { config } = await draftConfigFor(schoolId);
+    if (config.newsPostIds.length === 0) return false;
+    const posts = await db.post.findMany({ where: { schoolId, id: { in: config.newsPostIds }, ...SITE_POST_WHERE }, select: { media: true } });
+    return posts.some((p) => readJsonArray<MediaItem>(p.media).find((m) => m && m.kind === "image" && typeof m.fileId === "string" && m.fileId.length > 0)?.fileId === fileId);
   });
 }

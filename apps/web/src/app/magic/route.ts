@@ -2,6 +2,7 @@ import { NextResponse, type NextRequest } from "next/server";
 import { db } from "@/lib/db";
 import { audit } from "@/lib/audit";
 import { claimToken } from "@/lib/auth-tokens";
+import { readBounded } from "@/lib/api-v1";
 import { createSession } from "@/lib/session";
 import { closedOutsideAccount, resolveContext } from "@/lib/resolve-context";
 import { getT } from "@/lib/i18n/server";
@@ -96,7 +97,9 @@ export async function POST(request: NextRequest) {
   const ours = new Set([origin, process.env.NEXT_PUBLIC_APP_URL?.trim().replace(/\/$/, "")].filter(Boolean));
   if (from && !ours.has(from)) return away("bad");
 
-  const form = await request.formData().catch(() => null);
+  // TA-423: a token form is a few hundred bytes; read to a cap by what arrives, and a body past it is no form.
+  const text = await readBounded(request, 16 * 1024).catch(() => null);
+  const form = text === null ? null : await new Response(text, { headers: { "content-type": request.headers.get("content-type") ?? "" } }).formData().catch(() => null);
   const raw = form?.get("token");
   const token = typeof raw === "string" ? raw.trim() : "";
 

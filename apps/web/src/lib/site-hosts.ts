@@ -26,6 +26,36 @@ const TTL_MS = 60_000;
 const byHost = new Map<string, { value: string | null; at: number }>();
 const bySchool = new Map<string, { value: string | null; at: number }>();
 
+/**
+ * TA-227: the most hosts this process remembers. Every request on a site host is asked about by whatever Host header it
+ * carried, so a stream of made-up names must not grow the memory without end: expired entries go first, then the oldest.
+ */
+export const SITE_HOSTS_REMEMBERED_MAX = 2_000;
+
+/** How many hosts this process remembers now (for the test of the bound). */
+export function siteHostsRemembered(): number {
+  return byHost.size;
+}
+
+/** A name that could be a domain: at most 253 characters, every label a DNS label. Anything else is nobody's site. */
+const DNS_LABEL = /^[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?$/;
+function couldBeDomain(hostname: string): boolean {
+  return hostname.length <= 253 && hostname.split(".").every((label) => DNS_LABEL.test(label));
+}
+
+function remember(hostname: string, value: string | null, now: number): void {
+  if (byHost.size >= SITE_HOSTS_REMEMBERED_MAX) {
+    for (const [key, entry] of byHost) if (now - entry.at >= TTL_MS) byHost.delete(key);
+    // Still full: the oldest out (a Map iterates in the order its entries were written).
+    for (const key of byHost.keys()) {
+      if (byHost.size < SITE_HOSTS_REMEMBERED_MAX) break;
+      byHost.delete(key);
+    }
+  }
+  byHost.delete(hostname);
+  byHost.set(hostname, { value, at: now });
+}
+
 /** Drop what this process remembers about hosts, after a domain is saved, verified, removed or flipped by the job. */
 export function forgetSiteHosts(): void {
   byHost.clear();
@@ -35,11 +65,12 @@ export function forgetSiteHosts(): void {
 /** The school a website host belongs to, or null (not a site, not LIVE, not published is the route's to say). */
 export async function schoolIdForHost(host: string, now: number = Date.now()): Promise<string | null> {
   const n = normaliseHost(host);
-  if (!n) return null;
+  // TA-227: a name no domain can have is answered without a lookup and never remembered.
+  if (!n || !couldBeDomain(n.hostname)) return null;
   const hit = byHost.get(n.hostname);
   if (hit && now - hit.at < TTL_MS) return hit.value;
   const value = await lookupHost(n.hostname);
-  byHost.set(n.hostname, { value, at: now });
+  remember(n.hostname, value, now);
   return value;
 }
 

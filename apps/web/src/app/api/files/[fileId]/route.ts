@@ -1,7 +1,8 @@
 import { getSession } from "@/lib/session";
 import { authorizeFileRead, type FileAccess } from "@/lib/files";
 import { verifyFileLink } from "@/lib/file-links";
-import { etagFor, readStoredFile, readStoredVariant, VARIANT_WIDTHS, type VariantWidth } from "@/lib/storage";
+import { readStoredFile, readStoredRange, readStoredVariant, storedFileEtag, VARIANT_WIDTHS, type VariantWidth } from "@/lib/storage";
+import { resolveRange, type ByteRange } from "@/lib/blob-store";
 // meta-posting (16 Oct 2026)
 import { asJpeg, socialPictureOpen } from "@/lib/social";
 // end meta-posting
@@ -65,10 +66,11 @@ export async function GET(
   // every phone photo at full size. Off the allow-list means the original.
   const wanted = Number(url.searchParams.get("w"));
   const width = (VARIANT_WIDTHS as readonly number[]).includes(wanted) ? (wanted as VariantWidth) : null;
-  const stored = width ? await readStoredVariant(fileId, width) : await readStoredFile(fileId);
-  if (!stored) return new Response("Not found", { status: 404 });
 
-  const etag = etagFor(stored.bytes);
+  // TA-341: the ETag is the stored name's (a name is never written twice), so a revalidation is answered before any
+  // byte is read, and a range below reads only the bytes it names.
+  const etag = storedFileEtag(fileId, width);
+  if (!etag) return new Response("Not found", { status: 404 });
   if (request.headers.get("if-none-match") === etag) {
     return new Response(null, {
       status: 304,
@@ -76,8 +78,8 @@ export async function GET(
     });
   }
 
-  const baseHeaders = {
-    "Content-Type": stored.mime,
+  const headersFor = (mime: string) => ({
+    "Content-Type": mime,
     ETag: etag,
     "Cache-Control": cacheControl(access.public, access.kind),
     // Never let a stored file be interpreted as something executable.
@@ -87,7 +89,7 @@ export async function GET(
     // Video elements probe with Range requests; advertising support is what
     // makes seeking work at all.
     "Accept-Ranges": "bytes",
-  };
+  });
 
   /**
    * Range requests, for <video>. A player that cannot seek re-downloads from
@@ -96,31 +98,45 @@ export async function GET(
    * complexity nobody's <video> sends — and a malformed or unsatisfiable range
    * gets 416 with the total size, per the RFC, rather than a silent full body.
    * Authorisation already happened above; a range of a file is the same
-   * disclosure as the file.
+   * disclosure as the file. TA-341: only the range is read (by offset from the
+   * disk, by Range from a bucket), never the whole object for every request.
    */
   const range = request.headers.get("range");
-  if (range) {
-    const match = /^bytes=(\d*)-(\d*)$/.exec(range.trim());
-    const total = stored.bytes.byteLength;
-    const start = match?.[1] ? Number(match[1]) : match?.[2] ? total - Number(match[2]) : NaN;
-    const end = match?.[1] && match?.[2] ? Math.min(Number(match[2]), total - 1) : total - 1;
-    if (!match || Number.isNaN(start) || start < 0 || start > end || start >= total) {
-      return new Response(null, {
-        status: 416,
-        headers: { "Content-Range": `bytes */${total}`, ETag: etag },
-      });
-    }
-    return new Response(new Uint8Array(stored.bytes.subarray(start, end + 1)), {
+  const match = range ? /^bytes=(\d*)-(\d*)$/.exec(range.trim()) : null;
+  const asked: ByteRange = match ? { first: match[1] ? Number(match[1]) : null, last: match[2] ? Number(match[2]) : null } : null;
+  const partial = (bytes: Buffer, mime: string, start: number, end: number, total: number) =>
+    new Response(new Uint8Array(bytes), {
       status: 206,
       headers: {
-        ...baseHeaders,
+        ...headersFor(mime),
         "Content-Range": `bytes ${start}-${end}/${total}`,
-        "Content-Length": String(end - start + 1),
+        "Content-Length": String(bytes.byteLength),
       },
     });
+  const unsatisfiable = (total: number) =>
+    new Response(null, {
+      status: 416,
+      headers: { "Content-Range": `bytes */${total}`, ETag: etag },
+    });
+
+  if (range && !width) {
+    const read = await readStoredRange(fileId, asked);
+    if (!read) return new Response("Not found", { status: 404 });
+    if ("unsatisfiable" in read) return unsatisfiable(read.total);
+    return partial(read.bytes, read.mime, read.start, read.end, read.total);
   }
 
-  return new Response(new Uint8Array(stored.bytes), { headers: baseHeaders });
+  const stored = width ? await readStoredVariant(fileId, width) : await readStoredFile(fileId);
+  if (!stored) return new Response("Not found", { status: 404 });
+  if (range) {
+    // A sized copy is cut from its picture on the first ask, so its range comes from the copy.
+    const total = stored.bytes.byteLength;
+    const span = resolveRange(asked, total);
+    if (!span) return unsatisfiable(total);
+    return partial(stored.bytes.subarray(span.start, span.end + 1), stored.mime, span.start, span.end, total);
+  }
+
+  return new Response(new Uint8Array(stored.bytes), { headers: headersFor(stored.mime) });
 }
 
 /**

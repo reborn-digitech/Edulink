@@ -86,6 +86,8 @@ export async function publishedSiteFor(schoolId: string): Promise<PublishedSite 
   if (!row) return null;
   // The school id is the database's own answer above, so binding to it is the rule tenant-context.ts asks for.
   if (!(await forSchool(row.schoolId, () => isModuleOn(row.schoolId, "WEBSITE")))) return null;
+  // TA-228: a school the operator removed has no public website (its page, robots, sitemap and enquiry form all ask here).
+  if (await forSchool(row.schoolId, () => isRemoved(row.schoolId))) return null;
   const html = readJson<Partial<Record<SiteLanguage, string>>>(row.html, {});
   const snapshot = readJson<Partial<SiteSnapshot>>(row.snapshotJson, {});
   const language = (SITE_LANGUAGES as readonly string[]).includes(snapshot.config?.language ?? "") ? (snapshot.config!.language as SiteLanguage) : "en";
@@ -100,6 +102,26 @@ export async function publishedSiteFor(schoolId: string): Promise<PublishedSite 
     if (first) pages[path] = fill(per, first);
   }
   return { html: fill(html, own), pages, renderedAt: row.renderedAt, language, colour: snapshot.config?.colour ?? "#1d4ed8" };
+}
+
+/** Whether the operator removed the school (School.removedAt). Caller binds the school. */
+async function isRemoved(schoolId: string): Promise<boolean> {
+  const school = await db.school.findUnique({ where: { id: schoolId }, select: { removedAt: true } });
+  return !school || school.removedAt !== null;
+}
+
+/**
+ * TA-224: the school's live site re-rendered now if what it shows changed (refreshSignature), for an act that takes
+ * something off the site — a post taken down in the Safety Centre or by the operator — so its words and picture stop
+ * being public at once rather than at the nightly refresh. A school with no live site is left alone; a failure is
+ * logged, never the caller's problem (the nightly refresh tries again).
+ */
+export async function refreshSchoolSite(schoolId: string): Promise<void> {
+  try {
+    await refreshPublishedSites(new Date(), { schoolIds: [schoolId] });
+  } catch (error) {
+    console.error("[site:refresh] at once", schoolId, error);
+  }
 }
 
 /** The HTML for one request: the page at `path` ("" home) in ?lang= when it names a language, else the site's own; null for no such page. */
@@ -249,7 +271,11 @@ export function refreshSignature(config: SiteConfig, data: SiteData): string {
   // website-three (17 Oct 2026): the faculty pages published and their photos, so a page taken down or a photo withdrawn
   // leaves the live site at the next refresh (and at once: faculty-profile.ts asks for this school's refresh).
   const faculty = data.faculty.map((f) => `${f.name}:${f.photo?.fileId ?? ""}`).join(",");
-  return `${numbersHash(data.numbers)}|ann=${announcementShown(config, data.todayKey) ? 1 : 0}|ev=${events}|fac=${faculty}`;
+  // TA-224: the news shown and every file the pages make public, so a post taken down (or a picture whose post left the
+  // site) leaves the live site at the next refresh, and at once where the takedown asks for it (refreshSchoolSite).
+  const news = data.news.map((n) => n.id).join(",");
+  const files = filesShown(config, data).sort().join(",");
+  return `${numbersHash(data.numbers)}|ann=${announcementShown(config, data.todayKey) ? 1 : 0}|ev=${events}|fac=${faculty}|news=${news}|files=${files}`;
 }
 
 /* ------------------------------------------------------------------------------------------------ */
@@ -288,7 +314,7 @@ export function filesShown(config: SiteConfig, data: SiteData): string[] {
  * at Publish and the live version's own at the nightly refresh. The caller has checked who may publish; this
  * binds the school itself, so the job (no session) and the office's act take the same path.
  */
-export async function renderAndStore(schoolId: string, byUserId: string | null, config: SiteConfig, now: Date = new Date()): Promise<{ versionId: string; renderedAt: Date }> {
+export async function renderAndStore(schoolId: string, byUserId: string | null, config: SiteConfig, now: Date = new Date(), opts: { replacing?: string } = {}): Promise<{ versionId: string; renderedAt: Date }> {
   const data = await gatherSiteData(schoolId, config, now);
   const { html, pagesHtml, paths } = renderAllPages(config, data);
   const consentOf = new Map(config.gallery.map((g) => [g.fileId, g]));
@@ -315,6 +341,11 @@ export async function renderAndStore(schoolId: string, byUserId: string | null, 
         update: {},
         select: { id: true },
       });
+      // TA-229: a refresh replaces only the version it read. Unpublished or published again since, it changes nothing.
+      if (opts.replacing) {
+        const still = await tx.schoolSiteVersion.updateMany({ where: { schoolId, id: opts.replacing, liveAt: { not: null } }, data: { liveAt: null } });
+        if (still.count === 0) throw new SiteRefreshOvertaken();
+      }
       await tx.schoolSiteVersion.updateMany({ where: { schoolId, liveAt: { not: null } }, data: { liveAt: null } });
       const version = await tx.schoolSiteVersion.create({
         data: { schoolId, siteId: site.id, schoolSlug: school.slug, snapshotJson: JSON.stringify(snapshot), html: JSON.stringify(html), pagesHtml: JSON.stringify(pagesHtml), imageFileIds, numbersHash: refreshSignature(config, data), renderedAt: now, numbersAt: now, publishedByUserId: byUserId, liveAt: now },
@@ -326,6 +357,13 @@ export async function renderAndStore(schoolId: string, byUserId: string | null, 
     await pruneVersions(schoolId);
     return { versionId: made.id, renderedAt: made.renderedAt };
   });
+}
+
+/** TA-229: the version a refresh read is no longer the live one (the office unpublished or published in between). */
+class SiteRefreshOvertaken extends Error {
+  constructor() {
+    super("the live version changed while the refresh rendered");
+  }
 }
 
 /** Take the live version down: the public route answers 404 from the next request. Versions are kept. Caller binds the school. */
@@ -369,7 +407,7 @@ async function pruneVersions(schoolId: string): Promise<void> {
 export async function refreshPublishedSites(now: Date = new Date(), scope: { schoolIds?: string[] } = {}): Promise<{ checked: number; refreshed: number; failed: number; perSchool: Record<string, Record<string, number>> }> {
   const live = await db.schoolSiteVersion.findMany({
     where: { liveAt: { not: null }, ...(scope.schoolIds ? { schoolId: { in: scope.schoolIds } } : {}) },
-    select: { schoolId: true, snapshotJson: true, numbersHash: true },
+    select: { id: true, schoolId: true, snapshotJson: true, numbersHash: true },
   });
   let refreshed = 0;
   let failed = 0;
@@ -378,12 +416,24 @@ export async function refreshPublishedSites(now: Date = new Date(), scope: { sch
     try {
       const outcome = await forSchool(row.schoolId, async () => {
         if (!(await isModuleOn(row.schoolId, "WEBSITE"))) return "off" as const;
+        // TA-228: a school the operator removed is never rendered again. removeSchool takes its site down; one removed
+        // before it did is taken down here (Unpublish's own writes), so its pictures stop being public too.
+        if (await isRemoved(row.schoolId)) {
+          await takeDown(row.schoolId);
+          return "off" as const;
+        }
         const snapshot = readJson<Partial<SiteSnapshot>>(row.snapshotJson, {});
         const { config: draftDefaults } = await draftConfigFor(row.schoolId);
         const config = repairSiteConfig(snapshot.config ?? {}, draftDefaults);
         const data = await gatherSiteData(row.schoolId, config, now);
         if (refreshSignature(config, data) === row.numbersHash) return "same" as const;
-        await renderAndStore(row.schoolId, null, config, now);
+        try {
+          await renderAndStore(row.schoolId, null, config, now, { replacing: row.id });
+        } catch (error) {
+          // TA-229: the office unpublished or published since the read; what it did stands.
+          if (error instanceof SiteRefreshOvertaken) return "overtaken" as const;
+          throw error;
+        }
         return "refreshed" as const;
       });
       if (outcome === "refreshed") {

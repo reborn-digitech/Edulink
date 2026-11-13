@@ -1,7 +1,7 @@
 import { competitionEnterBodySchema, competitionEnterResultSchema } from "@edulink/contracts";
 import { requireApiRoles } from "@/lib/api-roles";
 import { enterCompetition } from "@/lib/competitions";
-import { apiFailure, apiInvalid, ok } from "@/lib/api-v1";
+import { apiFailure, apiInvalid, BodyTooLarge, JSON_BODY_LIMIT, ok, readBounded } from "@/lib/api-v1";
 import { underRules } from "@/lib/api-rule-failure";
 
 /**
@@ -14,7 +14,9 @@ export async function POST(request: Request, { params }: { params: Promise<{ com
   try {
     const ctx = await requireApiRoles("STUDENT", "PARENT"); // a guardian's session names no school: the child in the body names it
     const { competitionId } = await params;
-    const raw = await request.text();
+    // TA-423: read to the cap, by what arrives; past it, 413 (apiFailure).
+    const raw = await readBounded(request, JSON_BODY_LIMIT);
+    if (raw === null) throw new BodyTooLarge();
     const parsed = competitionEnterBodySchema.safeParse(raw.trim().length === 0 ? undefined : JSON.parse(raw));
     if (!parsed.success) return apiInvalid(parsed);
     const body = parsed.data ?? {};

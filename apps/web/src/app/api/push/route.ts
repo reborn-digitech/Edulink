@@ -3,6 +3,10 @@ import { db } from "@/lib/db";
 import { getSession } from "@/lib/session";
 import { pushSubscribeSchema } from "@/lib/validation";
 import { audit } from "@/lib/audit";
+import { readJson } from "@/lib/api-v1";
+
+/** A subscription's JSON is a few hundred bytes. */
+const PUSH_BODY_LIMIT = 16 * 1024;
 
 /**
  * Push subscription registration.
@@ -21,7 +25,8 @@ export async function POST(request: Request) {
   const session = await getSession();
   if (!session) return NextResponse.json({ error: "Not signed in." }, { status: 401 });
 
-  const body = await request.json().catch(() => null);
+  // TA-423: a subscription is a few hundred bytes; read to a cap, by what arrives (a body past it is no body).
+  const body = await readJson(request, PUSH_BODY_LIMIT).catch(() => null);
   if (!body) return NextResponse.json({ error: "Expected a JSON body." }, { status: 400 });
 
   const parsed = pushSubscribeSchema.safeParse(body);
@@ -69,7 +74,7 @@ export async function DELETE(request: Request) {
   const session = await getSession();
   if (!session) return NextResponse.json({ error: "Not signed in." }, { status: 401 });
 
-  const body = await request.json().catch(() => null);
+  const body = (await readJson(request, PUSH_BODY_LIMIT).catch(() => null)) as { endpoint?: unknown } | null;
   const endpoint = typeof body?.endpoint === "string" ? body.endpoint : null;
   if (!endpoint) return NextResponse.json({ error: "endpoint is required." }, { status: 400 });
 

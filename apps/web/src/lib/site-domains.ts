@@ -102,6 +102,8 @@ function worstCert(states: CertState[]): CertState {
 export async function advanceDomain(row: Pick<DomainRow, "domain" | "status" | "certStatus" | "verifiedAt">, deps: DomainDeps): Promise<DomainPatch> {
   const { now } = deps;
   const dns = await deps.dns(row.domain);
+  // TA-398: a resolver that did not answer says nothing about the records, so a LIVE domain stays LIVE with the failure noted.
+  if (!dns.ok && dns.failure.code === "LOOKUP_FAILED" && row.status === "LIVE") return { status: "LIVE", dnsCheckedAt: now, dnsError: json(dns.failure) };
   if (!dns.ok) return { status: "PENDING_DNS", dnsCheckedAt: now, dnsError: json(dns.failure), verifiedAt: null };
   const base = { dnsCheckedAt: now, dnsError: null } as const;
 
@@ -113,7 +115,8 @@ export async function advanceDomain(row: Pick<DomainRow, "domain" | "status" | "
 
   const hosts = servedHosts(row.domain, deps.apexIp);
   // Ask for every host's certificate when none is asked yet or the last was refused.
-  if (row.certStatus === "NONE" || row.certStatus === "FAILED") {
+  const askedNow = row.certStatus === "NONE" || row.certStatus === "FAILED";
+  if (askedNow) {
     for (const host of hosts) {
       const asked = await requestCertificate(deps.fly, host, deps.fetchImpl);
       if (!asked.ok) return { ...base, status: "VERIFYING", certStatus: "NONE", certCheckedAt: now, certError: json({ code: "FLY_ERROR", host }) };
@@ -123,6 +126,13 @@ export async function advanceDomain(row: Pick<DomainRow, "domain" | "status" | "
   for (const host of hosts) {
     const state = await certificateState(deps.fly, host, deps.fetchImpl);
     if (!state.ok) return { ...base, status: "VERIFYING", certStatus: "REQUESTED", certCheckedAt: now, certError: json({ code: "FLY_ERROR", host }) };
+    // TA-398: one recorded as asked or issued that the platform no longer has is asked for again, or the domain would wait for ever.
+    if (state.missing && !askedNow) {
+      const asked = await requestCertificate(deps.fly, host, deps.fetchImpl);
+      if (!asked.ok) return { ...base, status: "VERIFYING", certStatus: "NONE", certCheckedAt: now, certError: json({ code: "FLY_ERROR", host }) };
+      states.push(asked.value);
+      continue;
+    }
     states.push(state.value);
   }
   const cert = worstCert(states);
@@ -236,6 +246,14 @@ export async function saveSiteDomain(ctx: ActiveContext, typed: string): Promise
     await db.$tenantTransaction(async (raw: unknown) => {
       const tx = raw as Prisma.TransactionClient;
       await tx.schoolSiteDomain.deleteMany({ where: { schoolId: me.schoolId } });
+      // TA-223: the counterpart is served on the same hosts (site-dns.ts servedHosts), but with SITE_APEX_IP set it is
+      // another string, which the unique index alone does not stop and the read above cannot see while another school
+      // is still setting it up. The index sees every school's row, so the counterpart is written here and taken away
+      // again: held by another school, the write fails (P2002), the whole transaction with it, and the save is refused.
+      if (counterpart) {
+        const probe = await tx.schoolSiteDomain.create({ data: { schoolId: me.schoolId, domain: counterpart, createdByUserId: me.userId }, select: { id: true } });
+        await tx.schoolSiteDomain.delete({ where: { id: probe.id } });
+      }
       await tx.schoolSiteDomain.create({ data: { schoolId: me.schoolId, domain, createdByUserId: me.userId } });
     });
   } catch (error) {
@@ -256,11 +274,21 @@ async function confirmedRow(schoolId: string, domain: string): Promise<DomainRow
   return row;
 }
 
+/** Whether another school holds this domain or its www/bare counterpart LIVE. */
+async function heldLiveElsewhere(schoolId: string, domain: string): Promise<boolean> {
+  const counterpart = counterpartOf(domain);
+  const live = await db.schoolSiteDomain.findFirst({ where: { domain: { in: [domain, ...(counterpart ? [counterpart] : [])] }, status: "LIVE", NOT: { schoolId } }, select: { id: true } });
+  return live !== null;
+}
+
 /** Verify (POST /api/v1/admin/site/domain/verify): one step of the state machine now. */
 export async function verifySiteDomain(ctx: ActiveContext, domain: string, deps: DomainDeps = liveDeps()): Promise<SiteDomainView> {
   const me = office(ctx);
   await assertModuleOn(me.schoolId, "WEBSITE");
   const row = await confirmedRow(me.schoolId, domain);
+  // TA-223: a counterpart row saved before the pair was held to one school never goes LIVE over the school that holds
+  // the pair LIVE (a LIVE row is readable by anyone, so this read sees it under RLS).
+  if (await heldLiveElsewhere(me.schoolId, row.domain)) throw new RuleRefusal("siteDomains.refuseTaken", 409);
   const patch = await advanceDomain(row, deps);
   await db.schoolSiteDomain.update({ where: { id: row.id }, data: patch });
   forgetSiteHosts();
@@ -298,6 +326,8 @@ export async function recheckSiteDomains(deps: DomainDeps = liveDeps(), scope?: 
   const rows = await db.schoolSiteDomain.findMany({ where: { status: "VERIFYING", ...(scope?.schoolIds ? { schoolId: { in: scope.schoolIds } } : {}) }, select: ROW, orderBy: { createdAt: "asc" }, take: 500 });
   const out = { checked: 0, live: 0, failed: 0, waiting: 0, perSchool: {} as Record<string, Record<string, number>> };
   for (const row of rows) {
+    // TA-223: never LIVE over another school's LIVE pair, as at Verify.
+    if (await heldLiveElsewhere(row.schoolId, row.domain)) continue;
     const patch = await advanceDomain(row, deps);
     await db.schoolSiteDomain.update({ where: { id: row.id }, data: patch });
     out.checked += 1;

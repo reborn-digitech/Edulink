@@ -460,7 +460,9 @@ export async function refreshSocialConnections(deps: Pick<SendDeps, "now" | "fet
       } catch {
         answer = { ok: false, error: { code: "RECONNECT", detail: null } };
       }
-      if (!answer.ok && answer.error.code === "NETWORK") return "unreachable" as const;
+      // TA-396: only a token Meta refuses (or a permission taken away) means reconnect; a network failure, a rate limit or
+      // an error on Meta's side says nothing about the token, so the state stays as it was until the next run.
+      if (!answer.ok && answer.error.code !== "RECONNECT" && answer.error.code !== "PERMISSION") return "unreachable" as const;
       const error = answer.ok ? null : "RECONNECT";
       await db.socialConnection.update({ where: { id: row.id }, data: { lastCheckedAt: deps.now, error } });
       if (error !== row.error) {

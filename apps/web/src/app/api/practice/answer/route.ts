@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { webPracticeAnswerBodySchema } from "@edulink/contracts";
 import { AccessError, requireApiRole } from "@/lib/tenancy";
-import { apiFailure, apiInvalid } from "@/lib/api-v1";
+import { apiFailure, apiInvalid, readJson } from "@/lib/api-v1";
 import { FeatureOffError, PlanRequiredError } from "@/lib/access-error";
 import { submitAnswerIdempotent, normaliseLanguage } from "@/lib/quiz";
 import { getT } from "@/lib/i18n/server";
@@ -21,7 +21,8 @@ import { getT } from "@/lib/i18n/server";
 export async function POST(request: Request) {
   try {
     const ctx = await requireApiRole("STUDENT");
-    const parsed = webPracticeAnswerBodySchema.safeParse(await request.json().catch(() => null));
+    // TA-423: read to the cap, by what arrives (a body past it is no body).
+    const parsed = webPracticeAnswerBodySchema.safeParse(await readJson(request).catch(() => null));
     if (!parsed.success) return apiInvalid(parsed);
     const body = parsed.data;
 

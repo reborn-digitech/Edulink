@@ -2,6 +2,7 @@ import { NextResponse, type NextRequest } from "next/server";
 import { db } from "@/lib/db";
 import { audit } from "@/lib/audit";
 import { createSession } from "@/lib/session";
+import { readBounded } from "@/lib/api-v1";
 import { generateToken, hashToken } from "@/lib/crypto";
 import { pkceChallengeSchema } from "@edulink/contracts";
 import { writeJson } from "@/lib/json";
@@ -140,7 +141,9 @@ export async function POST(
   { params }: { params: Promise<{ provider: string }> },
 ) {
   const { provider } = await params;
-  const form = await request.formData().catch(() => null);
+  // TA-423: a provider's form post is a code, a state and an id token; read to a cap by what arrives, past it no form.
+  const text = await readBounded(request, 64 * 1024).catch(() => null);
+  const form = text === null ? null : await new Response(text, { headers: { "content-type": request.headers.get("content-type") ?? "" } }).formData().catch(() => null);
   const field = (name: string) => {
     const value = form?.get(name);
     return typeof value === "string" ? value : null;

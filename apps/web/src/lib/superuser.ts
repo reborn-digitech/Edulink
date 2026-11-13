@@ -477,6 +477,8 @@ type RemovalTx = {
   guardianship: { updateMany(args: unknown): Promise<unknown> };
   jobPosting: { updateMany(args: unknown): Promise<unknown> };
   enquiry: { updateMany(args: unknown): Promise<unknown> };
+  schoolSiteVersion: { updateMany(args: unknown): Promise<unknown> };
+  schoolSite: { updateMany(args: unknown): Promise<unknown> };
 };
 
 type RestoreTx = {
@@ -635,6 +637,18 @@ export async function removeSchool(
       await t.enquiry.updateMany({
         where: { schoolId, status: "OPEN" },
         data: { status: "CLOSED", closedAt: leftAt },
+      });
+
+      // TA-228: the school's public website comes down with it (Unpublish's own writes, site-publish.ts takeDown), so
+      // its pages, its enquiry form and the pictures a live version made public stop being served. The versions and
+      // the domain are kept: restoreSchool leaves the site unpublished for the office to publish again.
+      await t.schoolSiteVersion.updateMany({
+        where: { schoolId, liveAt: { not: null } },
+        data: { liveAt: null },
+      });
+      await t.schoolSite.updateMany({
+        where: { schoolId },
+        data: { publishedVersionId: null },
       });
     });
 
