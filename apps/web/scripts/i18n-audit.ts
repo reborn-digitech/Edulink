@@ -240,7 +240,11 @@ function userVisible(source: string): string[] {
     // ⚠ NOR A CONDITION THAT HAPPENS TO CONTAIN A `>`. Rule 1 reads a JSX text
     // node as "> words <", and `…getTime() > Date.now() && (` looks exactly
     // like one. No sentence a parent reads contains `&&`, `||`, `=>` or a call.
-    .filter((s) => !/&&|\|\||=>|\w\(\)/.test(s));
+    .filter((s) => !/&&|\|\||=>|\w\(\)/.test(s))
+    // A statement written for the database is not a sentence for a person (14 Nov 2026, with the fixes for TA-015 and
+    // TA-008, whose record counts and row-security check are raw SQL): a template that opens with SELECT, optionally
+    // inside a bracket, is read by Postgres and never by anybody at a screen.
+    .filter((s) => !/^\(?\s*SELECT\s/.test(s));
 }
 
 function scan(): Finding[] {
