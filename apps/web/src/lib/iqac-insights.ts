@@ -37,7 +37,7 @@ import { frameworkOf, iqacActor, type Desk } from "./iqac";
 import { benchmarkStatus } from "./iqac-benchmarks";
 import { gatherFacts, nirfFacts, readEntered } from "./iqac-facts";
 import { FORMULAS, gradeOf, round2, type Facts } from "./iqac-rules";
-import { assertFilingApplies, councilDefaultYear, defaultFilingYear, nbaDepartmentFor, nbaDepartments, nbaFacts, readWorksheet } from "./council-filings";
+import { assertFilingApplies, councilDefaultYear, defaultFilingYear, headsOf, nbaDepartmentFor, nbaDepartments, nbaFacts, readWorksheet } from "./council-filings";
 import { windowOf } from "./iqac-filings";
 import {
   NAAC_WHOLES,
@@ -470,10 +470,8 @@ function mayWrite(role: Role, kind: string): boolean {
   return WRITERS.includes(role) || (kind === "NBA" && role === "HOD");
 }
 
-async function hodDepartment(desk: Desk): Promise<string | null> {
-  if (desk.role !== "HOD") return null;
-  return (await db.department.findFirst({ where: { schoolId: desk.schoolId, hodMembershipId: desk.membershipId }, select: { id: true } }))?.id ?? null;
-}
+/** Every department an HOD heads (TA-480: one person may head two); empty for anyone else. */
+const hodDepartments = (desk: Desk): Promise<string[]> => headsOf(desk);
 
 /** A scenario's result recomputed now with today's formulas: the CGPA for NAAC, the SAR's total for NBA. */
 function resultOf(s: ScenarioRow, fwOf: (cycleId: string) => NaacFramework | null): { result: number; grade: string | null } {
@@ -499,7 +497,7 @@ async function scenarioViews(desk: Desk, rows: ScenarioRow[]): Promise<Scenario[
   }
   const people = await db.user.findMany({ where: { id: { in: [...new Set(rows.map((r) => r.createdByUserId).filter((x): x is string => !!x))] } }, select: { id: true, name: true } });
   const nameOf = new Map(people.map((p) => [p.id, p.name]));
-  const own = await hodDepartment(desk);
+  const own = await hodDepartments(desk);
   return rows.map((s) => {
     const { result, grade } = resultOf(s, (id) => fwById.get(id) ?? null);
     const base = today.get(s.kind === "NBA" ? `NBA:${s.departmentId}:${s.year}` : `NAAC:${s.cycleId}`) ?? result;
@@ -517,7 +515,7 @@ async function scenarioViews(desk: Desk, rows: ScenarioRow[]): Promise<Scenario[
       grade,
       today: base,
       delta: round2(result - base),
-      canRemove: mayWrite(desk.role, s.kind) && (desk.role !== "HOD" || s.departmentId === own),
+      canRemove: mayWrite(desk.role, s.kind) && (desk.role !== "HOD" || (!!s.departmentId && own.includes(s.departmentId))),
     };
   });
 }
@@ -527,13 +525,13 @@ const SCENARIO_SELECT = { id: true, kind: true, name: true, cycleId: true, year:
 /** GET /api/v1/iqac/scenarios — the desk's scenarios (filtered), an HOD their own department's NBA ones. */
 export async function listScenarios(ctx: ActiveContext, query: { kind?: "NAAC" | "NBA"; cycleId?: string; year?: number; departmentId?: string }): Promise<Scenarios> {
   const desk = await iqacActor(ctx, NBA_READERS);
-  const own = await hodDepartment(desk);
+  const own = await hodDepartments(desk);
   const where =
     desk.role === "HOD"
-      ? { schoolId: desk.schoolId, kind: "NBA", departmentId: own ?? "__none__", ...(query.year ? { year: query.year } : {}) }
+      ? { schoolId: desk.schoolId, kind: "NBA", departmentId: { in: own }, ...(query.year ? { year: query.year } : {}) }
       : { schoolId: desk.schoolId, ...(query.kind ? { kind: query.kind } : {}), ...(query.cycleId ? { cycleId: query.cycleId } : {}), ...(query.year ? { year: query.year } : {}), ...(query.departmentId ? { departmentId: query.departmentId } : {}) };
   const rows = await db.iqacScenario.findMany({ where, orderBy: { createdAt: "desc" }, take: MAX_SCENARIOS, select: SCENARIO_SELECT });
-  return { items: await scenarioViews(desk, rows), canWrite: WRITERS.includes(desk.role) || (desk.role === "HOD" && !!own) };
+  return { items: await scenarioViews(desk, rows), canWrite: WRITERS.includes(desk.role) || (desk.role === "HOD" && own.length > 0) };
 }
 
 /**
@@ -625,7 +623,7 @@ async function partsRefusal(w: { metric: string; parts: readonly string[]; of: s
 export async function removeScenario(ctx: ActiveContext, scenarioId: string): Promise<Scenarios> {
   const desk = await iqacActor(ctx, [...WRITERS, "HOD"]);
   const s = await scenarioRow(desk, scenarioId);
-  if (desk.role === "HOD" && (s.kind !== "NBA" || s.departmentId !== (await hodDepartment(desk)))) throw new AccessError("insights.refuseNoScenario", "NOT_FOUND");
+  if (desk.role === "HOD" && (s.kind !== "NBA" || !s.departmentId || !(await hodDepartments(desk)).includes(s.departmentId))) throw new AccessError("insights.refuseNoScenario", "NOT_FOUND");
   await db.iqacScenario.deleteMany({ where: { id: s.id, schoolId: desk.schoolId } });
   await audit({ schoolId: desk.schoolId, actorUserId: desk.userId, action: "iqac.scenario.remove", targetType: "IqacScenario", targetId: s.id, meta: { kind: s.kind, name: s.name } });
   return listScenarios(ctx, s.kind === "NBA" ? { kind: "NBA" } : { kind: "NAAC", cycleId: s.cycleId ?? undefined });
@@ -634,7 +632,7 @@ export async function removeScenario(ctx: ActiveContext, scenarioId: string): Pr
 /** A scenario an HOD may read: their own department's NBA one; anything else of the college reads 404 to them. */
 async function readableScenario(desk: Desk, scenarioId: string): Promise<ScenarioRow> {
   const s = await scenarioRow(desk, scenarioId);
-  if (desk.role === "HOD" && (s.kind !== "NBA" || s.departmentId !== (await hodDepartment(desk)))) throw new AccessError("insights.refuseNoScenario", "NOT_FOUND");
+  if (desk.role === "HOD" && (s.kind !== "NBA" || !s.departmentId || !(await hodDepartments(desk)).includes(s.departmentId))) throw new AccessError("insights.refuseNoScenario", "NOT_FOUND");
   return s;
 }
 

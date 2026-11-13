@@ -24,7 +24,7 @@ import { NAAC_BANDS, NIRF_BANDS, type NaacFormulaId, type NaacFramework, type Na
 export type Scale =
   | { type: "percent"; benchmark: number }
   | { type: "count"; benchmark: number }
-  | { type: "lowBetter"; benchmark: number }
+  | { type: "lowBetter"; benchmark: number; /** 0 is the best value, not an empty side (TA-571: results on the day of the last paper). */ zeroBest?: true }
   | { type: "linearLow"; zeroAt: number }
   | { type: "options" }
   | { type: "bands"; bands: readonly (readonly [number, number])[] }
@@ -80,7 +80,7 @@ export const FORMULAS: Record<NaacFormulaId, FormulaSpec> = {
   PHD_NET_PCT: { inputs: ["phdNetTeachers", "fullTimeTeachers"], compute: (f) => pct(f.phdNetTeachers!, f.fullTimeTeachers!), scale: { type: "percent", benchmark: 75 }, lever: { fact: "phdNetTeachers", step: 1 }, unit: "teacher", whole: { parts: ["phdNetTeachers"], of: "fullTimeTeachers" } },
   TEACHING_EXPERIENCE: { inputs: ["experienceTotalYears", "fullTimeTeachers"], compute: (f) => per(f.experienceTotalYears!, f.fullTimeTeachers!), scale: { type: "count", benchmark: 15 }, lever: { fact: "experienceTotalYears", step: 1 }, unit: "year" },
   TEACHER_AWARDS_PCT: { inputs: ["teachersAwarded", "fullTimeTeachers"], compute: (f) => pct(f.teachersAwarded!, f.fullTimeTeachers!), scale: { type: "percent", benchmark: 50 }, lever: { fact: "teachersAwarded", step: 1 }, unit: "teacher", whole: { parts: ["teachersAwarded"], of: "fullTimeTeachers" } },
-  RESULT_DAYS: { inputs: ["resultDaysAvg"], compute: (f) => f.resultDaysAvg!, scale: { type: "lowBetter", benchmark: 30 }, lever: { fact: "resultDaysAvg", step: -1 }, unit: "day" },
+  RESULT_DAYS: { inputs: ["resultDaysAvg"], compute: (f) => f.resultDaysAvg!, scale: { type: "lowBetter", benchmark: 30, zeroBest: true }, lever: { fact: "resultDaysAvg", step: -1 }, unit: "day" },
   EVAL_GRIEVANCE_PCT: { inputs: ["evalGrievances", "examAppeared"], compute: (f) => pct(f.evalGrievances!, f.examAppeared!), scale: { type: "linearLow", zeroAt: 10 }, lever: { fact: "evalGrievances", step: -1 }, unit: "complaint" },
   PASS_PCT: { inputs: ["passed", "appeared"], compute: (f) => pct(f.passed!, f.appeared!), scale: { type: "percent", benchmark: 100 }, lever: { fact: "passed", step: 1 }, unit: "student", whole: { parts: ["passed"], of: "appeared" } },
   SSS: { inputs: ["sssMean"], compute: (f) => f.sssMean!, scale: { type: "direct" }, lever: { fact: "sssMean", step: 0.1 }, unit: "tenth" },
@@ -158,7 +158,7 @@ export function scoreOf(scale: Scale, value: number | null): number {
     case "count":
       return clamp4((value / scale.benchmark) * 4);
     case "lowBetter":
-      return value <= 0 ? 0 : clamp4((4 * scale.benchmark) / value);
+      return value <= 0 ? (scale.zeroBest ? 4 : 0) : clamp4((4 * scale.benchmark) / value);
     case "linearLow":
       return clamp4(4 * (1 - value / scale.zeroAt));
     case "options":

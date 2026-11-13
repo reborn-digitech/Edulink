@@ -30,7 +30,9 @@ export default async function SurveyLinkPage({ params, searchParams }: { params:
   const { done, error } = await searchParams;
   const gate = await consumeByCaller("survey-link", CODE_LOOKUPS);
   const view = gate.allowed ? await linkSurveyView(decodeURIComponent(token), t) : null;
-  const errorText = error === "limited" || !gate.allowed ? t("common.tryAgainMoment") : error ? t(error as TranslationKey) : null;
+  // Only the page's own word is read from the address (TA-309): t() hands back any string that is no key as it came,
+  // so ?error= could make the page say any sentence; nothing redirects here with another since the form answers in place.
+  const errorText = error === "limited" || !gate.allowed ? t("common.tryAgainMoment") : null;
 
   return (
     <div className="flex min-h-safe flex-col justify-center bg-bg px-4 py-10 sm:px-8">

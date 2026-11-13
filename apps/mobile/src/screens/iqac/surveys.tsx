@@ -100,7 +100,7 @@ function SurveyCard({ survey, canEdit, onDone }: { survey: Survey; canEdit: bool
           {results.isError ? <Failed message={results.error.message} onRetry={() => void results.refetch()} /> : null}
           {r?.suppressed ? (
             <Text variant="sm" tone="muted">
-              {t("deskParity.surveySuppressed")}
+              {t(r.survey.status === "CLOSED" ? "deskParity.surveySuppressed" : "deskParity.surveySuppressedOpen")}
             </Text>
           ) : null}
           {r && !r.suppressed ? (

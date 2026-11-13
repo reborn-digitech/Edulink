@@ -47,6 +47,9 @@ export const ENTERED_FACT: Record<IqacEnteredInput, { fact: string; fallback: bo
   TOTAL_COURSES: { fact: "totalCourses", fallback: true },
 };
 
+/** The entered inputs that are sums over the cycle's window (the form asks for five years of each): never a yearly AQAR's (TA-076). */
+export const WINDOW_SUM_INPUTS: readonly IqacEnteredInput[] = ["NON_SALARY_EXPENDITURE_LAKHS", "INFRA_EXPENDITURE_LAKHS", "MAINTENANCE_EXPENDITURE_LAKHS", "RESERVED_SEATS_EARMARKED", "NEW_COURSES"];
+
 export type Entered = Partial<Record<IqacEnteredInput, { value: number | null; byUserId?: string; at?: string; fileIds?: string[] }>>;
 
 export function readEntered(raw: string | null | undefined): Entered {
@@ -78,8 +81,11 @@ const keyIn = (key: string, from: string, to: string) => key >= from && key <= t
 const TEACHER_ROLES = ["FACULTY", "HOD"];
 const STAFF_ROLES = ["ADMIN", "PRINCIPAL", "FACULTY", "HOD", "EXAM_CONTROLLER", "IQAC", "TPO", "ACCOUNTS", "LIBRARIAN", "WARDEN", "DRIVER", "TEACHER", "SUPPORT"]; // SUPPORT: owner-batch-item2a
 
+/** The most academic years one gathering reads (TA-071): a cycle is five, an IIQA five, a NIRF three; a stored window asking for more is cut to its first six. */
+export const MAX_WINDOW_YEARS = 6;
+
 export async function gatherFacts(schoolId: string, windowFrom: string, windowTo: string, entered: Entered, now = new Date()): Promise<GatheredFacts> {
-  const years = academicYears(windowFrom, windowTo);
+  const years = academicYears(windowFrom, windowTo).slice(0, MAX_WINDOW_YEARS);
   const facts: Facts = {};
   const source: Record<string, FactSource> = {};
   const reasons: Record<string, FactReason> = {};
@@ -100,7 +106,8 @@ export async function gatherFacts(schoolId: string, windowFrom: string, windowTo
     db.membership.findMany({ where: { schoolId, role: { in: TEACHER_ROLES }, status: "ACTIVE", leftAt: null }, select: { id: true, joinedAt: true, user: { select: { name: true } } } }),
     db.membership.count({ where: { schoolId, role: { in: STAFF_ROLES }, status: "ACTIVE", leftAt: null } }),
     db.facultyRecord.findMany({ where: { schoolId }, select: { membershipId: true, appointment: true, highestQualification: true, netSetQualified: true, joinedOn: true, experienceBeforeYears: true } }),
-    db.researchItem.findMany({ where: { schoolId, year: { gte: years[0]!, lte: years[years.length - 1]! + 1 } }, select: { id: true, kind: true, title: true, indexing: true, amountLakhs: true, facultyMembershipId: true } }),
+    // The window's own years, as the filings below (TA-075): a calendar year belongs to the academic year it starts.
+    db.researchItem.findMany({ where: { schoolId, year: { gte: years[0]!, lte: years[years.length - 1]! } }, select: { id: true, kind: true, title: true, indexing: true, amountLakhs: true, facultyMembershipId: true } }),
     db.activity.findMany({ where: { schoolId, at: { gte: windowFrom, lte: windowTo } }, select: { id: true, kind: true, title: true, at: true, participants: true, participantIdsJson: true, theme: true } }),
     db.committee.findMany({ where: { schoolId }, select: { id: true, kind: true, name: true } }),
     db.committeeMeeting.findMany({ where: { schoolId, at: { gte: windowFrom, lte: windowTo } }, select: { id: true, at: true, committee: { select: { kind: true, name: true } } } }),
@@ -322,13 +329,16 @@ export async function gatherFacts(schoolId: string, windowFrom: string, windowTo
 
 /** For NIRF's published formulas: the faculty and student shares the IQAC page shows. */
 export async function nirfFacts(schoolId: string, gathered: GatheredFacts, now = new Date()) {
-  const [teachers, records, studentRecords, staffRecords] = await Promise.all([
+  const [members, records, studentRecords, staffRecords, programmes] = await Promise.all([
     db.membership.findMany({ where: { schoolId, role: { in: TEACHER_ROLES }, status: "ACTIVE", leftAt: null }, select: { id: true, joinedAt: true } }),
-    db.facultyRecord.findMany({ where: { schoolId }, select: { membershipId: true, highestQualification: true, experienceBeforeYears: true, joinedOn: true } }),
+    db.facultyRecord.findMany({ where: { schoolId }, select: { membershipId: true, highestQualification: true, experienceBeforeYears: true, joinedOn: true, appointment: true } }),
     db.pupilRecord.findMany({ where: { schoolId, student: { role: "STUDENT", status: "ACTIVE", leftAt: null } }, select: { gender: true } }),
     db.staffRecord.findMany({ where: { schoolId, membership: { role: { in: TEACHER_ROLES }, status: "ACTIVE", leftAt: null } }, select: { gender: true } }),
+    db.programme.findMany({ where: { schoolId, archivedAt: null }, select: { intake: true, durationYears: true } }),
   ]);
   const rec = new Map(records.map((r) => [r.membershipId, r]));
+  // F is the full-time faculty, as the NAAC facts count them (TA-074): a visiting teacher is not one.
+  const teachers = members.filter((t) => (rec.get(t.id)?.appointment ?? "REGULAR") !== "VISITING");
   const n = teachers.length;
   const exp = teachers.map((t) => {
     const r = rec.get(t.id);
@@ -338,7 +348,10 @@ export async function nirfFacts(schoolId: string, gathered: GatheredFacts, now =
   const frac = (p: (x: number) => boolean) => (n ? exp.filter(p).length / n : null);
   /** Gender as the record holds it (the UDISE+ codes M, F, T); a share over the records that say. */
   const women = (xs: { gender: string | null }[]) => { const known = xs.filter((x) => x.gender); return known.length ? (known.filter((x) => x.gender === "F").length / known.length) * 100 : null; };
-  const intake = gathered.facts.sanctionedSeats && gathered.facts.windowYears ? gathered.facts.sanctionedSeats / gathered.facts.windowYears : null;
+  // N is the sanctioned strength of every year of every programme (TA-074): a year's intake times the programme's years,
+  // not one year's intake, which made a college of one teacher to sixty read one to twenty.
+  const strength = programmes.reduce((a, p) => a + p.intake * Math.max(1, p.durationYears), 0);
+  const intake = strength > 0 ? strength : null;
   const out = gathered.facts.outgoing;
   return {
     faculty: n || null,

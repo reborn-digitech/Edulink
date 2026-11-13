@@ -327,7 +327,26 @@ function frame(p: Awaited<ReturnType<typeof schoolProfile>>, kind: CollegeFiling
 async function pciDocument(schoolId: string, year: number, snap: Snap): Promise<CouncilBuilt> {
   const p = await schoolProfile(schoolId);
   const scope = await streamProgrammes(schoolId, "PHARMACY", undefined, snap);
-  const [staff, programmes, rooms, practical] = await Promise.all([streamTeachers(schoolId, scope, snap), studentsByProgramme(schoolId, scope.programmes), db.room.findMany({ where: { schoolId, kind: "LAB" }, orderBy: { name: "asc" }, select: { name: true, capacity: true } }), practicalRecordSummary(schoolId, year)]);
+  // The pharmacy programmes' practicals only, unless pharmacy is the whole college (TA-273).
+  const inScope = scope.wholeCollege ? undefined : scope.programmes.map((x) => x.id);
+  const [staff, programmes, allLabs, practical] = await Promise.all([streamTeachers(schoolId, scope, snap), studentsByProgramme(schoolId, scope.programmes), db.room.findMany({ where: { schoolId, kind: "LAB" }, orderBy: { name: "asc" }, select: { id: true, name: true, capacity: true } }), practicalRecordSummary(schoolId, year, inScope)]);
+  // A lab is left out when the offerings that name it (as their room or a timetable slot's) are all another
+  // stream's (TA-273); a lab no offering names stays, since Room carries no stream to read.
+  const others = new Set<string>();
+  if (inScope && allLabs.length) {
+    const own = new Set(inScope);
+    const labIds = allLabs.map((r) => r.id);
+    const [byOffering, bySlot] = await Promise.all([
+      db.courseOffering.findMany({ where: { schoolId, roomId: { in: labIds } }, select: { roomId: true, course: { select: { scheme: { select: { programmeId: true } } } } } }),
+      db.offeringSlot.findMany({ where: { schoolId, roomId: { in: labIds } }, select: { roomId: true, offering: { select: { course: { select: { scheme: { select: { programmeId: true } } } } } } } }),
+    ]);
+    const uses = [...byOffering.map((o) => ({ roomId: o.roomId!, programmeId: o.course.scheme.programmeId })), ...bySlot.map((s) => ({ roomId: s.roomId!, programmeId: s.offering.course.scheme.programmeId }))];
+    for (const id of labIds) {
+      const mine = uses.filter((u) => u.roomId === id);
+      if (mine.length && !mine.some((u) => own.has(u.programmeId))) others.add(id);
+    }
+  }
+  const rooms = allLabs.filter((r) => !others.has(r.id));
   const labNames = rooms.map((r) => r.name);
   const [assets, stock] = labNames.length
     ? await Promise.all([
@@ -534,10 +553,15 @@ export async function nbaFacts(schoolId: string, departmentId: string, year: num
   // 4.2 — the latest three batches whose stipulated period ended BEFORE this year (LYG, LYGm1, LYGm2; the docblock
   // has the clause and the arithmetic). A seat graduated when its enrolment is COMPLETED and its leaving date fell in
   // the batch's final year.
+  // The SAR is for the department's undergraduate programme (TA-073): its batches and its year-of-study cohorts are cut
+  // from the UG seats (every seat where the department runs no UG programme), and a batch is the seats whose stipulated
+  // period ended in one year — chosen by that final year, never by entry year across programmes of different length.
+  const ugIds = new Set(programmes.filter((p) => p.level === "UG").map((p) => p.id));
+  const sarSeats = ugIds.size ? seats.filter((s) => ugIds.has(s.programmeId)) : seats;
   const finalYearOf = (s: { entryYear: number; programmeId: string }) => s.entryYear + (duration.get(s.programmeId) ?? 0) - 1;
-  const ended = seats.filter((s) => finalYearOf(s) < year);
-  const batchYears = [...new Set(ended.map((s) => s.entryYear))].sort((a, b) => b - a).slice(0, 3);
-  const counted = ended.filter((s) => batchYears.includes(s.entryYear));
+  const ended = sarSeats.filter((s) => finalYearOf(s) < year);
+  const batchFinals = [...new Set(ended.map(finalYearOf))].sort((a, b) => b - a).slice(0, 3);
+  const counted = ended.filter((s) => batchFinals.includes(finalYearOf(s)));
   const everRows = await termRows(schoolId, counted.map((s) => s.studentMembershipId), { from: "1970-01-01", to: w.to });
   const completed = new Set(
     counted.length
@@ -549,17 +573,17 @@ export async function nbaFacts(schoolId: string, departmentId: string, year: num
     const fw = windowOf(finalYearOf(s));
     return s.student.leftAt >= new Date(`${fw.from}T00:00:00.000Z`) && s.student.leftAt <= new Date(`${fw.to}T23:59:59.999Z`);
   };
-  const batches = batchYears.map((e) => {
-    const cohort = ended.filter((s) => s.entryYear === e);
+  const batches = batchFinals.map((f) => {
+    const cohort = ended.filter((s) => finalYearOf(s) === f);
     const graduated = cohort.filter(graduatedInTime);
     const clean = graduated.filter((s) => (everRows.get(s.studentMembershipId) ?? []).every((r) => r.status === "PASS"));
-    return { entryYear: e, admitted: cohort.length, graduated: graduated.length, withoutBacklog: clean.length };
+    return { entryYear: Math.min(...cohort.map((s) => s.entryYear)), admitted: cohort.length, graduated: graduated.length, withoutBacklog: clean.length };
   });
   const s421 = successMarks(batches.map((b) => successIndex(b.withoutBacklog, b.admitted)), 25);
   const s422 = successMarks(batches.map((b) => successIndex(b.graduated, b.admitted)), 15);
 
   // 4.3, 4.4, 8.3 — the year's results of the third, second and first years.
-  const cohortOf = (k: number) => seats.filter((s) => s.entryYear === year - (k - 1)).map((s) => s.studentMembershipId);
+  const cohortOf = (k: number) => sarSeats.filter((s) => s.entryYear === year - (k - 1)).map((s) => s.studentMembershipId);
   const [y1, y2, y3] = await Promise.all([apiOf(schoolId, cohortOf(1), w), apiOf(schoolId, cohortOf(2), w), apiOf(schoolId, cohortOf(3), w)]);
 
   // 4.5 — the placement index of the batches graduating around this year.
@@ -728,19 +752,19 @@ async function worksheetLocked(schoolId: string, kind: CollegeFilingKind, year: 
   return Boolean(await db.collegeFiling.findFirst({ where: { schoolId, kind, year, ...(kind === "NBA_SAR" ? { departmentId } : {}), status: { in: ["SIGNED_OFF", "FILED"] } }, select: { id: true } }));
 }
 
-/** The department an HOD heads; null for anyone else. */
-async function headOf(desk: Desk): Promise<string | null> {
-  if (desk.role !== "HOD") return null;
-  return (await db.department.findFirst({ where: { schoolId: desk.schoolId, hodMembershipId: desk.membershipId }, select: { id: true } }))?.id ?? null;
+/** Every department an HOD heads (TA-480: one person may head two); empty for anyone else. */
+export async function headsOf(desk: Pick<Desk, "role" | "schoolId" | "membershipId">): Promise<string[]> {
+  if (desk.role !== "HOD") return [];
+  return (await db.department.findMany({ where: { schoolId: desk.schoolId, hodMembershipId: desk.membershipId }, select: { id: true } })).map((d) => d.id);
 }
 
-/** The NBA department a caller works on: an HOD their own (403 for another's), the desk the one asked for or the first. */
+/** The NBA department a caller works on: an HOD one they head (403 for another's; the first by code when none is asked), the desk the one asked for or the first. */
 export async function nbaDepartmentFor(desk: Desk, asked: string | null | undefined): Promise<{ id: string; code: string; name: string }> {
   const list = await nbaDepartments(desk.schoolId);
   if (desk.role === "HOD") {
-    const own = await headOf(desk);
-    if (asked && asked !== own) throw new AccessError("councilFilings.refuseNotYourDepartment");
-    const mine = list.find((d) => d.id === own);
+    const own = await headsOf(desk);
+    if (asked && !own.includes(asked)) throw new AccessError("councilFilings.refuseNotYourDepartment");
+    const mine = list.find((d) => (asked ? d.id === asked : own.includes(d.id)));
     if (!mine) throw new AccessError("councilFilings.refuseNotApplicable", "NOT_FOUND");
     return mine;
   }
@@ -759,8 +783,8 @@ export async function councilOverview(ctx: ActiveContext): Promise<CouncilOvervi
   const applies = applicableFilings(streams);
   let departments = applies.includes("NBA_SAR") ? await nbaDepartments(desk.schoolId) : [];
   if (desk.role === "HOD") {
-    const own = await headOf(desk);
-    departments = departments.filter((d) => d.id === own);
+    const own = await headsOf(desk);
+    departments = departments.filter((d) => own.includes(d.id));
   }
   return {
     streams,
@@ -789,7 +813,7 @@ export async function councilView(ctx: ActiveContext, kind: CollegeFilingKind, q
     year,
     departmentId: dept?.id ?? null,
     departmentName: dept?.name ?? null,
-    departments: kind === "NBA_SAR" ? (desk.role === "HOD" ? [dept!] : await nbaDepartments(desk.schoolId)) : [],
+    departments: kind === "NBA_SAR" ? (desk.role === "HOD" ? await nbaDepartments(desk.schoolId).then(async (all) => { const own = await headsOf(desk); return all.filter((d) => own.includes(d.id)); }) : await nbaDepartments(desk.schoolId)) : [],
     figures: built.figures,
     items,
     total,

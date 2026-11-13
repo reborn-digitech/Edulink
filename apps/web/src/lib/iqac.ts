@@ -231,11 +231,18 @@ export async function openCycle(ctx: ActiveContext, input: { windowFrom: string;
   const desk = await iqacActor(ctx, DESK_WRITE);
   if (input.windowTo <= input.windowFrom) throw new RuleRefusal("iqac.refuseWindow", 422, undefined, "windowTo");
   const days = (Date.parse(input.windowTo) - Date.parse(input.windowFrom)) / 86_400_000;
-  if (days > 5 * 366 + 2) throw new RuleRefusal("iqac.refuseWindow", 422, undefined, "windowTo");
-  const open = await db.accreditationCycle.findFirst({ where: { schoolId: desk.schoolId, status: "OPEN" }, select: { id: true } });
-  if (open) throw new RuleRefusal("iqac.refuseOpenCycle", 409);
+  // A day that does not exist gives NaN, which is never above the cap (TA-071): refused as the cap is.
+  if (!Number.isFinite(days) || days > 5 * 366 + 2) throw new RuleRefusal("iqac.refuseWindow", 422, undefined, "windowTo");
   const school = await db.school.findUniqueOrThrow({ where: { id: desk.schoolId }, select: { kind: true } });
-  const cycle = await db.accreditationCycle.create({ data: { schoolId: desk.schoolId, framework: frameworkForKind(school.kind), institutionType: school.kind, windowFrom: input.windowFrom, windowTo: input.windowTo, createdByUserId: desk.userId }, select: { id: true } });
+  // ONE OPEN CYCLE, CHECKED WITH THE WRITE (TA-307): the check and the insert under the college's own lock, so two
+  // presses at once cannot both find none open and both create one (the scenario cap's pattern, iqac-insights.ts).
+  const cycle = await db.$tenantTransaction(async (raw) => {
+    const tx = raw as typeof db;
+    await tx.$queryRaw`SELECT 1 FROM PG_ADVISORY_XACT_LOCK(HASHTEXT(${`iqac-cycle:${desk.schoolId}`}))`;
+    const open = await tx.accreditationCycle.findFirst({ where: { schoolId: desk.schoolId, status: "OPEN" }, select: { id: true } });
+    if (open) throw new RuleRefusal("iqac.refuseOpenCycle", 409);
+    return tx.accreditationCycle.create({ data: { schoolId: desk.schoolId, framework: frameworkForKind(school.kind), institutionType: school.kind, windowFrom: input.windowFrom, windowTo: input.windowTo, createdByUserId: desk.userId }, select: { id: true } });
+  });
   await audit({ schoolId: desk.schoolId, actorUserId: desk.userId, action: "iqac.cycle.open", targetType: "AccreditationCycle", targetId: cycle.id, meta: { ...input } });
   await recompute(desk, cycle.id);
   return listCycles(ctx);
@@ -671,8 +678,32 @@ function surveyView(s: SurveyRow, today: string) {
   return { id: s.id, kind: s.kind as SurveyKind, title: s.title, opensOn: s.opensOn, closesOn: s.closesOn, offeringId: s.offeringId, status: statusOf(s, today), responses: s._count.responses, anonymous: ANONYMOUS(s.kind), atrPublishedAt: s.atr?.publishedAt?.toISOString() ?? null };
 }
 
+/**
+ * A survey past its closing date is closed the way the button closes it (TA-306): closedAt set and the salt
+ * wiped, so its answers cannot be matched to people afterwards even with the database and the key. Run by
+ * the nightly accounts:tidy (jobs.ts) and on the desk's first read of the college's surveys, so the wipe
+ * does not wait for somebody to press Close on a survey the list already shows as closed.
+ */
+export async function closeLapsedSurveys(now: Date = new Date(), scope: { schoolIds?: string[]; surveyIds?: string[] } = {}): Promise<number> {
+  // UTC's tomorrow bounds every zone's today; each candidate is then held to its own college's day.
+  const rows = await db.survey.findMany({ where: { closedAt: null, closesOn: { lt: addDaysToKey(todayKey("UTC", now), 1) }, ...(scope.schoolIds ? { schoolId: { in: scope.schoolIds } } : {}), ...(scope.surveyIds ? { id: { in: scope.surveyIds } } : {}) }, select: { id: true, schoolId: true, closesOn: true } });
+  const today = new Map<string, string>();
+  let closed = 0;
+  for (const r of rows) {
+    if (!today.has(r.schoolId)) today.set(r.schoolId, todayKey(await zoneOf(r.schoolId), now));
+    if (r.closesOn >= today.get(r.schoolId)!) continue;
+    const done = await db.survey.updateMany({ where: { id: r.id, closedAt: null }, data: { closedAt: now, salt: "" } });
+    if (done.count === 1) {
+      closed += 1;
+      await audit({ schoolId: r.schoolId, actorUserId: null, action: "iqac.survey.close", targetType: "Survey", targetId: r.id, meta: { lapsed: true } });
+    }
+  }
+  return closed;
+}
+
 export async function listSurveys(ctx: ActiveContext) {
   const desk = await iqacActor(ctx, DESK_READ);
+  await closeLapsedSurveys(new Date(), { schoolIds: [desk.schoolId] });
   const today = todayKey(await zoneOf(desk.schoolId));
   const rows = await db.survey.findMany({ where: { schoolId: desk.schoolId }, orderBy: { opensOn: "desc" }, take: 200, select: SURVEY_SELECT });
   return { items: rows.map((s) => surveyView(s, today)), canEdit: DESK_WRITE.includes(desk.role) };
@@ -749,11 +780,14 @@ export async function surveyResults(ctx: ActiveContext, surveyId: string) {
   }
   const actor = await mayReadResults(ctx, pre);
   const t = await getT();
+  await closeLapsedSurveys(new Date(), { schoolIds: [actor.schoolId], surveyIds: [surveyId] });
   const s = (await db.survey.findFirst({ where: { id: surveyId, schoolId: actor.schoolId }, select: SURVEY_SELECT }))!;
   const today = todayKey(await zoneOf(actor.schoolId));
   const responses = await db.surveyResponse.findMany({ where: { surveyId }, select: { answersJson: true } });
   const answers = responses.map((r) => JSON.parse(r.answersJson) as Record<string, number>);
-  const suppressed = answers.length < SURVEY_MIN_RESPONSES;
+  // Totals only once the survey is CLOSED (TA-072), as the predictor's SSS mean already is (iqac-facts.ts, S-17): an
+  // open survey's figures move answer by answer, and two readings one response apart give that respondent's answers.
+  const suppressed = answers.length < SURVEY_MIN_RESPONSES || statusOf(s, today) !== "CLOSED";
   const questions = readJsonArray<string>(s.questionsJson);
   const agg = aggregate(questions, suppressed ? [] : answers);
   return {
@@ -775,7 +809,9 @@ export async function saveActionTaken(ctx: ActiveContext, surveyId: string, inpu
   const s = await db.survey.findFirst({ where: { id: surveyId, schoolId: desk.schoolId }, select: { id: true, title: true } });
   if (!s) throw new AccessError("iqac.refuseNoItem", "NOT_FOUND");
   const fileId = await spendFile(desk, input.fileId, "ATR", s.title);
-  const data = { text: input.text, fileId, publishedAt: input.publish ? new Date() : null };
+  // A later save keeps the file unless a new one is sent, and a report already published keeps its first date (TA-308).
+  const before = await db.actionTakenReport.findUnique({ where: { surveyId }, select: { publishedAt: true } });
+  const data = { text: input.text, ...(fileId ? { fileId } : {}), publishedAt: input.publish ? (before?.publishedAt ?? new Date()) : null };
   const row = await db.actionTakenReport.upsert({ where: { surveyId }, create: { schoolId: desk.schoolId, surveyId, createdByUserId: desk.userId, ...data }, update: data, select: { id: true } });
   await audit({ schoolId: desk.schoolId, actorUserId: desk.userId, action: input.publish ? "iqac.atr.publish" : "iqac.atr.save", targetType: "ActionTakenReport", targetId: row.id, meta: { surveyId } });
   return surveyResults(ctx, surveyId);
@@ -808,9 +844,15 @@ function checkedAnswers(questions: string[], answers: Record<string, number>): R
  * `attainmentForOffering`: the mean answer to "the course met its stated
  * outcomes" across the offering's course-feedback surveys, on NBA's
  * three-level scale (0–4 × ¾). Null with fewer than SURVEY_MIN_RESPONSES.
+ * Only CLOSED surveys count (TA-072, as surveyResults): the teacher reads this
+ * in the course file, and a mean that moved answer by answer would give each
+ * student's answer to two readings one response apart.
  */
 export async function indirectAttainment(offeringId: string): Promise<{ level: number | null; mean: number | null; responses: number }> {
-  const surveys = await db.survey.findMany({ where: { offeringId, kind: "COURSE_FEEDBACK" }, select: { id: true } });
+  const rows = await db.survey.findMany({ where: { offeringId, kind: "COURSE_FEEDBACK" }, select: { id: true, schoolId: true, opensOn: true, closesOn: true, closedAt: true } });
+  const first = rows[0];
+  const today = first ? todayKey(await zoneOf(first.schoolId)) : "";
+  const surveys = rows.filter((s) => statusOf(s, today) === "CLOSED");
   const responses = surveys.length ? await db.surveyResponse.findMany({ where: { surveyId: { in: surveys.map((s) => s.id) } }, select: { answersJson: true } }) : [];
   const values = responses.map((r) => (JSON.parse(r.answersJson) as Record<string, number>).OUTCOMES).filter((v): v is number => typeof v === "number");
   if (values.length < SURVEY_MIN_RESPONSES) return { level: null, mean: null, responses: values.length };

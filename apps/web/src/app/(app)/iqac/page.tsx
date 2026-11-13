@@ -6,7 +6,7 @@ import { benchmarkStatus } from "@/lib/iqac-benchmarks";
 import { institutionKindOf, isModuleOn } from "@/lib/modules";
 import { isCollegeKind } from "@/lib/institution";
 import { iqacOverview } from "@/lib/iqac";
-import { disclosureApplies, disclosureState } from "@/lib/iqac-filings";
+import { disclosureApplies, disclosureState, leftoverDisclosure } from "@/lib/iqac-filings";
 import { getLocale, getT } from "@/lib/i18n/server";
 import { db } from "@/lib/db";
 import { PageHeader } from "@/components/ui/page-header";
@@ -50,7 +50,9 @@ export default async function IqacHome({ searchParams }: { searchParams: Promise
     );
   }
   // The AICTE disclosure is drawn only where the college's streams bring it (5 Oct 2026).
-  const [o, disclosure, school] = await Promise.all([iqacOverview(ctx), (await disclosureApplies(ctx.schoolId)) ? disclosureState(ctx) : Promise.resolve(null), db.school.findUnique({ where: { id: ctx.schoolId }, select: { name: true } })]);
+  // A page published before the streams stopped bringing it keeps its card, with the take-down only (TA-265).
+  const disclosureOn = await disclosureApplies(ctx.schoolId);
+  const [o, disclosure, school] = await Promise.all([iqacOverview(ctx), disclosureOn ? disclosureState(ctx) : leftoverDisclosure(ctx), db.school.findUnique({ where: { id: ctx.schoolId }, select: { name: true } })]);
   const canEdit = ctx.role !== "PRINCIPAL";
   const year = new Date().getUTCFullYear();
   return (
@@ -184,13 +186,15 @@ export default async function IqacHome({ searchParams }: { searchParams: Promise
             ) : null}
             {canEdit ? (
               <>
-                <ActionForm action={disclosureAction}>
-                  <input type="hidden" name="back" value="/iqac" />
-                  <input type="hidden" name="publish" value="1" />
-                  <Button type="submit" size="sm">
-                    {t("iqac.publishButton")}
-                  </Button>
-                </ActionForm>
+                {disclosureOn ? (
+                  <ActionForm action={disclosureAction}>
+                    <input type="hidden" name="back" value="/iqac" />
+                    <input type="hidden" name="publish" value="1" />
+                    <Button type="submit" size="sm">
+                      {t("iqac.publishButton")}
+                    </Button>
+                  </ActionForm>
+                ) : null}
                 {disclosure.publishedAt ? (
                   <ActionForm action={disclosureAction}>
                     <input type="hidden" name="back" value="/iqac" />

@@ -43,20 +43,21 @@ import type { ActiveContext } from "./session";
  * Every write is audited.
  */
 
-type Desk = { schoolId: string; userId: string; role: string; membershipId: string; headOf: string | null };
+type Desk = { schoolId: string; userId: string; role: string; membershipId: string; headOf: string[] };
 const READERS = ["IQAC", "HOD", "PRINCIPAL", "ADMIN"];
 
 async function deskOf(ctx: ActiveContext): Promise<Desk> {
   if (!ctx.schoolId || !ctx.membershipId || !ctx.role || !READERS.includes(ctx.role)) throw new AccessError("access.wrongRoleForThisAction");
   await assertModuleOn(ctx.schoolId, "IQAC");
-  const headOf = ctx.role === "HOD" ? ((await db.department.findFirst({ where: { schoolId: ctx.schoolId, hodMembershipId: ctx.membershipId }, select: { id: true } }))?.id ?? null) : null;
+  // Every department the HOD heads (TA-480: one person may head two).
+  const headOf = ctx.role === "HOD" ? (await db.department.findMany({ where: { schoolId: ctx.schoolId, hodMembershipId: ctx.membershipId }, select: { id: true } })).map((x) => x.id) : [];
   return { schoolId: ctx.schoolId, userId: ctx.user.id, role: ctx.role, membershipId: ctx.membershipId, headOf };
 }
 
 /** Whether this desk may change this visit: the IQAC any, an HOD their own department's NBA visit. */
 function canEdit(d: Desk, v: { framework: string; departmentId: string | null }): boolean {
   if (d.role === "IQAC") return true;
-  return d.role === "HOD" && v.framework === "NBA" && Boolean(d.headOf) && v.departmentId === d.headOf;
+  return d.role === "HOD" && v.framework === "NBA" && !!v.departmentId && d.headOf.includes(v.departmentId);
 }
 function canRead(d: Desk, v: { framework: string; departmentId: string | null }): boolean {
   return d.role === "HOD" ? canEdit(d, v) : true;
@@ -95,14 +96,14 @@ function summaryOf(d: Desk, v: { id: string; framework: string; title: string; y
 /** The visits the reader may see, the next first; what they may make. */
 export async function listVisits(ctx: ActiveContext): Promise<VisitList> {
   const d = await deskOf(ctx);
-  const rows = await db.peerTeamVisit.findMany({ where: { schoolId: d.schoolId, ...(d.role === "HOD" ? { framework: "NBA", departmentId: d.headOf ?? "-" } : {}) }, include: { items: { select: { kind: true } } }, orderBy: { fromDate: "desc" } });
+  const rows = await db.peerTeamVisit.findMany({ where: { schoolId: d.schoolId, ...(d.role === "HOD" ? { framework: "NBA", departmentId: { in: d.headOf } } : {}) }, include: { items: { select: { kind: true } } }, orderBy: { fromDate: "desc" } });
   const departments = await departmentNames(d.schoolId, rows.map((r) => r.departmentId));
   const nba = await nbaDepartments(d.schoolId);
   const cycles = d.role === "HOD" ? [] : await db.accreditationCycle.findMany({ where: { schoolId: d.schoolId }, orderBy: { createdAt: "desc" }, select: { id: true, framework: true, windowFrom: true, windowTo: true } });
   return {
     visits: rows.map((r) => summaryOf(d, r, departments)),
     canCreateNaac: d.role === "IQAC",
-    nbaDepartments: (d.role === "IQAC" ? nba : d.role === "HOD" ? nba.filter((x) => x.id === d.headOf) : []).map((x) => ({ id: x.id, name: x.name })),
+    nbaDepartments: (d.role === "IQAC" ? nba : d.role === "HOD" ? nba.filter((x) => d.headOf.includes(x.id)) : []).map((x) => ({ id: x.id, name: x.name })),
     cycles: cycles.map((c) => ({ id: c.id, label: `${c.framework} ${c.windowFrom}–${c.windowTo}` })),
   };
 }
@@ -185,7 +186,8 @@ export async function addVisitItem(ctx: ActiveContext, visitId: string, input: V
     const f = linkId ? await db.collegeFiling.findFirst({ where: { id: linkId, schoolId: d.schoolId }, select: { id: true } }) : null;
     if (!f) throw new RuleRefusal("peerVisit.refuseLink", 422, undefined, "linkId");
   } else if (input.linkKind === "FILE") {
-    const f = linkId ? await db.iqacFile.findFirst({ where: { id: linkId, schoolId: d.schoolId }, select: { id: true } }) : null;
+    // Never a grievance's attachment (TA-305), which the evidence list keeps from the IQAC too (campaign S-9).
+    const f = linkId ? await db.iqacFile.findFirst({ where: { id: linkId, schoolId: d.schoolId, purpose: { not: "GRIEVANCE" } }, select: { id: true } }) : null;
     if (!f) throw new RuleRefusal("peerVisit.refuseLink", 422, undefined, "linkId");
   } else if (input.linkKind === "METRIC") {
     linkId = linkId ?? input.criterion;
@@ -253,11 +255,12 @@ export async function visitDetail(ctx: ActiveContext, visitId: string): Promise<
   const metricCodes = evidence.filter((i) => i.linkKind === "METRIC" && i.linkId).map((i) => i.linkId!);
   const [linkedFilings, linkedFiles, metrics, worksheet, allFilings, allFiles] = await Promise.all([
     filingIds.length ? db.collegeFiling.findMany({ where: { schoolId: d.schoolId, id: { in: filingIds } }, select: { id: true, kind: true, year: true, status: true, departmentId: true } }) : [],
-    fileIds.length ? db.iqacFile.findMany({ where: { schoolId: d.schoolId, id: { in: fileIds } }, select: { id: true, title: true, fileId: true } }) : [],
+    fileIds.length ? db.iqacFile.findMany({ where: { schoolId: d.schoolId, id: { in: fileIds }, purpose: { not: "GRIEVANCE" } }, select: { id: true, title: true, fileId: true } }) : [],
     metricCodes.length && v.cycleId ? db.metricScore.findMany({ where: { schoolId: d.schoolId, cycleId: v.cycleId, metricCode: { in: metricCodes } }, orderBy: { computedAt: "desc" }, select: { metricCode: true, score: true, value: true } }) : [],
     v.framework === "NBA" ? db.filingWorksheet.findFirst({ where: { schoolId: d.schoolId, kind: "NBA_SAR", year: v.year, departmentId: v.departmentId ?? "" }, select: { id: true } }) : null,
     db.collegeFiling.findMany({ where: { schoolId: d.schoolId, ...(v.framework === "NBA" ? { kind: "NBA_SAR", departmentId: v.departmentId } : { kind: { not: "NBA_SAR" } }) }, orderBy: [{ year: "desc" }, { generatedAt: "desc" }], take: 60, select: { id: true, kind: true, year: true, status: true } }),
-    db.iqacFile.findMany({ where: { schoolId: d.schoolId }, orderBy: { createdAt: "desc" }, take: 200, select: { id: true, title: true } }),
+    // The picker never lists a grievance's attachment, whose title is its kind (TA-305).
+    db.iqacFile.findMany({ where: { schoolId: d.schoolId, purpose: { not: "GRIEVANCE" } }, orderBy: { createdAt: "desc" }, take: 200, select: { id: true, title: true } }),
   ]);
   const filingOf = new Map(linkedFilings.map((f) => [f.id, f]));
   const fileOf = new Map(linkedFiles.map((f) => [f.id, f]));

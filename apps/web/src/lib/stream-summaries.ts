@@ -47,10 +47,11 @@ function yearLabels(year: number): string[] {
 
 /* ------------------------------------------------------ practical record */
 
-export async function practicalRecordSummary(schoolId: string, year: number): Promise<PracticalRecordSummary> {
+/** With `programmeIds` (a council's return, TA-273): only the records of offerings of those programmes' courses. */
+export async function practicalRecordSummary(schoolId: string, year: number, programmeIds?: readonly string[]): Promise<PracticalRecordSummary> {
   const w = academicYearWindow(year);
   const [records, batches, batchMembers] = await Promise.all([
-    db.practicalRecord.findMany({ where: { schoolId, performedOn: { gte: w.from, lte: w.to } }, select: { offeringId: true, studentMembershipId: true, signedAt: true, offering: { select: { course: { select: { code: true, name: true } } } } } }),
+    db.practicalRecord.findMany({ where: { schoolId, performedOn: { gte: w.from, lte: w.to }, ...(programmeIds ? { offering: { course: { scheme: { programmeId: { in: [...programmeIds] } } } } } : {}) }, select: { offeringId: true, studentMembershipId: true, signedAt: true, offering: { select: { course: { select: { code: true, name: true } } } } } }),
     db.labBatch.count({ where: { schoolId, division: { academicYear: { in: yearLabels(year) } }, members: { some: { untilKey: null } } } }),
     db.labBatchMember.count({ where: { schoolId, untilKey: null, batch: { division: { academicYear: { in: yearLabels(year) } } } } }),
   ]);

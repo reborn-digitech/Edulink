@@ -57,7 +57,7 @@ export async function TeacherResearch({ role, back, ok, error }: { role: "FACULT
           <CardHeader title={r.survey.title} description={[t("iqac.surveyKind.COURSE_FEEDBACK"), " · ", t("iqac.responsesLine", { n: r.survey.responses }), (r.overall !== null ? ` · ${t("iqac.overallLine", { mean: r.overall.toFixed(2) })}` : "")].join("")} />
           <CardBody className="text-sm">
             {r.suppressed ? (
-              <p className="text-fg-muted">{t("iqac.suppressed")}</p>
+              <p className="text-fg-muted">{t(r.survey.status === "CLOSED" ? "iqac.suppressed" : "iqac.suppressedOpen")}</p>
             ) : (
               <ul className="space-y-1">
                 {r.questions.map((q) => (

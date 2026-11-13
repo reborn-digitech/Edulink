@@ -1,5 +1,6 @@
 import { z } from "zod";
 import { naacFrameworkSchema, naacFormulaIdSchema, NAAC_METRIC_KINDS, NAAC_WINDOWS } from "./naac";
+import { realDateKey } from "./calendar-keys";
 
 /**
  * iqac: the IQAC module's coded lists and the shapes of its doors (module
@@ -145,6 +146,8 @@ export type IqacEnteredInput = z.infer<typeof iqacEnteredInputSchema>;
 
 const id = z.string().min(1).max(64);
 const dateKey = z.string().regex(/^\d{4}-\d{2}-\d{2}$/);
+/** A day a caller sends (TA-071): one that exists, so "2031-13-01" cannot walk around the cycle's five-year cap or make a joining date NaN. */
+const dayIn = realDateKey;
 const fileRef = z.object({ fileId: z.string(), title: z.string() });
 
 export const iqacMetricInputSchema = z.object({
@@ -195,7 +198,7 @@ export const iqacCycleSchema = z.object({
 });
 export type IqacCycle = z.infer<typeof iqacCycleSchema>;
 export const iqacCyclesSchema = z.object({ items: z.array(iqacCycleSchema), canEdit: z.boolean() });
-export const iqacCycleCreateSchema = z.object({ windowFrom: dateKey, windowTo: dateKey });
+export const iqacCycleCreateSchema = z.object({ windowFrom: dayIn, windowTo: dayIn });
 
 export const iqacPredictorSchema = z.object({
   cycle: iqacCycleSchema,
@@ -265,7 +268,7 @@ export const researchRegisterSchema = z.object({
 export const activitySaveSchema = z.object({
   kind: activityKindSchema,
   title: z.string().trim().min(3).max(300),
-  at: dateKey,
+  at: dayIn,
   participants: z.number().int().min(0).max(100000).default(0),
   // Large cap on purpose (item 16, 2 Nov 2026): a college-wide activity (a convocation, an NSS camp) names most of the roll; `participants` carries the count beyond it.
   participantMembershipIds: z.array(id).max(2000).default([]),
@@ -281,7 +284,7 @@ export const committeeSaveSchema = z.object({
   name: z.string().trim().min(3).max(200),
   members: z.array(z.object({ name: z.string().trim().min(2).max(120), role: z.string().trim().max(120).default(""), membershipId: id.nullable().default(null) })).min(1).max(40),
 });
-export const committeeMeetingSaveSchema = z.object({ at: dateKey, minutesFileId: z.string().max(200).nullable().default(null), actionTaken: z.string().trim().max(4000).default("") });
+export const committeeMeetingSaveSchema = z.object({ at: dayIn, minutesFileId: z.string().max(200).nullable().default(null), actionTaken: z.string().trim().max(4000).default("") });
 export const committeeSchema = z.object({
   id: z.string(),
   kind: committeeKindSchema,
@@ -296,8 +299,8 @@ export const committeesSchema = z.object({ items: z.array(committeeSchema), canE
 export const surveySaveSchema = z.object({
   kind: surveyKindSchema,
   title: z.string().trim().min(3).max(200),
-  opensOn: dateKey,
-  closesOn: dateKey,
+  opensOn: dayIn,
+  closesOn: dayIn,
   /** COURSE_FEEDBACK only: the academics builder's CourseOffering id. */
   offeringId: z.string().max(64).nullable().default(null),
   termId: z.string().max(64).nullable().default(null),
@@ -354,7 +357,7 @@ export const facultyRecordSaveSchema = z.object({
   highestQualification: facultyQualificationSchema,
   netSetQualified: z.boolean().default(false),
   experienceBeforeYears: z.number().min(0).max(60).default(0),
-  joinedOn: dateKey.nullable().default(null),
+  joinedOn: dayIn.nullable().default(null),
   departmentId: z.string().max(64).nullable().default(null),
   apaarFacultyId: z.string().trim().max(40).nullable().default(null),
   /** Typed once and sealed; omitted keeps the one on file. */

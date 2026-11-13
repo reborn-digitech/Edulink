@@ -221,6 +221,9 @@ export const JOBS: Record<JobName, JobSpec> = {
       // The regulators' windows opening within a fortnight, told to each college's IQAC and office once per window (lib/operator-college.ts), here for the same reason.
       const { remindRegulatorDeadlines } = await import("./operator-college");
       const regulators = await remindRegulatorDeadlines(now, schools);
+      // Surveys past their closing date lose their salt as a pressed Close does (TA-306, lib/iqac.ts), here for the same reason.
+      const { closeLapsedSurveys } = await import("./iqac");
+      await closeLapsedSurveys(now, schools);
       const perSchool: Record<string, Record<string, number>> = {};
       for (const [schoolId, counts] of [...Object.entries(invites.perSchool), ...Object.entries(requests.perSchool)]) {
         perSchool[schoolId] = { ...perSchool[schoolId], ...counts };
@@ -248,8 +251,8 @@ export const JOBS: Record<JobName, JobSpec> = {
     expectEveryMs: 2 * DAY,
     narrows: ["schoolIds"],
     run: async ({ now, scope }) => {
-      const { executed, skippedStale, stuck, perSchool } = await runDueDepartures(now, scope?.schoolIds ? { schoolIds: scope.schoolIds } : {});
-      return { summary: { executed, skippedStale, stuck }, perSchool };
+      const { executed, skippedStale, stuck, failed, perSchool } = await runDueDepartures(now, scope?.schoolIds ? { schoolIds: scope.schoolIds } : {});
+      return { summary: { executed, skippedStale, stuck, failed }, perSchool };
     },
   },
   "health:digest": {

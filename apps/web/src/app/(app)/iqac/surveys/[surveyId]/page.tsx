@@ -55,7 +55,7 @@ export default async function SurveyResultsPage({ params, searchParams }: { para
         <CardHeader title={t("iqac.resultsTitle")} description={r.overall !== null ? t("iqac.overallLine", { mean: r.overall.toFixed(2) }) : undefined} />
         <CardBody>
           {r.suppressed ? (
-            <p className="text-sm text-fg-muted">{t("iqac.suppressed")}</p>
+            <p className="text-sm text-fg-muted">{t(r.survey.status === "CLOSED" ? "iqac.suppressed" : "iqac.suppressedOpen")}</p>
           ) : (
             <TableScroll>
               <table className="w-full text-left text-sm">

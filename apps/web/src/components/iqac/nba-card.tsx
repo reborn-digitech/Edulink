@@ -15,8 +15,9 @@ import { Button } from "@/components/ui/button";
  */
 export async function NbaCard({ ctx, t }: { ctx: ActiveContext; t: Translate }) {
   if (ctx.role !== "HOD" || !ctx.schoolId || !(await isModuleOn(ctx.schoolId, "IQAC")) || !(await filingsOf(ctx.schoolId)).includes("NBA_SAR")) return null;
-  const own = await db.department.findFirst({ where: { schoolId: ctx.schoolId, hodMembershipId: ctx.membershipId }, select: { id: true } });
-  if (!own || !(await nbaDepartments(ctx.schoolId)).some((d) => d.id === own.id)) return null;
+  // Any department the HOD heads (TA-480: one person may head two).
+  const own = await db.department.findMany({ where: { schoolId: ctx.schoolId, hodMembershipId: ctx.membershipId }, select: { id: true } });
+  if (!(await nbaDepartments(ctx.schoolId)).some((d) => own.some((o) => o.id === d.id))) return null;
   return (
     <Card data-testid="nba-card">
       <CardHeader icon={<MedalIcon weight="duotone" className="size-5" />} title={t("councilFilings.hodCardTitle")} description={t("councilFilings.hodCardBody")} />

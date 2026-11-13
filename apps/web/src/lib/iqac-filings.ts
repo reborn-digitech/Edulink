@@ -5,8 +5,11 @@ import {
   FILING_TITLE,
   SIGNED_FILINGS,
   NAAC_CRITERIA,
+  STREAM_PRESETS,
   type CollegeFilingKind,
+  type StreamCode,
 } from "@edulink/contracts";
+import { streamsOf } from "./streams";
 import { db } from "./db";
 import { AccessError } from "./tenancy";
 import { RuleRefusal } from "./rule-refusal";
@@ -14,7 +17,7 @@ import { audit } from "./audit";
 import { notify } from "./notify";
 import { toCsvValue } from "./csv";
 import { readJsonArray } from "./json";
-import { gatherFacts, nirfFacts, readEntered } from "./iqac-facts";
+import { gatherFacts, nirfFacts, readEntered, WINDOW_SUM_INPUTS, type Entered } from "./iqac-facts";
 import { evaluate, nirfSubs, round2 } from "./iqac-rules";
 import { frameworkOf, iqacActor, iqacHash, spendFile, type Desk } from "./iqac";
 import type { ActiveContext } from "./session";
@@ -72,7 +75,7 @@ export function profileRows(p: Awaited<ReturnType<typeof schoolProfile>>): [stri
 /** Programmes with intake, students on them, and results — what several filings share. */
 async function programmeTable(schoolId: string, year: number) {
   const [programmes, seats, enrolments, records] = await Promise.all([
-    db.programme.findMany({ where: { schoolId, archivedAt: null }, orderBy: { code: "asc" }, select: { id: true, code: true, name: true, level: true, durationYears: true, intake: true, departmentId: true } }),
+    db.programme.findMany({ where: { schoolId, archivedAt: null }, orderBy: { code: "asc" }, select: { id: true, code: true, name: true, level: true, durationYears: true, intake: true, departmentId: true, regulator: true, stream: true } }),
     db.studentProgramme.findMany({ where: { schoolId, status: "ACTIVE" }, select: { programmeId: true, studentMembershipId: true, entryYear: true } }),
     db.programmeEnrolment.findMany({ where: { schoolId }, select: { studentMembershipId: true, category: true } }),
     db.pupilRecord.findMany({ where: { schoolId }, select: { studentMembershipId: true, gender: true } }),
@@ -150,7 +153,10 @@ export async function buildFiling(schoolId: string, kind: CollegeFilingKind, yea
     // The SSR reads the cycle's five years; the AQAR the one academic year.
     const from = kind === "SSR" && cycle ? cycle.windowFrom : w.from;
     const to = kind === "SSR" && cycle ? cycle.windowTo : w.to;
-    const gathered = await gatherFacts(schoolId, from, to, entered, asOf);
+    // A yearly AQAR takes from the cycle only the figures that are not five-year sums, and only from a cycle whose
+    // window holds its year (TA-076); the year's own rows give the rest.
+    const yearly: Entered = kind === "AQAR" ? (cycle && cycle.windowFrom <= w.from && cycle.windowTo >= w.to ? Object.fromEntries(Object.entries(entered).filter(([k]) => !(WINDOW_SUM_INPUTS as readonly string[]).includes(k))) as Entered : {}) : entered;
+    const gathered = await gatherFacts(schoolId, from, to, yearly, asOf);
     const qls = cycle ? await db.metricScore.findMany({ where: { cycleId: cycle.id, kind: "QL" }, orderBy: { computedAt: "asc" }, select: { metricCode: true, score: true, note: true, evidenceJson: true } }) : [];
     const ql = new Map(qls.map((q) => [q.metricCode, q]));
     const figures: Record<string, number> = {};
@@ -244,11 +250,24 @@ export async function buildFiling(schoolId: string, kind: CollegeFilingKind, yea
   return { format: "CSV", body: csvOf([L.programmeCode, L.programmeName, L.intake, L.admitted, L.enrolled, L.faculty], rows), figures };
 }
 
+/**
+ * Whether a programme is the AICTE's to disclose (TA-272): one approved by the AICTE, or one of a stream that brings
+ * the disclosure under its own council (a PCI pharmacy programme); never one the college files under the UGC (the
+ * management stream's BBA) or under a council whose stream does not bring the disclosure (a BCI law degree).
+ */
+function underAicte(p: { regulator: string; stream: string | null }, streams: readonly StreamCode[]): boolean {
+  if (p.regulator === "AICTE") return true;
+  if (p.regulator === "UGC") return false;
+  const stream = p.stream ?? (streams.length === 1 ? streams[0]! : null);
+  return !!stream && stream in STREAM_PRESETS && (STREAM_PRESETS[stream as StreamCode].filings as readonly string[]).includes("AICTE_DISCLOSURE");
+}
+
 /** The AICTE disclosure, for the filing and the public page: no student, no PAN, no contact detail. */
 export async function disclosureDocument(schoolId: string, year: number, asOf: Date = new Date()): Promise<{ document: FilingDocument; figures: Record<string, number> }> {
   const p = await schoolProfile(schoolId);
+  const streams = await streamsOf(schoolId);
   const [programmes, faculty, committees, seasons] = await Promise.all([
-    programmeTable(schoolId, year),
+    programmeTable(schoolId, year).then((rows) => rows.filter((x) => underAicte(x, streams))),
     facultyTable(schoolId, asOf),
     db.committee.findMany({ where: { schoolId, kind: { in: ["GRIEVANCE", "ANTI_RAGGING", "ICC", "IQAC", "GOVERNING_BODY", "CDC"] } }, orderBy: { kind: "asc" }, select: { kind: true, name: true, membersJson: true } }),
     db.placementSeason.findMany({ where: { schoolId, batchYear: { gte: year - 2, lte: year + 1 } }, orderBy: { batchYear: "asc" }, select: { batchYear: true, finalYear: true, placed: true, higherStudies: true, medianSalaryRupees: true } }),
@@ -311,10 +330,19 @@ export async function generateFilingAs(desk: Desk, input: { kind: CollegeFilingK
   // Generated from the rows as they stand, with the no-history values it read frozen beside the body (R-21).
   const built = await buildFiling(desk.schoolId, input.kind, input.year, input.cycleId, departmentId, { snapshot: "live" });
   const data = { cycleId: input.cycleId, format: built.format, body: built.body, hash: iqacHash(built.body), figuresJson: JSON.stringify(built.figures), snapshotJson: built.snapshot ?? "{}", generatedByUserId: desk.userId };
-  const sar = departmentId ? await db.collegeFiling.findFirst({ where: { schoolId: desk.schoolId, kind: "NBA_SAR", year: input.year, departmentId }, orderBy: { generatedAt: "desc" }, select: { id: true, status: true } }) : null;
-  if (sar && sar.status !== "DRAFT" && sar.status !== "RETURNED") throw new RuleRefusal("councilFilings.refuseSarTaken", 409);
-  const row = sar
-    ? await db.collegeFiling.update({ where: { id: sar.id }, data: { ...data, status: "DRAFT", generatedAt: new Date() }, select: { id: true } })
+  // ONE SAR PER DEPARTMENT AND YEAR, CHECKED WITH THE WRITE (TA-307): the find and the rebuild or insert under a lock of
+  // that department's year, and the rebuild only while the SAR is still a draft or returned, so two generations at once
+  // leave one row and a generation never rebuilds a SAR the principal signed in between.
+  const row = departmentId
+    ? await db.$tenantTransaction(async (raw) => {
+        const tx = raw as typeof db;
+        await tx.$queryRaw`SELECT 1 FROM PG_ADVISORY_XACT_LOCK(HASHTEXT(${`iqac-sar:${desk.schoolId}:${departmentId}:${input.year}`}))`;
+        const sar = await tx.collegeFiling.findFirst({ where: { schoolId: desk.schoolId, kind: "NBA_SAR", year: input.year, departmentId }, orderBy: { generatedAt: "desc" }, select: { id: true, status: true } });
+        if (!sar) return tx.collegeFiling.create({ data: { schoolId: desk.schoolId, kind: input.kind, year: input.year, departmentId, ...data }, select: { id: true } });
+        const rebuilt = await tx.collegeFiling.updateMany({ where: { id: sar.id, status: { in: ["DRAFT", "RETURNED"] } }, data: { ...data, status: "DRAFT", generatedAt: new Date() } });
+        if (rebuilt.count !== 1) throw new RuleRefusal("councilFilings.refuseSarTaken", 409);
+        return { id: sar.id };
+      })
     : await db.collegeFiling.create({ data: { schoolId: desk.schoolId, kind: input.kind, year: input.year, departmentId, ...data }, select: { id: true } });
   await audit({ schoolId: desk.schoolId, actorUserId: desk.userId, action: "iqac.filing.generate", targetType: "CollegeFiling", targetId: row.id, meta: { kind: input.kind, year: input.year, ...(departmentId ? { departmentId } : {}) } });
   return row.id;
@@ -342,7 +370,10 @@ export async function submitFiling(ctx: ActiveContext, filingId: string) {
   // Nobody to sign it off, nothing is sent (A3-journeys-36): it would wait in AWAITING_SIGNOFF for no one.
   const heads = await db.membership.findMany({ where: { schoolId: desk.schoolId, role: "PRINCIPAL", status: "ACTIVE", leftAt: null }, select: { userId: true } });
   if (heads.length === 0) throw new RuleRefusal("iqac.refuseNoPrincipal", 409);
-  await db.collegeFiling.update({ where: { id: f.id }, data: { status: "AWAITING_SIGNOFF", submittedAt: new Date() } });
+  // Sent only while still a draft or returned (TA-307, as QA-34 made the sign-off): a second press landing after the
+  // principal signed changes nothing.
+  const sent = await db.collegeFiling.updateMany({ where: { id: f.id, schoolId: desk.schoolId, status: { in: ["DRAFT", "RETURNED"] } }, data: { status: "AWAITING_SIGNOFF", submittedAt: new Date() } });
+  if (sent.count !== 1) return listFilings(ctx);
   await audit({ schoolId: desk.schoolId, actorUserId: desk.userId, action: "iqac.filing.submit", targetType: "CollegeFiling", targetId: f.id, meta: { kind: f.kind } });
   for (const h of heads) await notify({ userId: h.userId, schoolId: desk.schoolId, kind: "SYSTEM", titleKey: "iqac.notifySignoffTitle", bodyKey: "iqac.notifySignoffBody", bodyVars: { kind: f.kind }, url: "/principal/accreditation" });
   return listFilings(ctx);
@@ -395,10 +426,20 @@ export async function disclosureState(ctx: ActiveContext) {
   return { publishedAt: row?.publishedAt?.toISOString() ?? null, slug: school.slug, url: `/public/disclosure/${school.slug}` };
 }
 
+/** A page still published at a college whose streams no longer bring the disclosure (TA-265): the desk's card offers its take-down. */
+export async function leftoverDisclosure(ctx: ActiveContext): Promise<{ publishedAt: string; slug: string; url: string } | null> {
+  const desk = await iqacActor(ctx, ["IQAC", "ADMIN", "PRINCIPAL"]);
+  const row = await db.disclosurePage.findUnique({ where: { schoolId: desk.schoolId }, select: { publishedAt: true, schoolSlug: true } });
+  return row?.publishedAt ? { publishedAt: row.publishedAt.toISOString(), slug: row.schoolSlug, url: `/public/disclosure/${row.schoolSlug}` } : null;
+}
+
 /** Publish (a fresh snapshot from the rows) or take the page down. The office's and the IQAC's. */
 export async function setDisclosure(ctx: ActiveContext, publish: boolean, now = new Date()) {
   const desk = await iqacActor(ctx, ["IQAC", "ADMIN"]);
-  if (!(await disclosureApplies(desk.schoolId))) throw new AccessError("councilFilings.refuseNotApplicable", "NOT_FOUND");
+  // The streams gate publishing only (TA-265): a page published before the streams stopped bringing the disclosure
+  // can still be taken down, as publishedDisclosure's own comment promises.
+  const applies = await disclosureApplies(desk.schoolId);
+  if (publish && !applies) throw new AccessError("councilFilings.refuseNotApplicable", "NOT_FOUND");
   const school = await db.school.findUniqueOrThrow({ where: { id: desk.schoolId }, select: { slug: true } });
   if (publish) {
     const year = now.getUTCMonth() >= 5 ? now.getUTCFullYear() : now.getUTCFullYear() - 1;
@@ -409,6 +450,7 @@ export async function setDisclosure(ctx: ActiveContext, publish: boolean, now = 
     await db.disclosurePage.updateMany({ where: { schoolId: desk.schoolId }, data: { publishedAt: null } });
   }
   await audit({ schoolId: desk.schoolId, actorUserId: desk.userId, action: publish ? "iqac.disclosure.publish" : "iqac.disclosure.unpublish", targetType: "School", targetId: desk.schoolId, meta: {} });
+  if (!applies) return { publishedAt: null, slug: school.slug, url: `/public/disclosure/${school.slug}` };
   return disclosureState(ctx);
 }
 

@@ -6,7 +6,7 @@ import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { EmptyState } from "@/components/ui/states";
-import type { Translate, TranslationKey } from "@/lib/i18n/dictionary";
+import { DICTIONARIES, type Translate, type TranslationKey } from "@/lib/i18n/dictionary";
 import { answerSurveyAction } from "@/app/(app)/iqac/actions";
 import { ActionForm } from "@/components/ui/action-form";
 
@@ -20,7 +20,29 @@ import { ActionForm } from "@/components/ui/action-form";
 /** A translator for dictionary keys built from a coded value ("iqac.kind." + the code): the coded lists and the keys are kept in step by the i18n tests. */
 export const keyed = (t: Translate) => (key: string) => t(key as TranslationKey);
 
-export function IqacFlash({ ok, error }: { ok?: string; error?: string }) {
+/** Every sentence of the three dictionaries, gathered once: what IqacFlash will print. */
+let SENTENCES: Set<string> | null = null;
+function isProductSentence(text: string): boolean {
+  if (!SENTENCES) {
+    const out = new Set<string>();
+    const walk = (v: unknown) => {
+      if (typeof v === "string") out.add(v);
+      else if (v && typeof v === "object") for (const x of Object.values(v)) walk(x);
+    };
+    walk(DICTIONARIES);
+    SENTENCES = out;
+  }
+  return SENTENCES.has(text);
+}
+
+/**
+ * The message a form came back with. Pages hand it the address's ?ok= and ?error=, which anybody can write into a
+ * link (TA-309): only a sentence of the product's own dictionaries is printed — the redirecting forms (the council
+ * worksheets, the simulator) put exactly such a sentence there — and any other text is dropped.
+ */
+export function IqacFlash({ ok: okRaw, error: errorRaw }: { ok?: string; error?: string }) {
+  const ok = okRaw && isProductSentence(okRaw) ? okRaw : undefined;
+  const error = errorRaw && isProductSentence(errorRaw) ? errorRaw : undefined;
   if (!ok && !error) return null;
   return (
     <Card role={error ? "alert" : "status"}>
