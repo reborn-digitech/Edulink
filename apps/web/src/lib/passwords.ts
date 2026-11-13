@@ -29,9 +29,13 @@ import {
 } from "./email";
 import type { TranslationKey } from "@/lib/i18n/dictionary";
 import {
+  callerKey,
   consume,
+  peek,
   RESET_REQUESTS,
   RESET_COMPLETIONS,
+  LOGIN_GLOBAL,
+  LOGIN_PER_ADDRESS,
   LOGIN_ATTEMPTS,
   PHONE_VERIFY_REQUESTS,
   EMAIL_CHANGE_REQUESTS,
@@ -79,6 +83,9 @@ const APP_URL = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000";
 export const MAX_RESET_ATTEMPTS = 5;
 
 const RESET_PURPOSE = "PASSWORD_RESET";
+
+/** Failed reset completions across the service (TA-002), the reset's counterpart of the login's `login-global`. */
+const RESET_GLOBAL_BUCKET = "reset-complete-global";
 
 /**
  * The one key an identifier gets, however it was spelled.
@@ -285,7 +292,14 @@ export type ResetRequest = {
  * the guessing surface for no benefit, and somebody who asks twice is going to
  * use the second message.
  */
-export async function requestPasswordReset(rawIdentifier: string, opts: { defer?: Defer } = {}): Promise<ResetRequest> {
+export async function requestPasswordReset(
+  rawIdentifier: string,
+  /**
+   * `caller` as `signInWithPassword` takes it: `null` for nobody (a script, a
+   * test), a string for an address; left out, the request's own address is read.
+   */
+  opts: { defer?: Defer; caller?: string | null } = {},
+): Promise<ResetRequest> {
   const raw = rawIdentifier.trim();
   const kind = identifierKind(raw);
   const channel: "EMAIL" | "PHONE" = kind === "PHONE" ? "PHONE" : "EMAIL";
@@ -320,6 +334,22 @@ export async function requestPasswordReset(rawIdentifier: string, opts: { defer?
       errorKey: "refusal.tooManyRetry",
       retryAfterSeconds: gate.retryAfterSeconds,
     };
+  }
+
+  /**
+   * ⚠ AND HOW MANY TIMES THIS ADDRESS HAS ASKED, whatever it typed (TA-002).
+   * The bucket above is per identifier, so a script asking for sixty accounts'
+   * codes met sixty separate limits and could then guess at all of them. The
+   * same fifty a quarter-hour the password check allows one address
+   * (LOGIN_PER_ADDRESS), counted on every request before anything is looked up,
+   * so an identifier naming nobody costs what one naming somebody does.
+   */
+  const caller = opts.caller === undefined ? await callerKey() : opts.caller;
+  if (caller !== null) {
+    const address = await consume(`reset-addr:${caller}`, LOGIN_PER_ADDRESS.limit, LOGIN_PER_ADDRESS.windowMs);
+    if (!address.allowed) {
+      return { ok: false, hint, channel, errorKey: "refusal.tooManyRetry", retryAfterSeconds: address.retryAfterSeconds };
+    }
   }
 
   /**
@@ -447,11 +477,20 @@ export type ResetResult = { ok: boolean; errorKey?: TranslationKey; retryAfterSe
  * up and keyed on the normalised login, so an identifier that names nobody is
  * limited exactly like one that does. The token's own five-guess cap bounds one
  * code; this bounds the loop of "ask for a fresh code, guess five times".
+ *
+ * AND THE TWO CEILINGS THE PASSWORD CHECK HAS (TA-002): failures from one
+ * address whatever the identifier (LOGIN_PER_ADDRESS) and failures across the
+ * service (LOGIN_GLOBAL), peeked before anything is looked up and charged on
+ * every failure, an identifier naming nobody included, so guessing codes for
+ * many accounts at once meets a wall that is no one account's. A right code
+ * costs nothing from either.
  */
 export async function resetPassword(
   rawIdentifier: string,
   code: string,
   newPassword: string,
+  /** As `signInWithPassword` takes it: `null` for nobody, a string for an address, left out for the request's own. */
+  opts: { caller?: string | null } = {},
 ): Promise<ResetResult> {
   const generic: ResetResult = { ok: false, errorKey: "refusal.codeWrong" };
 
@@ -467,8 +506,24 @@ export async function resetPassword(
     return { ok: false, errorKey: "refusal.tooManyRetry", retryAfterSeconds: gate.retryAfterSeconds };
   }
 
+  const caller = opts.caller === undefined ? await callerKey() : opts.caller;
+  const addressBucket = caller === null ? null : `reset-complete-addr:${caller}`;
+  if (addressBucket) {
+    const address = await peek(addressBucket, LOGIN_PER_ADDRESS.limit);
+    if (!address.allowed) return { ok: false, errorKey: "refusal.tooManyRetry", retryAfterSeconds: address.retryAfterSeconds };
+  }
+  const global = await peek(RESET_GLOBAL_BUCKET, LOGIN_GLOBAL.limit);
+  if (!global.allowed) return { ok: false, errorKey: "refusal.tooManyRetry", retryAfterSeconds: global.retryAfterSeconds };
+
+  // Every way this can fail is one more guess, and the last two buckets count it.
+  const failed = async (): Promise<ResetResult> => {
+    if (addressBucket) await consume(addressBucket, LOGIN_PER_ADDRESS.limit, LOGIN_PER_ADDRESS.windowMs);
+    await consume(RESET_GLOBAL_BUCKET, LOGIN_GLOBAL.limit, LOGIN_GLOBAL.windowMs);
+    return generic;
+  };
+
   const account = await findAccount(rawIdentifier);
-  if (!account || account.disabled) return generic;
+  if (!account || account.disabled) return failed();
 
   // Found BY the hash, which includes the user id — so a code guessed for one
   // person cannot open another's row even if the digits happen to match.
@@ -494,10 +549,10 @@ export async function resetPassword(
     orderBy: { createdAt: "desc" },
   });
 
-  if (!live) return generic;
+  if (!live) return failed();
 
   // One conditional statement, before the comparison — see `chargeAttempt`.
-  if (!(await chargeAttempt(live.id))) return generic;
+  if (!(await chargeAttempt(live.id))) return failed();
 
   /**
    * BOTH HALVES OF "ONLY THE NEWEST CODE WORKS" ARE HERE, and each one survives
@@ -521,7 +576,7 @@ export async function resetPassword(
 
   if (!correct) {
     await audit({ actorUserId: account.userId, action: "auth.reset.failed" });
-    return generic;
+    return failed();
   }
 
   // The password itself is checked LAST, so a weak one does not consume the

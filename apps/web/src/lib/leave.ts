@@ -5,7 +5,7 @@ import { notify } from "./notify";
 import { headPageHolders } from "./duties";
 import { AccessError } from "./tenancy";
 import { arrangeCover, REGISTER_COVER_ROLES } from "./register-duty";
-import { dateKeyRange, weekdayOfKey } from "./dates";
+import { addDaysToKey, dateKeyRange, todayKey, weekdayOfKey } from "./dates";
 import type { ActiveContext } from "./session";
 
 /**
@@ -499,7 +499,7 @@ export async function decideLeave(
  */
 type TenantTx = {
   leaveRequest: { update(args: unknown): Promise<unknown> };
-  attendanceCover: { deleteMany(args: unknown): Promise<unknown> };
+  attendanceCover: { deleteMany(args: unknown): Promise<unknown>; updateMany(args: unknown): Promise<unknown> };
   substitution: { deleteMany(args: unknown): Promise<unknown> };
 };
 
@@ -513,13 +513,21 @@ type TenantTx = {
  * the applicant's lessons on the leave's days, which exist only because the
  * board listed them as away: two cover models, one absence, and the absence
  * is gone.
+ *
+ * BUT NOT ONCE IT HAS BEGUN, by the applicant (TA-001). An approved leave whose
+ * first day has come in the school's zone is what the register, the staff month,
+ * the leave balance and the payroll draft read; the applicant withdrawing it
+ * then would pay unpaid days and erase who covered. Past days are the head's or
+ * the office's to change, and even they release only the cover from today on:
+ * a cover or substitution of a day already gone is the record of who did the
+ * work, and stays. An approved leave withdrawn is told to the head's pages.
  */
 export async function cancelLeave(ctx: ActiveContext, leaveId: string): Promise<LeaveResult> {
   if (!ctx.schoolId || !ctx.membershipId) throw new AccessError("access.noActiveSchoolSelected");
 
   const request = await db.leaveRequest.findFirst({
     where: { id: leaveId, schoolId: ctx.schoolId },
-    select: { id: true, status: true, teacherMembershipId: true, fromDateKey: true, toDateKey: true },
+    select: { id: true, status: true, teacherMembershipId: true, fromDateKey: true, toDateKey: true, teacher: { select: { user: { select: { name: true, preferredName: true } } } } },
   });
   if (!request) return { ok: false, errorKey: "leaveKind.notInSchool" };
 
@@ -532,27 +540,40 @@ export async function cancelLeave(ctx: ActiveContext, leaveId: string): Promise<
     return { ok: false, errorKey: "leaveKind.alreadyClosed" };
   }
 
+  // The school's today: an approved leave that has begun is not its applicant's to withdraw (TA-001), and nobody's
+  // withdrawal releases the cover of a day already gone.
+  const school = await db.school.findUniqueOrThrow({ where: { id: ctx.schoolId }, select: { timezone: true } });
+  const today = todayKey(school.timezone);
+  if (isOwner && request.status === "APPROVED" && request.fromDateKey <= today) {
+    return { ok: false, errorKey: "leaveKind.alreadyBegun" };
+  }
+  const releaseFrom = request.fromDateKey > today ? request.fromDateKey : today;
+
   // Read the cover this request created before the transaction removes it —
   // the people named on those rows are expecting to mark a register tomorrow,
   // and they are the ones who need telling. `cancelCover` is not reused here
   // because it authorises a different act; this deletes as part of cancelling
-  // the leave that created it.
-  const releasing = await db.attendanceCover.findMany({
-    where: { leaveRequestId: request.id, schoolId: ctx.schoolId },
-    select: {
-      fromDateKey: true,
-      toDateKey: true,
-      covering: { select: { userId: true } },
-      class: { select: { name: true } },
-    },
-  });
+  // the leave that created it. Only what still lies ahead: a cover wholly past is
+  // kept, one that straddles today is cut to end yesterday.
+  const releasing = (
+    await db.attendanceCover.findMany({
+      where: { leaveRequestId: request.id, schoolId: ctx.schoolId, toDateKey: { gte: today } },
+      select: {
+        fromDateKey: true,
+        toDateKey: true,
+        covering: { select: { userId: true } },
+        class: { select: { name: true } },
+      },
+    })
+  ).map((cover) => ({ ...cover, fromDateKey: cover.fromDateKey < today ? today : cover.fromDateKey }));
   // And the lessons the board handed to somebody on those days. Only the
-  // applicant's own, only inside the leave: a Substitution the register's
-  // ABSENT put there for a colleague is somebody else's absence.
+  // applicant's own, only inside the leave, and only from today on: a
+  // Substitution the register's ABSENT put there for a colleague is somebody
+  // else's absence, and one of a past day is the record of a lesson taught.
   const substitutionsWhere = {
     schoolId: ctx.schoolId,
     absentMembershipId: request.teacherMembershipId,
-    dateKey: { gte: request.fromDateKey, lte: request.toDateKey },
+    dateKey: { gte: releaseFrom, lte: request.toDateKey },
   };
   const releasingLessons =
     request.status === "APPROVED"
@@ -593,9 +614,14 @@ export async function cancelLeave(ctx: ActiveContext, leaveId: string): Promise<
       data: { status: "CANCELLED" },
     });
     // ONLY the cover this request created. Cover arranged by hand for other
-    // reasons belongs to whoever arranged it.
+    // reasons belongs to whoever arranged it. And only from today on: a cover
+    // that began before today ends yesterday, one wholly past is not touched.
+    await t.attendanceCover.updateMany({
+      where: { leaveRequestId: request.id, schoolId: ctx.schoolId, fromDateKey: { lt: today }, toDateKey: { gte: today } },
+      data: { toDateKey: addDaysToKey(today, -1) },
+    });
     await t.attendanceCover.deleteMany({
-      where: { leaveRequestId: request.id, schoolId: ctx.schoolId },
+      where: { leaveRequestId: request.id, schoolId: ctx.schoolId, fromDateKey: { gte: today } },
     });
     if (releasingLessons.length > 0) await t.substitution.deleteMany({ where: substitutionsWhere });
   });
@@ -632,6 +658,24 @@ export async function cancelLeave(ctx: ActiveContext, leaveId: string): Promise<
       url: "/teacher",
       meta: { slotId: row.slotId, dateKey: row.dateKey },
     });
+  }
+
+  // An approved leave withdrawn changes the register, the balance and the pay the office reads: the head's pages are
+  // told (TA-001), all but whoever withdrew it.
+  if (request.status === "APPROVED") {
+    const applicant = request.teacher.user;
+    for (const userId of await headPageHolders(ctx.schoolId)) {
+      if (userId === ctx.user.id) continue;
+      await notify({
+        userId,
+        schoolId: ctx.schoolId,
+        kind: "SYSTEM",
+        titleKey: "notifTitle.leaveWithdrawn",
+        bodyKey: "notifBody.leaveWithdrawnDates",
+        bodyVars: { name: applicant.preferredName ?? applicant.name, from: noticeDate(request.fromDateKey), to: noticeDate(request.toDateKey) },
+        url: "/principal/leave",
+      });
+    }
   }
 
   await audit({

@@ -414,15 +414,25 @@ export async function consentToMentorship(
   if (!isGuardian) throw new AccessError("access.mentorshipNotFound", "NOT_FOUND");
   if (thread.status === "CLOSED") throw new AccessError("access.thisMentorshipHasEnded");
   if (thread.status === "ACTIVE") return;
+  // ONLY A THREAD THE SCHOOL HAS APPROVED waits on a guardian (TA-006): a pupil's ask is REQUESTED until the office
+  // decides it, and a guardian's yes before then would skip the school's decision and the place it claims on the
+  // expert's count. Both apps hide the button; this is the rule, not the button.
+  if (thread.status !== "PENDING_CONSENT") throw new AccessError("mentoring.notApprovedYet");
 
-  await db.mentorThread.update({
-    where: { id: threadId },
+  // Conditional on the status read above, so a decline or a close landing in between is not overwritten.
+  const moved = await db.mentorThread.updateMany({
+    where: { id: threadId, status: "PENDING_CONSENT" },
     data: {
       status: "ACTIVE",
       parentConsentAt: new Date(),
       parentConsentUserId: session.user.id,
     },
   });
+  if (moved.count === 0) {
+    const now = await db.mentorThread.findUnique({ where: { id: threadId }, select: { status: true } });
+    if (now?.status === "ACTIVE") return;
+    throw new AccessError(now?.status === "CLOSED" ? "access.thisMentorshipHasEnded" : "mentoring.notApprovedYet");
+  }
 
   await notify({
     userId: thread.expertUserId,

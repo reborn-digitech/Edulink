@@ -8,8 +8,11 @@
  * the board's substitute ahead of the register-duty cover; and "my covers"
  * hides a cover whose absence is gone, and everything on a closed day.
  *
- * Every date is pinned to the week of Monday 2026-10-05, so nothing here
- * depends on the day the suite runs. The school teaches Monday to Saturday.
+ * Every date is pinned to one week, Monday to Friday, so nothing here depends
+ * on the weekday the suite runs. The week is the first whose Monday is at
+ * least fourteen days ahead (it was 2026-10-05): the applicant may withdraw an
+ * approved leave only before its first day (TA-001), so the leave cancelled
+ * below must still lie ahead. The school teaches Monday to Saturday.
  */
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { PrismaClient } from "@prisma/client";
@@ -18,14 +21,16 @@ import { applyForLeave, cancelLeave, decideLeave } from "@/lib/leave";
 import { assignSubstitute, myCovers, substitutionBoard } from "@/lib/substitutions";
 import { classWeek } from "@/lib/timetable";
 import { AccessError } from "@/lib/tenancy";
+import { addDaysToKey, todayKey, weekdayOfKey } from "@/lib/dates";
 
 const db = new PrismaClient();
 const STAMP = Date.now();
-const MON = "2026-10-05";
-const TUE = "2026-10-06";
-const WED = "2026-10-07";
-const THU = "2026-10-08";
-const FRI = "2026-10-09";
+const AHEAD = addDaysToKey(todayKey("Asia/Kolkata"), 14);
+const MON = addDaysToKey(AHEAD, (8 - weekdayOfKey(AHEAD)) % 7);
+const TUE = addDaysToKey(MON, 1);
+const WED = addDaysToKey(MON, 2);
+const THU = addDaysToKey(MON, 3);
+const FRI = addDaysToKey(MON, 4);
 
 let schoolId = "";
 let classId = "";

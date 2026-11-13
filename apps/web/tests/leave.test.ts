@@ -11,6 +11,7 @@ import {
 } from "@/lib/leave";
 import { registerDuty } from "@/lib/register-duty";
 import { forSchool } from "@/lib/tenant-context";
+import { addDaysToKey, todayKey, weekdayOfKey } from "@/lib/dates";
 import type { ActiveContext } from "@/lib/session";
 import { leaveBalanceFor, leaveDayCounterFor, leaveDays, setStaffRecord, staffRecordFor } from "@/lib/staff-records";
 
@@ -408,14 +409,26 @@ describe("⚠ who may decide", () => {
 });
 
 describe("⚠ withdrawing takes the cover with it", () => {
+  /**
+   * A week still ahead, Monday to Friday, a month or more from today: an approved
+   * leave is its applicant's to withdraw only before its first day has come
+   * (TA-001), so the approved cases here cannot use the fixed May week above.
+   */
+  const AHEAD = (() => {
+    const later = addDaysToKey(todayKey("Asia/Kolkata"), 30);
+    const monday = addDaysToKey(later, (8 - weekdayOfKey(later)) % 7);
+    return { fromDateKey: monday, toDateKey: addDaysToKey(monday, 4) };
+  })();
+  const AHEAD_BASE = { ...BASE, ...AHEAD };
+
   it("cancels approved leave and removes the cover it caused", async () => {
-    await applyForLeave(applicant, { ...BASE, nominatedCoverMembershipId: coverMembershipId });
+    await applyForLeave(applicant, { ...AHEAD_BASE, nominatedCoverMembershipId: coverMembershipId });
     const id = await pendingId();
     await decideLeave(principal, id, "APPROVED");
-    expect((await registerDuty(coverStaff, classId, FROM)).may).toBe(true);
+    expect((await registerDuty(coverStaff, classId, AHEAD.fromDateKey)).may).toBe(true);
 
     expect((await cancelLeave(applicant, id)).ok).toBe(true);
-    expect((await registerDuty(coverStaff, classId, FROM)).may).toBe(false);
+    expect((await registerDuty(coverStaff, classId, AHEAD.fromDateKey)).may).toBe(false);
   });
 
   /**
@@ -446,10 +459,10 @@ describe("⚠ withdrawing takes the cover with it", () => {
    * The atomicity itself is proved in `transaction-atomicity.test.ts`.
    */
   it("⚠ works with a tenant bound, which is the path a real request takes", async () => {
-    await applyForLeave(applicant, { ...BASE, nominatedCoverMembershipId: coverMembershipId });
+    await applyForLeave(applicant, { ...AHEAD_BASE, nominatedCoverMembershipId: coverMembershipId });
     const id = await pendingId();
     await decideLeave(principal, id, "APPROVED");
-    expect((await registerDuty(coverStaff, classId, FROM)).may).toBe(true);
+    expect((await registerDuty(coverStaff, classId, AHEAD.fromDateKey)).may).toBe(true);
 
     const result = await forSchool(riversideId, () => cancelLeave(applicant, id));
     expect(result.ok).toBe(true);
@@ -457,11 +470,11 @@ describe("⚠ withdrawing takes the cover with it", () => {
     // Both halves of the transaction landed, not just the first.
     const request = await db.leaveRequest.findUniqueOrThrow({ where: { id } });
     expect(request.status).toBe("CANCELLED");
-    expect((await registerDuty(coverStaff, classId, FROM)).may).toBe(false);
+    expect((await registerDuty(coverStaff, classId, AHEAD.fromDateKey)).may).toBe(false);
   });
 
   it("⚠ tells the released cover teacher", async () => {
-    await applyForLeave(applicant, { ...BASE, nominatedCoverMembershipId: coverMembershipId });
+    await applyForLeave(applicant, { ...AHEAD_BASE, nominatedCoverMembershipId: coverMembershipId });
     const id = await pendingId();
     await decideLeave(principal, id, "APPROVED");
     await cancelLeave(applicant, id);
@@ -484,20 +497,20 @@ describe("⚠ withdrawing takes the cover with it", () => {
         schoolId: riversideId,
         classId,
         coveringMembershipId: principalMembershipId,
-        fromDateKey: FROM,
-        toDateKey: TO,
+        fromDateKey: AHEAD.fromDateKey,
+        toDateKey: AHEAD.toDateKey,
         reason: "Arranged separately",
       },
     });
 
-    await applyForLeave(applicant, { ...BASE, nominatedCoverMembershipId: coverMembershipId });
+    await applyForLeave(applicant, { ...AHEAD_BASE, nominatedCoverMembershipId: coverMembershipId });
     const id = await pendingId();
     await decideLeave(principal, id, "APPROVED");
     await cancelLeave(applicant, id);
 
     // The leave's cover is gone; the hand-arranged one is untouched.
-    expect((await registerDuty(coverStaff, classId, FROM)).may).toBe(false);
-    expect((await registerDuty(principal, classId, FROM)).may).toBe(true);
+    expect((await registerDuty(coverStaff, classId, AHEAD.fromDateKey)).may).toBe(false);
+    expect((await registerDuty(principal, classId, AHEAD.fromDateKey)).may).toBe(true);
   });
 
   it("lets the applicant withdraw a pending request", async () => {

@@ -524,7 +524,7 @@ export async function getPost(session: ActiveContext, postId: string) {
       ],
     },
     include: {
-      author: { select: { id: true, name: true, preferredName: true, avatarKey: true } },
+      author: { select: { id: true, name: true, preferredName: true, avatarKey: true, isMinor: true } },
       authorship: { select: { role: true, joinedAt: true } },
       authorCommittee: { select: { name: true } },
       class: { select: { name: true } },
@@ -544,7 +544,7 @@ export async function getPost(session: ActiveContext, postId: string) {
             ? { status: { not: "REMOVED" }, OR: [{ status: "APPROVED" }, { authorUserId: session.user.id }, { schoolId: session.schoolId }] }
             : // Students and parents never see held comments other than their own.
               { status: { not: "REMOVED" }, OR: [{ status: "APPROVED" }, { authorUserId: session.user.id }] },
-        include: { author: { select: { id: true, name: true, preferredName: true, avatarKey: true } } },
+        include: { author: { select: { id: true, name: true, preferredName: true, avatarKey: true, isMinor: true } } },
         orderBy: { createdAt: "asc" },
       },
     },
@@ -595,15 +595,32 @@ export async function getPost(session: ActiveContext, postId: string) {
    * picture, no role tag and no profile door to the student who wrote it. The review desk of the school
    * still sees the writer beside the council, as the feed shows them.
    */
+  /*
+   * A PUPIL IS A FIRST NAME TO ANOTHER SCHOOL (TA-005), on the post's own page and door as on the global feed's
+   * list (security assessment 2026-09-24, finding 11): a reader whose school is not the post's sees a minor or a
+   * pupil, author or commenter, by first name, with no surname, no user id and no picture. The reader's own
+   * comment keeps their own name; the pupils' own school reads everyone in full, as before.
+   */
+  const foreign = post.scope === "GLOBAL" && post.schoolId !== session.schoolId;
+  const isPupil = (person: { id: string; isMinor: boolean }, role: string | null | undefined) => foreign && person.id !== session.user.id && (person.isMinor || role === "STUDENT");
+  const firstNameOnly = <P extends { id: string; name: string; preferredName: string | null; avatarKey: string | null }>(person: P): P => ({ ...person, id: "", name: firstNameOf(person.preferredName ?? person.name), preferredName: null, avatarKey: null });
+  const authorIsPupil = isPupil(post.author, post.authorship?.role);
+  const shown = {
+    ...post,
+    authorUserId: authorIsPupil ? "" : post.authorUserId,
+    author: authorIsPupil ? firstNameOnly(post.author) : post.author,
+    comments: post.comments.map((c) => (isPupil(c.author, tagByUser.get(c.author.id)?.role) ? { ...c, authorUserId: "", author: firstNameOnly(c.author) } : c)),
+  };
+
   if (post.authorCommittee) {
     const reviewer = (session.role === "ADMIN" || session.role === "TEACHER") && session.schoolId === post.schoolId;
     const writer = post.author.preferredName ?? post.author.name;
-    const author = { ...post.author, name: reviewer ? `${post.authorCommittee.name} · ${writer}` : post.authorCommittee.name, preferredName: null, avatarKey: null };
+    const author = { ...shown.author, name: reviewer ? `${post.authorCommittee.name} · ${writer}` : post.authorCommittee.name, preferredName: null, avatarKey: null };
     // No door from the council's name to the writer's profile (their own comments are named, without one).
     const councilLinks = new Map([...membershipByUser].filter(([userId]) => userId !== post.author.id));
-    return { ...post, author, authorship: null, membershipByUser: councilLinks, tagByUser, authorBatch: null, canAck, reviewableCommentIds };
+    return { ...shown, author, authorship: null, membershipByUser: councilLinks, tagByUser, authorBatch: null, canAck, reviewableCommentIds };
   }
-  return { ...post, membershipByUser, tagByUser, authorBatch, canAck, reviewableCommentIds };
+  return { ...shown, membershipByUser, tagByUser, authorBatch, canAck, reviewableCommentIds };
 }
 
 /* -------------------------------------------------------------------------- */

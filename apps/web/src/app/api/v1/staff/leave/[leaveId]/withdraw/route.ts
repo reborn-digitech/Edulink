@@ -10,8 +10,10 @@ import { apiRefused } from "@/lib/api-reads/admin";
  * caused is released and the colleagues named on it are told. The roles the
  * action takes: every applicant's and the office. The library binds the
  * person: only the one who asked, the head or the office (anyone else 403).
- * One already withdrawn or declined is a 422; an id this school does not hold
- * is a 404. No body: the call is the act.
+ * One already withdrawn or declined is a 422, and so is the applicant's own
+ * approved leave once its first day has come (TA-001: past days are the head's
+ * or the office's); an id this school does not hold is a 404. No body: the
+ * call is the act.
  */
 export async function POST(_request: Request, { params }: { params: Promise<{ leaveId: string }> }) {
   try {

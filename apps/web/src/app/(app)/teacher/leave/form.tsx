@@ -258,7 +258,7 @@ export function LeaveForm({
                   {t(LEAVE_STATUS_KEY[request.status as LeaveStatus] ?? "leaveStatus.pending")}
                 </Badge>
 
-                {(request.status === "PENDING" || request.status === "APPROVED") && (
+                {(request.status === "PENDING" || (request.status === "APPROVED" && request.fromDateKey > today)) && (
                   <Button
                     size="sm"
                     variant="ghost"
