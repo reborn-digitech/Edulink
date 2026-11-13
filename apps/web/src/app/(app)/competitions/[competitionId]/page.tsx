@@ -29,9 +29,10 @@ export async function generateMetadata(): Promise<Metadata> {
   return { title: t("meta.competition") };
 }
 
-function when(date: Date | null): string | null {
+// TA-319: in the organising school's zone (India's for the platform's): a calendar event starts at that school's midnight.
+function when(date: Date | null, timeZone: string): string | null {
   if (!date) return null;
-  return formatDate(date);
+  return formatDate(date, timeZone);
 }
 
 export default async function CompetitionPage({
@@ -83,9 +84,9 @@ export default async function CompetitionPage({
   // second lock rather than the only one.
   const standings = await leaderboard(session, competition.id);
 
-  const closes = when(competition.registrationClosesAt);
-  const starts = when(competition.startsAt);
-  const ends = when(competition.endsAt);
+  const closes = when(competition.registrationClosesAt, competition.timeZone);
+  const starts = when(competition.startsAt, competition.timeZone);
+  const ends = when(competition.endsAt, competition.timeZone);
 
   return (
     <div className="mx-auto max-w-2xl space-y-5">

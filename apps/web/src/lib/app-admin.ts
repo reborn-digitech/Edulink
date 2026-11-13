@@ -9,6 +9,8 @@ import { statsFor, type QuestionStatSummary } from "./bank-tools";
 import { CONTENT_TEAM_SOURCE } from "./bank-source";
 import { SERVED_QUESTION } from "./quiz-served";
 import type { ActiveContext } from "./session";
+import { competitionDay, PLATFORM_ZONE } from "./competition-forms";
+import { dayToDate } from "./competition-crawl-rules";
 
 /**
  * The application's content team.
@@ -129,9 +131,9 @@ export function readPlatformCompetitionForm(
       rules: text(form.rules),
       prizes: text(form.prizes),
       externalUrl,
-      registrationClosesAt: parseFormDate(form.registrationClosesAt),
-      startsAt: parseFormDate(form.startsAt),
-      endsAt: parseFormDate(form.endsAt),
+      registrationClosesAt: parseFormDate(form.registrationClosesAt, "end"),
+      startsAt: parseFormDate(form.startsAt, "start"),
+      endsAt: parseFormDate(form.endsAt, "end"),
       requiresParentConsent: checked(form.requiresParentConsent),
       leaderboardEnabled: checked(form.leaderboardEnabled),
     },
@@ -152,9 +154,14 @@ export function isHttpsUrl(value: string): boolean {
   }
 }
 
-function parseFormDate(value: unknown): Date | null {
+/**
+ * TA-102: a typed closing or end day runs to the last instant of that day in India (the platform's zone). A start
+ * day stays on its own UTC date (noon, as the crawler and the desk land one, dayToDate), so the crawl's day-by-day
+ * comparison (comparable, dateToDay) and the dedupe's year read the day typed and not the evening before.
+ */
+function parseFormDate(value: unknown, edge: "start" | "end"): Date | null {
   if (typeof value !== "string" || !value.trim()) return null;
-  const date = new Date(value);
+  const date = edge === "start" ? (dayToDate(value.trim()) ?? new Date(value)) : competitionDay(value, edge, PLATFORM_ZONE);
   return Number.isNaN(date.getTime()) ? null : date;
 }
 

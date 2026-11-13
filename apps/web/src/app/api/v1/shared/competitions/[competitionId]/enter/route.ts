@@ -17,7 +17,14 @@ export async function POST(request: Request, { params }: { params: Promise<{ com
     // TA-423: read to the cap, by what arrives; past it, 413 (apiFailure).
     const raw = await readBounded(request, JSON_BODY_LIMIT);
     if (raw === null) throw new BodyTooLarge();
-    const parsed = competitionEnterBodySchema.safeParse(raw.trim().length === 0 ? undefined : JSON.parse(raw));
+    // TA-426: a body that is not JSON is the form's 422, not a server fault; null fails the schema as any bad shape does.
+    let json: unknown = null;
+    try {
+      json = raw.trim().length === 0 ? undefined : JSON.parse(raw);
+    } catch {
+      json = null;
+    }
+    const parsed = competitionEnterBodySchema.safeParse(json);
     if (!parsed.success) return apiInvalid(parsed);
     const body = parsed.data ?? {};
     return await underRules("api/v1/shared/competitions/[competitionId]/enter", async () =>

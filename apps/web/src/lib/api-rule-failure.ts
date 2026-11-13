@@ -1,6 +1,7 @@
 import "server-only";
 import type { NextResponse } from "next/server";
 import { AccessError } from "@/lib/tenancy";
+import { PlanRequiredError } from "@/lib/access-error";
 import { apiFailure } from "@/lib/api-v1";
 import { apiRefused } from "@/lib/api-reads/admin";
 
@@ -22,7 +23,8 @@ export async function underRules(where: string, run: () => Promise<NextResponse>
   try {
     return await run();
   } catch (error) {
-    if (error instanceof AccessError && error.code === "FORBIDDEN") return apiRefused({ errorKey: error.key, errorVars: error.vars });
+    // TA-322: a plan this person lacks is apiFailure's 402 PLAN_REQUIRED (with the plan and the feature), not a rule's 422.
+    if (error instanceof AccessError && error.code === "FORBIDDEN" && !(error instanceof PlanRequiredError)) return apiRefused({ errorKey: error.key, errorVars: error.vars });
     return apiFailure(error, where);
   }
 }

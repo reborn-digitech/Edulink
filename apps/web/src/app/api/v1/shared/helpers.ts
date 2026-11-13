@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { apiErrorSchema } from "@edulink/contracts";
 import { AccessError } from "@/lib/tenancy";
+import { PlanRequiredError } from "@/lib/access-error";
 import { getT } from "@/lib/i18n/server";
 import type { TranslationKey } from "@/lib/i18n/dictionary";
 
@@ -14,6 +15,9 @@ export async function asNotFound<T>(work: () => Promise<T>): Promise<T> {
   try {
     return await work();
   } catch (error) {
+    // TA-322: a plan this person lacks is not an id somebody else owns: it goes to apiFailure as it is, a 402
+    // PLAN_REQUIRED naming the plan and the feature, which the phone draws its plan card from.
+    if (error instanceof PlanRequiredError) throw error;
     if (error instanceof AccessError && error.code === "FORBIDDEN") throw new AccessError(error.key, "NOT_FOUND", error.vars);
     throw error;
   }

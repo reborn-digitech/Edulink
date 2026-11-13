@@ -5,6 +5,7 @@ import { db } from "./db";
 import { AccessError } from "./tenancy";
 import { audit } from "./audit";
 import { addDaysToKey, dateKeyInZone, isDateKey, zonedStartOfDay } from "./dates";
+import { classBandProblem } from "./competition-forms";
 import type { ActiveContext } from "./session";
 
 /**
@@ -107,6 +108,9 @@ export function normaliseEvent(input: CompetitionEventInput): Clean {
   if (registrationClosesDateKey > endDateKey) throw new AccessError("competitions.closesAfterEnd");
   if (!(COMPETITION_INTERNAL_BOARDS as readonly string[]).includes(input.internalBoard)) throw new AccessError("competitions.pickABoard");
   const grade = (g: string | undefined) => (g && g.trim().length > 0 ? g.trim().slice(0, 10) : null);
+  // TA-574: two classes, the low end not above the high, or the band refuses (or admits) every pupil without a word.
+  const band = classBandProblem(input.gradeLow, input.gradeHigh);
+  if (band) throw new AccessError(band);
   return {
     title,
     summary: summary.slice(0, 200),

@@ -5,6 +5,7 @@ import { z } from "zod";
 import { getSession } from "@/lib/session";
 import { AccessError } from "@/lib/tenancy";
 import {
+  competitionZoneOf,
   createCompetition,
   enterCompetition,
   giveConsent,
@@ -130,7 +131,8 @@ export async function createCompetitionAction(input: unknown): Promise<CreateCom
   const session = await getSession();
   if (!session) return { ok: false, error: t("competitions.notSignedIn") };
 
-  const parsed = competitionFormSchema(t).safeParse(input);
+  // TA-102: the typed days are the school's days.
+  const parsed = competitionFormSchema(t, await competitionZoneOf(session)).safeParse(input);
   if (!parsed.success) {
     // Every bad field reported at once, never the first one only. (§6)
     return { ok: false, fieldErrors: fieldErrorsOf(parsed.error), error: t("competitions.needsAnotherLook") };

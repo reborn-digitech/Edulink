@@ -479,7 +479,8 @@ describe("the model's locked schema and what code refuses", () => {
     expect(f.gradeHigh).toBe("13");
     expect(f.subject).toBeNull();
     expect(f.externalUrl).toBe(`${ROOT}nso`);
-    expect(f.registrationClosesAt?.toISOString()).toBe("2026-10-31T12:00:00.000Z");
+    // TA-102: a closing day runs to the end of that day in India (it closed at 17:30, noon UTC, before).
+    expect(f.registrationClosesAt?.toISOString()).toBe("2026-10-31T18:29:59.999Z");
     expect(toCompetitionFields(entry({ classFrom: 10, classTo: 6 }), ROOT).gradeLow).toBe("6");
     expect(yearOf([new Date("2027-01-10"), new Date("2026-09-01")])).toBe(2026);
     expect(dedupeText("ZZ Org", "ZZ Olympiad 2026-27")).toBe(dedupeText("zz org", "ZZ  Olympiad 2027"));

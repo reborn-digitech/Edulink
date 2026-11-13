@@ -14,6 +14,7 @@
  */
 import type { CompetitionDiff, CompetitionExtractEntry, CrawlRejectReason, StreamCode } from "@edulink/contracts";
 import { sourceKindAudience, STREAMS } from "@edulink/contracts"; // college-content (12 Oct 2026)
+import { addDaysToKey, zonedStartOfDay } from "./dates";
 
 export const MIN_CONFIDENCE = 0.6;
 export const DUPLICATE_SIMILARITY = 0.9;
@@ -41,6 +42,16 @@ export function dayToDate(day: string | null | undefined): Date | null {
   const d = new Date(`${day}T12:00:00.000Z`);
   if (Number.isNaN(d.getTime()) || d.toISOString().slice(0, 10) !== day) return null;
   return d;
+}
+
+/**
+ * TA-102: a closing or end day as the last instant of that day in India, the platform's zone, so entries close and
+ * work stops at the end of the day the page prints and not at noon UTC (17:30). It is 18:29:59.999 UTC of the same
+ * date, so it still reads as that day wherever a day is read off the UTC date (dateToDay, the desk).
+ */
+export function dayEndToDate(day: string | null | undefined): Date | null {
+  if (!dayToDate(day)) return null;
+  return new Date(zonedStartOfDay(addDaysToKey(day!, 1), "Asia/Kolkata").getTime() - 1);
 }
 
 export function dateToDay(d: Date | null | undefined): string | null {
@@ -158,7 +169,9 @@ const STREAM_WORDS: Record<StreamCode, RegExp> = {
   SCIENCE: /\bB\.?\s?Sc\b|\bM\.?\s?Sc\b|science students|natural sciences/i,
   COMMERCE: /commerce|\bB\.?\s?Com\b|accountan/i,
   MANAGEMENT: /management|\bMBA\b|\bBBA\b|\bPGDM\b|business school/i,
-  ENGINEERING: /engineer|\bB\.?\s?Tech\b|\bM\.?\s?Tech\b|\bB\.?\s?E\.?\b|polytechnic|technical institutions?/i,
+  // TA-478: case-sensitive, so the abbreviations need their capitals and B.E. its dot: with the i flag and the dots
+  // optional, "\bB\.?\s?E\.?\b" was the English word "be" and kept a wrongly given stream on almost every page.
+  ENGINEERING: /[Ee]ngineer|ENGINEER|\bB\.?\s?Tech\b|\bM\.?\s?Tech\b|\bB\.?\s?TECH\b|\bM\.?\s?TECH\b|\bB\.\s?E\b|[Pp]olytechnic|POLYTECHNIC|[Tt]echnical [Ii]nstitutions?|TECHNICAL INSTITUTIONS?/,
   PHARMACY: /pharm/i,
   LAW: /\blaws?\b|legal|moot|\bLL\.?\s?[BM]\b|advocate|bar council/i,
   EDUCATION: /teacher education|\bB\.?\s?Ed\b|\bM\.?\s?Ed\b|student teachers?/i,
@@ -319,9 +332,9 @@ export function toCompetitionFields(entry: CompetitionExtractEntry, pageUrl: str
     prizes: clean(entry.prizes, 300),
     externalUrl: httpsOrNull(entry.website) ?? httpsOrNull(pageUrl),
     registrationOpensAt: dayToDate(entry.registrationOpens),
-    registrationClosesAt: dayToDate(entry.registrationCloses),
+    registrationClosesAt: dayEndToDate(entry.registrationCloses),
     startsAt: dayToDate(entry.eventStarts),
-    endsAt: dayToDate(entry.eventEnds),
+    endsAt: dayEndToDate(entry.eventEnds),
     audience: resolved.audience,
     streams: resolved.streams,
   };

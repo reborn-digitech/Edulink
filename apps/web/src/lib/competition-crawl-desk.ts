@@ -24,6 +24,7 @@ import { assertFeatureOn } from "./platform-features";
 import { audit } from "./audit";
 import { reviewerRole } from "./quiz-review";
 import { isHttpsUrl } from "./app-admin";
+import { dayEndToDate } from "./competition-crawl-rules";
 import { CRAWL_MACHINE, readCrawl, readCrawls, startCrawl, stopCrawl, type CrawlJobDb } from "./competition-crawl-jobs";
 import type { JobDeps } from "./quiz-jobs";
 import type { ActiveContext } from "./session";
@@ -286,7 +287,8 @@ export async function deskEditDraft(session: ActiveContext, competitionId: strin
   if (current.status !== "DRAFT") throw new DeskRefusal("competitionCrawl.onlyDraftsEdited", 409);
   // A field the body leaves out keeps what it was; a field sent empty is cleared.
   const keep = <K extends keyof typeof current>(k: K, v: string | null | undefined) => (v === undefined ? current[k] : (v ?? "").trim() || null);
-  const keepDay = <K extends "registrationOpensAt" | "registrationClosesAt" | "startsAt" | "endsAt">(k: K, v: string | null | undefined) => (v === undefined ? current[k] : day(v));
+  // TA-102: a closing or end day runs to the end of that day in India (dayEndToDate), as the crawler lands it.
+  const keepDay = <K extends "registrationOpensAt" | "registrationClosesAt" | "startsAt" | "endsAt">(k: K, v: string | null | undefined) => (v === undefined ? current[k] : (k === "registrationClosesAt" || k === "endsAt") && v && /^\d{4}-\d{2}-\d{2}$/.test(v.trim()) ? dayEndToDate(v.trim()) : day(v));
   const next = {
     title,
     summary,

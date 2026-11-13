@@ -1,4 +1,5 @@
 import "server-only";
+import type { Prisma } from "@prisma/client";
 import { db } from "./db";
 import { AccessError, assertGuardianAccess } from "./tenancy";
 import { consentApplies, studentsGuardiansMaySee } from "./student-consent";
@@ -10,6 +11,10 @@ import { fitsAnyTenant, readerTenants } from "./competition-audience"; // colleg
 import { COMPETITION_INTERNAL_BOARDS, type CompetitionBoard, type CompetitionInternalBoard, type PlanCode } from "@edulink/contracts";
 import { assertChildMayUse, assertFeatureOn, featureOn, lockOf } from "./platform-features";
 import { syncCalendarRow } from "./competition-events";
+import { institutionKindOf } from "./modules";
+import { COLLEGE_GRADE } from "./competition-crawl-rules";
+import { PLATFORM_ZONE } from "./competition-forms";
+import { isCollegeKind } from "@edulink/contracts";
 
 /**
  * The competitions marketplace.
@@ -126,6 +131,16 @@ export function enrolmentAllowed(
 /** The office's board setting as the row holds it, read as the coded list. */
 export function boardSettingOf(value: string): CompetitionInternalBoard {
   return (COMPETITION_INTERNAL_BOARDS as readonly string[]).includes(value) ? (value as CompetitionInternalBoard) : "OFF";
+}
+
+/**
+ * TA-103: a student's grade as a platform competition's band reads it. At a college a degree student's year of
+ * study is college (13), but a junior college's class 11 or 12 (ZZ Vidya's) is that class, as at a school.
+ */
+export function platformBandGrade(collegeKind: boolean, gradeLevel: string | null | undefined): string | null | undefined {
+  if (!collegeKind) return gradeLevel;
+  const g = gradeLevel?.trim();
+  return g === "11" || g === "12" ? g : COLLEGE_GRADE;
 }
 
 /** Whether a pupil's class is inside the competition's band; a band left open, or a grade not known, fits. */
@@ -272,9 +287,9 @@ export async function listCompetitions(
  * see their draft to publish it.
  */
 export async function getCompetition(session: ActiveContext, competitionId: string) {
-  const found = await db.competition.findUnique({ where: { id: competitionId }, include: { crawl: CRAWL_SOURCE, calendarEntry: { select: { id: true } } } });
+  const found = await db.competition.findUnique({ where: { id: competitionId }, include: { crawl: CRAWL_SOURCE, calendarEntry: { select: { id: true } }, organizerSchool: { select: { timezone: true } } } });
   if (!found) throw new AccessError("access.competitionNotFound", "NOT_FOUND");
-  const { crawl, calendarEntry, ...competition } = found;
+  const { crawl, calendarEntry, organizerSchool, ...competition } = found;
 
   // decision 0007: a platform competition is not here while the marketplace is off (FeatureOffError, NOT_FOUND), and
   // meets the plan (PlanRequiredError) for a role whose plan carries it; the school's own are never asked.
@@ -310,6 +325,11 @@ export async function getCompetition(session: ActiveContext, competitionId: stri
     internalBoard: boardSettingOf(competition.internalBoard),
     calendarEntryId: calendarEntry?.id ?? null,
     source: crawlSourceOf(crawl),
+    /**
+     * TA-319: the zone its days are read in: the organising school's (a calendar event's start is that school's
+     * midnight, the evening before in UTC), or India's for the platform's. The page prints its dates in it.
+     */
+    timeZone: organizerSchool?.timezone ?? PLATFORM_ZONE,
     isOrganiser,
     /** The office's switch and the dates together (decision 0007). */
     open: enrolmentAllowed(competition),
@@ -349,14 +369,15 @@ async function entriesFor(
       competitionId: { in: competitionIds },
       studentMembershipId: { in: membershipIds },
     },
-    include: { student: { include: { user: { select: { name: true, preferredName: true } } } } },
+    include: { student: { include: { user: { select: { name: true, preferredName: true } } } }, competition: { select: { requiresParentConsent: true } } },
   });
 
   for (const row of rows) {
     found.set(row.competitionId, {
       id: row.id,
       status: row.status,
-      awaitingConsent: row.parentConsentAt === null,
+      // TA-100: waiting only where the competition asks for a guardian's yes; a consent-free one never stamps it.
+      awaitingConsent: row.competition.requiresParentConsent && row.parentConsentAt === null,
       consentedAt: row.parentConsentAt,
       studentMembershipId: row.studentMembershipId,
       studentName: row.student.user.preferredName ?? row.student.user.name,
@@ -454,7 +475,10 @@ export async function enterCompetition(
 
   // The grade band, when the organiser set one and the pupil's grade is
   // known: a Class 3 child cannot enter a Classes 9–12 olympiad.
-  if (!gradeFits(competition, who.gradeLevel)) throw new AccessError("access.notForYourGrade");
+  // TA-103: a platform competition's band is the platform's convention (classes 1 to 12, college 13), so a college
+  // student is 13 there whatever year of study their membership holds; a school's own band is read as it keeps them.
+  const bandGrade = competition.organizerSchoolId === null ? platformBandGrade(isCollegeKind(await institutionKindOf(who.schoolId)), who.gradeLevel) : who.gradeLevel;
+  if (!gradeFits(competition, bandGrade)) throw new AccessError("access.notForYourGrade");
 
   const now = new Date();
   const existing = await db.competitionEntry.findUnique({
@@ -475,7 +499,7 @@ export async function enterCompetition(
       await giveConsent(session, existing.id);
       return { entryId: existing.id, awaitingConsent: false };
     }
-    return { entryId: existing.id, awaitingConsent: existing.parentConsentAt === null };
+    return { entryId: existing.id, awaitingConsent: competition.requiresParentConsent && existing.parentConsentAt === null };
   }
 
   const entry = await db.competitionEntry.create({
@@ -550,10 +574,13 @@ export async function giveConsent(session: ActiveContext, entryId: string): Prom
 
   if (entry.parentConsentAt) return; // Already given; pressing again is not an error.
 
-  await db.competitionEntry.update({
-    where: { id: entry.id },
+  // TA-416: stamped only while still waiting, so two guardians pressing together stamp it, audit it and tell the
+  // child once; the one that lost the race has nothing left to do.
+  const stamped = await db.competitionEntry.updateMany({
+    where: { id: entry.id, parentConsentAt: null },
     data: { parentConsentAt: new Date(), parentConsentBy: session.user.id },
   });
+  if (stamped.count === 0) return;
 
   // A result recorded before the guardian said yes was kept off the board by
   // the consent rule in `refreshStanding`; the yes puts it on. A recompute, so
@@ -696,8 +723,10 @@ export async function submitEntry(
     throw new AccessError("access.resultAlreadyRecorded");
   }
 
-  await db.competitionEntry.update({
-    where: { id: entry.id },
+  // TA-416: the check above read the row earlier; the write asks it again, so a result recorded in between (the
+  // update waits on the row, then finds a rank or a score) refuses the hand-in rather than undoing the result.
+  const handed = await db.competitionEntry.updateMany({
+    where: { id: entry.id, rank: null, scoreMilli: null },
     data: {
       submissionUrl,
       // Handing in again replaces the link — a child who pasted the wrong one
@@ -706,6 +735,7 @@ export async function submitEntry(
       status: "SUBMITTED",
     },
   });
+  if (handed.count === 0) throw new AccessError("access.resultAlreadyRecorded");
 
   await audit({
     schoolId: entry.schoolId,
@@ -752,7 +782,7 @@ export async function listEntriesForResults(
 
   const rows = await db.competitionEntry.findMany({
     where: { competitionId },
-    include: { student: { include: { user: { select: { name: true, preferredName: true } } } } },
+    include: { student: { include: { user: { select: { name: true, preferredName: true } } } }, competition: { select: { requiresParentConsent: true } } },
     orderBy: [{ rank: "asc" }, { scoreMilli: "desc" }, { createdAt: "asc" }],
   });
 
@@ -764,7 +794,8 @@ export async function listEntriesForResults(
     submissionUrl: row.submissionUrl,
     scoreMilli: row.scoreMilli,
     rank: row.rank,
-    awaitingConsent: row.parentConsentAt === null,
+    // TA-100: as entriesFor reads it.
+    awaitingConsent: row.competition.requiresParentConsent && row.parentConsentAt === null,
   }));
 }
 
@@ -900,6 +931,12 @@ export type CompetitionInput = {
   leaderboardEnabled?: boolean;
 };
 
+/** TA-102: the zone a school's typed competition days are read in (competitionFormSchema): its own, else the platform's. */
+export async function competitionZoneOf(session: ActiveContext): Promise<string> {
+  if (!session.schoolId) return PLATFORM_ZONE;
+  return (await db.school.findUnique({ where: { id: session.schoolId }, select: { timezone: true } }))?.timezone ?? PLATFORM_ZONE;
+}
+
 /**
  * A school posts a competition of its own.
  *
@@ -1025,7 +1062,8 @@ export async function pendingConsents(session: ActiveContext) {
   if (membershipIds.length === 0) return [];
 
   const rows = await db.competitionEntry.findMany({
-    where: { studentMembershipId: { in: membershipIds }, parentConsentAt: null },
+    // TA-100: only where the competition asks a guardian; a consent-free one has nothing to say yes to.
+    where: { studentMembershipId: { in: membershipIds }, parentConsentAt: null, competition: { requiresParentConsent: true } },
     include: {
       competition: { select: { id: true, title: true, organizerName: true, registrationClosesAt: true, status: true, organizerSchoolId: true } },
       student: { include: { user: { select: { name: true, preferredName: true } } } },
@@ -1104,6 +1142,17 @@ export async function refreshStanding(
   schoolId: string,
   competitionId: string,
 ): Promise<void> {
+  // TA-416: the read and the write in one tenant transaction, one school's standing in one competition at a time,
+  // so of two results recorded together the second recompute waits and counts both rather than writing last a
+  // count read before the other's result.
+  await db.$tenantTransaction(async (raw) => {
+    const tx = raw as Prisma.TransactionClient;
+    await tx.$queryRaw`SELECT 1 FROM pg_advisory_xact_lock(hashtext(${`competition-standing:${competitionId}:${schoolId}`}))`;
+    await recomputeStanding(tx, schoolId, competitionId);
+  });
+}
+
+async function recomputeStanding(db: Prisma.TransactionClient, schoolId: string, competitionId: string): Promise<void> {
   const competition = await db.competition.findUnique({
     where: { id: competitionId },
     select: { requiresParentConsent: true },
@@ -1356,7 +1405,8 @@ export async function internalBoard(
     place: i + 1,
     name: nameOf(r),
     className: r.student.enrollments[0]?.class.name ?? null,
-    scoreMilli: r.scoreMilli,
+    // TA-321: a pupil or a guardian learns the others' first name, class and place, and only their own score.
+    scoreMilli: full || r.studentMembershipId === mineId ? r.scoreMilli : null,
     rank: r.rank,
     mine: r.studentMembershipId === mineId,
   }));

@@ -1,6 +1,6 @@
 import { contestCreateSchema, contestCreatedSchema } from "@edulink/contracts";
 import { requireApiRole } from "@/lib/tenancy";
-import { createCompetition } from "@/lib/competitions";
+import { competitionZoneOf, createCompetition } from "@/lib/competitions";
 import { competitionFormSchema, fieldErrorsOf } from "@/lib/competition-forms";
 import { apiFailure, apiInvalid, ok, readJson } from "@/lib/api-v1";
 import { apiRefused } from "@/lib/api-reads/admin";
@@ -18,7 +18,8 @@ export async function POST(request: Request) {
     const parsed = contestCreateSchema.safeParse(await readJson(request));
     if (!parsed.success) return apiInvalid(parsed);
     const t = await getT();
-    const form = competitionFormSchema(t).safeParse(parsed.data);
+    // TA-102: the typed days are the school's days.
+    const form = competitionFormSchema(t, await competitionZoneOf(ctx)).safeParse(parsed.data);
     if (!form.success) return apiRefused({ error: t("competitions.needsAnotherLook"), issues: fieldErrorsOf(form.error) });
     const competitionId = await createCompetition(ctx, form.data);
     return ok(contestCreatedSchema.parse({ competitionId, status: "DRAFT" }), 201);
