@@ -364,7 +364,10 @@ export function DateField({
             disabled={disabled}
             tabIndex={-1}
             aria-hidden="true"
-            onChange={(event) => setTyped(isoToDisplayDate(event.target.value))}
+            // A picked day goes the typed day's way, through report(): a caller
+            // holding the value in its own state must hear of it, or the box
+            // shows the picked day and the form saves the earlier one (TA-017).
+            onChange={(event) => report(isoToDisplayDate(event.target.value))}
             className="sr-only"
           />
 

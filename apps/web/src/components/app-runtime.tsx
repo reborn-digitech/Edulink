@@ -36,7 +36,12 @@ function subscribeToConnectivity(onChange: () => void): () => void {
 const readConnectivity = () => navigator.onLine;
 const assumeOnline = () => true;
 
-export function AppRuntime({ owner }: { owner: string | null }) {
+/**
+ * `owner` is the signed-in person's id, null when nobody is signed in, and
+ * undefined when the document cannot know: the worker's precached /offline
+ * fallback, built once at install for whoever was signed in then (TA-215).
+ */
+export function AppRuntime({ owner }: { owner: string | null | undefined }) {
   const t = useT();
   const { toast } = useToast();
   const online = useSyncExternalStore(subscribeToConnectivity, readConnectivity, assumeOnline);
@@ -50,8 +55,14 @@ export function AppRuntime({ owner }: { owner: string | null }) {
    * another person queued are dropped and the private caches cleared, and
    * the worker is told the same, so the next person on a staff-room machine
    * starts with nothing of the last.
+   *
+   * The offline fallback names no owner (TA-215): its copy was built for
+   * whoever was signed in when the worker installed, and taking that as a
+   * change would delete the queued register of the person in front of it,
+   * under a page saying the register was kept.
    */
   useEffect(() => {
+    if (owner === undefined) return;
     void setOutboxOwner(owner).then(({ changed }) => {
       if (!changed) return;
       navigator.serviceWorker?.controller?.postMessage({ type: "CLEAR_PRIVATE" });

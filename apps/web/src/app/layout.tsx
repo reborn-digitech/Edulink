@@ -81,6 +81,10 @@ export const viewport: Viewport = {
  */
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const [locale, t, session] = await Promise.all([getLocale(), getT(), getSession()]);
+  // /offline is the worker's navigation fallback, precached once per install for whoever was signed in then (often
+  // nobody: the install starts on the login page) and later shown to whoever is in front of the device. Its owner is
+  // frozen, so it names none: undefined tells the runtime to leave the outbox's owner as it is (TA-215).
+  const fallback = (await headers()).get(ROUTE_HEADER) === "GET /offline";
   // The dictionary travels as a cached static file, not inside the page (lib/i18n/delivery.ts, campaign LOAD-4).
   const dictionary = dictionaryAsset(locale).href;
   return (
@@ -103,7 +107,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         </a>
         <I18nProvider locale={locale} href={dictionary}>
           <ToastProvider>
-            <AppRuntime owner={session?.user.id ?? null} />
+            <AppRuntime owner={fallback ? undefined : (session?.user.id ?? null)} />
             {children}
           </ToastProvider>
         </I18nProvider>
