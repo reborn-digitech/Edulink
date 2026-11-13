@@ -1239,6 +1239,7 @@ export const en = {
     alreadyAsked: "You have already asked this mentor. Your school has it.",
     openRequests: "You already have {count} requests waiting. Talk to your school about those first.",
     noLongerWaiting: "That request is no longer waiting.",
+    notApprovedYet: "The school has not approved this request yet. You will be asked once it has.",
     filledUp: "{name} filled up while this was waiting. Decline it and suggest somebody else.",
 
     /* The phone's set-up screen and thread (September 2026). */
@@ -1622,6 +1623,7 @@ export const en = {
     noDrafts: "There are no drafts to publish.",
     nothingUnderName: "Nothing published under that name.",
     noPapersInTerm: "No scheduled papers report into that term for this class yet.",
+    titleTakenOtherYear: "This class already holds cards under that name from another year. Give this set a name of its own, with the year in it.",
     notAnArea: "That is not one of the school's co-scholastic areas.",
     notAGrade: "That grade is not on the school's co-scholastic scale.",
     fromTerm: "Build from a term",
@@ -5876,6 +5878,7 @@ export const en = {
     clashApproved: "You already have approved leave covering those days.",
     notYourOwn: "You cannot decide your own leave request.",
     alreadyClosed: "That request is already closed.",
+    alreadyBegun: "That leave has already begun. Ask the head or the office to change it.",
     notYourselfCover: "You cannot nominate yourself to cover your own absence.",
     notActiveStaff: "That person is not active staff at this school.",
     casual: "Casual leave",
@@ -6823,6 +6826,7 @@ export const en = {
     marksIntro:
       "Pick a class and a paper, then enter marks against the class list. Saved marks flow straight into grades and report cards.",
     savedNote: "Marks saved.",
+    savedSomeKept: "Marks saved, except {count} that someone changed after this sheet was opened: theirs stand and are shown now. Check them and save again if needed.",
     noPapersTitle: "No papers for this class yet",
     noPapersBody: "When the office sets up this grade's exam series, its papers appear here.",
     pickPaper: "Papers",
@@ -7525,6 +7529,7 @@ export const en = {
     collegeFeesConcession: "Granted a college concession",
     collegeFeesConcessionApprove: "Approved a concession above the limit",
     collegeFeesConcessionRefuse: "Refused a concession above the limit",
+    collegeFeesConcessionBackToPrincipal: "Sent the office's concessions back to the principal, above the limit together",
     collegeFeesMess: "Billed a month's mess",
     collegeFeesRoute: "Raised a term's route fees",
     scholarshipClaim: "Recorded a scholarship claim",
@@ -7834,6 +7839,8 @@ export const en = {
     blockerWorkMany: "{count} pieces of work handed in",
     blockerCardsOne: "1 report card",
     blockerCardsMany: "{count} report cards",
+    blockerRecordsOne: "1 other record, such as a fee paid, a certificate, an exam mark or a lecture attended",
+    blockerRecordsMany: "{count} other records, such as fees paid, certificates, exam marks or lectures attended",
   },
   /* ---------------------------------------------------------------------- */
   /* Invitations — sending them, and chasing the ones nobody accepted        */
@@ -8549,6 +8556,7 @@ export const en = {
     reportCardReady: "Your report card is ready",
     childReportCardReady: "{name}'s report card is ready",
     leaveWaiting: "Leave request waiting",
+    leaveWithdrawn: "Approved leave withdrawn",
     leaveApproved: "Your leave was approved",
     leaveDeclined: "Your leave was declined",
     nowMarking: "You are marking {class}",
@@ -8620,6 +8628,7 @@ export const en = {
     promoted: "You are now in {className}. Your timetable and attendance will show it from today.",
     childPromoted: "{name} is now in {className}.",
     leaveAskedFrom: "{name} has asked for leave from {from}.",
+    leaveWithdrawnDates: "The approved leave of {name}, {from} to {to}, was withdrawn.",
     leaveApprovedDates: "{from} to {to}.",
     leaveApprovedCover: "{from} to {to}. Cover arranged for {count} class(es).",
     leaveDeclinedOffice: "Speak to the office if you need to.",

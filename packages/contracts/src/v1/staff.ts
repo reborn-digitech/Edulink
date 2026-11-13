@@ -412,6 +412,8 @@ export const marksGridSchema = z.object({
     .nullable(),
   /** The class weights its work and has no "Exam" weight, so these marks do not count. */
   examUnweighted: z.boolean(),
+  /** The sheet's version: the server's clock when it was read, sent back as POST /api/v1/marks' `basedOn` (TA-010). Null with no paper. */
+  version: z.string().datetime().nullable().optional(),
 });
 export type MarksGridBody = z.infer<typeof marksGridSchema>;
 

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { View } from "react-native";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { hostelLeaveListSchema, hostelLeaveRowSchema, hostelNightSchema, hostelRollCallSheetSchema, hostelsSchema, hostelVisitorsSchema, type HostelNight, type HostelRollCallSheet, type HostelRollStatus } from "@edulink/contracts";
@@ -77,17 +77,24 @@ function RollCall({ hostelId }: { hostelId: string }) {
   const [slot, setSlot] = useState<"NIGHT" | "MORNING">("NIGHT");
   const [marks, setMarks] = useState<Record<string, HostelRollStatus>>({});
   const [notice, setNotice] = useState<{ tone: "ok" | "danger"; text: string } | null>(null);
-  const [clientId] = useState(() => newClientId());
+  // One id per body, not per screen (TA-011): the same sheet saved again reuses it, any other sheet (another night, slot or set of marks) mints its own.
+  const lastSave = useRef<{ body: string; clientId: string } | null>(null);
   const sheet = useQuery({ queryKey: ["hostel", "roll", hostelId, slot], queryFn: async () => hostelRollCallSheetSchema.parse(unwrap(await api().get(`/api/v1/hostel/rollcall?hostelId=${hostelId}&slot=${slot}`))) });
   // Marks are kept per hostel and slot, so switching either shows that sheet's own.
   const markOf = (allotmentId: string) => marks[`${hostelId}:${slot}:${allotmentId}`];
   const save = useMutation({
-    mutationFn: async (s: HostelRollCallSheet) =>
-      postOrQueue({
+    mutationFn: async (s: HostelRollCallSheet) => {
+      const entries = s.entries.map((e) => ({ allotmentId: e.allotmentId, status: markOf(e.allotmentId) ?? e.status }));
+      const key = JSON.stringify([s.hostelId, s.dateKey, s.slot, entries]);
+      const last = lastSave.current;
+      const clientId = last !== null && last.body === key ? last.clientId : newClientId();
+      lastSave.current = { body: key, clientId };
+      return postOrQueue({
         url: "/api/v1/hostel/rollcall",
         tag: `hostel-roll:${s.hostelId}`,
-        body: { hostelId: s.hostelId, dateKey: s.dateKey, slot: s.slot, clientId: `${clientId}-${s.slot}`, entries: s.entries.map((e) => ({ allotmentId: e.allotmentId, status: markOf(e.allotmentId) ?? e.status })) },
-      }),
+        body: { hostelId: s.hostelId, dateKey: s.dateKey, slot: s.slot, clientId: `${clientId}-${s.slot}`, entries },
+      });
+    },
     onSuccess: (outcome) => {
       if (outcome.kind === "refused") setNotice({ tone: "danger", text: outcome.message });
       else if (outcome.kind === "queued") setNotice({ tone: "ok", text: t("common.queuedOffline") });

@@ -2434,6 +2434,13 @@
                     },
                     "cleared": {
                       "type": "integer"
+                    },
+                    "skipped": {
+                      "type": "integer"
+                    },
+                    "version": {
+                      "type": "string",
+                      "format": "date-time"
                     }
                   },
                   "required": [
@@ -2499,6 +2506,10 @@
                   },
                   "classId": {
                     "$ref": "#/properties/slotId"
+                  },
+                  "basedOn": {
+                    "type": "string",
+                    "format": "date-time"
                   },
                   "entries": {
                     "type": "array",
@@ -5196,7 +5207,7 @@
     },
     "/api/v1/admin/people/{membershipId}/remove": {
       "post": {
-        "summary": "Remove a pupil who was never really here; refused, with what stood in the way as issues, the moment a register mark, a grade, a hand-in or a report card exists, and for anybody but a pupil",
+        "summary": "Remove a pupil who was never really here; refused, with what stood in the way as issues, the moment a register mark, a grade, a hand-in, a report card or any other record the delete would take (a fee paid, a certificate, an exam mark, a lecture attended, an incident) exists, and for anybody but a pupil",
         "description": "Roles: ADMIN.",
         "security": [
           {
@@ -14321,6 +14332,11 @@
                     },
                     "examUnweighted": {
                       "type": "boolean"
+                    },
+                    "version": {
+                      "type": "string",
+                      "format": "date-time",
+                      "nullable": true
                     }
                   },
                   "required": [
@@ -50043,6 +50059,10 @@
                     },
                     "skippedPublished": {
                       "$ref": "#/properties/created"
+                    },
+                    "title": {
+                      "type": "string",
+                      "maxLength": 200
                     }
                   },
                   "required": [

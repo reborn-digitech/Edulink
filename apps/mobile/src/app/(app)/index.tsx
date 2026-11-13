@@ -1,3 +1,5 @@
+import { Fragment } from "react";
+import { useParamsKey } from "@/components/back-to";
 import { useRole, useSession } from "@/lib/session";
 import { ConsoleHome } from "@/screens/shared/console-home";
 import { TeacherHome } from "@/screens/teacher/home";
@@ -19,8 +21,22 @@ import { RecruiterPlacementHome } from "@/screens/placement/recruiter";
 import { ExamCellHome } from "@/screens/exams/controller-home";
 import { MyPayslips } from "@/screens/shared/payslips";
 
-/** The home tab: each role's "today", "overview", "dashboard" or "bookings" — the same page the web opens first. */
+/**
+ * The home tab, drawn under its params (TA-013): the guardian's overview asked
+ * for another child (`?child=`), or a recruiter's drive, draws that one rather
+ * than keeping the first.
+ */
 export default function Home() {
+  const asked = useParamsKey();
+  return (
+    <Fragment key={asked}>
+      <HomeFor />
+    </Fragment>
+  );
+}
+
+/** Each role's "today", "overview", "dashboard" or "bookings" — the same page the web opens first. */
+function HomeFor() {
   const role = useRole();
   const session = useSession();
   // No school role: the operator's or the content team's console (the layout gives them a stack).

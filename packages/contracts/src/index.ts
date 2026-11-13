@@ -82,10 +82,16 @@ const cuid = z.string().regex(/^c[a-z0-9]{20,}$/, "id");
  * A teacher's marks for one exam slot in one class. Replay-safe by nature:
  * the server stores the batch as the current state of that sheet, so sending
  * it twice leaves the same marks. `marks: null` clears a pupil's entry.
+ * `basedOn` (TA-010, 13 Nov 2026) is the version of the sheet this one was
+ * typed on — the grid's `version`, or the last save's answer — and a pupil
+ * whose mark was written after it keeps that mark (counted as `skipped`), so
+ * an older sheet arriving late from an outbox cannot undo a newer save.
+ * Optional: a body without it (the web's form, an older phone) is applied whole.
  */
 export const marksBatchSchema = z.object({
   slotId: cuid,
   classId: cuid,
+  basedOn: z.string().datetime().optional(),
   entries: z
     .array(z.object({ membershipId: cuid, marks: z.number().min(0).max(100_000).nullable() }))
     .min(1)
@@ -105,7 +111,8 @@ export const conversationMessageSchema = z.object({
 });
 export type ConversationMessageBody = z.infer<typeof conversationMessageSchema>;
 
-export const marksSavedSchema = z.object({ saved: z.number().int(), cleared: z.number().int() });
+/** `skipped`: entries left alone because the pupil's mark was written after the sheet's `basedOn`; `version`: the sheet's version after this save, for the next one's `basedOn`. */
+export const marksSavedSchema = z.object({ saved: z.number().int(), cleared: z.number().int(), skipped: z.number().int().optional(), version: z.string().datetime().optional() });
 export const messageSentSchema = z.object({ messageId: z.string() });
 
 export * from "./v1/auth";

@@ -476,12 +476,14 @@ export async function staffMarksGrid(ctx: Staff, classId: string, slotId?: strin
   const slots = klass.series.flatMap((s) => s.slots);
   const slot = slotId ? slots.find((s) => s.id === slotId) : slots[0];
   if (slotId && !slot) throw new AccessError("access.examNotFound", "NOT_FOUND");
-  if (!slot) return { classId, slotId: null, grid: null, examUnweighted: false };
+  if (!slot) return { classId, slotId: null, grid: null, examUnweighted: false, version: null };
 
+  // Taken BEFORE the marks are read (TA-010): a mark written after it is one this sheet may not have shown, and a save based on it leaves that mark alone.
+  const version = new Date().toISOString();
   const grid = await marksGrid(ctx, slot.id, classId);
   const weights = await listGradeCategories(ctx, classId);
   const examUnweighted = weightsAreUsable(weights) && !weights.some((w) => w.name === EXAM_CATEGORY && w.weightBps > 0);
-  return { classId, slotId: slot.id, grid, examUnweighted };
+  return { classId, slotId: slot.id, grid, examUnweighted, version };
 }
 
 export async function staffExamSheets(ctx: Staff): Promise<StaffExamSheets> {

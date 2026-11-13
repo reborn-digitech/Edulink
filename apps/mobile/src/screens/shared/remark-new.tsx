@@ -65,8 +65,12 @@ export function RemarkNew() {
   );
 }
 
-/** POST /api/v1/teaching/remarks, then the thread it made; the server's field sentences go back to their fields. */
-function useStartThread(onIssues: (issues: Errors) => void) {
+/**
+ * POST /api/v1/teaching/remarks, then the thread it made; the server's field sentences go back to their fields.
+ * `onSent` empties the form (TA-013): the screen stays mounted behind the thread, and a subject and message
+ * left in its boxes were sent again, about whoever was chosen next.
+ */
+function useStartThread(onIssues: (issues: Errors) => void, onSent: () => void) {
   const t = useT();
   const router = useRouter();
   const qc = useQueryClient();
@@ -81,6 +85,7 @@ function useStartThread(onIssues: (issues: Errors) => void) {
       return teachingRemarkStartedSchema.parse(result.data);
     },
     onSuccess: (started) => {
+      onSent();
       toast.show(t("remarks.messageSent"));
       void qc.invalidateQueries({ queryKey: ["shared", "inbox"] });
       router.push({ pathname: "/(app)/messages/thread", params: { threadId: started.threadId } } as never);
@@ -98,7 +103,10 @@ function ComposeForm({ students, preselected }: { students: Student[]; preselect
   const [subject, setSubject] = useState("");
   const [body, setBody] = useState("");
   const [errors, setErrors] = useState<Errors>({});
-  const send = useStartThread(setErrors);
+  const send = useStartThread(setErrors, () => {
+    setSubject("");
+    setBody("");
+  });
   const selected = students.find((s) => s.membershipId === studentId);
   const filtered = useMemo(() => {
     const q = search.trim().toLowerCase();
@@ -185,7 +193,10 @@ function AskForm({ pupils, selfOnly, preselected }: { pupils: Pupil[]; selfOnly:
   const [subject, setSubject] = useState("");
   const [body, setBody] = useState("");
   const [errors, setErrors] = useState<Errors>({});
-  const send = useStartThread(setErrors);
+  const send = useStartThread(setErrors, () => {
+    setSubject("");
+    setBody("");
+  });
   const teachers = pupils.find((p) => p.membershipId === childId)?.teachers ?? [];
 
   const submit = () => {

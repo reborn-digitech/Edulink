@@ -679,13 +679,23 @@ export async function marksGrid(ctx: ActiveContext, slotId: string, classId: str
  * an empty cell means "no mark recorded" — an absent child — and deletes any
  * grade, because a child who missed the paper did not score nought. (The same
  * rule report-card generation applies from the other side.)
+ *
+ * AN OLDER SHEET DOES NOT UNDO A NEWER ONE (TA-010, 13 Nov 2026). A sheet that
+ * names `basedOn` — the version it was typed on, the server's clock when the
+ * grid was read or the last save answered — leaves alone every pupil whose
+ * grade was written after it (counted as `skipped`), so a sheet replayed late
+ * from a phone's outbox cannot put its blanks over marks saved since, from
+ * the phone or the web. Such a sheet is answered with the sheet's new
+ * `version` for the next save. A sheet without it (the web's form, an older
+ * phone) is applied whole, as before.
  */
 export async function saveMarks(
   ctx: ActiveContext,
   slotId: string,
   classId: string,
   entries: { membershipId: string; marks: number | null }[],
-): Promise<{ saved: number; cleared: number }> {
+  options: { basedOn?: string } = {},
+): Promise<{ saved: number; cleared: number; skipped?: number; version?: string }> {
   const { schoolId, membershipId, role } = requireStaffScope(ctx);
   await assertMayEnterMarks({ schoolId, membershipId, role }, classId, slotId);
 
@@ -756,10 +766,28 @@ export async function saveMarks(
     select: { id: true },
   });
 
+  const basedOn = options.basedOn ? new Date(options.basedOn) : null;
+  const stamped = basedOn !== null && !Number.isNaN(basedOn.getTime());
+  const writtenSince = stamped
+    ? new Set(
+        (
+          await db.grade.findMany({
+            where: { assignmentId: sitting.id, updatedAt: { gt: basedOn } },
+            select: { studentMembershipId: true },
+          })
+        ).map((g) => g.studentMembershipId),
+      )
+    : new Set<string>();
+
   let saved = 0;
   let cleared = 0;
+  let skipped = 0;
   for (const entry of entries) {
     if (!roll.has(entry.membershipId)) continue;
+    if (writtenSince.has(entry.membershipId)) {
+      skipped += 1;
+      continue;
+    }
     if (entry.marks === null) {
       const gone = await db.grade.deleteMany({
         where: { assignmentId: sitting.id, studentMembershipId: entry.membershipId },
@@ -792,10 +820,11 @@ export async function saveMarks(
     action: "exam.marksSave",
     targetType: "Assignment",
     targetId: sitting.id,
-    meta: { series: slot.series.name, subject: slot.subject, classId, saved, cleared },
+    meta: { series: slot.series.name, subject: slot.subject, classId, saved, cleared, ...(stamped ? { skipped } : {}) },
   });
 
-  return { saved, cleared };
+  // Taken after every write above: a grade written later than this is newer than what this sheet knew.
+  return stamped ? { saved, cleared, skipped, version: new Date().toISOString() } : { saved, cleared };
 }
 
 /* -------------------------------------------------------------------------- */

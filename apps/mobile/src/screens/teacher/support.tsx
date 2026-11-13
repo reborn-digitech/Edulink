@@ -6,7 +6,7 @@ import { Icon, Text } from "@/components";
 import { API_BASE, api } from "@/lib/api";
 import { useT } from "@/lib/i18n";
 import { useTheme } from "@/lib/theme";
-import { countQueued, enqueue, onQueueEvent } from "@/lib/outbox";
+import { countQueued, enqueue, onQueueEvent, queueMark, supersedeQueued } from "@/lib/outbox";
 import { flushOutbox, startOutboxRunner } from "@/lib/outbox-runner";
 import { ApiRefused } from "@/lib/query";
 import { formatDateTime, formatDayWithWeekday } from "@/lib/dates";
@@ -76,9 +76,14 @@ export type WriteOutcome = { kind: "sent" } | { kind: "queued" } | { kind: "refu
  * The web register's rule: a network-shaped failure (status 0) or a server
  * failure (5xx) goes to the outbox and will be replayed; a 4xx is a refusal
  * the person has to see. `body` is queued exactly as the API took it.
+ * `startedAt` is the outbox clock when the live request left (queueMark(); now, if not given): a sent body
+ * of a whole-state tag (a marks sheet, a lecture) removes what this person
+ * queued under the tag before it, which would otherwise be flushed next and
+ * land after it (TA-010, TA-012).
  */
-export async function writeOrQueue(result: ApiResult<unknown>, item: { url: string; body: unknown; tag: string }): Promise<WriteOutcome> {
+export async function writeOrQueue(result: ApiResult<unknown>, item: { url: string; body: unknown; tag: string; startedAt?: number }): Promise<WriteOutcome> {
   if (result.ok) {
+    await supersedeQueued(item.tag, item.startedAt ?? queueMark());
     void flushOutbox();
     return { kind: "sent" };
   }
@@ -104,8 +109,9 @@ export async function postOrQueue<T = unknown>(item: { url: string; body: unknow
     await enqueue({ url: item.url, method: "POST", body: JSON.stringify(item.body), tag: item.tag });
     return { kind: "queued" };
   }
+  const startedAt = queueMark();
   const result = await api().post<T>(item.url, item.body);
-  const outcome = await writeOrQueue(result, item);
+  const outcome = await writeOrQueue(result, { ...item, startedAt });
   return outcome.kind === "sent" && result.ok ? { ...outcome, data: result.data } : outcome;
 }
 

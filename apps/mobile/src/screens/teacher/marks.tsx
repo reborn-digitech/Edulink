@@ -3,18 +3,23 @@ import { usePrivateScreen } from "@/lib/private-screen";
 import { Pressable, View } from "react-native";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { marksBatchSchema, marksGridSchema, staffExamsSchema } from "@edulink/contracts";
+import { marksBatchSchema, marksGridSchema, marksSavedSchema, staffExamsSchema } from "@edulink/contracts";
 import { Button, Card, Empty, Failed, Field, Loading, Row, Screen, Text } from "@/components";
 import { api } from "@/lib/api";
 import { unwrap } from "@/lib/query";
 import { useLocale, useT } from "@/lib/i18n";
 import { useTheme } from "@/lib/theme";
+import { queueMark } from "@/lib/outbox";
 import { OutboxBadge, dayLabel, throwIfRefused, useOutboxRunner, writeOrQueue } from "./support";
 
 /**
  * The marks grid, the web's /teacher/exams: pick a class, pick a paper, type
  * a mark per pupil, save the sheet. One POST /api/v1/marks with the whole
  * sheet — replay-safe, so it goes to the outbox when the network is not there.
+ * The sheet names the version it was typed on (`basedOn`: the grid's, or the
+ * last save's answer), so a pupil's mark written since by anyone is kept by
+ * the server rather than replaced (TA-010, TA-012); a sent sheet removes the
+ * older one waiting in the outbox under the same paper (writeOrQueue).
  */
 const KIND_KEY = { UNIT_TEST: "exams.kindUnitTest", MID_TERM: "exams.kindMidTerm", FINAL: "exams.kindFinal" } as const;
 
@@ -32,6 +37,8 @@ export function MarksGrid() {
   const [entries, setEntries] = useState<Record<string, string>>({});
   const [formError, setFormError] = useState<string | null>(null);
   const [note, setNote] = useState<string | null>(null);
+  // The version the last save of this paper answered with, newer than the grid's until the grid is read again.
+  const [savedVersion, setSavedVersion] = useState<{ tag: string; version: string } | null>(null);
   useOutboxRunner();
 
   const exams = useQuery({
@@ -45,9 +52,19 @@ export function MarksGrid() {
   });
   const tag = `marks:${classId}:${slotId}`;
   const save = useMutation({
-    mutationFn: async (body: unknown) => throwIfRefused(await writeOrQueue(await api().post("/api/v1/marks", body), { url: "/api/v1/marks", body, tag })),
-    onSuccess: (outcome) => {
-      setNote(outcome.kind === "sent" ? t("exams.savedNote") : t("common.queuedOffline"));
+    mutationFn: async (body: unknown) => {
+      const startedAt = queueMark();
+      const result = await api().post("/api/v1/marks", body);
+      const outcome = throwIfRefused(await writeOrQueue(result, { url: "/api/v1/marks", body, tag, startedAt }));
+      const parsed = result.ok ? marksSavedSchema.safeParse(result.data) : null;
+      return { outcome, answer: parsed !== null && parsed.success ? parsed.data : null };
+    },
+    onSuccess: ({ outcome, answer }) => {
+      if (answer?.version) setSavedVersion({ tag, version: answer.version });
+      const kept = answer?.skipped ?? 0;
+      // Marks someone wrote after this sheet was read stood: the typed ones over them go, so the boxes show what is saved.
+      if (kept > 0) setEntries({});
+      setNote(outcome.kind !== "sent" ? t("common.queuedOffline") : kept > 0 ? t("exams.savedSomeKept", { count: kept }) : t("exams.savedNote"));
       void qc.invalidateQueries({ queryKey: ["staff", "exams", "grid", classId, slotId] });
       void qc.invalidateQueries({ queryKey: ["staff", "today"] });
     },
@@ -57,12 +74,21 @@ export function MarksGrid() {
   const sheet = grid.data?.grid ?? null;
   const valueFor = (membershipId: string, server: number | null) => entries[membershipId] ?? (server === null ? "" : String(server));
 
+  /** The later of the grid's version and the last save's answer: what this sheet was typed on. */
+  const basedOn = (() => {
+    const read = grid.data?.version ?? null;
+    const saved = savedVersion?.tag === tag ? savedVersion.version : null;
+    if (!read || !saved) return read ?? saved;
+    return Date.parse(saved) > Date.parse(read) ? saved : read;
+  })();
+
   const submit = () => {
     if (!sheet || !classId || !slotId) return;
     setNote(null);
     const parsed = marksBatchSchema.safeParse({
       slotId,
       classId,
+      ...(basedOn ? { basedOn } : {}),
       entries: sheet.pupils.map((p) => {
         const raw = valueFor(p.membershipId, p.marks).trim();
         return { membershipId: p.membershipId, marks: raw === "" ? null : Number(raw) };

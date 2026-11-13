@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { lectureSheetSchema, type LectureMark } from "@edulink/contracts";
 import { Button, Card, Empty, Failed, Loading, Screen, Text } from "@/components";
@@ -16,19 +16,28 @@ import { LECTURE_KIND_KEY, MARK_KEY, clock } from "./words";
  * The batch carries a client id minted on the device and goes through the
  * outbox when there is no signal, so a lecture marked in a basement lab is
  * kept and sent once — the server writes a clientId it has seen once only.
+ * So the id belongs to one body, not to the screen (TA-011, 13 Nov 2026): a
+ * save of changed marks mints its own, and only the same marks saved again
+ * reuse the last one; with one id per screen the correction saved second was
+ * answered as a replay and written nowhere.
  */
 export function LectureScreen({ lectureId }: { lectureId: string }) {
   const t = useT();
   const qc = useQueryClient();
   const [marks, setMarks] = useState<Record<string, LectureMark>>({});
-  const [clientId] = useState(() => newClientId());
+  const lastSave = useRef<{ body: string; clientId: string } | null>(null);
   const [notice, setNotice] = useState<{ tone: "ok" | "danger"; text: string } | null>(null);
   useOutboxRunner();
   const sheet = useQuery({ queryKey: ["academics", "lecture", lectureId], queryFn: async () => lectureSheetSchema.parse(unwrap(await api().get(`/api/v1/academics/lectures/${lectureId}`))) });
   const save = useMutation({
     mutationFn: async () => {
       const s = sheet.data!;
-      return postOrQueue({ url: `/api/v1/academics/lectures/${lectureId}/attendance`, tag: `lecture:${lectureId}`, body: { clientId, entries: s.entries.map((e) => ({ studentMembershipId: e.studentMembershipId, status: marks[e.studentMembershipId] ?? e.status ?? "PRESENT" })) } });
+      const entries = s.entries.map((e) => ({ studentMembershipId: e.studentMembershipId, status: marks[e.studentMembershipId] ?? e.status ?? "PRESENT" }));
+      const key = `${lectureId}:${JSON.stringify(entries)}`;
+      const last = lastSave.current;
+      const clientId = last !== null && last.body === key ? last.clientId : newClientId();
+      lastSave.current = { body: key, clientId };
+      return postOrQueue({ url: `/api/v1/academics/lectures/${lectureId}/attendance`, tag: `lecture:${lectureId}`, body: { clientId, entries } });
     },
     onSuccess: (outcome) => {
       if (outcome.kind === "refused") setNotice({ tone: "danger", text: outcome.message });

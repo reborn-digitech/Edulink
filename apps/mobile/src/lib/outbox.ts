@@ -46,6 +46,32 @@ export type OutboxOwner = { userId: string; schoolId: string | null; membershipI
 export const HOLD_DAYS = 7;
 const HOLD_MS = HOLD_DAYS * 86_400_000;
 
+/**
+ * How long a row the person CAN send is still sent (TA-010, 13 Nov 2026): a
+ * write that has waited a month is no longer what the person meant now (a
+ * marks sheet of last term would undo every correction made since), so past
+ * this it is dropped unsent and reported as a refusal of status 0, which the
+ * screens that listen for refusals show as not saved.
+ */
+export const SEND_DAYS = 30;
+const SEND_MS = SEND_DAYS * 86_400_000;
+
+/**
+ * Tags whose body is the whole of one thing, so the newest body is all the
+ * server needs (TA-010, TA-012): a paper's marks sheet (`marks:<class>:<slot>`,
+ * every pupil, a blank as null, stored as the sheet's state) and a lecture's
+ * attendance (`lecture:<id>`, every student). An older row of such a tag is
+ * removed when a newer one is queued or sent live, and never sent after it —
+ * the door applies what it gets in the order it gets it, so an older sheet
+ * landing last put its blanks over the marks typed since. The hostel roll's
+ * tag names the hostel, not the night and slot its body carries, so it is not
+ * one of these.
+ */
+const WHOLE_STATE_TAGS = ["marks:", "lecture:"];
+export function wholeStateTag(tag: string): boolean {
+  return WHOLE_STATE_TAGS.some((prefix) => tag.startsWith(prefix));
+}
+
 export type OutboxStore = {
   all(): Promise<QueuedRequest[]>;
   put(item: QueuedRequest): Promise<void>;
@@ -120,6 +146,16 @@ function emit(event: QueueEvent) {
 
 let lastCreatedAt = 0;
 
+/**
+ * The outbox's clock now: every row queued so far has a createdAt at or below
+ * it, every row queued later one above it (createdAt runs ahead of Date.now()
+ * by a millisecond per row queued within one). A live write takes it before it
+ * leaves, for supersedeQueued.
+ */
+export function queueMark(): number {
+  return Math.max(Date.now(), lastCreatedAt);
+}
+
 export async function enqueue(item: Omit<QueuedRequest, "id" | "createdAt" | "attempts" | "owner" | "schoolId" | "membershipId">): Promise<string> {
   lastCreatedAt = Math.max(Date.now(), lastCreatedAt + 1);
   const record: QueuedRequest = {
@@ -132,8 +168,39 @@ export async function enqueue(item: Omit<QueuedRequest, "id" | "createdAt" | "at
     membershipId: owner?.membershipId ?? null,
   };
   await current().put(record);
+  // A newer body of a whole-state tag replaces what waits under it: only the newest goes.
+  if (wholeStateTag(record.tag)) await removeOlder(record, record.createdAt);
   emit({ type: "queued", item: record, remaining: await countQueued() });
   return record.id;
+}
+
+/** Rows removed as superseded while a flush may hold them in its list: it skips them rather than send what is gone. */
+const superseded = new Set<string>();
+
+/** Removes the same person's rows at the same school under `like`'s tag queued before `before`. */
+async function removeOlder(like: Pick<QueuedRequest, "tag" | "owner" | "schoolId">, before: number, inclusive = false): Promise<number> {
+  let removed = 0;
+  for (const item of await current().all()) {
+    if (item.tag !== like.tag || item.owner !== like.owner || (item.schoolId ?? null) !== (like.schoolId ?? null)) continue;
+    if (inclusive ? item.createdAt > before : item.createdAt >= before) continue;
+    await current().remove(item.id);
+    superseded.add(item.id);
+    removed++;
+  }
+  return removed;
+}
+
+/**
+ * A body of a whole-state tag went through live, from a request that left at
+ * `startedAt` (queueMark() then): what this person queued under the tag before then is older than
+ * what the server now holds, and is removed rather than sent after it (TA-010,
+ * TA-012). Any other tag is left alone (two messages are two messages).
+ */
+export async function supersedeQueued(tag: string, startedAt: number): Promise<number> {
+  if (!wholeStateTag(tag) || !owner) return 0;
+  const removed = await removeOlder({ tag, owner: owner.userId, schoolId: owner.schoolId }, startedAt, true);
+  if (removed) emit({ type: "flushed", sent: 0, failed: 0, remaining: await countQueued() });
+  return removed;
 }
 
 /**
@@ -180,11 +247,34 @@ export async function heldElsewhere(): Promise<Map<string | null, number>> {
   return held;
 }
 
-/** Rows that cannot be sent now and are older than HOLD_DAYS: dropped unsent. */
+/**
+ * Rows that cannot be sent now and are older than HOLD_DAYS, and rows that
+ * could be sent but are older than SEND_DAYS (reported as refused, status 0):
+ * dropped unsent. So are rows of a whole-state tag with a newer row of the
+ * same person's beside them (queued before enqueue replaced them, by an older
+ * build): only the newest of such a tag is ever sent.
+ */
 async function dropExpired(now: number): Promise<number> {
   let dropped = 0;
-  for (const item of await everything()) {
+  const all = await everything();
+  const newest = new Map<string, number>();
+  for (const item of all) {
+    if (wholeStateTag(item.tag)) newest.set(`${item.owner}|${item.schoolId ?? ""}|${item.tag}`, item.createdAt);
+  }
+  for (const item of all) {
     if (!sendableNow(item) && now - item.createdAt > HOLD_MS) {
+      await current().remove(item.id);
+      dropped++;
+      continue;
+    }
+    if (sendableNow(item) && now - item.createdAt > SEND_MS) {
+      await current().remove(item.id);
+      dropped++;
+      emit({ type: "rejected", item, status: 0 });
+      continue;
+    }
+    const latest = newest.get(`${item.owner}|${item.schoolId ?? ""}|${item.tag}`);
+    if (latest !== undefined && item.createdAt < latest) {
       await current().remove(item.id);
       dropped++;
     }
@@ -210,12 +300,21 @@ export async function flushQueue(
   flushing = true;
   let sent = 0;
   let failed = 0;
+  // A tag whose row was kept for another try: the rows queued after it under
+  // the same tag wait too, so the server never gets a tag's writes out of
+  // order — an older one landing after a newer one (TA-010).
+  const held = new Set<string>();
   try {
+    superseded.clear();
     await dropExpired(now);
     for (const item of await listQueued()) {
       // The person can change mid-flush (Sign out, a 401, someone else
       // signing in): what was theirs a moment ago is not sent under the next.
-      if (!sendableNow(item)) continue;
+      if (!sendableNow(item) || superseded.has(item.id)) continue;
+      if (held.has(item.tag)) {
+        failed++;
+        continue;
+      }
       let status = 0;
       let error = "";
       try {
@@ -235,6 +334,7 @@ export async function flushQueue(
         continue;
       }
       await current().put({ ...item, attempts: item.attempts + 1, lastError: error || `HTTP ${status}` });
+      held.add(item.tag);
       failed++;
     }
   } finally {
