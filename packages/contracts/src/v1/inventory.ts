@@ -12,7 +12,7 @@ import { z } from "zod";
 const cuid = z.string().regex(/^c[a-z0-9]{20,}$/, "id");
 const iso = z.string().datetime();
 const dateKey = z.string().regex(/^\d{4}-\d{2}-\d{2}$/, "date");
-const monthKey = z.string().regex(/^\d{4}-\d{2}$/, "month");
+const monthKey = z.string().regex(/^\d{4}-(0[1-9]|1[0-2])$/, "month");
 const count = z.number().int().min(0);
 const paise = z.number().int().min(0).max(2_000_000_000);
 const text = (max: number) => z.string().trim().max(max);

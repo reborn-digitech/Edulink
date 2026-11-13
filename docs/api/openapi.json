@@ -9781,7 +9781,7 @@
     },
     "/api/v1/admin/safety": {
       "get": {
-        "summary": "The safety centre: operator visits, reports, the audit trail",
+        "summary": "The safety centre: operator visits, reports, the audit trail 200 rows a page (?tab=audit&before= the auditNext of the page read&action= a prefix)",
         "description": "Roles: ADMIN, PRINCIPAL. An ADMIN only holding HEAD_PAGES, which the PRINCIPAL gives (every admin holds it while the school has no PRINCIPAL).",
         "security": [
           {
@@ -10172,6 +10172,10 @@
                         ],
                         "additionalProperties": false
                       }
+                    },
+                    "auditNext": {
+                      "type": "string",
+                      "nullable": true
                     }
                   },
                   "required": [
@@ -10241,6 +10245,16 @@
                       "audit"
                     ],
                     "default": "open"
+                  },
+                  "before": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 64
+                  },
+                  "action": {
+                    "type": "string",
+                    "maxLength": 80,
+                    "pattern": "^[A-Za-z0-9._]*$"
                   }
                 },
                 "additionalProperties": false
@@ -67328,7 +67342,7 @@
         }
       },
       "post": {
-        "summary": "Write a child's health card (the whole card; a cleared field stays cleared)",
+        "summary": "Write a child's health card (the whole card; a cleared field stays cleared); with basedOn, the card's updatedAt the form was drawn from, a card changed since is a 409 and kept",
         "description": "Roles: PARENT.",
         "security": [
           {
@@ -67639,6 +67653,11 @@
                     "maxItems": 3,
                     "default": []
                   },
+                  "basedOn": {
+                    "type": "string",
+                    "format": "date-time",
+                    "nullable": true
+                  },
                   "childId": {
                     "type": "string",
                     "pattern": "^c[a-z0-9]{20,}$"
@@ -67897,7 +67916,7 @@
         ]
       },
       "post": {
-        "summary": "Write one pupil's health card (the office and the head)",
+        "summary": "Write one pupil's health card (the office and the head); with basedOn, the card's updatedAt the form was drawn from, a card changed since is a 409 and kept",
         "description": "Roles: ADMIN, PRINCIPAL.",
         "security": [
           {
@@ -68209,6 +68228,11 @@
                     },
                     "maxItems": 3,
                     "default": []
+                  },
+                  "basedOn": {
+                    "type": "string",
+                    "format": "date-time",
+                    "nullable": true
                   }
                 },
                 "additionalProperties": false
@@ -68700,7 +68724,7 @@
     },
     "/api/v1/staff/incidents": {
       "get": {
-        "summary": "The school's incidents for the office and the head, a teacher's own pupils' for a teacher (?status=OPEN|CLOSED|ALL&studentMembershipId=&page=)",
+        "summary": "The school's incidents for the office and the head, a teacher's own pupils' for a teacher: the classes they hold or teach on the timetable (?status=OPEN|CLOSED|ALL&studentMembershipId=&page=)",
         "description": "Roles: TEACHER, ADMIN, PRINCIPAL.",
         "security": [
           {
@@ -68713,7 +68737,7 @@
           "PRINCIPAL"
         ],
         "x-reach": {
-          "TEACHER": "formTeacher",
+          "TEACHER": "teachesClass",
           "ADMIN": "ownSchool",
           "PRINCIPAL": "ownSchool"
         },
@@ -81865,8 +81889,8 @@
     },
     "/api/v1/shared/signatures/{signatureId}": {
       "get": {
-        "summary": "A paper's own copy of a signature or the seal as a PNG (image/png), for a reader the paper's own rule lets in: the certificate's pupil, a guardian, the class's teacher or the office",
-        "description": "Roles: STUDENT, PARENT, TEACHER, ADMIN, PRINCIPAL.",
+        "summary": "A paper's own copy of a signature or the seal as a PNG (image/png), for a reader the paper's own rule lets in: the certificate's pupil, a guardian, the class's teacher or the office, and the member of staff an appointment letter was issued to",
+        "description": "Roles: STUDENT, PARENT, TEACHER, ADMIN, PRINCIPAL, DRIVER, LIBRARIAN, WARDEN, FACULTY, HOD, EXAM_CONTROLLER, IQAC, TPO, ACCOUNTS.",
         "security": [
           {
             "bearer": []
@@ -81877,14 +81901,32 @@
           "PARENT",
           "TEACHER",
           "ADMIN",
-          "PRINCIPAL"
+          "PRINCIPAL",
+          "DRIVER",
+          "LIBRARIAN",
+          "WARDEN",
+          "FACULTY",
+          "HOD",
+          "EXAM_CONTROLLER",
+          "IQAC",
+          "TPO",
+          "ACCOUNTS"
         ],
         "x-reach": {
           "STUDENT": "ownChild",
           "PARENT": "ownChild",
           "TEACHER": "formTeacher",
           "ADMIN": "ownSchool",
-          "PRINCIPAL": "ownSchool"
+          "PRINCIPAL": "ownSchool",
+          "DRIVER": "self",
+          "LIBRARIAN": "self",
+          "WARDEN": "self",
+          "FACULTY": "self",
+          "HOD": "self",
+          "EXAM_CONTROLLER": "self",
+          "IQAC": "self",
+          "TPO": "self",
+          "ACCOUNTS": "self"
         },
         "responses": {
           "200": {
@@ -87295,7 +87337,7 @@
     "/api/v1/office/admissions/cycles": {
       "get": {
         "summary": "Every admission cycle of the school with its seats and counts, plus the years and published fee structures the editor offers",
-        "description": "Roles: ADMIN, PRINCIPAL.",
+        "description": "Roles: ADMIN, PRINCIPAL. Only at an institution of kind SCHOOL or JUNIOR_COLLEGE; elsewhere 404.",
         "security": [
           {
             "bearer": []
@@ -87304,6 +87346,10 @@
         "x-access": [
           "ADMIN",
           "PRINCIPAL"
+        ],
+        "x-kinds": [
+          "SCHOOL",
+          "JUNIOR_COLLEGE"
         ],
         "responses": {
           "200": {
@@ -87637,7 +87683,7 @@
       },
       "post": {
         "summary": "Create a cycle: grades and seats, documents asked for, entrance test, notice, dates, fee structure; the same name for the same year is the same cycle",
-        "description": "Roles: ADMIN.",
+        "description": "Roles: ADMIN. Only at an institution of kind SCHOOL or JUNIOR_COLLEGE; elsewhere 404.",
         "security": [
           {
             "bearer": []
@@ -87645,6 +87691,10 @@
         ],
         "x-access": [
           "ADMIN"
+        ],
+        "x-kinds": [
+          "SCHOOL",
+          "JUNIOR_COLLEGE"
         ],
         "responses": {
           "200": {
@@ -88028,7 +88078,7 @@
     "/api/v1/office/admissions/cycles/{cycleId}": {
       "post": {
         "summary": "Rewrite a cycle; applications already made stand",
-        "description": "Roles: ADMIN, PRINCIPAL.",
+        "description": "Roles: ADMIN, PRINCIPAL. Only at an institution of kind SCHOOL or JUNIOR_COLLEGE; elsewhere 404.",
         "security": [
           {
             "bearer": []
@@ -88037,6 +88087,10 @@
         "x-access": [
           "ADMIN",
           "PRINCIPAL"
+        ],
+        "x-kinds": [
+          "SCHOOL",
+          "JUNIOR_COLLEGE"
         ],
         "responses": {
           "200": {
@@ -88430,7 +88484,7 @@
     "/api/v1/office/admissions/cycles/{cycleId}/status": {
       "post": {
         "summary": "Open or close the cycle; the same state again changes nothing",
-        "description": "Roles: ADMIN, PRINCIPAL.",
+        "description": "Roles: ADMIN, PRINCIPAL. Only at an institution of kind SCHOOL or JUNIOR_COLLEGE; elsewhere 404.",
         "security": [
           {
             "bearer": []
@@ -88439,6 +88493,10 @@
         "x-access": [
           "ADMIN",
           "PRINCIPAL"
+        ],
+        "x-kinds": [
+          "SCHOOL",
+          "JUNIOR_COLLEGE"
         ],
         "responses": {
           "200": {
@@ -88742,7 +88800,7 @@
     "/api/v1/office/admissions/cycles/{cycleId}/purge": {
       "post": {
         "summary": "Delete the forms and documents of families a CLOSED cycle did not admit",
-        "description": "Roles: ADMIN.",
+        "description": "Roles: ADMIN. Only at an institution of kind SCHOOL or JUNIOR_COLLEGE; elsewhere 404.",
         "security": [
           {
             "bearer": []
@@ -88750,6 +88808,10 @@
         ],
         "x-access": [
           "ADMIN"
+        ],
+        "x-kinds": [
+          "SCHOOL",
+          "JUNIOR_COLLEGE"
         ],
         "responses": {
           "200": {
@@ -88835,7 +88897,7 @@
     "/api/v1/office/admissions/cycles/{cycleId}/slots": {
       "get": {
         "summary": "The entrance-test sittings of a cycle with how many are booked on each",
-        "description": "Roles: ADMIN, PRINCIPAL.",
+        "description": "Roles: ADMIN, PRINCIPAL. Only at an institution of kind SCHOOL or JUNIOR_COLLEGE; elsewhere 404.",
         "security": [
           {
             "bearer": []
@@ -88844,6 +88906,10 @@
         "x-access": [
           "ADMIN",
           "PRINCIPAL"
+        ],
+        "x-kinds": [
+          "SCHOOL",
+          "JUNIOR_COLLEGE"
         ],
         "responses": {
           "200": {
@@ -88968,7 +89034,7 @@
       },
       "post": {
         "summary": "Publish sittings back to back from a start time; one already standing at the same minute is kept",
-        "description": "Roles: ADMIN, PRINCIPAL.",
+        "description": "Roles: ADMIN, PRINCIPAL. Only at an institution of kind SCHOOL or JUNIOR_COLLEGE; elsewhere 404.",
         "security": [
           {
             "bearer": []
@@ -88977,6 +89043,10 @@
         "x-access": [
           "ADMIN",
           "PRINCIPAL"
+        ],
+        "x-kinds": [
+          "SCHOOL",
+          "JUNIOR_COLLEGE"
         ],
         "responses": {
           "200": {
@@ -89101,7 +89171,7 @@
     "/api/v1/office/admissions/slots/{slotId}/cancel": {
       "post": {
         "summary": "Cancel a sitting; the families booked on it are released and told",
-        "description": "Roles: ADMIN, PRINCIPAL.",
+        "description": "Roles: ADMIN, PRINCIPAL. Only at an institution of kind SCHOOL or JUNIOR_COLLEGE; elsewhere 404.",
         "security": [
           {
             "bearer": []
@@ -89110,6 +89180,10 @@
         "x-access": [
           "ADMIN",
           "PRINCIPAL"
+        ],
+        "x-kinds": [
+          "SCHOOL",
+          "JUNIOR_COLLEGE"
         ],
         "responses": {
           "200": {
@@ -89195,7 +89269,7 @@
     "/api/v1/office/admissions/applications": {
       "get": {
         "summary": "The pipeline: every application to the school, newest first (?cycleId=&status=&grade=)",
-        "description": "Roles: ADMIN, PRINCIPAL.",
+        "description": "Roles: ADMIN, PRINCIPAL. Only at an institution of kind SCHOOL or JUNIOR_COLLEGE; elsewhere 404.",
         "security": [
           {
             "bearer": []
@@ -89204,6 +89278,10 @@
         "x-access": [
           "ADMIN",
           "PRINCIPAL"
+        ],
+        "x-kinds": [
+          "SCHOOL",
+          "JUNIOR_COLLEGE"
         ],
         "responses": {
           "200": {
@@ -89371,7 +89449,7 @@
       },
       "post": {
         "summary": "Enter a walk-in family's application; the same family and child again is the same application",
-        "description": "Roles: ADMIN, PRINCIPAL.",
+        "description": "Roles: ADMIN, PRINCIPAL. Only at an institution of kind SCHOOL or JUNIOR_COLLEGE; elsewhere 404.",
         "security": [
           {
             "bearer": []
@@ -89380,6 +89458,10 @@
         "x-access": [
           "ADMIN",
           "PRINCIPAL"
+        ],
+        "x-kinds": [
+          "SCHOOL",
+          "JUNIOR_COLLEGE"
         ],
         "responses": {
           "200": {
@@ -89935,7 +90017,7 @@
     "/api/v1/office/admissions/applications/{applicationId}": {
       "get": {
         "summary": "One application as the office sees it, with what it may do next",
-        "description": "Roles: ADMIN, PRINCIPAL.",
+        "description": "Roles: ADMIN, PRINCIPAL. Only at an institution of kind SCHOOL or JUNIOR_COLLEGE; elsewhere 404.",
         "security": [
           {
             "bearer": []
@@ -89944,6 +90026,10 @@
         "x-access": [
           "ADMIN",
           "PRINCIPAL"
+        ],
+        "x-kinds": [
+          "SCHOOL",
+          "JUNIOR_COLLEGE"
         ],
         "responses": {
           "200": {
@@ -90431,7 +90517,7 @@
     "/api/v1/office/admissions/applications/{applicationId}/documents": {
       "post": {
         "summary": "The office attaches a walk-in family's documents from phone upload tickets, one per key of the cycle's list",
-        "description": "Roles: ADMIN, PRINCIPAL.",
+        "description": "Roles: ADMIN, PRINCIPAL. Only at an institution of kind SCHOOL or JUNIOR_COLLEGE; elsewhere 404.",
         "security": [
           {
             "bearer": []
@@ -90440,6 +90526,10 @@
         "x-access": [
           "ADMIN",
           "PRINCIPAL"
+        ],
+        "x-kinds": [
+          "SCHOOL",
+          "JUNIOR_COLLEGE"
         ],
         "responses": {
           "200": {
@@ -90974,7 +91064,7 @@
     "/api/v1/office/admissions/applications/{applicationId}/verify": {
       "post": {
         "summary": "Mark the documents checked; twice changes nothing",
-        "description": "Roles: ADMIN, PRINCIPAL.",
+        "description": "Roles: ADMIN, PRINCIPAL. Only at an institution of kind SCHOOL or JUNIOR_COLLEGE; elsewhere 404.",
         "security": [
           {
             "bearer": []
@@ -90983,6 +91073,10 @@
         "x-access": [
           "ADMIN",
           "PRINCIPAL"
+        ],
+        "x-kinds": [
+          "SCHOOL",
+          "JUNIOR_COLLEGE"
         ],
         "responses": {
           "200": {
@@ -91470,7 +91564,7 @@
     "/api/v1/office/admissions/applications/{applicationId}/test": {
       "post": {
         "summary": "Record the entrance-test result; recording again overwrites",
-        "description": "Roles: ADMIN, PRINCIPAL.",
+        "description": "Roles: ADMIN, PRINCIPAL. Only at an institution of kind SCHOOL or JUNIOR_COLLEGE; elsewhere 404.",
         "security": [
           {
             "bearer": []
@@ -91479,6 +91573,10 @@
         "x-access": [
           "ADMIN",
           "PRINCIPAL"
+        ],
+        "x-kinds": [
+          "SCHOOL",
+          "JUNIOR_COLLEGE"
         ],
         "responses": {
           "200": {
@@ -91991,7 +92089,7 @@
     "/api/v1/office/admissions/applications/{applicationId}/offer": {
       "post": {
         "summary": "Offer the seat, with a date to answer by and the fee structure; an offer already standing is left as it is",
-        "description": "Roles: ADMIN, PRINCIPAL.",
+        "description": "Roles: ADMIN, PRINCIPAL. Only at an institution of kind SCHOOL or JUNIOR_COLLEGE; elsewhere 404.",
         "security": [
           {
             "bearer": []
@@ -92000,6 +92098,10 @@
         "x-access": [
           "ADMIN",
           "PRINCIPAL"
+        ],
+        "x-kinds": [
+          "SCHOOL",
+          "JUNIOR_COLLEGE"
         ],
         "responses": {
           "200": {
@@ -92517,7 +92619,7 @@
     "/api/v1/office/admissions/applications/{applicationId}/decide": {
       "post": {
         "summary": "Decline, waitlist, or put back into the pool; the same state again changes nothing",
-        "description": "Roles: ADMIN, PRINCIPAL.",
+        "description": "Roles: ADMIN, PRINCIPAL. Only at an institution of kind SCHOOL or JUNIOR_COLLEGE; elsewhere 404.",
         "security": [
           {
             "bearer": []
@@ -92526,6 +92628,10 @@
         "x-access": [
           "ADMIN",
           "PRINCIPAL"
+        ],
+        "x-kinds": [
+          "SCHOOL",
+          "JUNIOR_COLLEGE"
         ],
         "responses": {
           "200": {
@@ -93038,10 +93144,10 @@
         ]
       }
     },
-    "/api/v1/office/admissions/applications/{applicationId}/admit": {
+    "/api/v1/office/admissions/applications/{applicationId}/respond": {
       "post": {
-        "summary": "Give the seat: pupil account, membership, enrolment, the applicant as guardian, the pupil record and the fee plan in one transaction; already admitted is answered as it stands",
-        "description": "Roles: ADMIN, PRINCIPAL.",
+        "summary": "Record a walk-in family's answer to the offer, given at the office; an application with an account behind it is the family's to answer (403); the same answer twice changes nothing",
+        "description": "Roles: ADMIN, PRINCIPAL. Only at an institution of kind SCHOOL or JUNIOR_COLLEGE; elsewhere 404.",
         "security": [
           {
             "bearer": []
@@ -93050,6 +93156,537 @@
         "x-access": [
           "ADMIN",
           "PRINCIPAL"
+        ],
+        "x-kinds": [
+          "SCHOOL",
+          "JUNIOR_COLLEGE"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "serial": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "string",
+                      "enum": [
+                        "SUBMITTED",
+                        "OFFERED",
+                        "ACCEPTED",
+                        "ADMITTED",
+                        "DECLINED",
+                        "WAITLISTED",
+                        "WITHDRAWN",
+                        "EXPIRED"
+                      ]
+                    },
+                    "cycle": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "name": {
+                          "type": "string"
+                        },
+                        "academicYearName": {
+                          "type": "string"
+                        },
+                        "testRequired": {
+                          "type": "boolean"
+                        },
+                        "documents": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "key": {
+                                "type": "string",
+                                "pattern": "^[a-z][a-z0-9_-]{0,30}$"
+                              },
+                              "name": {
+                                "type": "string",
+                                "minLength": 1,
+                                "maxLength": 60
+                              },
+                              "required": {
+                                "type": "boolean"
+                              }
+                            },
+                            "required": [
+                              "key",
+                              "name",
+                              "required"
+                            ],
+                            "additionalProperties": false
+                          }
+                        },
+                        "status": {
+                          "type": "string",
+                          "enum": [
+                            "DRAFT",
+                            "OPEN",
+                            "CLOSED"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "name",
+                        "academicYearName",
+                        "testRequired",
+                        "documents",
+                        "status"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "school": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "name": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "name"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "applicantUserId": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "applicantName": {
+                      "type": "string"
+                    },
+                    "applicantPhone": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "applicantEmail": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "relation": {
+                      "type": "string"
+                    },
+                    "childName": {
+                      "type": "string"
+                    },
+                    "childBirthdate": {
+                      "type": "string",
+                      "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+                      "nullable": true
+                    },
+                    "gradeApplied": {
+                      "type": "string"
+                    },
+                    "previousSchool": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "penNumber": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "addressLine": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "city": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "note": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "documents": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "key": {
+                            "type": "string"
+                          },
+                          "fileId": {
+                            "type": "string"
+                          },
+                          "name": {
+                            "type": "string"
+                          },
+                          "mime": {
+                            "type": "string"
+                          },
+                          "size": {
+                            "type": "integer",
+                            "minimum": 0
+                          },
+                          "uploadedAt": {
+                            "type": "string",
+                            "format": "date-time"
+                          }
+                        },
+                        "required": [
+                          "key",
+                          "fileId",
+                          "name",
+                          "mime",
+                          "size",
+                          "uploadedAt"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "documentsMissing": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "documentsVerifiedAt": {
+                      "allOf": [
+                        {
+                          "$ref": "#/properties/documents/items/properties/uploadedAt"
+                        }
+                      ],
+                      "nullable": true
+                    },
+                    "testSlot": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "startsAt": {
+                          "$ref": "#/properties/documents/items/properties/uploadedAt"
+                        },
+                        "endsAt": {
+                          "$ref": "#/properties/documents/items/properties/uploadedAt"
+                        },
+                        "location": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "note": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "capacity": {
+                          "$ref": "#/properties/documents/items/properties/size"
+                        },
+                        "booked": {
+                          "$ref": "#/properties/documents/items/properties/size"
+                        },
+                        "cancelledAt": {
+                          "allOf": [
+                            {
+                              "$ref": "#/properties/documents/items/properties/uploadedAt"
+                            }
+                          ],
+                          "nullable": true
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "startsAt",
+                        "endsAt",
+                        "location",
+                        "note",
+                        "capacity",
+                        "booked",
+                        "cancelledAt"
+                      ],
+                      "additionalProperties": false,
+                      "nullable": true
+                    },
+                    "testScore": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "testNote": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "testedAt": {
+                      "allOf": [
+                        {
+                          "$ref": "#/properties/documents/items/properties/uploadedAt"
+                        }
+                      ],
+                      "nullable": true
+                    },
+                    "offeredAt": {
+                      "allOf": [
+                        {
+                          "$ref": "#/properties/documents/items/properties/uploadedAt"
+                        }
+                      ],
+                      "nullable": true
+                    },
+                    "offerExpiresAt": {
+                      "allOf": [
+                        {
+                          "$ref": "#/properties/documents/items/properties/uploadedAt"
+                        }
+                      ],
+                      "nullable": true
+                    },
+                    "offerExpiresOn": {
+                      "allOf": [
+                        {
+                          "$ref": "#/properties/childBirthdate"
+                        }
+                      ],
+                      "nullable": true,
+                      "default": null
+                    },
+                    "offerNote": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "respondedAt": {
+                      "allOf": [
+                        {
+                          "$ref": "#/properties/documents/items/properties/uploadedAt"
+                        }
+                      ],
+                      "nullable": true
+                    },
+                    "decisionNote": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "decidedAt": {
+                      "allOf": [
+                        {
+                          "$ref": "#/properties/documents/items/properties/uploadedAt"
+                        }
+                      ],
+                      "nullable": true
+                    },
+                    "admittedMembershipId": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "admittedAt": {
+                      "allOf": [
+                        {
+                          "$ref": "#/properties/documents/items/properties/uploadedAt"
+                        }
+                      ],
+                      "nullable": true
+                    },
+                    "feeStructureName": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "createdAt": {
+                      "$ref": "#/properties/documents/items/properties/uploadedAt"
+                    },
+                    "can": {
+                      "type": "object",
+                      "properties": {
+                        "uploadDocuments": {
+                          "type": "boolean"
+                        },
+                        "bookTest": {
+                          "type": "boolean"
+                        },
+                        "respond": {
+                          "type": "boolean"
+                        },
+                        "withdraw": {
+                          "type": "boolean"
+                        },
+                        "verifyDocuments": {
+                          "type": "boolean"
+                        },
+                        "recordTest": {
+                          "type": "boolean"
+                        },
+                        "offer": {
+                          "type": "boolean"
+                        },
+                        "decide": {
+                          "type": "boolean"
+                        },
+                        "admit": {
+                          "type": "boolean"
+                        }
+                      },
+                      "required": [
+                        "uploadDocuments",
+                        "bookTest",
+                        "respond",
+                        "withdraw",
+                        "verifyDocuments",
+                        "recordTest",
+                        "offer",
+                        "decide",
+                        "admit"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "openSlots": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/properties/testSlot"
+                      }
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "serial",
+                    "status",
+                    "cycle",
+                    "school",
+                    "applicantUserId",
+                    "applicantName",
+                    "applicantPhone",
+                    "applicantEmail",
+                    "relation",
+                    "childName",
+                    "childBirthdate",
+                    "gradeApplied",
+                    "previousSchool",
+                    "penNumber",
+                    "addressLine",
+                    "city",
+                    "note",
+                    "documents",
+                    "documentsMissing",
+                    "documentsVerifiedAt",
+                    "testSlot",
+                    "testScore",
+                    "testNote",
+                    "testedAt",
+                    "offeredAt",
+                    "offerExpiresAt",
+                    "offerNote",
+                    "respondedAt",
+                    "decisionNote",
+                    "decidedAt",
+                    "admittedMembershipId",
+                    "admittedAt",
+                    "feeStructureName",
+                    "createdAt",
+                    "can",
+                    "openSlots"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "answer": {
+                    "type": "string",
+                    "enum": [
+                      "ACCEPT",
+                      "DECLINE"
+                    ]
+                  },
+                  "note": {
+                    "type": "string",
+                    "maxLength": 400
+                  }
+                },
+                "required": [
+                  "answer"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "applicationId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/office/admissions/applications/{applicationId}/admit": {
+      "post": {
+        "summary": "Give the seat: pupil account, membership, enrolment, the applicant as guardian, the pupil record and the fee plan in one transaction; already admitted is answered as it stands",
+        "description": "Roles: ADMIN, PRINCIPAL. Only at an institution of kind SCHOOL or JUNIOR_COLLEGE; elsewhere 404.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN",
+          "PRINCIPAL"
+        ],
+        "x-kinds": [
+          "SCHOOL",
+          "JUNIOR_COLLEGE"
         ],
         "x-reach": {
           "ADMIN": "ownSchool",
@@ -111481,7 +112118,7 @@
     },
     "/api/v1/transport/trips/{tripId}/boardings": {
       "post": {
-        "summary": "Tick a pupil on or off the bus, or take the tick back, on a live trip",
+        "summary": "Tick a pupil on or off the bus, or take the tick back, on a live trip; a tick sent later from the outbox whose own time lies inside an ended trip is kept",
         "description": "Roles: DRIVER. Only while the school has TRANSPORT switched on.",
         "security": [
           {
@@ -115189,7 +115826,7 @@
                     },
                     "month": {
                       "type": "string",
-                      "pattern": "^\\d{4}-\\d{2}$",
+                      "pattern": "^\\d{4}-(0[1-9]|1[0-2])$",
                       "nullable": true
                     }
                   },
@@ -115256,7 +115893,7 @@
                   },
                   "month": {
                     "type": "string",
-                    "pattern": "^\\d{4}-\\d{2}$"
+                    "pattern": "^\\d{4}-(0[1-9]|1[0-2])$"
                   }
                 },
                 "additionalProperties": false
@@ -117638,7 +118275,7 @@
                         "properties": {
                           "month": {
                             "type": "string",
-                            "pattern": "^\\d{4}-\\d{2}$"
+                            "pattern": "^\\d{4}-(0[1-9]|1[0-2])$"
                           },
                           "itemCode": {
                             "type": "string"
@@ -124033,6 +124670,172 @@
                 "required": [
                   "advanceId",
                   "decision"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/admin/payroll/advances/cancel": {
+      "post": {
+        "summary": "Cancel a recorded advance nothing has yet been taken back for: no later run takes an instalment of it",
+        "description": "Roles: ADMIN, ACCOUNTS. Only while the school has PAYROLL switched on.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN",
+          "ACCOUNTS"
+        ],
+        "x-module": "PAYROLL",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "membershipId": {
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "amountPaise": {
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    "reason": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "string",
+                      "enum": [
+                        "REQUESTED",
+                        "RECORDED",
+                        "DECLINED",
+                        "CANCELLED"
+                      ]
+                    },
+                    "monthlyRecoveryPaise": {
+                      "allOf": [
+                        {
+                          "$ref": "#/properties/amountPaise"
+                        }
+                      ],
+                      "nullable": true
+                    },
+                    "recoveredPaise": {
+                      "$ref": "#/properties/amountPaise"
+                    },
+                    "outstandingPaise": {
+                      "$ref": "#/properties/amountPaise"
+                    },
+                    "decisionNote": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "createdAt": {
+                      "type": "string",
+                      "format": "date-time"
+                    },
+                    "decidedAt": {
+                      "allOf": [
+                        {
+                          "$ref": "#/properties/createdAt"
+                        }
+                      ],
+                      "nullable": true
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "membershipId",
+                    "name",
+                    "amountPaise",
+                    "reason",
+                    "status",
+                    "monthlyRecoveryPaise",
+                    "recoveredPaise",
+                    "outstandingPaise",
+                    "decisionNote",
+                    "createdAt",
+                    "decidedAt"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "advanceId": {
+                    "type": "string",
+                    "pattern": "^c[a-z0-9]{20,}$"
+                  },
+                  "note": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 300
+                  }
+                },
+                "required": [
+                  "advanceId",
+                  "note"
                 ],
                 "additionalProperties": false
               }
@@ -133169,7 +133972,7 @@
         }
       },
       "post": {
-        "summary": "Take a roll call, once per hostel, day and slot; the same sheet replayed is the same call.",
+        "summary": "Take a roll call, once per hostel, day and slot; the same sheet replayed is the same call. A boarder moved since the sheet was read is marked on their new place, and an entry whose place has ended is left out and counted as skipped.",
         "description": "Roles: WARDEN, ADMIN. Only while the school has HOSTEL switched on.",
         "security": [
           {
@@ -133203,6 +134006,9 @@
                     },
                     "replay": {
                       "type": "boolean"
+                    },
+                    "skipped": {
+                      "type": "integer"
                     }
                   },
                   "required": [
@@ -170911,6 +171717,127 @@
             }
           }
         }
+      }
+    },
+    "/api/v1/exam-cell/documents/{documentId}/revoke": {
+      "post": {
+        "summary": "Withdraw a grade card, transcript or degree certificate with a reason; its public check then answers revoked.",
+        "description": "Roles: EXAM_CONTROLLER. Only while the school has EXAMS switched on.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "EXAM_CONTROLLER"
+        ],
+        "x-module": "EXAMS",
+        "x-college": true,
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ok": {
+                      "type": "boolean",
+                      "enum": [
+                        true
+                      ]
+                    },
+                    "id": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "count": {
+                      "type": "integer",
+                      "nullable": true
+                    }
+                  },
+                  "required": [
+                    "ok",
+                    "id",
+                    "count"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "reason": {
+                    "type": "string",
+                    "minLength": 5,
+                    "maxLength": 300
+                  }
+                },
+                "required": [
+                  "reason"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "documentId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       }
     },
     "/api/v1/exam-cell/documents/{documentId}/pdf": {
@@ -228186,7 +229113,7 @@
     },
     "/api/v1/assistant/conversations": {
       "post": {
-        "summary": "Open a conversation (refused by the module, the platform's switch, a guardian's opt-out and the caps); a guardian's is filed under a child's school",
+        "summary": "Open a conversation (refused by the module, the platform's switch, a guardian's opt-out and the caps, the caps not when the first question sent with it as text is one the refusal table reads as self-harm or a child telling of abuse); a guardian's is filed under a child's school",
         "description": "Roles: ADMIN, PRINCIPAL, TEACHER, STUDENT, PARENT, DRIVER, LIBRARIAN, WARDEN, ALUMNUS, FACULTY, HOD, EXAM_CONTROLLER, IQAC, TPO, ACCOUNTS. Only while the school has ASSISTANT switched on.",
         "security": [
           {
@@ -228355,6 +229282,10 @@
                     "type": "string",
                     "minLength": 1,
                     "maxLength": 64
+                  },
+                  "text": {
+                    "type": "string",
+                    "maxLength": 1200
                   }
                 },
                 "required": [

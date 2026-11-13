@@ -1,6 +1,7 @@
 import "server-only";
-import { openPan, writePan } from "./pan";
+import { openPan, spreadHeldPan, writePan } from "./pan";
 import { createHash } from "node:crypto";
+import { Prisma } from "@prisma/client";
 import {
   COMPONENT_KIND,
   PAYROLL_EXPORT_SLUG,
@@ -321,6 +322,9 @@ export async function saveSalary(ctx: ActiveContext, input: Omit<StaffSalarySave
   if (input.pan) {
     await writePan({ kind: "STAFF", schoolId: caller.schoolId, membershipId: member.id }, input.pan);
     row = await db.staffSalary.findUniqueOrThrow({ where: { id: row.id }, select: SALARY_SELECT });
+  } else if (!row.panSealed && (await spreadHeldPan({ kind: "STAFF", schoolId: caller.schoolId, membershipId: member.id }))) {
+    // TA-290: a first revision saved with the box blank takes the PAN the faculty record already holds.
+    row = await db.staffSalary.findUniqueOrThrow({ where: { id: row.id }, select: SALARY_SELECT });
   }
   // What changed, never the numbers: the log is read by the whole office.
   await audit({ schoolId: caller.schoolId, actorUserId: caller.user.id, action: "payroll.salary.save", targetType: "Membership", targetId: member.id, meta: { effectiveFrom: input.effectiveFrom, structureId: structure.id, panChanged: Boolean(input.pan), bankChanged: Boolean(input.bankAccount), upiChanged: Boolean(input.upiId), mode: input.paymentMode } });
@@ -335,10 +339,10 @@ export async function zoneOf(schoolId: string): Promise<string> {
 }
 
 /** What a recorded advance has had back: the ADVANCE lines of LOCKED runs that name it. Read, never stored. */
-async function recoveredByAdvance(schoolId: string, membershipIds: string[]): Promise<Map<string, number>> {
+async function recoveredByAdvance(schoolId: string, membershipIds: string[], client: Tx = db): Promise<Map<string, number>> {
   const out = new Map<string, number>();
   if (!membershipIds.length) return out;
-  const slips = await db.payslip.findMany({ where: { schoolId, membershipId: { in: membershipIds }, run: { status: { in: FROZEN } } }, select: { linesJson: true } });
+  const slips = await client.payslip.findMany({ where: { schoolId, membershipId: { in: membershipIds }, run: { status: { in: FROZEN } } }, select: { linesJson: true } });
   for (const s of slips) for (const l of readJsonArray<PayslipLine>(s.linesJson)) if (l.code === "ADVANCE" && l.advanceId) out.set(l.advanceId, (out.get(l.advanceId) ?? 0) + l.paise);
   return out;
 }
@@ -454,7 +458,9 @@ export async function draftRun(ctx: ActiveContext, month: string): Promise<Payro
     lossOfPay(caller.schoolId, month, paid.map((m) => ({ id: m.id, leftAt: m.leftAt, joinedOn: m.staffRecord?.joinedOn ?? null })), tz),
     instalmentsFor(caller.schoolId, paid.map((m) => m.id), month),
   ]);
-  const people: DraftPerson[] = paid.map((m) => ({ membershipId: m.id, name: nameOf(m.user), department: m.role, designation: m.staffRecord?.designation ?? null, gender: m.staffRecord?.gender ?? null, salary: salaries.get(m.id)!, lopHalfDays: lop.get(m.id) ?? 0 }));
+  // TA-047: the slip freezes the account's own name (User.name), as every paper prints it (HANDOFF §5 item 4): the
+  // ECR, the ESI sheet, the bank and UPI advice, the TDS summary and the PDF read it, never a name chosen for screens.
+  const people: DraftPerson[] = paid.map((m) => ({ membershipId: m.id, name: m.user.name, department: m.role, designation: m.staffRecord?.designation ?? null, gender: m.staffRecord?.gender ?? null, salary: salaries.get(m.id)!, lopHalfDays: lop.get(m.id) ?? 0 }));
   await db.$tenantTransaction(
     async (raw) => {
       const tx = raw as Tx;
@@ -628,7 +634,7 @@ export async function editSlip(ctx: ActiveContext, month: string, membershipId: 
       lopOverrideHalfDays: edit.lopOverrideDays === undefined ? slip.lopOverrideHalfDays : edit.lopOverrideDays === null ? null : Math.round(edit.lopOverrideDays * 2),
       notes: edit.notes ?? slip.notes,
     };
-    const person: DraftPerson = { membershipId: member.id, name: nameOf(member.user), department: member.role, designation: member.staffRecord?.designation ?? null, gender: member.staffRecord?.gender ?? null, salary, lopHalfDays: lop.get(member.id) ?? 0 };
+    const person: DraftPerson = { membershipId: member.id, name: member.user.name, department: member.role, designation: member.staffRecord?.designation ?? null, gender: member.staffRecord?.gender ?? null, salary, lopHalfDays: lop.get(member.id) ?? 0 };
     const f = figuresFor(person, month, settings, carry, instalments.get(member.id) ?? []);
     await tx.payslip.update({
       where: { runId_membershipId: { runId: run.id, membershipId } },
@@ -640,6 +646,34 @@ export async function editSlip(ctx: ActiveContext, month: string, membershipId: 
   const row = await db.payslip.findFirstOrThrow({ where: { membershipId, run: { schoolId: caller.schoolId, month } }, select: { ...SLIP_SELECT, runId: true } });
   const extras = await extrasFor(caller.schoolId, row.runId, month);
   return slipView(row, salary, { slipRef: extras.refs.get(membershipId) ?? "", payment: null });
+}
+
+/**
+ * TA-042: a slip's instalment of an advance was worked out when its run was drawn, from the runs frozen then; two
+ * months drafted before either was locked each took the same instalment, and locking both took back more than was
+ * lent. At the lock, under the advances' own row locks (so two locks of different months take turns), what each
+ * advance is still owed is read again from the frozen runs, and a slip that takes more than that — or takes from an
+ * advance no longer RECORDED — refuses the lock until the run is drawn afresh.
+ */
+async function refuseAdvanceOverTaken(tx: Tx, schoolId: string, slips: { membershipId: string; staffName: string; linesJson: string }[]): Promise<void> {
+  const taking = new Map<string, { paise: number; name: string }>();
+  for (const s of slips) for (const l of readJsonArray<PayslipLine>(s.linesJson)) {
+    if (l.code !== "ADVANCE" || !l.advanceId) continue;
+    const t = taking.get(l.advanceId) ?? { paise: 0, name: s.staffName };
+    t.paise += l.paise;
+    taking.set(l.advanceId, t);
+  }
+  if (!taking.size) return;
+  const ids = [...taking.keys()].sort();
+  await tx.$queryRaw`SELECT "id" FROM "StaffAdvance" WHERE "schoolId" = ${schoolId} AND "id" IN (${Prisma.join(ids)}) ORDER BY "id" FOR UPDATE`;
+  const advances = await tx.staffAdvance.findMany({ where: { schoolId, id: { in: ids } }, select: { id: true, membershipId: true, amountPaise: true, status: true } });
+  const recovered = await recoveredByAdvance(schoolId, [...new Set(advances.map((a) => a.membershipId))], tx);
+  const byId = new Map(advances.map((a) => [a.id, a]));
+  for (const [id, t] of taking) {
+    const a = byId.get(id);
+    const owed = a && a.status === "RECORDED" ? a.amountPaise - (recovered.get(id) ?? 0) : 0;
+    if (t.paise > owed) throw new RuleRefusal("payroll.refuseAdvanceRedraw", 409, { name: t.name });
+  }
 }
 
 /**
@@ -659,6 +693,7 @@ export async function lockRun(ctx: ActiveContext, month: string): Promise<Payrol
     if (!slips.length) throw new RuleRefusal("payroll.refuseEmptyRun", 409);
     const negative = slips.find((s) => s.netPaise < 0);
     if (negative) throw new RuleRefusal("payroll.refuseNegativeNet", 409, { name: negative.staffName });
+    await refuseAdvanceOverTaken(tx, caller.schoolId, slips);
     await writeTotals(tx, run.id);
     await tx.payrollRun.update({ where: { id: run.id }, data: { status: "LOCKED", lockedAt: new Date(), lockedByUserId: caller.user.id, lockDigest: slipDigest(slips) } });
     return slips.map((s) => s.membership.userId);
@@ -746,7 +781,8 @@ export async function payrollExport(ctx: ActiveContext, month: string, kind: Pay
       if (!ee || !uan) continue;
       const c = ecrShares(ee, er);
       const ncp = Math.round((s.lopOverrideHalfDays ?? s.lopHalfDays) / 2);
-      out.push([uan, s.staffName.toUpperCase().replace(/#~#/g, " "), rupees(s.grossPaise), c.epfWage, c.epsWage, c.epsWage, c.ee, c.eps, c.diff, ncp, 0].join("#~#"));
+      // TA-428: one member a line — the separator and any control character (a line break) in the name become a space.
+      out.push([uan, s.staffName.toUpperCase().replace(/#~#|[\u0000-\u001f\u007f]/g, " "), rupees(s.grossPaise), c.epfWage, c.epsWage, c.epsWage, c.ee, c.eps, c.diff, ncp, 0].join("#~#"));
       // What the lines remit, in the rupees they print.
       totalPaise += (c.ee + c.eps + c.diff) * 100;
     }
@@ -986,8 +1022,44 @@ export async function recordAdvance(ctx: ActiveContext, input: { membershipId: s
   const member = await db.membership.findFirst({ where: { id: input.membershipId, schoolId: caller.schoolId, role: { in: [...SCHOOL_STAFF_ROLES] }, status: "ACTIVE" }, select: { id: true } });
   if (!member) throw new RuleRefusal("payroll.refuseNotStaff", 422, undefined, "membershipId");
   if (input.monthlyRecoveryPaise > input.amountPaise) throw new RuleRefusal("payroll.refuseInstalment", 422, undefined, "monthlyRecoveryPaise");
-  const row = await db.staffAdvance.create({ data: { schoolId: caller.schoolId, membershipId: member.id, amountPaise: input.amountPaise, reason: input.reason, status: "RECORDED", monthlyRecoveryPaise: input.monthlyRecoveryPaise, decidedByUserId: caller.user.id, decidedAt: new Date() }, select: ADVANCE_SELECT });
-  await audit({ schoolId: caller.schoolId, actorUserId: caller.user.id, action: "payroll.advance.record", targetType: "StaffAdvance", targetId: row.id, meta: { amountPaise: input.amountPaise, monthlyRecoveryPaise: input.monthlyRecoveryPaise } });
+  // TA-043: a second press of the same form (the same person, amount, instalment and reason, by the same hand within
+  // two minutes) answers the first row rather than recording the advance twice; the person's row lock makes two
+  // presses landing together take turns.
+  const made = await db.$tenantTransaction(async (raw) => {
+    const tx = raw as Tx;
+    await tx.$queryRaw`SELECT "id" FROM "Membership" WHERE "id" = ${member.id} AND "schoolId" = ${caller.schoolId} FOR UPDATE`;
+    const same = await tx.staffAdvance.findFirst({ where: { schoolId: caller.schoolId, membershipId: member.id, status: "RECORDED", amountPaise: input.amountPaise, monthlyRecoveryPaise: input.monthlyRecoveryPaise, reason: input.reason, decidedByUserId: caller.user.id, createdAt: { gte: new Date(Date.now() - REPEAT_PRESS_MS) } }, orderBy: { createdAt: "desc" }, select: ADVANCE_SELECT });
+    if (same) return { row: same, repeat: true };
+    const row = await tx.staffAdvance.create({ data: { schoolId: caller.schoolId, membershipId: member.id, amountPaise: input.amountPaise, reason: input.reason, status: "RECORDED", monthlyRecoveryPaise: input.monthlyRecoveryPaise, decidedByUserId: caller.user.id, decidedAt: new Date() }, select: ADVANCE_SELECT });
+    return { row, repeat: false };
+  });
+  const row = made.row;
+  if (!made.repeat) await audit({ schoolId: caller.schoolId, actorUserId: caller.user.id, action: "payroll.advance.record", targetType: "StaffAdvance", targetId: row.id, meta: { amountPaise: input.amountPaise, monthlyRecoveryPaise: input.monthlyRecoveryPaise } });
+  return (await advanceViews(caller.schoolId, [row]))[0]!;
+}
+/** How long the same advance typed again is taken for a second press of one form (TA-043). */
+const REPEAT_PRESS_MS = 2 * 60_000;
+
+/**
+ * TA-043: the office cancels a recorded advance it entered by mistake (the wrong person, a slip of the keys): it
+ * becomes CANCELLED and no later run takes an instalment of it; a DRAFT slip that already carries one refuses its lock
+ * until the run is drawn afresh (refuseAdvanceOverTaken). Only while nothing of it has been taken back on a locked
+ * slip: an advance partly recovered is a debt with a history, and closing it at what came back is the owner's call.
+ * Under the advance's row lock, so a lock taking its instalment at this moment goes first or sees it cancelled.
+ */
+export async function cancelAdvance(ctx: ActiveContext, input: { advanceId: string; note: string }): Promise<StaffAdvanceView> {
+  const caller = await office(ctx, true);
+  await db.$tenantTransaction(async (raw) => {
+    const tx = raw as Tx;
+    const [adv] = await tx.$queryRaw<{ id: string; membershipId: string; status: string; amountPaise: number }[]>`SELECT "id", "membershipId", "status", "amountPaise" FROM "StaffAdvance" WHERE "id" = ${input.advanceId} AND "schoolId" = ${caller.schoolId} FOR UPDATE`;
+    if (!adv) throw new AccessError("access.entryNotFound", "NOT_FOUND");
+    if (adv.status !== "RECORDED") throw new RuleRefusal("payroll.refuseAdvanceNotRecorded", 409);
+    const back = (await recoveredByAdvance(caller.schoolId, [adv.membershipId], tx)).get(adv.id) ?? 0;
+    if (back > 0) throw new RuleRefusal("payroll.refuseAdvanceRecovered", 409);
+    await tx.staffAdvance.update({ where: { id: adv.id }, data: { status: "CANCELLED", decisionNote: input.note } });
+    await audit({ schoolId: caller.schoolId, actorUserId: caller.user.id, action: "payroll.advance.cancel", targetType: "StaffAdvance", targetId: adv.id, meta: { amountPaise: adv.amountPaise } }, tx);
+  });
+  const row = await db.staffAdvance.findUniqueOrThrow({ where: { id: input.advanceId }, select: ADVANCE_SELECT });
   return (await advanceViews(caller.schoolId, [row]))[0]!;
 }
 

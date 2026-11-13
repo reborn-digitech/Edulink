@@ -57,6 +57,27 @@ export async function writePan(target: PanTarget, value: string, client?: PanCli
   return db.$tenantTransaction((raw) => work(raw as PanClient));
 }
 
+/**
+ * TA-290: a copy made after the PAN was written (a first salary revision, a faculty record filed later) started
+ * empty, since writePan seals only rows that exist. A writer that has just made such a row with no PAN typed calls
+ * this: the number held in another copy of the same person's is opened with that copy's binding and written again by
+ * writePan to every copy. Answers whether a held PAN was spread; nothing held, or every copy already holding one,
+ * changes nothing.
+ */
+export async function spreadHeldPan(target: { kind: "STAFF"; schoolId: string; membershipId: string }): Promise<boolean> {
+  const where = { schoolId: target.schoolId, membershipId: target.membershipId };
+  const [record, salaries] = await Promise.all([
+    db.facultyRecord.findFirst({ where, select: { panSealed: true } }),
+    db.staffSalary.findMany({ where, orderBy: { effectiveFromKey: "desc" }, select: { panSealed: true } }),
+  ]);
+  const missing = (record ? !record.panSealed : false) || salaries.some((s) => !s.panSealed);
+  if (!missing) return false;
+  const pan = record?.panSealed ? openPan(target, "FACULTY_RECORD", record.panSealed) : openPan(target, "SALARY", salaries.find((s) => s.panSealed)?.panSealed);
+  if (!pan) return false;
+  await writePan(target, pan);
+  return true;
+}
+
 /** A sealed copy opened with its own binding; null when there is none. */
 export function openPan(target: PanTarget, copy: PanCopy, sealed: string | null | undefined): string | null {
   return sealed ? open(sealed, binding(target, copy)) : null;

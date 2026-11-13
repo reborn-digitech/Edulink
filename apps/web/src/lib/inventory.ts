@@ -326,7 +326,8 @@ export async function recordMovement(ctx: ActiveContext, input: StockMovementSav
 export async function listMovements(ctx: ActiveContext, opts: { itemCode?: string; month?: string } = {}): Promise<{ movements: StockMovementView[]; month: string | null }> {
   const caller = await office(ctx, false);
   const tz = await zoneOf(caller.schoolId);
-  const month = opts.month && /^\d{4}-\d{2}$/.test(opts.month) ? opts.month : null;
+  // TA-581: a real month only (01 to 12); 2026-13 and 2026-00 rolled into a neighbouring year.
+  const month = opts.month && /^\d{4}-(0[1-9]|1[0-2])$/.test(opts.month) ? opts.month : null;
   let range: { gte: Date; lt: Date } | undefined;
   if (month) {
     const [y, m] = month.split("-").map(Number) as [number, number];

@@ -247,6 +247,20 @@ export async function generateForms(ctx: ActiveContext, sessionId: string): Prom
   return done(s.id, written);
 }
 
+/**
+ * DEBARRED FROM THE NEXT SESSION (TA-303): the committee's DEBAR_NEXT was recorded and never applied. It holds the
+ * student out of the next session they would sit — the first one created after the deciding session in which they
+ * hold a form. The deciding session's name, or null when the student is not debarred from this one.
+ */
+async function debarredFrom(schoolId: string, studentMembershipId: string, session: { id: string; createdAt: Date }): Promise<string | null> {
+  const cases = await db.malpractice.findMany({ where: { schoolId, studentMembershipId, decision: "DEBAR_NEXT", sessionId: { not: session.id }, session: { createdAt: { lt: session.createdAt } } }, select: { session: { select: { name: true, createdAt: true } } } });
+  for (const c of cases) {
+    const between = await db.examForm.count({ where: { schoolId, studentMembershipId, sessionId: { not: session.id }, session: { createdAt: { gt: c.session.createdAt, lt: session.createdAt } } } });
+    if (between === 0) return c.session.name;
+  }
+  return null;
+}
+
 /** Whether the window is open now: the session takes forms and the day is inside its dates. */
 function windowOpen(s: { status: string; formOpensAt: Date | null; formClosesAt: Date | null }, now = new Date()): boolean {
   return s.status === "FORMS" && (!s.formOpensAt || s.formOpensAt <= now) && (!s.formClosesAt || now <= s.formClosesAt);
@@ -270,6 +284,8 @@ export async function submitForm(ctx: ActiveContext, formId: string): Promise<Ex
   if (form.status !== "DRAFT") throw new RuleRefusal("examCell.refuseFormNotDraft", 409);
   if (s.status !== "FORMS") throw new RuleRefusal("examCell.refuseFormsClosed", 409);
   if (ctx.role === "STUDENT" && !windowOpen(s)) throw new RuleRefusal("examCell.refuseWindowClosed", 409);
+  const debarred = await debarredFrom(schoolId, form.studentMembershipId, s);
+  if (debarred) throw new RuleRefusal("examCell.refuseDebarred", 409, { session: debarred });
   const courses = formCourses(form.coursesJson);
   if (courses.length === 0) throw new RuleRefusal("examCell.refuseFormEmpty", 409);
   const timeZone = await zoneOf(schoolId);
@@ -314,10 +330,14 @@ export async function submitForm(ctx: ActiveContext, formId: string): Promise<Ex
 /** The controller approves a submitted form (waiving the fee with a reason, if so) or refuses it with one. */
 export async function decideForm(ctx: ActiveContext, formId: string, input: { approve: boolean; waiveFee: boolean; reason?: string }): Promise<ExamActionResult> {
   const cell = await cellOf(ctx);
-  const form = await db.examForm.findFirst({ where: { id: formId, schoolId: cell.schoolId }, include: { session: { select: { name: true, status: true } } } });
+  const form = await db.examForm.findFirst({ where: { id: formId, schoolId: cell.schoolId }, include: { session: { select: { name: true, status: true, createdAt: true } } } });
   if (!form) throw new AccessError("access.thatContentNoLongerExists", "NOT_FOUND");
   if (form.lockedAt || statusAtLeast(form.session.status, "CONDUCT")) throw new RuleRefusal("examCell.refuseFormLocked", 409);
   if (form.status !== "SUBMITTED") throw new RuleRefusal("examCell.refuseFormNotSubmitted", 409);
+  if (input.approve) {
+    const debarred = await debarredFrom(cell.schoolId, form.studentMembershipId, { id: form.sessionId, createdAt: form.session.createdAt });
+    if (debarred) throw new RuleRefusal("examCell.refuseDebarred", 409, { session: debarred });
+  }
   const reason = input.reason?.trim() || null;
   const demand = form.feeDemandId ? await db.feeDemand.findUnique({ where: { id: form.feeDemandId }, select: { id: true, status: true, paidPaise: true } }) : null;
   if (input.approve && input.waiveFee && demand && demand.paidPaise > 0) throw new RuleRefusal("examCell.refuseWaivePaid", 409);
@@ -325,9 +345,16 @@ export async function decideForm(ctx: ActiveContext, formId: string, input: { ap
     const tx = raw as Tx;
     const flipped = await tx.examForm.updateMany({ where: { id: form.id, status: "SUBMITTED" }, data: { status: input.approve ? "APPROVED" : "REFUSED", decidedAt: new Date(), decidedByUserId: cell.userId, waiverReason: input.approve && input.waiveFee ? reason : null, refusalReason: input.approve ? null : reason } });
     if (flipped.count !== 1) return;
-    if (demand && demand.status === "OPEN" && demand.paidPaise === 0 && (!input.approve || input.waiveFee)) await tx.feeDemand.update({ where: { id: demand.id }, data: { status: input.approve ? "WAIVED" : "CANCELLED" } });
+    if (demand && demand.status === "OPEN" && demand.paidPaise === 0 && (!input.approve || input.waiveFee)) {
+      // TA-517: the demand's own lock, then a write only while nothing is paid on it: a payment that went first keeps
+      // its PAID (a waiver then refused whole; a refused form leaves the paid fee to the office's refund).
+      await tx.$queryRaw`SELECT "id" FROM "FeeDemand" WHERE "id" = ${demand.id} AND "schoolId" = ${cell.schoolId} FOR UPDATE`;
+      const moved = await tx.feeDemand.updateMany({ where: { id: demand.id, schoolId: cell.schoolId, status: "OPEN", paidPaise: 0, allocations: { none: {} } }, data: { status: input.approve ? "WAIVED" : "CANCELLED" } });
+      if (moved.count === 0 && input.approve) throw new RuleRefusal("examCell.refuseWaivePaid", 409);
+    }
   });
-  await audit({ schoolId: cell.schoolId, actorUserId: cell.userId, action: input.approve ? "exam.form.approve" : "exam.form.refuse", targetType: "ExamForm", targetId: form.id, meta: { waiveFee: input.approve && input.waiveFee, reason } });
+  // The reason is on the form (waiverReason or refusalReason); the log says only that one was given (TA-409).
+  await audit({ schoolId: cell.schoolId, actorUserId: cell.userId, action: input.approve ? "exam.form.approve" : "exam.form.refuse", targetType: "ExamForm", targetId: form.id, meta: { waiveFee: input.approve && input.waiveFee, reasonGiven: reason !== null } });
   const student = await db.membership.findUnique({ where: { id: form.studentMembershipId }, select: { userId: true } });
   if (student) {
     await notify({ userId: student.userId, schoolId: cell.schoolId, kind: "SYSTEM", titleKey: input.approve ? "examCell.notifyFormApproved" : "examCell.notifyFormRefused", titleVars: { session: form.session.name }, bodyKey: input.approve ? "examCell.notifyFormApprovedBody" : "examCell.notifyFormRefusedBody", bodyVars: { reason: reason ?? "—" }, url: "/student/exams" });
@@ -527,7 +554,8 @@ export async function swapInvigilator(ctx: ActiveContext, invigilationId: string
   if (await busyAt(cell.schoolId, staff.id, row.room.schedule.at, row.room.id)) throw new RuleRefusal("examCell.refuseInvigilatorBusy", 409, { name: staff.user.name });
   if (await db.invigilation.findUnique({ where: { examRoomId_staffMembershipId: { examRoomId: row.room.id, staffMembershipId: staff.id } }, select: { id: true } })) throw new RuleRefusal("examCell.refuseInvigilatorBusy", 409, { name: staff.user.name });
   await db.invigilation.update({ where: { id: row.id }, data: { staffMembershipId: staff.id, swappedFromMembershipId: row.staffMembershipId, status: "SWAPPED", note: input.note } });
-  await audit({ schoolId: cell.schoolId, actorUserId: cell.userId, action: "exam.invigilation.swap", targetType: "Invigilation", targetId: row.id, meta: { from: row.staffMembershipId, to: staff.id, note: input.note } });
+  // The note is on the duty's row; the log says only that one was given (TA-409, decision 0002).
+  await audit({ schoolId: cell.schoolId, actorUserId: cell.userId, action: "exam.invigilation.swap", targetType: "Invigilation", targetId: row.id, meta: { from: row.staffMembershipId, to: staff.id, noteGiven: true } });
   await notify({ userId: staff.userId, schoolId: cell.schoolId, kind: "SYSTEM", titleKey: "examCell.notifyDuty", titleVars: { course: row.room.schedule.courseCode, room: row.room.name }, bodyKey: "examCell.notifyDutyBody", url: "/faculty/exams" });
   return done(row.id);
 }

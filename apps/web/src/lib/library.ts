@@ -332,8 +332,24 @@ function fineStatusOf(f: Pick<FineRow, "waivedAt" | "demandId" | "settledAt" | "
 async function demandStatesOf(fines: { demandId: string | null }[]): Promise<DemandStates> {
   const ids = [...new Set(fines.map((f) => f.demandId).filter((x): x is string => Boolean(x)))];
   if (ids.length === 0) return new Map();
-  const rows = await db.feeDemand.findMany({ where: { id: { in: ids } }, select: { id: true, status: true } });
-  return new Map(rows.map((r) => [r.id, r.status]));
+  const rows = await db.feeDemand.findMany({ where: { id: { in: ids } }, select: { id: true, status: true, carriedToDemandId: true } });
+  const out = new Map(rows.map((r) => [r.id, r.status]));
+  // TA-044: a demand carried into next year's opening balance holds no money of its own; the fine reads the state of
+  // the demand that now does (followed again if that one was carried on), so it is PAID once the family pays that.
+  let carried = rows.filter((r) => r.status === "CARRIED" && r.carriedToDemandId).map((r) => ({ from: r.id, to: r.carriedToDemandId! }));
+  for (let hop = 0; carried.length && hop < 10; hop++) {
+    const next = await db.feeDemand.findMany({ where: { id: { in: [...new Set(carried.map((c) => c.to))] } }, select: { id: true, status: true, carriedToDemandId: true } });
+    const by = new Map(next.map((n) => [n.id, n]));
+    const still: typeof carried = [];
+    for (const c of carried) {
+      const n = by.get(c.to);
+      if (!n) continue;
+      out.set(c.from, n.status);
+      if (n.status === "CARRIED" && n.carriedToDemandId) still.push({ from: c.from, to: n.carriedToDemandId });
+    }
+    carried = still;
+  }
+  return out;
 }
 
 async function finesOf(rows: FineRow[]): Promise<LibraryFine[]> {
@@ -954,8 +970,12 @@ export async function raiseFine(ctx: ActiveContext, input: { issueId: string; re
   const outcome = await db.$tenantTransaction(async (raw) => {
     const tx = raw as Tx;
     if (input.reason === "LOST") {
-      await tx.libraryIssue.updateMany({ where: { id: i.id, returnedAt: null }, data: { returnedAt: new Date(), returnedByUserId: desk.userId } });
-      await tx.libraryCopy.update({ where: { id: i.copyId }, data: { status: "LOST" } });
+      // TA-293: under the title's lock, as a return and an issue take it; the loan must still be open here, and only a
+      // copy still out on it becomes LOST — a return that went first is refused, not a returned or re-lent copy marked lost.
+      await tx.$queryRaw`SELECT 1 FROM "LibraryTitle" WHERE "id" = ${i.copy.titleId} FOR UPDATE`;
+      const closed = await tx.libraryIssue.updateMany({ where: { id: i.id, returnedAt: null }, data: { returnedAt: new Date(), returnedByUserId: desk.userId } });
+      if (closed.count !== 1) throw new AccessError("library.refuseNotOnLoan");
+      await tx.libraryCopy.updateMany({ where: { id: i.copyId, status: "ISSUED" }, data: { status: "LOST" } });
     }
     const demandId = await chargeFine(tx, desk.schoolId, i.member.kind, i.member.membershipId, s, input.paise, t("library.fineLabel", { title: i.copy.title.title }), today);
     const fine = await tx.libraryFine.create({ data: { schoolId: desk.schoolId, issueId: i.id, memberId: i.member.id, paise: input.paise, reason: input.reason, raisedByUserId: desk.userId, demandId }, select: { id: true } });
@@ -977,15 +997,30 @@ export async function waiveFine(ctx: ActiveContext, fineId: string, reason: stri
     const outcome = await db.$tenantTransaction(async (raw) => {
       const tx = raw as Tx;
       if (f.demandId) {
+        // TA-517: the demand's own lock first, as a payment posted at this moment takes it (fees-payments.ts openDemands),
+        // and the waiver only of a demand still untouched: a payment that went first leaves it PAID, not WAIVED over PAID.
+        await tx.$queryRaw`SELECT "id" FROM "FeeDemand" WHERE "id" = ${f.demandId} AND "schoolId" = ${desk.schoolId} FOR UPDATE`;
         const d = await tx.feeDemand.findUnique({ where: { id: f.demandId }, select: { paidPaise: true, status: true, _count: { select: { allocations: true } } } });
         if (d && (d.paidPaise > 0 || d._count.allocations > 0 || d.status === "PAID")) return "paid" as const;
-        if (d && d.status === "OPEN") await tx.feeDemand.update({ where: { id: f.demandId }, data: { status: "WAIVED" } });
+        // TA-044: a fine carried into next year's opening balance is owed there; waiving it here left the money asked.
+        if (d && d.status === "CARRIED") return "carried" as const;
+        if (d && d.status === "OPEN") {
+          const moved = await tx.feeDemand.updateMany({ where: { id: f.demandId, schoolId: desk.schoolId, status: "OPEN", paidPaise: 0, allocations: { none: {} } }, data: { status: "WAIVED" } });
+          if (moved.count === 0) return "paid" as const;
+        }
       }
-      await tx.libraryFine.update({ where: { id: f.id }, data: { waivedAt: new Date(), waivedByUserId: desk.userId, waivedReason: reason } });
+      // The fine moves from neither waived nor settled only: a settle or a second waiver at this moment finds it moved.
+      const done = await tx.libraryFine.updateMany({ where: { id: f.id, waivedAt: null, settledAt: null }, data: { waivedAt: new Date(), waivedByUserId: desk.userId, waivedReason: reason } });
+      if (done.count === 0) {
+        const now = await tx.libraryFine.findUnique({ where: { id: f.id }, select: { settledAt: true } });
+        if (now?.settledAt) throw new AccessError("library.refuseFinePaid");
+        return "already" as const;
+      }
       return "waived" as const;
     });
     if (outcome === "paid") throw new AccessError("library.refuseFinePaid");
-    await audit({ schoolId: desk.schoolId, actorUserId: desk.userId, action: "library.fine.waive", targetType: "LibraryFine", targetId: f.id, meta: { paise: f.paise, onLedger: Boolean(f.demandId) } });
+    if (outcome === "carried") throw new AccessError("library.refuseFineCarried");
+    if (outcome === "waived") await audit({ schoolId: desk.schoolId, actorUserId: desk.userId, action: "library.fine.waive", targetType: "LibraryFine", targetId: f.id, meta: { paise: f.paise, onLedger: Boolean(f.demandId) } });
   }
   const row = await db.libraryFine.findUniqueOrThrow({ where: { id: f.id }, select: FINE_SELECT });
   return (await finesOf([row]))[0]!;
@@ -1000,8 +1035,12 @@ export async function settleFine(ctx: ActiveContext, fineId: string): Promise<Li
   if (f.demandId) throw new AccessError("library.refuseOnLedger");
   if (f.waivedAt) throw new AccessError("library.refuseFineWaived");
   if (!f.settledAt) {
-    await db.libraryFine.update({ where: { id: f.id }, data: { settledAt: new Date(), settledByUserId: desk.userId } });
-    await audit({ schoolId: desk.schoolId, actorUserId: desk.userId, action: "library.fine.settle", targetType: "LibraryFine", targetId: f.id, meta: { paise: f.paise } });
+    // TA-517: settled only from neither settled nor waived, so a waiver at this moment and this settle cannot both land.
+    const done = await db.libraryFine.updateMany({ where: { id: f.id, schoolId: desk.schoolId, waivedAt: null, settledAt: null }, data: { settledAt: new Date(), settledByUserId: desk.userId } });
+    if (done.count === 0) {
+      const now = await db.libraryFine.findUnique({ where: { id: f.id }, select: { waivedAt: true } });
+      if (now?.waivedAt) throw new AccessError("library.refuseFineWaived");
+    } else await audit({ schoolId: desk.schoolId, actorUserId: desk.userId, action: "library.fine.settle", targetType: "LibraryFine", targetId: f.id, meta: { paise: f.paise } });
   }
   const row = await db.libraryFine.findUniqueOrThrow({ where: { id: f.id }, select: FINE_SELECT });
   return (await finesOf([row]))[0]!;
@@ -1155,6 +1194,8 @@ export async function importCatalogue(ctx: ActiveContext, text: string): Promise
   const parsed = parseCsv(csv);
   const result: LibraryImportResult = { titlesCreated: 0, titlesMatched: 0, copiesCreated: 0, skipped: [], noHeader: false };
   if (!HEADERS.title!.some((h) => parsed.headers.includes(h))) return { ...result, noHeader: true };
+  /** TA-294: the titles that gained a copy, whose queues are served after the loop as addCopy serves one. */
+  const gained = new Set<string>();
   for (let k = 0; k < Math.min(parsed.rows.length, 5000); k += 1) {
     const row = parsed.rows[k]!;
     const line = parsed.lineNumbers[k] ?? k + 2;
@@ -1215,11 +1256,14 @@ export async function importCatalogue(ctx: ActiveContext, text: string): Promise
       try {
         await db.libraryCopy.create({ data: { schoolId: desk.schoolId, titleId: titleRow.id, accession, rack } });
         result.copiesCreated += 1;
+        gained.add(titleRow.id);
       } catch {
         result.skipped.push({ line, reason: "ACCESSION_TAKEN" });
       }
     }
   }
   await audit({ schoolId: desk.schoolId, actorUserId: desk.userId, action: "library.import", targetType: "School", targetId: desk.schoolId, meta: { titlesCreated: result.titlesCreated, titlesMatched: result.titlesMatched, copiesCreated: result.copiesCreated, skipped: result.skipped.length } });
+  // The readers waiting for a title that gained a copy are offered it now, in their order, and told.
+  for (const titleId of gained) await tellReady(desk.schoolId, await reholdInTx(titleId));
   return result;
 }

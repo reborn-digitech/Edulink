@@ -91,7 +91,18 @@ export async function staffAppraisals(ctx: ActiveContext, membershipId: string):
     currentAcademicYear(caller.schoolId),
     db.staffAppraisal.findMany({ where: { schoolId: caller.schoolId, staffMembershipId: membershipId }, orderBy: [{ date: "desc" }, { createdAt: "desc" }], select: ENTRY_SELECT, take: 500 }),
   ]);
-  return { staffMembershipId: subject.id, name: nameOf(subject.user), role: subject.role, year: year?.name ?? null, canEdit: caller.role === "PRINCIPAL" && subject.id !== caller.membershipId, items: await toEntries(rows, school.timezone) };
+  // TA-045: the office or a head reading their own timeline (any membership of theirs) reads it as its subject does,
+  // only the entries marked visible to them: the header's "never sees one that is not" holds on this door too.
+  const own = subject.userId === caller.user.id;
+  const shown = own ? rows.filter((r) => r.visibleToStaff) : rows;
+  return { staffMembershipId: subject.id, name: nameOf(subject.user), role: subject.role, year: year?.name ?? null, canEdit: caller.role === "PRINCIPAL" && !own, items: await toEntries(shown, school.timezone) };
+}
+
+/** Nobody appraises themselves: an entry about any membership of the caller's is not theirs to rewrite or remove (TA-289). */
+async function refuseOwnEntry(caller: Head, staffMembershipId: string): Promise<void> {
+  if (staffMembershipId === caller.membershipId) throw new AccessError("appraisal.notYourself");
+  const subject = await db.membership.findFirst({ where: { id: staffMembershipId, schoolId: caller.schoolId }, select: { userId: true } });
+  if (subject?.userId === caller.user.id) throw new AccessError("appraisal.notYourself");
 }
 
 /** The head writes an entry for a member of staff; filed under the current year, or "—" when the school has none. */
@@ -125,6 +136,8 @@ export async function updateAppraisal(ctx: ActiveContext, appraisalId: string, i
   const caller = head(ctx);
   const existing = await db.staffAppraisal.findFirst({ where: { id: appraisalId, schoolId: caller.schoolId }, select: { id: true, staffMembershipId: true, visibleToStaff: true } });
   if (!existing) throw new AccessError("appraisal.noSuchEntry", "NOT_FOUND");
+  // TA-289: a head does not rewrite an entry another head wrote about them, as they cannot write one.
+  await refuseOwnEntry(caller, existing.staffMembershipId);
   const school = await db.school.findUniqueOrThrow({ where: { id: caller.schoolId }, select: { timezone: true } });
   await db.staffAppraisal.update({
     where: { id: existing.id },
@@ -147,6 +160,7 @@ export async function deleteAppraisal(ctx: ActiveContext, appraisalId: string): 
   const caller = head(ctx);
   const existing = await db.staffAppraisal.findFirst({ where: { id: appraisalId, schoolId: caller.schoolId }, select: { id: true, staffMembershipId: true, kind: true } });
   if (!existing) return { changed: false };
+  await refuseOwnEntry(caller, existing.staffMembershipId);
   await db.staffAppraisal.delete({ where: { id: existing.id } });
   await audit({ schoolId: caller.schoolId, actorUserId: caller.user.id, action: "appraisal.delete", targetType: "Membership", targetId: existing.staffMembershipId, meta: { appraisalId: existing.id, kind: existing.kind } });
   return { changed: true };

@@ -1,5 +1,5 @@
 import "server-only";
-import { writePan } from "./pan";
+import { spreadHeldPan, writePan } from "./pan";
 import { createHash, createHmac, hkdfSync, randomBytes, timingSafeEqual } from "node:crypto";
 import {
   applicableFilings,
@@ -1212,6 +1212,8 @@ export async function saveFacultyRecord(ctx: ActiveContext, input: z.infer<typeo
   await db.facultyRecord.upsert({ where: { membershipId: m.id }, create: { schoolId: actor.schoolId, membershipId: m.id, ...data }, update: data });
   // The one writer (G4-14): the record's copy and payroll's, together.
   if (input.pan) await writePan({ kind: "STAFF", schoolId: actor.schoolId, membershipId: m.id }, input.pan);
+  // TA-290: a record filed with the box blank takes the PAN payroll's salary already holds.
+  else await spreadHeldPan({ kind: "STAFF", schoolId: actor.schoolId, membershipId: m.id });
   // The PAN never enters the log, sealed or not.
   await audit({ schoolId: actor.schoolId, actorUserId: actor.userId, action: "iqac.facultyRecord.save", targetType: "Membership", targetId: m.id, meta: { designation: input.designation, pan: Boolean(input.pan) } });
   return facultyRecords(ctx);

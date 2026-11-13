@@ -274,7 +274,8 @@ export async function recruiterExport(ctx: ActiveContext, driveId: string): Prom
   const now = new Date();
   const mark = watermarkFor(me, d.company.name, d.title, now);
   const lines = [
-    `# ${mark}`,
+    // TA-428: the watermark is one cell like every other, so a line break in a title cannot start a line of its own.
+    toCsvValue(`# ${mark}`),
     ["name", "college", "programme", "batch", "cgpa", "live_backlogs", "attendance_pct", "skills", "status", "round"].map(toCsvValue).join(","),
     ...apps.map((a) => [a.studentName, a.schoolName, a.record.programmeName ?? "", a.record.batchYear ?? "", a.record.cgpa ?? "", a.record.liveBacklogs ?? "", a.record.attendancePct ?? "", a.skills.join("; "), a.status, a.round ?? ""].map((v) => toCsvValue(String(v))).join(",")),
   ];

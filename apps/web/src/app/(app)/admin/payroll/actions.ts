@@ -6,6 +6,7 @@ import {
   salaryPaymentVoidSchema,
   utrSheetSchema,
   type UtrSheetAnswer,
+  advanceCancelSchema,
   advanceDecideSchema,
   advanceRecordSchema,
   payrollSettingsSaveSchema,
@@ -14,7 +15,7 @@ import {
   staffSalarySaveSchema,
 } from "@edulink/contracts";
 import { requireApiUser } from "@/lib/tenancy";
-import { decideAdvance, draftRun, editSlip, lockRun, recordAdvance, savePayrollSettings, saveSalary, saveStructure, shareRun } from "@/lib/payroll";
+import { cancelAdvance, decideAdvance, draftRun, editSlip, lockRun, recordAdvance, savePayrollSettings, saveSalary, saveStructure, shareRun } from "@/lib/payroll";
 import { field, runAction, rupeesField } from "@/lib/module-actions";
 import { RuleRefusal } from "@/lib/rule-refusal";
 import { answerForm } from "@/lib/form-action";
@@ -165,6 +166,15 @@ export async function decideAdvanceAction(form: FormData): Promise<void> {
     const input = advanceDecideSchema.parse({ advanceId: field(form, "advanceId"), decision: field(form, "decision"), amountPaise: rupeesField(form, "amount") ?? undefined, monthlyRecoveryPaise: rupeesField(form, "instalment") ?? undefined, note: field(form, "note") });
     await decideAdvance(ctx, input);
     return input.decision === "RECORD" ? "payroll.advanceRecorded" : "payroll.advanceDeclined";
+  });
+}
+
+/** TA-043: the office cancels a recorded advance entered by mistake, while nothing of it has been taken back. */
+export async function cancelAdvanceAction(form: FormData): Promise<void> {
+  await runAction("/admin/payroll/advances", async () => {
+    const ctx = await requireApiUser();
+    await cancelAdvance(ctx, advanceCancelSchema.parse({ advanceId: field(form, "advanceId"), note: field(form, "note") }));
+    return "payroll.advanceCancelled";
   });
 }
 

@@ -471,6 +471,8 @@ export const advanceDecideSchema = z.object({
   monthlyRecoveryPaise: paise.optional(),
   note: z.string().trim().max(300).default(""),
 });
+/** POST /api/v1/admin/payroll/advances/cancel — the office cancels a recorded advance nothing has yet been taken back for (TA-043). */
+export const advanceCancelSchema = z.object({ advanceId: cuid, note: z.string().trim().min(1).max(300) });
 
 /* ------------------------------------------------------ the staff's own */
 

@@ -12,7 +12,7 @@ import { listAdvances, listSalaries } from "@/lib/payroll";
 import { formatInZone } from "@/lib/dates";
 import { getT } from "@/lib/i18n/server";
 import { payrollGate, PayrollTop } from "../shared";
-import { decideAdvanceAction, recordAdvanceAction } from "../actions";
+import { cancelAdvanceAction, decideAdvanceAction, recordAdvanceAction } from "../actions";
 
 export async function generateMetadata(): Promise<Metadata> {
   return { title: (await getT())("payroll.tabAdvances") };
@@ -69,6 +69,13 @@ export default async function PayrollAdvances({ searchParams }: { searchParams: 
                         <Button type="submit" size="sm" variant="secondary">{t("payroll.declineAdvance")}</Button>
                       </form>
                     </div>
+                  ) : null}
+                  {a.status === "RECORDED" && a.recoveredPaise === 0 ? (
+                    <form action={cancelAdvanceAction} className="flex flex-wrap items-end gap-2">
+                      <input type="hidden" name="advanceId" value={a.id} />
+                      <input aria-label={t("payroll.cancelAdvanceWhy")} className={fieldClass("w-48")} name="note" required maxLength={300} placeholder={t("payroll.cancelAdvanceWhy")} />
+                      <Button type="submit" size="sm" variant="secondary">{t("payroll.cancelAdvance")}</Button>
+                    </form>
                   ) : null}
                 </li>
               ))}

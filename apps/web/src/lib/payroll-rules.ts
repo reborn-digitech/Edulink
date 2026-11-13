@@ -146,7 +146,10 @@ export function computeSlip(input: SlipInput): SlipFigures {
     const eps = Math.min(er, bp(epsBase, pf.epsBp));
     employer.push({ code: "PF_EMPLOYER", kind: "EMPLOYER_CONTRIBUTION", label: "", paise: er, fullPaise: er, basePaise: pfWage, epsBasePaise: epsBase, epsPaise: eps });
   }
-  const esiCovered = input.settings.esiEnabled && grossPaise > 0 && grossPaise <= esi.wageLimitPaise;
+  // TA-292: cover is decided on the full month's rate of wages (the earnings before loss of pay, arrears left out), so
+  // unpaid days or a month's arrears do not switch it on or off; the contribution is worked on what was earned.
+  const rateOfWages = lines.filter((l) => l.code !== "ARREARS").reduce((a, l) => a + l.fullPaise, 0);
+  const esiCovered = input.settings.esiEnabled && grossPaise > 0 && rateOfWages <= esi.wageLimitPaise;
   if (esiCovered && has("ESI_EMPLOYEE")) {
     const ee = ceilRupee((grossPaise * esi.employeeBp) / 10_000);
     deductions.push({ code: "ESI_EMPLOYEE", kind: "DEDUCTION", label: "", paise: ee, fullPaise: ee, basePaise: grossPaise });

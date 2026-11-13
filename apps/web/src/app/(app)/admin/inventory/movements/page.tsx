@@ -19,7 +19,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return { title: (await getT())("inventory.tabMovements") };
 }
 
-const MONTH = /^\d{4}-\d{2}$/;
+const MONTH = /^\d{4}-(0[1-9]|1[0-2])$/;
 function shift(month: string, by: number): string {
   const [y, m] = month.split("-").map(Number) as [number, number];
   const d = new Date(Date.UTC(y, m - 1 + by, 1));
