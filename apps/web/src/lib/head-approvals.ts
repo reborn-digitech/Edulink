@@ -229,6 +229,9 @@ export async function decideExpulsion(ctx: ActiveContext, expulsionId: string, i
     const tx = raw as typeof db;
     const moved = await tx.hostelExpulsion.updateMany({ where: { id: x.id, status: "ASKED" }, data: { status: target, decidedByUserId: me.userId, decidedAt: now, decisionNote: input.note.trim() || null, openKey: null } });
     if (moved.count === 0) throw new AccessError("collegeDesks.refuseExpulsionDecided");
+    // An approval of a place already ended would end nothing (TA-050): a room change carries the proposal to the new
+    // place, so the named place is ended only when the boarder gave up the bed, and then there is nothing to approve.
+    if (input.approve && !(await tx.hostelAllotment.findFirst({ where: { id: x.allotmentId, schoolId: me.schoolId, status: "ACTIVE" }, select: { id: true } }))) throw new AccessError("collegeDesks.refuseExpulsionNotActive");
     // The place ends on the proposal's day: written now only once that day has come.
     if (input.approve) await settleExpulsions(tx, me.schoolId, today, [x.allotmentId]);
   });

@@ -245,6 +245,9 @@ export async function allotBed(ctx: ActiveContext, input: HostelAllot): Promise<
   const room = await db.hostelRoom.findFirst({ where: { id: input.roomId, schoolId: staff.schoolId }, select: { id: true, beds: true } });
   if (!room) throw new AccessError("hostel.refuseNoRoom", "NOT_FOUND");
   if (input.bed > room.beds) throw new AccessError("hostel.refuseNoSuchBed", "FORBIDDEN", { beds: room.beds });
+  // A place is live from the moment it is written (liveAllotmentWhere reads no date), so a first day ahead would
+  // put the pupil on tonight's roll call (TA-052): a bed is given from today or a day gone by.
+  if (input.fromDate > todayKey(staff.timeZone)) throw new AccessError("hostel.refuseFromAhead");
   if (input.feeDemandId) {
     const d = await db.feeDemand.findFirst({ where: { id: input.feeDemandId, schoolId: staff.schoolId, studentMembershipId: pupil.id }, select: { id: true } });
     if (!d) throw new AccessError("hostel.refuseNoDemand");
@@ -255,14 +258,22 @@ export async function allotBed(ctx: ActiveContext, input: HostelAllot): Promise<
   const bedKey = `${room.id}:${input.bed}`;
   if (await db.hostelAllotment.findUnique({ where: { activeBedKey: bedKey }, select: { id: true } })) throw new AccessError("hostel.refuseBedTaken");
   let id: string;
+  let carried = 0;
   try {
-    id = (await db.hostelAllotment.create({ data: { schoolId: staff.schoolId, membershipId: pupil.id, roomId: room.id, bed: input.bed, fromDate: input.fromDate, status: "ACTIVE", activePupilKey: pupil.id, activeBedKey: bedKey, feeDemandId: input.feeDemandId, allottedByUserId: staff.userId }, select: { id: true } })).id;
+    id = await db.$tenantTransaction(async (raw) => {
+      const tx = raw as Tx;
+      const created = await tx.hostelAllotment.create({ data: { schoolId: staff.schoolId, membershipId: pupil.id, roomId: room.id, bed: input.bed, fromDate: input.fromDate, status: "ACTIVE", activePupilKey: pupil.id, activeBedKey: bedKey, feeDemandId: input.feeDemandId, allottedByUserId: staff.userId }, select: { id: true } });
+      // A bed given up and given again before an approved expulsion's day keeps the principal's decision (TA-050), as a
+      // room change does: the expulsion moves from the ended place to this one, which then ends on that day.
+      carried = (await tx.hostelExpulsion.updateMany({ where: { schoolId: staff.schoolId, membershipId: pupil.id, status: "APPROVED", effectiveOn: { gt: todayKey(staff.timeZone) }, allotment: { status: "ENDED" } }, data: { allotmentId: created.id } })).count;
+      return created.id;
+    });
   } catch {
     // Two presses at once: the database's keys decided; say which.
     if (await db.hostelAllotment.findUnique({ where: { activePupilKey: pupil.id }, select: { id: true } })) throw new AccessError("hostel.refuseAlreadyBoarding");
     throw new AccessError("hostel.refuseBedTaken");
   }
-  await audit({ schoolId: staff.schoolId, actorUserId: staff.userId, action: "hostel.allot", targetType: "HostelAllotment", targetId: id, meta: { membershipId: pupil.id, roomId: room.id, bed: input.bed, fromDate: input.fromDate } });
+  await audit({ schoolId: staff.schoolId, actorUserId: staff.userId, action: "hostel.allot", targetType: "HostelAllotment", targetId: id, meta: { membershipId: pupil.id, roomId: room.id, bed: input.bed, fromDate: input.fromDate, ...(carried ? { expulsionsCarried: carried } : {}) } });
   const row = await db.hostelAllotment.findUniqueOrThrow({ where: { id }, include: ALLOTMENT_INCLUDE });
   return boarderOf(row, new Set());
 }
@@ -273,6 +284,8 @@ export async function endAllotment(ctx: ActiveContext, allotmentId: string, toDa
   const a = await db.hostelAllotment.findFirst({ where: { id: allotmentId, schoolId: staff.schoolId }, select: { id: true, status: true, fromDate: true } });
   if (!a) throw new AccessError("hostel.refuseNoAllotment", "NOT_FOUND");
   if (toDate < a.fromDate) throw new AccessError("hostel.refuseEndBeforeStart");
+  // Giving the bed up ends the place now, so a last day ahead would end it tonight (TA-052): refused.
+  if (a.status === "ACTIVE" && toDate > todayKey(staff.timeZone)) throw new AccessError("hostel.refuseEndAhead");
   if (a.status === "ACTIVE") {
     await db.hostelAllotment.update({ where: { id: a.id }, data: { status: "ENDED", toDate, activePupilKey: null, activeBedKey: null, endedByUserId: staff.userId } });
     await audit({ schoolId: staff.schoolId, actorUserId: staff.userId, action: "hostel.allot.end", targetType: "HostelAllotment", targetId: a.id, meta: { toDate } });
@@ -290,10 +303,13 @@ export async function rollCallSheet(ctx: ActiveContext, hostelId: string, slot: 
   const hostel = await db.hostel.findFirst({ where: { id: hostelId, schoolId: staff.schoolId }, select: { id: true, name: true } });
   if (!hostel) throw new AccessError("hostel.refuseNoHostel", "NOT_FOUND");
   const dateKey = date ?? todayKey(staff.timeZone);
-  const [call, active] = await Promise.all([
-    db.hostelRollCall.findUnique({ where: { hostelId_dateKey_slot: { hostelId, dateKey, slot } }, include: { entries: true } }),
+  const [call, live] = await Promise.all([
+    db.hostelRollCall.findUnique({ where: { hostelId_dateKey_slot: { hostelId, dateKey, slot } }, include: { entries: { include: { allotment: { include: ALLOTMENT_INCLUDE } } } } }),
     db.hostelAllotment.findMany({ where: { schoolId: staff.schoolId, ...liveAllotmentWhere(dateKey), room: { hostelId } }, include: ALLOTMENT_INCLUDE }),
   ]);
+  // A taken call is what it recorded (TA-295): its own entries, under the place each was taken on, so a boarder
+  // moved or given a bed since is neither read PRESENT by default nor sent back to the office's correction.
+  const active = call ? call.entries.map((e) => e.allotment) : live;
   const out = await outNowSet(active.map((a) => a.id));
   const recorded = new Map((call?.entries ?? []).map((e) => [e.allotmentId, e.status]));
   const names = await namesOf([call?.takenByUserId]);
@@ -369,7 +385,7 @@ export async function correctRollCall(ctx: ActiveContext, rollCallId: string, in
 }
 
 /** Takes a hostel's roll call for a day and slot, once. Absent boarders' guardians are told at once. */
-export async function takeRollCall(ctx: ActiveContext, input: HostelRollCallTake): Promise<{ rollCallId: string; present: number; onLeave: number; absent: number; replay: boolean }> {
+export async function takeRollCall(ctx: ActiveContext, input: HostelRollCallTake): Promise<{ rollCallId: string; present: number; onLeave: number; absent: number; replay: boolean; skipped?: number }> {
   const staff = await staffOf(ctx, WRITERS);
   const hostel = await db.hostel.findFirst({ where: { id: input.hostelId, schoolId: staff.schoolId }, select: { id: true, name: true } });
   if (!hostel) throw new AccessError("hostel.refuseNoHostel", "NOT_FOUND");
@@ -386,16 +402,38 @@ export async function takeRollCall(ctx: ActiveContext, input: HostelRollCallTake
   const byId = new Map(active.map((a) => [a.id, a.membershipId]));
   const seen = new Set<string>();
   for (const e of input.entries) {
-    if (!byId.has(e.allotmentId)) throw new AccessError("hostel.refuseNotBoarder");
     if (seen.has(e.allotmentId)) throw new AccessError("hostel.refuseNotBoarder");
     seen.add(e.allotmentId);
   }
+  // A sheet read before a place changed (the phone's outbox sends it later, TA-054) is kept for everyone it can
+  // still name: a boarder moved within this hostel is marked on the place they hold now, and an entry whose place
+  // has ended here (a bed given up) or never was here is left out and counted, rather than the night's call lost.
+  const liveOf = new Map(active.map((a) => [a.membershipId, a.id]));
+  const stale = input.entries.map((e) => e.allotmentId).filter((id) => !byId.has(id));
+  const movedTo = new Map<string, string>();
+  if (stale.length) {
+    const old = await db.hostelAllotment.findMany({ where: { id: { in: stale }, schoolId: staff.schoolId, room: { hostelId: hostel.id } }, select: { id: true, membershipId: true } });
+    for (const o of old) {
+      const now = liveOf.get(o.membershipId);
+      if (now) movedTo.set(o.id, now);
+    }
+  }
+  const entries: HostelRollCallTake["entries"] = input.entries.filter((e) => byId.has(e.allotmentId));
+  const taken = new Set(entries.map((e) => e.allotmentId));
+  for (const e of input.entries) {
+    const allotmentId = movedTo.get(e.allotmentId);
+    if (!allotmentId || taken.has(allotmentId)) continue;
+    taken.add(allotmentId);
+    entries.push({ allotmentId, status: e.status });
+  }
+  if (entries.length === 0) throw new AccessError("hostel.refuseNotBoarder");
+  const skipped = input.entries.length - entries.length;
   let rollCallId: string;
   try {
     rollCallId = await db.$tenantTransaction(async (raw) => {
       const tx = raw as Tx;
       const call = await tx.hostelRollCall.create({ data: { schoolId: staff.schoolId, hostelId: hostel.id, dateKey: input.dateKey, slot: input.slot, takenByUserId: staff.userId, clientId: input.clientId }, select: { id: true } });
-      await tx.hostelRollCallEntry.createMany({ data: input.entries.map((e) => ({ schoolId: staff.schoolId, rollCallId: call.id, allotmentId: e.allotmentId, membershipId: byId.get(e.allotmentId)!, status: e.status })) });
+      await tx.hostelRollCallEntry.createMany({ data: entries.map((e) => ({ schoolId: staff.schoolId, rollCallId: call.id, allotmentId: e.allotmentId, membershipId: byId.get(e.allotmentId)!, status: e.status })) });
       return call.id;
     });
   } catch {
@@ -404,9 +442,9 @@ export async function takeRollCall(ctx: ActiveContext, input: HostelRollCallTake
     if (again && again.clientId === input.clientId) return { rollCallId: again.id, ...counts(again.entries), replay: true };
     throw new AccessError("hostel.refuseRollCallTaken");
   }
-  const c = counts(input.entries);
-  await audit({ schoolId: staff.schoolId, actorUserId: staff.userId, action: "hostel.rollcall", targetType: "HostelRollCall", targetId: rollCallId, meta: { hostelId: hostel.id, dateKey: input.dateKey, slot: input.slot, ...c } });
-  for (const e of input.entries.filter((x) => x.status === "ABSENT")) {
+  const c = counts(entries);
+  await audit({ schoolId: staff.schoolId, actorUserId: staff.userId, action: "hostel.rollcall", targetType: "HostelRollCall", targetId: rollCallId, meta: { hostelId: hostel.id, dateKey: input.dateKey, slot: input.slot, ...c, ...(skipped ? { skipped } : {}) } });
+  for (const e of entries.filter((x) => x.status === "ABSENT")) {
     const membershipId = byId.get(e.allotmentId)!;
     await notifyGuardians(membershipId, (childName) => ({
       schoolId: staff.schoolId,
@@ -420,7 +458,7 @@ export async function takeRollCall(ctx: ActiveContext, input: HostelRollCallTake
       // An adult college boarder's guardians hear of the hostel only under the grant their page reads (5 Oct 2026).
     }), "HOSTEL_TRANSPORT").catch((error) => console.error("[hostel] absent notice failed", error));
   }
-  return { rollCallId, ...c, replay: false };
+  return { rollCallId, ...c, replay: false, ...(skipped ? { skipped } : {}) };
 }
 
 /* -------------------------------------------------------------------------- */
@@ -714,7 +752,7 @@ export async function recordHostelIncident(ctx: ActiveContext, input: HostelInci
   });
   if (input.notifyGuardians) {
     const school = await db.school.findUniqueOrThrow({ where: { id: staff.schoolId }, select: { name: true } });
-    await notifyGuardians(a.membershipId, (childName) => ({
+    const told = await notifyGuardians(a.membershipId, (childName) => ({
       schoolId: staff.schoolId,
       kind: "INCIDENT",
       titleKey: input.kind === "ILLNESS" ? "notifTitle.incidentIllness" : "notifTitle.incident",
@@ -724,7 +762,9 @@ export async function recordHostelIncident(ctx: ActiveContext, input: HostelInci
       url: `/parent/incidents?child=${a.membershipId}&incident=${created.id}`,
       text: { templateKey: "incident", vars: { child: childName, summary: input.title.slice(0, 80), school: school.name }, purpose: `incident:${created.id}` },
     }), "HOSTEL_TRANSPORT");
-    await db.incident.update({ where: { id: created.id }, data: { guardiansNotifiedAt: new Date() } });
+    // Stamped only when somebody was told (TA-298): an adult boarder who has not granted HOSTEL_TRANSPORT, or one
+    // with no guardian linked, leaves it empty, and the office knows to telephone.
+    if (told > 0) await db.incident.update({ where: { id: created.id }, data: { guardiansNotifiedAt: new Date() } });
   }
   await audit({ schoolId: staff.schoolId, actorUserId: staff.userId, action: "incident.record", targetType: "Incident", targetId: created.id, meta: { studentMembershipId: a.membershipId, kind: input.kind, severity: input.severity, notified: input.notifyGuardians, hostelId: a.room.hostelId } });
   return hostelIncidents(ctx);
@@ -817,7 +857,8 @@ export async function familyHostel(ctx: ActiveContext, childId?: string | null, 
   let menuToday: FamilyHostel["menuToday"] = [];
   let leave: HostelLeaveRow[] = [];
   if (a) {
-    const entry = await db.hostelRollCallEntry.findFirst({ where: { allotmentId: a.id, rollCall: { dateKey: today } }, include: { rollCall: { select: { slot: true, takenAt: true } } }, orderBy: { rollCall: { takenAt: "desc" } } });
+    // The boarder's entry on today's call, whichever place it was taken on (a room change makes a new place, TA-295).
+    const entry = await db.hostelRollCallEntry.findFirst({ where: { membershipId: a.membershipId, schoolId: fam.schoolId, rollCall: { dateKey: today } }, include: { rollCall: { select: { slot: true, takenAt: true } } }, orderBy: { rollCall: { takenAt: "desc" } } });
     if (entry) tonight = { dateKey: today, slot: entry.rollCall.slot as HostelRollSlot, status: entry.status as "PRESENT" };
     if (a.room.hostel.wardenMembershipId) {
       const w = await db.membership.findUnique({ where: { id: a.room.hostel.wardenMembershipId }, select: { user: { select: { name: true, preferredName: true } } } });

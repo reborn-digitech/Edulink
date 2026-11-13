@@ -209,13 +209,16 @@ async function mayTellGuardians(studentMembershipId: string, grant: StudentConse
  * existed cannot tell them what the family page would refuse them. A notice a
  * guardian must act on whoever the student is (a mentor's or a PEN change's
  * ask, which the guardian's own door decides) says so with EVERY_GUARDIAN.
+ *
+ * Answers how many guardians it told, so a caller that records "the family was
+ * told" records it only when somebody was (TA-298).
  */
 export async function notifyGuardians(
   studentMembershipId: string,
   build: (childName: string) => DistributiveOmit<NotifyInput, "userId">,
   grant?: GuardianNoticeGrant,
-): Promise<void> {
-  if (grant !== EVERY_GUARDIAN && !(await mayTellGuardians(studentMembershipId, grant))) return;
+): Promise<number> {
+  if (grant !== EVERY_GUARDIAN && !(await mayTellGuardians(studentMembershipId, grant))) return 0;
   const guardians = await db.guardianship.findMany({
     where: { studentMembershipId, status: "ACTIVE" },
     include: {
@@ -229,6 +232,7 @@ export async function notifyGuardians(
   await Promise.all(
     guardians.map((g) => notify({ ...build(childName), userId: g.parentUserId })),
   );
+  return guardians.length;
 }
 
 /**

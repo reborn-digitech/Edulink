@@ -261,12 +261,17 @@ export async function saveRoute(ctx: ActiveContext, routeId: string | null, inpu
         await tx.transportStop.deleteMany({ where: { id: { in: gone }, routeId: rid } });
       }
     } else {
+      // A new route's stops are all new: a stop id sent here belongs to another route (TA-297), refused.
+      if (input.stops.some((s) => s.id)) throw new AccessError("transport.refuseStopNotOnRoute");
       rid = (await tx.transportRoute.create({ data: { schoolId, name: input.name, direction: input.direction, active: input.active, note: input.note, feePerTermPaise: input.feePerTermPaise ?? 0 }, select: { id: true } })).id;
     }
     for (const [i, s] of input.stops.entries()) {
       const data = { name: s.name, lat: s.lat, lng: s.lng, morningMinute: s.morningMinute, eveningMinute: s.eveningMinute, radiusM: s.radiusM, order: i + 1 };
-      if (s.id) await tx.transportStop.update({ where: { id: s.id }, data });
-      else await tx.transportStop.create({ data: { ...data, schoolId, routeId: rid } });
+      if (s.id) {
+        // Only this route's own stop is rewritten (TA-297).
+        const kept = await tx.transportStop.updateMany({ where: { id: s.id, routeId: rid, schoolId }, data });
+        if (kept.count !== 1) throw new AccessError("transport.refuseStopNotOnRoute");
+      } else await tx.transportStop.create({ data: { ...data, schoolId, routeId: rid } });
     }
     return rid;
   });
@@ -417,6 +422,9 @@ export async function allotPupils(ctx: ActiveContext, input: TransportAllotInput
     const tx = raw as Prisma.TransactionClient;
     let ended = 0;
     let allotted = 0;
+    // One pupil's seats are decided one allotment at a time (TA-299): two at once would both read no open seat and
+    // both make one. Taken in one order, so two allotments of overlapping pupils cannot wait on each other.
+    for (const studentMembershipId of [...ids].sort()) await tx.$queryRaw`SELECT 1 FROM pg_advisory_xact_lock(hashtext(${`transport-seat:${studentMembershipId}`}))`;
     for (const studentMembershipId of ids) {
       const open = await tx.transportAllotment.findMany({ where: { schoolId, studentMembershipId, OR: [{ toDateKey: null }, { toDateKey: { gte: from } }] }, select: { id: true, fromDateKey: true }, orderBy: { fromDateKey: "asc" } });
       let rewritten = false;
@@ -515,7 +523,12 @@ async function ensureTrips(schoolId: string, dateKey: string): Promise<void> {
   if (day.closed || !day.teachingDay) return;
   const assignments = await db.busAssignment.findMany({ where: { schoolId, ...currentWhere(dateKey), route: { active: true }, bus: { active: true } }, select: { id: true, route: { select: { direction: true } } } });
   const data = assignments.flatMap((a) => directionsOf(a.route.direction).map((direction) => ({ schoolId, assignmentId: a.id, dateKey, direction })));
-  if (data.length > 0) await db.trip.createMany({ data, skipDuplicates: true });
+  if (data.length === 0) return;
+  // Every read of the day comes here (a family's bus screen every fifteen seconds, TA-452): once the day's rows
+  // exist it is a read, and the insert is made only for what is missing (a new assignment, the first read).
+  const have = new Set((await db.trip.findMany({ where: { schoolId, dateKey }, select: { assignmentId: true, direction: true } })).map((t) => `${t.assignmentId}:${t.direction}`));
+  const missing = data.filter((r) => !have.has(`${r.assignmentId}:${r.direction}`));
+  if (missing.length > 0) await db.trip.createMany({ data: missing, skipDuplicates: true });
 }
 
 const tripInclude = {
@@ -565,7 +578,12 @@ async function ridersOf(schoolId: string, routeId: string, dateKey: string, dire
 
 async function lastPositions(tripIds: string[]): Promise<Map<string, { at: Date; lat: number; lng: number; speed: number | null; accuracy: number | null }>> {
   if (tripIds.length === 0) return new Map();
-  const rows = await db.tripPosition.findMany({ where: { tripId: { in: tripIds } }, orderBy: { at: "desc" }, distinct: ["tripId"], select: { tripId: true, at: true, lat: true, lng: true, speed: true, accuracy: true } });
+  // One row a trip, chosen by the database over the (tripId, at) key (TA-452): Prisma's `distinct` without the
+  // nativeDistinct preview brought back every stored position of every trip and thinned them here.
+  const rows = await db.$tenantTransaction((raw) =>
+    (raw as Prisma.TransactionClient).$queryRaw<{ tripId: string; at: Date; lat: number; lng: number; speed: number | null; accuracy: number | null }[]>`
+      SELECT DISTINCT ON ("tripId") "tripId", "at", "lat", "lng", "speed", "accuracy" FROM "TripPosition" WHERE "tripId" = ANY(${tripIds}::text[]) ORDER BY "tripId", "at" DESC`,
+  );
   return new Map(rows.map((r) => [r.tripId, r]));
 }
 
@@ -608,11 +626,15 @@ async function readDay(schoolId: string, dateKey: string, filter: Prisma.TripWhe
   if (dateKey === today) await ensureTrips(schoolId, dateKey);
   const trips = await db.trip.findMany({ where: { schoolId, dateKey, ...filter }, include: tripInclude, orderBy: [{ direction: "asc" }, { createdAt: "asc" }] });
   const last = await lastPositions(trips.map((t) => t.id));
+  // The ticks counted in one grouped read, and one route's riders read once a direction (TA-452), not trip by trip.
+  const ticked = trips.length ? await db.tripBoarding.groupBy({ by: ["tripId"], where: { tripId: { in: trips.map((t) => t.id) }, boardedAt: { not: null } }, _count: { _all: true } }) : [];
+  const boardedOf = new Map(ticked.map((g) => [g.tripId, g._count._all]));
+  const riding = new Map<string, Promise<number>>();
   const counts = await Promise.all(
     trips.map(async (t) => {
-      const riders = await ridersOf(schoolId, t.assignment.routeId, t.dateKey, t.direction);
-      const boarded = await db.tripBoarding.count({ where: { tripId: t.id, boardedAt: { not: null } } });
-      return { riders: riders.length, boarded };
+      const key = `${t.assignment.routeId}:${t.dateKey}:${t.direction}`;
+      if (!riding.has(key)) riding.set(key, ridersOf(schoolId, t.assignment.routeId, t.dateKey, t.direction).then((r) => r.length));
+      return { riders: await riding.get(key)!, boarded: boardedOf.get(t.id) ?? 0 };
     }),
   );
   const missed: { id: string; bus: string; route: string; minute: number | null }[] = [];
@@ -710,8 +732,12 @@ export async function driverToday(ctx: ActiveContext, now: Date = new Date()): P
   // fixture or made before the holiday was declared is not the driver's day.
   // A trip actually driven (LIVE or ENDED) stays — it happened.
   const keep = allLoaded.map((t) => day.open || t.status !== "SCHEDULED");
-  const loaded = allLoaded.filter((_, i) => keep[i]);
-  const rows = allRows.filter((_, i) => keep[i]);
+  // A trip of an earlier day never ended (the phone died, or End was not pressed) holds the driver and attendant
+  // out of every later start (TA-051): it is listed first, LIVE, so the phone draws its End.
+  const stale = await db.trip.findMany({ where: { schoolId: d.schoolId, status: "LIVE", dateKey: { lt: today }, ...mine(d) }, select: { id: true, dateKey: true }, orderBy: { dateKey: "asc" } });
+  const earlier = await Promise.all(stale.map((s) => readDay(d.schoolId, s.dateKey, { id: s.id }, now)));
+  const loaded = [...earlier.flatMap((e) => e.loaded), ...allLoaded.filter((_, i) => keep[i])];
+  const rows = [...earlier.flatMap((e) => e.rows), ...allRows.filter((_, i) => keep[i])];
   const trips = await Promise.all(
     loaded.map(async (t, i) => {
       const detail = await detailOf(d.schoolId, t, rows[i]!);
@@ -899,7 +925,10 @@ async function tellNear(schoolId: string, trip: Pick<LoadedTrip, "id" | "directi
 export async function markBoarding(ctx: ActiveContext, tripId: string, body: TripBoardingBody): Promise<RosterEntry> {
   const d = await driverOf(ctx);
   const trip = await driversTrip(d, tripId);
-  if (trip.status !== "LIVE") throw new AccessError("transport.refuseNotLive");
+  // A tick made with no signal waits in the phone's outbox and may arrive after End (TA-053): an ENDED trip takes a
+  // tick that carries its own time inside the trip, from its start to its end; anything else is refused as before.
+  const lateTick = trip.status === "ENDED" && Boolean(body.at) && Boolean(trip.startedAt && trip.endedAt) && new Date(body.at!).getTime() >= trip.startedAt!.getTime() - BEFORE_START_MS && new Date(body.at!).getTime() <= trip.endedAt!.getTime() + FUTURE_SLACK_MS;
+  if (trip.status !== "LIVE" && !lateTick) throw new AccessError("transport.refuseNotLive");
   // A loop's trips carry no boardings (4 Oct 2026): there is no roster to tick.
   if ((await db.transportRoute.findUnique({ where: { id: trip.assignment.routeId }, select: { kind: true } }))?.kind === "LOOP") throw new AccessError("collegeOffice.refuseLoopBoarding");
   const riders = await ridersOf(d.schoolId, trip.assignment.routeId, trip.dateKey, trip.direction);

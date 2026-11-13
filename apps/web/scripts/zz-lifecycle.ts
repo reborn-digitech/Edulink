@@ -590,10 +590,15 @@ async function schoolYear(W: SchoolWorld, y: number, idx: number) {
   const g9 = classes.find((c: Any) => c.gradeLevel === "9");
   const boarders: string[] = [];
   if (hostelRow && g9) {
+    // A bed is given on the day the boarder comes, not ahead of it (TA-052): the clock steps to the first day for it and back.
+    await redate();
+    setClock(start, 9);
     for (const [i, e] of g9.enrollments.slice(0, 2).entries()) {
       const b = await step("WARDEN", "hostel.allotBed", () => L.hostel.allotBed(W.warden.ctx, { membershipId: e.studentMembershipId, roomId: hostelRow.rooms[0].id, bed: i + 1, fromDate: start, feeDemandId: null } as never));
       if (b) boarders.push(b.allotmentId);
     }
+    await redate();
+    setClock(`${y}-05-26`);
   }
   const route = await dbx.transportRoute.findFirst({ where: { schoolId: s }, select: { id: true, stops: { select: { id: true }, orderBy: { order: "asc" } } } });
   const riders = classes.filter((c: Any) => c.gradeLevel === "5" || c.gradeLevel === "6").flatMap((c: Any) => c.enrollments.slice(0, 2).map((e: Any) => e.studentMembershipId));
@@ -853,8 +858,6 @@ async function schoolYear(W: SchoolWorld, y: number, idx: number) {
     const gen = await step("TEACHER", "reportCards.generateCards (annual)", () => L.cards.generateCards(teacher.ctx, c.id, { title, academicYearId: yearId }));
     if (gen && gen.ok) await step("TEACHER", "reportCards.publishCards", () => L.cards.publishCards(teacher.ctx, c.id, title));
   }
-  // The boarders go home; their beds end with the year.
-  for (const id of boarders) await step("WARDEN", "hostel.endAllotment", () => L.hostel.endAllotment(W.warden.ctx, id, end));
   // A TC certificate for one of the graduating class, then close, promote, graduate.
   const g10 = classes.find((c: Any) => c.gradeLevel === "10");
   const tc = await dbx.certificateTemplate.findFirst({ where: { schoolId: s, kind: "TC" }, select: { id: true } });
@@ -862,6 +865,8 @@ async function schoolYear(W: SchoolWorld, y: number, idx: number) {
   await redate();
 
   setClock(end, 15);
+  // The boarders go home; their beds end with the year, given up on the last day itself (a last day ahead is refused, TA-052).
+  for (const id of boarders) await step("WARDEN", "hostel.endAllotment", () => L.hostel.endAllotment(W.warden.ctx, id, end));
   let next = await dbx.academicYear.findFirst({ where: { schoolId: s, name: yearName(y + 1) }, select: { id: true } });
   if (!next) {
     const id = await step("ADMIN", "academicYear.create", () => L.ay.createAcademicYear(A.ctx, { name: yearName(y + 1), startDate: ist(`${y + 1}-06-01`, 5, 30), endDate: ist(`${y + 2}-04-30`, 5, 30) }));

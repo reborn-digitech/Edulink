@@ -10,6 +10,7 @@ import { parseCsvRecords } from "./csv";
 import { isDateKey, todayKey } from "./dates";
 import { currentAcademicYear } from "./academic-year";
 import { financeTable } from "./accounts";
+import { consume } from "./rate-limit";
 import { campusDesk, collegeDesk, startYearOfKey, yearKeyOf } from "./college-office";
 import { liveAllotmentWhere, settleExpulsions } from "./hostel";
 import type { ActiveContext } from "./session";
@@ -122,11 +123,18 @@ export async function saveEResource(ctx: ActiveContext, input: { name: string; u
   return eView(row);
 }
 
-/** Opening an e-resource through the app: one more on its count, and its link back to follow. */
+const OPEN_COUNTED_EVERY_MS = 24 * 60 * 60 * 1000;
+
+/**
+ * Opening an e-resource through the app: its link back to follow, and one more on its count — once a person a
+ * resource a day (TA-507), so a loop of opens or a link clicked from another site cannot make the library's
+ * NAAC 4.2 figure whatever anyone likes. The day is a window of the shared limiter's own, keyed by the person.
+ */
 export async function openEResource(ctx: ActiveContext, id: string) {
   const d = await campusDesk(ctx, ERESOURCE_READ, "LIBRARY");
-  const row = await db.libraryEResource.findFirst({ where: { id, schoolId: d.schoolId, active: true }, select: { id: true } });
+  const row = await db.libraryEResource.findFirst({ where: { id, schoolId: d.schoolId, active: true }, select: { id: true, url: true, clicks: true } });
   if (!row) throw new AccessError("collegeOffice.notFound", "NOT_FOUND");
+  if (!(await consume(`eresource-open:${d.userId}:${row.id}`, 1, OPEN_COUNTED_EVERY_MS)).allowed) return { url: row.url, clicks: row.clicks };
   const updated = await db.libraryEResource.update({ where: { id: row.id }, data: { clicks: { increment: 1 } }, select: { url: true, clicks: true } });
   return updated;
 }
@@ -273,6 +281,11 @@ export async function changeRoom(ctx: ActiveContext, input: { allotmentId: strin
       const ended = await tx.hostelAllotment.updateMany({ where: { id: a.id, schoolId: d.schoolId, status: "ACTIVE" }, data: { status: "ENDED", toDate: today, activePupilKey: null, activeBedKey: null, endedByUserId: d.userId } });
       if (ended.count !== 1) throw justMovedRefusal();
       const created = await tx.hostelAllotment.create({ data: { schoolId: d.schoolId, membershipId: a.membershipId, roomId: room.id, bed: input.bed, fromDate: today, status: "ACTIVE", activePupilKey: a.membershipId, activeBedKey: bedKey, feeDemandId: a.feeDemandId, allottedByUserId: d.userId }, select: { id: true } });
+      // What stands against the place moves with the boarder (TA-050, TA-557): a proposal still asked and an
+      // expulsion approved for a day ahead end the new place on that day, and leave not yet back in is read on it.
+      await tx.hostelExpulsion.updateMany({ where: { schoolId: d.schoolId, allotmentId: a.id, status: "ASKED" }, data: { allotmentId: created.id, openKey: created.id } });
+      await tx.hostelExpulsion.updateMany({ where: { schoolId: d.schoolId, allotmentId: a.id, status: "APPROVED", effectiveOn: { gt: today } }, data: { allotmentId: created.id } });
+      await tx.hostelLeave.updateMany({ where: { schoolId: d.schoolId, allotmentId: a.id, inAt: null, status: { in: ["AWAITING_CONSENT", "PENDING", "APPROVED"] } }, data: { allotmentId: created.id } });
       return created.id;
     });
     await audit({ schoolId: d.schoolId, actorUserId: d.userId, action: "hostel.roomChange", targetType: "HostelAllotment", targetId: id, meta: { from: a.id, roomId: room.id, bed: input.bed } });

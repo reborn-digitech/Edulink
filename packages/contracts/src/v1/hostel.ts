@@ -169,7 +169,9 @@ export const hostelRollCallTakeSchema = z.object({
   entries: z.array(z.object({ allotmentId: cuid, status: hostelRollStatusSchema })).min(1).max(2000),
 });
 export type HostelRollCallTake = z.infer<typeof hostelRollCallTakeSchema>;
-export const hostelRollCallResultSchema = z.object({ rollCallId: z.string(), present: z.number().int(), onLeave: z.number().int(), absent: z.number().int(), replay: z.boolean() });
+export const hostelRollCallResultSchema = z.object({ rollCallId: z.string(), present: z.number().int(), onLeave: z.number().int(), absent: z.number().int(), replay: z.boolean(),
+  /** Entries left out because their place has ended in this hostel since the sheet was read (TA-054); absent when none were. */
+  skipped: z.number().int().optional() });
 /**
  * POST /api/v1/hostel/rollcall/{rollCallId}/correct (R-11, risks batch 5 Oct 2026): the office corrects a taken roll
  * call — the boarders named get the status given, each must be on that call, and the reason is kept on the audit row
