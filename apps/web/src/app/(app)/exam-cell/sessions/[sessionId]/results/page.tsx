@@ -5,7 +5,7 @@ import { institutionKindOf, isModuleOn } from "@/lib/modules";
 import { isCollegeKind } from "@/lib/institution";
 import { getLocale, getT } from "@/lib/i18n/server";
 import { sessionView } from "@/lib/exam-cell";
-import { resultsView } from "@/lib/exam-cell-marks";
+import { publishNeedsPrincipal, resultsView } from "@/lib/exam-cell-marks";
 import { correctionsDue } from "@/lib/exam-cell-after";
 import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -32,7 +32,7 @@ export default async function ResultsPage({ params, searchParams }: { params: Pr
   const { sessionId } = await params;
   const { run, ok, error } = await searchParams;
   const s = await sessionView(ctx, sessionId);
-  const [results, due] = await Promise.all([resultsView(ctx, s.id, s.runs.some((r) => r.id === run) ? run : undefined), correctionsDue(ctx, s.id)]);
+  const [results, due, principalPublishes] = await Promise.all([resultsView(ctx, s.id, s.runs.some((r) => r.id === run) ? run : undefined), correctionsDue(ctx, s.id), publishNeedsPrincipal(ctx, s.id)]);
   const back = `/exam-cell/sessions/${s.id}/results`;
   return (
     <SessionFrame t={t} session={s} current="results" autonomous={s.autonomous} ok={ok} error={error}>
@@ -61,15 +61,16 @@ export default async function ResultsPage({ params, searchParams }: { params: Pr
               </span>
               <div className="flex items-center gap-2">
                 <Badge tone={r.status === "PUBLISHED" ? "ok" : r.status === "DRAFT" ? "accent" : "neutral"}>{t(RUN_STATUS_KEY[r.status]!)}</Badge>
-                {r.status === "DRAFT" && (s.published ? ctx.role === "PRINCIPAL" : s.canWrite) ? (
+                {/* After a publication, or before the first one once a correction stands (TA-560), the principal publishes. */}
+                {r.status === "DRAFT" && (principalPublishes ? ctx.role === "PRINCIPAL" : s.canWrite) ? (
                   <ActionForm action={publishRunAction}>
                     <Hidden fields={{ sessionId: s.id, runId: r.id, back }} />
                     <Button type="submit" size="sm">
                       {t("examCell.publish")}
                     </Button>
                   </ActionForm>
-                ) : r.status === "DRAFT" && s.published && s.canWrite ? (
-                  <span className="text-xs text-fg-muted">{t("examCell.republishWaitsPrincipal")}</span>
+                ) : r.status === "DRAFT" && principalPublishes && s.canWrite ? (
+                  <span className="text-xs text-fg-muted">{t(s.published ? "examCell.republishWaitsPrincipal" : "examCell.correctedWaitsPrincipal")}</span>
                 ) : null}
               </div>
             </div>

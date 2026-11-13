@@ -57,7 +57,7 @@ async function view(ctx: ActiveContext, rows: Row[]): Promise<PenChangeRequestVi
       principal: { decided: r.principalDecidedAt !== null, approved: r.principalApproved, by: r.principalUserId ? (who.get(r.principalUserId) ?? null) : null },
       guardian: { decided: r.guardianDecidedAt !== null, approved: r.guardianApproved, by: r.guardianUserId ? (who.get(r.guardianUserId) ?? null) : null, waived: r.guardianWaived },
       decisionReason: r.decisionReason,
-      can: { decide: pending && ((head && r.principalDecidedAt === null) || (guardian && !r.guardianWaived && r.guardianDecidedAt === null)), withdraw: pending && admin },
+      can: { decide: pending && r.requestedByUserId !== ctx.user.id && ((head && r.principalDecidedAt === null) || (guardian && !r.guardianWaived && r.guardianDecidedAt === null)), withdraw: pending && admin },
       createdAt: r.createdAt.toISOString(),
       appliedAt: r.appliedAt?.toISOString() ?? null,
     });
@@ -105,6 +105,9 @@ export async function decidePenChange(ctx: ActiveContext, requestId: string, inp
   const head = ctx.role === "PRINCIPAL" && ctx.schoolId === row.schoolId;
   const guardian = ctx.role === "PARENT" && (await isGuardianOf(ctx.user.id, row.studentMembershipId));
   if (!head && !guardian) throw new AccessError("pupilRecord.penChangeNotFound", "NOT_FOUND");
+  // R-7's four eyes (TA-237): an account holding ADMIN and PRINCIPAL (or the admin who is a pupil's stand-in guardian)
+  // does not approve the change it proposed; the other approver decides.
+  if (row.requestedByUserId === ctx.user.id) throw new AccessError("collegeDesks.refuseOwnAsk");
   if (row.status !== "PENDING") return (await view(ctx, [row]))[0]!;
   const already = head ? row.principalDecidedAt : row.guardianDecidedAt;
   if (already) return (await view(ctx, [row]))[0]!;

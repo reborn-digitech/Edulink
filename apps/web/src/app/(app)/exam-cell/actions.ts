@@ -4,6 +4,7 @@ import {
   allocationSaveSchema,
   convocationBuildSchema,
   examDocumentIssueSchema,
+  examDocumentRevokeSchema,
   examFormDecideSchema,
   examMarkCorrectSchema,
   examMarksImportSchema,
@@ -33,7 +34,7 @@ import type { TranslationKey } from "@/lib/i18n/dictionary";
 import type { ActiveContext } from "@/lib/session";
 import { assignInvigilator, buildSeating, createSession, decideForm, decideMalpractice, generateForms, issueHallTickets, markDutyDone, reportMalpractice, saveRemuneration, saveRoom, saveSchedule, setSessionStatus, submitForm, swapInvigilator, updateSession } from "@/lib/exam-cell";
 import { addModerationNote, correctMark, decideGrace, enterMarks, importMarks, importReport, proposeGrace, publishRun, runResults } from "@/lib/exam-cell-marks";
-import { addBacklog, askRevaluation, assignPaper, buildConvocation, buildPrintingLists, decideRevaluation, issueDocument, moderatePaper, pushCredits, returnAllocation, saveAllocation, saveControllerSignature, submitPaper } from "@/lib/exam-cell-after";
+import { addBacklog, askRevaluation, assignPaper, buildConvocation, buildPrintingLists, decideRevaluation, issueDocument, moderatePaper, pushCredits, returnAllocation, revokeDocument, saveAllocation, saveControllerSignature, submitPaper } from "@/lib/exam-cell-after";
 
 /**
  * The exam cell's forms (module EXAMS, 4 Oct 2026): every one posts here with
@@ -351,6 +352,14 @@ export async function issueDocumentAction(previous: FormState, formData: FormDat
   return run(previous, formData, async (ctx) => {
     await issueDocument(ctx, parsed(examDocumentIssueSchema.safeParse({ kind: str(formData, "kind"), studentMembershipId: str(formData, "studentMembershipId") })));
     return "examCell.documentIssued";
+  });
+}
+
+/** A paper withdrawn with its reason (TA-068). */
+export async function revokeDocumentAction(previous: FormState, formData: FormData): Promise<FormState> {
+  return run(previous, formData, async (ctx) => {
+    await revokeDocument(ctx, str(formData, "documentId"), parsed(examDocumentRevokeSchema.safeParse({ reason: str(formData, "reason") })));
+    return "examCell.documentRevoked";
   });
 }
 

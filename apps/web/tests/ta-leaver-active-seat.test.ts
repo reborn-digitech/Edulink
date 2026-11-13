@@ -133,7 +133,8 @@ beforeAll(async () => {
 
   // A component marked for everyone still studying: the HOD countersigns it.
   const faculty = await as("faculty", "FACULTY");
-  const component = await saveComponent(faculty, ids.offering!, { name: "ZZ TA003 unit test", kind: "UNIT_TEST", maxMarks: 40, weight: 40, coCodes: ["CO1"] });
+  // Weight 30: a scheme with no rules of its own takes the one fallback's internal maximum, 30 (TA-070).
+  const component = await saveComponent(faculty, ids.offering!, { name: "ZZ TA003 unit test", kind: "UNIT_TEST", maxMarks: 40, weight: 30, coCodes: ["CO1"] });
   await saveInternalMarks(faculty, ids.offering!, { componentId: component.id, entries: [{ studentMembershipId: ids.stayerM!, marks: 30 }] });
   countersign = await settle(async () => moderateComponent(await as("hod", "HOD"), component.id));
 });

@@ -487,6 +487,8 @@ export const examAfterSchema = z.object({
 export type ExamAfter = z.infer<typeof examAfterSchema>;
 export const revaluationDecideSchema = z.object({ outcome: revaluationOutcomeSchema, marks: z.number().min(0).max(1000).nullable().optional(), note: z.string().trim().max(300).optional() });
 export const examDocumentIssueSchema = z.object({ kind: examDocumentKindSchema, studentMembershipId: cuid });
+/** A paper withdrawn, with why (TA-068): the words stay on the paper's row. */
+export const examDocumentRevokeSchema = z.object({ reason: z.string().trim().min(5).max(300) });
 export const creditPushSendSchema = z.object({ termId: cuid.optional() });
 export const convocationBuildSchema = z.object({ year: z.number().int().min(2000).max(2100), finalize: z.boolean().default(false) });
 

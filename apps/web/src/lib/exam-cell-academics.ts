@@ -171,9 +171,17 @@ export async function roomOf(schoolId: string, roomId: string): Promise<{ id: st
  * latest lock wins.
  */
 export async function internalsFor(schoolId: string, courseIds: readonly string[]): Promise<Map<string, number>> {
-  const out = new Map<string, number>();
+  return new Map([...(await lockedInternalsFor(schoolId, courseIds))].map(([k, v]) => [k, v.milli]));
+}
+
+/**
+ * The same totals with the maximum each was locked out of (TA-070): `outOf`, the scheme's internal maximum at the
+ * lock, which the run compares with the scheme's maximum now before adding the total to an external.
+ */
+export async function lockedInternalsFor(schoolId: string, courseIds: readonly string[]): Promise<Map<string, { milli: number; outOf: number }>> {
+  const out = new Map<string, { milli: number; outOf: number }>();
   if (courseIds.length === 0) return out;
-  const locks = await db.internalLock.findMany({ where: { schoolId, offering: { courseId: { in: [...new Set(courseIds)] } } }, orderBy: { lockedAt: "asc" }, select: { totalsJson: true, offering: { select: { courseId: true } } } });
+  const locks = await db.internalLock.findMany({ where: { schoolId, offering: { courseId: { in: [...new Set(courseIds)] } } }, orderBy: { lockedAt: "asc" }, select: { outOf: true, totalsJson: true, offering: { select: { courseId: true } } } });
   for (const l of locks) {
     let totals: { studentMembershipId?: unknown; totalHundredths?: unknown }[] = [];
     try {
@@ -182,7 +190,7 @@ export async function internalsFor(schoolId: string, courseIds: readonly string[
     } catch {
       totals = [];
     }
-    for (const t of totals) if (typeof t.studentMembershipId === "string" && typeof t.totalHundredths === "number") out.set(`${t.studentMembershipId}|${l.offering.courseId}`, Math.round(t.totalHundredths * 10));
+    for (const t of totals) if (typeof t.studentMembershipId === "string" && typeof t.totalHundredths === "number") out.set(`${t.studentMembershipId}|${l.offering.courseId}`, { milli: Math.round(t.totalHundredths * 10), outOf: l.outOf });
   }
   return out;
 }

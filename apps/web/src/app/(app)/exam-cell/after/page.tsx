@@ -11,7 +11,7 @@ import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { BACKLOG_STATUS_KEY, CREDIT_STATUS_KEY, CellOff, DOC_KIND_KEY, Flash, Hidden, Labelled, REVAL_KIND_KEY, REVAL_OUTCOME_KEY, day, marks, money } from "@/components/exam-cell/parts";
-import { convocationAction, decideRevaluationAction, issueDocumentAction, pushCreditsAction } from "../actions";
+import { convocationAction, decideRevaluationAction, issueDocumentAction, pushCreditsAction, revokeDocumentAction } from "../actions";
 import { fieldClass } from "@/components/ui/field-class";
 import { ActionForm } from "@/components/ui/action-form";
 import { FEE_DEMAND_STATUS_KEY } from "@/app/(app)/parent/fees/labels";
@@ -27,12 +27,13 @@ export async function generateMetadata(): Promise<Metadata> {
  * limit, grade cards, transcripts and (autonomous) degrees to issue, the
  * credits waiting for the Academic Bank, the convocation.
  */
-export default async function AfterPage({ searchParams }: { searchParams: Promise<{ ok?: string; error?: string }> }) {
+export default async function AfterPage({ searchParams }: { searchParams: Promise<{ ok?: string; error?: string; q?: string }> }) {
   const ctx = await requireRole("EXAM_CONTROLLER", "ADMIN", "PRINCIPAL");
   const [t, locale, on, kind] = await Promise.all([getT(), getLocale(), isModuleOn(ctx.schoolId, "EXAMS"), institutionKindOf(ctx.schoolId)]);
   if (!on) return <CellOff t={t} college={isCollegeKind(kind)} />;
-  const { ok, error } = await searchParams;
-  const a = await afterView(ctx);
+  const { ok, error, q } = await searchParams;
+  // `q` finds a student past the list's first 500 (TA-302).
+  const a = await afterView(ctx, { q: typeof q === "string" ? q : undefined });
   const back = "/exam-cell/after";
   const w = a.canWrite;
   return (
@@ -114,13 +115,44 @@ export default async function AfterPage({ searchParams }: { searchParams: Promis
         <CardHeader title={t("examCell.documentsTitle")} description={t("examCell.documentsHint")} />
         <CardBody className="space-y-3">
           {a.documents.map((d) => (
-            <p key={d.id} className="text-sm">
-              <a href={`/api/v1/exam-cell/documents/${d.id}/pdf`} className="font-medium text-accent-strong hover:underline">
-                {d.serial}
-              </a>{" "}
-              · {t(DOC_KIND_KEY[d.kind]!)} · {d.studentName} · {day(d.issuedAt, locale)}
-            </p>
+            <div key={d.id} className="space-y-1 text-sm">
+              <p>
+                <a href={`/api/v1/exam-cell/documents/${d.id}/pdf`} className="font-medium text-accent-strong hover:underline">
+                  {d.serial}
+                </a>{" "}
+                · {t(DOC_KIND_KEY[d.kind]!)} · {d.studentName} · {day(d.issuedAt, locale)}
+                {d.revokedAt ? (
+                  <>
+                    {" "}
+                    <Badge tone="danger">{t("examCell.revokedOn", { date: day(d.revokedAt, locale) })}</Badge>
+                  </>
+                ) : null}
+              </p>
+              {w && !d.revokedAt ? (
+                // A paper issued by mistake, or whose result was corrected since, is withdrawn with a reason (TA-068).
+                <ActionForm action={revokeDocumentAction} className="flex flex-wrap items-end gap-2">
+                  <Hidden fields={{ documentId: d.id, back }} />
+                  <Labelled label={t("examCell.revokeReason")}>
+                    <input name="reason" required minLength={5} maxLength={300} className={fieldClass()} />
+                  </Labelled>
+                  <Button type="submit" size="sm" variant="secondary">
+                    {t("examCell.revokeDocument")}
+                  </Button>
+                </ActionForm>
+              ) : null}
+            </div>
           ))}
+          {w ? (
+            // Finds a student past the list's first 500 by name or roll number (TA-302): the list below then holds the matches.
+            <form method="get" action={back} className="flex flex-wrap items-end gap-2">
+              <Labelled label={t("examCell.findStudent")}>
+                <input name="q" defaultValue={typeof q === "string" ? q : ""} maxLength={100} className={fieldClass()} />
+              </Labelled>
+              <Button type="submit" size="sm" variant="ghost">
+                {t("examCell.find")}
+              </Button>
+            </form>
+          ) : null}
           {w ? (
             <ActionForm action={issueDocumentAction} className="flex flex-wrap items-end gap-2">
               <Hidden fields={{ back }} />

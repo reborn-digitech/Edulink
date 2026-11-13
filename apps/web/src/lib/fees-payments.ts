@@ -303,7 +303,7 @@ export async function reversePayment(ctx: ActiveContext, paymentId: string, reas
       p.allocations.map((a) => a.demandId),
     );
   });
-  await audit({ schoolId: caller.schoolId, actorUserId: caller.userId, action: "fees.reverse", targetType: "FeePayment", targetId: paymentId, meta: { reason: why } });
+  await audit({ schoolId: caller.schoolId, actorUserId: caller.userId, action: "fees.reverse", targetType: "FeePayment", targetId: paymentId, meta: { reasonGiven: true } }); // the words are on the payment (reversalReason), not in the log (TA-409)
 }
 
 /* -------------------------------------------------------------------------- */
@@ -696,7 +696,7 @@ export async function rejectClaim(ctx: ActiveContext, paymentId: string, reason:
   if (!p) throw new AccessError("fees.notFound", "NOT_FOUND");
   if (p.status !== "CLAIMED" && p.status !== "INITIATED") throw new AccessError("fees.refuseNotClaimed");
   await db.feePayment.update({ where: { id: p.id }, data: { status: "FAILED", failedReason: why, confirmedByUserId: caller.userId } });
-  await audit({ schoolId: caller.schoolId, actorUserId: caller.userId, action: "fees.claimReject", targetType: "FeePayment", targetId: p.id, meta: { reason: why } });
+  await audit({ schoolId: caller.schoolId, actorUserId: caller.userId, action: "fees.claimReject", targetType: "FeePayment", targetId: p.id, meta: { reasonGiven: true } }); // the words are on the payment (failedReason), not in the log (TA-409)
   await notifyGuardians(p.studentMembershipId, (childName) => ({
     schoolId: caller.schoolId,
     kind: "FEES",

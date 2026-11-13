@@ -5,7 +5,7 @@ import { institutionKindOf, isModuleOn } from "@/lib/modules";
 import { isCollegeKind } from "@/lib/institution";
 import { getLocale, getT } from "@/lib/i18n/server";
 import { sessionView } from "@/lib/exam-cell";
-import { marksSheet } from "@/lib/exam-cell-marks";
+import { correctableRows, marksSheet } from "@/lib/exam-cell-marks";
 import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -36,6 +36,8 @@ export default async function MarksPage({ params, searchParams }: { params: Prom
   const sheet = courseId ? await marksSheet(ctx, s.id, courseId) : null;
   const back = `/exam-cell/sessions/${s.id}/marks${courseId ? `?course=${courseId}` : ""}`;
   const w = s.canWrite;
+  // Before publication a mark an approved grace stands over is corrected here too (TA-560): its entry is closed.
+  const correctable = sheet ? correctableRows(sheet, s.status) : [];
   return (
     <SessionFrame t={t} session={s} current="marks" autonomous={s.autonomous} ok={ok} error={error}>
       <Card>
@@ -126,15 +128,15 @@ export default async function MarksPage({ params, searchParams }: { params: Prom
         </Card>
       ) : null}
 
-      {w && sheet && s.published ? (
+      {w && sheet && correctable.length > 0 ? (
         <Card>
-          <CardHeader title={t("examCell.correctTitle")} description={t("examCell.correctHint")} />
+          <CardHeader title={t(sheet.published ? "examCell.correctTitle" : "examCell.correctBeforeTitle")} description={t("examCell.correctHint")} />
           <CardBody>
             <ActionForm action={correctMarkAction} className="flex flex-wrap items-end gap-2">
               <Hidden fields={{ sessionId: s.id, courseId: sheet.courseId, back }} />
               <Labelled label={t("examCell.student")}>
                 <select name="studentMembershipId" className={fieldClass()}>
-                  {sheet.rows.map((r) => (
+                  {correctable.map((r) => (
                     <option key={r.studentMembershipId} value={r.studentMembershipId}>
                       {r.name}
                     </option>

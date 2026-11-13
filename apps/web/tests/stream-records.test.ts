@@ -330,10 +330,15 @@ describe("a management student's summer internship", () => {
     const tpo = await as("bTpo", "TPO", ids.B!);
     expect((await evaluateInternship(tpo, summer.id, { credits: 4 })).status).toBe("CREDITED");
     expect(await internshipCreditsForTerm(ids.t2M!, ids.bTerm!)).toBe(4);
-    // A result run of that term, published: the push carries the course credits and the internship's.
+    // A result run of that term, published: the push carries the credits of the courses passed in a published run of
+    // the term (TA-066) and the internship's.
     const session = await db.examSession.create({ data: { schoolId: ids.B!, name: "ZZ SR B session", termId: ids.bTerm!, status: "ASSESSMENT" }, select: { id: true } });
     const run = await db.resultRun.create({ data: { schoolId: ids.B!, sessionId: session.id, number: 1, computedByUserId: ids.bCtrl! }, select: { id: true } });
-    for (const who of ["t1", "t2"]) await db.termResult.create({ data: { schoolId: ids.B!, runId: run.id, termId: ids.bTerm!, studentMembershipId: ids[`${who}M`]!, creditsAttemptedTenths: 200, creditsEarnedTenths: 200, status: "PASS" } });
+    const bCourse = (await db.course.create({ data: { schoolId: ids.B!, schemeId: ids.bScheme!, code: "ED201", name: "ZZ SR Pedagogy", semester: 2, creditsL: 20 }, select: { id: true } })).id;
+    for (const who of ["t1", "t2"]) {
+      await db.termResult.create({ data: { schoolId: ids.B!, runId: run.id, termId: ids.bTerm!, studentMembershipId: ids[`${who}M`]!, creditsAttemptedTenths: 200, creditsEarnedTenths: 200, status: "PASS" } });
+      await db.courseResult.create({ data: { schoolId: ids.B!, runId: run.id, studentMembershipId: ids[`${who}M`]!, courseId: bCourse, creditsTenths: 200, totalMilli: 80000, maxMilli: 100000, grade: "A", pointsTenths: 90, status: "PASS" } });
+    }
     expect(await publishRun(await as("bCtrl", "EXAM_CONTROLLER", ids.B!), session.id, run.id)).toMatchObject({ ok: true });
     const pushes = await db.creditPush.findMany({ where: { schoolId: ids.B!, termId: ids.bTerm! }, select: { studentMembershipId: true, creditsTenths: true } });
     expect(Object.fromEntries(pushes.map((p) => [p.studentMembershipId, p.creditsTenths]))).toEqual({ [ids.t1M!]: 200, [ids.t2M!]: 240 });

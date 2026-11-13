@@ -17,10 +17,12 @@ import { RuleRefusal } from "./rule-refusal";
 import { open as openSealed, seal, sealingAvailable } from "./secret-box";
 import { pngFrom, SIGNATURE_LIMIT } from "./signatures";
 import { forSchool } from "./tenant-context";
+import { readPassingRules } from "./academics";
+import { internshipCredits } from "./placement-internships";
 import { EXAM_CODE_SHAPE, examDocumentByCode } from "./exam-document-check";
 import type { ActiveContext } from "./session";
 import { assertAutonomous, cellOf, formCourses, sessionOf, statusAtLeast, type FormCourse } from "./exam-cell";
-import { newVersion, termResultView } from "./exam-cell-marks";
+import { graceCarry, newVersion, termResultView } from "./exam-cell-marks";
 import { coursesOf, seatsOf, studentIdsOf, termNames } from "./exam-cell-academics";
 import { backlogLapsed, backlogLastDay, cgpaHundredths, checkCode, classFor, sgpaNumber, tenths, toMilli } from "./exam-cell-rules";
 
@@ -61,8 +63,8 @@ async function correctionOf(rows: readonly { sessionId: string; outcome: string 
   };
 }
 
-async function revaluationRows(where: { schoolId: string; studentMembershipId?: string; sessionId?: string }): Promise<RevaluationRow[]> {
-  const rows = await db.revaluation.findMany({ where, orderBy: { createdAt: "desc" }, take: 300, include: { session: { select: { name: true, schoolId: true } }, student: { select: { user: { select: { name: true } } } } } });
+async function revaluationRows(where: { schoolId: string; studentMembershipId?: string; sessionId?: string; status?: string | { not: string } }, take: number | null = 300): Promise<RevaluationRow[]> {
+  const rows = await db.revaluation.findMany({ where, orderBy: { createdAt: "desc" }, take: take ?? undefined, include: { session: { select: { name: true, schoolId: true } }, student: { select: { user: { select: { name: true } } } } } });
   if (rows.length === 0) return [];
   const courses = await coursesOf(rows[0]!.session.schoolId, rows.map((r) => r.courseId));
   const demands = rows.map((r) => r.feeDemandId).filter((x): x is string => Boolean(x));
@@ -129,21 +131,51 @@ async function creditRows(schoolId: string, where: { studentMembershipId?: strin
 
 const docRow = (d: { id: string; kind: string; serial: string; code: string; studentMembershipId: string; studentName: string; issuedAt: Date; revokedAt: Date | null }): ExamDocumentRow => ({ id: d.id, kind: d.kind as ExamDocumentRow["kind"], serial: d.serial, code: d.code, studentMembershipId: d.studentMembershipId, studentName: d.studentName, issuedAt: d.issuedAt.toISOString(), revokedAt: d.revokedAt?.toISOString() ?? null });
 
-/** Every published result of one student: the PUBLISHED run of each session, its term row and course rows. */
-async function publishedResultsOf(schoolId: string, studentMembershipId: string) {
-  const terms = await db.termResult.findMany({ where: { schoolId, studentMembershipId, run: { status: "PUBLISHED" } }, include: { run: { select: { id: true, publishedAt: true, session: { select: { id: true, name: true, termId: true } } } } }, orderBy: { run: { publishedAt: "asc" } } });
-  const rows = terms.length ? await db.courseResult.findMany({ where: { studentMembershipId, runId: { in: terms.map((t) => t.runId) } } }) : [];
-  return { terms, rows };
+/**
+ * WHEN EACH SESSION'S RESULT FIRST CAME OUT (TA-065), by session: the earliest publication of any of its runs. A
+ * session's place among a student's results is this, not its current run's publishedAt, which every corrected run
+ * moves to the day it is published — so a corrected run of an earlier session read as later than the supplementary
+ * session that cleared its failure, and brought the failure back into the CGPA, the grade card and the placement cell.
+ */
+export async function sessionsFirstPublished(sessionIds: readonly string[]): Promise<Map<string, number>> {
+  const ids = [...new Set(sessionIds)];
+  if (ids.length === 0) return new Map();
+  const rows = await db.resultRun.groupBy({ by: ["sessionId"], where: { sessionId: { in: ids }, publishedAt: { not: null } }, _min: { publishedAt: true } });
+  return new Map(rows.map((r) => [r.sessionId, r._min.publishedAt?.getTime() ?? 0]));
 }
 
-/** The CGPA and credits of one student from every published result: each course at its latest result. */
+/** Every published result of one student: the PUBLISHED run of each session, its term row and course rows, in the order the sessions' results first came out. */
+async function publishedResultsOf(schoolId: string, studentMembershipId: string) {
+  const found = await db.termResult.findMany({ where: { schoolId, studentMembershipId, run: { status: "PUBLISHED" } }, include: { run: { select: { id: true, publishedAt: true, session: { select: { id: true, name: true, termId: true } } } } }, orderBy: { run: { publishedAt: "asc" } } });
+  const first = await sessionsFirstPublished(found.map((t) => t.run.session.id));
+  const firstAt = (t: (typeof found)[number]) => first.get(t.run.session.id) ?? t.run.publishedAt?.getTime() ?? 0;
+  const terms = [...found].sort((a, b) => firstAt(a) - firstAt(b));
+  const rows = terms.length ? await db.courseResult.findMany({ where: { studentMembershipId, runId: { in: terms.map((t) => t.runId) } } }) : [];
+  return { terms, rows, firstAt };
+}
+
+/** The CGPA and credits of one student from every published result: each course at its latest result, sessions in the order their results first came out. */
 async function cgpaOf(schoolId: string, studentMembershipId: string) {
-  const { terms, rows } = await publishedResultsOf(schoolId, studentMembershipId);
-  const at = new Map(terms.map((t) => [t.runId, t.run.publishedAt?.getTime() ?? 0]));
+  const { terms, rows, firstAt } = await publishedResultsOf(schoolId, studentMembershipId);
+  const at = new Map(terms.map((t) => [t.runId, firstAt(t)]));
   const withAt = rows.map((r) => ({ courseId: r.courseId, creditsTenths: r.creditsTenths, pointsTenths: r.pointsTenths, at: at.get(r.runId) ?? 0, passed: r.status === "PASS" }));
   const latest = new Map<string, (typeof withAt)[number]>();
   for (const r of withAt) if (!latest.has(r.courseId) || latest.get(r.courseId)!.at <= r.at) latest.set(r.courseId, r);
   return { cgpa: cgpaHundredths(withAt), creditsEarnedTenths: [...latest.values()].filter((r) => r.passed).reduce((a, r) => a + r.creditsTenths, 0), terms, rows };
+}
+
+/**
+ * WHETHER A STUDENT HAS FINISHED THE PROGRAMME (TA-068): the credits earned in published results (cgpaOf's, each
+ * course once) and every CREDITED internship's credits (the ones publishRun's credit push carries to the Academic
+ * Bank, which a B.Tech's total under the AICTE scheme counts) reach the total their scheme sets. A degree certificate
+ * and the convocation list read it beside "no open backlog", which a first-year student with one clean term also
+ * met. No seat, no scheme to read: not finished.
+ */
+async function programmeFinished(schoolId: string, studentMembershipId: string, earnedTenths: number): Promise<{ done: boolean; earned: number; needed: number | null }> {
+  const [seat, internships] = await Promise.all([db.studentProgramme.findFirst({ where: { schoolId, studentMembershipId }, select: { scheme: { select: { passingRules: true } } } }), internshipCredits(studentMembershipId)]);
+  const needed = seat ? readPassingRules(seat.scheme.passingRules).totalCredits : null;
+  const totalTenths = earnedTenths + internships.reduce((a, r) => a + r.credits * 10, 0);
+  return { done: needed !== null && totalTenths >= needed * 10, earned: tenths(totalTenths), needed };
 }
 
 /** The first day a session's result was published, as a date key in the college's zone. */
@@ -327,13 +359,17 @@ export async function decideRevaluation(ctx: ActiveContext, revaluationId: strin
   const cell = await cellOf(ctx);
   const r = await db.revaluation.findFirst({ where: { id: revaluationId, schoolId: cell.schoolId } });
   if (!r) throw new AccessError("access.thatContentNoLongerExists", "NOT_FOUND");
+  const course = (await coursesOf(cell.schoolId, [r.courseId])).get(r.courseId);
   if (r.status !== "ASKED") {
-    if (r.outcome === input.outcome) return { ok: true, id: r.id, count: null };
-    throw new RuleRefusal("examCell.refuseDecided", 409);
+    // The same decision again is answered as it stands; CHANGED with other marks is not that (TA-570): it was answered
+    // 200 and changed nothing, so the controller believed a typo fixed. A decided mark changes through a correction.
+    const sameMarks = input.outcome !== "CHANGED" || (input.marks !== null && input.marks !== undefined && course !== undefined && toMilli(input.marks, course.rules.externalMax) === r.newExternalMilli);
+    if (r.outcome === input.outcome && sameMarks) return { ok: true, id: r.id, count: null };
+    throw new RuleRefusal(r.outcome === input.outcome ? "examCell.refuseRevalRedecide" : "examCell.refuseDecided", 409);
   }
   if ((r.kind === "PHOTOCOPY") !== (input.outcome === "PROVIDED")) throw new RuleRefusal("examCell.refuseOutcome", 422, undefined, "outcome");
   const latest = (await db.examMark.findMany({ where: { sessionId: r.sessionId, courseId: r.courseId, studentMembershipId: r.studentMembershipId }, orderBy: { version: "desc" }, take: 1 }))[0];
-  const course = (await coursesOf(cell.schoolId, [r.courseId])).get(r.courseId);
+  const carry = input.outcome === "CHANGED" && course ? await graceCarry(cell.schoolId, course, r.studentMembershipId) : undefined;
   let newMilli: number | null = null;
   if (input.outcome === "CHANGED") {
     newMilli = input.marks === null || input.marks === undefined || !course ? null : toMilli(input.marks, course.rules.externalMax);
@@ -345,7 +381,7 @@ export async function decideRevaluation(ctx: ActiveContext, revaluationId: strin
     const tx = raw as Tx;
     const flipped = await tx.revaluation.updateMany({ where: { id: r.id, status: "ASKED" }, data: { status: "DECIDED", outcome: input.outcome, oldExternalMilli: latest?.externalMilli ?? null, newExternalMilli: newMilli, note: input.note?.trim() || null, decidedByUserId: cell.userId, decidedAt: new Date() } });
     if (flipped.count !== 1 || input.outcome !== "CHANGED") return;
-    await newVersion(cell.schoolId, r.sessionId, r.courseId, r.studentMembershipId, cell.userId, { source: "REVALUATION", reason: t("examCell.revalReason"), externalMilli: newMilli, absent: false }, tx);
+    await newVersion(cell.schoolId, r.sessionId, r.courseId, r.studentMembershipId, cell.userId, { source: "REVALUATION", reason: t("examCell.revalReason"), externalMilli: newMilli, absent: false, carry }, tx);
   });
   await audit({ schoolId: cell.schoolId, actorUserId: cell.userId, action: "exam.revaluation.decide", targetType: "Revaluation", targetId: r.id, meta: { outcome: input.outcome, newExternalMilli: newMilli } });
   const student = await db.membership.findUnique({ where: { id: r.studentMembershipId }, select: { userId: true } });
@@ -380,21 +416,33 @@ export async function addBacklog(ctx: ActiveContext, input: { sessionId: string;
 /* After results: the controller's desk                                         */
 /* -------------------------------------------------------------------------- */
 
-export async function afterView(ctx: ActiveContext): Promise<ExamAfter> {
+/**
+ * The desk after results. `q` finds a student for a grade card, transcript or degree by name or roll number (TA-302:
+ * the list stops at 500 in name order, and a college past that had no way to reach the rest from the page); every
+ * revaluation still ASKED is listed, however old, before the 300 newest decided ones.
+ */
+export async function afterView(ctx: ActiveContext, opts: { q?: string } = {}): Promise<ExamAfter> {
   const cell = await cellOf(ctx, "read");
   const today = todayKey(cell.timeZone);
-  const [revaluations, backlogs, docs, credits, students, convocations] = await Promise.all([
-    revaluationRows({ schoolId: cell.schoolId }),
+  const q = opts.q?.trim().slice(0, 100) ?? "";
+  const [asked, decided, backlogs, docs, credits, students, convocations] = await Promise.all([
+    revaluationRows({ schoolId: cell.schoolId, status: "ASKED" }, null),
+    revaluationRows({ schoolId: cell.schoolId, status: { not: "ASKED" } }),
     backlogRows(cell.schoolId, {}, today),
     db.examDocument.findMany({ where: { schoolId: cell.schoolId }, orderBy: { issuedAt: "desc" }, take: 200 }),
     creditRows(cell.schoolId, {}),
-    db.membership.findMany({ where: { schoolId: cell.schoolId, role: "STUDENT", termResults: { some: { run: { status: "PUBLISHED" } } } }, select: { id: true, studentCode: true, user: { select: { name: true } } }, orderBy: { user: { name: "asc" } }, take: 500 }),
+    db.membership.findMany({
+      where: { schoolId: cell.schoolId, role: "STUDENT", termResults: { some: { run: { status: "PUBLISHED" } } }, ...(q ? { OR: [{ user: { name: { contains: q, mode: "insensitive" as const } } }, { studentCode: { contains: q, mode: "insensitive" as const } }] } : {}) },
+      select: { id: true, studentCode: true, user: { select: { name: true } } },
+      orderBy: { user: { name: "asc" } },
+      take: 500,
+    }),
     cell.autonomous ? db.convocation.findMany({ where: { schoolId: cell.schoolId }, orderBy: { year: "desc" } }) : Promise.resolve([]),
   ]);
   return {
     autonomous: cell.autonomous,
     canWrite: cell.canWrite,
-    revaluations,
+    revaluations: [...asked, ...decided],
     backlogs,
     documents: docs.map(docRow),
     credits,
@@ -431,6 +479,10 @@ export async function issueDocument(ctx: ActiveContext, input: { kind: "GRADE_CA
   const standing = await cgpaOf(cell.schoolId, student.id);
   if (standing.terms.length === 0) throw new RuleRefusal("examCell.refuseNoResult", 409);
   if (input.kind === "DEGREE" && (await db.backlog.count({ where: { studentMembershipId: student.id, status: "OPEN" } })) > 0) throw new RuleRefusal("examCell.refuseDegreeBacklogs", 409);
+  if (input.kind === "DEGREE") {
+    const finished = await programmeFinished(cell.schoolId, student.id, standing.creditsEarnedTenths);
+    if (!finished.done) throw new RuleRefusal("examCell.refuseDegreeCredits", 409, { earned: finished.earned, needed: finished.needed ?? "—" });
+  }
   const [school, seats, ids, courses, signature, sealImg, year] = await Promise.all([
     db.school.findUniqueOrThrow({ where: { id: cell.schoolId }, select: { name: true, affiliatingUniversity: true } }),
     seatsOf(cell.schoolId, [student.id]),
@@ -477,6 +529,26 @@ export async function issueDocument(ctx: ActiveContext, input: { kind: "GRADE_CA
   await audit({ schoolId: cell.schoolId, actorUserId: cell.userId, action: "exam.document.issue", targetType: "ExamDocument", targetId: issued.id, meta: { kind: input.kind, serial: issued.serial, studentMembershipId: student.id } });
   await notify({ userId: student.userId, schoolId: cell.schoolId, kind: "SYSTEM", titleKey: "examCell.notifyDocument", bodyKey: "examCell.notifyDocumentBody", bodyVars: { serial: issued.serial }, url: "/student/exams" });
   return { ok: true, id: issued.id, count: null };
+}
+
+/**
+ * A PAPER WITHDRAWN (TA-068): a grade card, transcript or degree issued by mistake, or one whose result was corrected
+ * since, had no way to stop answering "valid" at the public check. The controller withdraws it with a reason: the row
+ * keeps when and why (the words on the row only; the log, in the same transaction, says one was given), the public
+ * check then answers that it was revoked, and the student's own list stops offering it. Withdrawn once and for good;
+ * the same request again is answered as it stands.
+ */
+export async function revokeDocument(ctx: ActiveContext, documentId: string, input: { reason: string }): Promise<ExamActionResult> {
+  const cell = await cellOf(ctx);
+  const d = await db.examDocument.findFirst({ where: { id: documentId, schoolId: cell.schoolId }, select: { id: true, kind: true, serial: true, revokedAt: true } });
+  if (!d) throw new AccessError("access.thatContentNoLongerExists", "NOT_FOUND");
+  if (d.revokedAt) return { ok: true, id: d.id, count: null };
+  await db.$tenantTransaction(async (raw) => {
+    const tx = raw as Tx;
+    const claimed = await tx.examDocument.updateMany({ where: { id: d.id, revokedAt: null }, data: { revokedAt: new Date(), revokedReason: input.reason.trim() } });
+    if (claimed.count === 1) await audit({ schoolId: cell.schoolId, actorUserId: cell.userId, action: "exam.document.revoke", targetType: "ExamDocument", targetId: d.id, meta: { kind: d.kind, serial: d.serial, reasonGiven: true } }, tx);
+  });
+  return { ok: true, id: d.id, count: null };
 }
 
 /** Who may read an exam paper's PDF: its student, a guardian under RESULTS, and the cell's readers at its college. */
@@ -558,9 +630,10 @@ export async function pushCredits(ctx: ActiveContext, termId?: string): Promise<
 
 /**
  * An autonomous college's convocation list for a year: every student whose
- * latest published term result passed in a run published that year and who
- * carries no open backlog, with the CGPA and class. Drawn again while a
- * draft; final once finalised.
+ * latest published term result passed in a run published that year, who
+ * carries no open backlog and who has earned the programme's credits
+ * (TA-068), with the CGPA and class. Drawn again while a draft; final once
+ * finalised.
  */
 export async function buildConvocation(ctx: ActiveContext, input: { year: number; finalize: boolean }): Promise<ExamActionResult> {
   const cell = await cellOf(ctx);
@@ -580,6 +653,8 @@ export async function buildConvocation(ctx: ActiveContext, input: { year: number
   const list = [];
   for (const p of people.filter((x) => !blocked.has(x.id)).sort((a, b) => a.user.name.localeCompare(b.user.name))) {
     const standing = await cgpaOf(cell.schoolId, p.id);
+    // The year's graduates are those who finished the programme (TA-068), not every student with a clean term.
+    if (!(await programmeFinished(cell.schoolId, p.id, standing.creditsEarnedTenths)).done) continue;
     const rules = (await coursesOf(cell.schoolId, standing.rows.slice(0, 1).map((r) => r.courseId))).values().next().value?.rules;
     list.push({ studentMembershipId: p.id, name: p.user.name, programme: seats.get(p.id)?.programmeName ?? null, cgpa: sgpaNumber(standing.cgpa), cls: classFor(standing.cgpa, rules?.classBands ?? []) });
   }
@@ -674,9 +749,16 @@ export async function openPaper(ctx: ActiveContext, paperId: string): Promise<{ 
   if (!p) throw new AccessError("access.thatContentNoLongerExists", "NOT_FOUND");
   if (!p.sealedBody) throw new RuleRefusal("examCell.refusePaperNotSubmitted", 409);
   const bytes = Buffer.from(openSealed(p.sealedBody, paperBound(p.schoolId, p.id)), "base64");
-  const log = [...readJsonArray<{ userId: string; at: string }>(p.accessLogJson), { userId: cell.userId, at: new Date().toISOString() }];
-  await db.questionPaper.update({ where: { id: p.id }, data: { accessLogJson: writeJson(log) } });
-  await audit({ schoolId: cell.schoolId, actorUserId: cell.userId, action: "exam.paper.open", targetType: "QuestionPaper", targetId: p.id, meta: { opens: log.length } });
+  // Appended under the paper's row lock (TA-498): two openings at once each read the log as the other left it, so
+  // neither line is lost; the audit row goes in the same transaction.
+  await db.$tenantTransaction(async (raw) => {
+    const tx = raw as Tx;
+    await tx.$queryRaw`SELECT "id" FROM "QuestionPaper" WHERE "id" = ${p.id} FOR UPDATE`;
+    const now = await tx.questionPaper.findUniqueOrThrow({ where: { id: p.id }, select: { accessLogJson: true } });
+    const log = [...readJsonArray<{ userId: string; at: string }>(now.accessLogJson), { userId: cell.userId, at: new Date().toISOString() }];
+    await tx.questionPaper.update({ where: { id: p.id }, data: { accessLogJson: writeJson(log) } });
+    await audit({ schoolId: cell.schoolId, actorUserId: cell.userId, action: "exam.paper.open", targetType: "QuestionPaper", targetId: p.id, meta: { opens: log.length } }, tx);
+  });
   return { bytes, fileName: p.fileName ?? "paper.pdf" };
 }
 
@@ -772,10 +854,12 @@ export async function checkExamDocument(schoolId: string | null | undefined, cod
   if (byCode) return byCode;
   if (!schoolId || !/^c[a-z0-9]{20,}$/.test(schoolId)) return none;
   return forSchool(schoolId, async () => {
-    const ticket = await db.hallTicket.findFirst({ where: { schoolId, code: clean }, select: { number: true, issuedAt: true, session: { select: { status: true } } } });
+    const ticket = await db.hallTicket.findFirst({ where: { schoolId, code: clean }, select: { number: true, issuedAt: true, session: { select: { status: true } }, student: { select: { status: true, leftAt: true } } } });
     if (!ticket) return none;
     const school = await db.school.findUnique({ where: { id: schoolId }, select: { name: true } });
-    return { valid: ticket.session.status !== "CLOSED", kind: "HALL_TICKET", serial: ticket.number, schoolName: school?.name ?? null, issuedAt: ticket.issuedAt.toISOString(), revokedAt: null };
+    // A ticket admits to the hall: one of a student who has left is not valid (TA-569), as its PDF is no longer printed (A3-S-15).
+    const stillHere = ticket.student.status === "ACTIVE" && ticket.student.leftAt === null;
+    return { valid: ticket.session.status !== "CLOSED" && stillHere, kind: "HALL_TICKET", serial: ticket.number, schoolName: school?.name ?? null, issuedAt: ticket.issuedAt.toISOString(), revokedAt: null };
   });
 }
 

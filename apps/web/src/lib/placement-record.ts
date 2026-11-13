@@ -40,7 +40,7 @@ export async function placementRecords(schoolId: string, studentMembershipIds: r
   const [results, backlogs, seats, records, enrolments, marks, members] = await Promise.all([
     db.courseResult.findMany({
       where: { schoolId, studentMembershipId: { in: ids }, run: { status: "PUBLISHED" } },
-      select: { studentMembershipId: true, courseId: true, creditsTenths: true, pointsTenths: true, run: { select: { publishedAt: true, computedAt: true } } },
+      select: { studentMembershipId: true, courseId: true, creditsTenths: true, pointsTenths: true, run: { select: { sessionId: true, publishedAt: true, computedAt: true } } },
     }),
     db.backlog.groupBy({ by: ["studentMembershipId"], where: { schoolId, studentMembershipId: { in: ids }, status: "OPEN" }, _count: { _all: true } }),
     db.studentProgramme.findMany({ where: { schoolId, studentMembershipId: { in: ids } }, select: { studentMembershipId: true, programmeId: true, entryYear: true, programme: { select: { name: true, durationYears: true } } } }),
@@ -58,10 +58,16 @@ export async function placementRecords(schoolId: string, studentMembershipIds: r
     : [];
   const leftYear = new Map(alumni.map((a) => [a.userId, a.joinedAt.getUTCFullYear()]));
 
+  // A session's results count from when they first came out, not from its latest corrected run (TA-065, as the exam
+  // cell's own CGPA reads them): a corrected earlier session must not outrank the later session that cleared a course.
+  const sessionIds = [...new Set(results.map((r) => r.run.sessionId))];
+  const firstOut = new Map(
+    (sessionIds.length ? await db.resultRun.groupBy({ by: ["sessionId"], where: { sessionId: { in: sessionIds }, publishedAt: { not: null } }, _min: { publishedAt: true } }) : []).map((r) => [r.sessionId, r._min.publishedAt?.getTime() ?? null]),
+  );
   const byStudent = new Map<string, { courseId: string; creditsTenths: number; pointsTenths: number; at: number }[]>();
   for (const r of results) {
     const list = byStudent.get(r.studentMembershipId) ?? [];
-    list.push({ courseId: r.courseId, creditsTenths: r.creditsTenths, pointsTenths: r.pointsTenths, at: (r.run.publishedAt ?? r.run.computedAt).getTime() });
+    list.push({ courseId: r.courseId, creditsTenths: r.creditsTenths, pointsTenths: r.pointsTenths, at: firstOut.get(r.run.sessionId) ?? (r.run.publishedAt ?? r.run.computedAt).getTime() });
     byStudent.set(r.studentMembershipId, list);
   }
   const backlogCount = new Map(backlogs.map((b) => [b.studentMembershipId, b._count._all]));

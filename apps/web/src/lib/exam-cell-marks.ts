@@ -10,7 +10,7 @@ import { RuleRefusal } from "./rule-refusal";
 import type { ActiveContext } from "./session";
 import type { Translate } from "./i18n/dictionary";
 import { cellOf, formCourses, runView, sessionOf, statusAtLeast, type Cell } from "./exam-cell";
-import { coursesOf, internalsFor, offeringsOfTerm, seatsOf, studentIdsOf, termsOf, type CourseFacts } from "./exam-cell-academics";
+import { coursesOf, internalsFor, lockedInternalsFor, offeringsOfTerm, seatsOf, studentIdsOf, termsOf, type CourseFacts } from "./exam-cell-academics";
 import { classFor, courseOutcome, csvFileName, csvLine, entriesAgree, milliText, parseResultFile, sgpaHundredths, sgpaNumber, tenths, termStatusOf, toMilli } from "./exam-cell-rules";
 import { internshipCreditsForTerm } from "./placement-internships";
 
@@ -40,6 +40,25 @@ async function everPublished(sessionId: string): Promise<boolean> {
   return (await db.resultRun.count({ where: { sessionId, status: { in: ["PUBLISHED", "SUPERSEDED"] } } })) > 0;
 }
 
+/**
+ * Whether a draft run of the session is the principal's to publish, as publishRun decides it: after a publication,
+ * or before the first one once a correction stands (TA-560). The results page draws Publish for the one who may press it.
+ */
+export async function publishNeedsPrincipal(ctx: ActiveContext, sessionId: string): Promise<boolean> {
+  const s = await sessionOf(await cellOf(ctx, "read"), sessionId);
+  return (await everPublished(s.id)) || (await db.examMark.count({ where: { sessionId: s.id, source: "CORRECTION" } })) > 0;
+}
+
+/**
+ * The students of a sheet whose mark the correction form may take, as correctMark allows it (TA-560): every one after
+ * a publication; before it, while marks are taken, only those a later version (an approved grace) stands over, whose
+ * double entry is closed to them; none otherwise.
+ */
+export function correctableRows<R extends { version: number }>(sheet: { published: boolean; rows: readonly R[] }, status: string): R[] {
+  if (sheet.published) return [...sheet.rows];
+  return status === "CONDUCT" || status === "ASSESSMENT" ? sheet.rows.filter((r) => r.version > 1) : [];
+}
+
 /** The latest version of each (course, student) mark in a session. */
 async function latestMarks(sessionId: string, courseId?: string) {
   const rows = await db.examMark.findMany({ where: { sessionId, ...(courseId ? { courseId } : {}) }, orderBy: { version: "asc" } });
@@ -51,6 +70,17 @@ async function latestMarks(sessionId: string, courseId?: string) {
     if (r.version === 1) first.set(k, r);
   }
   return { latest, first };
+}
+
+/**
+ * What a session's marks and unfair-means decisions are at this moment, as one comparable string (TA-063): how many
+ * mark rows and when the last was written, how many decisions and when the last was taken. Read before a run reads
+ * the marks and again under the session's lock, so a change in between refuses the run instead of being missed.
+ */
+async function marksStamp(client: Tx, sessionId: string): Promise<string> {
+  const m = await client.examMark.aggregate({ where: { sessionId }, _count: { _all: true }, _max: { updatedAt: true } });
+  const d = await client.malpractice.aggregate({ where: { sessionId }, _count: { decision: true }, _max: { decidedAt: true } });
+  return `${m._count._all}|${m._max.updatedAt?.getTime() ?? 0}|${d._count.decision}|${d._max.decidedAt?.getTime() ?? 0}`;
 }
 
 /** The approved forms of a session that carry a course, by student. */
@@ -269,7 +299,9 @@ export async function importMarks(ctx: ActiveContext, sessionId: string, textIn:
         await tx.examMark.update({ where: { id: latest.id }, data: values });
         updated += 1;
       } else {
-        await tx.examMark.create({ data: { schoolId: s.schoolId, sessionId: s.id, courseId: course.id, studentMembershipId: form.studentMembershipId, ...values, graceMilli: latest.graceMilli, matched: true, source: "IMPORT", version: latest.version + 1, reason: t("examCell.importReason"), enteredByUserId: cell.userId } });
+        // A re-import changes the mark, so an approved grace to pass comes off where it no longer makes the pass (TA-069).
+        const kept = await carriedGrace(tx, { ...latest, internalMilli: values.internalMilli ?? latest.internalMilli }, values, { course, lockMilli: null, note: t("examCell.graceDroppedNote") });
+        await tx.examMark.create({ data: { schoolId: s.schoolId, sessionId: s.id, courseId: course.id, studentMembershipId: form.studentMembershipId, ...values, graceMilli: kept.graceMilli, matched: true, source: "IMPORT", version: latest.version + 1, reason: kept.dropped ? `${t("examCell.importReason")} ${t("examCell.graceDroppedNote")}` : t("examCell.importReason"), enteredByUserId: cell.userId } });
         created += 1;
       }
     }
@@ -289,23 +321,84 @@ export function importReport(t: Translate, r: { created: number; updated: number
   return [head, ...lines].join(" ");
 }
 
-/** A mark changed after publication: a new version with its reason (then a new run), never an edit. */
+/**
+ * A mark changed after publication: a new version with its reason (then a new run), never an edit. Before
+ * publication a mark is changed by entering it again, except where a later version (an approved grace) stands over
+ * the double entry, which then refuses re-entry (TA-560): there the correction is the way too, under the session's
+ * lock, and the run carrying it is the principal's to publish (publishRun).
+ */
 export async function correctMark(ctx: ActiveContext, sessionId: string, input: { courseId: string; studentMembershipId: string; marks: number | null; absent: boolean; reason: string }): Promise<ExamActionResult> {
   const cell = await cellOf(ctx);
   const s = await sessionOf(cell, sessionId);
-  if (!(await everPublished(s.id))) throw new RuleRefusal("examCell.refuseCorrectBeforePublish", 409);
+  const published = await everPublished(s.id);
+  if (!published) {
+    if (s.status !== "CONDUCT" && s.status !== "ASSESSMENT") throw new RuleRefusal("examCell.refuseMarksNow", 409);
+    if ((await db.examMark.count({ where: { sessionId: s.id, courseId: input.courseId, studentMembershipId: input.studentMembershipId } })) < 2) throw new RuleRefusal("examCell.refuseCorrectBeforePublish", 409);
+  }
   const course = await courseIn(cell, input.courseId);
   const external = input.absent ? null : input.marks === null ? null : toMilli(input.marks, course.rules.externalMax);
   if (!input.absent && external === null) throw new RuleRefusal("examCell.refuseMarksRange", 422, { max: course.rules.externalMax }, "marks");
-  const id = await newVersion(s.schoolId, s.id, course.id, input.studentMembershipId, cell.userId, { source: "CORRECTION", reason: input.reason, externalMilli: external, absent: input.absent });
-  await audit({ schoolId: cell.schoolId, actorUserId: cell.userId, action: "exam.marks.correct", targetType: "ExamMark", targetId: id, meta: { courseId: course.id, studentMembershipId: input.studentMembershipId, reason: input.reason } });
+  const carry = await graceCarry(cell.schoolId, course, input.studentMembershipId);
+  const id = await db.$tenantTransaction(async (raw) => {
+    const tx = raw as Tx;
+    await tx.$queryRaw`SELECT "id" FROM "ExamSession" WHERE "id" = ${s.id} FOR UPDATE`;
+    return newVersion(s.schoolId, s.id, course.id, input.studentMembershipId, cell.userId, { source: "CORRECTION", reason: input.reason, externalMilli: external, absent: input.absent, carry }, tx);
+  });
+  // The reason is on the mark's row; the log says only that one was given (TA-409, decision 0002).
+  await audit({ schoolId: cell.schoolId, actorUserId: cell.userId, action: "exam.marks.correct", targetType: "ExamMark", targetId: id, meta: { courseId: course.id, studentMembershipId: input.studentMembershipId, reasonGiven: true, beforePublication: !published } });
   return { ok: true, id, count: null };
 }
 
+/** What a new version needs to judge whether an approved grace to pass still applies (TA-069). */
+export type GraceCarry = { course: Pick<CourseFacts, "rules" | "table">; lockMilli: number | null; note: string };
+
+/** The course's rules and the student's locked internal, read before a transaction that writes a changed mark. */
+export async function graceCarry(schoolId: string, course: CourseFacts, studentMembershipId: string): Promise<GraceCarry> {
+  const t = await getT();
+  return { course, lockMilli: (await internalsFor(schoolId, [course.id])).get(`${studentMembershipId}|${course.id}`) ?? null, note: t("examCell.graceDroppedNote") };
+}
+
+/**
+ * GRACE TO PASS IS ONLY WHERE IT MAKES THE COURSE PASS (TA-069). A version that changes the external mark (a
+ * revaluation, a correction, a re-import) carried the approved grace whatever the new mark was, so a mark raised
+ * past the pass kept marks nobody earned. An APPROVED TO_PASS grace is carried only while the new mark still fails
+ * without it and passes with it; otherwise it comes off. TO_CLASS grace, and a mark whose internal cannot be read,
+ * keep what they had.
+ */
+export function graceAfterChange(m: { internalMilli: number | null; graceMilli: number }, grace: { graceMilli: number; rule: string; status: string } | null, next: { externalMilli: number | null; absent: boolean }, course: Pick<CourseFacts, "rules" | "table">): { graceMilli: number; dropped: boolean } {
+  const keep = { graceMilli: m.graceMilli, dropped: false };
+  if (!grace || grace.status !== "APPROVED" || grace.rule !== "TO_PASS" || m.graceMilli < grace.graceMilli) return keep;
+  const rest = m.graceMilli - grace.graceMilli;
+  if (next.absent || next.externalMilli === null) return { graceMilli: rest, dropped: true };
+  if (m.internalMilli === null && course.rules.internalMax > 0) return keep;
+  const base = { internalMilli: m.internalMilli, externalMilli: next.externalMilli, absent: false };
+  const without = courseOutcome({ ...base, graceMilli: rest }, course.rules, course.table);
+  const withGrace = courseOutcome({ ...base, graceMilli: m.graceMilli }, course.rules, course.table);
+  return without.passed || !withGrace.passed ? { graceMilli: rest, dropped: true } : keep;
+}
+
+/** The grace a changed mark carries, read on the transaction's client (TA-069). */
+async function carriedGrace(client: Tx, latest: { sessionId: string; courseId: string; studentMembershipId: string; internalMilli: number | null; graceMilli: number }, next: { externalMilli: number | null; absent: boolean }, carry: GraceCarry): Promise<{ graceMilli: number; dropped: boolean }> {
+  if (latest.graceMilli === 0) return { graceMilli: 0, dropped: false };
+  const grace = await client.examGrace.findUnique({ where: { sessionId_courseId_studentMembershipId: { sessionId: latest.sessionId, courseId: latest.courseId, studentMembershipId: latest.studentMembershipId } }, select: { graceMilli: true, rule: true, status: true } });
+  return graceAfterChange({ internalMilli: latest.internalMilli ?? carry.lockMilli, graceMilli: latest.graceMilli }, grace, next, carry.course);
+}
+
 /** A new version of a mark from the latest, with what changes; refused when there is no standing mark to change. */
-export async function newVersion(schoolId: string, sessionId: string, courseId: string, studentMembershipId: string, userId: string, change: { source: string; reason: string; externalMilli?: number | null; absent?: boolean; graceMilli?: number }, client: Tx = db): Promise<string> {
+export async function newVersion(schoolId: string, sessionId: string, courseId: string, studentMembershipId: string, userId: string, change: { source: string; reason: string; externalMilli?: number | null; absent?: boolean; graceMilli?: number; carry?: GraceCarry }, client: Tx = db): Promise<string> {
   const latest = (await client.examMark.findMany({ where: { sessionId, courseId, studentMembershipId }, orderBy: { version: "desc" }, take: 1 }))[0];
   if (!latest || !latest.matched) throw new RuleRefusal("examCell.refuseNoMark", 409);
+  const externalMilli = change.externalMilli !== undefined ? change.externalMilli : latest.externalMilli;
+  const absent = change.absent ?? latest.absent;
+  let graceMilli = change.graceMilli ?? latest.graceMilli;
+  let reason = change.reason;
+  if (change.graceMilli === undefined && change.carry) {
+    const kept = await carriedGrace(client, latest, { externalMilli, absent }, change.carry);
+    if (kept.dropped) {
+      graceMilli = kept.graceMilli;
+      reason = `${reason} ${change.carry.note}`;
+    }
+  }
   const row = await client.examMark.create({
     data: {
       schoolId,
@@ -313,13 +406,13 @@ export async function newVersion(schoolId: string, sessionId: string, courseId: 
       courseId,
       studentMembershipId,
       internalMilli: latest.internalMilli,
-      externalMilli: change.externalMilli !== undefined ? change.externalMilli : latest.externalMilli,
-      absent: change.absent ?? latest.absent,
-      graceMilli: change.graceMilli ?? latest.graceMilli,
+      externalMilli,
+      absent,
+      graceMilli,
       matched: true,
       source: change.source,
       version: latest.version + 1,
-      reason: change.reason,
+      reason,
       enteredByUserId: userId,
     },
     select: { id: true },
@@ -343,8 +436,6 @@ export async function proposeGrace(ctx: ActiveContext, sessionId: string, input:
   const course = await courseIn(cell, input.courseId);
   const graceMilli = Math.round(input.marks * 1000);
   if (graceMilli > course.rules.graceMaxPerCourse * 1000) throw new RuleRefusal("examCell.refuseGraceCap", 422, { max: course.rules.graceMaxPerCourse }, "marks");
-  const others = await db.examGrace.findMany({ where: { sessionId: s.id, studentMembershipId: input.studentMembershipId, status: { in: ["PROPOSED", "APPROVED"] }, courseId: { not: course.id } }, select: { graceMilli: true } });
-  if (others.reduce((a, g) => a + g.graceMilli, 0) + graceMilli > course.rules.graceMaxPerSession * 1000) throw new RuleRefusal("examCell.refuseGraceCap", 422, { max: course.rules.graceMaxPerSession }, "marks");
   const latest = (await db.examMark.findMany({ where: { sessionId: s.id, courseId: course.id, studentMembershipId: input.studentMembershipId }, orderBy: { version: "desc" }, take: 1 }))[0];
   if (!latest || !latest.matched || latest.absent) throw new RuleRefusal("examCell.refuseNoMark", 409);
   if (input.rule === "TO_PASS") {
@@ -356,11 +447,21 @@ export async function proposeGrace(ctx: ActiveContext, sessionId: string, input:
     const withGrace = courseOutcome({ ...base, graceMilli: latest.graceMilli + graceMilli }, course.rules, course.table);
     if (without.passed || !withGrace.passed) throw new RuleRefusal("examCell.refuseGraceNotNeeded", 422, undefined, "marks");
   }
-  const existing = await db.examGrace.findUnique({ where: { sessionId_courseId_studentMembershipId: { sessionId: s.id, courseId: course.id, studentMembershipId: input.studentMembershipId } } });
-  if (existing && existing.status !== "PROPOSED") throw new RuleRefusal("examCell.refuseDecided", 409);
-  const row = existing
-    ? await db.examGrace.update({ where: { id: existing.id }, data: { graceMilli, rule: input.rule, reason: input.reason, proposedByUserId: cell.userId }, select: { id: true } })
-    : await db.examGrace.create({ data: { schoolId: cell.schoolId, sessionId: s.id, courseId: course.id, studentMembershipId: input.studentMembershipId, graceMilli, rule: input.rule, reason: input.reason, proposedByUserId: cell.userId }, select: { id: true } });
+  // The session's cap is added up and the proposal written under the session's lock (TA-530), so two proposals for
+  // one student in two courses at once cannot both pass it; an edit claims the row only while it is still PROPOSED,
+  // so it never lands under the principal's approval.
+  const row = await db.$tenantTransaction(async (raw) => {
+    const tx = raw as Tx;
+    await tx.$queryRaw`SELECT "id" FROM "ExamSession" WHERE "id" = ${s.id} FOR UPDATE`;
+    const others = await tx.examGrace.findMany({ where: { sessionId: s.id, studentMembershipId: input.studentMembershipId, status: { in: ["PROPOSED", "APPROVED"] }, courseId: { not: course.id } }, select: { graceMilli: true } });
+    if (others.reduce((a, g) => a + g.graceMilli, 0) + graceMilli > course.rules.graceMaxPerSession * 1000) throw new RuleRefusal("examCell.refuseGraceCap", 422, { max: course.rules.graceMaxPerSession }, "marks");
+    const existing = await tx.examGrace.findUnique({ where: { sessionId_courseId_studentMembershipId: { sessionId: s.id, courseId: course.id, studentMembershipId: input.studentMembershipId } } });
+    if (existing && existing.status !== "PROPOSED") throw new RuleRefusal("examCell.refuseDecided", 409);
+    if (!existing) return tx.examGrace.create({ data: { schoolId: cell.schoolId, sessionId: s.id, courseId: course.id, studentMembershipId: input.studentMembershipId, graceMilli, rule: input.rule, reason: input.reason, proposedByUserId: cell.userId }, select: { id: true } });
+    const edited = await tx.examGrace.updateMany({ where: { id: existing.id, status: "PROPOSED" }, data: { graceMilli, rule: input.rule, reason: input.reason, proposedByUserId: cell.userId } });
+    if (edited.count !== 1) throw new RuleRefusal("examCell.refuseDecided", 409);
+    return { id: existing.id };
+  });
   await audit({ schoolId: cell.schoolId, actorUserId: cell.userId, action: "exam.grace.propose", targetType: "ExamGrace", targetId: row.id, meta: { courseId: course.id, studentMembershipId: input.studentMembershipId, graceMilli, rule: input.rule } });
   const heads = await db.membership.findMany({ where: { schoolId: cell.schoolId, role: "PRINCIPAL", status: "ACTIVE" }, select: { userId: true } });
   await Promise.all(heads.map((h) => notify({ userId: h.userId, schoolId: cell.schoolId, kind: "SYSTEM", titleKey: "examCell.notifyGrace", titleVars: { session: s.name }, bodyKey: "examCell.notifyGraceBody", bodyVars: { course: course.code }, url: "/exam-cell" })));
@@ -374,21 +475,44 @@ export async function decideGrace(ctx: ActiveContext, graceId: string, input: { 
   const schoolId = ctx.schoolId;
   const g = await db.examGrace.findFirst({ where: { id: graceId, schoolId } });
   if (!g) throw new AccessError("access.thatContentNoLongerExists", "NOT_FOUND");
+  // R-7's four eyes (TA-237): an account holding EXAM_CONTROLLER and PRINCIPAL does not approve the grace it proposed.
+  if (g.proposedByUserId === ctx.user.id) throw new AccessError("collegeDesks.refuseOwnAsk");
   if (g.status !== "PROPOSED") {
     if ((g.status === "APPROVED") === input.approve) return { ok: true, id: g.id, count: null };
     throw new RuleRefusal("examCell.refuseDecided", 409);
   }
   const t = await getT();
-  await db.$tenantTransaction(async (raw) => {
+  const cap = (await coursesOf(schoolId, [g.courseId])).get(g.courseId)?.rules.graceMaxPerSession ?? null;
+  let graceMilli = g.graceMilli;
+  const decided = await db.$tenantTransaction(async (raw) => {
     const tx = raw as Tx;
+    // Under the session's lock, as proposeGrace writes (TA-530): the marks added to the mark are the row's as it
+    // stands now, not as read before, so the approved row and the mark's version agree; and the session's cap is
+    // added up again with the approval in it.
+    await tx.$queryRaw`SELECT "id" FROM "ExamSession" WHERE "id" = ${g.sessionId} FOR UPDATE`;
+    const now = await tx.examGrace.findUnique({ where: { id: g.id }, select: { graceMilli: true, status: true, proposedByUserId: true } });
+    if (!now || now.status !== "PROPOSED") return now?.status ?? null;
+    if (now.proposedByUserId === ctx.user.id) throw new AccessError("collegeDesks.refuseOwnAsk");
+    graceMilli = now.graceMilli;
+    if (input.approve && cap !== null) {
+      const approved = await tx.examGrace.findMany({ where: { sessionId: g.sessionId, studentMembershipId: g.studentMembershipId, status: "APPROVED", id: { not: g.id } }, select: { graceMilli: true } });
+      if (approved.reduce((a, x) => a + x.graceMilli, 0) + now.graceMilli > cap * 1000) throw new RuleRefusal("examCell.refuseGraceCap", 422, { max: cap });
+    }
     const flipped = await tx.examGrace.updateMany({ where: { id: g.id, status: "PROPOSED" }, data: { status: input.approve ? "APPROVED" : "REFUSED", decidedByUserId: ctx.user.id, decidedAt: new Date(), decisionNote: input.note?.trim() || null } });
-    if (flipped.count !== 1 || !input.approve) return;
+    if (flipped.count !== 1 || !input.approve) return "DECIDED";
     const latest = (await tx.examMark.findMany({ where: { sessionId: g.sessionId, courseId: g.courseId, studentMembershipId: g.studentMembershipId }, orderBy: { version: "desc" }, take: 1 }))[0];
-    await newVersion(schoolId, g.sessionId, g.courseId, g.studentMembershipId, ctx.user.id, { source: "GRACE", reason: t("examCell.graceReason", { reason: g.reason }), graceMilli: (latest?.graceMilli ?? 0) + g.graceMilli }, tx);
+    await newVersion(schoolId, g.sessionId, g.courseId, g.studentMembershipId, ctx.user.id, { source: "GRACE", reason: t("examCell.graceReason", { reason: g.reason }), graceMilli: (latest?.graceMilli ?? 0) + now.graceMilli }, tx);
+    return "DECIDED";
   });
-  await audit({ schoolId, actorUserId: ctx.user.id, action: input.approve ? "exam.grace.approve" : "exam.grace.refuse", targetType: "ExamGrace", targetId: g.id, meta: { graceMilli: g.graceMilli, note: input.note ?? null } });
+  // Decided by someone else meanwhile: answered as the first check above answers it.
+  if (decided !== "DECIDED") {
+    if ((decided === "APPROVED") === input.approve) return { ok: true, id: g.id, count: null };
+    throw new RuleRefusal("examCell.refuseDecided", 409);
+  }
+  // The note is on the grace's row; the log says only that one was given (TA-409, decision 0002).
+  await audit({ schoolId, actorUserId: ctx.user.id, action: input.approve ? "exam.grace.approve" : "exam.grace.refuse", targetType: "ExamGrace", targetId: g.id, meta: { graceMilli, noteGiven: Boolean(input.note?.trim()) } });
   await notify({ userId: g.proposedByUserId, schoolId, kind: "SYSTEM", titleKey: input.approve ? "examCell.notifyGraceApproved" : "examCell.notifyGraceRefused", bodyKey: "examCell.notifyGraceDecidedBody", url: `/exam-cell/sessions/${g.sessionId}/marks` });
-  if (input.approve) await tellGrace(schoolId, g).catch((error) => console.error("[exam-cell] grace notice failed", error));
+  if (input.approve) await tellGrace(schoolId, { ...g, graceMilli }).catch((error) => console.error("[exam-cell] grace notice failed", error));
   return { ok: true, id: g.id, count: null };
 }
 
@@ -434,21 +558,45 @@ export const sgpaCourses = <T extends { kind: string }>(rows: readonly T[]): T[]
 export async function runResults(ctx: ActiveContext, sessionId: string, reason?: string): Promise<ExamActionResult> {
   const cell = await cellOf(ctx);
   const s = await sessionOf(cell, sessionId);
-  if (!statusAtLeast(s.status, "CONDUCT") || s.status === "CLOSED") throw new RuleRefusal("examCell.refuseRunNow", 409);
   const published = await everPublished(s.id);
+  // A CLOSED session's revaluations, corrections and grace go on from After results (the guide), so a closed session
+  // that has published computes a corrected run, with a reason and for the principal, as a published one does (TA-064).
+  if (!statusAtLeast(s.status, "CONDUCT") || (s.status === "CLOSED" && !published)) throw new RuleRefusal("examCell.refuseRunNow", 409);
   if (published && !reason?.trim()) throw new RuleRefusal("examCell.refuseRerunReason", 422, undefined, "reason");
+  // What the marks were when they were read (TA-063): taken again under the session's lock below, and a run is refused
+  // if a mark or a decision changed in between, rather than stored as a draft that misses it.
+  const readStamp = await marksStamp(db, s.id);
   const forms = await db.examForm.findMany({ where: { sessionId: s.id, status: "APPROVED" }, select: { studentMembershipId: true, coursesJson: true } });
   if (forms.length === 0) throw new RuleRefusal("examCell.refuseNoForms", 409);
+  // An unfair-means case not yet decided holds the result (TA-303): a cancelled paper decided after publication would
+  // need a corrected run and the principal, and the student's result would have gone out meanwhile.
+  const undecided = await db.malpractice.count({ where: { sessionId: s.id, decision: null } });
+  if (undecided > 0) throw new RuleRefusal("examCell.refuseMalpracticeUndecided", 409, { count: undecided });
   const allCourses = [...new Set(forms.flatMap((f) => formCourses(f.coursesJson).map((c) => c.courseId)))];
-  const [courses, internals, marks, malpractice] = await Promise.all([
+  const [courses, locks, marks, malpractice] = await Promise.all([
     coursesOf(cell.schoolId, allCourses),
-    internalsFor(cell.schoolId, allCourses),
+    lockedInternalsFor(cell.schoolId, allCourses),
     latestMarks(s.id),
     db.malpractice.findMany({ where: { sessionId: s.id, decision: { in: ["CANCEL_PAPER", "CANCEL_SESSION"] } }, select: { studentMembershipId: true, decision: true, schedule: { select: { courseId: true } } } }),
   ]);
+  const internals = new Map([...locks].map(([k, v]) => [k, v.milli]));
   let pending = 0;
   for (const f of forms) for (const c of formCourses(f.coursesJson)) if (!marks.latest.get(`${c.courseId}|${f.studentMembershipId}`)?.matched) pending += 1;
   if (pending > 0) throw new RuleRefusal("examCell.refuseMarksPending", 409, { count: pending });
+  // A LOCK READ ON ITS OWN MAXIMUM (TA-070): the HOD's totals are out of the lock's `outOf`, the scheme's internal
+  // maximum when it was locked. Where the scheme now reads another maximum (changed after the lock, or a scheme whose
+  // rules fell back differently in the two modules), the totals would be added as marks on the wrong scale, so the
+  // run is refused naming the courses, as a missing internal is.
+  const offScale = new Set<string>();
+  for (const f of forms) {
+    for (const c of formCourses(f.coursesJson)) {
+      const course = courses.get(c.courseId);
+      const m = marks.latest.get(`${c.courseId}|${f.studentMembershipId}`)!;
+      const lock = locks.get(`${f.studentMembershipId}|${c.courseId}`);
+      if (course && m.internalMilli === null && lock && lock.outOf !== course.rules.internalMax) offScale.add(course.code);
+    }
+  }
+  if (offScale.size > 0) throw new RuleRefusal("examCell.refuseInternalOutOf", 409, { courses: [...offScale].sort().join(", ") });
   // ⚠ NO RESULT WITH A MISSING INTERNAL (QA-05, QA campaign of 24 October 2026). A course whose scheme has an internal
   // part needs each sitting student's internal: the university's imported figure or the HOD's lock. A missing one was
   // taken as nought, so at sac five of five students went ATKT, a 53/60 external was graded F, and publishing opened
@@ -518,6 +666,7 @@ export async function runResults(ctx: ActiveContext, sessionId: string, reason?:
   const runId = await db.$tenantTransaction(async (raw) => {
     const tx = raw as Tx;
     await tx.$queryRaw`SELECT "id" FROM "ExamSession" WHERE "id" = ${s.id} FOR UPDATE`;
+    if (readStamp !== (await marksStamp(tx, s.id))) throw new RuleRefusal("examCell.refuseRunStale", 409);
     await tx.resultRun.deleteMany({ where: { sessionId: s.id, status: "DRAFT" } });
     const last = await tx.resultRun.findFirst({ where: { sessionId: s.id }, orderBy: { number: "desc" }, select: { number: true } });
     const run = await tx.resultRun.create({ data: { schoolId: s.schoolId, sessionId: s.id, number: (last?.number ?? 0) + 1, reason: reason?.trim() || null, computedByUserId: cell.userId, summaryJson: JSON.stringify(summary) }, select: { id: true } });
@@ -526,7 +675,8 @@ export async function runResults(ctx: ActiveContext, sessionId: string, reason?:
     if (s.status === "CONDUCT") await tx.examSession.update({ where: { id: s.id }, data: { status: "ASSESSMENT" } });
     return run.id;
   });
-  await audit({ schoolId: cell.schoolId, actorUserId: cell.userId, action: "exam.result.run", targetType: "ResultRun", targetId: runId, meta: { ...summary, reason: reason ?? null } });
+  // The reason stays on the run row; the log says only that one was given (TA-409, decision 0002: no sentences about a student).
+  await audit({ schoolId: cell.schoolId, actorUserId: cell.userId, action: "exam.result.run", targetType: "ResultRun", targetId: runId, meta: { ...summary, reasonGiven: Boolean(reason?.trim()) } });
   // A run that changes a published result waits for the principal (publishRun), who is told.
   if (published) {
     const principals = await db.membership.findMany({ where: { schoolId: cell.schoolId, role: "PRINCIPAL", status: "ACTIVE", leftAt: null }, select: { userId: true } });
@@ -570,8 +720,17 @@ export async function publishRun(ctx: ActiveContext, sessionId: string, runId: s
   const run = await db.resultRun.findFirst({ where: { id: runId, sessionId: s.id } });
   if (!run) throw new AccessError("access.thatContentNoLongerExists", "NOT_FOUND");
   if (run.status === "PUBLISHED") return { ok: true, id: run.id, count: null };
-  if (await everPublished(s.id)) {
-    if (cell.role !== "PRINCIPAL") throw new AccessError("examCell.refuseRepublishPrincipal");
+  const wasPublished = await everPublished(s.id);
+  // A correction made before the first publication (TA-560) is one controller's alone as much as one after it, so a
+  // run of a session holding one is the principal's to publish too.
+  const corrected = !wasPublished && (await db.examMark.count({ where: { sessionId: s.id, source: "CORRECTION" } })) > 0;
+  if (wasPublished || corrected) {
+    if (cell.role !== "PRINCIPAL") throw new AccessError(wasPublished ? "examCell.refuseRepublishPrincipal" : "examCell.refuseCorrectedPublishPrincipal");
+    // R-7's four eyes (TA-237): the second signatory is not the account that made a change the run carries — one
+    // holding EXAM_CONTROLLER and PRINCIPAL corrects, revalues or re-imports as controller and is refused here.
+    const since = wasPublished ? (await db.resultRun.findFirst({ where: { sessionId: s.id, status: "PUBLISHED" }, select: { publishedAt: true } }))?.publishedAt : null;
+    const own = await db.examMark.count({ where: { sessionId: s.id, enteredByUserId: cell.userId, version: { gt: 1 }, source: { in: ["CORRECTION", "REVALUATION", "IMPORT"] }, ...(since ? { createdAt: { gt: since } } : {}) } });
+    if (own > 0) throw new AccessError("collegeDesks.refuseOwnAsk");
   } else if (!cell.canWrite) throw new AccessError("access.wrongRoleForThisAction");
   if (run.status !== "DRAFT") throw new RuleRefusal("examCell.refuseRunSuperseded", 409);
   const [courseRows, termRows] = await Promise.all([db.courseResult.findMany({ where: { runId: run.id } }), db.termResult.findMany({ where: { runId: run.id } })]);
@@ -591,9 +750,16 @@ export async function publishRun(ctx: ActiveContext, sessionId: string, runId: s
     const current = await tx.resultRun.findUnique({ where: { id: run.id }, select: { status: true } });
     if (current?.status === "PUBLISHED") return false;
     if (current?.status !== "DRAFT") throw new RuleRefusal("examCell.refuseRunSuperseded", 409);
+    // A DRAFT stands for the marks as the run read them (TA-063): a grace approved, an entry changed, a correction or
+    // a revaluation written, or an unfair-means case decided after it was computed is left out of it, so it is
+    // refused and computed again. Both stamps of a mark are compared, the database's and the client's.
+    const after = { gt: run.computedAt };
+    const stale = (await tx.examMark.count({ where: { sessionId: s.id, OR: [{ createdAt: after }, { updatedAt: after }] } })) + (await tx.malpractice.count({ where: { sessionId: s.id, decidedAt: after } }));
+    if (stale > 0) throw new RuleRefusal("examCell.refuseRunStale", 409);
     await tx.resultRun.updateMany({ where: { sessionId: s.id, status: "PUBLISHED" }, data: { status: "SUPERSEDED" } });
     await tx.resultRun.update({ where: { id: run.id }, data: { status: "PUBLISHED", publishedAt: now, publishedByUserId: cell.userId } });
-    await tx.examSession.update({ where: { id: s.id }, data: { status: "PUBLISHED" } });
+    // A corrected run of a CLOSED session (TA-064) publishes without opening the session again.
+    await tx.examSession.updateMany({ where: { id: s.id, status: { not: "CLOSED" } }, data: { status: "PUBLISHED" } });
     for (const r of courseRows) {
       const b = await tx.backlog.findUnique({ where: { studentMembershipId_courseId: { studentMembershipId: r.studentMembershipId, courseId: r.courseId } } });
       const counted = b && b.lastSessionId !== s.id ? 1 : 0;
@@ -609,10 +775,20 @@ export async function publishRun(ctx: ActiveContext, sessionId: string, runId: s
         await tx.backlog.update({ where: { id: b.id }, data: { status: "OPEN", clearedSessionId: null, clearedAt: null } });
       }
     }
+    // THE TERM'S CREDITS FOR THE ACADEMIC BANK (TA-066): the row is one per student and term, so it is the credits of
+    // every course passed in a PUBLISHED run of ANY of the term's sessions (this one now among them), each course once
+    // — not this run's alone, which a supplementary session of the same term overwrote with its re-sat course, and
+    // not only its regular courses, which left a backlog passed beside them in no term's row.
+    const passedRows = termRows.length
+      ? await tx.courseResult.findMany({ where: { schoolId: s.schoolId, studentMembershipId: { in: termRows.map((r) => r.studentMembershipId) }, status: "PASS", run: { status: "PUBLISHED", session: { termId: s.termId } } }, select: { studentMembershipId: true, courseId: true, creditsTenths: true } })
+      : [];
+    const passedCredits = new Map<string, Map<string, number>>();
+    for (const p of passedRows) passedCredits.set(p.studentMembershipId, (passedCredits.get(p.studentMembershipId) ?? new Map<string, number>()).set(p.courseId, p.creditsTenths));
     for (const r of termRows) {
       const had = await tx.creditPush.findUnique({ where: { studentMembershipId_termId: { studentMembershipId: r.studentMembershipId, termId: r.termId } } });
       const apaarId = ids.get(r.studentMembershipId)?.apaarId ?? null;
-      const creditsTenths = r.creditsEarnedTenths + (internshipTenths.get(`${r.studentMembershipId}|${r.termId}`) ?? 0);
+      const earnedTenths = [...(passedCredits.get(r.studentMembershipId)?.values() ?? [])].reduce((a, x) => a + x, 0);
+      const creditsTenths = earnedTenths + (internshipTenths.get(`${r.studentMembershipId}|${r.termId}`) ?? 0);
       if (!had) await tx.creditPush.create({ data: { schoolId: s.schoolId, studentMembershipId: r.studentMembershipId, termId: r.termId, runId: run.id, creditsTenths, apaarId } });
       else if (had.creditsTenths !== creditsTenths || had.runId !== run.id) await tx.creditPush.update({ where: { id: had.id }, data: { runId: run.id, creditsTenths, apaarId, ...(had.creditsTenths !== creditsTenths ? { status: "PENDING", pushedAt: null, abcRef: null, error: null } : {}) } });
     }

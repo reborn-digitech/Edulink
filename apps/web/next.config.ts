@@ -58,6 +58,12 @@ const nextConfig: NextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
   /**
+   * A server action's body above Next's default of 1 MB is refused (413) before the action runs (TA-301): a sealed
+   * question paper (the setter's PDF, at most 2 MB in submitPaper, exam-cell-after.ts) travels in one from
+   * /faculty/exams, and a scanned paper is commonly over 1 MB. 3 MB covers the file and the form beside it.
+   */
+  experimental: { serverActions: { bodySizeLimit: "3mb" } },
+  /**
    * No gzip in Node: the proxy compresses (recommendation 4 of the load wave,
    * 4 Oct 2026). gzip of one 845 KB page cost 16.6 ms of the main thread, the
    * thread a production process saturates first, and +20 ms per page at

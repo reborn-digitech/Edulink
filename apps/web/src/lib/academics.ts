@@ -1,6 +1,7 @@
 import "server-only";
 import {
   academicsSettingsSchema,
+  DEFAULT_PASSING_RULES as EXAM_PASSING_RULES,
   defaultAttendanceThreshold,
   defaultRegulatorFor,
   STREAMS,
@@ -130,7 +131,9 @@ export function readGradingTable(raw: string): GradeRow[] {
     return p.success ? [p.data] : [];
   });
 }
-export const DEFAULT_PASSING_RULES: PassingRules = { minPercentPerCourse: 40, atktLimit: 4, totalCredits: 120, internalMax: 40, externalMax: 60, minTermCredits: 16, maxTermCredits: 26 };
+// The maxima, the pass mark and the ATKT limit are the exam cell's own fallback (TA-070): a scheme with no rules was
+// locked out of 40 here and graded on 30 + 70 there. G4-10 (the owner to confirm the figures) still stands; it is one set now.
+export const DEFAULT_PASSING_RULES: PassingRules = { minPercentPerCourse: EXAM_PASSING_RULES.minTotalPercent, atktLimit: EXAM_PASSING_RULES.atktLimit, totalCredits: 120, internalMax: EXAM_PASSING_RULES.internalMax, externalMax: EXAM_PASSING_RULES.externalMax, minTermCredits: 16, maxTermCredits: 26 };
 export function readPassingRules(raw: string): PassingRules {
   const p = passingRulesSchema.safeParse(readJson<unknown>(raw, {}));
   return p.success ? p.data : DEFAULT_PASSING_RULES;
@@ -332,8 +335,15 @@ export async function saveScheme(ctx: ActiveContext, input: z.infer<typeof schem
   const data = { programmeId: input.programmeId, name: input.name, effectiveYear: input.effectiveYear, gradingTable: writeJson(sorted), passingRules: writeJson(rules) };
   const row = await refuseTaken(async () => {
     if (input.id) {
-      const found = await db.scheme.findFirst({ where: { id: input.id, schoolId: c.schoolId }, select: { id: true } });
+      const found = await db.scheme.findFirst({ where: { id: input.id, schoolId: c.schoolId }, select: { id: true, passingRules: true } });
       if (!found) throw new AccessError("access.entryNotFound", "NOT_FOUND");
+      // Internal marks locked under the scheme are totals out of its internal maximum then (TA-070): a new maximum
+      // would have the exam cell read those totals on another scale, so it does not change once a lock exists. The
+      // locks themselves are the measure, not the scheme's figure: a scheme with no rules of its own, locked out of the
+      // old fallback's 40, may still be set to the 40 its locks carry (the run refuses until the two agree).
+      const before = readPassingRules(found.passingRules).internalMax;
+      const other = before === rules.internalMax ? null : await db.internalLock.findFirst({ where: { schoolId: c.schoolId, offering: { course: { schemeId: found.id } }, outOf: { not: rules.internalMax } }, select: { outOf: true } });
+      if (other) throw new RuleRefusal("academics.refuseInternalMaxLocked", 409, { max: other.outOf }, "passingRules");
       return db.scheme.update({ where: { id: input.id }, data, select: { id: true } });
     }
     return db.scheme.create({ data: { schoolId: c.schoolId, ...data }, select: { id: true } });

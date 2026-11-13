@@ -57,7 +57,7 @@ export default async function FacultyExamsPage({ searchParams }: { searchParams:
                 {p.status !== "MODERATED" ? (
                   <ActionForm action={submitPaperAction} className="grid gap-2 sm:grid-cols-2">
                     <Hidden fields={{ paperId: p.id, back }} />
-                    <FileField label={t("examCell.paperFile")} name="file" accept="application/pdf" required />
+                    <FileField label={t("examCell.paperFile")} name="file" accept="application/pdf" required hint={t("examCell.paperFileHint")} />
                     <Labelled label={t("examCell.coMap")}>
                       <textarea name="coMap" required rows={3} placeholder={t("examCell.coMapPlaceholder")} className={fieldClass()} />
                     </Labelled>
