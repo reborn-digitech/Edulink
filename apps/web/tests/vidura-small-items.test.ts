@@ -213,6 +213,9 @@ describe("6. a fee question naming a window reads the ledger", () => {
         chosen = input.chosen.map((c) => c.door);
         return runDoors(input);
       },
+      // The clock pinned to the walk's day, inside the fixture's Term 1 (paid in full): on the real clock the window
+      // moved on 14 November 2026 into Term 2, whose ₹12,500 due on 15 December is owed, and the case went red.
+      now: () => NOW,
     });
     const out = await ask(parent, conv.id, { text: "How much fee is still due for my child this term?" }, f.deps);
     expect(chosen[0]).toBe("/api/v1/fees/family");
