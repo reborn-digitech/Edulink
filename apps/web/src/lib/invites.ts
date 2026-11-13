@@ -4,10 +4,20 @@ import { generateToken, hashToken } from "./crypto";
 import { localeForAddress, sendTeacherInvite } from "./email";
 import { audit } from "./audit";
 import { INVITE_TTL_DAYS } from "./constants";
+import { consume, INVITE_EMAILS_DAILY, INVITE_RESENDS } from "./rate-limit";
 import type { ActiveContext } from "./session";
 import type { TranslationKey } from "./i18n/dictionary";
 
 const APP_URL = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000";
+
+/**
+ * The invitations this school has written in the last day: what INVITE_EMAILS_DAILY caps. The list import
+ * counts the same rows (admin/invites/actions.ts); a parent's invitation and a resend now count them too
+ * (TA-180, TA-286), so no door of the office's mails past the day's ceiling.
+ */
+export async function invitesSentToday(schoolId: string): Promise<number> {
+  return db.invite.count({ where: { schoolId, createdAt: { gte: new Date(Date.now() - INVITE_EMAILS_DAILY.windowMs) } } });
+}
 
 /**
  * Issues a fresh token for a pending invitation and emails it again. The old
@@ -24,6 +34,12 @@ export async function resendInviteFor(
     include: { school: { select: { name: true, locale: true } } },
   });
   if (!invite?.email) return { ok: false, errorKey: "invites.cannotResend" };
+
+  // A resend is a mail like any other (TA-286): none once the school's day is spent, and a few a day for one
+  // invitation, so a loop on one pending row is not a way to fill somebody's inbox with the school's name.
+  if ((await invitesSentToday(ctx.schoolId)) >= INVITE_EMAILS_DAILY.limit) return { ok: false, errorKey: "invites.dailyCapToday" };
+  const again = await consume(`invite-resend:${invite.id}`, INVITE_RESENDS.limit, INVITE_RESENDS.windowMs);
+  if (!again.allowed) return { ok: false, errorKey: "invites.resendLimit" };
 
   const token = generateToken();
   await db.invite.update({

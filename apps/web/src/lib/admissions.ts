@@ -7,8 +7,12 @@ import type {
   CycleSave,
   CycleView,
 } from "@edulink/contracts";
+import { isCollegeKind } from "@edulink/contracts";
 import { db } from "./db";
 import { AccessError } from "./tenancy";
+import { NotForThisKindError } from "./access-error";
+import { institutionKindOf } from "./modules";
+import { APPLICATION_TRIES, consume } from "./rate-limit";
 import { audit } from "./audit";
 import { notify } from "./notify";
 import { forSchool } from "./tenant-context";
@@ -76,6 +80,20 @@ function office(ctx: ActiveContext): Office {
   if (!ctx.schoolId || !ctx.membershipId || !ctx.role || !OFFICE.includes(ctx.role)) throw new AccessError("admissions.refuseOffice");
   return ctx as Office;
 }
+
+/**
+ * THE SCHOOL'S ROAD, NOT A COLLEGE'S (TA-269). A college admits through its own desk (college-admissions: the CET list,
+ * scrutiny, both anti-ragging undertakings and the academic seat); this road mints a pupil with a class and a school
+ * fee plan and none of those. At a college a cycle cannot be made, applied to or admitted from, answered as the doors
+ * at the wrong kind of institution are (404, role-gate.ts rule 4).
+ */
+async function refuseAtACollege(schoolId: string): Promise<void> {
+  const kind = await institutionKindOf(schoolId);
+  if (isCollegeKind(kind)) throw new NotForThisKindError(kind ?? "COLLEGE", "schoolCampus.refuseNotThisKind");
+}
+
+/** How many applications one account may have standing in one cycle (TA-181): a family's children, not a list of names. */
+const LIVE_APPLICATIONS_PER_CYCLE = 5;
 
 /** A signed-in guardian account; a child is not required, because applying is how the first one arrives. */
 function family(ctx: ActiveContext): ActiveContext {
@@ -221,6 +239,7 @@ export async function createCycle(ctx: ActiveContext, raw: CycleSave): Promise<C
   const caller = office(ctx);
   // Designing a cycle is setting the school up: the admin's. The head decides on the families in it.
   if (caller.role !== "ADMIN") throw new AccessError("access.onlyAnAdminSetsUpTheSchool");
+  await refuseAtACollege(caller.schoolId);
   const input = normaliseCycle(raw);
   await checkCycleRefs(caller.schoolId, input);
   const existing = await db.admissionCycle.findUnique({ where: { schoolId_academicYearId_name: { schoolId: caller.schoolId, academicYearId: input.academicYearId, name: input.name } }, include: CYCLE_INCLUDE });
@@ -345,8 +364,9 @@ export async function cancelSlot(ctx: ActiveContext, slotId: string): Promise<{ 
  * `open` is the first of them, kept for a phone build that reads one.
  */
 export async function schoolAdmissions(ctx: ActiveContext, schoolId: string) {
-  const school = await db.school.findFirst({ where: { id: schoolId, removedAt: null, profilePublishedAt: { not: null } }, select: { id: true } });
-  if (!school) return { open: null, cycles: [] as OpenCycle[], mine: [] as ApplicationRow[] };
+  const school = await db.school.findFirst({ where: { id: schoolId, removedAt: null, profilePublishedAt: { not: null } }, select: { id: true, kind: true } });
+  // A college's page carries no school admission form (TA-269): it admits from its own desk.
+  if (!school || isCollegeKind(school.kind)) return { open: null, cycles: [] as OpenCycle[], mine: [] as ApplicationRow[] };
   const [cycles, mine] = await Promise.all([
     forSchool(schoolId, () => openCyclesOf(schoolId)),
     ctx.role === "PARENT" ? familyApplications(ctx, schoolId) : Promise.resolve({ items: [] as ApplicationRow[] }),
@@ -462,8 +482,14 @@ export function parseTestScore(raw: string | null | undefined): { ok: true; scor
  */
 export async function apply(ctx: ActiveContext, input: ApplicationSave & { schoolId: string }): Promise<ApplicationView> {
   const caller = family(ctx);
-  const school = await db.school.findFirst({ where: { id: input.schoolId, removedAt: null, profilePublishedAt: { not: null } }, select: { id: true, name: true } });
+  // A PER-PERSON BUDGET (TA-181): each new application takes a serial, a row in the school's pipeline and a notice to
+  // the office, and a new child's name is a new application. Counted per account, before anything is read.
+  const gate = await consume(`admissions-apply:${caller.user.id}`, APPLICATION_TRIES.limit, APPLICATION_TRIES.windowMs);
+  if (!gate.allowed) throw new AccessError("admissions.refuseTooManyTries");
+  const school = await db.school.findFirst({ where: { id: input.schoolId, removedAt: null, profilePublishedAt: { not: null } }, select: { id: true, name: true, kind: true } });
   if (!school) throw new AccessError("admissions.notFound", "NOT_FOUND");
+  // Not at a college (TA-269), read off the row the family can see.
+  if (isCollegeKind(school.kind)) throw new NotForThisKindError(school.kind, "schoolCampus.refuseNotThisKind");
   const { id, created } = await forSchool(school.id, async () => {
     const cycle = await openCycleForApplying(school.id, input.cycleId);
     // Any cycle open by its status and dates takes applications, not only the newest (QA-17).
@@ -471,11 +497,17 @@ export async function apply(ctx: ActiveContext, input: ApplicationSave & { schoo
     if (openNow === 0) throw new AccessError("admissions.refuseClosed");
     if (!parseGrades(cycle.gradesJson).some((g) => g.grade === input.gradeApplied)) throw new AccessError("admissions.refuseGrade");
     checkBirthdate(input.childBirthdate ? parseDateOnly(input.childBirthdate) : null, input.gradeApplied, cycle.academicYear.startDate);
-    const twin = await db.application.findFirst({ where: { cycleId: cycle.id, applicantUserId: caller.user.id, childName: { equals: input.childName, mode: "insensitive" }, status: { not: "WITHDRAWN" } }, select: { id: true } });
-    if (twin) return { id: twin.id, created: false };
-    const created = await db.$tenantTransaction(async (raw) => {
+    const made = await db.$tenantTransaction(async (raw) => {
       const tx = raw as typeof db;
       const { number, serial } = await nextSerial(tx, cycle.id, cycle.academicYear.name);
+      // ⚠ THE TWIN UNDER THE CYCLE'S LOCK (TA-182): looked for before the transaction, two presses of a slow apply both
+      // found none and made two applications with two serials. nextSerial has locked the cycle, so the second waits here
+      // and finds the first.
+      const twin = await tx.application.findFirst({ where: { cycleId: cycle.id, applicantUserId: caller.user.id, childName: { equals: input.childName, mode: "insensitive" }, status: { not: "WITHDRAWN" } }, select: { id: true } });
+      if (twin) return { twinId: twin.id };
+      // A ceiling on one account's live applications in a cycle (TA-181): a family applies for its children, not for a list of names.
+      const live = await tx.application.count({ where: { cycleId: cycle.id, applicantUserId: caller.user.id, status: { in: LIVE } } });
+      if (live >= LIVE_APPLICATIONS_PER_CYCLE) throw new AccessError("admissions.refuseTooManyLive", "FORBIDDEN", { max: LIVE_APPLICATIONS_PER_CYCLE });
       return tx.application.create({
         data: {
           schoolId: school.id, cycleId: cycle.id, number, serial,
@@ -488,8 +520,9 @@ export async function apply(ctx: ActiveContext, input: ApplicationSave & { schoo
         select: { id: true, serial: true },
       });
     });
-    await audit({ schoolId: school.id, actorUserId: caller.user.id, action: "admissions.apply", targetType: "Application", targetId: created.id, meta: { cycleId: cycle.id, grade: input.gradeApplied, byOffice: false } });
-    return { id: created.id, created: true };
+    if ("twinId" in made) return { id: made.twinId, created: false };
+    await audit({ schoolId: school.id, actorUserId: caller.user.id, action: "admissions.apply", targetType: "Application", targetId: made.id, meta: { cycleId: cycle.id, grade: input.gradeApplied, byOffice: false } });
+    return { id: made.id, created: true };
   });
   if (created) {
     const recipients = await officeUserIds(school.id);
@@ -501,16 +534,19 @@ export async function apply(ctx: ActiveContext, input: ApplicationSave & { schoo
 /** The office enters a family that walked in. The applicant's name is required; there is no account behind it. */
 export async function officeApply(ctx: ActiveContext, input: ApplicationSave): Promise<ApplicationView> {
   const caller = office(ctx);
+  await refuseAtACollege(caller.schoolId);
   if (!input.applicantName?.trim()) throw new AccessError("admissions.refuseApplicantName");
   const cycle = await openCycleForApplying(caller.schoolId, input.cycleId);
   if (cycle.status === "CLOSED") throw new AccessError("admissions.refuseClosed");
   if (!parseGrades(cycle.gradesJson).some((g) => g.grade === input.gradeApplied)) throw new AccessError("admissions.refuseGrade");
   checkBirthdate(input.childBirthdate ? parseDateOnly(input.childBirthdate) : null, input.gradeApplied, cycle.academicYear.startDate);
-  const twin = await db.application.findFirst({ where: { cycleId: cycle.id, applicantUserId: null, applicantName: { equals: input.applicantName.trim(), mode: "insensitive" }, childName: { equals: input.childName, mode: "insensitive" }, status: { not: "WITHDRAWN" } }, select: { id: true } });
-  if (twin) return applicationView(ctx, twin.id);
+  const applicantName = input.applicantName.trim();
   const created = await db.$tenantTransaction(async (raw) => {
     const tx = raw as typeof db;
     const { number, serial } = await nextSerial(tx, cycle.id, cycle.academicYear.name);
+    // The twin under the cycle's lock, as apply looks for it (TA-182): two presses of Save make one walk-in.
+    const twin = await tx.application.findFirst({ where: { cycleId: cycle.id, applicantUserId: null, applicantName: { equals: applicantName, mode: "insensitive" }, childName: { equals: input.childName, mode: "insensitive" }, status: { not: "WITHDRAWN" } }, select: { id: true } });
+    if (twin) return { twinId: twin.id };
     return tx.application.create({
       data: {
         schoolId: caller.schoolId, cycleId: cycle.id, number, serial,
@@ -523,6 +559,7 @@ export async function officeApply(ctx: ActiveContext, input: ApplicationSave): P
       select: { id: true },
     });
   });
+  if ("twinId" in created) return applicationView(ctx, created.twinId);
   await audit({ schoolId: caller.schoolId, actorUserId: caller.user.id, action: "admissions.apply", targetType: "Application", targetId: created.id, meta: { cycleId: cycle.id, grade: input.gradeApplied, byOffice: true } });
   return applicationView(ctx, created.id);
 }
@@ -605,7 +642,8 @@ export async function applicationView(ctx: ActiveContext, applicationId: string)
       can: {
         uploadDocuments: live && !a.documentsVerifiedAt,
         bookTest: needsSlot,
-        respond: offerOpen,
+        // The family answers its own offer; the office records only a walk-in's, which no account can (TA-179).
+        respond: offerOpen && (!office || !a.applicantUserId),
         withdraw: !office && status !== "ADMITTED" && status !== "WITHDRAWN",
         verifyDocuments: office && live && !a.documentsVerifiedAt && documents.length > 0,
         recordTest: office && live && a.cycle.testRequired,
@@ -716,13 +754,24 @@ export async function bookSlot(ctx: ActiveContext, applicationId: string, slotId
 /** Accept or decline an offer. Expired offers cannot be answered; the same answer twice is a no-op. */
 export async function respond(ctx: ActiveContext, applicationId: string, input: { answer: "ACCEPT" | "DECLINE"; note?: string }): Promise<ApplicationView> {
   const who = await bare(ctx, applicationId);
+  // A family with an account answers for itself (TA-179): the office records the answer of a walk-in only, whom no
+  // account stands behind and who said yes or no at the counter.
+  if (who.asOffice && who.applicantUserId) throw new AccessError("admissions.refuseFamilyAnswers");
   const next = input.answer === "ACCEPT" ? "ACCEPTED" : "DECLINED";
   await forSchool(who.schoolId, async () => {
     const a = await db.application.findUniqueOrThrow({ where: { id: applicationId }, select: { status: true, offerExpiresAt: true, respondedAt: true, childName: true, gradeApplied: true } });
     if (a.status === next && a.respondedAt) return;
     if (effectiveStatus(a) === "EXPIRED") throw new AccessError("admissions.refuseOfferExpired");
     if (a.status !== "OFFERED") throw new AccessError("admissions.refuseNoOffer");
-    await db.application.update({ where: { id: applicationId }, data: { status: next, respondedAt: new Date(), decisionNote: input.note?.trim() || null } });
+    // ⚠ ON THE STATE IT READ (TA-182): the office taking the offer back, or the hour's expiry, landing between the read
+    // and this write wins, and the answer is refused as the state that now stands says, not written over it.
+    const now = new Date();
+    const moved = await db.application.updateMany({ where: { id: applicationId, status: "OFFERED", OR: [{ offerExpiresAt: null }, { offerExpiresAt: { gte: now } }] }, data: { status: next, respondedAt: now, decisionNote: input.note?.trim() || null } });
+    if (moved.count === 0) {
+      const stands = await db.application.findUniqueOrThrow({ where: { id: applicationId }, select: { status: true, offerExpiresAt: true, respondedAt: true } });
+      if (stands.status === next && stands.respondedAt) return;
+      throw new AccessError(effectiveStatus(stands) === "EXPIRED" ? "admissions.refuseOfferExpired" : "admissions.refuseNoOffer");
+    }
     await audit({ schoolId: who.schoolId, actorUserId: ctx.user.id, action: "admissions.respond", targetType: "Application", targetId: applicationId, meta: { answer: input.answer, byOffice: who.asOffice } });
     const recipients = await officeUserIds(who.schoolId);
     await Promise.all(recipients.map((userId) => notify({ userId, schoolId: who.schoolId, kind: "ADMISSION", titleKey: input.answer === "ACCEPT" ? "admissions.notifAccepted" : "admissions.notifDeclined", titleVars: { name: a.childName, grade: a.gradeApplied }, url: `/admin/admissions/applications/${applicationId}` })));
@@ -738,7 +787,16 @@ export async function withdraw(ctx: ActiveContext, applicationId: string): Promi
     const a = await db.application.findUniqueOrThrow({ where: { id: applicationId }, select: { status: true, childName: true, testSlotId: true } });
     if (a.status === "WITHDRAWN") return;
     if (a.status === "ADMITTED") throw new AccessError("admissions.refuseAdmitted");
-    await db.application.update({ where: { id: applicationId }, data: { status: "WITHDRAWN", testSlotId: null, decidedAt: new Date() } });
+    // ⚠ NOT OVER AN ADMISSION (TA-182). Admit holds the row's lock while it seats the child; a Withdraw that read
+    // ACCEPTED before Admit committed waited on that lock and then wrote WITHDRAWN over ADMITTED, leaving a child on
+    // the roll whose application says withdrawn and whose seat the grade gives again. The write is conditional, so
+    // it is re-checked once the lock is released.
+    const moved = await db.application.updateMany({ where: { id: applicationId, status: { notIn: ["WITHDRAWN", "ADMITTED"] } }, data: { status: "WITHDRAWN", testSlotId: null, decidedAt: new Date() } });
+    if (moved.count === 0) {
+      const stands = await db.application.findUniqueOrThrow({ where: { id: applicationId }, select: { status: true } });
+      if (stands.status === "WITHDRAWN") return;
+      throw new AccessError("admissions.refuseAdmitted");
+    }
     await audit({ schoolId: who.schoolId, actorUserId: ctx.user.id, action: "admissions.withdraw", targetType: "Application", targetId: applicationId });
     const recipients = await officeUserIds(who.schoolId);
     await Promise.all(recipients.map((userId) => notify({ userId, schoolId: who.schoolId, kind: "ADMISSION", titleKey: "admissions.notifWithdrawn", titleVars: { name: a.childName }, url: `/admin/admissions/applications/${applicationId}` })));
@@ -811,7 +869,13 @@ export async function offer(ctx: ActiveContext, applicationId: string, input: { 
   const { timezone } = await db.school.findUniqueOrThrow({ where: { id: caller.schoolId }, select: { timezone: true } });
   if (input.expiresOn && (!isDateKey(input.expiresOn) || input.expiresOn < todayKey(timezone))) throw new AccessError("admissions.refuseOfferPast");
   const expires = input.expiresOn ? new Date(zonedStartOfDay(addDaysToKey(input.expiresOn, 1), timezone).getTime() - 1) : null;
-  await db.application.update({ where: { id: applicationId }, data: { status: "OFFERED", offeredAt: new Date(), offerExpiresAt: expires, offerNote: input.note?.trim() || null, respondedAt: null, decidedAt: null, decisionNote: null, feeStructureId } });
+  // On the state it read (TA-182): a family's Withdraw or another desk's step landing first stands.
+  const moved = await db.application.updateMany({ where: { id: applicationId, status: a.status }, data: { status: "OFFERED", offeredAt: new Date(), offerExpiresAt: expires, offerNote: input.note?.trim() || null, respondedAt: null, decidedAt: null, decisionNote: null, feeStructureId } });
+  if (moved.count === 0) {
+    const stands = await db.application.findUniqueOrThrow({ where: { id: applicationId }, select: { status: true, offerExpiresAt: true } });
+    if (stands.status === "OFFERED" && effectiveStatus(stands) === "OFFERED") return applicationView(ctx, applicationId);
+    throw new AccessError("admissions.refuseSettled");
+  }
   await audit({ schoolId: caller.schoolId, actorUserId: caller.user.id, action: "admissions.offer", targetType: "Application", targetId: applicationId, meta: { expires: input.expiresOn, hasStructure: Boolean(feeStructureId), from: effectiveStatus(a) } });
   await tellApplicant(a, "admissions.notifOffer", { grade: a.gradeApplied });
   const school = await db.school.findUniqueOrThrow({ where: { id: caller.schoolId }, select: { name: true, locale: true } });
@@ -836,7 +900,13 @@ export async function decide(ctx: ActiveContext, applicationId: string, input: {
   if (a.status === input.status) return applicationView(ctx, applicationId);
   if (a.status !== "SUBMITTED" && a.status !== "WAITLISTED" && a.status !== "OFFERED" && a.status !== "EXPIRED") throw new AccessError("admissions.refuseSettled");
   const from = effectiveStatus(a);
-  await db.application.update({ where: { id: applicationId }, data: { status: input.status, decisionNote: input.note?.trim() || null, decidedAt: new Date(), ...(from === "OFFERED" || from === "EXPIRED" ? { offeredAt: null, offerExpiresAt: null, offerNote: null } : {}) } });
+  // On the state it read (TA-182): a family's Accept or Withdraw landing first stands, and is not written over.
+  const moved = await db.application.updateMany({ where: { id: applicationId, status: a.status }, data: { status: input.status, decisionNote: input.note?.trim() || null, decidedAt: new Date(), ...(from === "OFFERED" || from === "EXPIRED" ? { offeredAt: null, offerExpiresAt: null, offerNote: null } : {}) } });
+  if (moved.count === 0) {
+    const stands = await db.application.findUniqueOrThrow({ where: { id: applicationId }, select: { status: true } });
+    if (stands.status === input.status) return applicationView(ctx, applicationId);
+    throw new AccessError("admissions.refuseSettled");
+  }
   await audit({ schoolId: caller.schoolId, actorUserId: caller.user.id, action: "admissions.decide", targetType: "Application", targetId: applicationId, meta: { from, to: input.status } });
   if (input.status !== "SUBMITTED") await tellApplicant(a, "admissions.notifDecided");
   return applicationView(ctx, applicationId);
@@ -906,6 +976,7 @@ async function asAdmitted(membershipId: string): Promise<Admitted> {
 export async function admit(ctx: ActiveContext, applicationId: string, input: { classId?: string | null; feeStructureId?: string | null; admissionNumber?: string; admittedOn?: string }): Promise<Admitted> {
   const { caller, a } = await officeApplication(ctx, applicationId);
   if (a.status === "ADMITTED" && a.admittedMembershipId) return asAdmitted(a.admittedMembershipId);
+  await refuseAtACollege(caller.schoolId);
   if (a.status !== "ACCEPTED") throw new AccessError("admissions.refuseNotAccepted");
   const seats = parseGrades(a.cycle.gradesJson).find((g) => g.grade === a.gradeApplied)?.seats ?? 0;
   const taken = await db.application.count({ where: { cycleId: a.cycle.id, gradeApplied: a.gradeApplied, status: "ADMITTED" } });

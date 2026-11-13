@@ -3,6 +3,7 @@
 import { revalidatePath } from "next/cache";
 import {
   admitSchema,
+  applicationRespondSchema,
   applicationSaveSchema,
   cycleSaveSchema,
   cycleStatusSaveSchema,
@@ -23,6 +24,7 @@ import {
   publishSlots,
   purgeCycle,
   recordTest,
+  respond,
   setCycleStatus,
   updateCycle,
   verifyDocuments,
@@ -246,6 +248,28 @@ export async function decideAction(
     )
       return { ok: false, errorKey: "common.checkTheForm" };
     await decide(ctx, applicationId, parsed.data);
+    revalidateApplication(applicationId);
+    return { ok: true, id: applicationId };
+  } catch (error) {
+    return failure(error);
+  }
+}
+
+/** A walk-in family's answer to the offer, given at the counter (TA-179); the library refuses one with an account. */
+export async function respondForWalkInAction(
+  applicationId: string,
+  input: unknown,
+): Promise<AdmissionsActionResult> {
+  try {
+    const ctx = await requireApiUser();
+    const parsed = applicationRespondSchema.safeParse(input);
+    if (
+      !parsed.success ||
+      typeof applicationId !== "string" ||
+      !CUID.test(applicationId)
+    )
+      return { ok: false, errorKey: "common.checkTheForm" };
+    await respond(ctx, applicationId, parsed.data);
     revalidateApplication(applicationId);
     return { ok: true, id: applicationId };
   } catch (error) {

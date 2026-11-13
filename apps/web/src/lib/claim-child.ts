@@ -5,7 +5,7 @@ import type { ActiveContext } from "./session";
 import { normalizeCode } from "./codes";
 import { parseDateOnly, sameCalendarDay } from "./dates";
 import { audit } from "./audit";
-import { forJoinCode } from "./tenant-context";
+import { forJoinCode, forUser } from "./tenant-context";
 import { fileClaim } from "./guardian-claims";
 import { AccessError } from "./tenancy";
 import { consume, retryHintKey, CLAIM_ATTEMPTS, CLAIM_PER_CODE } from "./rate-limit";
@@ -122,6 +122,21 @@ export async function claimChildFor(session: ActiveContext, input: unknown, t: T
       },
     }),
   );
+
+  // ⚠ A PUPIL'S ACCOUNT IS NOT A GUARDIAN'S (TA-558). A classmate knows a
+  // classmate's code and birthday, and a pupil knows their own; either claim
+  // reached the office's queue as an ordinary one. The mirror of join.ts
+  // refusing a guardian's account as a pupil, answered like a wrong pair so
+  // it says nothing about the code. The claimant's own rows, read as them.
+  const onARoll =
+    membership?.userId === session.user.id ||
+    (await forUser(session.user.id, () =>
+      db.membership.count({ where: { userId: session.user.id, role: "STUDENT", status: "ACTIVE", leftAt: null } }),
+    )) > 0;
+  if (onARoll) {
+    await fakePasswordWork();
+    return generic;
+  }
 
   // ⚠ A PUPIL WHO HAS LEFT CANNOT BE CLAIMED. The code on a leaving
   // certificate names a membership that is over; a guardianship on it would

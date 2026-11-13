@@ -22,7 +22,7 @@ import { translator } from "./i18n/dictionary";
  */
 export const SIGNUP_NOTICES = { limit: 3, windowMs: 24 * 60 * 60_000 };
 
-export async function tellHolderOfSignup(email: string, kind: "RECRUITER" | "SCHOOL"): Promise<boolean> {
+export async function tellHolderOfSignup(email: string, kind: "RECRUITER" | "SCHOOL" | "PARENT"): Promise<boolean> {
   const address = email.trim().toLowerCase();
   if (!isDeliverableEmail(address)) return false;
   const gate = await consume(`signup-notice:${address}`, SIGNUP_NOTICES.limit, SIGNUP_NOTICES.windowMs);
@@ -34,7 +34,7 @@ export async function tellHolderOfSignup(email: string, kind: "RECRUITER" | "SCH
     purpose: "SIGNUP_EXISTING",
     subject: t("accountGuard.signupTakenSubject"),
     lines: [
-      t(kind === "RECRUITER" ? "accountGuard.signupTakenRecruiter" : "accountGuard.signupTakenSchool"),
+      t(kind === "RECRUITER" ? "accountGuard.signupTakenRecruiter" : kind === "PARENT" ? "accountGuard.signupTakenParent" : "accountGuard.signupTakenSchool"),
       t("accountGuard.signupTakenIfYou"),
       t("accountGuard.signupTakenIfNotYou"),
     ],

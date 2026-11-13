@@ -28,6 +28,8 @@ import { CONSENT_AGE } from "@/lib/constants";
 import { getT, getLocale } from "@/lib/i18n/server";
 import type { Translate } from "@/lib/i18n/dictionary";
 import { claimChildFor, type ClaimState } from "@/lib/claim-child";
+import { afterResponse } from "@/lib/after-response";
+import { completeParentSignup } from "@/lib/parent-signup";
 
 /**
  * Opens an invitation ADDRESSED TO the signed-in person, from /join.
@@ -105,7 +107,13 @@ export async function lookupCode(raw: string): Promise<CodeLookup> {
 /* Student join                                                                */
 /* -------------------------------------------------------------------------- */
 
-export type JoinState = { ok: boolean; errors: FieldErrors; redirectTo?: string };
+export type JoinState = {
+  ok: boolean;
+  errors: FieldErrors;
+  redirectTo?: string;
+  /** The parent's sign-up in order (TA-287): the one sentence it is answered with, whether or not the address had an account. */
+  sent?: string;
+};
 
 /**
  * Creates a student account from a class or school code.
@@ -240,33 +248,19 @@ export async function signUpParent(input: unknown): Promise<JoinState> {
   const problems = passwordProblems(password, [name, email]);
   if (problems.length > 0) return { ok: false, errors: { password: (await getT())(problems[0]!) } };
 
-  const existing = await db.user.findUnique({ where: { email }, select: { id: true } });
-  if (existing) {
-    return {
-      ok: false,
-      errors: { email: t("join.emailInUseParent") },
-    };
-  }
-
-  const passwordHash = await hashPassword(password);
-
-  const user = await db.user.create({
-    data: {
-      email,
-      name,
-      passwordHash,
-      prefs: writeJson({
-        theme: "system",
-        locale,
-        channels: { push: consentNotifications, email: consentNotifications },
-      }),
-    },
+  /**
+   * ⚠ THE SAME ANSWER WHETHER OR NOT THE ADDRESS IS TAKEN (TA-287), as the school's and the recruiter's sign-ups
+   * answer since QA-25. "An account already uses this email" let a signed-out caller test any address, and a free
+   * one was taken by the probe with a session at once. Now a form in order is answered "a message is on its way" and
+   * no session, and the rest runs after the response (lib/parent-signup.ts): a free address gets its account and the
+   * confirmation link, and the parent signs in with the password they chose; the holder of a taken one is told by
+   * email that somebody tried, and nothing is made.
+   */
+  afterResponse("parent-signup")(async () => {
+    await completeParentSignup({ name, email, password, consentNotifications }, locale);
   });
 
-  await audit({ actorUserId: user.id, action: "parent.signup" });
-  await createSession(user.id, { schoolId: null, role: null });
-
-  return { ok: true, errors: {}, redirectTo: "/parent/link" };
+  return { ok: true, errors: {}, sent: t("accountGuard.signupSent", { email }) };
 }
 
 

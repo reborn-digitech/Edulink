@@ -23,6 +23,7 @@ export function ParentSignupForm({ className }: { className?: string }) {
   const [consentSharing, setConsentSharing] = useState(false);
   const [consentNotifications, setConsentNotifications] = useState(true);
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const [sent, setSent] = useState<string | null>(null);
 
   const strength = useMemo(() => passwordStrength(password, [name, email]), [password, name, email]);
 
@@ -54,10 +55,28 @@ export function ParentSignupForm({ className }: { className?: string }) {
         return;
       }
 
+      // One sentence whether or not the address already had an account, and no session (TA-287): the account is
+      // confirmed from the link in the message, and then the parent signs in with the password they chose.
+      if (result.sent) {
+        setSent(result.sent);
+        return;
+      }
       toast({ tone: "ok", title: t("join.accountCreated") });
       router.push(result.redirectTo ?? "/parent/link");
       router.refresh();
     });
+  }
+
+  if (sent) {
+    return (
+      <div className={cn("space-y-5 text-center", className)} role="status" data-testid="parent-signup-sent">
+        <h2 className="text-xl font-bold tracking-tight text-fg">{t("accountGuard.signupSentTitle")}</h2>
+        <p className="text-fg-muted">{sent}</p>
+        <Button block size="lg" onClick={() => router.push("/login")} iconRight={<ArrowRightIcon weight="bold" />}>
+          {t("accountGuard.goToSignIn")}
+        </Button>
+      </div>
+    );
   }
 
   return (

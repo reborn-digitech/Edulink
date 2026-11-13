@@ -143,7 +143,7 @@ export async function myClaims(userId: string): Promise<MyClaim[]> {
 export type WaitingClaim = {
   id: string;
   claimantName: string;
-  /** The address the claimant signs in with: what the office rings the family to check. */
+  /** The address the claimant signs in with: what the office rings the family to check. Null in a guardian's queue (TA-365). */
   claimantEmail: string | null;
   relation: Relation;
   childName: string;
@@ -226,7 +226,9 @@ export async function waitingClaimsForGuardian(userId: string): Promise<WaitingC
       ),
     ),
   );
-  return lists.flat().map(shaped);
+  // The claimant's sign-in address is the office's, to ring the family on (TA-365): a guardian deciding reads the
+  // name and the relation, and one adult's address is not handed to another private person.
+  return lists.flat().map((row) => ({ ...shaped(row), claimantEmail: null }));
 }
 
 export async function waitingClaimCount(session: ActiveContext): Promise<number> {

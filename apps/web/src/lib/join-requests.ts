@@ -55,6 +55,10 @@ export type JoinRequestResult = { requestId: string; schoolId: string; alreadyWa
 export async function requestToJoin(userId: string, target: JoinTarget): Promise<JoinRequestResult> {
   const classId = target.kind === "class" ? target.classId : null;
   return forSchool(target.schoolId, async () => {
+    // A PUPIL PAUSED HERE ASKS THE OFFICE (TA-178): lifting a pause is the admin's (reinstateMembership), and a
+    // request a class's teacher approves would lift it. Said in a sentence that sends them there.
+    if (await pausedHere(userId, target.schoolId)) throw new AccessError("join.pausedHere");
+
     const waiting = await db.joinRequest.findFirst({
       where: { userId, schoolId: target.schoolId, classId, ...stillWaiting() },
       select: { id: true },
@@ -111,6 +115,12 @@ export async function requestToJoin(userId: string, target: JoinTarget): Promise
 
     return { requestId: made.id, schoolId: target.schoolId, alreadyWaiting: false };
   });
+}
+
+/** Whether this person's pupil place at this school is paused (by the office or the operator). Read under the school's binding. */
+async function pausedHere(userId: string, schoolId: string): Promise<boolean> {
+  const paused = await db.membership.findFirst({ where: { userId, schoolId, role: "STUDENT", status: "SUSPENDED" }, select: { id: true } });
+  return paused !== null;
 }
 
 /** The user ids of whoever may decide: the class's teachers where it has any, otherwise the office. */
@@ -285,14 +295,21 @@ export async function decideJoin(session: ActiveContext, requestId: string, deci
   // Said to the asker, and kept out of the log: a sentence, not a record.
   const said = decision === "DECLINE" ? reason?.trim().slice(0, 300) || null : null;
 
+  let reinstates = false;
   if (decision === "APPROVE") {
-    const [guards, post] = await Promise.all([
+    const [guards, post, paused] = await Promise.all([
       db.guardianship.count({ where: { parentUserId: request.userId, status: "ACTIVE" } }),
       // A post here, not a former pupil's alumni row (alumni-membership.ts).
       db.membership.findFirst({ where: { userId: request.userId, schoolId: scope.schoolId, role: { notIn: ["STUDENT", "ALUMNUS"] }, status: { not: "REMOVED" } }, select: { id: true } }),
+      pausedHere(request.userId, scope.schoolId),
     ]);
     if (guards > 0) throw new AccessError("join.thisIsAParentsAccount");
     if (post) throw new AccessError("join.youWorkHere");
+    // ⚠ ADMITTING A PAUSED PUPIL LIFTS THE PAUSE (TA-178), which is the admin's alone, as reinstateMembership says: a
+    // teacher's yes to a request filed before the pause is refused and leaves it standing; the office's is written
+    // down as the reinstatement it is, below.
+    if (paused && session.role !== "ADMIN") throw new AccessError("access.onlyAnAdminCanRestoreAccess");
+    reinstates = paused;
     // The class the code named was archived while they waited: the school's roll, and no class.
     if (request.classId && request.class?.archivedAt) throw new AccessError("access.thatClassHasBeenArchived");
   }
@@ -334,6 +351,9 @@ export async function decideJoin(session: ActiveContext, requestId: string, deci
     targetId: membershipId,
     meta: { via: request.via === "CLASS" ? "class" : "school", approvedBy: session.user.id },
   });
+  if (reinstates) {
+    await audit({ schoolId: scope.schoolId, actorUserId: session.user.id, action: "membership.reinstate", targetType: "Membership", targetId: membershipId, meta: { role: "STUDENT", byJoin: true } });
+  }
   await syncStandinGuardian({ schoolId: scope.schoolId, studentMembershipId: membershipId, actorUserId: session.user.id }).catch((error) =>
     console.error("[decideJoin] standin sync failed", error),
   );

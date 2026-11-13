@@ -382,6 +382,12 @@ export async function consumeByCaller(
  * `INTAKE_MAX_ROWS` as before and does not count here.
  */
 export const INTAKE_RUNS = { limit: 10, windowMs: 60 * 60_000 };
+/**
+ * Every intake list, linking or not, per SCHOOL (TA-180): each row mints a pupil's account and may mail a guardian,
+ * and a list that links nobody was never counted. Thirty lists an hour is more than an office bringing a cohort over
+ * sends; the guardians' mails are capped by INVITE_EMAILS_DAILY besides.
+ */
+export const INTAKE_LISTS = { limit: 30, windowMs: 60 * 60_000 };
 export const INTAKE_MAX_LINKS = 50;
 
 /**
@@ -473,6 +479,17 @@ export const SCHOOL_CODE_JOINS = { limit: 5, windowMs: 24 * 60 * 60_000 };
  * from one school is a compromised admin account sending mail in our name.
  */
 export const INVITE_EMAILS_DAILY = { limit: 300, windowMs: 24 * 60 * 60_000 };
+/** Mails of one pending invitation sent again, per invitation a day (TA-286): the office's slip resent, not a loop. */
+export const INVITE_RESENDS = { limit: 3, windowMs: 24 * 60 * 60_000 };
+
+/**
+ * What an outsider may send a school, per PERSON (TA-181). Every enquiry message the opener writes (a new thread or a
+ * reply in one) is stored in the school's tenant and announced to its contact or every admin; every application takes
+ * a serial and a row in the pipeline and tells the office. A family asks a handful of schools a handful of things.
+ */
+export const ENQUIRY_MESSAGES = { limit: 20, windowMs: 60 * 60_000 };
+export const ENQUIRY_OPENS = { limit: 10, windowMs: 24 * 60 * 60_000 };
+export const APPLICATION_TRIES = { limit: 20, windowMs: 60 * 60_000 };
 
 /**
  * Bytes one person may upload in a day, counted from the UploadTicket rows

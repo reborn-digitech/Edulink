@@ -166,7 +166,8 @@ export const ALL_TAB_SCREENS = ["index", "attendance", "classes", "messages", "a
  */
 export type MenuGroup = "daily" | "school" | "running" | "teaching" | "people" | "attendance" | "money" | "communication" | "modules" | "setup" | "me";
 /** `streams` (5 Oct 2026): hidden at a college whose recorded streams include none of them (the practical record at a law college); none recorded keeps it. */
-export type MenuItem = { labelKey: TranslationKey; icon: string; group: MenuGroup; module?: SchoolModuleCode; duty?: AnyDutyCode; streams?: readonly StreamCode[]; feature?: FeatureField } & ({ screen: string; web?: undefined } | { web: string; screen?: undefined });
+/** `schoolOnly` (TA-269, 14 Nov 2026): the school version's page, hidden while the active place is a college (the web's `kinds: SCHOOL_KINDS`). */
+export type MenuItem = { labelKey: TranslationKey; icon: string; group: MenuGroup; module?: SchoolModuleCode; duty?: AnyDutyCode; streams?: readonly StreamCode[]; feature?: FeatureField; schoolOnly?: true } & ({ screen: string; web?: undefined } | { web: string; screen?: undefined });
 
 /**
  * What every college staff role's More carries (4 Oct 2026): the account, and my own leave (GET/POST
@@ -357,7 +358,7 @@ export const MENU: Record<RoleCode, MenuItem[]> = {
     { labelKey: "nav.invites", icon: "plus", group: "people", screen: "/(app)/invites" },
     { labelKey: "nav.pupilRecords", icon: "clipboard", group: "people", screen: "/(app)/pupil-records" },
     { labelKey: "nav.certificates", icon: "fileText", group: "people", screen: "/(app)/staff-certificates" },
-    { labelKey: "nav.admissions", icon: "users", group: "people", screen: "/(app)/admissions" },
+    { labelKey: "nav.admissions", icon: "users", group: "people", screen: "/(app)/admissions", schoolOnly: true },
     { labelKey: "nav.enquiries", icon: "envelope", group: "people", screen: "/(app)/enquiries" },
     { labelKey: "joinRequests.navLabel", icon: "userPlus", group: "people", screen: "/(app)/joins" },
     { labelKey: "nav.pastYears", icon: "archive", group: "people", screen: "/(app)/archive" },
@@ -426,7 +427,7 @@ export const MENU: Record<RoleCode, MenuItem[]> = {
     { labelKey: "nav.staff", icon: "users", group: "people", screen: "/(app)/staff" },
     { labelKey: "nav.pupilRecords", icon: "clipboard", group: "people", screen: "/(app)/pupil-records" },
     { labelKey: "nav.certificates", icon: "fileText", group: "people", screen: "/(app)/staff-certificates" },
-    { labelKey: "nav.admissions", icon: "users", group: "people", screen: "/(app)/admissions" },
+    { labelKey: "nav.admissions", icon: "users", group: "people", screen: "/(app)/admissions", schoolOnly: true },
     { labelKey: "nav.enquiries", icon: "envelope", group: "people", screen: "/(app)/enquiries" },
     { labelKey: "joinRequests.navLabel", icon: "userPlus", group: "people", screen: "/(app)/joins" },
     { labelKey: "nav.pastYears", icon: "archive", group: "people", screen: "/(app)/archive" },
@@ -884,10 +885,11 @@ export const HIDDEN_SCREENS = [
 
 /**
  * The More sheet's entries for a role, grouped in the web's order with the person's own pages (`me`) first; an entry
- * whose module the school has off, or whose duty the person does not hold (5 Oct 2026), is left out.
+ * whose module the school has off, or whose duty the person does not hold (5 Oct 2026), is left out; so is a school-only
+ * entry while the active place is a college (TA-269).
  */
-export function menuFor(role: RoleCode, modules?: readonly string[], duties: readonly string[] = [], streams: readonly string[] = [], features: readonly string[] = FEATURES_BEFORE_SWITCHES): { group: MenuGroup; items: MenuItem[] }[] {
-  const shown = MENU[role].filter((item) => (!item.module || !modules || modules.includes(item.module)) && (!item.duty || duties.includes(item.duty)) && (!item.streams || streams.length === 0 || item.streams.some((s) => streams.includes(s))) && featureShown(item, features));
+export function menuFor(role: RoleCode, modules?: readonly string[], duties: readonly string[] = [], streams: readonly string[] = [], features: readonly string[] = FEATURES_BEFORE_SWITCHES, college = false): { group: MenuGroup; items: MenuItem[] }[] {
+  const shown = MENU[role].filter((item) => (!item.module || !modules || modules.includes(item.module)) && (!item.duty || duties.includes(item.duty)) && (!item.streams || streams.length === 0 || item.streams.some((s) => streams.includes(s))) && featureShown(item, features) && !(college && item.schoolOnly));
   return [ME_MENU_GROUP, ...menuGroupsFor(role)].map((group) => ({ group, items: shown.filter((item) => item.group === group) })).filter((g) => g.items.length > 0);
 }
 

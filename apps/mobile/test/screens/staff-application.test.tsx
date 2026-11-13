@@ -135,6 +135,26 @@ describe("an application as the office sees it", () => {
     expect(screen.queryByRole("button", { name: "Waitlist" })).toBeNull();
   });
 
+  it("TA-179: records a walk-in's answer given at the office while the server allows it, and the buttons go once it is recorded", async () => {
+    const offered = { status: "OFFERED" as const, applicantUserId: null, offeredAt: "2026-09-21T05:00:00.000Z" };
+    const answers: Answers = {
+      [GET]: () => json(application(offered, { respond: true, decide: true })),
+      [`POST ${BASE}/respond`]: () => json(application({ ...offered, status: "ACCEPTED", respondedAt: "2026-09-22T05:00:00.000Z" }, { admit: true })),
+    };
+    const { calls } = await mountStaff(compose(), "ADMIN", answers);
+    await fireEvent.press(await screen.findByRole("button", { name: "Accepted at the office" }));
+    await waitFor(() => expect(calls().find((c) => c.line === `POST ${BASE}/respond`)?.body).toEqual({ answer: "ACCEPT" }));
+    expect(await screen.findByRole("button", { name: "Admit to the roll" })).toBeTruthy();
+    expect(screen.queryByRole("button", { name: "Accepted at the office" })).toBeNull();
+  });
+
+  it("TA-179: a family's own offer (no can.respond) draws no answer buttons for the office", async () => {
+    await mountStaff(compose(), "ADMIN", { [GET]: () => json(application({ status: "OFFERED", offeredAt: "2026-09-21T05:00:00.000Z" }, { decide: true })) });
+    await screen.findByRole("header", { name: "Application ADM/2026-27/0001" });
+    expect(screen.queryByRole("button", { name: "Accepted at the office" })).toBeNull();
+    expect(screen.queryByRole("button", { name: "Declined at the office" })).toBeNull();
+  });
+
   it("an offer needs a real day; a refusal is said above the buttons", async () => {
     const { calls } = await mountStaff(compose(), "ADMIN", { [GET]: () => json(application({}, ALL_CAN)), [`POST ${BASE}/verify`]: refused("ZZ nothing attached", 409) });
     await fireEvent.changeText(await screen.findByLabelText("Answer by"), "soon");

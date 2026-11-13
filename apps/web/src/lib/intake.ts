@@ -14,7 +14,7 @@ import { inviteParent } from "./parent-link";
 import { issueFirstSignIn } from "./first-signin";
 import { CONSENT_AGE } from "./constants";
 import { assignPen, matchPen, mayBringOver, normalisePen } from "./pen";
-import { consume, INTAKE_RUNS, INTAKE_MAX_LINKS } from "./rate-limit";
+import { consume, INTAKE_LISTS, INTAKE_RUNS, INTAKE_MAX_LINKS } from "./rate-limit";
 import type { IntakeRow } from "./csv";
 import type { ActiveContext } from "./session";
 import type { TranslationKey } from "./i18n/dictionary";
@@ -101,8 +101,12 @@ export const INTAKE_MAX_ROWS = 500;
  * go. An AccessError, so every caller that already catches one still does.
  */
 export class IntakeLimited extends AccessError {
-  constructor(readonly retryAfterSeconds: number) {
-    super("intake.tooManyRuns", "FORBIDDEN");
+  constructor(
+    readonly retryAfterSeconds: number,
+    /** Which limit: the linking lists' (INTAKE_RUNS), or every list's (INTAKE_LISTS, TA-180). */
+    readonly limitKey: "intake.tooManyRuns" | "intake.tooManyLists" = "intake.tooManyRuns",
+  ) {
+    super(limitKey, "FORBIDDEN");
     this.name = "IntakeLimited";
   }
 }
@@ -151,6 +155,9 @@ export async function admitPupils(
     const gate = await consume(`intake:links:${schoolId}`, INTAKE_RUNS.limit, INTAKE_RUNS.windowMs);
     if (!gate.allowed) throw new IntakeLimited(gate.retryAfterSeconds);
   }
+  // Every list, linking or not (TA-180): a list of plain newcomers mints an account a row and may mail a guardian a row.
+  const lists = await consume(`intake:lists:${schoolId}`, INTAKE_LISTS.limit, INTAKE_LISTS.windowMs);
+  if (!lists.allowed) throw new IntakeLimited(lists.retryAfterSeconds, "intake.tooManyLists");
 
   // Classes by name, case-blind, live ones only — a list that names an
   // archived class is naming a class the school no longer runs.

@@ -34,6 +34,7 @@ import {
   OfferForm,
   TestForm,
   VerifyButton,
+  WalkInAnswerButtons,
 } from "./office-steps";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -286,6 +287,9 @@ export default async function OfficeApplicationPage({
             )}
             {view.can.offer && (
               <OfferForm applicationId={view.id} structures={structures} />
+            )}
+            {view.can.respond && (
+              <WalkInAnswerButtons applicationId={view.id} />
             )}
           </CardBody>
         </Card>

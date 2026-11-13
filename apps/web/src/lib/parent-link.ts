@@ -5,6 +5,8 @@ import { audit } from "./audit";
 import { generateToken, hashToken } from "./crypto";
 import { localeForAddress, sendParentLinkInvite } from "./email";
 import { GUARDIAN_RELATIONS, INVITE_TTL_DAYS, type GuardianRelation } from "./constants";
+import { invitesSentToday } from "./invites";
+import { INVITE_EMAILS_DAILY } from "./rate-limit";
 import type { ActiveContext } from "./session";
 import type { TranslationKey } from "./i18n/dictionary";
 
@@ -74,6 +76,11 @@ export async function inviteParent(
     select: { id: true },
   });
   if (pending) return { ok: false, errorKey: "invites.alreadyInvited" };
+
+  // THE SCHOOL'S DAY OF INVITATIONS (TA-180, TA-286): a parent's invitation is a mail in the platform's name to an
+  // address the office typed, as a staff one is, and every caller (the people page, its door, the intake list's
+  // rows) comes through here, so the day's ceiling the list import keeps is kept here too.
+  if ((await invitesSentToday(schoolId)) >= INVITE_EMAILS_DAILY.limit) return { ok: false, errorKey: "invites.dailyCapToday" };
 
   const [school, inviter] = await Promise.all([
     db.school.findUniqueOrThrow({ where: { id: schoolId }, select: { name: true, locale: true } }),

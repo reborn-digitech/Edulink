@@ -76,6 +76,15 @@ export function StaffApplication() {
     onSuccess: landed,
     onError: refuse,
   });
+  // A walk-in family's answer, said at the counter (TA-179): the server draws `can.respond` for the office only when no account stands behind the application.
+  const answer = useMutation({
+    mutationFn: (choice: "ACCEPT" | "DECLINE") => post("/respond", { answer: choice }),
+    onSuccess: (next) => {
+      landed(next);
+      toast.show(t("admissions.answerRecorded"), "ok");
+    },
+    onError: refuse,
+  });
   const decide = useMutation({
     mutationFn: (status: "DECLINED" | "WAITLISTED" | "SUBMITTED") => post("/decide", { status, ...(decisionNote.trim() ? { note: decisionNote.trim() } : {}) }),
     onSuccess: (next) => {
@@ -188,6 +197,17 @@ export function StaffApplication() {
                       if (!expiresBad) offer.mutate();
                     }}
                   />
+                </>
+              ) : null}
+              {a.can.respond ? (
+                <>
+                  <Text variant="sm" bold>
+                    {t("admissions.answerAtOffice")}
+                  </Text>
+                  <View style={{ flexDirection: "row", flexWrap: "wrap", gap: th.space[2] }}>
+                    <Button label={t("admissions.acceptedAtOffice")} busy={answer.isPending && answer.variables === "ACCEPT"} onPress={() => answer.mutate("ACCEPT")} />
+                    <Button label={t("admissions.declinedAtOffice")} variant="secondary" busy={answer.isPending && answer.variables === "DECLINE"} onPress={() => answer.mutate("DECLINE")} />
+                  </View>
                 </>
               ) : null}
             </Card>

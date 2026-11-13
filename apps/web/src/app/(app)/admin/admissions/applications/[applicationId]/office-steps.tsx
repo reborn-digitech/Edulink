@@ -29,6 +29,7 @@ import {
   decideAction,
   offerAction,
   recordTestAction,
+  respondForWalkInAction,
   verifyDocumentsAction,
 } from "../../actions";
 
@@ -238,6 +239,66 @@ export function OfferForm({
         {t("admissions.makeOffer")}
       </Button>
     </form>
+  );
+}
+
+/**
+ * A walk-in family's answer to the offer, said at the counter (TA-179): no account stands behind the application, so
+ * nobody else can record it, and without it the seat could never be given. Drawn only while `can.respond` holds,
+ * which for the office means a walk-in with an offer still open.
+ */
+export function WalkInAnswerButtons({ applicationId }: { applicationId: string }) {
+  const t = useT();
+  const router = useRouter();
+  const { toast } = useToast();
+  const [pending, startTransition] = useTransition();
+  const [error, setError] = useState<string | null>(null);
+
+  function answer(next: "ACCEPT" | "DECLINE") {
+    setError(null);
+    startTransition(async () => {
+      const result = await respondForWalkInAction(applicationId, { answer: next });
+      if (!result.ok) {
+        setError(actionError(t, result, "common.tryAgain"));
+        return;
+      }
+      toast({ tone: "ok", title: t("admissions.answerRecorded") });
+      router.refresh();
+    });
+  }
+
+  return (
+    <div className="space-y-3" data-testid="walk-in-answer">
+      {error && (
+        <p role="alert" className={errorBox}>
+          {error}
+        </p>
+      )}
+      <p className="text-sm font-medium">{t("admissions.answerAtOffice")}</p>
+      <div className="flex flex-wrap items-center gap-2">
+        <Button
+          type="button"
+          size="sm"
+          loading={pending}
+          icon={<CheckCircleIcon weight="bold" />}
+          onClick={() => answer("ACCEPT")}
+          data-testid="walk-in-accept"
+        >
+          {t("admissions.acceptedAtOffice")}
+        </Button>
+        <Button
+          type="button"
+          size="sm"
+          variant="secondary"
+          loading={pending}
+          icon={<ProhibitIcon weight="bold" />}
+          onClick={() => answer("DECLINE")}
+          data-testid="walk-in-decline"
+        >
+          {t("admissions.declinedAtOffice")}
+        </Button>
+      </div>
+    </div>
   );
 }
 

@@ -59,7 +59,7 @@ export async function runIntake(input: { csv: string }): Promise<IntakeState> {
     if (error instanceof IntakeLimited) {
       const t = await getT();
       const hint = retryHintKey(error.retryAfterSeconds);
-      return { ok: false, error: t("intake.tooManyRuns", { when: t(hint.key, hint.vars) }), retryAfterSeconds: error.retryAfterSeconds, problems, result: null };
+      return { ok: false, error: t(error.limitKey, { when: t(hint.key, hint.vars) }), retryAfterSeconds: error.retryAfterSeconds, problems, result: null };
     }
     if (error instanceof AccessError) {
       return { ok: false, error: (await getT())(error.key, error.vars), problems, result: null };

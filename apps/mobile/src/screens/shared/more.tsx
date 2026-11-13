@@ -1,7 +1,7 @@
 import { useEffect, useState, type ReactNode } from "react";
 import { Pressable, View } from "react-native";
 import { usePathname, useRouter } from "expo-router";
-import { isLimitedRoleCode, type RoleCode } from "@edulink/contracts";
+import { isCollegeKind, isLimitedRoleCode, type RoleCode } from "@edulink/contracts";
 import type { TranslationKey } from "@edulink/i18n";
 import { Button, Card, Icon, Row, Screen, Text } from "@/components";
 import { Avatar } from "@/components/avatar";
@@ -70,7 +70,7 @@ export function More() {
         <Icon name="caretRight" size={18} color={th.fgSubtle} weight="bold" />
       </Pressable>
       {role
-        ? menuFor(role, me.modules ?? [], dutiesOfMe(me), me.streams ?? [], featuresOf(me)).map(({ group, items }) =>
+        ? menuFor(role, me.modules ?? [], dutiesOfMe(me), me.streams ?? [], featuresOf(me), isCollegeKind(me.institutionKind)).map(({ group, items }) =>
             group === ME_MENU_GROUP ? (
               <Card key={group} title={t(MENU_GROUP_KEY[group])}>
                 {items.map((item) => (

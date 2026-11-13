@@ -9,6 +9,7 @@ import { forSchool } from "./tenant-context";
 import type { ActiveContext } from "./session";
 import type { TranslationKey } from "./i18n/dictionary";
 import { assertFeatureOn } from "./platform-features";
+import { consume, ENQUIRY_MESSAGES, ENQUIRY_OPENS } from "./rate-limit";
 
 /**
  * Enquiries — the conversation an outsider opens with a school.
@@ -129,6 +130,12 @@ export async function openEnquiry(
     throw new AccessError("access.thatIsNotAKindOfEnquiry");
   }
 
+  // A PER-PERSON BUDGET (TA-181): every message is a row in the school's tenant and a notice to its contact or every
+  // admin, and nothing bounded how many an outsider could write. Counted here, so the web's action and the door share it.
+  if (!(await consume(`enquiry-msg:${ctx.user.id}`, ENQUIRY_MESSAGES.limit, ENQUIRY_MESSAGES.windowMs)).allowed) {
+    return { ok: false, errorKey: "enquiries.tooManyMessages" };
+  }
+
   // An existing open thread absorbs the message FIRST, before any door
   // check: the writer could say the same words through the thread's reply
   // box, which no closure of the profile or the vacancy revokes — only
@@ -185,6 +192,11 @@ export async function openEnquiry(
     schoolName = school.name;
     subject = posting.title;
     jobPostingId = input.jobPostingId ?? null;
+  }
+
+  // New threads a day, besides (TA-181): one person writing to every school with a published page.
+  if (!(await consume(`enquiry-open:${ctx.user.id}`, ENQUIRY_OPENS.limit, ENQUIRY_OPENS.windowMs)).allowed) {
+    return { ok: false, errorKey: "enquiries.tooManyMessages" };
   }
 
   // `$tenantTransaction`, not `db.$transaction`, for the reason remarks.ts
@@ -414,6 +426,10 @@ export async function replyToEnquiry(
   const side = await accessSide(ctx, enquiry);
   if (!side) throw new AccessError("access.thisEnquiryIsNotYours");
   if (enquiry.status !== "OPEN") return { ok: false, errorKey: "enquiries.thisThreadIsClosed" };
+  // The opener's replies share the budget their first message spent (TA-181); the school's side answers unbounded.
+  if (side === "opener" && !(await consume(`enquiry-msg:${ctx.user.id}`, ENQUIRY_MESSAGES.limit, ENQUIRY_MESSAGES.windowMs)).allowed) {
+    return { ok: false, errorKey: "enquiries.tooManyMessages" };
+  }
 
   await db.enquiryMessage.create({
     data: {

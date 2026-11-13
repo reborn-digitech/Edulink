@@ -164,7 +164,10 @@ describe("joining with a code on an existing account", () => {
     const m = await db.membership.findFirstOrThrow({ where: { userId: pupilUserId, schoolId: riversideId, role: "STUDENT" } });
     await db.membership.update({ where: { id: m.id }, data: { status: "SUSPENDED", suspendedAt: new Date(), suspendedReason: "test" } });
 
-    await joinAndBeLetIn();
+    // A paused pupil can no longer ask (TA-178): the request was filed before the pause, and the office lets them in.
+    const { decideJoin } = await import("@/lib/join-requests");
+    const request = await db.joinRequest.create({ data: { schoolId: riversideId, userId: pupilUserId, classId, via: "CLASS" } });
+    await decideJoin(office, request.id, "APPROVE");
     const after = await db.membership.findUniqueOrThrow({ where: { id: m.id } });
     expect(after.status).toBe("ACTIVE");
     expect(after.suspendedAt).toBeNull();
