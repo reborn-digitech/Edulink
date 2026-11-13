@@ -94,6 +94,13 @@ export function RemovePanel({
                     : t("people.blockerCardsMany", { count: blockers.reportCards })}
                 </li>
               )}
+              {blockers.records > 0 && (
+                <li>
+                  {blockers.records === 1
+                    ? t("people.blockerRecordsOne")
+                    : t("people.blockerRecordsMany", { count: blockers.records })}
+                </li>
+              )}
             </ul>
           )}
         </div>

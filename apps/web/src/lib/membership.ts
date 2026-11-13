@@ -1,4 +1,5 @@
 import "server-only";
+import { Prisma } from "@prisma/client";
 import type { TranslationKey } from "@/lib/i18n/dictionary";
 import { db } from "./db";
 import { refreshStanding } from "./competitions";
@@ -286,11 +287,116 @@ export type RemovalBlocker = {
   marks: number;
   submissions: number;
   reportCards: number;
+  /** Every other record the delete would cascade through: fees paid, certificates, exam and internal marks, lecture attendance, results, incidents… (TA-015). */
+  records: number;
 };
 
 export type RemovalResult =
   | { ok: true }
   | { ok: false; errorKey: TranslationKey; blockers?: RemovalBlocker };
+
+/**
+ * THE RELATIONS WHOSE ROWS GO WITH A REMOVED PUPIL (TA-015), as `Model.column`.
+ *
+ * Deleting a Membership cascades through every relation to it marked
+ * `onDelete: Cascade` — well over a hundred. The four counts in removeMembership
+ * name what a school register holds; a college writes none of them, and a school
+ * pupil can have a fee receipt or an issued certificate before the first
+ * register mark. So the rule is inverted: EVERY cascading relation is a record
+ * that refuses the removal, except the ones named here, which are what a
+ * mis-added pupil really has — the places the office put them (class, programme,
+ * courses, batch, mentor group, fee plan and its unpaid bills), the admission
+ * form the office typed, the log of staff opening the health card, the parent
+ * links, and the child's own practice, which the docblock below has always left
+ * out. Read from the generated client's schema at run time, so a table added
+ * tomorrow with a cascade to Membership blocks a removal until somebody decides
+ * otherwise here; tests/ta-high-deletes-removal.test.ts holds the list to the
+ * schema.
+ *
+ * A row that goes with the pupil can itself carry records (a library card its
+ * loans and fines, an unpaid bill a payment's allocation): what cascades from it
+ * blocks too, except a practice attempt's answers.
+ */
+export const GOES_WITH_THE_ROW: readonly string[] = [
+  "Guardianship.studentMembershipId",
+  "GuardianClaim.studentMembershipId",
+  "Enrollment.studentMembershipId",
+  "StudentProgramme.studentMembershipId",
+  "ProgrammeEnrolment.studentMembershipId",
+  "CourseRegistration.studentMembershipId",
+  "LabBatchMember.studentMembershipId",
+  "MentoringMember.studentMembershipId",
+  "StudentFeePlan.studentMembershipId",
+  "FeeDemand.studentMembershipId",
+  "LibraryMember.membershipId",
+  // The admission form as the office typed it: every admissions admit writes one, and so does every intake row with
+  // a PEN or an admission day, so a bulk-import typo has one. Nothing is certified from it until a certificate is
+  // issued, and an issued certificate, a leaving record or a requested change still refuses.
+  "PupilRecord.studentMembershipId",
+  // The family's log of staff opening the health card, written whenever the office opens the person page, card or
+  // none; a card or a check-up still refuses.
+  "HealthCardRead.studentMembershipId",
+  // The child's own practice, never a school's to certify; competition entries are handled after the delete.
+  "CompetitionEntry.studentMembershipId",
+  "QuizAttempt.studentMembershipId",
+  "QuizMastery.studentMembershipId",
+  "EarnedBadge.studentMembershipId",
+  "PracticeOnce.studentMembershipId",
+];
+
+/** Rows under a GOES_WITH_THE_ROW row that go with it too. */
+export const GOES_WITH_ITS_PARENT: readonly string[] = ["QuizResponse.attemptId"];
+
+/** The four the removal counts and names on its own. */
+const COUNTED_APART = ["AttendanceRecord.studentMembershipId", "Grade.studentMembershipId", "Submission.studentMembershipId", "ReportCard.studentMembershipId"];
+
+type RecordProbe = { name: string; count: (membershipId: string) => Prisma.Sql };
+let recordProbes: RecordProbe[] | null = null;
+
+/** A table or column name from the generated schema, quoted; anything else is a programming error. */
+function ident(name: string): Prisma.Sql {
+  if (!/^\w+$/.test(name)) throw new Error(`not an identifier: ${name}`);
+  return Prisma.raw(`"${name}"`);
+}
+
+/** One count per relation whose rows would cascade away with a pupil's membership and are a record. */
+export function removalRecordProbes(): RecordProbe[] {
+  if (recordProbes) return recordProbes;
+  const models = Prisma.dmmf.datamodel.models;
+  const cascadesFrom = (target: string) =>
+    models.flatMap((model) =>
+      model.fields
+        .filter((f) => f.type === target && f.relationOnDelete === "Cascade" && f.relationFromFields?.length === 1 && f.relationToFields?.length === 1)
+        .map((f) => ({ model: model.name, column: f.relationFromFields![0]!, references: f.relationToFields![0]! })),
+    );
+  const probes: RecordProbe[] = [];
+  for (const { model, column } of cascadesFrom("Membership")) {
+    const name = `${model}.${column}`;
+    if (COUNTED_APART.includes(name)) continue;
+    if (!GOES_WITH_THE_ROW.includes(name)) {
+      probes.push({ name, count: (id) => Prisma.sql`(SELECT count(*) FROM ${ident(model)} WHERE ${ident(column)} = ${id})` });
+      continue;
+    }
+    for (const child of cascadesFrom(model)) {
+      const childName = `${child.model}.${child.column}`;
+      if (GOES_WITH_ITS_PARENT.includes(childName)) continue;
+      probes.push({ name: childName, count: (id) => Prisma.sql`(SELECT count(*) FROM ${ident(child.model)} c JOIN ${ident(model)} p ON c.${ident(child.column)} = p.${ident(child.references)} WHERE p.${ident(column)} = ${id})` });
+    }
+  }
+  recordProbes = probes;
+  return probes;
+}
+
+/**
+ * How many rows of record the removal of this membership would cascade away, counted on the transaction in hand —
+ * so under the same tenant and row security as the delete — in one round trip rather than a hundred.
+ */
+async function countRecords(rawTx: unknown, membershipId: string): Promise<number> {
+  const tx = rawTx as { $queryRaw<T>(query: Prisma.Sql): Promise<T> };
+  const counts = removalRecordProbes().map((probe) => probe.count(membershipId));
+  const [row] = await tx.$queryRaw<{ records: number }[]>(Prisma.sql`SELECT (${Prisma.join(counts, " + ")})::int AS "records"`);
+  return row?.records ?? 0;
+}
 
 /**
  * THE THIRD VERB, and the reason there are three rather than two.
@@ -318,7 +424,10 @@ export type RemovalResult =
  *
  * THE PRECONDITION IS THE SAFETY, not the confirmation dialog. This refuses
  * outright the moment there is anything a school would have to certify —
- * a register mark, a grade, a piece of work handed in, a report card. Those are
+ * a register mark, a grade, a piece of work handed in, a report card, and any
+ * other record the delete would cascade through (a fee paid, a certificate, an
+ * exam mark, a lecture attended, an incident: TA-015, see GOES_WITH_THE_ROW).
+ * The first four are
  * exactly the things a leaving certificate summarises, so "there is history"
  * and "the answer is LEFT, not REMOVE" are the same sentence, and the error
  * says so. An admin cannot reach for the destructive verb by accident, because
@@ -372,8 +481,10 @@ export async function removeMembership(
     db.submission.count({ where: { schoolId, studentMembershipId: membershipId } }),
     db.reportCard.count({ where: { schoolId, studentMembershipId: membershipId } }),
   ]);
+  // …and every other record the cascade would take (TA-015): see GOES_WITH_THE_ROW.
+  const records = await db.$tenantTransaction((rawTx) => countRecords(rawTx, membershipId));
 
-  const blockers = { attendance, marks, submissions, reportCards };
+  const blockers = { attendance, marks, submissions, reportCards, records };
   const total = attendance + marks + submissions + reportCards;
   if (total > 0) {
     return {
@@ -386,10 +497,19 @@ export async function removeMembership(
   // Already recorded as having left is history too, whatever the counts say:
   // a certificate exists with this school's name on it and somebody may hold a
   // copy. Undoing the departure first is the honest route, and it is one click.
+  // Asked before the other records, which the departure itself writes.
   if (target.leftAt) {
     return {
       ok: false,
       errorKey: "refusal.alreadyLeftDoc",
+    };
+  }
+
+  if (records > 0) {
+    return {
+      ok: false,
+      blockers,
+      errorKey: "refusal.hasRecord",
     };
   }
 
@@ -402,13 +522,18 @@ export async function removeMembership(
     distinct: ["competitionId"],
   });
 
-  await db.$tenantTransaction(async (rawTx) => {
+  const gone = await db.$tenantTransaction(async (rawTx) => {
     const t = rawTx as { membership: { delete(args: unknown): Promise<unknown> } };
+    // Counted again in the delete's own transaction, so a record written since
+    // the count above (a fee taken at the counter a moment ago) stops it too.
+    if ((await countRecords(rawTx, membershipId)) > 0) return false;
     // Every relation pointing at Membership is Cascade or SetNull, so this
     // takes the enrolments and the parent links with it and leaves nothing
     // dangling. Checked against the schema rather than assumed.
     await t.membership.delete({ where: { id: membershipId } });
+    return true;
   });
+  if (!gone) return { ok: false, errorKey: "refusal.hasRecord" };
 
   for (const b of boards) await refreshStanding(schoolId, b.competitionId);
 

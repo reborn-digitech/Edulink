@@ -25,6 +25,7 @@ import type { ActiveContext } from "./session";
 import type { Role } from "./constants";
 import type { SchoolModuleCode } from "@edulink/contracts";
 import { lawInternshipSummary, nssSummary, practicalRecordSummary, teachingPracticeSummary } from "./stream-summaries";
+import { SEATED_NOW } from "./academics";
 
 /**
  * STREAM RECORDS (the owner's decision of 5 October 2026; the codes and the
@@ -176,7 +177,7 @@ export async function labDivisions(schoolId: string, divisionId?: string, scope:
   });
   if (!divisions.length) return [];
   const [seats, rolls] = await Promise.all([
-    db.studentProgramme.findMany({ where: { schoolId, status: "ACTIVE", divisionId: { in: divisions.map((d) => d.id) } }, select: { studentMembershipId: true, divisionId: true, student: { select: { user: { select: { name: true, preferredName: true } } } } } }),
+    db.studentProgramme.findMany({ where: { schoolId, ...SEATED_NOW, divisionId: { in: divisions.map((d) => d.id) } }, select: { studentMembershipId: true, divisionId: true, student: { select: { user: { select: { name: true, preferredName: true } } } } } }),
     db.enrollment.findMany({ where: { schoolId, status: "ACTIVE", classId: { in: divisions.map((d) => d.classId) } }, select: { classId: true, studentMembershipId: true, rollNumber: true } }),
   ]);
   const rollBy = new Map(rolls.map((r) => [`${r.classId}|${r.studentMembershipId}`, r.rollNumber]));
@@ -248,7 +249,7 @@ export async function splitLabBatches(ctx: ActiveContext, input: { divisionId: s
   if (sizes.length > BATCH_NAMES.length) throw new RuleRefusal("streamRecords.refuseTooManyBatches", 422, undefined, "size");
   const names = sizes.map((_, i) => BATCH_NAMES[i]!);
   const from = await effectiveFrom(division.divisionId, c.timeZone);
-  await db.$tenantTransaction(async (raw) => {
+  const keptForPostings = await db.$tenantTransaction(async (raw) => {
     const tx = raw as Tx;
     const want = new Map<string, string>();
     let at = 0;
@@ -258,15 +259,19 @@ export async function splitLabBatches(ctx: ActiveContext, input: { divisionId: s
       at += sizes[i]!;
     }
     await refile(tx, c.schoolId, division.divisionId, want, from, true);
-    // The names no longer used: kept while a marked lecture names one (its past rosters), its hours falling back to the
-    // whole division; removed otherwise (an unmarked lecture of it then falls back to the whole division too).
-    const unused = await tx.labBatch.findMany({ where: { divisionId: division.divisionId, name: { notIn: names } }, select: { id: true, _count: { select: { lectures: { where: { attendance: { some: {} } } } } } } });
-    const keep = unused.filter((b) => b._count.lectures > 0).map((b) => b.id);
+    // The names no longer used: kept while a marked lecture names one (its past rosters) or a clinical posting does
+    // (TA-016: the posting, and every logbook entry under it, signed ones too, cascade from the batch), its hours
+    // falling back to the whole division; removed otherwise (an unmarked lecture of it then falls back to the whole
+    // division too).
+    const unused = await tx.labBatch.findMany({ where: { divisionId: division.divisionId, name: { notIn: names } }, select: { id: true, _count: { select: { lectures: { where: { attendance: { some: {} } } }, clinicalPostings: true } } } });
+    const held = (b: (typeof unused)[number]) => b._count.lectures > 0 || b._count.clinicalPostings > 0;
+    const keep = unused.filter(held).map((b) => b.id);
     if (keep.length) await tx.offeringSlot.updateMany({ where: { labBatchId: { in: keep } }, data: { labBatchId: null } });
-    const remove = unused.filter((b) => b._count.lectures === 0).map((b) => b.id);
+    const remove = unused.filter((b) => !held(b)).map((b) => b.id);
     if (remove.length) await tx.labBatch.deleteMany({ where: { id: { in: remove } } });
+    return unused.filter((b) => b._count.clinicalPostings > 0).length;
   });
-  await audit({ schoolId: c.schoolId, actorUserId: c.userId, action: "streamRecords.labBatches.split", targetType: "Division", targetId: division.divisionId, meta: { batches: names.length, size, students: people.length, from } });
+  await audit({ schoolId: c.schoolId, actorUserId: c.userId, action: "streamRecords.labBatches.split", targetType: "Division", targetId: division.divisionId, meta: { batches: names.length, size, students: people.length, from, keptForPostings } });
   // The answer names the day the change took effect (R-24): "" (from the start) is null.
   return { ...(await labBatches(ctx, { divisionId: division.divisionId })), effectiveFrom: from || null };
 }
@@ -277,7 +282,7 @@ export async function moveToLabBatch(ctx: ActiveContext, batchId: string, studen
   const batch = await db.labBatch.findFirst({ where: { id: batchId, schoolId: c.schoolId }, select: { id: true, divisionId: true } });
   if (!batch) throw new AccessError("access.entryNotFound", "NOT_FOUND");
   const ids = [...new Set(studentMembershipIds)];
-  const seated = await db.studentProgramme.count({ where: { schoolId: c.schoolId, status: "ACTIVE", divisionId: batch.divisionId, studentMembershipId: { in: ids } } });
+  const seated = await db.studentProgramme.count({ where: { schoolId: c.schoolId, ...SEATED_NOW, divisionId: batch.divisionId, studentMembershipId: { in: ids } } });
   if (seated !== ids.length) throw new RuleRefusal("streamRecords.refuseNotInDivision", 422, undefined, "studentMembershipIds");
   const from = await effectiveFrom(batch.divisionId, c.timeZone);
   await db.$tenantTransaction(async (raw) => {
@@ -407,7 +412,7 @@ type Team = { name: string; membershipIds: string[]; outcome: string };
 
 /** The college's law students (ACTIVE seats on a LAW programme), or — at a college whose programmes carry no stream — every active student. */
 async function lawStudents(schoolId: string): Promise<{ membershipId: string; name: string }[]> {
-  const law = await db.studentProgramme.findMany({ where: { schoolId, status: "ACTIVE", programme: { stream: "LAW" } }, select: { studentMembershipId: true, student: { select: { user: { select: { name: true, preferredName: true } } } } } });
+  const law = await db.studentProgramme.findMany({ where: { schoolId, ...SEATED_NOW, programme: { stream: "LAW" } }, select: { studentMembershipId: true, student: { select: { user: { select: { name: true, preferredName: true } } } } } });
   if (law.length) return law.map((s) => ({ membershipId: s.studentMembershipId, name: nameOf(s.student.user) })).sort((a, b) => a.name.localeCompare(b.name));
   const all = await db.membership.findMany({ where: { schoolId, role: "STUDENT", status: "ACTIVE", leftAt: null }, take: 1000, select: { id: true, user: { select: { name: true, preferredName: true } } } });
   return all.map((m) => ({ membershipId: m.id, name: nameOf(m.user) })).sort((a, b) => a.name.localeCompare(b.name));

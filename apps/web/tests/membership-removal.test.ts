@@ -313,6 +313,7 @@ describe("⚠ what it refuses, because removing would destroy a record", () => {
       marks: 1,
       submissions: 0,
       reportCards: 0,
+      records: 0,
     });
   });
 

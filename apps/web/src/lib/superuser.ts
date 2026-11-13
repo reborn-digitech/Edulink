@@ -1606,21 +1606,35 @@ export async function deleteSchoolEntirely(
   await db.school.delete({ where: { id: schoolId } });
 
   // Accounts that existed only for this school, and now belong to nothing.
-  const orphans = await db.user.findMany({
+  const unclaimed = await db.user.findMany({
     where: {
       id: { in: userIds },
       isSuperuser: false,
       isAppAdmin: false,
-      memberships: { none: {} },
       guardianships: { none: {} },
-      schoolRecords: { none: {} },
       operatorAccess: { none: {} },
       expertProfile: null,
     },
     select: { id: true },
   });
+  // A MEMBERSHIP OR A SCHOOL RECORD ELSEWHERE IS ASKED AS THE PERSON (TA-014).
+  // Under row security the operator's own session sees no school's memberships
+  // and no school's records, so `memberships: { none: {} }` was true for a
+  // teacher who also teaches next door, an admin of the real school of a
+  // duplicate pair and a pupil who moved on, and their accounts went with that
+  // other school's rows by cascade. Both policies let a person read their OWN
+  // rows at every school, so each candidate is asked about under their own
+  // identity, with no school bound and no flag: a read, never a write, and
+  // nothing wider than what that person sees of themselves when they sign in.
+  const orphans: string[] = [];
+  for (const { id } of unclaimed) {
+    const elsewhere = await forTenant({ schoolIds: [], userId: id, joinCode: null, isSuperuser: false }, () =>
+      db.user.count({ where: { id, OR: [{ memberships: { some: {} } }, { schoolRecords: { some: {} } }] } }),
+    );
+    if (elsewhere === 0) orphans.push(id);
+  }
   const removedUsers = orphans.length
-    ? (await db.user.deleteMany({ where: { id: { in: orphans.map((u) => u.id) } } })).count
+    ? (await db.user.deleteMany({ where: { id: { in: orphans } } })).count
     : 0;
 
   await audit({

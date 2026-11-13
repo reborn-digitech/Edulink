@@ -1,6 +1,7 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+import { z } from "zod";
 import { db } from "@/lib/db";
 import { getSession } from "@/lib/session";
 import { AccessError, assertAssignmentAccess } from "@/lib/tenancy";
@@ -162,20 +163,35 @@ export async function attachToSubmission(formData: FormData): Promise<AttachResu
   return { ok: true, attachments };
 }
 
+const DetachInput = z.object({
+  target: z.enum(["assignment", "submission"]),
+  id: z.string().min(1).max(64),
+  fileId: z.string().min(1).max(64),
+});
+
 /**
  * Removes one attachment.
  *
  * Deletes the row reference first, then the file — the reverse order would leave
  * a reference pointing at nothing, which `authorizeFileRead` would then deny,
  * showing the owner a broken attachment they cannot clear.
+ *
+ * ONLY A FILE THAT IS ON THE ROW (TA-007). The store is one namespace for every
+ * school, so a file id the caller's own row does not hold — a teacher's handout,
+ * a logo, another school's picture — is answered with the row as it stands and
+ * nothing is deleted, the way reconcileHandInFiles treats the phone's hand-ins.
  */
-export async function detach(input: {
+export async function detach(raw: {
   target: "assignment" | "submission";
   id: string;
   fileId: string;
 }): Promise<AttachResult> {
   const session = await getSession();
   if (!session) return { ok: false, error: (await getT())("common.logInAgain") };
+  // A server action takes whatever a caller posts: the shape is checked, not trusted from the type.
+  const parsed = DetachInput.safeParse(raw);
+  if (!parsed.success) return { ok: false, error: (await getT())("ui.workNotFound") };
+  const input = parsed.data;
 
   const { schoolId, membershipId, role } = session;
   if (!schoolId || !membershipId) return { ok: false, error: (await getT())("ui.noActiveSchool") };
@@ -193,7 +209,9 @@ export async function detach(input: {
       where: { id: input.id },
       select: { attachments: true },
     });
-    const remaining = readAttachments(row.attachments).filter((a) => a.fileId !== input.fileId);
+    const current = readAttachments(row.attachments);
+    if (!current.some((a) => a.fileId === input.fileId)) return { ok: true, attachments: current };
+    const remaining = current.filter((a) => a.fileId !== input.fileId);
     await db.assignment.update({
       where: { id: input.id },
       data: { attachments: writeJson(remaining) },
@@ -210,9 +228,9 @@ export async function detach(input: {
   });
   if (!submission) return { ok: false, error: (await getT())("ui.workNotFound") };
 
-  const remaining = readAttachments(submission.attachments).filter(
-    (a) => a.fileId !== input.fileId,
-  );
+  const current = readAttachments(submission.attachments);
+  if (!current.some((a) => a.fileId === input.fileId)) return { ok: true, attachments: current };
+  const remaining = current.filter((a) => a.fileId !== input.fileId);
   await db.submission.update({
     where: { id: submission.id },
     data: { attachments: writeJson(remaining) },

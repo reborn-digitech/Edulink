@@ -8,8 +8,8 @@ import { getT } from "@/lib/i18n/server";
 /**
  * POST /api/v1/admin/people/{membershipId}/remove — a pupil who was never
  * really here, taken off the roll; the rule is lib/membership.ts, which
- * refuses the moment a register mark, a grade, a hand-in or a report card
- * exists. What stood in the way comes back as `issues`, a sentence each,
+ * refuses the moment a register mark, a grade, a hand-in, a report card or any
+ * other record the delete would cascade through (TA-015) exists. What stood in the way comes back as `issues`, a sentence each,
  * so the phone can say which record it was rather than "cannot remove".
  * No body.
  */
@@ -27,6 +27,7 @@ export async function POST(_request: Request, { params }: { params: Promise<{ me
         if (b.marks > 0) issues.marks = b.marks === 1 ? t("people.blockerMarksOne") : t("people.blockerMarksMany", { count: b.marks });
         if (b.submissions > 0) issues.submissions = b.submissions === 1 ? t("people.blockerWorkOne") : t("people.blockerWorkMany", { count: b.submissions });
         if (b.reportCards > 0) issues.reportCards = b.reportCards === 1 ? t("people.blockerCardsOne") : t("people.blockerCardsMany", { count: b.reportCards });
+        if (b.records > 0) issues.records = b.records === 1 ? t("people.blockerRecordsOne") : t("people.blockerRecordsMany", { count: b.records });
       }
       return apiRefused({ errorKey: result.errorKey, issues });
     }

@@ -45,6 +45,8 @@ async function main() {
         unrecognised: report.unrecognised.length,
         deleted: report.deleted.length,
         bytesReclaimed: report.bytesReclaimed,
+        staleVariants: report.staleVariants,
+        variantsDeleted: report.variantsDeleted,
       })}\n`,
     );
     return;
@@ -57,6 +59,7 @@ async function main() {
     `  on disk        ${report.scanned}`,
     `  referenced     ${report.referenced}`,
     `  unreferenced   ${report.orphans.length}`,
+    `  stale copies   ${report.staleVariants}${del ? ` (${report.variantsDeleted} removed)` : ""}`,
   ];
 
   if (report.skippedRecent > 0) {

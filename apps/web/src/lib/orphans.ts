@@ -2,6 +2,7 @@ import "server-only";
 import { db } from "./db";
 import { readAttachments, readMedia } from "./files";
 import { blobStore } from "./blob-store";
+import { deleteStoredVariants, VARIANT_WIDTHS } from "./storage";
 
 /**
  * Reclaiming stored files that nothing references any more.
@@ -63,6 +64,13 @@ export type OrphanReport = {
   /** Empty unless `dryRun` was false. */
   deleted: string[];
   bytesReclaimed: number;
+  /**
+   * Resized copies (variants namespace) whose original is not in the store, older than the grace window (TA-139):
+   * a picture said to be deleted must not live on as its 320, 640 and 1280 pixel copies. Removed unless `dryRun`.
+   */
+  staleVariants: number;
+  /** How many of those were removed; 0 on a dry run. */
+  variantsDeleted: number;
   /** Files some record points at whose bytes are NOT on disk. See below. */
   missing: number;
   /**
@@ -195,6 +203,27 @@ async function listStored(): Promise<{ files: OrphanCandidate[]; unrecognised: s
   return { files, unrecognised, rootReadable };
 }
 
+/** A resized copy's name as storage.ts writes it: `<shard>/<original>.w<width>.webp`. */
+const VARIANT_NAME = new RegExp(`^([0-9a-f-]{36}\\.[a-z0-9]{2,5})\\.w(?:${VARIANT_WIDTHS.join("|")})\\.webp$`, "i");
+
+/**
+ * The tables the readers above read, by model name: a reader the connection's row security hides rows of reads
+ * "nothing references this" for a file a record does reference.
+ */
+const READ_TABLES = [...new Set(FILE_REFERENCES.map((reference) => reference.split(".")[0]!).map((model) => model[0]!.toUpperCase() + model.slice(1)))];
+
+/**
+ * THE SWEEP MUST SEE EVERY SCHOOL'S ROWS (TA-008). It runs with no request, so the app role's tenant is nobody's and
+ * every policied reader comes back empty: run that way (`npm run files:reclaim` without with-admin-db.mjs, the
+ * README's crontab line), it took every hand-in, handout and class post picture older than an hour for an orphan.
+ * Postgres answers per table whether row security applies to this connection; any table that says yes refuses the
+ * sweep before a single reference is read, in the words of the unreadable-store refusal below.
+ */
+async function tablesHiddenByRowSecurity(): Promise<string[]> {
+  const rows = await db.$queryRaw<{ name: string }[]>`SELECT t AS name FROM unnest(${READ_TABLES}::text[]) AS t WHERE row_security_active(quote_ident(t))`;
+  return rows.map((row) => row.name);
+}
+
 /**
  * Finds — and optionally deletes — unreferenced files.
  *
@@ -207,6 +236,11 @@ export async function reclaimOrphans(
 ): Promise<OrphanReport> {
   const dryRun = opts.dryRun ?? true;
   const graceMs = opts.graceMs ?? DEFAULT_GRACE_MS;
+
+  const hidden = await tablesHiddenByRowSecurity();
+  if (hidden.length > 0) {
+    throw new Error(`This connection is subject to row-level security on ${hidden.length} table(s) the sweep reads (${hidden.slice(0, 3).join(", ")}${hidden.length > 3 ? ", …" : ""}), so it would take live files for orphans — nothing swept. Run it as the owner: node scripts/with-admin-db.mjs npx tsx --tsconfig scripts/tsconfig.json scripts/reclaim-files.ts`);
+  }
 
   // Disk first — see the note at the top of this file.
   const { files, unrecognised, rootReadable } = await listStored();
@@ -262,6 +296,8 @@ export async function reclaimOrphans(
         await blobStore("files").delete(`${orphan.fileId.slice(0, 2)}/${orphan.fileId}`);
         deleted.push(orphan.fileId);
         bytesReclaimed += orphan.bytes;
+        // Its resized copies go with it (TA-139), as with every delete through storage.ts.
+        await deleteStoredVariants(orphan.fileId).catch(() => {});
         // A phone's unattached upload is an orphan like any other once the
         // grace has passed; its ticket must go with the bytes, or a later
         // post could attach a file that no longer exists.
@@ -269,6 +305,40 @@ export async function reclaimOrphans(
       } catch {
         // Already gone is the desired end state; anything else is reported by
         // simply not appearing in `deleted`.
+      }
+    }
+  }
+
+  /**
+   * THE COPIES WHOSE ORIGINAL IS GONE (TA-139): deleted before deleteStoredVariants existed, or by a path that never
+   * called it. Judged against the originals listed above less the ones just deleted, so a copy of a live picture is
+   * never a candidate; and only a copy older than the grace window, so one made from an original uploaded after the
+   * listing (and therefore made after it too) is left for the next sweep. A name storage.ts would not write is
+   * left alone, as in the originals namespace.
+   */
+  const remaining = new Set(files.map((file) => file.fileId));
+  for (const fileId of deleted) remaining.delete(fileId);
+  let staleVariants = 0;
+  let variantsDeleted = 0;
+  if (rootReadable) {
+    const variants = blobStore("variants");
+    const stale: string[] = [];
+    for await (const object of variants.list()) {
+      const entry = object.name.split("/").pop() ?? object.name;
+      const original = VARIANT_NAME.exec(entry)?.[1];
+      if (!original || object.name !== `${original.slice(0, 2)}/${entry}`) continue;
+      if (remaining.has(original) || object.modifiedAt.getTime() > cutoff) continue;
+      stale.push(object.name);
+    }
+    staleVariants = stale.length;
+    if (!dryRun) {
+      for (const name of stale) {
+        try {
+          await variants.delete(name);
+          variantsDeleted++;
+        } catch {
+          // Reported by not being counted, as for an original.
+        }
       }
     }
   }
@@ -281,6 +351,8 @@ export async function reclaimOrphans(
     unrecognised,
     deleted,
     bytesReclaimed,
+    staleVariants,
+    variantsDeleted,
     missing,
     perSchool,
   };

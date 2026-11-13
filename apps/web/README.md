@@ -302,10 +302,12 @@ the table; edit a schedule and forget to reinstall and it says so.
 
 Deleting a record leaves its bytes behind. They are unreachable immediately —
 `files.ts` denies anything no record claims — so nothing is exposed, but the disk
-grows. Add `--json` for one line a monitor can read:
+grows. The scheduled job does it as the owner, which the sweep needs: it reads
+every school's references, and run as the app role it sees none of them and
+refuses (TA-008). Add `--json` for one line a monitor can read:
 
 ```bash
-0 3 * * *  cd /srv/edulink && npm run files:reclaim -- --json >> /var/log/edulink-files.log
+0 3 * * *  cd /srv/edulink && npm run job -- files:reclaim --json >> /var/log/edulink-files.log
 ```
 
 Exit status stays 0 when orphans are found and removed; finding them is the
