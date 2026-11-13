@@ -15,6 +15,8 @@ export { ASSESSMENT_RULES, decideAssessment, type AssessmentItem, type Assessmen
 export async function pupilAssessmentItems(input: { schoolId: string; membershipId: string; timezone: string; now: Date }): Promise<AssessmentItem[]> {
   const { schoolId, membershipId, now } = input;
   const items: AssessmentItem[] = [];
+  /** TA-021: the hand-ins apart, after every closed sitting: only they are cut to the cap, so forty open hand-ins never push a contest, a timed practice or an exam out of the rule. */
+  const handIns: AssessmentItem[] = [];
   const [enrolments, registrations] = await Promise.all([
     db.enrollment.findMany({ where: { schoolId, studentMembershipId: membershipId, status: "ACTIVE" }, select: { classId: true, class: { select: { gradeLevel: true } } } }),
     db.courseRegistration.findMany({ where: { schoolId, studentMembershipId: membershipId, status: "REGISTERED" }, select: { offeringId: true } }),
@@ -37,7 +39,7 @@ export async function pupilAssessmentItems(input: { schoolId: string; membership
       take: MAX_ASSESSMENT_ITEMS,
       select: { id: true, title: true, body: true, category: true, assistantAnswers: true },
     });
-    for (const a of work) items.push({ kind: "HAND_IN", id: a.id, text: `${a.title}\n${a.category ?? ""}\n${a.body}`.slice(0, 1500), assignmentId: a.id, workedAllowed: a.assistantAnswers });
+    for (const a of work) handIns.push({ kind: "HAND_IN", id: a.id, text: `${a.title}\n${a.category ?? ""}\n${a.body}`.slice(0, 1500), assignmentId: a.id, workedAllowed: a.assistantAnswers });
   }
 
   // An open contest the pupil entered.
@@ -91,7 +93,7 @@ export async function pupilAssessmentItems(input: { schoolId: string; membership
       }
     }
   }
-  return items.slice(0, MAX_ASSESSMENT_ITEMS);
+  return [...items, ...handIns].slice(0, MAX_ASSESSMENT_ITEMS);
 }
 
 function minuteOfDay(timezone: string, now: Date): number {

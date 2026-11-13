@@ -37,7 +37,7 @@ export async function calendarFor(schoolId: string, timezone: string, now: Date)
  * the model; the names are read here only to tell which child a question names). A child at another school is
  * left out: the conversation's name lexicon is that school's, and nothing of another school is stripped.
  */
-export async function dataContextFor(input: { role: Role; userId: string; membershipId: string | null; schoolId: string; question: string; now: Date; timezone?: string }): Promise<DataContext & { childNames: string[] }> {
+export async function dataContextFor(input: { role: Role; userId: string; membershipId: string | null; schoolId: string; question: string; now: Date; timezone?: string }): Promise<DataContext & { childNames: string[]; otherSchoolChild?: { name: string; school: string } | null }> {
   let duties: string[] = [];
   if (input.membershipId && (input.role === "FACULTY" || input.role === "HOD")) {
     const m = await db.membership.findUnique({ where: { id: input.membershipId }, select: { dutiesJson: true } });
@@ -63,11 +63,28 @@ export async function dataContextFor(input: { role: Role; userId: string; member
     }));
   }
   const named = childNamed(input.question, children);
+  // TA-024: a question naming none of the children here may name the guardian's child at another school. That child is
+  // never read here (this school's lexicon, this school's doors), and the child here is not read in their place: no
+  // child is read, and the person is told which school the conversation is about.
+  let otherSchoolChild: { name: string; school: string } | null = null;
+  if (input.role === "PARENT" && !named) {
+    const elsewhere = await db.guardianship.findMany({
+      where: { parentUserId: input.userId, studentSchoolId: { not: input.schoolId }, status: "ACTIVE", student: { status: "ACTIVE", leftAt: null } },
+      select: { studentMembershipId: true, student: { select: { user: { select: { name: true, preferredName: true } } } } },
+    });
+    const other = childNamed(
+      input.question,
+      elsewhere.map((l) => ({ id: l.studentMembershipId, shown: l.student.user.preferredName ?? l.student.user.name, names: [l.student.user.name, l.student.user.preferredName].filter((n): n is string => !!n) })),
+    );
+    if (other) otherSchoolChild = { name: other.shown, school: (await db.school.findUnique({ where: { id: input.schoolId }, select: { name: true } }))?.name ?? "" };
+  }
+  if (otherSchoolChild) children = [];
   return {
     role: input.role,
     membershipId: input.membershipId,
     children: children.map((c) => ({ id: c.id, className: c.className })),
     childId: named?.id ?? (children.length === 1 ? children[0]!.id : null),
+    otherSchoolChild,
     duties,
     modules,
     now: input.now,

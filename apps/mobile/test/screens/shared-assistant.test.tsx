@@ -329,7 +329,7 @@ describe("the round button", () => {
     );
     await fireEvent.press(await screen.findByRole("button", { name: "Explain this fee demand to me: ZZ Term 1 fee" }));
     expect(await screen.findByText("ZZ the fee explained")).toBeTruthy();
-    expect(calls().find((c) => c.line === "POST /api/v1/assistant/conversations")?.body).toEqual({ language: "en", childId: "zz-child" });
+    expect(calls().find((c) => c.line === "POST /api/v1/assistant/conversations")?.body).toEqual({ language: "en", childId: "zz-child", text: "Explain this fee demand to me." });
     expect(calls().find((c) => c.line === "POST /api/v1/assistant/conversations/zz-c/messages")?.body).toEqual({ text: "Explain this fee demand to me.", page: "/parent", about: { kind: "FEE_DEMAND", id: "zz-demand", childId: "zz-child" } });
   });
 

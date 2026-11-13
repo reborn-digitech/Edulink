@@ -243,6 +243,8 @@ export type AssistantStatus = z.infer<typeof assistantStatusSchema>;
 export const assistantOpenSchema = z.object({
   language: assistantLanguageSchema,
   childId: cuidish.optional(),
+  /** TA-019: the first question, when the conversation is opened to ask it (at most ASSISTANT_QUESTION_MAX, 1200, declared below). Read only by the refusal table, never stored: a message it reads as self-harm or a child telling of abuse opens past the person's day and the school's month. */
+  text: z.string().max(1200).optional(),
 });
 export type AssistantOpen = z.infer<typeof assistantOpenSchema>;
 

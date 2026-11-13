@@ -32,12 +32,16 @@ export async function assistantFailure(error: unknown, where: string): Promise<N
   if (!(error instanceof AssistantUnavailableError)) return apiFailure(error, where);
   const ctx = await getSession().catch(() => null);
   const now = new Date();
+  // TA-279: the school's own next day or month when the service counted it (ask); else to UTC's, as before.
+  const counted = error.vars.retryAfterSeconds;
   const retryAfterSeconds =
-    error.reason === "DAILY_CAP"
-      ? Math.max(60, Math.ceil((Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate() + 1) - now.getTime()) / 1000))
-      : error.reason === "SCHOOL_BUDGET"
-        ? Math.max(60, Math.ceil((Date.UTC(now.getUTCFullYear(), now.getUTCMonth() + 1, 1) - now.getTime()) / 1000))
-        : undefined;
+    typeof counted === "number" && (error.reason === "DAILY_CAP" || error.reason === "SCHOOL_BUDGET")
+      ? counted
+      : error.reason === "DAILY_CAP"
+        ? Math.max(60, Math.ceil((Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate() + 1) - now.getTime()) / 1000))
+        : error.reason === "SCHOOL_BUDGET"
+          ? Math.max(60, Math.ceil((Date.UTC(now.getUTCFullYear(), now.getUTCMonth() + 1, 1) - now.getTime()) / 1000))
+          : undefined;
   const code = error.reason === "MODULE_OFF" ? "MODULE_OFF" : error.status === 429 ? "RATE_LIMITED" : "FORBIDDEN";
   const body = apiErrorSchema.parse({ error: unavailableSentence(ctx, error), code, ...(retryAfterSeconds ? { retryAfterSeconds } : {}) });
   return NextResponse.json(body, { status: error.status, headers: { "Cache-Control": "no-store", ...(retryAfterSeconds ? { "Retry-After": String(retryAfterSeconds) } : {}) } });

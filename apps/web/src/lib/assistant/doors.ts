@@ -45,6 +45,11 @@ export const NEVER_DOORS: { path: RegExp; why: string }[] = [
   { path: /\/(?:pdf|image|receipt|sheet|open|statement)$|\.ics$|\/calendar\/token$/, why: "a file, a PDF, an image or a feed" },
   { path: /^\/api\/v1\/academics\/attendance$/, why: "an HOD's read of the defaulters tells the students not told this week" },
   { path: /^\/api\/v1\/(?:teaching\/remarks|shared\/people|alumni\/staff)$/, why: "a list of the people one may write to: names alone, which an answer never gives (the compose link stands for it)" },
+  // TA-458: decision 0005 lets the model read only a short list of a person's own records, and decision 0002 keeps a
+  // child's health and safeguarding data to the people the school names; the pages show these, a chat never reads them.
+  { path: /\/health(?:\/|$)/, why: "a child's health card, its check-ups and who read it: health data, never handed to the model (decisions 0002, 0005)" },
+  { path: /\/incidents(?:\/|$)/, why: "the incident log: safeguarding text about children, never handed to the model (decisions 0002, 0005)" },
+  { path: /^\/api\/v1\/(?:family\/record|office\/pupil-records|office\/record-changes)(?:\/|$)/, why: "the pupil record (category, religion, income, previous schools) and its change requests: never handed to the model (decisions 0002, 0005)" },
 ];
 
 /** What a door's summary says that keeps it out: a file, a stream, or a read that writes. */
@@ -139,7 +144,11 @@ export function hintsOf(question: string, now: Date, calendar?: SchoolCalendar |
   }
   if (grade !== null && (grade < 1 || grade > 12)) grade = null;
 
-  const thisYear = academicYearStart(now);
+  // TA-279: the school's own today (its calendar), not the UTC day of `now`: between midnight and 05:30 in India on the
+  // first of a month, "this month" was still the month before.
+  const today = calendar?.today ?? now.toISOString().slice(0, 10);
+  const [todayY, todayM] = today.split("-").map(Number) as [number, number];
+  const thisYear = todayM >= 6 ? todayY : todayY - 1;
   let yearStart: number | null = null;
   const span = /\b(20\d{2})\s*[-–/]\s*(?:20)?(\d{2})\b/.exec(q);
   if (span) yearStart = Number(span[1]);
@@ -152,8 +161,8 @@ export function hintsOf(question: string, now: Date, calendar?: SchoolCalendar |
 
   let month: string | null = null;
   const ym = (y: number, m: number) => `${y}-${String(m).padStart(2, "0")}`;
-  const nowY = now.getUTCFullYear();
-  const nowM = now.getUTCMonth() + 1;
+  const nowY = todayY;
+  const nowM = todayM;
   if (/\bthis month\b|इस महीने|या महिन्यात|चालू महिन्यात/.test(q)) month = ym(nowY, nowM);
   else if (/\b(?:last|previous) month\b|पिछले महीने|मागील महिन्यात|गेल्या महिन्यात/.test(q)) month = nowM === 1 ? ym(nowY - 1, 12) : ym(nowY, nowM - 1);
   else {
@@ -170,7 +179,6 @@ export function hintsOf(question: string, now: Date, calendar?: SchoolCalendar |
   }
   // Vidura pass 2: the window of days asked about, in the school's own calendar; a month or a term it names fills
   // those hints where the words above did not.
-  const today = calendar?.today ?? now.toISOString().slice(0, 10);
   const window = timeWindowOf(question, today, calendar?.terms ?? []);
   if (window && month === null && window.kind !== "TERM") month = window.from.slice(0, 7);
   if (window?.kind === "TERM" && term === null && window.termN) term = window.termN;
@@ -198,13 +206,16 @@ export type DataContext = {
 };
 
 /** Report cards: the listing door's rows give the {cardId} of the one-card door (a pupil's past marks by subject). */
-export const FOLLOW: Record<string, { from: DoorPath; rows: (raw: unknown) => { id: string; title: string }[]; param: string }> = {
+export const FOLLOW: Record<string, { from: DoorPath; rows: (raw: unknown) => { id: string; title: string; childId?: string | null }[]; param: string }> = {
   "/api/v1/family/report-cards/{cardId}": {
     from: "/api/v1/family/report-cards",
     param: "cardId",
+    // TA-023: each row keeps its group's child, so a guardian's cards are read for the child the question is about and labelled as theirs.
     rows: (raw) => {
-      const d = (raw as { data?: { groups?: { rows?: { id?: string; title?: string; publishedAt?: string | null }[] }[] } })?.data ?? (raw as { groups?: { rows?: { id?: string; title?: string }[] }[] });
-      return (d?.groups ?? []).flatMap((g) => (g.rows ?? []).filter((r): r is { id: string; title: string } => typeof r.id === "string" && typeof r.title === "string"));
+      const d = (raw as { data?: { groups?: { studentMembershipId?: string; rows?: { id?: string; title?: string; publishedAt?: string | null }[] }[] } })?.data ?? (raw as { groups?: { studentMembershipId?: string; rows?: { id?: string; title?: string }[] }[] });
+      return (d?.groups ?? []).flatMap((g) =>
+        (g.rows ?? []).filter((r): r is { id: string; title: string } => typeof r.id === "string" && typeof r.title === "string").map((r) => ({ id: r.id, title: r.title, childId: typeof g.studentMembershipId === "string" ? g.studentMembershipId : null })),
+      );
     },
   },
 };

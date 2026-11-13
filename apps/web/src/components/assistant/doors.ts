@@ -45,7 +45,8 @@ export async function call<T>(method: "GET" | "POST" | "DELETE", path: string, b
 }
 
 export const readStatus = () => call<AssistantStatus>("GET", ASSISTANT_DOORS.status);
-export const openConversation = (language: AssistantLanguage, childId?: string) => call<AssistantConversation>("POST", ASSISTANT_DOORS.conversations, { language, ...(childId ? { childId } : {}) });
+/** TA-019: `text` is the first question, which the open reads only to let a message about self-harm or abuse past the caps. */
+export const openConversation = (language: AssistantLanguage, childId?: string, text?: string) => call<AssistantConversation>("POST", ASSISTANT_DOORS.conversations, { language, ...(childId ? { childId } : {}), ...(text ? { text } : {}) });
 /** The question, with the mode the person picked, the page the drawer is beside and "go on" (Vidura pass 1), each only when set. */
 export const askQuestion = (conversationId: string, text: string, opts: { mode?: AssistantChip; page?: string; goOn?: boolean; about?: AssistantAbout } = {}) =>
   call<AssistantAnswer>("POST", ASSISTANT_DOORS.messages(conversationId), { text, ...(opts.mode ? { mode: opts.mode } : {}), ...(opts.page ? { page: opts.page } : {}), ...(opts.goOn ? { goOn: true } : {}), ...(opts.about ? { about: opts.about } : {}) });

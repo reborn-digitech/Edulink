@@ -109,7 +109,7 @@ export function AssistantChat({
       let id = conversationId;
       if (!id) {
         // A guardian's "Explain this" opens the conversation at that child's school (pass 2).
-        const opened = await openConversation(locale, about?.childId);
+        const opened = await openConversation(locale, about?.childId, q);
         if (!opened.ok) {
           setAsking(null);
           if (!goOn) setQuestion(q);

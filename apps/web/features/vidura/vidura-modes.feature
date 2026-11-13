@@ -23,8 +23,19 @@ Feature: Vidura's three modes
     And I am signed in as the TEACHER
     When I POST "/api/v1/assistant/conversations" with:
       """
+      { "language": "en" }
+      """
+    Then the status is 200
+    Given I remember the field "id" as "conv"
+    When I POST "/api/v1/assistant/conversations/{{conv}}/messages" with:
+      """
       { "text": "How do I take today's register?", "mode": "USING" }
       """
+    Then the status is 200
+    And the answer matches the catalog contract
+    And the field "answer.verdict" equals "ANSWERED"
+    And the field "answer.chip" equals "USING"
+    When I DELETE "/api/v1/assistant/conversations/{{conv}}"
     Then the status is 200
 
   @happy
@@ -34,8 +45,19 @@ Feature: Vidura's three modes
     And I am signed in as the STUDENT
     When I POST "/api/v1/assistant/conversations" with:
       """
+      { "language": "en" }
+      """
+    Then the status is 200
+    Given I remember the field "id" as "conv"
+    When I POST "/api/v1/assistant/conversations/{{conv}}/messages" with:
+      """
       { "text": "How many assignments are pending?", "mode": "RECORDS" }
       """
+    Then the status is 200
+    And the answer matches the catalog contract
+    And the field "answer.verdict" equals "ANSWERED"
+    And the field "answer.chip" equals "RECORDS"
+    When I DELETE "/api/v1/assistant/conversations/{{conv}}"
     Then the status is 200
 
   @happy
@@ -45,8 +67,20 @@ Feature: Vidura's three modes
     And I am signed in as the STUDENT
     When I POST "/api/v1/assistant/conversations" with:
       """
+      { "language": "en" }
+      """
+    Then the status is 200
+    Given I remember the field "id" as "conv"
+    When I POST "/api/v1/assistant/conversations/{{conv}}/messages" with:
+      """
       { "text": "What is photosynthesis?", "mode": "LEARNING" }
       """
+    Then the status is 200
+    And the answer matches the catalog contract
+    And the field "answer.verdict" equals "ANSWERED"
+    And the field "answer.chip" equals "LEARNING"
+    And the field "answer.citations" is a list of at least 1 item
+    When I DELETE "/api/v1/assistant/conversations/{{conv}}"
     Then the status is 200
 
   @alternative
@@ -55,7 +89,7 @@ Feature: Vidura's three modes
     And I am signed in as the DRIVER
     When I GET "/api/v1/assistant"
     Then the status is 200
-    And the field "modes" does not equal ["USING", "RECORDS", "LEARNING"]
+    And the field "modes" equals ["USING", "RECORDS"]
 
   @negative
   Scenario: While the operator has Vidura off, every role meets FEATURE_OFF
@@ -78,9 +112,17 @@ Feature: Vidura's three modes
     And I am signed in as the STUDENT
     When I POST "/api/v1/assistant/conversations" with:
       """
-      {}
+      { "language": "en" }
+      """
+    Then the status is 200
+    Given I remember the field "id" as "conv"
+    When I POST "/api/v1/assistant/conversations/{{conv}}/messages" with:
+      """
+      { "mode": "USING" }
       """
     Then the status is 422
+    When I DELETE "/api/v1/assistant/conversations/{{conv}}"
+    Then the status is 200
 
   @negative
   Scenario: Only a guardian switches Vidura off for a child
@@ -100,6 +142,13 @@ Feature: Vidura's three modes
     And I am signed in as the STUDENT
     When I POST "/api/v1/assistant/conversations" with:
       """
+      { "language": "en" }
+      """
+    Then the status is 200
+    Given I remember the field "id" as "conv"
+    When I POST "/api/v1/assistant/conversations/{{conv}}/messages" with:
+      """
       { "text": "How do I see my timetable?", "mode": "USING" }
       """
     Then the status is 200
+    And the field "answer.verdict" equals "ANSWERED"

@@ -52,7 +52,9 @@ export function isFollowUp(question: string): boolean {
 /* The follow-up cache                                                          */
 /* -------------------------------------------------------------------------- */
 
-type Cached = { at: number; doors: DoorPath[]; raw: Map<string, unknown> };
+/** TA-022: each stored answer keeps its own read time (`at`), so a follow-up never renews an answer it did not read afresh. */
+type Stored = { raw: unknown; at: number };
+type Cached = { at: number; doors: DoorPath[]; raw: Map<string, Stored> };
 const CACHE = new Map<string, Cached>();
 const CACHE_MAX = 500;
 
@@ -64,7 +66,7 @@ function cacheFor(conversationId: string | null, now: number): Cached | null {
   return null;
 }
 
-function remember(conversationId: string | null, now: number, doors: DoorPath[], raw: Map<string, unknown>): void {
+function remember(conversationId: string | null, now: number, doors: DoorPath[], raw: Map<string, Stored>): void {
   if (!conversationId || !doors.length) return;
   if (CACHE.size >= CACHE_MAX) CACHE.delete(CACHE.keys().next().value!);
   CACHE.set(conversationId, { at: now, doors, raw });
@@ -204,22 +206,25 @@ export async function runDoors(input: RunInput): Promise<DataRun[]> {
   const featureOn = input.featureOn ?? ((features: readonly FeatureCode[]) => mayUseAny(features, { userId: input.userId, schoolId: input.schoolId, role: input.ctx.role }));
   const nowMs = input.now.getTime();
   const cached = cacheFor(input.conversationId, nowMs);
-  const raws = new Map<string, unknown>(cached?.raw ?? []);
+  // TA-022: only answers still within their own fifteen minutes are kept, and only a door that came from the follow-up
+  // path (chosen.fromCache) is served one; a new question reads its doors afresh.
+  const raws = new Map<string, Stored>([...(cached?.raw ?? [])].filter(([, s]) => nowMs - s.at <= FOLLOW_UP_TTL_MS));
   const runs: DataRun[] = [];
   let next = input.firstNumber;
   // Each door's share of the question's data: a guardian's three children or three report cards share it too.
   const blocks = input.chosen.slice(0, MAX_DOORS_PER_QUESTION).reduce((n, c) => n + (FOLLOW[c.door] ? FOLLOW_MAX : c.calls.length), 0);
   const share = Math.max(900, Math.min(TOOL_ANSWER_MAX_CHARS, Math.floor(DATA_MAX_CHARS / Math.max(1, blocks))));
 
-  const read = async (c: DoorCall, module: string | null, features: readonly FeatureCode[] = []): Promise<{ status: number | null; raw: unknown; fromCache: boolean }> => {
+  const read = async (c: DoorCall, module: string | null, features: readonly FeatureCode[] = [], followUp = false): Promise<{ status: number | null; raw: unknown; fromCache: boolean }> => {
     if (features.length && !(await featureOn(features))) return { status: 404, raw: null, fromCache: false };
-    if (raws.has(c.url)) return { status: 200, raw: raws.get(c.url), fromCache: true };
+    const stored = followUp ? raws.get(c.url) : undefined;
+    if (stored) return { status: 200, raw: stored.raw, fromCache: true };
     if (module && !(await moduleOn(input.schoolId, module))) return { status: 403, raw: null, fromCache: false };
     const gate = await consume(`assistant-tool:${input.userId}`, HEAVY_READ_BUDGET.limit, HEAVY_READ_BUDGET.windowMs);
     if (!gate.allowed) return { status: 429, raw: null, fromCache: false };
     try {
       const got = await call(c);
-      if (got.status === 200) raws.set(c.url, got.raw);
+      if (got.status === 200) raws.set(c.url, { raw: got.raw, at: nowMs });
       return { status: got.status, raw: got.raw, fromCache: false };
     } catch {
       return { status: null, raw: null, fromCache: false };
@@ -252,22 +257,28 @@ export async function runDoors(input: RunInput): Promise<DataRun[]> {
       const follow = FOLLOW[chosen.door];
       if (follow) {
         // The listing first (the person's own cards), then the rows the question picks out, at most FOLLOW_MAX.
-        const listing = await read({ door: follow.from, url: follow.from, params: {}, child: c.child }, null);
+        const listing = await read({ door: follow.from, url: follow.from, params: {}, child: c.child }, null, [], chosen.fromCache);
         if (listing.status !== 200) {
           pending.push({ call: c, status: listing.status, raw: null, fromCache: false });
           continue;
         }
         const words = rowWords(input.question);
-        const rows = follow.rows(listing.raw).map((r, i) => ({ r, i, score: words.filter((w) => r.title.toLowerCase().includes(w)).length + (input.hints.yearStart !== null && r.title.includes(String(input.hints.yearStart)) ? 2 : 0) }));
+        // TA-023: a guardian's listing holds a group per child at every school; only the child the question is about
+        // (else each child at the conversation's school) is read, each card labelled with its child as the other doors are.
+        const kids = input.ctx.role === "PARENT" ? (input.ctx.childId ? input.ctx.children.filter((k) => k.id === input.ctx.childId) : input.ctx.children) : null;
+        const own = follow.rows(listing.raw).filter((r) => !kids || kids.some((k) => k.id === r.childId));
+        const rows = own.map((r, i) => ({ r, i, score: words.filter((w) => r.title.toLowerCase().includes(w)).length + (input.hints.yearStart !== null && r.title.includes(String(input.hints.yearStart)) ? 2 : 0) }));
         rows.sort((a, b) => b.score - a.score || a.i - b.i);
         for (const { r } of rows.slice(0, FOLLOW_MAX)) {
-          const one: DoorCall = { door: chosen.door, url: chosen.door.replace(`{${follow.param}}`, encodeURIComponent(r.id)), params: { ...c.params, [follow.param]: r.id }, child: c.child };
-          const got = await read(one, chosen.module, chosen.features);
+          const kid = kids ? input.ctx.children.findIndex((k) => k.id === r.childId) : -1;
+          const child: DoorCall["child"] = kid >= 0 ? { id: input.ctx.children[kid]!.id, className: input.ctx.children[kid]!.className, n: kid + 1 } : c.child;
+          const one: DoorCall = { door: chosen.door, url: chosen.door.replace(`{${follow.param}}`, encodeURIComponent(r.id)), params: { ...c.params, [follow.param]: r.id }, child };
+          const got = await read(one, chosen.module, chosen.features, chosen.fromCache);
           pending.push({ call: one, ...got });
         }
         continue;
       }
-      const got = await read(c, chosen.module, chosen.features);
+      const got = await read(c, chosen.module, chosen.features, chosen.fromCache);
       pending.push({ call: c, ...got, fromCache: got.fromCache || chosen.fromCache });
     }
     const holds = pending.some((p) => p.status === 200 && !isEmptyAnswer(p.raw));

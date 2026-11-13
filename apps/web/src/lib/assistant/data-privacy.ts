@@ -28,7 +28,24 @@ export function asksAnotherPersonsRecord(question: string, lexicon: NameEntry[],
   for (const entry of expandLexicon(lexicon)) {
     if (entry.kind !== "PERSON") continue;
     if (own.includes(entry.name.toLowerCase())) continue;
-    if (pattern(entry.name).test(question)) return true;
+    if (namesThePerson(question, entry.name)) return true;
+  }
+  return false;
+}
+
+/**
+ * TA-018: a one-word name that is itself a record word ("Mark" beside "How do I mark attendance?") names the person only
+ * where it reads as a name: with a possessive ("Mark's marks"), or capitalised where a sentence does not begin ("Was
+ * Mark absent?"). Every other name, as before, wherever it stands. Pure.
+ */
+function namesThePerson(question: string, name: string): boolean {
+  if (/\s/.test(name) || !RECORD_WORDS.test(name.toLowerCase())) return pattern(name).test(question);
+  for (const m of question.matchAll(new RegExp(pattern(name).source, "giu"))) {
+    const at = m.index ?? 0;
+    const word = m[0];
+    if (/^['’]s(?![\p{L}\p{M}\p{N}])/u.test(question.slice(at + word.length))) return true;
+    const before = question.slice(0, at).trimEnd();
+    if (word[0] !== word[0]!.toLowerCase() && before !== "" && !/[.!?।]$/.test(before)) return true;
   }
   return false;
 }

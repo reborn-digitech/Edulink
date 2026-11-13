@@ -25,7 +25,8 @@ import type { RolePolicy } from "./policy";
 
 export type ClassifyPort = { chat: (messages: ChatMessage[], opts: ChatOptions) => Promise<ChatResult> };
 
-export type Classification = { label: ClassifierLabel; confidence: number | null; tokens: number; failed: boolean };
+/** `unavailable` (TA-025): the call itself threw (unreachable, timed out), so the model gave no word at all. */
+export type Classification = { label: ClassifierLabel; confidence: number | null; tokens: number; failed: boolean; unavailable?: boolean };
 
 /** The constrained call. Never throws: a failure is REFUSE with `failed`. */
 export async function classify(model: ClassifyPort, kind: "question" | "answer", text: string): Promise<Classification> {
@@ -38,7 +39,7 @@ export async function classify(model: ClassifyPort, kind: "question" | "answer",
     if (confidence !== null && confidence < CLASSIFIER_MIN_CONFIDENCE) return { label: "REFUSE", confidence, tokens, failed: false };
     return { label: word as ClassifierLabel, confidence, tokens, failed: false };
   } catch {
-    return { label: "REFUSE", confidence: null, tokens: 0, failed: true };
+    return { label: "REFUSE", confidence: null, tokens: 0, failed: true, unavailable: true };
   }
 }
 
@@ -47,7 +48,7 @@ export type QuestionGate =
    * `label`: the classifier's word when it was asked (pass 3, the unanswered report: a PLATFORM or CURRICULUM question
    * refused with no page or passage close enough found nothing; a REFUSE was the classifier's).
    */
-  | { pass: false; verdict: AssistantVerdict; modelCalled: boolean; tokens: number; label?: ClassifierLabel }
+  | { pass: false; verdict: AssistantVerdict; modelCalled: boolean; tokens: number; label?: ClassifierLabel; unavailable?: boolean }
   | { pass: true; mode: "HELP" | "TUTOR"; label: "PLATFORM" | "CURRICULUM"; confidence: number | null; tokens: number };
 
 /** The table checks alone: the counsellor routes (SELF_HARM, ABUSE_DISCLOSURE) first, then injection, then the other categories. No retrieval, no model. */
@@ -115,7 +116,9 @@ export async function gateQuestion(
   // Below both thresholds: the sentence saying what the assistant is for, and nothing sent to the model.
   if (!help && !(await curriculum())) return { pass: false, verdict: "OUT_OF_SCOPE", modelCalled: false, tokens: 0 };
   const c = await classify(model, "question", input.stripped);
-  if (c.label === "REFUSE") return { pass: false, verdict: "OUT_OF_SCOPE", modelCalled: true, tokens: c.tokens, label: "REFUSE" };
+  // TA-025: a classifier that gave no word (it threw) is still no pass, and says so: the service answers MODEL_UNAVAILABLE
+  // and gives the question back, as for an answering model that did not answer.
+  if (c.label === "REFUSE") return { pass: false, verdict: "OUT_OF_SCOPE", modelCalled: true, tokens: c.tokens, label: "REFUSE", ...(c.unavailable ? { unavailable: true } : {}) };
   // The person's pick, only where its own scope is open (the retrieval above its threshold, the tutor's role).
   const label = input.prefer === "CURRICULUM" && input.policy.tutor && (await curriculum()) ? "CURRICULUM" : input.prefer === "PLATFORM" && help ? "PLATFORM" : c.label;
   if (label === "PLATFORM") {
@@ -128,7 +131,7 @@ export async function gateQuestion(
   return { pass: true, mode: "TUTOR", label: "CURRICULUM", confidence: c.confidence, tokens: c.tokens };
 }
 
-export type AnswerGate = { pass: true; tokens: number } | { pass: false; reasons: (AnswerProblem | "CATEGORY" | "INJECTION" | "SCOPE" | "CITATION" | "EMPTY" | "HINT_TOO_LONG")[]; tokens: number };
+export type AnswerGate = { pass: true; tokens: number } | { pass: false; reasons: (AnswerProblem | "CATEGORY" | "INJECTION" | "SCOPE" | "CITATION" | "EMPTY" | "HINT_TOO_LONG")[]; tokens: number; unavailable?: boolean };
 
 /** The [n] markers an answer cites. */
 export function citedNumbers(answer: string): number[] {
@@ -189,6 +192,6 @@ export async function gateAnswer(
   // The model is asked only when the code found nothing: a discarded answer costs no second call.
   if (reasons.length) return { pass: false, reasons, tokens: 0 };
   const c = await classify(model, "answer", answer);
-  if (c.label !== input.label && c.label !== input.alsoLabel) return { pass: false, reasons: ["SCOPE"], tokens: c.tokens };
+  if (c.label !== input.label && c.label !== input.alsoLabel) return { pass: false, reasons: ["SCOPE"], tokens: c.tokens, ...(c.unavailable ? { unavailable: true } : {}) };
   return { pass: true, tokens: c.tokens };
 }

@@ -225,7 +225,8 @@ export function Conversation({
     let cid = id;
     if (!cid) {
       // A guardian's "Explain this" opens the conversation at that child's school (pass 2).
-      const opened = await api().post("/api/v1/assistant/conversations", { language: locale, ...(about?.childId ? { childId: about.childId } : {}) });
+      // TA-019: the first question goes with the open, which reads it only to let a message about self-harm or abuse past the caps.
+      const opened = await api().post("/api/v1/assistant/conversations", { language: locale, ...(about?.childId ? { childId: about.childId } : {}), text: q });
       if (!opened.ok) {
         setAsking(null);
         if (!goOn) setQuestion(q);

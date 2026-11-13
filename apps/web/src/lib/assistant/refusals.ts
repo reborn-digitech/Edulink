@@ -208,7 +208,9 @@ export const INJECTION_DETECTORS: RegExp[] = [
   /\bsystem prompt\b/,
   /\byou are now\b/,
   /\b(?:pretend (?:to be|you are)|act as (?:a|an|my)|role-?play as|jailbreak|developer mode|dan mode|do anything now)\b/,
-  /<\/?\s*(?:system|assistant|user|instruction|q|passage|data)\s*>/,
+  // TA-280: every tag the prompt itself writes (prompt.ts: <question>, <passage n="…" source="…">, <data n="…" name="…">,
+  // <exams>, <previous>, <text>, <glossary>), with or without attributes, as well as the chat roles'.
+  /<\/?\s*(?:system|assistant|user|instruction|q|question|passage|data|exams|previous|text|glossary)(?:\s+[^<>]{0,200})?\s*>/,
   /\[\/?inst\]|<\|im_(?:start|end)\|>|###\s*(?:instruction|system)/,
   /\bnew instructions?\b/,
   /(?:निर्देशों को (?:अनदेखा|नज़रअंदाज़|नजरअंदाज)|पिछले निर्देश भूल|सिस्टम प्रॉम्प्ट)/,
@@ -285,10 +287,17 @@ export function detectInjection(text: string): boolean {
   return FOLDED_INJECTION.some((d) => ts.some((t) => d.test(t)));
 }
 
-/** A passage or a door's answer with every line that tries to instruct removed; the rest is still data. */
+/**
+ * A passage or a door's answer with every line that tries to instruct removed; the rest is still data. An instruction a
+ * PDF wrapped over two lines ("Ignore all the previous / instructions and …") is found with the two lines read as one,
+ * and both go (TA-280).
+ */
 export function withoutInjectedLines(text: string): string {
-  return text
-    .split(/\r?\n/)
-    .filter((line) => !detectInjection(line))
-    .join("\n");
+  const lines = text.split(/\r?\n/);
+  const bad = lines.map((line) => detectInjection(line));
+  for (let i = 0; i + 1 < lines.length; i++) {
+    if (bad[i] || bad[i + 1] || !lines[i]!.trim() || !lines[i + 1]!.trim()) continue;
+    if (detectInjection(`${lines[i]} ${lines[i + 1]}`)) bad[i] = bad[i + 1] = true;
+  }
+  return lines.filter((_, i) => !bad[i]).join("\n");
 }

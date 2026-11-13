@@ -11,7 +11,9 @@ const DRAWER_PARAM = "vidura";
  */
 export function backTo(from: string | null, referer: string | null, host: string | null, role: string | null): string {
   const home = role && role in ROLE_HOME ? ROLE_HOME[role as Role] : "/";
-  const ok = (p: string | null | undefined): p is string => !!p && /^\/(?!\/)/.test(p) && !p.startsWith("/assistant");
+  // TA-026: a browser reads a backslash in an http address as a slash and drops tabs and line breaks, so "/\evil.example"
+  // and "/<tab>/evil.example" leave the platform; a path with either, or with any control character, is not one of ours.
+  const ok = (p: string | null | undefined): p is string => !!p && /^\/(?![/\\])/.test(p) && !/[\\\u0000-\u001f\u007f]/.test(p) && !p.startsWith("/assistant");
   if (ok(from)) return from;
   if (referer && host) {
     try {

@@ -73,7 +73,7 @@ import { aboutCall, aboutName, aboutRow } from "./explain";
 import { summariseDoor } from "./summary";
 import { figureSet, unsupportedFigures, type FigureSet } from "./figures";
 import { featuresOf } from "../api-catalog/types";
-import { formatDateKey } from "../dates";
+import { addDaysToKey, formatDateKey, zonedStartOfDay } from "../dates";
 import { suggestionsFor } from "./suggestions";
 // Vidura pass 3 (18 Oct 2026): the operator's standard answers.
 import { countStandardHit, findStandardAnswer } from "./standard-store";
@@ -294,6 +294,17 @@ async function unavailableReason(asker: Asker, now: Date, opts: { countToday: bo
   return { reason: null, usedToday };
 }
 
+/**
+ * TA-279: the seconds from `now` to the start of the school's next day (the daily cap's count starts again) or next
+ * month (the budget's), in the school's own zone; at least a minute.
+ */
+function secondsUntilSchoolDay(timezone: string, now: Date, unit: "day" | "month"): number {
+  const today = dayKeyFor(timezone, now);
+  const [y, m] = today.split("-").map(Number) as [number, number];
+  const next = unit === "day" ? addDaysToKey(today, 1) : m === 12 ? `${y + 1}-01-01` : `${y}-${String(m + 1).padStart(2, "0")}-01`;
+  return Math.max(60, Math.ceil((zonedStartOfDay(next, timezone).getTime() - now.getTime()) / 1000));
+}
+
 function retentionDays(): number {
   return readRetentionConfig().config.assistantDays;
 }
@@ -342,10 +353,18 @@ function conversationView(row: { id: string; language: string; createdAt: Date; 
 }
 
 /** Opens a conversation. A pupil's first one tells their guardians once (the one-time notice). */
-export async function openConversation(ctx: ActiveContext, input: { language: AssistantLanguage; childId?: string }, now = new Date()): Promise<AssistantConversation> {
+export async function openConversation(ctx: ActiveContext, input: { language: AssistantLanguage; childId?: string; text?: string }, now = new Date()): Promise<AssistantConversation> {
   const asker = await askerFor(ctx, input.childId);
   const { reason } = await unavailableReason(asker, now, { countToday: true });
-  if (reason) throw new AssistantUnavailableError(reason, { cap: dailyQuestionCap() });
+  // TA-279: the caps' Retry-After to the school's own next day or month.
+  const capped: Record<string, number> = reason === "DAILY_CAP" || reason === "SCHOOL_BUDGET" ? { retryAfterSeconds: secondsUntilSchoolDay((await schoolOf(asker.schoolId)).timezone, now, reason === "DAILY_CAP" ? "day" : "month") } : {};
+  // TA-019: the drawer and the phone open a conversation on the first question, so the caps' refusal here would answer a
+  // self-harm message or a child telling of abuse with the cap; such a first question (read by the refusal table only,
+  // not stored) opens past the person's day and the school's month, and ask() gives it the helpline and the counsellor
+  // route. The switches and a guardian's opt-out still refuse, and an open with no text or any other text keeps the caps.
+  const crisisVerdict = (reason === "DAILY_CAP" || reason === "SCHOOL_BUDGET") && input.text ? tableVerdict(input.text.trim(), asker.role) : null;
+  const crisis = crisisVerdict === "SELF_HARM" || crisisVerdict === "ABUSE_DISCLOSURE";
+  if (reason && !crisis) throw new AssistantUnavailableError(reason, { cap: dailyQuestionCap(), ...capped });
   const row = await db.assistantConversation.create({
     data: { schoolId: asker.schoolId, membershipId: asker.membershipId, userId: asker.userId, role: asker.role, language: input.language, createdAt: now, lastAt: now },
   });
@@ -554,12 +573,21 @@ export async function ask(
   const conv = await ownConversation(ctx, conversationId);
   const asker: Asker = { userId: ctx.user.id, role: conv.role as Role, membershipId: conv.membershipId, schoolId: conv.schoolId, locale: localeOf(ctx) };
   const policy = policyFor(asker.role);
+  // TA-019: a message the refusal table reads as self-harm, or a child telling of abuse, is never answered with a bare
+  // refusal (decision 0005): it is given the helpline sentence and the counsellor route past the person's day and the
+  // school's month, neither of which needs the model. The platform's and the school's switches and a guardian's
+  // opt-out still stand.
+  const crisisVerdict = tableVerdict(input.text.trim(), asker.role);
+  const crisis = crisisVerdict === "SELF_HARM" || crisisVerdict === "ABUSE_DISCLOSURE";
   const { reason } = await unavailableReason(asker, now, { countToday: false });
-  if (reason) throw new AssistantUnavailableError(reason, { cap: dailyQuestionCap() });
   const school = await schoolOf(asker.schoolId);
+  // TA-279: Retry-After is counted to the school's own next day and month, when its counts start again.
+  if (reason && !(crisis && reason === "SCHOOL_BUDGET")) throw new AssistantUnavailableError(reason, { cap: dailyQuestionCap(), ...(reason === "SCHOOL_BUDGET" ? { retryAfterSeconds: secondsUntilSchoolDay(school.timezone, now, "month") } : {}) });
   const day = { schoolId: asker.schoolId, userId: asker.userId, dayKey: dayKeyFor(school.timezone, now) };
   const reserved = await reserveQuestion(day, dailyQuestionCap());
-  if (!reserved.ok) throw new AssistantUnavailableError("DAILY_CAP", { cap: dailyQuestionCap() });
+  if (!reserved.ok && !crisis) throw new AssistantUnavailableError("DAILY_CAP", { cap: dailyQuestionCap(), retryAfterSeconds: secondsUntilSchoolDay(school.timezone, now, "day") });
+  /** Gives the day's question back, when one was taken (a crisis message past the cap took none). */
+  const giveBack = () => (reserved.ok ? releaseQuestion(day) : Promise.resolve());
 
   const original = input.text.trim();
   const lexicon = await nameLexicon({ userId: asker.userId, schoolId: asker.schoolId });
@@ -571,7 +599,7 @@ export async function ask(
   // continuation in a row is not offered (GO_ON_MAX), and anything else typed is a question of its own.
   const last = previous[0]?.role === "ASSISTANT" ? previous[0] : null;
   const lastStored = last ? readStored(last.citationsJson) : null;
-  const goOn = !!last && !!lastStored?.cut && lastStored.depth < GO_ON_MAX && (input.goOn === true || asksToGoOn(original)) ? await continuationOf(conv.id, last, lastStored) : null;
+  const goOn = !crisis && !!last && !!lastStored?.cut && lastStored.depth < GO_ON_MAX && (input.goOn === true || asksToGoOn(original)) ? await continuationOf(conv.id, last, lastStored) : null;
   const askedText = goOn ? goOn.root.text : original;
   const language: AssistantLanguage = input.language ?? detectLanguage(askedText) ?? ((["en", "hi", "mr"].includes(conv.language) ? conv.language : asker.locale) as AssistantLanguage);
   const question = await db.assistantMessage.create({ data: { conversationId: conv.id, schoolId: conv.schoolId, role: "USER", text: original, textForModel: stripped.text, createdAt: now } });
@@ -608,11 +636,11 @@ export async function ask(
     });
   } catch (error) {
     if (!(error instanceof ModelUnavailable) && !isModelFailure(error)) {
-      await releaseQuestion(day);
+      await giveBack();
       throw error;
     }
     // The endpoint is down or too slow: the sentence, and the question is given back to the person's day.
-    await releaseQuestion(day);
+    await giveBack();
     outcome = { verdict: "MODEL_UNAVAILABLE", text: fixedSentence("MODEL_UNAVAILABLE", language, null), mode: null, chip: null, cut: false, hint: false, citations: [], matchedAssignmentId: null, promptTokens: 0, completionTokens: 0, modelCalls: 0 };
   }
 
@@ -744,6 +772,10 @@ async function answerQuestion(a: AnswerInput): Promise<Outcome> {
   // for by name refused before anything is searched (the owner's decision 3: privacy unchanged).
   const now = deps.now();
   const dataCtx = policy.data ? (a.dataContext ?? (await dataContextFor({ role: asker.role, userId: asker.userId, membershipId: asker.membershipId, schoolId: asker.schoolId, question: a.original, now, timezone: school.timezone }))) : null;
+  // TA-024: the guardian named their child at another school: nothing of that child is read here, nor the child here in
+  // their place, and the person is told which school this conversation is about.
+  const elsewhere = (dataCtx as { otherSchoolChild?: { name: string; school: string } | null } | null)?.otherSchoolChild ?? null;
+  if (elsewhere) return { ...fixed("OUT_OF_SCOPE", { scope: "RECORDS" }), text: translator(language)("assistantService.otherSchoolChild", { child: elsewhere.name, school: elsewhere.school }) };
   if (asksAnotherPersonsRecord(a.original, a.lexicon, dataCtx?.childNames ?? [])) return fixed("PERSONAL_DATA");
   if (dataCtx?.childNames.length) a.stripped = stripIdentifiers(ownChildrenAsWords(a.original, dataCtx.childNames), a.lexicon).text;
   // "Explain this" (pass 2) names the child whose row it is: every door of the question reads that child.
@@ -931,6 +963,8 @@ async function answerQuestion(a: AnswerInput): Promise<Outcome> {
     },
     { chat: deps.classify ?? deps.chat },
   );
+  // TA-025: the classifier gave no word (unreachable or timed out): the model did not answer, so the question is given back.
+  if (!gate.pass && gate.unavailable) throw new ModelUnavailable("the classifier did not answer");
   if (!gate.pass) {
     // Pass 3, the unanswered report: below both thresholds, or a platform or topic question with no page or passage
     // close enough, found nothing; the classifier's REFUSE is its own.
@@ -992,7 +1026,10 @@ async function answerQuestion(a: AnswerInput): Promise<Outcome> {
     citationsByNumber = curriculum.slice(0, CURRICULUM_PASSAGES).map((h, i) => ({ kind: "CURRICULUM", n: i + 1, board: h.board, book: h.book, grade: h.grade, chapter: h.chapter, section: h.section, page: h.pageStart, sourceUrl: h.sourceUrl || null, chunkId: h.chunkId, attribution: h.attribution ?? null }));
     // Pass 4: the passages' own facts the reference links read (the heading, whether it is a law passage).
     lawPassages = new Set(curriculum.slice(0, CURRICULUM_PASSAGES).flatMap((h, i) => (/\blaw\b|legal|constitution/i.test(`${h.subject} ${h.grade} ${h.book}`) ? [i + 1] : [])));
-    allowedText = passages.map((p) => `${p.heading}\n${p.text}`).join("\n");
+    // TA-018: what the answer gate allows is the passages as the book prints them (contacts and links still out), not as
+    // stripped of the school's names for the model: a name the book prints is the book's (strip.ts answerProblems), and
+    // with a member who shares it the stripped text no longer held it, so every answer naming it was discarded.
+    allowedText = curriculum.slice(0, CURRICULUM_PASSAGES).map((h, i) => `${passages[i]!.heading}\n${withoutInjectedLines(stripIdentifiers(h.text.slice(0, 1800)).text)}`).join("\n");
     const band = gradeBandOf(grade, { college, teacher: !policy.assessed });
     // The exam-scope reader (10 Oct 2026): a pupil asking when an exam is or whether a subject is in it gets
     // their own exams door read, as the person, and its lines beside the passages. Nothing else in tutor mode reads a door.
@@ -1008,7 +1045,8 @@ async function answerQuestion(a: AnswerInput): Promise<Outcome> {
     const shownHelp = deps.helpSection ? await wholeSections(help.slice(0, HELP_PASSAGES), deps.helpSection) : help;
     const passages = shownHelp.slice(0, HELP_PASSAGES).map((h, i) => ({ n: i + 1, heading: `${h.title}${h.pagePath ? ` — page ${h.pagePath}` : ""}`, text: withoutInjectedLines(stripIdentifiers(h.text.slice(0, deps.helpSection ? 2400 : 1200), a.lexicon).text) }));
     citationsByNumber = shownHelp.slice(0, HELP_PASSAGES).map((h, i) => ({ kind: "HELP", n: i + 1, title: h.title, pagePath: h.pagePath, entryId: h.entryId }));
-    allowedText = passages.map((p) => `${p.heading}\n${p.text}`).join("\n");
+    // TA-018: the help passages as written, the same way as the book's.
+    allowedText = shownHelp.slice(0, HELP_PASSAGES).map((h, i) => `${passages[i]!.heading}\n${withoutInjectedLines(stripIdentifiers(h.text.slice(0, deps.helpSection ? 2400 : 1200)).text)}`).join("\n");
     // The person's own doors, read as the person (router.ts); their rows numbered after the passages.
     // "Using Shalaghar" picked by the person (Vidura pass 1): the guides only, the person's own data not read.
     // "Explain this" (pass 2): the row the link names is the answer's data, and no other door is read beside it.
@@ -1093,6 +1131,7 @@ async function answerQuestion(a: AnswerInput): Promise<Outcome> {
   // Every number a passage or a numbered row of the person's own data carries may be cited, and nothing else.
   const citable = new Set([...citationsByNumber.map((c) => c.n), ...rowLinks.map((l) => l.n), ...blockNumbers]);
   const checked = await gateAnswer({ answer: content, label: gate.label, passageCount: Math.max(0, ...citable), allowedText, lexicon: a.lexicon, hint, alsoLabel: exams ? "PLATFORM" : undefined, role: asker.role }, { chat: deps.classify ?? deps.chat });
+  if (!checked.pass && checked.unavailable) throw new ModelUnavailable("the answer's classifier did not answer");
   if (checked.tokens) modelCalls += 1;
   tokens.prompt += checked.tokens;
   // The reason codes only, never a word of the question or the answer (Phase D: discards were otherwise invisible to the operator).
