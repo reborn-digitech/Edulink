@@ -412,6 +412,9 @@ export type DemandLine = { headId: string; code: string; name: string; grossPais
 
 type ConcessionRow = { headId: string | null; kind: string; value: number };
 
+/** A college office's concession limit when it has set none (Rs 5,000): college-fees.ts's officeSettings and the rewrite below. */
+export const CONCESSION_LIMIT_DEFAULT_PAISE = 500_000;
+
 /**
  * One line's own concession: percentages (on this head or on all) on the
  * line, and an amount on THIS head capped at the line. Rounded half up to the
@@ -492,7 +495,24 @@ export async function regenerateDemands(tx: typeof db, schoolId: string, student
   const admitted = (await tx.pupilRecord.findUnique({ where: { studentMembershipId }, select: { admissionDate: true } }))?.admissionDate ?? null;
   const dueOn = (day: Date) => (admitted && admitted.getTime() > day.getTime() ? admitted : day);
   // A college's concession above the office's limit waits for the principal (college-fees.ts): only an APPROVED one is applied.
-  const concessions: ConcessionRow[] = await tx.feeConcession.findMany({ where: { schoolId, studentMembershipId, academicYearId, revokedAt: null, approvalStatus: "APPROVED" }, select: { headId: true, kind: true, value: true } });
+  const approved = await tx.feeConcession.findMany({ where: { schoolId, studentMembershipId, academicYearId, revokedAt: null, approvalStatus: "APPROVED" }, select: { id: true, headId: true, kind: true, value: true, grantedByUserId: true, approvedByUserId: true } });
+  const back = new Set<string>();
+  // THE OFFICE'S LIMIT AT EVERY REWRITE (TA-004, testing analysis of 13 November 2026). A college office applies a
+  // concession on its own word only while what its own concessions take together stays within the limit; a plan
+  // moved to a dearer structure can take them past it. Then they go back to the principal (PENDING) and are not
+  // applied until approved. Only a college's office approves its own (approvedByUserId is the granter); a school's
+  // concession carries no approver and a principal's approval another user, so neither is touched.
+  const officeOwn = approved.filter((c) => c.approvedByUserId !== null && c.approvedByUserId === c.grantedByUserId);
+  if (officeOwn.length) {
+    const takes = plan.structure.instalments.reduce((a, inst) => a + concessionOnInstalment(inst.lines.map((l) => ({ headId: l.headId, grossPaise: l.amountPaise })), officeOwn).reduce((x, y) => x + y, 0), 0);
+    const limit = (await tx.collegeOfficeSettings.findUnique({ where: { schoolId }, select: { concessionLimitPaise: true } }))?.concessionLimitPaise ?? CONCESSION_LIMIT_DEFAULT_PAISE;
+    if (takes > limit) {
+      for (const c of officeOwn) back.add(c.id);
+      await tx.feeConcession.updateMany({ where: { id: { in: [...back] }, schoolId }, data: { approvalStatus: "PENDING", approvedByUserId: null, approvedAt: null } });
+      await audit({ schoolId, action: "college.fees.concessionBackToPrincipal", targetType: "Membership", targetId: studentMembershipId, meta: { concessions: back.size, takesPaise: takes, limitPaise: limit } }, tx);
+    }
+  }
+  const concessions: ConcessionRow[] = approved.filter((c) => !back.has(c.id));
   const wanted = new Set(plan.structure.instalments.map((i) => i.id));
   let written = 0;
   let kept = 0;

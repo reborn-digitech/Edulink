@@ -67,6 +67,11 @@ type TenantTx = {
     findUnique(args: unknown): Promise<{ id: string; linesJson: string } | null>;
     delete(args: unknown): Promise<unknown>;
   };
+  courseRegistration: {
+    findMany(args: unknown): Promise<{ id: string }[]>;
+    updateMany(args: unknown): Promise<{ count: number }>;
+  };
+  auditLog: { findMany(args: unknown): Promise<{ meta: string }[]> };
 };
 
 export const LEAVING_REASONS = ["TRANSFERRED", "GRADUATED", "LEFT"] as const;
@@ -234,6 +239,7 @@ export async function recordDeparture(
   // inside it is refused by the policy — and refused in the silent direction,
   // as zero rows rather than an error. See db.ts.
   let cancelledDemands = 0;
+  let droppedRegistrationIds: string[] = [];
   const record = await db.$tenantTransaction(async (tx: unknown) => {
     const t = tx as TenantTx;
     // A live record from an earlier stay — one written before readmission
@@ -294,6 +300,25 @@ export async function recordDeparture(
       data: { status: "REMOVED", removedAt: leftAt },
     });
 
+    // A COLLEGE STUDENT'S COURSES (TA-003, testing analysis of 13 November 2026). The registrations of a term that
+    // runs on past the last day are DROPPED with the leaving, so no lecture sheet, mark sheet, homework count or exam
+    // roll of that term carries them; a term that ended by the last day keeps them (the student finished it). The
+    // seat's status is not written here (R-20: no new writer of it); the readers hold seats and registrations to
+    // leftAt through studyingOn in academics.ts. A school has no registrations and this writes nothing. The ids dropped
+    // go into the leaving's audit row, so an undone leaving puts back these and no course the student dropped themselves.
+    droppedRegistrationIds = (
+      await t.courseRegistration.findMany({
+        where: { schoolId, studentMembershipId: membership.id, status: "REGISTERED", term: { endsOn: { gt: leftOnKey } } },
+        select: { id: true },
+      })
+    ).map((r) => r.id);
+    if (droppedRegistrationIds.length > 0) {
+      await t.courseRegistration.updateMany({
+        where: { id: { in: droppedRegistrationIds }, schoolId, studentMembershipId: membership.id, status: "REGISTERED" },
+        data: { status: "DROPPED" },
+      });
+    }
+
     // FEES AFTER THE LAST DAY (A3-journeys-15, audit of 5 October 2026). An instalment falling due after the pupil's
     // last day, with nothing paid against it, is CANCELLED: the row stays on the ledger (the office can see what was
     // demanded and when it stopped), the dues list, the reminders and the family's "outstanding" stop chasing it.
@@ -326,7 +351,7 @@ export async function recordDeparture(
     targetId: membership.id,
     // The reason is one of LEAVING_REASONS; the destination is free text the
     // office typed and stays on the record, not in the log the whole office reads.
-    meta: { recordId: record.id, reason: input.reason, hasDestination: destination !== null, cancelledDemands },
+    meta: { recordId: record.id, reason: input.reason, hasDestination: destination !== null, cancelledDemands, droppedRegistrations: droppedRegistrationIds.length, droppedRegistrationIds },
   });
 
   /**
@@ -907,8 +932,36 @@ export async function undoDeparture(
   let reopenedDemands = 0;
   let restoredLines = 0;
   let settlementRemoved = false;
+  let restoredRegistrations = 0;
   await db.$tenantTransaction(async (tx: unknown) => {
     const t = tx as TenantTx;
+    // THE COURSES THE LEAVING DROPPED ARE TAKEN AGAIN (TA-003). recordDeparture set a college student's registrations
+    // of a running term to DROPPED and named them in its audit row; the row of this leaving is the one naming the live
+    // record, read before the record is closed below. Only those ids, and only while still DROPPED, go back to
+    // REGISTERED: a course the student dropped themselves is not among them, and the closed registration window would
+    // otherwise keep the student off every lecture and mark sheet of the term.
+    const live = await (t.schoolRecord as unknown as { findFirst(args: unknown): Promise<{ id: string } | null> }).findFirst({
+      where: { schoolId, studentMembershipId: membership.id },
+      select: { id: true },
+    });
+    if (live) {
+      const leaves = await t.auditLog.findMany({
+        where: { schoolId, action: "student.leave", targetType: "Membership", targetId: membership.id },
+        orderBy: { createdAt: "desc" },
+        take: 20,
+        select: { meta: true },
+      });
+      const meta = leaves.map((r) => readJson<{ recordId?: unknown; droppedRegistrationIds?: unknown }>(r.meta, {})).find((m) => m.recordId === live.id);
+      const ids = Array.isArray(meta?.droppedRegistrationIds) ? meta.droppedRegistrationIds.filter((id): id is string => typeof id === "string") : [];
+      if (ids.length > 0) {
+        restoredRegistrations = (
+          await t.courseRegistration.updateMany({
+            where: { id: { in: ids }, schoolId, studentMembershipId: membership.id, status: "DROPPED" },
+            data: { status: "REGISTERED" },
+          })
+        ).count;
+      }
+    }
     // Closed, not deleted: a serial the office may already have printed stays on the register (LIFECYCLE-7).
     await closeLeavingRecord(t, schoolId, membership.id, "UNDONE");
     await t.membership.update({ where: { id: membership.id }, data: { leftAt: null } });
@@ -946,7 +999,7 @@ export async function undoDeparture(
     action: "student.leave.undo",
     targetType: "Membership",
     targetId: membership.id,
-    meta: { reopenedDemands, restoredLines, settlementRemoved },
+    meta: { reopenedDemands, restoredLines, settlementRemoved, restoredRegistrations },
   });
 
   // The family was told of the leaving, and holds its paper; they are told it is withdrawn (TA-411).

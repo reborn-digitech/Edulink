@@ -34,6 +34,7 @@ import { streamsOf } from "./streams";
 import { iqacActor, type Desk } from "./iqac";
 import { attainmentForOffering } from "./academics-coursefile";
 import { batchStudents } from "./placement-record";
+import { SEATED_NOW } from "./academics";
 import { lawInternshipSummary, practicalRecordSummary, teachingPracticeSummary } from "./stream-summaries";
 import {
   academicPerformance,
@@ -223,7 +224,7 @@ async function streamTeachers(schoolId: string, scope: { programmes: ProgrammeRo
 
 /** Students on each programme by year of study, as the seats stand. */
 async function studentsByProgramme(schoolId: string, programmes: ProgrammeRow[]) {
-  const seats = programmes.length ? await db.studentProgramme.findMany({ where: { schoolId, status: "ACTIVE", programmeId: { in: programmes.map((p) => p.id) } }, select: { programmeId: true, yearOfStudy: true } }) : [];
+  const seats = programmes.length ? await db.studentProgramme.findMany({ where: { schoolId, ...SEATED_NOW, programmeId: { in: programmes.map((p) => p.id) } }, select: { programmeId: true, yearOfStudy: true } }) : [];
   return programmes.map((p) => {
     const on = seats.filter((s) => s.programmeId === p.id);
     const byYear = Array.from({ length: Math.max(1, p.durationYears) }, (_, i) => on.filter((s) => s.yearOfStudy === i + 1).length);

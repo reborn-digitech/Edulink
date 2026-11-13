@@ -1,4 +1,4 @@
-import { teachingCardsGeneratedSchema, teachingGenerateCardsSchema } from "@edulink/contracts";
+import { teachingCardsGeneratedTitleSchema, teachingGenerateCardsSchema } from "@edulink/contracts";
 import { requireApiRole } from "@/lib/tenancy";
 import { generateCards } from "@/lib/report-cards";
 import { apiRefused } from "@/lib/api-reads/admin";
@@ -18,7 +18,8 @@ export async function POST(request: Request, { params }: { params: Promise<{ cla
     if (!parsed.success) return apiInvalid(parsed);
     const result = await generateCards(ctx, classId, { title: parsed.data.title, assignmentIds: parsed.data.assignmentIds, termId: parsed.data.termId ?? null, academicYearId: parsed.data.academicYearId ?? null });
     if (!result.ok) return apiRefused(result);
-    return ok(teachingCardsGeneratedSchema.parse({ created: result.created ?? 0, updated: result.updated ?? 0, skippedPublished: result.skippedPublished ?? 0 }));
+    // The set's title as made: where the class holds the name from another year it carries the year (TA-009).
+    return ok(teachingCardsGeneratedTitleSchema.parse({ created: result.created ?? 0, updated: result.updated ?? 0, skippedPublished: result.skippedPublished ?? 0, title: result.title }));
   } catch (error) {
     return apiFailure(error, "api/v1/teaching/classes/[classId]/report-cards/generate");
   }

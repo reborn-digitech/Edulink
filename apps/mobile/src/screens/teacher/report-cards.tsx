@@ -7,7 +7,7 @@ import {
   coScholasticSaveSchema,
   okSchema,
   staffClassesSchema,
-  teachingCardsGeneratedSchema,
+  teachingCardsGeneratedTitleSchema,
   teachingCardsPublishedSchema,
   teachingCardsWithdrawnSchema,
   teachingReportCardsSchema,
@@ -103,11 +103,12 @@ function Builder({ classId }: { classId: string }) {
   const year = d?.academicYear ?? null;
   const title = name ?? (mode === "term" ? term?.name : mode === "year" ? year?.name : null) ?? d?.selectedTitle ?? "Term 1";
   const generate = useMutation({
-    mutationFn: async (body: TeachingGenerateCardsBody) => teachingCardsGeneratedSchema.parse(unwrap(await api().post(`/api/v1/teaching/classes/${classId}/report-cards/generate`, body))),
+    mutationFn: async (body: TeachingGenerateCardsBody) => teachingCardsGeneratedTitleSchema.parse(unwrap(await api().post(`/api/v1/teaching/classes/${classId}/report-cards/generate`, body))),
     onSuccess: async (result, body) => {
       const ready = t("teacher.draftsReady", { count: result.created + result.updated });
       toast.show(result.skippedPublished ? `${ready}. ${t("teacher.skippedPublished", { count: result.skippedPublished })}` : ready);
-      setViewTitle(body.title);
+      // The set as made: where the class holds the name from another year, the title carries the year (TA-009).
+      setViewTitle(result.title ?? body.title);
       await refresh();
     },
   });

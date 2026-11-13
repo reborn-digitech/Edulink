@@ -196,7 +196,8 @@ export function Builder({
           ? t("teacher.skippedPublished", { count: result.skippedPublished })
           : undefined,
       });
-      router.push(`/teacher/classes/${classId}/report-cards?title=${encodeURIComponent(title)}`);
+      // The set as made: its title carries the year where the class holds the name from another year (TA-009).
+      router.push(`/teacher/classes/${classId}/report-cards?title=${encodeURIComponent(result.title ?? title)}`);
       router.refresh();
     });
   }

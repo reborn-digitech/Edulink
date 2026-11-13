@@ -305,7 +305,35 @@ export type GenerateResult = {
   created?: number;
   updated?: number;
   skippedPublished?: number;
+  /** The set's title as made: the asked one, or with the year after it where the class holds it from another year (TA-009). */
+  title?: string;
 };
+
+/**
+ * THE YEAR A CARD BELONGS TO (TA-009): its academicYearId (a term's card and the annual card carry it), else, for a
+ * card built from hand-picked papers, the academic year its window ends in — the latest year begun by that day, the
+ * rule `yearOfPapers` uses below. Null when the school has no year that early.
+ */
+async function cardYears(schoolId: string) {
+  const years = await db.academicYear.findMany({ where: { schoolId }, orderBy: { startDate: "desc" }, select: { id: true, name: true, startDate: true } });
+  const yearOf = (c: { academicYearId: string | null; toDateKey: string }) => c.academicYearId ?? years.find((y) => y.startDate.toISOString().slice(0, 10) <= c.toDateKey)?.id ?? null;
+  return { years, yearOf };
+}
+
+/**
+ * The ids of ONE set's cards (TA-009): the cards of the title in the class with the status asked, of one academic
+ * year, the latest among them. Generate keeps a title to one year in a class from now on; a class that came to hold
+ * one title from two years before that has publish and take back act on the latest year's cards alone, never on an
+ * earlier year's issued ones.
+ */
+async function setCardIds(schoolId: string, classId: string, title: string, status: "DRAFT" | "PUBLISHED"): Promise<string[]> {
+  const cards = await db.reportCard.findMany({ where: { schoolId, classId, title, status }, select: { id: true, academicYearId: true, toDateKey: true } });
+  if (cards.length === 0) return [];
+  const { years, yearOf } = await cardYears(schoolId);
+  const rank = (id: string | null) => (id === null ? years.length : years.findIndex((y) => y.id === id));
+  const latest = cards.map((c) => yearOf(c)).sort((a, b) => rank(a) - rank(b))[0] ?? null;
+  return cards.filter((c) => yearOf(c) === latest).map((c) => c.id);
+}
 
 export async function generateCards(
   ctx: ActiveContext,
@@ -329,8 +357,8 @@ export async function generateCards(
   if (year && !termSharesComplete(year.terms)) return { ok: false, errorKey: "reportCards.giveEveryTermAShare" };
 
   const typedTitle = input.title.trim().slice(0, 120);
-  const title = term ? term.name : year && typedTitle.length < 2 ? year.name : typedTitle;
-  if (title.length < 2) return { ok: false, errorKey: "reportCards.giveName" };
+  const named = term ? term.name : year && typedTitle.length < 2 ? year.name : typedTitle;
+  if (named.length < 2) return { ok: false, errorKey: "reportCards.giveName" };
   const pickedIds = (input.assignmentIds ?? []).slice(0, 100);
   if (pickedIds.length === 0 && !term && !year) {
     return { ok: false, errorKey: "reportCards.chooseOne" };
@@ -421,6 +449,27 @@ export async function generateCards(
       : addDaysToKey(firstPaper, -DEFAULT_WINDOW_DAYS));
   if (fromDateKey > toDateKey) {
     return { ok: false, errorKey: "reportCards.windowBackwards" };
+  }
+
+  /**
+   * ONE SET, ONE YEAR (TA-009, testing analysis of 13 November 2026). A set is found by its class row and its title
+   * (this look-up, publish, take back, the set's signatures, the PDF bundle, the builder's list), a class row can
+   * outlive a year (a class that stays, a pupil held back in it, a row picked again at promotion) and a term's name is
+   * unique only inside its year. So where the row already holds cards of this title from ANOTHER academic year, this
+   * year's set takes the title with the year's name after it, "Term 1 (2026–27)": last year's issued cards are then
+   * neither skipped over, overwritten, issued again nor taken back by this year's presses, and their signatures stay
+   * theirs. A card's year is its academicYearId, or, built from papers, the year its window ends in. The title carries
+   * the year until a unique key on class, pupil, title and year replaces the one on class, pupil and title.
+   */
+  const { yearOf, years } = await cardYears(ctx.schoolId!);
+  const thisYearId = term?.academicYearId ?? year?.id ?? yearOf({ academicYearId: null, toDateKey });
+  const otherYearHolds = async (t: string) => (await db.reportCard.findMany({ where: { schoolId: ctx.schoolId!, classId, title: t }, select: { academicYearId: true, toDateKey: true } })).some((c) => yearOf(c) !== thisYearId);
+  let title = named;
+  if (await otherYearHolds(named)) {
+    const suffix = ` (${years.find((y) => y.id === thisYearId)?.name ?? ""})`;
+    if (suffix === " ()" || suffix.length > 100) return { ok: false, errorKey: "reportCards.titleTakenOtherYear" };
+    title = `${named.slice(0, 120 - suffix.length).trimEnd()}${suffix}`;
+    if (await otherYearHolds(title)) return { ok: false, errorKey: "reportCards.titleTakenOtherYear" };
   }
 
   const roll = await db.enrollment.findMany({
@@ -656,7 +705,7 @@ export async function generateCards(
     meta: { title, created, updated, skippedPublished, assessments: assignments.length, scope: term ? "TERM" : year ? "YEAR" : "PAPERS" },
   });
 
-  return { ok: true, created, updated, skippedPublished };
+  return { ok: true, created, updated, skippedPublished, title };
 }
 
 /**
@@ -746,8 +795,10 @@ export async function publishCards(
 ): Promise<{ ok: boolean; errorKey?: TranslationKey; published?: number }> {
   await assertMayWriteCards(ctx, classId);
 
+  // One year's drafts under the title (TA-009), never an earlier year's card that a take-back left in draft.
+  const ids = await setCardIds(ctx.schoolId!, classId, title, "DRAFT");
   const drafts = await db.reportCard.findMany({
-    where: { schoolId: ctx.schoolId!, classId, title, status: "DRAFT" },
+    where: { id: { in: ids }, schoolId: ctx.schoolId!, classId, title, status: "DRAFT" },
     select: {
       id: true,
       layout: true,
@@ -779,7 +830,7 @@ export async function publishCards(
   }
 
   await db.reportCard.updateMany({
-    where: { schoolId: ctx.schoolId!, classId, title, status: "DRAFT" },
+    where: { id: { in: drafts.map((d) => d.id) }, schoolId: ctx.schoolId!, classId, title, status: "DRAFT" },
     data: { status: "PUBLISHED", publishedAt: new Date() },
   });
 
@@ -842,13 +893,16 @@ export async function withdrawCards(
 ): Promise<{ ok: boolean; errorKey?: TranslationKey; withdrawn?: number }> {
   await assertMayWriteCards(ctx, classId);
 
+  // One year's issued cards under the title (TA-009): an earlier year's set that shares it stays issued.
+  const ids = await setCardIds(ctx.schoolId!, classId, title, "PUBLISHED");
   const result = await db.reportCard.updateMany({
-    where: { schoolId: ctx.schoolId!, classId, title, status: "PUBLISHED" },
+    where: { id: { in: ids }, schoolId: ctx.schoolId!, classId, title, status: "PUBLISHED" },
     data: { status: "DRAFT", publishedAt: null, studentName: null },
   });
   if (result.count === 0) return { ok: false, errorKey: "reportCards.nothingUnderName" };
-  // Taken back, the set is unsigned: published again, it asks again.
-  await unsignCardSet(ctx.schoolId!, classId, title);
+  // Taken back, the set is unsigned: published again, it asks again. The signature rows are keyed by class and title,
+  // so while an earlier year's cards under the same title stay issued, their signatures stay with them (TA-009).
+  if ((await db.reportCard.count({ where: { schoolId: ctx.schoolId!, classId, title, status: "PUBLISHED" } })) === 0) await unsignCardSet(ctx.schoolId!, classId, title);
 
   await audit({
     schoolId: ctx.schoolId,

@@ -20,6 +20,7 @@ import { readJsonArray } from "./json";
 import { gatherFacts, nirfFacts, readEntered, WINDOW_SUM_INPUTS, type Entered } from "./iqac-facts";
 import { evaluate, nirfSubs, round2 } from "./iqac-rules";
 import { frameworkOf, iqacActor, iqacHash, spendFile, type Desk } from "./iqac";
+import { SEATED_NOW } from "./academics";
 import type { ActiveContext } from "./session";
 
 /**
@@ -76,7 +77,7 @@ export function profileRows(p: Awaited<ReturnType<typeof schoolProfile>>): [stri
 async function programmeTable(schoolId: string, year: number) {
   const [programmes, seats, enrolments, records] = await Promise.all([
     db.programme.findMany({ where: { schoolId, archivedAt: null }, orderBy: { code: "asc" }, select: { id: true, code: true, name: true, level: true, durationYears: true, intake: true, departmentId: true, regulator: true, stream: true } }),
-    db.studentProgramme.findMany({ where: { schoolId, status: "ACTIVE" }, select: { programmeId: true, studentMembershipId: true, entryYear: true } }),
+    db.studentProgramme.findMany({ where: { schoolId, ...SEATED_NOW }, select: { programmeId: true, studentMembershipId: true, entryYear: true } }),
     db.programmeEnrolment.findMany({ where: { schoolId }, select: { studentMembershipId: true, category: true } }),
     db.pupilRecord.findMany({ where: { schoolId }, select: { studentMembershipId: true, gender: true } }),
   ]);

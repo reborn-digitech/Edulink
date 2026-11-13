@@ -158,6 +158,8 @@ export const teachingGenerateCardsSchema = z.object({
 export type TeachingGenerateCardsBody = z.infer<typeof teachingGenerateCardsSchema>;
 
 export const teachingCardsGeneratedSchema = z.object({ created: count, updated: count, skippedPublished: count });
+/** The generate answer with the set's title as made (TA-009): the asked name, or with the year after it where the class already holds that name from another year. Optional for an older server. */
+export const teachingCardsGeneratedTitleSchema = teachingCardsGeneratedSchema.extend({ title: z.string().max(200).optional() });
 
 export const teachingCardRemarkSchema = z.object({ cardId: cuid, remark: z.string().max(2_000) });
 export type TeachingCardRemarkBody = z.infer<typeof teachingCardRemarkSchema>;

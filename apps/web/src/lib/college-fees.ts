@@ -8,7 +8,7 @@ import { notify } from "./notify";
 import { readJson, writeJson } from "./json";
 import { todayKey } from "./dates";
 import { currentAcademicYear } from "./academic-year";
-import { assignPlansAs, createStructure, dateToDay, dayToDate, publishStructure, regenerateDemands } from "./fees";
+import { assignPlansAs, CONCESSION_LIMIT_DEFAULT_PAISE, createStructure, dateToDay, dayToDate, publishStructure, regenerateDemands } from "./fees";
 import { campusDesk, collegeDesk, collegeStudent, MONEY_READ, MONEY_WRITE, nameOf, officeUserIds, SCHOOL_MONEY_WRITE, standingOf, yearKeyOf } from "./college-office";
 import { assertGuardianAccess } from "./tenancy";
 import { forSchool } from "./tenant-context";
@@ -156,7 +156,7 @@ export async function raiseDemands(ctx: ActiveContext, input: { academicYearId?:
 
 export async function officeSettings(schoolId: string): Promise<{ concessionLimitPaise: number }> {
   const row = await db.collegeOfficeSettings.findUnique({ where: { schoolId }, select: { concessionLimitPaise: true } });
-  return { concessionLimitPaise: row?.concessionLimitPaise ?? 500_000 };
+  return { concessionLimitPaise: row?.concessionLimitPaise ?? CONCESSION_LIMIT_DEFAULT_PAISE };
 }
 
 export async function accountsSettingsFor(ctx: ActiveContext) {
@@ -171,14 +171,47 @@ export async function saveOfficeSettings(ctx: ActiveContext, input: { concession
   return officeSettings(d.schoolId);
 }
 
+type TermLines = { headId: string; grossPaise: number }[];
+
+/**
+ * The terms a student's concessions for the year will be taken from (TA-004, testing analysis of 13 November 2026):
+ * their demands when they have them; before any is written, the structure of their plan, or else the published
+ * structure their standing (programme, year of study, category) calls for, which is the one `raiseDemands` will put
+ * them on. Null when none of these exists: a concession granted then could not be valued.
+ */
+async function termsFor(schoolId: string, studentMembershipId: string, academicYearId: string): Promise<TermLines[] | null> {
+  const demands = await db.feeDemand.findMany({ where: { schoolId, studentMembershipId, academicYearId, instalmentId: { not: null } }, select: { linesJson: true } });
+  if (demands.length) return demands.map((x) => readJson<TermLines>(x.linesJson, []));
+  const plan = await db.studentFeePlan.findUnique({ where: { studentMembershipId_academicYearId: { studentMembershipId, academicYearId } }, select: { structureId: true } });
+  let structureId = plan?.structureId ?? null;
+  if (!structureId) {
+    const year = await db.academicYear.findFirst({ where: { id: academicYearId, schoolId }, select: { startDate: true } });
+    const s = year ? await standingOf(studentMembershipId, year.startDate.getUTCFullYear()) : null;
+    if (s?.programmeId && s.yearOfStudy !== null && s.category) {
+      const match = await db.feeStructure.findFirst({ where: { schoolId, academicYearId, programmeId: s.programmeId, yearOfStudy: s.yearOfStudy, category: s.category, publishedAt: { not: null }, archivedAt: null }, select: { id: true } });
+      structureId = match?.id ?? null;
+    }
+  }
+  if (!structureId) return null;
+  const instalments = await db.feeInstalment.findMany({ where: { schoolId, structureId }, select: { lines: { select: { headId: true, amountPaise: true } } } });
+  return instalments.length ? instalments.map((i) => i.lines.map((l) => ({ headId: l.headId, grossPaise: l.amountPaise }))) : null;
+}
+
+/**
+ * What a concession takes off this year's terms, in paise. `known` is false when the terms could not be found
+ * (see termsFor): such a concession is the principal's to decide, whatever its face value.
+ */
+function worthOn(terms: TermLines[] | null, c: { headId: string | null; kind: string; value: number }): { paise: number; known: boolean } {
+  if (!terms) return { paise: c.kind === "PERCENT" ? 0 : c.value, known: false };
+  const gross = terms.flat().filter((l) => !c.headId || l.headId === c.headId).reduce((a, l) => a + l.grossPaise, 0);
+  if (c.kind === "PERCENT") return { paise: Math.round((gross * c.value) / 10000), known: true };
+  // An amount is taken per instalment (fees.ts), so its worth is the amount once per term, never more than the gross.
+  return { paise: Math.min(gross, c.value * Math.max(1, terms.length)), known: true };
+}
+
 /** What a concession takes off this year's demands, in paise: worked out on the gross the student's plan asks. */
 async function concessionWorth(schoolId: string, studentMembershipId: string, academicYearId: string, c: { headId: string | null; kind: string; value: number }): Promise<number> {
-  const demands = await db.feeDemand.findMany({ where: { schoolId, studentMembershipId, academicYearId, instalmentId: { not: null } }, select: { linesJson: true } });
-  const lines = demands.flatMap((x) => readJson<{ headId: string; grossPaise: number }[]>(x.linesJson, []));
-  const gross = lines.filter((l) => !c.headId || l.headId === c.headId).reduce((a, l) => a + l.grossPaise, 0);
-  if (c.kind === "PERCENT") return Math.round((gross * c.value) / 10000);
-  // An amount is taken per instalment (fees.ts), so its worth is the amount once per term, never more than the gross.
-  return Math.min(gross, c.value * Math.max(1, demands.length));
+  return worthOn(await termsFor(schoolId, studentMembershipId, academicYearId), c).paise;
 }
 
 /**
@@ -195,9 +228,17 @@ export async function grantCollegeConcession(ctx: ActiveContext, input: { studen
   if (input.kind === "PERCENT" && (input.value <= 0 || input.value > 10000)) throw new AccessError("fees.refusePercent");
   const reason = input.reason.trim().slice(0, 200);
   if (reason.length < 3) throw new AccessError("fees.refuseReason");
-  const valuePaise = await concessionWorth(d.schoolId, student.id, year.id, { headId: input.headId ?? null, kind: input.kind, value: input.value });
+  // THE LIMIT ON WHAT THE OFFICE'S CONCESSIONS TAKE TOGETHER (TA-004). This one is valued on the terms it will be
+  // taken from, demands or not yet; the limit is compared with it plus every live concession of the student's year
+  // the principal has not approved (waiting, or applied by the office on its own word). One that cannot be valued
+  // waits for the principal.
+  const terms = await termsFor(d.schoolId, student.id, year.id);
+  const worth = worthOn(terms, { headId: input.headId ?? null, kind: input.kind, value: input.value });
+  const valuePaise = worth.paise;
+  const unsanctioned = await db.feeConcession.findMany({ where: { schoolId: d.schoolId, studentMembershipId: student.id, academicYearId: year.id, revokedAt: null, approvalStatus: { in: ["PENDING", "APPROVED"] } }, select: { headId: true, kind: true, value: true, approvalStatus: true, grantedByUserId: true, approvedByUserId: true } });
+  const together = unsanctioned.filter((c) => c.approvalStatus === "PENDING" || (c.approvedByUserId !== null && c.approvedByUserId === c.grantedByUserId)).reduce((a, c) => a + worthOn(terms, c).paise, valuePaise);
   const { concessionLimitPaise } = await officeSettings(d.schoolId);
-  const approvalStatus = valuePaise > concessionLimitPaise ? "PENDING" : "APPROVED";
+  const approvalStatus = !worth.known || together > concessionLimitPaise ? "PENDING" : "APPROVED";
   const id = await db.$tenantTransaction(async (raw) => {
     const tx = raw as typeof db;
     const row = await tx.feeConcession.create({ data: { schoolId: d.schoolId, studentMembershipId: student.id, academicYearId: year.id, headId: input.headId ?? null, kind: input.kind, value: input.value, reason, grantedByUserId: d.userId, authority: input.authority.trim().slice(0, 120), approvalStatus, ...(approvalStatus === "APPROVED" ? { approvedByUserId: d.userId, approvedAt: new Date() } : {}) }, select: { id: true } });

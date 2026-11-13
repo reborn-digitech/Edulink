@@ -187,7 +187,7 @@ describe("a term card", () => {
     await as("TEACHER");
     const res = await generatePost(json(`/api/v1/teaching/classes/${classId}/report-cards/generate`, { title: "ignored", assignmentIds: [], termId: term1 }), params({ classId }));
     expect(res.status).toBe(200);
-    expect(await res.json()).toEqual({ created: 2, updated: 0, skippedPublished: 0 });
+    expect(await res.json()).toEqual({ created: 2, updated: 0, skippedPublished: 0, title: `ZZ Term 1 ${String(STAMP).slice(-6)}` });
     const builder = await (await builderGet(get(`/api/v1/teaching/classes/${classId}/report-cards`), params({ classId }))).json();
     expect(builder.academicYear.id).toBe(yearId);
     expect(builder.coScholastic.areas).toEqual(["Discipline", "Art"]);
@@ -222,7 +222,7 @@ describe("a term card", () => {
     await db.examSeries.update({ where: { id: seriesIds.mid }, data: { createdAt } });
     try {
       const res = await generatePost(json(`/api/v1/teaching/classes/${classId}/report-cards/generate`, { title: "ignored", assignmentIds: [], termId: term1 }), params({ classId }));
-      expect(await res.json()).toEqual({ created: 0, updated: 2, skippedPublished: 0 });
+      expect(await res.json()).toEqual({ created: 0, updated: 2, skippedPublished: 0, title: `ZZ Term 1 ${String(STAMP).slice(-6)}` });
       const row = await db.reportCard.findUniqueOrThrow({ where: { id: cardA }, select: { items: { where: { kind: "SCHOLASTIC" }, orderBy: { position: "asc" }, select: { subject: true } } } });
       // Each series holds Mathematics then English; interleaved by position it read M, M, E, E.
       expect(row.items.map((i) => i.subject)).toEqual(["Mathematics", "English", "Mathematics", "English"]);
@@ -242,7 +242,7 @@ describe("a term card", () => {
     expect((await post({ cardId: cardA, grades: [{ area: "Art", grade: "B" }] })).status).toBe(403);
     await as("TEACHER");
     res = await generatePost(json(`/api/v1/teaching/classes/${classId}/report-cards/generate`, { title: "ignored", assignmentIds: [], termId: term1 }), params({ classId }));
-    expect(await res.json()).toEqual({ created: 0, updated: 2, skippedPublished: 0 });
+    expect(await res.json()).toEqual({ created: 0, updated: 2, skippedPublished: 0, title: `ZZ Term 1 ${String(STAMP).slice(-6)}` });
     const builder = await (await builderGet(get(`/api/v1/teaching/classes/${classId}/report-cards`), params({ classId }))).json();
     const a = builder.cards.find((c: { id: string }) => c.id === cardA);
     expect(a.coScholastic).toEqual([{ area: "Discipline", grade: "A", note: "Punctual" }, { area: "Art", grade: null, note: null }]);

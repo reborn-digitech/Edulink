@@ -8,7 +8,7 @@ import { audit } from "./audit";
 import { notify, notifyGuardians } from "./notify";
 import { parentMaySee } from "./student-consent";
 import { dateKeyInZone, dateKeyRange, isDateKey, parseTeachingDays, todayKey, weekdayOfKey } from "./dates";
-import { academicsCaller, currentTerm, divisionNames, ensureLecturesForDay, headsDepartment, hodDepartment, hodDepartments, nameOf, type Caller } from "./academics";
+import { academicsCaller, currentTerm, divisionNames, ensureLecturesForDay, headsDepartment, hodDepartment, hodDepartments, nameOf, registeredStudying, type Caller } from "./academics";
 import { canMissMore, isEligible, percentOf } from "./academics-rules";
 import { batchMemberIds, holdsOn, memberOn } from "./stream-records";
 import type { ActiveContext } from "./session";
@@ -114,7 +114,8 @@ export async function attendanceRows(schoolId: string, termId: string, filter: {
     where: {
       schoolId,
       termId,
-      status: "REGISTERED",
+      // Not one who left before the term's last day (TA-003): a graduate stays on the term they finished.
+      ...registeredStudying(term.endsOn),
       ...(filter.studentMembershipId ? { studentMembershipId: filter.studentMembershipId } : {}),
       ...(filter.studentMembershipIds ? { studentMembershipId: { in: filter.studentMembershipIds } } : {}),
       ...(filter.offeringIds ? { offeringId: { in: filter.offeringIds } } : {}),
@@ -319,7 +320,7 @@ export async function lectureSheet(ctx: ActiveContext, lectureId: string): Promi
   const c = await academicsCaller(ctx, ["FACULTY", "HOD", "ADMIN", "PRINCIPAL"]);
   const { lecture, canMark } = await lectureFor(c, lectureId, "read");
   const [regs, marks, term] = await Promise.all([
-    db.courseRegistration.findMany({ where: { offeringId: lecture.offeringId, status: "REGISTERED" }, select: { studentMembershipId: true, termId: true, student: { select: { user: { select: { name: true, preferredName: true } }, academicSeat: { select: { divisionId: true, programme: { select: { attendanceThreshold: true } } } }, enrollments: { where: { status: "ACTIVE", class: { division: { isNot: null } } }, select: { rollNumber: true, class: { select: { division: { select: { id: true } } } } } } } } } }),
+    db.courseRegistration.findMany({ where: { offeringId: lecture.offeringId, ...registeredStudying(lecture.dateKey) }, select: { studentMembershipId: true, termId: true, student: { select: { user: { select: { name: true, preferredName: true } }, academicSeat: { select: { divisionId: true, programme: { select: { attendanceThreshold: true } } } }, enrollments: { where: { status: "ACTIVE", class: { division: { isNot: null } } }, select: { rollNumber: true, class: { select: { division: { select: { id: true } } } } } } } } } }),
     db.lectureAttendance.findMany({ where: { lectureId }, select: { studentMembershipId: true, status: true } }),
     db.courseOffering.findUniqueOrThrow({ where: { id: lecture.offeringId }, select: { termId: true, course: { select: { scheme: { select: { programme: { select: { attendanceThreshold: true } } } } } } } }),
   ]);
@@ -376,7 +377,7 @@ export async function markLecture(ctx: ActiveContext, lectureId: string, input: 
     if (await tx.lectureAttendance.findFirst({ where: { lectureId, clientId: input.clientId }, select: { id: true } })) return { replay: true as const, tally: await counts(tx), prior: new Map<string, string>() };
     if (lecture.cancelledAt) throw new RuleRefusal("academics.refuseCancelled", 409);
     if (lecture.dateKey > todayKey(c.timeZone)) throw new RuleRefusal("academics.refuseFutureLecture", 409);
-    const registered = new Set((await tx.courseRegistration.findMany({ where: { offeringId: lecture.offeringId, status: "REGISTERED", studentMembershipId: { in: students } }, select: { studentMembershipId: true } })).map((r) => r.studentMembershipId));
+    const registered = new Set((await tx.courseRegistration.findMany({ where: { offeringId: lecture.offeringId, ...registeredStudying(lecture.dateKey), studentMembershipId: { in: students } }, select: { studentMembershipId: true } })).map((r) => r.studentMembershipId));
     if (students.some((s) => !registered.has(s))) throw new RuleRefusal("academics.refuseNotRegistered", 422, undefined, "entries");
     if (lecture.labBatchId) {
       const members = new Set((await tx.labBatchMember.findMany({ where: { batchId: lecture.labBatchId, studentMembershipId: { in: students }, ...memberOn(lecture.dateKey) }, select: { studentMembershipId: true } })).map((m) => m.studentMembershipId));

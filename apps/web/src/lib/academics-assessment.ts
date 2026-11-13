@@ -6,7 +6,7 @@ import { RuleRefusal } from "./rule-refusal";
 import { audit } from "./audit";
 import { notify } from "./notify";
 import { readJson, writeJson } from "./json";
-import { academicsCaller, departmentOfMember, headsDepartment, nameOf, namesOf, readCodes, readOutcomes, readPassingRules, type Caller } from "./academics";
+import { academicsCaller, departmentOfMember, headsDepartment, nameOf, namesOf, readCodes, readOutcomes, readPassingRules, registeredStudying, type Caller } from "./academics";
 import { internalTotalHundredths, parseMarks, sumWeights } from "./academics-rules";
 import type { ActiveContext } from "./session";
 
@@ -57,8 +57,10 @@ async function offeringOf(c: Caller, offeringId: string) {
 const isLocked = async (offeringId: string) => Boolean(await db.internalLock.findUnique({ where: { offeringId }, select: { id: true } }));
 
 async function registeredOn(offeringId: string) {
+  // The sheet's roster, the countersign's and the lock's (TA-003): not one who left before the term's last day.
+  const term = await db.courseOffering.findUnique({ where: { id: offeringId }, select: { term: { select: { endsOn: true } } } });
   const regs = await db.courseRegistration.findMany({
-    where: { offeringId, status: "REGISTERED" },
+    where: { offeringId, ...registeredStudying(term?.term.endsOn) },
     select: { studentMembershipId: true, student: { select: { studentCode: true, user: { select: { name: true, preferredName: true } }, academicSeat: { select: { divisionId: true } }, enrollments: { where: { status: "ACTIVE", class: { division: { isNot: null } } }, select: { rollNumber: true, class: { select: { division: { select: { id: true } } } } } } } } },
   });
   return regs

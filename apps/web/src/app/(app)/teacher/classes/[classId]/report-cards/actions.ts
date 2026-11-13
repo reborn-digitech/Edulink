@@ -28,6 +28,7 @@ type Result = {
   created?: number;
   updated?: number;
   skippedPublished?: number;
+  title?: string;
   published?: number;
   withdrawn?: number;
 };

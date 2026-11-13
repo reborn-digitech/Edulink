@@ -9,6 +9,7 @@ import { todayKey } from "./dates";
 import { deskCaller } from "./duty-desks";
 import { currentRecordsYear } from "./stream-records";
 import { teachingPracticeSummary } from "./stream-summaries";
+import { SEATED_NOW } from "./academics";
 import type { ActiveContext } from "./session";
 
 /**
@@ -34,7 +35,7 @@ async function educationOffered(schoolId: string): Promise<boolean> {
 
 /** The student teachers: ACTIVE seats on an EDUCATION programme, or at a college whose only stream is education, every active seat. */
 async function studentTeachers(schoolId: string) {
-  const [streams, seats] = await Promise.all([streamsOf(schoolId), db.studentProgramme.findMany({ where: { schoolId, status: "ACTIVE" }, select: { studentMembershipId: true, programme: { select: { code: true, stream: true } }, student: { select: { user: { select: { name: true, preferredName: true } } } } } })]);
+  const [streams, seats] = await Promise.all([streamsOf(schoolId), db.studentProgramme.findMany({ where: { schoolId, ...SEATED_NOW }, select: { studentMembershipId: true, programme: { select: { code: true, stream: true } }, student: { select: { user: { select: { name: true, preferredName: true } } } } } })]);
   const onlyEducation = streams.length === 1 && streams[0] === "EDUCATION";
   const education = seats.filter((s) => s.programme.stream === "EDUCATION");
   return (education.length || !onlyEducation ? education : seats).map((s) => ({ membershipId: s.studentMembershipId, name: nameOf(s.student.user), programmeCode: s.programme.code })).sort((a, b) => a.name.localeCompare(b.name));

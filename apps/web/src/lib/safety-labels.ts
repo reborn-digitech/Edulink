@@ -775,6 +775,7 @@ const ACTION_KEYS: Record<string, TranslationKey> = {
   "college.fees.concession": "audit.collegeFeesConcession",
   "college.fees.concessionApprove": "audit.collegeFeesConcessionApprove",
   "college.fees.concessionRefuse": "audit.collegeFeesConcessionRefuse",
+  "college.fees.concessionBackToPrincipal": "audit.collegeFeesConcessionBackToPrincipal",
   "college.fees.mess": "audit.collegeFeesMess",
   "college.fees.route": "audit.collegeFeesRoute",
   "scholarship.claim": "audit.scholarshipClaim",

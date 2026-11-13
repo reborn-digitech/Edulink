@@ -51,6 +51,7 @@ import { isDateKey, parseTeachingDays, todayKey, weekdayOfKey } from "./dates";
 import { creditsOf, loadState, slotKey } from "./academics-rules";
 import type { ActiveContext } from "./session";
 import type { Role } from "./constants";
+import type { Prisma } from "@prisma/client";
 
 /**
  * THE COLLEGE'S ACADEMICS (module ACADEMICS, roles FACULTY and HOD; the
@@ -90,6 +91,21 @@ export async function academicsCaller(ctx: ActiveContext, roles: readonly Role[]
 }
 
 export const nameOf = (u: { name: string; preferredName: string | null } | null | undefined) => (u ? (u.preferredName ?? u.name) : "");
+
+/**
+ * STUDYING HERE (TA-003, testing analysis of 13 November 2026): the one meaning every reader of who studies here holds.
+ * The leaving writes the membership's leftAt (recordDeparture) and, by the owner's decision on R-20, nothing writes the
+ * seat's status, so a seat ACTIVE or a registration REGISTERED is not enough by itself: the student's membership must
+ * not have left. With a day (a lecture's date, a term's last day), one who left on or after that day still counts —
+ * they were here for it, so a past term keeps its graduates; with none, only those who have not left.
+ */
+export function studyingOn(day?: string | null): Prisma.MembershipWhereInput {
+  return day ? { OR: [{ leftAt: null }, { leftAt: { gte: new Date(`${day}T00:00:00.000Z`) } }] } : { leftAt: null };
+}
+/** A seat of someone studying here now: for head-counts and lists of today. */
+export const SEATED_NOW = { status: "ACTIVE", student: { leftAt: null } } satisfies Prisma.StudentProgrammeWhereInput;
+/** A course registration that counts on `day` (or now): registered, and the student had not left before it. */
+export const registeredStudying = (day?: string | null) => ({ status: "REGISTERED", student: studyingOn(day) }) satisfies Prisma.CourseRegistrationWhereInput;
 const USER = { select: { name: true, preferredName: true } } as const;
 
 /** Names of memberships, by id. */
@@ -436,7 +452,7 @@ export async function academicsStructure(ctx: ActiveContext): Promise<AcademicsS
     db.division.findMany({ where: { schoolId: c.schoolId }, select: { id: true, classId: true, programmeId: true, yearOfStudy: true, academicYear: true, class: { select: { name: true, _count: { select: { enrollments: { where: { status: "ACTIVE" } } } } } } } }),
     db.timetablePeriod.findMany({ where: { schoolId: c.schoolId, archivedAt: null, kind: "LESSON" }, orderBy: [{ position: "asc" }, { startMinute: "asc" }] }),
     teachingStaff(c.schoolId),
-    db.studentProgramme.groupBy({ by: ["programmeId"], where: { schoolId: c.schoolId, status: "ACTIVE" }, _count: { _all: true } }),
+    db.studentProgramme.groupBy({ by: ["programmeId"], where: { schoolId: c.schoolId, ...SEATED_NOW }, _count: { _all: true } }),
   ]);
   const hodNames = await namesOf(departments.map((d) => d.hodMembershipId));
   const seatsBy = new Map(seats.map((s) => [s.programmeId, s._count._all]));
@@ -605,7 +621,7 @@ export async function loadAndRatios(schoolId: string, termId: string | null, set
     teachingStaff(schoolId),
     termId ? db.courseOffering.findMany({ where: { schoolId, termId }, select: { facultyMembershipId: true, lectureHours: true, tutorialHours: true, practicalHours: true } }) : Promise.resolve([]),
     db.department.findMany({ where: { schoolId, ...(departmentId ? { id: departmentId } : {}) }, select: { id: true, name: true, programmes: { select: { id: true } } } }),
-    db.studentProgramme.groupBy({ by: ["programmeId"], where: { schoolId, status: "ACTIVE" }, _count: { _all: true } }),
+    db.studentProgramme.groupBy({ by: ["programmeId"], where: { schoolId, ...SEATED_NOW }, _count: { _all: true } }),
   ]);
   const hours = new Map<string, number>();
   for (const o of offerings) if (o.facultyMembershipId) hours.set(o.facultyMembershipId, (hours.get(o.facultyMembershipId) ?? 0) + o.lectureHours + o.tutorialHours + o.practicalHours);

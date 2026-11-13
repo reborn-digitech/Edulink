@@ -17,6 +17,7 @@ import {
 } from "@edulink/contracts";
 import { db } from "./db";
 import { readJsonArray } from "./json";
+import { SEATED_NOW } from "./academics";
 
 /**
  * THE STREAM RECORDS' SUMMARIES (5 October 2026), what the council filings
@@ -96,7 +97,7 @@ export async function lawInternshipSummary(schoolId: string, year: number): Prom
   const w = academicYearWindow(year);
   const programmes = await lawProgrammes(schoolId);
   const programmeBy = new Map(programmes.map((p) => [p.id, p]));
-  const seats = programmes.length ? await db.studentProgramme.findMany({ where: { schoolId, status: "ACTIVE", programmeId: { in: programmes.map((p) => p.id) } }, select: { studentMembershipId: true, programmeId: true, student: { select: { user: { select: { name: true, preferredName: true } } } } } }) : [];
+  const seats = programmes.length ? await db.studentProgramme.findMany({ where: { schoolId, ...SEATED_NOW, programmeId: { in: programmes.map((p) => p.id) } }, select: { studentMembershipId: true, programmeId: true, student: { select: { user: { select: { name: true, preferredName: true } } } } } }) : [];
   const [inYear, completed, moots] = await Promise.all([
     db.internship.findMany({ where: { schoolId, kind: { in: [...LAW_INTERNSHIP_KINDS] }, status: { not: "REFUSED" }, fromKey: { gte: w.from, lte: w.to } }, select: { kind: true, fromKey: true, toKey: true } }),
     seats.length ? db.internship.findMany({ where: { schoolId, kind: { in: [...LAW_INTERNSHIP_KINDS] }, status: { in: ["EVALUATED", "CREDITED"] }, studentMembershipId: { in: seats.map((s) => s.studentMembershipId) } }, select: { studentMembershipId: true, fromKey: true, toKey: true } }) : Promise.resolve([]),
