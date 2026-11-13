@@ -5,6 +5,7 @@ import { healthCardSaveSchema, healthCheckSaveSchema } from "@edulink/contracts"
 import type { TranslationKey } from "@/lib/i18n/dictionary";
 import { AccessError, requireApiUser } from "@/lib/tenancy";
 import { recordHealthCheck, saveHealthCard } from "@/lib/health";
+import { RuleRefusal } from "@/lib/rule-refusal";
 
 /**
  * The health card's two writes, shared by the guardian's page and the
@@ -24,6 +25,8 @@ function refresh(studentMembershipId: string) {
 
 function failure(error: unknown): HealthActionResult {
   if (error instanceof AccessError) return { ok: false, errorKey: error.key, errorVars: error.vars };
+  // The card changed since the form was drawn (TA-111).
+  if (error instanceof RuleRefusal) return { ok: false, errorKey: error.key, errorVars: error.vars };
   console.error("[health]", error);
   return { ok: false, errorKey: "common.tryAgain" };
 }

@@ -1,7 +1,7 @@
 import "server-only";
 import type { IncidentCreate, IncidentRow, IncidentView } from "@edulink/contracts";
 import { db } from "./db";
-import { AccessError, assertGuardianAccess, assertStudentAccess } from "./tenancy";
+import { AccessError, assertGuardianAccess, assertStudentAccess, taughtClassWhere } from "./tenancy";
 import { audit } from "./audit";
 import { notifyGuardians } from "./notify";
 import { assertSelfRead } from "./self-read";
@@ -180,8 +180,10 @@ export async function listIncidents(ctx: ActiveContext, query: { status: "OPEN" 
     schoolId: staff.schoolId,
     ...(query.status === "ALL" ? {} : { status: query.status }),
     ...(query.studentMembershipId ? { studentMembershipId: query.studentMembershipId } : {}),
+    // The reach incidentFor and recordIncident admit (TA-576): a ClassTeacher row or a lesson on the timetable, so the
+    // incident a subject teacher records is in their own list.
     ...(staff.role === "TEACHER"
-      ? { student: { enrollments: { some: { status: "ACTIVE" as const, class: { teachers: { some: { teacherMembershipId: staff.membershipId } } } } } } }
+      ? { student: { enrollments: { some: { status: "ACTIVE" as const, class: taughtClassWhere(staff.role, staff.membershipId) } } } }
       : {}),
   };
   const [rows, total, openCount] = await Promise.all([

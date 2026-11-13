@@ -2,6 +2,7 @@ import { familyHealthQuerySchema, familyHealthSaveSchema, healthCardSchema } fro
 import { requireApiParent, requireApiReader, selectChild } from "@/lib/api-reads/family";
 import { healthCardFor, saveHealthCard } from "@/lib/health";
 import { apiFailure, apiInvalid, ok, readJson } from "@/lib/api-v1";
+import { moduleFailure } from "@/lib/rule-refusal";
 
 /** GET /api/v1/family/health?childId= — the child's health and emergency card as the guardian sees it; a pupil's own, read-only, from the age the school sets (self-read.ts decides, in healthCardFor). */
 export async function GET(request: Request) {
@@ -26,6 +27,7 @@ export async function POST(request: Request) {
     const { selectedId } = await selectChild(ctx, childId);
     return ok(healthCardSchema.parse(await saveHealthCard(ctx, selectedId, card)));
   } catch (error) {
-    return apiFailure(error, "api/v1/family/health");
+    // A card changed since the form was drawn is a 409 (TA-111, RuleRefusal).
+    return moduleFailure(error, "api/v1/family/health");
   }
 }

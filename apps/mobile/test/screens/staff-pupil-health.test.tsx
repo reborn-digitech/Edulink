@@ -86,6 +86,8 @@ describe("a pupil's health card for the school", () => {
       doctorName: "Dr ZZ Rao",
       doctorPhone: "",
       contacts: [],
+      // The card the form was drawn from (TA-111).
+      basedOn: "2026-09-10T05:00:00.000Z",
     });
     expect(await screen.findByText("Health card saved.")).toBeTruthy();
     expect(screen.getByLabelText("Blood group: B+")).toBeTruthy();

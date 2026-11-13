@@ -39,17 +39,24 @@ function actionsWritten(): Set<string> {
   const found = new Set<string>();
   for (const file of [...walk("src/app"), ...walk("src/lib")]) {
     const source = readFileSync(file, "utf8");
-    for (const match of source.matchAll(/\baction:\s*"([a-z][a-z0-9.]*)"/g)) {
+    // camelCase names too, and both arms of a conditional (TA-324): `[a-z0-9.]` stopped at the first capital, so
+    // school.selfReadAge and reportCard.publish were never seen, and `action: approved ? "a" : "b"` had no string
+    // straight after the colon.
+    for (const match of source.matchAll(/\baction:\s*"([a-z][A-Za-z0-9._]*)"/g)) {
       found.add(match[1]!);
+    }
+    for (const match of source.matchAll(/\baction:\s*[^,;\n]*?\?\s*"([a-z][A-Za-z0-9_]*\.[A-Za-z0-9._]+)"\s*:\s*"([a-z][A-Za-z0-9_]*\.[A-Za-z0-9._]+)"/g)) {
+      found.add(match[1]!);
+      found.add(match[2]!);
     }
   }
   return found;
 }
 
-/** `"audit.classCreate"` → the value, or undefined. */
+/** `"audit.classCreate"` → the value, or undefined; a key in another section (`salaryPay.auditVoided`) is read there. */
 function lookup(key: string): string | undefined {
-  const leaf = key.split(".")[1]!;
-  return (en.audit as Record<string, string>)[leaf];
+  const [section, leaf] = key.split(".") as [string, string];
+  return ((en as unknown as Record<string, Record<string, string> | undefined>)[section] ?? ({} as Record<string, string>))[leaf];
 }
 
 describe("the audit log has words for everything it records", () => {
@@ -60,6 +67,10 @@ describe("the audit log has words for everything it records", () => {
     // passes vacuously and this file becomes decoration.
     expect(written.size).toBeGreaterThan(80);
     expect(written).toContain("attendance.mark");
+    // …and a camelCase name and a conditional's arms (TA-324).
+    expect(written).toContain("school.selfReadAge");
+    expect(written).toContain("leave.approve");
+    expect(written).toContain("leave.decline");
   });
 
   it("⚠ describes every action it writes", () => {

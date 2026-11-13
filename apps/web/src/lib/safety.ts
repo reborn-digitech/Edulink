@@ -316,18 +316,25 @@ async function closeReports(
  */
 export async function listAudit(
   session: ActiveContext,
-  opts: { action?: string; take?: number } = {},
+  opts: { action?: string; take?: number; before?: string } = {},
 ): Promise<AuditEntry[]> {
   if (!SAFETY_ROLES.includes(session.role ?? "") || !session.schoolId) {
     throw new AccessError("access.onlyAnAdminCanSeeTheAudit");
   }
 
+  /*
+   * PAGED BACK BY A CURSOR (TA-109). The trail was its newest 200 rows and nothing older could be reached, though the
+   * rows are kept for two years. `before` is the last row of the page already read (its id, in this school): the next
+   * page is what comes after it in (createdAt, id) order, so rows written while the reader pages do not shift it.
+   */
+  const cursor = opts.before ? await db.auditLog.findFirst({ where: { id: opts.before, schoolId: session.schoolId }, select: { id: true, createdAt: true } }) : null;
   const rows = await db.auditLog.findMany({
     where: {
       schoolId: session.schoolId,
       ...(opts.action ? { action: { startsWith: opts.action } } : {}),
+      ...(cursor ? { OR: [{ createdAt: { lt: cursor.createdAt } }, { createdAt: cursor.createdAt, id: { lt: cursor.id } }] } : {}),
     },
-    orderBy: { createdAt: "desc" },
+    orderBy: [{ createdAt: "desc" }, { id: "desc" }],
     take: Math.min(opts.take ?? 200, 500),
   });
 

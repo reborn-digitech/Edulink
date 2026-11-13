@@ -142,6 +142,8 @@ function filenameSafe(grade: string): string {
 /** UDISE+ class codes a pupil's grade must resolve to for the sheet: PP3, PP2, PP1, 1–12. */
 const UDISE_CLASS_CODE = /^(PP[123]|[1-9]|1[0-2])$/;
 export const isUdiseClass = (code: string) => UDISE_CLASS_CODE.test(code);
+/** The class a pupil moving up studied the year before, where it is not the number below (TA-112): blank below PP3. */
+const PREVIOUS_CLASS: Record<string, string> = { "1": "PP1", PP1: "PP2", PP2: "PP3", PP3: "" };
 /**
  * DCF §3.2.16 "Classes Taught", by the bands a teacher's classes span — the
  * form's own list, keyed pre-primary/primary/upper/secondary/higher:
@@ -307,12 +309,15 @@ async function yearFacts(schoolId: string, ids: string[]) {
   if (!previous || ids.length === 0) return { current, attended, percent };
   const from = previous.startDate.toISOString().slice(0, 10), to = previous.endDate.toISOString().slice(0, 10);
   const [days, cards] = await Promise.all([
-    db.$queryRaw<{ studentMembershipId: string; days: number | bigint }[]>`
+    // On the tenant transaction's client (TA-107): a raw statement on `db` runs with no school bound, and under
+    // row security the app role read no AttendanceRecord at all, so the column was blank for every pupil.
+    db.$tenantTransaction((raw) =>
+      (raw as typeof db).$queryRaw<{ studentMembershipId: string; days: number | bigint }[]>`
       SELECT r."studentMembershipId", COUNT(DISTINCT s."dateKey") AS "days"
       FROM "AttendanceRecord" r JOIN "AttendanceSession" s ON s."id" = r."sessionId"
       WHERE r."schoolId" = ${schoolId} AND r."studentMembershipId" IN (${Prisma.join(ids)})
         AND r."status" IN ('PRESENT', 'LATE') AND s."dateKey" >= ${from} AND s."dateKey" <= ${to}
-      GROUP BY r."studentMembershipId"`,
+      GROUP BY r."studentMembershipId"`),
     db.reportCard.findMany({ where: { schoolId, studentMembershipId: { in: ids }, academicYearId: previous.id, termId: null, status: "PUBLISHED", overallPercentMilli: { not: null } }, select: { studentMembershipId: true, overallPercentMilli: true } }),
   ]);
   for (const r of days) attended.set(r.studentMembershipId, Math.min(Number(r.days), 250));
@@ -330,17 +335,26 @@ export async function udiseStudentsExport(ctx: ActiveContext): Promise<CsvExport
   const [pupils, school] = await Promise.all([loadPupils(caller.schoolId), identityOf(caller.schoolId)]);
   const facts = await yearFacts(caller.schoolId, pupils.map((p) => p.id));
   let roll = 0;
-  let counter = 0;
-  let lastClass = "";
+  // A pupil with no stored roll takes the next number after the highest stored in the class (TA-518): a counter from 1
+  // over the name order gave the first such pupil 1 while another pupil of the class held 1.
+  const keyOf = (p: Pupil | null) => `${classCode(p?.enrollments[0]?.class.gradeLevel)}/${p?.enrollments[0]?.class.section ?? ""}`;
+  const nextRoll = new Map<string, number>();
+  for (const p of pupils) {
+    const stored = p.enrollments[0]?.rollNumber;
+    if (stored != null) nextRoll.set(keyOf(p), Math.max(nextRoll.get(keyOf(p)) ?? 0, stored));
+  }
   const rowOf = (p: Pupil | null) => {
     const r = p?.pupilRecord ?? null;
     const klass = p?.enrollments[0]?.class;
     const grade = classCode(klass?.gradeLevel);
-    const classKey = `${grade}/${klass?.section ?? ""}`;
-    counter = classKey === lastClass ? counter + 1 : 1;
-    lastClass = classKey;
-    // The roll number the school assigned on the enrolment; the running counter only where none was.
-    roll = p?.enrollments[0]?.rollNumber ?? counter;
+    const classKey = keyOf(p);
+    // The roll number the school assigned on the enrolment; the class's next free number only where none was.
+    const stored = p?.enrollments[0]?.rollNumber;
+    if (stored != null) roll = stored;
+    else {
+      roll = (nextRoll.get(classKey) ?? 0) + 1;
+      nextRoll.set(classKey, roll);
+    }
     const par = p ? parents(p) : { father: "", mother: "", guardian: "", phone: "", email: "" };
     /**
      * ⚠ AN ANSWER NOBODY GAVE IS FILED BLANK. A record with no impairment
@@ -391,9 +405,10 @@ export async function udiseStudentsExport(ctx: ActiveContext): Promise<CsvExport
       "ADMISSION DATE (DD-MM-YYYY)": ddmmyyyy(r?.admissionDate ?? p?.joinedAt),
       "STUDENT STREAM (HS only)": r?.stream ?? "",
       "PREVIOUS ACADEMIC YEAR SCHOOLING STATUS": sameSchool,
-      // Grade 1's previous class is the portal's last pre-primary code, PP3, not "PP".
+      // The class below in the portal's order PP3, PP2, PP1, 1 (classCode's): grade 1's is PP1, the year before
+      // class 1 (TA-112; it filed PP3, nursery's code), PP1's PP2 and PP2's PP3; PP3 has none below it.
       // A pupil repeating the class studied THIS class last year; everybody else, the one below it.
-      "CLASS STUDIED IN PREVIOUS ACADEMIC YEAR": sameSchool === "1" && /^\d+$/.test(grade) ? (repeating ? grade : Number(grade) > 1 ? String(Number(grade) - 1) : "PP3") : "",
+      "CLASS STUDIED IN PREVIOUS ACADEMIC YEAR": sameSchool === "1" && isUdiseClass(grade) ? (repeating ? grade : (PREVIOUS_CLASS[grade] ?? String(Number(grade) - 1))) : "",
       // The office's own answer where it has given one. 1 for an RTE admission is this code's reading of the
       // column beside the 2 and 0 it already printed and has not been checked against the portal's sheet.
       "ADMITTED/ENROLLED UNDER RTE/EWS": r?.rte === true ? "1" : r?.ews === true ? "2" : r && r.rte === false && r.ews === false ? "0" : "",
@@ -446,15 +461,16 @@ const CATEGORY_ROW: Record<string, string> = { "1": "GENERAL", "2": "SC", "3": "
 export async function udiseEnrolmentExport(ctx: ActiveContext): Promise<CsvExport> {
   const caller = admin(ctx);
   const pupils = await loadPupils(caller.schoolId);
-  type Cell = { B: number; G: number; U: number };
-  const blank = (): Record<string, Cell> => Object.fromEntries([...UDISE_CLASSES, "Total"].map((c) => [c, { B: 0, G: 0, U: 0 }]));
+  type Cell = { B: number; G: number; T: number; U: number };
+  const blank = (): Record<string, Cell> => Object.fromEntries([...UDISE_CLASSES, "Total"].map((c) => [c, { B: 0, G: 0, T: 0, U: 0 }]));
   const tables = new Map<string, Map<string, Record<string, Cell>>>();
   const bump = (table: string, row: string, cls: string, gender: string | null) => {
     const t = tables.get(table) ?? new Map();
     tables.set(table, t);
     const r = t.get(row) ?? blank();
     t.set(row, r);
-    const key = gender === "M" ? "B" : gender === "F" ? "G" : "U";
+    // A pupil recorded as transgender has a column of their own (TA-578), not the one for a gender left blank.
+    const key = gender === "M" ? "B" : gender === "F" ? "G" : gender === "T" ? "T" : "U";
     const col = (UDISE_CLASSES as readonly string[]).includes(cls) && cls !== "Other" ? cls : cls.startsWith("PP") ? "PP" : "Other";
     r[col]![key] += 1;
     r.Total[key] += 1;
@@ -482,12 +498,13 @@ export async function udiseEnrolmentExport(ctx: ActiveContext): Promise<CsvExpor
         const label = UDISE_CLASS_LABEL[c] ?? c;
         row[`${label} Boys`] = cells[c]?.B ?? 0;
         row[`${label} Girls`] = cells[c]?.G ?? 0;
+        row[`${label} Transgender`] = cells[c]?.T ?? 0;
         row[`${label} No gender on record`] = cells[c]?.U ?? 0;
       }
       rows.push(row);
     }
   }
-  const csv = csvWithHeaders(rows, () => ({ table: "", row: "", ...Object.fromEntries([...UDISE_CLASSES, "Total"].flatMap((c) => [[`${UDISE_CLASS_LABEL[c] ?? c} Boys`, ""], [`${UDISE_CLASS_LABEL[c] ?? c} Girls`, ""], [`${UDISE_CLASS_LABEL[c] ?? c} No gender on record`, ""]])) }));
+  const csv = csvWithHeaders(rows, () => ({ table: "", row: "", ...Object.fromEntries([...UDISE_CLASSES, "Total"].flatMap((c) => [[`${UDISE_CLASS_LABEL[c] ?? c} Boys`, ""], [`${UDISE_CLASS_LABEL[c] ?? c} Girls`, ""], [`${UDISE_CLASS_LABEL[c] ?? c} Transgender`, ""], [`${UDISE_CLASS_LABEL[c] ?? c} No gender on record`, ""]])) }));
   await audit({ schoolId: caller.schoolId, actorUserId: caller.user.id, action: "compliance.export", meta: { kind: "udise-enrolment", rows: rows.length } });
   return { filename: `udise-enrolment-${today()}.csv`, csv, rows: rows.length };
 }

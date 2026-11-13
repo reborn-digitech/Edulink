@@ -64,6 +64,15 @@ export function placeholderKeys(text: string): string[] {
   return [...text.matchAll(PLACEHOLDER)].map((m) => m[1]!);
 }
 
+/**
+ * Everything a text writes between double brackets, read or not (TA-577): [[Pupil.name]] or
+ * [[pupil.date_of_birth]] is no key PLACEHOLDER reads, so it was neither refused nor filled and printed its brackets
+ * on every paper. A save refuses any of these that is not a known key; the fill keeps the strict pattern.
+ */
+export function writtenTokens(text: string): string[] {
+  return [...text.matchAll(/\[\[([^[\]]*)\]\]/g)].map((m) => m[1]!.trim());
+}
+
 /** The text with every placeholder filled; the keys that had nothing are returned so the issuer can be told. */
 export function fill(text: string, data: CertificateData): { text: string; missing: string[] } {
   const missing = new Set<string>();

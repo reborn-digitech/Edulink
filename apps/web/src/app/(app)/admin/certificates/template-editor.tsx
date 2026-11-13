@@ -28,6 +28,8 @@ const KINDS: CertificateKind[] = ["TC", "NIRGAM", "BONAFIDE", "CHARACTER", "STUD
 const LOCALES: ("en" | "hi" | "mr")[] = ["en", "hi", "mr"];
 const LAYOUT_TOGGLES: (keyof Pick<CertificateLayout, "showLogo" | "showAddress" | "useBrandColour">)[] = ["showLogo", "showAddress", "useBrandColour"];
 const TOKEN = /\[\[\s*([a-z]+\.[A-Za-z]+)\s*\]\]/g;
+// Everything between double brackets (TA-577): a token TOKEN cannot read, [[Pupil.name]], is unknown too, not printed as typed.
+const WRITTEN = /\[\[([^[\]]*)\]\]/g;
 
 let seq = 0;
 const nextKey = () => `row-${++seq}`;
@@ -103,7 +105,7 @@ export function TemplateEditor({ view, palette, template, readOnly = false }: { 
 
   const byKey = new Map(palette.map((p) => [p.key, p]));
   const labelOf = (key: string) => byKey.get(key)?.labels[reader] ?? null;
-  const unknownIn = (text: string) => [...text.matchAll(TOKEN)].map((m) => m[1]!).filter((key) => !byKey.has(key));
+  const unknownIn = (text: string) => [...text.matchAll(WRITTEN)].map((m) => m[1]!.trim()).filter((key) => !byKey.has(key));
   const unknown = [...new Set([draft.title, draft.intro, draft.outro, ...draft.rows.map((r) => r.value)].flatMap(unknownIn))];
 
   const patch = (p: Partial<Draft>) => setDraft((d) => ({ ...d, ...p }));

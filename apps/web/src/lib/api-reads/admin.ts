@@ -564,7 +564,7 @@ export async function adminReviews(ctx: Scoped, opts: { status: "open" | "closed
 /* /admin/safety                                                               */
 /* -------------------------------------------------------------------------- */
 
-export async function adminSafety(ctx: Scoped, opts: { tab: "open" | "closed" | "audit" }) {
+export async function adminSafety(ctx: Scoped, opts: { tab: "open" | "closed" | "audit"; before?: string; action?: string }) {
   const visits = await accessHistory(ctx.schoolId, 10);
   const [openCount, reports, audit] = await Promise.all([
     openReportCount(ctx),
@@ -575,7 +575,7 @@ export async function adminSafety(ctx: Scoped, opts: { tab: "open" | "closed" | 
             [...actioned, ...dismissed].sort((a, b) => b.latestAt.getTime() - a.latestAt.getTime()),
           )
         : Promise.resolve([]),
-    opts.tab === "audit" ? listAudit(ctx, { take: 200 }) : Promise.resolve([]),
+    opts.tab === "audit" ? listAudit(ctx, { take: AUDIT_PAGE, before: opts.before, action: opts.action }) : Promise.resolve([]),
   ]);
   return {
     openCount,
@@ -590,8 +590,13 @@ export async function adminSafety(ctx: Scoped, opts: { tab: "open" | "closed" | 
       latestAt: iso(g.latestAt),
     })),
     audit: audit.map((a) => ({ ...a, at: iso(a.at) })),
+    // The next page's cursor while a page came back full (TA-109); null on the last.
+    auditNext: opts.tab === "audit" && audit.length === AUDIT_PAGE ? audit[audit.length - 1]!.id : null,
   };
 }
+
+/** The audit trail's page (TA-109). */
+const AUDIT_PAGE = 200;
 
 /* -------------------------------------------------------------------------- */
 /* /admin/settings                                                             */

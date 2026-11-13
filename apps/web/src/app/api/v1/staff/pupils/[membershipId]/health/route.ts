@@ -2,6 +2,7 @@ import { healthCardSaveSchema, healthCardSchema } from "@edulink/contracts";
 import { requireApiRole } from "@/lib/tenancy";
 import { healthCardFor, saveHealthCard } from "@/lib/health";
 import { apiFailure, apiInvalid, ok, readJson } from "@/lib/api-v1";
+import { moduleFailure } from "@/lib/rule-refusal";
 
 type Params = { params: Promise<{ membershipId: string }> };
 
@@ -25,6 +26,7 @@ export async function POST(request: Request, { params }: Params) {
     if (!parsed.success) return apiInvalid(parsed);
     return ok(healthCardSchema.parse(await saveHealthCard(ctx, membershipId, parsed.data)));
   } catch (error) {
-    return apiFailure(error, "api/v1/staff/pupils/health");
+    // A card changed since the form was drawn is a 409 (TA-111, RuleRefusal).
+    return moduleFailure(error, "api/v1/staff/pupils/health");
   }
 }

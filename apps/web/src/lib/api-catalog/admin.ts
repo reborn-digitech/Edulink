@@ -107,7 +107,7 @@ export const ADMIN: Endpoint[] = [
   { method: "GET", path: "/api/v1/admin/reviews", summary: "The ratings dashboard and the review rounds", access: ["ADMIN", "PRINCIPAL"], duties: ["HEAD_PAGES"], request: c.adminReviewsQuerySchema, response: c.adminReviewsSchema },
   { method: "POST", path: "/api/v1/admin/reviews", summary: "Open a review round", access: ["ADMIN", "PRINCIPAL"], duties: ["HEAD_PAGES"], request: c.reviewRoundOpenBodySchema, reach: "ownSchool", reachRefusal: "unprocessable", response: c.reviewRoundOpenedSchema, emptyBodyStatus: 422 },
   // ---- /admin/safety -------------------------------------------------------
-  { method: "GET", path: "/api/v1/admin/safety", summary: "The safety centre: operator visits, reports, the audit trail", access: ["ADMIN", "PRINCIPAL"], duties: ["HEAD_PAGES"], request: c.adminSafetyQuerySchema, response: c.adminSafetySchema },
+  { method: "GET", path: "/api/v1/admin/safety", summary: "The safety centre: operator visits, reports, the audit trail 200 rows a page (?tab=audit&before= the auditNext of the page read&action= a prefix)", access: ["ADMIN", "PRINCIPAL"], duties: ["HEAD_PAGES"], request: c.adminSafetyQuerySchema, response: c.adminSafetySchema },
   // ---- /admin/settings -----------------------------------------------------
   { method: "GET", path: "/api/v1/admin/settings", summary: "The school's details, directory profile and housekeeping thresholds", access: ["ADMIN"], response: c.adminSettingsSchema },
   { method: "POST", path: "/api/v1/admin/settings", summary: "Save the school's details", access: ["ADMIN"], request: c.schoolDetailsBodySchema, response: c.okSchema, emptyBodyStatus: 422 },

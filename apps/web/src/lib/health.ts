@@ -5,6 +5,8 @@ type HealthCardBloodGroup = NonNullable<HealthCardView["card"]>["bloodGroup"];
 import { db } from "./db";
 import { AccessError, assertGuardianAccess, assertStudentAccess } from "./tenancy";
 import { readJsonArray, writeJson } from "./json";
+import { RuleRefusal } from "./rule-refusal";
+import { Prisma } from "@prisma/client";
 import { audit } from "./audit";
 import { forSchool } from "./tenant-context";
 import { assertSelfRead } from "./self-read";
@@ -154,12 +156,39 @@ export async function saveHealthCard(ctx: ActiveContext, studentMembershipId: st
     contactsJson: writeJson(input.contacts),
     updatedByUserId: viewer.userId,
   };
-  const card = await db.healthCard.upsert({
-    where: { studentMembershipId },
-    create: { schoolId: viewer.schoolId, studentMembershipId, ...data },
-    update: data,
-    select: { id: true },
-  });
+  let card: { id: string };
+  if (input.basedOn === undefined) {
+    card = await db.healthCard.upsert({
+      where: { studentMembershipId },
+      create: { schoolId: viewer.schoolId, studentMembershipId, ...data },
+      update: data,
+      select: { id: true },
+    });
+  } else {
+    /*
+     * A FORM DRAWN FROM AN OLDER CARD IS NOT WRITTEN OVER A NEWER ONE (TA-111). The card is a whole, so a form the
+     * office opened in the morning, saved in the afternoon, blanked the allergy a guardian had added at noon. The form
+     * names the card it was drawn from; the write is conditional on the card still being that one, and anything else
+     * is a 409 with the card kept, except the same form sent again, which is answered as saved.
+     */
+    const current = await db.healthCard.findUnique({ where: { studentMembershipId }, select: { id: true, bloodGroup: true, allergies: true, conditions: true, medications: true, dietary: true, notes: true, doctorName: true, doctorPhone: true, contactsJson: true } });
+    const same = current !== null && (["bloodGroup", "allergies", "conditions", "medications", "dietary", "notes", "doctorName", "doctorPhone", "contactsJson"] as const).every((k) => (current[k] ?? null) === (data[k] ?? null));
+    if (same) return loadCard(viewer, studentMembershipId);
+    const changed = new RuleRefusal("health.cardChanged", 409);
+    if (input.basedOn === null) {
+      if (current) throw changed;
+      card = await db.healthCard.create({ data: { schoolId: viewer.schoolId, studentMembershipId, ...data }, select: { id: true } }).catch((error: unknown) => {
+        // Another writer's first save landed between the read and this one.
+        if (error instanceof Prisma.PrismaClientKnownRequestError && error.code === "P2002") throw changed;
+        throw error;
+      });
+    } else {
+      if (!current) throw changed;
+      const won = await db.healthCard.updateMany({ where: { id: current.id, updatedAt: new Date(input.basedOn) }, data });
+      if (won.count === 0) throw changed;
+      card = { id: current.id };
+    }
+  }
   await audit({
     schoolId: viewer.schoolId,
     actorUserId: viewer.userId,

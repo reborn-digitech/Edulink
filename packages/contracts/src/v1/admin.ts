@@ -635,7 +635,13 @@ export const reviewRoundOpenedSchema = z.object({ roundId: id.optional() });
 /* /admin/safety                                                           */
 /* ---------------------------------------------------------------------- */
 
-export const adminSafetyQuerySchema = z.object({ tab: z.enum(["open", "closed", "audit"]).default("open") });
+export const adminSafetyQuerySchema = z.object({
+  tab: z.enum(["open", "closed", "audit"]).default("open"),
+  /** The audit trail's next page: the last row of the page read, as auditNext named it (TA-109). */
+  before: id.optional(),
+  /** Only actions that start with this (directory., fees.), asked of the whole trail. */
+  action: z.string().trim().max(80).regex(/^[A-Za-z0-9._]*$/).optional(),
+});
 
 const reportTargetSchema = z.union([
   z.object({
@@ -711,6 +717,8 @@ export const adminSafetySchema = z.object({
       at: iso,
     }),
   ),
+  /** The audit trail's next page, for before=; null on the last page and outside the audit tab (TA-109). */
+  auditNext: z.string().nullable().optional(),
 });
 export type AdminSafety = z.infer<typeof adminSafetySchema>;
 

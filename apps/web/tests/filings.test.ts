@@ -7,7 +7,7 @@
  * compliance export and refused to a teacher and (the sheets) to the head.
  * And the audit's filing gaps: "was here last year" from the admission date
  * and the academic year, attended DAYS not marks, grade 1's previous class
- * PP3, VJ/NT/SBC under OBC with the class columns summing to Total, the
+ * PP1, VJ/NT/SBC under OBC with the class columns summing to Total, the
  * medium matched inside a phrase, the classes-taught code for a span the
  * DCF does not list, a subject code in 3.2.18, CBSE's two mathematics, and
  * readiness that needs a birthdate, both parents and a coded class.
@@ -191,11 +191,11 @@ describe("the sheets", () => {
     expect(aarav["MINORITY GROUP (Muslim-1, Christian-2, Sikh-3, Buddhist-4, Parsi-5, Jain-6, Not Minority-7)"]).toBe("7");
     const bhakti = rows.find((r) => r["Name of Student"] === `ZZ FILING BHAKTI BHOSALE`)!;
     expect(bhakti).toMatchObject({ "Roll no": "2", GENDER: "2", "SOCIAL CATEGORY (General-1, SC-2, ST-3, OBC-4)": "2", "IS CWSN (Yes-1, No-2)": "1", "CWSN IMPAIRMENT TYPE": "2", "Is BPL BENEFICIARY (Yes-1, No-2)": "1", "MOTHER NAME": "LATA BHOSALE", "MOBILE NUMBER": "", "PREVIOUS ACADEMIC YEAR SCHOOLING STATUS": "1", "CLASS ATTENDED DAYS (Previous Year)": "" });
-    // Admitted this June, in the school's first year on the app: a new admission, no previous class. Grade 1 since 2024: the previous class is the portal's PP3.
+    // Admitted this June, in the school's first year on the app: a new admission, no previous class. Grade 1 since 2024: the previous class is PP1, the class below 1 (TA-112).
     const chaitra = rows.find((r) => r["Name of Student"] === "ZZ FILING CHAITRA KAMBLE")!;
     expect(chaitra).toMatchObject({ "Grade/Class": "DIPLOMA", "DOB (DD-MM-YYYY)": "", "SOCIAL CATEGORY (General-1, SC-2, ST-3, OBC-4)": "4", "MINORITY GROUP (Muslim-1, Christian-2, Sikh-3, Buddhist-4, Parsi-5, Jain-6, Not Minority-7)": "4", "ADMISSION DATE (DD-MM-YYYY)": "15-06-2026", "PREVIOUS ACADEMIC YEAR SCHOOLING STATUS": "2", "CLASS STUDIED IN PREVIOUS ACADEMIC YEAR": "", "APPEARED FOR EXAM IN PREVIOUS CLASS": "" });
     const dev = rows.find((r) => r["Name of Student"] === "ZZ FILING DEV JADHAV")!;
-    expect(dev).toMatchObject({ "Grade/Class": "1", "PREVIOUS ACADEMIC YEAR SCHOOLING STATUS": "1", "CLASS STUDIED IN PREVIOUS ACADEMIC YEAR": "PP3" });
+    expect(dev).toMatchObject({ "Grade/Class": "1", "PREVIOUS ACADEMIC YEAR SCHOOLING STATUS": "1", "CLASS STUDIED IN PREVIOUS ACADEMIC YEAR": "PP1" });
     const audit = await db.auditLog.findFirst({ where: { schoolId, action: "compliance.export" }, orderBy: { createdAt: "desc" } });
     expect(JSON.parse(audit!.meta)).toEqual({ kind: "udise-students", rows: 4, udise: true });
 
@@ -236,11 +236,11 @@ describe("the sheets", () => {
     const category = rows.filter((r) => r.table === "4.2 Enrolment by social category");
     expect(category.map((r) => [r.row, r["X Boys"], r["X Girls"], r["I Boys"], r["Not in a listed class Girls"], r["Total Boys"], r["Total Girls"]])).toEqual([["GENERAL", "0", "0", "1", "0", "1", "0"], ["OBC", "1", "0", "0", "1", "1", "1"], ["SC", "0", "1", "0", "0", "0", "1"], ["Total", "1", "1", "1", "1", "2", "2"]]);
     expect(category.map((r) => r.row)).not.toContain("NT");
-    const classColumns = headers.filter((h) => /^(Pre-Primary|[IVX]+|Not in a listed class) (Boys|Girls|No gender on record)$/.test(h));
-    expect(classColumns).toHaveLength(14 * 3);
+    const classColumns = headers.filter((h) => /^(Pre-Primary|[IVX]+|Not in a listed class) (Boys|Girls|Transgender|No gender on record)$/.test(h));
+    expect(classColumns).toHaveLength(14 * 4);
     for (const r of rows) {
       const sum = classColumns.reduce((n, h) => n + Number(r[h]), 0);
-      expect(sum, `${r.table} / ${r.row}`).toBe(Number(r["Total Boys"]) + Number(r["Total Girls"]) + Number(r["Total No gender on record"]));
+      expect(sum, `${r.table} / ${r.row}`).toBe(Number(r["Total Boys"]) + Number(r["Total Girls"]) + Number(r["Total Transgender"]) + Number(r["Total No gender on record"]));
     }
     expect(rows.filter((r) => r.table === "4.2(b) Minority groups").map((r) => [r.row, r["Not in a listed class Girls"]])).toEqual([["BUDDHIST", "1"]]);
     const ages = rows.filter((r) => r.table === "4.4 Enrolment by age").map((r) => r.row);

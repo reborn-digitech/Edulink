@@ -239,8 +239,15 @@ export async function setRequestFee(ctx: ActiveContext, requestId: string, amoun
     const now = await tx.certificateRequest.findUniqueOrThrow({ where: { id: row.id }, select: { status: true, feeDemandId: true } });
     if (now.status === "DECLINED" || now.status === "CANCELLED") throw new RuleRefusal("certificateRequests.refuseFeeSettled", 409);
     if (now.feeDemandId !== row.feeDemandId) throw new RuleRefusal("certificateRequests.refuseFeePaid", 409);
+    // Only while nothing is paid on it (TA-276): the check above was read outside this transaction, and a payment that
+    // held the demand's lock and committed PAID since would otherwise have its net rewritten under it. The condition is
+    // read again on the row as it is once the lock is ours.
+    if (existing) {
+      const unpaid = await tx.feeDemand.updateMany({ where: { id: existing.id, schoolId: caller.schoolId, status: "OPEN", paidPaise: 0 }, data: { grossPaise: amountPaise, netPaise: amountPaise, linesJson: lines } });
+      if (unpaid.count === 0) throw new RuleRefusal("certificateRequests.refuseFeePaid", 409);
+    }
     const demand = existing
-      ? await tx.feeDemand.update({ where: { id: existing.id }, data: { grossPaise: amountPaise, netPaise: amountPaise, linesJson: lines }, select: { id: true } })
+      ? { id: existing.id }
       : await tx.feeDemand.create({ data: { schoolId: caller.schoolId, studentMembershipId: row.studentMembershipId, academicYearId: year.id, instalmentId: null, label, dueDate: new Date(`${todayKey(school.timezone)}T00:00:00.000Z`), grossPaise: amountPaise, concessionPaise: 0, netPaise: amountPaise, linesJson: lines, status: "OPEN" }, select: { id: true } });
     return tx.certificateRequest.update({ where: { id: row.id }, data: { feePaise: amountPaise, feeDemandId: demand.id }, include: INCLUDE });
   });

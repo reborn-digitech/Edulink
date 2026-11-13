@@ -185,6 +185,13 @@ export async function savePupilRecord(ctx: ActiveContext, studentMembershipId: s
   // and then the save was refused for a five-digit PIN, so a number no screen showed as saved could only be changed
   // by the head and a guardian.
   const { contact, alternate, motherTongue, nationality, pin } = await codedValues(studentMembershipId, input);
+  // A roll another pupil of the class holds is refused before anything is written (TA-518), as a college seat's is.
+  if (input.rollNumber !== undefined && input.rollNumber !== "") {
+    const roll = Number(input.rollNumber);
+    const classIds = (await db.enrollment.findMany({ where: { studentMembershipId, status: "ACTIVE" }, select: { classId: true } })).map((e) => e.classId);
+    const clash = classIds.length ? await db.enrollment.findFirst({ where: { classId: { in: classIds }, rollNumber: roll, status: "ACTIVE", NOT: { studentMembershipId } }, select: { id: true } }) : null;
+    if (clash) throw new RuleRefusal("pupilRecord.refuseRollTaken", 409, { roll }, "rollNumber");
+  }
   // The PEN is the admin's to enter, once: the family's form shows it and never sends it, a
   // principal reads it, and a correction after the first entry goes through a change request
   // the head and a guardian both approve (pen-changes.ts).

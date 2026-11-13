@@ -147,12 +147,24 @@ export async function signOnIssue(ctx: ActiveContext, paper: { kind: PaperKind; 
   for (const [slot, role] of slots) {
     // The issuer's own line: their role, and for a teacher a class they teach — which publishing the set has already required of them.
     const mine = ctx.role === role && ctx.schoolId === paper.schoolId && own !== null && (role !== "TEACHER" || (ctx.membershipId !== null && (await teaches(ctx.membershipId, paper.schoolId, cardSetOf(paper.id).classId))));
+    const where = { paperKind_paperId_slot: { paperKind: paper.kind, paperId: paper.id, slot } };
+    /*
+     * CARDS PUBLISHED INTO A SET ALREADY DECIDED ASK AGAIN (TA-344). A set is signed once for its cards, so a card
+     * published later under it carried the head's signature with no new request; now a line already signed or declined
+     * by somebody else waits again, unsigned, and the issuer's own line is signed again by the issuer.
+     */
+    const before = paper.kind === "REPORT_CARD_SET" ? await db.paperSignature.findUnique({ where, select: { status: true } }) : null;
+    const redo = before !== null && before.status !== "PENDING";
     await db.paperSignature.upsert({
-      where: { paperKind_paperId_slot: { paperKind: paper.kind, paperId: paper.id, slot } },
+      where,
       create: mine
         ? { schoolId: paper.schoolId, paperKind: paper.kind, paperId: paper.id, slot, role, status: "SIGNED", signerUserId: ctx.user.id, signerName: issuerName, png: own!.png, requestedByUserId: ctx.user.id, decidedAt: new Date() }
         : { schoolId: paper.schoolId, paperKind: paper.kind, paperId: paper.id, slot, role, status: "PENDING", requestedByUserId: ctx.user.id },
-      update: {},
+      update: !redo
+        ? {}
+        : mine
+          ? { status: "SIGNED", signerUserId: ctx.user.id, signerName: issuerName, png: own!.png, requestedByUserId: ctx.user.id, decidedAt: new Date() }
+          : { status: "PENDING", signerUserId: null, signerName: null, png: null, requestedByUserId: ctx.user.id, decidedAt: null },
     });
     if (mine) await audit({ schoolId: paper.schoolId, actorUserId: ctx.user.id, action: "paper.sign", targetType: paper.kind, targetId: paper.id, meta: { slot, role, own: true } });
     else waitingOn.add(role);
@@ -349,11 +361,25 @@ export async function signaturesView(ctx: ActiveContext): Promise<SignaturesView
 export async function waitingSignatureCount(ctx: ActiveContext): Promise<number> {
   if (!ctx.schoolId || !ctx.membershipId || !ctx.role || !(SIGNERS as readonly string[]).includes(ctx.role)) return 0;
   const where = { schoolId: ctx.schoolId, status: "PENDING", role: ctx.role, slot: { in: ["LEFT", "RIGHT"] } };
-  if (ctx.role !== "TEACHER") return db.paperSignature.count({ where });
-  const me = { schoolId: ctx.schoolId, membershipId: ctx.membershipId, role: "TEACHER" as const };
+  const me = { schoolId: ctx.schoolId, membershipId: ctx.membershipId, role: ctx.role as SignerRole };
+  /*
+   * WHAT THE LIST SHOWS, AND NO MORE (TA-325): one paper for two lines waiting on it, and nothing for a paper that is
+   * revoked or gone, which signaturesView leaves out and no screen offers to sign. The count was every waiting line.
+   */
+  const papers = new Map<string, { paperKind: PaperKind; paperId: string }>();
+  for (const row of await db.paperSignature.findMany({ where, select: { schoolId: true, role: true, paperKind: true, paperId: true } })) {
+    if (await mine(me, row)) papers.set(`${row.paperKind}:${row.paperId}`, { paperKind: row.paperKind as PaperKind, paperId: row.paperId });
+  }
   let n = 0;
-  for (const row of await db.paperSignature.findMany({ where, select: { schoolId: true, role: true, paperKind: true, paperId: true } })) if (await mine(me, row)) n += 1;
+  for (const p of papers.values()) if (await paperLive(ctx.schoolId, p.paperKind, p.paperId)) n += 1;
   return n;
+}
+
+/** Whether a paper is one the list of what waits names: a certificate not revoked, a set with a published card. */
+async function paperLive(schoolId: string, kind: PaperKind, id: string): Promise<boolean> {
+  if (kind === "CERTIFICATE") return Boolean(await db.issuedCertificate.findFirst({ where: { id, schoolId, revokedAt: null }, select: { id: true } }));
+  const { classId, title } = cardSetOf(id);
+  return Boolean(await db.reportCard.findFirst({ where: { schoolId, classId, title, status: "PUBLISHED" }, select: { id: true } }));
 }
 
 /* -------------------------------------------------------------------------- */

@@ -57,14 +57,18 @@ export function FamilyHealth() {
   });
   const d = query.data;
   const save = useMutation({
-    mutationFn: async (body: HealthCardSave) => healthCardSchema.parse(must(await api().post(PATH, { ...body, ...(d ? { childId: d.studentMembershipId } : {}) }), t("common.somethingWrong"))),
+    // The card the form was drawn from (TA-111): a card changed since is a 409 and kept, and the screen reloads it.
+    mutationFn: async (body: HealthCardSave) => healthCardSchema.parse(must(await api().post(PATH, { ...body, basedOn: d?.card?.updatedAt ?? null, ...(d ? { childId: d.studentMembershipId } : {}) }), t("common.somethingWrong"))),
     onSuccess: (next) => {
       qc.setQueryData(["family", "health", childId], next);
       setEditing(false);
       setRefusal(null);
       setSaved(true);
     },
-    onError: (e) => setRefusal(e instanceof Refusal ? e : new Refusal(e.message, 0, {})),
+    onError: (e) => {
+      setRefusal(e instanceof Refusal ? e : new Refusal(e.message, 0, {}));
+      if (e instanceof Refusal && e.status === 409) void query.refetch();
+    },
   });
   if (role === "STUDENT") {
     const refused = query.isError && query.error instanceof Refusal && query.error.status === 403;

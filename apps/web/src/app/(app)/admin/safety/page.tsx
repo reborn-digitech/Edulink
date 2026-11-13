@@ -19,6 +19,9 @@ export async function generateMetadata(): Promise<Metadata> {
   return { title: t("meta.safety") };
 }
 
+/** The audit trail's page; an older page is reached by the "Older entries" link (TA-109). */
+const AUDIT_PAGE = 200;
+
 const TABS = [
   { id: "open", labelKey: "safety.tabOpen" },
   { id: "closed", labelKey: "safety.tabClosed" },
@@ -28,14 +31,16 @@ const TABS = [
 export default async function SafetyPage({
   searchParams,
 }: {
-  searchParams: Promise<{ tab?: string }>;
+  searchParams: Promise<{ tab?: string; before?: string }>;
 }) {
   // The reader's language, not English under a Hindi or Marathi page (QA-20).
   const relativeTime = await getRelativeTime();
   const tr = await getT();
   await requireRole("ADMIN", "PRINCIPAL");
   const session = (await getSession())!;
-  const { tab } = await searchParams;
+  const { tab, before: beforeParam } = await searchParams;
+  // The audit trail's page (TA-109): the last row of the page before, as the "Older entries" link names it.
+  const before = typeof beforeParam === "string" && /^[a-z0-9]{1,64}$/.test(beforeParam) ? beforeParam : undefined;
   const active = TABS.find((t) => t.id === tab)?.id ?? "open";
 
   /**
@@ -60,7 +65,7 @@ export default async function SafetyPage({
             [...actioned, ...dismissed].sort((a, b) => b.latestAt.getTime() - a.latestAt.getTime()),
         )
       : Promise.resolve([]),
-    active === "audit" ? listAudit(session, { take: 200 }) : Promise.resolve([]),
+    active === "audit" ? listAudit(session, { take: AUDIT_PAGE, before }) : Promise.resolve([]),
   ]);
 
   return (
@@ -171,6 +176,14 @@ export default async function SafetyPage({
               {tr("safety.auditNote")}
             </p>
             <AuditTable rows={auditRows} />
+            <nav className="flex justify-between gap-3 text-sm font-medium" aria-label={tr("safety.auditPages")}>
+              {before ? <Link href="/admin/safety?tab=audit" className="text-accent-strong underline underline-offset-4">{tr("safety.auditNewest")}</Link> : <span />}
+              {auditRows.length === AUDIT_PAGE && (
+                <Link href={`/admin/safety?tab=audit&before=${auditRows[auditRows.length - 1]!.id}`} className="text-accent-strong underline underline-offset-4">
+                  {tr("safety.auditOlder")}
+                </Link>
+              )}
+            </nav>
           </>
         ))}
     </div>

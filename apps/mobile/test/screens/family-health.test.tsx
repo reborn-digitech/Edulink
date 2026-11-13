@@ -121,6 +121,8 @@ describe("a child's health card for the guardian", () => {
         { name: "ZZ Aunt", relation: "aunt", phone: "+919876400999" },
         { name: "ZZ Uncle", relation: "uncle", phone: "+919876400998" },
       ],
+      // The card the form was drawn from (TA-111).
+      basedOn: "2026-09-10T05:00:00.000Z",
     });
     expect(await screen.findByText("Health card saved.")).toBeTruthy();
     expect(screen.getByLabelText("Allergies: Peanuts, eggs")).toBeTruthy();

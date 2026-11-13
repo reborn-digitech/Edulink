@@ -32,6 +32,8 @@ export const healthCardSaveSchema = z.object({
   doctorName: z.string().trim().max(80).default(""),
   doctorPhone: z.string().trim().max(20).default(""),
   contacts: z.array(healthContactSchema).max(3).default([]),
+  /** The card's updatedAt the form was drawn from, null when there was no card (TA-111): a card changed since is a 409 and kept. Left out, the form is applied whole as before. */
+  basedOn: iso.nullable().optional(),
 });
 export type HealthCardSave = z.infer<typeof healthCardSaveSchema>;
 

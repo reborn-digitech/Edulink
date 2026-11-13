@@ -11,7 +11,7 @@ import { notify, notifyGuardians } from "./notify";
 import { lockTcRegister, registerMax, stayAttendance } from "./school-record";
 import { answerRequest, claimRequestForIssue, requestPurpose } from "./certificate-requests";
 import { ageInYears, dateKeyInZone, todayKey } from "./dates";
-import { allAppointmentPresets, allCollegePresets, allPresets, BLANK, dataFor, fill, fillRows, isStaffKind, parseLayout, parseRows, placeholderFitsKind, placeholderKeys, PLACEHOLDER_KEYS, staffDataFor, STAFF_CERTIFICATE_KINDS, wordsFor, type PupilFacts, type StaffFacts } from "./certificate-rules";
+import { allAppointmentPresets, allCollegePresets, allPresets, BLANK, dataFor, fill, fillRows, isStaffKind, parseLayout, parseRows, placeholderFitsKind, placeholderKeys, PLACEHOLDER_KEYS, staffDataFor, STAFF_CERTIFICATE_KINDS, wordsFor, writtenTokens, type PupilFacts, type StaffFacts } from "./certificate-rules";
 import type { WordsLocale } from "./words";
 import type { ActiveContext } from "./session";
 import type { Role } from "./constants";
@@ -146,7 +146,8 @@ export async function saveTemplate(ctx: ActiveContext, input: CertificateTemplat
    * and still issues — it is refused when it is next saved.
    */
   const known = new Set<string>(PLACEHOLDER_KEYS);
-  const unknown = [...new Set([input.title, input.intro, input.outro, ...input.rows.map((r) => r.value)].flatMap(placeholderKeys))].filter((key) => !known.has(key));
+  // Every bracketed token, not only those the pattern reads (TA-577): one it cannot read would print as typed.
+  const unknown = [...new Set([input.title, input.intro, input.outro, ...input.rows.map((r) => r.value)].flatMap(writtenTokens))].filter((key) => !known.has(key));
   if (unknown.length > 0) throw new AccessError("certificates.unknownDetails", "FORBIDDEN", { list: unknown.map((k) => `[[${k}]]`).join(", ") });
   // A staff paper names the staff record and a pupil's paper the pupil's (risks batch 5A): the other's details would print a dash.
   const misfit = [...new Set([input.title, input.intro, input.outro, ...input.rows.map((r) => r.value)].flatMap(placeholderKeys))].filter((key) => !placeholderFitsKind(key, input.kind));

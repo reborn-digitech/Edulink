@@ -119,9 +119,24 @@ export function HealthCardSummary({ card, timezone }: { card: CardFields; timezo
 export function HealthCardEditor({ view, timezone }: { view: HealthCardView; timezone: string }) {
   const t = useT();
   const [editing, setEditing] = useState(false);
+  // Why the last save was refused, kept here so it outlives the form drawn again below.
+  const [notice, setNotice] = useState<string | null>(null);
 
   if (editing && view.canEdit) {
-    return <HealthCardForm view={view} onDone={() => setEditing(false)} />;
+    // Keyed by the card it was drawn from (TA-111): when a save is refused because the card changed, the page
+    // refreshes and the form is drawn again from the card as it now stands, so the next Save is based on what is shown.
+    return (
+      <HealthCardForm
+        key={view.card?.updatedAt ?? "new"}
+        view={view}
+        notice={notice}
+        onNotice={setNotice}
+        onDone={() => {
+          setNotice(null);
+          setEditing(false);
+        }}
+      />
+    );
   }
 
   return (
@@ -145,13 +160,13 @@ export function HealthCardEditor({ view, timezone }: { view: HealthCardView; tim
 
 type ContactDraft = HealthContact;
 
-function HealthCardForm({ view, onDone }: { view: HealthCardView; onDone: () => void }) {
+function HealthCardForm({ view, notice, onNotice, onDone }: { view: HealthCardView; notice: string | null; onNotice: (notice: string | null) => void; onDone: () => void }) {
   const t = useT();
   const router = useRouter();
   const { toast } = useToast();
   const [pending, startTransition] = useTransition();
   const [values, setValues] = useState<HealthCardSave>(() => toSave(view.card));
-  const [error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(notice);
   const [contactErrors, setContactErrors] = useState<Record<number, string>>({});
 
   const set = <K extends keyof HealthCardSave>(key: K, value: HealthCardSave[K]) => setValues((v) => ({ ...v, [key]: value }));
@@ -163,6 +178,7 @@ function HealthCardForm({ view, onDone }: { view: HealthCardView; onDone: () => 
   function submit(event: React.FormEvent) {
     event.preventDefault();
     setError(null);
+    onNotice(null);
     // A person with a name needs a number and one with a number a name;
     // a row left wholly blank is simply not sent.
     const kept = values.contacts.filter((c) => c.name.trim() || c.phone.trim() || c.relation.trim());
@@ -175,11 +191,17 @@ function HealthCardForm({ view, onDone }: { view: HealthCardView; onDone: () => 
       setValues((v) => ({ ...v, contacts: kept }));
       return;
     }
-    const input: HealthCardSave = { ...values, contacts: kept.map((c) => ({ name: c.name.trim(), relation: c.relation.trim(), phone: c.phone.trim() })) };
+    // The card this form was drawn from (TA-111): a card changed since is refused and kept, and the page shows it.
+    const input: HealthCardSave = { ...values, contacts: kept.map((c) => ({ name: c.name.trim(), relation: c.relation.trim(), phone: c.phone.trim() })), basedOn: view.card?.updatedAt ?? null };
     startTransition(async () => {
       const result = await saveHealthCardAction(view.studentMembershipId, input);
       if (!result.ok) {
-        setError(actionError(t, result, "common.tryAgain"));
+        const message = actionError(t, result, "common.tryAgain");
+        setError(message);
+        if (result.errorKey === "health.cardChanged") {
+          onNotice(message);
+          router.refresh();
+        }
         return;
       }
       toast({ tone: "ok", title: t("health.saved") });

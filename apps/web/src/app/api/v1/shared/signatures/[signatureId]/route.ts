@@ -9,7 +9,8 @@ export async function GET(_request: Request, { params }: { params: Promise<{ sig
     const session = await getSession();
     if (!session) throw new AccessError("access.notSignedIn", "UNAUTHENTICATED");
     // Somebody with no standing at any school (an expert, the operator) is refused before any paper is looked for.
-    if (!session.role || !["STUDENT", "PARENT", "TEACHER", "ADMIN", "PRINCIPAL"].includes(session.role)) throw new AccessError("access.wrongRoleForThisAction");
+    // Every member of staff an appointment letter goes to is let in to its pictures (TA-323); paperImage's rule is the lock.
+    if (!session.role || !["STUDENT", "PARENT", "TEACHER", "ADMIN", "PRINCIPAL", "DRIVER", "LIBRARIAN", "WARDEN", "FACULTY", "HOD", "EXAM_CONTROLLER", "IQAC", "TPO", "ACCOUNTS"].includes(session.role)) throw new AccessError("access.wrongRoleForThisAction");
     const { signatureId } = await params;
     const png = await paperImage(session, signatureId);
     if (!png) throw new AccessError("signatures.notFound", "NOT_FOUND");

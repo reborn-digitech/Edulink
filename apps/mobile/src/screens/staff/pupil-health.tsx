@@ -40,14 +40,18 @@ export function PupilHealth() {
     enabled: Boolean(membershipId),
   });
   const save = useMutation({
-    mutationFn: async (body: HealthCardSave) => healthCardSchema.parse(must(await api().post(base, body), t("common.somethingWrong"))),
+    // The card the form was drawn from (TA-111): a card changed since is a 409 and kept, and the screen reloads it.
+    mutationFn: async (body: HealthCardSave) => healthCardSchema.parse(must(await api().post(base, { ...body, basedOn: query.data?.card?.updatedAt ?? null }), t("common.somethingWrong"))),
     onSuccess: (next) => {
       qc.setQueryData(key, next);
       setEditing(false);
       setRefusal(null);
       setSaved(t("health.saved"));
     },
-    onError: (e) => setRefusal(e instanceof Refusal ? e : new Refusal(e.message, 0, {})),
+    onError: (e) => {
+      setRefusal(e instanceof Refusal ? e : new Refusal(e.message, 0, {}));
+      if (e instanceof Refusal && e.status === 409) void query.refetch();
+    },
   });
   if (!membershipId) {
     return (
