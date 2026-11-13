@@ -84,7 +84,7 @@ export function CollegeExamsScreen() {
           {f.courses.map((c) => (
             <Row key={c.courseId} title={`${c.code} ${c.name}`} caption={c.kind === "BACKLOG" ? t("examCell.kindBACKLOG") : undefined} />
           ))}
-          {f.status !== "DRAFT" ? <Text>{[t("examCell.feeLine", { fee: money(f.feePaise + f.lateFeePaise) }), f.demandStatus ? demandStatusLabel(t, f.demandStatus) : null].filter(Boolean).join(" · ")}</Text> : null}
+          {f.status !== "DRAFT" && !f.moneyWithheld ? <Text>{[t("examCell.feeLine", { fee: money(f.feePaise + f.lateFeePaise) }), f.demandStatus ? demandStatusLabel(t, f.demandStatus) : null].filter(Boolean).join(" · ")}</Text> : null}
           {f.eligibilityNote ? <Text tone="danger">{f.eligibilityNote}</Text> : null}
           {f.noDuesLines.some((l) => !l.cleared) ? <Text tone="danger">{t("examCell.noDuesPending", { desks: f.noDuesLines.filter((l) => !l.cleared).map((l) => l.desk).join(", ") })}</Text> : null}
           {f.refusalReason ? <Text tone="danger">{f.refusalReason}</Text> : null}

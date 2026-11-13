@@ -140,7 +140,7 @@ async function tellReverted(schoolId: string, studentMembershipId: string, userI
   const titleKey = lapsed ? "collegeOffice.notifScholarshipLapsed" : "collegeOffice.notifScholarshipRejected";
   await notify({ userId, schoolId, kind: "SYSTEM", titleKey, titleVars: vars, bodyKey: "collegeOffice.notifScholarshipRevertBody", bodyVars: vars, url: "/student/fees", urgent: true }).catch(() => undefined);
   if (await parentMaySee(studentMembershipId, "MONEY")) {
-    await notifyGuardians(studentMembershipId, (name) => ({ schoolId, kind: "SYSTEM", titleKey, titleVars: vars, bodyKey: "collegeOffice.notifScholarshipRevertChild", bodyVars: { ...vars, name }, url: "/parent/fees" })).catch(() => undefined);
+    await notifyGuardians(studentMembershipId, (name) => ({ schoolId, kind: "SYSTEM", titleKey, titleVars: vars, bodyKey: "collegeOffice.notifScholarshipRevertChild", bodyVars: { ...vars, name }, url: "/parent/fees" }), "MONEY").catch(() => undefined);
   }
 }
 

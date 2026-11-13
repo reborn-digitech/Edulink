@@ -6,6 +6,7 @@ import { readJson } from "./json";
 import { DEFAULT_PREFS, type UserPrefs } from "./session";
 import { translator, type Translate } from "./i18n/dictionary";
 import { normaliseLocale } from "./i18n/locales";
+import { studentsGuardiansMaySee } from "./student-consent";
 
 /**
  * The parent weekly digest: one message per family, once a week, saying what
@@ -70,7 +71,8 @@ async function childWeek(studentMembershipId: string): Promise<ChildDigest | nul
       select: { status: true },
     }),
     db.quizResponse.count({
-      where: { attempt: { studentMembershipId, schoolId: membership.schoolId }, answeredAt: { gte: since } },
+      // Answers, not reveals (TA-600): a revealed solution's row has no choice.
+      where: { attempt: { studentMembershipId, schoolId: membership.schoolId }, answeredAt: { gte: since }, chosenIndex: { not: null } },
     }),
     db.earnedBadge.count({
       where: { schoolId: membership.schoolId, studentMembershipId, earnedAt: { gte: since } },
@@ -181,12 +183,19 @@ export async function sendWeeklyDigests(
   // so quiet and skipped families can be attributed without a query each.
   const childSchool = new Map<string, string>();
   const allChildIds = [...new Set(parents.map((link) => link.studentMembershipId))];
+  // What an adult college student lets their guardians see (TA-176): the register line under ATTENDANCE, the
+  // practice, badges, homework and exams under RESULTS; a child with neither is left out of the digest.
+  const seesAttendance = new Set<string>();
+  const seesResults = new Set<string>();
   for (let i = 0; i < allChildIds.length; i += 1000) {
+    const chunk = allChildIds.slice(i, i + 1000);
     const rows = await db.membership.findMany({
-      where: { id: { in: allChildIds.slice(i, i + 1000) } },
+      where: { id: { in: chunk } },
       select: { id: true, schoolId: true },
     });
     for (const row of rows) childSchool.set(row.id, row.schoolId);
+    for (const id of await studentsGuardiansMaySee(chunk, "ATTENDANCE")) seesAttendance.add(id);
+    for (const id of await studentsGuardiansMaySee(chunk, "RESULTS")) seesResults.add(id);
   }
   const familySchools = (childIds: string[]) =>
     new Set(childIds.map((id) => childSchool.get(id)).filter((x): x is string => x !== undefined));
@@ -208,7 +217,15 @@ export async function sendWeeklyDigests(
       continue;
     }
 
-    const weeks = (await Promise.all(childIds.map((id) => childWeek(id)))).filter(
+    const weeks = (await Promise.all(childIds.filter((id) => seesAttendance.has(id) || seesResults.has(id)).map(async (id) => {
+      const week = await childWeek(id);
+      if (!week) return null;
+      return {
+        ...week,
+        ...(seesAttendance.has(id) ? {} : { attended: null, attendanceTotal: 0 }),
+        ...(seesResults.has(id) ? {} : { practiceAnswers: 0, badges: 0, homeworkDue: 0, examsSoon: 0 }),
+      };
+    }))).filter(
       (w): w is ChildDigest => w !== null,
     );
     if (weeks.length === 0) {

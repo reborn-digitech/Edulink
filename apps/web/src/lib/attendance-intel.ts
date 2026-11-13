@@ -3,6 +3,7 @@ import { db } from "./db";
 import { audit } from "./audit";
 import { notify } from "./notify";
 import { AccessError } from "./tenancy";
+import { parentMaySee } from "./student-consent";
 import { addDaysToKey, todayKey } from "./dates";
 import type { ActiveContext } from "./session";
 
@@ -192,6 +193,8 @@ export async function sendAbsenceAlert(
   });
   if (!membership) throw new AccessError("access.pupilNotFoundInThisSchool", "NOT_FOUND");
   if (membership.guardianships.length === 0) return { notified: 0, skipped: false };
+  // An adult college student who has not granted ATTENDANCE: their guardians are told nothing of it (TA-281).
+  if (!(await parentMaySee(membership.id, "ATTENDANCE"))) return { notified: 0, skipped: false };
 
   const childName = membership.user.preferredName ?? membership.user.name;
   const weekAgo = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000);

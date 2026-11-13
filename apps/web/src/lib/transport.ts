@@ -27,6 +27,7 @@ import { AccessError, assertGuardianAccess } from "./tenancy";
 import { assertModuleOn, isModuleOn } from "./modules";
 import { notify } from "./notify";
 import { channel, publish } from "./realtime";
+import { studentsGuardiansMaySee } from "./student-consent";
 import { addDaysToKey, todayKey, zonedStartOfDay } from "./dates";
 import { closedOn, schoolDayOn } from "./holidays";
 import { toCsv } from "./csv";
@@ -861,6 +862,8 @@ async function tellNear(schoolId: string, trip: Pick<LoadedTrip, "id" | "directi
   const already = await db.tripBoarding.findMany({ where: { tripId: trip.id, allotmentId: { in: due.map((r) => r.id) }, nearNotifiedAt: { not: null } }, select: { allotmentId: true } });
   const done = new Set(already.map((b) => b.allotmentId));
   const bus = trip.assignment.bus.registration;
+  // An adult college rider's bus is theirs until they grant HOSTEL_TRANSPORT: their guardians are not told (TA-048).
+  const mayTell = new Set(await studentsGuardiansMaySee(due.map((r) => r.studentMembershipId), "HOSTEL_TRANSPORT"));
   for (const r of due) {
     if (done.has(r.id)) continue;
     const row = await db.tripBoarding.upsert({ where: { tripId_allotmentId: { tripId: trip.id, allotmentId: r.id } }, create: { schoolId, tripId: trip.id, allotmentId: r.id }, update: {}, select: { id: true } });
@@ -868,7 +871,7 @@ async function tellNear(schoolId: string, trip: Pick<LoadedTrip, "id" | "directi
     if (claimed.count === 0) continue;
     publish([channel.student(r.studentMembershipId)], { type: "transport.near", tripId: trip.id, studentMembershipId: r.studentMembershipId });
     const [guardians, off] = await Promise.all([
-      db.guardianship.findMany({ where: { studentMembershipId: r.studentMembershipId, status: "ACTIVE" }, select: { parentUserId: true } }),
+      mayTell.has(r.studentMembershipId) ? db.guardianship.findMany({ where: { studentMembershipId: r.studentMembershipId, status: "ACTIVE" }, select: { parentUserId: true } }) : Promise.resolve([] as { parentUserId: string }[]),
       db.transportAlertPref.findMany({ where: { studentMembershipId: r.studentMembershipId, nearAlerts: false }, select: { userId: true } }),
     ]);
     const quiet = new Set(off.map((o) => o.userId));

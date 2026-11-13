@@ -39,7 +39,7 @@ export function isSendableEndpoint(endpoint: string): boolean {
 }
 import type { NotificationKind } from "./constants";
 import type { MessageTemplateKey } from "./message-templates";
-import { parentMaySee, studentsGuardiansMaySee, type StudentConsentGrant } from "./student-consent";
+import { consentApplies, parentMaySee, studentsGuardiansMaySee, type StudentConsentGrant } from "./student-consent";
 
 /**
  * Notification delivery: in-app row + Web Push, honouring per-user channel
@@ -184,6 +184,15 @@ export async function notify(input: NotifyInput): Promise<void> {
  */
 type DistributiveOmit<T, K extends keyof T> = T extends unknown ? Omit<T, K> : never;
 
+/** The one exception to a guardian notice's consent rule: the guardian is asked to act, whoever the student is. */
+export const EVERY_GUARDIAN = "EVERY_GUARDIAN";
+export type GuardianNoticeGrant = StudentConsentGrant | typeof EVERY_GUARDIAN;
+
+/** Whether a student's guardians may be told: under the grant named, or with none named only where no grant applies (TA-262). */
+async function mayTellGuardians(studentMembershipId: string, grant: StudentConsentGrant | undefined): Promise<boolean> {
+  return grant ? parentMaySee(studentMembershipId, grant) : !(await consentApplies(studentMembershipId));
+}
+
 /**
  * Fan a notification out to every active guardian of a student.
  *
@@ -193,13 +202,20 @@ type DistributiveOmit<T, K extends keyof T> = T extends unknown ? Omit<T, K> : n
  * receipt's amount by text to a guardian the student never let see their fees
  * was the leak (campaign S-2). A minor's guardian, and every guardian at a
  * school, is told as before.
+ *
+ * NO GRANT IS DEFAULT-DENY, as assertGuardianAccess is (TA-262, testing
+ * analysis of 13 November 2026): a notice that names none tells an adult
+ * college student's guardians nothing, so a notice written before colleges
+ * existed cannot tell them what the family page would refuse them. A notice a
+ * guardian must act on whoever the student is (a mentor's or a PEN change's
+ * ask, which the guardian's own door decides) says so with EVERY_GUARDIAN.
  */
 export async function notifyGuardians(
   studentMembershipId: string,
   build: (childName: string) => DistributiveOmit<NotifyInput, "userId">,
-  grant?: StudentConsentGrant,
+  grant?: GuardianNoticeGrant,
 ): Promise<void> {
-  if (grant && !(await parentMaySee(studentMembershipId, grant))) return;
+  if (grant !== EVERY_GUARDIAN && !(await mayTellGuardians(studentMembershipId, grant))) return;
   const guardians = await db.guardianship.findMany({
     where: { studentMembershipId, status: "ACTIVE" },
     include: {
@@ -230,10 +246,16 @@ export async function notifyGuardians(
 export async function notifyGuardiansOfClass(
   studentMembershipIds: string[],
   build: () => DistributiveOmit<NotifyInput, "userId">,
-  // As notifyGuardians' (5 Oct 2026): an adult college student's guardians hear of the class's work only under the grant.
+  // As notifyGuardians' (5 Oct 2026): an adult college student's guardians hear of the class's work only under the grant,
+  // and with no grant named not at all (TA-262).
   grant?: StudentConsentGrant,
 ): Promise<number> {
   if (grant) studentMembershipIds = await studentsGuardiansMaySee(studentMembershipIds, grant);
+  else {
+    const open: string[] = [];
+    for (const id of studentMembershipIds) if (!(await consentApplies(id))) open.push(id);
+    studentMembershipIds = open;
+  }
   if (studentMembershipIds.length === 0) return 0;
   const guardians = await db.guardianship.findMany({
     where: { studentMembershipId: { in: studentMembershipIds }, status: "ACTIVE" },

@@ -16,6 +16,10 @@ import { familyIncidents } from "./incidents";
 import { pupilRecordFor } from "./pupil-records";
 import { familySessions } from "./gig-sessions";
 import { fileToken } from "./marks-export";
+import { maySelfRead } from "./self-read";
+import { pupilFees } from "./fees-family";
+import { familyCertificates } from "./certificates";
+import { familyRequests } from "./certificate-requests";
 
 /**
  * A person's own data as one document — the DPDP Act's section 11, the
@@ -28,7 +32,8 @@ import { fileToken } from "./marks-export";
  * child re-checked through the guardianship, a pupil's own membership from
  * the session — so the document says exactly what the pages say and no more:
  * the parent's copy of a hand-in carries no essay (childWork never did), the
- * pupil's carries no health card, and a file is its id and name, never the
+ * pupil's carries a health card only from the age their school lets them read
+ * it (an adult at a college always), and a file is its id and name, never the
  * bytes. The export is audited, once, because it is the one door that hands
  * a child's whole record out at a time.
  */
@@ -118,12 +123,24 @@ export async function personExport(ctx: Reader, studentMembershipId?: string | n
   );
   put("sessions", await section(async () => (await familySessions(ctx)).children.find((c) => c.id === id)?.bookings ?? []));
 
-  // ---- a guardian's pages, which a pupil has no door to ----------------------
+  // ---- the health card, incidents and fees: a guardian's pages, and the pupil's own where the school lets them read
+  // them (TA-110): health and incidents from the self-read age (an adult at a college always), fees while the
+  // school shows a pupil of their age their dues — the same gates as /student/health, /incidents and /fees.
   if (ctx.role === "PARENT") {
     put("health", await section(() => healthCardFor(ctx, id)));
     put("incidents", await section(async () => (await familyIncidents(ctx, id)).incidents));
     put("fees", await section(async () => (await feesFamilyRead(ctx, id)).child));
+  } else {
+    if (await maySelfRead(ctx, id)) {
+      put("health", await section(() => healthCardFor(ctx, id)));
+      put("incidents", await section(async () => (await familyIncidents(ctx, id)).incidents));
+    }
+    const fees = await pupilFees(ctx);
+    if (fees.allowed) put("fees", fees);
   }
+  // ---- the papers issued and the papers asked for, for either reader (an adult's guardian is refused the export).
+  put("certificates", (await familyCertificates(ctx)).items.filter((c) => c.studentMembershipId === id));
+  put("certificateRequests", await section(async () => (await familyRequests(ctx, ctx.role === "PARENT" ? id : undefined)).items));
 
   await audit({
     schoolId: subject.schoolId,

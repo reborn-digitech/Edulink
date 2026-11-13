@@ -107,7 +107,7 @@ export async function settleOnLeaving(ctx: ActiveContext, studentMembershipId: s
   const cancelledPaise = lines.filter((l) => l.choice === "CANCEL").reduce((a, l) => a + l.balancePaise, 0);
   const keptPaise = lines.filter((l) => l.choice === "KEEP").reduce((a, l) => a + l.balancePaise, 0);
   await audit({ schoolId, actorUserId: ctx.user.id, action: "fees.leavingSettled", targetType: "Membership", targetId: studentMembershipId, meta: { lines: lines.length, cancelled: lines.filter((l) => l.choice === "CANCEL").length, cancelledPaise, keptPaise, itemsOut: view.items.reduce((a, i) => a + i.itemsOut, 0), byDeparture: view.cancelled.length } });
-  await notifyGuardians(studentMembershipId, (child) => ({ schoolId, kind: "FEES", titleKey: "ownerDecisions.notifSettledTitle", titleVars: { child }, bodyKey: "ownerDecisions.notifSettledBody", bodyVars: { child, cancelled: (cancelledPaise / 100).toFixed(2), kept: (keptPaise / 100).toFixed(2) }, url: "/parent/fees" })).catch((error) => console.error("[leaving-settlement] guardians not told", error));
+  await notifyGuardians(studentMembershipId, (child) => ({ schoolId, kind: "FEES", titleKey: "ownerDecisions.notifSettledTitle", titleVars: { child }, bodyKey: "ownerDecisions.notifSettledBody", bodyVars: { child, cancelled: (cancelledPaise / 100).toFixed(2), kept: (keptPaise / 100).toFixed(2) }, url: "/parent/fees" }), "MONEY").catch((error) => console.error("[leaving-settlement] guardians not told", error));
   return leavingSettlementFor(ctx, studentMembershipId);
 }
 

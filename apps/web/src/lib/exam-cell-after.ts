@@ -4,6 +4,7 @@ import { REVALUATION_WINDOW_DAYS, type BacklogRow, type CreditPushRow, type Exam
 import { db } from "./db";
 import { AccessError } from "./access-error";
 import { assertGuardianAccess } from "./tenancy";
+import { parentMaySee } from "./student-consent";
 import { assertModuleOn, isAutonomous } from "./modules";
 import { audit } from "./audit";
 import { notify } from "./notify";
@@ -180,18 +181,20 @@ async function zoneOf(schoolId: string): Promise<string> {
 /* -------------------------------------------------------------------------- */
 
 /** Whose exams the reader may see: their own as a STUDENT, or a guardian's child under the RESULTS grant. */
-async function whoseExams(ctx: ActiveContext, childId?: string): Promise<{ studentMembershipId: string; schoolId: string; name: string; canAct: boolean }> {
+async function whoseExams(ctx: ActiveContext, childId?: string): Promise<{ studentMembershipId: string; schoolId: string; name: string; canAct: boolean; seesAttendance: boolean; seesMoney: boolean }> {
   if (ctx.role === "PARENT") {
     // The first child when none is named, as every family door reads it.
     const child = childId ?? (await db.guardianship.findFirst({ where: { parentUserId: ctx.user.id, status: "ACTIVE", student: { status: "ACTIVE" } }, orderBy: { createdAt: "asc" }, select: { studentMembershipId: true } }))?.studentMembershipId;
     if (!child) throw new AccessError("access.notYourChild", "NOT_FOUND");
     const link = await assertGuardianAccess(ctx.user.id, child, "RESULTS");
     await assertModuleOn(link.student.schoolId, "EXAMS");
-    return { studentMembershipId: child, schoolId: link.student.schoolId, name: link.student.user.preferredName ?? link.student.user.name, canAct: false };
+    // RESULTS opens the forms; an adult's attendance and what each desk is owed are grants of their own (TA-067).
+    const [seesAttendance, seesMoney] = await Promise.all([parentMaySee(child, "ATTENDANCE"), parentMaySee(child, "MONEY")]);
+    return { studentMembershipId: child, schoolId: link.student.schoolId, name: link.student.user.preferredName ?? link.student.user.name, canAct: false, seesAttendance, seesMoney };
   }
   if (ctx.role !== "STUDENT" || !ctx.schoolId || !ctx.membershipId) throw new AccessError("access.wrongRoleForThisAction");
   await assertModuleOn(ctx.schoolId, "EXAMS");
-  return { studentMembershipId: ctx.membershipId, schoolId: ctx.schoolId, name: ctx.user.name, canAct: true };
+  return { studentMembershipId: ctx.membershipId, schoolId: ctx.schoolId, name: ctx.user.name, canAct: true, seesAttendance: true, seesMoney: true };
 }
 
 /**
@@ -256,12 +259,14 @@ export async function myExams(ctx: ActiveContext, childId?: string): Promise<MyE
         status: f.status as MyExams["forms"][number]["status"],
         courses: cs.map((c) => ({ courseId: c.courseId, code: courses.get(c.courseId)?.code ?? "—", name: courses.get(c.courseId)?.name ?? "—", kind: c.kind })),
         eligible: f.status === "DRAFT" && short.length === 0 ? true : f.eligible || f.status !== "DRAFT",
-        eligibilityNote: short.length ? t("examCell.shortNote", { courses: short.map((c) => `${courses.get(c.courseId)?.code ?? "—"} ${c.percent}%`).join(", ") }) : null,
-        noDues: f.noDues || f.status !== "DRAFT",
-        noDuesLines: snap.noDues ?? [],
-        feePaise: f.feePaise,
-        lateFeePaise: f.lateFeePaise,
-        demandStatus: f.feeDemandId ? (demandStatus.get(f.feeDemandId) ?? null) : null,
+        eligibilityNote: short.length && who.seesAttendance ? t("examCell.shortNote", { courses: short.map((c) => `${courses.get(c.courseId)?.code ?? "—"} ${c.percent}%`).join(", ") }) : null,
+        // Without MONEY a guardian is told neither the desks' dues nor the form's fee, late fee or whether it is paid (TA-067).
+        noDues: (who.seesMoney && f.noDues) || f.status !== "DRAFT",
+        noDuesLines: who.seesMoney ? (snap.noDues ?? []) : [],
+        feePaise: who.seesMoney ? f.feePaise : 0,
+        lateFeePaise: who.seesMoney ? f.lateFeePaise : 0,
+        demandStatus: who.seesMoney && f.feeDemandId ? (demandStatus.get(f.feeDemandId) ?? null) : null,
+        ...(who.seesMoney ? {} : { moneyWithheld: true }),
         opensAt: f.session.formOpensAt?.toISOString() ?? null,
         closesAt: f.session.formClosesAt?.toISOString() ?? null,
         windowOpen: open,

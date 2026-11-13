@@ -52,8 +52,10 @@ export async function setMemberBirthdate(
   const parsed = validate(dateKey);
   if ("errorKey" in parsed) return { ok: false, errorKey: parsed.errorKey };
 
+  // A member on the roll today: a school the person has left no longer writes their shared account (TA-175).
   const member = await db.membership.findFirst({
-    where: { id: membershipId, schoolId: ctx.schoolId, status: { not: "REMOVED" } },
+    // leftAt null (TA-175, TA-204): the date is on the shared account; a school the person has left corrects nobody, and a pupil who has left is the new school's to correct.
+    where: { id: membershipId, schoolId: ctx.schoolId, status: { not: "REMOVED" }, leftAt: null },
     select: { id: true, role: true, userId: true, user: { select: { birthdate: true } } },
   });
   if (!member) return { ok: false, errorKey: "refusal.notAMemberHere" };

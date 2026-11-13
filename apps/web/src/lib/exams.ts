@@ -6,6 +6,7 @@ import { listHolidays, isSchoolClosed } from "./holidays";
 import { formatDateKey, parseTeachingDays } from "./dates";
 import { audit } from "./audit";
 import { AccessError } from "./tenancy";
+import { studentsGuardiansMaySee } from "./student-consent";
 import { isDateKey } from "./dates";
 import { EXAM_KINDS, type ExamKind } from "./constants";
 import { workLabel } from "./grading";
@@ -878,7 +879,9 @@ export async function examMarksFor(ctx: ActiveContext): Promise<ExamMarks[]> {
       },
       select: { studentMembershipId: true, schoolId: true, classId: true },
     });
-    targets = rows;
+    // An adult college student's marks are theirs until they grant RESULTS (TA-459).
+    const open = new Set(await studentsGuardiansMaySee([...new Set(rows.map((r) => r.studentMembershipId))], "RESULTS"));
+    targets = rows.filter((r) => open.has(r.studentMembershipId));
   }
   if (targets.length === 0) return [];
 

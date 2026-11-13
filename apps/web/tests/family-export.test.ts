@@ -105,7 +105,7 @@ describe("a guardian's export", () => {
     expect(familyExportDocumentSchema.safeParse(doc).success).toBe(true);
     expect(ENDPOINTS.find((e) => e.method === "GET" && e.path === "/api/v1/family/export")?.response).toBe(familyExportDocumentSchema);
     expect(doc).toMatchObject({ format: "relay-person-export", version: 1, exportedBy: { userId: parentUserId, role: "PARENT" }, subject: { studentMembershipId: ashaId, name: "Asha", schoolId } });
-    expect(doc.sections).toEqual(["profile", "record", "memberships", "attendance", "marks", "reportCards", "assignments", "remarks", "conversations", "consents", "sessions", "health", "incidents", "fees"]);
+    expect(doc.sections).toEqual(["profile", "record", "memberships", "attendance", "marks", "reportCards", "assignments", "remarks", "conversations", "consents", "sessions", "health", "incidents", "fees", "certificates", "certificateRequests"]);
     expect(doc.attendance).toEqual([{ dateKey: "2026-09-01", status: "LATE" }]);
     expect(doc.health).toMatchObject({ card: { bloodGroup: "O+", allergies: "ZZ peanuts" } });
     expect(doc.incidents).toEqual([expect.objectContaining({ title: "ZZ Export headache" })]);

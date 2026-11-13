@@ -54,7 +54,8 @@ export async function correctLegalName(ctx: ActiveContext, membershipId: string,
   if (!name) return { ok: false, errorKey: "people.legalNameNotAName" };
 
   const member = await db.membership.findFirst({
-    where: { id: membershipId, schoolId: ctx.schoolId, status: { not: "REMOVED" }, role: { in: ["STUDENT", "TEACHER", "PRINCIPAL", "ADMIN"] } },
+    // leftAt null (TA-175, TA-204): the name is on the shared account; a school the person has left renames nobody, and a pupil who has left is the new school's to correct.
+    where: { id: membershipId, schoolId: ctx.schoolId, status: { not: "REMOVED" }, leftAt: null, role: { in: ["STUDENT", "TEACHER", "PRINCIPAL", "ADMIN"] } },
     select: { id: true, role: true, userId: true, user: { select: { name: true } } },
   });
   if (!member) return { ok: false, errorKey: "refusal.notAMemberHere" };

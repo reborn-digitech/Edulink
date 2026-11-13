@@ -102,7 +102,11 @@ export default async function ReportPage({
         <h2 id="attendance-heading" className="text-lg font-semibold">
           {t("reportView.attendance")}
         </h2>
-        {report.attendance.total === 0 ? (
+        {report.attendance.withheld ? (
+          <p className="text-sm text-fg-muted">
+            {t("familyGaps.notSharedBody", { name })}
+          </p>
+        ) : report.attendance.total === 0 ? (
           <p className="text-sm text-fg-muted">
             {t("reportView.noRegisterFor", { name })}
           </p>

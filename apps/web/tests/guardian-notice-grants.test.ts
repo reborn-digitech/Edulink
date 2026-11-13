@@ -66,8 +66,10 @@ describe("a class's notice under a grant", () => {
     expect(await toldParents(`zz-work-${STAMP}`)).toEqual([ids.minorParent]);
   });
 
-  it("without a grant both are told, as at a school", async () => {
-    expect(await notifyGuardiansOfClass([ids.adult, ids.minor], () => ({ kind: "ASSIGNMENT", schoolId: ids.school, titleKey: "notifTitle.newWorkSet", body: `zz-all-${STAMP}` }))).toBe(2);
+  // Naming no grant is default-deny since TA-262 (13 Nov 2026), as assertGuardianAccess is: the minor's guardian alone.
+  it("without a grant the minor's guardian is told and the adult's is not", async () => {
+    expect(await notifyGuardiansOfClass([ids.adult, ids.minor], () => ({ kind: "ASSIGNMENT", schoolId: ids.school, titleKey: "notifTitle.newWorkSet", body: `zz-all-${STAMP}` }))).toBe(1);
+    expect(await toldParents(`zz-all-${STAMP}`)).toEqual([ids.minorParent]);
   });
 
   it("a hostel notice reaches the adult's guardian under the grant they gave", async () => {

@@ -349,7 +349,15 @@ export async function issueCertificate(ctx: ActiveContext, input: CertificateIss
     url: `/certificates/${issued.id}`,
     meta: { certificateId: issued.id },
   }));
+  await tellHolder(input.studentMembershipId, { schoolId: caller.schoolId, titleKey: "pupilRecord.certificateIssuedYou", bodyKey: "pupilRecord.certificateIssuedBody", bodyVars: { title: issued.title, serial: issued.serial }, certificateId: issued.id });
   return certificateView(ctx, issued.id);
+}
+
+/** The student is told of their own paper, at issue and at withdrawal, at a school and at a college alike (TA-527). */
+async function tellHolder(studentMembershipId: string, n: { schoolId: string; titleKey: TranslationKey; bodyKey: TranslationKey; bodyVars: Record<string, string>; certificateId: string }): Promise<void> {
+  const holder = await db.membership.findUnique({ where: { id: studentMembershipId }, select: { userId: true } });
+  if (!holder) return;
+  await notify({ userId: holder.userId, schoolId: n.schoolId, kind: "SYSTEM", titleKey: n.titleKey, bodyKey: n.bodyKey, bodyVars: n.bodyVars, url: `/certificates/${n.certificateId}`, meta: { certificateId: n.certificateId } }).catch((error) => console.error("[certificates] holder notice failed", error));
 }
 
 /* -------------------------------------------------------------------------- */
@@ -493,6 +501,7 @@ export async function revokeCertificate(ctx: ActiveContext, certificateId: strin
     url: `/certificates/${cert.id}`,
     meta: { certificateId: cert.id },
   }));
+  await tellHolder(cert.studentMembershipId, { schoolId: caller.schoolId, titleKey: "pupilRecord.certificateRevokedYou", bodyKey: "pupilRecord.certificateRevokedBody", bodyVars: { serial: cert.serial }, certificateId: cert.id });
   return certificateView(ctx, cert.id);
 }
 

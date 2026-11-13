@@ -59,6 +59,9 @@ export type Badge = {
  */
 const MIN_DAYS_FOR_ATTENDANCE_BADGE = 20;
 
+/** The badges read from the register alone: a reader not let see the register is not shown them either (TA-556). */
+export const ATTENDANCE_BADGE_IDS: readonly string[] = ["here-all-week", "regular"];
+
 export async function getBadges(
   schoolId: string,
   membershipId: string,

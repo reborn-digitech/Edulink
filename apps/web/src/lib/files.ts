@@ -10,6 +10,7 @@ import { applicationOwningFile } from "./admissions";
 import { kycOwningFile } from "./expert-kyc";
 import { parentMaySee } from "./student-consent";
 import { teachesClass } from "./tenancy";
+import { forSchool } from "./tenant-context";
 
 /**
  * Per-file read authorisation.
@@ -103,6 +104,16 @@ async function teacherReachesWork(ctx: { schoolId: string; membershipId: string;
   return how.formTeacher || authorMembershipId === ctx.membershipId;
 }
 
+/**
+ * TA-228: whether the operator removed the school (School.removedAt). removeSchool takes the site down, but a school
+ * removed before it did keeps a live version until the nightly refresh takes it down, and its pictures are not public
+ * meanwhile. The school id is the database's own answer, so binding to it is the rule tenant-context.ts asks for.
+ */
+async function schoolRemoved(schoolId: string): Promise<boolean> {
+  const school = await forSchool(schoolId, () => db.school.findUnique({ where: { id: schoolId }, select: { removedAt: true } }));
+  return !school || school.removedAt !== null;
+}
+
 export async function authorizeFileRead(
   fileId: string,
   session: ActiveContext | null,
@@ -118,14 +129,14 @@ export async function authorizeFileRead(
   // gallery picture the office ticked consent for) is public while the site is live — the live version names its
   // files (SchoolSiteVersion.imageFileIds) and is readable signed out (gen-rls GLOBALLY_READABLE). Unpublishing,
   // or a version without it, closes it again; a copy a browser kept under the long cache is the logo's bargain.
-  const onSite = await db.schoolSiteVersion.findFirst({ where: { liveAt: { not: null }, imageFileIds: { has: fileId } }, select: { id: true } });
-  if (onSite) return { allowed: true, kind: "site", public: true };
+  const onSite = await db.schoolSiteVersion.findFirst({ where: { liveAt: { not: null }, imageFileIds: { has: fileId } }, select: { schoolId: true } });
+  if (onSite && !(await schoolRemoved(onSite.schoolId))) return { allowed: true, kind: "site", public: true };
   // end website-builder A
   // website-three (17 Oct 2026): a faculty member's own public photo, on a page they published, while the college's
   // website is live — both rows readable signed out (gen-rls GLOBALLY_READABLE). The page taken down, the photo removed or
   // the site unpublished, it closes again.
   const facultyPhoto = await newColumnLookup(() => db.facultyPublicProfile.findFirst({ where: { publicPhotoFileId: fileId }, select: { schoolId: true } }));
-  if (facultyPhoto && (await db.schoolSiteVersion.findFirst({ where: { schoolId: facultyPhoto.schoolId, liveAt: { not: null } }, select: { id: true } }))) return { allowed: true, kind: "site", public: true };
+  if (facultyPhoto && (await db.schoolSiteVersion.findFirst({ where: { schoolId: facultyPhoto.schoolId, liveAt: { not: null } }, select: { id: true } })) && !(await schoolRemoved(facultyPhoto.schoolId))) return { allowed: true, kind: "site", public: true };
   // end website-three
 
   // Everything else needs a session before we look anything up at all, so an
@@ -180,7 +191,8 @@ export async function authorizeFileRead(
     if (submission.student.userId === user.id) {
       return { allowed: true, kind: "submission", public: false };
     }
-    // An active guardian of that student.
+    // An active guardian of that student — of an adult college student, under the RESULTS grant (TA-240), as the
+    // family's work page reads it.
     const guardian = await db.guardianship.findFirst({
       where: {
         parentUserId: user.id,
@@ -189,7 +201,7 @@ export async function authorizeFileRead(
       },
       select: { id: true },
     });
-    if (guardian) return { allowed: true, kind: "submission", public: false };
+    if (guardian && (await parentMaySee(submission.studentMembershipId, "RESULTS"))) return { allowed: true, kind: "submission", public: false };
 
     // An admin of that school.
     if (role === "ADMIN" && schoolId === submission.schoolId) {

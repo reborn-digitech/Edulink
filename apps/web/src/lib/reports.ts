@@ -1,9 +1,10 @@
 import "server-only";
 import { db } from "./db";
 import { AccessError, assertGuardianAccess, assertStudentAccess } from "./tenancy";
+import { parentMaySee } from "./student-consent";
 import { getAttendanceSummary, computeBestStreak } from "./attendance";
 import { overallForStudent, workLabel } from "./grading";
-import { getBadges } from "./badges";
+import { ATTENDANCE_BADGE_IDS, getBadges } from "./badges";
 import { addDaysToKey, todayKey, zonedStartOfDay } from "./dates";
 import type { ActiveContext } from "./session";
 import type { TranslationKey } from "@/lib/i18n/dictionary";
@@ -46,6 +47,8 @@ export type ProgressReport = {
     counts: Record<AttendanceStatus, number>;
     total: number;
     bestStreak: number;
+    /** An adult college student has not granted this guardian ATTENDANCE: nothing above is theirs to read (TA-556). */
+    withheld: boolean;
   };
   grades: {
     overallPercent: number | null;
@@ -127,8 +130,13 @@ export async function buildProgressReport(
     lt: zonedStartOfDay(addDaysToKey(toKey, 1), timezone),
   };
 
+  // A guardian is admitted under RESULTS; an adult college student's register is a grant of its own (ATTENDANCE), and
+  // without it the report says so instead of printing the days (TA-556).
+  const attendanceWithheld = session.role === "PARENT" && !(await parentMaySee(studentMembershipId, "ATTENDANCE"));
   const [attendance, grades, badges] = await Promise.all([
-    getAttendanceSummary(membership.schoolId, studentMembershipId, fromKey, toKey),
+    attendanceWithheld
+      ? Promise.resolve({ percent: null, counts: { PRESENT: 0, LATE: 0, ABSENT: 0, EXCUSED: 0 }, total: 0, days: [] })
+      : getAttendanceSummary(membership.schoolId, studentMembershipId, fromKey, toKey),
     db.grade.findMany({
       where: {
         studentMembershipId,
@@ -195,6 +203,7 @@ export async function buildProgressReport(
       counts: attendance.counts,
       total: attendance.total,
       bestStreak: computeBestStreak(attendance.days),
+      withheld: attendanceWithheld,
     },
     grades: {
       // The shared helper: points earned over points available, divided ONCE.
@@ -218,8 +227,9 @@ export async function buildProgressReport(
     // EARNED ones only. A progress report is a record of what a child has done;
     // listing the badges they have not got turns it into a list of ways they
     // fell short, which is not what this document is for.
+    // Nor, with the register withheld, the badges that are the register in other words (TA-556).
     badges: badges
-      .filter((b) => b.earned)
+      .filter((b) => b.earned && !(attendanceWithheld && ATTENDANCE_BADGE_IDS.includes(b.id)))
       .map((b) => ({ id: b.id, labelKey: b.labelKey, descriptionKey: b.descriptionKey })),
     generatedAt: new Date(),
   };

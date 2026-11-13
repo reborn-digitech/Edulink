@@ -15304,7 +15304,7 @@
                   "targetLevel": {
                     "type": "integer",
                     "minimum": 1,
-                    "maximum": 10
+                    "maximum": 6
                   },
                   "note": {
                     "type": "string",
@@ -25006,7 +25006,7 @@
     },
     "/api/v1/family/export": {
       "get": {
-        "summary": "A person's own data as one JSON document to keep (DPDP s.11): the pupil's own, or one child of a guardian's (?student=; the first child when omitted) — profile, record, attendance, marks, report cards, work, messages, consents, sessions, and for a guardian the health card, incidents and fees. Answered with the document itself as a JSON attachment, not an envelope",
+        "summary": "A person's own data as one JSON document to keep (DPDP s.11): the pupil's own, or one child of a guardian's (?student=; the first child when omitted) — profile, record, attendance, marks, report cards, work, messages, consents, sessions, certificates and certificate requests, and the health card, incidents and fees for a guardian, or for the pupil where their school lets them read their own. Answered with the document itself as a JSON attachment, not an envelope",
         "description": "Roles: STUDENT, PARENT.",
         "security": [
           {
@@ -84582,7 +84582,7 @@
     },
     "/api/v1/office/pen-changes/{requestId}/decide": {
       "post": {
-        "summary": "The head approves or rejects a PEN change; the same decision again changes nothing",
+        "summary": "The head approves or rejects a PEN change; the same decision again changes nothing; an approval after the pupil has left is a 409",
         "description": "Roles: PRINCIPAL.",
         "security": [
           {
@@ -85248,7 +85248,7 @@
     },
     "/api/v1/family/pen-changes/{requestId}/decide": {
       "post": {
-        "summary": "A guardian approves or rejects a PEN change for their child; the same decision again changes nothing",
+        "summary": "A guardian approves or rejects a PEN change for their child; the same decision again changes nothing; an approval after the pupil has left is a 409",
         "description": "Roles: PARENT.",
         "security": [
           {
@@ -85486,7 +85486,7 @@
     },
     "/api/v1/office/pupils/by-pen/{pen}": {
       "get": {
-        "summary": "Who holds a UDISE+ PEN: a pupil on the roll here with their class and code, a pupil elsewhere on Shalaghar by state alone (on a roll, or left), or nobody; eleven digits or 403",
+        "summary": "Who holds a UDISE+ PEN: a pupil on the roll here with their class and code, a pupil elsewhere on Shalaghar by state alone (on a roll, or left), or nobody; anything but eleven digits is a 422 naming pen",
         "description": "Roles: ADMIN, PRINCIPAL.",
         "security": [
           {
@@ -100919,7 +100919,7 @@
     },
     "/api/v1/gigs/sessions/{bookingId}/checkout": {
       "post": {
-        "summary": "The order for a paid seat — an expert's workshop or one-to-one, or a teacher's guidance — waiting for its payer's payment: a guardian, or a pupil of eighteen or more for themselves (a pupil under eighteen is refused, and asks a parent); the same order while it stands, a fresh one after a failed attempt; a handful an hour per person",
+        "summary": "The order for a paid seat — an expert's workshop or one-to-one, or a teacher's guidance — waiting for its payer's payment: a guardian, or a pupil of eighteen or more for themselves (a pupil under eighteen is refused, and asks a parent); the same order while it stands and again after a failed attempt; a handful an hour per person",
         "description": "Roles: PARENT, STUDENT.",
         "security": [
           {
@@ -101292,7 +101292,7 @@
     },
     "/api/v1/gigs/payments/{paymentId}/confirm": {
       "post": {
-        "summary": "The checkout's own confirmation by its payer (a guardian, or a pupil of eighteen or more who bought their own seat), verified with the company's key secret (the webhook remains the record)",
+        "summary": "The checkout's own confirmation by its payer (a guardian, or a pupil of eighteen or more who bought their own seat), verified with the company's key secret (the webhook remains the record); a payment for a seat already given back is refunded, not confirmed (outcome given-back)",
         "description": "Roles: PARENT, STUDENT.",
         "security": [
           {
@@ -107912,7 +107912,7 @@
     },
     "/api/v1/operator/gigs/payees/{expertUserId}/suspend": {
       "post": {
-        "summary": "Stop paying an expert, with a reason they can read, or lift the stop; a suspended payee cannot price a seat",
+        "summary": "Stop paying an expert, with a reason they can read, or lift the stop; a suspended payee cannot price a seat, and their held seats are not released to them until the stop is lifted (refunds still go)",
         "description": "The server operator.",
         "security": [
           {
@@ -146558,6 +146558,7 @@
                             "type": "string",
                             "enum": [
                               "UNKNOWN_STUDENT",
+                              "AMBIGUOUS_STUDENT",
                               "BAD_MARKS",
                               "OVER_MAX"
                             ]
@@ -155314,7 +155315,7 @@
     },
     "/api/v1/placement/analytics/export": {
       "get": {
-        "summary": "A sheet as CSV (text/csv): NBA (three years of N, X, Y, Z and the index), NIRF (median salary, companies and counts) or the batch's offers (audited)",
+        "summary": "A sheet as CSV (text/csv): NBA (three years of N, X, Y, Z and the index), NIRF (median salary, companies and counts) or the batch's offers by student name (the TPO, office and principal only, never the IQAC; audited)",
         "description": "Roles: TPO, ADMIN, PRINCIPAL, IQAC. Only while the school has PLACEMENT switched on.",
         "security": [
           {
@@ -172725,6 +172726,9 @@
                             "type": "string",
                             "nullable": true
                           },
+                          "moneyWithheld": {
+                            "type": "boolean"
+                          },
                           "opensAt": {
                             "type": "string",
                             "format": "date-time",
@@ -179514,7 +179518,7 @@
     },
     "/api/v1/iqac/surveys/{surveyId}": {
       "get": {
-        "summary": "A survey's aggregates, never a respondent, hidden below five answers; a teacher reads their own offering's course feedback, an HOD the department's",
+        "summary": "A survey's aggregates, never a respondent, hidden below five answers and until the survey closes; a teacher reads their own offering's course feedback, an HOD the department's",
         "description": "Roles: IQAC, ADMIN, PRINCIPAL, FACULTY, HOD. Only while the school has IQAC switched on.",
         "security": [
           {
@@ -183596,7 +183600,7 @@
         }
       },
       "post": {
-        "summary": "Publish a fresh snapshot of the AICTE disclosure at /public/disclosure/{slug}, or take it down (audited); 404 at a college whose streams do not bring it",
+        "summary": "Publish a fresh snapshot of the AICTE disclosure at /public/disclosure/{slug}, or take it down (audited); publishing answers 404 at a college whose streams do not bring it, while a page published before the streams changed can still be taken down",
         "description": "Roles: IQAC, ADMIN. Only while the school has IQAC switched on.",
         "security": [
           {

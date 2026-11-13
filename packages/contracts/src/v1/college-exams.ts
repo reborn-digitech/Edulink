@@ -546,6 +546,8 @@ export const myExamFormSchema = z.object({
   feePaise: z.number().int(),
   lateFeePaise: z.number().int(),
   demandStatus: z.string().nullable(),
+  /** True for a guardian an adult college student has not granted MONEY (TA-067): the fee, the late fee and their status are not given (0, 0, null) and no fee line is drawn. */
+  moneyWithheld: z.boolean().optional(),
   opensAt: iso.nullable(),
   closesAt: iso.nullable(),
   windowOpen: z.boolean(),

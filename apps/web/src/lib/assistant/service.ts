@@ -29,6 +29,7 @@ import { translator, type TranslationKey } from "../i18n/dictionary";
 import { normaliseLocale } from "../i18n/locales";
 import { isModuleOn } from "../modules";
 import { AccessError, assertAssignmentAccess, assertGuardianAccess } from "../tenancy";
+import { consentApplies } from "../student-consent";
 import { isCollegeKind, restrictAnswerMarkdown } from "@edulink/contracts";
 import { ROLES, type Role } from "../constants";
 import type { ActiveContext } from "../session";
@@ -279,7 +280,9 @@ async function unavailableReason(asker: Asker, now: Date, opts: { countToday: bo
   if (!(await isModuleOn(asker.schoolId, "ASSISTANT"))) return { reason: "MODULE_OFF", usedToday: 0 };
   if (asker.role === "STUDENT" && asker.membershipId) {
     const setting = await db.assistantChildSetting.findUnique({ where: { studentMembershipId: asker.membershipId }, select: { optedOut: true } });
-    if (setting?.optedOut) return { reason: "OPTED_OUT", usedToday: 0 };
+    // A guardian's switch is for a minor: an adult at a college decides for themself, and an opt-out set before they
+    // turned eighteen no longer holds (TA-027).
+    if (setting?.optedOut && !(await consentApplies(asker.membershipId))) return { reason: "OPTED_OUT", usedToday: 0 };
   }
   const school = await schoolOf(asker.schoolId);
   const dayKey = dayKeyFor(school.timezone, now);
@@ -352,6 +355,8 @@ export async function openConversation(ctx: ActiveContext, input: { language: As
 
 /** The one-time notice (the owner's rule 6): the first time a pupil opens the assistant, each active guardian is told, once, and where the opt-out is. */
 export async function noticeGuardiansOnce(schoolId: string, studentMembershipId: string, now = new Date()): Promise<boolean> {
+  // An adult at a college: their use of Vidura is their own, and their guardians are not told (TA-027).
+  if (await consentApplies(studentMembershipId)) return false;
   const existing = await db.assistantChildSetting.findUnique({ where: { studentMembershipId }, select: { noticeSentAt: true } });
   if (existing?.noticeSentAt) return false;
   // Claim the notice first, so two first conversations at once tell the guardians once.
@@ -1331,6 +1336,8 @@ export async function familyAssistant(ctx: ActiveContext): Promise<FamilyAssista
   const byChild = new Map(settings.map((s) => [s.studentMembershipId, s]));
   const children = [];
   for (const l of links) {
+    // No switch for an adult at a college: the guardian's opt-out is a minor's (TA-027), and setOptOut refuses it.
+    if (await consentApplies(l.studentMembershipId)) continue;
     const s = byChild.get(l.studentMembershipId);
     children.push({ childId: l.studentMembershipId, name: l.student.user.preferredName ?? l.student.user.name, schoolOn: await isModuleOn(l.studentSchoolId, "ASSISTANT"), optedOut: s?.optedOut ?? false, changedAt: s?.changedAt?.toISOString() ?? null });
   }

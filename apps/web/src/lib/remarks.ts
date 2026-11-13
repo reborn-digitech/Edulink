@@ -7,7 +7,7 @@ import { notify } from "./notify";
 import { audit } from "./audit";
 import { AccessError, assertRemarkAccess, assertStudentAccess, taughtClassWhere } from "./tenancy";
 import type { ActiveContext } from "./session";
-import { assertParentMaySee } from "./student-consent";
+import { assertParentMaySee, parentMaySee, studentsGuardiansMaySee } from "./student-consent";
 
 /**
  * Private teacher ↔ guardian threads about one student.
@@ -56,8 +56,10 @@ export async function listThreads(session: ActiveContext): Promise<ThreadSummary
       where: { parentUserId: user.id, status: "ACTIVE" },
       select: { studentMembershipId: true },
     });
-    if (links.length === 0) return [];
-    where = { studentMembershipId: { in: links.map((l) => l.studentMembershipId) } };
+    // An adult college student's threads are theirs until they grant MESSAGES, as opening one is (TA-211).
+    const open = await studentsGuardiansMaySee(links.map((l) => l.studentMembershipId), "MESSAGES");
+    if (open.length === 0) return [];
+    where = { studentMembershipId: { in: open } };
   }
 
   const threads = await db.remarkThread.findMany({
@@ -256,7 +258,9 @@ async function notifyParticipants(
   if (teacher) targets.push({ userId: teacher.userId, titleKey: "notifTitle.newMessageAbout", titleVars: { name: childName } });
   // The child is told in the second person; everybody else is told about them.
   if (student) targets.push({ userId: student.userId, titleKey: "notifTitle.newMessageFromSchool" });
-  for (const guardian of guardians) {
+  // The guardians only while an adult college student lets them see messages (TA-211).
+  const guardiansMay = guardians.length > 0 && (await parentMaySee(thread.studentMembershipId, "MESSAGES"));
+  for (const guardian of guardiansMay ? guardians : []) {
     targets.push({ userId: guardian.parentUserId, titleKey: "notifTitle.newMessageAbout", titleVars: { name: childName } });
   }
 

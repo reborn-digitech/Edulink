@@ -2,6 +2,7 @@ import { db } from "@/lib/db";
 import { getSession, type ActiveContext } from "@/lib/session";
 import { channel, subscribe } from "@/lib/realtime";
 import { AccessError, teacherClassIds } from "@/lib/tenancy";
+import { studentsGuardiansMaySee } from "@/lib/student-consent";
 
 /**
  * GET /api/v1/events — server-sent events for this session.
@@ -32,7 +33,11 @@ async function channelsFor(ctx: ActiveContext): Promise<string[]> {
       where: { parentUserId: ctx.user.id, status: "ACTIVE" },
       select: { studentMembershipId: true },
     });
-    for (const child of children) channels.push(channel.student(child.studentMembershipId));
+    // The child's channel carries their grades, their remark threads and their bus (grading.ts, remarks.ts,
+    // transport.ts): an adult college student's guardian hears it only while all three grants are on (TA-240).
+    let heard = children.map((child) => child.studentMembershipId);
+    for (const grant of ["RESULTS", "MESSAGES", "HOSTEL_TRANSPORT"] as const) heard = await studentsGuardiansMaySee(heard, grant);
+    for (const id of heard) channels.push(channel.student(id));
     return channels;
   }
   // A teacher hears their own classes and the threads they are party to,

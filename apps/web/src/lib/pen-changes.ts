@@ -2,8 +2,9 @@ import "server-only";
 import type { PenChangeRequestView, PenChangeStatus } from "@edulink/contracts";
 import { db } from "./db";
 import { AccessError } from "./tenancy";
+import { RuleRefusal } from "./rule-refusal";
 import { audit } from "./audit";
-import { notify, notifyGuardians } from "./notify";
+import { EVERY_GUARDIAN, notify, notifyGuardians } from "./notify";
 import { assignPen, normalisePen } from "./pen";
 import type { ActiveContext } from "./session";
 
@@ -21,8 +22,8 @@ import type { ActiveContext } from "./session";
  * alone, and the request says so.
  */
 
-const INCLUDE = { student: { select: { userId: true, user: { select: { name: true, preferredName: true } }, enrollments: { where: { status: "ACTIVE" }, select: { class: { select: { name: true } } }, take: 1 } } } } as const;
-type Row = { id: string; schoolId: string; studentMembershipId: string; fromPen: string | null; toPen: string | null; reason: string; status: string; requestedByUserId: string; principalDecidedAt: Date | null; principalUserId: string | null; principalApproved: boolean | null; guardianDecidedAt: Date | null; guardianUserId: string | null; guardianApproved: boolean | null; guardianWaived: boolean; decisionReason: string | null; createdAt: Date; appliedAt: Date | null; student: { userId: string; user: { name: string; preferredName: string | null }; enrollments: { class: { name: string } }[] } };
+const INCLUDE = { student: { select: { userId: true, leftAt: true, user: { select: { name: true, preferredName: true } }, enrollments: { where: { status: "ACTIVE" }, select: { class: { select: { name: true } } }, take: 1 } } } } as const;
+type Row = { id: string; schoolId: string; studentMembershipId: string; fromPen: string | null; toPen: string | null; reason: string; status: string; requestedByUserId: string; principalDecidedAt: Date | null; principalUserId: string | null; principalApproved: boolean | null; guardianDecidedAt: Date | null; guardianUserId: string | null; guardianApproved: boolean | null; guardianWaived: boolean; decisionReason: string | null; createdAt: Date; appliedAt: Date | null; student: { userId: string; leftAt: Date | null; user: { name: string; preferredName: string | null }; enrollments: { class: { name: string } }[] } };
 
 async function names(ids: (string | null)[]): Promise<Map<string, string>> {
   const wanted = [...new Set(ids.filter((x): x is string => Boolean(x)))];
@@ -73,14 +74,16 @@ export async function pendingPenChange(ctx: ActiveContext, studentMembershipId: 
 /** The admin proposes. The same number proposed while one is pending is the same ask; a different one replaces it. */
 export async function proposePenChange(ctx: ActiveContext, studentMembershipId: string, input: { toPen: string | null; reason: string }): Promise<PenChangeRequestView> {
   if (ctx.role !== "ADMIN" || !ctx.schoolId) throw new AccessError("pupilRecord.penOnlyAdmin");
-  const pupil = await db.membership.findFirst({ where: { id: studentMembershipId, schoolId: ctx.schoolId, role: "STUDENT" }, select: { id: true, userId: true, user: { select: { penNumber: true } } } });
+  // leftAt null (TA-204): the number is on the shared account, and a pupil who has left is the new school's to correct.
+  const pupil = await db.membership.findFirst({ where: { id: studentMembershipId, schoolId: ctx.schoolId, role: "STUDENT", leftAt: null }, select: { id: true, userId: true, user: { select: { penNumber: true } } } });
   if (!pupil) throw new AccessError("access.notYourPupil", "NOT_FOUND");
-  const toPen = normalisePen(input.toPen);
-  if (!pupil.user.penNumber) throw new AccessError("pupilRecord.penChangeNotNeeded");
-  if (toPen === pupil.user.penNumber) throw new AccessError("pupilRecord.penChangeSame");
+  // A refused value is a 422 naming `toPen`, a state in the way a 409 (TA-602); the role above stays a 403.
+  const toPen = normalisePen(input.toPen, "toPen");
+  if (!pupil.user.penNumber) throw new RuleRefusal("pupilRecord.penChangeNotNeeded", 409, undefined, "toPen");
+  if (toPen === pupil.user.penNumber) throw new RuleRefusal("pupilRecord.penChangeSame", 422, undefined, "toPen");
   if (toPen) {
     const other = await db.user.findUnique({ where: { penNumber: toPen }, select: { id: true } });
-    if (other && other.id !== pupil.userId) throw new AccessError("pupilRecord.penTaken");
+    if (other && other.id !== pupil.userId) throw new RuleRefusal("pupilRecord.penTaken", 409, undefined, "toPen");
   }
   const open = await db.penChangeRequest.findFirst({ where: { studentMembershipId, status: "PENDING" }, include: INCLUDE });
   if (open && open.toPen === toPen) return (await view(ctx, [open]))[0]!;
@@ -91,7 +94,7 @@ export async function proposePenChange(ctx: ActiveContext, studentMembershipId: 
   const heads = await db.membership.findMany({ where: { schoolId: ctx.schoolId, role: "PRINCIPAL", status: "ACTIVE", leftAt: null }, select: { userId: true } });
   const name = created.student.user.preferredName ?? created.student.user.name;
   await Promise.all(heads.map((h) => notify({ userId: h.userId, schoolId: ctx.schoolId!, kind: "SYSTEM", titleKey: "pupilRecord.notifPenProposed", titleVars: { name }, body: input.reason.trim(), url: `/admin/records/${studentMembershipId}` })));
-  if (hasGuardian) await notifyGuardians(studentMembershipId, () => ({ schoolId: ctx.schoolId, kind: "SYSTEM", titleKey: "pupilRecord.notifPenProposed", titleVars: { name }, body: input.reason.trim(), url: `/parent/record?child=${studentMembershipId}` }));
+  if (hasGuardian) await notifyGuardians(studentMembershipId, () => ({ schoolId: ctx.schoolId, kind: "SYSTEM", titleKey: "pupilRecord.notifPenProposed", titleVars: { name }, body: input.reason.trim(), url: `/parent/record?child=${studentMembershipId}` }), EVERY_GUARDIAN); // the guardian's approval is asked for, whoever the pupil is (TA-262)
   return (await view(ctx, [created]))[0]!;
 }
 
@@ -105,6 +108,9 @@ export async function decidePenChange(ctx: ActiveContext, requestId: string, inp
   if (row.status !== "PENDING") return (await view(ctx, [row]))[0]!;
   const already = head ? row.principalDecidedAt : row.guardianDecidedAt;
   if (already) return (await view(ctx, [row]))[0]!;
+  // A proposal made before the pupil left is not approved after (TA-204): the approval would write the shared
+  // account's PEN for the school the pupil has left. A refusal still settles it; an undone leaving opens it again.
+  if (input.approve && row.student.leftAt) throw new RuleRefusal("pupilRecord.penChangePupilLeft", 409);
   const now = new Date();
   const data = head
     ? { principalDecidedAt: now, principalUserId: ctx.user.id, principalApproved: input.approve }
@@ -123,7 +129,7 @@ export async function decidePenChange(ctx: ActiveContext, requestId: string, inp
   if (settled || bothApproved) {
     const titleKey = settled ? "pupilRecord.notifPenRejected" : "pupilRecord.notifPenApplied";
     await notify({ userId: row.requestedByUserId, schoolId: row.schoolId, kind: "SYSTEM", titleKey, titleVars: { name }, body: input.reason?.trim() || row.reason, url: `/admin/records/${row.studentMembershipId}` });
-    await notifyGuardians(row.studentMembershipId, () => ({ schoolId: row.schoolId, kind: "SYSTEM", titleKey, titleVars: { name }, url: `/parent/record?child=${row.studentMembershipId}` }));
+    await notifyGuardians(row.studentMembershipId, () => ({ schoolId: row.schoolId, kind: "SYSTEM", titleKey, titleVars: { name }, url: `/parent/record?child=${row.studentMembershipId}` }), EVERY_GUARDIAN);
   }
   return (await view(ctx, [updated]))[0]!;
 }

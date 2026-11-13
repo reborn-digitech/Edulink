@@ -9,7 +9,7 @@ import { RuleRefusal } from "./rule-refusal";
 import { assertModuleOn } from "./modules";
 import { readJson, writeJson } from "./json";
 import { nameOf, spendTicket } from "./placement";
-import { todayKey } from "./dates";
+import { addDaysToKey, todayKey, zonedStartOfDay } from "./dates";
 import { zoneOf } from "./academics";
 import type { ActiveContext } from "./session";
 import type { Role } from "./constants";
@@ -253,13 +253,21 @@ export async function internshipCredits(studentMembershipId: string): Promise<{ 
   return rows.map((r) => ({ internshipId: r.id, windowSemester: r.windowSemester, credits: r.credits!, hours: r.hours, creditedAt: r.creditedAt! }));
 }
 
-/** The credits CREDITED within one academic term's dates (AcademicTerm.startsOn..endsOn, the academics module's), for that term's credit push. */
+/**
+ * The credits that belong to one academic term's credit push: each CREDITED internship goes to the first of the
+ * college's terms ending on or after the day it was credited, by the college's own clock (TA-091). Before, only a
+ * credit given between the term's startsOn and endsOn in UTC counted, so one given in the vacation between two terms
+ * — where the policy's windows put internships — or before 05:30 on a term's first day reached no push at all.
+ */
 export async function internshipCreditsForTerm(studentMembershipId: string, termId: string): Promise<number> {
-  const term = await db.academicTerm.findUnique({ where: { id: termId }, select: { startsOn: true, endsOn: true } });
+  const term = await db.academicTerm.findUnique({ where: { id: termId }, select: { schoolId: true, endsOn: true } });
   if (!term) return 0;
-  const from = new Date(`${term.startsOn}T00:00:00Z`);
-  const to = new Date(`${term.endsOn}T23:59:59Z`);
-  const rows = await db.internship.findMany({ where: { studentMembershipId, status: "CREDITED", creditedAt: { gte: from, lte: to } }, select: { credits: true } });
+  const zone = await zoneOf(term.schoolId);
+  // The term before this one by its end: what was credited after it ended is this term's.
+  const before = await db.academicTerm.findFirst({ where: { schoolId: term.schoolId, endsOn: { lt: term.endsOn } }, orderBy: { endsOn: "desc" }, select: { endsOn: true } });
+  const from = before ? zonedStartOfDay(addDaysToKey(before.endsOn, 1), zone) : undefined;
+  const to = zonedStartOfDay(addDaysToKey(term.endsOn, 1), zone);
+  const rows = await db.internship.findMany({ where: { studentMembershipId, status: "CREDITED", creditedAt: { ...(from ? { gte: from } : {}), lt: to } }, select: { credits: true } });
   return rows.reduce((a, r) => a + (r.credits ?? 0), 0);
 }
 
@@ -270,5 +278,5 @@ export async function childInternships(studentMembershipId: string): Promise<Int
 
 /** Tells a minor's family, too, when an internship in the family's business is approved: the declaration is theirs to sign. */
 export async function askForDeclaration(studentMembershipId: string, schoolId: string, company: string): Promise<void> {
-  await notifyGuardians(studentMembershipId, (name) => ({ schoolId, kind: "SYSTEM", titleKey: "placement.notifDeclaration", titleVars: { name, company }, url: "/parent/placement" })).catch(() => undefined);
+  await notifyGuardians(studentMembershipId, (name) => ({ schoolId, kind: "SYSTEM", titleKey: "placement.notifDeclaration", titleVars: { name, company }, url: "/parent/placement" }), "PLACEMENT").catch(() => undefined);
 }

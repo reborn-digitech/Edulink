@@ -5,6 +5,7 @@ import { AccessError, assertGuardianAccess, assertStudentAccess } from "./tenanc
 import { audit } from "./audit";
 import { notifyGuardians } from "./notify";
 import { assertSelfRead } from "./self-read";
+import { consentApplies } from "./student-consent";
 import type { ActiveContext } from "./session";
 import type { Role } from "./constants";
 
@@ -130,7 +131,9 @@ export async function recordIncident(ctx: ActiveContext, input: IncidentCreate):
     select: { id: true },
   });
   let notifiedAt: Date | null = null;
-  if (input.notifyGuardians) {
+  // An adult at a college: the incident log is theirs (family-child.ts), no grant covers it, and the guardians are
+  // neither told nor recorded as told (TA-106).
+  if (input.notifyGuardians && !(await consentApplies(input.studentMembershipId))) {
     const school = await db.school.findUniqueOrThrow({ where: { id: staff.schoolId }, select: { name: true } });
     await notifyGuardians(input.studentMembershipId, (childName) => ({
       schoolId: staff.schoolId,

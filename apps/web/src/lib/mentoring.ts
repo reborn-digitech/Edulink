@@ -3,7 +3,7 @@ import { db } from "./db";
 import type { TranslationKey } from "@/lib/i18n/dictionary";
 import { audit } from "./audit";
 import { AccessError, assertStudentAccess } from "./tenancy";
-import { notify, notifyGuardians } from "./notify";
+import { EVERY_GUARDIAN, notify, notifyGuardians } from "./notify";
 import { asTheSchool } from "./expert-binding";
 import { readJsonArray } from "./json";
 import { studentsForTeacher } from "./remarks";
@@ -388,7 +388,8 @@ export async function createMentorship(
     bodyKey: "notifBody.mentorNeedsConsent",
     bodyVars: { name: expert.user.name, purpose, child: childName },
     url: `/mentoring/${thread.id}`,
-  }));
+    // A mentorship waits on a guardian's yes whoever the pupil is (consentToMentorship): asked, not merely told (TA-262).
+  }), EVERY_GUARDIAN);
 
   await audit({
     schoolId: session.schoolId,
@@ -594,7 +595,8 @@ export async function postMentorMessage(
         titleVars: { name: expert.user.name, child: childName },
         bodyKey: "notifBody.readWholeConversation",
         url: `/mentoring/${threadId}`,
-      }));
+        // The guardians read every message of a mentorship they agreed to (getMentorship), whoever the pupil is (TA-262).
+      }), EVERY_GUARDIAN);
     });
   } else {
     await notify({
@@ -1000,7 +1002,8 @@ export async function decideMentorRequest(
     bodyKey: "notifBody.mentorNeedsConsent",
     bodyVars: { name: thread.expert.user.name, purpose: thread.purpose, child: childName },
     url: `/mentoring/${thread.id}`,
-  }));
+    // As at the office's pairing: the guardian's yes is what the thread waits on (TA-262).
+  }), EVERY_GUARDIAN);
 
   await audit({
     schoolId: session.schoolId,

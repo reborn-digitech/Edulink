@@ -256,7 +256,8 @@ export async function saveAttendanceBatch(opts: {
           bodyVars: { date: pretty },
           url: "/parent/attendance",
           meta: { dateKey, status },
-        })),
+          // An adult college student's register is theirs until they grant it (TA-281).
+        }), "ATTENDANCE"),
       ),
     );
   }

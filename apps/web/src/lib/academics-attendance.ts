@@ -7,8 +7,8 @@ import { RuleRefusal } from "./rule-refusal";
 import { audit } from "./audit";
 import { notify, notifyGuardians } from "./notify";
 import { parentMaySee } from "./student-consent";
-import { addDaysToKey, dateKeyInZone, dateKeyRange, isDateKey, parseTeachingDays, todayKey, weekdayOfKey } from "./dates";
-import { academicsCaller, currentTerm, divisionNames, ensureLecturesForDay, hodDepartment, nameOf, type Caller } from "./academics";
+import { dateKeyInZone, dateKeyRange, isDateKey, parseTeachingDays, todayKey, weekdayOfKey } from "./dates";
+import { academicsCaller, currentTerm, divisionNames, ensureLecturesForDay, headsDepartment, hodDepartment, hodDepartments, nameOf, type Caller } from "./academics";
 import { canMissMore, isEligible, percentOf } from "./academics-rules";
 import { batchMemberIds, holdsOn, memberOn } from "./stream-records";
 import type { ActiveContext } from "./session";
@@ -50,9 +50,15 @@ const NOTICE_EVERY_MS = 7 * 24 * 60 * 60 * 1000;
 
 type RegRow = { studentMembershipId: string; offeringId: string; name: string; courseCode: string; courseName: string; departmentId: string; threshold: number };
 
-/** Lectures each offering still has on the timetable from `from` to the term's end, on teaching days the college is open. */
-async function remainingBy(schoolId: string, offeringIds: string[], from: string, to: string): Promise<Map<string, number>> {
+/**
+ * Lectures each offering still has on the timetable from today to the term's end, on teaching days the
+ * college is open (TA-493): never a day before the term starts, and today's lectures counted (a lecture of
+ * today already marked for a student is in their `held`, and attendanceRows takes it off their remaining).
+ */
+async function remainingBy(schoolId: string, offeringIds: string[], today: string, term: { startsOn: string; endsOn: string }): Promise<Map<string, number>> {
   const out = new Map<string, number>();
+  const from = today > term.startsOn ? today : term.startsOn;
+  const to = term.endsOn;
   if (!offeringIds.length || from > to) return out;
   const [slots, school, holidays] = await Promise.all([
     db.offeringSlot.findMany({ where: { offeringId: { in: offeringIds } }, select: { offeringId: true, weekday: true } }),
@@ -67,28 +73,34 @@ async function remainingBy(schoolId: string, offeringIds: string[], from: string
   return out;
 }
 
-/** Held and attended per offering and student, counted by the database. */
-async function countsBy(offeringIds: string[], studentIds?: string[]): Promise<Map<string, { held: number; attended: number }>> {
-  const out = new Map<string, { held: number; attended: number }>();
+/** Held and attended per offering and student, counted by the database; `today`, how many of the held are lectures of `today` (TA-493). */
+async function countsBy(offeringIds: string[], studentIds: string[] | undefined, today: string): Promise<Map<string, { held: number; attended: number; today: number }>> {
+  const out = new Map<string, { held: number; attended: number; today: number }>();
   if (!offeringIds.length) return out;
   const rows = await db.lectureAttendance.findMany({
     where: { lecture: { offeringId: { in: offeringIds }, cancelledAt: null }, ...(studentIds ? { studentMembershipId: { in: studentIds } } : {}) },
-    select: { studentMembershipId: true, status: true, lecture: { select: { offeringId: true } } },
+    select: { studentMembershipId: true, status: true, lecture: { select: { offeringId: true, dateKey: true } } },
   });
   for (const r of rows) {
     const k = `${r.lecture.offeringId}|${r.studentMembershipId}`;
-    const v = out.get(k) ?? { held: 0, attended: 0 };
+    const v = out.get(k) ?? { held: 0, attended: 0, today: 0 };
     v.held += 1;
     if (ATTENDED.includes(r.status)) v.attended += 1;
+    if (r.lecture.dateKey === today) v.today += 1;
     out.set(k, v);
   }
   return out;
 }
 
-/** The term's approved condonations: by student, for one offering or (null) every course. */
-async function condonedBy(schoolId: string, termId: string): Promise<(studentId: string, offeringId: string) => boolean> {
-  const rows = await db.attendanceCondonation.findMany({ where: { schoolId, termId, status: { in: ["HOD_APPROVED", "PRINCIPAL_APPROVED"] } }, select: { studentMembershipId: true, offeringId: true } });
-  return (s, o) => rows.some((r) => r.studentMembershipId === s && (r.offeringId === null || r.offeringId === o));
+/**
+ * The term's approved condonations: by student, for one offering or (null) every course. Below the
+ * department's floor the decision is the principal's alone (docs/guide/principal.md, hod.md), so an HOD's
+ * approval covers a course only while its percentage stands at or above the floor (TA-058): a student who
+ * falls under it after the approval is no longer condoned, and asks again for the principal to decide.
+ */
+async function condonedBy(schoolId: string, termId: string): Promise<(studentId: string, offeringId: string, percent: number | null, floor: number) => boolean> {
+  const rows = await db.attendanceCondonation.findMany({ where: { schoolId, termId, status: { in: ["HOD_APPROVED", "PRINCIPAL_APPROVED"] } }, select: { studentMembershipId: true, offeringId: true, status: true } });
+  return (s, o, percent, floor) => rows.some((r) => r.studentMembershipId === s && (r.offeringId === null || r.offeringId === o) && (r.status === "PRINCIPAL_APPROVED" || percent === null || percent >= floor));
 }
 
 /**
@@ -97,7 +109,7 @@ async function condonedBy(schoolId: string, termId: string): Promise<(studentId:
  * defaulter lists, the condonation desk and the exams module.
  */
 export async function attendanceRows(schoolId: string, termId: string, filter: { studentMembershipId?: string; studentMembershipIds?: string[]; offeringIds?: string[]; departmentId?: string } = {}): Promise<(CourseAttendance & { studentMembershipId: string; name: string; departmentId: string })[]> {
-  const term = await db.academicTerm.findUniqueOrThrow({ where: { id: termId }, select: { endsOn: true } });
+  const term = await db.academicTerm.findUniqueOrThrow({ where: { id: termId }, select: { startsOn: true, endsOn: true } });
   const regs = await db.courseRegistration.findMany({
     where: {
       schoolId,
@@ -111,8 +123,8 @@ export async function attendanceRows(schoolId: string, termId: string, filter: {
     select: {
       studentMembershipId: true,
       offeringId: true,
-      student: { select: { user: { select: { name: true, preferredName: true } }, academicSeat: { select: { programme: { select: { attendanceThreshold: true } } } } } },
-      offering: { select: { course: { select: { code: true, name: true, scheme: { select: { programme: { select: { departmentId: true, attendanceThreshold: true } } } } } } } },
+      student: { select: { user: { select: { name: true, preferredName: true } }, academicSeat: { select: { programme: { select: { attendanceThreshold: true, department: { select: { condoneFloorPercent: true } } } } } } } },
+      offering: { select: { course: { select: { code: true, name: true, scheme: { select: { programme: { select: { departmentId: true, attendanceThreshold: true, department: { select: { condoneFloorPercent: true } } } } } } } } } },
     },
   });
   const rows: RegRow[] = regs.map((r) => ({
@@ -125,19 +137,23 @@ export async function attendanceRows(schoolId: string, termId: string, filter: {
     // The student's own programme's rule: a law student on another department's elective is still held to 70.
     threshold: r.student.academicSeat?.programme.attendanceThreshold ?? r.offering.course.scheme.programme.attendanceThreshold,
   }));
+  // The floor of the department that decides each student's condonation: their own programme's, as decideCondonation reads it (TA-058).
+  const floorOf = new Map(regs.map((r) => [`${r.offeringId}|${r.studentMembershipId}`, r.student.academicSeat?.programme.department.condoneFloorPercent ?? r.offering.course.scheme.programme.department.condoneFloorPercent]));
   const offeringIds = [...new Set(rows.map((r) => r.offeringId))];
   const tz = (await db.school.findUniqueOrThrow({ where: { id: schoolId }, select: { timezone: true } })).timezone;
+  const today = todayKey(tz);
   const [counts, condoned, remaining] = await Promise.all([
-    countsBy(offeringIds, filter.studentMembershipId ? [filter.studentMembershipId] : filter.studentMembershipIds),
+    countsBy(offeringIds, filter.studentMembershipId ? [filter.studentMembershipId] : filter.studentMembershipIds, today),
     condonedBy(schoolId, termId),
-    remainingBy(schoolId, offeringIds, addDaysToKey(todayKey(tz), 1), term.endsOn),
+    remainingBy(schoolId, offeringIds, today, term),
   ]);
   return rows
     .map((r) => {
-      const c = counts.get(`${r.offeringId}|${r.studentMembershipId}`) ?? { held: 0, attended: 0 };
+      const c = counts.get(`${r.offeringId}|${r.studentMembershipId}`) ?? { held: 0, attended: 0, today: 0 };
       const percent = percentOf(c.attended, c.held);
-      const left = remaining.get(r.offeringId) ?? 0;
-      const isCondoned = condoned(r.studentMembershipId, r.offeringId);
+      // Today's lectures are in the timetable's count until marked; one marked for this student is in their held (TA-493).
+      const left = Math.max(0, (remaining.get(r.offeringId) ?? 0) - (today >= term.startsOn ? c.today : 0));
+      const isCondoned = condoned(r.studentMembershipId, r.offeringId, percent, floorOf.get(`${r.offeringId}|${r.studentMembershipId}`) ?? 0);
       return { ...r, held: c.held, attended: c.attended, percent, remaining: left, canMiss: canMissMore({ attended: c.attended, held: c.held, remaining: left, threshold: r.threshold }), condoned: isCondoned, eligible: isEligible(percent, r.threshold, isCondoned) };
     })
     .sort((a, b) => a.courseCode.localeCompare(b.courseCode) || a.name.localeCompare(b.name));
@@ -183,7 +199,7 @@ async function sendDefaulterNotices(schoolId: string, rows: { studentMembershipI
     const vars = { course: `${r.courseCode} ${r.courseName}`, percent: String(r.percent), threshold: r.threshold };
     await notify({ userId: student.userId, schoolId, kind: "ATTENDANCE", titleKey: "academics.notifyDefaulterTitle", titleVars: vars, bodyKey: "academics.notifyDefaulterBody", bodyVars: vars, url: "/student/academics" });
     if (await parentMaySee(r.studentMembershipId, "ATTENDANCE")) {
-      await notifyGuardians(r.studentMembershipId, (child) => ({ schoolId, kind: "ATTENDANCE", titleKey: "academics.notifyDefaulterGuardianTitle", titleVars: { child }, bodyKey: "academics.notifyDefaulterGuardianBody", bodyVars: { ...vars, child }, url: "/parent/academics" }));
+      await notifyGuardians(r.studentMembershipId, (child) => ({ schoolId, kind: "ATTENDANCE", titleKey: "academics.notifyDefaulterGuardianTitle", titleVars: { child }, bodyKey: "academics.notifyDefaulterGuardianBody", bodyVars: { ...vars, child }, url: "/parent/academics" }), "ATTENDANCE");
     }
     sent += 1;
   }
@@ -293,7 +309,7 @@ async function lectureFor(c: Caller, lectureId: string, mode: "read" | "mark") {
   const lecture = await db.lecture.findFirst({ where: { id: lectureId, schoolId: c.schoolId }, select: { ...LECTURE_SELECT, cancelledAt: true, offering: { select: { ...LECTURE_SELECT.offering.select, termId: true } } } });
   if (!lecture) throw new AccessError("access.entryNotFound", "NOT_FOUND");
   const own = lecture.substituteMembershipId ? lecture.substituteMembershipId === c.membershipId : lecture.offering.facultyMembershipId === c.membershipId;
-  const hod = c.role === "HOD" && (await hodDepartment(c))?.id === lecture.offering.course.scheme.programme.departmentId;
+  const hod = c.role === "HOD" && (await headsDepartment(c, lecture.offering.course.scheme.programme.departmentId));
   const office = c.role === "ADMIN" || c.role === "PRINCIPAL";
   if (!own && !hod && !(office && mode === "read")) throw new AccessError("academics.refuseNotYours");
   return { lecture, canMark: own || hod };
@@ -370,8 +386,10 @@ export async function markLecture(ctx: ActiveContext, lectureId: string, input: 
     const prior = new Map((await tx.lectureAttendance.findMany({ where: { lectureId, studentMembershipId: { in: students } }, select: { studentMembershipId: true, status: true } })).map((r) => [r.studentMembershipId, r.status]));
     const fresh = students.filter((s) => !prior.has(s));
     const created = fresh.length ? (await tx.lectureAttendance.createMany({ data: fresh.map((s) => ({ schoolId: c.schoolId, lectureId, studentMembershipId: s, status: statusOf.get(s)!, markedByMembershipId: c.membershipId, clientId: input.clientId })), skipDuplicates: true })).count : 0;
-    // Rows that already stood — and, should another device have written one since the read above, those too.
-    const toUpdate = created === fresh.length ? students.filter((s) => prior.has(s)) : students;
+    // Rows that already stood with another mark — and, should another device have written one since the read above,
+    // every row. A row whose mark is unchanged keeps its first marker and its batch's clientId (TA-300), so a
+    // re-mark names only what it changed and a late replay of the first batch is still known as one.
+    const toUpdate = created === fresh.length ? students.filter((s) => prior.has(s) && prior.get(s) !== statusOf.get(s)) : students;
     const markedAt = new Date();
     for (const status of ["PRESENT", "ABSENT", "LATE"] as const) {
       const ids = toUpdate.filter((s) => statusOf.get(s) === status);
@@ -380,7 +398,9 @@ export async function markLecture(ctx: ActiveContext, lectureId: string, input: 
     return { replay: false as const, tally: await counts(tx), prior };
   });
   if (written.replay) return { lectureId, ...written.tally, replay: true, noticesSent: 0 };
-  await audit({ schoolId: c.schoolId, actorUserId: c.userId, action: "academics.lecture.mark", targetType: "Lecture", targetId: lectureId, meta: { entries: input.entries.length, absent: input.entries.filter((e) => e.status === "ABSENT").length, dateKey: lecture.dateKey } });
+  // A re-mark keeps what it replaced (TA-300): each changed student's id with the mark before and after, ids and codes only.
+  const changes = students.filter((s) => written.prior.has(s) && written.prior.get(s) !== statusOf.get(s)).map((s) => ({ student: s, from: written.prior.get(s)!, to: statusOf.get(s)! }));
+  await audit({ schoolId: c.schoolId, actorUserId: c.userId, action: "academics.lecture.mark", targetType: "Lecture", targetId: lectureId, meta: { entries: input.entries.length, absent: input.entries.filter((e) => e.status === "ABSENT").length, dateKey: lecture.dateKey, ...(changes.length ? { changes } : {}) } });
   if (!absentees.length) return { lectureId, ...written.tally, replay: false, noticesSent: 0 };
   const after = await attendanceRows(c.schoolId, lecture.offering.termId, { offeringIds: [lecture.offeringId], studentMembershipIds: absentees });
   // Told when this mark first takes them under the line: above it (or unmarked) before, under it now.
@@ -459,8 +479,9 @@ export async function condonationsFor(c: Caller, status: "OPEN" | "ALL"): Promis
   let where: Record<string, unknown> = { schoolId: c.schoolId };
   if (c.role === "STUDENT") where = { ...where, studentMembershipId: c.membershipId };
   else if (c.role === "HOD") {
-    const dept = await hodDepartment(c);
-    where = { ...where, student: { academicSeat: { programme: { departmentId: dept?.id ?? "-" } } }, ...(status === "OPEN" ? { status: "ASKED" } : {}) };
+    // Every department the HOD heads (TA-275): the asks of a second department are theirs to decide too.
+    const depts = await hodDepartments(c);
+    where = { ...where, student: { academicSeat: { programme: { departmentId: { in: depts.length ? depts.map((d) => d.id) : ["-"] } } } }, ...(status === "OPEN" ? { status: "ASKED" } : {}) };
   } else if (c.role === "PRINCIPAL") where = { ...where, ...(status === "OPEN" ? { status: "FORWARDED" } : {}) };
   else if (status === "OPEN") where = { ...where, status: { in: ["ASKED", "FORWARDED"] } };
   const rows = await db.attendanceCondonation.findMany({ where, select: CONDONATION_SELECT, orderBy: { createdAt: "desc" }, take: 200 });
@@ -503,8 +524,9 @@ export async function decideCondonation(ctx: ActiveContext, id: string, input: {
   let next: string;
   const data: Record<string, unknown> = { decisionNote: input.note || null };
   if (c.role === "HOD") {
-    const dept = await hodDepartment(c);
-    if (!dept || row.student.academicSeat?.programme.departmentId !== dept.id) throw new AccessError("academics.refuseOtherDepartment");
+    // The student's department, if the HOD heads it among theirs (TA-275).
+    const dept = (await hodDepartments(c)).find((d) => d.id === row.student.academicSeat?.programme.departmentId);
+    if (!dept) throw new AccessError("academics.refuseOtherDepartment");
     if (row.status !== "ASKED") throw new RuleRefusal("academics.refuseDecided", 409);
     if (input.decision === "APPROVE") {
       const percent = await percentFor(c.schoolId, row);

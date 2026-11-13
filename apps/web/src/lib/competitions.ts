@@ -1,6 +1,7 @@
 import "server-only";
 import { db } from "./db";
 import { AccessError, assertGuardianAccess } from "./tenancy";
+import { consentApplies, studentsGuardiansMaySee } from "./student-consent";
 import { notify, notifyGuardians } from "./notify";
 import { audit } from "./audit";
 import type { ActiveContext } from "./session";
@@ -374,7 +375,8 @@ async function ownStudentMembershipIds(session: ActiveContext): Promise<string[]
       where: { parentUserId: session.user.id, status: "ACTIVE" },
       select: { studentMembershipId: true },
     });
-    return guardianships.map((g) => g.studentMembershipId);
+    // An adult college student's entries and results are theirs until they grant RESULTS (TA-099).
+    return studentsGuardiansMaySee(guardianships.map((g) => g.studentMembershipId), "RESULTS");
   }
   return [];
 }
@@ -458,7 +460,16 @@ export async function enterCompetition(
   const existing = await db.competitionEntry.findUnique({
     where: { competitionId_studentMembershipId: { competitionId, studentMembershipId: who.studentMembershipId } },
   });
+  // An adult at a college enters on their own word: no guardian is asked, and none could answer (TA-101).
+  const ownWord = !who.byGuardian && (await consentApplies(who.studentMembershipId));
   if (existing) {
+    if (ownWord && existing.parentConsentAt === null) {
+      await db.competitionEntry.update({ where: { id: existing.id }, data: { parentConsentAt: now, parentConsentBy: session.user.id } });
+      await refreshStanding(existing.schoolId, competitionId);
+      // The adult's own word stands for the guardian's yes, on the record as giveConsent's is.
+      await audit({ schoolId: existing.schoolId, actorUserId: session.user.id, action: "competition.consent", meta: { entryId: existing.id, competitionId, by: "STUDENT" } });
+      return { entryId: existing.id, awaitingConsent: false };
+    }
     if (who.byGuardian && existing.parentConsentAt === null) {
       // The child asked first; the guardian's enrolment is their yes.
       await giveConsent(session, existing.id);
@@ -473,7 +484,7 @@ export async function enterCompetition(
       studentMembershipId: who.studentMembershipId,
       schoolId: who.schoolId,
       status: "REGISTERED",
-      ...(who.byGuardian ? { parentConsentAt: now, parentConsentBy: session.user.id } : {}),
+      ...(who.byGuardian || ownWord ? { parentConsentAt: now, parentConsentBy: session.user.id } : {}),
     },
   });
 
@@ -501,7 +512,7 @@ export async function enterCompetition(
     return { entryId: entry.id, awaitingConsent: false };
   }
 
-  if (competition.requiresParentConsent) {
+  if (competition.requiresParentConsent && !ownWord) {
     // The one link that proves this moved: without it a child presses "Enter"
     // and nothing whatsoever happens anywhere a grown-up can see.
     await notifyGuardians(who.studentMembershipId, (childName) => ({
@@ -514,7 +525,7 @@ export async function enterCompetition(
     }));
   }
 
-  return { entryId: entry.id, awaitingConsent: competition.requiresParentConsent };
+  return { entryId: entry.id, awaitingConsent: competition.requiresParentConsent && !ownWord };
 }
 
 /**
@@ -854,7 +865,8 @@ export async function recordResult(
       ? { bodyKey: "notifBody.theyPlaced" as const, bodyVars: { rank: result.rank } }
       : { bodyKey: "notifBody.theirScoreRecorded" as const }),
     url: `/competitions/${entry.competitionId}`,
-  }));
+    // An adult college student's result is theirs until they grant RESULTS (TA-099).
+  }), "RESULTS");
 }
 
 /** 1 → "1st". Written out because a result read by a child should say "3rd". */
@@ -1296,7 +1308,8 @@ export async function internalBoard(
   } else if (session.role === "PARENT") {
     if (setting !== "SCHOOL") return none;
     const links = await db.guardianship.findMany({ where: { parentUserId: session.user.id, status: "ACTIVE", studentSchoolId: schoolId }, select: { studentMembershipId: true } });
-    const ids = links.map((l) => l.studentMembershipId);
+    // An adult college student's place is theirs until they grant RESULTS (TA-099).
+    const ids = await studentsGuardiansMaySee(links.map((l) => l.studentMembershipId), "RESULTS");
     if (ids.length === 0) return none;
     if (opts.studentMembershipId && ids.includes(opts.studentMembershipId)) mineId = opts.studentMembershipId;
     else {

@@ -4,6 +4,8 @@ import { db } from "./db";
 import { AccessError } from "./tenancy";
 import { audit } from "./audit";
 import { notify } from "./notify";
+import { studentTokensMany } from "./college-audience";
+import { studentsGuardiansMaySee } from "./student-consent";
 import type { ActiveContext } from "./session";
 import type { Role } from "./constants";
 
@@ -30,11 +32,12 @@ export const INLINE_DELIVERY_MAX = 60;
 const REMIND_EVERY_MS = 20 * 3_600_000;
 const CHUNK = 20;
 
-type PostRow = { id: string; schoolId: string | null; scope: string; classId: string | null; audience: string; audienceGrade: string | null; title: string; requiresAck: boolean; status: string; createdAt: Date; deliveredAt: Date | null; deliveryQueuedAt: Date | null; remindedAt: Date | null; remindCount: number };
+type PostRow = { id: string; schoolId: string | null; scope: string; classId: string | null; audience: string; audienceGrade: string | null; audienceTarget: string | null; title: string; requiresAck: boolean; status: string; createdAt: Date; deliveredAt: Date | null; deliveryQueuedAt: Date | null; remindedAt: Date | null; remindCount: number };
 
-const postSelect = { id: true, schoolId: true, scope: true, classId: true, audience: true, audienceGrade: true, title: true, requiresAck: true, status: true, createdAt: true, deliveredAt: true, deliveryQueuedAt: true, remindedAt: true, remindCount: true } as const;
+const postSelect = { id: true, schoolId: true, scope: true, classId: true, audience: true, audienceGrade: true, audienceTarget: true, title: true, requiresAck: true, status: true, createdAt: true, deliveredAt: true, deliveryQueuedAt: true, remindedAt: true, remindCount: true } as const;
 
-type Family = { studentMembershipId: string; studentUserId: string; studentName: string; guardians: { userId: string; name: string; phone: string | null }[] };
+/** `withheld`: guardians are linked but an adult college student has not granted MESSAGES, so none is listed or told (TA-094). */
+type Family = { studentMembershipId: string; studentUserId: string; studentName: string; guardians: { userId: string; name: string; phone: string | null }[]; withheld: boolean };
 type Group = { classId: string | null; className: string; families: Family[] };
 
 /**
@@ -78,15 +81,23 @@ async function familyGroups(post: PostRow, viewer?: { role: Role; membershipId: 
       },
     },
   });
+  // A college notice's programme, department, division or batch (TA-094): the students it names, as the feed and a
+  // permission slip read it; and an adult's guardians only while MESSAGES is granted, as the feed reads that too.
+  const studentIds = classes.flatMap((k) => k.enrollments.map((e) => e.student.id));
+  const tokens = post.audienceTarget ? await studentTokensMany(studentIds) : null;
+  const guardiansMay = new Set(await studentsGuardiansMaySee(studentIds, "MESSAGES"));
   return classes.map((k) => ({
     classId: k.id,
     className: k.name,
-    families: k.enrollments.map(({ student }) => ({
-      studentMembershipId: student.id,
-      studentUserId: student.userId,
-      studentName: student.user.preferredName ?? student.user.name,
-      guardians: student.guardianships.map((g) => ({ userId: g.parent.id, name: g.parent.preferredName ?? g.parent.name, phone: g.parent.phone })),
-    })),
+    families: k.enrollments
+      .filter(({ student }) => !tokens || (tokens.get(student.id) ?? []).includes(post.audienceTarget!))
+      .map(({ student }) => ({
+        studentMembershipId: student.id,
+        studentUserId: student.userId,
+        studentName: student.user.preferredName ?? student.user.name,
+        guardians: guardiansMay.has(student.id) ? student.guardianships.map((g) => ({ userId: g.parent.id, name: g.parent.preferredName ?? g.parent.name, phone: g.parent.phone })) : [],
+        withheld: !guardiansMay.has(student.id) && student.guardianships.length > 0,
+      })),
   }));
 }
 
@@ -219,7 +230,9 @@ export async function circularReach(session: ActiveContext, postId: string): Pro
     groups.push({ classId: null, className: "", total: fams.length, told: fams.filter((f) => RANK[f.state] >= 1).length, seen: fams.filter((f) => RANK[f.state] >= 2).length, acked: fams.filter((f) => f.state === "ACKED").length, noGuardian: 0, outstanding: fams.filter((f) => f.state !== "ACKED").sort((a, b) => a.studentName.localeCompare(b.studentName)) });
   } else {
     for (const group of fgroups) {
-      const fams = group.families.map((f) => {
+      // A family whose guardians an adult has not let be told (TA-094) is not one with none linked: no invitation is asked
+      // for, and for a circular to parents it is neither counted nor listed, since nothing the office does moves it.
+      const fams = group.families.filter((f) => !(post.audience === "PARENTS" && f.withheld)).map((f) => {
         const guardians = post.audience === "STUDENTS" ? [] : f.guardians.map((g) => ({ userId: g.userId, name: g.name, phone: office ? g.phone : null, hasApp: hasApp.has(g.userId), texted: textedSet.has(g.userId), state: stateOf(g.userId) }));
         let state: ReachState = "UNREACHED";
         for (const g of guardians) state = best(state, g.state);
@@ -228,7 +241,7 @@ export async function circularReach(session: ActiveContext, postId: string): Pro
         // a guardian is part of; for a circular to parents it is also kept out
         // of the counts, because "82 % reached" must be a figure a reminder can
         // move, and the office's move here is an invitation, not a chase.
-        const noGuardian = post.audience !== "STUDENTS" && f.guardians.length === 0;
+        const noGuardian = post.audience !== "STUDENTS" && f.guardians.length === 0 && !f.withheld;
         return { studentMembershipId: f.studentMembershipId, studentName: f.studentName, state, guardians, noGuardian };
       });
       const counted = post.audience === "PARENTS" ? fams.filter((f) => !f.noGuardian) : fams;

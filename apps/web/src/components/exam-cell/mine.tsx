@@ -35,7 +35,7 @@ export function MyExamsView({ data, t, locale, back, ok, error, switcher, title 
           <CardHeader title={t("examCell.formFor", { session: f.sessionName })} description={f.windowOpen ? t("examCell.windowOpenUntil", { date: when(f.closesAt, locale) }) : t("examCell.windowShut")} action={<Badge tone={f.status === "APPROVED" ? "ok" : f.status === "REFUSED" ? "danger" : f.status === "SUBMITTED" ? "accent" : "neutral"}>{t(FORM_STATUS_KEY[f.status]!)}</Badge>} />
           <CardBody className="space-y-2 text-sm">
             <p>{f.courses.map((c) => `${c.code} ${c.name}${c.kind === "BACKLOG" ? ` (${t(KIND_KEY.BACKLOG!)})` : ""}`).join(" · ")}</p>
-            {f.status !== "DRAFT" ? <p>{t("examCell.feeLine", { fee: money(f.feePaise + f.lateFeePaise, locale) })}{f.lateFeePaise > 0 ? ` (${t("examCell.lateIncluded", { late: money(f.lateFeePaise, locale) })})` : ""}{f.demandStatus && FEE_DEMAND_STATUS_KEY[f.demandStatus] ? ` · ${t(FEE_DEMAND_STATUS_KEY[f.demandStatus]!)}` : ""}</p> : null}
+            {f.status !== "DRAFT" && !f.moneyWithheld ? <p>{t("examCell.feeLine", { fee: money(f.feePaise + f.lateFeePaise, locale) })}{f.lateFeePaise > 0 ? ` (${t("examCell.lateIncluded", { late: money(f.lateFeePaise, locale) })})` : ""}{f.demandStatus && FEE_DEMAND_STATUS_KEY[f.demandStatus] ? ` · ${t(FEE_DEMAND_STATUS_KEY[f.demandStatus]!)}` : ""}</p> : null}
             {f.eligibilityNote ? <p className="text-danger">{f.eligibilityNote}</p> : null}
             {f.noDuesLines.filter((l) => !l.cleared).length > 0 ? <p className="text-danger">{t("examCell.noDuesPending", { desks: f.noDuesLines.filter((l) => !l.cleared).map((l) => l.desk).join(", ") })}</p> : null}
             {f.refusalReason ? <p className="text-danger">{f.refusalReason}</p> : null}
