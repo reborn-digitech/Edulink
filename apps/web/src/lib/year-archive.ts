@@ -70,12 +70,16 @@ export async function closedYearsForPupil(
     select: { joinedAt: true, leftAt: true },
   });
   if (!membership) return [];
-  const [years, school] = await Promise.all([
+  const [years, school, stays] = await Promise.all([
     listClosedYears(schoolId),
     db.school.findUniqueOrThrow({ where: { id: schoolId }, select: { timezone: true } }),
+    // An earlier stay a readmission closed (TA-376): intake and admissions set joinedAt to the day the pupil came
+    // back, so the years of the first stay are read from its leaving record, which keeps both ends.
+    db.schoolRecord.findMany({ where: { schoolId, formerMembershipId: studentMembershipId, supersededReason: "READMITTED" }, select: { joinedAt: true, leftAt: true } }),
   ]);
   return years.filter((y) => {
     const w = windowOf(y, school.timezone);
+    if (stays.some((s) => w.to > s.joinedAt && w.from <= s.leftAt)) return true;
     return w.to > membership.joinedAt && (membership.leftAt === null || w.from <= membership.leftAt);
   });
 }
@@ -343,14 +347,15 @@ export async function schoolYearArchive(
   // inside and one dated the next day is out, whatever the school's zone.
   const dayAfter = new Date(`${addDaysToKey(toKey, 1)}T00:00:00.000Z`);
 
-  const [pupilsOnRoll, attendance, reportCardsPublished, leavers, badgesArchived, examSeries] =
+  const [onRoll, attendance, reportCardsPublished, leftMemberships, badgesArchived, examSeries, leavingRecords] =
     await Promise.all([
       // On the roll AT ANY POINT of the year: admitted before it ended — by
       // the record's admission date where the office entered one, which for a
       // school that onboarded mid-way predates the platform join date — and
       // not recorded as leaving before it began. A suspended membership is
       // not on the roll.
-      db.membership.count({
+      db.membership.findMany({
+        select: { id: true },
         where: {
           schoolId,
           role: "STUDENT",
@@ -379,11 +384,10 @@ export async function schoolYearArchive(
           OR: [{ academicYearId: year.id }, { academicYearId: null, publishedAt: inWindow(w) }],
         },
       }),
-      // Leavers by the MEMBERSHIP's leaving date. The departure record is what
-      // a readmission deletes, so counting those made a closed year's leaver
-      // count shrink whenever a pupil came back.
-      db.membership.count({
+      // Leavers by the MEMBERSHIP's leaving date…
+      db.membership.findMany({
         where: { schoolId, role: "STUDENT", leftAt: inWindow(w) },
+        select: { id: true },
       }),
       db.earnedBadge.count({ where: { schoolId, academicYearId: year.id } }),
       db.examSeries.findMany({
@@ -391,7 +395,25 @@ export async function schoolYearArchive(
         orderBy: [{ gradeLevel: "asc" }, { name: "asc" }],
         select: { id: true, name: true, gradeLevel: true },
       }),
+      // …and by the leaving records (TA-376). Every readmission sets leftAt back to null and intake and admissions
+      // reset joinedAt, so a pupil who left in a closed year and came back fell out of its leavers and its roll. A
+      // record a readmission closed is kept (LIFECYCLE-7) with the stay's two ends: it counts the pupil as a leaver
+      // of the year it ended in and on the roll of every year it overlapped. A live record counts as a leaver; one an
+      // undo or a second recording closed does not.
+      db.schoolRecord.findMany({
+        where: { schoolId, OR: [{ supersededAt: null }, { supersededReason: "READMITTED" }], joinedAt: { lt: w.to }, leftAt: { gte: w.from } },
+        select: { studentMembershipId: true, formerMembershipId: true, leftAt: true, supersededReason: true },
+      }),
     ]);
+  const ofRecord = (r: { studentMembershipId: string | null; formerMembershipId: string | null }) => r.studentMembershipId ?? r.formerMembershipId;
+  const leavers = new Set([
+    ...leftMemberships.map((m) => m.id),
+    ...leavingRecords.filter((r) => r.leftAt < w.to).map(ofRecord).filter((id): id is string => Boolean(id)),
+  ]).size;
+  const pupilsOnRoll = new Set([
+    ...onRoll.map((m) => m.id),
+    ...leavingRecords.filter((r) => r.supersededReason === "READMITTED").map(ofRecord).filter((id): id is string => Boolean(id)),
+  ]).size;
 
   let marked = 0;
   let present = 0;

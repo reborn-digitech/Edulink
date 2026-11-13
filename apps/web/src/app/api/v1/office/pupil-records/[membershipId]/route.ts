@@ -2,6 +2,7 @@ import { pupilRecordSaveSchema, pupilRecordViewSchema } from "@edulink/contracts
 import { requireApiRole } from "@/lib/tenancy";
 import { pupilRecordFor, savePupilRecord } from "@/lib/pupil-records";
 import { apiFailure, apiInvalid, ok, readJson } from "@/lib/api-v1";
+import { moduleFailure } from "@/lib/rule-refusal";
 
 /** GET /api/v1/office/pupil-records/{membershipId} — one pupil's record. */
 export async function GET(_request: Request, { params }: { params: Promise<{ membershipId: string }> }) {
@@ -23,6 +24,7 @@ export async function POST(request: Request, { params }: { params: Promise<{ mem
     if (!parsed.success) return apiInvalid(parsed);
     return ok(pupilRecordViewSchema.parse(await savePupilRecord(ctx, membershipId, parsed.data)));
   } catch (error) {
-    return apiFailure(error, "api/v1/office/pupil-records/[membershipId]");
+    // A refused value is a 422 naming its field, a PEN already on the account a 409 (TA-602); a role stays a 403.
+    return moduleFailure(error, "api/v1/office/pupil-records/[membershipId]");
   }
 }

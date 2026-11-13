@@ -96,7 +96,8 @@ describe("⚠ the family's contact number", () => {
 
     for (const bad of ["call the office", "9+919876543210", "office@example.com"]) {
       res = await save(bad);
-      expect(res.status, bad).toBe(403);
+      // A refused value is a 422 naming its field (TA-602; it was a 403).
+      expect(res.status, bad).toBe(422);
       expect((await res.json()).error).toMatch(/^Enter the contact number in digits/);
     }
     expect((await db.pupilRecord.findUniqueOrThrow({ where: { studentMembershipId: pupil } })).guardianPhone).toBe("+919876543210");
@@ -115,7 +116,7 @@ describe("⚠ the family's contact number", () => {
     const { parentsForTest } = await import("@/lib/filings");
     // A number that is not one is refused when it is asked, not when the office comes to approve it.
     await as("PARENT");
-    expect((await familyChangePost(json(`/api/v1/family/record/changes?childId=${pupil}`, { changes: { guardianPhone: "12" }, reason: "ZZ test" }))).status).toBe(403);
+    expect((await familyChangePost(json(`/api/v1/family/record/changes?childId=${pupil}`, { changes: { guardianPhone: "12" }, reason: "ZZ test" }))).status).toBe(422);
     expect((await askAndApprove("PARENT", `?childId=${pupil}`, pupil, { guardianPhone: "+91 91234 56789" })).record.guardianPhone).toBe("+919123456789");
 
     const row = { user: { phone: null }, pupilRecord: { fatherName: null, motherName: null, guardianPhone: "+919123456789" } };
@@ -145,7 +146,7 @@ describe("⚠ names from a list: the mother tongue, the nationality, the PIN", (
       [{ postalCode: "41100A" }, "A PIN code is six digits and does not start with 0."],
     ] as const) {
       const res = await save(body);
-      expect(res.status, JSON.stringify(body)).toBe(403);
+      expect(res.status, JSON.stringify(body)).toBe(422);
       expect((await res.json()).error).toBe(sentence);
     }
     expect(await stored()).toEqual({ motherTongue: "KONKANI", nationality: "INDIAN", postalCode: "411001" });
@@ -160,7 +161,7 @@ describe("⚠ names from a list: the mother tongue, the nationality, the PIN", (
     expect(view.record).toMatchObject({ motherTongue: "Ahirani", nationality: "Bharat", postalCode: "4110", fatherOccupation: "Weaver" });
     expect(view.missingForFiling).toEqual(expect.arrayContaining(["motherTongue", "postalCode"]));
     // A different word off the list is still refused.
-    expect((await save({ motherTongue: "Khandeshi" })).status).toBe(403);
+    expect((await save({ motherTongue: "Khandeshi" })).status).toBe(422);
 
     expect((await (await save({ motherTongue: "OTHER", nationality: "INDIAN", postalCode: "425001" })).json()).missingForFiling).not.toEqual(expect.arrayContaining(["motherTongue", "postalCode"]));
   });
@@ -310,7 +311,7 @@ describe("the grade level follows the class", () => {
   it("the sheet's plain answers: the office saves a second number, the free uniform and textbooks, extracurricular activity, the stream and the vocational course, and the sheet prints them; the family may ask for them", async () => {
     await as("ADMIN");
     const save = (body: Record<string, string>) => recordPost(json(`/api/v1/office/pupil-records/${pupil}`, body), params({ membershipId: pupil }));
-    expect((await save({ alternatePhone: "12" })).status).toBe(403);
+    expect((await save({ alternatePhone: "12" })).status).toBe(422);
     expect((await save({ stream: "9" })).status).toBe(422);
     expect((await save({ vocationalTradeId: "not an id!" })).status).toBe(422);
     const view = await (await save({ alternatePhone: "+91 98765 00000", freeUniform: "yes", freeTextbook: "no", extracurricular: "yes", stream: "2", vocationalCourse: "yes", vocationalTradeId: "SEC-12", vocationalJobRoleId: "JR-7", vocationalExamAppeared: "no" })).json();

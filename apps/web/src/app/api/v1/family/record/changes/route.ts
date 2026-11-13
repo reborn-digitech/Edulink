@@ -2,6 +2,7 @@ import { familyRecordQuerySchema, recordChangeFileSchema, recordChangeSchema, re
 import { requireApiReader, selectChild } from "@/lib/api-reads/family";
 import { familyRecordChanges, fileRecordChange } from "@/lib/record-changes";
 import { apiFailure, apiInvalid, ok, readJson } from "@/lib/api-v1";
+import { moduleFailure } from "@/lib/rule-refusal";
 import type { ActiveContext } from "@/lib/session";
 
 async function whose(ctx: ActiveContext & { role: "STUDENT" | "PARENT" }, childId?: string): Promise<string> {
@@ -31,6 +32,7 @@ export async function POST(request: Request) {
     if (!parsed.success) return apiInvalid(parsed);
     return ok(recordChangeSchema.parse(await fileRecordChange(ctx, await whose(ctx, query.data.childId), parsed.data)));
   } catch (error) {
-    return apiFailure(error, "api/v1/family/record/changes");
+    // A value the save would refuse is a 422 naming its field (TA-602).
+    return moduleFailure(error, "api/v1/family/record/changes");
   }
 }

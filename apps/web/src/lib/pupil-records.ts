@@ -5,6 +5,7 @@ import "server-only";
 import { PUPIL_CATEGORIES, type PupilRecordField, type PupilRecordSave, type PupilRecordView } from "@edulink/contracts";
 import { db } from "./db";
 import { AccessError, assertGuardianAccess, assertStudentAccess } from "./tenancy";
+import { RuleRefusal } from "./rule-refusal";
 import { audit } from "./audit";
 import { notify, notifyGuardians } from "./notify";
 import { REQUIRED_RECORD_FIELDS } from "./certificate-rules";
@@ -129,16 +130,17 @@ export async function pupilRecordFor(ctx: ActiveContext, studentMembershipId: st
  * is made and not when the office comes to approve it.
  */
 export async function codedValues(studentMembershipId: string, input: PupilRecordSave) {
+  // A refused VALUE is a RuleRefusal, a 422 naming its field at the door (TA-602); a role stays an AccessError, 403.
   // The number the school rings: kept as E.164 or refused, never reduced to whichever digits were typed.
   let contact: string | null | undefined = undefined;
   if (input.guardianPhone !== undefined) {
     contact = input.guardianPhone.trim() === "" ? null : normalisePhone(input.guardianPhone);
-    if (input.guardianPhone.trim() !== "" && !contact) throw new AccessError("pupilRecord.phoneNotANumber");
+    if (input.guardianPhone.trim() !== "" && !contact) throw new RuleRefusal("pupilRecord.phoneNotANumber", 422, undefined, "guardianPhone");
   }
   let alternate: string | null | undefined = undefined;
   if (input.alternatePhone !== undefined) {
     alternate = input.alternatePhone.trim() === "" ? null : normalisePhone(input.alternatePhone);
-    if (input.alternatePhone.trim() !== "" && !alternate) throw new AccessError("pupilRecord.phoneNotANumber");
+    if (input.alternatePhone.trim() !== "" && !alternate) throw new RuleRefusal("pupilRecord.phoneNotANumber", 422, undefined, "alternatePhone");
   }
   /**
    * CODED AT THE DOOR. Mother tongue and nationality are names from a list
@@ -150,18 +152,18 @@ export async function codedValues(studentMembershipId: string, input: PupilRecor
    * is picked from the list.
    */
   const stored = await db.pupilRecord.findUnique({ where: { studentMembershipId }, select: { motherTongue: true, nationality: true, postalCode: true } });
-  const fromList = <T extends string>(list: readonly T[], typed: string | undefined, was: string | null | undefined, refusal: TranslationKey): string | null | undefined => {
+  const fromList = <T extends string>(list: readonly T[], typed: string | undefined, was: string | null | undefined, refusal: TranslationKey, field: string): string | null | undefined => {
     if (typed === undefined) return undefined;
     if (typed.trim() === "") return null;
     const code = codeFromList(list, typed);
     if (code) return code;
     if (was && typed.trim() === was.trim()) return was;
-    throw new AccessError(refusal);
+    throw new RuleRefusal(refusal, 422, undefined, field);
   };
-  const motherTongue = fromList(MOTHER_TONGUES, input.motherTongue, stored?.motherTongue, "pupilRecord.chooseMotherTongue");
-  const nationality = fromList(NATIONALITIES, input.nationality, stored?.nationality, "pupilRecord.chooseNationality");
+  const motherTongue = fromList(MOTHER_TONGUES, input.motherTongue, stored?.motherTongue, "pupilRecord.chooseMotherTongue", "motherTongue");
+  const nationality = fromList(NATIONALITIES, input.nationality, stored?.nationality, "pupilRecord.chooseNationality", "nationality");
   const pin = input.postalCode === undefined ? undefined : input.postalCode.replace(/\s+/g, "") || null;
-  if (pin && !PIN_CODE.test(pin) && pin !== (stored?.postalCode ?? "").trim()) throw new AccessError("pupilRecord.pinSixDigits");
+  if (pin && !PIN_CODE.test(pin) && pin !== (stored?.postalCode ?? "").trim()) throw new RuleRefusal("pupilRecord.pinSixDigits", 422, undefined, "postalCode");
   return { contact, alternate, motherTongue, nationality, pin };
 }
 
@@ -179,6 +181,10 @@ export async function savePupilRecord(ctx: ActiveContext, studentMembershipId: s
   if (!viewer.canEdit) throw new AccessError(viewer.family ? "pupilRecord.askTheOffice" : "access.notAllowed");
   const input: PupilRecordSave = raw;
   const text = (v: string | undefined) => (v === undefined ? undefined : v.trim() || null);
+  // Every value is checked BEFORE anything is written (TA-378): the first PEN used to go onto the account, audited,
+  // and then the save was refused for a five-digit PIN, so a number no screen showed as saved could only be changed
+  // by the head and a guardian.
+  const { contact, alternate, motherTongue, nationality, pin } = await codedValues(studentMembershipId, input);
   // The PEN is the admin's to enter, once: the family's form shows it and never sends it, a
   // principal reads it, and a correction after the first entry goes through a change request
   // the head and a guardian both approve (pen-changes.ts).
@@ -188,7 +194,8 @@ export async function savePupilRecord(ctx: ActiveContext, studentMembershipId: s
     if (ctx.role !== "ADMIN") {
       if ((wanted ?? null) !== (viewer.accountPen ?? null)) throw new AccessError("pupilRecord.penOnlyAdmin");
     } else if (viewer.accountPen && wanted !== viewer.accountPen) {
-      throw new AccessError("pupilRecord.penChangeNeedsApproval");
+      // The account already holds a number: its state is in the way, a 409 (TA-602).
+      throw new RuleRefusal("pupilRecord.penChangeNeedsApproval", 409, undefined, "penNumber");
     } else if (!viewer.accountPen && wanted) {
       await assignPen(viewer.studentUserId, wanted);
       await audit({ schoolId: viewer.schoolId, actorUserId: viewer.userId, action: "pen.set", targetType: "Membership", targetId: studentMembershipId });
@@ -197,7 +204,6 @@ export async function savePupilRecord(ctx: ActiveContext, studentMembershipId: s
       pen = viewer.accountPen ?? null;
     }
   }
-  const { contact, alternate, motherTongue, nationality, pin } = await codedValues(studentMembershipId, input);
   const data = {
     fatherName: text(input.fatherName), motherName: text(input.motherName), placeOfBirth: text(input.placeOfBirth), nationality, religion: text(input.religion), caste: text(input.caste), category: text(input.category), motherTongue,
     addressLine: text(input.addressLine), city: text(input.city), postalCode: pin, admissionNumber: text(input.admissionNumber),
@@ -239,8 +245,9 @@ export async function officeRecords(ctx: ActiveContext, missingOnly: boolean) {
   const pupils = await db.membership.findMany({
     where: { schoolId: ctx.schoolId, role: "STUDENT", status: "ACTIVE", leftAt: null },
     select: { id: true, user: { select: { name: true, preferredName: true } }, pupilRecord: true, enrollments: { where: { status: "ACTIVE" }, select: { class: { select: { name: true } } }, take: 1 } },
+    // The whole roll, with no cap (TA-508): a cap of 2,000 was reported as the total, and requestRecords refused a
+    // named pupil sorting past it. A school's roll is the bound.
     orderBy: [{ user: { name: "asc" } }],
-    take: 2000,
   });
   const rows = pupils.map((p) => ({
     studentMembershipId: p.id,

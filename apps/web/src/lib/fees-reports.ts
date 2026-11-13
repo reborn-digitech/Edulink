@@ -339,8 +339,8 @@ export async function sendFeeReminders(now: Date = new Date()): Promise<{ sent: 
           // `OR null` spelled out: `NOT LIKE` on a NULL column is NULL, not
           // true, so a demand never reminded would otherwise be skipped.
           where: { schoolId: school.id, academicYearId: year.id, status: { in: ["OPEN", "PART"] }, dueDate: dayToDate(dueKey), student: { status: "ACTIVE", leftAt: null }, OR: [{ lastReminderKey: null }, { NOT: { lastReminderKey: { startsWith: `${bucket.key}:` } } }] },
+          // Every demand of the day, no cap (TA-508): past 2,000 the rest were never reminded for the bucket.
           select: { id: true, studentMembershipId: true, label: true, dueDate: true, netPaise: true, paidPaise: true, status: true },
-          take: 2000,
         });
         for (const d of due) {
           const owed = demandOutstanding(d);

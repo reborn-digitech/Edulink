@@ -4,6 +4,7 @@ import { revalidatePath } from "next/cache";
 import { pupilRecordSaveSchema, recordChangeDecideSchema, recordChangeFileSchema, recordRequestSchema } from "@edulink/contracts";
 import type { TranslationKey } from "@/lib/i18n/dictionary";
 import { AccessError, requireApiUser } from "@/lib/tenancy";
+import { RuleRefusal } from "@/lib/rule-refusal";
 import { requestRecords, savePupilRecord } from "@/lib/pupil-records";
 import { decideRecordChange, fileRecordChange, withdrawRecordChange } from "@/lib/record-changes";
 
@@ -19,6 +20,8 @@ export type PupilRecordActionResult = { ok: boolean; errorKey?: TranslationKey; 
 
 function failure(error: unknown): PupilRecordActionResult {
   if (error instanceof AccessError) return { ok: false, errorKey: error.key, errorVars: error.vars };
+  // A refused value (TA-602) reads the same on the form: its sentence.
+  if (error instanceof RuleRefusal) return { ok: false, errorKey: error.key, errorVars: error.vars };
   console.error("[pupil record]", error);
   return { ok: false, errorKey: "common.tryAgain" };
 }

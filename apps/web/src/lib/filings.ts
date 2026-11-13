@@ -254,8 +254,8 @@ async function loadPupils(schoolId: string, grade?: string) {
       enrollments: { where: { status: "ACTIVE", class: { archivedAt: null } }, select: { enrolledAt: true, rollNumber: true, repeating: true, class: { select: { name: true, gradeLevel: true, section: true } } }, take: 1, orderBy: { enrolledAt: "desc" } },
       guardianships: { where: { status: "ACTIVE" }, select: { relation: true, parent: { select: { name: true, phone: true, email: true } } }, take: 1 },
     },
+    // Every pupil on the roll, no cap (TA-508): the sheet once filed 5,000 and dropped the rest without a word.
     orderBy: [{ user: { name: "asc" } }],
-    take: 5000,
   });
   // Sorted the way a register reads: class, then name.
   return rows.sort((a, b) => {

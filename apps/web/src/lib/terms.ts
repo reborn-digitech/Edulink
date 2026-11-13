@@ -51,9 +51,13 @@ function requireAdmin(ctx: ActiveContext): string {
   return ctx.schoolId;
 }
 
-/** The terms of one year, in order. */
-export async function termsOfYear(schoolId: string, academicYearId: string, timezone = "UTC"): Promise<TermView[]> {
-  const today = todayKey(timezone);
+/**
+ * The terms of one year, in order. "Today" is the school's (TA-422): with no zone given it is read from the school,
+ * not taken as UTC — the report-card builder passed none and marked the ended term current for the first 5½ hours
+ * of a term in Kolkata.
+ */
+export async function termsOfYear(schoolId: string, academicYearId: string, timezone?: string): Promise<TermView[]> {
+  const today = todayKey(timezone ?? (await db.school.findUniqueOrThrow({ where: { id: schoolId }, select: { timezone: true } })).timezone);
   const rows = await db.term.findMany({
     where: { schoolId, academicYearId },
     orderBy: [{ startDate: "asc" }],
@@ -113,7 +117,7 @@ export async function reopenTerm(ctx: ActiveContext, termId: string): Promise<{ 
 }
 
 /** The current year's terms — what the exams page and the card builder offer. */
-export async function currentTerms(schoolId: string, timezone = "UTC"): Promise<TermView[]> {
+export async function currentTerms(schoolId: string, timezone?: string): Promise<TermView[]> {
   const year = await db.academicYear.findFirst({ where: { schoolId, isCurrent: true }, select: { id: true } });
   if (!year) return [];
   return termsOfYear(schoolId, year.id, timezone);

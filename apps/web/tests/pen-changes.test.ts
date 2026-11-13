@@ -83,7 +83,8 @@ describe("who enters and who corrects", () => {
     const view = await res.json();
     expect(view.record.penNumber).toBe(PEN_1);
     expect(view.penEditable).toBe(false);
-    expect((await recordPost(json(`/api/v1/office/pupil-records/${pupil}`, { penNumber: PEN_2 }), params({ membershipId: pupil }))).status).toBe(403);
+    // The account's number is in the way: a 409 (TA-602; it was a 403).
+    expect((await recordPost(json(`/api/v1/office/pupil-records/${pupil}`, { penNumber: PEN_2 }), params({ membershipId: pupil }))).status).toBe(409);
     // The same number again, as the form always sends it, is fine.
     expect((await recordPost(json(`/api/v1/office/pupil-records/${pupil}`, { penNumber: PEN_1, city: "Pune" }), params({ membershipId: pupil }))).status).toBe(200);
     // Once on record, the family can no more ask for another.
@@ -99,8 +100,9 @@ describe("who enters and who corrects", () => {
     await as("PRINCIPAL");
     expect((await proposePost(json(`/api/v1/office/pupil-records/${pupil}/pen-change`, { toPen: PEN_2, reason: "x" }), params({ membershipId: pupil }))).status).toBe(403);
     await as("ADMIN");
-    expect((await proposePost(json(`/api/v1/office/pupil-records/${orphan}/pen-change`, { toPen: PEN_2, reason: "x" }), params({ membershipId: orphan }))).status).toBe(403);
-    expect((await proposePost(json(`/api/v1/office/pupil-records/${pupil}/pen-change`, { toPen: PEN_1, reason: "same" }), params({ membershipId: pupil }))).status).toBe(403);
+    // No number to correct is a state in the way (409); the same number is a value refused (422) (TA-602; both were 403).
+    expect((await proposePost(json(`/api/v1/office/pupil-records/${orphan}/pen-change`, { toPen: PEN_2, reason: "x" }), params({ membershipId: orphan }))).status).toBe(409);
+    expect((await proposePost(json(`/api/v1/office/pupil-records/${pupil}/pen-change`, { toPen: PEN_1, reason: "same" }), params({ membershipId: pupil }))).status).toBe(422);
     expect((await proposePost(json(`/api/v1/office/pupil-records/${pupil}/pen-change`, { toPen: "12" }), params({ membershipId: pupil }))).status).toBe(422);
     let res = await proposePost(json(`/api/v1/office/pupil-records/${pupil}/pen-change`, { toPen: PEN_2, reason: "Two digits were swapped at entry." }), params({ membershipId: pupil }));
     expect(res.status).toBe(201);

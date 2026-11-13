@@ -17,7 +17,7 @@ export async function generateMetadata(): Promise<Metadata> {
  * so every scan was a 404. OUTSIDE EVERY SHELL, like /verify: a gate guard or a
  * bus driver scans with a phone's camera, which opens a browser that may be
  * signed in to nothing. Signed out, the page asks for the school's staff to
- * sign in and come back here; a family or student is told the check is the
+ * sign in and scan the card again (TA-430: the sign-in reads no `next`); a family or student is told the check is the
  * staff's; a member of staff at the card's school sees what the check door
  * (GET /api/v1/id-cards/check) answers — the name and class the school holds
  * now and whether the student is still on the roll — and nothing more. Another
@@ -29,7 +29,6 @@ export default async function IdCheckPage({ searchParams }: { searchParams: Prom
   const { c } = await searchParams;
   const code = typeof c === "string" ? c.slice(0, 80) : "";
   const view = await idCheckView(await getSession(), code);
-  const here = code ? `/id-check?c=${encodeURIComponent(code)}` : "/id-check";
 
   return (
     <div className="flex min-h-safe flex-col justify-center bg-bg px-4 py-10 sm:px-8">
@@ -42,10 +41,11 @@ export default async function IdCheckPage({ searchParams }: { searchParams: Prom
 
         {view.state === "signIn" && (
           <>
-            <p className="mt-1.5 text-sm leading-relaxed text-fg-muted">{t("collegeDesks.idCheckSignIn")}</p>
+            {/* The sign-in reads no `next` (that is why it has no open redirect), so the page promises no return: sign in, scan again (TA-430). */}
+            <p className="mt-1.5 text-sm leading-relaxed text-fg-muted">{t("collegeDesks.idCheckSignInThenScan")}</p>
             <div className="mt-6">
               <Button asChild size="sm">
-                <Link href={`/login?next=${encodeURIComponent(here)}`}>{t("collegeDesks.idCheckSignInGo")}</Link>
+                <Link href="/login">{t("collegeDesks.idCheckSignInGo")}</Link>
               </Button>
             </div>
           </>

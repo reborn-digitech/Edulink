@@ -35,7 +35,11 @@ export default async function StudentsPage({ searchParams }: { searchParams: Pro
   const sp = await searchParams;
   if (!isCollegeKind(kind ?? "SCHOOL")) return <NotCollege t={t} />;
   const students = await db.membership.findMany({ where: { schoolId: ctx.schoolId, role: "STUDENT", status: "ACTIVE", leftAt: null }, orderBy: { user: { name: "asc" } }, take: 1000, select: { id: true, studentCode: true, user: { select: { name: true } } } });
-  const chosen = sp.student && students.some((s) => s.id === sp.student) ? sp.student : null;
+  // A student past the picker's first 1,000 names is still this college's (TA-508): asked for directly, not refused.
+  const chosen =
+    sp.student && (students.some((s) => s.id === sp.student) || (await db.membership.findFirst({ where: { id: sp.student, schoolId: ctx.schoolId, role: "STUDENT", status: "ACTIVE", leftAt: null }, select: { id: true } })))
+      ? sp.student
+      : null;
   const [ledger, leaving] = chosen ? await Promise.all([officeLedger(ctx, chosen), noDuesView(ctx, chosen, "LEAVING")]) : [null, null];
   const back = `/accounts/students${chosen ? `?student=${chosen}` : ""}`;
   return (

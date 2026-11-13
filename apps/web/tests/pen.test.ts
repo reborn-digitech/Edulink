@@ -80,7 +80,8 @@ afterAll(async () => {
 describe("the PEN on the record", () => {
   it("is eleven digits or refused, goes on the account, is one pupil's alone, and the record reads it back even before it is written there", async () => {
     await as("OLD_ADMIN");
-    expect((await recordPost(json(`/api/v1/office/pupil-records/${pupilAtOld}`, { penNumber: "1234" }), params({ membershipId: pupilAtOld }))).status).toBe(403);
+    // A refused value is a 422 naming its field, a number another account holds a 409 (TA-602; both were 403).
+    expect((await recordPost(json(`/api/v1/office/pupil-records/${pupilAtOld}`, { penNumber: "1234" }), params({ membershipId: pupilAtOld }))).status).toBe(422);
     let res = await recordPost(json(`/api/v1/office/pupil-records/${pupilAtOld}`, { penNumber: `${PEN_A.slice(0, 5)} ${PEN_A.slice(5)}`, fatherName: "Rahul Rane" }), params({ membershipId: pupilAtOld }));
     expect(res.status).toBe(200);
     expect((await res.json()).record.penNumber).toBe(PEN_A);
@@ -88,13 +89,13 @@ describe("the PEN on the record", () => {
     // Another pupil claiming the same number is refused; the account keeps it.
     const other = await db.user.create({ data: { name: `ZZ Pen Other ${STAMP}`, email: `zz-pen-other-${STAMP}@test.invalid` }, select: { id: true } });
     const otherM = (await db.membership.create({ data: { userId: other.id, schoolId: oldSchoolId, role: "STUDENT", status: "ACTIVE", studentCode: `ZPX${STAMP}` }, select: { id: true } })).id;
-    expect((await recordPost(json(`/api/v1/office/pupil-records/${otherM}`, { penNumber: PEN_A }), params({ membershipId: otherM }))).status).toBe(403);
+    expect((await recordPost(json(`/api/v1/office/pupil-records/${otherM}`, { penNumber: PEN_A }), params({ membershipId: otherM }))).status).toBe(409);
     // The account's number shows on a record that never wrote it.
     await db.user.update({ where: { id: other.id }, data: { penNumber: PEN_B } });
     res = await recordGet(get(`/api/v1/office/pupil-records/${otherM}`), params({ membershipId: otherM }));
     expect((await res.json()).record.penNumber).toBe(PEN_B);
     // Clearing the field is a correction once a number is on record: refused here, proposed instead (pen-changes.test.ts).
-    expect((await recordPost(json(`/api/v1/office/pupil-records/${otherM}`, { penNumber: "" }), params({ membershipId: otherM }))).status).toBe(403);
+    expect((await recordPost(json(`/api/v1/office/pupil-records/${otherM}`, { penNumber: "" }), params({ membershipId: otherM }))).status).toBe(409);
     expect((await db.user.findUniqueOrThrow({ where: { id: other.id }, select: { penNumber: true } })).penNumber).toBe(PEN_B);
   });
 
@@ -102,7 +103,7 @@ describe("the PEN on the record", () => {
     await as("OLD_ADMIN");
     let res = await lookupGet(get(`/api/v1/office/pupils/by-pen/${PEN_A}`), params({ pen: PEN_A }));
     expect(await res.json()).toEqual({ pen: PEN_A, found: "HERE", pupil: { membershipId: pupilAtOld, name: "ZZ Pen Riya Rane", className: "ZZ 6A", studentCode: `ZPO${STAMP}` } });
-    expect((await lookupGet(get("/api/v1/office/pupils/by-pen/12"), params({ pen: "12" }))).status).toBe(403);
+    expect((await lookupGet(get("/api/v1/office/pupils/by-pen/12"), params({ pen: "12" }))).status).toBe(422);
     expect(await (await lookupGet(get(`/api/v1/office/pupils/by-pen/${PEN_C}`), params({ pen: PEN_C }))).json()).toEqual({ pen: PEN_C, found: "NONE", pupil: null });
     await as("NEW_ADMIN");
     expect(await (await lookupGet(get(`/api/v1/office/pupils/by-pen/${PEN_A}`), params({ pen: PEN_A }))).json()).toEqual({ pen: PEN_A, found: "ELSEWHERE_ACTIVE", pupil: null });

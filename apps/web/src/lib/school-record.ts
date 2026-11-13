@@ -1,12 +1,15 @@
 import "server-only";
+import { isCollegeKind } from "@edulink/contracts";
 import { closeAlumnus, openAlumnus } from "./alumni-membership";
 import type { TranslationKey } from "@/lib/i18n/dictionary";
 import { db } from "./db";
 import { forOwnSchools, forSchool } from "./tenant-context";
 import { audit } from "./audit";
-import { dateKeyInZone, todayKey } from "./dates";
+import { dateKeyInZone, isDateKey, todayKey } from "./dates";
+import { readJson } from "./json";
 import { notifyGuardians } from "./notify";
 import { AccessError } from "./tenancy";
+import { SCHOOL_STAFF_ROLES } from "./staff-records";
 import type { ActiveContext } from "./session";
 
 /**
@@ -60,6 +63,10 @@ type TenantTx = {
   enrollment: { updateMany(args: unknown): Promise<unknown> };
   guardianship: { updateMany(args: unknown): Promise<unknown> };
   feeDemand: { updateMany(args: unknown): Promise<{ count: number }> };
+  leavingSettlement: {
+    findUnique(args: unknown): Promise<{ id: string; linesJson: string } | null>;
+    delete(args: unknown): Promise<unknown>;
+  };
 };
 
 export const LEAVING_REASONS = ["TRANSFERRED", "GRADUATED", "LEFT"] as const;
@@ -384,7 +391,8 @@ export async function scheduleDeparture(
   const schoolId = ctx.schoolId;
   if (!LEAVING_REASONS.includes(input.reason)) return { ok: false, errorKey: "refusal.sayTransferReason" };
   if (input.conduct && !CONDUCTS.includes(input.conduct)) return { ok: false, errorKey: "refusal.sayTransferReason" };
-  if (!/^\d{4}-\d{2}-\d{2}$/.test(input.leaveOnKey)) return { ok: false, errorKey: "refusal.leaveDateInvalid" };
+  // A day on the calendar, not only its shape (TA-601): 2026-13-01 was kept, and the night job later dropped it.
+  if (!isDateKey(input.leaveOnKey)) return { ok: false, errorKey: "refusal.leaveDateInvalid" };
 
   const school = await db.school.findUniqueOrThrow({ where: { id: schoolId }, select: { timezone: true } });
   if (input.leaveOnKey <= todayKey(school.timezone)) {
@@ -456,7 +464,9 @@ export async function runDueDepartures(now: Date = new Date(), scope: { schoolId
   skippedStale: number;
   /** Due, but nobody to act: the school has no active admin. The row STAYS and is retried nightly — and counted here, per school, so /root/jobs/schools can say which school is silently accumulating a leaver nobody executes. It used to be a console.error and nothing else. */
   stuck: number;
-  perSchool: Record<string, { executed?: number; stale?: number; stuck?: number }>;
+  /** Due, and its execution threw: the row stays and is retried the next night (TA-203). */
+  failed: number;
+  perSchool: Record<string, { executed?: number; stale?: number; stuck?: number; failed?: number }>;
 }> {
   // A test passes its own schools: with a far-future clock and no scope the
   // job once executed the demo schools' scheduled leavers (3 Oct 2026). Now
@@ -467,14 +477,15 @@ export async function runDueDepartures(now: Date = new Date(), scope: { schoolId
   }
   const due = await db.scheduledDeparture.findMany({
     where: scope.schoolIds ? { schoolId: { in: scope.schoolIds } } : undefined,
-    include: { school: { select: { id: true, timezone: true } } },
+    include: { school: { select: { id: true, timezone: true, kind: true } } },
     orderBy: { leaveOnKey: "asc" },
   });
   let executed = 0;
   let skippedStale = 0;
   let stuck = 0;
-  const perSchool: Record<string, { executed?: number; stale?: number; stuck?: number }> = {};
-  const add = (schoolId: string, key: "executed" | "stale" | "stuck") => {
+  let failed = 0;
+  const perSchool: Record<string, { executed?: number; stale?: number; stuck?: number; failed?: number }> = {};
+  const add = (schoolId: string, key: "executed" | "stale" | "stuck" | "failed") => {
     const row = (perSchool[schoolId] ??= {});
     row[key] = (row[key] ?? 0) + 1;
   };
@@ -508,18 +519,39 @@ export async function runDueDepartures(now: Date = new Date(), scope: { schoolId
         prefs: { theme: "system", contrast: "normal", font: "default", motion: "full", locale: "en", channels: { push: false, email: false }, quietHours: null },
       },
     };
-    const result = await forSchool(row.schoolId, () =>
-      recordDeparture(ctx, row.membershipId, {
+    const result = await forSchool(row.schoolId, async (): Promise<DepartureResult> => {
+      // At a college the kept day is carried out as the college's leaving (TA-268): the clearance, the programme
+      // enrolment and the caution return with it. Imported here, not at the top: college-records imports this file.
+      if (isCollegeKind(row.school.kind)) {
+        const { leaveCollege } = await import("./college-records");
+        try {
+          await leaveCollege(ctx, row.membershipId, { leftOn: row.leaveOnKey, reason: row.reason as LeavingReason });
+        } catch (error) {
+          // A line open on the clearance is not a stale intent: thrown on, so the row stays for the next night.
+          if (error instanceof AccessError && error.key !== "collegeOffice.refuseNoDuesOpen") return { ok: false, errorKey: error.key };
+          throw error;
+        }
+        const written = await db.schoolRecord.findFirst({ where: { schoolId: row.schoolId, studentMembershipId: row.membershipId }, select: { id: true } });
+        return { ok: true, recordId: written?.id ?? "" };
+      }
+      return recordDeparture(ctx, row.membershipId, {
         reason: row.reason as LeavingReason,
         destination: row.destination,
         note: row.note,
         conduct: (row.conduct as Conduct | null) ?? null,
         leftOn: new Date(`${row.leaveOnKey}T00:00:00.000Z`),
-      }),
-    ).catch((error) => {
+      });
+    }).catch((error) => {
       console.error("[departures] failed for", row.membershipId, error);
-      return { ok: false as const, errorKey: "common.somethingWrong" as TranslationKey };
+      return null;
     });
+    if (result === null) {
+      // THREW (TA-203): a dropped connection, the transaction's limit, a serial clash. Nothing about the intent is
+      // stale, so the row STAYS and the next night tries again; counted per school as failed, like `stuck`.
+      failed++;
+      add(row.schoolId, "failed");
+      continue;
+    }
     if (result.ok) {
       executed++;
       add(row.schoolId, "executed");
@@ -531,7 +563,7 @@ export async function runDueDepartures(now: Date = new Date(), scope: { schoolId
     }
     await db.scheduledDeparture.deleteMany({ where: { id: row.id } });
   }
-  return { executed, skippedStale, stuck, perSchool };
+  return { executed, skippedStale, stuck, failed, perSchool };
 }
 
 /**
@@ -728,8 +760,10 @@ export type CertificateView = {
 };
 
 /**
- * Who may see the document: the child, an active guardian, or an admin of
- * the school that issued it. The first two are settled by the row policy —
+ * Who may see the document: the child, an active guardian, an admin of the
+ * school that issued it, or the staff of the school the child is at now —
+ * each named in the query (TA-205), not left to the row policy, which opens
+ * the issuing school's rows to every member of it. The first two are also settled by the row policy —
  * the record is read with NO tenant bound, and Postgres opens it to the
  * person it is about (student-record.ts explains why that is not a
  * shortcut). The office reads its own rows with its school bound, the
@@ -743,13 +777,24 @@ export async function certificateFor(ctx: ActiveContext, recordId: string): Prom
   const office = ctx.role === "ADMIN" && ctx.schoolId ? ctx.schoolId : null;
   const own = office ? await db.schoolRecord.findFirst({ where: { id: recordId, schoolId: office } }) : null;
   const asOffice = Boolean(own);
+  // Everybody else reads a LIVE record only, and only as the person it is about (TA-205): the child, an active
+  // guardian of the membership it was written on, or a member of staff of a school the child is on the roll of now.
+  // The row policy alone opened every record of the issuing school to any member of it holding the id — a
+  // classmate, a teacher, another child's parent.
+  const onRollHere = ctx.schoolId && ctx.role && (SCHOOL_STAFF_ROLES as readonly string[]).includes(ctx.role)
+    ? [{ student: { memberships: { some: { schoolId: ctx.schoolId, role: "STUDENT", status: "ACTIVE", leftAt: null } } } }]
+    : [];
   const row =
     own ??
     (await db.schoolRecord.findFirst({
       where: office
         ? // Another school's office: only for a child on ITS roll now (the policy's clause, spelled out so the fence holds without it).
-          { id: recordId, student: { memberships: { some: { schoolId: office, role: "STUDENT", status: "ACTIVE", leftAt: null } } } }
-        : { id: recordId },
+          { id: recordId, supersededAt: null, student: { memberships: { some: { schoolId: office, role: "STUDENT", status: "ACTIVE", leftAt: null } } } }
+        : {
+            id: recordId,
+            supersededAt: null,
+            OR: [{ studentUserId: ctx.user.id }, { membership: { guardianships: { some: { parentUserId: ctx.user.id, status: "ACTIVE" } } } }, ...onRollHere],
+          },
     }));
   if (!row) return null;
 
@@ -855,7 +900,13 @@ export async function undoDeparture(
   });
   if (!membership) return { ok: false, errorKey: "refusal.pupilNotHere" };
   if (!membership.leftAt) return { ok: false, errorKey: "refusal.notLeft" };
+  const school = await db.school.findUniqueOrThrow({ where: { id: schoolId }, select: { name: true, timezone: true } });
+  // The leaving cancelled every later instalment nothing was paid against, counted from this day (recordDeparture).
+  const leftOnKey = dateKeyInZone(membership.leftAt, school.timezone);
 
+  let reopenedDemands = 0;
+  let restoredLines = 0;
+  let settlementRemoved = false;
   await db.$tenantTransaction(async (tx: unknown) => {
     const t = tx as TenantTx;
     // Closed, not deleted: a serial the office may already have printed stays on the register (LIFECYCLE-7).
@@ -863,6 +914,30 @@ export async function undoDeparture(
     await t.membership.update({ where: { id: membership.id }, data: { leftAt: null } });
     // Back on the roll, so no longer an alumnus here.
     await closeAlumnus(t as unknown as Parameters<typeof closeAlumnus>[0], membership.userId, schoolId);
+
+    // WHAT THE LEAVING STOPPED CHASING IS ASKED FOR AGAIN (TA-200). The instalments the departure cancelled — the
+    // same rule as its cancel and as the settlement's "cancelled by the departure" list: CANCELLED, due after the
+    // last day, nothing paid against them — are OPEN again, so the dues list, the reminders and the family's
+    // outstanding figure are as they were before the mistake.
+    const reopened = await t.feeDemand.updateMany({
+      where: { schoolId, studentMembershipId: membership.id, status: "CANCELLED", paidPaise: 0, dueDate: { gt: new Date(`${leftOnKey}T00:00:00.000Z`) }, allocations: { none: {} } },
+      data: { status: "OPEN" },
+    });
+    reopenedDemands = reopened.count;
+    // A settlement on leaving made in between is taken back with the leaving it settled: the lines it waived owe
+    // their balance again (OPEN, or PART where something was paid), and the row — one per membership — goes, so a
+    // later real leaving can be settled.
+    const settlement = await t.leavingSettlement.findUnique({ where: { studentMembershipId: membership.id }, select: { id: true, linesJson: true } });
+    if (settlement) {
+      const waived = readJson<{ demandId: string; choice: string }[]>(settlement.linesJson, []).filter((l) => l.choice === "CANCEL").map((l) => l.demandId);
+      if (waived.length > 0) {
+        const unpaid = await t.feeDemand.updateMany({ where: { id: { in: waived }, schoolId, studentMembershipId: membership.id, status: "WAIVED", paidPaise: 0 }, data: { status: "OPEN" } });
+        const part = await t.feeDemand.updateMany({ where: { id: { in: waived }, schoolId, studentMembershipId: membership.id, status: "WAIVED", paidPaise: { gt: 0 } }, data: { status: "PART" } });
+        restoredLines = unpaid.count + part.count;
+      }
+      await t.leavingSettlement.delete({ where: { id: settlement.id } });
+      settlementRemoved = true;
+    }
   });
 
   await audit({
@@ -871,7 +946,18 @@ export async function undoDeparture(
     action: "student.leave.undo",
     targetType: "Membership",
     targetId: membership.id,
+    meta: { reopenedDemands, restoredLines, settlementRemoved },
   });
+
+  // The family was told of the leaving, and holds its paper; they are told it is withdrawn (TA-411).
+  await notifyGuardians(membership.id, (childName) => ({
+    schoolId,
+    kind: "SYSTEM",
+    titleKey: "notifTitle.childLeavingUndone",
+    titleVars: { name: childName, school: school.name },
+    bodyKey: "notifBody.leavingUndone",
+    url: `/reports/${membership.id}`,
+  })).catch((error) => console.error("[undoDeparture] guardians not told", error));
 
   return { ok: true };
 }

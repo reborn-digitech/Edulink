@@ -436,6 +436,9 @@ export async function promoteSchool(
       });
       heldBack += roll.length - moving.length;
 
+      // Arrivals are written a class at a time, not a pupil at a time (TA-202): an enrolment that already exists
+      // (a pupil coming back to a class they once sat in) is made ACTIVE again, and the rest are created.
+      const arrivals = new Map<string, string[]>();
       for (const e of moving) {
         const dest = destinationOf(move, e.studentMembershipId);
         const own = move.reassign?.some((r) => r.membershipId === e.studentMembershipId)
@@ -446,12 +449,18 @@ export async function promoteSchool(
           leavers.push({ membershipId: e.studentMembershipId, fromClassName: from.name });
           continue;
         }
-        await tx.enrollment.upsert({
-          where: { classId_studentMembershipId: { classId: target.id, studentMembershipId: e.studentMembershipId } },
-          create: { classId: target.id, schoolId, studentMembershipId: e.studentMembershipId, status: "ACTIVE" },
-          update: { status: "ACTIVE", removedAt: null, repeating: false },
-        });
+        arrivals.set(target.id, [...(arrivals.get(target.id) ?? []), e.studentMembershipId]);
         movedTo.push({ membershipId: e.studentMembershipId, className: target.name });
+      }
+      for (const [classId, members] of arrivals) {
+        await tx.enrollment.updateMany({
+          where: { classId, studentMembershipId: { in: members } },
+          data: { status: "ACTIVE", removedAt: null, repeating: false },
+        });
+        await tx.enrollment.createMany({
+          data: members.map((studentMembershipId) => ({ classId, schoolId, studentMembershipId, status: "ACTIVE" })),
+          skipDuplicates: true,
+        });
       }
 
       // Held back out of a class that moved on: they repeat it, and the filing says so.
@@ -467,9 +476,6 @@ export async function promoteSchool(
           data: { status: "REMOVED", removedAt: now },
         });
       }
-      // Every pupil the run touched — moved, held back or graduating — carries the grade of the class they now sit in, or none.
-      await syncGradeLevel(tx, [...movedTo.map((m) => m.membershipId), ...leavers.map((l) => l.membershipId)]);
-
       // Nobody left behind and nobody arriving → the class is last year's,
       // and goes to the archive. A STAY class is never archived, whoever
       // was streamed out of it: the office said it stays, and it does.
@@ -499,12 +505,21 @@ export async function promoteSchool(
         await tx.class.update({ where: { id: from.id }, data: { promotedAt: now } });
       }
     }
-  });
+
+    // Every pupil who moved carries the grade of the class they now sit in, synced ONCE after every class has moved
+    // (TA-202: inside the loop it re-synced everybody moved so far, class after class). A graduate is not synced
+    // here (TA-201): their enrolment has just closed, and the leaving record written below copies the stored grade,
+    // the grade of the class they left, as an office's mid-year leaving does.
+    await syncGradeLevel(tx, movedTo.map((m) => m.membershipId));
+    // A school's whole roll in one transaction is seconds of database time on a hosted database, more than Prisma's
+    // five-second default (TA-202); the payroll run asks for the same room.
+  }, { timeout: 60_000 });
 
   // Graduates: the same departure as any leaver, one certificate each. Done
   // after the transaction so a certificate's failure is a line in the log,
   // not a rollback of the whole school.
   let left = 0;
+  const notLeft: string[] = [];
   for (const leaver of leavers) {
     try {
       const result = await recordDeparture(ctx, leaver.membershipId, {
@@ -514,11 +529,17 @@ export async function promoteSchool(
         leftOn,
       });
       if (result.ok) left += 1;
-      else console.error("[promotion] departure refused", leaver.membershipId, result.errorKey);
+      else {
+        notLeft.push(leaver.membershipId);
+        console.error("[promotion] departure refused", leaver.membershipId, result.errorKey);
+      }
     } catch (error) {
+      notLeft.push(leaver.membershipId);
       console.error("[promotion] departure failed", leaver.membershipId, error);
     }
   }
+  // A graduate whose departure did not go through is still on the roll, of no class: the stored grade follows that.
+  if (notLeft.length > 0) await syncGradeLevel(db, notLeft).catch((error) => console.error("[promotion] grade sync failed", error));
 
   await audit({
     schoolId,

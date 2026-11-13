@@ -1,6 +1,7 @@
 import "server-only";
 import { db } from "./db";
 import { AccessError } from "./tenancy";
+import { RuleRefusal } from "./rule-refusal";
 import { forJoinCode, forUser } from "./tenant-context";
 import type { ActiveContext } from "./session";
 import type { Role } from "./constants";
@@ -25,11 +26,11 @@ import type { Role } from "./constants";
 
 export const PEN_RE = /^\d{11}$/;
 
-/** The digits the office typed, or null when it is blank; throws on a wrong shape. */
-export function normalisePen(raw: string | null | undefined): string | null {
+/** The digits the office typed, or null when it is blank; a wrong shape is a 422 naming `field` (TA-602), not a 403. */
+export function normalisePen(raw: string | null | undefined, field = "penNumber"): string | null {
   const digits = (raw ?? "").replace(/[\s-]/g, "");
   if (!digits) return null;
-  if (!PEN_RE.test(digits)) throw new AccessError("pupilRecord.penFormat");
+  if (!PEN_RE.test(digits)) throw new RuleRefusal("pupilRecord.penFormat", 422, undefined, field);
   return digits;
 }
 
@@ -57,7 +58,8 @@ export async function holderOf(pen: string): Promise<PenHolder | null> {
 export async function assignPen(userId: string, pen: string | null): Promise<void> {
   if (pen) {
     const other = await db.user.findUnique({ where: { penNumber: pen }, select: { id: true } });
-    if (other && other.id !== userId) throw new AccessError("pupilRecord.penTaken");
+    // Another account's number: the state is in the way, a 409 (TA-602).
+    if (other && other.id !== userId) throw new RuleRefusal("pupilRecord.penTaken", 409, undefined, "penNumber");
   }
   await db.user.update({ where: { id: userId }, data: { penNumber: pen } });
 }
@@ -79,8 +81,8 @@ export type PenLookup =
 /** The office asks who holds a PEN: a pupil here in full, a pupil elsewhere by state alone, or nobody. */
 export async function lookupPen(ctx: ActiveContext, raw: string): Promise<PenLookup> {
   if (!ctx.schoolId || !ctx.role || !OFFICE.includes(ctx.role)) throw new AccessError("access.notAllowed");
-  const pen = normalisePen(raw);
-  if (!pen) throw new AccessError("pupilRecord.penFormat");
+  const pen = normalisePen(raw, "pen");
+  if (!pen) throw new RuleRefusal("pupilRecord.penFormat", 422, undefined, "pen");
   const holder = await holderOf(pen);
   if (!holder) return { pen, found: "NONE", pupil: null };
   const here = holder.memberships.find((m) => m.schoolId === ctx.schoolId && !m.leftAt && m.status === "ACTIVE");

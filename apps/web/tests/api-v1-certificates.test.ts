@@ -243,8 +243,8 @@ describe("the pupil record", () => {
     expect(ask.changes).toEqual(expect.arrayContaining([{ field: "motherTongue", from: null, to: "MARATHI" }, { field: "nationality", from: null, to: "INDIAN" }]));
     view = await (await familyRecordGet(get(`/api/v1/family/record?childId=${pupilA}`))).json();
     expect(view).toMatchObject({ record: null, canEdit: false, canRequest: true, change: { id: ask.id } });
-    // Nothing that differs from the record is nothing to ask.
-    expect((await familyChangePost(json(`/api/v1/family/record/changes?childId=${pupilA}`, { changes: { fatherName: "" }, reason: "ZZ" }))).status).toBe(403);
+    // Nothing that differs from the record is nothing to ask: a value refused, 422 naming `changes` (TA-602; it was a 403).
+    expect((await familyChangePost(json(`/api/v1/family/record/changes?childId=${pupilA}`, { changes: { fatherName: "" }, reason: "ZZ" }))).status).toBe(422);
     // Only the office decides.
     expect((await changeDecidePost(json(`/api/v1/office/record-changes/${ask.id}/decide`, { approve: true }), params({ requestId: ask.id }))).status).toBe(403);
     await as("TEACHER");

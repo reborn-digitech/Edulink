@@ -4,6 +4,7 @@ import { revalidatePath } from "next/cache";
 import { penChangeDecideSchema, penChangeProposeSchema } from "@edulink/contracts";
 import type { TranslationKey } from "@/lib/i18n/dictionary";
 import { AccessError, requireApiUser } from "@/lib/tenancy";
+import { RuleRefusal } from "@/lib/rule-refusal";
 import { decidePenChange, proposePenChange, withdrawPenChange } from "@/lib/pen-changes";
 
 /**
@@ -20,6 +21,8 @@ export type PenChangeActionResult = { ok: boolean; errorKey?: TranslationKey; er
 
 function failure(error: unknown): PenChangeActionResult {
   if (error instanceof AccessError) return { ok: false, errorKey: error.key, errorVars: error.vars };
+  // A refused value or a number already taken (TA-602) reads the same on the page: its sentence.
+  if (error instanceof RuleRefusal) return { ok: false, errorKey: error.key, errorVars: error.vars };
   console.error("[pen-changes]", error);
   return { ok: false, errorKey: "common.tryAgain" };
 }

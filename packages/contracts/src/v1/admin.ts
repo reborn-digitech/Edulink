@@ -977,8 +977,8 @@ export const leavingBodySchema = z.object({
   conduct: z.enum(LEAVING_CONDUCTS).nullable().optional(),
   destination: z.string().trim().max(160).optional(),
   note: z.string().trim().max(500).optional(),
-  /** The last day; left out or null, it is today in the school's zone. */
-  leftOn: dateKey.nullable().optional(),
+  /** The last day; left out or null, it is today in the school's zone. A day on the calendar (TA-601): 2026-13-01 is a 422 naming leftOn. */
+  leftOn: realDateKey.nullable().optional(),
 });
 export type LeavingBody = z.infer<typeof leavingBodySchema>;
 /** Recorded now (the certificate's id) or kept for a later day (the day). */

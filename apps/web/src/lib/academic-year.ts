@@ -269,24 +269,32 @@ export async function closeAcademicYear(
         : series.createdAt <= closing.endDate,
     )
     .map((series) => series.id);
-  const seriesArchived = toArchive.length
-    ? (await db.examSeries.updateMany({ where: { id: { in: toArchive } }, data: { archivedAt: new Date() } })).count
-    : 0;
-  const roundsClosed = (
-    await db.reviewRound.updateMany({
-      where: { schoolId, status: "OPEN", closesDateKey: { lte: endKey } },
-      data: { status: "CLOSED" },
-    })
-  ).count;
 
-  // Only now does the year change. Anything above this line still sees the year
-  // it is preserving.
-  await db.academicYear.updateMany({ where: { schoolId }, data: { isCurrent: false } });
-  await db.academicYear.update({
-    where: { id: closing.id },
-    data: { closedAt: new Date() },
+  // ONE TRANSACTION for the tidying and the flip (TA-377): three separate statements left a school with no current
+  // year and a closing year not closed when the second failed, which a second press and the reopen both refuse.
+  // All or nothing, so a failed close leaves the year running and the next press does the whole of it.
+  const { seriesArchived, roundsClosed } = await db.$tenantTransaction(async (raw) => {
+    const tx = raw as typeof db;
+    const seriesArchived = toArchive.length
+      ? (await tx.examSeries.updateMany({ where: { id: { in: toArchive } }, data: { archivedAt: new Date() } })).count
+      : 0;
+    const roundsClosed = (
+      await tx.reviewRound.updateMany({
+        where: { schoolId, status: "OPEN", closesDateKey: { lte: endKey } },
+        data: { status: "CLOSED" },
+      })
+    ).count;
+
+    // Only now does the year change. Anything above this line still sees the year
+    // it is preserving.
+    await tx.academicYear.updateMany({ where: { schoolId }, data: { isCurrent: false } });
+    await tx.academicYear.update({
+      where: { id: closing.id },
+      data: { closedAt: new Date() },
+    });
+    await tx.academicYear.update({ where: { id: next.id }, data: { isCurrent: true } });
+    return { seriesArchived, roundsClosed };
   });
-  await db.academicYear.update({ where: { id: next.id }, data: { isCurrent: true } });
 
   await audit({
     schoolId,

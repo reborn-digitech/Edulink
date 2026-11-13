@@ -1,7 +1,8 @@
 import { penChangeDecideSchema, penChangeRequestSchema } from "@edulink/contracts";
 import { requireApiParent } from "@/lib/api-reads/family";
 import { decidePenChange } from "@/lib/pen-changes";
-import { apiFailure, apiInvalid, ok, readJson } from "@/lib/api-v1";
+import { apiInvalid, ok, readJson } from "@/lib/api-v1";
+import { moduleFailure } from "@/lib/rule-refusal";
 
 /** POST /api/v1/family/pen-changes/{requestId}/decide — a guardian approves or rejects. */
 export async function POST(request: Request, { params }: { params: Promise<{ requestId: string }> }) {
@@ -12,6 +13,7 @@ export async function POST(request: Request, { params }: { params: Promise<{ req
     if (!parsed.success) return apiInvalid(parsed);
     return ok(penChangeRequestSchema.parse(await decidePenChange(ctx, requestId, parsed.data)));
   } catch (error) {
-    return apiFailure(error, "api/v1/family/pen-changes/[requestId]/decide");
+    // A number another account took meanwhile is a 409 (TA-602).
+    return moduleFailure(error, "api/v1/family/pen-changes/[requestId]/decide");
   }
 }

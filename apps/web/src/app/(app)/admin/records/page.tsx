@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowsLeftRightIcon, ClockCounterClockwiseIcon, FolderUserIcon, IdentificationCardIcon, MagnifyingGlassIcon, UsersThreeIcon } from "@phosphor-icons/react/ssr";
 import { AccessError, requireRole } from "@/lib/tenancy";
+import { RuleRefusal } from "@/lib/rule-refusal";
 import { db } from "@/lib/db";
 import { officeRecords } from "@/lib/pupil-records";
 import { lookupPen, type PenLookup } from "@/lib/pen";
@@ -43,7 +44,7 @@ export default async function PupilRecordsPage({ searchParams }: { searchParams:
     try {
       lookup = await lookupPen(ctx, penAsked);
     } catch (error) {
-      if (!(error instanceof AccessError)) throw error;
+      if (!(error instanceof AccessError) && !(error instanceof RuleRefusal)) throw error;
       lookupError = t("pupilRecord.penFormat");
     }
   }

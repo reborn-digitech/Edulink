@@ -104,8 +104,9 @@ describe("the family reads and asks", () => {
 
   it("a value the save would refuse is refused when it is asked: a PIN of five digits, a language off the list, a category off the list", async () => {
     await as("PARENT");
-    expect((await ask(`?childId=${pupil}`, { postalCode: "41100" })).status).toBe(403);
-    expect((await ask(`?childId=${pupil}`, { motherTongue: "Klingon" })).status).toBe(403);
+    // A refused value is a 422 naming its field, as the category's is (TA-602; it was a 403).
+    expect((await ask(`?childId=${pupil}`, { postalCode: "41100" })).status).toBe(422);
+    expect((await ask(`?childId=${pupil}`, { motherTongue: "Klingon" })).status).toBe(422);
     expect((await ask(`?childId=${pupil}`, { category: "Maratha" })).status).toBe(422);
     expect((await ask(`?childId=${pupil}`, { city: "Nashik" }, "")).status).toBe(422);
   });

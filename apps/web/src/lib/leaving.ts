@@ -1,6 +1,10 @@
 import "server-only";
+import { isCollegeKind } from "@edulink/contracts";
 import { db } from "./db";
-import { todayKey } from "./dates";
+import { AccessError } from "./access-error";
+import { leaveCollege } from "./college-records";
+import { noDuesFor } from "./no-dues";
+import { isDateKey, todayKey } from "./dates";
 import { recordDeparture, scheduleDeparture, type DepartureInput } from "./school-record";
 import type { ActiveContext } from "./session";
 import type { TranslationKey } from "./i18n/dictionary";
@@ -27,8 +31,34 @@ export async function recordOrScheduleLeaving(ctx: ActiveContext, membershipId: 
     destination: input.destination ?? "",
     note: input.note ?? "",
   };
-  if (input.leftOn && ctx.schoolId) {
-    const school = await db.school.findUniqueOrThrow({ where: { id: ctx.schoolId }, select: { timezone: true } });
+  // A day that is not on the calendar is refused before it decides anything (TA-601): "2026-11-31" is later than
+  // today and would be kept, and as a Date it rolls over into December.
+  if (input.leftOn && !isDateKey(input.leftOn)) return { ok: false, errorKey: "refusal.leaveDateInvalid" };
+  const school = ctx.schoolId ? await db.school.findUniqueOrThrow({ where: { id: ctx.schoolId }, select: { timezone: true, kind: true } }) : null;
+  /**
+   * A COLLEGE'S LEAVING IS THE COLLEGE'S (TA-268), from whichever door. The people page, the phone's person screen
+   * and this endpoint used to record it as a school's: no LEAVING clearance read, the programme enrolment left
+   * ACTIVE, no caution return recorded — what the college's own door, `leaveCollege`, refuses and does. Now a
+   * student with a line open on the clearance is refused here, today or on a later day, and a leaving that is due
+   * now goes through `leaveCollege`; a later day is kept, and the night job carries it out the same way.
+   */
+  if (school && ctx.schoolId && isCollegeKind(school.kind)) {
+    const student = await db.membership.findFirst({ where: { id: membershipId, schoolId: ctx.schoolId, role: "STUDENT", leftAt: null }, select: { id: true } });
+    if (student) {
+      if (!(await noDuesFor(student.id, "LEAVING")).completed) return { ok: false, errorKey: "collegeOffice.refuseNoDuesOpen" };
+      if (!(input.leftOn && input.leftOn > todayKey(school.timezone))) {
+        try {
+          await leaveCollege(ctx, student.id, { leftOn: input.leftOn || todayKey(school.timezone), reason: details.reason });
+        } catch (error) {
+          if (error instanceof AccessError) return { ok: false, errorKey: error.key };
+          throw error;
+        }
+        const record = await db.schoolRecord.findFirst({ where: { studentMembershipId: student.id }, select: { id: true } });
+        return { ok: true, recordId: record?.id ?? null, scheduledFor: null };
+      }
+    }
+  }
+  if (input.leftOn && school) {
     if (input.leftOn > todayKey(school.timezone)) {
       const scheduled = await scheduleDeparture(ctx, membershipId, { ...details, leaveOnKey: input.leftOn });
       if (!scheduled.ok) return { ok: false, errorKey: scheduled.errorKey };

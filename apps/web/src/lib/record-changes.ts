@@ -2,6 +2,7 @@ import "server-only";
 import { RECORD_CHANGE_FIELDS, type PupilRecordField, type PupilRecordSave, type RecordChangeStatus, type RecordChangeView } from "@edulink/contracts";
 import { db } from "./db";
 import { AccessError } from "./tenancy";
+import { RuleRefusal } from "./rule-refusal";
 import { audit } from "./audit";
 import { notify, notifyGuardians } from "./notify";
 import { readJsonArray, writeJson } from "./json";
@@ -112,7 +113,8 @@ export async function fileRecordChange(ctx: ActiveContext, studentMembershipId: 
     const from = present[field] ?? null;
     if (to !== from) changes.push({ field, from, to });
   }
-  if (changes.length === 0) throw new AccessError("recordChanges.nothingChanges");
+  // Nothing that differs is a value refused, a 422 naming `changes` (TA-602), not a 403.
+  if (changes.length === 0) throw new RuleRefusal("recordChanges.nothingChanges", 422, undefined, "changes");
 
   const reason = input.reason.trim();
   const open = await db.recordChangeRequest.findFirst({ where: { studentMembershipId, status: "PENDING" }, include: INCLUDE });
