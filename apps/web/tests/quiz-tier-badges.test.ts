@@ -25,6 +25,16 @@ const db = new PrismaClient();
 const EMAIL = "zz.pupil.tiers@riverside.test";
 const SLUG = "history-6-what-where-how-and-when";
 
+/**
+ * TA-466 (the testing analysis of 13 November 2026): a missing bank is a SKIP the run counts, and a failure on CI,
+ * where quiz:import has loaded it, never a pass with nothing asserted.
+ */
+function noBank(skip: (note?: string) => void): void {
+  if (process.env.CI) throw new Error(`The practice bank's chapter ${SLUG} is not loaded: run npm run quiz:import first`);
+  skip(`the practice bank's chapter ${SLUG} is not loaded`);
+}
+
+
 let hasBank = false;
 let riversideId: string;
 let pupil: ActiveContext;
@@ -111,8 +121,8 @@ async function tierBadges(): Promise<string[]> {
 }
 
 describe("quiz ladder tier badges", () => {
-  it("awards Beginner on the first promotion, and only Beginner", { timeout: 60_000 }, async () => {
-    if (!hasBank) return;
+  it("awards Beginner on the first promotion, and only Beginner", { timeout: 60_000 }, async ({ skip }) => {
+    if (!hasBank) return noBank(skip);
     const { attemptId } = await startAttempt(pupil, SLUG);
 
     await answerNext(attemptId, true);
@@ -135,8 +145,8 @@ describe("quiz ladder tier badges", () => {
     expect(mastery.level).toBe(2);
   });
 
-  it("does not duplicate a badge when a level is proven twice", { timeout: 60_000 }, async () => {
-    if (!hasBank) return;
+  it("does not duplicate a badge when a level is proven twice", { timeout: 60_000 }, async ({ skip }) => {
+    if (!hasBank) return noBank(skip);
     const { attemptId } = await startAttempt(pupil, SLUG);
 
     // Fall back to L1 (two wrong), then prove it again (two right).
@@ -149,8 +159,8 @@ describe("quiz ladder tier badges", () => {
     expect(badges.filter((b) => b === topicTierBadgeId(SLUG, 1))).toHaveLength(1);
   });
 
-  it("awards Master for a streak at the top rung, where no promotion exists", { timeout: 60_000 }, async () => {
-    if (!hasBank) return;
+  it("awards Master for a streak at the top rung, where no promotion exists", { timeout: 60_000 }, async ({ skip }) => {
+    if (!hasBank) return noBank(skip);
     // Place the child at the summit directly; the climb itself is covered above.
     await db.quizMastery.update({
       where: { studentMembershipId_topicId: { studentMembershipId: membershipId, topicId } },

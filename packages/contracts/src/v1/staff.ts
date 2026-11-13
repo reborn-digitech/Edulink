@@ -514,7 +514,8 @@ export type StaffPractice = z.infer<typeof staffPracticeSchema>;
 export const setPracticeSchema = z.object({
   classId: cuid,
   topicSlug: z.string().trim().min(1).max(120),
-  targetLevel: z.number().int().min(1).max(10),
+  /** The ladder's six rungs (quiz.ts MAX_LEVEL): a seventh is a form error, 422 naming the field (TA-598), not a refusal. */
+  targetLevel: z.number().int().min(1).max(6),
   note: z.string().trim().max(300).optional(),
   /** YYYY-MM-DD; the day's end in the server's reading, as the form does. */
   dueDate: dateKey.optional(),

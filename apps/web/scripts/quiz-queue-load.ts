@@ -333,8 +333,33 @@ export async function loadGeneratedBatches(db: PrismaClient, batches: { file: st
       if (!dry) await db.quizTopic.update({ where: { id: topic.id }, data: { board } });
     }
 
-    const existing = await db.quizQuestion.findMany({ where: { topicId: topic.id }, select: { id: true, stem: true, generated: true, reviewedAt: true, takenDownAt: true, editedAfterSolvingAt: true, imageKey: true, imageSpec: true } });
+    const existing = await db.quizQuestion.findMany({
+      where: { topicId: topic.id },
+      select: {
+        id: true,
+        stem: true,
+        generated: true,
+        reviewedAt: true,
+        takenDownAt: true,
+        editedAfterSolvingAt: true,
+        imageKey: true,
+        imageSpec: true,
+        // TA-196: every stamp the desk (or the review queue before it) wrote, with the EDITs' words before.
+        reviewStamps: { select: { action: true, before: true } },
+      },
+    });
+    // SETTLED BY IDENTITY, NOT BY WORDING (TA-196 of the testing analysis of 13 November 2026). An item is known by
+    // every stem it has held — its own now and the "before" of each EDIT stamp — so an item whose English the desk
+    // corrected is found by the generator's first wording and left alone, rather than that wording created again beside
+    // it (or beside the item taken down). And any stamp settles an item: a correction of the Hindi or the Marathi alone
+    // writes a stamp and nothing on the question, and the file's language rows used to overwrite it.
     const byStem = new Map(existing.map((q) => [q.stem.trim(), q]));
+    for (const q of existing) {
+      for (const stamp of q.reviewStamps) {
+        const before = stamp.action === "EDIT" ? stemBefore(stamp.before) : null;
+        if (before && !byStem.has(before)) byStem.set(before, q);
+      }
+    }
 
     for (const item of batch.questions) {
       const stem = item.stem.trim();
@@ -343,7 +368,7 @@ export async function loadGeneratedBatches(db: PrismaClient, batches: { file: st
         result.duplicates++;
         continue;
       }
-      if (found && (found.reviewedAt || found.takenDownAt || found.editedAfterSolvingAt)) {
+      if (found && (found.reviewedAt || found.takenDownAt || found.editedAfterSolvingAt || found.reviewStamps.length > 0)) {
         result.settled++;
         continue;
       }
@@ -411,4 +436,15 @@ export async function loadGeneratedBatches(db: PrismaClient, batches: { file: st
     }
   }
   return result;
+}
+
+/** The English stem an EDIT stamp's "before" held (quiz-review.ts editItem writes it as JSON), or null. */
+function stemBefore(raw: string | null): string | null {
+  if (!raw) return null;
+  try {
+    const parsed = JSON.parse(raw) as { stem?: unknown };
+    return typeof parsed.stem === "string" && parsed.stem.trim() ? parsed.stem.trim() : null;
+  } catch {
+    return null;
+  }
 }

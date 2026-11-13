@@ -81,8 +81,10 @@ const PROGRAMMES: [RegExp, string][] = [
   [/\bB\.?\s?Voc\b/i, "B.Voc"],
   [/\bM\.?\s?Ed\b/i, "M.Ed"],
   [/\bB\.?\s?Ed\b|\bITEP\b/i, "B.Ed"],
-  [/\bM\.?\s?Com\b/i, "M.Com"],
-  [/\bB\.?\s?Com\b/i, "B.Com"],
+  // TA-474: SPPU's compact titles join the year to the degree ("FYBCOM-BM", "SYBCom-CA", "TYBCom-IB", "SYB.COM."), as
+  // the B.A. pattern below allows; without it they fell through to the section's "Commerce".
+  [/\b(?:[FST]\.?\s?Y\.?\s?)?M\.?\s?Com\b/i, "M.Com"],
+  [/\b(?:[FST]\.?\s?Y\.?\s?)?B\.?\s?Com\b/i, "B.Com"],
   [/\bM\.?\s?Sc\b/i, "M.Sc"],
   [/\bB\.?\s?Sc\b/i, "B.Sc"],
   [/\bB\.?\s?F\.?\s?A\b|\bB\.?\s?V\.?\s?A\b/i, "BFA"],

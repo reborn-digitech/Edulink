@@ -13,7 +13,7 @@ import {
   type QuizLanguage,
 } from "@/lib/quiz";
 import type { ActiveContext } from "@/lib/session";
-import { reviseQuestion, revisionAttempt } from "@/lib/practice-insights";
+import { answerRevision, reviseQuestion } from "@/lib/practice-insights";
 import type { ServedFigure } from "@/lib/quiz-figure";
 import { assertFeatureForAction } from "@/lib/feature-page";
 import { assertFeatureSwitchOn } from "@/lib/platform-features";
@@ -134,8 +134,7 @@ export async function reviseAnswer(
   try {
     const ctx = await requireApiRole("STUDENT");
     await assertFeatureForAction("QUESTION_BANK");
-    const { attemptId } = await revisionAttempt(ctx, questionId, languageOf(ctx));
-    const result = await submitAnswer(ctx, attemptId, questionId, chosenIndex, languageOf(ctx));
+    const result = await answerRevision(ctx, questionId, chosenIndex, languageOf(ctx));
     return { ok: true, result };
   } catch (error) {
     return failure(error);

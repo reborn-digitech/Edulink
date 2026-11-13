@@ -2,8 +2,8 @@ import "server-only";
 import { db } from "./db";
 import { AccessError, assertClassAccess, assertGuardianAccess } from "./tenancy";
 import type { ActiveContext } from "./session";
-import { clampLevel, MAX_LEVEL, MIN_LEVEL, PROMOTE_AFTER, schoolQuizBoard, startAttempt, TIER_NAMES, type QuizLanguage } from "./quiz";
-import { SERVED_QUESTION } from "./quiz-served";
+import { clampLevel, MAX_LEVEL, MIN_LEVEL, PROMOTE_AFTER, replayedAnswer, schoolQuizBoard, startAttempt, submitAnswer, TIER_NAMES, type AnswerResult, type QuizLanguage } from "./quiz";
+import { SERVED_QUESTION, servedTranslation } from "./quiz-served";
 import { asQuizBoard, type QuizBoard } from "@edulink/contracts"; // quiz-board (11 Oct 2026)
 import { normaliseLocale } from "./i18n/locales";
 import { servedFigure, type ServedFigure } from "./quiz-figure";
@@ -160,6 +160,8 @@ export async function weeklyPracticeCount(ctx: ActiveContext): Promise<number> {
     where: {
       attempt: { studentMembershipId: ctx.membershipId, schoolId: ctx.schoolId },
       answeredAt: { gte: since },
+      // An answer, not a reveal (TA-600): revealSolution writes a row with no choice, and showing the working is not answering.
+      chosenIndex: { not: null },
     },
   });
 }
@@ -252,17 +254,21 @@ export async function reviseQuestion(
   const question = await db.quizQuestion.findFirst({
     where: { id: questionId, ...SERVED_QUESTION, topic: practiceTopicsWhere(await practiceTenantOf(ctx.schoolId)) }, // college-content (12 Oct 2026)
     // figures (10 Oct 2026): a re-served question keeps its figure, or a figure question could not be answered.
-    select: { id: true, stem: true, choices: true, difficulty: true, imageKey: true, imageAlt: true, topic: { select: { slug: true } } },
+    select: { id: true, stem: true, choices: true, difficulty: true, imageKey: true, imageAlt: true, editedAfterSolvingAt: true, topic: { select: { slug: true } } },
   });
   if (!question) throw new AccessError("access.questionNotFound", "NOT_FOUND");
   const lang = normaliseLocale(language);
+  // A language row older than the desk's last English edit gives way to the English (TA-199, quiz-served.ts).
   const tr =
     lang === "en"
       ? null
-      : await db.quizQuestionTranslation.findFirst({
-          where: { questionId, language: lang },
-          select: { stem: true, choices: true, imageKey: true, imageAlt: true },
-        });
+      : servedTranslation(
+          await db.quizQuestionTranslation.findFirst({
+            where: { questionId, language: lang },
+            select: { stem: true, choices: true, imageKey: true, imageAlt: true, updatedAt: true },
+          }),
+          question,
+        );
   const original = JSON.parse(question.choices) as string[];
   const translated = tr?.choices ? (JSON.parse(tr.choices) as string[]) : null;
   const choices =
@@ -296,6 +302,47 @@ export async function revisionAttempt(
   const q = await reviseQuestion(ctx, questionId, language);
   const { attemptId } = await startAttempt(ctx, q.topicSlug);
   return { attemptId, topicSlug: q.topicSlug };
+}
+
+/** How long after it closed a sitting a revision answer delivered again is taken for the same answer (TA-374). */
+export const REVISION_REPLAY_WINDOW_MS = 60 * 60 * 1000;
+
+/**
+ * One revision answer, marked in the chapter's sitting (revisionAttempt, then submitAnswer) — the web's reviseAnswer
+ * and the phone's POST /api/v1/practice/revision/answer.
+ *
+ * A REPLAY OF THE ANSWER THAT CLOSED THE SITTING (TA-374 of the testing analysis of 13 November 2026). submitAnswer
+ * moves the ladder only on a question's first answer in a sitting, which holds a replay to nothing while the sitting
+ * is open; but when the first delivery was the chapter's last unanswered question it closed the sitting, and the
+ * outbox's second delivery (its reply lost) found none open, opened a new one, and counted the answer again. So when
+ * no sitting of the chapter is open, the latest one closed within REVISION_REPLAY_WINDOW_MS, its closing answer was
+ * this question and the choice is the same, the stored verdict is answered and nothing is opened or moved.
+ */
+export async function answerRevision(
+  ctx: ActiveContext,
+  questionId: string,
+  chosenIndex: number,
+  language: QuizLanguage = "en",
+): Promise<AnswerResult> {
+  const q = await reviseQuestion(ctx, questionId, language);
+  const topic = await db.quizTopic.findUnique({ where: { slug: q.topicSlug }, select: { id: true } });
+  if (topic && ctx.membershipId && ctx.schoolId) {
+    const mine = { schoolId: ctx.schoolId, studentMembershipId: ctx.membershipId, topicId: topic.id };
+    const open = await db.quizAttempt.findFirst({ where: { ...mine, finishedAt: null }, select: { id: true } });
+    if (!open) {
+      const closed = await db.quizAttempt.findFirst({
+        where: { ...mine, finishedAt: { gte: new Date(Date.now() - REVISION_REPLAY_WINDOW_MS) } },
+        orderBy: { finishedAt: "desc" },
+        select: { id: true },
+      });
+      const last = closed
+        ? await db.quizResponse.findFirst({ where: { attemptId: closed.id }, orderBy: { answeredAt: "desc" }, select: { questionId: true, chosenIndex: true } })
+        : null;
+      if (closed && last && last.questionId === questionId && last.chosenIndex === chosenIndex) return replayedAnswer(closed.id, questionId, language);
+    }
+  }
+  const { attemptId } = await startAttempt(ctx, q.topicSlug);
+  return submitAnswer(ctx, attemptId, questionId, chosenIndex, language);
 }
 
 /* -------------------------------------------------------------------------- */
@@ -351,7 +398,8 @@ export async function childPracticeProgress(
   }
   const since = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000);
   const weeklyCount = await db.quizResponse.count({
-    where: { attempt: { studentMembershipId }, answeredAt: { gte: since } },
+    // Answers, not reveals (TA-600), the child's own week count's rule.
+    where: { attempt: { studentMembershipId }, answeredAt: { gte: since }, chosenIndex: { not: null } },
   });
 
   return {
@@ -589,6 +637,21 @@ export async function assignmentsForStudent(
 }
 
 /**
+ * ONE of the pupil's own classes' live sets, by id, or null (TA-198 of the testing analysis of 13 November 2026). The
+ * list above holds the ten newest; opening a set, answering in it and beginning its chapter look the set up here, so a
+ * set the eleventh-newest assignment pushed off the list can still be opened, and a one-time set half answered can be
+ * finished. Anybody else's set, an archived one or another school's is null, as before.
+ */
+export async function assignmentForStudent(
+  ctx: ActiveContext,
+  assignmentId: string,
+  language: QuizLanguage = "en",
+): Promise<(PracticeAssignmentView & { myLevel: number; reached: boolean }) | null> {
+  if (!ctx.membershipId || !ctx.schoolId) return null;
+  return (await assignmentsForMembership(ctx.schoolId, ctx.membershipId, language, assignmentId))[0] ?? null;
+}
+
+/**
  * The same list for one pupil's membership, for a reader who is not the pupil and has already proved their reach —
  * the guardian's practice page (decision 0008's follow-up, 12 Nov 2026) after assertGuardianAccess. Never called from
  * a handler on a bare id: the caller binds the person first.
@@ -597,6 +660,8 @@ export async function assignmentsForMembership(
   schoolId: string,
   membershipId: string,
   language: QuizLanguage = "en",
+  /** One set by id, among the same live sets, with no limit (TA-198): see assignmentForStudent. */
+  onlyId?: string,
 ): Promise<(PracticeAssignmentView & { myLevel: number; reached: boolean })[]> {
   const enrolments = await db.enrollment.findMany({
     where: { studentMembershipId: membershipId, schoolId, status: "ACTIVE" },
@@ -604,10 +669,10 @@ export async function assignmentsForMembership(
   });
   if (enrolments.length === 0) return [];
   const assignments = await db.practiceAssignment.findMany({
-    where: { classId: { in: enrolments.map((e) => e.classId) }, archivedAt: null },
+    where: { classId: { in: enrolments.map((e) => e.classId) }, archivedAt: null, ...(onlyId !== undefined ? { id: onlyId } : {}) },
     orderBy: { createdAt: "desc" },
     include: { topic: topicWithTranslation(language) },
-    take: 10,
+    ...(onlyId !== undefined ? {} : { take: 10 }),
   });
   if (assignments.length === 0) return [];
   const masteries = await db.quizMastery.findMany({
@@ -639,6 +704,9 @@ export async function assignmentsForMembership(
 /* -------------------------------------------------------------------------- */
 /* The child's own journey                                                     */
 /* -------------------------------------------------------------------------- */
+
+/** India Standard Time's offset from UTC, the schools' calendar (no daylight saving). */
+const INDIA_OFFSET_MS = 330 * 60_000;
 
 export type Journey = {
   /** Every badge, newest first. Bounded, because a page is not an archive. */
@@ -684,7 +752,8 @@ export async function journey(ctx: ActiveContext): Promise<Journey> {
       select: { earnedAt: true },
     }),
     db.quizResponse.count({
-      where: { attempt: { studentMembershipId: membershipId, schoolId } },
+      // Answers only (TA-600): a revealed solution's row has no choice.
+      where: { attempt: { studentMembershipId: membershipId, schoolId }, chosenIndex: { not: null } },
     }),
     db.quizResponse.findMany({
       where: {
@@ -710,14 +779,19 @@ export async function journey(ctx: ActiveContext): Promise<Journey> {
 
   // The last six calendar months, oldest first, zero-filled so a quiet month
   // shows as quiet rather than vanishing.
+  //
+  // In India's calendar (TA-599): a badge earned at 00:30 IST on the 1st is that month's, not the one before, which
+  // the UTC month made it. The instant is moved by India's offset and its UTC fields read as the local date, and the
+  // six months are built from today's Indian month the same way.
   const monthly: { label: string; month: string; tiers: number }[] = [];
+  const india = (d: Date) => new Date(d.getTime() + INDIA_OFFSET_MS);
   const monthKey = (d: Date) => `${d.getUTCFullYear()}-${d.getUTCMonth()}`;
   const counts = new Map<string, number>();
   for (const badge of recentTiers) {
-    const key = monthKey(badge.earnedAt);
+    const key = monthKey(india(badge.earnedAt));
     counts.set(key, (counts.get(key) ?? 0) + 1);
   }
-  const now = new Date();
+  const now = india(new Date());
   for (let back = 5; back >= 0; back--) {
     const d = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth() - back, 1));
     monthly.push({
@@ -770,6 +844,7 @@ export async function classWeekly(ctx: ActiveContext, classId: string): Promise<
       where: {
         attempt: { studentMembershipId: { in: pupilIds }, schoolId: ctx.schoolId! },
         answeredAt: { gte: since },
+        chosenIndex: { not: null }, // answers, not reveals (TA-600)
       },
       select: { correct: true, attempt: { select: { studentMembershipId: true } } },
     }),

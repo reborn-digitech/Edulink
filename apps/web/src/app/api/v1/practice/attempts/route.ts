@@ -2,7 +2,7 @@ import { practiceBeganSchema, practiceBeginBodySchema } from "@edulink/contracts
 import { requireApiRole, AccessError } from "@/lib/tenancy";
 import { db } from "@/lib/db";
 import { listTopics, nextQuestion, normaliseLanguage, startAttempt } from "@/lib/quiz";
-import { assignmentsForStudent } from "@/lib/practice-insights";
+import { assignmentForStudent } from "@/lib/practice-insights";
 import { apiFailure, apiInvalid, ok, readJson } from "@/lib/api-v1";
 import { servedQuestion } from "../_shared";
 
@@ -24,7 +24,8 @@ export async function POST(request: Request) {
     let slug = parsed.data.slug ?? "";
     let assignment = null;
     if (parsed.data.assignmentId) {
-      const set = (await assignmentsForStudent(ctx, language)).find((a) => a.id === parsed.data.assignmentId);
+      // By id among the pupil's live sets, not within the ten newest the list shows (TA-198).
+      const set = await assignmentForStudent(ctx, parsed.data.assignmentId, language);
       if (!set) throw new AccessError("access.noSuchTopic", "NOT_FOUND");
       slug = set.topicSlug;
       assignment = {

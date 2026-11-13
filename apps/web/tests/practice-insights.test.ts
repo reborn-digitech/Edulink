@@ -32,6 +32,16 @@ import type { ActiveContext } from "@/lib/session";
 
 const db = new PrismaClient();
 const SLUG = "history-6-what-where-how-and-when";
+
+/**
+ * TA-466 (the testing analysis of 13 November 2026): a missing bank is a SKIP the run counts, and a failure on CI,
+ * where quiz:import has loaded it, never a pass with nothing asserted.
+ */
+function noBank(skip: (note?: string) => void): void {
+  if (process.env.CI) throw new Error(`The practice bank's chapter ${SLUG} is not loaded: run npm run quiz:import first`);
+  skip(`the practice bank's chapter ${SLUG} is not loaded`);
+}
+
 const PUPIL_EMAIL = "zz.pupil.insights@riverside.test";
 const TEACHER_EMAIL = "zz.teacher.insights@riverside.test";
 const PARENT_EMAIL = "zz.parent.insights@riverside.test";
@@ -177,13 +187,13 @@ async function answerNext(attemptId: string, correctly: boolean): Promise<string
 }
 
 describe("practice insights", () => {
-  it("defaults to the enrolled grade", { timeout: 60_000 }, async () => {
-    if (!hasBank) return;
+  it("defaults to the enrolled grade", { timeout: 60_000 }, async ({ skip }) => {
+    if (!hasBank) return noBank(skip);
     expect(await enrolledGradeLevel(pupil)).toBe(3);
   });
 
-  it("shows an assignment as unreached before the child has climbed", { timeout: 60_000 }, async () => {
-    if (!hasBank) return;
+  it("shows an assignment as unreached before the child has climbed", { timeout: 60_000 }, async ({ skip }) => {
+    if (!hasBank) return noBank(skip);
     await createPracticeAssignment(teacher, { classId, topicSlug: SLUG, targetLevel: 2 });
     const mine = await assignmentsForStudent(pupil);
     expect(mine).toHaveLength(1);
@@ -191,8 +201,8 @@ describe("practice insights", () => {
     expect(mine[0]!.myLevel).toBe(0); // never opened the chapter — not L1
   });
 
-  it("derives attainment, the continue card, and the weekly count from real answers", { timeout: 60_000 }, async () => {
-    if (!hasBank) return;
+  it("derives attainment, the continue card, and the weekly count from real answers", { timeout: 60_000 }, async ({ skip }) => {
+    if (!hasBank) return noBank(skip);
     const { attemptId } = await startAttempt(pupil, SLUG);
     await answerNext(attemptId, true);
     await answerNext(attemptId, true); // two right → promoted to L2
@@ -218,8 +228,8 @@ describe("practice insights", () => {
     expect(row?.atLevel[1]).toBe(1); // one pupil standing on L2
   });
 
-  it("queues a rested wrong answer for revision, and clears it once re-answered right", { timeout: 60_000 }, async () => {
-    if (!hasBank) return;
+  it("queues a rested wrong answer for revision, and clears it once re-answered right", { timeout: 60_000 }, async ({ skip }) => {
+    if (!hasBank) return noBank(skip);
     const { attemptId } = await startAttempt(pupil, SLUG);
     const missedId = await answerNext(attemptId, false);
 
@@ -246,8 +256,8 @@ describe("practice insights", () => {
     expect((await revisionQueue(pupil)).map((q) => q.questionId)).not.toContain(missedId);
   });
 
-  it("shows the guardian the same ladder the child sees", { timeout: 60_000 }, async () => {
-    if (!hasBank) return;
+  it("shows the guardian the same ladder the child sees", { timeout: 60_000 }, async ({ skip }) => {
+    if (!hasBank) return noBank(skip);
     const view = await childPracticeProgress(parentUserId, pupilMembershipId);
     expect(view.childName).toBe("ZZ Insights Pupil");
     const topic = view.topics.find((row) => row.slug === SLUG);
@@ -257,8 +267,8 @@ describe("practice insights", () => {
     expect(view.weeklyCount).toBeGreaterThanOrEqual(3);
   });
 
-  it("tells the child their own journey, and only theirs", { timeout: 60_000 }, async () => {
-    if (!hasBank) return;
+  it("tells the child their own journey, and only theirs", { timeout: 60_000 }, async ({ skip }) => {
+    if (!hasBank) return noBank(skip);
     const view = await journey(pupil);
     // 3, not 4: the revision re-answer lands in the same open attempt and
     // replaces the wrong response for that question rather than adding a row.
@@ -273,8 +283,8 @@ describe("practice insights", () => {
     await expect(journey(teacher)).rejects.toThrow();
   });
 
-  it("sees the week move, and flags a chapter the class is stuck on", { timeout: 60_000 }, async () => {
-    if (!hasBank) return;
+  it("sees the week move, and flags a chapter the class is stuck on", { timeout: 60_000 }, async ({ skip }) => {
+    if (!hasBank) return noBank(skip);
 
     // No gap yet: one child having a bad day is not a teaching problem.
     expect(await classGapAlerts(teacher, classId)).toEqual([]);
@@ -318,8 +328,8 @@ describe("practice insights", () => {
     expect(week.climbs).toBeGreaterThanOrEqual(1); // the first pupil's Beginner
   });
 
-  it("archives an assignment out of every list", { timeout: 60_000 }, async () => {
-    if (!hasBank) return;
+  it("archives an assignment out of every list", { timeout: 60_000 }, async ({ skip }) => {
+    if (!hasBank) return noBank(skip);
     const list = await assignmentsForClass(teacher, classId);
     await archivePracticeAssignment(teacher, list[0]!.id);
     expect(await assignmentsForClass(teacher, classId)).toHaveLength(0);

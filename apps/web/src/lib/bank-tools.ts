@@ -5,7 +5,7 @@ import { audit } from "./audit";
 import { assertAppAdmin } from "./app-admin";
 import { bankToCsv, parseBankCsv, type BankCsvResult, type BankExportRow, type BankRow, type BankTranslationRow } from "./bank-csv";
 import { parseChoices, clampLevel } from "./quiz";
-import { CONTENT_TEAM_SOURCE } from "./bank-source";
+import { AUTHORED_IN_THE_APP, CONTENT_TEAM_SOURCE } from "./bank-source";
 import { SERVED_QUESTION } from "./quiz-served";
 import type { ActiveContext } from "./session";
 
@@ -40,7 +40,8 @@ export type ImportPreview = {
 
 type Plan = {
   preview: ImportPreview;
-  rows: { row: BankRow; topicId: string; questionId: string | null }[];
+  /** appMade: a new question, or one whose source is an in-the-app tag (bank-source.ts), which the sheet never takes off (TA-197). */
+  rows: { row: BankRow; topicId: string; questionId: string | null; appMade: boolean }[];
 };
 
 /**
@@ -59,9 +60,9 @@ async function plan(csv: string): Promise<Plan> {
   const unknownTopics = slugs.filter((s) => !topicBySlug.has(s)).sort();
 
   const existing = topics.length
-    ? await db.quizQuestion.findMany({ where: { topicId: { in: topics.map((t) => t.id) } }, select: { id: true, topicId: true, stem: true } })
+    ? await db.quizQuestion.findMany({ where: { topicId: { in: topics.map((t) => t.id) } }, select: { id: true, topicId: true, stem: true, generated: true, source: true } })
     : [];
-  const byStem = new Map(existing.map((q) => [`${q.topicId}|${q.stem.trim().toLowerCase()}`, q.id]));
+  const byStem = new Map(existing.map((q) => [`${q.topicId}|${q.stem.trim().toLowerCase()}`, q]));
 
   const problems = [...parsed.problems];
   const rows: Plan["rows"] = [];
@@ -72,8 +73,16 @@ async function plan(csv: string): Promise<Plan> {
       problems.push({ line: row.line, value: row.topicSlug, reasonKey: "bankImport.unknownTopic" });
       continue;
     }
-    const questionId = byStem.get(`${topicId}|${row.stem.toLowerCase()}`) ?? null;
-    rows.push({ row, topicId, questionId });
+    const match = byStem.get(`${topicId}|${row.stem.toLowerCase()}`) ?? null;
+    // A GENERATED question is the bank desk's to correct (TA-371 of the testing analysis of 13 November 2026): the desk is
+    // its one writer (quiz-review.ts), stamping who changed what and keeping the words before, and the bank editor and
+    // the translations page refuse one the same way. A sheet row that matches one is a problem line and writes nothing.
+    if (match?.generated) {
+      problems.push({ line: row.line, value: row.stem.slice(0, 60), reasonKey: "quizReview.editOnDesk" });
+      continue;
+    }
+    const questionId = match?.id ?? null;
+    rows.push({ row, topicId, questionId, appMade: match ? AUTHORED_IN_THE_APP.has(match.source) : true });
     translations += (row.translations.hi ? 1 : 0) + (row.translations.mr ? 1 : 0);
   }
   problems.sort((a, b) => a.line - b.line);
@@ -108,7 +117,7 @@ export async function commitBankImport(session: ActiveContext, csv: string): Pro
   const now = new Date();
   let written = 0;
 
-  for (const { row, topicId, questionId } of rows) {
+  for (const { row, topicId, questionId, appMade } of rows) {
     const data = {
       difficulty: clampLevel(row.difficulty),
       stem: row.stem,
@@ -120,14 +129,20 @@ export async function commitBankImport(session: ActiveContext, csv: string): Pro
       reviewedAt: now,
       reviewedBy: session.user.id,
     };
+    // WHERE A QUESTION CAME FROM IS NOT THE SHEET'S TO REWRITE (TA-197). scripts/import-quiz.ts deletes a question of a
+    // chapter its files write when no file holds it and its source is not an in-the-app tag — and the answers pupils
+    // gave it cascade with it. A question the sheet makes is made in the app, so it carries the content team's tag
+    // whatever its source cell says (a row copied from a curated one brings that one's source with it); a question
+    // that already carries an in-the-app tag keeps it. Only a curated (file) question's source follows the cell, and
+    // the next quiz:import writes the file's back.
     let id = questionId;
     if (id) {
       await db.quizQuestion.update({
         where: { id },
-        data: { ...data, ...(row.source ? { source: row.source } : {}), ...(row.licence ? { licence: row.licence } : {}) },
+        data: { ...data, ...(row.source && !appMade ? { source: row.source } : {}), ...(row.licence ? { licence: row.licence } : {}) },
       });
     } else {
-      id = (await db.quizQuestion.create({ data: { ...data, topicId, source: row.source ?? IMPORTED_SOURCE, licence: row.licence ?? DEFAULT_LICENCE }, select: { id: true } })).id;
+      id = (await db.quizQuestion.create({ data: { ...data, topicId, source: IMPORTED_SOURCE, licence: row.licence ?? DEFAULT_LICENCE }, select: { id: true } })).id;
     }
     written += 1;
 

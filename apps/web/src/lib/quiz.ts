@@ -1,10 +1,11 @@
 import "server-only";
+import { Prisma } from "@prisma/client";
 import { fixtureTopicsWhere, schoolSeesFixtureTopics } from "./quiz-fixtures";
 import { db } from "./db";
 import { AccessError } from "./tenancy";
 import { audit } from "./audit";
 import { awardPermanentBadge } from "./academic-year";
-import { SERVED_QUESTION } from "./quiz-served";
+import { SERVED_QUESTION, servedTranslation } from "./quiz-served";
 import { servedFigure, type ServedFigure } from "./quiz-figure";
 import { practiceTenantOf, practiceTopicsWhere } from "./practice-audience"; // college-content (12 Oct 2026)
 import type { ActiveContext } from "./session";
@@ -613,7 +614,7 @@ export async function nextQuestion(
   const full = await db.quizQuestion.findUniqueOrThrow({
     where: { id: bestId },
     // figures: imageKey and imageAlt, the figure above the stem.
-    select: { id: true, difficulty: true, stem: true, choices: true, imageKey: true, imageAlt: true },
+    select: { id: true, difficulty: true, stem: true, choices: true, imageKey: true, imageAlt: true, editedAfterSolvingAt: true },
   });
 
   // Fetched for the ONE question being served, not for the whole pool — the
@@ -622,16 +623,20 @@ export async function nextQuestion(
   // The translation is looked up by question id and language only. It carries
   // no answerIndex and cannot carry one (see the schema), so a translated
   // question is incapable of disagreeing with the original about which option
-  // is correct.
+  // is correct — and one older than the desk's last English edit is not served
+  // (TA-199, quiz-served.ts servedTranslation).
   const lang = normaliseLocale(language);
   const tr =
     lang === "en"
       ? null
-      : await db.quizQuestionTranslation.findFirst({
-          where: { questionId: full.id, language: lang },
-          // figures: a translation's own drawing (its labels in its language) and words.
-          select: { stem: true, choices: true, imageKey: true, imageAlt: true },
-        });
+      : servedTranslation(
+          await db.quizQuestionTranslation.findFirst({
+            where: { questionId: full.id, language: lang },
+            // figures: a translation's own drawing (its labels in its language) and words.
+            select: { stem: true, choices: true, imageKey: true, imageAlt: true, updatedAt: true },
+          }),
+          full,
+        );
 
   const original = parseChoices(full.choices);
   return {
@@ -673,6 +678,23 @@ export async function submitAnswer(
   chosenIndex: number,
   language: Locale = "en",
 ): Promise<AnswerResult> {
+  return (await recordAnswer(session, attemptId, questionId, chosenIndex, language, false)).result;
+}
+
+const isUniqueViolation = (error: unknown) => error instanceof Prisma.PrismaClientKnownRequestError && error.code === "P2002";
+
+/**
+ * submitAnswer's body. `replayOnClash`: the idempotent door's answer to a delivery that lost the claim below to a
+ * twin delivered at the same moment — the stored verdict, `replayed`, as a later replay gets it.
+ */
+async function recordAnswer(
+  session: ActiveContext,
+  attemptId: string,
+  questionId: string,
+  chosenIndex: number,
+  language: Locale,
+  replayOnClash: boolean,
+): Promise<{ replayed: boolean; result: AnswerResult }> {
   const { schoolId, membershipId } = requireStudent(session);
 
   const attempt = await db.quizAttempt.findFirst({
@@ -683,7 +705,7 @@ export async function submitAnswer(
 
   const question = await db.quizQuestion.findFirst({
     where: { id: questionId, topicId: attempt.topicId, ...SERVED_QUESTION },
-    select: { id: true, answerIndex: true, solution: true, difficulty: true, choices: true },
+    select: { id: true, answerIndex: true, solution: true, difficulty: true, choices: true, editedAfterSolvingAt: true },
   });
   if (!question) throw new AccessError("access.questionNotFound", "NOT_FOUND");
 
@@ -694,10 +716,12 @@ export async function submitAnswer(
   const inRange = Number.isInteger(chosenIndex) && chosenIndex >= 0 && chosenIndex < choices.length;
   const correct = inRange && chosenIndex === question.answerIndex;
 
-  const existing = await db.quizResponse.findUnique({
-    where: { attemptId_questionId: { attemptId, questionId } },
-    select: { id: true, correct: true, revealedSolution: true, chosenIndex: true },
-  });
+  const findExisting = () =>
+    db.quizResponse.findUnique({
+      where: { attemptId_questionId: { attemptId, questionId } },
+      select: { id: true, correct: true, revealedSolution: true, chosenIndex: true },
+    });
+  let existing = await findExisting();
 
   // THE MOMENT OF THE ANSWER, recorded once. The first time a question is
   // answered in a sitting (a fresh row, or a reveal-only row getting its
@@ -706,14 +730,46 @@ export async function submitAnswer(
   // question and per grade for the content team (QuestionStat). A re-answer
   // of the same question keeps both: the time was spent once.
   const firstAnswer = !existing || existing.chosenIndex === null;
-  const moment = firstAnswer ? await answerMoment(schoolId, membershipId, attempt.id, attempt.startedAt, questionId) : null;
+  let moment = firstAnswer ? await answerMoment(schoolId, membershipId, attempt.id, attempt.startedAt, questionId) : null;
+
+  // THE CLAIM (TA-195 of the testing analysis of 13 November 2026). The answer's row is written FIRST, by a create the
+  // (attemptId, questionId) unique key lets exactly one delivery win: the outbox's flush and the player's own recovery
+  // post the same answer on the same `online` event, and both used to read "no row", both move the ladder, and write
+  // the row last — one right answer counted as two in a row, a rung and its permanent badge. The delivery that loses
+  // the create reads the winner's row and is a re-answer (or, through the idempotent door, a replay): it moves nothing.
+  let claimed = false;
+  if (!existing) {
+    try {
+      await db.quizResponse.create({
+        data: {
+          schoolId,
+          attemptId,
+          questionId,
+          chosenIndex: inRange ? chosenIndex : null,
+          correct,
+          servedDifficulty: question.difficulty,
+          revealedSolution: false,
+          gradeLevel: moment?.gradeLevel ?? null,
+          seconds: moment?.seconds ?? null,
+        },
+      });
+      claimed = true;
+    } catch (error) {
+      if (!isUniqueViolation(error)) throw error;
+      existing = await findExisting();
+      if (existing && existing.chosenIndex !== null) {
+        moment = null;
+        if (replayOnClash) return { replayed: true, result: await replayedAnswer(attemptId, questionId, language) };
+      }
+    }
+  }
 
   const mastery = await getOrCreateMastery(schoolId, membershipId, attempt.topicId);
 
   // Only a FIRST answer moves the level. Without this an answer resubmitted by a
   // double-tap or a retried request promotes a child twice for one question.
   let level = mastery.level;
-  if (!existing) {
+  if (claimed) {
     const next = nextMastery(
       { level: mastery.level, streakRight: mastery.streakRight, streakWrong: mastery.streakWrong },
       correct,
@@ -767,21 +823,24 @@ export async function submitAnswer(
     }
   }
 
-  await db.quizResponse.upsert({
-    where: { attemptId_questionId: { attemptId, questionId } },
-    create: {
-      schoolId,
-      attemptId,
-      questionId,
-      chosenIndex: inRange ? chosenIndex : null,
-      correct,
-      servedDifficulty: question.difficulty,
-      revealedSolution: false,
-      gradeLevel: moment?.gradeLevel ?? null,
-      seconds: moment?.seconds ?? null,
-    },
-    update: { chosenIndex: inRange ? chosenIndex : null, correct, ...(moment ? { gradeLevel: moment.gradeLevel, seconds: moment.seconds } : {}) },
-  });
+  // The claimed row already holds this answer; a re-answer (or a reveal-only row getting its answer) is written here.
+  if (!claimed) {
+    await db.quizResponse.upsert({
+      where: { attemptId_questionId: { attemptId, questionId } },
+      create: {
+        schoolId,
+        attemptId,
+        questionId,
+        chosenIndex: inRange ? chosenIndex : null,
+        correct,
+        servedDifficulty: question.difficulty,
+        revealedSolution: false,
+        gradeLevel: moment?.gradeLevel ?? null,
+        seconds: moment?.seconds ?? null,
+      },
+      update: { chosenIndex: inRange ? chosenIndex : null, correct, ...(moment ? { gradeLevel: moment.gradeLevel, seconds: moment.seconds } : {}) },
+    });
+  }
 
   const finish = await finishIfComplete(schoolId, membershipId, attempt.id, attempt.topicId);
 
@@ -792,18 +851,24 @@ export async function submitAnswer(
   const tr =
     lang === "en"
       ? null
-      : await db.quizQuestionTranslation.findFirst({
-          where: { questionId: question.id, language: lang },
-          select: { solution: true },
-        });
+      : servedTranslation(
+          await db.quizQuestionTranslation.findFirst({
+            where: { questionId: question.id, language: lang },
+            select: { solution: true, updatedAt: true },
+          }),
+          question,
+        );
 
   return {
-    correct,
-    answerIndex: question.answerIndex,
-    solution: pick(tr?.solution, question.solution),
-    newLevel: level,
-    finished: finish.finished,
-    badgeAwarded: finish.badgeAwarded,
+    replayed: false,
+    result: {
+      correct,
+      answerIndex: question.answerIndex,
+      solution: pick(tr?.solution, question.solution),
+      newLevel: level,
+      finished: finish.finished,
+      badgeAwarded: finish.badgeAwarded,
+    },
   };
 }
 
@@ -823,19 +888,23 @@ export async function revealSolution(
 ): Promise<{ solution: string; answerIndex: number; badgeForfeited: boolean }> {
   const { schoolId, membershipId } = requireStudent(session);
 
+  // TA-373 (13 November 2026): a finished sitting is not one to reveal in. Charged to a closed sitting, a reveal cost
+  // nothing — the answer then went to the open one, which kept its clean run and moved the rungs.
   const attempt = await db.quizAttempt.findFirst({
-    where: { id: attemptId, schoolId, studentMembershipId: membershipId },
+    where: { id: attemptId, schoolId, studentMembershipId: membershipId, finishedAt: null },
     select: { id: true, topicId: true, revealedAny: true },
   });
   if (!attempt) throw new AccessError("access.attemptNotFound", "NOT_FOUND");
 
   const question = await db.quizQuestion.findFirst({
     where: { id: questionId, topicId: attempt.topicId, ...SERVED_QUESTION },
-    select: { id: true, solution: true, answerIndex: true, difficulty: true },
+    select: { id: true, solution: true, answerIndex: true, difficulty: true, editedAfterSolvingAt: true },
   });
   if (!question) throw new AccessError("access.questionNotFound", "NOT_FOUND");
 
-  await db.quizAttempt.update({ where: { id: attempt.id }, data: { revealedAny: true } });
+  // Every open sitting of the pupil's on this chapter is marked, not only the one named: two opened at once (startAttempt
+  // reads, then creates) would otherwise let a reveal in one and the answers in the other keep the clean-run badge.
+  await db.quizAttempt.updateMany({ where: { schoolId, studentMembershipId: membershipId, topicId: attempt.topicId, finishedAt: null }, data: { revealedAny: true } });
 
   await db.quizResponse.upsert({
     where: { attemptId_questionId: { attemptId, questionId } },
@@ -855,10 +924,13 @@ export async function revealSolution(
   const tr =
     lang === "en"
       ? null
-      : await db.quizQuestionTranslation.findFirst({
-          where: { questionId: question.id, language: lang },
-          select: { solution: true },
-        });
+      : servedTranslation(
+          await db.quizQuestionTranslation.findFirst({
+            where: { questionId: question.id, language: lang },
+            select: { solution: true, updatedAt: true },
+          }),
+          question,
+        );
 
   return {
     solution: pick(tr?.solution, question.solution),
@@ -914,9 +986,17 @@ async function getOrCreateMastery(schoolId: string, membershipId: string, topicI
   });
   if (existing) return existing;
 
-  return db.quizMastery.create({
-    data: { schoolId, studentMembershipId: membershipId, topicId, level: MIN_LEVEL },
-  });
+  // Two first answers of a chapter at once both find no row (TA-195): the one that loses the create reads the winner's.
+  try {
+    return await db.quizMastery.create({
+      data: { schoolId, studentMembershipId: membershipId, topicId, level: MIN_LEVEL },
+    });
+  } catch (error) {
+    if (!isUniqueViolation(error)) throw error;
+    return db.quizMastery.findUniqueOrThrow({
+      where: { studentMembershipId_topicId: { studentMembershipId: membershipId, topicId } },
+    });
+  }
 }
 
 /**
@@ -935,7 +1015,9 @@ async function finishIfComplete(
 ): Promise<{ finished: boolean; badgeAwarded: boolean }> {
   const [total, answered, attempt, topic] = await Promise.all([
     db.quizQuestion.count({ where: { topicId, ...SERVED_QUESTION } }),
-    db.quizResponse.count({ where: { attemptId } }),
+    // The sitting's rows of questions still served (TA-372): an answered question taken down since leaves the served
+    // count, and its row must leave this one, or the sitting closed with served questions never shown.
+    db.quizResponse.count({ where: { attemptId, question: SERVED_QUESTION } }),
     db.quizAttempt.findUniqueOrThrow({
       where: { id: attemptId },
       select: { revealedAny: true, finishedAt: true },
@@ -1018,45 +1100,57 @@ export async function submitAnswerIdempotent(
 
   const existing = await db.quizResponse.findUnique({
     where: { attemptId_questionId: { attemptId, questionId } },
-    select: {
-      chosenIndex: true,
-      correct: true,
-      question: { select: { id: true, answerIndex: true, solution: true } },
-    },
+    select: { chosenIndex: true },
   });
 
   if (existing && existing.chosenIndex !== null) {
-    // The first delivery may have been the answer that finished the topic and
-    // won its badge; a phone that answered offline only ever sees the replay,
-    // so the replay says what the first delivery said. finishIfComplete
-    // awards the badge exactly when it closes the attempt on its last answer
-    // with nothing revealed — so: the attempt is closed, this was its latest
-    // answer, and nothing was revealed.
-    const [closed, latest] = await Promise.all([
-      db.quizAttempt.findUniqueOrThrow({ where: { id: attemptId }, select: { finishedAt: true, revealedAny: true } }),
-      db.quizResponse.findFirst({ where: { attemptId }, orderBy: { answeredAt: "desc" }, select: { questionId: true } }),
-    ]);
-    const finishedHere = closed.finishedAt !== null && latest?.questionId === questionId;
-    const lang = normaliseLocale(language);
-    const translation =
-      lang === "en"
-        ? null
-        : await db.quizQuestionTranslation.findFirst({
-              where: { questionId: existing.question.id, language: lang },
-            select: { solution: true },
-          });
-    return {
-      replayed: true,
-      result: {
-        correct: existing.correct,
-        answerIndex: existing.question.answerIndex,
-        solution: translation?.solution ?? existing.question.solution ?? "",
-        newLevel: 0,
-        finished: finishedHere,
-        badgeAwarded: finishedHere && !closed.revealedAny,
-      },
-    };
+    return { replayed: true, result: await replayedAnswer(attemptId, questionId, language) };
   }
 
-  return { replayed: false, result: await submitAnswer(session, attemptId, questionId, chosenIndex, language) };
+  // A twin delivered at this same moment also found no row: the claim in recordAnswer lets one of the two count, and
+  // the other is answered as the replay it is (TA-195).
+  return recordAnswer(session, attemptId, questionId, chosenIndex, language, true);
+}
+
+/**
+ * The stored verdict of an answer already recorded in a sitting, as a replay of it is answered (the outbox's second
+ * delivery, a twin that lost the claim, a revision answer delivered again after it closed the sitting): nothing moves,
+ * newLevel is 0. The caller has bound the sitting to the pupil.
+ *
+ * The first delivery may have been the answer that finished the topic and
+ * won its badge; a phone that answered offline only ever sees the replay,
+ * so the replay says what the first delivery said. finishIfComplete
+ * awards the badge exactly when it closes the attempt on its last answer
+ * with nothing revealed — so: the attempt is closed, this was its latest
+ * answer, and nothing was revealed.
+ */
+export async function replayedAnswer(attemptId: string, questionId: string, language: Locale = "en"): Promise<AnswerResult> {
+  const [existing, closed, latest] = await Promise.all([
+    db.quizResponse.findUniqueOrThrow({
+      where: { attemptId_questionId: { attemptId, questionId } },
+      select: { correct: true, question: { select: { id: true, answerIndex: true, solution: true, editedAfterSolvingAt: true } } },
+    }),
+    db.quizAttempt.findUniqueOrThrow({ where: { id: attemptId }, select: { finishedAt: true, revealedAny: true } }),
+    db.quizResponse.findFirst({ where: { attemptId }, orderBy: { answeredAt: "desc" }, select: { questionId: true } }),
+  ]);
+  const finishedHere = closed.finishedAt !== null && latest?.questionId === questionId;
+  const lang = normaliseLocale(language);
+  const translation =
+    lang === "en"
+      ? null
+      : servedTranslation(
+          await db.quizQuestionTranslation.findFirst({
+            where: { questionId: existing.question.id, language: lang },
+            select: { solution: true, updatedAt: true },
+          }),
+          existing.question,
+        );
+  return {
+    correct: existing.correct,
+    answerIndex: existing.question.answerIndex,
+    solution: translation?.solution ?? existing.question.solution ?? "",
+    newLevel: 0,
+    finished: finishedHere,
+    badgeAwarded: finishedHere && !closed.revealedAny,
+  };
 }

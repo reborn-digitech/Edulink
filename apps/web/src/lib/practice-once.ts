@@ -3,9 +3,9 @@ import { Prisma } from "@prisma/client";
 import type { PracticeOnceSet } from "@edulink/contracts";
 import { db } from "./db";
 import { AccessError, assertGuardianAccess } from "./tenancy";
-import { assignmentsForMembership, assignmentsForStudent } from "./practice-insights";
+import { assignmentForStudent, assignmentsForMembership, assignmentsForStudent } from "./practice-insights";
 import { parseChoices, QUIZ_LEVELS, clampLevel, type QuizLanguage, type ServedQuestion } from "./quiz";
-import { SERVED_QUESTION } from "./quiz-served";
+import { SERVED_QUESTION, servedTranslation } from "./quiz-served";
 import { servedFigure } from "./quiz-figure";
 import { normaliseLocale } from "./i18n/locales";
 import type { ActiveContext } from "./session";
@@ -104,15 +104,42 @@ async function draw(topicId: string, targetLevel: number): Promise<string[]> {
     .map((q) => q.id);
 }
 
+/**
+ * A DRAWN QUESTION THE BANK NO LONGER SERVES LEAVES THE DRAW (TA-369 of the testing analysis of 13 November 2026). The
+ * draw is fixed at the first open (decision 0008), and a question the desk took down afterwards (or quiz:import
+ * deleted) was still served from it — marked against a key the desk had withdrawn — or, deleted, blocked the set for
+ * good: no next question, the result card drawn over an unfinished row. On every open and answer the drawn questions
+ * not yet answered that are no longer served are dropped from the draw and the total with them, and a set with
+ * nothing left to answer is finished. An answer already given stays, as the sitting's answers do on a take-down.
+ */
+async function settleOnce(row: OnceRow): Promise<OnceRow> {
+  if (row.finishedAt) return row;
+  const answers = answersOf(row.answers);
+  const answered = new Set(answers.map((a) => a.questionId));
+  const drawn = ids(row.questionIds);
+  const waiting = drawn.filter((id) => !answered.has(id));
+  if (waiting.length === 0) return row;
+  const served = new Set((await db.quizQuestion.findMany({ where: { id: { in: waiting }, topicId: row.topicId, ...SERVED_QUESTION }, select: { id: true } })).map((q) => q.id));
+  const gone = new Set(waiting.filter((id) => !served.has(id)));
+  if (gone.size === 0) return row;
+  const kept = drawn.filter((id) => !gone.has(id));
+  await db.practiceOnce.updateMany({
+    where: { id: row.id, finishedAt: null, answers: { equals: row.answers as Prisma.InputJsonValue } },
+    data: { questionIds: kept, total: kept.length, finishedAt: answers.length >= kept.length ? new Date() : null },
+  });
+  return db.practiceOnce.findUniqueOrThrow({ where: { id: row.id }, select: ONCE_SELECT });
+}
+
 /** The question to answer now — the first drawn id without an answer — never with its answer; null when every one is answered. */
 async function nextOnce(row: OnceRow, language: QuizLanguage): Promise<ServedQuestion | null> {
   const answered = new Set(answersOf(row.answers).map((a) => a.questionId));
   const next = ids(row.questionIds).find((id) => !answered.has(id));
   if (!next) return null;
-  const full = await db.quizQuestion.findUnique({ where: { id: next }, select: { id: true, difficulty: true, stem: true, choices: true, imageKey: true, imageAlt: true } });
+  const full = await db.quizQuestion.findFirst({ where: { id: next, ...SERVED_QUESTION }, select: { id: true, difficulty: true, stem: true, choices: true, imageKey: true, imageAlt: true, editedAfterSolvingAt: true } });
   if (!full) return null;
   const lang = normaliseLocale(language);
-  const tr = lang === "en" ? null : await db.quizQuestionTranslation.findFirst({ where: { questionId: full.id, language: lang }, select: { stem: true, choices: true, imageKey: true, imageAlt: true } });
+  // A language row older than the desk's last English edit gives way to the English (TA-199, quiz-served.ts).
+  const tr = lang === "en" ? null : servedTranslation(await db.quizQuestionTranslation.findFirst({ where: { questionId: full.id, language: lang }, select: { stem: true, choices: true, imageKey: true, imageAlt: true, updatedAt: true } }), full);
   const original = parseChoices(full.choices);
   const translated = tr?.choices ? parseChoices(tr.choices) : [];
   const choices = translated.length === original.length ? translated.map((c, i) => (c.trim().length > 0 ? c : original[i]!)) : original;
@@ -128,9 +155,9 @@ async function nextOnce(row: OnceRow, language: QuizLanguage): Promise<ServedQue
   };
 }
 
-/** The pupil's assignment by id, among their own classes' live sets; anybody else's is not found. */
+/** The pupil's assignment by id, among their own classes' live sets (all of them, not the ten newest the list shows: TA-198); anybody else's is not found. */
 async function assignedSet(ctx: ActiveContext, assignmentId: string, language: QuizLanguage): Promise<Assigned> {
-  const set = (await assignmentsForStudent(ctx, language)).find((a) => a.id === assignmentId);
+  const set = await assignmentForStudent(ctx, assignmentId, language);
   if (!set) throw new AccessError("access.noSuchTopic", "NOT_FOUND");
   return set;
 }
@@ -156,6 +183,7 @@ export async function openOnce(ctx: ActiveContext, assignmentId: string, languag
       row = await db.practiceOnce.findUniqueOrThrow({ where: { studentMembershipId_assignmentId: { studentMembershipId: membershipId, assignmentId } }, select: ONCE_SELECT });
     }
   }
+  row = await settleOnce(row);
   return { onceId: row.id, set: setView(set, row, row.total), question: await nextOnce(row, language) };
 }
 
@@ -168,36 +196,42 @@ export type OnceAnswered = { replayed: boolean; correct: boolean; answerIndex: n
  */
 export async function answerOnce(ctx: ActiveContext, onceId: string, questionId: string, chosenIndex: number, language: QuizLanguage = "en"): Promise<OnceAnswered> {
   const { schoolId, membershipId } = requireStudent(ctx);
-  const row = await db.practiceOnce.findFirst({ where: { id: onceId, schoolId, studentMembershipId: membershipId }, select: ONCE_SELECT });
-  if (!row) throw new AccessError("access.attemptNotFound", "NOT_FOUND");
-  const set = await assignedSet(ctx, row.assignmentId, language);
-  if (!ids(row.questionIds).includes(questionId)) throw new AccessError("access.questionNotFound", "NOT_FOUND");
-  const question = await db.quizQuestion.findFirst({ where: { id: questionId, topicId: row.topicId }, select: { answerIndex: true, solution: true, choices: true } });
+  const found = await db.practiceOnce.findFirst({ where: { id: onceId, schoolId, studentMembershipId: membershipId }, select: ONCE_SELECT });
+  if (!found) throw new AccessError("access.attemptNotFound", "NOT_FOUND");
+  const set = await assignedSet(ctx, found.assignmentId, language);
+  let row = await settleOnce(found);
+  // An answer already given is its stored verdict whatever has happened to the question since; a new one must be to a
+  // drawn question the bank still serves (TA-369).
+  const given = answersOf(row.answers).some((a) => a.questionId === questionId);
+  if (!given && !ids(row.questionIds).includes(questionId)) throw new AccessError("access.questionNotFound", "NOT_FOUND");
+  const question = await db.quizQuestion.findFirst({ where: { id: questionId, topicId: row.topicId, ...(given ? {} : SERVED_QUESTION) }, select: { answerIndex: true, solution: true, choices: true, editedAfterSolvingAt: true } });
   if (!question) throw new AccessError("access.questionNotFound", "NOT_FOUND");
   const lang = normaliseLocale(language);
-  const tr = lang === "en" ? null : await db.quizQuestionTranslation.findFirst({ where: { questionId, language: lang }, select: { solution: true } });
+  // A language row older than the desk's last English edit gives way to the English (TA-199, quiz-served.ts).
+  const tr = lang === "en" ? null : servedTranslation(await db.quizQuestionTranslation.findFirst({ where: { questionId, language: lang }, select: { solution: true, updatedAt: true } }), question);
   const solution = (tr?.solution ?? "").trim().length > 0 ? tr!.solution : question.solution;
-
-  const before = answersOf(row.answers);
-  const already = before.find((a) => a.questionId === questionId);
-  if (already) return { replayed: true, correct: already.correct, answerIndex: question.answerIndex, solution, set: setView(set, row, row.total), question: await nextOnce(row, language) };
 
   const choices = parseChoices(question.choices);
   const inRange = Number.isInteger(chosenIndex) && chosenIndex >= 0 && chosenIndex < choices.length;
   const correct = inRange && chosenIndex === question.answerIndex;
-  const after = [...before, { questionId, chosenIndex: inRange ? chosenIndex : -1, correct }];
-  const finished = after.length >= row.total;
   // Recorded once: the update holds only while the answers are as they were read (the Json equality is Postgres's jsonb =).
-  const { count } = await db.practiceOnce.updateMany({
-    where: { id: row.id, answers: { equals: row.answers as Prisma.InputJsonValue } },
-    data: { answers: after, correct: row.correct + (correct ? 1 : 0), finishedAt: finished ? new Date() : null },
-  });
-  const fresh = await db.practiceOnce.findUniqueOrThrow({ where: { id: row.id }, select: ONCE_SELECT });
-  if (count === 0) {
-    const stored = answersOf(fresh.answers).find((a) => a.questionId === questionId);
-    return { replayed: true, correct: stored?.correct ?? correct, answerIndex: question.answerIndex, solution, set: setView(set, fresh, fresh.total), question: await nextOnce(fresh, language) };
+  // A write that lost to ANOTHER question's answer (two answers of one set at once) is made again on the answers as
+  // they now stand (TA-419): only an answer already stored for this question is a replay.
+  for (let round = 0; ; round++) {
+    const before = answersOf(row.answers);
+    const already = before.find((a) => a.questionId === questionId);
+    if (already) return { replayed: true, correct: already.correct, answerIndex: question.answerIndex, solution, set: setView(set, row, row.total), question: await nextOnce(row, language) };
+    const after = [...before, { questionId, chosenIndex: inRange ? chosenIndex : -1, correct }];
+    const finished = after.length >= row.total;
+    const { count } = await db.practiceOnce.updateMany({
+      where: { id: row.id, answers: { equals: row.answers as Prisma.InputJsonValue } },
+      data: { answers: after, correct: row.correct + (correct ? 1 : 0), finishedAt: finished ? new Date() : null },
+    });
+    const fresh = await db.practiceOnce.findUniqueOrThrow({ where: { id: row.id }, select: ONCE_SELECT });
+    if (count > 0) return { replayed: false, correct, answerIndex: question.answerIndex, solution, set: setView(set, fresh, fresh.total), question: await nextOnce(fresh, language) };
+    if (round >= 9) throw new Error(`practiceOnce ${row.id}: the answer lost the conditional write ten times`);
+    row = fresh;
   }
-  return { replayed: false, correct, answerIndex: question.answerIndex, solution, set: setView(set, fresh, fresh.total), question: await nextOnce(fresh, language) };
 }
 
 /**

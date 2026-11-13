@@ -25,7 +25,7 @@ import { assertAppAdmin, type BankResult } from "./app-admin";
 import { AUTHORED_IN_THE_APP } from "./bank-source";
 import { SERVED_QUESTION } from "./quiz-served";
 import { clampLevel, parseChoices } from "./quiz";
-import { evaluate, numberIn } from "../../scripts/quiz-arith";
+import { checkExprProblem } from "./bank-csv";
 import type { ActiveContext } from "./session";
 
 /**
@@ -456,15 +456,57 @@ export async function listQueue(session: ActiveContext, query: Omit<QuizReviewQu
   };
 }
 
-/** The next GENERATED item under the filter, skipping those skipped this sitting: the first band, then the rest. */
+/** The id skipped last this sitting (the walk goes on from it), read from the raw value: parseSkip keeps the first two hundred. */
+function lastSkipped(skip: string | undefined): string | null {
+  const ids = (skip ?? "").split(",").map((s) => s.trim()).filter((s) => /^[A-Za-z0-9_-]{1,64}$/.test(s));
+  return ids.at(-1) ?? null;
+}
+
+/** The items after this one in the desk's ORDER (the chapter's grade, subject and position, the level, the id), and its band. */
+async function afterInOrder(id: string): Promise<{ firstBand: boolean; where: Prisma.QuizQuestionWhereInput } | null> {
+  const at = await db.quizQuestion.findUnique({ where: { id }, select: { id: true, difficulty: true, topic: { select: { classLevel: true, subject: true, position: true } } } });
+  if (!at) return null;
+  const { classLevel, subject, position } = at.topic;
+  const same = { classLevel, subject, position };
+  return {
+    firstBand: inFirstBand(at.topic),
+    where: {
+      OR: [
+        { topic: { classLevel: { gt: classLevel } } },
+        { topic: { classLevel, subject: { gt: subject } } },
+        { topic: { classLevel, subject, position: { gt: position } } },
+        { topic: same, difficulty: { gt: at.difficulty } },
+        { topic: same, difficulty: at.difficulty, id: { gt: at.id } },
+      ],
+    },
+  };
+}
+
+/**
+ * The next GENERATED item under the filter, skipping those skipped this sitting: the first band, then the rest.
+ *
+ * TA-375 (the testing analysis of 13 November 2026). A taken-down item is not walked unless the DOWN standing is
+ * asked for, so Take down moves on, as its action says, rather than showing the item again (nothing else changes its
+ * place in the order). And the walk goes on from the item skipped last — after it in the band's order, then the next
+ * band, then from the top — rather than from the top each time with the skipped ids left out: the list is cut at two
+ * hundred, and the two hundred and first skip used to bring back the same item on every press.
+ */
 export async function nextItem(session: ActiveContext, query: QuizReviewQuery = {}): Promise<QuizReviewNext> {
   reviewerRole(session);
   const skip = parseSkip(query.skip);
   const scope = await fixtureScope(session);
-  const base: Prisma.QuizQuestionWhereInput[] = [QUEUE, ...scope, ...filterWhere(query), ...(skip.length ? [{ id: { notIn: skip } }] : [])];
-  const pick = async (band: Prisma.QuizQuestionWhereInput) =>
-    db.quizQuestion.findFirst({ where: { AND: [...base, band] }, orderBy: ORDER, select: ITEM_SELECT });
-  const row = (await pick({ topic: FIRST_BAND })) ?? (await pick({ NOT: { topic: FIRST_BAND } }));
+  const standing: Prisma.QuizQuestionWhereInput[] = query.state ? [] : [{ takenDownAt: null }];
+  const base: Prisma.QuizQuestionWhereInput[] = [QUEUE, ...scope, ...filterWhere(query), ...standing, ...(skip.length ? [{ id: { notIn: skip } }] : [])];
+  const pick = async (...more: Prisma.QuizQuestionWhereInput[]) =>
+    db.quizQuestion.findFirst({ where: { AND: [...base, ...more] }, orderBy: ORDER, select: ITEM_SELECT });
+  const last = lastSkipped(query.skip);
+  const after = last ? await afterInOrder(last) : null;
+  let row = after
+    ? after.firstBand
+      ? ((await pick({ topic: FIRST_BAND }, after.where)) ?? (await pick({ NOT: { topic: FIRST_BAND } })))
+      : await pick({ NOT: { topic: FIRST_BAND } }, after.where)
+    : null;
+  row ??= (await pick({ topic: FIRST_BAND })) ?? (await pick({ NOT: { topic: FIRST_BAND } }));
   const remaining = await db.quizQuestion.count({ where: { AND: base } });
   return { item: row ? await toItem(row) : null, remaining };
 }
@@ -511,14 +553,8 @@ export function checkEdit(input: Pick<QuizReviewEditBody, "choices" | "answerInd
   if (choices.some((c) => c.length === 0)) return "quizReview.choicesMustStay";
   if (new Set(choices.map((c) => c.toLowerCase())).size !== choices.length) return "quizReview.choicesRepeat";
   if (input.answerIndex < 0 || input.answerIndex >= choices.length) return "quizReview.keyOutOfRange";
-  const expr = input.checkExpr?.trim();
-  if (expr) {
-    if (!/[+\-*/^]/.test(expr)) return "quizReview.checkExprBare";
-    const expected = evaluate(expr);
-    const stated = numberIn(choices[input.answerIndex]!);
-    if (expected === null || stated === null || Math.abs(expected - stated) > 1e-6) return "quizReview.checkExprMismatch";
-  }
-  return null;
+  // The one arithmetic rule, which the sheet import asks too (bank-csv.ts, TA-567).
+  return checkExprProblem(input.checkExpr, choices[input.answerIndex]!);
 }
 
 /** A language row's corrected words: as many options as the English, none empty, none repeated. */
@@ -534,8 +570,9 @@ export function checkTranslationEdit(t: { choices: string[] }, optionCount: numb
  * in its file under content/quiz and imported again, or in the bank editor when it was written in the app),
  * in all three languages at once, in any state (served, taken down, held). The English as corrected;
  * the Hindi and the Marathi rows as corrected when sent. The stamp keeps every field as it stood (`before`),
- * the audit log names the fields changed ("stem", "hi.choices", …); an English change keeps the solver's
- * answers and sets editedAfterSolvingAt (they were given to the old words), and a language row not
+ * the audit log names the fields changed ("stem", "hi.choices", …); a change to the English words (stem, options,
+ * key, working) keeps the solver's answers and sets editedAfterSolvingAt (they were given to the old words), a level
+ * or a check expression alone does not, and a language row not
  * corrected with it reads "stale" on the desk. A press that changes nothing writes nothing.
  */
 export async function editItem(session: ActiveContext, questionId: string, input: QuizReviewEditBody): Promise<BankResult<QuizBankStanding>> {
@@ -580,6 +617,10 @@ export async function editItem(session: ActiveContext, questionId: string, input
     if (changed.length === 0) return false;
 
     if (englishChanged.length) {
+      // Only a change to the words a pupil reads (and the key into them) dates the solver's answers and the Hindi and
+      // Marathi rows: a level or a check expression alone leaves both as they were, since a language row older than
+      // this stamp is not served (TA-199, quiz-served.ts servedTranslation).
+      const wordsChanged = englishChanged.some((k) => k === "stem" || k === "choices" || k === "answerIndex" || k === "solution");
       await tx.quizQuestion.update({
         where: { id: questionId },
         data: {
@@ -589,7 +630,7 @@ export async function editItem(session: ActiveContext, questionId: string, input
           answerIndex: after.answerIndex,
           solution: after.solution,
           checkExpr: after.checkExpr,
-          editedAfterSolvingAt: now,
+          ...(wordsChanged ? { editedAfterSolvingAt: now } : {}),
         },
       });
     }

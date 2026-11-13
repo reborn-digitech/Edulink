@@ -1,5 +1,6 @@
 import { parseCsv, toCsv } from "./csv";
 import type { TranslationKey } from "./i18n/dictionary";
+import { evaluate, numberIn } from "../../scripts/quiz-arith";
 
 /**
  * The question bank as a sheet, read and written.
@@ -109,6 +110,33 @@ export function joinChoices(choices: string[]): string {
   return choices.join(CHOICE_SEPARATOR);
 }
 
+/**
+ * The export's formula guard taken off again (TA-370 of the testing analysis of 13 November 2026). The CSV writer
+ * (csv.ts toCsvValue) puts an apostrophe before a cell that starts with = + - @ (and is not a plain number), so a
+ * spreadsheet opens it as text; options such as "-3 | 7 | -7 | 3" and a check such as "-13.6/4" are such cells. The
+ * import read the apostrophe as part of the words and wrote '-3 back into the bank in every language. One leading
+ * guard is removed here, the rule export-file.ts's workbook download applies.
+ */
+export function unguardCell(raw: string): string {
+  return /^'[=+\-@\t\r]/.test(raw) ? raw.slice(1) : raw;
+}
+
+/**
+ * THE ARITHMETIC CHECK (TA-567): a check expression must compute the answer (an operator, not a bare number) and come
+ * to the number in the option marked correct, within 1e-6 — the verifier's rule (scripts/verify-quiz.ts) with its one
+ * evaluator (scripts/quiz-arith.ts). The bank desk's Edit (quiz-review.ts checkEdit) and the sheet import both ask it.
+ * Null when the check holds or there is none.
+ */
+export function checkExprProblem(checkExpr: string | null | undefined, keyOption: string): TranslationKey | null {
+  const expr = checkExpr?.trim();
+  if (!expr) return null;
+  if (!/[+\-*/^]/.test(expr)) return "quizReview.checkExprBare";
+  const expected = evaluate(expr);
+  const stated = numberIn(keyOption);
+  if (expected === null || stated === null || Math.abs(expected - stated) > 1e-6) return "quizReview.checkExprMismatch";
+  return null;
+}
+
 /** "yes", "true", "1", "y", a date — anything but blank and a no — reads as reviewed. */
 export function readFlag(cell: string): boolean {
   const v = cell.trim().toLowerCase();
@@ -147,7 +175,7 @@ export function parseBankCsv(input: string): BankCsvResult {
 
   rows.forEach((row, index) => {
     const line = lineNumbers[index] ?? index + 2;
-    const cell = (k: string | undefined) => (k ? (row[k] ?? "").trim() : "");
+    const cell = (k: string | undefined) => (k ? unguardCell(row[k] ?? "").trim() : "");
 
     const topicSlug = cell(col.topic).toLowerCase();
     if (!topicSlug) {
@@ -184,6 +212,13 @@ export function parseBankCsv(input: string): BankCsvResult {
       problems.push({ line, value: stem.slice(0, 60), reasonKey: "bankImport.solutionShort" });
       return;
     }
+    // The desk's and the verifier's arithmetic check (TA-567): a key the check does not come to is not served.
+    const checkExpr = cell(col.check) || null;
+    const checkProblem = checkExprProblem(checkExpr, choices[answer - 1]!);
+    if (checkProblem) {
+      problems.push({ line, value: checkExpr ?? "", reasonKey: checkProblem });
+      return;
+    }
 
     const dupKey = `${topicSlug}|${stem.toLowerCase()}`;
     const first = seen.get(dupKey);
@@ -217,7 +252,7 @@ export function parseBankCsv(input: string): BankCsvResult {
       choices,
       answerIndex: answer - 1,
       solution,
-      checkExpr: cell(col.check) || null,
+      checkExpr,
       source: cell(col.source) || null,
       licence: cell(col.licence) || null,
       translations: { hi, mr },

@@ -12,6 +12,16 @@ import type { ActiveContext } from "@/lib/session";
 
 const db = new PrismaClient();
 const SLUG = "history-6-what-where-how-and-when";
+
+/**
+ * TA-466 (the testing analysis of 13 November 2026): a missing bank is a SKIP the run counts, and a failure on CI,
+ * where quiz:import has loaded it, never a pass with nothing asserted.
+ */
+function noBank(skip: (note?: string) => void): void {
+  if (process.env.CI) throw new Error(`The practice bank's chapter ${SLUG} is not loaded: run npm run quiz:import first`);
+  skip(`the practice bank's chapter ${SLUG} is not loaded`);
+}
+
 const PUPIL_EMAIL = "zz.pupil.idempotent@riverside.test";
 
 let hasBank = false;
@@ -76,8 +86,8 @@ afterAll(async () => {
 });
 
 describe("replay-safe answering", () => {
-  it("one tap counts once, however many times the outbox delivers it", { timeout: 60_000 }, async () => {
-    if (!hasBank) return;
+  it("one tap counts once, however many times the outbox delivers it", { timeout: 60_000 }, async ({ skip }) => {
+    if (!hasBank) return noBank(skip);
 
     const { attemptId } = await startAttempt(pupil, SLUG);
     const served = await nextQuestion(pupil, attemptId);
@@ -126,8 +136,8 @@ describe("a replay of the answer that finished the topic", () => {
    * earned it sees a plain "finished". The replay of any earlier answer must
    * not claim the finish.
    */
-  it("says finished and names the badge; an earlier answer's replay does not", async () => {
-    if (!hasBank) return;
+  it("says finished and names the badge; an earlier answer's replay does not", async ({ skip }) => {
+    if (!hasBank) return noBank(skip);
     // A fresh attempt of its own: the test above left an attempt open on this topic.
     await db.quizResponse.deleteMany({ where: { attempt: { studentMembershipId: pupilMembershipId } } });
     await db.quizAttempt.deleteMany({ where: { studentMembershipId: pupilMembershipId } });

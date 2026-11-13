@@ -34,6 +34,21 @@ export function isServed(q: { generated: boolean; takenDownAt: Date | string | n
   return !(q.generated && q.needsFigure && !q.imageKey);
 }
 
+/**
+ * A LANGUAGE ROW OLDER THAN THE ENGLISH IS NOT SERVED (TA-199 of the testing analysis of 13 November 2026). The desk's
+ * Edit (quiz-review.ts) writes the English and only the language rows the reviewer corrected with it, and stamps
+ * editedAfterSolvingAt; a Hindi or Marathi row last written before that stamp still holds the old words — an option
+ * that is no longer the key's, a working that argues for the old answer — and the desk calls it stale. Every read that
+ * hands a question to a pupil passes its translation through here, so a stale row gives way to the English (whose
+ * options the stored answerIndex points into) until a person corrects that language. The desk's own STALE note is
+ * the same comparison (quiz-review.ts toItem, bank-desk.ts wordsIn).
+ */
+export function servedTranslation<T extends { updatedAt: Date }>(translation: T | null | undefined, question: { editedAfterSolvingAt: Date | null }): T | null {
+  if (!translation) return null;
+  if (question.editedAfterSolvingAt && translation.updatedAt < question.editedAfterSolvingAt) return null;
+  return translation;
+}
+
 /** Held: a generated item that needs a figure nobody has drawn yet. */
 export function isHeldForFigure(q: { generated: boolean; needsFigure: boolean; imageKey: string | null }): boolean {
   return q.generated && q.needsFigure && !q.imageKey;

@@ -6,7 +6,7 @@ import { db } from "./db";
 import { AccessError } from "./tenancy";
 import { clampLevel, normaliseLanguage, TIER_NAMES, type QuizSubject } from "./quiz";
 import type { ActiveContext } from "./session";
-import { SERVED_QUESTION } from "./quiz-served";
+import { SERVED_QUESTION, servedTranslation } from "./quiz-served";
 
 /**
  * Worksheets off the question bank: a teacher picks a chapter, a rung and a
@@ -85,17 +85,23 @@ export async function buildWorksheet(
   const [rows, translations] = await Promise.all([
     db.quizQuestion.findMany({
       where: { id: { in: chosenIds } },
-      select: { id: true, stem: true, choices: true, answerIndex: true, solution: true },
+      select: { id: true, stem: true, choices: true, answerIndex: true, solution: true, editedAfterSolvingAt: true },
     }),
     language === "en"
       ? Promise.resolve([])
       : db.quizQuestionTranslation.findMany({
           where: { questionId: { in: chosenIds }, language },
-          select: { questionId: true, stem: true, choices: true, solution: true },
+          select: { questionId: true, stem: true, choices: true, solution: true, updatedAt: true },
         }),
   ]);
-  const translated = new Map(translations.map((t) => [t.questionId, t]));
   const byId = new Map(rows.map((r) => [r.id, r]));
+  // A language row older than the desk's last English edit is not printed: the English is, with the key it matches (TA-199, quiz-served.ts).
+  const translated = new Map<string, (typeof translations)[number]>();
+  for (const t of translations) {
+    const row = byId.get(t.questionId);
+    const fresh = row ? servedTranslation(t, row) : null;
+    if (fresh) translated.set(t.questionId, fresh);
+  }
 
   return {
     topicName: topic.name,

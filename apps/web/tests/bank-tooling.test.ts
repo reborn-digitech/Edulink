@@ -15,7 +15,7 @@ import { AccessError } from "@/lib/tenancy";
 import { createSession } from "@/lib/session";
 import { __resetCookies } from "../tests/stubs/next-headers";
 import { bankToCsv, normaliseStem, parseBankCsv } from "@/lib/bank-csv";
-import { __lastDuplicatesPass, __resetDuplicates, DUPLICATE_MODES, commitBankImport, exportBank, findDuplicates, previewBankImport, questionStats, rebuildQuestionStats, statsFor, trigramAvailable } from "@/lib/bank-tools";
+import { __lastDuplicatesPass, __resetDuplicates, DUPLICATE_MODES, IMPORTED_SOURCE, commitBankImport, exportBank, findDuplicates, previewBankImport, questionStats, rebuildQuestionStats, statsFor, trigramAvailable } from "@/lib/bank-tools";
 import { startAttempt, submitAnswer, ANSWER_SECONDS_CAP } from "@/lib/quiz";
 import { POST as importPost } from "@/app/api/v1/appadmin/bank/import/route";
 import { GET as exportGet } from "@/app/api/v1/appadmin/bank/export/route";
@@ -128,7 +128,8 @@ describe("import, export, duplicates", () => {
     const a = await db.quizQuestion.findFirstOrThrow({ where: { topicId, stem: STEM_A }, include: { translations: true } });
     expect(a.hiReviewedBy).toBe(curatorId);
     expect(a.translations[0]!.language).toBe("hi");
-    expect(a.source).toBe("ZZ test");
+    // A question the sheet makes is made in the app, whatever its source cell says (TA-197): the importer never orphans it.
+    expect(a.source).toBe(IMPORTED_SOURCE);
 
     const again = await commitBankImport(curator(), csv.replace("Paris has been the capital of France for centuries.", "Paris, on the Seine, has been the capital for centuries."));
     expect(again).toMatchObject({ create: 0, update: 3, written: 3 });
