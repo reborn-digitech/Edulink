@@ -82,7 +82,7 @@ export default async function AcademicsSetupPage({ searchParams }: { searchParam
                         {canEdit ? (
                           <select form={`dept-${d.id}`} aria-label={t("academics.fieldHod")} className={fieldClass("min-w-44")} name="hodMembershipId" defaultValue={d.hodMembershipId ?? ""}>
                             <option value="">{t("academics.none")}</option>
-                            {s.faculty.map((f) => (
+                            {s.faculty.filter((f) => f.role === "HOD" || f.membershipId === d.hodMembershipId).map((f) => (
                               <option key={f.membershipId} value={f.membershipId}>{f.name}</option>
                             ))}
                           </select>
@@ -112,7 +112,7 @@ export default async function AcademicsSetupPage({ searchParams }: { searchParam
               <TextField label={t("academics.fieldName")} name="name" required maxLength={120} />
               <SelectField label={t("academics.fieldHod")} name="hodMembershipId" defaultValue="">
                 <option value="">{t("academics.none")}</option>
-                {s.faculty.map((f) => (
+                {s.faculty.filter((f) => f.role === "HOD").map((f) => (
                   <option key={f.membershipId} value={f.membershipId}>{f.name}</option>
                 ))}
               </SelectField>

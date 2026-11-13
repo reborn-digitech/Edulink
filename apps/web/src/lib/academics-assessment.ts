@@ -6,7 +6,7 @@ import { RuleRefusal } from "./rule-refusal";
 import { audit } from "./audit";
 import { notify } from "./notify";
 import { readJson, writeJson } from "./json";
-import { academicsCaller, departmentOfMember, hodDepartment, nameOf, namesOf, readCodes, readOutcomes, readPassingRules, type Caller } from "./academics";
+import { academicsCaller, departmentOfMember, headsDepartment, nameOf, namesOf, readCodes, readOutcomes, readPassingRules, type Caller } from "./academics";
 import { internalTotalHundredths, parseMarks, sumWeights } from "./academics-rules";
 import type { ActiveContext } from "./session";
 
@@ -49,7 +49,7 @@ async function offeringOf(c: Caller, offeringId: string) {
   if (!o) throw new AccessError("access.entryNotFound", "NOT_FOUND");
   const departmentId = o.course.scheme.programme.departmentId;
   const isFaculty = o.facultyMembershipId === c.membershipId;
-  const isHod = c.role === "HOD" && (await hodDepartment(c))?.id === departmentId;
+  const isHod = c.role === "HOD" && (await headsDepartment(c, departmentId));
   const sameDepartment = c.role === "FACULTY" || c.role === "HOD" ? (await departmentOfMember(c.schoolId, c.membershipId)) === departmentId : false;
   return { o, departmentId, isFaculty, isHod, sameDepartment, internalMax: readPassingRules(o.course.scheme.passingRules).internalMax };
 }
@@ -146,7 +146,7 @@ export async function saveComponent(ctx: ActiveContext, offeringId: string, inpu
  * number, or more than the maximum, are skipped and said. A change after the
  * countersign takes it away; a released component is fixed.
  */
-export async function saveInternalMarks(ctx: ActiveContext, offeringId: string, input: { componentId: string; entries?: { studentMembershipId: string; marks: number | null }[]; sheet?: string }): Promise<{ saved: number; skipped: { line: number; reason: "UNKNOWN_STUDENT" | "BAD_MARKS" | "OVER_MAX" }[] }> {
+export async function saveInternalMarks(ctx: ActiveContext, offeringId: string, input: { componentId: string; entries?: { studentMembershipId: string; marks: number | null }[]; sheet?: string }): Promise<{ saved: number; skipped: { line: number; reason: "UNKNOWN_STUDENT" | "AMBIGUOUS_STUDENT" | "BAD_MARKS" | "OVER_MAX" }[] }> {
   const c = await academicsCaller(ctx, ["FACULTY", "HOD"]);
   const { isFaculty, isHod } = await offeringOf(c, offeringId);
   if (!isFaculty && !isHod) throw new AccessError("academics.refuseNotYours");
@@ -156,7 +156,7 @@ export async function saveInternalMarks(ctx: ActiveContext, offeringId: string, 
   if (k.releasedAt) throw new RuleRefusal("academics.refuseReleased", 409);
   const students = await registeredOn(offeringId);
   const ids = new Set(students.map((s) => s.studentMembershipId));
-  const skipped: { line: number; reason: "UNKNOWN_STUDENT" | "BAD_MARKS" | "OVER_MAX" }[] = [];
+  const skipped: { line: number; reason: "UNKNOWN_STUDENT" | "AMBIGUOUS_STUDENT" | "BAD_MARKS" | "OVER_MAX" }[] = [];
   const rows: { studentMembershipId: string; tenths: number | null }[] = [];
   if (input.entries) {
     for (const e of input.entries) {
@@ -166,16 +166,21 @@ export async function saveInternalMarks(ctx: ActiveContext, offeringId: string, 
       rows.push({ studentMembershipId: e.studentMembershipId, tenths });
     }
   } else if (input.sheet) {
-    const byKey = new Map<string, string>();
+    // A roll number is its own division's (TA-055): on an offering shared across divisions two students hold
+    // roll 7, so a key held by more than one student names nobody, and its line is skipped as ambiguous.
+    const byKey = new Map<string, Set<string>>();
+    const keep = (key: string, id: string) => byKey.set(key, (byKey.get(key) ?? new Set<string>()).add(id));
     for (const s of students) {
-      if (s.rollNumber !== null) byKey.set(String(s.rollNumber), s.studentMembershipId);
-      if (s.studentCode) byKey.set(s.studentCode.toUpperCase(), s.studentMembershipId);
+      if (s.rollNumber !== null) keep(String(s.rollNumber), s.studentMembershipId);
+      if (s.studentCode) keep(s.studentCode.toUpperCase(), s.studentMembershipId);
     }
     input.sheet.split(/\r?\n/).forEach((raw, i) => {
       const line = raw.trim();
       if (!line) return;
       const [who = "", value = ""] = line.split(/[,\t;]/).map((x) => x.trim().replace(/^"|"$/g, ""));
-      const id = byKey.get(who.toUpperCase());
+      const named = byKey.get(who.toUpperCase());
+      if (named && named.size > 1) return void skipped.push({ line: i + 1, reason: "AMBIGUOUS_STUDENT" });
+      const id = named ? [...named][0] : undefined;
       if (!id) {
         // A header line is not a student; anything else that names nobody is said.
         if (i > 0 || /\d/.test(who)) skipped.push({ line: i + 1, reason: "UNKNOWN_STUDENT" });
@@ -188,28 +193,40 @@ export async function saveInternalMarks(ctx: ActiveContext, offeringId: string, 
     });
   } else throw new RuleRefusal("common.checkTheForm", 422, undefined, "entries");
   if (rows.length) {
-    const existing = new Map((await db.internalMark.findMany({ where: { componentId: k.id }, select: { studentMembershipId: true, marksTenths: true } })).map((m) => [m.studentMembershipId, m.marksTenths]));
-    const changed = rows.filter((r) => !existing.has(r.studentMembershipId) || existing.get(r.studentMembershipId) !== r.tenths);
-    if (changed.length) {
-      await db.$tenantTransaction(async (raw) => {
-        const tx = raw as Tx;
-        for (const r of changed) {
-          await tx.internalMark.upsert({
-            where: { componentId_studentMembershipId: { componentId: k.id, studentMembershipId: r.studentMembershipId } },
-            create: { schoolId: c.schoolId, componentId: k.id, studentMembershipId: r.studentMembershipId, marksTenths: r.tenths, enteredByUserId: c.userId },
-            update: { marksTenths: r.tenths, enteredByUserId: c.userId, enteredAt: new Date(), moderatedByUserId: null, moderatedAt: null },
-          });
-        }
-        // The countersign was for the numbers as they were.
-        if (k.moderatedAt) {
-          await tx.internalComponent.update({ where: { id: k.id }, data: { moderatedAt: null, moderatedByUserId: null } });
-          await tx.internalMark.updateMany({ where: { componentId: k.id }, data: { moderatedAt: null, moderatedByUserId: null } });
-        }
-      });
-      await audit({ schoolId: c.schoolId, actorUserId: c.userId, action: "academics.internal.marks", targetType: "InternalComponent", targetId: k.id, meta: { offeringId, changed: changed.length, countersignCleared: Boolean(k.moderatedAt) } });
-    }
+    // Under the offering's row lock (TA-238), the lock the countersign and the HOD's lock take too: the lock,
+    // the release, the countersign and the earlier marks are read again here, so a countersign or a lock that
+    // landed since the reads above is seen, and never stands over marks written after it.
+    const written = await db.$tenantTransaction(async (raw) => {
+      const tx = raw as Tx;
+      await lockOffering(tx, offeringId);
+      if (await tx.internalLock.findUnique({ where: { offeringId }, select: { id: true } })) throw new RuleRefusal("academics.refuseLocked", 409);
+      const now = await tx.internalComponent.findUniqueOrThrow({ where: { id: k.id }, select: { releasedAt: true, moderatedAt: true } });
+      if (now.releasedAt) throw new RuleRefusal("academics.refuseReleased", 409);
+      const existing = new Map((await tx.internalMark.findMany({ where: { componentId: k.id }, select: { studentMembershipId: true, marksTenths: true } })).map((m) => [m.studentMembershipId, m.marksTenths]));
+      const changed = rows.filter((r) => !existing.has(r.studentMembershipId) || existing.get(r.studentMembershipId) !== r.tenths);
+      for (const r of changed) {
+        await tx.internalMark.upsert({
+          where: { componentId_studentMembershipId: { componentId: k.id, studentMembershipId: r.studentMembershipId } },
+          create: { schoolId: c.schoolId, componentId: k.id, studentMembershipId: r.studentMembershipId, marksTenths: r.tenths, enteredByUserId: c.userId },
+          update: { marksTenths: r.tenths, enteredByUserId: c.userId, enteredAt: new Date(), moderatedByUserId: null, moderatedAt: null },
+        });
+      }
+      // The countersign was for the numbers as they were.
+      const cleared = changed.length > 0 && Boolean(now.moderatedAt);
+      if (cleared) {
+        await tx.internalComponent.update({ where: { id: k.id }, data: { moderatedAt: null, moderatedByUserId: null } });
+        await tx.internalMark.updateMany({ where: { componentId: k.id }, data: { moderatedAt: null, moderatedByUserId: null } });
+      }
+      return { changed: changed.length, cleared };
+    });
+    if (written.changed) await audit({ schoolId: c.schoolId, actorUserId: c.userId, action: "academics.internal.marks", targetType: "InternalComponent", targetId: k.id, meta: { offeringId, changed: written.changed, countersignCleared: written.cleared } });
   }
   return { saved: rows.length, skipped };
+}
+
+/** The offering's row, held to the end of the transaction: the one lock a save, a countersign, a release and the HOD's lock of its internal marks queue on (TA-238). */
+async function lockOffering(tx: Tx, offeringId: string): Promise<void> {
+  await tx.$queryRaw`SELECT 1 FROM "CourseOffering" WHERE "id" = ${offeringId} FOR UPDATE`;
 }
 
 /** A second member of the department countersigns a component: not its teacher, not anyone who entered its marks; every registered student must have an entry. */
@@ -223,14 +240,24 @@ export async function moderateComponent(ctx: ActiveContext, componentId: string)
   if (await isLocked(k.offeringId)) throw new RuleRefusal("academics.refuseLocked", 409);
   if (k.moderatedAt) return { changed: false };
   const students = await registeredOn(k.offeringId);
-  const entered = new Set(k.marks.map((m) => m.studentMembershipId));
-  if (!students.length || students.some((s) => !entered.has(s.studentMembershipId))) throw new RuleRefusal("academics.refuseIncomplete", 409);
   const now = new Date();
-  await db.$tenantTransaction(async (raw) => {
+  // The marks the countersign stands over are read under the offering's lock (TA-238): a save waiting on it
+  // writes after, and takes the countersign away; one that went first is what is countersigned.
+  const changed = await db.$tenantTransaction(async (raw) => {
     const tx = raw as Tx;
-    await tx.internalComponent.update({ where: { id: k.id }, data: { moderatedAt: now, moderatedByUserId: c.userId } });
+    await lockOffering(tx, k.offeringId);
+    if (await tx.internalLock.findUnique({ where: { offeringId: k.offeringId }, select: { id: true } })) throw new RuleRefusal("academics.refuseLocked", 409);
+    const fresh = await tx.internalComponent.findUniqueOrThrow({ where: { id: k.id }, select: { moderatedAt: true, marks: { select: { studentMembershipId: true, enteredByUserId: true } } } });
+    if (fresh.moderatedAt) return false;
+    if (fresh.marks.some((m) => m.enteredByUserId === c.userId)) throw new RuleRefusal("academics.refuseOwnModeration", 409);
+    const entered = new Set(fresh.marks.map((m) => m.studentMembershipId));
+    if (!students.length || students.some((s) => !entered.has(s.studentMembershipId))) throw new RuleRefusal("academics.refuseIncomplete", 409);
+    const moved = await tx.internalComponent.updateMany({ where: { id: k.id, moderatedAt: null }, data: { moderatedAt: now, moderatedByUserId: c.userId } });
+    if (!moved.count) return false;
     await tx.internalMark.updateMany({ where: { componentId: k.id }, data: { moderatedAt: now, moderatedByUserId: c.userId } });
+    return true;
   });
+  if (!changed) return { changed: false };
   await audit({ schoolId: c.schoolId, actorUserId: c.userId, action: "academics.internal.moderate", targetType: "InternalComponent", targetId: k.id, meta: { offeringId: k.offeringId } });
   return { changed: true };
 }
@@ -244,7 +271,17 @@ export async function releaseComponent(ctx: ActiveContext, componentId: string):
   if (!isHod) throw new AccessError("academics.refuseOtherDepartment");
   if (k.releasedAt) return { changed: false };
   if (!k.moderatedAt) throw new RuleRefusal("academics.refuseNotModerated", 409);
-  await db.internalComponent.update({ where: { id: k.id }, data: { releasedAt: new Date(), releasedByUserId: c.userId } });
+  // Released only while still countersigned, read under the offering's lock (TA-238): a save that took the countersign away since is seen.
+  const released = await db.$tenantTransaction(async (raw) => {
+    const tx = raw as Tx;
+    await lockOffering(tx, k.offeringId);
+    const fresh = await tx.internalComponent.findUniqueOrThrow({ where: { id: k.id }, select: { moderatedAt: true, releasedAt: true } });
+    if (fresh.releasedAt) return false;
+    if (!fresh.moderatedAt) throw new RuleRefusal("academics.refuseNotModerated", 409);
+    await tx.internalComponent.update({ where: { id: k.id }, data: { releasedAt: new Date(), releasedByUserId: c.userId } });
+    return true;
+  });
+  if (!released) return { changed: false };
   await audit({ schoolId: c.schoolId, actorUserId: c.userId, action: "academics.internal.release", targetType: "InternalComponent", targetId: k.id, meta: { offeringId: k.offeringId } });
   const students = await db.courseRegistration.findMany({ where: { offeringId: k.offeringId, status: "REGISTERED" }, select: { student: { select: { userId: true } } } });
   const vars = { course: `${o.course.code} ${o.course.name}`, component: k.name };
@@ -263,20 +300,22 @@ export async function lockInternal(ctx: ActiveContext, offeringId: string): Prom
   const { o, isHod, internalMax } = await offeringOf(c, offeringId);
   if (!isHod) throw new AccessError("academics.refuseOtherDepartment");
   if (await isLocked(offeringId)) return { changed: false };
-  const [components, students] = await Promise.all([
-    db.internalComponent.findMany({ where: { offeringId }, select: { id: true, maxMarks: true, weight: true, moderatedAt: true, marks: { select: { studentMembershipId: true, marksTenths: true } } } }),
-    registeredOn(offeringId),
-  ]);
-  if (!components.length || sumWeights(components) !== internalMax) throw new RuleRefusal("academics.refuseWeightsNotTotal", 409, { max: internalMax, total: sumWeights(components) });
-  if (components.some((k) => !k.moderatedAt)) throw new RuleRefusal("academics.refuseNotModerated", 409);
-  if (components.some((k) => students.some((s) => !k.marks.some((m) => m.studentMembershipId === s.studentMembershipId)))) throw new RuleRefusal("academics.refuseIncomplete", 409);
-  const totals = lockTotals(components, students.map((s) => s.studentMembershipId));
-  try {
-    await db.internalLock.create({ data: { schoolId: c.schoolId, offeringId, termId: o.termId, outOf: internalMax, totalsJson: writeJson(totals), lockedByUserId: c.userId } });
-  } catch (e) {
-    if (typeof e === "object" && e !== null && (e as { code?: string }).code === "P2002") return { changed: false };
-    throw e;
-  }
+  const students = await registeredOn(offeringId);
+  // The marks are read and the totals frozen under the offering's lock (TA-238), so a save that passed its own
+  // lock check either wrote before (and is in the totals, or took a countersign away) or waits and is refused.
+  const totals = await db.$tenantTransaction(async (raw) => {
+    const tx = raw as Tx;
+    await lockOffering(tx, offeringId);
+    if (await tx.internalLock.findUnique({ where: { offeringId }, select: { id: true } })) return null;
+    const components = await tx.internalComponent.findMany({ where: { offeringId }, select: { id: true, maxMarks: true, weight: true, moderatedAt: true, marks: { select: { studentMembershipId: true, marksTenths: true } } } });
+    if (!components.length || sumWeights(components) !== internalMax) throw new RuleRefusal("academics.refuseWeightsNotTotal", 409, { max: internalMax, total: sumWeights(components) });
+    if (components.some((k) => !k.moderatedAt)) throw new RuleRefusal("academics.refuseNotModerated", 409);
+    if (components.some((k) => students.some((s) => !k.marks.some((m) => m.studentMembershipId === s.studentMembershipId)))) throw new RuleRefusal("academics.refuseIncomplete", 409);
+    const frozen = lockTotals(components, students.map((s) => s.studentMembershipId));
+    await tx.internalLock.create({ data: { schoolId: c.schoolId, offeringId, termId: o.termId, outOf: internalMax, totalsJson: writeJson(frozen), lockedByUserId: c.userId } });
+    return frozen;
+  });
+  if (!totals) return { changed: false };
   await audit({ schoolId: c.schoolId, actorUserId: c.userId, action: "academics.internal.lock", targetType: "CourseOffering", targetId: offeringId, meta: { students: totals.length, outOf: internalMax } });
   return { changed: true };
 }

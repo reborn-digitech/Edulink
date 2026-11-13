@@ -7,7 +7,7 @@ import { resultsForDepartment } from "./exam-cell-marks";
 import { listProjects } from "./placement-projects";
 import { assertGuardianAccess } from "./tenancy";
 import { parentMaySee } from "./student-consent";
-import { todayKey, weekdayOfKey } from "./dates";
+import { addDaysToKey, isDateKey, todayKey, weekdayOfKey } from "./dates";
 import { academicsCaller, academicsSettings, currentTerm, departmentOfMember, divisionNames, hodDepartment, loadAndRatios, nameOf, namesOf, termView, timetableFor, zoneOf, type Caller } from "./academics";
 import { attendanceRows, condonationsFor, lecturesFor } from "./academics-attendance";
 import { releasedMarksFor, toModerateFor } from "./academics-assessment";
@@ -61,9 +61,23 @@ async function offeringSummaries(c: Caller, where: Record<string, unknown>, term
   });
 }
 
-export async function facultyHome(ctx: ActiveContext): Promise<FacultyHome> {
+/**
+ * The faculty home's day stepper (TA-059): the day `?day=` shows (an earlier one, else today), whether it is an
+ * earlier day, and where Previous day and Next day lead. Next day from yesterday is today's own page (null), never
+ * `?day=<today>`, which would draw today as if it were an earlier day.
+ */
+export function facultyDaySteps(asked: string | undefined, today: string): { day: string; earlier: boolean; previous: string; next: string | null } {
+  const day = asked && isDateKey(asked) && asked < today ? asked : today;
+  const next = addDaysToKey(day, 1);
+  return { day, earlier: day !== today, previous: addDaysToKey(day, -1), next: next < today ? next : null };
+}
+
+export async function facultyHome(ctx: ActiveContext, day?: string): Promise<FacultyHome> {
   const c = await academicsCaller(ctx, ["FACULTY", "HOD"]);
   const today = todayKey(c.timeZone);
+  // An earlier day's lectures, asked for by the web's day stepper (TA-059): a register not marked on its own day is
+  // still reached; never a day after today.
+  const shownDay = facultyDaySteps(day, today).day;
   const [me, term, settings, deptId] = await Promise.all([
     db.membership.findUniqueOrThrow({ where: { id: c.membershipId }, select: { user: { select: { name: true, preferredName: true } } } }),
     currentTerm(c.schoolId, today),
@@ -72,7 +86,7 @@ export async function facultyHome(ctx: ActiveContext): Promise<FacultyHome> {
   ]);
   const [dept, todayLectures, offerings, groups, toModerate] = await Promise.all([
     deptId ? db.department.findUnique({ where: { id: deptId }, select: { name: true } }) : Promise.resolve(null),
-    lecturesFor(c, today),
+    lecturesFor(c, shownDay),
     offeringSummaries(c, { facultyMembershipId: c.membershipId }, term?.id ?? null, today, term),
     db.mentoringGroup.count({ where: { schoolId: c.schoolId, facultyMembershipId: c.membershipId, ...(term ? { termId: term.id } : {}) } }),
     toModerateFor(c),

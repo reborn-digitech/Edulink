@@ -366,7 +366,7 @@ export const internalMarksSaveSchema = z.object({
   entries: z.array(z.object({ studentMembershipId: cuid, marks: z.number().min(0).max(500).nullable() })).max(400).optional(),
   sheet: z.string().max(40_000).optional(),
 });
-export const internalMarksResultSchema = z.object({ saved: z.number().int(), skipped: z.array(z.object({ line: z.number().int(), reason: z.enum(["UNKNOWN_STUDENT", "BAD_MARKS", "OVER_MAX"]) })) });
+export const internalMarksResultSchema = z.object({ saved: z.number().int(), skipped: z.array(z.object({ line: z.number().int(), reason: z.enum(["UNKNOWN_STUDENT", "AMBIGUOUS_STUDENT", "BAD_MARKS", "OVER_MAX"]) })) });
 
 /* ------------------------------------------------------------ course file */
 

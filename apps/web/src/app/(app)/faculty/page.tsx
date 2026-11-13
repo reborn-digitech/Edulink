@@ -14,10 +14,11 @@ import { streamsOf } from "@/lib/streams";
 import { requireRole } from "@/lib/tenancy";
 import { institutionKindOf, isModuleOn } from "@/lib/modules";
 import { isCollegeKind } from "@/lib/institution";
-import { facultyHome } from "@/lib/academics-homes";
+import { facultyDaySteps, facultyHome } from "@/lib/academics-homes";
+import { zoneOf } from "@/lib/academics";
 import { loadState } from "@/lib/academics-rules";
 import { getLocale, getT } from "@/lib/i18n/server";
-import { formatDateKey } from "@/lib/dates";
+import { formatDateKey, todayKey } from "@/lib/dates";
 import { componentsStateText, mentoringLinkText, weeksTaughtText } from "@/lib/count-copy";
 import { TableScroll } from "@/components/ui/table-scroll";
 import { DutyCards } from "@/components/college/duty-cards";
@@ -43,7 +44,12 @@ export default async function FacultyHomePage({ searchParams }: { searchParams: 
   const [on, kind] = await Promise.all([isModuleOn(ctx.schoolId, "ACADEMICS"), institutionKindOf(ctx.schoolId)]);
   if (!on) return <ModuleOff page module="ACADEMICS" t={t} college={isCollegeKind(kind)} />;
   const params = await searchParams;
-  const home = await facultyHome(ctx);
+  // ?day= an earlier day (TA-059): its lectures, to mark a register that was not marked on its own day.
+  const asked = typeof params.day === "string" ? params.day : undefined;
+  const [home, zone] = await Promise.all([facultyHome(ctx, asked), zoneOf(ctx.schoolId)]);
+  // Today's own page for ?day=<today> or later, and Next day from yesterday leads there (not to ?day=<today>).
+  const steps = facultyDaySteps(asked, todayKey(zone));
+  const earlierDay = steps.earlier;
   const state = loadState(home.hours, home.settings.loadMinHours, home.settings.loadMaxHours);
   return (
     <div className="space-y-6">
@@ -60,10 +66,25 @@ export default async function FacultyHomePage({ searchParams }: { searchParams: 
       <Card>
         <CardHeader icon={<CalendarCheckIcon weight="duotone" className="size-5" />} title={t("academics.todayTitle", { date: formatDateKey(home.today.dateKey, { weekday: "long", day: "numeric", month: "long" }, locale) })} description={t("academics.todayBody")} />
         <CardBody>
+          <nav aria-label={t("academics.todayTitle", { date: formatDateKey(home.today.dateKey, { weekday: "long", day: "numeric", month: "long" }, locale) })} className="mb-2 flex flex-wrap gap-2">
+            <Button asChild size="sm" variant="secondary">
+              <Link href={`/faculty?day=${steps.previous}`}>{t("substitutions.previousDay")}</Link>
+            </Button>
+            {earlierDay ? (
+              <>
+                <Button asChild size="sm" variant="secondary">
+                  <Link href={steps.next ? `/faculty?day=${steps.next}` : "/faculty"}>{t("substitutions.nextDay")}</Link>
+                </Button>
+                <Button asChild size="sm" variant="ghost">
+                  <Link href="/faculty">{t("substitutions.today")}</Link>
+                </Button>
+              </>
+            ) : null}
+          </nav>
           {home.today.closed ? (
-            <EmptyState className="border-0 bg-transparent py-4" title={t("academics.closedToday")} description={t("academics.closedTodayBody")} />
+            <EmptyState className="border-0 bg-transparent py-4" title={t(earlierDay ? "academics.closedOnDay" : "academics.closedToday")} description={earlierDay ? undefined : t("academics.closedTodayBody")} />
           ) : home.today.lectures.length === 0 ? (
-            <EmptyState className="border-0 bg-transparent py-4" title={t("academics.noLecturesToday")} description={t("academics.noLecturesTodayBody")} />
+            <EmptyState className="border-0 bg-transparent py-4" title={t(earlierDay ? "academics.noLecturesOnDay" : "academics.noLecturesToday")} description={earlierDay ? undefined : t("academics.noLecturesTodayBody")} />
           ) : (
             <ul className="divide-y divide-border text-sm">
               {home.today.lectures.map((l) => (

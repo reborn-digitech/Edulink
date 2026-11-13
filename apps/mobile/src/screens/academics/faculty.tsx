@@ -1,7 +1,11 @@
-import { useQuery } from "@tanstack/react-query";
+import { useState } from "react";
+import { View } from "react-native";
+import { keepPreviousData, useQuery } from "@tanstack/react-query";
 import { useRouter } from "expo-router";
-import { facultyHomeSchema } from "@edulink/contracts";
+import { facultyHomeSchema, lecturesSchema } from "@edulink/contracts";
 import { Button, Card, Empty, Failed, Loading, Row, Screen, Text } from "@/components";
+import { useTheme } from "@/lib/theme";
+import { addDaysToKey } from "../staff/shared";
 import { api } from "@/lib/api";
 import { unwrap } from "@/lib/query";
 import { useT } from "@/lib/i18n";
@@ -25,19 +29,35 @@ export function FacultyHomeScreen({ asTeaching = false }: { asTeaching?: boolean
   const on = session.status === "signed-in" && (session.me.modules ?? []).includes("ACADEMICS");
   // My payslips (G-1, campaign 2026-10-04): the door names the college's staff now; shown while payroll is on.
   const payroll = session.status === "signed-in" && (session.me.modules ?? []).includes("PAYROLL");
+  const th = useTheme();
   const home = useQuery({ queryKey: ["academics", "faculty-home"], enabled: on, queryFn: async () => facultyHomeSchema.parse(unwrap(await api().get("/api/v1/academics/faculty-home"))) });
+  // An earlier day's lectures (TA-059): a register not marked on its own day is reached a day at a time, never past today.
+  const [day, setDay] = useState<string | null>(null);
+  const earlier = useQuery({ queryKey: ["academics", "lectures", day], enabled: on && day !== null, placeholderData: keepPreviousData, queryFn: async () => lecturesSchema.parse(unwrap(await api().get(`/api/v1/academics/lectures?date=${day}`))) });
   if (!on) return <CollegeRoleHome role={asTeaching ? "HOD" : "FACULTY"} />;
   const h = home.data;
+  const shown = day !== null ? earlier.data : h?.today;
+  const later = (from: string) => {
+    const next = addDaysToKey(from, 1);
+    setDay(h && next < h.today.dateKey ? next : null);
+  };
   return (
     <Screen title={h ? t("academics.facultyHomeTitle", { name: h.name }) : t("role.faculty")} description={h ? [h.departmentName, h.term?.name].filter(Boolean).join(" · ") : undefined} refreshing={home.isRefetching} onRefresh={() => void home.refetch()}>
       {home.isPending ? <Loading /> : null}
       {home.isError ? <Failed message={home.error.message} onRetry={() => void home.refetch()} /> : null}
       {h ? (
         <>
-          <Card title={t("academics.todayTitle", { date: formatDate(h.today.dateKey) })}>
-            {h.today.closed ? <Text tone="muted">{t("academics.closedToday")}</Text> : null}
-            {!h.today.closed && h.today.lectures.length === 0 ? <Text tone="muted">{t("academics.noLecturesToday")}</Text> : null}
-            {h.today.lectures.map((l) => (
+          <Card title={t("academics.todayTitle", { date: formatDate((shown ?? h.today).dateKey) })}>
+            <View style={{ flexDirection: "row", alignItems: "center", gap: th.space[2], flexWrap: "wrap" }}>
+              <Button label={t("substitutions.previousDay")} variant="secondary" onPress={() => setDay(addDaysToKey((shown ?? h.today).dateKey, -1))} />
+              {day !== null ? <Button label={t("substitutions.nextDay")} variant="secondary" onPress={() => later(day)} /> : null}
+              {day !== null ? <Button label={t("substitutions.today")} variant="ghost" onPress={() => setDay(null)} /> : null}
+            </View>
+            {day !== null && earlier.isPending ? <Loading /> : null}
+            {day !== null && earlier.isError ? <Failed message={earlier.error.message} onRetry={() => void earlier.refetch()} /> : null}
+            {shown?.closed ? <Text tone="muted">{t(day === null ? "academics.closedToday" : "academics.closedOnDay")}</Text> : null}
+            {shown && !shown.closed && shown.lectures.length === 0 ? <Text tone="muted">{t(day === null ? "academics.noLecturesToday" : "academics.noLecturesOnDay")}</Text> : null}
+            {(shown?.lectures ?? []).map((l) => (
               <Row
                 key={l.lectureId}
                 title={`${clock(l.startMinute, l.endMinute)} · ${l.courseCode}`}

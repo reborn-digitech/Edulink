@@ -7,8 +7,8 @@ import { RuleRefusal } from "./rule-refusal";
 import { audit } from "./audit";
 import { notify } from "./notify";
 import { readJson, writeJson } from "./json";
-import { todayKey } from "./dates";
-import { academicsCaller, departmentOfMember, hodDepartment, nameOf, namesOf, readCodes, readOutcomes, type Caller } from "./academics";
+import { isDateKey, todayKey } from "./dates";
+import { academicsCaller, departmentOfMember, headsDepartment, nameOf, namesOf, readCodes, readOutcomes, type Caller } from "./academics";
 import { ATTAINMENT_TARGET_PERCENT, attainmentLevel, combinedLevel, coverage, poAttainment, termElapsed } from "./academics-rules";
 import type { ActiveContext } from "./session";
 
@@ -87,7 +87,7 @@ async function fileAccess(c: Caller, offeringId: string) {
   if (!o) throw new AccessError("access.entryNotFound", "NOT_FOUND");
   const dept = o.course.scheme.programme.departmentId;
   const isFaculty = o.facultyMembershipId === c.membershipId;
-  const isHod = c.role === "HOD" && (await hodDepartment(c))?.id === dept;
+  const isHod = c.role === "HOD" && (await headsDepartment(c, dept));
   let canRead = isFaculty || isHod || c.role === "ADMIN" || c.role === "PRINCIPAL";
   if (!canRead && (c.role === "FACULTY" || c.role === "HOD")) canRead = (await departmentOfMember(c.schoolId, c.membershipId)) === dept;
   if (!canRead && c.role === "STUDENT") canRead = Boolean(await db.courseRegistration.findFirst({ where: { offeringId, studentMembershipId: c.membershipId, status: "REGISTERED" }, select: { id: true } }));
@@ -137,6 +137,9 @@ export async function saveCoursePlan(ctx: ActiveContext, offeringId: string, inp
   const c = await academicsCaller(ctx, ["FACULTY", "HOD"]);
   const { o, isFaculty, isHod } = await fileAccess(c, offeringId);
   if (!isFaculty && !isHod) throw new AccessError("academics.refuseNotYours");
+  // Every week as the reader keeps it (TA-062): one readPlan would drop is refused here, whoever the caller, rather than stored and lost.
+  const bad = input.plan.find((w) => !coursePlanWeekSchema.safeParse(w).success || (w.taughtOn !== null && !isDateKey(w.taughtOn)));
+  if (bad) throw new RuleRefusal("academics.refusePlanWeek", 422, { week: String(bad.week) }, "plan");
   const cos = new Set(readOutcomes(o.course.outcomes).map((x) => x.code));
   const stray = input.plan.flatMap((w) => w.coCodes).find((code) => !cos.has(code));
   if (stray) throw new RuleRefusal("academics.refuseUnknownOutcome", 422, { code: stray }, "plan");

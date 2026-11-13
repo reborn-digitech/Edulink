@@ -1,6 +1,6 @@
 "use server";
 
-import { courseFileItemSaveSchema, internalComponentSaveSchema, lectureMarkSaveSchema, mentoringGroupSaveSchema, mentoringNoteSaveSchema } from "@edulink/contracts";
+import { courseFileItemSaveSchema, coursePlanWeekSchema, internalComponentSaveSchema, lectureMarkSaveSchema, mentoringGroupSaveSchema, mentoringNoteSaveSchema } from "@edulink/contracts";
 import { requireApiUser } from "@/lib/tenancy";
 import { field, intField, runAction } from "@/lib/module-actions";
 import { RuleRefusal } from "@/lib/rule-refusal";
@@ -53,6 +53,8 @@ export async function saveMarksAction(previous: FormState, form: FormData): Prom
     const sheet = field(form, "sheet");
     if (sheet) {
       const r = await saveInternalMarks(ctx, field(form, "offeringId"), { componentId: field(form, "componentId"), sheet });
+      // A roll number two divisions share is said as such (TA-055): the student code names one student.
+      if (r.skipped.some((s) => s.reason === "AMBIGUOUS_STUDENT")) throw new RuleRefusal("academics.sheetAmbiguous", 422, { saved: r.saved, skipped: r.skipped.length }, "sheet");
       if (r.skipped.length) throw new RuleRefusal("academics.sheetSkipped", 422, { saved: r.saved, skipped: r.skipped.length }, "sheet");
       return "academics.marksSaved";
     }
@@ -102,7 +104,13 @@ export async function savePlanAction(form: FormData): Promise<void> {
       .map((l) => {
         const [week = "", topic = "", cos = "", taught = ""] = l.split("|").map((x) => x.trim());
         if (!/^\d{1,2}$/.test(week) || !topic) throw new RuleRefusal("academics.refusePlanLine", 422, { line: l.slice(0, 40) });
-        return { week: Number(week), topic, coCodes: cos.split(/[\s,]+/).map((x) => x.toUpperCase()).filter(Boolean), taughtOn: taught || null };
+        // A taught day written the way days are written here (15/07/2026) is read as that day (TA-062).
+        const dmy = /^(\d{1,2})[/.-](\d{1,2})[/.-](\d{4})$/.exec(taught);
+        const taughtOn = dmy ? `${dmy[3]}-${dmy[2]!.padStart(2, "0")}-${dmy[1]!.padStart(2, "0")}` : taught || null;
+        const parsed = coursePlanWeekSchema.safeParse({ week: Number(week), topic, coCodes: cos.split(/[\s,]+/).map((x) => x.toUpperCase()).filter(Boolean), taughtOn });
+        // Held to the door's contract (TA-062): a week the reader would drop is refused here, naming its line.
+        if (!parsed.success) throw new RuleRefusal("academics.refusePlanWeek", 422, { week });
+        return parsed.data;
       });
     await saveCoursePlan(await requireApiUser(), field(form, "offeringId"), { plan });
     return "academics.planSaved";

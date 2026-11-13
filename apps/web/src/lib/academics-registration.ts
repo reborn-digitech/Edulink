@@ -95,7 +95,7 @@ async function viewFor(c: Caller, subject: Subject, termId?: string): Promise<Re
 async function availableOfferings(schoolId: string, termId: string, schemeId: string, semester: number, divisionId: string | null) {
   return db.courseOffering.findMany({
     where: { schoolId, termId, course: { schemeId, semester }, OR: [{ divisionId: null }, ...(divisionId ? [{ divisionId }] : [])] },
-    select: { id: true, divisionId: true, facultyMembershipId: true, capacity: true, course: { select: { code: true, name: true, kind: true, creditsL: true, creditsT: true, creditsP: true } }, slots: { select: { weekday: true, periodId: true } }, _count: { select: { registrations: { where: { status: "REGISTERED" } } } } },
+    select: { id: true, divisionId: true, facultyMembershipId: true, capacity: true, course: { select: { code: true, name: true, kind: true, creditsL: true, creditsT: true, creditsP: true } }, slots: { select: { weekday: true, periodId: true, labBatchId: true } }, _count: { select: { registrations: { where: { status: "REGISTERED" } } } } },
     orderBy: [{ course: { kind: "asc" } }, { course: { code: "asc" } }],
   });
 }
@@ -137,9 +137,13 @@ export async function saveRegistration(ctx: ActiveContext, input: { termId: stri
   const credits = set.reduce((n, o) => n + creditsOf(o.course), 0);
   if (credits > rules.maxTermCredits) throw new RuleRefusal("academics.refuseOverCredits", 422, { credits, max: rules.maxTermCredits }, "offeringIds");
   if (credits < rules.minTermCredits) throw new RuleRefusal("academics.refuseUnderCredits", 422, { credits, min: rules.minTermCredits }, "offeringIds");
+  // A lab hour of one batch is that batch's students' hour alone (TA-061): batch A and batch B of a division may sit
+  // two courses' labs at one hour, as the timetable allows, and only the student's own batch's hour can clash.
+  const batchSlots = set.some((o) => o.slots.some((s) => s.labBatchId));
+  const myBatches = batchSlots ? new Set((await db.labBatchMember.findMany({ where: { studentMembershipId: subject.membershipId, untilKey: null }, select: { batchId: true } })).map((b) => b.batchId)) : new Set<string>();
   const seen = new Map<string, string>();
   for (const o of set) {
-    for (const s of o.slots) {
+    for (const s of o.slots.filter((x) => !x.labBatchId || myBatches.has(x.labBatchId))) {
       const k = slotKey(s);
       const other = seen.get(k);
       if (other && other !== o.course.code) throw new RuleRefusal("academics.refuseClash", 409, { a: other, b: o.course.code }, "offeringIds");
@@ -210,7 +214,12 @@ export async function decideLateRegistration(ctx: ActiveContext, id: string, app
   if (row.status === status) return { changed: false };
   if (row.status !== "ASKED") throw new RuleRefusal("academics.refuseDecided", 409);
   const moved = await db.lateRegistration.updateMany({ where: { id, status: "ASKED" }, data: { status, decidedByUserId: c.userId, decidedAt: new Date() } });
-  if (!moved.count) return { changed: false };
+  if (!moved.count) {
+    // Another decision landed between the read and the write (TA-541): the same one is the no-op it says; the other is refused.
+    const now = await db.lateRegistration.findFirst({ where: { id, schoolId: c.schoolId }, select: { status: true } });
+    if (now?.status === status) return { changed: false };
+    throw new RuleRefusal("academics.refuseDecided", 409);
+  }
   await audit({ schoolId: c.schoolId, actorUserId: c.userId, action: approve ? "academics.late.approve" : "academics.late.refuse", targetType: "LateRegistration", targetId: id });
   if (approve) await notify({ userId: row.student.userId, schoolId: c.schoolId, kind: "SYSTEM", titleKey: "academics.notifyLateOpenTitle", bodyKey: "academics.notifyLateOpenBody", bodyVars: { term: row.term.name, until: row.openUntil }, url: "/student/registration" });
   return { changed: true };

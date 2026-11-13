@@ -170,7 +170,18 @@ export function termView(t: { id: string; name: string; academicYear: string; st
 /** The department an HOD heads (by their HOD membership), or null. */
 export async function hodDepartment(c: Caller) {
   if (c.role !== "HOD") return null;
-  return db.department.findFirst({ where: { schoolId: c.schoolId, hodMembershipId: c.membershipId }, select: { id: true, code: true, name: true, condoneFloorPercent: true } });
+  return db.department.findFirst({ where: { schoolId: c.schoolId, hodMembershipId: c.membershipId }, orderBy: { code: "asc" }, select: { id: true, code: true, name: true, condoneFloorPercent: true } });
+}
+
+/** Every department an HOD heads: one HOD may head two (TA-275), and acts in each. */
+export async function hodDepartments(c: Pick<Caller, "role" | "schoolId" | "membershipId">) {
+  if (c.role !== "HOD") return [];
+  return db.department.findMany({ where: { schoolId: c.schoolId, hodMembershipId: c.membershipId }, orderBy: { code: "asc" }, select: { id: true, code: true, name: true, condoneFloorPercent: true } });
+}
+
+/** Whether the caller is an HOD who heads this department (any of theirs, TA-275). */
+export async function headsDepartment(c: Pick<Caller, "role" | "schoolId" | "membershipId">, departmentId: string): Promise<boolean> {
+  return (await hodDepartments(c)).some((d) => d.id === departmentId);
 }
 
 /** A teaching member's department: the one they head, else the one they belong to. */
@@ -204,8 +215,10 @@ async function refuseTaken<T>(work: () => Promise<T>): Promise<T> {
 export async function saveDepartment(ctx: ActiveContext, input: z.infer<typeof departmentSaveSchema>): Promise<{ id: string }> {
   const c = await academicsCaller(ctx, ["ADMIN"]);
   if (input.hodMembershipId) {
-    const m = await db.membership.findFirst({ where: { id: input.hodMembershipId, schoolId: c.schoolId, role: { in: ["FACULTY", "HOD"] }, status: "ACTIVE" }, select: { id: true } });
+    const m = await db.membership.findFirst({ where: { id: input.hodMembershipId, schoolId: c.schoolId, role: { in: ["FACULTY", "HOD"] }, status: "ACTIVE" }, select: { id: true, role: true } });
     if (!m) throw new RuleRefusal("academics.refuseNotFaculty", 422, undefined, "hodMembershipId");
+    // A head acts through the HOD role alone (condonations, release, lock): a FACULTY head could do none of it (TA-275).
+    if (m.role !== "HOD") throw new RuleRefusal("academics.refuseHeadNotHod", 422, undefined, "hodMembershipId");
   }
   const data = { code: input.code.toUpperCase(), name: input.name, hodMembershipId: input.hodMembershipId, condoneFloorPercent: input.condoneFloorPercent };
   const row = await refuseTaken(async () => {
@@ -277,7 +290,7 @@ export async function saveProgrammeOutcomes(ctx: ActiveContext, input: z.infer<t
   const c = await academicsCaller(ctx, ["ADMIN", "HOD"]);
   const p = await db.programme.findFirst({ where: { id: input.programmeId, schoolId: c.schoolId }, select: { id: true, departmentId: true } });
   if (!p) throw new AccessError("access.entryNotFound", "NOT_FOUND");
-  if (c.role === "HOD" && (await hodDepartment(c))?.id !== p.departmentId) throw new AccessError("academics.refuseOtherDepartment");
+  if (c.role === "HOD" && !(await headsDepartment(c, p.departmentId))) throw new AccessError("academics.refuseOtherDepartment");
   const codes = input.outcomes.map((o) => o.code);
   if (new Set(codes).size !== codes.length) throw new RuleRefusal("academics.refuseDuplicateOutcome", 422, undefined, "outcomes");
   await db.$tenantTransaction(async (raw) => {
@@ -338,7 +351,7 @@ export async function saveCourseMapping(ctx: ActiveContext, courseId: string, in
   const c = await academicsCaller(ctx, ["ADMIN", "HOD", "FACULTY"]);
   const course = await db.course.findFirst({ where: { id: courseId, schoolId: c.schoolId }, select: { id: true, outcomes: true, scheme: { select: { programmeId: true, programme: { select: { departmentId: true } } } } } });
   if (!course) throw new AccessError("access.entryNotFound", "NOT_FOUND");
-  if (c.role === "HOD" && (await hodDepartment(c))?.id !== course.scheme.programme.departmentId) throw new AccessError("academics.refuseOtherDepartment");
+  if (c.role === "HOD" && !(await headsDepartment(c, course.scheme.programme.departmentId))) throw new AccessError("academics.refuseOtherDepartment");
   if (c.role === "FACULTY" && !(await db.courseOffering.findFirst({ where: { courseId, facultyMembershipId: c.membershipId }, select: { id: true } }))) throw new AccessError("academics.refuseNotYours");
   const cos = new Set(readOutcomes(course.outcomes).map((o) => o.code));
   const pos = new Set((await db.programmeOutcome.findMany({ where: { programmeId: course.scheme.programmeId }, select: { code: true } })).map((p) => p.code));
@@ -495,9 +508,11 @@ export async function saveSeat(ctx: ActiveContext, input: z.infer<typeof seatSav
   const division = input.divisionId ? await db.division.findFirst({ where: { id: input.divisionId, schoolId: c.schoolId, programmeId: input.programmeId }, select: { id: true, classId: true } }) : null;
   if (input.divisionId && !division) throw new RuleRefusal("academics.refuseUnknownDivision", 422, undefined, "divisionId");
   if (input.prn) {
+    // Compared case-folded, as the university's result file is matched (TA-531): zzv2026001 is ZZV2026001's PRN.
+    const prnLike = { equals: input.prn, mode: "insensitive" as const };
     const [taken, takenOnRecord] = await Promise.all([
-      db.studentProgramme.findFirst({ where: { schoolId: c.schoolId, prn: input.prn, NOT: { studentMembershipId: input.studentMembershipId } }, select: { id: true } }),
-      db.pupilRecord.findFirst({ where: { schoolId: c.schoolId, prn: input.prn, NOT: { studentMembershipId: input.studentMembershipId } }, select: { id: true } }),
+      db.studentProgramme.findFirst({ where: { schoolId: c.schoolId, prn: prnLike, NOT: { studentMembershipId: input.studentMembershipId } }, select: { id: true } }),
+      db.pupilRecord.findFirst({ where: { schoolId: c.schoolId, prn: prnLike, NOT: { studentMembershipId: input.studentMembershipId } }, select: { id: true } }),
     ]);
     if (taken || takenOnRecord) throw new RuleRefusal("academics.refusePrnTaken", 409, undefined, "prn");
   }
@@ -632,7 +647,7 @@ export async function saveOffering(ctx: ActiveContext, input: z.infer<typeof off
   ]);
   if (!term) throw new RuleRefusal("academics.refuseUnknownTerm", 422, undefined, "termId");
   if (!course) throw new RuleRefusal("academics.refuseUnknownCourse", 422, undefined, "courseId");
-  if (c.role === "HOD" && (await hodDepartment(c))?.id !== course.scheme.programme.departmentId) throw new AccessError("academics.refuseOtherDepartment");
+  if (c.role === "HOD" && !(await headsDepartment(c, course.scheme.programme.departmentId))) throw new AccessError("academics.refuseOtherDepartment");
   if (input.divisionId) {
     const d = await db.division.findFirst({ where: { id: input.divisionId, schoolId: c.schoolId, programmeId: course.scheme.programmeId }, select: { id: true } });
     if (!d) throw new RuleRefusal("academics.refuseUnknownDivision", 422, undefined, "divisionId");
@@ -650,7 +665,7 @@ export async function saveOffering(ctx: ActiveContext, input: z.infer<typeof off
       if (!existing) throw new AccessError("access.entryNotFound", "NOT_FOUND");
       // The offering being rewritten must be the HOD's department's too, not only the course it is
       // pointed at: otherwise another department's offering, its marks and lectures, change hands (campaign S-7).
-      if (c.role === "HOD" && (await hodDepartment(c))?.id !== existing.course.scheme.programme.departmentId) throw new AccessError("academics.refuseOtherDepartment");
+      if (c.role === "HOD" && !(await headsDepartment(c, existing.course.scheme.programme.departmentId))) throw new AccessError("academics.refuseOtherDepartment");
       before = { facultyMembershipId: existing.facultyMembershipId };
       if (await db.internalLock.findUnique({ where: { offeringId: input.id }, select: { id: true } })) throw new RuleRefusal("academics.refuseLocked", 409);
       return db.courseOffering.update({ where: { id: input.id }, data, select: { id: true } });
@@ -796,6 +811,8 @@ export async function saveTimetableSlot(ctx: ActiveContext, input: z.infer<typeo
     update: { kind: input.kind, roomId: input.roomId, labBatchId },
     select: { id: true },
   });
+  // An hour edited in place keeps its id (TA-057): its unmarked lectures from today on take the new kind, room and batch.
+  await db.lecture.updateMany({ where: { schoolId: c.schoolId, slotId: row.id, dateKey: { gte: todayKey(c.timeZone) }, attendance: { none: {} } }, data: { kind: input.kind, roomId: input.roomId, labBatchId } });
   await audit({ schoolId: c.schoolId, actorUserId: c.userId, action: "academics.timetable.slot", targetType: "OfferingSlot", targetId: row.id, meta: { course: offering.course.code, weekday: input.weekday, periodId: input.periodId } });
   return row;
 }
@@ -803,6 +820,9 @@ export async function saveTimetableSlot(ctx: ActiveContext, input: z.infer<typeo
 export async function removeTimetableSlot(ctx: ActiveContext, slotId: string): Promise<{ changed: boolean }> {
   const c = await academicsCaller(ctx, ["ADMIN"]);
   const gone = await db.offeringSlot.deleteMany({ where: { id: slotId, schoolId: c.schoolId } });
+  // The hour's lectures already made for today and later go with it while nobody has marked them (TA-057): a
+  // board opened ahead made them, and they would stand beside the hour that replaces it. A marked one was taught.
+  if (gone.count) await db.lecture.deleteMany({ where: { schoolId: c.schoolId, slotId, dateKey: { gte: todayKey(c.timeZone) }, attendance: { none: {} } } });
   if (gone.count) await audit({ schoolId: c.schoolId, actorUserId: c.userId, action: "academics.timetable.remove", targetType: "OfferingSlot", targetId: slotId });
   return { changed: gone.count > 0 };
 }
@@ -833,9 +853,13 @@ export async function ensureLecturesForDay(schoolId: string, dateKey: string, of
     select: { id: true, offeringId: true, kind: true, roomId: true, periodId: true, labBatchId: true },
   });
   if (!slots.length) return { closed: false };
+  // A day already past keeps the lectures it was given (TA-057): an offering that has any lecture that day is not
+  // given more from a timetable changed since; one nobody opened that day is made from the timetable as it stands.
+  const tz = (await db.school.findUniqueOrThrow({ where: { id: schoolId }, select: { timezone: true } })).timezone;
+  const held = dateKey < todayKey(tz) ? new Set((await db.lecture.findMany({ where: { schoolId, dateKey, offeringId: { in: [...new Set(slots.map((s) => s.offeringId))] } }, select: { offeringId: true }, distinct: ["offeringId"] })).map((l) => l.offeringId)) : new Set<string>();
   const periods = new Map((await db.timetablePeriod.findMany({ where: { id: { in: [...new Set(slots.map((s) => s.periodId))] } }, select: { id: true, startMinute: true, endMinute: true } })).map((p) => [p.id, p]));
   await db.lecture.createMany({
-    data: slots.filter((s) => periods.has(s.periodId)).map((s) => ({ schoolId, offeringId: s.offeringId, slotId: s.id, dateKey, startMinute: periods.get(s.periodId)!.startMinute, endMinute: periods.get(s.periodId)!.endMinute, kind: s.kind, roomId: s.roomId, labBatchId: s.labBatchId })),
+    data: slots.filter((s) => periods.has(s.periodId) && !held.has(s.offeringId)).map((s) => ({ schoolId, offeringId: s.offeringId, slotId: s.id, dateKey, startMinute: periods.get(s.periodId)!.startMinute, endMinute: periods.get(s.periodId)!.endMinute, kind: s.kind, roomId: s.roomId, labBatchId: s.labBatchId })),
     skipDuplicates: true,
   });
   return { closed: false };
@@ -896,7 +920,7 @@ export async function setLectureSubstitute(ctx: ActiveContext, input: { lectureI
   const c = await academicsCaller(ctx, ["ADMIN", "HOD"]);
   const lecture = await db.lecture.findFirst({ where: { id: input.lectureId, schoolId: c.schoolId }, select: { id: true, dateKey: true, startMinute: true, endMinute: true, substituteMembershipId: true, offering: { select: { facultyMembershipId: true, course: { select: { code: true, name: true, scheme: { select: { programme: { select: { departmentId: true } } } } } } } } } });
   if (!lecture) throw new AccessError("access.entryNotFound", "NOT_FOUND");
-  if (c.role === "HOD" && (await hodDepartment(c))?.id !== lecture.offering.course.scheme.programme.departmentId) throw new AccessError("academics.refuseOtherDepartment");
+  if (c.role === "HOD" && !(await headsDepartment(c, lecture.offering.course.scheme.programme.departmentId))) throw new AccessError("academics.refuseOtherDepartment");
   if (lecture.substituteMembershipId === input.substituteMembershipId) return { changed: false };
   if (input.substituteMembershipId) {
     const s = await db.membership.findFirst({ where: { id: input.substituteMembershipId, schoolId: c.schoolId, role: { in: ["FACULTY", "HOD"] }, status: "ACTIVE" }, select: { id: true, userId: true } });

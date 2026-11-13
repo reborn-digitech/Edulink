@@ -200,12 +200,18 @@ export async function importMarks(ctx: ActiveContext, sessionId: string, textIn:
   const forms = await db.examForm.findMany({ where: { sessionId: s.id, status: "APPROVED" }, select: { studentMembershipId: true, coursesJson: true, student: { select: { studentCode: true } }, ticket: { select: { number: true } } } });
   const ids = await studentIdsOf(cell.schoolId, forms.map((f) => f.studentMembershipId));
   const byKey = new Map<string, (typeof forms)[number]>();
+  // Two forms whose PRNs fold to one key (zzv2026001 and ZZV2026001, or one PRN entered twice) name nobody (TA-531):
+  // their rows are left unmatched rather than all landing on the later form.
+  const twice = new Set<string>();
   for (const f of forms) {
     const prn = ids.get(f.studentMembershipId)?.prn;
-    if (prn) byKey.set(`P:${prn.toUpperCase()}`, f);
+    const pKey = prn ? `P:${prn.toUpperCase()}` : null;
+    if (pKey && byKey.has(pKey) && byKey.get(pKey)!.studentMembershipId !== f.studentMembershipId) twice.add(pKey);
+    if (pKey) byKey.set(pKey, f);
     if (f.ticket) byKey.set(`S:${f.ticket.number.toUpperCase()}`, f);
     if (f.student.studentCode) byKey.set(`S:${f.student.studentCode.toUpperCase()}`, f);
   }
+  for (const k of twice) byKey.delete(k);
   const courses = await coursesOf(cell.schoolId, forms.flatMap((f) => formCourses(f.coursesJson).map((c) => c.courseId)));
   const byCode = new Map([...courses.values()].map((c) => [c.code.toUpperCase(), c]));
   const published = await everPublished(s.id);
