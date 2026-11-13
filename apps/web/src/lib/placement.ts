@@ -30,7 +30,7 @@ import { assertModuleOn, institutionKindOf, isModuleOn } from "./modules";
 import { isCollegeKind } from "./institution";
 import { forPlacementDirectory, forSchool, forTenant } from "./tenant-context";
 import { readJson, writeJson } from "./json";
-import { todayKey } from "./dates";
+import { dateKeyInZone, isDateKey, todayKey } from "./dates";
 import { EMPTY_RECORD, placementRecords } from "./placement-record";
 import { softSkillsCompletions } from "./soft-skills-count";
 import { applicationStatus, evaluateEligibility, lakhOf, offerNeedsConfirm, seasonBatchFor } from "./placement-rules";
@@ -143,10 +143,10 @@ export function readRule(raw: string | null | undefined): EligibilityRule {
   return parsed.success ? parsed.data : eligibilityRuleSchema.parse({});
 }
 
-/** The students on a college's roll now. */
-export async function rollOf(schoolId: string): Promise<{ id: string; userId: string; name: string }[]> {
+/** The students on a college's roll now; `onlyIds`, those of them alone (TA-315: one student's page read the whole roll). */
+export async function rollOf(schoolId: string, onlyIds?: readonly string[]): Promise<{ id: string; userId: string; name: string }[]> {
   const rows = await db.membership.findMany({
-    where: { schoolId, role: "STUDENT", status: "ACTIVE", leftAt: null },
+    where: { schoolId, role: "STUDENT", status: "ACTIVE", leftAt: null, ...(onlyIds ? { id: { in: [...onlyIds] } } : {}) },
     select: { id: true, userId: true, user: { select: { name: true, preferredName: true } } },
     orderBy: { user: { name: "asc" } },
   });
@@ -183,15 +183,22 @@ function seesDrive(d: { schoolId: string; kind: string; status: string; poolScho
  * binding and returns a number.
  */
 export async function eligibilityAt(drive: { id: string; eligibilityRule: string; packageMaxRupees: number }, schoolId: string, onlyIds?: readonly string[]) {
-  const [roll, settings] = await Promise.all([rollOf(schoolId), placementSettings(schoolId)]);
-  const students = onlyIds ? roll.filter((r) => onlyIds.includes(r.id)) : roll;
+  return eligibilityOf(await eligibilityInputs(schoolId, onlyIds), drive);
+}
+
+/** What eligibility is computed from, read once for any number of drives (TA-315): the students, the settings, their records, profiles and accepted offers. */
+async function eligibilityInputs(schoolId: string, onlyIds?: readonly string[]) {
+  const [students, settings] = await Promise.all([rollOf(schoolId, onlyIds), placementSettings(schoolId)]);
   const ids = students.map((s) => s.id);
   const [records, profiles, accepted] = await Promise.all([
     placementRecords(schoolId, ids, todayKey(await zoneOf(schoolId))),
     db.placementProfile.findMany({ where: { schoolId, studentMembershipId: { in: ids } }, select: { studentMembershipId: true, optedOut: true, dreamFlag: true } }),
     acceptedOffers(ids),
   ]);
-  const profileOf = new Map(profiles.map((p) => [p.studentMembershipId, p]));
+  return { students, settings, records, profileOf: new Map(profiles.map((p) => [p.studentMembershipId, p])), accepted };
+}
+
+function eligibilityOf({ students, settings, records, profileOf, accepted }: Awaited<ReturnType<typeof eligibilityInputs>>, drive: { eligibilityRule: string; packageMaxRupees: number }) {
   const rule = readRule(drive.eligibilityRule);
   return students.map((s) => {
     const record = records.get(s.id) ?? EMPTY_RECORD;
@@ -262,9 +269,9 @@ const OFFER_SELECT = { id: true, driveId: true, studentMembershipId: true, packa
  * them (a guest's own students; a recruiter's consented ones). Names come
  * from the account (`studentUserId`), the record from the frozen snapshot.
  */
-export async function applicationViews(driveId: string, filter: { schoolId?: string; consentedOnly?: boolean; sharedFeedbackOnly?: boolean } = {}): Promise<DriveApplicationView[]> {
+export async function applicationViews(driveId: string, filter: { schoolId?: string; consentedOnly?: boolean; sharedFeedbackOnly?: boolean; studentMembershipId?: string } = {}): Promise<DriveApplicationView[]> {
   const apps = await db.driveApplication.findMany({
-    where: { driveId, ...(filter.schoolId ? { schoolId: filter.schoolId } : {}), ...(filter.consentedOnly ? { consentAt: { not: null }, withdrawnAt: null } : {}) },
+    where: { driveId, ...(filter.schoolId ? { schoolId: filter.schoolId } : {}), ...(filter.studentMembershipId ? { studentMembershipId: filter.studentMembershipId } : {}), ...(filter.consentedOnly ? { consentAt: { not: null }, withdrawnAt: null } : {}) },
     orderBy: { appliedAt: "asc" },
   });
   if (apps.length === 0) return [];
@@ -423,16 +430,27 @@ export async function listCompanies(ctx: ActiveContext) {
 /** The cell adds a company: a registered one is linked rather than made twice (the identifier is unique across the platform). */
 export async function addCompany(ctx: ActiveContext, input: CompanySave) {
   const cell = await cellOf(ctx);
-  const existing = await db.company.findUnique({ where: { identifier: input.identifier }, select: { id: true } });
-  const id =
-    existing?.id ??
-    (
-      await db.company.create({
-        data: { name: input.name, identifier: input.identifier, sectors: writeJson(input.sectors), pointOfContact: input.pointOfContact, createdByUserId: cell.userId, createdBySchoolId: cell.schoolId },
-        select: { id: true },
-      })
-    ).id;
-  await db.companyTenantLink.upsert({ where: { schoolId_companyId: { schoolId: cell.schoolId, companyId: id } }, update: {}, create: { schoolId: cell.schoolId, companyId: id } });
+  let existing = await db.company.findUnique({ where: { identifier: input.identifier }, select: { id: true } });
+  let id = existing?.id;
+  if (!id) {
+    try {
+      id = (
+        await db.company.create({
+          data: { name: input.name, identifier: input.identifier, sectors: writeJson(input.sectors), pointOfContact: input.pointOfContact, createdByUserId: cell.userId, createdBySchoolId: cell.schoolId },
+          select: { id: true },
+        })
+      ).id;
+    } catch (error) {
+      // Another cell (or a second press) made it a moment ago (TA-573): the identifier's key refused this create, and the
+      // company that won is linked, as one found by the read above is.
+      if (!isUniqueClash(error)) throw error;
+      existing = await db.company.findUnique({ where: { identifier: input.identifier }, select: { id: true } });
+      if (!existing) throw error;
+      id = existing.id;
+    }
+  }
+  // ON CONFLICT DO NOTHING, as openDrive links: two presses at one college both found no link, and the second insert failed on the key.
+  await db.companyTenantLink.createMany({ data: [{ schoolId: cell.schoolId, companyId: id }], skipDuplicates: true });
   await audit({ schoolId: cell.schoolId, actorUserId: cell.userId, action: "placement.company.add", targetType: "Company", targetId: id, meta: { identifier: input.identifier, linked: Boolean(existing) } });
   return (await companyViews(cell.schoolId, { ids: [id] }))[0]!;
 }
@@ -525,12 +543,13 @@ export async function placementColleges(exceptSchoolId?: string | null): Promise
   return rows;
 }
 
-async function checkDriveInput(cell: Cell, input: Partial<DriveSave>, settings: PlacementSettings): Promise<void> {
+/** `kept`: the pool the drive already has, which an edit does not check again (TA-562: a guest that switched PLACEMENT off since must not hold the host's close). */
+async function checkDriveInput(cell: Cell, input: Partial<DriveSave>, settings: PlacementSettings, kept: readonly string[] = []): Promise<void> {
   if (input.packageMinRupees !== undefined && input.packageMaxRupees !== undefined && input.packageMaxRupees < input.packageMinRupees) throw new RuleRefusal("placement.refusePackageRange", 422, undefined, "packageMaxRupees");
   if (input.rule && input.rule.genders.length > 0 && !settings.allowGenderRule) throw new RuleRefusal("placement.refuseGenderRule", 422, undefined, "rule");
   if (input.rounds && input.rounds.some((r, i) => r.n !== i + 1)) throw new RuleRefusal("placement.refuseRoundOrder", 422, undefined, "rounds");
   if (input.kind === "POOLED" || (input.poolSchoolIds && input.poolSchoolIds.length > 0)) {
-    const allowed = new Set((await placementColleges(cell.schoolId)).map((c) => c.id));
+    const allowed = new Set([...(await placementColleges(cell.schoolId)).map((c) => c.id), ...kept]);
     if ((input.poolSchoolIds ?? []).some((id) => !allowed.has(id))) throw new RuleRefusal("placement.refusePoolSchool", 422, undefined, "poolSchoolIds");
   }
   if (input.kind === "POOLED" && (input.poolSchoolIds ?? []).length === 0) throw new RuleRefusal("placement.refusePoolEmpty", 422, undefined, "poolSchoolIds");
@@ -599,7 +618,7 @@ export async function updateDrive(ctx: ActiveContext, driveId: string, input: Dr
   if (d.status === "CLOSED") throw new RuleRefusal("placement.refuseClosed", 409);
   const settings = await placementSettings(cell.schoolId);
   const merged = { kind: input.kind ?? (d.kind as DriveSave["kind"]), poolSchoolIds: input.poolSchoolIds ?? poolIdsOf(d), packageMinRupees: input.packageMinRupees ?? d.packageMinRupees, packageMaxRupees: input.packageMaxRupees ?? d.packageMaxRupees, rule: input.rule, rounds: input.rounds };
-  await checkDriveInput(cell, merged, settings);
+  await checkDriveInput(cell, merged, settings, poolIdsOf(d));
   if (input.rule && !["DRAFT", "OPEN"].includes(d.status)) throw new RuleRefusal("placement.refuseRuleAfterOpen", 409, undefined, "rule");
   if (input.status && (ORDER.get(input.status)! < ORDER.get(d.status as DriveStatus)!)) throw new RuleRefusal("placement.refuseStatusBack", 409, undefined, "status");
   // The company is what every applicant consented to share with: it is checked as openDrive checks
@@ -786,8 +805,9 @@ export async function recordOffer(actor: DriveActor, input: { studentMembershipI
     dream = true;
   }
   const key = { driveId_studentMembershipId: { driveId: d.id, studentMembershipId: input.studentMembershipId } };
-  const existing = await db.offer.findUnique({ where: key, select: { id: true, acceptedAt: true, packageRupees: true, updatedAt: true } });
-  if (existing?.acceptedAt) throw new RuleRefusal("placement.refuseOfferAnswered", 409);
+  const existing = await db.offer.findUnique({ where: key, select: { id: true, acceptedAt: true, declinedAt: true, packageRupees: true, updatedAt: true } });
+  // A decline is an answer as an acceptance is (answerOffer): an edit would erase it (TA-312).
+  if (existing?.acceptedAt || existing?.declinedAt) throw new RuleRefusal("placement.refuseOfferAnswered", 409);
   // From the phone, an upload ticket of the actor's, spent here; from the web page, a file its own action has just stored.
   const letterFileId = opts.storedFileId ?? (await spendTicket(actor.userId, input.letterFileId, "letterFileId"));
   // ONE OFFER PER DRIVE AND CANDIDATE, WHICH THE COMPANY MAY CORRECT UNTIL IT IS ANSWERED (QA-33). Two recruiters of
@@ -804,7 +824,7 @@ export async function recordOffer(actor: DriveActor, input: { studentMembershipI
         if (!existing) {
           o = await tx.offer.create({ data: { schoolId: d.schoolId, driveId: d.id, studentMembershipId: input.studentMembershipId, packageRupees: input.packageRupees, letterFileId, dreamException: dream, byUserId: actor.userId }, select: OFFER_SELECT });
         } else {
-          const changed = await tx.offer.updateMany({ where: { id: existing.id, updatedAt: existing.updatedAt, acceptedAt: null }, data: { packageRupees: input.packageRupees, ...(letterFileId ? { letterFileId } : {}), dreamException: dream, declinedAt: null, byUserId: actor.userId } });
+          const changed = await tx.offer.updateMany({ where: { id: existing.id, updatedAt: existing.updatedAt, acceptedAt: null, declinedAt: null }, data: { packageRupees: input.packageRupees, ...(letterFileId ? { letterFileId } : {}), dreamException: dream, byUserId: actor.userId } });
           if (changed.count !== 1) throw new OfferChangedMeanwhile();
           o = await tx.offer.findUniqueOrThrow({ where: { id: existing.id }, select: OFFER_SELECT });
         }
@@ -816,8 +836,8 @@ export async function recordOffer(actor: DriveActor, input: { studentMembershipI
     if (!(error instanceof OfferChangedMeanwhile) && !isUniqueClash(error)) throw error;
     // The phone's letter goes back to its ticket, so the recorder can send it again with the corrected figure.
     if (!opts.storedFileId && letterFileId) await db.uploadTicket.updateMany({ where: { fileId: letterFileId, userId: actor.userId }, data: { consumedAt: null } });
-    const stands = await forSchool(d.schoolId, () => db.offer.findUnique({ where: key, select: { packageRupees: true, acceptedAt: true } }));
-    if (stands?.acceptedAt) throw new RuleRefusal("placement.refuseOfferAnswered", 409);
+    const stands = await forSchool(d.schoolId, () => db.offer.findUnique({ where: key, select: { packageRupees: true, acceptedAt: true, declinedAt: true } }));
+    if (stands?.acceptedAt || stands?.declinedAt) throw new RuleRefusal("placement.refuseOfferAnswered", 409);
     throw new RuleRefusal("placement.refuseOfferChangedMeanwhile", 409, { offer: lakhOf(stands?.packageRupees ?? 0) }, "packageRupees");
   }
   await forSchool(app.schoolId, () => notify({ userId: app.studentUserId, schoolId: app.schoolId, kind: "SYSTEM", titleKey: "placement.notifOffer", titleVars: { company: d.company.name, title: d.title }, url: "/student/placement" })).catch((error) => console.error("[placement] offer notice failed", error));
@@ -832,7 +852,12 @@ export async function recordJoined(actor: DriveActor, offerId: string, joinedOn:
   const d = actor.drive;
   const o = await db.offer.findFirst({ where: { id: offerId, driveId: d.id }, select: OFFER_SELECT });
   if (!o) throw new AccessError("placement.noSuchOffer", "NOT_FOUND");
-  if (!o.acceptedAt) throw new RuleRefusal("placement.refuseJoinNotAccepted", 409);
+  // An acceptance the student later gave up for a dream offer (answerOffer stamps it declined) stands no more (TA-313).
+  if (!o.acceptedAt || o.declinedAt) throw new RuleRefusal("placement.refuseJoinNotAccepted", 409);
+  // A real calendar day, not before the offer was made and not after today by the college's clock, whichever door
+  // (TA-313). The offer's day rather than the acceptance's: a student may press Accept in the app after the fact.
+  const zone = await zoneOf(d.schoolId);
+  if (!isDateKey(joinedOn) || joinedOn < dateKeyInZone(o.createdAt, zone) || joinedOn > todayKey(zone)) throw new RuleRefusal("placement.refuseJoinedDate", 422, undefined, "joinedOn");
   const at = new Date(`${joinedOn}T00:00:00Z`);
   const row = await forSchool(d.schoolId, () => db.offer.update({ where: { id: offerId }, data: { joinedAt: at }, select: OFFER_SELECT }));
   await forSchool(d.schoolId, () => audit({ schoolId: d.schoolId, actorUserId: actor.userId, action: "placement.offer.joined", targetType: "Offer", targetId: offerId, meta: { joinedOn, via: actor.via } }));
@@ -978,7 +1003,8 @@ export async function applyToDrive(ctx: ActiveContext, driveId: string): Promise
   if (minor) {
     await notifyGuardians(me.membershipId, (name) => ({ schoolId: me.schoolId, kind: "SYSTEM", titleKey: "placement.notifGuardianConsentAsk", titleVars: { name, drive: d.title }, url: `/parent/placement?child=${me.membershipId}` })).catch((error) => console.error("[placement] consent notice failed", error));
   }
-  return (await applicationViews(driveId, { schoolId: me.schoolId })).find((a) => a.id === app.id)!;
+  // The student's own answer: a round's feedback the recorder did not share stays back (TA-086), as on the student's page.
+  return (await applicationViews(driveId, { schoolId: me.schoolId, sharedFeedbackOnly: true })).find((a) => a.id === app.id)!;
 }
 
 /** Withdrawing ends the consent: the company reads the application no more (the policy says so too). Refused once an offer is made. */
@@ -992,7 +1018,7 @@ export async function withdrawApplication(ctx: ActiveContext, driveId: string): 
     await db.driveApplication.update({ where: { id: app.id }, data: { withdrawnAt: new Date() } });
     await audit({ schoolId: me.schoolId, actorUserId: me.userId, action: "placement.withdraw", targetType: "DriveApplication", targetId: app.id, meta: { driveId } });
   }
-  return (await applicationViews(driveId, { schoolId: me.schoolId })).find((a) => a.id === app.id)!;
+  return (await applicationViews(driveId, { schoolId: me.schoolId, sharedFeedbackOnly: true })).find((a) => a.id === app.id)!;
 }
 
 /**
@@ -1041,10 +1067,14 @@ export async function answerOffer(ctx: ActiveContext, offerId: string, accept: b
 export async function studentDrives(me: { schoolId: string; membershipId: string }) {
   const rows = (await visibleDrives(me.schoolId)).filter((d) => d.status !== "DRAFT");
   const list = await summaries(rows, me.schoolId);
+  // The student's own record read once, and their own applications named in one query (TA-315): before, every drive
+  // read the college's whole roll and every application to it.
+  const inputs = await eligibilityInputs(me.schoolId, [me.membershipId]);
+  const applied = new Set((await db.driveApplication.findMany({ where: { schoolId: me.schoolId, studentMembershipId: me.membershipId, driveId: { in: rows.map((d) => d.id) } }, select: { driveId: true } })).map((a) => a.driveId));
   const out = [];
   for (const d of rows) {
-    const [e] = await eligibilityAt(d, me.schoolId, [me.membershipId]);
-    const app = (await applicationViews(d.id, { schoolId: me.schoolId, sharedFeedbackOnly: true })).find((a) => a.studentMembershipId === me.membershipId) ?? null;
+    const [e] = eligibilityOf(inputs, d);
+    const app = applied.has(d.id) ? ((await applicationViews(d.id, { schoolId: me.schoolId, studentMembershipId: me.membershipId, sharedFeedbackOnly: true }))[0] ?? null) : null;
     out.push({
       drive: { ...list.find((s) => s.id === d.id)!, jd: d.jd, bond: d.bond, venues: d.venues, rounds: readRounds(d.rounds), schedule: readSchedule(d.schedule) },
       eligible: e?.eligible ?? false,

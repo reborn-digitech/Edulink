@@ -10,9 +10,11 @@ import {
   companySaveSchema,
   driveSaveSchema,
   driveUpdateSchema,
+  internshipDecideSchema,
   internshipDiarySchema,
   internshipEvaluateSchema,
   internshipProposeSchema,
+  offerJoinedSchema,
   offerSaveSchema,
   placementProfileSaveSchema,
   placementSettingsSchema,
@@ -21,6 +23,7 @@ import {
   recruiterFeedbackSchema,
   requirementSaveSchema,
   roundResultsSaveSchema,
+  seasonPublishSchema,
   type DriveStatus,
 } from "@edulink/contracts";
 import { AccessError, requireApiUser } from "@/lib/tenancy";
@@ -291,7 +294,8 @@ export async function joinedAction(previous: FormState, formData: FormData): Pro
   return run(previous, formData, async (ctx) => {
     const offerId = str(formData, "offerId");
     const actor = ctx.role === "RECRUITER" ? await recruiterActorForOffer(ctx, offerId) : await cellActorForOffer(ctx, offerId);
-    await recordJoined(actor, offerId, str(formData, "joinedOn"));
+    // The door's schema, as the other forms here (TA-314); the library holds the day itself (TA-313).
+    await recordJoined(actor, offerId, parsed(offerJoinedSchema.safeParse({ joinedOn: str(formData, "joinedOn") })).joinedOn);
     return "placement.joinedRecorded";
   });
 }
@@ -306,7 +310,7 @@ export async function dreamAction(previous: FormState, formData: FormData): Prom
 
 export async function publishSeasonAction(previous: FormState, formData: FormData): Promise<FormState> {
   return run(previous, formData, async (ctx) => {
-    const s = await publishSeason(ctx, num(formData, "batchYear") ?? NaN);
+    const s = await publishSeason(ctx, parsed(seasonPublishSchema.safeParse({ batchYear: num(formData, "batchYear") })).batchYear);
     return { key: "placement.seasonPublished", vars: { batch: s.batchYear } };
   });
 }
@@ -316,7 +320,7 @@ export async function publishSeasonAction(previous: FormState, formData: FormDat
 export async function decideInternshipAction(previous: FormState, formData: FormData): Promise<FormState> {
   return run(previous, formData, async (ctx) => {
     const approve = str(formData, "approve") === "1";
-    await decideInternship(ctx, str(formData, "internshipId"), { approve, facultyMembershipId: str(formData, "facultyMembershipId") || null, reason: str(formData, "reason") });
+    await decideInternship(ctx, str(formData, "internshipId"), parsed(internshipDecideSchema.safeParse({ approve, facultyMembershipId: str(formData, "facultyMembershipId") || null, reason: str(formData, "reason") })));
     return approve ? "placement.internshipApproved" : "placement.internshipRefused";
   });
 }

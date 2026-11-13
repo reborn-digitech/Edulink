@@ -92,7 +92,7 @@ beforeAll(async () => {
   // QA-33 and QA-48: a drive at OFFERS, s1 and s2 applied (consented), s3 applied with an offer accepted.
   id.offersDrive = await liveDrive("ZZ Offers drive", "OFFERS");
   for (const key of ["s1", "s2", "s3", "s4"]) await applied(id.offersDrive, key);
-  id.s3Offer = (await db.offer.create({ data: { schoolId: c, driveId: id.offersDrive, studentMembershipId: id.s3!, packageRupees: 650_000, byUserId: id.r1!, acceptedAt: new Date() }, select: { id: true } })).id;
+  id.s3Offer = (await db.offer.create({ data: { schoolId: c, driveId: id.offersDrive, studentMembershipId: id.s3!, packageRupees: 650_000, byUserId: id.r1!, acceptedAt: new Date("2026-10-16T06:00:00Z"), createdAt: new Date("2026-10-15T06:00:00Z") }, select: { id: true } })).id;
 });
 
 afterAll(async () => {

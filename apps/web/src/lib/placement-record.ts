@@ -11,7 +11,8 @@ import { attendedOf, percentOf } from "./academics-rules";
  *   cgpa          the exam cell's CourseResult rows of PUBLISHED result runs,
  *                 each course at its latest result (`cgpaHundredths`, the
  *                 exams module's own rule), on ten
- *   liveBacklogs  the exam cell's Backlog rows still OPEN
+ *   liveBacklogs  the exam cell's Backlog rows still OPEN; null (unknown) for
+ *                 a student with no published result and no backlog row
  *   attendancePct the academics module's lecture register over the term in
  *                 progress (or the last one), every course together
  *   programme     the academics module's seat (StudentProgramme), and the
@@ -84,7 +85,8 @@ export async function placementRecords(schoolId: string, studentMembershipIds: r
     const gender = rec?.gender && ["M", "F", "T"].includes(rec.gender) ? (rec.gender as "M" | "F" | "T") : null;
     out.set(id, {
       cgpa: cgpa === null ? null : cgpa / 100,
-      liveBacklogs: backlogCount.get(id) ?? 0,
+      // No published result and no backlog row is no exam record, not "none open" (TA-087): unknown, which no rule passes.
+      liveBacklogs: rows.length === 0 && !backlogCount.has(id) ? null : (backlogCount.get(id) ?? 0),
       attendancePct: att ? percentOf(att.attended, att.held) : null,
       programmeId: seat?.programmeId ?? enrol?.programmeId ?? null,
       programmeName: seat?.programme.name ?? null,
@@ -102,13 +104,24 @@ export const EMPTY_RECORD: PlacementRecord = { cgpa: null, liveBacklogs: null, a
 /**
  * The students of one batch (the year of passing) at a college, as STUDENT
  * membership ids whether or not they are still on the roll: those whose
- * seat's year of entry plus the programme's duration is the batch, and —
+ * seat's year of entry plus the programme's duration is the batch and who
+ * reached its final year without leaving (TA-089), and —
  * for a college that kept no seat for them — those who left in that year
  * and hold an ALUMNUS row. N in NBA's placement index.
  */
 export async function batchStudents(schoolId: string, batchYear: number): Promise<{ id: string; programmeId: string | null; programmeName: string | null; category: string | null }[]> {
-  const seats = await db.studentProgramme.findMany({ where: { schoolId }, select: { studentMembershipId: true, programmeId: true, entryYear: true, programme: { select: { name: true, durationYears: true } } } });
-  const inBatch = seats.filter((s) => s.entryYear + s.programme.durationYears === batchYear);
+  const seats = await db.studentProgramme.findMany({ where: { schoolId }, select: { studentMembershipId: true, programmeId: true, entryYear: true, programme: { select: { name: true, durationYears: true } }, student: { select: { leftAt: true } } } });
+  // N is the batch's FINAL-YEAR students (TA-089): a seat whose student left before the final academic year began
+  // (1 June of the year before passing, NBA's window as council-filings.ts reads it), or whose admission was closed
+  // as LEFT or CANCELLED (a transfer or a drop-out; a graduate's is COMPLETED), is no final-year student. The seat
+  // itself stays ACTIVE when a student leaves, so the leaving is read where the office records it.
+  const finalYearFrom = new Date(Date.UTC(batchYear - 1, 5, 1));
+  const ofBatch = seats.filter((s) => s.entryYear + s.programme.durationYears === batchYear);
+  const closed = ofBatch.length
+    ? await db.programmeEnrolment.findMany({ where: { schoolId, studentMembershipId: { in: ofBatch.map((s) => s.studentMembershipId) }, status: { in: ["LEFT", "CANCELLED"] } }, select: { studentMembershipId: true, programmeId: true } })
+    : [];
+  const closedSeat = new Set(closed.map((e) => `${e.studentMembershipId}|${e.programmeId}`));
+  const inBatch = ofBatch.filter((s) => !(s.student.leftAt && s.student.leftAt < finalYearFrom) && !closedSeat.has(`${s.studentMembershipId}|${s.programmeId}`));
   const seated = new Set(seats.map((s) => s.studentMembershipId));
   const from = new Date(Date.UTC(batchYear, 0, 1));
   const to = new Date(Date.UTC(batchYear + 1, 0, 1));

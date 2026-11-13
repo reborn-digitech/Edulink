@@ -80,6 +80,10 @@ export async function registerCompany(ctx: ActiveContext, input: CompanySave) {
     const c = await tx.company.create({ data: { name: input.name, identifier: input.identifier, sectors: writeJson(input.sectors), pointOfContact: input.pointOfContact, createdByUserId: me.userId }, select: { id: true } });
     await tx.companyRecruiter.create({ data: { companyId: c.id, userId: me.userId, acceptedAt: new Date() } });
     return c;
+  }).catch((error: unknown) => {
+    // Registered (or added by a cell) a moment ago (TA-573): the identifier's key refused this one, answered as the read above answers it.
+    if (typeof error === "object" && error !== null && (error as { code?: string }).code === "P2002") throw new RuleRefusal("placement.refuseCompanyTaken", 409, undefined, "identifier");
+    throw error;
   });
   await audit({ schoolId: null, actorUserId: me.userId, action: "placement.company.register", targetType: "Company", targetId: company.id, meta: { identifier: input.identifier } });
   return recruiterCompany(ctx);

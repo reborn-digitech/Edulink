@@ -15,6 +15,7 @@ import { EMPTY_RECORD, placementRecords } from "./placement-record";
 import { myOffers, placementSettings, profileView, studentDrives, studentOf } from "./placement";
 import { childInternships, myInternships } from "./placement-internships";
 import { renderResumePdf } from "./placement-pdf";
+import { mentorsInStanding } from "./alumni-mentors";
 import { normaliseLocale } from "./i18n/locales";
 import type { ActiveContext } from "./session";
 
@@ -47,7 +48,9 @@ export async function mentorSlotsAt(schoolId: string, now: Date = new Date()) {
     take: 100,
     select: { id: true, title: true, startsAt: true, endsAt: true, seats: true, seatsTaken: true, providerUserId: true, provider: { select: { name: true, preferredName: true } } },
   });
-  const open = slots.filter((s) => s.seatsTaken < s.seats);
+  // Only a mentor still in standing: marked, not muted, the alumnus row open (TA-088).
+  const standing = await mentorsInStanding(schoolId, slots.map((s) => s.providerUserId));
+  const open = slots.filter((s) => s.seatsTaken < s.seats && standing.has(s.providerUserId));
   const rows = open.length ? await db.membership.findMany({ where: { schoolId, role: "ALUMNUS", userId: { in: open.map((s) => s.providerUserId) } }, select: { userId: true, joinedAt: true } }) : [];
   const batch = new Map(rows.map((r) => [r.userId, r.joinedAt.getUTCFullYear()]));
   return open.map((s) => ({ id: s.id, title: s.title, startsAt: s.startsAt.toISOString(), endsAt: s.endsAt.toISOString(), mentorName: s.provider.preferredName ?? s.provider.name, batchYear: batch.get(s.providerUserId) ?? null, seatsLeft: s.seats - s.seatsTaken }));

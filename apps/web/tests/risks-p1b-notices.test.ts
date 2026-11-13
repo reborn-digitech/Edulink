@@ -59,6 +59,8 @@ beforeAll(async () => {
   await person("minor", "STUDENT", { isMinor: true, birthdate: new Date("2010-01-01T00:00:00Z") });
   await person("adult", "STUDENT", { isMinor: false, birthdate: new Date("2004-01-01T00:00:00Z") });
   await person("alumnus", "ALUMNUS");
+  // A mentor the office has marked, as offerMentorSlot requires: only such an alumnus's times are listed or booked (TA-088).
+  await db.alumniProfile.create({ data: { schoolId: ids.college!, membershipId: ids.alumnusM!, userId: ids.alumnus!, mentor: true, mentorAt: new Date() } });
   await person("guardian", null, { prefs: JSON.stringify({ theme: "system", locale: "hi" }) });
   await person("guardianAdult", null);
   await db.guardianship.create({ data: { parentUserId: ids.guardian!, studentMembershipId: ids.minorM!, studentSchoolId: ids.college!, status: "ACTIVE" } });

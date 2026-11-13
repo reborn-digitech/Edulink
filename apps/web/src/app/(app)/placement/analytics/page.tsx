@@ -81,10 +81,13 @@ export default async function AnalyticsPage({ searchParams }: { searchParams: Pr
               <DownloadSimpleIcon className="mr-1 inline size-4" aria-hidden />
               {t("placement.exportNirf")}
             </a>
-            <a className={LINK} href={ex("OFFERS")}>
-              <DownloadSimpleIcon className="mr-1 inline size-4" aria-hidden />
-              {t("placement.exportOffers")}
-            </a>
+            {/* The named offers sheet is the cell's, the office's and the principal's; never the IQAC's (TA-311). */}
+            {ctx.role === "IQAC" ? null : (
+              <a className={LINK} href={ex("OFFERS")}>
+                <DownloadSimpleIcon className="mr-1 inline size-4" aria-hidden />
+                {t("placement.exportOffers")}
+              </a>
+            )}
           </div>
         </CardBody>
       </Card>

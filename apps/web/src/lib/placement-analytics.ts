@@ -175,7 +175,9 @@ const csv = (rows: (string | number | null)[][]) => `${rows.map((r) => r.map((c)
  * companies with their offers), and every offer of a batch.
  */
 export async function placementExport(ctx: ActiveContext, kind: "NBA" | "NIRF" | "OFFERS", batchYear?: number): Promise<{ filename: string; csv: string }> {
-  const cell = await cellOf(ctx, "analytics");
+  // The offers sheet names every student: the cell, the office and the principal read it; the IQAC, which files from
+  // the table and "never a student's row" (placement.ts CELL_ANALYTICS), takes NBA and NIRF alone (TA-311).
+  const cell = await cellOf(ctx, kind === "OFFERS" ? "read" : "analytics");
   const tables = await placementTables(cell.schoolId, 3, batchYear);
   await audit({ schoolId: cell.schoolId, actorUserId: cell.userId, action: "placement.export", targetType: "School", targetId: cell.schoolId, meta: { kind, batchYear: tables[0]?.batchYear } });
   if (kind === "NBA") {
