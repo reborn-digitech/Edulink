@@ -7,7 +7,7 @@ import { notify } from "./notify";
 import { AccessError } from "./tenancy";
 import { forSchool, forUser } from "./tenant-context";
 import { gigSettings, monthKey, type GigResult } from "./gig-questions";
-import { createCompanyOrder, createLinkedAccount, createSeatOrder, createStakeholder, fetchRouteProduct, GigGatewayError, platformAccount, refundSeat, releaseTransfer, requestRouteProduct, ROUTE_STATUSES, routeStatusOf, setRouteBank, stateNameOf, transferFromPayment, transfersOf, transport, verifySeatCheckout, webhookSecret, type RouteProduct, type RouteRequirement, type RouteStatus } from "./gig-gateway";
+import { createCompanyOrder, createLinkedAccount, createSeatOrder, createStakeholder, fetchRouteProduct, GigGatewayError, paymentRefundedAtGateway, platformAccount, refundSeat, releaseTransfer, requestRouteProduct, ROUTE_STATUSES, routeStatusOf, setRouteBank, stateNameOf, transferFromPayment, transfersOf, transport, verifySeatCheckout, webhookSecret, type RouteProduct, type RouteRequirement, type RouteStatus } from "./gig-gateway";
 import type { GigGatewayTransport } from "./gig-gateway-env";
 import { open, seal, sealingAvailable } from "./secret-box";
 import { openPan, writePan } from "./pan";
@@ -538,7 +538,8 @@ export function figuresOf(amountPaise: number, s: { commissionPercent: number; g
  * An order for one seat, made once per booking, carrying the transfer of the
  * net to the expert's linked account on hold: a payment still INITIATED is
  * handed back as it stands (the panel was closed and reopened); a FAILED one
- * is replaced by a fresh order on the same row. Refused with the reason when
+ * is tried again on its own order (TA-188), a fresh one made only when it has
+ * none. Refused with the reason when
  * payments are off, the expert's linked account is not active, or the
  * gateway is down — the seat stays PENDING_PAYMENT for another try until it
  * expires. A teacher's seat (seats, 17 Oct 2026) is a plain order on the
@@ -548,7 +549,8 @@ export function figuresOf(amountPaise: number, s: { commissionPercent: number; g
 export async function openCheckout(input: { bookingId: string; slotId: string; schoolId: string; payerUserId: string; expertUserId: string; amountPaise: number; title: string; pupilName: string; payerName: string; payerEmail: string | null }): Promise<GigResult<{ checkout: SeatCheckout }>> {
   const about = { title: input.title, pupilName: input.pupilName, payerName: input.payerName, payerEmail: input.payerEmail };
   const existing = await db.sessionPayment.findUnique({ where: { bookingId: input.bookingId }, select: PAYMENT_SELECT });
-  if (existing && existing.status === "INITIATED") return { ok: true, checkout: checkoutOf(existing, about) };
+  // An order whose id is still the placeholder is being made, or its making died: never handed out as a checkout (TA-241).
+  if (existing && existing.status === "INITIATED") return existing.orderId.startsWith("pending_") ? { ok: false, errorKey: "gigs.refuseGatewayDown" } : { ok: true, checkout: checkoutOf(existing, about) };
   if (existing && existing.status !== "FAILED") return { ok: false, errorKey: "gigs.refuseAlreadyPaid" };
   if (!(await paymentsOn())) return { ok: false, errorKey: "gigs.refusePaymentsOff" };
   const provider = await db.gigSlot.findUnique({ where: { id: input.slotId }, select: { providerKind: true } });
@@ -565,10 +567,27 @@ export async function openCheckout(input: { bookingId: string; slotId: string; s
   const settings = await paymentSettings();
   const figures = figuresOf(input.amountPaise, settings);
   if (figures.netPaise < 1) return { ok: false, errorKey: "gigs.refusePrice" };
+  // A FAILED row is claimed from FAILED alone, so a capture that landed since it was read is never written over (TA-241).
+  const reopen = { status: "INITIATED", payerUserId: input.payerUserId, reason: null, lastError: null, pendingAction: null, attempts: (existing?.attempts ?? 0) + 1 };
+  // TA-188: a failed attempt is tried again ON THE SAME ORDER while the order still says what is owed (the gateway takes
+  // another attempt on an order until it is paid), so a late capture of the first attempt still finds this row; a fresh
+  // order only when there is none yet or the price or the path moved.
+  if (existing && !existing.orderId.startsWith("pending_") && existing.amountPaise === input.amountPaise && existing.path === path) {
+    const reopened = await db.sessionPayment.updateMany({ where: { id: existing.id, status: "FAILED" }, data: reopen });
+    if (reopened.count === 0) return { ok: false, errorKey: "gigs.refuseAlreadyPaid" };
+    const again = await db.sessionPayment.findUniqueOrThrow({ where: { id: existing.id }, select: PAYMENT_SELECT });
+    await forSchool(input.schoolId, () => audit({ schoolId: input.schoolId, actorUserId: input.payerUserId, action: "gig.payment.start", targetType: "SessionPayment", targetId: again.id, meta: { bookingId: input.bookingId, amountPaise: again.amountPaise, commissionPaise: again.commissionPaise, gstPaise: again.gstPaise, netPaise: again.netPaise, orderId: again.orderId, again: true } }));
+    return { ok: true, checkout: checkoutOf(again, about) };
+  }
   // The row first, so the order's receipt carries our id; the order id is written once the gateway answers.
-  const row = existing
-    ? await db.sessionPayment.update({ where: { id: existing.id }, data: { status: "INITIATED", path, transferId: null, amountPaise: input.amountPaise, ...figures, payerUserId: input.payerUserId, reason: null, lastError: null, pendingAction: null, attempts: existing.attempts + 1 }, select: PAYMENT_SELECT })
-    : await db.sessionPayment.create({ data: { bookingId: input.bookingId, slotId: input.slotId, payerUserId: input.payerUserId, expertUserId: input.expertUserId, amountPaise: input.amountPaise, ...figures, path, orderId: `pending_${input.bookingId}`, status: "INITIATED" }, select: PAYMENT_SELECT });
+  let row: PaymentRow;
+  if (existing) {
+    const reopened = await db.sessionPayment.updateMany({ where: { id: existing.id, status: "FAILED" }, data: { ...reopen, path, transferId: null, amountPaise: input.amountPaise, ...figures } });
+    if (reopened.count === 0) return { ok: false, errorKey: "gigs.refuseAlreadyPaid" };
+    row = await db.sessionPayment.findUniqueOrThrow({ where: { id: existing.id }, select: PAYMENT_SELECT });
+  } else {
+    row = await db.sessionPayment.create({ data: { bookingId: input.bookingId, slotId: input.slotId, payerUserId: input.payerUserId, expertUserId: input.expertUserId, amountPaise: input.amountPaise, ...figures, path, orderId: `pending_${input.bookingId}`, status: "INITIATED" }, select: PAYMENT_SELECT });
+  }
   let orderId: string;
   try {
     const notes = { shalaghar_session_payment: row.id, seat: input.title.slice(0, 60) };
@@ -578,15 +597,31 @@ export async function openCheckout(input: { bookingId: string; slotId: string; s
     orderId = order.orderId;
   } catch (error) {
     const reason = error instanceof GigGatewayError ? error.message : "gateway error";
-    await db.sessionPayment.update({ where: { id: row.id }, data: { status: "FAILED", reason } });
+    await db.sessionPayment.updateMany({ where: { id: row.id, status: "INITIATED" }, data: { status: "FAILED", reason } });
     return { ok: false, errorKey: "gigs.refuseGatewayDown" };
   }
-  const made = await db.sessionPayment.update({ where: { id: row.id }, data: { orderId }, select: PAYMENT_SELECT });
+  // Still INITIATED: a capture of the order this row held before has not landed meanwhile (TA-241).
+  const written = await db.sessionPayment.updateMany({ where: { id: row.id, status: "INITIATED" }, data: { orderId } });
+  if (written.count === 0) return { ok: false, errorKey: "gigs.refuseAlreadyPaid" };
+  const made = await db.sessionPayment.findUniqueOrThrow({ where: { id: row.id }, select: PAYMENT_SELECT });
   await forSchool(input.schoolId, () => audit({ schoolId: input.schoolId, actorUserId: input.payerUserId, action: "gig.payment.start", targetType: "SessionPayment", targetId: made.id, meta: { bookingId: input.bookingId, amountPaise: input.amountPaise, ...figures, orderId } }));
   return { ok: true, checkout: checkoutOf(made, about) };
 }
 
-export type CaptureOutcome = "settled" | "already" | "unknown-order" | "amount-mismatch" | "not-settleable";
+/** "given-back": the money arrived for a seat already given back (expired unpaid, cancelled); it is refunded, never confirmed (TA-184). */
+export type CaptureOutcome = "settled" | "already" | "unknown-order" | "amount-mismatch" | "not-settleable" | "given-back";
+
+type PaymentBooking = { id: string; schoolId: string; studentMembershipId: string; slotId: string; providerUserId: string; status: string };
+
+/**
+ * The booking a payment is for (TA-183). SessionPayment carries no school, and GigBooking is readable only by its own
+ * school or by its provider, so the sessions webhook, the job and the operator — none of them with the pupil's school
+ * bound — read it as its provider: the payment's expert IS the booking's provider (openCheckout writes one from the
+ * other), so the read opens exactly that one row and no school. Never a nested read through the payment.
+ */
+function bookingOfPayment(p: { bookingId: string; expertUserId: string }): Promise<PaymentBooking | null> {
+  return forUser(p.expertUserId, () => db.gigBooking.findFirst({ where: { id: p.bookingId, providerUserId: p.expertUserId }, select: { id: true, schoolId: true, studentMembershipId: true, slotId: true, providerUserId: true, status: true } }));
+}
 
 /** The next number in a receipt or invoice series, under a lock on the settings row that the caller's transaction then holds to its end. */
 async function nextInSeries(tx: typeof db, kind: "RECEIPT" | "INVOICE", series: string): Promise<{ serial: number; number: string }> {
@@ -609,10 +644,12 @@ async function nextInSeries(tx: typeof db, kind: "RECEIPT" | "INVOICE", series: 
  * the order already carries the net. Who is told is gig-sessions.ts's
  * (settleSeatPayment), which wraps this.
  */
-export async function markCaptured(input: { orderId: string; gatewayPaymentId: string; amountPaise: number }, now: Date = new Date()): Promise<{ outcome: CaptureOutcome; payment: PaymentRow | null; booking: { id: string; schoolId: string; studentMembershipId: string; slotId: string; providerUserId: string } | null }> {
-  const p = await db.sessionPayment.findUnique({ where: { orderId: input.orderId }, select: { ...PAYMENT_SELECT, booking: { select: { id: true, schoolId: true, studentMembershipId: true, slotId: true, providerUserId: true, status: true } } } });
+export async function markCaptured(input: { orderId: string; gatewayPaymentId: string; amountPaise: number }, now: Date = new Date()): Promise<{ outcome: CaptureOutcome; payment: PaymentRow | null; booking: { id: string; schoolId: string; studentMembershipId: string; slotId: string; providerUserId: string } | null; refund?: RefundOutcome }> {
+  const p = await db.sessionPayment.findUnique({ where: { orderId: input.orderId }, select: PAYMENT_SELECT });
   if (!p) return { outcome: "unknown-order", payment: null, booking: null };
-  const booking = { id: p.booking.id, schoolId: p.booking.schoolId, studentMembershipId: p.booking.studentMembershipId, slotId: p.booking.slotId, providerUserId: p.booking.providerUserId };
+  const found = await bookingOfPayment(p);
+  if (!found) return { outcome: "not-settleable", payment: p, booking: null };
+  const booking = { id: found.id, schoolId: found.schoolId, studentMembershipId: found.studentMembershipId, slotId: found.slotId, providerUserId: found.providerUserId };
   if (p.status === "PAID" || p.status === "HELD" || p.status === "RELEASED" || p.status === "DUE" || p.status === "PAID_OUT" || p.status === "REFUNDED") return { outcome: "already", payment: p, booking };
   if (p.status !== "INITIATED" && p.status !== "FAILED") return { outcome: "not-settleable", payment: p, booking };
   if (p.amountPaise !== input.amountPaise) {
@@ -630,13 +667,20 @@ export async function markCaptured(input: { orderId: string; gatewayPaymentId: s
       const claimed = await tx.sessionPayment.updateMany({ where: { id: p.id, status: { in: ["INITIATED", "FAILED"] } }, data: { status: "PAID", paymentId: input.gatewayPaymentId, paidAt: now, ...figures, receiptNumber: receipt.number, receiptSerial: receipt.serial, reason: null, lastError: null } });
       if (claimed.count === 0) return null;
       // A seat the family gave up, or that expired, before the money arrived is still paid for: the row is
-      // PAID and refundable (refundSeatPayment below), the booking is left as it stands for the job to refund.
-      await tx.gigBooking.updateMany({ where: { id: booking.id, schoolId: booking.schoolId, status: "PENDING_PAYMENT" }, data: { status: "CONFIRMED", consentAt: now, consentUserId: p.payerUserId } });
-      return receipt;
+      // PAID, the booking is left as it stands, and the money goes back below (TA-184).
+      const confirmed = await tx.gigBooking.updateMany({ where: { id: booking.id, schoolId: booking.schoolId, status: "PENDING_PAYMENT" }, data: { status: "CONFIRMED", consentAt: now, consentUserId: p.payerUserId } });
+      return { ...receipt, confirmed: confirmed.count > 0 };
     }),
   );
   if (!settled) return { outcome: "already", payment: p, booking };
   await forSchool(booking.schoolId, () => audit({ schoolId: booking.schoolId, actorUserId: p.payerUserId, action: "gig.payment.paid", targetType: "SessionPayment", targetId: p.id, meta: { bookingId: booking.id, amountPaise: p.amountPaise, ...figures, receiptNumber: settled.number, gatewayPaymentId: input.gatewayPaymentId } }));
+  if (!settled.confirmed) {
+    // TA-184: the seat was given back (expired unpaid, cancelled) before the money came; nothing is confirmed and
+    // nobody is told it is, the whole price is refunded now — or waits as a refund for the job and the operator.
+    const refund = await refundSeatPayment(booking.id, "paid after the seat was given back", null, now);
+    const after = (await db.sessionPayment.findUnique({ where: { id: p.id }, select: PAYMENT_SELECT })) ?? p;
+    return { outcome: "given-back", payment: after, booking, refund };
+  }
   await holdPayment(p.id);
   const after = (await db.sessionPayment.findUnique({ where: { id: p.id }, select: PAYMENT_SELECT })) ?? p;
   return { outcome: "settled", payment: after, booking };
@@ -716,29 +760,55 @@ export type RefundOutcome = "refunded" | "pending" | "voided" | "nothing";
  * pendingAction REFUND, which releaseDue and the operator's retry take up.
  * No commission or GST stands on a refunded seat: the figures are zeroed
  * with the net, so no statement counts them.
+ *
+ * EVERY WRITE IS A CLAIM ON THE STATUS IT READ (TA-241): the void only from
+ * INITIATED, so a capture landing meanwhile is read again and refunded rather
+ * than written over; the refund claims the row REFUNDED before the gateway is
+ * asked, so the job's retry and the operator's never refund twice, and a
+ * refusal puts the row back as it was, waiting. A refusal whose refund the
+ * gateway in fact made (the answer lost) is read back from the payment and
+ * recorded as made (TA-258).
  */
 export async function refundSeatPayment(bookingId: string, reason: string, actorUserId: string | null, now: Date = new Date()): Promise<RefundOutcome> {
-  const p = await db.sessionPayment.findUnique({ where: { bookingId }, select: { ...PAYMENT_SELECT, booking: { select: { schoolId: true } } } });
-  if (!p) return "nothing";
   const why = reason.slice(0, 200);
-  if (p.status === "INITIATED") {
-    await db.sessionPayment.update({ where: { id: p.id }, data: { status: "FAILED", reason: why } });
-    await forSchool(p.booking.schoolId, () => audit({ schoolId: p.booking.schoolId, actorUserId, action: "gig.payment.void", targetType: "SessionPayment", targetId: p.id, meta: { reason: why } }));
-    return "voided";
-  }
-  if (p.status !== "PAID" && p.status !== "HELD") return "nothing";
-  if (!p.paymentId) return "nothing";
-  try {
-    const refund = await refundSeat(p.paymentId, p.amountPaise, { shalaghar_session_payment: p.id, reason: why.slice(0, 60) }, p.path === "ROUTE");
-    await db.sessionPayment.update({ where: { id: p.id }, data: { status: "REFUNDED", refundId: refund.refundId, refundedAt: now, reason: why, pendingAction: null, lastError: null, holdUntil: null, commissionPaise: 0, gstPaise: 0, netPaise: 0 } });
-    await forSchool(p.booking.schoolId, () => audit({ schoolId: p.booking.schoolId, actorUserId, action: "gig.payment.refunded", targetType: "SessionPayment", targetId: p.id, meta: { amountPaise: p.amountPaise, refundId: refund.refundId, reason: why } }));
+  for (let round = 0; round < 3; round += 1) {
+    const p = await db.sessionPayment.findUnique({ where: { bookingId }, select: PAYMENT_SELECT });
+    if (!p) return "nothing";
+    if (p.status === "INITIATED") {
+      const voided = await db.sessionPayment.updateMany({ where: { id: p.id, status: "INITIATED" }, data: { status: "FAILED", reason: why } });
+      if (voided.count === 0) continue;
+      await auditSeat(p, { actorUserId, action: "gig.payment.void", targetType: "SessionPayment", targetId: p.id, meta: { reason: why } });
+      return "voided";
+    }
+    if (p.status !== "PAID" && p.status !== "HELD") return "nothing";
+    if (!p.paymentId) return "nothing";
+    const claimed = await db.sessionPayment.updateMany({ where: { id: p.id, status: p.status }, data: { status: "REFUNDED", refundedAt: now, reason: why, pendingAction: null, lastError: null, holdUntil: null, commissionPaise: 0, gstPaise: 0, netPaise: 0 } });
+    if (claimed.count === 0) continue;
+    let refundId: string | null = null;
+    let failure: string | null = null;
+    try {
+      refundId = (await refundSeat(p.paymentId, p.amountPaise, { shalaghar_session_payment: p.id, reason: why.slice(0, 60) }, p.path === "ROUTE")).refundId;
+    } catch (error) {
+      failure = (error instanceof Error ? error.message : "gateway error").slice(0, 300);
+    }
+    if (failure !== null && !(await paymentRefundedAtGateway(p.paymentId, p.amountPaise))) {
+      await db.sessionPayment.updateMany({ where: { id: p.id, status: "REFUNDED", refundId: null }, data: { status: p.status, refundedAt: null, holdUntil: p.holdUntil, commissionPaise: p.commissionPaise, gstPaise: p.gstPaise, netPaise: p.netPaise, pendingAction: "REFUND", reason: why, lastError: failure, attempts: p.attempts + 1 } });
+      await auditSeat(p, { actorUserId, action: "gig.payment.retryWaiting", targetType: "SessionPayment", targetId: p.id, meta: { action: "REFUND", error: failure } });
+      return "pending";
+    }
+    // The refund is made: its id is written on its own, so a failed write never undoes it.
+    if (refundId) await db.sessionPayment.updateMany({ where: { id: p.id, status: "REFUNDED" }, data: { refundId } }).catch((error) => console.error("[gig-payments] refund id not written", error));
+    await auditSeat(p, { actorUserId, action: "gig.payment.refunded", targetType: "SessionPayment", targetId: p.id, meta: { amountPaise: p.amountPaise, refundId, reason: why, ...(failure !== null ? { readBack: true } : {}) } });
     return "refunded";
-  } catch (error) {
-    const message = (error instanceof Error ? error.message : "gateway error").slice(0, 300);
-    await db.sessionPayment.update({ where: { id: p.id }, data: { pendingAction: "REFUND", reason: why, lastError: message, attempts: p.attempts + 1 } });
-    await forSchool(p.booking.schoolId, () => audit({ schoolId: p.booking.schoolId, actorUserId, action: "gig.payment.retryWaiting", targetType: "SessionPayment", targetId: p.id, meta: { action: "REFUND", error: message } }));
-    return "pending";
   }
+  return "nothing";
+}
+
+/** An audit row for a seat's payment under the pupil's school, found through the booking as its provider reads it (TA-183). */
+async function auditSeat(p: { bookingId: string; expertUserId: string }, entry: { actorUserId: string | null; action: string; targetType: string; targetId: string; meta: Record<string, unknown> }): Promise<void> {
+  const schoolId = (await bookingOfPayment(p))?.schoolId ?? null;
+  if (schoolId) await forSchool(schoolId, () => audit({ schoolId, ...entry }));
+  else await audit({ schoolId: null, ...entry });
 }
 
 export type ReleaseRun = { released: number; releasedPaise: number; invoiced: number; due: number; duePaise: number; refunded: number; held: number; failed: number; payoutsOpened: number; linksChecked: number; dueTo: { expertUserId: string; netPaise: number; payoutId: string; opened: boolean }[] };
@@ -772,13 +842,15 @@ export async function releaseDue(now: Date = new Date()): Promise<ReleaseRun> {
   run.linksChecked = (await linkReadyExperts(null, now, "PENDING")).tried;
   if (!on) return run;
 
-  // ROUTE: the hold comes off at the gateway, seat by seat.
-  for (const p of await db.sessionPayment.findMany({ where: { path: "ROUTE", status: "HELD", transferId: { not: null }, holdUntil: { not: null, lte: now }, OR: [{ pendingAction: null }, { pendingAction: { not: "REFUND" } }] }, orderBy: { holdUntil: "asc" }, select: PAYMENT_SELECT, take: 500 })) {
+  // ROUTE: the hold comes off at the gateway, seat by seat — never for an expert the operator has stopped paying
+  // (suspendPayee, TA-187): their seats stay HELD until the stop is lifted, and a refund still goes.
+  const stopped = (await db.expertPayoutAccount.findMany({ where: { status: "SUSPENDED" }, select: { expertUserId: true } })).map((a) => a.expertUserId);
+  for (const p of await db.sessionPayment.findMany({ where: { path: "ROUTE", status: "HELD", transferId: { not: null }, holdUntil: { not: null, lte: now }, OR: [{ pendingAction: null }, { pendingAction: { not: "REFUND" } }], ...(stopped.length ? { expertUserId: { notIn: stopped } } : {}) }, orderBy: { holdUntil: "asc" }, select: PAYMENT_SELECT, take: 500 })) {
     try {
       await releaseTransfer(p.transferId!);
     } catch (error) {
       const message = (error instanceof Error ? error.message : "gateway error").slice(0, 300);
-      await db.sessionPayment.update({ where: { id: p.id }, data: { pendingAction: "RELEASE", lastError: message, attempts: p.attempts + 1 } });
+      await db.sessionPayment.updateMany({ where: { id: p.id, status: "HELD" }, data: { pendingAction: "RELEASE", lastError: message, attempts: p.attempts + 1 } });
       await audit({ actorUserId: null, action: "gig.payment.retryWaiting", targetType: "SessionPayment", targetId: p.id, meta: { action: "RELEASE", error: message } });
       run.failed += 1;
       continue;
@@ -897,6 +969,8 @@ export async function retrySeatPayment(ctx: ActiveContext, paymentRowId: string,
   if (p.pendingAction === "REFUND") return { ok: true, outcome: await refundSeatPayment(p.bookingId, p.reason ?? "refund", ctx.user.id, now) };
   if (p.pendingAction === "RELEASE" && p.status === "HELD" && p.transferId) {
     if (!(await paymentsOn())) return { ok: false, errorKey: "gigs.refusePaymentsOff" };
+    // Payments to this expert are stopped (TA-187): the hold stays until the operator lifts the stop.
+    if ((await db.expertPayoutAccount.findUnique({ where: { expertUserId: p.expertUserId }, select: { status: true } }))?.status === "SUSPENDED") return { ok: false, errorKey: "gigs.refuseExpertStopped" };
     try {
       await releaseTransfer(p.transferId);
     } catch (error) {
@@ -1007,7 +1081,10 @@ export async function recordPayout(ctx: ActiveContext, payoutId: string, input: 
   if (await db.expertPayout.findUnique({ where: { reference }, select: { id: true } })) return { ok: false, errorKey: "gigs.refuseUtrUsed" };
   const locale = normaliseLocale(readJson<{ locale?: string }>(payout.expert.prefs, {}).locale);
   const seller: InvoiceParty = { name: company.legalName!, gstin: company.gstin, address: company.address, stateCode: company.stateCode };
-  const buyer: InvoiceParty = { name: payee.payeeName ?? payout.expert.name, gstin: payee.gstin, address: null, stateCode: payee.gstStateCode };
+  // A payee with no state on record (a teacher's UPI id): no address, so the place of supply is the company's own
+  // state and the tax CGST+SGST — the pass invoice's rule (pass-orders.ts writePassInvoice, decision 0006), one rule
+  // for both (TA-191).
+  const buyer: InvoiceParty = { name: payee.payeeName ?? payout.expert.name, gstin: payee.gstin, address: null, stateCode: payee.gstStateCode ?? company.stateCode };
 
   let made: { payout: { id: string; netPaise: number; paymentsCount: number; reference: string }; invoice: { id: string; number: string; totalPaise: number } };
   try {
@@ -1020,7 +1097,9 @@ export async function recordPayout(ctx: ActiveContext, payoutId: string, input: 
       const claimed = await tx.expertPayout.updateMany({ where: { id: payout.id, status: "OPEN" }, data: { status: "PAID", reference, paidAt, paidByUserId: ctx.user.id, note: (input.note ?? "").trim().slice(0, 300) || null, netPaise, paymentsCount: payments.length } });
       if (claimed.count === 0) throw new Refusal("gigs.refusePayoutPaid");
       await tx.sessionPayment.updateMany({ where: { id: { in: payments.map((p) => p.id) } }, data: { status: "PAID_OUT", paidOutAt: paidAt } });
-      const invoice = await writeInvoice(tx, { payoutId: payout.id, expertUserId: payout.expertUserId, payments, issuedAt: paidAt, company, seller, buyer, locale });
+      // The invoice carries the day it is issued, never the day typed for the transfer (TA-450): a typed day in a
+      // closed year, or before invoices already issued, cannot put a number out of its series' order.
+      const invoice = await writeInvoice(tx, { payoutId: payout.id, expertUserId: payout.expertUserId, payments, issuedAt: now, company, seller, buyer, locale });
       return { payout: { id: payout.id, netPaise, paymentsCount: payments.length, reference }, invoice };
     });
   } catch (error) {
@@ -1063,7 +1142,9 @@ export async function markTransferProcessed(input: { transferId: string; source:
 export async function markTransferFailed(input: { source: string; reason: string }): Promise<boolean> {
   const p = await db.sessionPayment.findFirst({ where: { ...bySource(input.source), path: "ROUTE", status: { in: ["PAID", "HELD"] } }, select: { id: true, attempts: true } });
   if (!p) return false;
-  await db.sessionPayment.update({ where: { id: p.id }, data: { status: "PAID", transferId: null, pendingAction: "TRANSFER", lastError: input.reason.slice(0, 300), attempts: p.attempts + 1 } });
+  // Only while it is still PAID or HELD: a refund or a release claimed since the read is not undone (TA-241).
+  const changed = await db.sessionPayment.updateMany({ where: { id: p.id, status: { in: ["PAID", "HELD"] } }, data: { status: "PAID", transferId: null, pendingAction: "TRANSFER", lastError: input.reason.slice(0, 300), attempts: p.attempts + 1 } });
+  if (changed.count === 0) return false;
   await audit({ actorUserId: null, action: "gig.payment.retryWaiting", targetType: "SessionPayment", targetId: p.id, meta: { action: "TRANSFER", error: input.reason.slice(0, 300), via: "webhook" } });
   return true;
 }
@@ -1091,7 +1172,9 @@ export async function markSeatRefundFailed(refundId: string, reason: string): Pr
   const p = await db.sessionPayment.findFirst({ where: { refundId, status: "REFUNDED" }, select: { id: true, attempts: true, amountPaise: true } });
   if (!p) return false;
   const settings = await db.gigSettings.findUniqueOrThrow({ where: { id: SETTINGS_ID }, select: { commissionPercent: true, gstPercent: true } });
-  await db.sessionPayment.update({ where: { id: p.id }, data: { status: "HELD", refundedAt: null, refundId: null, pendingAction: "REFUND", lastError: reason.slice(0, 300), attempts: p.attempts + 1, ...figuresOf(p.amountPaise, settings) } });
+  // Only the refund the event names, still REFUNDED (TA-241): a second event, or a refund made again since, is not undone.
+  const changed = await db.sessionPayment.updateMany({ where: { id: p.id, status: "REFUNDED", refundId }, data: { status: "HELD", refundedAt: null, refundId: null, pendingAction: "REFUND", lastError: reason.slice(0, 300), attempts: p.attempts + 1, ...figuresOf(p.amountPaise, settings) } });
+  if (changed.count === 0) return false;
   await audit({ actorUserId: null, action: "gig.payment.retryWaiting", targetType: "SessionPayment", targetId: p.id, meta: { action: "REFUND", error: reason.slice(0, 300), via: "webhook" } });
   return true;
 }
@@ -1139,8 +1222,15 @@ const earningStatuses = (status: string): SessionPaymentStatus => (SESSION_PAYME
 /** What the expert has on hold, is owed, was paid and was refunded, seat by seat with the three figures, payout by payout, and the invoices. No pupil's name: the school's is enough on a statement. */
 export async function expertEarnings(ctx: ActiveContext): Promise<Earnings> {
   if (ctx.role !== "EXPERT") throw new AccessError("access.notAnExpert");
-  const [settings, rows, payouts, invoices] = await Promise.all([paymentSettings(), db.sessionPayment.findMany({ where: { expertUserId: ctx.user.id, status: { not: "INITIATED" } }, orderBy: { createdAt: "desc" }, take: 300, select: { ...PAYMENT_SELECT, slot: { select: { title: true, startsAt: true } }, booking: { select: { school: { select: { name: true } } } } } }), db.expertPayout.findMany({ where: { expertUserId: ctx.user.id }, orderBy: { createdAt: "desc" }, take: 100, select: { id: true, netPaise: true, paymentsCount: true, status: true, reference: true, paidAt: true, createdAt: true, invoice: { select: { id: true, number: true } } } }), db.gigInvoice.findMany({ where: { expertUserId: ctx.user.id }, orderBy: { issuedAt: "desc" }, take: 100, select: { id: true, number: true, issuedAt: true, taxableValuePaise: true, cgstPaise: true, sgstPaise: true, igstPaise: true, totalPaise: true, payoutId: true } })]);
+  const [settings, rows, payouts, invoices] = await Promise.all([paymentSettings(), db.sessionPayment.findMany({ where: { expertUserId: ctx.user.id, status: { not: "INITIATED" } }, orderBy: { createdAt: "desc" }, take: 300, select: { ...PAYMENT_SELECT, slot: { select: { title: true, startsAt: true } }, booking: { select: { schoolId: true } } } }), db.expertPayout.findMany({ where: { expertUserId: ctx.user.id }, orderBy: { createdAt: "desc" }, take: 100, select: { id: true, netPaise: true, paymentsCount: true, status: true, reference: true, paidAt: true, createdAt: true, invoice: { select: { id: true, number: true } } } }), db.gigInvoice.findMany({ where: { expertUserId: ctx.user.id }, orderBy: { issuedAt: "desc" }, take: 100, select: { id: true, number: true, issuedAt: true, taxableValuePaise: true, cgstPaise: true, sgstPaise: true, igstPaise: true, totalPaise: true, payoutId: true } })]);
   const sumNet = (statuses: string[]) => rows.filter((p) => statuses.includes(p.status)).reduce((a, p) => a + p.netPaise, 0);
+  // The pupils' schools' names, school by school under each school's binding (pupilNames' way in gig-sessions.ts): a
+  // School row is not readable to an expert through a booking, so one nested read failed the whole page (TA-186).
+  const schoolNames = new Map<string, string>();
+  for (const schoolId of new Set(rows.map((p) => p.booking.schoolId))) {
+    const school = await forSchool(schoolId, () => db.school.findUnique({ where: { id: schoolId }, select: { name: true } }));
+    schoolNames.set(schoolId, school?.name ?? "");
+  }
   return {
     heldPaise: sumNet(["PAID", "HELD"]),
     releasedPaise: sumNet(["RELEASED"]),
@@ -1149,7 +1239,7 @@ export async function expertEarnings(ctx: ActiveContext): Promise<Earnings> {
     refundedPaise: rows.filter((p) => p.status === "REFUNDED").reduce((a, p) => a + p.amountPaise, 0),
     commissionPercent: settings.commissionPercent,
     gstPercent: settings.gstPercent,
-    rows: rows.map((p) => ({ paymentId: p.id, bookingId: p.bookingId, title: p.slot.title, startsAt: p.slot.startsAt.toISOString(), schoolName: p.booking.school.name, amountPaise: p.amountPaise, commissionPaise: p.commissionPaise, gstPaise: p.gstPaise, netPaise: p.netPaise, status: earningStatuses(p.status), holdUntil: p.holdUntil?.toISOString() ?? null, dueAt: p.dueAt?.toISOString() ?? null, releasedAt: p.releasedAt?.toISOString() ?? null, paidOutAt: p.paidOutAt?.toISOString() ?? null, refundedAt: p.refundedAt?.toISOString() ?? null, payoutId: p.payoutId, reason: p.reason })),
+    rows: rows.map((p) => ({ paymentId: p.id, bookingId: p.bookingId, title: p.slot.title, startsAt: p.slot.startsAt.toISOString(), schoolName: schoolNames.get(p.booking.schoolId) ?? "", amountPaise: p.amountPaise, commissionPaise: p.commissionPaise, gstPaise: p.gstPaise, netPaise: p.netPaise, status: earningStatuses(p.status), holdUntil: p.holdUntil?.toISOString() ?? null, dueAt: p.dueAt?.toISOString() ?? null, releasedAt: p.releasedAt?.toISOString() ?? null, paidOutAt: p.paidOutAt?.toISOString() ?? null, refundedAt: p.refundedAt?.toISOString() ?? null, payoutId: p.payoutId, reason: p.reason })),
     payouts: payouts.map((x) => ({ id: x.id, netPaise: x.netPaise, paymentsCount: x.paymentsCount, status: x.status, reference: x.reference, paidAt: x.paidAt?.toISOString() ?? null, createdAt: x.createdAt.toISOString(), invoiceId: x.invoice?.id ?? null, invoiceNumber: x.invoice?.number ?? null })),
     invoices: invoices.map((i) => ({ ...i, issuedAt: i.issuedAt.toISOString() })),
   };

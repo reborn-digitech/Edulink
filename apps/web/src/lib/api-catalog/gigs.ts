@@ -136,3 +136,19 @@ export const GIGS: Endpoint[] = [
   });
 }
 // end seats
+// plans-payments fixes (testing analysis of 13 November 2026): what three doors now do, said where the catalog is read.
+// Amended here, not edited in place (the shared-file fence); it throws on a door that is not there.
+{
+  const say = (method: Endpoint["method"], path: string, summary: string) => {
+    const e = GIGS.find((x) => x.method === method && x.path === path);
+    if (!e) throw new Error(`api-catalog/gigs.ts (plans-payments): no ${method} ${path} to amend`);
+    e.summary = summary;
+  };
+  // TA-188: a failed attempt is tried again on the same order, so a late capture of the first still finds its seat.
+  say("POST", "/api/v1/gigs/sessions/{bookingId}/checkout", "The order for a paid seat — an expert's workshop or one-to-one, or a teacher's guidance — waiting for its payer's payment: a guardian, or a pupil of eighteen or more for themselves (a pupil under eighteen is refused, and asks a parent); the same order while it stands and again after a failed attempt; a handful an hour per person");
+  // TA-184: money that arrives for a seat already given back is refunded, never confirmed (outcome "given-back").
+  say("POST", "/api/v1/gigs/payments/{paymentId}/confirm", "The checkout's own confirmation by its payer (a guardian, or a pupil of eighteen or more who bought their own seat), verified with the company's key secret (the webhook remains the record); a payment for a seat already given back is refunded, not confirmed (outcome given-back)");
+  // TA-187: a stop holds the expert's held seats too, not only new prices.
+  say("POST", "/api/v1/operator/gigs/payees/{expertUserId}/suspend", "Stop paying an expert, with a reason they can read, or lift the stop; a suspended payee cannot price a seat, and their held seats are not released to them until the stop is lifted (refunds still go)");
+}
+// end plans-payments fixes

@@ -170,6 +170,22 @@ export async function fetchSeatPayment(paymentId: string): Promise<SeatPaymentRe
   return { paymentId: p.id, orderId: p.order_id ?? null, amountPaise: p.amount, status: p.status };
 }
 
+/**
+ * Whether the gateway has already given back at least this much of a payment — read when a refund call failed, since
+ * the gateway may have made the refund and only its answer been lost (TA-258), and a second full refund is refused.
+ * False whenever it cannot say (devbox, which never loses an answer; the read failing too).
+ */
+export async function paymentRefundedAtGateway(paymentId: string, amountPaise: number): Promise<boolean> {
+  try {
+    const account = platformAccount();
+    if (!account) return false;
+    const p = await call<{ amount_refunded?: number }>(account, "GET", `/v1/payments/${encodeURIComponent(paymentId)}`);
+    return typeof p.amount_refunded === "number" && p.amount_refunded >= amountPaise;
+  } catch {
+    return false;
+  }
+}
+
 export type HeldTransfer = { transferId: string; recipient: string | null; amountPaise: number; onHold: boolean; status: string };
 
 /**

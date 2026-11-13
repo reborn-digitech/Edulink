@@ -132,14 +132,29 @@ export function covers(row: { validFrom: Date; validTo: Date; revokedAt: Date | 
   return !row.revokedAt && row.validFrom.getTime() <= now.getTime() && now.getTime() < row.validTo.getTime();
 }
 
-/** The features this person holds an entitlement for now. One indexed read, cached per request. */
+/**
+ * The features this person holds an entitlement for now. One indexed read, cached per request. TA-185: a person
+ * holding a plan now also holds every feature the plan lists today that their window has no row for — a feature added
+ * to the plan after the window was written (COMPETITIONS, QUESTION_BANK) — while a row the operator revoked in that
+ * window keeps its feature shut.
+ */
 export const entitledFeatures = cache(async (userId: string): Promise<ReadonlySet<FeatureCode>> => {
   const now = new Date();
   const rows = await db.entitlement.findMany({
-    where: { userId, revokedAt: null, validFrom: { lte: now }, validTo: { gt: now } },
-    select: { feature: true },
+    where: { userId, validFrom: { lte: now }, validTo: { gt: now } },
+    select: { feature: true, planCode: true, revokedAt: true },
   });
-  return new Set(rows.map((r) => r.feature).filter(isFeature));
+  const out = new Set(rows.filter((r) => !r.revokedAt).map((r) => r.feature).filter(isFeature));
+  const held = new Set(rows.flatMap((r) => (!r.revokedAt && r.planCode && isPlan(r.planCode) ? [r.planCode] : [])));
+  if (held.size > 0) {
+    const plans = await planRows();
+    for (const plan of held) {
+      const written = new Set(rows.filter((r) => r.planCode === plan).map((r) => r.feature));
+      const row = plans.find((r) => r.code === plan);
+      for (const feature of row ? featuresOfRow(row) : PLAN_FEATURES[plan]) if (!written.has(feature)) out.add(feature);
+    }
+  }
+  return out;
 });
 
 /**
@@ -206,17 +221,25 @@ export async function listPersonPlans(ctx: ActiveContext, now: Date = new Date()
   const rows = await planRows();
   const changers = [...new Set(rows.map((r) => r.updatedByUserId).filter((id): id is string => Boolean(id)))];
   const names = new Map((changers.length ? await db.user.findMany({ where: { id: { in: changers } }, select: { id: true, name: true } }) : []).map((u) => [u.id, u.name]));
-  // The latest window each person holds per plan, now: one grouped read.
+  // Who holds each plan now: one grouped read.
   const live = await db.entitlement.groupBy({
     by: ["planCode", "userId"],
     where: { revokedAt: null, validFrom: { lte: now }, validTo: { gt: now }, planCode: { not: null } },
     _max: { validTo: true },
   });
+  // Where each holding ends: the latest unrevoked window still running, a renewal that starts later included —
+  // planHeldUntil's reading (F-10), so a holder who has renewed is not counted as ending soon (TA-597).
+  const ends = await db.entitlement.groupBy({
+    by: ["planCode", "userId"],
+    where: { revokedAt: null, validTo: { gt: now }, planCode: { not: null } },
+    _max: { validTo: true },
+  });
+  const endOf = new Map(ends.map((e) => [`${e.planCode}|${e.userId}`, e._max.validTo]));
   const soon = now.getTime() + EXPIRING_SOON_DAYS * DAY_MS;
   const out: OperatorPersonPlan[] = [];
   for (const code of PERSON_PLANS) {
     const row = rows.find((r) => r.code === code);
-    const holders = live.filter((l) => l.planCode === code);
+    const holders = live.filter((l) => l.planCode === code).map((l) => ({ ...l, _max: { validTo: endOf.get(`${l.planCode}|${l.userId}`) ?? l._max.validTo } }));
     out.push({
       code,
       pricePaise: row?.pricePaise ?? 0,
@@ -297,13 +320,20 @@ export async function grantPlan(ctx: ActiveContext, input: GrantInput, now: Date
   if (!person) throw new AccessError("plans.grantNoAccount", "NOT_FOUND");
   const row = (await planRows()).find((r) => r.code === input.plan);
   const features = row ? featuresOfRow(row) : [...PLAN_FEATURES[input.plan]];
-  const latest = await db.entitlement.aggregate({ where: { userId: person.id, planCode: input.plan, revokedAt: null, validTo: { gt: now } }, _max: { validTo: true } });
-  const validFrom = latest._max.validTo && latest._max.validTo > now ? latest._max.validTo : now;
-  const validTo = addMonths(validFrom, input.months);
   const note = input.note?.trim() ? input.note.trim().slice(0, 300) : null;
-  // One statement: every feature of the plan or none.
-  const { count } = await db.entitlement.createMany({
-    data: features.map((feature) => ({ userId: person.id, feature, source: "GRANT", planCode: input.plan, validFrom, validTo, grantedByUserId: ctx.user.id, note })),
+  // The end read and the window written under the holder's lock (TA-415), so a pass settled at the same moment
+  // starts after this grant, or this after it.
+  const { validFrom, validTo, count } = await db.$tenantTransaction(async (raw) => {
+    const tx = raw as typeof db;
+    await lockHolderPlan(tx, person.id, input.plan);
+    const latest = await tx.entitlement.aggregate({ where: { userId: person.id, planCode: input.plan, revokedAt: null, validTo: { gt: now } }, _max: { validTo: true } });
+    const from = latest._max.validTo && latest._max.validTo > now ? latest._max.validTo : now;
+    const to = addMonths(from, input.months);
+    // One statement: every feature of the plan or none.
+    const made = await tx.entitlement.createMany({
+      data: features.map((feature) => ({ userId: person.id, feature, source: "GRANT", planCode: input.plan, validFrom: from, validTo: to, grantedByUserId: ctx.user.id, note })),
+    });
+    return { validFrom: from, validTo: to, count: made.count };
   });
   await audit({
     schoolId: null,
@@ -429,7 +459,16 @@ export async function expireEntitlements(now: Date = new Date(), scope: { userId
 /* -------------------------------------------------------------------------- */
 
 /** The client a pass's writes go through: the transaction's own (pass-orders.ts marks a pass paid inside one), or db. */
-type EntitlementClient = Pick<typeof db, "entitlement" | "personPlan">;
+type EntitlementClient = Pick<typeof db, "entitlement" | "personPlan" | "$queryRaw">;
+
+/**
+ * One holder's windows of one plan are written one after the other (TA-415): a transaction-scoped lock on the person
+ * and the plan, taken before the current end is read, so two passes settled together — or a grant beside a pass —
+ * stack end to end instead of both starting at the same end.
+ */
+async function lockHolderPlan(tx: Pick<typeof db, "$queryRaw">, userId: string, plan: PlanCode): Promise<void> {
+  await tx.$queryRaw`SELECT 1 FROM pg_advisory_xact_lock(hashtext(${`plan-window:${userId}:${plan}`}))`;
+}
 
 /** The day a person's current window of a plan ends (any source, unrevoked, still running), or null when they hold none now. */
 export async function planHeldUntil(userId: string, plan: PlanCode, now: Date = new Date(), client: EntitlementClient = db): Promise<Date | null> {
@@ -453,7 +492,10 @@ export async function grantPassFromOrder(
   client: EntitlementClient = db,
 ): Promise<{ validFrom: Date; validTo: Date; created: number }> {
   if (!isPlan(order.planCode)) throw new AccessError("plans.unknownPlan", "NOT_FOUND");
+  // A lock held to a transaction's end needs one: a call with no transaction of its own is given one.
+  if (client === db) return db.$tenantTransaction((raw) => grantPassFromOrder(order, now, raw as typeof db));
   const plan = order.planCode;
+  await lockHolderPlan(client, order.userId, plan);
   const existing = await client.entitlement.findMany({ where: { orderId: order.id, source: "ORDER" }, select: { validFrom: true, validTo: true } });
   if (existing.length > 0) {
     const validFrom = new Date(Math.min(...existing.map((r) => r.validFrom.getTime())));

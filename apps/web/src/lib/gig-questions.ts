@@ -105,7 +105,8 @@ export async function gigSettings(): Promise<GigSettingsView> {
 }
 
 const SETTING_BOUNDS: Record<keyof GigSettingsView, [number, number]> = {
-  questionRatePaise: [0, 100_000],
+  // A paid question earns something (TA-596): 0 would write PAID earnings of nothing that use up the monthly cap.
+  questionRatePaise: [1, 100_000],
   questionFreeCount: [0, 1_000],
   questionMonthlyCap: [0, 10_000],
   questionMonthlyBudgetPaise: [0, 1_000_000_000],
@@ -421,7 +422,8 @@ export type Outcome = { basis: "FREE_BLOCK" | "PAID"; amountPaise: number } | { 
 
 type Counts = { accepted: number; paidThisMonth: number; spentThisMonth: number };
 function outcomeOf(settings: GigSettingsView, counts: Counts): Outcome {
-  if (counts.accepted < settings.questionFreeCount) return { basis: "FREE_BLOCK", amountPaise: 0 };
+  // A rate of 0 stored before it was refused (TA-596) earns nothing, so it is never a PAID row and never counts to the cap.
+  if (counts.accepted < settings.questionFreeCount || settings.questionRatePaise <= 0) return { basis: "FREE_BLOCK", amountPaise: 0 };
   if (counts.paidThisMonth >= settings.questionMonthlyCap) return { refuse: "gigs.refuseMonthlyCap" };
   if (counts.spentThisMonth + settings.questionRatePaise > settings.questionMonthlyBudgetPaise) return { refuse: "gigs.refuseBudget" };
   return { basis: "PAID", amountPaise: settings.questionRatePaise };
@@ -468,6 +470,8 @@ export async function decideContribution(ctx: ActiveContext, contributionId: str
   contentTeam(ctx);
   const row = await db.questionContribution.findUnique({ where: { id: contributionId }, select: { id: true, status: true, authorUserId: true, authorSchoolId: true, topicId: true } });
   if (!row) throw new AccessError("gigs.noSuchContribution", "NOT_FOUND");
+  // A second person decides (TA-367): the content-team flag travels with a person who may also teach, and adding earns.
+  if (row.authorUserId === ctx.user.id) return { ok: false, errorKey: "gigs.refuseOwnContribution" };
   const settled = { ACCEPT: "ACCEPTED", RETURN: "RETURNED", REJECT: "REJECTED" }[input.decision];
   // Decided the same way already: answered as it stands, so a second press changes nothing.
   if (row.status === settled) return { ok: true, contribution: await getContributionForReview(ctx, row.id) };

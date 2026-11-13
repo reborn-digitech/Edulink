@@ -555,7 +555,7 @@ describe("a paid seat, from the order to Razorpay's release", () => {
     expect((await taken()).seatsTaken).toBe(0);
   });
 
-  it("a failed order is replaced by a fresh one on the same row; a failed payment attempt may be captured on retry; a failed refund goes back to waiting with its figures", async () => {
+  it("a failed attempt is tried again on the same order (TA-188); a failed payment attempt may be captured on retry; a failed refund goes back to waiting with its figures", async () => {
     const s = await offer("WORKSHOP", { pricePaise: 6000, seats: 10 });
     const booked = await bookSeat(g2(), { slotId: s, studentMembershipId: member.p2, purpose: "ZZ a seat whose first attempt fails." });
     if (!booked.ok || !booked.checkout) throw new Error("no checkout");
@@ -563,7 +563,7 @@ describe("a paid seat, from the order to Razorpay's release", () => {
     expect(await paymentOf(booked.bookingId)).toMatchObject({ status: "FAILED", reason: "ZZ card declined" });
     expect(await familyPayment(g2(), (await paymentOf(booked.bookingId)).id)).toMatchObject({ status: "FAILED", checkout: null });
     const fresh = await seatCheckout(g2(), booked.bookingId);
-    expect(fresh.ok && fresh.checkout.orderId !== booked.checkout.orderId).toBe(true);
+    expect(fresh.ok && fresh.checkout.orderId === booked.checkout.orderId).toBe(true);
     expect(await paymentOf(booked.bookingId)).toMatchObject({ status: "INITIATED", attempts: 1, path: "ROUTE" });
     const body = captured((fresh as { checkout: { orderId: string } }).checkout.orderId, 6000, `pay_zz${STAMP}r`);
     expect(await (await deliver(body, signSessionsWebhook(body))).json()).toMatchObject({ outcome: "settled" });

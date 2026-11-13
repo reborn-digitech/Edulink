@@ -47,11 +47,15 @@ Feature: Plans and passes
   @alternative
   Scenario: A pupil without a pass meets the plan card at a door behind a plan
     # Needs a feature on and its plan active; the dev database has both off (accounts.md), so this is skipped
-    # unless the operator switches them on for a run.
+    # unless the operator switches them on for a run. With both on it asks for the plan card itself (TA-467), never
+    # "200 or 402", which passed whether or not the gate answered.
     Given the platform feature "ASSISTANT" is on
+    And the plan "STUDENT" is active
     And I am signed in as the STUDENT zz.pupil02@zz.test
+    And I hold no "STUDENT" pass
     When I GET "/api/v1/assistant"
-    Then the status is one of 200, 402
+    Then the status is 402
+    And the error code is "PLAN_REQUIRED"
 
   @negative
   Scenario: The office has no pass to buy

@@ -29,7 +29,7 @@ import { isMinorToday } from "./student-consent";
 import { BIRTHDAY_ZONE } from "./adulthood";
 import { familyChildren } from "./family-child";
 import { companyDetails, financialYearOf, type CompanyDetails, type InvoiceParty } from "./gig-payments";
-import { createPassOrderAtGateway, GigGatewayError, platformAccount, refundSeat, transport, verifySeatCheckout } from "./gig-gateway";
+import { createPassOrderAtGateway, GigGatewayError, paymentRefundedAtGateway, platformAccount, refundSeat, transport, verifySeatCheckout } from "./gig-gateway";
 import { activePlans, grantPassFromOrder, myPlans, PLAN_NAME_KEY, PLAN_TABLE, planForCard, planHeldUntil, planLastDay, passWindows, restorePassEntitlements, revokePassEntitlements, windowsEndingBetween } from "./person-plans";
 import type { ActiveContext } from "./session";
 
@@ -624,10 +624,17 @@ export async function refundPassOrder(ctx: ActiveContext, id: string, now: Date 
     return { revoked: await revokePassEntitlements(id, ctx.user.id, now, tx) };
   });
   if (!claimed) return (await asRefunded()) ?? { ok: false, errorKey: "passes.refuseNotRefundable" };
+  let refundId: string | null = null;
+  let refused: unknown = null;
   try {
-    const refund = await refundSeat(o.gatewayPaymentId, o.totalPaise, { shalaghar_pass_order: o.id }, false);
-    await db.passOrder.update({ where: { id }, data: { gatewayRefundId: refund.refundId } });
+    refundId = (await refundSeat(o.gatewayPaymentId, o.totalPaise, { shalaghar_pass_order: o.id }, false)).refundId;
   } catch (error) {
+    refused = error;
+  }
+  // TA-258: a refused call may be a refund the gateway made whose answer was lost; the payment says which. Only a
+  // refund the gateway did not make puts the pass back, and the refund's id is written apart from that undo.
+  if (refused !== null && !(await paymentRefundedAtGateway(o.gatewayPaymentId, o.totalPaise))) {
+    const error = refused;
     await db.$tenantTransaction(async (raw) => {
       const tx = raw as typeof db;
       await tx.passOrder.updateMany({ where: { id, status: "REFUNDED" }, data: { status: "PAID", refundedAt: null, refundedByUserId: null } });
@@ -636,7 +643,8 @@ export async function refundPassOrder(ctx: ActiveContext, id: string, now: Date 
     console.error("[pass-orders] refund refused at the gateway", error instanceof Error ? error.message : error);
     return { ok: false, errorKey: "passes.refuseGatewayDown" };
   }
-  await audit({ schoolId: null, actorUserId: ctx.user.id, action: "operator.pass.refund", targetType: "PassOrder", targetId: id, meta: { plan: o.planCode, holderUserId: o.userId, payerUserId: o.payerUserId, totalPaise: o.totalPaise, revoked: claimed.revoked } });
+  if (refundId) await db.passOrder.updateMany({ where: { id, status: "REFUNDED" }, data: { gatewayRefundId: refundId } }).catch((error) => console.error("[pass-orders] refund id not written", error instanceof Error ? error.message : error));
+  await audit({ schoolId: null, actorUserId: ctx.user.id, action: "operator.pass.refund", targetType: "PassOrder", targetId: id, meta: { plan: o.planCode, holderUserId: o.userId, payerUserId: o.payerUserId, totalPaise: o.totalPaise, revoked: claimed.revoked, ...(refused !== null ? { readBack: true } : {}) } });
   await tell(o.payerUserId, { titleKey: "passes.notifRefunded", url: "/account/plan", meta: { passOrderId: id } });
   if (o.userId !== o.payerUserId) await tell(o.userId, { titleKey: "passes.notifRefundedHolder", url: "/account/plan", meta: { passOrderId: id } });
   const after = await db.passOrder.findUniqueOrThrow({ where: { id }, select: ORDER_SELECT });
