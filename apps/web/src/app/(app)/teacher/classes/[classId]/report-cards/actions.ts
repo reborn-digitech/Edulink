@@ -3,6 +3,7 @@
 import { revalidatePath } from "next/cache";
 import { getT } from "@/lib/i18n/server";
 import { requireApiRole, AccessError } from "@/lib/tenancy";
+import { afterResponse } from "@/lib/after-response";
 import {
   generateCards,
   publishCards,
@@ -91,7 +92,8 @@ export async function saveCoScholastic(
 export async function publish(classId: string, title: string): Promise<Result> {
   try {
     const ctx = await requireApiRole("TEACHER", "ADMIN", "PRINCIPAL");
-    const result = await translated(await publishCards(ctx, classId, title));
+    // The families are told after the answer (TA-451).
+    const result = await translated(await publishCards(ctx, classId, title, { defer: afterResponse("reportCards.publish") }));
     revalidatePath(`/teacher/classes/${classId}/report-cards`);
     return result;
   } catch (error) {

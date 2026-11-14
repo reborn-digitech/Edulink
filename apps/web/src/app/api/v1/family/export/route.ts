@@ -2,6 +2,7 @@ import { familyExportQuerySchema } from "@edulink/contracts";
 import { requireApiReader } from "@/lib/api-reads/family";
 import { personExport, PERSON_EXPORT_BUDGET } from "@/lib/person-export";
 import { apiFailure, apiInvalid, budget } from "@/lib/api-v1";
+import { contentDisposition } from "@/lib/export-file";
 
 /**
  * GET /api/v1/family/export?student= — a person's own data as one JSON
@@ -21,7 +22,8 @@ export async function GET(request: Request) {
     return new Response(JSON.stringify(file.document, null, 2), {
       headers: {
         "Content-Type": "application/json; charset=utf-8",
-        "Content-Disposition": `attachment; filename="${file.filename}"`,
+        // A name in Devanagari travels in filename* (TA-135); a raw one made this door answer 500.
+        "Content-Disposition": contentDisposition("attachment", file.filename),
         "Cache-Control": "no-store, private",
       },
     });

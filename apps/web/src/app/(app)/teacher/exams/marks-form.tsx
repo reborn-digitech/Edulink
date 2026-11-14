@@ -21,6 +21,11 @@ import { useT } from "@/lib/i18n";
  * tag per class so the shell can count them; the service worker or the next
  * reconnection replays the POST. A sheet is replay-safe by nature (it is
  * stored as the current state), so no client id is needed.
+ *
+ * Both ways the sheet names the version it was drawn on (the page's hidden
+ * `basedOn`, TA-248 / TA-515): a sheet sent late from the outbox leaves alone
+ * every mark written since the page was opened, its blanks included, rather
+ * than putting the older sheet over them.
  */
 export function MarksForm({
   slotId,
@@ -50,10 +55,11 @@ export function MarksForm({
       const raw = String(value).trim();
       entries.push({ membershipId: key.slice("marks-".length), marks: raw === "" ? null : Number(raw) });
     }
+    const basedOn = String(data.get("basedOn") ?? "");
     void enqueue({
       url: "/api/v1/marks",
       method: "POST",
-      body: JSON.stringify({ slotId, classId, entries }),
+      body: JSON.stringify({ slotId, classId, entries, ...(basedOn ? { basedOn } : {}) }),
       tag: `marks:${classId}`,
     })
       .then(() => countQueued(`marks:${classId}`))

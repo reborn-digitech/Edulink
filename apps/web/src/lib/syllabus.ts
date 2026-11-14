@@ -66,6 +66,15 @@ function classSpelling(subjects: string[], typed: string): string {
 async function assertWritesSubject(caller: Staff, classId: string, subject: string): Promise<void> {
   if (!(await writesSubject(caller, classId, subject))) throw new AccessError("subjectWork.refuseSyllabus");
 }
+/**
+ * A lesson's chapter is one of ITS subject's list (TA-342, 13 Nov 2026). The write check is on the lesson's subject,
+ * so an English lesson naming a Mathematics chapter, marked taught, moved Mathematics on for the class under the
+ * English teacher's name. A chapter of the grade's list for another subject is refused as not on the list.
+ */
+async function assertUnitOfSubject(caller: Staff, klass: { gradeLevel: string | null }, unitId: string, subject: string): Promise<void> {
+  const unit = await db.syllabusUnit.findFirst({ where: { id: unitId, schoolId: caller.schoolId, gradeLevel: klass.gradeLevel ?? "" }, select: { id: true, subject: true } });
+  if (!unit || matchSubject([unit.subject], subject) === null) throw new AccessError("syllabus.refuseUnknownUnit", "NOT_FOUND");
+}
 
 /** The subjects a class teaches: its timetable's, its own, and any list its grade already has. */
 async function subjectsOf(schoolId: string, klass: { id: string; gradeLevel: string | null; subject: string | null }): Promise<string[]> {
@@ -145,23 +154,37 @@ async function yearProgress(schoolId: string): Promise<{ yearName: string | null
 /** The head's picture: every class × subject that has a list, with done, expected and behind. */
 export async function syllabusCoverage(ctx: ActiveContext): Promise<z.infer<typeof syllabusCoverageSchema>> {
   const caller = office(ctx);
-  const [{ yearName, elapsed }, classes, units, progress, lastLessons] = await Promise.all([
+  const [{ yearName, elapsed }, classes, units, progress, lastLessons, lessonsOnTimetable] = await Promise.all([
     yearProgress(caller.schoolId),
     db.class.findMany({ where: { schoolId: caller.schoolId, archivedAt: null }, select: { id: true, name: true, gradeLevel: true, subject: true }, orderBy: { name: "asc" } }),
     db.syllabusUnit.findMany({ where: { schoolId: caller.schoolId }, select: { id: true, gradeLevel: true, subject: true } }),
     db.syllabusProgress.findMany({ where: { schoolId: caller.schoolId }, select: { classId: true, unitId: true, status: true } }),
     db.lessonPlan.groupBy({ by: ["classId", "subject"], where: { schoolId: caller.schoolId, status: "TAUGHT" }, _max: { dateKey: true } }),
+    db.timetableSlot.findMany({ where: { class: { schoolId: caller.schoolId, archivedAt: null } }, select: { classId: true, subject: true }, distinct: ["classId", "subject"] }),
   ]);
   const unitsBy = new Map<string, string[]>();
   for (const u of units) (unitsBy.get(`${u.gradeLevel}|${u.subject}`) ?? unitsBy.set(`${u.gradeLevel}|${u.subject}`, []).get(`${u.gradeLevel}|${u.subject}`)!).push(u.id);
   const statusOf = new Map(progress.map((p) => [`${p.classId}|${p.unitId}`, p.status]));
   const lastBy = new Map(lastLessons.map((l) => [`${l.classId}|${l.subject}`, l._max.dateKey]));
+  /**
+   * A CLASS IS MEASURED ON THE SUBJECTS IT TAKES (TA-144, 13 Nov 2026). Every list of a grade was counted against
+   * every class of it, so 11 Commerce stood at 0 % on Physics, behind all year, counted in "classes behind" and in
+   * the overall. A class's lists are now those of its timetable's subjects and its own subject (case and spacing
+   * aside), and any list it has already moved on; a class with neither a timetable nor a subject says nothing of
+   * what it takes and is measured on every list of its grade, as before.
+   */
+  const takenBy = new Map<string, string[]>();
+  for (const s of lessonsOnTimetable) takenBy.set(s.classId, [...(takenBy.get(s.classId) ?? []), s.subject]);
+  const unitById = new Map(units.map((u) => [u.id, u]));
+  const movedOn = new Set(progress.filter((p) => p.status !== "NOT_STARTED").map((p) => { const u = unitById.get(p.unitId); return u ? `${p.classId}|${u.gradeLevel}|${u.subject}` : ""; }));
   const rows: z.infer<typeof syllabusCoverageSchema>["rows"] = [];
   for (const k of classes) {
     if (!k.gradeLevel) continue;
+    const taken = [...(takenBy.get(k.id) ?? []), ...(k.subject ? [k.subject] : [])];
     for (const [key, ids] of unitsBy) {
       const [gradeLevel, subject] = key.split("|") as [string, string];
       if (gradeLevel !== k.gradeLevel) continue;
+      if (taken.length > 0 && matchSubject(taken, subject) === null && !movedOn.has(`${k.id}|${key}`)) continue;
       const done = ids.filter((id) => statusOf.get(`${k.id}|${id}`) === "DONE").length;
       const inProgress = ids.filter((id) => statusOf.get(`${k.id}|${id}`) === "IN_PROGRESS").length;
       const expected = Math.round(elapsed * ids.length);
@@ -226,10 +249,7 @@ export async function saveLessonPlan(ctx: ActiveContext, input: z.infer<typeof l
   const caller = staff(ctx);
   const klass = await assertClassAccess({ schoolId: caller.schoolId, membershipId: caller.membershipId, role: caller.role }, input.classId);
   await assertWritesSubject(caller, klass.id, input.subject);
-  if (input.unitId) {
-    const unit = await db.syllabusUnit.findFirst({ where: { id: input.unitId, schoolId: caller.schoolId, gradeLevel: klass.gradeLevel ?? "" }, select: { id: true } });
-    if (!unit) throw new AccessError("syllabus.refuseUnknownUnit", "NOT_FOUND");
-  }
+  if (input.unitId) await assertUnitOfSubject(caller, klass, input.unitId, input.subject);
   // Stored as the class spells it, so the lesson lists under its syllabus (QB-04); the check above already matched it so.
   const subject = classSpelling(await subjectsOf(caller.schoolId, klass), input.subject);
   const lesson = await db.lessonPlan.create({
@@ -313,10 +333,7 @@ export async function applyPlanTemplate(ctx: ActiveContext, templateId: string, 
   if (!template) throw new AccessError("syllabus.refuseUnknownTemplate", "NOT_FOUND");
   const klass = await assertClassAccess({ schoolId: caller.schoolId, membershipId: caller.membershipId, role: caller.role }, input.classId, { write: true });
   await assertWritesSubject(caller, klass.id, template.subject);
-  if (input.unitId) {
-    const unit = await db.syllabusUnit.findFirst({ where: { id: input.unitId, schoolId: caller.schoolId, gradeLevel: klass.gradeLevel ?? "" }, select: { id: true } });
-    if (!unit) throw new AccessError("syllabus.refuseUnknownUnit", "NOT_FOUND");
-  }
+  if (input.unitId) await assertUnitOfSubject(caller, klass, input.unitId, template.subject);
   const school = await db.school.findUniqueOrThrow({ where: { id: caller.schoolId }, select: { timezone: true } });
   const body = readJson<TemplateBody>(template.body, EMPTY_BODY);
   const lesson = await db.lessonPlan.create({

@@ -61,6 +61,9 @@ export default async function TeacherExamsPage({
   // first visit a guessing game.
   const selectedSlot = slots.find((s) => s.id === requestedSlot) ?? slots[0] ?? null;
 
+  // The sheet's version, taken BEFORE its marks are read (TA-248 / TA-515, as the phone's grid does for TA-010):
+  // a save based on it, online or replayed from the outbox, leaves alone a mark written after it.
+  const version = new Date().toISOString();
   const grid = selectedSlot ? await marksGrid(ctx, selectedSlot.id, selectedClass.id) : null;
 
   // A sitting's marks join the weighted overall only through a weighted
@@ -169,6 +172,7 @@ export default async function TeacherExamsPage({
               <MarksForm slotId={selectedSlot.id} classId={selectedClass.id} action={saveMarksAction}>
                 <input type="hidden" name="slotId" value={selectedSlot.id} />
                 <input type="hidden" name="classId" value={selectedClass.id} />
+                <input type="hidden" name="basedOn" value={version} />
                 <ul className="divide-y divide-border">
                   {grid.pupils.map((pupil) => (
                     <li key={pupil.membershipId} className="flex items-center justify-between gap-3 py-2">

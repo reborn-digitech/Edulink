@@ -19,15 +19,22 @@ import type { FormState } from "@/lib/form-state";
  * the runner (CI runs 41415675038, 41454850718, 43309259037) and against a
  * production build here alike, with or without a revalidation marked on the
  * answer, while a fresh document of the same address held it.
+ *
+ * The office saves here too (TA-141): the page, the library and POST /api/v1/marks all admit an admin, and
+ * this action alone refused one. The sheet names the version it was drawn on (`basedOn`, the page's hidden
+ * field, TA-248 / TA-515): a pupil whose mark was written after the sheet was opened keeps that mark, and
+ * the answer says how many were kept.
  */
 export async function saveMarksAction(previous: FormState, formData: FormData): Promise<FormState> {
   return answerForm(
     previous,
     formData,
     async () => {
-      const ctx = await requireApiRole("TEACHER");
+      const ctx = await requireApiRole("TEACHER", "ADMIN");
       const slotId = String(formData.get("slotId") ?? "");
       const classId = String(formData.get("classId") ?? "");
+      const basedOnRaw = String(formData.get("basedOn") ?? "");
+      const basedOn = basedOnRaw !== "" && !Number.isNaN(Date.parse(basedOnRaw)) ? basedOnRaw : undefined;
 
       const entries: { membershipId: string; marks: number | null }[] = [];
       for (const [key, value] of formData.entries()) {
@@ -37,8 +44,9 @@ export async function saveMarksAction(previous: FormState, formData: FormData): 
         entries.push({ membershipId, marks: raw === "" ? null : Number(raw) });
       }
 
-      await saveMarks(ctx, slotId, classId, entries);
-      // Nothing for a toast: the sheet itself says it was saved (MarksForm's note).
+      const result = await saveMarks(ctx, slotId, classId, entries, { basedOn });
+      // Nothing for a toast: the sheet itself says it was saved (MarksForm's note), unless marks were kept.
+      if (result.skipped) return { key: "exams.savedSomeKept", vars: { count: result.skipped } };
       return null;
     },
     { revalidate: ["/teacher/exams"] },

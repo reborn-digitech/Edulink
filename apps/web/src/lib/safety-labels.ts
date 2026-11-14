@@ -327,6 +327,8 @@ const ACTION_KEYS: Record<string, TranslationKey> = {
   "competition.withdraw": "audit.competitionWithdraw",
   "competition.event.create": "audit.competitionEventCreate",
   "competition.event.update": "audit.competitionEventUpdate",
+  // TA-104: staff add an entrant.
+  "competition.entrant.add": "audit.competitionEntrantAdd",
   "expert.book": "audit.expertBook",
   "expert.cancel": "audit.expertCancel",
   "expert.invite": "audit.expertInvite",
@@ -432,6 +434,7 @@ const ACTION_KEYS: Record<string, TranslationKey> = {
   "absence.note.delete": "audit.absenceNoteDelete",
   "family.export": "audit.familyExport",
   "guardianship.unlinked": "audit.guardianshipUnlinked",
+  "guardianship.end": "audit.guardianshipEnd",
   "marks.export": "audit.marksExport",
   "timetable.import": "audit.timetableImport",
   "timetable.sections.copy": "audit.timetableSectionsCopy",
@@ -996,6 +999,7 @@ const ACTION_KEYS: Record<string, TranslationKey> = {
   "reportCard.generate": "audit.reportCardGenerate",
   "reportCard.publish": "audit.reportCardPublish",
   "reportCard.withdraw": "audit.reportCardWithdraw",
+  "reportCard.remark": "audit.reportCardRemark",
   "school.selfReadAge": "audit.schoolSelfReadAge",
   // end compliance-papers
 };

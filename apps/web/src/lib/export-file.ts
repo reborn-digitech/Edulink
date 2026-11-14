@@ -66,17 +66,30 @@ export async function csvToXlsx(csv: string, sheetName: string): Promise<Uint8Ar
 
 const PRIVATE = { "Cache-Control": "no-store, private" };
 
+/**
+ * A Content-Disposition header for a file name in any script (TA-135, 13 Nov 2026). A header value is bytes, and a
+ * Response built with "७ अ" in its file name threw, so the marks, gradebook and a person's own data export answered
+ * 500 for a class, an exam or a pupil named in Devanagari. A name that is plain ASCII is sent as it was; any other
+ * keeps an ASCII stand-in in `filename` and the real name in `filename*` (RFC 6266 / 5987), which browsers prefer.
+ */
+export function contentDisposition(kind: "attachment" | "inline", filename: string): string {
+  const ascii = filename.replace(/[^\x20-\x7e]+/g, "_").replace(/["\\]/g, "_");
+  if (ascii === filename) return `${kind}; filename="${filename}"`;
+  const encoded = encodeURIComponent(filename).replace(/['()*]/g, (c) => `%${c.charCodeAt(0).toString(16).toUpperCase()}`);
+  return `${kind}; filename="${ascii}"; filename*=UTF-8''${encoded}`;
+}
+
 /** The file as the browser should save it: CSV unless the link said xlsx. */
 export async function exportResponse(request: Request, file: ExportFile): Promise<Response> {
   if (!wantsXlsx(request)) {
     return new Response(file.csv, {
-      headers: { ...PRIVATE, "Content-Type": "text/csv; charset=utf-8", "Content-Disposition": `attachment; filename="${file.filename}"` },
+      headers: { ...PRIVATE, "Content-Type": "text/csv; charset=utf-8", "Content-Disposition": contentDisposition("attachment", file.filename) },
     });
   }
   const filename = file.filename.replace(/\.csv$/i, "") + ".xlsx";
   const sheet = filename.replace(/\.xlsx$/, "").replace(/^edulink-/, "").slice(0, 31);
   const bytes = await csvToXlsx(file.csv, sheet);
   return new Response(bytes as unknown as BodyInit, {
-    headers: { ...PRIVATE, "Content-Type": XLSX_MIME, "Content-Disposition": `attachment; filename="${filename}"` },
+    headers: { ...PRIVATE, "Content-Type": XLSX_MIME, "Content-Disposition": contentDisposition("attachment", filename) },
   });
 }

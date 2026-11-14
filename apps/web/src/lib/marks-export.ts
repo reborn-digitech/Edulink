@@ -32,9 +32,13 @@ function fromMilli(milli: number): number {
   return Math.round(milli / 10) / 100;
 }
 
-/** A class or exam name as a file name: nothing a file system refuses, Devanagari kept. */
+/**
+ * A class or exam name as a file name: nothing a file system refuses, Devanagari kept — its vowel signs and
+ * virama too (\p{M}, TA-135), which the letters-and-digits class alone cut "पाटील" into "प_ट_ल". The header that
+ * carries it is contentDisposition's (export-file.ts).
+ */
 export function fileToken(name: string): string {
-  return name.replace(/[^\p{L}\p{N}-]+/gu, "_").replace(/^_+|_+$/g, "").slice(0, 60) || "export";
+  return name.replace(/[^\p{L}\p{M}\p{N}-]+/gu, "_").replace(/^_+|_+$/g, "").slice(0, 60) || "export";
 }
 
 /** The class's roll, by name, with the roll and admission numbers the school keeps when it keeps them. */

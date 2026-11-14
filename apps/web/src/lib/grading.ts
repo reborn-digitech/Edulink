@@ -8,6 +8,7 @@ import { notify, notifyGuardians, notifyGuardiansOfClass } from "./notify";
 import { audit } from "./audit";
 import { RuleRefusal } from "./rule-refusal";
 import { finishedYearContaining } from "./academic-year";
+import { dateKeyInZone, safeTimeZone } from "./dates";
 import { AccessError, assertAssignmentAccess, assertClassAccess, assertGuardianAccess, matchSubject, teachesClass } from "./tenancy";
 import { isTeachingRole } from "./constants";
 import type { ActiveContext } from "./session";
@@ -46,6 +47,17 @@ export function workLabel(a: { class: { name: string } | null; offering?: { cour
 /** Where the teacher marks a piece of work: the school's gradebook, or a college offering's (R-48). */
 export function teacherWorkUrl(a: { id: string; offeringId: string | null }): string {
   return a.offeringId ? `/faculty/work/${a.id}` : `/teacher/assignments/${a.id}`;
+}
+
+/**
+ * ONE CHANGED MARK, AS THE AUDIT ROW KEEPS IT (TA-345, 13 Nov 2026). A save of a sheet was recorded as counts
+ * alone, so "it read 78 last week and 68 today" could not be answered: every save writes the whole sheet. The
+ * row now lists the cells that changed: the pupil's membership id and the mark before and after, numbers only
+ * (null for none), never a name or a comment.
+ */
+export type MarkChange = { m: string; from: number | null; to: number | null };
+export function markChange(membershipId: string, beforeMilli: number | null, afterMilli: number | null): MarkChange {
+  return { m: membershipId, from: beforeMilli === null ? null : beforeMilli / 1000, to: afterMilli === null ? null : afterMilli / 1000 };
 }
 
 /** Offering work is set, published and marked by its teacher or HOD alone (R-48); the office reads it. */
@@ -637,10 +649,23 @@ export async function saveGrades(
   refuseOfficeOnOfferingWork(assignment, ctx.role);
   const maxMilli = assignment.pointsMilli;
 
-  // A finished year's marks are the record — same rule as the exam grid. The
-  // assignment's own creation date says which year's work this is.
+  /**
+   * AN EXAM SITTING KEEPS THE EXAM'S RULES HERE TOO (TA-140, 13 Nov 2026). A sitting is an assignment of the
+   * class, so the homework gradebook and its door reach it; they marked it up to twice the maximum and judged the
+   * year by the day its row was made. A sitting's mark is now bounded by its paper's maximum, as on the grid.
+   */
+  const paper = assignment.examSlotId
+    ? await db.examSlot.findFirst({ where: { id: assignment.examSlotId, schoolId: ctx.schoolId }, select: { dateKey: true, pointsMilli: true } })
+    : null;
+
+  // A finished year's marks are the record — same rule as the exam grid. A sitting's year is its paper's date;
+  // a piece of work's is the day it was set ON THE SCHOOL'S CALENDAR (TA-346), since a year ends at the start of
+  // its last day in UTC and work set later that day otherwise fell outside the year it was set in.
   if (isTeachingRole(ctx.role)) {
-    const finished = await finishedYearContaining(ctx.schoolId, assignment.createdAt);
+    const dayKey = paper
+      ? paper.dateKey
+      : dateKeyInZone(assignment.createdAt, safeTimeZone((await db.school.findUnique({ where: { id: ctx.schoolId }, select: { timezone: true } }))?.timezone));
+    const finished = await finishedYearContaining(ctx.schoolId, new Date(`${dayKey}T00:00:00.000Z`));
     if (finished) {
       throw new AccessError("access.yearFinishedMarksLocked", "FORBIDDEN", { year: finished.name });
     }
@@ -649,6 +674,16 @@ export async function saveGrades(
   // Only students actually enrolled in this assignment's class (or registered on its offering).
   const enrolled = await workAudience(assignment, inputs.map((i) => i.studentMembershipId));
   const allowed = new Set(enrolled.map((e) => e.studentMembershipId));
+  // The marks as they stood, so the audit row can say whose mark changed and from what (TA-345).
+  const before = new Map(
+    (
+      await db.grade.findMany({
+        where: { assignmentId, studentMembershipId: { in: [...allowed] } },
+        select: { studentMembershipId: true, scoreMilli: true },
+      })
+    ).map((g) => [g.studentMembershipId, g.scoreMilli]),
+  );
+  const changes: MarkChange[] = [];
 
   const rejected: string[] = [];
   let saved = 0;
@@ -666,6 +701,7 @@ export async function saveGrades(
         where: { assignmentId, studentMembershipId: input.studentMembershipId },
       });
       cleared += removed.count;
+      if (removed.count > 0) changes.push(markChange(input.studentMembershipId, before.get(input.studentMembershipId) ?? null, null));
       continue;
     }
 
@@ -682,16 +718,15 @@ export async function saveGrades(
       rejected.push(input.studentMembershipId);
       continue;
     }
+    // An exam sitting's paper is out of its maximum, and no more (TA-140): the grid refuses the same mark.
+    if (paper && scoreMilli > paper.pointsMilli) {
+      rejected.push(input.studentMembershipId);
+      continue;
+    }
 
-    const existing = await db.grade.findUnique({
-      where: {
-        assignmentId_studentMembershipId: {
-          assignmentId,
-          studentMembershipId: input.studentMembershipId,
-        },
-      },
-      select: { id: true },
-    });
+    const existing = before.has(input.studentMembershipId);
+    const previous = before.get(input.studentMembershipId) ?? null;
+    if (!existing || previous !== scoreMilli) changes.push(markChange(input.studentMembershipId, previous, scoreMilli));
 
     const submission = await db.submission.findUnique({
       where: {
@@ -789,7 +824,7 @@ export async function saveGrades(
     action: "grade.save",
     targetType: "Assignment",
     targetId: assignmentId,
-    meta: { saved, cleared, rejected: rejected.length },
+    meta: { saved, cleared, rejected: rejected.length, changes },
   });
 
   return { saved, cleared, rejected };

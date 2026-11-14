@@ -9,7 +9,7 @@ import { AccessError } from "./tenancy";
 import { studentsGuardiansMaySee } from "./student-consent";
 import { isDateKey } from "./dates";
 import { EXAM_KINDS, type ExamKind } from "./constants";
-import { workLabel } from "./grading";
+import { markChange, workLabel, type MarkChange } from "./grading";
 import type { ActiveContext } from "./session";
 
 /**
@@ -208,12 +208,26 @@ export async function addSlot(
   const { schoolId } = requireAdmin(ctx);
   const series = await db.examSeries.findFirst({
     where: { id: seriesId, schoolId, archivedAt: null },
-    select: { id: true, _count: { select: { slots: true } } },
+    select: { id: true, gradeLevel: true, _count: { select: { slots: true } } },
   });
   if (!series) throw new AccessError("access.examNotFound", "NOT_FOUND");
 
-  const subject = input.subject.trim().slice(0, 80);
-  if (!subject) throw new AccessError("access.giveTheSubjectAName");
+  const typedSubject = input.subject.trim().replace(/\s+/g, " ").slice(0, 80);
+  if (!typedSubject) throw new AccessError("access.giveTheSubjectAName");
+  /**
+   * ONE SUBJECT, ONE SPELLING (TA-143, 13 Nov 2026). The card groups a class's papers by subject, and "Maths" on the
+   * unit test beside "maths" on the mid-term made two rows that the kind weights never combined. A subject typed
+   * as a paper of this series or of another series of the grade already spells it, case and spacing aside, takes
+   * that spelling, so re-adding "maths" edits the "Maths" paper rather than making a second one.
+   */
+  const spelled =
+    (await db.examSlot.findFirst({ where: { schoolId, seriesId, subject: { equals: typedSubject, mode: "insensitive" } }, select: { subject: true } })) ??
+    (await db.examSlot.findFirst({
+      where: { schoolId, subject: { equals: typedSubject, mode: "insensitive" }, series: { gradeLevel: series.gradeLevel } },
+      orderBy: { createdAt: "asc" },
+      select: { subject: true },
+    }));
+  const subject = spelled?.subject ?? typedSubject;
   if (!isDateKey(input.dateKey)) throw new AccessError("access.pickADayForThePaper");
   if (!Number.isFinite(input.maxMarks) || input.maxMarks <= 0 || input.maxMarks > 1000) {
     throw new AccessError("access.maxMarksOutOfRange");
@@ -273,6 +287,16 @@ export async function addSlot(
     }
   }
 
+  /**
+   * A MAXIMUM UNDER THE MARKS ALREADY SAVED IS REFUSED (TA-347). "Out of 100" made "out of 80" after the marking left
+   * a 92 standing as 92/80 on the family's page and 115 % on a card built after; the office is told how many marks
+   * stand above the new maximum, as removing a marked paper tells it how many it would orphan.
+   */
+  const newMaxMilli = toMilli(input.maxMarks);
+  const above = await db.grade.count({
+    where: { schoolId, scoreMilli: { gt: newMaxMilli }, assignment: { examSlot: { seriesId, subject } } },
+  });
+  if (above > 0) throw new AccessError("access.maxBelowSavedMarks", "FORBIDDEN", { count: above, max: input.maxMarks });
 
   const slot = await db.examSlot.upsert({
     where: { seriesId_subject: { seriesId, subject } },
@@ -686,8 +710,13 @@ export async function marksGrid(ctx: ActiveContext, slotId: string, classId: str
  * grade was written after it (counted as `skipped`), so a sheet replayed late
  * from a phone's outbox cannot put its blanks over marks saved since, from
  * the phone or the web. Such a sheet is answered with the sheet's new
- * `version` for the next save. A sheet without it (the web's form, an older
- * phone) is applied whole, as before.
+ * `version` for the next save. A sheet without it (an older phone, a caller
+ * of the door that names none) is applied whole, as before; the web's form
+ * names the version its page was drawn on, online and from its outbox alike
+ * (TA-248 / TA-515).
+ *
+ * The audit row names the cells that changed, with the mark before and after
+ * (TA-345, markChange in grading.ts).
  */
 export async function saveMarks(
   ctx: ActiveContext,
@@ -778,6 +807,16 @@ export async function saveMarks(
         ).map((g) => g.studentMembershipId),
       )
     : new Set<string>();
+  // The marks as they stood, for the audit row's changed cells (TA-345).
+  const before = new Map(
+    (
+      await db.grade.findMany({
+        where: { assignmentId: sitting.id },
+        select: { studentMembershipId: true, scoreMilli: true },
+      })
+    ).map((g) => [g.studentMembershipId, g.scoreMilli]),
+  );
+  const changes: MarkChange[] = [];
 
   let saved = 0;
   let cleared = 0;
@@ -793,8 +832,11 @@ export async function saveMarks(
         where: { assignmentId: sitting.id, studentMembershipId: entry.membershipId },
       });
       cleared += gone.count;
+      if (gone.count > 0) changes.push(markChange(entry.membershipId, before.get(entry.membershipId) ?? null, null));
       continue;
     }
+    const previous = before.get(entry.membershipId) ?? null;
+    if (!before.has(entry.membershipId) || previous !== toMilli(entry.marks)) changes.push(markChange(entry.membershipId, previous, toMilli(entry.marks)));
     await db.grade.upsert({
       where: {
         assignmentId_studentMembershipId: {
@@ -820,7 +862,7 @@ export async function saveMarks(
     action: "exam.marksSave",
     targetType: "Assignment",
     targetId: sitting.id,
-    meta: { series: slot.series.name, subject: slot.subject, classId, saved, cleared, ...(stamped ? { skipped } : {}) },
+    meta: { series: slot.series.name, subject: slot.subject, classId, saved, cleared, ...(stamped ? { skipped } : {}), changes },
   });
 
   // Taken after every write above: a grade written later than this is newer than what this sheet knew.

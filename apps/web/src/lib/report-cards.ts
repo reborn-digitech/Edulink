@@ -2,7 +2,8 @@ import "server-only";
 import type { TranslationKey } from "@/lib/i18n/dictionary";
 import { db } from "./db";
 import { audit } from "./audit";
-import { notify } from "./notify";
+import { notify, type NotifyInput } from "./notify";
+import type { Defer } from "./after-response";
 import { AccessError } from "./tenancy";
 import { getAttendanceSummary } from "./attendance";
 import { ensureSittings } from "./exams";
@@ -320,6 +321,12 @@ async function cardYears(schoolId: string) {
   return { years, yearOf };
 }
 
+/** How many of a publish's notices go out at once (TA-451). */
+const PUBLISH_NOTICE_BATCH = 10;
+
+/** A paper's subject as the card groups it (TA-143): case and spacing aside. */
+const subjectKey = (subject: string) => subject.trim().replace(/\s+/g, " ").toLowerCase();
+
 /**
  * The ids of ONE set's cards (TA-009): the cards of the title in the class with the status asked, of one academic
  * year, the latest among them. Generate keeps a title to one year in a class from now on; a class that came to hold
@@ -570,11 +577,17 @@ export async function generateCards(
      * EVERY PERCENT IS ROUNDED ONCE, to the one decimal the card prints, and
      * the letter is read from that rounded number — never from the raw figure
      * behind it, which is how 90.96 used to print "91.0 % A2". */
+    // One row per subject, case and spacing aside (TA-143): "Maths" on one series and "maths" on another are one
+    // subject, shown in the spelling of its first paper on the card.
     const bySubject = new Map<string, typeof assignments>();
+    const subjectKeyOf = new Map<string, string>();
     for (const a of assignments) {
-      const list = bySubject.get(a.examSlot!.subject) ?? [];
+      const typed = a.examSlot!.subject;
+      const shownAs = subjectKeyOf.get(subjectKey(typed)) ?? typed;
+      subjectKeyOf.set(subjectKey(typed), shownAs);
+      const list = bySubject.get(shownAs) ?? [];
       list.push(a);
-      bySubject.set(a.examSlot!.subject, list);
+      bySubject.set(shownAs, list);
     }
     const partOf = (a: (typeof assignments)[number]): PaperPart => ({
       label: a.examSlot!.series.name,
@@ -688,7 +701,7 @@ export async function generateCards(
           scoreMilli,
           pointsMilli: a.pointsMilli,
           position,
-          subject: a.examSlot!.subject,
+          subject: subjectKeyOf.get(subjectKey(a.examSlot!.subject)) ?? a.examSlot!.subject,
           kind: "SCHOLASTIC",
           letter: bandFor(shownPercent(paperPercent), config.bands)?.label ?? null,
         };
@@ -773,10 +786,13 @@ export async function setRemark(
     return { ok: false, errorKey: "reportCards.publishedLocked" };
   }
 
+  const words = remark.trim().slice(0, 2000) || null;
   await db.reportCard.update({
     where: { id: card.id },
-    data: { remark: remark.trim().slice(0, 2000) || null },
+    data: { remark: words },
   });
+  // On the record like every other card write (TA-343): who changed the remark and when, never its words.
+  await audit({ schoolId: ctx.schoolId, actorUserId: ctx.user.id, action: "reportCard.remark", targetType: "ReportCard", targetId: card.id, meta: { remarkGiven: words !== null } });
   return { ok: true };
 }
 
@@ -792,6 +808,8 @@ export async function publishCards(
   ctx: ActiveContext,
   classId: string,
   title: string,
+  /** Where the families' notices run (TA-451): the door's and the action's `afterResponse`; none, inline. */
+  opts: { defer?: Defer } = {},
 ): Promise<{ ok: boolean; errorKey?: TranslationKey; published?: number }> {
   await assertMayWriteCards(ctx, classId);
 
@@ -846,34 +864,35 @@ export async function publishCards(
     meta: { title, published: drafts.length },
   });
 
-  // The child, and their guardians. Told once, when it is actually readable.
+  /**
+   * The child, and their guardians. Told once, when it is actually readable.
+   *
+   * NOT ONE AFTER ANOTHER INSIDE THE PRESS (TA-451, 13 Nov 2026). A class of 45 with 80 guardians was 125 notices in
+   * series, each with its reads, an insert and the pushes, plus a guardianship read per card, all before the answer;
+   * a request cut short left the families not yet reached untold, with the cards already out. The guardians are
+   * read once for the set, and the notices go out a few at a time, after the answer where the caller defers them
+   * (the door and the web's action do; a caller that names no `defer` waits for them, as before).
+   */
+  const guardians = await db.guardianship.findMany({
+    where: { studentMembershipId: { in: drafts.map((d) => d.studentMembershipId) }, status: "ACTIVE" },
+    select: { studentMembershipId: true, parentUserId: true },
+  });
+  const notices: NotifyInput[] = [];
   for (const draft of drafts) {
-    await notify({
-      userId: draft.student.userId,
-      schoolId: ctx.schoolId,
-      kind: "GRADE",
-      titleKey: "notifTitle.reportCardReady",
-      body: title,
-      url: "/exams?tab=cards",
-    });
-
-    const guardians = await db.guardianship.findMany({
-      where: { studentMembershipId: draft.studentMembershipId, status: "ACTIVE" },
-      select: { parentUserId: true },
-    });
+    notices.push({ userId: draft.student.userId, schoolId: ctx.schoolId, kind: "GRADE", titleKey: "notifTitle.reportCardReady", body: title, url: "/exams?tab=cards" });
     const childName = draft.student.user.preferredName ?? draft.student.user.name;
     for (const guardian of guardians) {
-      await notify({
-        userId: guardian.parentUserId,
-        schoolId: ctx.schoolId,
-        kind: "GRADE",
-        titleKey: "notifTitle.childReportCardReady",
-        titleVars: { name: childName },
-        body: title,
-        url: "/exams?tab=cards",
-      });
+      if (guardian.studentMembershipId !== draft.studentMembershipId) continue;
+      notices.push({ userId: guardian.parentUserId, schoolId: ctx.schoolId, kind: "GRADE", titleKey: "notifTitle.childReportCardReady", titleVars: { name: childName }, body: title, url: "/exams?tab=cards" });
     }
   }
+  const tell = async () => {
+    for (let i = 0; i < notices.length; i += PUBLISH_NOTICE_BATCH) {
+      await Promise.all(notices.slice(i, i + PUBLISH_NOTICE_BATCH).map((notice) => notify(notice)));
+    }
+  };
+  if (opts.defer) opts.defer(tell);
+  else await tell();
 
   return { ok: true, published: drafts.length };
 }
@@ -949,7 +968,22 @@ export async function cardsForClass(ctx: ActiveContext, classId: string, title?:
  * the teacher has not finished are exactly what a parent must not see, and
  * "nobody has the link yet" is not access control.
  */
-export async function getCard(ctx: ActiveContext, cardId: string): Promise<Card | null> {
+/**
+ * The reads the cards of one class set share (TA-453): the school's letterhead, its rules of today, and the set's
+ * signatures and count. The bundle reads its cards with one memo, so a class of forty makes those reads once and
+ * not forty times; a caller reading one card passes none.
+ */
+export type CardReadMemo = Map<string, Promise<unknown>>;
+function readOnce<T>(memo: CardReadMemo | undefined, key: string, read: () => Promise<T>): Promise<T> {
+  if (!memo) return read();
+  const held = memo.get(key) as Promise<T> | undefined;
+  if (held) return held;
+  const reading = read();
+  memo.set(key, reading);
+  return reading;
+}
+
+export async function getCard(ctx: ActiveContext, cardId: string, memo?: CardReadMemo): Promise<Card | null> {
   // ⚠ NO schoolId GATE. A guardian's session has no school — they are
   // authorised through Guardianship, not Membership — and requiring one here
   // was why every parent's "open the report card" link answered 404 while the
@@ -997,14 +1031,16 @@ export async function getCard(ctx: ActiveContext, cardId: string): Promise<Card 
   const allowed = await mayRead(ctx, card);
   if (!allowed) return null;
 
-  const school = await db.school.findUniqueOrThrow({
-    where: { id: card.schoolId },
-    select: { name: true, timezone: true, logoPath: true, addressLine: true, city: true, region: true, postalCode: true, contactPhone: true, contactEmail: true, website: true, brandPrimary: true },
-  });
+  const school = await readOnce(memo, `school:${card.schoolId}`, () =>
+    db.school.findUniqueOrThrow({
+      where: { id: card.schoolId },
+      select: { name: true, timezone: true, logoPath: true, addressLine: true, city: true, region: true, postalCode: true, contactPhone: true, contactEmail: true, website: true, brandPrimary: true },
+    }),
+  );
   const letterhead = school;
   // A card built before the rules existed reads the school's rules of today;
   // one built since keeps the snapshot it was issued with.
-  const current = await readReportCardConfig(card.schoolId);
+  const current = await readOnce(memo, `rules:${card.schoolId}`, () => readReportCardConfig(card.schoolId));
   const parseJson = <T,>(raw: string | null, fallback: T): T => {
     if (!raw) return fallback;
     try {
@@ -1036,8 +1072,14 @@ export async function getCard(ctx: ActiveContext, cardId: string): Promise<Card 
     return { percent: shown, letter: band?.label ?? null, points: band?.points ?? null };
   };
   const overall = rounded(card.overallPercentMilli === null ? null : card.overallPercentMilli / 1000, card.overallLetter, null);
-  const signed = card.status === "PUBLISHED" ? await paperSignatures(ctx, { kind: "REPORT_CARD_SET", id: cardSetId(card.classId, card.title), schoolId: card.schoolId }) : { signatures: [], seal: null };
-  const setCount = signed.signatures.length > 0 ? await db.reportCard.count({ where: { schoolId: card.schoolId, classId: card.classId, title: card.title, status: "PUBLISHED" } }) : 1;
+  const { signed, setCount } =
+    card.status === "PUBLISHED"
+      ? await readOnce(memo, `set:${cardSetId(card.classId, card.title)}`, async () => {
+          const signatures = await paperSignatures(ctx, { kind: "REPORT_CARD_SET", id: cardSetId(card.classId, card.title), schoolId: card.schoolId });
+          const count = signatures.signatures.length > 0 ? await db.reportCard.count({ where: { schoolId: card.schoolId, classId: card.classId, title: card.title, status: "PUBLISHED" } }) : 1;
+          return { signed: signatures, setCount: count };
+        })
+      : { signed: { signatures: [], seal: null }, setCount: 1 };
 
   return {
     id: card.id,

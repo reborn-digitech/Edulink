@@ -278,10 +278,12 @@ export function meanPoints(subjects: { points: number | null; percent?: number |
  * half-way through setting them, and combining then gave the term without a
  * share nothing at all — a whole term's marks off the annual card with
  * nothing on the card to say so. A share of nought is a share: a term the
- * school has said counts for nothing.
+ * school has said counts for nothing, so a 0 beside a term with no share is
+ * half set too (TA-587): counted as no share, it let the annual card weigh
+ * the two terms equally, the 0 term for half.
  */
 export function termSharesComplete(terms: { weightPercent: number | null }[]): boolean {
-  const withShare = terms.filter((t) => t.weightPercent !== null && t.weightPercent > 0).length;
+  const withShare = terms.filter((t) => t.weightPercent !== null).length;
   if (withShare === 0) return true;
   return terms.every((t) => t.weightPercent !== null);
 }

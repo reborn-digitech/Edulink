@@ -1,6 +1,7 @@
 import { teachingCardsPublishedSchema, teachingCardsTitleSchema } from "@edulink/contracts";
 import { requireApiRole } from "@/lib/tenancy";
 import { publishCards } from "@/lib/report-cards";
+import { afterResponse } from "@/lib/after-response";
 import { apiRefused } from "@/lib/api-reads/admin";
 import { apiFailure, apiInvalid, ok, readJson } from "@/lib/api-v1";
 
@@ -15,7 +16,8 @@ export async function POST(request: Request, { params }: { params: Promise<{ cla
     const { classId } = await params;
     const parsed = teachingCardsTitleSchema.safeParse(await readJson(request));
     if (!parsed.success) return apiInvalid(parsed);
-    const result = await publishCards(ctx, classId, parsed.data.title);
+    // The families are told after the answer (TA-451).
+    const result = await publishCards(ctx, classId, parsed.data.title, { defer: afterResponse("reportCards.publish") });
     if (!result.ok) return apiRefused(result);
     return ok(teachingCardsPublishedSchema.parse({ published: result.published ?? 0 }));
   } catch (error) {
