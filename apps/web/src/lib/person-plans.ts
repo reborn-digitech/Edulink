@@ -1,6 +1,8 @@
 import "server-only";
 import { cache } from "react";
 import {
+  entitledFromRows,
+  featuresOfPlanRow,
   PERSON_PLANS,
   PLAN_FEATURES,
   PLATFORM_FEATURES,
@@ -115,9 +117,7 @@ async function planRows(): Promise<PlanRow[]> {
 
 /** The features a plan row opens, held to the contracts' list. */
 function featuresOfRow(row: Pick<PlanRow, "code" | "features">): FeatureCode[] {
-  const raw = Array.isArray(row.features) ? row.features : [];
-  const listed = raw.filter((f): f is FeatureCode => typeof f === "string" && isFeature(f));
-  return listed.length ? listed : isPlan(row.code) ? [...PLAN_FEATURES[row.code]] : [];
+  return featuresOfPlanRow(row);
 }
 
 /** The plans the operator has made active. Read once per request. */
@@ -144,17 +144,13 @@ export const entitledFeatures = cache(async (userId: string): Promise<ReadonlySe
     where: { userId, validFrom: { lte: now }, validTo: { gt: now } },
     select: { feature: true, planCode: true, revokedAt: true },
   });
-  const out = new Set(rows.filter((r) => !r.revokedAt).map((r) => r.feature).filter(isFeature));
-  const held = new Set(rows.flatMap((r) => (!r.revokedAt && r.planCode && isPlan(r.planCode) ? [r.planCode] : [])));
-  if (held.size > 0) {
-    const plans = await planRows();
-    for (const plan of held) {
-      const written = new Set(rows.filter((r) => r.planCode === plan).map((r) => r.feature));
-      const row = plans.find((r) => r.code === plan);
-      for (const feature of row ? featuresOfRow(row) : PLAN_FEATURES[plan]) if (!written.has(feature)) out.add(feature);
-    }
-  }
-  return out;
+  // The one rule the sweeps also read (contracts entitledFromRows); the plan rows are read only for a person holding a plan.
+  const holdsPlan = rows.some((r) => !r.revokedAt && r.planCode && isPlan(r.planCode));
+  const plans = holdsPlan ? await planRows() : [];
+  return entitledFromRows(rows, (plan) => {
+    const row = plans.find((r) => r.code === plan);
+    return row ? featuresOfRow(row) : PLAN_FEATURES[plan];
+  });
 });
 
 /**

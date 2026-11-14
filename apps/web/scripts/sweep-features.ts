@@ -22,7 +22,7 @@
  */
 import { createHash, randomBytes } from "node:crypto";
 import type { PrismaClient } from "@prisma/client";
-import { PERSON_PLANS, PLAN_FEATURES, PLATFORM_FEATURES, type FeatureCode, type PlanCode } from "@edulink/contracts";
+import { entitledFromRows, featuresOfPlanRow, PERSON_PLANS, PLAN_FEATURES, PLATFORM_FEATURES, type FeatureCode, type PlanCode } from "@edulink/contracts";
 import { featuresOf, type Endpoint } from "../src/lib/api-catalog/types";
 
 export type GateState = {
@@ -30,7 +30,7 @@ export type GateState = {
   on: ReadonlySet<FeatureCode>;
   /** The plans the operator has made active (an inactive plan asks nothing). */
   activePlans: ReadonlySet<PlanCode>;
-  /** Per user id, the features an unrevoked entitlement covers now. */
+  /** Per user id, the features the person holds now by the server's own rule (contracts entitledFromRows). */
   entitled: ReadonlyMap<string, ReadonlySet<FeatureCode>>;
 };
 
@@ -45,19 +45,28 @@ const isPlan = (code: string): code is PlanCode => (PERSON_PLANS as readonly str
 
 /** The switches, the active plans and these people's entitlements, read once before a run judges anything. */
 export async function readGateState(db: PrismaClient, userIds: readonly string[] | "everyone", now: Date = new Date()): Promise<GateState> {
-  const live = { revokedAt: null, validFrom: { lte: now }, validTo: { gt: now } };
+  // The window's rows, revoked ones too: the server's rule (contracts entitledFromRows, TA-185) opens every feature a held
+  // plan lists today that the window names no row for, and a revoked row keeps its feature shut.
+  const live = { validFrom: { lte: now }, validTo: { gt: now } };
+  const select = { userId: true, feature: true, planCode: true, revokedAt: true } as const;
   const [features, plans, rows] = await Promise.all([
     db.platformFeature.findMany({ select: { code: true, enabled: true } }),
-    db.personPlan.findMany({ select: { code: true, active: true } }),
+    db.personPlan.findMany({ select: { code: true, active: true, features: true } }),
     // "everyone": the page sweep mints its actors as it goes, so it reads every live row (a small table) once.
     userIds === "everyone"
-      ? db.entitlement.findMany({ where: live, select: { userId: true, feature: true } })
+      ? db.entitlement.findMany({ where: live, select })
       : userIds.length
-        ? db.entitlement.findMany({ where: { userId: { in: [...new Set(userIds)] }, ...live }, select: { userId: true, feature: true } })
+        ? db.entitlement.findMany({ where: { userId: { in: [...new Set(userIds)] }, ...live }, select })
         : Promise.resolve([]),
   ]);
+  const byUser = new Map<string, typeof rows>();
+  for (const r of rows) byUser.set(r.userId, [...(byUser.get(r.userId) ?? []), r]);
+  const featuresOfPlan = (plan: PlanCode) => {
+    const row = plans.find((p) => p.code === plan);
+    return row ? featuresOfPlanRow(row) : PLAN_FEATURES[plan];
+  };
   const entitled = new Map<string, Set<FeatureCode>>();
-  for (const r of rows) if (isFeature(r.feature)) entitled.set(r.userId, (entitled.get(r.userId) ?? new Set()).add(r.feature));
+  for (const [userId, own] of byUser) entitled.set(userId, entitledFromRows(own, featuresOfPlan));
   return {
     on: new Set(features.filter((f) => f.enabled && isFeature(f.code)).map((f) => f.code as FeatureCode)),
     activePlans: new Set(plans.filter((p) => p.active && isPlan(p.code)).map((p) => p.code as PlanCode)),

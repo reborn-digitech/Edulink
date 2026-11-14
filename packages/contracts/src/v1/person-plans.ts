@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { platformFeatureSchema, type FeatureCode } from "./platform-features";
+import { PLATFORM_FEATURES, platformFeatureSchema, type FeatureCode } from "./platform-features";
 
 /**
  * PLANS SOLD PER PERSON (the owner's decisions of 15–16 October 2026; docs/decisions/0006-plans-and-paid-seats.md).
@@ -28,6 +28,36 @@ export const PLAN_FEATURES: Record<PlanCode, readonly FeatureCode[]> = {
   TEACHER: ["ASSISTANT", "QUESTION_BANK", "QUESTION_GIG", "TEACHER_SESSIONS", "JOB_BOARD"],
   EXPERT: ["EXPERT_SESSIONS"],
 };
+
+/** The features a plan row opens, held to the contracts' list: the row's own list where it names any, else PLAN_FEATURES. */
+export function featuresOfPlanRow(row: { code: string; features: unknown }): FeatureCode[] {
+  const raw = Array.isArray(row.features) ? row.features : [];
+  const listed = raw.filter((f): f is FeatureCode => typeof f === "string" && (PLATFORM_FEATURES as readonly string[]).includes(f));
+  return listed.length ? listed : (PERSON_PLANS as readonly string[]).includes(row.code) ? [...PLAN_FEATURES[row.code as PlanCode]] : [];
+}
+
+/**
+ * The features a person holds from their entitlement rows in force now (TA-185): every unrevoked row's feature, and, for
+ * each plan held through an unrevoked row, every feature that plan lists today which the person's rows for that plan do
+ * not name (a feature added to the plan after the window was written), while a row the operator revoked keeps its
+ * feature shut. The one rule for the server's gate (apps/web/src/lib/person-plans.ts entitledFeatures) and for the
+ * sweeps' expectations (apps/web/scripts/sweep-features.ts readGateState), which had drifted apart (the features-on
+ * API sweep, 15 November 2026).
+ */
+export function entitledFromRows(
+  rows: readonly { feature: string; planCode: string | null; revokedAt: Date | null }[],
+  featuresOfPlan: (plan: PlanCode) => readonly FeatureCode[],
+): Set<FeatureCode> {
+  const isFeature = (f: string): f is FeatureCode => (PLATFORM_FEATURES as readonly string[]).includes(f);
+  const isPlan = (p: string): p is PlanCode => (PERSON_PLANS as readonly string[]).includes(p);
+  const out = new Set(rows.filter((r) => !r.revokedAt).map((r) => r.feature).filter(isFeature));
+  const held = new Set(rows.flatMap((r) => (!r.revokedAt && r.planCode && isPlan(r.planCode) ? [r.planCode] : [])));
+  for (const plan of held) {
+    const written = new Set(rows.filter((r) => r.planCode === plan).map((r) => r.feature));
+    for (const feature of featuresOfPlan(plan)) if (!written.has(feature)) out.add(feature);
+  }
+  return out;
+}
 
 /**
  * THE PRICE LIST (decision 0008, the owner's decision of 7 November 2026): every plan ₹99 a month and ₹999 a year.

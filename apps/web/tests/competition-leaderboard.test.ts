@@ -46,6 +46,9 @@ let betaId: string;
 let alphaAdmin: ActiveContext;
 let betaAdmin: ActiveContext;
 let competitionId: string;
+// The competitions this suite made, and no other: an unscoped delete by a "ZZ " title took every ZZ competition in every
+// school, the page and API sweeps' "ZZ Sweep Quiz" fixture among them (the features-on API sweep, 15 November 2026).
+const made: string[] = [];
 
 function ctx(over: Partial<ActiveContext> & { userId: string }): ActiveContext {
   return {
@@ -157,12 +160,13 @@ beforeEach(async () => {
       },
     })
   ).id;
+  made.push(competitionId);
 });
 
 afterEach(async () => {
   await db.competitionStanding.deleteMany({ where: { schoolId: { in: [alphaId, betaId] } } });
   await db.competitionEntry.deleteMany({ where: { schoolId: { in: [alphaId, betaId] } } });
-  await db.competition.deleteMany({ where: { title: { startsWith: "ZZ " } } });
+  await db.competition.deleteMany({ where: { OR: [{ id: { in: made } }, { organizerSchoolId: { in: [alphaId, betaId] } }] } });
   await db.user.deleteMany({ where: { email: { endsWith: EMAIL_SUFFIX } } });
   // The name is a snapshot and one test changes it. Put it back, or the next
   // test asserts against a name a previous one renamed.
@@ -484,6 +488,7 @@ describe("switching the board on", () => {
         status: "PUBLISHED",
       },
     });
+    made.push(external.id);
     await expect(setLeaderboard(alphaAdmin, external.id, true)).rejects.toThrow(AccessError);
   });
 
