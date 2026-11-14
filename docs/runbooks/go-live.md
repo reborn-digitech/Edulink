@@ -196,7 +196,11 @@ Apple, Google, Razorpay, the lawyer.
 
   **What.** The app serves `/privacy` and `/delete-account` itself. The owner provides a support address that
   somebody reads (`SUPPORT_EMAIL`) and reads the policy pages against decision 0002 (store checklist items 1
-  and 9).
+  and 9). The public privacy texts were rewritten on 14 November 2026 (decision 0002's amendment of that day and
+  decision 0009: what is kept and for how long, the outside companies by name, and that the company's team can
+  open any school at any time): counsel, and a native speaker of Hindi and of Marathi, read `/privacy`,
+  `/delete-account`, the three store listings and `apps/mobile/store/privacy-answers.md` before any school is
+  shown them. That reading has not happened yet.
 
   **Verify.** The mailbox receives a test mail.
 
@@ -386,6 +390,29 @@ and one-off scripts connect as the owner. Never run `db:seed`, `db:reset` or `db
   `before-go-live`.
 
   **Verify.** The snapshot is listed. Write PITR's window here: `<fill in>`.
+
+- [ ] **2.8 The money tables refuse a delete, and each number series has a counter row (before paid seats or passes open)** — engineer
+
+  **What.** Added 14 November 2026 for TA-366 of the testing analysis of 13 November 2026; to be done, in a
+  migration of its own on the dev machine and then through 2.3, before the paid-seats switch is turned on or any
+  plan's passes go on sale (5.1). Today the code alone keeps the money: the operator's erase of a school
+  (`deleteSchoolEntirely`, which the bulk erase runs per school) refuses while the school's bookings carry seat
+  payments or an account it would remove holds seat payments, payouts, invoices, question-writer payments or
+  earnings, or slots with payments, and points to "Remove school", which keeps everything. The schema still
+  cascades. The migration changes the money relations from `onDelete: Cascade` to `onDelete: Restrict`:
+  `SessionPayment.booking`, `.slot`, `.payer` and `.expert`; `ExpertPayout.expert`; `GigInvoice.payout` and
+  `.expert`; `GigEarning.user` and `GigPayment.user`; and closes every cascade path into them (`GigBooking` from
+  the school, the slot and the pupil's membership; `GigSlot` from the provider). It adds a counter row per number
+  series (the family's receipts, the commission invoices and the pass invoices: a table keyed by the series with
+  its last serial, with its grants, its row-security rule and the tenancy test's count), which the numbering
+  bumps under its row lock instead of taking the highest stored serial plus one, so a deleted last number is never
+  issued again (decision 0004). Each counter starts from the highest serial issued in its series; a number already
+  deleted before then cannot be brought back. The fixture scripts that remove ZZ people with seats (`zz-seats`,
+  `zz:fixtures`) delete the money rows first.
+
+  **Verify.** On the dev database after the migration, deleting a ZZ school whose pupil holds a seat payment, as
+  the owner, fails with a foreign-key violation and leaves every row; `npm run rls:verify` and the battery pass;
+  the date the migration landed and its commit are written here: `<fill in>`.
 
 ## Phase 3 — The web app on Fly
 
@@ -767,7 +794,8 @@ In this order. Each item is switched on, proved, and then the next begins.
   **Verify.** The sealed value looks like `v2.<nonce>.<body>.<tag>`. After the restart, no `[env]` line names
   `GATEWAY_PLATFORM`. On `/root/gigs` the "Razorpay Route status" card ticks the gateway, the webhook and the
   company; the fourth tick comes with the first expert Razorpay activates ("Link every ready expert" sends
-  them all). The switch cannot be turned on before all four (`gigs.refuseRouteNotReady`). Paid seats stay
+  them all). The switch cannot be turned on before all four (`gigs.refuseRouteNotReady`). Paid seats and passes
+  also wait for 2.8 (TA-366). Paid seats stay
   off until 0.11 and 0.12 are answered; when they are, the operator turns the switch on and buys one ₹50 seat
   with their own family account, then refunds it, before any school sees it.
 
@@ -1220,6 +1248,7 @@ production API URL is an EAS environment variable, never a file. Run EAS command
 | The company's GST details on `/root/gigs` (0.10, 4.8) | recording any payout to an expert | owner, operator |
 | The accountant's answers to decision 0004 (0.11) | the first real tax invoice; paid seats on | accountant |
 | The decision-0004 legal opinion (0.12) | paid seats on | owner |
+| The money tables' refusing delete rules and a counter row per number series (2.8) | paid seats on; passes on sale (5.1) | engineer |
 | The decision-0003 legal opinion (0.12) | the first school taking fees online | owner |
 | Counsel's DPDP read, decision 0002 item 10 (0.12) | the store submission | owner |
 | An approved WhatsApp sender and 21 content SIDs (0.8) | WhatsApp to families | owner |

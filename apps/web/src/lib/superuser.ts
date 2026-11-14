@@ -26,7 +26,7 @@ import { kycViews } from "./expert-kyc";
 import { isValidTimeZone } from "./dates";
 import { emailSchema } from "./validation";
 import { isWebsiteAddress } from "./website-address";
-import type { ExpertKyc } from "@edulink/contracts";
+import type { ExpertKyc, OperatorVisitKind } from "@edulink/contracts";
 
 /**
  * The client a write goes through: the module's `db` by default, or the
@@ -1541,7 +1541,9 @@ export async function setExpertStanding(
  * this afternoon" and not five hundred lines of it), and that row surfaces in
  * the school's own Safety Centre exactly as before. Actions taken inside —
  * takedowns, suspensions — are audited against the school's id as they always
- * were. The operator no longer asks; they are still seen.
+ * were. The operator no longer asks; they are still seen. The decision is on
+ * record as docs/decisions/0009-operator-access-always-on.md (14 November 2026),
+ * and the privacy page says it to every parent.
  *
  * MECHANICALLY, `app.is_superuser` still opens exactly two tables, School and
  * Invite. Everything else is reached by binding the ONE school being looked at
@@ -1578,6 +1580,27 @@ function asOperatorIn<T>(session: ActiveContext, schoolId: string, work: () => P
 export const OPERATOR_ACCESS_MINUTES = 60;
 
 /**
+ * WHAT A VISIT ROW HOLDS WHERE A REASON USED TO BE (decision 0009, TA-410).
+ *
+ * `OperatorAccess.reason` was the sentence the operator typed before the door opened. Since 9 August 2026 nobody
+ * types one, and every visit was written with the same English words, which the school's Safety Centre then printed
+ * as "the reason", in a Hindi or Marathi school too. The column stays (no migration), and what it holds is now a
+ * MARKER: these words for a look inside a school, as every row since that day already has them, and the second
+ * marker for the school's numbers read by opening the list of colleges. `operatorVisitKind` reads a row back as a
+ * coded kind, and each screen words the kind in the reader's language; anything else is a reason typed before
+ * 9 August 2026 and is shown as typed.
+ */
+export const OPERATOR_VISIT_REASON = "Operator access";
+export const OPERATOR_COLLEGES_LIST_REASON = "Operator access: colleges list";
+
+/** How a stored visit row reads: a look inside, the list of colleges, or a reason typed before access was always on. */
+export function operatorVisitKind(reason: string): OperatorVisitKind {
+  if (reason === OPERATOR_VISIT_REASON) return "VISIT";
+  if (reason === OPERATOR_COLLEGES_LIST_REASON) return "COLLEGES_LIST";
+  return "REASON";
+}
+
+/**
  * Notes in the school's visitor book that the operator is looking, at most once
  * per hour.
  *
@@ -1592,8 +1615,13 @@ export const OPERATOR_ACCESS_MINUTES = 60;
  * open row yet" and write its own line — three visits in the school's book for
  * one look. `cache` collapses the concurrent calls of one request into a
  * single promise; the open-row check below handles reuse ACROSS requests.
+ *
+ * `via` SAYS WHICH DOOR (decision 0009, TA-410). Opening the list of colleges reads every college's numbers through
+ * this door, and each college's book used to say the operator had looked inside it. A list writes its own marker,
+ * and only when no line of either kind is open. A look inside is covered by an open look inside, never by an open
+ * list line: it then writes its own, so a college never reads a look inside as a list. Rows are only ever added.
  */
-const recordVisit = cache(async (userId: string, schoolId: string): Promise<void> => {
+const recordVisit = cache(async (userId: string, schoolId: string, via: "VISIT" | "COLLEGES_LIST" = "VISIT"): Promise<void> => {
   const asOperator = { schoolIds: [schoolId], userId, joinCode: null, isSuperuser: true };
 
   const open = await forTenant(asOperator, () =>
@@ -1603,6 +1631,7 @@ const recordVisit = cache(async (userId: string, schoolId: string): Promise<void
         userId,
         endedAt: null,
         expiresAt: { gt: new Date() },
+        ...(via === "VISIT" ? { reason: { not: OPERATOR_COLLEGES_LIST_REASON } } : {}),
       },
       select: { id: true },
     }),
@@ -1614,7 +1643,7 @@ const recordVisit = cache(async (userId: string, schoolId: string): Promise<void
       data: {
         schoolId,
         userId,
-        reason: "Operator access",
+        reason: via === "COLLEGES_LIST" ? OPERATOR_COLLEGES_LIST_REASON : OPERATOR_VISIT_REASON,
         expiresAt: new Date(Date.now() + OPERATOR_ACCESS_MINUTES * 60_000),
       },
       select: { id: true },
@@ -1647,6 +1676,10 @@ const recordVisit = cache(async (userId: string, schoolId: string): Promise<void
  * children behind as ownerless logins. The audit row is written UNATTRIBUTED
  * (schoolId null, the id in meta) — an attributed one would cascade away with
  * the school it describes.
+ *
+ * WHAT STOPS IT (TA-366): money. While the school's bookings carry seat
+ * payments, or an account it would remove holds payments, payouts, invoices
+ * or earnings, nothing is erased (accountsErasedWithMoney).
  */
 export async function deleteSchoolEntirely(
   session: ActiveContext,
@@ -1661,11 +1694,25 @@ export async function deleteSchoolEntirely(
 
   // Who was here, read through the operator's one door into the school —
   // needed after the cascade, when the memberships are already gone.
-  const { userIds, memberships, classes } = await withSchoolAccess(session, schoolId, async () => {
+  const { userIds, memberships, classes, seatPayments } = await withSchoolAccess(session, schoolId, async () => {
     const roll = await db.membership.findMany({ where: { schoolId }, select: { userId: true } });
     const classes = await db.class.count({ where: { schoolId } });
-    return { userIds: [...new Set(roll.map((m) => m.userId))], memberships: roll.length, classes };
+    // TA-366: a pupil's paid seat would go with the school's bookings by cascade. The bookings are read bound to the
+    // school; their payments (no school policy) by id, not through the booking.
+    const bookings = await db.gigBooking.findMany({ where: { schoolId }, select: { id: true } });
+    const seatPayments = bookings.length
+      ? await db.sessionPayment.count({ where: { bookingId: { in: bookings.map((b) => b.id) } } })
+      : 0;
+    return { userIds: [...new Set(roll.map((m) => m.userId))], memberships: roll.length, classes, seatPayments };
   });
+
+  // TA-366 (the owner's decision of 14 November 2026): the shredder keeps money. While the school's bookings carry
+  // seat payments, or an account the erase would remove holds seat payments, payouts, invoices, question-writer
+  // payments or earnings, or slots with payments, nothing is erased and the operator is pointed to removal, which
+  // keeps everything. The database's own refusing rules wait on the go-live runbook (docs/runbooks/go-live.md 2.8).
+  if (seatPayments > 0 || (await accountsErasedWithMoney(schoolId, userIds)).length > 0) {
+    return { ok: false, errorKey: "root.deleteHoldsMoney" };
+  }
 
   await db.school.delete({ where: { id: schoolId } });
 
@@ -1714,6 +1761,62 @@ export async function deleteSchoolEntirely(
 }
 
 /**
+ * TA-366: of the people on the roll of `schoolId`, the ones the erase would remove (the same rule as the orphan check
+ * after the cascade, asked before it: no flag, no expert profile, no guardianship or operator visit at another school,
+ * and, asked as the person, no membership or school record at another school) who hold money rows that would go with
+ * their account by cascade: seat payments as payer or provider, payouts, commission invoices, question-writer
+ * earnings or payments, or a slot with payments on it. The money tables carry no school policy, so the operator's
+ * session reads them all.
+ */
+async function accountsErasedWithMoney(schoolId: string, userIds: string[]): Promise<string[]> {
+  if (userIds.length === 0) return [];
+  const among = { in: userIds };
+  const [seats, payouts, invoices, earnings, payments, slots] = await Promise.all([
+    db.sessionPayment.findMany({ where: { OR: [{ payerUserId: among }, { expertUserId: among }] }, select: { payerUserId: true, expertUserId: true } }),
+    db.expertPayout.findMany({ where: { expertUserId: among }, select: { expertUserId: true }, distinct: ["expertUserId"] }),
+    db.gigInvoice.findMany({ where: { expertUserId: among }, select: { expertUserId: true }, distinct: ["expertUserId"] }),
+    db.gigEarning.findMany({ where: { userId: among }, select: { userId: true }, distinct: ["userId"] }),
+    db.gigPayment.findMany({ where: { userId: among }, select: { userId: true }, distinct: ["userId"] }),
+    db.gigSlot.findMany({ where: { providerUserId: among, payments: { some: {} } }, select: { providerUserId: true }, distinct: ["providerUserId"] }),
+  ]);
+  const holders = new Set<string>([
+    ...seats.flatMap((s) => [s.payerUserId, s.expertUserId]),
+    ...payouts.map((p) => p.expertUserId),
+    ...invoices.map((i) => i.expertUserId),
+    ...earnings.map((e) => e.userId),
+    ...payments.map((p) => p.userId),
+    ...slots.map((s) => s.providerUserId),
+  ]);
+  const held = userIds.filter((id) => holders.has(id));
+  if (held.length === 0) return [];
+
+  const candidates = await db.user.findMany({
+    where: {
+      id: { in: held },
+      isSuperuser: false,
+      isAppAdmin: false,
+      guardianships: { none: { studentSchoolId: { not: schoolId } } },
+      operatorAccess: { none: { schoolId: { not: schoolId } } },
+      expertProfile: null,
+    },
+    select: { id: true },
+  });
+  const erased: string[] = [];
+  for (const { id } of candidates) {
+    const elsewhere = await forTenant({ schoolIds: [], userId: id, joinCode: null, isSuperuser: false }, () =>
+      db.user.count({
+        where: {
+          id,
+          OR: [{ memberships: { some: { schoolId: { not: schoolId } } } }, { schoolRecords: { some: { schoolId: { not: schoolId } } } }],
+        },
+      }),
+    );
+    if (elsewhere === 0) erased.push(id);
+  }
+  return erased;
+}
+
+/**
  * Runs `work` bound to one school, as the operator.
  *
  * THE ONLY WAY INTO A SCHOOL'S ROWS FROM THIS FILE, and everything that reads or
@@ -1725,14 +1828,18 @@ export async function deleteSchoolEntirely(
  * `asOperatorIn` narrows to exactly that school, so the tenant policies do the
  * rest and the school next door is as invisible to the operator's queries as it
  * is to anybody.
+ *
+ * `via: "COLLEGES_LIST"` is for the one caller that reads a college's numbers as a row of the list of colleges
+ * (operator-college.ts): the visit is then recorded as that, and the school reads it as that (decision 0009).
  */
 export async function withSchoolAccess<T>(
   session: ActiveContext,
   schoolId: string,
   work: () => Promise<T>,
+  opts: { via?: "COLLEGES_LIST" } = {},
 ): Promise<T> {
   assertSuperuser(session);
-  await recordVisit(session.user.id, schoolId);
+  await recordVisit(session.user.id, schoolId, opts.via ?? "VISIT");
   return asOperatorIn(session, schoolId, work);
 }
 
@@ -1754,6 +1861,9 @@ export async function accessHistory(schoolId: string, take = 50) {
   return rows.map((row) => ({
     id: row.id,
     reason: row.reason,
+    // How the line reads (decision 0009): the screens word a visit and a list in the reader's language, and show
+    // only a reason typed before 9 August 2026 as typed.
+    kind: operatorVisitKind(row.reason),
     startedAt: row.startedAt,
     expiresAt: row.expiresAt,
     endedAt: row.endedAt,
