@@ -599,6 +599,8 @@ function Choices({ choices, chosen, answerIndex, disabled, busy, onChoose }: { c
             accessibilityRole="button"
             accessibilityLabel={`${LETTER(i)}. ${choice}${said}`}
             accessibilityState={{ disabled, selected: isChosen }}
+            // The device flow answers by position (maestro/08-practice-question.yaml, TA-590): an option's words are data.
+            testID={`choice-${i}`}
             disabled={disabled}
             onPress={() => {
               haptics.tap();

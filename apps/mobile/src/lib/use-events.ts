@@ -265,6 +265,12 @@ export function connectEvents(options: ConnectOptions): () => void {
       if (stopped) return;
       const response = await doFetch(`${API_BASE}${EVENTS_PATH}`, { method: "GET", headers, signal: abort.signal });
       if (stopped) return;
+      // A 401 to the bearer is the session ended on the server (TA-145): handed to the sign-out path, not retried for good.
+      if (response.status === 401 && token) {
+        stopped = true;
+        options.onSessionEnded();
+        return;
+      }
       if (!response.ok || !response.body) {
         // Refused (a 429 over the cap, a 401 after the token went, a proxy's 502): try again later, as the web does.
         later();

@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState, type Ref } from "react";
-import { Pressable, TextInput, View, type TextInputProps } from "react-native";
+import { AccessibilityInfo, Platform, Pressable, TextInput, View, type TextInputProps } from "react-native";
 import { transliterateWord, type TypingLanguage } from "@edulink/i18n/transliterate";
 import { useTheme } from "@/lib/theme";
 import { useT } from "@/lib/i18n";
@@ -11,6 +11,25 @@ import { Icon } from "./icon";
 /** A Latin word at the very end of the text, and the one just closed by a space or a punctuation mark. */
 const ENDED = /([A-Za-z~.]+)([\s.,;:!?()"'\-/])$/;
 const PENDING = /([A-Za-z~.]+)$/;
+
+/**
+ * Boxes whose letters are not words (TA-165, 13 Nov 2026): a password, an e-mail address, a link, a number, a code typed
+ * in capitals. The keyboard's language never converts them, shows no preview of what is typed and draws no chip, as the
+ * web converts only plain text boxes (typing-switch.tsx's editableOf). A password's letters were shown in clear under
+ * its box and turned to Devanagari at a hyphen, so the right password was refused.
+ */
+const NOT_WORDS_KEYBOARDS = new Set(["email-address", "url", "number-pad", "decimal-pad", "numeric", "phone-pad", "numbers-and-punctuation", "visible-password", "ascii-capable-number-pad"]);
+const NOT_WORDS_INPUT_MODES = new Set(["email", "url", "numeric", "decimal", "tel"]);
+const NOT_WORDS_CONTENT = /password|email|url|telephone|onetimecode|one-time-code|sms-otp|username|^tel/i;
+export function takesWords(props: Pick<TextInputProps, "secureTextEntry" | "keyboardType" | "inputMode" | "autoCapitalize" | "textContentType" | "autoComplete">): boolean {
+  if (props.secureTextEntry) return false;
+  if (props.keyboardType && NOT_WORDS_KEYBOARDS.has(props.keyboardType)) return false;
+  if (props.inputMode && NOT_WORDS_INPUT_MODES.has(props.inputMode)) return false;
+  if (props.autoCapitalize === "characters") return false;
+  if (props.textContentType && NOT_WORDS_CONTENT.test(props.textContentType)) return false;
+  if (props.autoComplete && NOT_WORDS_CONTENT.test(props.autoComplete)) return false;
+  return true;
+}
 
 /**
  * A labelled input with an error line the screen reader reads with it. A ref
@@ -36,7 +55,14 @@ export function Field({ label, error, hint, style, typing, onChangeText, onFocus
   // The chip outlives the box's focus by a moment, so that a press on it, which on a web target takes the focus first, still lands.
   const leaving = useRef<ReturnType<typeof setTimeout> | null>(null);
   useEffect(() => () => { if (leaving.current) clearTimeout(leaving.current); }, []);
-  const language = own ?? typing ?? chosen;
+  // A box whose letters are not words is typed as it is, whatever the keyboard's language (TA-165).
+  const words = takesWords(rest);
+  const language = words ? (own ?? typing ?? chosen) : "en";
+  // The refusal is said when it appears on an iPhone too (TA-236): accessibilityLiveRegion below is Android's alone, so
+  // VoiceOver said nothing when "Wrong password" came up. Android's TalkBack hears the live region and is not told twice.
+  useEffect(() => {
+    if (error && Platform.OS !== "android") AccessibilityInfo.announceForAccessibility?.(error);
+  }, [error]);
   const chipLabel = { en: "EN", hi: "हिंदी", mr: "मराठी" }[language];
   const cycle = () => {
     const next = TYPING_LANGUAGES[(TYPING_LANGUAGES.indexOf(language) + 1) % TYPING_LANGUAGES.length]!;
@@ -68,7 +94,7 @@ export function Field({ label, error, hint, style, typing, onChangeText, onFocus
         <Text variant="sm" bold style={{ flexShrink: 1 }}>
           {label}
         </Text>
-        {focused || language !== "en" ? (
+        {words && (focused || language !== "en") ? (
           <Pressable
             accessibilityRole="button"
             accessibilityLabel={tr("typing.switch", { language: tr(`typing.${language}`) })}
@@ -85,7 +111,8 @@ export function Field({ label, error, hint, style, typing, onChangeText, onFocus
       </View>
       <TextInput
         accessibilityLabel={label}
-        accessibilityHint={hint}
+        // While an error stands it is the box's hint, as it is drawn under the box in the hint's place (TA-236).
+        accessibilityHint={error ? error : hint}
         placeholderTextColor={t.fgSubtle}
         style={[
           { minHeight: t.tap, borderWidth: 1, borderColor: error ? t.danger : t.border, borderRadius: t.radius.md, paddingHorizontal: t.space[4], fontSize: type.base.size, color: t.fg, backgroundColor: t.surface },

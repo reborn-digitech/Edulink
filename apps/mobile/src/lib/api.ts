@@ -47,6 +47,19 @@ export function sessionToken(): Promise<string | null> {
   return keyStore().get(KEYS.token);
 }
 
+/**
+ * What the session does when a request that carried the bearer is answered 401 (TA-145, 13 Nov 2026): it confirms with
+ * /api/v1/me and, if the session has ended on the server, leaves the phone as a 401 there always left it. Every client
+ * that sends the bearer (this one, the outbox's replay client, the events stream) reports a 401 here.
+ */
+let unauthorized: (() => void) | null = null;
+export function onSessionEndedOnServer(handler: (() => void) | null): void {
+  unauthorized = handler;
+}
+export function sessionEndedOnServer(): void {
+  unauthorized?.();
+}
+
 let client: ApiClient | null = null;
 export function api(): ApiClient {
   if (!client) {
@@ -54,6 +67,7 @@ export function api(): ApiClient {
       baseUrl: API_BASE,
       getToken: () => keyStore().get(KEYS.token),
       getLocale: () => locale,
+      onUnauthorized: sessionEndedOnServer,
     });
   }
   return client;

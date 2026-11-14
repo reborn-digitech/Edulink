@@ -3,6 +3,7 @@ import { randomBytes } from "node:crypto";
 import type { z } from "zod";
 import type { appReportBodySchema, appVersionSchema } from "@edulink/contracts";
 import { audit } from "./audit";
+import { db } from "./db";
 import { notify } from "./notify";
 import { headPageHolders } from "./duties";
 import { readAppReleaseConfig } from "./env";
@@ -132,6 +133,28 @@ export async function recordAppReport(ctx: ActiveContext, body: AppReportBody): 
           bodyKey: "notifBody.appProblem",
           bodyVars: { name, reference },
           url: "/admin/safety?tab=audit",
+          meta: { reportId, reference },
+          urgent: false,
+        }),
+      ),
+    );
+  } else if (body.kind === "PROBLEM") {
+    // No school on the session (a guardian, an expert, a recruiter; TA-173, 13 Nov 2026): no school's admins can read
+    // the row, so the operators, who read it in the server log, are the ones told. Before, nobody was, and the
+    // person had been told the team reads every report.
+    const operators = await db.user.findMany({ where: { isSuperuser: true, disabledAt: null }, select: { id: true } });
+    const name = ctx.user.preferredName ?? ctx.user.name;
+    await Promise.all(
+      operators.map((o) =>
+        notify({
+          userId: o.id,
+          schoolId: null,
+          kind: "SYSTEM",
+          titleKey: "notifTitle.appProblem",
+          titleVars: { name },
+          bodyKey: "notifBody.appProblemOperator",
+          bodyVars: { name, reference },
+          url: "/root/audit",
           meta: { reportId, reference },
           urgent: false,
         }),

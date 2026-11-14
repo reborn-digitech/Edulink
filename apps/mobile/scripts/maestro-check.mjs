@@ -85,10 +85,52 @@ const dictionaries = {
   mr: flatten(loadDictionary("mr.ts", "mr"), "", new Map()),
 };
 
-/** value → "lang:key" (English first, so a string in all three names its en key). */
+/**
+ * The keys some screen of the phone asks for (scripts/i18n-subset.cjs, the release's own reading), so that a flow's
+ * text is a sentence the app still draws and not one left in the dictionary for the web (TA-590, 13 Nov 2026: flow 08
+ * waited for a door the practice screen no longer drew).
+ */
+const { used: usedByPhone } = require("./i18n-subset.cjs").usedKeys();
+
+/** value → "lang:key" (English first, so a string in all three names its en key), among the keys the phone uses. */
 const byValue = new Map();
+/** value → "lang:key" for a dictionary value no screen of the phone asks for. */
+const unusedByValue = new Map();
 for (const lang of ["en", "hi", "mr"]) {
-  for (const [key, value] of dictionaries[lang]) if (!byValue.has(value)) byValue.set(value, `${lang}:${key}`);
+  for (const [key, value] of dictionaries[lang]) {
+    if (usedByPhone.has(key)) {
+      if (!byValue.has(value)) byValue.set(value, `${lang}:${key}`);
+    } else if (!unusedByValue.has(value)) unusedByValue.set(value, `${lang}:${key}`);
+  }
+}
+for (const value of byValue.keys()) unusedByValue.delete(value);
+
+/**
+ * The testIDs the screens draw (TA-590): a flow that taps by id (`id:` in a selector) must name one, written as
+ * testID="name" or built as testID={`prefix${…}`} (a row's index), so a renamed or removed id fails here and not
+ * first on a simulator.
+ */
+function sourcesUnder(dir) {
+  const out = [];
+  for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+    const full = path.join(dir, entry.name);
+    if (entry.isDirectory()) out.push(...sourcesUnder(full));
+    else if (/\.tsx?$/.test(entry.name)) out.push(full);
+  }
+  return out;
+}
+const testIds = new Set();
+const testIdPrefixes = new Set();
+for (const file of sourcesUnder(path.join(mobile, "src"))) {
+  for (const m of fs.readFileSync(file, "utf8").matchAll(/testID=(?:"([^"]+)"|\{`([^`$]*)\$\{)/g)) {
+    if (m[1]) testIds.add(m[1]);
+    else if (m[2]) testIdPrefixes.add(m[2]);
+  }
+}
+function resolveId(id) {
+  if (testIds.has(id)) return { ok: true, how: "testID" };
+  for (const prefix of testIdPrefixes) if (id.startsWith(prefix) && /^\w+$/.test(id.slice(prefix.length))) return { ok: true, how: `testID ${prefix}…` };
+  return { ok: false, why: "no screen draws this testID" };
 }
 
 const locales = new Map();
@@ -116,8 +158,10 @@ function resolveLabel(text) {
     for (const value of FIXTURES) if (re.test(value)) hits.push("fixture");
     for (const [value, how] of locales) if (re.test(value)) hits.push(how);
     if (hits.length > 0) return { ok: true, how: `regex → ${[...new Set(hits)].slice(0, 3).join(", ")}` };
+    for (const value of unusedByValue.keys()) if (re.test(value)) return { ok: false, why: `regex matches only dictionary values no screen of the phone asks for (${unusedByValue.get(value)})` };
     return { ok: false, why: "regex matches no dictionary value, fixture name or language name" };
   }
+  if (unusedByValue.has(text)) return { ok: false, why: `a dictionary value no screen of the phone asks for (${unusedByValue.get(text)})` };
   return { ok: false, why: "not a dictionary value, fixture name, language name or ${PARAM}" };
 }
 
@@ -153,6 +197,22 @@ function selectorTexts(node, out = []) {
     for (const pair of node.items) {
       const key = String(pair.key?.value ?? pair.key);
       if (SELECTOR_KEYS.includes(key)) selectorTexts(pair.value, out);
+    }
+  }
+  return out;
+}
+
+/** Every testID a selector names (`id:`), in it and in the relative selectors nested in it (TA-590). */
+function selectorIds(node, out = []) {
+  if (isSeq(node)) {
+    for (const item of node.items) selectorIds(item, out);
+    return out;
+  }
+  if (isMap(node)) {
+    for (const pair of node.items) {
+      const key = String(pair.key?.value ?? pair.key);
+      if (key === "id" && isScalar(pair.value) && typeof pair.value.value === "string") out.push(pair.value.value);
+      else if (SELECTOR_KEYS.includes(key)) selectorIds(pair.value, out);
     }
   }
   return out;
@@ -204,7 +264,10 @@ function walkCommands(seq, flowFile, report) {
       case "extendedWaitUntil": {
         const bare = stringOf(args);
         if (bare !== null) label(bare);
-        else for (const text of selectorTexts(args)) label(text);
+        else {
+          for (const text of selectorTexts(args)) label(text);
+          for (const id of selectorIds(args)) report.reference(flowFile, line, name, `id:${id}`, resolveId(id));
+        }
         break;
       }
       case "inputText": {

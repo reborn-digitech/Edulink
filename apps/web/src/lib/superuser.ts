@@ -1238,6 +1238,10 @@ export const SERVER_AUDIT_WHERE: Prisma.AuditLogWhereInput = {
     // reader. The sign-in rows stay out: they carry the addresses that were tried.
     { action: { startsWith: "appadmin." } },
     { action: { in: ["expert.publish", "expert.unpublish", "expert.kyc.verify", "expert.kyc.reject"] } },
+    // TA-173: a problem or crash report from the app by someone with no school on the session (a guardian, an expert,
+    // a recruiter) is written with no school, and no school's Safety centre lists it; the operator reads those here,
+    // as decision 0002 row 24 says the operator reads the crash rows.
+    { action: { in: ["APP_PROBLEM_REPORTED", "APP_CRASH_REPORTED"] } },
   ],
 };
 

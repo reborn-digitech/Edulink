@@ -22,7 +22,7 @@ school.edulink.app`), run in the order `config.yaml` gives (05 needs 04):
 | `05-approve-leave` | principal | Leave tab → `ZZ Sunita Kale` waiting → Approve → `Leave approved`, `Already decided` |
 | `06-book-meeting` | guardian | deep link to Meetings → `Book` → `Booked. The teacher has been told.`, `Your meetings` |
 | `07-hand-in-work` | pupil | Assignments → `Hand it in` → an answer → `Handed in 🎉`, `Change it` |
-| `08-practice-question` | pupil | Practice → the `Open on the web` door and the ladder around it (questions live on the web) |
+| `08-practice-question` | pupil | Practice → `Your week` → the first chapter → its first option → `Got it right!` or `Not this time`, then `Next question` (the phone's own player; needs the Student plan) |
 | `09-read-report-card` | guardian | deep link to Exams → `Report cards` tab → the card → `Overall`, `Attendance`, `What this covers`, `Share` → Back |
 | `10-switch-language` | teacher | More → `हिन्दी` → the Today tab reads `आज`, More reads `और` → `English` → `Today` |
 

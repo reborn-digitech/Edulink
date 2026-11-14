@@ -214,10 +214,12 @@ describe("the connection", () => {
     close();
   });
 
-  it("a refused open (429 over the cap, 401 after the token went) is tried again later, and a close while waiting clears the wait", async () => {
-    const { calls, fetch } = bench((n) => (n < 3 ? { ok: false, status: n === 1 ? 429 : 401, body: null } : { ok: true, status: 200, body: null }));
+  // A 401 to the bearer is the session ended since TA-145 (ta-mobile-core-session.test.tsx), not a refusal to retry.
+  it("a refused open (429 over the cap, a proxy's 502) is tried again later, and a close while waiting clears the wait", async () => {
+    const { calls, fetch } = bench((n) => (n < 3 ? { ok: false, status: n === 1 ? 429 : 502, body: null } : { ok: true, status: 200, body: null }));
     const timers = fakeTimers();
-    const close = connectEvents({ types: ["notification"], onEvent: () => {}, onSessionEnded: () => {}, fetch, ...timers });
+    const ended = jest.fn();
+    const close = connectEvents({ types: ["notification"], onEvent: () => {}, onSessionEnded: ended, fetch, ...timers });
     await tick();
     expect(calls).toHaveLength(1);
     expect(timers.fire()).toBe(1_000);
@@ -226,6 +228,7 @@ describe("the connection", () => {
     expect(timers.pending.map((t) => t.ms)).toEqual([2_000]);
     close();
     expect(timers.pending).toHaveLength(0);
+    expect(ended).not.toHaveBeenCalled();
   });
 
   it("a fetch that throws (offline) is tried again later", async () => {

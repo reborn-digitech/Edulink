@@ -1,7 +1,7 @@
 import { AppState, type AppStateStatus } from "react-native";
 import { onlineManager } from "@tanstack/react-query";
 import { createApiClient, type ApiClient } from "@edulink/api-client";
-import { API_BASE } from "./api";
+import { API_BASE, sessionEndedOnServer } from "./api";
 import { KEYS, keyStore } from "./storage";
 import { flushQueue, type QueuedRequest } from "./outbox";
 
@@ -30,6 +30,8 @@ function replayClient(): ApiClient {
     client = createApiClient({
       baseUrl: API_BASE,
       getToken: () => keyStore().get(KEYS.token),
+      // A row goes only under the person who queued it, so a 401 here is their session ended (TA-145).
+      onUnauthorized: sessionEndedOnServer,
       fetch: (input, init) => {
         const headers = { ...((init?.headers as Record<string, string> | undefined) ?? {}), "X-Edulink-Replay": "1", ...(sending?.owner ? { "X-Edulink-Owner": sending.owner } : {}) };
         return (replayFetch ?? globalThis.fetch)(input, { ...init, headers });
@@ -48,7 +50,7 @@ let sending: QueuedRequest | null = null;
  * since 13674f8): the server answers 401 to a bearer of anyone else, and a
  * 401 keeps the row.
  */
-export async function sendQueued(item: QueuedRequest): Promise<{ status: number }> {
+export async function sendQueued(item: QueuedRequest): Promise<{ status: number; error?: string }> {
   let body: unknown;
   try {
     body = JSON.parse(item.body);
@@ -58,7 +60,8 @@ export async function sendQueued(item: QueuedRequest): Promise<{ status: number 
   sending = item;
   try {
     const result = await replayClient().request(item.method as Method, item.url, body);
-    return { status: result.ok ? 200 : result.status };
+    // A refusal's sentence rides with its status, so the notice of a replay the server refused can say why (TA-146).
+    return result.ok ? { status: 200 } : { status: result.status, ...(result.error ? { error: result.error } : {}) };
   } finally {
     sending = null;
   }

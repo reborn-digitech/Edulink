@@ -44,6 +44,16 @@ export async function forgetPushOnDevice(): Promise<void> {
   }
 }
 
+/**
+ * The notices already delivered to the tray and the app icon's count, gone with the person (TA-348, 13 Nov 2026):
+ * on a family's shared phone they stayed for the next person who picked it up. Each on its own, best effort.
+ */
+export async function clearDeliveredNotices(): Promise<void> {
+  if (Platform.OS === "web") return;
+  await Notifications.dismissAllNotificationsAsync().catch(() => undefined);
+  await Notifications.setBadgeCountAsync(0).catch(() => undefined);
+}
+
 /** On sign-out: the device stops receiving this person's notices. */
 export async function unregisterPush(): Promise<void> {
   if (Platform.OS === "web") return;

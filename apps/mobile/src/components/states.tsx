@@ -7,7 +7,7 @@ import { Text } from "./text";
 import { Button } from "./button";
 import { Icon } from "./icon";
 import { Bone, useBack } from "./chrome";
-import { isNotFound, planLockOf } from "@/lib/query";
+import { isNotFound, isUnreadableAnswer, planLockOf } from "@/lib/query";
 import { PlanLock } from "./plan-lock";
 
 /**
@@ -87,8 +87,10 @@ function FailedCard({ message, error, onRetry }: { message?: string; error?: unk
   const t = useTheme();
   const tr = useT();
   const back = useBack();
-  const final = isNotFound(error);
-  const said = message ?? (error instanceof Error ? error.message : tr("common.tryAgain"));
+  // An answer the screen cannot read (TA-359) is said as a sentence, not zod's JSON, and asking again cannot help.
+  const unreadable = isUnreadableAnswer(error);
+  const final = isNotFound(error) || unreadable;
+  const said = message ?? (unreadable ? tr("mobile.answerUnreadable") : error instanceof Error ? error.message : tr("common.tryAgain"));
   return (
     <View style={{ padding: t.space[5], gap: t.space[3], backgroundColor: t.dangerSoft, borderRadius: t.radius.lg }}>
       {/* The sentence is the alert; the button stays its own element, so a
@@ -109,7 +111,8 @@ function FailedCard({ message, error, onRetry }: { message?: string; error?: unk
  * something that opens.
  */
 /** `label` replaces what a screen reader says for a tappable row (title and caption by default), for a row whose state is drawn beside it. */
-export function Row({ title, caption, right, onPress, icon, label }: { title: string; caption?: string; right?: ReactNode; onPress?: () => void; icon?: string; label?: string }) {
+/** `testID`: for a device flow that opens a row whose words are data (maestro/08-practice-question.yaml, TA-590). */
+export function Row({ title, caption, right, onPress, icon, label, testID }: { title: string; caption?: string; right?: ReactNode; onPress?: () => void; icon?: string; label?: string; testID?: string }) {
   const t = useTheme();
   const inner = (
     <View style={{ minHeight: t.tap, flexDirection: "row", alignItems: "center", gap: t.space[3], paddingVertical: t.space[2] }}>
@@ -137,6 +140,7 @@ export function Row({ title, caption, right, onPress, icon, label }: { title: st
     <Pressable
       accessibilityRole="button"
       accessibilityLabel={label ?? (caption ? `${title}, ${caption}` : title)}
+      testID={testID}
       onPress={() => {
         haptics.tap();
         onPress();

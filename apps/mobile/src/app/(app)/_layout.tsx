@@ -4,6 +4,7 @@ import { Stack, Tabs } from "expo-router";
 import { useQuery } from "@tanstack/react-query";
 import { inboxSchema, notificationsSchema } from "@edulink/contracts";
 import { Icon, Loading, TabLabel } from "@/components";
+import { useReplayRefusalNotice } from "@/lib/outbox-held";
 import { useRole, useSession } from "@/lib/session";
 import { ChooseContext } from "@/components/choose-context";
 import { ALL_TAB_SCREENS, HIDDEN_SCREENS, TABS, dutiesOfMe, featuresOf, tabShown } from "@/lib/nav";
@@ -45,6 +46,8 @@ export default function AppLayout() {
   useEffect(() => {
     if (signedIn) startOutboxRunner();
   }, [signedIn]);
+  // A write saved without signal that the server refused on replay is said once for the whole app (TA-146).
+  useReplayRefusalNotice();
   // The bar is the app's navigation landmark on the web target (QA-67).
   useTabBarLandmark(t("shell.mainNav"));
   // Five labels share the width. At 320 px a tab is 64 px and "Assignments"

@@ -1,12 +1,14 @@
-import { createContext, useCallback, useContext, useEffect, useMemo, useState, type ReactNode } from "react";
+import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState, type ReactNode } from "react";
+import { AppState } from "react-native";
+import { QueryClientContext } from "@tanstack/react-query";
 import type { Me, RoleCode, SessionResponse } from "@edulink/contracts";
-import { api } from "./api";
+import { api, onSessionEndedOnServer } from "./api";
 import { KEYS, keyStore } from "./storage";
 import { clearQueue, setOutboxOwner } from "./outbox";
-import { clearSharedFiles } from "./download";
+import { clearPickedFiles, clearSharedFiles } from "./download";
 import { Image } from "expo-image";
 import { unwrap } from "./query";
-import { forgetPushOnDevice, unregisterPush } from "./push";
+import { clearDeliveredNotices, forgetPushOnDevice, unregisterPush } from "./push";
 import { runSessionEnd } from "./session-end";
 import { claimFreshInstall } from "./install-platform";
 import { useAdoptAccountLocale } from "./i18n";
@@ -78,6 +80,9 @@ async function forgetPerson(): Promise<void> {
     () => Image.clearDiskCache(),
     () => Image.clearMemoryCache(),
     forgetPushOnDevice,
+    // What the pickers and the camera copied, and the notices in the tray and the icon's count (TA-348).
+    clearPickedFiles,
+    clearDeliveredNotices,
   ];
   for (const step of steps) {
     try {
@@ -91,43 +96,73 @@ async function forgetPerson(): Promise<void> {
 
 export function SessionProvider({ children }: { children: ReactNode }) {
   const [state, setState] = useState<SessionState>({ status: "loading", me: null });
+  // The query cache, when there is a provider (a test may render the session alone).
+  const queryClient = useContext(QueryClientContext);
+  // How many reads of /me are under way, and whether Sign out is: a 401 met meanwhile starts no second read (TA-145).
+  const reading = useRef(0);
+  const signingOut = useRef(false);
 
   const loadMe = useCallback(async () => {
-    await forgetPreviousInstall();
-    const token = await keyStore().get(KEYS.token);
-    if (!token) {
-      setOutboxOwner(null);
-      setState({ status: "signed-out", me: null });
-      return;
+    reading.current++;
+    try {
+      await forgetPreviousInstall();
+      const token = await keyStore().get(KEYS.token);
+      if (!token) {
+        setOutboxOwner(null);
+        setState({ status: "signed-out", me: null });
+        return;
+      }
+      const result = await api().get<Me>("/api/v1/me");
+      if (result.ok) {
+        // The outbox learns who is here before anything can flush it.
+        setOutboxOwner({ userId: result.data.user.id, schoolId: result.data.active.schoolId, membershipId: result.data.active.membershipId });
+        setState({ status: "signed-in", me: result.data });
+        return;
+      }
+      if (result.status === 401) {
+        // The session ended on the server. The phone is left as clean as Sign
+        // out leaves it, but the person's queued rows are held, not sent to
+        // anyone else (PH-1): they go when the same person signs in again.
+        await runSessionEnd();
+        setOutboxOwner(null);
+        await forgetPerson();
+        setState({ status: "signed-out", me: null });
+        return;
+      }
+      // Offline or a server hiccup: keep whatever we had; a signed-in person
+      // with no network is still signed in.
+      setState((prev) => (prev.status === "signed-in" ? prev : { status: "signed-out", me: null }));
+    } finally {
+      reading.current--;
     }
-    const result = await api().get<Me>("/api/v1/me");
-    if (result.ok) {
-      // The outbox learns who is here before anything can flush it.
-      setOutboxOwner({ userId: result.data.user.id, schoolId: result.data.active.schoolId, membershipId: result.data.active.membershipId });
-      setState({ status: "signed-in", me: result.data });
-      return;
-    }
-    if (result.status === 401) {
-      // The session ended on the server. The phone is left as clean as Sign
-      // out leaves it, but the person's queued rows are held, not sent to
-      // anyone else (PH-1): they go when the same person signs in again.
-      await runSessionEnd();
-      setOutboxOwner(null);
-      await forgetPerson();
-      setState({ status: "signed-out", me: null });
-      return;
-    }
-    // Offline or a server hiccup: keep whatever we had; a signed-in person
-    // with no network is still signed in.
-    setState((prev) => (prev.status === "signed-in" ? prev : { status: "signed-out", me: null }));
   }, []);
 
   useEffect(() => {
-    // The one read of storage on start; it sets state after an await, which
-    // is the pattern the rule cannot see through.
-    // eslint-disable-next-line react-hooks/set-state-in-effect
+    // The one read of storage on start; it sets state after an await (the
+    // rule no longer flags it since the read became a try/finally, TA-145).
     void loadMe();
   }, [loadMe]);
+
+  // A session that ends on the server is noticed wherever a 401 meets it (TA-145, 13 Nov 2026): any request that
+  // carried the bearer, the outbox's replay and the events stream report it here, and /api/v1/me confirms it, so the
+  // phone is left as a 401 on /me always left it (the token and the person's things gone, their queued rows held).
+  // Before, only /me and an open stream noticed, and every other screen showed its refusal with a Retry for good.
+  // And the app's return to the front reads /me again, so a session revoked while it slept is noticed at once.
+  const signedIn = state.status === "signed-in";
+  useEffect(() => {
+    if (!signedIn) return;
+    onSessionEndedOnServer(() => {
+      if (reading.current > 0 || signingOut.current) return;
+      void loadMe();
+    });
+    const sub = AppState.addEventListener("change", (next) => {
+      if (next === "active" && reading.current === 0 && !signingOut.current) void loadMe();
+    });
+    return () => {
+      onSessionEndedOnServer(null);
+      sub.remove();
+    };
+  }, [signedIn, loadMe]);
 
   // A phone with no language chosen on it takes the account's (A3-states-16, risks batch 5 Oct 2026), so a new
   // phone agrees with the one the choice was made on; a choice made here is kept (lib/i18n.tsx).
@@ -149,8 +184,13 @@ export function SessionProvider({ children }: { children: ReactNode }) {
       async switchContext(next) {
         unwrap(await api().post<Me>("/api/v1/me/context", next));
         await loadMe();
+        // What the screens read belongs to the context just left (TA-148, TA-164, 13 Nov 2026): the keys name neither
+        // the school nor the role, so Classes and Today listed the last school's rows. The cache is reset: every
+        // query loses its data, and those on screen are read again under the new context.
+        void queryClient?.resetQueries();
       },
       async signOut() {
+        signingOut.current = true;
         try {
           // While the token is still good: the server forgets this device's
           // push token, then the session.
@@ -171,9 +211,10 @@ export function SessionProvider({ children }: { children: ReactNode }) {
         setOutboxOwner(null);
         await forgetPerson();
         setState({ status: "signed-out", me: null });
+        signingOut.current = false;
       },
     }),
-    [state, loadMe],
+    [state, loadMe, queryClient],
   );
   return <Ctx.Provider value={value}>{children}</Ctx.Provider>;
 }

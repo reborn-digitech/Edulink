@@ -325,6 +325,7 @@ function PupilPractice() {
                     ) : null
                   }
                   onPress={() => play({ mode: "topic", slug: topic.slug })}
+                  testID="practice-topic"
                 />
                 {topic.summary ? (
                   <Text variant="sm" tone="muted">

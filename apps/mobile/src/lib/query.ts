@@ -1,4 +1,6 @@
-import { QueryClient } from "@tanstack/react-query";
+import { AppState, Platform } from "react-native";
+import { focusManager, onlineManager, QueryClient } from "@tanstack/react-query";
+import * as Network from "expo-network";
 import type { FeatureCode, PlanCode } from "@edulink/contracts";
 
 /**
@@ -12,7 +14,40 @@ import type { FeatureCode, PlanCode } from "@edulink/contracts";
  */
 export function shouldRetry(count: number, error: unknown): boolean {
   if (error instanceof ApiRefused && isFinalRefusal(error.status)) return false;
+  // An answer the screen's schema cannot read reads the same way again (TA-359).
+  if (isUnreadableAnswer(error)) return false;
   return count < 1;
+}
+
+/**
+ * The server's answer did not parse with the screen's schema (TA-359, 13 Nov 2026): a zod error thrown in the query
+ * function, typically an older build meeting a newer server (a new agenda kind). Its message is zod's JSON issue
+ * list, which is no sentence for a person; the screen says the app may need updating instead, and does not retry.
+ * Told apart by its shape, so a copy of zod in another package is recognised too.
+ */
+export function isUnreadableAnswer(error: unknown): boolean {
+  return error instanceof Error && error.name === "ZodError" && Array.isArray((error as { issues?: unknown }).issues);
+}
+
+let phoneWired = false;
+/**
+ * React Query's focus and network signals on a phone (TA-164, TA-251, 13 Nov 2026). Its own listeners are the
+ * browser's (visibilitychange, online), which a phone never fires, so a screen opened on Monday still showed Monday's
+ * answer on Tuesday, and the outbox did not send when the signal came back with the app open. Here the app's return
+ * to the front is focus, so a stale query on screen is read again, and expo-network's state is online, so the outbox
+ * runner's onlineManager subscription flushes on reconnect. The web target keeps the browser's. Once per launch.
+ */
+export function wirePhoneSignals(): void {
+  if (phoneWired || Platform.OS === "web") return;
+  phoneWired = true;
+  focusManager.setEventListener((handleFocus) => {
+    const sub = AppState.addEventListener("change", (state) => handleFocus(state === "active"));
+    return () => sub.remove();
+  });
+  onlineManager.setEventListener((setOnline) => {
+    const sub = Network.addNetworkStateListener((state) => setOnline(state.isConnected !== false && state.isInternetReachable !== false));
+    return () => sub.remove();
+  });
 }
 
 /** A 4xx that asking again cannot change (401 included; 408 and 429 are worth one more try). */
@@ -26,6 +61,7 @@ export function isNotFound(error: unknown): boolean {
 }
 
 export function makeQueryClient(): QueryClient {
+  wirePhoneSignals();
   return new QueryClient({
     defaultOptions: {
       queries: {
@@ -34,7 +70,7 @@ export function makeQueryClient(): QueryClient {
         retry: shouldRetry,
         refetchOnWindowFocus: true,
         // Try once even when the browser says it is offline (the web target's
-        // navigator.onLine; a phone never wires onlineManager): a cached screen
+        // navigator.onLine; a phone's expo-network state since TA-251): a cached screen
         // shows its data and the one attempt fails fast into the outbox rule.
         networkMode: "offlineFirst",
       },

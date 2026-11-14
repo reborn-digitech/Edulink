@@ -7,11 +7,15 @@ import * as SecureStore from "expo-secure-store";
 import type { KeyStore } from "./storage";
 
 /**
- * Readable only while the device is unlocked, and never carried to another
- * device by a backup or an iCloud keychain sync: a session token restored
- * onto somebody else's phone is a session on somebody else's phone.
+ * Readable once the phone has been unlocked after it started, and never
+ * carried to another device by a backup or an iCloud keychain sync: a
+ * session token restored onto somebody else's phone is a session on
+ * somebody else's phone. Not "only while unlocked" (TA-150, 13 Nov 2026):
+ * the token is read on every request, and a driver's phone locked in its
+ * holder could not read it, so the bus's positions waited in the outbox
+ * until the screen was unlocked.
  */
-const OPTIONS = { keychainAccessible: SecureStore.WHEN_UNLOCKED_THIS_DEVICE_ONLY };
+const OPTIONS = { keychainAccessible: SecureStore.AFTER_FIRST_UNLOCK_THIS_DEVICE_ONLY };
 
 export function platformKeyStore(): KeyStore {
   return {
@@ -19,6 +23,10 @@ export function platformKeyStore(): KeyStore {
       return SecureStore.getItemAsync(key, OPTIONS);
     },
     async set(key, value) {
+      // A write to a key that exists keeps the accessibility it was first
+      // stored with (the store updates the value only), so the old item goes
+      // first and the new one is stored with today's (TA-150).
+      await SecureStore.deleteItemAsync(key, OPTIONS).catch(() => undefined);
       await SecureStore.setItemAsync(key, value, OPTIONS);
     },
     async remove(key) {

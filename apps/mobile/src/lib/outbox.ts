@@ -109,9 +109,14 @@ export function outboxOwner(): OutboxOwner | null {
   return owner;
 }
 
-/** This person's row at the school they are at now: the only kind a flush sends. */
+/**
+ * This person's row at the school and in the role they are in now: the only kind a flush sends. The role is the
+ * membership (TA-147, 13 Nov 2026): a head who also teaches queued a register as TEACHER, switched to PRINCIPAL, and
+ * the replay went under the head's context, refused and dropped (or, for an office that also teaches, taken under
+ * the office's rights). A row stamped before the membership was stamped (null) is judged by the school alone.
+ */
 function sendableNow(item: QueuedRequest): boolean {
-  return owner !== null && item.owner === owner.userId && (item.schoolId ?? null) === owner.schoolId;
+  return owner !== null && item.owner === owner.userId && (item.schoolId ?? null) === owner.schoolId && (item.membershipId == null || item.membershipId === owner.membershipId);
 }
 
 let store: OutboxStore | null = null;
@@ -133,7 +138,8 @@ export function newClientId(): string {
 export type QueueEvent =
   | { type: "queued"; item: QueuedRequest; remaining: number }
   | { type: "flushed"; sent: number; failed: number; remaining: number }
-  | { type: "rejected"; item: QueuedRequest; status: number };
+  /** `error`: the server's sentence for the refusal, when the transport had one (TA-146). */
+  | { type: "rejected"; item: QueuedRequest; status: number; error?: string };
 
 const listeners = new Set<(event: QueueEvent) => void>();
 export function onQueueEvent(listener: (event: QueueEvent) => void): () => void {
@@ -234,7 +240,9 @@ export async function countQueued(tag?: string): Promise<number> {
 /**
  * The signed-in person's rows queued at another school, by school id: held,
  * not sent, until they switch back (PH-6). A register queued at school A
- * replayed under school B's context would be refused and lost.
+ * replayed under school B's context would be refused and lost. A row queued
+ * in another role at this school is held the same way (TA-147), under this
+ * school's id.
  */
 export async function heldElsewhere(): Promise<Map<string | null, number>> {
   const held = new Map<string | null, number>();
@@ -284,6 +292,9 @@ async function dropExpired(now: number): Promise<number> {
 
 let flushing = false;
 
+/** The longest one queued row's send is waited for in a flush (TA-149); the client gives up on its own at 30 s. */
+export const ROW_LIMIT_MS = 45_000;
+
 /**
  * Sends the signed-in person's rows for the school they are at, oldest
  * first; nothing at all with nobody signed in. Another person's rows and
@@ -293,8 +304,10 @@ let flushing = false;
  * without a network.
  */
 export async function flushQueue(
-  send: (item: QueuedRequest) => Promise<{ status: number }>,
+  send: (item: QueuedRequest) => Promise<{ status: number; error?: string }>,
   now: number = Date.now(),
+  /** How long one row's send may take before it is kept for the next try (TA-149): a send that never settles held every later flush. */
+  rowLimitMs: number = ROW_LIMIT_MS,
 ): Promise<{ sent: number; failed: number; remaining: number }> {
   if (flushing) return { sent: 0, failed: 0, remaining: await countQueued() };
   flushing = true;
@@ -317,10 +330,21 @@ export async function flushQueue(
       }
       let status = 0;
       let error = "";
+      let refusal: string | undefined;
+      let timer: ReturnType<typeof setTimeout> | undefined;
       try {
-        status = (await send(item)).status;
+        const answer = await Promise.race([
+          send(item),
+          new Promise<never>((_, reject) => {
+            timer = setTimeout(() => reject(new Error("timeout")), rowLimitMs);
+          }),
+        ]);
+        status = answer.status;
+        refusal = answer.error;
       } catch (e) {
         error = e instanceof Error ? e.message : "network";
+      } finally {
+        clearTimeout(timer);
       }
       if (status >= 200 && status < 300) {
         await current().remove(item.id);
@@ -330,7 +354,7 @@ export async function flushQueue(
       if (status >= 400 && status < 500 && status !== 401 && status !== 429) {
         await current().remove(item.id);
         failed++;
-        emit({ type: "rejected", item, status });
+        emit({ type: "rejected", item, status, ...(refusal ? { error: refusal } : {}) });
         continue;
       }
       await current().put({ ...item, attempts: item.attempts + 1, lastError: error || `HTTP ${status}` });

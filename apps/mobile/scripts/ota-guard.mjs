@@ -30,7 +30,32 @@ if (process.argv[1] && process.argv[1].endsWith("ota-guard.mjs")) {
   const bundled = JSON.parse(readFileSync(new URL("../node_modules/expo/bundledNativeModules.json", import.meta.url), "utf8"));
   const before = changed.includes("apps/mobile/package.json") ? JSON.parse(git(`show ${since}:apps/mobile/package.json`)) : {};
   const after = changed.includes("apps/mobile/package.json") ? JSON.parse(readFileSync(new URL("../package.json", import.meta.url), "utf8")) : {};
-  const result = classify(changed, { before, after, bundled });
+  // What moves a native module without the app's package.json (TA-264): the lockfile, the root's pnpm overrides and
+  // patches, and a workspace package. Each read at the release (empty when the file did not exist) and now.
+  const atRelease = (path) => {
+    try {
+      return git(`show ${since}:${path}`);
+    } catch {
+      return "";
+    }
+  };
+  const now = (path) => readFileSync(new URL(`../../../${path}`, import.meta.url), "utf8");
+  const json = (text) => (text ? JSON.parse(text) : {});
+  const lockBefore = changed.includes("pnpm-lock.yaml") ? atRelease("pnpm-lock.yaml") : "";
+  const lockAfter = changed.includes("pnpm-lock.yaml") ? now("pnpm-lock.yaml") : "";
+  const rootBefore = changed.includes("package.json") ? json(atRelease("package.json")) : {};
+  const rootAfter = changed.includes("package.json") ? json(now("package.json")) : {};
+  const workspaceBefore = {};
+  const workspaceAfter = {};
+  for (const file of changed.filter((f) => /^packages\/[^/]+\/package\.json$/.test(f))) {
+    workspaceBefore[file] = json(atRelease(file));
+    try {
+      workspaceAfter[file] = json(now(file));
+    } catch {
+      workspaceAfter[file] = {};
+    }
+  }
+  const result = classify(changed, { before, after, bundled, lockBefore, lockAfter, rootBefore, rootAfter, workspaceBefore, workspaceAfter });
   console.log(`ota-guard: ${changed.length} files changed since ${since}`);
   if (!result.ok) {
     if (result.native.length) console.error(`  native paths changed:\n    ${result.native.join("\n    ")}`);

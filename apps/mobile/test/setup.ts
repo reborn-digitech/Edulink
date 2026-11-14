@@ -28,6 +28,11 @@ jest.mock("expo-notifications", () => ({
   getExpoPushTokenAsync: jest.fn(async () => ({ data: "ExponentPushToken[test]" })),
   unregisterForNotificationsAsync: jest.fn(async () => {}),
   addNotificationResponseReceivedListener: jest.fn(() => ({ remove: () => {} })),
+  // A push that arrives with the app open (TA-432), and what a session's end clears from the tray (TA-348).
+  setNotificationHandler: jest.fn(),
+  addNotificationReceivedListener: jest.fn(() => ({ remove: () => {} })),
+  dismissAllNotificationsAsync: jest.fn(async () => {}),
+  setBadgeCountAsync: jest.fn(async () => true),
 }));
 // isDevice is a getter over shared state, because the interop copies a plain
 // value and a test's assignment would never reach the module under test.
@@ -111,6 +116,13 @@ jest.mock("expo-file-system", () => {
     list() {
       return [...cache.values()].filter((f) => f.uri.startsWith(this.uri + "/"));
     }
+    // A folder exists while a file is written under it, and goes with everything in it (the pickers' folders, TA-348).
+    get exists() {
+      return this.list().length > 0;
+    }
+    delete() {
+      for (const f of this.list()) cache.delete(f.uri);
+    }
   }
   // The app has been launched before on this phone: the install marker
   // (lib/install-platform.native.ts) is there, so a stored token is kept. A
@@ -120,6 +132,12 @@ jest.mock("expo-file-system", () => {
   return { Directory, File, Paths: { cache: { uri: "file:///cache" }, document: { uri: "file:///document" } } };
 });
 jest.mock("expo-sharing", () => ({ isAvailableAsync: jest.fn(async () => true), shareAsync: jest.fn(async () => {}) }));
+// The network's state (TA-251): a test reaches the listener React Query's onlineManager was given through
+// addNetworkStateListener.mock.calls and says the signal went and came back.
+jest.mock("expo-network", () => ({
+  addNetworkStateListener: jest.fn(() => ({ remove: () => {} })),
+  getNetworkStateAsync: jest.fn(async () => ({ isConnected: true, isInternetReachable: true })),
+}));
 
 // A release bundle carries only the keys scripts/i18n-subset.cjs finds the
 // phone can ask for, and a key it misses shows as the key itself on a phone

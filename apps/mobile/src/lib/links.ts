@@ -170,6 +170,36 @@ const FLAT: Record<string, string> = {
   // the student's own placement screen.
   "/student/placement": "/(app)/placement",
   "/iqac": "/(app)/iqac-desk",
+  // Notices whose page the phone has, which opened the web in the system browser, signed out (TA-499, 13 Nov 2026).
+  // The query (?child=, ?incident=, ?membershipId=) goes with each, as everywhere above.
+  "/parent/hostel": "/(app)/hostel",
+  "/student/hostel": "/(app)/hostel",
+  "/parent/incidents": "/(app)/family-incidents",
+  "/student/academics": "/(app)/academics",
+  "/parent/academics": "/(app)/academics",
+  "/student/registration": "/(app)/registration",
+  "/student/voice": "/(app)/voice",
+  "/parent/record": "/(app)/record",
+  "/student/record": "/(app)/record",
+  "/student/clinical": "/(app)/clinical-logbook",
+  "/student/certificates": "/(app)/certificates",
+  "/parent/certificates": "/(app)/certificates",
+  "/student/studios": "/(app)/student-studios",
+  "/faculty/studios": "/(app)/studios",
+  "/student/placement/talks": "/(app)/placement-talks",
+  "/parent/library": "/(app)/library",
+  "/faculty/mentoring": "/(app)/academics-mentoring",
+  "/alumni/college": "/(app)/alumni-college",
+  "/admin/website": "/(app)/website",
+  "/admin/certificates/issue": "/(app)/certificate-issue",
+  // The homes of the roles the web names (WEB_HOME below), and the site's root: the phone's home tab.
+  "/": "/(app)",
+  "/faculty": "/(app)",
+  "/hod": "/(app)",
+  "/alumni": "/(app)",
+  "/recruiter": "/(app)",
+  "/library": "/(app)",
+  "/hostel": "/(app)",
 };
 
 /** Paths under these prefixes whose second segment is an id, and the screen and param that id becomes. */
@@ -188,6 +218,12 @@ const BY_ID: { prefix: string; pathname: string; param: string; not?: string[] }
   // The parity batch (10 Oct 2026): a session and a drive by id.
   { prefix: "/exam-cell/sessions/", pathname: "/(app)/exam-session", param: "sessionId" },
   { prefix: "/placement/drives/", pathname: "/(app)/placement-drive", param: "driveId" },
+  // TA-499: a lecture to cover, a course file reviewed, a certificate issued, a pupil's record or fees to see.
+  { prefix: "/faculty/lectures/", pathname: "/(app)/lecture", param: "id" },
+  { prefix: "/faculty/offerings/", pathname: "/(app)/offering", param: "id" },
+  { prefix: "/certificates/", pathname: "/(app)/certificate", param: "id" },
+  { prefix: "/admin/records/", pathname: "/(app)/pupil-record", param: "membershipId" },
+  { prefix: "/admin/fees/pupils/", pathname: "/(app)/fee-pupil", param: "studentMembershipId" },
 ];
 
 export function screenFor(url: string): ScreenTarget | null {

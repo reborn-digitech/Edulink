@@ -46,6 +46,13 @@ export const SHORT_ANSWER = 280;
 /** The verdicts that are the model's words; every other one is a fixed sentence the server wrote (the web's model.ts). */
 const MODEL_VERDICTS: readonly string[] = ["ANSWERED", "HINT"];
 const KEY = ["assistant"] as const;
+/**
+ * How long the phone waits for an answer (TA-149, 14 Nov 2026). The ask door answers when the checked answer is whole:
+ * the server allows the classifier 8 s, the embedding 10 s and the model's answer 90 s (assistant/config.ts), so the
+ * client's default 30 s would cut a slow answer that is still coming and invite the question again. This limit is
+ * above the server's own.
+ */
+export const ASSISTANT_ANSWER_TIMEOUT_MS = 150_000;
 
 /** The first part of an answer: whole when it is short, else cut at the last sentence end before the limit (or a word). */
 export function shortAnswer(text: string, max = SHORT_ANSWER): { text: string; cut: boolean } {
@@ -239,7 +246,7 @@ export function Conversation({
       setId(cid);
     }
     const body = { text: q, ...(mode && !goOn ? { mode } : {}), ...(page && !goOn ? { page } : {}), ...(goOn ? { goOn: true } : {}), ...(about ? { about } : {}) };
-    const answered = await api().post(`/api/v1/assistant/conversations/${encodeURIComponent(cid)}/messages`, body);
+    const answered = await api().post(`/api/v1/assistant/conversations/${encodeURIComponent(cid)}/messages`, body, { timeoutMs: ASSISTANT_ANSWER_TIMEOUT_MS });
     setAsking(null);
     if (!answered.ok) {
       if (!goOn) setQuestion(q);

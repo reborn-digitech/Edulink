@@ -1,9 +1,11 @@
-# Answer a practice question: the pupil's Practice screen keeps the questions
-# on the web, so the flow asserts the door and the ladder around it rather
-# than the question itself (the door opens the system browser; Maestro
-# cannot follow it back). Untested: needs a simulator and Maestro.
+# Answer a practice question in the phone's own player (TA-590, 13 Nov 2026):
+# the pupil's Practice screen opens a chapter here, not on the web, so the flow
+# opens the first chapter, answers its first option and asserts the verdict and
+# the next question. The option is chosen by position (its words are the
+# question bank's data), so either verdict is right. Needs a pupil with the
+# Student plan and a chapter on their list. Untested: needs a simulator and Maestro.
 appId: school.edulink.app
-name: Practice opens the question on the web
+name: Practice answers a question in the phone's player
 tags: [student, practice]
 ---
 - runFlow:
@@ -13,10 +15,22 @@ tags: [student, practice]
       MAGIC_TOKEN: "${MAGIC_TOKEN_STUDENT}"
 - tapOn: "Practice"
 - extendedWaitUntil:
-    visible: "Open on the web"
+    visible: "Your week"
     timeout: 10000
 - assertVisible: "Practice that follows you. Get two right and it gets harder; get two wrong and it eases off."
+- scrollUntilVisible:
+    element:
+      id: "practice-topic"
+- tapOn:
+    id: "practice-topic"
+    index: 0
 - extendedWaitUntil:
-    visible: "Your week|No practice topics yet"
+    visible:
+      id: "choice-0"
     timeout: 10000
-- assertVisible: "Open on the web"
+- tapOn:
+    id: "choice-0"
+- extendedWaitUntil:
+    visible: "Got it right!|Not this time — the working is below."
+    timeout: 10000
+- assertVisible: "Next question"

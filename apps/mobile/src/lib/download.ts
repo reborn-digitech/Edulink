@@ -70,6 +70,31 @@ export async function clearSharedFiles(): Promise<number> {
   return removed;
 }
 
+/** The folders the document picker and the camera copy what they hand over into, in the cache (expo's own names). */
+const PICKER_FOLDERS = ["DocumentPicker", "ImagePicker"];
+
+/**
+ * What this person picked or photographed — a medical certificate for a leave note, a homework photograph — sits in
+ * the pickers' own cache folders after the upload, which clearSharedFiles never looked in (TA-348, 13 Nov 2026).
+ * Sign-out and a session's end remove those folders too. Native only.
+ */
+export async function clearPickedFiles(): Promise<number> {
+  if (Platform.OS === "web") return 0;
+  let removed = 0;
+  for (const name of PICKER_FOLDERS) {
+    try {
+      const folder = new Directory(Paths.cache, name);
+      if (folder.exists) {
+        folder.delete();
+        removed++;
+      }
+    } catch {
+      // A folder that cannot be read or removed is left; the rest still go.
+    }
+  }
+  return removed;
+}
+
 /** Hand fetched bytes over. Resolves to null once the sheet is open (or the file saved on the web), else the sentence to show. */
 export async function shareBytes(got: { bytes: Uint8Array; mime: string }, fileName: string, fallbackError: string): Promise<string | null> {
   try {

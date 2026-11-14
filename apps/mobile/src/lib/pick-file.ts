@@ -31,7 +31,8 @@ export type PickKind = "image" | "media" | "document" | "any";
 const TYPES: Record<PickKind, string[] | string> = {
   image: ["image/*"],
   media: ["image/*", "video/*"],
-  document: ["application/pdf", "image/*", "application/msword", "application/vnd.openxmlformats-officedocument.wordprocessingml.document"],
+  // What POST /api/v1/uploads stores (PDF and pictures): a Word file was offered here and refused every time (TA-585).
+  document: ["application/pdf", "image/*"],
   any: "*/*",
 };
 

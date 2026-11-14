@@ -17,19 +17,42 @@ export type ApiClientOptions = {
   getLocale?: () => string;
   /** Injectable for tests and for React Native's own fetch. */
   fetch?: typeof fetch;
+  /**
+   * How long a request may take, answer and body together, before it is given up as a network failure (status 0)
+   * (TA-149, 13 Nov 2026): React Native's Android client has no timeout of its own, so a connection that never answered
+   * left Save busy for good and held the outbox's flush. An upload (a FormData body) is given UPLOAD_TIMEOUT_MS.
+   */
+  timeoutMs?: number;
+  /**
+   * Called when a request that carried a bearer is answered 401 (TA-145, 13 Nov 2026): the session ended on the server,
+   * and the app confirms it and signs the person out wherever the 401 was met, not only when /api/v1/me met it.
+   */
+  onUnauthorized?: () => void;
 };
 
+/** The default limit of one request (TA-149). */
+export const REQUEST_TIMEOUT_MS = 30_000;
+/** The limit of one upload, whose body may take minutes on a slow network (TA-149). */
+export const UPLOAD_TIMEOUT_MS = 180_000;
+
+/**
+ * One request's own settings. timeoutMs replaces the client's limit for this request alone: a door the server lets run
+ * longer than REQUEST_TIMEOUT_MS (the assistant's answer, whose model call alone may take 90 s) passes a limit above
+ * the server's own, so the phone does not give up on an answer that is still coming and send the question again.
+ */
+export type RequestOptions = { timeoutMs?: number };
+
 export type ApiClient = {
-  request<T>(method: "GET" | "POST" | "PUT" | "PATCH" | "DELETE", path: string, body?: unknown): Promise<ApiResult<T>>;
-  get<T>(path: string): Promise<ApiResult<T>>;
-  post<T>(path: string, body?: unknown): Promise<ApiResult<T>>;
+  request<T>(method: "GET" | "POST" | "PUT" | "PATCH" | "DELETE", path: string, body?: unknown, init?: RequestOptions): Promise<ApiResult<T>>;
+  get<T>(path: string, init?: RequestOptions): Promise<ApiResult<T>>;
+  post<T>(path: string, body?: unknown, init?: RequestOptions): Promise<ApiResult<T>>;
 };
 
 export function createApiClient(options: ApiClientOptions): ApiClient {
   const doFetch = options.fetch ?? globalThis.fetch;
   const base = options.baseUrl.replace(/\/+$/, "");
 
-  async function request<T>(method: "GET" | "POST" | "PUT" | "PATCH" | "DELETE", path: string, body?: unknown): Promise<ApiResult<T>> {
+  async function request<T>(method: "GET" | "POST" | "PUT" | "PATCH" | "DELETE", path: string, body?: unknown, init?: RequestOptions): Promise<ApiResult<T>> {
     const headers: Record<string, string> = { Accept: "application/json" };
     const token = await options.getToken();
     if (token) headers.Authorization = `Bearer ${token}`;
@@ -40,19 +63,45 @@ export function createApiClient(options: ApiClientOptions): ApiClient {
     if (body !== undefined && !multipart) headers["Content-Type"] = "application/json";
 
     let response: Response;
+    let text: string;
+    // The answer and its body within one limit (TA-149): past it the request is aborted and answered as a network
+    // failure. The race stands even where a fetch ignores the signal.
+    const controller = typeof AbortController !== "undefined" ? new AbortController() : null;
+    let timer: ReturnType<typeof setTimeout> | undefined;
+    const expired = new Promise<never>((_, reject) => {
+      timer = setTimeout(() => {
+        controller?.abort();
+        reject(new Error("Request timed out"));
+      }, init?.timeoutMs ?? options.timeoutMs ?? (multipart ? UPLOAD_TIMEOUT_MS : REQUEST_TIMEOUT_MS));
+    });
     try {
-      response = await doFetch(`${base}${path.startsWith("/") ? path : `/${path}`}`, {
-        method,
-        headers,
-        body: body === undefined ? undefined : multipart ? (body as FormData) : JSON.stringify(body),
-      });
+      response = await Promise.race([
+        doFetch(`${base}${path.startsWith("/") ? path : `/${path}`}`, {
+          method,
+          headers,
+          body: body === undefined ? undefined : multipart ? (body as FormData) : JSON.stringify(body),
+          ...(controller ? { signal: controller.signal } : {}),
+        }),
+        expired,
+      ]);
+      // A body cut off part-way is a network failure too, not a throw (TA-149).
+      text = await Promise.race([response.text(), expired]);
     } catch (cause) {
-      // Offline, DNS, a dropped connection: the caller gets a shape it can show,
+      // Offline, DNS, a dropped connection, no answer in time: the caller gets a shape it can show,
       // never an exception it has to remember to catch.
       return { ok: false, status: 0, error: cause instanceof Error ? cause.message : "Network error", code: "SERVER" };
+    } finally {
+      clearTimeout(timer);
     }
 
-    const text = await response.text();
+    if (response.status === 401 && token && options.onUnauthorized) {
+      try {
+        options.onUnauthorized();
+      } catch {
+        // The caller still gets its answer.
+      }
+    }
+
     const json: unknown = text ? safeJson(text) : null;
 
     if (response.ok) return { ok: true, data: json as T };
@@ -64,8 +113,8 @@ export function createApiClient(options: ApiClientOptions): ApiClient {
 
   return {
     request,
-    get: (path) => request("GET", path),
-    post: (path, body) => request("POST", path, body),
+    get: (path, init) => request("GET", path, undefined, init),
+    post: (path, body, init) => request("POST", path, body, init),
   };
 }
 

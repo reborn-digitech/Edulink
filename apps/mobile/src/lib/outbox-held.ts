@@ -34,6 +34,27 @@ export function useHeldBySchool(): Map<string | null, number> {
   return held;
 }
 
+/**
+ * A write saved without signal that the server refused when the outbox sent it (TA-146, 13 Nov 2026) left the outbox
+ * and its badge exactly as a delivered one does, and only the register said so, while it was on screen. Mounted once
+ * at the shell: whatever screen is up, the person is told it was not saved, with the server's own sentence. The
+ * register, a lecture and the logbook also say it in place.
+ */
+export function useReplayRefusalNotice(): void {
+  const toast = useToast();
+  const t = useT();
+  useEffect(
+    () =>
+      onQueueEvent((event) => {
+        if (event.type !== "rejected") return;
+        const said = event.status === 0 ? t("mobile.replayExpired") : t("mobile.replayRefused");
+        const why = event.error?.trim();
+        toast.show(why ? `${said} ${why}` : said, "danger");
+      }),
+    [toast, t],
+  );
+}
+
 /** Switch the session's school and role, then say what stays unsent from the place just left. */
 export function useSwitchContext(): (next: { schoolId: string | null; role: RoleCode }) => Promise<void> {
   const session = useSession();

@@ -1,8 +1,9 @@
-import { useEffect, useRef } from "react";
+import { useContext, useEffect, useRef } from "react";
 import { Platform } from "react-native";
 import * as Linking from "expo-linking";
 import * as Notifications from "expo-notifications";
 import { useRouter } from "expo-router";
+import { QueryClientContext } from "@tanstack/react-query";
 import type { SessionResponse } from "@edulink/contracts";
 import { api, API_BASE } from "./api";
 import { isTwoFactor } from "./two-factor";
@@ -28,6 +29,12 @@ export function useDeepLinks() {
     acceptRef.current = session.accept;
   });
   const handledInitial = useRef(false);
+  // The query cache, when there is a provider: a notice says something changed, so what is on screen is read again.
+  const queryClient = useContext(QueryClientContext);
+  const queryClientRef = useRef(queryClient);
+  useEffect(() => {
+    queryClientRef.current = queryClient;
+  });
 
   useEffect(() => {
     let alive = true;
@@ -52,7 +59,9 @@ export function useDeepLinks() {
         await acceptRef.current(res.data);
         return;
       }
-      const target = screenFor(parsed.path ? `/${parsed.path}${parsed.queryParams ? "?" + new URLSearchParams(parsed.queryParams as Record<string, string>).toString() : ""}` : "/");
+      // A link with no path (the app opened by its bare scheme) goes nowhere, as before "/" became the home (TA-499).
+      if (!parsed.path) return;
+      const target = screenFor(`/${parsed.path}${parsed.queryParams ? "?" + new URLSearchParams(parsed.queryParams as Record<string, string>).toString() : ""}`);
       if (target) router.push({ pathname: target.pathname as never, params: target.params });
     };
     if (!handledInitial.current) {
@@ -63,10 +72,23 @@ export function useDeepLinks() {
 
     // A tapped notification carries the server's URL in its data.
     let notifSub: { remove(): void } | null = null;
+    let receivedSub: { remove(): void } | null = null;
     if (Platform.OS !== "web") {
+      // A push that arrives while the app is open is shown, as it is with the app closed (TA-432, 13 Nov 2026): with no
+      // handler expo-notifications presents nothing in the foreground, and the urgent cover notice went unseen. The
+      // notices list and the badge are read again at once rather than at the badge's next two-minute poll.
+      Notifications.setNotificationHandler({
+        handleNotification: async () => ({ shouldShowBanner: true, shouldShowList: true, shouldPlaySound: false, shouldSetBadge: true }),
+      });
+      receivedSub = Notifications.addNotificationReceivedListener(() => {
+        void queryClientRef.current?.invalidateQueries({ queryKey: ["notifications"] });
+      });
       notifSub = Notifications.addNotificationResponseReceivedListener((response) => {
         const url = response.notification.request.content.data?.url;
         if (typeof url === "string") {
+          // What the notice is about changed on the server (TA-164): every screen's answer is marked old and those on
+          // screen, the one the notice opens included, are read again rather than shown as first read days ago.
+          void queryClientRef.current?.invalidateQueries();
           const target = screenFor(url);
           if (target) router.push({ pathname: target.pathname as never, params: target.params });
           // A notice for a page the phone has not (a guardian's placement consent, QA-70) opens it on the web, signed in,
@@ -82,6 +104,7 @@ export function useDeepLinks() {
       alive = false;
       sub.remove();
       notifSub?.remove();
+      receivedSub?.remove();
     };
   }, [router]);
 }
