@@ -1,5 +1,5 @@
 import "server-only";
-import { audienceTokensFor, isTargetToken, targetToken } from "./college-audience";
+import { audienceTokensFor, isTargetToken, studentTokensMany, targetToken } from "./college-audience";
 import type { AudienceTarget } from "@edulink/contracts";
 import { queueCircularDelivery, recordPostRead } from "./circulars";
 import type { Prisma } from "@prisma/client";
@@ -106,7 +106,7 @@ export function schoolHashtag(name: string): string {
     .split(/\s+/)
     .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
     .join("")
-    .replace(/[^\p{L}\p{N}]/gu, "");
+    .replace(/[^\p{L}\p{M}\p{N}]/gu, "");
   return compact ? `#${compact}` : "";
 }
 
@@ -267,10 +267,18 @@ async function gradesFor(session: ActiveContext): Promise<string[]> {
  * The schools a guardian's children attend, oldest link first — the same
  * ordering rule as listContexts' children, so "the default school" is always
  * the same school everywhere.
+ *
+ * A CHILD ON THE ROLL (TA-092, testing analysis of 13 November 2026). A
+ * departure leaves the family's guardianship standing on purpose (it keeps
+ * the child's record and papers reachable, school-record.ts), so an ACTIVE
+ * link alone kept a leaver's family on the school's feed, commenting
+ * unreviewed. A school counts here only while a child of theirs is still a
+ * live pupil there (the student membership ACTIVE, leftAt empty), as
+ * classIdsFor already reads it.
  */
 async function guardianSchoolIds(userId: string): Promise<string[]> {
   const links = await db.guardianship.findMany({
-    where: { parentUserId: userId, status: "ACTIVE" },
+    where: { parentUserId: userId, status: "ACTIVE", student: { status: "ACTIVE", leftAt: null } },
     orderBy: { createdAt: "asc" },
     select: { studentSchoolId: true },
   });
@@ -337,7 +345,9 @@ async function classIdsFor(session: ActiveContext): Promise<string[]> {
   const { schoolId, membershipId, role } = session;
   if (!schoolId) return [];
 
-  if (role === "ADMIN") {
+  // The head reads every class's posts as the office does (TA-317): the circulars list, the reach report and its
+  // reminder are theirs, and a class circular's page answered them "not found".
+  if (role === "ADMIN" || role === "PRINCIPAL") {
     const all = await db.class.findMany({ where: { schoolId }, select: { id: true } });
     return all.map((c) => c.id);
   }
@@ -425,7 +435,7 @@ export async function listFeed(
     },
     // Pinned first, then newest. Two keys so a pinned post does not need its
     // createdAt fudged to stay at the top.
-    orderBy: [{ pinnedAt: "desc" }, { createdAt: "desc" }],
+    orderBy: [{ pinnedAt: { sort: "desc", nulls: "last" } }, { createdAt: "desc" }],
     take: 100,
   });
 
@@ -875,8 +885,10 @@ export async function moderatePost(
     throw new AccessError("access.giveAReasonSoTheStudentKnows");
   }
 
-  await db.post.update({
-    where: { id: postId },
+  // Conditional on the post still waiting (TA-318), as moderateComment is: of two reviewers deciding at once, one
+  // decides and the other is told it was already reviewed, so the author hears one outcome and the log holds one.
+  const decided = await db.post.updateMany({
+    where: { id: postId, schoolId, status: "PENDING" },
     data: {
       status: decision === "APPROVE" ? "APPROVED" : "REJECTED",
       rejectionReason: decision === "REJECT" ? reason!.trim() : null,
@@ -884,6 +896,7 @@ export async function moderatePost(
       reviewedByMembershipId: membershipId,
     },
   });
+  if (decided.count === 0) throw new AccessError("access.thatPostHasAlreadyBeenReviewed");
 
   await notify({
     userId: post.authorUserId,
@@ -1515,6 +1528,24 @@ export async function reportContent(
         : await db.user.findUnique({ where: { id: input.targetId }, select: { id: true } });
   if (!exists) throw new AccessError("access.thatContentNoLongerExists", "NOT_FOUND");
 
+  /**
+   * A GUARDIAN'S REPORT HAS A SCHOOL (TA-093, testing analysis of 13 November 2026). A parent's session carries no
+   * school, so the row was written with none: the policy refuses that under the app role, and no Safety Centre lists
+   * it under the owner. The school is resolved as the feed resolves it: the post's (a comment's post's) where a child
+   * of theirs is on the roll, otherwise the family's first school; a parent with no child on any roll is refused.
+   */
+  let schoolId = session.schoolId;
+  if (!schoolId && session.role === "PARENT") {
+    const postId =
+      input.targetType === "POST"
+        ? input.targetId
+        : input.targetType === "COMMENT"
+          ? (await db.comment.findFirst({ where: { id: input.targetId }, select: { postId: true } }))?.postId
+          : undefined;
+    schoolId = (await scoped(session, postId ? { postId } : {})).schoolId ?? (await guardianSchoolIds(session.user.id))[0] ?? null;
+    if (!schoolId) throw new AccessError("access.notAtThisSchool", "NOT_FOUND");
+  }
+
   const since = new Date(Date.now() - 24 * 60 * 60 * 1000);
   const duplicate = await db.report.findFirst({
     where: { reporterUserId: session.user.id, targetType: input.targetType, targetId: input.targetId, createdAt: { gte: since } },
@@ -1524,7 +1555,7 @@ export async function reportContent(
 
   await db.report.create({
     data: {
-      schoolId: session.schoolId,
+      schoolId,
       targetType: input.targetType,
       targetId: input.targetId,
       reporterUserId: session.user.id,
@@ -1533,17 +1564,17 @@ export async function reportContent(
     },
   });
 
-  if (session.schoolId) {
-    const burst = await consume(`report-urgent:${session.schoolId}`, 1, REPORT_URGENT_WINDOW_MS);
+  if (schoolId) {
+    const burst = await consume(`report-urgent:${schoolId}`, 1, REPORT_URGENT_WINDOW_MS);
     const admins = await db.membership.findMany({
-      where: { schoolId: session.schoolId, role: "ADMIN", status: "ACTIVE", leftAt: null },
+      where: { schoolId, role: "ADMIN", status: "ACTIVE", leftAt: null },
       select: { userId: true },
     });
     await Promise.all(
       admins.map((admin) =>
         notify({
           userId: admin.userId,
-          schoolId: session.schoolId,
+          schoolId,
           kind: "SYSTEM",
           titleKey: "bulletin.notifReported",
           bodyKey: "notifBody.reportedAs",
@@ -1558,7 +1589,7 @@ export async function reportContent(
   }
 
   await audit({
-    schoolId: session.schoolId,
+    schoolId,
     actorUserId: session.user.id,
     action: "content.report",
     targetType: input.targetType,
@@ -1626,7 +1657,7 @@ export async function ackReport(session: ActiveContext, postId: string): Promise
 
   const post = await db.post.findFirst({
     where: { id: postId, schoolId, requiresAck: true, status: "APPROVED" },
-    select: { id: true, audience: true, audienceGrade: true },
+    select: { id: true, audience: true, audienceGrade: true, scope: true, classId: true, audienceTarget: true },
   });
   if (!post) throw new AccessError("access.postNotFound", "NOT_FOUND");
 
@@ -1657,6 +1688,8 @@ export async function ackReport(session: ActiveContext, postId: string): Promise
     where: {
       schoolId,
       archivedAt: null,
+      // A class circular is its own class's (TA-316): the card listed every class the reader could see as waiting.
+      ...(post.scope === "CLASS" && post.classId ? { id: post.classId } : {}),
       ...(post.audienceGrade ? { gradeLevel: post.audienceGrade } : {}),
       ...(role === "TEACHER" ? { teachers: { some: { teacherMembershipId: membershipId ?? "" } } } : {}),
     },
@@ -1679,11 +1712,16 @@ export async function ackReport(session: ActiveContext, postId: string): Promise
       },
     },
   });
+  // A college notice for one programme, department, division or batch counts the students it names, as the feed reads it.
+  const target = post.audienceTarget;
+  const tokens = target ? await studentTokensMany(classes.flatMap((k) => k.enrollments.map((e) => e.student.id))) : null;
+  const named = (studentId: string) => !tokens || !target || (tokens.get(studentId) ?? []).includes(target);
 
   return classes.map((klass) => {
     const outstanding: string[] = [];
     let reached = 0;
-    for (const { student } of klass.enrollments) {
+    const enrollments = klass.enrollments.filter((e) => named(e.student.id));
+    for (const { student } of enrollments) {
       const guardianAcked = student.guardianships.some((g) => ackSet.has(g.parentUserId));
       const pupilAcked = ackSet.has(student.userId);
       const ok =
@@ -1698,7 +1736,7 @@ export async function ackReport(session: ActiveContext, postId: string): Promise
     return {
       classId: klass.id,
       className: klass.name,
-      total: klass.enrollments.length,
+      total: enrollments.length,
       reached,
       outstanding: outstanding.sort(),
     };

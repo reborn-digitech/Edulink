@@ -1,4 +1,5 @@
 import "server-only";
+import type { Prisma } from "@prisma/client";
 import { db } from "./db";
 import { AccessError } from "./tenancy";
 import { audit } from "./audit";
@@ -58,6 +59,15 @@ export function mayConverse(a: Role, b: Role): boolean {
 }
 
 /**
+ * A guardian's link that makes them a family of the school: ACTIVE, not the
+ * school's stand-in, and for a child still on the roll (TA-092, testing
+ * analysis of 13 November 2026). A departure leaves the family's link
+ * standing on purpose, for the child's record and papers; it does not leave
+ * them a parent of the school to write to its staff.
+ */
+const FAMILY_LINK: Prisma.GuardianshipWhereInput = { status: "ACTIVE", relation: { not: "SCHOOL" }, student: { status: "ACTIVE", leftAt: null } };
+
+/**
  * Where the caller stands at a school, or null if they do not.
  *
  * A parent has no school on their session; their standing is an ACTIVE
@@ -67,7 +77,7 @@ export function mayConverse(a: Role, b: Role): boolean {
 export async function standingAt(ctx: ActiveContext, schoolId: string): Promise<Role | null> {
   if (ctx.role === "PARENT") {
     const link = await db.guardianship.findFirst({
-      where: { parentUserId: ctx.user.id, studentSchoolId: schoolId, status: "ACTIVE", relation: { not: "SCHOOL" } },
+      where: { parentUserId: ctx.user.id, studentSchoolId: schoolId, ...FAMILY_LINK },
       select: { id: true },
     });
     return link ? "PARENT" : null;
@@ -88,7 +98,7 @@ export async function roleOfAt(userId: string, schoolId: string): Promise<Role |
   });
   if (membership) return membership.role as Role;
   const link = await db.guardianship.findFirst({
-    where: { parentUserId: userId, studentSchoolId: schoolId, status: "ACTIVE", relation: { not: "SCHOOL" } },
+    where: { parentUserId: userId, studentSchoolId: schoolId, ...FAMILY_LINK },
     select: { id: true },
   });
   return link ? "PARENT" : null;
@@ -98,7 +108,7 @@ export async function roleOfAt(userId: string, schoolId: string): Promise<Role |
 export async function conversationSchools(ctx: ActiveContext): Promise<string[]> {
   if (ctx.role === "PARENT") {
     const links = await db.guardianship.findMany({
-      where: { parentUserId: ctx.user.id, status: "ACTIVE", relation: { not: "SCHOOL" } },
+      where: { parentUserId: ctx.user.id, ...FAMILY_LINK },
       select: { studentSchoolId: true },
       distinct: ["studentSchoolId"],
     });
@@ -344,7 +354,7 @@ async function assertParticipant(ctx: ActiveContext, conversationId: string) {
   // same thing in words rather than in an empty page.
   const standing = await standingAt(ctx, conversation.schoolId);
   if (!standing) throw new AccessError("access.conversationNotFound", "NOT_FOUND");
-  return { conversation, mine };
+  return { conversation, mine, standing };
 }
 
 export type ConversationSummary = {
@@ -498,7 +508,7 @@ export async function sendConversationMessage(
 ): Promise<{ messageId: string }> {
   const text = body.trim();
   if (!text) throw new AccessError("remarks.writeSomethingFirst");
-  const { conversation, mine } = await assertParticipant(ctx, conversationId);
+  const { conversation, mine, standing } = await assertParticipant(ctx, conversationId);
 
   // A replay from the offline outbox carries the clientId the device minted
   // before the message was queued. If that id already landed in this room,
@@ -509,6 +519,16 @@ export async function sendConversationMessage(
     const landed = await findLanded(conversationId, opts.clientId);
     if (landed) return { messageId: landed };
   }
+
+  // EVERYONE ELSE IN THE ROOM IS ASKED AGAIN (TA-098, testing analysis of 13 November 2026). mayConverse was asked
+  // only when the room was opened, so a teacher who left but is a parent at the school wrote on to a pupil from the
+  // PARENT context, and a message to somebody who has left was accepted and its first words shown on their phone.
+  // Each other participant must still stand at the school, and the rule must still let the writer reach them as they
+  // stand now; otherwise nothing is written and nobody is told.
+  const others = conversation.participants.filter((p) => p.userId !== ctx.user.id);
+  const theirStanding = await Promise.all(others.map((p) => roleOfAt(p.userId, conversation.schoolId)));
+  if (theirStanding.some((role) => role === null)) throw new AccessError("access.personNotAtSchool");
+  if (theirStanding.some((role) => role !== null && !mayConverse(standing, role))) throw new AccessError("access.cannotMessageThisPerson");
 
   // A room staff closed (the alumni module): the former pupil reads but does
   // not write; a member of staff writing in it opens it again.
@@ -544,7 +564,6 @@ export async function sendConversationMessage(
   }
 
   const senderName = ctx.user.preferredName ?? ctx.user.name;
-  const others = conversation.participants.filter((p) => p.userId !== ctx.user.id);
   // A CHILD'S LOCK SCREEN CARRIES NO MESSAGE TEXT. The push goes through
   // APNs and FCM and lands on a phone anyone can pick up; a minor gets the
   // sender's name and nothing else, and reads the words in the app. Adults

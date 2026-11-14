@@ -53,6 +53,21 @@ export function backoffMs(attempt: number): number {
   return Math.min(BACKOFF_MIN_MS * 2 ** Math.max(0, attempt), BACKOFF_MAX_MS);
 }
 
+/**
+ * A delay spread between half of `ms` and all of it (TA-455): after a server restart every phone dropped at the same
+ * second came back at the same second, 1 s, 2 s, 4 s later; the random half spreads them, the fixed half keeps a
+ * failing server from being asked again at once.
+ */
+export function jittered(ms: number, random: () => number): number {
+  return Math.round(ms / 2 + Math.min(1, Math.max(0, random())) * (ms / 2));
+}
+
+/**
+ * A stream that has carried nothing for this long, not even the server's keep-alive (every 25 s), is taken for dead
+ * (TA-253): a network that drops an idle connection without a word leaves the read waiting for ever.
+ */
+export const IDLE_TIMEOUT_MS = 60_000;
+
 /* ------------------------------------------------------------------------- */
 /* The wire format                                                           */
 /* ------------------------------------------------------------------------- */
@@ -131,7 +146,7 @@ export function createFrameParser(): { push(chunk: string): Frame[]; end(): Fram
  * a fetch's abort ends the body on a phone, but a stream a test hands in
  * knows nothing of the controller); rejects when the stream fails.
  */
-export async function readFrames(body: ReadableStream<Uint8Array>, onFrame: (frame: Frame) => void, signal?: AbortSignal): Promise<void> {
+export async function readFrames(body: ReadableStream<Uint8Array>, onFrame: (frame: Frame) => void, signal?: AbortSignal, onChunk?: () => void): Promise<void> {
   const reader = body.getReader();
   const decoder = new TextDecoder();
   const parser = createFrameParser();
@@ -142,6 +157,8 @@ export async function readFrames(body: ReadableStream<Uint8Array>, onFrame: (fra
     for (;;) {
       const { value, done } = await reader.read();
       if (done) break;
+      // Any bytes at all, a keep-alive comment included: the connection is alive.
+      onChunk?.();
       for (const frame of parser.push(decoder.decode(value, { stream: true }))) onFrame(frame);
     }
     for (const frame of parser.push(decoder.decode())) onFrame(frame);
@@ -179,6 +196,15 @@ export type ConnectOptions = {
   fetch?: StreamFetch;
   setTimer?: (fn: () => void, ms: number) => unknown;
   clearTimer?: (handle: unknown) => void;
+  /**
+   * The stream opened again after an earlier connection had opened (TA-253): events published while it was down
+   * were not replayed, so the screen re-reads what it may have missed, as after a return from the background.
+   */
+  onReconnect?: () => void;
+  /** Spreads each reconnect delay (jittered); the hook passes Math.random. Without it the table is exact. */
+  random?: () => number;
+  /** Reopens a stream that has carried nothing for this long (IDLE_TIMEOUT_MS from the hook); off without it. */
+  idleMs?: number;
 };
 
 let streamFetch: StreamFetch | null = null;
@@ -199,22 +225,39 @@ export function connectEvents(options: ConnectOptions): () => void {
   const types = new Set<string>(options.types);
   let controller: AbortController | null = null;
   let timer: unknown = null;
+  let idle: unknown = null;
   let stopped = false;
   let attempt = 0;
+  let everOpened = false;
 
   const later = () => {
     if (stopped) return;
-    const delay = backoffMs(attempt++);
+    const table = backoffMs(attempt++);
+    const delay = options.random ? jittered(table, options.random) : table;
     timer = setTimer(() => {
       timer = null;
       void open();
     }, delay);
   };
 
+  const quiet = () => {
+    if (idle !== null) clearTimer(idle);
+    idle = null;
+  };
+
   const open = async () => {
     if (stopped) return;
     const abort = new AbortController();
     controller = abort;
+    // Silence for idleMs ends this connection; its read then resolves and the stream is reopened as after a close.
+    const watch = () => {
+      if (!options.idleMs || stopped) return;
+      quiet();
+      idle = setTimer(() => {
+        idle = null;
+        abort.abort();
+      }, options.idleMs);
+    };
     try {
       const headers: Record<string, string> = { Accept: "text/event-stream", "Accept-Language": apiLocale() };
       const token = await sessionToken();
@@ -227,23 +270,38 @@ export function connectEvents(options: ConnectOptions): () => void {
         later();
         return;
       }
-      await readFrames(response.body, (frame) => {
-        if (stopped) return;
-        // A frame arrived (the route's "ready" is the first): the connection is good, and the next failure starts the table over.
-        attempt = 0;
-        if (frame.event === "session.ended") {
-          stopped = true;
-          abort.abort();
-          options.onSessionEnded();
-          return;
-        }
-        if (!types.has(frame.event)) return;
-        const parsed = parseEvent(frame.data);
-        if (parsed && parsed.type === frame.event) options.onEvent(parsed);
-      }, abort.signal);
-      // The server closed the stream (a restart, a proxy's idle limit): reopen.
+      watch();
+      let first = true;
+      await readFrames(
+        response.body,
+        (frame) => {
+          if (stopped) return;
+          // A frame arrived (the route's "ready" is the first): the connection is good, and the next failure starts the table over.
+          attempt = 0;
+          if (first) {
+            first = false;
+            // Open again after an earlier connection: what was published in the gap is re-read (TA-253).
+            if (everOpened) options.onReconnect?.();
+            everOpened = true;
+          }
+          if (frame.event === "session.ended") {
+            stopped = true;
+            abort.abort();
+            options.onSessionEnded();
+            return;
+          }
+          if (!types.has(frame.event)) return;
+          const parsed = parseEvent(frame.data);
+          if (parsed && parsed.type === frame.event) options.onEvent(parsed);
+        },
+        abort.signal,
+        watch,
+      );
+      quiet();
+      // The server closed the stream (a restart, a proxy's idle limit), or it fell silent: reopen.
       later();
     } catch {
+      quiet();
       // Offline, a dropped connection, or our own abort: the latter has set `stopped`, and `later` is a no-op then.
       later();
     } finally {
@@ -257,6 +315,7 @@ export function connectEvents(options: ConnectOptions): () => void {
     stopped = true;
     if (timer !== null) clearTimer(timer);
     timer = null;
+    quiet();
     controller?.abort();
     controller = null;
   };
@@ -297,6 +356,10 @@ export function useEvents(types: readonly RealtimeEventType[], onEvent: (event: 
         types: key.split(",").filter(Boolean) as RealtimeEventType[],
         onEvent: (event) => latest.current.onEvent(event),
         onSessionEnded: () => void latest.current.session?.refresh(),
+        // A stream that dropped and came back missed what was published meanwhile: re-read, as on a return (TA-253).
+        onReconnect: () => latest.current.onResume?.(),
+        random: Math.random,
+        idleMs: IDLE_TIMEOUT_MS,
       });
     };
     const stop = () => {

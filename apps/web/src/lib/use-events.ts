@@ -54,11 +54,27 @@ export type ConnectOptions = {
   /** Injectable for tests; window's by default. */
   setTimer?: (fn: () => void, ms: number) => unknown;
   clearTimer?: (handle: unknown) => void;
+  /**
+   * The stream opened again after an earlier connection had opened — the browser's own reconnect or ours (TA-253).
+   * Nothing published while it was down is replayed, so the page re-reads what it may have missed.
+   */
+  onReconnect?: () => void;
+  /** Spreads each reconnect delay (jittered); the hook passes Math.random. Without it the table is exact. */
+  random?: () => number;
 };
 
 /** The reconnect delay for the n-th consecutive failure (0-based): 1 s, 2 s, 4 s … capped at 30 s. */
 export function backoffMs(attempt: number): number {
   return Math.min(BACKOFF_MIN_MS * 2 ** Math.max(0, attempt), BACKOFF_MAX_MS);
+}
+
+/**
+ * A delay spread between half of `ms` and all of it (TA-455): after a restart every tab dropped at the same second
+ * came back at the same second; the random half spreads them, the fixed half keeps a failing server from being asked
+ * again at once.
+ */
+export function jittered(ms: number, random: () => number): number {
+  return Math.round(ms / 2 + Math.min(1, Math.max(0, random())) * (ms / 2));
 }
 
 /**
@@ -72,6 +88,7 @@ export function connectEvents(onEvent: (event: RealtimeEvent) => void, options: 
   let timer: unknown = null;
   let stopped = false;
   let attempt = 0;
+  let everOpened = false;
 
   const open = () => {
     if (stopped) return;
@@ -86,6 +103,9 @@ export function connectEvents(onEvent: (event: RealtimeEvent) => void, options: 
     source = es;
     es.addEventListener("open", () => {
       attempt = 0;
+      // "open" fires on every connection, the browser's silent reconnects included: after the first, re-read (TA-253).
+      if (everOpened && !stopped) options.onReconnect?.();
+      everOpened = true;
     });
     for (const type of options.types) {
       es.addEventListener(type, (event) => {
@@ -106,7 +126,8 @@ export function connectEvents(onEvent: (event: RealtimeEvent) => void, options: 
       if (es.readyState !== CLOSED) return;
       es.close();
       source = null;
-      const delay = backoffMs(attempt++);
+      const table = backoffMs(attempt++);
+      const delay = options.random ? jittered(table, options.random) : table;
       timer = setTimer(() => {
         timer = null;
         open();
@@ -180,6 +201,9 @@ export function useEvents(onEvent: (event: RealtimeEvent) => void, options: UseE
         types: key.split(",").filter(Boolean) as RealtimeEvent["type"][],
         EventSource,
         onSessionEnded: () => latest.current.router.push(SESSION_ENDED_URL),
+        // A stream that dropped and came back missed what was published meanwhile: re-read, as on a shown tab (TA-253).
+        onReconnect: () => latest.current.onResume?.(),
+        random: Math.random,
       });
     };
     const stop = () => {

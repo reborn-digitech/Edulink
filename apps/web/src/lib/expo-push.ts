@@ -10,8 +10,10 @@ import { db } from "./db";
  * still accepts a well-formed ExponentPushToken.
  *
  * A "DeviceNotRegistered" answer retires the token at once — the app was
- * uninstalled or the token rotated — and any other error counts against it;
- * five in a row retire it too, the same policy Web Push subscriptions have.
+ * uninstalled or the token rotated — and any other error about the device
+ * counts against it; five in a row retire it too, the same policy Web Push
+ * subscriptions have. A rate limit, a refused request, a timeout or a network
+ * fault says nothing about the device and counts against nothing (TA-510).
  * `fetch` is injectable so the suite can prove all of that without a phone.
  */
 export type ExpoPushMessage = { title: string; body: string; data?: Record<string, unknown> };
@@ -19,6 +21,16 @@ export type ExpoPushResult = { delivered: number; failed: number; retired: numbe
 
 const ENDPOINT = "https://exp.host/--/api/v2/push/send";
 const MAX_FAILURES = 5;
+/**
+ * A push service that takes the connection and never answers must not hold the request that caused the notice (a
+ * register save, a notice to every family) open for as long as the platform allows (TA-250): ten seconds, as Web Push.
+ */
+export const EXPO_SEND_TIMEOUT_MS = 10_000;
+/**
+ * Expo's per-message errors that say nothing about the device (TA-510): a rate limit is the service's, not the phone's,
+ * and counting it retired healthy phones after a burst at a peak.
+ */
+const NOT_THE_DEVICE = new Set(["MessageRateExceeded", "TRANSIENT"]);
 
 export async function sendExpoPush(
   userId: string,
@@ -45,11 +57,14 @@ export async function sendExpoPush(
         method: "POST",
         headers,
         body: JSON.stringify(batch.map((t) => ({ to: t.expoPushToken, title: message.title, body: message.body, data: message.data ?? {}, sound: "default" }))),
+        signal: AbortSignal.timeout(EXPO_SEND_TIMEOUT_MS),
       });
       const json = (await res.json().catch(() => null)) as { data?: typeof tickets } | null;
-      tickets = res.ok && json?.data ? json.data : batch.map(() => ({ status: "error", details: { error: `STATUS_${res.status}` } }));
-    } catch (error) {
-      tickets = batch.map(() => ({ status: "error", details: { error: error instanceof Error ? error.message : "NETWORK" } }));
+      // The whole request refused (a rate limit, the service's own fault, a proxy): no word about any one phone (TA-510).
+      tickets = res.ok && json?.data ? json.data : batch.map(() => ({ status: "error", details: { error: "TRANSIENT" } }));
+    } catch {
+      // A timeout or a network fault on our side: the phones are not to blame either.
+      tickets = batch.map(() => ({ status: "error", details: { error: "TRANSIENT" } }));
     }
     await Promise.all(
       batch.map(async (token, j) => {
@@ -60,6 +75,7 @@ export async function sendExpoPush(
           return;
         }
         result.failed++;
+        if (NOT_THE_DEVICE.has(ticket?.details?.error ?? "")) return;
         const dead = ticket?.details?.error === "DeviceNotRegistered" || token.failureCount + 1 >= MAX_FAILURES;
         if (dead) {
           result.retired++;

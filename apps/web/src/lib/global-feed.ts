@@ -168,7 +168,7 @@ export async function listGlobalFeed(
         reactions: { select: { kind: true, userId: true } },
         _count: { select: { comments: { where: { status: "APPROVED" } } } },
       },
-      orderBy: [{ pinnedAt: "desc" }, { createdAt: "desc" }],
+      orderBy: [{ pinnedAt: { sort: "desc", nulls: "last" } }, { createdAt: "desc" }],
       take: 100,
     }),
   ]);
@@ -253,7 +253,8 @@ async function personSchools(userId: string, sessionSchoolId: string): Promise<s
  * adult's at a college who has not granted MESSAGES (student-consent.ts).
  */
 async function familyReadingSchools(userId: string): Promise<string[]> {
-  const links = await db.guardianship.findMany({ where: { parentUserId: userId, status: "ACTIVE" }, select: { studentMembershipId: true, studentSchoolId: true } });
+  // A child still on the roll (TA-092): a leaver's family keeps the link for the record, not the school's feed.
+  const links = await db.guardianship.findMany({ where: { parentUserId: userId, status: "ACTIVE", student: { status: "ACTIVE", leftAt: null } }, select: { studentMembershipId: true, studentSchoolId: true } });
   const schools = new Set<string>();
   for (const link of links) {
     if (schools.has(link.studentSchoolId)) continue;
@@ -355,10 +356,10 @@ export async function unpublishGlobally(session: ActiveContext, postId: string):
   ]
     .filter(Boolean)
     .join(" ");
-  const body =
-    signature && post.body.endsWith(signature)
-      ? post.body.slice(0, -signature.length).trimEnd()
-      : post.body;
+  // A post signed before the tag kept its vowel signs (TA-554) carries the tag without them: that form is removed too.
+  const legacy = signature.replace(/\p{M}/gu, "");
+  const signed = signature && post.body.endsWith(signature) ? signature : legacy && post.body.endsWith(legacy) ? legacy : "";
+  const body = signed ? post.body.slice(0, -signed.length).trimEnd() : post.body;
 
   await db.post.update({ where: { id: post.id }, data: { scope: "SCHOOL", body } });
 

@@ -4,6 +4,7 @@ import { db } from "./db";
 import { AccessError } from "./tenancy";
 import { audit } from "./audit";
 import { notify } from "./notify";
+import { consume } from "./rate-limit";
 import { studentTokensMany } from "./college-audience";
 import { studentsGuardiansMaySee } from "./student-consent";
 import type { ActiveContext } from "./session";
@@ -146,13 +147,39 @@ export async function queueCircularDelivery(postId: string): Promise<{ delivered
   const total = guardianIds.length + otherIds.length;
   await db.post.update({ where: { id: postId }, data: { deliveryQueuedAt: post.deliveryQueuedAt ?? new Date() } });
   if (total > INLINE_DELIVERY_MAX) return { delivered: false, recipients: total };
-  await deliverCircular(post);
+  // Another teller (the job) holds it: it is being told, and is not told twice.
+  if ((await deliverCircular(post)) === null) return { delivered: false, recipients: total };
   return { delivered: true, recipients: total };
 }
 
-async function deliverCircular(post: PostRow): Promise<number> {
+/** How long one teller holds a circular's delivery; a teller that died is taken over by the job after it (TA-096). */
+export const DELIVERY_CLAIM_MS = 10 * 60_000;
+
+/**
+ * Tells a circular's readers once. Null when another teller holds it.
+ *
+ * ONE TELLER, AND REPEATABLE (TA-096, testing analysis of 13 November 2026). The request told a small circular while
+ * the minute job, seeing it queued and not delivered, told everyone again; and a delivery cut off half-way began
+ * again from the first family. The delivery is now claimed first (a lease on the circular, in the limiter's table,
+ * which a teller that died lets go after DELIVERY_CLAIM_MS), and a reader who already holds this circular's notice
+ * is not told again, so a delivery taken over goes on from where the last one stopped.
+ */
+async function deliverCircular(post: PostRow): Promise<number | null> {
+  const lease = await consume(`circular-deliver:${post.id}`, 1, DELIVERY_CLAIM_MS);
+  if (!lease.allowed) return null;
+  // Read again under the lease: a teller that finished while this one waited has stamped it.
+  const fresh = await db.post.findUnique({ where: { id: post.id }, select: { deliveredAt: true } });
+  if (fresh?.deliveredAt) return null;
   const { guardianIds, otherIds } = await recipients(post);
-  const { pushed } = await tell(post, `circular:${post.id}`, guardianIds, otherIds);
+  const told = new Set(
+    (
+      await db.notification.findMany({
+        where: { userId: { in: [...guardianIds, ...otherIds] }, schoolId: post.schoolId, url: `/bulletin/${post.id}`, titleKey: "bulletin.notifCircular" },
+        select: { userId: true },
+      })
+    ).map((n) => n.userId),
+  );
+  const { pushed } = await tell(post, `circular:${post.id}`, guardianIds.filter((id) => !told.has(id)), otherIds.filter((id) => !told.has(id)));
   await db.post.update({ where: { id: post.id }, data: { deliveredAt: new Date() } });
   await audit({ schoolId: post.schoolId, actorUserId: null, action: "circular.deliver", targetType: "Post", targetId: post.id, meta: { recipients: pushed, guardians: guardianIds.length } });
   return pushed;
@@ -167,6 +194,7 @@ export async function deliverQueuedCirculars(): Promise<{ delivered: number; rec
   for (const post of queued) {
     if (!post.schoolId) continue;
     const n = await deliverCircular(post);
+    if (n === null) continue;
     delivered += 1;
     total += n;
     const s = (perSchool[post.schoolId] ??= { delivered: 0, recipients: 0 });

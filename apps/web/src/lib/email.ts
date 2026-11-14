@@ -57,7 +57,9 @@ function smtp(): { transporter: Transporter; from: string } {
     );
   }
   const { host, port, secure, auth, from } = read.config;
-  smtpTransporter = createTransport({ host, port, secure, auth: auth ?? undefined });
+  // Time limits of our own (TA-250): nodemailer's defaults wait two minutes for a connection and ten for a socket,
+  // and a sign-in link waits inside the request that asked for it.
+  smtpTransporter = createTransport({ host, port, secure, auth: auth ?? undefined, connectionTimeout: 10_000, greetingTimeout: 10_000, socketTimeout: 30_000 });
   smtpFrom = from;
   return { transporter: smtpTransporter, from };
 }

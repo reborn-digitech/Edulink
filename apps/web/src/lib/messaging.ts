@@ -15,6 +15,7 @@ import { todayKey, zonedStartOfDay } from "./dates";
 import { currentAcademicYear } from "./academic-year";
 import { notify } from "./notify";
 import { mayUse } from "./platform-features";
+import { consume } from "./rate-limit";
 import { MESSAGE_EVENTS, MESSAGE_TEMPLATES, OPT_OUT_FORM, isMessageTemplateKey, renderTemplate, smsSegments, whatsappVarOrder, type MessageEvent, type MessageTemplateKey } from "./message-templates";
 
 /**
@@ -157,6 +158,12 @@ export type SendRequest = {
   queueOnly?: boolean;
   /** Skip the event switch and the daily cap — the office's own test message. */
   force?: boolean;
+  /**
+   * A resend (TA-097): the FAILED or UNDELIVERED row this decision is made again for. The row is rewritten in place
+   * (SKIPPED with its reason, or QUEUED on today's channel and number) instead of a second row beside it, so the
+   * notice's counts still add up to its recipients.
+   */
+  resendRowId?: string;
 };
 
 export type SendOutcome = { id: string; status: string; channel: Channel | null; skipReason: SkipReason | null };
@@ -168,9 +175,9 @@ export async function monthStartFor(schoolId: string, now: Date, client: typeof 
   return zonedStartOfDay(`${todayKey(tz, now).slice(0, 7)}-01`, tz);
 }
 
-async function monthlyCount(schoolId: string, now: Date, client: typeof db = db): Promise<number> {
+async function monthlyCount(schoolId: string, now: Date, client: typeof db = db, exceptId?: string): Promise<number> {
   const start = await monthStartFor(schoolId, now, client);
-  const agg = await client.outboundMessage.aggregate({ where: { schoolId, status: { in: ["QUEUED", "SENT", "DELIVERED", "UNDELIVERED"] }, createdAt: { gte: start } }, _sum: { segments: true } });
+  const agg = await client.outboundMessage.aggregate({ where: { schoolId, status: { in: ["QUEUED", "SENT", "DELIVERED", "UNDELIVERED"] }, createdAt: { gte: start }, ...(exceptId ? { id: { not: exceptId } } : {}) }, _sum: { segments: true } });
   return agg._sum.segments ?? 0;
 }
 
@@ -215,10 +222,10 @@ export async function deliverToUser(req: SendRequest): Promise<SendOutcome> {
   const body = renderTemplate(templateKey, locale, { school: school.name, ...req.vars });
 
   const skip = async (reason: SkipReason, channel: Channel | null = null, to = user?.phone ?? officeEntered ?? ""): Promise<SendOutcome> => {
-    const row = await db.outboundMessage.create({
-      data: { schoolId: req.schoolId, userId: req.userId, to, channel: channel ?? "SMS", templateKey, locale, varsJson: writeJson(req.vars), body, status: "SKIPPED", skipReason: reason, segments: 0, broadcastId: req.broadcastId ?? null, purpose: req.purpose },
-      select: { id: true },
-    });
+    const data = { schoolId: req.schoolId, userId: req.userId, to, channel: channel ?? "SMS", templateKey, locale, varsJson: writeJson(req.vars), body, status: "SKIPPED", skipReason: reason, segments: 0, broadcastId: req.broadcastId ?? null, purpose: req.purpose };
+    const row = req.resendRowId
+      ? await db.outboundMessage.update({ where: { id: req.resendRowId }, data: { ...data, error: null, providerSid: null, providerStatus: null }, select: { id: true } })
+      : await db.outboundMessage.create({ data, select: { id: true } });
     return { id: row.id, status: "SKIPPED", channel, skipReason: reason };
   };
 
@@ -229,7 +236,7 @@ export async function deliverToUser(req: SendRequest): Promise<SendOutcome> {
   if (!user.phone && !officeEntered) return skip("no-phone");
   if (!user.phone && !officeRouteOpen) return skip("unverifiedNumber");
   if (template.event && !req.force && !settings.events[template.event]) return skip("event-off");
-  if (viaOffice && (await db.outboundMessage.findFirst({ where: { schoolId: req.schoolId, to: officeEntered!, error: { startsWith: "21610" } }, select: { id: true } }))) return skip("opted-out");
+  if (viaOffice && (await answeredStop(req.schoolId, officeEntered!))) return skip("opted-out");
 
   // Channel: WhatsApp first when both are open to this person.
   let channel: Channel | null = null;
@@ -258,15 +265,18 @@ export async function deliverToUser(req: SendRequest): Promise<SendOutcome> {
   const decided = await db.$tenantTransaction(async (raw) => {
     const tx = raw as typeof db;
     await tx.$queryRaw`SELECT "id" FROM "School" WHERE "id" = ${req.schoolId} FOR UPDATE`;
-    if ((await monthlyCount(req.schoolId, now, tx)) + segments > settings.monthlyCap) return { skip: "cap-monthly" as SkipReason, row: null };
+    if ((await monthlyCount(req.schoolId, now, tx, req.resendRowId)) + segments > settings.monthlyCap) return { skip: "cap-monthly" as SkipReason, row: null };
     if (!req.force) {
-      const dayStart = new Date(`${todayKey(school.timezone, now)}T00:00:00.000Z`);
-      const today = await tx.outboundMessage.count({ where: { schoolId: req.schoolId, userId: req.userId, status: { in: ["QUEUED", "SENT", "DELIVERED"] }, createdAt: { gte: new Date(dayStart.getTime() - 12 * 3_600_000) } } });
+      // The person's day is the school's calendar day (TA-434): from the school's midnight, not from 17:30 the evening before.
+      const dayStart = zonedStartOfDay(todayKey(school.timezone, now), school.timezone);
+      const today = await tx.outboundMessage.count({ where: { schoolId: req.schoolId, userId: req.userId, status: { in: ["QUEUED", "SENT", "DELIVERED"] }, createdAt: { gte: dayStart }, ...(req.resendRowId ? { id: { not: req.resendRowId } } : {}) } });
       if (today >= DAILY_CAP_PER_PERSON) return { skip: "cap-daily" as SkipReason, row: null };
     }
-    const row = await tx.outboundMessage.create({
-      data: { schoolId: req.schoolId, userId: req.userId, to, channel: chosen, templateKey, locale, varsJson: writeJson(req.vars), body, status: "QUEUED", segments, broadcastId: req.broadcastId ?? null, purpose: req.purpose },
-    });
+    const data = { schoolId: req.schoolId, userId: req.userId, to, channel: chosen, templateKey, locale, varsJson: writeJson(req.vars), body, status: "QUEUED", segments, broadcastId: req.broadcastId ?? null, purpose: req.purpose };
+    // A resend's row is decided again as of now: it counts in today's and this month's caps from here.
+    const row = req.resendRowId
+      ? await tx.outboundMessage.update({ where: { id: req.resendRowId }, data: { ...data, skipReason: null, error: null, providerSid: null, providerStatus: null, sentAt: null, deliveredAt: null, createdAt: now } })
+      : await tx.outboundMessage.create({ data });
     return { skip: null, row };
   });
   if (decided.skip || !decided.row) return skip(decided.skip ?? "cap-daily", chosen);
@@ -276,7 +286,17 @@ export async function deliverToUser(req: SendRequest): Promise<SendOutcome> {
   }
   if (req.queueOnly) return { id: row.id, status: "QUEUED", channel, skipReason: null };
   const sent = await sendRow(row);
-  return { id: row.id, status: sent.status, channel, skipReason: null };
+  // Claimed by the job in the moment between the insert and this send: it is the job's to send, and still queued here.
+  return { id: row.id, status: sent.status === "TAKEN" ? "QUEUED" : sent.status, channel, skipReason: null };
+}
+
+/**
+ * Whether a number has answered STOP: the provider's error 21610 on an earlier text to it. The status callback writes
+ * it as "21610: …" and a refusal at send time as "… (code 21610)" (TA-435); both are read.
+ */
+async function answeredStop(schoolId: string, to: string): Promise<boolean> {
+  const row = await db.outboundMessage.findFirst({ where: { schoolId, to, OR: [{ error: { startsWith: "21610" } }, { error: { contains: "(code 21610)" } }] }, select: { id: true } });
+  return row !== null;
 }
 
 /* -------------------------------------------------------------------------- */
@@ -306,8 +326,31 @@ function callbackUrl(schoolId: string): string {
   return `${base}/api/webhooks/twilio/status/${schoolId}`;
 }
 
-/** Sends one QUEUED row and records what the provider said. Returns the row's new status. */
-export async function sendRow(row: Row): Promise<{ status: "SENT" | "FAILED"; error?: string }> {
+/** The mark a sender puts in a QUEUED row's providerSid while it hands the row to the provider (TA-095). */
+const CLAIM_PREFIX = "claim:";
+/** A claim older than this is a sender that died mid-send; the job may take the row again. */
+export const SEND_CLAIM_CEILING_MS = 10 * 60_000;
+
+/**
+ * Sends one QUEUED row and records what the provider said. Returns the row's new status, or TAKEN when another
+ * sender holds the row.
+ *
+ * CLAIMED BEFORE IT IS SENT (TA-095, testing analysis of 13 November 2026). The minute job and the request that
+ * queued a notice each read their own list of QUEUED rows and posted every one, so a row still waiting when the
+ * minute turned went out twice and was billed twice. A sender now takes the row first with a conditional write
+ * (still QUEUED, and no sender's mark in providerSid, or a mark older than the ceiling) and sends only when that
+ * write changed the row; the status stays QUEUED, so every count reads the row as before.
+ */
+export async function sendRow(row: Row): Promise<{ status: "SENT" | "FAILED" | "TAKEN"; error?: string }> {
+  const claimed = await db.outboundMessage.updateMany({
+    where: {
+      id: row.id,
+      status: "QUEUED",
+      OR: [{ providerSid: null }, { providerSid: { startsWith: CLAIM_PREFIX }, updatedAt: { lt: new Date(Date.now() - SEND_CLAIM_CEILING_MS) } }],
+    },
+    data: { providerSid: `${CLAIM_PREFIX}${row.id}` },
+  });
+  if (claimed.count === 0) return { status: "TAKEN" };
   const transport = row.channel === "WHATSAPP" ? readWhatsappTransport() : ((process.env.SMS_TRANSPORT ?? "devbox") as "devbox" | "twilio" | string);
   try {
     if (transport === "devbox") {
@@ -382,7 +425,7 @@ export async function sendRow(row: Row): Promise<{ status: "SENT" | "FAILED"; er
   } catch (error) {
     const cause = (error as { cause?: { message?: string } }).cause?.message;
     const message = (cause ?? (error instanceof Error ? error.message : String(error))).slice(0, 300);
-    await db.outboundMessage.update({ where: { id: row.id }, data: { status: "FAILED", error: message } });
+    await db.outboundMessage.update({ where: { id: row.id }, data: { status: "FAILED", error: message, providerSid: null } });
     return { status: "FAILED", error: message };
   }
 }
@@ -417,6 +460,8 @@ export async function drainQueue(limit = 300): Promise<{ sent: number; failed: n
   const touched = new Set<string>();
   for (const row of rows) {
     const result = await forSchool(row.schoolId, () => sendRow(row));
+    // Another sender (the request that queued it) holds the row: theirs to send and to count.
+    if (result.status === "TAKEN") continue;
     const bucket = (perSchool[row.schoolId] ??= { sent: 0, failed: 0 });
     if (result.status === "SENT") bucket.sent += 1;
     else bucket.failed += 1;
@@ -533,7 +578,7 @@ export async function previewBroadcast(ctx: ActiveContext, input: { audience: Au
   const { parentUserIds } = await resolveAudience(caller.schoolId, input.audience);
   const [settings, users, school] = await Promise.all([
     messagingSettings(caller.schoolId),
-    db.user.findMany({ where: { id: { in: parentUserIds } }, select: { phone: true, prefs: true, disabledAt: true } }),
+    db.user.findMany({ where: { id: { in: parentUserIds } }, select: { id: true, phone: true, prefs: true, disabledAt: true } }),
     db.school.findUniqueOrThrow({ where: { id: caller.schoolId }, select: { name: true } }),
   ]);
   const transports = transportStatus();
@@ -541,16 +586,31 @@ export async function previewBroadcast(ctx: ActiveContext, input: { audience: Au
   let whatsapp = 0;
   let sms = 0;
   let segments = 0;
+  /**
+   * THE SEND'S QUESTIONS, IN THE SEND'S ORDER (TA-553, testing analysis of 13 November 2026). The preview asked only
+   * the channels and the person's switches, so with texts off for the platform, or the school's circulars switch
+   * off, it promised families the send then skipped, and it called a guardian with only an office-entered number
+   * unreachable when the school texts those. It now asks what deliverToUser asks of the notice's template, up to
+   * the caps, which are the send's alone (they move as the rows are written).
+   */
+  const event = MESSAGE_TEMPLATES.circular.event;
+  const textsOn = (await mayUse("TEXT_MESSAGING", { userId: null, schoolId: caller.schoolId })) && !(event && !settings.events[event]);
   for (const u of users) {
-    if (!u.phone || u.disabledAt) continue;
+    if (u.disabledAt) continue;
+    const officeEntered = u.phone ? null : await officeEnteredPhone(caller.schoolId, u.id);
+    const viaOffice = Boolean(officeEntered && settings.textOfficePhones && event && OFFICE_PHONE_EVENTS.includes(event));
+    if (!u.phone && !viaOffice) continue;
     withPhone += 1;
+    if (!textsOn) continue;
+    if (viaOffice && (await answeredStop(caller.schoolId, officeEntered!))) continue;
     const prefs = readJson<UserPrefs>(u.prefs, DEFAULT_PREFS);
     if (settings.whatsappEnabled && transports.whatsapp !== "off" && prefs.channels?.whatsapp !== false) {
       whatsapp += 1;
       segments += 1;
     } else if (settings.smsEnabled && transports.sms !== "off" && prefs.channels?.sms !== false) {
       sms += 1;
-      segments += smsSegments(renderTemplate("circular", normaliseLocale(prefs.locale), { school: school.name, notice: input.body }));
+      const templateKey: MessageTemplateKey = viaOffice ? (OPT_OUT_FORM.circular ?? "circular") : "circular";
+      segments += smsSegments(renderTemplate(templateKey, normaliseLocale(prefs.locale), { school: school.name, notice: input.body }));
     }
   }
   return { recipients: parentUserIds.length, withPhone, whatsapp, sms, unreachable: parentUserIds.length - whatsapp - sms, estimatedSegments: segments };
@@ -625,19 +685,44 @@ export async function refreshBroadcastCounts(broadcastId: string): Promise<void>
   });
 }
 
-/** The failed and undelivered rows of a broadcast, queued again; a family that opted out or has no number is not retried. */
+/** A notice's failed texts may be tried again once in this window (TA-097). */
+export const RESEND_WINDOW_MS = 60 * 60_000;
+
+/** The template a row's key was chosen from: a text to an office-entered number carries the opt-out form's key. */
+function baseTemplateKey(key: string): MessageTemplateKey | null {
+  const base = (Object.entries(OPT_OUT_FORM) as [MessageTemplateKey, MessageTemplateKey][]).find(([, optOut]) => optOut === key)?.[0];
+  if (base) return base;
+  return isMessageTemplateKey(key) ? key : null;
+}
+
+/**
+ * The failed and undelivered rows of a broadcast, tried again; a family that opted out or has no number is not retried.
+ *
+ * THROUGH THE ROUTER, NOT AROUND IT (TA-097, testing analysis of 13 November 2026). Each row was set back to QUEUED and
+ * posted straight to the provider, to the number on the row, past the platform's switch, the school's channels, the
+ * person's own switches and both caps. Each row is now decided again by deliverToUser as the first send was, on the
+ * person's number and channel as they stand today, and rewritten in place: QUEUED and sent, or SKIPPED with the
+ * reason. A notice is tried again once an hour at most.
+ */
 export async function resendBroadcastFailures(ctx: ActiveContext, broadcastId: string): Promise<{ requeued: number }> {
   const caller = office(ctx);
   const b = await db.broadcast.findFirst({ where: { id: broadcastId, schoolId: caller.schoolId }, select: { id: true } });
   if (!b) throw new AccessError("messaging.notFound", "NOT_FOUND");
   const rows = await db.outboundMessage.findMany({ where: { broadcastId: b.id, status: { in: ["FAILED", "UNDELIVERED"] } } });
+  // Nothing to try again is an answer, not a use of the hour (the sweep samples the door on a notice with none).
+  if (rows.length === 0) return { requeued: 0 };
+  const gate = await consume(`broadcast-resend:${b.id}`, 1, RESEND_WINDOW_MS);
+  if (!gate.allowed) throw new AccessError("messaging.refuseResendSoon", "FORBIDDEN", { minutes: Math.max(1, Math.ceil(gate.retryAfterSeconds / 60)) });
+  let requeued = 0;
   for (const row of rows) {
-    await db.outboundMessage.update({ where: { id: row.id }, data: { status: "QUEUED", error: null, providerSid: null, providerStatus: null } });
-    await sendRow({ ...row });
+    const templateKey = baseTemplateKey(row.templateKey);
+    if (!row.userId || !templateKey) continue;
+    const out = await deliverToUser({ schoolId: caller.schoolId, userId: row.userId, templateKey, vars: readJson<Record<string, string | number>>(row.varsJson, {}), purpose: row.purpose, broadcastId: b.id, resendRowId: row.id });
+    if (out.skipReason === null) requeued += 1;
   }
   await refreshBroadcastCounts(b.id);
-  await audit({ schoolId: caller.schoolId, actorUserId: caller.userId, action: "messaging.resend", targetType: "Broadcast", targetId: b.id, meta: { requeued: rows.length } });
-  return { requeued: rows.length };
+  await audit({ schoolId: caller.schoolId, actorUserId: caller.userId, action: "messaging.resend", targetType: "Broadcast", targetId: b.id, meta: { requeued, tried: rows.length } });
+  return { requeued };
 }
 
 /* -------------------------------------------------------------------------- */

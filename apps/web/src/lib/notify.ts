@@ -114,7 +114,7 @@ const messaging = () => (messagingModule ??= import("./messaging"));
 export async function notify(input: NotifyInput): Promise<void> {
   const user = await db.user.findUnique({
     where: { id: input.userId },
-    select: { id: true, prefs: true, disabledAt: true },
+    select: { id: true, prefs: true, disabledAt: true, isMinor: true },
   });
   if (!user || user.disabledAt) return;
 
@@ -164,16 +164,21 @@ export async function notify(input: NotifyInput): Promise<void> {
     : undefined;
   if (!input.urgent && inQuietHours(prefs.quietHours, new Date(), zone)) return;
 
+  // A CHILD'S LOCK SCREEN CARRIES NO MESSAGE TEXT (TA-249), kept here for every caller rather than by each one: a
+  // literal body is somebody's words (an outside mentor's message, a remark thread's subject) and a push lands on a
+  // phone anyone can pick up, so a minor's push carries the title alone. The in-app row above keeps the body, read
+  // in the app; a body that is a dictionary sentence (bodyKey) is the app's own words and still goes.
+  const pushBody = user.isMinor && !input.bodyKey ? "" : body;
   await Promise.all([
     sendPush(input.userId, {
       title,
-      body,
+      body: pushBody,
       url: input.url ?? "/notifications",
       tag: `${input.kind}:${row.id}`,
     }),
     // The phone, through Expo, with the same words and the same quiet hours
     // and preference already applied above; the app opens `url` on tap.
-    sendExpoPush(input.userId, { title, body, data: { url: input.url ?? "/notifications", kind: input.kind, id: row.id } }),
+    sendExpoPush(input.userId, { title, body: pushBody, data: { url: input.url ?? "/notifications", kind: input.kind, id: row.id } }),
   ]);
 }
 
@@ -345,11 +350,20 @@ export async function sendPush(userId: string, payload: PushPayload): Promise<Pu
           result.retired++;
           return;
         }
-        // Anything else is transient (network, push service 5xx). Count it and
-        // retire the endpoint after repeated failures so a dead device does not
-        // slow every future send.
-        const failures = sub.failureCount + 1;
+        // A rate limit (429), the push service's own fault (5xx), a timeout or
+        // a network fault with no status says nothing about this device
+        // (TA-510): it is a failed send, counted against nothing, so a burst
+        // at a peak cannot retire healthy browsers.
         result.failed++;
+        if (status === undefined || status === 429 || status >= 500) {
+          const detail = error instanceof Error ? error.message.split("\n")[0] : String(error);
+          console.warn(`[push] send failed (status ${status ?? "none"}), not counted against the device: ${detail}`);
+          return;
+        }
+        // Anything else the push service said of this endpoint counts, and
+        // the endpoint is retired after repeated failures so a dead device
+        // does not slow every future send.
+        const failures = sub.failureCount + 1;
         if (failures >= 8) {
           await db.pushSubscription.delete({ where: { id: sub.id } }).catch(() => {});
           result.retired++;
