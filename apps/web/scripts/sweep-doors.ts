@@ -149,10 +149,11 @@ export async function buildSweepDoors(db: PrismaClient, schoolId: string): Promi
     // By the pair, not the id: a test that paired the two first owns the row, and the door reads it as it stands.
     const existing = await db.mentorThread.findUnique({ where: { expertProfileId_studentMembershipId: { expertProfileId: c.expert3.id, studentMembershipId: c.pupil01.id } }, select: { id: true } });
     if (!existing) {
-      // The place is claimed when the school agrees, as decideMentorRequest does; the counter moves with the row, once.
       await db.mentorThread.create({ data: { id: ids.mentorship, schoolId, expertProfileId: c.expert3.id, expertUserId: expertUser, studentMembershipId: c.pupil01.id, createdByMembershipId: c.admin.id, purpose: "ZZ Reading round a problem before solving it", status: "ACTIVE", decidedByMembershipId: c.admin.id, decidedAt: past, parentConsentAt: past, parentConsentUserId: c.parent01.id, createdAt: past } });
-      await db.expertProfile.update({ where: { id: c.expert3.id }, data: { activeMentorships: { increment: 1 } } });
     }
+    // The expert's count of mentee places is set by its one writer, from the mentorships holding a place (TA-532).
+    const { recountMentorPlaces } = await import("../src/lib/mentoring");
+    await recountMentorPlaces({ expertProfileIds: [c.expert3.id] });
     made.push("an active mentorship");
   }
 

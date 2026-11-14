@@ -140,11 +140,13 @@ describe("every notification destination", () => {
     });
   }
 
-  it("⚠ mentoring emits six thread links, and every one is /mentoring/…", () => {
+  it("⚠ mentoring emits seven thread links, and every one is /mentoring/…", () => {
     // The COUNT matters as much as the shape: a regex that matched nothing would
-    // satisfy "none of them are dead" perfectly.
+    // satisfy "none of them are dead" perfectly. Seven since TA-532: a leaver's
+    // ended mentorship is told to the guardians on the thread, and to the expert
+    // on their own list, since a closed thread answers an expert 404.
     const threadLinks = notificationUrls("src/lib/mentoring.ts").filter((u) => u.includes("${"));
-    expect(threadLinks).toHaveLength(6);
+    expect(threadLinks).toHaveLength(7);
     for (const url of threadLinks) {
       expect(url.startsWith("/mentoring/${")).toBe(true);
     }

@@ -224,11 +224,17 @@ export const JOBS: Record<JobName, JobSpec> = {
       // Surveys past their closing date lose their salt as a pressed Close does (TA-306, lib/iqac.ts), here for the same reason.
       const { closeLapsedSurveys } = await import("./iqac");
       await closeLapsedSurveys(now, schools);
+      // TA-532 (lib/mentoring.ts): the mentorships of pupils who have left end, their places given back and the expert
+      // and the guardians told; then every expert's count of mentee places is set from the mentorships holding one,
+      // across every school, which only this run can see. Never on a narrowed run: it would rewrite real experts' counts.
+      const { endLeaversMentorships, recountMentorPlaces } = await import("./mentoring");
+      const mentorships = await endLeaversMentorships(now, { ...schools, ...(scope?.userIds ? { userIds: scope.userIds } : {}) });
+      const recount = scope?.schoolIds || scope?.userIds ? null : await recountMentorPlaces();
       const perSchool: Record<string, Record<string, number>> = {};
-      for (const [schoolId, counts] of [...Object.entries(invites.perSchool), ...Object.entries(requests.perSchool)]) {
+      for (const [schoolId, counts] of [...Object.entries(invites.perSchool), ...Object.entries(requests.perSchool), ...Object.entries(mentorships.perSchool)]) {
         perSchool[schoolId] = { ...perSchool[schoolId], ...counts };
       }
-      return { summary: { invitesExpired: invites.expired, adults: minors.adults, minors: minors.minors, joinsExpired: requests.joins, claimsExpired: requests.claims, subscriptionsDue: subscriptions.due, subscriptionsReminded: subscriptions.reminded, regulatorWindows: regulators.windows, regulatorReminded: regulators.reminded }, perSchool };
+      return { summary: { invitesExpired: invites.expired, adults: minors.adults, minors: minors.minors, joinsExpired: requests.joins, claimsExpired: requests.claims, subscriptionsDue: subscriptions.due, subscriptionsReminded: subscriptions.reminded, regulatorWindows: regulators.windows, regulatorReminded: regulators.reminded, mentorshipsEnded: mentorships.ended, mentorPlacesRecounted: recount !== null, mentorPlacesCorrected: recount?.corrected ?? 0 }, perSchool };
     },
   },
   "digest:weekly": {

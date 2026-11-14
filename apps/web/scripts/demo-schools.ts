@@ -817,7 +817,6 @@ async function buildExperts(ctx: Ctx, sunrise: Built, saraswati: Built) {
       },
       select: { id: true },
     });
-    await db.expertProfile.update({ where: { id: profile.id }, data: { activeMentorships: { increment: 1 } } });
     const messages = [
       { author: user.id, body: "Hello! Your teacher says you have a chassis and two motors already. What sensor are you using for the line?", daysAgo: 5 },
       { author: mentee.userId, body: "Two IR sensors from a kit. It follows a straight line but loses it on curves.", daysAgo: 4 },
@@ -825,6 +824,9 @@ async function buildExperts(ctx: Ctx, sunrise: Built, saraswati: Built) {
     ];
     for (const m of messages) await db.mentorMessage.create({ data: { schoolId: sunrise.school.id, threadId: thread.id, authorUserId: m.author, body: m.body, readBy: JSON.stringify([m.author]), createdAt: new Date(Date.now() - m.daysAgo * DAY) } });
   }
+  // The expert's count of mentee places is set by its one writer, from the mentorships holding a place (TA-532).
+  const { recountMentorPlaces } = await import("../src/lib/mentoring");
+  await recountMentorPlaces({ expertProfileIds: [profile.id] });
   // The long-standing demo expert, if the demo seed has been run.
   let anjali: { bookingId: string } | null = null;
   const anjaliUser = await db.user.findUnique({ where: { email: ANJALI_EMAIL }, select: { id: true, expertProfile: { select: { id: true, publishedAt: true } } } });

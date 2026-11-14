@@ -8,6 +8,8 @@ import { asTheSchool } from "./expert-binding";
 import { readJsonArray } from "./json";
 import { studentsForTeacher } from "./remarks";
 import type { ActiveContext } from "./session";
+import { forSchool } from "./tenant-context";
+import { ownerRoleProblem, readRoleFlags } from "./db-role-check";
 
 /**
  * Mentoring — one expert mentoring one child.
@@ -487,43 +489,182 @@ export async function closeMentorship(session: ActiveContext, threadId: string):
   // The claim is in the WHERE: two closers at once must release one place. And the WHERE names the status the
   // place is decided from (TA-125): a close that read REQUESTED while the office's approval claimed a place and
   // moved the thread on closes nothing, reads the thread again, and gives the place it now holds back.
-  let status = thread.status;
-  for (let round = 0; ; round += 1) {
-    const closed = await db.mentorThread.updateMany({
-      where: { id: threadId, status },
-      data: { status: "CLOSED", closedAt: new Date() },
-    });
-    if (closed.count > 0) break;
-    const now = await db.mentorThread.findUnique({ where: { id: threadId }, select: { status: true } });
-    if (!now || now.status === "CLOSED" || round >= 3) return;
-    status = now.status;
-  }
-  const heldAPlace = status !== "REQUESTED";
-
   /**
    * The place goes back. A cap that only ever counts up silently retires an
    * expert the moment their third pupil moves on, and nothing tells them why
    * schools stopped asking.
    *
-   * Floored at zero rather than decremented blindly: this counter is
-   * denormalised, and the one thing worse than a drifting count is a negative
-   * one that reads as infinite capacity.
+   * TA-532: and it goes back IN THE SAME TRANSACTION as the status change, with the audit row (closeHoldingPlace).
+   * Given back in a second write, a nightly recount landing between the two counted the thread closed and then saw
+   * the place taken off again, leaving the count one low until the next night.
    */
-  if (heldAPlace) {
-    await db.expertProfile.updateMany({
+  let status = thread.status;
+  for (let round = 0; ; round += 1) {
+    const from = status;
+    const closed = await db.$tenantTransaction((raw) =>
+      closeHoldingPlace(raw as typeof db, { id: threadId, schoolId: thread.schoolId, expertProfileId: thread.expertProfileId }, from, new Date(), {
+        actorUserId: session.user.id,
+        by: isStaff ? "school" : "guardian",
+      }),
+    );
+    if (closed) return;
+    const now = await db.mentorThread.findUnique({ where: { id: threadId }, select: { status: true } });
+    if (!now || now.status === "CLOSED" || round >= 3) return;
+    status = now.status;
+  }
+}
+
+/** The statuses in which a mentorship holds one of the expert's mentee places (TA-532): approved, or agreed to. */
+const HOLDS_A_PLACE = ["PENDING_CONSENT", "ACTIVE"];
+
+/**
+ * Closes one mentorship from the status it was read in and, when that status held a place, gives the place back, with
+ * the audit row: one transaction, on the caller's transaction client (TA-532). Conditional on the status, so two
+ * closers at once release one place. Answers whether this call closed it.
+ *
+ * Floored at zero rather than decremented blindly: this counter is denormalised, and the one thing worse than a
+ * drifting count is a negative one that reads as infinite capacity. The decrement takes the expert's row lock, which
+ * the recount (recountMentorPlaces) takes before it counts, so a recount either waits for this close or counts the
+ * thread still open and the decrement then lands on its total.
+ */
+async function closeHoldingPlace(
+  tx: typeof db,
+  thread: { id: string; schoolId: string; expertProfileId: string },
+  from: string,
+  at: Date,
+  who: { actorUserId: string | null; by: "school" | "guardian" | "leaving" },
+): Promise<boolean> {
+  const closed = await tx.mentorThread.updateMany({
+    where: { id: thread.id, status: from },
+    data: { status: "CLOSED", closedAt: at },
+  });
+  if (closed.count === 0) return false;
+  if (HOLDS_A_PLACE.includes(from)) {
+    await tx.expertProfile.updateMany({
       where: { id: thread.expertProfileId, activeMentorships: { gt: 0 } },
       data: { activeMentorships: { decrement: 1 } },
     });
   }
+  await audit(
+    {
+      schoolId: thread.schoolId,
+      actorUserId: who.actorUserId,
+      action: "mentorship.close",
+      targetType: "MentorThread",
+      targetId: thread.id,
+      meta: { by: who.by },
+    },
+    tx,
+  );
+  return true;
+}
 
-  await audit({
-    schoolId: thread.schoolId,
-    actorUserId: session.user.id,
-    action: "mentorship.close",
-    targetType: "MentorThread",
-    targetId: threadId,
-    meta: { by: isStaff ? "school" : "guardian" },
+/**
+ * A LEAVER'S MENTORSHIPS END (TA-532, the owner's decision of 14 November 2026). The school that approved a
+ * mentorship no longer oversees a pupil who has left it, and until now nothing ended one: the thread stayed open, held
+ * the expert's place, and the outside expert could still write to the child (postMentorMessage checks the thread's
+ * status alone). For the nightly accounts:tidy job: every mentorship not yet CLOSED whose pupil's membership has a
+ * leaving day on or before `now` is closed, its place given back in the same transaction (closeHoldingPlace, audited
+ * as mentorship.close by "leaving", with no actor), and the expert and the pupil's guardians are told by a notice. A
+ * pupil's own ask still waiting on the office (REQUESTED) is closed too, telling nobody: neither the expert nor the
+ * guardians were ever told of it. A leaving dated ahead waits for its day. Honours the job's scope (the schools, or
+ * the pupils' own user ids). Repeatable: a second run finds nothing.
+ */
+export async function endLeaversMentorships(
+  now: Date = new Date(),
+  scope: { schoolIds?: string[]; userIds?: string[] } = {},
+): Promise<{ ended: number; perSchool: Record<string, { mentorshipsEnded: number }> }> {
+  const open = await db.mentorThread.findMany({
+    where: { status: { not: "CLOSED" }, ...(scope.schoolIds ? { schoolId: { in: scope.schoolIds } } : {}) },
+    select: { id: true, schoolId: true, expertProfileId: true, expertUserId: true, studentMembershipId: true, status: true },
   });
+  const perSchool: Record<string, { mentorshipsEnded: number }> = {};
+  if (open.length === 0) return { ended: 0, perSchool };
+  const leavers = new Map(
+    (
+      await db.membership.findMany({
+        where: { id: { in: [...new Set(open.map((t) => t.studentMembershipId))] }, leftAt: { lte: now }, ...(scope.userIds ? { userId: { in: scope.userIds } } : {}) },
+        select: { id: true, user: { select: { name: true, preferredName: true } }, school: { select: { name: true } } },
+      })
+    ).map((m) => [m.id, m] as const),
+  );
+  let ended = 0;
+  for (const thread of open) {
+    const leaver = leavers.get(thread.studentMembershipId);
+    if (!leaver) continue;
+    const closed = await forSchool(thread.schoolId, () =>
+      db.$tenantTransaction((raw) => closeHoldingPlace(raw as typeof db, thread, thread.status, now, { actorUserId: null, by: "leaving" })),
+    );
+    if (!closed) continue;
+    ended += 1;
+    (perSchool[thread.schoolId] ??= { mentorshipsEnded: 0 }).mentorshipsEnded += 1;
+    if (thread.status === "REQUESTED") continue;
+    const child = leaver.user.preferredName ?? leaver.user.name;
+    const schoolName = leaver.school.name;
+    // A notice that fails does not reopen the mentorship: the close and its audit row are already written.
+    // An expert whose mentorship still waited for the guardian's yes was never shown the child or the school (the row
+    // policies open them on an ACTIVE thread alone, and listMentorships says "A pupil"), so their notice names neither.
+    // No expert is linked to the thread, which answers them 404 once it is closed: their own list instead.
+    const consented = thread.status === "ACTIVE";
+    await forSchool(thread.schoolId, async () => {
+      await notify({
+        userId: thread.expertUserId,
+        schoolId: thread.schoolId,
+        kind: "EXPERT",
+        titleKey: "mentoring.leaverEndedTitle",
+        bodyKey: consented ? "mentoring.leaverEndedExpert" : "mentoring.leaverEndedExpertPending",
+        bodyVars: consented ? { child, school: schoolName } : {},
+        url: "/mentoring",
+      });
+      await notifyGuardians(thread.studentMembershipId, (childName) => ({
+        schoolId: thread.schoolId,
+        kind: "EXPERT",
+        titleKey: "mentoring.leaverEndedTitle",
+        bodyKey: "mentoring.leaverEndedGuardian",
+        bodyVars: { child: childName, school: schoolName },
+        url: `/mentoring/${thread.id}`,
+        // The guardians agreed to the mentorship and read every message of it, whoever the pupil is (TA-262).
+      }), EVERY_GUARDIAN);
+    }).catch((error) => console.error("[endLeaversMentorships] notice failed", error));
+  }
+  return { ended, perSchool };
+}
+
+/**
+ * THE ONE RECOUNT of ExpertProfile.activeMentorships (TA-532). The count is a stored copy, kept on the expert because a
+ * school cannot see another school's mentorships (createMentorship's note), and until now only an explicit close gave
+ * a place back: a pupil removed outright, or a school erased, took its threads by cascade and the place was never
+ * returned, so an expert could read as full to every school. This sets each expert's count from the mentorships that
+ * hold a place (PENDING_CONSENT or ACTIVE) across every school, locking the expert's row (FOR UPDATE) before it counts,
+ * so a claim or a close in flight either finishes first or lands on the new total. An approved mentorship still
+ * waiting for a guardian's yes keeps its place, as it does today.
+ *
+ * Run by accounts:tidy each night, never on a run narrowed to chosen schools, and by the demo and sweep scripts for the
+ * expert they give a mentorship (`only`, which narrows the experts, never the schools counted). It must see every
+ * school's rows, so it refuses a connection the row policies hold, where every count would read nought.
+ */
+export async function recountMentorPlaces(only: { expertProfileIds?: string[] } = {}): Promise<{ experts: number; corrected: number }> {
+  const problem = ownerRoleProblem(await readRoleFlags(db));
+  if (problem) throw new Error(`recountMentorPlaces counts every school's mentorships and runs as the owner only. ${problem}`);
+  const experts = await db.expertProfile.findMany({
+    where: only.expertProfileIds ? { id: { in: only.expertProfileIds } } : {},
+    select: { id: true },
+    orderBy: { id: "asc" },
+  });
+  let corrected = 0;
+  for (const { id } of experts) {
+    const changed = await db.$tenantTransaction(async (raw) => {
+      const tx = raw as typeof db;
+      const locked = await tx.$queryRaw<{ activeMentorships: number }[]>`SELECT "activeMentorships" FROM "ExpertProfile" WHERE "id" = ${id} FOR UPDATE`;
+      if (!locked[0]) return false;
+      const holding = await tx.mentorThread.count({ where: { expertProfileId: id, status: { in: HOLDS_A_PLACE } } });
+      if (locked[0].activeMentorships === holding) return false;
+      await tx.expertProfile.update({ where: { id }, data: { activeMentorships: holding } });
+      return true;
+    });
+    if (changed) corrected += 1;
+  }
+  return { experts: experts.length, corrected };
 }
 
 export async function getMentorship(session: ActiveContext, threadId: string) {
