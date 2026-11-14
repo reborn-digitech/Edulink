@@ -121,14 +121,16 @@ async function assertStaffHere(schoolId: string, membershipId: string): Promise<
 export async function inventorySetup(ctx: ActiveContext): Promise<InventorySetup> {
   const caller = await office(ctx, false);
   const schoolId = caller.schoolId;
-  const [categories, vendors, stockPlaces, assetPlaces, staff] = await Promise.all([
+  const [categories, vendors, stockPlaces, assetPlaces, staff, rooms] = await Promise.all([
     db.inventoryCategory.findMany({ where: { schoolId }, orderBy: { name: "asc" }, select: { id: true, name: true, depreciationRateBp: true, _count: { select: { items: true, assets: true } } } }),
     db.vendor.findMany({ where: { schoolId }, orderBy: { name: "asc" }, select: { id: true, name: true, phone: true, gstin: true, address: true } }),
     db.inventoryStock.findMany({ where: { schoolId }, distinct: ["location"], select: { location: true } }),
     db.asset.findMany({ where: { schoolId }, distinct: ["location"], select: { location: true } }),
     staffOf(schoolId),
+    // TA-481: the college's rooms are offered as places too, so stock is typed under the name the lab desk reads.
+    db.room.findMany({ where: { schoolId }, select: { name: true } }),
   ]);
-  const locations = [...new Set([...stockPlaces, ...assetPlaces].map((r) => r.location))].sort((a, b) => a.localeCompare(b));
+  const locations = [...new Set([...stockPlaces.map((r) => r.location), ...assetPlaces.map((r) => r.location), ...rooms.map((r) => r.name)])].sort((a, b) => a.localeCompare(b));
   return {
     categories: categories.map((c) => ({ id: c.id, name: c.name, depreciationRateBp: c.depreciationRateBp, items: c._count.items, assets: c._count.assets })),
     vendors,
@@ -377,6 +379,37 @@ export async function stockTake(ctx: ActiveContext, input: { location: string; c
   await audit({ schoolId: caller.schoolId, actorUserId: caller.user.id, action: "inventory.stocktake", targetType: "School", targetId: caller.schoolId, meta: { location: input.location, checked: input.counts.length, adjusted: ids.length } });
   const rows = ids.length ? await db.stockMovement.findMany({ where: { id: { in: ids } }, orderBy: { at: "asc" }, select: MOVEMENT_SELECT }) : [];
   return { location: input.location, checked: input.counts.length, adjusted: ids.length, movements: await movementViews(rows) };
+}
+
+/**
+ * A room renamed (TA-481, the owner's decision of 14 November 2026): what the
+ * stores keep under its old name goes with it, inside the rename's own tenant
+ * transaction (academics.ts saveRoom). The stock moves as paired ADJUST
+ * entries through `applyMovement`, out of the old name (toRoom the new) and
+ * into the new, both referenced ROOM_RENAME, so every row still equals the sum
+ * of its movements; each asset not disposed of moves with a MOVED event (a
+ * disposed one stays where it was disposed of). A new name that already holds
+ * stock or a live asset is refused, so two places' stock is never joined.
+ * Names are matched exactly, as the lab desk matches them.
+ */
+export async function carryPlace(tx: Tx, input: { schoolId: string; from: string; to: string; byUserId: string }): Promise<{ stockMoved: number; assetsMoved: number }> {
+  const { schoolId, from, to, byUserId } = input;
+  if (from === to) return { stockMoved: 0, assetsMoved: 0 };
+  const heldStock = await tx.inventoryStock.findFirst({ where: { schoolId, location: to, quantity: { not: 0 } }, select: { id: true } });
+  const heldAsset = await tx.asset.findFirst({ where: { schoolId, location: to, status: { not: "DISPOSED" } }, select: { id: true } });
+  if (heldStock || heldAsset) throw new RuleRefusal("inventory.refuseRenameOntoStock", 409, { place: to }, "name");
+  // Locked before they are read, so an issue at the old name meanwhile waits rather than leaves a stale count.
+  const rows = await tx.$queryRaw<{ itemId: string; quantity: number }[]>`SELECT "itemId", "quantity" FROM "InventoryStock" WHERE "schoolId" = ${schoolId} AND "location" = ${from} AND "quantity" <> 0 ORDER BY "itemId" FOR UPDATE`;
+  for (const r of rows) {
+    await applyMovement(tx, { schoolId, itemId: r.itemId, kind: "ADJUST", delta: -r.quantity, location: from, toRoom: to, reference: "ROOM_RENAME", byUserId });
+    await applyMovement(tx, { schoolId, itemId: r.itemId, kind: "ADJUST", delta: r.quantity, location: to, reference: "ROOM_RENAME", byUserId });
+  }
+  const assets = await tx.asset.findMany({ where: { schoolId, location: from, status: { not: "DISPOSED" } }, select: { id: true } });
+  if (assets.length) {
+    await tx.asset.updateMany({ where: { id: { in: assets.map((a) => a.id) }, schoolId }, data: { location: to } });
+    await tx.assetEvent.createMany({ data: assets.map((a) => ({ schoolId, assetId: a.id, kind: "MOVED", note: "", byUserId })) });
+  }
+  return { stockMoved: rows.length, assetsMoved: assets.length };
 }
 
 /* -------------------------------------------------------------- purchases */

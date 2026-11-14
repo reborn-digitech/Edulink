@@ -46,6 +46,7 @@ import { RuleRefusal } from "./rule-refusal";
 import { assertModuleOn } from "./modules";
 import { streamsOf } from "./streams";
 import { audit } from "./audit";
+import { carryPlace } from "./inventory";
 import { notify } from "./notify";
 import { classCode } from "./codes";
 import { closedOn } from "./holidays";
@@ -443,16 +444,25 @@ export async function saveTerm(ctx: ActiveContext, input: z.infer<typeof termSav
 export async function saveRoom(ctx: ActiveContext, input: z.infer<typeof roomSaveSchema>): Promise<{ id: string }> {
   const c = await academicsCaller(ctx, ["ADMIN"]);
   const data = { name: input.name, capacity: input.capacity, kind: input.kind };
-  const row = await refuseTaken(async () => {
-    if (input.id) {
-      const found = await db.room.findFirst({ where: { id: input.id, schoolId: c.schoolId }, select: { id: true } });
-      if (!found) throw new AccessError("access.entryNotFound", "NOT_FOUND");
-      return db.room.update({ where: { id: input.id }, data, select: { id: true } });
-    }
-    return db.room.create({ data: { schoolId: c.schoolId, ...data }, select: { id: true } });
-  });
-  await audit({ schoolId: c.schoolId, actorUserId: c.userId, action: "academics.room.save", targetType: "Room", targetId: row.id, meta: data });
-  return row;
+  // TA-481: a rename carries what the stores keep under the old name (any room, the stores module on or off),
+  // in the same transaction as the room and its audit row; a new name already holding stock or assets is refused.
+  return refuseTaken(() =>
+    db.$tenantTransaction(async (raw) => {
+      const tx = raw as typeof db;
+      let row: { id: string };
+      let carried = { stockMoved: 0, assetsMoved: 0 };
+      if (input.id) {
+        const found = await tx.room.findFirst({ where: { id: input.id, schoolId: c.schoolId }, select: { id: true, name: true } });
+        if (!found) throw new AccessError("access.entryNotFound", "NOT_FOUND");
+        row = await tx.room.update({ where: { id: input.id }, data, select: { id: true } });
+        carried = await carryPlace(tx, { schoolId: c.schoolId, from: found.name, to: input.name, byUserId: c.userId });
+      } else {
+        row = await tx.room.create({ data: { schoolId: c.schoolId, ...data }, select: { id: true } });
+      }
+      await audit({ schoolId: c.schoolId, actorUserId: c.userId, action: "academics.room.save", targetType: "Room", targetId: row.id, meta: { ...data, ...carried } }, tx);
+      return row;
+    }),
+  );
 }
 
 /** A division: a Class of the college's and the Division naming its programme and year, in one transaction. */
