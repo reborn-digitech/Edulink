@@ -9,6 +9,7 @@ import { TabBar } from "@/components/ui/tabs";
 import { ModuleOff } from "@/components/module-off";
 import { formatInZone } from "@/lib/dates";
 import type { Translate, TranslationKey } from "@/lib/i18n/dictionary";
+import { isProductSentence } from "@/lib/i18n/product-sentence";
 
 /**
  * The exam cell's shared pieces (module EXAMS, 4 Oct 2026): the message a form
@@ -51,8 +52,10 @@ export const marks = (milli: number | null | undefined) => (milli === null || mi
 /** An instant as the value of a datetime-local field, on the college's clock (IST). */
 export const localInput = (iso: string | null) => (iso ? new Date(new Date(iso).getTime() + 330 * 60_000).toISOString().slice(0, 16) : "");
 
-/** What the last form said: done (green) or refused (red). */
-export function Flash({ ok, error }: { ok?: string; error?: string }) {
+/** What the last form said: done (green) or refused (red); only a sentence of the product's own, never the address's own words (TA-427). */
+export function Flash({ ok: okRaw, error: errorRaw }: { ok?: string; error?: string }) {
+  const ok = okRaw && isProductSentence(okRaw) ? okRaw : undefined;
+  const error = errorRaw && isProductSentence(errorRaw) ? errorRaw : undefined;
   if (!ok && !error) return null;
   return (
     <Card role={error ? "alert" : "status"}>

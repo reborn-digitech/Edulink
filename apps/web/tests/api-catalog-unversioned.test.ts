@@ -126,7 +126,9 @@ describe("POST /api/attendance in the catalog", () => {
 
   it("lets through exactly the entry's access, signed out 401, and an empty body is the declared 422", async () => {
     const e = door("POST", "/api/attendance");
-    expect(e.access).toEqual(["TEACHER", "ADMIN"]);
+    // A principal is let through to registerDuty since TA-031, which refuses one no cover names: still 403 here.
+    expect(e.access).toEqual(["TEACHER", "ADMIN", "PRINCIPAL"]);
+    expect(e.statusByRole?.PRINCIPAL).toEqual([403, 422]);
     for (const who of ["PRINCIPAL", "STUDENT"] as Who[]) {
       await signInAs(who);
       expect((await attendancePost(post("/api/attendance", e.sampleBody!(fixture())))).status, who).toBe(403);

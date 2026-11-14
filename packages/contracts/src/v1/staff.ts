@@ -520,6 +520,7 @@ export const setPracticeSchema = z.object({
   targetLevel: z.number().int().min(1).max(6),
   note: z.string().trim().max(300).optional(),
   /** YYYY-MM-DD; the day's end in the server's reading, as the form does. */
+  // Since TA-533 (14 Nov 2026) that end is the last millisecond of the day on the SCHOOL's clock (practiceDueAt).
   dueDate: dateKey.optional(),
 });
 export type SetPracticeBody = z.infer<typeof setPracticeSchema>;

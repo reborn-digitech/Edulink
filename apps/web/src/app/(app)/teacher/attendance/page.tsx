@@ -8,7 +8,7 @@ import {
 } from "@phosphor-icons/react/ssr";
 import { requireRole } from "@/lib/tenancy";
 import { assertClassAccessForRegister, classesIMayTake, registerDuty } from "@/lib/register-duty";
-import { getRegister } from "@/lib/attendance";
+import { getRegister, TAKEN_BY_A_PERSON } from "@/lib/attendance";
 import { closedOn } from "@/lib/holidays";
 import { db } from "@/lib/db";
 import { addDaysToKey, formatDateKey, todayKey, isDateKey } from "@/lib/dates";
@@ -32,7 +32,8 @@ export default async function AttendancePage({
 }) {
   const t = await getT();
   const locale = await getLocale();
-  const ctx = await requireRole("TEACHER", "ADMIN");
+  // A PRINCIPAL comes here only through a cover row naming them (TA-031): classesIMayTake gives them nothing else.
+  const ctx = await requireRole("TEACHER", "ADMIN", "PRINCIPAL");
   const params = await searchParams;
 
   const school = await db.school.findUniqueOrThrow({
@@ -89,7 +90,8 @@ export default async function AttendancePage({
     });
 
     const taken = await db.attendanceSession.findMany({
-      where: { schoolId: ctx.schoolId, dateKey, classId: { in: classIds } },
+      // Taken by a person: a register a device started is still to take (TA-032).
+      where: { schoolId: ctx.schoolId, dateKey, classId: { in: classIds }, ...TAKEN_BY_A_PERSON },
       select: { classId: true },
     });
     const takenSet = new Set(taken.map((t) => t.classId));

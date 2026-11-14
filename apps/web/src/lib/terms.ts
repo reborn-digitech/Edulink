@@ -75,6 +75,23 @@ export async function termsOfYear(schoolId: string, academicYearId: string, time
 }
 
 /**
+ * What removing each term would unhook (TA-234): its exam rounds and its draft report cards, which keep their marks
+ * and lose the term for good (SetNull; adding the term again makes a new one nothing points to). The office's X
+ * names both counts in its confirm before deleteTerm runs.
+ */
+export async function termAttachments(schoolId: string, termIds: string[]): Promise<Map<string, { rounds: number; cards: number }>> {
+  const out = new Map(termIds.map((id) => [id, { rounds: 0, cards: 0 }]));
+  if (termIds.length === 0) return out;
+  const [rounds, cards] = await Promise.all([
+    db.examSeries.groupBy({ by: ["termId"], where: { schoolId, termId: { in: termIds } }, _count: { _all: true } }),
+    db.reportCard.groupBy({ by: ["termId"], where: { schoolId, termId: { in: termIds }, status: { not: "PUBLISHED" } }, _count: { _all: true } }),
+  ]);
+  for (const r of rounds) if (r.termId) out.get(r.termId)!.rounds = r._count._all;
+  for (const c of cards) if (c.termId) out.get(c.termId)!.cards = c._count._all;
+  return out;
+}
+
+/**
  * Marks a term done, or takes the mark back.
  *
  * A MILESTONE, NOT A LOCK. Finishing a term is the office saying "we are done
@@ -133,6 +150,29 @@ export async function termForDate(schoolId: string, dateKey: string): Promise<{ 
   return term;
 }
 
+/**
+ * A SERIES' TERM FOLLOWS THE TERMS TOO (TA-142, 13 Nov 2026). A series reports into the term its earliest paper
+ * falls in (syncSeriesTerm in exams.ts), and that was derived again only when a paper changed: a unit test dated
+ * in June, with the terms made in August, kept no term and was off every term and annual card, and so was every
+ * series of a term deleted and made again. Making or removing a term now derives the term of each of the school's
+ * series that has a paper again, by the same rule; a series with no paper yet keeps the term it was made under.
+ */
+async function resyncSeriesTerms(schoolId: string): Promise<void> {
+  const [series, terms] = await Promise.all([
+    db.examSeries.findMany({
+      where: { schoolId },
+      select: { id: true, termId: true, slots: { orderBy: [{ dateKey: "asc" }, { position: "asc" }], take: 1, select: { dateKey: true } } },
+    }),
+    db.term.findMany({ where: { schoolId }, select: { id: true, startDate: true, endDate: true } }),
+  ]);
+  for (const s of series) {
+    const earliest = s.slots[0]?.dateKey;
+    if (earliest === undefined) continue;
+    const termId = terms.find((t) => key(t.startDate) <= earliest && earliest <= key(t.endDate))?.id ?? null;
+    if (termId !== s.termId) await db.examSeries.update({ where: { id: s.id }, data: { termId } });
+  }
+}
+
 export async function createTerm(
   ctx: ActiveContext,
   academicYearId: string,
@@ -166,6 +206,7 @@ export async function createTerm(
     },
     select: { id: true },
   });
+  await resyncSeriesTerms(schoolId);
 
   await audit({
     schoolId,
@@ -191,6 +232,7 @@ export async function deleteTerm(ctx: ActiveContext, termId: string): Promise<{ 
   const published = await db.reportCard.count({ where: { termId, status: "PUBLISHED" } });
   if (published > 0) return { ok: false, errorKey: "terms.hasPublishedCards" };
   await db.term.delete({ where: { id: term.id } });
+  await resyncSeriesTerms(schoolId);
   await audit({ schoolId, actorUserId: ctx.user.id, action: "term.delete", targetType: "Term", targetId: term.id, meta: { name: term.name } });
   return { ok: true };
 }

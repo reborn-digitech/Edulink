@@ -589,42 +589,51 @@ export async function copyDay(
   });
   if (source.length === 0) return { ok: false, errorKey: "timetable.nothingToCopy" };
 
-  // Everyone already teaching somebody else at these times on the target day.
-  const busy = await db.timetableSlot.findMany({
-    where: {
-      schoolId: ctx.schoolId,
-      weekday: toWeekday,
-      classId: { not: classId },
-      teacherMembershipId: { not: null },
-    },
-    select: { periodId: true, teacherMembershipId: true },
-  });
-  const busyAt = new Set(busy.map((row) => `${row.periodId}:${row.teacherMembershipId}`));
-
-  await db.timetableSlot.deleteMany({
-    where: { schoolId: ctx.schoolId, classId, weekday: toWeekday },
-  });
-
-  let copied = 0;
-  let unstaffed = 0;
-  for (const row of source) {
-    const free =
-      row.teacherMembershipId && !busyAt.has(`${row.periodId}:${row.teacherMembershipId}`);
-    if (row.teacherMembershipId && !free) unstaffed++;
-    await db.timetableSlot.create({
-      data: {
-        schoolId: ctx.schoolId,
-        classId,
-        periodId: row.periodId,
+  // ONE TRANSACTION FOR THE BUSY READ, THE DELETE AND THE CREATES (TA-284). Statement by statement, a create that
+  // failed half-way (a teacher another admin placed at that time after the busy read, the unique on school,
+  // weekday, period and teacher refusing it) left the class's day deleted and partly written; now the day is
+  // either copied whole or left as it was, and the refusal reaches the action as before.
+  const schoolId = ctx.schoolId;
+  const { copied, unstaffed } = await db.$tenantTransaction(async (raw) => {
+    const tx = raw as typeof db;
+    // Everyone already teaching somebody else at these times on the target day.
+    const busy = await tx.timetableSlot.findMany({
+      where: {
+        schoolId,
         weekday: toWeekday,
-        subject: row.subject,
-        teacherMembershipId: free ? row.teacherMembershipId : null,
-        room: row.room,
+        classId: { not: classId },
+        teacherMembershipId: { not: null },
       },
-      select: { id: true },
+      select: { periodId: true, teacherMembershipId: true },
     });
-    copied++;
-  }
+    const busyAt = new Set(busy.map((row) => `${row.periodId}:${row.teacherMembershipId}`));
+
+    await tx.timetableSlot.deleteMany({
+      where: { schoolId, classId, weekday: toWeekday },
+    });
+
+    let copied = 0;
+    let unstaffed = 0;
+    for (const row of source) {
+      const free =
+        row.teacherMembershipId && !busyAt.has(`${row.periodId}:${row.teacherMembershipId}`);
+      if (row.teacherMembershipId && !free) unstaffed++;
+      await tx.timetableSlot.create({
+        data: {
+          schoolId,
+          classId,
+          periodId: row.periodId,
+          weekday: toWeekday,
+          subject: row.subject,
+          teacherMembershipId: free ? row.teacherMembershipId : null,
+          room: row.room,
+        },
+        select: { id: true },
+      });
+      copied++;
+    }
+    return { copied, unstaffed };
+  });
 
   await audit({
     schoolId: ctx.schoolId,
@@ -920,12 +929,32 @@ async function resolveWeek(
           select: {
             slotId: true,
             dateKey: true,
+            absentMembershipId: true,
             substituteMembershipId: true,
+            declinedAt: true,
             substitute: { select: { user: { select: { name: true, preferredName: true } } } },
           },
         }),
   ]);
-  const substitutionFor = new Map(substitutions.map((row) => [`${row.slotId}|${row.dateKey}`, row]));
+  /* A SUBSTITUTION STANDS ONLY WHILE ITS REASON DOES (TA-282), as the board and myCovers read it: not once the
+   * substitute declined, not once the absent teacher is in after all by the staff register (PRESENT, LATE or
+   * HALF_DAY, the register being authoritative in both directions), and not once the slot has another teacher. */
+  const absentIds = [...new Set(substitutions.map((row) => row.absentMembershipId))];
+  const cameIn = new Set(
+    absentIds.length === 0
+      ? []
+      : (
+          await db.staffAttendance.findMany({
+            where: { schoolId, membershipId: { in: absentIds }, dateKey: { in: dates }, status: { in: ["PRESENT", "LATE", "HALF_DAY"] } },
+            select: { membershipId: true, dateKey: true },
+          })
+        ).map((row) => `${row.membershipId}|${row.dateKey}`),
+  );
+  const substitutionFor = new Map(
+    substitutions
+      .filter((row) => !row.declinedAt && !cameIn.has(`${row.absentMembershipId}|${row.dateKey}`))
+      .map((row) => [`${row.slotId}|${row.dateKey}`, row]),
+  );
 
   return slots.map((slot) => {
     const dateKey = dayKeys.get(slot.weekday) ?? null;
@@ -952,7 +981,7 @@ async function resolveWeek(
     if (!dateKey || !slot.teacherMembershipId) return base;
 
     const substitution = substitutionFor.get(`${slot.id}|${dateKey}`);
-    if (substitution) {
+    if (substitution && substitution.absentMembershipId === slot.teacherMembershipId) {
       return {
         ...base,
         coveringMembershipId: substitution.substituteMembershipId,
@@ -1059,7 +1088,8 @@ export async function classWeek(
   const [periods, rows, days] = await Promise.all([
     listPeriods(ctx.schoolId),
     db.timetableSlot.findMany({
-      where: { schoolId: ctx.schoolId, classId },
+      // Dated, a retired period's lessons are none of that week's (TA-283); the template keeps them.
+      where: { schoolId: ctx.schoolId, classId, ...(dayKeys ? { period: { archivedAt: null } } : {}) },
       select: SLOT_SELECT,
     }),
     buildDays(ctx.schoolId, dayKeys, opts.todayKey ?? null, week),
@@ -1119,7 +1149,8 @@ export async function teacherWeek(
   const [periods, own, covers] = await Promise.all([
     listPeriods(ctx.schoolId),
     db.timetableSlot.findMany({
-      where: { schoolId: ctx.schoolId, teacherMembershipId },
+      // A dated week: a lesson left in a retired period is no lesson of it (TA-283).
+      where: { schoolId: ctx.schoolId, teacherMembershipId, period: { archivedAt: null } },
       select: SLOT_SELECT,
     }),
     db.attendanceCover.findMany({
@@ -1153,6 +1184,7 @@ export async function teacherWeek(
         schoolId: ctx.schoolId,
         classId: { in: [...coveredDays.keys()] },
         teacherMembershipId: { not: null },
+        period: { archivedAt: null },
       },
       select: SLOT_SELECT,
     });
@@ -1210,7 +1242,7 @@ async function weekForStudent(
     classIds.length === 0
       ? Promise.resolve([] as RawSlot[])
       : db.timetableSlot.findMany({
-          where: { schoolId, classId: { in: classIds } },
+          where: { schoolId, classId: { in: classIds }, period: { archivedAt: null } },
           select: SLOT_SELECT,
         }),
     buildDays(schoolId, dayKeys, opts.todayKey ?? null, week),

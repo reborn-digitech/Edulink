@@ -30,7 +30,7 @@ import { addDaysToKey, todayKey, weekdayOfKey } from "@/lib/dates";
 import { myCovers } from "@/lib/substitutions";
 import { closedOn, schoolDayOn } from "@/lib/holidays";
 import { assertClassAccessForRegister, classesIMayTake, registerDuty } from "@/lib/register-duty";
-import { getAttendanceSummary, getRegister } from "@/lib/attendance";
+import { getAttendanceSummary, getRegister, TAKEN_BY_A_PERSON } from "@/lib/attendance";
 import { EXAM_CATEGORY, dateSheetsFor, examClassesFor, marksGrid, marksTodoFor } from "@/lib/exams";
 import { WEIGHT_SCALE, listGradeCategories, saveGradeCategories, weightsAreUsable } from "@/lib/grading";
 import { currentAcademicYear } from "@/lib/academic-year";
@@ -131,7 +131,7 @@ export async function staffToday(ctx: Staff, now: Date = new Date()): Promise<St
       select: { id: true, name: true, color: true, _count: { select: { enrollments: { where: { status: "ACTIVE" } } } } },
       orderBy: { name: "asc" },
     }),
-    db.attendanceSession.findMany({ where: { schoolId: ctx.schoolId, dateKey, classId: { in: classIds } }, select: { classId: true } }),
+    db.attendanceSession.findMany({ where: { schoolId: ctx.schoolId, dateKey, classId: { in: classIds }, ...TAKEN_BY_A_PERSON }, select: { classId: true } }),
     db.assignment.findMany({
       where: { schoolId: ctx.schoolId, classId: { in: classIds }, publishedAt: { not: null }, dueAt: { gte: now } },
       select: { id: true, title: true, dueAt: true, class: { select: { name: true } } },
@@ -174,7 +174,7 @@ export async function attendanceClasses(ctx: Staff, date?: string): Promise<Atte
       select: { id: true, name: true, subject: true, color: true, _count: { select: { enrollments: { where: { status: "ACTIVE" } } } } },
       orderBy: { name: "asc" },
     }),
-    db.attendanceSession.findMany({ where: { schoolId: ctx.schoolId, dateKey, classId: { in: classIds } }, select: { classId: true } }),
+    db.attendanceSession.findMany({ where: { schoolId: ctx.schoolId, dateKey, classId: { in: classIds }, ...TAKEN_BY_A_PERSON }, select: { classId: true } }),
   ]);
   const takenSet = new Set(taken.map((t) => t.classId));
   const rows = classes.map((k) => ({ id: k.id, name: k.name, subject: k.subject, color: k.color, students: k._count.enrollments, taken: takenSet.has(k.id) }));
@@ -244,7 +244,7 @@ export async function staffClasses(ctx: Staff): Promise<StaffClasses> {
       },
       orderBy: { name: "asc" },
     }),
-    db.attendanceSession.findMany({ where: { schoolId: ctx.schoolId, dateKey, classId: { in: classIds } }, select: { classId: true } }),
+    db.attendanceSession.findMany({ where: { schoolId: ctx.schoolId, dateKey, classId: { in: classIds }, ...TAKEN_BY_A_PERSON }, select: { classId: true } }),
   ]);
   const classes = inGradeOrder(classRowsByName);
   // The work counted is the work this person may open: all of a form class's, their own elsewhere.
@@ -293,7 +293,7 @@ export async function staffClassDetail(ctx: Staff, classId: string): Promise<Sta
         },
       },
     }),
-    db.attendanceSession.findUnique({ where: { classId_dateKey: { classId, dateKey: today } }, select: { takenAt: true, _count: { select: { records: true } } } }),
+    db.attendanceSession.findUnique({ where: { classId_dateKey: { classId, dateKey: today } }, select: { takenAt: true, takenByMembershipId: true, _count: { select: { records: true } } } }),
     db.assignment.findMany({
       where: { classId, schoolId: ctx.schoolId, ...mine },
       select: { id: true, title: true, dueAt: true, publishedAt: true, _count: { select: { grades: true } } },
@@ -337,7 +337,7 @@ export async function staffClassDetail(ctx: Staff, classId: string): Promise<Sta
       joinCode: teaching.formTeacher ? klass.joinCode : null,
       archived: klass.archivedAt !== null,
     },
-    today: { dateKey: today, registerTakenAt: iso(todaySession?.takenAt), recordsToday: todaySession?._count.records ?? 0 },
+    today: { dateKey: today, registerTakenAt: todaySession?.takenByMembershipId ? iso(todaySession.takenAt) : null /* a device's start is not a taking (TA-032) */, recordsToday: todaySession?._count.records ?? 0 },
     roster,
     ofConcern: roster.filter((r) => r.percent !== null && r.percent < 90).length,
     withoutGuardian: roster.filter((r) => !r.hasGuardian).length,

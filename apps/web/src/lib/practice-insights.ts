@@ -8,6 +8,7 @@ import { asQuizBoard, type QuizBoard } from "@edulink/contracts"; // quiz-board 
 import { normaliseLocale } from "./i18n/locales";
 import { servedFigure, type ServedFigure } from "./quiz-figure";
 import { audit } from "./audit";
+import { addDaysToKey, isDateKey, zonedStartOfDay } from "./dates";
 // college-content (12 Oct 2026): what a tenant lists, on every practice read here too.
 import { practiceTenantOf, practiceTopicsWhere } from "./practice-audience";
 import { onceResultsFor } from "./practice-once";
@@ -500,6 +501,17 @@ export type PracticeAssignmentView = {
   dueAt: Date | null;
   createdAt: Date;
 };
+
+/**
+ * The due instant of a practice set due on `dueDate` (YYYY-MM-DD): the last millisecond of that day on the SCHOOL's
+ * clock (TA-533). `new Date(\`${d}T23:59:59\`)` read the day in the server process's zone, so a host without
+ * TZ=Asia/Kolkata moved every due time five and a half hours. Null for no day or one that is not a day.
+ */
+export async function practiceDueAt(schoolId: string, dueDate: string | null | undefined): Promise<Date | null> {
+  if (!dueDate || !isDateKey(dueDate)) return null;
+  const school = await db.school.findUniqueOrThrow({ where: { id: schoolId }, select: { timezone: true } });
+  return new Date(zonedStartOfDay(addDaysToKey(dueDate, 1), school.timezone).getTime() - 1);
+}
 
 /** Teacher sets a chapter and a rung for a class. Nothing to hand in. */
 export async function createPracticeAssignment(

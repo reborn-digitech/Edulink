@@ -117,7 +117,8 @@ export async function substitutionBoard(ctx: ActiveContext, date?: string | null
       select: { id: true, role: true, subjects: true, user: { select: { name: true, preferredName: true } } },
       take: 500,
     }),
-    db.timetableSlot.findMany({ where: { schoolId: caller.schoolId, weekday, class: { archivedAt: null } }, select: SLOT_SELECT }),
+    // A retired period's slots are kept (timetable.ts archivePeriod) but are no lessons of the day (TA-283).
+    db.timetableSlot.findMany({ where: { schoolId: caller.schoolId, weekday, class: { archivedAt: null }, period: { archivedAt: null } }, select: SLOT_SELECT }),
     db.substitution.findMany({ where: { schoolId: caller.schoolId, dateKey }, select: { slotId: true, substituteMembershipId: true, note: true, acknowledgedAt: true, declinedAt: true, declineReason: true } }),
   ]);
   const memberById = new Map(members.map((m) => [m.id, m]));
@@ -196,7 +197,8 @@ export async function substitutionBoard(ctx: ActiveContext, date?: string | null
 async function lessonOn(caller: Office, dateKey: string, slotId: string) {
   const closure = await closedOn(caller.schoolId, dateKey);
   if (!closure.teachingDay || closure.closed) throw new AccessError("substitutions.refuseClosed");
-  const slot = await db.timetableSlot.findFirst({ where: { id: slotId, schoolId: caller.schoolId }, select: SLOT_SELECT });
+  // A lesson left in a retired period is no lesson of the day (TA-283).
+  const slot = await db.timetableSlot.findFirst({ where: { id: slotId, schoolId: caller.schoolId, period: { archivedAt: null } }, select: SLOT_SELECT });
   if (!slot) throw new AccessError("substitutions.noSuchLesson", "NOT_FOUND");
   if (slot.weekday !== weekdayOfKey(dateKey)) throw new AccessError("substitutions.wrongDay");
   if (!slot.teacherMembershipId) throw new AccessError("substitutions.unstaffed");

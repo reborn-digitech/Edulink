@@ -7,6 +7,7 @@ import { AccessError, assertClassAccess } from "./tenancy";
 import type { ActiveContext } from "./session";
 import type { Role } from "./constants";
 import { noticeDate } from "./notice-dates";
+import { isDateKey } from "./dates";
 
 /**
  * Who may take a class's register today.
@@ -252,11 +253,9 @@ export type CoverInput = {
   reason?: string | null;
 };
 
-const DATE_KEY = /^\d{4}-\d{2}-\d{2}$/;
-
 /**
- * Who may be handed a register: the people who can mark one (the register doors take TEACHER and ADMIN; the
- * head marks as the office does). A FACULTY or HOD member stands in for a lecture on the college's own board
+ * Who may be handed a register: the people who can mark one (the register doors take TEACHER and ADMIN, and a
+ * PRINCIPAL only on the days a cover row names them, TA-031). A FACULTY or HOD member stands in for a lecture on the college's own board
  * (academics.ts setLectureSubstitute), not for a class register, so a cover row for one would grant nothing
  * they could use. decideLeave validates its substitutes against this same list (owner's item 14, 1 Nov 2026).
  */
@@ -275,7 +274,8 @@ export async function arrangeCover(
     throw new AccessError("access.onlyAnAdminOrThePrincipalCan");
   }
 
-  if (!DATE_KEY.test(input.fromDateKey) || !DATE_KEY.test(input.toDateKey)) {
+  // A real day, not only its shape (TA-033): "2026-02-30" passed the pattern.
+  if (!isDateKey(input.fromDateKey) || !isDateKey(input.toDateKey)) {
     return { ok: false, errorKey: "refusal.bothDatesYmd" };
   }
   if (input.toDateKey < input.fromDateKey) {

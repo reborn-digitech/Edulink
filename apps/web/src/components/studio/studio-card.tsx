@@ -39,6 +39,31 @@ export function submissionState(s: StudioRow["students"][number], stage: "INTERI
   return { label: t(SUBMISSION_STATE_KEY[x.state]), tone: SUB_TONE[x.state] };
 }
 
+/**
+ * A student's submission for one stage as staff see it: the badge, and for work handed in (SUBMITTED or LATE) the
+ * sheet as a link and the student's note (TA-385). The file door (files.ts) already admits the studio's readers;
+ * the desk and the faculty page drew only the badge, so nobody could open the work from the product. A DRAFT's
+ * file and note are not shown: they are not handed in.
+ */
+export function SubmissionCell({ s, stage, t }: { s: StudioRow["students"][number]; stage: "INTERIM_PINUP" | "FINAL_SUBMISSION"; t: Translate }) {
+  const state = submissionState(s, stage, t);
+  const x = s.submissions.find((sub) => sub.stage === stage);
+  const handedIn = x && x.state !== "DRAFT";
+  return (
+    <div className="space-y-1">
+      <Badge tone={state.tone}>{state.label}</Badge>
+      {handedIn && x.fileId ? (
+        <p>
+          <a href={`/api/files/${x.fileId}`} className="font-medium text-accent-strong underline underline-offset-2 hover:text-accent" data-studio-file={x.fileId}>
+            {x.fileName || t("duties.studio.openSheet")}
+          </a>
+        </p>
+      ) : null}
+      {handedIn && x.note ? <p className="whitespace-pre-line text-fg-muted">{t("duties.studio.studentNote", { note: x.note })}</p> : null}
+    </div>
+  );
+}
+
 export function resultText(r: { marks: number | null; band: keyof typeof BAND_KEY | null }, max: number, t: Translate): string {
   if (r.marks === null || !r.band) return t("duties.studio.absent");
   return t("duties.studio.resultLine", { marks: r.marks, max, band: t(BAND_KEY[r.band]) });
@@ -90,13 +115,11 @@ export function StudioCard({ s, t, locale, showStudents = true, children }: { s:
                   </thead>
                   <tbody>
                     {s.students.map((st) => {
-                      const pin = submissionState(st, "INTERIM_PINUP", t);
-                      const fin = submissionState(st, "FINAL_SUBMISSION", t);
                       return (
                         <tr key={st.studentMembershipId}>
                           <td className={TD}>{st.name}</td>
-                          <td className={TD}><Badge tone={pin.tone}>{pin.label}</Badge></td>
-                          <td className={TD}><Badge tone={fin.tone}>{fin.label}</Badge></td>
+                          <td className={TD}><SubmissionCell s={st} stage="INTERIM_PINUP" t={t} /></td>
+                          <td className={TD}><SubmissionCell s={st} stage="FINAL_SUBMISSION" t={t} /></td>
                           <td className={TD}>{st.results.length ? st.results.map((r) => `${day(r.on)}: ${resultText(r, s.maxMarks, t)}`).join("; ") : "—"}</td>
                         </tr>
                       );

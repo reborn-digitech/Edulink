@@ -234,7 +234,7 @@ export function Register({
         return;
       }
 
-      const result = (await response.json()) as { applied: number; rejected: unknown[] };
+      const result = (await response.json()) as { applied: number; skipped?: number; rejected: unknown[] };
       // Confirmed: a later refetch may show these pupils as the server has them, unless re-marked since.
       for (const sent of marks) {
         if (unconfirmed.current.get(sent.studentMembershipId) === sent.clientId) unconfirmed.current.delete(sent.studentMembershipId);
@@ -246,6 +246,11 @@ export function Register({
           title: t("teacher.someNotSaved"),
           description: t("teacher.noLongerInClass", { count: result.rejected.length }),
         });
+      }
+      // Every mark sent here carries a fresh key, so a skipped one lost to a later mark already stored (TA-029):
+      // said, rather than shown as Saved.
+      if ((result.skipped ?? 0) > 0) {
+        toast({ tone: "warn", title: t("teacher.someNotSaved"), description: t("teacher.supersededMarks", { count: result.skipped ?? 0 }) });
       }
     } catch {
       await enqueue({ url: "/api/attendance", method: "POST", body, tag: `attendance:${classId}` });

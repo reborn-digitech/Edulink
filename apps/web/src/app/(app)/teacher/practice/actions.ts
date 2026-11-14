@@ -3,7 +3,7 @@
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { requireApiRole, AccessError } from "@/lib/tenancy";
-import { createPracticeAssignment, archivePracticeAssignment } from "@/lib/practice-insights";
+import { createPracticeAssignment, archivePracticeAssignment, practiceDueAt } from "@/lib/practice-insights";
 import { getT } from "@/lib/i18n/server";
 import { assertFeatureForAction } from "@/lib/feature-page";
 
@@ -20,7 +20,8 @@ export async function setPractice(formData: FormData): Promise<void> {
   const targetLevel = Number(formData.get("targetLevel") ?? 0);
   const note = String(formData.get("note") ?? "");
   const dueRaw = String(formData.get("dueAt") ?? "");
-  const dueAt = dueRaw ? new Date(`${dueRaw}T23:59:59`) : null;
+  // The end of that day on the school's clock, not the server process's (TA-533).
+  const dueAt = await practiceDueAt(ctx.schoolId, dueRaw);
 
   try {
     await createPracticeAssignment(ctx, {
@@ -28,7 +29,7 @@ export async function setPractice(formData: FormData): Promise<void> {
       topicSlug,
       targetLevel,
       note,
-      dueAt: dueAt && !Number.isNaN(dueAt.getTime()) ? dueAt : null,
+      dueAt,
     });
   } catch (error) {
     if (error instanceof AccessError) {

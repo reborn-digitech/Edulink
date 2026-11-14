@@ -190,6 +190,26 @@ describe("the register", () => {
     expect(screen.getByText("Some marks were not saved: 1 student(s) are no longer in this class.")).toBeTruthy();
   });
 
+  it("TA-029: a mark the server skipped for a later one it already holds is said beside the saved state", async () => {
+    mockRouter.params = { classId: ID.class1 };
+    fakeApi({ "/api/v1/staff/attendance/register": () => json(REGISTER), "/api/attendance": () => json({ applied: 0, skipped: 1, rejected: [] }) });
+    await renderTeacher(<Register />);
+    await screen.findByText("1 of 2 marked");
+    await tap(screen.getAllByRole("radio", { name: "Absent" })[0]!);
+    await waitFor(() => expect(screen.getByText("Saved")).toBeTruthy(), slow);
+    expect(screen.getByText("1 mark(s) were not saved: the register already holds a later mark for them. Reload to see it.")).toBeTruthy();
+  });
+
+  it("a save the server took whole says nothing more than Saved", async () => {
+    mockRouter.params = { classId: ID.class1 };
+    fakeApi({ "/api/v1/staff/attendance/register": () => json(REGISTER), "/api/attendance": () => json({ applied: 1, skipped: 0, rejected: [] }) });
+    await renderTeacher(<Register />);
+    await screen.findByText("1 of 2 marked");
+    await tap(screen.getAllByRole("radio", { name: "Absent" })[0]!);
+    await waitFor(() => expect(screen.getByText("Saved")).toBeTruthy(), slow);
+    expect(screen.queryByText(/were not saved/)).toBeNull();
+  });
+
   it("a refusal the server means is shown with a retry, not queued", async () => {
     mockRouter.params = { classId: ID.class1 };
     fakeApi({ "/api/v1/staff/attendance/register": () => json(REGISTER), "/api/attendance": () => refusal("ZZ future date", 422) });

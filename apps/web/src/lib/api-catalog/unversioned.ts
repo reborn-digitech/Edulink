@@ -34,11 +34,13 @@ export const UNVERSIONED: Endpoint[] = [
   {
     method: "POST",
     path: "/api/attendance",
-    summary: "Take or correct a class's register for a day: one mark per pupil, each with the device's idempotency key; safe to replay (a stored key is skipped, an older mark never overwrites a newer one); a future day, a class one may not mark that day, or an archived class is refused",
-    access: ["TEACHER", "ADMIN"],
+    summary: "Take or correct a class's register for a day: one mark per pupil, each with the device's idempotency key; safe to replay (a stored key is skipped, an older mark never overwrites a newer one); a future day, a class one may not mark that day, or an archived class is refused; a device clock ahead of the server's is taken as the moment the mark arrives (TA-029); a principal marks only a register a cover names them for that day (TA-031)",
+    access: ["TEACHER", "ADMIN", "PRINCIPAL"],
     request: c.attendanceRegisterBodySchema,
     reach: "formTeacher", response: c.attendanceRegisterSavedSchema,
     emptyBodyStatus: 422,
+    // The sweep's principal holds no cover of the sampled class (TA-031): refused 403, or 422 for the empty body.
+    statusByRole: { PRINCIPAL: [403, 422] },
     sampleBody: (f) =>
       f.classId && f.studentMembershipId
         ? { classId: f.classId, dateKey: SWEEP_REGISTER_DAY, marks: [{ studentMembershipId: f.studentMembershipId, status: "PRESENT", clientId: SWEEP_REGISTER_CLIENT_ID, markedAt: `${SWEEP_REGISTER_DAY}T03:45:00.000Z` }] }
@@ -47,10 +49,11 @@ export const UNVERSIONED: Endpoint[] = [
   {
     method: "GET",
     path: "/api/attendance",
-    summary: "One class's roster for a day with the marks already made and any absence note from the family (?classId=&date=, today in the school's zone by default); read by whoever may mark it that day",
-    access: ["TEACHER", "ADMIN"],
+    summary: "One class's roster for a day with the marks already made and any absence note from the family (?classId=&date=, today in the school's zone by default); read by whoever may mark it that day (a principal only through a cover row, TA-031)",
+    access: ["TEACHER", "ADMIN", "PRINCIPAL"],
     request: c.attendanceRegisterQuerySchema,
     reach: "formTeacher", response: c.attendanceRegisterRosterSchema,
+    statusByRole: { PRINCIPAL: 403 },
     sample: (f) => (f.classId ? `/api/attendance?classId=${f.classId}&date=${SWEEP_REGISTER_DAY}` : null),
   },
   // No sampleBody: an answer needs a sitting the pupil opened, and answering is the act. The handler refuses a body without its three fields with 422 (R-51; it was 400), before it looks at the sitting.

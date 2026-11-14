@@ -12,7 +12,8 @@ import { addTerm, removeTerm, markTermFinished } from "./actions";
 import { actionError } from "@/lib/action-error";
 import { useT } from "@/lib/i18n";
 
-type Term = { id: string; name: string; startDateKey: string; endDateKey: string; current: boolean; finished: boolean };
+/** `rounds` and `cards`: the exam rounds and draft report cards that removing the term unhooks (TA-234). */
+type Term = { id: string; name: string; startDateKey: string; endDateKey: string; current: boolean; finished: boolean; rounds?: number; cards?: number };
 
 /**
  * The current year's terms. A short list and a one-line form: name, from,
@@ -59,9 +60,12 @@ export function TermsPanel({
     });
   }
 
-  function remove(termId: string) {
+  function remove(term: Term) {
+    // One press on an X took the term at once, and its exam rounds and draft cards lost it for good (TA-234):
+    // the office now confirms, told what is attached.
+    if (!window.confirm(t("terms.removeConfirm", { name: term.name, rounds: term.rounds ?? 0, cards: term.cards ?? 0 }))) return;
     startTransition(async () => {
-      const result = await removeTerm(termId);
+      const result = await removeTerm(term.id);
       if (!result.ok) {
         toast({ tone: "warn", title: actionError(t, result, "common.tryAgain") });
         return;
@@ -120,7 +124,7 @@ export function TermsPanel({
               >
                 {term.finished ? t("terms.reopenCta") : t("terms.finishCta")}
               </Button>
-              <Button type="button" variant="ghost" size="sm" icon={<XIcon />} aria-label={t("terms.remove")} disabled={pending} onClick={() => remove(term.id)} />
+              <Button type="button" variant="ghost" size="sm" icon={<XIcon />} aria-label={t("terms.remove")} disabled={pending} onClick={() => remove(term)} />
             </li>
           ))}
         </ul>

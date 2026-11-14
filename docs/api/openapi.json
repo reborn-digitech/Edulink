@@ -637,7 +637,7 @@
                   },
                   "password": {
                     "type": "string",
-                    "minLength": 8,
+                    "minLength": 10,
                     "maxLength": 200
                   },
                   "device": {
@@ -26506,7 +26506,7 @@
         ]
       },
       "post": {
-        "summary": "Tell the school the pupil will be away on a day (today or up to sixty days ahead), with a coded reason; the register shows it and no absence notice is sent for that day",
+        "summary": "Tell the school the pupil will be away on a day (today or up to sixty days ahead), with a coded reason; the register shows it, and a guardian's note means no absence notice is sent for that day (a pupil's own note does not, TA-028); filing again replaces one's own note until the register marks the pupil, and another filer's note is refused (TA-545)",
         "description": "Roles: STUDENT, PARENT.",
         "security": [
           {
@@ -31539,6 +31539,9 @@
                         ],
                         "additionalProperties": false
                       }
+                    },
+                    "confirmOwnEntry": {
+                      "type": "boolean"
                     }
                   },
                   "required": [
@@ -43295,7 +43298,7 @@
     },
     "/api/v1/public/expert-applications": {
       "post": {
-        "summary": "Apply to be an expert, signed out: a multipart body with the fields as JSON (`application`) and one PDF, JPG or PNG of at most 5 MB (`document`); no account is made; the applicant is emailed in their language; 201 with the address the operator will write to, 422 with the field for a refusal (an address already an expert's, an application already waiting), 429 at the hourly limit per address",
+        "summary": "Apply to be an expert, signed out: a multipart body with the fields as JSON (`application`) and one PDF, JPG or PNG of at most 5 MB (`document`); no account is made; the applicant is emailed in their language; 201 with the address the operator will write to (the same answer for an address already an expert's or with an application waiting, whose holder is told by mail), 422 with the field for a refusal of the form, 429 at the hourly limits per address (every post, then valid applications)",
         "description": "No session needed.",
         "security": [],
         "x-access": "anyone",
@@ -47659,7 +47662,7 @@
     },
     "/api/v1/community/mentoring/pair": {
       "post": {
-        "summary": "Pair a pupil with a published expert; the guardians are asked next",
+        "summary": "Pair a pupil with a published expert; the guardians are asked next. A pupil's own ask of that expert still waiting is the office's to approve, and pairing them is refused 403",
         "description": "Roles: ADMIN, TEACHER.",
         "security": [
           {
@@ -56991,7 +56994,7 @@
     },
     "/api/v1/contest/competitions/{competitionId}/entries": {
       "get": {
-        "summary": "This school's entries in a competition and what they scored",
+        "summary": "This school's entries in a competition and what they scored, and the pupils staff may add as entrants of the school's own competition",
         "description": "Roles: ADMIN, TEACHER.",
         "security": [
           {
@@ -57089,6 +57092,30 @@
                         ],
                         "additionalProperties": false
                       }
+                    },
+                    "candidates": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "studentMembershipId": {
+                            "$ref": "#/properties/competition/properties/id"
+                          },
+                          "name": {
+                            "type": "string"
+                          },
+                          "className": {
+                            "type": "string",
+                            "nullable": true
+                          }
+                        },
+                        "required": [
+                          "studentMembershipId",
+                          "name",
+                          "className"
+                        ],
+                        "additionalProperties": false
+                      }
                     }
                   },
                   "required": [
@@ -57137,6 +57164,134 @@
                 "schema": {
                   "$ref": "#/components/schemas/ApiError"
                 }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "competitionId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/contest/competitions/{competitionId}/entrants": {
+      "post": {
+        "summary": "The office or a teacher adds a pupil of the school as an entrant of the school's own competition, enrolment on or off; where consent is asked the entry waits for a guardian's yes (the school's stand-in for a pupil with no family on the app); audited",
+        "description": "Roles: ADMIN, TEACHER.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN",
+          "TEACHER"
+        ],
+        "x-reach": {
+          "ADMIN": "ownSchool",
+          "TEACHER": "ownSchool"
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ok": {
+                      "type": "boolean",
+                      "enum": [
+                        true
+                      ]
+                    },
+                    "entryId": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 64
+                    },
+                    "awaitingConsent": {
+                      "type": "boolean"
+                    },
+                    "created": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "ok",
+                    "entryId",
+                    "awaitingConsent",
+                    "created"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "studentMembershipId": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 64
+                  }
+                },
+                "required": [
+                  "studentMembershipId"
+                ],
+                "additionalProperties": false
               }
             }
           }
@@ -59167,7 +59322,7 @@
     },
     "/api/v1/fees/remind": {
       "post": {
-        "summary": "Tell every overdue family (or the pupils named) now",
+        "summary": "Tell every overdue family (or the pupils named) now; a family a manual round reached today is not told again",
         "description": "Roles: ADMIN, ACCOUNTS.",
         "security": [
           {
@@ -61288,7 +61443,7 @@
     },
     "/api/v1/fees/plans": {
       "post": {
-        "summary": "Put a class or named pupils on a published structure and generate their dues",
+        "summary": "Put a class or named pupils on a published structure and generate their dues; at a college only the structure each student's programme, year and category call for",
         "description": "Roles: ADMIN, ACCOUNTS.",
         "security": [
           {
@@ -61427,20 +61582,18 @@
     },
     "/api/v1/fees/plans/remove": {
       "post": {
-        "summary": "Take a pupil off their plan for a year, while nothing is paid",
-        "description": "Roles: ADMIN, ACCOUNTS.",
+        "summary": "Take a pupil off their plan for a year, while nothing is paid (the office's own, as its button)",
+        "description": "Roles: ADMIN.",
         "security": [
           {
             "bearer": []
           }
         ],
         "x-access": [
-          "ADMIN",
-          "ACCOUNTS"
+          "ADMIN"
         ],
         "x-reach": {
-          "ADMIN": "ownSchool",
-          "ACCOUNTS": "ownSchool"
+          "ADMIN": "ownSchool"
         },
         "responses": {
           "200": {
@@ -62580,7 +62733,7 @@
     },
     "/api/v1/fees/payments/{paymentId}/reverse": {
       "post": {
-        "summary": "Reverse a paid payment, keeping the row and its receipt on file",
+        "summary": "Reverse a paid payment, keeping the row and its receipt on file; an online payment is refunded instead, and one whose dues were carried or waived is refused",
         "description": "Roles: ADMIN, ACCOUNTS.",
         "security": [
           {
@@ -62807,8 +62960,8 @@
     },
     "/api/v1/fees/receipts/{receiptId}": {
       "get": {
-        "summary": "A receipt as issued: the frozen document, for the office or the family",
-        "description": "Roles: ADMIN, PARENT.",
+        "summary": "A receipt as issued: the frozen document, for the office (a college's accounts desk too) or the family",
+        "description": "Roles: ADMIN, ACCOUNTS, PARENT.",
         "security": [
           {
             "bearer": []
@@ -62816,10 +62969,12 @@
         ],
         "x-access": [
           "ADMIN",
+          "ACCOUNTS",
           "PARENT"
         ],
         "x-reach": {
           "ADMIN": "ownSchool",
+          "ACCOUNTS": "ownSchool",
           "PARENT": "ownChild"
         },
         "responses": {
@@ -64339,7 +64494,7 @@
     },
     "/api/v1/fees/family/upi": {
       "post": {
-        "summary": "Start a UPI payment to the school's own id: an intent link and a reference",
+        "summary": "Start a UPI payment to the school's own id: an intent link and a reference (the guardian's open intent for the same dues is handed back)",
         "description": "Roles: PARENT.",
         "security": [
           {
@@ -67007,7 +67162,7 @@
     },
     "/api/v1/messaging/broadcasts/{broadcastId}/resend": {
       "post": {
-        "summary": "Queue a notice's failed messages again",
+        "summary": "Try a notice's failed messages again, each through the router's rules as the first send was; once an hour while one is left to try",
         "description": "Roles: ADMIN.",
         "security": [
           {
@@ -108163,7 +108318,7 @@
     },
     "/api/v1/operator/gigs/company": {
       "post": {
-        "summary": "The company as the seller on its tax invoices: legal name, GSTIN, address, state code, the SAC, the series prefix and the GST rate on the commission",
+        "summary": "The company as the seller on its tax invoices: legal name, GSTIN, address, state code, the SAC, the series prefix (one or two capital letters, so every invoice number fits sixteen characters; a longer one is refused) and the GST rate on the commission",
         "description": "The server operator.",
         "security": [
           {
@@ -119713,7 +119868,7 @@
         }
       },
       "post": {
-        "summary": "A structure whole: with an id rewritten, without one made; BASIC among its components, each code once",
+        "summary": "A structure whole: with an id rewritten, without one made; BASIC among its components, each code once; a rewrite that moves the caller's own gross is refused 403 while another person keeps payroll at the school (TA-407; alone, the head is told), each member of staff whose gross it moves is told the gross before and after, and the audit carries the components before and after",
         "description": "Roles: ADMIN, ACCOUNTS. Only while the school has PAYROLL switched on.",
         "security": [
           {
@@ -120165,7 +120320,7 @@
         }
       },
       "post": {
-        "summary": "One person's salary from a date; the PAN and bank account are sealed on arrival and a blank keeps the sealed one",
+        "summary": "One person's salary from a date; the PAN and bank account are sealed on arrival and a blank keeps the sealed one; the caller's own salary is refused 403 while another person keeps payroll at the school (TA-407; alone, it is saved and the head is told); the member of staff is told of a new account or UPI id (masked) and of a salary change; audited with the amounts before and after",
         "description": "Roles: ADMIN, ACCOUNTS. Only while the school has PAYROLL switched on.",
         "security": [
           {
@@ -121468,7 +121623,7 @@
     },
     "/api/v1/admin/payroll/runs/{month}/slips/{membershipId}": {
       "post": {
-        "summary": "The office's review of one slip in a DRAFT run: arrears, the month's TDS, its own loss-of-pay days, a note; refused 409 once locked",
+        "summary": "The office's review of one slip in a DRAFT run: arrears, the month's TDS, its own loss-of-pay days, a note; refused 409 once locked; the caller's own slip is refused 403 while another person keeps payroll at the school (TA-407; alone, the head is told); audited with the figures before and after",
         "description": "Roles: ADMIN, ACCOUNTS. Only while the school has PAYROLL switched on.",
         "security": [
           {
@@ -121820,7 +121975,7 @@
     },
     "/api/v1/admin/payroll/runs/{month}/lock": {
       "post": {
-        "summary": "Lock the run: nothing in it changes afterwards, its digest is kept, and each person is told their slip is ready; refused while a net is below nothing",
+        "summary": "Lock the run: nothing in it changes afterwards, its digest is kept, and each person is told their slip is ready, the head with the run's totals (TA-407); refused while a net is below nothing",
         "description": "Roles: ADMIN, ACCOUNTS. Only while the school has PAYROLL switched on.",
         "security": [
           {
@@ -124319,7 +124474,7 @@
         }
       },
       "post": {
-        "summary": "Record an advance the school handed over outside the app, recovered by a monthly instalment",
+        "summary": "Record an advance the school handed over outside the app, recovered by a monthly instalment; the caller's own is refused 403 while another person keeps payroll at the school (TA-407; alone, the head is told)",
         "description": "Roles: ADMIN, ACCOUNTS. Only while the school has PAYROLL switched on.",
         "security": [
           {
@@ -124499,7 +124654,7 @@
     },
     "/api/v1/admin/payroll/advances/decide": {
       "post": {
-        "summary": "Answer a member of staff's ask: RECORD (with the instalment) or DECLINE",
+        "summary": "Answer a member of staff's ask: RECORD (with the instalment) or DECLINE; recording the caller's own ask is refused 403 while another person keeps payroll at the school (TA-407; alone, the head is told); audited with the amount asked and the amount recorded",
         "description": "Roles: ADMIN, ACCOUNTS. Only while the school has PAYROLL switched on.",
         "security": [
           {
@@ -124680,7 +124835,7 @@
     },
     "/api/v1/admin/payroll/advances/cancel": {
       "post": {
-        "summary": "Cancel a recorded advance nothing has yet been taken back for: no later run takes an instalment of it",
+        "summary": "Cancel a recorded advance nothing has yet been taken back for: no later run takes an instalment of it; the caller's own is refused 403 while another person keeps payroll at the school (TA-407; alone, the head is told)",
         "description": "Roles: ADMIN, ACCOUNTS. Only while the school has PAYROLL switched on.",
         "security": [
           {
@@ -206228,7 +206383,7 @@
     },
     "/api/v1/duties/teaching-practice/postings": {
       "post": {
-        "summary": "A student teacher posted to a practice school for a span of days with the lessons planned (409 for an overlapping posting; audited)",
+        "summary": "A student teacher posted to a practice school for a span of days with the lessons planned, new or corrected by its id (409 for an overlapping posting, or for a correction of an observed posting that changes its student or leaves an observation outside its days, TA-381; audited)",
         "description": "Roles: ADMIN, FACULTY, HOD. A FACULTY or HOD only holding PRACTICE_TEACHING_COORDINATOR. Only while the school has ACADEMICS switched on.",
         "security": [
           {
@@ -206743,7 +206898,7 @@
     },
     "/api/v1/duties/nss/enrolments": {
       "post": {
-        "summary": "Students enrolled in the NSS unit (one who had left is enrolled again; audited)",
+        "summary": "Students enrolled in the NSS unit on the day they joined (enrolledOn, today when left out; one who had left is enrolled again and keeps their first joining day; an earlier day moves an enrolled student's joining day back; audited)",
         "description": "Roles: ADMIN, FACULTY, HOD. A FACULTY or HOD only holding NSS_OFFICER. Only while the school has IQAC switched on.",
         "security": [
           {
@@ -206846,6 +207001,10 @@
                   "unit": {
                     "type": "string",
                     "maxLength": 80
+                  },
+                  "enrolledOn": {
+                    "type": "string",
+                    "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
                   }
                 },
                 "required": [
@@ -206979,7 +207138,7 @@
     },
     "/api/v1/duties/nss/activities": {
       "post": {
-        "summary": "An NSS activity with the hours each enrolled participant earned and whether it was a camp — an IQAC Activity row of kind NSS (audited)",
+        "summary": "An NSS activity with the hours each participant enrolled on its day earned and whether it was a camp — an IQAC Activity row of kind NSS (audited)",
         "description": "Roles: ADMIN, FACULTY, HOD. A FACULTY or HOD only holding NSS_OFFICER. Only while the school has IQAC switched on.",
         "security": [
           {
@@ -207366,7 +207525,7 @@
     },
     "/api/v1/duties/ncc/enrolments": {
       "post": {
-        "summary": "Students enrolled in the NCC unit (audited)",
+        "summary": "Students enrolled in the NCC unit on the day they joined (enrolledOn, today when left out; one who had left keeps their first joining day; audited)",
         "description": "Roles: ADMIN, FACULTY, HOD. A FACULTY or HOD only holding NCC_OFFICER. Only while the school has IQAC switched on.",
         "security": [
           {
@@ -207469,6 +207628,10 @@
                   "unit": {
                     "type": "string",
                     "maxLength": 80
+                  },
+                  "enrolledOn": {
+                    "type": "string",
+                    "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
                   }
                 },
                 "required": [
@@ -207602,7 +207765,7 @@
     },
     "/api/v1/duties/ncc/activities": {
       "post": {
-        "summary": "An NCC activity with the hours each enrolled cadet earned and whether it was a camp — an IQAC Activity row of kind NCC (audited)",
+        "summary": "An NCC activity with the hours each cadet enrolled on its day earned and whether it was a camp — an IQAC Activity row of kind NCC (audited)",
         "description": "Roles: ADMIN, FACULTY, HOD. A FACULTY or HOD only holding NCC_OFFICER. Only while the school has IQAC switched on.",
         "security": [
           {
@@ -209260,7 +209423,7 @@
     },
     "/api/v1/duties/clinical/departments": {
       "post": {
-        "summary": "A ward or department of a site, with its beds when counted (409 for a second of one name at the site; audited)",
+        "summary": "A ward or department of a site, with its beds when counted, new or corrected by its id (409 for a second of one name at the site, or for moving a ward with postings to another site, TA-483; audited)",
         "description": "Roles: ADMIN, FACULTY, HOD. A FACULTY or HOD only holding CLINICAL_COORDINATOR. Only while the school has ACADEMICS switched on.",
         "security": [
           {
@@ -209379,7 +209542,7 @@
     },
     "/api/v1/duties/clinical/postings": {
       "post": {
-        "summary": "A division, or one of its lab batches, posted to a department for a span of days under a supervising faculty member in a rotation's order (409 for an overlapping posting of the same students; audited)",
+        "summary": "A division, or one of its lab batches, posted to a department for a span of days under a supervising faculty member in a rotation's order (409 for an overlapping posting of the same students, or for a correction of a posting with logbook entries that changes its division or batch or leaves an entry outside its days, TA-381; 422 for a division outside the clinical programmes at a college with another stream, TA-486; audited)",
         "description": "Roles: FACULTY, HOD. A FACULTY or HOD only holding CLINICAL_COORDINATOR. Only while the school has ACADEMICS switched on.",
         "security": [
           {
@@ -210835,7 +210998,7 @@
     },
     "/api/v1/duties/studio/studios": {
       "post": {
-        "summary": "A studio and its four stage days, new or corrected by its id: a holder of the duty (the coordinator themself unless another holder is named) or the office, which names one (409 without ARCHITECTURE; 422 for stages out of order; audited studio.save)",
+        "summary": "A studio and its four stage days, new or corrected by its id: a holder of the duty (the coordinator themself unless another holder is named) or the office, which names one (409 without ARCHITECTURE, and once a jury of the studio has signed for a change of its maximum, its offering or a closed stage's day, TA-206; 422 for stages out of order or an offering of another stream's programme, TA-473; audited studio.save)",
         "description": "Roles: ADMIN, FACULTY, HOD. A FACULTY or HOD only holding STUDIO_COORDINATOR. Only while the school has ACADEMICS switched on.",
         "security": [
           {
@@ -211790,7 +211953,7 @@
     },
     "/api/v1/faculty/studios/juries/{juryId}/marks": {
       "post": {
-        "summary": "A juror on the panel writes marks out of the studio's maximum (null is absent) and a remark for the studio's registered students; 403 off the panel, 409 once signed (the one writer; audited studio.marks)",
+        "summary": "A juror on the panel writes marks out of the studio's maximum (null is absent) and a remark for the studio's registered students; 403 off the panel, 409 once signed or without ARCHITECTURE (the one writer; audited studio.marks)",
         "description": "Roles: FACULTY, HOD. Only while the school has ACADEMICS switched on.",
         "security": [
           {
@@ -211929,7 +212092,7 @@
     },
     "/api/v1/faculty/studios/juries/{juryId}/sign": {
       "post": {
-        "summary": "The chair signs the sheet once every registered student has an entry (409 short of that); the students are told; a signed sheet answers as it stands (audited studio.sign)",
+        "summary": "The chair signs the sheet once every registered student has an entry (409 short of that, or without ARCHITECTURE); the students are told; a signed sheet answers as it stands (audited studio.sign)",
         "description": "Roles: FACULTY, HOD. Only while the school has ACADEMICS switched on.",
         "security": [
           {
@@ -212025,7 +212188,7 @@
     },
     "/api/v1/faculty/studios/juries/{juryId}/internal": {
       "post": {
-        "summary": "A signed sheet's marks into one of the offering's internal components, scaled to its maximum, through the internal marks' one writer (409 unsigned, released or locked; audited studio.postInternal)",
+        "summary": "A signed sheet's marks into one of the offering's internal components, scaled to its maximum, through the internal marks' one writer (409 unsigned, released, locked or without ARCHITECTURE; audited studio.postInternal)",
         "description": "Roles: FACULTY, HOD. Only while the school has ACADEMICS switched on.",
         "security": [
           {
@@ -212143,7 +212306,7 @@
     },
     "/api/v1/family/studios": {
       "get": {
-        "summary": "A student's studios: the brief, the stages with their days, their own submissions and the results of the signed juries",
+        "summary": "A student's studios: the brief, the stages with their days, their own submissions, the submission stages still open (openStages, TA-470) and the results of the signed juries",
         "description": "Roles: STUDENT. Only while the school has ACADEMICS switched on.",
         "security": [
           {
@@ -212293,6 +212456,12 @@
                           },
                           "canSubmit": {
                             "type": "boolean"
+                          },
+                          "openStages": {
+                            "type": "array",
+                            "items": {
+                              "$ref": "#/properties/studios/items/properties/submissions/items/properties/stage"
+                            }
                           },
                           "results": {
                             "type": "array",
@@ -213445,7 +213614,7 @@
         }
       },
       "post": {
-        "summary": "One experiment for some of an offering's students — by its teacher or its department's HOD; a signed row is a 409, a day in the future or a student not registered a 422 (audited)",
+        "summary": "One experiment for some of an offering's students — by its teacher or its department's HOD; a signed row is a 409, and so is a college whose streams keep no labs; a day in the future, a student not registered or a course with no practical hours or credits a 422 (TA-494; audited)",
         "description": "Roles: FACULTY, HOD. Only while the school has ACADEMICS switched on.",
         "security": [
           {
@@ -213590,7 +213759,7 @@
     },
     "/api/v1/stream-records/practicals/sign": {
       "post": {
-        "summary": "Sign practical-record rows: the offering's teacher, its HOD, or a member holding LAB_INCHARGE (403 for anyone else's offering; audited)",
+        "summary": "Sign practical-record rows: the offering's teacher, its HOD, or a member holding LAB_INCHARGE (403 for anyone else's offering; 409 at a college without labs and 422 for a course with no practicals, TA-494; audited)",
         "description": "Roles: FACULTY, HOD. Only while the school has ACADEMICS switched on.",
         "security": [
           {
@@ -216610,9 +216779,254 @@
         ]
       }
     },
+    "/api/v1/admin/people/{membershipId}/guardians": {
+      "get": {
+        "summary": "The pupil's family guardians on the app, oldest link first, for the office to choose the one to end; never the school's stand-in",
+        "description": "Roles: ADMIN.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN"
+        ],
+        "x-reach": {
+          "ADMIN": "ownSchool"
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "guardians": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "guardianshipId": {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 64
+                          },
+                          "name": {
+                            "type": "string"
+                          },
+                          "relation": {
+                            "type": "string",
+                            "enum": [
+                              "PARENT",
+                              "GUARDIAN",
+                              "OTHER"
+                            ]
+                          },
+                          "since": {
+                            "type": "string",
+                            "format": "date-time"
+                          }
+                        },
+                        "required": [
+                          "guardianshipId",
+                          "name",
+                          "relation",
+                          "since"
+                        ],
+                        "additionalProperties": false
+                      }
+                    }
+                  },
+                  "required": [
+                    "guardians"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "membershipId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/admin/people/{membershipId}/guardians/{guardianshipId}/end": {
+      "post": {
+        "summary": "End a family guardian's link to a pupil on the roll for a coded reason (a court order, the wrong person, the family's request, another): audited, the head told with the reason, the guardian told only that it ended and to contact the office, the other guardians told, the school standing in when no family guardian is left; a link already ended answers ended: false",
+        "description": "Roles: ADMIN.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN"
+        ],
+        "x-reach": {
+          "ADMIN": "ownSchool"
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ended": {
+                      "type": "boolean"
+                    },
+                    "schoolStandsIn": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "ended",
+                    "schoolStandsIn"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "reason": {
+                    "type": "string",
+                    "enum": [
+                      "COURT_ORDER",
+                      "WRONG_PERSON",
+                      "FAMILY_REQUEST",
+                      "OTHER"
+                    ]
+                  }
+                },
+                "required": [
+                  "reason"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "membershipId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "guardianshipId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
     "/api/v1/staff/experts/invite": {
       "post": {
-        "summary": "Invite an outside expert by email address; the invitation link is mailed to that address only, and the answer is the invitation id and whether the mail went (never the link)",
+        "summary": "Invite an outside expert by email address; the invitation link is mailed to that address only, and the answer is the invitation id and whether the mail went (never the link); refused 403 once the school's day of invitations is spent or the sender has sent twenty this hour",
         "description": "Roles: ADMIN, TEACHER.",
         "security": [
           {
@@ -225559,8 +225973,8 @@
     },
     "/api/attendance": {
       "post": {
-        "summary": "Take or correct a class's register for a day: one mark per pupil, each with the device's idempotency key; safe to replay (a stored key is skipped, an older mark never overwrites a newer one); a future day, a class one may not mark that day, or an archived class is refused",
-        "description": "Roles: TEACHER, ADMIN.",
+        "summary": "Take or correct a class's register for a day: one mark per pupil, each with the device's idempotency key; safe to replay (a stored key is skipped, an older mark never overwrites a newer one); a future day, a class one may not mark that day, or an archived class is refused; a device clock ahead of the server's is taken as the moment the mark arrives (TA-029); a principal marks only a register a cover names them for that day (TA-031)",
+        "description": "Roles: TEACHER, ADMIN, PRINCIPAL.",
         "security": [
           {
             "bearer": []
@@ -225568,11 +225982,13 @@
         ],
         "x-access": [
           "TEACHER",
-          "ADMIN"
+          "ADMIN",
+          "PRINCIPAL"
         ],
         "x-reach": {
           "TEACHER": "formTeacher",
-          "ADMIN": "ownSchool"
+          "ADMIN": "ownSchool",
+          "PRINCIPAL": "ownSchool"
         },
         "responses": {
           "200": {
@@ -225733,8 +226149,8 @@
         }
       },
       "get": {
-        "summary": "One class's roster for a day with the marks already made and any absence note from the family (?classId=&date=, today in the school's zone by default); read by whoever may mark it that day",
-        "description": "Roles: TEACHER, ADMIN.",
+        "summary": "One class's roster for a day with the marks already made and any absence note from the family (?classId=&date=, today in the school's zone by default); read by whoever may mark it that day (a principal only through a cover row, TA-031)",
+        "description": "Roles: TEACHER, ADMIN, PRINCIPAL.",
         "security": [
           {
             "bearer": []
@@ -225742,11 +226158,13 @@
         ],
         "x-access": [
           "TEACHER",
-          "ADMIN"
+          "ADMIN",
+          "PRINCIPAL"
         ],
         "x-reach": {
           "TEACHER": "formTeacher",
-          "ADMIN": "ownSchool"
+          "ADMIN": "ownSchool",
+          "PRINCIPAL": "ownSchool"
         },
         "responses": {
           "200": {

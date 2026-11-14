@@ -132,6 +132,9 @@ function ClassRegister({ classId, date, onBack }: { classId: string; date?: stri
   const [error, setError] = useState<string | null>(null);
   // How many of the last batch the server would not take (a pupil no longer in the class): said beside the state, as the web's toast says it.
   const [rejected, setRejected] = useState(0);
+  // And how many it skipped because the register already holds a later mark for that pupil (TA-029): every mark sent
+  // here carries a fresh key, so a skipped one was lost to somebody's later mark, and is said rather than shown as Saved.
+  const [skipped, setSkipped] = useState(0);
   const dirty = useRef(new Map<string, Mark>());
   const lastBody = useRef<{ classId: string; dateKey: string; marks: unknown[] } | null>(null);
   const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -217,7 +220,8 @@ function ClassRegister({ classId, date, onBack }: { classId: string; date?: stri
     setState("saving");
     setError(null);
     setRejected(0);
-    const outcome = await postOrQueue<{ applied?: number; rejected?: unknown[] }>({ url: "/api/attendance", body, tag });
+    setSkipped(0);
+    const outcome = await postOrQueue<{ applied?: number; skipped?: number; rejected?: unknown[] }>({ url: "/api/attendance", body, tag });
     if (outcome.kind === "refused") {
       setState("error");
       setError(outcome.message || t("teacher.checkConnection"));
@@ -227,6 +231,7 @@ function ClassRegister({ classId, date, onBack }: { classId: string; date?: stri
     setState(outcome.kind === "sent" ? "saved" : "queued");
     if (outcome.kind === "sent") {
       if (Array.isArray(outcome.data?.rejected)) setRejected(outcome.data.rejected.length);
+      if (typeof outcome.data?.skipped === "number") setSkipped(outcome.data.skipped);
       // Confirmed: a later re-read may show these pupils as the server has them, unless re-marked since.
       for (const sent of body.marks as { studentMembershipId: string; clientId: string }[]) {
         if (unconfirmed.current.get(sent.studentMembershipId) === sent.clientId) unconfirmed.current.delete(sent.studentMembershipId);
@@ -312,6 +317,11 @@ function ClassRegister({ classId, date, onBack }: { classId: string; date?: stri
           {rejected > 0 ? (
             <Text variant="sm" tone="warn" accessibilityLiveRegion="polite">
               {t("teacher.someNotSaved")}: {t("teacher.noLongerInClass", { count: rejected })}
+            </Text>
+          ) : null}
+          {skipped > 0 ? (
+            <Text variant="sm" tone="warn" accessibilityLiveRegion="polite">
+              {t("teacher.supersededMarks", { count: skipped })}
             </Text>
           ) : null}
           {state === "error" ? <Failed message={error ?? t("teacher.didNotSave")} onRetry={() => void flush()} /> : null}

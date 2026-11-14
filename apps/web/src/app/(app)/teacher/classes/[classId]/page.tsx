@@ -63,7 +63,7 @@ export default async function ClassDetailPage({
   const today = todayKey(school.timezone);
   const from = addDaysToKey(today, -RANGE_DAYS);
 
-  const [enrollments, todaySession, assignments, ungraded] = await Promise.all([
+  const [enrollments, startedSession, assignments, ungraded] = await Promise.all([
     db.enrollment.findMany({
       where: { classId, status: "ACTIVE" },
       include: {
@@ -77,7 +77,7 @@ export default async function ClassDetailPage({
     }),
     db.attendanceSession.findUnique({
       where: { classId_dateKey: { classId, dateKey: today } },
-      select: { takenAt: true, _count: { select: { records: true } } },
+      select: { takenAt: true, takenByMembershipId: true, _count: { select: { records: true } } },
     }),
     db.assignment.findMany({
       where: { classId, schoolId: ctx.schoolId, ...mine },
@@ -95,6 +95,9 @@ export default async function ClassDetailPage({
       where: { schoolId: ctx.schoolId, status: "SUBMITTED", assignment: { classId, ...mine } },
     }),
   ]);
+  // Taken by a person: a register only an attendance device started (no taker) is still to take (TA-032), as
+  // registersDue and the phone's class page read it.
+  const todaySession = startedSession?.takenByMembershipId ? startedSession : null;
 
   // One attendance summary per student. Fine for a class-sized roster; if this
   // ever needs to run over a whole school, it wants a single grouped query.

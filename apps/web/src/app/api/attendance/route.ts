@@ -25,7 +25,8 @@ import { readJson } from "@/lib/api-v1";
  */
 const timed = withMetrics("attendance", async (request: Request) => {
   try {
-    const ctx = await requireApiRole("TEACHER", "ADMIN");
+    // A PRINCIPAL passes here and then registerDuty, which says yes only on the days a cover row names them (TA-031).
+    const ctx = await requireApiRole("TEACHER", "ADMIN", "PRINCIPAL");
 
     // TA-423: read to the cap, by what arrives (a body past it is no body).
     const body = await readJson(request).catch(() => null);
@@ -100,7 +101,8 @@ export async function POST(request: Request) {
 /** Roster + existing marks for a class/day, used to hydrate and to refresh. */
 export async function GET(request: Request) {
   try {
-    const ctx = await requireApiRole("TEACHER", "ADMIN");
+    // A PRINCIPAL passes here and then registerDuty, which says yes only on the days a cover row names them (TA-031).
+    const ctx = await requireApiRole("TEACHER", "ADMIN", "PRINCIPAL");
     const url = new URL(request.url);
     const classId = url.searchParams.get("classId");
     if (!classId) {
@@ -114,7 +116,9 @@ export async function GET(request: Request) {
     const dateKey = url.searchParams.get("date") ?? todayKey(school.timezone);
     // The same boundary as the POST: a cover teacher reads the register they
     // are down to mark.
-    await assertClassAccessForRegister(ctx, classId, await registerDuty(ctx, classId, dateKey));
+    // A principal reads here only the register a cover names them for (TA-031); their school-wide view is elsewhere.
+    const duty = ctx.role === "PRINCIPAL" ? await assertMayTakeRegister(ctx, classId, dateKey) : await registerDuty(ctx, classId, dateKey);
+    await assertClassAccessForRegister(ctx, classId, duty);
 
     const register = await getRegister(ctx.schoolId, classId, dateKey);
     if (!register) return NextResponse.json({ error: (await getT())("attendance.classNotFound") }, { status: 404 });

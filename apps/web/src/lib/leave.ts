@@ -5,7 +5,7 @@ import { notify } from "./notify";
 import { headPageHolders } from "./duties";
 import { AccessError } from "./tenancy";
 import { arrangeCover, REGISTER_COVER_ROLES } from "./register-duty";
-import { addDaysToKey, dateKeyRange, todayKey, weekdayOfKey } from "./dates";
+import { addDaysToKey, dateKeyRange, isDateKey, todayKey, weekdayOfKey } from "./dates";
 import type { ActiveContext } from "./session";
 
 /**
@@ -40,7 +40,6 @@ import { noticeDate } from "./notice-dates";
 export { LEAVE_KINDS, LEAVE_KIND_LABEL_KEY, LEAVE_STATUSES, LEAVE_STATUS_KEY } from "./leave-kinds";
 export type { LeaveKind, LeaveStatus, LeaveRow } from "./leave-kinds";
 
-const DATE_KEY = /^\d{4}-\d{2}-\d{2}$/;
 const MAX_SPAN_DAYS = 180;
 
 export type ApplyInput = {
@@ -89,7 +88,9 @@ export async function applyForLeave(
     throw new AccessError("access.onlyTeachingStaffCanApplyForLeave");
   }
 
-  if (!DATE_KEY.test(input.fromDateKey) || !DATE_KEY.test(input.toDateKey)) {
+  // A real day, not only its shape (TA-033): "2026-11-00" passed the pattern, was stored PENDING, and the desk's
+  // cover search and balance then threw on it for the whole school.
+  if (typeof input.fromDateKey !== "string" || typeof input.toDateKey !== "string" || !isDateKey(input.fromDateKey) || !isDateKey(input.toDateKey)) {
     return { ok: false, errorKey: "leaveKind.giveBothDates" };
   }
   if (input.toDateKey < input.fromDateKey) {
@@ -236,7 +237,9 @@ export async function decideLeave(
 
   // ⚠ Nobody signs off their own absence. A principal applying for leave needs
   // an admin, or another principal, to answer it.
-  if (request.teacherMembershipId === ctx.membershipId) {
+  // Compared by PERSON as well as by membership (TA-030): one person holds a membership per role, so a head who
+  // also teaches applied as the teacher and decided as the principal past a membership-only check.
+  if (request.teacherMembershipId === ctx.membershipId || request.teacher.userId === ctx.user.id) {
     return { ok: false, errorKey: "leaveKind.notYourOwn" };
   }
 
@@ -407,6 +410,8 @@ export async function decideLeave(
             schoolId: ctx.schoolId,
             teacherMembershipId: request.teacherMembershipId,
             class: { archivedAt: null },
+            // A class met only in a retired period is no lesson to cover (TA-283).
+            period: { archivedAt: null },
           },
           select: { classId: true },
           distinct: ["classId"],
@@ -907,6 +912,10 @@ export async function coverCandidates(
     throw new AccessError("access.onlyThePrincipalOrAnAdminCan");
   }
 
+  // A stored request whose day is not a day (made before applyForLeave checked it, TA-033) has nothing to
+  // suggest; answering empty keeps one bad row from taking the whole desk down.
+  if (!isDateKey(fromDateKey) || !isDateKey(toDateKey)) return { lessonCount: 0, candidates: [], groups: [] };
+
   // The weekdays this leave actually touches — a Monday-only absence needs
   // nobody free on Thursday. Capped: past a fortnight every weekday is in.
   const weekdays = new Set(dateKeyRange(fromDateKey, toDateKey, 14).map(weekdayOfKey));
@@ -917,6 +926,8 @@ export async function coverCandidates(
         schoolId: ctx.schoolId,
         teacherMembershipId: applicantMembershipId,
         class: { archivedAt: null },
+        // A retired period's lessons are not lessons to cover, nor clashes (TA-283).
+        period: { archivedAt: null },
       },
       select: {
         weekday: true,
@@ -946,6 +957,7 @@ export async function coverCandidates(
         schoolId: ctx.schoolId,
         teacherMembershipId: { not: null },
         class: { archivedAt: null },
+        period: { archivedAt: null },
       },
       select: { teacherMembershipId: true, weekday: true, periodId: true },
     }),

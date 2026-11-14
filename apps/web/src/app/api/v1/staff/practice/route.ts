@@ -1,7 +1,7 @@
 import { practiceCreatedSchema, practiceQuerySchema, setPracticeSchema, staffPracticeSchema } from "@edulink/contracts";
 import { requireApiRole } from "@/lib/tenancy";
 import { staffPractice } from "@/lib/api-reads/staff";
-import { createPracticeAssignment } from "@/lib/practice-insights";
+import { createPracticeAssignment, practiceDueAt } from "@/lib/practice-insights";
 import { apiFailure, apiInvalid, ok, readJson } from "@/lib/api-v1";
 
 /** GET /api/v1/staff/practice?classId= — one class's practice picture: the heatmap, what is set, the week's movement, where the class is stuck. */
@@ -27,8 +27,9 @@ export async function POST(request: Request) {
     const parsed = setPracticeSchema.safeParse(await readJson(request));
     if (!parsed.success) return apiInvalid(parsed);
     const { classId, topicSlug, targetLevel, note, dueDate } = parsed.data;
-    const dueAt = dueDate ? new Date(`${dueDate}T23:59:59`) : null;
-    const result = await createPracticeAssignment(ctx, { classId, topicSlug, targetLevel, note, dueAt: dueAt && !Number.isNaN(dueAt.getTime()) ? dueAt : null });
+    // The end of that day on the school's clock, not the server process's (TA-533).
+    const dueAt = await practiceDueAt(ctx.schoolId, dueDate);
+    const result = await createPracticeAssignment(ctx, { classId, topicSlug, targetLevel, note, dueAt });
     return ok(practiceCreatedSchema.parse(result));
   } catch (error) {
     return apiFailure(error, "api/v1/staff/practice");

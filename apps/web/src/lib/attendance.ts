@@ -159,7 +159,11 @@ export async function saveAttendanceBatch(opts: {
       const parsedAt = mark.markedAt ? new Date(mark.markedAt) : null;
       // A device that sends garbage for its clock is not a reason to refuse
       // the mark, and an Invalid Date would have thrown from the upsert.
-      const markedAt = parsedAt && !Number.isNaN(parsedAt.getTime()) ? parsedAt : new Date();
+      // And a clock ahead of ours is held to the moment the mark arrives (TA-029): nobody tapped in the future, and
+      // a mark stamped ten minutes, a day or a year ahead would otherwise outrank every correction made before
+      // then, by anybody. A replay's stamp is in the past, so the stale-replay rule below is unchanged.
+      const now = new Date();
+      const markedAt = parsedAt && !Number.isNaN(parsedAt.getTime()) ? (parsedAt.getTime() > now.getTime() ? now : parsedAt) : now;
 
       if (previous) {
         // Exact replay of a mark we already stored.
@@ -246,7 +250,9 @@ export async function saveAttendanceBatch(opts: {
      * so the notifications page can say it again if they change language.
      */
     await Promise.all(
-      newlyAbsent.filter(({ studentMembershipId }) => !told.has(studentMembershipId)).map(({ studentMembershipId, status }) =>
+      // Only a note the FAMILY wrote stands for the notice (TA-028): a pupil's own note does not switch off the one
+      // message the school sends their guardians about an absence.
+      newlyAbsent.filter(({ studentMembershipId }) => !told.get(studentMembershipId)?.byFamily).map(({ studentMembershipId, status }) =>
         notifyGuardians(studentMembershipId, (childName) => ({
           kind: "ATTENDANCE",
           schoolId,
@@ -264,6 +270,13 @@ export async function saveAttendanceBatch(opts: {
 
   return { applied, skipped, rejected, sessionId: session?.id ?? null };
 }
+
+/**
+ * A register TAKEN BY A PERSON: the one condition every "is it taken" reader adds to its AttendanceSession read. A
+ * register an attendance device started (no taker, R-2) is still due from its teacher; registersDue applied this
+ * alone, and the teacher's own lists counted any session as taken (TA-032).
+ */
+export const TAKEN_BY_A_PERSON = { takenByMembershipId: { not: null } } as const;
 
 /**
  * The registers a school expects today, and which of them are still to take.
@@ -304,7 +317,7 @@ export async function registersDue(
 
   // Taken by a person: a register an attendance device started (no taker) is still due (R-2, 5 Oct 2026).
   const sessions = await db.attendanceSession.findMany({
-    where: { schoolId, dateKey, classId: { in: expected }, takenByMembershipId: { not: null } },
+    where: { schoolId, dateKey, classId: { in: expected }, ...TAKEN_BY_A_PERSON },
     select: { classId: true },
   });
   const taken = new Set(sessions.map((s) => s.classId));

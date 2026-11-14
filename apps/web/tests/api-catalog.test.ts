@@ -256,8 +256,9 @@ describe("the /api routes outside /api/v1", () => {
 
   it("the register and the web's practice answer are catalogued, with the roles their handlers take", () => {
     const door = (method: string, path: string) => ENDPOINTS.find((e) => e.method === method && e.path === path);
-    expect(door("POST", "/api/attendance")?.access).toEqual(["TEACHER", "ADMIN"]);
-    expect(door("GET", "/api/attendance")?.access).toEqual(["TEACHER", "ADMIN"]);
+    // A principal named as register cover marks it (TA-031); registerDuty refuses one with no cover.
+    expect(door("POST", "/api/attendance")?.access).toEqual(["TEACHER", "ADMIN", "PRINCIPAL"]);
+    expect(door("GET", "/api/attendance")?.access).toEqual(["TEACHER", "ADMIN", "PRINCIPAL"]);
     expect(door("POST", "/api/practice/answer")?.access).toEqual(["STUDENT"]);
     // The sweep can write the register: a valid body from the fixture, not only the empty body's 422.
     expect(door("POST", "/api/attendance")?.sampleBody).toBeTypeOf("function");

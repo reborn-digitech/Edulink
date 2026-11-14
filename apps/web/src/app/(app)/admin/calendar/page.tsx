@@ -13,7 +13,7 @@ import { Badge } from "@/components/ui/badge";
 import { EmptyState } from "@/components/ui/states";
 import { YearPanel } from "./year-panel";
 import { TermsPanel } from "./terms-panel";
-import { termsOfYear } from "@/lib/terms";
+import { termAttachments, termsOfYear } from "@/lib/terms";
 import { EntryForm } from "./entry-form";
 import { EntryList } from "./entry-list";
 import { getT } from "@/lib/i18n/server";
@@ -65,6 +65,7 @@ export default async function CalendarPage({
 
   const current = years.find((year) => year.isCurrent) ?? null;
   const terms = current ? await termsOfYear(ctx.schoolId!, current.id, school.timezone) : [];
+  const attached = await termAttachments(ctx.schoolId!, terms.map((term) => term.id));
 
   // Staff leave for the next term or so. STAFF-ONLY BY CONSTRUCTION: it comes
   // from LeaveRequest, which no student or parent page reads, rather than from a
@@ -126,6 +127,9 @@ export default async function CalendarPage({
                     endDateKey: term.endDateKey,
                     current: term.current,
                     finished: term.finishedAt !== null,
+                    // What removing it unhooks, named in the confirm (TA-234).
+                    rounds: attached.get(term.id)?.rounds ?? 0,
+                    cards: attached.get(term.id)?.cards ?? 0,
                   }))}
                 />
               </div>

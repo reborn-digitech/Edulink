@@ -48,28 +48,67 @@ export type AbsenceFlag = {
   guardianCount: number;
 };
 
-type DayStatus = "PRESENT" | "LATE" | "ABSENT" | "EXCUSED";
-/** Worst first: a day on two registers takes the worse of its two marks. */
-const SEVERITY: Record<DayStatus, number> = { ABSENT: 3, EXCUSED: 2, LATE: 1, PRESENT: 0 };
-
-type MarkRow = { status: string; studentMembershipId: string; session: { dateKey: string } };
+/** The raw-query slice of the transaction client. */
+type RawTx = { $queryRaw<T>(query: TemplateStringsArray, ...values: unknown[]): Promise<T> };
 
 /**
- * One status per pupil per day. A child on two registers the same day — a
- * class register and a subject one — is absent once, not twice, and the
- * worse mark stands: ABSENT over EXCUSED over LATE over PRESENT.
+ * FOLDED IN THE DATABASE (TA-505). One status per pupil per day — a child on two
+ * registers the same day, a class register and a subject one, is absent once,
+ * not twice, and the worse mark stands: ABSENT over EXCUSED over LATE over
+ * PRESENT (severity 3, 2, 1, 0 in the CASE below). The page used to read every mark of
+ * the school for up to ninety days into the process as an object per mark, and
+ * the eight weeks again for the trend, on every view; now Postgres folds the
+ * days and answers one row per pupil (the flags) or per day (the trend).
+ * Children on the roll only (ON_ROLL: membership ACTIVE and not left).
  */
-function foldDays(records: MarkRow[]): Map<string, Map<string, DayStatus>> {
-  const byPupil = new Map<string, Map<string, DayStatus>>();
-  for (const r of records) {
-    const status = r.status as DayStatus;
-    if (!(status in SEVERITY)) continue;
-    const days = byPupil.get(r.studentMembershipId) ?? new Map<string, DayStatus>();
-    const held = days.get(r.session.dateKey);
-    if (held === undefined || SEVERITY[status] > SEVERITY[held]) days.set(r.session.dateKey, status);
-    byPupil.set(r.studentMembershipId, days);
-  }
-  return byPupil;
+async function pupilFolds(
+  schoolId: string,
+  fromKey: string,
+  toKey: string,
+  classId: string | null,
+): Promise<{ studentMembershipId: string; marks: number; attended: number; run: number }[]> {
+  return db.$tenantTransaction(async (raw) =>
+    (raw as unknown as RawTx).$queryRaw<{ studentMembershipId: string; marks: number; attended: number; run: number }[]>`
+      WITH days AS (
+        SELECT r."studentMembershipId" AS pupil, s."dateKey" AS day,
+               MAX(CASE r."status" WHEN 'ABSENT' THEN 3 WHEN 'EXCUSED' THEN 2 WHEN 'LATE' THEN 1 ELSE 0 END) AS sev
+        FROM "AttendanceRecord" r
+        JOIN "AttendanceSession" s ON s."id" = r."sessionId"
+        JOIN "Membership" m ON m."id" = r."studentMembershipId"
+        WHERE r."schoolId" = ${schoolId}
+          AND s."dateKey" BETWEEN ${fromKey} AND ${toKey}
+          AND r."status" IN ('PRESENT', 'LATE', 'ABSENT', 'EXCUSED')
+          AND m."status" = 'ACTIVE' AND m."leftAt" IS NULL
+          AND (${classId}::text IS NULL OR s."classId" = ${classId}::text)
+        GROUP BY 1, 2
+      ), per AS (
+        SELECT pupil, COUNT(*)::int AS marks, (COUNT(*) FILTER (WHERE sev IN (0, 1)))::int AS attended, MAX(day) FILTER (WHERE sev IN (0, 1)) AS last_in FROM days GROUP BY pupil
+      )
+      -- The run: ABSENT days after the last day present or late. An EXCUSED day is neither, so it is skipped, not a break.
+      SELECT per.pupil AS "studentMembershipId", per.marks, per.attended,
+             (SELECT COUNT(*) FROM days d WHERE d.pupil = per.pupil AND d.sev = 3 AND (per.last_in IS NULL OR d.day > per.last_in))::int AS run
+      FROM per`,
+  );
+}
+
+/** Pupil-days per school day, folded as pupilFolds folds them: one row per day. */
+async function dayFolds(schoolId: string, fromKey: string, toKey: string): Promise<{ day: string; marks: number; attended: number }[]> {
+  return db.$tenantTransaction(async (raw) =>
+    (raw as unknown as RawTx).$queryRaw<{ day: string; marks: number; attended: number }[]>`
+      WITH days AS (
+        SELECT r."studentMembershipId" AS pupil, s."dateKey" AS day,
+               MAX(CASE r."status" WHEN 'ABSENT' THEN 3 WHEN 'EXCUSED' THEN 2 WHEN 'LATE' THEN 1 ELSE 0 END) AS sev
+        FROM "AttendanceRecord" r
+        JOIN "AttendanceSession" s ON s."id" = r."sessionId"
+        JOIN "Membership" m ON m."id" = r."studentMembershipId"
+        WHERE r."schoolId" = ${schoolId}
+          AND s."dateKey" BETWEEN ${fromKey} AND ${toKey}
+          AND r."status" IN ('PRESENT', 'LATE', 'ABSENT', 'EXCUSED')
+          AND m."status" = 'ACTIVE' AND m."leftAt" IS NULL
+        GROUP BY 1, 2
+      )
+      SELECT day, COUNT(*)::int AS marks, (COUNT(*) FILTER (WHERE sev IN (0, 1)))::int AS attended FROM days GROUP BY day`,
+  );
 }
 
 /** Only children on the roll: membership ACTIVE and not left. Leavers and the suspended are nobody's flag. */
@@ -93,42 +132,15 @@ export async function absenceFlags(
   const toKey = todayKey(school.timezone);
   const fromKey = addDaysToKey(toKey, -days);
 
-  const records = await db.attendanceRecord.findMany({
-    where: {
-      schoolId,
-      student: ON_ROLL,
-      session: {
-        dateKey: { gte: fromKey, lte: toKey },
-        ...(opts.classId ? { classId: opts.classId } : {}),
-      },
-    },
-    select: {
-      status: true,
-      studentMembershipId: true,
-      session: { select: { dateKey: true } },
-    },
-  });
-  if (records.length === 0) return [];
+  const folds = await pupilFolds(schoolId, fromKey, toKey, opts.classId ?? null);
+  if (folds.length === 0) return [];
 
   const flaggedIds: string[] = [];
   const computed = new Map<string, { percent: number; marks: number; run: number }>();
-  for (const [membershipId, byDay] of foldDays(records)) {
-    const dayKeys = [...byDay.keys()].sort();
-    let attended = 0;
-    for (const key of dayKeys) {
-      const status = byDay.get(key)!;
-      if (status === "PRESENT" || status === "LATE") attended += 1;
-    }
-    // The run: trailing ABSENT days, newest first. An EXCUSED day is neither
-    // absent nor present — the school already knows — so it is skipped, not a
-    // break; a PRESENT or LATE day ends the run.
-    let run = 0;
-    for (let i = dayKeys.length - 1; i >= 0; i--) {
-      const status = byDay.get(dayKeys[i]!)!;
-      if (status === "ABSENT") run += 1;
-      else if (status !== "EXCUSED") break;
-    }
-    const marks = dayKeys.length;
+  for (const { studentMembershipId: membershipId, marks, attended, run } of folds) {
+    // The run (counted in pupilFolds): trailing ABSENT days, newest first. An
+    // EXCUSED day is neither absent nor present — the school already knows — so
+    // it is skipped, not a break; a PRESENT or LATE day ends the run.
     const percent = Math.round((attended * 100) / marks);
     computed.set(membershipId, { percent, marks, run });
     const chronic = marks >= MIN_MARKS && percent < CHRONIC_THRESHOLD_PERCENT;
@@ -255,14 +267,8 @@ export async function attendanceTrend(ctx: ActiveContext): Promise<TrendPoint[]>
   const toKey = todayKey(school.timezone);
   const fromKey = addDaysToKey(toKey, -7 * 8);
 
-  const records = await db.attendanceRecord.findMany({
-    where: { schoolId, student: ON_ROLL, session: { dateKey: { gte: fromKey, lte: toKey } } },
-    select: { status: true, studentMembershipId: true, session: { select: { dateKey: true } } },
-  });
-  const pupilDays: { dateKey: string; status: DayStatus }[] = [];
-  for (const byDay of foldDays(records).values()) {
-    for (const [dateKey, status] of byDay) pupilDays.push({ dateKey, status });
-  }
+  // One row per school day, folded in the database (TA-505).
+  const perDay = await dayFolds(schoolId, fromKey, toKey);
 
   const points: TrendPoint[] = [];
   for (let week = 7; week >= 0; week--) {
@@ -270,10 +276,10 @@ export async function attendanceTrend(ctx: ActiveContext): Promise<TrendPoint[]>
     const end = addDaysToKey(toKey, -7 * week);
     let attended = 0;
     let marks = 0;
-    for (const d of pupilDays) {
-      if (d.dateKey > start && d.dateKey <= end) {
-        marks += 1;
-        if (d.status === "PRESENT" || d.status === "LATE") attended += 1;
+    for (const d of perDay) {
+      if (d.day > start && d.day <= end) {
+        marks += d.marks;
+        attended += d.attended;
       }
     }
     points.push({

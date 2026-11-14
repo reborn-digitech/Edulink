@@ -14,7 +14,8 @@ import type { ActiveContext } from "./session";
  * the notice is noise and the teacher wondering is wasted. So a guardian
  * (or the pupil, for themselves) files one note per day with a coded
  * reason, the register shows it beside the pupil's row for that day, and
- * the notice that day's absence would have sent is not sent.
+ * the notice that day's absence would have sent is not sent — for a note a
+ * guardian wrote; a pupil's own note leaves the guardians' notice on (TA-028).
  *
  * WHO FILES: an active guardian of the child (assertGuardianAccess — the
  * stand-in teacher is one too, and the row says who filed it), or the pupil
@@ -92,6 +93,15 @@ export async function fileAbsenceNote(ctx: ActiveContext, studentMembershipId: s
   const today = todayKey(filer.timezone, now);
   if (input.dateKey < today) throw new AccessError("familyCare.absencePastDay");
   if (input.dateKey > addDaysToKey(today, NOTE_DAYS_AHEAD)) throw new AccessError("familyCare.absenceTooFar", "FORBIDDEN", { days: NOTE_DAYS_AHEAD });
+  // REPLACING IS THE AUTHOR'S, AND ONLY UNTIL THE REGISTER HAS MARKED THE PUPIL (TA-545), the rule
+  // deleteAbsenceNote keeps: another filer replacing a note took it over (a pupil's OTHER over a guardian's
+  // ILLNESS, the register then reading byFamily false), and after the marking the note is part of what happened.
+  const existing = await db.absenceNote.findFirst({ where: { schoolId: filer.schoolId, studentMembershipId, dateKey: input.dateKey }, select: { authorUserId: true } });
+  if (existing) {
+    if (existing.authorUserId !== ctx.user.id) throw new AccessError("familyCare.absenceNoteSomeoneElse");
+    const marked = await db.attendanceRecord.findFirst({ where: { studentMembershipId, session: { dateKey: input.dateKey } }, select: { id: true } });
+    if (marked) throw new AccessError("familyCare.absenceAlreadyMarked");
+  }
   const data = { reason: input.reason, text: input.text || null, authorUserId: ctx.user.id, authorRole: filer.authorRole };
   const note = await forSchool(filer.schoolId, () =>
     db.absenceNote.upsert({

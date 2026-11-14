@@ -306,6 +306,9 @@ export async function leaveBalanceFor(schoolId: string, membershipId: string): P
   let used = 0;
   let pending = 0;
   for (const r of requests) {
+    // A stored request whose day is not a day (before applyForLeave checked it, TA-033) counts nothing rather than
+    // throwing for the whole desk.
+    if (!isDateKey(r.fromDateKey) || !isDateKey(r.toDateKey)) continue;
     const n = leaveDays(r.fromDateKey > from ? r.fromDateKey : from, r.toDateKey < to ? r.toDateKey : to, closed, week);
     if (r.status === "APPROVED") used += n;
     else pending += n;

@@ -5,6 +5,7 @@ import { requireRole } from "@/lib/tenancy";
 import { classReach, inGradeOrder, workInReach } from "@/lib/teaching-reach";
 import { db } from "@/lib/db";
 import { todayKey } from "@/lib/dates";
+import { TAKEN_BY_A_PERSON } from "@/lib/attendance";
 import { Card } from "@/components/ui/card";
 import { EmptyState } from "@/components/ui/states";
 import { Badge } from "@/components/ui/badge";
@@ -64,7 +65,8 @@ export default async function TeacherClassesPage() {
       orderBy: { name: "asc" },
     }),
     db.attendanceSession.findMany({
-      where: { schoolId: ctx.schoolId, dateKey, classId: { in: classIds } },
+      // Taken by a person: a register a device started is still to take (TA-032).
+      where: { schoolId: ctx.schoolId, dateKey, classId: { in: classIds }, ...TAKEN_BY_A_PERSON },
       select: { classId: true },
     }),
   ]);
