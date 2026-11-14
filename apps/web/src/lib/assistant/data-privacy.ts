@@ -8,11 +8,7 @@
  * asking for a record. Pure: tests/assistant-data.test.ts.
  */
 import type { NameEntry } from "./strip";
-import { expandLexicon } from "./strip";
-
-/** What a person's record is made of, in en, hi and mr: what another person's name beside it asks for. */
-const RECORD_WORDS =
-  /\b(?:marks?|scores?|results?|report ?cards?|grades?|percent(?:age)?|rank|attendance|absent|absences?|present|fees?|dues|paid|homework|assignments?|health|incidents?|address|phone|number|record|certificates?|timetable|exams?|leave)\b|अंक|नंबर|परिणाम|रिपोर्ट कार्ड|हाज़िरी|हाजिरी|उपस्थिति|फीस|शुल्क|गृहकार्य|पता|फोन|गुण|मार्क्स|निकाल|उपस्थिती|हजेरी|फी(?![ऀ-ॿ])|पत्ता|प्रगती/;
+import { bareNameSignalled, expandLexicon, RECORD_WORDS } from "./strip";
 
 function pattern(name: string): RegExp {
   return new RegExp(`(?<![\\p{L}\\p{M}\\p{N}])${name.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}(?![\\p{L}\\p{M}\\p{N}])`, "iu");
@@ -28,24 +24,22 @@ export function asksAnotherPersonsRecord(question: string, lexicon: NameEntry[],
   for (const entry of expandLexicon(lexicon)) {
     if (entry.kind !== "PERSON") continue;
     if (own.includes(entry.name.toLowerCase())) continue;
-    if (namesThePerson(question, entry.name)) return true;
+    if (namesThePerson(question, entry.name, lexicon)) return true;
   }
   return false;
 }
 
 /**
- * TA-018: a one-word name that is itself a record word ("Mark" beside "How do I mark attendance?") names the person only
- * where it reads as a name: with a possessive ("Mark's marks"), or capitalised where a sentence does not begin ("Was
- * Mark absent?"). Every other name, as before, wherever it stands. Pure.
+ * TA-018 (decision 0005 as amended on 14 November 2026): a whole name names the person wherever it stands, as before; a
+ * bare given name (one word: "Shivaji" of "Shivaji Jadhav", "Mark" of "Mark Dsouza") only with a second signal
+ * (strip.ts bareNameSignalled): the full name in the question, a shape such as "my friend X" or "X ma'am", or a
+ * possessive beside a record word ("Mark's marks", "Kiara ki attendance", "the fee for Kiara"). "Which exam has the
+ * chapter on Shivaji?" and "How do I mark attendance?" ask for nobody's record. Pure.
  */
-function namesThePerson(question: string, name: string): boolean {
-  if (/\s/.test(name) || !RECORD_WORDS.test(name.toLowerCase())) return pattern(name).test(question);
+function namesThePerson(question: string, name: string, lexicon: NameEntry[]): boolean {
+  if (/\s/.test(name)) return pattern(name).test(question);
   for (const m of question.matchAll(new RegExp(pattern(name).source, "giu"))) {
-    const at = m.index ?? 0;
-    const word = m[0];
-    if (/^['’]s(?![\p{L}\p{M}\p{N}])/u.test(question.slice(at + word.length))) return true;
-    const before = question.slice(0, at).trimEnd();
-    if (word[0] !== word[0]!.toLowerCase() && before !== "" && !/[.!?।]$/.test(before)) return true;
+    if (bareNameSignalled(question, m.index ?? 0, m[0], lexicon)) return true;
   }
   return false;
 }

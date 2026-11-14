@@ -1,6 +1,6 @@
 # 0005 — The assistant: the model endpoint as a destination for what a person types
 
-Status: accepted for the local phases (2026-10-10, Phase B of [the assistant plan](../plans/assistant.md)); the hosted provider (Phase E) is decided by the amendment this file will carry then, never by a value someone sets first. Extends [0002](0002-minors-data-policy.md): the model endpoint joins that file's list of third-party destinations the server talks to. Governs `apps/web/src/lib/assistant/*`, `assistant-env.ts`, `assistant-model.ts`, `assistant-retrieval.ts`, the `Assistant*` tables, `School.helplineText`, `Assignment.assistantAnswers`, the `ASSISTANT` module and the `/api/v1/assistant`, `/api/v1/admin/assistant`, `/api/v1/family/assistant` and `/api/v1/teacher/assignments/{id}/assistant` doors.
+Status: accepted for the local phases (2026-10-10, Phase B of [the assistant plan](../plans/assistant.md)); the hosted provider (Phase E) is decided by the amendment this file will carry then, never by a value someone sets first; amended 14 November 2026 (what is stripped from a public passage and from a question, below). Extends [0002](0002-minors-data-policy.md): the model endpoint joins that file's list of third-party destinations the server talks to. Governs `apps/web/src/lib/assistant/*`, `assistant-env.ts`, `assistant-model.ts`, `assistant-retrieval.ts`, the `Assistant*` tables, `School.helplineText`, `Assignment.assistantAnswers`, the `ASSISTANT` module and the `/api/v1/assistant`, `/api/v1/admin/assistant`, `/api/v1/family/assistant` and `/api/v1/teacher/assignments/{id}/assistant` doors.
 
 ## Decision
 
@@ -11,7 +11,7 @@ The platform has an assistant with two jobs and nothing else: **platform help** 
 | On or off for a new tenant | **On, for every school and college** (the owner's decision of 8 October). The `ASSISTANT` module is in both default lists and the migration `20261010041003_assistant_service` switched it on for every tenant that existed. The office switches it off on its card (`POST /api/v1/admin/assistant/settings`, which switches the module: one switch, no second column). |
 | The guardian's say | **An opt-out per child** (`POST /api/v1/family/assistant/opt-out`; any one active guardian may turn it off or back on), and a **one-time notice** to every active guardian the first time the pupil opens a conversation, naming what it answers, the thirty days and where the opt-out is. Counsel reads under the DPDP Act whether a minor's use needs verifiable consent instead; if it does, the opt-out becomes an opt-in with the same row (`AssistantChildSetting`). |
 | Where a question goes | To the **embedding endpoint** (always: the search needs the question's vector) and, only when the search found something in the person's scope, to the **chat endpoint** for a one-word classification and then the answer. Below both thresholds nothing is sent to the chat model. Both endpoints are `ASSISTANT_*_URL`: the owner's machine (127.0.0.1) in Phases A to D. |
-| What is stripped first | Every name the person's school holds (its members, the school itself, the person's own, which becomes `[YOU]`), the shapes "my friend X" and "X ma'am", e-mail addresses, phone numbers and any run of ten or more digits (an Aadhaar or a PEN typed by mistake), the platform's ids, certificate and admission codes, and links — from the question, from every passage, and from every door's answer the assistant reads for the person. The conversation row keeps the person's own words for them to re-read; the model sees placeholders (`AssistantMessage.textForModel`). Names the school does not hold and no shape gives away are not found: the answer gate is the second line. |
+| What is stripped first | Every name the person's school holds (its members, the school itself, the person's own, which becomes `[YOU]`), the shapes "my friend X" and "X ma'am", e-mail addresses, phone numbers and any run of ten or more digits (an Aadhaar or a PEN typed by mistake), the platform's ids, certificate and admission codes, and links — from the question, from every passage, and from every door's answer the assistant reads for the person. The conversation row keeps the person's own words for them to re-read; the model sees placeholders (`AssistantMessage.textForModel`). Names the school does not hold and no shape gives away are not found: the answer gate is the second line. Amended 14 November 2026 (below): a public textbook or help passage loses only its contacts and links, and in a question a bare given name is a person only with a second signal. |
 | What the model may read of the tenant | Nothing directly. Only the allow-list of cheap GET doors in `tools.ts` (my timetable, my exams, my assignments; a child's timetable, exams, work, attendance, fees; a teacher's timetable, the registers due, the assignments; the office's syllabus coverage; a college teacher's lectures), chosen in code from the question, called with the person's own session through the door's own handler (the tenant fence, the role gate and the module gate unchanged), stripped, cut to 2,500 characters, counted on the heavy-read budget, and given to the model as quoted data. |
 | What is kept, and for how long | Conversations and their messages: **thirty days after the last message** (`RETENTION_ASSISTANT_DAYS`, 1 to 365), swept by the nightly `retention:sweep`, deletable by the person at any time. **Never in the audit log**: the use is counted per person per school day in `AssistantUsage` (questions, answers, hints, refusals, counsellor routes, model calls, tokens, feedback), kept sixty-two days (`RETENTION_ASSISTANT_USAGE_DAYS`). The audit log records the office's switch and helpline, a guardian's opt-out, a teacher's per-assignment switch, the counsellor route and the notice, each without a word anyone typed. |
 | What the school sees | Counts only, on its card (`GET /api/v1/admin/assistant/usage`): the month's questions, answers, hints, refusals, counsellor routes, helpful and not, people, tokens against the budget. Never a pupil's words (plan §8.11). |
@@ -27,7 +27,7 @@ The platform has an assistant with two jobs and nothing else: **platform help** 
 | 2 | A deterministic gate before the model: the refusal table (twelve categories, en/hi/mr), injection, then a one-word classifier forced by a grammar; anything else is REFUSE | `refusals.ts`, `gate.ts`, `prompt.ts` | `tests/assistant-refusals.test.ts` (a case per category per language), `tests/assistant-gate.test.ts` |
 | 3 | A gate after the model: the same tables and classifier on the answer; no link, e-mail, phone number, address, other person's name or foreign placeholder; citations only to retrieved passages | `gateAnswer` in `gate.ts`, `answerProblems` in `strip.ts` | `tests/assistant-gate.test.ts`, `tests/assistant-strip.test.ts` |
 | 4 | The model never reads tenant data except the allow-listed doors, called as the person | `tools.ts`, `policy.ts` | `tests/assistant-policy.test.ts` (every tool a door the role may pass) |
-| 5 | Everything stripped in; the row keeps the original | `strip.ts`, `lexicon.ts`, `service.ts` | `tests/assistant-strip.test.ts`, `tests/assistant-service.test.ts` |
+| 5 | Everything stripped in (a public passage: its contacts and links; a bare given name in a question: with a second signal, since 14 November 2026); the row keeps the original | `strip.ts`, `lexicon.ts`, `service.ts` | `tests/assistant-strip.test.ts`, `tests/assistant-service.test.ts` |
 | 6 | Caps, the kill switch, counts not text, retention, the opt-out, the notice | `config.ts`, `usage.ts`, `retention.ts`, `service.ts` | `tests/assistant-service.test.ts`, `tests/retention.test.ts` |
 | 7 | The assessment rule: an open sitting closes the topic; a hand-in gets a hint, the worked answer on the same question asked again, the teacher's switch | `assessment-rule.ts`, `assessment.ts` | `tests/assistant-assessment.test.ts`, `tests/assistant-service.test.ts` |
 | 8 | Injection is data wherever it arrives: refused on a question, cut out of a passage or a door's answer, framed as quoted data in the prompt | `refusals.ts`, `prompt.ts` | `tests/assistant-refusals.test.ts`, `tests/assistant-service.test.ts` |
@@ -38,3 +38,36 @@ The platform has an assistant with two jobs and nothing else: **platform help** 
 - NCERT's published terms bar use of its online books "as a part of digital content packages or software" (Phase A's manifests carry the text): counsel reads them before any school sees a tutor answer. A citation links to the publisher's own PDF and page; no passage is reproduced beyond a sentence or two.
 - The counsellor route tells a named adult that a named pupil may be struggling. Whether a school wants that sent to the head when it has no counsellor on its staff record is the school's choice to make on its staff record; the code sends it to the head today.
 - The hosted provider (Phase E): the amendment names the host, its retention terms and the region before the two variables change.
+
+## Amendment of 14 November 2026 — the book's names are the book's
+
+The testing analysis of 13 November 2026 (TA-018) found that the stripping above took a member's given name out of
+everything at that school: with a pupil or teacher called Shivaji, Krishna, Ganga or Mark, every textbook and help
+passage, and every question, read `[PERSON_n]` where the word stood, so the tutor could not speak of Shivaji, and
+"How do I mark attendance?" was refused as another person's record. The answer gate was repaired first (it allows a
+name the passages print as written, 2656c132); what the model is sent was this decision's, and asked, the owner chose
+the recommendation put to them, on 14 November 2026:
+
+**Public textbook and help passages go to the model as written, with only contacts and links removed. In a question,
+a bare given name counts as a person only with a second signal: the full name, a shape like "my friend X" or
+"X ma'am", or a possessive beside a record word. Full names, and questions about another person's record, are
+stripped or refused as before.**
+
+How it is built (`stripContactsAndLinks`, `stripQuestion` and `bareNameSignalled` in `apps/web/src/lib/assistant/strip.ts`,
+`asksAnotherPersonsRecord` in `data-privacy.ts`, the passages and the question in `service.ts`):
+
+- A curriculum or help passage loses its e-mail addresses, phone numbers (any run of ten or more digits) and links,
+  which become `[EMAIL_n]`, `[PHONE_n]` and `[LINK_n]`, and nothing else: the names it prints, "Gandhi ji", and its
+  own codes and numbers reach the model as written, and the answer gate allows what the model was given.
+- A bare given name is one word of the lexicon: the given name of a member's full name, or a member's one-word name,
+  the asker's own included. In the person's question (as asked, a continued question's root, a follow-up's earlier
+  question, the guardian's question with their own child as "your child", and the evaluation's preview) it is
+  replaced only with a second signal; otherwise it is left as typed.
+- The second signals, as read: a full name of the lexicon that begins with it anywhere in the question; "my friend X"
+  and the other shapes of "my …" and "X ma'am" in any case; a possessive (X's, X ki/ka/ke, X के/का/की, X चा/ची/चे/च्या,
+  of X, for X) while the question holds a word of a person's record (the one list, `RECORD_WORDS`, anywhere in the
+  question, as "beside" has always been read there). Capitals are no signal, so "Was Mark absent today?" names nobody;
+  "What are Mark's marks?", "the fee for Kiara" and "What are Mark Dsouza marks?" are refused as before.
+- A full name, the shapes, ids and codes are stripped from a question as before, and a door's answer, an exam summary
+  and every other text the model reads of the tenant is stripped with the whole lexicon as before: the amendment
+  reaches public passages and the bare given name in a question, nothing else.

@@ -8,6 +8,11 @@
  * school's name, the people of their school), plus the shapes "my friend Asha", "Asha ma'am". A name
  * the lexicon does not hold and no shape gives away is not found: that is the honest limit, and the
  * answer gate's own check is the second line. Pure: tests/assistant-strip.test.ts.
+ *
+ * TA-018 (decision 0005 as amended on 14 November 2026): a public textbook or help passage is not stripped of names;
+ * it goes to the model as written with only contacts and links taken out (stripContactsAndLinks). And in a question
+ * (stripQuestion) a bare given name of the lexicon counts as a person only with a second signal (bareNameSignalled):
+ * "Who was Shivaji?" keeps the book's Shivaji though a pupil is called Shivaji Jadhav.
  */
 
 export type NameKind = "SELF" | "PERSON" | "SCHOOL";
@@ -38,6 +43,21 @@ const NOT_A_NAME = new Set(["said", "says", "told", "asked", "and", "is", "was",
 const RELATION_BEFORE = /\b(?:my|our)\s+(?:friend|classmate|teacher|brother|sister|cousin|neighbou?r|sir|madam|bhaiya|didi|tai|dada|mentor)\s+([A-Z][a-z]{2,}(?:\s+[A-Z][a-z]{2,})?)/g;
 const HONORIFIC_AFTER = /\b([A-Z][a-z]{2,}(?:\s+[A-Z][a-z]{2,})?)\s+(?:sir|madam|ma'am|maam|miss|teacher|ji|tai|dada)\b/g;
 
+/**
+ * What a person's record is made of, in en, hi and mr: what another person's name beside it asks for (data-privacy.ts),
+ * and the record a possessive must stand beside for a bare given name in a question to be a person (TA-018). Kept here
+ * since 14 November 2026 so that both read the one list.
+ */
+export const RECORD_WORDS =
+  /\b(?:marks?|scores?|results?|report ?cards?|grades?|percent(?:age)?|rank|attendance|absent|absences?|present|fees?|dues|paid|homework|assignments?|health|incidents?|address|phone|number|record|certificates?|timetable|exams?|leave)\b|अंक|नंबर|परिणाम|रिपोर्ट कार्ड|हाज़िरी|हाजिरी|उपस्थिति|फीस|शुल्क|गृहकार्य|पता|फोन|गुण|मार्क्स|निकाल|उपस्थिती|हजेरी|फी(?![ऀ-ॿ])|पत्ता|प्रगती/;
+
+/** TA-018: the shapes of RELATION_BEFORE and HONORIFIC_AFTER, read beside one word of the lexicon in any case. */
+const RELATION_JUST_BEFORE = /(?:^|[^\p{L}\p{M}\p{N}])(?:my|our)\s+(?:friend|classmate|teacher|brother|sister|cousin|neighbou?r|sir|madam|bhaiya|didi|tai|dada|mentor)\s+$/iu;
+const HONORIFIC_JUST_AFTER = /^\s+(?:sir|madam|ma'am|maam|miss|teacher|ji|tai|dada)(?![\p{L}\p{M}\p{N}])/iu;
+/** TA-018: a possessive after the name (Asha's, Asha ki, आशा के, आशा चे) or before it (the marks of Asha, the fee for Asha). */
+const POSSESSIVE_AFTER = /^(?:['’]s?(?![\p{L}\p{M}\p{N}])|\s+(?:ka|kaa|ki|kee|ke|cha|chi|che|chya|का|के|की|चा|ची|चे|च्या|चं)(?![\p{L}\p{M}\p{N}]))/iu;
+const POSSESSIVE_BEFORE = /(?:^|[^\p{L}\p{M}\p{N}])(?:of|for)\s+$/iu;
+
 function escapeRegExp(s: string): string {
   return s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 }
@@ -67,7 +87,7 @@ export function expandLexicon(entries: NameEntry[]): NameEntry[] {
  * [PERSON_1]…, [EMAIL_1]…, [PHONE_1]…, [LINK_1]…, [ID_1]…, [CODE_1]…. The same original gets the same
  * placeholder throughout.
  */
-export function stripIdentifiers(text: string, lexicon: NameEntry[] = []): Stripped {
+export function stripIdentifiers(text: string, lexicon: NameEntry[] = [], options: { question?: boolean } = {}): Stripped {
   const replacements: Replacement[] = [];
   const counters: Record<string, number> = {};
   const placeholderFor = (original: string, kind: Replacement["kind"]): string => {
@@ -88,7 +108,9 @@ export function stripIdentifiers(text: string, lexicon: NameEntry[] = []): Strip
   out = out.replace(LONG_NUMBER, (m) => placeholderFor(m, "PHONE"));
   out = out.replace(CODE_SEPARATED, (m) => (isCode(m) ? placeholderFor(m, "CODE") : m));
   for (const entry of expandLexicon(lexicon)) {
-    out = out.replace(namePattern(entry.name), (m) => placeholderFor(m, entry.kind));
+    // TA-018: in a question, a bare given name (one word) is a person only with a second signal.
+    const bare = options.question === true && entry.kind !== "SCHOOL" && !/\s/.test(entry.name);
+    out = out.replace(namePattern(entry.name), (m: string, at: number, current: string) => (bare && !bareNameSignalled(current, at, m, lexicon, text) ? m : placeholderFor(m, entry.kind)));
   }
   const shaped = (m: string, name: string) => {
     const first = name.split(" ")[0]!;
@@ -98,6 +120,56 @@ export function stripIdentifiers(text: string, lexicon: NameEntry[] = []): Strip
   out = out.replace(RELATION_BEFORE, shaped);
   out = out.replace(HONORIFIC_AFTER, shaped);
   return { text: out, replacements };
+}
+
+/**
+ * TA-018 (decision 0005 as amended on 14 November 2026): the person's own question as the model reads it. Full names,
+ * the shapes, contacts, links, ids and codes go as for any text; a bare given name of the lexicon ("Shivaji" of
+ * "Shivaji Jadhav", or a one-word name) is a person only with a second signal (bareNameSignalled), and otherwise is
+ * left as typed: it is as likely the book's Shivaji or the verb "mark" as the pupil. Pure.
+ */
+export function stripQuestion(text: string, lexicon: NameEntry[] = []): Stripped {
+  return stripIdentifiers(text, lexicon, { question: true });
+}
+
+/**
+ * TA-018: does the one-word name `word`, found at `at` in `current`, stand as a person? Only with a second signal:
+ * a full name of the lexicon that begins with it is in the question (`original`), the shape "my friend X" or
+ * "X ma'am" in any case, or a possessive (X's, X ki, X के, X चे, of X, for X) while the question holds a word of a
+ * person's record (RECORD_WORDS). Capitals are no signal: a question starts a name and a sentence alike. Pure.
+ */
+export function bareNameSignalled(current: string, at: number, word: string, lexicon: NameEntry[], original: string = current): boolean {
+  const lower = word.toLowerCase();
+  const fullNames = lexicon.map((e) => e.name.trim().replace(/\s+/g, " ")).filter((n) => /\s/.test(n) && n.split(" ")[0]!.toLowerCase() === lower);
+  if (fullNames.some((n) => namePattern(n).test(original))) return true;
+  const before = current.slice(0, at);
+  const after = current.slice(at + word.length);
+  if (RELATION_JUST_BEFORE.test(before) || HONORIFIC_JUST_AFTER.test(after)) return true;
+  return (POSSESSIVE_AFTER.test(after) || POSSESSIVE_BEFORE.test(before)) && RECORD_WORDS.test(original.toLowerCase());
+}
+
+/**
+ * TA-018 (decision 0005 as amended on 14 November 2026): a public textbook or help passage as the model reads it, as
+ * written with only contacts and links taken out: e-mail addresses, phone numbers (any run of ten or more digits)
+ * and links become [EMAIL_n], [PHONE_n] and [LINK_n]. Names, shapes, ids and codes are the passage's own. Pure.
+ */
+export function stripContactsAndLinks(text: string): string {
+  const counters: Record<string, number> = {};
+  const seen = new Map<string, string>();
+  const placeholderFor = (original: string, kind: "EMAIL" | "PHONE" | "LINK"): string => {
+    const key = `${kind}:${original.toLowerCase()}`;
+    let placeholder = seen.get(key);
+    if (!placeholder) {
+      placeholder = `[${kind}_${(counters[kind] = (counters[kind] ?? 0) + 1)}]`;
+      seen.set(key, placeholder);
+    }
+    return placeholder;
+  };
+  return text
+    .replace(EMAIL, (m) => placeholderFor(m, "EMAIL"))
+    .replace(URL_FULL, (m) => placeholderFor(m, "LINK"))
+    .replace(URL_BARE, (m) => placeholderFor(m, "LINK"))
+    .replace(LONG_NUMBER, (m) => placeholderFor(m, "PHONE"));
 }
 
 /** The person's own name put back where the model wrote [YOU]; every other placeholder stays (and the answer gate refuses it). */

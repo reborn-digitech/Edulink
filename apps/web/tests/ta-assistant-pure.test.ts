@@ -192,7 +192,10 @@ describe("a member's given name", () => {
     expect(asksAnotherPersonsRecord("Mark attendance for 9A", lexicon)).toBe(false);
     // Asked about Mark's own record, still refused.
     expect(asksAnotherPersonsRecord("What are Mark's marks in maths?", lexicon)).toBe(true);
-    expect(asksAnotherPersonsRecord("Was Mark absent today?", lexicon)).toBe(true);
+    // Decision 0005 as amended on 14 November 2026: capitals are no second signal, so a bare "Mark" beside "absent" names
+    // nobody (tests/ta-decision-018-passages-as-written.test.ts); with a possessive or the full name it is refused.
+    expect(asksAnotherPersonsRecord("Was Mark absent today?", lexicon)).toBe(false);
+    expect(asksAnotherPersonsRecord("Was Mark's attendance low today?", lexicon)).toBe(true);
     expect(asksAnotherPersonsRecord("What are Mark Dsouza marks?", lexicon)).toBe(true);
     // Any other name beside a record word, as before.
     expect(asksAnotherPersonsRecord("what are kiara's marks", [{ name: "Kiara Bhosale", kind: "PERSON" }])).toBe(true);

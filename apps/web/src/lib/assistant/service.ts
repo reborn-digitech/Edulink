@@ -58,7 +58,7 @@ import {
 } from "./config";
 import { corpusBoardFor, gradeBandOf, policyFor } from "./policy";
 import { citedNumbers, gateAnswer, gateQuestion, renumberCitations, tableVerdict } from "./gate";
-import { answerProblems, stripIdentifiers, restoreSelf, type NameEntry } from "./strip";
+import { answerProblems, stripIdentifiers, stripQuestion, stripContactsAndLinks, restoreSelf, type NameEntry } from "./strip";
 import { withoutInjectedLines } from "./refusals";
 import { NCERT_NOTE, answerKindFor, onPageNote, pageNameNote, helpKind, helpMessages, questionShape, tutorMessages, asksExamScope } from "./prompt";
 import { detectLanguage } from "./language";
@@ -591,7 +591,8 @@ export async function ask(
 
   const original = input.text.trim();
   const lexicon = await nameLexicon({ userId: asker.userId, schoolId: asker.schoolId });
-  const stripped = stripIdentifiers(original, lexicon);
+  // TA-018: a bare given name in the question is a person only with a second signal (decision 0005 as amended).
+  const stripped = stripQuestion(original, lexicon);
   // The conversation's last two turns, for the second-ask rule (§9.4).
   const previous = await db.assistantMessage.findMany({ where: { conversationId: conv.id }, orderBy: { createdAt: "desc" }, take: 2, select: { id: true, role: true, textForModel: true, text: true, hint: true, matchedAssignmentId: true, citationsJson: true, mode: true, verdict: true } });
   // "GO ON" (Vidura pass 1): the last answer stopped at its cap and the person pressed "Go on", or typed it. The question
@@ -620,7 +621,7 @@ export async function ask(
       school,
       language,
       original: askedText,
-      stripped: goOn ? (goOn.root.textForModel ?? stripIdentifiers(goOn.root.text, lexicon).text) : stripped.text,
+      stripped: goOn ? (goOn.root.textForModel ?? stripQuestion(goOn.root.text, lexicon).text) : stripped.text,
       lexicon,
       previous,
       deps,
@@ -777,7 +778,7 @@ async function answerQuestion(a: AnswerInput): Promise<Outcome> {
   const elsewhere = (dataCtx as { otherSchoolChild?: { name: string; school: string } | null } | null)?.otherSchoolChild ?? null;
   if (elsewhere) return { ...fixed("OUT_OF_SCOPE", { scope: "RECORDS" }), text: translator(language)("assistantService.otherSchoolChild", { child: elsewhere.name, school: elsewhere.school }) };
   if (asksAnotherPersonsRecord(a.original, a.lexicon, dataCtx?.childNames ?? [])) return fixed("PERSONAL_DATA");
-  if (dataCtx?.childNames.length) a.stripped = stripIdentifiers(ownChildrenAsWords(a.original, dataCtx.childNames), a.lexicon).text;
+  if (dataCtx?.childNames.length) a.stripped = stripQuestion(ownChildrenAsWords(a.original, dataCtx.childNames), a.lexicon).text;
   // "Explain this" (pass 2) names the child whose row it is: every door of the question reads that child.
   if (dataCtx && a.about?.childId && dataCtx.children.some((c) => c.id === a.about!.childId)) dataCtx.childId = a.about.childId;
   // The window of days asked about (pass 2, when.ts), in the school's own calendar.
@@ -935,7 +936,7 @@ async function answerQuestion(a: AnswerInput): Promise<Outcome> {
   // A follow-up is read beside the question before it ("and how many of those are paid" alone is about nothing):
   // the classifier and the help prompt see both, the person's earlier words as stripped as these.
   const before = a.previous.find((m) => m.role === "USER");
-  const previousQuestion = previousDoors.length && before ? (before.textForModel ?? stripIdentifiers(before.text, a.lexicon).text) : null;
+  const previousQuestion = previousDoors.length && before ? (before.textForModel ?? stripQuestion(before.text, a.lexicon).text) : null;
   const chosen = dataCtx ? chooseDoors({ hits: doorHits, language, ctx: dataCtx, hints, previous: previousDoors }) : [];
 
   // 3. The gate before the model.
@@ -1022,14 +1023,14 @@ async function answerQuestion(a: AnswerInput): Promise<Outcome> {
     const boardNote: string | null = found.note;
     const laterClass: string | null = found.later;
     // Pass 4: an encyclopedia article (the college sources) is headed by its title and section, with no class or page.
-    const passages = curriculum.slice(0, CURRICULUM_PASSAGES).map((h, i) => ({ n: i + 1, heading: h.attribution ? `${h.board} article "${h.attribution.title}"${h.section ? `, ${h.section}` : ""}` : `${h.board}, "${h.book}" (class ${h.grade}), ${h.headingPath.join(" › ") || h.chapter || ""}, page ${h.pageStart}`, text: withoutInjectedLines(stripIdentifiers(h.text.slice(0, 1800), a.lexicon).text) }));
+    const passages = curriculum.slice(0, CURRICULUM_PASSAGES).map((h, i) => ({ n: i + 1, heading: h.attribution ? `${h.board} article "${h.attribution.title}"${h.section ? `, ${h.section}` : ""}` : `${h.board}, "${h.book}" (class ${h.grade}), ${h.headingPath.join(" › ") || h.chapter || ""}, page ${h.pageStart}`, text: withoutInjectedLines(stripContactsAndLinks(h.text.slice(0, 1800))) }));
     citationsByNumber = curriculum.slice(0, CURRICULUM_PASSAGES).map((h, i) => ({ kind: "CURRICULUM", n: i + 1, board: h.board, book: h.book, grade: h.grade, chapter: h.chapter, section: h.section, page: h.pageStart, sourceUrl: h.sourceUrl || null, chunkId: h.chunkId, attribution: h.attribution ?? null }));
     // Pass 4: the passages' own facts the reference links read (the heading, whether it is a law passage).
     lawPassages = new Set(curriculum.slice(0, CURRICULUM_PASSAGES).flatMap((h, i) => (/\blaw\b|legal|constitution/i.test(`${h.subject} ${h.grade} ${h.book}`) ? [i + 1] : [])));
-    // TA-018: what the answer gate allows is the passages as the book prints them (contacts and links still out), not as
-    // stripped of the school's names for the model: a name the book prints is the book's (strip.ts answerProblems), and
-    // with a member who shares it the stripped text no longer held it, so every answer naming it was discarded.
-    allowedText = curriculum.slice(0, CURRICULUM_PASSAGES).map((h, i) => `${passages[i]!.heading}\n${withoutInjectedLines(stripIdentifiers(h.text.slice(0, 1800)).text)}`).join("\n");
+    // TA-018 (decision 0005 as amended on 14 November 2026): a public passage goes to the model as the book prints it with
+    // only contacts and links out, not stripped of the school's names (a name the book prints is the book's), and the
+    // answer gate allows what the model was given (strip.ts answerProblems).
+    allowedText = passages.map((p) => `${p.heading}\n${p.text}`).join("\n");
     const band = gradeBandOf(grade, { college, teacher: !policy.assessed });
     // The exam-scope reader (10 Oct 2026): a pupil asking when an exam is or whether a subject is in it gets
     // their own exams door read, as the person, and its lines beside the passages. Nothing else in tutor mode reads a door.
@@ -1043,10 +1044,10 @@ async function answerQuestion(a: AnswerInput): Promise<Outcome> {
     messages = tutorMessages({ question: a.stripped, language, band, shape: questionShape(a.original), passages, hint, boardNote, laterClass, exams, continuation: a.continuation });
   } else {
     const shownHelp = deps.helpSection ? await wholeSections(help.slice(0, HELP_PASSAGES), deps.helpSection) : help;
-    const passages = shownHelp.slice(0, HELP_PASSAGES).map((h, i) => ({ n: i + 1, heading: `${h.title}${h.pagePath ? ` — page ${h.pagePath}` : ""}`, text: withoutInjectedLines(stripIdentifiers(h.text.slice(0, deps.helpSection ? 2400 : 1200), a.lexicon).text) }));
+    const passages = shownHelp.slice(0, HELP_PASSAGES).map((h, i) => ({ n: i + 1, heading: `${h.title}${h.pagePath ? ` — page ${h.pagePath}` : ""}`, text: withoutInjectedLines(stripContactsAndLinks(h.text.slice(0, deps.helpSection ? 2400 : 1200))) }));
     citationsByNumber = shownHelp.slice(0, HELP_PASSAGES).map((h, i) => ({ kind: "HELP", n: i + 1, title: h.title, pagePath: h.pagePath, entryId: h.entryId }));
     // TA-018: the help passages as written, the same way as the book's.
-    allowedText = shownHelp.slice(0, HELP_PASSAGES).map((h, i) => `${passages[i]!.heading}\n${withoutInjectedLines(stripIdentifiers(h.text.slice(0, deps.helpSection ? 2400 : 1200)).text)}`).join("\n");
+    allowedText = passages.map((p) => `${p.heading}\n${p.text}`).join("\n");
     // The person's own doors, read as the person (router.ts); their rows numbered after the passages.
     // "Using Shalaghar" picked by the person (Vidura pass 1): the guides only, the person's own data not read.
     // "Explain this" (pass 2): the row the link names is the answer's data, and no other door is read beside it.
@@ -1290,7 +1291,7 @@ export async function previewAnswer(
   try {
     const now = deps.now();
     const dataContext = { role: input.role, membershipId: null, children: [], childId: null, duties: [], now, childNames: [] };
-    const outcome = await answerQuestion({ asker, policy: policyFor(input.role), school, language, original, stripped: stripIdentifiers(original, input.lexicon ?? []).text, lexicon: input.lexicon ?? [], previous: input.assessment?.previous ?? [], deps: { ...deps, runDoors: async () => [], standardAnswer: undefined }, emit: () => {}, conversationId: "preview", gradeOverride: input.grade ?? null, assessmentItems: input.assessment?.items, dataContext, toolRuns: input.toolRuns, streams: input.streams ?? [], adult: input.adult === true });
+    const outcome = await answerQuestion({ asker, policy: policyFor(input.role), school, language, original, stripped: stripQuestion(original, input.lexicon ?? []).text, lexicon: input.lexicon ?? [], previous: input.assessment?.previous ?? [], deps: { ...deps, runDoors: async () => [], standardAnswer: undefined }, emit: () => {}, conversationId: "preview", gradeOverride: input.grade ?? null, assessmentItems: input.assessment?.items, dataContext, toolRuns: input.toolRuns, streams: input.streams ?? [], adult: input.adult === true });
     return { ...outcome, language };
   } catch (error) {
     if (!(error instanceof ModelUnavailable) && !isModelFailure(error)) throw error;
