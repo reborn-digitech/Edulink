@@ -64,6 +64,8 @@ export default async function DeleteAccountPage() {
                 <li>{t("deletion.removed1")}</li>
                 <li>{t("deletion.removed2")}</li>
                 <li>{t("deletion.removed3")}</li>
+                {/* Blanked when the person leaves the school (TA-457, text-retention.ts); said here since TA-261. */}
+                <li>{t("deletion.removed4")}</li>
               </ul>
             </div>
             <div className="rounded-[var(--radius-md)] border border-border bg-surface p-4">
@@ -71,6 +73,7 @@ export default async function DeleteAccountPage() {
               <ul className="mt-2 list-disc space-y-1.5 pl-5">
                 <li>{t("deletion.kept1")}</li>
                 <li>{t("deletion.kept2")}</li>
+                <li>{t("deletion.kept3")}</li>
               </ul>
             </div>
           </div>

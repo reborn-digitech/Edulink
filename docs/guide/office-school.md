@@ -494,7 +494,7 @@ When Vidura cannot answer (its one sentence saying what it is for, a refusal, or
 
 ## How do I deal with reports and the audit log?
 
-The "Safety centre" at `/admin/safety` has "To deal with", "Resolved" and "Audit log", and "When the Shalaghar team opened your school".
+The "Safety centre" at `/admin/safety` has "To deal with", "Resolved" and "Audit log", and "When the Shalaghar team opened your school". The Shalaghar team can open any school at any time and gives no reason; every visit is listed there with who and when, as "Visited the school", and what was read is in the "Audit log".
 
 1. On a report read "What the reporter said" and open the content with "Open it" or "Open the post".
 2. Press "Take it down" with "Why is it coming down? The author sees this.", or "Nothing wrong — close it" with "Why is this alright? Only staff see this." For a reported person, "Pause their access" or "Open in the directory".

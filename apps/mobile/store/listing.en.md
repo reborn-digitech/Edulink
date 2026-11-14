@@ -45,7 +45,7 @@ YOUR SCHOOL GIVES YOU THE SIGN-IN
 Nobody creates an account in this app. Your school issues the sign-in to you or to your child. A parent links a child with the student code and the child's date of birth, or by accepting the school's invitation.
 
 YOUR CHILD'S INFORMATION
-No advertising, no tracking, no data sold to anyone. What the school records about a child is seen only by that school, the child's own teachers, the child's guardians and the child. Screenshots are blocked on the marks and report-card screens. Read the full policy at PRIVACY_URL.
+No advertising, and no data sold to anyone. What the school records about a child is read by that school's staff who need it, the child's guardians and the child; the Shalaghar team, which runs the service, can open any school at any time, and the school is shown every visit. The app asks for the camera only to photograph work a pupil hands in, and for location only on a driver's phone, to show the school bus during a trip; no pupil's or parent's phone is located. Screenshots are blocked on the marks and report-card screens. What is kept, where it goes and for how long is in the full policy at PRIVACY_URL.
 
 Shalaghar is for schools that have signed up. If your school is not on Shalaghar yet, ask the office to write to SUPPORT_EMAIL.
 

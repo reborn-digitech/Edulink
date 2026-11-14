@@ -1,5 +1,6 @@
 import { z } from "zod";
 import { realDateKey } from "./calendar-keys";
+import { operatorVisitKindSchema } from "./operator";
 
 /**
  * admin: request and response schemas for the /api/v1/admin endpoints — the
@@ -684,6 +685,8 @@ export const adminSafetySchema = z.object({
     z.object({
       id,
       reason: z.string(),
+      /** How the line reads (decision 0009, TA-410): a look inside, the list of colleges, or a reason typed before 9 August 2026. An older server sends none. */
+      kind: operatorVisitKindSchema.default("REASON"),
       startedAt: iso,
       expiresAt: iso,
       endedAt: isoOrNull,

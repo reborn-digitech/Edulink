@@ -2699,34 +2699,50 @@ model AuditLog {
   @@index([createdAt])
 }
 
-/// A time-boxed, reasoned grant letting whoever runs the server look inside one
-/// school.
+/// One line of a school's visitor book: whoever runs the server looked inside
+/// this school, and the school can read that it happened.
 ///
-/// THE WHOLE POINT IS THAT IT IS NOT A STANDING POWER. The operator flag opens
-/// exactly two tables — School and Invite — and that has not changed. What this
-/// row does is let one named person open ONE named school for a bounded time,
-/// having written down why, with the school able to see that it happened.
+/// IT IS A RECORD, NOT A GRANT (decision 0009, docs/decisions/0009-operator-access-always-on.md).
+/// Until 9 August 2026 this row was a time-boxed, reasoned grant: one named
+/// person opened ONE named school for sixty minutes, having written down why.
+/// Since that day the operator's access to every school is ALWAYS ON, with no
+/// request and no reason, and the owner confirmed it on 14 November 2026. The
+/// row no longer opens anything. It is written on the way in, at most once an
+/// hour for each operator and school (recordVisit in src/lib/superuser.ts), so
+/// that the always-on key is never an unobserved one.
 ///
-/// WHY A ROW AND NOT A BOOLEAN ON USER. Because the three things that make this
-/// defensible are all properties of an occasion rather than of a person: the
-/// REASON, the SCHOOL, and the fact that it EXPIRES. A flag saying "may look
-/// inside schools" is a master key; this is a signed-out key with a time on it.
+/// WHAT HAS NOT CHANGED. The operator flag by itself opens three tables, School,
+/// Invite and SchoolModule (SUPERUSER_TABLES in scripts/gen-rls.ts); every other
+/// row is reached by binding the ONE school being looked at (withSchoolAccess),
+/// so the tenant policies govern the operator as they govern that school's
+/// admin. Nobody can delete a row, neither the school nor the operator: the
+/// table has no DELETE policy at all (OPERATOR_LOG_TABLES in scripts/gen-rls.ts).
 ///
-/// The school reads it in their own Safety Centre, because opening and closing
-/// are audited against that school's id like any other event. That is the trade
-/// this feature is: the operator gains sight, and gives up doing it unobserved.
+/// The school reads it at the top of its own Safety Centre, on the web and on
+/// the phone, and each read made inside is an audit row of counts against that
+/// school's id. That is the trade this is: the operator has sight of every
+/// school, and never has it unobserved.
 model OperatorAccess {
   id       String @id @default(cuid())
   schoolId String
   /// The operator. Not a Membership — they hold none, by definition.
   userId   String
 
-  /// Written before the door opens, and shown to the school afterwards.
+  /// A MARKER since 9 August 2026, no longer a sentence anybody types: "Operator access"
+  /// for a look inside the school, "Operator access: colleges list" for the school's
+  /// numbers read by opening the list of colleges (OPERATOR_VISIT_REASON and
+  /// OPERATOR_COLLEGES_LIST_REASON in src/lib/superuser.ts). operatorVisitKind reads it
+  /// back as VISIT or COLLEGES_LIST and each screen words that in the reader's language.
+  /// A row from before that day holds the reason the operator typed then (kind REASON),
+  /// which is shown to the school as typed. Never rewritten.
   reason String
 
   startedAt DateTime  @default(now())
+  /// The end of the hour this line covers (OPERATOR_ACCESS_MINUTES): the next look after
+  /// it writes a new line. It does not end any access; access is always on.
   expiresAt DateTime
-  /// Set when they close it by hand, before it would have run out.
+  /// Set by the old flow when the operator closed a grant by hand; nothing has set it
+  /// since 9 August 2026. recordVisit still reads it (a line with it set is not open).
   endedAt   DateTime?
 
   school School @relation(fields: [schoolId], references: [id], onDelete: Cascade)

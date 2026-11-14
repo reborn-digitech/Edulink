@@ -18,6 +18,16 @@ const isoOrNull = iso.nullable();
 const id = z.string().min(1).max(64);
 const count = z.number().int().min(0);
 
+/**
+ * What one line of a school's visitor book is (decision 0009, TA-410). The operator's access is always on, so a line
+ * since 9 August 2026 carries no reason: it is a look inside the school (VISIT), or the school's numbers read by
+ * opening the list of colleges (COLLEGES_LIST), and each screen says so in the reader's language. A line from before
+ * that day is REASON: it keeps the words the operator typed then, and they are shown as typed.
+ */
+export const OPERATOR_VISIT_KINDS = ["VISIT", "COLLEGES_LIST", "REASON"] as const;
+export const operatorVisitKindSchema = z.enum(OPERATOR_VISIT_KINDS);
+export type OperatorVisitKind = z.infer<typeof operatorVisitKindSchema>;
+
 /* ---------------------------------------------------------------------- */
 /* /root — schools and jobs                                                */
 /* ---------------------------------------------------------------------- */
@@ -233,7 +243,7 @@ export const operatorSchoolDetailSchema = z.object({
     }),
   ),
   /** Every time the school has been opened by the operator, newest first — the list the school reads too. */
-  access: z.array(z.object({ id, operatorName: z.string(), reason: z.string(), startedAt: iso, live: z.boolean() })),
+  access: z.array(z.object({ id, operatorName: z.string(), reason: z.string(), /** How the line reads (decision 0009); an older server sends none, and its words are shown as typed. */ kind: operatorVisitKindSchema.default("REASON"), startedAt: iso, live: z.boolean() })),
   /** The commercial record (2026-10-02): where the subscription stands, who to call, which partner. Defaults so an older server's answer still parses. */
   subscription: operatorSubscriptionSchema.default({ status: null, startsAt: null, dueAt: null, daysToDue: null, invoicedAt: null, invoiceRef: null, paidAt: null, paidRef: null }),
   contact: operatorContactSchema.default({ name: null, role: null, phone: null, email: null }),

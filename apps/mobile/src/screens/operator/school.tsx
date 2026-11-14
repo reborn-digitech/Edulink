@@ -450,7 +450,7 @@ function Access({ access }: { access: OperatorSchoolDetail["access"] }) {
         </Text>
       ) : (
         access.map((a) => (
-          <Row key={a.id} icon="eye" title={a.operatorName} caption={[a.reason, relativeTime(a.startedAt, locale)].filter(Boolean).join(" · ")} right={a.live ? <Pill label={t("root.openNow")} tone="accent" /> : null} />
+          <Row key={a.id} icon="eye" title={a.operatorName} caption={[a.kind === "VISIT" ? t("safety.visitVisited") : a.kind === "COLLEGES_LIST" ? t("safety.visitCollegesList") : a.reason, relativeTime(a.startedAt, locale)].filter(Boolean).join(" · ")} right={a.live ? <Pill label={t("root.openNow")} tone="accent" /> : null} />
         ))
       )}
     </Card>

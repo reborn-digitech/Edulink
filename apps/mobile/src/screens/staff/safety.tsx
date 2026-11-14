@@ -116,7 +116,7 @@ export function Safety() {
                 {t("safety.operatorBody")}
               </Text>
               {d.visits.map((visit) => (
-                <Row key={visit.id} title={visit.operatorName} caption={`${relativeTime(visit.startedAt, locale)} — ${visit.reason}`} right={visit.live ? <Pill label={t("safety.operatorLive")} tone="warn" /> : null} />
+                <Row key={visit.id} title={visit.operatorName} caption={`${relativeTime(visit.startedAt, locale)} — ${visit.kind === "VISIT" ? t("safety.visitVisited") : visit.kind === "COLLEGES_LIST" ? t("safety.visitCollegesList") : visit.reason}`} right={visit.live ? <Pill label={t("safety.operatorLive")} tone="warn" /> : null} />
               ))}
               <Text variant="xs" tone="muted">
                 {`${t("safety.operatorFootPrefix")} operator. ${t("safety.operatorFootSuffix")}`}

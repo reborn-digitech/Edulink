@@ -101,7 +101,8 @@ export default async function InsideSchoolPage({
                     {row.live && ` · ${t("root.openNow")}`}
                   </p>
                   <p className="mt-0.5 text-xs text-fg-muted">
-                    {formatUtcMoment(row.startedAt)} — {row.reason}
+                    {/* The school's own words for the line (decision 0009, TA-410): a visit, the list of colleges, or a reason typed before 9 August 2026. */}
+                    {formatUtcMoment(row.startedAt)} — {row.kind === "VISIT" ? t("safety.visitVisited") : row.kind === "COLLEGES_LIST" ? t("safety.visitCollegesList") : row.reason}
                   </p>
                 </li>
               ))}

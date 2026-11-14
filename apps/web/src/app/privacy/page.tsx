@@ -19,13 +19,27 @@ export async function generateMetadata(): Promise<Metadata> {
  * app holds or asks for, the policy changes first and these strings follow —
  * the store listings in apps/mobile/store point here as PRIVACY_URL.
  *
+ * REWRITTEN ON 14 NOVEMBER 2026 (the owner's decisions on TA-261 and TA-410 of
+ * the testing analysis of 13 November): the page had said no location, one
+ * permission, texts for reset codes only, and that the company's team sees
+ * nothing inside a school. It now says what is kept, where it goes and for
+ * how long, and that the team can open any school at any time
+ * (docs/decisions/0009-operator-access-always-on.md). The keeping periods
+ * are RETENTION_DEFAULTS in src/lib/env.ts; when one changes, the sentence
+ * and the date at the top change with it. Counsel reads this text before a
+ * school is shown it.
+ *
  * SUPPORT_EMAIL is optional. Without it the page says to go through the school,
  * which is the fiduciary and the right first stop either way.
  */
 export default async function PrivacyPage() {
   const [t, session] = await Promise.all([getT(), getSession()]);
   const email = process.env.SUPPORT_EMAIL?.trim() || null;
-  const items = ["i1", "i2", "i3", "i4", "i5", "i6", "i7", "i8", "i9", "i10", "i11"] as const;
+  const items = ["i1", "i2", "i3", "i4", "i5", "i6", "i7", "i8", "i9", "i10", "i11", "i12", "i13", "i14", "i15", "i16", "i17", "i18"] as const;
+  // The outside companies, each named, and what each receives.
+  const goes = ["s5a", "s5b", "s5c", "s5d", "s5e", "s5meta", "s5maps", "s5pay"] as const;
+  // What the service deletes by itself, and when: the defaults of RETENTION_DEFAULTS.
+  const kept = ["s7c", "s7d", "s7e", "s7f"] as const;
 
   return (
     <div className="min-h-safe bg-bg">
@@ -50,6 +64,7 @@ export default async function PrivacyPage() {
         <Section id="who" title={t("privacy.s1Title")}>
           <p>{t("privacy.s1a")}</p>
           <p>{t("privacy.s1b")}</p>
+          <p>{t("privacy.s1c")}</p>
         </Section>
 
         <Section id="held" title={t("privacy.s2Title")}>
@@ -66,6 +81,8 @@ export default async function PrivacyPage() {
           <p>{t("privacy.s3b")}</p>
           <p>{t("privacy.s3c")}</p>
           <p>{t("privacy.s3d")}</p>
+          <p>{t("privacy.s3e")}</p>
+          <p>{t("privacy.s3f")}</p>
         </Section>
 
         <Section id="not" title={t("privacy.s4Title")}>
@@ -77,16 +94,17 @@ export default async function PrivacyPage() {
         <Section id="goes" title={t("privacy.s5Title")}>
           <p>{t("privacy.s5Intro")}</p>
           <ul className="list-disc space-y-1.5 pl-5">
-            <li>{t("privacy.s5a")}</li>
-            <li>{t("privacy.s5b")}</li>
-            <li>{t("privacy.s5c")}</li>
-            <li>{t("privacy.s5d")}</li>
-            <li>{t("privacy.s5e")}</li>
+            {goes.map((k) => (
+              <li key={k}>{t(`privacy.${k}`)}</li>
+            ))}
           </ul>
+          <p>{t("privacy.s5storage")}</p>
+          <p>{t("privacy.s5assistant")}</p>
         </Section>
 
         <Section id="phone" title={t("privacy.s6Title")}>
           <p>{t("privacy.s6a")}</p>
+          <p>{t("privacy.s6loc")}</p>
           <p>{t("privacy.s6b")}</p>
           <p>{t("privacy.s6c")}</p>
           <p>{t("privacy.s6d")}</p>
@@ -95,6 +113,12 @@ export default async function PrivacyPage() {
         <Section id="long" title={t("privacy.s7Title")}>
           <p>{t("privacy.s7a")}</p>
           <p>{t("privacy.s7b")}</p>
+          <p>{t("privacy.s7defaults")}</p>
+          <ul className="list-disc space-y-1.5 pl-5">
+            {kept.map((k) => (
+              <li key={k}>{t(`privacy.${k}`)}</li>
+            ))}
+          </ul>
         </Section>
 
         <Section id="rights" title={t("privacy.s8Title")}>

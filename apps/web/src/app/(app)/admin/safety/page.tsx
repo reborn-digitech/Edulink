@@ -96,7 +96,8 @@ export default async function SafetyPage({
                     )}
                   </p>
                   <p className="mt-0.5 text-xs text-fg-muted">
-                    {relativeTime(visit.startedAt)} — {visit.reason}
+                    {/* A visit and a list of colleges in the reader's language; only a reason typed before 9 August 2026 as typed (decision 0009, TA-410). */}
+                    {relativeTime(visit.startedAt)} — {visit.kind === "VISIT" ? tr("safety.visitVisited") : visit.kind === "COLLEGES_LIST" ? tr("safety.visitCollegesList") : visit.reason}
                   </p>
                 </li>
               ))}

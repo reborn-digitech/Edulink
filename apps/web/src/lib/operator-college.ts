@@ -162,7 +162,8 @@ export async function listColleges(session: ActiveContext, opts: CollegesOpts = 
         meta: { programmes: programmes.length, students, lecturesScheduled: health.lecturesScheduled, grievancesPastDue: health.grievancesPastDue },
       });
       return { programmes, students, health };
-    });
+      // Recorded in the college's visitor book as the list of colleges, not as a look inside it (decision 0009, TA-410).
+    }, { via: "COLLEGES_LIST" });
     items.push({
       id: s.id,
       name: s.name,
