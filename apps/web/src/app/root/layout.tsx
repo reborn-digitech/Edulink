@@ -4,6 +4,7 @@ import { Wordmark } from "@/components/brand";
 import { Button } from "@/components/ui/button";
 import { requireSuperuser } from "@/lib/tenancy";
 import { getT } from "@/lib/i18n/server";
+import { SignOutForm } from "@/components/sign-out-form";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -133,11 +134,11 @@ async function OperatorLinks() {
       <Button asChild variant="ghost" size="sm">
         <Link href="/root/metrics">{t("root.metrics")}</Link>
       </Button>
-      <form action="/api/auth/logout" method="post">
+      <SignOutForm>
         <Button type="submit" variant="ghost" size="sm">
           {t("shell.signOut")}
         </Button>
-      </form>
+      </SignOutForm>
     </>
   );
 }

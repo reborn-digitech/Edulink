@@ -302,7 +302,10 @@ export async function sendPush(userId: string, payload: PushPayload): Promise<Pu
     return { ...none, skipped: true };
   }
 
-  const subscriptions = await db.pushSubscription.findMany({ where: { userId } });
+  // Only a browser whose sign-in is still alive (TA-041): a registration belongs to the sign-in that turned notices
+  // on, and one whose sign-in was ended or has run out, or that names none (made before the link), is not sent to.
+  // It is not deleted here either: the same person's browser links itself again at their next signed-in visit.
+  const subscriptions = await db.pushSubscription.findMany({ where: { userId, session: { revokedAt: null, expiresAt: { gt: new Date() } } } });
   if (subscriptions.length === 0) return none;
 
   const body = JSON.stringify(payload);

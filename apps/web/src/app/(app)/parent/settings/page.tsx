@@ -63,7 +63,7 @@ export default async function ParentSettingsPage() {
           description={t("parent.whatYouAreTold")}
         />
         <CardBody className="space-y-4">
-          <PushToggle />
+          <PushToggle userId={session.user.id} />
           <AppearanceForm prefs={prefs} section="notifications" phone={user.phone ? formatPhone(user.phone) : null} textsOn={await featureOn("TEXT_MESSAGING")} />
         </CardBody>
       </Card>

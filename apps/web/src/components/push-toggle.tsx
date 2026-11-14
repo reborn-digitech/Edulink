@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/toast";
 import { useT } from "@/lib/i18n";
 import { cn } from "@/lib/cn";
+import { forgetPushOwner, registerPush, relinkPush, rememberPushOwner } from "@/lib/push-client";
 
 /**
  * Turns Web Push on for this device.
@@ -16,6 +17,12 @@ import { cn } from "@/lib/cn";
  *   * notification permission (a one-shot browser prompt — if denied, only the
  *     user can undo it from browser settings, so we say so)
  *   * a subscription registered against our VAPID key, POSTed to /api/push
+ *
+ * The switch answers for THIS SIGN-IN (TA-041): a browser's notices belong to
+ * the sign-in that turned them on. A subscription the browser holds that the
+ * server does not count as this sign-in's is linked when it is this person's
+ * own (`relinkPush`), and shown as off otherwise — it is never handed to
+ * whoever happens to be signed in. `userId` is that person.
  */
 
 type State =
@@ -37,7 +44,7 @@ function urlBase64ToUint8Array(base64: string): Uint8Array {
   return output;
 }
 
-export function PushToggle({ className }: { className?: string }) {
+export function PushToggle({ userId, className }: { userId: string; className?: string }) {
   const t = useT();
   const { toast } = useToast();
   const [state, setState] = useState<State>("checking");
@@ -78,11 +85,14 @@ export function PushToggle({ className }: { className?: string }) {
       if (cancelled) return;
       setDevices(server?.devices ?? 0);
 
-      // The browser can hold a subscription the server has never seen (cleared
-      // database, or the POST failed last time). Re-register rather than
-      // reporting "on" and delivering nothing.
+      // The browser can hold a subscription that is not this sign-in's: the
+      // sign-in that turned notices on ended or ran out, or somebody else
+      // turned them on here. Link it when it is this person's own rather than
+      // reporting "on" and delivering nothing; otherwise the truth is "off",
+      // and the button turns notices on for the person pressing it.
       if (existing && !server?.subscribed) {
-        const ok = await registerWithServer(existing);
+        const ok = await relinkPush(userId);
+        if (cancelled) return;
         setState(ok ? "on" : "off");
         return;
       }
@@ -93,22 +103,7 @@ export function PushToggle({ className }: { className?: string }) {
     return () => {
       cancelled = true;
     };
-  }, []);
-
-  async function registerWithServer(subscription: PushSubscription): Promise<boolean> {
-    const json = subscription.toJSON() as { keys?: { p256dh?: string; auth?: string } };
-    if (!json.keys?.p256dh || !json.keys.auth) return false;
-
-    const response = await fetch("/api/push", {
-      method: "POST",
-      headers: { "content-type": "application/json" },
-      body: JSON.stringify({
-        endpoint: subscription.endpoint,
-        keys: { p256dh: json.keys.p256dh, auth: json.keys.auth },
-      }),
-    });
-    return response.ok;
-  }
+  }, [userId]);
 
   async function enable() {
     setState("working");
@@ -138,7 +133,7 @@ export function PushToggle({ className }: { className?: string }) {
         applicationServerKey: urlBase64ToUint8Array(publicKey) as BufferSource,
       });
 
-      const ok = await registerWithServer(subscription);
+      const ok = await registerPush(subscription);
       if (!ok) {
         await subscription.unsubscribe().catch(() => {});
         toast({ tone: "danger", title: t("push.couldNotTurnOn") });
@@ -146,6 +141,7 @@ export function PushToggle({ className }: { className?: string }) {
         return;
       }
 
+      rememberPushOwner(userId);
       setState("on");
       setDevices((d) => d + 1);
       toast({
@@ -177,6 +173,7 @@ export function PushToggle({ className }: { className?: string }) {
         }).catch(() => {});
         await subscription.unsubscribe();
       }
+      forgetPushOwner();
       setState("off");
       setDevices((d) => Math.max(0, d - 1));
       toast({ tone: "neutral", title: t("push.offToast") });
@@ -251,6 +248,7 @@ export function PushToggle({ className }: { className?: string }) {
               : t("push.toldWhenClosed")
             : t("push.turnOnHint")}
         </p>
+        {on && <p className="text-xs text-fg-muted">{t("push.signOutTurnsOff")}</p>}
       </div>
       <Button
         variant={on ? "secondary" : "primary"}

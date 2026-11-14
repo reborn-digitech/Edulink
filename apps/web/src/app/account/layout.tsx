@@ -6,6 +6,7 @@ import { SignedInShell } from "@/components/nav/signed-in-shell";
 import { getSession } from "@/lib/session";
 import { hasRecord } from "@/lib/student-record";
 import { getT } from "@/lib/i18n/server";
+import { SignOutForm } from "@/components/sign-out-form";
 
 /**
  * Your own settings, which belong to YOU rather than to a school.
@@ -65,11 +66,11 @@ export default async function AccountLayout({ children }: { children: React.Reac
                 <Link href="/record">{t("account.yourRecordLink")}</Link>
               </Button>
             )}
-            <form action="/api/auth/logout" method="post">
+            <SignOutForm>
               <Button type="submit" size="sm" variant="secondary">
                 {t("shell.signOut")}
               </Button>
-            </form>
+            </SignOutForm>
           </div>
         </div>
       </header>

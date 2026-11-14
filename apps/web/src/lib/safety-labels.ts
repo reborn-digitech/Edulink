@@ -205,6 +205,8 @@ const ACTION_KEYS: Record<string, TranslationKey> = {
   "report.dismiss": "audit.reportDismiss",
   "prefs.update": "audit.prefsUpdate",
   "push.subscribe": "audit.pushSubscribe",
+  "push.relink": "audit.pushRelink",
+  "push.unlink": "audit.pushUnlink",
   "session.revoke": "audit.sessionRevoke",
   "retention.sweep": "audit.retentionSweep",
   "school.filings.set": "audit.schoolFilingsSet",
@@ -484,6 +486,12 @@ const ACTION_KEYS: Record<string, TranslationKey> = {
   "library.subscription.save": "audit.riskSubscriptionSave",
   "superuser.regulator.remind": "audit.superuserRegulatorRemind",
   "operator.read.college": "audit.operatorReadCollege",
+  // The operator's reads inside a school (operator-oversight.ts builds the code as `operator.read.${what}`, which
+  // tests/audit-labels.test.ts cannot see): each has its words in the school's trail (decision 0009, TA-410).
+  "operator.read.overview": "audit.operatorReadOverview",
+  "operator.read.posts": "audit.operatorReadPosts",
+  "operator.read.people": "audit.operatorReadPeople",
+  "operator.read.people.search": "audit.operatorReadPeopleSearch",
   // The platform's feature switches (15 Oct 2026; src/lib/platform-features.ts): the operator's own log, no school.
   "operator.feature.on": "audit.operatorFeatureOn",
   "operator.feature.off": "audit.operatorFeatureOff",

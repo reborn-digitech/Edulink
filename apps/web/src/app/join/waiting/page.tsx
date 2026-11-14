@@ -10,6 +10,7 @@ import { getSession, listContexts } from "@/lib/session";
 import { myJoinRequests } from "@/lib/join-requests";
 import { HANDLE_DOMAIN } from "@/lib/login-name";
 import { getRelativeTime, getT } from "@/lib/i18n/server";
+import { SignOutForm } from "@/components/sign-out-form";
 
 const STATUS_KEY = { PENDING: "joinRequests.statusPending", DECLINED: "joinRequests.statusDeclined", EXPIRED: "joinRequests.statusExpired" } as const;
 
@@ -56,11 +57,11 @@ export default async function JoinWaitingPage({ searchParams }: { searchParams: 
           <Link href="/" aria-label={t("common.homeLink")}>
             <Wordmark size={26} />
           </Link>
-          <form action="/api/auth/logout" method="post">
+          <SignOutForm>
             <Button type="submit" size="sm" variant="secondary">
               {t("shell.signOut")}
             </Button>
-          </form>
+          </SignOutForm>
         </div>
       </header>
 

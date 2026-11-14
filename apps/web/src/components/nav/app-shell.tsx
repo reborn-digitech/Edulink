@@ -20,6 +20,7 @@ import { useModalFocus } from "@/components/ui/use-modal-focus";
 import { useT } from "@/lib/i18n";
 import type { Translate } from "@/lib/i18n";
 import { ROLE_META, type Role } from "@/lib/constants";
+import { SignOutForm } from "@/components/sign-out-form";
 
 export type ShellUser = {
   name: string;
@@ -541,7 +542,7 @@ function SideLink({ item, active, t, badge = 0 }: { item: NavItem; active: boole
 export function SignOutButton() {
   const t = useT();
   return (
-    <form action="/api/auth/logout" method="post">
+    <SignOutForm>
       <button
         type="submit"
         className="flex w-full items-center gap-2 rounded-[var(--radius-md)] px-3 py-2.5 text-sm font-medium text-danger transition-colors hover:bg-danger-soft"
@@ -549,7 +550,7 @@ export function SignOutButton() {
         <SignOutIcon className="size-5" aria-hidden="true" />
         {t("shell.signOut")}
       </button>
-    </form>
+    </SignOutForm>
   );
 }
 

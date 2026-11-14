@@ -36,8 +36,10 @@ const FCM = "https://fcm.googleapis.com/fcm/send/zz-push-endpoint-test";
 beforeAll(async () => {
   await db.user.deleteMany({ where: { email: EMAIL } });
   userId = (await db.user.create({ data: { email: EMAIL, name: "ZZ Push", prefs: "{}" }, select: { id: true } })).id;
+  // A registration belongs to the sign-in that turned notices on, and is sent to only while it lives (TA-041): a real one.
+  const signIn = await db.session.create({ data: { userId, tokenHash: `zz-push-endpoint-${Date.now()}`, userAgent: "zz-walk", expiresAt: new Date(Date.now() + 3_600_000) }, select: { id: true } });
   session = {
-    sessionId: "test-session",
+    sessionId: signIn.id,
     membershipId: null,
     schoolId: null,
     role: null,
@@ -124,7 +126,7 @@ describe("POST /api/push", () => {
 
 describe("the send", () => {
   it("⚠ gives the push service ten seconds", async () => {
-    await db.pushSubscription.create({ data: { userId, endpoint: FCM, p256dh: "p", auth: "a" } });
+    await db.pushSubscription.create({ data: { userId, sessionId: session.sessionId, endpoint: FCM, p256dh: "p", auth: "a" } });
     sendNotification.mockResolvedValue({ statusCode: 201 });
     const { sendPush, PUSH_SEND_TIMEOUT_MS } = await import("@/lib/notify");
     const result = await sendPush(userId, { title: "t", body: "b", url: "/" });
@@ -135,7 +137,7 @@ describe("the send", () => {
   });
 
   it("⚠ never calls a stored endpoint off the list; it retires the row instead", async () => {
-    await db.pushSubscription.create({ data: { userId, endpoint: "https://push.example/left-over", p256dh: "p", auth: "a" } });
+    await db.pushSubscription.create({ data: { userId, sessionId: session.sessionId, endpoint: "https://push.example/left-over", p256dh: "p", auth: "a" } });
     const { sendPush } = await import("@/lib/notify");
     const result = await sendPush(userId, { title: "t", body: "b", url: "/" });
     expect(sendNotification).not.toHaveBeenCalled();

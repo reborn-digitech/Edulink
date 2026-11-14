@@ -11,6 +11,7 @@ import { Button } from "@/components/ui/button";
 import { switchContext } from "./actions";
 import { getT } from "@/lib/i18n/server";
 import { ROLE_META, type Role } from "@/lib/constants";
+import { SignOutForm } from "@/components/sign-out-form";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -193,11 +194,11 @@ export default async function SwitchPage() {
         </Link>
       )}
 
-      <form action="/api/auth/logout" method="post" className="mt-8">
+      <SignOutForm className="mt-8">
         <Button type="submit" variant="ghost" block>
           {t("suspended.signOut")}
         </Button>
-      </form>
+      </SignOutForm>
     </main>
   );
 }

@@ -16,6 +16,7 @@ import { ROLE_META, type SchoolRole } from "@/lib/constants";
 import { EnvelopeSimpleOpenIcon } from "@phosphor-icons/react/ssr";
 import { ROLE_HOME, type Role } from "@/lib/constants";
 import { getT } from "@/lib/i18n/server";
+import { SignOutForm } from "@/components/sign-out-form";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -130,11 +131,11 @@ export default async function JoinPage({
               {t("join.signedInBody")}
             </p>
             <div className="mt-3 flex flex-wrap gap-2">
-              <form action="/api/auth/logout" method="post">
+              <SignOutForm>
                 <Button type="submit" size="sm" variant="secondary">
                   {t("join.signOutAndJoin")}
                 </Button>
-              </form>
+              </SignOutForm>
               <Button asChild size="sm" variant="ghost">
                 <Link href={ROLE_HOME[session!.role as Role]}>{t("join.backToDashboard")}</Link>
               </Button>

@@ -97,9 +97,13 @@ beforeAll(async () => {
   // request this suite exists to observe.
   const ecdh = createECDH("prime256v1");
   ecdh.generateKeys();
+  // Under a live sign-in: a registration is sent to only while the sign-in that turned notices on lives (TA-041).
+  // It goes with the person afterwards.
+  const signIn = await db.session.create({ data: { userId, tokenHash: `zz-quiet-delivery-${Date.now()}`, userAgent: "zz-walk", expiresAt: new Date(Date.now() + 3_600_000) }, select: { id: true } });
   await db.pushSubscription.create({
     data: {
       userId,
+      sessionId: signIn.id,
       endpoint,
       p256dh: ecdh.getPublicKey("base64url"),
       auth: randomBytes(16).toString("base64url"),

@@ -44,6 +44,7 @@ import { switchContext } from "@/app/switch/actions";
 import { getT, getRelativeTime } from "@/lib/i18n/server";
 import { TabBar } from "@/components/ui/tabs";
 import { featureOn } from "@/lib/platform-features";
+import { SignOutForm } from "@/components/sign-out-form";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -361,7 +362,7 @@ export default async function AccountPage({
             description={t("account.notificationsDescription")}
           />
           <CardBody className="space-y-4">
-            <PushToggle />
+            <PushToggle userId={session.user.id} />
             <AppearanceForm prefs={prefs} section="notifications" phone={user.phone ? formatPhone(user.phone) : null} textsOn={await featureOn("TEXT_MESSAGING")} />
           </CardBody>
           <CardHeader
@@ -413,11 +414,11 @@ export default async function AccountPage({
       </Card>
       </div>
 
-      <form action="/api/auth/logout" method="post" className="pb-4">
+      <SignOutForm className="pb-4">
         <Button type="submit" variant="secondary" block>
           {t("shell.signOut")}
         </Button>
-      </form>
+      </SignOutForm>
     </div>
   );
 }

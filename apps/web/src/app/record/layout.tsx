@@ -4,6 +4,7 @@ import { Wordmark } from "@/components/brand";
 import { Button } from "@/components/ui/button";
 import { getSession } from "@/lib/session";
 import { getT } from "@/lib/i18n/server";
+import { SignOutForm } from "@/components/sign-out-form";
 
 /**
  * The record area, deliberately OUTSIDE `(app)`.
@@ -53,11 +54,11 @@ export default async function RecordLayout({ children }: { children: React.React
             <Button asChild size="sm" variant="ghost">
               <Link href="/account">{t("record.account")}</Link>
             </Button>
-            <form action="/api/auth/logout" method="post">
+            <SignOutForm>
               <Button type="submit" size="sm" variant="secondary">
                 {t("shell.signOut")}
               </Button>
-            </form>
+            </SignOutForm>
           </div>
         </div>
       </header>

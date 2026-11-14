@@ -98,5 +98,5 @@ export const OUTSIDE_THE_CATALOG: OutsideTheCatalog[] = [
   // end plans-pay
   { path: "/api/webhooks/twilio/status/{schoolId}", methods: ["POST"], reason: "Twilio's signed delivery report for one school's messages: verified by the request signature, no session." },
   { path: "/api/auth/logout", methods: ["POST"], reason: "The web's sign-out form: clears the cookie and redirects to /login. The phone's and the docs' door is POST /api/v1/auth/logout, which is catalogued." },
-  { path: "/api/push", methods: ["GET", "POST", "DELETE"], reason: "A browser's Web Push subscription (a PushSubscription object with VAPID keys), which only a browser holds; the phone registers its device through the catalogued /api/v1/me/devices." },
+  { path: "/api/push", methods: ["GET", "POST", "PATCH", "DELETE"], reason: "A browser's Web Push subscription (a PushSubscription object with VAPID keys), which only a browser holds; the phone registers its device through the catalogued /api/v1/me/devices. PATCH links the subscription the browser already holds to the sign-in it now carries, for the same person only (TA-041)." },
 ];

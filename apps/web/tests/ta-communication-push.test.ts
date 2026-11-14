@@ -97,7 +97,9 @@ describe("TA-510: only the device's own errors count against it", () => {
   });
 
   it("TA-510: a browser's push service answering 429, 503 or nothing at all eight times keeps the subscription uncounted", async () => {
-    await db.pushSubscription.create({ data: { userId, endpoint: `https://fcm.googleapis.com/fcm/send/zz-tacomm-${STAMP}`, p256dh: "p", auth: "a" } });
+    // Under a live sign-in (TA-041: a registration is sent to only while its sign-in lives); it goes with the person afterwards.
+    const signIn = await db.session.create({ data: { userId, tokenHash: `zz-tacomm-push-${STAMP}`, userAgent: "zz-walk", expiresAt: new Date(Date.now() + 3_600_000) }, select: { id: true } });
+    await db.pushSubscription.create({ data: { userId, sessionId: signIn.id, endpoint: `https://fcm.googleapis.com/fcm/send/zz-tacomm-${STAMP}`, p256dh: "p", auth: "a" } });
     const { sendPush } = await import("@/lib/notify");
     const errors = [Object.assign(new Error("Too many"), { statusCode: 429 }), Object.assign(new Error("Unavailable"), { statusCode: 503 }), new Error("socket hang up")];
     for (let i = 0; i < 9; i++) {

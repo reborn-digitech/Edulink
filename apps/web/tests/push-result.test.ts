@@ -46,9 +46,12 @@ afterEach(async () => {
 
 async function addEndpoint(suffix: string) {
   // An allow-listed host: the send retires any stored endpoint off the push
-  // services list before trying it (tests/push-endpoint.test.ts).
+  // services list before trying it (tests/push-endpoint.test.ts). And under a
+  // live sign-in: a registration is sent to only while the sign-in that turned
+  // notices on lives (TA-041). The sign-in goes with the person afterwards.
+  const signIn = await db.session.create({ data: { userId, tokenHash: `zz-push-result-${suffix}-${Date.now()}`, userAgent: "zz-walk", expiresAt: new Date(Date.now() + 3_600_000) }, select: { id: true } });
   await db.pushSubscription.create({
-    data: { userId, endpoint: `https://fcm.googleapis.com/fcm/send/${suffix}`, p256dh: "p" + suffix, auth: "a" + suffix },
+    data: { userId, sessionId: signIn.id, endpoint: `https://fcm.googleapis.com/fcm/send/${suffix}`, p256dh: "p" + suffix, auth: "a" + suffix },
   });
 }
 

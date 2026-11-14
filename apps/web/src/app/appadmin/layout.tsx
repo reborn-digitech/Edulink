@@ -4,6 +4,7 @@ import { Wordmark } from "@/components/brand";
 import { Button } from "@/components/ui/button";
 import { requireAppAdmin } from "@/lib/tenancy";
 import { getT } from "@/lib/i18n/server";
+import { SignOutForm } from "@/components/sign-out-form";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -66,11 +67,11 @@ export default async function AppAdminLayout({ children }: { children: React.Rea
                 <Link href="/root">{t("root.serverAdministration")}</Link>
               </Button>
             )}
-            <form action="/api/auth/logout" method="post">
+            <SignOutForm>
               <Button type="submit" variant="ghost" size="sm">
                 {t("suspended.signOut")}
               </Button>
-            </form>
+            </SignOutForm>
           </div>
         </div>
       </header>

@@ -148,6 +148,9 @@ export async function destroySession(): Promise<void> {
       where: { tokenHash: hashToken(token), revokedAt: null },
       data: { revokedAt: new Date() },
     });
+    // TA-041: the browser's push registration made under this sign-in goes with it, so a shared computer stops
+    // showing the person's notices when they press Sign out, whether or not the page's own step ran first.
+    await db.pushSubscription.deleteMany({ where: { session: { tokenHash: hashToken(token) } } });
   }
   // Cleared with the attributes it was set with, so the clearing cookie is as hard to reach as the live one was.
   jar.set(SESSION_COOKIE, "", { ...cookieOptions(0), maxAge: 0 });
@@ -157,7 +160,9 @@ export async function destroySession(): Promise<void> {
  * Revoke one device. Ownership is checked here, not by the caller. The phone's
  * push registration made under that session goes with it (campaign PH-4): a
  * lost phone signed out from the web stops showing the person's notices on its
- * lock screen. "Sign out everywhere" (revokeAllAccess) still clears them all.
+ * lock screen. So does a browser's (TA-041): a library computer signed out from
+ * the phone stops showing them too. "Sign out everywhere" (revokeAllAccess)
+ * still clears them all.
  */
 export async function revokeSession(sessionId: string, ownerUserId: string): Promise<boolean> {
   const result = await db.session.updateMany({
@@ -165,6 +170,7 @@ export async function revokeSession(sessionId: string, ownerUserId: string): Pro
     data: { revokedAt: new Date() },
   });
   await db.deviceToken.deleteMany({ where: { sessionId, userId: ownerUserId } });
+  await db.pushSubscription.deleteMany({ where: { sessionId, userId: ownerUserId } });
   return result.count > 0;
 }
 

@@ -6,6 +6,7 @@ import { useToast } from "@/components/ui/toast";
 import { cn } from "@/lib/cn";
 import { useT } from "@/lib/i18n";
 import { RouterNudge } from "@/lib/navigation";
+import { relinkPush } from "@/lib/push-client";
 import { appPath, openAppPath } from "@/lib/sw-helpers";
 
 /**
@@ -81,6 +82,22 @@ export function AppRuntime({ owner }: { owner: string | null | undefined }) {
       }
     });
   }, [owner, toast, t]);
+
+  /* ---- whose notices this browser shows ----
+   *
+   * A browser's notices belong to the sign-in that turned them on (TA-041):
+   * when that sign-in was ended from another device or ran out, the server
+   * stops sending and the browser keeps its subscription. On the person's next
+   * signed-in page, any page, the subscription is linked to the sign-in the
+   * browser now carries, and nobody presses anything. Only for the same
+   * person: the server links nobody else's registration, and the browser
+   * registers afresh only for whoever turned notices on in it (push-client.ts).
+   * Nobody signed in, or the offline fallback: nothing is asked.
+   */
+  useEffect(() => {
+    if (!owner) return;
+    void relinkPush(owner);
+  }, [owner]);
 
   /* ---- what the worker tells the page ----
    *

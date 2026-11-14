@@ -5,10 +5,10 @@ Written from the code as it stands on 2026-09-08 — every row cites the file it
 
 ## Frame
 
-- **The school is the data fiduciary** (DPDP Act 2023 s.2(i)): every row about a pupil belongs to one school's tenant (`apps/web/prisma/schema.prisma` header; `apps/web/prisma/rls.sql`), the school's office creates the account or issues the code that does (`apps/web/src/lib/intake.ts`, `apps/web/src/app/join/actions.ts`), and only that school's staff, the child's own guardians and the child can read it. Whoever runs the server is a **processor** (s.2(k)): the operator flag opens exactly two tables, `School` and `Invite`, and never a child's marks (`User.isSuperuser` comment in the schema; `SUPERUSER_TABLES` in `apps/web/scripts/gen-rls.ts`); a look inside a school is a time-boxed, reasoned `OperatorAccess` row the school can see in its Safety Centre.
+- **The school is the data fiduciary** (DPDP Act 2023 s.2(i)): every row about a pupil belongs to one school's tenant (`apps/web/prisma/schema.prisma` header; `apps/web/prisma/rls.sql`), the school's office creates the account or issues the code that does (`apps/web/src/lib/intake.ts`, `apps/web/src/app/join/actions.ts`), and that school's staff, the child's own guardians and the child read it, with the people a consent opens it to (rows 13, 16 and 36) and the company's team as said next. Whoever runs the server is a **processor** (s.2(k)): the operator flag by itself opens three tables, `School`, `Invite` and `SchoolModule` (`SUPERUSER_TABLES` in `apps/web/scripts/gen-rls.ts`), and every other row is reached by binding the one school being looked at (`withSchoolAccess`, `apps/web/src/lib/superuser.ts`). **That access is always on**, as it has been since 9 August 2026: the company's team can open any school at any time, with no request and no reason, and sees its numbers, its bulletin posts and the list of its people by name and role, with search; each visit is an `OperatorAccess` row (at most one an hour) the school reads in its Safety Centre, and each read is an audit row of counts ([decision 0009](0009-operator-access-always-on.md); corrected on 14 November 2026, [below](#amendment-of-14-november-2026--what-the-public-texts-say)).
 - **A child is anyone under 18** (s.2(f)). The code agrees: `isMinor = age < 18` (`apps/web/src/app/join/actions.ts:246`, `apps/web/src/lib/birthdate.ts`). `CONSENT_AGE = 13` (`apps/web/src/lib/constants.ts:339`) only sets a `needsConsent` flag in audit metadata — see Gaps.
 - **Verifiable parental consent** (s.9(1)) is the guardianship. It is recorded as `Guardianship.consentSharingAt` / `consentNotificationsAt` (schema) and is set in exactly three places: a parent claiming the child with the student code **and** the child's date of birth as second factor (`apps/web/src/app/join/actions.ts` `claimChild`); a parent accepting the office's invitation, which the office cannot accept on their behalf (`apps/web/src/lib/parent-link.ts`, `apps/web/src/app/invite/[token]/actions.ts`); and the school's **stand-in guardianship** for a pupil no parent has claimed yet, revoked the moment a real parent arrives (`apps/web/src/lib/standin-guardian.ts`). A second, separate consent gates anything that sends a child's name out of the school: competition entries (`CompetitionEntry.parentConsentAt`, `giveConsent` in `apps/web/src/lib/competitions.ts`) and an outside mentor's first message (`apps/web/src/lib/mentoring.ts`).
-- **No tracking, no behavioural monitoring, no targeted advertising** (s.9(3)): see [What the app does not do](#what-the-app-does-not-do). The DPDP Rules 2025 exempt educational institutions from parts of s.9 for educational activities and pupil safety (Fourth Schedule) — **counsel to confirm** the final text and that a school using EduLink is covered; this policy does not rely on it.
+- **No behavioural monitoring, no targeted advertising, no tracking library** (s.9(3)): see [What the app does not do](#what-the-app-does-not-do). Since the transport module the platform does keep where a school **bus** was during a trip and when each pupil was ticked on and off it (rows 31 and 34), so the bare words "no tracking" are no longer used in any public text ([amendment below](#amendment-of-14-november-2026--what-the-public-texts-say)); whether either is "tracking" of a child in the Act's sense is **counsel's to say**. The DPDP Rules 2025 exempt educational institutions from parts of s.9 for educational activities and pupil safety (Fourth Schedule) — **counsel to confirm** the final text and that a school using EduLink is covered; this policy does not rely on it.
 - Store guidance mapped: Apple App Review Guidelines 5.1.1 (data minimisation, consent), 5.1.2 (use and sharing), 5.1.4 (Kids: no personal or device information to third parties); the app is **not** submitted in the Kids Category (1.3). Google Play: Families policy (mixed audience), Data safety, Permissions, Account deletion. The store forms are answered row by row in `apps/mobile/store/privacy-answers.md`.
 
 Access rules cited below: the row-level policies in `apps/web/prisma/rls.sql` (generated by `apps/web/scripts/gen-rls.ts`; `app.school_ids` per transaction, `app.user_id` for a person's own rows, `OWN_RECORD_READABLE` for a child's portable record); the application chokepoint `apps/web/src/lib/tenancy.ts` (`assertStudentAccess` — a teacher sees only pupils in a class they teach; `assertGuardianAccess` — an ACTIVE guardianship; `assertClassAccess`); the per-endpoint access lists in `apps/web/src/lib/api-catalog/*.ts`, which the OpenAPI document carries as `x-access` and the contract suite proves. "Office" below means ADMIN, and PRINCIPAL where the catalog lists it.
@@ -38,7 +38,7 @@ Stored on the server means the Postgres database (`DATABASE_URL`); uploaded file
 | 17 | **Leaving certificate / portable record** (`SchoolRecord`: name, code, birthdate, class, conduct, counts; frozen at issue) | What a child carries to the next school | The child, active guardians, the issuing school's admin (`certificateFor`, `school-record.ts`); travels on `studentUserId` and survives even the school's removal (`School.removedAt` comment) | Server | Permanent; a mistaken departure can be undone (`undoDeparture`) | E |
 | 18 | **Notifications** about the child (e.g. "absent today" to a guardian) (`Notification`) | Telling people | The recipient only | Server; phone in memory (`(app)/notifications.tsx`). The **title and body also pass through Expo's push service and Apple/Google** to reach the phone (`apps/web/src/lib/expo-push.ts`) | **Auto-read after 90 days, read ones deleted after 365, unread never deleted by the tidy**; a school may set its own numbers (`School.notifAutoReadDays/notifExpireDays`, `apps/web/src/lib/notification-housekeeping.ts`; job `notifications:tidy` 03:30 daily, `jobs.ts`); the person can clear read ones (`apps/web/src/app/(app)/notifications/actions.ts`) | E, P |
 | 19 | **Push token and device model** (`DeviceToken`: Expo push token, platform, `Device.modelName`) | Delivering push | The server only; sent to Expo to route the message | Server. Registered after sign-in and on every start (`apps/mobile/src/lib/push.ts`) | **Deleted on sign-out** (`unregisterPush` → `DELETE /api/v1/me/devices`), retired when Expo says `DeviceNotRegistered` or after five failures (`expo-push.ts`) | S |
-| 20 | **Session** (`Session`: token hash, active school and role, `userAgent` = "EduLink app", `ip` from `x-forwarded-for`, timestamps) | Staying signed in | The person (device list, `/api/v1/me/sessions`, `apps/web/src/app/account/device-list.tsx`); the server | Server holds the **hash** only. Phone: the raw token and `{sessionId, expiresAt}` in **expo-secure-store** (`KEYS.token`, `KEYS.session`), read per request, never in React state (`apps/mobile/src/lib/session.tsx`, `api.ts`) | 30 days, sliding when used (`SESSION_TTL_DAYS`, `apps/web/src/lib/session.ts`); removed from the phone on sign-out and on any 401; a person can sign out every other device. The row itself is deleted 7 days after it expires or is revoked (`retention:sweep`, `apps/web/src/lib/retention.ts`; `RETENTION_SESSION_DAYS`) | S |
+| 20 | **Session** (`Session`: token hash, active school and role, `userAgent` = "EduLink app", `ip` from `x-forwarded-for`, timestamps) | Staying signed in | The person (device list, `/api/v1/me/sessions`, `apps/web/src/app/account/device-list.tsx`); the server | Server holds the **hash** only. Phone: the raw token and `{sessionId, expiresAt}` in **expo-secure-store** (`KEYS.token`, `KEYS.session`), read per request, never in React state (`apps/mobile/src/lib/session.tsx`, `api.ts`) | A web sign-in lasts a fixed 30 days from signing in and does not slide (the cookie's life cannot be reset from a page read); the phone's 30 days slide when it is used, to at most 180 days from signing in (`SESSION_TTL_DAYS`, `SESSION_ABSOLUTE_MAX_DAYS`, `apps/web/src/lib/session.ts`; an operator's is 7 days); removed from the phone on sign-out and on any 401; a person can sign out every other device. The row itself is deleted 7 days after it expires or is revoked (`retention:sweep`, `apps/web/src/lib/retention.ts`; `RETENTION_SESSION_DAYS`) | S |
 | 21 | **Sign-in tokens** (`AuthToken`: magic link, first-sign-in code, parent claim, email verify; `Invite`) | Getting in | Nobody reads them; hashes only | Server | Magic link 20 min, email verify 48 h, invite 14 days (`constants.ts`); marked consumed. An `AuthToken` row is deleted 7 days after it expires or is used (`retention:sweep`; `RETENTION_TOKEN_DAYS`); `Invite` rows stay as the school's list | S |
 | 22 | **Audit log** (`AuditLog`: actor, action, target, ip, meta) | "Who changed this child's grade" | The school's admin in the Safety Centre (`apps/web/src/lib/safety.ts`); operator-only rows carry no school | Server | **Two years** (`RETENTION_AUDIT_DAYS`, default 730; 0 keeps every row forever), pruned by `retention:sweep` — the one deletion of this table, and it writes its own row saying how many it took and from which school | S |
 | 23 | **Safety reports** filed by or about a child (`Report`) | Reporting a post, comment or person | The school's admin (`safety.ts`) | Server | Kept with the decision | S |
@@ -56,13 +56,13 @@ Stored on the server means the Postgres database (`DATABASE_URL`); uploaded file
 Verified against `apps/mobile/package.json` and `apps/web/package.json` (no analytics, advertising, attribution, crash-SDK or social packages in either; the jest `transformIgnorePatterns` names `@sentry/react-native` as a boilerplate pattern only — it is not installed).
 
 - **No advertising, no analytics, no tracking SDK, no behavioural profiling, no sale of data.** The only "adaptive" logic is the practice ladder in row 12, which serves the next question and nothing else.
-- **No location** (EXIF GPS is stripped from photos on the server, row 11), **no contacts**, **no cross-app tracking**, no advertising identifier is read.
+- **No location of a pupil's, a guardian's or a teacher's phone.** The one location the app reads is a **driver's** phone during a bus trip that driver started, which is the bus's position (`expo-location` in `apps/mobile/app.json`; `apps/mobile/src/lib/trip-location-platform.native.ts`; `TripPosition`, row 34 in the [amendment below](#amendment-of-14-november-2026--what-the-public-texts-say)). This line said "No location" until 14 November 2026, which had stopped being true on 4 October 2026. EXIF GPS is still stripped from photos on the server (row 11). **No contacts**, **no cross-app tracking**, no advertising identifier is read.
 - **Every network destination the phone talks to:**
   1. the school's own API at `EXPO_PUBLIC_API_URL`, which a release build refuses unless it is `https://` (`apps/mobile/src/lib/api.ts`);
   2. **Expo's push service** — the phone asks Expo for a push token (`getExpoPushTokenAsync`) and the server posts notification titles and bodies to `https://exp.host/--/api/v2/push/send` (`apps/web/src/lib/expo-push.ts`), from where Apple (APNs) and Google (FCM) deliver them;
   3. **Expo's update service** `https://u.expo.dev/<EAS_PROJECT_ID>` for over-the-air JavaScript updates when a project id is configured (`apps/mobile/app.config.ts`, `expo-updates`);
   4. the system browser, opened only on `API_BASE` paths — SSO start and the web pages the app hands off to (`Linking.openURL` sites in `apps/mobile/src`, all prefixed with `API_BASE`).
-- **Every third-party destination the server talks to:** the SSO providers on the web sign-in — Google, Microsoft, Apple as plain OIDC, no SDK, each present only when its env vars are (`apps/web/src/lib/sso.ts`; the phone's sign-in screen offers Google); the email transport — SMTP through nodemailer, whichever relay the deployment sets (`apps/web/src/lib/email.ts`); the SMS transport — Twilio by a form POST, no SDK (`apps/web/src/lib/sms.ts`); Web Push endpoints for browser subscriptions (`web-push`, `apps/web/src/lib/notify.ts`); and **Anthropic's API**, used by `apps/web/src/lib/translate.ts` to translate a **question-bank question** the content team types — the input is the question text, never a pupil's data, and it runs only when `ANTHROPIC_API_KEY` is set. And **the assistant's model endpoints** (`ASSISTANT_MODEL_URL`, `ASSISTANT_EMBED_URL`; [decision 0005](0005-assistant-model-endpoint.md)): a person's question, stripped of names, ids, codes, e-mails, phone numbers and links, with public textbook passages, the platform's own help and the person's own allow-listed doors' answers, likewise stripped; the owner's machine during Phases A to D, a zero-retention host only by 0005's amendment.
+- **Every third-party destination the server talks to:** the SSO providers on the web sign-in — Google, Microsoft, Apple as plain OIDC, no SDK, each present only when its env vars are (`apps/web/src/lib/sso.ts`; the phone's sign-in screen offers Google); the email transport — SMTP through nodemailer, whichever relay the deployment sets (`apps/web/src/lib/email.ts`); the SMS transport — Twilio by a form POST, no SDK (`apps/web/src/lib/sms.ts`); Web Push endpoints for browser subscriptions (`web-push`, `apps/web/src/lib/notify.ts`); and **Anthropic's API**, used by `apps/web/src/lib/translate.ts` to translate a **question-bank question** the content team types, and since the gigs of 30 September 2026 a question a teacher writes for the bank when that teacher asks for a draft (`draftTranslations`, `apps/web/src/lib/gig-questions.ts`; added here on 14 November 2026) — the input is the question text, never a pupil's data, and it runs only when `ANTHROPIC_API_KEY` is set. And **the assistant's model endpoints** (`ASSISTANT_MODEL_URL`, `ASSISTANT_EMBED_URL`; [decision 0005](0005-assistant-model-endpoint.md)): a person's question, stripped of names, ids, codes, e-mails, phone numbers and links, with public textbook passages, the platform's own help and the person's own allow-listed doors' answers, likewise stripped; the owner's machine during Phases A to D, a zero-retention host only by 0005's amendment.
 
 ## What the app deliberately does not hold
 
@@ -111,7 +111,7 @@ Cited by `apps/mobile/store/privacy-answers.md` and both listings.
 2. [ ] Apple App Privacy answers and Google Data safety answers copied from `privacy-answers.md`; every "collected" line maps to a row above.
 3. [ ] No Kids Category (Apple) and no Designed for Families enrolment (Play); Play target audience declared as a mixed audience that includes children under 13; Families policy self-certification: no ads, no analytics SDK, no AAID.
 4. [ ] IARC / Apple age questionnaire: users interact (messages, bulletin), UGC moderated (row 11), no location sharing, no purchases, no unrestricted web.
-5. [x] Permissions in `app.json` match shipped features: notifications only (Gap 1, closed in Phase 6).
+5. [x] Permissions in `app.json` match shipped features and each is named in `privacy-answers.md`: notifications, the camera for a photographed hand-in, and location while the app is in use on a driver's phone during a bus trip (Gap 1; this line said "notifications only" until 14 November 2026). `apps/mobile/test/lib/ta-decision-261-store-permissions.test.ts` fails when `app.json` asks for something the store answers do not name.
 6. [ ] Apple Guideline 4.8: the iOS sign-in offers Google SSO; confirm the education-account exception applies, or hide the button on iOS, or add Sign in with Apple (the server already supports `apple`, `sso.ts`).
 7. [x] Sign-out on a shared phone clears the outbox, an unsent crash report, the query cache, `expo-image`'s caches and the files handed to the share sheet (Gap 2, closed in Phase 6 and on 2026-10-01).
 8. [ ] Push notification text sent through Expo/APNs/FCM is reviewed so a notification never carries more than the app screen would (row 18).
@@ -176,3 +176,120 @@ waiting):
   and the same person's texts at another school are left as they are.
 - Each sweep's audit row (`retention.sweep`) carries the counts and the four day dials; nothing deleted here names a
   person in it.
+
+## Amendment of 14 November 2026 — a browser's notices belong to the sign-in that turned them on
+
+The testing analysis of 13 November 2026 (TA-041) found that a browser's push registration named only the person:
+pressing Sign out, signing that browser out from another device, or the sign-in running out left the registration
+live, and a shared family, library or office computer went on showing the person's notices (a child marked absent, a
+new mark, a message) to whoever sat at it. This was taken on the owner's instruction of 14 November 2026, "lets do all
+the recommendations for all decisions in one go", given without reading the option list, so the choice is the
+coordinating session's recommendation and can be revisited:
+
+**A browser's notices belong to the sign-in that turned them on. Pressing Sign out first switches that browser's
+notices off and tells the server; ending the sign-in from anywhere, or its running out after its fixed 30 days, stops
+them; no notice is sent to a registration whose sign-in has ended or that names none. A registration made before the
+link is neither deleted nor sent to until its own person next opens the site signed in, when the browser links itself
+again; a different person signing in on that browser turns notices on themselves and never inherits them.**
+
+Row 20 above is corrected with this: a web sign-in lasts a fixed 30 days and does not slide; only the phone's does.
+The inventory gains one row, in the columns of the table above:
+
+| # | Data about a child (model / file) | Purpose | Who can see it (rule) | Stored | Retention as coded | Basis |
+|---|---|---|---|---|---|---|
+| 34 | **Browser push registration** (`PushSubscription`: the push service's endpoint and the two keys the browser made, the browser's user agent, the sign-in it was made under, counts of failed sends) | Delivering notices to a browser | The server only; the endpoint is called at the browser's own push service (Google, Mozilla, Apple, Microsoft) with the notice encrypted to the browser's key | Server. Written when the person turns notices on (`POST /api/push`), under the sign-in that did it (`sessionId`). The browser keeps its own subscription and, in its local storage, the id of the person who turned notices on there (`apps/web/src/lib/push-client.ts`) | **Sent to only while its sign-in is alive** (`sendPush`, `apps/web/src/lib/notify.ts`). **Deleted on Sign out** (the page unsubscribes the browser and calls `DELETE /api/push` before the form posts, `sign-out-form.tsx`; `destroySession` removes the sign-in's registration as well), when that browser is signed out from another device (`revokeSession`), on sign out everywhere, a password reset or two-step sign-in being turned on (`revokeAllAccess`), when the person turns notices off, and when the push service says the browser dropped it (404/410) or after eight refusals. A registration whose sign-in ran out stays unsent and goes with the sign-in's row seven days later (`retention:sweep`, row 20); one made before the link stays unsent until its own person's next signed-in visit links it (`PATCH /api/push`) | S |
+
+- **The same person only.** A signed-in page asks the server to link the subscription its browser holds to the sign-in
+  it now carries (`relinkPush`, from the root layout's runtime). The server links a registration of that same person
+  and no other; where it holds none, the browser registers afresh only for the person its local note names. A
+  registration that turns out to belong to somebody other than the person now signed in on that browser is unlinked,
+  not deleted, so the first person's notices stop there until they sign in on it again.
+- **The switch tells the truth.** `GET /api/push` answers "on" only for a registration that belongs to the sign-in
+  asking, and counts only registrations whose sign-in is alive; the settings card says that signing out turns
+  notices off on this browser (`push.signOutTurnsOff`, in English, Hindi and Marathi).
+- **On the record.** Turning notices on (`push.subscribe`), a link made at sign-in (`push.relink`) and a registration
+  unlinked because another person signed in on its browser (`push.unlink`) each write an audit row in the same
+  transaction as the change; none carries an endpoint, a key or a name.
+
+## Amendment of 14 November 2026 — what the public texts say
+
+The testing analysis of 13 November 2026 found the public texts out of step with the product. TA-261: the privacy
+page, the store listings and the store forms' answers said the app holds no location, asks one permission and texts
+only reset codes, and that nobody outside the school sees a pupil's data, while since 4 October 2026 a driver's phone
+sends the bus's position and each pupil's boarding is timed, absence, fee, circular and incident notices go by text
+and WhatsApp, and this document itself still said "No location" and had "notifications only" ticked. TA-410: the
+same page, the Safety Centre and this document's first paragraph said the company's team sees nothing inside a
+school and looks only for a written reason and a bounded time, while access has been always on since 9 August 2026.
+
+**Decided by the owner on 14 November 2026.** On TA-261 with the words "Yes to all six", answering one table that
+gave, for each of six items, what happens today, the coordinating session's recommendation and its main
+alternative; the owner had been told beforehand that this one needs their own word because it is a published
+statement of what the company collects and keeps, and did not choose among the fuller option lists, so the choice
+can be revisited. On TA-410 first on their instruction "lets do all the recommendations for all decisions in one
+go", and then, told that it states publicly for the first time that the company's team can read every pupil's name
+at any time and that a middle option would instead ask for a reason before names or search, in their own words:
+"Yes, say so" ([decision 0009](0009-operator-access-always-on.md)).
+
+**One rewrite of every public privacy text, in English, Hindi and Marathi**, so that counsel reads once: the privacy
+page (`privacy.*` in `packages/i18n/src`, drawn by `apps/web/src/app/privacy/page.tsx`), the account-closing page
+(`deletion.*`), the home page's sentence (`landing.dataMinors`), the school's sign-up note (`register.dataNote`,
+which also no longer promises an export-or-delete-everything setting that does not exist), the Safety Centre's
+sentence (`safety.operatorBody`), the three store listings (`apps/mobile/store/listing.*.md`) and the store forms'
+answers (`apps/mobile/store/privacy-answers.md`). The bare phrase "no tracking" is gone from all of them: each says
+what is kept and for how long. The page's date is 14 November 2026. **Counsel and a native speaker of each language
+read the text before go-live step 0.17 and before any school is shown it; that stays on the owner's list.** The Act
+and its Rules were read only in secondary copies, so the text claims no legal exemption and nothing here is legal
+advice.
+
+### Rows added to the inventory
+
+| # | Data about a child (model / file) | Purpose | Who can see it (rule) | Stored | Retention as coded | Basis |
+|---|---|---|---|---|---|---|
+| 35 | **The bus's position during a trip**: latitude, longitude, speed, accuracy and the instant, from the **driver's** phone every 10 to 15 seconds of a live trip (`TripPosition`; `apps/mobile/src/lib/trip-location-platform.native.ts`, `trip-positions.ts`; `recordPositions` in `apps/web/src/lib/transport.ts`). The bus, never the rider: no pupil's, guardian's or teacher's phone is asked for a location. The driver agrees to the location sentence once (`consentToLocation`) and the phone asks its own permission at the first trip | Showing the families of the pupils on a bus where it is | The guardians of a pupil allotted to that bus and the school's office, on a map (`apps/web/src/components/transport/family-view.tsx`, `bus-map.tsx`); the driver | Server. Phone: a batch waits in the outbox while there is no signal | **30 days**, then deleted by `retention:sweep` (`RETENTION_TRIP_POSITIONS_DAYS`). Each pupil's boarding and alighting times are row 31: one year | E; the driver's own consent for their phone |
+| 36 | **A conversation with the assistant**: what the person typed and the answer shown, and the question as the model saw it, with names, ids, codes, e-mail addresses and phone numbers replaced by placeholders (`AssistantConversation`, `AssistantMessage`; `apps/web/src/lib/assistant/strip.ts`). The assistant is **off unless the school turns it on** (the `ASSISTANT` module, itself behind a platform switch the operator holds) | Answering a question about the app or a chapter | The person who asked; the use is counted for the school by number, never by word (`AssistantUsage`) | Server. The model **runs on the company's own machine** (`ASSISTANT_MODEL_URL`, `apps/web/src/lib/assistant-env.ts`); nothing is sent to an outside AI company, and a hosted endpoint would be [decision 0005](0005-assistant-model-endpoint.md)'s to allow and this row's to say first | **30 days** after the conversation's last message (`RETENTION_ASSISTANT_DAYS`) | E, P |
+| 37 | **A college student's placement application**: the frozen record the student applied with, the offer and the answer (`PlacementProfile`, `DriveApplication`; `apps/web/src/lib/placement.ts`) | Applying to a company's recruitment drive through the college's placement cell | The student, the placement cell, and the **recruiter** of the company whose drive it is, for consented applications only: an adult's applying is the consent, and a student under 18's application waits with no `consentAt` until a guardian agrees (`guardianConsentToApplication`) | Server | Kept with the membership | **C** |
+| 38 | **Fees**: what the school asked of a pupil, what was paid, when and by which method, the receipt and any refund (`FeeDemand`, `FeePayment`, `FeeReceipt`, `FeeRefund`; `apps/web/src/lib/fees.ts`) | The school's fee register; money never touches the platform ([decision 0003](0003-fees-money-never-touches-platform.md)) | The office; the pupil's guardians; the pupil from the age the school sets | Server. Card and bank details are typed on the gateway's own page and never reach the server | Kept: the school's financial record | E |
+
+### Permissions the phone asks for
+
+Three, each by the feature that uses it (Gap 1's rule), and each named in the table "Permissions the app asks for"
+of `apps/mobile/store/privacy-answers.md`, which a test holds to `app.json`: **notifications** (after sign-in);
+the **camera** (a pupil's first photographed hand-in); and **location while the app is in use**, precise, on a
+**driver's** phone when a bus trip is started, kept sending while the phone is locked for the length of that trip
+(iPhone's background location mode and an Android foreground service; "always" location is not requested on either).
+The paragraph under "Child-specific rules on the phone" names the first two only and is to be read with this one.
+
+### Every outside company, named
+
+The list under "Every third-party destination the server talks to" predates most of these. As the code stands:
+
+| Company or service | What it carries | When | Where in the code |
+|---|---|---|---|
+| **Twilio** | Text messages **and WhatsApp messages**: the mobile number and the words, which can name a child. A reset code; and a notice of an absence, of a fee due, overdue or received, of a circular or of an incident | A reset code whenever one is sent to a mobile number; the notices only where the school has turned texts on and the platform's switch is on | `apps/web/src/lib/sms.ts`, `messaging.ts`, `message-templates.ts` (row 30) |
+| **Meta** (Facebook, Instagram) | What the school's office chooses to post to the school's own Page or account | Only where a school has connected one and the platform has a Meta app configured | `apps/web/src/lib/social-meta.ts`, `social.ts` |
+| **OpenStreetMap** | Map pictures for the bus map: its tile server sees the device's network address and which tiles were asked for, nothing about a pupil | When a bus map is drawn, in the browser or on a driver's phone | `apps/web/src/lib/csp.ts`, `components/transport/bus-map.tsx`, `apps/mobile/src/screens/driver/map.tsx` |
+| **Razorpay** | The amount, a reference (our payment's id) and what the payer types on its page. On a school fee, a plan and a paid session alike, its page is handed the payer's name and e-mail as prefill and, as the line under the title, the pupil's name (on a plan, the name of the person the plan is for); the title and the order's notes carry the school's name, the session's title or the plan. Of an expert who is paid through it: name, e-mail, mobile number, address, PAN and bank account, to open the linked account | Where a school takes fees online (the school's own account) and for a plan or a paid session bought from the platform; an expert's details when the expert, or the operator, presses to link the account | `apps/web/src/lib/gateway.ts`, `gig-gateway.ts`, `app/(app)/parent/fees/online-flow.tsx`, `components/gigs/seat-checkout.tsx` (a paid session and, through `app/account/plan/buy.tsx`, a plan; the phone opens these web pages), `linkExpert` in `gig-payments.ts` |
+| **Anthropic** | The text of a question for the shared bank, for translation: one the content team types, and one a teacher writes for the bank when that teacher asks for a draft; the stem, the choices and the solution only, never anything from a pupil's record | Only when `ANTHROPIC_API_KEY` is set; the content team's on saving the question, a teacher's on pressing for a draft | `apps/web/src/lib/translate.ts`, called by `app-admin.ts` and by `draftTranslations` in `gig-questions.ts` |
+| Apple, Google and Expo | A notification's title and body, for push | Row 18 | `apps/web/src/lib/expo-push.ts` |
+| Google, Microsoft, Apple | Sign-in, where a school turns it on | As before | `apps/web/src/lib/sso.ts` |
+| The mail relay the deployment sets | Sign-in links, invitations, digests | As before | `apps/web/src/lib/email.ts` |
+| A storage bucket, where one is configured | Uploaded files, cleaned; the server alone holds the keys | Gap 6 | `apps/web/src/lib/blob-store.ts` |
+
+The assistant's model endpoint is **not** on this list: it is the company's own machine (row 36).
+
+### The keeping periods the page states
+
+The privacy page states these as **defaults the operator may change** (`RETENTION_DEFAULTS` in
+`apps/web/src/lib/env.ts`), and `apps/web/tests/ta-decision-410-261-privacy-texts.test.ts` holds the three it
+names in days to the code: the bus's positions 30 days; a pupil's boarding times, texts with their number and
+words, closed enquiries and refused or withdrawn expert applications one year; an assistant conversation 30 days
+after its last message; the audit log two years; a read notification a year, unless the school sets another
+period; a sign-in session and a sign-in link or code a week after they end. When a default changes, the page's
+sentence and its date change with it.
+
+### The company's team
+
+The first paragraph of the Frame now says it: access to every school is always on, each visit is recorded and shown
+to the school, and the privacy page, the sign-up note, the home page, the store listings and the Safety Centre say
+so in the same words. What a visit row holds, how the school's screens word it, and the record of the decision are
+in [decision 0009](0009-operator-access-always-on.md).

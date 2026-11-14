@@ -43,12 +43,13 @@ async function main() {
     process.exit(1);
   }
 
-  const subs = await db.pushSubscription.count({ where: { userId: user.id } });
+  // Only the browsers a send reaches (TA-041): a registration is sent to while the sign-in that turned it on lives.
+  const subs = await db.pushSubscription.count({ where: { userId: user.id, session: { revokedAt: null, expiresAt: { gt: new Date() } } } });
   if (subs === 0) {
     // Not an error in the configuration — an honest absence, and the commonest
     // reason a test push "does nothing".
     console.error(`${user.name} has no registered devices, so there is nothing to push to.`);
-    console.error("Turn notifications on in the app on a device first, then run this again.");
+    console.error("Turn notifications on in the app on a device first (and stay signed in there), then run this again.");
     process.exit(1);
   }
 

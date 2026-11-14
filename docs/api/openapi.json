@@ -9971,6 +9971,15 @@
                           "reason": {
                             "type": "string"
                           },
+                          "kind": {
+                            "type": "string",
+                            "enum": [
+                              "VISIT",
+                              "COLLEGES_LIST",
+                              "REASON"
+                            ],
+                            "default": "REASON"
+                          },
                           "startedAt": {
                             "type": "string",
                             "format": "date-time"
@@ -37474,6 +37483,15 @@
                           },
                           "reason": {
                             "type": "string"
+                          },
+                          "kind": {
+                            "type": "string",
+                            "enum": [
+                              "VISIT",
+                              "COLLEGES_LIST",
+                              "REASON"
+                            ],
+                            "default": "REASON"
                           },
                           "startedAt": {
                             "$ref": "#/properties/school/properties/createdAt"
@@ -100910,7 +100928,7 @@
     },
     "/api/v1/gigs/sessions/book": {
       "post": {
-        "summary": "A pupil asks for a seat, which waits for a guardian, or a guardian takes one for their child; refused past the free allowance or when the last seat has gone",
+        "summary": "A pupil asks for a seat, which waits for a guardian, or a guardian takes one for their child; refused past the free allowance or when the last seat has gone, and an expert's priced time refused while the expert keeps no free one-to-one open (a seat already held stands)",
         "description": "Roles: STUDENT, PARENT.",
         "security": [
           {
@@ -101121,7 +101139,7 @@
     },
     "/api/v1/gigs/sessions/{bookingId}/consent": {
       "post": {
-        "summary": "A guardian agrees to their child's ask, or declines it and the seat is given back",
+        "summary": "A guardian agrees to their child's ask, or declines it and the seat is given back; a yes to an expert's priced time while the expert keeps no free one-to-one open is refused, the ask cancelled and the seat given back, and the family told why",
         "description": "Roles: PARENT.",
         "security": [
           {
@@ -102498,6 +102516,9 @@
                           "type": "boolean"
                         },
                         "oneToOnesOwed": {
+                          "type": "integer"
+                        },
+                        "pricedOffSale": {
                           "type": "integer"
                         },
                         "canCharge": {
@@ -104328,6 +104349,9 @@
                         "oneToOnesOwed": {
                           "type": "integer"
                         },
+                        "pricedOffSale": {
+                          "type": "integer"
+                        },
                         "canCharge": {
                           "type": "boolean"
                         },
@@ -104607,6 +104631,9 @@
                           "type": "boolean"
                         },
                         "oneToOnesOwed": {
+                          "type": "integer"
+                        },
+                        "pricedOffSale": {
                           "type": "integer"
                         },
                         "canCharge": {
@@ -104964,6 +104991,9 @@
                           "type": "boolean"
                         },
                         "oneToOnesOwed": {
+                          "type": "integer"
+                        },
+                        "pricedOffSale": {
                           "type": "integer"
                         },
                         "canCharge": {
@@ -207455,7 +207485,7 @@
     },
     "/api/v1/duties/teaching-practice": {
       "get": {
-        "summary": "The teaching-practice coordinator's desk: practice schools, each student teacher's postings with the lessons watched, the year's NCTE weeks (`offered` false without EDUCATION)",
+        "summary": "The teaching-practice coordinator's desk: practice schools, each student teacher's postings with the lessons watched, and the year's weeks served (a posting's days once they have passed, by the college's calendar) out of every final-year student teacher on the education programmes, posted or not (`offered` false without EDUCATION)",
         "description": "Roles: ADMIN, PRINCIPAL, FACULTY, HOD. A FACULTY or HOD only holding PRACTICE_TEACHING_COORDINATOR. Only while the school has ACADEMICS switched on.",
         "security": [
           {
@@ -207924,7 +207954,7 @@
     },
     "/api/v1/duties/teaching-practice/postings": {
       "post": {
-        "summary": "A student teacher posted to a practice school for a span of days with the lessons planned, new or corrected by its id (409 for an overlapping posting, or for a correction of an observed posting that changes its student or leaves an observation outside its days, TA-381; audited)",
+        "summary": "A student teacher posted to a practice school for a span of days with the lessons planned, new or corrected by its id (422 for a posting longer than a year, a typing slip, TA-379; 409 for an overlapping posting, or for a correction of an observed posting that changes its student or leaves an observation outside its days, TA-381; audited)",
         "description": "Roles: ADMIN, FACULTY, HOD. A FACULTY or HOD only holding PRACTICE_TEACHING_COORDINATOR. Only while the school has ACADEMICS switched on.",
         "security": [
           {

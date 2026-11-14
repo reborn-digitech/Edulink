@@ -7,6 +7,7 @@ import { getSession, listContexts } from "@/lib/session";
 import { suspendedSchoolsFor } from "@/lib/membership";
 import { getT } from "@/lib/i18n/server";
 import { ROLE_HOME } from "@/lib/constants";
+import { SignOutForm } from "@/components/sign-out-form";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -105,11 +106,11 @@ export default async function SuspendedPage() {
         <Button asChild variant="secondary" block>
           <a href="/account">{t("nav.account")}</a>
         </Button>
-        <form action="/api/auth/logout" method="post">
+        <SignOutForm>
           <Button type="submit" variant="ghost" block>
             {t("suspended.signOut")}
           </Button>
-        </form>
+        </SignOutForm>
       </div>
     </main>
   );
