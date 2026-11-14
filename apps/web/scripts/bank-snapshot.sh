@@ -13,8 +13,10 @@ CHANGED=$(git status --porcelain -- "$FOLDER" | grep -c '^ M\|^M ' || true)
 REMOVED=$(git status --porcelain -- "$FOLDER" | grep -c '^ D\|^D ' || true)
 QUESTIONS=$(ls "$FOLDER"/*.json 2>/dev/null | wc -l | tr -d ' ')
 git add -A -- "$FOLDER"
-git commit -q -m "The question bank's generated files as the generation run left them on $(date '+%-d %B %Y') (daily snapshot): $ADDED new, $CHANGED changed and $REMOVED removed under content/quiz/generated, $QUESTIONS chapter batch files in all. No code, so CI is skipped. Verified: the files are what the run wrote. Untested: nothing to test. [skip ci]
+# --only with the folder as the pathspec (TA-441): a bare commit took the whole index, so a file another builder had
+# staged rode along under this message with CI skipped; now what is staged elsewhere stays staged and uncommitted.
+git commit -q --only -m "The question bank's generated files as the generation run left them on $(date '+%-d %B %Y') (daily snapshot): $ADDED new, $CHANGED changed and $REMOVED removed under content/quiz/generated, $QUESTIONS chapter batch files in all. No code, so CI is skipped. Verified: the files are what the run wrote. Untested: nothing to test. [skip ci]
 
-Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>"
+Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>" -- "$FOLDER"
 git push -q reborn master && git push -q origin master
 echo "snapshot committed: $ADDED new, $CHANGED changed, $REMOVED removed; pushed"

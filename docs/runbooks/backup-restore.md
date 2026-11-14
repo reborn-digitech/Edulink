@@ -33,8 +33,10 @@ Both URLs, every time: `db-grants.mjs` grants to the role named in
 `DATABASE_URL` and then connects AS it to prove it can read. Given only the
 owner's URL it falls back to `.env`'s `DATABASE_URL` — the laptop's dev
 database — and its check proves nothing about the restore. `createdb` in
-`restore.sh` refuses a name that already exists, so a scratch name that is
-taken stops the drill rather than restoring over it. The scripts strip
+`restore.sh` runs on `TARGET_ADMIN_URL`'s own server and refuses a name that
+already exists there, so a scratch name that is taken stops the drill rather
+than restoring over it; a `TARGET_ADMIN_URL` naming another database than the
+one given is refused before anything is created (TA-442). The scripts strip
 Prisma's pool parameters before libpq sees a URL (`apps/web/scripts/pg-url.mjs`).
 
 `db-grants.mjs` is the step people forget: a dump restores tables and rows,
@@ -64,9 +66,21 @@ rebuildable came back from the scripts in two hours; the rest (hand-entered data
   moment: stop Postgres, move the data directory aside, unpack the newest base into a fresh data directory, add
   `restore_command = 'cp /Users/chinmaykulkarni/Documents/Relay/apps/web/storage/pitr/wal/%f %p'` and
   `recovery_target_time = '<moment>'` to its `postgresql.conf`, touch `recovery.signal`, start.
+- **The order and the check (TA-521)**: the morning task runs `npm run db:backup` first and alone, before
+  `npm run bank:snapshot` and its push to the two remotes, so a refused push can never stop the dump; then
+  `node scripts/db-backup-age.mjs` (from `apps/web`), which reads the off-machine folder and exits 1, naming the
+  file, when the newest dump is older than 26 hours or the newest base backup older than eight days. Its lines go
+  into the morning report; a red line there means the backups have stopped, whatever else the task did. The task
+  itself lives outside the repository (the desktop app's scheduled tasks) and runs only while the laptop is awake
+  and the app open, which is why the age is asked and not assumed; a launchd agent or the crontab running
+  `npm run db:backup` independently of the app is the sturdier home for it.
 - **The drill**: `npm run db:drill` restores the newest off-machine dump into `edulink_drill`, compares the table
   count and six key tables with the live database, and drops the scratch. The first of each month from the task;
-  it must pass.
+  it must pass. Since TA-438 it also fails when School, User or Membership restored empty, with fewer than half
+  the rows of the last drill that passed, or from a dump less than half that drill's size
+  (`scripts/drill-verdict.mjs`); a pass is recorded in the off-machine folder (`.drill-last-pass.json`) and
+  `db:backup` never prunes the dump it names, however old. `db:backup` refuses a database that is not on this
+  machine (TA-254) and takes one dump at a time, each named by the second and its process id (TA-418).
 
 ## Drill record
 

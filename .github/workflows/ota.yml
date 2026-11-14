@@ -38,7 +38,8 @@ concurrency: ota-${{ inputs.channel }}
 
 jobs:
   update:
-    runs-on: ubuntu-latest
+    # Pinned as battery.yml pins it (TA-461): ubuntu-latest moves to 26.04, where no battery run has been seen.
+    runs-on: ubuntu-24.04
     timeout-minutes: 30
     steps:
       # First, before anything is installed: no update without the API it
@@ -76,6 +77,10 @@ jobs:
       - name: The update is JS only
         run: pnpm --filter @edulink/mobile ota:guard
       - name: The mobile battery
+        # TA-461: jest holds every suite's result and the coverage map, and crossed the runner's ~2 GB default heap
+        # at 178 suites (battery.yml's run 36846750919); the same four as battery.yml's phone step.
+        env:
+          NODE_OPTIONS: --max-old-space-size=4096
         run: pnpm --filter @edulink/mobile battery
       - name: Bundle size
         run: pnpm --filter @edulink/mobile bundle:check

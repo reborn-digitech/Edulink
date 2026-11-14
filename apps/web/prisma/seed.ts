@@ -13,6 +13,7 @@ import { hash } from "@node-rs/argon2";
 import { classCode, schoolCode, slugify, studentCode } from "../src/lib/codes";
 import { addDaysToKey, todayKey, isTeachingDay } from "../src/lib/dates";
 import { refuseUnlessLocalDatabase } from "../scripts/local-db-guard.mjs";
+import { seedVerdict } from "../scripts/db-fence.mjs";
 
 const db = new PrismaClient();
 
@@ -29,6 +30,10 @@ async function main() {
   // "localhost" too — the server is asked where it answered).
   await refuseUnlessLocalDatabase(db, "db:seed");
   console.log("Seeding EduLink…");
+  // TA-437: and never over data. db:migrate, db:push and db:reset dump first; the seed did not, and wipe() below
+  // deletes every school, so a database that holds one is refused unless db:reset's consent is set.
+  const seedable = seedVerdict(await db.school.count(), { resetConsent: process.env.EDULINK_DB_RESET === "1" });
+  if (!seedable.ok) throw new Error(`refusing to run db:seed: ${seedable.why}.`);
 
   // One hash, reused: argon2 is deliberately slow, and hashing 40 identical
   // dev passwords separately turns a 2-second seed into a 40-second one.

@@ -39,7 +39,8 @@ describe("localDatabaseVerdict — is the database server on this machine?", () 
 });
 
 describe("refuseUnlessLocalDatabase", () => {
-  const client = (addr: string | null) => ({ $queryRawUnsafe: async <T,>() => [{ addr }] as T });
+  // TA-523: the guard asks the database's name with the address; the dev database's name is one it holds as local.
+  const client = (addr: string | null) => ({ $queryRawUnsafe: async <T,>() => [{ addr, name: "edulink_dev" }] as T });
 
   it("asks the server and throws with the reason, naming the script", async () => {
     await expect(refuseUnlessLocalDatabase(client("fdaa::3"), "zz:fixtures")).rejects.toThrow(/refusing to run zz:fixtures: .*fly proxy/);

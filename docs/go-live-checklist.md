@@ -23,7 +23,7 @@ Tick each line with the date and who did it. Nothing here is optional.
 
 ## Data hygiene
 - [ ] The operator account minted through `npm run superuser -- <email>` on production
-- [ ] The eight shared-password test accounts scrambled (`Sarathi-Kestrel-2026` is not a production password)
+- [ ] The thirteen shared-password test accounts scrambled (their password is not a production password, and it was printed here while the repository was public: scramble them on every database that holds them, not only before production)
 - [ ] The ZZ fixture absent from production (`npm run zz:fixtures -- --teardown` was never needed because it was never created there)
 - [ ] The dev seed (Riverside, Oakfield) absent from production
 

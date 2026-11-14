@@ -15,7 +15,7 @@ dies in the release step rather than serving.
 | Variable | Notes |
 | --- | --- |
 | `DATABASE_URL` | the **app** role: `edulink_app`, no BYPASSRLS, no ownership |
-| `DATABASE_ADMIN_URL` | the owner; used only by the release step and the jobs |
+| `DATABASE_ADMIN_URL` | the owner; used only by the release step and the jobs. Fly gives an app's secrets to every machine of it, so a production web process (no `JOBS_RUNNER=1`) drops `DATABASE_ADMIN_URL` from its environment at boot (`src/lib/owner-url.ts`, from `instrumentation.ts`), before any request is served (TA-444); a second Fly app for the jobs and the release, with its own secrets, would keep it off those machines altogether |
 | `NEXT_PUBLIC_APP_URL` | `https://app.example`; magic links and the SSO redirect URI are built from it |
 | `NEXT_PUBLIC_VAPID_PUBLIC_KEY`, `VAPID_PRIVATE_KEY`, `VAPID_SUBJECT` | `npm run vapid` once; never rotate casually — every subscription is bound to the pair. The public half is **also a build argument** (Release, step 2): `next build` fixes it into the browser's bundle, so a value set only on the host never reaches a browser (the server says so at boot and web push stays off; phones are unaffected). The server compares the built-in public half with the runtime private half at boot and refuses a mismatch |
 | `EMAIL_TRANSPORT=smtp` + `SMTP_*`, `EMAIL_FROM` | proven with `npm run email:test -- you@example.com` |
@@ -57,6 +57,12 @@ dies in the release step rather than serving.
 Migrations are add-only for one release: a column or table goes in now, the
 code that stops reading the old one ships now, the drop ships next release.
 That is what makes the rollback below a plain image swap — when it was kept.
+A migration that drops or renames a column or table, sets an existing column
+`SET NOT NULL`, or adds a `NOT NULL` column with no default also breaks the
+old machines of a rolling release until they are replaced. Since TA-439 the
+rule is checked: `tests/ta-ops-ci-dr-ci.test.ts` lists every migration that is
+not add-only, with its reason, and fails on a new one until it is added there
+and the last safe rollback point below is moved to it.
 
 ## Rollback
 
@@ -71,9 +77,13 @@ Redeploy the previous image. There are no down migrations, so the rule is:
 > recovery into a new database), not an image swap.
 
 `20261002100602_gig_company_collects` (`a11a7aa4`) dropped and renamed
-columns, so no image older than it runs on a database that has it: the last
-safe rollback point is that commit or later. Before any rollback, ask the
-database what the target image does not know:
+columns, `20261011002832_quiz_publish_jobs` (`fcd2bb47`) renamed two
+QuizQuestion columns, and `20261031120000_library_eresource_name_key`
+(`f3ae34ec`) set LibraryEResource.nameKey `SET NOT NULL`, so no image older
+than the newest of them runs on a database that has it: the last safe
+rollback point is the commit that added
+`20261031120000_library_eresource_name_key` (`f3ae34ec`) or later. Before any
+rollback, ask the database what the target image does not know:
 
 ```bash
 docker run --rm -e DATABASE_URL="$OWNER_URL" ghcr.io/<owner>/edulink-web:<target sha> prisma migrate status
@@ -86,8 +96,9 @@ target image, `prisma migrate status` reads that image's
 `prisma/migrations` and lists the migrations "applied to the database but
 missing from the local migrations folder". Read each one's `migration.sql`
 (`git show <new sha>:apps/web/prisma/migrations/<name>/migration.sql`): any
-`DROP` or `RENAME` among them means restore, not swap. None listed, or only
-`CREATE`/`ADD`, and the swap is safe. Rehearse it on staging before the first
+`DROP COLUMN`, `DROP TABLE`, `RENAME`, `SET NOT NULL` or `ADD COLUMN … NOT NULL`
+without a `DEFAULT` among them means restore, not swap. None listed, or only
+`CREATE`/`ADD` of nullable or defaulted columns, and the swap is safe. Rehearse it on staging before the first
 real release and note the time it took beside the restore drill in
 `backup-restore.md`.
 

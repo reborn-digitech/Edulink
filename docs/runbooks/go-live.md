@@ -302,9 +302,11 @@ and one-off scripts connect as the owner. Never run `db:seed`, `db:reset` or `db
 - [ ] **2.1 Open a terminal used for production and nothing else** — engineer
 
   **What.** In this terminal hold the two URLs without echoing them, and close it when done. Through a
-  `localhost` tunnel (`fly proxy`, `fly mpg proxy`) `zz:fixtures`, `demo:schools`, `db:seed` and `db:reset` now
-  ask the server where it answered and refuse Fly's private network; the others cannot tell production from a
-  laptop. In this terminal never run `zz:fixtures`, `demo:schools`, `db:seed`, `db:reset`, `db:push`,
+  `localhost` tunnel (`fly proxy`, `fly mpg proxy`) `zz:fixtures`, `demo:schools`, `db:seed`, `db:reset` and
+  `db:backup` (so `db:migrate` and `db:push`) ask the server where it answered and refuse Fly's private network,
+  and a loopback or socket answer counts only for a database named `edulink_dev`, `edulink_ci` or `edulink_test`
+  (TA-523: an `ssh -L` or `kubectl port-forward` tunnel ends on the database host's own loopback, so the address
+  alone cannot tell); the others cannot tell production from a laptop. In this terminal never run `zz:fixtures`, `demo:schools`, `db:seed`, `db:reset`, `db:push`,
   `sweep`, `api:sweep`, `load:check`, `zz:token` or `zz:fleet`.
 
   ```bash
@@ -331,13 +333,14 @@ and one-off scripts connect as the owner. Never run `db:seed`, `db:reset` or `db
 
 - [ ] **2.3 Apply the migrations, the grants and the policies** — engineer
 
-  **What.** `db:migrate` is `prisma migrate deploy` as the owner, then `db-grants.mjs`, which grants the app
+  **What.** `db:release` is `prisma migrate deploy` as the owner, then `db-grants.mjs`, which grants the app
   role, applies `prisma/rls.sql`, and proves the app role can read and cannot rewrite the audit log. Fly's release
   step runs the same command on every deploy; running it here first separates a database problem from a
-  deploy problem.
+  deploy problem. Never `db:migrate` here: it is the dev machine's, and dumps first onto this laptop and its
+  iCloud-synced Desktop (TA-254; `db-backup.mjs` now refuses a database that is not on this machine).
 
   ```bash
-  DATABASE_ADMIN_URL="$PROD_OWNER_URL" DATABASE_URL="$PROD_APP_URL" npm run db:migrate
+  DATABASE_ADMIN_URL="$PROD_OWNER_URL" DATABASE_URL="$PROD_APP_URL" npm run db:release
   ```
 
   **Verify.** `All migrations have been successfully applied.` and then
@@ -385,7 +388,7 @@ and one-off scripts connect as the owner. Never run `db:seed`, `db:reset` or `db
 
 ## Phase 3 — The web app on Fly
 
-`fly.toml`: app `edulink-web`, region `bom`, release command `npm run db:migrate`, rolling deploys, two process
+`fly.toml`: app `edulink-web`, region `bom`, release command `npm run db:release`, rolling deploys, two process
 groups (`web` serves on 3000; `jobs` runs `node scripts/jobs-runner.mjs` on loopback 3999), `min_machines_running = 2`,
 a health check on `/api/health` every 30 seconds, `shared-cpu-2x` with 4 GB, `TZ=Asia/Kolkata`.
 
@@ -457,7 +460,7 @@ a health check on `/api/health` every 30 seconds, `shared-cpu-2x` with 4 GB, `TZ
   A build without the push key still boots, says `[env] NEXT_PUBLIC_VAPID_PUBLIC_KEY: This build was made
   without…` in the log, and serves browsers no push; rebuild with it.
 
-  **Verify.** The output shows the release command `npm run db:migrate`, then `No pending migrations to apply.`
+  **Verify.** The output shows the release command `npm run db:release`, then `No pending migrations to apply.`
   (2.3 applied them) and `✓ Grants and policies restored, and edulink_app can read.`, then the machines start.
 
 - [ ] **3.4 Scale to two web machines and one jobs machine** — engineer
@@ -561,7 +564,7 @@ Nothing in this phase writes test data. Which scripts are safe here:
 | `npm run superuser`, `npm run appadmin`, `npm run expert:invite` (they write what they say) | `npm run api:sweep` (calls every door as every role and writes ZZ rows) |
 | `npm run quiz:import` (verifies first, idempotent) | `npm run load:check`, `npm run zz:fleet`, the k6 scripts in `ops/load` |
 | `npm run files:check` (reports only; `files:reclaim` deletes) | `npm run zz:fixtures`, `npm run zz:token`, `npm run demo:schools` |
-| `ops/backup.sh` (reads) | `npm run db:seed`, `db:reset` (both refuse a tunnel now; never try), `db:push` |
+| `ops/backup.sh` (reads) | `npm run db:seed`, `db:reset` (both refuse a Fly tunnel and any database not named as a local one, 2.1; never try), `db:push`, `db:migrate` (it dumps onto the laptop) |
 | `npm run sso:check` (reads the environment it is given) | `npm run data:audit` (mints sessions for real people and writes a report of real data into `docs/`): only on a restored copy (9.4) |
 
 - [ ] **4.1 The signed-out pages answer** — engineer
@@ -1025,7 +1028,7 @@ production API URL is an EAS environment variable, never a file. Run EAS command
 
   Use `--applied` instead if the repair completed the migration by hand.
 
-  **Verify.** `npm run db:migrate` (2.3) ends with the grants line.
+  **Verify.** `npm run db:release` (2.3) ends with the grants line.
 
 - [ ] **8.4 Restore the data** — engineer, owner
 
@@ -1076,7 +1079,7 @@ production API URL is an EAS environment variable, never a file. Run EAS command
   DATABASE_ADMIN_URL="$PROD_OWNER_URL" BACKUP_DIR=./backups BACKUP_BUCKET=s3://<backup bucket> ops/backup.sh
   ```
 
-  **Verify.** `backup ./backups/edulink-<stamp>.dump (<size>) in <n>s` and `copied to s3://…`.
+  **Verify.** `backup ./backups/edulink-<stamp>-<pid>.dump (<size>) in <n>s` and `copied to s3://…`.
 
 - [ ] **9.3 The restore drill** — engineer
 

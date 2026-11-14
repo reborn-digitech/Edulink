@@ -77,10 +77,10 @@ describe("the account", () => {
     await fireEvent.changeText(await screen.findByLabelText("Email address"), " New@zz.test ");
     expect(screen.getByText("We will email a code to new@zz.test to check it is yours.")).toBeTruthy();
     // The current password is asked for with the address: a session is not proof of the person.
-    await fireEvent.changeText(screen.getAllByLabelText("Your current password")[0]!, "Sarathi-Kestrel-2026");
+    await fireEvent.changeText(screen.getAllByLabelText("Your current password")[0]!, "zz-test-password-1");
     await fireEvent.press(screen.getByRole("button", { name: "Email me a code" }));
     expect(await screen.findByText("We sent a code to new@zz.test. It expires in 10 minutes.")).toBeTruthy();
-    expect(calls().find((c) => c.line === "POST /api/v1/account/email/code")?.body).toEqual({ email: "New@zz.test", password: "Sarathi-Kestrel-2026" });
+    expect(calls().find((c) => c.line === "POST /api/v1/account/email/code")?.body).toEqual({ email: "New@zz.test", password: "zz-test-password-1" });
     await fireEvent.changeText(screen.getByLabelText("The code"), "123456");
     await fireEvent.press(screen.getByRole("button", { name: "Confirm" }));
     expect(await screen.findByText("ZZ That code is not right.")).toBeTruthy();
@@ -105,7 +105,7 @@ describe("the account", () => {
 
     await fireEvent.changeText(screen.getByLabelText("Mobile number"), "12");
     // The second "Your current password" on the screen is the mobile section's; the first is the email's.
-    await fireEvent.changeText(screen.getAllByLabelText("Your current password")[1]!, "Sarathi-Kestrel-2026");
+    await fireEvent.changeText(screen.getAllByLabelText("Your current password")[1]!, "zz-test-password-1");
     await fireEvent.press(screen.getByRole("button", { name: "Text me a code" }));
     expect(await screen.findByText("ZZ That is not a mobile number.")).toBeTruthy();
     await fireEvent.changeText(screen.getByLabelText("Mobile number"), "98765 43210");
@@ -114,7 +114,7 @@ describe("the account", () => {
     await fireEvent.changeText(screen.getByLabelText("The code"), "654321");
     await fireEvent.press(screen.getByRole("button", { name: "Confirm" }));
     expect(await screen.findByText("Mobile number confirmed")).toBeTruthy();
-    expect(calls().filter((c) => c.line === "POST /api/v1/account/mobile/code").map((c) => c.body)).toEqual([{ phone: "12", password: "Sarathi-Kestrel-2026" }, { phone: "98765 43210", password: "Sarathi-Kestrel-2026" }]);
+    expect(calls().filter((c) => c.line === "POST /api/v1/account/mobile/code").map((c) => c.body)).toEqual([{ phone: "12", password: "zz-test-password-1" }, { phone: "98765 43210", password: "zz-test-password-1" }]);
     expect(calls().find((c) => c.line === "POST /api/v1/account/mobile/confirm")?.body).toEqual({ code: "654321" });
   });
 

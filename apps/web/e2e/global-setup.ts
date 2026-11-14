@@ -4,7 +4,9 @@ import { join } from "node:path";
 import { PrismaClient } from "@prisma/client";
 import { config } from "dotenv";
 import { dutiesForRole, PLATFORM_FEATURES } from "@edulink/contracts";
+import { missingActor } from "./expected-actor";
 import { HARNESS_EXAM_NAME } from "./harness-exam";
+import { refuseUnlessLocalDatabase } from "../scripts/local-db-guard.mjs";
 
 /**
  * Sessions for one actor per role on ZZ Northgate, written to e2e/.sessions.json.
@@ -50,6 +52,9 @@ async function mint(userId: string, role: string | null, schoolId: string | null
 }
 
 export default async function globalSetup() {
+  // A database on this machine only (TA-263): the run deletes sessions and switches every platform feature on,
+  // and a fly proxy or an exported production URL is "localhost" too. CI's service container passes on the runner.
+  await refuseUnlessLocalDatabase(db, "the Playwright suites' set-up");
   // Only the stale ones (TA-465): a run beside this one keeps its live sessions; global-teardown.ts removes this run's.
   await db.session.deleteMany({ where: { userAgent: "e2e", expiresAt: { lt: new Date() } } });
   const school = await db.school.findUnique({ where: { slug: "zz-northgate-school" } });
@@ -111,7 +116,9 @@ export default async function globalSetup() {
   // The module roles (3 Oct 2026), each a Northgate membership (zz-fixtures.ts buildModuleRoles), so the axe walk opens their homes.
   for (const [role, email] of [["DRIVER", "zz.driver01@zz.test"], ["LIBRARIAN", "zz.librarian@zz.test"], ["WARDEN", "zz.warden@zz.test"], ["ALUMNUS", "zz.alumni01@zz.test"]] as const) {
     const member = await db.membership.findFirst({ where: { schoolId: school.id, role, status: "ACTIVE", leftAt: null, user: { email } }, select: { userId: true } });
+    // TA-460: a role the fixture should hold and does not stops the set-up under CI, rather than leaving the walk.
     if (member) sessions[role] = { role, email, cookie: await mint(member.userId, role, school.id) };
+    else missingActor(role);
   }
 
   // The college's six staff roles (4 Oct 2026) at ZZ Vidya College, and the recruiter with no school (zz-college.ts), so the axe walk opens their homes.
@@ -120,8 +127,9 @@ export default async function globalSetup() {
     for (const [role, email] of [["FACULTY", "zz.faculty01@zz.test"], ["HOD", "zz.hod01@zz.test"], ["EXAM_CONTROLLER", "zz.examctrl@zz.test"], ["IQAC", "zz.iqac@zz.test"], ["TPO", "zz.tpo@zz.test"], ["ACCOUNTS", "zz.accounts@zz.test"]] as const) {
       const member = await db.membership.findFirst({ where: { schoolId: vidya.id, role, status: "ACTIVE", leftAt: null, user: { email } }, select: { userId: true } });
       if (member) sessions[role] = { role, email, cookie: await mint(member.userId, role, vidya.id) };
+      else missingActor(role);
     }
-  }
+  } else missingActor("ZZ Vidya College (FACULTY, HOD, EXAM_CONTROLLER, IQAC, TPO, ACCOUNTS, COLLEGE_ADMIN, COLLEGE_PRINCIPAL, COLLEGE_STUDENT)");
   // The college's office, head and a student at ZZ Vidya (B-21): the walk of 4 October found the college pages' sideways
   // scroll, unfocusable tables and squeezed inputs because no gate opened them as these three. Keyed apart from the school's
   // ADMIN, PRINCIPAL and STUDENT; `role` is the real role, whose NAV they walk.
@@ -129,6 +137,7 @@ export default async function globalSetup() {
     for (const [key, role, email] of [["COLLEGE_ADMIN", "ADMIN", "zz.cadmin@zz.test"], ["COLLEGE_PRINCIPAL", "PRINCIPAL", "zz.cprincipal@zz.test"], ["COLLEGE_STUDENT", "STUDENT", "zz.cstudent02@zz.test"]] as const) {
       const member = await db.membership.findFirst({ where: { schoolId: vidya.id, role, status: "ACTIVE", leftAt: null, user: { email } }, select: { userId: true } });
       if (member) sessions[key] = { role, email, cookie: await mint(member.userId, role, vidya.id) };
+      else missingActor(key);
     }
   }
   const recruiter = await db.recruiterProfile.findFirst({ where: { user: { email: "zz.recruiter01@zz.test" }, disabledAt: null }, select: { userId: true } });

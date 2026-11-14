@@ -14,6 +14,9 @@ export async function register() {
 
   const { assertEnv } = await import("./lib/env");
   assertEnv();
+  // TA-444: a production web machine does not keep the owner's connection URL it never uses (src/lib/owner-url.ts).
+  const { withholdOwnerUrl } = await import("./lib/owner-url");
+  withholdOwnerUrl();
 }
 
 /**

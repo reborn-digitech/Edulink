@@ -20,11 +20,44 @@
  * its Docker bridge address (172.16.0.0/12 or 192.168.0.0/16) though the
  * runner reaches it on localhost. Accepted only when GITHUB_ACTIONS=true,
  * which the runner sets and a laptop holding a production tunnel does not.
+ *
+ * TA-523: the loopback is not proof on its own. Through `ssh -L 5433:127.0.0.1:5432` to a database host, or a
+ * `kubectl port-forward` to a Postgres pod, the far end connects to that server's own loopback (or forwards its
+ * socket), and the server answers 127.0.0.1 or NULL. So a loopback or socket answer counts as this machine only
+ * when the database is one a laptop or CI holds by name: edulink_dev, edulink_ci, edulink_test, or a name listed in
+ * EDULINK_LOCAL_DATABASES (comma-separated). Production's database is `edulink` (go-live step 1.3).
  */
 import { pathToFileURL } from "node:url";
 
-/** The pure decision, for the tests: the server's address as Postgres reports it, and whether this is a CI runner. */
-export function localDatabaseVerdict(serverAddr, { ci = false } = {}) {
+/** The databases a developer's machine or CI holds by name. */
+export const KNOWN_LOCAL_DATABASES = ["edulink_dev", "edulink_ci", "edulink_test"];
+
+function localNames(extra) {
+  const fromEnv = String(process.env.EDULINK_LOCAL_DATABASES ?? "")
+    .split(",")
+    .map((n) => n.trim())
+    .filter(Boolean);
+  return new Set([...KNOWN_LOCAL_DATABASES, ...fromEnv, ...(extra ?? [])]);
+}
+
+/**
+ * The pure decision, for the tests: the server's address as Postgres reports it, whether this is a CI runner, and
+ * the database's own name (current_database()). With no `database` given the name is not asked, as before TA-523;
+ * refuseUnlessLocalDatabase always gives it.
+ */
+export function localDatabaseVerdict(serverAddr, { ci = false, database, knownLocal } = {}) {
+  const verdict = addressVerdict(serverAddr, { ci });
+  if (!verdict.local || database === undefined) return verdict;
+  if (!localNames(knownLocal).has(String(database))) {
+    return {
+      local: false,
+      why: `${verdict.why}, but the database is "${database || "(unreadable)"}", not one this machine holds by name (${[...localNames(knownLocal)].join(", ")}): a tunnel that ends on the database host's own loopback answers the same way. Add it to EDULINK_LOCAL_DATABASES only if it really is on this machine`,
+    };
+  }
+  return verdict;
+}
+
+function addressVerdict(serverAddr, { ci }) {
   if (serverAddr === null || serverAddr === undefined || serverAddr === "") {
     return { local: true, why: "the server answered on a unix socket, which only this machine can open" };
   }
@@ -51,6 +84,12 @@ export async function databaseServerAddress(client) {
   return rows[0]?.addr ?? null;
 }
 
+/** The address the server answered on and the database's own name, in one question (TA-523). */
+export async function databaseServerIdentity(client) {
+  const rows = await client.$queryRawUnsafe("SELECT host(inet_server_addr()) AS addr, current_database() AS name");
+  return { addr: rows[0]?.addr ?? null, name: typeof rows[0]?.name === "string" ? rows[0].name : "" };
+}
+
 /**
  * Throws, naming what was refused and why, unless the database is on this
  * machine. A production NODE_ENV is refused before anything is asked.
@@ -59,8 +98,8 @@ export async function refuseUnlessLocalDatabase(client, what) {
   if (process.env.NODE_ENV === "production") {
     throw new Error(`refusing to run ${what}: NODE_ENV=production. It writes known passwords or wipes schools, and is for a database on this machine only.`);
   }
-  const addr = await databaseServerAddress(client);
-  const verdict = localDatabaseVerdict(addr, { ci: process.env.GITHUB_ACTIONS === "true" });
+  const { addr, name } = await databaseServerIdentity(client);
+  const verdict = localDatabaseVerdict(addr, { ci: process.env.GITHUB_ACTIONS === "true", database: name });
   if (!verdict.local) {
     throw new Error(`refusing to run ${what}: ${verdict.why}. It writes known passwords or wipes schools, and is for a database on this machine only.`);
   }

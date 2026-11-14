@@ -2,3 +2,4 @@
 export type FenceVerdict = { ok: boolean; why?: string };
 export declare function fenceVerdict(argv: readonly string[], options?: { resetConsent?: boolean }): FenceVerdict;
 export declare function describeDatabase(url: string): string;
+export declare function seedVerdict(schoolCount: number, options?: { resetConsent?: boolean }): FenceVerdict;

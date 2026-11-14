@@ -14,10 +14,10 @@ describe("the fence around the database commands", () => {
     expect(fenceVerdict(["prisma", "migrate", "diff", "--from-schema-datamodel", "a.prisma", "--to-migrations", "prisma/migrations"]).ok).toBe(false);
     expect(fenceVerdict(["prisma", "migrate", "diff", "--from-migrations", "x"]).why).toMatch(/from-schema-datasource/);
   });
-  it("allows the diff against the live datasource, deploy, create-only and the seeds", () => {
+  it("allows the diff against the live datasource, deploy and the seeds; migrate dev, even create-only, is refused (TA-437)", () => {
     expect(fenceVerdict(["npx", "prisma", "migrate", "diff", "--from-schema-datasource", "prisma/schema.prisma", "--to-schema-datamodel", "prisma/schema.prisma", "--script"])).toEqual({ ok: true });
     expect(fenceVerdict(["prisma", "migrate", "deploy"])).toEqual({ ok: true });
-    expect(fenceVerdict(["prisma", "migrate", "dev", "--create-only"])).toEqual({ ok: true });
+    expect(fenceVerdict(["prisma", "migrate", "dev", "--create-only"]).ok).toBe(false);
     expect(fenceVerdict(["npx", "tsx", "prisma/seed.ts"])).toEqual({ ok: true });
     expect(fenceVerdict(["node", "scripts/local-db-guard.mjs", "db:reset"])).toEqual({ ok: true });
   });

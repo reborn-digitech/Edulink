@@ -79,7 +79,7 @@
     "typecheck": "tsc --noEmit",
     "test": "jest --ci",
     "test:contract": "jest --ci --config test/contract/jest.config.cjs",
-    "battery": "tsc --noEmit && eslint . && jest --ci --coverage && node scripts/maestro-check.mjs",
+    "battery": "tsc --noEmit && eslint . --max-warnings 0 && jest --ci --coverage && node scripts/maestro-check.mjs",
     "test:coverage": "jest --ci --coverage",
     "bundle:check": "node scripts/bundle-size.mjs --json",
     "e2e": "playwright test",

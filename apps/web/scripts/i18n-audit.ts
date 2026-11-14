@@ -1,5 +1,6 @@
-import { readFileSync, readdirSync } from "node:fs";
+import { existsSync, readFileSync, readdirSync } from "node:fs";
 import { join } from "node:path";
+import { ciI18nFloor } from "./i18n-floor";
 
 /**
  * What is still hardcoded English.
@@ -381,6 +382,24 @@ console.log(`${findings.length} files still hold hardcoded English — ${total} 
  * floor is deliberate work and comes with the number in the workflow file.
  */
 const maxFlag = process.argv.indexOf("--max");
+// TA-468: `--ci-floor` is `--max` with CI's own number, read from the battery workflow, so the local battery gates
+// on the same floor and the two cannot drift apart.
+const ciFloorFlag = process.argv.includes("--ci-floor");
+if (ciFloorFlag) {
+  // Run from apps/web, as every path in this audit is.
+  const workflow = join("..", "..", ".github", "workflows", "battery.yml");
+  const floor = existsSync(workflow) ? ciI18nFloor(readFileSync(workflow, "utf8")) : null;
+  if (floor === null) {
+    console.error(`--ci-floor found no I18N_FLOOR in ${workflow}`);
+    process.exit(2);
+  }
+  if (total > floor) {
+    console.error(`i18n floor is ${floor} (CI's, from battery.yml); found ${total}. New hardcoded English — translate it or, if it is by design, exclude it in the audit.`);
+    process.exit(1);
+  }
+  console.log(`i18n floor held: ${total} ≤ ${floor} (CI's floor).`);
+  process.exit(0);
+}
 if (maxFlag !== -1) {
   const max = Number.parseInt(process.argv[maxFlag + 1] ?? "", 10);
   if (Number.isNaN(max)) {

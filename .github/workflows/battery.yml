@@ -35,15 +35,13 @@ env:
   SMS_TRANSPORT: devbox
   NEXT_PUBLIC_DEFAULT_COUNTRY_CODE: "+91"
   STORAGE_DIR: ./storage
-  # The floor the i18n audit asserts. Lowering it is a deliberate change here.
-  # 160: the job NAMES in src/lib/jobs.ts count as strings ("fees:remind",
-  # "fees:reconcile", "messages:send" joined the five before them) —
-  # identifiers, not prose. Every fee and messaging sentence is keyed; the
-  # text-message registry is a trilingual table the audit skips by design.
-  # 165: "jobs:watch" joined the job names on 2026-10-01.
-  # 166: "usage:sample" (the nightly plan-usage count) joined them on 2026-10-01.
-  # 167: "bank:stats" (the nightly question-stat count for the content team) joined them on 2026-10-01.
-  I18N_FLOOR: "94"
+  # The floor the i18n audit asserts, here and in the local battery (`npm run
+  # i18n -- --ci-floor` reads this line; TA-468). It sits AT the count: lower
+  # it whenever the count falls, so new English never hides in the slack. Most
+  # of what it counts are the job NAMES in src/lib/jobs.ts ("fees:remind",
+  # "jobs:watch", "bank:stats" and the rest) — identifiers, not prose — so a
+  # new job name raises it by one. 93 on 14 November 2026.
+  I18N_FLOOR: "93"
 
 # Every job names its runner image: ubuntu-latest moves to Ubuntu 26.04 on
 # 19 October 2026 and no run of this battery on 26 has been seen — the
@@ -150,7 +148,8 @@ jobs:
           retention-days: 90
       - name: ESLint
         working-directory: apps/web
-        run: npx eslint .
+        # TA-514: a warning fails the job, as the commits' own --max-warnings 0 claims (0 warnings on 14 Nov 2026).
+        run: npx eslint . --max-warnings 0
       - name: Unit and integration suite
         working-directory: apps/web
         # The storage suite proves a traversal id can never reach the repo's
@@ -291,26 +290,13 @@ jobs:
         run: npm run zz:fixtures
       - name: Mobile contract tests · the app's client against the API
         working-directory: apps/web
-        # Bearer tokens minted on the ZZ fixture, the way the API sweep mints its own.
+        # Bearer tokens minted on the ZZ fixture, the way the API sweep mints its own, six hours long (TA-462).
+        # TA-460: `export X="$(…)"` hid zz:token's exit status, so a role whose actor was missing dropped out of the
+        # suite with the step green; mint() stops the step on a failed or empty mint, naming the role.
         run: |
           export EDULINK_API_BASE=http://localhost:3000
-          export EDULINK_TOKEN_TEACHER="$(npm run --silent zz:token -- TEACHER)"
-          export EDULINK_TOKEN_PARENT="$(npm run --silent zz:token -- PARENT)"
-          export EDULINK_TOKEN_STUDENT="$(npm run --silent zz:token -- STUDENT)"
-          export EDULINK_TOKEN_ADMIN="$(npm run --silent zz:token -- ADMIN)"
-          export EDULINK_TOKEN_PRINCIPAL="$(npm run --silent zz:token -- PRINCIPAL)"
-          export EDULINK_TOKEN_EXPERT="$(npm run --silent zz:token -- EXPERT)"
-          export EDULINK_TOKEN_DRIVER="$(npm run --silent zz:token -- DRIVER)"
-          export EDULINK_TOKEN_LIBRARIAN="$(npm run --silent zz:token -- LIBRARIAN)"
-          export EDULINK_TOKEN_WARDEN="$(npm run --silent zz:token -- WARDEN)"
-          export EDULINK_TOKEN_ALUMNUS="$(npm run --silent zz:token -- ALUMNUS)"
-          export EDULINK_TOKEN_FACULTY="$(npm run --silent zz:token -- FACULTY)"
-          export EDULINK_TOKEN_HOD="$(npm run --silent zz:token -- HOD)"
-          export EDULINK_TOKEN_EXAM_CONTROLLER="$(npm run --silent zz:token -- EXAM_CONTROLLER)"
-          export EDULINK_TOKEN_IQAC="$(npm run --silent zz:token -- IQAC)"
-          export EDULINK_TOKEN_TPO="$(npm run --silent zz:token -- TPO)"
-          export EDULINK_TOKEN_ACCOUNTS="$(npm run --silent zz:token -- ACCOUNTS)"
-          export EDULINK_TOKEN_RECRUITER="$(npm run --silent zz:token -- RECRUITER)"
+          mint() { local t; t="$(npm run --silent zz:token -- --hours=6 "$1")" && [ -n "$t" ] || { echo "zz:token minted no token for $1: the fixture lacks that actor" >&2; exit 1; }; export "EDULINK_TOKEN_$1=$t"; }
+          for role in TEACHER PARENT STUDENT ADMIN PRINCIPAL EXPERT DRIVER LIBRARIAN WARDEN ALUMNUS FACULTY HOD EXAM_CONTROLLER IQAC TPO ACCOUNTS RECRUITER; do mint "$role"; done
           pnpm --filter @edulink/mobile test:contract
           npm run --silent zz:token -- --purge
       - name: Server log
@@ -567,29 +553,15 @@ jobs:
       - name: Mobile accessibility gate, screenshots, offline and slow-network flows
         working-directory: apps/web
         # ZZ tokens minted as the contract step mints them, one per role; the app signs in with them on its web target.
+        # TA-460: a failed or empty mint stops the step, so no role drops out of the gate silently.
+        # Six hours, not zz:token's default one (TA-462): the suite has run 38 to 46 minutes and more on a contended
+        # runner, and a token that lapses mid-run sends every later test back to sign-in. The purge removes them.
         run: |
           export BASE=http://localhost:8081
           export API=http://localhost:3000
           export CI=true
-          export EDULINK_TOKEN_TEACHER="$(npm run --silent zz:token -- TEACHER)"
-          export EDULINK_TOKEN_PARENT="$(npm run --silent zz:token -- PARENT)"
-          export EDULINK_TOKEN_STUDENT="$(npm run --silent zz:token -- STUDENT)"
-          export EDULINK_TOKEN_ADMIN="$(npm run --silent zz:token -- ADMIN)"
-          export EDULINK_TOKEN_PRINCIPAL="$(npm run --silent zz:token -- PRINCIPAL)"
-          export EDULINK_TOKEN_EXPERT="$(npm run --silent zz:token -- EXPERT)"
-          export EDULINK_TOKEN_DRIVER="$(npm run --silent zz:token -- DRIVER)"
-          export EDULINK_TOKEN_LIBRARIAN="$(npm run --silent zz:token -- LIBRARIAN)"
-          export EDULINK_TOKEN_WARDEN="$(npm run --silent zz:token -- WARDEN)"
-          export EDULINK_TOKEN_ALUMNUS="$(npm run --silent zz:token -- ALUMNUS)"
-          export EDULINK_TOKEN_FACULTY="$(npm run --silent zz:token -- FACULTY)"
-          export EDULINK_TOKEN_HOD="$(npm run --silent zz:token -- HOD)"
-          export EDULINK_TOKEN_EXAM_CONTROLLER="$(npm run --silent zz:token -- EXAM_CONTROLLER)"
-          export EDULINK_TOKEN_IQAC="$(npm run --silent zz:token -- IQAC)"
-          export EDULINK_TOKEN_TPO="$(npm run --silent zz:token -- TPO)"
-          export EDULINK_TOKEN_ACCOUNTS="$(npm run --silent zz:token -- ACCOUNTS)"
-          export EDULINK_TOKEN_RECRUITER="$(npm run --silent zz:token -- RECRUITER)"
-          export EDULINK_TOKEN_OPERATOR="$(npm run --silent zz:token -- OPERATOR)"
-          export EDULINK_TOKEN_APPADMIN="$(npm run --silent zz:token -- APPADMIN)"
+          mint() { local t; t="$(npm run --silent zz:token -- --hours=6 "$1")" && [ -n "$t" ] || { echo "zz:token minted no token for $1: the fixture lacks that actor" >&2; exit 1; }; export "EDULINK_TOKEN_$1=$t"; }
+          for role in TEACHER PARENT STUDENT ADMIN PRINCIPAL EXPERT DRIVER LIBRARIAN WARDEN ALUMNUS FACULTY HOD EXAM_CONTROLLER IQAC TPO ACCOUNTS RECRUITER OPERATOR APPADMIN; do mint "$role"; done
           pnpm --filter @edulink/mobile e2e
           npm run --silent zz:token -- --purge
       - name: Mobile screenshots, report and traces

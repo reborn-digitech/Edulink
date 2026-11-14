@@ -52,7 +52,7 @@ describe("two-step sign-in on the phone", () => {
       "POST /api/v1/auth/totp": () => (++totpCalls === 1 ? json({ error: "ZZ That code is not right. 4 tries left.", code: "UNAUTHORIZED" }, 401) : json(SESSION)),
     });
     await fireEvent.changeText(screen.getByLabelText("Email, mobile number or login name"), "head@zz.test");
-    await fireEvent.changeText(screen.getByLabelText("Password"), "Sarathi-Kestrel-2026");
+    await fireEvent.changeText(screen.getByLabelText("Password"), "zz-test-password-1");
     await fireEvent.press(screen.getByRole("button", { name: "Log in" }));
 
     const box = await screen.findByLabelText("The six-digit code from the app");
@@ -80,7 +80,7 @@ describe("two-step sign-in on the phone", () => {
       "POST /api/v1/auth/totp": () => json(SESSION),
     });
     await fireEvent.changeText(screen.getByLabelText("Email, mobile number or login name"), "head@zz.test");
-    await fireEvent.changeText(screen.getByLabelText("Password"), "Sarathi-Kestrel-2026");
+    await fireEvent.changeText(screen.getByLabelText("Password"), "zz-test-password-1");
     await fireEvent.press(screen.getByRole("button", { name: "Log in" }));
     const box = await screen.findByLabelText("The six-digit code from the app");
     await fireEvent.changeText(box, "k7pm-3xq2");
@@ -92,7 +92,7 @@ describe("two-step sign-in on the phone", () => {
   it("back to sign-in returns to the password form with the password cleared", async () => {
     await mountSignedOut(<SignIn />, { "POST /api/v1/auth/login": () => json({ code: "TWO_FACTOR", challenge: CHALLENGE }) });
     await fireEvent.changeText(screen.getByLabelText("Email, mobile number or login name"), "head@zz.test");
-    await fireEvent.changeText(screen.getByLabelText("Password"), "Sarathi-Kestrel-2026");
+    await fireEvent.changeText(screen.getByLabelText("Password"), "zz-test-password-1");
     await fireEvent.press(screen.getByRole("button", { name: "Log in" }));
     await screen.findByLabelText("The six-digit code from the app");
     await fireEvent.press(screen.getByRole("button", { name: "Back to sign-in" }));
@@ -104,7 +104,7 @@ describe("two-step sign-in on the phone", () => {
   it("a password that simply signs in still does, with no step in between", async () => {
     const { store } = await mountSignedOut(<SignIn />, { "POST /api/v1/auth/login": () => json(SESSION) });
     await fireEvent.changeText(screen.getByLabelText("Email, mobile number or login name"), "head@zz.test");
-    await fireEvent.changeText(screen.getByLabelText("Password"), "Sarathi-Kestrel-2026");
+    await fireEvent.changeText(screen.getByLabelText("Password"), "zz-test-password-1");
     await fireEvent.press(screen.getByRole("button", { name: "Log in" }));
     await waitFor(async () => expect(await store.get(KEYS.token)).toBe(SESSION.token));
     expect(screen.queryByText("One more step")).toBeNull();
