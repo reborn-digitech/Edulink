@@ -9,6 +9,7 @@ import { wordsFor } from "./certificate-rules";
 import { paragraphFont } from "./fonts";
 import { pdfFamilyFor } from "./pdf-font-registry";
 import { paperImages } from "./signatures";
+import { signerLine } from "./signer-line";
 import { dateKeyInZone } from "./dates";
 import type { WordsLocale } from "./words";
 import { dateInFigures } from "./words";
@@ -46,6 +47,8 @@ const styles = StyleSheet.create({
   value: { flex: 6, fontWeight: 700 },
   signatures: { flexDirection: "row", justifyContent: "space-between", alignItems: "flex-end", marginTop: 24, gap: 24 },
   signatureLine: { borderTopWidth: 0.75, borderTopColor: INK, paddingTop: 4, fontSize: 9, color: MUTED, textAlign: "center" },
+  // Who signed the line above it, from what the paper stored (TA-326).
+  signerLine: { marginTop: 1, fontSize: 7.5, color: MUTED, textAlign: "center" },
   signature: { flex: 1, borderTopWidth: 0.75, borderTopColor: INK, paddingTop: 4, fontSize: 9, color: MUTED, textAlign: "center" },
   footer: { position: "absolute", left: 52, right: 52, bottom: 24, fontSize: 7.5, color: MUTED, textAlign: "center" },
   revoked: { position: "absolute", top: 260, left: 52, right: 52, textAlign: "center", fontSize: 40, color: "#b03a2e", opacity: 0.35, fontWeight: 700 },
@@ -72,7 +75,7 @@ export async function issuedOnFor(cert: Pick<IssuedCertificateView, "id" | "issu
 }
 
 type Pictures = Partial<Record<"LEFT" | "RIGHT" | "SEAL", Uint8Array>>;
-function CertificatePage({ cert, logo, verifyUrl, issuedOn, pictures }: { cert: IssuedCertificateView; logo: Logo | null; verifyUrl: string; issuedOn: string; pictures: Pictures }) {
+export function CertificatePage({ cert, logo, verifyUrl, issuedOn, pictures }: { cert: IssuedCertificateView; logo: Logo | null; verifyUrl: string; issuedOn: string; pictures: Pictures }) {
   const locale = cert.locale as WordsLocale;
   const words = wordsFor(locale);
   const accent = cert.layout.useBrandColour && cert.school.brandPrimary ? cert.school.brandPrimary : INK;
@@ -116,10 +119,13 @@ function CertificatePage({ cert, logo, verifyUrl, issuedOn, pictures }: { cert: 
         {(["LEFT", "SEAL", "RIGHT"] as const).map((slot) => {
           if (slot === "SEAL") return <View key={slot} style={{ width: 64, alignItems: "center", justifyContent: "flex-end" }}>{pictures.SEAL ? <Image src={{ data: Buffer.from(pictures.SEAL), format: "png" }} style={{ width: 60, height: 60, objectFit: "contain" }} /> : null}</View>;
           const picture = pictures[slot];
+          // Who signed, in the paper's language, under the school's caption as typed (TA-326).
+          const signer = signerLine(cert.signatures.find((s) => s.slot === slot), words);
           return (
             <View key={slot} style={{ flex: 1 }}>
               <View style={{ height: 40, alignItems: "center", justifyContent: "flex-end" }}>{picture ? <Image src={{ data: Buffer.from(picture), format: "png" }} style={{ maxHeight: 38, maxWidth: 150, objectFit: "contain" }} /> : null}</View>
               <Text style={styles.signatureLine}>{slot === "LEFT" ? cert.layout.signatureLeft : cert.layout.signatureRight}</Text>
+              {signer ? <Text style={styles.signerLine}>{signer}</Text> : null}
             </View>
           );
         })}

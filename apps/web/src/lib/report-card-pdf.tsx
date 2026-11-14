@@ -5,6 +5,7 @@ import { Document, Font, Image, Page, StyleSheet, Text, View, renderToBuffer } f
 import { gradingHintKey, type Card } from "./report-cards";
 import { pdfFamilyFor } from "./pdf-font-registry";
 import { paperImages } from "./signatures";
+import { signerLine } from "./signer-line";
 import { readStoredFile } from "./storage";
 import { formatMilli } from "./validation";
 import { nameCarriesSection } from "./codes";
@@ -72,6 +73,8 @@ const styles = StyleSheet.create({
   remark: { marginTop: 3, lineHeight: 1.4 },
   signatures: { flexDirection: "row", justifyContent: "space-between", alignItems: "flex-end", marginTop: 20, gap: 24 },
   signatureLine: { borderTopWidth: 0.75, borderTopColor: INK, paddingTop: 4, fontSize: 8.5, color: MUTED, textAlign: "center" },
+  // Who signed the line above it, from what the set stored (TA-326).
+  signerLine: { marginTop: 1, fontSize: 7, color: MUTED, textAlign: "center" },
   signature: { flex: 1, borderTopWidth: 0.75, borderTopColor: INK, paddingTop: 4, fontSize: 8.5, color: MUTED, textAlign: "center" },
   footer: { position: "absolute", left: 40, right: 40, bottom: 22, fontSize: 7.5, color: MUTED, textAlign: "center" },
   scale: { marginTop: 8, fontSize: 7.5, color: MUTED },
@@ -237,10 +240,13 @@ function CardPage({ card, logo, t, locale, pictures }: { card: Card; logo: Logo 
           {/* eslint-disable jsx-a11y/alt-text -- a PDF's Image takes no alt; the line under it names the signer's office */}
           {(["LEFT", "PARENT", "RIGHT"] as const).map((slot) => {
             const image = slot === "PARENT" ? pictures.SEAL : pictures[slot];
+            // Who signed, in the reader's language as the rest of the card, under the caption as typed (TA-326).
+            const signer = slot === "PARENT" ? null : signerLine(card.signatures.find((s) => s.slot === slot), t);
             return (
               <View key={slot} style={{ flex: 1 }}>
                 <View style={{ height: 38, alignItems: "center", justifyContent: "flex-end" }}>{image ? <Image src={{ data: Buffer.from(image), format: "png" }} style={{ maxHeight: 36, maxWidth: 130, objectFit: "contain" }} /> : null}</View>
                 <Text style={styles.signatureLine}>{slot === "LEFT" ? layout.signatureLeft : slot === "RIGHT" ? layout.signatureRight : t("reportView.signatureParent")}</Text>
+                {signer ? <Text style={styles.signerLine}>{signer}</Text> : null}
               </View>
             );
           })}

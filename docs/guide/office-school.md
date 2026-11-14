@@ -330,6 +330,8 @@ The family is told on issue and reads the paper from their own pages, with "Down
 
 Your signature is drawn at once on a paper you issue, and on a paper somebody else issues only after you approve it. Papers already signed keep their own copy if you remove your signature later.
 
+Under each line already signed, the paper also prints who signed it and the office they signed as, "Signed by {name}, {office}" (for example "Signed by A. Patil, Office"; the office is "Office" for a school admin, "Principal" for the principal and "Class teacher" for a teacher), on the screen, in the PDF, on report cards and on the phone. The words you typed under the line ("Left signature" and "Right signature" captions) stay as you typed them, so make them match who signs: a line the office signs but captioned "Principal" will read "Principal" above "Signed by A. Patil, Office". A certificate prints this in its own language; a report card in the reader's. A line still waiting, or declined, prints nothing more.
+
 ## How do I issue an appointment letter?
 
 "Appointment letters" at `/admin/certificates/appointments` issues a letter to a member of staff from an APPOINTMENT template, filled from their staff record.

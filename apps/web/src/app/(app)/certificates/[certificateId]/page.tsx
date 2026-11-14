@@ -13,6 +13,9 @@ import { RevokeForm } from "./revoke-form";
 import { SignPaper } from "@/components/certificates/sign-paper";
 import { fontStack, paragraphFont } from "@/lib/fonts";
 import { TableScroll } from "@/components/ui/table-scroll";
+import { wordsFor } from "@/lib/certificate-rules";
+import { signerLine } from "@/lib/signer-line";
+import type { WordsLocale } from "@/lib/words";
 
 /**
  * The address a printed page names for its check: the configured app address, else the host this page was served
@@ -71,6 +74,8 @@ export default async function CertificatePage({ params, searchParams }: { params
   const missingLabels = cert.missing.map((key) => t(`certificatePlaceholders.${key.replace(".", "_")}` as TranslationKey));
   const latin = cert.locale === "en";
   const muted = "text-fg-muted print:text-black/70";
+  // The line naming who signed is part of the sheet, so it is in the paper's language, as the PDF prints it (TA-326).
+  const paperWords = wordsFor(cert.locale as WordsLocale);
 
   return (
     <article lang={cert.locale} className="mx-auto max-w-2xl print:max-w-none" data-testid="certificate-document">
@@ -190,6 +195,8 @@ export default async function CertificatePage({ params, searchParams }: { params
               );
             }
             const signature = cert.signatures.find((s) => s.slot === slot);
+            // Who signed, under the school's caption as typed (TA-326).
+            const signer = signerLine(signature, paperWords);
             return (
               <div key={slot}>
                 <div className="grid h-14 place-items-end justify-center">
@@ -203,6 +210,11 @@ export default async function CertificatePage({ params, searchParams }: { params
                   ) : null}
                 </div>
                 <div className="border-t border-border pt-2 print:border-black/40">{slot === "LEFT" ? layout.signatureLeft : layout.signatureRight}</div>
+                {signer && (
+                  <div className="mt-0.5 text-[0.6875rem]" data-testid={`certificate-signer-${slot.toLowerCase()}`}>
+                    {signer}
+                  </div>
+                )}
               </div>
             );
           })}

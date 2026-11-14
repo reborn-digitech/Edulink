@@ -78,7 +78,7 @@ A lesson of a teacher marked absent or on leave appears on the board by itself. 
 2. Under "Papers waiting for your signature" each paper says "Issued by {name} on {date}" (a set says "{count} report cards"). Press "Open the paper" and read it.
 3. Press "Sign" or "Decline". One signature signs every card of a set.
 
-Your signature is drawn at once on a paper you issue yourself, and on a paper somebody else issues only after you sign it here. A paper already signed keeps its own copy even if you remove your signature later. A template that names "The principal" on a line and finds no signature on file prints the line empty until you add one.
+Your signature is drawn at once on a paper you issue yourself, and on a paper somebody else issues only after you sign it here. A paper already signed keeps its own copy even if you remove your signature later. A template that names "The principal" on a line and finds no signature on file prints the line empty until you add one. Under a line you have signed, the paper also prints "Signed by {name}, {office}" with your name and "Principal", whatever words the office typed under the line.
 
 ## How do I issue or revoke a certificate?
 

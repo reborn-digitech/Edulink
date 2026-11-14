@@ -144,7 +144,7 @@ Open `/teacher/signatures` ("Signatures"). The page shows your signature as it i
 2. Under "Your signature", sign inside the box with a mouse, a finger or a pen, or press "Upload a picture" (a PNG or a JPEG; the white paper is taken out). Press "Clear" to start again and "Save the signature" to keep it.
 3. Press "Remove" to take your signature away; papers already signed keep their own copy.
 
-A paper waits for you only when its template asks for the class teacher's signature. You will be told "{count} report cards of {className}, {title}, wait for your signature". A teacher has no seal to set; only a school admin sets the seal.
+A paper waits for you only when its template asks for the class teacher's signature. Under a line you have signed, the card also prints "Signed by {name}, {office}" with your name and "Class teacher", whatever words the office typed under the line. You will be told "{count} report cards of {className}, {title}, wait for your signature". A teacher has no seal to set; only a school admin sets the seal.
 
 ## How do I track the syllabus and plan lessons?
 

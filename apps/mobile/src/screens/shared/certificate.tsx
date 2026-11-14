@@ -82,6 +82,7 @@ export function CertificateView() {
   };
   const brand = c?.layout.useBrandColour && c.school.brandPrimary ? c.school.brandPrimary : null;
   const address = c ? addressOf(c) : "";
+  const signers = c ? signerLines(c, t) : { LEFT: null, RIGHT: null };
   const contact = c ? [c.school.contactPhone, c.school.contactEmail].filter(Boolean).join(" · ") : "";
   return (
     <Screen title={c?.title ?? t("certificates.title")} description={c ? [c.school.name, c.studentName].join(" · ") : undefined} refreshing={query.isRefetching} onRefresh={() => void query.refetch()}>
@@ -145,14 +146,28 @@ export function CertificateView() {
                 {`${t("certificates.remark")}: ${c.remark}`}
               </Text>
             ) : null}
-            {c.layout.signatureLeft || c.layout.signatureRight ? (
+            {c.layout.signatureLeft || c.layout.signatureRight || signers.LEFT || signers.RIGHT ? (
               <View style={{ flexDirection: "row", justifyContent: "space-between", gap: th.space[3], paddingTop: th.space[5] }}>
-                <Text variant="xs" bold tone="muted" style={{ flex: 1 }}>
-                  {c.layout.signatureLeft}
-                </Text>
-                <Text variant="xs" bold tone="muted" style={{ flex: 1, textAlign: "right" }}>
-                  {c.layout.signatureRight}
-                </Text>
+                <View style={{ flex: 1 }}>
+                  <Text variant="xs" bold tone="muted">
+                    {c.layout.signatureLeft}
+                  </Text>
+                  {signers.LEFT ? (
+                    <Text variant="xs" tone="muted">
+                      {signers.LEFT}
+                    </Text>
+                  ) : null}
+                </View>
+                <View style={{ flex: 1 }}>
+                  <Text variant="xs" bold tone="muted" style={{ textAlign: "right" }}>
+                    {c.layout.signatureRight}
+                  </Text>
+                  {signers.RIGHT ? (
+                    <Text variant="xs" tone="muted" style={{ textAlign: "right" }}>
+                      {signers.RIGHT}
+                    </Text>
+                  ) : null}
+                </View>
               </View>
             ) : null}
             {c.layout.footerNote ? (
@@ -199,6 +214,22 @@ function addressOf(c: IssuedCertificateView): string {
   return [c.school.addressLine, c.school.city, c.school.region, c.school.postalCode].filter(Boolean).join(", ");
 }
 
+/**
+ * Who signed each line, under the school's caption as typed (TA-326, the owner's decision of 14 November 2026): the
+ * signer's name and the office they signed as, from what the paper stored at signing, for a line already signed and
+ * no other. The same rule as the web's lib/signer-line.ts, in the reader's language as the rest of this screen.
+ */
+const OFFICE_WORD = { ADMIN: "certificateDefaults.signatureOffice", PRINCIPAL: "reportCardDefaults.principal", TEACHER: "reportCardDefaults.classTeacher" } as const;
+export function signerLines(c: IssuedCertificateView, t: Translate): Record<"LEFT" | "RIGHT", string | null> {
+  const line = (slot: "LEFT" | "RIGHT") => {
+    // An answer without the list (an older server's, before the contract's default) has nothing signed to name.
+    const s = (c.signatures ?? []).find((x) => x.slot === slot);
+    const name = s?.signerName?.trim();
+    return s && s.status === "SIGNED" && name ? t("signatures.signedByOffice", { name, office: t(OFFICE_WORD[s.role]) }) : null;
+  };
+  return { LEFT: line("LEFT"), RIGHT: line("RIGHT") };
+}
+
 /** The certificate as plain text for the share sheet — the same lines, top to bottom. */
 export function certificateText(c: IssuedCertificateView, t: Translate, locale: string): string {
   const lines = [c.school.name];
@@ -208,7 +239,11 @@ export function certificateText(c: IssuedCertificateView, t: Translate, locale: 
   lines.push(...c.rows.map((row, i) => `${i + 1}. ${row.label}: ${row.value || "—"}`));
   if (c.outro) lines.push("", c.outro);
   if (c.remark) lines.push("", `${t("certificates.remark")}: ${c.remark}`);
-  if (c.layout.signatureLeft || c.layout.signatureRight) lines.push("", [c.layout.signatureLeft, c.layout.signatureRight].filter(Boolean).join(" · "));
+  // The captions as typed, then who signed them (TA-326).
+  const signers = signerLines(c, t);
+  const captions = [c.layout.signatureLeft, c.layout.signatureRight].filter(Boolean).join(" · ");
+  const signedBy = [signers.LEFT, signers.RIGHT].filter(Boolean).join(" · ");
+  if (captions || signedBy) lines.push("", ...[captions, signedBy].filter(Boolean));
   if (c.layout.footerNote) lines.push("", c.layout.footerNote);
   lines.push("", t("certificates.verifyLine", { url: VERIFY_URL, code: c.code }));
   if (c.revokedAt) lines.push("", t("certificates.revokedBanner", { date: formatDateKey(c.revokedAt.slice(0, 10), locale), reason: c.revokedReason ?? "" }));

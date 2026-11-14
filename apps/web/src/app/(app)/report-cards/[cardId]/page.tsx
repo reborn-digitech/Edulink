@@ -15,6 +15,7 @@ import { PrintButton } from "../../reports/[studentMembershipId]/print-button";
 import { SignPaper } from "@/components/certificates/sign-paper";
 import { fontStack } from "@/lib/fonts";
 import { TableScroll } from "@/components/ui/table-scroll";
+import { signerLine } from "@/lib/signer-line";
 // Vidura pass 2 (17 Oct 2026): "Explain this to me" beside each line, for the pupil and their family.
 import { ExplainThis } from "@/components/assistant/explain-this";
 
@@ -426,6 +427,8 @@ export default async function ReportCardPage({
           <section className="mt-8 grid grid-cols-3 items-end gap-4 text-center text-xs text-fg-muted print:text-black/70" data-testid="signatures">
             {(["LEFT", "PARENT", "RIGHT"] as const).map((slot) => {
               const signature = slot === "PARENT" ? undefined : card.signatures.find((s) => s.slot === slot);
+              // Who signed, in the reader's language as the rest of the card, under the caption as typed (TA-326).
+              const signer = signerLine(signature, t);
               return (
                 <div key={slot}>
                   <div className="grid h-14 place-items-end justify-center">
@@ -442,6 +445,11 @@ export default async function ReportCardPage({
                     ) : null}
                   </div>
                   <div className="border-t border-border pt-2 print:border-black/40">{slot === "LEFT" ? layout.signatureLeft : slot === "RIGHT" ? layout.signatureRight : t("reportView.signatureParent")}</div>
+                  {signer && (
+                    <div className="mt-0.5 text-[0.6875rem]" data-testid={`card-signer-${slot.toLowerCase()}`}>
+                      {signer}
+                    </div>
+                  )}
                 </div>
               );
             })}
