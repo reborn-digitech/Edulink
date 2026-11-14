@@ -9,6 +9,7 @@ import { publicFaculty } from "./faculty-profile";
 import { defaultSiteConfig, repairSiteConfig, sectionOn, sitePictures } from "./site-config";
 import { numbersHash, siteMetrics } from "./site-metrics";
 import { announcementShown, pictureShown, renderSite, sectionHasContent, sitePagesShown, type SiteData, type SiteEventItem, type SiteImage, type SiteNewsItem } from "./site-render";
+import { newsPictureTicked } from "./site-content";
 
 /**
  * PUBLISHING A SCHOOL'S WEBSITE, AND READING THE PUBLISHED ONE (website-builder A, 15 October 2026; website-two,
@@ -50,6 +51,8 @@ export type SiteSnapshot = {
   numbersDateKey: string;
   newsPostIds: string[];
   gallery: { fileId: string; postId: string; consentByUserId: string | null; consentAt: string | null }[];
+  /** TA-225 (14 Nov 2026): every news picture the pages show, with who ticked its consent and when. */
+  newsPictures?: { postId: string; fileId: string; consentByUserId: string | null; consentAt: string | null }[];
   /** website-two: every picture the pages show besides the news', with who ticked its consent and when. */
   pictures?: { fileId: string; postId: string | null; consentByUserId: string | null; consentAt: string | null }[];
   /** website-two: the paths of the pages rendered. */
@@ -162,7 +165,8 @@ export async function draftConfigFor(
  * THE FIRST DRAFT, built for an office that opens the editor before anything was saved (website-two, 16 Oct 2026): the
  * defaults cut from the profile and the logo, the six latest approved school-wide posts as the news, and every home
  * section that has something to show switched on (Admissions always, with its form) — a finished site to change, not
- * an empty form. Pictures are never chosen for the office: each needs its consent tick (decision 0002). Not stored:
+ * an empty form. Pictures are never chosen for the office: each needs its consent tick (decision 0002), the news posts'
+ * too (TA-225, 14 Nov 2026: the six posts are proposed with their words alone, `newsPictures` empty). Not stored:
  * the first save, or Publish, stores it.
  */
 async function firstDraft(schoolId: string, defaults: SiteConfig): Promise<SiteConfig> {
@@ -205,7 +209,9 @@ export async function gatherSiteData(schoolId: string, config: SiteConfig, now: 
       const p = postById.get(id);
       if (!p) return [];
       const first = imagesOf(p.media)[0];
-      return [{ id: p.id, title: p.title, body: p.body, dateKey: todayKey(school.timezone, p.createdAt), image: first ? { fileId: first.fileId, alt: first.alt } : null }];
+      // TA-225 (14 Nov 2026): the post's first picture is drawn, and made public, only once the office ticked its consent.
+      const picture = first ? { fileId: first.fileId, alt: first.alt } : null;
+      return [{ id: p.id, title: p.title, body: p.body, dateKey: todayKey(school.timezone, p.createdAt), image: picture && newsPictureTicked(config, p.id, picture.fileId) ? picture : null, picture }];
     });
     const gallery: SiteImage[] = wantGallery.flatMap((g) => {
       const media = postById.get(g.postId) ? imagesOf(postById.get(g.postId)!.media).find((m) => m.fileId === g.fileId) : undefined;
@@ -318,6 +324,7 @@ export async function renderAndStore(schoolId: string, byUserId: string | null, 
   const data = await gatherSiteData(schoolId, config, now);
   const { html, pagesHtml, paths } = renderAllPages(config, data);
   const consentOf = new Map(config.gallery.map((g) => [g.fileId, g]));
+  const newsTickOf = new Map(config.newsPictures.map((p) => [`${p.postId}|${p.fileId}`, p]));
   const picture = (p: SitePicture) => ({ fileId: p.fileId, postId: p.postId, consentByUserId: p.consentByUserId ?? null, consentAt: p.consentAt ?? null });
   const snapshot: SiteSnapshot = {
     config,
@@ -326,6 +333,10 @@ export async function renderAndStore(schoolId: string, byUserId: string | null, 
     newsPostIds: data.news.map((n) => n.id),
     gallery: data.gallery.map((g) => ({ fileId: g.fileId, postId: consentOf.get(g.fileId)?.postId ?? "", consentByUserId: consentOf.get(g.fileId)?.consentByUserId ?? null, consentAt: consentOf.get(g.fileId)?.consentAt ?? null })),
     pictures: sitePictures(config).flatMap((p) => (pictureShown(p.picture, data) ? [picture(p.picture)] : [])),
+    newsPictures: data.news.flatMap((n) => {
+      const tick = n.image ? newsTickOf.get(`${n.id}|${n.image.fileId}`) : undefined;
+      return n.image && tick ? [{ postId: n.id, fileId: n.image.fileId, consentByUserId: tick.consentByUserId ?? null, consentAt: tick.consentAt ?? null }] : [];
+    }),
     pages: paths,
     renderedAt: now.toISOString(),
   };

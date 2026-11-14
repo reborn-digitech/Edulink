@@ -357,6 +357,14 @@ export async function saveSite(ctx: ActiveContext, patch: Partial<SiteConfig>, o
   next.facilities = next.facilities.map((f) => ({ ...f, label: f.code === "CUSTOM" ? f.label.trim() : "", picture: f.picture ? stamp({ ...f.picture, alt: f.picture.alt.trim() }, wasFacility.get(f.picture.fileId)) : null }));
   next.albums = next.albums.map((a) => ({ ...a, pictures: a.pictures.map((p) => stampAt(`album:${a.id}`, p)!) }));
   next.achievements = next.achievements.map((a) => ({ ...a, picture: stampAt(`achievement:${a.id}`, a.picture) }));
+  // TA-225 (14 Nov 2026): a news picture's tick, kept only for a news post's own first picture and stamped as the Gallery's.
+  const wasNews = new Map(current.newsPictures.map((p) => [`${p.postId}|${p.fileId}`, p]));
+  next.newsPictures = next.newsPictures.flatMap((p) => {
+    const first = (byId.get(p.postId) ?? []).find((f) => typeof f === "string" && f.length > 0);
+    if (!next.newsPostIds.includes(p.postId) || first !== p.fileId) return [];
+    const s = stamp(p, wasNews.get(`${p.postId}|${p.fileId}`));
+    return [{ postId: s.postId, fileId: s.fileId, consent: s.consent, consentByUserId: s.consentByUserId ?? null, consentAt: s.consentAt ?? null }];
+  });
 
   // website-three (17 Oct 2026): written only if no other save came since the draft was read above.
   const written = await writeDraft(ed.schoolId, ed.userId, next, exists ? draftVersion : null);

@@ -12,7 +12,11 @@ import type { SiteNumber } from "./site-metrics";
  */
 
 export type SiteImage = { fileId: string; alt: string };
-export type SiteNewsItem = { id: string; title: string; body: string; dateKey: string; image: SiteImage | null };
+/**
+ * A news item. TA-225 (14 Nov 2026): `picture` is the post's first picture, the one its consent tick is about; `image`, what
+ * the page draws, carries it only once ticked (newsPictureTicked), else null and the item shows its words alone.
+ */
+export type SiteNewsItem = { id: string; title: string; body: string; dateKey: string; image: SiteImage | null; picture?: SiteImage | null };
 /** website-three (17 Oct 2026): `photo`, the member's own public photo (their consent ticked on their profile page), or none. */
 export type SiteFacultyItem = { name: string; designation: string; department: string; photo?: SiteImage | null };
 /** An entry of the school calendar: a holiday, an exam or a function. */
@@ -300,10 +304,17 @@ export function draftFileUses(config: SiteConfig, facilityName?: (code: Exclude<
   return out;
 }
 
+/** TA-225 (14 Nov 2026): whether the draft ticks consent for this picture as the news post's own (decision 0002). */
+export function newsPictureTicked(config: Pick<SiteConfig, "newsPictures">, postId: string, fileId: string): boolean {
+  return (config.newsPictures ?? []).some((p) => p.postId === postId && p.fileId === fileId && p.consent);
+}
+
 /** "Ready to publish: 5 of 7": the logo, the about words, a hero picture, a way to be reached, how to apply, consent on every picture, a live domain. */
 export function siteChecklist(config: SiteConfig, data: SiteData, domainLive: boolean): { code: SiteCheck; done: boolean }[] {
   const contact = Boolean(config.address.trim() || config.phones.some((p) => p.trim()) || config.email.trim());
-  const pictures = [...config.gallery.map((g) => g.consent), ...draftPictures(config).map((p) => p.picture.consent)];
+  // TA-225: the news the draft names with a picture count too, each ticked or not for its own first picture.
+  const news = data.news.flatMap((n) => (n.picture && config.newsPostIds.includes(n.id) ? [newsPictureTicked(config, n.id, n.picture.fileId)] : []));
+  const pictures = [...config.gallery.map((g) => g.consent), ...draftPictures(config).map((p) => p.picture.consent), ...news];
   return [
     { code: "LOGO", done: Boolean(data.logoFileId) },
     { code: "ABOUT", done: Boolean(config.about.trim()) },

@@ -127,6 +127,8 @@ export function defaultSiteConfig(src: SiteDefaultsSource): SiteConfig {
     customPages: [],
     // website-three (17 Oct 2026)
     menuOrder: [],
+    // TA-225 (14 Nov 2026): no news picture is ticked for the office.
+    newsPictures: [],
   };
 }
 
@@ -161,6 +163,9 @@ export function repairSiteConfig(raw: unknown, defaults: SiteConfig): SiteConfig
   config.enquiryFields = [...new Set(config.enquiryFields)];
   // website-three (17 Oct 2026): the menu's one order, every page once, Home first (an older draft's from its pages' order).
   config.menuOrder = menuKeys(config);
+  // TA-225 (14 Nov 2026): a news picture's tick is kept only while ticked and while its post is in the news, once each.
+  const ticked = new Set<string>();
+  config.newsPictures = config.newsPictures.filter((p) => p.consent && config.newsPostIds.includes(p.postId) && (ticked.has(`${p.postId}|${p.fileId}`) ? false : (ticked.add(`${p.postId}|${p.fileId}`), true)));
   return config;
 }
 

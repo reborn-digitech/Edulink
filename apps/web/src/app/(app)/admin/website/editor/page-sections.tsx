@@ -298,6 +298,9 @@ function GalleryBody({ draft, setDraft, files, posts, onFileAdded, problem }: Se
 function NewsBody({ draft, setDraft, posts, problem }: SectionProps) {
   const t = useT();
   const toggle = (id: string, on: boolean) => setDraft("newsPostIds", on ? [...draft.newsPostIds, id].slice(0, SITE_NEWS_MAX) : draft.newsPostIds.filter((y) => y !== id));
+  // TA-225 (14 Nov 2026): a news post's first picture goes on the site only once its consent is ticked here.
+  const ticks = draft.newsPictures ?? [];
+  const consent = (postId: string, fileId: string, on: boolean) => setDraft("newsPictures", [...ticks.filter((x) => !(x.postId === postId && x.fileId === fileId)), ...(on ? [{ postId, fileId, consent: true }] : [])]);
   return (
     <Card>
       <CardHeader title={t("site.newsTitle")} description={t("siteEditor.newsIntro")} />
@@ -308,9 +311,23 @@ function NewsBody({ draft, setDraft, posts, problem }: SectionProps) {
         ) : (
           <fieldset className="space-y-2">
             <legend className="text-sm text-fg-muted">{t("website.newsChosen", { count: draft.newsPostIds.length, max: SITE_NEWS_MAX })}</legend>
-            {posts.map((p) => (
-              <CheckboxField key={p.id} label={p.title} checked={draft.newsPostIds.includes(p.id)} disabled={!draft.newsPostIds.includes(p.id) && draft.newsPostIds.length >= SITE_NEWS_MAX} onChange={(e) => toggle(p.id, e.target.checked)} />
-            ))}
+            <p className="text-xs text-fg-muted">{t("siteEditor.newsPictureHint")}</p>
+            {posts.map((p) => {
+              const chosen = draft.newsPostIds.includes(p.id);
+              const first = p.images[0];
+              return (
+                <div key={p.id} className="space-y-2">
+                  <CheckboxField label={p.title} checked={chosen} disabled={!chosen && draft.newsPostIds.length >= SITE_NEWS_MAX} onChange={(e) => toggle(p.id, e.target.checked)} />
+                  {chosen && first ? (
+                    <div className="ms-6 flex items-start gap-3">
+                      {/* eslint-disable-next-line @next/next/no-img-element -- a stored file through the file route, sized by ?w */}
+                      <img src={`/api/files/${encodeURIComponent(first.fileId)}?w=320`} alt={first.alt} className="aspect-[4/3] w-24 shrink-0 rounded-[var(--radius-sm)] object-cover" loading="lazy" />
+                      <CheckboxField label={t("website.pictureConsent")} checked={ticks.some((x) => x.postId === p.id && x.fileId === first.fileId && x.consent)} onChange={(e) => consent(p.id, first.fileId, e.target.checked)} />
+                    </div>
+                  ) : null}
+                </div>
+              );
+            })}
           </fieldset>
         )}
       </CardBody>

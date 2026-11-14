@@ -74,6 +74,22 @@ export const siteGalleryItemSchema = z.object({
 });
 export type SiteGalleryItem = z.infer<typeof siteGalleryItemSchema>;
 
+/**
+ * TA-225 (the owner's decision of 14 November 2026): the consent tick on a news item's picture, the first picture of one
+ * of the news posts. A news item goes public with its words alone until its picture is ticked ("the people shown have
+ * consented to publication"); who ticked it and when are written by the server, never taken from the form, as the
+ * Gallery's are, and travel into the published snapshot. A tick names the picture: a post whose first picture changed
+ * shows the new one only once it is ticked.
+ */
+export const siteNewsPictureSchema = z.object({
+  postId: z.string().min(1).max(64),
+  fileId: z.string().min(1).max(200),
+  consent: z.boolean(),
+  consentByUserId: z.string().max(64).nullable().optional(),
+  consentAt: z.string().datetime().nullable().optional(),
+});
+export type SiteNewsPicture = z.infer<typeof siteNewsPictureSchema>;
+
 export const siteSectionStateSchema = z.object({ code: z.enum(SITE_SECTIONS), on: z.boolean() });
 /* ------------------------------------------------------------------------------------------------ */
 /* website-two (16 October 2026): one editor, more customisation, more pages                       */
@@ -241,6 +257,9 @@ export const siteConfigSchema = z.object({
    * saved before it, read then as the pages' own order with the custom pages after (apps/web/src/lib/site-content.ts menuKeys).
    */
   menuOrder: z.array(z.string().min(1).max(48)).max(SITE_PAGES.length + SITE_CUSTOM_PAGES_MAX).default([]),
+  // TA-225 (14 Nov 2026)
+  /** The news pictures' consent ticks (siteNewsPictureSchema): a news post's picture is shown only while ticked here. */
+  newsPictures: z.array(siteNewsPictureSchema).max(SITE_NEWS_MAX).default([]),
 });
 export type SiteConfig = z.infer<typeof siteConfigSchema>;
 
