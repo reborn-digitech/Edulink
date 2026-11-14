@@ -2,7 +2,7 @@ import "server-only";
 import { db } from "./db";
 import { creditsOf } from "./academics-rules";
 import { eligibilityForTerm } from "./academics-attendance";
-import { gradingTableOf, rulesOf, type ExamRules, type GradeRow } from "./exam-cell-rules";
+import { examRulesSaved, gradingTableOf, rulesOf, type ExamRules, type GradeRow } from "./exam-cell-rules";
 
 /**
  * WHAT THE EXAM CELL READS OF THE ACADEMICS MODULE (4 October 2026), in one
@@ -16,7 +16,7 @@ import { gradingTableOf, rulesOf, type ExamRules, type GradeRow } from "./exam-c
  */
 
 export type TermFacts = { id: string; name: string; academicYear: string; startsOn: string; endsOn: string };
-export type CourseFacts = { id: string; code: string; name: string; semester: number; creditsTenths: number; schemeId: string; programmeId: string; rules: ExamRules; table: GradeRow[] };
+export type CourseFacts = { id: string; code: string; name: string; semester: number; creditsTenths: number; schemeId: string; programmeId: string; rules: ExamRules; table: GradeRow[]; /** The scheme's name and whether its pass rules were ever saved (TA-070: a run refuses a scheme whose rules were not). */ schemeName: string; rulesSaved: boolean };
 
 export async function termsOf(schoolId: string): Promise<TermFacts[]> {
   const rows = await db.academicTerm.findMany({ where: { schoolId }, orderBy: [{ startsOn: "desc" }], select: { id: true, name: true, academicYear: true, startsOn: true, endsOn: true } });
@@ -39,17 +39,17 @@ export async function coursesOf(schoolId: string, courseIds: readonly string[]):
   if (ids.length === 0) return new Map();
   const rows = await db.course.findMany({
     where: { schoolId, id: { in: ids } },
-    select: { id: true, code: true, name: true, semester: true, creditsL: true, creditsT: true, creditsP: true, schemeId: true, scheme: { select: { programmeId: true, gradingTable: true, passingRules: true } } },
+    select: { id: true, code: true, name: true, semester: true, creditsL: true, creditsT: true, creditsP: true, schemeId: true, scheme: { select: { name: true, programmeId: true, gradingTable: true, passingRules: true } } },
   });
-  const schemes = new Map<string, { rules: ExamRules; table: GradeRow[] }>();
+  const schemes = new Map<string, { rules: ExamRules; table: GradeRow[]; rulesSaved: boolean }>();
   const out = new Map<string, CourseFacts>();
   for (const r of rows) {
     let s = schemes.get(r.schemeId);
     if (!s) {
-      s = { rules: rulesOf(r.scheme.passingRules), table: gradingTableOf(r.scheme.gradingTable) };
+      s = { rules: rulesOf(r.scheme.passingRules), table: gradingTableOf(r.scheme.gradingTable), rulesSaved: examRulesSaved(r.scheme.passingRules) };
       schemes.set(r.schemeId, s);
     }
-    out.set(r.id, { id: r.id, code: r.code, name: r.name, semester: r.semester, creditsTenths: creditsOf(r) * 10, schemeId: r.schemeId, programmeId: r.scheme.programmeId, rules: s.rules, table: s.table });
+    out.set(r.id, { id: r.id, code: r.code, name: r.name, semester: r.semester, creditsTenths: creditsOf(r) * 10, schemeId: r.schemeId, programmeId: r.scheme.programmeId, rules: s.rules, table: s.table, schemeName: r.scheme.name, rulesSaved: s.rulesSaved });
   }
   return out;
 }

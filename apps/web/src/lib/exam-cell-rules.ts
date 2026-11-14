@@ -82,6 +82,18 @@ export function rulesOf(raw: string | null | undefined): ExamRules {
   };
 }
 
+/**
+ * Whether the scheme saved the figures a run grades by (the owner's choice on TA-070, 14 November 2026): the internal
+ * and external maxima, the pass mark and the ATKT limit, the four that were otherwise guessed (30, 70, 40 % and 3).
+ * A run refuses a scheme without them. An internal maximum of nought (a paper with no internal part) is a saved figure.
+ */
+export function examRulesSaved(raw: string | null | undefined): boolean {
+  const parsed = parseJson(raw);
+  if (!parsed || typeof parsed !== "object" || Array.isArray(parsed)) return false;
+  const p = parsed as Record<string, unknown>;
+  return num(p.internalMax) !== null && num(p.externalMax) !== null && num(p.atktLimit) !== null && (num(p.minPercentPerCourse) ?? num(p.minTotalPercent)) !== null;
+}
+
 /** The grade and points (tenths) for a percentage (in thousandths of a percent, so 39.999 % is not 40 %). */
 export function gradeFor(percentMilli: number, table: readonly GradeRow[]): { grade: string; pointsTenths: number } {
   for (const row of table) if (percentMilli >= row.minPercent * 1000) return { grade: row.grade, pointsTenths: Math.round(row.points * 10) };

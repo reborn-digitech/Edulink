@@ -6,7 +6,7 @@ import { RuleRefusal } from "./rule-refusal";
 import { audit } from "./audit";
 import { notify } from "./notify";
 import { readJson, writeJson } from "./json";
-import { academicsCaller, departmentOfMember, headsDepartment, nameOf, namesOf, readCodes, readOutcomes, readPassingRules, registeredStudying, type Caller } from "./academics";
+import { academicsCaller, departmentOfMember, headsDepartment, nameOf, namesOf, passingRulesSaved, readCodes, readOutcomes, readPassingRules, registeredStudying, type Caller } from "./academics";
 import { internalTotalHundredths, parseMarks, sumWeights } from "./academics-rules";
 import type { ActiveContext } from "./session";
 
@@ -41,7 +41,7 @@ const OFFERING = {
   id: true,
   termId: true,
   facultyMembershipId: true,
-  course: { select: { code: true, name: true, outcomes: true, scheme: { select: { passingRules: true, programme: { select: { departmentId: true } } } } } },
+  course: { select: { code: true, name: true, outcomes: true, scheme: { select: { name: true, passingRules: true, programme: { select: { departmentId: true } } } } } },
 } as const;
 
 async function offeringOf(c: Caller, offeringId: string) {
@@ -51,7 +51,7 @@ async function offeringOf(c: Caller, offeringId: string) {
   const isFaculty = o.facultyMembershipId === c.membershipId;
   const isHod = c.role === "HOD" && (await headsDepartment(c, departmentId));
   const sameDepartment = c.role === "FACULTY" || c.role === "HOD" ? (await departmentOfMember(c.schoolId, c.membershipId)) === departmentId : false;
-  return { o, departmentId, isFaculty, isHod, sameDepartment, internalMax: readPassingRules(o.course.scheme.passingRules).internalMax };
+  return { o, departmentId, isFaculty, isHod, sameDepartment, internalMax: readPassingRules(o.course.scheme.passingRules).internalMax, rulesSaved: passingRulesSaved(o.course.scheme.passingRules) };
 }
 
 const isLocked = async (offeringId: string) => Boolean(await db.internalLock.findUnique({ where: { offeringId }, select: { id: true } }));
@@ -299,9 +299,11 @@ export async function releaseComponent(ctx: ActiveContext, componentId: string):
  */
 export async function lockInternal(ctx: ActiveContext, offeringId: string): Promise<{ changed: boolean }> {
   const c = await academicsCaller(ctx, ["HOD"]);
-  const { o, isHod, internalMax } = await offeringOf(c, offeringId);
+  const { o, isHod, internalMax, rulesSaved } = await offeringOf(c, offeringId);
   if (!isHod) throw new AccessError("academics.refuseOtherDepartment");
   if (await isLocked(offeringId)) return { changed: false };
+  // No lock on a guessed maximum (the owner's choice on TA-070): the totals would be frozen out of a figure nobody saved.
+  if (!rulesSaved) throw new RuleRefusal("academics.refuseRulesUnsaved", 409, { schemes: o.course.scheme.name });
   const students = await registeredOn(offeringId);
   // The marks are read and the totals frozen under the offering's lock (TA-238), so a save that passed its own
   // lock check either wrote before (and is in the totals, or took a countersign away) or waits and is refused.

@@ -579,6 +579,11 @@ export async function runResults(ctx: ActiveContext, sessionId: string, reason?:
     latestMarks(s.id),
     db.malpractice.findMany({ where: { sessionId: s.id, decision: { in: ["CANCEL_PAPER", "CANCEL_SESSION"] } }, select: { studentMembershipId: true, decision: true, schedule: { select: { courseId: true } } } }),
   ]);
+  // NO RESULT ON GUESSED RULES (the owner's choice on TA-070, 14 November 2026): a course whose scheme has no saved
+  // pass rules would be graded on a fallback nobody chose, so the run is refused, naming the schemes, until the office
+  // saves their rules.
+  const unsaved = [...new Set([...courses.values()].filter((k) => !k.rulesSaved).map((k) => k.schemeName))].sort();
+  if (unsaved.length > 0) throw new RuleRefusal("academics.refuseRulesUnsaved", 409, { schemes: unsaved.join(", ") });
   const internals = new Map([...locks].map(([k, v]) => [k, v.milli]));
   let pending = 0;
   for (const f of forms) for (const c of formCourses(f.coursesJson)) if (!marks.latest.get(`${c.courseId}|${f.studentMembershipId}`)?.matched) pending += 1;

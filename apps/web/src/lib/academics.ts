@@ -50,6 +50,7 @@ import { closedOn } from "./holidays";
 import { readJson, writeJson } from "./json";
 import { isDateKey, parseTeachingDays, todayKey, weekdayOfKey } from "./dates";
 import { creditsOf, loadState, slotKey } from "./academics-rules";
+import { examRulesSaved, rulesOf } from "./exam-cell-rules";
 import type { ActiveContext } from "./session";
 import type { Role } from "./constants";
 import type { Prisma } from "@prisma/client";
@@ -137,6 +138,27 @@ export const DEFAULT_PASSING_RULES: PassingRules = { minPercentPerCourse: EXAM_P
 export function readPassingRules(raw: string): PassingRules {
   const p = passingRulesSchema.safeParse(readJson<unknown>(raw, {}));
   return p.success ? p.data : DEFAULT_PASSING_RULES;
+}
+/**
+ * NO GUESSING (the owner's choice on TA-070, 14 November 2026): a scheme whose pass rules were never saved (the column's
+ * "{}", or rules that do not read as a whole set) locks no internal marks until the office saves them, and runs no
+ * results while the figures the run grades by are missing (examRulesSaved); the fallback above only fills the figures
+ * a reader shows. The form starts the office from SUGGESTED_PASSING_RULES.
+ */
+export function passingRulesSaved(raw: string): boolean {
+  return passingRulesSchema.safeParse(readJson<unknown>(raw, {})).success;
+}
+/** A scheme the office must still save rules for: not a whole set, unless it is a saved paper with no internal part. */
+function rulesMissing(raw: string): boolean {
+  return !passingRulesSaved(raw) && !(examRulesSaved(raw) && rulesOf(raw).internalMax === 0);
+}
+/** Where the scheme form starts the office (40 internal, 60 external), to confirm or change: never read as a scheme's rules. */
+export const SUGGESTED_PASSING_RULES: PassingRules = { minPercentPerCourse: 40, atktLimit: 4, totalCredits: 120, internalMax: 40, externalMax: 60, minTermCredits: 16, maxTermCredits: 26 };
+/** The college's schemes whose pass rules are not saved yet (TA-070), for the scheme list to say so and offer the form. */
+export async function schemesWithoutRules(ctx: ActiveContext): Promise<string[]> {
+  const c = await academicsCaller(ctx, ["ADMIN", "PRINCIPAL", "HOD", "FACULTY"]);
+  const rows = await db.scheme.findMany({ where: { schoolId: c.schoolId }, select: { id: true, passingRules: true } });
+  return rows.filter((r) => rulesMissing(r.passingRules)).map((r) => r.id);
 }
 export function readOutcomes(raw: string): Outcome[] {
   return readJson<unknown[]>(raw, []).flatMap((x) => {

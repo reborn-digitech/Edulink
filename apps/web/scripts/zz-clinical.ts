@@ -97,7 +97,9 @@ export async function buildClinical(db: PrismaClient, passwordHash: string): Pro
   // The nursing department, the programme and its scheme, the division and the seats.
   await db.department.upsert({ where: { id: F.department }, create: { id: F.department, schoolId: s, code: "NUR", name: "ZZ Nursing", hodMembershipId: hod.id }, update: { hodMembershipId: hod.id } });
   await db.programme.upsert({ where: { id: F.programme }, create: { id: F.programme, schoolId: s, departmentId: F.department, code: "BSCN", name: "ZZ B.Sc. Nursing", level: "UG", durationYears: 4, intake: 60, regulator: "INC", stream: "HEALTH_SCIENCES", attendanceThreshold: 80 }, update: { stream: "HEALTH_SCIENCES", regulator: "INC" } });
-  await db.scheme.upsert({ where: { id: F.scheme }, create: { id: F.scheme, schoolId: s, programmeId: F.programme, name: "ZZ B.Sc. Nursing 2024", effectiveYear: 2024 }, update: {} });
+  // Its pass rules saved (TA-070, the owner's choice): a scheme without them locks no internals and runs no results.
+  const RULES = { minPercentPerCourse: 40, atktLimit: 4, totalCredits: 160, internalMax: 40, externalMax: 60, minTermCredits: 16, maxTermCredits: 26 };
+  await db.scheme.upsert({ where: { id: F.scheme }, create: { id: F.scheme, schoolId: s, programmeId: F.programme, name: "ZZ B.Sc. Nursing 2024", effectiveYear: 2024, passingRules: JSON.stringify(RULES) }, update: { passingRules: JSON.stringify(RULES) } });
   let division = await db.division.findUnique({ where: { id: F.division }, select: { classId: true } });
   if (!division) {
     const klass = await db.class.create({ data: { schoolId: s, name: "ZZ SY BSc Nursing A", gradeLevel: "2", subject: "BSCN", joinCode: classCode() }, select: { id: true } });

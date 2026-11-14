@@ -93,7 +93,8 @@ beforeAll(async () => {
   ids.dept = (await db.department.create({ data: { schoolId: C, code: "PHY", name: "ZZ TA003 Physics", hodMembershipId: ids.hodM }, select: { id: true } })).id;
   await db.departmentFaculty.create({ data: { schoolId: C, departmentId: ids.dept!, membershipId: ids.facultyM! } });
   const programme = await db.programme.create({ data: { schoolId: C, departmentId: ids.dept!, code: "BSC", name: "ZZ TA003 BSc Physics", level: "UG", durationYears: 3, intake: 60, regulator: "UGC", stream: "SCIENCE" }, select: { id: true } });
-  const scheme = await db.scheme.create({ data: { schoolId: C, programmeId: programme.id, name: "ZZ TA003 scheme", effectiveYear: 2025 }, select: { id: true } });
+  // Its pass rules saved (TA-070, the owner's choice): no scheme is read on a fallback, so the suite names its 40 internal.
+  const scheme = await db.scheme.create({ data: { schoolId: C, programmeId: programme.id, name: "ZZ TA003 scheme", effectiveYear: 2025, passingRules: JSON.stringify({ minPercentPerCourse: 40, atktLimit: 4, totalCredits: 120, internalMax: 40, externalMax: 60, minTermCredits: 0, maxTermCredits: 30 }) }, select: { id: true } });
   const course = await db.course.create({ data: { schoolId: C, schemeId: scheme.id, code: "PHY101", name: "ZZ TA003 Mechanics", semester: 1, creditsL: 4, kind: "CORE", outcomes: JSON.stringify([{ code: "CO1", text: "ZZ the course's outcome" }]) }, select: { id: true } });
   ids.term = (await db.academicTerm.create({ data: { schoolId: C, name: "ZZ TA003 term", academicYear: "2026–27", startsOn: addDaysToKey(TODAY, -40), endsOn: addDaysToKey(TODAY, 60), registrationOpensOn: addDaysToKey(TODAY, -50), registrationClosesOn: addDaysToKey(TODAY, -30) }, select: { id: true } })).id;
   const klass = await db.class.create({ data: { schoolId: C, name: "ZZ TA003 FY BSc A", gradeLevel: "1", subject: "BSC", joinCode: classCode() }, select: { id: true } });
@@ -133,8 +134,8 @@ beforeAll(async () => {
 
   // A component marked for everyone still studying: the HOD countersigns it.
   const faculty = await as("faculty", "FACULTY");
-  // Weight 30: a scheme with no rules of its own takes the one fallback's internal maximum, 30 (TA-070).
-  const component = await saveComponent(faculty, ids.offering!, { name: "ZZ TA003 unit test", kind: "UNIT_TEST", maxMarks: 40, weight: 30, coCodes: ["CO1"] });
+  // Weight 40: the scheme's saved internal maximum (TA-070).
+  const component = await saveComponent(faculty, ids.offering!, { name: "ZZ TA003 unit test", kind: "UNIT_TEST", maxMarks: 40, weight: 40, coCodes: ["CO1"] });
   await saveInternalMarks(faculty, ids.offering!, { componentId: component.id, entries: [{ studentMembershipId: ids.stayerM!, marks: 30 }] });
   countersign = await settle(async () => moderateComponent(await as("hod", "HOD"), component.id));
 });

@@ -12,7 +12,7 @@ import { SelectField, TextAreaField, TextField } from "@/components/ui/field";
 import { ModuleOff } from "@/components/module-off";
 import { TD, TH } from "@/components/module-flash";
 import { AWARD_KEY, KIND_KEY, LEVEL_KEY, OfficeTop } from "@/components/academics/parts";
-import { academicsStructure } from "@/lib/academics";
+import { academicsStructure, schemesWithoutRules, SUGGESTED_PASSING_RULES } from "@/lib/academics";
 import { getT } from "@/lib/i18n/server";
 import { academicsGate, type SearchParams } from "../shared";
 import { saveCourseAction, saveMappingAction, saveOutcomesAction, saveProgrammeAction, saveSchemeAction } from "../actions";
@@ -31,6 +31,9 @@ export default async function ProgrammesPage({ searchParams }: { searchParams: S
   if (!on) return <ModuleOff page module="ACADEMICS" t={t} college={college} />;
   const params = await searchParams;
   const s = await academicsStructure(ctx);
+  // Schemes whose pass rules were never saved (the owner's choice on TA-070): said so, with the form to save them.
+  const unsaved = new Set(await schemesWithoutRules(ctx));
+  const R = SUGGESTED_PASSING_RULES;
   const dept = new Map(s.departments.map((d) => [d.id, d.name]));
   // The college's streams (5 Oct 2026): a new programme picks one, and its regulator defaults from it.
   const streams = await streamsOf(ctx.schoolId);
@@ -114,8 +117,33 @@ export default async function ProgrammesPage({ searchParams }: { searchParams: S
               {s.schemes.map((sc) => (
                 <li key={sc.id} className="py-2">
                   <span className="font-semibold text-fg">{sc.name}</span> <span className="text-fg-muted">· {s.programmes.find((p) => p.id === sc.programmeId)?.code} · {sc.effectiveYear}</span>
-                  <p className="text-fg-muted">{t("academics.rulesLine", { pass: sc.passingRules.minPercentPerCourse, atkt: sc.passingRules.atktLimit, total: sc.passingRules.totalCredits, internal: sc.passingRules.internalMax, external: sc.passingRules.externalMax, min: sc.passingRules.minTermCredits, max: sc.passingRules.maxTermCredits })}</p>
+                  {unsaved.has(sc.id) ? (
+                    <p>
+                      <Badge tone="warn">{t("academics.rulesUnsaved")}</Badge>
+                    </p>
+                  ) : (
+                    <p className="text-fg-muted">{t("academics.rulesLine", { pass: sc.passingRules.minPercentPerCourse, atkt: sc.passingRules.atktLimit, total: sc.passingRules.totalCredits, internal: sc.passingRules.internalMax, external: sc.passingRules.externalMax, min: sc.passingRules.minTermCredits, max: sc.passingRules.maxTermCredits })}</p>
+                  )}
                   <p className="text-fg-muted">{sc.gradingTable.map((g) => `${g.grade} ${g.points} (${g.minPercent}%)`).join(" · ")}</p>
+                  {canEdit && unsaved.has(sc.id) ? (
+                    <form action={saveSchemeAction} className="mt-2 grid gap-3 sm:grid-cols-4">
+                      <input type="hidden" name="id" value={sc.id} />
+                      <input type="hidden" name="programmeId" value={sc.programmeId} />
+                      <input type="hidden" name="name" value={sc.name} />
+                      <input type="hidden" name="effectiveYear" value={sc.effectiveYear} />
+                      <TextField label={t("academics.fieldPassPercent")} name="minPercentPerCourse" type="number" min={0} max={100} defaultValue={R.minPercentPerCourse} />
+                      <TextField label={t("academics.fieldAtkt")} name="atktLimit" type="number" min={0} max={20} defaultValue={R.atktLimit} />
+                      <TextField label={t("academics.fieldTotalCredits")} name="totalCredits" type="number" min={1} max={400} defaultValue={R.totalCredits} />
+                      <TextField label={t("academics.fieldInternalMax")} name="internalMax" type="number" min={1} max={200} defaultValue={R.internalMax} hint={t("academics.rulesSuggestedHint")} />
+                      <TextField label={t("academics.fieldExternalMax")} name="externalMax" type="number" min={0} max={200} defaultValue={R.externalMax} />
+                      <TextField label={t("academics.fieldMinTermCredits")} name="minTermCredits" type="number" min={0} max={60} defaultValue={R.minTermCredits} />
+                      <TextField label={t("academics.fieldMaxTermCredits")} name="maxTermCredits" type="number" min={1} max={60} defaultValue={R.maxTermCredits} />
+                      <TextAreaField className="sm:col-span-2" label={t("academics.fieldGrading")} name="gradingTable" rows={8} defaultValue={sc.gradingTable.length >= 2 ? sc.gradingTable.map((g) => `${g.grade} ${g.points} ${g.minPercent}`).join("\n") : DEFAULT_GRADES} hint={t("academics.fieldGradingHint")} />
+                      <div className="self-end">
+                        <Button type="submit" size="sm">{t("academics.saveRules")}</Button>
+                      </div>
+                    </form>
+                  ) : null}
                 </li>
               ))}
             </ul>
@@ -127,13 +155,13 @@ export default async function ProgrammesPage({ searchParams }: { searchParams: S
               </SelectField>
               <TextField label={t("academics.fieldName")} name="name" required maxLength={120} />
               <TextField label={t("academics.fieldEffectiveYear")} name="effectiveYear" type="number" min={2000} max={2100} defaultValue={2024} />
-              <TextField label={t("academics.fieldPassPercent")} name="minPercentPerCourse" type="number" min={0} max={100} defaultValue={40} />
-              <TextField label={t("academics.fieldAtkt")} name="atktLimit" type="number" min={0} max={20} defaultValue={4} />
-              <TextField label={t("academics.fieldTotalCredits")} name="totalCredits" type="number" min={1} max={400} defaultValue={120} />
-              <TextField label={t("academics.fieldInternalMax")} name="internalMax" type="number" min={1} max={200} defaultValue={40} />
-              <TextField label={t("academics.fieldExternalMax")} name="externalMax" type="number" min={0} max={200} defaultValue={60} />
-              <TextField label={t("academics.fieldMinTermCredits")} name="minTermCredits" type="number" min={0} max={60} defaultValue={16} />
-              <TextField label={t("academics.fieldMaxTermCredits")} name="maxTermCredits" type="number" min={1} max={60} defaultValue={26} />
+              <TextField label={t("academics.fieldPassPercent")} name="minPercentPerCourse" type="number" min={0} max={100} defaultValue={R.minPercentPerCourse} />
+              <TextField label={t("academics.fieldAtkt")} name="atktLimit" type="number" min={0} max={20} defaultValue={R.atktLimit} />
+              <TextField label={t("academics.fieldTotalCredits")} name="totalCredits" type="number" min={1} max={400} defaultValue={R.totalCredits} />
+              <TextField label={t("academics.fieldInternalMax")} name="internalMax" type="number" min={1} max={200} defaultValue={R.internalMax} hint={t("academics.rulesSuggestedHint")} />
+              <TextField label={t("academics.fieldExternalMax")} name="externalMax" type="number" min={0} max={200} defaultValue={R.externalMax} />
+              <TextField label={t("academics.fieldMinTermCredits")} name="minTermCredits" type="number" min={0} max={60} defaultValue={R.minTermCredits} />
+              <TextField label={t("academics.fieldMaxTermCredits")} name="maxTermCredits" type="number" min={1} max={60} defaultValue={R.maxTermCredits} />
               <TextAreaField className="sm:col-span-2" label={t("academics.fieldGrading")} name="gradingTable" rows={8} defaultValue={DEFAULT_GRADES} hint={t("academics.fieldGradingHint")} />
               <div className="self-end">
                 <Button type="submit">{t("academics.addScheme")}</Button>
