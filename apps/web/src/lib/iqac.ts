@@ -69,6 +69,7 @@ import {
 } from "./iqac-rules";
 import { gatherFacts, nirfFacts, readEntered, type EvidenceRow, type FactReason, type FactSource } from "./iqac-facts";
 import { nirfScore } from "./accreditation-insights";
+import { CONFIDENTIAL_COMMITTEES, confidentialMinutes } from "./iqac-confidential";
 
 /**
  * THE IQAC DESK (module IQAC, role IQAC; the owner's plan of 4 October 2026).
@@ -149,7 +150,9 @@ export async function listEvidence(ctx: ActiveContext) {
   const desk = await iqacActor(ctx, DESK_READ);
   // Never a grievance's attachment: its title is the kind (RAGGING, HARASSMENT) and its uploader the
   // student who filed it, which the grievance desk keeps from the IQAC (campaign S-9).
-  const rows = await db.iqacFile.findMany({ where: { schoolId: desk.schoolId, purpose: { not: "GRIEVANCE" } }, orderBy: { createdAt: "desc" }, take: 200, select: { fileId: true, title: true, createdAt: true, uploadedByUserId: true } });
+  // Nor the minutes of an ICC or anti-ragging committee's meeting, which are never cited as evidence (TA-304).
+  const withheld = await confidentialMinutes(desk.schoolId);
+  const rows = await db.iqacFile.findMany({ where: { schoolId: desk.schoolId, purpose: { not: "GRIEVANCE" }, ...(withheld.size ? { fileId: { notIn: [...withheld] } } : {}) }, orderBy: { createdAt: "desc" }, take: 200, select: { fileId: true, title: true, createdAt: true, uploadedByUserId: true } });
   const users = await db.user.findMany({ where: { id: { in: [...new Set(rows.map((r) => r.uploadedByUserId))] } }, select: { id: true, name: true } });
   const name = new Map(users.map((u) => [u.id, u.name]));
   return { items: rows.map((r) => ({ fileId: r.fileId, title: r.title, uploadedAt: r.createdAt.toISOString(), by: name.get(r.uploadedByUserId) ?? "" })) };
@@ -158,6 +161,12 @@ export async function listEvidence(ctx: ActiveContext) {
 async function filesNamed(schoolId: string, fileIds: string[]): Promise<{ fileId: string; title: string }[]> {
   if (!fileIds.length) return [];
   return db.iqacFile.findMany({ where: { schoolId, fileId: { in: fileIds } }, select: { fileId: true, title: true } });
+}
+
+/** The files a score or the entered figures may cite: never the minutes of an ICC or anti-ragging committee (TA-304), so naming one is refused as an unknown file is. */
+async function filesCitable(schoolId: string, fileIds: string[]): Promise<{ fileId: string; title: string }[]> {
+  const withheld = await confidentialMinutes(schoolId, fileIds);
+  return (await filesNamed(schoolId, fileIds)).filter((f) => !withheld.has(f.fileId));
 }
 
 /* -------------------------------------------------------------------------- */
@@ -297,7 +306,7 @@ export async function scoreQualitativeAs(desk: Desk, cycleId: string, code: stri
   const metric = frameworkOf(cycle.framework).metrics.find((m) => m.code === code);
   if (!metric) throw new AccessError("iqac.refuseNoMetric", "NOT_FOUND");
   if (metric.kind !== "QL") throw new RuleRefusal("iqac.refuseNotQualitative", 422);
-  const files = await filesNamed(desk.schoolId, input.fileIds);
+  const files = await filesCitable(desk.schoolId, input.fileIds);
   if (files.length !== new Set(input.fileIds).size) throw new RuleRefusal("iqac.refuseFile", 422, undefined, "fileIds");
   const rows: EvidenceRow[] = [];
   for (const e of input.evidence) {
@@ -343,7 +352,7 @@ export async function saveEnteredInputs(ctx: ActiveContext, cycleId: string, inp
   const desk = await iqacActor(ctx, ["IQAC"]);
   const cycle = await cycleOf(desk, cycleId);
   if (cycle.status !== "OPEN") throw new RuleRefusal("iqac.refuseClosedCycle", 409);
-  const files = await filesNamed(desk.schoolId, input.fileIds);
+  const files = await filesCitable(desk.schoolId, input.fileIds);
   if (files.length !== new Set(input.fileIds).size) throw new RuleRefusal("iqac.refuseFile", 422, undefined, "fileIds");
   if (input.values.some((v) => v.value !== null) && files.length === 0) throw new RuleRefusal("iqac.refuseNoEvidence", 422, undefined, "fileIds");
   const entered = readEntered(cycle.enteredJson);
@@ -619,8 +628,12 @@ export async function addActivity(ctx: ActiveContext, input: z.infer<typeof acti
 export async function listCommittees(ctx: ActiveContext) {
   const actor = await iqacActor(ctx, DESK_READ);
   const rows = await db.committee.findMany({ where: { schoolId: actor.schoolId }, orderBy: [{ kind: "asc" }, { name: "asc" }], select: { id: true, kind: true, name: true, membersJson: true, meetings: { orderBy: { at: "desc" }, take: 50, select: { id: true, at: true, minutesFileId: true, actionTaken: true } } } });
+  // An ICC or anti-ragging committee's minutes are the office's and the head's, as its grievances' words are (G4-16):
+  // the IQAC sees that its meetings were held and their dates, never the action taken or the minutes file (TA-304).
+  const office = actor.role === "ADMIN" || actor.role === "PRINCIPAL";
+  const meetingsOf = (c: (typeof rows)[number]): (typeof rows)[number]["meetings"] => (office || !CONFIDENTIAL_COMMITTEES.has(c.kind) ? c.meetings : c.meetings.map((m) => ({ id: m.id, at: m.at, minutesFileId: null, actionTaken: "" })));
   return {
-    items: rows.map((c) => ({ id: c.id, kind: c.kind as never, name: c.name, members: readJsonArray<{ name: string; role: string; membershipId: string | null }>(c.membersJson), meetings: c.meetings })),
+    items: rows.map((c) => ({ id: c.id, kind: c.kind as never, name: c.name, members: readJsonArray<{ name: string; role: string; membershipId: string | null }>(c.membersJson), meetings: meetingsOf(c) })),
     canEdit: actor.role === "ADMIN",
   };
 }
@@ -1052,7 +1065,7 @@ export async function answerByLink(token: string, answers: Record<string, number
 
 const COMMITTEE_FOR: Record<string, "GRIEVANCE" | "ANTI_RAGGING" | "ICC"> = { RAGGING: "ANTI_RAGGING", HARASSMENT: "ICC" };
 /** Grievances whose words stay with the office and the head: ragging and harassment. The IQAC counts them and reads nothing more. */
-const CONFIDENTIAL = new Set(["ANTI_RAGGING", "ICC"]);
+const CONFIDENTIAL = CONFIDENTIAL_COMMITTEES;
 
 export async function fileGrievance(ctx: ActiveContext, input: z.infer<typeof grievanceFileSchema>) {
   const actor = await iqacActor(ctx, ["STUDENT"]);

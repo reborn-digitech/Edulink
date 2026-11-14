@@ -190,7 +190,7 @@ Surveys, the research and activity registers and the regulators' calendar are on
 
 ## How do I keep the committees, the faculty records and grievances?
 
-"Committees and minutes" and "Faculty records" are the office's to write; the principal reads them and the IQAC cites them.
+"Committees and minutes" and "Faculty records" are the office's to write; the principal reads them and the IQAC cites them. The minutes and the action taken of the Internal Complaints Committee and the anti-ragging committee are the exception: like their grievances, they are read by the office and the principal alone, and the IQAC sees only that a meeting was held and on which date, so those minutes are never cited as evidence.
 
 1. "Committees and minutes" at `/admin/committees`: "Add a committee" with "Kind", "Name" and "Members, one per line: name, then a comma and their role", then "Save the committee". Under "Meetings" record "Date", the "Minutes" file and "Action taken" with "Save the meeting".
 2. "Faculty records" at `/admin/faculty-records`: for each teacher "Designation", "Appointment", "Highest qualification", "Qualified NET, SET or SLET", "Teaching years before joining", "Joined the college on", "APAAR faculty id" and "PAN" (typed once and sealed, shown by its last four), then "Save the record".

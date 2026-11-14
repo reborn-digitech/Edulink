@@ -11,6 +11,7 @@ import { kycOwningFile } from "./expert-kyc";
 import { parentMaySee } from "./student-consent";
 import { teachesClass } from "./tenancy";
 import { forSchool } from "./tenant-context";
+import { confidentialMinutes } from "./iqac-confidential";
 
 /**
  * Per-file read authorisation.
@@ -125,8 +126,8 @@ export async function authorizeFileRead(
   });
   if (logo) return { allowed: true, kind: "logo", public: true };
 
-  // website-builder A (15 Oct 2026): a picture on a school's PUBLISHED website (a news post's first picture, a
-  // gallery picture the office ticked consent for) is public while the site is live — the live version names its
+  // website-builder A (15 Oct 2026): a picture on a school's PUBLISHED website (a news post's first picture or a
+  // gallery picture the office ticked consent for, the news picture's own tick since TA-225, 14 Nov 2026) is public while the site is live — the live version names its
   // files (SchoolSiteVersion.imageFileIds) and is readable signed out (gen-rls GLOBALLY_READABLE). Unpublishing,
   // or a version without it, closes it again; a copy a browser kept under the long cache is the logo's bargain.
   const onSite = await db.schoolSiteVersion.findFirst({ where: { liveAt: { not: null }, imageFileIds: { has: fileId } }, select: { schoolId: true } });
@@ -367,7 +368,9 @@ export async function authorizeFileRead(
     // A research paper or an activity's report is the department's record too: its HOD reads it.
     if (role === "HOD" && schoolId === iqacFile.schoolId && (iqacFile.purpose === "RESEARCH" || iqacFile.purpose === "ACTIVITY")) return { allowed: true, kind: "iqac", public: false };
     // A grievance's attachment is the office's and the head's alone, as its words are.
-    if ((role === "ADMIN" || role === "PRINCIPAL" || (role === "IQAC" && iqacFile.purpose !== "GRIEVANCE")) && schoolId === iqacFile.schoolId) return { allowed: true, kind: "iqac", public: false };
+    if ((role === "ADMIN" || role === "PRINCIPAL") && schoolId === iqacFile.schoolId) return { allowed: true, kind: "iqac", public: false };
+    // So are the minutes of an ICC or anti-ragging committee's meeting (TA-304), whatever purpose the file was first registered under.
+    if (role === "IQAC" && iqacFile.purpose !== "GRIEVANCE" && schoolId === iqacFile.schoolId && !(await confidentialMinutes(iqacFile.schoolId, [fileId])).has(fileId)) return { allowed: true, kind: "iqac", public: false };
     return DENY;
   }
 

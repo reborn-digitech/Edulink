@@ -22,6 +22,7 @@ import { assertModuleOn } from "./modules";
 import { readJson, writeJson } from "./json";
 import { addDaysToKey } from "./dates";
 import { nbaDepartments } from "./council-filings";
+import { confidentialMinutes } from "./iqac-confidential";
 import type { ActiveContext } from "./session";
 
 /**
@@ -187,8 +188,10 @@ export async function addVisitItem(ctx: ActiveContext, visitId: string, input: V
     if (!f) throw new RuleRefusal("peerVisit.refuseLink", 422, undefined, "linkId");
   } else if (input.linkKind === "FILE") {
     // Never a grievance's attachment (TA-305), which the evidence list keeps from the IQAC too (campaign S-9).
-    const f = linkId ? await db.iqacFile.findFirst({ where: { id: linkId, schoolId: d.schoolId, purpose: { not: "GRIEVANCE" } }, select: { id: true } }) : null;
+    const f = linkId ? await db.iqacFile.findFirst({ where: { id: linkId, schoolId: d.schoolId, purpose: { not: "GRIEVANCE" } }, select: { id: true, fileId: true } }) : null;
     if (!f) throw new RuleRefusal("peerVisit.refuseLink", 422, undefined, "linkId");
+    // Nor the minutes of an ICC or anti-ragging committee's meeting (TA-304), which the IQAC never reads.
+    if ((await confidentialMinutes(d.schoolId, [f.fileId])).has(f.fileId)) throw new RuleRefusal("peerVisit.refuseLink", 422, undefined, "linkId");
   } else if (input.linkKind === "METRIC") {
     linkId = linkId ?? input.criterion;
     if (!/^\d{1,2}(\.\d{1,2}){1,3}$/.test(linkId)) throw new RuleRefusal("peerVisit.refuseLink", 422, undefined, "linkId");
@@ -253,6 +256,8 @@ export async function visitDetail(ctx: ActiveContext, visitId: string): Promise<
   const filingIds = evidence.filter((i) => i.linkKind === "FILING" && i.linkId).map((i) => i.linkId!);
   const fileIds = evidence.filter((i) => i.linkKind === "FILE" && i.linkId).map((i) => i.linkId!);
   const metricCodes = evidence.filter((i) => i.linkKind === "METRIC" && i.linkId).map((i) => i.linkId!);
+  // The minutes of an ICC or anti-ragging committee's meeting are never offered (TA-304).
+  const withheld = await confidentialMinutes(d.schoolId);
   const [linkedFilings, linkedFiles, metrics, worksheet, allFilings, allFiles] = await Promise.all([
     filingIds.length ? db.collegeFiling.findMany({ where: { schoolId: d.schoolId, id: { in: filingIds } }, select: { id: true, kind: true, year: true, status: true, departmentId: true } }) : [],
     fileIds.length ? db.iqacFile.findMany({ where: { schoolId: d.schoolId, id: { in: fileIds }, purpose: { not: "GRIEVANCE" } }, select: { id: true, title: true, fileId: true } }) : [],
@@ -260,7 +265,7 @@ export async function visitDetail(ctx: ActiveContext, visitId: string): Promise<
     v.framework === "NBA" ? db.filingWorksheet.findFirst({ where: { schoolId: d.schoolId, kind: "NBA_SAR", year: v.year, departmentId: v.departmentId ?? "" }, select: { id: true } }) : null,
     db.collegeFiling.findMany({ where: { schoolId: d.schoolId, ...(v.framework === "NBA" ? { kind: "NBA_SAR", departmentId: v.departmentId } : { kind: { not: "NBA_SAR" } }) }, orderBy: [{ year: "desc" }, { generatedAt: "desc" }], take: 60, select: { id: true, kind: true, year: true, status: true } }),
     // The picker never lists a grievance's attachment, whose title is its kind (TA-305).
-    db.iqacFile.findMany({ where: { schoolId: d.schoolId, purpose: { not: "GRIEVANCE" } }, orderBy: { createdAt: "desc" }, take: 200, select: { id: true, title: true } }),
+    db.iqacFile.findMany({ where: { schoolId: d.schoolId, purpose: { not: "GRIEVANCE" }, ...(withheld.size ? { fileId: { notIn: [...withheld] } } : {}) }, orderBy: { createdAt: "desc" }, take: 200, select: { id: true, title: true } }),
   ]);
   const filingOf = new Map(linkedFilings.map((f) => [f.id, f]));
   const fileOf = new Map(linkedFiles.map((f) => [f.id, f]));
