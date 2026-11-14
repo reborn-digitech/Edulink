@@ -26,6 +26,7 @@ import { CONSENT_AGE, CONTACTABLE_ROLES, type Role } from "./constants";
 import { regenerateDemands } from "./fees";
 import { issueFirstSignIn } from "./first-signin";
 import { syncStandinGuardian } from "./standin-guardian";
+import { tellAdultStudentOfNewGuardian } from "./guardianship";
 import { sendAdmissionOffer } from "./email";
 import { matchPen, mayBringOver } from "./pen";
 import { wordsFor } from "./certificate-rules";
@@ -1117,6 +1118,9 @@ export async function admit(ctx: ActiveContext, applicationId: string, input: { 
   await audit({ schoolId: caller.schoolId, actorUserId: caller.user.id, action: "student.admit", targetType: "Membership", targetId: minted.membershipId, meta: { classId: klass?.id ?? null, hasBirthdate: birthdate !== null, ownAddress: false, fromApplication: true } });
   if (!guardianLinked) {
     await syncStandinGuardian({ schoolId: caller.schoolId, studentMembershipId: minted.membershipId, actorUserId: caller.user.id }).catch((error) => console.error("[admissions] standin sync failed", error));
+  } else if (applicantUser) {
+    // An adult at a college is told of the guardian their admission linked to them (TA-555); nothing for a minor or a school pupil.
+    await tellAdultStudentOfNewGuardian({ schoolId: caller.schoolId, studentMembershipId: minted.membershipId, guardianUserId: applicantUser.id }).catch((error) => console.error("[admissions] student notice failed", error));
   }
   let firstSignInCode: string | null = null;
   // A pupil who already had a login keeps it; a new account gets its slip.

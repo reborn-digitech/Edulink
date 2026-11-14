@@ -19,17 +19,49 @@ export const STUDENT_CONSENT_GRANTS = ["ATTENDANCE", "RESULTS", "MONEY", "HOSTEL
 export const studentConsentGrantSchema = z.enum(STUDENT_CONSENT_GRANTS);
 export type StudentConsentGrant = z.infer<typeof studentConsentGrantSchema>;
 
-/** GET /api/v1/student/consent — the reader's grants, and whether their guardians need them at all. */
+const consentGrantLineSchema = z.object({ grant: studentConsentGrantSchema, on: z.boolean(), grantedAt: z.string().datetime().nullable() });
+
+/**
+ * One family guardian of the student, with what the student has granted THEM (TA-555, the owner's decision of 14
+ * November 2026: a grant is one guardian's, so a guardian linked later starts with nothing). Never the school's
+ * stand-in.
+ */
+export const studentConsentGuardianSchema = z.object({
+  /** The link's id: what a grant names, and what the student ends. */
+  guardianshipId: z.string(),
+  name: z.string(),
+  relation: z.enum(["PARENT", "GUARDIAN", "OTHER"]),
+  since: z.string().datetime(),
+  /** Every grant, on or off for this guardian; all on where the grants do not apply. */
+  grants: z.array(consentGrantLineSchema),
+});
+export type StudentConsentGuardian = z.infer<typeof studentConsentGuardianSchema>;
+
+/** Somebody asking to be the student's guardian, waiting on the student's own yes (an adult at a college). Never their address. */
+export const studentGuardianClaimSchema = z.object({ id: z.string(), claimantName: z.string(), relation: z.enum(["PARENT", "GUARDIAN", "OTHER"]), createdAt: z.string().datetime() });
+export type StudentGuardianClaim = z.infer<typeof studentGuardianClaimSchema>;
+
+/**
+ * GET /api/v1/student/consent — the reader's grants guardian by guardian, the claims waiting on their own yes, and
+ * whether their guardians need grants at all. Also what the student's writes answer: a grant, a claim decided, a
+ * link ended.
+ */
 export const studentConsentSchema = z.object({
   /** False for a minor, or a pupil at a school: the guardian sees everything and the grants are not asked. */
   applies: z.boolean(),
-  grants: z.array(z.object({ grant: studentConsentGrantSchema, on: z.boolean(), grantedAt: z.string().datetime().nullable() })),
-  guardians: z.array(z.object({ name: z.string() })),
+  /** The whole-list line a screen written before guardians were named reads: on when at least one guardian holds the grant. */
+  grants: z.array(consentGrantLineSchema),
+  guardians: z.array(studentConsentGuardianSchema),
+  /** Empty unless `applies`: a minor's and a school pupil's claims wait on the office and the family. */
+  claims: z.array(studentGuardianClaimSchema).default([]),
 });
 export type StudentConsent = z.infer<typeof studentConsentSchema>;
 
-/** POST /api/v1/student/consent — grant or revoke one. */
-export const studentConsentSetSchema = z.object({ grant: studentConsentGrantSchema, on: z.boolean() });
+/**
+ * POST /api/v1/student/consent — grant or revoke one, to the guardian named (`guardianshipId`, one of the student's
+ * own) or, with none named, to every family guardian linked to the student now.
+ */
+export const studentConsentSetSchema = z.object({ grant: studentConsentGrantSchema, on: z.boolean(), guardianshipId: z.string().trim().min(1).max(64).optional() });
 
 /** POST /api/v1/auth/recruiter/register — a recruiter's own account (never invited). */
 export const recruiterRegisterSchema = z.object({

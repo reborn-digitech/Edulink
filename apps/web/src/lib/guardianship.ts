@@ -10,6 +10,7 @@ import { blankTextsOfLeavers } from "./text-retention";
 import type { ActiveContext } from "./session";
 import type { TranslationKey } from "./i18n/dictionary";
 import { GUARDIAN_RELATIONS, type GuardianRelation } from "./constants";
+import { consentApplies, revokeGrantsOfLink } from "./student-consent";
 
 /**
  * A GUARDIAN ENDS THEIR OWN LINK TO A CHILD.
@@ -62,8 +63,11 @@ export async function unlinkChild(ctx: ActiveContext, studentMembershipId: strin
   // TA-457 (decision 0002): a guardian whose last link to a pupil on the roll here this was has left the school; the
   // number and the words of their texts at it are blanked, a STOP reply keeping its number, with the audit row in the
   // same transaction. For this school alone: the parent's own set no longer holds it once the link is ended.
+  // And the link's grants go with it (TA-555): what an adult college student had granted this guardian is revoked
+  // here, so a link made again by a later yes starts with nothing.
   await forSchool(schoolId, () =>
     db.$tenantTransaction(async (tx) => {
+      const grantsRevoked = await revokeGrantsOfLink(tx as typeof db, link.id);
       const textsBlanked = await blankTextsOfLeavers(tx, schoolId, [ctx.user.id]);
       await audit(
         {
@@ -72,7 +76,7 @@ export async function unlinkChild(ctx: ActiveContext, studentMembershipId: strin
           action: "guardianship.unlinked",
           targetType: "Membership",
           targetId: studentMembershipId,
-          meta: { guardianshipId: link.id, relation: link.relation, schoolStandsIn, textsBlanked },
+          meta: { guardianshipId: link.id, relation: link.relation, schoolStandsIn, textsBlanked, ...(grantsRevoked ? { grantsRevoked } : {}) },
         },
         tx as typeof db,
       );
@@ -184,6 +188,8 @@ export async function endFamilyGuardianship(ctx: ActiveContext, studentMembershi
     // TA-457 (decision 0002): a guardian left with no pupil on the roll here has left the school; the number and the
     // words of their texts at it are blanked, a STOP reply keeping its number.
     const textsBlanked = await blankTextsOfLeavers(tx, schoolId, [link.parentUserId]);
+    // The link's grants go with it (TA-555): a link made again by a later yes starts with nothing.
+    const grantsRevoked = await revokeGrantsOfLink(tx, link.id);
     await audit(
       {
         schoolId,
@@ -191,7 +197,7 @@ export async function endFamilyGuardianship(ctx: ActiveContext, studentMembershi
         action: "guardianship.end",
         targetType: "Membership",
         targetId: pupil.id,
-        meta: { guardianshipId: link.id, guardianUserId: link.parentUserId, relation: link.relation, reason: reason.data, textsBlanked },
+        meta: { guardianshipId: link.id, guardianUserId: link.parentUserId, relation: link.relation, reason: reason.data, textsBlanked, ...(grantsRevoked ? { grantsRevoked } : {}) },
       },
       tx,
     );
@@ -252,4 +258,126 @@ export async function endFamilyGuardianship(ctx: ActiveContext, studentMembershi
     ),
   ]);
   return { ok: true, ended: true, schoolStandsIn };
+}
+
+/* -------------------------------------------------------------------------- */
+/* An adult student ends a guardian's link themself (TA-555)                   */
+/* -------------------------------------------------------------------------- */
+
+/**
+ * THE STUDENT HAD NO WAY TO END A GUARDIAN'S LINK (TA-555, testing analysis of 13 November 2026; the owner's decision
+ * of 14 November 2026, option 1). A guardian could end their own link (unlinkChild) and the office a wrong one
+ * (endFamilyGuardianship); an adult at a college, whose record it is, could only revoke every grant, cutting off
+ * their own parent with the stranger.
+ *
+ * WHO: the student themself, and only where their consent applies (an adult at a COLLEGE or an AUTONOMOUS_COLLEGE):
+ * a minor's and a school pupil's guardians are the family's and the school's to change. Only a family link of their
+ * own: another student's, and the school's stand-in row (the reconciler's), are not found.
+ *
+ * WHAT ENDS WITH IT: the link is REVOKED, never deleted, as every other ending; every grant given to it is revoked
+ * in the same transaction as the ending and its audit row (guardianship.endedByStudent, with the link's and the
+ * guardian's ids and how many grants were on), so a link made again by a later claim and a later yes starts with
+ * nothing. A guardian left with no pupil on the roll here has left the school, and their texts are blanked (TA-457).
+ *
+ * TOLD: the guardian, that the student ended it; the office, so it can answer when the family asks. When no family
+ * guardian is left the school's stand-in is reconciled as after any other ending; it holds no grant and is offered
+ * none, so it reads nothing of an adult's as a guardian. Unlike a guardian's own unlink the ending is not put back
+ * when nobody could stand in: an adult decides this for themself.
+ *
+ * ENDED ONCE: the write is conditional on the link still being ACTIVE; a second press answers ended: false and tells
+ * nobody again.
+ */
+export type StudentGuardianEnd = { ok: true; ended: boolean; schoolStandsIn: boolean };
+
+export async function endGuardianLinkAsStudent(ctx: ActiveContext, guardianshipId: string): Promise<StudentGuardianEnd> {
+  if (ctx.role !== "STUDENT" || !ctx.schoolId || !ctx.membershipId) throw new AccessError("access.wrongRoleForThisAction");
+  const { schoolId, membershipId } = ctx;
+  const link = await db.guardianship.findFirst({
+    where: { id: guardianshipId, studentMembershipId: membershipId, relation: { not: "SCHOOL" } },
+    select: { id: true, parentUserId: true, relation: true, parent: { select: { name: true, preferredName: true } } },
+  });
+  // Not found first, so an id that is nobody's answers the same to every student; then whose link it is to end.
+  if (!link) throw new AccessError("consent.refuseNotYourGuardian", "NOT_FOUND");
+  if (!(await consentApplies(membershipId))) throw new AccessError("consent.refuseEndNotAdult");
+
+  // The ending, the grants and the audit row in one transaction: a link is never ended off the record.
+  const ended = await db.$tenantTransaction(async (raw) => {
+    const tx = raw as typeof db;
+    const claimed = await tx.guardianship.updateMany({ where: { id: link.id, studentMembershipId: membershipId, status: "ACTIVE", relation: { not: "SCHOOL" } }, data: { status: "REVOKED" } });
+    if (claimed.count === 0) return false;
+    const grantsRevoked = await revokeGrantsOfLink(tx, link.id);
+    const textsBlanked = await blankTextsOfLeavers(tx, schoolId, [link.parentUserId]);
+    await audit(
+      {
+        schoolId,
+        actorUserId: ctx.user.id,
+        action: "guardianship.endedByStudent",
+        targetType: "Membership",
+        targetId: membershipId,
+        meta: { guardianshipId: link.id, guardianUserId: link.parentUserId, relation: link.relation, grantsRevoked, textsBlanked },
+      },
+      tx,
+    );
+    return true;
+  });
+
+  if (!ended) {
+    const standing = await db.guardianship.count({ where: { studentMembershipId: membershipId, status: "ACTIVE", relation: "SCHOOL" } });
+    return { ok: true, ended: false, schoolStandsIn: standing > 0 };
+  }
+
+  const sync = await syncStandinGuardian({ schoolId, studentMembershipId: membershipId, actorUserId: ctx.user.id });
+  const schoolStandsIn = sync.outcome === "granted" || sync.outcome === "moved" || sync.outcome === "kept-standin";
+
+  const studentName = ctx.user.preferredName ?? ctx.user.name;
+  const parentName = link.parent.preferredName ?? link.parent.name;
+  const office = await db.membership.findMany({ where: { schoolId, role: "ADMIN", status: "ACTIVE", leftAt: null }, select: { userId: true } });
+  const quiet = (error: unknown) => console.error("[endGuardianLinkAsStudent] notice failed", error);
+  await Promise.all([
+    // The guardian: that the student ended it. No link to the student's pages, which no longer open.
+    notify({ userId: link.parentUserId, schoolId, kind: "SYSTEM", titleKey: "consent.notifLinkEnded", titleVars: { name: studentName }, bodyKey: "consent.notifLinkEndedBody", bodyVars: { name: studentName } }).catch(quiet),
+    ...[...new Set(office.map((m) => m.userId))]
+      .filter((userId) => userId !== ctx.user.id && userId !== link.parentUserId)
+      .map((userId) =>
+        notify({
+          userId,
+          schoolId,
+          kind: "SYSTEM",
+          titleKey: "consent.notifStudentEndedLink",
+          titleVars: { name: studentName, parent: parentName },
+          bodyKey: "consent.notifStudentEndedLinkBody",
+          bodyVars: { name: studentName },
+          url: `/people/${membershipId}`,
+        }).catch(quiet),
+      ),
+  ]);
+  return { ok: true, ended: true, schoolStandsIn };
+}
+
+/**
+ * A GUARDIAN LINKED WITHOUT A CLAIM IS TOLD TO THE ADULT STUDENT (TA-555). A claim on an adult at a college waits for
+ * the student's own yes (guardian-claims.ts); an invitation the office sent to a guardian, and the applicant of an
+ * admission, are the school's act and make the link at once. The student is told who was linked, that they see
+ * nothing until the student shares it, and where to end the link. Nothing for a minor or a school pupil.
+ */
+export async function tellAdultStudentOfNewGuardian(input: { schoolId: string; studentMembershipId: string; guardianUserId: string }): Promise<boolean> {
+  const { schoolId, studentMembershipId, guardianUserId } = input;
+  return forSchool(schoolId, async () => {
+    if (!(await consentApplies(studentMembershipId))) return false;
+    const [student, guardian] = await Promise.all([
+      db.membership.findFirst({ where: { id: studentMembershipId, schoolId }, select: { userId: true } }),
+      db.user.findUnique({ where: { id: guardianUserId }, select: { name: true, preferredName: true } }),
+    ]);
+    if (!student || !guardian || student.userId === guardianUserId) return false;
+    await notify({
+      userId: student.userId,
+      schoolId,
+      kind: "SYSTEM",
+      titleKey: "consent.notifGuardianAdded",
+      titleVars: { guardian: guardian.preferredName ?? guardian.name },
+      bodyKey: "consent.notifGuardianAddedBody",
+      url: "/student/consent",
+    });
+    return true;
+  });
 }

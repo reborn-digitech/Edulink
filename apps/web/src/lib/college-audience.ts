@@ -74,7 +74,7 @@ export async function audienceTokensFor(session: ActiveContext): Promise<string[
   const children = await db.guardianship.findMany({ where: { parentUserId: user.id, status: "ACTIVE", studentSchoolId: schoolId }, select: { studentMembershipId: true } });
   const out = new Set<string>();
   for (const c of children) {
-    if (!(await parentMaySee(c.studentMembershipId, "MESSAGES"))) continue;
+    if (!(await parentMaySee(c.studentMembershipId, "MESSAGES", user.id))) continue;
     for (const t of await studentTokens(c.studentMembershipId)) out.add(t);
   }
   return [...out];

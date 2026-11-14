@@ -39,7 +39,7 @@ export function isSendableEndpoint(endpoint: string): boolean {
 }
 import type { NotificationKind } from "./constants";
 import type { MessageTemplateKey } from "./message-templates";
-import { consentApplies, parentMaySee, studentsGuardiansMaySee, type StudentConsentGrant } from "./student-consent";
+import { guardiansToTell, type StudentConsentGrant } from "./student-consent";
 
 /**
  * Notification delivery: in-app row + Web Push, honouring per-user channel
@@ -193,20 +193,17 @@ type DistributiveOmit<T, K extends keyof T> = T extends unknown ? Omit<T, K> : n
 export const EVERY_GUARDIAN = "EVERY_GUARDIAN";
 export type GuardianNoticeGrant = StudentConsentGrant | typeof EVERY_GUARDIAN;
 
-/** Whether a student's guardians may be told: under the grant named, or with none named only where no grant applies (TA-262). */
-async function mayTellGuardians(studentMembershipId: string, grant: StudentConsentGrant | undefined): Promise<boolean> {
-  return grant ? parentMaySee(studentMembershipId, grant) : !(await consentApplies(studentMembershipId));
-}
-
 /**
  * Fan a notification out to every active guardian of a student.
  *
  * `grant`, when the notice is about something an adult college student keeps
  * to themself until they grant it (student-consent.ts) — money, results,
- * attendance: the guardians are told only while `parentMaySee` says so. A
- * receipt's amount by text to a guardian the student never let see their fees
- * was the leak (campaign S-2). A minor's guardian, and every guardian at a
- * school, is told as before.
+ * attendance: a guardian is told only while the student has granted it TO THAT
+ * GUARDIAN (`guardiansToTell`; per guardian since TA-555, so one the student
+ * shared nothing with hears nothing while another is told). A receipt's amount
+ * by text to a guardian the student never let see their fees was the leak
+ * (campaign S-2). A minor's guardian, and every guardian at a school, is told
+ * as before.
  *
  * NO GRANT IS DEFAULT-DENY, as assertGuardianAccess is (TA-262, testing
  * analysis of 13 November 2026): a notice that names none tells an adult
@@ -223,13 +220,18 @@ export async function notifyGuardians(
   build: (childName: string) => DistributiveOmit<NotifyInput, "userId">,
   grant?: GuardianNoticeGrant,
 ): Promise<number> {
-  if (grant !== EVERY_GUARDIAN && !(await mayTellGuardians(studentMembershipId, grant))) return 0;
-  const guardians = await db.guardianship.findMany({
-    where: { studentMembershipId, status: "ACTIVE" },
-    include: {
-      student: { include: { user: { select: { name: true, preferredName: true } } } },
-    },
-  });
+  // Who may be told: every active guardian for an ask (EVERY_GUARDIAN); otherwise the guardians the grant is open to
+  // (all of a minor's or a school pupil's; of an adult at a college only those holding it, and with none named nobody).
+  const allowed = grant === EVERY_GUARDIAN ? null : new Set((await guardiansToTell([studentMembershipId], grant)).get(studentMembershipId) ?? []);
+  if (allowed && allowed.size === 0) return 0;
+  const guardians = (
+    await db.guardianship.findMany({
+      where: { studentMembershipId, status: "ACTIVE" },
+      include: {
+        student: { include: { user: { select: { name: true, preferredName: true } } } },
+      },
+    })
+  ).filter((g) => !allowed || allowed.has(g.parentUserId));
 
   const childName =
     guardians[0]?.student.user.preferredName ?? guardians[0]?.student.user.name ?? "Your child";
@@ -259,19 +261,9 @@ export async function notifyGuardiansOfClass(
   // and with no grant named not at all (TA-262).
   grant?: StudentConsentGrant,
 ): Promise<number> {
-  if (grant) studentMembershipIds = await studentsGuardiansMaySee(studentMembershipIds, grant);
-  else {
-    const open: string[] = [];
-    for (const id of studentMembershipIds) if (!(await consentApplies(id))) open.push(id);
-    studentMembershipIds = open;
-  }
-  if (studentMembershipIds.length === 0) return 0;
-  const guardians = await db.guardianship.findMany({
-    where: { studentMembershipId: { in: studentMembershipIds }, status: "ACTIVE" },
-    select: { parentUserId: true },
-    distinct: ["parentUserId"],
-  });
-  await Promise.all(guardians.map((g) => notify({ ...build(), userId: g.parentUserId })));
+  // Each guardian once, and of an adult college student only the guardians the grant is open to (TA-555).
+  const guardians = [...new Set([...(await guardiansToTell(studentMembershipIds, grant)).values()].flat())];
+  await Promise.all(guardians.map((userId) => notify({ ...build(), userId })));
   return guardians.length;
 }
 

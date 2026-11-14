@@ -2,7 +2,7 @@ import "server-only";
 import type { Prisma } from "@prisma/client";
 import { db } from "./db";
 import { AccessError, assertGuardianAccess } from "./tenancy";
-import { consentApplies, studentsGuardiansMaySee } from "./student-consent";
+import { consentApplies, studentsGuardianMaySee } from "./student-consent";
 import { notify, notifyGuardians } from "./notify";
 import { audit } from "./audit";
 import type { ActiveContext } from "./session";
@@ -403,7 +403,7 @@ async function ownStudentMembershipIds(session: ActiveContext): Promise<string[]
       select: { studentMembershipId: true },
     });
     // An adult college student's entries and results are theirs until they grant RESULTS (TA-099).
-    return studentsGuardiansMaySee(guardianships.map((g) => g.studentMembershipId), "RESULTS");
+    return studentsGuardianMaySee(guardianships.map((g) => g.studentMembershipId), "RESULTS", session.user.id);
   }
   return [];
 }
@@ -1526,7 +1526,7 @@ export async function internalBoard(
     if (setting !== "SCHOOL") return none;
     const links = await db.guardianship.findMany({ where: { parentUserId: session.user.id, status: "ACTIVE", studentSchoolId: schoolId }, select: { studentMembershipId: true } });
     // An adult college student's place is theirs until they grant RESULTS (TA-099).
-    const ids = await studentsGuardiansMaySee(links.map((l) => l.studentMembershipId), "RESULTS");
+    const ids = await studentsGuardianMaySee(links.map((l) => l.studentMembershipId), "RESULTS", session.user.id);
     if (ids.length === 0) return none;
     if (opts.studentMembershipId && ids.includes(opts.studentMembershipId)) mineId = opts.studentMembershipId;
     else {

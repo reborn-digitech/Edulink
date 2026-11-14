@@ -1078,7 +1078,8 @@ d("modules: inventory and payroll (3 October 2026)", () => {
         const slips = await db.payslip.findMany({ where: { runId: r.id } });
         const sum = (k: "grossPaise" | "deductionsPaise" | "employerPaise" | "netPaise") => slips.reduce((a, x) => a + x[k], 0);
         if (r.headcount !== slips.length) note("payroll-run", "FAIL", s.name, `${r.month}: headcount ${r.headcount}, ${slips.length} slips`);
-        for (const k of ["grossPaise", "deductionsPaise", "employerPaise", "netPaise"] as const) if (r[k] !== sum(k)) note("payroll-run", "FAIL", s.name, `${r.month}: stored ${k} ${r[k]}, slips add to ${sum(k)}`);
+        // The run's totals are stored 64-bit (TA-114) and come back as bigint: compared as bigint, exactly.
+        for (const k of ["grossPaise", "deductionsPaise", "employerPaise", "netPaise"] as const) if (r[k] !== BigInt(sum(k))) note("payroll-run", "FAIL", s.name, `${r.month}: stored ${k} ${r[k]}, slips add to ${sum(k)}`);
         if (r.status === "LOCKED" || r.status === "PAID") {
           if (!r.lockDigest) note("payroll-run", "FAIL", s.name, `${r.month} is locked with no digest`);
           else if (slipDigest(slips) !== r.lockDigest) note("payroll-run", "FAIL", s.name, `${r.month} changed after it was locked`);

@@ -258,7 +258,7 @@ async function familyReadingSchools(userId: string): Promise<string[]> {
   const schools = new Set<string>();
   for (const link of links) {
     if (schools.has(link.studentSchoolId)) continue;
-    if (await parentMaySee(link.studentMembershipId, "MESSAGES")) schools.add(link.studentSchoolId);
+    if (await parentMaySee(link.studentMembershipId, "MESSAGES", userId)) schools.add(link.studentSchoolId);
   }
   return [...schools];
 }

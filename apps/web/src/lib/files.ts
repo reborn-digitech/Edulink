@@ -202,7 +202,7 @@ export async function authorizeFileRead(
       },
       select: { id: true },
     });
-    if (guardian && (await parentMaySee(submission.studentMembershipId, "RESULTS"))) return { allowed: true, kind: "submission", public: false };
+    if (guardian && (await parentMaySee(submission.studentMembershipId, "RESULTS", user.id))) return { allowed: true, kind: "submission", public: false };
 
     // An admin of that school.
     if (role === "ADMIN" && schoolId === submission.schoolId) {
@@ -581,5 +581,5 @@ export function readMedia(raw: string | null | undefined): MediaItem[] {
 /** An active guardian of the student who may see their placement (placement, 4 Oct 2026). */
 async function placementGuardian(userId: string, studentMembershipId: string): Promise<boolean> {
   const link = await db.guardianship.findFirst({ where: { parentUserId: userId, studentMembershipId, status: "ACTIVE" }, select: { id: true } });
-  return link !== null && (await parentMaySee(studentMembershipId, "PLACEMENT"));
+  return link !== null && (await parentMaySee(studentMembershipId, "PLACEMENT", userId));
 }

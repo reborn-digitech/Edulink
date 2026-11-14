@@ -8,7 +8,8 @@
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { PrismaClient } from "@prisma/client";
 import { notifyGuardians, notifyGuardiansOfClass } from "@/lib/notify";
-import { studentsGuardiansMaySee } from "@/lib/student-consent";
+import { guardiansToTell, studentsGuardianMaySee } from "@/lib/student-consent";
+import { grantToGuardians } from "./consent-grants";
 import { remindDueTomorrow } from "@/lib/library";
 import { addDaysToKey, todayKey } from "@/lib/dates";
 
@@ -38,7 +39,8 @@ beforeAll(async () => {
     ],
   });
   // The adult lets their guardian see the hostel and bus, and nothing else.
-  await db.studentConsent.create({ data: { schoolId: ids.school, studentMembershipId: ids.adult, grant: "HOSTEL_TRANSPORT" } });
+  // (TA-555: a grant is one guardian's, so the row names the guardian's link.)
+  await grantToGuardians(db, ids.school, ids.adult, "HOSTEL_TRANSPORT");
 });
 
 afterAll(async () => {
@@ -53,9 +55,17 @@ const toldParents = async (title: string) =>
 
 describe("which students' guardians may hear of a grant", () => {
   it("a minor's always, an adult's only under the grant they gave", async () => {
-    expect(await studentsGuardiansMaySee([ids.adult, ids.minor], "RESULTS")).toEqual([ids.minor]);
-    expect(await studentsGuardiansMaySee([ids.adult, ids.minor], "HOSTEL_TRANSPORT")).toEqual([ids.adult, ids.minor]);
-    expect(await studentsGuardiansMaySee([], "RESULTS")).toEqual([]);
+    // Per guardian since TA-555: who is told about each student, and what one guardian may read of a list.
+    const told = async (grant: "RESULTS" | "HOSTEL_TRANSPORT") => [...(await guardiansToTell([ids.adult, ids.minor], grant))].filter(([, guardians]) => guardians.length > 0).map(([id]) => id).sort();
+    expect(await told("RESULTS")).toEqual([ids.minor]);
+    expect(await told("HOSTEL_TRANSPORT")).toEqual([ids.adult, ids.minor].sort());
+    expect((await guardiansToTell([ids.adult], "HOSTEL_TRANSPORT")).get(ids.adult)).toEqual([ids.adultParent]);
+    expect(await studentsGuardianMaySee([ids.adult, ids.minor], "HOSTEL_TRANSPORT", ids.adultParent)).toEqual([ids.adult, ids.minor]);
+    expect(await studentsGuardianMaySee([ids.adult, ids.minor], "RESULTS", ids.adultParent)).toEqual([ids.minor]);
+    // The other student's guardian holds no grant of the adult's.
+    expect(await studentsGuardianMaySee([ids.adult], "HOSTEL_TRANSPORT", ids.minorParent)).toEqual([]);
+    expect(await studentsGuardianMaySee([], "RESULTS", ids.adultParent)).toEqual([]);
+    expect((await guardiansToTell([], "RESULTS")).size).toBe(0);
   });
 });
 

@@ -370,7 +370,9 @@ export async function assertStudentAccess(
  * 2026; src/lib/student-consent.ts). A door names the grant its page is
  * about — ATTENDANCE, RESULTS, MONEY, HOSTEL_TRANSPORT, PLACEMENT, MESSAGES —
  * and a guardian of a student who is not a minor at a COLLEGE or an
- * AUTONOMOUS_COLLEGE passes only while that grant is on. A door that names
+ * AUTONOMOUS_COLLEGE passes only while that grant is on FOR THEM: a grant is
+ * one guardian's (TA-555), so the student's other guardian is refused where
+ * this one is admitted. A door that names
  * none is refused for such a student outright: default-deny, so a family page
  * written before colleges existed shows an adult's guardian nothing until it
  * says which grant it is. A minor's guardian, and every guardian at a school
@@ -395,7 +397,7 @@ export async function assertGuardianAccess(parentUserId: string, studentMembersh
 
   if (!link) throw new AccessError("access.notYourChild", "NOT_FOUND");
   if (isCollegeKind(link.student.school.kind) && !isMinorToday(link.student.user, link.student.school.timezone)) {
-    if (!grant || !(await parentMaySee(studentMembershipId, grant))) throw new AccessError("consent.refuseNotGranted");
+    if (!grant || !(await parentMaySee(studentMembershipId, grant, parentUserId))) throw new AccessError("consent.refuseNotGranted");
   }
   return link;
 }
@@ -506,7 +508,7 @@ export async function assertRemarkAccess(
     select: { id: true },
   });
   // An adult at a college decides whether their guardian is in the room (MESSAGES, student-consent.ts).
-  if (guardian && (await parentMaySee(thread.studentMembershipId, "MESSAGES"))) return thread;
+  if (guardian && (await parentMaySee(thread.studentMembershipId, "MESSAGES", user.id))) return thread;
 
   throw new AccessError("access.threadNotFound", "NOT_FOUND");
 }

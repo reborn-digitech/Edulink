@@ -2,7 +2,7 @@ import { db } from "@/lib/db";
 import { getSession, type ActiveContext } from "@/lib/session";
 import { channel, subscribe } from "@/lib/realtime";
 import { AccessError, teacherClassIds } from "@/lib/tenancy";
-import { studentsGuardiansMaySee } from "@/lib/student-consent";
+import { studentsGuardianMaySee } from "@/lib/student-consent";
 import { forOwnSchools, forUser } from "@/lib/tenant-context";
 
 /**
@@ -37,7 +37,7 @@ async function channelsFor(ctx: ActiveContext): Promise<string[]> {
     // The child's channel carries their grades, their remark threads and their bus (grading.ts, remarks.ts,
     // transport.ts): an adult college student's guardian hears it only while all three grants are on (TA-240).
     let heard = children.map((child) => child.studentMembershipId);
-    for (const grant of ["RESULTS", "MESSAGES", "HOSTEL_TRANSPORT"] as const) heard = await studentsGuardiansMaySee(heard, grant);
+    for (const grant of ["RESULTS", "MESSAGES", "HOSTEL_TRANSPORT"] as const) heard = await studentsGuardianMaySee(heard, grant, ctx.user.id);
     for (const id of heard) channels.push(channel.student(id));
     return channels;
   }

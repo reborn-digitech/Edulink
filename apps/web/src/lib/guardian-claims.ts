@@ -8,6 +8,7 @@ import { forSchool, forUser } from "./tenant-context";
 import { syncStandinGuardian } from "./standin-guardian";
 import type { ActiveContext } from "./session";
 import { COOL_OFF_DAYS, coolOffCutoff, statusNow, stillWaiting, waitingCutoff } from "./request-expiry";
+import { consentApplies, consentAppliesMany, revokeGrantsOfLink } from "./student-consent";
 
 /**
  * A claim to be a child's guardian, and the yes that makes it one.
@@ -24,6 +25,19 @@ import { COOL_OFF_DAYS, coolOffCutoff, statusNow, stillWaiting, waitingCutoff } 
  *
  * The school's own stand-in guardian is not "a guardian the child already
  * has": it is the school, and the school decides as the office.
+ *
+ * AN ADULT AT A COLLEGE DECIDES THEMSELF (TA-555, testing analysis of 13
+ * November 2026; the owner's decision of 14 November 2026). Where the
+ * student's consent applies (student-consent.ts `consentApplies`: an adult at
+ * a COLLEGE or an AUTONOMOUS_COLLEGE), a claim on them needs THEIR OWN yes:
+ * the student is told when it is filed, it waits in their own list
+ * (/student/consent), and neither the office nor a guardian they already have
+ * can approve or decline it. The guardian the student accepts starts with
+ * nothing: a grant is one guardian's, and the student has given this one none.
+ * The office is told of the link, as it is of one a guardian added (TA-177),
+ * so it can end a wrong one. Whether consent applies is asked when the claim
+ * is filed (who is told) and again when it is decided (who may decide): a
+ * claim that waited over an eighteenth birthday becomes the student's.
  *
  * `claimChildFor` (lib/claim-child.ts) is still where the pair is checked
  * and the attempts are limited; it calls `fileClaim` where it used to write
@@ -72,6 +86,24 @@ export async function fileClaim(input: {
       select: { id: true },
     });
     await audit({ schoolId, actorUserId: claimant.id, action: "parent.claim.request", targetType: "Membership", targetId: studentMembershipId });
+
+    // An adult at a college is the one who decides (TA-555): they are told, and nobody else is asked.
+    if (await consentApplies(studentMembershipId)) {
+      const student = await db.membership.findFirst({ where: { id: studentMembershipId, schoolId }, select: { userId: true } });
+      if (student) {
+        await notify({
+          userId: student.userId,
+          schoolId,
+          kind: "SYSTEM",
+          titleKey: "claim.notifAskedYou",
+          titleVars: { claimant: claimant.name },
+          bodyKey: "claim.notifAskedYouBody",
+          url: "/student/consent",
+          urgent: true,
+        }).catch((error) => console.error("[fileClaim] notice failed", error));
+      }
+      return { claimId: made.id, alreadyWaiting: false };
+    }
 
     const [family, office] = await Promise.all([
       db.guardianship.findMany({
@@ -199,7 +231,9 @@ export async function waitingClaimsForOffice(session: ActiveContext): Promise<Wa
     take: 200,
     select: CLAIM_SELECT,
   });
-  return rows.map(shaped);
+  // A claim on an adult at a college is the student's own to decide (TA-555): not in the office's queue.
+  const theirs = await consentAppliesMany(rows.map((row) => row.studentMembershipId));
+  return rows.filter((row) => !theirs.has(row.studentMembershipId)).map(shaped);
 }
 
 /**
@@ -217,13 +251,16 @@ export async function waitingClaimsForGuardian(userId: string): Promise<WaitingC
   for (const g of mine) bySchool.set(g.studentSchoolId, [...(bySchool.get(g.studentSchoolId) ?? []), g.studentMembershipId]);
   const lists = await Promise.all(
     [...bySchool].map(([schoolId, membershipIds]) =>
-      forSchool(schoolId, () =>
-        db.guardianClaim.findMany({
+      forSchool(schoolId, async () => {
+        const rows = await db.guardianClaim.findMany({
           where: { schoolId, studentMembershipId: { in: membershipIds }, ...stillWaiting(), claimantUserId: { not: userId } },
           orderBy: { createdAt: "asc" },
           select: CLAIM_SELECT,
-        }),
-      ),
+        });
+        // An adult child at a college decides their own (TA-555): not in a guardian's queue.
+        const theirs = await consentAppliesMany(rows.map((row) => row.studentMembershipId));
+        return rows.filter((row) => !theirs.has(row.studentMembershipId));
+      }),
     ),
   );
   // The claimant's sign-in address is the office's, to ring the family on (TA-365): a guardian deciding reads the
@@ -234,7 +271,31 @@ export async function waitingClaimsForGuardian(userId: string): Promise<WaitingC
 export async function waitingClaimCount(session: ActiveContext): Promise<number> {
   if (session.role === "PARENT") return (await waitingClaimsForGuardian(session.user.id)).length;
   if (!session.schoolId || (session.role !== "ADMIN" && session.role !== "PRINCIPAL")) return 0;
-  return db.guardianClaim.count({ where: { schoolId: session.schoolId, ...stillWaiting() } });
+  // Counted as the queue lists them: without the claims an adult at a college decides themself (TA-555).
+  const rows = await db.guardianClaim.findMany({ where: { schoolId: session.schoolId, ...stillWaiting() }, select: { studentMembershipId: true } });
+  if (rows.length === 0) return 0;
+  const theirs = await consentAppliesMany(rows.map((row) => row.studentMembershipId));
+  return rows.filter((row) => !theirs.has(row.studentMembershipId)).length;
+}
+
+/** A claim waiting on the student's own yes: who asks and as what. Never the claimant's address (TA-365). */
+export type StudentWaitingClaim = { id: string; claimantName: string; relation: Relation; createdAt: Date };
+
+/**
+ * The claims waiting on THIS student's own answer (TA-555): an adult at a college reads who is asking to be their
+ * guardian, oldest first. Empty for a minor, a pupil at a school, and anybody who is not a student: theirs wait on
+ * the office and the family as before.
+ */
+export async function waitingClaimsForStudent(session: ActiveContext): Promise<StudentWaitingClaim[]> {
+  if (session.role !== "STUDENT" || !session.schoolId || !session.membershipId) return [];
+  if (!(await consentApplies(session.membershipId))) return [];
+  const rows = await db.guardianClaim.findMany({
+    where: { schoolId: session.schoolId, studentMembershipId: session.membershipId, ...stillWaiting() },
+    orderBy: { createdAt: "asc" },
+    take: 50,
+    select: { id: true, relation: true, createdAt: true, claimant: { select: { name: true } } },
+  });
+  return rows.map((row) => ({ id: row.id, claimantName: row.claimant.name, relation: row.relation as Relation, createdAt: row.createdAt }));
 }
 
 /* -------------------------------------------------------------------------- */
@@ -246,7 +307,15 @@ export async function waitingClaimCount(session: ActiveContext): Promise<number>
  *
  * WHO MAY: the office of the child's school, or a family guardian the child
  * already has. Nobody decides their own claim. Everybody else gets the
- * NOT_FOUND an id that never existed gets.
+ * NOT_FOUND an id that never existed gets. WHERE THE STUDENT IS AN ADULT AT A
+ * COLLEGE (TA-555) it is the student alone, to approve or to decline: the
+ * office and a guardian are told so in a sentence (claim.studentDecides), and
+ * a student whose consent does not apply (a minor, a pupil at a school) is
+ * nobody here, as before.
+ *
+ * ONE TRANSACTION: the claim's status, the link, the link's clean slate of
+ * grants and the audit row are written together, so a link is never made off
+ * the record and never made with an earlier link's grants.
  *
  * A CHILD WHO HAS LEFT CANNOT BE CLAIMED, and one who left while the claim
  * waited cannot either: approving is refused, as claiming is.
@@ -265,31 +334,64 @@ export async function decideClaim(session: ActiveContext, claimId: string, decis
   if (pointer.claimantUserId === session.user.id) throw new AccessError("access.claimNotFound", "NOT_FOUND");
 
   const isOffice = (session.role === "ADMIN" || session.role === "PRINCIPAL") && session.schoolId === pointer.schoolId;
+  const isStudent = session.role === "STUDENT" && session.schoolId === pointer.schoolId && Boolean(session.membershipId) && session.membershipId === pointer.studentMembershipId;
   const isFamily =
     !isOffice &&
+    !isStudent &&
     (await db.guardianship.count({
       where: { parentUserId: session.user.id, studentMembershipId: pointer.studentMembershipId, status: "ACTIVE", relation: { not: "SCHOOL" } },
     })) > 0;
-  if (!isOffice && !isFamily) throw new AccessError("access.claimNotFound", "NOT_FOUND");
+  if (!isOffice && !isFamily && !isStudent) throw new AccessError("access.claimNotFound", "NOT_FOUND");
 
   await forSchool(pointer.schoolId, async () => {
+    // An adult at a college decides who their guardian is (TA-555); anybody else's claim is not a student's to decide.
+    const studentDecides = await consentApplies(pointer.studentMembershipId);
+    if (studentDecides && !isStudent) throw new AccessError("claim.studentDecides");
+    if (!studentDecides && isStudent) throw new AccessError("access.claimNotFound", "NOT_FOUND");
+
     const claim = await db.guardianClaim.findFirst({ where: { id: claimId, schoolId: pointer.schoolId }, select: { ...CLAIM_SELECT, status: true, claimantUserId: true } });
     if (!claim) throw new AccessError("access.claimNotFound", "NOT_FOUND");
     if (claim.status !== "PENDING") throw new AccessError("access.thatClaimHasAlreadyBeenDecided");
     if (claim.createdAt < waitingCutoff()) throw new AccessError("access.thatRequestHasExpired");
     if (decision === "APPROVE" && (claim.student.leftAt || claim.student.status !== "ACTIVE")) throw new AccessError("access.thatPupilHasLeft");
 
-    const claimed = await db.guardianClaim.updateMany({
-      where: { id: claimId, schoolId: pointer.schoolId, status: "PENDING" },
-      data: { status: decision === "APPROVE" ? "APPROVED" : "DECLINED", decidedAt: new Date(), decidedByUserId: session.user.id, declineReason: said },
-    });
-    if (claimed.count === 0) throw new AccessError("access.thatClaimHasAlreadyBeenDecided");
-
     const childName = claim.student.user.preferredName ?? claim.student.user.name;
-    const by = isOffice ? "office" : "guardian";
+    const by = isStudent ? "student" : isOffice ? "office" : "guardian";
+    const now = new Date();
+
+    await db.$tenantTransaction(async (raw) => {
+      const tx = raw as typeof db;
+      const claimed = await tx.guardianClaim.updateMany({
+        where: { id: claimId, schoolId: pointer.schoolId, status: "PENDING" },
+        data: { status: decision === "APPROVE" ? "APPROVED" : "DECLINED", decidedAt: now, decidedByUserId: session.user.id, declineReason: said },
+      });
+      if (claimed.count === 0) throw new AccessError("access.thatClaimHasAlreadyBeenDecided");
+      if (decision === "DECLINE") {
+        await audit({ schoolId: pointer.schoolId, actorUserId: session.user.id, action: "parent.claim.decline", targetType: "Membership", targetId: pointer.studentMembershipId, meta: { by, reasonGiven: said !== null } }, tx);
+        return;
+      }
+      const key = { parentUserId_studentMembershipId: { parentUserId: claim.claimantUserId, studentMembershipId: pointer.studentMembershipId } };
+      const before = await tx.guardianship.findUnique({ where: key, select: { status: true } });
+      const link = await tx.guardianship.upsert({
+        where: key,
+        create: {
+          parentUserId: claim.claimantUserId,
+          studentMembershipId: pointer.studentMembershipId,
+          studentSchoolId: pointer.schoolId,
+          relation: claim.relation,
+          status: "ACTIVE",
+          consentSharingAt: now,
+          consentNotificationsAt: now,
+        },
+        update: { status: "ACTIVE", relation: claim.relation, consentSharingAt: now },
+        select: { id: true },
+      });
+      // A link made, or made again, starts with nothing (TA-555): no grant of an earlier link outlives its ending.
+      const grantsRevoked = before?.status === "ACTIVE" ? 0 : await revokeGrantsOfLink(tx, link.id, now);
+      await audit({ schoolId: pointer.schoolId, actorUserId: claim.claimantUserId, action: "parent.claim", targetType: "Membership", targetId: pointer.studentMembershipId, meta: { approvedBy: session.user.id, by, guardianshipId: link.id, ...(grantsRevoked ? { grantsRevoked } : {}) } }, tx);
+    });
 
     if (decision === "DECLINE") {
-      await audit({ schoolId: pointer.schoolId, actorUserId: session.user.id, action: "parent.claim.decline", targetType: "Membership", targetId: pointer.studentMembershipId, meta: { by, reasonGiven: said !== null } });
       await notify({
         userId: claim.claimantUserId,
         schoolId: pointer.schoolId,
@@ -302,22 +404,6 @@ export async function decideClaim(session: ActiveContext, claimId: string, decis
       return;
     }
 
-    const now = new Date();
-    await db.guardianship.upsert({
-      where: { parentUserId_studentMembershipId: { parentUserId: claim.claimantUserId, studentMembershipId: pointer.studentMembershipId } },
-      create: {
-        parentUserId: claim.claimantUserId,
-        studentMembershipId: pointer.studentMembershipId,
-        studentSchoolId: pointer.schoolId,
-        relation: claim.relation,
-        status: "ACTIVE",
-        consentSharingAt: now,
-        consentNotificationsAt: now,
-      },
-      update: { status: "ACTIVE", relation: claim.relation, consentSharingAt: now },
-    });
-    await audit({ schoolId: pointer.schoolId, actorUserId: claim.claimantUserId, action: "parent.claim", targetType: "Membership", targetId: pointer.studentMembershipId, meta: { approvedBy: session.user.id, by } });
-
     // A real guardian now exists, so the school's stand-in is released in the same breath.
     await syncStandinGuardian({ schoolId: pointer.schoolId, studentMembershipId: pointer.studentMembershipId, actorUserId: session.user.id }).catch((error) =>
       console.error("[decideClaim] standin sync failed", error),
@@ -328,8 +414,8 @@ export async function decideClaim(session: ActiveContext, claimId: string, decis
       kind: "SYSTEM",
       titleKey: "claim.notifApproved",
       titleVars: { name: childName },
-      bodyKey: "claim.notifApprovedBody",
-      bodyVars: { school: claim.school.name },
+      // An adult's new guardian is told that the student decides what they see, and that nothing is shared yet (TA-555).
+      ...(studentDecides ? { bodyKey: "claim.notifApprovedAdultBody" as const, bodyVars: { name: childName } } : { bodyKey: "claim.notifApprovedBody" as const, bodyVars: { school: claim.school.name } }),
       url: "/parent",
     }).catch((error) => console.error("[decideClaim] notice failed", error));
     if (claim.claimant.email) {
@@ -338,6 +424,7 @@ export async function decideClaim(session: ActiveContext, claimId: string, decis
 
     // A FAMILY GUARDIAN'S YES IS TOLD TO THE OFFICE (TA-177; the owner's decision of 14 November 2026): the link does
     // not wait for the office, but the office hears of every guardian a guardian added, so it can end a wrong one.
+    // An adult student's own yes is told the same way (TA-555).
     if (!isOffice) {
       const office = await db.membership.findMany({ where: { schoolId: pointer.schoolId, role: { in: ["ADMIN", "PRINCIPAL"] }, status: "ACTIVE", leftAt: null }, select: { userId: true } });
       const approver = session.user.preferredName ?? session.user.name;
@@ -350,10 +437,10 @@ export async function decideClaim(session: ActiveContext, claimId: string, decis
               userId,
               schoolId: pointer.schoolId,
               kind: "SYSTEM",
-              titleKey: "claim.notifGuardianApproved",
-              titleVars: { guardian: approver, claimant, name: childName },
-              bodyKey: "claim.notifGuardianApprovedBody",
-              bodyVars: { name: childName },
+              // The student's own yes (TA-555) is told in its own words; a guardian's as before.
+              ...(isStudent
+                ? { titleKey: "claim.notifStudentApproved" as const, titleVars: { claimant, name: childName }, bodyKey: "claim.notifStudentApprovedBody" as const, bodyVars: { name: childName } }
+                : { titleKey: "claim.notifGuardianApproved" as const, titleVars: { guardian: approver, claimant, name: childName }, bodyKey: "claim.notifGuardianApprovedBody" as const, bodyVars: { name: childName } }),
               url: `/people/${pointer.studentMembershipId}`,
             }).catch((error) => console.error("[decideClaim] office notice failed", error)),
           ),

@@ -8,7 +8,7 @@ import { audit } from "./audit";
 import { AccessError, assertRemarkAccess, assertStudentAccess, taughtClassWhere } from "./tenancy";
 import type { ActiveContext } from "./session";
 import type { Role } from "./constants";
-import { assertParentMaySee, parentMaySee, studentsGuardiansMaySee } from "./student-consent";
+import { assertParentMaySee, guardiansToTell, studentsGuardianMaySee } from "./student-consent";
 
 /**
  * Private teacher ↔ guardian threads about one student.
@@ -59,7 +59,7 @@ export async function listThreads(session: ActiveContext): Promise<ThreadSummary
       select: { studentMembershipId: true },
     });
     // An adult college student's threads are theirs until they grant MESSAGES, as opening one is (TA-211).
-    const open = await studentsGuardiansMaySee(links.map((l) => l.studentMembershipId), "MESSAGES");
+    const open = await studentsGuardianMaySee(links.map((l) => l.studentMembershipId), "MESSAGES", user.id);
     if (open.length === 0) return [];
     where = { studentMembershipId: { in: open } };
   }
@@ -266,9 +266,9 @@ async function notifyParticipants(
   if (teacher) targets.push({ userId: teacher.userId, titleKey: "notifTitle.newMessageAbout", titleVars: { name: childName } });
   // The child is told in the second person; everybody else is told about them.
   if (student) targets.push({ userId: student.userId, titleKey: "notifTitle.newMessageFromSchool" });
-  // The guardians only while an adult college student lets them see messages (TA-211).
-  const guardiansMay = guardians.length > 0 && (await parentMaySee(thread.studentMembershipId, "MESSAGES"));
-  for (const guardian of guardiansMay ? guardians : []) {
+  // The guardians only while an adult college student lets them see messages (TA-211), each on their own grant (TA-555).
+  const guardiansMay = new Set(guardians.length > 0 ? ((await guardiansToTell([thread.studentMembershipId], "MESSAGES")).get(thread.studentMembershipId) ?? []) : []);
+  for (const guardian of guardians.filter((g) => guardiansMay.has(g.parentUserId))) {
     targets.push({ userId: guardian.parentUserId, titleKey: "notifTitle.newMessageAbout", titleVars: { name: childName } });
   }
 
@@ -356,7 +356,7 @@ export async function createThread(
     // read (assertRemarkAccess): a guardian kept out could otherwise open a thread they would then be refused, its
     // first message telling the student and the teacher (owner's item 14, 1 Nov 2026). 403 consent.refuseNotGranted,
     // as every family door answers a grant that is off.
-    await assertParentMaySee(input.studentMembershipId, "MESSAGES");
+    await assertParentMaySee(input.studentMembershipId, "MESSAGES", session.user.id);
     schoolId = guardian.studentSchoolId;
     const teaches = await teacherTeaches(
       schoolId,

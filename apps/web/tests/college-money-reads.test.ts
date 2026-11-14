@@ -18,6 +18,7 @@ import { addClaimDocument, ageingBucket, myScholarships, reconciliationSheet } f
 import { translator } from "@/lib/i18n/dictionary";
 import type { ActiveContext } from "@/lib/session";
 import { __resetCookies, __setCookie } from "./stubs/next-headers";
+import { grantToGuardians, revokeFromGuardians } from "./consent-grants";
 
 const db = new PrismaClient();
 const STAMP = Date.now();
@@ -144,9 +145,10 @@ describe("the family's own ledger at a college", () => {
 
   it("⚠ an ADULT student's guardian reads it only while the student grants MONEY, and not after it is revoked", async () => {
     await expect(myLedger(guardian(), member.adult)).rejects.toMatchObject({ key: "consent.refuseNotGranted" });
-    await db.studentConsent.create({ data: { schoolId: school.college!, studentMembershipId: member.adult!, grant: "MONEY" } });
+    // To the guardian (TA-555: a grant is one guardian's, so the row names the link), then taken back.
+    expect(await grantToGuardians(db, school.college!, member.adult!, "MONEY")).toBeGreaterThan(0);
     expect((await myLedger(guardian(), member.adult)).student.studentMembershipId).toBe(member.adult);
-    await db.studentConsent.update({ where: { studentMembershipId_grant: { studentMembershipId: member.adult!, grant: "MONEY" } }, data: { revokedAt: new Date() } });
+    await revokeFromGuardians(db, member.adult!, "MONEY");
     await expect(myLedger(guardian(), member.adult)).rejects.toMatchObject({ key: "consent.refuseNotGranted" });
   });
 

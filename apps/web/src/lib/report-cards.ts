@@ -465,8 +465,15 @@ export async function generateCards(
    * unique only inside its year. So where the row already holds cards of this title from ANOTHER academic year, this
    * year's set takes the title with the year's name after it, "Term 1 (2026–27)": last year's issued cards are then
    * neither skipped over, overwritten, issued again nor taken back by this year's presses, and their signatures stay
-   * theirs. A card's year is its academicYearId, or, built from papers, the year its window ends in. The title carries
-   * the year until a unique key on class, pupil, title and year replaces the one on class, pupil and title.
+   * theirs. A card's year is its academicYearId, or, built from papers, the year its window ends in.
+   *
+   * THE DATABASE'S KEY NOW CARRIES THE YEAR TOO (14 November 2026: class, pupil, title and academic year, NULLS NOT
+   * DISTINCT), AND THE TITLE STILL TAKES THE YEAR ON A CLASH. The key is the database's backstop: it lets a row that
+   * outlives a year hold both years' cards and still refuses a second card of one pupil, title and year. But a SET is
+   * still found by its class and title alone by everything listed above: the publish and take-back doors take a title,
+   * the signature rows are keyed `${classId}|${title}` (signatures.ts cardSetId), and the PDF bundle and the builder's
+   * list group by title. Two years under one bare title would be one set to all of them, which is TA-009 itself, so
+   * the rename stays until those carry the year as well.
    */
   const { yearOf, years } = await cardYears(ctx.schoolId!);
   const thisYearId = term?.academicYearId ?? year?.id ?? yearOf({ academicYearId: null, toDateKey });

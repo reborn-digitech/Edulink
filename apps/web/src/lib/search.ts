@@ -9,7 +9,7 @@ import { NAV, QUICK_ACTIONS } from "./nav";
 import { ROLE_META, type Role } from "./constants";
 import { getT } from "./i18n/server";
 import type { Translate } from "./i18n/dictionary";
-import { studentsGuardiansMaySee } from "./student-consent";
+import { studentsGuardianMaySee } from "./student-consent";
 
 /**
  * One search across what a person may already see.
@@ -163,7 +163,7 @@ async function searchMessages(ctx: ActiveContext, q: string, limit: number, t: T
   else if (role === "STUDENT" && schoolId && membershipId) threadWhere = { schoolId, studentMembershipId: membershipId };
   else if (role === "PARENT") {
     // An adult college student's threads only under MESSAGES, as listThreads reads them (TA-211).
-    const children = await studentsGuardiansMaySee(await childrenOf(user.id), "MESSAGES");
+    const children = await studentsGuardianMaySee(await childrenOf(user.id), "MESSAGES", user.id);
     threadWhere = children.length ? { studentMembershipId: { in: children } } : null;
   }
 

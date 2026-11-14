@@ -43,6 +43,8 @@ import { POST as answerPost } from "@/app/api/v1/voice/surveys/[surveyId]/route"
 import { POST as meetPost } from "@/app/api/v1/alumni/college/meets/[meetId]/route";
 import { POST as signatureDecidePost } from "@/app/api/v1/office/signatures/[signatureId]/decide/route";
 import { cardSetId } from "@/lib/signatures";
+// A grant is one guardian's since TA-555 (14 November 2026): "the student grants X" is to each family guardian linked to them.
+import { grantToGuardians } from "./consent-grants";
 
 const db = new PrismaClient();
 const STAMP = Date.now();
@@ -226,7 +228,7 @@ describe("1. a guardian starting a remark thread about an adult college student"
   });
 
   it("is let through once the student grants MESSAGES", async () => {
-    await db.studentConsent.create({ data: { schoolId: ids.college, studentMembershipId: P.Adult!.membershipId, grant: "MESSAGES" } });
+    await grantToGuardians(db, ids.college, P.Adult!.membershipId, "MESSAGES");
     const made = await createThread(ctxOf(P.Guardian!, "PARENT", null), input());
     expect(await db.remarkThread.count({ where: { id: made.threadId, studentMembershipId: P.Adult!.membershipId } })).toBe(1);
     await db.studentConsent.deleteMany({ where: { studentMembershipId: P.Adult!.membershipId, grant: "MESSAGES" } });
@@ -319,7 +321,7 @@ describe("5. cancelling a library reservation for an adult college student", () 
   });
 
   it("is the guardian's once MONEY is granted", async () => {
-    await db.studentConsent.create({ data: { schoolId: ids.college, studentMembershipId: P.Adult!.membershipId, grant: "MONEY" } });
+    await grantToGuardians(db, ids.college, P.Adult!.membershipId, "MONEY");
     const row = await cancelReservation(ctxOf(P.Guardian!, "PARENT", null), ids.reservation);
     expect(row.id).toBe(ids.reservation);
     expect((await db.libraryReservation.findUniqueOrThrow({ where: { id: ids.reservation }, select: { cancelledAt: true } })).cancelledAt).not.toBeNull();

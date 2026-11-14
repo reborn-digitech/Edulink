@@ -62,6 +62,8 @@ import { POST as paperSubmitPost } from "@/app/api/v1/exam-cell/papers/[paperId]
 import { GET as paperOpenGet } from "@/app/api/v1/exam-cell/papers/[paperId]/open/route";
 import { POST as documentsPost } from "@/app/api/v1/exam-cell/documents/route";
 import { POST as creditsPushPost } from "@/app/api/v1/exam-cell/credits/push/route";
+// A grant is one guardian's since TA-555 (14 November 2026): "the student grants X" is to each family guardian linked to them.
+import { grantToGuardians } from "./consent-grants";
 
 const dues = vi.hoisted(() => ({ blocked: new Set<string>() }));
 vi.mock("@/lib/no-dues", () => ({
@@ -431,7 +433,7 @@ describe("the exam cell (module EXAMS)", () => {
     await as("Parent", null, "PARENT");
     expect((await mineGet(get(`/api/v1/exam-cell/mine?childId=${ids.s1}`))).status).toBe(200);
     expect((await mineGet(get(`/api/v1/exam-cell/mine?childId=${ids.s2}`))).status).toBe(403);
-    await db.studentConsent.create({ data: { schoolId: ids.aff!, studentMembershipId: ids.s2!, grant: "RESULTS" } });
+    await grantToGuardians(db, ids.aff!, ids.s2!, "RESULTS");
     const granted = await mineGet(get(`/api/v1/exam-cell/mine?childId=${ids.s2}`));
     expect(granted.status).toBe(200);
     expect((await body<{ canAct: boolean; results: unknown[] }>(granted)).canAct).toBe(false);

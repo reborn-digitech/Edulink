@@ -438,6 +438,7 @@ const ACTION_KEYS: Record<string, TranslationKey> = {
   "family.export": "audit.familyExport",
   "guardianship.unlinked": "audit.guardianshipUnlinked",
   "guardianship.end": "audit.guardianshipEnd",
+  "guardianship.endedByStudent": "audit.guardianshipEndedByStudent",
   "marks.export": "audit.marksExport",
   "timetable.import": "audit.timetableImport",
   "timetable.sections.copy": "audit.timetableSectionsCopy",

@@ -137,7 +137,7 @@ export async function buildProgressReport(
 
   // A guardian is admitted under RESULTS; an adult college student's register is a grant of its own (ATTENDANCE), and
   // without it the report says so instead of printing the days (TA-556).
-  const attendanceWithheld = session.role === "PARENT" && !(await parentMaySee(studentMembershipId, "ATTENDANCE"));
+  const attendanceWithheld = session.role === "PARENT" && !(await parentMaySee(studentMembershipId, "ATTENDANCE", session.user.id));
   const [attendance, grades, badges] = await Promise.all([
     attendanceWithheld
       ? Promise.resolve({ percent: null, counts: { PRESENT: 0, LATE: 0, ABSENT: 0, EXCUSED: 0 }, total: 0, days: [] })

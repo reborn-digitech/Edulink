@@ -1534,7 +1534,7 @@ export async function buildExams(school: { id: string }, adminUserId: string, op
         createdByMembershipId: admin.id,
         publishedAt: status === "PUBLISHED" ? new Date() : null,
       };
-      const card = await db.reportCard.upsert({ where: { classId_studentMembershipId_title: { classId: klass.id, studentMembershipId: row.studentMembershipId, title } }, create: data, update: data, select: { id: true } });
+      const card = await db.reportCard.upsert({ where: { classId_studentMembershipId_title_academicYearId: { classId: klass.id, studentMembershipId: row.studentMembershipId, title, academicYearId: data.academicYearId } }, create: data, update: data, select: { id: true } });
       await db.reportCardItem.deleteMany({ where: { reportCardId: card.id } });
       await db.reportCardItem.createMany({
         data: [

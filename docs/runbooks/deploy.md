@@ -58,8 +58,9 @@ Migrations are add-only for one release: a column or table goes in now, the
 code that stops reading the old one ships now, the drop ships next release.
 That is what makes the rollback below a plain image swap — when it was kept.
 A migration that drops or renames a column or table, sets an existing column
-`SET NOT NULL`, or adds a `NOT NULL` column with no default also breaks the
-old machines of a rolling release until they are replaced. Since TA-439 the
+`SET NOT NULL`, adds a `NOT NULL` column with no default, changes a column's
+type (`SET DATA TYPE`), or replaces a unique key the old code relies on also
+breaks the old machines of a rolling release until they are replaced. Since TA-439 the
 rule is checked: `tests/ta-ops-ci-dr-ci.test.ts` lists every migration that is
 not add-only, with its reason, and fails on a new one until it is added there
 and the last safe rollback point below is moved to it.
@@ -79,10 +80,14 @@ Redeploy the previous image. There are no down migrations, so the rule is:
 `20261002100602_gig_company_collects` (`a11a7aa4`) dropped and renamed
 columns, `20261011002832_quiz_publish_jobs` (`fcd2bb47`) renamed two
 QuizQuestion columns, and `20261031120000_library_eresource_name_key`
-(`f3ae34ec`) set LibraryEResource.nameKey `SET NOT NULL`, so no image older
-than the newest of them runs on a database that has it: the last safe
-rollback point is the commit that added
-`20261031120000_library_eresource_name_key` (`f3ae34ec`) or later. Before any
+(`f3ae34ec`) set LibraryEResource.nameKey `SET NOT NULL`, and
+`20261114161500_consent_per_guardian_and_wider_totals` (14 November 2026)
+changed five payroll totals to `BIGINT` and replaced StudentConsent's unique
+key with one keyed to the guardianship, so an older image would read a grant
+given to one guardian as every guardian's: no image older than the newest of
+them runs on a database that has it, and the last safe rollback point is the
+commit that added `20261114161500_consent_per_guardian_and_wider_totals` or
+later. Before any
 rollback, ask the database what the target image does not know:
 
 ```bash
@@ -96,8 +101,9 @@ target image, `prisma migrate status` reads that image's
 `prisma/migrations` and lists the migrations "applied to the database but
 missing from the local migrations folder". Read each one's `migration.sql`
 (`git show <new sha>:apps/web/prisma/migrations/<name>/migration.sql`): any
-`DROP COLUMN`, `DROP TABLE`, `RENAME`, `SET NOT NULL` or `ADD COLUMN … NOT NULL`
-without a `DEFAULT` among them means restore, not swap. None listed, or only
+`DROP COLUMN`, `DROP TABLE`, `RENAME`, `SET NOT NULL`, `SET DATA TYPE`, a
+unique key dropped and created again, or `ADD COLUMN … NOT NULL` without a
+`DEFAULT` among them means restore, not swap. None listed, or only
 `CREATE`/`ADD` of nullable or defaulted columns, and the swap is safe. Rehearse it on staging before the first
 real release and note the time it took beside the restore drill in
 `backup-restore.md`.

@@ -73,6 +73,8 @@ const FLAT: Record<string, string> = {
   // People waiting for a yes: the staff's queue and a guardian's are one screen.
   "/joins": "/(app)/joins",
   "/parent/claims": "/(app)/joins",
+  // An adult student's own: what each guardian sees, and somebody asking to be their guardian (TA-555).
+  "/student/consent": "/(app)/consent",
   "/root": "/(app)/operator",
   "/appadmin": "/(app)/appadmin",
   // The screens that used to open the web (September 2026).

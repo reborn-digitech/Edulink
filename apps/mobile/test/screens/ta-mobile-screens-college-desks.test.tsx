@@ -47,22 +47,25 @@ beforeEach(() => {
 /* ------------------------------------------------------------------ consent */
 
 const GRANTS = ["ATTENDANCE", "RESULTS", "MONEY", "HOSTEL_TRANSPORT", "PLACEMENT", "MESSAGES"];
-const consent = (on: string[]) => ({ applies: true, grants: GRANTS.map((grant) => ({ grant, on: on.includes(grant), grantedAt: on.includes(grant) ? iso : null })), guardians: [{ name: "ZZ Sunil Pathak" }] });
+// A grant is one guardian's since TA-555: the list comes guardian by guardian, here with one guardian.
+const lines = (on: string[]) => GRANTS.map((grant) => ({ grant, on: on.includes(grant), grantedAt: on.includes(grant) ? iso : null }));
+const consent = (on: string[]) => ({ applies: true, grants: lines(on), guardians: [{ guardianshipId: "g1", name: "ZZ Sunil Pathak", relation: "PARENT", since: iso, grants: lines(on) }], claims: [] });
+const LET = /^Let them see it: /;
 
 describe("what an adult student lets their family see", () => {
   it("TA-589: while one grant is on its way no other can be pressed, so an earlier answer arriving last cannot draw a later grant off", async () => {
     const first = gated();
     const { calls } = await mountStaff(<StudentConsentScreen />, "STUDENT", { "GET /api/v1/student/consent": () => json(consent([])), "POST /api/v1/student/consent": first.answer }, { me: atCollege("STUDENT", ["ACADEMICS"]) });
-    const grants = await screen.findAllByRole("button", { name: "Let them see it" });
+    const grants = await screen.findAllByRole("button", { name: LET });
     await fireEvent.press(grants[2]!);
     await waitFor(() => expect(posts(calls, "POST /api/v1/student/consent")).toBe(1));
     // Before the fix ATTENDANCE stayed pressable, and its write's answer could be overtaken by MONEY's older one.
-    expect(screen.getAllByRole("button", { name: "Let them see it" })[0]).toBeDisabled();
-    await fireEvent.press(screen.getAllByRole("button", { name: "Let them see it" })[0]!);
+    expect(screen.getAllByRole("button", { name: LET })[0]).toBeDisabled();
+    await fireEvent.press(screen.getAllByRole("button", { name: LET })[0]!);
     await settle();
     expect(posts(calls, "POST /api/v1/student/consent")).toBe(1);
     await act(async () => first.open(() => json(consent(["MONEY"]))));
-    await waitFor(() => expect(screen.getAllByRole("button", { name: "Let them see it" })[0]).toBeEnabled());
+    await waitFor(() => expect(screen.getAllByRole("button", { name: LET })[0]).toBeEnabled());
   });
 });
 

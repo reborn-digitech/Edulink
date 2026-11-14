@@ -424,7 +424,7 @@ async function buildLastYear(b: Built, closed: Set<string>) {
         createdByMembershipId: b.admin.membership.id, publishedAt: new Date("2026-04-25T09:00:00Z"),
       };
       // A card already written keeps its marks; only its attendance is held to the register.
-      const card = await db.reportCard.upsert({ where: { classId_studentMembershipId_title: { classId: old.id, studentMembershipId: p.membershipId, title } }, create: data, update: data, select: { id: true, items: { select: { id: true }, take: 1 } } });
+      const card = await db.reportCard.upsert({ where: { classId_studentMembershipId_title_academicYearId: { classId: old.id, studentMembershipId: p.membershipId, title, academicYearId: data.academicYearId } }, create: data, update: data, select: { id: true, items: { select: { id: true }, take: 1 } } });
       if (card.items.length === 0) {
         await db.reportCardItem.createMany({
           data: [

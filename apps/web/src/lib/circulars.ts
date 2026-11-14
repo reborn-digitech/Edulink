@@ -6,7 +6,7 @@ import { audit } from "./audit";
 import { notify } from "./notify";
 import { consume } from "./rate-limit";
 import { studentTokensMany } from "./college-audience";
-import { studentsGuardiansMaySee } from "./student-consent";
+import { guardiansToTell } from "./student-consent";
 import type { ActiveContext } from "./session";
 import type { Role } from "./constants";
 
@@ -86,7 +86,9 @@ async function familyGroups(post: PostRow, viewer?: { role: Role; membershipId: 
   // permission slip read it; and an adult's guardians only while MESSAGES is granted, as the feed reads that too.
   const studentIds = classes.flatMap((k) => k.enrollments.map((e) => e.student.id));
   const tokens = post.audienceTarget ? await studentTokensMany(studentIds) : null;
-  const guardiansMay = new Set(await studentsGuardiansMaySee(studentIds, "MESSAGES"));
+  // Each guardian on their own grant (TA-555): the guardians a notice may reach, per student.
+  const guardiansMay = await guardiansToTell(studentIds, "MESSAGES");
+  const told = (studentId: string) => new Set(guardiansMay.get(studentId) ?? []);
   return classes.map((k) => ({
     classId: k.id,
     className: k.name,
@@ -96,8 +98,8 @@ async function familyGroups(post: PostRow, viewer?: { role: Role; membershipId: 
         studentMembershipId: student.id,
         studentUserId: student.userId,
         studentName: student.user.preferredName ?? student.user.name,
-        guardians: guardiansMay.has(student.id) ? student.guardianships.map((g) => ({ userId: g.parent.id, name: g.parent.preferredName ?? g.parent.name, phone: g.parent.phone })) : [],
-        withheld: !guardiansMay.has(student.id) && student.guardianships.length > 0,
+        guardians: student.guardianships.filter((g) => told(student.id).has(g.parent.id)).map((g) => ({ userId: g.parent.id, name: g.parent.preferredName ?? g.parent.name, phone: g.parent.phone })),
+        withheld: told(student.id).size === 0 && student.guardianships.length > 0,
       })),
   }));
 }

@@ -6,7 +6,7 @@ import { readJson } from "./json";
 import { DEFAULT_PREFS, type UserPrefs } from "./session";
 import { translator, type Translate } from "./i18n/dictionary";
 import { normaliseLocale } from "./i18n/locales";
-import { studentsGuardiansMaySee } from "./student-consent";
+import { guardiansToTell } from "./student-consent";
 
 /**
  * The parent weekly digest: one message per family, once a week, saying what
@@ -185,8 +185,10 @@ export async function sendWeeklyDigests(
   const allChildIds = [...new Set(parents.map((link) => link.studentMembershipId))];
   // What an adult college student lets their guardians see (TA-176): the register line under ATTENDANCE, the
   // practice, badges, homework and exams under RESULTS; a child with neither is left out of the digest.
+  // Each guardian on their own grant (TA-555): the pairs "child|guardian" each line is open to.
   const seesAttendance = new Set<string>();
   const seesResults = new Set<string>();
+  const pair = (childId: string, parentUserId: string) => `${childId}|${parentUserId}`;
   for (let i = 0; i < allChildIds.length; i += 1000) {
     const chunk = allChildIds.slice(i, i + 1000);
     const rows = await db.membership.findMany({
@@ -194,8 +196,8 @@ export async function sendWeeklyDigests(
       select: { id: true, schoolId: true },
     });
     for (const row of rows) childSchool.set(row.id, row.schoolId);
-    for (const id of await studentsGuardiansMaySee(chunk, "ATTENDANCE")) seesAttendance.add(id);
-    for (const id of await studentsGuardiansMaySee(chunk, "RESULTS")) seesResults.add(id);
+    for (const [id, guardians] of await guardiansToTell(chunk, "ATTENDANCE")) for (const g of guardians) seesAttendance.add(pair(id, g));
+    for (const [id, guardians] of await guardiansToTell(chunk, "RESULTS")) for (const g of guardians) seesResults.add(pair(id, g));
   }
   const familySchools = (childIds: string[]) =>
     new Set(childIds.map((id) => childSchool.get(id)).filter((x): x is string => x !== undefined));
@@ -217,13 +219,13 @@ export async function sendWeeklyDigests(
       continue;
     }
 
-    const weeks = (await Promise.all(childIds.filter((id) => seesAttendance.has(id) || seesResults.has(id)).map(async (id) => {
+    const weeks = (await Promise.all(childIds.filter((id) => seesAttendance.has(pair(id, parentUserId)) || seesResults.has(pair(id, parentUserId))).map(async (id) => {
       const week = await childWeek(id);
       if (!week) return null;
       return {
         ...week,
-        ...(seesAttendance.has(id) ? {} : { attended: null, attendanceTotal: 0 }),
-        ...(seesResults.has(id) ? {} : { practiceAnswers: 0, badges: 0, homeworkDue: 0, examsSoon: 0 }),
+        ...(seesAttendance.has(pair(id, parentUserId)) ? {} : { attended: null, attendanceTotal: 0 }),
+        ...(seesResults.has(pair(id, parentUserId)) ? {} : { practiceAnswers: 0, badges: 0, homeworkDue: 0, examsSoon: 0 }),
       };
     }))).filter(
       (w): w is ChildDigest => w !== null,

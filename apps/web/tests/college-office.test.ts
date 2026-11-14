@@ -44,6 +44,8 @@ import { POST as counterPost } from "@/app/api/v1/fees/payments/route";
 import { POST as reversePost } from "@/app/api/v1/fees/payments/[paymentId]/reverse/route";
 import { GET as receiptGet } from "@/app/api/v1/fees/receipts/[receiptId]/route";
 import { GET as familyCertRequestsGet, POST as familyCertRequestsPost } from "@/app/api/v1/family/certificate-requests/route";
+// A grant is one guardian's since TA-555 (14 November 2026): "the student grants X" is to each family guardian linked to them.
+import { grantToGuardians } from "./consent-grants";
 
 const db = new PrismaClient();
 const STAMP = Date.now();
@@ -251,7 +253,7 @@ describe("a guardian's view of an adult's money", () => {
     expect((await familyCertRequestsPost(json(`/api/v1/family/certificate-requests?childId=${ids.s1}`, { kind: "BONAFIDE", purpose: "ZZ bank account" }))).status).toBe(403);
     expect(await db.certificateRequest.count({ where: { studentMembershipId: ids.s1 } })).toBe(0);
     // Granted, the money doors open (the next test reads the ledger); certificate papers stay the adult's.
-    await db.studentConsent.create({ data: { schoolId: ids.college, studentMembershipId: ids.s1, grant: "MONEY" } });
+    await grantToGuardians(db, ids.college, ids.s1, "MONEY");
     expect((await familyFeesGet(get(`/api/v1/fees/family?childId=${ids.s1}`))).status).toBe(200);
     expect((await receiptGet(get(`/api/v1/fees/receipts/${paid.receiptId}`), params("receiptId", paid.receiptId))).status).toBe(200);
     await db.studentConsent.deleteMany({ where: { studentMembershipId: ids.s1, grant: "MONEY" } });
@@ -262,7 +264,7 @@ describe("a guardian's view of an adult's money", () => {
   it("is refused until the student grants MONEY, then reads the same ledger under the child's college", async () => {
     await as(ids.parent, null, "PARENT");
     expect((await myLedgerGet(get(`/api/v1/student/ledger?childId=${ids.s1}`))).status).toBe(403);
-    await db.studentConsent.create({ data: { schoolId: ids.college, studentMembershipId: ids.s1, grant: "MONEY" } });
+    await grantToGuardians(db, ids.college, ids.s1, "MONEY");
     const res = await myLedgerGet(get(`/api/v1/student/ledger?childId=${ids.s1}`));
     expect(res.status).toBe(200);
     expect((await body<{ totals: { demandPaise: number } }>(res)).totals.demandPaise).toBe(1_450_000);

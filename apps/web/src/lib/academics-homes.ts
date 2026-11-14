@@ -209,7 +209,7 @@ export async function familyAcademics(ctx: ActiveContext, childId?: string): Pro
   }
   if (!chosen) return { children: list, childId: null, allowed: false, attendance: [] };
   await assertModuleOn(chosen.schoolId, "ACADEMICS");
-  if (!(await parentMaySee(chosen.studentMembershipId, "ATTENDANCE"))) return { children: list, childId: chosen.studentMembershipId, allowed: false, attendance: [] };
+  if (!(await parentMaySee(chosen.studentMembershipId, "ATTENDANCE", ctx.user.id))) return { children: list, childId: chosen.studentMembershipId, allowed: false, attendance: [] };
   // The grant is checked above; the guardianship itself is the tenancy's fence.
   await assertGuardianAccess(ctx.user.id, chosen.studentMembershipId, "ATTENDANCE");
   const today = todayKey(await zoneOf(chosen.schoolId));

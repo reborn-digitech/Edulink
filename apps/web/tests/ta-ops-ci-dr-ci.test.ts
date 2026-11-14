@@ -153,6 +153,8 @@ const NOT_ADD_ONLY: Record<string, string> = {
   "20261002100602_gig_company_collects": "drops and renames the gig payout columns",
   "20261011002832_quiz_publish_jobs": "renames QuizQuestion.discardedAt and discardReason",
   "20261031120000_library_eresource_name_key": "sets LibraryEResource.nameKey NOT NULL",
+  "20261114161500_consent_per_guardian_and_wider_totals":
+    "changes the payroll totals to BIGINT and keys StudentConsent to the guardianship (a replaced unique key): an older image reads a grant given to one guardian as every guardian's",
 };
 
 /** What in one migration's SQL is not add-only, as short labels; [] for an add-only migration. */
@@ -171,6 +173,8 @@ function notAddOnly(sql: string): string[] {
       if (/\bDROP COLUMN\b/i.test(c)) found.add("DROP COLUMN");
       if (/\bRENAME\b/i.test(c)) found.add("RENAME");
       if (/\bSET NOT NULL\b/i.test(c)) found.add("SET NOT NULL");
+      // A changed column type (TA-555's migration): the older code reads and writes the column as it was.
+      if (/\bSET DATA TYPE\b/i.test(c) || /\bALTER COLUMN\s+"?\w+"?\s+TYPE\b/i.test(c)) found.add("SET DATA TYPE");
       if (/\bADD COLUMN\b/i.test(c) && /\bNOT NULL\b/i.test(c) && !/\bDEFAULT\b/i.test(c)) found.add("ADD NOT NULL without DEFAULT");
     }
   }
@@ -188,6 +192,8 @@ describe("TA-439: the add-only rule is checked", () => {
     expect(notAddOnly(`/* default value warning */ ALTER TABLE "A" ADD COLUMN "x" TEXT NOT NULL;`)).toEqual(["ADD NOT NULL without DEFAULT"]);
     expect(notAddOnly(`ALTER INDEX "a" RENAME TO "b"; DROP INDEX "c"; CREATE TABLE "T" ("id" TEXT NOT NULL);`)).toEqual([]);
     expect(notAddOnly(`ALTER TABLE "A" RENAME COLUMN "a" TO "b"; ALTER TABLE "B" ALTER COLUMN "c" SET NOT NULL; DROP TABLE "C";`)).toEqual(["DROP TABLE", "RENAME", "SET NOT NULL"]);
+    expect(notAddOnly(`ALTER TABLE "A" ALTER COLUMN "x" SET DATA TYPE BIGINT,\nALTER COLUMN "y" SET DATA TYPE BIGINT;`)).toEqual(["SET DATA TYPE"]);
+    expect(notAddOnly(`ALTER TABLE "A" ALTER COLUMN "x" TYPE BIGINT;`)).toEqual(["SET DATA TYPE"]);
   });
 
   it("TA-439: every migration that is not add-only is one listed with its reason, so a new one stops here", () => {
@@ -200,6 +206,7 @@ describe("TA-439: the add-only rule is checked", () => {
     const newest = Object.keys(NOT_ADD_ONLY).sort().at(-1)!;
     expect(deploy).toMatch(new RegExp(`last\\s+safe\\s+rollback\\s+point\\s+is\\s+the\\s+commit\\s+that\\s+added\\s+\`${newest}\``));
     expect(deploy).toMatch(/`SET NOT NULL`/);
+    expect(deploy).toMatch(/`SET DATA TYPE`/);
   });
 });
 

@@ -9,6 +9,7 @@ import { collegeDesk, MONEY_READ, nameOf, rupeesCell, yearKeyOf } from "./colleg
 import { todayKey } from "./dates";
 import type { ActiveContext } from "./session";
 import type { Translate, TranslationKey } from "./i18n/dictionary";
+import { safePaise } from "./safe-paise";
 
 /**
  * THE ACCOUNTS DESK'S READS (4 October 2026; role ACCOUNTS, the office and
@@ -110,7 +111,8 @@ async function incomeExpense(schoolId: string, year: Year) {
     purchasesPaise: purchases.reduce((a, p) => a + p.totalPaise, 0),
     // The library's spend: purchases kept at a place whose name says library. The stores name places freely; a library that keeps its books elsewhere reads 0 here.
     libraryPaise: purchases.filter((p) => /librar|ग्रंथालय|पुस्तकालय/i.test(p.location)).reduce((a, p) => a + p.totalPaise, 0),
-    salariesPaise: runs.reduce((a, x) => a + x.grossPaise + x.employerPaise, 0),
+    // A run's totals are stored 64-bit and read as numbers (TA-114); a sum no number holds exactly is refused.
+    salariesPaise: safePaise(runs.reduce((a, x) => a + safePaise(x.grossPaise) + safePaise(x.employerPaise), 0)),
   };
 }
 

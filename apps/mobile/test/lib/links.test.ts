@@ -20,6 +20,8 @@ describe("notification URLs map to screens", () => {
     expect(screenFor("/competitions/new")).toEqual({ pathname: "/(app)/competition-new" });
     expect(screenFor("/joins")).toEqual({ pathname: "/(app)/joins" });
     expect(screenFor("/parent/claims")).toEqual({ pathname: "/(app)/joins" });
+    // TA-555: the notice that somebody asks to be an adult student's guardian opens the consent screen.
+    expect(screenFor("/student/consent")).toEqual({ pathname: "/(app)/consent" });
     expect(screenFor("/enquiries/en1")).toEqual({ pathname: "/(app)/enquiries/detail", params: { enquiryId: "en1" } });
     expect(screenFor("/admin/timetable")).toEqual({ pathname: "/(app)/timetable" });
     expect(screenFor("/admin/safety")).toEqual({ pathname: "/(app)/safety" });

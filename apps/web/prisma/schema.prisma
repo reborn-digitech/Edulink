@@ -1061,6 +1061,8 @@ model Guardianship {
 
   parent  User       @relation("ParentGuardianships", fields: [parentUserId], references: [id], onDelete: Cascade)
   student Membership @relation("StudentGuardianships", fields: [studentMembershipId], references: [id], onDelete: Cascade)
+  /// What an adult college student has granted this guardian (TA-555): one row per grant, gone with the link's row.
+  consents StudentConsent[]
 
   @@unique([parentUserId, studentMembershipId])
   @@index([studentMembershipId])
@@ -1230,7 +1232,8 @@ model ReportCard {
   termId              String?
 
   /// "Term 1", "Half-yearly 2026" — whatever the school calls it. Unique per
-  /// child per class, so pressing generate twice updates rather than duplicates.
+  /// child per class per academic year (TA-009), so pressing generate twice
+  /// updates rather than duplicates.
   title  String
   status String @default("DRAFT") // DRAFT | PUBLISHED
 
@@ -1288,7 +1291,11 @@ model ReportCard {
   term      Term?            @relation(fields: [termId], references: [id], onDelete: SetNull)
   items     ReportCardItem[]
 
-  @@unique([classId, studentMembershipId, title])
+  /// TA-009 (14 November 2026): the year is part of the key, so a class row that outlives a year can hold last
+  /// year's "Term 1" and this year's. `academicYearId` is null on a card built from hand-picked papers, and the
+  /// index is created NULLS NOT DISTINCT in the migration's SQL (20261114…_consent_per_guardian_and_wider_totals):
+  /// two cards with no year under one title are still one. Prisma does not write that clause; keep it by hand.
+  @@unique([classId, studentMembershipId, title, academicYearId])
   @@index([schoolId, classId, status])
   @@index([studentMembershipId, status])
   @@index([createdByMembershipId])
@@ -2432,6 +2439,8 @@ model Session {
   user    User          @relation(fields: [userId], references: [id], onDelete: Cascade)
   /// The phones that registered for push under this session (campaign PH-4).
   devices DeviceToken[]
+  /// The browsers that turned notices on under this session (TA-041).
+  pushSubscriptions PushSubscription[]
 
   @@index([userId, revokedAt])
   /// The retention sweep finds expired rows by this alone.
@@ -2576,10 +2585,16 @@ model PushSubscription {
   failureCount Int      @default(0)
   createdAt    DateTime @default(now())
   lastUsedAt   DateTime @default(now())
+  /// The session the browser turned notices on under (TA-041), as DeviceToken's
+  /// is: the registration goes with that session's row. Null for a registration
+  /// made before this column, which nothing deleted or backfilled.
+  sessionId    String?
 
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user    User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  session Session? @relation(fields: [sessionId], references: [id], onDelete: Cascade)
 
   @@index([userId])
+  @@index([sessionId])
 }
 
 /// A round of teacher reviews the ADMIN opens — ratings on a fixed
@@ -7552,10 +7567,12 @@ model PayrollRun {
   month               String
   status              String    @default("DRAFT")
   headcount           Int       @default(0)
-  grossPaise          Int       @default(0)
-  deductionsPaise     Int       @default(0)
-  employerPaise       Int       @default(0)
-  netPaise            Int       @default(0)
+  /// 64-bit (TA-114, 14 November 2026): a sum of 32-bit slips does not fit 32 bits. Read through safePaise
+  /// (src/lib/safe-paise.ts), which answers a number and refuses one a number cannot hold exactly.
+  grossPaise          BigInt    @default(0)
+  deductionsPaise     BigInt    @default(0)
+  employerPaise       BigInt    @default(0)
+  netPaise            BigInt    @default(0)
   lockDigest          String?
   sharedWithPrincipal Boolean   @default(false)
   createdByUserId     String?
@@ -7625,7 +7642,8 @@ model PayrollExport {
   fileName        String
   sha256          String
   rows            Int
-  totalPaise      Int
+  /// 64-bit, as the run's totals are (TA-114); read through safePaise.
+  totalPaise      BigInt
   createdByUserId String?
   createdAt       DateTime @default(now())
 
@@ -7666,24 +7684,41 @@ model StaffAdvance {
 /// RESULTS, MONEY, HOSTEL_TRANSPORT, PLACEMENT, MESSAGES
 /// (STUDENT_CONSENT_GRANTS in packages/contracts) — and may revoke any of them
 /// whenever they like; a minor's guardian, and every guardian at a school or a
-/// junior college, sees everything without asking. ONE ROW PER GRANT EVER
-/// GIVEN: on while `revokedAt` is null; granting again clears it. Written only
-/// by the student (src/lib/student-consent.ts), read by `parentMaySee`, which
-/// the family's doors call; the audit log keeps every change.
+/// junior college, sees everything without asking.
+///
+/// A GRANT IS ONE GUARDIAN'S (TA-555; the owner's decision of 14 November
+/// 2026): ONE ROW PER STUDENT, GUARDIANSHIP AND GRANT EVER GIVEN, on while
+/// `revokedAt` is null; granting again clears it. A guardian approved later
+/// has no row and so starts with nothing; a link that ends has its rows
+/// revoked with it, and a deleted guardianship takes them away. Written only
+/// by the student (src/lib/student-consent.ts) and by the ending of a link
+/// (src/lib/guardianship.ts), read by `parentMaySee`, which the family's doors
+/// call with the guardian reading; the audit log keeps every change.
 model StudentConsent {
   id                  String    @id @default(cuid())
   schoolId            String
   studentMembershipId String
+  /// The guardian's link the grant was given to. NULL ONLY ON A ROW FROM
+  /// BEFORE 14 NOVEMBER 2026 that no family guardian's link could take (the
+  /// migration gave each earlier grant to the family guardians linked when it
+  /// was granted): such a row is kept as the record and opens nothing to
+  /// anybody. No code writes NULL.
+  guardianshipId      String?
   /// One of STUDENT_CONSENT_GRANTS.
   grant               String
   grantedAt           DateTime  @default(now())
   revokedAt           DateTime?
 
-  school  School     @relation(fields: [schoolId], references: [id], onDelete: Cascade)
-  student Membership @relation(fields: [studentMembershipId], references: [id], onDelete: Cascade)
+  school       School        @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  student      Membership    @relation(fields: [studentMembershipId], references: [id], onDelete: Cascade)
+  guardianship Guardianship? @relation(fields: [guardianshipId], references: [id], onDelete: Cascade)
 
-  @@unique([studentMembershipId, grant])
+  /// Created NULLS NOT DISTINCT in the migration's SQL, so the rows with no
+  /// guardianship are one per student and grant too. Prisma does not write
+  /// that clause; keep it by hand.
+  @@unique([studentMembershipId, guardianshipId, grant])
   @@index([schoolId])
+  @@index([guardianshipId])
 }
 
 /// A RECRUITER'S OWN ACCOUNT (4 October 2026): an outside account like the
@@ -10862,7 +10897,11 @@ model ClinicalPosting {
   site       ClinicalSite       @relation(fields: [siteId], references: [id], onDelete: Cascade)
   department ClinicalDepartment @relation(fields: [departmentId], references: [id], onDelete: Cascade)
   division   Division           @relation(fields: [divisionId], references: [id], onDelete: Cascade)
-  labBatch   LabBatch?          @relation(fields: [labBatchId], references: [id], onDelete: Cascade)
+  /// NO ACTION (TA-016, 14 November 2026), not Cascade: the database refuses the delete of a batch a posting names,
+  /// so no delete of a batch can take the logbook entries under its postings. Not Restrict, which is checked at
+  /// once: NO ACTION is checked at the end of the statement, so a school's erase and a division's delete, which
+  /// remove the batch and the posting together through their own cascades, still go through.
+  labBatch   LabBatch?          @relation(fields: [labBatchId], references: [id], onDelete: NoAction)
   supervisor Membership         @relation("ClinicalSupervisorOf", fields: [supervisorMembershipId], references: [id], onDelete: Cascade)
   entries    LogbookEntry[]
 

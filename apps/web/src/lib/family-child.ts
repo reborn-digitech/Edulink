@@ -75,7 +75,11 @@ export async function familyChildren(parentUserId: string): Promise<FamilyChild[
     const f = facts.get(id);
     return Boolean(f && f.college && f.adult);
   });
-  const consents = guardedIds.length > 0 ? await db.studentConsent.findMany({ where: { studentMembershipId: { in: guardedIds }, revokedAt: null }, select: { studentMembershipId: true, grant: true } }) : [];
+  // What each adult child has granted THIS guardian's own link (TA-555): another guardian's grants are not theirs.
+  const consents =
+    guardedIds.length > 0
+      ? await db.studentConsent.findMany({ where: { studentMembershipId: { in: guardedIds }, revokedAt: null, guardianship: { parentUserId, status: "ACTIVE" } }, select: { studentMembershipId: true, grant: true } })
+      : [];
   const on = new Map<string, StudentConsentGrant[]>();
   for (const row of consents) {
     const list = on.get(row.studentMembershipId) ?? [];

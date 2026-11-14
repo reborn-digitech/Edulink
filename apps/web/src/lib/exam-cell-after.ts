@@ -221,7 +221,7 @@ async function whoseExams(ctx: ActiveContext, childId?: string): Promise<{ stude
     const link = await assertGuardianAccess(ctx.user.id, child, "RESULTS");
     await assertModuleOn(link.student.schoolId, "EXAMS");
     // RESULTS opens the forms; an adult's attendance and what each desk is owed are grants of their own (TA-067).
-    const [seesAttendance, seesMoney] = await Promise.all([parentMaySee(child, "ATTENDANCE"), parentMaySee(child, "MONEY")]);
+    const [seesAttendance, seesMoney] = await Promise.all([parentMaySee(child, "ATTENDANCE", ctx.user.id), parentMaySee(child, "MONEY", ctx.user.id)]);
     return { studentMembershipId: child, schoolId: link.student.schoolId, name: link.student.user.preferredName ?? link.student.user.name, canAct: false, seesAttendance, seesMoney };
   }
   if (ctx.role !== "STUDENT" || !ctx.schoolId || !ctx.membershipId) throw new AccessError("access.wrongRoleForThisAction");

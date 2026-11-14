@@ -6,7 +6,6 @@ import { AccessError } from "./access-error";
 import { RuleRefusal } from "./rule-refusal";
 import { audit } from "./audit";
 import { notify, notifyGuardians } from "./notify";
-import { parentMaySee } from "./student-consent";
 import { dateKeyInZone, dateKeyRange, isDateKey, parseTeachingDays, todayKey, weekdayOfKey } from "./dates";
 import { academicsCaller, currentTerm, divisionNames, ensureLecturesForDay, headsDepartment, hodDepartment, hodDepartments, nameOf, registeredStudying, type Caller } from "./academics";
 import { canMissMore, isEligible, percentOf } from "./academics-rules";
@@ -199,9 +198,8 @@ async function sendDefaulterNotices(schoolId: string, rows: { studentMembershipI
     await db.defaulterNotice.create({ data: { schoolId, studentMembershipId: r.studentMembershipId, offeringId: r.offeringId, percentTenths: Math.round(r.percent * 10) } });
     const vars = { course: `${r.courseCode} ${r.courseName}`, percent: String(r.percent), threshold: r.threshold };
     await notify({ userId: student.userId, schoolId, kind: "ATTENDANCE", titleKey: "academics.notifyDefaulterTitle", titleVars: vars, bodyKey: "academics.notifyDefaulterBody", bodyVars: vars, url: "/student/academics" });
-    if (await parentMaySee(r.studentMembershipId, "ATTENDANCE")) {
-      await notifyGuardians(r.studentMembershipId, (child) => ({ schoolId, kind: "ATTENDANCE", titleKey: "academics.notifyDefaulterGuardianTitle", titleVars: { child }, bodyKey: "academics.notifyDefaulterGuardianBody", bodyVars: { ...vars, child }, url: "/parent/academics" }), "ATTENDANCE");
-    }
+    // Only the guardians the student has granted ATTENDANCE to (notifyGuardians asks per guardian, TA-555).
+    await notifyGuardians(r.studentMembershipId, (child) => ({ schoolId, kind: "ATTENDANCE", titleKey: "academics.notifyDefaulterGuardianTitle", titleVars: { child }, bodyKey: "academics.notifyDefaulterGuardianBody", bodyVars: { ...vars, child }, url: "/parent/academics" }), "ATTENDANCE");
     sent += 1;
   }
   return sent;

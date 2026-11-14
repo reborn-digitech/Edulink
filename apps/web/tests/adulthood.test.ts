@@ -70,7 +70,8 @@ describe("refreshMinority at 03:45 IST", () => {
 
 describe("the guardian's read decides adulthood from the birthdate", () => {
   it("sees results the day before and nothing from the birthday on, even with the stored flag still saying minor", async () => {
-    for (const i of INSTANTS) expect([i.label, await parentMaySee(ids.student, "RESULTS", i.at)]).toEqual([i.label, i.minor]);
+    // Asked for the guardian reading (a grant is one guardian's, TA-555); the instant is the fourth argument now.
+    for (const i of INSTANTS) expect([i.label, await parentMaySee(ids.student, "RESULTS", ids.parent, i.at)]).toEqual([i.label, i.minor]);
   });
   it("the guardianship assertion refuses a door that names no grant once the student is eighteen today", async () => {
     // The assertion reads the real clock: an adult by the date today while the stored flag still says minor.

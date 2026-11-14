@@ -39,7 +39,9 @@ describe("TA-175: the office of a school the person has left", () => {
     const user = await c.db.user.findUniqueOrThrow({ where: { id: c.adult.userId }, select: { birthdate: true, isMinor: true } });
     expect(user.birthdate?.toISOString().slice(0, 10)).toBe("2000-01-15");
     expect(user.isMinor).toBe(false);
-    expect(await parentMaySee(c.adult.membershipId, "RESULTS")).toBe(false);
+    // Asked for each guardian reading (a grant is one guardian's, TA-555).
+    expect(await parentMaySee(c.adult.membershipId, "RESULTS", c.guardian.userId)).toBe(false);
+    expect(await parentMaySee(c.adult.membershipId, "RESULTS", c.guardianOfAdult.userId)).toBe(false);
   });
 
   it("TA-175: cannot correct their legal name either", async () => {

@@ -15,6 +15,8 @@ import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { PrismaClient } from "@prisma/client";
 import { authorizeFileRead } from "@/lib/files";
 import type { ActiveContext } from "@/lib/session";
+// A grant is one guardian's since TA-555 (14 November 2026): "the student grants X" is to each family guardian linked to them.
+import { grantToGuardians, revokeFromGuardians } from "./consent-grants";
 
 const db = new PrismaClient();
 const STAMP = Date.now();
@@ -139,11 +141,11 @@ describe("an offer letter", () => {
 
   it("an adult student's guardian only while PLACEMENT is granted", async () => {
     expect(await allowed(file("offer"), as("guardian", "PARENT"))).toBe(false);
-    await db.studentConsent.create({ data: { schoolId: school.a!, studentMembershipId: member["student:STUDENT"]!, grant: "PLACEMENT" } });
+    await grantToGuardians(db, school.a!, member["student:STUDENT"]!, "PLACEMENT");
     expect(await allowed(file("offer"), as("guardian", "PARENT"))).toBe(true);
     // A grant of another area opens nothing here.
-    await db.studentConsent.update({ where: { studentMembershipId_grant: { studentMembershipId: member["student:STUDENT"]!, grant: "PLACEMENT" } }, data: { revokedAt: new Date() } });
-    await db.studentConsent.create({ data: { schoolId: school.a!, studentMembershipId: member["student:STUDENT"]!, grant: "MONEY" } });
+    await revokeFromGuardians(db, member["student:STUDENT"]!, "PLACEMENT");
+    await grantToGuardians(db, school.a!, member["student:STUDENT"]!, "MONEY");
     expect(await allowed(file("offer"), as("guardian", "PARENT"))).toBe(false);
   });
 });

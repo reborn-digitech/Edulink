@@ -137,7 +137,7 @@ async function lastYearAtSunrise(ctx: Ctx) {
     remark: "Promoted to grade 6. Leaves us for Saraswati Vidya Mandir with our good wishes.",
     createdByMembershipId: sunrise.admin.id, publishedAt: new Date("2026-04-25T09:00:00Z"),
   };
-  await db.reportCard.upsert({ where: { classId_studentMembershipId_title: { classId: oldClass.id, studentMembershipId: membership.id, title } }, create: cardData, update: { attendancePresent: present, attendanceTotal: marks.length, overallPercentMilli: cardData.overallPercentMilli, overallLetter: cardData.overallLetter, gradePointsMilli: cardData.gradePointsMilli, subjects: cardData.subjects, scale: cardData.scale, layout: cardData.layout } });
+  await db.reportCard.upsert({ where: { classId_studentMembershipId_title_academicYearId: { classId: oldClass.id, studentMembershipId: membership.id, title, academicYearId: cardData.academicYearId } }, create: cardData, update: { attendancePresent: present, attendanceTotal: marks.length, overallPercentMilli: cardData.overallPercentMilli, overallLetter: cardData.overallLetter, gradePointsMilli: cardData.gradePointsMilli, subjects: cardData.subjects, scale: cardData.scale, layout: cardData.layout } });
 
   // The pupil record and the government PEN (fakePen: the demo's own eleven digits, never a real one).
   const pen = (await db.user.findUniqueOrThrow({ where: { id: pupil.id }, select: { penNumber: true } })).penNumber ?? fakePen(membership.id);

@@ -1150,7 +1150,7 @@ export async function receiptFor(ctx: ActiveContext, receiptId: string): Promise
   if (!office && ctx.role === "PARENT") {
     const link = await db.guardianship.findFirst({ where: { parentUserId: ctx.user.id, studentMembershipId: r.payment.studentMembershipId, status: "ACTIVE" }, select: { id: true } });
     // An adult college student's receipts are theirs until they grant MONEY (campaign S-2).
-    guardian = Boolean(link) && (await parentMaySee(r.payment.studentMembershipId, "MONEY"));
+    guardian = Boolean(link) && (await parentMaySee(r.payment.studentMembershipId, "MONEY", ctx.user.id));
   }
   if (!office && !guardian) return null;
   return {
@@ -1196,7 +1196,7 @@ export async function familyFees(ctx: ActiveContext, childId?: string): Promise<
   // receipts and payments to themself until they grant MONEY (student-consent.ts; campaign S-2).
   // A child named who is not among them is refused as the ledger refuses it, never shown.
   const visible: typeof links = [];
-  for (const l of links) if (await parentMaySee(l.studentMembershipId, "MONEY")) visible.push(l);
+  for (const l of links) if (await parentMaySee(l.studentMembershipId, "MONEY", ctx.user.id)) visible.push(l);
   if (childId && !visible.some((l) => l.studentMembershipId === childId) && links.some((l) => l.studentMembershipId === childId)) throw new AccessError("consent.refuseNotGranted");
   // A child who has left stays in the chooser, labelled (A3-journeys-15): what was demanded before the last day is
   // still the family's to read and to pay. Those still at school first; the first of them is the one shown.

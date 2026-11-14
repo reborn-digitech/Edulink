@@ -21,6 +21,8 @@ import { gigSettings } from "@/lib/gig-questions";
 import { bookSeat, familySessions } from "@/lib/gig-sessions";
 import { decideGrace, publishRun } from "@/lib/exam-cell-marks";
 import { addVolume, periodicalView, removeVolume, savePeriodicalSubscription } from "@/lib/library-periodicals";
+// A grant is one guardian's since TA-555 (14 November 2026): "the student grants X" is to each family guardian linked to them.
+import { grantToGuardians } from "./consent-grants";
 
 const db = new PrismaClient();
 const STAMP = Date.now();
@@ -170,7 +172,7 @@ describe("G4-13: grace and results reach the student and the family", () => {
     expect(note).toEqual({ url: "/parent/results", kind: "GRADE" });
 
     // The adult grants RESULTS to their guardian; then the published result reaches both families.
-    await db.studentConsent.create({ data: { schoolId: ids.college!, studentMembershipId: ids.adultM!, grant: "RESULTS" } });
+    await grantToGuardians(db, ids.college!, ids.adultM!, "RESULTS");
     const run = await db.resultRun.create({ data: { schoolId: ids.college!, sessionId: session.id, number: 1, computedByUserId: ids.controller! }, select: { id: true } });
     for (const who of ["minor", "adult"]) await db.termResult.create({ data: { schoolId: ids.college!, runId: run.id, termId: term.id, studentMembershipId: ids[`${who}M`]!, creditsAttemptedTenths: 40, creditsEarnedTenths: 40, status: "PASS" } });
     await publishRun(await as("controller", "EXAM_CONTROLLER"), session.id, run.id);

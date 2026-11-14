@@ -40,6 +40,7 @@ import type { TranslationKey } from "./i18n/dictionary";
 import { open, seal, sealingAvailable } from "./secret-box";
 import { readJson, readJsonArray } from "./json";
 import { toCsv } from "./csv";
+import { safePaise } from "./safe-paise";
 import { FILE_HEADINGS, rowOf, salaryNarration } from "./module-file-headings";
 import { closedDayKeys, listHolidays } from "./holidays";
 import { dateKeyInZone, isTeachingDay, parseTeachingDays } from "./dates";
@@ -556,7 +557,9 @@ export async function lockRunRow(tx: Tx, schoolId: string, month: string): Promi
 
 async function writeTotals(tx: Tx, runId: string): Promise<void> {
   const slips = await tx.payslip.findMany({ where: { runId }, select: { grossPaise: true, deductionsPaise: true, employerPaise: true, netPaise: true } });
-  const sum = (k: "grossPaise" | "deductionsPaise" | "employerPaise" | "netPaise") => slips.reduce((a, s) => a + s[k], 0);
+  // The run's totals are 64-bit columns (TA-114): a sum of 32-bit slips passes 2,147,483,647 paise at about 2.147 crore
+  // rupees. The sum is checked on its way in, so nothing is stored that could not be read back as a number.
+  const sum = (k: "grossPaise" | "deductionsPaise" | "employerPaise" | "netPaise") => safePaise(slips.reduce((a, s) => a + s[k], 0));
   await tx.payrollRun.update({ where: { id: runId }, data: { headcount: slips.length, grossPaise: sum("grossPaise"), deductionsPaise: sum("deductionsPaise"), employerPaise: sum("employerPaise"), netPaise: sum("netPaise") } });
 }
 
@@ -686,8 +689,17 @@ async function extrasFor(schoolId: string, runId: string, month: string): Promis
   return { refs: slipRefsOf(month, all), payments };
 }
 
+type StoredTotals = { grossPaise: bigint; deductionsPaise: bigint; employerPaise: bigint; netPaise: bigint };
+
+/** The four totals of a run row as numbers (TA-114): stored 64-bit, and one no number holds exactly is refused, never rounded. */
+function runTotals<R extends StoredTotals>(r: R): Omit<R, keyof StoredTotals> & Record<keyof StoredTotals, number> {
+  const { grossPaise, deductionsPaise, employerPaise, netPaise, ...rest } = r;
+  return { ...rest, grossPaise: safePaise(grossPaise), deductionsPaise: safePaise(deductionsPaise), employerPaise: safePaise(employerPaise), netPaise: safePaise(netPaise) };
+}
+
 export async function runRow(schoolId: string, month: string) {
-  return db.payrollRun.findUnique({ where: { schoolId_month: { schoolId, month } }, select: { id: true, month: true, status: true, createdAt: true, lockedAt: true, lockedByUserId: true, paidAt: true, sharedWithPrincipal: true, headcount: true, grossPaise: true, deductionsPaise: true, employerPaise: true, netPaise: true } });
+  const row = await db.payrollRun.findUnique({ where: { schoolId_month: { schoolId, month } }, select: { id: true, month: true, status: true, createdAt: true, lockedAt: true, lockedByUserId: true, paidAt: true, sharedWithPrincipal: true, headcount: true, grossPaise: true, deductionsPaise: true, employerPaise: true, netPaise: true } });
+  return row ? runTotals(row) : null;
 }
 
 export async function runView(ctx: ActiveContext, month: string): Promise<PayrollRunView> {
@@ -731,7 +743,7 @@ export async function runView(ctx: ActiveContext, month: string): Promise<Payrol
     sharedWithPrincipal: run.sharedWithPrincipal,
     totals: { headcount: run.headcount, grossPaise: run.grossPaise, deductionsPaise: run.deductionsPaise, employerPaise: run.employerPaise, netPaise: run.netPaise },
     slips: mayReadSlips ? slips.map((s) => slipView(s, salaries.get(s.membershipId), { slipRef: refs.get(s.membershipId) ?? "", payment: payments.get(s.id) ?? null, offRoll: draftForOffice && !paidOnRoll.has(s.membershipId) })) : null,
-    exports: exports.map((e) => ({ kind: e.kind as PayrollExportKind, fileName: e.fileName, rows: e.rows, totalPaise: e.totalPaise, createdAt: e.createdAt.toISOString(), byName: e.createdByUserId ? (exporters.get(e.createdByUserId) ?? "") : "" })),
+    exports: exports.map((e) => ({ kind: e.kind as PayrollExportKind, fileName: e.fileName, rows: e.rows, totalPaise: safePaise(e.totalPaise), createdAt: e.createdAt.toISOString(), byName: e.createdByUserId ? (exporters.get(e.createdByUserId) ?? "") : "" })),
     missingSalary: keeps(caller.role) && run.status === "DRAFT" ? roll.filter((r) => !withSalary.has(r.id) && !inRun.has(r.id)).map((r) => ({ membershipId: r.id, name: nameOf(r.user) })) : [],
     paused: pausedRows.filter((r) => pausedPaid.has(r.id)).map((r) => ({ membershipId: r.id, name: nameOf(r.user) })),
     canEdit: keeps(caller.role) && run.status === "DRAFT",
@@ -1003,7 +1015,7 @@ export async function payrollExport(ctx: ActiveContext, month: string, kind: Pay
   }
   const filename = `${school.code}-${PAYROLL_EXPORT_SLUG[kind]}-${month}.${ext}`;
   const sha256 = createHash("sha256").update(content).digest("hex");
-  await db.payrollExport.create({ data: { schoolId: caller.schoolId, runId: run.id, kind, fileName: filename, sha256, rows, totalPaise, createdByUserId: caller.user.id } });
+  await db.payrollExport.create({ data: { schoolId: caller.schoolId, runId: run.id, kind, fileName: filename, sha256, rows, totalPaise: safePaise(totalPaise), createdByUserId: caller.user.id } });
   await audit({ schoolId: caller.schoolId, actorUserId: caller.user.id, action: kind === "BANK_ADVICE" || kind === "TDS_SUMMARY" || kind === "UPI_ADVICE" ? "payroll.export.sealed" : "payroll.export", targetType: "PayrollRun", targetId: month, meta: { month, kind, rows, totalPaise, sha256: sha256.slice(0, 12) } });
   return { kind, filename, mime, content, rows, totalPaise };
 }
@@ -1115,7 +1127,7 @@ export async function payrollSummary(ctx: ActiveContext): Promise<PayrollSummary
     settingsOf(caller.schoolId),
     rollFor(caller.schoolId),
     db.salaryStructure.count({ where: { schoolId: caller.schoolId, archivedAt: null } }),
-    db.payrollRun.findMany({ where: { schoolId: caller.schoolId }, orderBy: { month: "desc" }, take: 24, select: { id: true, month: true, status: true, lockedAt: true, headcount: true, grossPaise: true, deductionsPaise: true, employerPaise: true, netPaise: true } }),
+    db.payrollRun.findMany({ where: { schoolId: caller.schoolId }, orderBy: { month: "desc" }, take: 24, select: { id: true, month: true, status: true, lockedAt: true, headcount: true, grossPaise: true, deductionsPaise: true, employerPaise: true, netPaise: true } }).then((rows) => rows.map(runTotals)),
     db.staffAdvance.count({ where: { schoolId: caller.schoolId, status: "REQUESTED" } }),
   ]);
   const salaries = await salariesFor(caller.schoolId, roll.map((r) => r.id), "9999-12");

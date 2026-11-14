@@ -9,6 +9,7 @@ import { studentCode } from "@/lib/codes";
 import { audit } from "@/lib/audit";
 import { forJoinCode, forSchool } from "@/lib/tenant-context";
 import { syncStandinGuardian } from "@/lib/standin-guardian";
+import { tellAdultStudentOfNewGuardian } from "@/lib/guardianship";
 import { ageInYears, parseDateOnly } from "@/lib/dates";
 import { writeJson } from "@/lib/json";
 import { ROLE_HOME, type Role } from "@/lib/constants";
@@ -314,6 +315,11 @@ export async function acceptInvite(input: unknown): Promise<AcceptState> {
       studentMembershipId: invite.studentMembershipId,
       actorUserId: userId,
     }).catch((error) => console.error("[acceptInvite parent] standin sync failed", error));
+    // An adult at a college is told of a guardian the office's invitation linked to them (TA-555): the guardian sees
+    // nothing until the student shares it, and the student can end the link.
+    await tellAdultStudentOfNewGuardian({ schoolId: invite.schoolId, studentMembershipId: invite.studentMembershipId, guardianUserId: userId }).catch((error) =>
+      console.error("[acceptInvite parent] student notice failed", error),
+    );
 
     return sessionOrSecondStep(userId, { schoolId: null, role: "PARENT" }, signedInAsHolder);
   }

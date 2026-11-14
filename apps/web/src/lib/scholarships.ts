@@ -21,7 +21,6 @@ import { currentAcademicYear } from "./academic-year";
 import { recordCounterPayment } from "./fees-payments";
 import { dateToDay } from "./fees";
 import { assertGuardianAccess } from "./tenancy";
-import { parentMaySee } from "./student-consent";
 import { claimReceivable, eligibleGrossPaise, expectedShare } from "./college-fees";
 import { collegeDesk, collegeStudent, MONEY_READ, MONEY_WRITE, nameOf, rupeesCell, standingOf, yearKeyOf } from "./college-office";
 import type { ActiveContext } from "./session";
@@ -140,9 +139,8 @@ async function tellReverted(schoolId: string, studentMembershipId: string, userI
   const titleKey = lapsed ? "collegeOffice.notifScholarshipLapsed" : "collegeOffice.notifScholarshipRejected";
   // Not urgent (TA-436): urgent breaks the person's quiet hours, which a money notice does not; the guardian's copy never was.
   await notify({ userId, schoolId, kind: "SYSTEM", titleKey, titleVars: vars, bodyKey: "collegeOffice.notifScholarshipRevertBody", bodyVars: vars, url: "/student/fees" }).catch(() => undefined);
-  if (await parentMaySee(studentMembershipId, "MONEY")) {
-    await notifyGuardians(studentMembershipId, (name) => ({ schoolId, kind: "SYSTEM", titleKey, titleVars: vars, bodyKey: "collegeOffice.notifScholarshipRevertChild", bodyVars: { ...vars, name }, url: "/parent/fees" }), "MONEY").catch(() => undefined);
-  }
+  // Only the guardians the student has granted MONEY to (notifyGuardians asks per guardian, TA-555).
+  await notifyGuardians(studentMembershipId, (name) => ({ schoolId, kind: "SYSTEM", titleKey, titleVars: vars, bodyKey: "collegeOffice.notifScholarshipRevertChild", bodyVars: { ...vars, name }, url: "/parent/fees" }), "MONEY").catch(() => undefined);
 }
 
 /**

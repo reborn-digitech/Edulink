@@ -60,6 +60,8 @@ import { POST as groupPost } from "@/app/api/v1/academics/mentoring/groups/route
 import { GET as facultyHomeGet } from "@/app/api/v1/academics/faculty-home/route";
 import { GET as hodHomeGet } from "@/app/api/v1/academics/hod-home/route";
 import { GET as lateGet } from "@/app/api/v1/academics/late-registrations/route";
+// A grant is one guardian's since TA-555 (14 November 2026): "the student grants X" is to each family guardian linked to them.
+import { grantToGuardians } from "./consent-grants";
 
 const db = new PrismaClient();
 const STAMP = Date.now();
@@ -252,7 +254,7 @@ describe("lecture attendance", () => {
     await as("parent", "PARENT", null);
     const before = await body<{ allowed: boolean; attendance: unknown[] }>(await familyGet(get("/api/v1/academics/family")));
     expect(before).toMatchObject({ allowed: false, attendance: [] });
-    await db.studentConsent.create({ data: { schoolId: id.college!, studentMembershipId: m.s2!, grant: "ATTENDANCE" } });
+    await grantToGuardians(db, id.college!, m.s2!, "ATTENDANCE");
     const after = await body<{ allowed: boolean; attendance: unknown[] }>(await familyGet(get("/api/v1/academics/family")));
     expect(after.allowed).toBe(true);
     expect(after.attendance.length).toBeGreaterThan(0);

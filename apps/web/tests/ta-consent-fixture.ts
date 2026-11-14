@@ -11,6 +11,7 @@
 import { PrismaClient } from "@prisma/client";
 import type { StudentConsentGrant } from "@edulink/contracts";
 import type { ActiveContext } from "@/lib/session";
+import { grantToGuardians } from "./consent-grants";
 
 export type College = {
   db: PrismaClient;
@@ -26,6 +27,7 @@ export type College = {
   ctx(who: { userId: string; membershipId?: string }, role: string, schoolId?: string | null): ActiveContext;
   /** One more student of the college, guarded by `guardian`: an adult (born 2001) or a minor (born 2012). */
   addStudent(who: string, adult: boolean): Promise<{ userId: string; membershipId: string }>;
+  /** The student grants `grant` to every family guardian linked to them now (a grant is one guardian's, TA-555). */
   grant(studentMembershipId: string, grant: StudentConsentGrant): Promise<void>;
   revokeAll(studentMembershipId: string): Promise<void>;
   cleanup(): Promise<void>;
@@ -92,12 +94,9 @@ export async function makeCollege(tag: string, opts: { kind?: string } = {}): Pr
       await db.guardianship.create({ data: { parentUserId: guardian.userId, studentMembershipId: s.membershipId, studentSchoolId: school.id, relation: "PARENT", status: "ACTIVE" } });
       return s;
     },
+    // A grant is one guardian's (TA-555): "the student grants X" is to every family guardian linked to them now.
     async grant(studentMembershipId, grant) {
-      await db.studentConsent.upsert({
-        where: { studentMembershipId_grant: { studentMembershipId, grant } },
-        create: { schoolId: school.id, studentMembershipId, grant },
-        update: { revokedAt: null },
-      });
+      await grantToGuardians(db, school.id, studentMembershipId, grant);
     },
     async revokeAll(studentMembershipId) {
       await db.studentConsent.updateMany({ where: { studentMembershipId, revokedAt: null }, data: { revokedAt: new Date() } });

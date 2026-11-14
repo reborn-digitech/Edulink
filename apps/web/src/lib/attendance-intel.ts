@@ -3,7 +3,7 @@ import { db } from "./db";
 import { audit } from "./audit";
 import { notify } from "./notify";
 import { AccessError } from "./tenancy";
-import { parentMaySee } from "./student-consent";
+import { guardiansToTell } from "./student-consent";
 import { addDaysToKey, todayKey } from "./dates";
 import type { ActiveContext } from "./session";
 
@@ -205,8 +205,11 @@ export async function sendAbsenceAlert(
   });
   if (!membership) throw new AccessError("access.pupilNotFoundInThisSchool", "NOT_FOUND");
   if (membership.guardianships.length === 0) return { notified: 0, skipped: false };
-  // An adult college student who has not granted ATTENDANCE: their guardians are told nothing of it (TA-281).
-  if (!(await parentMaySee(membership.id, "ATTENDANCE"))) return { notified: 0, skipped: false };
+  // An adult college student's guardians are told only where ATTENDANCE is granted to them (TA-281), each on their
+  // own grant (TA-555): one who was granted nothing is told nothing while another is told.
+  const mayTell = new Set((await guardiansToTell([membership.id], "ATTENDANCE")).get(membership.id) ?? []);
+  const guardians = membership.guardianships.filter((g) => mayTell.has(g.parentUserId));
+  if (guardians.length === 0) return { notified: 0, skipped: false };
 
   const childName = membership.user.preferredName ?? membership.user.name;
   const weekAgo = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000);
@@ -214,7 +217,7 @@ export async function sendAbsenceAlert(
     where: {
       schoolId,
       kind: "ATTENDANCE",
-      userId: { in: membership.guardianships.map((g) => g.parentUserId) },
+      userId: { in: guardians.map((g) => g.parentUserId) },
       meta: { contains: `"absence:${membership.id}"` },
       createdAt: { gte: weekAgo },
     },
@@ -223,7 +226,7 @@ export async function sendAbsenceAlert(
   if (recent) return { notified: 0, skipped: true };
 
   await Promise.all(
-    membership.guardianships.map((g) =>
+    guardians.map((g) =>
       notify({
         userId: g.parentUserId,
         schoolId,
@@ -245,10 +248,11 @@ export async function sendAbsenceAlert(
     action: "attendance.alert",
     targetType: "Membership",
     targetId: membership.id,
-    meta: { guardians: membership.guardianships.length },
+    meta: { guardians: guardians.length },
   });
 
-  return { notified: membership.guardianships.length, skipped: false };
+  // The guardians actually told (TA-555): an adult's guardian without the ATTENDANCE grant was not.
+  return { notified: guardians.length, skipped: false };
 }
 
 export type TrendPoint = { label: string; percent: number | null; marks: number };

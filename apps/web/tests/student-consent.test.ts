@@ -22,6 +22,7 @@ import { actionKey } from "@/lib/safety-labels";
 import type { ActiveContext } from "@/lib/session";
 import { GET as consentGet, POST as consentPost } from "@/app/api/v1/student/consent/route";
 import { parentAttendance } from "@/lib/api-reads/family";
+import { grantToGuardians } from "./consent-grants";
 
 const db = new PrismaClient();
 const STAMP = Date.now();
@@ -76,9 +77,10 @@ describe("who the grants apply to", () => {
     expect(await consentApplies(ids.pupil)).toBe(false);
     expect(await consentApplies(ids.adult)).toBe(true);
     for (const grant of ["ATTENDANCE", "RESULTS", "MONEY", "HOSTEL_TRANSPORT", "PLACEMENT", "MESSAGES"] as const) {
-      expect(await parentMaySee(ids.minor, grant)).toBe(true);
-      expect(await parentMaySee(ids.pupil, grant)).toBe(true);
-      expect(await parentMaySee(ids.adult, grant)).toBe(false);
+      // A grant is one guardian's (TA-555): the question is asked for the guardian reading.
+      expect(await parentMaySee(ids.minor, grant, ids.parent)).toBe(true);
+      expect(await parentMaySee(ids.pupil, grant, ids.schoolParent)).toBe(true);
+      expect(await parentMaySee(ids.adult, grant, ids.parent)).toBe(false);
     }
   });
 });
@@ -89,14 +91,16 @@ describe("the adult's grants", () => {
     const me = (await getSession())!;
     expect(await setStudentConsent(me, "RESULTS", true)).toEqual({ changed: true });
     expect(await setStudentConsent(me, "RESULTS", true)).toEqual({ changed: false });
-    expect(await parentMaySee(ids.adult, "RESULTS")).toBe(true);
-    expect(await parentMaySee(ids.adult, "MONEY")).toBe(false);
+    expect(await parentMaySee(ids.adult, "RESULTS", ids.parent)).toBe(true);
+    expect(await parentMaySee(ids.adult, "MONEY", ids.parent)).toBe(false);
+    // A guardian the student never granted it to does not read under another's grant (TA-555).
+    expect(await parentMaySee(ids.adult, "RESULTS", ids.schoolParent)).toBe(false);
     const view = await myStudentConsent(me);
     expect(view.applies).toBe(true);
     expect(view.grants.find((g) => g.grant === "RESULTS")?.on).toBe(true);
     expect(view.guardians).toHaveLength(1);
     expect(await setStudentConsent(me, "RESULTS", false)).toEqual({ changed: true });
-    expect(await parentMaySee(ids.adult, "RESULTS")).toBe(false);
+    expect(await parentMaySee(ids.adult, "RESULTS", ids.parent)).toBe(false);
     const rows = await db.auditLog.findMany({ where: { schoolId: ids.college, action: { startsWith: "student.consent." } }, orderBy: { createdAt: "asc" }, select: { action: true } });
     expect(rows.map((r) => r.action)).toEqual(["student.consent.grant", "student.consent.revoke"]);
     expect(actionKey("student.consent.grant")).toBe("audit.studentConsentGrant");
@@ -126,7 +130,8 @@ describe("the family's doors", () => {
   it("read an adult's month of attendance on the family's attendance door once ATTENDANCE is granted, as the web page does (DS-9)", async () => {
     await db.studentConsent.deleteMany({ where: { studentMembershipId: ids.adult, grant: "ATTENDANCE" } });
     await expect(parentAttendance(parentCtx(ids.parent), ids.adult, null)).rejects.toBeInstanceOf(AccessError);
-    await db.studentConsent.create({ data: { schoolId: ids.college, studentMembershipId: ids.adult, grant: "ATTENDANCE" } });
+    // To the guardian (TA-555: a grant is one guardian's, so the row names the link).
+    await grantToGuardians(db, ids.college, ids.adult, "ATTENDANCE");
     const view = await parentAttendance(parentCtx(ids.parent), ids.adult, null);
     expect(view.child.studentMembershipId).toBe(ids.adult);
     expect(view.summary.total).toBe(0);

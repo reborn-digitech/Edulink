@@ -139395,7 +139395,7 @@
     },
     "/api/v1/student/consent": {
       "get": {
-        "summary": "What this student lets their guardians see, grant by grant; `applies` is false for a minor or a pupil at a school, whose guardians see everything",
+        "summary": "What this student lets each of their guardians see, guardian by guardian and grant by grant, with the claims waiting on the student's own yes; `applies` is false for a minor or a pupil at a school, whose guardians see everything",
         "description": "Roles: STUDENT.",
         "security": [
           {
@@ -139454,15 +139454,74 @@
                       "items": {
                         "type": "object",
                         "properties": {
+                          "guardianshipId": {
+                            "type": "string"
+                          },
                           "name": {
                             "type": "string"
+                          },
+                          "relation": {
+                            "type": "string",
+                            "enum": [
+                              "PARENT",
+                              "GUARDIAN",
+                              "OTHER"
+                            ]
+                          },
+                          "since": {
+                            "type": "string",
+                            "format": "date-time"
+                          },
+                          "grants": {
+                            "type": "array",
+                            "items": {
+                              "$ref": "#/properties/grants/items"
+                            }
                           }
                         },
                         "required": [
-                          "name"
+                          "guardianshipId",
+                          "name",
+                          "relation",
+                          "since",
+                          "grants"
                         ],
                         "additionalProperties": false
                       }
+                    },
+                    "claims": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "claimantName": {
+                            "type": "string"
+                          },
+                          "relation": {
+                            "type": "string",
+                            "enum": [
+                              "PARENT",
+                              "GUARDIAN",
+                              "OTHER"
+                            ]
+                          },
+                          "createdAt": {
+                            "type": "string",
+                            "format": "date-time"
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "claimantName",
+                          "relation",
+                          "createdAt"
+                        ],
+                        "additionalProperties": false
+                      },
+                      "default": []
                     }
                   },
                   "required": [
@@ -139518,7 +139577,7 @@
         }
       },
       "post": {
-        "summary": "Grant or revoke one thing a guardian may see (an adult at a college alone; idempotent; audited)",
+        "summary": "Grant or revoke one thing a guardian may see, to the guardian named (guardianshipId, 404 when not the student's own) or, with none named, to every family guardian linked now, never to one linked later (an adult at a college alone; idempotent; audited)",
         "description": "Roles: STUDENT.",
         "security": [
           {
@@ -139577,15 +139636,74 @@
                       "items": {
                         "type": "object",
                         "properties": {
+                          "guardianshipId": {
+                            "type": "string"
+                          },
                           "name": {
                             "type": "string"
+                          },
+                          "relation": {
+                            "type": "string",
+                            "enum": [
+                              "PARENT",
+                              "GUARDIAN",
+                              "OTHER"
+                            ]
+                          },
+                          "since": {
+                            "type": "string",
+                            "format": "date-time"
+                          },
+                          "grants": {
+                            "type": "array",
+                            "items": {
+                              "$ref": "#/properties/grants/items"
+                            }
                           }
                         },
                         "required": [
-                          "name"
+                          "guardianshipId",
+                          "name",
+                          "relation",
+                          "since",
+                          "grants"
                         ],
                         "additionalProperties": false
                       }
+                    },
+                    "claims": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "claimantName": {
+                            "type": "string"
+                          },
+                          "relation": {
+                            "type": "string",
+                            "enum": [
+                              "PARENT",
+                              "GUARDIAN",
+                              "OTHER"
+                            ]
+                          },
+                          "createdAt": {
+                            "type": "string",
+                            "format": "date-time"
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "claimantName",
+                          "relation",
+                          "createdAt"
+                        ],
+                        "additionalProperties": false
+                      },
+                      "default": []
                     }
                   },
                   "required": [
@@ -139659,6 +139777,11 @@
                   },
                   "on": {
                     "type": "boolean"
+                  },
+                  "guardianshipId": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 64
                   }
                 },
                 "required": [
@@ -139670,6 +139793,421 @@
             }
           }
         }
+      }
+    },
+    "/api/v1/student/guardian-claims/{claimId}/decide": {
+      "post": {
+        "summary": "An adult student at a college accepts or declines somebody asking to be their guardian, with an optional sentence for them on a decline: the student's alone (the office and a guardian cannot), the accepted guardian sees nothing until the student shares it, the office told; a claim that is not this student's own to decide is 404 (audited)",
+        "description": "Roles: STUDENT.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "STUDENT"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "applies": {
+                      "type": "boolean"
+                    },
+                    "grants": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "grant": {
+                            "type": "string",
+                            "enum": [
+                              "ATTENDANCE",
+                              "RESULTS",
+                              "MONEY",
+                              "HOSTEL_TRANSPORT",
+                              "PLACEMENT",
+                              "MESSAGES"
+                            ]
+                          },
+                          "on": {
+                            "type": "boolean"
+                          },
+                          "grantedAt": {
+                            "type": "string",
+                            "format": "date-time",
+                            "nullable": true
+                          }
+                        },
+                        "required": [
+                          "grant",
+                          "on",
+                          "grantedAt"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "guardians": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "guardianshipId": {
+                            "type": "string"
+                          },
+                          "name": {
+                            "type": "string"
+                          },
+                          "relation": {
+                            "type": "string",
+                            "enum": [
+                              "PARENT",
+                              "GUARDIAN",
+                              "OTHER"
+                            ]
+                          },
+                          "since": {
+                            "type": "string",
+                            "format": "date-time"
+                          },
+                          "grants": {
+                            "type": "array",
+                            "items": {
+                              "$ref": "#/properties/grants/items"
+                            }
+                          }
+                        },
+                        "required": [
+                          "guardianshipId",
+                          "name",
+                          "relation",
+                          "since",
+                          "grants"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "claims": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "claimantName": {
+                            "type": "string"
+                          },
+                          "relation": {
+                            "type": "string",
+                            "enum": [
+                              "PARENT",
+                              "GUARDIAN",
+                              "OTHER"
+                            ]
+                          },
+                          "createdAt": {
+                            "type": "string",
+                            "format": "date-time"
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "claimantName",
+                          "relation",
+                          "createdAt"
+                        ],
+                        "additionalProperties": false
+                      },
+                      "default": []
+                    }
+                  },
+                  "required": [
+                    "applies",
+                    "grants",
+                    "guardians"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "claimId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "decision": {
+                    "type": "string",
+                    "enum": [
+                      "APPROVE",
+                      "DECLINE"
+                    ]
+                  },
+                  "reason": {
+                    "type": "string",
+                    "maxLength": 300
+                  }
+                },
+                "required": [
+                  "decision"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/student/guardians/{guardianshipId}/end": {
+      "post": {
+        "summary": "An adult student at a college ends one of their own family guardians' links: the link's grants are revoked with it, the guardian and the office are told, the school stands in when no family guardian is left; a link that is not the student's own is 404, a minor or a school pupil is refused 403, a link already ended changes nothing (no body; audited)",
+        "description": "Roles: STUDENT.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "STUDENT"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "applies": {
+                      "type": "boolean"
+                    },
+                    "grants": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "grant": {
+                            "type": "string",
+                            "enum": [
+                              "ATTENDANCE",
+                              "RESULTS",
+                              "MONEY",
+                              "HOSTEL_TRANSPORT",
+                              "PLACEMENT",
+                              "MESSAGES"
+                            ]
+                          },
+                          "on": {
+                            "type": "boolean"
+                          },
+                          "grantedAt": {
+                            "type": "string",
+                            "format": "date-time",
+                            "nullable": true
+                          }
+                        },
+                        "required": [
+                          "grant",
+                          "on",
+                          "grantedAt"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "guardians": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "guardianshipId": {
+                            "type": "string"
+                          },
+                          "name": {
+                            "type": "string"
+                          },
+                          "relation": {
+                            "type": "string",
+                            "enum": [
+                              "PARENT",
+                              "GUARDIAN",
+                              "OTHER"
+                            ]
+                          },
+                          "since": {
+                            "type": "string",
+                            "format": "date-time"
+                          },
+                          "grants": {
+                            "type": "array",
+                            "items": {
+                              "$ref": "#/properties/grants/items"
+                            }
+                          }
+                        },
+                        "required": [
+                          "guardianshipId",
+                          "name",
+                          "relation",
+                          "since",
+                          "grants"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "claims": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "claimantName": {
+                            "type": "string"
+                          },
+                          "relation": {
+                            "type": "string",
+                            "enum": [
+                              "PARENT",
+                              "GUARDIAN",
+                              "OTHER"
+                            ]
+                          },
+                          "createdAt": {
+                            "type": "string",
+                            "format": "date-time"
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "claimantName",
+                          "relation",
+                          "createdAt"
+                        ],
+                        "additionalProperties": false
+                      },
+                      "default": []
+                    }
+                  },
+                  "required": [
+                    "applies",
+                    "grants",
+                    "guardians"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "guardianshipId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       }
     },
     "/api/v1/auth/recruiter/register": {

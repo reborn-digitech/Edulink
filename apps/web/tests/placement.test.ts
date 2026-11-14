@@ -65,6 +65,8 @@ import { POST as invitePost } from "@/app/api/v1/placement/drives/[driveId]/invi
 import { POST as verifyPost } from "@/app/api/v1/placement/companies/[companyId]/verify/route";
 import { POST as diaryPost } from "@/app/api/v1/student/internships/[internshipId]/diary/route";
 import { addDiaryEntry } from "@/lib/placement-internships";
+// A grant is one guardian's since TA-555 (14 November 2026): "the student grants X" is to each family guardian linked to them.
+import { grantToGuardians } from "./consent-grants";
 
 const db = new PrismaClient();
 const STAMP = Date.now();
@@ -506,7 +508,7 @@ describe("internships under the AICTE policy", () => {
   it("shows a guardian the internships only with the PLACEMENT grant", async () => {
     await as("PARENT");
     expect((await familyGet(get(`/api/v1/family/placement?childId=${ids.s2}`))).status).toBe(403);
-    await db.studentConsent.create({ data: { schoolId: ids.host!, studentMembershipId: ids.s2!, grant: "PLACEMENT" } });
+    await grantToGuardians(db, ids.host!, ids.s2!, "PLACEMENT");
     const seen = await body<{ internships: unknown[] }>(await familyGet(get(`/api/v1/family/placement?childId=${ids.s2}`)));
     expect(seen.internships.length).toBe(3);
   });

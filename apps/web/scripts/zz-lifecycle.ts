@@ -2037,7 +2037,8 @@ async function birthdayCheck(W: CollegeWorld, y: number) {
     noteBreak("SYSTEM", "birthday check", "the minor or the guardian is missing");
     return;
   }
-  const sees = () => L.consent.parentMaySee(m.id, "RESULTS" as never);
+  // A grant is one guardian's (TA-555): the world's guardian is the one reading.
+  const sees = () => L.consent.parentMaySee(m.id, "RESULTS" as never, W.guardianUserId!);
   const refresh = () => L.birthdate.refreshMinority(now(), { userIds: [m.userId] });
   const out: Record<string, boolean> = {};
   setClock(addDays(birthday, -1), 3, 45);
@@ -2061,7 +2062,7 @@ async function birthdayCheck(W: CollegeWorld, y: number) {
   stu.ctx.user.isMinor = false;
   await step("STUDENT", "consent.setStudentConsent", () => L.consent.setStudentConsent(stu.ctx, "RESULTS" as never, true));
   const results = await sees();
-  const money = await L.consent.parentMaySee(m.id, "MONEY" as never);
+  const money = await L.consent.parentMaySee(m.id, "MONEY" as never, W.guardianUserId!);
   if (!results || money) noteBreak("STUDENT", "consent.setStudentConsent", `after granting RESULTS: results ${results}, money ${money}`);
   else note("after the grant: the guardian sees RESULTS and not MONEY");
 }
