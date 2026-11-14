@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { Fragment, useState } from "react";
+import { View } from "react-native";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { companyListSchema, companyViewSchema, isCin, isGstin, type CompanyView } from "@edulink/contracts";
 import type { TranslationKey } from "@edulink/i18n";
-import { Button, Card, Empty, Failed, Loading, Row, Screen, Text } from "@/components";
+import { Button, Card, Empty, Failed, Field, Loading, Row, Screen, Text } from "@/components";
 import { api } from "@/lib/api";
 import { unwrap } from "@/lib/query";
 import { useT } from "@/lib/i18n";
@@ -19,7 +20,10 @@ import { ModuleOffScreen, OfflineDecisionNote, useModuleOn } from "@/screens/sha
  * look-up), its sectors, whether the cell has checked it, its first visit and
  * its drives. The TPO's word that a company is checked goes through the same
  * idempotent door as the web (POST .../companies/{id}/verify); adding a
- * company stays on the web.
+ * company stays on the web. A checked company no recruiter works on yet takes
+ * an invitation to its first recruiter by address (TA-090, POST
+ * .../companies/{id}/invite-recruiter), which only the cell that checked it
+ * may send; the answer is the same whether or not the address is a recruiter's.
  */
 export function TpoCompaniesScreen() {
   const t = useT();
@@ -36,6 +40,16 @@ export function TpoCompaniesScreen() {
     },
     onError: (e: Error) => setNotice({ tone: "danger", text: e.message }),
   });
+  const [emails, setEmails] = useState<Record<string, string>>({});
+  const invite = useMutation({
+    mutationFn: async (input: { c: CompanyView; email: string }) => companyViewSchema.parse(unwrap(await api().post(`/api/v1/placement/companies/${input.c.id}/invite-recruiter`, { email: input.email.trim() }))),
+    onSuccess: (c) => {
+      setNotice({ tone: "ok", text: t("placement.colleagueInvited") });
+      setEmails((all) => ({ ...all, [c.id]: "" }));
+      void qc.invalidateQueries({ queryKey: ["placement"] });
+    },
+    onError: (e: Error) => setNotice({ tone: "danger", text: e.message }),
+  });
   if (!on) return <ModuleOffScreen title={t("placement.tabCompanies")} module="PLACEMENT" />;
   const companies = query.data?.companies ?? [];
   return (
@@ -48,21 +62,29 @@ export function TpoCompaniesScreen() {
         <Card>
           {companies.map((c) => {
             const check = identifierCheck(c.identifier);
+            const email = emails[c.id] ?? "";
             return (
-              <Row
-                key={c.id}
-                title={c.name}
-                caption={[`${c.identifier} · ${t(check.key)}`, c.sectors.map((s) => t(`placement.sector${s}` as TranslationKey)).join(", "), c.firstVisitYear ? `${t("placement.colFirstVisit")} ${c.firstVisitYear}` : null, `${t("placement.colDrives")} ${c.drives}`, t("deskParity.companyRecruiters", { count: c.recruiters })].filter(Boolean).join(" · ")}
-                right={
-                  c.verifiedAt ? (
-                    <Pill label={t("placement.colVerified")} tone="ok" />
-                  ) : role === "TPO" ? (
-                    <Button label={t("deskParity.companyMarkChecked")} accessibilityLabel={`${t("deskParity.companyMarkChecked")}: ${c.name}`} variant="secondary" disabled={verify.isPending} onPress={() => verify.mutate(c)} />
-                  ) : (
-                    <Pill label={t("deskParity.companyUnchecked")} tone="warn" />
-                  )
-                }
-              />
+              <Fragment key={c.id}>
+                <Row
+                  title={c.name}
+                  caption={[`${c.identifier} · ${t(check.key)}`, c.sectors.map((s) => t(`placement.sector${s}` as TranslationKey)).join(", "), c.firstVisitYear ? `${t("placement.colFirstVisit")} ${c.firstVisitYear}` : null, `${t("placement.colDrives")} ${c.drives}`, t("deskParity.companyRecruiters", { count: c.recruiters })].filter(Boolean).join(" · ")}
+                  right={
+                    c.verifiedAt ? (
+                      <Pill label={t("placement.colVerified")} tone="ok" />
+                    ) : role === "TPO" ? (
+                      <Button label={t("deskParity.companyMarkChecked")} accessibilityLabel={`${t("deskParity.companyMarkChecked")}: ${c.name}`} variant="secondary" disabled={verify.isPending} onPress={() => verify.mutate(c)} />
+                    ) : (
+                      <Pill label={t("deskParity.companyUnchecked")} tone="warn" />
+                    )
+                  }
+                />
+                {role === "TPO" && c.verifiedAt && c.recruiters === 0 ? (
+                  <View>
+                    <Field label={t("placement.fieldColleagueEmail")} hint={t("placement.inviteRecruiterHint")} keyboardType="email-address" autoCapitalize="none" autoComplete="off" value={email} onChangeText={(v) => setEmails((all) => ({ ...all, [c.id]: v }))} />
+                    <Button label={t("placement.inviteRecruiter")} accessibilityLabel={`${t("placement.inviteRecruiter")}: ${c.name}`} variant="secondary" disabled={invite.isPending || email.trim() === ""} onPress={() => invite.mutate({ c, email })} />
+                  </View>
+                ) : null}
+              </Fragment>
             );
           })}
           <Text variant="xs" tone="muted">

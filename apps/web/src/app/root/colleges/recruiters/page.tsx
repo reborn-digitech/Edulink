@@ -6,6 +6,7 @@ import { getT } from "@/lib/i18n/server";
 import { PageHeader } from "@/components/ui/page-header";
 import { EmptyState } from "@/components/ui/states";
 import { RecruiterRow } from "./recruiter-row";
+import { InviteRecruiterForm } from "./invite-recruiter-form";
 
 export async function generateMetadata() {
   const t = await getT();
@@ -36,6 +37,7 @@ export default async function RecruitersPage() {
           {t("root.experts")}
         </Link>
       </p>
+      <InviteRecruiterForm />
       {recruiters.length === 0 ? (
         <EmptyState icon={<UsersThreeIcon weight="duotone" className="size-8" />} title={t("operatorCollege.recruitersNoneTitle")} description={t("operatorCollege.recruitersNone")} />
       ) : (

@@ -9,7 +9,8 @@ import { assertModuleOn, isModuleOn } from "./modules";
 import { forPlacementDirectory, forSchool, forUser } from "./tenant-context";
 import { readJson, writeJson } from "./json";
 import { toCsvValue } from "./csv";
-import { applicationViews, companyViews, eligibilityAt, nameOf, placementColleges, poolIdsOf, readRounds, readSchedule, requirementViews, type DriveActor } from "./placement";
+import { applicationViews, cellOf, companyViews, eligibilityAt, nameOf, placementColleges, poolIdsOf, readRounds, readSchedule, requirementViews, type DriveActor } from "./placement";
+import { assertSuperuser } from "./superuser";
 import { normaliseLocale } from "./i18n/locales";
 import type { ActiveContext } from "./session";
 
@@ -139,6 +140,68 @@ export async function removeColleague(ctx: ActiveContext, email: string) {
   const removed = other ? await db.companyRecruiter.updateMany({ where: { companyId, userId: other.id, removedAt: null }, data: { removedAt: new Date() } }) : { count: 0 };
   if (removed.count > 0) await audit({ schoolId: null, actorUserId: me.userId, action: "placement.company.colleagueRemove", targetType: "Company", targetId: companyId, meta: { removed: other!.id } });
   return other?.id === me.userId ? { company: null, colleagues: [], invitations: [] } : recruiterCompany(ctx);
+}
+
+/**
+ * A COMPANY'S FIRST RECRUITER (TA-090, the owner's decision of 14 November
+ * 2026). A company a cell added first had no recruiter and could never gain
+ * one: registering its identifier is refused (registerCompany), and only a
+ * bound recruiter invites another. Now the cell that verified the company, or
+ * the operator, invites a recruiter account by its address to a company that
+ * has no accepted binding; the recruiter accepts through answerInvitation, the
+ * colleagues' own flow. The inviter vouches for the person invited. The answer
+ * is the same whether or not the address is a recruiter's (nothing is written
+ * for any other address); a repeat press while the invitation waits changes
+ * nothing; the binding and its audit row are written together.
+ */
+async function inviteFirstRecruiter(
+  company: { id: string; name: string },
+  email: string,
+  by: { userId: string; schoolId: string | null; action: string; notice: { titleKey: "placement.notifColleagueInvite" | "placement.notifOperatorInvite"; titleVars: Record<string, string> } },
+): Promise<void> {
+  const bound = await db.companyRecruiter.findFirst({ where: { companyId: company.id, removedAt: null, acceptedAt: { not: null } }, select: { id: true } });
+  if (bound) throw new RuleRefusal("placement.refuseCompanyHasRecruiter", 409);
+  const other = await db.user.findUnique({ where: { email: email.trim().toLowerCase() }, select: { id: true, recruiterProfile: { select: { disabledAt: true } } } });
+  if (!other || other.id === by.userId || !other.recruiterProfile || other.recruiterProfile.disabledAt) return;
+  const had = await db.companyRecruiter.findUnique({ where: { companyId_userId: { companyId: company.id, userId: other.id } }, select: { removedAt: true } });
+  if (had && !had.removedAt) return;
+  await db.$tenantTransaction(async (raw) => {
+    const tx = raw as typeof db;
+    await tx.companyRecruiter.upsert({
+      where: { companyId_userId: { companyId: company.id, userId: other.id } },
+      update: { removedAt: null, acceptedAt: null, addedByUserId: by.userId, addedAt: new Date() },
+      create: { companyId: company.id, userId: other.id, addedByUserId: by.userId },
+    });
+    await audit({ schoolId: by.schoolId, actorUserId: by.userId, action: by.action, targetType: "Company", targetId: company.id, meta: { invited: other.id } }, tx);
+  });
+  // A notice that belongs to no school is written bound to its reader, as a colleague's invitation is.
+  await forUser(other.id, () => notify({ userId: other.id, schoolId: null, kind: "SYSTEM", titleKey: by.notice.titleKey, titleVars: by.notice.titleVars, url: "/recruiter" })).catch((error) => console.error("[placement] invitation notice failed", error));
+}
+
+/** The cell that verified a company invites its first recruiter (TA-090); answers the company as the cell sees it, the same for any address. */
+export async function inviteCompanyRecruiter(ctx: ActiveContext, companyId: string, email: string) {
+  const cell = await cellOf(ctx);
+  const [c, linked] = await Promise.all([
+    db.company.findUnique({ where: { id: companyId }, select: { id: true, name: true, verifiedAt: true, verifiedByUserId: true } }),
+    db.companyTenantLink.findUnique({ where: { schoolId_companyId: { schoolId: cell.schoolId, companyId } }, select: { schoolId: true } }),
+  ]);
+  // A company this college does not work with is not found, as verifyCompany answers one.
+  if (!c || !linked) throw new AccessError("placement.noSuchCompany", "NOT_FOUND");
+  // "The cell that verified it": whoever marked it checked was this college's TPO (verifyCompany links the college as it checks).
+  const verifiedHere = c.verifiedAt && c.verifiedByUserId ? await db.membership.findFirst({ where: { schoolId: cell.schoolId, userId: c.verifiedByUserId, role: "TPO" }, select: { id: true } }) : null;
+  if (!verifiedHere) throw new RuleRefusal("placement.refuseInviteNotVerifier", 409);
+  const college = await db.school.findUnique({ where: { id: cell.schoolId }, select: { name: true } });
+  await inviteFirstRecruiter(c, email, { userId: cell.userId, schoolId: cell.schoolId, action: "placement.company.recruiterInvite", notice: { titleKey: "placement.notifColleagueInvite", titleVars: { company: c.name, name: college?.name ?? "" } } });
+  return (await companyViews(cell.schoolId, { ids: [companyId] }))[0]!;
+}
+
+/** The operator invites a company's first recruiter, naming the company by its GSTIN or CIN (TA-090); the same answer for any address. */
+export async function operatorInviteCompanyRecruiter(session: ActiveContext, identifier: string, email: string): Promise<{ ok: true }> {
+  assertSuperuser(session);
+  const c = await db.company.findUnique({ where: { identifier: identifier.trim().toUpperCase().replace(/\s+/g, "") }, select: { id: true, name: true } });
+  if (!c) throw new AccessError("placement.noSuchCompany", "NOT_FOUND");
+  await inviteFirstRecruiter(c, email, { userId: session.user.id, schoolId: null, action: "superuser.recruiter.invite", notice: { titleKey: "placement.notifOperatorInvite", titleVars: { company: c.name } } });
+  return { ok: true };
 }
 
 /** The placement directory: colleges with PLACEMENT on, names and towns only. */

@@ -111,8 +111,33 @@ export const AICTE_INTERNSHIP_BTECH = {
   source: "AICTE Internship Policy (2019), aicte.gov.in",
 } as const;
 export const INTERNSHIP_WINDOWS = [2, 4, 6] as const;
-/** 2, 4 or 6 for the AICTE's kinds; a law internship may also sit after semester 8 or 10 (LAW_INTERNSHIP_WINDOWS, 5 Oct 2026) — the library refuses the rest. */
-export const internshipWindowSchema = z.union([z.literal(2), z.literal(4), z.literal(6), z.literal(8), z.literal(10)]);
+/** The most semesters a programme holds (six years, the academics module's longest durationYears): the latest window the request format takes. */
+export const INTERNSHIP_MAX_SEMESTER = 12;
+/**
+ * Any semester from 1 to 12 (the owner's decision on TA-469 and TA-495, 14 November 2026; before, only 2, 4, 6, 8
+ * and 10): the library holds it to the rule the student's programme follows (internshipRuleFor below) and a law
+ * internship to LAW_INTERNSHIP_WINDOWS, and refuses the rest.
+ */
+export const internshipWindowSchema = z.number().int().min(1).max(INTERNSHIP_MAX_SEMESTER);
+/**
+ * WHICH RULE A STUDENT'S INTERNSHIPS ARE HELD TO (the owner's decision on TA-469 and TA-495, 14 November 2026), read
+ * from the stored regulator of the student's programme. AICTE: the policy above (after semesters 2, 4 and 6, at most
+ * 20 credits over the programme), for a programme whose regulator is AICTE, and for a student with no seat yet, whose
+ * programme is not known, as every student was held before. SCHEME: every other regulator (UGC, ICAR, BCI, PCI and
+ * the rest): after any semester of the programme, the only ceiling the programme's total credits as its scheme sets
+ * them, which is what the staff page already told those colleges (the ceiling is the assistant's reading, not the
+ * owner's). A law internship keeps its own windows whichever rule holds.
+ */
+export const INTERNSHIP_RULE_KINDS = ["AICTE", "SCHEME"] as const;
+export const internshipRuleKindSchema = z.enum(INTERNSHIP_RULE_KINDS);
+export type InternshipRuleKind = z.infer<typeof internshipRuleKindSchema>;
+export const internshipRuleOfSchema = z.object({ kind: internshipRuleKindSchema, windows: z.array(z.number().int()), creditsMax: z.number().int() });
+export type InternshipRuleOf = z.infer<typeof internshipRuleOfSchema>;
+export function internshipRuleFor(programme: { regulator: string; durationYears: number; totalCredits: number } | null): InternshipRuleOf {
+  if (!programme || programme.regulator === "AICTE") return { kind: "AICTE", windows: [...AICTE_INTERNSHIP_BTECH.windows], creditsMax: AICTE_INTERNSHIP_BTECH.creditsMax };
+  const semesters = Math.max(1, Math.min(INTERNSHIP_MAX_SEMESTER, programme.durationYears * 2));
+  return { kind: "SCHEME", windows: Array.from({ length: semesters }, (_, n) => n + 1), creditsMax: programme.totalCredits };
+}
 
 export const ALUMNI_GIFT_KINDS = ["DONATION", "ENDOWMENT", "SCHOLARSHIP", "IN_KIND"] as const;
 export const alumniGiftKindSchema = z.enum(ALUMNI_GIFT_KINDS);
@@ -540,9 +565,13 @@ export const internshipViewSchema = z.object({
   hasDeclaration: z.boolean(),
   declarationFileId: z.string().nullable(),
   creditedAt: isoOrNull,
+  /** The rule the student's programme holds this internship to, and the credits that rule lets the student's internships reach in all (TA-469, TA-495). Defaulted so an older server's answer still parses. */
+  rule: internshipRuleKindSchema.default("AICTE"),
+  creditsMax: z.number().int().default(AICTE_INTERNSHIP_BTECH.creditsMax),
 });
 export type InternshipView = z.infer<typeof internshipViewSchema>;
-export const internshipListSchema = z.object({ internships: z.array(internshipViewSchema), creditsTotal: z.number().int().nullable(), rule: z.object({ creditsMin: z.number().int(), creditsMax: z.number().int(), hoursMin: z.number().int(), hoursMax: z.number().int(), windows: z.array(z.number().int()) }), canDecide: z.boolean() });
+/** `rule` is the AICTE policy's figures; `ruleKinds` the rules the college's programmes and these internships follow, AICTE first (TA-469, TA-495). */
+export const internshipListSchema = z.object({ internships: z.array(internshipViewSchema), creditsTotal: z.number().int().nullable(), rule: z.object({ creditsMin: z.number().int(), creditsMax: z.number().int(), hoursMin: z.number().int(), hoursMax: z.number().int(), windows: z.array(z.number().int()) }), ruleKinds: z.array(internshipRuleKindSchema).default(["AICTE"]), canDecide: z.boolean() });
 
 /** POST /api/v1/student/internships — the student proposes one. */
 export const internshipProposeSchema = z.object({
@@ -568,7 +597,8 @@ export const internshipEvaluateSchema = z.object({
   industryGrade: industryGradeSchema.nullable().optional(),
   facultyVisitOn: dateKey.nullable().optional(),
   vivaMarks: z.number().int().min(0).max(100).nullable().optional(),
-  credits: z.number().int().min(1).max(20).nullable().optional(),
+  /** One internship's credits: the library holds the running total to the student's rule (20 under AICTE, the programme's total credits under its scheme, TA-469). */
+  credits: z.number().int().min(1).max(400).nullable().optional(),
 });
 
 export const projectViewSchema = z.object({
@@ -598,6 +628,8 @@ export const studentPlacementSchema = z.object({
   offers: z.array(offerViewSchema),
   internships: z.array(internshipViewSchema),
   internshipCredits: z.number().int(),
+  /** The rule the student's own programme holds their internships to (TA-469, TA-495): the windows the form offers and the sentence they read. */
+  internshipRule: internshipRuleOfSchema.default({ kind: "AICTE", windows: [...AICTE_INTERNSHIP_BTECH.windows], creditsMax: AICTE_INTERNSHIP_BTECH.creditsMax }),
   prep: z.array(prepTopicSchema),
   mentorSlots: z.array(mentorSlotSchema),
   /** The soft-skills trainings the student completed (R-2, 5 Oct 2026): a line on their placement profile. */
@@ -638,6 +670,14 @@ export const recruiterCompanySchema = z.object({
 export const recruiterColleagueSchema = z.object({ email: z.string().trim().email().max(200) });
 /** POST /api/v1/recruiter/company/invitations/{companyId} — accept or decline a colleague's invitation. */
 export const recruiterInvitationAnswerSchema = z.object({ accept: z.boolean() });
+/**
+ * TA-090 (the owner's decision of 14 November 2026): a company with no accepted recruiter gains its first through an
+ * invitation the recruiter accepts. POST /api/v1/placement/companies/{companyId}/invite-recruiter (the cell that verified
+ * it) takes recruiterColleagueSchema; POST /api/v1/operator/companies/invite-recruiter (the operator) names the company
+ * by its GSTIN or CIN. Either answers the same whether or not the address is a recruiter's.
+ */
+export const operatorCompanyRecruiterInviteBodySchema = z.object({ identifier: companyIdentifierSchema, email: z.string().trim().email().max(200) });
+export type OperatorCompanyRecruiterInviteBody = z.infer<typeof operatorCompanyRecruiterInviteBodySchema>;
 export const recruiterCollegesSchema = z.object({ colleges: z.array(z.object({ id: z.string(), name: z.string(), city: z.string().nullable() })) });
 
 /** What a bound recruiter reads of a drive: the eligible count always, names only of those who consented, and nothing once it closes. */

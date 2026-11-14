@@ -20,6 +20,7 @@ import {
   placementSettingsSchema,
   projectReviewSchema,
   projectSaveSchema,
+  recruiterColleagueSchema,
   recruiterFeedbackSchema,
   requirementSaveSchema,
   roundResultsSaveSchema,
@@ -59,7 +60,7 @@ import { publishSeason } from "@/lib/placement-analytics";
 import { guardianConsentToApplication } from "@/lib/placement-student";
 import { addDiaryEntry, attachInternshipFile, decideInternship, evaluateInternship, proposeInternship } from "@/lib/placement-internships";
 import { createProject, reviewProject } from "@/lib/placement-projects";
-import { addColleague, answerInvitation, postRequirement, recruiterActor, recruiterActorForOffer, recruiterFeedback, registerCompany, removeColleague } from "@/lib/placement-recruiter";
+import { addColleague, answerInvitation, inviteCompanyRecruiter, postRequirement, recruiterActor, recruiterActorForOffer, recruiterFeedback, registerCompany, removeColleague } from "@/lib/placement-recruiter";
 import { createMeet, linkMyCompany, offerMentorSlot, recordGift, referOpening, registerForMeet } from "@/lib/placement-alumni";
 import { closeBooking } from "@/lib/gig-sessions";
 import { consume, retryHintKey } from "@/lib/rate-limit";
@@ -162,6 +163,16 @@ export async function verifyCompanyAction(previous: FormState, formData: FormDat
   return run(previous, formData, async (ctx) => {
     const c = await verifyCompany(ctx, str(formData, "companyId"));
     return { key: "placement.companyVerified", vars: { name: c.name } };
+  });
+}
+
+/** The cell that verified a company invites its first recruiter (TA-090); the toast is the colleagues' one, the same for any address. */
+export async function inviteRecruiterAction(previous: FormState, formData: FormData): Promise<FormState> {
+  return run(previous, formData, async (ctx) => {
+    await spend(ctx, "fanout", FANOUT_BUDGET);
+    const body = parsed(recruiterColleagueSchema.safeParse({ email: str(formData, "email") }));
+    await inviteCompanyRecruiter(ctx, str(formData, "companyId"), body.email);
+    return "placement.colleagueInvited";
   });
 }
 

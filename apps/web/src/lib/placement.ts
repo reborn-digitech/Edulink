@@ -403,7 +403,9 @@ export async function companyViews(schoolId: string | null, where: { ids?: strin
   const companies = await db.company.findMany({
     where: where.ids ? { id: { in: where.ids } } : schoolId ? { OR: [{ tenantLinks: { some: { schoolId } } }, { createdBySchoolId: schoolId }] } : {},
     orderBy: { name: "asc" },
-    include: { _count: { select: { recruiters: { where: { removedAt: null } } } }, tenantLinks: schoolId ? { where: { schoolId }, select: { firstVisitYear: true } } : false },
+    // Accepted bindings only (TA-090): an invitation waiting is nobody's recruiter yet, and counting it would tell the
+    // inviting cell whether the address it typed is a recruiter's.
+    include: { _count: { select: { recruiters: { where: { removedAt: null, acceptedAt: { not: null } } } } }, tenantLinks: schoolId ? { where: { schoolId }, select: { firstVisitYear: true } } : false },
   });
   const drives = schoolId
     ? await db.drive.groupBy({ by: ["companyId"], where: { schoolId, companyId: { in: companies.map((c) => c.id) } }, _count: { _all: true } })

@@ -1,13 +1,15 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
-import { COLLEGE_TIERS, schoolModuleSchema } from "@edulink/contracts";
+import { COLLEGE_TIERS, operatorCompanyRecruiterInviteBodySchema, schoolModuleSchema } from "@edulink/contracts";
 import { getT } from "@/lib/i18n/server";
 import { translator } from "@/lib/i18n/dictionary";
 import { requireApiUser, AccessError } from "@/lib/tenancy";
 import { assertSuperuser } from "@/lib/superuser";
 import { createPlan } from "@/lib/plans";
 import { setModuleAsOperator, setRecruiterStanding } from "@/lib/operator-college";
+import { operatorInviteCompanyRecruiter } from "@/lib/placement-recruiter";
+import { RuleRefusal } from "@/lib/rule-refusal";
 
 /**
  * The college console's actions (4 October 2026). Each re-reads the session
@@ -54,6 +56,22 @@ export async function addCollegeTierAction(code: string): Promise<Result> {
     revalidatePath("/root/plans");
     return { ok: true };
   } catch (error) {
+    return failure(error);
+  }
+}
+
+/** Invite a company's first recruiter (TA-090): the company by its GSTIN or CIN, the recruiter by address; the same answer for any address. */
+export async function inviteCompanyRecruiterAction(input: { identifier: string; email: string }): Promise<Result> {
+  try {
+    const session = await requireApiUser();
+    assertSuperuser(session);
+    const body = operatorCompanyRecruiterInviteBodySchema.safeParse(input);
+    if (!body.success) return { ok: false, error: (await getT())(body.error.issues.some((i) => i.path[0] === "identifier") ? "placement.fieldIdentifierHint" : "common.tryAgain") };
+    await operatorInviteCompanyRecruiter(session, body.data.identifier, body.data.email);
+    revalidatePath("/root/colleges/recruiters");
+    return { ok: true };
+  } catch (error) {
+    if (error instanceof RuleRefusal) return { ok: false, error: (await getT())(error.key, error.vars) };
     return failure(error);
   }
 }

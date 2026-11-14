@@ -97,6 +97,22 @@ describe("the companies on the phone", () => {
     expect(await screen.findByText("ZZ Company c1 is marked as checked.")).toBeTruthy();
   });
 
+  it("TA-090: the TPO invites a checked company's first recruiter by address; a company with a recruiter, or an unchecked one, offers no invitation", async () => {
+    const company = (id: string, over: Record<string, unknown> = {}) => ({ id, name: `ZZ Company ${id}`, identifier: "27AAPFU0939F1ZV", sectors: ["IT_SOFTWARE"], pointOfContact: "ZZ", verifiedAt: iso, recruiters: 0, firstVisitYear: 2024, drives: 1, ...over });
+    const { calls } = await mountStaff(<TpoCompaniesScreen />, "TPO", {
+      "GET /api/v1/placement/companies": () => json({ companies: [company("c1"), company("c2", { recruiters: 1 }), company("c3", { verifiedAt: null })] }),
+      "POST /api/v1/placement/companies/c1/invite-recruiter": () => json(company("c1")),
+    }, { me: atCollege("TPO") });
+    expect(await screen.findByRole("button", { name: "Invite a recruiter: ZZ Company c1" })).toBeTruthy();
+    expect(screen.queryByRole("button", { name: "Invite a recruiter: ZZ Company c2" })).toBeNull();
+    expect(screen.queryByRole("button", { name: "Invite a recruiter: ZZ Company c3" })).toBeNull();
+    await fireEvent.changeText(screen.getByLabelText("Their recruiter account's email"), " recruiter@zz.test ");
+    await fireEvent.press(screen.getByRole("button", { name: "Invite a recruiter: ZZ Company c1" }));
+    await waitFor(() => expect(calls().some((c) => c.line === "POST /api/v1/placement/companies/c1/invite-recruiter")).toBe(true));
+    expect(calls().find((c) => c.line === "POST /api/v1/placement/companies/c1/invite-recruiter")?.body).toEqual({ email: "recruiter@zz.test" });
+    expect(await screen.findByText("If that address is a recruiter's account, they are invited. They work on the company's drives once they accept.")).toBeTruthy();
+  });
+
   it("gives the IQAC no button, only the state", async () => {
     await mountStaff(<TpoCompaniesScreen />, "ADMIN", { "GET /api/v1/placement/companies": () => json({ companies: [{ id: "c1", name: "ZZ Company", identifier: "27AAPFU0939F1ZV", sectors: [], pointOfContact: "", verifiedAt: null, recruiters: 0, firstVisitYear: null, drives: 0 }] }) }, { me: atCollege("ADMIN") });
     expect(await screen.findByText("Not checked")).toBeTruthy();

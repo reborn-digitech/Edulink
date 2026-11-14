@@ -10,7 +10,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { TextField } from "@/components/ui/field";
 import { CellFrame, LINK, ROUND_KIND_KEY, SECTOR_KEY, TABLE, TD, TH, cellContext, lpa } from "@/components/placement/parts";
-import { acceptRequirementAction, addCompanyAction, verifyCompanyAction } from "../actions";
+import { acceptRequirementAction, addCompanyAction, inviteRecruiterAction, verifyCompanyAction } from "../actions";
 import { TableScroll } from "@/components/ui/table-scroll";
 import { ActionForm } from "@/components/ui/action-form";
 
@@ -99,7 +99,20 @@ export default async function CompaniesPage({ searchParams }: { searchParams: Pr
                     <td className={TD}>{alumniAt.get(c.id) ?? 0}</td>
                     <td className={TD}>
                       {c.verifiedAt ? (
-                        <Badge tone="ok">{t("placement.verified")}</Badge>
+                        <div className="space-y-2">
+                          <Badge tone="ok">{t("placement.verified")}</Badge>
+                          {/* TA-090: no recruiter accepted yet; the cell that verified it invites one (the server refuses any other cell). */}
+                          {canWrite && c.recruiters === 0 ? (
+                            <ActionForm action={inviteRecruiterAction} className="flex flex-wrap items-end gap-2">
+                              <input type="hidden" name="back" value={back} />
+                              <input type="hidden" name="companyId" value={c.id} />
+                              <TextField label={t("placement.fieldColleagueEmail")} name="email" type="email" required maxLength={200} hint={t("placement.inviteRecruiterHint")} />
+                              <Button type="submit" size="sm" variant="secondary">
+                                {t("placement.inviteRecruiter")}
+                              </Button>
+                            </ActionForm>
+                          ) : null}
+                        </div>
                       ) : canWrite ? (
                         <ActionForm action={verifyCompanyAction}>
                           <input type="hidden" name="back" value={back} />
