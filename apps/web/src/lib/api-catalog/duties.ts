@@ -54,3 +54,15 @@ export const DUTY_DOORS: Endpoint[] = [
   { method: "POST", path: "/api/v1/family/clinical/logbook", summary: "A student's new logbook entry (a case, procedure, skill or dispensing on a day of one of their postings, with a note that must name no patient), or a DRAFT or RETURNED one corrected by `id`; idempotent by `clientId` (audited)", access: ["STUDENT"], module: "ACADEMICS", request: c.logbookEntrySaveSchema, reach: "ownChild", response: c.streamRecordsIdSchema, emptyBodyStatus: 422 },
   { method: "POST", path: "/api/v1/family/clinical/logbook/{entryId}/submit", summary: "The student hands an entry in: DRAFT or RETURNED to SUBMITTED; one already handed in is a no-op; a signed one is refused 409 (audited)", access: ["STUDENT"], module: "ACADEMICS", reach: "ownChild", response: c.streamRecordsIdSchema, emptyBodyStatus: 404, sample: `/api/v1/family/clinical/logbook/${CL.entry(4)}/submit` },
 ];
+// decision-379-475 (TA-379 and TA-475, 14 November 2026): what the teaching-practice desk counts and the posting door
+// refuses, said where the catalog is read. Amended here, not edited in place (the shared-file fence); it throws on a
+// door that is not there.
+{
+  const say = (method: Endpoint["method"], path: string, summary: string) => {
+    const e = DUTY_DOORS.find((x) => x.method === method && x.path === path);
+    if (!e) throw new Error(`api-catalog/duties.ts (decision-379-475): no ${method} ${path} to amend`);
+    e.summary = summary;
+  };
+  say("GET", "/api/v1/duties/teaching-practice", "The teaching-practice coordinator's desk: practice schools, each student teacher's postings with the lessons watched, and the year's weeks served (a posting's days once they have passed, by the college's calendar) out of every final-year student teacher on the education programmes, posted or not (`offered` false without EDUCATION)");
+  say("POST", "/api/v1/duties/teaching-practice/postings", "A student teacher posted to a practice school for a span of days with the lessons planned, new or corrected by its id (422 for a posting longer than a year, a typing slip, TA-379; 409 for an overlapping posting, or for a correction of an observed posting that changes its student or leaves an observation outside its days, TA-381; audited)");
+}

@@ -214,7 +214,9 @@ Ragging and harassment complaints are read by the office and the head alone; the
 3. "Moot courts" at `/admin/stream-records/moot-courts` (law only): "Record a moot court" with "Name of the moot", "Held on", "Kind", at least two teams ("Team name", "Choose the team's students", "Outcome"), "Result" and "Judges' notes". "Internships" count each law student's weeks against the Bar Council's minimum.
 4. "Teaching practice", "The NSS unit" and "The NCC unit" open the duty desks at `/duties/teaching-practice`, `/duties/nss` and `/duties/ncc`, where the office may add practice schools and postings, enrol students and record activities with their hours.
 
-The year's figures ("Signed", "Waiting to be signed", "Meeting the BCI weeks", "Meeting the NCTE weeks", "NSS hours this year", "Camps") are the ones the council returns and the IQAC read.
+The year's figures ("Signed", "Waiting to be signed", "Meeting the BCI weeks", "Final-year student teachers with their weeks served", "NSS hours this year", "Camps") are the ones the council returns and the IQAC read.
+
+"Final-year student teachers with their weeks served" reads, for instance, "3 / 8": of the eight final-year student teachers on the college's education programmes, posted or not, three have served twenty weeks of school internship over their course. Twenty is the bar the app counts for every education programme; check the council's own text for yours. A student teacher is in their final year by the year they entered and the programme's length, so keep each seat's entry year right for a repeater or a lateral entrant. A posting's weeks count only once its days have passed: a posting made today for next term adds nothing until those days go by, and nobody needs to confirm attendance. A posting that runs across 1 June gives each year its own days and its own watched lessons, and counts with its lessons planned in the year it starts; a past year's figure stops at its own 31 May. A posting longer than a year is refused as a typing slip; check the year in its dates.
 
 ## What does the office read on "The college"?
 

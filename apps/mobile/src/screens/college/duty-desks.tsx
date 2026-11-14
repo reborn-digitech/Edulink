@@ -379,7 +379,7 @@ export function TeachingPracticeScreen() {
   const d = desk.data;
   const today = todayKey();
   return (
-    <Screen title={title} description={d ? t("duties.teachingPractice.intro", { weeks: d.summary.minimumWeeks }) : undefined} refreshing={desk.isRefetching} onRefresh={() => void desk.refetch()}>
+    <Screen title={title} description={d ? t("duties.teachingPractice.introServed", { weeks: d.summary.minimumWeeks }) : undefined} refreshing={desk.isRefetching} onRefresh={() => void desk.refetch()}>
       {desk.isPending ? <Loading /> : null}
       {desk.isError ? <Failed message={desk.error.message} onRetry={() => void desk.refetch()} /> : null}
       {d ? (
@@ -389,7 +389,7 @@ export function TeachingPracticeScreen() {
             <Stat label={t("streamRecords.statPracticeSchools")} value={d.summary.practiceSchools} />
             <Stat label={t("streamRecords.statPostings")} value={d.summary.postings} />
             <Stat label={t("streamRecords.statObserved")} value={`${d.summary.lessonsObserved} / ${d.summary.lessonsPlanned}`} />
-            <Stat label={t("streamRecords.statMeetingNcte")} value={`${d.summary.meetingMinimum} / ${d.summary.students}`} tone={d.summary.meetingMinimum < d.summary.students ? "warn" : "ok"} />
+            <Stat label={t("streamRecords.statServedFinalYear")} value={`${d.summary.meetingMinimum} / ${d.summary.students}`} tone={d.summary.meetingMinimum < d.summary.students ? "warn" : "ok"} />
           </StatRow>
           <Card title={t("duties.teachingPractice.schoolsTitle")}>
             {d.schools.length === 0 ? <Text tone="muted">{t("duties.teachingPractice.noSchools")}</Text> : null}

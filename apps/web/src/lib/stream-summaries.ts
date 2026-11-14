@@ -18,6 +18,8 @@ import {
 import { db } from "./db";
 import { readJsonArray } from "./json";
 import { SEATED_NOW } from "./academics";
+import { todayKey } from "./dates";
+import { batchStudents } from "./placement-record";
 
 /**
  * THE STREAM RECORDS' SUMMARIES (5 October 2026), what the council filings
@@ -133,40 +135,88 @@ export async function lawInternshipSummary(schoolId: string, year: number): Prom
 
 /* ---------------------------------------------------- teaching practice */
 
-export async function teachingPracticeSummary(schoolId: string, year: number): Promise<TeachingPracticeSummary> {
-  const w = academicYearWindow(year);
-  const [schools, postings] = await Promise.all([
-    db.practiceSchool.findMany({ where: { schoolId, archivedAt: null }, select: { id: true, name: true, udise: true } }),
-    db.teachingPracticePosting.findMany({ where: { schoolId }, select: { id: true, studentMembershipId: true, practiceSchoolId: true, fromKey: true, toKey: true, lessonsPlanned: true, _count: { select: { observations: true } } } }),
+/**
+ * The return's own education programmes (TA-475): those whose stream is EDUCATION and not archived, or — at a
+ * college whose only stream is education — every programme not archived; streamProgrammes' rule in
+ * council-filings.ts, which the NCTE return reads, kept here because that file imports this one.
+ */
+async function educationProgrammeIds(schoolId: string): Promise<Set<string>> {
+  const [school, programmes] = await Promise.all([
+    db.school.findUnique({ where: { id: schoolId }, select: { streamsJson: true } }),
+    db.programme.findMany({ where: { schoolId, archivedAt: null }, select: { id: true, stream: true } }),
   ]);
-  const inYear = postings.filter((p) => p.fromKey <= w.to && p.toKey >= w.from);
-  const names = await namesOf(postings.map((p) => p.studentMembershipId));
+  const streams = parseStreams(school?.streamsJson);
+  const own = programmes.filter((p) => p.stream === "EDUCATION");
+  if (own.length) return new Set(own.map((p) => p.id));
+  return new Set(streams.length === 1 && streams[0] === "EDUCATION" ? programmes.map((p) => p.id) : []);
+}
+
+/**
+ * The year's teaching practice, as the owner decided on TA-379 and TA-475 (14 November 2026): weeks SERVED, out
+ * of FINAL-YEAR student teachers. A posting's days count once they have passed by the college's calendar (`now`
+ * read in its zone; "served" means only that the days have passed, nobody confirms attendance), and a past year
+ * stops counting at its own 31 May, so a return regenerated later does not move. A posting across 1 June splits
+ * its weeks, and its watched lessons by their day, between the two years; the posting itself, with its lessons
+ * planned, belongs to the year it starts. The "out of" number is every final-year student on the education
+ * programmes, posted or not, found from the seat's entry year plus the programme's length by the placement
+ * record's rule (batchStudents: those who left before the final year, or whose admission was closed, are not);
+ * meeting means served weeks over the whole course, up to the same day, reaching NCTE_MIN_PRACTICE_WEEKS, the
+ * product's own bar for every education programme. A cancelled posting cannot be removed and counts as its days pass.
+ */
+export async function teachingPracticeSummary(schoolId: string, year: number, now: Date = new Date()): Promise<TeachingPracticeSummary> {
+  const w = academicYearWindow(year);
+  const [school, schools, postings, education, batch] = await Promise.all([
+    db.school.findUnique({ where: { id: schoolId }, select: { timezone: true } }),
+    db.practiceSchool.findMany({ where: { schoolId, archivedAt: null }, select: { id: true, name: true, udise: true } }),
+    db.teachingPracticePosting.findMany({ where: { schoolId }, select: { id: true, studentMembershipId: true, practiceSchoolId: true, fromKey: true, toKey: true, lessonsPlanned: true, observations: { select: { at: true } } } }),
+    educationProgrammeIds(schoolId),
+    batchStudents(schoolId, year + 1),
+  ]);
+  const today = todayKey(school?.timezone ?? "Asia/Kolkata", now);
+  // The last day served that this year's figure can count: today, or the year's own 31 May once it is past.
+  const upTo = today < w.to ? today : w.to;
+  /** The weeks of a posting's days from `from` to `to` that have been served by `upTo`. */
+  const served = (fromKey: string, toKey: string, from: string, to: string) => {
+    const a = fromKey > from ? fromKey : from;
+    const b = toKey < to ? toKey : to;
+    return weeksBetween(a, b < upTo ? b : upTo);
+  };
+  const startsInYear = postings.filter((p) => p.fromKey >= w.from && p.fromKey <= w.to);
+  const inYear = (at: string) => at >= w.from && at <= w.to;
+  const finalYear = [...new Set(batch.filter((s) => s.programmeId && education.has(s.programmeId)).map((s) => s.id))];
+  const names = await namesOf(finalYear);
   const cumulative = new Map<string, number>();
-  for (const p of postings) cumulative.set(p.studentMembershipId, (cumulative.get(p.studentMembershipId) ?? 0) + weeksBetween(p.fromKey, p.toKey));
   const per = new Map<string, { weeks: number; lessonsPlanned: number; lessonsObserved: number }>();
-  for (const p of inYear) {
+  let weeks = 0;
+  for (const p of postings) {
+    cumulative.set(p.studentMembershipId, (cumulative.get(p.studentMembershipId) ?? 0) + served(p.fromKey, p.toKey, p.fromKey, p.toKey));
     const v = per.get(p.studentMembershipId) ?? { weeks: 0, lessonsPlanned: 0, lessonsObserved: 0 };
-    v.weeks += weeksBetween(p.fromKey, p.toKey);
-    v.lessonsPlanned += p.lessonsPlanned;
-    v.lessonsObserved += p._count.observations;
+    const mine = served(p.fromKey, p.toKey, w.from, w.to);
+    v.weeks += mine;
+    weeks += mine;
+    if (p.fromKey >= w.from && p.fromKey <= w.to) v.lessonsPlanned += p.lessonsPlanned;
+    v.lessonsObserved += p.observations.filter((o) => inYear(o.at)).length;
     per.set(p.studentMembershipId, v);
   }
-  const perStudent = [...per.entries()]
-    .map(([id, v]) => ({ studentMembershipId: id, name: names.get(id) ?? "", weeks: round1(v.weeks), lessonsPlanned: v.lessonsPlanned, lessonsObserved: v.lessonsObserved, meets: round1(cumulative.get(id) ?? 0) >= NCTE_MIN_PRACTICE_WEEKS }))
+  const perStudent = finalYear
+    .map((id) => {
+      const v = per.get(id) ?? { weeks: 0, lessonsPlanned: 0, lessonsObserved: 0 };
+      return { studentMembershipId: id, name: names.get(id) ?? "", weeks: round1(v.weeks), lessonsPlanned: v.lessonsPlanned, lessonsObserved: v.lessonsObserved, meets: round1(cumulative.get(id) ?? 0) >= NCTE_MIN_PRACTICE_WEEKS };
+    })
     .sort((a, b) => a.name.localeCompare(b.name));
   return {
     year,
     practiceSchools: schools.length,
-    postings: inYear.length,
-    students: per.size,
-    lessonsPlanned: inYear.reduce((a, p) => a + p.lessonsPlanned, 0),
-    lessonsObserved: inYear.reduce((a, p) => a + p._count.observations, 0),
-    weeks: round1(inYear.reduce((a, p) => a + weeksBetween(p.fromKey, p.toKey), 0)),
+    postings: startsInYear.length,
+    students: perStudent.length,
+    lessonsPlanned: startsInYear.reduce((a, p) => a + p.lessonsPlanned, 0),
+    lessonsObserved: postings.reduce((a, p) => a + p.observations.filter((o) => inYear(o.at)).length, 0),
+    weeks: round1(weeks),
     minimumWeeks: NCTE_MIN_PRACTICE_WEEKS,
     meetingMinimum: perStudent.filter((s) => s.meets).length,
     bySchool: schools
       .map((s) => {
-        const mine = inYear.filter((p) => p.practiceSchoolId === s.id);
+        const mine = startsInYear.filter((p) => p.practiceSchoolId === s.id);
         return { practiceSchoolId: s.id, name: s.name, udise: s.udise, postings: mine.length, students: new Set(mine.map((p) => p.studentMembershipId)).size };
       })
       .sort((a, b) => a.name.localeCompare(b.name)),

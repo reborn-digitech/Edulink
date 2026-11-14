@@ -62,10 +62,10 @@ export function StreamRecordsScreen() {
             <Stat label={t("streamRecords.statPracticeSchools")} value={d.teachingPractice.practiceSchools} />
             <Stat label={t("streamRecords.statPostings")} value={d.teachingPractice.postings} />
             <Stat label={t("streamRecords.statObserved")} value={`${d.teachingPractice.lessonsObserved}/${d.teachingPractice.lessonsPlanned}`} />
-            <Stat label={t("streamRecords.statMeetingNcte")} value={`${d.teachingPractice.meetingMinimum} / ${d.teachingPractice.students}`} tone={d.teachingPractice.meetingMinimum < d.teachingPractice.students ? "warn" : "ok"} />
+            <Stat label={t("streamRecords.statServedFinalYear")} value={`${d.teachingPractice.meetingMinimum} / ${d.teachingPractice.students}`} tone={d.teachingPractice.meetingMinimum < d.teachingPractice.students ? "warn" : "ok"} />
           </View>
           <Text variant="xs" tone="muted">
-            {t("streamRecords.practiceBody", { weeks: d.teachingPractice.minimumWeeks })}
+            {t("streamRecords.practiceBodyServed", { weeks: d.teachingPractice.minimumWeeks })}
           </Text>
         </Card>
       ) : null}

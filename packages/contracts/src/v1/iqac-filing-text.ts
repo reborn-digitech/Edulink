@@ -152,6 +152,8 @@ export const FILING_TEXT = {
   lessonsPlanned: "Lessons planned",
   lessonsObserved: "Lessons observed",
   practiceMinimum: "Students meeting the NCTE minimum weeks",
+  // TA-379, TA-475 (14 November 2026): weeks served, out of every final-year student teacher; the number follows in brackets.
+  practiceServedFinalYear: "Final-year student teachers who have served the minimum weeks of school internship",
   infrastructure: "Infrastructure and instructional facilities",
   department: "Department",
   programmesAssessed: "Programmes of the department",

@@ -367,10 +367,17 @@ describe("teaching practice", () => {
     const desk = await teachingPracticeDesk(bAdmin);
     expect(desk).toMatchObject({ offered: true, canManage: true, canObserve: false });
     expect(desk.postings.find((p) => p.id === p1.id)!.observations).toHaveLength(1);
-    // 6 July – 22 November is 140 days, 20 weeks: t1 meets the NCTE's 20; t2's 28 days are 4 weeks.
+    // 6 July – 22 November is 140 days, 20 weeks; t2's 28 days are 4 weeks. Since the owner's decision on TA-379 and
+    // TA-475 (14 November 2026) the year counts the weeks served by today, out of the final-year student teachers:
+    // t1–t3 entered the two-year B.Ed. in 2026, so their final year is 2027–28 and 2026–27 has none.
     const s = await teachingPracticeSummary(ids.B!, 2026);
-    expect(s).toMatchObject({ practiceSchools: 1, postings: 2, students: 2, lessonsPlanned: 50, lessonsObserved: 1, weeks: 24, minimumWeeks: NCTE_MIN_PRACTICE_WEEKS, meetingMinimum: 1 });
+    const served = Math.round((weeksBetween("2026-07-06", TODAY < "2026-11-22" ? TODAY : "2026-11-22") + 4) * 10) / 10;
+    expect(s).toMatchObject({ practiceSchools: 1, postings: 2, students: 0, lessonsPlanned: 50, lessonsObserved: 1, weeks: served, minimumWeeks: NCTE_MIN_PRACTICE_WEEKS, meetingMinimum: 0 });
     expect(s.bySchool).toEqual([{ practiceSchoolId: school.id, name: "ZZ Zilla Parishad School", udise: "27250100101", postings: 2, students: 2 }]);
+    // In their final year (2027–28, read on 1 July 2027) all three count, and t1's twenty weeks served meet the bar.
+    const finalYear = await teachingPracticeSummary(ids.B!, 2027, new Date("2027-07-01T06:30:00Z"));
+    expect(finalYear).toMatchObject({ postings: 0, students: 3, meetingMinimum: 1 });
+    expect(finalYear.perStudent.find((p) => p.studentMembershipId === ids.t1M)).toMatchObject({ weeks: 0, meets: true });
   });
 });
 

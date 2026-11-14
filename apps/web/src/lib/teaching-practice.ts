@@ -14,9 +14,11 @@ import type { ActiveContext } from "./session";
 
 /**
  * TEACHING PRACTICE (an education college's; the duty
- * PRACTICE_TEACHING_COORDINATOR; 5 October 2026). The NCTE's B.Ed. norms ask
- * for twenty weeks of school internship over the programme
- * (NCTE_MIN_PRACTICE_WEEKS): the coordinator keeps the practice schools,
+ * PRACTICE_TEACHING_COORDINATOR; 5 October 2026). The product counts each
+ * final-year student teacher's weeks served against a bar of twenty
+ * (NCTE_MIN_PRACTICE_WEEKS, the product's own figure, TA-379; the official
+ * text was not read, so no sentence states it as the NCTE's requirement):
+ * the coordinator keeps the practice schools,
  * posts each student teacher to one for a span of days with the lessons
  * planned, and watches lessons — each observation a row with a grade; the
  * lessons observed are counted from those rows on read, never stored.
@@ -102,6 +104,9 @@ export async function savePracticeSchool(ctx: ActiveContext, input: { id?: strin
 export async function savePracticePosting(ctx: ActiveContext, input: { id?: string; studentMembershipId: string; practiceSchoolId: string; from: string; to: string; lessonsPlanned: number }): Promise<{ id: string }> {
   const c = await manager(ctx);
   if (input.to < input.from) throw new RuleRefusal("duties.teachingPractice.refuseDates", 422, undefined, "to");
+  // TA-379: a posting longer than a year is a typing slip (a year typed wrong), refused as one: its last day may not be
+  // the first day's date a year on, or later (compared as keys, so 29 February's year on is 1 March).
+  if (input.to >= `${Number(input.from.slice(0, 4)) + 1}${input.from.slice(4)}`) throw new RuleRefusal("duties.teachingPractice.refuseTooLong", 422, undefined, "to");
   const [student, place] = await Promise.all([
     db.membership.findFirst({ where: { id: input.studentMembershipId, schoolId: c.schoolId, role: "STUDENT", status: "ACTIVE", leftAt: null }, select: { id: true } }),
     db.practiceSchool.findFirst({ where: { id: input.practiceSchoolId, schoolId: c.schoolId, archivedAt: null }, select: { id: true } }),

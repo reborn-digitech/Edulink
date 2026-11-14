@@ -240,7 +240,7 @@ Open `/duties/exam-squad` ("Exam flying squad"). "Papers" lists what is being sa
 
 ### Teaching practice
 
-Only at an education college. Open `/duties/teaching-practice` ("Teaching practice"). Under "Practice schools" add a school with its "Practice school" name, "UDISE code" (eleven digits, if you know it) and "Contact", and press "Add the school". Under "Postings", choose the "Student teacher", the "Practice school", "From", "To" and "Lessons planned", and press "Post the student teacher". On a posting that has begun, record a lesson you watched with "Lesson on", a "Grade" and a "Note", and press "Record the lesson"; the observation is in your name. The tiles count the practice schools, this year's postings, lessons watched of planned, and how many student teachers meet the NCTE's weeks.
+Only at an education college. Open `/duties/teaching-practice` ("Teaching practice"). Under "Practice schools" add a school with its "Practice school" name, "UDISE code" (eleven digits, if you know it) and "Contact", and press "Add the school". Under "Postings", choose the "Student teacher", the "Practice school", "From", "To" and "Lessons planned", and press "Post the student teacher". On a posting that has begun, record a lesson you watched with "Lesson on", a "Grade" and a "Note", and press "Record the lesson"; the observation is in your name. The tiles count the practice schools, this year's postings, lessons watched of planned, and how many final-year student teachers have served their weeks, out of all of them, posted or not ("Final-year student teachers with their weeks served"); a posting's weeks count once its days have passed, and a posting longer than a year is refused as a typing slip.
 
 ### Clinical and studio coordinators
 

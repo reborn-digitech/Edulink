@@ -23,7 +23,8 @@ export async function generateMetadata(): Promise<Metadata> {
 /**
  * TEACHING PRACTICE (an education college's, 5 Oct 2026): the practice
  * schools, each student teacher's postings with the lessons planned and
- * watched, and the NCTE's weeks this year. The coordinator (the duty) and the
+ * watched, and how many final-year student teachers have served their weeks
+ * (TA-379, TA-475). The coordinator (the duty) and the
  * office keep schools and postings; the coordinator records what they watch;
  * the head reads. lib/teaching-practice.ts.
  */
@@ -38,14 +39,14 @@ export default async function TeachingPracticePage({ searchParams }: { searchPar
   const day = (k: string) => formatDateKey(k, { dateStyle: "medium" }, locale);
   return (
     <div className="space-y-6">
-      <PageHeader title={t("duties.teachingPractice.title")} description={t("duties.teachingPractice.intro", { weeks: d.summary.minimumWeeks })} />
+      <PageHeader title={t("duties.teachingPractice.title")} description={t("duties.teachingPractice.introServed", { weeks: d.summary.minimumWeeks })} />
       <RecordsFlash t={t} params={params} />
       {!d.offered ? <p className="rounded-[var(--radius-md)] border border-border bg-surface-muted px-3 py-2 text-sm text-fg-muted">{t("duties.teachingPractice.notOffered")}</p> : null}
       <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
         <StatTile label={t("streamRecords.statPracticeSchools")} value={d.summary.practiceSchools} />
         <StatTile label={t("streamRecords.statPostings")} value={d.summary.postings} />
         <StatTile label={t("streamRecords.statObserved")} value={`${d.summary.lessonsObserved} / ${d.summary.lessonsPlanned}`} />
-        <StatTile label={t("streamRecords.statMeetingNcte")} value={`${d.summary.meetingMinimum} / ${d.summary.students}`} tone={d.summary.meetingMinimum < d.summary.students ? "warn" : "ok"} />
+        <StatTile label={t("streamRecords.statServedFinalYear")} value={`${d.summary.meetingMinimum} / ${d.summary.students}`} tone={d.summary.meetingMinimum < d.summary.students ? "warn" : "ok"} />
       </div>
 
       <Card>

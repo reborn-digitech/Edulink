@@ -448,7 +448,7 @@ async function ncteDocument(schoolId: string, year: number, snap: Snap): Promise
     programmeSection(programmes),
     {
       heading: L.practiceTeaching,
-      rows: [[L.practiceSchools, String(tp.practiceSchools)], [L.postings, String(tp.postings)], [L.lessonsPlanned, String(tp.lessonsPlanned)], [L.lessonsObserved, String(tp.lessonsObserved)], [L.practiceMinimum, `${tp.meetingMinimum} / ${tp.students}`]],
+      rows: [[L.practiceSchools, String(tp.practiceSchools)], [L.postings, String(tp.postings)], [L.lessonsPlanned, String(tp.lessonsPlanned)], [L.lessonsObserved, String(tp.lessonsObserved)], [`${L.practiceServedFinalYear} (${tp.minimumWeeks})`, `${tp.meetingMinimum} / ${tp.students}`]],
       table: { head: [L.practiceSchools, "UDISE", L.postings, L.students], rows: tp.bySchool.map((s) => [s.name, s.udise ?? L.notRecorded, s.postings, s.students]), wide: 0 },
     },
     check.section,

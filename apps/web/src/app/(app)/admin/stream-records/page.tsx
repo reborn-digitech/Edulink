@@ -81,13 +81,13 @@ export default async function StreamRecordsPage() {
 
       {s.education ? (
         <Card data-record="teaching-practice">
-          <CardHeader icon={<ChalkboardTeacherIcon weight="duotone" className="size-5" />} title={t("streamRecords.practiceTitle")} description={t("streamRecords.practiceBody", { weeks: s.teachingPractice.minimumWeeks })} />
+          <CardHeader icon={<ChalkboardTeacherIcon weight="duotone" className="size-5" />} title={t("streamRecords.practiceTitle")} description={t("streamRecords.practiceBodyServed", { weeks: s.teachingPractice.minimumWeeks })} />
           <CardBody className="space-y-4">
             <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
               <StatTile label={t("streamRecords.statPracticeSchools")} value={s.teachingPractice.practiceSchools} />
               <StatTile label={t("streamRecords.statPostings")} value={s.teachingPractice.postings} />
               <StatTile label={t("streamRecords.statObserved")} value={`${s.teachingPractice.lessonsObserved} / ${s.teachingPractice.lessonsPlanned}`} />
-              <StatTile label={t("streamRecords.statMeetingNcte")} value={`${s.teachingPractice.meetingMinimum} / ${s.teachingPractice.students}`} tone={s.teachingPractice.meetingMinimum < s.teachingPractice.students ? "warn" : "ok"} />
+              <StatTile label={t("streamRecords.statServedFinalYear")} value={`${s.teachingPractice.meetingMinimum} / ${s.teachingPractice.students}`} tone={s.teachingPractice.meetingMinimum < s.teachingPractice.students ? "warn" : "ok"} />
             </div>
             <div className="flex flex-wrap gap-2">
               <Button asChild size="sm" variant="secondary"><Link href="/duties/teaching-practice">{t("streamRecords.openPractice")}</Link></Button>
