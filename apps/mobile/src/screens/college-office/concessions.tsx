@@ -12,7 +12,7 @@ import { useRole } from "@/lib/session";
 import { useTheme } from "@/lib/theme";
 import { Chips, Notice } from "../staff/shared";
 import { Pill } from "../family/shared";
-import { ModuleOffScreen, OfflineDecisionNote, money, paiseOfTyped, useModuleOn } from "@/screens/shared/desk";
+import { OfflineDecisionNote, money, paiseOfTyped } from "@/screens/shared/desk";
 
 /**
  * Concessions on the phone (the parity batch, 10 Oct 2026, R-4), the web's
@@ -32,11 +32,11 @@ export function ConcessionsScreen() {
   const role = useRole();
   const { locale } = useLocale();
   const qc = useQueryClient();
-  const on = useModuleOn("ACADEMICS");
+  // No module gate (TA-352): the accounts desk's doors need none (api-catalog/accounts.ts), so ACADEMICS off leaves this screen as it is on the web.
   const params = useLocalSearchParams<{ studentMembershipId?: string; name?: string }>();
   const [notice, setNotice] = useState<{ tone: "ok" | "danger"; text: string } | null>(null);
-  const queue = useQuery({ queryKey: ["accounts", "concessions"], enabled: on, queryFn: async () => pendingConcessionsSchema.parse(unwrap(await api().get("/api/v1/accounts/concessions"))) });
-  const settings = useQuery({ queryKey: ["accounts", "settings"], enabled: on, queryFn: async () => accountsSettingsSchema.parse(unwrap(await api().get("/api/v1/accounts/settings"))) });
+  const queue = useQuery({ queryKey: ["accounts", "concessions"], queryFn: async () => pendingConcessionsSchema.parse(unwrap(await api().get("/api/v1/accounts/concessions"))) });
+  const settings = useQuery({ queryKey: ["accounts", "settings"], queryFn: async () => accountsSettingsSchema.parse(unwrap(await api().get("/api/v1/accounts/settings"))) });
   const decide = useMutation({
     mutationFn: async (v: { id: string; approve: boolean }) => unwrap(await api().post(`/api/v1/accounts/concessions/${v.id}/decide`, { approve: v.approve })),
     onSuccess: (_r, v) => {
@@ -45,7 +45,6 @@ export function ConcessionsScreen() {
     },
     onError: (e: Error) => setNotice({ tone: "danger", text: e.message }),
   });
-  if (!on) return <ModuleOffScreen title={t("collegeOffice.navConcessions")} module="ACADEMICS" />;
   const items = queue.data?.items ?? [];
   const limit = settings.data?.concessionLimitPaise;
   return (

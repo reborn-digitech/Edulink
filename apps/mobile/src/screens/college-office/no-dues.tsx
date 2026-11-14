@@ -13,7 +13,7 @@ import { useRole } from "@/lib/session";
 import { useTheme } from "@/lib/theme";
 import { Chips, Notice } from "../staff/shared";
 import { Pill } from "../family/shared";
-import { ModuleOffScreen, OfflineDecisionNote, money, useModuleOn } from "@/screens/shared/desk";
+import { OfflineDecisionNote, money } from "@/screens/shared/desk";
 
 type NoDuesDesk = z.infer<typeof noDuesDeskSchema>;
 type NoDuesEvent = z.infer<typeof noDuesEventSchema>;
@@ -37,12 +37,11 @@ export function NoDuesDeskScreen() {
   usePrivateScreen();
   const t = useT();
   const role = useRole();
-  const on = useModuleOn("ACADEMICS");
+  // No module gate (TA-352): the no-dues doors need none (api-catalog/accounts.ts), so ACADEMICS off leaves this screen as it is on the web.
   const [event, setEvent] = useState<NoDuesEvent>("EXAM_FORM");
   const [chosen, setChosen] = useState<string | null>(null);
   const [notice, setNotice] = useState<{ tone: "ok" | "danger"; text: string } | null>(null);
-  const list = useQuery({ queryKey: ["accounts", "no-dues", "list", event], enabled: on, queryFn: async () => noDuesListSchema.parse(unwrap(await api().get(`/api/v1/accounts/no-dues?event=${event}`))) });
-  if (!on) return <ModuleOffScreen title={t("collegeOffice.navNoDues")} module="ACADEMICS" />;
+  const list = useQuery({ queryKey: ["accounts", "no-dues", "list", event], queryFn: async () => noDuesListSchema.parse(unwrap(await api().get(`/api/v1/accounts/no-dues?event=${event}`))) });
   const items = list.data?.items ?? [];
   return (
     <Screen title={t("collegeOffice.navNoDues")} description={t("deskParity.noDuesIntro")} refreshing={list.isRefetching} onRefresh={() => void list.refetch()}>

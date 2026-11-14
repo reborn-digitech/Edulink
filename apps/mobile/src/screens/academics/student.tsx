@@ -7,7 +7,8 @@ import { api } from "@/lib/api";
 import { unwrap } from "@/lib/query";
 import { useT } from "@/lib/i18n";
 import { Chips, Notice } from "../staff/shared";
-import { CONDONATION_KEY, GROUND_KEY, INTERNAL_KIND_KEY, LECTURE_KIND_KEY, clock, projectionText, standingText } from "./words";
+import { useSessionIfAny } from "@/lib/session";
+import { CONDONATION_KEY, GROUND_KEY, INTERNAL_KIND_KEY, clock, lectureKindLabel, projectionText, standingText } from "./words";
 
 /** One course's attendance as a row: attended of held, the percentage, the standing and how many more may be missed. */
 export function AttendanceRows({ rows }: { rows: CourseAttendance[] }) {
@@ -36,6 +37,9 @@ export function StudentAcademicsScreen() {
   const t = useT();
   const router = useRouter();
   const qc = useQueryClient();
+  // The college's own word for a lecture or a lab (TA-472): /api/v1/me's streams.
+  const session = useSessionIfAny();
+  const streams = session?.status === "signed-in" ? (session.me.streams ?? []) : [];
   const mine = useQuery({ queryKey: ["academics", "mine"], queryFn: async () => studentAcademicsSchema.parse(unwrap(await api().get("/api/v1/academics/mine"))) });
   const [course, setCourse] = useState<string>("");
   const [ground, setGround] = useState<string>("MEDICAL");
@@ -63,7 +67,7 @@ export function StudentAcademicsScreen() {
           <Card title={t("academics.todayLectures")}>
             {a.today.length === 0 ? <Text tone="muted">{t("academics.noLectures")}</Text> : null}
             {a.today.map((c) => (
-              <Row key={c.slotId} title={`${clock(c.startMinute, c.endMinute)} · ${c.courseCode}`} caption={[t(LECTURE_KIND_KEY[c.kind]!), c.roomName, c.facultyName].filter(Boolean).join(" · ")} />
+              <Row key={c.slotId} title={`${clock(c.startMinute, c.endMinute)} · ${c.courseCode}`} caption={[lectureKindLabel(c.kind, t, streams), c.roomName, c.facultyName].filter(Boolean).join(" · ")} />
             ))}
             <Button label={t("academics.registrationTitle")} variant="secondary" onPress={() => router.push("/(app)/registration" as never)} />
           </Card>

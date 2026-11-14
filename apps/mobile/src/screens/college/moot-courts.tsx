@@ -102,7 +102,7 @@ export function MootCourtsScreen() {
   );
 }
 
-/** The form for a new moot, or for correcting `editing`: at least two named teams, each with its outcome and students. */
+/** The form for a new moot, or for correcting `editing`: two named teams at least for an intra-college moot, one for an inter-college or national one (TA-491), each with its outcome and students. */
 function MootForm({ editing, students, onDone, onCancel }: { editing: Moot | null; students: Moots["students"]; onDone: () => unknown; onCancel: () => void }) {
   const t = useT();
   const th = useTheme();
@@ -115,7 +115,9 @@ function MootForm({ editing, students, onDone, onCancel }: { editing: Moot | nul
   const [notes, setNotes] = useState(editing?.judgeNotes ?? "");
   const setTeam = (i: number, next: Partial<Team>) => setTeams((all) => all.map((x, j) => (j === i ? { ...x, ...next } : x)));
   const named = teams.filter((x) => x.name.trim().length > 0).length;
-  const ready = name.trim().length >= 2 && /^\d{4}-\d{2}-\d{2}$/.test(day) && named >= 2 && named === teams.length;
+  // An intra-college moot is between the college's own teams; at an inter-college or national moot the college may send one (TA-491).
+  const fewest = kind === "INTRA" ? 2 : 1;
+  const ready = name.trim().length >= 2 && /^\d{4}-\d{2}-\d{2}$/.test(day) && named >= fewest && named === teams.length;
   const save = useMutation({
     mutationFn: async () =>
       streamRecordsIdSchema.parse(
@@ -141,7 +143,7 @@ function MootForm({ editing, students, onDone, onCancel }: { editing: Moot | nul
   return (
     <Card title={t(editing ? "streamRecords.moots.correctTitle" : "streamRecords.moots.addTitle")}>
       <Text variant="sm" tone="muted">
-        {t("streamRecords.moots.addBody")}
+        {t("streamRecords.moots.addBodyByKind")}
       </Text>
       <Field label={t("streamRecords.moots.fieldName")} value={name} onChangeText={setName} maxLength={160} />
       <Field label={t("streamRecords.moots.fieldDay")} value={day} onChangeText={setDay} placeholder="YYYY-MM-DD" autoCapitalize="none" keyboardType="numbers-and-punctuation" />
@@ -161,11 +163,11 @@ function MootForm({ editing, students, onDone, onCancel }: { editing: Moot | nul
               onToggle={(v) => setTeam(i, { membershipIds: team.membershipIds.includes(v) ? team.membershipIds.filter((x) => x !== v) : [...team.membershipIds, v] })}
             />
           ) : null}
-          {teams.length > 2 ? <Button label={t("streamRecords.moots.removeTeam", { n: i + 1 })} variant="ghost" onPress={() => setTeams((all) => all.filter((_, j) => j !== i))} /> : null}
+          {teams.length > fewest ? <Button label={t("streamRecords.moots.removeTeam", { n: i + 1 })} variant="ghost" onPress={() => setTeams((all) => all.filter((_, j) => j !== i))} /> : null}
         </View>
       ))}
       {teams.length < 40 ? <Button label={t("streamRecords.moots.addTeam")} variant="secondary" onPress={() => setTeams((all) => [...all, blankTeam()])} /> : null}
-      {named < 2 ? <Text tone="warn">{t("streamRecords.moots.needTwoTeams")}</Text> : null}
+      {named < fewest ? <Text tone="warn">{t(fewest === 2 ? "streamRecords.moots.needTwoTeams" : "streamRecords.moots.needOneTeam")}</Text> : null}
       <Field label={t("streamRecords.moots.fieldResult")} value={result} onChangeText={setResult} maxLength={400} />
       <Field label={t("streamRecords.moots.fieldNotes")} value={notes} onChangeText={setNotes} maxLength={2000} multiline />
       <Button label={t(editing ? "streamRecords.moots.saveCorrection" : "streamRecords.moots.save")} busy={save.isPending} disabled={!ready} onPress={() => save.mutate()} />

@@ -106,14 +106,25 @@ function InternshipCard({ item, canDecide, supervisors, creditsMax, onDone }: { 
   const supervisor = picked ?? supervisors[0]?.membershipId ?? "";
   const setSupervisor = (next: string) => setPicked(next);
   const [reason, setReason] = useState("");
-  const [grade, setGrade] = useState<string>(item.industryGrade ?? "");
-  const [visit, setVisit] = useState(item.facultyVisitAt?.slice(0, 10) ?? "");
-  const [viva, setViva] = useState(item.vivaMarks === null ? "" : String(item.vivaMarks));
+  // What this person typed, null while a field is untouched (TA-153): an untouched field shows the internship as the server
+  // last sent it, so a refresh after a colleague's grade or viva shows theirs, and Save sends only the fields changed here.
+  const [gradeTyped, setGrade] = useState<string | null>(null);
+  const [visitTyped, setVisit] = useState<string | null>(null);
+  const [vivaTyped, setViva] = useState<string | null>(null);
+  const storedGrade = item.industryGrade ?? "";
+  const storedVisit = item.facultyVisitAt?.slice(0, 10) ?? "";
+  const storedViva = item.vivaMarks === null ? "" : String(item.vivaMarks);
+  const grade = gradeTyped ?? storedGrade;
+  const visit = visitTyped ?? storedVisit;
+  const viva = vivaTyped ?? storedViva;
   const [credits, setCredits] = useState("");
   const [error, setError] = useState<string | null>(null);
   const settle = (text: string) => {
     setMode("none");
     setError(null);
+    setGrade(null);
+    setVisit(null);
+    setViva(null);
     onDone({ tone: "ok", text });
     void qc.invalidateQueries({ queryKey: ["placement"] });
   };
@@ -129,7 +140,14 @@ function InternshipCard({ item, canDecide, supervisors, creditsMax, onDone }: { 
       if (viva.trim() !== "" && (vivaN === null || vivaN < 0 || vivaN > 100)) throw new Error(t("deskParity.checkViva"));
       if (visit.trim() !== "" && !DATE_KEY.test(visit.trim())) throw new Error(t("deskParity.checkDate"));
       if (credits.trim() !== "" && (creditsN === null || creditsN < 1 || creditsN > creditsMax)) throw new Error(t("deskParity.checkCredits", { max: creditsMax }));
-      return internshipViewSchema.parse(unwrap(await api().post(`/api/v1/placement/internships/${item.id}/evaluate`, { industryGrade: grade || null, facultyVisitOn: visit.trim() || null, vivaMarks: vivaN, ...(canDecide && creditsN !== null ? { credits: creditsN } : {}) })));
+      // A field left as the server sent it is left out, which the door reads as "keep" (TA-153); one changed here is sent, blank as clear.
+      const body = {
+        ...(grade !== storedGrade ? { industryGrade: grade || null } : {}),
+        ...(visit.trim() !== storedVisit ? { facultyVisitOn: visit.trim() || null } : {}),
+        ...(viva.trim() !== storedViva ? { vivaMarks: vivaN } : {}),
+        ...(canDecide && creditsN !== null ? { credits: creditsN } : {}),
+      };
+      return internshipViewSchema.parse(unwrap(await api().post(`/api/v1/placement/internships/${item.id}/evaluate`, body)));
     },
     onSuccess: (r) => settle(r.status === "CREDITED" && r.credits !== null ? t("placement.internshipCredited", { credits: r.credits }) : t("placement.internshipEvaluated")),
     onError: (e: Error) => setError(e.message),
@@ -192,7 +210,17 @@ function InternshipCard({ item, canDecide, supervisors, creditsMax, onDone }: { 
           {canDecide ? <Field label={t("placement.fieldCredits")} hint={t("deskParity.creditsHint", { max: creditsMax })} value={credits} onChangeText={setCredits} keyboardType="number-pad" maxLength={2} /> : null}
           <View style={{ flexDirection: "row", flexWrap: "wrap", gap: th.space[2] }}>
             <Button label={t("common.save")} disabled={evaluate.isPending} busy={evaluate.isPending} onPress={() => evaluate.mutate()} />
-            <Button label={t("common.cancel")} variant="secondary" disabled={evaluate.isPending} onPress={() => setMode("none")} />
+            <Button
+              label={t("common.cancel")}
+              variant="secondary"
+              disabled={evaluate.isPending}
+              onPress={() => {
+                setMode("none");
+                setGrade(null);
+                setVisit(null);
+                setViva(null);
+              }}
+            />
           </View>
         </>
       ) : null}

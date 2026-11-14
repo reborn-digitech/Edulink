@@ -37,10 +37,13 @@ export function TpoDriveScreen() {
   const { driveId } = useLocalSearchParams<{ driveId?: string }>();
   const [notice, setNotice] = useState<{ tone: "ok" | "danger"; text: string } | null>(null);
   const [offerFor, setOfferFor] = useState<DriveApplicationView | null>(null);
+  // "Not through" is asked first (TA-350): the student is told at once and the phone cannot record it again.
+  const [rejecting, setRejecting] = useState<string | null>(null);
   const query = useQuery({ queryKey: ["placement", "drive", driveId], enabled: Boolean(driveId), queryFn: async () => driveViewSchema.parse(unwrap(await api().get(`/api/v1/placement/drives/${driveId}`))) });
   const record = useMutation({
     mutationFn: async (v: { round: number; studentMembershipId: string; outcome: RoundOutcome }) => roundResultsResultSchema.parse(unwrap(await api().post(`/api/v1/placement/drives/${driveId}/results`, { round: v.round, results: [{ studentMembershipId: v.studentMembershipId, outcome: v.outcome }] }))),
     onSuccess: (r) => {
+      setRejecting(null);
       setNotice({ tone: "ok", text: t("placement.resultsSaved", { count: r.saved }) });
       void qc.invalidateQueries({ queryKey: ["placement"] });
     },
@@ -82,10 +85,11 @@ export function TpoDriveScreen() {
                   {next !== null ? (
                     <View style={{ flexDirection: "row", gap: th.space[2], flexWrap: "wrap" }}>
                       <Button label={`${roundLabel(next)}: ${t("placement.outcomePASSED")}`} disabled={record.isPending} onPress={() => record.mutate({ round: next, studentMembershipId: a.studentMembershipId, outcome: "PASSED" })} />
-                      <Button label={t("placement.outcomeREJECTED")} variant="secondary" disabled={record.isPending} onPress={() => record.mutate({ round: next, studentMembershipId: a.studentMembershipId, outcome: "REJECTED" })} />
+                      <Button label={t("placement.outcomeREJECTED")} variant="secondary" disabled={record.isPending} onPress={() => setRejecting(a.studentMembershipId)} />
                       <Button label={t("placement.outcomeABSENT")} variant="secondary" disabled={record.isPending} onPress={() => record.mutate({ round: next, studentMembershipId: a.studentMembershipId, outcome: "ABSENT" })} />
                     </View>
                   ) : null}
+                  {next !== null && rejecting === a.studentMembershipId ? <Confirm question={t("placement.confirmReject", { name: a.studentName })} confirmLabel={t("placement.outcomeREJECTED")} busy={record.isPending} onConfirm={() => record.mutate({ round: next, studentMembershipId: a.studentMembershipId, outcome: "REJECTED" })} onCancel={() => setRejecting(null)} /> : null}
                   {d.hosted && offerable(a) ? <Button label={t("placement.offerTitle")} accessibilityLabel={`${t("placement.offerTitle")}: ${a.studentName}`} variant="ghost" onPress={() => setOfferFor(a)} /> : null}
                 </View>
               );

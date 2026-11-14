@@ -2,14 +2,15 @@ import { useState } from "react";
 import { View } from "react-native";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { recruiterCompanySchema, recruiterDriveSchema, recruiterDrivesSchema, recruiterMeSchema, roundResultsResultSchema } from "@edulink/contracts";
+import { PLACEMENT_SECTORS, recruiterCompanySchema, recruiterDriveSchema, recruiterDrivesSchema, recruiterMeSchema, roundResultsResultSchema, type PlacementSector } from "@edulink/contracts";
 import { Button, Card, Empty, Failed, Field, Loading, Row, Screen, Text } from "@/components";
 import { api } from "@/lib/api";
 import { unwrap } from "@/lib/query";
 import { useT } from "@/lib/i18n";
 import { useTheme } from "@/lib/theme";
-import { Notice } from "../staff/shared";
-import { DRIVE_STATUS_KEY, applicationLabel, packageRange } from "./words";
+import { Confirm } from "../family/shared";
+import { MultiChips, Notice } from "../staff/shared";
+import { DRIVE_STATUS_KEY, SECTOR_KEY, applicationLabel, packageRange } from "./words";
 
 /**
  * The recruiter on the phone (the placement module, 4 Oct 2026), the web's
@@ -26,11 +27,14 @@ export function RecruiterPlacementHome() {
   const [name, setName] = useState("");
   const [identifier, setIdentifier] = useState("");
   const [contact, setContact] = useState("");
+  // The company's sectors, as the web's form asks (TA-351): one to five of the contracts' list, never "Other" by default.
+  const [sectors, setSectors] = useState<PlacementSector[]>([]);
+  const toggleSector = (s: PlacementSector) => setSectors((all) => (all.includes(s) ? all.filter((x) => x !== s) : all.length < 5 ? [...all, s] : all));
   const [notice, setNotice] = useState<{ tone: "ok" | "danger"; text: string } | null>(null);
   const me = useQuery({ queryKey: ["recruiter", "me"], queryFn: async () => recruiterMeSchema.parse(unwrap(await api().get("/api/v1/recruiter/me"))) });
   const drives = useQuery({ queryKey: ["recruiter", "drives"], queryFn: async () => recruiterDrivesSchema.parse(unwrap(await api().get("/api/v1/recruiter/drives"))) });
   const register = useMutation({
-    mutationFn: async () => recruiterCompanySchema.parse(unwrap(await api().post("/api/v1/recruiter/company", { name: name || me.data?.companyName || "", identifier, sectors: ["OTHER"], pointOfContact: contact }))),
+    mutationFn: async () => recruiterCompanySchema.parse(unwrap(await api().post("/api/v1/recruiter/company", { name: name || me.data?.companyName || "", identifier, sectors, pointOfContact: contact }))),
     onSuccess: () => {
       setNotice({ tone: "ok", text: t("placement.companyRegistered") });
       void qc.invalidateQueries({ queryKey: ["recruiter"] });
@@ -59,7 +63,8 @@ export function RecruiterPlacementHome() {
             <Field label={t("placement.fieldCompanyName")} value={name} placeholder={me.data?.companyName} onChangeText={setName} />
             <Field label={t("placement.fieldIdentifier")} hint={t("placement.fieldIdentifierHint")} autoCapitalize="characters" value={identifier} onChangeText={setIdentifier} />
             <Field label={t("placement.fieldPointOfContact")} value={contact} onChangeText={setContact} />
-            <Button label={t("placement.registerCompany")} busy={register.isPending} disabled={!identifier.trim() || !contact.trim()} onPress={() => register.mutate()} />
+            <MultiChips label={t("placement.fieldSectors")} values={sectors} options={PLACEMENT_SECTORS.map((s) => ({ value: s, label: t(SECTOR_KEY[s]) }))} onToggle={toggleSector} />
+            <Button label={t("placement.registerCompany")} busy={register.isPending} disabled={!identifier.trim() || !contact.trim() || sectors.length === 0} onPress={() => register.mutate()} />
           </View>
         </Card>
       ) : null}
@@ -86,10 +91,13 @@ export function RecruiterDriveScreen() {
   const qc = useQueryClient();
   const { driveId } = useLocalSearchParams<{ driveId?: string }>();
   const [notice, setNotice] = useState<{ tone: "ok" | "danger"; text: string } | null>(null);
+  // "Not through" is asked first (TA-350): the student is told at once and the phone cannot record it again.
+  const [rejecting, setRejecting] = useState<string | null>(null);
   const query = useQuery({ queryKey: ["recruiter", "drive", driveId], enabled: Boolean(driveId), queryFn: async () => recruiterDriveSchema.parse(unwrap(await api().get(`/api/v1/recruiter/drives/${driveId}`))) });
   const record = useMutation({
     mutationFn: async (v: { round: number; studentMembershipId: string; outcome: "PASSED" | "REJECTED" }) => roundResultsResultSchema.parse(unwrap(await api().post(`/api/v1/placement/drives/${driveId}/results`, { round: v.round, results: [{ studentMembershipId: v.studentMembershipId, outcome: v.outcome }] }))),
     onSuccess: (r) => {
+      setRejecting(null);
       setNotice({ tone: "ok", text: t("placement.resultsSaved", { count: r.saved }) });
       void qc.invalidateQueries({ queryKey: ["recruiter"] });
     },
@@ -121,9 +129,10 @@ export function RecruiterDriveScreen() {
                   {open ? (
                     <View style={{ flexDirection: "row", gap: th.space[2], flexWrap: "wrap" }}>
                       <Button label={`${next === 0 ? t("placement.roundShortlist") : t("placement.roundN", { round: next })}: ${t("placement.outcomePASSED")}`} disabled={record.isPending} onPress={() => record.mutate({ round: next, studentMembershipId: a.studentMembershipId, outcome: "PASSED" })} />
-                      <Button label={t("placement.outcomeREJECTED")} variant="secondary" disabled={record.isPending} onPress={() => record.mutate({ round: next, studentMembershipId: a.studentMembershipId, outcome: "REJECTED" })} />
+                      <Button label={t("placement.outcomeREJECTED")} variant="secondary" disabled={record.isPending} onPress={() => setRejecting(a.studentMembershipId)} />
                     </View>
                   ) : null}
+                  {open && rejecting === a.studentMembershipId ? <Confirm question={t("placement.confirmReject", { name: a.studentName })} confirmLabel={t("placement.outcomeREJECTED")} busy={record.isPending} onConfirm={() => record.mutate({ round: next, studentMembershipId: a.studentMembershipId, outcome: "REJECTED" })} onCancel={() => setRejecting(null)} /> : null}
                 </View>
               );
             })}

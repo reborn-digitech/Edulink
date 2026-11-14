@@ -101,6 +101,8 @@ describe("a student's placement on the phone (4 Oct 2026)", () => {
     await fireEvent.press(screen.getByRole("button", { name: "Accept" }));
     expect(await screen.findByText("Offer accepted. Congratulations.")).toBeTruthy();
     await fireEvent.press(screen.getByRole("button", { name: "Withdraw" }));
+    // Asked first (TA-350): the confirm button carries the same word.
+    await fireEvent.press(screen.getAllByRole("button", { name: "Withdraw" })[0]!);
     await waitFor(() => expect(calls().some((c) => c.line === "POST /api/v1/student/placement/drives/d2/withdraw")).toBe(true));
     await fireEvent.press(screen.getByText("ZZ Percentages and profit"));
     expect(mockRouter.push).toHaveBeenCalledWith({ pathname: "/(app)/quiz", params: { mode: "topic", slug: "zz-placement-aptitude-percentages" } });
@@ -121,6 +123,9 @@ describe("a student's placement on the phone (4 Oct 2026)", () => {
       "POST /api/v1/student/placement/offers/o1": () => json({ error: "One offer each: a second needs the dream flag.", code: "CONFLICT" }, 409),
     }, { me: atCollege("STUDENT", ON) });
     await fireEvent.press(await screen.findByRole("button", { name: "Decline" }));
+    // Declining is asked first (TA-350); the confirm button is the last "Decline".
+    const declines = screen.getAllByRole("button", { name: "Decline" });
+    await fireEvent.press(declines[declines.length - 1]!);
     expect(await screen.findByText("One offer each: a second needs the dream flag.")).toBeTruthy();
   });
 });
@@ -150,9 +155,12 @@ describe("the recruiter on the phone (4 Oct 2026)", () => {
     expect(register.props.accessibilityState?.disabled).toBe(true);
     await fireEvent.changeText(screen.getByLabelText("GSTIN or CIN"), "27AAZCZ0001Z1ZX");
     await fireEvent.changeText(screen.getByLabelText("Point of contact (name, phone or email)"), "ZZ Nikhil, 98000 00000");
+    // The sectors are the recruiter's to choose (TA-351), never "Other" by default.
+    expect(screen.getByRole("button", { name: "Register your company" }).props.accessibilityState?.disabled).toBe(true);
+    await fireEvent.press(screen.getByText("IT and software"));
     await fireEvent.press(screen.getByRole("button", { name: "Register your company" }));
     await waitFor(() => expect(calls().some((c) => c.line === "POST /api/v1/recruiter/company")).toBe(true));
-    expect(calls().find((c) => c.line === "POST /api/v1/recruiter/company")?.body).toEqual({ name: "ZZ Zeta Analytics", identifier: "27AAZCZ0001Z1ZX", sectors: ["OTHER"], pointOfContact: "ZZ Nikhil, 98000 00000" });
+    expect(calls().find((c) => c.line === "POST /api/v1/recruiter/company")?.body).toEqual({ name: "ZZ Zeta Analytics", identifier: "27AAZCZ0001Z1ZX", sectors: ["IT_SOFTWARE"], pointOfContact: "ZZ Nikhil, 98000 00000" });
     expect(await screen.findByText("No drives yet")).toBeTruthy();
   });
 

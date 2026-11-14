@@ -1,5 +1,5 @@
 import type { TranslationKey } from "@edulink/i18n";
-import type { CourseAttendance } from "@edulink/contracts";
+import { presetUnion, type CourseAttendance, type StreamCode } from "@edulink/contracts";
 
 /** The academics module's coded words on the phone, as the web's components/academics/parts.tsx has them. */
 export const MARK_KEY: Record<"PRESENT" | "ABSENT" | "LATE", TranslationKey> = { PRESENT: "academics.markPRESENT", ABSENT: "academics.markABSENT", LATE: "academics.markLATE" };
@@ -18,6 +18,22 @@ export function clock(start: number, end: number): string {
 }
 
 type T = (key: TranslationKey, vars?: Record<string, string | number>) => string;
+
+/**
+ * A lecture's kind in the college's own words (TA-472), the web's
+ * lectureKindLabel through tv(): an architecture college's lecture is a
+ * studio, a pharmacy college's lab a practical (STREAM_PRESETS[…].vocabulary);
+ * a college of several streams, or none recorded, keeps the general word. The
+ * streams are /api/v1/me's.
+ */
+export function lectureKindLabel(kind: string, t: T, streams: readonly StreamCode[] = []): string {
+  if (kind === "LECTURE" || kind === "LAB") {
+    const word = kind === "LECTURE" ? "lecture" : "lab";
+    const variant = presetUnion(streams).vocabulary[word] ?? word;
+    return t(`streams.word.${variant}` as TranslationKey);
+  }
+  return t(LECTURE_KIND_KEY[kind] ?? "academics.lectureLECTURE");
+}
 
 /** "may miss 3 more", "on the line", or "4 short": the web's projectionText. */
 export function projectionText(t: T, a: Pick<CourseAttendance, "canMiss" | "remaining" | "held">): string {

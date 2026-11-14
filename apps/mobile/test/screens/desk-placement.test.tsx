@@ -160,7 +160,7 @@ describe("students' work on the phone: internships and projects", () => {
     await fireEvent.press(screen.getByRole("radio", { name: "A" }));
     await fireEvent.changeText(screen.getByLabelText("Viva marks"), "80");
     await fireEvent.press(screen.getByRole("button", { name: "Save" }));
-    await waitFor(() => expect(calls().find((c) => c.line === "POST /api/v1/placement/internships/i3/evaluate")?.body).toEqual({ industryGrade: "A", facultyVisitOn: null, vivaMarks: 80 }));
+    await waitFor(() => expect(calls().find((c) => c.line === "POST /api/v1/placement/internships/i3/evaluate")?.body).toEqual({ industryGrade: "A", vivaMarks: 80 }));
     expect(await screen.findByText("The evaluation is saved.")).toBeTruthy();
     await fireEvent.press(screen.getByRole("button", { name: "Record a review: ZZ Solar tracker" }));
     await fireEvent.changeText(screen.getByLabelText("Review"), "ZZ On track");

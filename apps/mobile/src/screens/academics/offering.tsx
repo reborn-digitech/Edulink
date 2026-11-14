@@ -3,7 +3,8 @@ import { Linking, View } from "react-native";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { academicsChangedResultSchema, courseFileSchema, internalMarksResultSchema, internalSheetSchema, type CourseFile } from "@edulink/contracts";
 import { Button, Card, Failed, Field, Loading, Row, Screen, Text } from "@/components";
-import { api, API_BASE } from "@/lib/api";
+import { api } from "@/lib/api";
+import { openFile } from "@/lib/open-file";
 import { unwrap } from "@/lib/query";
 import { webLinkOrNull } from "@/lib/links";
 import { useT } from "@/lib/i18n";
@@ -44,8 +45,17 @@ export function OfferingScreen({ offeringId, initialTab = "file" }: { offeringId
 
 function FileView({ f }: { f: CourseFile }) {
   const t = useT();
+  // A stored file opens through a five-minute link the API signs (TA-339): the phone's browser has no token of its own.
+  const [fileError, setFileError] = useState<string | null>(null);
+  const openStored = (fileId: string) => {
+    setFileError(null);
+    void openFile(fileId, t("common.tryAgain")).then((error) => {
+      if (error) setFileError(error);
+    });
+  };
   return (
     <>
+      {fileError ? <Notice tone="danger" text={fileError} /> : null}
       <Card title={t("academics.planTitle")}>
         <Text variant="sm" tone="muted">{t("academics.coverageLine", { taught: f.taught, planned: f.plan.length, expected: f.expected, elapsed: f.termElapsedPercent })}</Text>
         {f.behind ? <Notice tone="danger" text={t("academics.behindBody")} /> : null}
@@ -64,7 +74,7 @@ function FileView({ f }: { f: CourseFile }) {
               key={i.id}
               title={i.title}
               caption={[t(ITEM_KEY[i.kind]!), i.coCodes.join(", ")].filter(Boolean).join(" · ")}
-              onPress={link ? () => void Linking.openURL(link) : i.fileId ? () => void Linking.openURL(`${API_BASE}/api/files/${encodeURIComponent(i.fileId!)}`) : undefined}
+              onPress={link ? () => void Linking.openURL(link) : i.fileId ? () => openStored(i.fileId!) : undefined}
             />
           );
         })}
@@ -85,20 +95,26 @@ function MarksView({ offeringId }: { offeringId: string }) {
   const th = useTheme();
   const qc = useQueryClient();
   const [componentId, setComponentId] = useState<string | null>(null);
-  const [typed, setTyped] = useState<Record<string, string>>({});
+  // What was typed, by component and then by student (TA-154): choosing another component shows its own stored marks, and Save never writes one component's typing to another.
+  const [typed, setTyped] = useState<Record<string, Record<string, string>>>({});
   const [notice, setNotice] = useState<{ tone: "ok" | "danger"; text: string } | null>(null);
   const sheet = useQuery({ queryKey: ["academics", "internal", offeringId], queryFn: async () => internalSheetSchema.parse(unwrap(await api().get(`/api/v1/academics/offerings/${offeringId}/internal`))) });
   const refresh = () => void qc.invalidateQueries({ queryKey: ["academics"] });
   const save = useMutation({
-    mutationFn: async (id: string) => {
-      const entries = Object.entries(typed)
-        .filter(([, v]) => v.trim() !== "")
-        .map(([studentMembershipId, v]) => ({ studentMembershipId, marks: /^ab$/i.test(v.trim()) ? null : Number(v.trim()) }));
-      return internalMarksResultSchema.parse(unwrap(await api().post(`/api/v1/academics/offerings/${offeringId}/internal/marks`, { componentId: id, entries })));
+    mutationFn: async (input: { id: string; max: number }) => {
+      const rows = Object.entries(typed[input.id] ?? {}).filter(([, v]) => v.trim() !== "");
+      // A mark that is not a mark is never sent (TA-056): Number("7..5") is NaN, which JSON writes as null, and null is absent.
+      if (rows.some(([, v]) => markTypingProblem(v, input.max))) throw new Error(t("academics.markInvalid", { max: input.max }));
+      const entries = rows.map(([studentMembershipId, v]) => ({ studentMembershipId, marks: /^ab$/i.test(v.trim()) ? null : Number(v.trim()) }));
+      return internalMarksResultSchema.parse(unwrap(await api().post(`/api/v1/academics/offerings/${offeringId}/internal/marks`, { componentId: input.id, entries })));
     },
-    onSuccess: () => {
+    onSuccess: (_r, input) => {
       setNotice({ tone: "ok", text: t("academics.marksSaved") });
-      setTyped({});
+      setTyped((m) => {
+        const next = { ...m };
+        delete next[input.id];
+        return next;
+      });
       refresh();
     },
     onError: (e: Error) => setNotice({ tone: "danger", text: e.message }),
@@ -119,6 +135,10 @@ function MarksView({ offeringId }: { offeringId: string }) {
   const s = sheet.data;
   const open = s.components.filter((k) => !k.released);
   const chosen = componentId ?? open[0]?.id ?? null;
+  const chosenMax = s.components.find((k) => k.id === chosen)?.maxMarks ?? 0;
+  const typedHere = chosen ? (typed[chosen] ?? {}) : {};
+  const typedCount = Object.values(typedHere).filter((v) => v.trim() !== "").length;
+  const anyInvalid = Object.values(typedHere).some((v) => markTypingProblem(v, chosenMax));
   return (
     <View style={{ gap: th.space[3] }}>
       {notice ? <Notice text={notice.text} tone={notice.tone} /> : null}
@@ -149,13 +169,28 @@ function MarksView({ offeringId }: { offeringId: string }) {
               key={st.studentMembershipId}
               label={`${st.rollNumber ?? ""} ${st.name}`.trim()}
               keyboardType="decimal-pad"
-              value={typed[st.studentMembershipId] ?? (st.marks[chosen] === undefined ? "" : st.marks[chosen] === null ? "AB" : String(st.marks[chosen]))}
-              onChangeText={(v) => setTyped((m) => ({ ...m, [st.studentMembershipId]: v }))}
+              value={typedHere[st.studentMembershipId] ?? (st.marks[chosen] === undefined ? "" : st.marks[chosen] === null ? "AB" : String(st.marks[chosen]))}
+              error={markTypingProblem(typedHere[st.studentMembershipId] ?? "", chosenMax) ? t("academics.markInvalid", { max: chosenMax }) : undefined}
+              onChangeText={(v) => setTyped((m) => ({ ...m, [chosen]: { ...(m[chosen] ?? {}), [st.studentMembershipId]: v } }))}
             />
           ))}
-          <Button label={t("academics.saveMarks")} busy={save.isPending} onPress={() => save.mutate(chosen)} />
+          <Button label={t("academics.saveMarks")} busy={save.isPending} disabled={typedCount === 0 || anyInvalid} onPress={() => save.mutate({ id: chosen, max: chosenMax })} />
         </Card>
       ) : null}
     </View>
   );
+}
+
+/**
+ * Whether typed text is not a mark the sheet can take (TA-056): blank is
+ * nothing typed and AB is absent; anything else must be a number with at most
+ * one decimal place, from nought to the component's maximum. "7..5", "7,5" or
+ * "." are refused here rather than sent as NaN, which JSON writes as null,
+ * the server's absent.
+ */
+export function markTypingProblem(raw: string, max: number): boolean {
+  const v = raw.trim();
+  if (v === "" || /^ab$/i.test(v)) return false;
+  if (!/^\d+(\.\d)?$/.test(v)) return true;
+  return Number(v) > max;
 }

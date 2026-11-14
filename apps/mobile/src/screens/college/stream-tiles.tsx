@@ -1,7 +1,7 @@
 import { View } from "react-native";
 import { useRouter } from "expo-router";
 import { useQuery } from "@tanstack/react-query";
-import { presetUnion, streamRecordsSummarySchema, type HomeTileCode, type NotBuiltCode, type SchoolModuleCode, type StreamCode, type StreamRecordsSummary } from "@edulink/contracts";
+import { placementSummarySchema, presetUnion, streamRecordsSummarySchema, type HomeTileCode, type NotBuiltCode, type SchoolModuleCode, type StreamCode, type StreamRecordsSummary } from "@edulink/contracts";
 import type { TranslationKey } from "@edulink/i18n";
 import { Card, Row, Text } from "@/components";
 import { api } from "@/lib/api";
@@ -64,7 +64,13 @@ const OPENS: Partial<Record<HomeTileCode, Partial<Record<"ADMIN" | "PRINCIPAL", 
   labs: { ADMIN: "/(app)/lab-desk", PRINCIPAL: "/(app)/lab-desk" },
   teachingPractice: { ADMIN: "/(app)/teaching-practice", PRINCIPAL: "/(app)/teaching-practice" },
   clinicalPostings: { ADMIN: "/(app)/clinical-desk", PRINCIPAL: "/(app)/clinical-desk" },
+  // The placement cell at a glance, which the office and the head have on the phone (TA-492): its drives and what waits, internships among it.
+  placement: { ADMIN: "/(app)/placement-cell", PRINCIPAL: "/(app)/placement-cell" },
+  internships: { ADMIN: "/(app)/placement-cell", PRINCIPAL: "/(app)/placement-cell" },
 };
+
+/** A drive the web's home counts as open (stream-home.ts's OPEN_DRIVES). */
+const OPEN_DRIVES = ["OPEN", "SHORTLISTING", "ROUNDS", "OFFERS"];
 
 /** The figures the stream-records summary gives a tile, as the web's home words them. */
 export function tileFigure(tile: HomeTileCode, s: StreamRecordsSummary, t: (key: TranslationKey, values?: Record<string, string | number>) => string): string | null {
@@ -96,9 +102,17 @@ export function StreamTilesCard({ role }: { role: "ADMIN" | "PRINCIPAL" }) {
     enabled: streams.length > 0 && modules.includes("ACADEMICS"),
     queryFn: async () => streamRecordsSummarySchema.parse(unwrap(await api().get("/api/v1/stream-records/summary"))),
   });
-  if (streams.length === 0) return null;
   const preset = presetUnion(streams);
+  // The placement tile's figure, "Drives open: n" as on the web (TA-492), from the cell's home the placement-cell screen reads.
+  const cell = useQuery({
+    queryKey: ["placement", "summary"],
+    enabled: streams.length > 0 && preset.homeTiles.includes("placement") && modules.includes("PLACEMENT"),
+    queryFn: async () => placementSummarySchema.parse(unwrap(await api().get("/api/v1/placement/summary"))),
+  });
+  if (streams.length === 0) return null;
   const s = summary.data;
+  // The college's own drives only, as the web counts them: the cell's list also holds other colleges' pooled drives it is a guest of.
+  const drivesOpen = cell.data ? cell.data.drives.filter((x) => x.hosted && OPEN_DRIVES.includes(x.status)).length : null;
   return (
     <View style={{ gap: th.space[3] }} testID="stream-tiles">
       <Card title={t("streams.homeTitle")}>
@@ -106,7 +120,7 @@ export function StreamTilesCard({ role }: { role: "ADMIN" | "PRINCIPAL" }) {
         {preset.homeTiles.map((tile) => {
           const meta = TILE[tile];
           const off = meta.module ? !modules.includes(meta.module) : false;
-          const note = !meta.built ? t("streams.tileComing") : off ? t("streams.tileOff") : s ? tileFigure(tile, s, t) : null;
+          const note = !meta.built ? t("streams.tileComing") : off ? t("streams.tileOff") : tile === "placement" && drivesOpen !== null ? t("streams.figure.placement", { count: drivesOpen }) : s ? tileFigure(tile, s, t) : null;
           const target = !off && meta.built ? OPENS[tile]?.[role] : undefined;
           return <Row key={tile} title={t(meta.key)} caption={note ?? undefined} onPress={target ? () => router.push(target as never) : undefined} />;
         })}

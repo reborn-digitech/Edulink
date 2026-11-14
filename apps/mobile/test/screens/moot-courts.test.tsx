@@ -48,14 +48,16 @@ describe("the moot courts screen", () => {
     expect(screen.getByText(/ZZ Team Nyaya — Winner · ZZ Asha/)).toBeTruthy();
     expect(screen.getByText(/Result: ZZ Nyaya won 3–2/)).toBeTruthy();
 
-    // Two named teams are needed before it can be saved.
+    // Named teams are needed before it can be saved: two for an intra-college moot, one for an inter-college one (TA-491).
     const save = screen.getByRole("button", { name: "Record the moot court" });
     expect(save).toBeDisabled();
     await fireEvent.changeText(screen.getByLabelText("Name of the moot"), "ZZ Inter Moot");
     await fireEvent.press(screen.getByRole("radio", { name: "Inter-college" }));
     const teamNames = screen.getAllByLabelText("Team name");
     await fireEvent.changeText(teamNames[0]!, "ZZ Team A");
-    expect(screen.getByText("Name at least two teams.")).toBeTruthy();
+    // An inter-college moot takes the college's one team (TA-491), but every box shown must be named before Save.
+    expect(screen.queryByText("Name at least two teams.")).toBeNull();
+    expect(screen.getByRole("button", { name: "Record the moot court" })).toBeDisabled();
     await fireEvent.changeText(teamNames[1]!, "ZZ Team B");
     await fireEvent.press(screen.getAllByRole("checkbox", { name: "ZZ Bilal" })[0]!);
     await fireEvent.press(screen.getByRole("button", { name: "Add a team" }));

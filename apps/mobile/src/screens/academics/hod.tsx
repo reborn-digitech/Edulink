@@ -9,6 +9,7 @@ import { useT } from "@/lib/i18n";
 import { useSession } from "@/lib/session";
 import { CollegeRoleHome } from "@/screens/college/role-home";
 import { DutyCard } from "@/screens/college/duties";
+import { Confirm } from "../family/shared";
 import { Notice } from "../staff/shared";
 import { GROUND_KEY } from "./words";
 
@@ -27,11 +28,14 @@ export function HodHomeScreen() {
   const session = useSession();
   const on = session.status === "signed-in" && (session.me.modules ?? []).includes("ACADEMICS");
   const [notice, setNotice] = useState<{ tone: "ok" | "danger"; text: string } | null>(null);
+  // A refusal is asked first (TA-350): the student is told, and the phone has no way back.
+  const [refusing, setRefusing] = useState<string | null>(null);
   const home = useQuery({ queryKey: ["academics", "hod-home"], enabled: on, queryFn: async () => hodHomeSchema.parse(unwrap(await api().get("/api/v1/academics/hod-home"))) });
   const asks = useQuery({ queryKey: ["academics", "condonations"], enabled: on, queryFn: async () => condonationsSchema.parse(unwrap(await api().get("/api/v1/academics/condonations?status=OPEN"))) });
   const decide = useMutation({
     mutationFn: async (input: { id: string; decision: "APPROVE" | "FORWARD" | "REFUSE" }) => condonationSchema.parse(unwrap(await api().post(`/api/v1/academics/condonations/${input.id}/decide`, { decision: input.decision, note: "" }))),
     onSuccess: () => {
+      setRefusing(null);
       setNotice({ tone: "ok", text: t("academics.decided") });
       void qc.invalidateQueries({ queryKey: ["academics"] });
     },
@@ -99,7 +103,11 @@ export function HodHomeScreen() {
               <Text>{c.note}</Text>
               <Button label={t("academics.approve")} disabled={decide.isPending} onPress={() => decide.mutate({ id: c.id, decision: "APPROVE" })} />
               <Button label={t("academics.forward")} variant="secondary" disabled={decide.isPending} onPress={() => decide.mutate({ id: c.id, decision: "FORWARD" })} />
-              <Button label={t("academics.refuse")} variant="ghost" disabled={decide.isPending} onPress={() => decide.mutate({ id: c.id, decision: "REFUSE" })} />
+              {refusing === c.id ? (
+                <Confirm question={t("academics.confirmRefuseCondonation", { name: c.studentName })} confirmLabel={t("academics.refuse")} busy={decide.isPending} onConfirm={() => decide.mutate({ id: c.id, decision: "REFUSE" })} onCancel={() => setRefusing(null)} />
+              ) : (
+                <Button label={t("academics.refuse")} variant="ghost" disabled={decide.isPending} onPress={() => setRefusing(c.id)} />
+              )}
             </Card>
           ))}
         </Card>

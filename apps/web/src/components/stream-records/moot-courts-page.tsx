@@ -98,7 +98,7 @@ export async function MootCourtsPage({ roles, base, searchParams, back }: { role
 
       {data.canEdit ? (
         <Card>
-          <CardHeader title={t(editing ? "streamRecords.moots.correctTitle" : "streamRecords.moots.addTitle")} description={t(editing ? "streamRecords.moots.correctBody" : "streamRecords.moots.addBody")} />
+          <CardHeader title={t(editing ? "streamRecords.moots.correctTitle" : "streamRecords.moots.addTitle")} description={t(editing ? "streamRecords.moots.correctBody" : "streamRecords.moots.addBodyByKind")} />
           <CardBody>
             <ActionForm key={editing?.id ?? "new"} id="moot-form" action={saveMootCourtAction} className="space-y-4">
               <input type="hidden" name="back" value={base} />
@@ -117,7 +117,7 @@ export async function MootCourtsPage({ roles, base, searchParams, back }: { role
                 <fieldset key={n} className="rounded-[var(--radius-md)] border border-border p-3">
                   <legend className="px-1 text-sm font-medium text-fg">{t("streamRecords.moots.teamN", { n })}</legend>
                   <div className="grid gap-3 sm:grid-cols-2">
-                    <TextField name={`team${n}Name`} label={t("streamRecords.moots.fieldTeam")} maxLength={80} required={n <= 2} defaultValue={editing?.teams[n - 1]?.name} />
+                    <TextField name={`team${n}Name`} label={t("streamRecords.moots.fieldTeam")} maxLength={80} required={n === 1} defaultValue={editing?.teams[n - 1]?.name} />
                     <SelectField name={`team${n}Outcome`} label={t("streamRecords.moots.fieldOutcome")} defaultValue={editing?.teams[n - 1]?.outcome ?? "PARTICIPATED"}>
                       {MOOT_OUTCOMES.map((o) => (
                         <option key={o} value={o}>{t(`streamRecords.moots.outcome${o}`)}</option>

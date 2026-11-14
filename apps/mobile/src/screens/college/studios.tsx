@@ -4,7 +4,7 @@ import { useRouter } from "expo-router";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { facultyStudiosSchema, studentStudiosSchema, studioJuryMarksSavedSchema, studioJurySignedSchema, studioSubmissionSavedSchema, type FacultyJury, type StudioGradeBand, type StudioStage, type StudioSubmissionStage } from "@edulink/contracts";
 import type { TranslationKey } from "@edulink/i18n";
-import { Button, Card, Empty, Failed, Field, Loading, Row, Screen, Stat, Text, useToast } from "@/components";
+import { Button, Card, Empty, Failed, Field, Loading, Row, Screen, Stat, SwitchRow, Text, useToast } from "@/components";
 import { api } from "@/lib/api";
 import { unwrap } from "@/lib/query";
 import { useLocale, useT } from "@/lib/i18n";
@@ -117,21 +117,34 @@ function JuryPanel({ jury, onDone }: { jury: FacultyJury; onDone: () => unknown 
   const th = useTheme();
   const toast = useToast();
   const { locale } = useLocale();
-  const [marks, setMarks] = useState<Record<string, string>>(() => Object.fromEntries(jury.sheet.map((r) => [r.studentMembershipId, r.marks === null ? "" : String(r.marks)])));
-  const [remarks, setRemarks] = useState<Record<string, string>>(() => Object.fromEntries(jury.sheet.map((r) => [r.studentMembershipId, r.remark])));
+  // Only what this juror typed is held here (TA-151); every other field shows the sheet as the server last sent it, so a
+  // refresh after a colleague's marks shows theirs, and Save sends the rows this juror touched and no other.
+  const [marks, setMarks] = useState<Record<string, string>>({});
+  const [remarks, setRemarks] = useState<Record<string, string>>({});
+  // A student who was absent is said so with the row's Absent switch (TA-151): a blank field is never read as absent, so
+  // only a row this juror marked Absent is sent with no marks, and a row left blank or untouched is not sent at all.
+  const [absent, setAbsent] = useState<Record<string, boolean>>({});
+  const shownMarks = (r: FacultyJury["sheet"][number]) => marks[r.studentMembershipId] ?? (r.marks === null ? "" : String(r.marks));
+  const shownRemark = (r: FacultyJury["sheet"][number]) => remarks[r.studentMembershipId] ?? r.remark;
+  const isAbsent = (r: FacultyJury["sheet"][number]) => absent[r.studentMembershipId] ?? (marks[r.studentMembershipId] === undefined && r.entered && r.marks === null);
+  const changed = (r: FacultyJury["sheet"][number]) => marks[r.studentMembershipId] !== undefined || remarks[r.studentMembershipId] !== undefined || absent[r.studentMembershipId] !== undefined;
+  const touched = jury.sheet.filter((r) => changed(r) && (isAbsent(r) || shownMarks(r).trim() !== ""));
   const save = useMutation({
     mutationFn: async () =>
       studioJuryMarksSavedSchema.parse(
         unwrap(
           await api().post(`${FACULTY_PATH}/juries/${jury.id}/marks`, {
-            entries: jury.sheet.map((r) => {
-              const raw = (marks[r.studentMembershipId] ?? "").trim().replace(",", ".");
-              return { studentMembershipId: r.studentMembershipId, marks: raw === "" ? null : Number(raw), remark: (remarks[r.studentMembershipId] ?? "").trim() };
+            entries: touched.map((r) => {
+              const raw = shownMarks(r).trim().replace(",", ".");
+              return { studentMembershipId: r.studentMembershipId, marks: isAbsent(r) ? null : Number(raw), remark: shownRemark(r).trim() };
             }),
           }),
         ),
       ),
     onSuccess: () => {
+      setMarks({});
+      setRemarks({});
+      setAbsent({});
       toast.show(t("duties.studio.marksSaved"), "ok");
       void onDone();
     },
@@ -145,9 +158,10 @@ function JuryPanel({ jury, onDone }: { jury: FacultyJury; onDone: () => unknown 
     },
     onError: (e: Error) => toast.show(e.message, "danger"),
   });
-  const ready = jury.sheet.every((r) => {
-    const raw = (marks[r.studentMembershipId] ?? "").trim().replace(",", ".");
-    return raw === "" || (Number.isFinite(Number(raw)) && Number(raw) >= 0 && Number(raw) <= jury.maxMarks);
+  const ready = touched.length > 0 && touched.every((r) => {
+    if (isAbsent(r)) return true;
+    const raw = shownMarks(r).trim().replace(",", ".");
+    return Number.isFinite(Number(raw)) && Number(raw) >= 0 && Number(raw) <= jury.maxMarks;
   });
   const panel = jury.panel.map((p) => (p.chair ? `${p.name} ${t("duties.studio.chairSuffix")}` : p.name)).join(", ");
   return (
@@ -164,12 +178,34 @@ function JuryPanel({ jury, onDone }: { jury: FacultyJury; onDone: () => unknown 
               <Text variant="sm" bold>
                 {r.name}
               </Text>
-              <Field label={`${r.name}: ${t("duties.studio.colMarks", { max: jury.maxMarks })}`} value={marks[r.studentMembershipId] ?? ""} onChangeText={(v) => setMarks((m) => ({ ...m, [r.studentMembershipId]: v }))} keyboardType="decimal-pad" />
-              <Field label={`${r.name}: ${t("duties.studio.colRemark")}`} value={remarks[r.studentMembershipId] ?? ""} onChangeText={(v) => setRemarks((m) => ({ ...m, [r.studentMembershipId]: v }))} maxLength={400} />
+              <Field
+                label={`${r.name}: ${t("duties.studio.colMarks", { max: jury.maxMarks })}`}
+                value={isAbsent(r) ? "" : shownMarks(r)}
+                editable={!isAbsent(r)}
+                onChangeText={(v) => {
+                  setMarks((m) => ({ ...m, [r.studentMembershipId]: v }));
+                  setAbsent((a) => ({ ...a, [r.studentMembershipId]: false }));
+                }}
+                keyboardType="decimal-pad"
+              />
+              <SwitchRow
+                label={`${r.name}: ${t("duties.studio.absent")}`}
+                value={isAbsent(r)}
+                onChange={(on) => {
+                  setAbsent((a) => ({ ...a, [r.studentMembershipId]: on }));
+                  // Switched off, the field shows the sheet's marks again until this juror types others.
+                  setMarks((m) => {
+                    const next = { ...m, [r.studentMembershipId]: "" };
+                    if (!on) delete next[r.studentMembershipId];
+                    return next;
+                  });
+                }}
+              />
+              <Field label={`${r.name}: ${t("duties.studio.colRemark")}`} value={shownRemark(r)} onChangeText={(v) => setRemarks((m) => ({ ...m, [r.studentMembershipId]: v }))} maxLength={400} />
             </View>
           ))}
           <Text variant="sm" tone="muted">
-            {t("duties.studio.absentHint")}
+            {t("duties.studio.absentHintPhone")}
           </Text>
           <Button label={t("duties.studio.saveMarks")} variant="secondary" busy={save.isPending} disabled={!ready} onPress={() => save.mutate()} />
         </View>

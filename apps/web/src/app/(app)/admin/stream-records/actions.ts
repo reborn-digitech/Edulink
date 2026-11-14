@@ -104,6 +104,8 @@ export async function saveMootCourtAction(previous: FormState, form: FormData): 
         .map((n) => ({ name: field(form, `team${n}Name`), outcome: field(form, `team${n}Outcome`) || "PARTICIPATED", membershipIds: form.getAll(`team${n}Member`).map(String).filter(Boolean) }))
         .filter((team) => team.name)
         .map((team) => ({ ...team, outcome: (MOOT_OUTCOMES as readonly string[]).includes(team.outcome) ? team.outcome : "PARTICIPATED" }));
+      // An intra-college moot is between the college's own teams; an inter-college or national one may carry the college's one team (TA-491).
+      if (field(form, "kind") === "INTRA" && teams.length < 2) throw new RuleRefusal("streamRecords.moots.needTwoTeams", 422, undefined, "teams.1.name");
       await saveMootCourt(await requireApiUser(), mootCourtSaveSchema.parse({ ...(id ? { id } : {}), name: field(form, "name"), at: field(form, "at"), kind: field(form, "kind"), teams, result: field(form, "result"), judgeNotes: field(form, "judgeNotes") }));
       return "streamRecords.mootSaved";
     },

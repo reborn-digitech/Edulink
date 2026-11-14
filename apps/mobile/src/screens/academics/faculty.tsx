@@ -12,7 +12,7 @@ import { useT } from "@/lib/i18n";
 import { useSession } from "@/lib/session";
 import { CollegeRoleHome } from "@/screens/college/role-home";
 import { DutyCard } from "@/screens/college/duties";
-import { LECTURE_KIND_KEY, clock } from "./words";
+import { clock, lectureKindLabel } from "./words";
 import { formatDate } from "@/lib/dates";
 
 /**
@@ -29,6 +29,8 @@ export function FacultyHomeScreen({ asTeaching = false }: { asTeaching?: boolean
   const on = session.status === "signed-in" && (session.me.modules ?? []).includes("ACADEMICS");
   // My payslips (G-1, campaign 2026-10-04): the door names the college's staff now; shown while payroll is on.
   const payroll = session.status === "signed-in" && (session.me.modules ?? []).includes("PAYROLL");
+  // The college's own word for a lecture or a lab (TA-472): /api/v1/me's streams.
+  const streams = session.status === "signed-in" ? (session.me.streams ?? []) : [];
   const th = useTheme();
   const home = useQuery({ queryKey: ["academics", "faculty-home"], enabled: on, queryFn: async () => facultyHomeSchema.parse(unwrap(await api().get("/api/v1/academics/faculty-home"))) });
   // An earlier day's lectures (TA-059): a register not marked on its own day is reached a day at a time, never past today.
@@ -61,7 +63,7 @@ export function FacultyHomeScreen({ asTeaching = false }: { asTeaching?: boolean
               <Row
                 key={l.lectureId}
                 title={`${clock(l.startMinute, l.endMinute)} · ${l.courseCode}`}
-                caption={[t(LECTURE_KIND_KEY[l.kind]!), l.divisionName, l.roomName, l.marked ? t("academics.markedOf", { marked: l.marked, registered: l.registered }) : null, l.substitute ? t("academics.standingIn") : null].filter(Boolean).join(" · ")}
+                caption={[lectureKindLabel(l.kind, t, streams), l.divisionName, l.roomName, l.marked ? t("academics.markedOf", { marked: l.marked, registered: l.registered }) : null, l.substitute ? t("academics.standingIn") : null].filter(Boolean).join(" · ")}
                 right={<Button label={t(l.marked ? "academics.reviewMarks" : "academics.markLecture")} variant={l.marked ? "secondary" : "primary"} onPress={() => router.push(`/(app)/lecture?id=${l.lectureId}` as never)} />}
               />
             ))}

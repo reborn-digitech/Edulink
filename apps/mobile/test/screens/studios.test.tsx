@@ -116,10 +116,8 @@ describe("the faculty's studios screen", () => {
     await fireEvent.press(screen.getByRole("button", { name: "Save the marks" }));
     await waitFor(() =>
       expect(calls().find((c) => c.line === `POST ${FAC}/juries/${id("jury1")}/marks`)?.body).toEqual({
-        entries: [
-          { studentMembershipId: id("stu1"), marks: 74, remark: "ZZ confident parti" },
-          { studentMembershipId: id("stu2"), marks: 58.5, remark: "ZZ late but complete" },
-        ],
+        // Only the row this juror touched (TA-151): ZZ Ananya's 74 is the server's, and is not sent back.
+        entries: [{ studentMembershipId: id("stu2"), marks: 58.5, remark: "ZZ late but complete" }],
       }),
     );
     expect(await screen.findByText("The marks are saved.")).toBeTruthy();

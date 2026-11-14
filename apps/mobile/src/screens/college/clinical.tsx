@@ -42,7 +42,10 @@ import { OutboxBadge, postOrQueue, todayKey, useOutboxRunner } from "../teacher/
  * postings, the logbook with each entry's state, a new entry (or a draft or
  * returned one corrected) queued through the outbox with a client id when
  * there is no signal, since the server writes one row per client id; the
- * hand-in is online, so it never runs ahead of an entry still in the outbox.
+ * hand-in is online, so it never runs ahead of an entry still in the outbox,
+ * and an entry whose correction still waits there cannot be handed in until
+ * it has gone (TA-349). A saved entry the server refuses when the outbox
+ * sends it is said so, and its words come back into the form (TA-152).
  */
 
 type T = ReturnType<typeof useT>;
@@ -185,7 +188,7 @@ type Draft = { id: string | null; clientId: string; postingId: string; on: strin
 const LOGBOOK_TAG = "clinical-logbook";
 
 /** An entry saved offline, read back from the outbox: what the student wrote, waiting for the network (QA-15). */
-type QueuedEntry = { rowId: string; clientId: string; postingId: string; on: string; kind: string; count: number; note: string };
+type QueuedEntry = { rowId: string; entryId: string | null; clientId: string; postingId: string; on: string; kind: string; count: number; note: string };
 
 /** The logbook's rows waiting in the outbox, live: refreshed whenever something is queued or a flush ends. */
 function useQueuedEntries(): QueuedEntry[] {
@@ -198,8 +201,8 @@ function useQueuedEntries(): QueuedEntry[] {
         setRows(
           items.flatMap((item) => {
             try {
-              const b = JSON.parse(item.body) as Partial<Record<keyof QueuedEntry, unknown>>;
-              return [{ rowId: item.id, clientId: String(b.clientId ?? ""), postingId: String(b.postingId ?? ""), on: String(b.on ?? ""), kind: String(b.kind ?? "CASE"), count: Number(b.count) || 1, note: String(b.note ?? "") }];
+              const b = JSON.parse(item.body) as Partial<Record<keyof QueuedEntry | "id", unknown>>;
+              return [{ rowId: item.id, entryId: typeof b.id === "string" ? b.id : null, clientId: String(b.clientId ?? ""), postingId: String(b.postingId ?? ""), on: String(b.on ?? ""), kind: String(b.kind ?? "CASE"), count: Number(b.count) || 1, note: String(b.note ?? "") }];
             } catch {
               return [];
             }
@@ -218,7 +221,7 @@ function useQueuedEntries(): QueuedEntry[] {
 }
 const fresh = (postingId: string, today: string): Draft => ({ id: null, clientId: newClientId(), postingId, on: today, kind: "CASE", count: "1", note: "" });
 
-function EntryRow({ e, onCorrect, onSubmitted }: { e: LogbookEntry; onCorrect: (e: LogbookEntry) => void; onSubmitted: () => unknown }) {
+function EntryRow({ e, waiting, onCorrect, onSubmitted }: { e: LogbookEntry; waiting: boolean; onCorrect: (e: LogbookEntry) => void; onSubmitted: () => unknown }) {
   const t = useT();
   const th = useTheme();
   const submit = useWrite(async () => streamRecordsIdSchema.parse(unwrap(await api().post(`/api/v1/family/clinical/logbook/${e.id}/submit`, {}))), t("duties.clinical.submitted"), onSubmitted);
@@ -239,10 +242,16 @@ function EntryRow({ e, onCorrect, onSubmitted }: { e: LogbookEntry; onCorrect: (
         </Text>
       ))}
       {editable ? (
-        <View style={{ flexDirection: "row", gap: th.space[2] }}>
-          <Button label={t("duties.clinical.submit")} busy={submit.isPending} onPress={() => submit.mutate(undefined)} accessibilityLabel={`${t("duties.clinical.submit")}: ${formatDate(e.on)}`} />
+        <View style={{ flexDirection: "row", flexWrap: "wrap", gap: th.space[2] }}>
+          {/* A correction of this entry still in the outbox goes first (TA-349): handed in now, the supervisor would get the old words and the correction would be refused. */}
+          <Button label={t("duties.clinical.submit")} busy={submit.isPending} disabled={waiting} onPress={() => submit.mutate(undefined)} accessibilityLabel={`${t("duties.clinical.submit")}: ${formatDate(e.on)}`} />
           <Button label={t("duties.clinical.correct")} variant="secondary" onPress={() => onCorrect(e)} accessibilityLabel={`${t("duties.clinical.correct")}: ${formatDate(e.on)}`} />
         </View>
+      ) : null}
+      {editable && waiting ? (
+        <Text variant="sm" tone="warn">
+          {t("duties.clinical.handInWaits")}
+        </Text>
       ) : null}
     </View>
   );
@@ -266,6 +275,25 @@ export function ClinicalLogbookScreen() {
   // When the outbox sends what waited, the server's list has it: read it again, so the entry moves from waiting to the logbook.
   const refetchMine = mine.refetch;
   useEffect(() => onQueueEvent((e) => void (e.type === "flushed" && e.sent > 0 ? refetchMine() : undefined)), [refetchMine]);
+  // An entry the server refused when the outbox sent it (TA-152): said so, and its words come back into the form to correct
+  // unless the student is already writing another; nothing was written on the server.
+  useEffect(
+    () =>
+      onQueueEvent((e) => {
+        if (e.type !== "rejected" || e.item.tag !== LOGBOOK_TAG) return;
+        setNotice({ tone: "danger", text: t("duties.clinical.replayRefused") });
+        try {
+          const b = JSON.parse(e.item.body) as Record<string, unknown>;
+          const kind = (LOGBOOK_KINDS as readonly string[]).includes(String(b.kind)) ? (String(b.kind) as LogbookKind) : "CASE";
+          const back: Draft = { id: typeof b.id === "string" ? b.id : null, clientId: typeof b.clientId === "string" ? b.clientId : newClientId(), postingId: String(b.postingId ?? ""), on: String(b.on ?? ""), kind, count: String(b.count ?? "1"), note: String(b.note ?? "") };
+          setDraft((current) => current ?? back);
+        } catch {
+          // A row that is not JSON has no words to give back; the notice stands.
+        }
+        void refetchMine();
+      }),
+    [refetchMine, t],
+  );
   const save = useMutation({
     mutationFn: async (x: Draft) => postOrQueue({ url: "/api/v1/family/clinical/logbook", tag: LOGBOOK_TAG, body: { ...(x.id ? { id: x.id } : {}), clientId: x.clientId, postingId: x.postingId, on: x.on, kind: x.kind, count: Number(x.count) || 1, note: x.note.trim() } }),
     onSuccess: (outcome) => {
@@ -339,7 +367,7 @@ export function ClinicalLogbookScreen() {
             })}
             {d.entries.length === 0 && queued.length === 0 && !draft ? <Text tone="muted">{t(open.length > 0 ? "duties.clinical.noEntriesBody" : "duties.clinical.noMyPostingsBody")}</Text> : null}
             {d.entries.map((e) => (
-              <EntryRow key={e.id} e={e} onCorrect={(x) => setDraft({ id: x.id, clientId: x.clientId, postingId: x.postingId, on: x.on, kind: x.kind, count: String(x.count), note: x.note })} onSubmitted={() => mine.refetch()} />
+              <EntryRow key={e.id} e={e} waiting={queued.some((q) => q.entryId === e.id)} onCorrect={(x) => setDraft({ id: x.id, clientId: x.clientId, postingId: x.postingId, on: x.on, kind: x.kind, count: String(x.count), note: x.note })} onSubmitted={() => mine.refetch()} />
             ))}
           </Card>
         </>

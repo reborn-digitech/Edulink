@@ -10,7 +10,9 @@ import { useT } from "@/lib/i18n";
  * What I let my guardians see (4 Oct 2026), the web's /student/consent: six
  * grants, each on or off, an adult student's to change whenever they like.
  * A minor, or a pupil at a school, is told their guardians see everything and
- * offered no button.
+ * offered no button. One change at a time (TA-589): each answer is the whole
+ * list as that request read it, so while one is on its way every button
+ * waits, and an earlier answer arriving last cannot draw a later change off.
  */
 export function StudentConsentScreen() {
   const t = useT();
@@ -52,7 +54,7 @@ export function StudentConsentScreen() {
               key={grant}
               title={t(`consent.grant.${grant}.name`)}
               caption={`${t(`consent.grant.${grant}.what`)} · ${on ? t("consent.on") : t("consent.off")}`}
-              right={d.applies ? <Button label={on ? t("consent.revokeButton") : t("consent.grantButton")} variant={on ? "secondary" : "primary"} busy={save.isPending && save.variables?.grant === grant} onPress={() => save.mutate({ grant, on: !on })} /> : undefined}
+              right={d.applies ? <Button label={on ? t("consent.revokeButton") : t("consent.grantButton")} variant={on ? "secondary" : "primary"} busy={save.isPending && save.variables?.grant === grant} disabled={save.isPending} onPress={() => save.mutate({ grant, on: !on })} /> : undefined}
             />
           ))}
         </Card>

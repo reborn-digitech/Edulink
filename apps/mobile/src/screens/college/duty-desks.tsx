@@ -401,7 +401,7 @@ export function TeachingPracticeScreen() {
             <Text variant="sm" tone="muted">
               {t("duties.teachingPractice.postingsBody")}
             </Text>
-            {d.postings.length === 0 ? <Text tone="muted">{t(d.canManage ? "duties.teachingPractice.noPostingsBody" : "duties.teachingPractice.noPostingsRead")}</Text> : null}
+            {d.postings.length === 0 ? <Text tone="muted">{t(d.canManage ? "duties.teachingPractice.noPostingsPhone" : "duties.teachingPractice.noPostingsRead")}</Text> : null}
             {d.postings.map((p) => (
               <Posting key={p.id} posting={p} canObserve={d.canObserve && p.from <= today} today={today} onSaved={() => desk.refetch()} />
             ))}

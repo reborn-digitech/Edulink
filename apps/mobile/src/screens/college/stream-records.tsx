@@ -48,7 +48,7 @@ export function StreamRecordsScreen() {
           <View style={row}>
             <Stat label={t("streamRecords.statInternships")} value={d.lawInternships.internships} />
             <Stat label={t("streamRecords.statLawStudents")} value={d.lawInternships.students} />
-            <Stat label={t("streamRecords.statMeetingBci")} value={d.lawInternships.meetingMinimum} tone="ok" />
+            <Stat label={t("streamRecords.statMeetingBci")} value={`${d.lawInternships.meetingMinimum} / ${d.lawInternships.students}`} tone={d.lawInternships.meetingMinimum < d.lawInternships.students ? "warn" : "ok"} />
             <Stat label={t("streamRecords.statMoots")} value={d.lawInternships.mootCourts.total} />
           </View>
           <Text variant="xs" tone="muted">
@@ -62,7 +62,7 @@ export function StreamRecordsScreen() {
             <Stat label={t("streamRecords.statPracticeSchools")} value={d.teachingPractice.practiceSchools} />
             <Stat label={t("streamRecords.statPostings")} value={d.teachingPractice.postings} />
             <Stat label={t("streamRecords.statObserved")} value={`${d.teachingPractice.lessonsObserved}/${d.teachingPractice.lessonsPlanned}`} />
-            <Stat label={t("streamRecords.statMeetingNcte")} value={d.teachingPractice.meetingMinimum} tone="ok" />
+            <Stat label={t("streamRecords.statMeetingNcte")} value={`${d.teachingPractice.meetingMinimum} / ${d.teachingPractice.students}`} tone={d.teachingPractice.meetingMinimum < d.teachingPractice.students ? "warn" : "ok"} />
           </View>
           <Text variant="xs" tone="muted">
             {t("streamRecords.practiceBody", { weeks: d.teachingPractice.minimumWeeks })}

@@ -10,6 +10,7 @@ import { bytesApi, shareBytes } from "@/lib/download";
 import { useT } from "@/lib/i18n";
 import { useSession } from "@/lib/session";
 import { useTheme } from "@/lib/theme";
+import { Confirm } from "../family/shared";
 import { Notice } from "../staff/shared";
 import { INTERNSHIP_STATUS_KEY, OUTCOME_KEY, applicationLabel, offerLine, packageRange, reasons } from "./words";
 import { formatDateRange, formatDateTime } from "@/lib/dates";
@@ -31,6 +32,8 @@ export function StudentPlacementScreen() {
   const qc = useQueryClient();
   const [notice, setNotice] = useState<{ tone: "ok" | "danger"; text: string } | null>(null);
   const [consent, setConsent] = useState<Record<string, boolean>>({});
+  // Declining an offer and withdrawing from a drive are asked first (TA-350): neither can be undone from the phone.
+  const [asking, setAsking] = useState<{ what: "decline"; offerId: string } | { what: "withdraw"; driveId: string } | null>(null);
   const on = session.status === "signed-in" && (session.me.modules ?? []).includes("PLACEMENT");
   const query = useQuery({ queryKey: ["placement", "mine"], enabled: on, queryFn: async () => studentPlacementSchema.parse(unwrap(await api().get("/api/v1/student/placement"))) });
   const refresh = () => void qc.invalidateQueries({ queryKey: ["placement"] });
@@ -47,6 +50,7 @@ export function StudentPlacementScreen() {
   const withdraw = useMutation({
     mutationFn: async (driveId: string) => applicationViewSchema.parse(unwrap(await api().post(`/api/v1/student/placement/drives/${driveId}/withdraw`, {}))),
     onSuccess: () => {
+      setAsking(null);
       setNotice({ tone: "ok", text: t("placement.withdrawn") });
       refresh();
     },
@@ -55,6 +59,7 @@ export function StudentPlacementScreen() {
   const answer = useMutation({
     mutationFn: async (v: { offerId: string; accept: boolean }) => offerViewSchema.parse(unwrap(await api().post(`/api/v1/student/placement/offers/${v.offerId}`, { accept: v.accept }))),
     onSuccess: (o) => {
+      setAsking(null);
       setNotice({ tone: "ok", text: o.acceptedAt ? t("placement.offerAccepted") : t("placement.offerDeclined") });
       refresh();
     },
@@ -132,7 +137,13 @@ export function StudentPlacementScreen() {
                     <Button label={t("placement.apply")} disabled={!consent[d.id] || apply.isPending} onPress={() => apply.mutate(d.id)} />
                   </>
                 ) : null}
-                {a && a.status !== "WITHDRAWN" && !a.offer ? <Button label={t("placement.withdraw")} variant="ghost" disabled={withdraw.isPending} onPress={() => withdraw.mutate(d.id)} /> : null}
+                {a && a.status !== "WITHDRAWN" && !a.offer ? (
+                  asking?.what === "withdraw" && asking.driveId === d.id ? (
+                    <Confirm question={t("placement.confirmWithdraw", { company: d.companyName })} confirmLabel={t("placement.withdraw")} busy={withdraw.isPending} onConfirm={() => withdraw.mutate(d.id)} onCancel={() => setAsking(null)} />
+                  ) : (
+                    <Button label={t("placement.withdraw")} variant="ghost" disabled={withdraw.isPending} onPress={() => setAsking({ what: "withdraw", driveId: d.id })} />
+                  )
+                ) : null}
               </View>
             ))}
           </Card>
@@ -145,9 +156,10 @@ export function StudentPlacementScreen() {
                 {!o.acceptedAt && !o.declinedAt ? (
                   <View style={{ flexDirection: "row", gap: th.space[2] }}>
                     <Button label={t("placement.acceptOffer")} disabled={answer.isPending} onPress={() => answer.mutate({ offerId: o.id, accept: true })} />
-                    <Button label={t("placement.declineOffer")} variant="secondary" disabled={answer.isPending} onPress={() => answer.mutate({ offerId: o.id, accept: false })} />
+                    <Button label={t("placement.declineOffer")} variant="secondary" disabled={answer.isPending} onPress={() => setAsking({ what: "decline", offerId: o.id })} />
                   </View>
                 ) : null}
+                {!o.acceptedAt && !o.declinedAt && asking?.what === "decline" && asking.offerId === o.id ? <Confirm question={t("placement.confirmDecline", { drive: o.driveTitle })} confirmLabel={t("placement.declineOffer")} busy={answer.isPending} onConfirm={() => answer.mutate({ offerId: o.id, accept: false })} onCancel={() => setAsking(null)} /> : null}
               </View>
             ))}
           </Card>
