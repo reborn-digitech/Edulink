@@ -21,7 +21,7 @@ import { AccessError } from "./access-error";
 import { RuleRefusal } from "./rule-refusal";
 import { audit } from "./audit";
 import { readJson, writeJson } from "./json";
-import { ageInYears, isDateKey, todayKey } from "./dates";
+import { ageInYears, formatDateKey, isDateKey, todayKey } from "./dates";
 import { COLLEGE_MIN_AGE, collegeBirthdateProblem } from "./birthdate-rules";
 import { parseCsvRecords, toCsv } from "./csv";
 import { studentCode } from "./codes";
@@ -144,6 +144,54 @@ export function quotaFor(kind: AdmissionRoundKind, seatType: string): AdmissionQ
 
 const seatsOf = (raw: string): Record<string, number> => readJson<Record<string, number>>(raw, {});
 
+/**
+ * THE ROUND CLOSES AFTER ITS CLOSING DAY (TA-572, the owner's decision of 14 November 2026). The office types a
+ * closing day; saveRound stores it as 23:59:59 UTC of that day, so the day is the stored instant's UTC date, and the
+ * round is CLOSED once the college's own today (todayKey in its time zone) is past it: at the college's midnight,
+ * not at 05:29 the next morning in India when the stored instant passes. Worked out whenever a round is read; the
+ * stored status is not relied on (nothing but the fixtures ever wrote it). After the closing day the office pastes no
+ * new allotment list and types no new application; a row already imported still becomes an application, with no end
+ * date; entries before the opening day are not refused. To extend a round the office changes its dates
+ * (saveRoundDates), and moving the closing day to yesterday closes it.
+ */
+export function roundClosingDay(closesAt: Date): string {
+  return closesAt.toISOString().slice(0, 10);
+}
+
+export function roundStatusOn(closesAt: Date, today: string): "OPEN" | "CLOSED" {
+  return today > roundClosingDay(closesAt) ? "CLOSED" : "OPEN";
+}
+
+async function collegeToday(schoolId: string): Promise<string> {
+  const { timezone } = await db.school.findUniqueOrThrow({ where: { id: schoolId }, select: { timezone: true } });
+  return todayKey(timezone);
+}
+
+/** Refuses a new list or a typed application once the round's closing day is past, naming the day. */
+async function assertRoundTakesNew(schoolId: string, round: { closesAt: Date }): Promise<void> {
+  if (roundStatusOn(round.closesAt, await collegeToday(schoolId)) === "OPEN") return;
+  throw new AccessError("collegeOffice.refuseRoundClosedOn", "FORBIDDEN", { date: formatDateKey(roundClosingDay(round.closesAt), { day: "2-digit", month: "2-digit", year: "numeric" }) });
+}
+
+type RoundRow = { id: string; programmeId: string | null; intakeYear: number; kind: string; name: string; opensAt: Date; closesAt: Date; seatsJson: string; _count: { allotments: number; applications: number } };
+
+function roundView(r: RoundRow, admitted: number, today: string): AdmissionRoundView {
+  return {
+    id: r.id,
+    programmeId: r.programmeId,
+    intakeYear: r.intakeYear,
+    kind: r.kind as AdmissionRoundKind,
+    name: r.name,
+    opensAt: r.opensAt.toISOString(),
+    closesAt: r.closesAt.toISOString(),
+    seats: seatsOf(r.seatsJson),
+    status: roundStatusOn(r.closesAt, today),
+    allotments: r._count.allotments,
+    applications: r._count.applications,
+    admitted,
+  };
+}
+
 export async function listRounds(ctx: ActiveContext): Promise<{ rounds: AdmissionRoundView[] }> {
   const d = await desk(ctx, OFFICE_READ);
   const rows = await db.admissionRound.findMany({
@@ -153,22 +201,8 @@ export async function listRounds(ctx: ActiveContext): Promise<{ rounds: Admissio
   });
   const admitted = await db.collegeApplication.groupBy({ by: ["roundId"], where: { schoolId: d.schoolId, status: "ADMITTED" }, _count: { _all: true } });
   const byRound = new Map(admitted.map((a) => [a.roundId, a._count._all]));
-  return {
-    rounds: rows.map((r) => ({
-      id: r.id,
-      programmeId: r.programmeId,
-      intakeYear: r.intakeYear,
-      kind: r.kind as AdmissionRoundKind,
-      name: r.name,
-      opensAt: r.opensAt.toISOString(),
-      closesAt: r.closesAt.toISOString(),
-      seats: seatsOf(r.seatsJson),
-      status: r.status as "OPEN" | "CLOSED",
-      allotments: r._count.allotments,
-      applications: r._count.applications,
-      admitted: byRound.get(r.id) ?? 0,
-    })),
-  };
+  const today = await collegeToday(d.schoolId);
+  return { rounds: rows.map((r) => roundView(r, byRound.get(r.id) ?? 0, today)) };
 }
 
 async function programmeOf(schoolId: string, programmeId: string) {
@@ -198,6 +232,30 @@ async function roundOf(d: Desk, roundId: string) {
 }
 
 /**
+ * A round's dates and nothing else (TA-572): the office extends a round, or closes it by moving the closing day to
+ * yesterday, without retyping the seat table, the programme or the name (saveRound's whole-round form would, and a
+ * blank seat table there switches the seat check off). The same dates again change nothing. Audited in the same
+ * tenant transaction, with the days before and after.
+ */
+export async function saveRoundDates(ctx: ActiveContext, roundId: string, input: { opensOn: string; closesOn: string }): Promise<AdmissionRoundView> {
+  const d = await desk(ctx);
+  const round = await roundOf(d, roundId);
+  if (!isDateKey(input.opensOn) || !isDateKey(input.closesOn) || input.closesOn < input.opensOn) throw new AccessError("collegeOffice.refuseDates");
+  const opensOnBefore = round.opensAt.toISOString().slice(0, 10);
+  const closesOnBefore = roundClosingDay(round.closesAt);
+  if (opensOnBefore !== input.opensOn || closesOnBefore !== input.closesOn) {
+    await db.$tenantTransaction(async (raw) => {
+      const tx = raw as typeof db;
+      await tx.admissionRound.update({ where: { id: round.id }, data: { opensAt: new Date(`${input.opensOn}T00:00:00Z`), closesAt: new Date(`${input.closesOn}T23:59:59Z`) } });
+      await audit({ schoolId: d.schoolId, actorUserId: d.userId, action: "college.admissions.roundDates", targetType: "AdmissionRound", targetId: round.id, meta: { opensOnBefore, closesOnBefore, opensOn: input.opensOn, closesOn: input.closesOn } }, tx);
+    });
+  }
+  const row = await db.admissionRound.findFirstOrThrow({ where: { id: round.id, schoolId: d.schoolId }, include: { _count: { select: { allotments: true, applications: true } } } });
+  const admitted = await db.collegeApplication.count({ where: { schoolId: d.schoolId, roundId: round.id, status: "ADMITTED" } });
+  return roundView(row, admitted, await collegeToday(d.schoolId));
+}
+
+/**
  * The CET Cell's allotment list for a round, pasted: one row per allotted
  * candidate in CAP_SHEET_COLUMNS order, a heading row skipped. A row with no
  * application id, no name or a category the Cell does not use is refused by
@@ -208,6 +266,8 @@ async function roundOf(d: Desk, roundId: string) {
 export async function importAllotments(ctx: ActiveContext, roundId: string, text: string): Promise<{ added: number; already: number; refused: { line: number; reason: string }[]; unmatchedProgramme: number }> {
   const d = await desk(ctx);
   const round = await roundOf(d, roundId);
+  // No new list after the closing day (TA-572); the rows already imported stay and still become applications.
+  await assertRoundTakesNew(d.schoolId, round);
   const programmes = await db.programme.findMany({ where: { schoolId: d.schoolId }, select: { id: true, code: true } });
   const matchProgramme = (choice: string): string | null => {
     const c = choice.trim().toUpperCase();
@@ -409,7 +469,8 @@ export async function createApplication(
 ): Promise<CollegeApplicationView> {
   const d = await desk(ctx);
   const round = await roundOf(d, input.roundId);
-  if (round.status !== "OPEN") throw new AccessError("collegeOffice.refuseRoundClosed");
+  // A row already imported becomes an application whenever the office makes it, the round closed or not; a typed
+  // application waits on the closing day (TA-572), read from the dates and not from the stored status.
   let base: { applicantName: string; category: CollegeCategory; quota: AdmissionQuota; programmeId: string; capAllotmentId: string | null; meritRank: number | null };
   if (input.capAllotmentId) {
     const row = await db.capAllotment.findFirst({ where: { id: input.capAllotmentId, roundId: round.id, schoolId: d.schoolId } });
@@ -422,6 +483,7 @@ export async function createApplication(
   } else {
     if (!input.applicantName || !input.category || !input.quota || !input.programmeId) throw new AccessError("collegeOffice.refuseIncomplete");
     if (round.kind !== "MERIT" && round.kind !== "INSTITUTE") throw new AccessError("collegeOffice.refuseCapNeedsAllotment");
+    await assertRoundTakesNew(d.schoolId, round);
     base = { applicantName: input.applicantName.trim(), category: input.category, quota: input.quota, programmeId: input.programmeId, capAllotmentId: null, meritRank: input.meritRank ?? null };
   }
   await programmeOf(d.schoolId, base.programmeId);

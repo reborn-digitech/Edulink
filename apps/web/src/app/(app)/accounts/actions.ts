@@ -1,6 +1,7 @@
 "use server";
 
 import {
+  admissionRoundDatesSchema,
   admissionRoundSaveSchema,
   collegeApplicationCreateSchema,
   collegeConcessionBodySchema,
@@ -20,7 +21,7 @@ import { answerForm } from "@/lib/form-action";
 import type { FieldMap, FormState } from "@/lib/form-state";
 import type { TranslationKey } from "@/lib/i18n/dictionary";
 import type { ActiveContext } from "@/lib/session";
-import { admitStudent, approveSupernumerary, cancelAdmission, createApplication, importAllotments, offerSeat, recordAdmissionFee, recordRefund, recordUndertaking, saveRound, setDocument } from "@/lib/college-admissions";
+import { admitStudent, approveSupernumerary, cancelAdmission, createApplication, importAllotments, offerSeat, recordAdmissionFee, recordRefund, recordUndertaking, saveRound, saveRoundDates, setDocument } from "@/lib/college-admissions";
 import { billMess, createCollegeStructure, decideConcession, grantCollegeConcession, raiseDemands, raiseRouteFees, saveOfficeSettings } from "@/lib/college-fees";
 import { addClaimDocument, createClaim, updateClaim } from "@/lib/scholarships";
 import { clearLine } from "@/lib/no-dues";
@@ -87,6 +88,14 @@ export async function saveRoundAction(previous: FormState, formData: FormData): 
     for (const [k, v] of formData.entries()) if (k.startsWith("seat_") && String(v).trim() !== "") seats[k.slice(5)] = Number(v);
     await saveRound(ctx, parsed(admissionRoundSaveSchema.safeParse({ programmeId: str(formData, "programmeId") || null, intakeYear: int(formData, "intakeYear"), kind: str(formData, "kind"), name: str(formData, "name"), opensOn: str(formData, "opensOn"), closesOn: str(formData, "closesOn"), seats })));
     return "collegeOffice.roundSaved";
+  });
+}
+
+/** A round's dates alone (TA-572): extend it, or close it by moving the closing day; the seats are not retyped. */
+export async function saveRoundDatesAction(previous: FormState, formData: FormData): Promise<FormState> {
+  return run(previous, formData, async (ctx) => {
+    await saveRoundDates(ctx, str(formData, "roundId"), parsed(admissionRoundDatesSchema.safeParse({ opensOn: str(formData, "opensOn"), closesOn: str(formData, "closesOn") })));
+    return "collegeOffice.roundDatesSaved";
   });
 }
 

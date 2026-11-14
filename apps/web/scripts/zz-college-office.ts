@@ -147,7 +147,11 @@ export async function buildCollegeOffice(db: PrismaClient): Promise<OfficeFixtur
 
   // Admissions: CAP round 1 with five rows of the CET Cell's list, and a merit round.
   await db.admissionRound.upsert({ where: { id: F.round }, create: { id: F.round, schoolId: s, programmeId: programme.id, intakeYear: 2026, kind: "CAP_1", name: "ZZ CAP round 1", opensAt: day("2026-06-20"), closesAt: day("2026-07-05"), seatsJson: JSON.stringify({ OPEN: 30, OBC: 12, SC: 8, ST: 4, VJNT: 4, EWS: 6 }), status: "OPEN", createdByUserId: admin.userId }, update: {} });
-  await db.admissionRound.upsert({ where: { id: F.meritRound }, create: { id: F.meritRound, schoolId: s, programmeId: programme.id, intakeYear: 2026, kind: "MERIT", name: "ZZ Merit list", opensAt: day("2026-07-06"), closesAt: day("2026-08-15"), seatsJson: JSON.stringify({ OPEN: 6 }), status: "OPEN", createdByUserId: admin.userId }, update: {} });
+  // A round closes after its closing day (TA-572): CAP round 1 closed on 5 July and reads Closed, its five rows still
+  // becoming applications; the merit round stays open for typed applications, its closing day the end of May after next
+  // (moved on every run, so an older fixture's 15 August is moved too).
+  const meritClosesAt = day(`${new Date().getUTCFullYear() + 1}-05-31`);
+  await db.admissionRound.upsert({ where: { id: F.meritRound }, create: { id: F.meritRound, schoolId: s, programmeId: programme.id, intakeYear: 2026, kind: "MERIT", name: "ZZ Merit list", opensAt: day("2026-07-06"), closesAt: meritClosesAt, seatsJson: JSON.stringify({ OPEN: 6 }), status: "OPEN", createdByUserId: admin.userId }, update: { closesAt: meritClosesAt } });
   const ROWS: [number, string, string, string, number][] = [[1, "ZZEN26001101", "ZZ Rohan Deshmukh", "OPEN", 1101], [2, "ZZEN26001102", "ZZ Sneha Kulkarni", "OPEN", 1102], [3, "ZZEN26001103", "ZZ Prachi Shinde", "OBC", 1210], [4, "ZZEN26001104", "ZZ Aditya More", "OPEN", 1288], [5, "ZZEN26001105", "ZZ Kavya Joshi", "EWS", 1302]];
   for (const [n, cet, name, category, merit] of ROWS) {
     await db.capAllotment.upsert({ where: { id: F.allotment(n) }, create: { id: F.allotment(n), schoolId: s, roundId: F.round, cetApplicationId: cet, applicantName: name, programmeCode: "BSCPHY", programmeId: programme.id, category, quota: "CAP", meritNumber: merit, importedByUserId: admin.userId }, update: {} });

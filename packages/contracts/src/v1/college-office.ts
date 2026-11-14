@@ -192,6 +192,8 @@ export const admissionRoundSaveSchema = z.object({
   closesOn: dateKey,
   seats: z.record(collegeCategorySchema, z.number().int().min(0).max(5000)),
 });
+/** A round's dates alone (TA-572): the office extends a round, or closes it by moving the closing day, without retyping its seats. */
+export const admissionRoundDatesSchema = z.object({ opensOn: realDateKey, closesOn: realDateKey });
 
 export const capImportBodySchema = z.object({ text: z.string().min(1).max(500_000) });
 export const capImportResultSchema = z.object({

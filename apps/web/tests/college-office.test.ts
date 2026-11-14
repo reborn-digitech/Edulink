@@ -334,7 +334,9 @@ describe("admissions", () => {
   let roundId = "";
   it("imports the CET Cell's list once: the same list again adds nothing", async () => {
     await as(ids.admin, ids.college, "ADMIN");
-    roundId = (await body<{ id: string }>(await roundsPost(json("/api/v1/college/admissions/rounds", { programmeId: ids.programme, intakeYear: 2026, kind: "CAP_1", name: "ZZ CAP 1", opensOn: "2026-06-20", closesOn: "2026-07-05", seats: { OPEN: 2, OBC: 1 } })))).id;
+    // A round takes no list after its closing day (TA-572): this one closes sixty days from today.
+    const closesOn = new Date(Date.now() + 60 * 86_400_000).toISOString().slice(0, 10);
+    roundId = (await body<{ id: string }>(await roundsPost(json("/api/v1/college/admissions/rounds", { programmeId: ids.programme, intakeYear: 2026, kind: "CAP_1", name: "ZZ CAP 1", opensOn: "2026-06-20", closesOn, seats: { OPEN: 2, OBC: 1 } })))).id;
     const sheet = ["Sr. No.,Application ID,Name,Gender,Category,Seat Type,Choice Code,Merit No", "1,ZZEN0001,ZZ Asha Rao,F,OPEN,GOPENS,BSCPHY,101", "2,ZZEN0002,ZZ Vikram Pai,M,OBC,GOBCS,BSCPHY,140", "3,ZZEN0003,ZZ Neel Sen,M,NT2,GNT2S,616BSCPHY,151", "4,ZZEN0004,Z,M,OPEN,GOPENS,BSCPHY,160", "5,ZZEN0005,ZZ Mira Das,F,KSHATRIYA,GOPENS,BSCPHY,170"].join("\n");
     const first = await body<{ added: number; already: number; refused: { reason: string }[] }>(await importPost(json("/x", { text: sheet }), params("roundId", roundId)));
     expect(first.added).toBe(3);

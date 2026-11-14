@@ -16,8 +16,12 @@ import { SelectField, TextAreaField, TextField } from "@/components/ui/field";
 import { EmptyState } from "@/components/ui/states";
 import { ModuleOff } from "@/components/module-off";
 import { APP_STATUS_KEY, CATEGORY_KEY, Flash, Hidden, NotCollege, QUOTA_KEY, ROUND_KIND_KEY, Table } from "@/components/college-office/parts";
-import { createApplicationAction, importAllotmentsAction, saveRoundAction } from "../../accounts/actions";
+import { createApplicationAction, importAllotmentsAction, saveRoundAction, saveRoundDatesAction } from "../../accounts/actions";
 import { ActionForm } from "@/components/ui/action-form";
+import { formatDateKey } from "@/lib/dates";
+
+/** A round's opening or closing day as the office typed it (stored at 00:00 or 23:59:59 UTC of that day, TA-572), never an hour. */
+const dayOf = (iso: string) => formatDateKey(iso.slice(0, 10), { day: "2-digit", month: "2-digit", year: "numeric" });
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -64,7 +68,7 @@ export default async function CollegeAdmissionsPage({ searchParams }: { searchPa
           {rounds.length === 0 ? (
             <EmptyState title={t("collegeOffice.roundsEmpty")} description={t("collegeOffice.roundsEmptyBody")} action={write ? <Button asChild size="sm"><a href="#new-round">{t("collegeOffice.roundNew")}</a></Button> : <Button asChild size="sm" variant="secondary"><Link href="/admin">{t("collegeOffice.goHome")}</Link></Button>} />
           ) : (
-            <Table head={[t("collegeOffice.colRound"), t("collegeOffice.colIntake"), t("collegeOffice.colAllotments"), t("collegeOffice.colApplications"), t("collegeOffice.colAdmitted"), { srOnly: t("qaInterface.colActions") }]} testId="admission-rounds">
+            <Table head={[t("collegeOffice.colRound"), t("collegeOffice.colIntake"), t("collegeOffice.opensOn"), t("collegeOffice.closesOn"), t("collegeOffice.colStatus"), t("collegeOffice.colAllotments"), t("collegeOffice.colApplications"), t("collegeOffice.colAdmitted"), { srOnly: t("qaInterface.colActions") }]} testId="admission-rounds">
               {rounds.map((r) => (
                 <tr key={r.id} className={r.id === round?.id ? "bg-accent-soft/40" : undefined}>
                   <td className="py-2 pr-3">
@@ -74,6 +78,11 @@ export default async function CollegeAdmissionsPage({ searchParams }: { searchPa
                     <span className="text-xs text-fg-muted">{t(ROUND_KIND_KEY(r.kind))}</span>
                   </td>
                   <td className="py-2 pr-3">{r.intakeYear}</td>
+                  <td className="py-2 pr-3 tabular-nums">{dayOf(r.opensAt)}</td>
+                  <td className="py-2 pr-3 tabular-nums">{dayOf(r.closesAt)}</td>
+                  <td className="py-2 pr-3">
+                    <Badge tone={r.status === "OPEN" ? "ok" : "neutral"}>{t(r.status === "OPEN" ? "deskParity.roundOpen" : "deskParity.roundClosed")}</Badge>
+                  </td>
                   <td className="py-2 pr-3 tabular-nums">{r.allotments}</td>
                   <td className="py-2 pr-3 tabular-nums">{r.applications}</td>
                   <td className="py-2 pr-3 tabular-nums">{r.admitted}</td>
@@ -208,6 +217,22 @@ export default async function CollegeAdmissionsPage({ searchParams }: { searchPa
                   </ActionForm>
                 ) : null}
               </div>
+            ) : null}
+            {write && round.status === "CLOSED" ? (
+              <p className="text-sm text-fg-muted" data-testid="round-closed">
+                {t("collegeOffice.roundClosedNote", { date: dayOf(round.closesAt) })}
+              </p>
+            ) : null}
+            {write ? (
+              <ActionForm action={saveRoundDatesAction} className="grid gap-3 sm:grid-cols-3">
+                <Hidden fields={{ back, roundId: round.id }} />
+                <h3 className="text-sm font-semibold sm:col-span-3">{t("collegeOffice.roundDatesTitle")}</h3>
+                <TextField name="opensOn" type="date" required defaultValue={round.opensAt.slice(0, 10)} label={t("collegeOffice.opensOn")} />
+                <TextField name="closesOn" type="date" required defaultValue={round.closesAt.slice(0, 10)} label={t("collegeOffice.closesOn")} hint={t("collegeOffice.roundDatesHint")} />
+                <div className="flex items-end">
+                  <Button type="submit" variant="secondary">{t("collegeOffice.roundDatesSave")}</Button>
+                </div>
+              </ActionForm>
             ) : null}
           </CardBody>
         </Card>

@@ -89,7 +89,13 @@ The term's eligibility list, read by the exam cell when forms open, comes from t
 2. On a CAP round paste "The CET Cell's allotment list" as the portal shows it, in the order the hint gives, and press "Import"; the same list twice adds nothing. Each allotment waits under "Allotted, no application yet" with "CET application id" and "Merit number"; press "Make the application". In an institute-level or merit round the office types the application itself.
 3. "Vacancies after {round}" shows "Seats" against admissions by "Category" and what is "Vacant"; "Admission register" downloads the intake's register as the university inspects it.
 
-The rounds table shows "Allotted", "Applications" and "Admitted" per round.
+The rounds table shows "Opens on", "Closes on", "Open" or "Closed", "Allotted", "Applications" and "Admitted" per round.
+
+## When does a round close, and how do I extend it?
+
+A round is open up to and including its closing day by the college's own calendar, and "Closed" from the next day; the web and the phone both read it from the closing day. After that day the office cannot paste a new allotment list or type a new application into it. An allotment already imported still becomes an application with "Make the application", with no end date, so a candidate who reports late is not stranded. Nothing is refused before the opening day.
+
+To extend a round, open it and use "Change the round's dates": change "Closes on" (or "Opens on") and press "Save the dates". Only the dates change; the seats stay as they are, so there is no need to retype the round. To close a round early, set its closing day to yesterday. Each change of dates is in the audit log.
 
 ## How do I scrutinise, offer and admit a college applicant?
 

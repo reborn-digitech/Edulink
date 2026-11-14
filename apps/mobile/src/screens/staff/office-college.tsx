@@ -6,6 +6,7 @@ import { Button, Card, Empty, Failed, Loading, Row, Screen, Stat, Text } from "@
 import { api } from "@/lib/api";
 import { unwrap } from "@/lib/query";
 import { useLocale, useT } from "@/lib/i18n";
+import { formatDateRange } from "@/lib/dates";
 import { useTheme } from "@/lib/theme";
 import { formatInstant, Pill } from "../family/shared";
 import { ModuleOffScreen, useModuleOn } from "@/screens/shared/desk";
@@ -167,9 +168,15 @@ export function OfficeAcademicsScreen() {
   );
 }
 
+/**
+ * A round's opening and closing days as the office typed them (TA-572): the server stores them at 00:00 and 23:59:59
+ * UTC of those days, so the days are the instants' UTC dates. Read as instants in the phone's zone they showed an hour,
+ * and in India the closing day read as 5:29 am the next day.
+ */
+const roundDays = (opensAt: string, closesAt: string) => formatDateRange(opensAt.slice(0, 10), closesAt.slice(0, 10));
+
 export function OfficeAdmissionsScreen() {
   const t = useT();
-  const { locale } = useLocale();
   const on = useModuleOn("ADMISSIONS");
   const query = useQuery({ queryKey: ["college", "admissions", "rounds"], enabled: on, queryFn: async () => admissionRoundsSchema.parse(unwrap(await api().get("/api/v1/college/admissions/rounds"))) });
   if (!on) return <ModuleOffScreen title={t("collegeOffice.admissionsTitle")} module="ADMISSIONS" />;
@@ -185,7 +192,7 @@ export function OfficeAdmissionsScreen() {
             <Row
               key={r.id}
               title={r.name}
-              caption={[t(`collegeOffice.round${r.kind}` as TranslationKey), `${t("collegeOffice.colIntake")} ${r.intakeYear}`, `${formatInstant(r.opensAt, locale)} – ${formatInstant(r.closesAt, locale)}`, `${t("collegeOffice.colApplications")} ${r.applications}`, `${t("collegeOffice.colAllotments")} ${r.allotments}`, `${t("collegeOffice.colAdmitted")} ${r.admitted}`].join(" · ")}
+              caption={[t(`collegeOffice.round${r.kind}` as TranslationKey), `${t("collegeOffice.colIntake")} ${r.intakeYear}`, roundDays(r.opensAt, r.closesAt), `${t("collegeOffice.colApplications")} ${r.applications}`, `${t("collegeOffice.colAllotments")} ${r.allotments}`, `${t("collegeOffice.colAdmitted")} ${r.admitted}`].join(" · ")}
               right={<Pill label={t(r.status === "OPEN" ? "deskParity.roundOpen" : "deskParity.roundClosed")} tone={r.status === "OPEN" ? "ok" : "muted"} />}
             />
           ))}
