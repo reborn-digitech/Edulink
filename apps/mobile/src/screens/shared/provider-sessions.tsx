@@ -48,6 +48,7 @@ export function ProviderSessions() {
   const [seats, setSeats] = useState("20");
   const [link, setLink] = useState("");
   const [price, setPrice] = useState("");
+  const [priceError, setPriceError] = useState<string | null>(null);
 
   const query = useQuery({ queryKey: KEY, queryFn: async () => gigProviderSchema.parse(unwrap(await api().get("/api/v1/gigs/slots"))) });
   const act = useMutation({
@@ -80,7 +81,16 @@ export function ProviderSessions() {
       setError(t("gigs.refuseSlotTime"));
       return;
     }
-    const rupees = price.trim() === "" ? 0 : Math.round(Number(price) * 100);
+    // A price is rupees, whole or with paise (TA-358): anything else ("1,500", ".", "1.5.0") is refused under the box,
+    // where before it was dropped and the time offered free. A grouping comma is refused rather than guessed at.
+    const typed = price.trim();
+    if (typed !== "" && !/^\d+(\.\d{1,2})?$/.test(typed)) {
+      setDone(null);
+      setPriceError(t("gigs.refusePrice", { min: priceGate ? money(priceGate.seatPriceMinPaise, locale) : "", max: priceGate ? money(priceGate.seatPriceMaxPaise, locale) : "" }));
+      return;
+    }
+    setPriceError(null);
+    const rupees = typed === "" ? 0 : Math.round(Number(typed) * 100);
     act.mutate({ path: "/api/v1/gigs/slots", body: { kind, title, startsAt: at.toISOString(), meetingUrl: link, ...(kind === "WORKSHOP" ? { minutes: Number(minutes), seats: Number(seats) } : {}), ...(rupees > 0 ? { pricePaise: rupees } : {}) }, done: t("gigs.offered"), reset: true });
   };
   const d = query.data;
@@ -136,7 +146,7 @@ export function ProviderSessions() {
                 <Field label={t("gigs.slotSeats")} value={seats} onChangeText={setSeats} keyboardType="number-pad" />
               </>
             ) : null}
-            {priceGate ? <Field label={t("gigs.priceLabel")} hint={t("gigs.priceHint", { min: money(priceGate.seatPriceMinPaise, locale), max: money(priceGate.seatPriceMaxPaise, locale), percent: priceGate.commissionPercent })} value={price} onChangeText={setPrice} keyboardType="decimal-pad" editable={priceGate.canCharge} /> : null}
+            {priceGate ? <Field label={t("gigs.priceLabel")} hint={t("gigs.priceHint", { min: money(priceGate.seatPriceMinPaise, locale), max: money(priceGate.seatPriceMaxPaise, locale), percent: priceGate.commissionPercent })} value={price} onChangeText={(next) => { setPrice(next); setPriceError(null); }} keyboardType="decimal-pad" editable={priceGate.canCharge} error={priceError} /> : null}
             <Field label={t("gigs.slotLink")} hint={t("seats.linkHint")} value={link} onChangeText={setLink} autoCapitalize="none" keyboardType="url" maxLength={500} />
             <Button label={t("gigs.offer")} busy={running("/api/v1/gigs/slots")} onPress={offer} />
             {gate ? (

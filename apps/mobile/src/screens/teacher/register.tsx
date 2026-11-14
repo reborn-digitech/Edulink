@@ -246,9 +246,20 @@ function ClassRegister({ classId, date, onBack }: { classId: string; date?: stri
     timer.current = setTimeout(() => void flush(), 700);
   }, [flush]);
 
-  useEffect(() => () => {
-    if (timer.current) clearTimeout(timer.current);
-  }, []);
+  // Leaving the register (Back, another tab, another class) before the 700 ms batch went sends what was tapped
+  // rather than dropping it (TA-566): sent live, or put in the outbox under this register's tag.
+  const flushNow = useRef(flush);
+  useEffect(() => {
+    flushNow.current = flush;
+  }, [flush]);
+  useEffect(
+    () => () => {
+      if (timer.current) clearTimeout(timer.current);
+      timer.current = null;
+      if (dirty.current.size > 0) void flushNow.current();
+    },
+    [],
+  );
 
   const mark = (membershipId: string, status: Status, note: string | null) => {
     const m: Mark = { status, note, clientId: newClientId(), markedAt: new Date().toISOString() };

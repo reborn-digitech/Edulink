@@ -2,7 +2,6 @@ import { Pressable, View } from "react-native";
 import { useRouter } from "expo-router";
 import { useQuery } from "@tanstack/react-query";
 import { celebrationsSchema, type Celebrations as CelebrationsView } from "@edulink/contracts";
-import type { TranslationKey } from "@edulink/i18n";
 import { Button, Card, Empty, Failed, Icon, Loading, Row, Screen, Text } from "@/components";
 import { api } from "@/lib/api";
 import { unwrap } from "@/lib/query";
@@ -10,6 +9,7 @@ import { useLocale, useT } from "@/lib/i18n";
 import { useTheme } from "@/lib/theme";
 import { useSessionIfAny } from "@/lib/session";
 import { formatDayWithWeekday } from "@/lib/dates";
+import { roleLabel } from "@/lib/role-label";
 import { formatDateKey, Note, Pill } from "../family/shared";
 
 /**
@@ -85,7 +85,7 @@ export function Celebrations() {
   const line = (item: Item) =>
     [
       item.kind === "BIRTHDAY" ? t("celebrations.birthday") : item.years === 1 ? t("celebrations.anniversaryOne") : t("celebrations.anniversaryMany", { years: item.years ?? 0 }),
-      t(`role.${item.role.toLowerCase()}` as TranslationKey),
+      roleLabel(t, item.role),
       multiSchool ? item.schoolName : null,
     ]
       .filter(Boolean)

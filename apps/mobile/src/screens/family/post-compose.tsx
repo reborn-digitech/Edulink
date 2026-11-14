@@ -19,7 +19,8 @@ import { Chips, Note, Pill, useAuthHeaders } from "./shared";
 type Options = z.infer<typeof accountPostOptionsSchema>;
 type Category = z.infer<typeof bulletinCategorySchema>;
 type Audience = "ALL" | "PARENTS" | "STUDENTS" | "TEACHERS";
-type Picture = { fileId: string; name: string; kind: "image" | "video"; alt: string };
+/** `localUri`: the phone's copy, drawn until the post names the upload, which the file route serves only then (TA-565). */
+type Picture = { fileId: string; name: string; kind: "image" | "video"; alt: string; localUri?: string };
 
 const CATEGORIES: Category[] = ["PEOPLE", "CAMPUS", "EVENTS", "LEARNING", "UPDATES"];
 // COUNCIL is never offered here (the council's notices are written on its own page); its hint is kept for the type.
@@ -96,7 +97,7 @@ function Composer({ options }: { options: Options }) {
     setUploading(true);
     try {
       const picked = await pickAndUpload("media", t("bulletin.couldNotPost"));
-      if (picked) setPictures((current) => [...current, { fileId: picked.fileId, name: picked.name, kind: picked.mime.startsWith("video/") ? "video" : "image", alt: "" }]);
+      if (picked) setPictures((current) => [...current, { fileId: picked.fileId, name: picked.name, kind: picked.mime.startsWith("video/") ? "video" : "image", alt: "", ...(picked.localUri ? { localUri: picked.localUri } : {}) }]);
     } catch (error) {
       toast.show(error instanceof Error ? error.message : t("bulletin.couldNotPost"), "danger");
     } finally {
@@ -129,6 +130,13 @@ function Composer({ options }: { options: Options }) {
       // A pupil's post waits for a teacher: said in the toast, and on the post it opens onto.
       toast.show(created.status === "PENDING" ? `${t("bulletin.sentToTeacher")}\n${t("bulletin.toldWhenChecked")}` : t("bulletin.posted"));
       void qc.invalidateQueries({ queryKey: ["bulletin"] });
+      // The navigator keeps this screen mounted (TA-356): New post opened again starts empty, never holding the post just sent.
+      setCategory("");
+      setTitle("");
+      setBody("");
+      setPictures([]);
+      setRequiresAck(false);
+      setErrors({});
       router.replace({ pathname: "/(app)/post", params: { postId: created.postId } } as never);
     },
     onError: (e) => toast.show(e.message, "danger"),
@@ -227,7 +235,9 @@ function Composer({ options }: { options: Options }) {
         {pictures.map((picture, index) => (
           <View key={picture.fileId} style={{ gap: th.space[2], paddingBottom: th.space[3], borderBottomWidth: 1, borderColor: th.border }}>
             <View style={{ flexDirection: "row", alignItems: "center", gap: th.space[3] }}>
-              {picture.kind === "image" && headers ? (
+              {picture.kind === "image" && picture.localUri ? (
+                <Image source={{ uri: picture.localUri }} accessible={false} contentFit="cover" style={{ width: th.tap * 2, height: th.tap * 2, borderRadius: th.radius.sm, backgroundColor: th.surfaceMuted }} />
+              ) : picture.kind === "image" && headers ? (
                 <Image source={{ uri: `${API_BASE}/api/files/${encodeURIComponent(picture.fileId)}?w=320`, headers }} accessible={false} contentFit="cover" style={{ width: th.tap * 2, height: th.tap * 2, borderRadius: th.radius.sm, backgroundColor: th.surfaceMuted }} />
               ) : (
                 <View style={{ width: th.tap * 2, height: th.tap * 2, borderRadius: th.radius.sm, backgroundColor: th.surfaceMuted, alignItems: "center", justifyContent: "center" }}>
@@ -269,7 +279,7 @@ function Composer({ options }: { options: Options }) {
               {body.trim()}
             </Text>
           ) : null}
-          <Media media={pictures.map((p) => ({ fileId: p.fileId, kind: p.kind, alt: p.alt.trim() || p.name }))} headers={headers} />
+          <Media media={pictures.map((p) => ({ fileId: p.fileId, kind: p.kind, alt: p.alt.trim() || p.name, ...(p.localUri ? { localUri: p.localUri } : {}) }))} headers={headers} />
         </Card>
       ) : null}
 

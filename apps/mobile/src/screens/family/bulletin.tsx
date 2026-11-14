@@ -278,13 +278,16 @@ function GlobalPostCard({ post, headers, onReact, onOpen }: { post: GlobalPost; 
   );
 }
 
-export function Media({ media, headers }: { media: Post["media"]; headers: Record<string, string> | null }) {
+/** `localUri` on an item: the composer's preview of a picture not yet posted, drawn from the phone's copy (TA-565). */
+export function Media({ media, headers }: { media: (Post["media"][number] & { localUri?: string })[]; headers: Record<string, string> | null }) {
   const th = useTheme();
   return (
     <>
       {media.map((item) =>
         item.kind === "image" ? (
-          headers ? (
+          item.localUri ? (
+            <Image key={item.fileId} source={{ uri: item.localUri }} accessible accessibilityLabel={item.alt} contentFit="cover" style={{ width: "100%", aspectRatio: 16 / 10, borderRadius: th.radius.md, backgroundColor: th.surfaceMuted }} />
+          ) : headers ? (
             <Image
               key={item.fileId}
               source={{ uri: `${API_BASE}/api/files/${encodeURIComponent(item.fileId)}?w=640`, headers }}

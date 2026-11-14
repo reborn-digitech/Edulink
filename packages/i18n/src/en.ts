@@ -386,6 +386,8 @@ export const en = {
   /* ⌘K palette                                                              */
   /* ---------------------------------------------------------------------- */
   palette: {
+    // web-shell-ui (testing analysis of 13 November 2026)
+    resultCount: "{count} results",
     dialogLabel: "Search and commands",
     placeholder: "Search pages and actions…",
     inputLabel: "Search pages and actions",
@@ -781,6 +783,8 @@ export const en = {
     pictureTooBig: "“{name}” is bigger than 5 MB.",
     notMedia: "“{name}” is not a photo or a video.",
     videoTooBig: "“{name}” is bigger than 100 MB.",
+    // web-shell-ui (testing analysis of 13 November 2026)
+    postFilesTooBig: "The pictures and videos of one post can add up to {size} MB from the web. Choose fewer or smaller ones.",
     tags: "Tags",
     tagPlaceholder: "science",
     removeTag: "Remove {tag}",
@@ -1664,6 +1668,10 @@ export const en = {
   },
 
   reportView: {
+    // web-shell-ui (testing analysis of 13 November 2026)
+    dateRange: "{from} to {to}",
+    overallAcrossOne: "overall, across 1 marked piece of work.",
+    overallAcrossMany: "overall, across {count} marked pieces of work.",
     back: "Back",
     examsOnly: "Marks over maximum across the exams on this card",
     draftBanner: "Draft — not published. Families cannot see this yet.",
@@ -2770,6 +2778,7 @@ export const en = {
     bulkRemoved: "{count} schools removed",
     bulkDeleted: "{count} schools deleted",
     bulkDeleteMismatch: "That is not the phrase. Type DELETE followed by the number of schools.",
+    bulkTooMany: "At most 100 schools can be chosen at a time. Choose fewer and try again.",
     searchPlaceholder: "Search by name, city or join code",
     stateFilter: "State",
     stateLive: "Live",
@@ -3172,6 +3181,7 @@ export const en = {
     subscriptionNotRecorded: "Not recorded",
     subscriptionMoveRefused: "That status cannot follow the current one.",
     subscriptionDatesOrder: "The due date must come after the start.",
+    subscriptionDayNotReal: "That day is not on the calendar. Check the date.",
     subscriptionReasonRequired: "Give a reason for the change.",
     statusTRIAL: "Trial",
     statusACTIVE: "Active",
@@ -3412,6 +3422,14 @@ export const en = {
   /* Shared UI atoms — toast, loading, files, install, offline sync          */
   /* ---------------------------------------------------------------------- */
   ui: {
+    // web-shell-ui (testing analysis of 13 November 2026)
+    outboxDroppedOne: "1 unsent change from an earlier sign-in was removed",
+    outboxDroppedMany: "{count} unsent changes from an earlier sign-in were removed",
+    outboxDroppedHint: "Someone else signed in on this browser, so what the last person saved without a connection was not sent. They will need to make those changes again.",
+    resultCount: "{count} results",
+    listUpdated: "The list has been updated.",
+    removeFilter: "Remove filter: {filter}, {value}",
+    removeSearchFilter: "Remove search: {query}",
     installCardTitle: "Put Shalaghar on your home screen",
     installCardBody: "Opens like an app, works offline, and keeps you signed in. No app store needed.",
     reasonTransferred: "Transferred",
@@ -3424,6 +3442,7 @@ export const en = {
     upToFilesOne: "You can attach up to 1 file.",
     upToFilesMany: "You can attach up to {max} files.",
     biggerThan5MB: "“{name}” is bigger than 5 MB.",
+    filesTooBigTogether: "These files add up to more than {size} MB, the most one save can carry from the web. Choose fewer or smaller ones.",
     attachFile: "Attach a file",
     addAnotherFile: "Add another",
     couldNotAttach: "Could not attach that.",
@@ -3558,6 +3577,7 @@ export const en = {
     alreadyPausedState: "Their access is already paused.",
     inviteNotAccepted: "They have not accepted their invitation yet. Revoke the invite instead.",
     onlyAdminLeft: "This is the school's only admin. Make somebody else an admin first.",
+    onlyHeadLeft: "This is the school's only head, and pausing them would hand the head's pages to every admin. Add another head first.",
     removeSelf: "You cannot remove yourself from your own school.",
     onlyPupilRemoved: "Only a pupil can be removed this way. Pause a member of staff's access instead.",
     hasRecord: "They have a record at this school, so removing them would delete it. Record them as having left instead — that keeps everything and gives the family a school record to take with them.",
@@ -5255,6 +5275,8 @@ export const en = {
   /* A guardian's pages â the screens this product exists to put in a hand    */
   /* ---------------------------------------------------------------------- */
   parent: {
+    // web-shell-ui (testing analysis of 13 November 2026)
+    markedToday: "{name} was marked {status}",
     todayLessons: "{name}’s lessons today",
     todayLessonsBody: "Period by period. The whole week is on the Timetable page.",
     childLeftTitle: "{name} left {school} on {date}",
@@ -5405,6 +5427,8 @@ export const en = {
   /* A pupil's own pages                                                     */
   /* ---------------------------------------------------------------------- */
   student: {
+    // web-shell-ui (testing analysis of 13 November 2026)
+    progressOf: "{current} of {target}",
     pastDue: "Past due",
     youreInName: "You’re in, {name}!",
     todayLessons: "Today’s lessons",
@@ -5701,6 +5725,18 @@ export const en = {
     nowChange: "Now just change the ones who are not.",
     noLongerInClass: "{count} student(s) are no longer in this class.",
     supersededMarks: "{count} mark(s) were not saved: the register already holds a later mark for them. Reload to see it.",
+    // web-shell-ui (testing analysis of 13 November 2026)
+    undoAfterSave: "Those marks were already sent, so Undo could not take them back. Change any pupil’s mark on the register.",
+    notMarkedCount: "{count} not marked",
+    registerStale: "This register was drawn for {date}, and the day has changed since. Reload the page to mark today’s register.",
+    gradedOf: "{graded} of {total} marked",
+    toMarkCount: "{count} to mark",
+    roomNamed: "Room {room}",
+    workSetOne: "1 piece of work set",
+    workSetMany: "{count} pieces of work set",
+    unsavedOne: "1 unsaved change",
+    unsavedMany: "{count} unsaved changes",
+    notUsableNumbers: "Not a usable number: {count}",
     attendanceFor: "Attendance for {name}",
     noteFor: "Note for {name}",
     notePlaceholder: "Left early for a dentist appointment",
@@ -5830,6 +5866,9 @@ export const en = {
     lastDay: "Last day away",
     withdrawRequest: "Withdraw this request",
     withdrawn: "Withdrawn",
+    // TA-501: the phone asks before a leave request is taken back.
+    withdrawAsk: "Withdraw this request? If somebody was down to cover, they are told.",
+    withdrawConfirm: "Withdraw",
   },
   /* ---------------------------------------------------------------------- */
   /* Verbs every form uses.                                                  */
@@ -5850,6 +5889,7 @@ export const en = {
     comingSoon: "Coming soon",
     comingSoonBody: "This screen is on its way. Until then, the web app has it.",
     checkTheForm: "Some of this needs another look.",
+    checkThisField: "This needs another look.",
     checkField: "Check “{field}”.",
     queuedOffline: "You are offline. This is saved on your device and will send when you are back.",
     clearAll: "Clear all",
@@ -7346,6 +7386,8 @@ export const en = {
     appadminQuizBankEdit: "Edited a practice question",
     appadminQuizBankPutBack: "Put a practice question back",
     appadminQuizBankTakeDown: "Took a practice question down",
+    appadminQuizBankConfirmTranslation: "Confirmed a practice question's translation still right",
+    operatorQuizBankMarkRepair: "Repaired a practice question's edited-after-solving mark",
     appadminQuizJobsStart: "Started writing practice questions",
     appadminQuizJobsStop: "Stopped writing practice questions",
     classAttendanceGrant: "Let a teacher take a class's register",
@@ -9179,6 +9221,7 @@ export const en = {
     refuseNoUpi: "This school does not take UPI directly.",
     refuseUtr: "A UTR is 12 to 22 letters and digits.",
     refuseUtrUsed: "That UTR has already been used.",
+    refuseClientIdReused: "This form already recorded a different payment. Open the pupil's ledger again and enter this one afresh.",
     refuseNotClaimed: "That payment is not waiting to be confirmed.",
     refuseNoUtrColumn: "No UTR or reference column was found in the file.",
     refuseRefundTooMuch: "That is more than what was paid.",
@@ -9875,6 +9918,8 @@ export const en = {
     save: "Record it",
     recorded: "Recorded. The family has been told.",
     recordedQuiet: "Recorded. The family has not been told.",
+    recordedSafeguarding: "Recorded. Only the office, the head and you can read it.",
+    safeguardingReaders: "A safeguarding concern is read only by the office, the head and you. The family is not told and does not see it, and the class's other teachers do not see it either.",
     refuseFuture: "That time has not happened yet.",
     notFound: "That incident is not one you can see.",
     refuseClosed: "This incident is closed; nothing more can be added.",
@@ -10628,6 +10673,7 @@ export const en = {
     copyDone: "{count} lessons copied to {classes} sections, teachers left blank.",
     copyNeedSections: "Choose at least one other section.",
     copyNoSisters: "This class has no sister section to copy to.",
+    copyRefuseOtherGrade: "A week is copied only to sections of the same grade. Choose the sections again.",
     bankTitle: "Import a bank statement",
     bankBody: "Paste the statement's credits: date, description, reference and amount. Each line is matched to a pupil by its UTR, its cheque number or the student code in the narration and recorded through the counter; what cannot be matched is listed for you to key by hand. Shalaghar records that the money arrived; it never moves it.",
     bankLabel: "The statement",
@@ -11141,6 +11187,8 @@ export const en = {
     stockStarted: "The stock-take has started.",
     stockFinished: "The stock-take is finished: {seen} of {total} seen.",
     stockSeen: "{accession} seen: {seen} of {total}.",
+    finishStockConfirm: "Finish the stock-take? {unseen} copies are not seen yet. A new stock-take starts again from nothing.",
+    stockMissingTitle: "Not seen in this stock-take",
     reportsIntro: "The last twelve months of loans, the books borrowed most, and what is overdue by class.",
     issuesByMonth: "Loans each month",
     mostBorrowed: "Borrowed most",
@@ -11350,6 +11398,7 @@ export const en = {
     incidentBody: "What happened",
     incidentAction: "What was done",
     tellFamily: "Tell the family now",
+    tellFamilySafeguarding: "A safeguarding concern is never told to the family and is not on the family's pages; only the office, the head and the person who recorded it can read it.",
     recordIncidentButton: "Record it",
     incidentRecorded: "Recorded in the school's incident log.",
     noIncidents: "No incidents in the hostel.",
@@ -13242,9 +13291,12 @@ export const en = {
     registered: "Registration saved.",
     lateAsked: "Asked. The principal decides.",
     decided: "Decision recorded.",
+    confirmRefuseCondonation: "Refuse {name}'s condonation? They are told at once, and it cannot be undone here.",
     lectureMarked: "The lecture is marked.",
+    lectureReplayRefused: "The marks kept offline for this lecture were refused when they were sent, and the lecture is not marked. Check the sheet and save again.",
     componentSaved: "Component saved.",
     marksSaved: "Marks saved.",
+    markInvalid: "Type a mark from 0 to {max}, with at most one decimal place.",
     moderated: "Countersigned.",
     released: "Released to the students.",
     locked: "Internal marks locked.",
@@ -15294,6 +15346,9 @@ export const en = {
     fieldRoundsHint: "In order. The shortlist comes before round 1.",
     fieldSeasonBatch: "This season's batch",
     fieldSectors: "Sectors",
+    confirmReject: "Record {name} as not through? They are told at once, and the phone cannot change it.",
+    confirmWithdraw: "Withdraw from {company}'s drive? You can apply again only while the drive is open.",
+    confirmDecline: "Decline the offer for {drive}? Only the placement cell can put it back.",
     fieldShareFeedback: "Share the feedback with the student",
     fieldSkills: "Skills",
     fieldSlotTitle: "What it is",
@@ -16007,6 +16062,12 @@ export const en = {
     programmeField: "Stream",
     programmeFieldHint: "The regulator and the attendance rule follow the stream unless you choose your own.",
     regulatorFromStream: "As the stream says",
+    regulatorChoose: "Choose the council",
+    regulatorChooseHint: "This stream names more than one council: choose the programme's regulator, and its attendance rule follows.",
+    refuseChooseRegulator: "This stream answers to more than one council ({councils}): choose the programme's regulator.",
+    thresholdFollows: "The attendance threshold that follows from {regulator}: {threshold} %.",
+    thresholdChooseFirst: "Choose the regulator to see the attendance threshold that follows.",
+    correctRegulator: "Save the regulator",
     word: {
       lecture: "Lecture",
       lectureMany: "Lectures",
@@ -16198,6 +16259,7 @@ export const en = {
       postingsBody: "Each student teacher's span at a practice school, with the lessons planned and the lessons watched.",
       noPostings: "No posting yet",
       noPostingsBody: "Add a practice school, then post a student teacher to it below.",
+      noPostingsPhone: "No student teacher is posted yet. Practice schools and postings are added on the web, under Teaching practice.",
       noPostingsRead: "The coordinator posts student teachers here.",
       spanLine: "{from} to {to} · {weeks} weeks · {observed} of {planned} lessons watched",
       observationLine: "{day}, watched by {observer}",
@@ -16264,6 +16326,8 @@ export const en = {
       postingsBody: "Each division's or batch's span at a department under its supervisor, in rotation order; today's first.",
       noPostings: "No posting yet",
       noPostingsBody: "Add a site and a department, then post a division below.",
+      handInWaits: "A correction of this entry is still waiting to be sent; hand it in once it has gone.",
+      replayRefused: "A logbook entry kept offline was refused when it was sent, and is not in the logbook. Its words are back in the form: correct it and add it again.",
       noPostingsRead: "The coordinator posts divisions here.",
       postingLine: "Rotation {order} · {from} to {to} · {supervisor}",
       currentBadge: "Today",
@@ -16532,6 +16596,7 @@ export const en = {
       resultLine: "{marks} / {max} · {band}",
       absent: "Absent",
       absentHint: "Leave the marks empty for a student who was absent; every student needs an entry before the chair can sign.",
+      absentHintPhone: "Switch on Absent for a student who was absent; a row left empty is not saved, and every student needs an entry before the chair can sign.",
       notEntered: "Not entered",
       juriesTitle: "Juries",
       noJuries: "No jury yet.",
@@ -16956,6 +17021,8 @@ export const en = {
       addTeam: "Add a team",
       removeTeam: "Remove team {n}",
       needTwoTeams: "Name at least two teams.",
+      addBodyByKind: "At least two teams for an intra-college moot, one for an inter-college or national moot; tick each team's students. The phone and the API take more than four teams.",
+      needOneTeam: "Name at least one team.",
       notForYou: "Moot courts are for a college's teachers, its office and its head.",
     },
   },
@@ -18379,6 +18446,13 @@ export const en = {
     actionDISCARD: "Discarded",
     actionSTAMP_TRANSLATION: "Language stamped",
     actionUNSTAMP_TRANSLATION: "Language stamp taken off",
+    // The owner's follow-up to TA-199 (14 Nov 2026): a language marked out of date confirmed still right on the desk.
+    confirmStillRight: "The {language} is still right",
+    confirmedStillRight: "Confirmed. Pupils reading in this language see it again.",
+    confirmTick: "The {language} is still right against the English as saved",
+    confirmTickHint: "Tick only if its words still say what the new English says. It is served again and your name is recorded.",
+    confirmRefusedOrder: "The English options were reordered or the answer moved since this language was written, so it cannot be confirmed. Correct it instead.",
+    actionInLanguage: "{action} ({language})",
     reasonWRONG_KEY: "The key is wrong",
     reasonAMBIGUOUS: "More than one answer can be defended",
     reasonWEAK_DISTRACTORS: "The wrong options do not distract",
@@ -19621,6 +19695,7 @@ export const en = {
     albumNew: "Album {n}",
     albumAdd: "Add an album",
     newsIntro: "Up to twelve of the school's approved school-wide posts. A post can also be ticked for the website from the post itself.",
+    newsPictureHint: "A news post's first picture goes on the site only once you tick that the people shown have consented to publication; until then the post shows its words alone. Your name and the time are recorded.",
     eventsIntro: "The coming entries of the school calendar, shown by themselves. Change them in the calendar.",
     eventsNone: "Nothing is coming up on the school calendar.",
     eventsOpenCalendar: "Open the calendar",

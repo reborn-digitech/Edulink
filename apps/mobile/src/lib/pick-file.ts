@@ -21,7 +21,11 @@ import { api, errorText } from "./api";
  * and strips EXIF; what comes back is the id a later request names. The
  * picked file never touches the app's own storage beyond the picker's cache.
  */
-export type Picked = { fileId: string; mime: string; size: number; name: string };
+/**
+ * `localUri`: the phone's own copy of what was picked (TA-565). An upload is not readable through the file route
+ * until a hand-in or a post names it, so a picture just picked is drawn from here; it never goes to the server.
+ */
+export type Picked = { fileId: string; mime: string; size: number; name: string; localUri?: string };
 export type PickKind = "image" | "media" | "document" | "any";
 
 const TYPES: Record<PickKind, string[] | string> = {
@@ -61,5 +65,5 @@ export async function uploadPicked(asset: { uri: string; name: string; mime: str
     throw new PickError(fieldError ?? errorText(result, fallbackError));
   }
   const data = uploadResultSchema.parse(result.data);
-  return { fileId: data.fileId, mime: data.mime, size: data.size, name };
+  return { fileId: data.fileId, mime: data.mime, size: data.size, name, localUri: uri };
 }

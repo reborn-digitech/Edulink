@@ -12,7 +12,7 @@ import { unwrap } from "@/lib/query";
 import { useLocale, useT } from "@/lib/i18n";
 import { useTheme } from "@/lib/theme";
 import { useRole } from "@/lib/session";
-import { ChildSwitcher, childQuery, Confirm, formatDateKey, formatInstant, Note, openWeb, param, Pill } from "./shared";
+import { ChildSwitcher, childQuery, Confirm, formatDateKey, formatInstant, Note, openWeb, param, Pill, useSwitcherChildren } from "./shared";
 import { demandStatusLabel, methodLabel, money, PAY_TONE, payable, payStatusLabel, receiptPath } from "../shared/fees";
 // Vidura pass 2 (17 Oct 2026): "Explain this to me" beside each fee demand.
 import { ExplainThis } from "../shared/vidura";
@@ -69,6 +69,11 @@ function ParentFees() {
     queryFn: async () => familyFeesSchema.parse(unwrap(await api().get(`/api/v1/fees/family${childQuery(childId)}`))),
   });
   const d = query.data;
+  // TA-167: the switcher stays beside a refused child, so the guardian can reach the other.
+  const pupils = useSwitcherChildren(
+    d?.children.map((c) => ({ guardianshipId: "", studentUserId: "", relation: "", ...c })),
+    query.isError,
+  );
   const child = d?.child ?? null;
   const open = child ? child.demands.filter((row) => payable(row.status)) : [];
   const selected = open.filter((row) => chosen === null || chosen.includes(row.id));
@@ -120,10 +125,10 @@ function ParentFees() {
 
   return (
     <Screen title={t("fees.parentTitle")} description={t("fees.parentIntro")} refreshing={query.isRefetching} onRefresh={() => void query.refetch()}>
-      {d && d.children.length > 1 ? (
+      {pupils.length > 1 ? (
         <ChildSwitcher
-          pupils={d.children.map((c) => ({ guardianshipId: "", studentUserId: "", relation: "", ...c }))}
-          selectedId={child?.studentMembershipId ?? null}
+          pupils={pupils}
+          selectedId={child?.studentMembershipId ?? childId}
           onSelect={(id) => {
             setChildId(id);
             setChosen(null);

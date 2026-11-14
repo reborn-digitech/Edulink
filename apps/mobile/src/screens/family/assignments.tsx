@@ -13,7 +13,7 @@ import { unwrap } from "@/lib/query";
 import { useLocale, useT } from "@/lib/i18n";
 import { useTheme } from "@/lib/theme";
 import { useRole, useSessionIfAny } from "@/lib/session";
-import { ChildSwitcher, childQuery, firstChild, formatMilli, Note, param, Pill, relativeTime, SectionTitle, Tabs, useAuthHeaders } from "./shared";
+import { ChildSwitcher, childQuery, firstChild, formatMilli, Note, param, Pill, relativeTime, SectionTitle, Tabs, useAuthHeaders, useSwitcherChildren } from "./shared";
 import { featuresOf } from "@/lib/nav";
 
 type Tab = "todo" | "handed" | "marked";
@@ -49,13 +49,15 @@ function ChildAssignments() {
     queryFn: async () => familyParentAssignmentsSchema.parse(unwrap(await api().get(`/api/v1/family/assignments${childQuery(childId)}`))),
   });
   const d = query.data;
+  // TA-167: the switcher stays beside a refused child.
+  const pupils = useSwitcherChildren(d?.children, query.isError);
   const name = d?.childName ?? "";
   const list = d ? (tab === "todo" ? d.todo : tab === "handed" ? d.handedIn : d.marked) : [];
   // The door out of an empty tab: the neighbouring tab with something in it, else the child's overview.
   const elsewhere = d ? ([{ key: "todo", label: t("assignments.tabDue"), count: d.todo.length }, { key: "handed", label: t("assignments.tabHanded"), count: d.handedIn.length }, { key: "marked", label: t("assignments.tabMarked"), count: d.marked.length }] as const).find((x) => x.key !== tab && x.count > 0) ?? null : null;
   return (
     <Screen title={t("nav.assignments")} description={d ? `${t("assignments.forChild", { name })} · ${t("diary.intro")}` : undefined} refreshing={query.isRefetching} onRefresh={() => void query.refetch()}>
-      {d ? <ChildSwitcher pupils={d.children} selectedId={childId ?? firstChild(d.children)?.studentMembershipId ?? null} onSelect={setChildId} /> : null}
+      <ChildSwitcher pupils={pupils} selectedId={childId ?? firstChild(pupils)?.studentMembershipId ?? null} onSelect={setChildId} />
       {query.isPending ? <Loading /> : null}
       {query.isError ? <Failed error={query.error} onRetry={() => void query.refetch()} /> : null}
       {d ? (
@@ -251,7 +253,8 @@ function WorkCard({ item }: { item: StudentWork }) {
  * every file to keep, and until it is sent nothing has changed. Either words
  * or a photo is enough.
  */
-type HandInFile = { fileId: string; name: string; mime: string; size: number };
+/** `localUri`: the phone's copy of a picture picked and not yet handed in, which the file route will not serve (TA-565). */
+type HandInFile = { fileId: string; name: string; mime: string; size: number; localUri?: string };
 const MAX_PHOTOS = 5;
 
 function SubmitPanel({ assignmentId, title, submittedAt, existingBody, existingFiles }: { assignmentId: string; title: string; submittedAt: string | null; existingBody: string; existingFiles: HandInFile[] }) {
@@ -410,7 +413,9 @@ function Thumbnails({ files, headers, onRemove }: { files: HandInFile[]; headers
     <View style={{ flexDirection: "row", flexWrap: "wrap", gap: th.space[2] }} accessibilityLabel={t("student.yourFiles")}>
       {files.map((file) => (
         <View key={file.fileId} style={{ width: th.tap * 2, gap: 2 }}>
-          {file.mime.startsWith("image/") && headers ? (
+          {file.mime.startsWith("image/") && file.localUri ? (
+            <Image source={{ uri: file.localUri }} accessible accessibilityLabel={file.name} contentFit="cover" style={{ width: th.tap * 2, height: th.tap * 2, borderRadius: th.radius.sm, backgroundColor: th.surfaceMuted }} />
+          ) : file.mime.startsWith("image/") && headers ? (
             <Image source={{ uri: `${API_BASE}/api/files/${encodeURIComponent(file.fileId)}?w=320`, headers }} accessible accessibilityLabel={file.name} contentFit="cover" style={{ width: th.tap * 2, height: th.tap * 2, borderRadius: th.radius.sm, backgroundColor: th.surfaceMuted }} />
           ) : (
             <View style={{ width: th.tap * 2, height: th.tap * 2, borderRadius: th.radius.sm, backgroundColor: th.surfaceMuted, alignItems: "center", justifyContent: "center" }}>

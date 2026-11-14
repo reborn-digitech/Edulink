@@ -245,7 +245,8 @@ function On({ recoveryLeft }: { recoveryLeft: number }) {
               setCode(next);
               setError(null);
             }}
-            keyboardType="number-pad"
+            // Letters too (TA-357): its hint offers a recovery code, which has letters as well as digits.
+            keyboardType="default"
             textContentType="oneTimeCode"
             autoComplete="one-time-code"
             autoCapitalize="characters"

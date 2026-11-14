@@ -257,7 +257,7 @@ function ReportCardView({ cardId, onBack }: { cardId: string; onBack: () => void
                 value={overallText(c)}
                 hint={c.overallPercent === null ? t("reportView.noMarksCounted") : c.gradingMethod === "weighted" ? t("reportView.weightedExplainerShort") : c.gradingMethod === "exams" ? t("reportView.examsOnly") : t("reportView.acrossBelow")}
               />
-              {layout.showGradePoints && c.gradePoints !== null && c.gradePoints !== undefined ? <Figure label={t("reportView.gradePoints")} value={c.gradePoints.toFixed(1)} hint={t("reportView.gradePointsHint")} /> : null}
+              {layout.showGradePoints && c.gradePoints !== null && c.gradePoints !== undefined ? <Figure label={t("reportView.gradePoints")} value={c.gradePoints.toFixed(2)} hint={t("reportView.gradePointsHint")} /> : null}
               {layout.showAttendance ? (
                 <Figure
                   label={t("reportView.attendance")}
@@ -427,7 +427,7 @@ function cardText(c: ReportCard, t: Translate, locale: string): string {
     "",
     `${t("reportView.overall")}: ${overallText(c)}`,
   ];
-  if (layout.showGradePoints && c.gradePoints !== null && c.gradePoints !== undefined) lines.push(`${t("reportView.gradePoints")}: ${c.gradePoints.toFixed(1)}`);
+  if (layout.showGradePoints && c.gradePoints !== null && c.gradePoints !== undefined) lines.push(`${t("reportView.gradePoints")}: ${c.gradePoints.toFixed(2)}`);
   if (layout.showAttendance) lines.push(`${t("reportView.attendance")}: ${c.attendancePercent === null ? "—" : `${c.attendancePercent}%`}`);
   if (subjects.length > 0) {
     lines.push("", t("reportView.scholastic"), ...subjects.map((row) => `${row.subject}: ${subjectMark(row, t)}${row.parts.length ? ` (${partsText(row.parts, t)})` : ""}`));

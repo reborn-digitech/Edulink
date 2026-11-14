@@ -103,6 +103,9 @@ export function CompetitionNew() {
       toast.show(t("competitions.savedDraft"));
       void qc.invalidateQueries({ queryKey: ["shared", "competitions"] });
       void qc.invalidateQueries({ queryKey: ["appadmin", "competitions"] });
+      // The navigator keeps this screen mounted (TA-356): the next new competition starts from a blank form.
+      setForm(BLANK);
+      setChecked({});
       // A school's draft opens on its own page, where the Publish button is; the content team's goes back to the console's list, where theirs is.
       if (target === "school") router.replace({ pathname: "/(app)/competitions/detail", params: { competitionId: created.competitionId } } as never);
       else if (router.canGoBack()) router.back();

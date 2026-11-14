@@ -45,7 +45,8 @@ describe("the fortnight agenda", () => {
     await press(screen.getByRole("button", { name: /ZZ Bela/ }));
     expect(calls(fetch, PATH).some((c) => c.url.searchParams.get("student") === ID.child2)).toBe(true);
     await press(screen.getByRole("button", { name: /^ZZ Term 2/ }));
-    expect(mockRouter.push).toHaveBeenCalledWith("/(app)/fees");
+    // The row's child goes with it (TA-168): Fees opens on that child.
+    expect(mockRouter.push).toHaveBeenCalledWith({ pathname: "/(app)/fees", params: { child: ID.child } });
     await press(screen.getByRole("button", { name: /^ZZ Fractions sheet/ }));
     expect(mockRouter.push).toHaveBeenCalledWith({ pathname: "/(app)/assignments", params: { child: ID.child } });
   });
@@ -93,7 +94,7 @@ describe("the fortnight agenda", () => {
 
   it("maps a row's web href to a screen, the fee pages to the fees screen, and groups rows by day", () => {
     expect(agendaTarget("/student/fees")).toEqual({ pathname: "/(app)/fees" });
-    expect(agendaTarget(`/parent/fees?child=${ID.child}`)).toEqual({ pathname: "/(app)/fees" });
+    expect(agendaTarget(`/parent/fees?child=${ID.child}`)).toEqual({ pathname: "/(app)/fees", params: { child: ID.child } });
     expect(agendaTarget("/exams")).toEqual({ pathname: "/(app)/exams" });
     expect(agendaTarget("/parent/meetings")).toEqual({ pathname: "/(app)/meetings" });
     expect(agendaTarget("/nowhere")).toBeNull();

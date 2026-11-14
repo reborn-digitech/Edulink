@@ -6,6 +6,7 @@ import { useT } from "@/lib/i18n";
 import { NoSchool } from "@/screens/shared/no-school";
 import { contextPlace } from "@/lib/institution";
 import { useSwitchContext } from "@/lib/outbox-held";
+import { roleLabel } from "@/lib/role-label";
 
 /**
  * "Choose where to go": a person who belongs to more than one school, or is
@@ -32,7 +33,7 @@ export function ChooseContext({ consoles = [], onConsole }: { consoles?: ("opera
             <Row
               key={key}
               title={contextPlace(c, t) ?? t("account.belongNone")}
-              caption={t(`role.${c.role.toLowerCase()}` as never)}
+              caption={roleLabel(t, c.role)}
               right={busy === key ? <Text variant="xs" tone="muted">{t("common.saving")}</Text> : null}
               onPress={async () => {
                 setBusy(key);

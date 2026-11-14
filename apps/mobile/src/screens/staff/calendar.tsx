@@ -10,7 +10,7 @@ import { unwrap } from "@/lib/query";
 import { useLocale, useT } from "@/lib/i18n";
 import { useRole } from "@/lib/session";
 import { useTheme } from "@/lib/theme";
-import { Chips, formatDateKey, formatRange, MultiChips } from "./shared";
+import { Chips, formatDateKey, formatRange, MultiChips, roleLabel } from "./shared";
 
 type When = "" | "all";
 type Kind = "HOLIDAY" | "EXAM" | "EVENT";
@@ -124,7 +124,7 @@ export function StaffCalendar() {
                   key={`${b.membershipId}:${b.dateKey}`}
                   title={b.name}
                   caption={[formatDateKey(b.dateKey, locale), b.turning !== null ? t("calendar.turning", { age: b.turning }) : null, b.movedFromLeapDay ? t("calendar.bornLeapDay") : null].filter(Boolean).join(" · ")}
-                  right={<Text variant="xs" tone="muted">{t(`role.${b.role.toLowerCase()}` as TranslationKey)}</Text>}
+                  right={<Text variant="xs" tone="muted">{roleLabel(t, b.role)}</Text>}
                 />
               ))
             )}

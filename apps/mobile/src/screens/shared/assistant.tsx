@@ -43,6 +43,8 @@ import { openWeb } from "@/screens/family/shared";
  * "Go on" for an answer cut at its length, and "Ask a person" when Vidura cannot answer.
  */
 export const SHORT_ANSWER = 280;
+/** The verdicts that are the model's words; every other one is a fixed sentence the server wrote (the web's model.ts). */
+const MODEL_VERDICTS: readonly string[] = ["ANSWERED", "HINT"];
 const KEY = ["assistant"] as const;
 
 /** The first part of an answer: whole when it is short, else cut at the last sentence end before the limit (or a word). */
@@ -384,7 +386,10 @@ function Bubble({ message: m, conversationId, onGoOn, onLeave }: { message: Assi
   const [whole, setWhole] = useState(false);
   const [helpful, setHelpful] = useState<boolean | null>(m.helpful);
   const mine = m.role === "USER";
-  const shown = mine || whole ? { blocks: parseAnswer(m.text), cut: false } : shortBlocks(m.text);
+  // A fixed sentence the server wrote (a refusal, the counsellor route with the school's helpline) is drawn whole and as
+  // plain text, as the web draws it (TA-020): only the model's own words (ANSWERED, HINT) are cut to a short answer.
+  const fixed = !mine && !!m.verdict && !MODEL_VERDICTS.includes(m.verdict);
+  const shown = mine || whole || fixed ? { blocks: parseAnswer(m.text), cut: false } : shortBlocks(m.text);
   const go = (target: ReturnType<typeof pageTarget>) => {
     if (!target) return;
     onLeave?.();
@@ -426,7 +431,7 @@ function Bubble({ message: m, conversationId, onGoOn, onLeave }: { message: Assi
           {t("assistantUi.hint")}
         </Text>
       ) : null}
-      {mine ? <Text variant="base">{m.text}</Text> : <AnswerMarkdown text={m.text} blocks={shown.blocks} onPath={(path) => go(pageTarget(path))} />}
+      {mine || fixed ? <Text variant="base">{m.text}</Text> : <AnswerMarkdown text={m.text} blocks={shown.blocks} onPath={(path) => go(pageTarget(path))} />}
       {shown.cut ? <Button label={t("assistantUi.showWhole")} variant="ghost" onPress={() => setWhole(true)} /> : null}
       {m.hint ? (
         <Text variant="sm" tone="muted">

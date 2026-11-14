@@ -12,7 +12,7 @@ import { unwrap } from "@/lib/query";
 import { useLocale, useT } from "@/lib/i18n";
 import { useTheme } from "@/lib/theme";
 import { useRole, useSession } from "@/lib/session";
-import { ATTENDANCE, ChildLeftBanner, ChildSwitcher, childQuery, formatDateKey, Note, param, StatusBadge } from "./shared";
+import { ATTENDANCE, ChildLeftBanner, ChildSwitcher, childQuery, formatDateKey, Note, param, StatusBadge, useSwitcherChildren } from "./shared";
 import { AbsenceNotes } from "./absence-notes";
 
 /**
@@ -48,6 +48,8 @@ function ChildAttendance() {
     queryFn: async () => familyParentAttendanceSchema.parse(unwrap(await api().get(`/api/v1/family/attendance${childQuery(childId, { month })}`))),
   });
   const d = query.data;
+  // TA-167: the switcher stays beside a refused child (an adult at a college who has not shared it).
+  const pupils = useSwitcherChildren(d?.children, query.isError);
   const name = d?.child.name ?? "";
   const monthLabel = d ? formatDateKey(`${d.month}-01`, locale, { month: "long", year: "numeric" }) : "";
   const days = d ? [...d.days].sort((a, b) => (a.dateKey < b.dateKey ? 1 : -1)) : [];
@@ -59,7 +61,7 @@ function ChildAttendance() {
       refreshing={query.isRefetching}
       onRefresh={() => void query.refetch()}
     >
-      {d ? <ChildSwitcher pupils={d.children} selectedId={d.child.studentMembershipId} onSelect={setChildId} /> : null}
+      <ChildSwitcher pupils={pupils} selectedId={d?.child.studentMembershipId ?? childId} onSelect={setChildId} />
       {d?.child.leftAt ? <ChildLeftBanner name={name} leftAt={d.child.leftAt} /> : null}
       {query.isPending ? <Loading /> : null}
       {query.isError ? <Failed error={query.error} onRetry={() => void query.refetch()} /> : null}

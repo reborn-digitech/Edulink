@@ -1,13 +1,14 @@
 import { useRef, useState } from "react";
 import { Pressable, TextInput, View } from "react-native";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { applyLeaveSchema, leaveAppliedSchema, leaveDecidedBy, staffLeaveSchema, type ApplyLeaveBody, type StaffLeave } from "@edulink/contracts";
+import { applyLeaveSchema, leaveAppliedSchema, leaveDecidedBy, okSchema, staffLeaveSchema, type ApplyLeaveBody, type StaffLeave } from "@edulink/contracts";
 import { Button, Card, Empty, Failed, Field, Loading, Row, Screen, Text } from "@/components";
 import { api } from "@/lib/api";
 import { unwrap } from "@/lib/query";
 import { useLocale, useT } from "@/lib/i18n";
 import { useTheme } from "@/lib/theme";
 import { useSessionIfAny } from "@/lib/session";
+import { Confirm } from "../family/shared";
 import { dayLabel } from "./support";
 
 /**
@@ -56,6 +57,19 @@ export function TeacherLeave() {
       setReason("");
       setCover(null);
       setSent(true);
+      void qc.invalidateQueries({ queryKey: ["staff", "leave"] });
+    },
+  });
+
+  // Taking a request back (TA-501), as the web's form offers it: after a second tap, through the door the web's action
+  // calls; the cover it caused is released and told by the server.
+  const [asking, setAsking] = useState<string | null>(null);
+  const [withdrawnNote, setWithdrawnNote] = useState(false);
+  const withdraw = useMutation({
+    mutationFn: async (leaveId: string) => okSchema.parse(unwrap(await api().post(`/api/v1/staff/leave/${encodeURIComponent(leaveId)}/withdraw`, {}))),
+    onSuccess: () => {
+      setAsking(null);
+      setWithdrawnNote(true);
       void qc.invalidateQueries({ queryKey: ["staff", "leave"] });
     },
   });
@@ -146,21 +160,47 @@ export function TeacherLeave() {
           </Card>
 
           <Card title={t("nav.leave")}>
+            {withdrawnNote ? (
+              <Text variant="sm" tone="ok" accessibilityLiveRegion="polite">
+                {t("teacher.withdrawn")}
+              </Text>
+            ) : null}
+            {withdraw.isError ? <Failed message={withdraw.error.message} /> : null}
             {data.requests.length === 0 ? (
               <Empty title={t("teacher.nothingWaiting")} action={<Button label={t("teacher.applyForLeave")} variant="secondary" onPress={() => firstDay.current?.focus()} />} />
             ) : (
-              data.requests.map((r) => (
-                <Row
-                  key={r.id}
-                  title={`${kindLabel(r.kind)} · ${t("calendar.rangeTo", { from: dayLabel(r.fromDateKey, locale), to: dayLabel(r.toDateKey, locale) })}`}
-                  caption={[r.reason, r.nominatedName ? t("teacher.suggestedCover", { name: r.nominatedName }) : null, r.decisionNote].filter(Boolean).join(" · ")}
-                  right={
-                    <Text variant="sm" bold tone={r.status === "APPROVED" ? "ok" : r.status === "DECLINED" ? "danger" : r.status === "PENDING" ? "warn" : "muted"}>
-                      {t(statusKey(r.status))}
-                    </Text>
-                  }
-                />
-              ))
+              data.requests.map((r) => {
+                // As the web's form: a request still waiting, or an approved one that has not begun.
+                const canWithdraw = r.status === "PENDING" || (r.status === "APPROVED" && r.fromDateKey > data.today);
+                return (
+                  <View key={r.id}>
+                    <Row
+                      title={`${kindLabel(r.kind)} · ${t("calendar.rangeTo", { from: dayLabel(r.fromDateKey, locale), to: dayLabel(r.toDateKey, locale) })}`}
+                      caption={[r.reason, r.nominatedName ? t("teacher.suggestedCover", { name: r.nominatedName }) : null, r.decisionNote].filter(Boolean).join(" · ")}
+                      right={
+                        <Text variant="sm" bold tone={r.status === "APPROVED" ? "ok" : r.status === "DECLINED" ? "danger" : r.status === "PENDING" ? "warn" : "muted"}>
+                          {t(statusKey(r.status))}
+                        </Text>
+                      }
+                    />
+                    {canWithdraw && asking !== r.id ? (
+                      <Button
+                        label={t("teacher.withdrawRequest")}
+                        variant="ghost"
+                        onPress={() => {
+                          withdraw.reset();
+                          setWithdrawnNote(false);
+                          setAsking(r.id);
+                        }}
+                        style={{ alignSelf: "flex-start" }}
+                      />
+                    ) : null}
+                    {canWithdraw && asking === r.id ? (
+                      <Confirm question={t("teacher.withdrawAsk")} confirmLabel={t("teacher.withdrawConfirm")} busy={withdraw.isPending} onConfirm={() => withdraw.mutate(r.id)} onCancel={() => setAsking(null)} />
+                    ) : null}
+                  </View>
+                );
+              })
             )}
           </Card>
         </>

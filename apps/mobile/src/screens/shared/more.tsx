@@ -2,7 +2,6 @@ import { useEffect, useState, type ReactNode } from "react";
 import { Pressable, View } from "react-native";
 import { usePathname, useRouter } from "expo-router";
 import { isCollegeKind, isLimitedRoleCode, type RoleCode } from "@edulink/contracts";
-import type { TranslationKey } from "@edulink/i18n";
 import { Button, Card, Icon, Row, Screen, Text } from "@/components";
 import { Avatar } from "@/components/avatar";
 import { useSession } from "@/lib/session";
@@ -15,6 +14,7 @@ import { LanguageRow } from "@/components/language-row";
 import { openWeb } from "@/screens/family/shared";
 import { useHeldBySchool, useSwitchContext } from "@/lib/outbox-held";
 import { useSaveLocaleToAccount } from "@/lib/account-locale";
+import { roleLabel } from "@/lib/role-label";
 
 /**
  * More: everything the web's rail and More sheet list for this role that
@@ -48,7 +48,7 @@ export function More() {
   // A college reads with its kind ("ZZ Vidya College · College"), a school as its name (4 Oct 2026).
   const school = here ? contextPlace(here, t) : null;
   const name = me.user.preferredName ?? me.user.name;
-  const description = [role ? t(`role.${role.toLowerCase()}` as TranslationKey) : null, school].filter(Boolean).join(" · ");
+  const description = [role ? roleLabel(t, role) : null, school].filter(Boolean).join(" · ");
   return (
     <Screen title={t("nav.more")} description={description ? `${name} · ${description}` : name}>
       {/* The person first — their avatar and name, which open their account. */}
@@ -102,7 +102,7 @@ export function More() {
           const active = c.schoolId === me.active.schoolId && c.role === me.active.role;
           // What was saved there and not sent waits for the person to come back (PH-6).
           const waiting = active ? 0 : (held.get(c.schoolId) ?? 0);
-          const roleName = t(`role.${c.role.toLowerCase()}` as TranslationKey);
+          const roleName = roleLabel(t, c.role);
           return (
             <Row
               key={`${c.schoolId}:${c.role}`}

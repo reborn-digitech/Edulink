@@ -320,7 +320,8 @@ function NewAssignment({ classes, initialClassId, onDone, onClose }: { classes: 
         </Text>
       ) : null}
 
-      {create.isError ? <Failed message={create.error.message} onRetry={() => submit(true)} /> : null}
+      {/* Try again sends what was asked (TA-169): a failed draft is retried as a draft, never published to the class. */}
+      {create.isError ? <Failed message={create.error.message} onRetry={() => submit(create.variables?.publish ?? false)} /> : null}
       <View style={{ flexDirection: "row", gap: th.space[2], flexWrap: "wrap" }}>
         <Button label={t("teacher.saveAsDraft")} variant="secondary" onPress={() => submit(false)} busy={create.isPending && create.variables?.publish === false} disabled={attaching} style={{ flexGrow: 1 }} />
         <Button label={t("teacher.publishNow")} onPress={() => submit(true)} busy={create.isPending && create.variables?.publish === true} disabled={attaching} style={{ flexGrow: 1 }} />

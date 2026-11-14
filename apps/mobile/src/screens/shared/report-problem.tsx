@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { View } from "react-native";
-import { useLocalSearchParams, useRouter } from "expo-router";
+import { useFocusEffect, useLocalSearchParams, useRouter } from "expo-router";
 import { appReportBodySchema, appReportResultSchema } from "@edulink/contracts";
 import { Button, Card, Empty, Failed, Field, Screen, Text } from "@/components";
 import { api, errorText } from "@/lib/api";
@@ -28,6 +28,13 @@ export function ReportProblem() {
   const [error, setError] = useState<string | null>(null);
   const [state, setState] = useState<State>({ kind: "idle" });
   const device = deviceInfo();
+  // The navigator keeps this screen mounted (TA-356): coming back to it after a report was sent offers the box for a new
+  // one, rather than the last report's reference until the app is closed.
+  useFocusEffect(
+    useCallback(() => {
+      setState((s) => (s.kind === "sent" ? { kind: "idle" } : s));
+    }, []),
+  );
 
   const send = async () => {
     const parsed = appReportBodySchema.safeParse({ kind: "PROBLEM", message, screen: from, device });

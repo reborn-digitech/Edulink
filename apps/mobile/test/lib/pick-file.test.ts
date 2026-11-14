@@ -31,7 +31,7 @@ describe("picking and uploading one file", () => {
   it("asks the picker for images only, posts the file as multipart, and returns the server's id", async () => {
     mockPick.mockResolvedValue({ canceled: false, assets: [{ uri: "file:///cache/zz.png", name: "zz.png", mimeType: "image/png", size: 10 }] });
     const { calls } = clientAnswering(() => new Response(JSON.stringify({ fileId: "file_1", mime: "image/png", size: 10 }), { status: 201 }));
-    await expect(pickAndUpload("image", "Could not upload")).resolves.toEqual({ fileId: "file_1", mime: "image/png", size: 10, name: "zz.png" });
+    await expect(pickAndUpload("image", "Could not upload")).resolves.toEqual({ fileId: "file_1", mime: "image/png", size: 10, name: "zz.png", localUri: "file:///cache/zz.png" });
     expect(mockPick).toHaveBeenCalledWith(expect.objectContaining({ type: ["image/*"], multiple: false }));
     expect(calls[0]!.body).toBeInstanceOf(FormData);
     expect((calls[0]!.headers as Record<string, string>)["Content-Type"]).toBeUndefined();

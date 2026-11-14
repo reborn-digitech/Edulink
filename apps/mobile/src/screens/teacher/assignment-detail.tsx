@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import { openFile } from "@/lib/open-file";
 import { View } from "react-native";
 import { useLocalSearchParams, useRouter } from "expo-router";
@@ -68,7 +68,8 @@ export function AssignmentDetail() {
     <Screen title={a?.title ?? t("teacher.assignments")} description={description} refreshing={query.isRefetching} onRefresh={() => void query.refetch()}>
       {query.isPending ? <Loading /> : null}
       {query.isError ? <Failed error={query.error} onRetry={() => void query.refetch()} /> : null}
-      {d ? <Gradebook book={d} /> : null}
+      {/* Keyed by the assignment (TA-166): marks typed on one never become another's unsaved marks. */}
+      {d ? <Gradebook key={d.assignment.id} book={d} /> : null}
     </Screen>
   );
 }
@@ -93,13 +94,24 @@ function Gradebook({ book }: { book: TeachingGradebook }) {
       qc.invalidateQueries({ queryKey: ["staff", "today"] }),
     ]);
 
+  // The drafts the save in flight carries (TA-166): only these, and only while they still read as sent, are let go after it.
+  const sent = useRef<Record<string, Draft>>({});
   const save = useMutation({
     mutationFn: async (body: TeachingGradesBody) => teachingGradesSavedSchema.parse(unwrap(await api().post(`/api/v1/teaching/assignments/${assignment.id}/grades`, body))),
     onSuccess: async (result) => {
       toast.show(t("teacher.marksSaved", { count: result.saved + result.cleared }));
+      const saved = sent.current;
       // The marks on screen come from the server again before the edits go, so nothing flickers back.
       await refresh();
-      setEdits({});
+      // A mark typed while the save was on its way stays, unsaved.
+      setEdits((all) =>
+        Object.fromEntries(
+          Object.entries(all).filter(([id, edit]) => {
+            const was = saved[id];
+            return !(was && was.score === edit.score && was.comment === edit.comment);
+          }),
+        ),
+      );
     },
   });
 
@@ -115,6 +127,7 @@ function Gradebook({ book }: { book: TeachingGradebook }) {
 
   const submit = () => {
     if (dirty.length === 0 || invalid.length > 0) return;
+    sent.current = Object.fromEntries(dirty.map((row) => [row.membershipId, valueOf(row)]));
     save.mutate({
       grades: dirty.map((row) => {
         const v = valueOf(row);

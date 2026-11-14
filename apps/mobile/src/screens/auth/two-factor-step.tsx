@@ -49,7 +49,8 @@ export function TwoFactorStep({ challenge, onBack }: { challenge: string; onBack
           setCode(next);
           setError(null);
         }}
-        keyboardType="number-pad"
+        // Letters too (TA-357): the box takes a recovery code, two groups of four letters and digits, as well as the app's six digits.
+        keyboardType="default"
         textContentType="oneTimeCode"
         autoComplete="one-time-code"
         autoCapitalize="characters"

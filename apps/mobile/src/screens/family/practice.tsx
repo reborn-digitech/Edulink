@@ -9,7 +9,7 @@ import { planLockOf, unwrap } from "@/lib/query";
 import { useT } from "@/lib/i18n";
 import { useTheme } from "@/lib/theme";
 import { useRole } from "@/lib/session";
-import { ChildSwitcher, childQuery, firstChild, Chips, levelName, Note, param, subjectName } from "./shared";
+import { ChildSwitcher, childQuery, firstChild, Chips, levelName, Note, param, subjectName, useSwitcherChildren } from "./shared";
 
 /** "Class 8", or "College" for the placement bank at class 13 and above (integration, 11 Oct 2026). */
 function classLevelLabel(t: ReturnType<typeof useT>, classLevel: number): string {
@@ -117,6 +117,8 @@ function ChildPractice() {
     queryFn: async () => familyParentPracticeSchema.parse(unwrap(await api().get(`/api/v1/family/practice${childQuery(childId)}`))),
   });
   const d = query.data;
+  // TA-167: the switcher stays beside a refused child (a 402 for one without the plan), so the other can be reached.
+  const pupils = useSwitcherChildren(d?.children, query.isError);
   const name = d?.childName ?? "";
   const childBoard = d?.schoolBoard ?? null;
   // college-content (12 Oct 2026): at a college no board chips; each card names its section (and a stream bank its programme).
@@ -133,7 +135,7 @@ function ChildPractice() {
   };
   return (
     <Screen title={d ? t("practice.parentPracticeTitle", { name }) : t("nav.practice")} description={d ? t("practice.parentPracticeIntro", { name }) : undefined} refreshing={query.isRefetching} onRefresh={() => void query.refetch()}>
-      {d ? <ChildSwitcher pupils={d.children} selectedId={childId ?? firstChild(d.children)?.studentMembershipId ?? null} onSelect={(id) => { setChildId(id); setBoardChosen(null); }} /> : null}
+      <ChildSwitcher pupils={pupils} selectedId={childId ?? firstChild(pupils)?.studentMembershipId ?? null} onSelect={(id) => { setChildId(id); setBoardChosen(null); }} />
       {d ? (
         <Note tone="accent">
           <Text variant="sm">{t("practice.childPlaysOwn")}</Text>

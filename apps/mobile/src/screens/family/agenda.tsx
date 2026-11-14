@@ -10,7 +10,7 @@ import { unwrap } from "@/lib/query";
 import { useLocale, useT } from "@/lib/i18n";
 import { useTheme } from "@/lib/theme";
 import { useRole } from "@/lib/session";
-import { Chips, ChildSwitcher, formatDateKey, formatInstant, openWeb, param, Pill } from "./shared";
+import { Chips, ChildSwitcher, formatDateKey, formatInstant, openWeb, param, Pill, useSwitcherChildren } from "./shared";
 import { money } from "../shared/fees";
 
 /**
@@ -26,7 +26,11 @@ const ENROL_KEY = { ENROLLED: "agenda.enrolled", CONSENT_WAITING: "agenda.consen
 
 /** Where a row's web href goes on the phone: a screen when the app has one, the web otherwise. Exported for the test. */
 export function agendaTarget(href: string): { pathname: string; params?: Record<string, string> } | null {
-  if (href.startsWith("/student/fees") || href.startsWith("/parent/fees")) return { pathname: "/(app)/fees" };
+  if (href.startsWith("/student/fees") || href.startsWith("/parent/fees")) {
+    // The row's child (?child=, a guardian's agenda) goes with it, so Fees opens on that child (TA-168).
+    const query = Object.fromEntries(new URL(href, "https://app.local").searchParams.entries());
+    return Object.keys(query).length ? { pathname: "/(app)/fees", params: query } : { pathname: "/(app)/fees" };
+  }
   return screenFor(href);
 }
 
@@ -47,6 +51,11 @@ export function FamilyAgenda() {
     enabled: role === "PARENT" || role === "STUDENT",
   });
   const d = query.data;
+  // TA-167: a guardian's switcher stays beside a refused child.
+  const pupils = useSwitcherChildren(
+    d?.children.map((c) => ({ guardianshipId: "", studentUserId: "", relation: "", schoolId: "", ...c })),
+    role === "PARENT" && query.isError,
+  );
   // decision 0007: a pupil enrols themself, a guardian the agenda's child, from the row; the agenda then re-reads.
   const enrol = useMutation({
     mutationFn: async ({ competitionId }: { competitionId: string; title: string }) => {
@@ -72,9 +81,7 @@ export function FamilyAgenda() {
   return (
     <Screen title={t("agenda.title")} description={d ? (role === "PARENT" ? t("agenda.intro", { name: d.student.name, days: d.days }) : t("agenda.introPupil", { days: d.days })) : undefined} refreshing={query.isRefetching} onRefresh={() => void query.refetch()}>
       {role !== "PARENT" && role !== "STUDENT" ? <Empty title={t("agenda.title")} body={t("fees.refuseFamily")} action={<Button label={t("nav.messages")} variant="secondary" onPress={() => router.push("/(app)/messages" as never)} />} /> : null}
-      {d && role === "PARENT" && d.children.length > 1 ? (
-        <ChildSwitcher pupils={d.children.map((c) => ({ guardianshipId: "", studentUserId: "", relation: "", schoolId: "", ...c }))} selectedId={d.student.studentMembershipId} onSelect={setChildId} />
-      ) : null}
+      {role === "PARENT" ? <ChildSwitcher pupils={pupils} selectedId={d?.student.studentMembershipId ?? childId} onSelect={setChildId} /> : null}
       <Chips label={t("agenda.title")} value={days} onChange={setDays} options={[{ value: "14", label: t("agenda.days14") }, { value: "30", label: t("agenda.days30") }]} />
       {query.isPending && (role === "PARENT" || role === "STUDENT") ? <Loading /> : null}
       {query.isError ? <Failed error={query.error} onRetry={() => void query.refetch()} /> : null}

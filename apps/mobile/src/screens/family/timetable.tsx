@@ -10,7 +10,7 @@ import { unwrap } from "@/lib/query";
 import { useLocale, useT } from "@/lib/i18n";
 import { useTheme } from "@/lib/theme";
 import { useRole } from "@/lib/session";
-import { ChildLeftBanner, ChildSwitcher, childQuery, formatDateKey, formatTimeRange, param, weekdayName } from "./shared";
+import { ChildLeftBanner, ChildSwitcher, childQuery, formatDateKey, formatTimeRange, param, useSwitcherChildren, weekdayName } from "./shared";
 
 type Grid = z.infer<typeof familyTimetableSchema>["grid"];
 type Slot = Grid["slots"][number];
@@ -37,6 +37,8 @@ export function FamilyTimetable() {
     enabled: role !== null,
   });
   const d = query.data;
+  // TA-167: a guardian's switcher stays beside a refused child.
+  const pupils = useSwitcherChildren(d?.children, isParent && query.isError);
   const name = d?.child?.name ?? "";
   const weekOf = d ? formatDateKey(d.weekOf, locale, { day: "numeric", month: "long" }) : "";
   return (
@@ -46,7 +48,7 @@ export function FamilyTimetable() {
       refreshing={query.isRefetching}
       onRefresh={() => void query.refetch()}
     >
-      {isParent && d ? <ChildSwitcher pupils={d.children} selectedId={d.child?.studentMembershipId ?? childId} onSelect={setChildId} /> : null}
+      {isParent ? <ChildSwitcher pupils={pupils} selectedId={d?.child?.studentMembershipId ?? childId} onSelect={setChildId} /> : null}
       {d?.child?.leftAt ? <ChildLeftBanner name={name} leftAt={d.child.leftAt} /> : null}
       {d ? (
         <>

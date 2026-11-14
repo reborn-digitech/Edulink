@@ -212,7 +212,8 @@ export function screenFor(url: string): ScreenTarget | null {
   if (p.startsWith("/remarks/") && seg[2] && seg.length === 3) return { pathname: "/(app)/messages/thread", params: { threadId: seg[2] } };
   if ((p.startsWith("/teacher/classes/") || p.startsWith("/principal/classes/") || p.startsWith("/admin/classes/")) && seg[3] && seg.length === 4 && seg[3] !== "new") return { pathname: "/(app)/classes/detail", params: { classId: seg[3] } };
   if (p.startsWith("/mentoring/") && seg[2]) return { pathname: "/(app)/mentoring/thread", params: { threadId: seg[2] } };
-  if (p.startsWith("/competitions/") && seg[2] && seg[2] !== "new") return { pathname: "/(app)/competitions/detail", params: { competitionId: seg[2] } };
+  // The query goes with it (TA-168): a guardian's agenda names the child (?child=), whose Enrol the detail draws.
+  if (p.startsWith("/competitions/") && seg[2] && seg[2] !== "new") return { pathname: "/(app)/competitions/detail", params: { ...q, competitionId: seg[2] } };
   if (p.startsWith("/enquiries/") && seg[2]) return { pathname: "/(app)/enquiries/detail", params: { enquiryId: seg[2] } };
   if (p.startsWith("/report-cards/") && seg[2]) return { pathname: "/(app)/exams", params: { cardId: seg[2] } };
   return null;

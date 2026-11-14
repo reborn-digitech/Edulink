@@ -1,10 +1,12 @@
 import { useEffect, useState, type ReactNode } from "react";
 import { Linking, Pressable, ScrollView, View } from "react-native";
 import type { z } from "zod";
-import type { FamilyChild, familyExamsSchema } from "@edulink/contracts";
+import { useQuery } from "@tanstack/react-query";
+import { familyChildrenSchema, type FamilyChild, type familyExamsSchema } from "@edulink/contracts";
 import type { Translate, TranslationKey } from "@edulink/i18n";
 import { Button, Card, Row, Text } from "@/components";
-import { API_BASE } from "@/lib/api";
+import { API_BASE, api } from "@/lib/api";
+import { unwrap } from "@/lib/query";
 import { formatWith, latn as latnOf, weekdayName as weekdayNameOf } from "@/lib/dates";
 import { webPathUrl } from "@/lib/links";
 import { useLocale, useT } from "@/lib/i18n";
@@ -187,6 +189,25 @@ export function useAuthHeaders(): Record<string, string> | null {
  */
 export function firstChild<T extends { studentMembershipId: string; leftAt?: string | null }>(pupils: readonly T[]): T | undefined {
   return pupils.find((c) => !c.leftAt) ?? pupils[0];
+}
+
+/**
+ * The children a guardian's switcher lists (TA-167): the screen's own answer while it has one; when the chosen child's
+ * read is refused (a 402 for a child without the plan, a 403 for an adult at a college who has not shared it) the list
+ * the screen last had, or else the guardian's own list of children, as Health and Record read it; so the guardian can
+ * always reach the other child. `refused` is the screen's read in error.
+ */
+export function useSwitcherChildren(fromAnswer: FamilyChild[] | undefined, refused: boolean): FamilyChild[] {
+  const [last, setLast] = useState<FamilyChild[] | null>(null);
+  // Kept when the list changes, compared by the children it holds: a caller may map its answer afresh on every draw.
+  const ids = (list: FamilyChild[] | null | undefined) => (list ?? []).map((c) => `${c.studentMembershipId}:${c.name}:${c.leftAt ?? ""}`).join("|");
+  if (fromAnswer && ids(fromAnswer) !== ids(last)) setLast(fromAnswer);
+  const listed = useQuery({
+    queryKey: ["family", "children"],
+    enabled: refused && !fromAnswer && !last,
+    queryFn: async () => familyChildrenSchema.parse(unwrap(await api().get("/api/v1/family/children"))),
+  });
+  return fromAnswer ?? last ?? listed.data?.children ?? [];
 }
 
 export function ChildSwitcher({ pupils, selectedId, onSelect }: { pupils: FamilyChild[]; selectedId: string | null; onSelect: (studentMembershipId: string) => void }) {

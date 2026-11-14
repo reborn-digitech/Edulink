@@ -135,7 +135,7 @@ describe("exams and report cards", () => {
     expect(screen.getByText("1 ZZ Road, Pune, 411001")).toBeTruthy();
     expect(screen.getByText("ZZ School")).toHaveStyle({ color: "#123456" });
     expect(screen.getByText("88.5% · A1")).toBeTruthy();
-    expect(screen.getByText("9.5")).toBeTruthy();
+    expect(screen.getByText("9.50")).toBeTruthy(); // two decimals, as the web page and the PDF print it (TA-543)
     expect(screen.getByText("ZZ Maths")).toBeTruthy();
     expect(screen.getByText("82.5% · A2 · 9")).toBeTruthy();
     expect(screen.getByText("ZZ Unit test 1 18/20 (90%) · ZZ Mid-term 60/80 (75%)")).toBeTruthy();
@@ -152,7 +152,7 @@ describe("exams and report cards", () => {
     const text = (share.mock.calls.at(-1)![0] as { message: string }).message;
     expect(text).toContain("ZZ Maths: 82.5% · A2 · 9");
     expect(text).toContain("ZZ Discipline: A · Outstanding — ZZ Always on time.");
-    expect(text).toContain("Grade points: 9.5");
+    expect(text).toContain("Grade points: 9.50");
   });
 
   it("a layout that hides the attendance, the remark and the co-scholastic block hides them", async () => {
@@ -164,7 +164,7 @@ describe("exams and report cards", () => {
     expect(screen.queryByText("Attendance")).toBeNull();
     expect(screen.queryByText("Keep it up.")).toBeNull();
     expect(screen.queryByText("ZZ Discipline")).toBeNull();
-    expect(screen.queryByText("9.5")).toBeNull();
+    expect(screen.queryByText("9.50")).toBeNull();
     expect(screen.queryByText("1 ZZ Road, Pune, 411001")).toBeNull();
   });
 

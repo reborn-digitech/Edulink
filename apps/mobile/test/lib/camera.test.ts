@@ -44,7 +44,7 @@ describe("photographing work for a hand-in", () => {
     permission.mockResolvedValue({ granted: true, status: "granted" });
     camera.mockResolvedValue({ canceled: false, assets: [{ uri: "file:///cache/IMG_1.jpg", fileName: "IMG_1.jpg", mimeType: "image/jpeg", width: 3000, height: 4000 }] });
     const { calls } = clientAnswering(() => new Response(JSON.stringify({ fileId: "file_9", mime: "image/jpeg", size: 88 }), { status: 201 }));
-    await expect(takePhotoAndUpload("Could not upload")).resolves.toEqual({ picked: { fileId: "file_9", mime: "image/jpeg", size: 88, name: "IMG_1.jpg" } });
+    await expect(takePhotoAndUpload("Could not upload")).resolves.toEqual({ picked: { fileId: "file_9", mime: "image/jpeg", size: 88, name: "IMG_1.jpg", localUri: expect.any(String) } });
     expect(camera).toHaveBeenCalledWith(expect.objectContaining({ mediaTypes: ["images"], exif: false, quality: 0.7 }));
     expect(calls[0]!.url).toBe("http://api.test/api/v1/uploads");
     expect(calls[0]!.init.body).toBeInstanceOf(FormData);

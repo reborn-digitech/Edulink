@@ -5,7 +5,7 @@ import { renderApp } from "../utils";
 import { callsTo, fakeApi, json, offline, refusal, tap, typeInto } from "./teacher-support";
 
 const mockRouter = { push: jest.fn(), replace: jest.fn(), params: { from: "/more" } as Record<string, string> };
-jest.mock("expo-router", () => ({ useRouter: () => mockRouter, useLocalSearchParams: () => mockRouter.params }));
+jest.mock("expo-router", () => ({ useRouter: () => mockRouter, useLocalSearchParams: () => mockRouter.params, useFocusEffect: () => undefined }));
 
 const ATTACH = "We attach: Test, iOS, Shalaghar 0.1.0 (1), and the screen you came from (/more). Nothing else.";
 

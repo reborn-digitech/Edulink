@@ -55,13 +55,8 @@ export function leaveKindLabel(t: (key: TranslationKey) => string, kind: string)
   return LEAVE_KINDS.includes(k) ? t(`leaveKind.${k}` as TranslationKey) : kind;
 }
 
-export function roleLabel(t: (key: TranslationKey) => string, role: string, plural = false): string {
-  // EXAM_CONTROLLER is role.examController: the code's words, joined in camel case.
-  const r = role.toLowerCase().replace(/_([a-z])/g, (_, c: string) => c.toUpperCase());
-  // "support": owner-batch-item2a (27 Oct 2026), support staff.
-  if (!["admin", "principal", "teacher", "student", "parent", "expert", "driver", "librarian", "warden", "alumnus", "faculty", "hod", "examController", "iqac", "tpo", "accounts", "recruiter", "support"].includes(r)) return role;
-  return t(`role.${r}${plural ? "Plural" : ""}` as TranslationKey);
-}
+// The one helper that names a role (TA-327), moved to lib so a component and every screen can use it.
+export { roleLabel } from "@/lib/role-label";
 
 export type ChipOption<T extends string> = { value: T; label: string };
 
