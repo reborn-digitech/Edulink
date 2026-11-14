@@ -52,7 +52,7 @@ export function RegistrationScreen() {
             <SwitchRow
               key={o.offeringId}
               label={`${o.courseCode} · ${o.courseName}`}
-              hint={[t(KIND_KEY[o.kind]!), t("academics.creditsN", { n: o.credits }), o.required ? t("academics.required") : null, o.seatsLeft === null ? null : t("academics.seatsLeft", { n: o.seatsLeft })].filter(Boolean).join(" · ")}
+              hint={[t(KIND_KEY[o.kind]!), (o.credits === 1 ? t("academics.creditsNOne", { n: 1 }) : t("academics.creditsN", { n: o.credits })), o.required ? t("academics.required") : null, o.seatsLeft === null ? null : o.seatsLeft === 1 ? t("academics.seatsLeftOne", { n: 1 }) : t("academics.seatsLeft", { n: o.seatsLeft })].filter(Boolean).join(" · ")}
               value={o.required || (picked[o.offeringId] ?? o.chosen)}
               disabled={o.required || !v.open}
               onChange={(next) => setPicked((p) => ({ ...p, [o.offeringId]: next }))}

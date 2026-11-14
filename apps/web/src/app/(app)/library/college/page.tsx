@@ -40,7 +40,7 @@ export default async function LibraryCollegePage({ searchParams }: { searchParam
       <div className="grid gap-3 sm:grid-cols-3 lg:grid-cols-5">
         <StatTile label={t("collegeOffice.ltTitles")} value={lt.titles} />
         <StatTile label={t("collegeOffice.ltPeriodicals")} value={lt.periodicals} />
-        <StatTile label={t("collegeOffice.ltEResources")} value={lt.eResources} hint={t("collegeOffice.ltOpens", { n: lt.eResourceClicks })} />
+        <StatTile label={t("collegeOffice.ltEResources")} value={lt.eResources} hint={lt.eResourceClicks === 1 ? t("collegeOffice.ltOpensOne", { n: 1 }) : t("collegeOffice.ltOpens", { n: lt.eResourceClicks })} />
         <StatTile label={t("collegeOffice.ltIssues", { year: lt.academicYear })} value={lt.issues} hint={t("collegeOffice.ltPerStudent", { n: lt.issuesPerStudent })} />
         <StatTile label={t("collegeOffice.ltSpend")} value={money(lt.expenditurePaise, locale)} />
       </div>

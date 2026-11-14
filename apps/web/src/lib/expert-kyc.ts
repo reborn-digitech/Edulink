@@ -263,7 +263,7 @@ export async function calendarFeed(token: string, t: Words, now: Date = new Date
       const held = seats.filter((b) => b.slotId === s.id);
       const schools = [...new Set(held.map((b) => schoolNames.get(b.schoolId)).filter((n): n is string => Boolean(n)))];
       const summary = `${kindWord(s.kind)}: ${s.title}`;
-      const description = s.cancelledAt ? t("expert.icsCancelled") : held.length === 0 ? t("expert.icsNoSeats") : t("expert.icsSeats", { taken: held.length, seats: s.seats, schools: schools.join(", ") || t("expert.icsSchoolsUnnamed") });
+      const description = s.cancelledAt ? t("expert.icsCancelled") : held.length === 0 ? t("expert.icsNoSeats") : t(s.seats === 1 ? "expert.icsSeatsOne" : "expert.icsSeats", { taken: held.length, seats: s.seats, schools: schools.join(", ") || t("expert.icsSchoolsUnnamed") });
       events.push({ uid: `gig-slot-${s.id}`, startsAt: s.startsAt, endsAt: s.endsAt, summary, description, cancelled: s.cancelledAt !== null });
     }
     const windows = await db.expertSlot.findMany({ where: { expertProfileId: profile.id, startsAt: { gte: since } }, orderBy: { startsAt: "asc" }, take: 500, select: { id: true, startsAt: true, endsAt: true, cancelledAt: true, booking: { select: { status: true, schoolId: true } } } });

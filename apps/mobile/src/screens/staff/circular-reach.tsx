@@ -94,7 +94,7 @@ export function StaffCircularReach() {
             </Text>
             {d.remindedAt ? (
               <Text variant="sm" tone="muted">
-                {t("circulars.reminded", { when: when(d.remindedAt), count: d.remindCount })}
+                {d.remindCount === 1 ? t("circulars.remindedOne", { when: when(d.remindedAt), count: 1 }) : t("circulars.reminded", { when: when(d.remindedAt), count: d.remindCount })}
               </Text>
             ) : null}
             {d.canRemind ? (

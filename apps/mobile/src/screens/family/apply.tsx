@@ -123,7 +123,7 @@ export function Apply() {
             <Card title={open.name}>
               {open.grades.map((g) => (
                 <Text key={g.grade} variant="sm">
-                  {`${t("admissions.grade")} ${g.grade} · ${t("admissions.seatsLeft", { remaining: g.remaining, seats: g.seats })}`}
+                  {`${t("admissions.grade")} ${g.grade} · ${(g.seats === 1 ? t("admissions.seatsLeftOne", { remaining: g.remaining, seats: 1 }) : t("admissions.seatsLeft", { remaining: g.remaining, seats: g.seats }))}`}
                 </Text>
               ))}
               {open.documents.length > 0 ? (
@@ -151,7 +151,7 @@ export function Apply() {
               {refusal ? <Failed message={refusal.message} /> : null}
               <Field label={t("admissions.childName")} value={childName} onChangeText={setChildName} maxLength={120} error={required(childName) ?? refusal?.issues.childName} />
               <Field label={t("admissions.childBirthdate")} hint="YYYY-MM-DD" value={birthdate} onChangeText={setBirthdate} autoCapitalize="none" keyboardType="numbers-and-punctuation" maxLength={10} error={(tried ? dateBad : undefined) ?? refusal?.issues.childBirthdate} />
-              <Chips label={t("admissions.gradeApplied")} value={grade} options={open.grades.map((g) => ({ value: g.grade, label: `${g.grade} · ${t("admissions.seatsLeft", { remaining: g.remaining, seats: g.seats })}` }))} onChange={setGrade} disabled={apply.isPending} />
+              <Chips label={t("admissions.gradeApplied")} value={grade} options={open.grades.map((g) => ({ value: g.grade, label: `${g.grade} · ${(g.seats === 1 ? t("admissions.seatsLeftOne", { remaining: g.remaining, seats: 1 }) : t("admissions.seatsLeft", { remaining: g.remaining, seats: g.seats }))}` }))} onChange={setGrade} disabled={apply.isPending} />
               {tried && !grade ? (
                 <Text variant="xs" tone="danger" accessibilityLiveRegion="polite">
                   {t("refusal.required")}

@@ -137,7 +137,7 @@ export async function ProviderScreen({ ctx }: { ctx: ActiveContext }) {
                         <div className="min-w-0 flex-1">
                           <p className="break-words text-sm font-medium text-fg">{s.title}</p>
                           <p className="text-xs text-fg-muted">
-                            {t(`gigs.kind${s.kind}`)} · {when(s.startsAt)} · {t("gigs.seatsOf", { taken: s.seatsTaken, seats: s.seats })}
+                            {t(`gigs.kind${s.kind}`)} · {when(s.startsAt)} · {t(s.seats === 1 ? "gigs.seatsOfOne" : "gigs.seatsOf", { taken: s.seatsTaken, seats: s.seats })}
                             {s.pricePaise > 0 ? ` · ${t("gigs.seatPrice", { amount: formatPaise(s.pricePaise, locale) })}` : ""}
                           </p>
                         </div>

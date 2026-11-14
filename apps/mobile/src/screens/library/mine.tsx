@@ -79,7 +79,7 @@ export function MyLibraryScreen() {
           <Card title={t("library.onLoanTitle")}>
             {open.length === 0 ? <Text tone="muted">{t("library.noLoans")}</Text> : null}
             {open.map((l) => (
-              <Row key={l.id} title={l.title} caption={`${t("library.dueOn", { date: dayOf(l.dueOn, locale) })}${l.overdueDays > 0 ? ` · ${t("library.daysLate", { days: l.overdueDays })}` : ""}`} />
+              <Row key={l.id} title={l.title} caption={`${t("library.dueOn", { date: dayOf(l.dueOn, locale) })}${l.overdueDays > 0 ? ` · ${l.overdueDays === 1 ? t("library.daysLateOne", { days: 1 }) : t("library.daysLate", { days: l.overdueDays })}` : ""}`} />
             ))}
           </Card>
           {d.reservations.length > 0 ? (

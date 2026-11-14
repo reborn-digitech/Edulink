@@ -142,7 +142,7 @@ export default async function SessionsPage({ searchParams }: { searchParams: Pro
                           <p className="break-words text-sm font-medium text-fg">{s.title}</p>
                           <p className="text-xs text-fg-muted">
                             {t(`gigs.kind${s.kind}`)} · {when(s.startsAt)} · {t("gigs.withProvider", { name: s.providerName })} ({t(`gigs.provider${s.providerKind}`)})
-                            {s.kind === "WORKSHOP" ? ` · ${t("gigs.seatsLeft", { count: s.seatsLeft })}` : ""}
+                            {s.kind === "WORKSHOP" ? ` · ${(s.seatsLeft === 1 ? t("gigs.seatsLeftOne", { count: 1 }) : t("gigs.seatsLeft", { count: s.seatsLeft }))}` : ""}
                           </p>
                           {s.providerHeadline && <p className="text-xs text-fg-muted">{s.providerHeadline}</p>}
                           {/* An alumni mentor's time is free and outside the allowance (G4-26): said where it is booked. */}

@@ -120,7 +120,7 @@ export default async function ReportPage({
                 ? t("reportView.percentOfDaysOne")
                 : t("reportView.percentOfDaysMany", { count: report.attendance.total })}
               {report.attendance.bestStreak > 1 && (
-                <> {t("reportView.longestRun", { count: report.attendance.bestStreak })}</>
+                <> {report.attendance.bestStreak === 1 ? t("reportView.longestRunOne", { count: 1 }) : t("reportView.longestRun", { count: report.attendance.bestStreak })}</>
               )}
             </p>
             <dl className="grid grid-cols-2 gap-2 sm:grid-cols-4">

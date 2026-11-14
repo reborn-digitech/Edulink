@@ -70,8 +70,8 @@ export function LoanList({ loans, t, locale, back, title, desk, showMember }: { 
                   <p className="mt-0.5 text-xs text-fg-muted">
                     {showMember ? `${l.memberName}${l.className ? ` (${l.className})` : ""} · ` : ""}
                     {l.returnedAt ? t("library.returnedOn", { date: day(l.returnedAt.slice(0, 10), locale) }) : t("library.dueOn", { date: day(l.dueOn, locale) })}
-                    {l.overdueDays > 0 ? ` · ${t("library.daysLate", { days: l.overdueDays })}` : ""}
-                    {l.renewedCount > 0 ? ` · ${t("library.renewedTimes", { count: l.renewedCount })}` : ""}
+                    {l.overdueDays > 0 ? ` · ${(l.overdueDays === 1 ? t("library.daysLateOne", { days: 1 }) : t("library.daysLate", { days: l.overdueDays }))}` : ""}
+                    {l.renewedCount > 0 ? ` · ${(l.renewedCount === 1 ? t("library.renewedTimesOne", { count: 1 }) : t("library.renewedTimes", { count: l.renewedCount }))}` : ""}
                   </p>
                 </div>
                 {desk && l.canRenew ? (

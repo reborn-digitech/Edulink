@@ -52,7 +52,7 @@ test("an expert offers a time, a pupil asks, a guardian agrees, the office reads
   // rating below) and passed when it was given twenty; against a production build here five of six offers drew at
   // 5.1 s and a keystroke a second after the click drew every one at once. src/lib/navigation.ts now nudges the
   // router after every refresh, so the twenty seconds are kept only as a margin for the runner.
-  await expect(mine).toContainText("0 of 1 seats taken", { timeout: 20_000 });
+  await expect(mine).toContainText("0 of 1 seat taken", { timeout: 20_000 });
 
   // The pupil sees it among what is open, with no link, and asks.
   const pupil = await open(browser, "STUDENT", baseURL!);
@@ -71,7 +71,7 @@ test("an expert offers a time, a pupil asks, a guardian agrees, the office reads
 
   // The expert reads who asked and from which school, through a booking that is a school's row.
   await expert.reload({ waitUntil: "networkidle" });
-  await expect(mine).toContainText("1 of 1 seats taken");
+  await expect(mine).toContainText("1 of 1 seat taken");
   await expect(mine.getByTestId("provider-seat")).toContainText("Waiting for a guardian");
   await expect(mine.getByTestId("provider-seat")).toContainText("ZZ Northgate School");
 
@@ -97,7 +97,7 @@ test("an expert offers a time, a pupil asks, a guardian agrees, the office reads
   await mine.getByTestId("seat-cancel-open").click();
   await mine.getByTestId("seat-cancel-reason").fill("ZZ e2e the launch is that morning");
   await mine.getByTestId("seat-cancel").click();
-  await expect(mine).toContainText("0 of 1 seats taken");
+  await expect(mine).toContainText("0 of 1 seat taken");
   await pupil.reload({ waitUntil: "networkidle" });
   await expect(seat).toContainText("Cancelled");
   await expect(seat.getByTestId("session-link")).toHaveCount(0);

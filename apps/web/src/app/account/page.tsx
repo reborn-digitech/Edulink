@@ -219,7 +219,9 @@ export default async function AccountPage({
                   // guardianless pupils as what it is — not forty names.
                   title={
                     contexts.children.every((c) => c.relation === "SCHOOL")
-                      ? t("switch.standinCount", { count: contexts.children.length })
+                      ? contexts.children.length === 1
+                        ? t("switch.standinCountOne", { count: 1 })
+                        : t("switch.standinCount", { count: contexts.children.length })
                       : contexts.children.length === 1
                         ? contexts.children[0]!.name
                         : t("switch.childrenCount", { count: contexts.children.length })

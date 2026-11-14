@@ -54,7 +54,7 @@ export default async function ConductPage({ params, searchParams }: { params: Pr
                 </p>
                 <div className="flex items-center gap-2">
                   <Badge tone={p.status === "MODERATED" ? "ok" : p.status === "SUBMITTED" ? "accent" : "neutral"}>{t(PAPER_STATUS_KEY[p.status]!)}</Badge>
-                  <span className="text-xs text-fg-muted">{t("examCell.opens", { count: p.opens })}</span>
+                  <span className="text-xs text-fg-muted">{p.opens === 1 ? t("examCell.opensOne", { count: 1 }) : t("examCell.opens", { count: p.opens })}</span>
                 </div>
               </div>
               {p.coMap.length ? <p className="text-xs text-fg-muted">{p.coMap.map((q) => `${q.question}→${q.co} (${q.marks})`).join(", ")}</p> : null}

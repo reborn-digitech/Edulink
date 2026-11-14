@@ -98,7 +98,7 @@ export default async function ApplyPage({
               {open.grades.map((g) => (
                 <li
                   key={g.grade}
-                >{`${t("admissions.grade")} ${g.grade} · ${t("admissions.seatsLeft", { remaining: g.remaining, seats: g.seats })}`}</li>
+                >{`${t("admissions.grade")} ${g.grade} · ${(g.seats === 1 ? t("admissions.seatsLeftOne", { remaining: g.remaining, seats: 1 }) : t("admissions.seatsLeft", { remaining: g.remaining, seats: g.seats }))}`}</li>
               ))}
               {open.closesAt && (
                 <li>

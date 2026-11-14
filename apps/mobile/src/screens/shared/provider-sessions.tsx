@@ -187,7 +187,7 @@ export function ProviderSessions() {
                     {s.title}
                   </Text>
                   <Text variant="xs" tone="muted">
-                    {[t(SESSION_KIND[s.kind]), when(s.startsAt), t("gigs.seatsOf", { taken: s.seatsTaken, seats: s.seats }), s.pricePaise > 0 ? t("gigs.seatPrice", { amount: money(s.pricePaise, locale) }) : null].filter(Boolean).join(" · ")}
+                    {[t(SESSION_KIND[s.kind]), when(s.startsAt), t(s.seats === 1 ? "gigs.seatsOfOne" : "gigs.seatsOf", { taken: s.seatsTaken, seats: s.seats }), s.pricePaise > 0 ? t("gigs.seatPrice", { amount: money(s.pricePaise, locale) }) : null].filter(Boolean).join(" · ")}
                   </Text>
                   {s.cancelled ? <Pill label={t("gigs.slotIsCancelled")} /> : null}
                   {!s.cancelled && !s.started ? <ReasonThen label={t("gigs.cancelSlot")} about={s.title} busy={running(`/api/v1/gigs/slots/${s.id}/cancel`)} onSubmit={(reason) => act.mutate({ path: `/api/v1/gigs/slots/${s.id}/cancel`, body: { reason }, done: t("gigs.slotCancelled") })} /> : null}

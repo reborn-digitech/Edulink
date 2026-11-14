@@ -49,7 +49,7 @@ export async function ReachReport({ reach, office, timezone }: { reach: Circular
         <div>
           {reach.deliveredAt ? t("circulars.delivered", { when: when(reach.deliveredAt) }) : reach.deliveryQueuedAt ? t("circulars.queued") : t("circulars.notDelivered")}
         </div>
-        {reach.remindedAt && <div>{t("circulars.reminded", { when: when(reach.remindedAt), count: reach.remindCount })}</div>}
+        {reach.remindedAt && <div>{reach.remindCount === 1 ? t("circulars.remindedOne", { when: when(reach.remindedAt), count: 1 }) : t("circulars.reminded", { when: when(reach.remindedAt), count: reach.remindCount })}</div>}
       </dl>
 
       {/* ---- the chase, and the ways out of the page ---- */}

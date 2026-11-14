@@ -153,7 +153,7 @@ function AnswerItem({ answer, pending, children }: { answer: ViduraAnswer; pendi
             <Badge tone="outline" size="sm">{t(ROLE_META[answer.role].labelKey)}</Badge>
             <Badge tone="outline" size="sm">{t(answer.language === "hi" ? "gigs.hindi" : answer.language === "mr" ? "gigs.marathi" : "gigs.english")}</Badge>
             {answer.verdict !== "ANSWERED" ? <Badge tone="warn" size="sm">{t("viduraOps.notAnswered")}</Badge> : null}
-            {answer.state !== "DRAFT" ? <span>{t("viduraOps.hits", { count: answer.hits, when: when(answer.lastHitAt) })}</span> : null}
+            {answer.state !== "DRAFT" ? <span>{answer.hits === 1 ? t("viduraOps.hitsOne", { count: 1, when: when(answer.lastHitAt) }) : t("viduraOps.hits", { count: answer.hits, when: when(answer.lastHitAt) })}</span> : null}
           </div>
           <p className="text-sm font-medium text-fg" lang={answer.language}>
             {answer.question}

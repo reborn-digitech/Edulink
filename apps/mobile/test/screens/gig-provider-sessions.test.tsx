@@ -26,7 +26,7 @@ describe("a provider's sessions", () => {
     gate.open(() => json(view()));
     expect(await screen.findByText("Given so far: 3 one-to-ones and 1 workshops. Your first 10 one-to-ones and 2 workshops are free.")).toBeTruthy();
     expect(screen.getByText("This month 1 of the 2 one-to-ones asked; this quarter 0 of the 1 workshops asked.")).toBeTruthy();
-    expect(screen.getByText(/1 of 1 seats taken/)).toBeTruthy();
+    expect(screen.getByText(/1 of 1 seat taken/)).toBeTruthy();
     expect(screen.getByText("ZZ Asha · ZZ School")).toBeTruthy();
 
     // With no date, nothing is sent and the form says what is missing.

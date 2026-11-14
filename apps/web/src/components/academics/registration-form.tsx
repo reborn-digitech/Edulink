@@ -38,7 +38,7 @@ export function RegistrationForm({ t, view, action, hidden = {} }: { t: Translat
                   <input type="checkbox" name="offeringId" value={o.offeringId} defaultChecked={o.chosen || o.required} disabled={o.required || !view.open} className="size-5" />
                   <span className="flex-1">
                     <span className="font-medium text-fg">{o.courseCode}</span> {o.courseName}
-                    <span className="block text-fg-muted">{[t(KIND_KEY[o.kind]!), t("academics.creditsN", { n: o.credits }), o.facultyName, o.divisionName ?? t("academics.sharedAcrossDivisions"), o.seatsLeft === null ? null : t("academics.seatsLeft", { n: o.seatsLeft })].filter(Boolean).join(" · ")}</span>
+                    <span className="block text-fg-muted">{[t(KIND_KEY[o.kind]!), (o.credits === 1 ? t("academics.creditsNOne", { n: 1 }) : t("academics.creditsN", { n: o.credits })), o.facultyName, o.divisionName ?? t("academics.sharedAcrossDivisions"), o.seatsLeft === null ? null : o.seatsLeft === 1 ? t("academics.seatsLeftOne", { n: 1 }) : t("academics.seatsLeft", { n: o.seatsLeft })].filter(Boolean).join(" · ")}</span>
                   </span>
                   {o.required ? <Badge tone="info">{t("academics.required")}</Badge> : null}
                 </label>

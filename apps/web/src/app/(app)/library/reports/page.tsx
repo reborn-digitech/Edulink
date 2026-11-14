@@ -54,7 +54,7 @@ export default async function LibraryReportsPage() {
               <ol className="list-decimal space-y-1 pl-5 text-sm text-fg">
                 {r.mostBorrowed.map((b) => (
                   <li key={b.titleId}>
-                    {b.title} <span className="text-fg-muted">· {t("library.timesLent", { count: b.count })}</span>
+                    {b.title} <span className="text-fg-muted">· {b.count === 1 ? t("library.timesLentOne", { count: 1 }) : t("library.timesLent", { count: b.count })}</span>
                   </li>
                 ))}
               </ol>

@@ -53,7 +53,7 @@ export default async function CollegeCalendarPage({ searchParams }: { searchPara
                       </Badge>
                     ) : (
                       <Badge tone="info" size="sm">
-                        {t("operatorCollege.opensIn", { count: item.daysToOpen })}
+                        {item.daysToOpen === 1 ? t("operatorCollege.opensInOne", { count: 1 }) : t("operatorCollege.opensIn", { count: item.daysToOpen })}
                       </Badge>
                     )
                   }

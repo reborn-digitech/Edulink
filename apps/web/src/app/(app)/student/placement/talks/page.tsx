@@ -56,7 +56,7 @@ export default async function StudentTalksPage() {
                   <div className="flex flex-wrap items-center gap-2">
                     {x.mine?.answer ? <Badge tone={x.mine.answer === "GOING" ? "accent" : "neutral"}>{x.mine.answer === "GOING" ? t("talks.youGoing") : t("talks.youNotGoing")}</Badge> : null}
                     {x.mine?.attendance ? <Badge tone={x.mine.attendance === "PRESENT" ? "ok" : "neutral"}>{x.mine.attendance === "PRESENT" ? t("talks.youPresent") : t("talks.youAbsent")}</Badge> : null}
-                    {x.capacity !== null && !x.started ? <span className="text-fg-muted">{t("talks.seatsLeft", { count: Math.max(0, x.capacity - x.counts.going) })}</span> : null}
+                    {x.capacity !== null && !x.started ? <span className="text-fg-muted">{x.capacity - x.counts.going === 1 ? t("talks.seatsLeftOne", { count: 1 }) : t("talks.seatsLeft", { count: Math.max(0, x.capacity - x.counts.going) })}</span> : null}
                   </div>
                   {x.canAnswer || (x.status === "SCHEDULED" && !x.started && x.mine?.answer === "GOING") ? (
                     <div className="flex flex-wrap gap-2">

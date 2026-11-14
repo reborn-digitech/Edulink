@@ -293,7 +293,7 @@ export function FamilySessions() {
                         {s.title}
                       </Text>
                       <Text variant="xs" tone="muted">
-                        {[t(SESSION_KIND[s.kind]), when(s.startsAt), [t("gigs.withProvider", { name: s.providerName }), `(${t(PROVIDER_KIND[s.providerKind])})`].join(" "), s.kind === "WORKSHOP" ? t("gigs.seatsLeft", { count: s.seatsLeft }) : null].filter(Boolean).join(" · ")}
+                        {[t(SESSION_KIND[s.kind]), when(s.startsAt), [t("gigs.withProvider", { name: s.providerName }), `(${t(PROVIDER_KIND[s.providerKind])})`].join(" "), s.kind === "WORKSHOP" ? (s.seatsLeft === 1 ? t("gigs.seatsLeftOne", { count: 1 }) : t("gigs.seatsLeft", { count: s.seatsLeft })) : null].filter(Boolean).join(" · ")}
                       </Text>
                       {s.pricePaise > 0 ? (
                         <Text variant="xs" bold>

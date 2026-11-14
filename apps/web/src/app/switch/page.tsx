@@ -110,7 +110,9 @@ export default async function SwitchPage() {
                 <ContextButton
                   title={
                     standinsOnly
-                      ? t("switch.standinCount", { count: children.length })
+                      ? children.length === 1
+                        ? t("switch.standinCountOne", { count: 1 })
+                        : t("switch.standinCount", { count: children.length })
                       : children.length === 1
                         ? children[0]!.name
                         : t("switch.childrenCount", { count: children.length })

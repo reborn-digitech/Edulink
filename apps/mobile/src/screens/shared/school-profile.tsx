@@ -151,7 +151,7 @@ export function SchoolProfile() {
                   </Text>
                   {cycle.grades.map((g) => (
                     <Text key={g.grade} variant="sm">
-                      {`${t("admissions.grade")} ${g.grade} · ${t("admissions.seatsLeft", { remaining: g.remaining, seats: g.seats })}`}
+                      {`${t("admissions.grade")} ${g.grade} · ${(g.seats === 1 ? t("admissions.seatsLeftOne", { remaining: g.remaining, seats: 1 }) : t("admissions.seatsLeft", { remaining: g.remaining, seats: g.seats }))}`}
                     </Text>
                   ))}
                   {cycle.closesAt ? (

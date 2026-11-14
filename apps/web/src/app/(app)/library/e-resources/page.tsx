@@ -102,7 +102,7 @@ function EResourceDesk({ items, t, canWrite }: { items: readonly DeskItem[]; t: 
                         )}
                       </p>
                       <p className="text-xs text-fg-muted">
-                        {[t(`collegeOffice.ekind${e.kind}`), t("schoolForms.eresOpenedTimes", { n: e.clicks })].join(" · ")}
+                        {[t(`collegeOffice.ekind${e.kind}`), (e.clicks === 1 ? t("schoolForms.eresOpenedTimesOne", { n: 1 }) : t("schoolForms.eresOpenedTimes", { n: e.clicks }))].join(" · ")}
                       </p>
                       <p className="break-all text-xs text-fg-subtle">{e.url}</p>
                     </div>

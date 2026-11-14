@@ -61,14 +61,23 @@ describe("TA-482: Hindi names the engineering stream one way along the NBA pages
   });
 });
 
-/** A placeholder followed by a plural noun: a counted sentence that reads wrongly at one unless it has a One form. */
-const COUNTED = /\{\w+\} (?:[a-z-]+ )?(?:days|weeks|months|years|hours|minutes|pupils|students|schools|questions|sessions|teachers|classes|files|items|entries|people|children|lessons|subjects|members|records|rows|times|seats|papers|books|messages|notices)\b/;
+/**
+ * A placeholder followed by a plural noun: a counted sentence that reads wrongly at one unless it has a One form.
+ * The owner's decision on TA-332 (14 November 2026) widened the nouns to every plural noun the dictionary puts after
+ * a number (marks, credits, cards, workshops, beds and the rest were missed before), and a placeholder that holds a
+ * word rather than a number ({name}, {school}, {title} and their like) is not a count: "{school} offers {name}".
+ */
+const COUNTED = /\{(?!(?:name|school|title|term|subject|service|role|module|host|company|job|round|date|series|claimant|feature|board|provider|child|className|amount)\})\w+\} (?:[a-z-]+ )?(?:days|weeks|months|years|hours|minutes|pupils|students|schools|questions|sessions|teachers|classes|files|items|entries|people|children|lessons|subjects|members|records|rows|times|seats|papers|books|messages|notices|marks|credits|cards|workshops|beds|invitations|invites|pieces|lines|chapters|pictures|points|characters|families|publications|projects|cases|results|requests|changes|drafts|periods|documents|answers|boarders|groups|forms|postings|scenarios|devices|posts|comments|applications|applicants|badges|runs|reports|slots|guardians|parents|instalments|codes|tries|claims|copies|positions|attempts|graduates|alumni|concessions|companies|colleges|departments|steps|mentors|mentees|drives|offers|internships|entrepreneurs|lakhs|pages|views|opens|titles|enquiries|entrants|vacancies|assignments|sittings|jobs|boxes|ratings|clashes|texts|segments|fields|sections|payments|registers|incidents|translations|rides|riders|salaries|screens|metrics|responses|parts|duties|tickets|backlogs|meets|gifts|things|batches|candidates|activities|experiments|components)\b/;
 /**
  * Counted English sentences without a One sibling, as they stood once TA-332's reached sentences had theirs: 299 when
  * only `<key>One` counted as a sibling, 248 once a `<base>Many` with its `<base>One` counts too (the coordinator, on
- * merging TA-388's report counts, 14 November 2026), so the ratchet stays at today's number.
+ * merging TA-388's report counts, 14 November 2026), so the ratchet stays at today's number. The owner's decision on
+ * TA-332 (14 November 2026) widened the nouns, which made the true count 416, and gave seventeen sentences that show 1
+ * their form for one, and then the two "{taken} of {seats} seats taken" lines of a one-to-one theirs: 397 now. The cap
+ * is the true count, not a margin: tests/ta-decision-332-counted-at-one.test.ts fails when it is not, so a sentence
+ * given its form for one lowers it in the same change.
  */
-const COUNTED_WITHOUT_ONE_CEILING = 248;
+const COUNTED_WITHOUT_ONE_CEILING = 397;
 
 describe("TA-332: a counted English sentence reads correctly at one", () => {
   it("TA-332: the operator's due line, the teacher's pupils and the bulk removal each have a sentence for one", () => {

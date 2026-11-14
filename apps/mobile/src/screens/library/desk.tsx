@@ -169,7 +169,7 @@ function Overdue({ onDesk }: { onDesk: () => void }) {
       <Button label={t("library.sendNotices")} busy={send.isPending} onPress={() => send.mutate()} />
       <Card title={t("library.overdueCount", { count: list.data.items.length })}>
         {list.data.items.map((l) => (
-          <Row key={l.id} title={`${l.title} · ${l.accession}`} caption={`${l.memberName}${l.className ? ` (${l.className})` : ""} · ${t("library.dueOn", { date: dayOf(l.dueOn, locale) })} · ${t("library.daysLate", { days: l.overdueDays })}`} />
+          <Row key={l.id} title={`${l.title} · ${l.accession}`} caption={`${l.memberName}${l.className ? ` (${l.className})` : ""} · ${t("library.dueOn", { date: dayOf(l.dueOn, locale) })} · ${l.overdueDays === 1 ? t("library.daysLateOne", { days: 1 }) : t("library.daysLate", { days: l.overdueDays })}`} />
         ))}
       </Card>
     </>

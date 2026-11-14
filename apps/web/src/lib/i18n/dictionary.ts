@@ -15,9 +15,10 @@ export { format, translatorFor, type Dictionary, type Translate, type Translatio
  * already store would be a large migration to arrive where we started.
  *
  * The cost is real and worth naming: no ICU message format, so no gendered
- * agreement and no plural categories. Every counted string in `en.ts` is written
- * to read correctly at one and at many in all three languages. When one cannot
- * be, that is the day to reach for a library — not before.
+ * agreement and no plural categories. A counted string that a reader can see at
+ * one has a `<key>One` sibling its caller chooses at one; not every counted
+ * string has one yet (TA-332: see the header of `en.ts`). When choosing cannot
+ * serve, that is the day to reach for a library — not before.
  */
 
 /** Same shape as `en`, but every leaf widened from its literal to `string`. */

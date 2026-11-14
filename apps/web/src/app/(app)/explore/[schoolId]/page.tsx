@@ -210,7 +210,7 @@ export default async function SchoolProfilePage({
                 <p className="text-sm font-medium text-fg">{t("admissions.applyIntro", { cycle: cycle.name, year: cycle.academicYearName })}</p>
                 <ul className="space-y-1 text-sm text-fg-muted">
                   {cycle.grades.map((g) => (
-                    <li key={g.grade}>{`${t("admissions.grade")} ${g.grade} · ${t("admissions.seatsLeft", { remaining: g.remaining, seats: g.seats })}`}</li>
+                    <li key={g.grade}>{`${t("admissions.grade")} ${g.grade} · ${(g.seats === 1 ? t("admissions.seatsLeftOne", { remaining: g.remaining, seats: 1 }) : t("admissions.seatsLeft", { remaining: g.remaining, seats: g.seats }))}`}</li>
                   ))}
                   {cycle.closesAt && <li>{t("admissions.closesOn", { date: formatDateKey(cycle.closesAt, undefined, locale) })}</li>}
                   {cycle.documents.length > 0 && <li>{t("admissions.documentsAsked", { names: cycle.documents.map((d) => d.name).join(", ") })}</li>}

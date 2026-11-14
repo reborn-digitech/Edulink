@@ -98,7 +98,7 @@ describe("a circular's reach report", () => {
     expect(calls().filter((c) => c.line === `POST ${PATH}/remind`)).toHaveLength(1);
     await waitFor(() => expect(calls().filter((c) => c.line === `GET ${PATH}/reach`)).toHaveLength(2));
     expect(await screen.findByText("Chased less than a day ago")).toBeTruthy();
-    expect(screen.getByText(/^Chased .* · 1 times$/)).toBeTruthy();
+    expect(screen.getByText(/^Chased .* · 1 time$/)).toBeTruthy();
     expect(screen.queryByRole("button", { name: "Chase the rest" })).toBeNull();
   });
 

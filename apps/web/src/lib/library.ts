@@ -879,7 +879,7 @@ export async function renewLoan(ctx: ActiveContext, issueId: string): Promise<Li
   if (!i || i.returnedAt) throw new AccessError("library.refuseNotOnLoan", "NOT_FOUND");
   const today = todayKey(desk.timeZone);
   if (daysBetween(i.dueOn, today) > 0) throw new AccessError("library.refuseRenewOverdue");
-  if (i.renewedCount >= s.maxRenewals) throw new AccessError("library.refuseRenewLimit", "FORBIDDEN", { count: s.maxRenewals });
+  if (i.renewedCount >= s.maxRenewals) throw new AccessError(s.maxRenewals === 1 ? "library.refuseRenewLimitOne" : "library.refuseRenewLimit", "FORBIDDEN", { count: s.maxRenewals });
   const waiting = await db.libraryReservation.count({ where: { titleId: i.copy.titleId, memberId: { not: i.memberId }, fulfilledAt: null, cancelledAt: null, ...STILL_WAITING } });
   if (waiting > 0) throw new AccessError("library.refuseRenewQueue");
   const dueOn = addDaysToKey(today, loanDaysOf(s, i.member.kind));
