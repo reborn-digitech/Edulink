@@ -16,6 +16,7 @@ import { currentAcademicYear } from "./academic-year";
 import { notify } from "./notify";
 import { mayUse } from "./platform-features";
 import { consume } from "./rate-limit";
+import { NOT_A_STOP_REPLY, SKIPPED_WORDS, STOP_REPLY } from "./text-retention";
 import { MESSAGE_EVENTS, MESSAGE_TEMPLATES, OPT_OUT_FORM, isMessageTemplateKey, renderTemplate, smsSegments, whatsappVarOrder, type MessageEvent, type MessageTemplateKey } from "./message-templates";
 
 /**
@@ -189,6 +190,12 @@ async function monthlyCount(schoolId: string, now: Date, client: typeof db = db,
  * fail because a text did.
  */
 export async function deliverToUser(req: SendRequest): Promise<SendOutcome> {
+  // A STOP reply's row is the only record that its number said STOP (TA-457, decision 0002): a resend never rewrites
+  // it or clears its error; the number has opted out, and the row is answered as it stands.
+  if (req.resendRowId) {
+    const stopped = await db.outboundMessage.findFirst({ where: { id: req.resendRowId, ...STOP_REPLY }, select: { id: true, status: true } });
+    if (stopped) return { id: stopped.id, status: stopped.status, channel: null, skipReason: "opted-out" };
+  }
   const template = MESSAGE_TEMPLATES[req.templateKey];
   const [user, settings, school] = await Promise.all([
     db.user.findUnique({ where: { id: req.userId }, select: { id: true, phone: true, prefs: true, disabledAt: true } }),
@@ -221,8 +228,9 @@ export async function deliverToUser(req: SendRequest): Promise<SendOutcome> {
   const templateKey: MessageTemplateKey = viaOffice ? (OPT_OUT_FORM[req.templateKey] ?? req.templateKey) : req.templateKey;
   const body = renderTemplate(templateKey, locale, { school: school.name, ...req.vars });
 
+  // A SKIPPED text keeps no words (TA-457, decision 0002): it was never sent, and the office's report reads who, why and when.
   const skip = async (reason: SkipReason, channel: Channel | null = null, to = user?.phone ?? officeEntered ?? ""): Promise<SendOutcome> => {
-    const data = { schoolId: req.schoolId, userId: req.userId, to, channel: channel ?? "SMS", templateKey, locale, varsJson: writeJson(req.vars), body, status: "SKIPPED", skipReason: reason, segments: 0, broadcastId: req.broadcastId ?? null, purpose: req.purpose };
+    const data = { schoolId: req.schoolId, userId: req.userId, to, channel: channel ?? "SMS", templateKey, locale, ...SKIPPED_WORDS, status: "SKIPPED", skipReason: reason, segments: 0, broadcastId: req.broadcastId ?? null, purpose: req.purpose };
     const row = req.resendRowId
       ? await db.outboundMessage.update({ where: { id: req.resendRowId }, data: { ...data, error: null, providerSid: null, providerStatus: null }, select: { id: true } })
       : await db.outboundMessage.create({ data, select: { id: true } });
@@ -295,7 +303,7 @@ export async function deliverToUser(req: SendRequest): Promise<SendOutcome> {
  * it as "21610: …" and a refusal at send time as "… (code 21610)" (TA-435); both are read.
  */
 async function answeredStop(schoolId: string, to: string): Promise<boolean> {
-  const row = await db.outboundMessage.findFirst({ where: { schoolId, to, OR: [{ error: { startsWith: "21610" } }, { error: { contains: "(code 21610)" } }] }, select: { id: true } });
+  const row = await db.outboundMessage.findFirst({ where: { schoolId, to, ...STOP_REPLY }, select: { id: true } });
   return row !== null;
 }
 
@@ -708,7 +716,8 @@ export async function resendBroadcastFailures(ctx: ActiveContext, broadcastId: s
   const caller = office(ctx);
   const b = await db.broadcast.findFirst({ where: { id: broadcastId, schoolId: caller.schoolId }, select: { id: true } });
   if (!b) throw new AccessError("messaging.notFound", "NOT_FOUND");
-  const rows = await db.outboundMessage.findMany({ where: { broadcastId: b.id, status: { in: ["FAILED", "UNDELIVERED"] } } });
+  // A STOP reply's row is never tried again (TA-457): it is the record that the number opted out, kept for good.
+  const rows = await db.outboundMessage.findMany({ where: { broadcastId: b.id, status: { in: ["FAILED", "UNDELIVERED"] }, ...NOT_A_STOP_REPLY } });
   // Nothing to try again is an answer, not a use of the hour (the sweep samples the door on a notice with none).
   if (rows.length === 0) return { requeued: 0 };
   const gate = await consume(`broadcast-resend:${b.id}`, 1, RESEND_WINDOW_MS);
@@ -716,7 +725,8 @@ export async function resendBroadcastFailures(ctx: ActiveContext, broadcastId: s
   let requeued = 0;
   for (const row of rows) {
     const templateKey = baseTemplateKey(row.templateKey);
-    if (!row.userId || !templateKey) continue;
+    // A row blanked when its person left the school (TA-457) has no words to send again.
+    if (!row.userId || !templateKey || row.to === "") continue;
     const out = await deliverToUser({ schoolId: caller.schoolId, userId: row.userId, templateKey, vars: readJson<Record<string, string | number>>(row.varsJson, {}), purpose: row.purpose, broadcastId: b.id, resendRowId: row.id });
     if (out.skipReason === null) requeued += 1;
   }

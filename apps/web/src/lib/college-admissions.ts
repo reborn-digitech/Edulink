@@ -31,6 +31,7 @@ import { recordCounterPayment } from "./fees-payments";
 import { issueFirstSignIn } from "./first-signin";
 import { syncGradeLevel } from "./grade-level";
 import { collegeDesk, type Desk } from "./college-office";
+import { blankTextsOfLeavers, familyGuardiansOfPupil } from "./text-retention";
 import type { ActiveContext } from "./session";
 import type { Role } from "./constants";
 import type { Translate, TranslationKey } from "./i18n/dictionary";
@@ -725,6 +726,7 @@ export async function cancelAdmission(ctx: ActiveContext, id: string, input: { r
     }
     const refund = refundFor({ paidPaise, cautionPaise, cancelKey, lastKey: input.lastDateKey });
     let cancelledDemands = 0;
+    let textsBlanked = 0;
     if (cur.admittedMembershipId) {
       // THE SEAT'S UNPAID TERMS GO WITH IT (TA-079), as recordDeparture's do (A3-journeys-15): an instalment with
       // nothing paid against it is CANCELLED, the row kept, so the outstanding figure, the collection sheet and the
@@ -733,14 +735,19 @@ export async function cancelAdmission(ctx: ActiveContext, id: string, input: { r
       cancelledDemands = (await tx.feeDemand.updateMany({ where: { schoolId: d.schoolId, studentMembershipId: cur.admittedMembershipId, status: "OPEN", paidPaise: 0, allocations: { none: {} }, ...(feeTermId ? { id: { not: feeTermId } } : {}) }, data: { status: "CANCELLED" } })).count;
       await tx.programmeEnrolment.updateMany({ where: { studentMembershipId: cur.admittedMembershipId, programmeId: a.programmeId }, data: { status: "CANCELLED" } });
       await tx.membership.update({ where: { id: cur.admittedMembershipId }, data: { leftAt: now } });
+      // TA-457 (decision 0002): the student who gave the seat up, and each family guardian with no other student on
+      // the roll here, have left; the number and the words of their texts at the college are blanked, a STOP reply
+      // keeping its number.
+      const student = await tx.membership.findUniqueOrThrow({ where: { id: cur.admittedMembershipId }, select: { userId: true } });
+      textsBlanked = await blankTextsOfLeavers(tx, d.schoolId, [student.userId, ...(await familyGuardiansOfPupil(tx, cur.admittedMembershipId))]);
     }
     const moved = await tx.collegeApplication.updateMany({ where: { id: a.id, schoolId: d.schoolId, status: cur.status }, data: { status: "CANCELLED", cancelledAt: now, cancelReason: input.reason.trim().slice(0, 300), refundPaise: refund.refundPaise, refundSlab: refund.slab, refundRecordedAt: now } });
     if (moved.count !== 1) throw new AccessError("collegeOffice.refuseStep");
-    return { refund, paidPaise, cautionPaise, cancelledDemands };
+    return { refund, paidPaise, cautionPaise, cancelledDemands, textsBlanked };
   });
   const updated = await officeApp(d, id);
   if (!done) return applicationView(updated);
-  await audit({ schoolId: d.schoolId, actorUserId: d.userId, action: "college.admissions.cancel", targetType: "CollegeApplication", targetId: a.id, meta: { slab: done.refund.slab, refundPaise: done.refund.refundPaise, paidPaise: done.paidPaise, cautionPaise: done.cautionPaise, cancelledDemands: done.cancelledDemands } });
+  await audit({ schoolId: d.schoolId, actorUserId: d.userId, action: "college.admissions.cancel", targetType: "CollegeApplication", targetId: a.id, meta: { slab: done.refund.slab, refundPaise: done.refund.refundPaise, paidPaise: done.paidPaise, cautionPaise: done.cautionPaise, cancelledDemands: done.cancelledDemands, textsBlanked: done.textsBlanked } });
   return applicationView(updated);
 }
 

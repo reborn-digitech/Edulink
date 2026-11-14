@@ -78,7 +78,7 @@ describe("retention:sweep", () => {
   it("is a registered nightly job on the crontab, and the defaults are what the policy says", () => {
     expect(JOBS["retention:sweep"].schedule).toBe("0 4 * * *");
     expect(crontabText("/srv/edulink")).toContain("retention:sweep");
-    expect(RETENTION_DEFAULTS).toEqual({ sessionDays: 7, tokenDays: 7, rateLimitDays: 1, uploadTicketDays: 30, outboxDays: 30, jobRunDays: 90, auditDays: 730, healthReadDays: 365, tripPositionDays: 30, assistantDays: 30, assistantUsageDays: 62 });
+    expect(RETENTION_DEFAULTS).toEqual({ sessionDays: 7, tokenDays: 7, rateLimitDays: 1, uploadTicketDays: 30, outboxDays: 30, jobRunDays: 90, auditDays: 730, healthReadDays: 365, tripPositionDays: 30, assistantDays: 30, assistantUsageDays: 62, textMessageDays: 365, tripBoardingDays: 365, enquiryDays: 365, expertApplicationDays: 365 });
   });
 
   it("reads RETENTION_HEALTH_READS_DAYS, and refuses one under the guardian's ninety days", () => {
@@ -121,10 +121,10 @@ describe("retention:sweep", () => {
   it("spares the audit log when its horizon is 0, and takes nothing else twice", async () => {
     const before = await retentionPreview(NOW, { ...RETENTION_DEFAULTS, auditDays: 0 }, scope());
     expect(before.pending.auditRows).toBe(0);
-    expect(before.pending).toEqual({ sessions: 2, tokens: 2, rateLimits: 1, uploadTickets: 1, outbox: 1, jobRuns: 2, auditRows: 0, healthReads: 2, tripPositions: 0, assistantConversations: 0, assistantUsage: 0 });
+    expect(before.pending).toEqual({ sessions: 2, tokens: 2, rateLimits: 1, uploadTickets: 1, outbox: 1, jobRuns: 2, auditRows: 0, healthReads: 2, tripPositions: 0, assistantConversations: 0, assistantUsage: 0, textMessages: 0, tripBoardings: 0, enquiries: 0, expertApplications: 0 });
     const { summary } = await sweepExpired(NOW, { ...RETENTION_DEFAULTS, auditDays: 0 }, scope());
     expect(summary.auditRows).toBe(0);
-    expect(summary).toEqual({ sessions: 2, tokens: 2, rateLimits: 1, uploadTickets: 1, outbox: 1, jobRuns: 2, auditRows: 0, healthReads: 2, tripPositions: 0, assistantConversations: 0, assistantUsage: 0 });
+    expect(summary).toEqual({ sessions: 2, tokens: 2, rateLimits: 1, uploadTickets: 1, outbox: 1, jobRuns: 2, auditRows: 0, healthReads: 2, tripPositions: 0, assistantConversations: 0, assistantUsage: 0, textMessages: 0, tripBoardings: 0, enquiries: 0, expertApplications: 0 });
     const left = await remaining();
     // Expired ten days ago and revoked thirty days ago: gone. Expired two days ago, revoked yesterday, live: kept.
     expect(left.sessions).toEqual([ids.sessions[2], ids.sessions[3], ids.sessions[4]]);

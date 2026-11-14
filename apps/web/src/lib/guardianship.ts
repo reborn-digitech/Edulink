@@ -5,6 +5,8 @@ import { AccessError } from "./tenancy";
 import { audit } from "./audit";
 import { notify } from "./notify";
 import { syncStandinGuardian } from "./standin-guardian";
+import { forSchool } from "./tenant-context";
+import { blankTextsOfLeavers } from "./text-retention";
 import type { ActiveContext } from "./session";
 import type { TranslationKey } from "./i18n/dictionary";
 import { GUARDIAN_RELATIONS, type GuardianRelation } from "./constants";
@@ -57,14 +59,25 @@ export async function unlinkChild(ctx: ActiveContext, studentMembershipId: strin
   }
   const schoolStandsIn = sync.outcome === "granted" || sync.outcome === "moved" || sync.outcome === "kept-standin";
 
-  await audit({
-    schoolId,
-    actorUserId: ctx.user.id,
-    action: "guardianship.unlinked",
-    targetType: "Membership",
-    targetId: studentMembershipId,
-    meta: { guardianshipId: link.id, relation: link.relation, schoolStandsIn },
-  });
+  // TA-457 (decision 0002): a guardian whose last link to a pupil on the roll here this was has left the school; the
+  // number and the words of their texts at it are blanked, a STOP reply keeping its number, with the audit row in the
+  // same transaction. For this school alone: the parent's own set no longer holds it once the link is ended.
+  await forSchool(schoolId, () =>
+    db.$tenantTransaction(async (tx) => {
+      const textsBlanked = await blankTextsOfLeavers(tx, schoolId, [ctx.user.id]);
+      await audit(
+        {
+          schoolId,
+          actorUserId: ctx.user.id,
+          action: "guardianship.unlinked",
+          targetType: "Membership",
+          targetId: studentMembershipId,
+          meta: { guardianshipId: link.id, relation: link.relation, schoolStandsIn, textsBlanked },
+        },
+        tx as typeof db,
+      );
+    }),
+  );
 
   // The office hears, with the family's name — this is the office's own school.
   const office = await db.membership.findMany({ where: { schoolId, role: "ADMIN", status: "ACTIVE", leftAt: null }, select: { userId: true } });
@@ -168,6 +181,9 @@ export async function endFamilyGuardianship(ctx: ActiveContext, studentMembershi
     const tx = raw as typeof db;
     const claimed = await tx.guardianship.updateMany({ where: { id: link.id, status: "ACTIVE", relation: { not: "SCHOOL" } }, data: { status: "REVOKED" } });
     if (claimed.count === 0) return false;
+    // TA-457 (decision 0002): a guardian left with no pupil on the roll here has left the school; the number and the
+    // words of their texts at it are blanked, a STOP reply keeping its number.
+    const textsBlanked = await blankTextsOfLeavers(tx, schoolId, [link.parentUserId]);
     await audit(
       {
         schoolId,
@@ -175,7 +191,7 @@ export async function endFamilyGuardianship(ctx: ActiveContext, studentMembershi
         action: "guardianship.end",
         targetType: "Membership",
         targetId: pupil.id,
-        meta: { guardianshipId: link.id, guardianUserId: link.parentUserId, relation: link.relation, reason: reason.data },
+        meta: { guardianshipId: link.id, guardianUserId: link.parentUserId, relation: link.relation, reason: reason.data, textsBlanked },
       },
       tx,
     );

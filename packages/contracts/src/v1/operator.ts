@@ -321,8 +321,9 @@ export type AppAdminCompetitions = z.infer<typeof appAdminCompetitionsSchema>;
 /** GET /api/v1/operator/retention — the sweep's day counts and what is waiting for tonight. */
 const retentionCount = z.number().int().min(0);
 export const operatorRetentionSchema = z.object({
-  config: z.object({ sessionDays: retentionCount, tokenDays: retentionCount, rateLimitDays: retentionCount, uploadTicketDays: retentionCount, outboxDays: retentionCount, jobRunDays: retentionCount, auditDays: retentionCount, healthReadDays: retentionCount, tripPositionDays: retentionCount.optional(), assistantDays: retentionCount.optional(), assistantUsageDays: retentionCount.optional() }),
-  pending: z.object({ sessions: retentionCount, tokens: retentionCount, rateLimits: retentionCount, uploadTickets: retentionCount, outbox: retentionCount, jobRuns: retentionCount, auditRows: retentionCount, healthReads: retentionCount, tripPositions: retentionCount.optional(), assistantConversations: retentionCount.optional(), assistantUsage: retentionCount.optional() }),
+  config: z.object({ sessionDays: retentionCount, tokenDays: retentionCount, rateLimitDays: retentionCount, uploadTicketDays: retentionCount, outboxDays: retentionCount, jobRunDays: retentionCount, auditDays: retentionCount, healthReadDays: retentionCount, tripPositionDays: retentionCount.optional(), assistantDays: retentionCount.optional(), assistantUsageDays: retentionCount.optional(), textMessageDays: retentionCount.optional(), tripBoardingDays: retentionCount.optional(), enquiryDays: retentionCount.optional(), expertApplicationDays: retentionCount.optional() }),
+  // TA-457 (decision 0002, 14 November 2026): texts, bus boardings, closed enquiries, refused or withdrawn expert applications.
+  pending: z.object({ sessions: retentionCount, tokens: retentionCount, rateLimits: retentionCount, uploadTickets: retentionCount, outbox: retentionCount, jobRuns: retentionCount, auditRows: retentionCount, healthReads: retentionCount, tripPositions: retentionCount.optional(), assistantConversations: retentionCount.optional(), assistantUsage: retentionCount.optional(), textMessages: retentionCount.optional(), tripBoardings: retentionCount.optional(), enquiries: retentionCount.optional(), expertApplications: retentionCount.optional() }),
 });
 export type OperatorRetention = z.infer<typeof operatorRetentionSchema>;
 

@@ -80,9 +80,21 @@ export type RetentionConfig = {
   assistantDays: number;
   /** Days the assistant's daily counts are kept (the office's card reads this month and last). */
   assistantUsageDays: number;
+  /**
+   * TA-457 (the owner's decision of 14 November 2026, decision 0002): a year by default for each of the next four,
+   * counsel to confirm the figure. Days a text (OutboundMessage) is kept after it was written; the record that a
+   * number replied STOP is never deleted (text-retention.ts).
+   */
+  textMessageDays: number;
+  /** Days a pupil's bus boarding and alighting times (TripBoarding) are kept. */
+  tripBoardingDays: number;
+  /** Days a closed job or admission enquiry is kept after it was closed, its messages with it. */
+  enquiryDays: number;
+  /** Days a refused or withdrawn expert application is kept after the decision, its document with it. */
+  expertApplicationDays: number;
 };
 
-export const RETENTION_DEFAULTS: RetentionConfig = { sessionDays: 7, tokenDays: 7, rateLimitDays: 1, uploadTicketDays: 30, outboxDays: 30, jobRunDays: 90, auditDays: 730, healthReadDays: 365, tripPositionDays: 30, assistantDays: 30, assistantUsageDays: 62 };
+export const RETENTION_DEFAULTS: RetentionConfig = { sessionDays: 7, tokenDays: 7, rateLimitDays: 1, uploadTicketDays: 30, outboxDays: 30, jobRunDays: 90, auditDays: 730, healthReadDays: 365, tripPositionDays: 30, assistantDays: 30, assistantUsageDays: 62, textMessageDays: 365, tripBoardingDays: 365, enquiryDays: 365, expertApplicationDays: 365 };
 
 const RETENTION_VARS: Record<keyof RetentionConfig, { name: string; min: number; max: number }> = {
   sessionDays: { name: "RETENTION_SESSION_DAYS", min: 1, max: 365 },
@@ -98,6 +110,11 @@ const RETENTION_VARS: Record<keyof RetentionConfig, { name: string; min: number;
   assistantDays: { name: "RETENTION_ASSISTANT_DAYS", min: 1, max: 365 },
   // Never under a month and a day: the cap and the card read the month's rows.
   assistantUsageDays: { name: "RETENTION_ASSISTANT_USAGE_DAYS", min: 32, max: 3650 },
+  // Never under a month and a day: the texting caps count this month's rows (messaging.ts monthlyCount).
+  textMessageDays: { name: "RETENTION_TEXTS_DAYS", min: 32, max: 3650 },
+  tripBoardingDays: { name: "RETENTION_TRIP_BOARDINGS_DAYS", min: 30, max: 3650 },
+  enquiryDays: { name: "RETENTION_ENQUIRIES_DAYS", min: 30, max: 3650 },
+  expertApplicationDays: { name: "RETENTION_EXPERT_APPLICATIONS_DAYS", min: 30, max: 3650 },
 };
 
 /**

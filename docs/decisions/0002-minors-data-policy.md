@@ -1,6 +1,6 @@
 # 0002 — Minors' data: what EduLink holds about a child, who sees it, and why
 
-Status: accepted (Phase 6). Fulfils decision 4 of [0001](0001-mobile-monorepo-and-production.md).
+Status: accepted (Phase 6). Fulfils decision 4 of [0001](0001-mobile-monorepo-and-production.md). Amended 14 November 2026 (texts, bus boardings, enquiries and expert applications kept one year, and a STOP never forgotten, [below](#amendment-of-14-november-2026--one-year-then-deleted-and-a-stop-never-forgotten)).
 Written from the code as it stands on 2026-09-08 — every row cites the file it was read from. Where the code does less than a policy should, the [Gaps](#gaps) section says so; nothing below is a promise the code does not keep.
 
 ## Frame
@@ -124,10 +124,55 @@ Things a policy would like to say that the code does not yet do. Each is a decis
 
 1. **Closed in Phase 6 — permissions declared for features that are not in the code.** `app.json` carried camera, photo-library and Face ID purpose strings, the Android `CAMERA`, `USE_BIOMETRIC` and `USE_FINGERPRINT` permissions and the `expo-image-picker` and `expo-local-authentication` plugins, and no file under `apps/mobile/src` used any of them (hand-ins are text only; the phone cannot upload). The permissions, the plugins and the two modules were removed the day this inventory named them; `KEYS.lock` stays defined for the lock that is still to come. The camera permission and `expo-image-picker` returned later with photo hand-ins (row 8), under the rule this gap set: a permission is declared only by the feature that uses it, and the library permission is still not.
 2. **Closed in Phase 6 — sign-out did not clear the outbox or the query cache.** `signOut` removed the token, the session meta and the push registration, and queued rows in `edulink-outbox.db` survived to be replayed under the *next* person's token on a shared phone; React Query's cache survived until it expired. `signOut` now clears the outbox (`clearQueue`, `outbox.ts`) and an unsent crash report before the token goes, and the root layout drops the query cache on the way to signed-out — pinned in `test/lib/session.test.tsx`. The last part closed on 2026-10-01: `expo-image`'s disk and memory caches, which kept bulletin photos after sign-out, are cleared by `signOut` too, and the files the share sheet was handed (a report card, a certificate) are named `relay-shared-*` and removed with them. A shared phone in a staff room is not an edge case.
-3. **No retention period is enforced for the school's records** (rows 1–17): the code keeps marks, registers, hand-ins and messages indefinitely, by design ("a school is required to hold them long after the child has gone", `school-record.ts`). That is defensible only if the privacy policy says so and the school, as fiduciary, owns the schedule. The second half of this gap is closed: `retention:sweep` (`apps/web/src/lib/retention.ts`, nightly at 04:00) removes expired and revoked sessions and spent or lapsed sign-in tokens after a week, rate-limit buckets a day after their window, spent upload tickets after a month, the dev outbox after a month, job runs after ninety days keeping each job's last success, and audit rows — which also hold crash and problem reports — after two years, every count a `RETENTION_*` variable the operator may raise, and the audit horizon one they may set to 0 to keep the old promise. It touches none of rows 1–17.
+3. **No retention period is enforced for the school's records** (rows 1–17): the code keeps marks, registers, hand-ins and messages indefinitely, by design ("a school is required to hold them long after the child has gone", `school-record.ts`). That is defensible only if the privacy policy says so and the school, as fiduciary, owns the schedule. The second half of this gap is closed: `retention:sweep` (`apps/web/src/lib/retention.ts`, nightly at 04:00) removes expired and revoked sessions and spent or lapsed sign-in tokens after a week, rate-limit buckets a day after their window, spent upload tickets after a month, the dev outbox after a month, job runs after ninety days keeping each job's last success, and audit rows — which also hold crash and problem reports — after two years, every count a `RETENTION_*` variable the operator may raise, and the audit horizon one they may set to 0 to keep the old promise. It touches none of rows 1–17. Since 14 November 2026 it also takes texts, bus boarding times, closed enquiries and refused or withdrawn expert applications after a year, none of which is the school's record ([amendment below](#amendment-of-14-november-2026--one-year-then-deleted-and-a-stop-never-forgotten)).
 4. **`CONSENT_AGE = 13` is a flag, not a gate.** The DPDP threshold is 18 and `isMinor` follows it, but nothing refuses a pupil under 13 (or 18) any action for want of a parent's consent: the stand-in guardianship gives the *school* the consenting seat until a parent claims the child. Whether that is verifiable parental consent under s.9(1), or rests on the educational-institution exemption in the Rules, is the question in checklist item 10.
 5. **Partly closed (brought up to date 2026-10-04, campaign finding G-9) — erasure goes through the school; export and unlinking are self-service.** Export: `GET /api/v1/family/export` hands a person their own data as one JSON document (DPDP s.11) — a pupil's own, or one child's for a guardian (`?student=`), with the profile, the record and what the school holds about them (`apps/web/src/lib/api-catalog/family.ts`); an adult college student exports from `/student/account`. Unlinking: a guardian ends their own link from `/parent/settings` (`apps/web/src/app/(app)/parent/settings/unlink-child.tsx`, `DELETE /api/v1/family/children/{membershipId}/link`), refused only when it would leave the child with no guardian and nobody at the school to stand in — so the parent sign-up's "You can unlink from your settings at any time" (`invite.parentSignupNote` in `packages/i18n/src/en.ts`) is now true. What stays open by decision: there is **no self-service deletion**. `/delete-account` (public, the store's `ACCOUNT_DELETION_URL`) explains that the request goes to the school, the fiduciary, which ends the membership (`recordLeaving`) or removes a history-less account (`removeMembership`); the platform-level erasure is still only the operator's whole-school deletion. A self-service delete that silently took a child out of last term's register would be the wrong answer; the privacy policy must say so in these words before a store form is answered from this document.
 6. **Closed — uploads may live in a bucket.** `apps/web/src/lib/blob-store.ts` puts uploads in an S3-compatible bucket when `STORAGE_BUCKET` and the `STORAGE_S3_*` variables are set (`src/lib/s3.ts` signs the requests itself; no SDK), and on the server's disk under `STORAGE_DIR` otherwise. The bucket's own versioning or replication rule covers the uploads; the nightly dump covers the database. Row 18 of the network table above gains one destination when a bucket is configured: the bucket's endpoint, which receives the cleaned bytes and never a pupil's name.
 7. **Session IP and user agent are stored** for every sign-in, including from the phone (`issueApiSession`, `apps/web/src/lib/api-v1.ts`), and the audit log records an IP with each action. Both are security context; the privacy policy has to name them.
 8. **The Hindi and Marathi copy is not native-reviewed** (`packages/i18n/src/hi.ts` header says so of the app; the store listings in `apps/mobile/store/` inherit the caveat).
    Since 2026-10-01 the question bank's Hindi and Marathi carry a per-language reviewed flag (`QuizQuestion.hiReviewedAt` / `mrReviewedAt`, stamped from `/appadmin/translations` and cleared when the English is re-translated): the app records which translations a native speaker has read, and nothing more — native review is a person's job, not the app's, and an unreviewed draft is still served to a child by design.
+
+## Amendment of 14 November 2026 — one year, then deleted, and a STOP never forgotten
+
+The testing analysis of 13 November 2026 (TA-457) found four tables no retention rule covered and nothing deleted: every
+text the platform decided on, sent or not (`OutboundMessage`, with the number and the rendered words — a child's name,
+an amount, an incident's title — written even while the platform's texting switch is off, and kept after the person
+was gone); each pupil's bus boarding and alighting times (`TripBoarding`, though the bus's positions beside them go
+after thirty days); closed job and admission enquiries (`Enquiry` and its messages); and refused or withdrawn expert
+applications with the identity or qualification document attached (`ExpertApplication`). None of them is the school's
+record of a child (rows 1–17, gap 3). Asked, the owner chose the recommendation put to them, on 14 November 2026,
+without asking for alternatives:
+
+**Keep one year, then delete, and never forget a STOP. Texts, bus boarding times, closed job and admission enquiries,
+and refused or withdrawn expert applications with their document are deleted by the nightly clean-up after one year,
+each period an operator dial; the words of a skipped text are blanked at once; the record that a number replied STOP
+is never deleted; numbers and words are blanked when a pupil or guardian leaves the school (not on account deletion,
+which nobody can do). Counsel to confirm the one-year figure** (the Act's erasure duty, s.8(7), and the Rules'
+reported one-year minimum for logs were read only in secondary sources).
+
+How it is built (`apps/web/src/lib/retention.ts`, `apps/web/src/lib/text-retention.ts`, `RetentionConfig` in
+`apps/web/src/lib/env.ts`; the operator's Jobs page and `GET /api/v1/operator/retention` show each dial and what is
+waiting):
+
+| # | What | Kept | Dial (default, range) |
+|---|---|---|---|
+| 30 | **Texts** (`OutboundMessage`): the number, the channel, the template, the rendered words and their variables, the status and why it was skipped | One year after the row was written, then deleted by `retention:sweep`. A **skipped** text is written with no words (an empty body, no variables: it was never sent, and the office's report reads who, why and when), and the sweep blanks the words of any skipped text written before. | `RETENTION_TEXTS_DAYS` (365, 32–3650: never under a month and a day, because the school's monthly cap counts this month's rows) |
+| 31 | **Bus boarding and alighting times** (`TripBoarding`) | One year after the row, then deleted. | `RETENTION_TRIP_BOARDINGS_DAYS` (365, 30–3650) |
+| 32 | **Closed job and admission enquiries** (`Enquiry`, kind `JOB` or `ADMISSION`, status `CLOSED`, with their `EnquiryMessage` rows) | One year after `closedAt`, then deleted with their messages. An open enquiry is not touched. | `RETENTION_ENQUIRIES_DAYS` (365, 30–3650) |
+| 33 | **Refused or withdrawn expert applications** (`ExpertApplication`, status `REFUSED` or `WITHDRAWN`) and the stored document they name | One year after the decision (`decidedAt`, or the application's own date where a withdrawal carries none), then the row is deleted and its document with it. A pending or approved application is not touched. | `RETENTION_EXPERT_APPLICATIONS_DAYS` (365, 30–3650) |
+
+- **The STOP rule.** The only record that a number replied STOP is the text the provider refused with error 21610
+  (the status callback's "21610: …" or a refusal at send time's "… (code 21610)", `STOP_REPLY`), and the office-entered
+  number is never texted again while it stands (`answeredStop`, `messaging.ts`). That row is **never deleted**: past
+  the year it loses its words and keeps the number, the error and the school. A notice's resend never picks it up
+  or rewrites it, and never clears its error (`resendBroadcastFailures`, `deliverToUser`).
+- **Leaving the school.** Nobody can delete their own account (Rights, Erase above), so the moment is the person
+  leaving the school: a pupil's departure (`recordDeparture`, every door that records one), a history-less pupil's
+  removal (`removeMembership`), a seat given up at a college (`cancelAdmission`), and a guardian whose last active
+  link to a pupil on the roll ends (their own unlink, the office's ending of the link, or that pupil's departure or
+  removal). Then the number and the words of every text to that person at that school are blanked in the leaving's
+  own transaction, a STOP row keeping its number, and the leaving's audit row counts the rows blanked
+  (`textsBlanked`), never a number or a word. A guardian with another child still on the roll, a member of staff,
+  and the same person's texts at another school are left as they are.
+- Each sweep's audit row (`retention.sweep`) carries the counts and the four day dials; nothing deleted here names a
+  person in it.

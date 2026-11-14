@@ -9,6 +9,7 @@ import { AccessError } from "./tenancy";
 import { forOwnSchools } from "./tenant-context";
 import { syncStandinsHeldBy, syncStandinsForTeacherClasses } from "./standin-guardian";
 import { takeDownProfileOf } from "./faculty-profile";
+import { blankTextsOfLeavers, familyGuardiansOfPupil } from "./text-retention";
 import type { ActiveContext } from "./session";
 import type { Role } from "./constants";
 
@@ -532,15 +533,21 @@ export async function removeMembership(
     distinct: ["competitionId"],
   });
 
+  let textsBlanked = 0;
   const gone = await db.$tenantTransaction(async (rawTx) => {
     const t = rawTx as { membership: { delete(args: unknown): Promise<unknown> } };
     // Counted again in the delete's own transaction, so a record written since
     // the count above (a fee taken at the counter a moment ago) stops it too.
     if ((await countRecords(rawTx, membershipId)) > 0) return false;
+    // Read before the delete takes the parent links with it (TA-457).
+    const guardians = await familyGuardiansOfPupil(rawTx, membershipId);
     // Every relation pointing at Membership is Cascade or SetNull, so this
     // takes the enrolments and the parent links with it and leaves nothing
     // dangling. Checked against the schema rather than assumed.
     await t.membership.delete({ where: { id: membershipId } });
+    // TA-457 (decision 0002): the pupil and each guardian left with no pupil here have left the school; the number
+    // and the words of their texts at it are blanked, a STOP reply keeping its number.
+    textsBlanked = await blankTextsOfLeavers(rawTx, schoolId, [target.userId, ...guardians]);
     return true;
   });
   if (!gone) return { ok: false, errorKey: "refusal.hasRecord" };
@@ -556,7 +563,7 @@ export async function removeMembership(
     action: "membership.remove",
     targetType: "Membership",
     targetId: membershipId,
-    meta: { role: target.role, removedUserId: target.userId },
+    meta: { role: target.role, removedUserId: target.userId, textsBlanked },
   });
 
   return { ok: true };

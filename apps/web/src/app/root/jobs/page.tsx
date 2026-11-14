@@ -67,6 +67,10 @@ const RETENTION_LABEL: Record<RetentionKey, TranslationKey> = {
   tripPositions: "root.retentionTripPositions",
   assistantConversations: "root.retentionAssistantConversations",
   assistantUsage: "root.retentionAssistantUsage",
+  textMessages: "root.retentionTextMessages",
+  tripBoardings: "root.retentionTripBoardings",
+  enquiries: "root.retentionEnquiries",
+  expertApplications: "root.retentionExpertApplications",
 };
 const RETENTION_DAYS_OF: Record<RetentionKey, (c: RetentionConfig) => number> = {
   sessions: (c) => c.sessionDays,
@@ -80,6 +84,10 @@ const RETENTION_DAYS_OF: Record<RetentionKey, (c: RetentionConfig) => number> = 
   tripPositions: (c) => c.tripPositionDays,
   assistantConversations: (c) => c.assistantDays,
   assistantUsage: (c) => c.assistantUsageDays,
+  textMessages: (c) => c.textMessageDays,
+  tripBoardings: (c) => c.tripBoardingDays,
+  enquiries: (c) => c.enquiryDays,
+  expertApplications: (c) => c.expertApplicationDays,
 };
 
 type Tone = "running" | "overdue" | "failed" | "ok";

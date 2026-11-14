@@ -24,8 +24,9 @@ import { classInsights, defaultWindow } from "@/lib/insights";
 import { buildProgressReport } from "@/lib/reports";
 import { schoolYearArchive, listClosedYears } from "@/lib/year-archive";
 import { messagingOverview, monthStartFor } from "@/lib/messaging";
-import { reachableGuardians } from "./audit-recounts";
-import { retentionPreview } from "@/lib/retention";
+import { broadcastCounterFails, reachableGuardians } from "./audit-recounts";
+import { cutoffs, retentionPreview } from "@/lib/retention";
+import { readRetentionConfig } from "@/lib/env";
 import { HOLIDAY_KIND_META } from "@/lib/holiday-kinds";
 import { todayKey } from "@/lib/dates";
 import { PUPIL_CATEGORIES } from "@edulink/contracts";
@@ -620,12 +621,8 @@ d("the figures the head, the family and the operator read", () => {
       const { total: guardians, withPhone } = await reachableGuardians(db, s.id);
       if (ov.parentsTotal !== guardians || ov.parentsWithPhone !== withPhone) note("messaging", "FAIL", s.name, `parents ${ov.parentsWithPhone}/${ov.parentsTotal} vs raw ${withPhone}/${guardians}`);
       if (guardians - withPhone > 0) note("messaging", "INFO", s.name, `${guardians - withPhone} guardian(s) have no phone — every text to them is SKIPPED`);
-      for (const b of await db.broadcast.findMany({ where: { schoolId: s.id }, select: { id: true, title: true, queued: true, sent: true, delivered: true, failed: true, skipped: true, recipients: true, status: true, messages: { select: { status: true } } } })) {
-        const c = (st: string) => b.messages.filter((m) => m.status === st).length;
-        const e = { sent: c("SENT") + c("DELIVERED") + c("UNDELIVERED"), delivered: c("DELIVERED"), failed: c("FAILED") + c("UNDELIVERED"), skipped: c("SKIPPED") };
-        if (b.status === "DONE" && b.messages.length) for (const k of Object.keys(e) as (keyof typeof e)[]) if (b[k] !== e[k]) note("messaging", "FAIL", s.name, `broadcast "${b.title}" ${k}: stored ${b[k]} vs its messages ${e[k]}`);
-        if (b.sent + b.skipped + b.failed > b.messages.length + b.recipients) note("messaging", "FAIL", s.name, `broadcast "${b.title}": counters exceed recipients`);
-      }
+      // A broadcast past the texts' year is compared with what the clean-up left of it (TA-457, audit-recounts.ts).
+      for (const fail of await broadcastCounterFails(db, s.id, cutoffs(new Date(), readRetentionConfig().config).textMessages)) note("messaging", "FAIL", s.name, fail);
     }
     expect(failsOf("messaging")).toEqual([]);
   });

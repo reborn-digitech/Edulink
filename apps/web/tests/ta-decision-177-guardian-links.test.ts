@@ -131,7 +131,7 @@ describe("TA-177: the office ends a family guardian's link", () => {
     await expect(assertGuardianAccess(ids.guardianA!, ids.pupilM!)).resolves.toBeTruthy();
     const row = await db.auditLog.findFirstOrThrow({ where: { schoolId: ids.school!, action: "guardianship.end", targetId: ids.pupilM! } });
     expect(row.actorUserId).toBe(ids.admin);
-    expect(JSON.parse(String(row.meta))).toEqual({ guardianshipId: ids.linkB, guardianUserId: ids.guardianB, relation: "GUARDIAN", reason: "COURT_ORDER" });
+    expect(JSON.parse(String(row.meta))).toEqual({ guardianshipId: ids.linkB, guardianUserId: ids.guardianB, relation: "GUARDIAN", reason: "COURT_ORDER", textsBlanked: 0 });
     // No stand-in while guardian A is linked.
     expect(await db.guardianship.count({ where: { studentMembershipId: ids.pupilM!, relation: "SCHOOL", status: "ACTIVE" } })).toBe(0);
   });
