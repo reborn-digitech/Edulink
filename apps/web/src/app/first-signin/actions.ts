@@ -5,7 +5,7 @@ import { getT } from "@/lib/i18n/server";
 import { createSession } from "@/lib/session";
 import { redeemFirstSignIn } from "@/lib/first-signin";
 import { ROLE_HOME } from "@/lib/constants";
-import { consumeByCaller, retryHintKey, LOGIN_ATTEMPTS } from "@/lib/rate-limit";
+import { consumeByCaller, retryHintKey, CODE_LOOKUPS } from "@/lib/rate-limit";
 import { fieldErrors, passwordSchema, type FieldErrors } from "@/lib/validation";
 import { refusalText } from "@/lib/i18n/refusal";
 
@@ -31,7 +31,9 @@ export async function completeFirstSignIn(input: unknown): Promise<FirstSignInSt
   const parsed = schema.safeParse(input);
   if (!parsed.success) return { ok: false, errors: fieldErrors(parsed.error, t) };
 
-  const gate = await consumeByCaller("first-signin", LOGIN_ATTEMPTS);
+  // A class signs in together from the school's one address (TA-278): the per-address allowance is a computer
+  // room's, as the class code's lookup is (CODE_LOOKUPS). Guessing stays bounded by the five tries on each code.
+  const gate = await consumeByCaller("first-signin", CODE_LOOKUPS);
   if (!gate.allowed) {
     const hint = retryHintKey(gate.retryAfterSeconds);
     return { ok: false, errors: { _form: t("login.tooManyAttempts", { when: t(hint.key, hint.vars) }) } };

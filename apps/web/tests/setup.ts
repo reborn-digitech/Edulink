@@ -69,10 +69,14 @@ const setupDb = new PrismaClient();
  * counting its ten failures, so its eleventh sign-in passed (seen in a full run, reproduced 1 run in 4 with a
  * concurrent process, 0 in 3 alone). Those buckets are keyed on that suite's own test identities, which it clears
  * before and after each test itself. The shared `login-global` bucket is still wiped, as before.
+ *
+ * AND the per-address buckets of the auth batch's suites (tests/ta-auth-*.test.ts, 14 November 2026), whose callers
+ * are 2001:db8:7a:… documentation addresses no real request carries; a concurrent run's set-up wiped
+ * `magic-addr:<caller>` mid-count and TA-245's case saw 55 links allowed against a limit of 50.
  */
 const SUITE_OWNED_BUCKETS = ["login:+919876511001", "login:zzlimits.h4nd@edulink.local", "login-addr:203.0.113.77"];
 await setupDb.rateLimit.deleteMany({
-  where: { NOT: [{ bucket: { startsWith: "zz-test:" } }, { bucket: { in: SUITE_OWNED_BUCKETS } }, { bucket: { contains: "@zzloginlimits.test" } }] },
+  where: { NOT: [{ bucket: { startsWith: "zz-test:" } }, { bucket: { in: SUITE_OWNED_BUCKETS } }, { bucket: { contains: "@zzloginlimits.test" } }, { bucket: { contains: ":2001:db8:7a:" } }] },
 });
 await setupDb.$disconnect();
 

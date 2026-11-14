@@ -450,6 +450,11 @@ export async function setActiveContext(
     // A recruiter has no membership anywhere (4 Oct 2026): their account is the RecruiterProfile, and it must be live.
     const profile = await db.recruiterProfile.findUnique({ where: { userId }, select: { disabledAt: true } });
     if (!profile || profile.disabledAt) return false;
+  } else if (next.role === "EXPERT") {
+    // TA-038: an expert has no membership either — the profile is the way in, and it must be live. Without this a
+    // teacher or parent who is also an expert was sent to the chooser at every sign-in and refused there.
+    const profile = await db.expertProfile.findFirst({ where: { userId, disabledAt: null }, select: { id: true } });
+    if (!profile) return false;
   } else if (next.role && next.role !== "PARENT") {
     if (!next.schoolId) return false;
     const ok = await db.membership.findFirst({

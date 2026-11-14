@@ -1,7 +1,7 @@
 import "server-only";
 import { db } from "./db";
 import { generateToken, hashToken } from "./crypto";
-import { localeForAddress, sendTeacherInvite } from "./email";
+import { localeForAddress, sendParentLinkInvite, sendTeacherInvite } from "./email";
 import { audit } from "./audit";
 import { INVITE_TTL_DAYS } from "./constants";
 import { consume, INVITE_EMAILS_DAILY, INVITE_RESENDS } from "./rate-limit";
@@ -35,6 +35,20 @@ export async function resendInviteFor(
   });
   if (!invite?.email) return { ok: false, errorKey: "invites.cannotResend" };
 
+  // TA-552: a parent's invitation goes again in its own words — the child's name and what the guardian will see —
+  // as its first mail did (parent-link.ts), not as a staff invitation to join the school and set a password.
+  let childName: string | null = null;
+  if (invite.role === "PARENT") {
+    const pupil = invite.studentMembershipId
+      ? await db.membership.findFirst({
+          where: { id: invite.studentMembershipId, schoolId: ctx.schoolId, role: "STUDENT" },
+          select: { user: { select: { name: true, preferredName: true } } },
+        })
+      : null;
+    if (!pupil) return { ok: false, errorKey: "invites.cannotResend" };
+    childName = pupil.user.preferredName ?? pupil.user.name;
+  }
+
   // A resend is a mail like any other (TA-286): none once the school's day is spent, and a few a day for one
   // invitation, so a loop on one pending row is not a way to fill somebody's inbox with the school's name.
   if ((await invitesSentToday(ctx.schoolId)) >= INVITE_EMAILS_DAILY.limit) return { ok: false, errorKey: "invites.dailyCapToday" };
@@ -50,7 +64,10 @@ export async function resendInviteFor(
     },
   });
 
-  await sendTeacherInvite(invite.email, `${APP_URL}/invite/${token}`, invite.school.name, ctx.user.preferredName ?? ctx.user.name, await localeForAddress(invite.email, invite.school.locale));
+  const locale = await localeForAddress(invite.email, invite.school.locale);
+  const inviter = ctx.user.preferredName ?? ctx.user.name;
+  if (childName !== null) await sendParentLinkInvite(invite.email, `${APP_URL}/invite/${token}`, childName, invite.school.name, inviter, locale);
+  else await sendTeacherInvite(invite.email, `${APP_URL}/invite/${token}`, invite.school.name, inviter, locale);
 
   await audit({
     schoolId: ctx.schoolId,

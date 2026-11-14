@@ -186,6 +186,16 @@ async function signOutElsewhere(userId: string, keepSessionId: string | undefine
   await revokeAllAccess(userId, { keepSessionId });
 }
 
+/**
+ * The sign-in links and reset codes already sent, spent when the address or number they went to stops being the
+ * account's (TA-040). A link asked for from the old mailbox in its last twenty minutes, or a code in its last ten,
+ * otherwise still opened the account after the change — the code typed with the new address, which the notice to
+ * the old mailbox prints. Only those two: a verification mail the same person is about to open is not burnt.
+ */
+async function spendSentCredentials(userId: string): Promise<void> {
+  await db.authToken.updateMany({ where: { userId, consumedAt: null, purpose: { in: ["MAGIC_LINK", RESET_PURPOSE] } }, data: { consumedAt: new Date() } });
+}
+
 export type ResolvedAccount = {
   userId: string;
   email: string | null;
@@ -801,6 +811,7 @@ export async function confirmPhoneChange(
   });
   await db.authToken.update({ where: { id: live.id }, data: { consumedAt: new Date() } });
   await signOutElsewhere(userId, keepSessionId);
+  await spendSentCredentials(userId);
 
   /**
    * ⚠ THE OLD NUMBER IS TOLD, after the write and outside any transaction for
@@ -1041,6 +1052,7 @@ export async function confirmEmailChange(
   });
   await db.authToken.update({ where: { id: live.id }, data: { consumedAt: new Date() } });
   await signOutElsewhere(userId, keepSessionId);
+  await spendSentCredentials(userId);
 
   /**
    * ⚠ THE OLD ADDRESS IS TOLD, and this is the security of the whole feature.

@@ -36,7 +36,10 @@ import type { ActiveContext } from "./session";
  * WHAT MOVES is everything keyed to the PERSON: memberships (and therefore, for
  * free, every mark, register, report card and enrolment hanging off them),
  * leaving certificates, guardianships, and authorship of posts, comments,
- * reactions and remark messages.
+ * reactions and remark messages; and (TA-039) conversations and their
+ * messages, meeting bookings, placement applications' student and SSO
+ * identities. A recruiter's account, session earnings and a live plan are
+ * refused by name instead (`refusal.mergeHeldByPerson`).
  *
  * WHAT DOES NOT MOVE, each for its own reason:
  *   - Credentials — password, sessions, tokens, push subscriptions. They are
@@ -172,6 +175,7 @@ async function authenticate(ctx: ActiveContext, input: MergeInput): Promise<Auth
       disabledAt: true,
       mergedIntoUserId: true,
       isSuperuser: true,
+      totpEnabledAt: true,
     },
   });
 
@@ -208,6 +212,13 @@ async function authenticate(ctx: ActiveContext, input: MergeInput): Promise<Auth
   // job, not a self-service form.
   if (other.isSuperuser || ctx.user.isSuperuser) {
     return { ok: false, errorKey: "refusal.mergeServerAccounts" };
+  }
+
+  // TA-034: a password alone signs in nowhere on an account with two-step sign-in, so it must not move that
+  // account's roles either. Refused before anything about the account is read or said; the holder turns the
+  // second step off first, which takes the code.
+  if (other.totpEnabledAt) {
+    return { ok: false, errorKey: "refusal.mergeTwoStep" };
   }
 
   /**
@@ -286,6 +297,26 @@ async function authenticate(ctx: ActiveContext, input: MergeInput): Promise<Auth
     };
   }
 
+  /**
+   * TA-039: the old account's other person-keyed rows that cannot simply follow it, refused out loud as the expert
+   * profile is rather than left behind on a closed account. A recruiter's account (`userId @unique`), a payee and
+   * its session earnings (money records the payouts read by person), and a paid or granted plan, whose move
+   * decision 0006 lists as not built (the plan's entitlements have one writer, person-plans.ts). Everything else
+   * keyed to the person moves in `mergeAccounts`.
+   */
+  const now = new Date();
+  const [recruiter, payee, earnings, plans, passes] = await Promise.all([
+    db.recruiterProfile.count({ where: { userId: other.id } }),
+    db.gigPayee.count({ where: { userId: other.id } }),
+    db.gigEarning.count({ where: { userId: other.id } }),
+    db.entitlement.count({ where: { userId: other.id, revokedAt: null, validTo: { gt: now } } }),
+    // Held by the person; the payer's side is a record of who paid, like an audit row, and stays.
+    db.passOrder.count({ where: { userId: other.id } }),
+  ]);
+  if (recruiter + payee + earnings + plans + passes > 0) {
+    return { ok: false, errorKey: "refusal.mergeHeldByPerson" };
+  }
+
   return {
     ok: true,
     schoolIds,
@@ -344,6 +375,16 @@ type MergeTx = {
   comment: { updateMany(args: unknown): Promise<{ count: number }> };
   reaction: { updateMany(args: unknown): Promise<{ count: number }> };
   remarkMessage: { updateMany(args: unknown): Promise<{ count: number }> };
+  conversation: { updateMany(args: unknown): Promise<{ count: number }> };
+  conversationParticipant: {
+    findMany(args: unknown): Promise<{ conversationId: string }[]>;
+    updateMany(args: unknown): Promise<{ count: number }>;
+    deleteMany(args: unknown): Promise<{ count: number }>;
+  };
+  conversationMessage: { updateMany(args: unknown): Promise<{ count: number }> };
+  meetingBooking: { updateMany(args: unknown): Promise<{ count: number }> };
+  driveApplication: { updateMany(args: unknown): Promise<{ count: number }> };
+  ssoIdentity: { updateMany(args: unknown): Promise<{ count: number }> };
   session: { updateMany(args: unknown): Promise<{ count: number }> };
   authToken: { deleteMany(args: unknown): Promise<{ count: number }> };
   user: { update(args: unknown): Promise<unknown> };
@@ -384,7 +425,11 @@ export async function mergeAccounts(ctx: ActiveContext, input: MergeInput): Prom
       .then((rows) => rows.map((row) => row.schoolId)),
   );
 
-  const bound = [...new Set([...schoolIds, ...recordSchoolIds])];
+  // A guardian's conversations and meeting bookings are at the children's schools, where the guardian holds no
+  // membership (TA-039): those schools are bound too. Guardianship carries no policy, so the read needs no binding.
+  const guardianSchoolIds = (await db.guardianship.findMany({ where: { parentUserId: other.userId }, select: { studentSchoolId: true } })).map((row) => row.studentSchoolId);
+
+  const bound = [...new Set([...schoolIds, ...recordSchoolIds, ...guardianSchoolIds])];
 
   const counts = await forTenant(
     { schoolIds: bound, userId: keeperId, joinCode: null, isSuperuser: false },
@@ -455,6 +500,28 @@ export async function mergeAccounts(ctx: ActiveContext, input: MergeInput): Prom
           where: { authorUserId: other.userId },
           data: { authorUserId: keeperId },
         });
+
+        /**
+         * TA-039: the rest of what is keyed to the PERSON. Left on the closed account, a parent's conversations
+         * vanished from the kept account's list and a teacher's reply reached nobody, a meeting booked was
+         * nobody's, a college student's placement notices went to a closed id, and a Google sign-in on the old
+         * account was refused as disabled.
+         *
+         * Conversations: a room both accounts are in keeps the kept account's place; the rest move. Their pair
+         * key names the old id, so it is cleared and the room is keyed again, with the kept id, the first time
+         * it is opened (conversations.ts keys an unkeyed room on the way past).
+         */
+        const shared = (await tx.conversationParticipant.findMany({ where: { userId: keeperId }, select: { conversationId: true } })).map((row) => row.conversationId);
+        if (shared.length > 0) {
+          await tx.conversationParticipant.deleteMany({ where: { userId: other.userId, conversationId: { in: shared } } });
+        }
+        await tx.conversation.updateMany({ where: { pairKey: { not: null }, participants: { some: { userId: other.userId } } }, data: { pairKey: null } });
+        await tx.conversationParticipant.updateMany({ where: { userId: other.userId }, data: { userId: keeperId } });
+        await tx.conversationMessage.updateMany({ where: { authorUserId: other.userId }, data: { authorUserId: keeperId } });
+        await tx.meetingBooking.updateMany({ where: { parentUserId: other.userId }, data: { parentUserId: keeperId } });
+        // The application itself rides on the membership, which has moved; the person it notifies follows.
+        await tx.driveApplication.updateMany({ where: { studentUserId: other.userId }, data: { studentUserId: keeperId } });
+        await tx.ssoIdentity.updateMany({ where: { userId: other.userId }, data: { userId: keeperId } });
 
         // The old account stops being a way in, in the same breath as it stops
         // being a person. Sessions revoked and tokens destroyed, so a magic

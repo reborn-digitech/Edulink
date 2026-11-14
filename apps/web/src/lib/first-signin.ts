@@ -178,7 +178,8 @@ export async function issueFirstSignIn(ctx: ActiveContext, studentMembershipId: 
 
 export type RedeemResult =
   | { ok: true; userId: string; schoolId: string; role: FirstSignInRole }
-  | { ok: false; errorKey: TranslationKey };
+  /** `field` names the password when the code was right and the password is what the rule refuses (TA-502). */
+  | { ok: false; errorKey: TranslationKey; field?: "password" };
 
 /**
  * The pupil's side: handle + code + the password they chose.
@@ -232,7 +233,7 @@ export async function redeemFirstSignIn(rawHandle: string, rawCode: string, newP
     // A weak password after a RIGHT code gives the try back — reached only
     // past the comparison, so it widens nobody's window.
     await db.authToken.updateMany({ where: { id: live.id, attempts: { gt: 0 } }, data: { attempts: { decrement: 1 } } });
-    return { ok: false, errorKey: problems[0]! };
+    return { ok: false, errorKey: problems[0]!, field: "password" };
   }
 
   // NOBODY IS SIGNED IN HERE, so the membership row sits behind a fence no

@@ -146,7 +146,9 @@ export function TotpCard({ enabled, recoveryLeft, available, hasPassword = true 
               <form onSubmit={turnOff} className="space-y-3" noValidate>
                 <TextField
                   label={t("totp.codeLabel")}
-                  inputMode="numeric"
+                  // The turn-off box takes a recovery code as well (TA-405): letters, not a number pad.
+                  inputMode="text"
+                  autoCapitalize="characters"
                   autoComplete="one-time-code"
                   autoFocus
                   required

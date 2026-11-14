@@ -2,6 +2,7 @@ import "server-only";
 import { createHash, randomBytes, timingSafeEqual } from "node:crypto";
 import { hash as argonHash, verify as argonVerify } from "@node-rs/argon2";
 import type { TranslationKey } from "@/lib/i18n/dictionary";
+import { isCommonPassword } from "@/lib/common-passwords";
 
 /**
  * Password hashing and token handling.
@@ -78,20 +79,18 @@ export function safeEqual(a: string, b: string): boolean {
  * Deliberately length-first rather than a symbol-class checklist: NIST 800-63B
  * dropped composition rules because they push users to "Passw0rd!". Children
  * setting their own password get the same floor but friendlier copy upstream.
+ *
+ * The common list is common-passwords.ts, shared with the meter (TA-288): the
+ * eight- and nine-character list that stood here could never refuse anything
+ * the length rule had not refused already.
  */
-const COMMON = new Set([
-  "password", "12345678", "123456789", "qwertyui", "letmein1", "iloveyou",
-  "football", "baseball", "sunshine", "princess", "welcome1", "abc12345",
-  "password1", "monkey12", "trustno1", "dragon12", "school12", "teacher1",
-]);
-
 /** ⚠ KEYS, not sentences — the caller translates them for whoever typed. */
 export function passwordProblems(password: string, context: string[] = []): TranslationKey[] {
   const problems: TranslationKey[] = [];
   if (password.length < 10) problems.push("refusal.pwAtLeast10");
   if (password.length > 200) problems.push("refusal.pwTooLong");
   if (/^\s|\s$/.test(password)) problems.push("refusal.pwTrimSpace");
-  if (COMMON.has(password.toLowerCase())) {
+  if (isCommonPassword(password)) {
     problems.push("refusal.pwTooCommon");
   }
   if (/^(.)\1+$/.test(password)) problems.push("refusal.pwRepeats");

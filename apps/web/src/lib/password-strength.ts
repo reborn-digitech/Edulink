@@ -1,4 +1,5 @@
 import type { TranslationKey } from "@/lib/i18n/dictionary";
+import { isCommonPassword } from "@/lib/common-passwords";
 
 /**
  * Password feedback for the signup meter.
@@ -13,11 +14,7 @@ import type { TranslationKey } from "@/lib/i18n/dictionary";
  * in the reader's language. The consuming form owns the words via t().
  */
 
-const COMMON = new Set([
-  "password", "12345678", "123456789", "qwertyui", "letmein1", "iloveyou",
-  "football", "baseball", "sunshine", "princess", "welcome1", "abc12345",
-  "password1", "monkey12", "trustno1", "dragon12", "school12", "teacher1",
-]);
+// One list for the meter and the gate (TA-288): common-passwords.ts, which imports nothing of the server's.
 
 export type Strength = {
   /** 0–4 */
@@ -32,7 +29,7 @@ export function passwordStrength(password: string, context: string[] = []): Stre
   if (password.length < 10) problemKeys.push("refusal.pwAtLeast10");
   if (password.length > 200) problemKeys.push("refusal.pwTooLong");
   if (/^\s|\s$/.test(password)) problemKeys.push("refusal.pwTrimSpace");
-  if (COMMON.has(password.toLowerCase())) {
+  if (isCommonPassword(password)) {
     problemKeys.push("refusal.pwTooCommon");
   }
   if (password.length > 0 && /^(.)\1+$/.test(password)) {

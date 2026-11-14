@@ -48,7 +48,8 @@ export function CodeForm() {
       )}
       <TextField
         label={t("totp.codeLabel")}
-        inputMode="numeric"
+        // Letters too (TA-405): the page offers a recovery code, two groups of four letters and digits.
+        inputMode="text"
         autoComplete="one-time-code"
         autoCapitalize="characters"
         spellCheck={false}

@@ -33,6 +33,21 @@ import {
 } from "@/lib/sso";
 
 /**
+ * The state cookie, cleared where it was set (TA-425): the start route sets it on path /api/sso, and
+ * `cookies.delete` expires a cookie on path "/" — another cookie — so the state, nonce and verifier stayed in
+ * the browser for the rest of their ten minutes. Same attributes as the start's, Apple's None+Secure included.
+ */
+function clearSsoState(response: NextResponse, provider: string): void {
+  response.cookies.set(SSO_COOKIE, "", {
+    httpOnly: true,
+    path: "/api/sso",
+    maxAge: 0,
+    sameSite: provider === "apple" ? "none" : "lax",
+    secure: provider === "apple" ? true : process.env.NODE_ENV === "production",
+  });
+}
+
+/**
  * The provider's answer. Mirrors /magic deliberately: a ROUTE HANDLER because
  * signing in writes a cookie; failures redirect to /login with a short reason
  * the form displays beside the password box that still works; success resolves
@@ -50,7 +65,7 @@ async function handle(
   const origin = process.env.NEXT_PUBLIC_APP_URL?.trim() || request.nextUrl.origin;
   const away = (reason: string) => {
     const response = NextResponse.redirect(new URL(`/login?sso=${reason}`, origin));
-    response.cookies.delete(SSO_COOKIE);
+    clearSsoState(response, providerParam);
     return response;
   };
 
@@ -96,7 +111,7 @@ async function handle(
       data: { userId: user.id, purpose: "APP_EXCHANGE", tokenHash: hashToken(code), meta: writeJson({ challenge: handoff.challenge }), expiresAt: new Date(Date.now() + APP_EXCHANGE_TTL_MS) },
     });
     const response = NextResponse.redirect(`${APP_SCHEME}://sso?code=${encodeURIComponent(code)}&provider=${id}`);
-    response.cookies.delete(SSO_COOKIE);
+    clearSsoState(response, providerParam);
     return response;
   }
 
@@ -105,7 +120,7 @@ async function handle(
   if (challenge) {
     const step = NextResponse.redirect(new URL("/login/code", origin));
     step.cookies.set(TWO_FACTOR_COOKIE, challenge, twoFactorCookieOptions());
-    step.cookies.delete(SSO_COOKIE);
+    clearSsoState(step, providerParam);
     return step;
   }
 
@@ -119,7 +134,7 @@ async function handle(
   });
 
   const response = NextResponse.redirect(new URL(context.redirectTo, origin));
-  response.cookies.delete(SSO_COOKIE);
+  clearSsoState(response, providerParam);
   return response;
 }
 

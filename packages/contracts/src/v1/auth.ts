@@ -40,7 +40,8 @@ export const magicLinkConsumeSchema = z.object({ token: z.string().min(20).max(2
 export const firstSignInSchema = z.object({
   handle: z.string().trim().min(1).max(80),
   code: z.string().trim().min(1).max(20),
-  password: z.string().min(8).max(200),
+  // The rule's own floor (TA-502): passwordProblems refuses anything under ten.
+  password: z.string().min(10).max(200),
   device: z.string().trim().max(120).optional(),
 });
 

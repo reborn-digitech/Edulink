@@ -10,6 +10,11 @@
  * the gate itself writes, so the phone and the sweep read "college-only" the
  * way they read "switched off".
  *
+ * Except a door whose catalog entry names its kinds (`kinds: COLLEGE`): the
+ * gate's kinds rule answers a real, stamped request there 404 NOT_FOUND before
+ * the handler runs (TA-490), as school-campus-fees.test.ts holds for the
+ * library's college table.
+ *
  * Read at ZZ Northgate (a school) with sessions minted for its ZZ people and
  * deleted again; nothing is written but the sessions.
  */
@@ -88,10 +93,17 @@ describe("a college's door at ZZ Northgate answers 403 MODULE_OFF, the gate's ow
       await accountsSettingsGet(),
       await accountsSettingsPost(json("/api/v1/accounts/settings", { concessionLimitPaise: 500000 })),
       await raiseDemandsPost(json("/api/v1/accounts/demands/raise", {})),
-      await libraryCollegeSettingsPost(json("/api/v1/library/college-settings", { facultyLimit: 10, facultyLoanDays: 90, collegeStudentLimit: 4, collegeStudentLoanDays: 15, bookBankExtra: 2 })),
     ]) {
       expect(await answer(res)).toMatchObject({ status: 403, code: "MODULE_OFF", keys: ["code", "error"] });
     }
+  });
+
+  it("TA-490: the library's college settings, a door whose catalog entry names its kinds, answer a stamped request 404 NOT_FOUND", async () => {
+    // Stamped as the middleware stamps a real request, so the gate's kinds rule runs before the handler's own
+    // refusal; unstamped, the case read the handler's 403 MODULE_OFF, which no real request is ever answered.
+    await as(who.admin, who.school, "ADMIN", "POST /api/v1/library/college-settings");
+    const res = await answer(await libraryCollegeSettingsPost(json("/api/v1/library/college-settings", { facultyLimit: 10, facultyLoanDays: 90, collegeStudentLimit: 4, collegeStudentLoanDays: 15, bookBankExtra: 2 })));
+    expect(res).toMatchObject({ status: 404, code: "NOT_FOUND" });
   });
 
   it("the college profile, which said 403 FORBIDDEN \"Only a college keeps these references.\"", async () => {

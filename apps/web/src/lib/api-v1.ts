@@ -183,7 +183,8 @@ export function ok<T>(data: T, status = 200): NextResponse {
  * The tail every sign-in shares once the person is known: the same context
  * resolution the browser gets (last role, last school, or the only one),
  * a Session row handed back as a bearer token, and the audit row that says
- * how they came in.
+ * how they came in. `meta` adds coded facts to that row (the magic link's
+ * reclaimed: true, TA-035), never free text.
  */
 export async function issueApiSession(
   request: Request,
@@ -191,6 +192,7 @@ export async function issueApiSession(
   last: { lastRole: string | null; lastSchoolId: string | null },
   via: string,
   device?: string,
+  meta?: Record<string, boolean>,
 ): Promise<NextResponse> {
   const context = await resolveContext(userId, last.lastRole, last.lastSchoolId);
   const session = await createApiSession(userId, {
@@ -199,7 +201,7 @@ export async function issueApiSession(
     userAgent: device?.trim() || request.headers.get("user-agent"),
     ip: clientAddress(request.headers),
   });
-  await audit({ schoolId: context.schoolId, actorUserId: userId, action: "auth.login", meta: { via, role: context.role, api: true } });
+  await audit({ schoolId: context.schoolId, actorUserId: userId, action: "auth.login", meta: { via, role: context.role, api: true, ...meta } });
   return ok(
     apiSessionSchema.parse({
       token: session.token,
@@ -226,6 +228,14 @@ export async function meBody(ctx: ActiveContext) {
     parentSchools.add(child.schoolId);
     contexts.push({ schoolId: child.schoolId, schoolName: child.schoolName, role: "PARENT" });
   }
+  // The ways in with no school (TA-038), as the web's /switch lists them: a live expert profile and a live recruiter
+  // account, so the phone's chooser can offer them to somebody who also belongs to a school or a family.
+  const [expertProfile, recruiterProfile] = await Promise.all([
+    db.expertProfile.findFirst({ where: { userId: ctx.user.id, disabledAt: null }, select: { id: true } }),
+    db.recruiterProfile.findUnique({ where: { userId: ctx.user.id }, select: { disabledAt: true } }),
+  ]);
+  if (expertProfile) contexts.push({ schoolId: null, schoolName: null, role: "EXPERT" });
+  if (recruiterProfile && !recruiterProfile.disabledAt) contexts.push({ schoolId: null, schoolName: null, role: "RECRUITER" });
   // Each context's kind of institution (4 Oct 2026), so the phone's picker reads "ZZ Vidya College · College":
   // read under this person's own schools, as listContexts reads their names.
   const contextSchoolIds = [...new Set(contexts.map((c) => c.schoolId).filter((id): id is string => Boolean(id)))];

@@ -2,7 +2,7 @@ import "server-only";
 import { createHash, createPublicKey, createPrivateKey, randomBytes, sign as cryptoSign, verify as cryptoVerify, type KeyObject } from "node:crypto";
 import { db } from "./db";
 import { audit } from "./audit";
-import { revokeAllAccess } from "./session";
+import { reclaimUnverifiedAccount } from "./magic-link";
 
 /**
  * Single sign-on: Google, Microsoft and Apple, as plain OIDC authorization-
@@ -449,13 +449,9 @@ export async function signInWithSso(
   if (user.disabledAt || user.mergedIntoUserId) return { ok: false, reason: "disabled" };
 
   const reclaimed = user.emailVerifiedAt === null;
-  if (reclaimed) {
-    await db.user.update({
-      where: { id: user.id },
-      data: { passwordHash: null, emailVerifiedAt: new Date() },
-    });
-    await revokeAllAccess(user.id, { tokens: true });
-  }
+  // The earlier holder's second step goes with their password (TA-036), as an invitation's reclaim clears it:
+  // left standing, it asked the address's real owner for a code from the stranger's phone at every way in.
+  if (reclaimed) await reclaimUnverifiedAccount(user.id);
 
   await db.ssoIdentity.create({
     data: { userId: user.id, provider: id, subject: identity.subject, email: identity.email },

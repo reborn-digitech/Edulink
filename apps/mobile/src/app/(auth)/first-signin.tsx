@@ -35,7 +35,7 @@ export default function FirstSignIn() {
         <Field label={t("firstSignin.handleField")} value={handle} onChangeText={setHandle} autoCapitalize="none" autoCorrect={false} />
         <Field label={t("firstSignin.codeField")} value={code} onChangeText={setCode} autoCapitalize="characters" autoCorrect={false} />
         <Field label={t("firstSignin.passwordField")} value={password} onChangeText={setPassword} secureTextEntry textContentType="newPassword" error={error} />
-        <Button label={t("firstSignin.submit")} onPress={submit} busy={busy} disabled={!handle.trim() || !code.trim() || password.length < 8} />
+        <Button label={t("firstSignin.submit")} onPress={submit} busy={busy} disabled={!handle.trim() || !code.trim() || password.length < 10} />
         <Button label={t("common.back")} variant="ghost" onPress={() => router.back()} />
       </View>
     </Screen>

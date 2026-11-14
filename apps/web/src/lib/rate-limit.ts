@@ -463,6 +463,23 @@ export async function peek(bucket: string, limit: number): Promise<RateLimitResu
 }
 
 /**
+ * Gives back one hit `consume` took in the current window (TA-528), for the limits that count failures only:
+ * consume BEFORE the check, so a burst sees N different counts and only the allowance passes, then give the hit
+ * back when the check succeeds. "Peek before, consume on failure" let every request of a burst read the same
+ * count. One statement, never below zero, and nothing once the window has turned.
+ */
+export async function release(bucket: string): Promise<void> {
+  try {
+    const nowIso = new Date().toISOString();
+    await db.$executeRaw`
+      UPDATE "RateLimit" SET "hits" = "hits" - 1
+      WHERE "bucket" = ${bucket} AND "hits" > 0 AND "windowEndsAt" > (${nowIso}::timestamptz AT TIME ZONE 'UTC')`;
+  } catch (error) {
+    console.error("[rate-limit] release failed:", error);
+  }
+}
+
+/**
  * Joining a school by its code, per ACCOUNT. The lookup's limit above is per
  * address, which one person behind a school's shared connection exhausts for
  * the whole staffroom and one person with a pool of addresses never meets. A
@@ -481,6 +498,8 @@ export const SCHOOL_CODE_JOINS = { limit: 5, windowMs: 24 * 60 * 60_000 };
 export const INVITE_EMAILS_DAILY = { limit: 300, windowMs: 24 * 60 * 60_000 };
 /** Mails of one pending invitation sent again, per invitation a day (TA-286): the office's slip resent, not a loop. */
 export const INVITE_RESENDS = { limit: 3, windowMs: 24 * 60 * 60_000 };
+/** Expert invitations one member of staff may send in an hour (TA-563): the school's day is INVITE_EMAILS_DAILY's. */
+export const EXPERT_INVITES_PER_PERSON = { limit: 20, windowMs: 60 * 60_000 };
 
 /**
  * What an outsider may send a school, per PERSON (TA-181). Every enquiry message the opener writes (a new thread or a

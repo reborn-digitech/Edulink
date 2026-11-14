@@ -33,8 +33,10 @@ export default async function SwitchPage() {
   // A recruiter's own account (4 Oct 2026): another way in, with no school, for somebody who also belongs to one.
   const recruiter = await db.recruiterProfile.findUnique({ where: { userId: session.user.id }, select: { companyName: true, disabledAt: true } });
   const recruits = recruiter !== null && recruiter.disabledAt === null;
+  // An expert's own profile (TA-038), the same shape: another way in with no school, for somebody who also belongs to one.
+  const expert = await db.expertProfile.findFirst({ where: { userId: session.user.id, disabledAt: null }, select: { headline: true } });
 
-  if (memberships.length === 0 && children.length === 0 && !recruits) {
+  if (memberships.length === 0 && children.length === 0 && !recruits && !expert) {
     // "You are not part of a school yet" is FALSE for somebody who has been
     // paused — they are part of one, it is closed to them, and no join code
     // will open it. Send them to the page that says so.
@@ -131,6 +133,15 @@ export default async function SwitchPage() {
             <form action={switchContext}>
               <input type="hidden" name="role" value="RECRUITER" />
               <ContextButton title={recruiter!.companyName} subtitle={t(ROLE_META.RECRUITER.labelKey)} role="RECRUITER" />
+            </form>
+          </li>
+        )}
+
+        {expert && (
+          <li>
+            <form action={switchContext}>
+              <input type="hidden" name="role" value="EXPERT" />
+              <ContextButton title={expert.headline || t(ROLE_META.EXPERT.labelKey)} subtitle={t(ROLE_META.EXPERT.labelKey)} role="EXPERT" />
             </form>
           </li>
         )}

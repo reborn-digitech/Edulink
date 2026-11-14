@@ -3,7 +3,7 @@ import { db } from "./db";
 import { audit } from "./audit";
 import { generateToken, hashToken, verifyPassword } from "./crypto";
 import { open, seal, sealingAvailable } from "./secret-box";
-import { consume, peek } from "./rate-limit";
+import { consume, peek, release } from "./rate-limit";
 import { isDeliverableEmail, toDisplayLoginName } from "./login-name";
 import { revokeAllAccess } from "./session";
 import { localeForUser, sendAccountNotice } from "./email";
@@ -330,14 +330,16 @@ export async function verifyTwoFactor(rawChallenge: string, code: string, opts: 
 
   // The account's own ceiling (QA-22): while it is reached no code is even
   // tried, the right one included, so a lucky guess cannot land in the lock.
-  const locked = await peek(totpAccountBucket(user.id), TOTP_PER_ACCOUNT.limit);
-  if (!locked.allowed) return { ok: false, reason: "rate", retryAfterSeconds: locked.retryAfterSeconds };
+  // COUNTED BEFORE THE CODE IS TRIED and given back for a right one (TA-528): peeked first and charged after a
+  // wrong code, a burst of guesses across open challenges all read the same count and all reached checkCode.
+  const strike = await consume(totpAccountBucket(user.id), TOTP_PER_ACCOUNT.limit, TOTP_PER_ACCOUNT.windowMs);
+  if (!strike.allowed) return { ok: false, reason: "rate", retryAfterSeconds: strike.retryAfterSeconds };
 
   const check = await checkCode(user.id, code, user);
+  if (check.ok) await release(totpAccountBucket(user.id));
   if (!check.ok) {
     await audit({ actorUserId: user.id, action: "auth.totp.failed", meta: { via: row.via, attempt: row.attempts } });
-    const strike = await consume(totpAccountBucket(user.id), TOTP_PER_ACCOUNT.limit, TOTP_PER_ACCOUNT.windowMs);
-    if (!strike.allowed || strike.remaining === 0) {
+    if (strike.remaining === 0) {
       // `remaining` 0 and allowed is the failure that reached the ceiling: it,
       // and only it, locks and tells. A burst past it is answered the same way.
       if (strike.allowed) await lockSecondStep(user.id, row.via);

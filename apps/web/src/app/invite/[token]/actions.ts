@@ -9,7 +9,7 @@ import { studentCode } from "@/lib/codes";
 import { audit } from "@/lib/audit";
 import { forJoinCode, forSchool } from "@/lib/tenant-context";
 import { syncStandinGuardian } from "@/lib/standin-guardian";
-import { parseDateOnly } from "@/lib/dates";
+import { ageInYears, parseDateOnly } from "@/lib/dates";
 import { writeJson } from "@/lib/json";
 import { ROLE_HOME, type Role } from "@/lib/constants";
 import { consumeByCaller, retryHintKey, INVITE_ACCEPTS } from "@/lib/rate-limit";
@@ -215,6 +215,12 @@ export async function acceptInvite(input: unknown): Promise<AcceptState> {
     }
   }
 
+  // TA-242: whether the person is a minor, as the class-code join, the intake and the admission decide it — from the
+  // date when one is given; with none, a pupil is a minor (the cautious default) and anyone else keeps their flag.
+  const minorFromDate: boolean | null = birthDate ? ageInYears(birthDate) < 18 : null;
+  const minorFlag = (storedBirthdate: Date | null): { isMinor?: boolean } =>
+    minorFromDate !== null ? { isMinor: minorFromDate } : !storedBirthdate && invite.role === "STUDENT" ? { isMinor: true } : {};
+
   const role = invite.role as Role;
   // For a holder proving themselves the password is theirs already and is
   // never re-hashed; for a new or reclaimed account it is the one being set.
@@ -342,6 +348,9 @@ export async function acceptInvite(input: unknown): Promise<AcceptState> {
             emailVerifiedAt: new Date(),
             bio: bio || null,
             birthdate: birthDate,
+            // TA-242: the minor flag as every other writer sets it — from the date, and a pupil's unknown date keeps
+            // the cautious default; the column's own default (an adult) stood for every pupil who joined this way.
+            isMinor: minorFromDate ?? invite.role === "STUDENT",
             prefs: writeJson({ theme: "system", locale }),
           },
           select: { id: true, passwordHash: true, emailVerifiedAt: true },
@@ -351,9 +360,10 @@ export async function acceptInvite(input: unknown): Promise<AcceptState> {
         // password on this never-verified account is not known to be the
         // person reading the mail. Fresh password, everything else out.
         if (!passwordHash) throw new Error("NEEDS_PASSWORD");
+        const dated = await tx.user.findUniqueOrThrow({ where: { id: user.id }, select: { birthdate: true } });
         await tx.user.update({
           where: { id: user.id },
-          data: { passwordHash, emailVerifiedAt: new Date(), ...CLEAR_SECOND_STEP, ...(birthDate ? { birthdate: birthDate } : {}), ...(bio ? { bio } : {}) },
+          data: { passwordHash, emailVerifiedAt: new Date(), ...CLEAR_SECOND_STEP, ...(birthDate ? { birthdate: birthDate } : {}), ...(bio ? { bio } : {}), ...minorFlag(dated.birthdate) },
         });
         await revokeAllAccess(user.id, { tokens: true, client: tx });
       } else {
@@ -366,7 +376,7 @@ export async function acceptInvite(input: unknown): Promise<AcceptState> {
           where: { id: user.id },
           select: { birthdate: true, bio: true },
         });
-        const data: { passwordHash?: string; emailVerifiedAt?: Date; birthdate?: Date; bio?: string } = {};
+        const data: { passwordHash?: string; emailVerifiedAt?: Date; birthdate?: Date; bio?: string; isMinor?: boolean } = {};
         if (!user.passwordHash && passwordHash) {
           // Account existed without a password (e.g. created by a parent
           // link). Setting one here is legitimate; overwriting an existing one
@@ -377,6 +387,9 @@ export async function acceptInvite(input: unknown): Promise<AcceptState> {
         }
         if (birthDate && !profile.birthdate) data.birthdate = birthDate;
         if (bio && !profile.bio) data.bio = bio;
+        // TA-242: the flag follows a date written here; a pupil with no date anywhere keeps the cautious default.
+        if (data.birthdate) data.isMinor = ageInYears(data.birthdate) < 18;
+        else if (!profile.birthdate && invite.role === "STUDENT") data.isMinor = true;
         if (Object.keys(data).length > 0) {
           await tx.user.update({ where: { id: user.id }, data });
         }

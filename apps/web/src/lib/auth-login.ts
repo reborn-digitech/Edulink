@@ -2,7 +2,7 @@ import "server-only";
 import { db } from "./db";
 import { fakePasswordWork, verifyPassword } from "./crypto";
 import { findAccount, loginIdentityKey } from "./passwords";
-import { callerKey, consume, peek, LOGIN_ATTEMPTS, LOGIN_GLOBAL, LOGIN_PER_ADDRESS } from "./rate-limit";
+import { callerKey, consume, release, LOGIN_ATTEMPTS, LOGIN_GLOBAL, LOGIN_PER_ADDRESS } from "./rate-limit";
 import { audit } from "./audit";
 import { closedOutsideAccount } from "./resolve-context";
 
@@ -30,8 +30,8 @@ import { closedOutsideAccount } from "./resolve-context";
  *   GLOBAL, two thousand failures in fifteen minutes across the service — the
  *   one that bounds the same spray from many addresses.
  *
- * The last two are checked before the password is verified and charged only
- * after it fails, so a person signing in correctly consumes nothing from them;
+ * The last two are counted before the password is verified and given back
+ * when it is right (TA-528), so a person signing in correctly consumes nothing;
  * a household that mistypes is nowhere near either.
  */
 export type PasswordSignIn =
@@ -60,18 +60,25 @@ export async function signInWithPassword(
   const gate = await consume(`login:${loginIdentityKey(identifier)}`, LOGIN_ATTEMPTS.limit, LOGIN_ATTEMPTS.windowMs);
   if (!gate.allowed) return { ok: false, reason: "rate", retryAfterSeconds: gate.retryAfterSeconds };
 
+  // TA-528: the last two are COUNTED FIRST and given back on a right password. They were peeked and charged only
+  // after a wrong one, so a burst of requests for different logins all read the same count below the wall and
+  // every password was checked; counted in one statement each, only the allowance of a burst gets through.
   if (addressBucket) {
-    const address = await peek(addressBucket, LOGIN_PER_ADDRESS.limit);
+    const address = await consume(addressBucket, LOGIN_PER_ADDRESS.limit, LOGIN_PER_ADDRESS.windowMs);
     if (!address.allowed) return { ok: false, reason: "rate", retryAfterSeconds: address.retryAfterSeconds };
   }
-  const global = await peek(GLOBAL_BUCKET, LOGIN_GLOBAL.limit);
-  if (!global.allowed) return { ok: false, reason: "rate", retryAfterSeconds: global.retryAfterSeconds };
+  const global = await consume(GLOBAL_BUCKET, LOGIN_GLOBAL.limit, LOGIN_GLOBAL.windowMs);
+  if (!global.allowed) {
+    if (addressBucket) await release(addressBucket);
+    return { ok: false, reason: "rate", retryAfterSeconds: global.retryAfterSeconds };
+  }
 
-  // A failure, of any kind, is what the last two buckets count.
-  const failed = async (): Promise<PasswordSignIn> => {
-    if (addressBucket) await consume(addressBucket, LOGIN_PER_ADDRESS.limit, LOGIN_PER_ADDRESS.windowMs);
-    await consume(GLOBAL_BUCKET, LOGIN_GLOBAL.limit, LOGIN_GLOBAL.windowMs);
-    return { ok: false, reason: "noMatch" };
+  // A failure, of any kind, is what the last two buckets count: it keeps the hits taken above.
+  const failed = async (): Promise<PasswordSignIn> => ({ ok: false, reason: "noMatch" });
+  // A right password costs them nothing.
+  const giveBack = async (): Promise<void> => {
+    if (addressBucket) await release(addressBucket);
+    await release(GLOBAL_BUCKET);
   };
 
   const account = await findAccount(identifier);
@@ -94,6 +101,7 @@ export async function signInWithPassword(
     await audit({ actorUserId: user.id, action: "auth.login.failed" });
     return failed();
   }
+  await giveBack();
   // A right password to an account the operator closed (G4-28, risks batch 5 Oct 2026): a sentence, never a session.
   const closed = await closedOutsideAccount(user.id);
   if (closed) {

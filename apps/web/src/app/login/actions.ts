@@ -13,7 +13,8 @@ import {
   type FieldErrors,
 } from "@/lib/validation";
 import { requestPasswordReset, resetPassword } from "@/lib/passwords";
-import { consume, retryHintKey, RESET_REQUESTS } from "@/lib/rate-limit";
+import { consume, consumeByCaller, retryHintKey, LOGIN_PER_ADDRESS, RESET_REQUESTS } from "@/lib/rate-limit";
+import { isDeliverableEmail } from "@/lib/login-name";
 import { getT } from "@/lib/i18n/server";
 import type { Translate } from "@/lib/i18n/dictionary";
 import { localeForUser, sendMagicLink } from "@/lib/email";
@@ -123,6 +124,17 @@ export async function requestMagicLink(input: unknown): Promise<LoginState> {
    * like one that does, or the limiter becomes the enumeration oracle this
    * function's "always report success" is careful not to be.
    */
+  // TA-245: and per ADDRESS, whatever it typed, before anything else: the bucket below is per identifier, so one
+  // caller walking a list of parents' addresses met a fresh limit at each and had the platform mail them all. The
+  // same fifty a quarter-hour the reset gives one address (TA-002), known and unknown addresses alike.
+  const address = await consumeByCaller("magic-addr", LOGIN_PER_ADDRESS);
+  if (!address.allowed) {
+    return {
+      ok: false,
+      errors: { _form: t("login.tooManyRequests", { when: hint(t, address.retryAfterSeconds) }) },
+    };
+  }
+
   const gate = await consume(`magic:${email}`, RESET_REQUESTS.limit, RESET_REQUESTS.windowMs);
   if (!gate.allowed) {
     return {
@@ -142,7 +154,9 @@ export async function requestMagicLink(input: unknown): Promise<LoginState> {
    * deferred, so the form hears back at the same moment for a stranger and
    * for a member.
    */
-  const userId = user && !user.disabledAt ? user.id : null;
+  // A pupil's login name is not an address (TA-551, login-name.ts): no link is minted or mailed to one, and the
+  // answer is the one an unknown address gets.
+  const userId = user && !user.disabledAt && isDeliverableEmail(email) ? user.id : null;
   afterResponse("requestMagicLink")(async () => {
     if (!userId) return;
     const token = generateToken();

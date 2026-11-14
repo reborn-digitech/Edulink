@@ -1,11 +1,11 @@
 import { NextResponse, type NextRequest } from "next/server";
-import { db } from "@/lib/db";
 import { audit } from "@/lib/audit";
 import { claimToken } from "@/lib/auth-tokens";
 import { readBounded } from "@/lib/api-v1";
 import { createSession } from "@/lib/session";
-import { closedOutsideAccount, resolveContext } from "@/lib/resolve-context";
-import { getT } from "@/lib/i18n/server";
+import { resolveContext } from "@/lib/resolve-context";
+import { magicLinkHolder } from "@/lib/magic-link";
+import { getLocale, getT } from "@/lib/i18n/server";
 import { twoFactorChallengeFor, twoFactorCookieOptions, TWO_FACTOR_COOKIE } from "@/lib/two-factor";
 
 /**
@@ -52,8 +52,10 @@ export async function GET(request: NextRequest) {
   if (!token) return NextResponse.redirect(new URL("/login?link=bad", origin));
 
   const t = await getT();
+  // The page's language is the one it is written in (TA-503), so a screen reader reads Marathi as Marathi.
+  const lang = await getLocale();
   const html = `<!doctype html>
-<html lang="en">
+<html lang="${escapeHtml(lang)}">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -113,17 +115,11 @@ export async function POST(request: NextRequest) {
    * off. The equivalent check at password login lives in `login`, which this
    * route does not go through — so it is repeated here rather than assumed.
    */
-  const user = await db.user.findUnique({
-    where: { id: claim.userId },
-    select: { id: true, email: true, disabledAt: true, lastRole: true, lastSchoolId: true },
-  });
-  if (!user || user.disabledAt) return away("bad");
-  // The link was sent to one address; the account must still be at it.
-  if (claim.email && claim.email.toLowerCase() !== (user.email ?? "").toLowerCase()) return away("bad");
-
-  // An outside account the operator closed, the person's only way in (G4-28, risks batch 5 Oct 2026): told, not let in.
-  const closed = await closedOutsideAccount(user.id);
-  if (closed) return away(closed === "RECRUITER" ? "closedRecruiter" : "closedExpert");
+  // Disabled, moved off the address, a closed outside account; and a never-verified account is taken back for
+  // the mailbox's owner (TA-035). One helper, which the phone's consume door asks too (TA-040).
+  const holder = await magicLinkHolder(claim);
+  if (!holder.ok) return away(holder.reason);
+  const user = holder.user;
 
   // Two-step sign-in: the link was the first step; the code page is the second.
   const challenge = await twoFactorChallengeFor(user.id, "magic-link");
@@ -139,7 +135,7 @@ export async function POST(request: NextRequest) {
     schoolId: context.schoolId,
     actorUserId: user.id,
     action: "auth.login",
-    meta: { via: "magic-link", role: context.role },
+    meta: { via: "magic-link", role: context.role, ...(holder.reclaimed ? { reclaimed: true } : {}) },
   });
 
   return NextResponse.redirect(new URL(context.redirectTo, origin), 303);
