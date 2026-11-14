@@ -67,12 +67,15 @@ describe("sessions and workshops, for a family", () => {
 
   it("past the allowance a priced seat is bought: the booking hands back the order, the pay step watches it until the money arrives, and the seat is then confirmed", async () => {
     let asked = 0;
+    // The money "arrives" only once the test has read the pay step: the pay step watches the payment and leaves when it
+    // is held, so under the concurrent battery a second poll could come before the devbox line was read (waves D, E1, E2).
+    let paid = false;
     const { calls } = await mountStaff(<FamilySessions />, "PARENT", {
       [`GET ${PATH}`]: () => json(view([], [{ ...OPEN, pricePaise: 10000, freeSeat: false }])),
       [`POST ${PATH}/book`]: () => json({ bookingId: "b9", status: "PENDING_PAYMENT", checkout: CHECKOUT }, 201),
       "GET /api/v1/gigs/payments/sp1": () => {
         asked += 1;
-        return json(STATUS(asked < 2 ? "INITIATED" : "HELD"));
+        return json(STATUS(paid && asked >= 2 ? "HELD" : "INITIATED"));
       },
     });
     expect(await screen.findByText("₹100 a seat past the free allowance")).toBeTruthy();
@@ -80,9 +83,9 @@ describe("sessions and workshops, for a family", () => {
     await fireEvent.changeText(screen.getByLabelText("What do you want from it?"), "ZZ She builds things from card at home.");
     await fireEvent.press(screen.getByRole("button", { name: "Pay ₹100" }));
     expect(await screen.findByText("Pay for the seat · ₹100")).toBeTruthy();
-    // The devbox line can draw a moment after the heading; under the concurrent battery getBy missed it (waves D and E1, 14 Nov 2026).
     expect(await screen.findByText(/Devbox: there is no payment page/)).toBeTruthy();
-    expect(await screen.findByText("Paid. The seat is confirmed.")).toBeTruthy();
+    paid = true;
+    expect(await screen.findByText("Paid. The seat is confirmed.", undefined, { timeout: 8000 })).toBeTruthy();
     expect(calls().filter((c) => c.line === "GET /api/v1/gigs/payments/sp1").length).toBeGreaterThanOrEqual(2);
     expect(calls().filter((c) => c.line === `GET ${PATH}`).length).toBeGreaterThanOrEqual(2);
     await fireEvent.press(screen.getByRole("button", { name: "Back" }));

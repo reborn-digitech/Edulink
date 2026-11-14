@@ -41,7 +41,9 @@ import { mentorsInStanding } from "./alumni-mentors";
  * teacher's guidance. An expert prices any time only while they are KYC
  * verified, have a payout account the gateway will pay, keep an open free
  * one-to-one offer in the coming thirty days, and have given the period's free
- * one-to-ones (`paidGate`); a teacher prices guidance only while payments are
+ * one-to-ones (`paidGate`); of the four, the open free offer binds the sale too (TA-564, 14 November 2026): a
+ * family books an expert's priced time, and a guardian agrees to a pupil's ask for one, only while it holds
+ * (`mentoringOfferOpen`), never asked at payment; a teacher prices guidance only while payments are
  * on and they have said where the company pays them (`teacherPaidGate`). The
  * free duties (an expert's starting block and standing quota, a teacher's
  * asked-for guidance) are counted on times priced 0 alone. A pupil under
@@ -342,6 +344,11 @@ export type PaidGate = {
   /** The period's free one-to-ones given (freeDutyRemaining). */
   dutyDone: boolean;
   oneToOnesOwed: number;
+  /**
+   * TA-564: the expert's priced times still to come that families cannot book now, because no free one-to-one is on
+   * offer (`mentoringOfferOpen`); 0 while one is. The checklist says so in a line of its own.
+   */
+  pricedOffSale: number;
   canCharge: boolean;
   seatPriceMinPaise: number;
   seatPriceMaxPaise: number;
@@ -359,15 +366,49 @@ export type PaidGate = {
 export async function paidGate(expertUserId: string, now: Date = new Date(), settings?: PaymentSettings): Promise<PaidGate> {
   const pay = settings ?? (await paymentSettings());
   const on = pay.paymentsEnabled && pay.transport !== "off";
-  const [profile, payout, duty, gigOffer, expertOffer] = await Promise.all([
+  const [profile, payout, duty, mentoringOffer, priced] = await Promise.all([
     db.expertProfile.findUnique({ where: { userId: expertUserId }, select: { kycStatus: true } }),
     payoutAccountOf(expertUserId),
     freeDutyRemaining(expertUserId, now),
-    db.gigSlot.count({ where: { providerUserId: expertUserId, kind: "ONE_TO_ONE", pricePaise: 0, cancelledAt: null, startsAt: { gt: now, lte: new Date(now.getTime() + MENTORING_OFFER_DAYS * DAY) } } }),
-    db.expertSlot.count({ where: { expert: { userId: expertUserId }, cancelledAt: null, bookedAt: null, startsAt: { gt: now, lte: new Date(now.getTime() + MENTORING_OFFER_DAYS * DAY) } } }),
+    mentoringOfferOpen(expertUserId, now),
+    db.gigSlot.count({ where: { providerUserId: expertUserId, pricePaise: { gt: 0 }, cancelledAt: null, startsAt: { gt: now } } }),
   ]);
-  const gate = { paymentsOn: on, kycVerified: profile?.kycStatus === "VERIFIED", payoutActive: payout.status === "ACTIVE", mentoringOffer: gigOffer + expertOffer > 0, dutyDone: duty.oneToOnes === 0, oneToOnesOwed: duty.oneToOnes };
+  const gate = { paymentsOn: on, kycVerified: profile?.kycStatus === "VERIFIED", payoutActive: payout.status === "ACTIVE", mentoringOffer, dutyDone: duty.oneToOnes === 0, oneToOnesOwed: duty.oneToOnes, pricedOffSale: mentoringOffer ? 0 : priced };
   return { ...gate, canCharge: gate.paymentsOn && gate.kycVerified && gate.payoutActive && gate.mentoringOffer && gate.dutyDone, seatPriceMinPaise: pay.seatPriceMinPaise, seatPriceMaxPaise: pay.seatPriceMaxPaise, commissionPercent: pay.commissionPercent };
+}
+
+/**
+ * Condition (c) of the paid gate, and the one asked again at sale (TA-564, the owner's decision of 14 November 2026):
+ * the expert keeps a free one-to-one open — a free GigSlot one-to-one or an ExpertSlot mentoring window, not withdrawn,
+ * starting in the coming MENTORING_OFFER_DAYS. A time already booked still counts until it happens, the mentoring
+ * window included (before, a window stopped counting once a school booked it), so giving the mentoring never stops
+ * sales. Both tables are no school's rows, so a family's binding reads them as the expert's own does.
+ */
+export async function mentoringOfferOpen(expertUserId: string, now: Date = new Date()): Promise<boolean> {
+  const within = { gt: now, lte: new Date(now.getTime() + MENTORING_OFFER_DAYS * DAY) };
+  const [gigOffer, expertOffer] = await Promise.all([
+    db.gigSlot.count({ where: { providerUserId: expertUserId, kind: "ONE_TO_ONE", pricePaise: 0, cancelledAt: null, startsAt: within } }),
+    db.expertSlot.count({ where: { expert: { userId: expertUserId }, cancelledAt: null, startsAt: within } }),
+  ]);
+  return gigOffer + expertOffer > 0;
+}
+
+/**
+ * TA-564: the expert alone is told that their priced times stopped selling, at the first booking or yes refused for
+ * want of a free offer, and once a lapse: a notice of no school (as the operator's answer to their identity papers is),
+ * sent unless one was sent since the expert last offered a free one-to-one, since only a new offer reopens sales.
+ */
+async function tellSalesStopped(expertUserId: string): Promise<void> {
+  await forUser(expertUserId, async () => {
+    const [gig, mentoring] = await Promise.all([
+      db.gigSlot.findFirst({ where: { providerUserId: expertUserId, kind: "ONE_TO_ONE", pricePaise: 0 }, orderBy: { createdAt: "desc" }, select: { createdAt: true } }),
+      db.expertSlot.findFirst({ where: { expert: { userId: expertUserId } }, orderBy: { createdAt: "desc" }, select: { createdAt: true } }),
+    ]);
+    const since = new Date(Math.max(gig?.createdAt.getTime() ?? 0, mentoring?.createdAt.getTime() ?? 0));
+    const already = await db.notification.findFirst({ where: { userId: expertUserId, titleKey: "gigs.notifSalesStopped", createdAt: { gte: since } }, select: { id: true } });
+    if (already) return;
+    await notify({ userId: expertUserId, schoolId: null, kind: "EXPERT", titleKey: "gigs.notifSalesStopped", url: "/expert/sessions", meta: { event: "gigs.salesStopped" } });
+  }).catch((error) => console.error("[gig-sessions] sales-stopped notice failed", error));
 }
 
 /** The expert's "Get paid" card: the payee details the company pays (the sealed account never among them), and the four conditions. */
@@ -1100,6 +1141,10 @@ export async function bookSeat(ctx: ActiveContext, input: { slotId: string; stud
   // here as well as at the order. An alumnus mentor's time is never priced (placement-alumni.ts).
   const priced = slot.pricePaise > 0 && slot.providerKind !== "ALUMNUS";
   const payable = priced && (await paymentsOn());
+  // TA-564 (the owner's decision of 14 November 2026): an expert's priced time sells only while the expert keeps a free
+  // one-to-one open (decision 0004's condition (c), asked again at sale and never at payment). A teacher's is untouched,
+  // and a seat this pupil already holds is answered as before, below.
+  const offerLapsed = payable && slot.providerKind === "EXPERT" && !(await mentoringOfferOpen(slot.providerUserId, now));
 
   let made: { id: string; status: BookingStatus; fresh: boolean; paid: boolean };
   try {
@@ -1125,6 +1170,7 @@ export async function bookSeat(ctx: ActiveContext, input: { slotId: string; stud
       // risks batch 5 Oct 2026): alumni are volunteers; decision 0004's allowance is for experts.
       const free = slot.providerKind === "ALUMNUS" || (!priced && used[kind] < allowed(settings)[kind]);
       if (!free && !payable) throw new Refusal(priced ? "gigs.refusePaymentsOff" : kind === "ONE_TO_ONE" ? "gigs.refuseAllowanceOneToOne" : "gigs.refuseAllowanceWorkshop", { count: allowed(settings)[kind] });
+      if (!free && offerLapsed) throw new Refusal("gigs.refuseNoFreeOffer");
       const paid = !free;
       const claimed = await tx.$executeRaw`UPDATE "GigSlot" SET "seatsTaken" = "seatsTaken" + 1, "updatedAt" = NOW() WHERE "id" = ${slot.id} AND "seatsTaken" < "seats" AND "cancelledAt" IS NULL`;
       if (claimed === 0) throw new Refusal("gigs.refuseFull");
@@ -1140,6 +1186,8 @@ export async function bookSeat(ctx: ActiveContext, input: { slotId: string; stud
     });
   } catch (error) {
     const no = refused(error);
+    // TA-564: the expert alone is told their priced times stopped selling, once a lapse.
+    if (no && no.errorKey === "gigs.refuseNoFreeOffer") await tellSalesStopped(slot.providerUserId);
     if (no) return no;
     throw error;
   }
@@ -1234,6 +1282,9 @@ export async function consentToBooking(ctx: ActiveContext, bookingId: string, ap
   // A paid seat agreed to is not yet confirmed: the guardian's payment confirms it (settleSeatPayment).
   const paidNext = approve && b.paid;
   if (paidNext && !(await paymentsOn())) return { ok: false, errorKey: "gigs.refusePaymentsOff" };
+  // TA-564 (the owner's decision of 14 November 2026): a yes to a pupil's ask for an expert's priced time is asked the
+  // free offer again, as a booking is; refused, the ask is cancelled and its seat given back, never left holding it.
+  if (paidNext && b.slot.providerKind === "EXPERT" && !(await mentoringOfferOpen(b.slot.providerUserId, now))) return askStoppedNoOffer(ctx, b, c, now);
   const data = approve ? { status: paidNext ? "PENDING_PAYMENT" : "CONFIRMED", consentAt: now, consentUserId: ctx.user.id } : { status: "CANCELLED", cancelledAt: now, cancelledByUserId: ctx.user.id, cancelReason: null, lateCancel: false };
   const changed = await db.gigBooking.updateMany({ where: { id: b.id, schoolId: b.schoolId, status: "PENDING_CONSENT" }, data });
   if (changed.count === 0) return { ok: false, errorKey: "gigs.refuseNotWaiting" };
@@ -1246,6 +1297,26 @@ export async function consentToBooking(ctx: ActiveContext, bookingId: string, ap
   }
   const status: BookingStatus = approve ? (paidNext ? "PENDING_PAYMENT" : "CONFIRMED") : "CANCELLED";
   return { ok: true, status, checkout: paidNext ? await checkoutOrNull(ctx, { ...b, title: b.slot.title, pricePaise: b.slot.pricePaise }, c) : null };
+}
+
+/**
+ * TA-564: a guardian's yes to a pupil's ask for an expert's priced time, refused because the expert keeps no free
+ * one-to-one open. The ask is cancelled (in good time, so it never counts against the pupil), its seat given back and
+ * the audit row written in one transaction; the pupil and their guardians are told why, and the expert once a lapse.
+ */
+async function askStoppedNoOffer(ctx: ActiveContext, b: Loaded, c: Child, now: Date): Promise<GigResult<never>> {
+  const cancelled = await db.$tenantTransaction(async (raw) => {
+    const tx = raw as typeof db;
+    const moved = await tx.gigBooking.updateMany({ where: { id: b.id, schoolId: b.schoolId, status: "PENDING_CONSENT" }, data: { status: "CANCELLED", cancelledAt: now, cancelledByUserId: null, cancelReason: "no free offer", lateCancel: false } });
+    if (moved.count === 0) return false;
+    await tx.$executeRaw`UPDATE "GigSlot" SET "seatsTaken" = "seatsTaken" - 1, "updatedAt" = NOW() WHERE "id" = ${b.slotId} AND "seatsTaken" > 0`;
+    await audit({ schoolId: b.schoolId, actorUserId: ctx.user.id, action: "gig.booking.cancel", targetType: "GigBooking", targetId: b.id, meta: { by: "noFreeOffer", lateCancel: false } }, tx);
+    return true;
+  });
+  if (!cancelled) return { ok: false, errorKey: "gigs.refuseNotWaiting" };
+  await tellFamily(b, c.userId, () => ({ kind: noteKind(b.slot.providerKind), titleKey: "gigs.notifAskStoppedNoOffer", titleVars: { title: b.slot.title }, url: "/sessions" }));
+  await tellSalesStopped(b.slot.providerUserId);
+  return { ok: false, errorKey: "gigs.refuseNoFreeOffer" };
 }
 
 /** A paid seat's money back to the family, and the family told how much; the reason is kept on the payment row. */

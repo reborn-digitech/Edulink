@@ -32,6 +32,13 @@ export async function PaidGateList({ gate }: { gate: PaidGate }) {
           <span className={done ? "text-fg-muted line-through" : "text-fg"}>{label}</span>
         </li>
       ))}
+      {/* TA-564: the free offer binds the sale too; while it lapses, the expert's priced times are off sale. */}
+      {gate.pricedOffSale > 0 && (
+        <li className="flex items-center gap-2 text-danger" data-testid="paid-gate-off-sale">
+          <span aria-hidden="true" className="inline-flex size-4 items-center justify-center rounded-full border border-danger text-[10px] font-bold" />
+          <span>{t("gigs.gatePricedOffSale")}</span>
+        </li>
+      )}
     </ul>
   );
 }

@@ -61,6 +61,12 @@ export function PaidGateList({ gate }: { gate: GigPaidGate }) {
           {`${done ? "✓" : "○"} ${label}`}
         </Text>
       ))}
+      {/* TA-564: the free offer binds the sale too; while it lapses, the expert's priced times are off sale. */}
+      {(gate.pricedOffSale ?? 0) > 0 ? (
+        <Text variant="sm" tone="danger" testID="paid-gate-off-sale">
+          {t("gigs.gatePricedOffSale")}
+        </Text>
+      ) : null}
     </View>
   );
 }

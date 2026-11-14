@@ -239,6 +239,8 @@ export const gigPaidGateSchema = z.object({
   mentoringOffer: z.boolean(),
   dutyDone: z.boolean(),
   oneToOnesOwed: z.number().int(),
+  /** TA-564: the expert's priced times still to come that families cannot book now, for want of a free one-to-one on offer; 0 while one is. Optional for a server that predates it. */
+  pricedOffSale: z.number().int().optional(),
   canCharge: z.boolean(),
   seatPriceMinPaise: z.number().int(),
   seatPriceMaxPaise: z.number().int(),

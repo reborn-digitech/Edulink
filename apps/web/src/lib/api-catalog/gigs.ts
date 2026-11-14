@@ -208,3 +208,16 @@ GIGS.push(
   say("POST", "/api/v1/operator/gigs/payments/{paymentId}/retry", "Try the waiting gateway call now, instead of at the job's next run: a refund, a release of the hold, or a failed transfer made again on hold (a captured row never held is held); a seat its family disputes is left alone until the operator decides it, except a waiting refund");
 }
 // end decision-122
+// decision-564 (TA-564, the owner's decision of 14 November 2026): an expert's priced time sells only while the expert
+// keeps a free one-to-one open. Request, answer and access are unchanged; two summaries amended here rather than edited
+// in place (the shared-file fence).
+{
+  const say = (method: Endpoint["method"], path: string, summary: string) => {
+    const e = GIGS.find((x) => x.method === method && x.path === path);
+    if (!e) throw new Error(`api-catalog/gigs.ts (decision-564): no ${method} ${path} to amend`);
+    e.summary = summary;
+  };
+  say("POST", "/api/v1/gigs/sessions/book", "A pupil asks for a seat, which waits for a guardian, or a guardian takes one for their child; refused past the free allowance or when the last seat has gone, and an expert's priced time refused while the expert keeps no free one-to-one open (a seat already held stands)");
+  say("POST", "/api/v1/gigs/sessions/{bookingId}/consent", "A guardian agrees to their child's ask, or declines it and the seat is given back; a yes to an expert's priced time while the expert keeps no free one-to-one open is refused, the ask cancelled and the seat given back, and the family told why");
+}
+// end decision-564

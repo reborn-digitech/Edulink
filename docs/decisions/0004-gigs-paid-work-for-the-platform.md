@@ -114,6 +114,16 @@ The testing analysis of 13 November found that the 48-hour hold had no use insid
 
 Doors: `GET /api/v1/operator/gigs/disputes` and `POST /api/v1/operator/gigs/disputes/{bookingId}/decide` (REFUND or RELEASE); the family's existing `POST /api/v1/gigs/sessions/{bookingId}/unheld` answers DISPUTED on a marked seat. While paid seats are off, every dispute is about a free session.
 
+## Amendment of 14 November 2026 — the open free offer binds the sale as well as the price (TA-564)
+
+The testing analysis of 13 November found that the paid gate was asked only when a time was priced: an expert who priced workshop seats or one-to-ones up to 120 days ahead and then withdrew their only free one-to-one kept selling them. The owner took the coordinating session's recommendation on 14 November 2026, on their instruction "lets do all the recommendations for all decisions in one go", without reading the option list, so this choice can be revisited. What it says:
+
+- **Of the four conditions of the first amendment, the open free one-to-one offer (c) binds the sale as well as the pricing**, of a priced workshop seat and, since decision 0006, of a priced one-to-one alike. A family books an expert's priced time, and a guardian agrees to a pupil's ask for one, only while the expert keeps a free one-to-one open — a free `GigSlot` one-to-one or an `ExpertSlot` mentoring window, not withdrawn, starting in the coming 30 days (`mentoringOfferOpen` in `gig-sessions.ts`, the one rule the gate and the sale both read). It is never asked at payment, so no family is stopped halfway through paying; identity and the payout account are still asked at the order as before.
+- **A free one-to-one already booked still counts as the offer until it happens**, the mentoring window included (before, a window stopped counting once a school booked it); so giving the mentoring never stops sales, and the expert may price new times meanwhile.
+- **Sales stop at once when the offer lapses, with no grace.** The family is refused with a sentence of its own. A guardian's yes refused for this reason cancels the pupil's ask (in good time, so it never counts against the pupil), gives the seat back and tells the family why, with the audit row in the same transaction.
+- **The expert alone is told**, at the first booking or yes refused, once a lapse (a notice of no school, not sent again until a new free offer has been made), and their checklist of the four conditions gains a line saying their priced times are off sale while it lasts.
+- **What stands:** seats already booked or paid; a teacher's priced guidance, which this does not touch; and the monthly count of free one-to-ones (d), which is asked when a time is priced and not again at sale.
+
 ## Before paid sessions were built (kept as written on 2026-09-30)
 
 - A **new decision** for the gateway split, with its own invariants (the fees test forbids transfer and route calls in `gateway.ts` and model names beginning Platform, Wallet, Escrow, Nodal, Settlement or Payout; the gig gateway is its own module).
