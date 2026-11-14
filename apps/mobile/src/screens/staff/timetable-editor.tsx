@@ -38,9 +38,14 @@ function useRefresh() {
  * and the room — or to take the lesson out.
  */
 export function TimetableEditor() {
-  const t = useT();
   const params = useLocalSearchParams<{ classId?: string }>();
   const initialClass = typeof params.classId === "string" && params.classId ? params.classId : null;
+  // Keyed by the class the route names (TA-162): the route stays mounted as a tab and read its class only once.
+  return <TimetableBody key={initialClass ?? ""} initialClass={initialClass} />;
+}
+
+function TimetableBody({ initialClass }: { initialClass: string | null }) {
+  const t = useT();
   const [section, setSection] = useState<Section>(initialClass ? "week" : "day");
   const [classId, setClassId] = useState<string | null>(initialClass);
   const query = useQuery({
@@ -307,7 +312,7 @@ function WeekPanel({ data: d, onClass, onDay }: { data: AdminTimetable; onClass:
               );
             })}
           </Card>
-          {(d.grid?.slots.length ?? 0) > 0 ? <CopySections classId={classId} className={selected.name} sisters={d.classes.filter((k) => k.id !== classId && k.gradeLevel === selected.gradeLevel)} /> : null}
+          {(d.grid?.slots.length ?? 0) > 0 ? <CopySections key={classId} classId={classId}className={selected.name} sisters={d.classes.filter((k) => k.id !== classId && k.gradeLevel === selected.gradeLevel)} /> : null}
         </>
       )}
     </>
@@ -327,8 +332,11 @@ function CopySections({ classId, className, sisters }: { classId: string; classN
   const refresh = useRefresh();
   const [chosen, setChosen] = useState<string[]>([]);
   const [confirming, setConfirming] = useState(false);
+  // Only this class's own sister sections are ever sent (TA-158): a switch left on for the class shown before cannot
+  // reach the copy, whose server replaces each named class's whole week.
+  const targets = chosen.filter((id) => sisters.some((k) => k.id === id));
   const copy = useMutation({
-    mutationFn: async () => timetableCopyResultSchema.parse(unwrap(await api().post("/api/v1/office/timetable/copy", { fromClassId: classId, toClassIds: chosen }))),
+    mutationFn: async () => timetableCopyResultSchema.parse(unwrap(await api().post("/api/v1/office/timetable/copy", { fromClassId: classId, toClassIds: targets }))),
     onSuccess: (r) => {
       toast.show(t("officeBulk.copyDone", { count: r.copied, classes: r.classes.length }));
       setChosen([]);
@@ -367,7 +375,7 @@ function CopySections({ classId, className, sisters }: { classId: string; classN
                 <Button label={t("common.cancel")} variant="ghost" onPress={() => setConfirming(false)} />
               </>
             ) : (
-              <Button label={t("officeBulk.copyGo")} variant="secondary" disabled={chosen.length === 0} onPress={() => setConfirming(true)} />
+              <Button label={t("officeBulk.copyGo")} variant="secondary" disabled={targets.length === 0} onPress={() => setConfirming(true)} />
             )}
           </View>
         </>

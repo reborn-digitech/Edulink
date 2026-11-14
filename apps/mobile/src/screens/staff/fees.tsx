@@ -9,7 +9,7 @@ import { api, errorText } from "@/lib/api";
 import { unwrap } from "@/lib/query";
 import { useLocale, useT } from "@/lib/i18n";
 import { useTheme } from "@/lib/theme";
-import { useRole } from "@/lib/session";
+import { useRole, useSession } from "@/lib/session";
 import { formatInstant } from "../family/shared";
 import { methodLabel, money, payStatusLabel, receiptPath } from "../shared/fees";
 import { formatDateKey, openWeb } from "./shared";
@@ -204,16 +204,19 @@ function OpenPlans() {
 
 /**
  * From what age a pupil may read their own dues (never pay). The save sends
- * the other settings back as they are: the server rewrites the row whole.
+ * the age alone; the server leaves the other settings as they are.
  */
 function PupilViewAge() {
   const t = useT();
   const qc = useQueryClient();
+  const session = useSession();
+  // The school's own copy (TA-156): after a switch of school the card no longer shows the first school's age.
+  const schoolId = session.status === "signed-in" ? session.me.active.schoolId : null;
   // The box holds what was typed; until something is typed it shows the saved value, so no effect is needed to copy it in.
   const [typed, setTyped] = useState<string | null>(null);
   const [notice, setNotice] = useState<{ tone: "ok" | "danger"; text: string } | null>(null);
   const query = useQuery({
-    queryKey: ["fees", "settings"],
+    queryKey: ["fees", "settings", schoolId],
     queryFn: async () => feeSettingsSchema.parse(unwrap(await api().get("/api/v1/fees/settings"))),
   });
   const current = query.data?.pupilFeeViewAge;
@@ -222,9 +225,10 @@ function PupilViewAge() {
   const setAge = (next: string) => setTyped(next);
   const save = useMutation({
     mutationFn: async () => {
-      const s = query.data!;
       const clean = age.trim();
-      const result = await api().post("/api/v1/fees/settings", { upiId: s.upiId, upiPayee: s.upiPayee, receiptPrefix: s.receiptPrefix, bankNote: s.bankNote, pupilFeeViewAge: clean === "" ? null : Number(clean) });
+      // The age alone (TA-156): the server leaves every setting not named as it is, so this card no longer sends back
+      // a UPI id, payee, receipt prefix and bank note copied when the screen opened, perhaps at another school.
+      const result = await api().post("/api/v1/fees/settings", { pupilFeeViewAge: clean === "" ? null : Number(clean) });
       if (!result.ok) throw new Error(errorText(result, t("common.somethingWrong")));
       return feeOkSchema.parse(result.data);
     },

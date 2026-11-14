@@ -41,6 +41,11 @@ export function ExpulsionsScreen() {
   const [notice, setNotice] = useState<{ tone: "ok" | "danger"; text: string } | null>(null);
   const [acting, setActing] = useState<{ id: string; kind: "APPROVE" | "REFUSE" | "WITHDRAW" } | null>(null);
   const [note, setNote] = useState("");
+  // TA-162: a note typed for one boarder and left by Cancel or a refusal is not sent with the next boarder's decision.
+  const openDecision = (next: { id: string; kind: "APPROVE" | "REFUSE" | "WITHDRAW" }) => {
+    setActing(next);
+    setNote("");
+  };
   const query = useQuery({ queryKey: ["hostel", "expulsions"], enabled: on, queryFn: async () => hostelExpulsionsSchema.parse(unwrap(await api().get("/api/v1/hostel/expulsions"))) });
   const done = (text: string) => {
     setActing(null);
@@ -82,9 +87,9 @@ export function ExpulsionsScreen() {
                 <Row title={x.name} caption={[t("collegeDesks.expulsionLine", { hostel: x.hostelName, room: t("hostel.roomShort", { room: x.roomNumber }), date: formatDateKey(x.effectiveOn, locale), name: x.proposedByName }), x.reason, x.decisionNote ? t("deskParity.filingPrincipalNote", { note: x.decisionNote }) : null].filter(Boolean).join(" · ")} right={<Pill label={t(`collegeDesks.status${x.status}` as TranslationKey)} tone={TONE[x.status]} />} />
                 {x.status === "ASKED" && !mine ? (
                   <View style={{ flexDirection: "row", flexWrap: "wrap", gap: th.space[2] }}>
-                    {d.canDecide && role === "PRINCIPAL" ? <Button label={t("collegeDesks.approve")} accessibilityLabel={`${t("collegeDesks.approve")}: ${x.name}`} onPress={() => setActing({ id: x.id, kind: "APPROVE" })} /> : null}
-                    {d.canDecide && role === "PRINCIPAL" ? <Button label={t("collegeDesks.refuse")} accessibilityLabel={`${t("collegeDesks.refuse")}: ${x.name}`} variant="secondary" onPress={() => setActing({ id: x.id, kind: "REFUSE" })} /> : null}
-                    {d.canPropose ? <Button label={t("collegeDesks.expulsionWithdraw")} accessibilityLabel={`${t("collegeDesks.expulsionWithdraw")}: ${x.name}`} variant="ghost" onPress={() => setActing({ id: x.id, kind: "WITHDRAW" })} /> : null}
+                    {d.canDecide && role === "PRINCIPAL" ? <Button label={t("collegeDesks.approve")} accessibilityLabel={`${t("collegeDesks.approve")}: ${x.name}`} onPress={() => openDecision({ id: x.id, kind: "APPROVE" })} /> : null}
+                    {d.canDecide && role === "PRINCIPAL" ? <Button label={t("collegeDesks.refuse")} accessibilityLabel={`${t("collegeDesks.refuse")}: ${x.name}`} variant="secondary" onPress={() => openDecision({ id: x.id, kind: "REFUSE" })} /> : null}
+                    {d.canPropose ? <Button label={t("collegeDesks.expulsionWithdraw")} accessibilityLabel={`${t("collegeDesks.expulsionWithdraw")}: ${x.name}`} variant="ghost" onPress={() => openDecision({ id: x.id, kind: "WITHDRAW" })} /> : null}
                   </View>
                 ) : null}
                 {mine && acting.kind !== "WITHDRAW" ? (
@@ -125,7 +130,9 @@ function ProposeCard({ onDone }: { onDone: (text: string) => void }) {
     onSuccess: () => {
       setOpen(false);
       setAllotmentId(null);
+      setQ("");
       setReason("");
+      setEffectiveOn(todayKey());
       setError(null);
       onDone(t("collegeDesks.expulsionProposed"));
       void qc.invalidateQueries({ queryKey: ["hostel"] });

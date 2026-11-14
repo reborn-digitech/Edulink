@@ -132,8 +132,19 @@ export function weekdayName(weekday: number, locale = "en", width: "long" | "sho
   }
 }
 
-/** "25/10/2026 16:00" typed on the phone (or the older "2026-10-25 16:00"), as an instant in the device's zone; null if it cannot be read. */
-export function instantFromTyped(typed: string): string | null {
+/** A zone's offset from UTC at an instant, in milliseconds (positive east of Greenwich); throws for a zone the runtime does not know. */
+function zoneOffsetAt(at: number, timeZone: string): number {
+  const p = new Intl.DateTimeFormat("en-US", { timeZone, hourCycle: "h23", year: "numeric", month: "numeric", day: "numeric", hour: "numeric", minute: "numeric", second: "numeric" }).formatToParts(new Date(at));
+  const n = (type: Intl.DateTimeFormatPartTypes) => Number(p.find((x) => x.type === type)?.value ?? 0);
+  return Date.UTC(n("year"), n("month") - 1, n("day"), n("hour") % 24, n("minute"), n("second")) - Math.floor(at / 1000) * 1000;
+}
+
+/**
+ * "25/10/2026 16:00" typed on the phone (or the older "2026-10-25 16:00"), as an instant: read on the clock of
+ * `timeZone` when one is given (the school's, as the web reads a leave's times, TA-500), else in the device's zone;
+ * null if it cannot be read. A zone the runtime does not know reads in the device's own, as formatWith does.
+ */
+export function instantFromTyped(typed: string, timeZone?: string): string | null {
   const s = typed.trim();
   const dmy = /^(\d{1,2})\/(\d{1,2})\/(\d{4})[ T,]+(\d{1,2}):(\d{2})$/.exec(s);
   const ymd = /^(\d{4})-(\d{2})-(\d{2})[ T](\d{1,2}):(\d{2})$/.exec(s);
@@ -141,5 +152,14 @@ export function instantFromTyped(typed: string): string | null {
   if (!y) return null;
   const at = new Date(Number(y), Number(mo) - 1, Number(d), Number(h), Number(mi));
   if (Number.isNaN(at.getTime()) || at.getMonth() !== Number(mo) - 1 || at.getDate() !== Number(d) || Number(h) > 23) return null;
-  return at.toISOString();
+  if (!timeZone) return at.toISOString();
+  // The figures typed, read as if they were UTC, then moved by the zone's offset at that moment (asked twice, so a
+  // change of offset between the two readings is taken into account).
+  const wall = Date.UTC(Number(y), Number(mo) - 1, Number(d), Number(h), Number(mi));
+  try {
+    const first = wall - zoneOffsetAt(wall, timeZone);
+    return new Date(wall - zoneOffsetAt(first, timeZone)).toISOString();
+  } catch {
+    return at.toISOString();
+  }
 }

@@ -108,17 +108,20 @@ export async function saveFeeSettings(ctx: ActiveContext, input: { upiId?: strin
   const caller = office(ctx);
   // The pupil's age gate: a whole number of years between 5 and 25, or null (no pupil sees fees). Left out of the input, it stays as it is.
   if (input.pupilFeeViewAge !== undefined && input.pupilFeeViewAge !== null && (!Number.isInteger(input.pupilFeeViewAge) || input.pupilFeeViewAge < 5 || input.pupilFeeViewAge > 25)) throw new AccessError("fees.refusePupilViewAge");
-  const upiId = input.upiId?.trim() || null;
+  // A field left out of the input stays as it is (TA-156): the phone's age card sent back a whole copy read when the
+  // screen opened, so a save after a switch of school, or after the web changed the UPI id, wrote the stale copy over
+  // the row. Only a field the caller names is written; null or an empty value still clears it.
+  const before = await db.school.findUniqueOrThrow({ where: { id: caller.schoolId }, select: { feeUpiId: true, feeUpiPayee: true, feeReceiptPrefix: true, feeBankNote: true } });
+  const upiId = input.upiId === undefined ? before.feeUpiId : input.upiId?.trim() || null;
   if (upiId && !UPI_ID.test(upiId)) throw new AccessError("fees.refuseUpiId");
-  const upiPayee = input.upiPayee?.trim().slice(0, 80) || null;
+  const upiPayee = input.upiPayee === undefined ? before.feeUpiPayee : input.upiPayee?.trim().slice(0, 80) || null;
   if (upiId && !upiPayee) throw new AccessError("fees.refuseUpiPayee");
-  const receiptPrefix = (input.receiptPrefix ?? "RCPT").trim().toUpperCase().replace(/[^A-Z0-9-]/g, "").slice(0, 12) || "RCPT";
-  const bankNote = input.bankNote?.trim().slice(0, 600) || null;
+  const receiptPrefix = (input.receiptPrefix ?? before.feeReceiptPrefix).trim().toUpperCase().replace(/[^A-Z0-9-]/g, "").slice(0, 12) || "RCPT";
+  const bankNote = input.bankNote === undefined ? before.feeBankNote : input.bankNote?.trim().slice(0, 600) || null;
   // THE PAYEE IS ON RECORD (TA-131, testing analysis of 13 November 2026). Every UPI link a family opens pays this id,
   // and the office that sets it can also confirm the claims, so a change of the id or the payee name is audited with
   // a masked form of the old and the new, in the same transaction as the write, and the rest of the office and the
   // head are told: a payee swapped and later put back no longer leaves two rows that each say only "upi: true".
-  const before = await db.school.findUniqueOrThrow({ where: { id: caller.schoolId }, select: { feeUpiId: true, feeUpiPayee: true } });
   const payeeChanged = (before.feeUpiId ?? null) !== upiId || (before.feeUpiPayee ?? null) !== upiPayee;
   const payeeMeta: Record<string, unknown> = payeeChanged ? { payeeChanged: true, upiFrom: maskUpiId(before.feeUpiId), upiTo: maskUpiId(upiId), payeeFrom: maskPayee(before.feeUpiPayee), payeeTo: maskPayee(upiPayee) } : { payeeChanged: false };
   await db.$tenantTransaction(async (raw) => {

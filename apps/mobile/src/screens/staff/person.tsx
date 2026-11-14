@@ -78,7 +78,8 @@ export function Person() {
       </Screen>
     );
   }
-  return <PersonFound row={found.data} />;
+  // Keyed by the person (TA-162): a person opened again from the cache drew the boxes of the one opened before.
+  return <PersonFound key={found.data.membershipId} row={found.data} />;
 }
 
 /**

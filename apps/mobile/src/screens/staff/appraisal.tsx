@@ -36,8 +36,13 @@ export const toBody = (d: Draft): AppraisalSave => ({ kind: d.kind, dateKey: d.d
 
 export function StaffAppraisal() {
   usePrivateScreen();
-  const t = useT();
   const { membershipId } = useLocalSearchParams<{ membershipId?: string }>();
+  // TA-162: the tab keeps this screen mounted, so the body is keyed by the person — an open draft is never saved under the next one's id.
+  return <AppraisalOf key={membershipId ?? ""} membershipId={membershipId} />;
+}
+
+function AppraisalOf({ membershipId }: { membershipId?: string }) {
+  const t = useT();
   const id = membershipId ?? "";
   const [adding, setAdding] = useState(false);
   const query = useQuery({

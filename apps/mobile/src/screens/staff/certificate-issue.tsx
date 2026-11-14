@@ -34,6 +34,14 @@ const kindLabel = (t: ReturnType<typeof useT>, kind: string) => (kind in CERTIFI
  */
 export function CertificateIssue() {
   const params = useLocalSearchParams<{ membershipId?: string }>();
+  const routed = params.membershipId || undefined;
+  // A fresh form for each pupil the route is opened for and after each issue (TA-157): the route stays mounted as a
+  // tab, and the last pupil's template, purpose, remark, leaving date and picked request went with the next one.
+  const [issued, setIssued] = useState(0);
+  return <IssueForm key={`${routed ?? ""}:${issued}`} routed={routed} onIssued={() => setIssued((n) => n + 1)} />;
+}
+
+function IssueForm({ routed, onIssued }: { routed: string | undefined; onIssued: () => void }) {
   const t = useT();
   const th = useTheme();
   const router = useRouter();
@@ -41,7 +49,7 @@ export function CertificateIssue() {
   const qc = useQueryClient();
   // The pupil: the one a request picked, else the one the route opened with.
   const [picked, setPicked] = useState<string | null>(null);
-  const membershipId = picked ?? (params.membershipId || undefined);
+  const membershipId = picked ?? routed;
   const [templateId, setTemplateId] = useState<string>("");
   const [purpose, setPurpose] = useState("");
   const [remark, setRemark] = useState("");
@@ -82,6 +90,7 @@ export function CertificateIssue() {
       void qc.invalidateQueries({ queryKey: QUEUE_KEY });
       qc.setQueryData(["shared", "certificate", cert.id], cert);
       toast.show(t("certificates.issuedDone", { serial: cert.serial }), "ok");
+      onIssued();
       router.replace({ pathname: "/(app)/certificate", params: { id: cert.id } } as never);
     },
     onError: (e) => setRefusal(e instanceof Refusal ? e : new Refusal(e.message, 0, {})),

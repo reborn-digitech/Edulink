@@ -29,6 +29,7 @@ import { forSchool } from "./tenant-context";
 import { addDaysToKey, todayKey, weekdayOfKey, zonedStartOfDay } from "./dates";
 import { readContacts } from "./health";
 import { curfewRuleFor, returnIsLate } from "./hostel-night";
+import { staffOnlyKind, staffOnlyWhere } from "./incidents";
 import type { ActiveContext } from "./session";
 import type { Role } from "./constants";
 
@@ -502,7 +503,7 @@ async function leaveRow(id: string): Promise<HostelLeaveRow> {
   return (await leaveRows([row]))[0]!;
 }
 
-export async function listLeave(ctx: ActiveContext, status: "OPEN" | "TODAY" | "ALL", now: Date = new Date()): Promise<{ items: HostelLeaveRow[] }> {
+export async function listLeave(ctx: ActiveContext, status: "OPEN" | "TODAY" | "ALL", now: Date = new Date()): Promise<{ items: HostelLeaveRow[]; timeZone: string }> {
   const staff = await staffOf(ctx, READERS);
   const today = todayKey(staff.timeZone, now);
   const start = zonedStartOfDay(today, staff.timeZone);
@@ -514,7 +515,7 @@ export async function listLeave(ctx: ActiveContext, status: "OPEN" | "TODAY" | "
         ? { schoolId: staff.schoolId, status: "APPROVED", fromAt: { lt: end }, toAt: { gte: start } }
         : { schoolId: staff.schoolId };
   const rows = await db.hostelLeave.findMany({ where, include: LEAVE_INCLUDE, orderBy: [{ fromAt: "asc" }, { id: "asc" }], take: status === "ALL" ? 100 : 500 });
-  return { items: await leaveRows(rows) };
+  return { items: await leaveRows(rows), timeZone: staff.timeZone };
 }
 
 async function leaveAt(schoolId: string, leaveId: string) {
@@ -714,7 +715,8 @@ export async function saveMessAttendance(ctx: ActiveContext, input: { hostelId: 
 export async function hostelIncidents(ctx: ActiveContext) {
   const staff = await staffOf(ctx, READERS);
   const rows = await db.incident.findMany({
-    where: { schoolId: staff.schoolId, hostelId: { not: null } },
+    // A safeguarding concern: the office, the head and the warden who recorded it, never another warden (TA-108).
+    where: { schoolId: staff.schoolId, hostelId: { not: null }, ...staffOnlyWhere(staff) },
     orderBy: { occurredAt: "desc" },
     take: 100,
     select: { id: true, hostelId: true, kind: true, severity: true, occurredAt: true, title: true, status: true, guardiansNotifiedAt: true, student: { select: { user: { select: { name: true, preferredName: true } } } }, reportedBy: { select: { user: { select: { name: true } } } } },
@@ -750,7 +752,9 @@ export async function recordHostelIncident(ctx: ActiveContext, input: HostelInci
     data: { schoolId: staff.schoolId, studentMembershipId: a.membershipId, reportedByMembershipId: staff.membershipId, kind: input.kind, severity: input.severity, occurredAt: new Date(), place: a.room.hostel.name.slice(0, 80), title: input.title, body: input.body, actionTaken: input.actionTaken, hostelId: a.room.hostelId },
     select: { id: true },
   });
-  if (input.notifyGuardians) {
+  // A safeguarding concern is told to nobody in the family, whatever the box says (TA-108).
+  const tell = input.notifyGuardians && !staffOnlyKind(input.kind);
+  if (tell) {
     const school = await db.school.findUniqueOrThrow({ where: { id: staff.schoolId }, select: { name: true } });
     const told = await notifyGuardians(a.membershipId, (childName) => ({
       schoolId: staff.schoolId,
@@ -766,7 +770,7 @@ export async function recordHostelIncident(ctx: ActiveContext, input: HostelInci
     // with no guardian linked, leaves it empty, and the office knows to telephone.
     if (told > 0) await db.incident.update({ where: { id: created.id }, data: { guardiansNotifiedAt: new Date() } });
   }
-  await audit({ schoolId: staff.schoolId, actorUserId: staff.userId, action: "incident.record", targetType: "Incident", targetId: created.id, meta: { studentMembershipId: a.membershipId, kind: input.kind, severity: input.severity, notified: input.notifyGuardians, hostelId: a.room.hostelId } });
+  await audit({ schoolId: staff.schoolId, actorUserId: staff.userId, action: "incident.record", targetType: "Incident", targetId: created.id, meta: { studentMembershipId: a.membershipId, kind: input.kind, severity: input.severity, notified: tell, hostelId: a.room.hostelId } });
   return hostelIncidents(ctx);
 }
 
@@ -879,6 +883,8 @@ export async function familyHostel(ctx: ActiveContext, childId?: string | null, 
     menuToday,
     canRequestLeave: Boolean(a),
     canConsent: ctx.role === "PARENT",
+    // The school's zone (TA-500): the phone reads a leave's typed times and prints them in it, as the web does.
+    timeZone: fam.timeZone,
   };
 }
 

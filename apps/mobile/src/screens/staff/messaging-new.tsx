@@ -24,6 +24,13 @@ const BODY_MAX = 300;
  * opens the report. The office only: the API admits nobody else here.
  */
 export function MessagingNew() {
+  // An empty form after each send (TA-162): the route stays mounted as a tab, and the notice just sent was still in
+  // the boxes, one press of "Send now" from going to every family again.
+  const [sent, setSent] = useState(0);
+  return <ComposeNotice key={sent} onSent={() => setSent((n) => n + 1)} />;
+}
+
+function ComposeNotice({ onSent }: { onSent: () => void }) {
   const t = useT();
   const th = useTheme();
   const role = useRole();
@@ -79,6 +86,7 @@ export function MessagingNew() {
     onSuccess: (r) => {
       toast.show(t("messaging.composeSent", { queued: r.queued, skipped: r.skipped }));
       void qc.invalidateQueries({ queryKey: ["messaging"] });
+      onSent();
       router.replace({ pathname: "/(app)/messaging-broadcast", params: { broadcastId: r.broadcastId } } as never);
     },
     onError: refused,

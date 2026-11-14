@@ -97,5 +97,5 @@ export async function nightRegister(ctx: ActiveContext, dateKey?: string, now: D
   // The ones to chase first: not back with the time past, then those still out, by when they are due.
   const order = { OVERDUE: 0, OUT: 1, NOT_OUT: 2, BACK_LATE: 3, BACK: 4 } as const;
   leaves.sort((a, b) => order[a.state] - order[b.state] || a.backBy.localeCompare(b.backBy));
-  return { dateKey: day, college, hostels, leaves };
+  return { dateKey: day, college, hostels, leaves, timeZone: tz };
 }

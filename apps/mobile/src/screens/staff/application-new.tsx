@@ -24,12 +24,20 @@ type Relation = "PARENT" | "GUARDIAN" | "OTHER";
  */
 export function ApplicationNew() {
   const params = useLocalSearchParams<{ cycleId?: string }>();
+  const routed = param(params.cycleId);
+  // An empty form for each walk-in (TA-162): the route stays mounted as a tab, and the last family's phone, email,
+  // address, PEN and birth date were still in the boxes of the next one, which the office then sent unseen.
+  const [sent, setSent] = useState(0);
+  return <WalkInForm key={`${routed ?? ""}:${sent}`} routed={routed} onSent={() => setSent((n) => n + 1)} />;
+}
+
+function WalkInForm({ routed, onSent }: { routed: string | undefined; onSent: () => void }) {
   const t = useT();
   const th = useTheme();
   const router = useRouter();
   const toast = useToast();
   const qc = useQueryClient();
-  const [cycleId, setCycleId] = useState(param(params.cycleId) ?? "");
+  const [cycleId, setCycleId] = useState(routed ?? "");
   const [childName, setChildName] = useState("");
   const [birthdate, setBirthdate] = useState("");
   const [grade, setGrade] = useState("");
@@ -54,6 +62,7 @@ export function ApplicationNew() {
       void qc.invalidateQueries({ queryKey: ["office", "admissions", "applications"] });
       void qc.invalidateQueries({ queryKey: CYCLES_KEY });
       toast.show(t("admissions.submitted"), "ok");
+      onSent();
       router.replace({ pathname: "/(app)/application", params: { id: a.id } } as never);
     },
     onError: (e) => setRefusal(e instanceof Refusal ? e : new Refusal(e.message, 0, {})),

@@ -1566,12 +1566,15 @@ export async function copyWeekToSections(ctx: ActiveContext, fromClassId: string
   const targets = [...new Set(toClassIds)].filter((id) => id !== fromClassId).slice(0, 40);
   if (targets.length === 0) return { ok: false, errorKey: "officeBulk.copyNeedSections", copied: 0, unstaffed: 0, classes: [] };
   const [source, sisters, slots] = await Promise.all([
-    db.class.findFirst({ where: { id: fromClassId, schoolId, archivedAt: null }, select: { id: true, name: true } }),
-    db.class.findMany({ where: { id: { in: targets }, schoolId, archivedAt: null }, select: { id: true, name: true }, orderBy: { name: "asc" } }),
+    db.class.findFirst({ where: { id: fromClassId, schoolId, archivedAt: null }, select: { id: true, name: true, gradeLevel: true } }),
+    db.class.findMany({ where: { id: { in: targets }, schoolId, archivedAt: null }, select: { id: true, name: true, gradeLevel: true }, orderBy: { name: "asc" } }),
     db.timetableSlot.findMany({ where: { schoolId, classId: fromClassId }, select: { periodId: true, weekday: true, subject: true } }),
   ]);
   if (!source) return { ok: false, errorKey: "timetable.classNotHere", copied: 0, unstaffed: 0, classes: [] };
   if (sisters.length !== targets.length) return { ok: false, errorKey: "timetable.classNotHere", copied: 0, unstaffed: 0, classes: [] };
+  // Sister sections only (TA-158): a class of another grade named here (a switch the phone kept from the class shown
+  // before) had its whole week, teachers and rooms with it, replaced by this grade's subjects. Nothing is written.
+  if (sisters.some((k) => k.gradeLevel !== source.gradeLevel)) return { ok: false, errorKey: "officeBulk.copyRefuseOtherGrade", copied: 0, unstaffed: 0, classes: [] };
   if (slots.length === 0) return { ok: false, errorKey: "timetable.nothingToCopy", copied: 0, unstaffed: 0, classes: [] };
 
   await db.$tenantTransaction(async (raw) => {

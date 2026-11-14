@@ -217,7 +217,11 @@ export const hostelLeaveRowSchema = z.object({
 export type HostelLeaveRow = z.infer<typeof hostelLeaveRowSchema>;
 
 export const hostelLeaveListQuerySchema = z.object({ status: z.enum(["OPEN", "TODAY", "ALL"]).default("OPEN") });
-export const hostelLeaveListSchema = z.object({ items: z.array(hostelLeaveRowSchema) });
+export const hostelLeaveListSchema = z.object({
+  items: z.array(hostelLeaveRowSchema),
+  /** The school's IANA zone, in which the leave's times are printed (TA-500). Absent from older servers. */
+  timeZone: z.string().optional(),
+});
 export const hostelLeaveDecideSchema = z.object({ approve: z.boolean(), note: z.string().trim().max(300).default("") });
 
 /* ---- the visitor book ---------------------------------------------------- */
@@ -338,6 +342,8 @@ export const familyHostelSchema = z.object({
   canRequestLeave: z.boolean(),
   /** The reader is a guardian, who consents to the pupil's own asks. */
   canConsent: z.boolean(),
+  /** The school's IANA zone, in which a leave's times are typed and printed (TA-500). Absent from older servers. */
+  timeZone: z.string().optional(),
 });
 export type FamilyHostel = z.infer<typeof familyHostelSchema>;
 
@@ -381,6 +387,8 @@ export const hostelNightSchema = z.object({
       state: z.enum(HOSTEL_NIGHT_STATES),
     }),
   ),
+  /** The school's IANA zone, in which the night's times are printed (TA-500). Absent from older servers. */
+  timeZone: z.string().optional(),
 });
 export type HostelNight = z.infer<typeof hostelNightSchema>;
 export const hostelNightQuerySchema = z.object({ date: dateKey.optional() });

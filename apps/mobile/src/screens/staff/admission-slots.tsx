@@ -8,7 +8,7 @@ import { api } from "@/lib/api";
 import { unwrap } from "@/lib/query";
 import { useLocale, useT } from "@/lib/i18n";
 import { useTheme } from "@/lib/theme";
-import { param, Pill } from "../family/shared";
+import { Confirm, param, Pill } from "../family/shared";
 import { slotLine } from "../shared/application";
 import { dateProblem } from "../shared/pupil-record";
 import { must, parseClock, Refusal } from "./shared";
@@ -38,6 +38,11 @@ const whole = (text: string, min: number, max: number): number | null => {
 export function AdmissionSlots() {
   const params = useLocalSearchParams<{ id?: string }>();
   const id = param(params.id);
+  // Keyed by the cycle (TA-162): the route stays mounted as a tab, and another cycle's sittings form kept this one's.
+  return <CycleSlots key={id ?? ""} id={id} />;
+}
+
+function CycleSlots({ id }: { id: string | undefined }) {
   const t = useT();
   const th = useTheme();
   const { locale } = useLocale();
@@ -53,6 +58,7 @@ export function AdmissionSlots() {
   const [note, setNote] = useState("");
   const [tried, setTried] = useState(false);
   const [refusal, setRefusal] = useState<Refusal | null>(null);
+  const [asking, setAsking] = useState<string | null>(null);
   const key = ["office", "admissions", "slots", id];
   const query = useQuery({
     queryKey: key,
@@ -65,6 +71,14 @@ export function AdmissionSlots() {
     onSuccess: (result) => {
       setRefusal(null);
       setTried(false);
+      // The run just published leaves the form (TA-162), so a second press does not publish it again.
+      setDate("");
+      setTime("");
+      setDuration("30");
+      setCount("1");
+      setCapacity("10");
+      setLocation("");
+      setNote("");
       toast.show(t("admissions.published", { count: result.created }), "ok");
       void qc.invalidateQueries({ queryKey: key });
       void qc.invalidateQueries({ queryKey: CYCLES_KEY });
@@ -74,6 +88,7 @@ export function AdmissionSlots() {
   const cancel = useMutation({
     mutationFn: async (slotId: string) => slotCancelledSchema.parse(must(await api().post(`/api/v1/office/admissions/slots/${slotId}/cancel`, {}), t("common.somethingWrong"))),
     onSuccess: () => {
+      setAsking(null);
       toast.show(t("admissions.cancelled"), "ok");
       void qc.invalidateQueries({ queryKey: key });
     },
@@ -109,16 +124,20 @@ export function AdmissionSlots() {
         ) : (
           <Card>
             {slots.map((s) => (
-              <View key={s.id} style={{ flexDirection: "row", alignItems: "center", gap: th.space[3], paddingVertical: th.space[2] }}>
-                <View style={{ flex: 1, gap: 1 }}>
-                  <Text variant="base" bold>
-                    {slotLine(s, locale)}
-                  </Text>
-                  <Text variant="sm" tone="muted">
-                    {[t("admissions.booked", { booked: s.booked, capacity: s.capacity }), s.note].filter(Boolean).join(" · ")}
-                  </Text>
+              <View key={s.id} style={{ gap: th.space[2], paddingVertical: th.space[2] }}>
+                <View style={{ flexDirection: "row", alignItems: "center", gap: th.space[3] }}>
+                  <View style={{ flex: 1, gap: 1 }}>
+                    <Text variant="base" bold>
+                      {slotLine(s, locale)}
+                    </Text>
+                    <Text variant="sm" tone="muted">
+                      {[t("admissions.booked", { booked: s.booked, capacity: s.capacity }), s.note].filter(Boolean).join(" · ")}
+                    </Text>
+                  </View>
+                  {s.cancelledAt ? <Pill label={t("admissions.cancelled")} tone="danger" /> : asking === s.id ? null : <Button label={t("admissions.cancelSlot")} variant="ghost" onPress={() => setAsking(s.id)} />}
                 </View>
-                {s.cancelledAt ? <Pill label={t("admissions.cancelled")} tone="danger" /> : <Button label={t("admissions.cancelSlot")} variant="ghost" busy={cancel.isPending && cancel.variables === s.id} onPress={() => cancel.mutate(s.id)} />}
+                {/* Asked first, as the web asks (TA-163): a cancelled sitting releases every family booked on it and tells them, and nothing brings it back. */}
+                {!s.cancelledAt && asking === s.id ? <Confirm question={t("admissions.cancelSlotConfirm")} confirmLabel={t("admissions.cancelSlot")} cancelLabel={t("common.keep")} busy={cancel.isPending && cancel.variables === s.id} onConfirm={() => cancel.mutate(s.id)} onCancel={() => setAsking(null)} /> : null}
               </View>
             ))}
           </Card>

@@ -81,8 +81,10 @@ function DecideCard({ request, staff, busy, onDecide }: { request: Pending; staf
   const [declining, setDeclining] = useState(false);
   const needsCover = request.dutyClasses > 0;
   const balance = request.balance;
-  const days = daysBetween(request.fromDateKey, request.toDateKey);
-  const over = balance && balance.remaining !== null ? balance.remaining - days : null;
+  // The server's count, the web desk's (TA-161): school days, for casual and sick leave only. An older server sends
+  // none, and then no "over" is claimed rather than one worked out on the calendar.
+  const days = request.countedDays;
+  const over = balance && balance.remaining !== null && days !== undefined ? balance.remaining - days : null;
 
   function answer(decision: Decision) {
     const assignments = decision === "APPROVED" && cover ? request.suggestions.groups.map((g) => ({ classId: g.classId, subject: g.subject, coverMembershipId: cover })) : [];
@@ -160,12 +162,4 @@ function Decided({ rows }: { rows: AdminLeave["decided"] }) {
       ))}
     </Card>
   );
-}
-
-/** Inclusive calendar days between two date keys, at least one. */
-function daysBetween(from: string, to: string): number {
-  const a = Date.parse(`${from}T00:00:00Z`);
-  const b = Date.parse(`${to}T00:00:00Z`);
-  if (Number.isNaN(a) || Number.isNaN(b)) return 1;
-  return Math.max(1, Math.round((b - a) / 86_400_000) + 1);
 }

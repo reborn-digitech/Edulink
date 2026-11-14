@@ -118,6 +118,10 @@ describe("a cycle's sittings", () => {
     expect(screen.getAllByRole("button", { name: "Cancel" })).toHaveLength(1);
     expect(screen.getByText("Cancelled")).toBeTruthy();
     await fireEvent.press(screen.getByRole("button", { name: "Cancel" }));
+    // Asked first (TA-163): the question, then the confirm.
+    expect(screen.getByText("Cancel this sitting? The families booked on it are released and told.")).toBeTruthy();
+    expect(calls().some((c) => c.line === `POST /api/v1/office/admissions/slots/${SLOT1}/cancel`)).toBe(false);
+    await fireEvent.press(screen.getByRole("button", { name: "Cancel" }));
     await waitFor(() => expect(calls().some((c) => c.line === `POST /api/v1/office/admissions/slots/${SLOT1}/cancel`)).toBe(true));
   });
 

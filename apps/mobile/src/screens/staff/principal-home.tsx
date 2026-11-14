@@ -16,6 +16,7 @@ import { COVERAGE_KEY, COVERAGE_PATH } from "./syllabus-coverage";
 import { CollegeGlanceCard } from "../college/glance";
 import { StreamTilesCard } from "../college/stream-tiles";
 import { CelebrationsCard } from "../shared/celebrations";
+import { useCollege } from "@/lib/institution";
 
 /**
  * The head's dashboard: what can still be fixed today first — attendance
@@ -61,11 +62,16 @@ function Overview({ d }: { d: PrincipalOverview }) {
   const th = useTheme();
   const router = useRouter();
   const { summary } = d;
+  // A college's head (TA-487): the web sends them to the college's own dashboard, and the glance card above carries
+  // their day; the school's registers, pupils and classes, syllabus coverage and class list are not drawn there.
+  const college = useCollege();
   const openClass = (classId: string) => router.push({ pathname: "/(app)/classes/detail", params: { classId } } as never);
   const caption = (c: PrincipalOverview["classes"][number]) =>
     [c.pupils === 1 ? t("principal.pupilsOne") : t("principal.pupilsMany", { count: c.pupils }), `${t("principal.attendance")} ${pct(c.attendance.percent)}`, `${t("principal.progress")} ${pct(c.progress.percent)}`].join(" · ");
   return (
     <>
+      {college ? null : (
+      <>
       <View style={{ flexDirection: "row", gap: th.space[3], flexWrap: "wrap" }}>
         <Stat label={t("principal.registersMissing")} value={summary.registersMissingToday} tone={summary.registersMissingToday > 0 ? "warn" : "ok"} />
         <Stat label={t("principal.attendance")} value={pct(summary.attendancePercent)} tone={summary.attendancePercent === null ? "fg" : "accent"} />
@@ -74,6 +80,8 @@ function Overview({ d }: { d: PrincipalOverview }) {
         <Stat label={t("principal.pupils")} value={summary.pupils} />
         <Stat label={t("principal.classes")} value={summary.classes} />
       </View>
+      </>
+      )}
       <Card>
         <Row
           title={summary.pendingLeave === 1 ? t("principal.leaveWaitingOne") : t("principal.leaveWaitingMany", { count: summary.pendingLeave })}
@@ -85,12 +93,12 @@ function Overview({ d }: { d: PrincipalOverview }) {
       {/* Corrections to pupils' PENs waiting for the head's word: settled on the pupil's record. */}
       <OfficeRecordChangesCard />
       <OfficePenChangesCard />
-      <SyllabusCard d={d} />
+      {college ? null : <SyllabusCard d={d} />}
       {/* While an admission cycle is open: the pipeline's counts; the card asks for the cycles itself. */}
       <OfficeAdmissionsCard />
       {/* While the filing identity has a blank or a pupil lacks a UDISE+ field: the door to the filings, read-only for the head. */}
       <FilingsCard />
-      {d.classes.length === 0 ? (
+      {college ? null : d.classes.length === 0 ? (
         <Empty title={t("principal.noClasses")} body={t("principal.noClassesBody")} action={<Button label={t("nav.messages")} variant="secondary" onPress={() => router.push("/(app)/messages" as never)} />} />
       ) : (
         <>

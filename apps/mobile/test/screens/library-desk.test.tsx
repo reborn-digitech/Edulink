@@ -139,6 +139,8 @@ describe("the library desk on the phone (3 Oct 2026)", () => {
     expect(await screen.findByText("ZZ-0001 seen: 1 of 30.")).toBeTruthy();
     expect(calls().find((c) => c.line === "POST /api/v1/library/stocktake/seen")?.body).toEqual({ accession: "ZZ-0001" });
     await press("Finish the stock-take");
+    // Asked first (TA-355), then finished.
+    await press("Finish the stock-take");
     expect(await screen.findByText("The stock-take is finished: 1 of 30 seen.")).toBeTruthy();
   });
 

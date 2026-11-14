@@ -70,7 +70,7 @@ const ACTION_KEYS: Record<string, TranslationKey> = {
 };
 
 function isSensitiveAction(action: string): boolean {
-  return action === "directory.export" || action === "compliance.export" || action === "auth.login.failed" || action === "parent.claim.failed" || action.startsWith("report.") || action === "content.report";
+  return action === "directory.export" || action === "compliance.export" || action === "auth.login.failed" || action === "auth.totp.failed" || action === "parent.claim.failed" || action.startsWith("report.") || action === "content.report";
 }
 
 /**
@@ -318,12 +318,16 @@ function AuditList({ rows }: { rows: AdminSafety["audit"] }) {
   const { locale } = useLocale();
   const [q, setQ] = useState("");
   const [only, setOnly] = useState<"all" | "sensitive">("all");
-  const describe = (action: string) => {
-    const key = ACTION_KEYS[action];
-    return key ? t(key) : action;
+  // The words and the flag the server sends with each row, from the web's own table (TA-354); the phone's short table
+  // and its own list stand in only for an older server that sends neither.
+  const describe = (row: AdminSafety["audit"][number]) => {
+    if (row.actionKey) return t(row.actionKey as TranslationKey);
+    const key = ACTION_KEYS[row.action];
+    return key ? t(key) : row.action;
   };
+  const sensitive = (row: AdminSafety["audit"][number]) => row.sensitive ?? isSensitiveAction(row.action);
   const needle = q.trim().toLowerCase();
-  const filtered = rows.filter((row) => (only === "all" || isSensitiveAction(row.action)) && (!needle || row.actorName.toLowerCase().includes(needle) || row.action.toLowerCase().includes(needle) || describe(row.action).toLowerCase().includes(needle)));
+  const filtered = rows.filter((row) => (only === "all" || sensitive(row)) && (!needle || row.actorName.toLowerCase().includes(needle) || row.action.toLowerCase().includes(needle) || describe(row).toLowerCase().includes(needle)));
   return (
     <Card title={t("safety.tabAudit")}>
       <Text variant="xs" tone="muted">
@@ -347,7 +351,7 @@ function AuditList({ rows }: { rows: AdminSafety["audit"] }) {
           {t("safety.nothingMatches")}
         </Text>
       ) : (
-        filtered.map((row) => <Row key={row.id} title={describe(row.action)} caption={`${row.actorName} · ${relativeTime(row.at, locale)}`} right={isSensitiveAction(row.action) ? <Pill label={t("safety.sensitive")} tone="danger" /> : null} />)
+        filtered.map((row) => <Row key={row.id} title={describe(row)} caption={`${row.actorName} · ${relativeTime(row.at, locale)}`} right={sensitive(row) ? <Pill label={t("safety.sensitive")} tone="danger" /> : null} />)
       )}
     </Card>
   );

@@ -33,7 +33,13 @@ describe("the admin's overview", () => {
   it("at a college says the college's code; with the job board off the staffing gap names no vacancy (QA-61, QA-69)", async () => {
     await mountStaff(<AdminHome />, "ADMIN", { "GET /api/v1/admin/overview": () => json(OVERVIEW) }, { me: { ...me("ADMIN"), institutionKind: "COLLEGE", features: [] } });
     expect(await screen.findByText("ZZ School · College code ZZ-1234")).toBeTruthy();
-    expect(screen.getByText("5 lessons across 2 classes have no teacher yet. Assign a teacher from the timetable.")).toBeTruthy();
+    // A college's office draws no school staffing gap, as the web's (TA-487); the no-board wording is the school's below.
+    expect(screen.queryByText("Lessons without a teacher")).toBeNull();
+  });
+
+  it("with the job board off the staffing gap names no vacancy (QA-61)", async () => {
+    await mountStaff(<AdminHome />, "ADMIN", { "GET /api/v1/admin/overview": () => json(OVERVIEW) }, { me: { ...me("ADMIN"), features: [] } });
+    expect(await screen.findByText("5 lessons across 2 classes have no teacher yet. Assign a teacher from the timetable.")).toBeTruthy();
   });
 
   it("loads, then shows the school, the checklist, the counts and the staffing gap", async () => {

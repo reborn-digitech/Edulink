@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { usePrivateScreen } from "@/lib/private-screen";
 import { View } from "react-native";
 import { useLocalSearchParams, useRouter } from "expo-router";
@@ -82,7 +82,7 @@ export function FeePupil() {
             {office ? <Row title={t("fees.pupilAssign")} caption={t("fees.phoneOpensWeb")} onPress={() => openWeb(`/admin/fees/pupils/${studentMembershipId}`)} /> : null}
           </Card>
 
-          {office && d.plan ? <TakePayment ledger={d} /> : null}
+          {office && d.plan ? <TakePayment key={d.pupil.studentMembershipId} ledger={d} /> : null}
 
           <Card title={t("fees.pupilDemandsTitle")}>
             {d.demands.length === 0 ? (
@@ -165,25 +165,19 @@ function TakePayment({ ledger }: { ledger: FeePupilLedger }) {
   const [note, setNote] = useState("");
   const [tried, setTried] = useState(false);
   const [refusal, setRefusal] = useState<Refusal | null>(null);
-  // One id per form: a retry after a dropped connection lands as the same payment.
-  const [id, setId] = useState(clientId);
+  // One id per payment as typed (TA-353): a retry of the same pupil, amount and method after a dropped connection
+  // lands as the same payment, and anything else typed after it mints its own id, never answered with the first receipt.
+  const last = useRef<{ body: string; id: string } | null>(null);
   const paise = parseRupees(amount);
   const amountBad = paise === null || paise < 100;
   const record = useMutation({
-    mutationFn: async () =>
-      feeReceiptIssuedSchema.parse(
-        must(
-          await api().post("/api/v1/fees/payments", {
-            studentMembershipId: ledger.pupil.studentMembershipId,
-            amountPaise: paise ?? 0,
-            method,
-            reference: reference.trim() || null,
-            note: note.trim() || null,
-            clientId: id,
-          }),
-          t("common.somethingWrong"),
-        ),
-      ),
+    mutationFn: async () => {
+      const payment = { studentMembershipId: ledger.pupil.studentMembershipId, amountPaise: paise ?? 0, method, reference: reference.trim() || null, note: note.trim() || null };
+      const body = JSON.stringify(payment);
+      const id = last.current?.body === body ? last.current.id : clientId();
+      last.current = { body, id };
+      return feeReceiptIssuedSchema.parse(must(await api().post("/api/v1/fees/payments", { ...payment, clientId: id }), t("common.somethingWrong")));
+    },
     onSuccess: (r) => {
       toast.show(t("fees.takeDone", { serial: r.serial }));
       setAmount("");
@@ -191,7 +185,7 @@ function TakePayment({ ledger }: { ledger: FeePupilLedger }) {
       setNote("");
       setTried(false);
       setRefusal(null);
-      setId(clientId());
+      last.current = null;
       void qc.invalidateQueries({ queryKey: ["fees"] });
     },
     onError: (e) => setRefusal(e instanceof Refusal ? e : new Refusal(e.message, 0, {})),

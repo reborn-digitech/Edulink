@@ -715,6 +715,10 @@ export const adminSafetySchema = z.object({
       meta: z.record(z.unknown()),
       ip: z.string().nullable(),
       at: iso,
+      /** The action's words as the web's table has them (an i18n key), or null when it has none yet (TA-354). */
+      actionKey: z.string().nullable().optional(),
+      /** The web's flag for an action worth seeing at a glance (TA-354). */
+      sensitive: z.boolean().optional(),
     }),
   ),
   /** The audit trail's next page, for before=; null on the last page and outside the audit tab (TA-109). */
@@ -836,6 +840,8 @@ export const adminLeaveSchema = z.object({
       balance: leaveBalanceSchema.nullable(),
       /** Classes the applicant is due in — the number of cover rows approving writes. */
       dutyClasses: z.number().int(),
+      /** The days this request draws from the entitlement, as the web's desk counts them: the school's teaching days less its closed days for CASUAL and SICK, 0 for any other kind (TA-161). */
+      countedDays: z.number().int().optional(),
       suggestions: z.object({
         lessonCount: z.number().int(),
         candidates: z.array(coverCandidateSchema),

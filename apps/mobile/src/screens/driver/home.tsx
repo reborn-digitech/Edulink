@@ -9,8 +9,8 @@ import { formatDate } from "@/lib/dates";
 import { useT } from "@/lib/i18n";
 import { useTheme } from "@/lib/theme";
 import { useSession } from "@/lib/session";
-import { startOutboxRunner } from "@/lib/outbox-runner";
-import { queueBoarding, waitingPositions } from "@/lib/trip-positions";
+import { flushOutbox, startOutboxRunner } from "@/lib/outbox-runner";
+import { queueBoarding, sendBatch, waitingPositions } from "@/lib/trip-positions";
 import { currentPlace, startTracking, stopTracking } from "@/lib/trip-location-platform";
 import { ModuleRoleHome } from "@/screens/modules/role-home";
 import { TransportMap } from "./map";
@@ -48,6 +48,9 @@ export function DriverHome() {
     refetchInterval: (q) => ((q.state.data as DriverToday | undefined)?.trips.some((x) => x.status === "LIVE") ? 30_000 : false),
   });
   const live = query.data?.trips.find((x) => x.status === "LIVE") ?? null;
+  // This phone is the bus's GPS only after its person has said yes to the location sentence, and only on the phone of
+  // whoever started the trip (TA-160): the attendant's phone listed the same live trip and sent its own place as the bus's.
+  const tracks = Boolean(live && query.data && !query.data.consent.needed && live.startedByMe !== false);
   const tracking = useRef<string | null>(null);
   // Whether the phone is really sending: a trip started with a reason because
   // location was refused runs without it, and the banner must not claim it (A3-journeys-37).
@@ -60,15 +63,15 @@ export function DriverHome() {
   // Send the bus's position while — and only while — a trip of this driver's is live.
   useEffect(() => {
     if (!query.data) return;
-    if (live && tracking.current !== live.id) {
+    if (live && tracks && tracking.current !== live.id) {
       tracking.current = live.id;
       void startTracking(live.id, { title: t("transport.foregroundTitle"), body: t("transport.foregroundBody") }).then((r) => setSending(r === "started"));
-    } else if (!live && tracking.current) {
+    } else if ((!live || !tracks) && tracking.current) {
       tracking.current = null;
       setSending(null);
       void stopTracking();
     }
-  }, [live, query.data, t]);
+  }, [live, tracks, query.data, t]);
 
   if (!on) return <ModuleRoleHome role="DRIVER" />;
   const refresh = () => void client.invalidateQueries({ queryKey: ["transport"] });
@@ -169,6 +172,10 @@ function TripCard({ trip, consentNeeded, onChanged }: { trip: Trip; consentNeede
 
   async function end() {
     setBusy(true);
+    // What the phone holds goes first (TA-520): the gathered positions into the outbox, then the outbox to the server,
+    // so ticks and positions made with no signal arrive before End rather than after it.
+    await sendBatch();
+    await flushOutbox();
     const result = await api().post(`/api/v1/transport/trips/${trip.id}/end`, {});
     setBusy(false);
     setConfirmEnd(false);

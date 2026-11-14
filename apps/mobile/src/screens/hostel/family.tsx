@@ -76,8 +76,9 @@ export function FamilyHostelScreen() {
     );
   }
   const submit = () => {
-    const fromAt = instantOf(from);
-    const toAt = instantOf(to);
+    // On the school's clock (TA-500), as the web reads a leave's times; the device's only for an older server.
+    const fromAt = instantOf(from, h.data?.timeZone);
+    const toAt = instantOf(to, h.data?.timeZone);
     if (!destination.trim() || !fromAt || !toAt) {
       setFormError(t("common.checkTheForm"));
       return;
@@ -134,7 +135,7 @@ export function FamilyHostelScreen() {
               <View key={l.id} style={{ gap: th.space[2] }}>
                 <Row
                   title={`${t(LEAVE_KIND_KEY[l.kind])} · ${l.destination}`}
-                  caption={`${t("hostel.fromTo", { from: whenOf(l.fromAt, locale), to: whenOf(l.toAt, locale) })} · ${t(LEAVE_STATUS_KEY[l.status])}${l.late ? ` · ${t("hostel.late")}` : ""}`}
+                  caption={`${t("hostel.fromTo", { from: whenOf(l.fromAt, locale, d.timeZone), to: whenOf(l.toAt, locale, d.timeZone) })} · ${t(LEAVE_STATUS_KEY[l.status])}${l.late ? ` · ${t("hostel.late")}` : ""}`}
                   right={!asked && !l.outAt && ["AWAITING_CONSENT", "PENDING", "APPROVED"].includes(l.status) ? <Button label={t("hostel.cancelLeave")} variant="ghost" disabled={takeBack.isPending} onPress={() => takeBack.mutate(l.id)} /> : undefined}
                 />
                 {asked ? (

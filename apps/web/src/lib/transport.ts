@@ -742,7 +742,9 @@ export async function driverToday(ctx: ActiveContext, now: Date = new Date()): P
     loaded.map(async (t, i) => {
       const detail = await detailOf(d.schoolId, t, rows[i]!);
       const startable = (detail.status === "SCHEDULED" || detail.status === "MISSED") && t.dateKey === today && liveElsewhere === 0;
-      return { ...detail, canStart: startable };
+      // Whose phone is the bus's GPS (TA-160): the one that started the trip. The attendant's phone, which also lists the
+      // trip, sent its own place as the bus's; a trip with no starter on record (made before the column) stays anyone's.
+      return { ...detail, canStart: startable, startedByMe: t.startedByMembershipId === null || t.startedByMembershipId === d.membershipId };
     }),
   );
   const agreed = consent?.textKey === CONSENT_TEXT_KEY;
@@ -834,13 +836,22 @@ const lastPublished = new Map<string, number>();
 export async function recordPositions(ctx: ActiveContext, tripId: string, body: TripPositions): Promise<{ accepted: number; duplicates: number; rejected: number }> {
   const d = await driverOf(ctx);
   const trip = await driversTrip(d, tripId);
-  if (trip.status === "ENDED") throw new AccessError("transport.refuseEnded");
-  if (trip.status !== "LIVE" || !trip.startedAt) throw new AccessError("transport.refuseNotLive");
+  // Only a member who has said yes to the location sentence sends the bus's place (TA-160): startTrip asked the
+  // starter alone, and the attendant's phone, or a driver's after the sentence changed, sent positions unasked.
+  const consent = await db.transportConsent.findUnique({ where: { membershipId: d.membershipId }, select: { textKey: true } });
+  if (consent?.textKey !== CONSENT_TEXT_KEY) throw new AccessError("transport.refuseConsent");
+  // A batch made with no signal may reach the server after End (TA-520): an ENDED trip still takes the positions taken
+  // before its end, as markBoarding takes such a tick; anything after the end is dropped and counted as rejected.
+  const ended = trip.status === "ENDED" && trip.startedAt && trip.endedAt ? trip.endedAt.getTime() : null;
+  if (trip.status === "ENDED" && ended === null) throw new AccessError("transport.refuseEnded");
+  if ((trip.status !== "LIVE" && ended === null) || !trip.startedAt) throw new AccessError("transport.refuseNotLive");
   const now = Date.now();
   const from = trip.startedAt.getTime() - BEFORE_START_MS;
+  const until = ended ?? now + FUTURE_SLACK_MS;
   const fresh = body.positions
     .map((p) => ({ ...p, at: new Date(p.at) }))
-    .filter((p) => p.at.getTime() >= from && p.at.getTime() <= now + FUTURE_SLACK_MS);
+    .filter((p) => p.at.getTime() >= from && p.at.getTime() <= until);
+  if (ended !== null && fresh.length === 0) throw new AccessError("transport.refuseEnded");
   const created = fresh.length
     ? await db.tripPosition.createMany({
         data: fresh.map((p) => ({ schoolId: d.schoolId, tripId: trip.id, at: p.at, lat: p.lat, lng: p.lng, speed: p.speed ?? null, accuracy: p.accuracy ?? null })),
@@ -850,7 +861,7 @@ export async function recordPositions(ctx: ActiveContext, tripId: string, body: 
   if (body.lowBattery && !trip.lowBatteryAt) {
     await db.trip.updateMany({ where: { id: trip.id, lowBatteryAt: null }, data: { lowBatteryAt: new Date() } });
   }
-  if (created.count > 0) {
+  if (created.count > 0 && trip.status === "LIVE") {
     const riders = await ridersOf(d.schoolId, trip.assignment.routeId, trip.dateKey, trip.direction);
     await tellNear(d.schoolId, trip, riders);
     const newest = fresh.reduce((a, b) => (a.at > b.at ? a : b));

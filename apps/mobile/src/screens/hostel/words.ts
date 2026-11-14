@@ -9,14 +9,21 @@ export const ROLL_KEY: Record<"PRESENT" | "ON_LEAVE" | "ABSENT" | "NOT_TAKEN", T
 export const SLOT_KEY: Record<"MORNING" | "NIGHT", TranslationKey> = { MORNING: "hostel.slotMORNING", NIGHT: "hostel.slotNIGHT" };
 export const MEAL_KEY: Record<"BREAKFAST" | "LUNCH" | "SNACKS" | "DINNER", TranslationKey> = { BREAKFAST: "hostel.mealBREAKFAST", LUNCH: "hostel.mealLUNCH", SNACKS: "hostel.mealSNACKS", DINNER: "hostel.mealDINNER" };
 
-/** "04/10/2026 18:30" for an instant, in the device's own zone (src/lib/dates.ts). */
-export function whenOf(iso: string, _locale?: string): string {
-  return formatDateTime(iso);
+/**
+ * "04/10/2026 18:30" for an instant, in the school's zone when the server sent it (TA-500: the web prints a leave's
+ * times in the school's), else in the device's own (src/lib/dates.ts).
+ */
+export function whenOf(iso: string, _locale?: string, timeZone?: string): string {
+  return formatDateTime(iso, timeZone);
 }
 
-/** "04/10/2026 18:30" typed on the phone (the older "2026-10-04 18:30" too), as an instant in the device's zone; null if it cannot be read. */
-export function instantOf(typed: string): string | null {
-  return instantFromTyped(typed);
+/**
+ * "04/10/2026 18:30" typed on the phone (the older "2026-10-04 18:30" too), as an instant: read on the school's clock
+ * when the server sent its zone (TA-500, as the web reads it), else on the device's (src/lib/dates.ts); null if it
+ * cannot be read.
+ */
+export function instantOf(typed: string, timeZone?: string): string | null {
+  return instantFromTyped(typed, timeZone);
 }
 
 /** The example under a leave's from and to fields, in the shape the app prints and reads: dd/mm/yyyy HH:mm. */

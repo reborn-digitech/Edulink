@@ -82,7 +82,7 @@ export function StaffClassDetail({ classId: classIdProp }: { classId?: string } 
           ) : null}
         </>
       ) : null}
-      {office ? <Staffing classId={classId} office={office} /> : null}
+      {office ? <Staffing key={classId} classId={classId} office={office} /> : null}
       {roll.data ? (
         !history || history.pupils.length === 0 ? (
           <Empty

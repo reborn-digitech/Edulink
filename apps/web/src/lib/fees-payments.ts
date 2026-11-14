@@ -245,7 +245,12 @@ export async function recordCounterPayment(ctx: ActiveContext, input: CounterPay
   const clientId = input.clientId?.trim().slice(0, 80) || null;
   if (clientId) {
     const replay = await db.feePayment.findUnique({ where: { schoolId_clientId: { schoolId: caller.schoolId, clientId } }, include: { receipt: { select: { id: true, serial: true } } } });
-    if (replay?.receipt) return { paymentId: replay.id, receiptId: replay.receipt.id, serial: replay.receipt.serial, already: true };
+    if (replay?.receipt) {
+      // The same form sent again is answered with its receipt; a different pupil, amount or method under that id is
+      // not that payment (TA-353): it was answered with the first receipt and nothing was recorded, so it is refused.
+      if (replay.studentMembershipId !== pupil.id || replay.amountPaise !== input.amountPaise || replay.method !== input.method) throw new AccessError("fees.refuseClientIdReused");
+      return { paymentId: replay.id, receiptId: replay.receipt.id, serial: replay.receipt.serial, already: true };
+    }
   }
   // The day is the school's day. The form sends the school's today, and the
   // old check read the key as UTC midnight and refused anything after the

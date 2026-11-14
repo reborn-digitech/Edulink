@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useRef, useState, type Dispatch, type SetStateAction } from "react";
 import { View } from "react-native";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { hostelLeaveListSchema, hostelLeaveRowSchema, hostelNightSchema, hostelRollCallSheetSchema, hostelsSchema, hostelVisitorsSchema, type HostelNight, type HostelRollCallSheet, type HostelRollStatus } from "@edulink/contracts";
@@ -36,6 +36,10 @@ export function WardenHome() {
   const t = useT();
   const [mode, setMode] = useState<Mode>("roll");
   const [hostelId, setHostelId] = useState<string | null>(null);
+  // The roll call's marks live here, not in the roll-call card (TA-159): a look at Leave, Tonight or Visitors unmounts
+  // the card, and the marks went with it, so Save sent every boarder back as present without a word.
+  const [marks, setMarks] = useState<Record<string, HostelRollStatus>>({});
+  const qc = useQueryClient();
   useOutboxRunner();
   const on = session.status === "signed-in" && (session.me.modules ?? []).includes("HOSTEL");
   const hostels = useQuery({ queryKey: ["hostel", "hostels"], enabled: on, queryFn: async () => hostelsSchema.parse(unwrap(await api().get("/api/v1/hostel/hostels"))) });
@@ -43,7 +47,7 @@ export function WardenHome() {
   const chosen = hostelId ?? list[0]?.id ?? null;
   if (!on) return <ModuleRoleHome role="WARDEN" />;
   return (
-    <Screen title={t("modules.hostelName")} description={t("hostel.homeIntro")} refreshing={hostels.isRefetching} onRefresh={() => void hostels.refetch()}>
+    <Screen title={t("modules.hostelName")} description={t("hostel.homeIntro")} refreshing={hostels.isRefetching} onRefresh={() => void qc.invalidateQueries({ queryKey: ["hostel"] })}>
       <OutboxBadge />
       {hostels.isPending ? <Loading /> : null}
       {hostels.isError ? <Failed message={hostels.error.message} onRetry={() => void hostels.refetch()} /> : null}
@@ -62,29 +66,28 @@ export function WardenHome() {
               { value: "visitors", label: t("hostel.tabVisitors") },
             ]}
           />
-          {mode === "roll" ? <RollCall hostelId={chosen} /> : mode === "leave" ? <Leave /> : mode === "night" ? <Night onLeave={() => setMode("leave")} /> : <Visitors hostelId={chosen} />}
+          {mode === "roll" ? <RollCall hostelId={chosen} marks={marks} setMarks={setMarks} /> : mode === "leave" ? <Leave /> : mode === "night" ? <Night onLeave={() => setMode("leave")} /> : <Visitors hostelId={chosen} />}
         </>
       ) : null}
     </Screen>
   );
 }
 
-function RollCall({ hostelId }: { hostelId: string }) {
+function RollCall({ hostelId, marks, setMarks }: { hostelId: string; marks: Record<string, HostelRollStatus>; setMarks: Dispatch<SetStateAction<Record<string, HostelRollStatus>>> }) {
   const t = useT();
   const { locale } = useLocale();
   const th = useTheme();
   const qc = useQueryClient();
   const [slot, setSlot] = useState<"NIGHT" | "MORNING">("NIGHT");
-  const [marks, setMarks] = useState<Record<string, HostelRollStatus>>({});
   const [notice, setNotice] = useState<{ tone: "ok" | "danger"; text: string } | null>(null);
   // One id per body, not per screen (TA-011): the same sheet saved again reuses it, any other sheet (another night, slot or set of marks) mints its own.
   const lastSave = useRef<{ body: string; clientId: string } | null>(null);
   const sheet = useQuery({ queryKey: ["hostel", "roll", hostelId, slot], queryFn: async () => hostelRollCallSheetSchema.parse(unwrap(await api().get(`/api/v1/hostel/rollcall?hostelId=${hostelId}&slot=${slot}`))) });
-  // Marks are kept per hostel and slot, so switching either shows that sheet's own.
-  const markOf = (allotmentId: string) => marks[`${hostelId}:${slot}:${allotmentId}`];
+  // Marks are kept per hostel, slot and night, so switching either shows that sheet's own and tomorrow's starts clean.
+  const markOf = (dateKey: string, allotmentId: string) => marks[`${hostelId}:${slot}:${dateKey}:${allotmentId}`];
   const save = useMutation({
     mutationFn: async (s: HostelRollCallSheet) => {
-      const entries = s.entries.map((e) => ({ allotmentId: e.allotmentId, status: markOf(e.allotmentId) ?? e.status }));
+      const entries = s.entries.map((e) => ({ allotmentId: e.allotmentId, status: markOf(s.dateKey, e.allotmentId) ?? e.status }));
       const key = JSON.stringify([s.hostelId, s.dateKey, s.slot, entries]);
       const last = lastSave.current;
       const clientId = last !== null && last.body === key ? last.clientId : newClientId();
@@ -122,9 +125,9 @@ function RollCall({ hostelId }: { hostelId: string }) {
             <Chips
               key={e.allotmentId}
               label={`${e.name} · ${t("hostel.roomBed", { room: e.roomNumber, bed: e.bed })}`}
-              value={markOf(e.allotmentId) ?? e.status}
+              value={markOf(s.dateKey, e.allotmentId) ?? e.status}
               disabled={Boolean(s.taken)}
-              onChange={(next) => setMarks((m) => ({ ...m, [`${hostelId}:${slot}:${e.allotmentId}`]: next }))}
+              onChange={(next) => setMarks((m) => ({ ...m, [`${hostelId}:${slot}:${s.dateKey}:${e.allotmentId}`]: next }))}
               options={(["PRESENT", "ON_LEAVE", "ABSENT"] as const).map((v) => ({ value: v, label: t(ROLL_KEY[v]) }))}
             />
           ))}
@@ -163,7 +166,7 @@ function Leave() {
       {list.data.items.map((l) => (
         <Card key={l.id} title={`${l.name} · ${t(LEAVE_KIND_KEY[l.kind])}`}>
           <Text variant="sm" tone="muted">
-            {`${l.destination} · ${t("hostel.fromTo", { from: whenOf(l.fromAt, locale), to: whenOf(l.toAt, locale) })} · ${t(LEAVE_STATUS_KEY[l.status])}`}
+            {`${l.destination} · ${t("hostel.fromTo", { from: whenOf(l.fromAt, locale, list.data.timeZone), to: whenOf(l.toAt, locale, list.data.timeZone) })} · ${t(LEAVE_STATUS_KEY[l.status])}`}
           </Text>
           {l.status === "PENDING" ? (
             <>
@@ -243,9 +246,9 @@ function Night({ onLeave }: { onLeave: () => void }) {
             <Row
               title={`${l.name} · ${l.hostelName} ${l.roomNumber} · ${t(LEAVE_KIND_KEY[l.kind])}`}
               caption={[
-                t(l.curfew ? "collegeDesks.nightBackByCurfew" : "collegeDesks.nightBackBy", { time: whenOf(l.backBy, locale) }),
-                l.outAt ? t("hostel.outAt", { at: whenOf(l.outAt, locale) }) : null,
-                l.inAt ? t("hostel.inAt", { at: whenOf(l.inAt, locale) }) : null,
+                t(l.curfew ? "collegeDesks.nightBackByCurfew" : "collegeDesks.nightBackBy", { time: whenOf(l.backBy, locale, n.timeZone) }),
+                l.outAt ? t("hostel.outAt", { at: whenOf(l.outAt, locale, n.timeZone) }) : null,
+                l.inAt ? t("hostel.inAt", { at: whenOf(l.inAt, locale, n.timeZone) }) : null,
               ].filter(Boolean).join(" · ")}
             />
             <Text variant="sm" tone={NIGHT_STATE[l.state].tone}>{t(NIGHT_STATE[l.state].key)}</Text>

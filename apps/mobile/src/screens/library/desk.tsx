@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { View } from "react-native";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { libraryLookupSchema, libraryLoanSchema, libraryMemberSearchSchema, libraryNoticesResultSchema, libraryOverdueSchema, libraryReservationsSchema, libraryReturnResultSchema, libraryStockTakeSchema, type LibraryLookup } from "@edulink/contracts";
+import { libraryLookupSchema, libraryLoanSchema, libraryMemberSearchSchema, libraryNoticesResultSchema, libraryOverdueSchema, libraryReservationsSchema, libraryReturnResultSchema, libraryStockTakeSchema, type LibraryLookup, type LibraryStockTake } from "@edulink/contracts";
 import { formatPaise } from "@edulink/i18n";
 import { Button, Card, Empty, Failed, Field, Loading, Row, Screen, Text } from "@/components";
 import { api } from "@/lib/api";
@@ -10,6 +10,7 @@ import { useLocale, useT } from "@/lib/i18n";
 import { useSession } from "@/lib/session";
 import { useTheme } from "@/lib/theme";
 import { Chips, Notice } from "../staff/shared";
+import { Confirm } from "../family/shared";
 import { ModuleRoleHome } from "../modules/role-home";
 import { COPY_STATUS_KEY, dayOf } from "./words";
 
@@ -86,12 +87,17 @@ function Desk() {
     onError: refused,
   });
   const copy: LibraryLookup["copy"] = found.data?.copy ?? null;
+  // The box is emptied once a code is looked up (TA-355): a barcode reader that types added the next code to the last.
+  const find = () => {
+    setAsked(code.trim());
+    setCode("");
+  };
   return (
     <View style={{ gap: th.space[3] }}>
       {notice ? <Notice text={notice.text} tone={notice.tone} /> : null}
       <Card title={t("library.scanTitle")}>
-        <Field label={t("library.codeLabel")} hint={t("library.scanHint")} value={code} onChangeText={setCode} autoCapitalize="characters" autoCorrect={false} onSubmitEditing={() => code.trim() && setAsked(code.trim())} />
-        <Button label={t("library.find")} disabled={!code.trim()} onPress={() => setAsked(code.trim())} />
+        <Field label={t("library.codeLabel")} hint={t("library.scanHint")} value={code} onChangeText={setCode} autoCapitalize="characters" autoCorrect={false} onSubmitEditing={() => code.trim() && find()} />
+        <Button label={t("library.find")} disabled={!code.trim()} onPress={find} />
       </Card>
       {found.isPending && asked ? <Loading /> : null}
       {found.isError ? <Failed message={found.error.message} onRetry={() => void found.refetch()} /> : null}
@@ -191,12 +197,18 @@ function StockTake() {
   const qc = useQueryClient();
   const [accession, setAccession] = useState("");
   const [notice, setNotice] = useState<{ tone: "ok" | "danger"; text: string } | null>(null);
+  // Finish is asked first, and the copies its answer says were not seen stay on screen after it (TA-355): one tap ended
+  // the take under Mark seen, and the list of missing copies went with it.
+  const [asking, setAsking] = useState(false);
+  const [missing, setMissing] = useState<LibraryStockTake["unseen"]>([]);
   const st = useQuery({ queryKey: ["library", "stocktake"], queryFn: async () => libraryStockTakeSchema.parse(unwrap(await api().get("/api/v1/library/stocktake"))) });
   const set = (data: unknown) => qc.setQueryData(["library", "stocktake"], libraryStockTakeSchema.parse(data));
   const action = useMutation({
     mutationFn: async (a: "START" | "FINISH") => unwrap(await api().post("/api/v1/library/stocktake", { action: a })),
     onSuccess: (data, a) => {
       set(data);
+      setAsking(false);
+      setMissing(a === "FINISH" ? libraryStockTakeSchema.parse(data).unseen : []);
       setNotice({ tone: "ok", text: a === "START" ? t("library.stockStarted") : t("library.stockFinished", { seen: (data as { seen: number }).seen, total: (data as { total: number }).total }) });
     },
     onError: (e: Error) => setNotice({ tone: "danger", text: e.message }),
@@ -225,8 +237,19 @@ function StockTake() {
             <Button label={t("library.markSeen")} disabled={!accession.trim()} busy={seen.isPending} onPress={() => seen.mutate(accession.trim())} />
           </>
         ) : null}
-        <Button label={d.startedAt ? t("library.finishStock") : t("library.startStock")} variant={d.startedAt ? "secondary" : "primary"} busy={action.isPending} onPress={() => action.mutate(d.startedAt ? "FINISH" : "START")} />
+        {d.startedAt && asking ? (
+          <Confirm question={t("library.finishStockConfirm", { unseen: Math.max(0, d.total - d.seen) })} confirmLabel={t("library.finishStock")} cancelLabel={t("common.keep")} busy={action.isPending} onConfirm={() => action.mutate("FINISH")} onCancel={() => setAsking(false)} />
+        ) : (
+          <Button label={d.startedAt ? t("library.finishStock") : t("library.startStock")} variant={d.startedAt ? "secondary" : "primary"} busy={action.isPending} onPress={() => (d.startedAt ? setAsking(true) : action.mutate("START"))} />
+        )}
       </Card>
+      {!d.startedAt && missing.length > 0 ? (
+        <Card title={t("library.stockMissingTitle")}>
+          {missing.map((c) => (
+            <Row key={c.accession} title={`${c.accession} · ${c.title}`} caption={c.rack ? t("library.rackShort", { rack: c.rack }) : undefined} />
+          ))}
+        </Card>
+      ) : null}
       {d.startedAt && d.unseen.length > 0 ? (
         <Card title={t("library.notSeenYet")}>
           {d.unseen.map((c) => (

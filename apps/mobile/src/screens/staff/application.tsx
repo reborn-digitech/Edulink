@@ -36,6 +36,12 @@ const answerBy = (a: { offerExpiresOn?: string | null; offerExpiresAt: string | 
 export function StaffApplication() {
   const params = useLocalSearchParams<{ id?: string }>();
   const id = param(params.id);
+  // Keyed by the application (TA-155): the route stays mounted as a tab, so without the key the next applicant opened
+  // here kept the last one's admitted box (its student code and first sign-in code), its typed notes and a hidden Admit.
+  return <ApplicationBody key={id ?? ""} id={id} />;
+}
+
+function ApplicationBody({ id }: { id: string | undefined }) {
   const t = useT();
   const th = useTheme();
   const { locale } = useLocale();

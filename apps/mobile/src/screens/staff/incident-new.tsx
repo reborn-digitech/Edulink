@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { INCIDENT_KINDS, INCIDENT_SEVERITIES, incidentSchema, type IncidentCreate, type IncidentKind, type IncidentSeverity } from "@edulink/contracts";
+import { INCIDENT_KINDS, INCIDENT_SEVERITIES, INCIDENT_STAFF_ONLY_KINDS, incidentSchema, type IncidentCreate, type IncidentKind, type IncidentSeverity } from "@edulink/contracts";
 import { Button, Card, Empty, Failed, Field, Screen, SwitchRow, Text, useToast } from "@/components";
 import { api } from "@/lib/api";
 import { useT } from "@/lib/i18n";
@@ -23,6 +23,13 @@ export function StaffIncidentNew() {
   const params = useLocalSearchParams<{ membershipId?: string; name?: string }>();
   const membershipId = typeof params.membershipId === "string" && params.membershipId ? params.membershipId : undefined;
   const name = typeof params.name === "string" && params.name ? params.name : undefined;
+  // An empty form for each pupil and after each record (TA-162): the route stays mounted as a tab, and the last
+  // child's title, what happened and the action taken were in the boxes of the next record, told to the family if unseen.
+  const [recorded, setRecorded] = useState(0);
+  return <IncidentForm key={`${membershipId ?? ""}:${recorded}`} membershipId={membershipId} name={name} onRecorded={() => setRecorded((n) => n + 1)} />;
+}
+
+function IncidentForm({ membershipId, name, onRecorded }: { membershipId: string | undefined; name: string | undefined; onRecorded: () => void }) {
   const t = useT();
   const router = useRouter();
   const qc = useQueryClient();
@@ -36,6 +43,8 @@ export function StaffIncidentNew() {
   const [notify, setNotify] = useState(true);
   const [tried, setTried] = useState(false);
   const [refusal, setRefusal] = useState<Refusal | null>(null);
+  // A safeguarding concern: no "Tell the family" switch, and the form says who reads it (TA-108).
+  const staffOnly = INCIDENT_STAFF_ONLY_KINDS.includes(kind);
   const titleMissing = !title.trim();
   const bodyMissing = !body.trim();
   const save = useMutation({
@@ -44,7 +53,8 @@ export function StaffIncidentNew() {
       setRefusal(null);
       qc.setQueryData(["staff", "incident", created.id], created);
       await qc.invalidateQueries({ queryKey: ["staff", "incident-log"] });
-      toast.show(created.guardiansNotifiedAt ? t("incidents.recorded") : t("incidents.recordedQuiet"));
+      toast.show(INCIDENT_STAFF_ONLY_KINDS.includes(created.kind) ? t("incidents.recordedSafeguarding") : created.guardiansNotifiedAt ? t("incidents.recorded") : t("incidents.recordedQuiet"));
+      onRecorded();
       router.replace({ pathname: "/(app)/incident", params: { incidentId: created.id } } as never);
     },
     onError: (e) => setRefusal(e instanceof Refusal ? e : new Refusal(e.message, 0, {})),
@@ -68,7 +78,7 @@ export function StaffIncidentNew() {
       title: title.trim(),
       body: body.trim(),
       actionTaken: actionTaken.trim(),
-      notifyGuardians: notify,
+      notifyGuardians: notify && !staffOnly,
     });
   };
   return (
@@ -89,7 +99,13 @@ export function StaffIncidentNew() {
         <Field label={t("incidents.titleField")} hint={t("incidents.titleHint")} value={title} onChangeText={setTitle} maxLength={120} error={tried && titleMissing ? t("refusal.required") : issue("title")} />
         <Field label={t("incidents.body")} hint={t("incidents.bodyHint")} value={body} onChangeText={setBody} multiline maxLength={4000} error={tried && bodyMissing ? t("refusal.required") : issue("body")} />
         <Field label={t("incidents.actionTaken")} hint={t("incidents.actionTakenHint")} value={actionTaken} onChangeText={setActionTaken} multiline maxLength={2000} error={issue("actionTaken")} />
-        <SwitchRow label={t("incidents.notifyGuardians")} hint={t("incidents.notifyGuardiansHint")} value={notify} onChange={setNotify} disabled={save.isPending} />
+        {staffOnly ? (
+          <Text variant="sm" tone="muted" testID="incident-staff-only">
+            {t("incidents.safeguardingReaders")}
+          </Text>
+        ) : (
+          <SwitchRow label={t("incidents.notifyGuardians")} hint={t("incidents.notifyGuardiansHint")} value={notify} onChange={setNotify} disabled={save.isPending} />
+        )}
         <Button label={t("incidents.save")} busy={save.isPending} onPress={submit} />
       </Card>
     </Screen>

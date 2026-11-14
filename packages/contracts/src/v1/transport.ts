@@ -291,6 +291,8 @@ export const driverTodaySchema = z.object({
     tripDetailSchema.extend({
       /** Startable now: SCHEDULED (or read as MISSED), today, and the driver has no other trip live. */
       canStart: z.boolean(),
+      /** This phone's person started the trip (or it carries no starter): only their phone sends the bus's position (TA-160). */
+      startedByMe: z.boolean().optional(),
     }),
   ),
 });

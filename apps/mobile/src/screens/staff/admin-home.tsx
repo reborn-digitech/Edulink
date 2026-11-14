@@ -64,6 +64,9 @@ function Overview({ d }: { d: AdminOverview }) {
   const router = useRouter();
   const { locale } = useLocale();
   const { counts, checklist } = d;
+  // A college's office, as the web's since 8ca2cafb (TA-487): the school's checklist (whose teachers step never ends
+  // there), its registers, "no teachers yet", its exam series and its staffing gap speak of what a college does not have.
+  const college = useCollege();
   return (
     <>
       {d.academicYear ? (
@@ -81,7 +84,7 @@ function Overview({ d }: { d: AdminOverview }) {
           <Button label={t("admin.setUpYear")} onPress={() => router.push("/(app)/calendar" as never)} />
         </Card>
       )}
-      {checklist.complete ? null : (
+      {college || checklist.complete ? null : (
         <Card title={t("admin.finishSetup")}>
           <Text variant="sm" tone="muted">
             {t("admin.setupCount", { done: checklist.done, total: checklist.total })}
@@ -97,11 +100,13 @@ function Overview({ d }: { d: AdminOverview }) {
           ))}
         </Card>
       )}
+      {college ? null : (
       <View style={{ flexDirection: "row", gap: th.space[3], flexWrap: "wrap" }}>
         {/* The percent is the API's truthful figure — null when nothing is expected today (a closed day, or no class with pupils) — so the count against the classes is shown only while something is. */}
         <Stat label={t("admin.registerTaken")} value={counts.classes === 0 ? t("admin.noClassesYet") : d.attendanceTakenPercent === null ? "—" : t("admin.takenToday", { done: counts.registersTakenToday, total: counts.classes })} tone={d.attendanceTakenPercent === null ? "fg" : d.attendanceTakenPercent >= 100 ? "ok" : "warn"} />
         <Stat label={t("principal.attendance")} value={pct(d.attendanceTakenPercent)} />
       </View>
+      )}
       <QuickActions actions={QUICK.ADMIN ?? []} onOpen={(href) => router.push(href as never)} />
       {/* Birthdays and anniversaries (A3-inventory-14), as on the web's /admin. */}
       <CelebrationsCard />
@@ -114,7 +119,7 @@ function Overview({ d }: { d: AdminOverview }) {
             {t("admin.invitesPending", { count: counts.pendingInvites })}
           </Text>
         ) : null}
-        {counts.teachers === 0 ? (
+        {!college && counts.teachers === 0 ? (
           <>
             <Text variant="sm" bold>
               {t("admin.noTeachersYet")}
@@ -125,11 +130,13 @@ function Overview({ d }: { d: AdminOverview }) {
           </>
         ) : null}
       </Card>
+      {college ? null : (
       <Card title={t("exams.adminCardTitle")} action={<Button label={t("exams.scheduleExams")} variant="ghost" onPress={() => router.push("/(app)/exams" as never)} />}>
         <Text variant="sm" tone="muted">
           {counts.examSeries === 0 ? t("exams.adminCardNone") : t("exams.adminCardBody", { scheduled: counts.examSeries, published: counts.examSeriesPublished, cards: counts.reportCardsPublished })}
         </Text>
       </Card>
+      )}
       {/* While an admission cycle is open: how many applications wait, are offered and are accepted; the card asks for the cycles itself. */}
       <OfficeAdmissionsCard />
       <CertificateRequestsCard />
@@ -138,7 +145,7 @@ function Overview({ d }: { d: AdminOverview }) {
       <OfficePenChangesCard />
       {/* While the filing identity has a blank or a pupil lacks a UDISE+ field: the door to the filings; the card asks for the view itself. */}
       <FilingsCard />
-      {d.staffingGap.slots > 0 ? (
+      {!college && d.staffingGap.slots > 0 ? (
         <Card title={t("admin.staffingGapTitle")}>
           <Text variant="sm" tone="muted">
             {d.staffingGap.classes === 1 ? t(jobBoard ? "admin.staffingGapBodyOne" : "qaInterface.staffingGapBodyOneNoBoard", { slots: d.staffingGap.slots }) : t(jobBoard ? "admin.staffingGapBody" : "qaInterface.staffingGapBodyNoBoard", { slots: d.staffingGap.slots, classes: d.staffingGap.classes })}

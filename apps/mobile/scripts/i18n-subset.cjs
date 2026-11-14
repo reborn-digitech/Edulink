@@ -119,6 +119,8 @@ const SENT_BY_SERVER = [
   { screen: "src/screens/staff/fees.tsx", properties: ["problemKey"], written: ["lib/fees-bank-import.ts"] },
   // "What you did last" on the accreditation insights: the audit action's words, looked up in ACTION_KEYS (A3-states-16).
   { screen: "src/screens/iqac/insights.tsx", properties: ["labelKey"], written: ["lib/safety-labels.ts"] },
+  // The safety centre's audit trail: each row's words, looked up in ACTION_KEYS (TA-354).
+  { screen: "src/screens/staff/safety.tsx", properties: ["actionKey"], written: ["lib/safety-labels.ts"] },
 ];
 
 /** The places the phone's source translates a sent key, as "screen property": what SENT_BY_SERVER has to cover. */

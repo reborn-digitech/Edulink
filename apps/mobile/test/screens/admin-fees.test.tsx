@@ -156,7 +156,7 @@ describe("plans open to families and the pupil's age", () => {
     expect(calls().find((c) => c.line.startsWith("POST /api/v1/fees/structures/"))!.body).toEqual({ open: true });
   });
 
-  it("the age pupils may see their fees from is saved with the other settings kept as they are; a bad age is refused on the phone", async () => {
+  it("the age pupils may see their fees from is saved alone, the server keeping the other settings as they are (TA-156); a bad age is refused on the phone", async () => {
     const { calls } = await mountStaff(<StaffFees />, "ADMIN", {
       "GET /api/v1/fees/overview": () => json(OVERVIEW),
       "GET /api/v1/fees/structures": () => json(STRUCTURES),
@@ -172,7 +172,7 @@ describe("plans open to families and the pupil's age", () => {
     expect(screen.getByText("From age 14")).toBeTruthy();
     await fireEvent.press(screen.getByRole("button", { name: "Save" }));
     await waitFor(() => expect(calls().some((c) => c.line === "POST /api/v1/fees/settings")).toBe(true));
-    expect(calls().find((c) => c.line === "POST /api/v1/fees/settings")!.body).toEqual({ upiId: "zzschool@upi", upiPayee: "ZZ School", receiptPrefix: "ZZ", bankNote: null, pupilFeeViewAge: 14 });
+    expect(calls().find((c) => c.line === "POST /api/v1/fees/settings")!.body).toEqual({ pupilFeeViewAge: 14 });
     expect(await screen.findByText("Saved.")).toBeTruthy();
   });
 

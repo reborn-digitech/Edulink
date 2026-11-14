@@ -12,7 +12,7 @@ import { currentAcademicYear, listAcademicYears } from "@/lib/academic-year";
 import { currentTerms, termsOfYear } from "@/lib/terms";
 import { unstaffedLessons, listPeriods, timetableClasses, classWeek, schoolBusyMap, teachingLoad } from "@/lib/timetable";
 import { listHolidays, nextEntry } from "@/lib/holidays";
-import { todayKey, addDaysToKey, parseTeachingDays } from "@/lib/dates";
+import { todayKey, addDaysToKey, isDateKey, parseTeachingDays } from "@/lib/dates";
 import { schoolJobStory } from "@/lib/job-health";
 import { pendingParentInvites } from "@/lib/parent-link";
 import { readJsonArray } from "@/lib/json";
@@ -25,11 +25,12 @@ import { approvedLeaveBetween, schoolLeave, coverCandidates } from "@/lib/leave"
 import { birthdaysBetween } from "@/lib/birthdays";
 import { listReviewRounds, schoolReviewDashboard } from "@/lib/reviews";
 import { listReports, listAudit, openReportCount } from "@/lib/safety";
+import { actionKey, isSensitiveAction } from "@/lib/safety-labels";
 import { accessHistory } from "@/lib/superuser";
 import { readOwnProfileSettings, listContactCandidates } from "@/lib/school-profile";
 import { AUTO_READ_AFTER_DAYS, EXPIRE_READ_AFTER_DAYS } from "@/lib/notification-housekeeping";
 import { listOurPostings } from "@/lib/vacancies";
-import { leaveBalancesFor, SCHOOL_STAFF_ROLES } from "@/lib/staff-records";
+import { leaveBalancesFor, leaveDayCounterFor, SCHOOL_STAFF_ROLES } from "@/lib/staff-records";
 import { SCHOOL_ROLES, type SchoolRole } from "@/lib/constants";
 
 /**
@@ -589,7 +590,9 @@ export async function adminSafety(ctx: Scoped, opts: { tab: "open" | "closed" | 
       firstAt: iso(g.firstAt),
       latestAt: iso(g.latestAt),
     })),
-    audit: audit.map((a) => ({ ...a, at: iso(a.at) })),
+    // Each row's words and flag from the web's own table (TA-354): the phone held 36 of its eight hundred wordings and
+    // printed the rest as raw keys, and its own sensitive list lacked a failed two-step code.
+    audit: audit.map((a) => ({ ...a, at: iso(a.at), actionKey: actionKey(a.action), sensitive: isSensitiveAction(a.action) })),
     // The next page's cursor while a page came back full (TA-109); null on the last.
     auditNext: opts.tab === "audit" && audit.length === AUDIT_PAGE ? audit[audit.length - 1]!.id : null,
   };
@@ -703,12 +706,20 @@ export async function adminLeave(ctx: Scoped) {
   const suggestions = await Promise.all(
     pending.map((request) => coverCandidates(ctx, request.applicantMembershipId, request.fromDateKey, request.toDateKey)),
   );
+  // The days each request draws from the entitlement, as the web's desk counts them (TA-161): the school's teaching
+  // days less its closed days, for casual and sick leave only; the phone printed calendar days for every kind.
+  // A stored request whose day is not a day (TA-033) is left out of the span and carries no count.
+  const readable = pending.filter((r) => isDateKey(r.fromDateKey) && isDateKey(r.toDateKey));
+  const span = readable.length > 0 ? { from: readable.reduce((a, r) => (r.fromDateKey < a ? r.fromDateKey : a), readable[0]!.fromDateKey), to: readable.reduce((a, r) => (r.toDateKey > a ? r.toDateKey : a), readable[0]!.toDateKey) } : null;
+  const counter = span ? await leaveDayCounterFor(ctx.schoolId, span.from, span.to) : () => 0;
+  const countDays = (from: string, to: string): number | undefined => (isDateKey(from) && isDateKey(to) ? counter(from, to) : undefined);
 
   return {
     pending: pending.map((row, i) => ({
       ...shapeLeave(row),
       balance: balances.get(row.applicantMembershipId) ?? null,
       dutyClasses: dutyCounts.get(row.applicantMembershipId) ?? 0,
+      countedDays: row.kind === "CASUAL" || row.kind === "SICK" ? countDays(row.fromDateKey, row.toDateKey) : 0,
       suggestions: suggestions[i]!,
     })),
     decided: decided.map(shapeLeaveQuietly),
