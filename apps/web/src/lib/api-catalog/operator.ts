@@ -111,3 +111,15 @@ export const OPERATOR: Endpoint[] = [
   { method: "POST", path: "/api/v1/operator/pass-orders/{id}/refund", summary: "Refund a paid pass in full to the payer's instrument, within seven days of payment, revoking the entitlements it opened; the payer and the holder told; audited", access: "operator", response: c.operatorPassRefundSchema, sample: "/api/v1/operator/pass-orders/zz-sweep-no-such-pass-order/refund" },
   // end plans-pay
 ];
+// decision-488 (TA-488, 14 November 2026): a college tier is set only on a college whose kind its list names, said
+// where the catalog is read. Amended here, not edited in place (the shared-file fence); it throws on a door that is
+// not there.
+{
+  const say = (method: Endpoint["method"], path: string, summary: string) => {
+    const e = OPERATOR.find((x) => x.method === method && x.path === path);
+    if (!e) throw new Error(`api-catalog/operator.ts (decision-488): no ${method} ${path} to amend`);
+    e.summary = summary;
+  };
+  say("POST", "/api/v1/operator/schools/{schoolId}/plan", "Put a school on a plan, or take it off every plan; a college tier only on a college whose kind the tier suits (422 for the affiliated price on an autonomous college, TA-488); audited, and the school's office is told");
+  say("PATCH", "/api/v1/operator/plans/{planId}", "Correct a plan; only the fields sent change, a null cap is no cap; a rename to a college tier's code is refused (422) while a school on the plan is of a kind the tier does not suit (TA-488)");
+}

@@ -34,6 +34,17 @@ export function collegeTierOf(planCode: string | null | undefined) {
   return COLLEGE_TIERS.find((t) => t.code === planCode) ?? null;
 }
 
+/**
+ * TA-488 (the owner's decision, 14 November 2026): whether a plan may be set on an institution of this kind. An
+ * ordinary plan suits every kind; a tier suits only the kinds its list names, so an autonomous college is never
+ * put on the affiliated price (a deliberate discount is an ordinary flat-priced plan). Read by assignPlan and
+ * updatePlan, and by the web's school page and new-school form to offer only what fits.
+ */
+export function planSuitsKind(planCode: string | null | undefined, kind: string | null | undefined): boolean {
+  const tier = collegeTierOf(planCode);
+  return !tier || (tier.suits as readonly string[]).includes(kind ?? "");
+}
+
 /** A tier's year for this many students, in paise. */
 export function tierYearPaise(planCode: string | null | undefined, students: number): number | null {
   const tier = collegeTierOf(planCode);

@@ -1,6 +1,6 @@
 import "server-only";
 import type { TranslationKey } from "@/lib/i18n/dictionary";
-import { adminDutiesHeld, collegeTierOf, isCollegeKind } from "@edulink/contracts";
+import { adminDutiesHeld, collegeTierOf, isCollegeKind, planSuitsKind } from "@edulink/contracts";
 import { db } from "./db";
 import { audit } from "./audit";
 import { forTenant } from "./tenant-context";
@@ -115,6 +115,8 @@ export async function updatePlan(session: ActiveContext, planId: string, input: 
     if (code !== existing.code && (collegeTierOf(code) || collegeTierOf(existing.code))) {
       const onPlan = await db.school.findMany({ where: { planId }, select: { kind: true } });
       if (collegeTierOf(code) && onPlan.some((s) => !isCollegeKind(s.kind))) return { ok: false, errorKey: "operatorCollege.refuseTierNotCollege" };
+      // TA-488: nor while a college on it is of a kind the tier does not suit (an autonomous college, the affiliated price).
+      if (collegeTierOf(code) && onPlan.some((s) => !planSuitsKind(code, s.kind))) return { ok: false, errorKey: "operatorCollege.refuseTierKind" };
       if (collegeTierOf(existing.code) && onPlan.length > 0) return { ok: false, errorKey: "root.planInUse" };
     }
     if (code !== existing.code && (await db.plan.findUnique({ where: { code }, select: { id: true } }))) return { ok: false, errorKey: "root.planCodeTaken" };
@@ -170,6 +172,9 @@ export async function assignPlan(session: ActiveContext, schoolId: string, planI
   if (planId && !plan) return { ok: false, errorKey: "root.noSuchPlan" };
   // The college tiers (4 Oct 2026) are priced a student a year and offered to a college only.
   if (plan && collegeTierOf(plan.code) && !isCollegeKind(school.kind)) return { ok: false, errorKey: "operatorCollege.refuseTierNotCollege" };
+  // TA-488 (the owner's decision, 14 November 2026): and only to a college whose kind the tier's list names, so an
+  // autonomous college is refused the affiliated price; an affiliated college may take either.
+  if (plan && !planSuitsKind(plan.code, school.kind)) return { ok: false, errorKey: "operatorCollege.refuseTierKind" };
   if (school.planId === (plan?.id ?? null)) return { ok: true };
 
   await client.school.update({ where: { id: schoolId }, data: { planId: plan?.id ?? null, planSince: plan ? new Date() : null } });

@@ -3,7 +3,7 @@
 import { useState, useTransition } from "react";
 import { useRouter } from "@/lib/navigation";
 import { RocketLaunchIcon } from "@phosphor-icons/react";
-import { INSTITUTION_KINDS, isCollegeKind, SCHOOL_BOARDS, type InstitutionKind, type OperatorOnboardBody, type StreamCode } from "@edulink/contracts";
+import { INSTITUTION_KINDS, isCollegeKind, planSuitsKind, SCHOOL_BOARDS, type InstitutionKind, type OperatorOnboardBody, type StreamCode } from "@edulink/contracts";
 import { StreamPicker } from "@/components/college/stream-picker";
 import type { TranslationKey } from "@/lib/i18n/dictionary";
 import { Button } from "@/components/ui/button";
@@ -56,6 +56,11 @@ export function OnboardForm({ plans, partners }: { plans: PlanOption[]; partners
   const setC = (key: keyof typeof contact) => (value: string) => setContact((f) => ({ ...f, [key]: value }));
   const setP = (key: keyof typeof newPartner) => (value: string) => setNewPartner((f) => ({ ...f, [key]: value }));
 
+  /** TA-488: a plan chosen before the kind changed is let go when its price does not suit the new kind. */
+  function chooseKind(kind: string) {
+    setS("kind")(kind);
+    if (planId && !planSuitsKind(plans.find((p) => p.id === planId)?.code, kind)) setPlanId("");
+  }
   function toggleTrial(next: boolean) {
     setTrial(next);
     if (!datesTyped) setDates((d) => ({ startsAt: d.startsAt, dueAt: plusDays(d.startsAt, next ? 30 : 365) }));
@@ -118,7 +123,7 @@ export function OnboardForm({ plans, partners }: { plans: PlanOption[]; partners
         <legend className="text-sm font-semibold text-fg">{t("root.theSchool")}</legend>
         <TextField label={t("root.name")} required value={school.name} onChange={(e) => setS("name")(e.target.value)} hint={t("root.nameHint")} maxLength={200} />
         {/* A school, a junior college, a college or an autonomous college (4 Oct 2026): a college is offered the college modules and roles. */}
-        <SelectField label={t("institution.kindLabel")} value={school.kind} onChange={(e) => setS("kind")(e.target.value)} hint={t("institution.kindHint")}>
+        <SelectField label={t("institution.kindLabel")} value={school.kind} onChange={(e) => chooseKind(e.target.value)} hint={t("institution.kindHint")}>
           {INSTITUTION_KINDS.map((k) => (
             <option key={k} value={k}>
               {t(`institution.kind.${k}`)}
@@ -167,7 +172,8 @@ export function OnboardForm({ plans, partners }: { plans: PlanOption[]; partners
         <p className="text-xs leading-relaxed text-fg-muted">{t("root.subscriptionDefaults")}</p>
         <SelectField label={t("root.planTitle")} value={planId} onChange={(e) => setPlanId(e.target.value)}>
           <option value="">{t("root.planNone")}</option>
-          {plans.map((p) => (
+          {/* TA-488: only the prices that suit the kind chosen, since a refusal at the end undoes the whole set-up. */}
+          {plans.filter((p) => planSuitsKind(p.code, school.kind)).map((p) => (
             <option key={p.id} value={p.id}>
               {p.name} ({p.code})
             </option>

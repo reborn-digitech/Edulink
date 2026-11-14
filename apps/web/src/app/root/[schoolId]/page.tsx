@@ -10,7 +10,7 @@ import { listPartners, schoolSubscription } from "@/lib/subscriptions";
 import { SupportPanel } from "./support-panel";
 import { ModulesPanel } from "./modules-panel";
 import { operatorSchoolModules } from "@/lib/operator-college";
-import { collegeTierOf, isCollegeKind, parseStreams } from "@edulink/contracts";
+import { isCollegeKind, parseStreams, planSuitsKind } from "@edulink/contracts";
 import { institutionKindLabel, streamLabel } from "@/lib/institution";
 import { UsageCard } from "../usage-card";
 import { Card, CardBody, CardHeader } from "@/components/ui/card";
@@ -44,7 +44,8 @@ export default async function SchoolPage({ params }: { params: Promise<{ schoolI
     : await Promise.all([listSchoolAdmins(session, schoolId), listPlans(session), schoolUsage(schoolId), listPartners(session), schoolSubscription(session, schoolId)]);
   // The institution's modules, switchable on its behalf (4 Oct 2026); the college tiers offered to a college only.
   const modules = school.removedAt ? null : await operatorSchoolModules(session, schoolId);
-  const offered = plans.filter((p) => isCollegeKind(school.kind) || !collegeTierOf(p.code));
+  // TA-488: and only a tier that suits the college's kind (no affiliated price for an autonomous college); the plan it is on now stays listed, so the select reads true.
+  const offered = plans.filter((p) => planSuitsKind(p.code, school.kind) || p.id === school.planId);
 
   return (
     <div className="mx-auto max-w-2xl space-y-5">
