@@ -161,7 +161,8 @@ const SPEC: Record<StreamCode, PresetSpec> = {
   COMMERCE: { modulesOn: BASE_MODULES, regulators: ["UGC"], filings: BASE_FILINGS, homeTiles: ["library"], vocabulary: {}, notBuilt: [] },
   MANAGEMENT: { modulesOn: PROFESSIONAL_MODULES, regulators: ["AICTE", "UGC"], filings: AICTE_FILINGS, homeTiles: ["placement", "internships"], vocabulary: {}, notBuilt: [] },
   ENGINEERING: { modulesOn: [...PROFESSIONAL_MODULES, "INVENTORY"], regulators: ["AICTE"], filings: [...AICTE_FILINGS, "NBA_SAR"], homeTiles: ["labs", "placement", "nba"], vocabulary: {}, notBuilt: [] },
-  PHARMACY: { modulesOn: [...PROFESSIONAL_MODULES, "INVENTORY"], regulators: ["PCI", "AICTE"], filings: [...AICTE_FILINGS, "PCI_INSPECTION"], homeTiles: ["labs", "placement"], vocabulary: { lab: "practical" }, notBuilt: [] },
+  // The clinical desk is offered to pharmacy too (CLINICAL_COORDINATOR, duties.ts), so its tile is the office's and the head's way there (TA-274).
+  PHARMACY: { modulesOn: [...PROFESSIONAL_MODULES, "INVENTORY"], regulators: ["PCI", "AICTE"], filings: [...AICTE_FILINGS, "PCI_INSPECTION"], homeTiles: ["labs", "placement", "clinicalPostings"], vocabulary: { lab: "practical" }, notBuilt: [] },
   LAW: { modulesOn: PROFESSIONAL_MODULES, regulators: ["BCI", "UGC"], filings: [...BASE_FILINGS, "BCI_RETURN"], homeTiles: ["mootCourt", "internships"], vocabulary: { department: "faculty" }, notBuilt: [] },
   EDUCATION: { modulesOn: PROFESSIONAL_MODULES, regulators: ["NCTE"], filings: [...BASE_FILINGS, "NCTE_RETURN"], homeTiles: ["teachingPractice"], vocabulary: {}, notBuilt: [] },
   // The clinical desk is built since 10 Oct 2026 (R-56, the clinical half): postings, logbooks and the sites are kept; the councils' returns (NMC, DCI, INC) still are not, said on /iqac/documents.

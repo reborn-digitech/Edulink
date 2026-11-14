@@ -34,6 +34,9 @@ const SAME_ON_PURPOSE = new Set([
   "login.loginNamePlaceholder", "settings.emailPlaceholder", "root.emailPlaceholder", "invite.emailPlaceholder", "expert.emailPlaceholder",
 ]);
 
+/** Hindi values that end in a full stop because they end in an abbreviation or are a label, not a sentence (TA-334). */
+const HI_ABBREVIATION_ENDS = new Set(["staff.aq6", "staff.pq2", "staff.pq10", "staff.qualificationPlaceholder", "examCell.pdfAnswerBook"]);
+
 describe("the dictionaries", () => {
   it("say every English key in Hindi and in Marathi, and nothing English does not say", () => {
     expect([...E.keys()].filter((k) => !H.has(k))).toEqual([]);
@@ -65,10 +68,20 @@ describe("the dictionaries", () => {
   });
 
   it("use the danda in Hindi and the full stop in Marathi, as the house style says", () => {
-    // A sentence that ends in a full stop in English ends in । in Hindi and . in Marathi.
-    const sample = [...E.entries()].filter(([, v]) => /[a-z]\.$/.test(v)).slice(0, 400);
-    const hiWrong = sample.filter(([k]) => /[^\s]\.$/.test(H.get(k)!) && !/\.\.\.$/.test(H.get(k)!)).map(([k]) => k);
+    // A sentence that ends in a full stop in English ends in । in Hindi and . in Marathi. Every one of them is read
+    // (TA-334): the first 400 alone left the newest five thousand, at the end of the file, unread.
+    const sample = [...E.entries()].filter(([, v]) => /[a-z]\.$/.test(v));
+    const hiWrong = sample.filter(([k]) => !HI_ABBREVIATION_ENDS.has(k) && /[^\s]\.$/.test(H.get(k)!) && !/\.\.\.$/.test(H.get(k)!)).map(([k]) => k);
     const mrWrong = sample.filter(([k]) => /।$/.test(M.get(k)!)).map(([k]) => k);
-    expect({ hiEndsWithFullStop: hiWrong.length, mrEndsWithDanda: mrWrong.length }).toEqual({ hiEndsWithFullStop: 0, mrEndsWithDanda: 0 });
+    expect({ hiEndsWithFullStop: hiWrong, mrEndsWithDanda: mrWrong }).toEqual({ hiEndsWithFullStop: [], mrEndsWithDanda: [] });
+    expect(sample.length).toBeGreaterThan(5000);
+  });
+
+  it("keep Marathi words out of Hindi and Hindi words out of Marathi (TA-331, TA-334)", () => {
+    // Hindi has no ळ: शाळा is Marathi, and Hindi says स्कूल. Marathi says शाळा, never स्कूल, and its verbs are not है and और.
+    const word = (w: string) => new RegExp(`(^|[\\s,;:(—])${w}($|[\\s,;:।.)—])`);
+    const hiMarathi = [...H.entries()].filter(([, v]) => /ळ/.test(v) || word("आहे").test(v) || word("आणि").test(v)).map(([k]) => k);
+    const mrHindi = [...M.entries()].filter(([, v]) => /स्कूल/.test(v) || word("है").test(v) || word("और").test(v)).map(([k]) => k);
+    expect({ hiMarathi, mrHindi }).toEqual({ hiMarathi: [], mrHindi: [] });
   });
 });

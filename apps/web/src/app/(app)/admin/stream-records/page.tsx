@@ -3,7 +3,8 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { EmptyState } from "@/components/ui/states";
 import { notFound } from "next/navigation";
-import { ChalkboardTeacherIcon, FlaskIcon, GavelIcon, HandHeartIcon, PaletteIcon } from "@phosphor-icons/react/ssr";
+import { ChalkboardTeacherIcon, FirstAidKitIcon, FlaskIcon, GavelIcon, HandHeartIcon, PaletteIcon } from "@phosphor-icons/react/ssr";
+import { STREAMS, streamOffersDuty } from "@edulink/contracts";
 import { Card, CardBody, CardHeader, StatTile } from "@/components/ui/card";
 import { PageHeader } from "@/components/ui/page-header";
 import { ModuleOff } from "@/components/module-off";
@@ -36,6 +37,8 @@ export default async function StreamRecordsPage() {
   const corpsOn = s.streams.some((x) => x !== "HEALTH_SCIENCES");
   // The studio desk (R-56, the studio half, 10 Oct 2026): a card for an architecture college, opening the desk the office reads.
   const studiosOn = await hasStream(ctx.schoolId, "ARCHITECTURE");
+  // The clinical desk (TA-274): a card for a college whose streams keep clinical postings (health sciences, pharmacy).
+  const clinicalOn = STREAMS.some((code) => s.streams.includes(code) && streamOffersDuty(code, "CLINICAL_COORDINATOR"));
   return (
     <div className="space-y-6">
       <PageHeader title={t("streamRecords.title")} description={t("streamRecords.intro", { year: yearLabel })} />
@@ -102,6 +105,15 @@ export default async function StreamRecordsPage() {
         </Card>
       ) : null}
 
+      {clinicalOn ? (
+        <Card data-record="clinical">
+          <CardHeader icon={<FirstAidKitIcon weight="duotone" className="size-5" />} title={t("duties.clinical.title")} description={t("duties.clinical.intro")} />
+          <CardBody>
+            <Button asChild size="sm" variant="secondary"><Link href="/duties/clinical">{t("duties.clinical.openDesk")}</Link></Button>
+          </CardBody>
+        </Card>
+      ) : null}
+
       {corpsOn ? (
         <Card data-record="corps">
           <CardHeader icon={<HandHeartIcon weight="duotone" className="size-5" />} title={t("streamRecords.corpsTitle")} description={t("streamRecords.corpsBody", { hours: s.corps.hoursPerYear })} />
@@ -120,7 +132,7 @@ export default async function StreamRecordsPage() {
         </Card>
       ) : null}
 
-      {!s.labs && !s.law && !s.education && !corpsOn && !studiosOn ? (
+      {!s.labs && !s.law && !s.education && !corpsOn && !studiosOn && !clinicalOn ? (
         <EmptyState
           title={t("streamRecords.title")}
           description={t("streamRecords.noneForStreams")}

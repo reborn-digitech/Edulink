@@ -19,7 +19,8 @@ import { PlanCard } from "./plan-card"; // plans-pay (17 Oct 2026)
 
 type Tab = "profile" | "prefs" | "devices";
 type Sessions = z.infer<typeof sessionsListSchema>;
-const HHMM = /^\d{1,2}:\d{2}$/;
+/** A time on the 24-hour clock, 0:00 to 23:59, as the contract's clockHHMM (TA-329): 24:00 and 25:99 are refused here. */
+const HHMM = /^([01]?\d|2[0-3]):[0-5]\d$/;
 
 /**
  * "Chrome on Android" from a browser's user agent — the web's describeDevice,

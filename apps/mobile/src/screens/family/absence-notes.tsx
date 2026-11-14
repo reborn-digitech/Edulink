@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Pressable, View } from "react-native";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { ABSENCE_REASONS, absenceNotesSchema, type AbsenceNoteCreate, type AbsenceReason } from "@edulink/contracts";
+import { ABSENCE_REASONS, absenceNotesSchema, isRealDateKey, type AbsenceNoteCreate, type AbsenceReason } from "@edulink/contracts";
 import { Button, Card, Empty, Failed, Field, Loading, Row, Text } from "@/components";
 import { api } from "@/lib/api";
 import { unwrap } from "@/lib/query";
@@ -20,7 +20,6 @@ export const REASON_KEY: Record<AbsenceReason, TranslationKey> = {
   OTHER: "familyCare.reasonOTHER",
 };
 
-const DATE = /^\d{4}-\d{2}-\d{2}$/;
 
 /**
  * The family tells the school ahead of a day away — the web's absence
@@ -44,7 +43,8 @@ export function AbsenceNotes({ studentMembershipId, self }: { studentMembershipI
   const [text, setText] = useState("");
   const [tried, setTried] = useState(false);
   const [notice, setNotice] = useState<{ tone: "ok" | "danger"; text: string } | null>(null);
-  const dateBad = !DATE.test(dateKey.trim());
+  // A day on the calendar (TA-546): 2026-11-31 would be kept and matched by no register.
+  const dateBad = !isRealDateKey(dateKey.trim());
   const file = useMutation({
     mutationFn: async (body: AbsenceNoteCreate) => absenceNotesSchema.parse(must(await api().post(path, body), t("common.somethingWrong"))),
     onSuccess: (next) => {

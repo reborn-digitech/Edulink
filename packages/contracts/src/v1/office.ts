@@ -110,7 +110,8 @@ export const officePeriodBodySchema = z.object({
 /** `retired: true` takes the period off the day (its lessons are kept); `false` brings it back. */
 export const officePeriodRetireBodySchema = z.object({ retired: z.boolean() });
 
-export const officeSlotClearBodySchema = z.object({ classId: id, periodId: id, weekday: z.number().int().min(1).max(6) });
+/** weekday 0 (Sunday) to 6 (TA-544), as the slot door takes it; a cell with no lesson is refused by clearSlot. */
+export const officeSlotClearBodySchema = z.object({ classId: id, periodId: id, weekday: z.number().int().min(0).max(6) });
 
 /* ---------------------------------------------------------------------- */
 /* Notification housekeeping                                               */

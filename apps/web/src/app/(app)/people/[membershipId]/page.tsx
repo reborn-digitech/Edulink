@@ -267,7 +267,7 @@ export default async function PersonPage({
             title={t("person.teaching")}
             description={
               subjects.length > 0
-                ? `${subjects.join(" · ")}${pupilsTaught > 0 ? ` · ${t("person.pupilsTaught", { count: pupilsTaught })}` : ""}`
+                ? `${subjects.join(" · ")}${pupilsTaught > 0 ? ` · ${t(pupilsTaught === 1 ? "person.pupilsTaughtOne" : "person.pupilsTaught", { count: pupilsTaught })}` : ""}`
                 : t("person.noSubjectsYet")
             }
           />

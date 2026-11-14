@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { realDateKey } from "./calendar-keys";
 
 /**
  * THE STUDIO COORDINATOR'S DESK (the studio half of R-56, 10 October 2026).
@@ -85,10 +86,11 @@ export const studioSaveSchema = z
     maxMarks: z.number().int().min(STUDIO_MIN_MAX_MARKS).max(STUDIO_MAX_MAX_MARKS),
     /** The coordinator; a holder of the duty saving a new studio may leave it out and is the coordinator themself. */
     coordinatorMembershipId: cuid.nullable().optional(),
-    briefIssuedOn: dateKey,
-    interimOn: dateKey.nullable(),
-    finalOn: dateKey.nullable(),
-    juryOn: dateKey.nullable(),
+    /** Every day a write carries is a day on the calendar (TA-382). */
+    briefIssuedOn: realDateKey,
+    interimOn: realDateKey.nullable(),
+    finalOn: realDateKey.nullable(),
+    juryOn: realDateKey.nullable(),
   })
   .strict();
 export type StudioSave = z.infer<typeof studioSaveSchema>;
@@ -98,7 +100,7 @@ export const externalJurorSchema = z.object({ role: externalJurorRoleSchema, ins
 export const studioJurySaveSchema = z
   .object({
     id: cuid.optional(),
-    on: dateKey,
+    on: realDateKey,
     title: text(160),
     jurorMembershipIds: z.array(cuid).min(1).max(STUDIO_MAX_PANEL),
     chairMembershipId: cuid,

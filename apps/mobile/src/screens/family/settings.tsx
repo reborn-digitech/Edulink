@@ -17,7 +17,8 @@ import { must, Refusal } from "../staff/shared";
 import { FamilyAssistantCard } from "../shared/assistant";
 
 type Settings = z.infer<typeof familySettingsSchema>;
-const HHMM = /^\d{1,2}:\d{2}$/;
+/** A time on the 24-hour clock, 0:00 to 23:59, as the contract's clockHHMM (TA-329): 24:00 and 25:99 are refused here. */
+const HHMM = /^([01]?\d|2[0-3]):[0-5]\d$/;
 
 /**
  * A guardian's settings — the web's /parent/settings: the channels they are

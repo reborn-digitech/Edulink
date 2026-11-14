@@ -8,6 +8,7 @@ import { noDuesFor, cautionReturnFor } from "./no-dues";
 import { collegeDesk, kindOf } from "./college-office";
 import { myStudentConsent } from "./student-consent";
 import type { ActiveContext } from "./session";
+import { isDateKey } from "./dates";
 
 /**
  * A COLLEGE STUDENT'S RECORD AND LEAVING (4 October 2026).
@@ -70,6 +71,8 @@ export async function leaveCollege(ctx: ActiveContext, studentMembershipId: stri
   const d = await collegeDesk(ctx, ["ADMIN"]);
   const m = await db.membership.findFirst({ where: { id: studentMembershipId, schoolId: d.schoolId, role: "STUDENT" }, select: { id: true, userId: true, leftAt: true } });
   if (!m) throw new AccessError("collegeOffice.notFound", "NOT_FOUND");
+  // A day on the calendar (TA-113): new Date("2026-02-30T12:00:00Z") is 2 March, a day nobody typed.
+  if (!isDateKey(input.leftOn)) throw new AccessError("refusal.leaveDateInvalid");
   const clearance = await noDuesFor(m.id, "LEAVING");
   if (!clearance.completed) throw new AccessError("collegeOffice.refuseNoDuesOpen");
   const cautionReturnPaise = await cautionReturnFor(d.schoolId, m.id);

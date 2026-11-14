@@ -6,6 +6,7 @@ import { PUPIL_CATEGORIES, type PupilRecordField, type PupilRecordSave, type Pup
 import { db } from "./db";
 import { AccessError, assertGuardianAccess, assertStudentAccess } from "./tenancy";
 import { RuleRefusal } from "./rule-refusal";
+import { isDateKey } from "./dates";
 import { audit } from "./audit";
 import { notify, notifyGuardians } from "./notify";
 import { REQUIRED_RECORD_FIELDS } from "./certificate-rules";
@@ -131,6 +132,9 @@ export async function pupilRecordFor(ctx: ActiveContext, studentMembershipId: st
  */
 export async function codedValues(studentMembershipId: string, input: PupilRecordSave) {
   // A refused VALUE is a RuleRefusal, a 422 naming its field at the door (TA-602); a role stays an AccessError, 403.
+  // A day on the calendar (TA-113, TA-420): new Date("2019-06-31") is 1 July, a day nobody typed, and month 13 a 500.
+  if (input.admissionDate && !isDateKey(input.admissionDate)) throw new RuleRefusal("pupilRecord.dayNotReal", 422, undefined, "admissionDate");
+  if (input.previousSchoolTcDate && !isDateKey(input.previousSchoolTcDate)) throw new RuleRefusal("pupilRecord.dayNotReal", 422, undefined, "previousSchoolTcDate");
   // The number the school rings: kept as E.164 or refused, never reduced to whichever digits were typed.
   let contact: string | null | undefined = undefined;
   if (input.guardianPhone !== undefined) {

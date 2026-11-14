@@ -24,5 +24,8 @@ export function statusLabel(t: Translate, status: string | null): string {
 export function dueLabel(t: Translate, days: number | null): string | null {
   if (days === null) return null;
   if (days === 0) return t("root.subscriptionDueToday");
+  // One day has a sentence of its own (TA-332): "Due in 1 days" and "1 days overdue" were what the operator read.
+  if (days === 1) return t("root.subscriptionDueInOne", { days });
+  if (days === -1) return t("root.subscriptionOverdueOne", { days: 1 });
   return days > 0 ? t("root.subscriptionDueIn", { days }) : t("root.subscriptionOverdue", { days: -days });
 }

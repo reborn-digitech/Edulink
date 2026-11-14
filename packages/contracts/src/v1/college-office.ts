@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { realDateKey } from "./calendar-keys";
 
 /**
  * college-office: the coded lists and the door shapes of the college office
@@ -402,7 +403,8 @@ export const noDuesSchema = z.object({ studentMembershipId: z.string(), studentN
 export const noDuesQuerySchema = z.object({ event: noDuesEventSchema });
 export const noDuesClearBodySchema = z.object({ event: noDuesEventSchema, desk: noDuesDeskSchema, note: z.string().trim().max(300).optional() });
 export const noDuesListSchema = z.object({ items: z.array(noDuesSchema.pick({ studentMembershipId: true, studentName: true, completed: true }).extend({ uncleared: z.array(noDuesDeskSchema) })) });
-export const collegeLeavingBodySchema = z.object({ leftOn: dateKey, reason: z.enum(["TRANSFERRED", "GRADUATED", "LEFT"]), cautionReturnRef: z.string().trim().max(80).optional() });
+/** leftOn is a day on the calendar (TA-113): 2026-02-30 is a 422 naming leftOn. */
+export const collegeLeavingBodySchema = z.object({ leftOn: realDateKey, reason: z.enum(["TRANSFERRED", "GRADUATED", "LEFT"]), cautionReturnRef: z.string().trim().max(80).optional() });
 export const collegeLeavingResultSchema = z.object({ studentMembershipId: z.string(), cautionReturnPaise: paise, alumnus: z.boolean() });
 
 /* ---------------------------------------------------------------------- */

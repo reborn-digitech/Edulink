@@ -40,7 +40,7 @@ export function lectureKindLabel(kind: string, t: Translate, streams: readonly S
 export function roomKindLabel(kind: string, t: Translate, streams: readonly StreamCode[] = []): string {
   return kind === "LAB" ? tv("lab", streams, t) : t(ROOM_KEY[kind] ?? "academics.roomOTHER");
 }
-export const AWARD_KEY: Record<string, TranslationKey> = { CERTIFICATE: "academics.awardCERTIFICATE", DIPLOMA: "academics.awardDIPLOMA", DEGREE: "academics.awardDEGREE", HONOURS_DEGREE: "academics.awardHONOURS_DEGREE" };
+export const AWARD_KEY: Record<string, TranslationKey> = { CERTIFICATE: "academics.awardCERTIFICATE", DIPLOMA: "academics.awardDIPLOMA", DEGREE: "academics.awardDEGREE", HONOURS_DEGREE: "academics.awardHONOURS_DEGREE", ADVANCED_DIPLOMA: "academics.awardADVANCED_DIPLOMA" };
 export const LOAD_KEY: Record<string, TranslationKey> = { UNDER: "academics.loadUNDER", WITHIN: "academics.loadWITHIN", OVER: "academics.loadOVER" };
 
 const OFFICE_TABS: { key: string; href: string; labelKey: TranslationKey }[] = [

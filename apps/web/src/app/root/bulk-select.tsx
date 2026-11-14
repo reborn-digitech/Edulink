@@ -72,7 +72,7 @@ export function BulkSelectProvider({
       }
       toast({
         tone: result.failed.length === 0 ? "ok" : "warn",
-        title: mode === "remove" ? t("root.bulkRemoved", { count: result.done }) : t("root.bulkDeleted", { count: result.done }),
+        title: mode === "remove" ? t(result.done === 1 ? "root.bulkRemovedOne" : "root.bulkRemoved", { count: result.done }) : t(result.done === 1 ? "root.bulkDeletedOne" : "root.bulkDeleted", { count: result.done }),
         description: result.failed.length > 0 ? result.failed.join(" · ") : undefined,
       });
       setIds(new Set());

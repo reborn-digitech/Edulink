@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { realDateKey } from "./calendar-keys";
 import { DUTY_STREAMS } from "./duties";
 import type { StreamCode } from "./streams";
 
@@ -80,8 +81,9 @@ export const clinicalSiteSaveSchema = z.object({
   name: text(160).min(2),
   kind: clinicalSiteKindSchema,
   address: text(300),
-  agreementFrom: dateKey.nullable(),
-  agreementTo: dateKey.nullable(),
+  /** Every day a write carries is a day on the calendar (TA-382). */
+  agreementFrom: realDateKey.nullable(),
+  agreementTo: realDateKey.nullable(),
   contactRole: clinicalContactRoleSchema,
 });
 export type ClinicalSiteSave = z.infer<typeof clinicalSiteSaveSchema>;
@@ -102,8 +104,8 @@ export const clinicalPostingSaveSchema = z.object({
   divisionId: cuid,
   labBatchId: cuid.nullable(),
   supervisorMembershipId: cuid,
-  from: dateKey,
-  to: dateKey,
+  from: realDateKey,
+  to: realDateKey,
   rotationOrder: z.number().int().min(1).max(99),
 });
 export type ClinicalPostingSave = z.infer<typeof clinicalPostingSaveSchema>;
@@ -116,7 +118,7 @@ export const logbookEntrySaveSchema = z.object({
   id: cuid.optional(),
   clientId: logbookClientIdSchema,
   postingId: cuid,
-  on: dateKey,
+  on: realDateKey,
   kind: logbookKindSchema,
   count: z.number().int().min(1).max(500),
   note: text(1000),

@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { realDateKey } from "./calendar-keys";
 
 /**
  * The family's side of the child's record, where the family acts rather
@@ -37,7 +38,8 @@ export type AbsenceReason = z.infer<typeof absenceReasonSchema>;
 
 /** POST /api/v1/family/students/{membershipId}/absence-notes — one note per day; a second for the same day replaces the first. */
 export const absenceNoteCreateSchema = z.object({
-  dateKey,
+  /** A day on the calendar (TA-546): 2026-11-31 is a 422 naming dateKey, since no register would ever match it. */
+  dateKey: realDateKey,
   reason: absenceReasonSchema,
   text: z.string().trim().max(300).default(""),
 });

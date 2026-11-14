@@ -114,7 +114,8 @@ export const feeStructureSummarySchema = z.object({
   /** Open to families: a guardian may choose it for their child (family-money.ts). */
   selfEnrol: z.boolean().default(false),
 });
-export const feeStructuresQuerySchema = z.object({ academicYearId: id.optional(), includeArchived: z.coerce.boolean().optional() });
+/** includeArchived is the word "true" or "false" (TA-333): z.coerce.boolean() read "false" as true; any other word is a 422. */
+export const feeStructuresQuerySchema = z.object({ academicYearId: id.optional(), includeArchived: z.enum(["true", "false"]).optional().transform((v) => (v === undefined ? undefined : v === "true")) });
 export const feeStructuresSchema = z.object({ structures: z.array(feeStructureSummarySchema), year: yearRef, heads: z.number().int() });
 
 export const feeStructureLineBodySchema = z.object({ headId: id, amountPaise: paise.max(10_000_000_000) });

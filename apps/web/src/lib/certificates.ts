@@ -10,7 +10,7 @@ import { audit } from "./audit";
 import { notify, notifyGuardians } from "./notify";
 import { lockTcRegister, registerMax, stayAttendance } from "./school-record";
 import { answerRequest, claimRequestForIssue, requestPurpose } from "./certificate-requests";
-import { ageInYears, dateKeyInZone, todayKey } from "./dates";
+import { ageInYears, dateKeyInZone, isDateKey, todayKey } from "./dates";
 import { allAppointmentPresets, allCollegePresets, allPresets, BLANK, dataFor, fill, fillRows, isStaffKind, parseLayout, parseRows, placeholderFitsKind, placeholderKeys, PLACEHOLDER_KEYS, staffDataFor, STAFF_CERTIFICATE_KINDS, wordsFor, writtenTokens, type PupilFacts, type StaffFacts } from "./certificate-rules";
 import type { WordsLocale } from "./words";
 import type { ActiveContext } from "./session";
@@ -255,6 +255,8 @@ export async function issueCertificate(ctx: ActiveContext, input: CertificateIss
   if (!template.active) throw new AccessError("certificates.templateRetired");
   // An appointment letter goes to a member of staff, through its own door (issueAppointmentLetter).
   if (isStaffKind(template.kind)) throw new AccessError("appointmentLetters.refusePupilDoor");
+  // The last day printed on the paper is a day on the calendar (TA-113, TA-420): 2026-11-31 was frozen as 31/11/2026.
+  if (input.leftOn !== undefined && input.leftOn !== "" && !isDateKey(input.leftOn)) throw new AccessError("refusal.leaveDateInvalid");
   const year = await db.academicYear.findFirst({ where: { schoolId: caller.schoolId, isCurrent: true }, select: { id: true, name: true } });
   if (!year) throw new AccessError("certificates.noYear");
   const school = await db.school.findUniqueOrThrow({ where: { id: caller.schoolId }, select: { timezone: true } });

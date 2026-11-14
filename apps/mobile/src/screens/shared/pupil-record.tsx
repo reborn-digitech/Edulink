@@ -2,7 +2,7 @@ import { useState, type ReactNode } from "react";
 import { View } from "react-native";
 import { useRouter } from "expo-router";
 import { useMutation, useQuery, useQueryClient, type QueryKey } from "@tanstack/react-query";
-import { penChangeRequestSchema, penChangesListSchema, RECORD_CHANGE_FIELDS, recordChangeSchema, recordChangesListSchema, type RecordChangeFile, type RecordChangeView, PUPIL_CATEGORIES, PUPIL_RELIGIONS, RECORD_BLOOD_GROUPS, CWSN_TYPES, type PenChangeRequestView, type PupilRecordField, type PupilRecordSave, type PupilRecordView, CWSN_NONE, MOTHER_TONGUES, NATIONALITIES, type MotherTongue, type Nationality } from "@edulink/contracts";
+import { isRealDateKey, penChangeRequestSchema, penChangesListSchema, RECORD_CHANGE_FIELDS, recordChangeSchema, recordChangesListSchema, type RecordChangeFile, type RecordChangeView, PUPIL_CATEGORIES, PUPIL_RELIGIONS, RECORD_BLOOD_GROUPS, CWSN_TYPES, type PenChangeRequestView, type PupilRecordField, type PupilRecordSave, type PupilRecordView, CWSN_NONE, MOTHER_TONGUES, NATIONALITIES, type MotherTongue, type Nationality } from "@edulink/contracts";
 import type { Translate, TranslationKey } from "@edulink/i18n";
 import { Button, Card, Failed, Field, Row, SwitchRow, Text, useToast } from "@/components";
 import { api } from "@/lib/api";
@@ -119,11 +119,10 @@ export function valueWords(t: Translate, field: PupilRecordField, value: string)
   return value;
 }
 
-const DAY = /^\d{4}-\d{2}-\d{2}$/;
-/** A typed date that is not a day key is refused before anything is sent. */
+/** A typed date that is not a day on the calendar is refused before anything is sent (TA-420): 2027-02-30 too. */
 export function dateProblem(t: Translate, value: string): string | undefined {
   const s = value.trim();
-  return !s || DAY.test(s) ? undefined : t("refusal.useRealDateForm");
+  return !s || isRealDateKey(s) ? undefined : t("refusal.useRealDateForm");
 }
 
 /** "Complete" or "3 missing" — the record's standing as a pill. */

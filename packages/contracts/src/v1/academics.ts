@@ -61,8 +61,11 @@ export const MENTOR_FLAGS = ["NONE", "SLOW", "ADVANCED", "COUNSELLING"] as const
 export const mentorFlagSchema = z.enum(MENTOR_FLAGS);
 export const COURSE_FILE_ITEM_KINDS = ["RESOURCE", "NOTES", "QUESTION_PAPER", "MODEL_ANSWER", "LINK"] as const;
 export const courseFileItemKindSchema = z.enum(COURSE_FILE_ITEM_KINDS);
-/** The awards of NEP's multiple exits (UGC curriculum and credit framework): a certificate after a year, a diploma after two, the degree after three, honours after four. */
-export const EXIT_AWARDS = ["CERTIFICATE", "DIPLOMA", "DEGREE", "HONOURS_DEGREE"] as const;
+/**
+ * The awards of NEP's multiple exits (UGC curriculum and credit framework): a certificate after a year, a diploma after two, the degree after three, honours after four.
+ * ADVANCED_DIPLOMA is the B.Voc's second step (TA-496): diploma after year 1, advanced diploma after year 2, the degree after year 3.
+ */
+export const EXIT_AWARDS = ["CERTIFICATE", "DIPLOMA", "DEGREE", "HONOURS_DEGREE", "ADVANCED_DIPLOMA"] as const;
 export const exitAwardSchema = z.enum(EXIT_AWARDS);
 /** The UGC's ten-point letter grades; a scheme's table maps each to its points and lowest percentage. */
 export const GRADE_LETTERS = ["O", "A+", "A", "B+", "B", "C", "P", "F", "AB"] as const;

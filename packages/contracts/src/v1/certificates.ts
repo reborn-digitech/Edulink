@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { realDateKey } from "./calendar-keys";
 
 /**
  * Certificates the office designs and issues — transfer certificate, Nirgam
@@ -193,7 +194,8 @@ export const pupilRecordSaveSchema = z.object({
   city: text.optional(),
   postalCode: z.string().trim().max(12).optional(),
   admissionNumber: z.string().trim().max(40).optional(),
-  admissionDate: dateKey.nullable().optional(),
+  /** A day on the calendar (TA-113, TA-420): 2019-06-31 is a 422 naming admissionDate, never 1 July. */
+  admissionDate: realDateKey.nullable().optional(),
   admittedToGrade: z.string().trim().max(20).optional(),
   previousSchool: z.string().trim().max(160).optional(),
   penNumber: z.string().trim().max(40).optional(),
@@ -209,7 +211,7 @@ export const pupilRecordSaveSchema = z.object({
   repeating: yesNo.optional(),
   bloodGroup: z.union([recordBloodGroupSchema, z.literal("")]).optional(),
   previousSchoolTcNumber: z.string().trim().max(40).optional(),
-  previousSchoolTcDate: dateKey.nullable().optional(),
+  previousSchoolTcDate: realDateKey.nullable().optional(),
   fatherOccupation: text.optional(),
   motherOccupation: text.optional(),
   /** Rupees a year, digits only; blank clears. */
@@ -480,7 +482,7 @@ export const certificateIssueSchema = z.object({
   purpose: z.string().trim().max(200).optional(),
   remark: z.string().trim().max(400).optional(),
   /** For a TC issued before the pupil's last day: the date the document should carry. */
-  leftOn: dateKey.optional(),
+  leftOn: realDateKey.optional(),
   /** Issued from a family's request: the request is marked issued and points at the paper. */
   requestId: cuid.optional(),
 });

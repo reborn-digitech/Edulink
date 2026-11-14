@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { realDateKey } from "./calendar-keys";
 import type { StreamCode } from "./streams";
 
 /**
@@ -176,7 +177,7 @@ export const practicalSaveSchema = z.object({
   offeringId: cuid,
   experimentNo: z.number().int().min(1).max(200),
   title: text(160).min(2),
-  performedOn: dateKey,
+  performedOn: realDateKey,
   entries: z.array(z.object({ studentMembershipId: cuid, marks: z.number().int().min(0).max(100).nullable() })).min(1).max(200),
 });
 /** POST /api/v1/stream-records/practicals/sign — the offering's teacher or a lab in-charge signs rows. */
@@ -189,7 +190,7 @@ export const mootTeamSchema = z.object({ name: text(80).min(1), membershipIds: z
 export const mootCourtSaveSchema = z.object({
   id: cuid.optional(),
   name: text(160).min(2),
-  at: dateKey,
+  at: realDateKey,
   kind: mootCourtKindSchema,
   teams: z.array(mootTeamSchema).max(40),
   result: text(400),
@@ -305,8 +306,9 @@ export const labBreakageSaveSchema = z.object({ roomId: cuid, itemCode: z.string
 
 /** The teaching-practice coordinator's desk. */
 export const practiceSchoolSaveSchema = z.object({ id: cuid.optional(), name: text(160).min(2), udise: z.string().trim().regex(/^\d{11}$/, "udise").nullable(), contact: text(200) });
-export const practicePostingSaveSchema = z.object({ id: cuid.optional(), studentMembershipId: cuid, practiceSchoolId: cuid, from: dateKey, to: dateKey, lessonsPlanned: z.number().int().min(0).max(400) });
-export const lessonObservationSaveSchema = z.object({ at: dateKey, grade: lessonGradeSchema, note: text(1000) });
+/** Every day a request carries here is a day on the calendar (TA-382): a posting ending 2027-13-01 was stored and turned the desk's weeks to NaN, a 500 for the college. */
+export const practicePostingSaveSchema = z.object({ id: cuid.optional(), studentMembershipId: cuid, practiceSchoolId: cuid, from: realDateKey, to: realDateKey, lessonsPlanned: z.number().int().min(0).max(400) });
+export const lessonObservationSaveSchema = z.object({ at: realDateKey, grade: lessonGradeSchema, note: text(1000) });
 export const practicePostingSchema = z.object({
   id: cuid,
   studentMembershipId: cuid,
@@ -333,10 +335,10 @@ export type TeachingPracticeDesk = z.infer<typeof teachingPracticeDeskSchema>;
 
 /** The NSS or NCC officer's desk. */
 // enrolledOn (TA-380): the day the students joined, today when left out; an activity names only those enrolled on its day.
-export const corpsEnrolSchema = z.object({ studentMembershipIds: z.array(cuid).min(1).max(500), unit: text(80), enrolledOn: dateKey.optional() });
-export const corpsLeaveSchema = z.object({ studentMembershipIds: z.array(cuid).min(1).max(500), on: dateKey });
+export const corpsEnrolSchema = z.object({ studentMembershipIds: z.array(cuid).min(1).max(500), unit: text(80), enrolledOn: realDateKey.optional() });
+export const corpsLeaveSchema = z.object({ studentMembershipIds: z.array(cuid).min(1).max(500), on: realDateKey });
 // participantMembershipIds is capped at 1000 on purpose (item 16, 2 Nov 2026): an NSS or NCC camp enrols the whole corps of a large college, where an enrolment or leave sheet (500) is one unit's.
-export const corpsActivitySaveSchema = z.object({ title: text(160).min(2), at: dateKey, hours: z.number().min(0.5).max(240), camp: z.boolean(), participantMembershipIds: z.array(cuid).max(1000) });
+export const corpsActivitySaveSchema = z.object({ title: text(160).min(2), at: realDateKey, hours: z.number().min(0.5).max(240), camp: z.boolean(), participantMembershipIds: z.array(cuid).max(1000) });
 /** GET /api/v1/duties/nss and /ncc */
 export const corpsDeskSchema = z.object({
   corps: corpsSchema,
