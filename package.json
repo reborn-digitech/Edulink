@@ -7,6 +7,7 @@
   },
   "scripts": {
     "dev": "pnpm --filter @edulink/web dev",
+    "dev:network": "pnpm --filter @edulink/web dev:network",
     "build": "pnpm --filter @edulink/web build",
     "start": "pnpm --filter @edulink/web start",
     "web": "pnpm --filter @edulink/web",

@@ -15,7 +15,8 @@ One workspace, three kinds of thing:
 corepack enable          # once: gives you the pinned pnpm
 pnpm install             # every package, one lockfile
 cd apps/web && cp .env.example .env && npm run vapid && npm run setup
-pnpm dev                 # the web app on :3000, from anywhere in the repo
+pnpm dev                 # the web app on :3000 (this machine only), from anywhere in the repo
+pnpm dev:network         # the same, open to the network for a phone; /dev/mailbox then asks for the operator
 pnpm battery             # tsc x2, eslint, vitest, rls, quiz, i18n, sweep, then the packages' tests
 ```
 

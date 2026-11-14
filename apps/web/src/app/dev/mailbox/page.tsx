@@ -30,9 +30,16 @@ export default async function MailboxPage() {
   // on a developer's own machine, which is a fact about the socket and not
   // about the Host header a request can name: a loopback address in the
   // trusted client address, and never when the process is told it is deployed.
+  //
+  // TA-246 (14 Nov 2026): no header proves the socket. Next fills X-Forwarded-For from it only when the caller
+  // sent none, so a caller on the network could write 127.0.0.1 there and read every link. What proves it is where
+  // the server listens: `npm run dev` binds 127.0.0.1 and says so with EDULINK_DEV_LOOPBACK=1, and only then does
+  // the address test below count. `npm run dev:network`, the command for the days a phone must reach this Mac, and
+  // any other way of starting the server leave it unset, and then the mailbox asks for the operator.
   const hdrs = await headers();
   const address = clientAddress(hdrs) ?? "";
-  const loopback = /^(127\.0\.0\.1|::1|::ffff:127\.0\.0\.1)$/.test(address) || (address === "" && /^(localhost|127\.0\.0\.1|\[::1\])(:\d+)?$/.test(hdrs.get("host") ?? "") && !process.env.FLY_APP_NAME && !process.env.NEXT_PUBLIC_APP_URL?.startsWith("https://"));
+  const listensOnLoopback = process.env.EDULINK_DEV_LOOPBACK === "1";
+  const loopback = listensOnLoopback && (/^(127\.0\.0\.1|::1|::ffff:127\.0\.0\.1)$/.test(address) || (address === "" && /^(localhost|127\.0\.0\.1|\[::1\])(:\d+)?$/.test(hdrs.get("host") ?? "") && !process.env.FLY_APP_NAME && !process.env.NEXT_PUBLIC_APP_URL?.startsWith("https://")));
   if (!loopback) await requireSuperuser();
 
   const emails = await db.outboundEmail.findMany({

@@ -206,7 +206,8 @@ applies here: you cannot revoke the only one.
 
 | Command | Does |
 |---|---|
-| `npm run dev` | Dev server (no service worker) |
+| `npm run dev` | Dev server (no service worker), listening on this machine only (127.0.0.1) |
+| `npm run dev:network` | The same dev server open to the network, for the days a phone must reach it; `/dev/mailbox` then asks for the operator (TA-246), so the sweep's signed-out mailbox check fails on those days |
 | `npm run build && npm start` | Production build — **the only mode with a SW** |
 | `npm test` | Full suite (1,374 tests) |
 | `npm run typecheck` | `tsc --noEmit` |
@@ -613,7 +614,11 @@ Break these and something quietly goes wrong for a child or a parent.
 - The service worker is **disabled in dev**. Offline/push testing needs a
   production build.
 - `/dev/mailbox` is **404 in production** (it lists sign-in links in plaintext).
-  Use `npm run dev` or read the `OutboundEmail` table.
+  Use `npm run dev` or read the `OutboundEmail` table. It opens without a sign-in
+  only on `npm run dev`, which listens on 127.0.0.1 and says so with
+  `EDULINK_DEV_LOOPBACK=1`; no request header can prove a caller is on this
+  machine (TA-246). Started any other way, `npm run dev:network` included, it asks
+  for the operator.
 - **A client component importing a `server-only` module is a BUILD error, not a
   type error.** `tsc --noEmit` passes and `next build` fails with "You're
   importing a component that needs server-only". That is why `safety-labels.ts`
