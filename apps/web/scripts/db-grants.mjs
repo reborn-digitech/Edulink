@@ -30,6 +30,7 @@
 import { execFileSync } from "node:child_process";
 import { readFileSync, existsSync } from "node:fs";
 import { libpqUrl } from "./pg-url.mjs";
+import { parseRoleFlags, releaseRoleProblems, ROLE_FLAGS_SQL } from "./db-role-check.mjs";
 
 function readEnvFile() {
   const out = {};
@@ -72,8 +73,9 @@ if (!appRole || !database) {
 }
 
 // Same role for app and owner means a single-role dev setup. Granting a role to
-// itself is a no-op, and RLS would not apply to an owner anyway, so say so
-// rather than pretending the grants achieved something.
+// itself is a no-op, so say so rather than pretending the grants achieved
+// something. (FORCE ROW LEVEL SECURITY holds an owner too, unless it is a
+// superuser or BYPASSRLS: step 0 asks, TA-243.) Refused in production.
 const ownerRole = (() => {
   try {
     return decodeURIComponent(new URL(adminUrl).username);
@@ -89,6 +91,30 @@ function psql(args, opts = {}) {
     encoding: "utf8",
     env: { ...process.env, ...(opts.env ?? {}) },
   });
+}
+
+/* ---- 0. the two roles row security depends on (TA-194, TA-243) ------------ */
+
+// Asked before anything is applied: the app role must be held by the policies,
+// and the owner (every data step of a migration, every job, the dump) must pass
+// them. Either wrong stops the release here, naming the role and the flag.
+{
+  const flagsOf = (url) => {
+    try {
+      return parseRoleFlags(psql(["-d", url, "-tAc", ROLE_FLAGS_SQL], { quiet: true }));
+    } catch (error) {
+      console.error(`\n  ✗ Could not read the role's flags: ${String(error.stderr ?? error.message ?? error).trim().split("\n").slice(-1)[0]}\n`);
+      process.exit(1);
+    }
+  };
+  const app = flagsOf(appUrl);
+  const owner = singleRole ? app : flagsOf(adminUrl);
+  const problems = releaseRoleProblems({ app, owner, singleRole, production: env.NODE_ENV === "production" });
+  if (problems.length) {
+    for (const problem of problems) console.error(`\n  ✗ ${problem}`);
+    console.error("");
+    process.exit(1);
+  }
 }
 
 /* ---- 1. the grants -------------------------------------------------------- */

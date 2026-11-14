@@ -74,8 +74,10 @@ export function Experts() {
     setOffering("");
     setSpecialism("");
   };
-  const when = (iso: string) => formatInstant(iso, locale, { weekday: "short", day: "numeric", month: "short", hour: "numeric", minute: "2-digit" });
-  const until = (iso: string) => formatInstant(iso, locale, { hour: "numeric", minute: "2-digit" });
+  // In UTC, the clock an expert's window is stored, offered and printed in on the web and on the expert's own screen
+  // (TA-277); the device's zone printed the same slot five and a half hours from the web's list.
+  const when = (iso: string) => formatInstant(iso, locale, { weekday: "short", day: "numeric", month: "short", hour: "numeric", minute: "2-digit" }, "UTC");
+  const until = (iso: string) => formatInstant(iso, locale, { hour: "numeric", minute: "2-digit" }, "UTC");
   return (
     <Screen title={t("feature.experts")} description={t("expert.marketplaceBody")} refreshing={query.isRefetching} onRefresh={() => void query.refetch()}>
       {error ? <Failed message={error} /> : null}

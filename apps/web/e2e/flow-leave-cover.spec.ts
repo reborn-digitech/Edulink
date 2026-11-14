@@ -24,9 +24,14 @@ let day: string;
 let applicant: { id: string; name: string };
 let cover: { id: string; userId: string; name: string; cookie: string };
 
+/** The hashes of the sessions this file minted: its afterAll deletes exactly these (TA-465). */
+const minted: string[] = [];
+
 async function mint(userId: string, role: string, activeSchoolId: string): Promise<string> {
   const token = randomBytes(32).toString("base64url");
-  await db.session.create({ data: { userId, tokenHash: createHash("sha256").update(token).digest("hex"), activeSchoolId, activeRole: role, userAgent: "e2e", expiresAt: new Date(Date.now() + 3_600_000) } });
+  const tokenHash = createHash("sha256").update(token).digest("hex");
+  minted.push(tokenHash);
+  await db.session.create({ data: { userId, tokenHash, activeSchoolId, activeRole: role, userAgent: "e2e", expiresAt: new Date(Date.now() + 3_600_000) } });
   return `edulink_session=${token}`;
 }
 
@@ -71,9 +76,9 @@ test.afterAll(async () => {
   await db.leaveRequest.deleteMany({ where: { schoolId, id: { in: leave.map((l) => l.id) } } });
   if (day && applicant) await db.substitution.deleteMany({ where: { schoolId, dateKey: day, absentMembershipId: applicant.id } });
   await db.notification.deleteMany({ where: { schoolId, OR: [{ body: { contains: REASON } }, { meta: { contains: day ?? "never" }, kind: "SYSTEM", title: { contains: "cover" } }] } }).catch(() => undefined);
-  // Only the cover's own minted session: with no cover (a failed set-up) a
-  // delete by user agent alone would sign out every other spec's actor.
-  if (cover?.userId) await db.session.deleteMany({ where: { userAgent: "e2e", userId: cover.userId } });
+  // Only the session minted here, by its token hash (TA-465): a delete by user agent or by the cover's user would
+  // sign out every other spec's actor, and another run's, who is the same person.
+  if (minted.length) await db.session.deleteMany({ where: { tokenHash: { in: minted } } });
   await db.$disconnect();
 });
 

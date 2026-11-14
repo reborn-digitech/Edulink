@@ -51,9 +51,18 @@ afterAll(async () => {
   await db.$disconnect();
 });
 
+/**
+ * A chapter of the practice bank that is not loaded is a skip on a laptop and a failure on CI (TA-513), as in
+ * tests/answer-idempotent.test.ts: never a pass with nothing asserted.
+ */
+function noBank(skip: (note?: string) => void): void {
+  if (process.env.CI) throw new Error(`The practice bank's chapter ${SLUG} is not loaded: run npm run quiz:import first`);
+  skip(`the practice bank's chapter ${SLUG} is not loaded`);
+}
+
 describe("worksheets", () => {
-  it("the same seed prints the same paper; a new seed prints a fresh one", async () => {
-    if (!hasBank) return;
+  it("the same seed prints the same paper; a new seed prints a fresh one", async ({ skip }) => {
+    if (!hasBank) return noBank(skip);
     const first = await buildWorksheet(ctxFor("TEACHER"), { slug: SLUG, level: 4, count: 6, seed: "zz1" });
     const again = await buildWorksheet(ctxFor("TEACHER"), { slug: SLUG, level: 4, count: 6, seed: "zz1" });
     const other = await buildWorksheet(ctxFor("TEACHER"), { slug: SLUG, level: 4, count: 6, seed: "zz2" });
@@ -63,8 +72,8 @@ describe("worksheets", () => {
     expect(other.questions.map((q) => q.stem)).not.toEqual(first.questions.map((q) => q.stem));
   });
 
-  it("every key entry matches the bank's own answer", async () => {
-    if (!hasBank) return;
+  it("every key entry matches the bank's own answer", async ({ skip }) => {
+    if (!hasBank) return noBank(skip);
     const sheet = await buildWorksheet(ctxFor("TEACHER"), { slug: SLUG, level: 1, count: 5, seed: "zz3" });
     for (const q of sheet.questions) {
       expect(q.answerIndex).toBeGreaterThanOrEqual(0);
@@ -80,8 +89,8 @@ describe("worksheets", () => {
     expect(row?.answerIndex).toBe(sheet.questions[0]!.answerIndex);
   });
 
-  it("a pupil cannot build one", async () => {
-    if (!hasBank) return;
+  it("a pupil cannot build one", async ({ skip }) => {
+    if (!hasBank) return noBank(skip);
     await expect(
       buildWorksheet(ctxFor("STUDENT"), { slug: SLUG, level: 1, count: 5, seed: "zz" }),
     ).rejects.toThrow(AccessError);

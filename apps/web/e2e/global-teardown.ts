@@ -1,3 +1,4 @@
+import { createHash } from "node:crypto";
 import { existsSync, readFileSync, unlinkSync } from "node:fs";
 import { join } from "node:path";
 import { PrismaClient } from "@prisma/client";
@@ -14,7 +15,14 @@ export default async function globalTeardown() {
   try {
     const school = await db.school.findUnique({ where: { slug: "zz-northgate-school" }, select: { id: true } });
     if (school) await removeHarnessExam(db, school.id);
-    await db.session.deleteMany({ where: { userAgent: "e2e" } });
+    // The sessions this run's global-setup.ts minted, by the tokens it wrote to .sessions.json (TA-465): a run beside
+    // this one keeps its own. Expired ones go too, whoever minted them.
+    const sessionsFile = join(__dirname, ".sessions.json");
+    const tokens = existsSync(sessionsFile)
+      ? Object.values(JSON.parse(readFileSync(sessionsFile, "utf8")) as Record<string, { cookie?: string }>).flatMap((actor) => /edulink_session=([^;\s]+)/.exec(actor.cookie ?? "")?.[1] ?? [])
+      : [];
+    const hashes = tokens.map((token) => createHash("sha256").update(token).digest("hex"));
+    await db.session.deleteMany({ where: { userAgent: "e2e", OR: [{ tokenHash: { in: hashes } }, { expiresAt: { lt: new Date() } }] } });
     // The platform features global-setup.ts switched on for the run go back off: exactly those, none the operator had on.
     const list = join(__dirname, ".features.json");
     if (existsSync(list)) {

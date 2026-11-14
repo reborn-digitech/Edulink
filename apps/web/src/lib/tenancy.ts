@@ -466,7 +466,9 @@ export async function assertRemarkAccess(
 
   const { role, schoolId, membershipId, user } = session;
 
-  if (role === "TEACHER" && schoolId === thread.schoolId && membershipId === thread.teacherMembershipId) {
+  // A college's FACULTY and HOD teach a class as a teacher does (invite/[token]/actions.ts), so a pupil or guardian may
+  // open a thread with them (teachersForStudent); they read and answer it as its teacher (TA-212).
+  if ((role === "TEACHER" || role === "FACULTY" || role === "HOD") && schoolId === thread.schoolId && membershipId === thread.teacherMembershipId) {
     return thread;
   }
   if ((role === "ADMIN" || role === "PRINCIPAL") && schoolId === thread.schoolId) return thread;

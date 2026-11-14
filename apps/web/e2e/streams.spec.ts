@@ -18,17 +18,23 @@ const db = new PrismaClient({ datasourceUrl: process.env.DATABASE_ADMIN_URL ?? p
  * home draws exactly the preset's tiles in the preset's order and no other
  * stream's, the header carries the streams' chip, and the banner says what is
  * not kept yet only where a stream has such records. Sessions are minted with
- * userAgent "e2e" (global-setup's teardown removes them); the architecture
- * college and its registrar are ZZ rows removed in afterAll.
+ * userAgent "e2e" and removed in afterAll by their own token hashes (TA-465),
+ * so a run beside this one keeps its sessions; the architecture college and
+ * its registrar are ZZ rows removed in afterAll.
  */
 const streamName = (code: StreamCode) => en.streams[code].name;
 type College = { label: string; schoolId: string; streams: StreamCode[]; cookie: string };
 const colleges: College[] = [];
 const made: { schoolId?: string; userId?: string } = {};
 
+/** The hashes of the sessions this file minted: its afterAll deletes exactly these (TA-465). */
+const minted: string[] = [];
+
 async function mint(userId: string, schoolId: string): Promise<string> {
   const token = randomBytes(32).toString("base64url");
-  await db.session.create({ data: { userId, tokenHash: createHash("sha256").update(token).digest("hex"), activeSchoolId: schoolId, activeRole: "ADMIN", userAgent: "e2e", expiresAt: new Date(Date.now() + 3_600_000) } });
+  const tokenHash = createHash("sha256").update(token).digest("hex");
+  minted.push(tokenHash);
+  await db.session.create({ data: { userId, tokenHash, activeSchoolId: schoolId, activeRole: "ADMIN", userAgent: "e2e", expiresAt: new Date(Date.now() + 3_600_000) } });
   return `edulink_session=${token}`;
 }
 
@@ -53,6 +59,7 @@ test.beforeAll(async () => {
 });
 
 test.afterAll(async () => {
+  if (minted.length) await db.session.deleteMany({ where: { tokenHash: { in: minted } } });
   if (made.userId) await db.session.deleteMany({ where: { userId: made.userId } });
   if (made.schoolId) await db.school.delete({ where: { id: made.schoolId } });
   if (made.userId) await db.user.delete({ where: { id: made.userId } });

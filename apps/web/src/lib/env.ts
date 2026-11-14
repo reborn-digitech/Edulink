@@ -396,7 +396,8 @@ export function readAppReleaseConfig(): { config: AppReleaseConfig; problems: { 
   const url = (key: (typeof APP_RELEASE_VARS)[number]): string | null => {
     const value = raw(key);
     if (!value) return null;
-    if (/^https?:\/\/\S+$/.test(value)) return value;
+    // TA-595: https only, as the sentence says: the phone opens this link at the moment it says the app must be replaced.
+    if (/^https:\/\/\S+$/.test(value)) return value;
     problems.push({ key, message: `${key} is "${value}" — expected an https:// store link. Treated as unset until it is fixed.` });
     return null;
   };

@@ -169,7 +169,9 @@ export const resolveRequestTenant = cache(
       return { schoolIds: [], userId: session.userId, joinCode: null, isSuperuser };
     }
 
-    const belongs = await ownMembershipIn(client, session.userId, session.activeSchoolId);
+    // TA-504: in the session's own role, as getSession asks (session.ts), so the database's set is never wider than
+    // what the application trusts: an ADMIN membership paused beside an active TEACHER one opens no school here.
+    const belongs = session.activeRole ? await ownMembershipIn(client, session.userId, session.activeSchoolId, session.activeRole) : false;
     return {
       schoolIds: belongs ? [session.activeSchoolId] : [],
       userId: session.userId,
@@ -190,12 +192,13 @@ async function ownMembershipIn(
   client: SessionReadableClient,
   userId: string,
   schoolId: string,
+  role: string,
 ): Promise<boolean> {
   const membership = await client.$transaction(async (tx) => {
     // Parameterised: set_config takes a value, not an identifier.
     await tx.$executeRawUnsafe(`SELECT set_config('app.user_id', $1, true)`, userId);
     return tx.membership.findFirst({
-      where: { userId, schoolId, status: "ACTIVE", leftAt: null },
+      where: { userId, schoolId, role, status: "ACTIVE", leftAt: null },
       select: { id: true },
     });
   });

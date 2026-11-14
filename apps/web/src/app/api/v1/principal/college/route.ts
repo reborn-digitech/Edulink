@@ -7,7 +7,9 @@ import { apiFailure, ok } from "@/lib/api-v1";
  * GET /api/v1/principal/college — the college at a glance and the approvals
  * waiting, for the head's and the registrar's phone (campaign 2026-10-04,
  * G-4). Read from principalCollege(), the function behind the web's
- * /principal/college, and cut to what a phone shows; a school is a 404.
+ * /principal/college, and cut to what a phone shows. At a school the gate answers
+ * 403 MODULE_OFF first, ACADEMICS being a college's module (TA-489); the handler's own 404
+ * is for a school that switched it on.
  */
 export async function GET() {
   try {

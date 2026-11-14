@@ -1,6 +1,6 @@
 import "server-only";
 import { NextResponse } from "next/server";
-import type { z } from "zod";
+import { defaultErrorMap, type z } from "zod";
 import { apiErrorSchema, sessionResponseSchema as apiSessionSchema, meSchema, type ApiError, type InstitutionKind } from "@edulink/contracts";
 import { AccessError } from "@/lib/tenancy";
 import { FeatureOffError, ModuleOffError, PlanRequiredError } from "@/lib/access-error";
@@ -18,6 +18,8 @@ import { forOwnSchools } from "@/lib/tenant-context";
 import { audit } from "@/lib/audit";
 import { clientAddress, consume } from "@/lib/rate-limit";
 import { getT } from "@/lib/i18n/server";
+import { DICTIONARIES, type Translate, type TranslationKey } from "@/lib/i18n/dictionary";
+import { lookup } from "@/lib/i18n/core";
 import { kindOfStatus, recordError, reportError } from "@/lib/metrics";
 
 /**
@@ -82,9 +84,27 @@ export async function apiFailure(error: unknown, where: string): Promise<NextRes
 export async function apiInvalid(result: z.SafeParseError<unknown>): Promise<NextResponse> {
   const t = await getT();
   const issues: Record<string, string> = {};
-  for (const issue of result.error.issues) issues[issue.path.join(".") || "_form"] = issue.message;
+  for (const issue of result.error.issues) issues[issue.path.join(".") || "_form"] = issueSentence(issue, t);
   return envelope({ error: t("common.checkTheForm"), code: "BAD_REQUEST", issues }, 422);
 }
+
+/**
+ * What a refused field says, in the reader's language (TA-328). The phone prints it under the field. A contract's
+ * message that is a dictionary key ("refusal.useHHMM") is translated; the validator's own English ("Invalid email",
+ * "String must contain at least 3 character(s)") and a bare tag never meant for a person ("date", "id") become one
+ * sentence for the field, and so does a tag naming two fields one of which is wanted ("classId or
+ * studentMembershipIds", "membershipId or code"). A contract's own written sentence is passed as it is.
+ */
+function issueSentence(issue: z.ZodIssue, t: Translate): string {
+  const message = issue.message;
+  if (lookup(DICTIONARIES.en, message) !== undefined) return t(message as TranslationKey);
+  const validatorsOwn = defaultErrorMap(issue, { defaultError: message, data: undefined }).message;
+  if (message === validatorsOwn || !/\s/.test(message.trim()) || FIELD_CHOICE_TAG.test(message.trim())) return t("common.checkThisField");
+  return message;
+}
+
+/** A tag of field names joined by "or" ("slug or assignmentId"), never meant for a person (TA-328). */
+const FIELD_CHOICE_TAG = /^[A-Za-z][A-Za-z0-9]*(?: or [A-Za-z][A-Za-z0-9]*)+$/;
 
 /**
  * The most a JSON body may be. A question with three languages and a worked

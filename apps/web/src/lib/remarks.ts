@@ -40,7 +40,8 @@ export async function listThreads(session: ActiveContext): Promise<ThreadSummary
   const { role, schoolId, membershipId, user } = session;
 
   let where;
-  if (role === "TEACHER" && schoolId && membershipId) {
+  // A college's FACULTY and HOD are the teacher of the threads opened with them (TA-212), as assertRemarkAccess reads.
+  if ((role === "TEACHER" || role === "FACULTY" || role === "HOD") && schoolId && membershipId) {
     where = { schoolId, teacherMembershipId: membershipId };
   } else if ((role === "ADMIN" || role === "PRINCIPAL") && schoolId) {
     // The principal reads what the office reads. Left to the parent branch,

@@ -105,7 +105,9 @@ function routesOf(catalog: readonly Endpoint[]): Route[] {
 /** The catalog entry behind a request, or null for a path the catalog does not list. `catalog` is for the suite. */
 export function endpointFor(method: string, path: string, catalog: readonly Endpoint[] = ENDPOINTS): Endpoint | null {
   const clean = path.length > 1 ? path.replace(/\/+$/, "") : path;
-  for (const r of routesOf(catalog)) if (r.e.method === method && r.re.test(clean)) return r.e;
+  // TA-368: Next answers HEAD with the GET handler, so a HEAD is the GET door's and meets the GET door's rules.
+  const as = method === "HEAD" ? "GET" : method;
+  for (const r of routesOf(catalog)) if (r.e.method === as && r.re.test(clean)) return r.e;
   return null;
 }
 
@@ -235,7 +237,8 @@ export async function gateRequest(route: string | null, ctx: { role: Role | null
   const method = route.slice(0, space);
   const raw = route.slice(space + 1);
   const path = raw === "!" ? null : routePath(raw);
-  if (path === null) return isLimitedRole(ctx.role) ? "no-context" : "pass";
+  // TA-368: a path that does not decode cannot be gated, so nobody is served it with a school, whatever the role.
+  if (path === null) return "no-context";
   if (path.startsWith("/api/v1/")) {
     // Nothing to look up for the older roles while no door names a module or a feature.
     if (!isLimitedRole(ctx.role) && !routesOf(catalog).some((r) => r.e.module || r.e.feature || r.e.kinds || r.e.duties)) return "pass";

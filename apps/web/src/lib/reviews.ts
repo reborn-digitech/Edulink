@@ -6,6 +6,7 @@ import { notify } from "./notify";
 import { AccessError } from "./tenancy";
 import { readJson, writeJson } from "./json";
 import { todayKey } from "./dates";
+import { holdsHeadPages } from "./duties";
 import {
   REVIEW_QUESTIONS,
   REVIEW_SCALE_MIN,
@@ -559,6 +560,10 @@ function roundOverall(rows: { scores: string }[]): { overall: number; count: num
  */
 export async function schoolReviewDashboard(ctx: ActiveContext): Promise<TeacherReviewRow[]> {
   const schoolId = requireAdmin(ctx);
+  // TA-210: the review rounds are one of the head's pages (owner-batch-item9), so the table is built only for a
+  // session holding them: the head, an admin the head gave the duty, every admin while the school has no head. The
+  // head's dashboard and its door call this too, and draw no reviews card for an empty list.
+  if (!(await holdsHeadPages(ctx))) return [];
 
   const [teachers, rounds, responses] = await Promise.all([
     db.membership.findMany({

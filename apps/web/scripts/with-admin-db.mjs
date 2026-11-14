@@ -15,9 +15,11 @@
  * DATABASE_ADMIN_URL is the owner connection. Falls back to DATABASE_URL so a
  * single-role setup still works, which is fine before rls.sql has been applied.
  */
-import { spawn } from "node:child_process";
+import { execFileSync, spawn } from "node:child_process";
 import { readFileSync } from "node:fs";
 import { describeDatabase, fenceVerdict } from "./db-fence.mjs";
+import { migrateRoleProblems, parseRoleFlags, ROLE_FLAGS_SQL } from "./db-role-check.mjs";
+import { libpqUrl } from "./pg-url.mjs";
 
 function readEnvFile() {
   try {
@@ -56,6 +58,27 @@ if (!verdict.ok) {
   process.exit(2);
 }
 if (!process.env.EDULINK_DB_QUIET) process.stderr.write(`with-admin-db: ${describeDatabase(adminUrl)} ← ${[command, ...args].join(" ").slice(0, 120)}\n`);
+
+// THE OWNER BEFORE ANY MIGRATION (TA-243): `prisma migrate deploy` runs before db:grants in db:release and db:migrate,
+// so the owner's flags are asked here, before a data step can run over no school's rows and be recorded applied.
+const roleProblems = migrateRoleProblems({
+  argv: [command, ...args],
+  adminUrl,
+  appUrl: process.env.DATABASE_URL ?? fileEnv.DATABASE_URL,
+  production: (process.env.NODE_ENV ?? fileEnv.NODE_ENV) === "production",
+  readFlags: (url) => {
+    try {
+      return parseRoleFlags(execFileSync("psql", ["-v", "ON_ERROR_STOP=1", "-d", libpqUrl(url), "-tAc", ROLE_FLAGS_SQL], { stdio: "pipe", encoding: "utf8" }));
+    } catch (error) {
+      // psql's own last line only: the error's message repeats the command, whose URL holds the password.
+      throw new Error(String(error?.stderr ?? "").trim().split("\n").slice(-1)[0] || "psql could not connect");
+    }
+  },
+});
+if (roleProblems.length) {
+  for (const problem of roleProblems) process.stderr.write(`with-admin-db: refused — ${problem}\n`);
+  process.exit(2);
+}
 
 // The ENVIRONMENT WINS over .env, the way dotenv itself works: a crontab line
 // that says STORAGE_DIR=/mnt/files must mean it. The file fills gaps; it does

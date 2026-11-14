@@ -15,6 +15,7 @@ import { ENDPOINTS, type Endpoint } from "../src/lib/api-catalog";
 import { COLLEGE_DOORS } from "./college-doors";
 import { isAdminDuty, PERSON_PLANS, PLAN_FEATURES } from "@edulink/contracts";
 import { featuresOf, reachMap } from "../src/lib/api-catalog/types";
+import { operationInputs } from "./openapi-params";
 
 /** The plans a door's feature may ask for (16 Oct 2026): a door of such a feature may answer 402 PLAN_REQUIRED, unless planFree or left to its handler. */
 function plansOf(e: Endpoint): string[] {
@@ -77,9 +78,8 @@ function build() {
         "422": { description: "Invalid body", content: { "application/json": { schema: { $ref: "#/components/schemas/ApiError" } } } },
       },
     };
-    if (e.request) op.requestBody = { required: true, content: { "application/json": { schema: zodToJsonSchema(e.request, { target: "openApi3" }) } } };
-    const params = [...e.path.matchAll(/\{(\w+)\}/g)].map((m) => ({ name: m[1], in: "path", required: true, schema: { type: "string" } }));
-    if (params.length) op.parameters = params;
+    // A GET door's request is its query string, published as query parameters; a body for the rest (TA-579).
+    Object.assign(op, operationInputs(e));
     (paths[e.path] ??= {})[e.method.toLowerCase()] = op;
   }
   return {

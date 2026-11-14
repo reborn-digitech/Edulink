@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import { offer, withdraw } from "./actions";
 import { useT } from "@/lib/i18n";
 import { actionError } from "@/lib/action-error";
-import { formatUtcMoment, formatUtcTime } from "@/lib/dates";
+import { formatUtcMoment, formatUtcTime, utcInstantOfLocalInput } from "@/lib/dates";
 import { fieldClass } from "@/components/ui/field-class";
 
 type Slot = {
@@ -122,7 +122,8 @@ export function SlotManager({ slots }: { slots: Slot[] }) {
           loading={pending}
           disabled={!start || !end}
           icon={<PlusIcon weight="bold" className="size-4" />}
-          onClick={() => act(() => offer(new Date(start).toISOString(), new Date(end).toISOString(), note))}
+          // Typed in UTC, the clock this page prints and says it uses (TA-277); the phone's form reads it the same way.
+          onClick={() => act(() => offer(utcInstantOfLocalInput(start) ?? "", utcInstantOfLocalInput(end) ?? "", note))}
         >
           {t("expert.offerTime")}
         </Button>

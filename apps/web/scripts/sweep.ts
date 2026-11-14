@@ -57,6 +57,7 @@ async function mint(email: string, role: string | null, schoolId: string | null,
       expiresAt: new Date(Date.now() + 86_400_000),
     },
   });
+  minted.push(session.id);
   return { label, cookie: `edulink_session=${token}; __Host-edulink_session=${token}`, sessionId: session.id, role, userId: user.id };
 }
 
@@ -165,6 +166,8 @@ const skipped: string[] = [];
 /** When the run began, and whose notices it will have caused: a suspension restored a hundred times had told the teacher a hundred times. */
 const startedAt = new Date();
 const touched = new Set<string>();
+/** The sessions this run minted, deleted by id at the end (TA-465): another sweep's, on the same database, are its own. */
+const minted: string[] = [];
 function skip(what: string, why: string) {
   skipped.push(`${what} — ${why}`);
 }
@@ -2243,7 +2246,7 @@ for (const signal of ["SIGINT", "SIGTERM", "SIGHUP"] as const) {
     void switches
       .restore()
       .catch((e) => console.error(`✗ could not switch back: ${(e as Error).message} — switch it off at /root/features`))
-      .then(() => db.session.deleteMany({ where: { userAgent: "sweep" } }))
+      .then(() => db.session.deleteMany({ where: { id: { in: minted } } }))
       .finally(() => process.exit(130));
   });
 }
@@ -2273,7 +2276,7 @@ async function main() {
   const studentUser = studentMembership!.user;
   touched.add(studentUser.id);
   const studentToken = randomBytes(32).toString("base64url");
-  await db.session.create({
+  const studentSession = await db.session.create({
     data: {
       userId: studentUser.id,
       tokenHash: createHash("sha256").update(studentToken).digest("hex"),
@@ -2284,6 +2287,7 @@ async function main() {
       expiresAt: new Date(Date.now() + 86_400_000),
     },
   });
+  minted.push(studentSession.id);
   const student: Actor = { label: "student", cookie: `edulink_session=${studentToken}; __Host-edulink_session=${studentToken}`, sessionId: "", role: "STUDENT", userId: studentUser.id };
 
   // The warm pass before anything is counted (R-29, sweep-warm.ts): the cheap pages once, every answer thrown away.
@@ -3244,7 +3248,7 @@ async function main() {
 
   // Never leave a feature or a plan on that this run switched on.
   await switches.restore();
-  await db.session.deleteMany({ where: { userAgent: "sweep" } });
+  await db.session.deleteMany({ where: { id: { in: minted } } });
   // The notices this run caused its actors — a restored access, a suggested mentor — are the run's, not theirs to keep.
   const notices = await db.notification.deleteMany({ where: { userId: { in: [...touched] }, createdAt: { gte: startedAt } } });
   console.log(`swept away ${notices.count} notices the run caused.`);
@@ -3255,6 +3259,6 @@ main().catch(async (e) => {
   if (e instanceof ServerGone) console.error(`✗ ${e.message}: nothing after it was tried. Restart the server (check ${BASE}/api/health) and rerun.`);
   else console.error(e);
   await switches.restore().catch((err) => console.error(`✗ could not switch back what this run switched on: ${(err as Error).message} — switch it off at /root/features`));
-  await db.session.deleteMany({ where: { userAgent: "sweep" } });
+  await db.session.deleteMany({ where: { id: { in: minted } } });
   process.exit(e instanceof ServerGone ? 2 : 1);
 });

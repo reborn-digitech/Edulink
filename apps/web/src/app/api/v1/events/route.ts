@@ -3,6 +3,7 @@ import { getSession, type ActiveContext } from "@/lib/session";
 import { channel, subscribe } from "@/lib/realtime";
 import { AccessError, teacherClassIds } from "@/lib/tenancy";
 import { studentsGuardiansMaySee } from "@/lib/student-consent";
+import { forOwnSchools, forUser } from "@/lib/tenant-context";
 
 /**
  * GET /api/v1/events — server-sent events for this session.
@@ -54,6 +55,20 @@ async function channelsFor(ctx: ActiveContext): Promise<string[]> {
   // channel only until their module says otherwise.
   if ((ctx.role === "ADMIN" || ctx.role === "PRINCIPAL") && ctx.schoolId && ctx.membershipId) channels.push(channel.school(ctx.schoolId));
   return channels;
+}
+
+/**
+ * The channels the session would be given now, read from a timer after the request has been answered: the tenant
+ * is bound here from the person's own rows (forUser, then their schools) rather than left to the request's cookie.
+ */
+async function channelsNow(ctx: ActiveContext): Promise<string[]> {
+  const schools =
+    ctx.role === "PARENT"
+      ? (await forUser(ctx.user.id, () => db.guardianship.findMany({ where: { parentUserId: ctx.user.id, status: "ACTIVE" }, select: { studentSchoolId: true } }))).map((g) => g.studentSchoolId)
+      : ctx.schoolId
+        ? [ctx.schoolId]
+        : [];
+  return forOwnSchools(ctx.user.id, schools, () => channelsFor(ctx));
 }
 
 /**
@@ -136,9 +151,18 @@ export async function GET(request: Request) {
         send(": keep-alive\n\n");
         if (++ticks % RECHECK_EVERY_TICKS !== 0) return;
         // Still a live session? Revoked, expired or disabled, the stream ends here rather than with the tab.
-        void db.session.findFirst({ where: { id: ctx.sessionId, revokedAt: null, expiresAt: { gt: new Date() } }, select: { id: true } }).then((row) => {
+        void db.session.findFirst({ where: { id: ctx.sessionId, revokedAt: null, expiresAt: { gt: new Date() } }, select: { id: true } }).then(async (row) => {
           if (!row) {
             send(`event: session.ended\ndata: {}\n\n`);
+            close();
+            return;
+          }
+          // Still the same channels? A guardian whose link to a child ended, a grant taken back or a class handed on
+          // stops hearing it here rather than with the tab (TA-433): the stream ends and the client opens a new one,
+          // whose channels are worked out afresh. A set that only grew is left until then.
+          const now = await channelsNow(ctx).catch(() => null);
+          if (now && channels.some((c) => !now.includes(c))) {
+            send(`event: channels.changed\ndata: {}\n\n`);
             close();
           }
         });

@@ -158,7 +158,7 @@ async function searchMessages(ctx: ActiveContext, q: string, limit: number, t: T
 
   // Threads: the same four branches as remarks.ts `listThreads`.
   let threadWhere: Prisma.RemarkThreadWhereInput | null = null;
-  if (role === "TEACHER" && schoolId && membershipId) threadWhere = { schoolId, teacherMembershipId: membershipId };
+  if ((role === "TEACHER" || role === "FACULTY" || role === "HOD") && schoolId && membershipId) threadWhere = { schoolId, teacherMembershipId: membershipId };
   else if ((role === "ADMIN" || role === "PRINCIPAL") && schoolId) threadWhere = { schoolId };
   else if (role === "STUDENT" && schoolId && membershipId) threadWhere = { schoolId, studentMembershipId: membershipId };
   else if (role === "PARENT") {

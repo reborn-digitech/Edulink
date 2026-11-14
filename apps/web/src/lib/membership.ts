@@ -119,6 +119,16 @@ export async function suspendMembership(
         }
       }
 
+      // TA-192: the head's pages pass to every admin while the school has no active head (duties.ts), so an admin
+      // pausing the only active head would take the pages the head has not given them. A head is paused while
+      // another head stays active; the last one is refused, as the last admin is.
+      if (target.role === "PRINCIPAL") {
+        const otherHeads = await t.membership.count({
+          where: { schoolId, role: "PRINCIPAL", status: "ACTIVE", leftAt: null, id: { not: membershipId } },
+        });
+        if (otherHeads === 0) throw new StateError("refusal.onlyHeadLeft");
+      }
+
       await t.membership.update({
         where: { id: membershipId },
         data: { status: "SUSPENDED", suspendedAt: new Date(), suspendedReason: trimmed },

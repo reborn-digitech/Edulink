@@ -316,6 +316,19 @@ export function formatUtcTime(instant: Date): string {
 }
 
 /**
+ * A `datetime-local` box's "2026-12-15T10:00" read as UTC, the clock the expert's page prints and says it uses, as an
+ * ISO instant; null when it is not such a value (TA-277). `new Date(value)` read it in the browser's zone, so a slot
+ * typed as 10:00 on India's clock was stored and printed as 04:30, and the phone's form, which reads UTC, stored the
+ * same keys five and a half hours apart.
+ */
+export function utcInstantOfLocalInput(value: string): string | null {
+  const match = /^(\d{4}-\d{2}-\d{2})T(\d{2}):(\d{2})(?::(\d{2}))?$/.exec(value.trim());
+  if (!match) return null;
+  const at = new Date(`${match[1]}T${match[2]}:${match[3]}:${match[4] ?? "00"}.000Z`);
+  return Number.isNaN(at.getTime()) ? null : at.toISOString();
+}
+
+/**
  * "in 5 days", "3 hours ago" — for due dates and activity feeds. A PHRASE, not
  * a date — so unlike every formatter above it takes the reader's locale: a
  * Hindi screen reading "देय in 5 days" is two languages in one breath.

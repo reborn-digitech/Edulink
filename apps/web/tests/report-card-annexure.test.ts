@@ -155,9 +155,18 @@ async function answerNextCorrectly(attemptId: string): Promise<void> {
   await submitAnswer(pupil, attemptId, served!.questionId, row.answerIndex);
 }
 
+/**
+ * A chapter of the practice bank that is not loaded is a skip on a laptop and a failure on CI (TA-513), as in
+ * tests/answer-idempotent.test.ts: never a pass with nothing asserted.
+ */
+function noBank(skip: (note?: string) => void): void {
+  if (process.env.CI) throw new Error(`The practice bank's chapter ${SLUG} is not loaded: run npm run quiz:import first`);
+  skip(`the practice bank's chapter ${SLUG} is not loaded`);
+}
+
 describe("the practice annexure", () => {
-  it("snapshots the ladder onto a generated card", { timeout: 60_000 }, async () => {
-    if (!hasBank) return;
+  it("snapshots the ladder onto a generated card", { timeout: 60_000 }, async ({ skip }) => {
+    if (!hasBank) return noBank(skip);
 
     const { attemptId } = await startAttempt(pupil, SLUG);
     await answerNextCorrectly(attemptId);
@@ -182,8 +191,8 @@ describe("the practice annexure", () => {
     expect(chapter!.tiers).toBe(1); // Beginner arrived with the promotion
   });
 
-  it("a published card keeps its snapshot however far the ladder moves", { timeout: 60_000 }, async () => {
-    if (!hasBank) return;
+  it("a published card keeps its snapshot however far the ladder moves", { timeout: 60_000 }, async ({ skip }) => {
+    if (!hasBank) return noBank(skip);
 
     const cards = await cardsForClass(teacher, classId, "ZZ Term 1");
     await publishCards(teacher, classId, "ZZ Term 1");

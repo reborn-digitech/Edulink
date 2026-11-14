@@ -513,21 +513,27 @@ describe("as the admin", () => {
   });
 
   it("reviews: the dashboard, then a round opened; one closing in the past is refused", async () => {
-    const before = await (await reviewsGet(get(`${P}/reviews`))).json();
-    expect(before.rounds).toEqual([]);
-    expect(before.teacherOptions.map((t: { membershipId: string }) => t.membershipId)).toContain(teacherMembershipId);
-    expect(before.defaultCloseDateKey).toBe(addDaysToKey(todayKey(TZ), 14));
+    // The review rounds are the head's pages (TA-210): this school has a head, so the head has given this admin the duty.
+    await db.membership.update({ where: { id: adminMembershipId }, data: { dutiesJson: JSON.stringify(["HEAD_PAGES"]) } });
+    try {
+      const before = await (await reviewsGet(get(`${P}/reviews`))).json();
+      expect(before.rounds).toEqual([]);
+      expect(before.teacherOptions.map((t: { membershipId: string }) => t.membershipId)).toContain(teacherMembershipId);
+      expect(before.defaultCloseDateKey).toBe(addDaysToKey(todayKey(TZ), 14));
 
-    const closes = addDaysToKey(todayKey(TZ), 14);
-    const opened = await reviewsPost(json(`${P}/reviews`, { teacherMembershipIds: [teacherMembershipId], audience: "BOTH", closesDateKey: closes }));
-    expect(opened.status).toBe(201);
-    expect((await opened.json()).roundId).toBeTruthy();
-    expect((await reviewsPost(json(`${P}/reviews`, { teacherMembershipIds: [teacherMembershipId], audience: "BOTH", closesDateKey: "2020-01-01" }))).status).toBe(422);
-    expect((await reviewsPost(json(`${P}/reviews`, { teacherMembershipIds: [], audience: "BOTH", closesDateKey: closes }))).status).toBe(422);
+      const closes = addDaysToKey(todayKey(TZ), 14);
+      const opened = await reviewsPost(json(`${P}/reviews`, { teacherMembershipIds: [teacherMembershipId], audience: "BOTH", closesDateKey: closes }));
+      expect(opened.status).toBe(201);
+      expect((await opened.json()).roundId).toBeTruthy();
+      expect((await reviewsPost(json(`${P}/reviews`, { teacherMembershipIds: [teacherMembershipId], audience: "BOTH", closesDateKey: "2020-01-01" }))).status).toBe(422);
+      expect((await reviewsPost(json(`${P}/reviews`, { teacherMembershipIds: [], audience: "BOTH", closesDateKey: closes }))).status).toBe(422);
 
-    const after = await (await reviewsGet(get(`${P}/reviews?status=all`))).json();
-    expect(after.counts).toEqual({ open: 1, closed: 0 });
-    expect(after.rounds[0]).toMatchObject({ audience: "BOTH", closesDateKey: closes, status: "OPEN", teacherCount: 1, responseCount: 0 });
+      const after = await (await reviewsGet(get(`${P}/reviews?status=all`))).json();
+      expect(after.counts).toEqual({ open: 1, closed: 0 });
+      expect(after.rounds[0]).toMatchObject({ audience: "BOTH", closesDateKey: closes, status: "OPEN", teacherCount: 1, responseCount: 0 });
+    } finally {
+      await db.membership.update({ where: { id: adminMembershipId }, data: { dutiesJson: "[]" } });
+    }
   });
 
   it("safety: visits, reports and the audit trail the actions above wrote", async () => {

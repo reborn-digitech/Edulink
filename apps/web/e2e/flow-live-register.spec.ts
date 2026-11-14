@@ -34,9 +34,14 @@ let today: string;
 let pupils: { membershipId: string; name: string }[];
 let colleague: { membershipId: string; userId: string; cookie: string };
 
+/** The hashes of the sessions this file minted: its afterAll deletes exactly these (TA-465). */
+const minted: string[] = [];
+
 async function mint(userId: string, role: string, activeSchoolId: string): Promise<string> {
   const token = randomBytes(32).toString("base64url");
-  await db.session.create({ data: { userId, tokenHash: createHash("sha256").update(token).digest("hex"), activeSchoolId, activeRole: role, userAgent: "e2e", expiresAt: new Date(Date.now() + 3_600_000) } });
+  const tokenHash = createHash("sha256").update(token).digest("hex");
+  minted.push(tokenHash);
+  await db.session.create({ data: { userId, tokenHash, activeSchoolId, activeRole: role, userAgent: "e2e", expiresAt: new Date(Date.now() + 3_600_000) } });
   return `edulink_session=${token}`;
 }
 
@@ -60,8 +65,9 @@ test.beforeAll(async () => {
 
 test.afterAll(async () => {
   if (classId) await removeClass(schoolId, classId);
-  // Only the colleague's own minted session: a delete by user agent alone would sign out every other spec's actor.
-  if (colleague?.userId) await db.session.deleteMany({ where: { userAgent: "e2e", userId: colleague.userId } });
+  // Only the session minted here, by its token hash (TA-465): a delete by user agent or by the colleague's user would
+  // sign out every other spec's actor, and another run's, who is the same person.
+  if (minted.length) await db.session.deleteMany({ where: { tokenHash: { in: minted } } });
   await db.$disconnect();
 });
 

@@ -1,3 +1,4 @@
+import type { Prisma } from "@prisma/client";
 import { db } from "@/lib/db";
 import { DEFAULT_PREFS, revokeOtherSessions, revokeSession, type ActiveContext, type UserPrefs } from "@/lib/session";
 import { readJson, writeJson } from "@/lib/json";
@@ -42,15 +43,12 @@ export async function saveUserPrefs(ctx: ActiveContext, next: Partial<UserPrefs>
     return { ok: false, field: "quietHours.end", errorKey: "account.quietSameTime" };
   }
 
-  const current = readJson<UserPrefs>(
-    (await db.user.findUniqueOrThrow({ where: { id: ctx.user.id }, select: { prefs: true } })).prefs,
-    DEFAULT_PREFS,
-  );
-
-  await db.user.update({
-    where: { id: ctx.user.id },
-    data: { prefs: writeJson({ ...current, ...next }) },
-  });
+  // THE LANGUAGE IS NOT THIS FORM'S (TA-604). It has its own writer, setUserLocale, behind the header's switch and
+  // POST /api/v1/account/locale; the web form sends back the whole draft it was drawn with, locale included, and a
+  // tab left open would put back the language changed since on another tab or the phone. So it is never merged here.
+  const { locale: _drawnWith, ...changes } = next;
+  void _drawnWith;
+  await mergePrefs(ctx.user.id, changes);
 
   await audit({
     schoolId: ctx.schoolId,
@@ -68,12 +66,21 @@ export async function saveUserPrefs(ctx: ActiveContext, next: Partial<UserPrefs>
  */
 export async function setUserLocale(userId: string, raw: string): Promise<Locale> {
   const locale = normaliseLocale(raw);
-  const current = readJson<UserPrefs>(
-    (await db.user.findUniqueOrThrow({ where: { id: userId }, select: { prefs: true } })).prefs,
-    DEFAULT_PREFS,
-  );
-  await db.user.update({ where: { id: userId }, data: { prefs: writeJson({ ...current, locale }) } });
+  await mergePrefs(userId, { locale });
   return locale;
+}
+
+/**
+ * The one read-and-write of `User.prefs`, under the row's lock (TA-604): the preferences form and the language switch
+ * each read the JSON and write it back whole, and two at the same moment used to lose one another's field.
+ */
+async function mergePrefs(userId: string, changes: Partial<UserPrefs>): Promise<void> {
+  await db.$tenantTransaction(async (raw: unknown) => {
+    const tx = raw as Prisma.TransactionClient;
+    await tx.$queryRaw`SELECT id FROM "User" WHERE id = ${userId} FOR UPDATE`;
+    const current = readJson<UserPrefs>((await tx.user.findUniqueOrThrow({ where: { id: userId }, select: { prefs: true } })).prefs, DEFAULT_PREFS);
+    await tx.user.update({ where: { id: userId }, data: { prefs: writeJson({ ...current, ...changes }) } });
+  });
 }
 
 /* -------------------------------------------------------------------------- */

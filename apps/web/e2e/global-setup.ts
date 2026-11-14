@@ -50,7 +50,8 @@ async function mint(userId: string, role: string | null, schoolId: string | null
 }
 
 export default async function globalSetup() {
-  await db.session.deleteMany({ where: { userAgent: "e2e" } });
+  // Only the stale ones (TA-465): a run beside this one keeps its live sessions; global-teardown.ts removes this run's.
+  await db.session.deleteMany({ where: { userAgent: "e2e", expiresAt: { lt: new Date() } } });
   const school = await db.school.findUnique({ where: { slug: "zz-northgate-school" } });
   if (!school) throw new Error("ZZ Northgate missing — run npm run zz:fixtures");
 

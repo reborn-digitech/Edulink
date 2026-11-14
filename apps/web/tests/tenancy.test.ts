@@ -72,10 +72,15 @@ beforeAll(async () => {
   });
   tomClassId = tomClass.classId;
 
-  const priyaClass = await db.classTeacher.findFirstOrThrow({
+  // The one of Priya's classes the seed sets work in (TA-513): an unordered pick could land on the other, and the two
+  // assignment cases below then asserted nothing.
+  const priyaClasses = await db.classTeacher.findMany({
     where: { teacherMembershipId: priyaTeacher.id, classId: { not: tomClassId } },
+    select: { classId: true },
+    orderBy: { classId: "asc" },
   });
-  priyaClassId = priyaClass.classId;
+  const withWork = await db.assignment.findFirst({ where: { classId: { in: priyaClasses.map((c) => c.classId) } }, select: { classId: true } });
+  priyaClassId = withWork?.classId ?? priyaClasses[0]!.classId;
 
   oakfieldClassId = (await db.class.findFirstOrThrow({ where: { schoolId: oakfield.id } })).id;
 
@@ -250,8 +255,9 @@ describe("assertAssignmentAccess", () => {
       where: { class: { id: priyaClassId } },
       select: { id: true },
     });
-    if (!assignment) return; // seed only puts assignments on one class
-    await expectNotFound(assertAssignmentAccess(oakfieldAdmin, assignment.id));
+    // Asserted, not returned past (TA-513): a missing fixture fails here rather than passing with nothing checked.
+    expect(assignment, "the seed sets work in one of Priya's classes").not.toBeNull();
+    await expectNotFound(assertAssignmentAccess(oakfieldAdmin, assignment!.id));
   });
 
   it("refuses a teacher an assignment for a class they do not teach", async () => {
@@ -259,8 +265,8 @@ describe("assertAssignmentAccess", () => {
       where: { classId: priyaClassId },
       select: { id: true },
     });
-    if (!assignment) return;
-    await expectNotFound(assertAssignmentAccess(riversideTeacher, assignment.id));
+    expect(assignment, "the seed sets work in one of Priya's classes").not.toBeNull();
+    await expectNotFound(assertAssignmentAccess(riversideTeacher, assignment!.id));
   });
 });
 
