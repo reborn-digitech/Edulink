@@ -605,7 +605,8 @@ export function ComposeForm({
           </p>
         )}
         <p className="mt-1 text-xs text-fg-muted">
-          {t("bulletin.picturesHint", { max: MAX_PICTURES })}
+          {/* TA-137: what the web can send (the files travel inside the action, under its body limit); the phone's hint names a video's 100 MB. */}
+          {t("bulletin.picturesHintWeb", { max: MAX_PICTURES, size: ACTION_BODY_LIMIT_MB })}
         </p>
       </div>
 

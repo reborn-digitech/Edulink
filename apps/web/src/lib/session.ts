@@ -10,6 +10,7 @@ import { readJson } from "./json";
 import { bearerToken } from "./bearer";
 import { gateRequest } from "./role-gate";
 import { ROUTE_HEADER } from "./route-header";
+import { doorRoute } from "./door-route";
 import { ADMIN_DUTIES, adminDutiesHeld, isDutyRole, parseAdminDuties, parseDuties, type AnyDutyCode } from "@edulink/contracts";
 export { bearerToken };
 
@@ -362,7 +363,10 @@ const readSession = cache(async (): Promise<ActiveContext | null> => {
   let refusal: unknown = null;
   let moduleOffPage = false;
   try {
-    const verdict = await gateRequest((await headers()).get(ROUTE_HEADER), { role, schoolId, duties, userId: session.userId });
+    // TA-137: the upload door is outside the middleware, so its stamp is the door's own (door-route.ts) and the
+    // header, which there is whatever the client sent, is not read. Everywhere else the middleware's header.
+    const route = doorRoute() ?? (await headers()).get(ROUTE_HEADER);
+    const verdict = await gateRequest(route, { role, schoolId, duties, userId: session.userId });
     if (verdict === "no-context") {
       schoolId = null;
       role = null;

@@ -60,6 +60,16 @@ the web uses — type sniffed, size capped, EXIF stripped — and answers
 `{ fileId }`. Read files through `/api/files/{fileId}` (`?w=320|640|1280` for
 a sized image copy); it accepts the bearer session.
 
+A picture or a PDF is up to 5 MB and a video (MP4 or WebM) up to 100 MB. The
+door takes large bodies itself: it is the one path outside the middleware,
+whose copy of a request body stops at 10 MB, and it answers its own CORS
+pre-check. A person may have two uploads arriving at once and the server holds
+a ceiling of its own; past either the answer is `429` with `RATE_LIMITED`, a
+sentence to show and a short `Retry-After` — try again shortly. A body larger
+than the door takes is `413`. The file route answers a `Range` as asked and
+sends a video a few megabytes at a time, so a player can seek and nothing is
+held whole.
+
 ## Testing an endpoint
 
 Contract tests invoke the handler directly with a primed session

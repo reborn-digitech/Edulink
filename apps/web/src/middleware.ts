@@ -1,6 +1,7 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { contentSecurityPolicy, isPage, NONCE_HEADER } from "@/lib/csp";
 import { ROUTE_HEADER, routeStamp } from "@/lib/route-header";
+import { allowedOrigins, crossSiteCookieWrite, preflightHeaders } from "@/lib/api-cors";
 // website-builder B (15 Oct 2026): a school website's host is rewritten to its public route (edge-safe, no imports).
 import { appHosts, appHostsKnown, isDevelopment, processSiteEnv } from "@/lib/site-env";
 import { SITE_CSP, siteRewritePath, type HostEnv } from "@/lib/site-host-match";
@@ -17,12 +18,10 @@ import { SITE_CSP, siteRewritePath, type HostEnv } from "@/lib/site-host-match";
  * these headers. In development, with nothing configured, Expo's default
  * port is allowed; in production the list is empty unless the operator says
  * otherwise, and a preflight from anywhere else is refused.
+ *
+ * TA-137 (14 Nov 2026): the list, the pre-check's headers and the Origin lock are read from src/lib/api-cors.ts,
+ * because the upload door sits outside the matcher below and answers them itself by the same reading.
  */
-function allowedOrigins(): Set<string> {
-  const configured = (process.env.API_CORS_ORIGINS ?? "").split(",").map((s) => s.trim()).filter(Boolean);
-  if (configured.length > 0) return new Set(configured);
-  return new Set(process.env.NODE_ENV === "development" ? ["http://localhost:8081", "http://127.0.0.1:8081"] : []);
-}
 
 /**
  * A PAGE: a nonce minted for this one response. It goes on the REQUEST, where
@@ -97,14 +96,14 @@ function routed(request: NextRequest): Headers {
  * the refusal, or null to let the request through.
  */
 function originLock(request: NextRequest, allowed = false): NextResponse | null {
-  const origin = request.headers.get("origin");
-  if (request.method === "GET" || request.method === "HEAD" || origin === null) return null;
-  if (!request.cookies.has("edulink_session") && !request.cookies.has("__Host-edulink_session")) return null;
-  let originHost: string | null = null;
-  try { originHost = new URL(origin).host; } catch { originHost = null; }
-  const selfHost = request.headers.get("x-forwarded-host") ?? request.headers.get("host");
-  if (originHost !== selfHost && !allowed) return new NextResponse(null, { status: 403 });
-  return null;
+  const refused = crossSiteCookieWrite({
+    method: request.method,
+    origin: request.headers.get("origin"),
+    hasSessionCookie: request.cookies.has("edulink_session") || request.cookies.has("__Host-edulink_session"),
+    selfHost: request.headers.get("x-forwarded-host") ?? request.headers.get("host"),
+    allowed,
+  });
+  return refused ? new NextResponse(null, { status: 403 }) : null;
 }
 
 function cors(request: NextRequest) {
@@ -112,16 +111,7 @@ function cors(request: NextRequest) {
   const allowed = origin !== null && allowedOrigins().has(origin);
   if (request.method === "OPTIONS") {
     if (!allowed) return new NextResponse(null, { status: 403 });
-    return new NextResponse(null, {
-      status: 204,
-      headers: {
-        "Access-Control-Allow-Origin": origin,
-        "Access-Control-Allow-Methods": "GET, POST, PUT, PATCH, DELETE, OPTIONS",
-        "Access-Control-Allow-Headers": "Authorization, Content-Type, Accept, Accept-Language, X-Edulink-Replay, X-Edulink-Owner",
-        "Access-Control-Max-Age": "600",
-        Vary: "Origin",
-      },
-    });
+    return new NextResponse(null, { status: 204, headers: preflightHeaders(origin) });
   }
   const refused = originLock(request, allowed);
   if (refused) return refused;
@@ -172,4 +162,15 @@ function siteRewrite(request: NextRequest): NextResponse | null {
 // /api/attendance among them, because the phone posts the same body the web
 // form does, so the outbox replay is byte-identical — the cookie doors the
 // Origin lock, and everything else, a file from public/ included, the stamp.
-export const config = { matcher: ["/((?!_next/).*)"] };
+//
+// BUT THE UPLOAD DOOR (TA-137 and TA-244, decided 14 November 2026). The framework
+// copies the body of every request the middleware sees, 10 MB at most, and hands the
+// route the cut copy, so a phone's video of 10 to 100 MB reached POST /api/v1/uploads
+// cut short and was told the file was empty. That one path, and nothing beside it, is
+// left out here, and the door does these jobs itself (src/app/api/v1/uploads/route.ts):
+// its own route stamp, which the session's gate takes from the door and never from a
+// header (src/lib/door-route.ts); the pre-check and the allow-origin header; the Origin
+// lock; the refusal on a school website's host; and a cap on the body as it arrives.
+// Every other path keeps the 10 MB copy: experimental.middlewareClientMaxBodySize is
+// not raised. A literal, because Next reads the matcher statically.
+export const config = { matcher: ["/((?!_next/|api/v1/uploads$).*)"] };

@@ -34,20 +34,27 @@ export type ByteRange = { first: number | null; last: number | null } | null;
 /** A ranged read: the bytes from `start` to `end` inclusive, or that the range cannot be satisfied; the object's size either way. */
 export type RangeRead = { bytes: Buffer; start: number; end: number; total: number } | { unsatisfiable: true; total: number };
 
-/** The bytes a range names in an object of `total` bytes, or null when it names none (the file route's rule since Phase 1). */
-export function resolveRange(range: ByteRange, total: number): { start: number; end: number } | null {
+/**
+ * The bytes a range names in an object of `total` bytes, or null when it names none (the file route's rule since Phase 1).
+ * TA-137: with `maxBytes`, at most that many from the range's start: one slice of it, so that a range a player leaves
+ * open to the end ("bytes=0-" on a 100 MB video) is read a slice at a time (storage.ts streamStoredRange) and not whole.
+ */
+export function resolveRange(range: ByteRange, total: number, maxBytes?: number): { start: number; end: number } | null {
   if (!range) return null;
   const start = range.first !== null ? range.first : range.last !== null ? total - range.last : NaN;
   const end = range.first !== null && range.last !== null ? Math.min(range.last, total - 1) : total - 1;
   if (Number.isNaN(start) || start < 0 || start > end || start >= total) return null;
-  return { start, end };
+  return { start, end: maxBytes && maxBytes > 0 ? Math.min(end, start + maxBytes - 1) : end };
 }
 
 export type BlobStore = {
   put(name: string, bytes: Uint8Array, contentType: string): Promise<void>;
   get(name: string): Promise<Buffer | null>;
-  /** TA-341: only the bytes a range names, read from the disk by offset or asked of the bucket with Range; null when there is no such object. */
-  getRange?(name: string, range: ByteRange): Promise<RangeRead | null>;
+  /**
+   * TA-341: only the bytes a range names, read from the disk by offset or asked of the bucket with Range; null when there is no such object.
+   * TA-137: with `maxBytes`, no more than that many of them (resolveRange), and no more than that is read or asked for.
+   */
+  getRange?(name: string, range: ByteRange, maxBytes?: number): Promise<RangeRead | null>;
   delete(name: string): Promise<void>;
   /** Every stored object, as `<shard>/<name>` relative names, with size and mtime. */
   list(): AsyncGenerator<StoredObject>;
@@ -86,12 +93,12 @@ function diskStore(root: string): BlobStore {
         return null;
       }
     },
-    async getRange(name, range) {
+    async getRange(name, range, maxBytes) {
       const handle = await open(pathFor(name), "r").catch(() => null);
       if (!handle) return null;
       try {
         const total = (await handle.stat()).size;
-        const span = resolveRange(range, total);
+        const span = resolveRange(range, total, maxBytes);
         if (!span) return { unsatisfiable: true, total };
         const bytes = Buffer.alloc(span.end - span.start + 1);
         const { bytesRead } = await handle.read(bytes, 0, bytes.byteLength, span.start);
@@ -133,12 +140,28 @@ function s3Store(ns: Namespace, client: S3Client, prefix: string): BlobStore {
   return {
     put: (name, bytes, contentType) => client.put(base + name, bytes, contentType),
     get: (name) => client.get(base + name),
-    async getRange(name, range) {
+    async getRange(name, range, maxBytes) {
       // A header that names no range still needs the size for the 416: the first byte is asked for that.
-      const asked = range && (range.first !== null || range.last !== null) ? `bytes=${range.first ?? ""}-${range.last ?? ""}` : "bytes=0-0";
+      let asked = range && (range.first !== null || range.last !== null) ? `bytes=${range.first ?? ""}-${range.last ?? ""}` : "bytes=0-0";
+      if (maxBytes && maxBytes > 0 && range) {
+        // TA-137: the bucket is asked for the slice, not for everything the header names.
+        if (range.first !== null && range.last !== null && range.last < range.first) {
+          // Names no bytes: only the size is needed, for the 416 (a bucket sends the whole object for a range it cannot read).
+          asked = "bytes=0-0";
+        } else if (range.first !== null) {
+          asked = `bytes=${range.first}-${Math.min(range.last ?? Number.MAX_SAFE_INTEGER, range.first + maxBytes - 1)}`;
+        } else if (range.last !== null && range.last > maxBytes) {
+          // A tail longer than a slice: where it starts depends on the size, which is asked first.
+          const size = await client.getRange(base + name, "bytes=0-0");
+          if (!size) return null;
+          const tail = resolveRange(range, size.total, maxBytes);
+          if (!tail) return { unsatisfiable: true, total: size.total };
+          asked = `bytes=${tail.start}-${tail.end}`;
+        }
+      }
       const answer = await client.getRange(base + name, asked);
       if (!answer) return null;
-      const span = resolveRange(range, answer.total);
+      const span = resolveRange(range, answer.total, maxBytes);
       if (!span) return { unsatisfiable: true, total: answer.total };
       // The bucket's own answer when it served exactly the range; otherwise (the whole object, or its reading of an
       // edge case) cut by the rule above from what it sent.

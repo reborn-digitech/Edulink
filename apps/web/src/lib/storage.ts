@@ -220,21 +220,80 @@ function mimeOf(fileId: string): string {
   return Object.entries(ALLOWED).find(([, spec]) => spec.ext === ext)?.[0] ?? "application/octet-stream";
 }
 
-/** TA-341: the bytes of one stored file that a Range header names, read by offset (or asked of the bucket by range). */
-export async function readStoredRange(fileId: string, range: ByteRange): Promise<(RangeRead & { mime: string }) | null> {
+/**
+ * TA-341: the bytes of one stored file that a Range header names, read by offset (or asked of the bucket by range).
+ * TA-137: with `maxBytes`, at most that many from the range's start; the answer's `end` says where it stopped.
+ */
+export async function readStoredRange(fileId: string, range: ByteRange, maxBytes?: number): Promise<(RangeRead & { mime: string }) | null> {
   const safe = sanitizeFileId(fileId);
   if (!safe) return null;
   const store = blobStore("files");
   const mime = mimeOf(safe);
   if (store.getRange) {
-    const read = await store.getRange(nameFor(safe), range);
+    const read = await store.getRange(nameFor(safe), range, maxBytes);
     return read ? { ...read, mime } : null;
   }
   const bytes = await store.get(nameFor(safe));
   if (!bytes) return null;
-  const span = resolveRange(range, bytes.byteLength);
+  const span = resolveRange(range, bytes.byteLength, maxBytes);
   if (!span) return { unsatisfiable: true, total: bytes.byteLength, mime };
   return { bytes: bytes.subarray(span.start, span.end + 1), start: span.start, end: span.end, total: bytes.byteLength, mime };
+}
+
+/**
+ * THE MOST OF A STORED FILE THE FILE ROUTE READS AT ONCE (TA-137 and TA-244, decided 14 November 2026): a few
+ * megabytes. The upload door takes videos of up to MAX_VIDEO_BYTES, and the route used to read an open-ended range to
+ * the end of the object, and a request with no range the whole object, into memory for every play.
+ */
+export const FILE_SLICE_BYTES = 4 * 1024 * 1024;
+
+/** A stored file, or the part of it a range names, as a stream read a slice at a time; where it starts and ends, and the file's size. */
+export type StoredStream = { stream: ReadableStream<Uint8Array>; start: number; end: number; total: number; mime: string };
+
+/**
+ * TA-137: the bytes of one stored file that a range names, as a stream that reads them a slice at a time, each slice
+ * asked of the store only when the reader wants more: a 100 MB video is never held whole, and a reader that goes away
+ * stops the reading. The whole range is answered, never a shorter one, so a player gets what it asked for. null when
+ * there is no such file; `unsatisfiable` when the range names none of it. The first slice is read before this answers,
+ * which is how the size is known.
+ */
+export async function streamStoredRange(fileId: string, range: ByteRange, sliceBytes: number = FILE_SLICE_BYTES): Promise<StoredStream | { unsatisfiable: true; total: number; mime: string } | null> {
+  const first = await readStoredRange(fileId, range, sliceBytes);
+  if (!first) return null;
+  if ("unsatisfiable" in first) return { unsatisfiable: true, total: first.total, mime: first.mime };
+  const total = first.total;
+  const start = first.start;
+  // Where the range ends in a file of this size; the first slice stopped at or before it.
+  const end = Math.max(first.end, resolveRange(range, total)?.end ?? first.end);
+  let pending: Buffer | null = first.bytes;
+  let next = first.end + 1;
+  const stream = new ReadableStream<Uint8Array>(
+    {
+      async pull(controller) {
+        if (pending) {
+          controller.enqueue(new Uint8Array(pending));
+          pending = null;
+        } else {
+          const read = await readStoredRange(fileId, { first: next, last: end }, sliceBytes);
+          // Gone, or shorter than it was, between two slices: the answer cannot be finished as promised.
+          if (!read || "unsatisfiable" in read || read.bytes.byteLength === 0 || read.start !== next) {
+            controller.error(new Error("stored file ended before its size"));
+            return;
+          }
+          controller.enqueue(new Uint8Array(read.bytes));
+          next = read.end + 1;
+        }
+        if (next > end) controller.close();
+      },
+    },
+    { highWaterMark: 0 },
+  );
+  return { stream, start, end, total, mime: first.mime };
+}
+
+/** Whether a stored file has sized copies (readStoredVariant): a JPEG, PNG or WebP. A video, a PDF or a GIF has none and is served as it is. */
+export function hasSizedCopies(fileId: string): boolean {
+  return /\.(jpg|png|webp)$/i.test(fileId);
 }
 
 /* -------------------------------------------------------------------------- */

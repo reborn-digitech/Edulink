@@ -1,7 +1,7 @@
 import { getSession } from "@/lib/session";
 import { authorizeFileRead, type FileAccess } from "@/lib/files";
 import { verifyFileLink } from "@/lib/file-links";
-import { readStoredFile, readStoredRange, readStoredVariant, storedFileEtag, VARIANT_WIDTHS, type VariantWidth } from "@/lib/storage";
+import { FILE_SLICE_BYTES, hasSizedCopies, readStoredFile, readStoredVariant, storedFileEtag, streamStoredRange, VARIANT_WIDTHS, type VariantWidth } from "@/lib/storage";
 import { resolveRange, type ByteRange } from "@/lib/blob-store";
 // meta-posting (16 Oct 2026)
 import { asJpeg, socialPictureOpen } from "@/lib/social";
@@ -64,8 +64,10 @@ export async function GET(
 
   // ?w=640 asks for a sized copy — the feed's tiles, which used to download
   // every phone photo at full size. Off the allow-list means the original.
+  // TA-137: only a picture has sized copies. A video, a PDF or a GIF asked with a width is the original, and is
+  // served as one below, in slices; it used to be read whole to find that out.
   const wanted = Number(url.searchParams.get("w"));
-  const width = (VARIANT_WIDTHS as readonly number[]).includes(wanted) ? (wanted as VariantWidth) : null;
+  const width = (VARIANT_WIDTHS as readonly number[]).includes(wanted) && hasSizedCopies(fileId) ? (wanted as VariantWidth) : null;
 
   // TA-341: the ETag is the stored name's (a name is never written twice), so a revalidation is answered before any
   // byte is read, and a range below reads only the bytes it names.
@@ -100,6 +102,16 @@ export async function GET(
    * Authorisation already happened above; a range of a file is the same
    * disclosure as the file. TA-341: only the range is read (by offset from the
    * disk, by Range from a bucket), never the whole object for every request.
+   *
+   * IN SLICES (TA-137 and TA-244, decided 14 November 2026). The upload door
+   * takes videos of up to 100 MB, and a browser's player asks "bytes=0-": to
+   * the end. That was read whole into memory and copied, for every play, since
+   * a file is served no-store. A range is now answered in slices of
+   * FILE_SLICE_BYTES (streamStoredRange): each is read from the store only when
+   * the player has taken the one before, and a player that stops stops the
+   * reading. The answer is still the whole range asked, never a shorter one: a
+   * player may take a short 206 for the end of the file. A request with no range
+   * is the whole file, streamed the same way and never read whole.
    */
   const range = request.headers.get("range");
   const match = range ? /^bytes=(\d*)-(\d*)$/.exec(range.trim()) : null;
@@ -120,13 +132,30 @@ export async function GET(
     });
 
   if (range && !width) {
-    const read = await readStoredRange(fileId, asked);
+    const read = await streamStoredRange(fileId, asked, FILE_SLICE_BYTES);
     if (!read) return new Response("Not found", { status: 404 });
     if ("unsatisfiable" in read) return unsatisfiable(read.total);
-    return partial(read.bytes, read.mime, read.start, read.end, read.total);
+    return new Response(read.stream, {
+      status: 206,
+      headers: {
+        ...headersFor(read.mime),
+        "Content-Range": `bytes ${read.start}-${read.end}/${read.total}`,
+        "Content-Length": String(read.end - read.start + 1),
+      },
+    });
   }
 
-  const stored = width ? await readStoredVariant(fileId, width) : await readStoredFile(fileId);
+  if (!width) {
+    // The original, with no range asked: streamed slice by slice, so a video is never held whole (TA-137).
+    const whole = await streamStoredRange(fileId, { first: 0, last: null }, FILE_SLICE_BYTES);
+    if (!whole) return new Response("Not found", { status: 404 });
+    // A file of no bytes names no range: an empty body.
+    if ("unsatisfiable" in whole) return new Response(null, { headers: { ...headersFor(whole.mime), "Content-Length": "0" } });
+    return new Response(whole.stream, { headers: { ...headersFor(whole.mime), "Content-Length": String(whole.total) } });
+  }
+
+  // A sized copy of a picture: a picture is at most MAX_UPLOAD_BYTES and its copy smaller.
+  const stored = await readStoredVariant(fileId, width);
   if (!stored) return new Response("Not found", { status: 404 });
   if (range) {
     // A sized copy is cut from its picture on the first ask, so its range comes from the copy.

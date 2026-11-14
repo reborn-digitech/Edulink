@@ -13052,6 +13052,9 @@
                     "readOnly": {
                       "type": "boolean"
                     },
+                    "closed": {
+                      "type": "boolean"
+                    },
                     "calendar": {
                       "type": "object",
                       "properties": {
@@ -35167,7 +35170,7 @@
     },
     "/api/v1/uploads": {
       "post": {
-        "summary": "Upload one file (multipart `file`); read it back via /api/files/{fileId}",
+        "summary": "Upload one file (multipart `file`), a video of up to 100 MB; two at a time per person, 429 beyond that or while the server is holding all it will; read it back via /api/files/{fileId}",
         "description": "Any signed-in session but a limited role's (the module roles DRIVER, LIBRARIAN, WARDEN, ALUMNUS; the college's FACULTY, HOD, EXAM_CONTROLLER, IQAC, TPO, ACCOUNTS; RECRUITER; and SUPPORT, the support staff).",
         "security": [
           {
@@ -100574,7 +100577,8 @@
                                     "CANCELLED",
                                     "DELIVERED",
                                     "MISSED",
-                                    "UNHELD"
+                                    "UNHELD",
+                                    "DISPUTED"
                                   ]
                                 },
                                 "meetingUrl": {
@@ -100647,6 +100651,10 @@
                                 },
                                 "canReportUnheld": {
                                   "type": "boolean"
+                                },
+                                "disputeUntil": {
+                                  "type": "string",
+                                  "nullable": true
                                 }
                               },
                               "required": [
@@ -100947,7 +100955,8 @@
                         "CANCELLED",
                         "DELIVERED",
                         "MISSED",
-                        "UNHELD"
+                        "UNHELD",
+                        "DISPUTED"
                       ]
                     },
                     "checkout": {
@@ -101150,7 +101159,8 @@
                         "CANCELLED",
                         "DELIVERED",
                         "MISSED",
-                        "UNHELD"
+                        "UNHELD",
+                        "DISPUTED"
                       ]
                     },
                     "checkout": {
@@ -101358,7 +101368,8 @@
                         "CANCELLED",
                         "DELIVERED",
                         "MISSED",
-                        "UNHELD"
+                        "UNHELD",
+                        "DISPUTED"
                       ]
                     },
                     "lateCancel": {
@@ -101459,7 +101470,7 @@
     },
     "/api/v1/gigs/sessions/{bookingId}/unheld": {
       "post": {
-        "summary": "After it should have ended, the family says the provider did not hold it; it stops counting against the pupil",
+        "summary": "After it should have ended, the family says the provider did not hold it: a confirmed seat stops counting against the pupil at once (status UNHELD); a seat the provider marked held or the pupil absent may be disputed until the hold runs out, once, and waits for the operator (status DISPUTED, any pay-out held)",
         "description": "Roles: STUDENT, PARENT.",
         "security": [
           {
@@ -101499,7 +101510,8 @@
                         "CANCELLED",
                         "DELIVERED",
                         "MISSED",
-                        "UNHELD"
+                        "UNHELD",
+                        "DISPUTED"
                       ]
                     },
                     "checkout": {
@@ -102002,7 +102014,8 @@
                         "CANCELLED",
                         "DELIVERED",
                         "MISSED",
-                        "UNHELD"
+                        "UNHELD",
+                        "DISPUTED"
                       ]
                     },
                     "refundedAt": {
@@ -102837,7 +102850,8 @@
                                     "CANCELLED",
                                     "DELIVERED",
                                     "MISSED",
-                                    "UNHELD"
+                                    "UNHELD",
+                                    "DISPUTED"
                                   ]
                                 },
                                 "paid": {
@@ -103645,7 +103659,8 @@
                               "CANCELLED",
                               "DELIVERED",
                               "MISSED",
-                              "UNHELD"
+                              "UNHELD",
+                              "DISPUTED"
                             ]
                           },
                           "checkout": {
@@ -105758,7 +105773,8 @@
                               "CANCELLED",
                               "DELIVERED",
                               "MISSED",
-                              "UNHELD"
+                              "UNHELD",
+                              "DISPUTED"
                             ]
                           },
                           "purpose": {
@@ -108322,7 +108338,7 @@
     },
     "/api/v1/operator/gigs/payments/{paymentId}/retry": {
       "post": {
-        "summary": "Try the waiting gateway call now, instead of at the job's next run: a refund, a release of the hold, or a failed transfer made again on hold (a captured row never held is held)",
+        "summary": "Try the waiting gateway call now, instead of at the job's next run: a refund, a release of the hold, or a failed transfer made again on hold (a captured row never held is held); a seat its family disputes is left alone until the operator decides it, except a waiting refund",
         "description": "The server operator.",
         "security": [
           {
@@ -109404,6 +109420,288 @@
             }
           }
         ]
+      }
+    },
+    "/api/v1/operator/gigs/disputes": {
+      "get": {
+        "summary": "Every seat a family says was not held after its provider marked it held or the pupil absent, oldest first: the session, the provider, the school, the mark, when it was disputed and any money held; never the pupil's name",
+        "description": "The server operator.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": "operator",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "disputes": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "bookingId": {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 64
+                          },
+                          "schoolName": {
+                            "type": "string"
+                          },
+                          "kind": {
+                            "type": "string",
+                            "enum": [
+                              "ONE_TO_ONE",
+                              "WORKSHOP"
+                            ]
+                          },
+                          "title": {
+                            "type": "string"
+                          },
+                          "startsAt": {
+                            "type": "string"
+                          },
+                          "endsAt": {
+                            "type": "string"
+                          },
+                          "providerName": {
+                            "type": "string"
+                          },
+                          "providerKind": {
+                            "type": "string",
+                            "enum": [
+                              "EXPERT",
+                              "TEACHER",
+                              "ALUMNUS"
+                            ]
+                          },
+                          "mark": {
+                            "type": "string",
+                            "enum": [
+                              "DELIVERED",
+                              "MISSED"
+                            ]
+                          },
+                          "markedAt": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "disputedAt": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "paid": {
+                            "type": "boolean"
+                          },
+                          "amountPaise": {
+                            "type": "integer",
+                            "nullable": true
+                          },
+                          "paymentStatus": {
+                            "type": "string",
+                            "enum": [
+                              "INITIATED",
+                              "PAID",
+                              "HELD",
+                              "RELEASED",
+                              "DUE",
+                              "PAID_OUT",
+                              "REFUNDED",
+                              "FAILED"
+                            ],
+                            "nullable": true
+                          }
+                        },
+                        "required": [
+                          "bookingId",
+                          "schoolName",
+                          "kind",
+                          "title",
+                          "startsAt",
+                          "endsAt",
+                          "providerName",
+                          "providerKind",
+                          "mark",
+                          "markedAt",
+                          "disputedAt",
+                          "paid",
+                          "amountPaise",
+                          "paymentStatus"
+                        ],
+                        "additionalProperties": false
+                      }
+                    }
+                  },
+                  "required": [
+                    "disputes"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/operator/gigs/disputes/{bookingId}/decide": {
+      "post": {
+        "summary": "Decide a family's dispute of a marked seat: REFUND, not held (the seat is not held, off the pupil's allowance and the provider's free duty, a paid seat refunded in full), or RELEASE, the provider's mark stands and the pay-out goes at the next hourly run; both sides are told, and a dispute already decided is not found",
+        "description": "The server operator.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": "operator",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "enum": [
+                        "PENDING_CONSENT",
+                        "PENDING_PAYMENT",
+                        "CONFIRMED",
+                        "CANCELLED",
+                        "DELIVERED",
+                        "MISSED",
+                        "UNHELD",
+                        "DISPUTED"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "status"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "bookingId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "decision": {
+                    "type": "string",
+                    "enum": [
+                      "REFUND",
+                      "RELEASE"
+                    ]
+                  }
+                },
+                "required": [
+                  "decision"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        }
       }
     },
     "/api/v1/admin/transport": {
@@ -192384,7 +192682,7 @@
     },
     "/api/v1/college/admissions/rounds": {
       "get": {
-        "summary": "The college's admission rounds with their seats, allotments, applications and admissions",
+        "summary": "The college's admission rounds with their seats, allotments, applications and admissions; a round is CLOSED after its closing day by the college's calendar",
         "description": "Roles: ADMIN, PRINCIPAL. Only while the school has ADMISSIONS switched on.",
         "security": [
           {
@@ -192711,9 +193009,180 @@
         }
       }
     },
+    "/api/v1/college/admissions/rounds/{roundId}/dates": {
+      "post": {
+        "summary": "Change a round's opening and closing days only, keeping its seats: extend it, or close it by moving the closing day; the same dates twice change nothing",
+        "description": "Roles: ADMIN. Only while the school has ADMISSIONS switched on.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN"
+        ],
+        "x-module": "ADMISSIONS",
+        "x-college": true,
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "programmeId": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "intakeYear": {
+                      "type": "integer"
+                    },
+                    "kind": {
+                      "type": "string",
+                      "enum": [
+                        "CAP_1",
+                        "CAP_2",
+                        "CAP_3",
+                        "INSTITUTE",
+                        "MERIT"
+                      ]
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "opensAt": {
+                      "type": "string",
+                      "format": "date-time"
+                    },
+                    "closesAt": {
+                      "$ref": "#/properties/opensAt"
+                    },
+                    "seats": {
+                      "type": "object",
+                      "additionalProperties": {
+                        "type": "integer"
+                      }
+                    },
+                    "status": {
+                      "type": "string",
+                      "enum": [
+                        "OPEN",
+                        "CLOSED"
+                      ]
+                    },
+                    "allotments": {
+                      "type": "integer"
+                    },
+                    "applications": {
+                      "type": "integer"
+                    },
+                    "admitted": {
+                      "type": "integer"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "programmeId",
+                    "intakeYear",
+                    "kind",
+                    "name",
+                    "opensAt",
+                    "closesAt",
+                    "seats",
+                    "status",
+                    "allotments",
+                    "applications",
+                    "admitted"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "roundId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "opensOn": {
+                    "type": "string",
+                    "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+                  },
+                  "closesOn": {
+                    "$ref": "#/properties/opensOn"
+                  }
+                },
+                "required": [
+                  "opensOn",
+                  "closesOn"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/v1/college/admissions/rounds/{roundId}/import": {
       "post": {
-        "summary": "Import the CET Cell's allotment list for the round, pasted in the Cell's column order; the same list twice adds nothing",
+        "summary": "Import the CET Cell's allotment list for the round, pasted in the Cell's column order; the same list twice adds nothing; refused after the round's closing day",
         "description": "Roles: ADMIN. Only while the school has ADMISSIONS switched on.",
         "security": [
           {
@@ -193378,7 +193847,7 @@
         ]
       },
       "post": {
-        "summary": "An application from an imported allotment row (the same row twice is the same application) or, in a merit round, typed by the office",
+        "summary": "An application from an imported allotment row (the same row twice is the same application; also after the round's closing day) or, in a merit round, typed by the office until its closing day",
         "description": "Roles: ADMIN. Only while the school has ADMISSIONS switched on.",
         "security": [
           {
@@ -227017,7 +227486,7 @@
     },
     "/api/attendance": {
       "post": {
-        "summary": "Take or correct a class's register for a day: one mark per pupil, each with the device's idempotency key; safe to replay (a stored key is skipped, an older mark never overwrites a newer one); a future day, a class one may not mark that day, or an archived class is refused; a device clock ahead of the server's is taken as the moment the mark arrives (TA-029); a principal marks only a register a cover names them for that day (TA-031)",
+        "summary": "Take or correct a class's register for a day: one mark per pupil, each with the device's idempotency key; safe to replay (a stored key is skipped, an older mark never overwrites a newer one); a future day, a class one may not mark that day, or an archived class is refused; a device clock ahead of the server's is taken as the moment the mark arrives (TA-029); a principal marks only a register a cover names them for that day (TA-031); a class teacher or cover may save a day for 14 days after its date, and after that only the office (ADMIN), a register never taken included (403, TA-285); the audit row names each pupil changed with the old and the new mark",
         "description": "Roles: TEACHER, ADMIN, PRINCIPAL.",
         "security": [
           {

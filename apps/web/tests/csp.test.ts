@@ -52,6 +52,10 @@ describe("what is a page", () => {
     const at = (path: string) => unstable_doesMiddlewareMatch({ config, url: `http://localhost:3000${path}` });
     for (const p of ["/", "/login", "/library/titles/x.ab", "/people/x.png", "/iqac/documents/x.ab", "/api/v1/me", "/api/attendance", "/api/files/a.png", "/api/push", "/api/practice/x", "/api/auth/logout", "/api/health", "/api/webhooks/gateway/sessions", "/sw.js", "/favicon.ico", "/i18n/en.abc.json"]) expect(at(p), p).toBe(true);
     for (const p of ["/_next/static/chunks/x.js", "/_next/image"]) expect(at(p), p).toBe(false);
+    // One door more is outside it since TA-137 and TA-244 (decided 14 Nov 2026): the upload door stamps its own route,
+    // which the gate takes from the door and never from a header (tests/ta-decision-137-244-upload-door.test.ts).
+    expect(at("/api/v1/uploads")).toBe(false);
+    for (const p of ["/api/v1/uploads/x", "/api/v1/uploadsx", "/api/v1/uploads.json"]) expect(at(p), p).toBe(true);
   });
 
   it("overwrites a route stamp the client sent, on a path that ends in an extension too (A3-S-3)", () => {
