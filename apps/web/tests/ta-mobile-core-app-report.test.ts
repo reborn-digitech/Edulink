@@ -10,13 +10,15 @@
 import { afterAll, beforeAll, describe, expect, it, vi } from "vitest";
 import { PrismaClient } from "@prisma/client";
 
-const notified = vi.hoisted(() => [] as { userId: string; schoolId?: string | null; url?: string; bodyKey?: string; meta?: Record<string, unknown> }[]);
+const notified = vi.hoisted(() => [] as { userId: string; schoolId?: string | null; url?: string; bodyKey?: string; meta?: Record<string, unknown>; boundTo?: string | null }[]);
 vi.mock("@/lib/notify", async (importOriginal) => {
   const actual = await importOriginal<typeof import("@/lib/notify")>();
+  const { tenantOverride } = await import("@/lib/tenant-context");
   return {
     ...actual,
+    // Records, beside the notice, whose row-security binding it was written under (the features-on API sweep's 500).
     notify: vi.fn(async (input: { userId: string; schoolId?: string | null; url?: string; bodyKey?: string; meta?: Record<string, unknown> }) => {
-      notified.push(input);
+      notified.push({ ...input, boundTo: tenantOverride()?.userId ?? null });
     }),
   };
 });
@@ -68,6 +70,20 @@ describe("a report from someone with no school reaches somebody (TA-173)", () =>
     const told = notified.filter((n) => n.userId === operatorUserId);
     expect(told).toHaveLength(1);
     expect(told[0]).toMatchObject({ schoolId: null, url: "/root/audit", bodyKey: "notifBody.appProblemOperator", meta: { reportId: body.reportId, reference: body.reference } });
+  });
+
+  it("TA-173: each operator's notice is written bound to that operator, since row security refuses the reporter's binding a row for somebody else", async () => {
+    // The features-on API sweep of 15 November 2026 got 500 here as a guardian and as an expert: notify ran under the
+    // reporter's own binding, where neither of Notification's insert policies admits a row for an operator with no school.
+    __resetCookies();
+    notified.length = 0;
+    await createSession(parentUserId, { schoolId: null, role: "PARENT" });
+    const res = await reportPost(post({ kind: "PROBLEM", message: "ZZ The timetable will not load", device }));
+    expect(res.status).toBe(200);
+    const told = notified.filter((n) => n.userId === operatorUserId);
+    expect(told).toHaveLength(1);
+    expect(told[0]!.boundTo).toBe(operatorUserId);
+    for (const n of notified) expect(n.boundTo, n.userId).toBe(n.userId);
   });
 
   it("TA-173: a guardian's crash report is in the server log too, and nobody is paged", async () => {

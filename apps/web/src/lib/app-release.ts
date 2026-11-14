@@ -5,6 +5,7 @@ import type { appReportBodySchema, appVersionSchema } from "@edulink/contracts";
 import { audit } from "./audit";
 import { db } from "./db";
 import { notify } from "./notify";
+import { forUser } from "./tenant-context";
 import { headPageHolders } from "./duties";
 import { readAppReleaseConfig } from "./env";
 import { APP_REPORTS, consume } from "./rate-limit";
@@ -144,9 +145,13 @@ export async function recordAppReport(ctx: ActiveContext, body: AppReportBody): 
     // person had been told the team reads every report.
     const operators = await db.user.findMany({ where: { isSuperuser: true, disabledAt: null }, select: { id: true } });
     const name = ctx.user.preferredName ?? ctx.user.name;
+    // Each notice belongs to no school, so it is written bound to its reader, as the expert's and the recruiter's are
+    // (person-plans.ts, placement-recruiter.ts): under the reporter's own binding row security refuses a row for an
+    // operator, and the report was answered 500 after its audit row was written (the features-on API sweep, 15 November
+    // 2026). A failed notice never fails the report.
     await Promise.all(
       operators.map((o) =>
-        notify({
+        forUser(o.id, () => notify({
           userId: o.id,
           schoolId: null,
           kind: "SYSTEM",
@@ -157,7 +162,7 @@ export async function recordAppReport(ctx: ActiveContext, body: AppReportBody): 
           url: "/root/audit",
           meta: { reportId, reference },
           urgent: false,
-        }),
+        })).catch((error) => console.error("[app-release] operator notice failed", error)),
       ),
     );
   }
