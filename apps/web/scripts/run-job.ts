@@ -4,10 +4,13 @@
  *   npm run job -- notifications:tidy
  *   npm run job -- digest:weekly --json
  *
- * `--json` prints one line a monitor can read. A dry run on a day or on
- * named tenants (LIFECYCLE-10): `--now 2027-05-31T22:15:00Z` hands the job
- * that clock, `--schools <id,id>` / `--users <id,id>` narrow it (refused for a
- * job that cannot narrow, and recorded as no run of the job). Exit status: 0 when the job
+ * `--json` prints one line a monitor can read. A run on named tenants
+ * (LIFECYCLE-10): `--schools <id,id>` / `--users <id,id>` narrow it (refused
+ * for a job that cannot narrow, and recorded as no run of the job), and only
+ * then may `--now 2027-05-31T22:15:00Z` hand the job another clock. It is NOT
+ * a dry run: the job writes for real on the tenants it reaches. Without a
+ * scope a clock more than five minutes from now is refused (TA-171), because
+ * it would act on every tenant. Exit status: 0 when the job
  * ran or was skipped because another copy is running; 1 when it failed or
  * the name is unknown. Runs through the owner connection (see package.json):
  * a job is operator work and reaches every tenant.

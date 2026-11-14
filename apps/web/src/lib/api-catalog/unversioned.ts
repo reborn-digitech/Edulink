@@ -79,6 +79,7 @@ export type OutsideTheCatalog = { path: `/api/${string}`; methods: Endpoint["met
  */
 export const OUTSIDE_THE_CATALOG: OutsideTheCatalog[] = [
   { path: "/api/health", methods: ["GET"], reason: "The liveness probe for the platform, CI and the sweeps (they stop when it does not answer): no session, no data, not part of the app's contract." },
+  { path: "/api/health/jobs", methods: ["GET"], reason: "The outside monitor's probe of the scheduled jobs (TA-522): 503 when a job's last success is older than it expects, with job names and ages only; no session, no data, not part of the app's contract." },
   { path: "/api/internal/jobs", methods: ["POST"], reason: "The scheduler's kick: answered only by the jobs runner on loopback (404 everywhere else), called by scripts/jobs-runner.mjs in the same container, never by a person." },
   { path: "/api/files/{fileId}", methods: ["GET"], reason: "A stored file's bytes, not JSON. Who may read is decided by the record that holds the file (authorizeFileRead) or a signed ?t= ticket, never by a role, and every refusal is a 404 by design; the doors that list a file or hand out its link are catalogued." },
   { path: "/api/sso/{provider}/start", methods: ["GET"], reason: "A browser redirect to the identity provider (state, nonce and PKCE in a transient cookie); signed out by nature, answering a redirect, not JSON." },

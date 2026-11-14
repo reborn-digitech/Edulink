@@ -285,6 +285,41 @@ function eventId(): string {
   return crypto.randomUUID().replace(/-/g, "");
 }
 
+/** Prisma's error classes whose message can quote a query's arguments: reported by class and code alone. */
+const PRISMA_ERRORS = new Set(["PrismaClientValidationError", "PrismaClientUnknownRequestError", "PrismaClientKnownRequestError", "PrismaClientRustPanicError", "PrismaClientInitializationError"]);
+
+/**
+ * An error's message as the log and the tracker may hold it (TA-443). A Prisma
+ * error's message can quote the query's arguments (a pupil's name, an address,
+ * a phone), so it is named by its class and code and nothing else; any other
+ * message keeps its words with every address and every run of six or more
+ * digits (a phone, a PEN, an account) blanked.
+ */
+export function scrubErrorMessage(error: unknown): string {
+  const err = error instanceof Error ? error : null;
+  const name = err?.name ?? "";
+  if (err && PRISMA_ERRORS.has(name)) {
+    const code = (err as { code?: unknown }).code;
+    return typeof code === "string" && code ? `${name} ${code}` : name;
+  }
+  const message = err ? err.message : String(error);
+  return message.replace(/[^\s@<>"'`(),;:]+@[^\s@<>"'`(),;:]+/g, "[address]").replace(/\+?\d[\d ]{4,}\d/g, (run) => (run.replace(/\D/g, "").length >= 6 ? "[number]" : run));
+}
+
+/**
+ * The same error with its message scrubbed (scrubErrorMessage) and its stack's
+ * frames kept, for the server log: the frames say where, the message no longer
+ * says whose.
+ */
+export function scrubbedError(error: unknown): Error {
+  const err = error instanceof Error ? error : null;
+  const safe = new Error(scrubErrorMessage(error));
+  safe.name = err?.name ?? "Error";
+  const frames = (err?.stack ?? "").split("\n").filter((line) => /^\s+at /.test(line));
+  safe.stack = [`${safe.name}: ${safe.message}`, ...frames].join("\n");
+  return safe;
+}
+
 /**
  * The event for one error: what finds the failure (route, method, kind, the
  * commit) and who it happened to (ids, never names or addresses). Nothing
@@ -307,7 +342,7 @@ export function sentryEvent(error: unknown, report: ErrorReport, env: Record<str
     ...(env.NODE_ENV ? { environment: env.NODE_ENV } : {}),
     ...(env.FLY_MACHINE_ID ? { server_name: env.FLY_MACHINE_ID } : {}),
     exception: {
-      values: [{ type: err?.name ?? "Error", value: err?.message ?? String(error), ...(frames.length ? { stacktrace: { frames } } : {}) }],
+      values: [{ type: err?.name ?? "Error", value: scrubErrorMessage(error), ...(frames.length ? { stacktrace: { frames } } : {}) }],
     },
     tags,
   };
@@ -337,7 +372,8 @@ export async function reportError(error: unknown, report: ErrorReport, deps: Rep
   const log = deps.log ?? ((line, err) => console.error(line, err));
   const dsn = parseDsn(env.SENTRY_DSN);
   if (!dsn) {
-    log(`[${report.where}] unexpected`, error);
+    // TA-443: the log holds what the tracker would, the message scrubbed and the frames kept.
+    log(`[${report.where}] unexpected`, scrubbedError(error));
     return false;
   }
   const doFetch = deps.fetch ?? fetch;

@@ -315,11 +315,21 @@ export async function sendOperatorHealthDigest(now: Date = new Date()): Promise<
     where: { isSuperuser: true, email: { not: null }, disabledAt: null },
     select: { email: true },
   });
+  let emailed = 0;
+  let mailFailed = 0;
   for (const op of operators) {
     // Composed in English, the operator mail's language (see the overdue watch below), so the frame is too.
-    await sendHealthDigestEmail(op.email!, digest.subject, digest.text, digest.bodyHtml, "en");
+    // TA-360: one refused mail does not keep the digest from the operators after it; the run fails only if none went.
+    try {
+      await sendHealthDigestEmail(op.email!, digest.subject, digest.text, digest.bodyHtml, "en");
+      emailed++;
+    } catch (error) {
+      mailFailed++;
+      console.error("[health:digest] mail", error instanceof Error ? error.message : error);
+    }
   }
-  return { emailed: operators.length, ...counts, quiet: false };
+  if (mailFailed > 0 && emailed === 0) throw new Error(`the health digest reached none of ${mailFailed} operator addresses`);
+  return { emailed, ...counts, quiet: false };
 }
 
 /* -------------------------------------------------------------------------- */
@@ -385,6 +395,7 @@ export async function watchJobs(opts: { now?: Date; statuses?: JobStatus[]; oper
     const hours = Math.max(1, Math.round(JOBS[job.name].expectEveryMs / 3_600_000));
     const when = job.lastSuccessAt ? job.lastSuccessAt.toISOString().slice(0, 16).replace("T", " ") : null;
     let emailed = 0;
+    let mailFailed = 0;
     for (const op of ops) {
       await notify({
         userId: op.id,
@@ -404,13 +415,20 @@ export async function watchJobs(opts: { now?: Date; statuses?: JobStatus[]; oper
         const subject = `Shalaghar: ${tEn("notifTitle.jobOverdue", { job: job.name })}`;
         const text = when ? tEn("notifBody.jobOverdue", { job: job.name, when, hours }) : tEn("notifBody.jobOverdueNever", { job: job.name, hours });
         const esc = (v: string) => v.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
-        await sendHealthDigestEmail(op.email, subject, text, `<p>${esc(text)}</p>`, "en");
-        emailed++;
+        // TA-360: one refused mail (SMTP down, one bad address) must not stop the operators after it hearing, nor stop
+        // the alert row below being written: without it the mute never starts and the notice repeats every quarter hour.
+        try {
+          await sendHealthDigestEmail(op.email, subject, text, `<p>${esc(text)}</p>`, "en");
+          emailed++;
+        } catch (error) {
+          mailFailed++;
+          console.error("[jobs:watch] mail", error instanceof Error ? error.message : error);
+        }
       }
     }
     out.emailed += emailed;
     await db.jobRun.create({
-      data: { job: alertRowName(job.name), startedAt: now, finishedAt: now, ok: true, summary: JSON.stringify({ operators: ops.length, emailed }) },
+      data: { job: alertRowName(job.name), startedAt: now, finishedAt: now, ok: true, summary: JSON.stringify({ operators: ops.length, emailed, ...(mailFailed > 0 ? { mailFailed } : {}) }) },
       select: { id: true },
     });
     out.alerted++;

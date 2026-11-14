@@ -110,8 +110,13 @@ export async function acceptInvite(input: unknown): Promise<AcceptState> {
   }
 
   const school = await forSchool(invite.schoolId, () =>
-    db.school.findUniqueOrThrow({ where: { id: invite.schoolId }, select: { name: true } }),
+    db.school.findUniqueOrThrow({ where: { id: invite.schoolId }, select: { name: true, removedAt: true } }),
   );
+  // TA-174: a school the operator has removed takes nobody in, whatever invitation is still out. Removal revokes the
+  // pending ones; this refuses one that escaped it, the same answer as a withdrawn invitation.
+  if (school.removedAt) {
+    return { ok: false, errors: { _form: t("invite.noLongerValid") } };
+  }
 
   const email = invite.email?.toLowerCase() ?? null;
   if (!email) {

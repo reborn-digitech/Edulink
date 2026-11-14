@@ -207,6 +207,13 @@ export async function createSchool(
   session: ActiveContext,
   details: SchoolDetails,
   client: Tx = db,
+  /**
+   * TA-172: inside a caller's transaction (`client` is not `db`) a unique violation aborts the whole transaction, so
+   * the loop below cannot try the next slug there. Such a call makes ONE attempt: the slug typed by the operator if
+   * there is one, else the name's slug with this attempt's number, and a collision is answered `root.slugTaken` or
+   * `root.nameCollides` for the caller to roll back and try again (onboardSchool does).
+   */
+  opts: { slug?: string; attempt?: number } = {},
 ): Promise<CreateResult> {
   assertSuperuser(session);
 
@@ -229,10 +236,12 @@ export async function createSchool(
   const baseSlug = slugify(name);
   const location = normaliseLocation(details);
 
-  for (let attempt = 0; attempt < 6; attempt++) {
+  const inTransaction = client !== db;
+  for (let tried = 0; tried < (inTransaction ? 1 : 6); tried++) {
+    const attempt = inTransaction ? (opts.attempt ?? 0) : tried;
     const schoolId = randomUUID();
     const code = schoolCode(name);
-    const slug = attempt === 0 ? baseSlug : `${baseSlug}-${attempt + 1}`;
+    const slug = opts.slug ?? (attempt === 0 ? baseSlug : `${baseSlug}-${attempt + 1}`);
 
     try {
       await client.school.create({
@@ -284,7 +293,10 @@ export async function createSchool(
 
       return { ok: true, schoolId, code };
     } catch (error) {
-      if (isUniqueViolation(error)) continue;
+      if (isUniqueViolation(error)) {
+        if (inTransaction) return { ok: false, errorKey: opts.slug && uniqueTargetIs(error, "slug") ? "root.slugTaken" : "root.nameCollides" };
+        continue;
+      }
       throw error;
     }
   }
@@ -471,6 +483,8 @@ export async function dismissAppAdmin(
 
 /** The delegates the removal transaction touches — see school-record.ts. */
 type RemovalTx = {
+  school: { updateMany(args: unknown): Promise<{ count: number }> };
+  invite: { updateMany(args: unknown): Promise<unknown> };
   schoolRecord: { createMany(args: unknown): Promise<unknown> };
   membership: { updateMany(args: unknown): Promise<unknown> };
   enrollment: { updateMany(args: unknown): Promise<unknown> };
@@ -513,9 +527,10 @@ const REMOVAL_NOTE = "The school was removed from this Shalaghar installation.";
  *
  * ONE TRANSACTION for the roll, for the same reason recordDeparture is one: a
  * membership ended without its certificate is a child who vanished with nothing
- * to show for their years. `removedAt` is set after and outside it — if that
- * one write fails the school is left fully intact and the operation can simply
- * be pressed again (certificates already issued are skipped as duplicates).
+ * to show for their years. `removedAt` is claimed first inside it, with the
+ * roll's own stamp (TA-361): if anything fails the school is left fully intact
+ * and the operation can simply be pressed again, and a second press while the
+ * first runs is refused rather than re-stamping the school.
  */
 export async function removeSchool(
   session: ActiveContext,
@@ -570,8 +585,20 @@ export async function removeSchool(
     }
     const cards = new Map(reportCards.map((r) => [r.studentMembershipId, r._count._all]));
 
-    await db.$tenantTransaction(async (tx: unknown) => {
+    const removed = await db.$tenantTransaction(async (tx: unknown) => {
       const t = tx as RemovalTx;
+      // TA-361: the flag is claimed FIRST and in the same transaction as the roll, with the same stamp, by a write
+      // conditional on the school not being removed yet. A second press (two tabs, the single button and the bulk
+      // bar, two operators) waits on this row until the first commits, then finds the flag set and writes nothing,
+      // so the school and its roll can never carry two different stamps and Restore always finds its undo list.
+      const claimed = await t.school.updateMany({ where: { id: schoolId, removedAt: null }, data: { removedAt: leftAt } });
+      if (claimed.count === 0) return false;
+
+      // TA-174: a removed school takes nobody in. Its pending invitations are withdrawn with the roll, so a link
+      // mailed last week cannot make an ACTIVE member of a school that is on no listing (acceptance refuses a removed
+      // school too). Restore does not bring them back: the office invites again.
+      await t.invite.updateMany({ where: { schoolId, status: "PENDING" }, data: { status: "REVOKED" } });
+
       // `skipDuplicates` is what makes re-running safe: a pupil whose departure
       // was already recorded keeps the certificate that was written then.
       await t.schoolRecord.createMany({
@@ -650,12 +677,13 @@ export async function removeSchool(
         where: { schoolId },
         data: { publishedVersionId: null },
       });
+      return true;
     });
 
-    return { members: roll.length, certificates: students.length };
+    return removed ? { members: roll.length, certificates: students.length } : null;
   });
 
-  await db.school.update({ where: { id: schoolId }, data: { removedAt: leftAt } });
+  if (!counts) return { ok: false, errorKey: "root.schoolWasRemoved" };
 
   await audit({
     schoolId: null,
@@ -699,11 +727,16 @@ export async function removeSchool(
  */
 export type BulkOutcome = { done: number; failed: { id: string; name: string | null; errorKey: TranslationKey }[] };
 
+/** How many schools one bulk press may take (TA-594: past it, the press says so). */
+const BULK_SCHOOLS_MAX = 100;
+
 export async function removeSchools(session: ActiveContext, schoolIds: string[]): Promise<BulkOutcome> {
   assertSuperuser(session);
-  const ids = [...new Set(schoolIds)].slice(0, 100);
-  const names = new Map((await db.school.findMany({ where: { id: { in: ids } }, select: { id: true, name: true } })).map((s) => [s.id, s.name]));
-  const out: BulkOutcome = { done: 0, failed: [] };
+  const chosen = [...new Set(schoolIds)];
+  const ids = chosen.slice(0, BULK_SCHOOLS_MAX);
+  const names = new Map((await db.school.findMany({ where: { id: { in: chosen } }, select: { id: true, name: true } })).map((s) => [s.id, s.name]));
+  // TA-594: every school past the limit is named in the failures with the limit's sentence, never dropped in silence.
+  const out: BulkOutcome = { done: 0, failed: chosen.slice(BULK_SCHOOLS_MAX).map((id) => ({ id, name: names.get(id) ?? null, errorKey: "root.bulkTooMany" as const })) };
   for (const id of ids) {
     const result = await removeSchool(session, id);
     if (result.ok) out.done++;
@@ -724,8 +757,11 @@ export async function deleteSchoolsEntirely(
   confirmPhrase: string,
 ): Promise<BulkOutcome & { ok: boolean; errorKey?: TranslationKey }> {
   assertSuperuser(session);
-  const ids = [...new Set(schoolIds)].slice(0, 100);
+  const ids = [...new Set(schoolIds)];
   if (ids.length === 0) return { ok: false, errorKey: "root.noSuchSchool", done: 0, failed: [] };
+  // TA-594: more than the limit is refused whole, by the limit, rather than erasing the first hundred and calling the
+  // operator's typed count the wrong phrase.
+  if (ids.length > BULK_SCHOOLS_MAX) return { ok: false, errorKey: "root.bulkTooMany", done: 0, failed: [] };
   if (confirmPhrase.trim().toUpperCase() !== `DELETE ${ids.length}`) {
     return { ok: false, errorKey: "root.bulkDeleteMismatch", done: 0, failed: [] };
   }
@@ -1043,19 +1079,31 @@ export async function revokeInvite(
   inviteId: string,
 ): Promise<{ ok: boolean; errorKey?: TranslationKey }> {
   assertSuperuser(session);
-  const result = await db.invite.updateMany({
-    where: { id: inviteId, status: "PENDING" },
-    data: { status: "REVOKED" },
-  });
-  if (result.count === 0) return { ok: false, errorKey: "root.inviteNotPending" };
+  // TA-364: the operator's door withdraws what the operator hands out, a pending ADMIN or PRINCIPAL invitation, and
+  // nothing else: a school's own teacher, pupil or parent invitation is the office's to withdraw. Like the invitation
+  // itself (inviteAdmin), the withdrawal is written twice, the operator's own row and one in the school's own Safety
+  // Centre, both in the same transaction as the write, naming the role and never the address.
+  const where = { id: inviteId, status: "PENDING", role: { in: ["ADMIN", "PRINCIPAL"] } };
+  const invite = await db.invite.findFirst({ where, select: { id: true, schoolId: true, role: true } });
+  if (!invite) return { ok: false, errorKey: "root.inviteNotPending" };
 
-  await audit({
-    schoolId: null,
-    actorUserId: session.user.id,
-    action: "superuser.invite.revoke",
-    targetType: "Invite",
-    targetId: inviteId,
-  });
+  const revoked = await asOperatorIn(session, invite.schoolId, () =>
+    db.$tenantTransaction(async (tx: unknown) => {
+      const t = tx as Tx;
+      const result = await t.invite.updateMany({ where, data: { status: "REVOKED" } });
+      if (result.count === 0) return false;
+      await audit(
+        { schoolId: null, actorUserId: session.user.id, action: "superuser.invite.revoke", targetType: "Invite", targetId: inviteId, meta: { schoolId: invite.schoolId, role: invite.role } },
+        t,
+      );
+      await audit(
+        { schoolId: invite.schoolId, actorUserId: session.user.id, action: "superuser.invite.revoke", targetType: "Invite", targetId: inviteId, meta: { role: invite.role } },
+        t,
+      );
+      return true;
+    }),
+  );
+  if (!revoked) return { ok: false, errorKey: "root.inviteNotPending" };
   return { ok: true };
 }
 
@@ -1132,6 +1180,12 @@ function isUniqueViolation(error: unknown): boolean {
   );
 }
 
+/** Whether a unique violation was on this column (Prisma names the index's fields in `meta.target`). */
+function uniqueTargetIs(error: unknown, field: string): boolean {
+  const target = (error as { meta?: { target?: unknown } }).meta?.target;
+  return Array.isArray(target) ? target.includes(field) : typeof target === "string" && target.includes(field);
+}
+
 /* -------------------------------------------------------------------------- */
 /* The operator's own trail                                                    */
 /* -------------------------------------------------------------------------- */
@@ -1179,6 +1233,11 @@ export const SERVER_AUDIT_WHERE: Prisma.AuditLogWhereInput = {
     { action: { startsWith: "superuser." } },
     { action: { startsWith: "operator." } },
     { action: { in: ["expert.invite", "expert.profile.update"] } },
+    // TA-362: the content team the operator appoints (bank questions, platform competitions) and the operator's own
+    // expert decisions (publish, unpublish, the identity check) are written with no school, and this log is their only
+    // reader. The sign-in rows stay out: they carry the addresses that were tried.
+    { action: { startsWith: "appadmin." } },
+    { action: { in: ["expert.publish", "expert.unpublish", "expert.kyc.verify", "expert.kyc.reject"] } },
   ],
 };
 
@@ -1245,7 +1304,8 @@ export async function listServerAudit(
 
   const [candidates, actionRows] = await Promise.all([
     db.auditLog.findMany({ where, orderBy: { createdAt: "desc" }, take: opts.liveActorsOnly ? 2000 : take, skip: opts.liveActorsOnly ? 0 : skip }),
-    db.auditLog.findMany({ where: SERVER_AUDIT_WHERE, distinct: ["action"], select: { action: true } }),
+    // TA-454: a GROUP BY in the database, not Prisma's in-memory distinct, which fetched every server row for the names.
+    db.auditLog.groupBy({ by: ["action"], where: SERVER_AUDIT_WHERE }),
   ]);
 
   const actorIds = [...new Set(candidates.map((r) => r.actorUserId).filter((id): id is string => Boolean(id)))];

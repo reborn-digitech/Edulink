@@ -594,6 +594,9 @@ export function isJobName(value: string): value is JobName {
   return (JOB_NAMES as string[]).includes(value);
 }
 
+/** How far an unscoped run's clock may stand from the wall clock (TA-171): a scheduler's own lag, never a day. */
+const UNSCOPED_CLOCK_SKEW_MS = 5 * 60_000;
+
 export type RunOutcome =
   | { status: "done"; runId: string; ms: number; summary: Record<string, unknown> }
   | { status: "failed"; runId: string; ms: number; error: string }
@@ -605,6 +608,8 @@ export type RunOutcome =
  * when it names a key the job cannot honour, and run without the JobRun row
  * and its lock, because a dry run on a test's tenants is not the job having
  * run for the server and must not read as its last success on /root/jobs.
+ * Unscoped, the clock must be the wall clock's (TA-171): a simulated day on
+ * every tenant is refused.
  */
 export async function runJob(name: JobName, now: Date = new Date(), scope?: JobScope): Promise<RunOutcome> {
   const spec = JOBS[name];
@@ -622,24 +627,35 @@ export async function runJob(name: JobName, now: Date = new Date(), scope?: JobS
     }
   }
 
+  // TA-171: a simulated clock runs on named tenants only. Unscoped, a job reaches every tenant, so a clock away from
+  // the wall clock would expire every school's offers, invitations and notices by a day nobody has reached; it is
+  // refused here, before the lock row or the worker, for every job and not only the two that guarded themselves
+  // (retention.ts, school-record.ts). The JobRun row is the server's own record and always carries the wall clock,
+  // so a run can never read as a success in the future and blind the overdue watch, and the stale-lock test below
+  // measures real time.
+  const wall = new Date();
+  if (Math.abs(now.getTime() - wall.getTime()) > UNSCOPED_CLOCK_SKEW_MS) {
+    throw new Error(`${name}: a simulated clock (${now.toISOString()}) runs only on named tenants (--schools or --users); unscoped it would act on every tenant`);
+  }
+
   const live = await db.jobRun.findFirst({
     where: { job: name, finishedAt: null },
     orderBy: { startedAt: "desc" },
     select: { id: true, startedAt: true },
   });
   if (live) {
-    if (now.getTime() - live.startedAt.getTime() < spec.maxRunMs) {
+    if (wall.getTime() - live.startedAt.getTime() < spec.maxRunMs) {
       return { status: "skipped", reason: "running", since: live.startedAt };
     }
     // Past the ceiling: whatever held this row is not coming back.
     await db.jobRun.update({
       where: { id: live.id },
-      data: { finishedAt: now, ok: false, error: `Never finished; overridden after ${Math.round(spec.maxRunMs / 60_000)} min` },
+      data: { finishedAt: wall, ok: false, error: `Never finished; overridden after ${Math.round(spec.maxRunMs / 60_000)} min` },
     });
   }
 
   const run = await db.jobRun.create({
-    data: { job: name, startedAt: now, host: hostname() },
+    data: { job: name, startedAt: wall, host: hostname() },
     select: { id: true },
   });
   const started = Date.now();

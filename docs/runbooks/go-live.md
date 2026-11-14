@@ -82,10 +82,14 @@ Apple, Google, Razorpay, the lawyer.
 
   **What.** Provider: `<fill in>` (Fly Managed Postgres, or another reachable from Fly's `bom` region). It must
   be Postgres 16 (CI tests 16), have point-in-time recovery switched on, give a direct connection (not a
-  transaction pooler) for the release step, and let the owner role `CREATE ROLE`. Same day.
+  transaction pooler) for the release step, and let the owner role `CREATE ROLE`. The owner role must also be a
+  superuser or hold `BYPASSRLS`: every tenant table forces row-level security, so an owner that is neither runs
+  every data step of a migration, every job and the dump over no school's rows (TA-243; `npm run db:release` and
+  the jobs runner refuse to go on without it). Same day.
 
   **Verify.** `psql "$PROD_OWNER_URL" -tAc 'show server_version'` starts with `16.`. PITR shows as on in the
-  provider's console.
+  provider's console. `psql "$PROD_OWNER_URL" -tAc 'SELECT rolsuper OR rolbypassrls FROM pg_roles WHERE rolname =
+  current_user'` prints `t`.
 
 - [ ] **0.5 Object storage: one bucket for uploads, one for backups** — owner, engineer
 
@@ -542,7 +546,8 @@ a health check on `/api/health` every 30 seconds, `shared-cpu-2x` with 4 GB, `TZ
 - [ ] **3.10 An uptime monitor outside Fly** — engineer
 
   **What.** Service: `<fill in>`. Check `/api/health`, `/login` and `/` every minute, alerting the owner and
-  the engineer.
+  the engineer. Check `/api/health/jobs` too, every quarter hour: it answers 503 when any scheduled job's last success
+  is older than it expects, which is how a stopped jobs runner is noticed (its own alarms are jobs of the same runner).
 
   **Verify.** Stop nothing; read the monitor's first green results.
 

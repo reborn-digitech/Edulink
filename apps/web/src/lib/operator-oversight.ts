@@ -4,6 +4,8 @@ import { db } from "./db";
 import { audit } from "./audit";
 import { AccessError } from "./tenancy";
 import { withSchoolAccess } from "./superuser";
+import { syncStandinsHeldBy, syncStandinsForTeacherClasses } from "./standin-guardian";
+import { takeDownProfileOf } from "./faculty-profile";
 import type { ActiveContext } from "./session";
 
 /**
@@ -263,53 +265,25 @@ export async function setMembershipSuspension(
   }
 
   return withSchoolAccess(session, schoolId, async () => {
-    const target = await db.membership.findFirst({
-      where: { id: membershipId, schoolId },
-      select: { id: true, role: true, status: true, user: { select: { name: true } } },
-    });
-    if (!target) return { ok: false, errorKey: "root.personNotHere" };
-
-    if (next.suspended) {
-      if (target.status === "SUSPENDED") return { ok: false, errorKey: "root.alreadyPaused" };
-
-      /**
-       * THE LAST ADMIN RULE, restated rather than inherited.
-       *
-       * A school with no admin cannot invite one, cannot restore anybody, and
-       * cannot reach its own settings — it is bricked, and the only person who
-       * could unbrick it is the operator who just bricked it. `membership.ts`
-       * refuses this for a school's own admin and it must refuse it here too,
-       * because "the host did it" makes the outcome worse rather than better.
-       */
-      if (target.role === "ADMIN") {
-        const others = await db.membership.count({
-          where: {
-            schoolId,
-            role: "ADMIN",
-            status: "ACTIVE",
-            leftAt: null,
-            id: { not: membershipId },
-          },
+    // TA-170: the shape of the school's own door (membership.ts): every suspension in a school is serialised behind a
+    // row lock on the school, so two pauses cannot both pass the last-admin count, and only an ACTIVE membership is
+    // paused (a PENDING one is an invitation, which is revoked rather than paused).
+    let target: SuspensionTarget;
+    try {
+      target = await db.$tenantTransaction(async (tx: unknown) => {
+        const t = tx as SuspensionTx;
+        await t.$queryRaw`SELECT id FROM "School" WHERE id = ${schoolId} FOR UPDATE`;
+        const found = await t.membership.findFirst({
+          where: { id: membershipId, schoolId },
+          select: { id: true, role: true, status: true, userId: true, user: { select: { name: true } } },
         });
-        if (others === 0) {
-          return { ok: false, errorKey: "root.onlyAdmin" };
-        }
-      }
-
-      await db.membership.update({
-        where: { id: membershipId },
-        data: {
-          status: "SUSPENDED",
-          suspendedAt: new Date(),
-          suspendedReason: `Paused by the Shalaghar team: ${clean}`,
-        },
+        if (!found) throw new SuspensionRefused("root.personNotHere");
+        await writeSuspension(t, found);
+        return found;
       });
-    } else {
-      if (target.status !== "SUSPENDED") return { ok: false, errorKey: "root.notPaused" };
-      await db.membership.update({
-        where: { id: membershipId },
-        data: { status: "ACTIVE", suspendedAt: null, suspendedReason: null },
-      });
+    } catch (error) {
+      if (error instanceof SuspensionRefused) return { ok: false, errorKey: error.key };
+      throw error;
     }
 
     await audit({
@@ -321,9 +295,90 @@ export async function setMembershipSuspension(
       meta: { name: target.user.name, role: target.role, reason: clean || null },
     });
 
+    // TA-170: what the school's own pause and reinstatement do after the write (membership.ts), done here too, so a
+    // person the operator pauses stops standing in as a guardian for the pupils they held, and a paused college
+    // teacher's public page comes down. Reinstated, a class teacher takes their classes' unclaimed pupils back.
+    if (next.suspended) {
+      if (target.role !== "STUDENT") {
+        await syncStandinsHeldBy({ schoolId, userId: target.userId, actorUserId: session.user.id }).catch((error) =>
+          console.error("[setMembershipSuspension] standin sync failed", error instanceof Error ? error.message : error),
+        );
+      }
+      if (target.role === "FACULTY" || target.role === "HOD") {
+        await takeDownProfileOf(schoolId, membershipId, session.user.id, "membership.suspend");
+      }
+    } else if (target.role === "TEACHER" || target.role === "PRINCIPAL") {
+      await syncStandinsForTeacherClasses({ schoolId, teacherUserId: target.userId, actorUserId: session.user.id }).catch((error) =>
+        console.error("[setMembershipSuspension] standin sync failed", error instanceof Error ? error.message : error),
+      );
+    }
+
     return { ok: true };
   });
+
+  async function writeSuspension(t: SuspensionTx, target: SuspensionTarget): Promise<void> {
+    if (next.suspended) {
+      if (target.status === "SUSPENDED") throw new SuspensionRefused("root.alreadyPaused");
+      if (target.status !== "ACTIVE") throw new SuspensionRefused("refusal.inviteNotAccepted");
+
+      /**
+       * THE LAST ADMIN RULE, restated rather than inherited.
+       *
+       * A school with no admin cannot invite one, cannot restore anybody, and
+       * cannot reach its own settings — it is bricked, and the only person who
+       * could unbrick it is the operator who just bricked it. `membership.ts`
+       * refuses this for a school's own admin and it must refuse it here too,
+       * because "the host did it" makes the outcome worse rather than better.
+       */
+      if (target.role === "ADMIN") {
+        const others = await t.membership.count({
+          where: {
+            schoolId,
+            role: "ADMIN",
+            status: "ACTIVE",
+            leftAt: null,
+            id: { not: membershipId },
+          },
+        });
+        if (others === 0) throw new SuspensionRefused("root.onlyAdmin");
+      }
+
+      await t.membership.update({
+        where: { id: membershipId },
+        data: {
+          status: "SUSPENDED",
+          suspendedAt: new Date(),
+          suspendedReason: `Paused by the Shalaghar team: ${clean}`,
+        },
+      });
+    } else {
+      if (target.status !== "SUSPENDED") throw new SuspensionRefused("root.notPaused");
+      await t.membership.update({
+        where: { id: membershipId },
+        data: { status: "ACTIVE", suspendedAt: null, suspendedReason: null },
+      });
+    }
+  }
 }
+
+type SuspensionTarget = { id: string; role: string; status: string; userId: string; user: { name: string } };
+
+/** A refusal met inside the suspension's transaction, thrown to roll it back and handed back as its key. */
+class SuspensionRefused extends Error {
+  constructor(readonly key: TranslationKey) {
+    super(key);
+  }
+}
+
+/** The delegates the suspension's transaction touches. */
+type SuspensionTx = {
+  $queryRaw(strings: TemplateStringsArray, ...values: unknown[]): Promise<unknown>;
+  membership: {
+    findFirst(args: unknown): Promise<SuspensionTarget | null>;
+    count(args: unknown): Promise<number>;
+    update(args: unknown): Promise<unknown>;
+  };
+};
 
 export type OversightPerson = {
   membershipId: string;

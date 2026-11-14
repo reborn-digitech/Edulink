@@ -61,6 +61,9 @@ function bareClientGuardOn(): boolean {
 function createClient() {
   const base = new PrismaClient({
     log: process.env.NODE_ENV === "development" ? ["warn", "error"] : ["error"],
+    // TA-443: in production an error's message is Prisma's minimal one, without the rendered query and its arguments
+    // (a pupil's name, an address) that the default format quotes into the log and the error tracker.
+    ...(process.env.NODE_ENV === "production" ? { errorFormat: "minimal" as const } : {}),
     // The jobs runner (JOBS_RUNNER=1, see job-scheduler.ts) is operator
     // work and reaches every tenant, so it connects as the owner — the same
     // door `npm run job` takes through with-admin-db. Every other process

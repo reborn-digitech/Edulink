@@ -109,6 +109,14 @@ export async function updatePlan(session: ActiveContext, planId: string, input: 
   if (input.code !== undefined) {
     const code = input.code.trim().toLowerCase();
     if (!/^[a-z0-9][a-z0-9-]{1,31}$/.test(code)) return { ok: false, errorKey: "root.planCodeInvalid" };
+    // TA-592: a college tier is known by its code alone (collegeTierOf) and priced a student a year, offered to a
+    // college only (assignPlan's rule). So a rename INTO a tier is refused while a school on the plan is not a college,
+    // and a rename OUT of a tier is refused while any school is on it, rather than repricing its schools in silence.
+    if (code !== existing.code && (collegeTierOf(code) || collegeTierOf(existing.code))) {
+      const onPlan = await db.school.findMany({ where: { planId }, select: { kind: true } });
+      if (collegeTierOf(code) && onPlan.some((s) => !isCollegeKind(s.kind))) return { ok: false, errorKey: "operatorCollege.refuseTierNotCollege" };
+      if (collegeTierOf(existing.code) && onPlan.length > 0) return { ok: false, errorKey: "root.planInUse" };
+    }
     if (code !== existing.code && (await db.plan.findUnique({ where: { code }, select: { id: true } }))) return { ok: false, errorKey: "root.planCodeTaken" };
     data.code = code;
   }
@@ -132,7 +140,9 @@ export async function deletePlan(session: ActiveContext, planId: string): Promis
   assertSuperuser(session);
   const existing = await db.plan.findUnique({ where: { id: planId }, select: { id: true, code: true } });
   if (!existing) return { ok: false, errorKey: "root.noSuchPlan" };
-  const onIt = await db.school.count({ where: { planId } });
+  // TA-591: the schools that hold the plan are the live ones, the count the plans page shows (listPlans). A removed
+  // school cannot be moved off a plan (assignPlan refuses it), so its link goes with the plan: the column's SetNull.
+  const onIt = await db.school.count({ where: { planId, removedAt: null } });
   if (onIt > 0) return { ok: false, errorKey: "root.planInUse" };
   await db.plan.delete({ where: { id: planId } });
   await audit({ schoolId: null, actorUserId: session.user.id, action: "superuser.plan.delete", targetType: "Plan", targetId: planId, meta: { code: existing.code } });
@@ -308,6 +318,7 @@ export async function sampleUsage(now: Date = new Date(), scope: { schoolIds?: s
     // shredded duplicate) is skipped and counted, not the whole night lost.
     let counts: UsageCounts;
     try {
+      await closeLastMonth(school.id, school.timezone, month, sizes, now);
       counts = await computeUsage(school.id, month, { sizes, now });
     } catch (error) {
       if (await db.school.findUnique({ where: { id: school.id }, select: { id: true } })) throw error;
@@ -332,6 +343,21 @@ export async function sampleUsage(now: Date = new Date(), scope: { schoolIds?: s
     perSchool[school.id] = { ...counts, overCap: flagged };
   }
   return { summary: { schools: schools.length, written, overCap, skipped }, perSchool };
+}
+
+/**
+ * TA-363: the nightly run writes the running month only, so a month's row was last written early on its final day and
+ * the texts of its last evening never reached it. On the first run after a month ends, a stored row of that month
+ * computed before the month's end is recomputed once, as at its end; a row computed after it is left as it is, so
+ * the closed month is written once and then stands. A month with no row (a school added since) is not made up.
+ */
+async function closeLastMonth(schoolId: string, timezone: string, month: string, sizes: Map<string, number>, now: Date): Promise<void> {
+  const [y, m] = month.split("-").map(Number) as [number, number];
+  const last = m === 1 ? `${y - 1}-12` : `${y}-${String(m - 1).padStart(2, "0")}`;
+  const stored = await db.usageSample.findUnique({ where: { schoolId_month: { schoolId, month: last } }, select: { computedAt: true } });
+  if (!stored || stored.computedAt.getTime() >= monthBounds(last, timezone).end.getTime()) return;
+  const counts = await computeUsage(schoolId, last, { sizes, now });
+  await db.usageSample.update({ where: { schoolId_month: { schoolId, month: last } }, data: { ...counts, computedAt: now } });
 }
 
 export type UsageCaps = { pupils: number | null; messages: number | null; storageMb: number | null };

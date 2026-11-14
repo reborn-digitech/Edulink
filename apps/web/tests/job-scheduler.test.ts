@@ -63,7 +63,8 @@ describe("startJobScheduler", () => {
     const ran: string[] = [];
     const log = vi.fn();
     const at = local(2026, 9, 15, 3, 30); // notifications:tidy is "30 3 * * *"
-    const handle = startJobScheduler({ run: async (name) => { ran.push(name); return { status: "done" }; }, now: () => at, log });
+    // Nothing overdue at start (TA-522's catch-up is ta-operator-console-jobs.test.ts's), so only the ticks fire.
+    const handle = startJobScheduler({ run: async (name) => { ran.push(name); return { status: "done" }; }, now: () => at, log, overdue: async () => [] });
     expect(handle).not.toBeNull();
     // messages:send is "* * * * *" and fires every minute by design, and
     // jobs:watch every quarter hour; the lists below look past them so the
@@ -89,7 +90,7 @@ describe("startJobScheduler", () => {
     process.env.JOBS_RUNNER = "1";
     const log = vi.fn();
     const at = local(2026, 9, 18, 16, 0); // digest:weekly is "0 16 * * 5" (Friday)
-    const handle = startJobScheduler({ run: async (name) => { if (name === "digest:weekly") throw new Error("mail is down"); return { status: "done" }; }, now: () => at, log });
+    const handle = startJobScheduler({ run: async (name) => { if (name === "digest:weekly") throw new Error("mail is down"); return { status: "done" }; }, now: () => at, log, overdue: async () => [] });
     try {
       expect((await handle!.tick(at)).filter((j) => j !== "messages:send" && j !== "circulars:deliver" && j !== "jobs:watch" && j !== "social:send" /* meta-posting (16 Oct 2026) */)).toEqual(["digest:weekly"]);
       await new Promise((r) => setTimeout(r, 0));

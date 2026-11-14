@@ -8,6 +8,7 @@ import { generateToken, hashToken } from "@/lib/crypto";
 import { parseInviteCsv } from "@/lib/csv";
 import { localeForAddress, sendTeacherInvite } from "@/lib/email";
 import { audit } from "@/lib/audit";
+import { scrubbedError } from "@/lib/metrics";
 import { resendInviteFor } from "@/lib/invites";
 import { INVITE_TTL_DAYS, INVITABLE_ROLES, invitableRolesFor, type InvitableRole } from "@/lib/constants";
 import { INVITE_EMAILS_DAILY } from "@/lib/rate-limit";
@@ -214,7 +215,8 @@ export async function createInvites(input: {
       sent++;
     } catch (error) {
       // One bad address must not abort the other 199.
-      console.error("[createInvites] failed for", row.email, error);
+      // TA-443: the row's place in the list, not its address, and the error scrubbed: the office sees which row failed.
+      console.error("[createInvites] failed for row", valid.indexOf(row) + 1, scrubbedError(error));
       outcomes.push({
         email: row.email,
         name: row.name,

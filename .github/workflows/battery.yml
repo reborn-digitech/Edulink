@@ -706,7 +706,10 @@ jobs:
           docker logs jobs 2>&1 | grep -E '"scheduler":"(in-process|kick)"' | head -2
           docker logs jobs 2>&1 | grep -q '"scheduler":"in-process","started":true'
           # And it is not reachable on the web port: the schedule runs, the pages do not.
-          if curl -sf -o /dev/null http://localhost:3999/login; then echo "jobs runner answered a page on loopback (expected: from inside only)"; fi
+          # TA-522: under host networking loopback is the host's own, so loopback answering proves nothing; the check
+          # is that the runner (HOSTNAME=127.0.0.1) does not answer on the host's routable address, and it now fails.
+          addr=$(hostname -I | awk '{print $1}')
+          if curl -sf -o /dev/null --max-time 5 "http://$addr:3999/login"; then echo "jobs runner answered a page on $addr:3999 (expected: loopback only)"; exit 1; fi
       - name: Container logs
         if: always()
         run: |

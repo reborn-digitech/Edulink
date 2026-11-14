@@ -1,5 +1,5 @@
 import "server-only";
-import { collegeTierOf, isCollegeKind, tierMonthPaise, type InstitutionKind } from "@edulink/contracts";
+import { collegeTierOf, isCollegeKind, isRealDateKey, tierMonthPaise, type InstitutionKind } from "@edulink/contracts";
 import type { TranslationKey } from "@/lib/i18n/dictionary";
 import {
   SUBSCRIPTION_STATUSES,
@@ -215,6 +215,12 @@ export async function setSubscription(session: ActiveContext, schoolId: string, 
     ["invoicedAt", "subscriptionInvoicedAt"],
     ["paidAt", "subscriptionPaidAt"],
   ] as const;
+  // TA-593: the contract's day is a pattern, which lets 2026-13-01 through; a day not on the calendar is refused by
+  // name here, before anything is written, rather than meeting toISOString as a RangeError and a 500.
+  for (const [field] of dates) {
+    const value = input[field];
+    if (typeof value === "string" && !isRealDateKey(value)) return { ok: false, errorKey: "root.subscriptionDayNotReal" };
+  }
   for (const [field, column] of dates) {
     const value = input[field];
     if (value === undefined) continue;
@@ -613,6 +619,8 @@ export async function onboardSchool(session: ActiveContext, input: OperatorOnboa
     const problem = checkPartner(input.commission.newPartner);
     if (problem) return problem;
   }
+  // TA-593: a typed day that is not on the calendar is refused by name, not thrown as a 500 by the date arithmetic.
+  if ((input.startsAt && !isRealDateKey(input.startsAt)) || (input.dueAt && !isRealDateKey(input.dueAt))) return { ok: false, errorKey: "root.subscriptionDayNotReal" };
   const today = todayKey("UTC", now);
   const startsAt = input.startsAt ?? today;
   const dueAt = input.dueAt ?? addDaysToKey(startsAt, input.trial ? 30 : 365);
@@ -646,69 +654,68 @@ export async function onboardSchool(session: ActiveContext, input: OperatorOnboa
   }
   type Made = { schoolId: string; code: string; slug: string; partnerId: string | null; mail: AdminInviteMail | null };
 
-  let made: Made;
-  try {
-    made = await db.$tenantTransaction(async (raw) => {
-      const tx = raw as Tx;
-      const created = await createSchool(session, details, tx);
-      if (!created.ok) throw new Refused(created);
-      const schoolId = created.schoolId;
+  let made: Made | null = null;
+  // TA-172: a taken slug aborts the transaction it is met in, so the next number is tried in a fresh transaction, as
+  // registration does (school-signup.ts): createSchool makes one attempt inside a caller's transaction. A slug the
+  // operator typed is made exactly as typed, and the index refuses it as taken if two operators race for it.
+  for (let attempt = 0; attempt < 6 && !made; attempt++) {
+    try {
+      made = await db.$tenantTransaction(async (raw) => {
+        const tx = raw as Tx;
+        const created = await createSchool(session, details, tx, { slug: slug ?? undefined, attempt });
+        if (!created.ok) throw new Refused(created);
+        const schoolId = created.schoolId;
 
-      if (slug) {
-        // The index decides, not the check above: two operators typing one slug race here, and the loser is refused as taken.
-        try {
-          await tx.school.update({ where: { id: schoolId }, data: { slug } });
-        } catch {
-          throw new Refused({ ok: false, errorKey: "root.slugTaken" });
+        let partnerId: string | null = null;
+        if (input.commission && "partnerId" in input.commission) partnerId = input.commission.partnerId;
+        if (input.commission && "newPartner" in input.commission) {
+          const partner = await createPartner(session, input.commission.newPartner, tx);
+          if (!partner.ok) throw new Refused(partner);
+          partnerId = partner.partnerId;
         }
-      }
-      let partnerId: string | null = null;
-      if (input.commission && "partnerId" in input.commission) partnerId = input.commission.partnerId;
-      if (input.commission && "newPartner" in input.commission) {
-        const partner = await createPartner(session, input.commission.newPartner, tx);
-        if (!partner.ok) throw new Refused(partner);
-        partnerId = partner.partnerId;
-      }
-      await tx.school.update({
-        where: { id: schoolId },
-        data: {
-          board: input.board ?? null,
-          subscriptionStatus: status,
-          subscriptionStartsAt: dayToDate(startsAt),
-          subscriptionDueAt: dayToDate(dueAt),
-          pocName: text(input.contact?.name),
-          pocRole: text(input.contact?.role),
-          pocPhone: text(input.contact?.phone),
-          pocEmail: text(input.contact?.email),
-          commissionPartnerId: partnerId,
-          ...(college ? { affiliatingUniversity: text(input.affiliatingUniversity), aisheCode } : {}),
-        },
-      });
-      if (input.planId) {
-        const assigned = await assignPlan(session, schoolId, input.planId, tx);
-        if (!assigned.ok) throw new Refused({ ok: false, errorKey: assigned.errorKey ?? "root.didNotWork" });
-      }
-      const invited = await inviteAdmin(session, schoolId, { email: adminEmail, name: input.adminName || null, role: "ADMIN", mail: "after-commit" }, tx);
-      if (!invited.ok) throw new Refused({ ok: false, errorKey: invited.errorKey ?? "root.didNotWork" });
+        await tx.school.update({
+          where: { id: schoolId },
+          data: {
+            board: input.board ?? null,
+            subscriptionStatus: status,
+            subscriptionStartsAt: dayToDate(startsAt),
+            subscriptionDueAt: dayToDate(dueAt),
+            pocName: text(input.contact?.name),
+            pocRole: text(input.contact?.role),
+            pocPhone: text(input.contact?.phone),
+            pocEmail: text(input.contact?.email),
+            commissionPartnerId: partnerId,
+            ...(college ? { affiliatingUniversity: text(input.affiliatingUniversity), aisheCode } : {}),
+          },
+        });
+        if (input.planId) {
+          const assigned = await assignPlan(session, schoolId, input.planId, tx);
+          if (!assigned.ok) throw new Refused({ ok: false, errorKey: assigned.errorKey ?? "root.didNotWork" });
+        }
+        const invited = await inviteAdmin(session, schoolId, { email: adminEmail, name: input.adminName || null, role: "ADMIN", mail: "after-commit" }, tx);
+        if (!invited.ok) throw new Refused({ ok: false, errorKey: invited.errorKey ?? "root.didNotWork" });
 
-      const row = await tx.school.findUniqueOrThrow({ where: { id: schoolId }, select: { slug: true } });
-      await audit(
-        {
-          schoolId: null,
-          actorUserId: session.user.id,
-          action: "superuser.school.onboard",
-          targetType: "School",
-          targetId: schoolId,
-          meta: { schoolId, name: input.name.trim(), slug: row.slug, planId: input.planId ?? null, status, startsAt, dueAt, partnerId, adminEmail },
-        },
-        tx,
-      );
-      return { schoolId, code: created.code, slug: row.slug, partnerId, mail: invited.mail ?? null };
-    });
-  } catch (error) {
-    if (error instanceof Refused) return error.refusal;
-    throw error;
+        const row = await tx.school.findUniqueOrThrow({ where: { id: schoolId }, select: { slug: true } });
+        await audit(
+          {
+            schoolId: null,
+            actorUserId: session.user.id,
+            action: "superuser.school.onboard",
+            targetType: "School",
+            targetId: schoolId,
+            meta: { schoolId, name: input.name.trim(), slug: row.slug, planId: input.planId ?? null, status, startsAt, dueAt, partnerId, adminEmail },
+          },
+          tx,
+        );
+        return { schoolId, code: created.code, slug: row.slug, partnerId, mail: invited.mail ?? null };
+      });
+    } catch (error) {
+      if (error instanceof Refused && error.refusal.errorKey === "root.nameCollides" && attempt < 5) continue;
+      if (error instanceof Refused) return error.refusal;
+      throw error;
+    }
   }
+  if (!made) return { ok: false, errorKey: "root.nameCollides" };
 
   // Committed. The mail goes now; a transport failure leaves the school standing with its invitation pending, to be resent.
   let mailSent = false;

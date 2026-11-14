@@ -1,4 +1,4 @@
-import { recordError, reportError } from "./lib/metrics";
+import { recordError, reportError, scrubErrorMessage } from "./lib/metrics";
 
 /**
  * Runs once when the server starts, before any request is served.
@@ -44,7 +44,8 @@ export async function onRequestError(
     type: context.routeType,
     digest: err.digest ?? null,
     name: err.name ?? "Error",
-    message: err.message ?? String(error),
+    // TA-443: scrubbed as the error tracker's copy is, so the log holds no address or long number a message quoted.
+    message: scrubErrorMessage(error),
   };
   // console.error, not process.stderr: this file also loads in the edge
   // runtime, which has no `process` streams, and the line lands on stderr
