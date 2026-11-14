@@ -13,7 +13,7 @@
  *
  * As the database's owner (tests/setup.ts), so the rules and not the policies. The company's details and the prices
  * come from setPassSaleForTests, never the shared GigSettings and PersonPlan rows another suite changes while it runs;
- * the test's own invoice prefix makes its numbers start at 0001. ZZ rows of its own only, removed after.
+ * the test's own invoice prefix makes its numbers start at 000001. ZZ rows of its own only, removed after.
  */
 import { randomBytes } from "node:crypto";
 import { afterAll, afterEach, beforeAll, describe, expect, it } from "vitest";
@@ -46,8 +46,8 @@ import type { ActiveContext } from "@/lib/session";
 const db = new PrismaClient();
 const STAMP = Date.now();
 const DAY = 86_400_000;
-/** The test's own invoice series, so its numbers start at 0001 whatever the server already issued. */
-const PREFIX = `ZP${String(STAMP).slice(-6)}`;
+/** The test's own invoice series, so its numbers start at 000001 whatever the server already issued. */
+const PREFIX = String.fromCharCode(88 + (STAMP % 3), 65 + (Math.floor(STAMP / 3) % 26));
 const COMPANY: CompanyDetails = { legalName: "ZZ Shalaghar Test Private Limited", gstin: "27AAACZ1234A1Z5", address: "ZZ 1 Test Road, Pune", stateCode: "27", sacCode: "998431", invoicePrefix: PREFIX, gstPercent: 18, missing: [] };
 const PRICES = { STUDENT: { monthly: 9_900, yearly: 99_900 }, TEACHER: { monthly: 19_900, yearly: 199_900 }, EXPERT: { monthly: 49_900, yearly: 499_900 } };
 
@@ -183,7 +183,7 @@ describe("the order and the checkout's confirm", () => {
     const now = new Date();
     const done = await confirmPassCheckout(expert(), { orderId: opened.order.id, gatewayPaymentId: payment, signature: signSeatCheckout(opened.checkout.orderId, payment) }, now);
     expect(done.outcome).toBe("settled");
-    expect(passOrderSchema.parse(done.order)).toMatchObject({ status: "PAID", invoiceNumber: `${PREFIX}-PASS/${financialYearOf(now)}/0001` });
+    expect(passOrderSchema.parse(done.order)).toMatchObject({ status: "PAID", invoiceNumber: `${PREFIX}P/${financialYearOf(now).slice(2)}/000001` });
     const rows = await rowsOf(opened.order.id);
     expect(rows.map((r) => r.feature)).toEqual([...PLAN_FEATURES.EXPERT].sort());
     expect(rows.every((r) => r.source === "ORDER" && r.planCode === "EXPERT" && r.userId === id.expert && r.validTo.getTime() > now.getTime() + 364 * DAY)).toBe(true);
@@ -301,10 +301,10 @@ describe("renewal, numbering and the invoice", () => {
   });
 
   it("numbers every invoice in its own PASS series without a gap, and renders the PDF", async () => {
-    const invoices = await db.passInvoice.findMany({ where: { series: `${PREFIX}-PASS/${financialYearOf(new Date())}` }, orderBy: { serial: "asc" } });
+    const invoices = await db.passInvoice.findMany({ where: { series: `${PREFIX}P/${financialYearOf(new Date()).slice(2)}` }, orderBy: { serial: "asc" } });
     expect(invoices.length).toBeGreaterThanOrEqual(4);
     expect(invoices.map((i) => i.serial)).toEqual(invoices.map((_, n) => n + 1));
-    expect(invoices.every((i, n) => i.number === `${PREFIX}-PASS/${financialYearOf(new Date())}/${String(n + 1).padStart(4, "0")}`)).toBe(true);
+    expect(invoices.every((i, n) => i.number === `${PREFIX}P/${financialYearOf(new Date()).slice(2)}/${String(n + 1).padStart(6, "0")}`)).toBe(true);
     const order = await db.passOrder.findFirstOrThrow({ where: { invoiceId: invoices[0]!.id } });
     const pdf = await renderPassInvoicePdf(await passInvoiceView(operator(), order.id));
     expect(pdf.subarray(0, 4).toString()).toBe("%PDF");

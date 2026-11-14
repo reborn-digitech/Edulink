@@ -28,7 +28,7 @@ import { noticeDate } from "./notice-dates";
 import { isMinorToday } from "./student-consent";
 import { BIRTHDAY_ZONE } from "./adulthood";
 import { familyChildren } from "./family-child";
-import { companyDetails, financialYearOf, type CompanyDetails, type InvoiceParty } from "./gig-payments";
+import { companyDetails, invoiceNumberOf, invoiceSeriesOf, type CompanyDetails, type InvoiceParty } from "./gig-payments";
 import { createPassOrderAtGateway, GigGatewayError, paymentRefundedAtGateway, platformAccount, refundSeat, transport, verifySeatCheckout } from "./gig-gateway";
 import { activePlans, grantPassFromOrder, myPlans, PLAN_NAME_KEY, PLAN_TABLE, planForCard, planHeldUntil, planLastDay, passWindows, restorePassEntitlements, revokePassEntitlements, windowsEndingBetween } from "./person-plans";
 import type { ActiveContext } from "./session";
@@ -367,12 +367,16 @@ export type PassCaptureOutcome = "settled" | "already" | "unknown-order" | "amou
 
 type InvoiceTx = typeof db;
 
-/** The next number in the company's PASS series, under the GigSettings row lock the caller's transaction then holds. */
+/**
+ * The next number in the company's pass series, under the GigSettings row lock the caller's transaction then holds;
+ * refused (InvoiceNumberRefused, so the capture's transaction is rolled back whole) over sixteen characters or outside
+ * letters, digits, hyphen and slash (TA-525, decision 0006 as amended on 14 November 2026).
+ */
 async function nextPassNumber(tx: InvoiceTx, series: string): Promise<{ serial: number; number: string }> {
   await tx.$queryRaw`SELECT "id" FROM "GigSettings" WHERE "id" = ${SETTINGS_ID} FOR UPDATE`;
   const last = (await tx.passInvoice.findFirst({ where: { series }, orderBy: { serial: "desc" }, select: { serial: true } }))?.serial;
   const serial = (last ?? 0) + 1;
-  return { serial, number: `${series}/${String(serial).padStart(4, "0")}` };
+  return { serial, number: invoiceNumberOf(series, serial) };
 }
 
 /**
@@ -390,7 +394,7 @@ async function writePassInvoice(tx: InvoiceTx, company: CompanyDetails, order: O
   const buyer: InvoiceParty = { name: payer.name, gstin: null, address: null, stateCode: null };
   const cgstPaise = Math.floor(order.gstPaise / 2);
   const sgstPaise = order.gstPaise - cgstPaise;
-  const series = `${company.invoicePrefix}-PASS/${financialYearOf(issuedAt)}`;
+  const series = invoiceSeriesOf(company.invoicePrefix, "P", issuedAt);
   const n = await nextPassNumber(tx, series);
   const lines = [{ passOrderId: order.id, plan: order.planCode, period: order.period, holderName: holder.name, validFrom: window.validFrom.toISOString(), validTo: window.validTo.toISOString(), amountPaise: order.amountPaise, gstPaise: order.gstPaise }];
   const made = await tx.passInvoice.create({

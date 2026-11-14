@@ -93,7 +93,7 @@ const db = new PrismaClient();
 const STAMP = Date.now();
 const SECRET = "zz-fixa-webhook-secret";
 const mail = (who: string) => `zz-fixa-hook-${who}-${STAMP}@test.invalid`;
-const PREFIX = `ZA${String(STAMP).slice(-6)}`;
+const PREFIX = String.fromCharCode(88 + (STAMP % 3), 65 + (Math.floor(STAMP / 3) % 26));
 const COMPANY = { legalName: "ZZ Shalaghar Test Private Limited", gstin: "27AAACZ1234A1Z5", address: "ZZ 1 Test Road, Pune", stateCode: "27", sacCode: "998431", invoicePrefix: PREFIX, gstPercent: 18, missing: [] };
 const PRICES = { STUDENT: { monthly: 9_900, yearly: 99_900 }, TEACHER: { monthly: 19_900, yearly: 199_900 }, EXPERT: { monthly: 49_900, yearly: 499_900 } };
 

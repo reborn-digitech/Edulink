@@ -28,7 +28,7 @@ import type { ActiveContext } from "@/lib/session";
 const db = new PrismaClient();
 const STAMP = Date.now();
 const HOUR = 3_600_000;
-const PREFIX = `ZS${String(STAMP).slice(-6)}`;
+const PREFIX = String.fromCharCode(88 + (STAMP % 3), 65 + (Math.floor(STAMP / 3) % 26));
 let saved: Awaited<ReturnType<typeof gigSettings>>;
 let savedRow: Record<string, unknown> = {};
 let schoolId = "";

@@ -32,8 +32,8 @@ const HOUR = 3_600_000;
 let saved: Awaited<ReturnType<typeof gigSettings>>;
 let savedSwitch = false;
 let savedCompany: { companyLegalName: string | null; companyGstin: string | null; companyAddress: string | null; companyStateCode: string | null; invoiceSacCode: string; invoicePrefix: string; gstPercent: number };
-/** The test's own invoice series, so its numbers start at 0001 whatever the server already issued. */
-const PREFIX = `ZT${String(STAMP).slice(-6)}`;
+/** The test's own invoice series, so its numbers start at 000001 whatever the server already issued. */
+const PREFIX = String.fromCharCode(88 + (STAMP % 3), 65 + (Math.floor(STAMP / 3) % 26));
 let schoolId = "";
 const id: Record<string, string> = {};
 const member: Record<string, string> = {};
@@ -313,7 +313,7 @@ describe("the paid gate and the switch", () => {
     await expect(saveCompanyDetails(expert(), company())).rejects.toBeInstanceOf(AccessError);
     expect(await saveCompanyDetails(operator(), company({ gstin: "nope" }))).toMatchObject({ ok: false, errorKey: "gigs.refuseGstin" });
     expect(await saveCompanyDetails(operator(), company({ stateCode: "29" }))).toMatchObject({ ok: false, errorKey: "gigs.refuseGstinState" });
-    expect(await saveCompanyDetails(operator(), company({ invoicePrefix: "bad prefix" }))).toMatchObject({ ok: false, errorKey: "gigs.refuseInvoicePrefix" });
+    expect(await saveCompanyDetails(operator(), company({ invoicePrefix: "bad prefix" }))).toMatchObject({ ok: false, errorKey: "gigs.refuseInvoicePrefixFit" });
     expect(await saveCompanyDetails(operator(), company())).toMatchObject({ ok: true, company: { legalName: "ZZ Shalaghar Test Private Limited", missing: [] } });
     expect((await companyDetails()).missing).toEqual([]);
     expect((await operatorPayouts(operator())).route).toMatchObject({ ready: true });
@@ -384,7 +384,7 @@ describe("a paid seat, from the order to Razorpay's release", () => {
     await db.gigSettings.update({ where: { id: "gigs" }, data: { gstPercent: 18 } });
     expect(await bookingOf(bookingId)).toMatchObject({ status: "CONFIRMED", paid: true });
     const p = await paymentOf(bookingId);
-    expect(p).toMatchObject({ status: "HELD", path: "ROUTE", paymentId: `pay_zz${STAMP}a`, amountPaise: 10000, commissionPaise: 2000, gstPaise: 360, netPaise: 7640, receiptSerial: 1, receiptNumber: `${PREFIX}-R/${financialYearOf(new Date())}/0001` });
+    expect(p).toMatchObject({ status: "HELD", path: "ROUTE", paymentId: `pay_zz${STAMP}a`, amountPaise: 10000, commissionPaise: 2000, gstPaise: 360, netPaise: 7640, receiptSerial: 1, receiptNumber: `${PREFIX}R/${financialYearOf(new Date()).slice(2)}/000001` });
     expect(p.transferId?.startsWith("trf_devbox")).toBe(true);
     expect(p.paidAt).not.toBeNull();
     expect(p.holdUntil).toBeNull();
@@ -405,11 +405,11 @@ describe("a paid seat, from the order to Razorpay's release", () => {
     await expect(familyReceipt(g1(), p.id)).rejects.toBeInstanceOf(AccessError);
     expect((await renderReceiptPdf(receipt, "mr")).subarray(0, 5).toString()).toBe("%PDF-");
     const other = await heldSeat();
-    expect(await paymentOf(other.bookingId)).toMatchObject({ receiptSerial: 2, receiptNumber: `${PREFIX}-R/${financialYearOf(new Date())}/0002` });
+    expect(await paymentOf(other.bookingId)).toMatchObject({ receiptSerial: 2, receiptNumber: `${PREFIX}R/${financialYearOf(new Date()).slice(2)}/000002` });
   });
 
   it("delivered: 48 hours later the job takes the hold off — RELEASED, one payout with its invoice in series, the expert told; nothing released while the switch is off; two runs at once release once", async () => {
-    const fy = financialYearOf(new Date());
+    const fy = financialYearOf(new Date()).slice(2);
     const startsAt = (await db.gigSlot.findUniqueOrThrow({ where: { id: paidSlot }, select: { startsAt: true } })).startsAt;
     const closedAt = new Date(startsAt.getTime() + 10 * 60_000);
     expect(await closeBooking(expert(), bookingId, "DELIVERED", closedAt)).toMatchObject({ ok: true });
@@ -431,7 +431,7 @@ describe("a paid seat, from the order to Razorpay's release", () => {
     const payout = await db.expertPayout.findUniqueOrThrow({ where: { id: released.payoutId! }, include: { payments: true, invoice: true } });
     expect(payout).toMatchObject({ expertUserId: id.expert, status: "RELEASED", netPaise: 7640, paymentsCount: 1, reference: null });
     expect(payout.paidAt?.getTime()).toBe(at.getTime());
-    expect(payout.invoice).toMatchObject({ number: `${PREFIX}/${fy}/0001`, serial: 1, taxableValuePaise: 2000, cgstPaise: 180, sgstPaise: 180, igstPaise: 0, totalPaise: 2360, sacCode: "998599", locale: "hi" });
+    expect(payout.invoice).toMatchObject({ number: `${PREFIX}C/${fy}/000001`, serial: 1, taxableValuePaise: 2000, cgstPaise: 180, sgstPaise: 180, igstPaise: 0, totalPaise: 2360, sacCode: "998599", locale: "hi" });
     expect(JSON.parse(payout.invoice!.sellerJson)).toMatchObject({ name: "ZZ Shalaghar Test Private Limited", gstin: "27AAACZ1234A1Z5", stateCode: "27" });
     expect(JSON.parse(payout.invoice!.buyerJson)).toMatchObject({ name: "ZZ Meenakshi Rao", gstin: null, stateCode: "27" });
     expect(await audits("gig.payment.released", released.id)).toBe(1);
@@ -444,7 +444,7 @@ describe("a paid seat, from the order to Razorpay's release", () => {
     const e = await expertEarnings(expert());
     expect(e).toMatchObject({ releasedPaise: 7640, duePaise: 0, paidOutPaise: 0 });
     expect(e.rows.find((r) => r.bookingId === bookingId)).toMatchObject({ status: "RELEASED", netPaise: 7640, payoutId: payout.id });
-    expect(e.payouts.find((x) => x.id === payout.id)).toMatchObject({ status: "RELEASED", reference: null, invoiceNumber: `${PREFIX}/${fy}/0001` });
+    expect(e.payouts.find((x) => x.id === payout.id)).toMatchObject({ status: "RELEASED", reference: null, invoiceNumber: `${PREFIX}C/${fy}/000001` });
     const view = await invoiceView(expert(), payout.invoice!.id);
     expect(view).toMatchObject({ payout: { reference: null, netPaise: 7640 } });
     expect((await renderInvoicePdf(view)).subarray(0, 5).toString()).toBe("%PDF-");
@@ -453,7 +453,7 @@ describe("a paid seat, from the order to Razorpay's release", () => {
     expect((await expertInvoices(expert2())).invoices).toHaveLength(0);
     expect((await operatorInvoices(operator())).invoices.find((i) => i.id === payout.invoice!.id)).toMatchObject({ expertName: `ZZ expert ${STAMP}` });
     const op = await operatorPayouts(operator());
-    expect(op.paid.find((x) => x.id === payout.id)).toMatchObject({ status: "RELEASED", invoiceNumber: `${PREFIX}/${fy}/0001` });
+    expect(op.paid.find((x) => x.id === payout.id)).toMatchObject({ status: "RELEASED", invoiceNumber: `${PREFIX}C/${fy}/000001` });
     expect(op.releasedThisMonthPaise).toBeGreaterThanOrEqual(7640);
     expect(op.commissionThisMonthPaise).toBeGreaterThanOrEqual(2000);
     expect(JSON.stringify(op)).not.toContain("bankAccountEnc");
@@ -461,14 +461,14 @@ describe("a paid seat, from the order to Razorpay's release", () => {
   });
 
   it("each run is its own payout and invoice, 0002 then 0003; IGST when the company is in another state; the company's details changing later leaves issued invoices as they were", async () => {
-    const fy = financialYearOf(new Date());
+    const fy = financialYearOf(new Date()).slice(2);
     const a = await releasedSeat();
-    expect((await db.gigInvoice.findUniqueOrThrow({ where: { payoutId: a.payoutId } })).number).toBe(`${PREFIX}/${fy}/0002`);
+    expect((await db.gigInvoice.findUniqueOrThrow({ where: { payoutId: a.payoutId } })).number).toBe(`${PREFIX}C/${fy}/000002`);
     expect(await expertNotes("released")).toBe(2);
     expect(await saveCompanyDetails(operator(), company({ gstin: "29AAACZ1234A1Z5", stateCode: "29" }))).toMatchObject({ ok: true });
     const b = await releasedSeat();
     expect(b.payoutId).not.toBe(a.payoutId);
-    expect(await db.gigInvoice.findUniqueOrThrow({ where: { payoutId: b.payoutId } })).toMatchObject({ number: `${PREFIX}/${fy}/0003`, taxableValuePaise: 2000, cgstPaise: 0, sgstPaise: 0, igstPaise: 360, totalPaise: 2360 });
+    expect(await db.gigInvoice.findUniqueOrThrow({ where: { payoutId: b.payoutId } })).toMatchObject({ number: `${PREFIX}C/${fy}/000003`, taxableValuePaise: 2000, cgstPaise: 0, sgstPaise: 0, igstPaise: 360, totalPaise: 2360 });
     expect(await saveCompanyDetails(operator(), company({ legalName: "ZZ Renamed Limited" }))).toMatchObject({ ok: true });
     expect(JSON.parse((await db.gigInvoice.findUniqueOrThrow({ where: { payoutId: a.payoutId } })).sellerJson).name).toBe("ZZ Shalaghar Test Private Limited");
     await saveCompanyDetails(operator(), company());
@@ -611,7 +611,7 @@ describe("a paid seat, from the order to Razorpay's release", () => {
 
 describe("the company-collects rows of the second amendment", () => {
   it("a COMPANY seat still becomes DUE in an open payout the operator records by hand, with the next invoice; no ROUTE seat goes that way", async () => {
-    const fy = financialYearOf(new Date());
+    const fy = financialYearOf(new Date()).slice(2);
     const seat = await deliveredSeat();
     await db.sessionPayment.update({ where: { bookingId: seat.bookingId }, data: { path: "COMPANY", transferId: null } });
     const run = await releaseSeatPayments(new Date(seat.holdEnds.getTime() + HOUR));
@@ -626,12 +626,12 @@ describe("the company-collects rows of the second amendment", () => {
     const recorded = await recordPayout(operator(), due.payoutId!, { reference: `zzutr${STAMP}a`, note: "ZZ paid by NEFT" });
     expect(recorded).toMatchObject({ ok: true, payout: { netPaise: 7640, paymentsCount: 1, reference: `ZZUTR${STAMP}A` } });
     const number = (recorded as { invoice: { number: string } }).invoice.number;
-    expect(number.startsWith(`${PREFIX}/${fy}/`)).toBe(true);
+    expect(number.startsWith(`${PREFIX}C/${fy}/`)).toBe(true);
     expect(await paymentOf(seat.bookingId)).toMatchObject({ status: "PAID_OUT" });
     expect(await expertNotes("paidOut")).toBe(1);
     expect(await recordPayout(operator(), due.payoutId!, { reference: `ZZUTR${STAMP}B` })).toMatchObject({ ok: false, errorKey: "gigs.refusePayoutPaid" });
     // The series holds no gap: every number from 0001 to the last is issued once.
-    const series = await db.gigInvoice.findMany({ where: { series: `${PREFIX}/${fy}` }, select: { serial: true }, orderBy: { serial: "asc" } });
+    const series = await db.gigInvoice.findMany({ where: { series: `${PREFIX}C/${fy}` }, select: { serial: true }, orderBy: { serial: "asc" } });
     expect(series.map((x) => x.serial)).toEqual(series.map((_, i) => i + 1));
     expect(await db.sessionPayment.count({ where: { expertUserId: id.expert, path: "ROUTE", status: { in: ["DUE", "PAID_OUT"] } } })).toBe(0);
   });

@@ -39,7 +39,7 @@ import type { ActiveContext } from "@/lib/session";
 
 const owner = new PrismaClient(ENV.admin ? { datasourceUrl: ENV.admin } : undefined);
 const STAMP = Date.now();
-const PREFIX = `ZA${String(STAMP).slice(-6)}`;
+const PREFIX = String.fromCharCode(88 + (STAMP % 3), 65 + (Math.floor(STAMP / 3) % 26));
 const ids: Record<string, string> = {};
 let savedPrefix: string | null = null;
 
@@ -93,7 +93,7 @@ describe.skipIf(!ENV.appUser)("paid seats as the application role", () => {
     const s = await seat("capture", "INITIATED");
     const result = await settleSeatPayment({ orderId: s.orderId, gatewayPaymentId: `pay_zztapp${STAMP}`, amountPaise: 10000 });
     expect(result).toEqual({ outcome: "settled", bookingId: s.bookingId });
-    expect(await owner.sessionPayment.findUniqueOrThrow({ where: { id: s.paymentId }, select: { status: true, receiptNumber: true } })).toMatchObject({ status: "HELD", receiptNumber: expect.stringContaining(`${PREFIX}-R/`) });
+    expect(await owner.sessionPayment.findUniqueOrThrow({ where: { id: s.paymentId }, select: { status: true, receiptNumber: true } })).toMatchObject({ status: "HELD", receiptNumber: expect.stringContaining(`${PREFIX}R/`) });
     expect((await owner.gigBooking.findUniqueOrThrow({ where: { id: s.bookingId }, select: { status: true } })).status).toBe("CONFIRMED");
   });
 

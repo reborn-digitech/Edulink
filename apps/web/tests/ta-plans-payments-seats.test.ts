@@ -29,7 +29,7 @@ import type { ActiveContext } from "@/lib/session";
 
 const db = new PrismaClient();
 const STAMP = Date.now();
-const PREFIX = `ZS${String(STAMP).slice(-6)}`;
+const PREFIX = String.fromCharCode(88 + (STAMP % 3), 65 + (Math.floor(STAMP / 3) % 26));
 const HOUR = 3_600_000;
 const ids: Record<string, string> = {};
 const SETTINGS_SELECT = { paymentsEnabled: true, invoicePrefix: true, companyLegalName: true, companyGstin: true, companyAddress: true, companyStateCode: true, invoiceSacCode: true, gstPercent: true } as const;
@@ -201,7 +201,7 @@ describe("a teacher's commission invoice, recorded with the payout", () => {
     const recorded = await recordPayout(operator(), payout.id, { reference: `ZZUTR${STAMP}T`, paidAt: "2020-01-15T10:00:00+05:30" });
     expect(recorded.ok).toBe(true);
     const invoice = await db.gigInvoice.findUniqueOrThrow({ where: { payoutId: payout.id } });
-    expect(invoice).toMatchObject({ taxableValuePaise: 2000, cgstPaise: 180, sgstPaise: 180, igstPaise: 0, totalPaise: 2360, series: `${PREFIX}/${financialYearOf(new Date())}` });
+    expect(invoice).toMatchObject({ taxableValuePaise: 2000, cgstPaise: 180, sgstPaise: 180, igstPaise: 0, totalPaise: 2360, series: `${PREFIX}C/${financialYearOf(new Date()).slice(2)}` });
     expect(JSON.parse(invoice.buyerJson)).toMatchObject({ name: "ZZ Teacher Payee", gstin: null, stateCode: "27" });
     expect(invoice.issuedAt.getTime()).toBeGreaterThanOrEqual(before - 1000);
     // The day typed stays the transfer's.

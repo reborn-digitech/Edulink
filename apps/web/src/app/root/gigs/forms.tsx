@@ -267,7 +267,7 @@ export function CompanyForm({ initial }: { initial: CompanyFormValues }) {
           maxLength: 8,
           inputMode: "numeric",
         })}
-        {field("invoicePrefix", t("gigs.opCompanyPrefix"), { maxLength: 8 })}
+        {field("invoicePrefix", t("gigs.opCompanyPrefix"), { maxLength: 2, hint: t("gigs.opCompanyPrefixHint") })}
         {field("gstPercent", t("gigs.opCompanyGst"), {
           maxLength: 3,
           inputMode: "numeric",

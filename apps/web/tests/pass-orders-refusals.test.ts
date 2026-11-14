@@ -23,7 +23,7 @@ import type { ActiveContext } from "@/lib/session";
 
 const db = new PrismaClient();
 const STAMP = Date.now();
-const PREFIX = `ZQ${String(STAMP).slice(-6)}`;
+const PREFIX = String.fromCharCode(88 + (STAMP % 3), 65 + (Math.floor(STAMP / 3) % 26));
 const COMPANY: CompanyDetails = { legalName: "ZZ Shalaghar QA Private Limited", gstin: "27AAACZ1234A1Z5", address: "ZZ 2 Test Road, Pune", stateCode: "27", sacCode: "998431", invoicePrefix: PREFIX, gstPercent: 18, missing: [] };
 const PRICES = { STUDENT: { monthly: 9_900, yearly: 99_900 }, TEACHER: { monthly: 19_900, yearly: 199_900 }, EXPERT: { monthly: 49_900, yearly: 499_900 } };
 
@@ -173,7 +173,7 @@ describe("the tax invoice", () => {
     expect(new Set(views.map((v) => v.number)).size).toBe(1);
     // A read after the race always answers, with the same number.
     expect((await passInvoiceView(teacher(), orderId)).number).toBe(views[0]!.number);
-    expect(views[0]!.number.startsWith(`${PREFIX}-PASS/`)).toBe(true);
+    expect(views[0]!.number.startsWith(`${PREFIX}P/`)).toBe(true);
     expect(await db.passInvoice.count({ where: { passOrderId: orderId } })).toBe(1);
     expect(views[0]).toMatchObject({ taxableValuePaise: 19_900, totalPaise: 23_482, cgstPaise: 1_791, sgstPaise: 1_791, igstPaise: 0 });
   });

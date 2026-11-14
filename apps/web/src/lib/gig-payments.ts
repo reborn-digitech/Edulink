@@ -56,8 +56,8 @@ import type { ActiveContext } from "./session";
  * rest are told "already". The amount is compared with the order the server
  * itself made; a mismatch is refused and audited.
  *
- * NUMBERS IN SERIES. Receipts (SG-R/2026-27/0001) and invoices
- * (SG/2026-27/0001) are numbered per financial year under a lock on the
+ * NUMBERS IN SERIES. Receipts (SGR/26-27/000001) and commission invoices
+ * (SGC/26-27/000001), sixteen characters at most (TA-525), are numbered per financial year under a lock on the
  * GigSettings row, inside the transaction that writes the numbered row —
  * never reused, never a gap on a failed write (the certificates' rule).
  *
@@ -154,7 +154,8 @@ export type CompanyInput = { legalName: string; gstin: string; address: string; 
 /**
  * The operator sets who the seller is. Everything is checked for shape, and
  * the GSTIN's first two digits must be the state code — the one cross-check a
- * tax invoice's reader makes. The prefix and the SAC are free text within
+ * tax invoice's reader makes. The prefix is one or two capital letters, so
+ * every number fits sixteen characters (TA-525); the SAC is free text within
  * reason; the accountant confirms the SAC (see the schema's docblock).
  */
 export async function saveCompanyDetails(ctx: ActiveContext, input: CompanyInput): Promise<GigResult<{ company: CompanyDetails }>> {
@@ -171,7 +172,7 @@ export async function saveCompanyDetails(ctx: ActiveContext, input: CompanyInput
   if (gstin.slice(0, 2) !== stateCode) return { ok: false, errorKey: "gigs.refuseGstinState" };
   if (address.length > 400) return { ok: false, errorKey: "gigs.refuseCompanyAddress" };
   if (!/^\d{4,8}$/.test(sacCode)) return { ok: false, errorKey: "gigs.refuseSac" };
-  if (!/^[A-Z][A-Z0-9]{0,7}$/.test(invoicePrefix)) return { ok: false, errorKey: "gigs.refuseInvoicePrefix" };
+  if (!INVOICE_PREFIX.test(invoicePrefix)) return { ok: false, errorKey: "gigs.refuseInvoicePrefixFit" };
   if (!Number.isInteger(input.gstPercent) || input.gstPercent < 0 || input.gstPercent > 50) return { ok: false, errorKey: "gigs.refuseGstPercent" };
   await gigSettings();
   const row = await db.gigSettings.update({ where: { id: SETTINGS_ID }, data: { companyLegalName: legalName, companyGstin: gstin, companyAddress: address || null, companyStateCode: stateCode, invoiceSacCode: sacCode, invoicePrefix, gstPercent: input.gstPercent, updatedByUserId: ctx.user.id }, select: COMPANY_SELECT });
@@ -190,6 +191,40 @@ export function financialYearOf(at: Date, zone = ZONE): string {
   const month = Number(parts.find((p) => p.type === "month")?.value);
   const start = month >= 4 ? year : year - 1;
   return `${start}-${String((start + 1) % 100).padStart(2, "0")}`;
+}
+
+/*
+ * TA-525, decision 0006 as amended by the owner on 14 November 2026: every number the company issues — the pass
+ * invoice (P), the commission invoice (C) and the family's seat receipt (R, numbered by the same nextInSeries) — is
+ * <prefix of one or two letters><series letter>/<the financial year as 26-27>/<six-digit serial>, e.g.
+ * SGP/26-27/000001: sixteen characters at most, of letters, digits, hyphen and slash (rule 46(b) of the CGST Rules,
+ * 2017). The six-digit serial is the assistant's choice; the accountant confirms the shape before the first live
+ * invoice.
+ */
+/** The operator's prefix: one or two capital letters, so that a number fits sixteen characters at six digits of serial. */
+export const INVOICE_PREFIX = /^[A-Z]{1,2}$/;
+const INVOICE_NUMBER_MAX = 16;
+const INVOICE_NUMBER_CHARS = /^[A-Z0-9/-]+$/;
+
+/** A number that would break the shape (a prefix saved before the rule, a serial past 999,999) is never issued. */
+export class InvoiceNumberRefused extends Error {
+  constructor(readonly number: string) {
+    // The message is the number alone: the class's name says why (over INVOICE_NUMBER_MAX, or a character outside the set).
+    super(number);
+    this.name = "InvoiceNumberRefused";
+  }
+}
+
+/** The financial year's series of one kind: "SGP/26-27". */
+export function invoiceSeriesOf(prefix: string, letter: "P" | "C" | "R", at: Date): string {
+  return `${prefix}${letter}/${financialYearOf(at).slice(2)}`;
+}
+
+/** The number at a serial of a series, refused (InvoiceNumberRefused) unless it keeps the shape's two rules. */
+export function invoiceNumberOf(series: string, serial: number): string {
+  const number = `${series}/${String(serial).padStart(6, "0")}`;
+  if (number.length > INVOICE_NUMBER_MAX || !INVOICE_NUMBER_CHARS.test(number)) throw new InvoiceNumberRefused(number);
+  return number;
 }
 
 /* -------------------------------------------------------------------------- */
@@ -623,7 +658,11 @@ function bookingOfPayment(p: { bookingId: string; expertUserId: string }): Promi
   return forUser(p.expertUserId, () => db.gigBooking.findFirst({ where: { id: p.bookingId, providerUserId: p.expertUserId }, select: { id: true, schoolId: true, studentMembershipId: true, slotId: true, providerUserId: true, status: true } }));
 }
 
-/** The next number in a receipt or invoice series, under a lock on the settings row that the caller's transaction then holds to its end. */
+/**
+ * The next number in a receipt or invoice series, under a lock on the settings row that the caller's transaction then
+ * holds to its end; refused (InvoiceNumberRefused, the transaction rolled back) over sixteen characters or outside
+ * letters, digits, hyphen and slash (TA-525).
+ */
 async function nextInSeries(tx: typeof db, kind: "RECEIPT" | "INVOICE", series: string): Promise<{ serial: number; number: string }> {
   await tx.$queryRaw`SELECT "id" FROM "GigSettings" WHERE "id" = ${SETTINGS_ID} FOR UPDATE`;
   const last =
@@ -631,7 +670,7 @@ async function nextInSeries(tx: typeof db, kind: "RECEIPT" | "INVOICE", series: 
       ? (await tx.gigInvoice.findFirst({ where: { series }, orderBy: { serial: "desc" }, select: { serial: true } }))?.serial
       : (await tx.sessionPayment.findFirst({ where: { receiptNumber: { startsWith: `${series}/` } }, orderBy: { receiptSerial: "desc" }, select: { receiptSerial: true } }))?.receiptSerial;
   const serial = (last ?? 0) + 1;
-  return { serial, number: `${series}/${String(serial).padStart(4, "0")}` };
+  return { serial, number: invoiceNumberOf(series, serial) };
 }
 
 /**
@@ -659,7 +698,7 @@ export async function markCaptured(input: { orderId: string; gatewayPaymentId: s
   const settings = await db.gigSettings.findUniqueOrThrow({ where: { id: SETTINGS_ID }, select: { commissionPercent: true, gstPercent: true, invoicePrefix: true } });
   // A ROUTE order already carries the net in its transfer: the figures it was made with stand.
   const figures = p.path === "ROUTE" ? { commissionPaise: p.commissionPaise, gstPaise: p.gstPaise, netPaise: p.netPaise } : figuresOf(p.amountPaise, settings);
-  const series = `${settings.invoicePrefix}-R/${financialYearOf(now)}`;
+  const series = invoiceSeriesOf(settings.invoicePrefix, "R", now);
   const settled = await forSchool(booking.schoolId, () =>
     db.$tenantTransaction(async (raw) => {
       const tx = raw as typeof db;
@@ -863,7 +902,9 @@ export async function releaseDue(now: Date = new Date()): Promise<ReleaseRun> {
   }
   // ROUTE: the released seats not yet in a payout — this run's, and any an earlier run could not invoice.
   const company = await companyDetails();
-  if (company.missing.length === 0) {
+  // A prefix saved before the sixteen-character rule would have every invoice refused (TA-525): the seats wait, as
+  // with details missing, and the rest of the run goes on.
+  if (company.missing.length === 0 && INVOICE_PREFIX.test(company.invoicePrefix)) {
     const released = await db.sessionPayment.findMany({ where: { path: "ROUTE", status: "RELEASED", payoutId: null }, orderBy: { releasedAt: "asc" }, select: { id: true, expertUserId: true }, take: 1000 });
     const experts = [...new Set(released.map((p) => p.expertUserId))];
     for (const expertUserId of experts) {
@@ -1037,7 +1078,7 @@ async function writeInvoice(tx: typeof db, input: { payoutId: string; expertUser
   const cgstPaise = sameState ? Math.floor(gst / 2) : 0;
   const sgstPaise = sameState ? gst - cgstPaise : 0;
   const igstPaise = sameState ? 0 : gst;
-  const series = `${input.company.invoicePrefix}/${financialYearOf(input.issuedAt)}`;
+  const series = invoiceSeriesOf(input.company.invoicePrefix, "C", input.issuedAt);
   const number = await nextInSeries(tx, "INVOICE", series);
   return tx.gigInvoice.create({ data: { number: number.number, series, serial: number.serial, payoutId: input.payoutId, expertUserId: input.expertUserId, issuedAt: input.issuedAt, locale: input.locale, taxableValuePaise, cgstPaise, sgstPaise, igstPaise, totalPaise: taxableValuePaise + gst, sacCode: input.company.sacCode, sellerJson: JSON.stringify(input.seller), buyerJson: JSON.stringify(input.buyer), linesJson: JSON.stringify(lines) }, select: { id: true, number: true, totalPaise: true } });
 }
@@ -1104,6 +1145,8 @@ export async function recordPayout(ctx: ActiveContext, payoutId: string, input: 
     });
   } catch (error) {
     if (error instanceof Refusal) return { ok: false, errorKey: error.errorKey };
+    // TA-525: a prefix saved before the sixteen-character rule (or a series past 999,999) issues nothing; said by name.
+    if (error instanceof InvoiceNumberRefused) return { ok: false, errorKey: "gigs.refuseInvoiceNumber" };
     // Two records with one reference at the same moment: the second meets the unique index.
     if ((error as { code?: string }).code === "P2002") return { ok: false, errorKey: "gigs.refuseUtrUsed" };
     throw error;
