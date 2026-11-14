@@ -228,8 +228,24 @@ export const quizReviewEditBodySchema = z.object({
   checkExpr: z.string().trim().max(120).nullable().optional(),
   difficulty: z.number().int().min(1).max(6),
   translations: z.object({ hi: translationEditSchema.optional(), mr: translationEditSchema.optional() }).optional(),
+  /**
+   * The owner's follow-up to TA-199 (14 November 2026): the languages ticked "still right" against the English as
+   * saved, a language not corrected in the same press. A ticked language out of date after the save is served again
+   * and the confirmation stamped with who made it; the whole edit is refused when the English since that language was
+   * written reordered the options or moved the answer. A tick on a language that is not out of date changes nothing.
+   */
+  confirmTranslations: z.array(quizReviewLanguageSchema).max(2).optional(),
 });
 export type QuizReviewEditBody = z.infer<typeof quizReviewEditBodySchema>;
+
+/**
+ * POST …/{questionId}/confirm-translation — a language already marked out of date confirmed still right against the
+ * English as it stands (the owner's follow-up to TA-199, 14 November 2026): served again, stamped with who confirmed;
+ * refused when the English since that language was written reordered the options or moved the answer; again, or on a
+ * language that is not out of date, changes nothing.
+ */
+export const quizConfirmTranslationBodySchema = z.object({ language: quizReviewLanguageSchema });
+export type QuizConfirmTranslationBody = z.infer<typeof quizConfirmTranslationBodySchema>;
 
 /** POST …/{questionId}/take-down */
 export const quizTakeDownBodySchema = z.object({ reason: z.enum(QUIZ_TAKEDOWN_REASONS) });

@@ -266,7 +266,8 @@ describe("the doors by role", () => {
     // Nothing above changed a row.
     expect(await db.quizQuestion.count({ where: { topicId, takenDownAt: { not: null } } })).toBe(0);
     // The catalog: nine doors, all app-admin, the three writes sampled on an id no question holds (the matrix and the
-    // chapters' three reads since bank-desk, 20 Oct 2026; tests/bank-desk.test.ts holds them).
+    // chapters' three reads since bank-desk, 20 Oct 2026; tests/bank-desk.test.ts holds them), and since the owner's
+    // follow-up to TA-199 (14 Nov 2026) a tenth, the still-right confirmation (tests/ta-followup-199-still-right.test.ts).
     const doors = ENDPOINTS.filter((e) => e.path.startsWith(P));
     expect(doors.map((d) => `${d.method} ${d.path}`).sort()).toEqual([
       `GET ${P}`,
@@ -275,6 +276,7 @@ describe("the doors by role", () => {
       `GET ${P}/matrix`,
       `GET ${P}/next`,
       `GET ${P}/{questionId}`,
+      `POST ${P}/{questionId}/confirm-translation`,
       `POST ${P}/{questionId}/edit`,
       `POST ${P}/{questionId}/put-back`,
       `POST ${P}/{questionId}/take-down`,

@@ -968,6 +968,8 @@ const ACTION_KEYS: Record<string, TranslationKey> = {
   "appadmin.quizBank.edit": "audit.appadminQuizBankEdit",
   "appadmin.quizBank.putBack": "audit.appadminQuizBankPutBack",
   "appadmin.quizBank.takeDown": "audit.appadminQuizBankTakeDown",
+  "appadmin.quizBank.confirmTranslation": "audit.appadminQuizBankConfirmTranslation",
+  "operator.quizBank.markRepair": "audit.operatorQuizBankMarkRepair",
   "appadmin.quizJobs.start": "audit.appadminQuizJobsStart",
   "appadmin.quizJobs.stop": "audit.appadminQuizJobsStop",
   "class.attendance.grant": "audit.classAttendanceGrant",

@@ -23,7 +23,7 @@ import { audit } from "./audit";
 import { AccessError } from "./tenancy";
 import { assertAppAdmin, type BankResult } from "./app-admin";
 import { AUTHORED_IN_THE_APP } from "./bank-source";
-import { SERVED_QUESTION } from "./quiz-served";
+import { SERVED_QUESTION, translationKeepsItsPlace } from "./quiz-served";
 import { clampLevel, parseChoices } from "./quiz";
 import { checkExprProblem } from "./bank-csv";
 import type { ActiveContext } from "./session";
@@ -582,7 +582,17 @@ export async function editItem(session: ActiveContext, questionId: string, input
   const result = await inTransaction(async (tx) => {
     const row = await tx.quizQuestion.findUnique({
       where: { id: questionId },
-      select: { generated: true, difficulty: true, stem: true, choices: true, answerIndex: true, solution: true, checkExpr: true, translations: { where: { language: { in: ["hi", "mr"] } }, select: { language: true, stem: true, choices: true, solution: true } } },
+      select: {
+        generated: true,
+        difficulty: true,
+        stem: true,
+        choices: true,
+        answerIndex: true,
+        solution: true,
+        checkExpr: true,
+        editedAfterSolvingAt: true,
+        translations: { where: { language: { in: ["hi", "mr"] } }, select: { language: true, stem: true, choices: true, solution: true, updatedAt: true } },
+      },
     });
     if (!row) throw new Refusal("quizReview.noSuchItem");
     if (!row.generated) throw new Refusal("quizReview.refuseEditCurated");
@@ -613,14 +623,30 @@ export async function editItem(session: ActiveContext, questionId: string, input
       const fields = (["stem", "choices", "solution"] as const).filter((k) => JSON.stringify(words[k]) !== JSON.stringify(was?.[k] ?? null)).map((k) => `${language}.${k}`);
       if (fields.length) languageChanges.push({ language, words, fields });
     }
-    changed = [...englishChanged, ...languageChanges.flatMap((c) => c.fields)];
+    // Only a change to the words a pupil reads (and the key into them) dates the solver's answers and the Hindi and
+    // Marathi rows: a level or a check expression alone leaves both as they were, since a language row older than
+    // this stamp is not served (TA-199, quiz-served.ts servedTranslation).
+    const wordsChanged = englishChanged.some((k) => k === "stem" || k === "choices" || k === "answerIndex" || k === "solution");
+
+    // The "still right" ticks (the owner's follow-up to TA-199, 14 November 2026): a ticked language not corrected in
+    // this press, which would be out of date once this edit is saved, is confirmed against the English as saved,
+    // unless the English since that language was written reordered the options or moved the answer, which refuses the
+    // whole press. A tick on a language that would not be out of date has nothing to confirm.
+    const markAfter = wordsChanged ? now : row.editedAfterSolvingAt;
+    const confirmations: { language: "hi" | "mr"; updatedAt: Date }[] = [];
+    for (const language of [...new Set(input.confirmTranslations ?? [])]) {
+      if (languageChanges.some((c) => c.language === language)) continue;
+      const current = row.translations.find((t) => t.language === language);
+      if (!current || !markAfter || current.updatedAt >= markAfter) continue;
+      const base = await englishTranslatedFrom(tx, questionId, current.updatedAt, before);
+      if (!base || !translationKeepsItsPlace(base, after)) throw new Refusal("quizReview.confirmRefusedOrder");
+      confirmations.push({ language, updatedAt: current.updatedAt });
+    }
+
+    changed = [...englishChanged, ...languageChanges.flatMap((c) => c.fields), ...confirmations.map((c) => `${c.language}.confirmed`)];
     if (changed.length === 0) return false;
 
     if (englishChanged.length) {
-      // Only a change to the words a pupil reads (and the key into them) dates the solver's answers and the Hindi and
-      // Marathi rows: a level or a check expression alone leaves both as they were, since a language row older than
-      // this stamp is not served (TA-199, quiz-served.ts servedTranslation).
-      const wordsChanged = englishChanged.some((k) => k === "stem" || k === "choices" || k === "answerIndex" || k === "solution");
       await tx.quizQuestion.update({
         where: { id: questionId },
         data: {
@@ -638,9 +664,15 @@ export async function editItem(session: ActiveContext, questionId: string, input
       const payload = { stem: c.words.stem, choices: JSON.stringify(c.words.choices), solution: c.words.solution };
       await tx.quizQuestionTranslation.upsert({ where: { questionId_language: { questionId, language: c.language } }, create: { questionId, language: c.language, ...payload }, update: payload });
     }
-    await tx.quizReviewStamp.create({
-      data: { questionId, reviewerUserId: session.user.id, role, action: "EDIT", before: JSON.stringify({ ...before, translations: beforeTr }), at: now },
-    });
+    if (englishChanged.length || languageChanges.length) {
+      await tx.quizReviewStamp.create({
+        data: { questionId, reviewerUserId: session.user.id, role, action: "EDIT", before: JSON.stringify({ ...before, translations: beforeTr }), at: now },
+      });
+    }
+    for (const c of confirmations) {
+      // The row moved since it was read (another press saved it): nothing of this press is kept.
+      if (!(await writeConfirmation(tx, { questionId, language: c.language, was: c.updatedAt, reviewerUserId: session.user.id, role, at: now }))) throw new Refusal("common.tryAgainMoment");
+    }
     return true;
   });
   if (!result.ok) return result;
@@ -681,6 +713,78 @@ export async function putBackItem(session: ActiveContext, questionId: string): P
   });
   if (!result.ok) return result;
   if (result.value) await audit({ schoolId: null, actorUserId: session.user.id, action: "appadmin.quizBank.putBack", targetType: "QuizQuestion", targetId: questionId, meta: { role } });
+  return standingOf(questionId);
+}
+
+/**
+ * The English a language row was written against: the words before the first desk edit made after the row was last
+ * written (EDIT, or the review queue's EDIT_ACCEPT, each keeping the words as they stood in `before`), else the English
+ * as it stands. Null when that edit's earlier words cannot be read. The owner's follow-up to TA-199.
+ */
+async function englishTranslatedFrom(tx: Tx, questionId: string, since: Date, current: { choices: string[]; answerIndex: number }): Promise<{ choices: string[]; answerIndex: number } | null> {
+  const first = await tx.quizReviewStamp.findFirst({
+    where: { questionId, action: { in: ["EDIT", "EDIT_ACCEPT"] }, at: { gt: since } },
+    orderBy: { at: "asc" },
+    select: { before: true },
+  });
+  if (!first) return current;
+  try {
+    const was = JSON.parse(first.before ?? "") as { choices?: unknown; answerIndex?: unknown };
+    if (!Array.isArray(was.choices) || !was.choices.every((c) => typeof c === "string") || typeof was.answerIndex !== "number" || !Number.isInteger(was.answerIndex)) return null;
+    return { choices: was.choices as string[], answerIndex: was.answerIndex };
+  } catch {
+    return null;
+  }
+}
+
+/**
+ * A CONFIRMATION'S ONE WRITER, inside the caller's transaction (the owner's follow-up to TA-199, 14 November 2026): the
+ * language row's last-written time moved to `at`, so it is no longer older than editedAfterSolvingAt and is served
+ * again (quiz-served.ts servedTranslation; the desk's STALE note reads the same), conditional on the row being as the
+ * caller read it; the native-review column set to who confirmed and when; a STAMP_TRANSLATION stamp in that language,
+ * which the desk's history shows; and the audit row. False, writing nothing, when the row moved since it was read.
+ */
+async function writeConfirmation(tx: Tx, input: { questionId: string; language: "hi" | "mr"; was: Date; reviewerUserId: string; role: QuizReviewRole; at: Date }): Promise<boolean> {
+  const { count } = await tx.quizQuestionTranslation.updateMany({ where: { questionId: input.questionId, language: input.language, updatedAt: input.was }, data: { updatedAt: input.at } });
+  if (count === 0) return false;
+  await tx.quizQuestion.update({
+    where: { id: input.questionId },
+    data: input.language === "hi" ? { hiReviewedAt: input.at, hiReviewedBy: input.reviewerUserId } : { mrReviewedAt: input.at, mrReviewedBy: input.reviewerUserId },
+  });
+  await tx.quizReviewStamp.create({ data: { questionId: input.questionId, reviewerUserId: input.reviewerUserId, role: input.role, language: input.language, action: "STAMP_TRANSLATION", at: input.at } });
+  await audit({ schoolId: null, actorUserId: input.reviewerUserId, action: "appadmin.quizBank.confirmTranslation", targetType: "QuizQuestion", targetId: input.questionId, meta: { role: input.role, language: input.language } }, tx);
+  return true;
+}
+
+/**
+ * STILL RIGHT, on a language already marked out of date (the owner's follow-up to TA-199, 14 November 2026): a generated
+ * item's Hindi or Marathi row written before the English's last word change is confirmed still right against the
+ * English as it stands, served again to pupils reading in it, and the desk records who confirmed (writeConfirmation).
+ * Refused with quizReview.confirmRefusedOrder when the English since that row was written reordered the options or
+ * moved the answer (quiz-served.ts translationKeepsItsPlace): such a row is corrected through Edit. A language with no
+ * row is refused; a row that is not out of date (confirmed already, corrected, or never dated) changes nothing.
+ */
+export async function confirmTranslation(session: ActiveContext, questionId: string, language: "hi" | "mr"): Promise<BankResult<QuizBankStanding>> {
+  const role = reviewerRole(session);
+  if (language !== "hi" && language !== "mr") return { ok: false, errorKey: "quizReview.translationMissing" };
+  const now = new Date();
+  const result = await inTransaction(async (tx) => {
+    const row = await tx.quizQuestion.findUnique({
+      where: { id: questionId },
+      select: { generated: true, choices: true, answerIndex: true, editedAfterSolvingAt: true, translations: { where: { language }, select: { updatedAt: true } } },
+    });
+    if (!row) throw new Refusal("quizReview.noSuchItem");
+    if (!row.generated) throw new Refusal("quizReview.refuseEditCurated");
+    const current = row.translations[0];
+    if (!current) throw new Refusal("quizReview.translationMissing");
+    if (!row.editedAfterSolvingAt || current.updatedAt >= row.editedAfterSolvingAt) return false;
+    const english = { choices: parseChoices(row.choices), answerIndex: row.answerIndex };
+    const base = await englishTranslatedFrom(tx, questionId, current.updatedAt, english);
+    if (!base || !translationKeepsItsPlace(base, english)) throw new Refusal("quizReview.confirmRefusedOrder");
+    // A second press racing this one finds the row moved and changes nothing.
+    return writeConfirmation(tx, { questionId, language, was: current.updatedAt, reviewerUserId: session.user.id, role, at: now });
+  });
+  if (!result.ok) return result;
   return standingOf(questionId);
 }
 

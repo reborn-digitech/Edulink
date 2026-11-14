@@ -5,7 +5,7 @@ import type { ModelServer, ModelServerStatus, QuizGenRequest, QuizJobsState, Qui
 import { quizGenRequestSchema } from "@edulink/contracts";
 import { getT } from "@/lib/i18n/server";
 import { requireApiUser, AccessError } from "@/lib/tenancy";
-import { editItem, getItem, nextItem, putBackItem, takeDownItem } from "@/lib/quiz-review";
+import { confirmTranslation, editItem, getItem, nextItem, putBackItem, takeDownItem } from "@/lib/quiz-review";
 import { deskJobs, deskStartJob, deskStartServer, deskStopJob, deskStopServer } from "@/lib/quiz-jobs-desk";
 import { JobRefusal } from "@/lib/quiz-jobs";
 
@@ -74,6 +74,19 @@ export async function putBackAction(questionId: string): Promise<Refreshed> {
   try {
     const session = await requireApiUser();
     const result = await putBackItem(session, questionId);
+    if (!result.ok) return { ok: false, error: (await getT())(result.errorKey) };
+    touched();
+    return { ok: true, item: await getItem(session, questionId) };
+  } catch (error) {
+    return failure(error);
+  }
+}
+
+/** Still right: a language marked out of date confirmed against the English (the owner's follow-up to TA-199, 14 Nov 2026), on the desk or a chapter's page. */
+export async function confirmTranslationAction(questionId: string, language: "hi" | "mr"): Promise<Refreshed> {
+  try {
+    const session = await requireApiUser();
+    const result = await confirmTranslation(session, questionId, language);
     if (!result.ok) return { ok: false, error: (await getT())(result.errorKey) };
     touched();
     return { ok: true, item: await getItem(session, questionId) };

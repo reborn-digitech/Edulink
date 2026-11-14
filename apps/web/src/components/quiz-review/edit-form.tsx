@@ -4,8 +4,9 @@ import { useState } from "react";
 import { PencilSimpleIcon } from "@phosphor-icons/react";
 import type { QuizReviewEditBody, QuizReviewItem } from "@edulink/contracts";
 import { Button } from "@/components/ui/button";
-import { SelectField, TextAreaField, TextField } from "@/components/ui/field";
+import { CheckboxField, SelectField, TextAreaField, TextField } from "@/components/ui/field";
 import { useT } from "@/lib/i18n";
+import { translationKeepsItsPlace } from "@/lib/quiz-served";
 
 type Words = { stem: string; choices: string[]; solution: string };
 type Draft = { stem: string; choices: string[]; answerIndex: number; solution: string; checkExpr: string; difficulty: number; hi: Words | null; mr: Words | null };
@@ -39,11 +40,17 @@ function changedWords(now: Words | null, was: Words | null): Words | undefined {
 export function ItemEditForm({ item, pending, onSave, onCancel }: { item: QuizReviewItem; pending: boolean; onSave: (body: QuizReviewEditBody) => void; onCancel: () => void }) {
   const t = useT();
   const [draft, setDraft] = useState<Draft>(() => draftOf(item));
+  // Still right (the owner's follow-up to TA-199, 14 Nov 2026): the languages ticked as right against the English as saved.
+  const [confirm, setConfirm] = useState<{ hi: boolean; mr: boolean }>({ hi: false, mr: false });
   const setWords = (language: "hi" | "mr", words: Words) => setDraft({ ...draft, [language]: words });
+  const wordsEdited = draft.stem !== item.stem || draft.solution !== item.solution || draft.answerIndex !== item.answerIndex || JSON.stringify(draft.choices) !== JSON.stringify(item.choices);
+  // The server holds the full rule (against the English the language was written for); this greys the tick early.
+  const keepsPlace = translationKeepsItsPlace(item, draft);
 
   function save() {
     const hi = changedWords(draft.hi, wordsOf(item.translations.hi));
     const mr = changedWords(draft.mr, wordsOf(item.translations.mr));
+    const confirmTranslations = (["hi", "mr"] as const).filter((language) => confirm[language] && !(language === "hi" ? hi : mr));
     onSave({
       stem: draft.stem,
       choices: draft.choices,
@@ -52,6 +59,7 @@ export function ItemEditForm({ item, pending, onSave, onCancel }: { item: QuizRe
       checkExpr: draft.checkExpr.trim() || null,
       difficulty: draft.difficulty,
       ...(hi || mr ? { translations: { ...(hi ? { hi } : {}), ...(mr ? { mr } : {}) } } : {}),
+      ...(keepsPlace && confirmTranslations.length ? { confirmTranslations } : {}),
     });
   }
 
@@ -106,6 +114,15 @@ export function ItemEditForm({ item, pending, onSave, onCancel }: { item: QuizRe
                     <TextField key={i} label={t("quizReview.fieldInLanguage", { field: t("quizReview.optionN", { n: i + 1 }), language: name })} value={choice} onChange={(e) => setWords(language, { ...words, choices: words.choices.map((c, j) => (j === i ? e.target.value : c)) })} />
                   ))}
                   <TextAreaField label={t("quizReview.fieldInLanguage", { field: t("quizReview.solutionLabel"), language: name })} value={words.solution} onChange={(e) => setWords(language, { ...words, solution: e.target.value })} />
+                  {(wordsEdited || item.translations[language]?.stale) && !changedWords(words, wordsOf(item.translations[language])) && (
+                    <CheckboxField
+                      label={t("quizReview.confirmTick", { language: name })}
+                      description={keepsPlace ? t("quizReview.confirmTickHint") : t("quizReview.confirmRefusedOrder")}
+                      checked={keepsPlace && confirm[language]}
+                      disabled={!keepsPlace || pending}
+                      onChange={(e) => setConfirm({ ...confirm, [language]: e.target.checked })}
+                    />
+                  )}
                 </>
               )}
             </fieldset>

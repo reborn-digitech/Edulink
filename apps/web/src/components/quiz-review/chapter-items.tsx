@@ -3,7 +3,7 @@
 import { useState, useTransition } from "react";
 import Link from "next/link";
 import { useRouter } from "@/lib/navigation";
-import { ArrowArcLeftIcon, PencilSimpleIcon, ProhibitIcon } from "@phosphor-icons/react";
+import { ArrowArcLeftIcon, CheckCircleIcon, PencilSimpleIcon, ProhibitIcon } from "@phosphor-icons/react";
 import { QUIZ_TAKEDOWN_REASONS, type QuizBankChapterItem, type QuizReviewEditBody, type QuizReviewItem, type QuizTakeDownReason } from "@edulink/contracts";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -12,7 +12,7 @@ import { useToast } from "@/components/ui/toast";
 import { QuizFigure } from "@/components/quiz-figure";
 import { useT } from "@/lib/i18n";
 import type { TranslationKey } from "@/lib/i18n/dictionary";
-import { editAction, itemAction, putBackAction, takeDownHereAction } from "@/app/appadmin/quiz-review/actions";
+import { confirmTranslationAction, editAction, itemAction, putBackAction, takeDownHereAction } from "@/app/appadmin/quiz-review/actions";
 import { ItemEditForm } from "./edit-form";
 
 /** An item as the page hands it over: the contract's, its position on the page, the "made" line already in words, and a curated item's file (null: none holds it). */
@@ -96,6 +96,15 @@ export function ChapterItems({ items, topicId, slug, folder, bankEditor }: { ite
                     {t(`bankDesk.note${note}`)}
                   </p>
                 ))}
+                {/* Still right (the owner's follow-up to TA-199, 14 Nov 2026): the language read here, marked out of date, confirmed against the English. */}
+                {item.notes.includes("STALE") && item.kind === "GENERATED" && item.language !== "en" && !editing && (
+                  <div>
+                    <Button size="sm" variant="secondary" onClick={() => run(() => confirmTranslationAction(item.id, item.language === "hi" ? "hi" : "mr"), "quizReview.confirmedStillRight")} disabled={pending}>
+                      <CheckCircleIcon aria-hidden="true" />
+                      {t("quizReview.confirmStillRight", { language: t(item.language === "hi" ? "gigs.hindi" : "gigs.marathi") })}
+                    </Button>
+                  </div>
+                )}
 
                 {editing ? (
                   <ItemEditForm key={item.id} item={editing} pending={pending} onSave={(body: QuizReviewEditBody) => run(() => editAction(item.id, body), "quizReview.edited")} onCancel={() => setMode(null)} />

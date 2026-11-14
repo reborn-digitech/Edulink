@@ -49,6 +49,22 @@ export function servedTranslation<T extends { updatedAt: Date }>(translation: T 
   return translation;
 }
 
+/**
+ * WHETHER A LANGUAGE ROW CAN BE CONFIRMED STILL RIGHT against a changed English (the owner's follow-up to TA-199, 14
+ * November 2026). A translation's options are served by position against the stored answerIndex, so a row whose English
+ * has since had its options reordered, or its answer moved to another option, cannot be right at any position, whatever
+ * its words say: it is corrected, never confirmed. `base` is the English the row was written against (the desk's edit
+ * history), `now` the English as it is or as it is being saved. Options are compared trimmed and in any case, as the
+ * desk's checkEdit compares them for repeats. Pure; the edit form asks it too, to grey its tick.
+ */
+export function translationKeepsItsPlace(base: { choices: string[]; answerIndex: number }, now: { choices: string[]; answerIndex: number }): boolean {
+  if (base.answerIndex !== now.answerIndex || base.choices.length !== now.choices.length) return false;
+  const norm = (c: string) => c.trim().toLowerCase();
+  const was = base.choices.map(norm);
+  // An option that now stands where another option of the earlier English stood: the options were reordered.
+  return now.choices.map(norm).every((c, i) => was.indexOf(c) === -1 || was.indexOf(c) === i);
+}
+
 /** Held: a generated item that needs a figure nobody has drawn yet. */
 export function isHeldForFigure(q: { generated: boolean; needsFigure: boolean; imageKey: string | null }): boolean {
   return q.generated && q.needsFigure && !q.imageKey;

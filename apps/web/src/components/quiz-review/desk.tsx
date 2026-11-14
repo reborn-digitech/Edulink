@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState, useTransition } from "react";
 import { useRouter } from "@/lib/navigation";
-import { ArrowArcLeftIcon, ArrowRightIcon, KeyboardIcon, PencilSimpleIcon, ProhibitIcon, SealCheckIcon } from "@phosphor-icons/react";
+import { ArrowArcLeftIcon, ArrowRightIcon, CheckCircleIcon, KeyboardIcon, PencilSimpleIcon, ProhibitIcon, SealCheckIcon } from "@phosphor-icons/react";
 import { isCollegeClassLevel, QUIZ_TAKEDOWN_REASONS, type QuizReviewEditBody, type QuizReviewItem, type QuizReviewNext, type QuizReviewQuery, type QuizTakeDownReason } from "@edulink/contracts";
 import { Card, CardBody } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -11,7 +11,7 @@ import { EmptyState } from "@/components/ui/states";
 import { useToast } from "@/components/ui/toast";
 import { useT } from "@/lib/i18n";
 import type { TranslationKey } from "@/lib/i18n/dictionary";
-import { editAction, nextItemAction, putBackAction, takeDownAction } from "@/app/appadmin/quiz-review/actions";
+import { confirmTranslationAction, editAction, nextItemAction, putBackAction, takeDownAction } from "@/app/appadmin/quiz-review/actions";
 import { FigureSlot } from "./figure-slot";
 import { ItemEditForm } from "./edit-form";
 import { quizBoardKey } from "@/lib/quiz-board";
@@ -113,6 +113,15 @@ export function ReviewDesk({ initial, query, subjectLabels }: { initial: QuizRev
     if (!item || item.state !== "DOWN") return;
     refresh(() => putBackAction(item.id), "quizReview.putBackDone");
   }, [item, refresh]);
+
+  // Still right (the owner's follow-up to TA-199, 14 Nov 2026): a language marked out of date confirmed against the English.
+  const confirmStillRight = useCallback(
+    (language: "hi" | "mr") => {
+      if (!item) return;
+      refresh(() => confirmTranslationAction(item.id, language), "quizReview.confirmedStillRight");
+    },
+    [item, refresh],
+  );
 
   const skip = useCallback(() => {
     if (!item) return;
@@ -326,6 +335,12 @@ export function ReviewDesk({ initial, query, subjectLabels }: { initial: QuizRev
                   ) : (
                     <>
                       {row.stale && <p className="text-sm text-warn">{t("quizReview.translationStale")}</p>}
+                      {row.stale && item.kind === "GENERATED" && (
+                        <Button size="sm" variant="secondary" onClick={() => confirmStillRight(language)} disabled={pending}>
+                          <CheckCircleIcon aria-hidden="true" />
+                          {t("quizReview.confirmStillRight", { language: name })}
+                        </Button>
+                      )}
                       {row.flag && <p className="text-sm text-warn">{t("quizReview.translationFlag", { flag: row.flag })}</p>}
                       <p className="whitespace-pre-line leading-relaxed">{row.stem}</p>
                       <ol className="space-y-1 text-sm">
@@ -354,7 +369,10 @@ export function ReviewDesk({ initial, query, subjectLabels }: { initial: QuizRev
               {item.stamps.map((s, i) => (
                 <li key={i}>
                   {t("quizReview.stampLine", {
-                    action: t(`quizReview.action${s.action}` as TranslationKey),
+                    // A language's stamp (a confirmation still right among them) names its language.
+                    action: s.language
+                      ? t("quizReview.actionInLanguage", { action: t(`quizReview.action${s.action}` as TranslationKey), language: t(s.language === "hi" ? "gigs.hindi" : "gigs.marathi") })
+                      : t(`quizReview.action${s.action}` as TranslationKey),
                     name: s.reviewer,
                     role: t(`quizReview.role${s.role}` as TranslationKey),
                     // The desk works on India's day (startOfIndianDay): the app's formatter, never the browser's locale (A3-states-7).
