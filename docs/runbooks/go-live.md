@@ -274,6 +274,7 @@ the server with `Refusing to start: N environment problem(s).` and the key names
 | `TZ`, `NODE_ENV`, `PORT` | in `fly.toml` | — | do not set as secrets |
 | `APP_COMMIT` | build argument | — | stamped by the image build, not a secret |
 | `TRUST_CLOUDFLARE` | only with Cloudflare's proxy on | never | `1` keys the rate limits on `CF-Connecting-IP` for requests arriving from Cloudflare's ranges (3.8) |
+| `REALTIME_BUS`, `REALTIME_LISTEN_URL` | leave out | never (a mistyped `REALTIME_BUS` is said at boot and the default stands) | live updates between machines go through the database on a production server by itself (`deploy.md`, capacity). `REALTIME_LISTEN_URL` only once a transaction pooler is in front of `DATABASE_URL`: the direct URL of the same database and the application role, for the one listening connection each web machine keeps. `REALTIME_BUS=local` switches the sharing off (each machine's streams then hear that machine only) |
 | `TRUST_FLY_CLIENT_IP`, `JOBS_RUNNER`, `HOSTNAME`, `API_CORS_ORIGINS`, `APP_DEEP_LINK_SCHEME`, `EVENTS_KEEPALIVE_MS`, `*_API_BASE`, `STORAGE_DIR`, `SEED_PASSWORD` | leave out | — | Fly sets `FLY_APP_NAME`, which already trusts `Fly-Client-IP`; the jobs runner sets its own `JOBS_RUNNER`, `HOSTNAME` and `PORT`; the rest are for tests and development |
 
 - [ ] **1.4 Stage the secrets on Fly** — engineer
@@ -406,9 +407,10 @@ a health check on `/api/health` every 30 seconds, `shared-cpu-2x` with 4 GB, `TZ
   their CPU quota through the school day, move them to `performance-2x` (2 dedicated vCPUs, 4 GB) rather than
   adding shared machines (`<confirm>` prices).
 - **Pool: `connection_limit=15` on every process** (9.6). Every web machine and the jobs machine is a process:
-  `processes × 15 + 10 (the jobs machine's owner pool of cores × 2 + 1 = 5, the release step, scripts) + 3 (Postgres's reserved)` must stay at or under
-  `max_connections`. At 100 that is five processes: four web machines and the jobs one. Past that, a
-  transaction pooler or a bigger Postgres first.
+  `processes × 15 + web machines × 1 (each web machine's listening connection for live updates, TA-193) + 10 (the jobs machine's owner pool of cores × 2 + 1 = 5, the release step, scripts) + 3 (Postgres's reserved)` must stay at or under
+  `max_connections`. At 100 that is five processes: four web machines and the jobs one (92). Past that, a
+  transaction pooler or a bigger Postgres first; with a pooler in front, the web machines' listening connection
+  must still reach Postgres directly (`REALTIME_LISTEN_URL`, `deploy.md`, capacity).
 - **Compression: at the proxy, not in Node.** `next.config.ts` sets `compress: false`, because Fly's proxy
   compresses every response from an `http_service` that carries no `Content-Encoding` (zstd, br or gzip by the
   client's `Accept-Encoding`, `docs.fly.io/reference/content-encoding`); there is no `fly.toml` line to add,
@@ -512,6 +514,25 @@ a health check on `/api/health` every 30 seconds, `shared-cpu-2x` with 4 GB, `TZ
   the proxy is holding a compressed stream back: set `compress: true` again in `next.config.ts` (Node then
   encodes, and Fly passes an encoded response through untouched) and redeploy. Untested on Fly.
 
+  Then live updates between the two web machines (TA-193: a signal published on one machine reaches the other's
+  streams through the database). On staging, with ZZ people only: `fly machines list -a edulink-web` for the two
+  web machines' ids; hold a ZZ office session's stream on the first and save a ZZ class's register through the
+  second, each request pinned with Fly's `fly-force-instance-id` header (`<confirm>` the header's name in Fly's
+  request-routing reference):
+
+  ```bash
+  read -rs OFFICE    # a minted ZZ ADMIN session on staging; press Return
+  curl -sN -m 60 -H "Authorization: Bearer $OFFICE" -H "fly-force-instance-id: <first web machine>" https://edulink-web.fly.dev/api/v1/events
+  # in a second terminal, as the ZZ class's teacher, save one mark with `-H "fly-force-instance-id: <second web machine>"`
+  ```
+
+  **Verify.** The first terminal prints `event: ready`, and within a second or two of the save
+  `event: attendance.updated`. `fly logs` holds no `[realtime] the link to the other servers is down` line that is
+  not followed by `is up again`. If the event never comes: the web machines' `DATABASE_URL` goes through a
+  transaction pooler (give them the direct URL as `REALTIME_LISTEN_URL`), or `REALTIME_BUS=local` is set. Untested
+  on Fly: no two-machine run has been made; the two-process suite
+  (`apps/web/tests/ta-decision-193-two-servers.test.ts`) is what has run.
+
 - [ ] **3.7 The jobs process started its schedule** — engineer
 
   **What.** `fly machines list -a edulink-web` for the jobs machine's id, then
@@ -553,6 +574,43 @@ a health check on `/api/health` every 30 seconds, `shared-cpu-2x` with 4 GB, `TZ
   is older than it expects, which is how a stopped jobs runner is noticed (its own alarms are jobs of the same runner).
 
   **Verify.** Stop nothing; read the monitor's first green results.
+
+- [ ] **3.11 The pre-launch load run on staging, with the statements per request** — engineer, owner
+
+  **What.** Before the first school (7.3), on a staging deployment of the same image with the ZZ fixture, from a
+  second machine: never on production, and never from the laptop that also runs the database (`ops/load/README.md`,
+  `deploy.md`, capacity). First the three k6 profiles of `ops/load` against the staging host, read against the
+  baselines of 9.5. Then the two measurements the testing analysis of 13 November 2026 left to this run (TA-509).
+  Outside a page render, every Prisma call of a route handler or a server action looks the caller up again: a
+  session read, a membership transaction (`ownMembershipIn` in `tenant-request.ts`) and its own tenant transaction
+  with four `set_config` calls (`db.ts`), about twelve statements and three borrowed connections for one question
+  by reading the code; no statement log has been taken. The cost is not assumed away: past about a thousand active
+  people the fleet run of 15 September 2026 found the connection pool the limit (`P2028` at 100 + 500 before the
+  register rewrite, `ops/load/README.md`, "The fleet run"); the load wave of 4 October 2026 saw no `P2028`.
+
+  - **Database statements per request.** With `pg_stat_statements` on staging's Postgres (`<confirm>` the provider
+    offers it) and no other traffic, reset the counters, make one request, and read the sum of the app role's
+    calls; three times, keeping the smallest (the jobs process may run between). Once for
+    `GET /api/v1/family/overview` as a ZZ guardian and once for a register POST as a ZZ teacher.
+
+    ```bash
+    psql "<owner URL of staging>" -tAc "select pg_stat_statements_reset()"
+    read -rs TOKEN   # a minted ZZ session on staging, never a person's; press Return
+    curl -s -o /dev/null -w '%{http_code}\n' -H "Authorization: Bearer $TOKEN" https://<staging host>/api/v1/family/overview
+    psql "<owner URL of staging>" -tAc "select sum(calls) from pg_stat_statements s join pg_roles r on r.oid = s.userid where r.rolname = 'edulink_app'"
+    ```
+
+  - **A profile of one door.** One staging web machine started with `NODE_OPTIONS=--cpu-prof --cpu-prof-dir=/tmp/prof`
+    (a staging setting, never production's) while k6 drives `GET /api/v1/family/overview` alone for 60 s
+    (`ops/load/parents.js`); stop the process and copy the `.cpuprofile` out with `fly ssh sftp get` (`<confirm>`
+    the process writes it on Fly's stop signal). Read the main thread's share in `resolveRequestTenant`,
+    `ownMembershipIn` and the tenant transaction's `set_config` calls, beside Prisma's own client (39 % on
+    4 October 2026).
+
+  **Verify.** Written beside this step: the statements counted for each of the two requests, the profile's shares,
+  and the owner's decision, dated, before 7.3: keep the caller looked up per query, or try resolving it once per
+  request (one file remembering the caller for the request, measured before and after the same way, with tests for
+  a school switch, sign-in and the event stream) before more schools join.
 
 ## Phase 4 — First run on production
 
@@ -957,7 +1015,7 @@ production API URL is an EAS environment variable, never a file. Run EAS command
 
 - [ ] **7.3 Onboard the first school** — operator
 
-  **What.** `/root/onboard`: school name, slug, contact email, timezone `Asia/Kolkata`, board, lowest and
+  **What.** Not before 3.11's decision is written. `/root/onboard`: school name, slug, contact email, timezone `Asia/Kolkata`, board, lowest and
   highest grade, city and state; a plan (made first at `/root/plans`, optional) or a trial; the school's
   contact person; a partner's commission if any; the first admin's email. The whole onboarding is one
   transaction; the invitation mail goes after it commits. A school the operator adds is approved as it is made.
@@ -1121,8 +1179,9 @@ production API URL is an EAS environment variable, never a file. Run EAS command
 
   **What.** `DATABASE_URL` carries `?connection_limit=15&pool_timeout=20` from 1.3 (the scripts strip them
   before psql sees the URL). Check Postgres's `max_connections` covers every process:
-  `processes × 15 + 10 + 3`, with two web machines and the jobs machine `3 × 15 + 13 = 58`, with four web
-  machines `5 × 15 + 13 = 88` (`deploy.md`, capacity). Do not raise the limit to buy speed: the load wave of
+  `processes × 15 + web machines × 1 + 10 + 3` (the one more per web machine is its listening connection for
+  live updates, TA-193), with two web machines and the jobs machine `3 × 15 + 2 + 13 = 60`, with four web
+  machines `5 × 15 + 4 + 13 = 92` (`deploy.md`, capacity). Do not raise the limit to buy speed: the load wave of
   4 October 2026 never had more than five connections active at once out of 37, while the Node process was
   saturated; a bigger pool only lets fewer processes fit.
 
@@ -1154,6 +1213,7 @@ production API URL is an EAS environment variable, never a file. Run EAS command
 | An SMTP provider with the domain's mail records (0.6) | the first boot (`EMAIL_TRANSPORT=devbox` is fatal) | owner, engineer |
 | Twilio, a DLT entity and header, 26 approved SMS bodies (0.7) | the first boot (`SMS_TRANSPORT=devbox` and an empty `MESSAGE_TEMPLATE_IDS` are fatal) | owner |
 | Managed Postgres 16 with PITR (0.4) | everything | owner, engineer |
+| The pre-launch load run's statement count and the owner's decision on it (3.11) | the first school (7.3) | engineer, owner |
 | An uploads bucket (0.5) | the first boot (a deployed server on Fly refuses to start without one) | owner, engineer |
 | The image built with `NEXT_PUBLIC_VAPID_PUBLIC_KEY` (3.2, 3.3) | browser push; with option A, the first boot | engineer |
 | The company's Razorpay account with KYC (0.9) | paid workshop seats | owner |

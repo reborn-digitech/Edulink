@@ -82,8 +82,6 @@ const COLLEGE_RIDER_STAFF = ["FACULTY", "HOD", "EXAM_CONTROLLER", "IQAC", "TPO",
 const OFFICE = ["ADMIN", "PRINCIPAL"] as const;
 /** The sentence a driver says yes to; a new key asks again. */
 export const CONSENT_TEXT_KEY = "transport.consentBody";
-/** At most one live position event per trip in this many milliseconds. */
-const PUBLISH_EVERY_MS = 15_000;
 /** Positions this far before the start or after now are not the trip's. */
 const BEFORE_START_MS = 60_000;
 const FUTURE_SLACK_MS = 120_000;
@@ -822,8 +820,6 @@ export async function endTrip(ctx: ActiveContext, tripId: string): Promise<{ sta
   return { status: "ENDED", endedAt: now.toISOString() };
 }
 
-const lastPublished = new Map<string, number>();
-
 /**
  * A batch of the bus's positions from the driver's phone, live or from its
  * outbox. Only a LIVE trip takes them (refused before the start and after
@@ -831,7 +827,10 @@ const lastPublished = new Map<string, number>();
  * stored (the same instant) is not stored twice. A low battery flags the
  * trip for the office. Then the families whose stop comes next are told,
  * and the bus's place goes out on the school's and the riders' channels —
- * at most once in fifteen seconds per trip.
+ * at most once in fifteen seconds per trip. That limit is kept where the
+ * signal is received (realtime.ts, POSITION_EVERY_MS; TA-193): kept here, in
+ * one server's memory, it let two positions out in fifteen seconds when two
+ * web servers took the driver's phone in turn.
  */
 export async function recordPositions(ctx: ActiveContext, tripId: string, body: TripPositions): Promise<{ accepted: number; duplicates: number; rejected: number }> {
   const d = await driverOf(ctx);
@@ -865,11 +864,7 @@ export async function recordPositions(ctx: ActiveContext, tripId: string, body: 
     const riders = await ridersOf(d.schoolId, trip.assignment.routeId, trip.dateKey, trip.direction);
     await tellNear(d.schoolId, trip, riders);
     const newest = fresh.reduce((a, b) => (a.at > b.at ? a : b));
-    const lastAt = lastPublished.get(trip.id) ?? 0;
-    if (now - lastAt >= PUBLISH_EVERY_MS) {
-      lastPublished.set(trip.id, now);
-      publish([channel.school(d.schoolId), ...riders.map((r) => channel.student(r.studentMembershipId))], { type: "transport.position", tripId: trip.id, lat: newest.lat, lng: newest.lng, at: newest.at.toISOString() });
-    }
+    publish([channel.school(d.schoolId), ...riders.map((r) => channel.student(r.studentMembershipId))], { type: "transport.position", tripId: trip.id, lat: newest.lat, lng: newest.lng, at: newest.at.toISOString() });
   }
   // A position outside the window is `rejected`, not a duplicate (QA-47): neither is stored, and the phone's outbox may
   // drop both, but the office's and the driver's counts say which it was.

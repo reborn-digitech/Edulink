@@ -617,6 +617,23 @@ export function checkEnv(): EnvProblem[] {
     problems.push({ key: "DATABASE_URL", message: "DATABASE_URL is not set.", fatal: true });
   }
 
+  // The live bus between servers (realtime.ts, TA-193). A mistyped REALTIME_BUS is loud, never fatal: the default
+  // stands. And a pool that goes through a transaction pooler cannot be listened on (LISTEN is accepted and nothing
+  // is ever delivered), so the one listening connection needs a direct URL of its own.
+  const realtimeBus = process.env.REALTIME_BUS?.trim().toLowerCase();
+  if (realtimeBus && realtimeBus !== "database" && realtimeBus !== "local") {
+    problems.push({ key: "REALTIME_BUS", message: 'REALTIME_BUS is neither "database" (live signals pass between servers) nor "local" (each server\'s own); it is read as unset: a production server shares them, development does not.', fatal: false });
+  }
+  const sharesSignals = realtimeBus === "database" || (realtimeBus !== "local" && process.env.NODE_ENV === "production");
+  if (sharesSignals && /[?&]pgbouncer=true(&|$)/i.test(process.env.DATABASE_URL ?? "") && !process.env.REALTIME_LISTEN_URL?.trim()) {
+    problems.push({
+      key: "REALTIME_LISTEN_URL",
+      message:
+        "DATABASE_URL goes through a transaction pooler (pgbouncer=true) and REALTIME_LISTEN_URL is not set: a pooled connection cannot LISTEN, so a register saved through one server would not reach the streams of another. Set REALTIME_LISTEN_URL to the database's direct URL (docs/runbooks/deploy.md).",
+      fatal: false,
+    });
+  }
+
   // A half-set bucket: fatal when deployed (the disk it falls back to is the
   // one the next deploy throws away), loud on a laptop.
   const storage = readStorageConfig();

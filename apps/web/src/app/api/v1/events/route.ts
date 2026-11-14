@@ -14,6 +14,12 @@ import { forOwnSchools, forUser } from "@/lib/tenant-context";
  * comment line every 25 s keeps proxies from closing an idle stream.
  * Signed-out is 401 with an empty body, not a stream.
  *
+ * MORE THAN ONE SERVER (TA-193). What another server publishes reaches this
+ * one's streams through the database (lib/realtime.ts). When that link drops
+ * the streams here end with `link.lost`, each in its own time, and the web
+ * and the phone reconnect and re-read. The four-streams cap below is still
+ * counted per server.
+ *
  * WHO HEARS WHAT. The school channel carries every register, every grade
  * and every remark thread in the school, and it used to be handed to any
  * session with a school on it — a parent's included, once a school id had
@@ -135,7 +141,17 @@ export async function GET(request: Request) {
         }
       };
       send(`event: ready\ndata: ${JSON.stringify({ channels })}\n\n`);
-      stop = subscribe(channels, (event) => send(`event: ${event.type}\ndata: ${JSON.stringify(event)}\n\n`));
+      stop = subscribe(
+        channels,
+        (event) => send(`event: ${event.type}\ndata: ${JSON.stringify(event)}\n\n`),
+        // This server lost its link to the others while the stream was open (TA-193): what they published meanwhile
+        // never reached it, so the stream ends and the client opens a new one and re-reads, as on channels.changed.
+        // realtime.ts calls this in the stream's own time, so one server's pages do not all re-read together.
+        () => {
+          send(`event: link.lost\ndata: {}\n\n`);
+          close();
+        },
+      );
       close = () => {
         stop();
         if (ticker) clearInterval(ticker);

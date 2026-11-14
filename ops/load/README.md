@@ -169,8 +169,9 @@ on the order of a thousand people active at once. Past that, latency is the
 pool: the errors at 100 + 500 before the rewrite were Prisma `P2028`
 ("unable to start a transaction in the given time"). The levers, in order:
 `connection_limit` on `DATABASE_URL` sized to the machine, a pooler in front,
-and more processes — the bucket adapter made the process stateless, so the
-last is a scale command.
+and more processes — the bucket adapter left the process no file of its own,
+so the last is a scale command (live updates between the processes go through
+the database since TA-193: `docs/runbooks/deploy.md`, capacity).
 
 **Two things the run found that were not about load.** Ids handed to the API
 must be cuid-shaped or the contract answers 422 (the seed's first version used

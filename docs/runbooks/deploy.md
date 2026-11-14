@@ -167,7 +167,34 @@ core was pinned. So the settings are:
   one machine per two vCPUs, at least 4 GB each (`fly.toml` asks for 4 GB;
   one process reached 3.6 GB under the college profiles). Start at two `web`
   machines (`fly.toml` keeps two running) and add machines when the p95
-  climbs; the bucket adapter keeps every process stateless.
+  climbs. A process keeps no file of its own (the bucket adapter), but it is
+  not stateless: the event streams it holds open are its own, and so is the
+  count of four streams a session may hold on it. What one process publishes
+  reaches the streams of the others through the database (next point).
+- **Live updates between processes go through the database** (TA-193,
+  14 November 2026; `src/lib/realtime.ts`). A register saved through one web
+  machine is published to that machine's streams at once and sent to the
+  others with `pg_notify` on the pool the process already has; the jobs
+  machine only sends. Each web machine keeps ONE more connection, opened when
+  its first stream subscribes, on which it listens (`src/lib/pg-listen.ts`,
+  the repository's own, so the image gains no dependency). Only ids and
+  progress stages cross; the assistant's answer words stay on the machine
+  that answered and arrive with the reply. `REALTIME_BUS` (`database` or
+  `local`) says which bus a process takes: left unset, a production server
+  takes `database`, and development and the tests keep each process's own.
+  The listening connection must reach Postgres directly: through a
+  transaction pooler `LISTEN` is accepted and nothing is ever delivered, so
+  once a pooler is in front of `DATABASE_URL`, give the web machines the
+  direct URL as `REALTIME_LISTEN_URL` (the boot check says so when
+  `DATABASE_URL` carries `pgbouncer=true`). When the listening connection
+  drops, the log says `[realtime] the link to the other servers is down`,
+  the streams that machine holds are ended over five seconds to two minutes
+  (about five a second, so their pages do not all read again together), the
+  web and the phone reconnect and re-read, and the connection is opened again
+  after one second, doubling to thirty; a connection that hears nothing of
+  its own half-minute heartbeat within ten seconds counts as dropped.
+  Untested: two machines on Fly (go-live 3.6 has the check), TLS to a managed
+  Postgres on this connection, and a failover of the database under it.
 - **A pool of fifteen per process:** append
   `?connection_limit=15&pool_timeout=20` to `DATABASE_URL` (the default is the
   machine's cores times two plus one, 5 on a shared-cpu-2x). Those parameters
@@ -175,10 +202,12 @@ core was pinned. So the settings are:
   script that hands a URL to a libpq tool (the release step's `db-grants.mjs`,
   `ops/backup.sh`, `ops/restore.sh`) strips them first through
   `apps/web/scripts/pg-url.mjs`. Give Postgres `max_connections` room for
-  every process, the jobs machine's owner pool and the release step:
-  `processes × 15 + 10 + 3` (two web and the jobs machine: 58; four web and
-  the jobs machine: 88; a managed Postgres of the smallest size allows 100, so
-  past four web machines put a transaction pooler in front first).
+  every process, each web machine's one listening connection (the point
+  above), the jobs machine's owner pool and the release step:
+  `processes × 15 + web machines × 1 + 10 + 3` (two web and the jobs machine:
+  60; four web and the jobs machine: 92; a managed Postgres of the smallest
+  size allows 100, so past four web machines put a transaction pooler in
+  front first, with `REALTIME_LISTEN_URL` kept direct).
 - **Compression at the proxy.** `next.config.ts` sets `compress: false`: gzip
   of one 845 KB page took 16.6 ms of the process's main thread. Fly's proxy
   compresses every `http_service` response that has no `Content-Encoding`, so
@@ -191,14 +220,16 @@ core was pinned. So the settings are:
   3.6).
 
 Before a launch, repeat the plan profile from a second machine with k6
-against the deployed app, not from the laptop that also runs the database.
+against the deployed app, not from the laptop that also runs the database,
+and count the database statements per request and profile one door there
+(go-live 3.11, TA-509).
 
 ## Uploads
 
 With `STORAGE_BUCKET` and the four `STORAGE_S3_*` variables set, uploads go to
 the bucket (originals under `files/`, resized copies under `variants/`, both
-below `STORAGE_S3_PREFIX` if set) and the machines are stateless: scale to two,
-replace one, no volume to mount. `src/lib/s3.ts` signs the requests itself,
+below `STORAGE_S3_PREFIX` if set) and the machines keep no file of their own:
+scale to two, replace one, no volume to mount. `src/lib/s3.ts` signs the requests itself,
 so the image gains no dependency. Turn on the bucket's own replication or
 versioning; `ops/backup.sh` covers the database only. Without the variables
 the app writes to `STORAGE_DIR`, which on Fly means a `[mounts]` volume and

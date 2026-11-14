@@ -171,6 +171,15 @@ export function markInTransaction<T>(work: () => Promise<T>): Promise<T> {
 }
 
 /**
+ * Runs `work` as outside any transaction (TA-193): for the one statement that is no part of the work in hand and
+ * touches no table, the live bus's notify (realtime.ts), which db.ts's guard would otherwise refuse in development
+ * when a signal is published from inside a tenant transaction's work. Never for a read or a write of a row.
+ */
+export function outsideTransaction<T>(work: () => T): T {
+  return openTransaction.exit(work);
+}
+
+/**
  * Runs `work` for an explicit tenant, whatever the session would have said.
  *
  * The general form the three below are written in terms of. It REPLACES the set
