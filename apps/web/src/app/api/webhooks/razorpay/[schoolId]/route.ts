@@ -73,7 +73,16 @@ export async function POST(request: Request, { params }: { params: Promise<{ sch
   const raw = await readBounded(request, WEBHOOK_BODY_LIMIT);
   if (raw === null) return NextResponse.json({ code: "TOO_LARGE" }, { status: 413 });
   const signature = request.headers.get("x-razorpay-signature");
-  const account = await forSchool(schoolId, () => gatewayAccountFor(schoolId)).catch(() => null);
+  // 404 only when the school truly has no gateway row (TA-448): a read that throws (a seal that will not open on this
+  // machine, the database away for a moment) is logged and answered 503, so the gateway retries and the operator
+  // sees why, rather than being told the school has no gateway.
+  let account: Awaited<ReturnType<typeof gatewayAccountFor>>;
+  try {
+    account = await forSchool(schoolId, () => gatewayAccountFor(schoolId));
+  } catch (error) {
+    console.error("[webhooks/razorpay/school] gateway account unreadable", schoolId, error instanceof Error ? error.message : error);
+    return NextResponse.json({ code: "GATEWAY_UNREADABLE", retry: true }, { status: 503, headers: { "Retry-After": "60" } });
+  }
   if (!account) return NextResponse.json({ code: "NO_GATEWAY" }, { status: 404 });
   if (!verifyWebhookSignature(account.webhookSecret, raw, signature)) return NextResponse.json({ code: "BAD_SIGNATURE" }, { status: 401 });
 

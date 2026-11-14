@@ -6,7 +6,10 @@ import { currentAcademicYear } from "./academic-year";
 import { isDateKey } from "./dates";
 import { readJson, writeJson } from "./json";
 import { sealingAvailable, seal, open } from "./secret-box";
-import { readFeesGatewayTransport } from "./env";
+import { isDeployedServer, readFeesGatewayTransport } from "./env";
+import { notify } from "./notify";
+import { standingOf } from "./college-office";
+import { FEE_ORDER_RECONCILE_AFTER_MS } from "./constants";
 import type { GatewayAccount } from "./gateway";
 import type { ActiveContext } from "./session";
 import type { FeeConcessionKind, FeeHeadKind } from "./constants";
@@ -111,8 +114,52 @@ export async function saveFeeSettings(ctx: ActiveContext, input: { upiId?: strin
   if (upiId && !upiPayee) throw new AccessError("fees.refuseUpiPayee");
   const receiptPrefix = (input.receiptPrefix ?? "RCPT").trim().toUpperCase().replace(/[^A-Z0-9-]/g, "").slice(0, 12) || "RCPT";
   const bankNote = input.bankNote?.trim().slice(0, 600) || null;
-  await db.school.update({ where: { id: caller.schoolId }, data: { feeUpiId: upiId, feeUpiPayee: upiPayee, feeReceiptPrefix: receiptPrefix, feeBankNote: bankNote, ...(input.pupilFeeViewAge !== undefined ? { pupilFeeViewAge: input.pupilFeeViewAge } : {}) } });
-  await audit({ schoolId: caller.schoolId, actorUserId: caller.userId, action: "fees.settings", targetType: "School", targetId: caller.schoolId, meta: { upi: Boolean(upiId), receiptPrefix, ...(input.pupilFeeViewAge !== undefined ? { pupilFeeViewAge: input.pupilFeeViewAge } : {}) } });
+  // THE PAYEE IS ON RECORD (TA-131, testing analysis of 13 November 2026). Every UPI link a family opens pays this id,
+  // and the office that sets it can also confirm the claims, so a change of the id or the payee name is audited with
+  // a masked form of the old and the new, in the same transaction as the write, and the rest of the office and the
+  // head are told: a payee swapped and later put back no longer leaves two rows that each say only "upi: true".
+  const before = await db.school.findUniqueOrThrow({ where: { id: caller.schoolId }, select: { feeUpiId: true, feeUpiPayee: true } });
+  const payeeChanged = (before.feeUpiId ?? null) !== upiId || (before.feeUpiPayee ?? null) !== upiPayee;
+  const payeeMeta: Record<string, unknown> = payeeChanged ? { payeeChanged: true, upiFrom: maskUpiId(before.feeUpiId), upiTo: maskUpiId(upiId), payeeFrom: maskPayee(before.feeUpiPayee), payeeTo: maskPayee(upiPayee) } : { payeeChanged: false };
+  await db.$tenantTransaction(async (raw) => {
+    const tx = raw as typeof db;
+    await tx.school.update({ where: { id: caller.schoolId }, data: { feeUpiId: upiId, feeUpiPayee: upiPayee, feeReceiptPrefix: receiptPrefix, feeBankNote: bankNote, ...(input.pupilFeeViewAge !== undefined ? { pupilFeeViewAge: input.pupilFeeViewAge } : {}) } });
+    await audit({ schoolId: caller.schoolId, actorUserId: caller.userId, action: "fees.settings", targetType: "School", targetId: caller.schoolId, meta: { upi: Boolean(upiId), receiptPrefix, ...payeeMeta, ...(input.pupilFeeViewAge !== undefined ? { pupilFeeViewAge: input.pupilFeeViewAge } : {}) } }, tx);
+  });
+  if (!payeeChanged) return;
+  const others = await db.membership.findMany({ where: { schoolId: caller.schoolId, role: { in: ["ADMIN", "ACCOUNTS", "PRINCIPAL"] }, status: "ACTIVE", leftAt: null, userId: { not: caller.userId } }, select: { userId: true } });
+  const from = maskUpiId(before.feeUpiId) ?? "—";
+  const to = maskUpiId(upiId) ?? "—";
+  await Promise.all(
+    [...new Set(others.map((o) => o.userId))].map((userId) =>
+      notify({ userId, schoolId: caller.schoolId, kind: "FEES", titleKey: "notifTitle.feeUpiChanged", bodyKey: "notifBody.feeUpiChanged", bodyVars: { from, to }, url: "/admin/fees/settings", urgent: true, meta: { schoolId: caller.schoolId } }).catch(() => undefined),
+    ),
+  );
+}
+
+/** A UPI id with all but the first two letters of its name hidden: "ab*****@okhdfc". */
+export function maskUpiId(upiId: string | null): string | null {
+  if (!upiId) return null;
+  const at = upiId.lastIndexOf("@");
+  const name = at >= 0 ? upiId.slice(0, at) : upiId;
+  const bank = at >= 0 ? upiId.slice(at) : "";
+  return `${name.slice(0, 2)}${"*".repeat(Math.max(1, name.length - 2))}${bank}`;
+}
+
+/** A payee name with only its first letter shown. */
+function maskPayee(payee: string | null): string | null {
+  return payee ? `${payee.slice(0, 1)}***` : null;
+}
+
+/**
+ * Whether a checkout may be opened with this key (TA-447, testing analysis of 13 November 2026). On a deployed server
+ * with the real gateway transport a test key (rzp_test_…) would take test payments the gateway never moves money
+ * for, and the ledger would issue real receipts in the school's real series for them; such a key is refused there.
+ * The devbox transport and a local machine keep taking test keys, which is what they are for.
+ */
+export function gatewayKeyTakesPayments(keyId: string): boolean {
+  if (readFeesGatewayTransport() !== "razorpay" || !isDeployedServer()) return true;
+  return keyId.startsWith("rzp_live_");
 }
 
 /**
@@ -129,7 +176,11 @@ export async function saveGatewayAccount(ctx: ActiveContext, input: { keyId: str
   const webhookSecret = input.webhookSecret.trim();
   if (!/^rzp_(test|live)_[A-Za-z0-9]{6,40}$/.test(keyId)) throw new AccessError("fees.refuseKeyId");
   if (secret.length < 8 || webhookSecret.length < 8) throw new AccessError("fees.refuseSecrets");
-  const mode = keyId.startsWith("rzp_live_") ? "LIVE" : input.mode;
+  // The mode is the key's own (TA-447): a live key is live, and a test key is test; a test key sent as Live is
+  // refused rather than stored and shown as live.
+  const mode = keyId.startsWith("rzp_live_") ? "LIVE" : "TEST";
+  if (mode === "TEST" && input.mode === "LIVE") throw new AccessError("fees.refuseKeyMode");
+  await refuseWhileCheckoutsOpen(caller.schoolId);
   await db.feeGatewayAccount.upsert({
     where: { schoolId: caller.schoolId },
     create: { schoolId: caller.schoolId, provider: "RAZORPAY", keyId, secretEnc: seal(secret, `${caller.schoolId}:secret`), webhookSecretEnc: seal(webhookSecret, `${caller.schoolId}:webhook`), mode },
@@ -140,8 +191,20 @@ export async function saveGatewayAccount(ctx: ActiveContext, input: { keyId: str
 
 export async function removeGatewayAccount(ctx: ActiveContext): Promise<void> {
   const caller = office(ctx);
+  await refuseWhileCheckoutsOpen(caller.schoolId);
   await db.feeGatewayAccount.deleteMany({ where: { schoolId: caller.schoolId } });
   await audit({ schoolId: caller.schoolId, actorUserId: caller.userId, action: "fees.gatewayRemove", targetType: "School", targetId: caller.schoolId });
+}
+
+/**
+ * KEYS ARE NOT CHANGED UNDER AN OPEN CHECKOUT (TA-448, testing analysis of 13 November 2026). An order is created,
+ * signed and confirmed under the keys of the moment; replacing or removing them while a family is in the checkout
+ * made that family's capture answer "bad signature" at the confirm and the webhook. So while an online order younger
+ * than the hold (the half hour after which the reconcile job asks the gateway about it) is still open, the keys stay.
+ */
+async function refuseWhileCheckoutsOpen(schoolId: string): Promise<void> {
+  const open = await db.feePayment.count({ where: { schoolId, method: "ONLINE", status: "INITIATED", gatewayOrderId: { not: null }, createdAt: { gte: new Date(Date.now() - FEE_ORDER_RECONCILE_AFTER_MS) } } });
+  if (open > 0) throw new AccessError("fees.refuseGatewayOrdersOpen");
 }
 
 /** The account with its secrets opened — for the checkout, the webhook and the reconcile job only. */
@@ -416,6 +479,13 @@ type ConcessionRow = { headId: string | null; kind: string; value: number };
 export const CONCESSION_LIMIT_DEFAULT_PAISE = 500_000;
 
 /**
+ * The time a whole-school fee write may take (TA-132, testing analysis of 13 November 2026): an assignment of up to
+ * 2,000 pupils or a year's carry-forward is many statements a pupil, past Prisma's five-second default that a deployed
+ * server keeps. Two minutes, as such a batch needs on a hosted database; a failure still rolls back whole.
+ */
+export const WHOLE_SCHOOL_TX_MS = 120_000;
+
+/**
  * One line's own concession: percentages (on this head or on all) on the
  * line, and an amount on THIS head capped at the line. Rounded half up to the
  * paisa. A flat amount on all heads is not a line's business — it is taken
@@ -470,23 +540,42 @@ export function concessionOnInstalment(lines: { headId: string; grossPaise: numb
  * removed only if untouched. Runs inside the caller's transaction.
  *
  * UNTOUCHED means no money has ever been allocated to it — paidPaise 0 and
- * not one allocation row, so a demand a reversed payment once sat on stays
- * as it is — and it is either OPEN or the PAID-with-nothing-owed a 100 %
- * concession writes. That last case is why the status alone is not the
- * test: such a demand was never paid by anyone, and revoking the concession
- * must reopen it with the new net.
+ * not one allocation row — and it is either OPEN or the PAID-with-nothing-owed
+ * a 100 % concession writes. That last case is why the status alone is not
+ * the test: such a demand was never paid by anyone, and revoking the
+ * concession must reopen it with the new net.
+ *
+ * EMPTIED (TA-126, testing analysis of 13 November 2026) is a demand money
+ * once sat on that holds none now: the payment was reversed or refunded in
+ * full, so its allocation rows stay for the trail but paidPaise (the sum of
+ * the PAID and REFUNDED allocations) is 0. It used to be kept as it stood, so
+ * a pupil moved to another structure, or taken off their plan, still owed the
+ * old structure's term beside the new one's. It is now rewritten like an
+ * untouched demand, and where the plan no longer asks for it, it is CANCELLED
+ * rather than deleted, keeping its allocation rows; a demand cancelled that
+ * way is opened again if the pupil, still on the roll, is moved back.
  */
 export async function regenerateDemands(tx: typeof db, schoolId: string, studentMembershipId: string, academicYearId: string): Promise<{ written: number; kept: number }> {
+  await lockPupilDemands(tx, schoolId, studentMembershipId, academicYearId);
   const plan = await tx.studentFeePlan.findUnique({
     where: { studentMembershipId_academicYearId: { studentMembershipId, academicYearId } },
     include: { structure: { include: { instalments: { orderBy: { sortOrder: "asc" }, include: { lines: { include: { head: { select: { code: true, name: true } } } } } } } } },
   });
   const existing = await tx.feeDemand.findMany({ where: { schoolId, studentMembershipId, academicYearId, instalmentId: { not: null } }, include: { _count: { select: { allocations: true } } } });
+  const onRoll = (await tx.membership.findUnique({ where: { id: studentMembershipId }, select: { leftAt: true } }))?.leftAt === null;
   const untouched = (d: (typeof existing)[number]) => d.paidPaise === 0 && d._count.allocations === 0 && (d.status === "OPEN" || (d.status === "PAID" && d.netPaise === 0));
+  const emptied = (d: (typeof existing)[number]) => d.paidPaise === 0 && d._count.allocations > 0 && (d.status === "OPEN" || (d.status === "CANCELLED" && onRoll));
+  const rewritable = (d: (typeof existing)[number]) => untouched(d) || emptied(d);
+  const cancelEmptied = async (rows: typeof existing) => {
+    const ids = rows.filter((d) => emptied(d) && d.status === "OPEN").map((d) => d.id);
+    if (ids.length) await tx.feeDemand.updateMany({ where: { id: { in: ids }, schoolId, status: "OPEN", paidPaise: 0 }, data: { status: "CANCELLED" } });
+    return ids.length;
+  };
   if (!plan) {
     const removable = existing.filter(untouched).map((d) => d.id);
     if (removable.length) await tx.feeDemand.deleteMany({ where: { id: { in: removable } } });
-    return { written: 0, kept: existing.length - removable.length };
+    const cancelled = await cancelEmptied(existing);
+    return { written: 0, kept: existing.length - removable.length - cancelled };
   }
   // A PUPIL ADMITTED PART-WAY THROUGH THE YEAR (A3-journeys-16): an instalment whose day fell before the admission
   // date is due on the admission date instead, so a child admitted on 5 October is not "overdue" on day one with
@@ -526,7 +615,7 @@ export async function regenerateDemands(tx: typeof db, schoolId: string, student
     const concessionPaise = lines.reduce((a, l) => a + l.concessionPaise, 0);
     const netPaise = grossPaise - concessionPaise;
     const current = existing.find((d) => d.instalmentId === inst.id);
-    if (current && !untouched(current)) {
+    if (current && !rewritable(current)) {
       kept += 1;
       continue;
     }
@@ -535,9 +624,22 @@ export async function regenerateDemands(tx: typeof db, schoolId: string, student
     else await tx.feeDemand.create({ data: { schoolId, studentMembershipId, academicYearId, instalmentId: inst.id, ...data } });
     written += 1;
   }
-  const stale = existing.filter((d) => d.instalmentId && !wanted.has(d.instalmentId) && untouched(d)).map((d) => d.id);
+  const notWanted = existing.filter((d) => d.instalmentId && !wanted.has(d.instalmentId));
+  const stale = notWanted.filter(untouched).map((d) => d.id);
   if (stale.length) await tx.feeDemand.deleteMany({ where: { id: { in: stale } } });
+  await cancelEmptied(notWanted);
   return { written, kept };
+}
+
+/**
+ * ⚠ THE PUPIL'S DEMANDS ARE LOCKED BEFORE THEY ARE READ (TA-133, testing analysis of 13 November 2026). A payment
+ * settling (fees-payments.ts openDemands) locks the pupil's OPEN and PART demands; a concession, a plan change or an
+ * unassignment used to read and rewrite them with no lock, so a demand being paid at that moment could be rewritten
+ * OPEN under the payment or deleted with its allocation. This takes the same rows plus the rest of the year's, in id
+ * order as openDemands does, so the two wait for each other and never deadlock.
+ */
+export async function lockPupilDemands(tx: typeof db, schoolId: string, studentMembershipId: string, academicYearId: string): Promise<void> {
+  await tx.$queryRaw`SELECT "id" FROM "FeeDemand" WHERE "schoolId" = ${schoolId} AND "studentMembershipId" = ${studentMembershipId} AND ("status" IN ('OPEN', 'PART') OR "academicYearId" = ${academicYearId}) ORDER BY "id" FOR UPDATE`;
 }
 
 export type AssignResult = { assigned: number; moved: number; unchanged: number; refused: { studentMembershipId: string; name: string }[] };
@@ -549,7 +651,27 @@ export type AssignResult = { assigned: number; moved: number; unchanged: number;
  * refused by name, because moving them would mean rewriting a paid term.
  */
 export async function assignPlans(ctx: ActiveContext, input: { structureId: string; classId?: string; studentMembershipIds?: string[] }): Promise<AssignResult> {
-  return assignPlansAs(office(ctx), input);
+  return assignPlansAs(office(ctx), input, { matchStanding: true });
+}
+
+/**
+ * AT A COLLEGE THE OFFICE'S PLAN DOOR PUTS A STUDENT ONLY ON THEIR OWN STRUCTURE (TA-082, testing analysis of 13
+ * November 2026). A college's fee follows the student's programme, year of study and admission category, and a lower
+ * one is a concession, which at a college names its authority and waits for the principal above the office's limit
+ * (college-fees.ts; this file's grantConcession refuses a college for that reason, campaign S-1). The school's plan
+ * door put a college student on any published structure, so a cheaper one was a concession with neither. At a college
+ * it now refuses a structure that is not the one the student's standing calls for; `raiseDemands` already matches.
+ */
+async function refuseOffStanding(schoolId: string, structureId: string, pupilIds: string[]): Promise<void> {
+  const kind = (await db.school.findUnique({ where: { id: schoolId }, select: { kind: true } }))?.kind;
+  if (!isCollegeKind(kind)) return;
+  const structure = await db.feeStructure.findFirst({ where: { id: structureId, schoolId }, select: { programmeId: true, yearOfStudy: true, category: true, year: { select: { startDate: true } } } });
+  if (!structure) return;
+  if (!structure.programmeId) throw new AccessError("fees.refuseCollegeStanding");
+  for (const id of pupilIds) {
+    const s = await standingOf(id, structure.year.startDate.getUTCFullYear());
+    if (s.programmeId !== structure.programmeId || s.yearOfStudy !== structure.yearOfStudy || s.category !== structure.category) throw new AccessError("fees.refuseCollegeStanding");
+  }
 }
 
 /**
@@ -559,7 +681,7 @@ export async function assignPlans(ctx: ActiveContext, input: { structureId: stri
  * checks — so a self-enrolment writes the plan and its demands exactly as an
  * office assignment does, and the ledger keeps one writer.
  */
-export async function assignPlansAs(caller: FeeCaller, input: { structureId: string; classId?: string; studentMembershipIds?: string[] }): Promise<AssignResult> {
+export async function assignPlansAs(caller: FeeCaller, input: { structureId: string; classId?: string; studentMembershipIds?: string[] }, opts: { matchStanding?: boolean; onlyIfNoPlan?: boolean } = {}): Promise<AssignResult> {
   const structure = await db.feeStructure.findFirst({ where: { id: input.structureId, schoolId: caller.schoolId }, select: { id: true, academicYearId: true, publishedAt: true, archivedAt: true } });
   if (!structure) throw new AccessError("fees.notFound", "NOT_FOUND");
   if (!structure.publishedAt) throw new AccessError("fees.refuseAssignDraft");
@@ -579,12 +701,24 @@ export async function assignPlansAs(caller: FeeCaller, input: { structureId: str
 
   const pupils = await db.membership.findMany({ where: { id: { in: ids }, schoolId: caller.schoolId, role: "STUDENT" }, select: { id: true, user: { select: { name: true, preferredName: true } } } });
   if (pupils.length !== ids.length) throw new AccessError("fees.notFound", "NOT_FOUND");
+  if (opts.matchStanding) await refuseOffStanding(caller.schoolId, structure.id, ids);
 
   const result: AssignResult = { assigned: 0, moved: 0, unchanged: 0, refused: [] };
+  // A whole class is many statements a pupil, so the transaction is given more than Prisma's five-second default
+  // (TA-132, testing analysis of 13 November 2026): the default rolled a large assignment back whole on a deployed
+  // server, where only development lengthens it.
   await db.$tenantTransaction(async (raw) => {
     const tx = raw as typeof db;
     for (const pupil of pupils) {
+      // ONE PLAN WRITER AT A TIME PER PUPIL (TA-584): two guardians choosing at once, or a guardian choosing while the
+      // office assigns the class, each read "no plan yet" and the second moved the child off the first's choice (or
+      // met the unique key as a 500). The pupil's plan is now decided under a lock, read again under it, and a
+      // family's choice (onlyIfNoPlan) is refused there when a plan already stands. The demands are locked too
+      // (TA-133), before the paid check below, so a payment settling now is counted.
+      await tx.$queryRaw`SELECT 1 FROM pg_advisory_xact_lock(hashtext(${`fee-plan:${pupil.id}:${structure.academicYearId}`}))`;
+      await lockPupilDemands(tx, caller.schoolId, pupil.id, structure.academicYearId);
       const plan = await tx.studentFeePlan.findUnique({ where: { studentMembershipId_academicYearId: { studentMembershipId: pupil.id, academicYearId: structure.academicYearId } }, select: { id: true, structureId: true } });
+      if (plan && opts.onlyIfNoPlan) throw new AccessError("fees.refuseSelfEnrolHasPlan");
       if (plan?.structureId === structure.id) {
         // Same structure: regenerate so a changed concession or a fresh
         // instalment shows up, but count it as unchanged.
@@ -606,7 +740,7 @@ export async function assignPlansAs(caller: FeeCaller, input: { structureId: str
       }
       await regenerateDemands(tx, caller.schoolId, pupil.id, structure.academicYearId);
     }
-  });
+  }, { timeout: WHOLE_SCHOOL_TX_MS });
   await audit({ schoolId: caller.schoolId, actorUserId: caller.userId, action: "fees.assign", targetType: "FeeStructure", targetId: structure.id, meta: { assigned: result.assigned, moved: result.moved, unchanged: result.unchanged, refused: result.refused.length, classId: input.classId ?? null } });
   return result;
 }
@@ -616,10 +750,13 @@ export async function unassignPlan(ctx: ActiveContext, studentMembershipId: stri
   const caller = office(ctx);
   const plan = await db.studentFeePlan.findFirst({ where: { studentMembershipId, academicYearId, schoolId: caller.schoolId }, select: { id: true } });
   if (!plan) throw new AccessError("fees.notFound", "NOT_FOUND");
-  const paid = await db.feeDemand.count({ where: { studentMembershipId, academicYearId, paidPaise: { gt: 0 } } });
-  if (paid > 0) throw new AccessError("fees.refuseUnassignPaid");
   await db.$tenantTransaction(async (raw) => {
     const tx = raw as typeof db;
+    // Counted under the pupil's lock (TA-133), so a payment settling at this moment is seen before the plan goes.
+    await tx.$queryRaw`SELECT 1 FROM pg_advisory_xact_lock(hashtext(${`fee-plan:${studentMembershipId}:${academicYearId}`}))`;
+    await lockPupilDemands(tx, caller.schoolId, studentMembershipId, academicYearId);
+    const paid = await tx.feeDemand.count({ where: { studentMembershipId, academicYearId, paidPaise: { gt: 0 } } });
+    if (paid > 0) throw new AccessError("fees.refuseUnassignPaid");
     await tx.studentFeePlan.delete({ where: { id: plan.id } });
     await regenerateDemands(tx, caller.schoolId, studentMembershipId, academicYearId);
   });

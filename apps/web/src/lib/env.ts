@@ -467,6 +467,10 @@ export type FeesGatewayTransport = "devbox" | "razorpay" | "off";
 export function readGigGatewayTransport(): GigGatewayTransport {
   return readGigTransport(isDeployed());
 }
+/** Whether this is a deployed server (production with a non-local origin): the fee checkout refuses a test key there (TA-447). */
+export function isDeployedServer(): boolean {
+  return isDeployed();
+}
 export function readFeesGatewayTransport(): FeesGatewayTransport {
   const named = process.env.FEES_GATEWAY_TRANSPORT?.trim();
   if (named === "razorpay") return "razorpay";

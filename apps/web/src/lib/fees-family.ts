@@ -113,7 +113,11 @@ export async function selfEnrolPlan(ctx: ActiveContext, input: { student: string
     if (existing) throw new AccessError("fees.refuseSelfEnrolHasPlan");
     const paid = await db.feeDemand.count({ where: { schoolId, studentMembershipId: link.studentMembershipId, academicYearId: year.id, paidPaise: { gt: 0 } } });
     if (paid > 0) throw new AccessError("fees.refuseSelfEnrolPaid");
-    const assigned = await assignPlansAs({ schoolId, userId: ctx.user.id, role: ctx.role, membershipId: null }, { structureId: structure.id, studentMembershipIds: [link.studentMembershipId] });
+    // onlyIfNoPlan: the "no plan yet" above is read again under the writer's per-pupil lock (TA-584), so a second
+    // guardian choosing at the same moment is refused rather than moving the child off the first one's choice.
+    // matchStanding: at a college a family, like the office, may choose only the structure the student's programme,
+    // year of study and category call for (TA-082); a cheaper one is a concession, which waits for the principal.
+    const assigned = await assignPlansAs({ schoolId, userId: ctx.user.id, role: ctx.role, membershipId: null }, { structureId: structure.id, studentMembershipIds: [link.studentMembershipId] }, { onlyIfNoPlan: true, matchStanding: true });
     if (assigned.refused.length > 0) throw new AccessError("fees.refuseSelfEnrolPaid");
     const demands = await db.feeDemand.count({ where: { schoolId, studentMembershipId: link.studentMembershipId, academicYearId: year.id, instalmentId: { not: null } } });
     await audit({ schoolId, actorUserId: ctx.user.id, action: "fees.plan.selfEnrolled", targetType: "Membership", targetId: link.studentMembershipId, meta: { structureId: structure.id, structureName: structure.name, academicYearId: year.id, demands } });

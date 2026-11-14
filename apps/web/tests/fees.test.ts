@@ -331,7 +331,8 @@ describe("online — the school's own gateway", () => {
 
   it("the reconcile job closes a day-old order nobody paid", async () => {
     const payment = await db.feePayment.create({ data: { schoolId, studentMembershipId: pupilA, amountPaise: 100_00, method: "ONLINE", status: "INITIATED", gatewayOrderId: `order_devboxstale${STAMP}`, payerUserId: parentUserId, createdAt: new Date(Date.now() - 26 * 3_600_000) }, select: { id: true } });
-    const report = await reconcileOnlinePayments();
+    // Scoped to this suite's school: the job also closes old unclaimed UPI intents (TA-449), and the dev database's are not this suite's.
+    const report = await reconcileOnlinePayments(new Date(), { schoolIds: [schoolId] });
     expect(report.perSchool[schoolId]?.expired).toBe(1);
     expect((await db.feePayment.findUniqueOrThrow({ where: { id: payment.id } })).status).toBe("FAILED");
   });
@@ -352,7 +353,8 @@ describe("UPI to the school's own id", () => {
     expect(start.amountPaise).toBe(250_00);
     await expect(claimUpiPayment(parent(), { paymentId: start.paymentId, utr: "short" })).rejects.toThrow("fees.refuseUtr");
     await claimUpiPayment(parent(), { paymentId: start.paymentId, utr: "utr123456789012" });
-    expect(await db.notification.count({ where: { userId: adminUserId, kind: "FEES" } })).toBe(1);
+    // The claim's own notice, once (the office's other FEES notices, such as the amount mismatch above, TA-524, are not this one).
+    expect(await db.notification.count({ where: { userId: adminUserId, kind: "FEES", titleKey: "notifTitle.feeClaimWaiting" } })).toBe(1);
     const claims = await listClaims(admin(), TODAY);
     expect(claims.claims.map((c) => [c.utr, c.amountPaise, c.stale])).toEqual([["UTR123456789012", 250_00, false]]);
     // Another family cannot reuse the UTR.

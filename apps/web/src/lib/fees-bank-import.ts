@@ -68,13 +68,32 @@ function pickColumn(headers: string[], ...patterns: RegExp[]): string | null {
   return null;
 }
 
-/** "1,250.00", "₹1250", "1250.5" → paise; anything else null. */
+/**
+ * "1,250.00", "₹1250", "1250.5", "1,250.00 Cr" → paise; anything else null. A cell the bank marks Dr is money that
+ * LEFT the account and is not a credit (TA-336, testing analysis of 13 November 2026): it used to have its mark
+ * stripped and be read as a payment received.
+ */
 export function parseStatementAmount(raw: string): number | null {
+  if (statementDebitMark(raw)) return null;
+  return unsignedStatementAmount(raw);
+}
+
+/** Whether the bank marked the cell a debit: "2,500.00 Dr", "Dr 2500", "2500.00DR". */
+export function statementDebitMark(raw: string): boolean {
+  const text = raw.replace(/[₹,\s]/g, "");
+  return /^dr\.?\d/i.test(text) || /\ddr\.?$/i.test(text);
+}
+
+/** The amount with any Cr or Dr mark taken off: for a debit column, whose figures are debits however they are marked. */
+function unsignedStatementAmount(raw: string): number | null {
   const text = raw.replace(/[₹,\s]/g, "").replace(/^(cr|dr)\.?/i, "").replace(/(cr|dr)\.?$/i, "");
   if (!/^\d+(\.\d{1,2})?$/.test(text)) return null;
   const paise = Math.round(Number(text) * 100);
   return paise > 0 ? paise : null;
 }
+
+/** A Dr/Cr column's value for a debit: "DR", "Dr.", "D", "Debit". */
+const DEBIT_TYPE = /^(dr\.?|d|debit|withdrawal)$/i;
 
 const MONTHS: Record<string, number> = { jan: 1, feb: 2, mar: 3, apr: 4, may: 5, jun: 6, jul: 7, aug: 8, sep: 9, sept: 9, oct: 10, nov: 11, dec: 12 };
 
@@ -140,8 +159,12 @@ export async function previewBankImport(ctx: ActiveContext, csv: string): Promis
   const dateCol = pickColumn(headers, /^(txn |value |transaction |posting )?date$/, /date/);
   const descCol = pickColumn(headers, /^(description|narration|particulars|details|remarks)$/, /descr|narrat|particular|detail|remark/);
   const refCol = pickColumn(headers, /^(ref(erence)?( no\.?)?|utr|cheque( no\.?)?|chq( no\.?)?|instrument( no\.?)?)$/, /ref|utr|cheque|chq|instrument|txn id|transaction id/);
-  const creditCol = pickColumn(headers, /^(credit|deposit|cr)( amount)?$/, /credit|deposit|\bcr\b/, /^amount$/, /amount|amt/);
-  const debitCol = pickColumn(headers, /^(debit|withdrawal|dr)( amount)?$/, /debit|withdraw|\bdr\b/);
+  // A column that says whether each line is a debit or a credit (TA-336): headed "Type", "Dr/Cr", "Cr/Dr" and the
+  // like. It is not an amount column, so it is kept out of the credit and debit picks below.
+  const typeCol = pickColumn(headers, /^((txn|transaction) )?type$/, /^(dr ?\/ ?cr|cr ?\/ ?dr)( indicator| flag)?$/);
+  const amountHeaders = headers.filter((h) => h !== typeCol);
+  const creditCol = pickColumn(amountHeaders, /^(credit|deposit|cr)( amount)?$/, /credit|deposit|\bcr\b/, /^amount$/, /amount|amt/);
+  const debitCol = pickColumn(amountHeaders, /^(debit|withdrawal|dr)( amount)?$/, /debit|withdraw|\bdr\b/);
   if (!descCol && !refCol) throw new AccessError("officeBulk.bankNeedColumns");
   if (!creditCol) throw new AccessError("officeBulk.bankNeedAmount");
 
@@ -155,8 +178,16 @@ export async function previewBankImport(ctx: ActiveContext, csv: string): Promis
     db.membership.findMany({ where: { schoolId: caller.schoolId, role: "STUDENT", status: { in: ["ACTIVE", "PENDING"] }, studentCode: { not: null } }, select: { id: true, studentCode: true, user: { select: { name: true, preferredName: true } } }, take: 10_000 }),
   ]);
   const nameOf = (u: { name: string; preferredName: string | null }) => u.preferredName ?? u.name;
+  // Several payments can carry one reference (a FAILED claim and the counter row keyed after it; a cheque number two
+  // banks both issued). The one that stands for money wins, whichever the database read last (TA-259).
+  const standing = (status: string) => (status === "PAID" || status === "REFUNDED" || status === "UNALLOCATED" ? 3 : status === "CLAIMED" ? 2 : status === "REVERSED" ? 1 : 0);
   const byReference = new Map<string, (typeof payments)[number]>();
-  for (const p of payments) if (p.reference) byReference.set(squash(p.reference), p);
+  for (const p of payments) {
+    if (!p.reference) continue;
+    const key = squash(p.reference);
+    const held = byReference.get(key);
+    if (!held || standing(p.status) > standing(held.status)) byReference.set(key, p);
+  }
   /** An EL reference the family's UPI intent carried, for the payment still waiting on it. */
   const byIntent = new Map<string, (typeof payments)[number]>();
   for (const p of payments) if (p.method === "UPI" && (p.status === "INITIATED" || p.status === "CLAIMED") && p.note && /^EL[0-9A-F]{12}$/.test(p.note)) byIntent.set(p.note, p);
@@ -176,7 +207,8 @@ export async function previewBankImport(ctx: ActiveContext, csv: string): Promis
     const base = { line, dateKey, description: description.slice(0, 200), reference, amountPaise, method, studentMembershipId: null as string | null, pupilName: null as string | null, paymentId: null as string | null };
     const unmatched = (problemKey: string): BankImportLine => ({ ...base, outcome: "unmatched", problemKey });
 
-    if (debitCol && amountPaise === null && parseStatementAmount(cells[debitCol] ?? "") !== null) return unmatched("officeBulk.bankDebit");
+    if (debitCol && debitCol !== creditCol && amountPaise === null && unsignedStatementAmount(cells[debitCol] ?? "") !== null) return unmatched("officeBulk.bankDebit");
+    if (statementDebitMark(cells[creditCol] ?? "") || (typeCol && DEBIT_TYPE.test((cells[typeCol] ?? "").trim()))) return unmatched("officeBulk.bankDebit");
     if (amountPaise === null) return unmatched("officeBulk.bankNoAmount");
     if (dateKey && dateKey > today) return unmatched("fees.refuseDate");
     if (reference && seen.has(reference)) return unmatched("officeBulk.bankSameReference");
@@ -188,7 +220,15 @@ export async function previewBankImport(ctx: ActiveContext, csv: string): Promis
         if (known.amountPaise !== amountPaise) return { ...base, outcome: "unmatched", paymentId: known.id, studentMembershipId: known.studentMembershipId, pupilName: nameOf(known.student.user), problemKey: "fees.matchAmountDiffers" };
         return { ...base, outcome: "claim", paymentId: known.id, studentMembershipId: known.studentMembershipId, pupilName: nameOf(known.student.user), problemKey: null };
       }
-      if (known.status === "PAID" || known.status === "REVERSED" || known.status === "REFUNDED" || known.status === "UNALLOCATED") return { ...base, outcome: "already", paymentId: known.id, studentMembershipId: known.studentMembershipId, pupilName: nameOf(known.student.user), problemKey: null };
+      if (known.status === "PAID" || known.status === "REVERSED" || known.status === "REFUNDED" || known.status === "UNALLOCATED") {
+        // "Already recorded" only when the line is that payment: the same amount, and, where the line names a pupil,
+        // the same pupil (TA-259). A reference on another pupil's payment, or on another amount, is shown to the
+        // office as a problem, never passed over as recorded: a cheque number another bank also issued cleared for
+        // this pupil, or the counter keyed a different figure.
+        const named = codes.find((c) => squash(`${description} ${rawRef}`).includes(c.code)) ?? null;
+        if (known.amountPaise === amountPaise && (!named || named.id === known.studentMembershipId)) return { ...base, outcome: "already", paymentId: known.id, studentMembershipId: known.studentMembershipId, pupilName: nameOf(known.student.user), problemKey: null };
+        return { ...base, outcome: "unmatched", paymentId: known.id, studentMembershipId: named?.id ?? known.studentMembershipId, pupilName: named?.name ?? nameOf(known.student.user), problemKey: "fees.matchReferenceElsewhere" };
+      }
     }
 
     const narration = squash(`${description} ${rawRef}`);

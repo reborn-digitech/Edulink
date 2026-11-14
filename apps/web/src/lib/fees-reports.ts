@@ -8,9 +8,10 @@ import { currentAcademicYear } from "./academic-year";
 import { addDaysToKey, dateKeyInZone, todayKey, zonedStartOfDay } from "./dates";
 import { toCsv } from "./csv";
 import { writeJson } from "./json";
-import { officeOrHead, requireFeesOffice, dateToDay, dayToDate } from "./fees";
+import { officeOrHead, requireFeesOffice, dateToDay, dayToDate, WHOLE_SCHOOL_TX_MS } from "./fees";
 import { FEE_CLAIM_STALE_DAYS } from "./constants";
 import type { ActiveContext } from "./session";
+import type { Prisma } from "@prisma/client";
 import { translator } from "./i18n/dictionary";
 import { normaliseLocale } from "@edulink/i18n";
 
@@ -300,8 +301,19 @@ const BUCKETS: { offsetDays: number; bucket: Bucket }[] = [
   { offsetDays: -30, bucket: { key: "D+30", titleKey: "notifTitle.feeOverdue", bodyKey: "notifBody.feeOverdue" } },
 ];
 
-/** One notice to the pupil's guardians about demand `d`, quoting `amountPaise` — its own balance from the daily job, the pupil's whole overdue total from "remind now". */
-async function remindDemand(schoolId: string, d: { id: string; studentMembershipId: string; label: string; dueDate: Date }, amountPaise: number, bucket: Bucket, stamp: string): Promise<void> {
+/**
+ * One notice to the pupil's guardians about demand `d`, quoting `amountPaise` — its own balance from the daily job, the
+ * pupil's whole overdue total from "remind now".
+ *
+ * ⚠ CLAIMED BEFORE IT IS TOLD (TA-412, TA-417, testing analysis of 13 November 2026). The demand used to be marked
+ * after the notice and the text had gone, so two runners of the daily job, or two presses of "Remind overdue", each
+ * read the demand unmarked and each texted the family. The mark is now a conditional write, `unclaimed` being the
+ * condition under which this reminder is still due, and only the caller whose write lands tells the family; the
+ * other is answered false. Returns whether this call told them.
+ */
+async function remindDemand(schoolId: string, d: { id: string; studentMembershipId: string; label: string; dueDate: Date }, amountPaise: number, bucket: Bucket, stamp: string, unclaimed: Prisma.FeeDemandWhereInput): Promise<boolean> {
+  const claimed = await db.feeDemand.updateMany({ where: { AND: [{ id: d.id, schoolId }, unclaimed] }, data: { lastReminderKey: `${bucket.key}:${stamp}` } });
+  if (claimed.count === 0) return false;
   const dueKey = dateToDay(d.dueDate);
   await notifyGuardians(d.studentMembershipId, (childName) => ({
     schoolId,
@@ -314,8 +326,13 @@ async function remindDemand(schoolId: string, d: { id: string; studentMembership
     meta: { demandId: d.id, bucket: bucket.key },
     text: { templateKey: bucket.key === "D-7" || bucket.key === "D0" ? "feeDueSoon" : "feeOverdue", vars: { child: childName, amount: rupees(amountPaise), date: dueKey }, purpose: bucket.key === "D-7" || bucket.key === "D0" ? "fees:dueSoon" : "fees:overdue" },
   }), "MONEY");
-  await db.feeDemand.update({ where: { id: d.id }, data: { lastReminderKey: `${bucket.key}:${stamp}` } });
+  return true;
 }
+
+/** The daily job's condition: this bucket has not been sent for the demand. `OR null` spelled out: `NOT LIKE` on a NULL column is NULL, not true. */
+const bucketNotSent = (bucket: Bucket): Prisma.FeeDemandWhereInput => ({ OR: [{ lastReminderKey: null }, { NOT: { lastReminderKey: { startsWith: `${bucket.key}:` } } }] });
+/** "Remind overdue"'s condition: no manual round reached the demand today (TA-412). */
+const notRemindedToday = (today: string): Prisma.FeeDemandWhereInput => ({ OR: [{ lastReminderKey: null }, { NOT: { lastReminderKey: { endsWith: `:${today}:manual` } } }] });
 
 /**
  * The daily job. In each school's own zone: a week before the due day, on
@@ -338,14 +355,14 @@ export async function sendFeeReminders(now: Date = new Date()): Promise<{ sent: 
         const due = await db.feeDemand.findMany({
           // `OR null` spelled out: `NOT LIKE` on a NULL column is NULL, not
           // true, so a demand never reminded would otherwise be skipped.
-          where: { schoolId: school.id, academicYearId: year.id, status: { in: ["OPEN", "PART"] }, dueDate: dayToDate(dueKey), student: { status: "ACTIVE", leftAt: null }, OR: [{ lastReminderKey: null }, { NOT: { lastReminderKey: { startsWith: `${bucket.key}:` } } }] },
+          where: { schoolId: school.id, academicYearId: year.id, status: { in: ["OPEN", "PART"] }, dueDate: dayToDate(dueKey), student: { status: "ACTIVE", leftAt: null }, ...bucketNotSent(bucket) },
           // Every demand of the day, no cap (TA-508): past 2,000 the rest were never reminded for the bucket.
           select: { id: true, studentMembershipId: true, label: true, dueDate: true, netPaise: true, paidPaise: true, status: true },
         });
         for (const d of due) {
           const owed = demandOutstanding(d);
           if (owed <= 0) continue;
-          await remindDemand(school.id, d, owed, bucket, today);
+          if (!(await remindDemand(school.id, d, owed, bucket, today, bucketNotSent(bucket)))) continue;
           sent += 1;
           (perSchool[school.id] ??= { reminders: 0 }).reminders += 1;
         }
@@ -372,19 +389,21 @@ export async function remindNow(ctx: ActiveContext, input: { studentMembershipId
   // behind reads one line with the whole figure and not three.
   const oldest = new Map<string, (typeof demands)[number]>();
   const owed = new Map<string, number>();
-  let counted = 0;
   for (const d of demands) {
     const balance = demandOutstanding(d);
     if (balance <= 0) continue;
-    counted += 1;
     owed.set(d.studentMembershipId, (owed.get(d.studentMembershipId) ?? 0) + balance);
     const cur = oldest.get(d.studentMembershipId);
     if (!cur || d.dueDate < cur.dueDate) oldest.set(d.studentMembershipId, d);
   }
   const bucket: Bucket = { key: "D+7", titleKey: "notifTitle.feeOverdue", bodyKey: "notifBody.feeOverdue" };
-  for (const d of oldest.values()) await remindDemand(caller.schoolId, d, owed.get(d.studentMembershipId) ?? 0, bucket, `${today}:manual`);
-  await audit({ schoolId: caller.schoolId, actorUserId: caller.userId, action: "fees.remindNow", targetType: "School", targetId: caller.schoolId, meta: { families: oldest.size, demands: counted } });
-  return { families: oldest.size, demands: counted };
+  // A pupil a manual round already reached today is not reminded again (TA-412): a second press, by the same person
+  // after a slow first one or by another office session, claims nothing and texts nobody.
+  const told = new Set<string>();
+  for (const d of oldest.values()) if (await remindDemand(caller.schoolId, d, owed.get(d.studentMembershipId) ?? 0, bucket, `${today}:manual`, notRemindedToday(today))) told.add(d.studentMembershipId);
+  const toldDemands = demands.filter((d) => told.has(d.studentMembershipId) && demandOutstanding(d) > 0).length;
+  await audit({ schoolId: caller.schoolId, actorUserId: caller.userId, action: "fees.remindNow", targetType: "School", targetId: caller.schoolId, meta: { families: told.size, demands: toldDemands } });
+  return { families: told.size, demands: toldDemands };
 }
 
 /* -------------------------------------------------------------------------- */
@@ -414,18 +433,29 @@ export async function carryForward(ctx: ActiveContext, input: { fromYearId: stri
   ]);
   if (!from || !to) throw new AccessError("fees.notFound", "NOT_FOUND");
   if (to.startDate <= from.startDate) throw new AccessError("fees.refuseYearOrder");
-  const open = await db.feeDemand.findMany({ where: { schoolId: caller.schoolId, academicYearId: from.id, status: { in: ["OPEN", "PART"] } }, select: { id: true, studentMembershipId: true, label: true, netPaise: true, paidPaise: true, linesJson: true } });
-  const byPupil = new Map<string, typeof open>();
-  for (const d of open) {
-    if (d.netPaise - d.paidPaise <= 0) continue;
-    const list = byPupil.get(d.studentMembershipId) ?? [];
-    list.push(d);
-    byPupil.set(d.studentMembershipId, list);
-  }
   let carriedPaise = 0;
+  let pupils = 0;
   const dueDate = dayToDate(to.startDate.toISOString().slice(0, 10));
+  // ⚠ READ UNDER THE LOCK, WRITE ON CONDITION (TA-130, testing analysis of 13 November 2026). The open demands were
+  // read before the transaction and marked CARRIED by id alone, so two runs at once each wrote an opening balance for
+  // every family (owed twice), and a payment settling between the read and the write was overwritten CARRIED while
+  // its amount was still carried. Now one run per school and pair of years at a time (an advisory lock), the open
+  // demands are read inside the transaction under their row locks (id order, as openDemands takes them), and each
+  // pupil's demands are marked only while still OPEN or PART, the count checked. The transaction is given the
+  // whole-school limit (TA-132): Prisma's five-second default rolled a large school's carry back whole.
   await db.$tenantTransaction(async (raw) => {
     const tx = raw as typeof db;
+    await tx.$queryRaw`SELECT 1 FROM pg_advisory_xact_lock(hashtext(${`fee-carry:${caller.schoolId}:${from.id}:${to.id}`}))`;
+    await tx.$queryRaw`SELECT "id" FROM "FeeDemand" WHERE "schoolId" = ${caller.schoolId} AND "academicYearId" = ${from.id} AND "status" IN ('OPEN', 'PART') ORDER BY "id" FOR UPDATE`;
+    const open = await tx.feeDemand.findMany({ where: { schoolId: caller.schoolId, academicYearId: from.id, status: { in: ["OPEN", "PART"] } }, select: { id: true, studentMembershipId: true, label: true, netPaise: true, paidPaise: true, linesJson: true } });
+    const byPupil = new Map<string, typeof open>();
+    for (const d of open) {
+      if (d.netPaise - d.paidPaise <= 0) continue;
+      const list = byPupil.get(d.studentMembershipId) ?? [];
+      list.push(d);
+      byPupil.set(d.studentMembershipId, list);
+    }
+    pupils = byPupil.size;
     for (const [studentMembershipId, list] of byPupil) {
       const amount = list.reduce((a, d) => a + d.netPaise - d.paidPaise, 0);
       const created = await tx.feeDemand.create({
@@ -444,10 +474,11 @@ export async function carryForward(ctx: ActiveContext, input: { fromYearId: stri
         },
         select: { id: true },
       });
-      await tx.feeDemand.updateMany({ where: { id: { in: list.map((d) => d.id) } }, data: { status: "CARRIED", carriedToDemandId: created.id } });
+      const marked = await tx.feeDemand.updateMany({ where: { id: { in: list.map((d) => d.id) }, schoolId: caller.schoolId, status: { in: ["OPEN", "PART"] } }, data: { status: "CARRIED", carriedToDemandId: created.id } });
+      if (marked.count !== list.length) throw new AccessError("fees.refuseDemandsChanged");
       carriedPaise += amount;
     }
-  });
-  await audit({ schoolId: caller.schoolId, actorUserId: caller.userId, action: "fees.carryForward", targetType: "AcademicYear", targetId: to.id, meta: { fromYearId: from.id, pupils: byPupil.size, carriedPaise } });
-  return { pupils: byPupil.size, carriedPaise };
+  }, { timeout: WHOLE_SCHOOL_TX_MS });
+  await audit({ schoolId: caller.schoolId, actorUserId: caller.userId, action: "fees.carryForward", targetType: "AcademicYear", targetId: to.id, meta: { fromYearId: from.id, pupils, carriedPaise } });
+  return { pupils, carriedPaise };
 }

@@ -11,7 +11,7 @@ import { isDateKey, todayKey } from "./dates";
 import { readJson, writeJson } from "./json";
 import { parseCsv } from "./csv";
 import { createOrder, fetchOrderPayments, refundPayment, verifyCheckoutSignature, upiIntentLink, looksLikeUtr, GatewayError } from "./gateway";
-import { gatewayAccountFor, dateToDay, toDemandRow, requireFeesOffice, type DemandLine } from "./fees";
+import { gatewayAccountFor, gatewayKeyTakesPayments, dateToDay, toDemandRow, requireFeesOffice, type DemandLine } from "./fees";
 import { readFeesGatewayTransport } from "./env";
 import { COUNTER_METHODS, FEE_CLAIM_STALE_DAYS, FEE_ORDER_EXPIRY_MS, FEE_ORDER_RECONCILE_AFTER_MS, type FeeMethod } from "./constants";
 import type { ActiveContext } from "./session";
@@ -37,6 +37,18 @@ import type { ActiveContext } from "./session";
  */
 
 type Tx = typeof db;
+
+/** A refund's transaction calls the gateway inside its lock: longer than the gateway's own fifteen-second limit (TA-128). */
+export const REFUND_TX_MS = 30_000;
+/**
+ * How long a UPI intent waits for its UTR before the reconcile job closes it as not claimed (TA-449): long enough for
+ * a month's statement, imported late, to still confirm it by its EL reference.
+ */
+export const FEE_UPI_INTENT_MS = 45 * 86_400_000;
+/** How long a FAILED online order is still asked about at the gateway, in case its retry was captured and no webhook came (TA-257). */
+export const FEE_FAILED_RECONCILE_MS = 3 * 86_400_000;
+/** The prefix of the reason a capture of another amount than its order is held with (TA-524). */
+const AMOUNT_MISMATCH = "amount-mismatch:";
 
 /* -------------------------------------------------------------------------- */
 /* Allocation and receipts (inside a transaction)                               */
@@ -249,6 +261,13 @@ export async function recordCounterPayment(ctx: ActiveContext, input: CounterPay
 
   const result = await db.$tenantTransaction(async (raw) => {
     const tx = raw as Tx;
+    // A UTR or a bank reference keyed at the counter is one bank credit (TA-255): refused, whatever its case, while a
+    // claim, a confirmed or refunded payment already holds it. A cheque number is not unique across banks and is not
+    // looked at here.
+    if (reference && (input.method === "UPI" || input.method === "BANK")) {
+      await lockReference(tx, caller.schoolId, reference);
+      if (await referenceHeld(tx, caller.schoolId, reference, null, ["CLAIMED", "PAID", "REFUNDED", "UNALLOCATED"])) throw new AccessError("fees.refuseUtrUsed");
+    }
     const payment = await tx.feePayment.create({
       data: { schoolId: caller.schoolId, studentMembershipId: pupil.id, amountPaise: input.amountPaise, method: input.method, status: "INITIATED", reference, note, clientId, collectedByUserId: caller.userId, intentJson: writeJson(input.demandIds ?? []) },
       select: { id: true },
@@ -282,6 +301,38 @@ function rupees(paise: number): string {
 }
 
 /**
+ * ⚠ A PAYMENT WHOSE DEMAND WAS CARRIED OR WAIVED IS NOT UNDONE HERE (TA-127, testing analysis of 13 November 2026).
+ * recomputeDemands leaves a CARRIED or WAIVED demand as it stands, because the carry fixed next year's opening
+ * balance and the waiver the leaver's settlement from its paid total at that moment. A reversal or refund after it
+ * marked the payment REVERSED or REFUNDED while the demand kept its paid total: the money was owed nowhere and the old
+ * year still counted it. So while any of the payment's money sits on such a demand, the reversal and the refund are
+ * refused with a sentence that says why.
+ */
+function refuseSettledElsewhere(allocations: { amountPaise: number; demand: { status: string } }[]): void {
+  if (allocations.some((a) => a.amountPaise > 0 && (a.demand.status === "CARRIED" || a.demand.status === "WAIVED"))) throw new AccessError("fees.refuseReverseCarried");
+}
+
+/**
+ * A bank reference (a UTR) is held by one payment that stands for money (TA-255). The lock is taken on the school and
+ * the reference upper-cased, before any payment row, by the claim, the confirm and the counter alike, so two of them
+ * with one reference wait for each other and the second sees the first.
+ */
+async function lockReference(tx: Tx, schoolId: string, reference: string): Promise<void> {
+  await tx.$queryRaw`SELECT 1 FROM pg_advisory_xact_lock(hashtext(${`fee-ref:${schoolId}:${reference.trim().toUpperCase()}`}))`;
+}
+
+async function referenceHeld(tx: Tx, schoolId: string, reference: string, exceptId: string | null, statuses: string[]): Promise<boolean> {
+  const hit = await tx.feePayment.findFirst({ where: { schoolId, reference: { equals: reference.trim(), mode: "insensitive" }, status: { in: statuses }, ...(exceptId ? { id: { not: exceptId } } : {}) }, select: { id: true } });
+  return Boolean(hit);
+}
+
+/** Locks the named demands in id order, the order every ledger writer takes them in (TA-133). */
+async function lockDemands(tx: Tx, demandIds: string[]): Promise<void> {
+  const ids = [...new Set(demandIds)].sort();
+  if (ids.length) await tx.$queryRaw`SELECT "id" FROM "FeeDemand" WHERE "id" = ANY(${ids}::text[]) ORDER BY "id" FOR UPDATE`;
+}
+
+/**
  * Undo a PAID payment without deleting it. The allocations stay on the row
  * for the audit trail; the demands' paid totals are recomputed from PAID
  * payments only, so they reopen. The receipt stays on file and renders with
@@ -293,10 +344,18 @@ export async function reversePayment(ctx: ActiveContext, paymentId: string, reas
   if (why.length < 3) throw new AccessError("fees.refuseReason");
   await db.$tenantTransaction(async (raw) => {
     const tx = raw as Tx;
-    const p = await tx.feePayment.findFirst({ where: { id: paymentId, schoolId: caller.schoolId }, include: { allocations: { select: { demandId: true } }, refunds: { where: { status: { not: "FAILED" } }, select: { id: true } } } });
+    // The payment locked first and read under the lock, then its demands, the order settle keeps (TA-133): a
+    // reversal beside a payment settling on the same demand no longer recomputes from a stale read.
+    await tx.$queryRaw`SELECT "id" FROM "FeePayment" WHERE "id" = ${paymentId} AND "schoolId" = ${caller.schoolId} FOR UPDATE`;
+    const p = await tx.feePayment.findFirst({ where: { id: paymentId, schoolId: caller.schoolId }, include: { allocations: { select: { demandId: true, amountPaise: true, demand: { select: { status: true } } } }, refunds: { where: { status: { not: "FAILED" } }, select: { id: true } } } });
     if (!p) throw new AccessError("fees.notFound", "NOT_FOUND");
     if (p.status !== "PAID") throw new AccessError("fees.refuseNotPaid");
     if (p.refunds.length > 0) throw new AccessError("fees.refuseReverseRefunded");
+    // Money the gateway captured is in the school's account: it goes back with Refund, which sends it back to the
+    // family, never with a reversal, which reopened the fee while the money stayed (TA-256).
+    if (p.method === "ONLINE") throw new AccessError("fees.refuseReverseOnline");
+    refuseSettledElsewhere(p.allocations);
+    await lockDemands(tx, p.allocations.map((a) => a.demandId));
     await tx.feePayment.update({ where: { id: p.id }, data: { status: "REVERSED", reversedAt: new Date(), reversedByUserId: caller.userId, reversalReason: why } });
     await recomputeDemands(
       tx,
@@ -362,6 +421,8 @@ export async function startOnlineCheckout(ctx: ActiveContext, input: { studentMe
   const { link, schoolId, amountPaise, demandIds } = await familyIntent(ctx.user.id, input);
   const account = readFeesGatewayTransport() === "off" ? null : await forSchool(schoolId, () => gatewayAccountFor(schoolId));
   if (!account) throw new AccessError("fees.refuseNoGateway");
+  // A test key on a deployed server takes no real money and would number real receipts (TA-447).
+  if (!gatewayKeyTakesPayments(account.keyId)) throw new AccessError("fees.refuseTestKeyLive");
   const view = (paymentId: string, orderId: string): CheckoutStart => ({
     paymentId,
     orderId,
@@ -469,6 +530,31 @@ async function holdUnallocated(schoolId: string, p: { id: string; studentMembers
 }
 
 /**
+ * ⚠ A CAPTURE OF ANOTHER AMOUNT IS TOLD, NOT DROPPED (TA-524, testing analysis of 13 November 2026). Decision 0003
+ * refuses to settle a capture whose amount is not the order's, and it is still refused; but it used to end at an
+ * audit row: nobody was told, and a day later the reconcile job closed the order as "nothing captured" while the
+ * school held the money. Now the order is closed FAILED with a reason that names the amount and the gateway's payment
+ * id, once, and the office is told at once to look at it in the gateway's dashboard and refund or record it by hand.
+ */
+async function flagAmountMismatch(schoolId: string, p: { id: string; amountPaise: number; studentMembershipId: string }, input: { gatewayPaymentId: string; amountPaise: number }): Promise<void> {
+  const flagged = await db.feePayment.updateMany({
+    where: { id: p.id, schoolId, status: { in: ["INITIATED", "FAILED"] }, OR: [{ failedReason: null }, { NOT: { failedReason: { startsWith: AMOUNT_MISMATCH } } }] },
+    data: { status: "FAILED", failedReason: `${AMOUNT_MISMATCH}${input.amountPaise}:${input.gatewayPaymentId}`.slice(0, 200) },
+  });
+  if (flagged.count === 0) return;
+  const [office, pupil] = await Promise.all([
+    db.membership.findMany({ where: { schoolId, role: { in: ["ADMIN", "ACCOUNTS"] }, status: "ACTIVE", leftAt: null }, select: { userId: true } }),
+    db.membership.findUnique({ where: { id: p.studentMembershipId }, select: { user: { select: { name: true, preferredName: true } } } }),
+  ]);
+  const name = pupil ? (pupil.user.preferredName ?? pupil.user.name) : "";
+  await Promise.all(
+    [...new Set(office.map((o) => o.userId))].map((userId) =>
+      notify({ userId, schoolId, kind: "FEES", titleKey: "notifTitle.feeAmountMismatchOffice", bodyKey: "notifBody.feeAmountMismatchOffice", bodyVars: { amount: rupees(input.amountPaise), expected: rupees(p.amountPaise), name }, url: `/admin/fees/pupils/${p.studentMembershipId}`, urgent: true, meta: { paymentId: p.id } }).catch(() => undefined),
+    ),
+  );
+}
+
+/**
  * The one door every online settlement comes through — the webhook, the
  * checkout's own confirm, the reconcile job and the devbox page — so all
  * four are idempotent together: a payment settles once, by whichever arrives
@@ -486,6 +572,7 @@ export async function settleOnlinePayment(schoolId: string, input: { orderId: st
     if (p.status !== "INITIATED" && p.status !== "FAILED") return { outcome: "not-settleable", paymentId: p.id };
     if (p.amountPaise !== input.amountPaise) {
       await audit({ schoolId, action: "fees.amountMismatch", targetType: "FeePayment", targetId: p.id, meta: { expected: p.amountPaise, got: input.amountPaise, gatewayPaymentId: input.gatewayPaymentId } });
+      await flagAmountMismatch(schoolId, p, input);
       return { outcome: "amount-mismatch", paymentId: p.id };
     }
     let settled: Awaited<ReturnType<typeof settle>>;
@@ -509,7 +596,8 @@ export async function failOnlinePayment(schoolId: string, orderId: string, reaso
   await forSchool(schoolId, async () => {
     const p = await db.feePayment.findFirst({ where: { schoolId, gatewayOrderId: orderId, status: "INITIATED" }, select: { id: true } });
     if (!p) return;
-    await db.feePayment.update({ where: { id: p.id }, data: { status: "FAILED", failedReason: reason.slice(0, 200) } });
+    // Only while still INITIATED (TA-133): a capture settling the same order at this moment is not turned FAILED.
+    await db.feePayment.updateMany({ where: { id: p.id, schoolId, status: "INITIATED" }, data: { status: "FAILED", failedReason: reason.slice(0, 200) } });
   });
 }
 
@@ -535,11 +623,32 @@ export async function confirmOnlineCheckout(ctx: ActiveContext, input: { payment
  * The reconcile job: an INITIATED online order older than half an hour is
  * asked about at the gateway, in case the webhook never came; one older
  * than a day with nothing captured is closed as failed.
+ *
+ * THE NET HAS NO HOLES (TA-257, testing analysis of 13 November 2026): a
+ * FAILED order is asked about too, for three days, because a retry on the
+ * same order can be captured after a first attempt failed (settle takes it)
+ * and its webhook can be lost; the oldest rows are asked first; and an order
+ * the gateway errors on is closed once it is past the day, rather than asked
+ * about every hour for ever and crowding out other schools' orders. A
+ * capture of another amount than the order's is flagged for the office
+ * (TA-524), never closed as "nothing captured". UPI intents never claimed
+ * within FEE_UPI_INTENT_MS are closed here as well (TA-449).
  */
-export async function reconcileOnlinePayments(now: Date = new Date()): Promise<{ checked: number; settled: number; expired: number; perSchool: Record<string, { checked: number; settled: number; expired: number }> }> {
+export async function reconcileOnlinePayments(now: Date = new Date(), scope: { schoolIds?: string[] } = {}): Promise<{ checked: number; settled: number; expired: number; upiClosed: number; perSchool: Record<string, { checked: number; settled: number; expired: number }> }> {
+  const reconcileBefore = new Date(now.getTime() - FEE_ORDER_RECONCILE_AFTER_MS);
+  const inScope = scope.schoolIds ? { schoolId: { in: scope.schoolIds } } : {};
   const stale = await db.feePayment.findMany({
-    where: { method: "ONLINE", status: "INITIATED", createdAt: { lt: new Date(now.getTime() - FEE_ORDER_RECONCILE_AFTER_MS) }, gatewayOrderId: { not: null } },
-    select: { id: true, schoolId: true, gatewayOrderId: true, amountPaise: true, createdAt: true },
+    where: {
+      ...inScope,
+      method: "ONLINE",
+      gatewayOrderId: { not: null },
+      OR: [
+        { status: "INITIATED", createdAt: { lt: reconcileBefore } },
+        { status: "FAILED", createdAt: { lt: reconcileBefore, gte: new Date(now.getTime() - FEE_FAILED_RECONCILE_MS) } },
+      ],
+    },
+    select: { id: true, schoolId: true, gatewayOrderId: true, amountPaise: true, createdAt: true, status: true },
+    orderBy: { createdAt: "asc" },
     take: 500,
   });
   const perSchool: Record<string, { checked: number; settled: number; expired: number }> = {};
@@ -551,26 +660,61 @@ export async function reconcileOnlinePayments(now: Date = new Date()): Promise<{
     bump(p.schoolId, "checked");
     const account = await forSchool(p.schoolId, () => gatewayAccountFor(p.schoolId));
     let captured: { paymentId: string; method: string | null } | null = null;
+    let otherAmount: { paymentId: string; amountPaise: number; method: string | null } | null = null;
+    const pastDay = now.getTime() - p.createdAt.getTime() > FEE_ORDER_EXPIRY_MS;
     if (account) {
       try {
         const payments = await fetchOrderPayments(account, p.gatewayOrderId!);
         const hit = payments.find((x) => x.status === "captured" && x.amountPaise === p.amountPaise);
         if (hit) captured = { paymentId: hit.paymentId, method: hit.method };
+        const other = payments.find((x) => x.status === "captured" && x.amountPaise !== p.amountPaise);
+        if (other) otherAmount = { paymentId: other.paymentId, amountPaise: other.amountPaise, method: other.method };
       } catch (error) {
         console.error("[fees:reconcile]", p.id, error instanceof Error ? error.message : error);
+        // Past the day, an order the gateway will not answer about is closed (it stays settleable by a signed
+        // capture, and is asked about as FAILED for three more days) instead of being asked every hour for ever.
+        if (p.status === "INITIATED" && pastDay) {
+          await failOnlinePayment(p.schoolId, p.gatewayOrderId!, "expired: the gateway could not be asked within a day");
+          bump(p.schoolId, "expired");
+        }
         continue;
       }
     }
     if (captured) {
       const r = await settleOnlinePayment(p.schoolId, { orderId: p.gatewayOrderId!, gatewayPaymentId: captured.paymentId, amountPaise: p.amountPaise, gatewayMethod: captured.method });
       if (r.outcome === "settled") bump(p.schoolId, "settled");
-    } else if (now.getTime() - p.createdAt.getTime() > FEE_ORDER_EXPIRY_MS) {
+    } else if (p.status !== "INITIATED") {
+      // A FAILED order with nothing captured at its own amount stays as it is.
+      continue;
+    } else if (otherAmount) {
+      // Captured, at another amount than the order's: refused and flagged for the office, never "nothing captured".
+      await settleOnlinePayment(p.schoolId, { orderId: p.gatewayOrderId!, gatewayPaymentId: otherAmount.paymentId, amountPaise: otherAmount.amountPaise, gatewayMethod: otherAmount.method });
+    } else if (pastDay) {
       await failOnlinePayment(p.schoolId, p.gatewayOrderId!, "expired: nothing captured within a day");
       bump(p.schoolId, "expired");
     }
   }
+  const upiClosed = await closeUnclaimedUpiIntents(now, inScope);
   const totals = Object.values(perSchool).reduce((a, r) => ({ checked: a.checked + r.checked, settled: a.settled + r.settled, expired: a.expired + r.expired }), { checked: 0, settled: 0, expired: 0 });
-  return { ...totals, perSchool };
+  return { ...totals, upiClosed, perSchool };
+}
+
+/**
+ * A UPI intent nobody claimed within FEE_UPI_INTENT_MS is closed FAILED, "not claimed" (TA-449): it no longer counts
+ * among the office's "waiting for a UTR", nor is read by every bank import for good. School by school, under each
+ * school's own tenant.
+ */
+async function closeUnclaimedUpiIntents(now: Date, inScope: { schoolId?: { in: string[] } }): Promise<number> {
+  const before = new Date(now.getTime() - FEE_UPI_INTENT_MS);
+  const rows = await db.feePayment.findMany({ where: { ...inScope, method: "UPI", status: "INITIATED", createdAt: { lt: before } }, select: { id: true, schoolId: true }, take: 2000 });
+  const bySchool = new Map<string, string[]>();
+  for (const r of rows) bySchool.set(r.schoolId, [...(bySchool.get(r.schoolId) ?? []), r.id]);
+  let closed = 0;
+  for (const [schoolId, ids] of bySchool) {
+    const r = await forSchool(schoolId, () => db.feePayment.updateMany({ where: { id: { in: ids }, schoolId, method: "UPI", status: "INITIATED", createdAt: { lt: before } }, data: { status: "FAILED", failedReason: "not claimed" } }));
+    closed += r.count;
+  }
+  return closed;
 }
 
 /* -------------------------------------------------------------------------- */
@@ -585,15 +729,37 @@ export async function startUpiPayment(ctx: ActiveContext, input: { studentMember
   const { link, schoolId, amountPaise, demandIds } = await familyIntent(ctx.user.id, input);
   const school = await db.school.findUniqueOrThrow({ where: { id: schoolId }, select: { name: true, feeUpiId: true, feeUpiPayee: true } });
   if (!school.feeUpiId || !school.feeUpiPayee) throw new AccessError("fees.refuseNoUpi");
-  const reference = `EL${randomBytes(6).toString("hex").toUpperCase()}`;
   const pupilName = link.student.user.preferredName ?? link.student.user.name;
-  const payment = await forSchool(schoolId, () =>
-    db.feePayment.create({
-      data: { schoolId, studentMembershipId: input.studentMembershipId, amountPaise, method: "UPI", status: "INITIATED", payerUserId: ctx.user.id, intentJson: writeJson(demandIds), note: reference },
-      select: { id: true },
+  // ONE OPEN INTENT FOR THE SAME DUES (TA-449, testing analysis of 13 November 2026): every press used to write a
+  // payment row and an audit row, for good. The guardian's own intent for exactly these dues and this amount, still
+  // waiting for its UTR and younger than the bound after which the reconcile job closes it, is handed back instead;
+  // the look and the write are under a lock on the guardian and the child, so two presses at once make one row.
+  const wanted = new Set(demandIds);
+  const claim = await forSchool(schoolId, () =>
+    db.$tenantTransaction(async (raw) => {
+      const tx = raw as Tx;
+      await tx.$queryRaw`SELECT 1 FROM pg_advisory_xact_lock(hashtext(${`fee-upi:${ctx.user.id}:${input.studentMembershipId}`}))`;
+      const open = await tx.feePayment.findMany({
+        where: { schoolId, studentMembershipId: input.studentMembershipId, payerUserId: ctx.user.id, method: "UPI", status: "INITIATED", amountPaise, createdAt: { gte: new Date(Date.now() - FEE_UPI_INTENT_MS) } },
+        orderBy: { createdAt: "desc" },
+        select: { id: true, note: true, intentJson: true },
+      });
+      const same = open.find((p) => {
+        const named = readJson<string[]>(p.intentJson, []);
+        return p.note !== null && named.length === wanted.size && named.every((d) => wanted.has(d));
+      });
+      if (same) return { id: same.id, reference: same.note!, reused: true };
+      const reference = `EL${randomBytes(6).toString("hex").toUpperCase()}`;
+      const created = await tx.feePayment.create({
+        data: { schoolId, studentMembershipId: input.studentMembershipId, amountPaise, method: "UPI", status: "INITIATED", payerUserId: ctx.user.id, intentJson: writeJson(demandIds), note: reference },
+        select: { id: true },
+      });
+      return { id: created.id, reference, reused: false };
     }),
   );
-  await audit({ schoolId, actorUserId: ctx.user.id, action: "fees.upiStart", targetType: "FeePayment", targetId: payment.id, meta: { amountPaise, reference } });
+  const payment = { id: claim.id };
+  const reference = claim.reference;
+  if (!claim.reused) await audit({ schoolId, actorUserId: ctx.user.id, action: "fees.upiStart", targetType: "FeePayment", targetId: payment.id, meta: { amountPaise, reference } });
   return {
     paymentId: payment.id,
     link: upiIntentLink({ payeeVpa: school.feeUpiId, payeeName: school.feeUpiPayee, amountPaise, reference, note: `${pupilName} fees ${reference}` }),
@@ -614,9 +780,19 @@ export async function claimUpiPayment(ctx: ActiveContext, input: { paymentId: st
   const p = await db.feePayment.findFirst({ where: { id: input.paymentId, payerUserId: ctx.user.id, method: "UPI" }, select: { id: true, schoolId: true, status: true, studentMembershipId: true, amountPaise: true } });
   if (!p) throw new AccessError("fees.notFound", "NOT_FOUND");
   if (p.status !== "INITIATED" && p.status !== "CLAIMED") throw new AccessError("fees.refuseNotSettleable");
-  const dup = await forSchool(p.schoolId, () => db.feePayment.findFirst({ where: { schoolId: p.schoolId, reference: utr, status: { in: ["CLAIMED", "PAID"] }, id: { not: p.id } }, select: { id: true } }));
-  if (dup) throw new AccessError("fees.refuseUtrUsed");
-  await forSchool(p.schoolId, () => db.feePayment.update({ where: { id: p.id }, data: { status: "CLAIMED", reference: utr, claimedAt: new Date() } }));
+  // ONE UTR, ONE PAYMENT, AS A RULE AND NOT A READ (TA-255, testing analysis of 13 November 2026): the look for
+  // another payment holding the UTR runs under a lock on the school and the UTR, so two claims sent together cannot
+  // both pass, and it counts a payment that was refunded (the money came once and went back) as well as one claimed
+  // or paid. The write is conditional on the status read (TA-133), so a claim never turns a confirmed payment back.
+  await forSchool(p.schoolId, () =>
+    db.$tenantTransaction(async (raw) => {
+      const tx = raw as Tx;
+      await lockReference(tx, p.schoolId, utr);
+      if (await referenceHeld(tx, p.schoolId, utr, p.id, ["CLAIMED", "PAID", "REFUNDED", "UNALLOCATED"])) throw new AccessError("fees.refuseUtrUsed");
+      const claimed = await tx.feePayment.updateMany({ where: { id: p.id, schoolId: p.schoolId, status: { in: ["INITIATED", "CLAIMED"] } }, data: { status: "CLAIMED", reference: utr, claimedAt: new Date() } });
+      if (claimed.count === 0) throw new AccessError("fees.refuseNotSettleable");
+    }),
+  );
   await audit({ schoolId: p.schoolId, actorUserId: ctx.user.id, action: "fees.upiClaim", targetType: "FeePayment", targetId: p.id, meta: { utr } });
   // The office hears once per claim, so a family is not left waiting on a
   // queue nobody has opened.
@@ -666,7 +842,12 @@ export async function confirmClaim(ctx: ActiveContext, paymentId: string, fromSt
   const caller = requireFeesOffice(ctx);
   const result = await db.$tenantTransaction(async (raw) => {
     const tx = raw as Tx;
-    const p = await tx.feePayment.findFirst({ where: { id: paymentId, schoolId: caller.schoolId, method: "UPI" }, select: { id: true, status: true, studentMembershipId: true, amountPaise: true } });
+    const first = await tx.feePayment.findFirst({ where: { id: paymentId, schoolId: caller.schoolId, method: "UPI" }, select: { id: true, reference: true } });
+    if (!first) throw new AccessError("fees.notFound", "NOT_FOUND");
+    // The UTR's lock before the payment's, the order the claim and the counter keep (TA-255); then the row read again.
+    const refs = [...new Set([first.reference ?? "", fromStatement?.utr ?? ""].map((r) => r.trim().toUpperCase().slice(0, 60)).filter(Boolean))].sort();
+    for (const ref of refs) await lockReference(tx, caller.schoolId, ref);
+    const p = await tx.feePayment.findFirst({ where: { id: paymentId, schoolId: caller.schoolId, method: "UPI" }, select: { id: true, status: true, studentMembershipId: true, amountPaise: true, reference: true } });
     if (!p) throw new AccessError("fees.notFound", "NOT_FOUND");
     const unclaimed = p.status === "INITIATED" && Boolean(fromStatement);
     if (p.status !== "CLAIMED" && !unclaimed) throw new AccessError("fees.refuseNotClaimed");
@@ -674,8 +855,11 @@ export async function confirmClaim(ctx: ActiveContext, paymentId: string, fromSt
     if (unclaimed) {
       reference = fromStatement!.utr.trim().toUpperCase().slice(0, 60);
       if (!reference) throw new AccessError("fees.refuseReference");
-      const dup = await tx.feePayment.findFirst({ where: { schoolId: caller.schoolId, reference, status: { in: ["CLAIMED", "PAID"] }, id: { not: p.id } }, select: { id: true } });
-      if (dup) throw new AccessError("fees.refuseUtrUsed");
+      if (await referenceHeld(tx, caller.schoolId, reference, p.id, ["CLAIMED", "PAID", "REFUNDED", "UNALLOCATED"])) throw new AccessError("fees.refuseUtrUsed");
+    } else if (p.reference && (await referenceHeld(tx, caller.schoolId, p.reference, p.id, ["PAID", "REFUNDED", "UNALLOCATED"]))) {
+      // A claim whose UTR another payment already stands for (a counter entry, an earlier claim confirmed and later
+      // refunded) is not confirmed a second time: one bank credit, one receipt (TA-255).
+      throw new AccessError("fees.refuseUtrUsed");
     }
     const settled = await settle(tx, caller.schoolId, p.id, { confirmedByUserId: caller.userId, reference });
     return { ...settled, studentMembershipId: p.studentMembershipId, amountPaise: p.amountPaise, fromStatement: unclaimed };
@@ -695,7 +879,10 @@ export async function rejectClaim(ctx: ActiveContext, paymentId: string, reason:
   const p = await db.feePayment.findFirst({ where: { id: paymentId, schoolId: caller.schoolId, method: "UPI" }, select: { id: true, status: true, studentMembershipId: true, amountPaise: true } });
   if (!p) throw new AccessError("fees.notFound", "NOT_FOUND");
   if (p.status !== "CLAIMED" && p.status !== "INITIATED") throw new AccessError("fees.refuseNotClaimed");
-  await db.feePayment.update({ where: { id: p.id }, data: { status: "FAILED", failedReason: why, confirmedByUserId: caller.userId } });
+  // Conditional on the status read (TA-133): a confirm that settled the claim a moment ago (PAID, receipt numbered)
+  // is not overwritten FAILED by a rejection that read CLAIMED before it.
+  const rejected = await db.feePayment.updateMany({ where: { id: p.id, schoolId: caller.schoolId, status: { in: ["CLAIMED", "INITIATED"] } }, data: { status: "FAILED", failedReason: why, confirmedByUserId: caller.userId } });
+  if (rejected.count === 0) throw new AccessError("fees.refuseNotClaimed");
   await audit({ schoolId: caller.schoolId, actorUserId: caller.userId, action: "fees.claimReject", targetType: "FeePayment", targetId: p.id, meta: { reasonGiven: true } }); // the words are on the payment (failedReason), not in the log (TA-409)
   await notifyGuardians(p.studentMembershipId, (childName) => ({
     schoolId: caller.schoolId,
@@ -756,11 +943,12 @@ export async function requestRefund(ctx: ActiveContext, input: { paymentId: stri
   const why = input.reason.trim().slice(0, 300);
   if (why.length < 3) throw new AccessError("fees.refuseReason");
   if (!Number.isInteger(input.amountPaise) || input.amountPaise < 100) throw new AccessError("fees.refuseAmount");
-  const p = await db.feePayment.findFirst({ where: { id: input.paymentId, schoolId: caller.schoolId }, include: { refunds: { where: { status: { not: "FAILED" } }, select: { amountPaise: true } }, allocations: { select: { demandId: true } } } });
+  const p = await db.feePayment.findFirst({ where: { id: input.paymentId, schoolId: caller.schoolId }, include: { refunds: { where: { status: { not: "FAILED" } }, select: { amountPaise: true } }, allocations: { select: { demandId: true, amountPaise: true, demand: { select: { status: true } } } } } });
   if (!p) throw new AccessError("fees.notFound", "NOT_FOUND");
   // UNALLOCATED: captured with nothing due (QA-03), refunded from here like any other; it holds no allocation to reopen.
   if (p.status !== "PAID" && p.status !== "REFUNDED" && p.status !== "UNALLOCATED") throw new AccessError("fees.refuseNotPaid");
   if (p.refunds.reduce((a, r) => a + r.amountPaise, 0) + input.amountPaise > p.amountPaise) throw new AccessError("fees.refuseRefundTooMuch");
+  refuseSettledElsewhere(p.allocations);
   const account = p.method === "ONLINE" ? await gatewayAccountFor(caller.schoolId) : null;
   if (p.method === "ONLINE" && (!account || !p.gatewayPaymentId)) throw new AccessError("fees.refuseNoGateway");
 
@@ -773,10 +961,21 @@ export async function requestRefund(ctx: ActiveContext, input: { paymentId: stri
    * refused as too much. The gateway is called inside the lock on purpose —
    * the alternative, a row written before the gateway answers, would need
    * an undo path for every way the answer can fail.
+   *
+   * The gateway may take up to its own fifteen seconds to answer, inside this
+   * lock; Prisma's five-second default, which a deployed server keeps, rolled
+   * the refund's row back after the money had gone, and a second press sent it
+   * again (TA-128, testing analysis of 13 November 2026). The transaction's
+   * limit is now above the gateway's (REFUND_TX_MS).
    */
   const { refund, status, gatewayRefundId } = await db.$tenantTransaction(async (raw) => {
     const tx = raw as Tx;
     await tx.$queryRaw`SELECT "id" FROM "FeePayment" WHERE "id" = ${p.id} FOR UPDATE`;
+    // The status read again under the lock (TA-133): a reversal that committed since the read above is not refunded.
+    const locked = await tx.feePayment.findUniqueOrThrow({ where: { id: p.id }, select: { status: true, allocations: { select: { demandId: true, amountPaise: true, demand: { select: { status: true } } } } } });
+    if (locked.status !== "PAID" && locked.status !== "REFUNDED" && locked.status !== "UNALLOCATED") throw new AccessError("fees.refuseNotPaid");
+    refuseSettledElsewhere(locked.allocations);
+    await lockDemands(tx, locked.allocations.map((a) => a.demandId));
     const refundedSoFar = (await tx.feeRefund.aggregate({ where: { paymentId: p.id, status: { not: "FAILED" } }, _sum: { amountPaise: true } }))._sum.amountPaise ?? 0;
     if (refundedSoFar + input.amountPaise > p.amountPaise) throw new AccessError("fees.refuseRefundTooMuch");
 
@@ -815,7 +1014,7 @@ export async function requestRefund(ctx: ActiveContext, input: { paymentId: stri
       allocations.map((a) => a.demandId),
     );
     return { refund: created, status, gatewayRefundId };
-  });
+  }, { timeout: REFUND_TX_MS });
   await audit({ schoolId: caller.schoolId, actorUserId: caller.userId, action: "fees.refund", targetType: "FeePayment", targetId: p.id, meta: { refundId: refund.id, amountPaise: input.amountPaise, status, gatewayRefundId } });
   await notifyGuardians(p.studentMembershipId, (childName) => ({
     schoolId: caller.schoolId,
@@ -913,7 +1112,7 @@ export async function familyPaymentStatus(ctx: ActiveContext, paymentId: string)
   const transport = readFeesGatewayTransport();
   if (p.method === "ONLINE" && p.status === "INITIATED" && p.gatewayOrderId && transport !== "off") {
     const account = await forSchool(p.schoolId, () => db.feeGatewayAccount.findUnique({ where: { schoolId: p.schoolId }, select: { keyId: true } }));
-    if (account) {
+    if (account && gatewayKeyTakesPayments(account.keyId)) {
       checkout = {
         paymentId: p.id,
         orderId: p.gatewayOrderId,
@@ -1003,7 +1202,7 @@ export async function familyFees(ctx: ActiveContext, childId?: string): Promise<
   if (!link) return { children, child: null };
   const school = link.student.school;
   const schoolId = school.id;
-  const [year, gateway] = await Promise.all([currentAcademicYear(schoolId), readFeesGatewayTransport() === "off" ? null : db.feeGatewayAccount.findUnique({ where: { schoolId }, select: { id: true } })]);
+  const [year, gateway] = await Promise.all([currentAcademicYear(schoolId), readFeesGatewayTransport() === "off" ? null : db.feeGatewayAccount.findUnique({ where: { schoolId }, select: { id: true, keyId: true } })]);
   const today = todayKey(school.timezone);
   const [demands, payments] = await Promise.all([
     year ? db.feeDemand.findMany({ where: { schoolId, studentMembershipId: link.studentMembershipId, academicYearId: year.id, status: { in: ["OPEN", "PART", "PAID"] } }, orderBy: [{ dueDate: "asc" }] }) : [],
@@ -1018,7 +1217,7 @@ export async function familyFees(ctx: ActiveContext, childId?: string): Promise<
       schoolId,
       schoolName: school.name,
       year: year ? { id: year.id, name: year.name } : null,
-      options: { online: Boolean(gateway), upi: school.feeUpiId && school.feeUpiPayee ? { vpa: school.feeUpiId, payee: school.feeUpiPayee } : null, bankNote: school.feeBankNote },
+      options: { online: gateway ? gatewayKeyTakesPayments(gateway.keyId) : false, upi: school.feeUpiId && school.feeUpiPayee ? { vpa: school.feeUpiId, payee: school.feeUpiPayee } : null, bankNote: school.feeBankNote },
       demands: rows,
       totals: { outstandingPaise: rows.reduce((a, d) => a + d.outstandingPaise, 0), overduePaise: rows.filter((d) => d.overdue).reduce((a, d) => a + d.outstandingPaise, 0), paidPaise: rows.reduce((a, d) => a + d.paidPaise, 0) },
       payments: payments

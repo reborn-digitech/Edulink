@@ -14,7 +14,8 @@ export async function GET(_request: Request, { params }: { params: Promise<{ rec
   try {
     const ctx = await getSession();
     if (!ctx) throw new AccessError("access.notSignedIn", "UNAUTHENTICATED");
-    if (ctx.role !== "ADMIN" && ctx.role !== "PARENT") throw new AccessError("access.wrongRoleForThisAction");
+    // ACCOUNTS too (TA-337): a college's accounts desk issues receipts at the counter, and receiptFor admits it for its own college.
+    if (ctx.role !== "ADMIN" && ctx.role !== "ACCOUNTS" && ctx.role !== "PARENT") throw new AccessError("access.wrongRoleForThisAction");
     const { receiptId } = await params;
     return ok(feeReceiptSchema.parse(await feesReceiptRead(ctx, receiptId)));
   } catch (error) {

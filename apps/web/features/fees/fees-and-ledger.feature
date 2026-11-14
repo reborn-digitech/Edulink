@@ -5,12 +5,15 @@ Feature: Fees and the ledger
   The stored totals are derived values and must add up on every read.
 
   @happy
-  Scenario: The office's overview adds up: outstanding is demanded less collected
+  Scenario: The office's overview adds up: outstanding is the sum of the open balances, grade by grade
+    # Outstanding is per demand (fees-reports.ts): Σ max(0, net − paid) over OPEN and PART rows, so it is not demanded
+    # less collected once a demand is overpaid or a part-paid one carried (TA-338).
     Given I am signed in as the ADMIN
     When I GET "/api/v1/fees/overview"
     Then the status is 200
     And the answer matches the catalog contract
-    And the field "totals.outstandingPaise" equals the field "totals.demandedPaise" minus the field "totals.collectedPaise"
+    And the field "totals.outstandingPaise" equals the sum of "outstandingPaise" over "byGrade"
+    And the field "totals.overduePaise" equals the sum of "overduePaise" over "byGrade"
     And the field "totals.demandedPaise" equals the sum of "demandedPaise" over "byGrade"
     And the field "totals.collectedPaise" equals the sum of "collectedPaise" over "byGrade"
 
@@ -31,7 +34,8 @@ Feature: Fees and the ledger
     And the answer matches the catalog contract
     And the field "child.demands" is a list of at least 1 item
     And the field "child.demands[0].outstandingPaise" equals the field "child.demands[0].netPaise" minus the field "child.demands[0].paidPaise"
-    And the field "child.totals.paidPaise" equals the sum of "amountPaise" over "child.payments"
+    # Paid is what this year's demands received (their allocations), not every listed payment of every status (TA-338).
+    And the field "child.totals.paidPaise" equals the sum of "paidPaise" over "child.demands"
     When I remember the "receiptId" of the first item of "child.payments" as "receipt"
     And I GET "/api/v1/fees/receipts/{{receipt}}"
     Then the status is 200
@@ -53,7 +57,7 @@ Feature: Fees and the ledger
     Given I am signed in as the ACCOUNTS
     When I GET "/api/v1/fees/overview"
     Then the status is 200
-    And the field "totals.outstandingPaise" equals the field "totals.demandedPaise" minus the field "totals.collectedPaise"
+    And the field "totals.outstandingPaise" equals the sum of "outstandingPaise" over "byGrade"
 
   @alternative
   Scenario: The college student's ledger is the college's alone
@@ -92,11 +96,16 @@ Feature: Fees and the ledger
     Given I am signed in as the PARENT
     When I GET "/api/v1/fees/family"
     Then the field "child.options.online" equals false
-    When I POST "/api/v1/fees/family/checkout" with:
+    # A valid body, so the refusal is the gateway's and not the shape's (TA-338): an empty body was a 422 before any
+    # gateway was looked at, and the real refusal, an AccessError, is a 403.
+    When I remember the field "child.studentMembershipId" as "child"
+    And I remember the "id" of the first item of "child.demands" whose "status" equals "OPEN" as "demand"
+    And I POST "/api/v1/fees/family/checkout" with:
       """
-      {}
+      { "studentMembershipId": "{{child}}", "demandIds": ["{{demand}}"] }
       """
-    Then the status is one of 409, 422
+    Then the status is 403
+    And the answer contains "does not take online payment"
 
   @negative
   Scenario: Another school's office cannot read this school's pupil's fee page

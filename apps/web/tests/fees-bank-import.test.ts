@@ -220,12 +220,15 @@ describe("a UPI intent the family never claimed", () => {
     const result = await commitBankImport(admin(), csv, describeError);
     expect(result).toEqual({ recorded: 0, confirmed: 0, already: 0, unmatched: 1, failed: [] });
     expect(await db.feePayment.findUniqueOrThrow({ where: { id: start.paymentId }, select: { status: true, reference: true } })).toEqual({ status: "CLAIMED", reference: theirs });
-    expect(await db.feePayment.count({ where: { schoolId, studentMembershipId: pupilC } })).toBe(3);
+    // Two rows, not three: pressing for the same dues handed back the open intent of the case above (TA-449).
+    expect(await db.feePayment.count({ where: { schoolId, studentMembershipId: pupilC } })).toBe(2);
     expect(await db.feeDemand.findUniqueOrThrow({ where: { id: term2 }, select: { paidPaise: true, status: true } })).toEqual({ paidPaise: 0, status: "OPEN" });
   });
 
   it("the office's own confirm still refuses an unclaimed intent without a statement", async () => {
-    const pending = await db.feePayment.findFirstOrThrow({ where: { schoolId, studentMembershipId: pupilC, status: "INITIATED" }, select: { id: true } });
+    // A fresh intent: the open one of the cases above was claimed (TA-449 hands back one intent for the same dues).
+    const pending = { id: (await startUpiPayment(parent(), { studentMembershipId: pupilC, demandIds: [term2] })).paymentId };
+    expect((await db.feePayment.findUniqueOrThrow({ where: { id: pending.id }, select: { status: true } })).status).toBe("INITIATED");
     await expect(confirmClaim(admin(), pending.id)).rejects.toThrow("fees.refuseNotClaimed");
   });
 });

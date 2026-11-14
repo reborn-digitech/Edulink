@@ -82,7 +82,8 @@ export function PaymentsTable({ studentMembershipId, payments, timezone, office 
   return (
     <ul className="divide-y divide-border">
       {payments.map((p) => {
-        const canReverse = office && p.status === "PAID";
+        // Money the gateway captured goes back with Refund; Reverse is for a mistake at the counter (TA-256).
+        const canReverse = office && p.status === "PAID" && p.method !== "ONLINE";
         const canRefund = office && (p.status === "PAID" || p.status === "REFUNDED" || p.status === "UNALLOCATED") && p.refundedPaise < p.amountPaise;
         const editing = open?.paymentId === p.id ? open : null;
         return (
