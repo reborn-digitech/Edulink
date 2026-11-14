@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { hasStream } from "@/lib/streams";
 import { getT } from "@/lib/i18n/server";
 import { listInternships } from "@/lib/placement-internships";
 import { supervisors } from "@/lib/placement-projects";
@@ -19,7 +18,7 @@ export default async function InternshipsPage({ searchParams }: { searchParams: 
   const [list, people] = await Promise.all([listInternships(ctx), supervisors(ctx.schoolId)]);
   return (
     <CellFrame t={t} on college={college} current="internships" title={t("placement.tabInternships")} description={t("placement.internshipsIntro")} ok={ok} error={error}>
-      <InternshipStaffList internships={list.internships} t={t} back="/placement/internships" canDecide={list.canDecide} supervisors={people} rule={list.rule} aicte={await hasStream(ctx.schoolId, "ENGINEERING")} />
+      <InternshipStaffList internships={list.internships} t={t} back="/placement/internships" canDecide={list.canDecide} supervisors={people} rule={list.rule} ruleKinds={list.ruleKinds} />
     </CellFrame>
   );
 }

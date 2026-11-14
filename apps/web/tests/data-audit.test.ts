@@ -48,6 +48,7 @@ import { corpusChapters, titleVerdict } from "../scripts/topic-titles"; // owner
 import { translatedNameFor } from "../scripts/quiz-queue-load"; // qb-A
 import { unitNameRefusal } from "@/lib/college-syllabi"; // qb-A
 import { admittedWithoutPayment } from "./data-audit-admission-fee";
+import { keepsOneTruth } from "../scripts/zz-expert-standing"; // TA-583
 
 const RUN = process.env.DATA_AUDIT === "1";
 const d = RUN ? describe : describe.skip;
@@ -216,6 +217,17 @@ d("STORED copies against their source rows", () => {
     }
     note("mentor-places", "INFO", "platform", `${experts.length} expert profile(s)`);
     expect(failsOf("mentor-places")).toEqual([]);
+  });
+
+  it("expert-badge: an expert is verified on verifiedAt and on kycStatus, or on neither (the badge's one truth)", async () => {
+    // TA-583: the pairing form, the mentor queue and the pupil's list read verifiedAt; the marketplace and the paid
+    // gate read kycStatus. The ZZ fixture wrote verifiedAt alone, so zz.expert1 was verified on one and not the other.
+    const experts = await db.expertProfile.findMany({ select: { id: true, verifiedAt: true, kycStatus: true } });
+    for (const e of experts) {
+      if (!keepsOneTruth(e)) note("expert-badge", "FAIL", "platform", `expert profile ${e.id} has verifiedAt ${e.verifiedAt ? "set" : "empty"} but kycStatus ${e.kycStatus}`);
+    }
+    note("expert-badge", "INFO", "platform", `${experts.length} expert profile(s)`);
+    expect(failsOf("expert-badge")).toEqual([]);
   });
 
   it("gig-money: a seat payment's stored net is gross − commission − GST (zero on a refund); a payout's net and count are its payments'; an invoice's taxable value is its payout's commission", async () => {
@@ -1332,7 +1344,8 @@ d("modules: placement (4 October 2026)", () => {
    * recomputed from the offers and the profiles (src/lib/placement-analytics.ts
    * `seasonDrift`): FAIL when nothing changed since it was published, WARN
    * when an offer or a profile changed afterwards (republish to bring it in
-   * step). An internship's credits never pass the AICTE maximum.
+   * step). An AICTE programme's internship credits never pass the AICTE
+   * maximum (TA-469, TA-495: other regulators' programmes are not held to it).
    */
   it("placement-season: a published season is what the offers and profiles give; internship credits stay within the policy", async () => {
     const { seasonDrift } = await import("@/lib/placement-analytics");
@@ -1342,7 +1355,11 @@ d("modules: placement (4 October 2026)", () => {
       const seasons = await db.placementSeason.count({ where: { schoolId: s.id } });
       for (const f of await seasonDrift(s.id)) note("placement-season", f.level, s.name, `batch ${f.batchYear}: ${f.detail}`);
       const credited = await db.internship.groupBy({ by: ["studentMembershipId"], where: { schoolId: s.id, status: "CREDITED" }, _sum: { credits: true } });
-      for (const c of credited) if ((c._sum.credits ?? 0) > AICTE_INTERNSHIP_BTECH.creditsMax) note("placement-season", "FAIL", s.name, `student ${c.studentMembershipId}: ${c._sum.credits} internship credits, past the policy's ${AICTE_INTERNSHIP_BTECH.creditsMax}`);
+      // The 20 credits are AICTE's (the owner's decision on TA-469 and TA-495): read for a student of an AICTE programme and for one with no
+      // seat, whom the library holds to it as before; a programme under another regulator stops at its own total credits, not checked here.
+      const seats = await db.studentProgramme.findMany({ where: { schoolId: s.id, studentMembershipId: { in: credited.map((c) => c.studentMembershipId) } }, select: { studentMembershipId: true, programme: { select: { regulator: true } } } });
+      const regulator = new Map(seats.map((x) => [x.studentMembershipId, x.programme.regulator]));
+      for (const c of credited) if ((regulator.get(c.studentMembershipId) ?? "AICTE") === "AICTE" && (c._sum.credits ?? 0) > AICTE_INTERNSHIP_BTECH.creditsMax) note("placement-season", "FAIL", s.name, `student ${c.studentMembershipId}: ${c._sum.credits} internship credits, past the policy's ${AICTE_INTERNSHIP_BTECH.creditsMax}`);
       if (seasons || credited.length) note("placement-season", "INFO", s.name, `${seasons} season row(s) and ${credited.length} students' internship credits checked`);
     }
     expect(failsOf("placement-season")).toEqual([]);

@@ -166,7 +166,7 @@ export function StudentPlacementScreen() {
 
           <Card title={t("placement.myInternships")}>
             <Text variant="sm" tone="muted">
-              {t("placement.myInternshipsIntro", { credits: p.internshipCredits })}
+              {t(p.internshipRule.kind === "AICTE" ? "placement.myInternshipsIntro" : "placement.myInternshipsIntroScheme", { credits: p.internshipCredits })}
             </Text>
             {p.internships.map((i) => (
               <Row key={i.id} title={i.companyName} caption={`${formatDateRange(i.from, i.to)} · ${t(INTERNSHIP_STATUS_KEY[i.status]!)}${i.credits !== null ? ` · ${t("placement.creditsIs", { credits: i.credits })}` : ""}`} />

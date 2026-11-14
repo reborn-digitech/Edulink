@@ -54,22 +54,28 @@ export function SupervisionScreen() {
       {internships.isPending ? <Loading /> : null}
       {internships.isError ? <Failed message={internships.error.message} onRetry={() => void internships.refetch()} /> : null}
       {list && list.internships.length === 0 ? <Empty icon="briefcase" title={t("placement.noInternships")} body={t("deskParity.internshipsNoneBody")} action={<Button label={t("common.retry")} variant="secondary" onPress={() => void internships.refetch()} />} /> : null}
-      {list ? (
+      {/* The rule each programme follows (TA-469, TA-495): the AICTE policy where a programme's regulator is AICTE, the scheme's sentence where another regulator's is. */}
+      {list && list.ruleKinds.includes("AICTE") ? (
         <Text variant="xs" tone="muted">
           {t("deskParity.internshipRule", { creditsMin: list.rule.creditsMin, creditsMax: list.rule.creditsMax, hoursMin: list.rule.hoursMin, hoursMax: list.rule.hoursMax })}
+        </Text>
+      ) : null}
+      {list && list.ruleKinds.includes("SCHEME") ? (
+        <Text variant="xs" tone="muted">
+          {t("placement.internshipRuleGeneral")}
         </Text>
       ) : null}
       {waiting.length > 0 ? (
         <Card title={t("deskParity.internshipsWaiting", { count: waiting.length })}>
           {waiting.map((i) => (
-            <InternshipCard key={i.id} item={i} canDecide={Boolean(list?.canDecide)} supervisors={supervisors} creditsMax={list?.rule.creditsMax ?? 20} onDone={setNotice} />
+            <InternshipCard key={i.id} item={i} canDecide={Boolean(list?.canDecide)} supervisors={supervisors} creditsMax={i.creditsMax} onDone={setNotice} />
           ))}
         </Card>
       ) : null}
       {rest.length > 0 ? (
         <Card title={t("placement.internshipsTitle", { count: rest.length })}>
           {rest.map((i) => (
-            <InternshipCard key={i.id} item={i} canDecide={Boolean(list?.canDecide)} supervisors={supervisors} creditsMax={list?.rule.creditsMax ?? 20} onDone={setNotice} />
+            <InternshipCard key={i.id} item={i} canDecide={Boolean(list?.canDecide)} supervisors={supervisors} creditsMax={i.creditsMax} onDone={setNotice} />
           ))}
         </Card>
       ) : null}
@@ -207,7 +213,7 @@ function InternshipCard({ item, canDecide, supervisors, creditsMax, onDone }: { 
           <Chips label={t("placement.fieldGrade")} value={grade} options={[{ value: "", label: "—" }, ...INDUSTRY_GRADES.map((g) => ({ value: g, label: g }))]} onChange={setGrade} />
           <Field label={t("placement.fieldVisit")} hint={t("deskParity.dateHint")} value={visit} onChangeText={setVisit} placeholder={todayKey()} autoCapitalize="none" autoCorrect={false} maxLength={10} />
           <Field label={t("placement.fieldViva")} value={viva} onChangeText={setViva} keyboardType="number-pad" maxLength={3} />
-          {canDecide ? <Field label={t("placement.fieldCredits")} hint={t("deskParity.creditsHint", { max: creditsMax })} value={credits} onChangeText={setCredits} keyboardType="number-pad" maxLength={2} /> : null}
+          {canDecide ? <Field label={t("placement.fieldCredits")} hint={t("deskParity.creditsHint", { max: creditsMax })} value={credits} onChangeText={setCredits} keyboardType="number-pad" maxLength={3} /> : null}
           <View style={{ flexDirection: "row", flexWrap: "wrap", gap: th.space[2] }}>
             <Button label={t("common.save")} disabled={evaluate.isPending} busy={evaluate.isPending} onPress={() => evaluate.mutate()} />
             <Button

@@ -82,14 +82,14 @@ Open `/placement/students` ("Students"): "The roll as the cell reads it: each re
 
 ## How do I approve, follow and credit an internship?
 
-Open `/placement/internships` ("Internships"): "Proposed by students, approved with a supervising faculty member, followed through the diary and the report, and credited last." At an engineering college the card states the AICTE rule for credits and hours; elsewhere "Record the hours and the diary here; the credits follow the university's scheme for the programme."
+Open `/placement/internships` ("Internships"): "Proposed by students, approved with a supervising faculty member, followed through the diary and the report, and credited last." The rule follows each student's programme, by the regulator the office stored for it: where the college has a programme under AICTE the card states the AICTE rule for credits and hours (after semester 2, 4 or 6, at most 20 credits); where it has a programme under any other regulator it says "Record the hours and the diary here; the credits follow the university's scheme for the programme.", and those students may propose an internship after any semester of their programme, credited up to the programme's total credits.
 
 1. Each internship shows the student and company, its kind ("Industry", "Research", "Family business"; at a law college also court, law firm and legal aid), dates, hours, "after semester {n}", the supervisor, the "Report", the "Parent's declaration" for a family business, and "Diary, {count} days".
 2. On a "Proposed" one, choose the "Supervising faculty" and press "Approve", or write the "Reason" and press "Refuse".
 3. Once it reads "Report in", record the "Industry grade", "Faculty visit on" and "Viva marks"; the supervisor or the HOD may record these too.
 4. Last, type the "Credits" and press "Save". It then reads "Credited" and "{credits} credits recorded for the exam cell."
 
-Credits are refused until the report, the grade, the viva and any declaration are in ("Credits come last: the report, the industry grade and the viva first."), and never past the policy's maximum. The department's HOD may decide and credit as you do.
+Credits are refused until the report, the grade, the viva and any declaration are in ("Credits come last: the report, the industry grade and the viva first."), and never past the maximum of the student's rule (20 under an AICTE programme, the programme's total credits under another regulator). The department's HOD may decide and credit as you do.
 
 ## How do I set a pre-placement talk and mark who came?
 

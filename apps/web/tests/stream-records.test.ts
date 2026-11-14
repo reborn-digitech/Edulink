@@ -297,11 +297,13 @@ describe("a law college's records", () => {
   });
 
   it("offers court, firm and legal-aid internships (after semester 8 too) and counts the BCI's weeks per student", async () => {
-    // A law student proposes a court internship after semester 8; an AICTE kind there is refused; an education college offers no court kind.
+    // A law student proposes a court internship after semester 8; an AICTE kind there is refused to an AICTE programme's student; an education college offers no court kind.
     const s6 = await as("s6", "STUDENT", ids.A!);
     const court = await proposeInternship(s6, { companyName: "ZZ District Court", kind: "COURT", from: "2026-06-01", to: "2026-07-26", hours: 300, windowSemester: 8, supervisorName: "ZZ Adv. Rao" });
     expect(court.kind).toBe("COURT");
-    await expect(proposeInternship(s6, { companyName: "ZZ Firm", kind: "INDUSTRY", from: "2026-06-01", to: "2026-06-30", hours: 100, windowSemester: 8, supervisorName: "ZZ X" })).rejects.toMatchObject({ key: "placement.refuseInternshipWindow" });
+    // An AICTE kind after semester 8 is refused to a student of the college's AICTE programme (the B.Tech); the law student's own
+    // programme answers to the BCI, whose students may follow any semester since the owner's decision on TA-469 (tests/ta-decision-469-495-*).
+    await expect(proposeInternship(await as("s1", "STUDENT", ids.A!), { companyName: "ZZ Firm", kind: "INDUSTRY", from: "2026-06-01", to: "2026-06-30", hours: 100, windowSemester: 8, supervisorName: "ZZ X" })).rejects.toMatchObject({ key: "placement.refuseInternshipWindow" });
     await expect(proposeInternship(await as("t1", "STUDENT", ids.B!), { companyName: "ZZ Court", kind: "COURT", from: "2026-06-01", to: "2026-06-30", hours: 100, windowSemester: 2, supervisorName: "ZZ X" })).rejects.toMatchObject({ key: "streamRecords.refuseInternshipKind" });
     // Completed ones, by hand: s6 (five years, needs 20) 8 weeks + 12 weeks evaluated; s7 (three years, needs 12) 4 weeks credited + one refused.
     await db.internship.update({ where: { id: court.id }, data: { status: "EVALUATED" } });

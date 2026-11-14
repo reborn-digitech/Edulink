@@ -79,6 +79,7 @@ export async function studentPlacement(ctx: ActiveContext): Promise<StudentPlace
     offers,
     internships: internships.internships,
     internshipCredits: internships.creditsTotal,
+    internshipRule: internships.rule,
     prep,
     mentorSlots,
     softSkills: softSkills.get(me.membershipId) ?? [],

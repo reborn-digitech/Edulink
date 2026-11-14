@@ -1,5 +1,5 @@
 import "server-only";
-import { AICTE_INTERNSHIP_BTECH, INTERNSHIP_DIARY_DAY_HOURS, LAW_INTERNSHIP_WINDOWS, internshipKindsFor, isLawInternshipKind, type InternshipPropose, type InternshipView } from "@edulink/contracts";
+import { AICTE_INTERNSHIP_BTECH, INTERNSHIP_DIARY_DAY_HOURS, INTERNSHIP_RULE_KINDS, LAW_INTERNSHIP_WINDOWS, internshipKindsFor, internshipRuleFor, isLawInternshipKind, type InternshipPropose, type InternshipRuleKind, type InternshipRuleOf, type InternshipView } from "@edulink/contracts";
 import { streamsOf } from "./streams";
 import { db } from "./db";
 import { audit } from "./audit";
@@ -10,7 +10,7 @@ import { assertModuleOn } from "./modules";
 import { readJson, writeJson } from "./json";
 import { nameOf, spendTicket } from "./placement";
 import { addDaysToKey, todayKey, zonedStartOfDay } from "./dates";
-import { zoneOf } from "./academics";
+import { readPassingRules, zoneOf } from "./academics";
 import type { ActiveContext } from "./session";
 import type { Role } from "./constants";
 
@@ -30,6 +30,14 @@ import type { Role } from "./constants";
  *              the hours here — and the programme's running total may not
  *              pass the policy's maximum. A family business needs the
  *              parent's declaration first.
+ *
+ * THE RULE IS THE STUDENT'S PROGRAMME'S (the owner's decision on TA-469 and
+ * TA-495, 14 November 2026; internshipRuleFor in packages/contracts): the
+ * windows after semesters 2, 4 and 6 and the 20 credits hold only where the
+ * programme's stored regulator is AICTE (and for a student with no seat yet,
+ * as before); under any other regulator an internship may follow any semester
+ * of the programme and the running total stops at the programme's total
+ * credits, as its scheme sets them. A law internship keeps its own windows.
  *
  * `credits` has ONE WRITER, `evaluateInternship`; the exam cell reads it
  * through `internshipCredits` / `internshipCreditsForTerm` below.
@@ -67,6 +75,7 @@ export async function internshipViews(rows: readonly Row[]): Promise<InternshipV
   const ids = [...new Set(rows.flatMap((r) => [r.studentMembershipId, r.facultyMembershipId].filter((x): x is string => Boolean(x))))];
   const members = await db.membership.findMany({ where: { id: { in: ids } }, select: { id: true, user: { select: { name: true, preferredName: true } } } });
   const name = new Map(members.map((m) => [m.id, nameOf(m.user)]));
+  const rules = await internshipRulesOf(rows.map((r) => r.studentMembershipId));
   return rows.map((r) => ({
     id: r.id,
     studentMembershipId: r.studentMembershipId,
@@ -92,7 +101,24 @@ export async function internshipViews(rows: readonly Row[]): Promise<InternshipV
     hasDeclaration: Boolean(r.parentDeclarationFileId),
     declarationFileId: r.parentDeclarationFileId,
     creditedAt: r.creditedAt?.toISOString() ?? null,
+    rule: rules.get(r.studentMembershipId)?.kind ?? "AICTE",
+    creditsMax: rules.get(r.studentMembershipId)?.creditsMax ?? AICTE_INTERNSHIP_BTECH.creditsMax,
   }));
+}
+
+/**
+ * The rule each student's internships are held to, by the regulator of their seat's programme and its scheme's total
+ * credits (TA-469, TA-495). The total is read as the exam cell reads it for a finished programme (readPassingRules, as
+ * programmeFinished does). No seat: the AICTE rule, as before.
+ */
+export async function internshipRulesOf(studentMembershipIds: readonly string[]): Promise<Map<string, InternshipRuleOf>> {
+  const ids = [...new Set(studentMembershipIds)];
+  const seats = ids.length ? await db.studentProgramme.findMany({ where: { studentMembershipId: { in: ids } }, select: { studentMembershipId: true, programme: { select: { regulator: true, durationYears: true } }, scheme: { select: { passingRules: true } } } }) : [];
+  const bySeat = new Map(seats.map((s) => [s.studentMembershipId, internshipRuleFor({ regulator: s.programme.regulator, durationYears: s.programme.durationYears, totalCredits: readPassingRules(s.scheme.passingRules).totalCredits })]));
+  return new Map(ids.map((id) => [id, bySeat.get(id) ?? internshipRuleFor(null)]));
+}
+export async function internshipRuleOf(studentMembershipId: string): Promise<InternshipRuleOf> {
+  return (await internshipRulesOf([studentMembershipId])).get(studentMembershipId) ?? internshipRuleFor(null);
 }
 
 export const internshipRule = { creditsMin: AICTE_INTERNSHIP_BTECH.creditsMin, creditsMax: AICTE_INTERNSHIP_BTECH.creditsMax, hoursMin: AICTE_INTERNSHIP_BTECH.hoursMin, hoursMax: AICTE_INTERNSHIP_BTECH.hoursMax, windows: [...AICTE_INTERNSHIP_BTECH.windows] };
@@ -102,10 +128,10 @@ async function creditsSoFar(studentMembershipId: string, exceptId?: string): Pro
   return rows.reduce((a, r) => a + (r.credits ?? 0), 0);
 }
 
-/** A student's own internships, with the credits CREDITED so far. */
+/** A student's own internships, with the credits CREDITED so far and the rule their programme holds them to. */
 export async function myInternships(studentMembershipId: string) {
   const rows = await db.internship.findMany({ where: { studentMembershipId }, orderBy: { fromKey: "desc" } });
-  return { internships: await internshipViews(rows), creditsTotal: await creditsSoFar(studentMembershipId) };
+  return { internships: await internshipViews(rows), creditsTotal: await creditsSoFar(studentMembershipId), rule: await internshipRuleOf(studentMembershipId) };
 }
 
 /** The staff's list: the cell, the HOD, the office and the principal read the college's; a faculty member the internships they supervise. */
@@ -117,7 +143,12 @@ export async function listInternships(ctx: ActiveContext) {
     orderBy: [{ status: "asc" }, { fromKey: "desc" }],
     take: 500,
   });
-  return { internships: await internshipViews(rows), creditsTotal: null, rule: internshipRule, canDecide: DECIDERS.includes(me.role) };
+  const internships = await internshipViews(rows);
+  // The rules the college's programmes follow (an archived one's left out) and those of the internships listed (a student with no seat is held to AICTE's): the sentences the staff read (TA-469).
+  const programmes = await db.programme.findMany({ where: { schoolId: me.schoolId, archivedAt: null }, select: { regulator: true } });
+  const held = new Set<InternshipRuleKind>([...programmes.map((p) => internshipRuleFor({ regulator: p.regulator, durationYears: 1, totalCredits: 1 }).kind), ...internships.map((i) => i.rule)]);
+  const ruleKinds = INTERNSHIP_RULE_KINDS.filter((k) => held.has(k));
+  return { internships, creditsTotal: null, rule: internshipRule, ruleKinds: ruleKinds.length ? ruleKinds : (["AICTE"] as InternshipRuleKind[]), canDecide: DECIDERS.includes(me.role) };
 }
 
 export async function proposeInternship(ctx: ActiveContext, input: InternshipPropose): Promise<InternshipView> {
@@ -127,12 +158,18 @@ export async function proposeInternship(ctx: ActiveContext, input: InternshipPro
   // The kinds a college offers follow its streams (stream records, 5 Oct 2026): a law college's COURT, FIRM and
   // LEGAL_AID, which may sit after semester 8 or 10 too; a management college's SUMMER.
   if (!internshipKindsFor(await streamsOf(ctx.schoolId)).includes(input.kind)) throw new RuleRefusal("streamRecords.refuseInternshipKind", 422, undefined, "kind");
-  const windows: readonly number[] = isLawInternshipKind(input.kind) ? LAW_INTERNSHIP_WINDOWS : AICTE_INTERNSHIP_BTECH.windows;
-  if (!windows.includes(input.windowSemester)) throw new RuleRefusal("placement.refuseInternshipWindow", 422, undefined, "windowSemester");
+  // The windows follow the student's programme (TA-469, TA-495): AICTE's 2, 4 and 6 under an AICTE programme, any
+  // semester of the programme under another regulator; a law internship keeps its own.
+  const rule = await internshipRuleOf(ctx.membershipId);
+  if (isLawInternshipKind(input.kind)) {
+    if (!(LAW_INTERNSHIP_WINDOWS as readonly number[]).includes(input.windowSemester)) throw new RuleRefusal("placement.refuseLawInternshipWindow", 422, undefined, "windowSemester");
+  } else if (!rule.windows.includes(input.windowSemester)) {
+    throw rule.kind === "AICTE" ? new RuleRefusal("placement.refuseInternshipWindow", 422, undefined, "windowSemester") : new RuleRefusal("placement.refuseInternshipSemester", 422, { max: rule.windows.length }, "windowSemester");
+  }
   const row = await db.internship.create({
     data: { schoolId: ctx.schoolId, studentMembershipId: ctx.membershipId, companyName: input.companyName, kind: input.kind, fromKey: input.from, toKey: input.to, hours: input.hours, windowSemester: input.windowSemester, supervisorName: input.supervisorName },
   });
-  await audit({ schoolId: ctx.schoolId, actorUserId: ctx.user.id, action: "placement.internship.propose", targetType: "Internship", targetId: row.id, meta: { kind: input.kind, window: input.windowSemester } });
+  await audit({ schoolId: ctx.schoolId, actorUserId: ctx.user.id, action: "placement.internship.propose", targetType: "Internship", targetId: row.id, meta: { kind: input.kind, window: input.windowSemester, rule: rule.kind } });
   const tpos = await db.membership.findMany({ where: { schoolId: ctx.schoolId, role: { in: ["TPO", "HOD"] }, status: "ACTIVE", leftAt: null }, select: { userId: true } });
   await Promise.all(tpos.map((p) => notify({ userId: p.userId, schoolId: ctx.schoolId, kind: "SYSTEM", titleKey: "placement.notifInternshipProposed", titleVars: { company: input.companyName }, url: "/placement/internships" }).catch(() => undefined)));
   return (await internshipViews([row]))[0]!;
@@ -203,8 +240,9 @@ export async function decideInternship(ctx: ActiveContext, id: string, input: { 
  * The grade, the visit and the viva — by the supervising faculty member, the
  * HOD or the cell — and, last, the credits (the cell or the HOD alone): only
  * once the report is in, the grade and the viva are recorded and, for a
- * family business, the parent's declaration; and never past the policy's
- * programme maximum.
+ * family business, the parent's declaration; and never past the maximum of
+ * the rule the student's programme follows (20 under AICTE, the programme's
+ * total credits under another regulator: TA-469, TA-495).
  */
 export async function evaluateInternship(ctx: ActiveContext, id: string, input: { industryGrade?: string | null; facultyVisitOn?: string | null; vivaMarks?: number | null; credits?: number | null }): Promise<InternshipView> {
   const me = await staffOf(ctx, EVALUATORS);
@@ -228,7 +266,8 @@ export async function evaluateInternship(ctx: ActiveContext, id: string, input: 
     // Credited once it has ended (A3-journeys-22): from its last day, by the college's own calendar.
     if (todayKey(await zoneOf(me.schoolId)) < row.toKey) throw new RuleRefusal("placement.refuseCreditBeforeEnd", 409, { date: row.toKey });
     const before = await creditsSoFar(row.studentMembershipId, row.id);
-    if (before + input.credits > AICTE_INTERNSHIP_BTECH.creditsMax) throw new RuleRefusal("placement.refuseCreditsOverMax", 409, { max: AICTE_INTERNSHIP_BTECH.creditsMax, have: before });
+    const rule = await internshipRuleOf(row.studentMembershipId);
+    if (before + input.credits > rule.creditsMax) throw new RuleRefusal(rule.kind === "AICTE" ? "placement.refuseCreditsOverMax" : "placement.refuseCreditsOverTotal", 409, { max: rule.creditsMax, have: before });
     credited = { credits: input.credits };
   }
   const updated = await db.$tenantTransaction(async (raw) =>

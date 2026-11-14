@@ -1,6 +1,6 @@
 import { isoToDisplayDate } from "@/lib/dates";
 import { FileTextIcon, NotebookIcon } from "@phosphor-icons/react/ssr";
-import { INDUSTRY_GRADES, type InternshipView } from "@edulink/contracts";
+import { INDUSTRY_GRADES, type InternshipRuleKind, type InternshipView } from "@edulink/contracts";
 import type { Translate } from "@/lib/i18n/dictionary";
 import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -17,10 +17,12 @@ import { ActionForm } from "@/components/ui/action-form";
  * record the industry grade, the visit and the viva; the cell or the HOD
  * decide the credits last. Each shows its diary and its files.
  */
-export function InternshipStaffList({ internships, t, back, canDecide, supervisors, rule, aicte }: { internships: InternshipView[]; t: Translate; back: string; canDecide: boolean; supervisors: { membershipId: string; name: string }[]; rule: { creditsMin: number; creditsMax: number; hoursMin: number; hoursMax: number }; aicte: boolean }) {
+export function InternshipStaffList({ internships, t, back, canDecide, supervisors, rule, ruleKinds }: { internships: InternshipView[]; t: Translate; back: string; canDecide: boolean; supervisors: { membershipId: string; name: string }[]; rule: { creditsMin: number; creditsMax: number; hoursMin: number; hoursMax: number }; ruleKinds: readonly InternshipRuleKind[] }) {
+  // The rule each programme follows (TA-469, TA-495): AICTE's where a programme's regulator is AICTE, the scheme's sentence where another regulator's is.
+  const said = [ruleKinds.includes("AICTE") ? t("placement.aicteRule", { creditsMin: rule.creditsMin, creditsMax: rule.creditsMax, hoursMin: rule.hoursMin, hoursMax: rule.hoursMax }) : null, ruleKinds.includes("SCHEME") ? t("placement.internshipRuleGeneral") : null].filter((x): x is string => x !== null);
   return (
     <Card>
-      <CardHeader icon={<NotebookIcon weight="duotone" className="size-5" />} title={t("placement.internshipsTitle", { count: internships.length })} description={aicte ? t("placement.aicteRule", { creditsMin: rule.creditsMin, creditsMax: rule.creditsMax, hoursMin: rule.hoursMin, hoursMax: rule.hoursMax }) : t("placement.internshipRuleGeneral")} />
+      <CardHeader icon={<NotebookIcon weight="duotone" className="size-5" />} title={t("placement.internshipsTitle", { count: internships.length })} description={said.join(" ")} />
       <CardBody className="space-y-4">
         {internships.length === 0 ? <p className="text-sm text-fg-muted">{t("placement.noInternships")}</p> : null}
         {internships.map((i) => (
@@ -103,7 +105,7 @@ export function InternshipStaffList({ internships, t, back, canDecide, superviso
                 </SelectField>
                 <DateField label={t("placement.fieldVisit")} name="facultyVisitOn" defaultValue={i.facultyVisitAt?.slice(0, 10) ?? ""} />
                 <TextField label={t("placement.fieldViva")} name="vivaMarks" type="number" min="0" max="100" defaultValue={i.vivaMarks ?? ""} />
-                {canDecide ? <TextField label={t("placement.fieldCredits")} name="credits" type="number" min="1" max={rule.creditsMax} /> : <span />}
+                {canDecide ? <TextField label={t("placement.fieldCredits")} name="credits" type="number" min="1" max={i.creditsMax} /> : <span />}
                 <Button type="submit" size="sm" variant="secondary" className="sm:justify-self-start">
                   {t("placement.saveEvaluation")}
                 </Button>

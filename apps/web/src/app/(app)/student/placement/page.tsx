@@ -3,7 +3,7 @@ import { isoToDisplayDate } from "@/lib/dates";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { BriefcaseIcon, ChalkboardTeacherIcon, DownloadSimpleIcon, IdentificationCardIcon, LightningIcon, NotebookIcon, SealCheckIcon } from "@phosphor-icons/react/ssr";
-import { INTERNSHIP_WINDOWS, LAW_INTERNSHIP_WINDOWS, internshipKindsFor } from "@edulink/contracts";
+import { LAW_INTERNSHIP_WINDOWS, internshipKindsFor } from "@edulink/contracts";
 import { streamsOf } from "@/lib/streams";
 import { requireRole } from "@/lib/tenancy";
 import { getT } from "@/lib/i18n/server";
@@ -58,6 +58,8 @@ export default async function StudentPlacementPage({ searchParams }: { searchPar
   }
   const [p, talks] = await Promise.all([studentPlacement(ctx), studentTalks(ctx)]);
   const r = p.record;
+  // The windows the student's own programme allows (TA-469, TA-495): AICTE's 2, 4 and 6, or any semester of a programme under another regulator; a law college's even semesters too.
+  const windows = [...new Set([...p.internshipRule.windows, ...(streams.includes("LAW") ? LAW_INTERNSHIP_WINDOWS : [])])].sort((a, b) => a - b);
   return (
     <div className="space-y-5">
       <PageHeader title={t("placement.studentTitle")} description={t("placement.studentIntro", { batch: p.batchYear })} />
@@ -186,7 +188,7 @@ export default async function StudentPlacementPage({ searchParams }: { searchPar
       </Card>
 
       <Card>
-        <CardHeader icon={<NotebookIcon weight="duotone" className="size-5" />} title={t("placement.myInternships")} description={t("placement.myInternshipsIntro", { credits: p.internshipCredits })} />
+        <CardHeader icon={<NotebookIcon weight="duotone" className="size-5" />} title={t("placement.myInternships")} description={t(p.internshipRule.kind === "AICTE" ? "placement.myInternshipsIntro" : "placement.myInternshipsIntroScheme", { credits: p.internshipCredits })} />
         <CardBody className="space-y-4 text-sm">
           {p.internships.map((i) => (
             <div key={i.id} className="space-y-2 rounded-[var(--radius-md)] border border-border p-3">
@@ -226,8 +228,8 @@ export default async function StudentPlacementPage({ searchParams }: { searchPar
               {/* The kinds the college's streams offer (stream records, 5 Oct 2026): a law college's court, firm and legal aid; a management college's summer. */}
               {internshipKindsFor(streams).map((k) => <option key={k} value={k}>{t(INTERNSHIP_KIND_KEY[k]!)}</option>)}
             </SelectField>
-            <SelectField label={t("placement.fieldWindow")} name="windowSemester" defaultValue="6">
-              {(streams.includes("LAW") ? LAW_INTERNSHIP_WINDOWS : INTERNSHIP_WINDOWS).map((w) => <option key={w} value={w}>{t("placement.windowN", { semester: w })}</option>)}
+            <SelectField label={t("placement.fieldWindow")} name="windowSemester" defaultValue={String(windows.includes(6) ? 6 : windows[windows.length - 1])}>
+              {windows.map((w) => <option key={w} value={w}>{t("placement.windowN", { semester: w })}</option>)}
             </SelectField>
             <DateField label={t("placement.fieldFrom")} name="from" required />
             <DateField label={t("placement.fieldTo")} name="to" required />
