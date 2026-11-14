@@ -29,7 +29,7 @@ import { classReach, inGradeOrder, offeredSubjects, workInReach } from "@/lib/te
 import { addDaysToKey, todayKey, weekdayOfKey } from "@/lib/dates";
 import { myCovers } from "@/lib/substitutions";
 import { closedOn, schoolDayOn } from "@/lib/holidays";
-import { assertClassAccessForRegister, classesIMayTake, registerDuty } from "@/lib/register-duty";
+import { assertClassAccessForRegister, classesIMayTake, registerClosedFor, registerDuty } from "@/lib/register-duty";
 import { getAttendanceSummary, getRegister, TAKEN_BY_A_PERSON } from "@/lib/attendance";
 import { EXAM_CATEGORY, dateSheetsFor, examClassesFor, marksGrid, marksTodoFor } from "@/lib/exams";
 import { WEIGHT_SCALE, listGradeCategories, saveGradeCategories, weightsAreUsable } from "@/lib/grading";
@@ -215,6 +215,8 @@ export async function registerFor(ctx: Staff, classId: string, date?: string): P
     takenAt: iso(register.takenAt),
     duty: { reason: duty.reason as "ADMIN" | "COVER" | "CLASS_TEACHER", coverUntil: duty.coverUntil ?? null },
     readOnly: dateKey > today,
+    // Past its correction window for a class teacher or cover (TA-285): drawn read-only, with the closing sentence.
+    closed: registerClosedFor(duty, dateKey, today),
     calendar: await calendarNotice(ctx.schoolId, dateKey),
   };
 }

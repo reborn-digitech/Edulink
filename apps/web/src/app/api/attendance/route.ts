@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { AccessError, requireApiRole } from "@/lib/tenancy";
 import { attendanceBatchSchema, fieldErrors } from "@/lib/validation";
 import { saveAttendanceBatch, getRegister } from "@/lib/attendance";
-import { assertClassAccessForRegister, assertMayTakeRegister, registerDuty } from "@/lib/register-duty";
+import { assertClassAccessForRegister, assertMayTakeRegister, registerClosedFor, registerDuty } from "@/lib/register-duty";
 import { db } from "@/lib/db";
 import { todayKey } from "@/lib/dates";
 import { getT } from "@/lib/i18n/server";
@@ -60,10 +60,21 @@ const timed = withMetrics("attendance", async (request: Request) => {
       where: { id: ctx.schoolId },
       select: { timezone: true },
     });
-    if (dateKey > todayKey(school.timezone)) {
+    const today = todayKey(school.timezone);
+    if (dateKey > today) {
       return NextResponse.json(
         { error: (await getT())("attendance.futureRegister") },
         { status: 422 },
+      );
+    }
+
+    // A day more than REGISTER_CORRECTION_DAYS back is closed to the class teacher and covers: only the office saves
+    // it, a register never taken included (TA-285). Worked out from the date on the school's clock; nothing is stamped.
+    // The sentence says the fourteen days in words of its own (a test holds it to the constant).
+    if (registerClosedFor(duty, dateKey, today)) {
+      return NextResponse.json(
+        { error: (await getT())("attendance.registerClosed") },
+        { status: 403 },
       );
     }
 

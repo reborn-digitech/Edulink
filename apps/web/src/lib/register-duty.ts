@@ -7,7 +7,7 @@ import { AccessError, assertClassAccess } from "./tenancy";
 import type { ActiveContext } from "./session";
 import type { Role } from "./constants";
 import { noticeDate } from "./notice-dates";
-import { isDateKey } from "./dates";
+import { addDaysToKey, isDateKey } from "./dates";
 
 /**
  * Who may take a class's register today.
@@ -117,6 +117,24 @@ export async function registerDuty(
   }
 
   return { may: false, reason: "NONE" };
+}
+
+/**
+ * HOW LONG A REGISTER STAYS OPEN TO ITS CLASS TEACHER AND COVERS (TA-285, the owner's decision of 14 November 2026).
+ *
+ * A class teacher or a cover may save or change a day's register for this many days after its date; after that only
+ * the office (ADMIN) may, a register never taken that day included. Worked out from the date on the school's clock at
+ * the save, never stamped into AttendanceSession.finalizedAt; asked by the register's door (POST /api/attendance)
+ * alone, so reading a past day and an attendance device's punch are unchanged. The phone sends a teacher's own waiting
+ * register for up to 30 days (apps/mobile/src/lib/outbox.ts), so one sent later than this is refused and goes to the
+ * office. College lecture registers keep their own rule (academics-attendance.ts).
+ */
+export const REGISTER_CORRECTION_DAYS = 14;
+
+/** True when the window above has passed for this duty: never for the office, the day after the fourteenth for anyone else. */
+export function registerClosedFor(duty: Pick<RegisterDuty, "reason">, dateKey: string, today: string): boolean {
+  if (duty.reason === "ADMIN") return false;
+  return dateKey < addDaysToKey(today, -REGISTER_CORRECTION_DAYS);
 }
 
 /** Throwing variant, for the write path. */

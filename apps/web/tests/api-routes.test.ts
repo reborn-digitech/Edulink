@@ -7,6 +7,7 @@ import { POST as answerPost } from "@/app/api/practice/answer/route";
 import { POST as pushPost } from "@/app/api/push/route";
 import { GET as fileGet } from "@/app/api/files/[fileId]/route";
 import { GET as healthGet } from "@/app/api/health/route";
+import { todayKey } from "@/lib/dates";
 
 /**
  * The route handlers themselves — the request/response shell, the auth gate
@@ -21,6 +22,8 @@ let classId = "";
 let teacherUserId = "";
 let pupilUserId = "";
 let pupilMembershipId = "";
+// A day inside a class teacher's fourteen days (TA-285): the register door refuses them an older one.
+const DAY = todayKey("Asia/Kolkata");
 
 const json = (path: string, body: unknown) =>
   new Request(`http://localhost${path}`, {
@@ -89,14 +92,14 @@ describe("as the teacher", () => {
     expect(b.status).toBe(422);
     const issues = (await b.json()).issues as Record<string, string>;
     expect(Object.keys(issues).sort()).toEqual(["classId", "dateKey", "marks"]);
-    const c = await attendancePost(json("/api/attendance", { classId, dateKey: "2026-06-01", marks: [{ studentMembershipId: "nope", status: "PRESENT", clientId: "c1" }] }));
+    const c = await attendancePost(json("/api/attendance", { classId, dateKey: DAY, marks: [{ studentMembershipId: "nope", status: "PRESENT", clientId: "c1" }] }));
     expect(c.status).toBe(422);
   });
 
   it("attendance: a real mark is saved and read back", async () => {
-    const saved = await attendancePost(json("/api/attendance", { classId, dateKey: "2026-06-01", marks: [{ studentMembershipId: pupilMembershipId, status: "PRESENT", clientId: `route-${STAMP}` }] }));
+    const saved = await attendancePost(json("/api/attendance", { classId, dateKey: DAY, marks: [{ studentMembershipId: pupilMembershipId, status: "PRESENT", clientId: `route-${STAMP}` }] }));
     expect(saved.status).toBe(200);
-    const read = await attendanceGet(new Request(`http://localhost/api/attendance?classId=${classId}&date=2026-06-01`));
+    const read = await attendanceGet(new Request(`http://localhost/api/attendance?classId=${classId}&date=${DAY}`));
     expect(read.status).toBe(200);
     const body = await read.json();
     expect(JSON.stringify(body)).toContain(pupilMembershipId);
@@ -114,7 +117,7 @@ describe("as the pupil", () => {
   });
 
   it("the attendance endpoint is the wrong role → 403", async () => {
-    expect((await attendancePost(json("/api/attendance", { classId, dateKey: "2026-06-01", marks: [] }))).status).toBe(403);
+    expect((await attendancePost(json("/api/attendance", { classId, dateKey: DAY, marks: [] }))).status).toBe(403);
   });
 
   it("practice answer: garbage and wrong shapes → 422", async () => {

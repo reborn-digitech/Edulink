@@ -3,7 +3,7 @@ import type { TranslationKey } from "./i18n/dictionary";
 import { db } from "./db";
 import { publish, channel } from "./realtime";
 import { notifyGuardians } from "./notify";
-import { audit } from "./audit";
+import { audit, type AuditTx } from "./audit";
 import { noticeDate } from "./notice-dates";
 import { schoolDayOn } from "./holidays";
 import { absenceNotesOn } from "./absence-notes";
@@ -153,6 +153,7 @@ export async function saveAttendanceBatch(opts: {
     const newlyAbsent: { studentMembershipId: string; status: AttendanceStatus }[] = [];
     // Handed to the live event so the register that sent them knows the save was its own.
     const appliedClientIds: string[] = [];
+    const changes: { studentMembershipId: string; from: AttendanceStatus | null; to: AttendanceStatus }[] = [];
 
     for (const mark of valid) {
       const previous = byStudent.get(mark.studentMembershipId);
@@ -210,9 +211,27 @@ export async function saveAttendanceBatch(opts: {
       // absent, which used to slip through as "already not present".
       const becameNotPresent = mark.status !== "PRESENT";
       const changed = !previous || previous.status !== mark.status;
+      // The audit row names each pupil whose mark this save changed, from what to what (TA-285): ids and coded marks only.
+      if (changed) changes.push({ studentMembershipId: mark.studentMembershipId, from: (previous?.status as AttendanceStatus | undefined) ?? null, to: mark.status });
       if (becameNotPresent && changed) {
         newlyAbsent.push({ studentMembershipId: mark.studentMembershipId, status: mark.status });
       }
+    }
+
+    // The save's audit row, in the save's own transaction (TA-285): the counts as before, and each pupil changed with
+    // the mark they had (null for none) and the mark they have now.
+    if (applied > 0) {
+      await audit(
+        {
+          schoolId,
+          actorUserId,
+          action: "attendance.mark",
+          targetType: "AttendanceSession",
+          targetId: session.id,
+          meta: { dateKey, applied, skipped, rejected: rejected.length, changes },
+        },
+        raw as AuditTx,
+      );
     }
 
     return { rejected, session, applied, skipped, newlyAbsent, appliedClientIds };
@@ -224,15 +243,6 @@ export async function saveAttendanceBatch(opts: {
       classId,
       dateKey,
       clientIds: appliedClientIds,
-    });
-
-    await audit({
-      schoolId,
-      actorUserId,
-      action: "attendance.mark",
-      targetType: "AttendanceSession",
-      targetId: session.id,
-      meta: { dateKey, applied, skipped, rejected: rejected.length },
     });
   }
 

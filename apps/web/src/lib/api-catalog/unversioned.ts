@@ -7,7 +7,9 @@ import type { Endpoint } from "./types";
  * counts it. The first run writes pupil 01 PRESENT in the sampled class; every
  * later run sends the same mark with the same clientId, which the register
  * skips as a replay (saveAttendanceBatch) — a write the sweep may make, the
- * same answer each time. Present, so no guardian is told anything.
+ * same answer each time. Present, so no guardian is told anything. The day is
+ * long past a class teacher's correction window (TA-285), so the office's
+ * actor makes that write and the teacher's is refused 403 every run.
  */
 export const SWEEP_REGISTER_DAY = "2020-01-08";
 export const SWEEP_REGISTER_CLIENT_ID = "api-sweep-register-0001";
@@ -34,13 +36,14 @@ export const UNVERSIONED: Endpoint[] = [
   {
     method: "POST",
     path: "/api/attendance",
-    summary: "Take or correct a class's register for a day: one mark per pupil, each with the device's idempotency key; safe to replay (a stored key is skipped, an older mark never overwrites a newer one); a future day, a class one may not mark that day, or an archived class is refused; a device clock ahead of the server's is taken as the moment the mark arrives (TA-029); a principal marks only a register a cover names them for that day (TA-031)",
+    summary: "Take or correct a class's register for a day: one mark per pupil, each with the device's idempotency key; safe to replay (a stored key is skipped, an older mark never overwrites a newer one); a future day, a class one may not mark that day, or an archived class is refused; a device clock ahead of the server's is taken as the moment the mark arrives (TA-029); a principal marks only a register a cover names them for that day (TA-031); a class teacher or cover may save a day for 14 days after its date, and after that only the office (ADMIN), a register never taken included (403, TA-285); the audit row names each pupil changed with the old and the new mark",
     access: ["TEACHER", "ADMIN", "PRINCIPAL"],
     request: c.attendanceRegisterBodySchema,
     reach: "formTeacher", response: c.attendanceRegisterSavedSchema,
     emptyBodyStatus: 422,
     // The sweep's principal holds no cover of the sampled class (TA-031): refused 403, or 422 for the empty body.
-    statusByRole: { PRINCIPAL: [403, 422] },
+    // The sweep's day is years past the class teacher's fourteen days (TA-285): their save is refused 403 too.
+    statusByRole: { PRINCIPAL: [403, 422], TEACHER: [403, 422] },
     sampleBody: (f) =>
       f.classId && f.studentMembershipId
         ? { classId: f.classId, dateKey: SWEEP_REGISTER_DAY, marks: [{ studentMembershipId: f.studentMembershipId, status: "PRESENT", clientId: SWEEP_REGISTER_CLIENT_ID, markedAt: `${SWEEP_REGISTER_DAY}T03:45:00.000Z` }] }

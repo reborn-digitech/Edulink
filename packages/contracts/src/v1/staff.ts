@@ -210,6 +210,8 @@ export const registerSchema = z.object({
   duty: z.object({ reason: z.enum(["ADMIN", "COVER", "CLASS_TEACHER"]), coverUntil: dateKey.nullable() }),
   /** A register cannot be taken for a future date. */
   readOnly: z.boolean(),
+  /** The day is past its correction window for this person (TA-285): only the office may save it now. Absent from an older server's answer. */
+  closed: z.boolean().optional(),
   calendar: calendarNoticeSchema,
 });
 export type RegisterBody = z.infer<typeof registerSchema>;

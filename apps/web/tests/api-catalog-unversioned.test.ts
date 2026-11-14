@@ -88,7 +88,8 @@ describe("POST /api/attendance in the catalog", () => {
   it("a batch naming only pupils who are not in the class is refused with 422, not answered 200 with the rejections", async () => {
     const e = door("POST", "/api/attendance");
     const body = e.sampleBody!(fixture()) as { marks: { studentMembershipId: string }[] };
-    await signInAs("TEACHER");
+    // The office: the sample's day is past a class teacher's fourteen days (TA-285), which would refuse first.
+    await signInAs("ADMIN");
     const res = await attendancePost(post("/api/attendance", { ...body, marks: body.marks.map((m) => ({ ...m, studentMembershipId: "c" + "z".repeat(24) })) }));
     const answer = await res.json();
     expect([res.status, answer]).toEqual([422, expect.objectContaining({ rejected: [expect.objectContaining({ studentMembershipId: "c" + "z".repeat(24) })] })]);
@@ -99,12 +100,18 @@ describe("POST /api/attendance in the catalog", () => {
     const e = door("POST", "/api/attendance");
     const body = e.sampleBody!(fixture());
     expect(body).toMatchObject({ classId, dateKey: SWEEP_REGISTER_DAY, marks: [{ studentMembershipId: pupilMembershipId, status: "PRESENT", clientId: SWEEP_REGISTER_CLIENT_ID }] });
+    // The day is years past the class teacher's fourteen days (TA-285): their save is refused, as the entry declares,
+    // and the office's actor makes the write.
     await signInAs("TEACHER");
+    const refused = await attendancePost(post("/api/attendance", body));
+    expect(e.statusByRole?.TEACHER).toContain(refused.status);
+    expect(refused.status).toBe(403);
+    expect(await db.attendanceSession.count({ where: { schoolId, classId } })).toBe(0);
+    await signInAs("ADMIN");
     const first = await attendancePost(post("/api/attendance", body));
     expect(first.status).toBe(200);
     const saved = attendanceRegisterSavedSchema.parse(await first.json());
     expect(saved).toMatchObject({ applied: 1, skipped: 0, rejected: [] });
-    await signInAs("ADMIN");
     const again = await attendancePost(post("/api/attendance", body));
     expect(again.status).toBe(200);
     expect(attendanceRegisterSavedSchema.parse(await again.json())).toMatchObject({ applied: 0, skipped: 1, rejected: [], sessionId: saved.sessionId });

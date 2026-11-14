@@ -230,6 +230,19 @@ describe("the register", () => {
     expect(screen.getAllByRole("radio", { name: "Present" })[0]).toBeDisabled();
     expect(screen.queryByRole("button", { name: /Mark all/ })).toBeNull();
   });
+
+  it("TA-285: a day past its correction window is read only, with the closing sentence, and nothing is sent", async () => {
+    mockRouter.params = { classId: ID.class1, date: "2026-08-20" };
+    const fetch = fakeApi({ "/api/v1/staff/attendance/register": () => json({ ...REGISTER, dateKey: "2026-08-20", closed: true }), "/api/attendance": () => json(SAVED) });
+    await renderTeacher(<Register />);
+    await screen.findByText("This attendance is closed: a class teacher or cover can change it for 14 days after its date, and after that only the office can.");
+    for (const chip of screen.getAllByRole("radio")) expect(chip).toBeDisabled();
+    expect(screen.queryByRole("button", { name: /Mark all/ })).toBeNull();
+    expect(callsTo(fetch, "/api/attendance")).toHaveLength(0);
+    // The office's own answer says closed false, and an older server's says nothing: both stay open.
+    expect(registerSchema.parse({ ...REGISTER, closed: false }).closed).toBe(false);
+    expect(registerSchema.parse(REGISTER).closed).toBeUndefined();
+  });
 });
 
 /**

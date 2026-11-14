@@ -7,7 +7,7 @@ import {
   WarningIcon,
 } from "@phosphor-icons/react/ssr";
 import { requireRole } from "@/lib/tenancy";
-import { assertClassAccessForRegister, classesIMayTake, registerDuty } from "@/lib/register-duty";
+import { assertClassAccessForRegister, classesIMayTake, registerClosedFor, registerDuty } from "@/lib/register-duty";
 import { getRegister, TAKEN_BY_A_PERSON } from "@/lib/attendance";
 import { closedOn } from "@/lib/holidays";
 import { db } from "@/lib/db";
@@ -200,6 +200,8 @@ export default async function AttendancePage({
     );
   }
 
+  // Past its correction window for a class teacher or cover (TA-285): shown, never marked; the office still may.
+  const closed = registerClosedFor(duty, dateKey, today);
 
   return (
     <div className="space-y-4">
@@ -228,13 +230,18 @@ export default async function AttendancePage({
           })}
         </p>
       )}
+      {closed && (
+        <p role="status" data-testid="register-closed" className="rounded-[var(--radius-md)] border border-warn/40 bg-warn-soft/50 px-4 py-3 text-sm font-medium text-fg">
+          {t("attendance.registerClosed")}
+        </p>
+      )}
       <Register
         classId={selectedId}
       className={register.class.name}
       dateKey={dateKey}
       dateLabel={formatDateKey(dateKey, { weekday: "long", day: "numeric", month: "long" }, locale)}
         initialRoster={register.roster}
-        readOnly={dateKey > today}
+        readOnly={dateKey > today || closed}
         forToday={dateKey === today}
         timezone={school.timezone}
       />

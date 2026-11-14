@@ -291,6 +291,8 @@ function ClassRegister({ classId, date, onBack }: { classId: string; date?: stri
   };
 
   const marked = data ? data.roster.length - unmarked.length : 0;
+  // A future day, or a day past its correction window for a class teacher or cover (TA-285): read, never marked.
+  const locked = !!data && (data.readOnly || data.closed === true);
   const stateLine = t(registerStateKey(state, online));
 
   return (
@@ -315,6 +317,11 @@ function ClassRegister({ classId, date, onBack }: { classId: string; date?: stri
               {t("attendance.futureRegister")}
             </Text>
           ) : null}
+          {data.closed ? (
+            <Text variant="sm" tone="warn" testID="register-closed">
+              {t("attendance.registerClosed")}
+            </Text>
+          ) : null}
           <View style={{ flexDirection: "row", alignItems: "center", justifyContent: "space-between", gap: th.space[3], flexWrap: "wrap" }}>
             <Text variant="sm" bold tone={unmarked.length === 0 && data.roster.length > 0 ? "ok" : "fg"} accessibilityLiveRegion="polite">
               {unmarked.length === 0 && data.roster.length > 0 ? t("teacher.registerComplete") : t("teacher.markedOf", { marked, total: data.roster.length })}
@@ -336,7 +343,7 @@ function ClassRegister({ classId, date, onBack }: { classId: string; date?: stri
             </Text>
           ) : null}
           {state === "error" ? <Failed message={error ?? t("teacher.didNotSave")} onRetry={() => void flush()} /> : null}
-          {!data.readOnly && unmarked.length > 0 ? <Button label={t("teacher.markAllPresent", { count: unmarked.length })} variant="secondary" onPress={markAllPresent} /> : null}
+          {!locked && unmarked.length > 0 ? <Button label={t("teacher.markAllPresent", { count: unmarked.length })} variant="secondary" onPress={markAllPresent} /> : null}
           {data.roster.length === 0 ? (
             <Empty title={t("teacher.nobodyInClassYet")} body={t("teacher.addStudentsAppear")} action={<Button label={t("teacher.classJoinCode")} variant="secondary" onPress={() => router.push({ pathname: "/(app)/classes/detail", params: { classId } } as never)} />} />
           ) : (
@@ -364,7 +371,7 @@ function ClassRegister({ classId, date, onBack }: { classId: string; date?: stri
                     {/* One radio group per pupil, named with the pupil, as the web's register names it (A3-journeys-32). */}
                     <View accessibilityRole="radiogroup" accessibilityLabel={t("teacher.attendanceFor", { name: p.name })} testID={`register-group-${p.membershipId}`} style={{ flexDirection: "row", gap: th.space[2] }}>
                       {STATUSES.map((s) => (
-                        <StatusChip key={s} status={s} selected={current === s} disabled={data.readOnly} label={t(STATUS_KEY[s])} short={t(SHORT_KEY[s])} onPress={() => mark(p.membershipId, s, note)} />
+                        <StatusChip key={s} status={s} selected={current === s} disabled={locked} label={t(STATUS_KEY[s])} short={t(SHORT_KEY[s])} onPress={() => mark(p.membershipId, s, note)} />
                       ))}
                     </View>
                   </View>
