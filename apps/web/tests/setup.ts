@@ -54,8 +54,22 @@ env.NODE_ENV ??= "test";
  * and `tests/passwords.test.ts`, which own their buckets.
  */
 import { PrismaClient } from "@prisma/client";
+import { refuseUnlessLocalDatabase } from "../scripts/local-db-guard.mjs";
 
 const setupDb = new PrismaClient();
+/**
+ * ONLY A DATABASE ON THIS MACHINE (TA-263). The suites delete counters here and make and remove ZZ schools,
+ * and the URL alone does not say where the database is: DATABASE_ADMIN_URL exported to production, or a fly
+ * proxy on the port .env names, is "localhost" too. So the server is asked, as the seed and zz:fixtures ask it
+ * (scripts/local-db-guard.mjs; NODE_ENV=production is refused before anything is asked; CI's service container
+ * is accepted on the runner alone), and nothing below runs if it is not this machine's.
+ */
+try {
+  await refuseUnlessLocalDatabase(setupDb, "the vitest suites");
+} catch (error) {
+  await setupDb.$disconnect();
+  throw error;
+}
 /**
  * EXCEPT the limiter's own suite. `setupFiles` runs once per WORKER, so a
  * worker starting up would otherwise wipe counters that `rate-limit.test.ts` is

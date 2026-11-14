@@ -12,8 +12,11 @@
  *
  * ONLY ZZ SCHOOLS ARE TOUCHED. Registers are marked at ZZ Northgate by
  * default, or at the school or fleet named, all PRESENT (no absence notices
- * fan out), on today's date; the records the run created are deleted at the
- * end, and records that were already there stay. Against a fleet the sample is
+ * fan out), on each school's own today (its clock, not the UTC date: TA-463);
+ * at the end the registers of that day are put back as they were found, the
+ * sessions and records the run created deleted and the marks it overwrote
+ * restored (TA-464, scripts/load-check-registers.ts). A missed target exits 1.
+ * Against a fleet the sample is
  * bounded — as many registers as teacher workers and twice as many guardians as
  * parent workers — so a 500,000-guardian fleet does not have to be read to run.
  * Every session minted here carries userAgent "load-check" and is deleted.
@@ -25,6 +28,8 @@
 import { createHash, randomBytes, randomUUID } from "node:crypto";
 import { writeFileSync } from "node:fs";
 import { PrismaClient } from "@prisma/client";
+import { todayKey } from "../src/lib/dates";
+import { restoreRegisters, snapshotRegisters, targetsMet, type RegisterDay } from "./load-check-registers";
 
 const db = new PrismaClient({ datasourceUrl: process.env.DATABASE_ADMIN_URL ?? process.env.DATABASE_URL });
 
@@ -39,7 +44,6 @@ const SECONDS = Number(arg("seconds", "60"));
 const EMIT = arg("emit-cookies", "");
 const SCHOOL = arg("school", "zz-northgate-school");
 const FLEET = arg("fleet", "");
-const TODAY = new Date().toISOString().slice(0, 10);
 
 type Session = { cookie: string; id: string };
 const minted: string[] = [];
@@ -91,11 +95,14 @@ async function worker(seconds: number, pause: number, one: () => Promise<Sample>
 
 async function main() {
   const schools = FLEET
-    ? await db.school.findMany({ where: { slug: { startsWith: FLEET } }, select: { id: true, slug: true } })
-    : await db.school.findMany({ where: { slug: SCHOOL }, select: { id: true, slug: true } });
+    ? await db.school.findMany({ where: { slug: { startsWith: FLEET } }, select: { id: true, slug: true, timezone: true } })
+    : await db.school.findMany({ where: { slug: SCHOOL }, select: { id: true, slug: true, timezone: true } });
   if (schools.length === 0) throw new Error(FLEET ? `no school with slug ${FLEET}* — run npm run zz:fleet first` : `${SCHOOL} missing — run npm run zz:fixtures first`);
   if (!schools.every((s) => s.slug.startsWith("zz-"))) throw new Error("only ZZ schools may be load-tested");
   const schoolIds = schools.map((s) => s.id);
+  // Each school's own today, as the server reads it (TA-463), and the registers of that day this run may touch.
+  const days: RegisterDay[] = schools.map((s) => ({ schoolId: s.id, dateKey: todayKey(s.timezone) }));
+  const todayOf = new Map(days.map((d) => [d.schoolId, d.dateKey]));
 
   // Lead teachers with a class that has pupils, and those pupils. Against a
   // fleet: spread across the schools, and no more than the workers can use.
@@ -124,20 +131,14 @@ async function main() {
   );
   if (guardians.length === 0) throw new Error("no ZZ guardians");
 
-  // What was already marked today, so the cleanup deletes only what this run made.
-  const before = new Set(
-    (
-      await db.attendanceRecord.findMany({
-        where: { schoolId: { in: schoolIds }, session: { dateKey: TODAY } },
-        select: { id: true },
-      })
-    ).map((r) => r.id),
-  );
+  // The registers of the day as they stand, so the clean-up puts them back exactly (TA-464).
+  const before = await snapshotRegisters(db, days);
 
   const teachers = await Promise.all(
     registers.map(async (r) => ({
       cookie: (await mint(r.teacher.userId, "TEACHER", r.schoolId)).cookie,
       classId: r.classId,
+      dateKey: todayOf.get(r.schoolId)!,
       marks: r.class.enrollments.map((e) => ({ studentMembershipId: e.studentMembershipId, status: "PRESENT" as const, clientId: randomUUID() })),
     })),
   );
@@ -167,6 +168,7 @@ async function main() {
     }
   };
 
+  try {
   const jobs: Promise<void>[] = [];
   for (let i = 0; i < TEACHERS; i++) {
     const t = teachers[i % teachers.length]!;
@@ -176,7 +178,7 @@ async function main() {
           fetch(`${BASE}/api/attendance`, {
             method: "POST",
             headers: { "Content-Type": "application/json", Cookie: t.cookie },
-            body: JSON.stringify({ classId: t.classId, dateKey: TODAY, marks: t.marks.map((m) => ({ ...m, clientId: randomUUID() })) }),
+            body: JSON.stringify({ classId: t.classId, dateKey: t.dateKey, marks: t.marks.map((m) => ({ ...m, clientId: randomUUID() })) }),
           }),
         ), attendance),
     );
@@ -189,13 +191,15 @@ async function main() {
 
   const a = report("attendance POST", attendance, "p95 < 300ms");
   const o = report("parent overview GET", overview, "p95 < 800ms");
-  console.log(a.p95 < 300 && o.p95 < 800 && a.errors + o.errors === 0 ? "targets met" : "targets NOT met");
-
-  // Leave the fixture as it was found.
-  const made = await db.attendanceRecord.deleteMany({
-    where: { schoolId: { in: schoolIds }, session: { dateKey: TODAY }, id: { notIn: [...before] } },
-  });
-  console.log(`cleanup: ${made.count} attendance records from this run deleted, ${before.size} that existed before kept`);
+  const met = targetsMet(a, o);
+  console.log(met ? "targets met" : "targets NOT met");
+  // A missed target is a failed run (TA-464), whatever pipeline runs it.
+  if (!met) process.exitCode = 1;
+  } finally {
+    // Leave the fixture as it was found (TA-464): the run's sessions and records go, the marks it overwrote come back.
+    const done = await restoreRegisters(db, days, before);
+    console.log(`cleanup: ${done.sessionsDeleted} sessions and ${done.recordsDeleted} records from this run deleted; ${done.recordsRestored} records and ${done.sessionsRestored} sessions that existed before put back as they were`);
+  }
 }
 
 main()

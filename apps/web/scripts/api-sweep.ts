@@ -198,8 +198,14 @@ async function mint(userId: string, role: Role, schoolId: string | null): Promis
  * their lessons; the sweep's assign then repeats that cover (a no-op) and
  * its clear takes it off, which the fixture restore puts back.
  */
+/** The school's own today, on its clock (TA-463): the UTC date is the school's yesterday before 05:30 IST. */
+async function schoolToday(s: string): Promise<string> {
+  const timezone = (await db.school.findUnique({ where: { id: s }, select: { timezone: true } }))?.timezone ?? "Asia/Kolkata";
+  return dateKeyInZone(new Date(), timezone);
+}
+
 async function substitutionFixture(s: string): Promise<{ substitutionSlotId: string | null; substituteMembershipId: string | null }> {
-  const today = new Date().toISOString().slice(0, 10);
+  const today = await schoolToday(s);
   const cover = await db.substitution.findFirst({ where: { schoolId: s, dateKey: today }, select: { slotId: true, substituteMembershipId: true }, orderBy: { createdAt: "asc" } });
   return { substitutionSlotId: cover?.slotId ?? null, substituteMembershipId: cover?.substituteMembershipId ?? null };
 }
@@ -475,7 +481,7 @@ async function fixture(slug = "zz-northgate-school"): Promise<SweepFixture> {
     lessonPlanId: klass ? await first(db.lessonPlan.findFirst({ where: { classId: klass.id, subject: "Mathematics" }, orderBy: { createdAt: "desc" }, select: { id: true } })) : null,
     ...(await substitutionFixture(s)),
     // A cover the sweep's head was asked to take today (zz-fixtures.ts `buildHeadCover`; the grade-3 lead teaches every staffed period, so no honest cover names them), so the acknowledge door answers 200 for the PRINCIPAL and 404 for the others; null skips both doors.
-    myCoverId: await first(db.substitution.findFirst({ where: { schoolId: s, dateKey: new Date().toISOString().slice(0, 10), substitute: { role: "PRINCIPAL", user: { email: "zz.principal@zz.test" } } }, select: { id: true } })),
+    myCoverId: await first(db.substitution.findFirst({ where: { schoolId: s, dateKey: await schoolToday(s), substitute: { role: "PRINCIPAL", user: { email: "zz.principal@zz.test" } } }, select: { id: true } })),
     // The fixture's template (scripts/sweep-doors.ts), not the throwaway the DELETE takes away.
     planTemplateId: (await first(db.lessonPlanTemplate.findFirst({ where: { id: SWEEP_DOOR_IDS.planTemplate, schoolId: s }, select: { id: true } }))) ?? (await first(db.lessonPlanTemplate.findFirst({ where: { schoolId: s, id: { not: SWEEP_DOOR_IDS.gonePlanTemplate } }, orderBy: { createdAt: "asc" }, select: { id: true } }))),
     ...(await reportCardFixture(s)),
@@ -486,7 +492,7 @@ async function fixture(slug = "zz-northgate-school"): Promise<SweepFixture> {
     ...(await placementFixture()),
     // A finished generation run, never the live one (1 Nov 2026; scripts/sweep-live-run.ts guards the calls too).
     finishedQuizJobId: await first(db.quizGenJob.findFirst({ where: { active: null, state: { in: ["STOPPED", "FINISHED", "FAILED"] } }, orderBy: { createdAt: "desc" }, select: { id: true } })),
-    todayKey: new Date().toISOString().slice(0, 10),
+    todayKey: await schoolToday(s),
   };
 }
 

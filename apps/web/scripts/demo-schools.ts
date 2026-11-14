@@ -45,6 +45,7 @@ import { addDaysToKey, todayKey, weekdayOfKey, zonedStartOfDay } from "../src/li
 import { randomBytes } from "node:crypto";
 import { billMess, raiseRouteFees } from "../src/lib/college-fees";
 import { giveHeadPages, HEAD_PAGES_NOTE } from "./head-pages"; // owner-batch-item9
+import { fixtureExpertStanding, standingRepair } from "./zz-expert-standing"; // TA-583
 import type { ActiveContext } from "../src/lib/session";
 // owner-batch-item5 end
 // owner-batch-item4b: Sunrise's inventory, payroll, website, alumni, review rounds and online fees (scripts/demo-schools-item4b.ts)
@@ -775,9 +776,14 @@ async function buildExperts(ctx: Ctx, sunrise: Built, saraswati: Built) {
     (await db.expertProfile.create({
       data: {
         userId: user.id, headline: "Science communication and school robotics", bio: "Twelve years running maker workshops for schools across Maharashtra — line-followers, weather stations, and how to explain what you built. Former research engineer; now with the Pune Makers' Collective.",
-        specialisms: JSON.stringify(["Science communication", "Robotics", "STEM careers"]), organisation: "Pune Makers' Collective", timezone: "Asia/Kolkata", offering: "BOTH", mentorCapacity: 3, publishedAt: new Date(), verifiedAt: new Date(), verifiedBy: "demo-schools",
+        specialisms: JSON.stringify(["Science communication", "Robotics", "STEM careers"]), organisation: "Pune Makers' Collective", timezone: "Asia/Kolkata", offering: "BOTH", mentorCapacity: 3, publishedAt: new Date(),
+        // With kycStatus, never verifiedAt alone: the badge's one truth (TA-583, scripts/zz-expert-standing.ts).
+        ...fixtureExpertStanding(true, new Date(), "demo-schools"),
       },
     }));
+  // A profile an earlier run made with verifiedAt alone is put in step (TA-583); one that agrees with itself is left.
+  const standing = standingRepair(profile, true, new Date(), "demo-schools");
+  if (standing) await db.expertProfile.update({ where: { id: profile.id }, data: standing });
   // Six slots: Mon, Wed, Fri of the next two weeks at 10:00 IST.
   const monday = nextMonday(4, 30);
   const slots: { id: string; startsAt: Date }[] = [];

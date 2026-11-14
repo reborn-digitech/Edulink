@@ -4,6 +4,7 @@ import { join } from "node:path";
 import { PrismaClient } from "@prisma/client";
 import { config } from "dotenv";
 import { removeHarnessExam } from "./harness-exam";
+import { refuseUnlessLocalDatabase } from "../scripts/local-db-guard.mjs";
 
 /**
  * After the run (QA-73): the sessions global-setup.ts minted (userAgent "e2e") and the harness's exam at ZZ Northgate
@@ -13,6 +14,8 @@ export default async function globalTeardown() {
   config({ path: ".env" });
   const db = new PrismaClient({ datasourceUrl: process.env.DATABASE_ADMIN_URL ?? process.env.DATABASE_URL });
   try {
+    // A database on this machine only, as the set-up asks (TA-263).
+    await refuseUnlessLocalDatabase(db, "the Playwright suites' teardown");
     const school = await db.school.findUnique({ where: { slug: "zz-northgate-school" }, select: { id: true } });
     if (school) await removeHarnessExam(db, school.id);
     // The sessions this run's global-setup.ts minted, by the tokens it wrote to .sessions.json (TA-465): a run beside

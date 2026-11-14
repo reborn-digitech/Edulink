@@ -121,12 +121,18 @@ export async function deskSources(session: ActiveContext): Promise<CompetitionSo
   return rows.map((r) => sourceOut(r, counts.get(r.id) ?? 0));
 }
 
-/** An organiser's root URL, as the desk types it: http(s), a host with a dot, no credentials, no fragment. */
+/**
+ * An organiser's root URL, as the desk types it: http(s), a host with a dot, no credentials, no fragment.
+ * Never an address written as digits (TA-105): an organiser has a name, and an IP literal is how a root would
+ * reach the machine the crawler runs on (127.0.0.1, 192.168.x, 169.254.169.254, [::1]). A name that resolves to
+ * such an address is refused by the crawler's own resolver (scripts/competitions-crawl/http.ts guardedLookup).
+ */
 export function normaliseRootUrl(raw: string): string | null {
   try {
     const u = new URL(raw.trim());
     if (u.protocol !== "https:" && u.protocol !== "http:") return null;
     if (!u.hostname.includes(".") || u.username || u.password) return null;
+    if (/^\d+\.\d+\.\d+\.\d+$/.test(u.hostname) || u.hostname.startsWith("[")) return null;
     u.hash = "";
     return u.toString();
   } catch {

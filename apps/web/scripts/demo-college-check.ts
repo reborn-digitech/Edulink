@@ -37,7 +37,7 @@ import { execFileSync } from "node:child_process";
 import { mkdirSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { PrismaClient } from "@prisma/client";
-import { DUTY_BUILT, STREAM_PRESETS, type DutyCode } from "@edulink/contracts";
+import { DUTY_BUILT, STREAM_PRESETS, defaultAttendanceThreshold, type DutyCode } from "@edulink/contracts";
 import { en } from "@edulink/i18n/en";
 import { mr } from "@edulink/i18n/mr";
 import { NAV } from "../src/lib/nav";
@@ -67,6 +67,9 @@ async function facts(spec: StreamSpec): Promise<Line[]> {
   if (!school) return [{ ok: false, what: "the college exists", detail: `no school with slug ${spec.slug}` }];
   const s = school.id;
   check("kind, stream and affiliation", school.kind === spec.kind && school.streamsJson === JSON.stringify([spec.stream]) && school.affiliatingUniversity === spec.university, `${school.kind} ${school.streamsJson} ${school.affiliatingUniversity}`);
+  // Each programme held to its regulator's attendance threshold (TA-485): the nursing council's 80 %, not the UGC's 75.
+  const programmes = await db.programme.findMany({ where: { schoolId: s }, select: { code: true, regulator: true, attendanceThreshold: true }, orderBy: { code: "asc" } });
+  check("every programme at its regulator's attendance threshold", programmes.length > 0 && programmes.every((p) => p.attendanceThreshold === defaultAttendanceThreshold(p.regulator)), programmes.map((p) => `${p.code} ${p.regulator} ${p.attendanceThreshold}`).join(", "));
 
   // One membership per role the roster names, each the named person's.
   for (const p of staffOf(spec)) {

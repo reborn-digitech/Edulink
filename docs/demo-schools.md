@@ -260,7 +260,7 @@ Slug `saraswati-law`, join code `SARAS-TWM6-Q6RV`, kind COLLEGE, stream LAW, Pun
 | slc.student02@demo.relay.test | Kabir Sethi | STUDENT (OPEN) | /student | BALLB year 2 · A; applied to the open drive; boards at Ambedkar Hostel; a library book out; odd semester paid; in a moot |
 | slc.student03@demo.relay.test | Mrunal Pawar | STUDENT (OBC) | /student | BALLB year 2 · A; OBC post-matric scholarship sanctioned; rides Route 1; in a moot |
 | slc.student04@demo.relay.test | Faisal Qureshi | STUDENT (OPEN) | /student | LLB year 2 · A; applied to the open drive; boards at Ambedkar Hostel; odd semester paid; in a moot; an internship |
-| slc.student05@demo.relay.test | Neha Bhosale | STUDENT (OPEN) | /student | LLB year 2 · A; under 75 % in one course; in a moot |
+| slc.student05@demo.relay.test | Neha Bhosale | STUDENT (OPEN) | /student | LLB year 2 · A; under 70 % in one course; in a moot |
 | slc.student06@demo.relay.test | Vinayak More | STUDENT (OBC) | /student | LLB year 2 · A; ATKT with a backlog; boards at Ambedkar Hostel; in a moot |
 | slc.student07@demo.relay.test | Ishan Ranade | STUDENT (OPEN) | /student | BALLB year 1 · A; a minor of seventeen; Milind Ranade sees everything; boards at Ambedkar Hostel; rides Route 1; odd semester paid |
 | slc.student08@demo.relay.test | Isha Ranade | STUDENT (OPEN) | /student | BALLB year 1 · A; a minor of seventeen; Milind Ranade sees everything; rides Route 1 |
@@ -326,7 +326,7 @@ Slug `saraswati-pharmacy`, join code `SARAS-JVCJ-F4VQ`, kind COLLEGE, stream PHA
 | scp.student02@demo.relay.test | Sakshi Nair | STUDENT (OPEN) | /student | BPHARM year 2 · A; applied to the open drive; a library book out; odd semester paid; an internship |
 | scp.student03@demo.relay.test | Pranav Ghodke | STUDENT (OBC) | /student | BPHARM year 2 · A; OBC post-matric scholarship sanctioned; boards at Dhanvantari Hostel; rides Route 1 |
 | scp.student04@demo.relay.test | Dhanashree Patil | STUDENT (OPEN) | /student | DPHARM year 2 · A; applied to the open drive; odd semester paid |
-| scp.student05@demo.relay.test | Yogita Sonawane | STUDENT (OPEN) | /student | DPHARM year 2 · A; under 75 % in one course |
+| scp.student05@demo.relay.test | Yogita Sonawane | STUDENT (OPEN) | /student | DPHARM year 2 · A; under 80 % in one course |
 | scp.student06@demo.relay.test | Akash Mhaske | STUDENT (OBC) | /student | DPHARM year 2 · A; ATKT with a backlog; boards at Dhanvantari Hostel |
 | scp.student07@demo.relay.test | Om Chitale | STUDENT (OPEN) | /student | BPHARM year 1 · A; a minor of seventeen; Hemant Chitale sees everything; boards at Dhanvantari Hostel; rides Route 1; odd semester paid |
 | scp.student08@demo.relay.test | Ovi Chitale | STUDENT (OPEN) | /student | BPHARM year 1 · A; a minor of seventeen; Hemant Chitale sees everything; rides Route 1 |
@@ -456,7 +456,7 @@ Slug `saraswati-health`, join code `SARAS-H6QJ-YCQ7`, kind COLLEGE, stream HEALT
 | sih.student02@demo.relay.test | Ashwini Kale | STUDENT (OPEN) | /student | BSCN year 2 · A; applied to the open drive; a library book out; odd semester paid; an internship |
 | sih.student03@demo.relay.test | Bhagyashri Jadhav | STUDENT (OBC) | /student | BSCN year 2 · A; OBC post-matric scholarship sanctioned; boards at Florence Hostel; rides Route 1 |
 | sih.student04@demo.relay.test | Manoj Pawar | STUDENT (OPEN) | /student | PBBSCN year 2 · A; applied to the open drive; odd semester paid |
-| sih.student05@demo.relay.test | Sushma Patil | STUDENT (OPEN) | /student | PBBSCN year 2 · A; under 75 % in one course; boards at Florence Hostel |
+| sih.student05@demo.relay.test | Sushma Patil | STUDENT (OPEN) | /student | PBBSCN year 2 · A; under 80 % in one course; boards at Florence Hostel |
 | sih.student06@demo.relay.test | Kiran Gaikwad | STUDENT (OBC) | /student | PBBSCN year 2 · A; ATKT with a backlog; boards at Florence Hostel |
 | sih.student07@demo.relay.test | Neel Bachhav | STUDENT (OPEN) | /student | BSCN year 1 · A; a minor of seventeen; Nitin Bachhav sees everything; rides Route 1; odd semester paid |
 | sih.student08@demo.relay.test | Nidhi Bachhav | STUDENT (OPEN) | /student | BSCN year 1 · A; a minor of seventeen; Nitin Bachhav sees everything; boards at Florence Hostel; rides Route 1 |

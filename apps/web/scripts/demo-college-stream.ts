@@ -76,7 +76,7 @@ import { hash } from "@node-rs/argon2";
 import { createHash, randomBytes } from "node:crypto";
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { join } from "node:path";
-import { COMPONENT_KIND, DUTY_BUILT, STATUTORY_CODES, STREAM_PRESETS, eResourceNameKey, gstinCheckChar, type DutyCode, type SalaryComponentCode, type SalaryFormula } from "@edulink/contracts";
+import { COMPONENT_KIND, DUTY_BUILT, STATUTORY_CODES, STREAM_PRESETS, defaultAttendanceThreshold, eResourceNameKey, gstinCheckChar, type DutyCode, type SalaryComponentCode, type SalaryFormula } from "@edulink/contracts";
 import type { ActiveContext } from "../src/lib/session";
 import { classCode, schoolCode } from "../src/lib/codes";
 import { openAlumnus } from "../src/lib/alumni-membership";
@@ -339,7 +339,7 @@ async function buildAcademics(spec: StreamSpec, college: College, people: People
     const hod = i === 0 ? staff.hodA : staff.hodB;
     const p = d.programme;
     const dept = await db.department.upsert({ where: { schoolId_code: { schoolId: s, code: d.code } }, create: { schoolId: s, code: d.code, name: d.name, hodMembershipId: hod.id, condoneFloorPercent: 65 }, update: { hodMembershipId: hod.id }, select: { id: true } });
-    const programme = await db.programme.upsert({ where: { schoolId_code: { schoolId: s, code: p.code } }, create: { schoolId: s, departmentId: dept.id, code: p.code, name: p.name, level: p.level, durationYears: p.years, intake: p.intake, regulator: p.regulator, stream: spec.stream, attendanceThreshold: 75, exitPoints: "[]" }, update: { stream: spec.stream }, select: { id: true } });
+    const programme = await db.programme.upsert({ where: { schoolId_code: { schoolId: s, code: p.code } }, create: { schoolId: s, departmentId: dept.id, code: p.code, name: p.name, level: p.level, durationYears: p.years, intake: p.intake, regulator: p.regulator, stream: spec.stream, attendanceThreshold: defaultAttendanceThreshold(p.regulator), exitPoints: "[]" }, update: { stream: spec.stream, attendanceThreshold: defaultAttendanceThreshold(p.regulator) }, select: { id: true } }); // the regulator's own threshold (TA-485): INC and PCI 80, BCI 70, others 75
     for (const [k, text] of spec.pos.entries()) await db.programmeOutcome.upsert({ where: { programmeId_code: { programmeId: programme.id, code: `PO${k + 1}` } }, create: { schoolId: s, programmeId: programme.id, code: `PO${k + 1}`, text }, update: {} });
     const scheme = await db.scheme.upsert({ where: { programmeId_name: { programmeId: programme.id, name: schemeName(spec) } }, create: { schoolId: s, programmeId: programme.id, name: schemeName(spec), effectiveYear: 2024, gradingTable: JSON.stringify(GRADES), passingRules: JSON.stringify(RULES) }, update: {}, select: { id: true } });
     programmes.push({ id: programme.id, schemeId: scheme.id, deptId: dept.id });
@@ -435,7 +435,7 @@ async function buildAcademics(spec: StreamSpec, college: College, people: People
   }
 
   // The registers: every slot on every register day. Most miss one hour in eleven; student 5 misses every third
-  // lecture of the second programme's first course (under 75 %).
+  // lecture of the second programme's first course (about 67 %, under every regulator's threshold).
   const days = registerDays(CAL);
   const labDays: Record<string, string[]> = {};
   for (const o of offerings) {
@@ -1395,7 +1395,8 @@ function rosterSection(spec: StreamSpec, college: { code: string; twinId: string
     if (st.minor) notes.push(`a minor of seventeen; ${spec.parent} sees everything`);
     if (st.n === SCHOLAR) notes.push("OBC post-matric scholarship sanctioned");
     if (st.n === ATKT_STUDENT) notes.push("ATKT with a backlog");
-    if (st.n === SHORT_STUDENT) notes.push("under 75 % in one course");
+    // The short course is the second programme's (the registers above), held to its regulator's threshold (TA-485).
+    if (st.n === SHORT_STUDENT) notes.push(`under ${defaultAttendanceThreshold(spec.depts[1].programme.regulator)} % in one course`);
     if (APPLICANTS.includes(st.n) && placementOn(spec) && spec.recruiter) notes.push("applied to the open drive");
     if (boardersOf(spec).includes(st.n)) notes.push(`boards at ${spec.hostel.name}`);
     if (RIDERS.includes(st.n)) notes.push("rides Route 1");

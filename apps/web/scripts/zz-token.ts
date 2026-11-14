@@ -8,7 +8,13 @@
  *   npm run zz:token -- EXPERT zz.expert2@zz.test     an outside account by address too (EXPERT, RECRUITER, PARENT)
  *
  * Sessions carry userAgent "zz-token", expire in an hour, and the API sweep's
- * cleanup does not touch them.
+ * cleanup does not touch them. `--hours=N` (1 to 24) mints for longer (TA-462):
+ * CI's phone suites mint for six, since they have run past the hour.
+ *
+ *   npm run zz:token -- --hours=6 TEACHER       a six-hour session
+ *
+ * A database on this machine only (TA-263): it writes sessions, and a fly proxy
+ * is "localhost" too, so scripts/local-db-guard.mjs is asked first.
  *
  * PURGE ONLY WHAT YOU MINTED (SWEEPS-6, 4 Oct 2026). `--purge` used to delete
  * every zz-token session — another agent's too, while it was using it. Now
@@ -28,6 +34,8 @@ import { appendFileSync, mkdirSync, readFileSync, writeFileSync } from "node:fs"
 import { join } from "node:path";
 import { PrismaClient } from "@prisma/client";
 import { assertFixtureEmail } from "./fixture-email";
+import { refuseUnlessLocalDatabase } from "./local-db-guard.mjs";
+import { tokenExpiry, tokenHours } from "./zz-token-hours";
 
 const db = new PrismaClient({ datasourceUrl: process.env.DATABASE_ADMIN_URL ?? process.env.DATABASE_URL });
 
@@ -60,6 +68,7 @@ async function purge() {
 }
 
 async function main() {
+  await refuseUnlessLocalDatabase(db, "zz:token");
   if (flags.includes("--purge")) return purge();
   const role = words[0];
   if (!role) throw new Error("usage: zz-token [--tag=<name>] <ADMIN|PRINCIPAL|TEACHER|STUDENT|PARENT|EXPERT|DRIVER|LIBRARIAN|WARDEN|ALUMNUS|FACULTY|HOD|EXAM_CONTROLLER|IQAC|TPO|ACCOUNTS|RECRUITER|SUPPORT|OPERATOR|APPADMIN> [email] | --purge [--tag=<name> | <token>… | --all]");
@@ -113,7 +122,7 @@ async function main() {
   const activeRole = role === "OPERATOR" || role === "APPADMIN" ? null : role;
   const token = randomBytes(32).toString("base64url");
   await db.session.create({
-    data: { userId, tokenHash: hashOf(token), activeSchoolId: schoolId, activeRole, userAgent: "zz-token", expiresAt: new Date(Date.now() + 3_600_000) },
+    data: { userId, tokenHash: hashOf(token), activeSchoolId: schoolId, activeRole, userAgent: "zz-token", expiresAt: tokenExpiry(tokenHours(flags)) },
   });
   // Recorded for this tag's purge (never the token itself: a hash opens nothing).
   mkdirSync(HASH_DIR, { recursive: true });

@@ -1,6 +1,6 @@
 /**
  * robots.txt, read the way the major crawlers read it (RFC 9309): the group whose user-agent names
- * this crawler ("Shalaghar") if there is one, else the "*" group; Allow and Disallow with "*" and "$";
+ * this crawler ("Shalaghar" or "Shalaghar-competitions", namesCrawler) if there is one, else the "*" group; Allow and Disallow with "*" and "$";
  * the longest matching rule wins and a tie goes to Allow; an empty Disallow allows everything. A
  * Crawl-delay above the crawler's own one-second gap is honoured. Pure: tests/competitions-crawl.test.ts.
  *
@@ -10,6 +10,17 @@
  */
 
 export const CRAWLER_TOKEN = "shalaghar";
+
+/**
+ * Whether a User-agent line names this crawler (TA-320): its value, lower-cased and without a version ("/1.0"),
+ * is the short name or the product token the User-Agent header announces (`Shalaghar-competitions/1.0`,
+ * scripts/competitions-crawl/http.ts). Never an empty line, never "*", never a part of the name ("shala").
+ */
+export function namesCrawler(agent: string, token = CRAWLER_TOKEN): boolean {
+  const name = agent.split("/")[0]!.trim().toLowerCase();
+  const short = token.toLowerCase();
+  return name !== "" && name !== "*" && (name === short || name === `${short}-competitions`);
+}
 
 type Rule = { allow: boolean; pattern: string };
 export type Robots = { allowed: (pathAndQuery: string) => boolean; crawlDelaySeconds: number | null; rules: number };
@@ -59,7 +70,7 @@ export function parseRobots(text: string, token = CRAWLER_TOKEN): Robots {
       if (Number.isFinite(n) && n >= 0) current.delay = n;
     }
   }
-  const mine = groups.filter((g) => g.agents.some((a) => a !== "*" && token.toLowerCase().includes(a)));
+  const mine = groups.filter((g) => g.agents.some((a) => namesCrawler(a, token)));
   const chosen = mine.length ? mine : groups.filter((g) => g.agents.includes("*"));
   if (!chosen.length) return ALLOW_ALL;
   const rules = chosen.flatMap((g) => g.rules).map((r) => ({ ...r, re: patternToRegExp(r.pattern), length: r.pattern.replace(/\*/g, "").length }));

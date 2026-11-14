@@ -17,6 +17,7 @@
 import { PrismaClient } from "@prisma/client";
 import { hash } from "@node-rs/argon2";
 import { config } from "dotenv";
+import { fixtureExpertStanding, standingRepair } from "./zz-expert-standing"; // TA-583
 
 config();
 const db = new PrismaClient({ datasourceUrl: process.env.DATABASE_ADMIN_URL });
@@ -169,10 +170,13 @@ async function main() {
         organisation: "National Careers Trust",
         specialisms: JSON.stringify(["Careers", "University applications"]),
         publishedAt: new Date(),
-        verifiedAt: new Date(),
-        verifiedBy: "demo-seed",
+        // verifiedAt and kycStatus together, never verifiedAt alone (TA-583: the badge's one truth).
+        ...fixtureExpertStanding(true, new Date(), "demo-seed"),
       },
     }));
+  // A profile an earlier run made with verifiedAt alone is put in step (TA-583); one that agrees with itself is left.
+  const standing = standingRepair(profile, true, new Date(), "demo-seed");
+  if (standing) await db.expertProfile.update({ where: { id: profile.id }, data: standing });
 
   const slotCount = await db.expertSlot.count({ where: { expertProfileId: profile.id } });
   if (slotCount === 0) {

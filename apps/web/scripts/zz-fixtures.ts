@@ -86,7 +86,8 @@ import { buildCollegeExtras } from "./zz-college-extras";
 import { buildCollegeHomework } from "./zz-college-homework";
 import { buildPlanItems } from "./zz-plan-items";
 import { seedCompetitionSources } from "./competitions-crawl/sources"; // competitions-crawler (12 Oct 2026)
-import { addDaysToKey, zonedStartOfDay } from "../src/lib/dates"; // decision 0007 (6 Nov 2026)
+import { addDaysToKey, todayKey, zonedStartOfDay } from "../src/lib/dates"; // decision 0007 (6 Nov 2026); todayKey TA-463
+import { fixtureExpertStanding, standingRepair } from "./zz-expert-standing"; // TA-583
 import { openAlumnus } from "../src/lib/alumni-membership";
 import { SCHOOL_MODULES, DEFAULT_SCHOOL_MODULES, SCHOOL_VERSION_MODULES, modulesForKind } from "@edulink/contracts";
 import { refuseUnlessLocalDatabase } from "./local-db-guard.mjs";
@@ -1329,6 +1330,16 @@ async function realignCircular(schoolId: string, postId: string, t: CircularTime
 // end fix-lows-D (QA-71)
 
 /**
+ * A school's own today, its date on its own clock (TA-463). The UTC date is the school's yesterday from 00:00 to
+ * 05:29 IST, and the server reads "today" as todayKey(school.timezone): a fixture cut in UTC put today's absence
+ * and cover on the day before, where the board for today never found them.
+ */
+export async function schoolToday(schoolId: string): Promise<string> {
+  const { timezone } = await db.school.findUniqueOrThrow({ where: { id: schoolId }, select: { timezone: true } });
+  return todayKey(timezone);
+}
+
+/**
  * The staff register for ZZ Northgate: the last five working days marked by
  * the office, everyone present but one teacher late once and one absent
  * once, and today's row for the first teacher a check-in. Re-run safe.
@@ -1337,10 +1348,11 @@ export async function buildStaffAttendance(school: { id: string }, adminUserId: 
   const wanted = opts.days ?? 5;
   const staff = await db.membership.findMany({ where: { schoolId: school.id, role: { in: ["ADMIN", "PRINCIPAL", "TEACHER"] }, status: "ACTIVE", leftAt: null }, select: { id: true, role: true }, orderBy: [{ role: "asc" }, { id: "asc" }] });
   const teachers = staff.filter((m) => m.role === "TEACHER");
-  const today = new Date().toISOString().slice(0, 10);
+  const today = await schoolToday(school.id);
   const days: string[] = [];
   for (let back = 1; days.length < wanted && back < wanted * 3; back += 1) {
-    const d = new Date(Date.now() - back * 86_400_000);
+    // Counted back from the school's today, not the UTC date (TA-463).
+    const d = new Date(Date.parse(`${today}T00:00:00Z`) - back * 86_400_000);
     if (d.getUTCDay() !== 0) days.push(d.toISOString().slice(0, 10));
   }
   let n = 0;
@@ -1635,7 +1647,7 @@ export async function buildCertificates(school: { id: string; name: string; code
   const roll = await db.enrollment.findMany({ where: { classId: klass.id, status: "ACTIVE" }, select: { studentMembershipId: true, student: { select: { studentCode: true, user: { select: { name: true, preferredName: true, birthdate: true } } } } }, orderBy: { studentMembershipId: "asc" } });
   await db.issuedCertificate.deleteMany({ where: { schoolId: school.id, academicYearId: year.id } });
   await db.certificateRequest.deleteMany({ where: { schoolId: school.id } });
-  const today = new Date().toISOString().slice(0, 10);
+  const today = await schoolToday(school.id); // the school's own date (TA-463)
   const issueSpecs: CertIssueSpec[] = opts.issues ?? [
     { key: "BONAFIDE-en", pupil: 0, number: 1, purpose: "a passport" },
     { key: "STUDY-en", pupil: 1, number: 1, purpose: "a scholarship" },
@@ -1860,7 +1872,7 @@ export function staffDates(i: number, joinedYear: number): { joinedOn: Date; ser
  * rows are rebuilt.
  */
 export async function buildSubstitutions(school: { id: string }, adminUserId: string, absent: { membership: { id: string } } | undefined) {
-  const today = new Date().toISOString().slice(0, 10);
+  const today = await schoolToday(school.id); // the school's own date, as the board reads it (TA-463)
   await db.substitution.deleteMany({ where: { schoolId: school.id, dateKey: today } });
   if (!absent) return { covered: 0 };
   const weekday = new Date(`${today}T00:00:00Z`).getUTCDay();
@@ -1892,7 +1904,7 @@ export async function buildSubstitutions(school: { id: string }, adminUserId: st
  */
 export async function buildHeadCover(school: { id: string }, adminUserId: string, absent: { membership: { id: string } } | undefined) {
   if (!absent) return { covered: 0 };
-  const today = new Date().toISOString().slice(0, 10);
+  const today = await schoolToday(school.id); // the school's own date, as the board reads it (TA-463)
   const weekday = new Date(`${today}T00:00:00Z`).getUTCDay();
   const head = await db.membership.findFirst({ where: { schoolId: school.id, role: "PRINCIPAL", status: "ACTIVE", leftAt: null, user: { email: `zz.principal@${DOMAIN}` } }, select: { id: true } });
   if (!head) return { covered: 0 };
@@ -2607,10 +2619,13 @@ async function buildExperts(ctx: Ctx) {
           offering: spec.offering,
           mentorCapacity: spec.mentorCapacity,
           publishedAt: spec.published ? new Date() : null,
-          verifiedAt: spec.verified ? new Date() : null,
-          verifiedBy: spec.verified ? "zz-fixtures" : null,
+          // verifiedAt and kycStatus together, never verifiedAt alone (TA-583: the one truth the product keeps).
+          ...fixtureExpertStanding(spec.verified, new Date()),
         },
       }));
+    // A profile an earlier run made with verifiedAt alone is put in step (TA-583); one that agrees with itself is left.
+    const repair = existing ? standingRepair(existing, spec.verified, new Date()) : null;
+    if (existing && repair) await db.expertProfile.update({ where: { id: existing.id }, data: repair });
 
     // Free slots, one a week from a fixed Monday so they never fall in the past
     // relative to each other and a booking test always has something to book.

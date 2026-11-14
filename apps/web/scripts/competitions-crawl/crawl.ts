@@ -15,7 +15,7 @@
 import { createHash } from "node:crypto";
 import type { CrawlRefusal } from "@edulink/contracts";
 import { ALLOW_ALL, DISALLOW_ALL, looksLikeRobots, parseRobots, type Robots } from "./robots";
-import type { HttpAnswer, PoliteClient } from "./http";
+import { CrawlRefused, type HttpAnswer, type PoliteClient } from "./http";
 import { htmlToText, linksOf, needsLogin, pdfToText, renderedByScript, worthReading } from "./text";
 
 export const MAX_PAGES_PER_SOURCE = 40;
@@ -79,15 +79,18 @@ type Fetched =
   | { kind: "same"; links: string[]; finalUrl: string }
   | { kind: "refused"; reason: CrawlRefusal; detail: string };
 
-async function fetchPage(url: string, sourceId: string, deps: CrawlDeps): Promise<Fetched> {
+/** The robots.txt rules for a URL's site: the root's for its own host, read once per other host a redirect reaches (TA-105). */
+type RobotsOf = (u: URL) => Promise<Robots>;
+
+async function fetchPage(url: string, sourceId: string, deps: CrawlDeps, robotsOf: RobotsOf): Promise<Fetched> {
   const cached = await deps.cache.get(url);
   let res: HttpAnswer;
   try {
-    res = await deps.client.get(url, { etag: cached?.etag, lastModified: cached?.lastModified });
+    res = await deps.client.get(url, { etag: cached?.etag, lastModified: cached?.lastModified }, { allowed: async (to) => (await robotsOf(to)).allowed(to.pathname + to.search) });
   } catch (e) {
     const detail = describe(e);
     await deps.cache.put(sourceId, { url, etag: cached?.etag ?? null, lastModified: cached?.lastModified ?? null, sha256: cached?.sha256 ?? null, links: cached?.links ?? [], status: 0, refused: detail, contentType: null, fetched: false });
-    return { kind: "refused", reason: "UNREACHABLE", detail };
+    return { kind: "refused", reason: e instanceof CrawlRefused ? e.refusal : "UNREACHABLE", detail };
   }
   const contentType = res.headers["content-type"] ?? null;
   const keep = (over: Partial<CachedPage> & { fetched: boolean }) =>
@@ -182,8 +185,23 @@ export async function crawlSource(source: { id: string; rootUrl: string }, deps:
     out.refused = { reason: "ROBOTS", detail: note === "robots.txt read" ? "robots.txt disallows the root page" : note };
     return out;
   }
+  // Another site a redirect reaches is read under its own robots.txt and Crawl-delay (TA-105).
+  const robotsByHost = new Map<string, Promise<Robots>>([[bare(root.host), Promise.resolve(robots)]]);
+  const robotsOf: RobotsOf = (u) => {
+    const key = bare(u.host);
+    let found = robotsByHost.get(key);
+    if (!found) {
+      found = robotsFor(deps.client, u.origin).then((r) => {
+        deps.log(`  ${u.host}: ${r.note}`);
+        if (r.robots.crawlDelaySeconds && r.robots.crawlDelaySeconds * 1000 > 1000) deps.client.setDelay(u.host, Math.min(r.robots.crawlDelaySeconds, 30) * 1000);
+        return r.robots;
+      });
+      robotsByHost.set(key, found);
+    }
+    return found;
+  };
 
-  const first = await fetchPage(source.rootUrl, source.id, deps);
+  const first = await fetchPage(source.rootUrl, source.id, deps, robotsOf);
   if (first.kind === "refused") {
     out.refused = { reason: first.reason, detail: first.detail };
     return out;
@@ -199,7 +217,7 @@ export async function crawlSource(source: { id: string; rootUrl: string }, deps:
     const u = new URL(link);
     if (!hosts.has(bare(u.host)) || seen.has(link) || !worthReading(link)) continue;
     seen.add(link);
-    if (!robots.allowed(u.pathname + u.search)) {
+    if (!(await robotsOf(u)).allowed(u.pathname + u.search)) {
       out.pageRefusals.push({ url: link, reason: "ROBOTS", detail: "robots.txt disallows it" });
       continue;
     }
@@ -212,7 +230,7 @@ export async function crawlSource(source: { id: string; rootUrl: string }, deps:
       out.stopped = true;
       break;
     }
-    const f = await fetchPage(url, source.id, deps);
+    const f = await fetchPage(url, source.id, deps, robotsOf);
     if (f.kind === "refused") out.pageRefusals.push({ url, reason: f.reason, detail: f.detail });
     else if (f.kind === "same") out.cachedHits++;
     else if (await handOn(source.id, f, deps)) out.pagesRead++;
