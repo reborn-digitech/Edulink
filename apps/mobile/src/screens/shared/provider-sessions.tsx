@@ -5,6 +5,7 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { gigProviderSchema } from "@edulink/contracts";
 import { Button, Card, Empty, Failed, Field, Loading, Screen, Text } from "@/components";
 import { api, errorText } from "@/lib/api";
+import { bytesApi, shareBytes } from "@/lib/download";
 import { unwrap } from "@/lib/query";
 import { useLocale, useT } from "@/lib/i18n";
 import { useTheme } from "@/lib/theme";
@@ -49,6 +50,18 @@ export function ProviderSessions() {
   const [link, setLink] = useState("");
   const [price, setPrice] = useState("");
   const [priceError, setPriceError] = useState<string | null>(null);
+  const [pdfBusy, setPdfBusy] = useState<string | null>(null);
+  const [pdfError, setPdfError] = useState<string | null>(null);
+  /** A teacher's commission invoice (TA-189), from the door for the person it is addressed to, whatever their role. */
+  const openInvoice = async (invoiceId: string, number: string) => {
+    setPdfBusy(invoiceId);
+    setPdfError(null);
+    const fallback = t("common.somethingWrong");
+    const got = await bytesApi.get(`/api/v1/account/gig-invoices/${encodeURIComponent(invoiceId)}/pdf`, fallback);
+    const failed = got.ok ? await shareBytes(got, `${number}.pdf`, fallback) : got.error;
+    setPdfError(failed);
+    setPdfBusy(null);
+  };
 
   const query = useQuery({ queryKey: KEY, queryFn: async () => gigProviderSchema.parse(unwrap(await api().get("/api/v1/gigs/slots"))) });
   const act = useMutation({
@@ -234,6 +247,21 @@ export function ProviderSessions() {
             </>
           ) : null}
         </>
+      ) : null}
+      {/* TA-189: a teacher's commission invoices, each a PDF from the addressee's door through the share sheet; shown
+          even once the school's guidance is off. An expert's are in the earnings card. */}
+      {d && d.kind === "TEACHER" && (d.invoices ?? []).length > 0 ? (
+        <Card title={t("gigs.invoicesTitle")}>
+          {pdfError ? <Failed message={pdfError} /> : null}
+          {(d.invoices ?? []).map((i) => (
+            <View key={i.id} style={{ gap: th.space[1] }}>
+              <Text variant="xs" tone="muted">
+                {t("gigs.invoiceLine", { number: i.number, date: formatInstant(i.issuedAt, locale, { day: "numeric", month: "short" }, d.timeZone), total: money(i.totalPaise, locale) })}
+              </Text>
+              <Button label={t("gigs.invoicePdf")} variant="secondary" accessibilityLabel={[t("gigs.invoicePdf"), i.number].join(": ")} busy={pdfBusy === i.id} onPress={() => void openInvoice(i.id, i.number)} />
+            </View>
+          ))}
+        </Card>
       ) : null}
     </Screen>
   );

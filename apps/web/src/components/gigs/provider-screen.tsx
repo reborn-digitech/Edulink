@@ -3,6 +3,7 @@ import { gigSettings } from "@/lib/gig-questions";
 import { formatInZone } from "@/lib/dates";
 import { getLocale, getT } from "@/lib/i18n/server";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { PageHeader } from "@/components/ui/page-header";
 import type { ActiveContext } from "@/lib/session";
@@ -190,6 +191,27 @@ export async function ProviderScreen({ ctx }: { ctx: ActiveContext }) {
             </CardBody>
           </Card>
         </>
+      )}
+      {/* TA-189: a teacher's commission invoices, each a PDF at the addressee's door; shown even once the school's
+          guidance is off, since what was issued is still theirs. An expert's are on /expert/earnings. */}
+      {view.kind === "TEACHER" && view.invoices.length > 0 && (
+        <Card>
+          <CardHeader title={t("gigs.invoicesTitle")} />
+          <CardBody>
+            <ul className="divide-y divide-border" data-testid="provider-invoices">
+              {view.invoices.map((i) => (
+                <li key={i.id} className="flex flex-wrap items-center justify-between gap-2 py-3">
+                  <p className="text-sm text-fg">{t("gigs.invoiceLine", { number: i.number, date: formatInZone(new Date(i.issuedAt), view.timeZone, { dateStyle: "medium" }, locale), total: formatPaise(i.totalPaise, locale) })}</p>
+                  <Button asChild size="sm" variant="secondary">
+                    <a href={`/api/v1/account/gig-invoices/${i.id}/pdf`} target="_blank" rel="noreferrer noopener">
+                      {t("gigs.invoicePdf")}
+                    </a>
+                  </Button>
+                </li>
+              ))}
+            </ul>
+          </CardBody>
+        </Card>
       )}
     </div>
   );

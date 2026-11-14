@@ -1295,9 +1295,11 @@ export async function expertInvoices(ctx: ActiveContext): Promise<{ invoices: In
   return { invoices: rows.map(invoiceOf) };
 }
 
-/** One invoice: the expert it is addressed to reads their own, the operator any; anybody else's is not found. */
+/**
+ * One invoice: the person it is addressed to reads their own whatever role they are signed in as (an expert, or a
+ * teacher paid for guidance seats: TA-189), the operator any; anybody else's is not found.
+ */
 export async function invoiceView(ctx: ActiveContext, invoiceId: string): Promise<InvoiceView> {
-  if (ctx.role !== "EXPERT" && !ctx.user.isSuperuser) throw new AccessError("access.wrongRoleForThisAction");
   const row = await db.gigInvoice.findFirst({ where: { id: invoiceId, ...(ctx.user.isSuperuser ? {} : { expertUserId: ctx.user.id }) }, select: INVOICE_SELECT });
   if (!row) throw new AccessError("gigs.noSuchInvoice", "NOT_FOUND");
   return invoiceOf(row);

@@ -169,6 +169,17 @@ describe("a provider's sessions", () => {
     expect(mockRouter.push).toHaveBeenCalledWith("/(app)/messages");
   });
 
+  it("TA-189: a teacher's commission invoice is listed, even with guidance off, and fetched from the addressee's door to the share sheet", async () => {
+    const PDF = "GET /api/v1/account/gig-invoices/inv7/pdf";
+    const invoices = [{ id: "inv7", number: "SGC/26-27/000007", issuedAt: "2030-10-20T10:00:00.000Z", totalPaise: 2360 }];
+    const { calls } = await mountStaff(<ProviderSessions />, "TEACHER", { [`GET ${PATH}`]: () => json({ enabled: false, kind: "TEACHER", timeZone: "Asia/Kolkata", duty: null, gate: null, slots: [], invoices }), [PDF]: () => new Response(new Uint8Array([0x25, 0x50, 0x44, 0x46]), { status: 200, headers: { "content-type": "application/pdf" } }) });
+    expect(await screen.findByText(/SGC\/26-27\/000007 · .* · ₹23\.60/)).toBeTruthy();
+    await fireEvent.press(screen.getByRole("button", { name: "Invoice PDF: SGC/26-27/000007" }));
+    await waitFor(() => expect(Sharing.shareAsync).toHaveBeenCalledWith(expect.stringMatching(/SGC 26-27 000007\.pdf$/), expect.objectContaining({ mimeType: "application/pdf" })));
+    expect(calls().filter((c) => c.line === PDF)).toHaveLength(1);
+    expect(calls().some((c) => c.line.startsWith("GET /api/v1/expert/"))).toBe(false);
+  });
+
   it("a refusal is an alert, and so is a list that cannot be read", async () => {
     const first = await mountStaff(<ProviderSessions />, "EXPERT", { ...SIDE, [`GET ${PATH}`]: () => json(view()), [`POST ${PATH}`]: refused("ZZ Give an https link to your meeting room.", 422) });
     await fireEvent.changeText(await screen.findByLabelText("Date"), "2030-11-05");

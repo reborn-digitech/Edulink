@@ -152,3 +152,32 @@ export const GIGS: Endpoint[] = [
   say("POST", "/api/v1/operator/gigs/payees/{expertUserId}/suspend", "Stop paying an expert, with a reason they can read, or lift the stop; a suspended payee cannot price a seat, and their held seats are not released to them until the stop is lifted (refunds still go)");
 }
 // end plans-payments fixes
+// decision-189 (TA-189, the owner's option 1 of 14 November 2026): a teacher's commission invoice is opened by the
+// person it is addressed to, whatever their role, and by the operator. Two PDF doors, pushed here rather than edited
+// in place (the shared-file fence).
+GIGS.push(
+  {
+    method: "GET",
+    path: "/api/v1/account/gig-invoices/{invoiceId}/pdf",
+    feature: ["EXPERT_SESSIONS", "TEACHER_SESSIONS"],
+    planFree: "a commission invoice the company issued stays readable to the person it is addressed to after their plan ends, as an expert's earnings do (TA-189)",
+    summary: "A commission tax invoice as a PDF (application/pdf) in the language it was issued in, to the person it is addressed to whatever role they are signed in as — a teacher paid for guidance seats as well as an expert (the operator's any); anybody else's is not found",
+    access: "signed-in",
+    limitedRoles: c.ALL_LIMITED_ROLES,
+    reach: { ADMIN: "self", PRINCIPAL: "self", TEACHER: "self", STUDENT: "self", PARENT: "self", EXPERT: "self", DRIVER: "self", LIBRARIAN: "self", WARDEN: "self", ALUMNUS: "self", FACULTY: "self", HOD: "self", EXAM_CONTROLLER: "self", IQAC: "self", TPO: "self", ACCOUNTS: "self", RECRUITER: "self", SUPPORT: "self" },
+    response: c.okSchema,
+    emptyBodyStatus: 404,
+    // An id no invoice holds, "not found" to every role (the pass invoice's way); the page sweep reads the fixture's
+    // invoice as the ZZ expert it is addressed to, and as somebody else.
+    sample: "/api/v1/account/gig-invoices/zz-sweep-no-such-gig-invoice/pdf",
+  },
+  {
+    method: "GET",
+    path: "/api/v1/operator/gigs/invoices/{invoiceId}/pdf",
+    summary: "Any commission tax invoice the company has issued, as a PDF (application/pdf) in the language it was issued in; an id no invoice holds is not found",
+    access: "operator",
+    response: c.okSchema,
+    sample: (f) => (f.gigInvoiceId ? `/api/v1/operator/gigs/invoices/${f.gigInvoiceId}/pdf` : null),
+  },
+);
+// end decision-189

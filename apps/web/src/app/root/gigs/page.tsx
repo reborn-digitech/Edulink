@@ -7,6 +7,7 @@ import { operatorInvoices, operatorPayouts } from "@/lib/gig-payments";
 import { formatInZone } from "@/lib/dates";
 import { getLocale, getT } from "@/lib/i18n/server";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { PageHeader } from "@/components/ui/page-header";
 import { CompanyForm, LinkAllExperts, PaymentForm, PaymentsSwitch, PayoutForm, RetryPayment, SettingsForm, SuspendPayee } from "./forms";
@@ -400,6 +401,14 @@ export default async function RootGigsPage() {
                         {p.note ? ` · ${p.note}` : ""}
                       </p>
                     </div>
+                    {/* TA-189: the payout's invoice, whoever it is addressed to (an expert or a teacher), at the operator's door. */}
+                    {p.invoiceId && (
+                      <Button asChild size="sm" variant="secondary">
+                        <a href={`/api/v1/operator/gigs/invoices/${p.invoiceId}/pdf`} target="_blank" rel="noreferrer noopener">
+                          {t("gigs.invoicePdf")}
+                        </a>
+                      </Button>
+                    )}
                   </li>
                 ))}
               </ul>
@@ -412,13 +421,21 @@ export default async function RootGigsPage() {
             ) : (
               <ul className="divide-y divide-border" data-testid="gig-invoices">
                 {invoices.invoices.map((i) => (
-                  <li key={i.id} className="py-2 text-sm text-fg">
-                    {t("gigs.opInvoiceLine", {
-                      number: i.number,
-                      name: i.expertName,
-                      date: day(i.issuedAt),
-                      total: money(i.totalPaise),
-                    })}
+                  <li key={i.id} className="flex flex-wrap items-center justify-between gap-2 py-2 text-sm text-fg">
+                    <span className="min-w-0 flex-1">
+                      {t("gigs.opInvoiceLine", {
+                        number: i.number,
+                        name: i.expertName,
+                        date: day(i.issuedAt),
+                        total: money(i.totalPaise),
+                      })}
+                    </span>
+                    {/* TA-189: every invoice opens as its PDF at the operator's door. */}
+                    <Button asChild size="sm" variant="secondary">
+                      <a href={`/api/v1/operator/gigs/invoices/${i.id}/pdf`} target="_blank" rel="noreferrer noopener">
+                        {t("gigs.invoicePdf")}
+                      </a>
+                    </Button>
                   </li>
                 ))}
               </ul>

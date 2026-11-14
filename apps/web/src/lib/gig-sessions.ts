@@ -688,9 +688,11 @@ export type ProviderSlot = {
 export type Duty = { deliveredOneToOnes: number; heldWorkshops: number; oneToOnesThisMonth: number; workshopsThisQuarter: number; startOneToOnes: number; startWorkshops: number; monthlyOneToOnes: number; quarterlyWorkshops: number };
 /** What the provider's sold seats stand at (seats, 17 Oct 2026): the net held for them, due, paid, and the gross refunded; an expert's statement is /expert/earnings, a teacher's is this. */
 export type ProviderEarnings = { heldPaise: number; duePaise: number; paidPaise: number; refundedPaise: number; seats: number };
+/** A tax invoice the company issued to the provider for its commission (TA-189), opened at GET /api/v1/account/gig-invoices/{id}/pdf. */
+export type ProviderInvoice = { id: string; number: string; issuedAt: string; totalPaise: number };
 /** The provider's meeting account (decision 0008, 7 Nov 2026): their word that it is premium, and the free-account cap per service in minutes (0 none) that holds a session's length while it is not. */
 export type MeetingAccount = { premium: boolean; caps: MeetingCaps };
-export type ProviderView = { enabled: boolean; kind: "EXPERT" | "TEACHER"; /** The clock the times are read in: the expert's own, or the teacher's school's. */ timeZone: string; duty: Duty | null; /** An expert's standing to charge, condition by condition; null for a teacher. */ gate: PaidGate | null; /** A teacher's standing to price guidance (seats, 17 Oct 2026); null for an expert. */ teacherGate: TeacherPaidGate | null; earnings: ProviderEarnings | null; meeting: MeetingAccount; /** The provider's series (decision 0008). */ series: ProviderSeries[]; slots: ProviderSlot[] };
+export type ProviderView = { enabled: boolean; kind: "EXPERT" | "TEACHER"; /** The clock the times are read in: the expert's own, or the teacher's school's. */ timeZone: string; duty: Duty | null; /** An expert's standing to charge, condition by condition; null for a teacher. */ gate: PaidGate | null; /** A teacher's standing to price guidance (seats, 17 Oct 2026); null for an expert. */ teacherGate: TeacherPaidGate | null; earnings: ProviderEarnings | null; /** A teacher's commission invoices, newest first (TA-189); empty for an expert, whose are on /expert/earnings. */ invoices: ProviderInvoice[]; meeting: MeetingAccount; /** The provider's series (decision 0008). */ series: ProviderSeries[]; slots: ProviderSlot[] };
 
 /** The provider's meeting account as the forms read it: the person's word and the operator's caps. */
 export async function meetingAccountOf(userId: string, settings?: GigSettingsView): Promise<MeetingAccount> {
@@ -733,13 +735,19 @@ async function providerEarnings(providerUserId: string): Promise<ProviderEarning
   return { heldPaise: net(["PAID", "HELD"]), duePaise: net(["DUE"]), paidPaise: net(["RELEASED", "PAID_OUT"]), refundedPaise: rows.filter((r) => r.status === "REFUNDED").reduce((a, r) => a + r.amountPaise, 0), seats: rows.filter((r) => r.status !== "REFUNDED").length };
 }
 
+/** The commission invoices addressed to a teacher, newest first (TA-189): theirs whether or not their school's guidance is on now. */
+async function providerInvoices(providerUserId: string): Promise<ProviderInvoice[]> {
+  const rows = await db.gigInvoice.findMany({ where: { expertUserId: providerUserId }, orderBy: { issuedAt: "desc" }, take: 100, select: { id: true, number: true, issuedAt: true, totalPaise: true } });
+  return rows.map((r) => ({ id: r.id, number: r.number, issuedAt: r.issuedAt.toISOString(), totalPaise: r.totalPaise }));
+}
+
 const quarterStart = (at: Date) => new Date(Date.UTC(at.getUTCFullYear(), Math.floor(at.getUTCMonth() / 3) * 3, 1));
 
 /** A provider's offered times, who has a seat in each, and what they have given free against what is asked. */
 export async function mySlots(ctx: ActiveContext, now: Date = new Date()): Promise<ProviderView> {
   const me = await providerOrOff(ctx);
   const settings = await gigSettings();
-  if (!me) return { enabled: false, kind: "TEACHER", timeZone: "Asia/Kolkata", duty: null, gate: null, teacherGate: null, earnings: null, meeting: { premium: false, caps: meetingCapsOf(settings) }, series: [], slots: [] };
+  if (!me) return { enabled: false, kind: "TEACHER", timeZone: "Asia/Kolkata", duty: null, gate: null, teacherGate: null, earnings: null, invoices: await providerInvoices(ctx.user.id), meeting: { premium: false, caps: meetingCapsOf(settings) }, series: [], slots: [] };
   const slots = await db.gigSlot.findMany({ where: { providerUserId: me.userId, startsAt: { gte: new Date(now.getTime() - 60 * 24 * HOUR) } }, orderBy: { startsAt: "asc" }, take: 300 });
   const bookings: BookingRow[] = slots.length ? await db.gigBooking.findMany({ where: { providerUserId: me.userId, slotId: { in: slots.map((s) => s.id) }, status: { not: "CANCELLED" } }, orderBy: { createdAt: "asc" }, select: BOOKING_SELECT }) : [];
   // TA-120: a pupil's ask no guardian has agreed to yet is told to the provider as a seat asked for and no more: no
@@ -769,6 +777,7 @@ export async function mySlots(ctx: ActiveContext, now: Date = new Date()): Promi
     gate: me.kind === "EXPERT" ? await paidGate(me.userId, now) : null,
     teacherGate: me.kind === "TEACHER" ? await teacherPaidGate(me.userId) : null,
     earnings: await providerEarnings(me.userId),
+    invoices: me.kind === "TEACHER" ? await providerInvoices(me.userId) : [],
     meeting: await meetingAccountOf(me.userId, settings),
     series: await seriesOf(me.userId, now),
     slots: slots.map((s) => ({

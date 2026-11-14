@@ -27,6 +27,7 @@ import { config } from "dotenv";
 import { NAV, PRIMARY_ACTION, QUICK_ACTIONS, hiddenByFeature } from "@/lib/nav";
 import { isLimitedRole, ROLE_HOME, type Role } from "@/lib/constants";
 import { dutiesForRole, MODULE_OF_ROLE } from "@edulink/contracts";
+import { todayKey } from "@/lib/dates";
 import { warmPlan, warmUp } from "./sweep-warm";
 import { describeGateState, gateFlags, pageGate, readGateState, runSwitches, type GateState } from "./sweep-features";
 import { request as httpRequest } from "node:http";
@@ -1729,6 +1730,33 @@ async function paidSurfaces(riversideAdmin: Actor, riversideTeacher: Actor, devS
   }
   // end plans-pay
 
+  // decision-189 (TA-189): a commission invoice opens at the door for the person it is addressed to, whatever their
+  // role, and at the operator's door. The fixture's invoice is the ZZ expert's (zz-fixtures.ts buildGigSessions): a PDF
+  // to that expert at the addressee's door, "not found" there to anybody else; a PDF to the operator at theirs, which
+  // refuses a school role; and the operator's gigs page links it.
+  const fixtureInvoice = await db.gigInvoice.findFirst({ where: { expert: { email: "zz.expert1@zz.test" } }, orderBy: { issuedAt: "asc" }, select: { id: true } });
+  if (fixtureInvoice) {
+    const before = new Set(touched);
+    const zzExpert = await mint("zz.expert1@zz.test", "EXPERT", null, "zz-expert1");
+    if (zzExpert.userId && !before.has(zzExpert.userId)) touched.delete(zzExpert.userId);
+    // The addressee's door sits under both session switches ("any of", plan-free): not found while the operator has
+    // both off. check() adjusts only a feature's pages, so the expectation is set here, as for COMPETITIONS.
+    const invoiceDoor = gate.on.has("EXPERT_SESSIONS") || gate.on.has("TEACHER_SESSIONS") ? 200 : 404;
+    await check(zzExpert, `/api/v1/account/gig-invoices/${fixtureInvoice.id}/pdf`, invoiceDoor, invoiceDoor === 200 ? "the person a commission invoice is addressed to downloads it as a PDF" : "the session features are off for everyone (EXPERT_SESSIONS, TEACHER_SESSIONS): the door is not found");
+    if (zzTeacher) await check(zzTeacher, `/api/v1/account/gig-invoices/${fixtureInvoice.id}/pdf`, 404, "⚠ …nobody else does");
+    if (zzTeacher) await check(zzTeacher, `/api/v1/operator/gigs/invoices/${fixtureInvoice.id}/pdf`, 403, "⚠ …nor opens it at the operator's door");
+    if (operator?.isSuperuser) {
+      const op = await mint("zz.operator@zz.test", null, null, "zz-operator");
+      if (op.userId) touched.delete(op.userId);
+      await check(op, `/api/v1/operator/gigs/invoices/${fixtureInvoice.id}/pdf`, 200, "the operator downloads any commission invoice as a PDF");
+      const gigs = await hit(op, "/root/gigs");
+      results.push({ role: op.label, path: "/root/gigs (invoice links)", status: gigs.status, expected: 200, ok: gigs.status === 200 && gigs.body.includes('data-testid="gig-invoices"') && gigs.body.includes(`/api/v1/operator/gigs/invoices/${fixtureInvoice.id}/pdf`), note: "…and the gigs page links each invoice's PDF" });
+    }
+  } else {
+    skip("the fixture's commission invoice", "no fixture invoice (run zz:fixtures)");
+  }
+  // end decision-189
+
   // The published website by slug: the office's and the head's own view, 404 to the rest (16 Oct 2026).
   const zzSite = await db.schoolSiteVersion.findFirst({ where: { schoolId: northgate.id, liveAt: { not: null } }, select: { schoolSlug: true } });
   if (zzSite) {
@@ -2663,7 +2691,8 @@ async function main() {
   // day nobody is away, and closed on a day the school does not teach, and
   // both render; the pages are the office's alone.
   {
-    const boardToday = new Date().toISOString().slice(0, 10);
+    // The school's own today, on its clock (TA-463), as the board reads it; the UTC date is its yesterday before 05:30 IST.
+    const boardToday = todayKey(riverside.timezone);
     await check(admin, "/admin/substitutions", 200, "the office reads today's substitution board");
     await check(admin, `/admin/substitutions?date=${boardToday}`, 200, "…and by date");
     await check(admin, `/admin/substitutions/print?date=${boardToday}`, 200, "…and prints it");

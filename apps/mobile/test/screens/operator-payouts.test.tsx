@@ -1,3 +1,4 @@
+import * as Sharing from "expo-sharing";
 import { fireEvent, screen, waitFor } from "@testing-library/react-native";
 import { OperatorPayouts } from "@/screens/operator/payouts";
 import { OPERATOR_PAYOUTS, ROUTE_READY } from "./gig-fixtures";
@@ -125,5 +126,15 @@ describe("paid seats on the operator's console", () => {
   it("a list that cannot be read is an alert with a retry", async () => {
     await mount({ [`GET ${PATH}`]: refused("ZZ not now") });
     expect(await screen.findByRole("alert")).toHaveTextContent("ZZ not now");
+  });
+
+  it("TA-189: a paid payout's invoice is fetched from the operator's door to the share sheet; a refusal is an alert", async () => {
+    const PDF = "GET /api/v1/operator/gigs/invoices/inv1/pdf";
+    const { calls } = await mount({ [PDF]: () => new Response(new Uint8Array([0x25, 0x50, 0x44, 0x46]), { status: 200, headers: { "content-type": "application/pdf" } }), "GET /api/v1/operator/gigs/invoices/inv3/pdf": refused("ZZ no such invoice") });
+    await fireEvent.press(await screen.findByRole("button", { name: "Invoice PDF: SG/2026-27/0001" }));
+    await waitFor(() => expect(Sharing.shareAsync).toHaveBeenCalledWith(expect.stringMatching(/SG 2026-27 0001\.pdf$/), expect.objectContaining({ mimeType: "application/pdf" })));
+    expect(calls().filter((c) => c.line === PDF)).toHaveLength(1);
+    await fireEvent.press(screen.getByRole("button", { name: "Invoice PDF: SG/2026-27/0003" }));
+    expect(await screen.findByRole("alert")).toHaveTextContent("ZZ no such invoice");
   });
 });

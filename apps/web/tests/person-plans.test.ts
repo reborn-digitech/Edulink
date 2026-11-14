@@ -225,6 +225,8 @@ describe("the gate and the envelope", () => {
     const free = ENDPOINTS.filter((e) => e.planFree);
     expect(free.map((e) => `${e.method} ${e.path}`).sort()).toEqual(
       [
+        // TA-189 (decision of 14 Nov 2026): a commission invoice stays readable to the person it is addressed to.
+        "GET /api/v1/account/gig-invoices/{invoiceId}/pdf",
         "GET /api/v1/expert/calendar.ics",
         "GET /api/v1/expert/calendar/token",
         "GET /api/v1/expert/earnings",

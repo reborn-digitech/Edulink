@@ -5,6 +5,7 @@ import { gigPayoutPaidSchema, gigPayoutsSchema, gigRouteLinkAllSchema, type GigP
 import { Button, Card, Failed, Field, Loading, Screen, Stat, Text } from "@/components";
 import { SwitchRow } from "@/components/switch-row";
 import { api, errorText } from "@/lib/api";
+import { bytesApi, shareBytes } from "@/lib/download";
 import { unwrap } from "@/lib/query";
 import { useLocale, useT } from "@/lib/i18n";
 import { useTheme } from "@/lib/theme";
@@ -37,6 +38,19 @@ export function OperatorPayouts() {
   const [failedSaid, setFailedSaid] = useState<string | null>(null);
   const [recording, setRecording] = useState<{ payoutId: string; reference: string; note: string } | null>(null);
   const query = useQuery({ queryKey: KEY, queryFn: async () => gigPayoutsSchema.parse(unwrap(await api().get("/api/v1/operator/gigs/payouts"))) });
+  const [pdfBusy, setPdfBusy] = useState<string | null>(null);
+  /** A payout's invoice as a PDF (TA-189), from the operator's door; a failure is said where the screen's others are. */
+  const openInvoice = async (invoiceId: string, number: string) => {
+    setPdfBusy(invoiceId);
+    const fallback = t("common.somethingWrong");
+    const got = await bytesApi.get(`/api/v1/operator/gigs/invoices/${encodeURIComponent(invoiceId)}/pdf`, fallback);
+    const failed = got.ok ? await shareBytes(got, `${number}.pdf`, fallback) : got.error;
+    if (failed) {
+      setSaid(null);
+      setFailedSaid(failed);
+    }
+    setPdfBusy(null);
+  };
   const settle = {
     onSuccess: (line: string) => {
       setFailedSaid(null);
@@ -203,6 +217,8 @@ export function OperatorPayouts() {
                   <Text variant="xs" tone="muted">
                     {[p.paidAt ? (p.status === "RELEASED" ? t("gigs.opReleasedLine", { date: when(p.paidAt) }) : t("gigs.paidOutLine", { date: when(p.paidAt), reference: p.reference ?? "" })) : null, p.invoiceNumber, p.note].filter(Boolean).join(" · ")}
                   </Text>
+                  {/* TA-189: the payout's invoice, an expert's or a teacher's, from the operator's door through the share sheet. */}
+                  {p.invoiceId ? <Button label={t("gigs.invoicePdf")} variant="secondary" accessibilityLabel={[t("gigs.invoicePdf"), p.invoiceNumber ?? p.expertName].join(": ")} busy={pdfBusy === p.invoiceId} onPress={() => void openInvoice(p.invoiceId!, p.invoiceNumber ?? p.invoiceId!)} /> : null}
                 </View>
               ))
             )}

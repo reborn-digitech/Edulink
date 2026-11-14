@@ -562,6 +562,8 @@ export const gigProviderSchema = z.object({
   teacherGate: z.object({ paymentsOn: z.boolean(), payeeSaved: z.boolean(), canCharge: z.boolean(), seatPriceMinPaise: z.number().int(), seatPriceMaxPaise: z.number().int(), commissionPercent: z.number().int() }).nullable().optional(),
   /** The provider's sold seats by where their money stands: the net held, due and paid, and the gross refunded. */
   earnings: z.object({ heldPaise: z.number().int(), duePaise: z.number().int(), paidPaise: z.number().int(), refundedPaise: z.number().int(), seats: z.number().int() }).nullable().optional(),
+  /** A teacher's commission invoices, newest first, each opened at GET /api/v1/account/gig-invoices/{id}/pdf (TA-189); empty for an expert, absent from an older server. */
+  invoices: z.array(z.object({ id, number: z.string(), issuedAt: z.string(), totalPaise: z.number().int() })).optional(),
   /** The provider's meeting account and the free-account caps (decision 0008, 7 Nov 2026); absent from an older server. */
   meeting: gigMeetingAccountSchema.optional(),
   /** The provider's series (decision 0008); absent from an older server. */
