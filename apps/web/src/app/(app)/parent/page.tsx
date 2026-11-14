@@ -20,7 +20,7 @@ import { ExamMarksCards } from "@/components/exams/exam-marks";
 import { db } from "@/lib/db";
 import { getAttendanceSummary, currentStreakFor, todayAttendanceFor } from "@/lib/attendance";
 import { addDaysToKey, formatDateKey, isWithin, todayKey, weekdayOfKey } from "@/lib/dates";
-import { overallForStudent } from "@/lib/grading";
+import { homeworkAverage } from "@/lib/reports";
 import { pendingConsents } from "@/lib/competitions";
 import { pupilRecordFor } from "@/lib/pupil-records";
 import { familyPenChanges } from "@/lib/pen-changes";
@@ -142,17 +142,15 @@ export default async function ParentDashboard({
             (periodOrder.get(b.periodId)?.position ?? 0),
         );
 
-  const [attendance, streak, allHomework, upcoming, threads, awaitingConsent, recordMissing] = await Promise.all([
+  const [attendance, streak, homework, upcoming, threads, awaitingConsent, recordMissing] = await Promise.all([
     getAttendanceSummary(student.schoolId, selectedId, fourWeeksAgo, today),
     currentStreakFor(student.schoolId, selectedId, today),
     // Homework only: an exam paper is also stored as a Grade, but its marks
     // belong to the exam card below, and the tile's "pieces" are the ongoing
-    // work a parent monitors. Every marked piece, for the average the tile
-    // promises — not the five newest.
-    db.grade.findMany({
-      where: { studentMembershipId: selectedId, schoolId: student.schoolId, assignment: { examSlotId: null } },
-      select: { scoreMilli: true, assignment: { select: { pointsMilli: true, category: true, classId: true, offeringId: true } } },
-    }),
+    // work a parent monitors. TA-388 (owner's decision, 14 November 2026):
+    // every piece marked in the progress report's twelve weeks, by the
+    // report's own reader, so the tile's number is the report's homework average.
+    homeworkAverage(student.schoolId, selectedId, timezone),
     db.assignment.findMany({
       where: {
         schoolId: student.schoolId,
@@ -194,33 +192,8 @@ export default async function ParentDashboard({
   const penChangeWaiting = penChanges.items.find((item) => item.status === "PENDING" && item.can.decide) ?? null;
 
   // Shared helper — weights by points available, never averages percentages.
-  const scored = allHomework.filter((g) => g.scoreMilli !== null && g.assignment.pointsMilli);
-  // A college offering's work (R-48) has no class and no weights: it is points-weighted under the offering's id.
-  const classIds = [...new Set(allHomework.map((g) => g.assignment.classId).filter((id): id is string => id !== null))];
-  const [weightRows, examMarks] = await Promise.all([
-    db.gradeCategory.findMany({
-      where: { classId: { in: classIds } },
-      select: { classId: true, name: true, weightBps: true },
-      orderBy: { position: "asc" },
-    }),
-    examMarksFor(session),
-  ]);
-  const weightsByClass = new Map<string, { name: string; weightBps: number }[]>();
-  for (const row of weightRows) {
-    const list = weightsByClass.get(row.classId) ?? [];
-    list.push({ name: row.name, weightBps: row.weightBps });
-    weightsByClass.set(row.classId, list);
-  }
-  const overallResult = overallForStudent(
-    allHomework.map((g) => ({
-      classId: g.assignment.classId ?? g.assignment.offeringId ?? "",
-      scoreMilli: g.scoreMilli,
-      maxMilli: g.assignment.pointsMilli,
-      category: g.assignment.category,
-    })),
-    weightsByClass,
-  );
-  const averagePercent = overallResult.percent;
+  const examMarks = await examMarksFor(session);
+  const averagePercent = homework.percent;
 
   // The permission slips still waiting for this family's yes or no, at any of their schools (R-1).
   const familySlips = await openSlipsForFamily(session);
@@ -367,16 +340,16 @@ export default async function ParentDashboard({
           hint={attendance.total === 0 ? t("parent.noRecordsYet") : t("parent.lastFourWeeks")}
         />
         <StatTile
-          label={t("parent.averageGrade")}
+          label={t("parent.homeworkAverage")}
           value={averagePercent === null ? "—" : `${averagePercent}%`}
           tone={averagePercent === null ? "neutral" : averagePercent >= 70 ? "ok" : "warn"}
           icon={<ChartLineUpIcon weight="duotone" className="size-5" />}
           hint={
-            scored.length === 0
-              ? t("parent.nothingGradedYet")
-              : scored.length === 1
-                ? t("parent.acrossPiecesOne")
-                : t("parent.acrossPieces", { count: scored.length })
+            homework.count === 0
+              ? t("parent.homeworkNoneMarked")
+              : homework.count === 1
+                ? t("parent.homeworkAcrossPiecesOne")
+                : t("parent.homeworkAcrossPieces", { count: homework.count })
           }
         />
         <StatTile

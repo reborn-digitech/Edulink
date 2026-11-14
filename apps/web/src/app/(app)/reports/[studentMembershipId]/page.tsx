@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { AccessError, requireUser } from "@/lib/tenancy";
-import { buildProgressReport } from "@/lib/reports";
+import { buildProgressReport, isHomeWindow } from "@/lib/reports";
 import { recordsForStudentMembership } from "@/lib/school-record";
 import { SchoolRecordList } from "@/components/school-record-list";
 import { formatDate, formatDateKey } from "@/lib/dates";
@@ -146,6 +146,47 @@ export default async function ReportPage({
           <p className="text-sm text-fg-muted">{t("reportView.nothingMarkedFor", { name })}</p>
         ) : (
           <>
+            {/*
+              TA-388 (owner's decision, 14 November 2026): the homework and the tests of the window, each on its own,
+              with the overall of both beneath. The homework average is the family's home tile, so the number a
+              guardian sees at home is on this sheet.
+            */}
+            <dl className="grid grid-cols-2 gap-2">
+              {(
+                [
+                  {
+                    label: t("reportView.homeworkAverage"),
+                    percent: report.grades.homeworkPercent,
+                    count:
+                      report.grades.homeworkCount === 1
+                        ? t("reportView.homeworkCountOne")
+                        : t("reportView.homeworkCountMany", { count: report.grades.homeworkCount }),
+                    marked: report.grades.homeworkCount,
+                  },
+                  {
+                    label: t("reportView.testsAverage"),
+                    percent: report.grades.testsPercent,
+                    count:
+                      report.grades.testsCount === 1
+                        ? t("reportView.testsCountOne")
+                        : t("reportView.testsCountMany", { count: report.grades.testsCount }),
+                    marked: report.grades.testsCount,
+                  },
+                ] as const
+              ).map((figure) => (
+                <div key={figure.label} className="rounded-[var(--radius-md)] border border-border p-2.5">
+                  <dt className="text-xs uppercase tracking-wide text-fg-muted">{figure.label}</dt>
+                  <dd className="text-lg font-semibold">{figure.percent === null ? "—" : `${figure.percent}%`}</dd>
+                  <dd className="text-xs text-fg-muted">
+                    {figure.marked === 0 ? t("reportView.noneMarkedHere") : figure.count}
+                  </dd>
+                </div>
+              ))}
+            </dl>
+            {/* Only the home tile's own twelve weeks hold the home figure; a custom ?from=&to= window does not (TA-388). */}
+            {isHomeWindow(report.window, report.school.timezone) ? (
+              <p className="text-xs text-fg-muted">{t("reportView.averagesExplainer")}</p>
+            ) : null}
             <p className="text-[0.9375rem]">
               <strong className="text-2xl font-bold">{report.grades.overallPercent}%</strong>{" "}
               {report.grades.marked.length === 1

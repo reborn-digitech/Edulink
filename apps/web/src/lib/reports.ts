@@ -52,6 +52,15 @@ export type ProgressReport = {
   };
   grades: {
     overallPercent: number | null;
+    /**
+     * TA-388 (owner's decision, 14 November 2026): the window's homework alone (work that is not an exam sitting) and
+     * its exam papers alone, each by the same helper as the overall, printed above it. The homework figure is the one
+     * the family's home tile shows (homeworkAverage below), so the home number is found on the report.
+     */
+    homeworkPercent: number | null;
+    homeworkCount: number;
+    testsPercent: number | null;
+    testsCount: number;
     method: "points" | "weighted";
     uncategorised: number;
     marked: {
@@ -124,11 +133,7 @@ export async function buildProgressReport(
   const toKey = range.toKey ?? todayKey(timezone);
   const fromKey = range.fromKey ?? addDaysToKey(toKey, -DEFAULT_REPORT_DAYS);
   if (fromKey > toKey) throw new AccessError("access.thatDateRangeRunsBackwards");
-  // [first day 00:00, day after the last 00:00) on the school's clock.
-  const gradedIn = {
-    gte: zonedStartOfDay(fromKey, timezone),
-    lt: zonedStartOfDay(addDaysToKey(toKey, 1), timezone),
-  };
+  const gradedIn = gradedWithin(fromKey, toKey, timezone);
 
   // A guardian is admitted under RESULTS; an adult college student's register is a grant of its own (ATTENDANCE), and
   // without it the report says so instead of printing the days (TA-556).
@@ -152,6 +157,7 @@ export async function buildProgressReport(
             pointsMilli: true,
             classId: true,
             offeringId: true,
+            examSlotId: true,
             class: { select: { name: true } },
             offering: { select: { course: { select: { code: true, name: true } } } },
           },
@@ -187,6 +193,9 @@ export async function buildProgressReport(
     })),
     weightsByClass,
   );
+  // TA-388: the two populations the overall is made of, each averaged by the same rule.
+  const homework = averageOf(grades.filter((g) => g.assignment.examSlotId === null), weightsByClass);
+  const tests = averageOf(grades.filter((g) => g.assignment.examSlotId !== null), weightsByClass);
 
   return {
     student: {
@@ -210,6 +219,10 @@ export async function buildProgressReport(
       // Averaging the per-assignment percentages weights a 5-point quiz like a
       // 100-point exam, and on the seeded data the two disagree by two points.
       overallPercent: overall.percent,
+      homeworkPercent: homework.percent,
+      homeworkCount: homework.count,
+      testsPercent: tests.percent,
+      testsCount: tests.count,
       // Named on the report itself. A parent comparing this term's number with
       // last term's is entitled to know whether the RULE changed underneath it.
       method: overall.method,
@@ -233,4 +246,85 @@ export async function buildProgressReport(
       .map((b) => ({ id: b.id, labelKey: b.labelKey, descriptionKey: b.descriptionKey })),
     generatedAt: new Date(),
   };
+}
+
+/** [first day 00:00, day after the last 00:00) on the school's clock: the marks a window covers. */
+function gradedWithin(fromKey: string, toKey: string, timezone: string) {
+  return {
+    gte: zonedStartOfDay(fromKey, timezone),
+    lt: zonedStartOfDay(addDaysToKey(toKey, 1), timezone),
+  };
+}
+
+/**
+ * Is this the family's home tile's window, the last DEFAULT_REPORT_DAYS days to today on the school's clock (TA-388)?
+ * Only then is the report's homework average the figure on the home page, so the page says so only then: a custom
+ * ?from=&to= window prints the two averages without that sentence. Pure.
+ */
+export function isHomeWindow(window: { fromKey: string; toKey: string }, timezone: string, now: Date = new Date()): boolean {
+  const today = todayKey(timezone, now);
+  return window.toKey === today && window.fromKey === addDaysToKey(today, -DEFAULT_REPORT_DAYS);
+}
+
+type MarkRow = {
+  scoreMilli: number | null;
+  assignment: { classId: string | null; offeringId: string | null; pointsMilli: number | null; category: string | null };
+};
+
+/**
+ * One population's average by the shared helper, and how many marked pieces it stands on (a mark with points to be
+ * out of, as the home tile has always counted them). A college offering's work (R-48) has no class and no weights:
+ * points-weighted under the offering's id.
+ */
+function averageOf(rows: MarkRow[], weightsByClass: Map<string, { name: string; weightBps: number }[]>) {
+  const result = overallForStudent(
+    rows.map((g) => ({
+      classId: g.assignment.classId ?? g.assignment.offeringId ?? "",
+      scoreMilli: g.scoreMilli,
+      maxMilli: g.assignment.pointsMilli,
+      category: g.assignment.category,
+    })),
+    weightsByClass,
+  );
+  return { percent: result.percent, count: rows.filter((g) => g.scoreMilli !== null && g.assignment.pointsMilli).length };
+}
+
+/**
+ * The family's home tile, "Homework average" (TA-388, owner's decision of 14 November 2026): the homework marked in
+ * the report's own default window (the last DEFAULT_REPORT_DAYS days to today, on the school's clock), exam sittings
+ * left out, by the same helper and the same weights, so the number is the report's homework average. One reader for
+ * the web home and GET /api/v1/family/overview (the phone's tile). The caller has already checked the guardian.
+ */
+export async function homeworkAverage(
+  schoolId: string,
+  studentMembershipId: string,
+  timezone: string,
+): Promise<{ percent: number | null; count: number }> {
+  const toKey = todayKey(timezone);
+  const fromKey = addDaysToKey(toKey, -DEFAULT_REPORT_DAYS);
+  const rows = await db.grade.findMany({
+    where: {
+      studentMembershipId,
+      schoolId,
+      scoreMilli: { not: null },
+      gradedAt: gradedWithin(fromKey, toKey, timezone),
+      assignment: { examSlotId: null },
+    },
+    select: { scoreMilli: true, assignment: { select: { pointsMilli: true, category: true, classId: true, offeringId: true } } },
+  });
+  const classIds = [...new Set(rows.map((g) => g.assignment.classId).filter((id): id is string => id !== null))];
+  const categories = classIds.length
+    ? await db.gradeCategory.findMany({
+        where: { schoolId, classId: { in: classIds } },
+        select: { classId: true, name: true, weightBps: true },
+        orderBy: { position: "asc" },
+      })
+    : [];
+  const weightsByClass = new Map<string, { name: string; weightBps: number }[]>();
+  for (const category of categories) {
+    const list = weightsByClass.get(category.classId) ?? [];
+    list.push({ name: category.name, weightBps: category.weightBps });
+    weightsByClass.set(category.classId, list);
+  }
+  return averageOf(rows, weightsByClass);
 }

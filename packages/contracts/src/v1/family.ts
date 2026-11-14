@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { clockHHMM } from "./calendar-keys";
 import { cardExtrasSchema } from "./report-cards";
 import { courseAttendanceSchema } from "./academics";
 import { quizBoardSchema } from "./quiz-board"; // quiz-board (11 Oct 2026)
@@ -362,6 +363,7 @@ export const familyParentOverviewSchema = z.object({
   todayRecord: z.object({ status: attendanceStatusSchema, note: z.string().nullable() }).nullable(),
   attendance: attendanceSummarySchema.nullable(),
   streak: z.number().int(),
+  /** The homework average (TA-388): homework marked in the progress report's twelve weeks, exam papers left out; the report prints the same figure. */
   averagePercent: z.number().nullable(),
   scoredCount: z.number().int(),
   recentGrades: z.array(
@@ -516,6 +518,8 @@ const quietHoursSchema = z
     end: z.string().regex(/^\d{1,2}:\d{2}$/, "refusal.useHHMM"),
   })
   .nullable();
+/** What a guardian saves: a time on the clock (TA-329), as the account door's (QA-55); 24:00 and 25:99 are a 422 naming the field. */
+const quietHoursSaveSchema = z.object({ start: clockHHMM, end: clockHHMM }).nullable();
 
 /** GET /api/v1/family/settings — the channels a guardian is reached on, and the children they hear about. */
 export const familySettingsSchema = z.object({
@@ -527,7 +531,7 @@ export const familySettingsSchema = z.object({
 /** POST /api/v1/family/settings — the notifications section of the preferences. */
 export const familySettingsSaveSchema = z.object({
   channels: z.object({ push: z.boolean(), email: z.boolean(), sms: z.boolean().optional(), whatsapp: z.boolean().optional() }),
-  quietHours: quietHoursSchema,
+  quietHours: quietHoursSaveSchema,
 });
 
 /* ------------------------------------------------------------------------- */

@@ -148,14 +148,14 @@ function ChildDay({ data }: { data: Overview }) {
 
       <View style={{ flexDirection: "row", gap: th.space[3], flexWrap: "wrap" }}>
         <Stat label={t("parent.attendance")} value={percent === null ? "—" : `${percent}%`} tone={percent === null ? "fg" : percent >= 95 ? "ok" : percent >= 90 ? "warn" : "danger"} />
-        <Stat label={t("parent.averageGrade")} value={data.averagePercent === null ? "—" : `${data.averagePercent}%`} tone={data.averagePercent === null ? "fg" : data.averagePercent >= 70 ? "ok" : "warn"} />
+        <Stat label={t("parent.homeworkAverage")} value={data.averagePercent === null ? "—" : `${data.averagePercent}%`} tone={data.averagePercent === null ? "fg" : data.averagePercent >= 70 ? "ok" : "warn"} />
         <Stat label={t("parent.streak")} value={streak} tone={streak >= 5 ? "ok" : "fg"} />
       </View>
       <QuickActions actions={QUICK.PARENT ?? []} onOpen={(href) => router.push(href as never)} />
       <Text variant="xs" tone="muted">
         {[
           !attendance || attendance.total === 0 ? t("parent.noRecordsYet") : t("parent.lastFourWeeks"),
-          data.scoredCount === 0 ? t("parent.nothingGradedYet") : data.scoredCount === 1 ? t("parent.acrossPiecesOne") : t("parent.acrossPieces", { count: data.scoredCount }),
+          data.scoredCount === 0 ? t("parent.homeworkNoneMarked") : data.scoredCount === 1 ? t("parent.homeworkAcrossPiecesOne") : t("parent.homeworkAcrossPieces", { count: data.scoredCount }),
           streak === 0 ? t("qaInterface.streakStartsNextDay") : streak === 1 ? t("parent.streakDaysOne") : t("parent.streakDays", { count: streak }),
         ].join(" · ")}
       </Text>

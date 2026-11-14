@@ -10,7 +10,8 @@ import { isCollegeKind } from "@edulink/contracts";
 import { getAttendanceSummary, currentStreakFor } from "@/lib/attendance";
 import { examMarksFor, dateSheetsFor } from "@/lib/exams";
 import { studentWeek, childWeek, weekStartKey, type WeekGrid } from "@/lib/timetable";
-import { ownWorkScope, getStudentWork, childWork, overallForStudent, teacherWorkUrl, workLabel } from "@/lib/grading";
+import { ownWorkScope, getStudentWork, childWork, teacherWorkUrl, workLabel } from "@/lib/grading";
+import { homeworkAverage } from "@/lib/reports";
 import { myCards, cardsForChild, getCard } from "@/lib/report-cards";
 import { pendingReviews, submitReview } from "@/lib/reviews";
 import { openSlotsFor, myBookings } from "@/lib/meetings";
@@ -570,7 +571,7 @@ export async function parentOverview(ctx: ActiveContext, childId?: string | null
   if (student.leftAt) return empty;
 
   const week = await childWeek(ctx, selectedId, { weekOf: today, todayKey: today });
-  const [attendance, streak, todayRecord, grades, allHomework, upcoming, threads, awaitingConsent] = await Promise.all([
+  const [attendance, streak, todayRecord, grades, homework, upcoming, threads, awaitingConsent] = await Promise.all([
     getAttendanceSummary(student.schoolId, selectedId, addDaysToKey(today, -28), today),
     currentStreakFor(student.schoolId, selectedId, today),
     db.attendanceRecord.findFirst({
@@ -588,11 +589,10 @@ export async function parentOverview(ctx: ActiveContext, childId?: string | null
     // The tile's "average across N pieces" is over EVERY piece of homework
     // with a mark, not the five newest the list shows: the five gave a
     // number that swung with the latest sheet while the label promised the
-    // whole.
-    db.grade.findMany({
-      where: { studentMembershipId: selectedId, schoolId: student.schoolId, assignment: { examSlotId: null } },
-      select: { scoreMilli: true, assignment: { select: { pointsMilli: true, category: true, classId: true, offeringId: true } } },
-    }),
+    // whole. TA-388 (owner's decision, 14 November 2026): the homework of the
+    // progress report's twelve weeks, by the report's own reader, as the web
+    // home reads it, so the phone's "Homework average" is the report's.
+    homeworkAverage(student.schoolId, selectedId, student.school.timezone),
     dueSoonFor(student.schoolId, selectedId, 4),
     db.remarkThread.findMany({
       where: { studentMembershipId: selectedId },
@@ -604,23 +604,7 @@ export async function parentOverview(ctx: ActiveContext, childId?: string | null
     pendingConsents(ctx),
   ]);
 
-  const scored = allHomework.filter((g) => g.scoreMilli !== null && g.assignment.pointsMilli);
-  // A college offering's work (R-48) has no class and no weights: points-weighted under the offering's id.
-  const classIds = [...new Set(allHomework.map((g) => g.assignment.classId).filter((id): id is string => id !== null))];
-  const [weightRows, examMarks] = await Promise.all([
-    db.gradeCategory.findMany({ where: { classId: { in: classIds } }, select: { classId: true, name: true, weightBps: true }, orderBy: { position: "asc" } }),
-    examMarksFor(ctx),
-  ]);
-  const weightsByClass = new Map<string, { name: string; weightBps: number }[]>();
-  for (const row of weightRows) {
-    const list = weightsByClass.get(row.classId) ?? [];
-    list.push({ name: row.name, weightBps: row.weightBps });
-    weightsByClass.set(row.classId, list);
-  }
-  const overall = overallForStudent(
-    allHomework.map((g) => ({ classId: g.assignment.classId ?? g.assignment.offeringId ?? "", scoreMilli: g.scoreMilli, maxMilli: g.assignment.pointsMilli, category: g.assignment.category })),
-    weightsByClass,
-  );
+  const examMarks = await examMarksFor(ctx);
 
   return {
     ...empty,
@@ -628,8 +612,8 @@ export async function parentOverview(ctx: ActiveContext, childId?: string | null
     todayRecord: todayRecord ? { status: todayRecord.status as AttendanceStatus, note: todayRecord.note } : null,
     attendance: summaryOut(attendance),
     streak: streak,
-    averagePercent: overall.percent,
-    scoredCount: scored.length,
+    averagePercent: homework.percent,
+    scoredCount: homework.count,
     recentGrades: grades.map((g) => ({
       assignmentTitle: g.assignment.title,
       category: g.assignment.category,

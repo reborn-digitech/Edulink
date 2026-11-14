@@ -140,3 +140,20 @@ describe("the guardian's applications on the overview", () => {
     expect(mockRouter.push).toHaveBeenCalledWith("/(app)/my-applications");
   });
 });
+
+describe("TA-388: the home tile is the homework average of the report's twelve weeks", () => {
+  it("TA-388: labels the tile Homework average and says it stands on the last 12 weeks' homework", async () => {
+    await renderFamily(<ParentHome />, ME_PARENT, { "/api/v1/family/children": () => CHILDREN, "/api/v1/family/overview": () => OVERVIEW });
+    expect(await screen.findByText("Homework average")).toBeTruthy();
+    expect(screen.getByText("82%")).toBeTruthy();
+    expect(screen.queryByText("Average grade")).toBeNull();
+    expect(screen.getByText(/Across 3 pieces, last 12 weeks/)).toBeTruthy();
+  });
+
+  it("TA-388: with no homework marked in the twelve weeks, says so rather than nothing graded yet", async () => {
+    await renderFamily(<ParentHome />, ME_PARENT, { "/api/v1/family/children": () => CHILDREN, "/api/v1/family/overview": () => ({ ...OVERVIEW, averagePercent: null, scoredCount: 0 }) });
+    expect(await screen.findByText("Homework average")).toBeTruthy();
+    expect(screen.getByText(/No homework marked in the last 12 weeks/)).toBeTruthy();
+    expect(screen.queryByText(/Nothing graded yet/)).toBeNull();
+  });
+});
