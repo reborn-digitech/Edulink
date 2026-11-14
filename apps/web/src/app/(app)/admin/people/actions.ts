@@ -12,6 +12,7 @@ import {
 } from "@/lib/membership";
 import { setTeacherSubjects } from "@/lib/reviews";
 import { inviteParent } from "@/lib/parent-link";
+import { endFamilyGuardianship, familyGuardiansOf } from "@/lib/guardianship";
 import { issueFirstSignIn } from "@/lib/first-signin";
 import { setStaffRecord, type StaffRecordInput } from "@/lib/staff-records";
 import { cancelScheduledDeparture, undoDeparture } from "@/lib/school-record";
@@ -173,6 +174,36 @@ export async function inviteParentAction(
     revalidatePath("/admin/people");
     revalidatePath("/admin/invites");
     return { ok: true };
+  } catch (error) {
+    return failure(error);
+  }
+}
+
+/** A pupil's family guardians on the app (TA-177), for the office's Family links panel; never the school's stand-in. */
+export type FamilyLinksResult = Result & { guardians?: { guardianshipId: string; name: string; relation: GuardianRelation; since: string }[] };
+
+export async function familyLinksAction(studentMembershipId: string): Promise<FamilyLinksResult> {
+  try {
+    const ctx = await requireApiRole("ADMIN");
+    const rows = await familyGuardiansOf(ctx, studentMembershipId);
+    return { ok: true, guardians: rows.map((g) => ({ ...g, since: g.since.toISOString() })) };
+  } catch (error) {
+    return failure(error);
+  }
+}
+
+/**
+ * The office ends a family guardian's link for a coded reason (TA-177): the rule, the audit row, who is told and the
+ * school's stand-in are lib/guardianship.ts.
+ */
+export async function endFamilyLinkAction(studentMembershipId: string, guardianshipId: string, reason: string): Promise<Result & { schoolStandsIn?: boolean }> {
+  try {
+    const ctx = await requireApiRole("ADMIN");
+    const result = await endFamilyGuardianship(ctx, studentMembershipId, guardianshipId, reason);
+    if (!result.ok) return { ok: false, errorKey: result.errorKey };
+    revalidatePath("/admin/people");
+    revalidatePath("/admin/safety");
+    return { ok: true, schoolStandsIn: result.schoolStandsIn };
   } catch (error) {
     return failure(error);
   }

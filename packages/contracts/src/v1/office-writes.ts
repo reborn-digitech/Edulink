@@ -38,6 +38,24 @@ export const parentInviteBodySchema = z.object({
 export const parentInvitedSchema = z.object({ inviteId: id });
 
 /**
+ * The office ends a family guardian's link (TA-177; the owner's decision of 14 November 2026). Why, as a CODE, not a
+ * sentence: it goes in the audit log, which holds no free text about a child, and the head is told it.
+ *   COURT_ORDER     a court order against the guardian
+ *   WRONG_PERSON    the link was made to somebody who is not the child's guardian
+ *   FAMILY_REQUEST  the family asked the office to end it
+ *   OTHER           another reason, said to the head in person
+ */
+export const GUARDIAN_END_REASONS = ["COURT_ORDER", "WRONG_PERSON", "FAMILY_REQUEST", "OTHER"] as const;
+export const guardianEndReasonSchema = z.enum(GUARDIAN_END_REASONS);
+export type GuardianEndReason = z.infer<typeof guardianEndReasonSchema>;
+/** GET /api/v1/admin/people/{membershipId}/guardians — the pupil's family guardians on the app; never the school's stand-in. */
+export const familyGuardianSchema = z.object({ guardianshipId: id, name: z.string(), relation: guardianRelationSchema, since: z.string().datetime() });
+export const familyGuardiansSchema = z.object({ guardians: z.array(familyGuardianSchema) });
+/** POST /api/v1/admin/people/{membershipId}/guardians/{guardianshipId}/end — a link already ended is answered ended: false. */
+export const guardianEndBodySchema = z.object({ reason: guardianEndReasonSchema });
+export const guardianEndedSchema = z.object({ ended: z.boolean(), schoolStandsIn: z.boolean() });
+
+/**
  * POST /api/v1/staff/experts/invite — invite an expert BY ADDRESS. The
  * invitation's link goes to that mailbox and nowhere else (QA-01, 24 Oct
  * 2026): the door once answered the link itself, so any staff member could

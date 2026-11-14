@@ -25,6 +25,7 @@ import { LeavingPanel } from "./leaving-actions";
 import { RemovePanel } from "./remove-actions";
 import { SubjectsPanel } from "./subjects-panel";
 import { ParentLinkPanel } from "./parent-link-panel";
+import { FamilyLinksPanel } from "./family-links-panel";
 import { BirthdatePanel } from "./birthdate-panel";
 import { LegalNamePanel } from "./legal-name-panel";
 import { FirstSignInPanel } from "./first-signin-panel";
@@ -34,7 +35,7 @@ import { cn } from "@/lib/cn";
 import { actionError } from "@/lib/action-error";
 import { useT } from "@/lib/i18n";
 
-type Panel = "pause" | "left" | "remove" | "subjects" | "parent" | "birthdate" | "legalName" | "firstSignin" | "staff" | "duties" | null;
+type Panel = "pause" | "left" | "remove" | "subjects" | "parent" | "family" | "birthdate" | "legalName" | "firstSignin" | "staff" | "duties" | null;
 
 /**
  * One quiet kebab per directory row, holding every verb that used to sit in
@@ -231,6 +232,13 @@ export function DirectoryMenu({
                 </MenuItem>
               )}
 
+              {/* TA-177: the guardians who see the pupil, and ending one link for a coded reason. */}
+              {isStudent && !hasLeft && (
+                <MenuItem icon={<UsersThreeIcon className="size-4" />} onClick={() => show("family")}>
+                  {t("people.familyLinksAction")}
+                </MenuItem>
+              )}
+
               {/* The office's certificates for a pupil: a link, not a panel,
                   because the issue screen needs the whole page. */}
               {isStudent && !hasLeft && (
@@ -318,6 +326,9 @@ export function DirectoryMenu({
       )}
       {panel === "parent" && (
         <ParentLinkPanel membershipId={membershipId} name={name} onClose={() => setPanel(null)} />
+      )}
+      {panel === "family" && (
+        <FamilyLinksPanel membershipId={membershipId} name={name} onClose={() => setPanel(null)} />
       )}
       {panel === "subjects" && (
         <SubjectsPanel

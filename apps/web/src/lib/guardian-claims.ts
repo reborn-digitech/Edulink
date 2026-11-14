@@ -335,5 +335,29 @@ export async function decideClaim(session: ActiveContext, claimId: string, decis
     if (claim.claimant.email) {
       await sendParentClaimNotice(claim.claimant.email, childName, claim.school.name, `${APP_URL}/parent`, await localeForUser(claim.claimantUserId)).catch((error) => console.error("[decideClaim] email failed", error));
     }
+
+    // A FAMILY GUARDIAN'S YES IS TOLD TO THE OFFICE (TA-177; the owner's decision of 14 November 2026): the link does
+    // not wait for the office, but the office hears of every guardian a guardian added, so it can end a wrong one.
+    if (!isOffice) {
+      const office = await db.membership.findMany({ where: { schoolId: pointer.schoolId, role: { in: ["ADMIN", "PRINCIPAL"] }, status: "ACTIVE", leftAt: null }, select: { userId: true } });
+      const approver = session.user.preferredName ?? session.user.name;
+      const claimant = claim.claimant.preferredName ?? claim.claimant.name;
+      await Promise.all(
+        [...new Set(office.map((m) => m.userId))]
+          .filter((userId) => userId !== session.user.id && userId !== claim.claimantUserId)
+          .map((userId) =>
+            notify({
+              userId,
+              schoolId: pointer.schoolId,
+              kind: "SYSTEM",
+              titleKey: "claim.notifGuardianApproved",
+              titleVars: { guardian: approver, claimant, name: childName },
+              bodyKey: "claim.notifGuardianApprovedBody",
+              bodyVars: { name: childName },
+              url: `/people/${pointer.studentMembershipId}`,
+            }).catch((error) => console.error("[decideClaim] office notice failed", error)),
+          ),
+      );
+    }
   });
 }

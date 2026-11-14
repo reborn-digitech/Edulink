@@ -74,6 +74,7 @@ export const DOOR_LOADERS: Record<string, () => Promise<{ GET?: unknown }>> = {
   "/api/v1/admin/payroll/statement/{membershipId}": () => import("@/app/api/v1/admin/payroll/statement/[membershipId]/route"),
   "/api/v1/admin/payroll/structures": () => import("@/app/api/v1/admin/payroll/structures/route"),
   "/api/v1/admin/people": () => import("@/app/api/v1/admin/people/route"),
+  "/api/v1/admin/people/{membershipId}/guardians": () => import("@/app/api/v1/admin/people/[membershipId]/guardians/route"),
   "/api/v1/admin/people/{membershipId}/leaving/settlement": () => import("@/app/api/v1/admin/people/[membershipId]/leaving/settlement/route"),
   "/api/v1/admin/people/{membershipId}/staff-record": () => import("@/app/api/v1/admin/people/[membershipId]/staff-record/route"),
   "/api/v1/admin/people/invites": () => import("@/app/api/v1/admin/people/invites/route"),
