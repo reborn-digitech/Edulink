@@ -1,5 +1,6 @@
 import "server-only";
 import type { CircularReach, ReachState } from "@edulink/contracts";
+import type { Prisma } from "@prisma/client";
 import { db } from "./db";
 import { AccessError } from "./tenancy";
 import { audit } from "./audit";
@@ -41,35 +42,46 @@ const postSelect = { id: true, schoolId: true, scope: true, classId: true, audie
 type Family = { studentMembershipId: string; studentUserId: string; studentName: string; guardians: { userId: string; name: string; phone: string | null }[]; withheld: boolean };
 type Group = { classId: string | null; className: string; families: Family[] };
 
+type Viewer = { role: Role; membershipId: string };
+type Roster = Awaited<ReturnType<typeof loadRoster>>;
+
 /**
- * The classes a circular is for, with each pupil's guardians. A teacher sees
- * only their own classes. Once the circular has been told, the roster is the
- * one it was told to — pupils on the class at delivery, including any who have
- * since left it — so a child who joined on Monday is not "unreached" for a
- * notice that went out the Friday before, and one who left is still chased
- * for what they were sent. Before delivery it is today's roster.
+ * The school's rosters for a page of circulars, read ONCE however many circulars are on it (TA-260, testing analysis
+ * of 13 November 2026, decided 14 November 2026): the classes any of them can be for, with every enrolment any of
+ * them can count (today's, and those live when the earliest was told) and each pupil's guardians, the college tokens
+ * when one of them names a target, and who may be told on each pupil's behalf. `familyGroupsOf` then cuts each
+ * circular's own roster out of it. A teacher's read holds only their own classes.
  */
-async function familyGroups(post: PostRow, viewer?: { role: Role; membershipId: string }): Promise<Group[]> {
-  const schoolId = post.schoolId!;
-  const at = post.deliveredAt;
-  const rosterWhere = at
-    ? { enrolledAt: { lte: at }, OR: [{ status: "ACTIVE" }, { removedAt: { gt: at } }] }
-    : { status: "ACTIVE" };
+async function loadRoster(schoolId: string, posts: readonly PostRow[], viewer?: Viewer) {
+  const toldAt = posts.flatMap((p) => (p.deliveredAt ? [p.deliveredAt.getTime()] : []));
+  const earliest = toldAt.length ? new Date(Math.min(...toldAt)) : null;
+  const rosterWhere: Prisma.EnrollmentWhereInput =
+    earliest === null
+      ? { status: "ACTIVE" }
+      : toldAt.length === posts.length
+        ? { enrolledAt: { lte: new Date(Math.max(...toldAt)) }, OR: [{ status: "ACTIVE" }, { removedAt: { gt: earliest } }] }
+        : { OR: [{ status: "ACTIVE" }, { removedAt: { gt: earliest } }] };
+  const classIds = posts.map((p) => (p.scope === "CLASS" && p.classId ? p.classId : null));
+  const grades = posts.map((p) => p.audienceGrade);
   const classes = await db.class.findMany({
     where: {
       schoolId,
       archivedAt: null,
-      ...(post.scope === "CLASS" && post.classId ? { id: post.classId } : {}),
-      ...(post.audienceGrade ? { gradeLevel: post.audienceGrade } : {}),
+      ...(classIds.every((id) => id !== null) ? { id: { in: [...new Set(classIds as string[])] } } : {}),
+      ...(grades.every((g) => g) ? { gradeLevel: { in: [...new Set(grades as string[])] } } : {}),
       ...(viewer?.role === "TEACHER" ? { teachers: { some: { teacherMembershipId: viewer.membershipId } } } : {}),
     },
     orderBy: { name: "asc" },
     select: {
       id: true,
       name: true,
+      gradeLevel: true,
       enrollments: {
         where: rosterWhere,
         select: {
+          status: true,
+          enrolledAt: true,
+          removedAt: true,
           student: {
             select: {
               id: true,
@@ -84,15 +96,33 @@ async function familyGroups(post: PostRow, viewer?: { role: Role; membershipId: 
   });
   // A college notice's programme, department, division or batch (TA-094): the students it names, as the feed and a
   // permission slip read it; and an adult's guardians only while MESSAGES is granted, as the feed reads that too.
-  const studentIds = classes.flatMap((k) => k.enrollments.map((e) => e.student.id));
-  const tokens = post.audienceTarget ? await studentTokensMany(studentIds) : null;
+  const studentIds = [...new Set(classes.flatMap((k) => k.enrollments.map((e) => e.student.id)))];
+  const tokens = posts.some((p) => p.audienceTarget) ? await studentTokensMany(studentIds) : null;
   // Each guardian on their own grant (TA-555): the guardians a notice may reach, per student.
   const guardiansMay = await guardiansToTell(studentIds, "MESSAGES");
-  const told = (studentId: string) => new Set(guardiansMay.get(studentId) ?? []);
+  return { classes, tokens, guardiansMay };
+}
+
+/**
+ * The classes a circular is for, with each pupil's guardians, cut from the page's roster. A teacher sees
+ * only their own classes. Once the circular has been told, the roster is the
+ * one it was told to — pupils on the class at delivery, including any who have
+ * since left it — so a child who joined on Monday is not "unreached" for a
+ * notice that went out the Friday before, and one who left is still chased
+ * for what they were sent. Before delivery it is today's roster.
+ */
+function familyGroupsOf(post: PostRow, roster: Roster): Group[] {
+  const at = post.deliveredAt;
+  const onRoster = (e: { status: string; enrolledAt: Date; removedAt: Date | null }) =>
+    at ? e.enrolledAt.getTime() <= at.getTime() && (e.status === "ACTIVE" || (e.removedAt !== null && e.removedAt.getTime() > at.getTime())) : e.status === "ACTIVE";
+  const classes = roster.classes.filter((k) => (!(post.scope === "CLASS" && post.classId) || k.id === post.classId) && (!post.audienceGrade || k.gradeLevel === post.audienceGrade));
+  const tokens = post.audienceTarget ? roster.tokens : null;
+  const told = (studentId: string) => new Set(roster.guardiansMay.get(studentId) ?? []);
   return classes.map((k) => ({
     classId: k.id,
     className: k.name,
     families: k.enrollments
+      .filter(onRoster)
       .filter(({ student }) => !tokens || (tokens.get(student.id) ?? []).includes(post.audienceTarget!))
       .map(({ student }) => ({
         studentMembershipId: student.id,
@@ -110,7 +140,7 @@ async function recipients(post: PostRow): Promise<{ guardianIds: string[]; other
   const guardianIds = new Set<string>();
   const otherIds = new Set<string>();
   if (post.audience !== "TEACHERS") {
-    for (const group of await familyGroups(post)) {
+    for (const group of familyGroupsOf(post, await loadRoster(schoolId, [post]))) {
       for (const f of group.families) {
         if (post.audience !== "STUDENTS") f.guardians.forEach((g) => guardianIds.add(g.userId));
         if (post.audience === "STUDENTS" || post.audience === "ALL") otherIds.add(f.studentUserId);
@@ -230,27 +260,66 @@ const best = (a: ReachState, b: ReachState) => (RANK[a] >= RANK[b] ? a : b);
 /** The reach report: told, seen, acked and the outstanding families, class by class. */
 export async function circularReach(session: ActiveContext, postId: string): Promise<CircularReach> {
   const { post, viewer } = await loadCircular(session, postId);
+  return (await countReach([post], viewer)).get(post.id)!;
+}
+
+type StaffRow = { id: string; userId: string; user: { name: string; preferredName: string | null; phone: string | null } };
+const NO_ONE: ReadonlySet<string> = new Set();
+
+/**
+ * THE ONE COUNTING ROUTINE (TA-260, testing analysis of 13 November 2026, decided 14 November 2026): the reach of
+ * every circular of a page, for the office's list, a circular's detail page (a page of one) and the reminder, which
+ * reads the detail. The office's list worked out each of fifty circulars one after another, each rebuilding its
+ * roster and searching the notices by school and link; now the rosters are read once (loadRoster) and each circular
+ * cut its own from them, and who was told, opened, acknowledged or got a text is asked once for the page, by the
+ * page's circulars, so the list's figures are the detail page's by construction.
+ *
+ * OPENED IS AN OPENING (the owner's yes of 14 November 2026, added to TA-260's decision): seen is a PostRead, the
+ * circular opened on the web, the phone or its print page, as the page's hint and decision 0002 row 11 say. A notice
+ * merely marked read — by hand, by "mark all read" or by the nightly clean-up — is no longer counted as opened.
+ */
+async function countReach(posts: readonly PostRow[], viewer: Viewer & { schoolId: string }): Promise<Map<string, CircularReach>> {
+  const out = new Map<string, CircularReach>();
+  if (posts.length === 0) return out;
   const schoolId = viewer.schoolId;
   const office = OFFICE.includes(viewer.role);
-  // Who is on the list first, then one lookup per fact for exactly those people.
-  const staff = post.audience === "TEACHERS" ? await db.membership.findMany({ where: { schoolId, role: { in: ["ADMIN", "PRINCIPAL", "TEACHER"] }, status: "ACTIVE", leftAt: null }, select: { id: true, userId: true, user: { select: { name: true, preferredName: true, phone: true } } } }) : [];
-  const fgroups = post.audience === "TEACHERS" ? [] : await familyGroups(post, viewer);
+  const toFamilies = posts.filter((p) => p.audience !== "TEACHERS");
+  // Who is on the lists first, then one lookup per fact for exactly those people and those circulars.
+  const staff: StaffRow[] = posts.some((p) => p.audience === "TEACHERS") ? await db.membership.findMany({ where: { schoolId, role: { in: ["ADMIN", "PRINCIPAL", "TEACHER"] }, status: "ACTIVE", leftAt: null }, select: { id: true, userId: true, user: { select: { name: true, preferredName: true, phone: true } } } }) : [];
+  const roster = toFamilies.length ? await loadRoster(schoolId, toFamilies, viewer) : null;
+  const groupsOf = new Map<string, Group[]>(toFamilies.map((p) => [p.id, familyGroupsOf(p, roster!)]));
   const everyone = new Set<string>(staff.map((m) => m.userId));
-  for (const g of fgroups) for (const f of g.families) { everyone.add(f.studentUserId); f.guardians.forEach((x) => everyone.add(x.userId)); }
+  for (const fgroups of groupsOf.values()) for (const g of fgroups) for (const f of g.families) { everyone.add(f.studentUserId); f.guardians.forEach((x) => everyone.add(x.userId)); }
   const ids = [...everyone];
+  const postIds = posts.map((p) => p.id);
   const [acks, reads, told, texted, pushDevices, pushSubs] = await Promise.all([
-    db.postAck.findMany({ where: { postId }, select: { userId: true } }),
-    db.postRead.findMany({ where: { postId }, select: { userId: true } }),
-    db.notification.findMany({ where: { schoolId, url: `/bulletin/${postId}` }, select: { userId: true, readAt: true } }),
-    db.outboundMessage.findMany({ where: { schoolId, purpose: { in: [`circular:${postId}`, `circular-remind:${postId}`] }, status: { in: ["SENT", "DELIVERED"] } }, select: { userId: true } }),
+    db.postAck.findMany({ where: { postId: { in: postIds } }, select: { postId: true, userId: true } }),
+    db.postRead.findMany({ where: { postId: { in: postIds } }, select: { postId: true, userId: true } }),
+    db.notification.findMany({ where: { schoolId, url: { in: postIds.map((id) => `/bulletin/${id}`) } }, select: { userId: true, url: true } }),
+    db.outboundMessage.findMany({ where: { schoolId, purpose: { in: postIds.flatMap((id) => [`circular:${id}`, `circular-remind:${id}`]) }, status: { in: ["SENT", "DELIVERED"] } }, select: { userId: true, purpose: true } }),
     ids.length ? db.deviceToken.findMany({ where: { userId: { in: ids } }, select: { userId: true } }) : [],
     ids.length ? db.pushSubscription.findMany({ where: { userId: { in: ids } }, select: { userId: true } }) : [],
   ]);
-  const acked = new Set(acks.map((a) => a.userId));
-  const seen = new Set([...reads.map((r) => r.userId), ...told.filter((n) => n.readAt).map((n) => n.userId)]);
-  const toldSet = new Set(told.map((n) => n.userId));
-  const textedSet = new Set(texted.map((m) => m.userId));
+  const byPost = (rows: { postId: string; userId: string | null }[]) => {
+    const map = new Map<string, Set<string>>();
+    for (const r of rows) if (r.userId) (map.get(r.postId) ?? map.set(r.postId, new Set()).get(r.postId)!).add(r.userId);
+    return map;
+  };
+  const ackedBy = byPost(acks);
+  const seenBy = byPost(reads);
+  const toldBy = byPost(told.map((n) => ({ postId: (n.url ?? "").slice("/bulletin/".length), userId: n.userId })));
+  const textedBy = byPost(texted.map((m) => ({ postId: m.purpose.slice(m.purpose.indexOf(":") + 1), userId: m.userId })));
   const hasApp = new Set([...pushDevices.map((d) => d.userId), ...pushSubs.map((s) => s.userId)]);
+  for (const post of posts) {
+    out.set(post.id, reachFrom(post, office, groupsOf.get(post.id) ?? [], staff, { acked: ackedBy.get(post.id) ?? NO_ONE, seen: seenBy.get(post.id) ?? NO_ONE, told: toldBy.get(post.id) ?? NO_ONE, texted: textedBy.get(post.id) ?? NO_ONE, hasApp }));
+  }
+  return out;
+}
+
+/** One circular's report from the facts read for its page. */
+function reachFrom(post: PostRow, office: boolean, fgroups: Group[], staff: StaffRow[], facts: { acked: ReadonlySet<string>; seen: ReadonlySet<string>; told: ReadonlySet<string>; texted: ReadonlySet<string>; hasApp: ReadonlySet<string> }): CircularReach {
+  const postId = post.id;
+  const { acked, seen, told: toldSet, texted: textedSet, hasApp } = facts;
   const stateOf = (userId: string): ReachState => (acked.has(userId) ? "ACKED" : seen.has(userId) ? "SEEN" : toldSet.has(userId) || textedSet.has(userId) ? "TOLD" : "UNREACHED");
 
   const groups: CircularReach["groups"] = [];
@@ -348,10 +417,8 @@ export async function officeCirculars(session: ActiveContext): Promise<{ rows: {
   const { schoolId, role } = session;
   if (!schoolId || !role || !OFFICE.includes(role)) throw new AccessError("access.notAllowed");
   const posts = await db.post.findMany({ where: { schoolId, requiresAck: true, status: "APPROVED" }, select: { ...postSelect, class: { select: { name: true } } }, orderBy: { createdAt: "desc" }, take: 50 });
-  const rows = [];
-  for (const post of posts) {
-    const reach = await circularReach(session, post.id);
-    rows.push({ postId: post.id, title: post.title, audience: post.audience, className: post.class?.name ?? null, publishedAt: post.createdAt.toISOString(), deliveredAt: post.deliveredAt?.toISOString() ?? null, remindedAt: post.remindedAt?.toISOString() ?? null, ...reach.totals });
-  }
+  // The whole page through the one counting routine the detail page uses (TA-260): one roster read and one read per fact.
+  const reach = await countReach(posts, { role, membershipId: session.membershipId ?? "", schoolId });
+  const rows = posts.map((post) => ({ postId: post.id, title: post.title, audience: post.audience, className: post.class?.name ?? null, publishedAt: post.createdAt.toISOString(), deliveredAt: post.deliveredAt?.toISOString() ?? null, remindedAt: post.remindedAt?.toISOString() ?? null, ...reach.get(post.id)!.totals }));
   return { rows };
 }
