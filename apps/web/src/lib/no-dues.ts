@@ -6,9 +6,9 @@ import { assertCollege } from "./modules";
 import { audit } from "./audit";
 import { readJson, writeJson } from "./json";
 import { currentAcademicYear } from "./academic-year";
-import { ledgerFor } from "./college-fees";
+import { claimReceivable } from "./college-fees";
 import { cautionPaidOn } from "./college-admissions";
-import { collegeStudent, nameOf } from "./college-office";
+import { collegeStudent, nameOf, yearKeyOf } from "./college-office";
 import type { ActiveContext } from "./session";
 import type { Role } from "./constants";
 import { todayKey } from "./dates";
@@ -77,7 +77,13 @@ export type NoDuesResult = {
   completedAt: Date | null;
 };
 
-type HandClear = { clearedByUserId: string; clearedAt: string; owedAtClearPaise: number; itemsAtClear: number; note: string | null };
+/**
+ * `openAtClear` (TA-084): the debts and items the line held when it was cleared, by id (`demand:…`, `fine:…`,
+ * `issue:…`, `bed:…`, `item:…`). A hand clearance covers those and nothing else: an amount alone let a new debt no
+ * larger than the waived one, after the waived one was paid, read as cleared in the first clerk's name for the rest
+ * of the cycle. A clearance written before the ids were kept has none, and keeps the amount's rule.
+ */
+type HandClear = { clearedByUserId: string; clearedAt: string; owedAtClearPaise: number; itemsAtClear: number; note: string | null; openAtClear?: string[] };
 
 /** Who clears a desk's line: the desk and the office. */
 export const DESK_ROLES: Record<NoDuesDesk, readonly Role[]> = {
@@ -95,42 +101,107 @@ async function cycleKeyFor(schoolId: string, event: NoDuesEvent): Promise<string
 
 const outstanding = (d: { status: string; netPaise: number; paidPaise: number }) => (d.status === "OPEN" || d.status === "PART" ? Math.max(0, d.netPaise - d.paidPaise) : 0);
 
-/** The four desks' live state for one student; `dueBy` (a UTC-midnight day) counts only demands due on or before it. */
-async function liveState(schoolId: string, studentMembershipId: string, dueBy: Date | null = null) {
-  const [demands, member, allotments, movements, hostelHeads] = await Promise.all([
-    db.feeDemand.findMany({ where: { schoolId, studentMembershipId, status: { in: ["OPEN", "PART"] }, ...(dueBy ? { dueDate: { lte: dueBy } } : {}) }, select: { id: true, status: true, netPaise: true, paidPaise: true, linesJson: true } }),
-    db.libraryMember.findUnique({ where: { membershipId: studentMembershipId }, select: { id: true, fines: { where: { waivedAt: null, settledAt: null }, select: { paise: true, demandId: true } }, issues: { where: { returnedAt: null }, select: { id: true } } } }),
-    db.hostelAllotment.findMany({ where: { schoolId, membershipId: studentMembershipId }, select: { status: true, feeDemandId: true } }),
-    db.stockMovement.groupBy({ by: ["itemId"], where: { schoolId, toMembershipId: studentMembershipId, kind: { in: ["ISSUE", "RETURN"] } }, _sum: { delta: true } }),
-    db.feeHead.findMany({ where: { schoolId, kind: { in: ["HOSTEL", "MESS"] } }, select: { id: true } }),
+/** One desk's live line: what is owed and out, and the ids of the debts (`owedIds`) and items (`outIds`) behind them. */
+type LiveLine = { owed: number; out: number; present: boolean; owedIds: string[]; outIds: string[] };
+type Live = Record<NoDuesDesk, LiveLine>;
+
+/**
+ * The scholarship receivable set against each of this year's demands, as `ledgerFor` spreads it (each student's
+ * claims' receivable over their open demands in due order, never more than a demand still owes), for many students
+ * in two reads. Keyed by demand id.
+ */
+async function receivableByDemand(schoolId: string, studentIds: string[]): Promise<Map<string, number>> {
+  const out = new Map<string, number>();
+  const year = await currentAcademicYear(schoolId);
+  if (!year || studentIds.length === 0) return out;
+  const [demands, claims] = await Promise.all([
+    db.feeDemand.findMany({ where: { schoolId, studentMembershipId: { in: studentIds }, academicYearId: year.id, status: { notIn: ["CANCELLED", "CARRIED"] } }, orderBy: [{ dueDate: "asc" }, { createdAt: "asc" }], select: { id: true, studentMembershipId: true, status: true, netPaise: true, paidPaise: true } }),
+    db.scholarshipClaim.findMany({ where: { schoolId, studentMembershipId: { in: studentIds }, academicYear: yearKeyOf(year.startDate) }, select: { studentMembershipId: true, status: true, expectedPaise: true, sanctionedPaise: true, disbursedPaise: true } }),
   ]);
-  const fineDemands = new Set((member?.fines ?? []).map((f) => f.demandId).filter((x): x is string => Boolean(x)));
-  const hostelDemandIds = new Set(allotments.map((a) => a.feeDemandId).filter((x): x is string => Boolean(x)));
-  const hostelHeadIds = new Set(hostelHeads.map((h) => h.id));
-  const isHostelDemand = (d: { id: string; linesJson: string }) => {
-    if (hostelDemandIds.has(d.id)) return true;
-    const lines = readJson<{ headId: string }[]>(d.linesJson, []);
-    return lines.length > 0 && lines.every((l) => hostelHeadIds.has(l.headId));
-  };
-  let accounts = 0;
-  let hostel = 0;
-  let libraryOnLedger = 0;
-  for (const d of demands) {
-    const o = outstanding(d);
-    if (fineDemands.has(d.id)) libraryOnLedger += o;
-    else if (isHostelDemand(d)) hostel += o;
-    else accounts += o;
+  const pool = new Map<string, number>();
+  for (const c of claims) pool.set(c.studentMembershipId, (pool.get(c.studentMembershipId) ?? 0) + claimReceivable(c));
+  for (const x of demands) {
+    const left = pool.get(x.studentMembershipId) ?? 0;
+    const take = Math.min(left, outstanding(x));
+    if (take <= 0) continue;
+    pool.set(x.studentMembershipId, left - take);
+    out.set(x.id, take);
   }
-  const ledger = await ledgerFor(studentMembershipId).catch(() => null);
-  const receivable = ledger?.totals.scholarshipReceivablePaise ?? 0;
-  const counterFines = (member?.fines ?? []).filter((f) => !f.demandId).reduce((a, f) => a + f.paise, 0);
-  const labOut = movements.reduce((a, m) => a + Math.max(0, -(m._sum.delta ?? 0)), 0);
-  return {
-    ACCOUNTS: { owed: Math.max(0, accounts - receivable), out: 0, present: true },
-    LIBRARY: { owed: libraryOnLedger + counterFines, out: member?.issues.length ?? 0, present: true },
-    HOSTEL: { owed: hostel, out: allotments.filter((a) => a.status === "ACTIVE").length, present: allotments.length > 0 },
-    LAB: { owed: 0, out: labOut, present: movements.length > 0 },
-  } satisfies Record<NoDuesDesk, { owed: number; out: number; present: boolean }>;
+  return out;
+}
+
+/**
+ * The four desks' live state for each student named; `dueBy` (a UTC-midnight day) counts only demands due on or
+ * before it. TA-085: one student at a time this was about fifteen reads a student, so the desk's list of a college of
+ * two thousand made some thirty thousand on every load; the reads are now grouped, a fixed number whatever the count.
+ */
+async function liveStates(schoolId: string, studentIds: string[], dueBy: Date | null = null): Promise<Map<string, Live>> {
+  const [demands, members, allotments, movements, hostelHeads, receivable] = await Promise.all([
+    db.feeDemand.findMany({ where: { schoolId, studentMembershipId: { in: studentIds }, status: { in: ["OPEN", "PART"] }, ...(dueBy ? { dueDate: { lte: dueBy } } : {}) }, select: { id: true, studentMembershipId: true, status: true, netPaise: true, paidPaise: true, linesJson: true } }),
+    db.libraryMember.findMany({ where: { membershipId: { in: studentIds } }, select: { membershipId: true, fines: { where: { waivedAt: null, settledAt: null }, select: { id: true, paise: true, demandId: true } }, issues: { where: { returnedAt: null }, select: { id: true } } } }),
+    db.hostelAllotment.findMany({ where: { schoolId, membershipId: { in: studentIds } }, select: { id: true, membershipId: true, status: true, feeDemandId: true } }),
+    db.stockMovement.groupBy({ by: ["toMembershipId", "itemId"], where: { schoolId, toMembershipId: { in: studentIds }, kind: { in: ["ISSUE", "RETURN"] } }, _sum: { delta: true } }),
+    db.feeHead.findMany({ where: { schoolId, kind: { in: ["HOSTEL", "MESS"] } }, select: { id: true } }),
+    receivableByDemand(schoolId, studentIds),
+  ]);
+  const hostelHeadIds = new Set(hostelHeads.map((h) => h.id));
+  const out = new Map<string, Live>();
+  for (const sid of studentIds) {
+    const member = members.find((m) => m.membershipId === sid);
+    const mine = allotments.filter((a) => a.membershipId === sid);
+    const moves = movements.filter((m) => m.toMembershipId === sid);
+    const fineDemands = new Set((member?.fines ?? []).map((f) => f.demandId).filter((x): x is string => Boolean(x)));
+    const hostelDemandIds = new Set(mine.map((a) => a.feeDemandId).filter((x): x is string => Boolean(x)));
+    const isHostelDemand = (d: { id: string; linesJson: string }) => {
+      if (hostelDemandIds.has(d.id)) return true;
+      const lines = readJson<{ headId: string }[]>(d.linesJson, []);
+      return lines.length > 0 && lines.every((l) => hostelHeadIds.has(l.headId));
+    };
+    const line = (): LiveLine => ({ owed: 0, out: 0, present: true, owedIds: [], outIds: [] });
+    const live: Live = { ACCOUNTS: line(), LIBRARY: line(), HOSTEL: line(), LAB: line() };
+    // The accounts line is net of the receivable set against ITS OWN demands (TA-310): the year's whole receivable,
+    // set partly against instalments not yet due, used to wipe out an earlier year's arrears on an exam form.
+    let accountsReceivable = 0;
+    for (const d of demands) {
+      if (d.studentMembershipId !== sid) continue;
+      const o = outstanding(d);
+      if (o <= 0) continue;
+      const desk: NoDuesDesk = fineDemands.has(d.id) ? "LIBRARY" : isHostelDemand(d) ? "HOSTEL" : "ACCOUNTS";
+      live[desk].owed += o;
+      live[desk].owedIds.push(`demand:${d.id}`);
+      if (desk === "ACCOUNTS") accountsReceivable += receivable.get(d.id) ?? 0;
+    }
+    live.ACCOUNTS.owed = Math.max(0, live.ACCOUNTS.owed - accountsReceivable);
+    for (const f of member?.fines ?? []) {
+      if (f.demandId) continue;
+      live.LIBRARY.owed += f.paise;
+      live.LIBRARY.owedIds.push(`fine:${f.id}`);
+    }
+    live.LIBRARY.out = member?.issues.length ?? 0;
+    live.LIBRARY.outIds = (member?.issues ?? []).map((i) => `issue:${i.id}`);
+    const beds = mine.filter((a) => a.status === "ACTIVE");
+    live.HOSTEL.out = beds.length;
+    live.HOSTEL.outIds = beds.map((a) => `bed:${a.id}`);
+    live.HOSTEL.present = mine.length > 0;
+    const outItems = moves.filter((m) => (m._sum.delta ?? 0) < 0);
+    live.LAB.out = outItems.reduce((a, m) => a + Math.max(0, -(m._sum.delta ?? 0)), 0);
+    live.LAB.outIds = outItems.map((m) => `item:${m.itemId}`);
+    live.LAB.present = moves.length > 0;
+    out.set(sid, live);
+  }
+  return out;
+}
+
+/** One desk's line from its live state and the desk's hand clearance, if any. */
+function lineOf(desk: NoDuesDesk, event: NoDuesEvent, live: LiveLine, hand: HandClear | undefined): NoDuesLine {
+  const owed = live.owed;
+  // An exam form is not stopped by books or a bed; leaving is.
+  const out = event === "EXAM_FORM" ? 0 : live.out;
+  const open = [...(owed > 0 ? live.owedIds : []), ...(out > 0 ? live.outIds : [])];
+  const kept = hand?.openAtClear;
+  const covered = kept ? open.every((x) => kept.includes(x)) : true;
+  const byHand = hand !== undefined && owed <= hand.owedAtClearPaise && out <= hand.itemsAtClear && covered;
+  return { desk, owedPaise: owed, itemsOut: out, cleared: (owed === 0 && out === 0) || byHand, clearedByUserId: byHand ? hand.clearedByUserId : null, clearedAt: byHand ? new Date(hand.clearedAt) : null };
 }
 
 const DESKS_FOR: Record<NoDuesEvent, NoDuesDesk[]> = {
@@ -151,20 +222,22 @@ export async function noDuesFor(studentMembershipId: string, event: NoDuesEvent,
   if (!isCollegeKind(m.school.kind)) return { studentMembershipId, event, lines: [], completed: true, completedAt: null };
   // An exam form asks what is owed today; leaving and the hostel ask for everything.
   const dueBy = event === "EXAM_FORM" ? new Date(`${todayKey(m.school.timezone, now)}T00:00:00.000Z`) : null;
-  const [live, cycleKey] = await Promise.all([liveState(m.schoolId, m.id, dueBy), cycleKeyFor(m.schoolId, event)]);
+  const [lives, cycleKey] = await Promise.all([liveStates(m.schoolId, [m.id], dueBy), cycleKeyFor(m.schoolId, event)]);
   const row = await db.noDuesClearance.findUnique({ where: { studentMembershipId_event_cycleKey: { studentMembershipId: m.id, event, cycleKey } }, select: { clearsJson: true, completedAt: true } });
+  return resultOf(m.id, event, lives.get(m.id)!, row);
+}
+
+function resultOf(studentMembershipId: string, event: NoDuesEvent, live: Live, row: { clearsJson: string; completedAt: Date | null } | null): NoDuesResult {
   const clears = readJson<Partial<Record<NoDuesDesk, HandClear>>>(row?.clearsJson, {});
-  const lines: NoDuesLine[] = DESKS_FOR[event]
-    .filter((desk) => live[desk].present)
-    .map((desk) => {
-      const owed = live[desk].owed;
-      // An exam form is not stopped by books or a bed; leaving is.
-      const out = event === "EXAM_FORM" ? 0 : live[desk].out;
-      const hand = clears[desk];
-      const byHand = hand !== undefined && owed <= hand.owedAtClearPaise && out <= hand.itemsAtClear;
-      return { desk, owedPaise: owed, itemsOut: out, cleared: (owed === 0 && out === 0) || byHand, clearedByUserId: byHand ? hand.clearedByUserId : null, clearedAt: byHand ? new Date(hand.clearedAt) : null };
-    });
-  return { studentMembershipId: m.id, event, lines, completed: lines.every((l) => l.cleared), completedAt: row?.completedAt ?? null };
+  const lines: NoDuesLine[] = DESKS_FOR[event].filter((desk) => live[desk].present).map((desk) => lineOf(desk, event, live[desk], clears[desk]));
+  return { studentMembershipId, event, lines, completed: lines.every((l) => l.cleared), completedAt: row?.completedAt ?? null };
+}
+
+/** What a line holds open right now, by id, for a hand clearance to record (TA-084). */
+async function openOnLine(schoolId: string, timezone: string, studentMembershipId: string, event: NoDuesEvent, desk: NoDuesDesk): Promise<string[]> {
+  const dueBy = event === "EXAM_FORM" ? new Date(`${todayKey(timezone)}T00:00:00.000Z`) : null;
+  const live = (await liveStates(schoolId, [studentMembershipId], dueBy)).get(studentMembershipId)![desk];
+  return [...live.owedIds, ...(event === "EXAM_FORM" ? [] : live.outIds)];
 }
 
 async function deskStudent(ctx: ActiveContext, studentMembershipId: string, roles: readonly Role[]) {
@@ -234,7 +307,9 @@ export async function clearLine(ctx: ActiveContext, studentMembershipId: string,
   const key = { studentMembershipId: s.id, event: input.event, cycleKey };
   const existing = await db.noDuesClearance.findUnique({ where: { studentMembershipId_event_cycleKey: key }, select: { clearsJson: true } });
   const clears = readJson<Partial<Record<NoDuesDesk, HandClear>>>(existing?.clearsJson, {});
-  clears[input.desk] = { clearedByUserId: ctx.user.id, clearedAt: new Date().toISOString(), owedAtClearPaise: line.owedPaise, itemsAtClear: line.itemsOut, note: input.note?.trim().slice(0, 300) || null };
+  const { timezone } = await db.school.findUniqueOrThrow({ where: { id: ctx.schoolId! }, select: { timezone: true } });
+  const openAtClear = await openOnLine(ctx.schoolId!, timezone, s.id, input.event, input.desk);
+  clears[input.desk] = { clearedByUserId: ctx.user.id, clearedAt: new Date().toISOString(), owedAtClearPaise: line.owedPaise, itemsAtClear: line.itemsOut, note: input.note?.trim().slice(0, 300) || null, openAtClear };
   await db.noDuesClearance.upsert({ where: { studentMembershipId_event_cycleKey: key }, create: { schoolId: ctx.schoolId!, ...key, clearsJson: writeJson(clears) }, update: { clearsJson: writeJson(clears) } });
   const after = await noDuesFor(s.id, input.event);
   if (after.completed && !after.completedAt) await db.noDuesClearance.update({ where: { studentMembershipId_event_cycleKey: key }, data: { completedAt: new Date() } });
@@ -242,18 +317,31 @@ export async function clearLine(ctx: ActiveContext, studentMembershipId: string,
   return view(await noDuesFor(s.id, input.event), nameOf(s.user));
 }
 
+/** How many students the desk's list works out per round of grouped reads. */
+const LIST_CHUNK = 500;
+
 /** The desk's list: active students with an uncleared line for the event, the lines named. */
 export async function noDuesList(ctx: ActiveContext, event: NoDuesEvent): Promise<{ items: { studentMembershipId: string; studentName: string; completed: boolean; uncleared: NoDuesDesk[] }[] }> {
   if (!ctx.schoolId || !ctx.role || !ANY_DESK.includes(ctx.role)) throw new AccessError("access.wrongRoleForThisAction");
   await assertCollege(ctx.schoolId);
-  const students = await db.membership.findMany({ where: { schoolId: ctx.schoolId, role: "STUDENT", status: "ACTIVE", leftAt: null }, select: { id: true, user: { select: { name: true, preferredName: true } } }, take: 3000 });
+  // Every active student, in a fixed order (TA-085: the old cut at 3,000, with no order, dropped whoever fell past it
+  // without a word), worked out a chunk at a time with grouped reads, by the same rules as noDuesFor.
+  const students = await db.membership.findMany({ where: { schoolId: ctx.schoolId, role: "STUDENT", status: "ACTIVE", leftAt: null }, select: { id: true, user: { select: { name: true, preferredName: true } } }, orderBy: { id: "asc" } });
+  const { timezone } = await db.school.findUniqueOrThrow({ where: { id: ctx.schoolId }, select: { timezone: true } });
+  const dueBy = event === "EXAM_FORM" ? new Date(`${todayKey(timezone)}T00:00:00.000Z`) : null;
+  const cycleKey = await cycleKeyFor(ctx.schoolId, event);
   const items = [];
   // A single desk lists the students its own line holds up, and names only its own line (the role audit of 5 Oct 2026).
   const mine = (desk: NoDuesDesk) => FULL_READ.includes(ctx.role!) || DESK_ROLES[desk].includes(ctx.role!);
-  for (const s of students) {
-    const r = await noDuesFor(s.id, event);
-    const uncleared = r.lines.filter((l) => !l.cleared && mine(l.desk)).map((l) => l.desk);
-    if (!r.completed && uncleared.length > 0) items.push({ studentMembershipId: s.id, studentName: nameOf(s.user), completed: false, uncleared });
+  for (let i = 0; i < students.length; i += LIST_CHUNK) {
+    const chunk = students.slice(i, i + LIST_CHUNK);
+    const ids = chunk.map((s) => s.id);
+    const [lives, rows] = await Promise.all([liveStates(ctx.schoolId, ids, dueBy), db.noDuesClearance.findMany({ where: { studentMembershipId: { in: ids }, event, cycleKey }, select: { studentMembershipId: true, clearsJson: true, completedAt: true } })]);
+    for (const s of chunk) {
+      const r = resultOf(s.id, event, lives.get(s.id)!, rows.find((x) => x.studentMembershipId === s.id) ?? null);
+      const uncleared = r.lines.filter((l) => !l.cleared && mine(l.desk)).map((l) => l.desk);
+      if (!r.completed && uncleared.length > 0) items.push({ studentMembershipId: s.id, studentName: nameOf(s.user), completed: false, uncleared });
+    }
   }
   return { items };
 }

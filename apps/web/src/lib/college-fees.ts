@@ -451,7 +451,8 @@ async function raiseOnce(schoolId: string, academicYearId: string, studentMember
  */
 export async function billMess(ctx: ActiveContext, input: { month: string; hostelId?: string }): Promise<{ billed: number; already: number; skipped: number }> {
   const d = await campusDesk(ctx, MONEY_WRITE, "HOSTEL", SCHOOL_MONEY_WRITE);
-  if (!/^\d{4}-\d{2}$/.test(input.month)) throw new AccessError("collegeOffice.refuseDates");
+  // A real month only (TA-296): "2026-13" rolled over to January 2027 and billed every boarder for a month that is none.
+  if (!/^\d{4}-(0[1-9]|1[0-2])$/.test(input.month)) throw new AccessError("collegeOffice.refuseDates");
   const year = await currentAcademicYear(d.schoolId);
   if (!year) throw new AccessError("fees.refuseNoYear");
   const head = await headOfKind(d.schoolId, "MESS");
@@ -500,7 +501,10 @@ export async function raiseRouteFees(ctx: ActiveContext, input: { termLabel: str
   let raised = 0;
   let already = 0;
   for (const r of routes) {
-    const riders = await db.transportAllotment.findMany({ where: { schoolId: d.schoolId, routeId: r.id, OR: [{ toDateKey: null }, { toDateKey: { gte: input.dueDateKey } }], student: { role: "STUDENT", leftAt: null } }, select: { studentMembershipId: true } });
+    // A seat counts when it is the rider's on the term's due date (TA-049): begun by then as well as not ended before
+    // it. A seat booked to start after the day was charged the term for a bus not yet ridden, and a route change
+    // booked ahead charged the term on both routes.
+    const riders = await db.transportAllotment.findMany({ where: { schoolId: d.schoolId, routeId: r.id, fromDateKey: { lte: input.dueDateKey }, OR: [{ toDateKey: null }, { toDateKey: { gte: input.dueDateKey } }], student: { role: "STUDENT", leftAt: null } }, select: { studentMembershipId: true } });
     for (const rider of [...new Set(riders.map((x) => x.studentMembershipId))]) {
       const charge = name(`ROUTE:${year.id}:${r.id}:${term.toLowerCase()}`, "collegeOffice.routeFeeLabel", { term, route: r.name });
       if (await raiseOnce(d.schoolId, year.id, rider, charge, input.dueDateKey, head, r.feePerTermPaise)) raised += 1;

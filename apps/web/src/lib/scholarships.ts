@@ -138,7 +138,8 @@ type Update =
 async function tellReverted(schoolId: string, studentMembershipId: string, userId: string, scheme: string, paise: number, lapsed: boolean): Promise<void> {
   const vars = { scheme, amount: rupeesCell(paise) };
   const titleKey = lapsed ? "collegeOffice.notifScholarshipLapsed" : "collegeOffice.notifScholarshipRejected";
-  await notify({ userId, schoolId, kind: "SYSTEM", titleKey, titleVars: vars, bodyKey: "collegeOffice.notifScholarshipRevertBody", bodyVars: vars, url: "/student/fees", urgent: true }).catch(() => undefined);
+  // Not urgent (TA-436): urgent breaks the person's quiet hours, which a money notice does not; the guardian's copy never was.
+  await notify({ userId, schoolId, kind: "SYSTEM", titleKey, titleVars: vars, bodyKey: "collegeOffice.notifScholarshipRevertBody", bodyVars: vars, url: "/student/fees" }).catch(() => undefined);
   if (await parentMaySee(studentMembershipId, "MONEY")) {
     await notifyGuardians(studentMembershipId, (name) => ({ schoolId, kind: "SYSTEM", titleKey, titleVars: vars, bodyKey: "collegeOffice.notifScholarshipRevertChild", bodyVars: { ...vars, name }, url: "/parent/fees" }), "MONEY").catch(() => undefined);
   }
@@ -156,6 +157,51 @@ export async function sanctionCeiling(schoolId: string, c: { studentMembershipId
   const year = years.find((y) => yearKeyOf(y.startDate) === c.academicYear);
   const fees = year ? await eligibleGrossPaise(schoolId, c.studentMembershipId, year.id) : 0;
   return Math.max(c.expectedPaise, fees);
+}
+
+/** A step that lost to another at the same moment (TA-542): the claim as it now stands when that is what was asked, else refused. */
+async function claimAsItStands(schoolId: string, claimId: string, target: string): Promise<ScholarshipClaimView> {
+  const now = await db.scholarshipClaim.findFirstOrThrow({ where: { id: claimId, schoolId }, include: WITH_STUDENT });
+  if (now.status !== target) throw new AccessError("collegeOffice.refuseClaimStep");
+  return claimView(now, nameOf(now.student.user));
+}
+
+/**
+ * THE STATE'S CREDIT ON THE LEDGER (TA-080). The whole disbursement went in as one counter payment, which the ledger
+ * refuses past what is open, so a sanction for the year's tuition after the family had paid the first term at
+ * admission could not be recorded at all, and what did go in was spread oldest-first over any demand (a mess bill, a
+ * fine). Now the claim records what the state paid; the ledger takes what the claim's year's open demands of the heads
+ * a scheme covers (tuition, development, exam) can take, those demands named; and the rest — fees the family had
+ * already paid that the state has now paid too — is held for the student as an UNALLOCATED bank payment, which the
+ * office's payments table and the family's list show and the office refunds from the college's bank (decision 0003),
+ * as an online payment that found nothing due is held (QA-03). Answers what was held.
+ */
+async function postDisbursement(ctx: ActiveContext, d: { schoolId: string; userId: string }, c: { id: string; studentMembershipId: string; scheme: string; academicYear: string }, u: { amountPaise: number; reference: string; on: string; disbursedAt: Date }): Promise<number> {
+  const years = await db.academicYear.findMany({ where: { schoolId: d.schoolId }, select: { id: true, startDate: true } });
+  const year = years.find((y) => yearKeyOf(y.startDate) === c.academicYear);
+  const heads = new Set((await db.feeHead.findMany({ where: { schoolId: d.schoolId, kind: { in: ["TUITION", "DEVELOPMENT", "EXAM"] } }, select: { id: true } })).map((h) => h.id));
+  const open = year ? await db.feeDemand.findMany({ where: { schoolId: d.schoolId, studentMembershipId: c.studentMembershipId, academicYearId: year.id, status: { in: ["OPEN", "PART"] } }, orderBy: [{ dueDate: "asc" }, { createdAt: "asc" }], select: { id: true, netPaise: true, paidPaise: true, linesJson: true } }) : [];
+  const covered = open.filter((x) => readJson<{ headId: string }[]>(x.linesJson, []).some((l) => heads.has(l.headId)) && x.netPaise > x.paidPaise);
+  const room = covered.reduce((s, x) => s + (x.netPaise - x.paidPaise), 0);
+  const onLedger = room >= 100 ? Math.min(u.amountPaise, room) : 0;
+  const note = `${c.scheme} ${c.academicYear}`;
+  // The state's credit in the college's bank, on the ledger as the bank payment it is (one per claim: the claim's id is the form's id).
+  if (onLedger > 0) await recordCounterPayment(ctx, { studentMembershipId: c.studentMembershipId, amountPaise: onLedger, method: "BANK", reference: u.reference, note, demandIds: covered.map((x) => x.id), clientId: `scholarship-${c.id}`, paidAtKey: u.on });
+  const held = u.amountPaise - onLedger;
+  if (held > 0) {
+    const clientId = `scholarship-${c.id}-held`;
+    try {
+      await db.$tenantTransaction(async (raw) => {
+        const tx = raw as typeof db;
+        if (await tx.feePayment.findUnique({ where: { schoolId_clientId: { schoolId: d.schoolId, clientId } }, select: { id: true } })) return;
+        await tx.feePayment.create({ data: { schoolId: d.schoolId, studentMembershipId: c.studentMembershipId, amountPaise: held, method: "BANK", status: "UNALLOCATED", reference: u.reference.slice(0, 60), note, clientId, collectedByUserId: d.userId, paidAt: u.disbursedAt } });
+      });
+    } catch (error) {
+      // The same disbursement held a moment ago by another press.
+      if (!(typeof error === "object" && error !== null && (error as { code?: string }).code === "P2002")) throw error;
+    }
+  }
+  return held;
 }
 
 export async function updateClaim(ctx: ActiveContext, claimId: string, u: Update): Promise<ScholarshipClaimView> {
@@ -182,10 +228,23 @@ export async function updateClaim(ctx: ActiveContext, claimId: string, u: Update
       if (c.status === "DISBURSED") return claimView(c, name);
       if (c.status !== "SANCTIONED") throw new AccessError("collegeOffice.refuseClaimStep");
       if (u.amountPaise > (c.sanctionedPaise ?? 0) || u.amountPaise < 100) throw new AccessError("collegeOffice.refuseDisbursedAmount");
-      // The state's credit in the college's bank, on the ledger as the bank payment it is (one per claim: the claim's id is the form's id).
-      await recordCounterPayment(ctx, { studentMembershipId: c.studentMembershipId, amountPaise: u.amountPaise, method: "BANK", reference: u.reference.trim(), note: `${c.scheme} ${c.academicYear}`, clientId: `scholarship-${c.id}`, paidAtKey: u.on });
-      data = { status: "DISBURSED", disbursedPaise: u.amountPaise, disbursedAt: day(u.on), disbursementRef: u.reference.trim() };
-      break;
+      const reference = u.reference.trim();
+      const disbursedAt = day(u.on);
+      // THE CLAIM IS TAKEN FIRST (TA-542): a disbursement and a rejection at once both read SANCTIONED and both passed,
+      // the claim ending in whichever wrote last. The move to DISBURSED is conditional on SANCTIONED, so the other
+      // step finds it moved and is refused; if the ledger then refuses the money, the claim is put back.
+      const moved = await db.scholarshipClaim.updateMany({ where: { id: c.id, schoolId: d.schoolId, status: "SANCTIONED" }, data: { status: "DISBURSED", disbursedPaise: u.amountPaise, disbursedAt, disbursementRef: reference } });
+      if (moved.count === 0) return claimAsItStands(d.schoolId, c.id, "DISBURSED");
+      let heldPaise = 0;
+      try {
+        heldPaise = await postDisbursement(ctx, d, c, { amountPaise: u.amountPaise, reference, on: u.on, disbursedAt });
+      } catch (error) {
+        await db.scholarshipClaim.updateMany({ where: { id: c.id, schoolId: d.schoolId, status: "DISBURSED", disbursementRef: reference }, data: { status: "SANCTIONED", disbursedPaise: null, disbursedAt: null, disbursementRef: null } });
+        throw error;
+      }
+      await audit({ schoolId: d.schoolId, actorUserId: d.userId, action: "scholarship.disburse", targetType: "ScholarshipClaim", targetId: c.id, meta: { scheme: c.scheme, amountPaise: u.amountPaise, heldPaise } });
+      const row = await db.scholarshipClaim.findUniqueOrThrow({ where: { id: c.id }, include: WITH_STUDENT });
+      return claimView(row, nameOf(row.student.user));
     }
     case "LAPSE":
     case "REJECT": {
@@ -197,7 +256,14 @@ export async function updateClaim(ctx: ActiveContext, claimId: string, u: Update
     }
   }
   const before = claimReceivable(c);
-  const row = await db.scholarshipClaim.update({ where: { id: c.id }, data, include: WITH_STUDENT });
+  // A step that changes the status is written only on the status it read (TA-542): one that lost to another step
+  // at the same moment is answered as the claim now stands, and only the winner tells the family anything.
+  if (u.action !== "PORTAL_ID") {
+    const target = u.action === "SANCTION" ? "SANCTIONED" : u.action === "LAPSE" ? "LAPSED" : "REJECTED";
+    const moved = await db.scholarshipClaim.updateMany({ where: { id: c.id, schoolId: d.schoolId, status: c.status }, data });
+    if (moved.count === 0) return claimAsItStands(d.schoolId, c.id, target);
+  }
+  const row = u.action === "PORTAL_ID" ? await db.scholarshipClaim.update({ where: { id: c.id }, data, include: WITH_STUDENT }) : await db.scholarshipClaim.findUniqueOrThrow({ where: { id: c.id }, include: WITH_STUDENT });
   await audit({ schoolId: d.schoolId, actorUserId: d.userId, action: `scholarship.${u.action.toLowerCase()}`, targetType: "ScholarshipClaim", targetId: c.id, meta: { scheme: c.scheme, ...("amountPaise" in u ? { amountPaise: u.amountPaise } : {}) } });
   if ((u.action === "LAPSE" || u.action === "REJECT") && before > 0) await tellReverted(d.schoolId, c.studentMembershipId, c.student.userId, c.scheme, before, u.action === "LAPSE");
   return claimView(row, nameOf(row.student.user));

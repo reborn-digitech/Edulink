@@ -719,7 +719,11 @@ export async function submitPaper(ctx: ActiveContext, paperId: string, input: { 
   if (!sealingAvailable()) throw new RuleRefusal("examCell.refuseSealing", 409);
   const bytes = Buffer.from(input.dataBase64, "base64");
   if (bytes.length === 0 || bytes.length > 2 * 1024 * 1024 || bytes.subarray(0, 5).toString("latin1") !== "%PDF-") throw new RuleRefusal("examCell.refusePaperFile", 422, undefined, "dataBase64");
-  await db.questionPaper.update({ where: { id: p.id }, data: { status: "SUBMITTED", sealedBody: seal(bytes.toString("base64"), paperBound(p.schoolId, p.id)), fileName: input.fileName, mime: "application/pdf", sizeBytes: bytes.length, sha256: createHash("sha256").update(bytes).digest("hex"), coMapJson: writeJson(input.coMap), submittedAt: new Date() } });
+  // Written only while the paper is still not moderated (TA-529): an upload racing the exam cell's Moderate replaced
+  // the sealed body and set it back to SUBMITTED under a moderation of a text no longer stored. A new body clears any
+  // earlier moderation's fields with it.
+  const stored = await db.questionPaper.updateMany({ where: { id: p.id, schoolId: p.schoolId, status: { not: "MODERATED" } }, data: { status: "SUBMITTED", sealedBody: seal(bytes.toString("base64"), paperBound(p.schoolId, p.id)), fileName: input.fileName, mime: "application/pdf", sizeBytes: bytes.length, sha256: createHash("sha256").update(bytes).digest("hex"), coMapJson: writeJson(input.coMap), submittedAt: new Date(), moderatedByUserId: null, moderatedAt: null, moderationNote: null } });
+  if (stored.count === 0) throw new RuleRefusal("examCell.refusePaperModerated", 409);
   await audit({ schoolId: p.schoolId, actorUserId: ctx.user.id, action: "exam.paper.submit", targetType: "QuestionPaper", targetId: p.id, meta: { sizeBytes: bytes.length, questions: input.coMap.length } });
   return { ok: true, id: p.id, count: null };
 }
@@ -731,7 +735,9 @@ export async function moderatePaper(ctx: ActiveContext, paperId: string, note: s
   if (!p) throw new AccessError("access.thatContentNoLongerExists", "NOT_FOUND");
   if (p.status === "ASSIGNED") throw new RuleRefusal("examCell.refusePaperNotSubmitted", 409);
   if (p.status !== "MODERATED") {
-    await db.questionPaper.update({ where: { id: p.id }, data: { status: "MODERATED", moderatedByUserId: cell.userId, moderatedAt: new Date(), moderationNote: note } });
+    // On the submitted paper only (TA-529); one moderated meanwhile by another press is answered as it stands.
+    const moved = await db.questionPaper.updateMany({ where: { id: p.id, schoolId: cell.schoolId, status: "SUBMITTED" }, data: { status: "MODERATED", moderatedByUserId: cell.userId, moderatedAt: new Date(), moderationNote: note } });
+    if (moved.count === 0) return { ok: true, id: p.id, count: null };
     await audit({ schoolId: cell.schoolId, actorUserId: cell.userId, action: "exam.paper.moderate", targetType: "QuestionPaper", targetId: p.id });
   }
   return { ok: true, id: p.id, count: null };

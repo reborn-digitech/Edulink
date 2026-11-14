@@ -92,8 +92,12 @@ function rangeOf(year: Year) {
 /** Income and expense for one year: fees received, the state's disbursements, purchases (and the library's), salaries with the employer's share. */
 async function incomeExpense(schoolId: string, year: Year) {
   const r = rangeOf(year);
-  const [paid, disbursed, purchases, runs, demanded] = await Promise.all([
-    db.feePayment.aggregate({ where: { schoolId, status: "PAID", paidAt: { gte: year.startDate, lte: new Date(`${r.to}T23:59:59Z`) } }, _sum: { amountPaise: true } }),
+  const paidIn = { schoolId, status: "PAID", paidAt: { gte: year.startDate, lte: new Date(`${r.to}T23:59:59Z`) } };
+  const [paid, refunded, disbursed, purchases, runs, demanded] = await Promise.all([
+    db.feePayment.aggregate({ where: paidIn, _sum: { amountPaise: true } }),
+    // What went back out of a payment still PAID (part of it refunded; one refunded whole is REFUNDED and already out
+    // of the sum): a cancelled seat's refund is such a row since TA-079, and that money is no longer collected.
+    db.feeRefund.aggregate({ where: { schoolId, status: "DONE", payment: paidIn }, _sum: { amountPaise: true } }),
     db.scholarshipClaim.aggregate({ where: { schoolId, status: "DISBURSED", academicYear: yearKeyOf(year.startDate) }, _sum: { disbursedPaise: true } }),
     db.purchaseRecord.findMany({ where: { schoolId, dateKey: { gte: r.from, lte: r.to } }, select: { totalPaise: true, location: true } }),
     db.payrollRun.findMany({ where: { schoolId, status: { in: ["LOCKED", "PAID"] }, month: { gte: r.fromMonth, lte: r.toMonth } }, select: { grossPaise: true, employerPaise: true } }),
@@ -101,7 +105,7 @@ async function incomeExpense(schoolId: string, year: Year) {
   ]);
   return {
     feesDemandedPaise: demanded._sum.netPaise ?? 0,
-    feesCollectedPaise: paid._sum.amountPaise ?? 0,
+    feesCollectedPaise: (paid._sum.amountPaise ?? 0) - (refunded._sum.amountPaise ?? 0),
     scholarshipsDisbursedPaise: disbursed._sum.disbursedPaise ?? 0,
     purchasesPaise: purchases.reduce((a, p) => a + p.totalPaise, 0),
     // The library's spend: purchases kept at a place whose name says library. The stores name places freely; a library that keeps its books elsewhere reads 0 here.

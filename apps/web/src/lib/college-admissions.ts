@@ -229,10 +229,14 @@ export async function importAllotments(ctx: ActiveContext, roundId: string, text
     if (name.length < 2) return void refused.push({ line, reason: "name" });
     const cat = cetCategory(/EWS/i.test(seatType) ? "EWS" : category);
     if (!cat) return void refused.push({ line, reason: "category" });
+    const programmeId = matchProgramme(choiceCode);
+    // A round for one programme takes no row whose choice code is another programme's (TA-083): the round's seat
+    // matrix is counted on its own programme, so such a row's applicant passed it without moving the count.
+    if (round.programmeId && programmeId !== round.programmeId) return void refused.push({ line, reason: "programme" });
     if (seen.has(applicationId.toUpperCase())) return void refused.push({ line, reason: "duplicate" });
     seen.add(applicationId.toUpperCase());
     const merit = Number.parseInt(meritNo, 10);
-    rows.push({ cetApplicationId: applicationId.toUpperCase(), applicantName: name.slice(0, 120), programmeCode: choiceCode.slice(0, 40), programmeId: matchProgramme(choiceCode), category: cat, quota: quotaFor(round.kind as AdmissionRoundKind, seatType), meritNumber: Number.isFinite(merit) && merit > 0 ? merit : null });
+    rows.push({ cetApplicationId: applicationId.toUpperCase(), applicantName: name.slice(0, 120), programmeCode: choiceCode.slice(0, 40), programmeId, category: cat, quota: quotaFor(round.kind as AdmissionRoundKind, seatType), meritNumber: Number.isFinite(merit) && merit > 0 ? merit : null });
   });
   const created = rows.length ? await db.capAllotment.createMany({ data: rows.map((r) => ({ ...r, schoolId: d.schoolId, roundId: round.id, importedByUserId: d.userId })), skipDuplicates: true }) : { count: 0 };
   const result = { added: created.count, already: rows.length - created.count, refused, unmatchedProgramme: rows.filter((r) => !r.programmeId).length };
@@ -420,6 +424,8 @@ export async function createApplication(
     base = { applicantName: input.applicantName.trim(), category: input.category, quota: input.quota, programmeId: input.programmeId, capAllotmentId: null, meritRank: input.meritRank ?? null };
   }
   await programmeOf(d.schoolId, base.programmeId);
+  // A round that names a programme admits to that programme only (TA-083): its seat matrix is counted there.
+  if (round.programmeId && base.programmeId !== round.programmeId) throw new AccessError("collegeOffice.refuseRoundProgramme");
   if (!(ADMISSION_QUOTAS as readonly string[]).includes(base.quota)) throw new AccessError("collegeOffice.refuseIncomplete");
   if (input.birthdateKey && !isDateKey(input.birthdateKey)) throw new AccessError("collegeOffice.refuseDates");
   // Not in the future, and at least fourteen (A3-journeys-5; birthdate-rules.ts).
@@ -428,8 +434,16 @@ export async function createApplication(
   for (const doc of requiredDocuments(base.category, input.extraDocuments ?? [])) docs[doc] = { required: true, fileId: null, status: "PENDING", note: null };
   const created = await db.$tenantTransaction(async (raw) => {
     const tx = raw as typeof db;
+    // One numbering at a time in a round (TA-413): two applications made at once both read the same highest number
+    // and the second met the unique key as a 500. Under the round's lock the second reads the first's number, and
+    // the same allotment row made from two tabs is answered with the application the first made.
+    await tx.$queryRaw`SELECT 1 FROM pg_advisory_xact_lock(hashtext(${`college-round:${round.id}`}))`;
+    if (base.capAllotmentId) {
+      const made = await tx.collegeApplication.findFirst({ where: { roundId: round.id, capAllotmentId: base.capAllotmentId }, include: APP_INCLUDE });
+      if (made) return { row: made, fresh: false };
+    }
     const last = await tx.collegeApplication.findFirst({ where: { roundId: round.id }, orderBy: { number: "desc" }, select: { number: true } });
-    return tx.collegeApplication.create({
+    const row = await tx.collegeApplication.create({
       data: {
         schoolId: d.schoolId,
         roundId: round.id,
@@ -449,9 +463,10 @@ export async function createApplication(
       },
       include: APP_INCLUDE,
     });
+    return { row, fresh: true };
   });
-  await audit({ schoolId: d.schoolId, actorUserId: d.userId, action: "college.admissions.apply", targetType: "CollegeApplication", targetId: created.id, meta: { roundId: round.id, fromAllotment: Boolean(base.capAllotmentId), category: base.category } });
-  return applicationView(created);
+  if (created.fresh) await audit({ schoolId: d.schoolId, actorUserId: d.userId, action: "college.admissions.apply", targetType: "CollegeApplication", targetId: created.row.id, meta: { roundId: round.id, fromAllotment: Boolean(base.capAllotmentId), category: base.category } });
+  return applicationView(created.row);
 }
 
 const OPEN_STEPS: readonly string[] = ["APPLIED", "SCRUTINY", "OFFERED"];
@@ -493,10 +508,19 @@ export async function recordUndertaking(ctx: ActiveContext, id: string, by: "STU
   return applicationView(updated);
 }
 
-/** The first-year structure for this programme and category in the intake's academic year (or the one named). */
-async function structureFor(schoolId: string, programmeId: string, category: string, feeStructureId?: string) {
+/**
+ * The first-year structure for this programme and category in the intake's academic year (or the one named, which
+ * must be that one). TA-078: the year was not read, so an offer made before the desk saved this year's structure took
+ * last year's, and the plan, the demands and the receipt went into last year's books; with no structure in the
+ * intake's year the application now stands OFFERED, and a named structure of another programme, category, year of
+ * study or academic year is refused.
+ */
+async function structureFor(schoolId: string, programmeId: string, category: string, intakeYear: number, feeStructureId?: string) {
+  const years = await db.academicYear.findMany({ where: { schoolId }, select: { id: true, startDate: true } });
+  const year = years.find((y) => y.startDate.getUTCFullYear() === intakeYear);
+  if (!year) return null;
   return db.feeStructure.findFirst({
-    where: { schoolId, ...(feeStructureId ? { id: feeStructureId } : { programmeId, category, yearOfStudy: 1 }), publishedAt: { not: null }, archivedAt: null },
+    where: { schoolId, ...(feeStructureId ? { id: feeStructureId } : {}), programmeId, category, yearOfStudy: 1, academicYearId: year.id, publishedAt: { not: null }, archivedAt: null },
     orderBy: { createdAt: "desc" },
     include: { instalments: { orderBy: { sortOrder: "asc" }, include: { lines: true } } },
   });
@@ -517,7 +541,7 @@ export async function offerSeat(ctx: ActiveContext, id: string, input: { feeStru
   if (!scrutinyComplete(docsOf(a.documentsJson))) throw new AccessError("collegeOffice.refuseScrutiny");
   if (!a.antiRaggingStudentAt || !a.antiRaggingParentAt) throw new AccessError("collegeOffice.refuseUndertaking");
   await assertSeatFree(db, d.schoolId, a);
-  const structure = await structureFor(d.schoolId, a.programmeId, a.category, input.feeStructureId);
+  const structure = await structureFor(d.schoolId, a.programmeId, a.category, a.round.intakeYear, input.feeStructureId);
   if (input.feeStructureId && !structure) throw new AccessError("collegeOffice.refuseStructure");
   const first = structure?.instalments[0];
   const fee = first ? first.lines.reduce((s, l) => s + l.amountPaise, 0) : null;
@@ -526,14 +550,26 @@ export async function offerSeat(ctx: ActiveContext, id: string, input: { feeStru
   return applicationView(updated);
 }
 
-/** The admission fee, as the college's counter or bank received it. Not less than the offer asked; the same reference again changes nothing. */
+/**
+ * The admission fee, as the college's counter or bank received it: the amount the offer asked, neither less nor more;
+ * once recorded, recording it again changes nothing. TA-561: an amount above the offer was stored, and at admission the
+ * whole of it was posted against the first term alone, which the ledger refuses as an overpayment, so the seat was
+ * given with nothing on the ledger. TA-529: the write is conditional on no fee being recorded yet, so of two desks
+ * recording it at once one stands and the other is answered with it.
+ */
 export async function recordAdmissionFee(ctx: ActiveContext, id: string, input: { amountPaise: number; method: "CASH" | "CHEQUE" | "BANK" | "UPI"; reference: string }): Promise<CollegeApplicationView> {
   const d = await desk(ctx, MONEY_DESK);
   const a = await officeApp(d, id);
   if (a.admissionFeePaidAt) return applicationView(a);
   if (a.status !== "FEE_DUE") throw new AccessError("collegeOffice.refuseStep");
   if (a.admissionFeePaise !== null && input.amountPaise < a.admissionFeePaise) throw new AccessError("collegeOffice.refuseFeeShort");
-  const updated = await db.collegeApplication.update({ where: { id: a.id }, data: { admissionFeePaise: input.amountPaise, admissionFeeMethod: input.method, admissionFeeRef: input.reference.trim().slice(0, 80), admissionFeePaidAt: new Date() }, include: APP_INCLUDE });
+  if (a.admissionFeePaise !== null && input.amountPaise > a.admissionFeePaise) throw new AccessError("collegeOffice.refuseFeeOver");
+  const moved = await db.collegeApplication.updateMany({ where: { id: a.id, schoolId: d.schoolId, status: "FEE_DUE", admissionFeePaidAt: null }, data: { admissionFeePaise: input.amountPaise, admissionFeeMethod: input.method, admissionFeeRef: input.reference.trim().slice(0, 80), admissionFeePaidAt: new Date() } });
+  const updated = await officeApp(d, id);
+  if (moved.count === 0) {
+    if (updated.admissionFeePaidAt) return applicationView(updated);
+    throw new AccessError("collegeOffice.refuseStep");
+  }
   await audit({ schoolId: d.schoolId, actorUserId: d.userId, action: "college.admissions.fee", targetType: "CollegeApplication", targetId: a.id, meta: { amountPaise: input.amountPaise, method: input.method } });
   return applicationView(updated);
 }
@@ -573,7 +609,21 @@ export async function admitStudent(ctx: ActiveContext, id: string, input: { prn?
     const tx = raw as typeof db;
     // The last seat is taken by one admission at a time (LIFECYCLE-4).
     await tx.$queryRaw`SELECT 1 FROM pg_advisory_xact_lock(hashtext(${`college-seats:${d.schoolId}`}))`;
-    await assertSeatFree(tx, d.schoolId, a);
+    // READ AGAIN UNDER THE LOCK (TA-077, TA-529). Two admits of one application at once both read FEE_DUE before
+    // the lock, and the second, taking its turn, made a second student; a cancel committed meanwhile was overwritten.
+    // The cancel takes this lock too, so what is read here stands until the admission commits; anything but FEE_DUE
+    // is answered below as the application now stands.
+    const fresh = await tx.collegeApplication.findFirst({ where: { id: a.id, schoolId: d.schoolId }, select: { status: true, supernumeraryAt: true, admissionFeePaise: true, admissionFeePaidAt: true, admissionFeeMethod: true, admissionFeeRef: true } });
+    if (!fresh || fresh.status !== "FEE_DUE") return null;
+    if ((fresh.admissionFeePaise ?? 0) > 0 && !fresh.admissionFeePaidAt) throw new AccessError("collegeOffice.refuseFeeUnpaid");
+    await assertSeatFree(tx, d.schoolId, { ...a, supernumeraryAt: fresh.supernumeraryAt });
+    // One PRN per student (TA-081), as the academic seat's own writer keeps it (academics.ts saveSeat): the result
+    // file is matched by PRN, case-folded, so a PRN already on another seat or record of the college refuses all of it.
+    if (prn) {
+      const prnLike = { equals: prn, mode: "insensitive" as const };
+      const [onSeat, onRecord] = await Promise.all([tx.studentProgramme.findFirst({ where: { schoolId: d.schoolId, prn: prnLike }, select: { id: true } }), tx.pupilRecord.findFirst({ where: { schoolId: d.schoolId, prn: prnLike }, select: { id: true } })]);
+      if (onSeat || onRecord) throw new AccessError("academics.refusePrnTaken");
+    }
     const user = await tx.user.create({ data: { name: a.applicantName, email: `${handle}@${HANDLE_DOMAIN}`, passwordHash: null, birthdate: a.birthdate, isMinor: age === null ? false : age < 18, prefs: writeJson({ theme: "system", locale }) }, select: { id: true } });
     const membership = await tx.membership.create({ data: { userId: user.id, schoolId: d.schoolId, role: "STUDENT", status: "ACTIVE", studentCode: code }, select: { id: true } });
     // One APAAR id and one ABC id per person: a number already on another student of the college undoes the whole admission.
@@ -605,17 +655,21 @@ export async function admitStudent(ctx: ActiveContext, id: string, input: { prn?
       demands = (await regenerateDemands(tx, d.schoolId, membership.id, structure.academicYearId)).written;
     }
     await syncGradeLevel(tx, [membership.id]);
-    await tx.collegeApplication.update({ where: { id: a.id }, data: { status: "ADMITTED", admittedMembershipId: membership.id, admittedAt: new Date() } });
-    return { membershipId: membership.id, enrolmentId: enrolment.id, demands, academicYearId: structure?.academicYearId ?? null };
+    const claimed = await tx.collegeApplication.updateMany({ where: { id: a.id, schoolId: d.schoolId, status: "FEE_DUE" }, data: { status: "ADMITTED", admittedMembershipId: membership.id, admittedAt: new Date() } });
+    if (claimed.count !== 1) throw new AccessError("collegeOffice.refuseStep");
+    return { membershipId: membership.id, enrolmentId: enrolment.id, demands, academicYearId: structure?.academicYearId ?? null, fee: fresh };
   });
+  // Admitted or cancelled by another call while this one waited for the lock: answered as it now stands.
+  if (!minted) return admitStudent(ctx, id, input);
   await audit({ schoolId: d.schoolId, actorUserId: d.userId, action: "college.admissions.admit", targetType: "CollegeApplication", targetId: a.id, meta: { membershipId: minted.membershipId, programmeId: a.programmeId, category: a.category, quota: a.quota, demands: minted.demands } });
   await audit({ schoolId: d.schoolId, actorUserId: d.userId, action: "student.admit", targetType: "Membership", targetId: minted.membershipId, meta: { fromCollegeAdmission: true, hasBirthdate: a.birthdate !== null } });
 
   // The admission fee the college already holds, on the ledger against the first term — the same receipt a counter payment writes.
   let receiptSerial: string | null = null;
-  if (a.admissionFeePaidAt && (a.admissionFeePaise ?? 0) >= 100 && minted.academicYearId) {
+  const fee = minted.fee;
+  if (fee.admissionFeePaidAt && (fee.admissionFeePaise ?? 0) >= 100 && minted.academicYearId) {
     const first = await db.feeDemand.findFirst({ where: { studentMembershipId: minted.membershipId, academicYearId: minted.academicYearId }, orderBy: { dueDate: "asc" }, select: { id: true } });
-    const paid = await recordCounterPayment(ctx, { studentMembershipId: minted.membershipId, amountPaise: a.admissionFeePaise!, method: (a.admissionFeeMethod as "CASH" | "CHEQUE" | "BANK" | "UPI") ?? "BANK", reference: a.admissionFeeRef, note: null, demandIds: first ? [first.id] : [], clientId: `college-admission-${a.id}` }).catch((error) => {
+    const paid = await recordCounterPayment(ctx, { studentMembershipId: minted.membershipId, amountPaise: fee.admissionFeePaise!, method: (fee.admissionFeeMethod as "CASH" | "CHEQUE" | "BANK" | "UPI") ?? "BANK", reference: fee.admissionFeeRef, note: null, demandIds: first ? [first.id] : [], clientId: `college-admission-${a.id}` }).catch((error) => {
       console.error("[college-admissions] admission fee not written to the ledger", error);
       return null;
     });
@@ -639,17 +693,54 @@ export async function cancelAdmission(ctx: ActiveContext, id: string, input: { r
   if (!isDateKey(input.lastDateKey)) throw new AccessError("collegeOffice.refuseDates");
   const { timezone } = await db.school.findUniqueOrThrow({ where: { id: d.schoolId }, select: { timezone: true } });
   const cancelKey = todayKey(timezone, now);
-  const { paidPaise, cautionPaise } = await paidOnSeat(d.schoolId, a);
-  const refund = refundFor({ paidPaise, cautionPaise, cancelKey, lastKey: input.lastDateKey });
-  const updated = await db.$tenantTransaction(async (raw) => {
+  const done = await db.$tenantTransaction(async (raw) => {
     const tx = raw as typeof db;
-    if (a.admittedMembershipId) {
-      await tx.programmeEnrolment.updateMany({ where: { studentMembershipId: a.admittedMembershipId, programmeId: a.programmeId }, data: { status: "CANCELLED" } });
-      await tx.membership.update({ where: { id: a.admittedMembershipId }, data: { leftAt: now } });
+    // UNDER THE ADMISSION'S OWN LOCK, READ AGAIN (TA-529). The cancel read the application before an admission
+    // committed, cancelled no enrolment and wrote CANCELLED over ADMITTED, leaving an active student on a cancelled
+    // application and its seat counted free. Now an admission and a cancel take turns, and the cancel works on the
+    // application as the admission left it; its write is conditional on that state.
+    await tx.$queryRaw`SELECT 1 FROM pg_advisory_xact_lock(hashtext(${`college-seats:${d.schoolId}`}))`;
+    const cur = await tx.collegeApplication.findFirst({ where: { id: a.id, schoolId: d.schoolId }, select: { status: true, admittedMembershipId: true, admissionFeePaidAt: true, admissionFeePaise: true } });
+    if (!cur || cur.status === "CANCELLED" || cur.status === "REFUNDED") return null;
+    let { paidPaise, cautionPaise } = await paidOnSeat(d.schoolId, cur, tx);
+    // THE ADMISSION'S FEE MAY NOT BE ON THE LEDGER YET (TA-529, second reader). admitStudent posts the fee the college
+    // already holds after its transaction commits, and a cancel queued on the seat lock runs the moment it does: the
+    // first term then read unpaid and was cancelled below, the fee's own posting was refused (fees.refuseDemandsChanged,
+    // only logged), and the money was on no ledger with a refund worked out on nothing. While no payment of this
+    // admission (clientId college-admission-<id>) is on the ledger, the recorded fee counts as paid on the term it is
+    // posted against, and that term is left standing for it.
+    let feeTermId: string | null = null;
+    if (cur.status === "ADMITTED" && cur.admittedMembershipId && cur.admissionFeePaidAt && (cur.admissionFeePaise ?? 0) >= 100) {
+      const posted = await tx.feePayment.findFirst({ where: { schoolId: d.schoolId, clientId: `college-admission-${a.id}` }, select: { id: true } });
+      if (!posted) {
+        const fee = cur.admissionFeePaise ?? 0;
+        // The term admitStudent posts it against: the new seat's earliest due.
+        const term = await tx.feeDemand.findFirst({ where: { schoolId: d.schoolId, studentMembershipId: cur.admittedMembershipId, status: { not: "CANCELLED" } }, orderBy: { dueDate: "asc" }, select: { id: true, paidPaise: true, netPaise: true, linesJson: true } });
+        paidPaise += fee;
+        if (term) {
+          feeTermId = term.id;
+          cautionPaise += (await cautionPaidOn(d.schoolId, [{ paidPaise: term.paidPaise + fee, netPaise: term.netPaise, linesJson: term.linesJson }], tx)) - (await cautionPaidOn(d.schoolId, [term], tx));
+        }
+      }
     }
-    return tx.collegeApplication.update({ where: { id: a.id }, data: { status: "CANCELLED", cancelledAt: now, cancelReason: input.reason.trim().slice(0, 300), refundPaise: refund.refundPaise, refundSlab: refund.slab, refundRecordedAt: now }, include: APP_INCLUDE });
+    const refund = refundFor({ paidPaise, cautionPaise, cancelKey, lastKey: input.lastDateKey });
+    let cancelledDemands = 0;
+    if (cur.admittedMembershipId) {
+      // THE SEAT'S UNPAID TERMS GO WITH IT (TA-079), as recordDeparture's do (A3-journeys-15): an instalment with
+      // nothing paid against it is CANCELLED, the row kept, so the outstanding figure, the collection sheet and the
+      // defaulters list stop counting a student who gave the seat up. One with money against it is left as it stands,
+      // and so is the term the admission's fee is still being posted against.
+      cancelledDemands = (await tx.feeDemand.updateMany({ where: { schoolId: d.schoolId, studentMembershipId: cur.admittedMembershipId, status: "OPEN", paidPaise: 0, allocations: { none: {} }, ...(feeTermId ? { id: { not: feeTermId } } : {}) }, data: { status: "CANCELLED" } })).count;
+      await tx.programmeEnrolment.updateMany({ where: { studentMembershipId: cur.admittedMembershipId, programmeId: a.programmeId }, data: { status: "CANCELLED" } });
+      await tx.membership.update({ where: { id: cur.admittedMembershipId }, data: { leftAt: now } });
+    }
+    const moved = await tx.collegeApplication.updateMany({ where: { id: a.id, schoolId: d.schoolId, status: cur.status }, data: { status: "CANCELLED", cancelledAt: now, cancelReason: input.reason.trim().slice(0, 300), refundPaise: refund.refundPaise, refundSlab: refund.slab, refundRecordedAt: now } });
+    if (moved.count !== 1) throw new AccessError("collegeOffice.refuseStep");
+    return { refund, paidPaise, cautionPaise, cancelledDemands };
   });
-  await audit({ schoolId: d.schoolId, actorUserId: d.userId, action: "college.admissions.cancel", targetType: "CollegeApplication", targetId: a.id, meta: { slab: refund.slab, refundPaise: refund.refundPaise, paidPaise, cautionPaise } });
+  const updated = await officeApp(d, id);
+  if (!done) return applicationView(updated);
+  await audit({ schoolId: d.schoolId, actorUserId: d.userId, action: "college.admissions.cancel", targetType: "CollegeApplication", targetId: a.id, meta: { slab: done.refund.slab, refundPaise: done.refund.refundPaise, paidPaise: done.paidPaise, cautionPaise: done.cautionPaise, cancelledDemands: done.cancelledDemands } });
   return applicationView(updated);
 }
 
@@ -658,17 +749,17 @@ export async function cancelAdmission(ctx: ActiveContext, id: string, input: { r
  * year on the ledger, with the caution deposit inside it. The cancellation's slab reads it, and a refund asked
  * outside the slab is bounded by it (A3-S-15).
  */
-export async function paidOnSeat(schoolId: string, a: { status: string; admittedMembershipId: string | null; admissionFeePaidAt: Date | null; admissionFeePaise: number | null }): Promise<{ paidPaise: number; cautionPaise: number }> {
+export async function paidOnSeat(schoolId: string, a: { status: string; admittedMembershipId: string | null; admissionFeePaidAt: Date | null; admissionFeePaise: number | null }, client: Pick<typeof db, "feeDemand" | "feeHead"> = db): Promise<{ paidPaise: number; cautionPaise: number }> {
   if (a.admittedMembershipId && (a.status === "ADMITTED" || a.status === "CANCELLED" || a.status === "REFUNDED")) {
-    const demands = await db.feeDemand.findMany({ where: { studentMembershipId: a.admittedMembershipId, schoolId, status: { not: "CANCELLED" } }, select: { paidPaise: true, netPaise: true, linesJson: true } });
-    return { paidPaise: demands.reduce((s, x) => s + x.paidPaise, 0), cautionPaise: await cautionPaidOn(schoolId, demands) };
+    const demands = await client.feeDemand.findMany({ where: { studentMembershipId: a.admittedMembershipId, schoolId, status: { not: "CANCELLED" } }, select: { paidPaise: true, netPaise: true, linesJson: true } });
+    return { paidPaise: demands.reduce((s, x) => s + x.paidPaise, 0), cautionPaise: await cautionPaidOn(schoolId, demands, client) };
   }
   return { paidPaise: a.admissionFeePaidAt ? (a.admissionFeePaise ?? 0) : 0, cautionPaise: 0 };
 }
 
 /** The caution deposit inside what was paid: each demand's CAUTION_DEPOSIT lines, in proportion to what the demand has received. */
-export async function cautionPaidOn(schoolId: string, demands: { paidPaise: number; netPaise: number; linesJson: string }[]): Promise<number> {
-  const cautionHeads = new Set((await db.feeHead.findMany({ where: { schoolId, kind: "CAUTION_DEPOSIT" }, select: { id: true } })).map((h) => h.id));
+export async function cautionPaidOn(schoolId: string, demands: { paidPaise: number; netPaise: number; linesJson: string }[], client: Pick<typeof db, "feeHead"> = db): Promise<number> {
+  const cautionHeads = new Set((await client.feeHead.findMany({ where: { schoolId, kind: "CAUTION_DEPOSIT" }, select: { id: true } })).map((h) => h.id));
   if (!cautionHeads.size) return 0;
   let total = 0;
   for (const dm of demands) {
@@ -687,8 +778,68 @@ export async function recordRefund(ctx: ActiveContext, id: string, reference: st
   if (a.status !== "CANCELLED") throw new AccessError("collegeOffice.refuseStep");
   // A refund outside the slab waits for the principal before the bank pays anything (5 Oct 2026).
   if (a.refundAskStatus === "ASKED") throw new AccessError("collegeDesks.refuseRefundWaiting");
-  const updated = await db.collegeApplication.update({ where: { id: a.id }, data: { status: "REFUNDED", refundReference: reference.trim().slice(0, 80) }, include: APP_INCLUDE });
-  await audit({ schoolId: d.schoolId, actorUserId: d.userId, action: "college.admissions.refund", targetType: "CollegeApplication", targetId: a.id, meta: { refundPaise: a.refundPaise } });
+  const ref = reference.trim().slice(0, 80);
+  // THE REFUND REACHES THE BOOKS (TA-079). It was two fields on the application: the seat's payments stayed PAID in
+  // "Fees collected" and the finance table, and the Tally export carried the receipt with no voucher for the money
+  // going back. Now, in the same transaction as the close, the refund is written as the FeeRefund rows the books read,
+  // against the seat's PAID ledger payments newest first, as money already paid back from the college's bank (DONE;
+  // decision 0003). Each refund takes its amount off the payment's allocations, newest first, as requestRefund does,
+  // so a payment's allocations and its settled refunds still add up to what it was (the ledger's rule, which the data
+  // audit's fee-payment check holds; a second reader found the first version left the allocations whole). A term the
+  // cut leaves short is not owed by a student who gave the seat up: it is CANCELLED, its paid figure what is left on
+  // it, as the cancel did with the terms nothing was paid on. A seat cancelled before admission put nothing on the
+  // ledger, and writes nothing here.
+  const booked = await db.$tenantTransaction(async (raw) => {
+    const tx = raw as typeof db;
+    const moved = await tx.collegeApplication.updateMany({ where: { id: a.id, schoolId: d.schoolId, status: "CANCELLED", OR: [{ refundAskStatus: null }, { refundAskStatus: { not: "ASKED" } }] }, data: { status: "REFUNDED", refundReference: ref } });
+    if (moved.count !== 1) return null;
+    const seat = await tx.collegeApplication.findUniqueOrThrow({ where: { id: a.id }, select: { refundPaise: true, admittedMembershipId: true } });
+    let paise = 0;
+    let left = seat.refundPaise ?? 0;
+    const touched = new Set<string>();
+    if (seat.admittedMembershipId && left > 0) {
+      await tx.$queryRaw`SELECT "id" FROM "FeePayment" WHERE "schoolId" = ${d.schoolId} AND "studentMembershipId" = ${seat.admittedMembershipId} AND "status" = 'PAID' ORDER BY "id" FOR UPDATE`;
+      const payments = await tx.feePayment.findMany({ where: { schoolId: d.schoolId, studentMembershipId: seat.admittedMembershipId, status: "PAID" }, orderBy: [{ paidAt: "desc" }, { id: "desc" }], select: { id: true, amountPaise: true, refunds: { where: { status: { not: "FAILED" } }, select: { amountPaise: true } } } });
+      for (const p of payments) {
+        if (left <= 0) break;
+        const room = p.amountPaise - p.refunds.reduce((s, r) => s + r.amountPaise, 0);
+        const take = Math.min(room, left);
+        if (take <= 0) continue;
+        const cuts: { allocationId: string; amountPaise: number }[] = [];
+        let toCut = take;
+        for (const al of await tx.feeAllocation.findMany({ where: { paymentId: p.id }, orderBy: { id: "desc" }, select: { id: true, demandId: true, amountPaise: true } })) {
+          if (toCut <= 0) break;
+          const cut = Math.min(al.amountPaise, toCut);
+          if (cut <= 0) continue;
+          await tx.feeAllocation.update({ where: { id: al.id }, data: { amountPaise: al.amountPaise - cut } });
+          cuts.push({ allocationId: al.id, amountPaise: cut });
+          touched.add(al.demandId);
+          toCut -= cut;
+        }
+        await tx.feeRefund.create({ data: { schoolId: d.schoolId, paymentId: p.id, amountPaise: take, reason: ref, status: "DONE", cutsJson: JSON.stringify(cuts), requestedByUserId: d.userId, settledAt: new Date() } });
+        if (take === room) await tx.feePayment.update({ where: { id: p.id }, data: { status: "REFUNDED" } });
+        left -= take;
+        paise += take;
+      }
+      // The terms the refund cut: paid in full still stands PAID; short of it, the seat is gone and nothing more is owed.
+      for (const demandId of touched) {
+        const [dm, settled] = await Promise.all([
+          tx.feeDemand.findUniqueOrThrow({ where: { id: demandId }, select: { netPaise: true, status: true } }),
+          tx.feeAllocation.aggregate({ where: { demandId, payment: { status: { in: ["PAID", "REFUNDED"] } } }, _sum: { amountPaise: true } }),
+        ]);
+        if (dm.status === "WAIVED" || dm.status === "CANCELLED" || dm.status === "CARRIED") continue;
+        const paidNow = settled._sum.amountPaise ?? 0;
+        await tx.feeDemand.update({ where: { id: demandId }, data: { paidPaise: paidNow, status: paidNow >= dm.netPaise ? "PAID" : "CANCELLED" } });
+      }
+    }
+    return { paise, refundPaise: seat.refundPaise };
+  });
+  const updated = await officeApp(d, id);
+  if (!booked) {
+    if (updated.status === "REFUNDED") return applicationView(updated);
+    throw new AccessError(updated.refundAskStatus === "ASKED" ? "collegeDesks.refuseRefundWaiting" : "collegeOffice.refuseStep");
+  }
+  await audit({ schoolId: d.schoolId, actorUserId: d.userId, action: "college.admissions.refund", targetType: "CollegeApplication", targetId: a.id, meta: { refundPaise: booked.refundPaise, bookedPaise: booked.paise } });
   return applicationView(updated);
 }
 
