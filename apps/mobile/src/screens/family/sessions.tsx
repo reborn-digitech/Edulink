@@ -205,7 +205,13 @@ export function FamilySessions() {
                         ) : null}
                       </>
                     ) : null}
-                    {b.canReportUnheld ? <Button label={t("gigs.reportUnheld")} variant="secondary" accessibilityLabel={[t("gigs.reportUnheld"), b.title].join(": ")} busy={running(seat(b.id, "unheld"))} onPress={() => act.mutate({ path: seat(b.id, "unheld"), done: t("gigs.reportedUnheld") })} /> : null}
+                    {/* TA-122: a seat the provider marked may be said not held until the hold runs out; the operator decides. */}
+                    {b.disputeUntil ? (
+                      <Text variant="xs" tone="muted">
+                        {t("gigs.disputeUntil", { when: when(b.disputeUntil) })}
+                      </Text>
+                    ) : null}
+                    {b.canReportUnheld ? <Button label={t("gigs.reportUnheld")} variant="secondary" accessibilityLabel={[t("gigs.reportUnheld"), b.title].join(": ")} busy={running(seat(b.id, "unheld"))} onPress={() => act.mutate({ path: seat(b.id, "unheld"), done: (data) => ((data as { status?: string }).status === "DISPUTED" ? t("gigs.reportedDisputed") : t("gigs.reportedUnheld")) })} /> : null}
                     {b.canRate ? (
                       <View style={{ gap: th.space[2] }}>
                         <Chips label={t("gigs.ratingLabel")} value={rating[b.id] ?? "5"} onChange={(v) => setRating((prev) => ({ ...prev, [b.id]: v }))} options={["1", "2", "3", "4", "5"].map((n) => ({ value: n, label: n }))} />

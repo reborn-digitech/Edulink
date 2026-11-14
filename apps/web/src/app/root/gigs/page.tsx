@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { formatPaise } from "@edulink/i18n";
 import { requireSuperuser } from "@/lib/tenancy";
 import { gigOverview } from "@/lib/gig-questions";
-import { sessionCounts } from "@/lib/gig-sessions";
+import { operatorDisputes, sessionCounts } from "@/lib/gig-sessions";
 import { operatorInvoices, operatorPayouts } from "@/lib/gig-payments";
 import { formatInZone } from "@/lib/dates";
 import { getLocale, getT } from "@/lib/i18n/server";
@@ -10,7 +10,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { PageHeader } from "@/components/ui/page-header";
-import { CompanyForm, LinkAllExperts, PaymentForm, PaymentsSwitch, PayoutForm, RetryPayment, SettingsForm, SuspendPayee } from "./forms";
+import { CompanyForm, DecideDispute, LinkAllExperts, PaymentForm, PaymentsSwitch, PayoutForm, RetryPayment, SettingsForm, SuspendPayee } from "./forms";
 
 export async function generateMetadata(): Promise<Metadata> {
   return { title: (await getT())("gigs.operatorTitle") };
@@ -37,7 +37,7 @@ export default async function RootGigsPage() {
   const t = await getT();
   const locale = await getLocale();
   const money = (paise: number) => formatPaise(paise, locale);
-  const [o, sessions, payouts, invoices] = await Promise.all([gigOverview(session), sessionCounts(session), operatorPayouts(session), operatorInvoices(session)]);
+  const [o, sessions, payouts, invoices, disputes] = await Promise.all([gigOverview(session), sessionCounts(session), operatorPayouts(session), operatorInvoices(session), operatorDisputes(session)]);
   const s = o.settings;
   const day = (iso: string) => formatInZone(new Date(iso), "Asia/Kolkata", { dateStyle: "medium" });
 
@@ -207,6 +207,37 @@ export default async function RootGigsPage() {
               },
             ]}
           />
+        </CardBody>
+      </Card>
+
+      {/* TA-122 (the owner's decision of 14 November 2026): the seats a family says were not held after the provider marked them. */}
+      <Card>
+        <CardHeader title={t("gigs.opDisputesTitle")} description={t("gigs.opDisputesIntro")} />
+        <CardBody>
+          {disputes.disputes.length === 0 ? (
+            <p className="text-sm text-fg-muted" data-testid="gig-disputes-none">
+              {t("gigs.opDisputesNone")}
+            </p>
+          ) : (
+            <ul className="divide-y divide-border" data-testid="gig-disputes">
+              {disputes.disputes.map((d) => (
+                <li key={d.bookingId} className="flex flex-wrap items-center justify-between gap-2 py-2">
+                  <div className="min-w-0 flex-1">
+                    <p className="break-words text-sm font-medium text-fg">{d.title}</p>
+                    <p className="text-xs text-fg-muted">
+                      {t(`gigs.kind${d.kind}`)} · {day(d.startsAt)} · {t("gigs.withProvider", { name: d.providerName })} ({t(`gigs.provider${d.providerKind}`)}) · {d.schoolName}
+                    </p>
+                    <p className="text-xs text-fg-muted">
+                      {t(`gigs.bookingStatus${d.mark}`)}
+                      {d.amountPaise !== null ? ` · ${money(d.amountPaise)}` : ""}
+                      {d.disputedAt ? ` · ${day(d.disputedAt)}` : ""}
+                    </p>
+                  </div>
+                  <DecideDispute bookingId={d.bookingId} title={d.title} />
+                </li>
+              ))}
+            </ul>
+          )}
         </CardBody>
       </Card>
 

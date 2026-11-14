@@ -34,6 +34,7 @@ const BOOKING_STATUS_KEY: Record<string, TranslationKey> = {
   DELIVERED: "gigs.bookingStatusDELIVERED",
   MISSED: "gigs.bookingStatusMISSED",
   UNHELD: "gigs.bookingStatusUNHELD",
+  DISPUTED: "gigs.bookingStatusDISPUTED",
 };
 const bookingStatusLabel = (t: (key: TranslationKey) => string, status: string) => {
   const key = BOOKING_STATUS_KEY[status];

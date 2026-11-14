@@ -19,7 +19,7 @@ function ruleWords(t: Awaited<ReturnType<typeof getT>>, rule: GigSeriesRule): st
 }
 import { PaidGateList, TeacherGateList } from "./paid-gate";
 
-const TONE: Record<BookingStatus, "info" | "ok" | "neutral" | "warn" | "danger"> = { PENDING_CONSENT: "info", PENDING_PAYMENT: "warn", CONFIRMED: "ok", CANCELLED: "neutral", DELIVERED: "ok", MISSED: "warn", UNHELD: "danger" };
+const TONE: Record<BookingStatus, "info" | "ok" | "neutral" | "warn" | "danger"> = { PENDING_CONSENT: "info", PENDING_PAYMENT: "warn", CONFIRMED: "ok", CANCELLED: "neutral", DELIVERED: "ok", MISSED: "warn", UNHELD: "danger", DISPUTED: "warn" };
 
 /**
  * A provider's side of sessions, the same for an expert and a teacher: what

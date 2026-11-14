@@ -14,7 +14,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return { title: (await getT())("gigs.sessionsTitle"), robots: { index: false, follow: false } };
 }
 
-const TONE: Record<BookingStatus, "info" | "ok" | "neutral" | "warn" | "danger"> = { PENDING_CONSENT: "info", PENDING_PAYMENT: "warn", CONFIRMED: "ok", CANCELLED: "neutral", DELIVERED: "ok", MISSED: "warn", UNHELD: "danger" };
+const TONE: Record<BookingStatus, "info" | "ok" | "neutral" | "warn" | "danger"> = { PENDING_CONSENT: "info", PENDING_PAYMENT: "warn", CONFIRMED: "ok", CANCELLED: "neutral", DELIVERED: "ok", MISSED: "warn", UNHELD: "danger", DISPUTED: "warn" };
 
 /**
  * Sessions and workshops, for a pupil and for a guardian: the free allowance
@@ -87,6 +87,11 @@ export default async function SessionsPage({ searchParams }: { searchParams: Pro
                               {t("gigs.joinLink")}
                             </a>
                             <span className="ml-2 text-xs text-fg-muted">{t("gigs.linkHint")}</span>
+                          </p>
+                        )}
+                        {b.disputeUntil && (
+                          <p className="text-xs text-fg-muted" data-testid="session-dispute-until">
+                            {t("gigs.disputeUntil", { when: when(b.disputeUntil) })}
                           </p>
                         )}
                         <SeatActions bookingId={b.id} title={b.title} canConsent={b.canConsent} canPay={b.canPay} payAmount={b.pricePaise} canCancel={b.canCancel} canRate={b.canRate} canReportUnheld={b.canReportUnheld} confirmed={b.status === "CONFIRMED"} lateHours={freeCancelHours} />

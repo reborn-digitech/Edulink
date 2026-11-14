@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { TextField } from "@/components/ui/field";
 import { useToast } from "@/components/ui/toast";
 import { useT } from "@/lib/i18n";
-import { linkAllExpertsAction, recordGigPaymentAction, recordPayoutAction, retryPaymentAction, saveCompanyAction, saveGigSettingsAction, suspendPayeeAction, switchPaymentsAction } from "./actions";
+import { decideDisputeAction, linkAllExpertsAction, recordGigPaymentAction, recordPayoutAction, retryPaymentAction, saveCompanyAction, saveGigSettingsAction, suspendPayeeAction, switchPaymentsAction } from "./actions";
 
 export type Dial = {
   key: string;
@@ -199,6 +199,38 @@ export function RetryPayment({ paymentId }: { paymentId: string }) {
         data-testid="gig-payment-retry"
       >
         {t("gigs.opRetry")}
+      </Button>
+      {error && (
+        <span role="alert" className="text-sm font-medium text-danger">
+          {error}
+        </span>
+      )}
+    </span>
+  );
+}
+
+/** TA-122: the operator's two answers to a family's dispute of a marked seat. */
+export function DecideDispute({ bookingId, title }: { bookingId: string; title: string }) {
+  const t = useT();
+  const router = useRouter();
+  const { toast } = useToast();
+  const [pending, startTransition] = useTransition();
+  const [error, setError] = useState<string | null>(null);
+  const decide = (decision: "REFUND" | "RELEASE") =>
+    startTransition(async () => {
+      setError(null);
+      const result = await decideDisputeAction(bookingId, decision);
+      if (!result.ok) return setError(result.error);
+      toast({ tone: "ok", title: result.message });
+      router.refresh();
+    });
+  return (
+    <span className="inline-flex flex-wrap items-center gap-2">
+      <Button type="button" size="sm" variant="secondary" disabled={pending} onClick={() => decide("REFUND")} aria-label={[t("gigs.opDisputeRefund"), title].join(": ")} data-testid="gig-dispute-refund">
+        {t("gigs.opDisputeRefund")}
+      </Button>
+      <Button type="button" size="sm" variant="ghost" disabled={pending} onClick={() => decide("RELEASE")} aria-label={[t("gigs.opDisputeRelease"), title].join(": ")} data-testid="gig-dispute-release">
+        {t("gigs.opDisputeRelease")}
       </Button>
       {error && (
         <span role="alert" className="text-sm font-medium text-danger">

@@ -6,6 +6,7 @@ import { getLocale, getT } from "@/lib/i18n/server";
 import { requireApiOperator, AccessError } from "@/lib/tenancy";
 import { gigSettings, recordGigPayment, saveGigSettings, type GigSettingsView } from "@/lib/gig-questions";
 import { type CompanyInput, linkAllExperts, type PayoutRecordInput, recordPayout, retrySeatPayment, saveCompanyDetails, setPaymentsEnabled, suspendPayee } from "@/lib/gig-payments";
+import { decideDispute } from "@/lib/gig-sessions";
 
 type Result = { ok: true; message: string } | { ok: false; error: string };
 
@@ -99,6 +100,20 @@ export async function retryPaymentAction(paymentId: string): Promise<Result> {
       ok: true,
       message: t("gigs.opRetried", { outcome: result.outcome }),
     };
+  } catch (error) {
+    return failure(error);
+  }
+}
+
+/** TA-122: the operator decides a family's dispute of a marked seat — not held (the family refunded) or the mark stands. */
+export async function decideDisputeAction(bookingId: string, decision: "REFUND" | "RELEASE"): Promise<Result> {
+  try {
+    const ctx = await requireApiOperator();
+    const result = await decideDispute(ctx, bookingId, decision);
+    const t = await getT();
+    if (!result.ok) return { ok: false, error: t(result.errorKey, result.vars) };
+    revalidatePath("/root/gigs");
+    return { ok: true, message: t(decision === "REFUND" ? "gigs.opDisputeRefunded" : "gigs.opDisputeReleased") };
   } catch (error) {
     return failure(error);
   }

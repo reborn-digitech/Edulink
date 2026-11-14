@@ -884,6 +884,10 @@ export async function releaseDue(now: Date = new Date()): Promise<ReleaseRun> {
   // ROUTE: the hold comes off at the gateway, seat by seat — never for an expert the operator has stopped paying
   // (suspendPayee, TA-187): their seats stay HELD until the stop is lifted, and a refund still goes.
   const stopped = (await db.expertPayoutAccount.findMany({ where: { status: "SUSPENDED" }, select: { expertUserId: true } })).map((a) => a.expertUserId);
+  // TA-122: a seat the family disputes waits for the operator: its hold was taken off (holdUntil null) in the same
+  // transaction as the dispute, so neither this path nor the company-collects one below finds it. The booking is not
+  // asked here: a read of it through the payment is the nested read TA-183 forbids, and it would match nothing under
+  // the job's binding.
   for (const p of await db.sessionPayment.findMany({ where: { path: "ROUTE", status: "HELD", transferId: { not: null }, holdUntil: { not: null, lte: now }, OR: [{ pendingAction: null }, { pendingAction: { not: "REFUND" } }], ...(stopped.length ? { expertUserId: { notIn: stopped } } : {}) }, orderBy: { holdUntil: "asc" }, select: PAYMENT_SELECT, take: 500 })) {
     try {
       await releaseTransfer(p.transferId!);
@@ -1008,6 +1012,8 @@ export async function retrySeatPayment(ctx: ActiveContext, paymentRowId: string,
   if (!p) throw new AccessError("gigs.noSuchPayment", "NOT_FOUND");
   await audit({ actorUserId: ctx.user.id, action: "gig.payment.retry", targetType: "SessionPayment", targetId: p.id, meta: { action: p.pendingAction, status: p.status } });
   if (p.pendingAction === "REFUND") return { ok: true, outcome: await refundSeatPayment(p.bookingId, p.reason ?? "refund", ctx.user.id, now) };
+  // TA-122: a seat the family disputes is left alone until the operator decides it (a waiting refund still goes).
+  if ((await bookingOfPayment(p))?.status === "DISPUTED") return { ok: false, errorKey: "gigs.refuseDisputed" };
   if (p.pendingAction === "RELEASE" && p.status === "HELD" && p.transferId) {
     if (!(await paymentsOn())) return { ok: false, errorKey: "gigs.refusePaymentsOff" };
     // Payments to this expert are stopped (TA-187): the hold stays until the operator lifts the stop.

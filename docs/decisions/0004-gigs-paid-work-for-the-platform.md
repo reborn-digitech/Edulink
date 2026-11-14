@@ -103,6 +103,17 @@ The accountant's questions above still stand, reread for Route: **TCS under sect
 
 **Untested against a real account:** every call ran under the devbox transport and the fake webhook signature (`tests/gig-payments.test.ts`, 19 cases). The linked-account calls follow Razorpay's published API (create account, stakeholder, product request, product update, product fetch) as read on 2 October 2026, but what a real account answers — the requirements it raises for an individual, the time to activation, the shape of a transfer's `source` in its webhook — has not been seen. Test it in Razorpay's test mode first (go-live runbook, 5.1).
 
+## Amendment of 14 November 2026 — the family may dispute a marked seat, and the operator decides (TA-122)
+
+The testing analysis of 13 November found that the 48-hour hold had no use inside the product: a provider could mark a seat held (or the pupil absent) from the first second of the session, which shut the family's "not held", and nothing could stop the pay-out that followed. The owner chose option 1, the recommendation put to them, on 14 November 2026 without asking for alternatives. What it adds:
+
+- **The family may dispute a marked seat.** From the session's end until the hold runs out — the mark plus 48 hours, on a free seat as on a paid one — the family may say "not held" on a seat marked DELIVERED or MISSED, once. The seat becomes **DISPUTED** (a new seat state in the contract list, on the web and on the phone; no migration, the state is free text). The provider's mark is kept in the dispute's audit row, written in the same transaction.
+- **The pay-out waits.** A paid seat's hold is taken off when it is disputed; the hourly release (the Route path and the company-collects path) and the operator's retry leave a disputed seat alone, except a waiting refund, which is the family's money.
+- **The operator decides** on `/root/gigs` (and the phone's paid-seats screen), by asking both sides — the app keeps no record of who opened the meeting link: *not held*, the seat is UNHELD, a paid seat refunded in full, and on a free seat it comes off the pupil's allowance and off the expert's free duty; or *the mark stands*, and a paid seat's hold ends at once, so the next hourly run pays it out. While it waits, a seat counts against the pupil's allowance as its mark did, and not toward the expert's free duty, as the pay-out waits.
+- **Both sides are told at each step**, and the family is now told when a seat is marked "pupil did not come", with the time until which it may object (before, only a "held" mark was told). That notice was the coordinating session's own addition after reading the code, put to the owner inside option 1.
+
+Doors: `GET /api/v1/operator/gigs/disputes` and `POST /api/v1/operator/gigs/disputes/{bookingId}/decide` (REFUND or RELEASE); the family's existing `POST /api/v1/gigs/sessions/{bookingId}/unheld` answers DISPUTED on a marked seat. While paid seats are off, every dispute is about a free session.
+
 ## Before paid sessions were built (kept as written on 2026-09-30)
 
 - A **new decision** for the gateway split, with its own invariants (the fees test forbids transfer and route calls in `gateway.ts` and model names beginning Platform, Wallet, Escrow, Nodal, Settlement or Payout; the gig gateway is its own module).

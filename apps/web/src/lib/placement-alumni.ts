@@ -241,11 +241,14 @@ export async function createMeet(ctx: ActiveContext, input: { title: string; on:
   return (await meetViews(office.schoolId, null)).find((m) => m.id === meet.id)!;
 }
 
-/** The seats taken in a mentor's own one-to-ones, to mark held or not attended once begun (closeBooking in gig-sessions.ts). */
+/**
+ * The seats taken in a mentor's own one-to-ones, to mark held or not attended once begun (closeBooking in gig-sessions.ts),
+ * and a seat the family disputes while the operator decides (TA-122), so the mentor still sees it.
+ */
 export async function mentorBookings(ctx: ActiveContext) {
   const me = await alumnusAtCollege(ctx);
   const rows = await db.gigBooking.findMany({
-    where: { schoolId: me.schoolId, providerUserId: me.userId, slot: { providerKind: "ALUMNUS" }, status: { in: ["CONFIRMED", "PENDING_CONSENT", "DELIVERED", "MISSED"] } },
+    where: { schoolId: me.schoolId, providerUserId: me.userId, slot: { providerKind: "ALUMNUS" }, status: { in: ["CONFIRMED", "PENDING_CONSENT", "DELIVERED", "MISSED", "DISPUTED"] } },
     orderBy: { createdAt: "desc" },
     take: 50,
     select: { id: true, status: true, purpose: true, slot: { select: { title: true, startsAt: true } }, student: { select: { user: { select: { name: true, preferredName: true } } } } },

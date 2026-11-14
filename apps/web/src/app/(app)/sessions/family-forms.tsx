@@ -163,7 +163,7 @@ export function SeatActions({ bookingId, title, canConsent, canPay = false, payA
           </Button>
         )}
         {canReportUnheld && (
-          <Button type="button" size="sm" variant="secondary" disabled={pending} onClick={() => act(() => unheldAction(bookingId), t("gigs.reportedUnheld"))} aria-label={[t("gigs.reportUnheld"), title].join(": ")} data-testid="session-unheld">
+          <Button type="button" size="sm" variant="secondary" disabled={pending} onClick={() => act(() => unheldAction(bookingId), (r) => ((r as { status?: string }).status === "DISPUTED" ? t("gigs.reportedDisputed") : t("gigs.reportedUnheld")))} aria-label={[t("gigs.reportUnheld"), title].join(": ")} data-testid="session-unheld">
             {t("gigs.reportUnheld")}
           </Button>
         )}

@@ -6,13 +6,15 @@ import { audit } from "./audit";
 import { notify, notifyGuardians } from "./notify";
 import { AccessError } from "./tenancy";
 import { consentApplies } from "./student-consent";
-import { forSchool } from "./tenant-context";
+import { forSchool, forUser } from "./tenant-context";
 import { currentAcademicYear } from "./academic-year";
 import { isMeetingLink, meetingCapFor, meetingCapsOf, MEETING_SERVICE_NAMES, type MeetingCaps } from "./meeting-links";
-import { dateKeyRange, isDateKey, weekdayOfKey, zonedStartOfDay } from "./dates";
+import { dateKeyInZone, dateKeyRange, isDateKey, safeTimeZone, weekdayOfKey, zonedStartOfDay } from "./dates";
+import { noticeDate } from "./notice-dates";
+import { readJson } from "./json";
 import type { GigSeriesRule } from "@edulink/contracts";
 import { gigSettings, monthKey, type GigResult, type GigSettingsView } from "./gig-questions";
-import { HOLD_HOURS, UNPAID_SEAT_EXPIRY_MS, markCaptured, openCheckout, paymentSettings, paymentsOn, payoutAccountOf, refundSeatPayment, releaseDue, rupees, scheduleRelease, type PaymentSettings, type PayoutAccountView, type ReleaseRun, type SeatCheckout } from "./gig-payments";
+import { HOLD_HOURS, UNPAID_SEAT_EXPIRY_MS, markCaptured, openCheckout, paymentSettings, paymentsOn, payoutAccountOf, refundSeatPayment, releaseDue, rupees, scheduleRelease, type PaymentSettings, type PayoutAccountView, type ReleaseRun, type SeatCheckout, type SessionPaymentStatus } from "./gig-payments";
 import type { ActiveContext } from "./session";
 import { assertFeatureOn, assertFeatureSwitchOn, mayUse, type WhoLike } from "./platform-features";
 import { mentorsInStanding } from "./alumni-mentors";
@@ -77,7 +79,18 @@ import { mentorsInStanding } from "./alumni-mentors";
  */
 export const SESSION_KINDS = ["ONE_TO_ONE", "WORKSHOP"] as const;
 export type SessionKind = (typeof SESSION_KINDS)[number];
-export const BOOKING_STATUSES = ["PENDING_CONSENT", "PENDING_PAYMENT", "CONFIRMED", "CANCELLED", "DELIVERED", "MISSED", "UNHELD"] as const;
+/**
+ * DISPUTED (TA-122, the owner's decision of 14 November 2026, option 1): a seat the provider marked DELIVERED or
+ * MISSED that the family says was not held, from the session's end until the hold runs out (the mark plus
+ * HOLD_HOURS, on a free seat as on a paid one). The pay-out waits — the payment's hold is taken off (holdUntil null),
+ * which every release path needs, and the hourly release and the operator's retry also refuse a disputed seat — and
+ * the operator decides (`decideDispute`): not held, the seat is UNHELD (off the pupil's allowance and off the
+ * expert's free duty) and a paid seat refunded in full; held, the provider's mark stands again and the pay-out goes.
+ * While it waits the seat still counts against the pupil's allowance, as the mark did, and not toward the expert's
+ * free duty, as the pay-out waits. The mark itself is kept in the dispute's audit row, written in the same transaction
+ * as the state, and read back from there; a seat is disputed once.
+ */
+export const BOOKING_STATUSES = ["PENDING_CONSENT", "PENDING_PAYMENT", "CONFIRMED", "CANCELLED", "DELIVERED", "MISSED", "UNHELD", "DISPUTED"] as const;
 export type BookingStatus = (typeof BOOKING_STATUSES)[number];
 
 const ONE_TO_ONE_MINUTES = 30;
@@ -237,7 +250,8 @@ async function usedBy(client: BookingReader, c: Child, yearId: string | null): P
       // A paid seat draws on no allowance, and neither does an alumni mentor's (G4-26, risks batch 5 Oct 2026).
       paid: false,
       slot: { providerKind: { not: "ALUMNUS" } },
-      OR: [{ status: { in: ["PENDING_CONSENT", "CONFIRMED", "DELIVERED", "MISSED"] } }, { status: "CANCELLED", lateCancel: true }],
+      // A seat in dispute counts as its mark did until the operator decides (TA-122).
+      OR: [{ status: { in: ["PENDING_CONSENT", "CONFIRMED", "DELIVERED", "MISSED", "DISPUTED"] } }, { status: "CANCELLED", lateCancel: true }],
     },
     _count: { _all: true },
   });
@@ -857,8 +871,39 @@ export async function closeBooking(ctx: ActiveContext, bookingId: string, outcom
   if (outcome === "DELIVERED") {
     const names = await pupilNames([b]);
     await tellFamily(b, names.get(b.studentMembershipId)?.userId ?? null, () => ({ kind: noteKind(b.slot.providerKind), titleKey: "gigs.notifDelivered", titleVars: { title: b.slot.title }, url: "/sessions" }));
+  } else {
+    // TA-122: a "pupil did not come" is told to the family too, with the time until which it may say it was not held,
+    // read in the school's clock (the date in each reader's language, the time as 24-hour digits).
+    const names = await pupilNames([b]);
+    const until = new Date(now.getTime() + HOLD_HOURS * HOUR);
+    const zone = safeTimeZone((await forSchool(b.schoolId, () => db.school.findUnique({ where: { id: b.schoolId }, select: { timezone: true } })))?.timezone);
+    const time = new Intl.DateTimeFormat("en-GB", { timeZone: zone, hour: "2-digit", minute: "2-digit", hourCycle: "h23" }).format(until);
+    await tellFamily(b, names.get(b.studentMembershipId)?.userId ?? null, () => ({ kind: noteKind(b.slot.providerKind), titleKey: "gigs.notifMissedObject", titleVars: { title: b.slot.title, time, date: noticeDate(dateKeyInZone(until, zone), "long") }, url: "/sessions" }));
   }
   return { ok: true };
+}
+
+/* -------------------------------------------------------------------------- */
+/* Disputes (TA-122, the owner's decision of 14 November 2026)                 */
+/* -------------------------------------------------------------------------- */
+
+type Mark = "DELIVERED" | "MISSED";
+const MARKS: BookingStatus[] = ["DELIVERED", "MISSED"];
+/** Until when the family may say a marked seat was not held: the hold's end, the mark plus HOLD_HOURS (closeBooking sets the paid seat's hold from the same instant). */
+const disputeDeadline = (closedAt: Date | null): Date | null => (closedAt ? new Date(closedAt.getTime() + HOLD_HOURS * HOUR) : null);
+/** The bookings among these a family has disputed before, decided or not: a seat is disputed once. Read under the school's binding. */
+async function disputedBefore(schoolId: string, bookingIds: string[]): Promise<Set<string>> {
+  if (bookingIds.length === 0) return new Set();
+  const rows = await forSchool(schoolId, () => db.auditLog.findMany({ where: { schoolId, action: "gig.booking.disputed", targetId: { in: bookingIds } }, select: { targetId: true } }));
+  return new Set(rows.map((r) => r.targetId ?? ""));
+}
+/** The provider's mark a dispute is about, and when it was disputed, from the dispute's own audit row (written with the state). */
+async function disputeRecord(schoolId: string, bookingId: string): Promise<{ mark: Mark; disputedAt: Date | null }> {
+  const row = await forSchool(schoolId, () => db.auditLog.findFirst({ where: { schoolId, action: "gig.booking.disputed", targetId: bookingId }, orderBy: { createdAt: "desc" }, select: { meta: true, createdAt: true } }));
+  // The row is written in the transaction that sets DISPUTED, so it is there while the seat is; only the audit log's
+  // retention could take it, and then the mark read is the held one.
+  const mark = readJson<{ mark?: string }>(row?.meta, {}).mark === "MISSED" ? "MISSED" : "DELIVERED";
+  return { mark, disputedAt: row?.createdAt ?? null };
 }
 
 /* -------------------------------------------------------------------------- */
@@ -926,6 +971,8 @@ export type FamilyBooking = {
   canCancel: boolean;
   canRate: boolean;
   canReportUnheld: boolean;
+  /** TA-122: on a seat the provider marked, until when the family may still say it was not held; null otherwise. */
+  disputeUntil: string | null;
 };
 export type FamilyChild = { id: string; name: string; schoolName: string; /** The school's clock, which the times are read in. */ timeZone: string; /** Who reads this pays for a priced seat themselves: a guardian, or a pupil of eighteen or more; a pupil under eighteen asks a parent (seats, 17 Oct 2026). */ selfPays: boolean; allowance: Allowance; bookings: FamilyBooking[]; open: OpenSlot[]; /** The series with a session open to this pupil (decision 0008). */ series: FamilySeries[] };
 
@@ -941,7 +988,7 @@ export async function familySessions(ctx: ActiveContext, now: Date = new Date())
       where: { schoolId: c.schoolId, studentMembershipId: c.membershipId },
       orderBy: { createdAt: "desc" },
       take: 100,
-      select: { ...BOOKING_SELECT, slot: { select: { title: true, startsAt: true, endsAt: true, meetingUrl: true, providerKind: true, providerUserId: true, teacherSchoolId: true, pricePaise: true, provider: { select: { name: true } } } }, payment: { select: { id: true, status: true, amountPaise: true, refundedAt: true } } },
+      select: { ...BOOKING_SELECT, closedAt: true, slot: { select: { title: true, startsAt: true, endsAt: true, meetingUrl: true, providerKind: true, providerUserId: true, teacherSchoolId: true, pricePaise: true, provider: { select: { name: true } } } }, payment: { select: { id: true, status: true, amountPaise: true, refundedAt: true } } },
     });
     // TA-123: as the join door, never the room of a provider the operator has closed or a teacher the school has
     // suspended: such a confirmed seat lists no link and no join. Asked once per provider, for seats otherwise joinable.
@@ -952,6 +999,9 @@ export async function familySessions(ctx: ActiveContext, now: Date = new Date())
       standing.set(standingKey(b.slot), await providerStands(b.slot, false));
     }
     const allowance = await allowanceOf(c, settings);
+    // TA-122: a marked seat may be disputed from its end until the hold runs out, once.
+    const openToDispute = (b: (typeof rows)[number]) => MARKS.includes(b.status as BookingStatus) && b.slot.endsAt <= now && (disputeDeadline(b.closedAt)?.getTime() ?? 0) > now.getTime();
+    const disputedOnce = await disputedBefore(c.schoolId, rows.filter(openToDispute).map((b) => b.id));
     const selfPays = ctx.role === "PARENT" || !c.isMinor;
     const open = await openFor(c, now, allowance, kinds);
     out.push({
@@ -989,7 +1039,8 @@ export async function familySessions(ctx: ActiveContext, now: Date = new Date())
           canPay: selfPays && status === "PENDING_PAYMENT" && !begun,
           canCancel: LIVE.includes(status) && !begun,
           canRate: status === "DELIVERED" && b.rating === null,
-          canReportUnheld: status === "CONFIRMED" && over,
+          canReportUnheld: (status === "CONFIRMED" && over) || (openToDispute(b) && !disputedOnce.has(b.id)),
+          disputeUntil: openToDispute(b) && !disputedOnce.has(b.id) ? disputeDeadline(b.closedAt)!.toISOString() : null,
         };
       }),
     });
@@ -1155,8 +1206,8 @@ export async function settleSeatPayment(input: { orderId: string; gatewayPayment
   return { outcome: result.outcome, bookingId: booking.id };
 }
 
-type Loaded = BookingRow & { slot: { id: string; title: string; startsAt: Date; endsAt: Date; providerKind: string; providerUserId: string; teacherSchoolId: string | null; cancelledAt: Date | null; pricePaise: number; provider: { name: string } }; student: ChildRow };
-const LOADED = { ...BOOKING_SELECT, slot: { select: { id: true, title: true, startsAt: true, endsAt: true, providerKind: true, providerUserId: true, teacherSchoolId: true, cancelledAt: true, pricePaise: true, provider: { select: { name: true } } } }, student: { select: CHILD_SELECT } } as const;
+type Loaded = BookingRow & { closedAt: Date | null; slot: { id: string; title: string; startsAt: Date; endsAt: Date; providerKind: string; providerUserId: string; teacherSchoolId: string | null; cancelledAt: Date | null; pricePaise: number; provider: { name: string } }; student: ChildRow };
+const LOADED = { ...BOOKING_SELECT, closedAt: true, slot: { select: { id: true, title: true, startsAt: true, endsAt: true, providerKind: true, providerUserId: true, teacherSchoolId: true, cancelledAt: true, pricePaise: true, provider: { select: { name: true } } } }, student: { select: CHILD_SELECT } } as const;
 
 /** A booking of one of this family's own pupils; anybody else's is not found. */
 async function familyBooking(ctx: ActiveContext, bookingId: string): Promise<{ b: Loaded; c: Child }> {
@@ -1254,6 +1305,8 @@ export async function cancelBooking(ctx: ActiveContext, bookingId: string, reaso
 export async function reportUnheld(ctx: ActiveContext, bookingId: string, now: Date = new Date()): Promise<GigResult<{ status: BookingStatus }>> {
   const { b, c } = await familyBooking(ctx, bookingId);
   if (b.status === "UNHELD") return { ok: true, status: "UNHELD" };
+  if (b.status === "DISPUTED") return { ok: true, status: "DISPUTED" };
+  if (MARKS.includes(b.status as BookingStatus)) return disputeMark(ctx, b, c, now);
   if (b.status !== "CONFIRMED") return { ok: false, errorKey: "gigs.refuseNotConfirmed" };
   if (b.slot.endsAt > now) return { ok: false, errorKey: "gigs.refuseNotYet" };
   const changed = await db.gigBooking.updateMany({ where: { id: b.id, schoolId: b.schoolId, status: "CONFIRMED" }, data: { status: "UNHELD", closedAt: now } });
@@ -1263,6 +1316,49 @@ export async function reportUnheld(ctx: ActiveContext, bookingId: string, now: D
   // An expert's no-show is refunded in full (decision 0004).
   if (b.paid) await refundPaidSeat(b, c.userId, "the provider did not hold the session", ctx.user.id);
   return { ok: true, status: "UNHELD" };
+}
+
+/**
+ * TA-122: the family says a seat the provider marked was not held. From the session's end until the hold runs out,
+ * and once: the seat is DISPUTED, a paid seat's hold taken off (so nothing releases it) and the audit row that keeps
+ * the mark written, in one tenant transaction; the provider and the family are told. The operator decides
+ * (`decideDispute`).
+ */
+async function disputeMark(ctx: ActiveContext, b: Loaded, c: Child, now: Date): Promise<GigResult<{ status: BookingStatus }>> {
+  const mark = b.status as Mark;
+  if (b.slot.endsAt > now) return { ok: false, errorKey: "gigs.refuseNotYet" };
+  const until = disputeDeadline(b.closedAt);
+  if (!until || until <= now) return { ok: false, errorKey: "gigs.refuseDisputeClosed" };
+  // Disputed before and decided: the operator's word stands.
+  if ((await disputedBefore(b.schoolId, [b.id])).size > 0) return { ok: false, errorKey: "gigs.refuseDisputeDecided" };
+  let changed: boolean;
+  try {
+    changed = await db.$tenantTransaction(async (raw) => {
+      const tx = raw as typeof db;
+      const moved = await tx.gigBooking.updateMany({ where: { id: b.id, schoolId: b.schoolId, status: mark }, data: { status: "DISPUTED" } });
+      if (moved.count === 0) return false;
+      if (b.paid) {
+        // The pay-out waits: every release path needs the hold's end, so it is taken off. Money already released or paid
+        // out is past disputing; none taken (refunded, voided, never paid) leaves nothing to hold.
+        const held = await tx.sessionPayment.updateMany({ where: { bookingId: b.id, status: { in: ["PAID", "HELD"] }, OR: [{ holdUntil: null }, { holdUntil: { gt: now } }] }, data: { holdUntil: null } });
+        const p = held.count === 0 ? await tx.sessionPayment.findUnique({ where: { bookingId: b.id }, select: { status: true } }) : null;
+        if (p && ["PAID", "HELD", "RELEASED", "DUE", "PAID_OUT"].includes(p.status)) throw new Refusal("gigs.refuseDisputeClosed");
+      }
+      await audit({ schoolId: b.schoolId, actorUserId: ctx.user.id, action: "gig.booking.disputed", targetType: "GigBooking", targetId: b.id, meta: { mark, paid: b.paid } }, tx);
+      return true;
+    });
+  } catch (error) {
+    const no = refused(error);
+    if (no) return no;
+    throw error;
+  }
+  if (!changed) {
+    const fresh = await db.gigBooking.findUnique({ where: { id: b.id }, select: { status: true } });
+    return fresh?.status === "DISPUTED" ? { ok: true, status: "DISPUTED" } : { ok: false, errorKey: "gigs.refuseNotConfirmed" };
+  }
+  await tellProvider(b.schoolId, b.slot, "gigs.notifDisputed", { name: c.name });
+  await tellFamily(b, c.userId, () => ({ kind: noteKind(b.slot.providerKind), titleKey: "gigs.notifDisputeOpened", titleVars: { title: b.slot.title }, url: "/sessions" }));
+  return { ok: true, status: "DISPUTED" };
 }
 
 /** After a session was held, the family rates it, once. */
@@ -1481,4 +1577,99 @@ export async function sessionCounts(ctx: ActiveContext, now: Date = new Date()):
   if (!ctx.user.isSuperuser) throw new AccessError("access.wrongRoleForThisAction");
   const upcoming = await db.gigSlot.aggregate({ where: { cancelledAt: null, startsAt: { gt: now } }, _count: { _all: true }, _sum: { seats: true, seatsTaken: true } });
   return { upcomingSlots: upcoming._count._all, upcomingSeats: upcoming._sum.seats ?? 0, seatsTaken: upcoming._sum.seatsTaken ?? 0 };
+}
+
+/* -------------------------------------------------------------------------- */
+/* The operator decides a dispute (TA-122, the owner's decision of 14 Nov 2026) */
+/* -------------------------------------------------------------------------- */
+
+export type DisputeRow = { bookingId: string; schoolName: string; kind: SessionKind; title: string; startsAt: string; endsAt: string; providerName: string; providerKind: "EXPERT" | "TEACHER" | "ALUMNUS"; /** What the provider marked. */ mark: Mark; markedAt: string | null; disputedAt: string | null; paid: boolean; amountPaise: number | null; paymentStatus: SessionPaymentStatus | null };
+
+const DISPUTE_SELECT = { id: true, schoolId: true, studentMembershipId: true, slotId: true, providerUserId: true, kind: true, paid: true, closedAt: true, slot: { select: { title: true, startsAt: true, endsAt: true, providerKind: true, providerUserId: true, provider: { select: { name: true } } } } } as const;
+type OpenDispute = { id: string; schoolId: string; studentMembershipId: string; slotId: string; providerUserId: string; kind: string; paid: boolean; closedAt: Date | null; slot: { title: string; startsAt: Date; endsAt: Date; providerKind: string; providerUserId: string; provider: { name: string } } };
+
+/**
+ * Every seat in dispute, across the schools. A booking is its school's row and the operator's binding opens none
+ * (superuser.ts): a dispute is read as its PROVIDER reads their own bookings (SELF_READABLE; as expert-kyc.ts reads
+ * ratings and gig-payments.ts a payment's booking), one provider at a time and only their DISPUTED seats, so no
+ * pupil's row and no other booking is opened.
+ */
+async function openDisputes(now: Date): Promise<OpenDispute[]> {
+  const providers = await db.gigSlot.findMany({ where: { startsAt: { lte: now } }, distinct: ["providerUserId"], select: { providerUserId: true } });
+  const out: OpenDispute[] = [];
+  for (const { providerUserId } of providers) {
+    out.push(...(await forUser(providerUserId, () => db.gigBooking.findMany({ where: { providerUserId, status: "DISPUTED" }, select: DISPUTE_SELECT }))));
+  }
+  return out;
+}
+
+/** The operator's list: what the provider marked, what the family says, the school and the money, the oldest dispute first; never the pupil's name. */
+export async function operatorDisputes(ctx: ActiveContext, now: Date = new Date()): Promise<{ disputes: DisputeRow[] }> {
+  if (!ctx.user.isSuperuser) throw new AccessError("access.wrongRoleForThisAction");
+  const open = await openDisputes(now);
+  if (open.length === 0) return { disputes: [] };
+  const [schools, payments] = await Promise.all([
+    db.school.findMany({ where: { id: { in: [...new Set(open.map((d) => d.schoolId))] } }, select: { id: true, name: true } }),
+    db.sessionPayment.findMany({ where: { bookingId: { in: open.filter((d) => d.paid).map((d) => d.id) } }, select: { bookingId: true, amountPaise: true, status: true } }),
+  ]);
+  const rows: DisputeRow[] = [];
+  for (const d of open) {
+    const record = await disputeRecord(d.schoolId, d.id);
+    const p = payments.find((x) => x.bookingId === d.id);
+    rows.push({
+      bookingId: d.id,
+      schoolName: schools.find((s) => s.id === d.schoolId)?.name ?? "",
+      kind: d.kind as SessionKind,
+      title: d.slot.title,
+      startsAt: d.slot.startsAt.toISOString(),
+      endsAt: d.slot.endsAt.toISOString(),
+      providerName: d.slot.provider.name,
+      providerKind: d.slot.providerKind as "EXPERT" | "TEACHER" | "ALUMNUS",
+      mark: record.mark,
+      markedAt: d.closedAt?.toISOString() ?? null,
+      disputedAt: record.disputedAt?.toISOString() ?? null,
+      paid: d.paid,
+      amountPaise: p?.amountPaise ?? null,
+      paymentStatus: p ? (p.status as SessionPaymentStatus) : null,
+    });
+  }
+  return { disputes: rows.sort((a, b) => (a.disputedAt ?? "").localeCompare(b.disputedAt ?? "")) };
+}
+
+/**
+ * The operator decides a dispute, having asked both sides (the app keeps no record of who opened the meeting link).
+ * REFUND: not held — the seat is UNHELD, off the pupil's allowance and off the expert's free duty, and a paid seat is
+ * refunded in full. RELEASE: held as marked — the provider's mark stands again and a paid seat's hold ends now, so
+ * the next hourly run pays it out. The state and its audit row in one tenant transaction under the pupil's school;
+ * both sides are told. A dispute already decided is not found.
+ */
+export async function decideDispute(ctx: ActiveContext, bookingId: string, decision: "REFUND" | "RELEASE", now: Date = new Date()): Promise<GigResult<{ status: BookingStatus }>> {
+  if (!ctx.user.isSuperuser) throw new AccessError("access.wrongRoleForThisAction");
+  const d = (await openDisputes(now)).find((x) => x.id === bookingId);
+  if (!d) throw new AccessError("gigs.noSuchDispute", "NOT_FOUND");
+  const { mark } = await disputeRecord(d.schoolId, d.id);
+  const status: BookingStatus = decision === "REFUND" ? "UNHELD" : mark;
+  const changed = await forSchool(d.schoolId, () =>
+    db.$tenantTransaction(async (raw) => {
+      const tx = raw as typeof db;
+      const moved = await tx.gigBooking.updateMany({ where: { id: d.id, schoolId: d.schoolId, status: "DISPUTED" }, data: { status } });
+      if (moved.count === 0) return false;
+      await audit({ schoolId: d.schoolId, actorUserId: ctx.user.id, action: decision === "REFUND" ? "gig.booking.disputeUpheld" : "gig.booking.disputeRejected", targetType: "GigBooking", targetId: d.id, meta: { mark, paid: d.paid } }, tx);
+      return true;
+    }),
+  );
+  if (!changed) throw new AccessError("gigs.noSuchDispute", "NOT_FOUND");
+  const pupilUserId = (await forSchool(d.schoolId, () => db.membership.findUnique({ where: { id: d.studentMembershipId }, select: { userId: true } })))?.userId ?? null;
+  const kind = noteKind(d.slot.providerKind);
+  if (decision === "REFUND") {
+    // An expert's no-show is refunded in full (decision 0004); refundPaidSeat tells the family the amount.
+    if (d.paid) await refundPaidSeat(d, pupilUserId, "dispute upheld: the provider did not hold the session", ctx.user.id);
+    await tellFamily(d, pupilUserId, () => ({ kind, titleKey: "gigs.notifDisputeUpheld", titleVars: { title: d.slot.title }, url: "/sessions" }));
+    await tellProvider(d.schoolId, d.slot, "gigs.notifDisputeUpheldProvider", {});
+  } else {
+    if (d.paid) await scheduleRelease(d.id, now, mark);
+    await tellFamily(d, pupilUserId, () => ({ kind, titleKey: "gigs.notifDisputeRejected", titleVars: { title: d.slot.title }, url: "/sessions" }));
+    await tellProvider(d.schoolId, d.slot, "gigs.notifDisputeRejectedProvider", {});
+  }
+  return { ok: true, status };
 }

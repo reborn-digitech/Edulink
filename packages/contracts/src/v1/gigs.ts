@@ -203,7 +203,8 @@ export const gigPaymentSchema = z.object({ payment: z.object({ id, amountPaise: 
 /* ---------------------------------------------------------------------- */
 
 export const gigSessionKindSchema = z.enum(["ONE_TO_ONE", "WORKSHOP"]);
-export const gigBookingStatusSchema = z.enum(["PENDING_CONSENT", "PENDING_PAYMENT", "CONFIRMED", "CANCELLED", "DELIVERED", "MISSED", "UNHELD"]);
+/** DISPUTED (TA-122, the owner's decision of 14 November 2026): a seat the provider marked held or pupil-did-not-come that the family says was not held; the pay-out waits and the operator decides. */
+export const gigBookingStatusSchema = z.enum(["PENDING_CONSENT", "PENDING_PAYMENT", "CONFIRMED", "CANCELLED", "DELIVERED", "MISSED", "UNHELD", "DISPUTED"]);
 export type GigBookingStatus = z.infer<typeof gigBookingStatusSchema>;
 
 /* ---- paid seats (decision 0004, third amendment 2026-10-02: Razorpay Route, the expert's share on hold) ---- */
@@ -437,6 +438,31 @@ export const gigPayeeSuspendedSchema = z.object({ payout: gigPayeeViewSchema });
 
 /** POST /api/v1/operator/gigs/payments/{paymentId}/retry — a waiting refund tried now. */
 export const gigPayoutRetriedSchema = z.object({ outcome: z.string() });
+
+/* ---- TA-122 (the owner's decision of 14 November 2026): the family disputes a marked seat, the operator decides ---- */
+/** GET /api/v1/operator/gigs/disputes — every seat a family says was not held after the provider marked it, oldest first; no pupil's name. */
+export const gigDisputeSchema = z.object({
+  bookingId: id,
+  schoolName: z.string(),
+  kind: z.enum(["ONE_TO_ONE", "WORKSHOP"]),
+  title: z.string(),
+  startsAt: z.string(),
+  endsAt: z.string(),
+  providerName: z.string(),
+  providerKind: z.enum(["EXPERT", "TEACHER", "ALUMNUS"]),
+  /** What the provider marked: held, or the pupil did not come. */
+  mark: z.enum(["DELIVERED", "MISSED"]),
+  markedAt: z.string().nullable(),
+  disputedAt: z.string().nullable(),
+  paid: z.boolean(),
+  amountPaise: z.number().int().nullable(),
+  paymentStatus: gigSessionPaymentStatusSchema.nullable(),
+});
+export const gigDisputesSchema = z.object({ disputes: z.array(gigDisputeSchema) });
+export type GigDispute = z.infer<typeof gigDisputeSchema>;
+/** POST /api/v1/operator/gigs/disputes/{bookingId}/decide — REFUND: not held, the family refunded in full; RELEASE: the provider's mark stands and the pay-out goes. */
+export const gigDisputeDecideBodySchema = z.object({ decision: z.enum(["REFUND", "RELEASE"]) });
+export const gigDisputeDecidedSchema = z.object({ status: gigBookingStatusSchema });
 /** ALUMNUS (4 Oct 2026): a college's alumnus mentor, offering free one-to-ones to its students (src/lib/placement-alumni.ts). */
 export const gigProviderKindSchema = z.enum(["EXPERT", "TEACHER", "ALUMNUS"]);
 const gigAllowanceRowSchema = z.object({ allowed: z.number().int(), used: z.number().int(), left: z.number().int() });
@@ -522,6 +548,8 @@ export const gigFamilySessionsSchema = z.object({
           canCancel: z.boolean(),
           canRate: z.boolean(),
           canReportUnheld: z.boolean(),
+          /** TA-122: on a seat the provider marked, until when the family may still say it was not held (the hold's end); null otherwise; absent from an older server. */
+          disputeUntil: z.string().nullable().optional(),
         }),
       ),
       open: z.array(z.object({ id, kind: gigSessionKindSchema, title: z.string(), startsAt: z.string(), endsAt: z.string(), seatsLeft: z.number().int(), providerName: z.string(), providerKind: gigProviderKindSchema, providerHeadline: z.string().nullable(), pricePaise: z.number().int(), freeSeat: z.boolean(), /** The series this session is one of (decision 0008); null for a single session. */ seriesId: id.nullable().optional() })),

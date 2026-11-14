@@ -80,7 +80,8 @@ describe("sessions and workshops, for a family", () => {
     await fireEvent.changeText(screen.getByLabelText("What do you want from it?"), "ZZ She builds things from card at home.");
     await fireEvent.press(screen.getByRole("button", { name: "Pay ₹100" }));
     expect(await screen.findByText("Pay for the seat · ₹100")).toBeTruthy();
-    expect(screen.getByText(/Devbox: there is no payment page/)).toBeTruthy();
+    // The devbox line can draw a moment after the heading; under the concurrent battery getBy missed it (waves D and E1, 14 Nov 2026).
+    expect(await screen.findByText(/Devbox: there is no payment page/)).toBeTruthy();
     expect(await screen.findByText("Paid. The seat is confirmed.")).toBeTruthy();
     expect(calls().filter((c) => c.line === "GET /api/v1/gigs/payments/sp1").length).toBeGreaterThanOrEqual(2);
     expect(calls().filter((c) => c.line === `GET ${PATH}`).length).toBeGreaterThanOrEqual(2);

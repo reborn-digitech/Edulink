@@ -181,3 +181,30 @@ GIGS.push(
   },
 );
 // end decision-189
+// decision-122 (TA-122, the owner's option 1 of 14 November 2026): the family may dispute a seat the provider marked,
+// from its end until the hold runs out, and the operator decides. Two operator doors pushed and two summaries amended
+// here rather than edited in place (the shared-file fence).
+GIGS.push(
+  { method: "GET", path: "/api/v1/operator/gigs/disputes", summary: "Every seat a family says was not held after its provider marked it held or the pupil absent, oldest first: the session, the provider, the school, the mark, when it was disputed and any money held; never the pupil's name", access: "operator", response: c.gigDisputesSchema, sample: "/api/v1/operator/gigs/disputes" },
+  {
+    method: "POST",
+    path: "/api/v1/operator/gigs/disputes/{bookingId}/decide",
+    summary: "Decide a family's dispute of a marked seat: REFUND, not held (the seat is not held, off the pupil's allowance and the provider's free duty, a paid seat refunded in full), or RELEASE, the provider's mark stands and the pay-out goes at the next hourly run; both sides are told, and a dispute already decided is not found",
+    access: "operator",
+    request: c.gigDisputeDecideBodySchema,
+    response: c.gigDisputeDecidedSchema,
+    emptyBodyStatus: 422,
+    // The sweep's empty body is refused before anything is read; the fixture's not-held seat is no dispute.
+    sample: (f) => (f.gigUnheldBookingId ? `/api/v1/operator/gigs/disputes/${f.gigUnheldBookingId}/decide` : null),
+  },
+);
+{
+  const say = (method: Endpoint["method"], path: string, summary: string) => {
+    const e = GIGS.find((x) => x.method === method && x.path === path);
+    if (!e) throw new Error(`api-catalog/gigs.ts (decision-122): no ${method} ${path} to amend`);
+    e.summary = summary;
+  };
+  say("POST", "/api/v1/gigs/sessions/{bookingId}/unheld", "After it should have ended, the family says the provider did not hold it: a confirmed seat stops counting against the pupil at once (status UNHELD); a seat the provider marked held or the pupil absent may be disputed until the hold runs out, once, and waits for the operator (status DISPUTED, any pay-out held)");
+  say("POST", "/api/v1/operator/gigs/payments/{paymentId}/retry", "Try the waiting gateway call now, instead of at the job's next run: a refund, a release of the hold, or a failed transfer made again on hold (a captured row never held is held); a seat its family disputes is left alone until the operator decides it, except a waiting refund");
+}
+// end decision-122

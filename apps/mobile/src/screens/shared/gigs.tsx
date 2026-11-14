@@ -11,7 +11,7 @@ import { useTheme } from "@/lib/theme";
  * query key every one of them invalidates, and the small "a reason, then the
  * act" control used wherever a seat or a time is cancelled.
  */
-export type BookingStatus = "PENDING_CONSENT" | "PENDING_PAYMENT" | "CONFIRMED" | "CANCELLED" | "DELIVERED" | "MISSED" | "UNHELD";
+export type BookingStatus = "PENDING_CONSENT" | "PENDING_PAYMENT" | "CONFIRMED" | "CANCELLED" | "DELIVERED" | "MISSED" | "UNHELD" | "DISPUTED";
 export type SessionKind = "ONE_TO_ONE" | "WORKSHOP";
 
 export const BOOKING_STATUS: Record<BookingStatus, { label: TranslationKey; tone: "muted" | "ok" | "warn" | "danger" | "accent" }> = {
@@ -22,6 +22,8 @@ export const BOOKING_STATUS: Record<BookingStatus, { label: TranslationKey; tone
   DELIVERED: { label: "gigs.bookingStatusDELIVERED", tone: "ok" },
   MISSED: { label: "gigs.bookingStatusMISSED", tone: "warn" },
   UNHELD: { label: "gigs.bookingStatusUNHELD", tone: "danger" },
+  // TA-122: the family says a marked seat was not held; the operator decides.
+  DISPUTED: { label: "gigs.bookingStatusDISPUTED", tone: "warn" },
 };
 export const SESSION_KIND: Record<SessionKind, TranslationKey> = { ONE_TO_ONE: "gigs.kindONE_TO_ONE", WORKSHOP: "gigs.kindWORKSHOP" };
 export const PROVIDER_KIND: Record<"EXPERT" | "TEACHER" | "ALUMNUS", TranslationKey> = { EXPERT: "gigs.providerEXPERT", TEACHER: "gigs.providerTEACHER", ALUMNUS: "gigs.providerALUMNUS" };

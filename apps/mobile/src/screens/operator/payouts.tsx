@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { View } from "react-native";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { gigPayoutPaidSchema, gigPayoutsSchema, gigRouteLinkAllSchema, type GigPayouts } from "@edulink/contracts";
+import { gigDisputesSchema, gigPayoutPaidSchema, gigPayoutsSchema, gigRouteLinkAllSchema, type GigPayouts } from "@edulink/contracts";
 import { Button, Card, Failed, Field, Loading, Screen, Stat, Text } from "@/components";
 import { SwitchRow } from "@/components/switch-row";
 import { api, errorText } from "@/lib/api";
@@ -12,6 +12,7 @@ import { useTheme } from "@/lib/theme";
 import { formatInstant, Note, Pill } from "@/screens/family/shared";
 import { money } from "@/screens/shared/fees";
 import { ROUTE_STATUS } from "@/screens/expert/earnings";
+import { BOOKING_STATUS, PROVIDER_KIND, SESSION_KIND } from "@/screens/shared/gigs";
 
 /**
  * Paid seats on the operator's console — the web's "Razorpay Route status"
@@ -28,6 +29,7 @@ import { ROUTE_STATUS } from "@/screens/expert/earnings";
  * missing until they are.
  */
 const KEY = ["operator", "gigs", "payouts"] as const;
+const DISPUTES_KEY = ["operator", "gigs", "disputes"] as const;
 
 export function OperatorPayouts() {
   const t = useT();
@@ -77,6 +79,20 @@ export function OperatorPayouts() {
       return t("gigs.opRetried", { outcome: String((result.data as { outcome?: string }).outcome ?? "") });
     },
     ...settle,
+  });
+  // TA-122: the disputes of marked seats, read from their own door so the payouts above stand alone.
+  const disputes = useQuery({ queryKey: DISPUTES_KEY, queryFn: async () => gigDisputesSchema.parse(unwrap(await api().get("/api/v1/operator/gigs/disputes"))) });
+  const decide = useMutation({
+    mutationFn: async (input: { bookingId: string; decision: "REFUND" | "RELEASE" }) => {
+      const result = await api().post(`/api/v1/operator/gigs/disputes/${encodeURIComponent(input.bookingId)}/decide`, { decision: input.decision });
+      if (!result.ok) throw new Error(errorText(result, t("common.somethingWrong")));
+      return t(input.decision === "REFUND" ? "gigs.opDisputeRefunded" : "gigs.opDisputeReleased");
+    },
+    onSuccess: (line: string) => {
+      settle.onSuccess(line);
+      void qc.invalidateQueries({ queryKey: DISPUTES_KEY });
+    },
+    onError: settle.onError,
   });
   const linkAll = useMutation({
     mutationFn: async () => {
@@ -203,6 +219,37 @@ export function OperatorPayouts() {
               ))
             )}
           </Card>
+          {/* TA-122 (the owner's decision of 14 November 2026): the seats a family says were not held after the provider marked them. */}
+          {disputes.data ? (
+            <Card title={t("gigs.opDisputesTitle")}>
+              <Text variant="sm" tone="muted">
+                {t("gigs.opDisputesIntro")}
+              </Text>
+              {disputes.data.disputes.length === 0 ? (
+                <Text variant="sm" tone="muted">
+                  {t("gigs.opDisputesNone")}
+                </Text>
+              ) : (
+                disputes.data.disputes.map((x) => (
+                  <View key={x.bookingId} style={{ gap: th.space[1], paddingVertical: th.space[2], borderTopWidth: 1, borderTopColor: th.border }}>
+                    <Text variant="sm" bold>
+                      {x.title}
+                    </Text>
+                    <Text variant="xs" tone="muted">
+                      {[t(SESSION_KIND[x.kind]), when(x.startsAt), t("gigs.withProvider", { name: x.providerName }), t(PROVIDER_KIND[x.providerKind]), x.schoolName].join(" · ")}
+                    </Text>
+                    <Text variant="xs" tone="muted">
+                      {[t(BOOKING_STATUS[x.mark].label), x.amountPaise !== null ? money(x.amountPaise, locale) : null, x.disputedAt ? when(x.disputedAt) : null].filter(Boolean).join(" · ")}
+                    </Text>
+                    <View style={{ flexDirection: "row", flexWrap: "wrap", gap: th.space[2] }}>
+                      <Button label={t("gigs.opDisputeRefund")} variant="secondary" accessibilityLabel={[t("gigs.opDisputeRefund"), x.title].join(": ")} busy={decide.isPending && decide.variables?.bookingId === x.bookingId && decide.variables.decision === "REFUND"} onPress={() => decide.mutate({ bookingId: x.bookingId, decision: "REFUND" })} />
+                      <Button label={t("gigs.opDisputeRelease")} variant="ghost" accessibilityLabel={[t("gigs.opDisputeRelease"), x.title].join(": ")} busy={decide.isPending && decide.variables?.bookingId === x.bookingId && decide.variables.decision === "RELEASE"} onPress={() => decide.mutate({ bookingId: x.bookingId, decision: "RELEASE" })} />
+                    </View>
+                  </View>
+                ))
+              )}
+            </Card>
+          ) : null}
           <Card title={t("gigs.opPaidTitle")}>
             {d.paid.length === 0 ? (
               <Text variant="sm" tone="muted">
