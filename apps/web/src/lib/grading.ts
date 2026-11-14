@@ -894,13 +894,21 @@ export async function publishAssignment(
  * keyed on "published, in a class I am in" did. The pupil's active
  * enrolments, each with the day it began, turn into an OR of (class,
  * published on or after the day they arrived).
+ *
+ * A COLLEGE OFFERING HAS NO SUCH DATE (TA-060, 14 November 2026). An offering
+ * lives one term, so there is no earlier cohort's work to keep out, and a
+ * student REGISTERED on it is owed all of its published work, whenever it was
+ * set: the marking sheet (workAudience) expects every registered student, and
+ * a list that hid work set before a late registration, or before a drop and
+ * re-add (which stamps a new registeredAt), disagreed with it. Earlier work is
+ * owed until handed in or marked; nobody is sent a notice of it.
  */
 export async function ownWorkScope(
   schoolId: string,
   studentMembershipId: string,
-): Promise<{ OR: ({ classId: string; publishedAt: { gte: Date } } | { offeringId: string; publishedAt: { gte: Date } })[] } | { id: { in: never[] } }> {
-  // A college student's offerings (R-48): the work set on each offering they are
-  // REGISTERED on, from the day they registered, by the same rule as a class.
+): Promise<{ OR: ({ classId: string; publishedAt: { gte: Date } } | { offeringId: string })[] } | { id: { in: never[] } }> {
+  // A college student's offerings (R-48): all the work set on each offering they
+  // are REGISTERED on, whenever it was published (TA-060).
   const [enrolments, registrations] = await Promise.all([
     db.enrollment.findMany({
       where: { schoolId, studentMembershipId, status: "ACTIVE" },
@@ -908,14 +916,14 @@ export async function ownWorkScope(
     }),
     db.courseRegistration.findMany({
       where: { schoolId, studentMembershipId, status: "REGISTERED" },
-      select: { offeringId: true, registeredAt: true },
+      select: { offeringId: true },
     }),
   ]);
   if (enrolments.length === 0 && registrations.length === 0) return { id: { in: [] } };
   return {
     OR: [
       ...enrolments.map((e) => ({ classId: e.classId, publishedAt: { gte: e.enrolledAt } })),
-      ...registrations.map((r) => ({ offeringId: r.offeringId, publishedAt: { gte: r.registeredAt } })),
+      ...registrations.map((r) => ({ offeringId: r.offeringId })),
     ],
   };
 }

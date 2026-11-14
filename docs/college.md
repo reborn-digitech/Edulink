@@ -444,8 +444,12 @@ Marathi read by a speaker.
 `Assignment.offeringId` (migration `20261005171208_college_homework`), `classId` now optional, and a CHECK that a
 row has exactly one of the two. It is set, published and marked by the offering's faculty member or the HOD of the
 department whose programme owns the course (`src/lib/college-homework.ts`); the office reads, it does not set or
-mark. Its readers are the offering's REGISTERED students, from the day they registered — an elective shared across
-divisions has no class and needs none. Everything after the row is the school's: `assertAssignmentAccess`
+mark. Its readers are the offering's REGISTERED students, all of the offering's published work whenever it was set
+(TA-060, 14 November 2026: work set before a late registration, or before a drop and re-add, is theirs and owed until
+handed in or marked, on their list, the home "due" boxes, the agenda and their guardian's list, exactly the students
+the marking sheet expects; there is no "excused" state, the teacher gives a mark, and a late joiner is sent no notice
+of the earlier work; a school class keeps its rule that work set before a pupil joined it is not theirs) — an
+elective shared across divisions has no class and needs none. Everything after the row is the school's: `assertAssignmentAccess`
 (tenancy.ts) knows both kinds of row and `workAudience` (grading.ts) answers who a piece of work is for, so the
 gradebook, the marks save, the publish notice (students, and the guardians an adult student lets see results), the
 student's own work list (`ownWorkScope`), the hand-in with its photographs and the file gate (files.ts) serve it
