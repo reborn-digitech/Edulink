@@ -109,6 +109,8 @@ Parents get a link to accept; the guardianship exists when they do. A pupil with
 3. For pupils: "Date of birth…" (a parent links with the student code and this date), "Legal name…" (the name certificates, report cards and filings print; choose "Why it is being corrected"), "Issue sign-in code" (a one-time code shown once: "Write this down now — it is not shown again."), "Link a parent…", "Issue a certificate", "Record as left" and "Remove".
 4. For anyone but yourself: "Pause access" with "Why (kept in the audit log)", later "Restore".
 
+A pupil on a sign-in handle who has forgotten the password they chose is offered "Reset password with a code" instead of "Issue sign-in code": a one-time code shown once, which the pupil types with their handle at `/first-signin` to choose a new password, after which every device they were signed in on is signed out. It works for 24 hours, and a new one replaces it. The pupil's guardians are told; where the school stands in as guardian, the head is told. The office alone can issue it, and only to its own pupil with no email address, no confirmed mobile number (that pupil uses "Forgotten your password?") and no place at another school (that pupil needs the platform's operator).
+
 "Remove" is only for a pupil who was never really here; it is refused once attendance, marks, hand-ins or report cards exist, and the page says to use "Record as left" instead. The staff record's joining date is the one an appointment letter quotes. A member of staff can read their own record; only the office changes it.
 
 ## How do I read the attendance and tell a family?

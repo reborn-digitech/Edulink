@@ -14,7 +14,7 @@ import {
 import { setTeacherSubjects } from "@/lib/reviews";
 import { inviteParent } from "@/lib/parent-link";
 import { endFamilyGuardianship, familyGuardiansOf } from "@/lib/guardianship";
-import { issueFirstSignIn } from "@/lib/first-signin";
+import { issueFirstSignIn, issueOfficeReset } from "@/lib/first-signin";
 import { setStaffRecord, type StaffRecordInput } from "@/lib/staff-records";
 import { cancelScheduledDeparture, undoDeparture } from "@/lib/school-record";
 import { setMemberBirthdate } from "@/lib/birthdate";
@@ -258,6 +258,20 @@ export async function issueFirstSignInAction(
   try {
     const ctx = await requireApiRole("ADMIN");
     const result = await issueFirstSignIn(ctx, studentMembershipId);
+    if (!result.ok) return { ok: false, errorKey: result.errorKey };
+    return { ok: true, issued: { ...result.issued, expiresAt: result.issued.expiresAt.toISOString() } };
+  } catch (error) {
+    return failure(error) as Result & { ok: false };
+  }
+}
+
+/** TA-037: a reset code for a pupil on a login name who forgot the password. Shown once; the office alone. */
+export async function issueOfficeResetAction(
+  studentMembershipId: string,
+): Promise<{ ok: true; issued: { code: string; handle: string; expiresAt: string } } | (Result & { ok: false })> {
+  try {
+    const ctx = await requireApiRole("ADMIN");
+    const result = await issueOfficeReset(ctx, studentMembershipId);
     if (!result.ok) return { ok: false, errorKey: result.errorKey };
     return { ok: true, issued: { ...result.issued, expiresAt: result.issued.expiresAt.toISOString() } };
   } catch (error) {

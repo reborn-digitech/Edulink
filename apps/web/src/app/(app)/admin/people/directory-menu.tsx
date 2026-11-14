@@ -30,13 +30,14 @@ import { FamilyLinksPanel } from "./family-links-panel";
 import { BirthdatePanel } from "./birthdate-panel";
 import { LegalNamePanel } from "./legal-name-panel";
 import { FirstSignInPanel } from "./first-signin-panel";
+import { OfficeResetPanel } from "./office-reset-panel";
 import { StaffRecordPanel, type StaffRecordInitial } from "./staff-record-panel";
 import { DutiesPanel } from "./duties-panel";
 import { cn } from "@/lib/cn";
 import { actionError } from "@/lib/action-error";
 import { useT } from "@/lib/i18n";
 
-type Panel = "pause" | "left" | "staffLeaving" | "remove" | "subjects" | "parent" | "family" | "birthdate" | "legalName" | "firstSignin" | "staff" | "duties" | null;
+type Panel = "pause" | "left" | "staffLeaving" | "remove" | "subjects" | "parent" | "family" | "birthdate" | "legalName" | "firstSignin" | "officeReset" | "staff" | "duties" | null;
 
 /**
  * One quiet kebab per directory row, holding every verb that used to sit in
@@ -60,6 +61,7 @@ export function DirectoryMenu({
   birthdate,
   legalName,
   handleOnly,
+  hasPassword = false,
   leavingOnKey,
   staffRecord,
   duties,
@@ -81,6 +83,8 @@ export function DirectoryMenu({
   legalName?: string;
   /** A pupil on a login handle with no address: the office can issue a first sign-in code. */
   handleOnly?: boolean;
+  /** TA-037: the account has a password already, so a pupil on a handle is offered the office's reset code instead. */
+  hasPassword?: boolean;
   /** A leaving already dated ahead — offers Cancel instead of Record as left. */
   leavingOnKey?: string | null;
   /** Staff rows carry the office's record; undefined for pupils. */
@@ -221,9 +225,16 @@ export function DirectoryMenu({
                 </MenuItem>
               )}
 
-              {(isStudent || isSupport) && handleOnly && !hasLeft && !suspended && (
+              {(isStudent || isSupport) && handleOnly && !(isStudent && hasPassword) && !hasLeft && !suspended && (
                 <MenuItem icon={<KeyIcon className="size-4" />} onClick={() => show("firstSignin")}>
                   {t("people.firstSigninAction")}
+                </MenuItem>
+              )}
+
+              {/* TA-037: a pupil on a handle who has forgotten the password they chose. */}
+              {isStudent && handleOnly && hasPassword && !hasLeft && !suspended && (
+                <MenuItem icon={<KeyIcon className="size-4" />} onClick={() => show("officeReset")}>
+                  {t("people.officeResetAction")}
                 </MenuItem>
               )}
 
@@ -343,6 +354,9 @@ export function DirectoryMenu({
       )}
       {panel === "firstSignin" && (
         <FirstSignInPanel membershipId={membershipId} name={name} onClose={() => setPanel(null)} />
+      )}
+      {panel === "officeReset" && (
+        <OfficeResetPanel membershipId={membershipId} name={name} onClose={() => setPanel(null)} />
       )}
       {panel === "parent" && (
         <ParentLinkPanel membershipId={membershipId} name={name} onClose={() => setPanel(null)} />

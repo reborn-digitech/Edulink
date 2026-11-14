@@ -115,7 +115,8 @@ export default async function DirectoryPage({
     db.membership.findMany({
       where,
       include: {
-        user: { select: { name: true, preferredName: true, email: true, avatarKey: true, birthdate: true } },
+        // passwordHash is read on the server only, to pass the row a yes or no (TA-037); the hash never leaves this page's render.
+        user: { select: { name: true, preferredName: true, email: true, avatarKey: true, birthdate: true, passwordHash: true } },
         enrollments: {
           where: { status: "ACTIVE" },
           include: { class: { select: { name: true } } },
@@ -400,6 +401,7 @@ export default async function DirectoryPage({
                           birthdate={member.user.birthdate?.toISOString().slice(0, 10) ?? ""}
                           legalName={member.user.name}
                           handleOnly={!isDeliverableEmail(member.user.email)}
+                          hasPassword={member.user.passwordHash !== null}
                           leavingOnKey={member.scheduledDeparture?.leaveOnKey ?? null}
                           staffRecord={
                             role === "STUDENT"
