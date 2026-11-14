@@ -121,6 +121,28 @@ describe("a competition's entries and results", () => {
     await waitFor(() => expect(calls().filter((c) => c.line === `GET ${PATH}`)).toHaveLength(2));
   });
 
+  it("TA-104: a teacher adds a pupil of the school as an entrant; a typed name narrows the list, and the list re-reads", async () => {
+    const ENTRANTS = `/api/v1/contest/competitions/${ID}/entrants`;
+    const withCandidates = { ...ENTRIES, candidates: [
+      { studentMembershipId: "p4", name: "ZZ Kavya", className: "5A" },
+      { studentMembershipId: "p5", name: "ZZ Nikhil", className: null },
+    ] };
+    const { calls } = await mountStaff(<CompetitionEntries />, "TEACHER", { [`GET ${PATH}`]: () => json(withCandidates), [`POST ${ENTRANTS}`]: () => json({ ok: true, entryId: "en4", awaitingConsent: true, created: true }) });
+    expect(await screen.findByText("Add an entrant")).toBeTruthy();
+    expect(screen.getByRole("button", { name: "Add as entrant: ZZ Kavya" })).toBeTruthy();
+    await fireEvent.changeText(screen.getByLabelText("Search by name"), "nik");
+    expect(screen.queryByRole("button", { name: "Add as entrant: ZZ Kavya" })).toBeNull();
+    await fireEvent.press(screen.getByRole("button", { name: "Add as entrant: ZZ Nikhil" }));
+    await waitFor(() => expect(calls().find((c) => c.line === `POST ${ENTRANTS}`)?.body).toEqual({ studentMembershipId: "p5" }));
+    await waitFor(() => expect(calls().filter((c) => c.line === `GET ${PATH}`)).toHaveLength(2));
+  });
+
+  it("TA-104: with nobody left to add, or at a competition that is not the school's own, there is no Add card", async () => {
+    await mountStaff(<CompetitionEntries />, "ADMIN", { [`GET ${PATH}`]: () => json({ ...ENTRIES, candidates: [] }) });
+    await screen.findByText("ZZ Asha");
+    expect(screen.queryByText("Add an entrant")).toBeNull();
+  });
+
   it("without a competition id it says the link did not work, and asks nothing", async () => {
     mockRouter.params = {};
     const { calls } = await mountStaff(<CompetitionEntries />, "TEACHER", {});

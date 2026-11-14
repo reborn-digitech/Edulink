@@ -154,6 +154,22 @@ describe("one competition", () => {
     await waitFor(() => expect(calls().filter((c) => c.line === `DELETE ${ENTRY_PATH}`)).toHaveLength(2));
   });
 
+  it("TA-104: an adult the college entered says yes with their own Enrol, though entries are closed; a waiting pupil is offered nothing", async () => {
+    const waiting = { ...ENTRY, awaitingConsent: true, consentedAt: null, scoreMilli: null, rank: null };
+    const { calls } = await mountStaff(<CompetitionDetail />, "STUDENT", { [`GET ${PATH}`]: () => json({ ...DETAIL, open: false, entry: waiting, confirmOwnEntry: true }), [`POST ${ENTER}`]: () => json({ entryId: "en1", awaitingConsent: false }) });
+    expect(await screen.findByText("Your school entered you. Enrol to say yes.")).toBeTruthy();
+    await fireEvent.press(screen.getByRole("button", { name: "Enter this" }));
+    await waitFor(() => expect(calls().find((c) => c.line === `POST ${ENTER}`)?.body).toEqual({}));
+    await waitFor(() => expect(calls().filter((c) => c.line === `GET ${PATH}`)).toHaveLength(2));
+  });
+
+  it("TA-104: a minor's entry waiting on a grown-up offers no Enrol to press", async () => {
+    const waiting = { ...ENTRY, awaitingConsent: true, consentedAt: null, scoreMilli: null, rank: null };
+    await mountStaff(<CompetitionDetail />, "STUDENT", { [`GET ${PATH}`]: () => json({ ...DETAIL, open: false, entry: waiting, confirmOwnEntry: false }) });
+    await screen.findByText("ZZ Maths Bee");
+    expect(screen.queryByRole("button", { name: "Enter this" })).toBeNull();
+  });
+
   it("closed entries say so, with no button to press", async () => {
     await mountStaff(<CompetitionDetail />, "STUDENT", { [`GET ${PATH}`]: () => json({ ...DETAIL, open: false }) });
     expect(await screen.findByText("Entries for this one have closed.")).toBeTruthy();

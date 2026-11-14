@@ -1,6 +1,6 @@
 # 0007 — Competitions are calendar events; the marketplace waits behind a switch
 
-Status: accepted by the owner (6 November 2026), from the owner's decision of 6 November 2026. Governs `apps/web/src/lib/competition-events.ts`, the calendar half of `apps/web/src/lib/competitions.ts` (entering, the internal board, the marketplace's gates), `apps/web/src/lib/agenda.ts`'s COMPETITION rows, the `Competition` columns `internalBoard` and `enrolmentOpen`, `Holiday.kind` COMPETITION with `Holiday.competitionId`, the doors `POST/DELETE /api/v1/admin/calendar/competitions[/{holidayId}]`, `POST /api/v1/shared/competitions/{competitionId}/enter` (widened to a guardian) and `GET …/board`, and the platform feature `COMPETITIONS`. Decisions 0002 (minors' data) and 0006 (plans) are unchanged and are applied here.
+Status: accepted by the owner (6 November 2026), from the owner's decision of 6 November 2026; amended 14 November 2026 (staff add entrants, below). Governs `apps/web/src/lib/competition-events.ts`, the calendar half of `apps/web/src/lib/competitions.ts` (entering, the internal board, the marketplace's gates), `apps/web/src/lib/agenda.ts`'s COMPETITION rows, the `Competition` columns `internalBoard` and `enrolmentOpen`, `Holiday.kind` COMPETITION with `Holiday.competitionId`, the doors `POST/DELETE /api/v1/admin/calendar/competitions[/{holidayId}]`, `POST /api/v1/shared/competitions/{competitionId}/enter` (widened to a guardian) and `GET …/board`, and the platform feature `COMPETITIONS`. Decisions 0002 (minors' data) and 0006 (plans) are unchanged and are applied here.
 
 ## Context
 
@@ -10,7 +10,7 @@ Until today a competition lived in its own section: a menu entry for every role,
 
 1. **A competition is a calendar event.** The office's calendar page (`/admin/calendar`) has a fourth kind beside Holiday, Exam and Event: Competition. Picking it asks for the title, a one-line summary, the day or the span, when enrolment closes, the classes (gradeLow/gradeHigh), whether pupils may enrol, and the internal board. One tenant transaction writes the `Competition` (the school's own, `organizerSchoolId` the session's school, PUBLISHED at once) and the `Holiday` row of kind COMPETITION joined by `Holiday.competitionId`. Editing the event edits both; removing it removes the calendar row and deletes the competition only while nobody has entered — with entries it is ARCHIVED, and the entries, consents and results stay. A school competition posted the older way (the phone's draft door) gets its calendar row the moment it is published with a start date and loses it when withdrawn (`syncCalendarRow`). The plain holiday writes refuse the kind, so no COMPETITION row exists without its competition. The separate Competitions section is gone from every menu on the web and the phone; `/competitions` stays as a plain list behind the agenda and the calendar, and `/competitions/new` sends the office to the calendar.
 2. **The marketplace is behind a switch and in the pupil's plan.** The platform feature `COMPETITIONS` (off by default, like the seven before it) gates the platform competitions (`organizerSchoolId` null): while off they are not listed to any school, not found when asked for by id, not shown on a guardian's waiting list; the content team's and the operator's competition doors and pages (`/api/v1/appadmin/competitions…`, `/api/v1/appadmin/competition-crawl…`, `/root/competitions`, `/appadmin/new`, the desk on `/appadmin`) answer 404 FEATURE_OFF, and the crawler does not start (the desk refuses, and a runner stops before the model is asked). `COMPETITIONS` is in `PLAN_FEATURES.STUDENT`: with the switch on, a pupil whose school's plan is active and who holds no entitlement meets the plan card where the platform section would be, and a 402 at a platform competition's page or enrol door; a guardian needs no plan of their own but enrols a child into a platform competition only while the child holds it (as a child's practice is read). **A school's own competitions are never behind the switch or the plan.**
-3. **Either the guardian or the pupil enrols.** From the agenda row (web and phone) and from the competition's page: a pupil enrols themself, and their entry waits for a guardian's yes where the office asked for consent (`requiresParentConsent`, on by default), as before; a guardian enrols their own child (`studentMembershipId`, proved by the guardianship, reach ownChild), and that enrolment IS the consent — `parentConsentAt` and `parentConsentBy` are stamped by the guardian, and a pupil's entry still waiting is stamped rather than refused. Nothing on the pupil's path can set consent. The office's `enrolmentOpen` stands above the dates: off, the event is on the agenda for information and no entry can be made.
+3. **Either the guardian or the pupil enrols.** From the agenda row (web and phone) and from the competition's page: a pupil enrols themself, and their entry waits for a guardian's yes where the office asked for consent (`requiresParentConsent`, on by default), as before; a guardian enrols their own child (`studentMembershipId`, proved by the guardianship, reach ownChild), and that enrolment IS the consent — `parentConsentAt` and `parentConsentBy` are stamped by the guardian, and a pupil's entry still waiting is stamped rather than refused. Nothing on the pupil's path can set consent. The office's `enrolmentOpen` stands above the dates: off, the event is on the agenda for information and no entry can be made by the family. Staff add entrants: on the entries page the office or a teacher adds a pupil of the school as an entrant, audited, whether enrolment is on or off (amended 14 November 2026, below).
 4. **An internal board, optional, the office's choice.** `Competition.internalBoard` is OFF, STAFF or SCHOOL, chosen when the event is made and editable with it.
 
 ## The internal board's rule, and why
@@ -45,3 +45,34 @@ Asked after the batch landed, decided the same day:
    visits decide whether it goes; removing it is a one-line change then.
 5. **A guardian may not enrol a child into a platform competition without the child's plan.** The marketplace is the
    paid part of the pupil plan; the school's own competitions stay free, which is the fairness case.
+
+## Amendment of 14 November 2026 — staff add entrants
+
+The testing analysis of 13 November 2026 (TA-104) found that answer 1 above assumed a capability the code did not have:
+with enrolment off nobody could be an entrant, because the family's Enrol was the only way an entry was made, so staff
+could record no result. Asked, the owner chose the recommendation put to them, on 14 November 2026:
+
+**Staff add entrants: on the entries page the office or a teacher adds a pupil of the school as an entrant, audited.
+Where the competition asks for a guardian's consent the entry waits for a guardian's yes like any other; for a pupil
+with no family on the app the school's stand-in guardian answers, as elsewhere. Results are recorded once the entry
+stands.**
+
+How it is built (`addEntrant` and `entrantCandidates` in `apps/web/src/lib/competitions.ts`, the door
+`POST /api/v1/contest/competitions/{competitionId}/entrants`, the Add form on `/competitions/[id]/entries` and the
+phone's entries screen, the pupils offered in the entries door's `candidates`):
+
+- The office (ADMIN) or a teacher (TEACHER) of the school, as the entries page and the results; a teacher is not
+  narrowed to their classes, for the reason recordResult gives (an entry belongs to no class).
+- The school's own published competition only, enrolment on or off and whatever the dates. A platform competition
+  sends the child's name out of the school and stays the family's to enter.
+- A pupil of the school: an ACTIVE pupil on the roll who has not left, inside the competition's classes. Adding a
+  pupil already entered answers that entry.
+- The entry and its audit row (`competition.entrant.add`, ids only) are one tenant transaction. No consent is taken
+  for the family: the entry is made unstamped, the guardians are told, and it stands with a guardian's yes, given as
+  any yes is (the waiting list, the consent door, or the guardian's own Enrol, which answers an entry already made even
+  while enrolment is off). The stand-in's row is an ordinary guardianship, so the stand-in is told and answers the
+  same way. Where the competition asks no consent the entry stands at once.
+- An adult at a college, for whom no guardian may answer (TA-101), gives their own word: their Enrol on the
+  competition's page (web and phone) confirms the entry the college made, enrolment on or off.
+- Results are recorded on the entry as on any other; one still waiting for its yes is kept off the internal board
+  and the standings by the consent rule there until the yes, as since 6 November.

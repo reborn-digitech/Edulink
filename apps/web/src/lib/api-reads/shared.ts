@@ -375,6 +375,7 @@ export async function readCompetition(ctx: ActiveContext, competitionId: string)
     ...summaryOut(competition),
     waiting: waitingOut(waiting.filter((w) => w.competitionId === competition.id)),
     board,
+    confirmOwnEntry: competition.confirmOwnEntry,
   };
 }
 

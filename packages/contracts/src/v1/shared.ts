@@ -491,6 +491,8 @@ export const competitionDetailSchema = competitionCardSchema.extend({
   enteredCount: count,
   waiting: z.array(competitionConsentSchema),
   board: z.array(competitionStandingSchema),
+  /** TA-104: an entry the school made for an adult at a college, still waiting on their own word, which their Enrol gives. */
+  confirmOwnEntry: z.boolean().optional(),
 });
 
 /**

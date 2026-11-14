@@ -130,6 +130,13 @@ export default async function CompetitionPage({
                   awaitingConsent={competition.entry.awaitingConsent}
                   canWithdraw
                 />
+                {/* TA-104: an adult the school entered says yes themself, enrolment on or off. */}
+                {competition.confirmOwnEntry && (
+                  <>
+                    <p className="text-sm text-fg-muted">{t("competitions.confirmOwnEntry")}</p>
+                    <EnterButton competitionId={competition.id} title={competition.title} open requiresParentConsent={false} />
+                  </>
+                )}
                 <ResultBadge
                   scoreMilli={competition.entry.scoreMilli}
                   rank={competition.entry.rank}

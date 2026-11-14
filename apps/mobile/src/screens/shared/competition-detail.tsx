@@ -153,6 +153,16 @@ export function CompetitionDetail() {
                 c.entry ? (
                   <>
                     {entryPill(c.entry.awaitingConsent)}
+                    {c.confirmOwnEntry ? (
+                      <>
+                        {/* TA-104: an adult the school entered says yes themself, enrolment on or off. */}
+                        <Text variant="sm" tone="muted">
+                          {t("competitions.confirmOwnEntry")}
+                        </Text>
+                        {enter.isError ? <Failed message={enter.error.message} onRetry={() => enter.mutate()} /> : null}
+                        <Button label={t("competitions.enterThis")} onPress={() => enter.mutate()} busy={enter.isPending} />
+                      </>
+                    ) : null}
                     {result(c.entry.scoreMilli, c.entry.rank)}
                     {!c.entry.awaitingConsent && c.acceptingWork ? (
                       <HandIn key={c.entry.submissionUrl ?? ""} competitionId={competitionId} existingUrl={c.entry.submissionUrl} onDone={refresh} />

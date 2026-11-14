@@ -146,8 +146,18 @@ export const contestEntriesSchema = z.object({
     requiresParentConsent: z.boolean(),
   }),
   entries: z.array(contestEntrySchema),
+  /** TA-104: the pupils the office or a teacher may add as entrants (the school's own competition only; empty otherwise). */
+  candidates: z.array(z.object({ studentMembershipId: id, name: z.string(), className: z.string().nullable() })).optional(),
 });
 export type ContestEntries = z.infer<typeof contestEntriesSchema>;
+
+/**
+ * POST /api/v1/contest/competitions/{competitionId}/entrants — TA-104 (decision 0007 as amended 14 November 2026):
+ * the office or a teacher adds a pupil of the school as an entrant. Where consent is asked the entry waits for a
+ * guardian's yes (awaitingConsent); `created` is false when the pupil was already entered.
+ */
+export const contestAddEntrantSchema = z.object({ studentMembershipId: id });
+export const contestEntrantAddedSchema = z.object({ ok: z.literal(true), entryId: id, awaitingConsent: z.boolean(), created: z.boolean() });
 
 /**
  * POST /api/v1/contest/entries/{entryId}/result — a score and a place as staff

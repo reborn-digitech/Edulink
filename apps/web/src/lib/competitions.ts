@@ -319,6 +319,7 @@ export async function getCompetition(session: ActiveContext, competitionId: stri
   }
 
   const entries = await entriesFor(session, [competition.id]);
+  const entry = entries.get(competition.id) ?? null;
 
   return {
     ...competition,
@@ -334,7 +335,12 @@ export async function getCompetition(session: ActiveContext, competitionId: stri
     /** The office's switch and the dates together (decision 0007). */
     open: enrolmentAllowed(competition),
     acceptingWork: submissionOpen(competition),
-    entry: entries.get(competition.id) ?? null,
+    entry,
+    /**
+     * TA-104: an entry the school made for an adult at a college, still waiting: no guardian may answer for them
+     * (TA-101), so the page offers the student their own Enrol, which is their word, though enrolment is off.
+     */
+    confirmOwnEntry: session.role === "STUDENT" && entry !== null && entry.awaitingConsent && (await consentApplies(entry.studentMembershipId)),
     /** Only ever this school's, because CompetitionEntry is policied. */
     enteredCount: await db.competitionEntry.count({
       where: {
@@ -469,8 +475,14 @@ export async function enterCompetition(
     else await assertFeatureOn("COMPETITIONS", session);
   }
 
+  // TA-104: the office's switch and the dates close a NEW entry; an entry already made (the pupil's own ask, or one
+  // the office or a teacher added) is answered below, so the yes it waits for can still be given with Enrol.
   if (!enrolmentAllowed(competition)) {
-    throw new AccessError("access.entriesForThisCompetitionHaveClosed");
+    const made = await db.competitionEntry.findUnique({
+      where: { competitionId_studentMembershipId: { competitionId, studentMembershipId: who.studentMembershipId } },
+      select: { id: true },
+    });
+    if (!made) throw new AccessError("access.entriesForThisCompetitionHaveClosed");
   }
 
   // The grade band, when the organiser set one and the pupil's grade is
@@ -797,6 +809,162 @@ export async function listEntriesForResults(
     // TA-100: as entriesFor reads it.
     awaitingConsent: row.competition.requiresParentConsent && row.parentConsentAt === null,
   }));
+}
+
+/* -------------------------------------------------------------------------- */
+/* Staff add an entrant (TA-104; decision 0007 as amended 14 November 2026)     */
+/* -------------------------------------------------------------------------- */
+
+export type EntrantCandidate = { studentMembershipId: string; name: string; className: string | null };
+export type AddEntrantResult = { entryId: string; awaitingConsent: boolean; created: boolean };
+
+/** The school's own published competition, the only kind staff pick entrants for; null for anything else. */
+async function ownCompetitionForEntrants(session: ActiveContext, competitionId: string) {
+  if (!session.schoolId) return null;
+  return db.competition.findFirst({
+    where: { id: competitionId, status: "PUBLISHED", organizerSchoolId: session.schoolId },
+    select: { id: true, title: true, requiresParentConsent: true, gradeLow: true, gradeHigh: true },
+  });
+}
+
+/** A pupil's grade as enterCompetition reads it: the membership's, else the current class's. */
+function pupilGradeOf(pupil: { gradeLevel: string | null; enrollments: { class: { gradeLevel: string | null } }[] }): string | null {
+  return pupil.gradeLevel ?? pupil.enrollments[0]?.class.gradeLevel ?? null;
+}
+
+/**
+ * The pupils the office or a teacher may add to one of the school's own competitions (TA-104): ACTIVE pupils on
+ * the roll who have not left, inside the competition's classes, and not already entered. Empty for anyone but
+ * ADMIN or TEACHER and for any competition that is not the school's own and published.
+ */
+export async function entrantCandidates(session: ActiveContext, competitionId: string): Promise<EntrantCandidate[]> {
+  if (session.role !== "ADMIN" && session.role !== "TEACHER") return [];
+  const competition = await ownCompetitionForEntrants(session, competitionId);
+  if (!competition || !session.schoolId) return [];
+  const schoolId = session.schoolId;
+  const { pupils, entered } = await db.$tenantTransaction(async (raw) => {
+    const tx = raw as Prisma.TransactionClient;
+    const pupils = await tx.membership.findMany({
+      where: { schoolId, role: "STUDENT", status: "ACTIVE", leftAt: null },
+      select: {
+        id: true,
+        gradeLevel: true,
+        user: { select: { name: true, preferredName: true } },
+        enrollments: { where: { status: "ACTIVE" }, select: { class: { select: { name: true, gradeLevel: true } } }, take: 1 },
+      },
+    });
+    const entered = await tx.competitionEntry.findMany({ where: { competitionId, schoolId }, select: { studentMembershipId: true } });
+    return { pupils, entered };
+  });
+  const taken = new Set(entered.map((e) => e.studentMembershipId));
+  return pupils
+    .filter((p) => !taken.has(p.id) && gradeFits(competition, pupilGradeOf(p)))
+    .map((p) => ({ studentMembershipId: p.id, name: p.user.preferredName ?? p.user.name, className: p.enrollments[0]?.class.name ?? null }))
+    .sort((a, b) => (a.className ?? "").localeCompare(b.className ?? "") || a.name.localeCompare(b.name));
+}
+
+/**
+ * The office or a teacher adds a pupil of the school as an entrant (TA-104; the owner's decision of 14 November
+ * 2026, amending decision 0007). This is how "enrolment off means the office picks the entrants" is done: the
+ * office's switch and the dates close the family's Enrol, not this.
+ *
+ * - ADMIN or TEACHER of the school, as the entries page and recordResult; a teacher is not narrowed to their
+ *   classes, for recordResult's reason (an entry belongs to no class).
+ * - The school's own published competition only: a platform competition sends the child's name out of the school
+ *   and is the family's to enter. Another school's is not found.
+ * - A pupil of the school: an ACTIVE STUDENT membership here that has not left, inside the competition's classes.
+ * - CONSENT IS NOT TAKEN FOR THE FAMILY. The entry is made with no consent stamp, so where the competition asks for
+ *   a guardian's yes it waits for one like any entry the pupil asked for, and the guardians are told; a pupil with
+ *   no family on the app is answered by the school's stand-in guardian (standin-guardian.ts), whose row is an
+ *   ordinary guardianship and is told and answers the same way. An adult at a college, for whom no guardian may
+ *   answer (TA-101), gives their own word with their Enrol, which answers an entry already made even while
+ *   enrolment is off. Where no consent is asked the entry stands at once.
+ * - Results are recorded on the entry as on any other; one still waiting is kept off the board and the standings
+ *   by the consent rule there, until the yes.
+ * - Adding a pupil already entered answers that entry (created false), as a second press of Enrol does.
+ *
+ * The entry and its audit row (competition.entrant.add, ids only) are written in one tenant transaction.
+ */
+export async function addEntrant(session: ActiveContext, competitionId: string, studentMembershipId: string): Promise<AddEntrantResult> {
+  if ((session.role !== "ADMIN" && session.role !== "TEACHER") || !session.schoolId) {
+    throw new AccessError("competitions.refuseAddEntrantRole");
+  }
+  const schoolId = session.schoolId;
+
+  const found = await db.competition.findFirst({
+    where: { id: competitionId, status: "PUBLISHED", OR: [{ organizerSchoolId: null }, { organizerSchoolId: schoolId }] },
+    select: { id: true, organizerSchoolId: true },
+  });
+  if (!found) throw new AccessError("access.competitionNotFound", "NOT_FOUND");
+  if (found.organizerSchoolId === null) {
+    // decision 0007: a platform competition is not here while the marketplace is off (404, as the entries door).
+    await assertFeatureOn("COMPETITIONS", session);
+    throw new AccessError("competitions.refuseAddEntrantNotOwn");
+  }
+  const competition = await ownCompetitionForEntrants(session, competitionId);
+  if (!competition) throw new AccessError("access.competitionNotFound", "NOT_FOUND");
+
+  const pupil = await db.$tenantTransaction(async (raw) => {
+    const tx = raw as Prisma.TransactionClient;
+    return tx.membership.findFirst({
+      where: { id: studentMembershipId, schoolId, role: "STUDENT", status: "ACTIVE", leftAt: null },
+      select: { id: true, userId: true, gradeLevel: true, enrollments: { where: { status: "ACTIVE" }, select: { class: { select: { gradeLevel: true } } }, take: 1 } },
+    });
+  });
+  if (!pupil) throw new AccessError("competitions.refuseEntrantNotAPupil", "NOT_FOUND");
+  if (!gradeFits(competition, pupilGradeOf(pupil))) throw new AccessError("competitions.refuseEntrantNotInBand");
+
+  const key = { competitionId_studentMembershipId: { competitionId, studentMembershipId: pupil.id } };
+  let made: { entryId: string; created: boolean; consentAt: Date | null };
+  try {
+    made = await db.$tenantTransaction(async (raw) => {
+      const tx = raw as Prisma.TransactionClient;
+      const existing = await tx.competitionEntry.findUnique({ where: key, select: { id: true, parentConsentAt: true } });
+      if (existing) return { entryId: existing.id, created: false, consentAt: existing.parentConsentAt };
+      const entry = await tx.competitionEntry.create({
+        data: { competitionId, studentMembershipId: pupil.id, schoolId, status: "REGISTERED" },
+        select: { id: true },
+      });
+      await audit(
+        { schoolId, actorUserId: session.user.id, action: "competition.entrant.add", targetType: "CompetitionEntry", targetId: entry.id, meta: { competitionId, entryId: entry.id, studentMembershipId: pupil.id, by: session.role } },
+        tx,
+      );
+      return { entryId: entry.id, created: true, consentAt: null };
+    });
+  } catch (error) {
+    // The pupil's own Enrol or a second press landing together: the entry that won is the answer.
+    if ((error as { code?: string }).code !== "P2002") throw error;
+    const existing = await db.competitionEntry.findUnique({ where: key, select: { id: true, parentConsentAt: true } });
+    if (!existing) throw error;
+    made = { entryId: existing.id, created: false, consentAt: existing.parentConsentAt };
+  }
+
+  const awaitingConsent = competition.requiresParentConsent && made.consentAt === null;
+  if (!made.created) return { entryId: made.entryId, awaitingConsent, created: false };
+
+  const url = `/competitions/${competitionId}`;
+  const adult = awaitingConsent && (await consentApplies(pupil.id));
+  await notify({
+    userId: pupil.userId,
+    schoolId,
+    kind: "COMPETITION",
+    titleKey: "notifTitle.schoolPickedYou",
+    titleVars: { competition: competition.title },
+    bodyKey: !awaitingConsent ? "notifBody.schoolEnteredYou" : adult ? "notifBody.sayYesOnPage" : "notifBody.untilGrownUpSaysYes",
+    url,
+  });
+  if (awaitingConsent && !adult) {
+    // Every ACTIVE guardianship, the school's stand-in included: the yes is theirs to give.
+    await notifyGuardians(pupil.id, (childName) => ({
+      schoolId,
+      kind: "COMPETITION",
+      titleKey: "notifTitle.schoolPickedChild",
+      titleVars: { name: childName, competition: competition.title },
+      bodyKey: "notifBody.untilYouSayYes",
+      url,
+    }));
+  }
+  return { entryId: made.entryId, awaitingConsent, created: true };
 }
 
 /**

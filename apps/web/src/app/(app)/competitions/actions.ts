@@ -5,6 +5,7 @@ import { z } from "zod";
 import { getSession } from "@/lib/session";
 import { AccessError } from "@/lib/tenancy";
 import {
+  addEntrant,
   competitionZoneOf,
   createCompetition,
   enterCompetition,
@@ -233,6 +234,36 @@ export async function submitAction(input: unknown): Promise<CompetitionActionSta
     revalidatePath(`/competitions/${parsed.data.id}`);
     revalidatePath("/competitions");
     return { ok: true, message: t("competitions.handedInDot") };
+  } catch (error) {
+    if (error instanceof AccessError)
+      return { ok: false, error: (await getT())(error.key, error.vars) };
+    throw error;
+  }
+}
+
+const addEntrantSchema = z.object({ id: z.string().cuid(), studentMembershipId: z.string().min(1).max(64), name: z.string().max(200) });
+
+/**
+ * TA-104 (decision 0007 as amended 14 November 2026): the office or a teacher adds a pupil of the school as an
+ * entrant, from the entries page. `id` is the competition; the rules are addEntrant's, and `name` only words the toast.
+ */
+export async function addEntrantAction(input: unknown): Promise<CompetitionActionState> {
+  const t = await getT();
+  const session = await getSession();
+  if (!session) return { ok: false, error: t("competitions.notSignedIn") };
+
+  const parsed = addEntrantSchema.safeParse(input);
+  if (!parsed.success) return { ok: false, error: t("competitions.choosePupilToAdd") };
+
+  try {
+    const added = await addEntrant(session, parsed.data.id, parsed.data.studentMembershipId);
+    revalidatePath("/competitions");
+    revalidatePath(`/competitions/${parsed.data.id}`);
+    const name = parsed.data.name;
+    return {
+      ok: true,
+      message: !added.created ? t("competitions.entrantAlready", { name }) : added.awaitingConsent ? t("competitions.entrantAddedWaiting", { name }) : t("competitions.entrantAdded", { name }),
+    };
   } catch (error) {
     if (error instanceof AccessError)
       return { ok: false, error: (await getT())(error.key, error.vars) };

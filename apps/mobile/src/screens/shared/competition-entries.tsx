@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Linking, View } from "react-native";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { contestEntriesSchema, contestLeaderboardSetSchema, contestResultSetSchema, type ContestEntries } from "@edulink/contracts";
+import { contestEntrantAddedSchema, contestEntriesSchema, contestLeaderboardSetSchema, contestResultSetSchema, type ContestEntries } from "@edulink/contracts";
 import { Button, Card, Empty, Failed, Field, Icon, Loading, Screen, Stat, Text, useToast } from "@/components";
 import { api } from "@/lib/api";
 import { unwrap } from "@/lib/query";
@@ -13,6 +13,7 @@ import { must, Refusal } from "../staff/shared";
 import { formatMilli, param, Pill } from "../family/shared";
 
 type Entry = ContestEntries["entries"][number];
+type Candidate = NonNullable<ContestEntries["candidates"]>[number];
 
 /**
  * The web's /competitions/[id]/entries: THIS school's entries in one
@@ -65,6 +66,7 @@ export function CompetitionEntries() {
   const results = entries.filter((e) => e.scoreMilli !== null || e.rank !== null).length;
   const organiser = role === "ADMIN" && Boolean(d?.competition.isOrganiser);
   const boardOn = Boolean(d?.competition.leaderboardEnabled);
+  const candidates = d?.candidates ?? [];
 
   return (
     <Screen title={t("competitions.entriesAndResults")} description={t("competitions.yourPupilsOnly")} refreshing={query.isRefetching} onRefresh={() => void query.refetch()}>
@@ -96,6 +98,7 @@ export function CompetitionEntries() {
               ) : null}
             </Card>
           ) : null}
+          {candidates.length > 0 ? <AddEntrant competitionId={competitionId} candidates={candidates} onAdded={refresh} /> : null}
           {entries.length === 0 ? (
             <Empty icon="trophy" title={t("competitions.nobodyEntered")} body={t("competitions.nobodyEnteredBody")} action={<Button label={t("competitions.backToCompetition")} variant="secondary" onPress={back} />} />
           ) : (
@@ -104,6 +107,50 @@ export function CompetitionEntries() {
         </>
       ) : null}
     </Screen>
+  );
+}
+
+/**
+ * TA-104 (decision 0007 as amended 14 November 2026): the office or a teacher adds a pupil of the school as an
+ * entrant, enrolment on or off, as the web's entries page does. The list is the roll inside the competition's
+ * classes less whoever is entered (the entries door's `candidates`); a name typed narrows it to a few to press.
+ */
+const SHOWN = 8;
+function AddEntrant({ competitionId, candidates, onAdded }: { competitionId: string; candidates: Candidate[]; onAdded: () => void }) {
+  const t = useT();
+  const toast = useToast();
+  const [search, setSearch] = useState("");
+  const add = useMutation({
+    mutationFn: async (pupil: Candidate) => ({ pupil, res: contestEntrantAddedSchema.parse(must(await api().post(`/api/v1/contest/competitions/${competitionId}/entrants`, { studentMembershipId: pupil.studentMembershipId }), t("competitions.didNotSave"))) }),
+    onSuccess: ({ pupil, res }) => {
+      const name = pupil.name;
+      toast.show(!res.created ? t("competitions.entrantAlready", { name }) : res.awaitingConsent ? t("competitions.entrantAddedWaiting", { name }) : t("competitions.entrantAdded", { name }));
+      setSearch("");
+      onAdded();
+    },
+  });
+  const needle = search.trim().toLowerCase();
+  const shown = (needle ? candidates.filter((c) => c.name.toLowerCase().includes(needle)) : candidates).slice(0, SHOWN);
+  return (
+    <Card title={t("competitions.addEntrantTitle")}>
+      <Text variant="sm" tone="muted">
+        {t("competitions.addEntrantHint")}
+      </Text>
+      <Field label={t("competitions.addEntrantSearch")} value={search} onChangeText={setSearch} maxLength={80} autoCorrect={false} />
+      {shown.map((pupil) => (
+        <Button
+          key={pupil.studentMembershipId}
+          label={pupil.className ? `${pupil.name} · ${pupil.className}` : pupil.name}
+          accessibilityLabel={`${t("competitions.addEntrantButton")}: ${pupil.name}`}
+          variant="ghost"
+          busy={add.isPending && add.variables?.studentMembershipId === pupil.studentMembershipId}
+          disabled={add.isPending}
+          onPress={() => add.mutate(pupil)}
+          style={{ alignSelf: "flex-start" }}
+        />
+      ))}
+      {add.isError ? <Failed message={add.error.message} /> : null}
+    </Card>
   );
 }
 
