@@ -113,8 +113,18 @@ export async function homeFigures(schoolId: string, input: { tiles: readonly Hom
     });
   if (has("nba") && on("IQAC"))
     job(async () => {
-      const sar = await db.collegeFiling.findFirst({ where: { schoolId, kind: "NBA_SAR" }, orderBy: [{ year: "desc" }, { generatedAt: "desc" }], select: { status: true, year: true } });
-      out.nba = sar ? { key: "streams.figure.nba", values: { year: `${sar.year}–${String((sar.year + 1) % 100).padStart(2, "0")}` }, words: { state: FILING_STATUS_KEY[sar.status] ?? "iqac.filingStatus.DRAFT" } } : { key: "streams.figure.nbaNone", values: {} };
+      // An NBA SAR is one per engineering department and year (TA-479): with two or more departments' reports in the
+      // latest year, the tile counts how many of them are signed off rather than showing whichever was generated last.
+      const sars = await db.collegeFiling.findMany({ where: { schoolId, kind: "NBA_SAR" }, orderBy: [{ year: "desc" }, { generatedAt: "desc" }], take: 200, select: { status: true, year: true, departmentId: true } });
+      const sar = sars[0];
+      const latest = new Map<string, string>();
+      for (const r of sars) if (sar && r.year === sar.year && !latest.has(r.departmentId ?? "")) latest.set(r.departmentId ?? "", r.status);
+      const yearLabel = sar ? `${sar.year}–${String((sar.year + 1) % 100).padStart(2, "0")}` : "";
+      out.nba = !sar
+        ? { key: "streams.figure.nbaNone", values: {} }
+        : latest.size > 1
+          ? { key: "streams.figure.nbaDepartments", values: { year: yearLabel, done: [...latest.values()].filter((s) => s === "SIGNED_OFF" || s === "FILED").length, count: latest.size } }
+          : { key: "streams.figure.nba", values: { year: yearLabel }, words: { state: FILING_STATUS_KEY[sar.status] ?? "iqac.filingStatus.DRAFT" } };
     });
   if (has("mootCourt") && streams.includes("LAW"))
     job(async () => {

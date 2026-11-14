@@ -354,6 +354,8 @@ export const MENU: Record<RoleCode, MenuItem[]> = {
     { labelKey: "academics.title", icon: "graduationCap", group: "teaching", screen: "/(app)/office-academics", module: "ACADEMICS" },
     { labelKey: "examCell.title", icon: "clipboard", group: "teaching", screen: "/(app)/exam-cell", module: "EXAMS" },
     { labelKey: "streamRecords.title", icon: "clipboard", group: "teaching", screen: "/(app)/stream-records", module: "ACADEMICS" },
+    // TA-271: the office corrects any moot (stream-records.ts mootCorrector), so the registrar reaches the moot screen too, at a law college.
+    { labelKey: "streamRecords.moots.title", icon: "trophy", group: "teaching", screen: "/(app)/moot-courts", module: "ACADEMICS", streams: ["LAW"] },
     { labelKey: "nav.staff", icon: "users", group: "people", screen: "/(app)/staff" },
     { labelKey: "nav.invites", icon: "plus", group: "people", screen: "/(app)/invites" },
     { labelKey: "nav.pupilRecords", icon: "clipboard", group: "people", screen: "/(app)/pupil-records" },

@@ -97,11 +97,14 @@ export async function saveMootCourtAction(previous: FormState, form: FormData): 
     previous,
     form,
     async () => {
-      const teams = [1, 2, 3, 4]
+      // A correction (TA-271) carries the moot's id and as many team boxes as the moot has (at least four, at most forty).
+      const id = field(form, "id");
+      const slots = Math.min(40, Math.max(4, intField(form, "teamSlots")));
+      const teams = Array.from({ length: slots }, (_, i) => i + 1)
         .map((n) => ({ name: field(form, `team${n}Name`), outcome: field(form, `team${n}Outcome`) || "PARTICIPATED", membershipIds: form.getAll(`team${n}Member`).map(String).filter(Boolean) }))
         .filter((team) => team.name)
         .map((team) => ({ ...team, outcome: (MOOT_OUTCOMES as readonly string[]).includes(team.outcome) ? team.outcome : "PARTICIPATED" }));
-      await saveMootCourt(await requireApiUser(), mootCourtSaveSchema.parse({ name: field(form, "name"), at: field(form, "at"), kind: field(form, "kind"), teams, result: field(form, "result"), judgeNotes: field(form, "judgeNotes") }));
+      await saveMootCourt(await requireApiUser(), mootCourtSaveSchema.parse({ ...(id ? { id } : {}), name: field(form, "name"), at: field(form, "at"), kind: field(form, "kind"), teams, result: field(form, "result"), judgeNotes: field(form, "judgeNotes") }));
       return "streamRecords.mootSaved";
     },
     // The schema's "teams.<i>.name" is the i-th team's box (teams with no name are dropped first, so i is the n-1 of a filled run).

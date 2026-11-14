@@ -252,6 +252,8 @@ export const studentStudiosSchema = z.object({
       submissions: z.array(studioSubmissionRowSchema),
       /** Whether a submission may still be saved: no signed jury yet. */
       canSubmit: z.boolean(),
+      /** TA-470: the submission stages still open, each on its own (a stage a signed jury closed is not here); absent from an older server, which read canSubmit for every stage. */
+      openStages: z.array(studioSubmissionStageSchema).optional(),
       results: z.array(z.object({ juryId: cuid, on: dateKey, title: z.string(), marks: z.number().nullable(), band: studioGradeBandSchema.nullable(), remark: z.string() })),
     }),
   ),

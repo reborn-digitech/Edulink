@@ -305,29 +305,27 @@ type OfferingFacts = { id: string; facultyMembershipId: string | null; divisionI
 const OFFERING_SELECT = { id: true, facultyMembershipId: true, divisionId: true, practicalHours: true, course: { select: { code: true, name: true, creditsP: true, scheme: { select: { programme: { select: { departmentId: true } } } } } } } as const;
 const toFacts = (o: { id: string; facultyMembershipId: string | null; divisionId: string | null; practicalHours: number; course: { code: string; name: string; creditsP: number; scheme: { programme: { departmentId: string } } } }): OfferingFacts => ({ id: o.id, facultyMembershipId: o.facultyMembershipId, divisionId: o.divisionId, practicalHours: o.practicalHours, departmentId: o.course.scheme.programme.departmentId, course: { code: o.course.code, name: o.course.name, creditsP: o.course.creditsP } });
 
-async function hodDepartmentId(c: Caller): Promise<string | null> {
-  if (c.role !== "HOD") return null;
-  return (await db.department.findFirst({ where: { schoolId: c.schoolId, hodMembershipId: c.membershipId }, select: { id: true } }))?.id ?? null;
-}
-
 /** Every department an HOD heads ([] for any other role). */
 async function hodDepartmentIds(c: Pick<Caller, "role" | "schoolId" | "membershipId">): Promise<string[]> {
   if (c.role !== "HOD") return [];
   return (await db.department.findMany({ where: { schoolId: c.schoolId, hodMembershipId: c.membershipId }, select: { id: true } })).map((d) => d.id);
 }
 
-/** Who may write an offering's record: its teacher, or the HOD of its department. */
-function writes(c: Caller, o: OfferingFacts, hodDept: string | null): boolean {
-  return (c.role === "FACULTY" || c.role === "HOD") && (o.facultyMembershipId === c.membershipId || (hodDept !== null && o.departmentId === hodDept));
+/** Who may write an offering's record: its teacher, or the HOD of its department (TA-383: of any department they head). */
+function writes(c: Caller, o: OfferingFacts, hodDepts: readonly string[]): boolean {
+  return (c.role === "FACULTY" || c.role === "HOD") && (o.facultyMembershipId === c.membershipId || hodDepts.includes(o.departmentId));
 }
+
+/** An offering that keeps a practical record: practical hours, or practical credits on its course (the sheet's own filter). */
+const keepsPracticals = (o: OfferingFacts): boolean => o.practicalHours > 0 || o.course.creditsP > 0;
 
 export async function practicalSheet(ctx: ActiveContext, query: { offeringId?: string } = {}): Promise<PracticalSheet> {
   const c = await recordsCaller(ctx, ["FACULTY", "HOD", "ADMIN", "PRINCIPAL"]);
-  const [duties, hodDept] = await Promise.all([myDuties(ctx), hodDepartmentId(c)]);
+  const [duties, hodDepts] = await Promise.all([myDuties(ctx), hodDepartmentIds(c)]);
   const labIncharge = duties.includes("LAB_INCHARGE");
   const office = c.role === "ADMIN" || c.role === "PRINCIPAL";
   const lab = { OR: [{ practicalHours: { gt: 0 } }, { course: { creditsP: { gt: 0 } } }] };
-  const scope = office || labIncharge ? {} : { OR: [{ facultyMembershipId: c.membershipId }, ...(hodDept ? [{ course: { scheme: { programme: { departmentId: hodDept } } } }] : [])] };
+  const scope = office || labIncharge ? {} : { OR: [{ facultyMembershipId: c.membershipId }, ...(hodDepts.length ? [{ course: { scheme: { programme: { departmentId: { in: hodDepts } } } } }] : [])] };
   const rows = await db.courseOffering.findMany({ where: { schoolId: c.schoolId, AND: [lab, scope] }, orderBy: [{ term: { startsOn: "desc" } }, { course: { code: "asc" } }], take: 200, select: OFFERING_SELECT });
   const offerings = rows.map(toFacts);
   const [faculty, divisions] = await Promise.all([
@@ -352,7 +350,7 @@ export async function practicalSheet(ctx: ActiveContext, query: { offeringId?: s
   const studentName = new Map(students.map((s) => [s.studentMembershipId, s.name]));
   const signers = await db.membership.findMany({ where: { id: { in: records.map((r) => r.signedByMembershipId).filter((x): x is string => Boolean(x)) } }, select: { id: true, user: { select: { name: true, preferredName: true } } } });
   const signerName = new Map(signers.map((s) => [s.id, nameOf(s.user)]));
-  const canWrite = writes(c, chosen, hodDept);
+  const canWrite = writes(c, chosen, hodDepts);
   return {
     offerings: list,
     offeringId: chosen.id,
@@ -369,7 +367,11 @@ export async function savePracticals(ctx: ActiveContext, input: { offeringId: st
   const row = await db.courseOffering.findFirst({ where: { id: input.offeringId, schoolId: c.schoolId }, select: OFFERING_SELECT });
   if (!row) throw new AccessError("access.entryNotFound", "NOT_FOUND");
   const offering = toFacts(row);
-  if (!writes(c, offering, await hodDepartmentId(c))) throw new AccessError("streamRecords.refuseNotYourOffering");
+  if (!writes(c, offering, await hodDepartmentIds(c))) throw new AccessError("streamRecords.refuseNotYourOffering");
+  // The record is a lab course's at a college whose streams keep labs (TA-494), as the sheet and the batch split read it:
+  // rows on a course with no practicals were written and then never shown, though the lab desk signed and counted them.
+  if (!labStreams(await streamsOf(c.schoolId))) throw new RuleRefusal("streamRecords.refuseNoLabs", 409);
+  if (!keepsPracticals(offering)) throw new RuleRefusal("streamRecords.refuseNoPracticals", 422, undefined, "offeringId");
   if (input.performedOn > todayKey(c.timeZone)) throw new RuleRefusal("streamRecords.refuseFutureDay", 422, undefined, "performedOn");
   const marks = new Map(input.entries.map((e) => [e.studentMembershipId, e.marks]));
   const ids = [...marks.keys()];
@@ -377,6 +379,9 @@ export async function savePracticals(ctx: ActiveContext, input: { offeringId: st
   if (registered !== ids.length) throw new RuleRefusal("streamRecords.refuseNotRegistered", 422, undefined, "entries");
   const count = await db.$tenantTransaction(async (raw) => {
     const tx = raw as Tx;
+    // The experiment's rows are held first (TA-208): a signature landing between the count and the writes waits, and one
+    // that landed before is counted, so a signed row is never rewritten.
+    await tx.$queryRaw`SELECT "id" FROM "PracticalRecord" WHERE "offeringId" = ${offering.id} AND "experimentNo" = ${input.experimentNo} FOR UPDATE`;
     const signed = await tx.practicalRecord.count({ where: { offeringId: offering.id, experimentNo: input.experimentNo, studentMembershipId: { in: ids }, signedAt: { not: null } } });
     if (signed) throw new RuleRefusal("streamRecords.refuseSigned", 409);
     for (const id of ids) {
@@ -395,10 +400,13 @@ export async function signPracticals(ctx: ActiveContext, recordIds: readonly str
   const ids = [...new Set(recordIds)];
   const rows = await db.practicalRecord.findMany({ where: { id: { in: ids }, schoolId: c.schoolId }, select: { id: true, offering: { select: OFFERING_SELECT } } });
   if (rows.length !== ids.length) throw new AccessError("access.entryNotFound", "NOT_FOUND");
+  // The same lab rule as the save (TA-494).
+  if (!labStreams(await streamsOf(c.schoolId))) throw new RuleRefusal("streamRecords.refuseNoLabs", 409);
+  if (rows.some((r) => !keepsPracticals(toFacts(r.offering)))) throw new RuleRefusal("streamRecords.refuseNoPracticals", 422, undefined, "recordIds");
   const labIncharge = (await myDuties(ctx)).includes("LAB_INCHARGE");
   if (!labIncharge) {
-    const hodDept = await hodDepartmentId(c);
-    if (rows.some((r) => !writes(c, toFacts(r.offering), hodDept))) throw new AccessError("streamRecords.refuseNotYourOffering");
+    const hodDepts = await hodDepartmentIds(c);
+    if (rows.some((r) => !writes(c, toFacts(r.offering), hodDepts))) throw new AccessError("streamRecords.refuseNotYourOffering");
   }
   const done = await db.practicalRecord.updateMany({ where: { id: { in: ids }, schoolId: c.schoolId, signedAt: null }, data: { signedAt: new Date(), signedByMembershipId: c.membershipId } });
   if (done.count) await audit({ schoolId: c.schoolId, actorUserId: c.userId, action: "streamRecords.practical.sign", targetType: "PracticalRecord", targetId: ids[0]!, meta: { count: done.count, asLabIncharge: labIncharge } });

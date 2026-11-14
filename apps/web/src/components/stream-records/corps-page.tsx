@@ -119,6 +119,7 @@ export async function CorpsPage({ corps, searchParams }: { corps: CorpsCode; sea
               </details>
               <div className="flex flex-wrap items-end gap-3">
                 <TextField name="unit" label={t("duties.corps.fieldUnit")} maxLength={80} className="w-56" />
+                <DateField name="enrolledOn" label={t("duties.corps.fieldJoinedOn")} max={today} />
                 <Button type="submit" variant="secondary">{t("duties.corps.enrol")}</Button>
               </div>
             </form>

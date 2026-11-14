@@ -56,6 +56,11 @@ async function architectureOffered(schoolId: string): Promise<boolean> {
   return hasStream(schoolId, ARCHITECTURE);
 }
 
+/** Every write is refused at a college without ARCHITECTURE (TA-471), the jury's sheet, its signature and its posting included. */
+async function assertArchitecture(schoolId: string): Promise<void> {
+  if (!(await architectureOffered(schoolId))) throw new RuleRefusal("duties.studio.refuseNotArchitecture", 409);
+}
+
 async function schoolToday(schoolId: string): Promise<string> {
   const school = await db.school.findUniqueOrThrow({ where: { id: schoolId }, select: { timezone: true } });
   return todayKey(school.timezone);
@@ -208,7 +213,7 @@ export async function studioDesk(ctx: ActiveContext): Promise<StudioDesk> {
   let terms = await db.academicTerm.findMany({ where: { schoolId: c.schoolId, endsOn: { gte: today } }, select: { id: true } });
   if (!terms.length) terms = await db.academicTerm.findMany({ where: { schoolId: c.schoolId }, orderBy: { startsOn: "desc" }, take: 1, select: { id: true } });
   const offerings = terms.length
-    ? await db.courseOffering.findMany({ where: { schoolId: c.schoolId, termId: { in: terms.map((t) => t.id) } }, orderBy: [{ term: { startsOn: "desc" } }, { course: { code: "asc" } }], take: 300, select: { id: true, facultyMembershipId: true, term: { select: { name: true } }, course: { select: { code: true, name: true } } } })
+    ? await db.courseOffering.findMany({ where: { schoolId: c.schoolId, termId: { in: terms.map((t) => t.id) }, ...ARCHITECTURE_OFFERING }, orderBy: [{ term: { startsOn: "desc" } }, { course: { code: "asc" } }], take: 300, select: { id: true, facultyMembershipId: true, term: { select: { name: true } }, course: { select: { code: true, name: true } } } })
     : [];
   const teacherName = new Map(teachers.map((m) => [m.id, nameOf(m.user)]));
   const rows = studios.map((s) => toRow(s, names, today));
@@ -224,6 +229,14 @@ export async function studioDesk(ctx: ActiveContext): Promise<StudioDesk> {
     toSign: rows.flatMap((s) => s.juries.filter((j) => j.signedAt === null && j.marked > 0).map((j) => ({ juryId: j.id, studioId: s.id, studioTitle: s.title, on: j.on, chairName: j.panel.find((p) => p.chair)?.name ?? "", marked: j.marked, students: j.students }))),
   };
 }
+
+/**
+ * The offerings a studio may be kept on (TA-473): a course of a programme whose stream is ARCHITECTURE, or of one
+ * whose stream is not recorded (a college before its programmes were tagged). A physics course at a college of
+ * several streams is not a studio's: its students would read a design studio and a jury sheet could be posted into
+ * its internal marks.
+ */
+const ARCHITECTURE_OFFERING = { course: { scheme: { programme: { OR: [{ stream: ARCHITECTURE }, { stream: null }] } } } } satisfies Prisma.CourseOfferingWhereInput;
 
 /** The office or a holder of the duty, at a college whose streams include ARCHITECTURE. */
 async function manager(ctx: ActiveContext, office: readonly Role[]) {
@@ -246,8 +259,10 @@ export function stagesInOrder(days: { briefIssuedOn: string; interimOn: string |
 /** A studio and its stages, new or corrected by its id: a holder of the duty (the coordinator themself unless they name another holder) or the office (which must name one). */
 export async function saveStudio(ctx: ActiveContext, input: { id?: string; offeringId: string; title: string; brief: string; maxMarks: number; coordinatorMembershipId?: string | null; briefIssuedOn: string; interimOn: string | null; finalOn: string | null; juryOn: string | null }): Promise<{ id: string }> {
   const c = await manager(ctx, ["ADMIN"]);
-  const offering = await db.courseOffering.findFirst({ where: { id: input.offeringId, schoolId: c.schoolId }, select: { id: true, termId: true } });
+  const offering = await db.courseOffering.findFirst({ where: { id: input.offeringId, schoolId: c.schoolId }, select: { id: true, termId: true, course: { select: { scheme: { select: { programme: { select: { stream: true } } } } } } } });
   if (!offering) throw new RuleRefusal("duties.studio.refuseUnknownOffering", 422, undefined, "offeringId");
+  const stream = offering.course.scheme.programme.stream;
+  if (stream !== null && stream !== ARCHITECTURE) throw new RuleRefusal("duties.studio.refuseNotArchitectureCourse", 422, undefined, "offeringId");
   const coordinatorId = input.coordinatorMembershipId ?? (c.holder ? c.membershipId : null);
   if (!coordinatorId) throw new RuleRefusal("duties.studio.refuseNoCoordinator", 422, undefined, "coordinatorMembershipId");
   const coordinator = await db.membership.findFirst({ where: { id: coordinatorId, schoolId: c.schoolId, role: { in: ["FACULTY", "HOD"] }, status: "ACTIVE", leftAt: null }, select: { id: true, dutiesJson: true } });
@@ -256,6 +271,19 @@ export async function saveStudio(ctx: ActiveContext, input: { id?: string; offer
   const data = { offeringId: offering.id, termId: offering.termId, title: input.title.trim(), brief: input.brief.trim(), maxMarks: input.maxMarks, coordinatorMembershipId: coordinator.id, briefIssuedOn: input.briefIssuedOn, interimOn: input.interimOn, finalOn: input.finalOn, juryOn: input.juryOn };
   let id = input.id;
   if (id) {
+    // A signed sheet changes no more (TA-206): once a jury of the studio has signed, its maximum (the signed marks' bands
+    // and their scaling into internal marks read it) and its offering (whose students the sheet is) stay, and a stage the
+    // signature closed is not opened again by moving its day after the signed jury.
+    const now = await db.studio.findFirst({ where: { id, schoolId: c.schoolId }, select: { offeringId: true, maxMarks: true, interimOn: true, finalOn: true, juries: { where: { signedAt: { not: null } }, select: { on: true, signedAt: true } } } });
+    if (!now) throw new AccessError("access.entryNotFound", "NOT_FOUND");
+    if (now.juries.length) {
+      if (now.maxMarks !== input.maxMarks) throw new RuleRefusal("duties.studio.refuseStudioSigned", 409, undefined, "maxMarks");
+      if (now.offeringId !== offering.id) throw new RuleRefusal("duties.studio.refuseStudioSigned", 409, undefined, "offeringId");
+      for (const stage of STUDIO_SUBMISSION_STAGES) {
+        const before = stage === "INTERIM_PINUP" ? now.interimOn : now.finalOn;
+        if (before !== null && !stageOpen(now, stage) && stageOpen({ interimOn: input.interimOn, finalOn: input.finalOn, juries: now.juries }, stage)) throw new RuleRefusal("duties.studio.refuseStudioSigned", 409, undefined, stage === "INTERIM_PINUP" ? "interimOn" : "finalOn");
+      }
+    }
     const done = await db.studio.updateMany({ where: { id, schoolId: c.schoolId }, data });
     if (!done.count) throw new AccessError("access.entryNotFound", "NOT_FOUND");
   } else id = (await db.studio.create({ data: { schoolId: c.schoolId, createdByUserId: c.userId, ...data }, select: { id: true } })).id;
@@ -284,7 +312,8 @@ export async function saveJury(ctx: ActiveContext, studioId: string, input: { id
   } else id = (await db.studioJury.create({ data: { schoolId: c.schoolId, studioId: studio.id, createdByUserId: c.userId, ...data }, select: { id: true } })).id;
   await audit({ schoolId: c.schoolId, actorUserId: c.userId, action: "studio.jury", targetType: "StudioJury", targetId: id, meta: { studioId: studio.id, on: input.on, panel: ids.length, external: input.externalJurors.length, edit: Boolean(input.id) } });
   // Each juror newly on the panel is told, in their own language; the sitting's day stays a date key.
-  await Promise.all(jurors.filter((j) => !before.includes(j.id)).map((j) => notify({ userId: j.userId, schoolId: c.schoolId, kind: "SYSTEM", titleKey: "duties.studio.notifyJury", titleVars: { studio: studio.title, day: input.on }, url: "/faculty/studios" }).catch(() => undefined)));
+  // The convener is not told of the sitting they have just made (TA-603), whether or not they sit on it.
+  await Promise.all(jurors.filter((j) => !before.includes(j.id) && j.id !== c.membershipId).map((j) => notify({ userId: j.userId, schoolId: c.schoolId, kind: "SYSTEM", titleKey: "duties.studio.notifyJury", titleVars: { studio: studio.title, day: input.on }, url: "/faculty/studios" }).catch(() => undefined)));
   return { id };
 }
 
@@ -311,6 +340,7 @@ export async function saveJuryMarks(ctx: ActiveContext, juryId: string, input: {
   const c = await collegeCaller(ctx, ["FACULTY", "HOD"]);
   const jury = await juryFor(c, juryId);
   if (!panelOf(jury.panelJson).includes(c.membershipId)) throw new AccessError("duties.studio.refuseNotOnPanel");
+  await assertArchitecture(c.schoolId);
   if (jury.signedAt) throw new RuleRefusal("duties.studio.refuseSigned", 409);
   const registered = new Set(jury.studio.offering.registrations.map((r) => r.studentMembershipId));
   for (const e of input.entries) {
@@ -320,6 +350,11 @@ export async function saveJuryMarks(ctx: ActiveContext, juryId: string, input: {
   const now = new Date();
   await db.$tenantTransaction(async (raw) => {
     const tx = raw as Tx;
+    // The chair's signature may have landed since the read above (TA-208): the jury's row is held and its signature read
+    // again, so a signed sheet never takes a mark after it (signJury holds the same row).
+    await tx.$queryRaw`SELECT "id" FROM "StudioJury" WHERE "id" = ${jury.id} FOR UPDATE`;
+    const still = await tx.studioJury.findUnique({ where: { id: jury.id }, select: { signedAt: true } });
+    if (!still || still.signedAt) throw new RuleRefusal("duties.studio.refuseSigned", 409);
     for (const e of input.entries) {
       const marksTenths = e.marks === null ? null : Math.round(e.marks * 10);
       await tx.studioJuryMark.upsert({
@@ -339,11 +374,22 @@ export async function signJury(ctx: ActiveContext, juryId: string): Promise<{ si
   const jury = await juryFor(c, juryId);
   if (jury.chairMembershipId !== c.membershipId) throw new AccessError("duties.studio.refuseNotChair");
   if (jury.signedAt) return { signed: true, changed: false };
-  const marked = new Set(jury.marks.map((m) => m.studentMembershipId));
-  const missing = jury.studio.offering.registrations.filter((r) => !marked.has(r.studentMembershipId));
-  if (missing.length) throw new RuleRefusal("duties.studio.refuseIncomplete", 409, { count: missing.length });
-  await db.studioJury.update({ where: { id: jury.id }, data: { signedAt: new Date(), signedByMembershipId: c.membershipId } });
-  await audit({ schoolId: c.schoolId, actorUserId: c.userId, action: "studio.sign", targetType: "StudioJury", targetId: jury.id, meta: { studioId: jury.studio.id, students: jury.marks.length } });
+  await assertArchitecture(c.schoolId);
+  // Under the jury's row (TA-208): a juror's save holds the same row, so the marks signed are the marks that stand, the
+  // sheet's completeness is read again there, and a second signature finds the first.
+  const outcome = await db.$tenantTransaction(async (raw) => {
+    const tx = raw as Tx;
+    await tx.$queryRaw`SELECT "id" FROM "StudioJury" WHERE "id" = ${jury.id} FOR UPDATE`;
+    const row = await tx.studioJury.findUnique({ where: { id: jury.id }, select: { signedAt: true, marks: { select: { studentMembershipId: true } } } });
+    if (!row || row.signedAt) return { changed: false, students: 0 };
+    const marked = new Set(row.marks.map((m) => m.studentMembershipId));
+    const missing = jury.studio.offering.registrations.filter((r) => !marked.has(r.studentMembershipId));
+    if (missing.length) throw new RuleRefusal("duties.studio.refuseIncomplete", 409, { count: missing.length });
+    const done = await tx.studioJury.updateMany({ where: { id: jury.id, signedAt: null }, data: { signedAt: new Date(), signedByMembershipId: c.membershipId } });
+    return { changed: done.count > 0, students: row.marks.length };
+  });
+  if (!outcome.changed) return { signed: true, changed: false };
+  await audit({ schoolId: c.schoolId, actorUserId: c.userId, action: "studio.sign", targetType: "StudioJury", targetId: jury.id, meta: { studioId: jury.studio.id, students: outcome.students } });
   await Promise.all(jury.studio.offering.registrations.map((r) => notify({ userId: r.student.userId, schoolId: c.schoolId, kind: "SYSTEM", titleKey: "duties.studio.notifyResult", titleVars: { studio: jury.studio.title }, url: "/student/studios" }).catch(() => undefined)));
   return { signed: true, changed: true };
 }
@@ -352,6 +398,7 @@ export async function signJury(ctx: ActiveContext, juryId: string): Promise<{ si
 export async function postJuryToInternal(ctx: ActiveContext, juryId: string, componentId: string): Promise<{ posted: number; componentId: string }> {
   const c = await collegeCaller(ctx, ["FACULTY", "HOD"]);
   const jury = await juryFor(c, juryId);
+  await assertArchitecture(c.schoolId);
   if (!jury.signedAt) throw new RuleRefusal("duties.studio.refuseUnsigned", 409);
   const component = await db.internalComponent.findFirst({ where: { id: componentId, offeringId: jury.studio.offeringId }, select: { id: true, maxMarks: true } });
   if (!component) throw new RuleRefusal("academics.refuseUnknownComponent", 422, undefined, "componentId");
@@ -386,15 +433,15 @@ export async function facultyStudios(ctx: ActiveContext): Promise<FacultyStudios
     for (const j of s.juries) {
       const onPanel = panelOf(j.panelJson).includes(me);
       const signed = j.signedAt !== null;
-      const canPost = signed && (teaches || heads);
+      const canPost = offered && signed && (teaches || heads);
       const components = canPost && !(await db.internalLock.findUnique({ where: { offeringId: s.offeringId }, select: { id: true } })) ? await db.internalComponent.findMany({ where: { offeringId: s.offeringId, releasedAt: null }, orderBy: { position: "asc" }, select: { id: true, name: true, maxMarks: true } }) : [];
       juries.push({
         ...juryRow(j, s, names, registered.length, today),
         studioTitle: s.title,
         courseCode: s.offering.course.code,
         maxMarks: s.maxMarks,
-        canMark: onPanel && !signed,
-        canSign: j.chairMembershipId === me && !signed,
+        canMark: offered && onPanel && !signed,
+        canSign: offered && j.chairMembershipId === me && !signed,
         canPost,
         sheet: registered.map((st) => {
           const m = j.marks.find((x) => x.studentMembershipId === st.id);
@@ -444,6 +491,7 @@ export async function studentStudios(ctx: ActiveContext): Promise<StudentStudios
         stages: row.stages.map(({ stage, on, state }) => ({ stage, on, state })),
         submissions: mine?.submissions ?? [],
         canSubmit: STUDIO_SUBMISSION_STAGES.some((stage) => stageOpen(s, stage)),
+        openStages: STUDIO_SUBMISSION_STAGES.filter((stage) => stageOpen(s, stage)),
         results: (mine?.results ?? []).map((r) => ({ ...r, title: s.juries.find((j) => j.id === r.juryId)?.title ?? "" })),
       };
     }),
@@ -473,7 +521,9 @@ export async function saveStudioSubmission(ctx: ActiveContext, studioId: string,
   else if (input.fileId) {
     const ticket = await db.uploadTicket.findFirst({ where: { fileId: input.fileId, userId: c.userId, consumedAt: null }, select: { mime: true, size: true } });
     if (!ticket) throw new RuleRefusal("academics.refuseTicket", 422, undefined, "fileId");
-    await db.uploadTicket.updateMany({ where: { fileId: input.fileId, userId: c.userId, consumedAt: null }, data: { consumedAt: new Date() } });
+    // The spend must happen here (TA-384): of two saves sent at once with one ticket, the second finds it spent.
+    const spent = await db.uploadTicket.updateMany({ where: { fileId: input.fileId, userId: c.userId, consumedAt: null }, data: { consumedAt: new Date() } });
+    if (!spent.count) throw new RuleRefusal("academics.refuseTicket", 422, undefined, "fileId");
     file = { fileId: input.fileId, fileName: input.fileId, fileMime: ticket.mime, fileSize: ticket.size };
   }
   const wasSent = existing ? sent(existing.state) : false;

@@ -99,7 +99,10 @@ export async function lawInternshipSummary(schoolId: string, year: number): Prom
   const programmeBy = new Map(programmes.map((p) => [p.id, p]));
   const seats = programmes.length ? await db.studentProgramme.findMany({ where: { schoolId, ...SEATED_NOW, programmeId: { in: programmes.map((p) => p.id) } }, select: { studentMembershipId: true, programmeId: true, student: { select: { user: { select: { name: true, preferredName: true } } } } } }) : [];
   const [inYear, completed, moots] = await Promise.all([
-    db.internship.findMany({ where: { schoolId, kind: { in: [...LAW_INTERNSHIP_KINDS] }, status: { not: "REFUSED" }, fromKey: { gte: w.from, lte: w.to } }, select: { kind: true, fromKey: true, toKey: true } }),
+    // The return counts internships served (TA-270): evaluated or credited, by students holding law seats, as the
+    // per-student minimum below does; a proposal, an approval or a report not yet evaluated is not one, nor is an
+    // engineering student's at a college of both streams.
+    seats.length ? db.internship.findMany({ where: { schoolId, kind: { in: [...LAW_INTERNSHIP_KINDS] }, status: { in: ["EVALUATED", "CREDITED"] }, studentMembershipId: { in: seats.map((s) => s.studentMembershipId) }, fromKey: { gte: w.from, lte: w.to } }, select: { kind: true, fromKey: true, toKey: true } }) : Promise.resolve([] as { kind: string; fromKey: string; toKey: string }[]),
     seats.length ? db.internship.findMany({ where: { schoolId, kind: { in: [...LAW_INTERNSHIP_KINDS] }, status: { in: ["EVALUATED", "CREDITED"] }, studentMembershipId: { in: seats.map((s) => s.studentMembershipId) } }, select: { studentMembershipId: true, fromKey: true, toKey: true } }) : Promise.resolve([]),
     db.mootCourt.findMany({ where: { schoolId, at: { gte: w.from, lte: w.to } }, select: { kind: true, teamsJson: true } }),
   ]);

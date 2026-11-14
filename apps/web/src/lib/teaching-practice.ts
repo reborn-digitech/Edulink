@@ -113,6 +113,15 @@ export async function savePracticePosting(ctx: ActiveContext, input: { id?: stri
   const data = { studentMembershipId: student.id, practiceSchoolId: place.id, fromKey: input.from, toKey: input.to, lessonsPlanned: input.lessonsPlanned };
   let id = input.id;
   if (id) {
+    // A posting with observed lessons keeps whose it is (TA-381): the grades were given to its student, so the student
+    // stays and the days must still hold every observation; the school, the lessons planned and a wider span may change.
+    const was = await db.teachingPracticePosting.findFirst({ where: { id, schoolId: c.schoolId }, select: { studentMembershipId: true, _count: { select: { observations: true } } } });
+    if (!was) throw new AccessError("access.entryNotFound", "NOT_FOUND");
+    if (was._count.observations > 0) {
+      if (was.studentMembershipId !== student.id) throw new RuleRefusal("duties.teachingPractice.refusePostingObserved", 409, { count: was._count.observations }, "studentMembershipId");
+      const outside = await db.lessonObservation.count({ where: { postingId: id, OR: [{ at: { lt: input.from } }, { at: { gt: input.to } }] } });
+      if (outside) throw new RuleRefusal("duties.teachingPractice.refusePostingObserved", 409, { count: outside }, "from");
+    }
     const done = await db.teachingPracticePosting.updateMany({ where: { id, schoolId: c.schoolId }, data });
     if (!done.count) throw new AccessError("access.entryNotFound", "NOT_FOUND");
   } else id = (await db.teachingPracticePosting.create({ data: { schoolId: c.schoolId, createdByUserId: c.userId, ...data }, select: { id: true } })).id;

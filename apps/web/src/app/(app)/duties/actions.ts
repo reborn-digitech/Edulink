@@ -53,7 +53,7 @@ export async function enrolCorpsAction(form: FormData): Promise<void> {
   await runAction(corpsPath(corps), async () => {
     const ids = form.getAll("student").map(String).filter(Boolean);
     if (!ids.length) throw new RuleRefusal("streamRecords.chooseStudents", 422);
-    await enrolInCorps(await requireApiUser(), corps, corpsEnrolSchema.parse({ studentMembershipIds: ids, unit: field(form, "unit") }));
+    await enrolInCorps(await requireApiUser(), corps, corpsEnrolSchema.parse({ studentMembershipIds: ids, unit: field(form, "unit"), enrolledOn: field(form, "enrolledOn") || undefined }));
     return "duties.corps.enrolled";
   });
 }

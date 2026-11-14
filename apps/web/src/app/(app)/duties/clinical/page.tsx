@@ -67,6 +67,43 @@ export default async function ClinicalDeskPage({ searchParams }: { searchParams:
                   </p>
                   <p className="text-fg-muted">{[s.address || null, s.agreementFrom && s.agreementTo ? t("duties.clinical.agreementLine", { from: day(s.agreementFrom, locale), to: day(s.agreementTo, locale) }) : null, t("duties.clinical.contactLine", { role: t(`duties.clinical.contact.${s.contactRole}` as TranslationKey) })].filter(Boolean).join(" · ")}</p>
                   {s.departments.length > 0 ? <p className="text-fg-muted">{s.departments.map((dep) => [dep.name, dep.beds != null ? t("duties.clinical.bedsN", { count: dep.beds }) : null, t("duties.clinical.postingsN", { count: dep.postings })].filter(Boolean).join(" · ")).join(" — ")}</p> : null}
+                  {d.canManage ? (
+                    // TA-267: a site, and each of its wards, corrected in place by its id (the agreement renewed, a ward's beds); the library audits it as an edit.
+                    <details className="pt-1" data-correct-site={s.id}>
+                      <summary className="min-h-11 cursor-pointer py-2 text-sm text-accent-strong">{t("duties.clinical.correctSite", { name: s.name })}</summary>
+                      <form action={clinicalSiteAction} className="grid gap-3 pt-2 sm:grid-cols-3">
+                        <input type="hidden" name="id" value={s.id} />
+                        <TextField name="name" label={t("duties.clinical.fieldSite")} required minLength={2} maxLength={160} defaultValue={s.name} />
+                        <SelectField name="kind" label={t("duties.clinical.fieldKind")} required defaultValue={s.kind}>
+                          {CLINICAL_SITE_KINDS.map((k) => (
+                            <option key={k} value={k}>{t(`duties.clinical.kind.${k}` as TranslationKey)}</option>
+                          ))}
+                        </SelectField>
+                        <SelectField name="contactRole" label={t("duties.clinical.fieldContactRole")} required defaultValue={s.contactRole}>
+                          {CLINICAL_CONTACT_ROLES.map((r) => (
+                            <option key={r} value={r}>{t(`duties.clinical.contact.${r}` as TranslationKey)}</option>
+                          ))}
+                        </SelectField>
+                        <TextField name="address" label={t("duties.clinical.fieldAddress")} maxLength={300} defaultValue={s.address} className="sm:col-span-3" />
+                        <DateField name="agreementFrom" label={t("duties.clinical.fieldAgreementFrom")} defaultValue={s.agreementFrom ?? undefined} />
+                        <DateField name="agreementTo" label={t("duties.clinical.fieldAgreementTo")} defaultValue={s.agreementTo ?? undefined} />
+                        <div className="sm:col-span-3">
+                          <Button type="submit" variant="secondary">{t("duties.clinical.saveCorrection")}</Button>
+                        </div>
+                      </form>
+                      {s.departments.map((dep) => (
+                        <form key={dep.id} action={clinicalDepartmentAction} className="grid gap-3 border-t border-border pt-3 sm:grid-cols-3" data-correct-department={dep.id}>
+                          <input type="hidden" name="id" value={dep.id} />
+                          <input type="hidden" name="siteId" value={s.id} />
+                          <TextField name="name" label={t("duties.clinical.fieldDepartment")} required minLength={2} maxLength={120} defaultValue={dep.name} />
+                          <TextField name="beds" type="number" min={0} max={5000} label={t("duties.clinical.fieldBeds")} defaultValue={dep.beds != null ? String(dep.beds) : undefined} />
+                          <div className="flex items-end">
+                            <Button type="submit" variant="secondary">{t("duties.clinical.saveCorrection")}</Button>
+                          </div>
+                        </form>
+                      ))}
+                    </details>
+                  ) : null}
                 </li>
               ))}
             </ul>
@@ -142,6 +179,39 @@ export default async function ClinicalDeskPage({ searchParams }: { searchParams:
                 <Button type="submit">{t("duties.clinical.addPosting")}</Button>
               </div>
             </form>
+          ) : null}
+          {d.canPost && departments.length > 0 && d.supervisors.length > 0 && d.postings.length > 0 ? (
+            // TA-267: a posting corrected by its id (the supervisor, the ward, the days); one with logbook entries keeps its students and its days hold them (TA-381).
+            <details className="border-t border-border pt-4">
+              <summary className="min-h-11 cursor-pointer py-2 text-sm text-accent-strong">{t("duties.clinical.correctPostings")}</summary>
+              <ul className="space-y-4 pt-2">
+                {d.postings.map((p) => (
+                  <li key={p.id} data-correct-posting={p.id}>
+                    <form action={clinicalPostingAction} className="grid gap-3 sm:grid-cols-2 lg:grid-cols-6">
+                      <input type="hidden" name="id" value={p.id} />
+                      <input type="hidden" name="division" value={p.labBatchId ? `${p.divisionId}|${p.labBatchId}` : p.divisionId} />
+                      <p className="text-sm font-medium text-fg sm:col-span-2 lg:col-span-6">{[`${p.rotationOrder}`, p.divisionName, p.batchName, p.departmentName, `${day(p.from, locale)} – ${day(p.to, locale)}`].filter(Boolean).join(" · ")}</p>
+                      <SelectField name="departmentId" label={t("duties.clinical.fieldDepartment")} required defaultValue={p.departmentId} className="lg:col-span-2">
+                        {departments.map((dep) => (
+                          <option key={dep.id} value={dep.id}>{dep.text}</option>
+                        ))}
+                      </SelectField>
+                      <SelectField name="supervisorMembershipId" label={t("duties.clinical.fieldSupervisor")} required defaultValue={p.supervisorMembershipId} className="lg:col-span-2">
+                        {d.supervisors.map((s) => (
+                          <option key={s.membershipId} value={s.membershipId}>{s.name}</option>
+                        ))}
+                      </SelectField>
+                      <TextField name="rotationOrder" type="number" min={1} max={99} label={t("duties.clinical.fieldRotation")} defaultValue={String(p.rotationOrder)} className="lg:col-span-2" />
+                      <DateField name="from" label={t("duties.clinical.fieldFrom")} required defaultValue={p.from} className="lg:col-span-2" />
+                      <DateField name="to" label={t("duties.clinical.fieldTo")} required defaultValue={p.to} className="lg:col-span-2" />
+                      <div className="flex items-end lg:col-span-2">
+                        <Button type="submit" variant="secondary">{t("duties.clinical.saveCorrection")}</Button>
+                      </div>
+                    </form>
+                  </li>
+                ))}
+              </ul>
+            </details>
           ) : null}
         </CardBody>
       </Card>

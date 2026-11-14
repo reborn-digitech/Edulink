@@ -214,7 +214,7 @@ export function StudentStudiosScreen() {
             <Row key={st.stage} icon="calendar" title={t(STAGE_KEY[st.stage])} caption={`${dayOf(st.on, locale, t)} · ${t(STATE_KEY[st.state])}`} />
           ))}
           {SUBMISSION_STAGES.map((stage) => (
-            <SubmissionNote key={stage} studioId={s.id} stage={stage} on={s.stages.find((x) => x.stage === stage)?.on ?? null} open={s.canSubmit && (s.stages.find((x) => x.stage === stage)?.on ?? null) !== null} mine={s.submissions.find((x) => x.stage === stage) ?? null} onDone={() => query.refetch()} />
+            <SubmissionNote key={stage} studioId={s.id} stage={stage} on={s.stages.find((x) => x.stage === stage)?.on ?? null} open={(s.openStages ? s.openStages.includes(stage) : s.canSubmit) && (s.stages.find((x) => x.stage === stage)?.on ?? null) !== null} mine={s.submissions.find((x) => x.stage === stage) ?? null} onDone={() => query.refetch()} />
           ))}
           <Text variant="sm" bold>
             {t("duties.studio.resultsTitle")}

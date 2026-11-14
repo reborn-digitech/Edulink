@@ -30,6 +30,7 @@ import { deskCaller } from "./duty-desks";
 import { hasDuty } from "./duties";
 import { assertCollege, assertModuleOn } from "./modules";
 import { stripIdentifiers } from "./assistant/strip";
+import { memberOn } from "./stream-records";
 import type { ActiveContext } from "./session";
 
 /**
@@ -84,6 +85,14 @@ const NAME_CUE = /(?<![\p{L}\p{N}])(patient's|patient|pt|named|name|mrs|mr|ms|mi
 /** Capitalised words that follow "Patient" in a clinical note without naming anyone. */
 const NOT_A_PATIENT_NAME = new Set(["education", "history", "counselling", "counseling", "care", "safety", "positioning", "assessment", "admission", "admitted", "discharge", "discharged", "transfer", "transferred", "monitoring", "teaching", "records", "record", "handover", "file", "chart", "satisfaction", "examination", "complained", "complains", "seen", "reviewed", "shifted", "stable", "afebrile", "conscious", "ambulatory"]);
 const DEVANAGARI_HONORIFIC = /(?<![\p{L}\p{M}])(?:(?:श्रीमती|श्री)\s+|(?:सौ|कु)\.\s*)[\u0900-\u097F]{2,}/u;
+/**
+ * A Hindi or Marathi word for the patient, standing alone, before a Devanagari word (TA-484): "रुग्ण रमेश गायकवाड",
+ * "मरीज़ रमेश", "रोगी सुनीता". Devanagari has no capitals, so the word after the cue counts as a name unless it is one
+ * of the words a note goes on with (a postposition, a verb, a clinical word: "मरीज़ को दवा दी", "रुग्ण दाखल झाला").
+ * An inflected cue ("रुग्णाचे ड्रेसिंग केले") and a compound ("रुग्णालय", "रुग्णसेवा") are not cues.
+ */
+const DEVANAGARI_PATIENT = /(?<![\p{L}\p{M}])(?:रुग्ण|मरीज़|मरीज़|मरीज|रोगी|पेशंट|पेशेंट)\s*[:\-–]?\s+([ऄ-हक़-ॡॲ-ॿ][ऀ-ॣॱ-ॿ]*)/gu;
+const NOT_A_DEVANAGARI_NAME = new Set(["को", "का", "की", "के", "ने", "से", "में", "मे", "पर", "तक", "और", "या", "व", "आणि", "किंवा", "ला", "ना", "चा", "ची", "चे", "च्या", "नी", "स", "हा", "ही", "हे", "तो", "ती", "ते", "एक", "दो", "दोन", "तीन", "चार", "क्रमांक", "नंबर", "बेड", "खाट", "वार्ड", "कक्ष", "तपासला", "तपासली", "तपासले", "तपासणी", "पाहिला", "पाहिले", "देखा", "देखे", "देखी", "जांच", "जाँच", "दाखल", "भर्ती", "भरती", "स्थिर", "शुद्धीवर", "होश", "बरा", "बरी", "ठीक", "शिक्षण", "शिक्षा", "समुपदेशन", "परामर्श", "इतिहास", "सेवा", "काळजी", "देखभाल", "सुरक्षा", "हस्तांतरण", "डिस्चार्ज", "घरी", "घर", "आज", "काल", "सकाळी", "संध्याकाळी", "रात्री", "सुबह", "शाम", "रात", "यांचे", "यांची", "यांना", "यांच्या"]);
 /** A hospital's number for the patient: a UHID or MRN with digits, or an IP, IPD, OPD, registration, case or file number written as one. Bed and ward numbers stay: a bed names nobody. */
 const HOSPITAL_NUMBER = /(?<![\p{L}\p{N}])(?:uhid|mrn)\s*(?:no\.?|number|#)?\s*[:\-.]?\s*\d/iu;
 const NUMBERED_RECORD = /(?<![\p{L}\p{N}])(?:ipd?|opd|reg|registration|hospital|case|file)\.?\s*(?:no\.?|number|#)\s*[:\-.]?\s*\d/iu;
@@ -95,6 +104,7 @@ function namesSomeone(note: string): boolean {
     if (cue.length === 2 && cue === cue.toUpperCase()) continue;
     if (/^\p{Lu}/u.test(word) && !NOT_A_PATIENT_NAME.has(word.toLowerCase())) return true;
   }
+  for (const m of note.matchAll(DEVANAGARI_PATIENT)) if (!NOT_A_DEVANAGARI_NAME.has(m[1]!)) return true;
   return DEVANAGARI_HONORIFIC.test(note);
 }
 
@@ -117,28 +127,62 @@ export function noteCarriesIdentifier(note: string): boolean {
 
 type Roster = { membershipId: string; name: string; rollNumber: number | null }[];
 
-/** The students of a posting on read: the division's active enrolment, narrowed to the batch's current members when the posting names one. */
-async function rosterOf(schoolId: string, classId: string, labBatchId: string | null): Promise<Roster> {
-  const rows = await db.enrollment.findMany({ where: { schoolId, classId, status: "ACTIVE", student: { status: "ACTIVE", leftAt: null } }, select: { studentMembershipId: true, rollNumber: true, student: { select: { user: { select: { name: true, preferredName: true } } } } } });
-  let keep = new Set(rows.map((r) => r.studentMembershipId));
-  if (labBatchId) {
-    const members = await db.labBatchMember.findMany({ where: { batchId: labBatchId, untilKey: null }, select: { studentMembershipId: true } });
-    keep = new Set(members.map((m) => m.studentMembershipId).filter((id) => keep.has(id)));
+/** A batch row that held on some day of a posting's span ("" is since the batch began). */
+const heldDuring = (m: { fromKey: string; untilKey: string | null }, p: { fromKey: string; toKey: string }): boolean => m.fromKey <= p.toKey && (m.untilKey === null || m.untilKey >= p.fromKey);
+
+/**
+ * The students of postings on read (TA-207, TA-386): the division's active enrolment, narrowed for a batch posting to
+ * the students the batch held on some day of the posting's span (a move or a re-split after it began leaves the
+ * student on the posting they served), and every student who already keeps entries under the posting whatever today's
+ * enrolment or batch says, so their signed and waiting counts stay on the desk. Two reads for every posting together.
+ */
+async function rostersOf(schoolId: string, postings: { id: string; classId: string; labBatchId: string | null; fromKey: string; toKey: string }[], counts: Counts): Promise<Map<string, Roster>> {
+  const out = new Map<string, Roster>();
+  if (!postings.length) return out;
+  const entered = new Map<string, Set<string>>();
+  for (const key of counts.keys()) {
+    const [postingId, studentId] = key.split(":") as [string, string];
+    entered.set(postingId, (entered.get(postingId) ?? new Set<string>()).add(studentId));
   }
-  return rows
-    .filter((r) => keep.has(r.studentMembershipId))
-    .map((r) => ({ membershipId: r.studentMembershipId, name: nameOf(r.student.user), rollNumber: r.rollNumber }))
-    .sort((a, b) => (a.rollNumber ?? 9999) - (b.rollNumber ?? 9999) || a.name.localeCompare(b.name));
+  const holders = [...new Set([...entered.values()].flatMap((s) => [...s]))];
+  const batchIds = [...new Set(postings.map((p) => p.labBatchId).filter((x): x is string => Boolean(x)))];
+  const [rows, members] = await Promise.all([
+    db.enrollment.findMany({
+      where: { schoolId, classId: { in: [...new Set(postings.map((p) => p.classId))] }, OR: [{ status: "ACTIVE", student: { status: "ACTIVE", leftAt: null } }, ...(holders.length ? [{ studentMembershipId: { in: holders } }] : [])] },
+      select: { classId: true, studentMembershipId: true, rollNumber: true, status: true, student: { select: { status: true, leftAt: true, user: { select: { name: true, preferredName: true } } } } },
+    }),
+    batchIds.length ? db.labBatchMember.findMany({ where: { batchId: { in: batchIds } }, select: { batchId: true, studentMembershipId: true, fromKey: true, untilKey: true } }) : Promise.resolve([] as { batchId: string; studentMembershipId: string; fromKey: string; untilKey: string | null }[]),
+  ]);
+  for (const p of postings) {
+    const mine = entered.get(p.id) ?? new Set<string>();
+    const inBatch = p.labBatchId ? new Set(members.filter((m) => m.batchId === p.labBatchId && heldDuring(m, p)).map((m) => m.studentMembershipId)) : null;
+    const seatedNow = (r: (typeof rows)[number]) => r.status === "ACTIVE" && r.student.status === "ACTIVE" && r.student.leftAt === null;
+    out.set(
+      p.id,
+      rows
+        .filter((r) => r.classId === p.classId && (mine.has(r.studentMembershipId) || (seatedNow(r) && (!inBatch || inBatch.has(r.studentMembershipId)))))
+        .map((r) => ({ membershipId: r.studentMembershipId, name: nameOf(r.student.user), rollNumber: r.rollNumber }))
+        .sort((a, b) => (a.rollNumber ?? 9999) - (b.rollNumber ?? 9999) || a.name.localeCompare(b.name)),
+    );
+  }
+  return out;
 }
 
-/** Whether a student is among a posting's students today. */
-async function postedHere(schoolId: string, studentMembershipId: string, posting: { divisionId: string; labBatchId: string | null }): Promise<boolean> {
+/**
+ * Whether a student may write an entry of a posting on a day (TA-207): an active enrolment in the division — or, for a
+ * correction of an entry already kept under this posting, whatever today's enrolment says — and, for a batch posting,
+ * the batch's row that held on the entry's own day, not today's.
+ */
+async function postedHere(schoolId: string, studentMembershipId: string, posting: { id: string; divisionId: string; labBatchId: string | null }, on: string, correcting: string | undefined): Promise<boolean> {
   const division = await db.division.findFirst({ where: { id: posting.divisionId, schoolId }, select: { classId: true } });
   if (!division) return false;
-  const enrolled = await db.enrollment.findFirst({ where: { schoolId, classId: division.classId, studentMembershipId, status: "ACTIVE" }, select: { id: true } });
-  if (!enrolled) return false;
+  const [enrolled, earlier] = await Promise.all([
+    db.enrollment.findFirst({ where: { schoolId, classId: division.classId, studentMembershipId, status: "ACTIVE" }, select: { id: true } }),
+    correcting ? db.logbookEntry.findFirst({ where: { id: correcting, schoolId, postingId: posting.id, studentMembershipId }, select: { id: true } }) : Promise.resolve(null),
+  ]);
+  if (!enrolled && !earlier) return false;
   if (!posting.labBatchId) return true;
-  return Boolean(await db.labBatchMember.findFirst({ where: { batchId: posting.labBatchId, studentMembershipId, untilKey: null }, select: { id: true } }));
+  return Boolean(await db.labBatchMember.findFirst({ where: { batchId: posting.labBatchId, studentMembershipId, ...memberOn(on) }, select: { id: true } }));
 }
 
 const postingSelect = {
@@ -200,9 +244,10 @@ async function countsOf(schoolId: string, postingIds: string[]): Promise<Counts>
 
 async function postingsView(schoolId: string, rows: PostingRow[], today: string): Promise<ClinicalPosting[]> {
   const counts = await countsOf(schoolId, rows.map((r) => r.id));
+  const rosters = await rostersOf(schoolId, rows.map((r) => ({ id: r.id, classId: r.division.classId, labBatchId: r.labBatchId, fromKey: r.fromKey, toKey: r.toKey })), counts);
   const out: ClinicalPosting[] = [];
   for (const p of orderPostings(rows, today)) {
-    const roster = await rosterOf(schoolId, p.division.classId, p.labBatchId);
+    const roster = rosters.get(p.id) ?? [];
     out.push({
       id: p.id,
       siteId: p.siteId,
@@ -365,6 +410,11 @@ export async function saveClinicalDepartment(ctx: ActiveContext, input: Clinical
   const data = { siteId: site.id, name, beds: input.beds };
   let id = input.id;
   if (id) {
+    // A ward with postings stays at its site (TA-483): each posting keeps the site it was made at, which the desk, the
+    // supervisor's queue and the logbook print, so a ward moved by its id would leave them naming the old one.
+    const ward = await db.clinicalDepartment.findFirst({ where: { id, schoolId: c.schoolId }, select: { siteId: true, _count: { select: { postings: true } } } });
+    if (!ward) throw new AccessError("access.entryNotFound", "NOT_FOUND");
+    if (ward.siteId !== site.id && ward._count.postings > 0) throw new RuleRefusal("duties.clinical.refuseWardMoved", 409, { count: ward._count.postings }, "siteId");
     const done = await db.clinicalDepartment.updateMany({ where: { id, schoolId: c.schoolId }, data });
     if (!done.count) throw new AccessError("access.entryNotFound", "NOT_FOUND");
   } else id = (await db.clinicalDepartment.create({ data: { schoolId: c.schoolId, ...data }, select: { id: true } })).id;
@@ -381,9 +431,13 @@ export async function saveClinicalPosting(ctx: ActiveContext, input: ClinicalPos
   const c = await deskCaller(ctx, DUTY, "ACADEMICS", []);
   if (!(await clinicalOffered(c.schoolId))) throw new RuleRefusal("duties.clinical.refuseNotOffered", 409);
   if (input.to < input.from) throw new RuleRefusal("duties.clinical.refuseDates", 422, undefined, "to");
+  // The divisions the desk offers are the ones a posting may name (TA-486): at a college with another stream, a
+  // division of a health-sciences or pharmacy programme only.
+  const streams = await streamsOf(c.schoolId);
+  const onlyClinical = streams.length > 0 && streams.every((s) => CLINICAL_STREAMS.includes(s));
   const [department, division, supervisor] = await Promise.all([
     db.clinicalDepartment.findFirst({ where: { id: input.departmentId, schoolId: c.schoolId, site: { archivedAt: null } }, select: { id: true, siteId: true } }),
-    db.division.findFirst({ where: { id: input.divisionId, schoolId: c.schoolId }, select: { id: true } }),
+    db.division.findFirst({ where: { id: input.divisionId, schoolId: c.schoolId, ...(onlyClinical ? {} : { programme: { stream: { in: [...CLINICAL_STREAMS] } } }) }, select: { id: true } }),
     db.membership.findFirst({ where: { id: input.supervisorMembershipId, schoolId: c.schoolId, role: { in: ["FACULTY", "HOD"] }, status: "ACTIVE", leftAt: null }, select: { id: true } }),
   ]);
   if (!department) throw new RuleRefusal("duties.clinical.refuseDepartment", 422, undefined, "departmentId");
@@ -401,6 +455,15 @@ export async function saveClinicalPosting(ctx: ActiveContext, input: ClinicalPos
   const data = { siteId: department.siteId, departmentId: department.id, divisionId: division.id, labBatchId: input.labBatchId, supervisorMembershipId: supervisor.id, fromKey: input.from, toKey: input.to, rotationOrder: input.rotationOrder };
   let id = input.id;
   if (id) {
+    // A posting with logbook entries keeps whose it is (TA-381): its division and batch stay, and its days must still
+    // hold every entry; the ward, the supervisor, the rotation and a wider span may change.
+    const was = await db.clinicalPosting.findFirst({ where: { id, schoolId: c.schoolId }, select: { divisionId: true, labBatchId: true, _count: { select: { entries: true } } } });
+    if (!was) throw new AccessError("access.entryNotFound", "NOT_FOUND");
+    if (was._count.entries > 0) {
+      if (was.divisionId !== division.id || (was.labBatchId ?? null) !== (input.labBatchId ?? null)) throw new RuleRefusal("duties.clinical.refusePostingHasEntries", 409, { count: was._count.entries }, was.divisionId !== division.id ? "divisionId" : "labBatchId");
+      const outside = await db.logbookEntry.count({ where: { postingId: id, OR: [{ onKey: { lt: input.from } }, { onKey: { gt: input.to } }] } });
+      if (outside) throw new RuleRefusal("duties.clinical.refusePostingHasEntries", 409, { count: outside }, "from");
+    }
     const done = await db.clinicalPosting.updateMany({ where: { id, schoolId: c.schoolId }, data });
     if (!done.count) throw new AccessError("access.entryNotFound", "NOT_FOUND");
   } else id = (await db.clinicalPosting.create({ data: { schoolId: c.schoolId, createdByUserId: c.userId, ...data }, select: { id: true } })).id;
@@ -426,7 +489,9 @@ async function signer(ctx: ActiveContext, entryId: string) {
 export async function signLogbookEntry(ctx: ActiveContext, entryId: string, input: { remark: string }, now: Date = new Date()): Promise<{ id: string }> {
   if (noteCarriesIdentifier(input.remark)) throw new RuleRefusal("duties.clinical.refuseRemarkIdentifier", 422, undefined, "remark");
   const c = await signer(ctx, entryId);
-  await db.logbookEntry.update({ where: { id: c.entry.id }, data: { state: "SIGNED", signedAt: now, signedByMembershipId: c.membershipId, remark: input.remark.trim() } });
+  // Only while it is still handed in (TA-208): of a signature and a return pressed at once, the second finds it decided.
+  const done = await db.logbookEntry.updateMany({ where: { id: c.entry.id, state: "SUBMITTED" }, data: { state: "SIGNED", signedAt: now, signedByMembershipId: c.membershipId, remark: input.remark.trim() } });
+  if (!done.count) throw new RuleRefusal("duties.clinical.refuseNotSubmitted", 409);
   await audit({ schoolId: c.schoolId, actorUserId: c.userId, action: "duties.clinical.sign", targetType: "LogbookEntry", targetId: c.entry.id, meta: { postingId: c.entry.posting.id } });
   await notify({ userId: c.entry.student.userId, schoolId: c.schoolId, kind: "SYSTEM", titleKey: "duties.clinical.notifySigned", url: "/student/clinical" }).catch(() => undefined);
   return { id: c.entry.id };
@@ -436,7 +501,8 @@ export async function signLogbookEntry(ctx: ActiveContext, entryId: string, inpu
 export async function returnLogbookEntry(ctx: ActiveContext, entryId: string, input: { remark: string }): Promise<{ id: string }> {
   if (noteCarriesIdentifier(input.remark)) throw new RuleRefusal("duties.clinical.refuseRemarkIdentifier", 422, undefined, "remark");
   const c = await signer(ctx, entryId);
-  await db.logbookEntry.update({ where: { id: c.entry.id }, data: { state: "RETURNED", signedAt: null, signedByMembershipId: c.membershipId, remark: input.remark.trim() } });
+  const done = await db.logbookEntry.updateMany({ where: { id: c.entry.id, state: "SUBMITTED" }, data: { state: "RETURNED", signedAt: null, signedByMembershipId: c.membershipId, remark: input.remark.trim() } });
+  if (!done.count) throw new RuleRefusal("duties.clinical.refuseNotSubmitted", 409);
   await audit({ schoolId: c.schoolId, actorUserId: c.userId, action: "duties.clinical.return", targetType: "LogbookEntry", targetId: c.entry.id, meta: { postingId: c.entry.posting.id } });
   await notify({ userId: c.entry.student.userId, schoolId: c.schoolId, kind: "SYSTEM", titleKey: "duties.clinical.notifyReturned", url: "/student/clinical" }).catch(() => undefined);
   return { id: c.entry.id };
@@ -451,16 +517,20 @@ async function student(ctx: ActiveContext) {
   return { schoolId: ctx.schoolId, userId: ctx.user.id, membershipId: ctx.membershipId };
 }
 
-/** The postings a student is among: their active enrolments' divisions, and the batch's where the posting names one. */
+/**
+ * The postings a student is among: their active enrolments' divisions, a batch posting where the batch held them on some
+ * day of its span (TA-207: not only today's batch), and every posting they already keep entries under.
+ */
 async function myPostingRows(schoolId: string, membershipId: string): Promise<PostingRow[]> {
-  const [enrolments, batches] = await Promise.all([
+  const [enrolments, batches, entered] = await Promise.all([
     db.enrollment.findMany({ where: { schoolId, studentMembershipId: membershipId, status: "ACTIVE" }, select: { classId: true } }),
-    db.labBatchMember.findMany({ where: { schoolId, studentMembershipId: membershipId, untilKey: null }, select: { batchId: true } }),
+    db.labBatchMember.findMany({ where: { schoolId, studentMembershipId: membershipId }, select: { batchId: true, fromKey: true, untilKey: true } }),
+    db.logbookEntry.findMany({ where: { schoolId, studentMembershipId: membershipId }, distinct: ["postingId"], select: { postingId: true } }),
   ]);
-  if (!enrolments.length) return [];
-  const mine = new Set(batches.map((b) => b.batchId));
-  const rows = await db.clinicalPosting.findMany({ where: { schoolId, division: { classId: { in: enrolments.map((e) => e.classId) } } }, orderBy: [{ fromKey: "desc" }], take: 100, select: postingSelect });
-  return rows.filter((p) => !p.labBatchId || mine.has(p.labBatchId));
+  const kept = new Set(entered.map((e) => e.postingId));
+  if (!enrolments.length && !kept.size) return [];
+  const rows = await db.clinicalPosting.findMany({ where: { schoolId, OR: [...(enrolments.length ? [{ division: { classId: { in: enrolments.map((e) => e.classId) } } }] : []), ...(kept.size ? [{ id: { in: [...kept] } }] : [])] }, orderBy: [{ fromKey: "desc" }], take: 100, select: postingSelect });
+  return rows.filter((p) => kept.has(p.id) || !p.labBatchId || batches.some((b) => b.batchId === p.labBatchId && heldDuring(b, p)));
 }
 
 function entryView(e: { id: string; clientId: string; postingId: string; onKey: string; kind: string; count: number; note: string; state: string; submittedAt: Date | null; signedAt: Date | null; remark: string; posting: { site: { name: string }; department: { name: string } } }, signedByName: string | null): LogbookEntry {
@@ -514,7 +584,7 @@ export async function saveLogbookEntry(ctx: ActiveContext, input: LogbookEntrySa
     if (seen) return seen;
   }
   const posting = await db.clinicalPosting.findFirst({ where: { id: input.postingId, schoolId: c.schoolId }, select: { id: true, divisionId: true, labBatchId: true, fromKey: true, toKey: true } });
-  if (!posting || !(await postedHere(c.schoolId, c.membershipId, posting))) throw new RuleRefusal("duties.clinical.refusePosting", 422, undefined, "postingId");
+  if (!posting || !(await postedHere(c.schoolId, c.membershipId, posting, input.on, input.id))) throw new RuleRefusal("duties.clinical.refusePosting", 422, undefined, "postingId");
   const today = await todayAt(c.schoolId);
   if (input.on < posting.fromKey || input.on > posting.toKey || input.on > today) throw new RuleRefusal("duties.clinical.refuseDay", 422, undefined, "on");
   const note = input.note.trim();
@@ -525,7 +595,9 @@ export async function saveLogbookEntry(ctx: ActiveContext, input: LogbookEntrySa
     const mine = await db.logbookEntry.findFirst({ where: { id, schoolId: c.schoolId, studentMembershipId: c.membershipId }, select: { id: true, state: true } });
     if (!mine) throw new AccessError("access.entryNotFound", "NOT_FOUND");
     if (mine.state !== "DRAFT" && mine.state !== "RETURNED") throw new RuleRefusal("duties.clinical.refuseNotEditable", 409);
-    await db.logbookEntry.update({ where: { id: mine.id }, data });
+    // Only while it is still a draft or returned (TA-208): an entry handed in since the read above is not rewritten.
+    const done = await db.logbookEntry.updateMany({ where: { id: mine.id, state: { in: ["DRAFT", "RETURNED"] } }, data });
+    if (!done.count) throw new RuleRefusal("duties.clinical.refuseNotEditable", 409);
   } else {
     // The outbox's replay racing the first send (QA-35): both found no row by the clientId and the second create hit
     // the unique key, a 500 the phone kept as a retry. The door is idempotent by clientId, so the loser answers the
@@ -550,7 +622,12 @@ export async function submitLogbookEntry(ctx: ActiveContext, entryId: string, no
   if (!mine) throw new AccessError("access.entryNotFound", "NOT_FOUND");
   if (mine.state === "SUBMITTED") return { id: mine.id };
   if (mine.state === "SIGNED") throw new RuleRefusal("duties.clinical.refuseSigned", 409);
-  await db.logbookEntry.update({ where: { id: mine.id }, data: { state: "SUBMITTED", submittedAt: now } });
+  const done = await db.logbookEntry.updateMany({ where: { id: mine.id, state: { in: ["DRAFT", "RETURNED"] } }, data: { state: "SUBMITTED", submittedAt: now } });
+  if (!done.count) {
+    const after = await db.logbookEntry.findUnique({ where: { id: mine.id }, select: { state: true } });
+    if (after?.state === "SUBMITTED") return { id: mine.id };
+    throw new RuleRefusal("duties.clinical.refuseSigned", 409);
+  }
   await audit({ schoolId: c.schoolId, actorUserId: c.userId, action: "clinical.logbook.submit", targetType: "LogbookEntry", targetId: mine.id, meta: { from: mine.state } });
   return { id: mine.id };
 }

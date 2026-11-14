@@ -38,6 +38,9 @@ export async function MootCourtsPage({ roles, base, searchParams, back }: { role
   const params = await searchParams;
   const [data, school] = await Promise.all([mootCourts(ctx), db.school.findUniqueOrThrow({ where: { id: ctx.schoolId }, select: { timezone: true } })]);
   const today = todayKey(school.timezone);
+  // A moot opened for correction (TA-271): ?correct=<id> fills the form with it and its id, where the library lets this reader correct it.
+  const editing = typeof params.correct === "string" ? (data.items.find((m) => m.id === params.correct && m.canEdit) ?? null) : null;
+  const slots = Math.max(4, editing?.teams.length ?? 0);
   return (
     <div className="space-y-6">
       <PageHeader title={t("streamRecords.moots.title")} description={t("streamRecords.moots.intro")} back={back ? { href: back.href, label: t(back.labelKey) } : undefined} />
@@ -79,6 +82,13 @@ export async function MootCourtsPage({ roles, base, searchParams, back }: { role
                   </ul>
                   {m.result ? <p className="text-sm text-fg">{t("streamRecords.moots.resultLine", { result: m.result })}</p> : null}
                   {m.judgeNotes ? <p className="whitespace-pre-line text-sm text-fg-muted">{m.judgeNotes}</p> : null}
+                  {m.canEdit ? (
+                    <a className="inline-flex min-h-11 items-center text-sm font-medium text-accent-strong underline" href={`${base}?correct=${m.id}#moot-form`} data-correct={m.id}>
+                      {t("streamRecords.moots.correctThis", { name: m.name })}
+                    </a>
+                  ) : m.frozen ? (
+                    <p className="text-sm text-fg-muted">{t("streamRecords.moots.frozenNote")}</p>
+                  ) : null}
                 </li>
               ))}
             </ul>
@@ -88,25 +98,27 @@ export async function MootCourtsPage({ roles, base, searchParams, back }: { role
 
       {data.canEdit ? (
         <Card>
-          <CardHeader title={t("streamRecords.moots.addTitle")} description={t("streamRecords.moots.addBody")} />
+          <CardHeader title={t(editing ? "streamRecords.moots.correctTitle" : "streamRecords.moots.addTitle")} description={t(editing ? "streamRecords.moots.correctBody" : "streamRecords.moots.addBody")} />
           <CardBody>
-            <ActionForm id="moot-form" action={saveMootCourtAction} className="space-y-4">
+            <ActionForm key={editing?.id ?? "new"} id="moot-form" action={saveMootCourtAction} className="space-y-4">
               <input type="hidden" name="back" value={base} />
+              {editing ? <input type="hidden" name="id" value={editing.id} /> : null}
+              <input type="hidden" name="teamSlots" value={slots} />
               <div className="grid gap-3 sm:grid-cols-3">
-                <TextField name="name" label={t("streamRecords.moots.fieldName")} required minLength={2} maxLength={160} />
-                <DateField name="at" label={t("streamRecords.moots.fieldDay")} required defaultValue={today} />
-                <SelectField name="kind" label={t("streamRecords.moots.fieldKind")} required defaultValue="INTRA">
+                <TextField name="name" label={t("streamRecords.moots.fieldName")} required minLength={2} maxLength={160} defaultValue={editing?.name} />
+                <DateField name="at" label={t("streamRecords.moots.fieldDay")} required defaultValue={editing?.at ?? today} />
+                <SelectField name="kind" label={t("streamRecords.moots.fieldKind")} required defaultValue={editing?.kind ?? "INTRA"}>
                   {MOOT_COURT_KINDS.map((k) => (
                     <option key={k} value={k}>{t(`streamRecords.moots.kind${k}`)}</option>
                   ))}
                 </SelectField>
               </div>
-              {[1, 2, 3, 4].map((n) => (
+              {Array.from({ length: slots }, (_, i) => i + 1).map((n) => (
                 <fieldset key={n} className="rounded-[var(--radius-md)] border border-border p-3">
                   <legend className="px-1 text-sm font-medium text-fg">{t("streamRecords.moots.teamN", { n })}</legend>
                   <div className="grid gap-3 sm:grid-cols-2">
-                    <TextField name={`team${n}Name`} label={t("streamRecords.moots.fieldTeam")} maxLength={80} required={n <= 2} />
-                    <SelectField name={`team${n}Outcome`} label={t("streamRecords.moots.fieldOutcome")} defaultValue="PARTICIPATED">
+                    <TextField name={`team${n}Name`} label={t("streamRecords.moots.fieldTeam")} maxLength={80} required={n <= 2} defaultValue={editing?.teams[n - 1]?.name} />
+                    <SelectField name={`team${n}Outcome`} label={t("streamRecords.moots.fieldOutcome")} defaultValue={editing?.teams[n - 1]?.outcome ?? "PARTICIPATED"}>
                       {MOOT_OUTCOMES.map((o) => (
                         <option key={o} value={o}>{t(`streamRecords.moots.outcome${o}`)}</option>
                       ))}
@@ -119,7 +131,7 @@ export async function MootCourtsPage({ roles, base, searchParams, back }: { role
                         {data.students.map((s) => (
                           <li key={s.membershipId}>
                             <label className="flex min-h-11 items-center gap-2 text-sm text-fg">
-                              <input type="checkbox" name={`team${n}Member`} value={s.membershipId} className="size-4 accent-[var(--accent)]" />
+                              <input type="checkbox" name={`team${n}Member`} value={s.membershipId} defaultChecked={editing?.teams[n - 1]?.members.some((p) => p.membershipId === s.membershipId) ?? false} className="size-4 accent-[var(--accent)]" />
                               {s.name}
                             </label>
                           </li>
@@ -129,9 +141,16 @@ export async function MootCourtsPage({ roles, base, searchParams, back }: { role
                   ) : null}
                 </fieldset>
               ))}
-              <TextField name="result" label={t("streamRecords.moots.fieldResult")} maxLength={400} />
-              <TextAreaField name="judgeNotes" label={t("streamRecords.moots.fieldNotes")} maxLength={2000} rows={3} />
-              <Button type="submit">{t("streamRecords.moots.save")}</Button>
+              <TextField name="result" label={t("streamRecords.moots.fieldResult")} maxLength={400} defaultValue={editing?.result} />
+              <TextAreaField name="judgeNotes" label={t("streamRecords.moots.fieldNotes")} maxLength={2000} rows={3} defaultValue={editing?.judgeNotes} />
+              <div className="flex flex-wrap items-center gap-3">
+                <Button type="submit">{t(editing ? "streamRecords.moots.saveCorrection" : "streamRecords.moots.save")}</Button>
+                {editing ? (
+                  <a className="inline-flex min-h-11 items-center text-sm font-medium text-accent-strong underline" href={base}>
+                    {t("common.cancel")}
+                  </a>
+                ) : null}
+              </div>
             </ActionForm>
           </CardBody>
         </Card>

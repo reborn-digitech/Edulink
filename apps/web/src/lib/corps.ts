@@ -81,18 +81,36 @@ async function assertStudents(schoolId: string, ids: readonly string[], field: s
   if (n !== ids.length) throw new RuleRefusal("duties.corps.refuseStudent", 422, undefined, field);
 }
 
-/** Students enrolled in the unit today (one who had left is enrolled again); idempotent for one already in. */
-export async function enrolInCorps(ctx: ActiveContext, corps: CorpsCode, input: { studentMembershipIds: string[]; unit: string }): Promise<{ count: number }> {
+/**
+ * Students enrolled in the unit on the day they joined (`enrolledOn`, today when not given; not ahead, not before the
+ * programme began), one who had left enrolled again; idempotent for one already in. Since an activity is checked
+ * against the enrolment on its own day (TA-380), the joining day is what lets a volunteer entered late be credited the
+ * camps they went to: a re-enrolment keeps the first joining day rather than overwriting it (the earlier spell's
+ * activities and year stay theirs; the gap between spells is not held, which would need a row per spell), and an
+ * earlier day given for one already in moves their joining day back.
+ */
+export async function enrolInCorps(ctx: ActiveContext, corps: CorpsCode, input: { studentMembershipIds: string[]; unit: string; enrolledOn?: string }): Promise<{ count: number }> {
   const c = await writer(ctx, corps);
   const ids = [...new Set(input.studentMembershipIds)];
   await assertStudents(c.schoolId, ids, "studentMembershipIds");
+  const day = input.enrolledOn ?? c.today;
+  if (input.enrolledOn !== undefined) {
+    if (input.enrolledOn > c.today) throw new RuleRefusal("duties.corps.refuseJoinFuture", 422, undefined, "enrolledOn");
+    await assertCorpsDay(c.schoolId, c.timezone, input.enrolledOn, ids, "enrolledOn");
+  }
   let count = 0;
   await db.$tenantTransaction(async (raw) => {
     const tx = raw as typeof db;
     for (const id of ids) {
-      const had = await tx.corpsEnrolment.findUnique({ where: { corps_studentMembershipId: { corps, studentMembershipId: id } }, select: { leftOn: true } });
-      if (had && had.leftOn === null) continue;
-      await tx.corpsEnrolment.upsert({ where: { corps_studentMembershipId: { corps, studentMembershipId: id } }, create: { schoolId: c.schoolId, corps, studentMembershipId: id, unit: input.unit.trim(), enrolledOn: c.today, createdByUserId: c.userId }, update: { unit: input.unit.trim(), enrolledOn: c.today, leftOn: null } });
+      const had = await tx.corpsEnrolment.findUnique({ where: { corps_studentMembershipId: { corps, studentMembershipId: id } }, select: { leftOn: true, enrolledOn: true } });
+      if (had && had.leftOn === null) {
+        if (input.enrolledOn === undefined || input.enrolledOn >= had.enrolledOn) continue;
+        await tx.corpsEnrolment.update({ where: { corps_studentMembershipId: { corps, studentMembershipId: id } }, data: { enrolledOn: input.enrolledOn } });
+        count += 1;
+        continue;
+      }
+      const joined = had && had.enrolledOn < day ? had.enrolledOn : day;
+      await tx.corpsEnrolment.upsert({ where: { corps_studentMembershipId: { corps, studentMembershipId: id } }, create: { schoolId: c.schoolId, corps, studentMembershipId: id, unit: input.unit.trim(), enrolledOn: day, createdByUserId: c.userId }, update: { unit: input.unit.trim(), enrolledOn: joined, leftOn: null } });
       count += 1;
     }
   });
@@ -114,15 +132,21 @@ export async function leaveCorps(ctx: ActiveContext, corps: CorpsCode, input: { 
   return { count: done.count };
 }
 
-/** An activity of the unit — on a day not in the future, every participant enrolled — written as the IQAC register's Activity row of that kind. */
+/** An activity of the unit — on a day not in the future, every participant enrolled on that day — written as the IQAC register's Activity row of that kind. */
 export async function addCorpsActivity(ctx: ActiveContext, corps: CorpsCode, input: { title: string; at: string; hours: number; camp: boolean; participantMembershipIds: string[] }): Promise<{ id: string }> {
   const c = await writer(ctx, corps);
   if (input.at > c.today) throw new RuleRefusal("duties.corps.refuseFutureDay", 422, undefined, "at");
   const ids = [...new Set(input.participantMembershipIds)];
   await assertCorpsDay(c.schoolId, c.timezone, input.at, ids, "at");
   if (ids.length) {
-    const enrolled = await db.corpsEnrolment.count({ where: { schoolId: c.schoolId, corps, leftOn: null, studentMembershipId: { in: ids } } });
-    if (enrolled !== ids.length) throw new RuleRefusal("duties.corps.refuseNotEnrolled", 422, undefined, "participantMembershipIds");
+    // Enrolled on the activity's day (TA-380), not today: a volunteer who has since left is credited the camp they went
+    // to, and one who joined after it is not.
+    const enrolled = await db.corpsEnrolment.count({ where: { schoolId: c.schoolId, corps, studentMembershipId: { in: ids }, enrolledOn: { lte: input.at }, OR: [{ leftOn: null }, { leftOn: { gte: input.at } }] } });
+    if (enrolled !== ids.length) {
+      // One never enrolled is told so; one enrolled, but not on that day, is told to enrol with the day they joined.
+      const ever = await db.corpsEnrolment.count({ where: { schoolId: c.schoolId, corps, studentMembershipId: { in: ids } } });
+      throw new RuleRefusal(ever === ids.length ? "duties.corps.refuseNotEnrolledOn" : "duties.corps.refuseNotEnrolled", 422, undefined, "participantMembershipIds");
+    }
   }
   const row = await db.activity.create({ data: { schoolId: c.schoolId, kind: corps, title: input.title.trim(), at: input.at, participants: ids.length, participantIdsJson: JSON.stringify(ids), hours: input.hours, camp: input.camp, createdByUserId: c.userId }, select: { id: true } });
   await audit({ schoolId: c.schoolId, actorUserId: c.userId, action: "duties.corps.activity", targetType: "Activity", targetId: row.id, meta: { corps, at: input.at, participants: ids.length, hours: input.hours, camp: input.camp } });

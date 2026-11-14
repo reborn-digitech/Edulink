@@ -67,7 +67,7 @@ export default async function StudentStudiosPage({ searchParams }: { searchParam
               {STUDIO_SUBMISSION_STAGES.map((stage) => {
                 const st = s.stages.find((x) => x.stage === stage)!;
                 const mine = s.submissions.find((x) => x.stage === stage);
-                const open = st.on !== null && s.canSubmit;
+                const open = st.on !== null && (s.openStages ? s.openStages.includes(stage) : s.canSubmit);
                 return (
                   <section key={stage} className="space-y-3 rounded-[var(--radius-md)] border border-border p-3" data-submission={stage}>
                     <h3 className="text-sm font-semibold text-fg">{t("duties.studio.submitTitle", { stage: t(STAGE_KEY[stage]) })}</h3>
