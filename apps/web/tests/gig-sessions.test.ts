@@ -197,7 +197,8 @@ describe("sessions and workshops", () => {
     let seat = (await mine(p1(), "p1")).bookings.find((b) => b.id === bookingId)!;
     expect(seat).toMatchObject({ status: "PENDING_CONSENT", meetingUrl: null, canConsent: false, canCancel: true });
     expect((await mine(g1(), "p1")).bookings.find((b) => b.id === bookingId)).toMatchObject({ canConsent: true, meetingUrl: null });
-    expect((await mySlots(expert())).slots.find((s) => s.id === slotId)!.bookings[0]).toMatchObject({ status: "PENDING_CONSENT", schoolName: `ZZ Session School A ${STAMP}` });
+    // The expert sees a seat asked for and nothing about the child until a guardian agrees (TA-120).
+    expect((await mySlots(expert())).slots.find((s) => s.id === slotId)!.bookings[0]).toMatchObject({ status: "PENDING_CONSENT", pupilName: "", schoolName: "", purpose: "" });
 
     // Only a guardian of this pupil answers.
     await expect(consentToBooking(p1(), bookingId, true)).rejects.toBeInstanceOf(AccessError);

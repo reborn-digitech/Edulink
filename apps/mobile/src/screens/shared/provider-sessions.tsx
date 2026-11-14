@@ -171,7 +171,7 @@ export function ProviderSessions() {
                   {s.bookings.map((b) => (
                     <View key={b.id} style={{ gap: th.space[2], padding: th.space[3], borderRadius: th.radius.md, backgroundColor: th.surfaceMuted }}>
                       <Text variant="sm" bold>
-                        {[b.pupilName, b.schoolName].join(" · ")}
+                        {[b.pupilName, b.schoolName].filter(Boolean).join(" · ")}
                       </Text>
                       <Text variant="xs" tone="muted">
                         {b.purpose}

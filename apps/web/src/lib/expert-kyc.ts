@@ -252,7 +252,8 @@ export async function calendarFeed(token: string, t: Words, now: Date = new Date
   return forUser(profile.userId, async () => {
     const events: FeedEvent[] = [];
     const slots = await db.gigSlot.findMany({ where: { providerUserId: profile.userId, startsAt: { gte: since } }, orderBy: { startsAt: "asc" }, take: 500, select: { id: true, kind: true, title: true, startsAt: true, endsAt: true, seats: true, seatsTaken: true, cancelledAt: true } });
-    const seats = slots.length ? await db.gigBooking.findMany({ where: { providerUserId: profile.userId, slotId: { in: slots.map((s) => s.id) }, status: { in: ["PENDING_CONSENT", "CONFIRMED", "DELIVERED"] } }, select: { slotId: true, schoolId: true } }) : [];
+    // TA-120: a pupil's ask no guardian has agreed to is not the provider's to count or to place at a school.
+    const seats = slots.length ? await db.gigBooking.findMany({ where: { providerUserId: profile.userId, slotId: { in: slots.map((s) => s.id) }, status: { in: ["CONFIRMED", "DELIVERED"] } }, select: { slotId: true, schoolId: true } }) : [];
     const schoolNames = new Map<string, string>();
     for (const schoolId of new Set(seats.map((b) => b.schoolId))) {
       const school = await forSchool(schoolId, () => db.school.findUnique({ where: { id: schoolId }, select: { name: true } }));

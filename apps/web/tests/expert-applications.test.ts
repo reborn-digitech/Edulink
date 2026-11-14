@@ -23,7 +23,7 @@ import type { ActiveContext } from "@/lib/session";
  *
  * The form's every refusal names its field; a valid application stores its document privately, makes no
  * account, mails the applicant in their language and is audited; a second one from an address still waiting,
- * or from an address that is already an expert's, is refused; the caller's address is limited to five valid
+ * or from an address that is already an expert's, files nothing and is answered as a new one (TA-335); the caller's address is limited to five valid
  * applications an hour. The operator alone lists, opens the document and decides: approval makes the account
  * with no password, an unpublished profile from the application and an ExpertInvite bound to the address, and
  * the invitation's link — taken from the mail itself — sets the password through the existing acceptance,
@@ -152,16 +152,19 @@ describe("applying", () => {
     expect(await db.auditLog.count({ where: { action: "expert.application.submit", targetId: made.id } })).toBe(1);
   });
 
-  it("refuses a second application while one waits, and an address that is already an expert's", async () => {
-    expect(await submitExpertApplication(body(), PDF(), "en")).toMatchObject({ ok: false, errorKey: "expertApply.refusePending", field: "email" });
-    expect(await submitExpertApplication(body({ email: mail("expert") }), PDF(), "en")).toMatchObject({ ok: false, errorKey: "expertApply.refuseAlreadyExpert", field: "email" });
+  it("files nothing for a second application while one waits, or for an address that is already an expert's, and answers each as a new one (TA-335)", async () => {
+    const filed = () => db.expertApplication.count({ where: { email: { in: [mail("meera"), mail("expert")] } } });
+    const before = await filed();
+    expect(await submitExpertApplication(body(), PDF(), "en")).toEqual({ ok: true, id: "", email: mail("meera") });
+    expect(await submitExpertApplication(body({ email: mail("expert") }), PDF(), "en")).toEqual({ ok: true, id: "", email: mail("expert") });
+    expect(await filed()).toBe(before);
   });
 
   it("limits a caller's address to five valid applications an hour", async () => {
     // Four valid forms above reached the gate (the GIF, Meera's, the second while hers waits, the expert's address);
-    // the fifth passes it (and is refused as waiting), the sixth is refused for the rate.
+    // the fifth passes it (and, the address waiting, files nothing: TA-335), the sixth is refused for the rate.
     for (let i = 0; i < EXPERT_APPLICATIONS_PER_HOUR.limit - 4; i++) {
-      expect(await submitExpertApplication(body(), PDF(), "en")).toMatchObject({ ok: false, errorKey: "expertApply.refusePending" });
+      expect(await submitExpertApplication(body(), PDF(), "en")).toEqual({ ok: true, id: "", email: mail("meera") });
     }
     const limited = await submitExpertApplication(body(), PDF(), "en");
     expect(limited).toMatchObject({ ok: false, errorKey: "expertApply.refuseTooMany" });

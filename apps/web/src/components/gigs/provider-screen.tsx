@@ -154,7 +154,12 @@ export async function ProviderScreen({ ctx }: { ctx: ActiveContext }) {
                             <li key={b.id} className="space-y-1.5" data-testid="provider-seat">
                               <div className="flex flex-wrap items-start justify-between gap-2">
                                 <p className="min-w-0 flex-1 break-words text-sm text-fg">
-                                  <span className="font-medium">{b.pupilName}</span> · {b.schoolName}
+                                  {/* A seat no guardian has agreed to comes with no name or school (TA-120): its badge says it is asked for. */}
+                                  {b.pupilName ? (
+                                    <>
+                                      <span className="font-medium">{b.pupilName}</span> · {b.schoolName}
+                                    </>
+                                  ) : null}
                                   <span className="block text-xs text-fg-muted">{b.purpose}</span>
                                 </p>
                                 <span className="inline-flex flex-wrap gap-1">

@@ -207,6 +207,17 @@ d("STORED copies against their source rows", () => {
     expect(failsOf("gig-seats")).toEqual([]);
   });
 
+  it("mentor-places: an expert's stored count of mentee places is the number of their mentorships holding one (PENDING_CONSENT or ACTIVE)", async () => {
+    // TA-532: ExpertProfile.activeMentorships is a stored copy (mentoring.ts claims and gives back each place); its
+    // threads are every school's, read across the platform here as the owner, which no school's own binding could.
+    const experts = await db.expertProfile.findMany({ select: { id: true, activeMentorships: true, _count: { select: { mentorships: { where: { status: { in: ["PENDING_CONSENT", "ACTIVE"] } } } } } } });
+    for (const e of experts) {
+      if (e.activeMentorships !== e._count.mentorships) note("mentor-places", "FAIL", "platform", `expert profile ${e.id} stores ${e.activeMentorships} mentee place(s) taken but holds ${e._count.mentorships} mentorship(s) pending or active`);
+    }
+    note("mentor-places", "INFO", "platform", `${experts.length} expert profile(s)`);
+    expect(failsOf("mentor-places")).toEqual([]);
+  });
+
   it("gig-money: a seat payment's stored net is gross − commission − GST (zero on a refund); a payout's net and count are its payments'; an invoice's taxable value is its payout's commission", async () => {
     // Razorpay Route (decision 0004, third amendment of 2 October 2026), and the company-collects rows before it: one writer, src/lib/gig-payments.ts, freezes the three figures with the order.
     const payments = await db.sessionPayment.findMany({ select: { id: true, status: true, path: true, transferId: true, amountPaise: true, commissionPaise: true, gstPaise: true, netPaise: true, receiptNumber: true, payoutId: true } });

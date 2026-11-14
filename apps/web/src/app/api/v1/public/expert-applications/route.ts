@@ -1,9 +1,9 @@
 import { NextResponse } from "next/server";
 import { apiErrorSchema, EXPERT_APPLICATION_DOCUMENT_MAX_BYTES, expertApplicationBodySchema, expertApplicationReceivedSchema } from "@edulink/contracts";
 import { apiFailure, apiInvalid, ok, readJson } from "@/lib/api-v1";
-import { submitExpertApplication } from "@/lib/expert-applications";
+import { EXPERT_APPLICATION_TRIES, submitExpertApplication } from "@/lib/expert-applications";
 import { getLocale, getT } from "@/lib/i18n/server";
-import { retryHintKey } from "@/lib/rate-limit";
+import { consumeByCaller, retryHintKey } from "@/lib/rate-limit";
 
 /** Multipart framing around the document and the JSON part: boundaries, headers, a few kilobytes of fields. */
 const MULTIPART_OVERHEAD_BYTES = 64 * 1024;
@@ -35,7 +35,9 @@ async function readBoundedBytes(request: Request, limit: number): Promise<Buffer
  * JPG or PNG of at most 5 MB. A JSON body of the fields alone is read too, and refused for the missing document
  * with the field named — so an empty body is a 422, as every form door's is. A body above the document's cap
  * is 413 before it is read. 201 with the address the operator will write to; 422 with the field for a refusal
- * of the form; 429 with Retry-After at the hourly limit per address (only a valid application counts).
+ * of the form; 429 with Retry-After at the hourly limits per address (every post, then valid applications). An
+ * address that is already an expert's or has an application waiting is answered 201 like any other, and its holder is
+ * told by mail (TA-335).
  */
 export async function POST(request: Request) {
   try {
@@ -45,6 +47,16 @@ export async function POST(request: Request) {
         apiErrorSchema.parse({ error: t("common.checkTheForm"), code: "TOO_LARGE", issues: { document: t("refusal.fileTooLargeLimit", { mb: EXPERT_APPLICATION_DOCUMENT_MAX_BYTES / (1024 * 1024) }) } }),
         { status: 413, headers: { "Cache-Control": "no-store" } },
       );
+    // TA-335: every post counts against the caller's address before its body is read, valid or not; the stricter
+    // hourly count of valid applications is the library's, below.
+    const tries = await consumeByCaller("expert-apply-try", EXPERT_APPLICATION_TRIES);
+    if (!tries.allowed) {
+      const hint = retryHintKey(tries.retryAfterSeconds);
+      return NextResponse.json(
+        apiErrorSchema.parse({ error: t("expertApply.refuseTooMany", { when: t(hint.key, hint.vars) }), code: "RATE_LIMITED", retryAfterSeconds: tries.retryAfterSeconds }),
+        { status: 429, headers: { "Retry-After": String(tries.retryAfterSeconds), "Cache-Control": "no-store" } },
+      );
+    }
     const declared = Number(request.headers.get("content-length") ?? "");
     if (Number.isFinite(declared) && declared > EXPERT_APPLICATION_DOCUMENT_MAX_BYTES + MULTIPART_OVERHEAD_BYTES) return tooLarge();
 

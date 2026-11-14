@@ -156,6 +156,34 @@ async function offerer(ctx: ActiveContext): Promise<Provider> {
   throw new AccessError("access.wrongRoleForThisAction");
 }
 
+/**
+ * TA-123: whether the provider of a time still stands to hold it. An expert while on the list and not closed by the
+ * operator; a teacher while their teaching post at the school is ACTIVE (a suspended or departed teacher's times are
+ * nobody's to agree to or join) and, for a new seat, while the school still has guidance on (switching it off
+ * cancels nothing already booked, but takes no new asks). An alumnus mentor's standing is mentorsInStanding's.
+ */
+async function providerStands(slot: { providerKind: string; providerUserId: string; teacherSchoolId: string | null }, newSeat: boolean): Promise<boolean> {
+  if (slot.providerKind === "EXPERT") {
+    const profile = await db.expertProfile.findUnique({ where: { userId: slot.providerUserId }, select: { publishedAt: true, disabledAt: true } });
+    return Boolean(profile?.publishedAt && !profile.disabledAt);
+  }
+  if (slot.providerKind === "TEACHER") {
+    if (!slot.teacherSchoolId) return false;
+    return (await teachersInStanding(slot.teacherSchoolId, [slot.providerUserId], newSeat)).has(slot.providerUserId);
+  }
+  return true;
+}
+/** Of these teachers, the ones whose post at the school is ACTIVE; for a new seat, none while the school has guidance off. */
+async function teachersInStanding(schoolId: string, userIds: string[], newSeat: boolean): Promise<Set<string>> {
+  if (userIds.length === 0) return new Set();
+  if (newSeat) {
+    const school = await db.school.findUnique({ where: { id: schoolId }, select: { teacherGuidanceOn: true } });
+    if (!school?.teacherGuidanceOn) return new Set();
+  }
+  const posts = await db.membership.findMany({ where: { schoolId, userId: { in: userIds }, role: "TEACHER", status: "ACTIVE", leftAt: null }, select: { userId: true } });
+  return new Set(posts.map((p) => p.userId));
+}
+
 type Child = { membershipId: string; schoolId: string; userId: string; name: string; isMinor: boolean; schoolName: string; timeZone: string };
 
 const CHILD_SELECT = { id: true, schoolId: true, userId: true, role: true, status: true, leftAt: true, user: { select: { name: true, preferredName: true, isMinor: true } }, school: { select: { name: true, timezone: true } } } as const;
@@ -415,6 +443,11 @@ function startRefusal(startsAt: Date, now: Date): GigResult<never> | null {
   return null;
 }
 
+/** The provider's offers are written one at a time (TA-414): a transaction-scoped lock on the provider's own key. */
+async function lockProviderOffers(tx: typeof db, providerUserId: string): Promise<void> {
+  await tx.$queryRaw`SELECT 1 FROM pg_advisory_xact_lock(hashtext(${`gig-offer:${providerUserId}`}))`;
+}
+
 /** A provider offers a time. */
 export async function offerSlot(ctx: ActiveContext, input: SlotInput, now: Date = new Date()): Promise<GigResult<{ slotId: string }>> {
   const me = await provider(ctx);
@@ -426,9 +459,16 @@ export async function offerSlot(ctx: ActiveContext, input: SlotInput, now: Date 
   const bad = startRefusal(startsAt, now);
   if (bad) return bad;
   const endsAt = new Date(startsAt.getTime() + minutes * 60_000);
-  const clash = await db.gigSlot.findFirst({ where: { providerUserId: me.userId, cancelledAt: null, startsAt: { lt: endsAt }, endsAt: { gt: startsAt } }, select: { id: true } });
-  if (clash) return { ok: false, errorKey: "gigs.refuseSlotOverlap" };
-  const slot = await db.gigSlot.create({ data: { providerUserId: me.userId, providerKind: me.kind, teacherSchoolId: me.schoolId, kind: input.kind, title, startsAt, endsAt, meetingUrl, seats, pricePaise }, select: { id: true } });
+  // TA-414: the clash read and the write under one lock on the provider, so a second press of Offer waits for the
+  // first and then finds its time taken, rather than both passing the read and writing two slots at the same time.
+  const slot = await db.$tenantTransaction(async (raw) => {
+    const tx = raw as typeof db;
+    await lockProviderOffers(tx, me.userId);
+    const clash = await tx.gigSlot.findFirst({ where: { providerUserId: me.userId, cancelledAt: null, startsAt: { lt: endsAt }, endsAt: { gt: startsAt } }, select: { id: true } });
+    if (clash) return null;
+    return tx.gigSlot.create({ data: { providerUserId: me.userId, providerKind: me.kind, teacherSchoolId: me.schoolId, kind: input.kind, title, startsAt, endsAt, meetingUrl, seats, pricePaise }, select: { id: true } });
+  });
+  if (!slot) return { ok: false, errorKey: "gigs.refuseSlotOverlap" };
   await audit({ schoolId: me.schoolId, actorUserId: me.userId, action: "gig.slot.offer", targetType: "GigSlot", targetId: slot.id, meta: { kind: input.kind, seats, pricePaise } });
   return { ok: true, slotId: slot.id };
 }
@@ -491,13 +531,15 @@ export async function offerSeries(ctx: ActiveContext, input: SeriesInput, now: D
   for (let i = 1; i < starts.length; i++) if (starts[i]!.getTime() < starts[i - 1]!.getTime() + length) return { ok: false, errorKey: "gigs.refuseSlotOverlap" };
   const first = starts[0]!;
   const lastEnd = new Date(starts[starts.length - 1]!.getTime() + length);
-  const existing = await db.gigSlot.findMany({ where: { providerUserId: me.userId, cancelledAt: null, startsAt: { lt: lastEnd }, endsAt: { gt: first } }, select: { startsAt: true, endsAt: true } });
-  for (const startsAt of starts) {
-    const endsAt = startsAt.getTime() + length;
-    if (existing.some((e) => e.startsAt.getTime() < endsAt && e.endsAt.getTime() > startsAt.getTime())) return { ok: false, errorKey: "gigs.refuseSlotOverlap" };
-  }
+  // TA-414: the overlap read and the writes under one lock on the provider, as offerSlot's: a series sent twice is one series.
   const made = await db.$tenantTransaction(async (raw) => {
     const tx = raw as typeof db;
+    await lockProviderOffers(tx, me.userId);
+    const existing = await tx.gigSlot.findMany({ where: { providerUserId: me.userId, cancelledAt: null, startsAt: { lt: lastEnd }, endsAt: { gt: first } }, select: { startsAt: true, endsAt: true } });
+    for (const startsAt of starts) {
+      const endsAt = startsAt.getTime() + length;
+      if (existing.some((e) => e.startsAt.getTime() < endsAt && e.endsAt.getTime() > startsAt.getTime())) return null;
+    }
     const series = await tx.gigSeries.create({ data: { providerUserId: me.userId, providerKind: me.kind, teacherSchoolId: me.schoolId, kind: input.kind, title, meetingUrl, minutes, seats, pricePaise, rule: input.rule.mode, ruleJson: JSON.stringify(input.rule) }, select: { id: true } });
     const slotIds: string[] = [];
     for (const startsAt of starts) {
@@ -506,6 +548,7 @@ export async function offerSeries(ctx: ActiveContext, input: SeriesInput, now: D
     }
     return { seriesId: series.id, slotIds };
   });
+  if (!made) return { ok: false, errorKey: "gigs.refuseSlotOverlap" };
   await audit({ schoolId: me.schoolId, actorUserId: me.userId, action: "gig.series.offer", targetType: "GigSeries", targetId: made.seriesId, meta: { kind: input.kind, seats, pricePaise, sessions: made.slotIds.length, rule: input.rule.mode } });
   return { ok: true, ...made };
 }
@@ -516,14 +559,18 @@ export async function cancelSeries(ctx: ActiveContext, seriesId: string, reason:
   const series = await db.gigSeries.findFirst({ where: { id: seriesId, providerUserId: me.userId }, select: { id: true, cancelledAt: true } });
   if (!series) throw new AccessError("gigs.noSuchSeries", "NOT_FOUND");
   const why = reason.trim().slice(0, 300);
-  if (why.length < 3) return { ok: false, errorKey: "gigs.needReason" };
+  // TA-118: the one minimum cancelSlot holds each session to (five letters), asked before anything is written, so a
+  // reason every session would refuse cannot mark the series cancelled while each of its sessions stays open.
+  if (why.length < 5) return { ok: false, errorKey: "gigs.needReason" };
   const slots = await db.gigSlot.findMany({ where: { seriesId: series.id, cancelledAt: null, startsAt: { gt: now } }, orderBy: { startsAt: "asc" }, select: { id: true } });
   let cancelled = 0;
   for (const slot of slots) {
     const r = await cancelSlot(ctx, slot.id, why);
     if (r.ok) cancelled += 1;
   }
-  if (!series.cancelledAt) {
+  // The series is marked only once no session of it is left ahead and open.
+  const left = await db.gigSlot.count({ where: { seriesId: series.id, cancelledAt: null, startsAt: { gt: now } } });
+  if (!series.cancelledAt && left === 0) {
     await db.gigSeries.update({ where: { id: series.id }, data: { cancelledAt: now, cancelReason: why } });
     await audit({ schoolId: me.schoolId, actorUserId: me.userId, action: "gig.series.cancel", targetType: "GigSeries", targetId: series.id, meta: { cancelled } });
   }
@@ -695,7 +742,10 @@ export async function mySlots(ctx: ActiveContext, now: Date = new Date()): Promi
   if (!me) return { enabled: false, kind: "TEACHER", timeZone: "Asia/Kolkata", duty: null, gate: null, teacherGate: null, earnings: null, meeting: { premium: false, caps: meetingCapsOf(settings) }, series: [], slots: [] };
   const slots = await db.gigSlot.findMany({ where: { providerUserId: me.userId, startsAt: { gte: new Date(now.getTime() - 60 * 24 * HOUR) } }, orderBy: { startsAt: "asc" }, take: 300 });
   const bookings: BookingRow[] = slots.length ? await db.gigBooking.findMany({ where: { providerUserId: me.userId, slotId: { in: slots.map((s) => s.id) }, status: { not: "CANCELLED" } }, orderBy: { createdAt: "asc" }, select: BOOKING_SELECT }) : [];
-  const names = await pupilNames(bookings);
+  // TA-120: a pupil's ask no guardian has agreed to yet is told to the provider as a seat asked for and no more: no
+  // name, no school, no words of the child's, as a mentor is not shown a pupil's request (mentoring.ts). Read only
+  // for the seats a guardian has agreed to or taken.
+  const names = await pupilNames(bookings.filter((b) => b.status !== "PENDING_CONSENT"));
   // The free duty given, on times priced 0 alone (seats, 17 Oct 2026).
   const delivered = await db.gigBooking.findMany({ where: { providerUserId: me.userId, status: "DELIVERED", slot: { pricePaise: 0 } }, select: { kind: true, slotId: true, slot: { select: { startsAt: true } } } });
   const month = monthKey(now);
@@ -736,7 +786,8 @@ export async function mySlots(ctx: ActiveContext, now: Date = new Date()): Promi
       seriesId: s.seriesId,
       bookings: bookings
         .filter((b) => b.slotId === s.id)
-        .map((b) => ({ id: b.id, pupilName: names.get(b.studentMembershipId)?.name ?? "", schoolName: names.get(b.studentMembershipId)?.schoolName ?? "", purpose: b.purpose, status: b.status as BookingStatus, paid: b.paid, rating: b.rating, feedback: b.feedback })),
+        .map((b) => (b.status === "PENDING_CONSENT" ? { ...b, purpose: "" } : b))
+        .map((b) => ({ id: b.id, pupilName: b.status === "PENDING_CONSENT" ? "" : (names.get(b.studentMembershipId)?.name ?? ""), schoolName: b.status === "PENDING_CONSENT" ? "" : (names.get(b.studentMembershipId)?.schoolName ?? ""), purpose: b.purpose, status: b.status as BookingStatus, paid: b.paid, rating: b.rating, feedback: b.feedback })),
     })),
   };
 }
@@ -770,6 +821,12 @@ export async function cancelSlot(ctx: ActiveContext, slotId: string, reason: str
     await tellFamily(b, names.get(b.studentMembershipId)?.userId ?? null, () => ({ kind: noteKind(slot.providerKind), titleKey: "gigs.notifSlotCancelled", titleVars: { title: slot.title }, body: why, url: "/sessions" }));
     if (b.paid) await refundPaidSeat(b, names.get(b.studentMembershipId)?.userId ?? null, `provider-cancelled-slot: ${why}`, me.userId);
   }
+  // TA-190: a paid seat the family gave up late is paid for as a session held; the session is not held now, so its
+  // money, still held for the provider, goes back to the family like every other seat's (refundSeatPayment refunds a
+  // PAID or HELD row and leaves one already released alone).
+  const lateGivenUp: BookingRow[] = await db.gigBooking.findMany({ where: { providerUserId: me.userId, slotId: slot.id, status: "CANCELLED", lateCancel: true, paid: true }, select: BOOKING_SELECT });
+  const lateNames = await pupilNames(lateGivenUp);
+  for (const b of lateGivenUp) await refundPaidSeat(b, lateNames.get(b.studentMembershipId)?.userId ?? null, `provider-cancelled-slot: ${why}`, me.userId);
   await audit({ schoolId: me.schoolId, actorUserId: me.userId, action: "gig.slot.cancel", targetType: "GigSlot", targetId: slot.id, meta: { seats: live.length } });
   return { ok: true };
 }
@@ -827,8 +884,10 @@ async function openFor(c: Child, now: Date, allowance: Allowance, kinds: Set<str
   const mine = new Set((await db.gigBooking.findMany({ where: { schoolId: c.schoolId, studentMembershipId: c.membershipId, status: { in: LIVE } }, select: { slotId: true } })).map((b) => b.slotId));
   // An alumnus's times only while the office's mentor mark stands, unmuted, the alumnus row open (TA-088).
   const mentors = await mentorsInStanding(c.schoolId, slots.filter((s) => s.providerKind === "ALUMNUS").map((s) => s.providerUserId));
+  // A teacher's times only while their post here is ACTIVE and the school has guidance on (TA-123).
+  const teachers = await teachersInStanding(c.schoolId, [...new Set(slots.filter((s) => s.providerKind === "TEACHER").map((s) => s.providerUserId))], true);
   return slots
-    .filter((s) => kinds.has(s.providerKind) && s.seatsTaken < s.seats && !mine.has(s.id) && (s.providerKind !== "EXPERT" || Boolean(s.provider.expertProfile?.publishedAt && !s.provider.expertProfile.disabledAt)) && (s.providerKind !== "ALUMNUS" || mentors.has(s.providerUserId)) && s.providerUserId !== c.userId)
+    .filter((s) => kinds.has(s.providerKind) && s.seatsTaken < s.seats && !mine.has(s.id) && (s.providerKind !== "EXPERT" || Boolean(s.provider.expertProfile?.publishedAt && !s.provider.expertProfile.disabledAt)) && (s.providerKind !== "ALUMNUS" || mentors.has(s.providerUserId)) && (s.providerKind !== "TEACHER" || teachers.has(s.providerUserId)) && s.providerUserId !== c.userId)
     .map((s) => ({ id: s.id, kind: s.kind as SessionKind, title: s.title, startsAt: s.startsAt.toISOString(), endsAt: s.endsAt.toISOString(), seatsLeft: s.seats - s.seatsTaken, providerName: s.provider.name, providerKind: s.providerKind as "EXPERT" | "TEACHER" | "ALUMNUS", providerHeadline: s.providerKind === "EXPERT" ? (s.provider.expertProfile?.headline ?? null) : null, pricePaise: s.pricePaise, freeSeat: isFreeSeat(s.providerKind, s.pricePaise, allowance[s.kind as SessionKind].left), seriesId: s.seriesId }));
 }
 
@@ -873,8 +932,16 @@ export async function familySessions(ctx: ActiveContext, now: Date = new Date())
       where: { schoolId: c.schoolId, studentMembershipId: c.membershipId },
       orderBy: { createdAt: "desc" },
       take: 100,
-      select: { ...BOOKING_SELECT, slot: { select: { title: true, startsAt: true, endsAt: true, meetingUrl: true, providerKind: true, pricePaise: true, provider: { select: { name: true } } } }, payment: { select: { id: true, status: true, amountPaise: true, refundedAt: true } } },
+      select: { ...BOOKING_SELECT, slot: { select: { title: true, startsAt: true, endsAt: true, meetingUrl: true, providerKind: true, providerUserId: true, teacherSchoolId: true, pricePaise: true, provider: { select: { name: true } } } }, payment: { select: { id: true, status: true, amountPaise: true, refundedAt: true } } },
     });
+    // TA-123: as the join door, never the room of a provider the operator has closed or a teacher the school has
+    // suspended: such a confirmed seat lists no link and no join. Asked once per provider, for seats otherwise joinable.
+    const standing = new Map<string, boolean>();
+    const standingKey = (slot: { providerKind: string; providerUserId: string; teacherSchoolId: string | null }) => `${slot.providerKind}:${slot.providerUserId}:${slot.teacherSchoolId ?? ""}`;
+    for (const b of rows) {
+      if (!mayJoin(b) || now.getTime() >= b.slot.endsAt.getTime() + 2 * HOUR || standing.has(standingKey(b.slot))) continue;
+      standing.set(standingKey(b.slot), await providerStands(b.slot, false));
+    }
     const allowance = await allowanceOf(c, settings);
     const selfPays = ctx.role === "PARENT" || !c.isMinor;
     const open = await openFor(c, now, allowance, kinds);
@@ -891,7 +958,7 @@ export async function familySessions(ctx: ActiveContext, now: Date = new Date())
         const status = b.status as BookingStatus;
         const begun = b.slot.startsAt <= now;
         const over = b.slot.endsAt <= now;
-        const joinable = mayJoin(b) && now.getTime() < b.slot.endsAt.getTime() + 2 * HOUR;
+        const joinable = mayJoin(b) && now.getTime() < b.slot.endsAt.getTime() + 2 * HOUR && standing.get(standingKey(b.slot)) === true;
         return {
           id: b.id,
           kind: b.kind as SessionKind,
@@ -927,8 +994,12 @@ async function tellProvider(schoolId: string, slot: { providerUserId: string; pr
 /** The office is told when an outside adult is to meet one of its pupils. */
 async function tellOffice(c: Child, slot: { title: string; providerKind: string }, providerName: string): Promise<void> {
   if (slot.providerKind !== "EXPERT") return;
-  const office = await db.membership.findMany({ where: { schoolId: c.schoolId, role: { in: ["ADMIN", "PRINCIPAL"] }, status: "ACTIVE", leftAt: null }, select: { userId: true } });
-  await Promise.all(office.map((m) => notify({ userId: m.userId, schoolId: c.schoolId, kind: "EXPERT", titleKey: "gigs.notifOffice", titleVars: { name: c.name, provider: providerName }, body: slot.title, url: "/admin/sessions" }).catch((error) => console.error("[gig-sessions] office notice failed", error))));
+  // TA-117: under the pupil's school's own binding, as tellFamily and tellProvider are: a capture the gateway's webhook
+  // settles carries no session, and with nothing bound the office's memberships read as none and nobody was told.
+  await forSchool(c.schoolId, async () => {
+    const office = await db.membership.findMany({ where: { schoolId: c.schoolId, role: { in: ["ADMIN", "PRINCIPAL"] }, status: "ACTIVE", leftAt: null }, select: { userId: true } });
+    await Promise.all(office.map((m) => notify({ userId: m.userId, schoolId: c.schoolId, kind: "EXPERT", titleKey: "gigs.notifOffice", titleVars: { name: c.name, provider: providerName }, body: slot.title, url: "/admin/sessions" }).catch((error) => console.error("[gig-sessions] office notice failed", error))));
+  }).catch((error) => console.error("[gig-sessions] office notice failed", error));
 }
 
 /**
@@ -952,6 +1023,11 @@ export async function bookSeat(ctx: ActiveContext, input: { slotId: string; stud
   if (!slot || !open) throw new AccessError("gigs.noSuchSlot", "NOT_FOUND");
   // An alumnus the office has un-marked, muted or closed offers nothing to book (TA-088), as openFor no longer lists it.
   if (slot.providerKind === "ALUMNUS" && !(await mentorsInStanding(c.schoolId, [slot.providerUserId])).has(slot.providerUserId)) throw new AccessError("gigs.noSuchSlot", "NOT_FOUND");
+  // A suspended or departed teacher's time, or one offered before the school switched guidance off, is not open (TA-123).
+  if (slot.providerKind === "TEACHER" && !(await providerStands(slot, true))) throw new AccessError("gigs.noSuchSlot", "NOT_FOUND");
+  // TA-119: the guardian who books a child into a session is the second adult beside its provider; the school's
+  // stand-in guardian who is also the time's provider is one adult on both sides, and may not.
+  if (ctx.role === "PARENT" && ctx.user.id === slot.providerUserId) return { ok: false, errorKey: "gigs.refuseOwnSession" };
   // A time of a kind the platform has off is not here (15 Oct 2026).
   await assertKindOn(slot.providerKind as "EXPERT" | "TEACHER" | "ALUMNUS", ctx);
   if (slot.startsAt <= now) return { ok: false, errorKey: "gigs.refuseStarted" };
@@ -970,9 +1046,18 @@ export async function bookSeat(ctx: ActiveContext, input: { slotId: string; stud
     made = await db.$tenantTransaction(async (raw) => {
       const tx = raw as typeof db;
       await tx.$queryRaw`SELECT "id" FROM "Membership" WHERE "id" = ${c.membershipId} FOR UPDATE`;
-      const existing = await tx.gigBooking.findUnique({ where: { slotId_studentMembershipId: { slotId: slot.id, studentMembershipId: c.membershipId } }, select: { id: true, status: true, paid: true } });
+      const existing = await tx.gigBooking.findUnique({ where: { slotId_studentMembershipId: { slotId: slot.id, studentMembershipId: c.membershipId } }, select: { id: true, status: true, paid: true, lateCancel: true } });
       if (existing && LIVE.includes(existing.status as BookingStatus)) return { id: existing.id, status: existing.status as BookingStatus, fresh: false, paid: existing.paid };
       if (existing && existing.status !== "CANCELLED") throw new Refusal("gigs.refuseAlreadyHeld");
+      // TA-116: the row taken again below is rewritten whole, and the seat's one payment row (unique per booking) stays
+      // with it. A seat given up late still counts and is still paid for, and a seat whose money came (held, refunded,
+      // paid out) can open no second order; taking either again would wipe the late mark or leave a held payment to be
+      // refunded by the next cancel. Only a seat given up in time with no money in may be taken again.
+      if (existing?.lateCancel) throw new Refusal("gigs.refuseRetake");
+      if (existing) {
+        const payment = await tx.sessionPayment.findUnique({ where: { bookingId: existing.id }, select: { status: true } });
+        if (payment && payment.status !== "FAILED" && payment.status !== "INITIATED") throw new Refusal("gigs.refuseRetake");
+      }
       const used = await usedBy(tx, c, year?.id ?? null);
       // THE FREE ALLOWANCE IS FOR TIMES PRICED 0 (seats, 17 Oct 2026): a free time takes a seat of the allowance
       // and is refused past it; a priced time is bought — by a guardian, or by a pupil of eighteen or more — and
@@ -1061,8 +1146,8 @@ export async function settleSeatPayment(input: { orderId: string; gatewayPayment
   return { outcome: result.outcome, bookingId: booking.id };
 }
 
-type Loaded = BookingRow & { slot: { id: string; title: string; startsAt: Date; endsAt: Date; providerKind: string; providerUserId: string; cancelledAt: Date | null; pricePaise: number; provider: { name: string } }; student: ChildRow };
-const LOADED = { ...BOOKING_SELECT, slot: { select: { id: true, title: true, startsAt: true, endsAt: true, providerKind: true, providerUserId: true, cancelledAt: true, pricePaise: true, provider: { select: { name: true } } } }, student: { select: CHILD_SELECT } } as const;
+type Loaded = BookingRow & { slot: { id: string; title: string; startsAt: Date; endsAt: Date; providerKind: string; providerUserId: string; teacherSchoolId: string | null; cancelledAt: Date | null; pricePaise: number; provider: { name: string } }; student: ChildRow };
+const LOADED = { ...BOOKING_SELECT, slot: { select: { id: true, title: true, startsAt: true, endsAt: true, providerKind: true, providerUserId: true, teacherSchoolId: true, cancelledAt: true, pricePaise: true, provider: { select: { name: true } } } }, student: { select: CHILD_SELECT } } as const;
 
 /** A booking of one of this family's own pupils; anybody else's is not found. */
 async function familyBooking(ctx: ActiveContext, bookingId: string): Promise<{ b: Loaded; c: Child }> {
@@ -1082,6 +1167,10 @@ export async function consentToBooking(ctx: ActiveContext, bookingId: string, ap
   if (!approve && b.status === "CANCELLED") return { ok: true, status: "CANCELLED", checkout: null };
   if (b.status !== "PENDING_CONSENT") return { ok: false, errorKey: "gigs.refuseNotWaiting" };
   if (approve && (b.slot.cancelledAt || b.slot.startsAt <= now)) return { ok: false, errorKey: "gigs.refuseStarted" };
+  // TA-123: no yes to a provider the operator has closed, or a teacher the school has suspended (a no still clears the ask).
+  if (approve && !(await providerStands(b.slot, false))) return { ok: false, errorKey: "gigs.refuseProviderGone" };
+  // TA-119: the guardian agreeing is the second adult beside the provider; a stand-in who is the provider may not.
+  if (approve && ctx.user.id === b.slot.providerUserId) return { ok: false, errorKey: "gigs.refuseOwnSession" };
   // A paid seat agreed to is not yet confirmed: the guardian's payment confirms it (settleSeatPayment).
   const paidNext = approve && b.paid;
   if (paidNext && !(await paymentsOn())) return { ok: false, errorKey: "gigs.refusePaymentsOff" };
@@ -1201,6 +1290,8 @@ export async function joinLink(ctx: ActiveContext, bookingId: string): Promise<J
   const row = await db.gigBooking.findFirst({ where: { id: b.id, schoolId: b.schoolId }, select: { status: true, paid: true, payment: { select: { status: true } }, ...SLOT } });
   if (!row) throw new AccessError("gigs.noSuchBooking", "NOT_FOUND");
   if (row.slot.cancelledAt || !mayJoin(row)) throw new AccessError(row.paid && row.status === "PENDING_PAYMENT" ? "seats.joinAfterPayment" : "seats.joinNotYet");
+  // TA-123: never the room of a provider the operator has closed or a teacher the school has suspended.
+  if (!(await providerStands(b.slot, false))) throw new AccessError("gigs.refuseProviderGone");
   return { bookingId: b.id, title: row.slot.title, startsAt: row.slot.startsAt.toISOString(), endsAt: row.slot.endsAt.toISOString(), meetingUrl: row.slot.meetingUrl, as: "SEAT" };
 }
 
@@ -1222,13 +1313,15 @@ export async function remindJoins(now: Date = new Date()): Promise<{ reminded: n
     where: { status: "CONFIRMED", joinRemindedAt: null, slot: { cancelledAt: null, startsAt: { gt: now, lte: new Date(now.getTime() + JOIN_REMIND_MINUTES * 60_000) } } },
     orderBy: { createdAt: "asc" },
     take: 500,
-    select: { id: true, schoolId: true, studentMembershipId: true, slotId: true, status: true, paid: true, payment: { select: { status: true } }, student: { select: { userId: true } }, slot: { select: { title: true, providerUserId: true, providerKind: true } } },
+    select: { id: true, schoolId: true, studentMembershipId: true, slotId: true, status: true, paid: true, payment: { select: { status: true } }, student: { select: { userId: true } }, slot: { select: { title: true, providerUserId: true, providerKind: true, teacherSchoolId: true } } },
   });
   const perSchool: Record<string, { reminded: number }> = {};
   let reminded = 0;
   let providers = 0;
   for (const b of due) {
     if (!mayJoin(b)) continue;
+    // TA-123: nobody is sent to the room of a provider the operator has closed or a teacher the school has suspended.
+    if (!(await providerStands(b.slot, false))) continue;
     // The provider is told when the first seat of their slot is claimed, and not again for the seats after it.
     const first = (await db.gigBooking.count({ where: { slotId: b.slotId, joinRemindedAt: { not: null } } })) === 0;
     const claimed = await forSchool(b.schoolId, () => db.gigBooking.updateMany({ where: { id: b.id, schoolId: b.schoolId, status: "CONFIRMED", joinRemindedAt: null }, data: { joinRemindedAt: now } }));
@@ -1255,11 +1348,13 @@ export async function remindSessions(now: Date = new Date()): Promise<{ reminded
     where: { status: "CONFIRMED", remindedAt: null, slot: { cancelledAt: null, startsAt: { gt: now, lte: new Date(now.getTime() + 24 * HOUR) } } },
     orderBy: { createdAt: "asc" },
     take: 500,
-    select: { id: true, schoolId: true, studentMembershipId: true, slotId: true, student: { select: { userId: true } }, slot: { select: { title: true, providerUserId: true, providerKind: true } } },
+    select: { id: true, schoolId: true, studentMembershipId: true, slotId: true, student: { select: { userId: true } }, slot: { select: { title: true, providerUserId: true, providerKind: true, teacherSchoolId: true } } },
   });
   const perSchool: Record<string, { reminded: number }> = {};
   let reminded = 0;
   for (const b of due) {
+    // TA-123: a session of a provider the operator has closed or a teacher the school has suspended is not reminded.
+    if (!(await providerStands(b.slot, false))) continue;
     // The provider is told when the first seat of their slot is reminded, and not again for the seats after it.
     const first = (await db.gigBooking.count({ where: { slotId: b.slotId, remindedAt: { not: null } } })) === 0;
     const claimed = await forSchool(b.schoolId, () => db.gigBooking.updateMany({ where: { id: b.id, schoolId: b.schoolId, status: "CONFIRMED", remindedAt: null }, data: { remindedAt: now } }));
@@ -1281,6 +1376,31 @@ export async function remindSessions(now: Date = new Date()): Promise<{ reminded
  * again). A seat whose money arrived in the meantime is confirmed by the
  * capture and is not here.
  */
+/**
+ * TA-121: a pupil's ask that no guardian answered before the session began lapses: the booking CANCELLED with no
+ * late mark (so it stops counting against the pupil's allowance), the seat given back, the family told. Run by
+ * gigs:release with the rest. Only sessions begun by the real clock lapse, whatever `now` a caller passes, so a
+ * clock moved ahead never lapses an ask whose session is still to come; `schoolIds` keeps a test to its own rows.
+ */
+export async function lapseUnansweredAsks(now: Date = new Date(), scope: { schoolIds?: string[] } = {}): Promise<{ lapsed: number }> {
+  const until = new Date(Math.min(now.getTime(), Date.now()));
+  const stale = await db.gigBooking.findMany({
+    where: { status: "PENDING_CONSENT", slot: { startsAt: { lte: until } }, ...(scope.schoolIds ? { schoolId: { in: scope.schoolIds } } : {}) },
+    take: 200,
+    select: { id: true, schoolId: true, studentMembershipId: true, slotId: true, student: { select: { userId: true } }, slot: { select: { title: true, providerKind: true } } },
+  });
+  let lapsed = 0;
+  for (const b of stale) {
+    const changed = await forSchool(b.schoolId, () => db.gigBooking.updateMany({ where: { id: b.id, schoolId: b.schoolId, status: "PENDING_CONSENT" }, data: { status: "CANCELLED", cancelledAt: until, cancelledByUserId: null, cancelReason: "no consent", lateCancel: false } }));
+    if (changed.count === 0) continue;
+    await releaseSeat(b.slotId);
+    await forSchool(b.schoolId, () => audit({ schoolId: b.schoolId, actorUserId: null, action: "gig.booking.cancel", targetType: "GigBooking", targetId: b.id, meta: { by: "lapsed", lateCancel: false } }));
+    await tellFamily(b, b.student.userId, () => ({ kind: noteKind(b.slot.providerKind), titleKey: "gigs.notifAskLapsed", titleVars: { title: b.slot.title }, url: "/sessions" }));
+    lapsed += 1;
+  }
+  return { lapsed };
+}
+
 export async function releaseSeatPayments(now: Date = new Date()): Promise<{ expired: number } & ReleaseRun> {
   const stale = await db.gigBooking.findMany({
     where: { status: "PENDING_PAYMENT", updatedAt: { lt: new Date(now.getTime() - UNPAID_SEAT_EXPIRY_MS) } },
@@ -1297,6 +1417,7 @@ export async function releaseSeatPayments(now: Date = new Date()): Promise<{ exp
     await tellFamily(b, b.student.userId, () => ({ kind: noteKind(b.slot.providerKind), titleKey: "gigs.notifPayExpired", titleVars: { title: b.slot.title }, url: "/sessions" }));
     expired += 1;
   }
+  await lapseUnansweredAsks(now);
   return { expired, ...(await releaseDue(now)) };
 }
 

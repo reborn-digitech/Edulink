@@ -76,6 +76,13 @@ export type MentorSummary = {
   unread: number;
 };
 
+/** Thrown inside a claim's transaction to roll the claimed place back when the thread it was for has moved (TA-125). */
+class PlaceNotTaken extends Error {
+  constructor(readonly threadId: string) {
+    super("place not taken");
+  }
+}
+
 /** Who may read a mentorship. The guardians and admins are never optional. */
 async function readerOf(session: ActiveContext, threadId: string) {
   // SCALARS ONLY on the first read, and this is not a micro-optimisation.
@@ -319,6 +326,9 @@ export async function createMentorship(
   // pair's history, not its present: pairing them again revives the row —
   // the unique key allows only one — as a fresh request for consent, claims a
   // place, and asks the guardian, exactly as a first pairing would.
+  // TA-582: but a pupil's own ask (REQUESTED) is the office's to decide (decideMentorRequest), which claims the place
+  // and asks the guardians; answering it with its id as though paired would leave it waiting with nobody asked.
+  if (existing?.status === "REQUESTED") throw new AccessError("mentoring.askWaitingOffice");
   if (existing && existing.status !== "CLOSED") return { threadId: existing.id };
 
   /**
@@ -333,50 +343,42 @@ export async function createMentorship(
    * an admin counting it sees only their own school and would wave this expert
    * past their limit at every school after the first. See the schema note.
    */
-  if (expert.mentorCapacity !== null) {
-    const claimed = await db.expertProfile.updateMany({
-      where: { id: expert.id, activeMentorships: { lt: expert.mentorCapacity } },
-      data: { activeMentorships: { increment: 1 } },
-    });
-    if (claimed.count === 0) {
-      throw new AccessError(
-        "access.atMentorCapacity",
-        "FORBIDDEN",
-        { name: expert.user.name },
-      );
-    }
-  } else {
-    await db.expertProfile.update({
-      where: { id: expert.id },
-      data: { activeMentorships: { increment: 1 } },
-    });
-  }
-
-  const thread = existing
-    ? await db.mentorThread.update({
-        where: { id: existing.id },
-        data: {
-          createdByMembershipId: session.membershipId,
-          purpose,
-          status: "PENDING_CONSENT",
-          closedAt: null,
-          parentConsentAt: null,
-          parentConsentUserId: null,
-        },
-        select: { id: true },
-      })
-    : await db.mentorThread.create({
-        data: {
-          schoolId: session.schoolId,
-          expertProfileId: expert.id,
-          expertUserId: expert.userId,
-          studentMembershipId: student.id,
-          createdByMembershipId: session.membershipId,
-          purpose,
-          status: "PENDING_CONSENT",
-        },
+  // TA-125: the claim and the thread's write are one transaction, the revival conditional on the thread still being
+  // CLOSED, so a lost race (a second pairing reviving the same row, a new pair the unique key refuses) gives the
+  // place back with the rollback rather than leaving the count one too high for good.
+  const schoolId = session.schoolId;
+  const createdBy = session.membershipId;
+  let thread: { id: string };
+  try {
+    thread = await db.$tenantTransaction(async (raw) => {
+      const tx = raw as typeof db;
+      const claimed =
+        expert.mentorCapacity !== null
+          ? await tx.expertProfile.updateMany({ where: { id: expert.id, activeMentorships: { lt: expert.mentorCapacity } }, data: { activeMentorships: { increment: 1 } } })
+          : await tx.expertProfile.updateMany({ where: { id: expert.id }, data: { activeMentorships: { increment: 1 } } });
+      if (claimed.count === 0) throw new AccessError("access.atMentorCapacity", "FORBIDDEN", { name: expert.user.name });
+      if (existing) {
+        const revived = await tx.mentorThread.updateMany({
+          where: { id: existing.id, status: "CLOSED" },
+          data: { createdByMembershipId: createdBy, purpose, status: "PENDING_CONSENT", closedAt: null, parentConsentAt: null, parentConsentUserId: null },
+        });
+        if (revived.count === 0) throw new PlaceNotTaken(existing.id);
+        return { id: existing.id };
+      }
+      return tx.mentorThread.create({
+        data: { schoolId, expertProfileId: expert.id, expertUserId: expert.userId, studentMembershipId: student.id, createdByMembershipId: createdBy, purpose, status: "PENDING_CONSENT" },
         select: { id: true },
       });
+    });
+  } catch (error) {
+    // Somebody revived or created the pair a moment before: found again, as above, and no place kept.
+    if (error instanceof PlaceNotTaken) return { threadId: error.threadId };
+    if ((error as { code?: string }).code === "P2002") {
+      const now = await db.mentorThread.findUnique({ where: { expertProfileId_studentMembershipId: { expertProfileId: expert.id, studentMembershipId: student.id } }, select: { id: true } });
+      if (now) return { threadId: now.id };
+    }
+    throw error;
+  }
 
   // The link that proves it moved. Without this a guardian is never asked and
   // the mentorship sits pending forever, which reads as broken.
@@ -418,6 +420,15 @@ export async function consentToMentorship(
   // decides it, and a guardian's yes before then would skip the school's decision and the place it claims on the
   // expert's count. Both apps hide the button; this is the rule, not the button.
   if (thread.status !== "PENDING_CONSENT") throw new AccessError("mentoring.notApprovedYet");
+
+  // TWO ADULTS STILL DECIDE (rule 2 above; TA-119): the guardian who agrees is not the adult who paired the pupil
+  // or let the ask through. A class teacher holding the school's stand-in guardianship for a pupil with no family
+  // on the app, who paired that pupil, would otherwise be both, and the mentorship ACTIVE on one person's word.
+  const arranged = await db.mentorThread.findUnique({ where: { id: threadId }, select: { createdByMembershipId: true, decidedByMembershipId: true } });
+  const arrangers = [arranged?.createdByMembershipId, arranged?.decidedByMembershipId].filter((id): id is string => Boolean(id));
+  if (arrangers.length > 0 && (await db.membership.count({ where: { id: { in: arrangers }, userId: session.user.id } })) > 0) {
+    throw new AccessError("mentoring.refuseSameAdult");
+  }
 
   // Conditional on the status read above, so a decline or a close landing in between is not overwritten.
   const moved = await db.mentorThread.updateMany({
@@ -473,14 +484,21 @@ export async function closeMentorship(session: ActiveContext, threadId: string):
    * the expert a place they never used, and because the counter is
    * denormalised that place comes out of somebody else's cap.
    */
-  const heldAPlace = thread.status !== "REQUESTED";
-
-  // The claim is in the WHERE: two closers at once must release one place.
-  const closed = await db.mentorThread.updateMany({
-    where: { id: threadId, status: { not: "CLOSED" } },
-    data: { status: "CLOSED", closedAt: new Date() },
-  });
-  if (closed.count === 0) return;
+  // The claim is in the WHERE: two closers at once must release one place. And the WHERE names the status the
+  // place is decided from (TA-125): a close that read REQUESTED while the office's approval claimed a place and
+  // moved the thread on closes nothing, reads the thread again, and gives the place it now holds back.
+  let status = thread.status;
+  for (let round = 0; ; round += 1) {
+    const closed = await db.mentorThread.updateMany({
+      where: { id: threadId, status },
+      data: { status: "CLOSED", closedAt: new Date() },
+    });
+    if (closed.count > 0) break;
+    const now = await db.mentorThread.findUnique({ where: { id: threadId }, select: { status: true } });
+    if (!now || now.status === "CLOSED" || round >= 3) return;
+    status = now.status;
+  }
+  const heldAPlace = status !== "REQUESTED";
 
   /**
    * The place goes back. A cap that only ever counts up silently retires an
@@ -931,8 +949,10 @@ export async function decideMentorRequest(
 
   if (!decision.approve) {
     const reason = (decision.reason ?? "").trim();
-    await db.mentorThread.update({
-      where: { id: thread.id },
+    // TA-125: conditional on the ask still waiting, so a decline crossing an approval cannot close a thread that
+    // already holds a place (and was asked of the guardians) without giving the place back.
+    const declined = await db.mentorThread.updateMany({
+      where: { id: thread.id, schoolId: session.schoolId, status: "REQUESTED" },
       data: {
         status: "CLOSED",
         closedAt: new Date(),
@@ -941,6 +961,7 @@ export async function decideMentorRequest(
         declineReason: reason || null,
       },
     });
+    if (declined.count === 0) return { ok: false, errorKey: "mentoring.noLongerWaiting" };
 
     // The pupil is told, by the school rather than by silence. A request that
     // simply never becomes anything is the worst version of this feature.
@@ -972,36 +993,39 @@ export async function decideMentorRequest(
 
   // Claim the place, exactly as createMentorship does, and for the same reason:
   // two schools approving an expert's last place at the same moment.
-  if (thread.expert.mentorCapacity !== null) {
-    const claimed = await db.expertProfile.updateMany({
-      where: {
-        id: thread.expertProfileId,
-        activeMentorships: { lt: thread.expert.mentorCapacity },
-      },
-      data: { activeMentorships: { increment: 1 } },
+  //
+  // TA-125: and the claim and the move to PENDING_CONSENT are ONE transaction, the move conditional on the ask
+  // still waiting. Two approvals pressed together (the admin and the principal, the web and the phone) both read
+  // REQUESTED above; the second now waits on the first's row lock, moves nothing, and its claim is rolled back,
+  // so the expert's count rises once.
+  const schoolId = session.schoolId;
+  const decidedBy = session.membershipId;
+  const capacity = thread.expert.mentorCapacity;
+  const outcome = await db.$tenantTransaction(async (raw) => {
+    const tx = raw as typeof db;
+    const moved = await tx.mentorThread.updateMany({
+      where: { id: thread.id, schoolId, status: "REQUESTED" },
+      data: { status: "PENDING_CONSENT", decidedByMembershipId: decidedBy, decidedAt: new Date() },
     });
-    if (claimed.count === 0) {
-      return {
-        ok: false,
-        errorKey: "mentoring.filledUp",
-        errorVars: { name: thread.expert.user.name },
-      };
-    }
-  } else {
-    await db.expertProfile.update({
-      where: { id: thread.expertProfileId },
-      data: { activeMentorships: { increment: 1 } },
-    });
-  }
-
-  await db.mentorThread.update({
-    where: { id: thread.id },
-    data: {
-      status: "PENDING_CONSENT",
-      decidedByMembershipId: session.membershipId,
-      decidedAt: new Date(),
-    },
+    if (moved.count === 0) return "gone" as const;
+    const claimed =
+      capacity !== null
+        ? await tx.expertProfile.updateMany({ where: { id: thread.expertProfileId, activeMentorships: { lt: capacity } }, data: { activeMentorships: { increment: 1 } } })
+        : await tx.expertProfile.updateMany({ where: { id: thread.expertProfileId }, data: { activeMentorships: { increment: 1 } } });
+    if (claimed.count === 0) throw new PlaceNotTaken(thread.id);
+    return "approved" as const;
+  }).catch((error: unknown) => {
+    if (error instanceof PlaceNotTaken) return "full" as const;
+    throw error;
   });
+  if (outcome === "gone") return { ok: false, errorKey: "mentoring.noLongerWaiting" };
+  if (outcome === "full") {
+    return {
+      ok: false,
+      errorKey: "mentoring.filledUp",
+      errorVars: { name: thread.expert.user.name },
+    };
+  }
 
   // NOW the guardians are asked — the first time this becomes their business.
   await notifyGuardians(thread.studentMembershipId, (childName) => ({

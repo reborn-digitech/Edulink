@@ -7,10 +7,11 @@ import { db } from "./db";
 import { audit } from "./audit";
 import { AccessError } from "./tenancy";
 import { localeForAddress, sendExpertInvite } from "./email";
+import { consume, EXPERT_INVITES_PER_PERSON, INVITE_EMAILS_DAILY } from "./rate-limit";
 import { EXPERT_OFFERINGS, type ExpertOffering } from "./constants";
 import { notify } from "./notify";
 import { readJsonArray, writeJson } from "./json";
-import { forJoinCode } from "./tenant-context";
+import { forJoinCode, forSchool } from "./tenant-context";
 import { asTheSchool } from "./expert-binding";
 import { isValidTimeZone } from "./dates";
 import type { ActiveContext } from "./session";
@@ -116,6 +117,13 @@ export async function inviteExpert(
   }
   const to = input.email?.trim().toLowerCase() ?? "";
   if (!to.includes("@")) throw new AccessError("expertInviteClaim.needAddress");
+  // TA-563: every call mails an outside address in the school's name, so it is counted like the school's own
+  // invitations: the school's expert invitations of the last day against the same daily ceiling, and a few an hour
+  // per person, both before any row is written or any mail sent.
+  const today = await db.expertInvite.count({ where: { schoolId: session.schoolId, createdAt: { gte: new Date(Date.now() - INVITE_EMAILS_DAILY.windowMs) } } });
+  if (today >= INVITE_EMAILS_DAILY.limit) throw new AccessError("invites.dailyCapToday");
+  const mine = await consume(`expert-invite:${session.user.id}`, EXPERT_INVITES_PER_PERSON.limit, EXPERT_INVITES_PER_PERSON.windowMs);
+  if (!mine.allowed) throw new AccessError("expertInviteClaim.tooManyInvites");
   const created = await createExpertInvite({
     schoolId: session.schoolId,
     invitedByMembershipId: session.membershipId,
@@ -453,11 +461,12 @@ export async function bookSlot(
       bookedAt: true,
       expertProfileId: true,
       expert: {
-        select: { publishedAt: true, offering: true, userId: true, user: { select: { name: true } } },
+        select: { publishedAt: true, disabledAt: true, offering: true, userId: true, user: { select: { name: true } } },
       },
     },
   });
-  if (!slot || !slot.expert.publishedAt) throw new AccessError("access.noSuchSlot", "NOT_FOUND");
+  // A closed expert is found and booked by no school (G4-28), by id as in the marketplace's list (TA-123).
+  if (!slot || !slot.expert.publishedAt || slot.expert.disabledAt) throw new AccessError("access.noSuchSlot", "NOT_FOUND");
   // WHAT THEY AGREED TO DO, checked rather than assumed. An expert offering
   // mentoring only may still have slots — mentors and mentees arrange times —
   // and those are not a school's to book for a workshop.
@@ -656,13 +665,13 @@ export async function listBookings(session: ActiveContext): Promise<BookingSumma
       : { schoolId: session.schoolId! },
     include: {
       slot: { select: { startsAt: true, endsAt: true } },
-      school: { select: { name: true } },
       expert: { include: { user: { select: { name: true, preferredName: true } } } },
       messages: { select: { authorUserId: true, readBy: true } },
     },
     orderBy: { createdAt: "desc" },
     take: 100,
   });
+  const schoolNames = await bookingSchoolNames(bookings.map((b) => b.schoolId));
 
   return bookings.map((booking) => ({
     id: booking.id,
@@ -671,7 +680,7 @@ export async function listBookings(session: ActiveContext): Promise<BookingSumma
     startsAt: booking.slot.startsAt,
     endsAt: booking.slot.endsAt,
     expertName: booking.expert.user.preferredName ?? booking.expert.user.name,
-    schoolName: booking.school.name,
+    schoolName: schoolNames.get(booking.schoolId) ?? "",
     unread: booking.messages.filter(
       (m) =>
         m.authorUserId !== session.user.id &&
@@ -730,12 +739,27 @@ async function assertBookingAccess(session: ActiveContext, bookingId: string) {
     },
     include: {
       slot: { select: { startsAt: true, endsAt: true, note: true } },
-      school: { select: { name: true } },
       expert: { include: { user: { select: { name: true, preferredName: true } } } },
     },
   });
   if (!booking) throw new AccessError("access.bookingNotFound", "NOT_FOUND");
-  return booking;
+  const schoolName = (await bookingSchoolNames([booking.schoolId])).get(booking.schoolId) ?? "";
+  return { ...booking, school: { name: schoolName } };
+}
+
+/**
+ * TA-124: the schools of bookings already found to be the reader's, by name, read school by school under each
+ * school's own binding (as the expert's calendar feed reads them). Never as a required relation of the booking: an
+ * expert's binding opens a school only while a booking there is CONFIRMED, so a cancelled booking's school came back
+ * empty and Prisma threw "Field school is required", a 500 on the expert's home and on the booking's page.
+ */
+async function bookingSchoolNames(schoolIds: string[]): Promise<Map<string, string>> {
+  const out = new Map<string, string>();
+  for (const schoolId of new Set(schoolIds)) {
+    const school = await forSchool(schoolId, () => db.school.findUnique({ where: { id: schoolId }, select: { name: true } }));
+    if (school) out.set(schoolId, school.name);
+  }
+  return out;
 }
 
 export async function getBooking(session: ActiveContext, bookingId: string) {

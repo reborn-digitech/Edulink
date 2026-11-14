@@ -21,7 +21,7 @@ import { consumeByCaller } from "./rate-limit";
 import { normalisePhone } from "./phone";
 import { readJsonArray, writeJson } from "./json";
 import { deleteStoredFile, readStoredFile, storeFile, UploadError } from "./storage";
-import { sendExpertApplicationNotice, sendExpertInvite } from "./email";
+import { localeForAddress, sendExpertApplicationNotice, sendExpertInvite } from "./email";
 import { translator, type TranslationKey } from "./i18n/dictionary";
 import { normaliseLocale, type Locale } from "./i18n/locales";
 import type { ActiveContext } from "./session";
@@ -56,6 +56,8 @@ import type { ActiveContext } from "./session";
 
 /** Valid applications per caller's address an hour: a person applies once; a loop is refused. */
 export const EXPERT_APPLICATIONS_PER_HOUR = { limit: 5, windowMs: 60 * 60_000 };
+/** Posts of the public form per caller's address an hour, valid or not, counted before the body is read (TA-335). */
+export const EXPERT_APPLICATION_TRIES = { limit: 30, windowMs: 60 * 60_000 };
 
 /** The invitation's life, the invite flow's own (src/lib/experts.ts INVITE_TTL_DAYS). */
 const INVITE_TTL_DAYS = 14;
@@ -167,7 +169,20 @@ export function checkApplication(input: ExpertApplicationBody): { ok: true; valu
   };
 }
 
+/** `id` is the new application's, or empty when the address was in use and nothing was filed (TA-335): the caller's answer is the same either way. */
 export type SubmitResult = { ok: true; id: string; email: string } | Refusal;
+
+/**
+ * TA-335: an application with an address that is already an expert's or has one waiting. Nothing is filed; the
+ * address's holder is told by mail in their language (the address's own, else the form's); the caller is answered
+ * exactly as for a new application.
+ */
+async function addressInUse(email: string, locale: string, line: "expertApply.mailInUseExpert" | "expertApply.mailInUsePending"): Promise<SubmitResult> {
+  const lang = await localeForAddress(email, normaliseLocale(locale));
+  const t = translator(lang);
+  await sendExpertApplicationNotice({ to: email, locale: lang, subject: t("expertApply.mailInUseSubject"), lines: [t(line), t("expertApply.mailInUseNothing")], cta: null }).catch((error) => console.error("[expert-applications] in-use mail failed", error));
+  return { ok: true, id: "", email };
+}
 
 /** Somebody with this address is already an expert: the account has an ExpertProfile. */
 async function isExpertAddress(email: string): Promise<boolean> {
@@ -197,10 +212,12 @@ export async function submitExpertApplication(
   const gate = await consumeByCaller("expert-apply", EXPERT_APPLICATIONS_PER_HOUR);
   if (!gate.allowed) return { ok: false, errorKey: "expertApply.refuseTooMany", retryAfterSeconds: gate.retryAfterSeconds };
 
-  // Said without revealing more: whether the address has some other account is nobody's business here.
-  if (await isExpertAddress(app.email)) return { ok: false, errorKey: "expertApply.refuseAlreadyExpert", field: "email" };
+  // TA-335: THE SAME ANSWER WHOEVER HOLDS THE ADDRESS, as the school's and the recruiter's sign-ups since QA-25. An
+  // address that is already an expert's, or has an application waiting, is answered as received, with no row, no file
+  // kept and no notice; the address's holder is told by mail what was tried, so whoever typed it learns nothing.
+  if (await isExpertAddress(app.email)) return addressInUse(app.email, locale, "expertApply.mailInUseExpert");
   const waiting = await db.expertApplication.findFirst({ where: { email: app.email, status: "PENDING" }, select: { id: true } });
-  if (waiting) return { ok: false, errorKey: "expertApply.refusePending", field: "email" };
+  if (waiting) return addressInUse(app.email, locale, "expertApply.mailInUsePending");
 
   let fileId: string;
   try {
@@ -241,8 +258,9 @@ export async function submitExpertApplication(
     id = row.id;
   } catch (error) {
     await deleteStoredFile(fileId).catch(() => {});
-    // Two presses at once: the partial unique index (one PENDING per address) decides.
-    if ((error as { code?: string }).code === "P2002") return { ok: false, errorKey: "expertApply.refusePending", field: "email" };
+    // Two presses at once: the partial unique index (one PENDING per address) decides; the second is answered as the
+    // first was (TA-335), and the first's mail already told the applicant.
+    if ((error as { code?: string }).code === "P2002") return { ok: true, id: "", email: app.email };
     throw error;
   }
 
