@@ -279,7 +279,18 @@ jobs:
         run: npm run sweep
       - name: API sweep · every endpoint as every role
         working-directory: apps/web
-        run: npm run api:sweep
+        # TA-512 (decided 14 November 2026: list first, then declare and tighten): the run lists every fixed-address
+        # read that answered 404 to a permitted role with nothing declared for it, and fails none of them; the list is
+        # uploaded below, for the by-design 404s to be declared per role before the default becomes "must succeed".
+        run: npm run api:sweep -- --report-not-found=api-sweep-not-found.json
+      - name: API sweep not-found list
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: api-sweep-not-found-${{ github.run_number }}
+          path: apps/web/api-sweep-not-found.json
+          if-no-files-found: ignore
+          retention-days: 90
       # The API sweep acts as every role and then removes what it wrote, and
       # "rows it replaced went with them — run zz:fixtures" (its own last line):
       # the admin's signature, the papers waiting for the head and more. The

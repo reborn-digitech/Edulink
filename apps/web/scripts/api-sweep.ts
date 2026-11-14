@@ -12,18 +12,25 @@
  *                                           operator, and back off at its end (audited both ways); add
  *                                           --plans=on to make the three plans active the same way (402 swept)
  *   npm run api:sweep -- --variants=off     the per-role walk alone, without the role variants (owner-batch-item13, below)
+ *   npm run api:sweep -- --report-not-found[=<file>]
+ *                                           the not-found report (TA-512, below): list every fixed-address read that
+ *                                           answered 404 to a permitted role on the default alone, and fail none of
+ *                                           them; with a file, the list is written there as JSON too (CI uploads it)
  *   npm run api:sweep -- --clean-since=<ISO> [--clean-until=<ISO>]
  *                                               no sweep: take away what a run that never reached its own
  *                                               clean-up wrote to the ZZ fixture schools in that window (W-13)
  *
  * Sessions are minted on ZZ Northgate exactly as the page sweep mints its
  * own, sent as bearer tokens (not cookies — the point is the phone's door),
- * and deleted at the end. A GET is expected to answer 200 for a permitted
- * role and 403 for the rest; a POST/DELETE with an empty body answers the
- * catalog's emptyBodyStatus (422 for a body it validates) for a permitted
- * role and 403 for the rest; signed out is 401 for anything not open to
- * anyone. An endpoint with a path parameter and no sample is skipped and
- * listed, so the gap is visible rather than silent.
+ * and deleted at the end. A GET answers a permitted role what the catalog
+ * declares for it (statusByRole, then emptyBodyStatus) and, where nothing is
+ * declared, 200 or 404: a permitted role's 404 is accepted by default, so it
+ * is not proved that a permitted GET answers 200 (TA-512, below). A
+ * POST/DELETE with an empty body answers the catalog's emptyBodyStatus for a
+ * permitted role, and where none is declared 200, 404 or 422. The rest are
+ * answered 403; signed out is 401 for anything not open to anyone. An
+ * endpoint with a path parameter and no sample is skipped and listed, so the
+ * gap is visible rather than silent.
  *
  * MODULES AND COLLEGES (SWEEPS-4 and W-17, 4 Oct 2026). A door whose module
  * the actor's school has off answers 403 MODULE_OFF for every role, and that
@@ -59,8 +66,16 @@
  * answered otherwise is reported as a finding (`✗ VARIANT …`), with the door, the variant, expected and got; a
  * refused variant whose empty body was refused by the parser first (422), with no valid body to send, is counted as
  * not reaching the fence rather than as a pass. `--variants=off` runs the old walk alone.
+ *
+ * NOT FOUND, LISTED BEFORE IT IS TIGHTENED (TA-512, decided 14 Nov 2026). The default `[200, 404]` for a permitted
+ * role's GET lets a fixed-address read that loses its own rows pass. `--report-not-found` lists every fixed-address
+ * read (no parameter in its catalog path) that answered 404 to a permitted role with nothing declared for that role,
+ * and fails none of them (scripts/sweep-not-found.ts); CI's run writes it to api-sweep-not-found.json and uploads it.
+ * The by-design 404s it finds are to be declared per role (statusByRole), and only then does the default become
+ * "must succeed"; until then the default above stands.
  */
 import { createHash, randomBytes } from "node:crypto";
+import { writeFileSync } from "node:fs";
 import { fixturePng } from "./png";
 import { Prisma, PrismaClient } from "@prisma/client";
 import { ENDPOINTS, type Endpoint, type SweepFixture } from "../src/lib/api-catalog";
@@ -78,12 +93,16 @@ import { keepSessionsAlive, purgeSessionsOnSignal, SWEEP_VARIANTS, sweepSessionE
 import { describeGateState, doorGate, gateFlags, readGateState, runSwitches, type GateState } from "./sweep-features";
 import { healthAnswers, RETRY_PAUSE_MS, RETRY_TIMEOUT_MS, retryOnceIfHealthy } from "./sweep-retry";
 import { isLiveRun, liveRunSkip } from "./sweep-live-run";
+import { judgedByDefault, notFoundReportFlag, NotFoundReport } from "./sweep-not-found";
 
 const BASE = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000";
 const db = new PrismaClient({ datasourceUrl: process.env.DATABASE_ADMIN_URL ?? process.env.DATABASE_URL });
 const minted: string[] = [];
 const results: { endpoint: string; role: string; expected: number | number[] | string; got: number; ok: boolean }[] = [];
 const skipped: string[] = [];
+/** `--report-not-found[=<file>]` (TA-512): undefined while the mode is off. The list of the run's default-judged 404s. */
+const NOT_FOUND = notFoundReportFlag(process.argv);
+const notFound = new NotFoundReport();
 
 /**
  * TWO HOURS, RENEWED WHILE THE RUN LIVES (A3-S-15, 5 Oct 2026; was 24 hours, W-13). The catalog is some 16,000
@@ -1332,6 +1351,8 @@ async function main() {
       const handlerOk = (a: Answer) => byHandler && a.status === 404;
       const got = await hit(e, role ? tokens[role] : null, path);
       if (role) baseAnswers.set(baseKey(e, role, "empty"), got.status); // owner-batch-item13
+      // TA-512: a permitted role's answer at a fixed-address read judged by the default alone, noted for the report (fails nothing).
+      if (NOT_FOUND !== undefined && role && !byHandler && off !== "must" && judgedByDefault(e, role, actorPermits(e, role))) notFound.note(e, role, path, got.status);
       results.push({ endpoint: `${e.method} ${e.path}`, role: role ?? "anonymous", expected: byHandler ? `${JSON.stringify(wanted(want, off))} or 404 (its handler, feature off)` : wanted(want, off), got: got.status, ok: judge(want, off, got) || handlerOk(got) });
       // With a valid body, a permitted role must get through (200), which is
       // the half of the contract an empty body cannot prove.
@@ -1357,6 +1378,15 @@ async function main() {
   console.log(`${results.length - failed.length}/${results.length} as expected, ${failed.length} unexpected, ${skipped.length} skipped.`);
   printVariants(); // owner-batch-item13
   printSlowest();
+  if (NOT_FOUND !== undefined) {
+    // TA-512: the list, which fails nothing; the exit code below is the failures' and the variants' alone.
+    console.log("");
+    for (const line of notFound.lines()) console.log(line);
+    if (NOT_FOUND) {
+      writeFileSync(NOT_FOUND, JSON.stringify(notFound.json(new Date(), BASE, describeGateState(gate)), null, 2) + "\n");
+      console.log(`· not-found report written to ${NOT_FOUND}`);
+    }
+  }
   if (failed.length || variantResults.some((r) => !r.ok)) process.exitCode = 1;
   await sweepAway(startedAt);
 }
