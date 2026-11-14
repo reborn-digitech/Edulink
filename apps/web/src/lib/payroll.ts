@@ -35,6 +35,8 @@ import { AccessError } from "./access-error";
 import { assertModuleOn } from "./modules";
 import { audit } from "./audit";
 import { notify } from "./notify";
+import { noticeDate } from "./notice-dates";
+import type { TranslationKey } from "./i18n/dictionary";
 import { open, seal, sealingAvailable } from "./secret-box";
 import { readJson, readJsonArray } from "./json";
 import { toCsv } from "./csv";
@@ -93,7 +95,9 @@ import type { Role } from "./constants";
  * WHO. The admin writes everything. The head reads the summary (cost by
  * month and department, headcount) and a run's totals, and a run's slips
  * only once the admin has shared that run. Every member of staff reads their
- * own slips, statement and structure — never anyone else's.
+ * own slips, statement and structure — never anyone else's. Nobody writes
+ * their own salary, slip or advance while somebody else keeps payroll at the
+ * school (TA-407, `ownPay`); the head is told of every lock with its totals.
  */
 
 export type Office = ActiveContext & { schoolId: string; membershipId: string; role: Role };
@@ -117,6 +121,40 @@ async function staffMember(ctx: ActiveContext): Promise<Office> {
   if (!ctx.schoolId || !ctx.membershipId || !ctx.role || !(SCHOOL_STAFF_ROLES as readonly string[]).includes(ctx.role)) throw new AccessError("access.wrongRoleForThisAction");
   await assertModuleOn(ctx.schoolId, "PAYROLL");
   return ctx as Office;
+}
+
+/**
+ * TA-407, the owner's decision of 14 November 2026 (option 1): OWN PAY IS REFUSED WHERE A SECOND PERSON EXISTS. An
+ * ADMIN or ACCOUNTS clerk cannot save their own salary, edit their own slip or record or decide their own advance
+ * while another person (another account, ACTIVE, not left, not disabled) holds ADMIN or ACCOUNTS at the school; in a
+ * one-person office the write goes ahead and the head is told of it. Answers whether this write is the caller's own
+ * (and so whether the head is to be told); a write for somebody else answers false.
+ */
+async function ownPay(caller: Office, payeeUserId: string): Promise<boolean> {
+  if (payeeUserId !== caller.user.id) return false;
+  const others = await db.membership.count({ where: { schoolId: caller.schoolId, role: { in: ["ADMIN", "ACCOUNTS"] }, status: "ACTIVE", leftAt: null, userId: { not: caller.user.id }, user: { disabledAt: null } } });
+  if (others > 0) throw new AccessError("payroll.refuseOwnPay");
+  return true;
+}
+
+/** ₹15,000 for a notice: the amount as gig-payments' rupees() says it. */
+const inr = (paise: number) => {
+  const r = paise / 100;
+  return `₹${new Intl.NumberFormat("en-IN", { minimumFractionDigits: Number.isInteger(r) ? 0 : 2, maximumFractionDigits: 2 }).format(r)}`;
+};
+
+/** TA-407: the head (every ACTIVE principal of the school but the caller) told of a payroll event. */
+async function tellHead(caller: Office, titleKey: TranslationKey, bodyKey: TranslationKey, bodyVars: Record<string, string | number>, url: string): Promise<void> {
+  const heads = await db.membership.findMany({ where: { schoolId: caller.schoolId, role: "PRINCIPAL", status: "ACTIVE", leftAt: null, userId: { not: caller.user.id } }, select: { userId: true } });
+  for (const userId of new Set(heads.map((h) => h.userId))) {
+    await notify({ userId, schoolId: caller.schoolId, kind: "SYSTEM", titleKey, titleVars: bodyVars, bodyKey, bodyVars, url }).catch(() => {});
+  }
+}
+
+/** TA-407: a member of staff told of a change to their own pay (never the caller themself, whose own write the head hears of). */
+async function tellPayee(caller: Office, userId: string, bodyKey: TranslationKey, bodyVars: Record<string, string | number>): Promise<void> {
+  if (userId === caller.user.id) return;
+  await notify({ userId, schoolId: caller.schoolId, kind: "SYSTEM", titleKey: "payroll.notifyPayChangedTitle", bodyKey, bodyVars, url: "/account/payslips" }).catch(() => {});
 }
 
 const MONTH = /^\d{4}-(0[1-9]|1[0-2])$/;
@@ -167,6 +205,28 @@ export async function listStructures(ctx: ActiveContext): Promise<{ structures: 
 }
 
 /**
+ * TA-407: whose monthly gross a structure rewritten in place changes, with the gross before and after. Everyone on
+ * the roll (ACTIVE, not left) whose revision in force today, or a later one, is on the structure; for each, the first
+ * such revision whose gross the new components move.
+ */
+async function structureGrossChanges(schoolId: string, structureId: string, after: ComponentInput[]): Promise<{ membershipId: string; userId: string; before: number; after: number }[]> {
+  const onIt = await db.staffSalary.findMany({ where: { schoolId, structureId, membership: { status: "ACTIVE", leftAt: null } }, select: { membershipId: true } });
+  if (!onIt.length) return [];
+  const today = dateKeyInZone(new Date(), await zoneOf(schoolId));
+  const revisions = await db.staffSalary.findMany({ where: { schoolId, membershipId: { in: [...new Set(onIt.map((r) => r.membershipId))] } }, orderBy: [{ membershipId: "asc" }, { effectiveFromKey: "asc" }], select: { ...SALARY_SELECT, membership: { select: { userId: true } } } });
+  const out = new Map<string, { membershipId: string; userId: string; before: number; after: number }>();
+  for (const [i, r] of revisions.entries()) {
+    const next = revisions[i + 1];
+    const live = r.effectiveFromKey > today || !next || next.membershipId !== r.membershipId || next.effectiveFromKey > today;
+    if (!live || r.structureId !== structureId || out.has(r.membershipId)) continue;
+    const before = monthlyGross(r.basicPaise, componentsOf(r), overridesOf(r));
+    const now = monthlyGross(r.basicPaise, after, overridesOf(r));
+    if (before !== now) out.set(r.membershipId, { membershipId: r.membershipId, userId: r.membership.userId, before, after: now });
+  }
+  return [...out.values()];
+}
+
+/**
  * A structure whole. Each code once, BASIC among them; an earning's formula
  * is FIXED or a share of basic (a share of the gross it is part of has no
  * answer); the statutory codes, BASIC and ADVANCE take no value of their own.
@@ -186,21 +246,31 @@ export async function saveStructure(ctx: ActiveContext, input: SalaryStructureSa
     const fixedOnly = c.code === "BASIC" || c.code === "ADVANCE" || isStatutory(c.code);
     return { schoolId: caller.schoolId, code: c.code, label: c.label, kind: COMPONENT_KIND[c.code], formula: fixedOnly ? "FIXED" : c.formula, value: fixedOnly ? 0 : c.value, statutory: isStatutory(c.code), position: i };
   });
+  // TA-407: a structure rewritten in place changes the pay of everyone on it. The caller's own pay among them is refused
+  // while somebody else keeps payroll (alone, the head is told); each other member of staff whose gross moves is told.
+  const changes = input.id ? await structureGrossChanges(caller.schoolId, input.id, rows.map((r) => ({ code: r.code, label: r.label, formula: r.formula as SalaryFormula, value: r.value }))) : [];
+  const mine = changes.find((c) => c.userId === caller.user.id);
+  const own = mine ? await ownPay(caller, mine.userId) : false;
   const id = await db.$tenantTransaction(async (raw) => {
     const tx = raw as Tx;
     let structureId = input.id;
+    let before: { code: string; formula: string; value: number }[] | null = null;
     if (structureId) {
-      const found = await tx.salaryStructure.findFirst({ where: { id: structureId, schoolId: caller.schoolId }, select: { id: true } });
+      const found = await tx.salaryStructure.findFirst({ where: { id: structureId, schoolId: caller.schoolId }, select: { id: true, components: { orderBy: { position: "asc" }, select: { code: true, formula: true, value: true } } } });
       if (!found) throw new AccessError("access.entryNotFound", "NOT_FOUND");
+      before = found.components;
       await tx.salaryStructure.update({ where: { id: structureId }, data: { name: input.name, ...(input.archived === undefined ? {} : { archivedAt: input.archived ? new Date() : null }) } });
       await tx.salaryComponent.deleteMany({ where: { structureId } });
     } else {
       structureId = (await tx.salaryStructure.create({ data: { schoolId: caller.schoolId, name: input.name }, select: { id: true } })).id;
     }
     await tx.salaryComponent.createMany({ data: rows.map((r) => ({ ...r, structureId: structureId! })) });
+    // The amounts before and after (TA-407), in the same transaction as the rewrite.
+    await audit({ schoolId: caller.schoolId, actorUserId: caller.user.id, action: "payroll.structure.save", targetType: "SalaryStructure", targetId: structureId, meta: { created: !input.id, codes, componentsBefore: before, componentsAfter: rows.map((r) => ({ code: r.code, formula: r.formula, value: r.value })), staffChanged: changes.length, ownPay: own } }, tx);
     return structureId;
   });
-  await audit({ schoolId: caller.schoolId, actorUserId: caller.user.id, action: "payroll.structure.save", targetType: "SalaryStructure", targetId: id, meta: { created: !input.id, codes } });
+  for (const c of changes) await tellPayee(caller, c.userId, "payroll.notifyPayStructureBody", { structure: input.name, before: inr(c.before), after: inr(c.after) });
+  if (mine && own) await tellHead(caller, "payroll.notifyOwnPayTitle", "payroll.notifyOwnStructureBody", { name: nameOf(caller.user), structure: input.name, before: inr(mine.before), after: inr(mine.after) }, "/admin/payroll");
   return structureView(await db.salaryStructure.findUniqueOrThrow({ where: { id }, select: STRUCTURE_SELECT }));
 }
 
@@ -281,6 +351,21 @@ export async function listSalaries(ctx: ActiveContext): Promise<{ staff: StaffSa
   };
 }
 
+/** TA-407: whether a sealed account or UPI id is the one typed (a value that will not open counts as another). */
+function opensTo(sealed: string | null, bound: string, typed: string): boolean {
+  if (!sealed) return false;
+  try {
+    return open(sealed, bound) === typed;
+  } catch {
+    return false;
+  }
+}
+/** TA-407: the same overrides, whatever order their codes were written in. */
+function sameOverrides(a: Partial<Record<SalaryComponentCode, number>>, b: Partial<Record<SalaryComponentCode, number>>): boolean {
+  const keys = new Set([...Object.keys(a), ...Object.keys(b)] as SalaryComponentCode[]);
+  return [...keys].every((k) => a[k] === b[k]);
+}
+
 /**
  * One person's salary from a date: a new revision, or the same date
  * rewritten. A blank PAN or account keeps the sealed one already held (the
@@ -289,9 +374,10 @@ export async function listSalaries(ctx: ActiveContext): Promise<{ staff: StaffSa
  */
 export async function saveSalary(ctx: ActiveContext, input: Omit<StaffSalarySave, "upiId"> & { upiId?: string }): Promise<StaffSalaryView> {
   const caller = await office(ctx, true);
-  const member = await db.membership.findFirst({ where: { id: input.membershipId, schoolId: caller.schoolId, role: { in: [...SCHOOL_STAFF_ROLES] }, status: "ACTIVE" }, select: { id: true, role: true, user: { select: { name: true, preferredName: true } }, staffRecord: { select: { designation: true } } } });
+  const member = await db.membership.findFirst({ where: { id: input.membershipId, schoolId: caller.schoolId, role: { in: [...SCHOOL_STAFF_ROLES] }, status: "ACTIVE" }, select: { id: true, role: true, userId: true, user: { select: { name: true, preferredName: true } }, staffRecord: { select: { designation: true } } } });
   if (!member) throw new RuleRefusal("payroll.refuseNotStaff", 422, undefined, "membershipId");
-  const structure = await db.salaryStructure.findFirst({ where: { id: input.structureId, schoolId: caller.schoolId, archivedAt: null }, select: { id: true } });
+  const own = await ownPay(caller, member.userId);
+  const structure = await db.salaryStructure.findFirst({ where: { id: input.structureId, schoolId: caller.schoolId, archivedAt: null }, select: { id: true, components: SALARY_SELECT.structure.select.components } });
   if (!structure) throw new RuleRefusal("payroll.refuseUnknownStructure", 422, undefined, "structureId");
   if (input.upiId) input = { ...input, upiId: input.upiId.trim().toLowerCase() };
   if (input.upiId && !VPA_PATTERN.test(input.upiId)) throw new RuleRefusal("salaryPay.refuseVpa", 422, undefined, "upiId");
@@ -318,7 +404,21 @@ export async function saveSalary(ctx: ActiveContext, input: Omit<StaffSalarySave
     paymentMode: input.paymentMode,
     updatedByUserId: caller.user.id,
   };
-  let row = await db.staffSalary.upsert({ where: { membershipId_effectiveFromKey: { membershipId: member.id, effectiveFromKey: input.effectiveFrom } }, create: { schoolId: caller.schoolId, membershipId: member.id, effectiveFromKey: input.effectiveFrom, ...data }, update: data, select: SALARY_SELECT });
+  // TA-407: the revision in force on the day this one starts (the one it rewrites, on the same day), for the amounts
+  // before; and whether the account or the UPI id the money goes to is really another (the same one typed again is not).
+  const replaced = await db.staffSalary.findFirst({ where: { schoolId: caller.schoolId, membershipId: member.id, effectiveFromKey: { lte: input.effectiveFrom } }, orderBy: { effectiveFromKey: "desc" }, select: SALARY_SELECT });
+  const grossAfter = monthlyGross(input.basicPaise, structure.components.map((c) => ({ code: c.code as SalaryComponentCode, label: c.label, formula: c.formula as SalaryFormula, value: c.value })), (input.overrides ?? {}) as Partial<Record<SalaryComponentCode, number>>);
+  const grossBefore = replaced ? monthlyGross(replaced.basicPaise, componentsOf(replaced), overridesOf(replaced)) : null;
+  const salaryChanged = !replaced || replaced.basicPaise !== input.basicPaise || replaced.structureId !== structure.id || grossBefore !== grossAfter || !sameOverrides(overridesOf(replaced), (input.overrides ?? {}) as Partial<Record<SalaryComponentCode, number>>);
+  const bankChanged = (Boolean(input.bankAccount) && !opensTo(previous?.bankAccountSealed ?? null, bankBound(caller.schoolId, member.id), input.bankAccount)) || data.bankIfsc !== (previous?.bankIfsc ?? null);
+  const upiChanged = Boolean(input.upiId) && !opensTo(previous?.upiSealed ?? null, upiBound(caller.schoolId, member.id), input.upiId!);
+  // What changed: the amounts before and after (TA-407), never the PAN, the account or the UPI id. In the same transaction as the write.
+  let row = await db.$tenantTransaction(async (raw) => {
+    const tx = raw as Tx;
+    const saved = await tx.staffSalary.upsert({ where: { membershipId_effectiveFromKey: { membershipId: member.id, effectiveFromKey: input.effectiveFrom } }, create: { schoolId: caller.schoolId, membershipId: member.id, effectiveFromKey: input.effectiveFrom, ...data }, update: data, select: SALARY_SELECT });
+    await audit({ schoolId: caller.schoolId, actorUserId: caller.user.id, action: "payroll.salary.save", targetType: "Membership", targetId: member.id, meta: { effectiveFrom: input.effectiveFrom, structureId: structure.id, panChanged: Boolean(input.pan), bankChanged: Boolean(input.bankAccount), upiChanged: Boolean(input.upiId), mode: input.paymentMode, basicBeforePaise: replaced?.basicPaise ?? null, basicAfterPaise: input.basicPaise, grossBeforePaise: grossBefore, grossAfterPaise: grossAfter, ownPay: own } }, tx);
+    return saved;
+  });
   if (input.pan) {
     await writePan({ kind: "STAFF", schoolId: caller.schoolId, membershipId: member.id }, input.pan);
     row = await db.staffSalary.findUniqueOrThrow({ where: { id: row.id }, select: SALARY_SELECT });
@@ -326,8 +426,12 @@ export async function saveSalary(ctx: ActiveContext, input: Omit<StaffSalarySave
     // TA-290: a first revision saved with the box blank takes the PAN the faculty record already holds.
     row = await db.staffSalary.findUniqueOrThrow({ where: { id: row.id }, select: SALARY_SELECT });
   }
-  // What changed, never the numbers: the log is read by the whole office.
-  await audit({ schoolId: caller.schoolId, actorUserId: caller.user.id, action: "payroll.salary.save", targetType: "Membership", targetId: member.id, meta: { effectiveFrom: input.effectiveFrom, structureId: structure.id, panChanged: Boolean(input.pan), bankChanged: Boolean(input.bankAccount), upiChanged: Boolean(input.upiId), mode: input.paymentMode } });
+  // TA-407: the member of staff hears of a new account or UPI id (masked) and of a salary revision; the head of a write to one's own pay.
+  const from = noticeDate(input.effectiveFrom, "long");
+  if (bankChanged && row.bankLast4) await tellPayee(caller, member.userId, "payroll.notifyPayBankBody", { last4: row.bankLast4 });
+  if (upiChanged && row.upiMasked) await tellPayee(caller, member.userId, "payroll.notifyPayUpiBody", { upi: row.upiMasked });
+  if (salaryChanged) await tellPayee(caller, member.userId, grossBefore === null ? "payroll.notifyPaySalaryNewBody" : "payroll.notifyPaySalaryBody", { from, before: inr(grossBefore ?? 0), after: inr(grossAfter) });
+  if (own) await tellHead(caller, "payroll.notifyOwnPayTitle", "payroll.notifyOwnSalaryBody", { name: nameOf(caller.user), from, before: inr(grossBefore ?? 0), after: inr(grossAfter) }, "/admin/payroll");
   return { membershipId: member.id, name: nameOf(member.user), role: member.role, designation: member.staffRecord?.designation ?? null, salary: salaryView(row) };
 }
 
@@ -615,18 +719,19 @@ export async function editSlip(ctx: ActiveContext, month: string, membershipId: 
   assertMonth(month);
   const settings = await settingsOf(caller.schoolId);
   const tz = await zoneOf(caller.schoolId);
-  const member = await db.membership.findFirst({ where: { id: membershipId, schoolId: caller.schoolId }, select: { id: true, role: true, leftAt: true, user: { select: { name: true, preferredName: true } }, staffRecord: { select: { designation: true, gender: true, joinedOn: true } } } });
+  const member = await db.membership.findFirst({ where: { id: membershipId, schoolId: caller.schoolId }, select: { id: true, role: true, leftAt: true, userId: true, user: { select: { name: true, preferredName: true } }, staffRecord: { select: { designation: true, gender: true, joinedOn: true } } } });
   if (!member) throw new AccessError("access.entryNotFound", "NOT_FOUND");
+  const own = await ownPay(caller, member.userId);
   const salary = (await salariesFor(caller.schoolId, [member.id], month)).get(member.id);
   if (!salary) throw new RuleRefusal("payroll.refuseNoSalary", 409);
   if (edit.lopOverrideDays !== undefined && edit.lopOverrideDays !== null && edit.lopOverrideDays > daysInMonthOf(month)) throw new RuleRefusal("payroll.refuseLopDays", 422, undefined, "lopOverrideDays");
   const [lop, instalments] = await Promise.all([lossOfPay(caller.schoolId, month, [{ id: member.id, leftAt: member.leftAt, joinedOn: member.staffRecord?.joinedOn ?? null }], tz), instalmentsFor(caller.schoolId, [member.id], month)]);
-  await db.$tenantTransaction(async (raw) => {
+  const nets = await db.$tenantTransaction(async (raw) => {
     const tx = raw as Tx;
     const run = await lockRunRow(tx, caller.schoolId, month);
     if (!run) throw new AccessError("access.entryNotFound", "NOT_FOUND");
     if (isFrozen(run.status)) throw new RuleRefusal("payroll.refuseLocked", 409, { month });
-    const slip = await tx.payslip.findUnique({ where: { runId_membershipId: { runId: run.id, membershipId } }, select: { arrearsPaise: true, tdsOverridePaise: true, lopOverrideHalfDays: true, notes: true } });
+    const slip = await tx.payslip.findUnique({ where: { runId_membershipId: { runId: run.id, membershipId } }, select: { arrearsPaise: true, tdsOverridePaise: true, lopOverrideHalfDays: true, notes: true, grossPaise: true, netPaise: true } });
     if (!slip) throw new AccessError("access.entryNotFound", "NOT_FOUND");
     const carry: SlipCarry = {
       arrearsPaise: edit.arrearsPaise ?? slip.arrearsPaise,
@@ -641,8 +746,18 @@ export async function editSlip(ctx: ActiveContext, month: string, membershipId: 
       data: { ...carry, lopHalfDays: person.lopHalfDays, linesJson: JSON.stringify(f.lines), grossPaise: f.grossPaise, deductionsPaise: f.deductionsPaise, employerPaise: f.employerPaise, netPaise: f.netPaise },
     });
     await writeTotals(tx, run.id);
+    // TA-407: the figures before and after, in the same transaction as the edit; never the note's words.
+    await audit({
+      schoolId: caller.schoolId,
+      actorUserId: caller.user.id,
+      action: "payroll.slip.edit",
+      targetType: "Membership",
+      targetId: membershipId,
+      meta: { month, fields: Object.keys(edit), arrearsBeforePaise: slip.arrearsPaise, arrearsAfterPaise: carry.arrearsPaise, tdsOverrideBeforePaise: slip.tdsOverridePaise, tdsOverrideAfterPaise: carry.tdsOverridePaise, lopOverrideBeforeHalfDays: slip.lopOverrideHalfDays, lopOverrideAfterHalfDays: carry.lopOverrideHalfDays, grossBeforePaise: slip.grossPaise, grossAfterPaise: f.grossPaise, netBeforePaise: slip.netPaise, netAfterPaise: f.netPaise, ownPay: own },
+    }, tx);
+    return { before: slip.netPaise, after: f.netPaise };
   });
-  await audit({ schoolId: caller.schoolId, actorUserId: caller.user.id, action: "payroll.slip.edit", targetType: "Membership", targetId: membershipId, meta: { month, fields: Object.keys(edit) } });
+  if (own) await tellHead(caller, "payroll.notifyOwnPayTitle", "payroll.notifyOwnSlipBody", { name: nameOf(caller.user), month: `${month.slice(5)}/${month.slice(0, 4)}`, before: inr(nets.before), after: inr(nets.after) }, `/admin/payroll/runs/${month}`);
   const row = await db.payslip.findFirstOrThrow({ where: { membershipId, run: { schoolId: caller.schoolId, month } }, select: { ...SLIP_SELECT, runId: true } });
   const extras = await extrasFor(caller.schoolId, row.runId, month);
   return slipView(row, salary, { slipRef: extras.refs.get(membershipId) ?? "", payment: null });
@@ -703,6 +818,9 @@ export async function lockRun(ctx: ActiveContext, month: string): Promise<Payrol
   for (const userId of people) {
     await notify({ userId, schoolId: caller.schoolId, kind: "SYSTEM", titleKey: "payroll.notifySlipTitle", bodyKey: "payroll.notifySlipBody", bodyVars: { month: `${m}/${y}` }, url: "/account/payslips" }).catch(() => {});
   }
+  // TA-407: the head is told of every lock with the run's totals, shared or not (the slips stay the office's to share).
+  const totals = await runRow(caller.schoolId, month);
+  if (totals) await tellHead(caller, "payroll.notifyLockTitle", "payroll.notifyLockBody", { month: `${m}/${y}`, name: nameOf(caller.user), headcount: totals.headcount, gross: inr(totals.grossPaise), deductions: inr(totals.deductionsPaise), net: inr(totals.netPaise), employer: inr(totals.employerPaise) }, `/admin/payroll/runs/${month}`);
   return runView(ctx, month);
 }
 
@@ -1019,8 +1137,9 @@ export async function listAdvances(ctx: ActiveContext): Promise<{ advances: Staf
 /** The office records an advance it has handed over (outside the app), with what each month takes back. */
 export async function recordAdvance(ctx: ActiveContext, input: { membershipId: string; amountPaise: number; monthlyRecoveryPaise: number; reason: string }): Promise<StaffAdvanceView> {
   const caller = await office(ctx, true);
-  const member = await db.membership.findFirst({ where: { id: input.membershipId, schoolId: caller.schoolId, role: { in: [...SCHOOL_STAFF_ROLES] }, status: "ACTIVE" }, select: { id: true } });
+  const member = await db.membership.findFirst({ where: { id: input.membershipId, schoolId: caller.schoolId, role: { in: [...SCHOOL_STAFF_ROLES] }, status: "ACTIVE" }, select: { id: true, userId: true } });
   if (!member) throw new RuleRefusal("payroll.refuseNotStaff", 422, undefined, "membershipId");
+  const own = await ownPay(caller, member.userId);
   if (input.monthlyRecoveryPaise > input.amountPaise) throw new RuleRefusal("payroll.refuseInstalment", 422, undefined, "monthlyRecoveryPaise");
   // TA-043: a second press of the same form (the same person, amount, instalment and reason, by the same hand within
   // two minutes) answers the first row rather than recording the advance twice; the person's row lock makes two
@@ -1031,10 +1150,12 @@ export async function recordAdvance(ctx: ActiveContext, input: { membershipId: s
     const same = await tx.staffAdvance.findFirst({ where: { schoolId: caller.schoolId, membershipId: member.id, status: "RECORDED", amountPaise: input.amountPaise, monthlyRecoveryPaise: input.monthlyRecoveryPaise, reason: input.reason, decidedByUserId: caller.user.id, createdAt: { gte: new Date(Date.now() - REPEAT_PRESS_MS) } }, orderBy: { createdAt: "desc" }, select: ADVANCE_SELECT });
     if (same) return { row: same, repeat: true };
     const row = await tx.staffAdvance.create({ data: { schoolId: caller.schoolId, membershipId: member.id, amountPaise: input.amountPaise, reason: input.reason, status: "RECORDED", monthlyRecoveryPaise: input.monthlyRecoveryPaise, decidedByUserId: caller.user.id, decidedAt: new Date() }, select: ADVANCE_SELECT });
+    // In the same transaction as the advance (TA-407).
+    await audit({ schoolId: caller.schoolId, actorUserId: caller.user.id, action: "payroll.advance.record", targetType: "StaffAdvance", targetId: row.id, meta: { amountPaise: input.amountPaise, monthlyRecoveryPaise: input.monthlyRecoveryPaise, ownPay: own } }, tx);
     return { row, repeat: false };
   });
   const row = made.row;
-  if (!made.repeat) await audit({ schoolId: caller.schoolId, actorUserId: caller.user.id, action: "payroll.advance.record", targetType: "StaffAdvance", targetId: row.id, meta: { amountPaise: input.amountPaise, monthlyRecoveryPaise: input.monthlyRecoveryPaise } });
+  if (own && !made.repeat) await tellHead(caller, "payroll.notifyOwnPayTitle", "payroll.notifyOwnAdvanceBody", { name: nameOf(caller.user), amount: inr(input.amountPaise), instalment: inr(input.monthlyRecoveryPaise) }, "/admin/payroll");
   return (await advanceViews(caller.schoolId, [row]))[0]!;
 }
 /** How long the same advance typed again is taken for a second press of one form (TA-043). */
@@ -1049,7 +1170,11 @@ const REPEAT_PRESS_MS = 2 * 60_000;
  */
 export async function cancelAdvance(ctx: ActiveContext, input: { advanceId: string; note: string }): Promise<StaffAdvanceView> {
   const caller = await office(ctx, true);
-  await db.$tenantTransaction(async (raw) => {
+  // TA-407: cancelling an advance wipes the debt, so it is a write to the payee's advance as recording it is. Whose
+  // advance it is never changes, so it is read before the row lock (ownPay reads outside any transaction).
+  const payee = await db.staffAdvance.findFirst({ where: { id: input.advanceId, schoolId: caller.schoolId }, select: { membership: { select: { userId: true } } } });
+  const own = payee ? await ownPay(caller, payee.membership.userId) : false;
+  const cancelled = await db.$tenantTransaction(async (raw) => {
     const tx = raw as Tx;
     const [adv] = await tx.$queryRaw<{ id: string; membershipId: string; status: string; amountPaise: number }[]>`SELECT "id", "membershipId", "status", "amountPaise" FROM "StaffAdvance" WHERE "id" = ${input.advanceId} AND "schoolId" = ${caller.schoolId} FOR UPDATE`;
     if (!adv) throw new AccessError("access.entryNotFound", "NOT_FOUND");
@@ -1057,8 +1182,10 @@ export async function cancelAdvance(ctx: ActiveContext, input: { advanceId: stri
     const back = (await recoveredByAdvance(caller.schoolId, [adv.membershipId], tx)).get(adv.id) ?? 0;
     if (back > 0) throw new RuleRefusal("payroll.refuseAdvanceRecovered", 409);
     await tx.staffAdvance.update({ where: { id: adv.id }, data: { status: "CANCELLED", decisionNote: input.note } });
-    await audit({ schoolId: caller.schoolId, actorUserId: caller.user.id, action: "payroll.advance.cancel", targetType: "StaffAdvance", targetId: adv.id, meta: { amountPaise: adv.amountPaise } }, tx);
+    await audit({ schoolId: caller.schoolId, actorUserId: caller.user.id, action: "payroll.advance.cancel", targetType: "StaffAdvance", targetId: adv.id, meta: { amountPaise: adv.amountPaise, ownPay: own } }, tx);
+    return { own, amountPaise: adv.amountPaise };
   });
+  if (cancelled.own) await tellHead(caller, "payroll.notifyOwnPayTitle", "payroll.notifyOwnAdvanceCancelBody", { name: nameOf(caller.user), amount: inr(cancelled.amountPaise) }, "/admin/payroll");
   const row = await db.staffAdvance.findUniqueOrThrow({ where: { id: input.advanceId }, select: ADVANCE_SELECT });
   return (await advanceViews(caller.schoolId, [row]))[0]!;
 }
@@ -1069,17 +1196,24 @@ export async function decideAdvance(ctx: ActiveContext, input: { advanceId: stri
   const adv = await db.staffAdvance.findFirst({ where: { id: input.advanceId, schoolId: caller.schoolId }, select: { id: true, status: true, amountPaise: true, membership: { select: { userId: true } } } });
   if (!adv) throw new AccessError("access.entryNotFound", "NOT_FOUND");
   if (adv.status !== "REQUESTED") throw new RuleRefusal("payroll.refuseAnswered", 409);
+  // TA-407: recording one's own ask is saving one's own advance; declining it saves nothing and stays open to the asker.
+  const own = input.decision === "RECORD" ? await ownPay(caller, adv.membership.userId) : false;
   const amount = input.amountPaise ?? adv.amountPaise;
   if (input.decision === "RECORD") {
     if (!input.monthlyRecoveryPaise || input.monthlyRecoveryPaise <= 0) throw new RuleRefusal("payroll.refuseNoInstalment", 422, undefined, "monthlyRecoveryPaise");
     if (input.monthlyRecoveryPaise > amount) throw new RuleRefusal("payroll.refuseInstalment", 422, undefined, "monthlyRecoveryPaise");
   }
-  const done = await db.staffAdvance.updateMany({
-    where: { id: adv.id, status: "REQUESTED" },
-    data: input.decision === "RECORD" ? { status: "RECORDED", amountPaise: amount, monthlyRecoveryPaise: input.monthlyRecoveryPaise, decidedByUserId: caller.user.id, decidedAt: new Date(), decisionNote: input.note || null } : { status: "DECLINED", decidedByUserId: caller.user.id, decidedAt: new Date(), decisionNote: input.note || null },
+  // The decision and its audit row (the amount asked and the amount recorded, TA-407) in one transaction.
+  await db.$tenantTransaction(async (raw) => {
+    const tx = raw as Tx;
+    const done = await tx.staffAdvance.updateMany({
+      where: { id: adv.id, status: "REQUESTED" },
+      data: input.decision === "RECORD" ? { status: "RECORDED", amountPaise: amount, monthlyRecoveryPaise: input.monthlyRecoveryPaise, decidedByUserId: caller.user.id, decidedAt: new Date(), decisionNote: input.note || null } : { status: "DECLINED", decidedByUserId: caller.user.id, decidedAt: new Date(), decisionNote: input.note || null },
+    });
+    if (done.count === 0) throw new RuleRefusal("payroll.refuseAnswered", 409);
+    await audit({ schoolId: caller.schoolId, actorUserId: caller.user.id, action: input.decision === "RECORD" ? "payroll.advance.record" : "payroll.advance.decline", targetType: "StaffAdvance", targetId: adv.id, meta: { amountPaise: amount, askedPaise: adv.amountPaise, ...(input.decision === "RECORD" ? { monthlyRecoveryPaise: input.monthlyRecoveryPaise ?? null } : {}), ownPay: own } }, tx);
   });
-  if (done.count === 0) throw new RuleRefusal("payroll.refuseAnswered", 409);
-  await audit({ schoolId: caller.schoolId, actorUserId: caller.user.id, action: input.decision === "RECORD" ? "payroll.advance.record" : "payroll.advance.decline", targetType: "StaffAdvance", targetId: adv.id, meta: { amountPaise: amount } });
+  if (own) await tellHead(caller, "payroll.notifyOwnPayTitle", "payroll.notifyOwnAdvanceBody", { name: nameOf(caller.user), amount: inr(amount), instalment: inr(input.monthlyRecoveryPaise ?? 0) }, "/admin/payroll");
   await notify({ userId: adv.membership.userId, schoolId: caller.schoolId, kind: "SYSTEM", titleKey: input.decision === "RECORD" ? "payroll.notifyAdvanceRecordedTitle" : "payroll.notifyAdvanceDeclinedTitle", bodyKey: "payroll.notifyAdvanceBody", url: "/account/payslips" }).catch(() => {});
   const row = await db.staffAdvance.findUniqueOrThrow({ where: { id: adv.id }, select: ADVANCE_SELECT });
   return (await advanceViews(caller.schoolId, [row]))[0]!;
