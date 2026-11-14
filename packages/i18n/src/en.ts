@@ -11,10 +11,17 @@
  * survives a copy change; `shell.signOutButton1` does not survive anything.
  *
  * `{name}` placeholders are substituted by `format()` in dictionary.ts. There is
- * deliberately no plural machinery: every counted string here reads correctly at
- * one and at many in all three languages ("3 unread", "1 unread"), and a plural
- * system nobody needs is a plural system nobody maintains. The day a string
- * needs real agreement, add it then, for that string.
+ * deliberately no plural machinery, and NOT every counted string here reads
+ * correctly at one (TA-332): some are written to ("3 unread", "1 unread"), and a
+ * string a reader can see at one has a sibling `<key>One` (or a `<base>One` and
+ * `<base>Many` pair) that its caller chooses when the number is 1 — on the web
+ * and on the phone — as "1 day late" beside "{days} days late"; a
+ * "{remaining} of {seats}" line chooses on the total. Several hundred counted
+ * sentences still have no form for one; the ratchet in
+ * apps/web/tests/ta-contracts-i18n-tokens-dictionary.test.ts holds them at their
+ * number, so a new one cannot be added unnoticed, and each area fixes its own
+ * after reading the page that draws them. A new counted sentence that can show
+ * 1 gets its `One` sibling in all three languages when it is written.
  */
 
 export const en = {
@@ -1734,6 +1741,7 @@ export const en = {
     percentOfDaysOne: "of 1 school day.",
     percentOfDaysMany: "of {count} school days.",
     longestRun: "Longest run present: {count} days.",
+    longestRunOne: "Longest run present: {count} day.",
     lateCounts: "A late arrival counts as attended — a child who was there is counted as there.",
     work: "Work",
     klass: "Class",
@@ -2381,6 +2389,7 @@ export const en = {
     chooseCycle: "Admission round",
     // end fix-mediums-B
     seatsLeft: "{remaining} of {seats} seats left",
+    seatsLeftOne: "{remaining} of {seats} seat left",
     closesOn: "Closes {date}",
     documentsAsked: "You will be asked for: {names}",
     testAsked: "There is an entrance test; you book a sitting after applying.",
@@ -4209,6 +4218,7 @@ export const en = {
   },
   switch: {
     standinCount: "{count} pupils in your care",
+    standinCountOne: "{count} pupil in your care",
     standinHint: "As the school\u2019s stand-in guardian, not as a parent",
     notPartOfSchool: "You are not part of a school yet",
     notPartBody: "Join with a school or class code, or ask an admin to invite you.",
@@ -4257,6 +4267,7 @@ export const en = {
     awaiting: "Awaiting signature",
     declinedLine: "Not signed",
     signedBy: "Signed by {name}",
+    signedByOffice: "Signed by {name}, {office}",
     yourWord: "This paper waits for your signature.",
     addYoursFirst: "Add your signature first, then sign.",
     notARealPicture: "That is not a PNG picture the app can read.",
@@ -4315,6 +4326,7 @@ export const en = {
     openTitle: "Open to book",
     noneOpen: "Nothing is open just now.",
     seatsLeft: "{count} seats left",
+    seatsLeftOne: "{count} seat left",
     withProvider: "with {name}",
     purposeLabel: "What do you want from it?",
     purposeHint: "A sentence or two, so the session starts in the right place.",
@@ -4367,6 +4379,7 @@ export const en = {
     yourSlots: "Your times",
     noSlots: "You have offered no time yet.",
     seatsOf: "{taken} of {seats} seats taken",
+    seatsOfOne: "{taken} of {seats} seat taken",
     cancelSlot: "Cancel this time",
     reasonLabel: "Reason",
     slotCancelled: "Cancelled.",
@@ -8636,6 +8649,7 @@ export const en = {
     icsCancelled: "Cancelled.",
     icsNoSeats: "No seats taken yet.",
     icsSeats: "{taken} of {seats} seats taken, pupils of: {schools}.",
+    icsSeatsOne: "{taken} of {seats} seat taken, pupils of: {schools}.",
     icsSchoolsUnnamed: "a school",
     icsConsultationWith: "Consultation with {school}",
     icsConsultationBody: "Booked by the school's staff. Open Shalaghar for the topic and the conversation.",
@@ -9977,6 +9991,7 @@ export const en = {
     remind: "Chase the rest",
     remindHint: "A push again and, where the school has texts on, a text on the second channel — to every family still waiting. Once a day.",
     reminded: "Chased {when} · {count} times",
+    remindedOne: "Chased {when} · {count} time",
     remindDone: "Chased {reminded} people; {texted} texts sent.",
     refuseTooSoon: "The families were chased less than a day ago. Give them the day.",
     refuseNothingOutstanding: "Everyone has acknowledged; there is nobody to chase.",
@@ -11148,6 +11163,7 @@ export const en = {
     refuseNotOnLoan: "That copy is not out on loan.",
     refuseRenewOverdue: "A late book cannot be renewed. Take it back and lend it again.",
     refuseRenewLimit: "This loan has been renewed {count} times, the most the library allows.",
+    refuseRenewLimitOne: "This loan has been renewed {count} time, the most the library allows.",
     refuseRenewQueue: "Someone is waiting for this book, so it cannot be renewed.",
     refuseFineExists: "This loan already has a fine for that.",
     refuseNoFine: "That fine was not found.",
@@ -11212,7 +11228,9 @@ export const en = {
     dueOn: "due {date}",
     returnedOn: "returned {date}",
     daysLate: "{days} days late",
+    daysLateOne: "{days} day late",
     renewedTimes: "renewed {count} times",
+    renewedTimesOne: "renewed {count} time",
     overdue: "Overdue",
     noLoans: "No books out.",
     noFines: "No fines.",
@@ -11341,6 +11359,7 @@ export const en = {
     issuesByMonth: "Loans each month",
     mostBorrowed: "Borrowed most",
     timesLent: "lent {count} times",
+    timesLentOne: "lent {count} time",
     noLoansYear: "No loans in the last twelve months.",
     overdueByClass: "Overdue by class",
     nothingOverdue: "Nothing is overdue.",
@@ -13528,6 +13547,7 @@ export const en = {
     fieldRegulator: "Regulator",
     fieldThreshold: "Attendance rule (%)",
     fieldThresholdHint: "Left blank: the regulator's — 75, pharmacy 80, law 70.",
+    fieldThresholdHintTeacherEd: "Left blank: the regulator's — 75; pharmacy, nursing and teacher education 80; law 70.",
     fieldExitAfter: "Exit after year {year}",
     addProgramme: "Add programme",
     levelUG: "Undergraduate",
@@ -13702,7 +13722,9 @@ export const en = {
     noOfferingsTitle: "Nothing to register on yet",
     noOfferingsBody: "Your semester's courses have not been offered this term yet.",
     creditsN: "{n} credits",
+    creditsNOne: "{n} credit",
     seatsLeft: "{n} seats left",
+    seatsLeftOne: "{n} seat left",
     attendanceNone: "No attendance yet",
     attendanceNoneBody: "Your percentage appears once your lectures are marked.",
     colCourse: "Course",
@@ -14264,6 +14286,7 @@ export const en = {
     papersTitle: "Question papers",
     papersHint: "Kept sealed. Opening one is logged and audited.",
     opens: "opened {count} times",
+    opensOne: "opened {count} time",
     submittedOn: "sealed {date}",
     openSealed: "Open the sealed paper",
     moderationNote: "Moderation note",
@@ -15213,6 +15236,7 @@ export const en = {
     ltPeriodicals: "Periodicals",
     ltEResources: "E-resources",
     ltOpens: "opened {n} times",
+    ltOpensOne: "opened {n} time",
     ltIssues: "Loans in {year}",
     ltPerStudent: "{n} per student",
     ltSpend: "Library spend this year",
@@ -16139,6 +16163,7 @@ export const en = {
     window: "{from} to {to}",
     openNow: "Open now",
     opensIn: "Opens in {count} days",
+    opensInOne: "Opens in {count} day",
     remindsLine: "Reminds: {roles}",
     checkNotice: "Dates move each year: check the regulator's notice.",
     sourceLink: "The regulator's site",
@@ -16177,6 +16202,7 @@ export const en = {
     tierAdded: "The tier is on the plan list.",
     tierListed: "On the plan list as {code} · {count} on it",
     refuseTierNotCollege: "A college tier is for a college only.",
+    refuseTierKind: "This college tier does not suit this college's kind: an autonomous college is on the autonomous tier. For a discount, put it on an ordinary plan with its own price.",
   },
   email: {
     brand: "Shalaghar",
@@ -16256,6 +16282,7 @@ export const en = {
     regulatorChooseHint: "This stream names more than one council: choose the programme's regulator, and its attendance rule follows.",
     refuseChooseRegulator: "This stream answers to more than one council ({councils}): choose the programme's regulator.",
     thresholdFollows: "The attendance threshold that follows from {regulator}: {threshold} %.",
+    thresholdNcte: "A new NCTE programme starts at {threshold} %: NCTE's 2014 regulations ask 80 % attendance in the course work of the B.Ed. and the four-year integrated B.Ed., and 90 % in the school internship, which is not tracked here. Check your programme's own rule.",
     thresholdChooseFirst: "Choose the regulator to see the attendance threshold that follows.",
     correctRegulator: "Save the regulator",
     word: {
@@ -17708,6 +17735,7 @@ export const en = {
     youPresent: "You were present",
     youAbsent: "You were marked absent",
     seatsLeft: "{count} seats left",
+    seatsLeftOne: "{count} seat left",
     imGoing: "I'm going",
     imNotGoing: "Not going",
     answeredGoing: "Noted: you are going.",
@@ -20327,6 +20355,7 @@ export const en = {
     revokedTitle: "Revoked ({count})",
     notAnswered: "Not answered",
     hits: "Served {count} times; last {when}",
+    hitsOne: "Served {count} time; last {when}",
     checkedBy: "Marked by {name}, {when}",
     revokedBy: "Revoked by {name}, {when}",
     askedAt: "Asked {when}",
@@ -20824,6 +20853,7 @@ export const en = {
     eresEmptyDeskBody: "Add the first one below: DIKSHA, a publisher's e-books or a journal the school subscribes to.",
     eresInactive: "Not shown to readers",
     eresOpenedTimes: "Opened {n} times",
+    eresOpenedTimesOne: "Opened {n} time",
     eresCorrect: "Correct the link",
     eresUrlHint: "It must start with https://.",
     eresSave: "Save",

@@ -68,8 +68,16 @@ scholarships, iqac):
 
 A stream whose default council is not the UGC is "professional" (`isProfessionalStream`) and adds PLACEMENT.
 The preset's modules are switched on **when the college is made**; changing streams later switches no module
-(by decision). A new programme takes its regulator and attendance threshold from its stream (INC and PCI 80 %,
-BCI 70 %, the others 75 %).
+(by decision). A new programme takes its regulator and attendance threshold from its stream (INC, PCI and NCTE
+80 %, BCI 70 %, the others 75 %); the office may type another figure, and a programme that exists keeps its own.
+NCTE's 80 % (the owner's decision on TA-266, 14 Nov 2026) is clause 2.2(c) of NCTE's 2014 regulations for the
+course work of the B.Ed. (Appendix 4) and the four-year integrated B.Ed. (Appendix 13), read in NCTE's gazette
+scans; later amendments were not read, and for the D.El.Ed., the M.Ed. and ITEP it is only a starting figure, so
+the form names the B.Ed. rule for NCTE and asks the office to check the programme's own.
+The same clause's 90 % for the school internship is not tracked: one figure per programme covers every course,
+an internship course included, and no separate internship figure was built. A known gap, not changed:
+an excused (condoned) shortfall below 80 still lets a student teacher sit, as for every programme, though the
+text read names no excuse.
 
 **Duties, not roles.** The stream-specific jobs a FACULTY member or HOD holds are duties on their membership
 (`Membership.dutiesJson`; contracts `v1/duties.ts`, `src/lib/duties.ts`), set by the registrar from the

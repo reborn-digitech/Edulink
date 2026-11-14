@@ -8148,7 +8148,7 @@ model DepartmentFaculty {
   @@index([schoolId, departmentId])
 }
 
-/// A programme of study: level, years, intake, regulator, the attendance rule (75; pharmacy 80; law 70) and NEP's exit points.
+/// A programme of study: level, years, intake, regulator, the attendance rule (75; pharmacy, nursing and NCTE 80; law 70) and NEP's exit points.
 model Programme {
   id                  String    @id @default(cuid())
   schoolId            String

@@ -293,7 +293,7 @@ Slug `saraswati-education`, join code `SARAS-NGG7-KRJH`, kind COLLEGE, stream ED
 | sce.student02@demo.relay.test | Tushar Mane | STUDENT (OPEN) | /student | ITEP year 2 · A; applied to the open drive; a library book out; odd semester paid; an internship |
 | sce.student03@demo.relay.test | Komal Jadhav | STUDENT (OBC) | /student | ITEP year 2 · A; OBC post-matric scholarship sanctioned; boards at Tarabai Hostel; rides Route 1 |
 | sce.student04@demo.relay.test | Rupali Thakur | STUDENT (OPEN) | /student | BED year 2 · A; applied to the open drive; boards at Tarabai Hostel; odd semester paid; posted for teaching practice |
-| sce.student05@demo.relay.test | Mahesh Gavade | STUDENT (OPEN) | /student | BED year 2 · A; under 75 % in one course; posted for teaching practice |
+| sce.student05@demo.relay.test | Mahesh Gavade | STUDENT (OPEN) | /student | BED year 2 · A; under 80 % in one course; posted for teaching practice |
 | sce.student06@demo.relay.test | Shital Waghmare | STUDENT (OBC) | /student | BED year 2 · A; ATKT with a backlog; boards at Tarabai Hostel; posted for teaching practice |
 | sce.student07@demo.relay.test | Sai Gokhale | STUDENT (OPEN) | /student | ITEP year 1 · A; a minor of seventeen; Sanjay Gokhale sees everything; rides Route 1; odd semester paid |
 | sce.student08@demo.relay.test | Sara Gokhale | STUDENT (OPEN) | /student | ITEP year 1 · A; a minor of seventeen; Sanjay Gokhale sees everything; boards at Tarabai Hostel; rides Route 1 |

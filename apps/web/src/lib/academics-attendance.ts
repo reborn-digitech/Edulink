@@ -22,7 +22,7 @@ import type { ActiveContext } from "./session";
  *
  * THE RULE. A student's percentage on an offering is the lectures they
  * attended over the lectures marked for them, computed on read and never
- * stored, against their programme's threshold (75; pharmacy 80; law 70 —
+ * stored, against their programme's threshold (75; pharmacy, nursing and teacher education 80; law 70 —
  * Programme.attendanceThreshold). Below it they are a defaulter unless a
  * condonation was approved. The projection is how many of the lectures
  * still on the timetable before the term ends may be missed.

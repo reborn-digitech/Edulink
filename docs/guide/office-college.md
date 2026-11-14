@@ -30,7 +30,7 @@ The row shows "Duties: {duties}". A college whose streams offer no duty says so 
 
 1. On "Set-up" under "Load and ratios" set "Fewest hours a week", "Most hours a week", "Students per faculty member" (the AICTE norm is twenty) and "Students per mentor", then "Save".
 2. Under the departments press "Add department": "Code", "Name", "Head of department" and "Lowest the head may condone (%)". Below that floor a condonation goes to the principal. Under "Faculty and departments" place each faculty member in a department.
-3. On "Programmes and courses" press "Add programme": "Code", "Name", "Level", "Years", "Intake", "Stream", "Regulator" ("As the stream says" unless you choose one), "Attendance rule (%)" (left blank: the regulator's; 75, pharmacy 80, law 70) and the NEP exits ("Exit after year {year}"). "Programme outcomes" take one a line and "Save outcomes".
+3. On "Programmes and courses" press "Add programme": "Code", "Name", "Level", "Years", "Intake", "Stream", "Regulator" ("As the stream says" unless you choose one), "Attendance rule (%)" (left blank: the regulator's; 75, pharmacy, nursing and teacher education 80, law 70) and the NEP exits ("Exit after year {year}"). "Programme outcomes" take one a line and "Save outcomes". For a teacher-education programme the form says that NCTE's 2014 regulations ask 80 % attendance in the course work of the B.Ed. and the four-year integrated B.Ed.; the school internship's 90 % is not tracked here, so check your programme's own rule (a D.El.Ed., an M.Ed. or ITEP starts at 80 only as a starting figure) and type its figure if it differs.
 A department must exist before its programmes. The head of a department may write its programme outcomes too.
 
 ## How do I add schemes and courses?
@@ -154,7 +154,7 @@ The departure is recorded, the TC's record kept and the alumnus opened; a real p
 2. On "Issue a certificate" at `/admin/certificates/issue` choose the "Pupil" (the student) and the "Template", add "Purpose" and "Remark", and press "Issue". The college's own facts fill the placeholders.
 3. Answer a student's request under "Requests from families" with "Issue this", or "Decline" with "Why not"; "Set the fee" puts a demand on the student's ledger.
 
-Grade cards, transcripts and degree certificates are the exam cell's documents, not these templates. An issued paper carries its public check code.
+Grade cards, transcripts and degree certificates are the exam cell's documents, not these templates. An issued paper carries its public check code. Under each signature line already signed, the paper also prints "Signed by {name}, {office}" with the signer's name and office, as at a school; the words typed under the line stay as typed.
 
 ## How do I set the college's library, hostel and bus terms?
 

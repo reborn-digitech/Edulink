@@ -39246,7 +39246,7 @@
     },
     "/api/v1/operator/plans/{planId}": {
       "patch": {
-        "summary": "Correct a plan; only the fields sent change, a null cap is no cap",
+        "summary": "Correct a plan; only the fields sent change, a null cap is no cap; a rename to a college tier's code is refused (422) while a school on the plan is of a kind the tier does not suit (TA-488)",
         "description": "The server operator.",
         "security": [
           {
@@ -39455,7 +39455,7 @@
     },
     "/api/v1/operator/schools/{schoolId}/plan": {
       "post": {
-        "summary": "Put a school on a plan, or take it off every plan; audited, and the school's office is told",
+        "summary": "Put a school on a plan, or take it off every plan; a college tier only on a college whose kind the tier suits (422 for the affiliated price on an autonomous college, TA-488); audited, and the school's office is told",
         "description": "The server operator.",
         "security": [
           {

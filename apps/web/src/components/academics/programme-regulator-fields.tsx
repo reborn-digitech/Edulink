@@ -79,9 +79,14 @@ export function ProgrammeRegulatorFields({
         ) : null}
         {REGULATORS.map((r) => <option key={r} value={r}>{r}</option>)}
       </SelectField>
-      <TextField label={t("academics.fieldThreshold")} name="attendanceThreshold" type="number" min={1} max={100} value={threshold} onChange={(e) => setThreshold(e.target.value)} hint={t("academics.fieldThresholdHint")} />
+      <TextField label={t("academics.fieldThreshold")} name="attendanceThreshold" type="number" min={1} max={100} value={threshold} onChange={(e) => setThreshold(e.target.value)} hint={t("academics.fieldThresholdHintTeacherEd")} />
       <p className="text-sm text-fg-muted sm:col-span-full" aria-live="polite">
-        {effective ? t("streams.thresholdFollows", { regulator: effective, threshold: defaultAttendanceThreshold(effective) }) : t("streams.thresholdChooseFirst")}
+        {/* TA-266 (the owner's decision, 14 Nov 2026): for NCTE the sentence names the 2014 B.Ed. rule it was read from, not "follows from NCTE". */}
+        {effective === "NCTE"
+          ? t("streams.thresholdNcte", { threshold: defaultAttendanceThreshold(effective) })
+          : effective
+            ? t("streams.thresholdFollows", { regulator: effective, threshold: defaultAttendanceThreshold(effective) })
+            : t("streams.thresholdChooseFirst")}
       </p>
     </>
   );

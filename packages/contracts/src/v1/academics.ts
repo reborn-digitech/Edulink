@@ -34,11 +34,16 @@ export const regulatorSchema = z.enum(REGULATORS);
 export type Regulator = z.infer<typeof regulatorSchema>;
 /**
  * The attendance threshold a new programme starts with, by regulator: pharmacy 80, nursing 80 (INC's
- * syllabus asks 80 % in theory and practical), law 70, everyone else 75 (UGC, AICTE, NCTE, COA, NMC,
- * ICAR, DCI). The office may change it per programme.
+ * syllabus asks 80 % in theory and practical), NCTE 80, law 70, everyone else 75 (UGC, AICTE, COA, NMC,
+ * ICAR, DCI). The office may change it per programme, and a programme that exists keeps its own.
+ * NCTE (the owner's decision on TA-266, 14 Nov 2026): clause 2.2(c) of NCTE's 2014 regulations asks 80 %
+ * in the course work of the B.Ed. (Appendix 4) and the four-year integrated B.Ed. (Appendix 13) and 90 % in
+ * the school internship. The 80 is a starting figure for every NCTE programme (the D.El.Ed., the M.Ed. and
+ * ITEP included, whose texts were not read); the internship's 90 % is not tracked (one figure per programme
+ * covers every course), and an excused shortfall below 80 still lets a student sit, a known gap.
  */
 export function defaultAttendanceThreshold(regulator: string): number {
-  return regulator === "PCI" || regulator === "INC" ? 80 : regulator === "BCI" ? 70 : 75;
+  return regulator === "PCI" || regulator === "INC" || regulator === "NCTE" ? 80 : regulator === "BCI" ? 70 : 75;
 }
 export const COURSE_KINDS = ["CORE", "ELECTIVE", "MINOR", "HONOURS", "OPEN"] as const;
 export const courseKindSchema = z.enum(COURSE_KINDS);
