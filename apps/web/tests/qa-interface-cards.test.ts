@@ -31,7 +31,7 @@ describe("QA-61: the notification form while texts are off", () => {
     const off = renderToStaticMarkup(React.createElement(AppearanceForm, { prefs: DEFAULT_PREFS, section: "notifications", phone: "+91 98xxxxxx10", textsOn: false }));
     expect(off).toContain(escaped(t("prefs.sms")));
     expect(off).toContain(escaped(t("qaInterface.textsOff")));
-    // Every checkbox but push and email is disabled; the phone line is not drawn under a switch that cannot be used.
+    // The two text boxes are disabled, push and quiet hours are not (the email box is gone, TA-431); the phone line is not drawn under a switch that cannot be used.
     const disabled = (off.match(/<input[^>]*type="checkbox"[^>]*disabled=""[^>]*>/g) ?? []).length;
     expect(disabled).toBe(2);
     expect(off).not.toContain(escaped(t("messaging.phoneOn", { phone: "+91 98xxxxxx10" })));

@@ -85,13 +85,15 @@ export function ParentSettings() {
   );
 }
 
-/** The web's AppearanceForm, notifications section: four channels (push, email, and the texts — SMS and WhatsApp — the school may send, on unless the guardian says otherwise), quiet hours, one save. Remounted (by key) when the server's copy changes. */
+/** The web's AppearanceForm, notifications section: three channels (push, and the texts — SMS and WhatsApp — the school may send, on unless the guardian says otherwise), quiet hours, one save. Remounted (by key) when the server's copy changes. */
 function NotificationsForm({ initial, textsOn }: { initial: Settings; textsOn: boolean }) {
   const t = useT();
   const th = useTheme();
   const qc = useQueryClient();
   const [push, setPush] = useState(initial.channels.push);
-  const [email, setEmail] = useState(initial.channels.email);
+  // No email switch (TA-431): nothing sends a copy of a notice by mail. The contract still asks for the value, so the
+  // server's own goes back as it was.
+  const email = initial.channels.email;
   const [sms, setSms] = useState(initial.channels.sms ?? true);
   const [whatsapp, setWhatsapp] = useState(initial.channels.whatsapp ?? true);
   const [quiet, setQuiet] = useState(initial.quietHours !== null);
@@ -132,7 +134,6 @@ function NotificationsForm({ initial, textsOn }: { initial: Settings; textsOn: b
         </Note>
       ) : null}
       {toggle(t("prefs.push"), t("prefs.pushHint"), push, (next) => { setPush(next); setSaved(false); })}
-      {toggle(t("prefs.email"), t("prefs.emailHint"), email, (next) => { setEmail(next); setSaved(false); })}
       {/* Texts switched off on the platform (QA-61): the choice is shown as kept, not offered as working. */}
       <SwitchRow label={t("prefs.sms")} hint={t("prefs.smsHint")} value={sms} disabled={!textsOn} onChange={(next) => { setSms(next); setSaved(false); }} />
       <SwitchRow label={t("prefs.whatsapp")} hint={t("prefs.whatsappHint")} value={whatsapp} disabled={!textsOn} onChange={(next) => { setWhatsapp(next); setSaved(false); }} />

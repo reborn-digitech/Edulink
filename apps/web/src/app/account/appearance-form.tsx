@@ -133,12 +133,8 @@ export function AppearanceForm({
             checked={draft.channels.push}
             onChange={(e) => update({ channels: { ...draft.channels, push: e.target.checked } })}
           />
-          <CheckboxField
-            label={t("prefs.email")}
-            description={t("prefs.emailHint")}
-            checked={draft.channels.email}
-            onChange={(e) => update({ channels: { ...draft.channels, email: e.target.checked } })}
-          />
+          {/* No email switch (TA-431): nothing sends a copy of a notice by mail. The draft still carries the stored
+              email value back untouched, so the row keeps what it held. */}
           {/* The texts the school sends (messaging.ts reads these two). An
               older prefs row has neither key, and the router treats a missing
               one as on, so the box reads on unless it was switched off. */}

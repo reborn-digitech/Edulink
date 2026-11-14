@@ -370,7 +370,7 @@ function MobileSection({ overview }: { overview: AccountOverview }) {
 /** The shared on/off row (components/switch-row.tsx); exported here as before for this screen's callers. */
 export { SwitchRow };
 
-/** Notifications (push, email, the school's texts by SMS and WhatsApp, quiet hours) and the language — the web's preferences tab without appearance, which the phone takes from the phone. */
+/** Notifications (push, the school's texts by SMS and WhatsApp, quiet hours) and the language — the web's preferences tab without appearance, which the phone takes from the phone. */
 function PrefsTab({ overview }: { overview: AccountOverview }) {
   const t = useT();
   const th = useTheme();
@@ -378,14 +378,16 @@ function PrefsTab({ overview }: { overview: AccountOverview }) {
   const toast = useToast();
   const server = overview.prefs;
   const [push, setPush] = useState(server.channels.push);
-  const [email, setEmail] = useState(server.channels.email);
+  // No email switch (TA-431): nothing sends a copy of a notice by mail. The contract still asks for the value, so the
+  // server's own goes back as it was.
+  const email = server.channels.email;
   const [sms, setSms] = useState(server.channels.sms ?? true);
   const [whatsapp, setWhatsapp] = useState(server.channels.whatsapp ?? true);
   const [quiet, setQuiet] = useState(server.quietHours !== null);
   const [start, setStart] = useState(server.quietHours?.start ?? "21:00");
   const [end, setEnd] = useState(server.quietHours?.end ?? "07:00");
   const [errors, setErrors] = useState<Record<string, string>>({});
-  const dirty = push !== server.channels.push || email !== server.channels.email || sms !== (server.channels.sms ?? true) || whatsapp !== (server.channels.whatsapp ?? true) || quiet !== (server.quietHours !== null) || (quiet && (start !== server.quietHours?.start || end !== server.quietHours?.end));
+  const dirty = push !== server.channels.push || sms !== (server.channels.sms ?? true) || whatsapp !== (server.channels.whatsapp ?? true) || quiet !== (server.quietHours !== null) || (quiet && (start !== server.quietHours?.start || end !== server.quietHours?.end));
   const save = useMutation({
     mutationFn: async (body: { channels: { push: boolean; email: boolean; sms: boolean; whatsapp: boolean }; quietHours: { start: string; end: string } | null }) => api().post("/api/v1/account/prefs", body),
     onSuccess: (result) => {
@@ -419,7 +421,6 @@ function PrefsTab({ overview }: { overview: AccountOverview }) {
           {t("account.notificationsDescription")}
         </Text>
         <SwitchRow label={t("prefs.push")} hint={t("prefs.pushHint")} value={push} onChange={setPush} />
-        <SwitchRow label={t("prefs.email")} hint={t("prefs.emailHint")} value={email} onChange={setEmail} />
         <SwitchRow label={t("prefs.sms")} hint={t("prefs.smsHint")} value={sms} onChange={setSms} />
         <SwitchRow label={t("prefs.whatsapp")} hint={t("prefs.whatsappHint")} value={whatsapp} onChange={setWhatsapp} />
         <View style={{ height: 1, backgroundColor: th.border }} />

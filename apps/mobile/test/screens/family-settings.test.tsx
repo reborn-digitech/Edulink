@@ -18,18 +18,18 @@ describe("a guardian's settings", () => {
     expect(screen.getByText("One child linked")).toBeTruthy();
     expect(screen.getByText("Linked")).toBeTruthy();
     expect(screen.getByRole("switch", { name: "Push notifications" })).toBeChecked();
-    expect(screen.getByRole("switch", { name: "Email" })).not.toBeChecked();
+    // No email-copy switch (TA-431): the stored value goes back as it was.
+    expect(screen.queryByRole("switch", { name: "Email" })).toBeNull();
     // The school's texts are on unless the guardian has said otherwise: the server's copy carries no answer yet.
     expect(screen.getByRole("switch", { name: "Text messages (SMS)" })).toBeChecked();
     expect(screen.getByRole("switch", { name: "WhatsApp" })).toBeChecked();
-    await fireEvent.press(screen.getByRole("switch", { name: "Email" }));
     await fireEvent.press(screen.getByRole("switch", { name: "WhatsApp" }));
     await fireEvent.press(screen.getByRole("switch", { name: "Use quiet hours" }));
     expect(screen.getByLabelText("From").props.value).toBe("21:00");
     await fireEvent.changeText(screen.getByLabelText("Until"), "06:30");
     await press(screen.getByRole("button", { name: "Save notification settings" }));
     await waitFor(() => expect(calls(fetch, PATH).filter((c) => c.init?.method === "POST")).toHaveLength(1));
-    expect(bodyOf(calls(fetch, PATH).find((c) => c.init?.method === "POST")!)).toEqual({ channels: { push: true, email: true, sms: true, whatsapp: false }, quietHours: { start: "21:00", end: "06:30" } });
+    expect(bodyOf(calls(fetch, PATH).find((c) => c.init?.method === "POST")!)).toEqual({ channels: { push: true, email: false, sms: true, whatsapp: false }, quietHours: { start: "21:00", end: "06:30" } });
     expect(await screen.findByText("Saved")).toBeTruthy();
   });
 
@@ -43,7 +43,7 @@ describe("a guardian's settings", () => {
     const { fetch } = await renderFamily(<ParentSettings />, { ...ME_PARENT, features: [] }, { [PATH]: () => SETTINGS });
     expect(await screen.findByRole("switch", { name: "Text messages (SMS)" })).toBeDisabled();
     expect(screen.getByRole("switch", { name: "WhatsApp" })).toBeDisabled();
-    expect(screen.getByRole("switch", { name: "Email" })).not.toBeDisabled();
+    expect(screen.getByRole("switch", { name: "Push notifications" })).not.toBeDisabled();
     expect(screen.getByText("Texts by SMS and WhatsApp are not switched on yet. Your choice is kept for when they are.")).toBeTruthy();
     expect(calls(fetch, "/api/v1/family/assistant")).toHaveLength(0);
   });
