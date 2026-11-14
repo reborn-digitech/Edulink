@@ -366,7 +366,8 @@ export const periodCreateBodySchema = z.object({
 export const slotSaveBodySchema = z.object({
   classId: id,
   periodId: id,
-  weekday: z.number().int().min(1).max(6),
+  /** 0 (Sunday) to 6 (TA-544): which of them take lessons is the school's own week, checked by setSlot. */
+  weekday: z.number().int().min(0).max(6),
   subject: trimmed(1, 80),
   teacherMembershipId: id.nullable().optional(),
   room: z.string().trim().max(40).nullable().optional(),
@@ -998,3 +999,26 @@ export type LeavingBody = z.infer<typeof leavingBodySchema>;
 /** Recorded now (the certificate's id) or kept for a later day (the day). */
 export const leavingResultSchema = z.object({ recordId: z.string().nullable(), scheduledFor: dateKey.nullable() });
 export type LeavingResult = z.infer<typeof leavingResultSchema>;
+/**
+ * TA-046, the owner's decision of 14 November 2026 (option 1): why a member of staff leaves, a coded list. Free text
+ * is refused where a filing wants a code.
+ */
+export const STAFF_LEAVING_REASONS = ["RESIGNED", "RETIRED", "CONTRACT_ENDED", "DISMISSED", "TRANSFERRED", "DIED_IN_SERVICE"] as const;
+export type StaffLeavingReason = (typeof STAFF_LEAVING_REASONS)[number];
+/** TA-046: whom the leaving step is for, the staff roles (the web's SCHOOL_STAFF_ROLES); the phone offers it on these rows only. */
+export const STAFF_LEAVING_ROLES = staffRoleSchema.options;
+/**
+ * POST /api/v1/admin/people/{membershipId}/staff-leaving — the office records a member of staff's last working day
+ * with a coded reason. A day already past is recorded at once (the membership's leftAt, so access ends); today or a
+ * later day is kept, access lasting through it, and the morning after it the night job records it. Payroll pays them
+ * up to that day in that month's run.
+ */
+export const staffLeavingBodySchema = z.object({
+  /** The last working day, a day on the calendar in the school's zone. */
+  lastDay: realDateKey,
+  reason: z.enum(STAFF_LEAVING_REASONS),
+});
+export type StaffLeavingBody = z.infer<typeof staffLeavingBodySchema>;
+/** Recorded now (the last day) or kept for the morning after a later one (the day). */
+export const staffLeavingResultSchema = z.object({ leftOn: dateKey.nullable(), scheduledFor: dateKey.nullable() });
+export type StaffLeavingResult = z.infer<typeof staffLeavingResultSchema>;

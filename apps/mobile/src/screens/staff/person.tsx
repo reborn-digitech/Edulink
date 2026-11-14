@@ -3,7 +3,7 @@ import { View } from "react-native";
 import { usePrivateScreen } from "@/lib/private-screen";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { adminPeopleQuerySchema, adminPeopleSchema, LEAVING_CONDUCTS, LEAVING_REASON_CODES, leavingResultSchema, type AdminPeople, type LeavingBody } from "@edulink/contracts";
+import { adminPeopleQuerySchema, adminPeopleSchema, isRealDateKey, LEAVING_CONDUCTS, LEAVING_REASON_CODES, leavingResultSchema, STAFF_LEAVING_REASONS, STAFF_LEAVING_ROLES, staffLeavingResultSchema, type AdminPeople, type LeavingBody, type StaffLeavingBody } from "@edulink/contracts";
 import type { TranslationKey } from "@edulink/i18n";
 import { Button, Card, Failed, Field, Loading, Row, Screen, Text, useToast } from "@/components";
 import { api, errorText } from "@/lib/api";
@@ -16,7 +16,6 @@ type Reason = (typeof LEAVING_REASON_CODES)[number];
 type Conduct = (typeof LEAVING_CONDUCTS)[number];
 const REASON_KEY: Record<Reason, TranslationKey> = { TRANSFERRED: "people.transferred", GRADUATED: "people.graduated", LEFT: "people.leftOther" };
 const CONDUCT_KEY: Record<Conduct, TranslationKey> = { EXCELLENT: "tc.conductExcellent", GOOD: "tc.conductGood", SATISFACTORY: "tc.conductSatisfactory" };
-const DATE = /^\d{4}-\d{2}-\d{2}$/;
 
 /** What the form sends: a blank line is left out, a blank day means today. */
 export function leavingBodyFrom(form: { reason: Reason; conduct: Conduct | ""; destination: string; note: string; leftOn: string }): LeavingBody {
@@ -104,6 +103,8 @@ function PersonFound({ row }: { row: PersonRow }) {
   const name = row.name;
   const isPupil = row.role === "STUDENT";
   const teaches = row.role === "TEACHER" || row.role === "PRINCIPAL";
+  // TA-046: the leaving step is a member of staff's, never an alumnus's or a row with no role (the door refuses those).
+  const isStaff = row.role !== null && (STAFF_LEAVING_ROLES as readonly string[]).includes(row.role);
   const [left, setLeft] = useState(row.leftAt !== null);
   const [leavingOn, setLeavingOn] = useState<string | null>(row.scheduledDeparture?.leaveOnKey ?? null);
   const [reason, setReason] = useState<Reason>("TRANSFERRED");
@@ -154,7 +155,8 @@ function PersonFound({ row }: { row: PersonRow }) {
     },
   });
   const submit = () => {
-    if (leftOn.trim() && !DATE.test(leftOn.trim())) {
+    // A day on the calendar (TA-113): 2026-09-31 is refused here, not read as 1 October.
+    if (leftOn.trim() && !isRealDateKey(leftOn.trim())) {
       setDateIssue(t("staff.badDate"));
       return;
     }
@@ -192,7 +194,8 @@ function PersonFound({ row }: { row: PersonRow }) {
           <Button label={t("people.undoLeaving")} variant="secondary" busy={undo.isPending} onPress={() => undo.mutate()} />
         </Card>
       ) : null}
-      {isPupil && !left && leavingOn ? (
+      {/* A later last day kept, a pupil's or a member of staff's (TA-046), given up the same way. */}
+      {!left && leavingOn ? (
         <Card title={t("people.leavingOn", { date: formatDateKey(leavingOn, locale, { day: "numeric", month: "short", year: "numeric" }) })} accessibilityLiveRegion="polite">
           <Text variant="sm" tone="muted">
             {t("people.futureDayHint")}
@@ -212,6 +215,20 @@ function PersonFound({ row }: { row: PersonRow }) {
           <Field label={t("people.lastDay")} hint={`${t("people.futureDayHint")} · YYYY-MM-DD`} value={leftOn} onChangeText={setLeftOn} maxLength={10} keyboardType="numbers-and-punctuation" autoCapitalize="none" autoCorrect={false} error={dateIssue} />
           <Button label={t("people.recordIt")} variant="danger" busy={record.isPending} onPress={submit} />
         </Card>
+      ) : null}
+      {isStaff && !left && !leavingOn ? (
+        <StaffLeaving
+          membershipId={membershipId}
+          name={name}
+          onLeft={() => {
+            setLeft(true);
+            refreshed();
+          }}
+          onKept={(day) => {
+            setLeavingOn(day);
+            refreshed();
+          }}
+        />
       ) : null}
       {isPupil && !left ? <Remove membershipId={membershipId} name={name} onDone={() => { refreshed(); router.back(); }} /> : null}
     </Screen>
@@ -285,7 +302,7 @@ function Birthdate({ membershipId, name, initial, onDone }: { membershipId: stri
   });
   const submit = () => {
     const key = value.trim();
-    if (key && !DATE.test(key)) {
+    if (key && !isRealDateKey(key)) {
       setIssue(t("staff.badDate"));
       return;
     }
@@ -389,6 +406,61 @@ function Pause({ membershipId, name, paused: initiallyPaused, onDone }: { member
       </Text>
       <Field label={t("people.pauseWhy")} value={reason} onChangeText={setReason} maxLength={500} error={issue} />
       <Button label={t("people.pauseAction")} variant="danger" busy={pause.isPending} onPress={() => pause.mutate(reason)} />
+    </Card>
+  );
+}
+
+type StaffReason = (typeof STAFF_LEAVING_REASONS)[number];
+const STAFF_REASON_KEY: Record<StaffReason, TranslationKey> = {
+  RESIGNED: "people.staffLeavingReasonRESIGNED",
+  RETIRED: "people.staffLeavingReasonRETIRED",
+  CONTRACT_ENDED: "people.staffLeavingReasonCONTRACT_ENDED",
+  DISMISSED: "people.staffLeavingReasonDISMISSED",
+  TRANSFERRED: "people.staffLeavingReasonTRANSFERRED",
+  DIED_IN_SERVICE: "people.staffLeavingReasonDIED_IN_SERVICE",
+};
+
+/**
+ * A member of staff's leaving (TA-046, the owner's decision of 14 November 2026): the last working day and a coded
+ * reason, through the door the web's row menu shares. A past day ends access at once; today or a later day is kept
+ * and recorded the morning after it. Payroll pays them up to that day.
+ */
+function StaffLeaving({ membershipId, name, onLeft, onKept }: { membershipId: string; name: string; onLeft: () => void; onKept: (day: string) => void }) {
+  const t = useT();
+  const { locale } = useLocale();
+  const toast = useToast();
+  const [reason, setReason] = useState<StaffReason>("RESIGNED");
+  const [lastDay, setLastDay] = useState("");
+  const [issue, setIssue] = useState<string | null>(null);
+  const record = useMutation({
+    mutationFn: async (body: StaffLeavingBody) => staffLeavingResultSchema.parse(must(await api().post(`/api/v1/admin/people/${encodeURIComponent(membershipId)}/staff-leaving`, body), t("common.somethingWrong"))),
+    onSuccess: (done) => {
+      setIssue(null);
+      if (done.scheduledFor) {
+        toast.show(t("people.leavingScheduled", { name, date: formatDateKey(done.scheduledFor, locale, { day: "numeric", month: "short", year: "numeric" }) }), "ok");
+        onKept(done.scheduledFor);
+      } else {
+        toast.show(t("people.staffLeft", { name }), "ok");
+        onLeft();
+      }
+    },
+    onError: (e) => setIssue(e.message),
+  });
+  const submit = () => {
+    if (!isRealDateKey(lastDay.trim())) {
+      setIssue(t("staff.badDate"));
+      return;
+    }
+    record.mutate({ lastDay: lastDay.trim(), reason });
+  };
+  return (
+    <Card title={t("people.staffLeavingTitle", { name })}>
+      <Text variant="sm" tone="muted">
+        {t("people.staffLeavingBody")}
+      </Text>
+      <Chips label={t("people.staffLeavingWhy")} value={reason} options={STAFF_LEAVING_REASONS.map((code) => ({ value: code, label: t(STAFF_REASON_KEY[code]) }))} onChange={setReason} />
+      <Field label={t("people.staffLastDay")} hint={`${t("people.staffLastDayHint")} · YYYY-MM-DD`} value={lastDay} onChangeText={setLastDay} maxLength={10} keyboardType="numbers-and-punctuation" autoCapitalize="none" autoCorrect={false} error={issue} />
+      <Button label={t("people.staffLeavingRecord")} variant="danger" busy={record.isPending} onPress={submit} />
     </Card>
   );
 }

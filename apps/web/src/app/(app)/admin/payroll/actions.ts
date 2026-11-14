@@ -106,8 +106,9 @@ export async function draftRunAction(form: FormData): Promise<void> {
   const month = field(form, "month");
   await runAction(`/admin/payroll/runs/${encodeURIComponent(month)}`, async () => {
     const ctx = await requireApiUser();
-    await draftRun(ctx, month);
-    return "payroll.runDrafted";
+    const run = await draftRun(ctx, month);
+    // TA-046: a slip kept off the roll for its hand-typed figures is said, not silently kept or dropped.
+    return run.slips?.some((s) => s.warnings.includes("OFF_ROLL_KEPT")) ? "payroll.runDraftedKept" : "payroll.runDrafted";
   }, ["/admin/payroll"]);
 }
 

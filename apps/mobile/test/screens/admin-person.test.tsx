@@ -98,6 +98,45 @@ describe("a member of staff, from the directory", () => {
   });
 });
 
+describe("TA-046: a member of staff's leaving", () => {
+  const TEACHER = { membershipId: "m2", name: "ZZ Teacher", role: "TEACHER", left: "", leavingOn: "" };
+  const STAFF_LEAVING = "/api/v1/admin/people/m2/staff-leaving";
+
+  it("TA-046: records the last working day with the coded reason chosen; a past day ends access and the row's other cards go", async () => {
+    const { calls } = await mount(TEACHER, { [`POST ${STAFF_LEAVING}`]: () => json({ leftOn: "2026-10-20", scheduledFor: null }) });
+    expect(await screen.findByText("Record ZZ Teacher's leaving")).toBeTruthy();
+    expect(screen.getByRole("radio", { name: "Resigned" })).toBeChecked();
+    await fireEvent.press(screen.getByRole("radio", { name: "Retired" }));
+    await fireEvent.changeText(screen.getByLabelText("Last working day"), "2026-10-20");
+    await fireEvent.press(screen.getByRole("button", { name: "Record the leaving" }));
+    await waitFor(() => expect(calls().find((c) => c.line === `POST ${STAFF_LEAVING}`)?.body).toEqual({ lastDay: "2026-10-20", reason: "RETIRED" }));
+    expect(await screen.findByText("ZZ Teacher has left. Their access has ended.")).toBeTruthy();
+    expect(screen.queryByRole("button", { name: "Record the leaving" })).toBeNull();
+    expect(screen.queryByRole("button", { name: "Pause access" })).toBeNull();
+  });
+
+  it("TA-046: a day kept for later is named with the offer to give it up; a day that is not one is caught before anything is sent", async () => {
+    const { calls } = await mount(TEACHER, { [`POST ${STAFF_LEAVING}`]: () => json({ leftOn: null, scheduledFor: "2030-01-15" }), "POST /api/v1/admin/people/m2/leaving/cancel": () => json({ ok: true }) });
+    await fireEvent.changeText(await screen.findByLabelText("Last working day"), "15/01/2030");
+    await fireEvent.press(screen.getByRole("button", { name: "Record the leaving" }));
+    expect(screen.getByText("That is not a real date.")).toBeTruthy();
+    expect(calls().some((c) => c.line.startsWith("POST"))).toBe(false);
+    await fireEvent.changeText(screen.getByLabelText("Last working day"), "2030-01-15");
+    await fireEvent.press(screen.getByRole("button", { name: "Record the leaving" }));
+    expect(await screen.findByText(/^Leaving on .*2030/)).toBeTruthy();
+    await fireEvent.press(screen.getByRole("button", { name: "Cancel scheduled leaving" }));
+    await waitFor(() => expect(calls().some((c) => c.line === "POST /api/v1/admin/people/m2/leaving/cancel")).toBe(true));
+    expect(await screen.findByRole("button", { name: "Record the leaving" })).toBeTruthy();
+  });
+
+  it("TA-046: an alumnus's row is not offered the staff leaving step, which the door refuses for anyone not on the staff", async () => {
+    await mount({ membershipId: "m9", name: "ZZ Alumnus", role: "ALUMNUS", left: "", leavingOn: "" });
+    expect(await screen.findByRole("button", { name: /^Staff record/ })).toBeTruthy();
+    expect(screen.queryByText("Record ZZ Alumnus's leaving")).toBeNull();
+    expect(screen.queryByRole("button", { name: "Record the leaving" })).toBeNull();
+  });
+});
+
 describe("a pupil, from the directory", () => {
   it("opens their health card and their school record", async () => {
     await mount(PUPIL);

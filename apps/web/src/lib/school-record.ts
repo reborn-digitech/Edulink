@@ -10,6 +10,7 @@ import { readJson } from "./json";
 import { notifyGuardians } from "./notify";
 import { AccessError } from "./tenancy";
 import { SCHOOL_STAFF_ROLES } from "./staff-records";
+import { blankTextsOfLeavers, familyGuardiansOfPupil } from "./text-retention";
 import type { ActiveContext } from "./session";
 
 /**
@@ -239,6 +240,7 @@ export async function recordDeparture(
   // inside it is refused by the policy — and refused in the silent direction,
   // as zero rows rather than an error. See db.ts.
   let cancelledDemands = 0;
+  let textsBlanked = 0;
   let droppedRegistrationIds: string[] = [];
   const record = await db.$tenantTransaction(async (tx: unknown) => {
     const t = tx as TenantTx;
@@ -340,6 +342,10 @@ export async function recordDeparture(
       data: { status: "REVOKED" },
     });
 
+    // TA-457 (decision 0002): the pupil leaves, and so does each family guardian with no other pupil on the roll here;
+    // the number and the words of every text to them at this school are blanked, a STOP reply keeping its number.
+    textsBlanked = await blankTextsOfLeavers(tx, schoolId, [membership.userId, ...(await familyGuardiansOfPupil(tx, membership.id))]);
+
     return created;
   });
 
@@ -351,7 +357,7 @@ export async function recordDeparture(
     targetId: membership.id,
     // The reason is one of LEAVING_REASONS; the destination is free text the
     // office typed and stays on the record, not in the log the whole office reads.
-    meta: { recordId: record.id, reason: input.reason, hasDestination: destination !== null, cancelledDemands, droppedRegistrations: droppedRegistrationIds.length, droppedRegistrationIds },
+    meta: { recordId: record.id, reason: input.reason, hasDestination: destination !== null, cancelledDemands, droppedRegistrations: droppedRegistrationIds.length, droppedRegistrationIds, textsBlanked },
   });
 
   /**
@@ -463,12 +469,14 @@ export async function cancelScheduledDeparture(
   membershipId: string,
 ): Promise<{ ok: true } | { ok: false; errorKey: TranslationKey }> {
   if (ctx.role !== "ADMIN" || !ctx.schoolId) throw new AccessError("access.onlyAnAdminCanRecordAPupil");
+  // TA-046: a member of staff's kept last working day is given up by the same door, and audited as theirs.
+  const whose = await db.membership.findFirst({ where: { id: membershipId, schoolId: ctx.schoolId }, select: { role: true } });
   const removed = await db.scheduledDeparture.deleteMany({ where: { membershipId, schoolId: ctx.schoolId } });
   if (removed.count === 0) return { ok: false, errorKey: "refusal.nothingScheduled" };
   await audit({
     schoolId: ctx.schoolId,
     actorUserId: ctx.user.id,
-    action: "student.leave.unschedule",
+    action: whose && (SCHOOL_STAFF_ROLES as readonly string[]).includes(whose.role) ? "staff.leave.unschedule" : "student.leave.unschedule",
     targetType: "Membership",
     targetId: membershipId,
   });
@@ -502,7 +510,7 @@ export async function runDueDepartures(now: Date = new Date(), scope: { schoolId
   }
   const due = await db.scheduledDeparture.findMany({
     where: scope.schoolIds ? { schoolId: { in: scope.schoolIds } } : undefined,
-    include: { school: { select: { id: true, timezone: true, kind: true } } },
+    include: { school: { select: { id: true, timezone: true, kind: true } }, membership: { select: { role: true } } },
     orderBy: { leaveOnKey: "asc" },
   });
   let executed = 0;
@@ -545,6 +553,13 @@ export async function runDueDepartures(now: Date = new Date(), scope: { schoolId
       },
     };
     const result = await forSchool(row.schoolId, async (): Promise<DepartureResult> => {
+      // TA-046: a member of staff's kept last working day writes their leftAt through the one writer, under the
+      // scheduling admin's identity; no certificate. Imported here, not at the top, as college-records is.
+      if ((SCHOOL_STAFF_ROLES as readonly string[]).includes(row.membership.role)) {
+        const { writeStaffLeaving } = await import("./staff-leaving");
+        const done = await writeStaffLeaving({ schoolId: row.schoolId, membershipId: row.membershipId, lastDay: row.leaveOnKey, reason: row.reason as Parameters<typeof writeStaffLeaving>[0]["reason"], actorUserId: ctx.user.id, via: "scheduled" });
+        return done.ok ? { ok: true, recordId: "" } : { ok: false, errorKey: done.errorKey };
+      }
       // At a college the kept day is carried out as the college's leaving (TA-268): the clearance, the programme
       // enrolment and the caution return with it. Imported here, not at the top: college-records imports this file.
       if (isCollegeKind(row.school.kind)) {

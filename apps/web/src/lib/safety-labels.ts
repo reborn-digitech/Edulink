@@ -178,6 +178,9 @@ const ACTION_KEYS: Record<string, TranslationKey> = {
   "fees.routeFees": "audit.feesRouteFees", // owner-batch-item5: a school's route fees (a college's stays college.fees.route)
   "student.leave.schedule": "audit.studentLeaveSchedule",
   "student.leave.unschedule": "audit.studentLeaveUnschedule",
+  "staff.leave": "audit.staffLeave", // TA-046
+  "staff.leave.schedule": "audit.staffLeaveSchedule", // TA-046
+  "staff.leave.unschedule": "audit.staffLeaveUnschedule", // TA-046
   "term.delete": "audit.termDelete",
   "intake.run": "audit.intakeRun",
   "parent.signup": "audit.parentSignup",
@@ -461,6 +464,7 @@ const ACTION_KEYS: Record<string, TranslationKey> = {
   "superuser.school.module": "audit.superuserSchoolModule",
   "superuser.recruiter.disable": "audit.superuserRecruiterDisable",
   "superuser.recruiter.enable": "audit.superuserRecruiterEnable",
+  "superuser.recruiter.invite": "audit.superuserRecruiterInvite",
   // The risks batch's package 1B (5 Oct 2026).
   "superuser.expert.disable": "audit.riskExpertDisable",
   "superuser.expert.enable": "audit.riskExpertEnable",
@@ -680,6 +684,7 @@ const ACTION_KEYS: Record<string, TranslationKey> = {
   "placement.company.colleagueAccept": "audit.placementCompanyColleagueAccept",
   "placement.company.colleagueDecline": "audit.placementCompanyColleagueDecline",
   "placement.company.colleagueRemove": "audit.placementCompanyColleagueRemove",
+  "placement.company.recruiterInvite": "audit.placementCompanyRecruiterInvite",
   "placement.company.register": "audit.placementCompanyRegister",
   "placement.company.verify": "audit.placementCompanyVerify",
   "placement.dream.off": "audit.placementDreamOff",

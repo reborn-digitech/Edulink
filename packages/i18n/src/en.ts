@@ -1316,6 +1316,7 @@ export const en = {
   person: {
     since: "since {date}",
     pupilsTaught: "{count} pupils taught",
+    pupilsTaughtOne: "{count} pupil taught",
     classTeacher: "Class teacher:",
     badges: "Badges",
     noBadgesYet: "No badges earned yet",
@@ -1672,6 +1673,15 @@ export const en = {
     dateRange: "{from} to {to}",
     overallAcrossOne: "overall, across 1 marked piece of work.",
     overallAcrossMany: "overall, across {count} marked pieces of work.",
+    // TA-388 (owner's decision, 14 November 2026): the report's homework and tests averages, the overall beneath.
+    homeworkAverage: "Homework average",
+    testsAverage: "Tests average",
+    homeworkCountOne: "1 piece of homework",
+    homeworkCountMany: "{count} pieces of homework",
+    testsCountOne: "1 test paper",
+    testsCountMany: "{count} test papers",
+    noneMarkedHere: "None marked in this period",
+    averagesExplainer: "The homework average is the figure on the family's home page. The overall below counts the homework and the tests together.",
     back: "Back",
     examsOnly: "Marks over maximum across the exams on this card",
     draftBanner: "Draft — not published. Families cannot see this yet.",
@@ -2581,6 +2591,7 @@ export const en = {
     natOther: "Another nationality",
     pinHint: "Six digits.",
     pinSixDigits: "A PIN code is six digits and does not start with 0.",
+    dayNotReal: "That day is not on the calendar. Check the date.",
     chooseMotherTongue: "Choose the mother tongue from the list.",
     chooseNationality: "Choose the nationality from the list.",
     guardianPhone: "Family’s contact number",
@@ -2777,6 +2788,8 @@ export const en = {
     typeToConfirm: "Type {phrase} to confirm",
     bulkRemoved: "{count} schools removed",
     bulkDeleted: "{count} schools deleted",
+    bulkRemovedOne: "{count} school removed",
+    bulkDeletedOne: "{count} school deleted",
     bulkDeleteMismatch: "That is not the phrase. Type DELETE followed by the number of schools.",
     bulkTooMany: "At most 100 schools can be chosen at a time. Choose fewer and try again.",
     searchPlaceholder: "Search by name, city or join code",
@@ -2850,6 +2863,10 @@ export const en = {
     retentionTripPositions: "Bus positions from drivers’ phones (transport)",
     retentionAssistantConversations: "Vidura's conversations",
     retentionAssistantUsage: "Vidura's daily counts",
+    retentionTextMessages: "Texts, sent or skipped (a number's STOP reply stays)",
+    retentionTripBoardings: "Bus boarding and alighting times (transport)",
+    retentionEnquiries: "Closed job and admission enquiries, after closing",
+    retentionExpertApplications: "Refused or withdrawn expert applications and their document",
     retentionForever: "kept forever",
     retentionDays: "{days} days",
     retentionPending: "{count} waiting",
@@ -3178,6 +3195,8 @@ export const en = {
     subscriptionDueIn: "Due in {days} days",
     subscriptionDueToday: "Due today",
     subscriptionOverdue: "{days} days overdue",
+    subscriptionDueInOne: "Due in {days} day",
+    subscriptionOverdueOne: "{days} day overdue",
     subscriptionNotRecorded: "Not recorded",
     subscriptionMoveRefused: "That status cannot follow the current one.",
     subscriptionDatesOrder: "The due date must come after the start.",
@@ -3590,6 +3609,9 @@ export const en = {
     onlyPupilLeaves: "Only a pupil can be recorded as leaving. Pause staff access instead.",
     alreadyLeft: "They are already recorded as having left.",
     leaveBeforeJoin: "They cannot leave before the day they joined.",
+    onlyStaffLeaves: "Only a member of staff's leaving is recorded here. A pupil's leaving is recorded with Record as left, which issues the certificate.", // TA-046
+    staffLeaveSelf: "You cannot record your own leaving. Another admin records it.", // TA-046
+    sayStaffLeavingReason: "Choose why they are leaving.", // TA-046
     notLeft: "They are not recorded as having left.",
 
     /* ---------------------------- register duty --------------------------- */
@@ -3778,6 +3800,7 @@ export const en = {
     onlyAnAdminCanPauseAccess: "Only an admin can pause access",
     onlyAnAdminCanPinAPost: "Only an admin can pin a post",
     onlyAnAdminCanRecordAPupil: "Only an admin can record a pupil leaving",
+    onlyAnAdminCanRecordStaffLeaving: "Only an admin can record a member of staff leaving", // TA-046
     onlyAnAdminCanRemoveContent: "Only an admin can remove content",
     onlyAnAdminCanRemoveSomebodyFrom: "Only an admin can remove somebody from a school",
     onlyAnAdminCanResolveReports: "Only an admin can resolve reports",
@@ -5322,6 +5345,11 @@ export const en = {
     // file on why there is no plural machinery.
     acrossPieces: "Across {count} pieces",
     acrossPiecesOne: "Across 1 piece",
+    // TA-388 (owner's decision, 14 November 2026): the home tile counts the homework of the report's twelve weeks.
+    homeworkAverage: "Homework average",
+    homeworkAcrossPieces: "Across {count} pieces, last 12 weeks",
+    homeworkAcrossPiecesOne: "Across 1 piece, last 12 weeks",
+    homeworkNoneMarked: "No homework marked in the last 12 weeks",
     streakStart: "Starts on the next day in",
     streakDays: "{count} school days in a row",
     streakDaysOne: "1 school day in a row",
@@ -7047,6 +7075,9 @@ export const en = {
     inviteOpenSelf: "Opened an invitation addressed to their own email",
     studentLeaveSchedule: "Scheduled a pupil's leaving for a future day",
     studentLeaveUnschedule: "Cancelled a pupil's scheduled leaving",
+    staffLeave: "Recorded that a member of staff has left", // TA-046
+    staffLeaveSchedule: "Kept a member of staff's last working day for later", // TA-046
+    staffLeaveUnschedule: "Cancelled a member of staff's kept last working day", // TA-046
     staffRecordSet: "Updated a member of staff's record",
     staffSupportAdd: "Added a support worker with no sign-in", // owner-batch-item2a
     feesMessBill: "Billed a month's mess", // owner-batch-item5
@@ -7457,6 +7488,7 @@ export const en = {
     superuserSchoolModule: "The Shalaghar team switched a module for an institution",
     superuserRecruiterDisable: "The Shalaghar team disabled a recruiter's account",
     superuserRecruiterEnable: "The Shalaghar team enabled a recruiter's account again",
+    superuserRecruiterInvite: "The Shalaghar team invited a recruiter to a company with none",
     riskExpertDisable: "The Shalaghar team closed an expert's account",
     riskExpertEnable: "The Shalaghar team opened an expert's account again",
     riskLoginClosed: "Someone signed in to an account the operator had closed and was told why",
@@ -7693,6 +7725,7 @@ export const en = {
     placementApply: "Applied to a placement drive",
     placementCompanyAdd: "Added a company to the placement cell",
     placementCompanyColleague: "Invited a colleague to the company",
+    placementCompanyRecruiterInvite: "Invited the first recruiter to a company the cell verified",
     placementGuardianConsent: "A guardian consented to a minor's drive application",
     placementCompanyColleagueRemove: "Took a recruiter off the company",
     placementCompanyColleagueDecline: "Declined a company's invitation",
@@ -7941,6 +7974,20 @@ export const en = {
       "They will not be able to open this school until you restore it. Nothing is deleted, and this does not affect any other school they belong to.",
     pauseWhy: "Why (kept in the audit log)",
     pauseAction: "Pause access",
+    staffLeavingAction: "Record leaving", // TA-046
+    staffLeavingTitle: "Record {name}'s leaving", // TA-046
+    staffLeavingBody: "Their last working day and why they are leaving. Access ends after that day, and payroll pays them up to it in that month's run.", // TA-046
+    staffLastDay: "Last working day", // TA-046
+    staffLastDayHint: "Today or a later day is kept: they keep access through it and come off the roll the morning after. A day already past ends access now.", // TA-046
+    staffLeavingWhy: "Why they are leaving", // TA-046
+    staffLeavingReasonRESIGNED: "Resigned", // TA-046
+    staffLeavingReasonRETIRED: "Retired", // TA-046
+    staffLeavingReasonCONTRACT_ENDED: "Contract ended", // TA-046
+    staffLeavingReasonDISMISSED: "Dismissed", // TA-046
+    staffLeavingReasonTRANSFERRED: "Transferred", // TA-046
+    staffLeavingReasonDIED_IN_SERVICE: "Died in service", // TA-046
+    staffLeavingRecord: "Record the leaving", // TA-046
+    staffLeft: "{name} has left. Their access has ended.", // TA-046
     paused: "{name}’s access is paused",
     notRestored: "Not restored",
     canSignInAgain: "{name} can sign in again",
@@ -8827,6 +8874,8 @@ export const en = {
     coverCancelledOn: "The cover on {date} was cancelled.",
     coverCancelledFromTo: "The cover from {from} to {to} was cancelled.",
     appProblem: "Reference {reference}. What {name} wrote is in the Safety centre's audit log.",
+    /* The same report from someone with no school on the session, told to the operators (TA-173). */
+    appProblemOperator: "Reference {reference}. What {name} wrote is in the server's audit log.",
     feeReceived: "{amount} received — receipt {serial}.",
     // fix-highs-B
     feeUnallocated: "{amount} arrived after these dues had already been paid. The school office has been told and will refund it.",
@@ -10268,6 +10317,12 @@ export const en = {
     tabPlacement: "Placement",
     /* What was saved at another school or college and not sent from this one (PH-6). */
     outboxHeldElsewhere: "{count} saved elsewhere were not sent from here. They go when you switch back to where they were saved.",
+    /* A write saved without signal that the server refused when it was sent (TA-146); the server's own sentence follows. */
+    replayRefused: "Something you saved without signal was refused by the server and was not saved.",
+    /* …or that waited past the thirty days it may wait (TA-010) and was dropped unsent. */
+    replayExpired: "Something you saved without signal waited too long to send and was not saved.",
+    /* An answer the screen's schema cannot read, typically an older app meeting a newer server (TA-359). */
+    answerUnreadable: "This screen could not read the server's answer. The app may need an update.",
   },
   update: {
     title: "Shalaghar needs an update",
@@ -12216,6 +12271,7 @@ export const en = {
     share: "Share the payslips with the head",
     unshare: "Stop sharing",
     missingSalary: "No salary for: {names}. They are not in this run.",
+    paused: "Access paused, with no leaving day: {names}. They are not on this run. Record a leaving day for anyone who has gone, and they are paid up to it.", // TA-046
     slipsTitle: "Payslips",
     notSharedTitle: "The payslips are not shared",
     notSharedBody: "The office keeps each person's payslip to itself unless it shares the run with you.",
@@ -12227,6 +12283,7 @@ export const en = {
     warnNO_UPI: "No UPI id", // owner-batch-item2b
     warnNO_UAN: "No UAN",
     warnNO_ESI_NUMBER: "No ESI number",
+    warnOFF_ROLL_KEPT: "Off this month's roll; kept for its hand-typed figures", // TA-046
     kindEARNING: "Earning",
     kindDEDUCTION: "Deduction",
     kindEMPLOYER_CONTRIBUTION: "Employer's share",
@@ -12239,6 +12296,7 @@ export const en = {
     saveSlip: "Save the slip",
     slipSaved: "The slip is worked out again.",
     runDrafted: "The run is drawn from the register.",
+    runDraftedKept: "The run is drawn from the register. A slip of somebody no longer on the roll was kept because it carries figures typed by hand: clear them and draw again to drop it.", // TA-046
     runLocked: "The run is locked, and everyone is told their payslip is ready.",
     runShared: "The head can now read this run's payslips.",
     runUnshared: "The payslips are no longer shared with the head.",
@@ -13365,6 +13423,7 @@ export const en = {
     awardDIPLOMA: "diploma",
     awardDEGREE: "degree",
     awardHONOURS_DEGREE: "honours degree",
+    awardADVANCED_DIPLOMA: "advanced diploma",
     schemesTitle: "Schemes",
     schemesBody: "The university's scheme for a programme: its grading table and its passing rules.",
     schemesNone: "No schemes yet",
@@ -15215,6 +15274,8 @@ export const en = {
     invitationDeclined: "The invitation is declined.",
     invitationAccepted: "You recruit for the company now.",
     colleagueInvited: "If that address is a recruiter's account, they are invited. They work on the company's drives once they accept.",
+    inviteRecruiter: "Invite a recruiter",
+    inviteRecruiterHint: "No recruiter works on this company yet. Invite one by their recruiter account's address; you vouch for the person you invite.",
     companiesIntro: "Each company is the same row on every college, by its GSTIN or CIN. Check a company before its requirement becomes a drive.",
     companiesTitle: "Companies ({count})",
     companyAdded: "{name} is on your list.",
@@ -15427,6 +15488,7 @@ export const en = {
     moveTo: "Move to: {status}",
     myInternships: "Internships",
     myInternshipsIntro: "{credits} credits so far. Propose one in a window after semester 2, 4 or 6, keep the diary and hand in the report.",
+    myInternshipsIntroScheme: "{credits} credits so far. Propose one after any semester of your programme, keep the diary and hand in the report; the credits follow your programme's scheme.",
     navAlumni: "Your college",
     navCell: "Placement",
     navParent: "Placement",
@@ -15484,6 +15546,7 @@ export const en = {
     notifGuardianConsented: "Your guardian consented: {drive} now has your application",
     notifGuardianConsentAsk: "{name} applied to {drive}: your consent is needed",
     notifColleagueInvite: "{name} invites you to recruit for {company}",
+    notifOperatorInvite: "You are invited to recruit for {company}",
     notifRoundPassed: "{company}: through round {round}",
     notifShortlisted: "{company} shortlisted you for {title}",
     offerAccepted: "Offer accepted. Congratulations.",
@@ -15563,6 +15626,8 @@ export const en = {
     refuseChangedMeanwhile: "Someone changed this drive just now. Look again and try once more.",
     refuseClosed: "This drive is closed and changes no more.",
     refuseCompanyTaken: "That company is already registered. Ask a colleague bound to it to add your account.",
+    refuseCompanyHasRecruiter: "A recruiter already works on this company. They invite their colleagues.",
+    refuseInviteNotVerifier: "Only the placement cell that checked this company may invite its first recruiter.",
     refuseCreditIncomplete: "Credits come last: the report, the industry grade and the viva first.",
     refuseCreditsOverMax: "That would pass the policy's {max} credits; {have} are credited already.",
     refuseDeclarationKind: "A declaration is for an internship in the family's business.",
@@ -15581,6 +15646,9 @@ export const en = {
     refuseInternshipDates: "The internship ends before it starts.",
     refuseInternshipDecided: "This internship has been decided already.",
     refuseInternshipWindow: "Internships are in the windows after semesters 2, 4 and 6.",
+    refuseInternshipSemester: "An internship follows a semester of your programme: 1 to {max}.",
+    refuseLawInternshipWindow: "A law internship is in the vacation after an even semester: 2, 4, 6, 8 or 10.",
+    refuseCreditsOverTotal: "That would pass the programme's {max} credits in all; {have} are credited already.",
     refuseInviteNotOpen: "Students are told about a drive once it is open.",
     refuseJoinNotAccepted: "A joining is recorded for an accepted offer.",
     refuseJoinedDate: "Enter a real day for the joining, no earlier than the day the offer was made and no later than today.",
@@ -15957,6 +16025,8 @@ export const en = {
     remindBodySoon: "{college}: the window opens on {from} and closes on {to}. Check the regulator's notice for this year's dates.",
     remindBodyOpen: "{college}: the window is open until {to}. Check the regulator's notice for this year's dates.",
     recruitersIntro: "A recruiter's account belongs to no college. Disabling one shuts it out of every college at once and ends its sessions; the account itself stays.",
+    inviteTitle: "A company's first recruiter",
+    inviteIntro: "For a company on the platform that no recruiter works on yet: name it by its GSTIN or CIN and give the address of a recruiter account. They work on its drives once they accept. You vouch for the person you invite.",
     expertsNote: "An expert is taken off every school's list from the experts queue.",
     recruitersNoneTitle: "No recruiters yet",
     recruitersNone: "No recruiter has registered an account yet.",
@@ -16290,6 +16360,7 @@ export const en = {
       title: "Clinical postings",
       intro: "The sites students are posted to, each rotation's postings with the logbook counts, and the entries waiting for a signature.",
       notOffered: "Clinical postings are kept by a college with the health-sciences or pharmacy stream; yours has none.",
+      openDesk: "Open the clinical desk",
       supervisingTitle: "My clinical postings",
       supervisingIntro: "The postings you supervise and the logbook entries waiting for your signature.",
       noSupervising: "You supervise no clinical posting",

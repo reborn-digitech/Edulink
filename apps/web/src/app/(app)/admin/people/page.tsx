@@ -22,6 +22,7 @@ import { isDutyRole, parseDuties } from "@edulink/contracts";
 import { offeredDuties } from "@/lib/duties";
 import { pendingParentInvites } from "@/lib/parent-link";
 import { PersonLink } from "@/components/person-link";
+import { offersStaffLeaving } from "@/lib/staff-leaving";
 import { PageHeader } from "@/components/ui/page-header";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -336,7 +337,8 @@ export default async function DirectoryPage({
                             {[member.staffRecord.designation, member.staffRecord.joinedOn ? t("staff.joined", { date: formatDate(member.staffRecord.joinedOn) }) : null].filter(Boolean).join(" · ")}
                           </p>
                         )}
-                        {role === "STUDENT" && !member.leftAt && member.scheduledDeparture && (
+                        {/* A pupil's later last day, and a member of staff's (TA-046). */}
+                        {!member.leftAt && member.scheduledDeparture && (
                           <p className="mt-1 text-xs font-medium text-warn">
                             {t("people.leavingOn", { date: formatDateKey(member.scheduledDeparture.leaveOnKey, { dateStyle: "medium" }) })}
                           </p>
@@ -421,6 +423,7 @@ export default async function DirectoryPage({
                           duties={isDutyRole(role) && isCollegeKind(kindRow?.kind) ? { held: parseDuties(member.dutiesJson), offered: dutiesOffered } : undefined}
                           suspended={member.status === "SUSPENDED"}
                           hasLeft={member.leftAt !== null}
+                          staffLeaving={offersStaffLeaving(role)}
                         />
                       )}
                     </div>

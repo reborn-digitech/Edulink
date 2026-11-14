@@ -368,7 +368,7 @@ export const payslipSchema = z.object({
   slipRef: z.string(),
   /** How the school paid it, once recorded; null while unpaid (and always in a DRAFT run). */
   payment: salaryPaymentSchema.nullable(),
-  /** Codes of what the office should look at before locking: NEGATIVE_NET, NO_BANK, NO_UPI, NO_UAN, NO_ESI_NUMBER. */
+  /** Codes of what the office should look at before locking: NEGATIVE_NET, NO_BANK, NO_UPI, NO_UAN, NO_ESI_NUMBER, and OFF_ROLL_KEPT (TA-046: not on the month's roll, kept by a redraw because it carries figures typed by hand). */
   warnings: z.array(z.string()),
 });
 export type PayslipView = z.infer<typeof payslipSchema>;
@@ -394,6 +394,8 @@ export const payrollRunSchema = z.object({
   exports: z.array(payrollExportRowSchema),
   /** Staff on the roll with no salary for this month: not in the run. */
   missingSalary: z.array(z.object({ membershipId: z.string(), name: z.string() })),
+  /** TA-046: staff whose access is paused, with no leaving day, and a salary for this month: off the roll, not in this run. */
+  paused: z.array(z.object({ membershipId: z.string(), name: z.string() })),
   canEdit: z.boolean(),
 });
 export type PayrollRunView = z.infer<typeof payrollRunSchema>;

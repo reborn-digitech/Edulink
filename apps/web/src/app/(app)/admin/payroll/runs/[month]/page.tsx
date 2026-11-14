@@ -142,6 +142,16 @@ export default async function PayrollRunPage({ params, searchParams }: { params:
                 </span>
               </p>
             ) : null}
+            {/* TA-046: paused staff with no leaving day are off the roll; the office is told who, and where a leaving day is recorded. */}
+            {run.paused.length ? (
+              <p className="flex items-start gap-2 rounded-[var(--radius-md)] border border-warn/40 bg-warn-soft px-3 py-2 text-sm text-warn">
+                <WarningIcon weight="fill" className="mt-0.5 size-4 shrink-0" aria-hidden="true" />
+                <span>
+                  {t("payroll.paused", { names: run.paused.map((m) => m.name).join(", ") })}{" "}
+                  <Link className={LINK} href="/admin/people?status=SUSPENDED">{t("nav.people")}</Link>
+                </span>
+              </p>
+            ) : null}
           </CardBody>
         </Card>
       ) : null}

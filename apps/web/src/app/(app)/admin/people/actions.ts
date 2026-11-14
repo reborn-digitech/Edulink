@@ -1,6 +1,7 @@
 "use server";
 
 import { recordOrScheduleLeaving } from "@/lib/leaving";
+import { recordStaffLeaving } from "@/lib/staff-leaving";
 import type { TranslationKey } from "@/lib/i18n/dictionary";
 import { revalidatePath } from "next/cache";
 import { requireApiRole, AccessError } from "@/lib/tenancy";
@@ -94,6 +95,20 @@ export async function recordLeaving(
     if (!result.ok) return { ok: false, errorKey: result.errorKey };
     revalidatePath("/admin/people");
     return { ok: true, ...(result.recordId ? { recordId: result.recordId } : {}), ...(result.scheduledFor ? { scheduledFor: result.scheduledFor } : {}) };
+  } catch (error) {
+    return failure(error);
+  }
+}
+
+/** TA-046: a member of staff's last working day with a coded reason; recorded now when past, kept otherwise. The rule is lib/staff-leaving.ts, which the phone's endpoint calls too. */
+export async function recordStaffLeavingAction(membershipId: string, input: { lastDay: string; reason: string }): Promise<Result & { scheduledFor?: string }> {
+  try {
+    const ctx = await requireApiRole("ADMIN");
+    const result = await recordStaffLeaving(ctx, membershipId, input);
+    if (!result.ok) return { ok: false, errorKey: result.errorKey };
+    revalidatePath("/admin/people");
+    revalidatePath("/admin/payroll");
+    return { ok: true, ...(result.scheduledFor ? { scheduledFor: result.scheduledFor } : {}) };
   } catch (error) {
     return failure(error);
   }

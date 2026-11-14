@@ -292,14 +292,31 @@ export async function salariesFor(schoolId: string, membershipIds: string[], mon
   return out;
 }
 
-/** The staff roll for a month: on the roll at some point in it. Today's roll when no month is given. */
+/**
+ * The staff roll for a month: on the roll at some point in it. Today's roll when no month is given.
+ *
+ * TA-046 (the owner's decision of 14 November 2026): a member of staff whose leaving day falls in the month or after
+ * it is on the month's roll, paused or not, and is paid up to that day (`lossOfPay`) — the day recorded (leftAt) or
+ * kept for later (their ScheduledDeparture's day, `leaveOnKey`). A paused member with no leaving day stays off it;
+ * runView lists them as paused.
+ */
 async function rollFor(schoolId: string, monthStart?: Date) {
+  const firstKey = monthStart ? monthStart.toISOString().slice(0, 10) : "";
   return db.membership.findMany({
-    where: { schoolId, role: { in: [...SCHOOL_STAFF_ROLES] }, status: "ACTIVE", ...(monthStart ? { OR: [{ leftAt: null }, { leftAt: { gte: monthStart } }] } : { leftAt: null }) },
-    select: { id: true, role: true, leftAt: true, user: { select: { name: true, preferredName: true } }, staffRecord: { select: { designation: true, gender: true, joinedOn: true } } },
+    where: {
+      schoolId,
+      role: { in: [...SCHOOL_STAFF_ROLES] },
+      ...(monthStart
+        ? { OR: [{ status: "ACTIVE", leftAt: null }, { status: { in: ["ACTIVE", "SUSPENDED"] }, leftAt: { gte: monthStart } }, { status: "SUSPENDED", leftAt: null, scheduledDeparture: { is: { leaveOnKey: { gte: firstKey } } } }] }
+        : { status: "ACTIVE", leftAt: null }),
+    },
+    select: { id: true, role: true, leftAt: true, user: { select: { name: true, preferredName: true } }, staffRecord: { select: { designation: true, gender: true, joinedOn: true } }, scheduledDeparture: { select: { leaveOnKey: true } } },
     orderBy: [{ user: { name: "asc" } }],
   });
 }
+
+/** TA-046: whether a slip carries figures the office typed by hand, which a redraw never drops silently. */
+const handTyped = (s: { arrearsPaise: number; tdsOverridePaise: number | null; lopOverrideHalfDays: number | null; notes: string }) => s.arrearsPaise !== 0 || s.tdsOverridePaise !== null || s.lopOverrideHalfDays !== null || s.notes.trim() !== "";
 
 function salaryView(s: SalaryRow | undefined): StaffSalaryView["salary"] {
   if (!s) return null;
@@ -454,7 +471,7 @@ async function recoveredByAdvance(schoolId: string, membershipIds: string[], cli
 type DraftPerson = { membershipId: string; name: string; department: string; designation: string | null; gender: string | null; salary: SalaryRow; lopHalfDays: number };
 
 /** Each person's loss of pay for the month, from the register, approved leave, the calendar and the days they were on the roll. */
-async function lossOfPay(schoolId: string, month: string, people: { id: string; leftAt: Date | null; joinedOn: Date | null }[], tz: string): Promise<Map<string, number>> {
+async function lossOfPay(schoolId: string, month: string, people: { id: string; leftAt: Date | null; joinedOn: Date | null; leaveOnKey?: string | null }[], tz: string): Promise<Map<string, number>> {
   const days = dayKeysOf(month);
   const from = days[0]!;
   const to = days[days.length - 1]!;
@@ -477,7 +494,8 @@ async function lossOfPay(schoolId: string, month: string, people: { id: string; 
   const out = new Map<string, number>();
   for (const p of people) {
     const joined = p.joinedOn ? p.joinedOn.toISOString().slice(0, 10) : null;
-    const left = p.leftAt ? dateKeyInZone(p.leftAt, tz) : null;
+    // TA-046: the leaving day recorded, or the one kept for later (the night job writes it the morning after).
+    const left = p.leftAt ? dateKeyInZone(p.leftAt, tz) : (p.leaveOnKey ?? null);
     out.set(
       p.id,
       lopHalfDaysFor(
@@ -559,13 +577,13 @@ export async function draftRun(ctx: ActiveContext, month: string): Promise<Payro
   const salaries = await salariesFor(caller.schoolId, roll.map((r) => r.id), month);
   const paid = roll.filter((m) => salaries.has(m.id));
   const [lop, instalments] = await Promise.all([
-    lossOfPay(caller.schoolId, month, paid.map((m) => ({ id: m.id, leftAt: m.leftAt, joinedOn: m.staffRecord?.joinedOn ?? null })), tz),
+    lossOfPay(caller.schoolId, month, paid.map((m) => ({ id: m.id, leftAt: m.leftAt, joinedOn: m.staffRecord?.joinedOn ?? null, leaveOnKey: m.scheduledDeparture?.leaveOnKey ?? null })), tz),
     instalmentsFor(caller.schoolId, paid.map((m) => m.id), month),
   ]);
   // TA-047: the slip freezes the account's own name (User.name), as every paper prints it (HANDOFF §5 item 4): the
   // ECR, the ESI sheet, the bank and UPI advice, the TDS summary and the PDF read it, never a name chosen for screens.
   const people: DraftPerson[] = paid.map((m) => ({ membershipId: m.id, name: m.user.name, department: m.role, designation: m.staffRecord?.designation ?? null, gender: m.staffRecord?.gender ?? null, salary: salaries.get(m.id)!, lopHalfDays: lop.get(m.id) ?? 0 }));
-  await db.$tenantTransaction(
+  const keptOffRoll = await db.$tenantTransaction(
     async (raw) => {
       const tx = raw as Tx;
       await tx.payrollRun.upsert({ where: { schoolId_month: { schoolId: caller.schoolId, month } }, create: { schoolId: caller.schoolId, month, createdByUserId: caller.user.id }, update: {}, select: { id: true } });
@@ -574,7 +592,10 @@ export async function draftRun(ctx: ActiveContext, month: string): Promise<Payro
       const existing = await tx.payslip.findMany({ where: { runId: run.id }, select: { membershipId: true, arrearsPaise: true, tdsOverridePaise: true, lopOverrideHalfDays: true, notes: true } });
       const carry = new Map(existing.map((e) => [e.membershipId, e]));
       const keep = new Set(people.map((p) => p.membershipId));
-      await tx.payslip.deleteMany({ where: { runId: run.id, membershipId: { notIn: [...keep] } } });
+      // TA-046: a slip of somebody no longer on the month's roll is dropped, unless it carries figures typed by hand:
+      // that one is kept as it stands, and the run page marks it (OFF_ROLL_KEPT) so the office is told.
+      const kept = existing.filter((e) => !keep.has(e.membershipId) && handTyped(e)).map((e) => e.membershipId);
+      await tx.payslip.deleteMany({ where: { runId: run.id, membershipId: { notIn: [...keep, ...kept] } } });
       for (const p of people) {
         const c: SlipCarry = carry.get(p.membershipId) ?? { arrearsPaise: 0, tdsOverridePaise: null, lopOverrideHalfDays: null, notes: "" };
         const f = figuresFor(p, month, settings, c, instalments.get(p.membershipId) ?? []);
@@ -595,10 +616,11 @@ export async function draftRun(ctx: ActiveContext, month: string): Promise<Payro
         await tx.payslip.upsert({ where: { runId_membershipId: { runId: run.id, membershipId: p.membershipId } }, create: { schoolId: caller.schoolId, runId: run.id, membershipId: p.membershipId, ...data }, update: data });
       }
       await writeTotals(tx, run.id);
+      return kept.length;
     },
     { timeout: 30_000 },
   );
-  await audit({ schoolId: caller.schoolId, actorUserId: caller.user.id, action: "payroll.run.draft", targetType: "PayrollRun", targetId: month, meta: { month, slips: people.length, missingSalary: roll.length - people.length } });
+  await audit({ schoolId: caller.schoolId, actorUserId: caller.user.id, action: "payroll.run.draft", targetType: "PayrollRun", targetId: month, meta: { month, slips: people.length, missingSalary: roll.length - people.length, keptOffRoll } });
   return runView(ctx, month);
 }
 
@@ -606,7 +628,7 @@ const SLIP_SELECT = { id: true, membershipId: true, staffName: true, department:
 type SlipRow = { id: string; membershipId: string; staffName: string; department: string; designation: string | null; daysInMonth: number; lopHalfDays: number; lopOverrideHalfDays: number | null; linesJson: string; grossPaise: number; deductionsPaise: number; employerPaise: number; netPaise: number; arrearsPaise: number; tdsOverridePaise: number | null; notes: string; paymentMode: string; bankLast4: string | null };
 
 /** What slipView needs beside the slip: its reference in the run and its live payment (owner-batch-item2b). */
-type SlipExtras = { slipRef: string; payment: SalaryPaymentView | null };
+type SlipExtras = { slipRef: string; payment: SalaryPaymentView | null; offRoll?: boolean };
 
 function slipView(s: SlipRow, salary: SalaryRow | undefined, extras: SlipExtras): PayslipView {
   const lines = readJsonArray<PayslipLine>(s.linesJson);
@@ -617,6 +639,7 @@ function slipView(s: SlipRow, salary: SalaryRow | undefined, extras: SlipExtras)
   if (s.paymentMode === "UPI" && !salary?.upiSealed) warnings.push("NO_UPI");
   if (lines.some((l) => l.code === "PF_EMPLOYEE") && !salary?.pfUan) warnings.push("NO_UAN");
   if (lines.some((l) => l.code === "ESI_EMPLOYEE") && !salary?.esiNumber) warnings.push("NO_ESI_NUMBER");
+  if (extras.offRoll) warnings.push("OFF_ROLL_KEPT");
   return {
     membershipId: s.membershipId,
     name: s.staffName,
@@ -688,6 +711,15 @@ export async function runView(ctx: ActiveContext, month: string): Promise<Payrol
   const exporters = new Map((await db.user.findMany({ where: { id: { in: [...new Set(exports.map((e) => e.createdByUserId).filter((x): x is string => Boolean(x)))] } }, select: { id: true, name: true, preferredName: true } })).map((u) => [u.id, nameOf(u)]));
   const inRun = new Set(slips.map((s) => s.membershipId));
   const withSalary = keeps(caller.role) ? await salariesFor(caller.schoolId, roll.map((r) => r.id), month) : new Map<string, SalaryRow>();
+  // TA-046: while the run is a DRAFT the office is told of a slip kept off the roll for its hand-typed figures, and
+  // of the paused staff (no leaving day, a salary for the month) who are not on this run.
+  const draftForOffice = keeps(caller.role) && run.status === "DRAFT";
+  const paidOnRoll = new Set(roll.filter((r) => withSalary.has(r.id)).map((r) => r.id));
+  const onRoll = new Set(roll.map((r) => r.id));
+  const pausedRows = draftForOffice
+    ? (await db.membership.findMany({ where: { schoolId: caller.schoolId, role: { in: [...SCHOOL_STAFF_ROLES] }, status: "SUSPENDED", leftAt: null }, select: { id: true, user: { select: { name: true, preferredName: true } } }, orderBy: [{ user: { name: "asc" } }] })).filter((r) => !onRoll.has(r.id) && !inRun.has(r.id))
+    : [];
+  const pausedPaid = await salariesFor(caller.schoolId, pausedRows.map((r) => r.id), month);
   return {
     month: run.month,
     status: run.status as PayrollRunView["status"],
@@ -698,9 +730,10 @@ export async function runView(ctx: ActiveContext, month: string): Promise<Payrol
     payments: mayReadSlips ? { due: due.length, paid: due.filter((s) => payments.has(s.id)).length, paidPaise: [...payments.values()].reduce((a, p) => a + p.amountPaise, 0) } : null,
     sharedWithPrincipal: run.sharedWithPrincipal,
     totals: { headcount: run.headcount, grossPaise: run.grossPaise, deductionsPaise: run.deductionsPaise, employerPaise: run.employerPaise, netPaise: run.netPaise },
-    slips: mayReadSlips ? slips.map((s) => slipView(s, salaries.get(s.membershipId), { slipRef: refs.get(s.membershipId) ?? "", payment: payments.get(s.id) ?? null })) : null,
+    slips: mayReadSlips ? slips.map((s) => slipView(s, salaries.get(s.membershipId), { slipRef: refs.get(s.membershipId) ?? "", payment: payments.get(s.id) ?? null, offRoll: draftForOffice && !paidOnRoll.has(s.membershipId) })) : null,
     exports: exports.map((e) => ({ kind: e.kind as PayrollExportKind, fileName: e.fileName, rows: e.rows, totalPaise: e.totalPaise, createdAt: e.createdAt.toISOString(), byName: e.createdByUserId ? (exporters.get(e.createdByUserId) ?? "") : "" })),
     missingSalary: keeps(caller.role) && run.status === "DRAFT" ? roll.filter((r) => !withSalary.has(r.id) && !inRun.has(r.id)).map((r) => ({ membershipId: r.id, name: nameOf(r.user) })) : [],
+    paused: pausedRows.filter((r) => pausedPaid.has(r.id)).map((r) => ({ membershipId: r.id, name: nameOf(r.user) })),
     canEdit: keeps(caller.role) && run.status === "DRAFT",
   };
 }
@@ -719,13 +752,13 @@ export async function editSlip(ctx: ActiveContext, month: string, membershipId: 
   assertMonth(month);
   const settings = await settingsOf(caller.schoolId);
   const tz = await zoneOf(caller.schoolId);
-  const member = await db.membership.findFirst({ where: { id: membershipId, schoolId: caller.schoolId }, select: { id: true, role: true, leftAt: true, userId: true, user: { select: { name: true, preferredName: true } }, staffRecord: { select: { designation: true, gender: true, joinedOn: true } } } });
+  const member = await db.membership.findFirst({ where: { id: membershipId, schoolId: caller.schoolId }, select: { id: true, role: true, leftAt: true, userId: true, user: { select: { name: true, preferredName: true } }, staffRecord: { select: { designation: true, gender: true, joinedOn: true } }, scheduledDeparture: { select: { leaveOnKey: true } } } });
   if (!member) throw new AccessError("access.entryNotFound", "NOT_FOUND");
   const own = await ownPay(caller, member.userId);
   const salary = (await salariesFor(caller.schoolId, [member.id], month)).get(member.id);
   if (!salary) throw new RuleRefusal("payroll.refuseNoSalary", 409);
   if (edit.lopOverrideDays !== undefined && edit.lopOverrideDays !== null && edit.lopOverrideDays > daysInMonthOf(month)) throw new RuleRefusal("payroll.refuseLopDays", 422, undefined, "lopOverrideDays");
-  const [lop, instalments] = await Promise.all([lossOfPay(caller.schoolId, month, [{ id: member.id, leftAt: member.leftAt, joinedOn: member.staffRecord?.joinedOn ?? null }], tz), instalmentsFor(caller.schoolId, [member.id], month)]);
+  const [lop, instalments] = await Promise.all([lossOfPay(caller.schoolId, month, [{ id: member.id, leftAt: member.leftAt, joinedOn: member.staffRecord?.joinedOn ?? null, leaveOnKey: member.scheduledDeparture?.leaveOnKey ?? null }], tz), instalmentsFor(caller.schoolId, [member.id], month)]);
   const nets = await db.$tenantTransaction(async (raw) => {
     const tx = raw as Tx;
     const run = await lockRunRow(tx, caller.schoolId, month);

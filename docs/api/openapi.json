@@ -4683,6 +4683,137 @@
         ]
       }
     },
+    "/api/v1/admin/people/{membershipId}/staff-leaving": {
+      "post": {
+        "summary": "Record a member of staff's last working day with a coded reason: a past day ends access at once, today or a later day is kept and ends it the morning after; payroll pays them up to that day, and a pupil is refused",
+        "description": "Roles: ADMIN.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN"
+        ],
+        "x-reach": {
+          "ADMIN": "ownSchool"
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "leftOn": {
+                      "type": "string",
+                      "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+                      "nullable": true
+                    },
+                    "scheduledFor": {
+                      "allOf": [
+                        {
+                          "$ref": "#/properties/leftOn"
+                        }
+                      ],
+                      "nullable": true
+                    }
+                  },
+                  "required": [
+                    "leftOn",
+                    "scheduledFor"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "membershipId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "lastDay": {
+                    "type": "string",
+                    "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+                  },
+                  "reason": {
+                    "type": "string",
+                    "enum": [
+                      "RESIGNED",
+                      "RETIRED",
+                      "CONTRACT_ENDED",
+                      "DISMISSED",
+                      "TRANSFERRED",
+                      "DIED_IN_SERVICE"
+                    ]
+                  }
+                },
+                "required": [
+                  "lastDay",
+                  "reason"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/v1/admin/people/{membershipId}/legal-name": {
       "post": {
         "summary": "The office corrects a legal name for a coded reason (spelling, the admission record, a legal change); the person and a pupil's guardians are told; papers already issued keep theirs",
@@ -7486,7 +7617,7 @@
                   },
                   "weekday": {
                     "type": "integer",
-                    "minimum": 1,
+                    "minimum": 0,
                     "maximum": 6
                   },
                   "subject": {
@@ -23165,11 +23296,10 @@
                     "properties": {
                       "start": {
                         "type": "string",
-                        "pattern": "^\\d{1,2}:\\d{2}$"
+                        "pattern": "^([01]?\\d|2[0-3]):[0-5]\\d$"
                       },
                       "end": {
-                        "type": "string",
-                        "pattern": "^\\d{1,2}:\\d{2}$"
+                        "$ref": "#/properties/quietHours/properties/start"
                       }
                     },
                     "required": [
@@ -38286,6 +38416,18 @@
                         },
                         "assistantUsageDays": {
                           "$ref": "#/properties/config/properties/sessionDays"
+                        },
+                        "textMessageDays": {
+                          "$ref": "#/properties/config/properties/sessionDays"
+                        },
+                        "tripBoardingDays": {
+                          "$ref": "#/properties/config/properties/sessionDays"
+                        },
+                        "enquiryDays": {
+                          "$ref": "#/properties/config/properties/sessionDays"
+                        },
+                        "expertApplicationDays": {
+                          "$ref": "#/properties/config/properties/sessionDays"
                         }
                       },
                       "required": [
@@ -38334,6 +38476,18 @@
                           "$ref": "#/properties/config/properties/sessionDays"
                         },
                         "assistantUsage": {
+                          "$ref": "#/properties/config/properties/sessionDays"
+                        },
+                        "textMessages": {
+                          "$ref": "#/properties/config/properties/sessionDays"
+                        },
+                        "tripBoardings": {
+                          "$ref": "#/properties/config/properties/sessionDays"
+                        },
+                        "enquiries": {
+                          "$ref": "#/properties/config/properties/sessionDays"
+                        },
+                        "expertApplications": {
                           "$ref": "#/properties/config/properties/sessionDays"
                         }
                       },
@@ -53095,7 +53249,7 @@
                   },
                   "weekday": {
                     "type": "integer",
-                    "minimum": 1,
+                    "minimum": 0,
                     "maximum": 6
                   }
                 },
@@ -60756,7 +60910,11 @@
             "in": "query",
             "required": false,
             "schema": {
-              "type": "boolean"
+              "type": "string",
+              "enum": [
+                "true",
+                "false"
+              ]
             }
           }
         ]
@@ -102419,6 +102577,35 @@
                       "additionalProperties": false,
                       "nullable": true
                     },
+                    "invoices": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 64
+                          },
+                          "number": {
+                            "type": "string"
+                          },
+                          "issuedAt": {
+                            "type": "string"
+                          },
+                          "totalPaise": {
+                            "type": "integer"
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "number",
+                          "issuedAt",
+                          "totalPaise"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
                     "meeting": {
                       "type": "object",
                       "properties": {
@@ -102462,9 +102649,7 @@
                         "type": "object",
                         "properties": {
                           "id": {
-                            "type": "string",
-                            "minLength": 1,
-                            "maxLength": 64
+                            "$ref": "#/properties/invoices/items/properties/id"
                           },
                           "kind": {
                             "type": "string",
@@ -102586,7 +102771,7 @@
                         "type": "object",
                         "properties": {
                           "id": {
-                            "$ref": "#/properties/series/items/properties/id"
+                            "$ref": "#/properties/invoices/items/properties/id"
                           },
                           "kind": {
                             "$ref": "#/properties/series/items/properties/kind"
@@ -102621,7 +102806,7 @@
                           "seriesId": {
                             "allOf": [
                               {
-                                "$ref": "#/properties/series/items/properties/id"
+                                "$ref": "#/properties/invoices/items/properties/id"
                               }
                             ],
                             "nullable": true
@@ -102632,7 +102817,7 @@
                               "type": "object",
                               "properties": {
                                 "id": {
-                                  "$ref": "#/properties/series/items/properties/id"
+                                  "$ref": "#/properties/invoices/items/properties/id"
                                 },
                                 "pupilName": {
                                   "type": "string"
@@ -109001,6 +109186,217 @@
         "parameters": [
           {
             "name": "bookingId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/account/gig-invoices/{invoiceId}/pdf": {
+      "get": {
+        "summary": "A commission tax invoice as a PDF (application/pdf) in the language it was issued in, to the person it is addressed to whatever role they are signed in as — a teacher paid for guidance seats as well as an expert (the operator's any); anybody else's is not found",
+        "description": "Any signed-in session but a limited role's; of those, DRIVER, LIBRARIAN, WARDEN, ALUMNUS, FACULTY, HOD, EXAM_CONTROLLER, IQAC, TPO, ACCOUNTS, RECRUITER, SUPPORT.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": "signed-in",
+        "x-limited-roles": [
+          "DRIVER",
+          "LIBRARIAN",
+          "WARDEN",
+          "ALUMNUS",
+          "FACULTY",
+          "HOD",
+          "EXAM_CONTROLLER",
+          "IQAC",
+          "TPO",
+          "ACCOUNTS",
+          "RECRUITER",
+          "SUPPORT"
+        ],
+        "x-feature": [
+          "EXPERT_SESSIONS",
+          "TEACHER_SESSIONS"
+        ],
+        "x-plan-free": "a commission invoice the company issued stays readable to the person it is addressed to after their plan ends, as an expert's earnings do (TA-189)",
+        "x-reach": {
+          "ADMIN": "self",
+          "PRINCIPAL": "self",
+          "TEACHER": "self",
+          "STUDENT": "self",
+          "PARENT": "self",
+          "EXPERT": "self",
+          "DRIVER": "self",
+          "LIBRARIAN": "self",
+          "WARDEN": "self",
+          "ALUMNUS": "self",
+          "FACULTY": "self",
+          "HOD": "self",
+          "EXAM_CONTROLLER": "self",
+          "IQAC": "self",
+          "TPO": "self",
+          "ACCOUNTS": "self",
+          "RECRUITER": "self",
+          "SUPPORT": "self"
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ok": {
+                      "type": "boolean",
+                      "enum": [
+                        true
+                      ]
+                    }
+                  },
+                  "required": [
+                    "ok"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "invoiceId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/operator/gigs/invoices/{invoiceId}/pdf": {
+      "get": {
+        "summary": "Any commission tax invoice the company has issued, as a PDF (application/pdf) in the language it was issued in; an id no invoice holds is not found",
+        "description": "The server operator.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": "operator",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ok": {
+                      "type": "boolean",
+                      "enum": [
+                        true
+                      ]
+                    }
+                  },
+                  "required": [
+                    "ok"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "invoiceId",
             "in": "path",
             "required": true,
             "schema": {
@@ -120941,6 +121337,25 @@
                         "additionalProperties": false
                       }
                     },
+                    "paused": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "membershipId": {
+                            "type": "string"
+                          },
+                          "name": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "membershipId",
+                          "name"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
                     "canEdit": {
                       "type": "boolean"
                     }
@@ -120958,6 +121373,7 @@
                     "slips",
                     "exports",
                     "missingSalary",
+                    "paused",
                     "canEdit"
                   ],
                   "additionalProperties": false
@@ -121434,6 +121850,25 @@
                         "additionalProperties": false
                       }
                     },
+                    "paused": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "membershipId": {
+                            "type": "string"
+                          },
+                          "name": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "membershipId",
+                          "name"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
                     "canEdit": {
                       "type": "boolean"
                     }
@@ -121451,6 +121886,7 @@
                     "slips",
                     "exports",
                     "missingSalary",
+                    "paused",
                     "canEdit"
                   ],
                   "additionalProperties": false
@@ -122268,6 +122704,25 @@
                         "additionalProperties": false
                       }
                     },
+                    "paused": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "membershipId": {
+                            "type": "string"
+                          },
+                          "name": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "membershipId",
+                          "name"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
                     "canEdit": {
                       "type": "boolean"
                     }
@@ -122285,6 +122740,7 @@
                     "slips",
                     "exports",
                     "missingSalary",
+                    "paused",
                     "canEdit"
                   ],
                   "additionalProperties": false
@@ -122772,6 +123228,25 @@
                         "additionalProperties": false
                       }
                     },
+                    "paused": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "membershipId": {
+                            "type": "string"
+                          },
+                          "name": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "membershipId",
+                          "name"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
                     "canEdit": {
                       "type": "boolean"
                     }
@@ -122789,6 +123264,7 @@
                     "slips",
                     "exports",
                     "missingSalary",
+                    "paused",
                     "canEdit"
                   ],
                   "additionalProperties": false
@@ -140516,7 +140992,8 @@
                                     "CERTIFICATE",
                                     "DIPLOMA",
                                     "DEGREE",
-                                    "HONOURS_DEGREE"
+                                    "HONOURS_DEGREE",
+                                    "ADVANCED_DIPLOMA"
                                   ]
                                 },
                                 "credits": {
@@ -141607,7 +142084,8 @@
                             "CERTIFICATE",
                             "DIPLOMA",
                             "DEGREE",
-                            "HONOURS_DEGREE"
+                            "HONOURS_DEGREE",
+                            "ADVANCED_DIPLOMA"
                           ]
                         },
                         "credits": {
@@ -144555,7 +145033,8 @@
                               "CERTIFICATE",
                               "DIPLOMA",
                               "DEGREE",
-                              "HONOURS_DEGREE"
+                              "HONOURS_DEGREE",
+                              "ADVANCED_DIPLOMA"
                             ]
                           },
                           "credits": {
@@ -144872,7 +145351,8 @@
                               "CERTIFICATE",
                               "DIPLOMA",
                               "DEGREE",
-                              "HONOURS_DEGREE"
+                              "HONOURS_DEGREE",
+                              "ADVANCED_DIPLOMA"
                             ]
                           },
                           "credits": {
@@ -149938,7 +150418,8 @@
                                   "CERTIFICATE",
                                   "DIPLOMA",
                                   "DEGREE",
-                                  "HONOURS_DEGREE"
+                                  "HONOURS_DEGREE",
+                                  "ADVANCED_DIPLOMA"
                                 ]
                               },
                               "credits": {
@@ -151791,6 +152272,165 @@
                   "identifier",
                   "sectors",
                   "pointOfContact"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/placement/companies/{companyId}/invite-recruiter": {
+      "post": {
+        "summary": "The cell that verified a company with no accepted recruiter invites one by the address of a recruiter account (TA-090); bound once they accept, through the colleagues' invitation; the same answer for any address; audited",
+        "description": "Roles: TPO. Only while the school has PLACEMENT switched on.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "TPO"
+        ],
+        "x-module": "PLACEMENT",
+        "x-college": true,
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "identifier": {
+                      "type": "string"
+                    },
+                    "sectors": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "enum": [
+                          "IT_SOFTWARE",
+                          "CORE_ENGINEERING",
+                          "BFSI",
+                          "CONSULTING",
+                          "MANUFACTURING",
+                          "PHARMA_HEALTH",
+                          "FMCG_RETAIL",
+                          "EDTECH",
+                          "GOVT_PSU",
+                          "STARTUP",
+                          "OTHER"
+                        ]
+                      }
+                    },
+                    "pointOfContact": {
+                      "type": "string"
+                    },
+                    "verifiedAt": {
+                      "type": "string",
+                      "format": "date-time",
+                      "nullable": true
+                    },
+                    "recruiters": {
+                      "type": "integer"
+                    },
+                    "firstVisitYear": {
+                      "type": "integer",
+                      "nullable": true
+                    },
+                    "drives": {
+                      "type": "integer"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "name",
+                    "identifier",
+                    "sectors",
+                    "pointOfContact",
+                    "verifiedAt",
+                    "recruiters",
+                    "firstVisitYear",
+                    "drives"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "companyId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string",
+                    "format": "email",
+                    "maxLength": 200
+                  }
+                },
+                "required": [
+                  "email"
                 ],
                 "additionalProperties": false
               }
@@ -156321,7 +156961,7 @@
     },
     "/api/v1/placement/internships": {
       "get": {
-        "summary": "Internships under the AICTE policy: the college's for the TPO, HOD, office and principal; a faculty member's supervisees",
+        "summary": "Internships, each with the rule its student's programme follows (the AICTE policy under an AICTE programme, the scheme's total credits under another regulator) and the rules the college's programmes follow: the college's for the TPO, HOD, office and principal; a faculty member's supervisees",
         "description": "Roles: TPO, HOD, FACULTY, ADMIN, PRINCIPAL. Only while the school has PLACEMENT switched on.",
         "security": [
           {
@@ -156483,6 +157123,18 @@
                           },
                           "creditedAt": {
                             "$ref": "#/properties/internships/items/properties/facultyVisitAt"
+                          },
+                          "rule": {
+                            "type": "string",
+                            "enum": [
+                              "AICTE",
+                              "SCHEME"
+                            ],
+                            "default": "AICTE"
+                          },
+                          "creditsMax": {
+                            "type": "integer",
+                            "default": 20
                           }
                         },
                         "required": [
@@ -156548,6 +157200,15 @@
                         "windows"
                       ],
                       "additionalProperties": false
+                    },
+                    "ruleKinds": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/properties/internships/items/properties/rule"
+                      },
+                      "default": [
+                        "AICTE"
+                      ]
                     },
                     "canDecide": {
                       "type": "boolean"
@@ -156760,6 +157421,18 @@
                     },
                     "creditedAt": {
                       "$ref": "#/properties/facultyVisitAt"
+                    },
+                    "rule": {
+                      "type": "string",
+                      "enum": [
+                        "AICTE",
+                        "SCHEME"
+                      ],
+                      "default": "AICTE"
+                    },
+                    "creditsMax": {
+                      "type": "integer",
+                      "default": 20
                     }
                   },
                   "required": [
@@ -156878,7 +157551,7 @@
     },
     "/api/v1/placement/internships/{internshipId}/evaluate": {
       "post": {
-        "summary": "The industry grade, the faculty visit, the viva; the credits last (TPO or HOD alone; report, grade, viva and a family business's declaration first; never past the policy's 20)",
+        "summary": "The industry grade, the faculty visit, the viva; the credits last (TPO or HOD alone; report, grade, viva and a family business's declaration first; never past the rule of the student's programme: 20 under an AICTE programme, the programme's total credits under another regulator)",
         "description": "Roles: TPO, HOD, FACULTY. Only while the school has PLACEMENT switched on.",
         "security": [
           {
@@ -157031,6 +157704,18 @@
                     },
                     "creditedAt": {
                       "$ref": "#/properties/facultyVisitAt"
+                    },
+                    "rule": {
+                      "type": "string",
+                      "enum": [
+                        "AICTE",
+                        "SCHEME"
+                      ],
+                      "default": "AICTE"
+                    },
+                    "creditsMax": {
+                      "type": "integer",
+                      "default": 20
                     }
                   },
                   "required": [
@@ -157148,7 +157833,7 @@
                   "credits": {
                     "type": "integer",
                     "minimum": 1,
-                    "maximum": 20,
+                    "maximum": 400,
                     "nullable": true
                   }
                 },
@@ -158405,6 +159090,18 @@
                           },
                           "creditedAt": {
                             "$ref": "#/properties/profile/properties/consentAt"
+                          },
+                          "rule": {
+                            "type": "string",
+                            "enum": [
+                              "AICTE",
+                              "SCHEME"
+                            ],
+                            "default": "AICTE"
+                          },
+                          "creditsMax": {
+                            "type": "integer",
+                            "default": 20
                           }
                         },
                         "required": [
@@ -158438,6 +159135,38 @@
                     },
                     "internshipCredits": {
                       "type": "integer"
+                    },
+                    "internshipRule": {
+                      "type": "object",
+                      "properties": {
+                        "kind": {
+                          "$ref": "#/properties/internships/items/properties/rule"
+                        },
+                        "windows": {
+                          "type": "array",
+                          "items": {
+                            "type": "integer"
+                          }
+                        },
+                        "creditsMax": {
+                          "type": "integer"
+                        }
+                      },
+                      "required": [
+                        "kind",
+                        "windows",
+                        "creditsMax"
+                      ],
+                      "additionalProperties": false,
+                      "default": {
+                        "kind": "AICTE",
+                        "windows": [
+                          2,
+                          4,
+                          6
+                        ],
+                        "creditsMax": 20
+                      }
                     },
                     "prep": {
                       "type": "array",
@@ -159640,7 +160369,7 @@
     },
     "/api/v1/student/internships": {
       "post": {
-        "summary": "Propose an internship in a window after semester 2, 4 or 6",
+        "summary": "Propose an internship: after semester 2, 4 or 6 under an AICTE programme, after any semester of the programme under another regulator; a law internship after an even semester",
         "description": "Roles: STUDENT. Only while the school has PLACEMENT switched on.",
         "security": [
           {
@@ -159789,6 +160518,18 @@
                     },
                     "creditedAt": {
                       "$ref": "#/properties/facultyVisitAt"
+                    },
+                    "rule": {
+                      "type": "string",
+                      "enum": [
+                        "AICTE",
+                        "SCHEME"
+                      ],
+                      "default": "AICTE"
+                    },
+                    "creditsMax": {
+                      "type": "integer",
+                      "default": 20
                     }
                   },
                   "required": [
@@ -159900,38 +160641,9 @@
                     "maximum": 2000
                   },
                   "windowSemester": {
-                    "anyOf": [
-                      {
-                        "type": "number",
-                        "enum": [
-                          2
-                        ]
-                      },
-                      {
-                        "type": "number",
-                        "enum": [
-                          4
-                        ]
-                      },
-                      {
-                        "type": "number",
-                        "enum": [
-                          6
-                        ]
-                      },
-                      {
-                        "type": "number",
-                        "enum": [
-                          8
-                        ]
-                      },
-                      {
-                        "type": "number",
-                        "enum": [
-                          10
-                        ]
-                      }
-                    ]
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 12
                   },
                   "supervisorName": {
                     "type": "string",
@@ -160106,6 +160818,18 @@
                     },
                     "creditedAt": {
                       "$ref": "#/properties/facultyVisitAt"
+                    },
+                    "rule": {
+                      "type": "string",
+                      "enum": [
+                        "AICTE",
+                        "SCHEME"
+                      ],
+                      "default": "AICTE"
+                    },
+                    "creditsMax": {
+                      "type": "integer",
+                      "default": 20
                     }
                   },
                   "required": [
@@ -160375,6 +161099,18 @@
                     },
                     "creditedAt": {
                       "$ref": "#/properties/facultyVisitAt"
+                    },
+                    "rule": {
+                      "type": "string",
+                      "enum": [
+                        "AICTE",
+                        "SCHEME"
+                      ],
+                      "default": "AICTE"
+                    },
+                    "creditsMax": {
+                      "type": "integer",
+                      "default": 20
                     }
                   },
                   "required": [
@@ -160716,6 +161452,18 @@
                           },
                           "creditedAt": {
                             "$ref": "#/properties/offers/items/properties/acceptedAt"
+                          },
+                          "rule": {
+                            "type": "string",
+                            "enum": [
+                              "AICTE",
+                              "SCHEME"
+                            ],
+                            "default": "AICTE"
+                          },
+                          "creditsMax": {
+                            "type": "integer",
+                            "default": 20
                           }
                         },
                         "required": [
@@ -161063,6 +161811,18 @@
                           },
                           "creditedAt": {
                             "$ref": "#/properties/offers/items/properties/acceptedAt"
+                          },
+                          "rule": {
+                            "type": "string",
+                            "enum": [
+                              "AICTE",
+                              "SCHEME"
+                            ],
+                            "default": "AICTE"
+                          },
+                          "creditsMax": {
+                            "type": "integer",
+                            "default": 20
                           }
                         },
                         "required": [
@@ -204547,6 +205307,107 @@
                 "schema": {
                   "$ref": "#/components/schemas/ApiError"
                 }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/operator/companies/invite-recruiter": {
+      "post": {
+        "summary": "Invite a company's first recruiter: the company by its GSTIN or CIN, with no accepted recruiter, and the address of a recruiter account, bound once they accept (TA-090); the same answer for any address; audited",
+        "description": "The server operator.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": "operator",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ok": {
+                      "type": "boolean",
+                      "enum": [
+                        true
+                      ]
+                    }
+                  },
+                  "required": [
+                    "ok"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "identifier": {
+                    "type": "string"
+                  },
+                  "email": {
+                    "type": "string",
+                    "format": "email",
+                    "maxLength": 200
+                  }
+                },
+                "required": [
+                  "identifier",
+                  "email"
+                ],
+                "additionalProperties": false
               }
             }
           }

@@ -825,7 +825,7 @@ export const hi: Dictionary = {
     enrolChildIntro: "अपने बच्चे का नामांकन करना आपकी सहमति माना जाता है।",
     enrolChild: "{child} का नामांकन करिए",
     onTheCalendar: "कैलेंडर पर",
-    internalBoard: "इस शाळा की तालिका",
+    internalBoard: "इस स्कूल की तालिका",
     internalBoardStaff: "परिणाम वाली हर प्रविष्टि, जैसा कार्यालय ने कर्मचारियों को दिखाने के लिए तय किया है।",
     internalBoardSchool: "पहले नाम और कक्षा के साथ शीर्ष स्थान, और आपका अपना।",
     you: "आप",
@@ -1197,6 +1197,7 @@ export const hi: Dictionary = {
   person: {
     since: "{date} से",
     pupilsTaught: "{count} विद्यार्थियों को पढ़ाते हैं",
+    pupilsTaughtOne: "{count} विद्यार्थी को पढ़ाते हैं",
     classTeacher: "कक्षा शिक्षक:",
     badges: "बैज",
     noBadgesYet: "अभी कोई बैज नहीं मिला",
@@ -1531,6 +1532,15 @@ export const hi: Dictionary = {
     dateRange: "{from} से {to} तक",
     overallAcrossOne: "कुल, 1 जाँचे गए काम में।",
     overallAcrossMany: "कुल, {count} जाँचे गए कामों में।",
+    // TA-388 (owner's decision, 14 November 2026): the report's homework and tests averages, the overall beneath.
+    homeworkAverage: "गृहकार्य का औसत",
+    testsAverage: "परीक्षाओं का औसत",
+    homeworkCountOne: "1 गृहकार्य",
+    homeworkCountMany: "{count} गृहकार्य",
+    testsCountOne: "1 परीक्षा प्रश्नपत्र",
+    testsCountMany: "{count} परीक्षा प्रश्नपत्र",
+    noneMarkedHere: "इस अवधि में कुछ नहीं जाँचा गया",
+    averagesExplainer: "गृहकार्य का औसत वही आँकड़ा है जो परिवार के मुख्य पृष्ठ पर दिखता है। नीचे का कुल गृहकार्य और परीक्षाओं को साथ गिनता है।",
     back: "वापस",
     examsOnly: "इस कार्ड की परीक्षाओं में कुल अंक बटा अधिकतम",
     draftBanner: "ड्राफ़्ट — प्रकाशित नहीं। परिवार इसे अभी नहीं देख सकते।",
@@ -2437,6 +2447,7 @@ export const hi: Dictionary = {
     natOther: "कोई अन्य राष्ट्रीयता",
     pinHint: "छह अंक।",
     pinSixDigits: "पिन कोड छह अंकों का होता है और 0 से शुरू नहीं होता।",
+    dayNotReal: "वह दिन कैलेंडर में नहीं है। तारीख़ जाँचें।",
     chooseMotherTongue: "मातृभाषा सूची से चुनें।",
     chooseNationality: "राष्ट्रीयता सूची से चुनें।",
     guardianPhone: "परिवार का संपर्क नंबर",
@@ -2630,6 +2641,8 @@ export const hi: Dictionary = {
     typeToConfirm: "पुष्टि के लिए {phrase} लिखें",
     bulkRemoved: "{count} स्कूल हटाए गए",
     bulkDeleted: "{count} स्कूल मिटाए गए",
+    bulkRemovedOne: "{count} स्कूल हटाया गया",
+    bulkDeletedOne: "{count} स्कूल मिटाया गया",
     bulkDeleteMismatch: "यह वाक्यांश नहीं है। DELETE और फिर स्कूलों की संख्या लिखें।",
     bulkTooMany: "एक बार में अधिक से अधिक 100 स्कूल चुने जा सकते हैं। कम चुनें और फिर से कोशिश करें।",
     searchPlaceholder: "नाम, शहर या जॉइन कोड से खोजें",
@@ -2705,6 +2718,10 @@ export const hi: Dictionary = {
     retentionTripPositions: "चालकों के फ़ोन से बस की स्थितियाँ (परिवहन)",
     retentionAssistantConversations: "विदुर की बातचीत",
     retentionAssistantUsage: "विदुर की दैनिक गिनती",
+    retentionTextMessages: "भेजे गए या छोड़े गए संदेश (किसी नंबर का STOP उत्तर बना रहता है)",
+    retentionTripBoardings: "बस में चढ़ने और उतरने के समय (परिवहन)",
+    retentionEnquiries: "बंद नौकरी और प्रवेश पूछताछ, बंद होने के बाद",
+    retentionExpertApplications: "अस्वीकृत या वापस लिए गए विशेषज्ञ आवेदन और उनका दस्तावेज़",
     retentionForever: "हमेशा रखी जाती हैं",
     retentionDays: "{days} दिन",
     retentionPending: "{count} प्रतीक्षित",
@@ -3023,6 +3040,8 @@ export const hi: Dictionary = {
     subscriptionDueIn: "{days} दिनों में देय",
     subscriptionDueToday: "आज देय",
     subscriptionOverdue: "{days} दिन बीत चुके",
+    subscriptionDueInOne: "{days} दिन में देय",
+    subscriptionOverdueOne: "{days} दिन बीत चुका",
     subscriptionNotRecorded: "दर्ज नहीं",
     subscriptionMoveRefused: "वर्तमान स्थिति के बाद यह स्थिति नहीं आ सकती।",
     subscriptionDatesOrder: "देय तिथि शुरुआत के बाद की होनी चाहिए।",
@@ -3418,6 +3437,9 @@ export const hi: Dictionary = {
     onlyPupilLeaves: "केवल विद्यार्थी को स्कूल छोड़ चुका दर्ज किया जा सकता है। स्टाफ़ की पहुँच रोकिए।",
     alreadyLeft: "वे पहले से स्कूल छोड़ चुके दर्ज हैं।",
     leaveBeforeJoin: "वे जुड़ने के दिन से पहले नहीं छोड़ सकते।",
+    onlyStaffLeaves: "यहाँ केवल कर्मचारी का जाना दर्ज होता है। विद्यार्थी का जाना छोड़ने के प्रमाणपत्र के साथ अलग से दर्ज होता है।", // TA-046
+    staffLeaveSelf: "आप अपना जाना स्वयं दर्ज नहीं कर सकते। इसे कोई दूसरा प्रशासक दर्ज करेगा।", // TA-046
+    sayStaffLeavingReason: "जाने का कारण चुनें।", // TA-046
     notLeft: "वे स्कूल छोड़ चुके दर्ज नहीं हैं।",
 
     teacherNotOnClass: "वह शिक्षक इस कक्षा में नहीं है।",
@@ -3596,6 +3618,7 @@ export const hi: Dictionary = {
     onlyAnAdminCanPauseAccess: "पहुँच केवल प्रशासक रोक सकता है",
     onlyAnAdminCanPinAPost: "पोस्ट केवल प्रशासक ऊपर टाँक सकता है",
     onlyAnAdminCanRecordAPupil: "विद्यार्थी का स्कूल छोड़ना केवल प्रशासक दर्ज कर सकता है",
+    onlyAnAdminCanRecordStaffLeaving: "कर्मचारी का जाना केवल प्रशासक दर्ज कर सकता है", // TA-046
     onlyAnAdminCanRemoveContent: "सामग्री केवल प्रशासक हटा सकता है",
     onlyAnAdminCanRemoveSomebodyFrom: "स्कूल से किसी को केवल प्रशासक निकाल सकता है",
     onlyAnAdminCanResolveReports: "शिकायतें केवल प्रशासक निपटा सकता है",
@@ -5092,6 +5115,11 @@ export const hi: Dictionary = {
     nothingGradedYet: "अभी कुछ भी जाँचा नहीं गया",
     acrossPieces: "{count} कामों के आधार पर",
     acrossPiecesOne: "1 काम के आधार पर",
+    // TA-388 (owner's decision, 14 November 2026): the home tile counts the homework of the report's twelve weeks.
+    homeworkAverage: "गृहकार्य का औसत",
+    homeworkAcrossPieces: "पिछले 12 हफ़्तों के {count} कामों के आधार पर",
+    homeworkAcrossPiecesOne: "पिछले 12 हफ़्तों के 1 काम के आधार पर",
+    homeworkNoneMarked: "पिछले 12 हफ़्तों में कोई गृहकार्य जाँचा नहीं गया",
     streakStart: "अगले स्कूल दिन से शुरू",
     streakDays: "लगातार {count} स्कूल दिन",
     streakDaysOne: "लगातार 1 स्कूल दिन",
@@ -5726,14 +5754,14 @@ export const hi: Dictionary = {
     notYet: "अभी नहीं",
     closeTheYear: "वर्ष बंद करें",
     competition: "प्रतियोगिता",
-    competitionHint: "शाळा द्वारा आयोजित प्रतियोगिता; विद्यार्थी अपने एजेंडा से नामांकन करते हैं।",
-    competitionOption: "प्रतियोगिता — शाळा खुली रहती है; विद्यार्थी नामांकन कर सकते हैं",
+    competitionHint: "स्कूल द्वारा आयोजित प्रतियोगिता; विद्यार्थी अपने एजेंडा से नामांकन करते हैं।",
+    competitionOption: "प्रतियोगिता — स्कूल खुला रहता है; विद्यार्थी नामांकन कर सकते हैं",
     boardOff: "कोई आंतरिक तालिका नहीं",
     boardStaff: "केवल कर्मचारियों के लिए तालिका",
-    boardSchool: "पूरी शाळा के लिए तालिका",
+    boardSchool: "पूरे स्कूल के लिए तालिका",
     boardOffHint: "कोई रैंकिंग नहीं देखता; कर्मचारी प्रविष्टियों के पृष्ठ पर परिणाम दर्ज करते रहते हैं।",
     boardStaffHint: "कार्यालय, प्रधानाचार्य और शिक्षक हर प्रविष्टि को नाम, कक्षा, अंक और स्थान सहित देखते हैं।",
-    boardSchoolHint: "कर्मचारी सब कुछ देखते हैं; इस शाळा के विद्यार्थी और अभिभावक पहले नाम और कक्षा के साथ शीर्ष स्थान और अपना स्थान देखते हैं।",
+    boardSchoolHint: "कर्मचारी सब कुछ देखते हैं; इस स्कूल के विद्यार्थी और अभिभावक पहले नाम और कक्षा के साथ शीर्ष स्थान और अपना स्थान देखते हैं।",
     competitionSummary: "इसके बारे में एक पंक्ति",
     competitionSummaryPlaceholder: "सभागार में दो चरण; प्रार्थना सभा में पुरस्कार",
     enrolmentCloses: "नामांकन बंद होता है",
@@ -6662,6 +6690,9 @@ export const hi: Dictionary = {
     inviteOpenSelf: "अपने ईमेल पर भेजा निमंत्रण खोला",
     studentLeaveSchedule: "विद्यार्थी का छोड़ना भविष्य के दिन के लिए निर्धारित किया",
     studentLeaveUnschedule: "विद्यार्थी का निर्धारित छोड़ना रद्द किया",
+    staffLeave: "कर्मचारी का जाना दर्ज किया", // TA-046
+    staffLeaveSchedule: "कर्मचारी का अंतिम कार्य-दिवस आगे के लिए रखा", // TA-046
+    staffLeaveUnschedule: "कर्मचारी का रखा गया अंतिम कार्य-दिवस रद्द किया", // TA-046
     staffRecordSet: "एक स्टाफ सदस्य का रिकॉर्ड अपडेट किया",
     staffSupportAdd: "बिना साइन-इन वाला एक सहायक कर्मचारी जोड़ा", // owner-batch-item2a
     feesMessBill: "महीने का भोजनालय बिल बनाया", // owner-batch-item5
@@ -7072,6 +7103,7 @@ export const hi: Dictionary = {
     superuserSchoolModule: "शालाघर टीम ने एक संस्था के लिए मॉड्यूल बदला",
     superuserRecruiterDisable: "शालाघर टीम ने एक भर्तीकर्ता का खाता निष्क्रिय किया",
     superuserRecruiterEnable: "शालाघर टीम ने एक भर्तीकर्ता का खाता फिर से सक्रिय किया",
+    superuserRecruiterInvite: "शालाघर टीम ने बिना भर्तीकर्ता वाली कंपनी में एक भर्तीकर्ता को आमंत्रित किया",
     riskExpertDisable: "शालाघर टीम ने एक विशेषज्ञ का खाता बंद किया",
     riskExpertEnable: "शालाघर टीम ने एक विशेषज्ञ का खाता फिर से खोला",
     riskLoginClosed: "किसी ने संचालक द्वारा बंद किए गए खाते से साइन इन किया और उसे कारण बताया गया",
@@ -7308,6 +7340,7 @@ export const hi: Dictionary = {
     placementApply: "प्लेसमेंट ड्राइव में आवेदन किया",
     placementCompanyAdd: "प्लेसमेंट प्रकोष्ठ में कंपनी जोड़ी",
     placementCompanyColleague: "कंपनी में सहकर्मी को आमंत्रित किया",
+    placementCompanyRecruiterInvite: "प्लेसमेंट सेल द्वारा जाँची गई कंपनी में पहले भर्तीकर्ता को आमंत्रित किया",
     placementGuardianConsent: "अभिभावक ने नाबालिग के ड्राइव आवेदन पर सहमति दी",
     placementCompanyColleagueRemove: "कंपनी से भर्तीकर्ता को हटाया",
     placementCompanyColleagueDecline: "कंपनी का आमंत्रण अस्वीकार किया",
@@ -7551,6 +7584,20 @@ export const hi: Dictionary = {
       "जब तक आप बहाल नहीं करते, वे इस स्कूल को नहीं खोल पाएँगे। कुछ मिटता नहीं, और इससे उनके किसी और स्कूल पर असर नहीं पड़ता।",
     pauseWhy: "क्यों (ऑडिट लॉग में रहता है)",
     pauseAction: "पहुँच रोकें",
+    staffLeavingAction: "जाना दर्ज करें", // TA-046
+    staffLeavingTitle: "{name} का जाना दर्ज करें", // TA-046
+    staffLeavingBody: "उनका अंतिम कार्य-दिवस और जाने का कारण। उस दिन के बाद पहुँच समाप्त होती है, और वेतन-पत्रक उस महीने के चक्र में उन्हें उस दिन तक का वेतन देता है।", // TA-046
+    staffLastDay: "अंतिम कार्य-दिवस", // TA-046
+    staffLastDayHint: "आज या आगे का दिन रखा जाता है: उस दिन तक पहुँच बनी रहती है और अगली सुबह वे सूची से हटते हैं। बीता हुआ दिन पहुँच अभी समाप्त करता है।", // TA-046
+    staffLeavingWhy: "जाने का कारण", // TA-046
+    staffLeavingReasonRESIGNED: "त्यागपत्र दिया", // TA-046
+    staffLeavingReasonRETIRED: "सेवानिवृत्त हुए", // TA-046
+    staffLeavingReasonCONTRACT_ENDED: "अनुबंध समाप्त हुआ", // TA-046
+    staffLeavingReasonDISMISSED: "सेवा से हटाए गए", // TA-046
+    staffLeavingReasonTRANSFERRED: "स्थानांतरण हुआ", // TA-046
+    staffLeavingReasonDIED_IN_SERVICE: "सेवा के दौरान निधन", // TA-046
+    staffLeavingRecord: "जाना दर्ज करें", // TA-046
+    staffLeft: "{name} जा चुके हैं। उनकी पहुँच समाप्त हो गई है।", // TA-046
     paused: "{name} की पहुँच रोक दी गई",
     notRestored: "बहाल नहीं हुआ",
     canSignInAgain: "{name} फिर से साइन इन कर सकते हैं",
@@ -8386,6 +8433,7 @@ export const hi: Dictionary = {
     coverCancelledOn: "{date} का कवर रद्द हुआ।",
     coverCancelledFromTo: "{from} से {to} तक का कवर रद्द हुआ।",
     appProblem: "संदर्भ {reference}। {name} ने जो लिखा है, वह सुरक्षा केंद्र के ऑडिट लॉग में है।",
+    appProblemOperator: "संदर्भ {reference}। {name} ने जो लिखा है, वह सर्वर के ऑडिट लॉग में है।",
     feeReceived: "{amount} मिले — रसीद {serial}।",
     // fix-highs-B
     feeUnallocated: "{amount} तब आए जब यह बकाया पहले ही चुकाया जा चुका था। स्कूल कार्यालय को बता दिया गया है और वह इसे लौटाएगा।",
@@ -9811,6 +9859,9 @@ export const hi: Dictionary = {
     tabExamCell: "परीक्षा विभाग",
     tabPlacement: "प्लेसमेंट",
     outboxHeldElsewhere: "{count} किसी और जगह सहेजे गए थे, वे यहाँ से नहीं भेजे गए। जहाँ सहेजे गए थे, वहाँ वापस जाने पर वे भेज दिए जाएँगे।",
+    replayRefused: "बिना सिग्नल के सहेजी गई एक चीज़ सर्वर ने अस्वीकार कर दी, इसलिए वह सहेजी नहीं गई।",
+    replayExpired: "बिना सिग्नल के सहेजी गई एक चीज़ भेजे जाने के लिए बहुत देर तक रुकी रही, इसलिए वह सहेजी नहीं गई।",
+    answerUnreadable: "यह स्क्रीन सर्वर का उत्तर पढ़ नहीं सकी। ऐप को अपडेट की ज़रूरत हो सकती है।",
   },
   update: {
     title: "शालाघर को अपडेट चाहिए",
@@ -11743,6 +11794,7 @@ export const hi: Dictionary = {
     share: "वेतन-पर्चियाँ प्रधानाचार्य से साझा करें",
     unshare: "साझा करना बंद करें",
     missingSalary: "इनका वेतन नहीं है: {names}। ये इस चक्र में नहीं हैं।",
+    paused: "पहुँच रुकी है, जाने का दिन दर्ज नहीं: {names}। ये इस चक्र में नहीं हैं। जो चले गए हैं उनका जाने का दिन दर्ज करें, उन्हें उस दिन तक का वेतन मिलेगा।", // TA-046
     slipsTitle: "वेतन-पर्चियाँ",
     notSharedTitle: "वेतन-पर्चियाँ साझा नहीं हैं",
     notSharedBody: "कार्यालय हर व्यक्ति की पर्ची अपने पास रखता है, जब तक वह चक्र आपसे साझा न करे।",
@@ -11754,6 +11806,7 @@ export const hi: Dictionary = {
     warnNO_UPI: "UPI आईडी नहीं", // owner-batch-item2b
     warnNO_UAN: "यूएएन नहीं",
     warnNO_ESI_NUMBER: "ईएसआई संख्या नहीं",
+    warnOFF_ROLL_KEPT: "इस महीने की सूची में नहीं; हाथ से भरे आँकड़ों के कारण रखी गई", // TA-046
     kindEARNING: "आय",
     kindDEDUCTION: "कटौती",
     kindEMPLOYER_CONTRIBUTION: "नियोक्ता का हिस्सा",
@@ -11766,6 +11819,7 @@ export const hi: Dictionary = {
     saveSlip: "पर्ची सहेजें",
     slipSaved: "पर्ची की फिर से गणना की गई।",
     runDrafted: "चक्र उपस्थिति से बन गया।",
+    runDraftedKept: "चक्र उपस्थिति से बन गया। सूची से हटे व्यक्ति की एक पर्ची रखी गई क्योंकि उसमें हाथ से भरे आँकड़े हैं: उन्हें हटाकर फिर से बनाएँ तो पर्ची हट जाएगी।", // TA-046
     runLocked: "चक्र बंद हो गया, और सबको बता दिया गया कि उनकी वेतन-पर्ची तैयार है।",
     runShared: "प्रधानाचार्य अब इस चक्र की वेतन-पर्चियाँ पढ़ सकते हैं।",
     runUnshared: "वेतन-पर्चियाँ अब प्रधानाचार्य से साझा नहीं हैं।",
@@ -12892,6 +12946,7 @@ export const hi: Dictionary = {
     awardDIPLOMA: "डिप्लोमा",
     awardDEGREE: "उपाधि",
     awardHONOURS_DEGREE: "ऑनर्स उपाधि",
+    awardADVANCED_DIPLOMA: "उन्नत डिप्लोमा",
     schemesTitle: "योजनाएँ",
     schemesBody: "किसी कार्यक्रम के लिए विश्वविद्यालय की योजना: श्रेणी तालिका और उत्तीर्ण होने के नियम।",
     schemesNone: "अभी कोई योजना नहीं",
@@ -14742,6 +14797,8 @@ export const hi: Dictionary = {
     invitationDeclined: "आमंत्रण अस्वीकार कर दिया गया।",
     invitationAccepted: "अब आप कंपनी के लिए भर्ती करते हैं।",
     colleagueInvited: "यदि वह पता किसी भर्तीकर्ता का खाता है, तो उन्हें आमंत्रित किया गया है। स्वीकार करने के बाद वे कंपनी की ड्राइव पर काम करेंगे।",
+    inviteRecruiter: "भर्तीकर्ता को आमंत्रित करें",
+    inviteRecruiterHint: "इस कंपनी के लिए अभी कोई भर्तीकर्ता काम नहीं करता। उनके भर्तीकर्ता खाते के पते से एक को आमंत्रित करें; जिसे आप आमंत्रित करते हैं, उसकी ज़िम्मेदारी आपकी है।",
     companiesIntro: "हर कंपनी अपने जीएसटीआईएन या सीआईएन से हर महाविद्यालय पर एक ही पंक्ति है। उसकी माँग को ड्राइव बनाने से पहले कंपनी की जाँच करें।",
     companiesTitle: "कंपनियाँ ({count})",
     companyAdded: "{name} आपकी सूची में है।",
@@ -14954,6 +15011,7 @@ export const hi: Dictionary = {
     moveTo: "आगे बढ़ाएँ: {status}",
     myInternships: "इंटर्नशिप",
     myInternshipsIntro: "अब तक {credits} क्रेडिट। सेमेस्टर 2, 4 या 6 के बाद की अवधि में एक प्रस्तावित करें, डायरी रखें और रिपोर्ट जमा करें।",
+    myInternshipsIntroScheme: "अब तक {credits} क्रेडिट। अपने कार्यक्रम के किसी भी सेमेस्टर के बाद एक प्रस्तावित करें, डायरी रखें और रिपोर्ट जमा करें; क्रेडिट आपके कार्यक्रम की योजना के अनुसार होते हैं।",
     navAlumni: "आपका महाविद्यालय",
     navCell: "प्लेसमेंट",
     navParent: "प्लेसमेंट",
@@ -15011,6 +15069,7 @@ export const hi: Dictionary = {
     notifGuardianConsented: "आपके अभिभावक ने सहमति दी: {drive} को अब आपका आवेदन मिला",
     notifGuardianConsentAsk: "{name} ने {drive} के लिए आवेदन किया: आपकी सहमति चाहिए",
     notifColleagueInvite: "{name} आपको {company} के लिए भर्ती करने का आमंत्रण देते हैं",
+    notifOperatorInvite: "आपको {company} के लिए भर्ती करने का आमंत्रण है",
     notifRoundPassed: "{company}: चरण {round} पार",
     notifShortlisted: "{company} ने {title} के लिए आपको शॉर्टलिस्ट किया",
     offerAccepted: "ऑफ़र स्वीकार हुआ। बधाई।",
@@ -15090,6 +15149,8 @@ export const hi: Dictionary = {
     refuseChangedMeanwhile: "किसी ने अभी यह ड्राइव बदली। फिर देखें और दोबारा प्रयास करें।",
     refuseClosed: "यह ड्राइव बंद है और अब नहीं बदलती।",
     refuseCompanyTaken: "यह कंपनी पहले से पंजीकृत है। उससे जुड़े किसी सहकर्मी से अपना खाता जोड़ने को कहें।",
+    refuseCompanyHasRecruiter: "इस कंपनी के लिए पहले से एक भर्तीकर्ता काम करता है। वही अपने सहकर्मियों को आमंत्रित करते हैं।",
+    refuseInviteNotVerifier: "इस कंपनी के पहले भर्तीकर्ता को केवल वही प्लेसमेंट सेल आमंत्रित कर सकता है जिसने इसे जाँचा।",
     refuseCreditIncomplete: "क्रेडिट अंत में: पहले रिपोर्ट, उद्योग ग्रेड और मौखिकी।",
     refuseCreditsOverMax: "इससे नीति के {max} क्रेडिट पार हो जाएँगे; {have} पहले ही मिल चुके हैं।",
     refuseDeclarationKind: "घोषणा पारिवारिक व्यवसाय की इंटर्नशिप के लिए होती है।",
@@ -15108,6 +15169,9 @@ export const hi: Dictionary = {
     refuseInternshipDates: "इंटर्नशिप शुरू होने से पहले खत्म हो रही है।",
     refuseInternshipDecided: "इस इंटर्नशिप का निर्णय पहले ही हो चुका है।",
     refuseInternshipWindow: "इंटर्नशिप सेमेस्टर 2, 4 और 6 के बाद की अवधियों में होती है।",
+    refuseInternshipSemester: "इंटर्नशिप आपके कार्यक्रम के किसी सेमेस्टर के बाद होती है: 1 से {max} तक।",
+    refuseLawInternshipWindow: "विधि इंटर्नशिप किसी सम सेमेस्टर के बाद की छुट्टियों में होती है: 2, 4, 6, 8 या 10।",
+    refuseCreditsOverTotal: "इससे कार्यक्रम के कुल {max} क्रेडिट पार हो जाएँगे; {have} पहले ही मिल चुके हैं।",
     refuseInviteNotOpen: "ड्राइव खुलने पर ही विद्यार्थियों को बताया जाता है।",
     refuseJoinNotAccepted: "कार्यभार ग्रहण स्वीकृत ऑफ़र के लिए दर्ज होता है।",
     refuseJoinedDate: "कार्यभार ग्रहण का एक सही दिन लिखें, जो ऑफ़र दिए जाने के दिन से पहले और आज के बाद का न हो।",
@@ -15484,6 +15548,8 @@ export const hi: Dictionary = {
     remindBodySoon: "{college}: अवधि {from} को खुलती है और {to} को बंद होती है। इस वर्ष की तारीखों के लिए नियामक की सूचना देखें।",
     remindBodyOpen: "{college}: अवधि {to} तक खुली है। इस वर्ष की तारीखों के लिए नियामक की सूचना देखें।",
     recruitersIntro: "भर्तीकर्ता का खाता किसी महाविद्यालय का नहीं होता। एक को निष्क्रिय करने से वह हर महाविद्यालय से एक साथ बाहर हो जाता है और उसके सत्र समाप्त हो जाते हैं; खाता स्वयं बना रहता है।",
+    inviteTitle: "किसी कंपनी का पहला भर्तीकर्ता",
+    inviteIntro: "प्लेटफ़ॉर्म पर ऐसी कंपनी के लिए जिस पर अभी कोई भर्तीकर्ता काम नहीं करता: उसका जीएसटीआईएन या सीआईएन लिखें और किसी भर्तीकर्ता खाते का पता दें। स्वीकार करने के बाद वे उसकी ड्राइव पर काम करेंगे। जिसे आप आमंत्रित करते हैं, उसकी ज़िम्मेदारी आपकी है।",
     expertsNote: "किसी विशेषज्ञ को विशेषज्ञों की कतार से हर स्कूल की सूची से हटाया जाता है।",
     recruitersNoneTitle: "अभी कोई भर्तीकर्ता नहीं",
     recruitersNone: "अभी तक किसी भर्तीकर्ता ने खाता नहीं बनाया है।",
@@ -15817,6 +15883,7 @@ export const hi: Dictionary = {
       title: "क्लिनिकल पोस्टिंग",
       intro: "जिन स्थलों पर विद्यार्थी नियुक्त होते हैं, हर रोटेशन की पोस्टिंग लॉगबुक की गिनती के साथ, और हस्ताक्षर की प्रतीक्षा में प्रविष्टियाँ।",
       notOffered: "क्लिनिकल पोस्टिंग स्वास्थ्य-विज्ञान या फ़ार्मेसी स्ट्रीम वाला महाविद्यालय रखता है; आपके पास कोई नहीं है।",
+      openDesk: "क्लिनिकल डेस्क खोलें",
       supervisingTitle: "मेरी क्लिनिकल पोस्टिंग",
       supervisingIntro: "जिन पोस्टिंग का आप पर्यवेक्षण करते हैं और आपके हस्ताक्षर की प्रतीक्षा में लॉगबुक प्रविष्टियाँ।",
       noSupervising: "आप किसी क्लिनिकल पोस्टिंग का पर्यवेक्षण नहीं करते",
@@ -16727,7 +16794,7 @@ export const hi: Dictionary = {
     simDelta: "बदलाव",
     simTotal: "कुल",
     simMarks: "अंक",
-    simNoEngineering: "NBA सिम्युलेटर इंजीनियरिंग पढ़ाने वाले महाविद्यालय के लिए है।",
+    simNoEngineering: "NBA सिम्युलेटर अभियांत्रिकी पढ़ाने वाले महाविद्यालय के लिए है।",
     simTodayValue: "आज: {value}",
     simTodayDelta: "आज: {value} (बदलाव {delta})",
     simCriterionLine: "आज: {today} · यह परिदृश्य: {now}",
@@ -17274,7 +17341,7 @@ export const hi: Dictionary = {
     statusPLANNED: "नियोजित",
     statusDONE: "हो चुका",
     newTitle: "नया दौरा",
-    newIntro: "NAAC के लिए चक्र; NBA के लिए इंजीनियरिंग विभाग और एसएआर का वर्ष।",
+    newIntro: "NAAC के लिए चक्र; NBA के लिए अभियांत्रिकी विभाग और एसएआर का वर्ष।",
     fieldFramework: "किसके लिए",
     fieldTitle: "शीर्षक",
     fieldCycle: "NAAC चक्र",
@@ -17346,7 +17413,7 @@ export const hi: Dictionary = {
     refuseDates: "अंतिम दिन पहले दिन से पहले है।",
     refuseTooLong: "दौरा अधिकतम {days} दिन का होता है।",
     refuseCycle: "महाविद्यालय का NAAC चक्र चुनें।",
-    refuseDepartment: "महाविद्यालय का कोई इंजीनियरिंग विभाग चुनें।",
+    refuseDepartment: "महाविद्यालय का कोई अभियांत्रिकी विभाग चुनें।",
     refuseScheduleOutside: "समय-सारणी का कोई स्लॉट नई तिथियों से बाहर हो जाएगा।",
     refuseTooMany: "दौरे की फ़ाइल में अधिकतम {max} पंक्तियाँ होती हैं।",
     refuseDayOutside: "दौरे का कोई दिन चुनें।",
@@ -18656,7 +18723,7 @@ export const hi: Dictionary = {
     textMessagingWhat: "प्रदाता के ज़रिए परिवारों को SMS और WhatsApp। ऐप में और फ़ोन पर सूचनाओं पर इसका असर नहीं पड़ता।",
     textMessagingCount: "इस महीने इसके बंद होने से न भेजे गए संदेश: {count}",
     competitionsName: "प्रतियोगिता बाज़ार",
-    competitionsWhat: "हर शाळा के लिए प्लेटफ़ॉर्म की प्रतियोगिताएँ, सामग्री टीम का डेस्क और क्रॉलर। शाळा की अपनी प्रतियोगिताएँ कैलेंडर के कार्यक्रम हैं और कभी इस स्विच के पीछे नहीं होतीं।",
+    competitionsWhat: "हर स्कूल के लिए प्लेटफ़ॉर्म की प्रतियोगिताएँ, सामग्री टीम का डेस्क और क्रॉलर। स्कूल की अपनी प्रतियोगिताएँ कैलेंडर के कार्यक्रम हैं और कभी इस स्विच के पीछे नहीं होतीं।",
     competitionsCount: "{count} प्लेटफ़ॉर्म प्रतियोगिताएँ प्रकाशित",
   },
   // ---- end feature-switches ----

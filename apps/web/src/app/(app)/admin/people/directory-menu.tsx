@@ -22,6 +22,7 @@ import { useToast } from "@/components/ui/toast";
 import { cancelLeavingAction, reinstate, undoLeaving } from "./actions";
 import { PausePanel } from "./row-actions";
 import { LeavingPanel } from "./leaving-actions";
+import { StaffLeavingPanel } from "./staff-leaving-panel";
 import { RemovePanel } from "./remove-actions";
 import { SubjectsPanel } from "./subjects-panel";
 import { ParentLinkPanel } from "./parent-link-panel";
@@ -35,7 +36,7 @@ import { cn } from "@/lib/cn";
 import { actionError } from "@/lib/action-error";
 import { useT } from "@/lib/i18n";
 
-type Panel = "pause" | "left" | "remove" | "subjects" | "parent" | "family" | "birthdate" | "legalName" | "firstSignin" | "staff" | "duties" | null;
+type Panel = "pause" | "left" | "staffLeaving" | "remove" | "subjects" | "parent" | "family" | "birthdate" | "legalName" | "firstSignin" | "staff" | "duties" | null;
 
 /**
  * One quiet kebab per directory row, holding every verb that used to sit in
@@ -64,6 +65,7 @@ export function DirectoryMenu({
   duties,
   suspended,
   hasLeft,
+  staffLeaving = false,
 }: {
   membershipId: string;
   name: string;
@@ -87,6 +89,8 @@ export function DirectoryMenu({
   duties?: { held: DutyCode[]; offered: DutyCode[] };
   suspended: boolean;
   hasLeft: boolean;
+  /** TA-046: a member of staff's row (SCHOOL_STAFF_ROLES), offered Record leaving; never a guardian's, an alumnus's or a pupil's. */
+  staffLeaving?: boolean;
 }) {
   const t = useT();
   const router = useRouter();
@@ -275,6 +279,19 @@ export function DirectoryMenu({
                   </MenuItem>
                 ))}
 
+              {/* TA-046: a member of staff's leaving — a last working day with a coded reason, or the day kept given up. */}
+              {staffLeaving &&
+                !hasLeft &&
+                (leavingOnKey ? (
+                  <MenuItem icon={<ArrowCounterClockwiseIcon className="size-4" />} disabled={pending} onClick={doCancelLeaving}>
+                    {t("people.cancelLeaving")}
+                  </MenuItem>
+                ) : (
+                  <MenuItem icon={<SignOutIcon className="size-4" />} onClick={() => show("staffLeaving")}>
+                    {t("people.staffLeavingAction")}
+                  </MenuItem>
+                ))}
+
               {/*
                 Remove is offered only where it can apply. Somebody already
                 recorded as having left has a document with this school's name
@@ -300,6 +317,9 @@ export function DirectoryMenu({
       )}
       {panel === "left" && (
         <LeavingPanel membershipId={membershipId} name={name} onClose={() => setPanel(null)} />
+      )}
+      {panel === "staffLeaving" && (
+        <StaffLeavingPanel membershipId={membershipId} name={name} onClose={() => setPanel(null)} />
       )}
       {panel === "remove" && (
         <RemovePanel membershipId={membershipId} name={name} onClose={() => setPanel(null)} />
