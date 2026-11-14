@@ -23,7 +23,9 @@ import { field, intField, runAction } from "@/lib/module-actions";
 import { RuleRefusal } from "@/lib/rule-refusal";
 import { answerForm } from "@/lib/form-action";
 import type { FormState } from "@/lib/form-state";
+import { AccessError } from "@/lib/access-error";
 import {
+  academicsStructure,
   createDivision,
   removeTimetableSlot,
   saveAcademicsSettings,
@@ -98,6 +100,21 @@ export async function saveProgrammeAction(form: FormData): Promise<void> {
     });
     const threshold = field(form, "attendanceThreshold");
     await saveProgramme(await requireApiUser(), programmeSaveSchema.parse({ id: field(form, "id") || undefined, departmentId: field(form, "departmentId"), code: field(form, "code"), name: field(form, "name"), level: field(form, "level"), durationYears: intField(form, "durationYears"), intake: intField(form, "intake"), regulator: field(form, "regulator") || undefined, stream: field(form, "stream") || undefined, attendanceThreshold: threshold ? Number(threshold) : undefined, exitPoints: exits }));
+    return "academics.saved";
+  });
+}
+
+/**
+ * An existing programme's regulator corrected (the owner's decision on TA-538, 14 Nov 2026): everything else the
+ * programme holds is sent back as it is, and the threshold is the one the form showed (left blank, the regulator's).
+ */
+export async function saveProgrammeRegulatorAction(form: FormData): Promise<void> {
+  await runAction("/admin/academics/programmes", async () => {
+    const ctx = await requireApiUser();
+    const p = (await academicsStructure(ctx)).programmes.find((x) => x.id === field(form, "id"));
+    if (!p) throw new AccessError("access.entryNotFound", "NOT_FOUND");
+    const threshold = field(form, "attendanceThreshold");
+    await saveProgramme(ctx, programmeSaveSchema.parse({ id: p.id, departmentId: p.departmentId, code: p.code, name: p.name, level: p.level, durationYears: p.durationYears, intake: p.intake, regulator: field(form, "regulator") || undefined, attendanceThreshold: threshold ? Number(threshold) : undefined, exitPoints: p.exitPoints }));
     return "academics.saved";
   });
 }

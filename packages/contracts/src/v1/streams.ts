@@ -182,6 +182,15 @@ export function defaultRegulatorFor(stream: StreamCode): Regulator {
   return STREAM_PRESETS[stream].regulators[0]!;
 }
 
+/**
+ * Whether a new programme of this stream must name its regulator (the owner's decision on TA-538, 14 Nov 2026):
+ * a stream that lists more than one council (health sciences' NMC, DCI and INC, pharmacy's PCI and AICTE, law's
+ * BCI and UGC, management's AICTE and UGC) has no default, so the registrar picks the council and its attendance rule.
+ */
+export function regulatorChoiceNeeded(stream: StreamCode): boolean {
+  return STREAM_PRESETS[stream].regulators.length > 1;
+}
+
 /** Whether a stream answers to a council other than the UGC: the professional ones, which start with the placement cell. */
 export function isProfessionalStream(stream: StreamCode): boolean {
   return STREAM_PRESETS[stream].regulators[0] !== "UGC";

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { BooksIcon, GraduationCapIcon, ListChecksIcon, TargetIcon } from "@phosphor-icons/react/ssr";
-import { EXIT_AWARDS, PROGRAMME_LEVELS, REGULATORS, COURSE_KINDS, defaultRegulatorFor } from "@edulink/contracts";
+import { EXIT_AWARDS, PROGRAMME_LEVELS, COURSE_KINDS } from "@edulink/contracts";
+import { ProgrammeRegulatorFields } from "@/components/academics/programme-regulator-fields";
 import { streamsOf } from "@/lib/streams";
 import { tv } from "@/lib/stream-words";
 import { streamLabel } from "@/lib/institution";
@@ -15,7 +16,7 @@ import { AWARD_KEY, KIND_KEY, LEVEL_KEY, OfficeTop } from "@/components/academic
 import { academicsStructure, schemesWithoutRules, SUGGESTED_PASSING_RULES } from "@/lib/academics";
 import { getT } from "@/lib/i18n/server";
 import { academicsGate, type SearchParams } from "../shared";
-import { saveCourseAction, saveMappingAction, saveOutcomesAction, saveProgrammeAction, saveSchemeAction } from "../actions";
+import { saveCourseAction, saveMappingAction, saveOutcomesAction, saveProgrammeAction, saveProgrammeRegulatorAction, saveSchemeAction } from "../actions";
 import { TableScroll } from "@/components/ui/table-scroll";
 import { fieldClass } from "@/components/ui/field-class";
 
@@ -57,6 +58,16 @@ export default async function ProgrammesPage({ searchParams }: { searchParams: S
                     </p>
                     {p.exitPoints.length ? <p className="text-fg-muted">{t("academics.exitsLine", { exits: p.exitPoints.map((e) => t("academics.exitAfter", { year: e.afterYear, award: t(AWARD_KEY[e.award]!), credits: e.credits })).join(" · ") })}</p> : null}
                     {canEdit ? (
+                      // TA-538: an existing programme keeps its regulator; the office corrects it here, the threshold that follows said before saving.
+                      <form action={saveProgrammeRegulatorAction} className="grid gap-3 sm:grid-cols-3">
+                        <input type="hidden" name="id" value={p.id} />
+                        <ProgrammeRegulatorFields stream={p.stream} initialRegulator={p.regulator} initialThreshold={p.attendanceThreshold} />
+                        <div className="self-end">
+                          <Button type="submit" size="sm" variant="secondary">{t("streams.correctRegulator")}</Button>
+                        </div>
+                      </form>
+                    ) : null}
+                    {canEdit ? (
                       <form action={saveOutcomesAction} className="space-y-2">
                         <input type="hidden" name="programmeId" value={p.id} />
                         <TextAreaField label={t("academics.fieldPos")} name="outcomes" rows={3} defaultValue={pos.map((o) => `${o.code} | ${o.text}`).join("\n")} hint={t("academics.fieldOutcomesHint")} />
@@ -82,17 +93,8 @@ export default async function ProgrammesPage({ searchParams }: { searchParams: S
               </SelectField>
               <TextField label={t("academics.fieldYears")} name="durationYears" type="number" min={1} max={6} defaultValue={3} />
               <TextField label={t("academics.fieldIntake")} name="intake" type="number" min={0} max={5000} defaultValue={60} />
-              {streams.length ? (
-                <SelectField label={t("streams.programmeField")} name="stream" defaultValue={streams.length === 1 ? streams[0] : ""} hint={t("streams.programmeFieldHint")}>
-                  <option value="">{t("academics.none")}</option>
-                  {streams.map((st) => <option key={st} value={st}>{`${streamLabel(st, t)} · ${defaultRegulatorFor(st)}`}</option>)}
-                </SelectField>
-              ) : null}
-              <SelectField label={t("academics.fieldRegulator")} name="regulator" defaultValue={streams.length ? "" : "UGC"}>
-                {streams.length ? <option value="">{t("streams.regulatorFromStream")}</option> : null}
-                {REGULATORS.map((r) => <option key={r} value={r}>{r}</option>)}
-              </SelectField>
-              <TextField label={t("academics.fieldThreshold")} name="attendanceThreshold" type="number" min={1} max={100} hint={t("academics.fieldThresholdHint")} />
+              {/* TA-538: the stream, the regulator (no default where the stream lists several councils) and the threshold that follows, said before saving. */}
+              <ProgrammeRegulatorFields streams={streams} streamLabels={Object.fromEntries(streams.map((st) => [st, streamLabel(st, t)]))} />
               {[1, 2, 3, 4].map((y) => (
                 <SelectField key={y} label={t("academics.fieldExitAfter", { year: y })} name={`exit${y}`} defaultValue="">
                   <option value="">{t("academics.none")}</option>

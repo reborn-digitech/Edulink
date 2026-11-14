@@ -147,6 +147,7 @@ export const programmeSaveSchema = z.object({
   durationYears: z.number().int().min(1).max(6),
   intake: z.number().int().min(0).max(5000),
   /** Left out: the stream's default regulator (defaultRegulatorFor in ./streams.ts); one of the two must be given. */
+  // TA-538 (14 Nov 2026): a stream that lists more than one council (regulatorChoiceNeeded) has no default; leaving it out is refused.
   regulator: regulatorSchema.optional(),
   /** The college stream (5 Oct 2026): one of the college's own; null clears it. */
   stream: streamSchema.nullable().optional(),

@@ -4,6 +4,8 @@ import {
   DEFAULT_PASSING_RULES as EXAM_PASSING_RULES,
   defaultAttendanceThreshold,
   defaultRegulatorFor,
+  regulatorChoiceNeeded,
+  STREAM_PRESETS,
   STREAMS,
   type StreamCode,
   exitPointSchema,
@@ -300,6 +302,11 @@ export async function saveProgramme(ctx: ActiveContext, input: z.infer<typeof pr
   if (new Set(years).size !== years.length || years.some((y) => y > input.durationYears)) throw new RuleRefusal("academics.refuseExitPoints", 422, undefined, "exitPoints");
   // THE STREAM (5 Oct 2026): one of the college's own, and the regulator defaults from it when none is sent.
   if (input.stream && !(await streamsOf(c.schoolId)).includes(input.stream)) throw new RuleRefusal("streams.refuseNotOurs", 422, undefined, "stream");
+  // TA-538 (the owner's decision, 14 Nov 2026): a stream that lists more than one council has no default
+  // regulator; the registrar names it, so a nursing programme is never stored as NMC at 75 % by omission.
+  if (!input.regulator && input.stream && regulatorChoiceNeeded(input.stream)) {
+    throw new RuleRefusal("streams.refuseChooseRegulator", 422, { councils: STREAM_PRESETS[input.stream].regulators.join(", ") }, "regulator");
+  }
   const regulator = input.regulator ?? (input.stream ? defaultRegulatorFor(input.stream) : null);
   if (!regulator) throw new RuleRefusal("streams.refuseNoRegulator", 422, undefined, "regulator");
   const data = {

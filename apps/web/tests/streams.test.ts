@@ -174,11 +174,13 @@ describe("a college is made with its streams", () => {
 });
 
 describe("a programme's stream", () => {
-  it("defaults the regulator and the attendance rule, and must be one of the college's", async () => {
+  it("defaults the regulator and the attendance rule (a stream of one council), and must be one of the college's", async () => {
     const admin = await as(ids.admin, "ADMIN", ids.college, null);
     const save = (code: string, extra: Record<string, unknown>) => saveProgramme(admin, { departmentId: ids.dept, code, name: `ZZ ${code}`, level: "UG", durationYears: 4, intake: 60, exitPoints: [], ...extra } as never);
     const eng = await save("ZZBTME", { stream: "ENGINEERING" });
-    const pharm = await save("ZZBPH", { stream: "PHARMACY" });
+    // Pharmacy lists two councils (PCI and AICTE): since the owner's decision on TA-538 (14 Nov 2026) it has no default, the registrar names PCI and its 80 follows.
+    await expect(save("ZZBPH", { stream: "PHARMACY" })).rejects.toMatchObject({ key: "streams.refuseChooseRegulator", status: 422 });
+    const pharm = await save("ZZBPH", { stream: "PHARMACY", regulator: "PCI" });
     const own = await save("ZZBPH2", { stream: "PHARMACY", regulator: "AICTE" });
     const rows = await db.programme.findMany({ where: { id: { in: [eng.id, pharm.id, own.id] } }, select: { code: true, regulator: true, attendanceThreshold: true, stream: true }, orderBy: { code: "asc" } });
     expect(rows).toEqual([
