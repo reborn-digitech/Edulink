@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, type FormEvent } from "react";
+import { useCallback, useEffect, useState, type FormEvent } from "react";
 import { CheckCircleIcon } from "@phosphor-icons/react";
 import { ActionForm, useFormAnswer } from "@/components/ui/action-form";
 import { Card, CardBody } from "@/components/ui/card";
@@ -26,6 +26,11 @@ import { useT } from "@/lib/i18n";
  * `basedOn`, TA-248 / TA-515): a sheet sent late from the outbox leaves alone
  * every mark written since the page was opened, its blanks included, rather
  * than putting the older sheet over them.
+ *
+ * And when the browser SAYS it is online but the save fails on the way (a
+ * dropped connection on 2G, a captive portal answering for the server), the
+ * same sheet goes into the outbox rather than the page failing with every
+ * typed mark (TA-252): the form is not drawn again, so the marks stay in it.
  */
 export function MarksForm({
   slotId,
@@ -46,32 +51,52 @@ export function MarksForm({
     void countQueued(`marks:${classId}`).then(setQueued);
   }, [classId]);
 
+  const queueSheet = useCallback(
+    (data: FormData) => {
+      const entries: { membershipId: string; marks: number | null }[] = [];
+      for (const [key, value] of data.entries()) {
+        if (!key.startsWith("marks-")) continue;
+        const raw = String(value).trim();
+        entries.push({ membershipId: key.slice("marks-".length), marks: raw === "" ? null : Number(raw) });
+      }
+      const basedOn = String(data.get("basedOn") ?? "");
+      return enqueue({
+        url: "/api/v1/marks",
+        method: "POST",
+        body: JSON.stringify({ slotId, classId, entries, ...(basedOn ? { basedOn } : {}) }),
+        tag: `marks:${classId}`,
+      })
+        .then(() => countQueued(`marks:${classId}`))
+        .then((count) => {
+          setQueued(count);
+          toast({ tone: "accent", title: t("common.queuedOffline") });
+        });
+    },
+    [slotId, classId, toast, t],
+  );
+
   function queueOffline(event: FormEvent<HTMLFormElement>): boolean {
     if (navigator.onLine) return false; // the server action takes it from here
-    const data = new FormData(event.currentTarget);
-    const entries: { membershipId: string; marks: number | null }[] = [];
-    for (const [key, value] of data.entries()) {
-      if (!key.startsWith("marks-")) continue;
-      const raw = String(value).trim();
-      entries.push({ membershipId: key.slice("marks-".length), marks: raw === "" ? null : Number(raw) });
-    }
-    const basedOn = String(data.get("basedOn") ?? "");
-    void enqueue({
-      url: "/api/v1/marks",
-      method: "POST",
-      body: JSON.stringify({ slotId, classId, entries, ...(basedOn ? { basedOn } : {}) }),
-      tag: `marks:${classId}`,
-    })
-      .then(() => countQueued(`marks:${classId}`))
-      .then((count) => {
-        setQueued(count);
-        toast({ tone: "accent", title: t("common.queuedOffline") });
-      });
+    void queueSheet(new FormData(event.currentTarget));
     return true;
   }
 
+  /** The server action, with a save that fails on the way queued instead of thrown at the page (TA-252). */
+  const saveOrQueue = useCallback(
+    async (previous: FormState, form: FormData): Promise<FormState> => {
+      try {
+        return await action(previous, form);
+      } catch {
+        await queueSheet(form);
+        // Idle, on the same key: no refusal is drawn, and the form is not drawn afresh, so every typed mark stays.
+        return { idle: true, ok: false, n: previous.n };
+      }
+    },
+    [action, queueSheet],
+  );
+
   return (
-    <ActionForm key={`${classId}:${slotId}`} action={action} intercept={queueOffline} className="space-y-4">
+    <ActionForm key={`${classId}:${slotId}`} action={saveOrQueue} intercept={queueOffline} className="space-y-4">
       {children}
       <SavedNote />
       {queued > 0 && (

@@ -22,6 +22,7 @@ import type { TranslationKey } from "@/lib/i18n/dictionary";
 import type { RegisterAbsenceNote } from "@edulink/contracts";
 import { fieldClass } from "@/components/ui/field-class";
 import { PAGE_TITLE } from "@/components/ui/page-title";
+import { todayKey } from "@/lib/dates";
 
 export type RosterEntry = {
   membershipId: string;
@@ -45,6 +46,8 @@ const REASON_KEY: Record<RegisterAbsenceNote["reason"], TranslationKey> = {
 
 type Pending = "idle" | "saving" | "queued" | "saved" | "error";
 
+type DirtyMark = { status: AttendanceStatus; note: string | null; clientId: string; markedAt: string };
+
 /**
  * The register.
  *
@@ -61,7 +64,9 @@ export function Register({
   dateKey,
   dateLabel,
   initialRoster,
-  readOnly,
+  readOnly: readOnlyByDay,
+  forToday,
+  timezone,
 }: {
   classId: string;
   className: string;
@@ -69,6 +74,10 @@ export function Register({
   dateLabel: string;
   initialRoster: RosterEntry[];
   readOnly?: boolean;
+  /** Drawn as today's register (no ?date=): marking stops if the school's day has moved on since (TA-221). */
+  forToday?: boolean;
+  /** The school's timezone, for "today" as the school counts it. */
+  timezone?: string;
 }) {
   const t = useT();
   const { toast } = useToast();
@@ -79,8 +88,37 @@ export function Register({
   const [noteFor, setNoteFor] = useState<string | null>(null);
   const [online, setOnline] = useState(true);
 
+  /*
+   * A register drawn as "today's" and shown on a later day (TA-221): a copy the worker's page cache answered when the
+   * network failed, or a tab left open overnight. Its marks would go to the day it was drawn for, which the server
+   * accepts from the class teacher, so marking stops and the page offers a reload. Checked on mount, when the tab
+   * comes back and once a minute.
+   */
+  const [stale, setStale] = useState(false);
+  useEffect(() => {
+    if (!forToday || !timezone) return;
+    const check = () => setStale(todayKey(timezone) !== dateKey);
+    check();
+    const onVisible = () => {
+      if (document.visibilityState === "visible") check();
+    };
+    document.addEventListener("visibilitychange", onVisible);
+    window.addEventListener("focus", check);
+    const timer = setInterval(check, 60_000);
+    return () => {
+      document.removeEventListener("visibilitychange", onVisible);
+      window.removeEventListener("focus", check);
+      clearInterval(timer);
+    };
+  }, [forToday, timezone, dateKey]);
+  const readOnly = readOnlyByDay || stale;
+
   // Marks the user has changed but not yet sent, keyed by membershipId.
-  const dirty = useRef(new Map<string, { status: AttendanceStatus; note: string | null; clientId: string; markedAt: string }>());
+  const dirty = useRef(new Map<string, DirtyMark>());
+  // "Mark all present" marks waiting for their Undo to pass (TA-216): sent when the toast goes without Undo, or when the page is hidden.
+  const held = useRef(new Map<string, DirtyMark>());
+  // The client ids of held marks that went out before their Undo was pressed (the page was hidden): too late to take back.
+  const sentEarly = useRef(new Set<string>());
   const saveTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   /* ---- a colleague's marks, live ----
@@ -182,7 +220,8 @@ export function Register({
   const flush = useCallback(async () => {
     if (dirty.current.size === 0) return;
 
-    const marks = [...dirty.current.entries()].map(([studentMembershipId, mark]) => ({
+    const batch = [...dirty.current.entries()];
+    const marks = batch.map(([studentMembershipId, mark]) => ({
       studentMembershipId,
       status: mark.status,
       note: mark.note ?? undefined,
@@ -220,6 +259,11 @@ export function Register({
           return;
         }
         const detail = await response.json().catch(() => ({}));
+        // Refused and not queued (TA-217): the batch goes back to wait, so Retry, or the next mark's save, sends it
+        // again, and nothing says Saved while it was never stored. A pupil marked again since keeps the newer mark.
+        for (const [membershipId, mark] of batch) {
+          if (!dirty.current.has(membershipId) && unconfirmed.current.get(membershipId) === mark.clientId) dirty.current.set(membershipId, mark);
+        }
         setState("error");
         toast({
           tone: "danger",
@@ -265,9 +309,30 @@ export function Register({
     saveTimer.current = setTimeout(() => void flush(), 700);
   }, [flush]);
 
+  /**
+   * "Mark all present" waits for its Undo to pass (TA-216): the marks of one press go out once its toast goes without
+   * Undo, or at once if the page is hidden first. A pupil marked by hand since keeps that mark, which is already on its way.
+   */
+  const commitHeld = useCallback(
+    (only?: Map<string, DirtyMark>) => {
+      let moved = 0;
+      for (const [membershipId, mark] of [...(only ?? held.current)]) {
+        if (held.current.get(membershipId)?.clientId !== mark.clientId) continue;
+        held.current.delete(membershipId);
+        if (dirty.current.has(membershipId) || unconfirmed.current.get(membershipId) !== mark.clientId) continue;
+        dirty.current.set(membershipId, mark);
+        sentEarly.current.add(mark.clientId);
+        moved++;
+      }
+      if (moved > 0) void flush();
+    },
+    [flush],
+  );
+
   // A teacher closing the tab mid-register must not lose the last marks.
   useEffect(() => {
     const onHide = () => {
+      if (held.current.size > 0) commitHeld();
       if (dirty.current.size > 0) void flush();
     };
     document.addEventListener("visibilitychange", onHide);
@@ -277,9 +342,10 @@ export function Register({
       window.removeEventListener("pagehide", onHide);
       if (saveTimer.current) clearTimeout(saveTimer.current);
     };
-  }, [flush]);
+  }, [flush, commitHeld]);
 
   function mark(membershipId: string, status: AttendanceStatus, note?: string | null) {
+    if (readOnly) return;
     const previous = roster.find((r) => r.membershipId === membershipId);
 
     setRoster((current) =>
@@ -293,6 +359,8 @@ export function Register({
     const clientId = newClientId();
     minted.current.add(clientId);
     unconfirmed.current.set(membershipId, clientId);
+    // A hand mark wins over a "Mark all present" still waiting for its Undo to pass.
+    held.current.delete(membershipId);
     dirty.current.set(membershipId, {
       status,
       note: note !== undefined ? note : (previous?.note ?? null),
@@ -307,8 +375,9 @@ export function Register({
     const unmarked = roster.filter((entry) => !entry.status);
     if (unmarked.length === 0) return;
 
-    const snapshot = roster;
     const stamp = new Date().toISOString();
+    // This press's marks, held rather than sent (TA-216): nothing reaches the server while the Undo is on the screen.
+    const batch = new Map<string, DirtyMark>();
 
     setRoster((current) =>
       current.map((entry) => (entry.status ? entry : { ...entry, status: "PRESENT" as const })),
@@ -317,24 +386,33 @@ export function Register({
       const clientId = newClientId();
       minted.current.add(clientId);
       unconfirmed.current.set(entry.membershipId, clientId);
-      dirty.current.set(entry.membershipId, {
-        status: "PRESENT",
-        note: entry.note,
-        clientId,
-        markedAt: stamp,
-      });
+      const mark: DirtyMark = { status: "PRESENT", note: entry.note, clientId, markedAt: stamp };
+      batch.set(entry.membershipId, mark);
+      held.current.set(entry.membershipId, mark);
     }
-    scheduleSave();
 
     toast({
       tone: "ok",
       title: t("teacher.markedPresent", { count: unmarked.length }),
       description: t("teacher.nowChange"),
+      onCommit: () => commitHeld(batch),
       onUndo: () => {
-        setRoster(snapshot);
-        for (const entry of unmarked) {
-          dirty.current.delete(entry.membershipId);
-          unconfirmed.current.delete(entry.membershipId);
+        // Only what is still held is taken back: a pupil marked by hand since keeps that mark, and marks the page
+        // already sent (it was hidden meanwhile) are not shown as taken back when they were not.
+        const undone = new Set<string>();
+        let tooLate = 0;
+        for (const [membershipId, mark] of batch) {
+          if (sentEarly.current.has(mark.clientId)) tooLate++;
+          if (held.current.get(membershipId)?.clientId !== mark.clientId) continue;
+          held.current.delete(membershipId);
+          if (unconfirmed.current.get(membershipId) === mark.clientId) unconfirmed.current.delete(membershipId);
+          undone.add(membershipId);
+        }
+        if (undone.size > 0) {
+          setRoster((current) => current.map((entry) => (undone.has(entry.membershipId) ? { ...entry, status: null } : entry)));
+        }
+        if (tooLate > 0) {
+          toast({ tone: "warn", title: t("teacher.someNotSaved"), description: t("teacher.undoAfterSave") });
         }
       },
     });
@@ -352,7 +430,7 @@ export function Register({
             <h1 className={cn(PAGE_TITLE, "block truncate")}>{className}</h1>
 
             <p className="text-xs text-fg-muted">
-              {dateLabel} · {roster.length} student{roster.length === 1 ? "" : "s"}
+              {dateLabel} · {roster.length === 1 ? t("teacher.studentsCountOne") : t("teacher.studentsCount", { count: roster.length })}
             </p>
           </div>
           <span data-testid="register-sync" data-state={state}>
@@ -378,11 +456,20 @@ export function Register({
           ))}
           {counts.unmarked > 0 && (
             <span className="inline-flex shrink-0 items-center rounded-full bg-surface-muted px-2.5 py-1 text-xs font-semibold tabular-nums text-fg-muted">
-              {counts.unmarked} not marked
+              {t("teacher.notMarkedCount", { count: counts.unmarked })}
             </span>
           )}
         </div>
       </div>
+
+      {stale && (
+        <div role="alert" data-testid="register-stale" className="flex flex-wrap items-center justify-between gap-3 rounded-[var(--radius-md)] border border-warn/40 bg-warn-soft px-4 py-3 text-sm font-medium text-warn">
+          <span>{t("teacher.registerStale", { date: dateLabel })}</span>
+          <Button size="sm" variant="secondary" onClick={() => window.location.reload()}>
+            {t("ui.refresh")}
+          </Button>
+        </div>
+      )}
 
       {!readOnly && counts.unmarked > 0 && (
         <Button block variant="soft" size="lg" onClick={markAllPresent} icon={<CheckCircleIcon weight="bold" />}>
@@ -472,6 +559,8 @@ function StudentRow({
         // so the name keeps at least 7 rem and the buttons drop to a second
         // line, right-aligned, when the row cannot hold them all.
         "flex flex-wrap items-center gap-3 rounded-[var(--radius-lg)] border bg-surface p-2.5 pl-3 transition-colors",
+        // Clear of the sticky summary (and, on a phone, the top bar) when a mark is reached with Tab (TA-399).
+        "scroll-mt-[7.5rem] lg:scroll-mt-[8rem]",
         entry.status ? "border-border" : "border-dashed border-border-strong",
       )}
       data-testid="register-row"
@@ -551,7 +640,8 @@ function StudentRow({
                 active
                   ? {
                       backgroundColor: `var(--att-${meta.token})`,
-                      color: "#fff",
+                      // White on light's status fills, dark on dark's pale ones (TA-230): globals.css --status-fg.
+                      color: "var(--status-fg)",
                     }
                   : undefined
               }

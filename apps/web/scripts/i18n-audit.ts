@@ -183,6 +183,14 @@ function userVisible(source: string): string[] {
     if (m && /\s[a-z]/.test(m[1]!)) found.push(m[1]!.trim());
   }
 
+  // 1e. THE SEVENTH (TA-233): English TRAILING an interpolation, `{counts.unmarked} not marked</span>`: two or more
+  // lowercase words after a closing brace, running to the next tag or interpolation. Lowercase letters only, so
+  // TypeScript's `} as unknown as Array<` is not taken for a sentence.
+  for (const m of code.matchAll(/\}[ \t]+([a-z][a-z'’ ]{2,80}?)\s*(?=[<{])/g)) {
+    const text = m[1]!.trim();
+    if (/\s[a-z]/.test(text)) found.push(text);
+  }
+
   // 1b. Reader-facing VALUES in lookup tables — `label: "Late"` and friends.
   for (const key of ["label", "short", "hint", "title", "description", "name"]) {
     const re = new RegExp(`\\b${key}:\\s*["'\`]([^"'\`]{4,160})["'\`]`, "g");

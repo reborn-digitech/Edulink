@@ -13,6 +13,8 @@
  * cannot double-write a register. (§10 "operation writes twice")
  */
 
+import { OUTBOX_LOCK } from "./sw-helpers";
+
 const DB_NAME = "edulink";
 const DB_VERSION = 2;
 const STORE = "outbox";
@@ -50,12 +52,21 @@ export type QueuedRequest = {
  */
 let currentOwner: string | null | undefined;
 
+/** How long a row waits, with nobody signed in, for its owner's next session (the phone's outbox holds seven days too). */
+export const OUTBOX_HOLD_MS = 7 * 24 * 60 * 60 * 1000;
+
 /**
  * Called by the runtime with the session's user id, or null when signed out.
- * When the owner changes — a sign-out, or someone else signing in — the rows
- * of every other owner are dropped and the private caches cleared, so what
- * one person queued or read on a shared staff-room machine does not wait
- * for, or show to, the next. Returns what was dropped so the caller can say.
+ * When the owner changes the private caches are cleared, so what one person
+ * read on a shared staff-room machine is not the next person's offline page.
+ *
+ * NOBODY IS NOT SOMEBODY ELSE (TA-219, TA-519). A change to null — a session
+ * that reached its thirtieth day, a "sign out everywhere", a sign-out — keeps
+ * the rows: each is bound to its owner, both drains send only the signed-in
+ * person's rows and the server refuses a replay under anyone else, so they
+ * wait for the owner's next session, up to OUTBOX_HOLD_MS. Rows are dropped
+ * when a DIFFERENT person signs in, or when they have waited longer than
+ * that. Returns what was dropped so the caller can say (the runtime's toast).
  */
 export async function setOutboxOwner(owner: string | null): Promise<{ dropped: number; changed: boolean }> {
   const before = currentOwner === undefined ? await readOwner() : currentOwner;
@@ -70,11 +81,13 @@ export async function setOutboxOwner(owner: string | null): Promise<{ dropped: n
   if (changed) {
     try {
       const all = await tx<QueuedRequest[]>("readonly", (store) => store.getAll() as IDBRequest<QueuedRequest[]>);
+      const now = Date.now();
       for (const item of all) {
-        if (item.owner !== owner) {
-          await remove(item.id);
-          dropped++;
-        }
+        const rowOwner = item.owner ?? null;
+        if (rowOwner === owner) continue;
+        if (owner === null && rowOwner !== null && now - item.createdAt < OUTBOX_HOLD_MS) continue;
+        await remove(item.id);
+        dropped++;
       }
     } catch {
       // Nothing to drop.
@@ -199,11 +212,21 @@ let flushing = false;
 export async function flushQueue(): Promise<{ sent: number; failed: number; remaining: number }> {
   if (flushing) return { sent: 0, failed: 0, remaining: await countQueued() };
   flushing = true;
+  // Under the outbox's Web Lock (sw-helpers.ts OUTBOX_LOCK), which the worker's Background Sync drain takes too, so
+  // the two never replay the same rows side by side and out of order (TA-218). The rows are read inside it.
+  const locks = typeof navigator !== "undefined" ? (navigator as Navigator & { locks?: LockManager }).locks : undefined;
+  try {
+    return locks ? await locks.request(OUTBOX_LOCK, () => flushUnlocked()) : await flushUnlocked();
+  } finally {
+    flushing = false;
+  }
+}
 
+async function flushUnlocked(): Promise<{ sent: number; failed: number; remaining: number }> {
   let sent = 0;
   let failed = 0;
 
-  try {
+  {
     const items = (await listQueued()).sort((a, b) => a.createdAt - b.createdAt);
 
     for (const item of items) {
@@ -241,8 +264,6 @@ export async function flushQueue(): Promise<{ sent: number; failed: number; rema
         failed++;
       }
     }
-  } finally {
-    flushing = false;
   }
 
   const remaining = await countQueued();

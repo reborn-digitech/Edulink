@@ -308,6 +308,10 @@ export function DateField({
 
   const asIso = displayDateToIso(typed);
   const incomplete = typed.trim().length > 0 && asIso === null;
+  // Said once the person has left the box, or typed a whole date's length (TA-404): not as an alert on the first
+  // keystroke, with the example hint taken away while they are still typing it. onInvalidChange still hears at once.
+  const [left, setLeft] = useState(false);
+  const showIncomplete = incomplete && (left || typed.trim().length >= 10);
 
   useEffect(() => {
     onInvalidChange?.(incomplete);
@@ -329,7 +333,7 @@ export function DateField({
     <Field
       label={label}
       hint={hint ?? t("field.dateHint")}
-      error={error ?? fed.error ?? (incomplete ? t("field.dateInvalid") : undefined)}
+      error={error ?? fed.error ?? (showIncomplete ? t("field.dateInvalid") : undefined)}
       required={required}
       className={className}
     >
@@ -345,10 +349,14 @@ export function DateField({
             disabled={disabled}
             required={required}
             aria-describedby={describedBy}
-            aria-invalid={invalid || incomplete || undefined}
+            aria-invalid={invalid || showIncomplete || undefined}
             onChange={(event) => report(event.target.value)}
-            className={fieldClass(undefined, invalid || incomplete)}
+            className={fieldClass(undefined, invalid || showIncomplete)}
             {...rest}
+            onBlur={(event) => {
+              setLeft(true);
+              rest.onBlur?.(event);
+            }}
           />
 
           {/* What actually goes to the server, and what a native picker writes

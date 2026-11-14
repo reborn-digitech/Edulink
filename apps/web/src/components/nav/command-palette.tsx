@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useId, useMemo, useRef, useState } from "react";
 import { useRouter } from "@/lib/navigation";
 import Link from "next/link";
 import { ArrowRightIcon, MagnifyingGlassIcon } from "@phosphor-icons/react";
@@ -122,6 +122,8 @@ export function CommandPalette({
   const [cursor, setCursor] = useState(0);
   const inputRef = useRef<HTMLInputElement>(null);
   const previouslyFocused = useRef<HTMLElement | null>(null);
+  const dialogRef = useRef<HTMLDivElement>(null);
+  const listId = useId();
 
   // Rebuilt when `t` changes, so switching language re-labels the palette
   // rather than leaving the previous language cached behind the ⌘K.
@@ -212,6 +214,22 @@ export function CommandPalette({
         event.preventDefault();
         onClose();
       }
+      // Tab stays inside the dialog (TA-393): the input and the result rows, round again at either end.
+      if (event.key === "Tab" && dialogRef.current) {
+        const stops = [...dialogRef.current.querySelectorAll<HTMLElement>("input, a[href]")];
+        const first = stops[0];
+        const last = stops[stops.length - 1];
+        const active = document.activeElement;
+        if (first && last) {
+          if (event.shiftKey && (active === first || !dialogRef.current.contains(active))) {
+            event.preventDefault();
+            last.focus();
+          } else if (!event.shiftKey && (active === last || !dialogRef.current.contains(active))) {
+            event.preventDefault();
+            first.focus();
+          }
+        }
+      }
       if (event.key === "ArrowDown") {
         event.preventDefault();
         setCursor((c) => Math.min(c + 1, results.length - 1));
@@ -221,6 +239,11 @@ export function CommandPalette({
         setCursor((c) => Math.max(c - 1, 0));
       }
       if (event.key === "Enter") {
+        // An input method committing its word with Enter is not a choice (TA-393).
+        if (event.isComposing || event.keyCode === 229) return;
+        // A row reached with Tab is a link: Enter there is the link's own, and opens that row, not the highlighted one.
+        const from = event.target as HTMLElement | null;
+        if (from && from !== inputRef.current && from.closest("a[href]") && dialogRef.current?.contains(from)) return;
         const target = results[cursor];
         if (target) {
           event.preventDefault();
@@ -237,6 +260,8 @@ export function CommandPalette({
   if (!open) return null;
 
   let lastGroup = "";
+  const optionId = (index: number) => `${listId}-option-${index}`;
+  const active = results[cursor] ? optionId(cursor) : undefined;
 
   return (
     <div
@@ -244,6 +269,7 @@ export function CommandPalette({
       onClick={onClose}
     >
       <div
+        ref={dialogRef}
         role="dialog"
         aria-modal="true"
         aria-label={t("palette.dialogLabel")}
@@ -258,6 +284,13 @@ export function CommandPalette({
             onChange={(event) => setQuery(event.target.value)}
             placeholder={t("palette.placeholder")}
             aria-label={t("palette.inputLabel")}
+            // The combobox pattern (TA-400): the arrow keys move a highlight a screen reader now hears, through
+            // aria-activedescendant naming the highlighted option of the list below.
+            role="combobox"
+            aria-expanded={results.length > 0}
+            aria-controls={listId}
+            aria-autocomplete="list"
+            aria-activedescendant={active}
             className="min-h-14 w-full bg-transparent text-[0.9375rem] text-fg outline-none placeholder:text-fg-subtle"
           />
           <kbd className="hidden shrink-0 rounded border border-border px-1.5 py-0.5 text-[0.6875rem] text-fg-muted sm:block">
@@ -265,6 +298,10 @@ export function CommandPalette({
           </kbd>
         </div>
 
+        {/* How many rows the search found, said once it settles (TA-400). */}
+        <p role="status" aria-live="polite" className="sr-only">
+          {query.trim() && server.status !== "searching" ? t("palette.resultCount", { count: results.length }) : ""}
+        </p>
         <div className="max-h-[min(24rem,50vh)] overflow-y-auto p-2 scrollbar-thin">
           {results.length === 0 && server.status !== "searching" ? (
             <p className="px-3 py-8 text-center text-sm text-fg-muted">
@@ -273,19 +310,25 @@ export function CommandPalette({
               {t("palette.empty", { query, example: t("nav.register") })}
             </p>
           ) : (
-            results.map((entry, index) => {
+            <div role="listbox" id={listId} aria-label={t("palette.dialogLabel")}>
+            {results.map((entry, index) => {
               const showGroup = entry.group !== lastGroup;
               lastGroup = entry.group;
               return (
-                <div key={`${entry.group}-${entry.href}-${entry.label}`}>
+                <div key={`${entry.group}-${entry.href}-${entry.label}`} role="presentation">
                   {showGroup && (
-                    <p className="px-3 pb-1 pt-3 text-[0.6875rem] font-semibold uppercase tracking-wide text-fg-subtle">
+                    <p aria-hidden="true" className="px-3 pb-1 pt-3 text-[0.6875rem] font-semibold uppercase tracking-wide text-fg-subtle">
                       {entry.group}
                     </p>
                   )}
                   <Link
                     href={entry.href}
+                    id={optionId(index)}
+                    role="option"
+                    aria-selected={index === cursor}
                     onMouseEnter={() => setCursor(index)}
+                    // A row reached with Tab becomes the highlighted one (TA-393), so the highlight and the focus agree.
+                    onFocus={() => setCursor(index)}
                     onClick={() => {
                       onClose();
                       setQuery("");
@@ -310,7 +353,8 @@ export function CommandPalette({
                   </Link>
                 </div>
               );
-            })
+            })}
+            </div>
           )}
           {/* The server's state under the menu's matches: a status line the
               screen reader hears, never a row the cursor can land on. */}

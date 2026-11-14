@@ -319,11 +319,21 @@ export default async function ParentDashboard({
                 {t("parent.today")} · {formatDateKey(today, { weekday: "long", day: "numeric", month: "long" }, locale)}
               </p>
               {todayRecord ? (
+                // One sentence per language, its status word coloured where that language puts it (TA-233): {status}
+                // is left in the sentence by `t` and the coloured word is drawn in its place.
                 <p className="mt-0.5 font-semibold text-fg">
-                  {childName} was marked{" "}
-                  <span style={{ color: `var(--att-${ATTENDANCE_META[todayRecord.status as AttendanceStatus].token})` }}>
-                    {t(ATTENDANCE_META[todayRecord.status as AttendanceStatus].labelKey).toLowerCase()}
-                  </span>
+                  {t("parent.markedToday", { name: childName }).split("{status}").map((part, i) =>
+                    i === 0 ? (
+                      part
+                    ) : (
+                      <span key={i}>
+                        <span style={{ color: `var(--att-${ATTENDANCE_META[todayRecord.status as AttendanceStatus].token})` }}>
+                          {t(ATTENDANCE_META[todayRecord.status as AttendanceStatus].labelKey).toLowerCase()}
+                        </span>
+                        {part}
+                      </span>
+                    ),
+                  )}
                 </p>
               ) : (
                 <p className="mt-0.5 font-semibold text-fg-muted">

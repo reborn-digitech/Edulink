@@ -308,7 +308,7 @@ export function RegisterWizard() {
                 <span
                   className={cn(
                     "grid size-8 shrink-0 place-items-center rounded-full text-sm font-bold transition-colors",
-                    state === "done" && "bg-ok text-white",
+                    state === "done" && "bg-ok text-status-fg",
                     state === "current" && "bg-accent text-accent-fg animate-pulse-ring",
                     state === "todo" && "bg-surface-muted text-fg-subtle",
                   )}

@@ -386,10 +386,10 @@ export function Gradebook({
         <div className="sticky bottom-[calc(env(safe-area-inset-bottom,0px)+4.5rem)] z-30 flex items-center gap-3 rounded-[var(--radius-lg)] border border-accent bg-surface p-3 shadow-lg lg:bottom-4">
           <CheckCircleIcon weight="fill" className="size-5 shrink-0 text-accent" />
           <p className="min-w-0 flex-1 text-sm font-medium text-fg">
-            {dirtyIds.length} unsaved change{dirtyIds.length === 1 ? "" : "s"}
+            {dirtyIds.length === 1 ? t("teacher.unsavedOne") : t("teacher.unsavedMany", { count: dirtyIds.length })}
             {invalid.length > 0 && (
               <span className="block text-xs font-normal text-danger">
-                {invalid.length} not a usable number
+                {t("teacher.notUsableNumbers", { count: invalid.length })}
               </span>
             )}
           </p>

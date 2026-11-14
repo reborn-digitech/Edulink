@@ -8,14 +8,43 @@
  *
  * Reads from localStorage (instant, no round-trip) and falls back to the OS
  * preference. The server-side copy in the user's `prefs` column is the source
- * of truth and is synced into localStorage after login.
+ * of truth: when somebody is signed in, the root layout writes their saved
+ * appearance into this script, which applies it and copies it into
+ * localStorage (TA-392). Before, nothing did, so high contrast or the readable
+ * font chosen at home was never applied on the staff-room computer or a new
+ * phone, while /account showed it as chosen.
  */
-const script = `
+export type AccountAppearance = { theme?: string; contrast?: string; font?: string; motion?: string };
+
+const ALLOWED: Record<keyof AccountAppearance, readonly string[]> = {
+  theme: ["light", "dark", "system"],
+  contrast: ["normal", "high"],
+  font: ["default", "dyslexic"],
+  motion: ["full", "reduced", "system"],
+};
+
+/** The account's appearance as a JSON literal for the inline script: only the known values, nothing that could end the script. */
+export function accountAppearanceLiteral(account: AccountAppearance | null | undefined): string {
+  if (!account) return "null";
+  const picked: Record<string, string> = {};
+  for (const key of Object.keys(ALLOWED) as (keyof AccountAppearance)[]) {
+    const value = account[key];
+    if (typeof value === "string" && ALLOWED[key].includes(value)) picked[key] = value;
+  }
+  return JSON.stringify(picked).replace(/</g, "\\u003c");
+}
+
+const script = (account: string) => `
 (function () {
   try {
     var root = document.documentElement;
     var raw = localStorage.getItem('edulink.appearance');
     var prefs = raw ? JSON.parse(raw) : {};
+    var account = ${account};
+    if (account) {
+      for (var key in account) prefs[key] = account[key];
+      try { localStorage.setItem('edulink.appearance', JSON.stringify(prefs)); } catch (e) {}
+    }
 
     var theme = prefs.theme || 'system';
     if (theme === 'system') {
@@ -51,6 +80,6 @@ const script = `
 `;
 
 /** The nonce is this response's, from the middleware: the policy lets no inline script run without it. */
-export function ThemeScript({ nonce }: { nonce?: string }) {
-  return <script nonce={nonce} dangerouslySetInnerHTML={{ __html: script }} suppressHydrationWarning />;
+export function ThemeScript({ nonce, account }: { nonce?: string; account?: AccountAppearance | null }) {
+  return <script nonce={nonce} dangerouslySetInnerHTML={{ __html: script(accountAppearanceLiteral(account)) }} suppressHydrationWarning />;
 }

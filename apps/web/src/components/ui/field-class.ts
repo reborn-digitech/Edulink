@@ -22,7 +22,8 @@ export function fieldClass(extra?: string, invalid = false): string {
     "transition-[border-color,box-shadow] duration-[var(--dur-fast)]",
     "focus:outline-none focus-visible:outline-none",
     invalid
-      ? "border-danger ring-2 ring-danger/25"
+      ? // A field in error still shows where the focus is (TA-401): its ring deepens and widens.
+        "border-danger ring-2 ring-danger/25 focus:ring-4 focus:ring-danger/50"
       : "border-border hover:border-border-strong focus:border-accent focus:ring-2 focus:ring-accent-ring/40",
     extra,
   );

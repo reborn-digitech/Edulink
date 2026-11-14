@@ -8,6 +8,7 @@ import { DateField, SelectField, TextField } from "@/components/ui/field";
 import { useToast } from "@/components/ui/toast";
 import { cn } from "@/lib/cn";
 import { submitPost } from "../actions";
+import { ACTION_BODY_LIMIT_MB, ACTION_FILES_MAX_BYTES } from "@/lib/action-body-limit";
 import { useLocale, useT } from "@/lib/i18n";
 import { FontSelect } from "@/components/font-select";
 import type { FontKey } from "@/lib/fonts";
@@ -27,6 +28,13 @@ import type { ComposerSocial } from "@/lib/social";
  */
 const MAX_IMAGE_BYTES = 5 * 1024 * 1024;
 const MAX_VIDEO_BYTES = 100 * 1024 * 1024;
+
+/**
+ * What the files of one post may add up to from the web (TA-134): they travel inside the server action, which Next
+ * refuses above its body limit before the action runs, with nothing said about size. The phone sends through the
+ * upload door and is not bound by it.
+ */
+const MAX_POST_FILES_BYTES = ACTION_FILES_MAX_BYTES;
 
 /** Matches the `.max(10)` on `postSchema.media`, which is what actually enforces it. */
 const MAX_PICTURES = 10;
@@ -164,6 +172,13 @@ export function ComposeForm({
           ? t("bulletin.videoTooBig", { name: tooBig.name })
           : t("bulletin.pictureTooBig", { name: tooBig.name }),
       }));
+      return;
+    }
+
+    const total = [...pictures.map((p) => p.file), ...incoming].reduce((sum, f) => sum + f.size, 0);
+    if (total > MAX_POST_FILES_BYTES) {
+      setErrors((e) => ({ ...e, image: t("bulletin.postFilesTooBig", { size: ACTION_BODY_LIMIT_MB }) }));
+      if (pickerRef.current) pickerRef.current.value = "";
       return;
     }
 
@@ -562,27 +577,30 @@ export function ComposeForm({
 
         {pictures.length < MAX_PICTURES && (
           <>
-            <label
-              htmlFor="post-image"
-              className="mt-1.5 flex min-h-24 cursor-pointer items-center justify-center gap-2 rounded-[var(--radius-md)] border border-dashed border-border bg-surface p-4 text-sm font-medium text-fg-muted hover:border-accent hover:text-accent-strong focus-within:border-accent"
-            >
-              <ImageIcon weight="duotone" className="size-5" />
-              {pictures.length === 0 ? t("bulletin.addPicture") : t("bulletin.addAnother")}
-            </label>
+            {/* The input is this picker's only keyboard stop, so it comes first and the label shows its focus
+                (peer-focus-visible): focus-within never fired on a label the input was only beside (TA-506). */}
             <input
               ref={pickerRef}
               id="post-image"
               type="file"
               multiple
               accept="image/png,image/jpeg,image/webp,image/gif,video/mp4,video/webm,video/quicktime"
-              className="sr-only"
+              className="peer sr-only"
+              aria-describedby={errors.image ? "post-image-error" : undefined}
               onChange={(e) => choosePictures(e.target.files)}
             />
+            <label
+              htmlFor="post-image"
+              className="mt-1.5 flex min-h-24 cursor-pointer items-center justify-center gap-2 rounded-[var(--radius-md)] border border-dashed border-border bg-surface p-4 text-sm font-medium text-fg-muted hover:border-accent hover:text-accent-strong peer-focus-visible:border-accent peer-focus-visible:text-accent-strong peer-focus-visible:outline-3 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-accent-strong peer-focus-visible:outline-solid"
+            >
+              <ImageIcon weight="duotone" className="size-5" />
+              {pictures.length === 0 ? t("bulletin.addPicture") : t("bulletin.addAnother")}
+            </label>
           </>
         )}
 
         {errors.image && (
-          <p role="alert" className="mt-1 text-xs font-medium text-danger">
+          <p id="post-image-error" role="alert" className="mt-1 text-xs font-medium text-danger">
             {errors.image}
           </p>
         )}

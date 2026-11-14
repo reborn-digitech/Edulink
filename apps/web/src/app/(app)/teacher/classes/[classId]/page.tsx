@@ -139,7 +139,8 @@ export default async function ClassDetailPage({
   const anyFlagged = roster.some((r) => healthFlags.has(r.membershipId));
   // An open incident is a chip too: a fall not yet followed up is something
   // the next lesson's teacher should see before the name is called.
-  const openIncidents = await openIncidentCounts(klass.schoolId, roster.map((r) => r.membershipId));
+  // A safeguarding concern counts only for the office and the teacher who recorded it (TA-108).
+  const openIncidents = await openIncidentCounts(klass.schoolId, roster.map((r) => r.membershipId), { membershipId: ctx.membershipId, role: ctx.role });
 
   const [weights, usedCategories] = await Promise.all([
     listGradeCategories(ctx, classId),
@@ -399,7 +400,7 @@ export default async function ClassDetailPage({
                       <span className="block text-xs text-fg-muted">
                         {assignment.dueAt ? t("teacher.dueWhen", { when: relativeTime(assignment.dueAt) }) : t("teacher.noDueDate")}
                         {" · "}
-                        {assignment._count.grades} of {roster.length} marked
+                        {t("teacher.gradedOf", { graded: assignment._count.grades, total: roster.length })}
                       </span>
                     </span>
                     {!assignment.publishedAt && (

@@ -35,7 +35,7 @@ export function FileField({
   const [chosen, setChosen] = useState<string | null>(null);
   return (
     <div className={`space-y-1.5 ${className ?? ""}`}>
-      <label htmlFor={id} className="block text-sm font-medium text-fg">
+      <label id={`${id}-label`} htmlFor={id} className="block text-sm font-medium text-fg">
         {label}
       </label>
       <input
@@ -48,10 +48,22 @@ export function FileField({
         aria-label={label}
         aria-describedby={`${id}-chosen`}
         className="sr-only"
+        // The button below opens it and is the one tab stop, named by the label (TA-506).
+        tabIndex={-1}
+        aria-hidden="true"
         onChange={(event) => setChosen(event.target.files?.[0]?.name ?? null)}
       />
       <div className="flex flex-wrap items-center gap-3">
-        <Button type="button" variant="secondary" size="sm" icon={<UploadSimpleIcon weight="bold" />} onClick={() => input.current?.click()}>
+        <Button
+          type="button"
+          id={`${id}-button`}
+          aria-labelledby={`${id}-label ${id}-button`}
+          aria-describedby={`${id}-chosen`}
+          variant="secondary"
+          size="sm"
+          icon={<UploadSimpleIcon weight="bold" />}
+          onClick={() => input.current?.click()}
+        >
           {t("field.chooseFile")}
         </Button>
         <span id={`${id}-chosen`} className="min-w-0 truncate text-sm text-fg-muted">

@@ -235,6 +235,8 @@ export default async function AttendancePage({
       dateLabel={formatDateKey(dateKey, { weekday: "long", day: "numeric", month: "long" }, locale)}
         initialRoster={register.roster}
         readOnly={dateKey > today}
+        forToday={dateKey === today}
+        timezone={school.timezone}
       />
     </div>
   );

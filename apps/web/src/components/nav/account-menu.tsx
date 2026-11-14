@@ -101,8 +101,9 @@ export function AccountMenu({
   );
 
   return (
+    // The list after its button (TA-232): it is drawn above or below by position, and Tab from the open button now
+    // enters it rather than leaving the rail.
     <div ref={root} className="relative">
-      {list}
       {place === "rail" ? (
         <button
           ref={button}
@@ -137,6 +138,7 @@ export function AccountMenu({
           <Avatar avatarKey={avatarKey} name={name} size="sm" />
         </button>
       )}
+      {list}
     </div>
   );
 }

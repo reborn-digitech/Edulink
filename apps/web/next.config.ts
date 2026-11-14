@@ -21,7 +21,9 @@ const withSerwist = withSerwistInit({
   // first two patterns are serwist's own defaults, kept.
   exclude: [/\.map$/, /^manifest.*\.js$/, /^static\/chunks\/app\/api\//],
   disable: process.env.NODE_ENV === "development",
-  reloadOnOnline: true,
+  // No reload when the network comes back (TA-220): it threw away whatever was typed and not yet saved, and cut off
+  // the runtime's outbox flush and its "Synced" toast. The runtime already flushes the outbox on the online event.
+  reloadOnOnline: false,
 });
 
 const isDev = process.env.NODE_ENV === "development";
@@ -60,9 +62,11 @@ const nextConfig: NextConfig = {
   /**
    * A server action's body above Next's default of 1 MB is refused (413) before the action runs (TA-301): a sealed
    * question paper (the setter's PDF, at most 2 MB in submitPaper, exam-cell-after.ts) travels in one from
-   * /faculty/exams, and a scanned paper is commonly over 1 MB. 3 MB covers the file and the form beside it.
+   * /faculty/exams, and a scanned paper is commonly over 1 MB. 3 MB covered the file and the form beside it; every other
+   * upload sent through an action (a hand-in, an attachment, a bill, a document, a site file) may be 5 MB, and was
+   * refused above 3 MB: 6 MB, ACTION_BODY_LIMIT_MB in src/lib/action-body-limit.ts, which the forms check against (TA-134).
    */
-  experimental: { serverActions: { bodySizeLimit: "3mb" } },
+  experimental: { serverActions: { bodySizeLimit: "6mb" } },
   /**
    * No gzip in Node: the proxy compresses (recommendation 4 of the load wave,
    * 4 Oct 2026). gzip of one 845 KB page cost 16.6 ms of the main thread, the

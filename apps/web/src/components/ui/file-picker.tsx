@@ -35,6 +35,7 @@ export function FilePicker({
   error,
   idPrefix,
   className,
+  maxTotalBytes,
 }: {
   files: File[];
   onChange: (files: File[], error?: string) => void;
@@ -45,6 +46,12 @@ export function FilePicker({
   error?: string;
   idPrefix: string;
   className?: string;
+  /**
+   * What the chosen files may add up to, for a form that sends them inside one server action, which Next refuses
+   * above its body limit before the action runs (TA-134): ACTION_FILES_MAX_BYTES. Left out where each file travels
+   * on its own (the upload door).
+   */
+  maxTotalBytes?: number;
 }) {
   const t = useT();
   const inputRef = useRef<HTMLInputElement>(null);
@@ -63,6 +70,11 @@ export function FilePicker({
     const tooBig = incoming.find((f) => f.size > MAX_FILE_BYTES);
     if (tooBig) {
       onChange(files, t("ui.biggerThan5MB", { name: tooBig.name }));
+      return;
+    }
+    if (maxTotalBytes !== undefined && [...files, ...incoming].reduce((sum, f) => sum + f.size, 0) > maxTotalBytes) {
+      onChange(files, t("ui.filesTooBigTogether", { size: Math.round(maxTotalBytes / (1024 * 1024)) }));
+      if (inputRef.current) inputRef.current.value = "";
       return;
     }
 
@@ -98,7 +110,7 @@ export function FilePicker({
                   onChange(files.filter((_, i) => i !== index));
                   if (inputRef.current) inputRef.current.value = "";
                 }}
-                className="grid size-8 shrink-0 place-items-center rounded-full text-fg-muted hover:bg-surface-muted hover:text-fg"
+                className="grid size-11 shrink-0 place-items-center rounded-full text-fg-muted hover:bg-surface-muted hover:text-fg"
               >
                 <XIcon weight="bold" className="size-4" />
               </button>
@@ -116,6 +128,9 @@ export function FilePicker({
             className={cn("mt-1.5", files.length === 0 && "w-full")}
             icon={<PaperclipIcon weight="bold" />}
             onClick={() => inputRef.current?.click()}
+            // The refusal (too big, wrong kind) is tied to the control that opens the picker, and said again on return (TA-506).
+            aria-describedby={error ? `${inputId}-error` : undefined}
+            aria-invalid={error ? true : undefined}
           >
             {files.length === 0 ? t("ui.attachFile") : t("ui.addAnotherFile")}
           </Button>
@@ -126,13 +141,16 @@ export function FilePicker({
             multiple={max > 1}
             accept={accept}
             className="sr-only"
+            // Opened by the button above: no tab stop of its own that nothing shows focus on (TA-506).
+            tabIndex={-1}
+            aria-hidden="true"
             onChange={(e) => add(e.target.files)}
           />
         </>
       )}
 
       {error && (
-        <p role="alert" className="mt-1 text-xs font-medium text-danger">
+        <p id={`${inputId}-error`} role="alert" className="mt-1 text-xs font-medium text-danger">
           {error}
         </p>
       )}

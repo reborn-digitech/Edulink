@@ -24,7 +24,8 @@ export { PAGE_TITLE };
 /** PageHeader's way back to the parent, for the pages that keep their own hero (see page-title.ts). 44 px tall, the kit's floor (A3-states-11). */
 export function BackLink({ href, label, className }: { href: string; label: string; className?: string }) {
   return (
-    <Link href={href} className={cn("inline-flex min-h-11 items-center gap-1.5 text-sm font-medium text-fg-muted hover:text-fg", className)}>
+    // data-page-header: on the wash of a light page its grey is the deeper one (globals.css, TA-330).
+    <Link href={href} data-page-header className={cn("inline-flex min-h-11 items-center gap-1.5 text-sm font-medium text-fg-muted hover:text-fg", className)}>
       <ArrowLeftIcon weight="bold" className="size-4" />
       {label}
     </Link>
@@ -47,7 +48,7 @@ export function PageHeader({
   className?: string;
 }) {
   return (
-    <header className={cn("space-y-3", className)}>
+    <header data-page-header className={cn("space-y-3", className)}>
       {back && <BackLink href={back.href} label={back.label} />}
       <div className="flex flex-wrap items-end justify-between gap-3">
         <div className="min-w-0">

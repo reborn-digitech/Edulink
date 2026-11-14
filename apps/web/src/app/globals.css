@@ -46,6 +46,9 @@
   --danger-soft: #fff1f2;
   --info: #0369a1;
   --info-soft: #f0f9ff;
+  /* Text on a filled status colour (a pressed register mark, the offline bar, a done step's tick): white on light's
+     deep fills, dark on dark's pale ones, where white was 1.7 to 2.7:1 (TA-230). */
+  --status-fg: #ffffff;
 
   /* --- attendance statuses (fixed semantic colours, never role-tinted) --- */
   --att-present: #15803d;
@@ -127,6 +130,7 @@
   --danger-soft: #2d1219;
   --info: #38bdf8;
   --info-soft: #0c2436;
+  --status-fg: #0b0e15; /* 7.2:1 or better on each of the four status colours here; white was 1.7 to 2.7:1 (TA-230) */
 
   --att-present: #4ade80;
   --att-present-soft: #0f2a1c;
@@ -286,6 +290,12 @@
 }
 [data-theme="light"]:not([data-contrast="high"]) [data-wash] {
   background: linear-gradient(180deg, color-mix(in srgb, var(--accent) 22%, var(--bg)) 0, var(--bg) 260px);
+}
+/* The page header sits on the top of the wash, where --fg-muted is 3.8 to 4.4:1 (TA-330, TA-402): its back link and
+   description take a deeper grey there, 4.9:1 or better on every role's wash and 8.1:1 on white. */
+[data-theme="light"]:not([data-contrast="high"]) [data-wash] [data-page-header] {
+  --fg-muted: #465066;
+  --fg-subtle: #465066;
 }
 }
 
@@ -583,6 +593,26 @@
   --accent-strong: #a9ccff;
   --accent-soft: #000000;
   --accent-fg: #000000;
+  /* The high-contrast block above sets light's deep status colours, which on black were 2.1 to 2.9:1 (TA-115): here
+     dark's own pale ones, 7.8:1 or better on black, on black fills, with dark text on a filled one. */
+  --ok: #4ade80;
+  --ok-soft: #000000;
+  --warn: #fbbf24;
+  --warn-soft: #000000;
+  --danger: #fb7185;
+  --danger-fg: #000000;
+  --danger-soft: #000000;
+  --info: #38bdf8;
+  --info-soft: #000000;
+  --att-present: #4ade80;
+  --att-late: #fbbf24;
+  --att-absent: #fb7185;
+  --att-excused: #38bdf8;
+  --att-present-soft: #000000;
+  --att-late-soft: #000000;
+  --att-absent-soft: #000000;
+  --att-excused-soft: #000000;
+  --status-fg: #000000;
 }
 }
 [data-contrast="high"] * {
@@ -640,6 +670,7 @@
   --color-danger-soft: var(--danger-soft);
   --color-info: var(--info);
   --color-info-soft: var(--info-soft);
+  --color-status-fg: var(--status-fg);
 
   --color-present: var(--att-present);
   --color-present-soft: var(--att-present-soft);
@@ -674,6 +705,15 @@
 @layer base {
   * {
     border-color: var(--border);
+  }
+
+  /* Below the desk's width the top bar (3.5 rem, sticky) and the bottom bar (3.5 rem, fixed) cover the page's edges: a
+     control reached with Tab is scrolled clear of both rather than left under one (TA-399). */
+  @media (max-width: 1023.98px) {
+    html {
+      scroll-padding-top: calc(3.5rem + env(safe-area-inset-top, 0px));
+      scroll-padding-bottom: calc(4.5rem + env(safe-area-inset-bottom, 0px));
+    }
   }
 
   html {
@@ -721,6 +761,12 @@
     outline: 3px solid var(--accent-ring);
     outline-offset: 2px;
     border-radius: 4px;
+  }
+  /* The light theme's rings are the role's pale colour, 1.5 to 3.0:1 on white and the tinted canvas (TA-231): the
+     outline takes the role's strong colour there, 4.4:1 or better on white, the canvas and the wash. The navy frame
+     sets its own --accent-strong, pale on navy. Dark keeps its ring. */
+  [data-theme="light"]:not([data-contrast="high"]) :focus-visible {
+    outline-color: var(--accent-strong);
   }
   [data-contrast="high"] :focus-visible {
     outline: 4px solid currentColor;

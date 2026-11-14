@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState, useTransition } from "react";
+import { useRef, useState, useTransition } from "react";
 import { useRouter } from "@/lib/navigation";
 import {
   CheckCircleIcon,
@@ -27,6 +27,7 @@ import { fontStack } from "@/lib/fonts";
 import { PostMedia } from "./media";
 import { ReactionRow } from "./reactions";
 import { fieldClass } from "@/components/ui/field-class";
+import { useModalFocus } from "@/components/ui/use-modal-focus";
 
 type Post = {
   id: string;
@@ -489,6 +490,9 @@ function ReportSheet({
   const [pending, startTransition] = useTransition();
   const [reason, setReason] = useState<string | null>(null);
   const [detail, setDetail] = useState("");
+  // Focus into the dialog, Tab kept inside, Escape closes, focus back to the flag that opened it (TA-232).
+  const dialogRef = useRef<HTMLDivElement>(null);
+  useModalFocus(true, dialogRef, onClose);
 
   return (
     <div
@@ -496,6 +500,7 @@ function ReportSheet({
       onClick={onClose}
     >
       <div
+        ref={dialogRef}
         role="dialog"
         aria-modal="true"
         aria-labelledby={`report-title-${postId}`}

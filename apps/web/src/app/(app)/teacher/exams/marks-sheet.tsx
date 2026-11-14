@@ -92,6 +92,9 @@ export function MarksSheet({ pupils, maxMarks, paper }: { pupils: { membershipId
           accept={SPREADSHEET_ACCEPT}
           aria-label={t("exams.sheetFill")}
           className="sr-only"
+          // Opened by the Fill button beside it: no tab stop of its own that nothing shows focus on (TA-506).
+          tabIndex={-1}
+          aria-hidden="true"
           onChange={(e) => {
             const file = e.target.files?.[0];
             if (file) void fill(file);

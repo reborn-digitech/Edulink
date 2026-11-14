@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useTransition } from "react";
+import { useRef, useState, useTransition } from "react";
 import { useRouter } from "@/lib/navigation";
 import { ArrowCounterClockwiseIcon, ArrowsClockwiseIcon, ArchiveIcon, CopyIcon, DotsThreeIcon } from "@phosphor-icons/react";
 import { useToast } from "@/components/ui/toast";
@@ -9,6 +9,7 @@ import { archiveClass, regenerateJoinCode, restoreClass } from "./actions";
 import { cn } from "@/lib/cn";
 import { actionError } from "@/lib/action-error";
 import { useT } from "@/lib/i18n";
+import { useModalFocus } from "@/components/ui/use-modal-focus";
 
 /**
  * Row-level class actions.
@@ -36,6 +37,10 @@ export function ClassRowActions({
   const [open, setOpen] = useState(false);
   const [confirming, setConfirming] = useState(false);
   const [code, setCode] = useState(joinCode);
+  // The confirm opens as its menu item unmounts: focus goes into it, and back to the row's menu button (TA-232).
+  const trigger = useRef<HTMLButtonElement>(null);
+  const confirmRef = useRef<HTMLDivElement>(null);
+  useModalFocus(confirming, confirmRef, () => setConfirming(false), trigger);
 
   function run(fn: () => Promise<{ ok: boolean; error?: string }>, success: string) {
     startTransition(async () => {
@@ -55,6 +60,7 @@ export function ClassRowActions({
     <>
       <div className="relative shrink-0">
         <button
+          ref={trigger}
           type="button"
           onClick={() => setOpen((o) => !o)}
           aria-label={t("classes.actionsFor", { name: className })}
@@ -154,6 +160,7 @@ export function ClassRowActions({
           onClick={() => setConfirming(false)}
         >
           <div
+            ref={confirmRef}
             role="dialog"
             aria-modal="true"
             aria-labelledby="archive-title"

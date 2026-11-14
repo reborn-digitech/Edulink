@@ -98,14 +98,12 @@ export default async function TeacherClassesPage() {
                 <div className="min-w-0 flex-1">
                   <p className="truncate font-semibold text-fg">{klass.name}</p>
                   <p className="truncate text-xs text-fg-muted">
-                    {klass._count.enrollments} student
-                    {klass._count.enrollments === 1 ? "" : "s"}
+                    {klass._count.enrollments === 1 ? t("teacher.studentsCountOne") : t("teacher.studentsCount", { count: klass._count.enrollments })}
                     {klass.subject ? ` · ${klass.subject}` : ""}
-                    {klass.room ? ` · Room ${klass.room}` : ""}
+                    {klass.room ? ` · ${t("teacher.roomNamed", { room: klass.room })}` : ""}
                   </p>
                   <p className="mt-0.5 text-xs text-fg-subtle">
-                    {workBy.get(klass.id) ?? 0} piece
-                    {(workBy.get(klass.id) ?? 0) === 1 ? "" : "s"} of work set
+                    {(workBy.get(klass.id) ?? 0) === 1 ? t("teacher.workSetOne") : t("teacher.workSetMany", { count: workBy.get(klass.id) ?? 0 })}
                     {ctx.role === "TEACHER" ? ` · ${reach.get(klass.id)?.formTeacher ? t("subjectWork.formTeacher") : (reach.get(klass.id)?.subjects ?? []).join(", ")}` : ""}
                   </p>
                 </div>

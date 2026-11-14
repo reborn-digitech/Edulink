@@ -16,6 +16,7 @@ import { DRAWER_PARAM } from "@/components/assistant/model";
 import { TypingSwitch } from "@/components/typing-switch";
 import { Logo } from "@/components/brand";
 import { cn } from "@/lib/cn";
+import { useModalFocus } from "@/components/ui/use-modal-focus";
 import { useT } from "@/lib/i18n";
 import type { Translate } from "@/lib/i18n";
 import { ROLE_META, type Role } from "@/lib/constants";
@@ -80,6 +81,11 @@ export function AppShell({
   const t = useT();
   const [paletteOpen, setPaletteOpen] = useState(false);
   const [moreOpen, setMoreOpen] = useState(false);
+  // The More sheet is a modal dialog: focus into it, Tab kept inside, Escape closes, focus back to More (TA-232).
+  const moreSheet = useRef<HTMLDivElement>(null);
+  const moreButton = useRef<HTMLButtonElement>(null);
+  const closeMore = useCallback(() => setMoreOpen(false), []);
+  useModalFocus(moreOpen, moreSheet, closeMore, moreButton);
   /**
    * VIDURA (pass 1, 17 Oct 2026): ONE ENTRY POINT, the round button at the bottom right of every page (the rail's
    * button, the phone-width top bar's launcher, the menu entry and the /assistant page are gone). It opens the drawer:
@@ -392,6 +398,7 @@ export function AppShell({
           {sheet.length > 0 && (
             <li className="flex-1">
               <button
+                ref={moreButton}
                 type="button"
                 onClick={() => setMoreOpen(true)}
                 aria-expanded={moreOpen}
@@ -418,7 +425,7 @@ export function AppShell({
             onClick={() => setMoreOpen(false)}
             className="absolute inset-0 bg-black/40"
           />
-          <div data-chrome className="absolute inset-x-0 bottom-0 max-h-[80vh] overflow-y-auto rounded-t-[var(--radius-xl)] bg-surface p-4 pb-safe shadow-xl animate-in-up">
+          <div ref={moreSheet} data-chrome className="absolute inset-x-0 bottom-0 max-h-[80vh] overflow-y-auto rounded-t-[var(--radius-xl)] bg-surface p-4 pb-safe shadow-xl animate-in-up">
             {sheet.map(({ group, items: list }) => (
               <NavGroupSection
                 key={group}

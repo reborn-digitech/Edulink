@@ -7,6 +7,7 @@ import { MagnifyingGlassIcon, XIcon } from "@phosphor-icons/react";
 import { Button, Spinner } from "@/components/ui/button";
 import { Chip } from "@/components/ui/chip";
 import { cn } from "@/lib/cn";
+import { useT } from "@/lib/i18n";
 
 /** An active filter, pressed to remove it: the chip's 44 px with the accent tint the row had (A3-states-11: it was 24 px). */
 const ACTIVE_CHIP = "gap-1 border-transparent bg-accent-soft px-3 text-xs text-accent-strong hover:bg-accent-soft hover:text-accent-strong hover:opacity-80";
@@ -64,6 +65,7 @@ export function DataToolbar({
   labels,
   className,
   label,
+  resultCount,
 }: {
   search?: { key?: string; value: string; placeholder: string; label: string };
   sort?: ToolbarSort;
@@ -74,7 +76,10 @@ export function DataToolbar({
   className?: string;
   /** The search landmark's name where a page holds two toolbars, so the two landmarks differ (QA-68). */
   label?: string;
+  /** How many rows the list now shows, said to a screen reader once a search or filter lands (TA-403). */
+  resultCount?: number;
 }) {
+  const t = useT();
   const router = useRouter();
   const pathname = usePathname();
   const [pending, startTransition] = useTransition();
@@ -100,6 +105,21 @@ export function DataToolbar({
   }
   useEffect(() => () => { if (timer.current) clearTimeout(timer.current); }, []);
 
+  /*
+   * Said once a search or a filter of THIS toolbar has landed (TA-403): the list changed under a screen reader's user
+   * with nothing to say so. The count when the page gives one, otherwise that the list was updated.
+   */
+  const [asked, setAsked] = useState(false);
+  const [said, setSaid] = useState("");
+  const [wasPending, setWasPending] = useState(false);
+  if (pending !== wasPending) {
+    setWasPending(pending);
+    if (!pending && asked) {
+      setAsked(false);
+      setSaid(resultCount !== undefined ? t("ui.resultCount", { count: resultCount }) : t("ui.listUpdated"));
+    }
+  }
+
   function current(): Record<string, string> {
     const state: Record<string, string> = { ...extra };
     if (search && text) state[searchKey] = text;
@@ -118,6 +138,7 @@ export function DataToolbar({
     const params = new URLSearchParams();
     for (const [key, value] of Object.entries(merged)) if (value) params.set(key, value);
     const qs = params.toString();
+    setAsked(true);
     startTransition(() => router.push(qs ? `${pathname}?${qs}` : pathname));
   }
 
@@ -137,6 +158,9 @@ export function DataToolbar({
 
   return (
     <div className={cn("space-y-2.5", className)} role="search" aria-label={label}>
+      <p role="status" aria-live="polite" className="sr-only" data-testid="toolbar-said">
+        {said}
+      </p>
       {(search || sort || selectFacets.length > 0) && (
         <div className="flex flex-wrap items-center gap-2">
           {search && (
@@ -222,9 +246,14 @@ export function DataToolbar({
       ))}
 
       {anyActive && (
-        <div className="flex flex-wrap items-center gap-1.5 text-xs" aria-label={labels.activeFilters}>
+        // A group, so its name is said; each chip says that pressing it removes the filter (TA-403).
+        <div role="group" className="flex flex-wrap items-center gap-1.5 text-xs" aria-label={labels.activeFilters}>
           {search?.value && (
-            <Chip onClick={() => { setText(""); setOwn(null); navigate({ [searchKey]: null }); }} className={ACTIVE_CHIP}>
+            <Chip
+              onClick={() => { setText(""); setOwn(null); navigate({ [searchKey]: null }); }}
+              className={ACTIVE_CHIP}
+              aria-label={t("ui.removeSearchFilter", { query: search.value })}
+            >
               “{search.value}”
               <XIcon weight="bold" className="size-3" aria-hidden="true" />
             </Chip>
@@ -236,7 +265,7 @@ export function DataToolbar({
                 key={facet.key}
                 onClick={() => navigate({ [facet.key]: null })}
                 className={ACTIVE_CHIP}
-                aria-label={`${facet.label}: ${chosen?.label ?? facet.value}`}
+                aria-label={t("ui.removeFilter", { filter: facet.label, value: chosen?.label ?? facet.value })}
               >
                 {chosen?.label ?? facet.value}
                 <XIcon weight="bold" className="size-3" aria-hidden="true" />

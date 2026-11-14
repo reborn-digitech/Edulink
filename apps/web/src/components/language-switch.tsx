@@ -1,6 +1,6 @@
 "use client";
 
-import { useTransition } from "react";
+import { useRef, useTransition, type KeyboardEvent } from "react";
 import { useRouter } from "@/lib/navigation";
 import { TranslateIcon } from "@phosphor-icons/react";
 import { cn } from "@/lib/cn";
@@ -40,6 +40,31 @@ export function LanguageSwitch({
   const current = useLocale();
   const t = useT();
   const [pending, startTransition] = useTransition();
+  const group = useRef<HTMLDivElement>(null);
+
+  /**
+   * The radio group's keyboard (TA-606): one tab stop, the chosen language; the arrow keys (and Home and End) move to
+   * the next one and choose it, as a radio group promises a screen reader's user.
+   */
+  function onKeyDown(event: KeyboardEvent<HTMLDivElement>) {
+    const at = LOCALES.findIndex((language) => language.code === current);
+    const last = LOCALES.length - 1;
+    const next =
+      event.key === "ArrowRight" || event.key === "ArrowDown"
+        ? (at + 1) % LOCALES.length
+        : event.key === "ArrowLeft" || event.key === "ArrowUp"
+          ? (at - 1 + LOCALES.length) % LOCALES.length
+          : event.key === "Home"
+            ? 0
+            : event.key === "End"
+              ? last
+              : -1;
+    if (next < 0) return;
+    event.preventDefault();
+    const target = LOCALES[next]!;
+    group.current?.querySelector<HTMLButtonElement>(`[lang="${target.code}"]`)?.focus();
+    choose(target.code);
+  }
 
   function choose(code: Locale) {
     if (code === current || pending) return;
@@ -60,8 +85,10 @@ export function LanguageSwitch({
         </span>
       )}
       <div
+        ref={group}
         role="radiogroup"
         aria-label={t("language.groupLabel")}
+        onKeyDown={onKeyDown}
         className="flex flex-1 flex-wrap gap-1 rounded-[var(--radius-md)] bg-surface-muted p-1"
       >
         {LOCALES.map((language) => {
@@ -72,6 +99,7 @@ export function LanguageSwitch({
               type="button"
               role="radio"
               aria-checked={active}
+              tabIndex={active ? 0 : -1}
               disabled={pending}
               lang={language.code}
               onClick={() => choose(language.code)}

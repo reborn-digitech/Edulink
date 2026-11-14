@@ -1,6 +1,7 @@
 /// <reference lib="webworker" />
 import { Serwist, NetworkFirst, NetworkOnly, StaleWhileRevalidate, CacheFirst, ExpirationPlugin } from "serwist";
 import type { PrecacheEntry, SerwistGlobalConfig } from "serwist";
+import { OUTBOX_LOCK, appPath, cacheablePage, drainOutbox as drainRows, pickWindow } from "./lib/sw-helpers";
 
 declare global {
   interface WorkerGlobalScope extends SerwistGlobalConfig {
@@ -98,11 +99,18 @@ const serwist = new Serwist({
       handler: new StaleWhileRevalidate({ cacheName: "edulink-static" }),
     },
     {
+      /**
+       * A stored page only when the network has FAILED (TA-221), never because it was slow: with a four-second
+       * timeout a slow morning answered yesterday's register as today's. And only pages are stored (cacheablePage):
+       * an export is a navigation too, and its copy came back days later under today's name.
+       */
       matcher: ({ request }) => request.mode === "navigate",
       handler: new NetworkFirst({
         cacheName: "edulink-pages",
-        networkTimeoutSeconds: 4,
-        plugins: [new ExpirationPlugin({ maxEntries: 60, maxAgeSeconds: 60 * 60 * 24 * 7 })],
+        plugins: [
+          { cacheWillUpdate: async ({ response }) => (cacheablePage(response) ? response : null) },
+          new ExpirationPlugin({ maxEntries: 60, maxAgeSeconds: 60 * 60 * 24 * 7 }),
+        ],
       }),
     },
   ],
@@ -126,16 +134,6 @@ const DB_NAME = "edulink";
 const STORE = "outbox";
 
 const META = "meta";
-const OWNER_KEY = "owner";
-
-type QueuedRequest = {
-  id: string;
-  url: string;
-  method: string;
-  body: string;
-  tag: string;
-  owner?: string | null;
-};
 
 function openDb(): Promise<IDBDatabase> {
   return new Promise((resolve, reject) => {
@@ -154,51 +152,31 @@ function openDb(): Promise<IDBDatabase> {
   });
 }
 
+/**
+ * The replay itself is sw-helpers.ts drainOutbox, with the page's rules (TA-218): oldest first, 401 and 429 kept, a
+ * tag's later rows held behind a kept one. Under the outbox's Web Lock, so the page's own flush never runs beside it.
+ * A row refused for good is told to every open tab, which shows the page's pinned "change rejected" toast.
+ */
 async function drainOutbox(): Promise<void> {
-  const db = await openDb();
-  const all: QueuedRequest[] = await new Promise((resolve, reject) => {
-    const request = db.transaction(STORE, "readonly").objectStore(STORE).getAll();
-    request.onsuccess = () => resolve(request.result as QueuedRequest[]);
-    request.onerror = () => reject(request.error);
-  });
-  // Only the signed-in person's rows go out (the page keeps the owner in the
-  // meta store); another person's wait, and the server refuses a replay
-  // that names someone else in any case.
-  const owner: string | null = await new Promise((resolve) => {
-    const request = db.transaction(META, "readonly").objectStore(META).get(OWNER_KEY);
-    request.onsuccess = () => resolve((request.result as string | null | undefined) ?? null);
-    request.onerror = () => resolve(null);
-  });
-  const items = all.filter((item) => (item.owner ?? null) === owner);
-
-  for (const item of items) {
-    const response = await fetch(item.url, {
-      method: item.method,
-      headers: { "content-type": "application/json", "x-edulink-replay": "1", ...(item.owner ? { "x-edulink-owner": item.owner } : {}) },
-      body: item.body,
-    });
-
-    // Throwing aborts the sync event, and the browser retries the whole tag
-    // later with backoff — which is exactly the behaviour we want while the
-    // network is still bad. Idempotency on the server makes the replay safe.
-    if (!response.ok && response.status >= 500) {
-      throw new Error(`outbox item ${item.id} failed with ${response.status}`);
+  const run = async () => {
+    const db = await openDb();
+    try {
+      return await drainRows(db, fetch);
+    } finally {
+      db.close();
     }
+  };
+  const result = self.navigator.locks ? await self.navigator.locks.request(OUTBOX_LOCK, run) : await run();
 
-    if (response.ok || (response.status >= 400 && response.status < 500)) {
-      await new Promise<void>((resolve, reject) => {
-        const request = db.transaction(STORE, "readwrite").objectStore(STORE).delete(item.id);
-        request.onsuccess = () => resolve();
-        request.onerror = () => reject(request.error);
-      });
-    }
-  }
-
-  db.close();
-
-  // Tell any open tab to refresh its pending badges.
+  // Tell any open tab to refresh its pending badges, and what was refused.
   const clients = await self.clients.matchAll({ type: "window" });
-  for (const client of clients) client.postMessage({ type: "outbox:drained" });
+  for (const client of clients) {
+    for (const refused of result.rejected) client.postMessage({ type: "outbox:rejected", status: refused.status, tag: refused.tag });
+    client.postMessage({ type: "outbox:drained" });
+  }
+  // Throwing aborts the sync event, and the browser retries the whole tag later with backoff — what is wanted while
+  // the network or the server is still bad. Idempotency on the server makes the replay safe.
+  if (result.retry) throw new Error(`outbox: ${result.kept} item(s) kept for a later attempt`);
 }
 
 self.addEventListener("sync", (event) => {
@@ -238,18 +216,19 @@ self.addEventListener("push", (event) => {
 
 self.addEventListener("notificationclick", (event) => {
   event.notification.close();
-  const url = (event.notification.data as { url?: string } | undefined)?.url ?? "/";
+  const url = appPath((event.notification.data as { url?: string } | undefined)?.url) ?? "/";
 
   event.waitUntil(
     (async () => {
       const clients = await self.clients.matchAll({ type: "window", includeUncontrolled: true });
-      // Focus an existing window rather than piling up duplicates.
-      for (const client of clients) {
-        if ("focus" in client) {
-          await client.focus();
-          client.postMessage({ type: "navigate", url });
-          return;
-        }
+      // Focus an existing window rather than piling up duplicates: one already on the notice's page if there is one.
+      // Otherwise the window is told to go there (TA-222): the runtime (components/app-runtime.tsx) listens for this
+      // message and routes to the path, which a window not controlled by this worker could not be made to do here.
+      const picked = pickWindow(clients, url, self.location.origin);
+      if (picked) {
+        await picked.client.focus();
+        if (!picked.onPage) picked.client.postMessage({ type: "navigate", url });
+        return;
       }
       await self.clients.openWindow(url);
     })(),

@@ -9,6 +9,7 @@ import { cn } from "@/lib/cn";
 import { formatBytes, type Attachment } from "@/lib/json";
 import { attachToAssignment, attachToSubmission, detach } from "@/app/(app)/attachments/actions";
 import { useT } from "@/lib/i18n";
+import { ACTION_BODY_LIMIT_MB, ACTION_FILES_MAX_BYTES } from "@/lib/action-body-limit";
 
 /**
  * Attachment strip with upload.
@@ -43,6 +44,12 @@ export function AttachmentList({
   const inputRef = useRef<HTMLInputElement>(null);
 
   function upload(files: FileList) {
+    // The files travel inside one server action, which Next refuses above its body limit before the action runs, with
+    // nothing said about size (TA-134): the total is checked here and refused in words.
+    if (Array.from(files).reduce((sum, f) => sum + f.size, 0) > ACTION_FILES_MAX_BYTES) {
+      setError(t("ui.filesTooBigTogether", { size: ACTION_BODY_LIMIT_MB }));
+      return;
+    }
     setError(null);
     const formData = new FormData();
     formData.append("assignmentId", assignmentId);

@@ -31,7 +31,7 @@ export function WelcomeBanner({ schoolName, schoolCode }: { schoolName: string; 
       </button>
 
       <div className="flex items-start gap-3 pr-10">
-        <span className="grid size-11 shrink-0 place-items-center rounded-full bg-ok text-white animate-confetti">
+        <span className="grid size-11 shrink-0 place-items-center rounded-full bg-ok text-status-fg animate-confetti">
           <CheckCircleIcon weight="fill" className="size-7" />
         </span>
         <div className="min-w-0">

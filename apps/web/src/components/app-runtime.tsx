@@ -6,6 +6,7 @@ import { useToast } from "@/components/ui/toast";
 import { cn } from "@/lib/cn";
 import { useT } from "@/lib/i18n";
 import { RouterNudge } from "@/lib/navigation";
+import { appPath, openAppPath } from "@/lib/sw-helpers";
 
 /**
  * Cross-cutting client runtime, mounted once in the root layout:
@@ -60,14 +61,54 @@ export function AppRuntime({ owner }: { owner: string | null | undefined }) {
    * whoever was signed in when the worker installed, and taking that as a
    * change would delete the queued register of the person in front of it,
    * under a page saying the register was kept.
+   *
+   * A session that merely ended (owner null) keeps the rows for their
+   * owner's next sign-in (TA-219, TA-519); what is dropped, when somebody
+   * else signs in, is said in a toast that stays until it is dismissed.
    */
   useEffect(() => {
     if (owner === undefined) return;
-    void setOutboxOwner(owner).then(({ changed }) => {
+    void setOutboxOwner(owner).then(({ changed, dropped }) => {
       if (!changed) return;
       navigator.serviceWorker?.controller?.postMessage({ type: "CLEAR_PRIVATE" });
+      if (dropped > 0) {
+        toast({
+          tone: "warn",
+          duration: null,
+          title: dropped === 1 ? t("ui.outboxDroppedOne") : t("ui.outboxDroppedMany", { count: dropped }),
+          description: t("ui.outboxDroppedHint"),
+        });
+      }
     });
-  }, [owner]);
+  }, [owner, toast, t]);
+
+  /* ---- what the worker tells the page ----
+   *
+   * A pressed notification focuses a window and asks it to open the notice's
+   * page (TA-222): nothing listened before, so the window came forward on
+   * whatever it was showing. A plain navigation, not the router: the runtime
+   * sits in the root layout, outside any one page's state, and a window the
+   * app was in the background for is better drawn afresh. And a row the worker's Background Sync drain
+   * found refused for good is said with the same pinned toast as the page's
+   * own flush says it (TA-218).
+   */
+  useEffect(() => {
+    const container = typeof navigator !== "undefined" ? navigator.serviceWorker : undefined;
+    // A container that cannot carry messages (a stand-in, an old embedded browser) has nothing to listen to.
+    if (!container || typeof container.addEventListener !== "function") return;
+    const onMessage = (event: MessageEvent) => {
+      const data = event.data as { type?: string; url?: unknown } | null;
+      if (data?.type === "navigate") {
+        const path = appPath(data.url);
+        if (path) openAppPath(path);
+      } else if (data?.type === "outbox:rejected") {
+        toast({ tone: "danger", duration: null, title: t("ui.changeRejected"), description: t("ui.changeDiscarded") });
+      }
+    };
+    container.addEventListener("message", onMessage);
+    container.startMessages?.();
+    return () => container.removeEventListener("message", onMessage);
+  }, [toast, t]);
 
   /* ---- service worker ---- */
   useEffect(() => {
@@ -198,7 +239,7 @@ export function AppRuntime({ owner }: { owner: string | null | undefined }) {
         aria-hidden="true"
         className={cn(
           "fixed inset-x-0 top-0 z-[90] flex items-center justify-center gap-2",
-          "bg-warn px-4 py-2 pt-[calc(env(safe-area-inset-top,0px)+0.5rem)] text-sm font-semibold text-white",
+          "bg-warn px-4 py-2 pt-[calc(env(safe-area-inset-top,0px)+0.5rem)] text-sm font-semibold text-status-fg",
           "transition-transform duration-[var(--dur)] ease-[var(--ease-out)]",
           online ? "-translate-y-full" : "translate-y-0",
         )}

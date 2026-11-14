@@ -246,7 +246,7 @@ export default async function AdminDashboard({
                     <span
                       className={cn(
                         "grid size-7 shrink-0 place-items-center rounded-full",
-                        step.done ? "bg-ok text-white" : "border-2 border-border-strong",
+                        step.done ? "bg-ok text-status-fg" : "border-2 border-border-strong",
                       )}
                     >
                       {step.done && <CheckCircleIcon weight="fill" className="size-5" />}
@@ -285,7 +285,7 @@ export default async function AdminDashboard({
       ) : (
         <Card className="border-ok/40 bg-ok-soft/40">
           <CardBody className="flex items-center gap-3 pt-5">
-            <span className="grid size-10 shrink-0 place-items-center rounded-full bg-ok text-white">
+            <span className="grid size-10 shrink-0 place-items-center rounded-full bg-ok text-status-fg">
               <CheckCircleIcon weight="fill" className="size-6" />
             </span>
             <div>

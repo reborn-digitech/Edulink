@@ -118,7 +118,7 @@ function BadgeCard({ badge }: { badge: Badge }) {
               />
             </div>
             <p className="mt-1 text-xs tabular-nums text-fg-subtle">
-              {badge.progress.current} of {badge.progress.target}
+              {t("student.progressOf", { current: badge.progress.current, target: badge.progress.target })}
             </p>
           </div>
         )}

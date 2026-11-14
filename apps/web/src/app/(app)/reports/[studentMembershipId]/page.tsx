@@ -92,8 +92,10 @@ export default async function ReportPage({
         <div className="text-sm text-fg-muted sm:text-right">
           <p className="font-medium text-fg">{t("reportView.progressReport")}</p>
           <p>
-            {formatDateKey(report.window.fromKey, { day: "numeric", month: "long" })} to{" "}
-            {formatDateKey(report.window.toKey, { day: "numeric", month: "long", year: "numeric" })}
+            {t("reportView.dateRange", {
+              from: formatDateKey(report.window.fromKey, { day: "numeric", month: "long" }),
+              to: formatDateKey(report.window.toKey, { day: "numeric", month: "long", year: "numeric" }),
+            })}
           </p>
         </div>
       </header>
@@ -145,9 +147,10 @@ export default async function ReportPage({
         ) : (
           <>
             <p className="text-[0.9375rem]">
-              <strong className="text-2xl font-bold">{report.grades.overallPercent}%</strong> overall,
-              across {report.grades.marked.length} marked{" "}
-              {report.grades.marked.length === 1 ? "piece" : "pieces"} of work.
+              <strong className="text-2xl font-bold">{report.grades.overallPercent}%</strong>{" "}
+              {report.grades.marked.length === 1
+                ? t("reportView.overallAcrossOne")
+                : t("reportView.overallAcrossMany", { count: report.grades.marked.length })}
             </p>
             <p className="text-xs text-fg-muted">
               {report.grades.method === "weighted"

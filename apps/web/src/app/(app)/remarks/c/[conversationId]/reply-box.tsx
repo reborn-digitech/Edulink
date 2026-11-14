@@ -48,7 +48,13 @@ export function ConversationReplyBox({ conversationId, className }: { conversati
       return;
     }
     startTransition(async () => {
-      const result = await sendConversationReply({ conversationId, body: trimmed });
+      // A request that fails on the way though the browser said it was online (TA-252) keeps the text in the box, to
+      // send again, rather than failing the page with it. Not queued: whether the server already took it is unknown.
+      const result = await sendConversationReply({ conversationId, body: trimmed }).catch(() => null);
+      if (!result) {
+        setError(t("remarks.couldNotSendTryAgain"));
+        return;
+      }
       if (!result.ok) {
         setError(result.errors._form ?? result.errors.body ?? t("remarks.couldNotSend"));
         return;

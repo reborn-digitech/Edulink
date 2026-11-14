@@ -144,7 +144,7 @@ export function YearPanel({ years, today }: { years: Year[]; today: string }) {
       {/* ---------------- what is running ---------------- */}
       {current ? (
         <div className="flex flex-wrap items-center gap-3 rounded-[var(--radius-md)] border border-ok/40 bg-ok-soft/40 p-3">
-          <span className="grid size-9 shrink-0 place-items-center rounded-full bg-ok text-white">
+          <span className="grid size-9 shrink-0 place-items-center rounded-full bg-ok text-status-fg">
             <CheckCircleIcon weight="fill" className="size-5" />
           </span>
           <div className="min-w-0 flex-1">

@@ -90,7 +90,8 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   return (
     <html lang={locale} suppressHydrationWarning>
       <head>
-        <ThemeScript nonce={(await headers()).get(NONCE_HEADER) ?? undefined} />
+        {/* The signed-in person's saved appearance, applied on whatever browser this is (TA-392). */}
+        <ThemeScript nonce={(await headers()).get(NONCE_HEADER) ?? undefined} account={session?.user.prefs ?? null} />
         {/* Fetched by the provider with fetch(): as="fetch" and crossOrigin "anonymous" are what let it reuse this preload. */}
         <link rel="preload" href={dictionary} as="fetch" crossOrigin="anonymous" />
       </head>

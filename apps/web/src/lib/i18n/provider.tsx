@@ -130,3 +130,20 @@ export function useT(): Translate {
   const { dictionary } = useContext(I18nContext);
   return useMemo(() => (dictionary ? translatorFor(dictionary) : (key) => key), [dictionary]);
 }
+
+/**
+ * `t` for the one page drawn outside every provider: app/global-error.tsx, which replaces the root layout when the
+ * layout itself failed (TA-406). The reader's dictionary when this tab already holds it (the provider's loads are kept
+ * for the life of the tab), on the server the dictionary the root layout registered, and only failing both the keys.
+ */
+export function fallbackT(locale: Locale = DEFAULT_LOCALE): Translate {
+  for (const held of loading.values()) if (held.status === "fulfilled" && held.value) return translatorFor(held.value);
+  if (typeof window === "undefined") {
+    try {
+      return translatorFor(serverDictionary(locale));
+    } catch {
+      // The layout never registered it: the keys below.
+    }
+  }
+  return (key) => key;
+}

@@ -210,7 +210,7 @@ export default async function AssignmentsPage({
                           ? t("teacher.dueWhen", { when: relativeTime(assignment.dueAt) })
                           : t("teacher.noDueDate")}
                         {" · "}
-                        {graded} of {roster} marked
+                        {t("teacher.gradedOf", { graded, total: roster })}
                       </p>
                     </div>
 
@@ -224,7 +224,7 @@ export default async function AssignmentsPage({
                       </Badge>
                     ) : (
                       <Badge tone="neutral" size="sm">
-                        {roster - graded} to mark
+                        {t("teacher.toMarkCount", { count: roster - graded })}
                       </Badge>
                     )}
 

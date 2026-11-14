@@ -6,6 +6,7 @@ import { FloppyDiskIcon, PaperPlaneTiltIcon } from "@phosphor-icons/react";
 import { Button } from "@/components/ui/button";
 import { DateField, SelectField, TextField } from "@/components/ui/field";
 import { FilePicker } from "@/components/ui/file-picker";
+import { ACTION_FILES_MAX_BYTES } from "@/lib/action-body-limit";
 import { useToast } from "@/components/ui/toast";
 import { cn } from "@/lib/cn";
 import { newAssignment } from "../actions";
@@ -202,6 +203,7 @@ export function AssignmentForm({
         files={files}
         error={errors.files}
         hint={t("teacher.handoutsHint")}
+        maxTotalBytes={ACTION_FILES_MAX_BYTES}
         onChange={(next, error) => {
           setFiles(next);
           setErrors((e) => ({ ...e, files: error ?? "" }));
