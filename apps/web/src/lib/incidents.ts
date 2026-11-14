@@ -1,5 +1,5 @@
 import "server-only";
-import type { IncidentCreate, IncidentRow, IncidentView } from "@edulink/contracts";
+import { INCIDENT_STAFF_ONLY_KINDS, type IncidentCreate, type IncidentKind, type IncidentRow, type IncidentView } from "@edulink/contracts";
 import { db } from "./db";
 import { AccessError, assertGuardianAccess, assertStudentAccess, taughtClassWhere } from "./tenancy";
 import { audit } from "./audit";
@@ -24,11 +24,34 @@ import type { Role } from "./constants";
  * school has the channel on, a text — and the record says when it went.
  * The child does not see it until the age the school sets (self-read.ts),
  * and then reads it as the family does, never writes. (Decision 0002, row 27.)
+ *
+ * A SAFEGUARDING CONCERN IS NARROWER (the owner's decision on TA-108, 14
+ * November 2026; INCIDENT_STAFF_ONLY_KINDS): the person it is about may be one
+ * of the guardians, so it is read only by the office, the head and the person
+ * who recorded it. Nobody in the family is told, whatever the request asks;
+ * the family's list, the export built from it and the pupil's own page leave
+ * it out, those made before the decision included; and the class's other
+ * teachers do not see it in the list, by its id or in a roster's count.
  */
 
 const OFFICE: readonly Role[] = ["ADMIN", "PRINCIPAL"];
 const STAFF: readonly Role[] = ["ADMIN", "PRINCIPAL", "TEACHER"];
 const PAGE_SIZE = 25;
+const STAFF_ONLY: IncidentKind[] = [...INCIDENT_STAFF_ONLY_KINDS];
+
+/** Whether a kind is read only by the office, the head and its recorder (TA-108). */
+export function staffOnlyKind(kind: string): boolean {
+  return (INCIDENT_STAFF_ONLY_KINDS as readonly string[]).includes(kind);
+}
+
+/**
+ * The where-clause that keeps a staff-only incident to the office, the head and its recorder (TA-108): nothing for the
+ * office and the head, and for anyone else every other kind or what they recorded themselves.
+ */
+export function staffOnlyWhere(viewer: { membershipId: string; role: Role }) {
+  if (OFFICE.includes(viewer.role)) return {};
+  return { OR: [{ kind: { notIn: STAFF_ONLY } }, { reportedByMembershipId: viewer.membershipId }] };
+}
 
 type StaffCtx = ActiveContext & { schoolId: string; membershipId: string; role: Role };
 
@@ -133,7 +156,8 @@ export async function recordIncident(ctx: ActiveContext, input: IncidentCreate):
   let notifiedAt: Date | null = null;
   // An adult at a college: the incident log is theirs (family-child.ts), no grant covers it, and the guardians are
   // neither told nor recorded as told (TA-106).
-  if (input.notifyGuardians && !(await consentApplies(input.studentMembershipId))) {
+  // A safeguarding concern is told to nobody in the family, whatever the request asks (TA-108).
+  if (input.notifyGuardians && !staffOnlyKind(input.kind) && !(await consentApplies(input.studentMembershipId))) {
     const school = await db.school.findUniqueOrThrow({ where: { id: staff.schoolId }, select: { name: true } });
     await notifyGuardians(input.studentMembershipId, (childName) => ({
       schoolId: staff.schoolId,
@@ -169,6 +193,8 @@ export async function incidentFor(ctx: ActiveContext, incidentId: string): Promi
   const staff = staffOf(ctx);
   const i = await db.incident.findFirst({ where: { id: incidentId, schoolId: staff.schoolId }, include });
   if (!i) throw new AccessError("incidents.notFound", "NOT_FOUND");
+  // A safeguarding concern: the office, the head and the person who recorded it; to anyone else it is not there (TA-108).
+  if (staffOnlyKind(i.kind) && !OFFICE.includes(staff.role) && i.reportedByMembershipId !== staff.membershipId) throw new AccessError("incidents.notFound", "NOT_FOUND");
   await assertStudentAccess({ schoolId: staff.schoolId, membershipId: staff.membershipId, role: staff.role }, i.studentMembershipId);
   return viewOf(i, { canNote: i.status === "OPEN", canClose: OFFICE.includes(staff.role) && i.status === "OPEN" });
 }
@@ -185,6 +211,7 @@ export async function listIncidents(ctx: ActiveContext, query: { status: "OPEN" 
     ...(staff.role === "TEACHER"
       ? { student: { enrollments: { some: { status: "ACTIVE" as const, class: taughtClassWhere(staff.role, staff.membershipId) } } } }
       : {}),
+    ...staffOnlyWhere(staff),
   };
   const [rows, total, openCount] = await Promise.all([
     db.incident.findMany({ where, include, orderBy: { occurredAt: "desc" }, skip: (query.page - 1) * PAGE_SIZE, take: PAGE_SIZE }),
@@ -218,10 +245,14 @@ export async function closeIncident(ctx: ActiveContext, incidentId: string): Pro
   return incidentFor(ctx, incidentId);
 }
 
-/** A guardian's read of their child's incidents — or a pupil's own, from the school's age — newest first, with the follow-up notes. */
+/**
+ * A guardian's read of their child's incidents — or a pupil's own, from the school's age — newest first, with the
+ * follow-up notes. A safeguarding concern is never here, those recorded before TA-108's decision included; the
+ * guardian's and the pupil's export read this list too.
+ */
 export async function familyIncidents(ctx: ActiveContext, studentMembershipId: string): Promise<{ childName: string; incidents: IncidentView[] }> {
   const childName = ctx.role === "STUDENT" ? (await assertSelfRead(ctx, studentMembershipId)).studentName : await guardianChildName(ctx, studentMembershipId);
-  const rows = await db.incident.findMany({ where: { studentMembershipId }, include, orderBy: { occurredAt: "desc" } });
+  const rows = await db.incident.findMany({ where: { studentMembershipId, kind: { notIn: STAFF_ONLY } }, include, orderBy: { occurredAt: "desc" } });
   const incidents = await Promise.all(rows.map((r) => viewOf(r, { canNote: false, canClose: false })));
   return { childName, incidents };
 }
@@ -231,9 +262,13 @@ async function guardianChildName(ctx: ActiveContext, studentMembershipId: string
   return link.student.user.preferredName ?? link.student.user.name;
 }
 
-/** How many open incidents a pupil has: the chip on a roster. */
-export async function openIncidentCounts(schoolId: string, studentMembershipIds: string[]): Promise<Map<string, number>> {
+/**
+ * How many open incidents a pupil has: the chip on a roster. A safeguarding concern counts only for the office, the
+ * head and the person who recorded it (TA-108); with no viewer named it counts for nobody.
+ */
+export async function openIncidentCounts(schoolId: string, studentMembershipIds: string[], viewer?: { membershipId: string; role: Role }): Promise<Map<string, number>> {
   if (studentMembershipIds.length === 0) return new Map();
-  const grouped = await db.incident.groupBy({ by: ["studentMembershipId"], where: { schoolId, status: "OPEN", studentMembershipId: { in: studentMembershipIds } }, _count: { _all: true } });
+  const shown = viewer ? staffOnlyWhere(viewer) : { kind: { notIn: STAFF_ONLY } };
+  const grouped = await db.incident.groupBy({ by: ["studentMembershipId"], where: { schoolId, status: "OPEN", studentMembershipId: { in: studentMembershipIds }, ...shown }, _count: { _all: true } });
   return new Map(grouped.map((g) => [g.studentMembershipId, g._count._all]));
 }

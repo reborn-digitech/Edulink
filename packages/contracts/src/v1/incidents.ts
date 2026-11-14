@@ -10,6 +10,12 @@ const iso = z.string().datetime();
 
 export const INCIDENT_KINDS = ["INJURY", "ILLNESS", "BEHAVIOUR", "SAFEGUARDING", "OTHER"] as const;
 export const INCIDENT_SEVERITIES = ["MINOR", "MODERATE", "SERIOUS"] as const;
+/**
+ * The kinds read only by the office, the head and the person who recorded them (the owner's decision on TA-108, 14
+ * November 2026): never told to the family, never on the family's pages, export or the pupil's own page, and not
+ * shown to the class's other teachers. A request to tell the family about one tells nobody.
+ */
+export const INCIDENT_STAFF_ONLY_KINDS: readonly IncidentKind[] = ["SAFEGUARDING"];
 export const incidentKindSchema = z.enum(INCIDENT_KINDS);
 export const incidentSeveritySchema = z.enum(INCIDENT_SEVERITIES);
 export type IncidentKind = z.infer<typeof incidentKindSchema>;
@@ -26,6 +32,7 @@ export const incidentCreateSchema = z.object({
   body: z.string().trim().min(1).max(4000),
   actionTaken: z.string().trim().max(2000).default(""),
   /** Tell the guardians now, by push and text. On by default; off for a behaviour note the head wants to raise in person. */
+  // Ignored for a kind in INCIDENT_STAFF_ONLY_KINDS: nobody in the family is told of a safeguarding concern (TA-108).
   notifyGuardians: z.boolean().default(true),
 });
 export type IncidentCreate = z.infer<typeof incidentCreateSchema>;

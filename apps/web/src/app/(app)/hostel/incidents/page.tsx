@@ -32,7 +32,7 @@ export default async function HostelIncidentsPage({ searchParams }: { searchPara
         <Card>
           <CardHeader icon={<FirstAidKitIcon weight="duotone" className="size-5" />} title={t("hostel.recordIncident")} />
           <CardBody>
-            <ActionForm action={hostelIncidentAction} className="grid gap-3 sm:grid-cols-2">
+            <ActionForm action={hostelIncidentAction} className="group grid gap-3 sm:grid-cols-2">
               <input type="hidden" name="back" value="/hostel/incidents" />
               <label className="text-sm font-medium text-fg">
                 {t("hostel.pupil")}
@@ -76,10 +76,13 @@ export default async function HostelIncidentsPage({ searchParams }: { searchPara
                 {t("hostel.incidentAction")}
                 <textarea name="actionTaken" maxLength={2000} rows={2} className={fieldClass("mt-1.5 block")} />
               </label>
-              <label className="flex min-h-11 items-center gap-2 text-sm text-fg sm:col-span-2">
+              {/* A safeguarding concern has no "Tell the family" box, and the form says who reads it (TA-108); the
+                  server tells nobody of one whatever is sent. */}
+              <label className="flex min-h-11 items-center gap-2 text-sm text-fg group-has-[option[value=SAFEGUARDING]:checked]:hidden sm:col-span-2">
                 <input type="checkbox" name="notifyGuardians" defaultChecked className="size-4" />
                 {t("hostel.tellFamily")}
               </label>
+              <p className="hidden text-sm text-fg-muted group-has-[option[value=SAFEGUARDING]:checked]:block sm:col-span-2">{t("hostel.tellFamilySafeguarding")}</p>
               <div className="sm:col-span-2">
                 <Button type="submit">{t("hostel.recordIncidentButton")}</Button>
               </div>

@@ -3,7 +3,7 @@
 import { useState, useSyncExternalStore, useTransition } from "react";
 import { useRouter } from "@/lib/navigation";
 import { FloppyDiskIcon } from "@phosphor-icons/react";
-import { INCIDENT_KINDS, INCIDENT_SEVERITIES, type IncidentKind, type IncidentSeverity } from "@edulink/contracts";
+import { INCIDENT_KINDS, INCIDENT_SEVERITIES, INCIDENT_STAFF_ONLY_KINDS, type IncidentKind, type IncidentSeverity } from "@edulink/contracts";
 import { Button } from "@/components/ui/button";
 import { CheckboxField, SelectField, TextAreaField, TextField } from "@/components/ui/field";
 import { useToast } from "@/components/ui/toast";
@@ -53,6 +53,7 @@ export function IncidentForm({ studentMembershipId }: { studentMembershipId: str
   const [actionTaken, setActionTaken] = useState("");
   const [notifyGuardians, setNotifyGuardians] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const staffOnly = INCIDENT_STAFF_ONLY_KINDS.includes(kind);
 
   function submit(event: React.FormEvent) {
     event.preventDefault();
@@ -71,13 +72,13 @@ export function IncidentForm({ studentMembershipId }: { studentMembershipId: str
         title: title.trim(),
         body: body.trim(),
         actionTaken: actionTaken.trim(),
-        notifyGuardians,
+        notifyGuardians: notifyGuardians && !staffOnly,
       });
       if (!result.ok || !result.id) {
         setError(actionError(t, result, "common.tryAgain"));
         return;
       }
-      toast({ tone: "ok", title: t(notifyGuardians ? "incidents.recorded" : "incidents.recordedQuiet") });
+      toast({ tone: "ok", title: t(staffOnly ? "incidents.recordedSafeguarding" : notifyGuardians ? "incidents.recorded" : "incidents.recordedQuiet") });
       router.push(`/incidents/${result.id}`);
     });
   }
@@ -121,7 +122,14 @@ export function IncidentForm({ studentMembershipId }: { studentMembershipId: str
       <TextAreaField label={t("incidents.body")} hint={t("incidents.bodyHint")} required rows={5} maxLength={4000} value={body} onChange={(e) => setBody(e.target.value)} />
       <TextAreaField label={t("incidents.actionTaken")} hint={t("incidents.actionTakenHint")} rows={3} maxLength={2000} value={actionTaken} onChange={(e) => setActionTaken(e.target.value)} />
 
-      <CheckboxField label={t("incidents.notifyGuardians")} description={t("incidents.notifyGuardiansHint")} checked={notifyGuardians} onChange={(e) => setNotifyGuardians(e.target.checked)} />
+      {staffOnly ? (
+        // A safeguarding concern: no "Tell the family" box, and the form says who reads it (TA-108).
+        <p className="rounded-[var(--radius-md)] border border-border bg-surface-muted px-3 py-2 text-sm text-fg" data-testid="incident-staff-only">
+          {t("incidents.safeguardingReaders")}
+        </p>
+      ) : (
+        <CheckboxField label={t("incidents.notifyGuardians")} description={t("incidents.notifyGuardiansHint")} checked={notifyGuardians} onChange={(e) => setNotifyGuardians(e.target.checked)} />
+      )}
 
       <Button type="submit" loading={pending} icon={<FloppyDiskIcon weight="bold" />}>
         {t("incidents.save")}

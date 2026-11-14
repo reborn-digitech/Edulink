@@ -95,6 +95,19 @@ describe("recording an incident", () => {
     await waitFor(() => expect(mockRouter.replace).toHaveBeenCalledWith({ pathname: "/(app)/incident", params: { incidentId: INC } }));
   });
 
+  it("TA-108: a safeguarding concern has no switch, says who reads it, and sends notifyGuardians false", async () => {
+    const { calls } = await mountStaff(<StaffIncidentNew />, "TEACHER", { [POST]: () => json(created({ kind: "SAFEGUARDING", guardiansNotifiedAt: null }), 201) });
+    await fireEvent.press(await screen.findByRole("radio", { name: "Safeguarding concern" }));
+    expect(screen.queryByRole("switch", { name: "Tell the family now" })).toBeNull();
+    expect(screen.getByText("A safeguarding concern is read only by the office, the head and you. The family is not told and does not see it, and the class's other teachers do not see it either.")).toBeTruthy();
+    await fireEvent.changeText(screen.getByLabelText("In one line"), "ZZ A worry from home");
+    await fireEvent.changeText(screen.getByLabelText("What happened"), "ZZ what the pupil said.");
+    await fireEvent.press(screen.getByRole("button", { name: "Record it" }));
+    await waitFor(() => expect(calls().filter((c) => c.line === "POST /api/v1/staff/incidents")).toHaveLength(1));
+    expect(calls().find((c) => c.line === "POST /api/v1/staff/incidents")!.body).toMatchObject({ kind: "SAFEGUARDING", notifyGuardians: false });
+    await waitFor(() => expect(mockRouter.replace).toHaveBeenCalledWith({ pathname: "/(app)/incident", params: { incidentId: INC } }));
+  });
+
   it("a 422 is an alert above the form and the form stays", async () => {
     await mountStaff(<StaffIncidentNew />, "TEACHER", { [POST]: refused("ZZ not one of your pupils", 422) });
     await fireEvent.changeText(await screen.findByLabelText("In one line"), "ZZ Fell");
