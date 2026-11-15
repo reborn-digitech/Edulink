@@ -279,9 +279,9 @@ jobs:
         run: npm run sweep
       - name: API sweep · every endpoint as every role
         working-directory: apps/web
-        # TA-512 (decided 14 November 2026: list first, then declare and tighten): the run lists every fixed-address
-        # read that answered 404 to a permitted role with nothing declared for it, and fails none of them; the list is
-        # uploaded below, for the by-design 404s to be declared per role before the default becomes "must succeed".
+        # TA-512 (decided 14 November 2026: list first, then declare and tighten): a fixed-address read must answer a
+        # permitted role 200 unless the catalog declares otherwise for that role, so a 404 there fails the run; the run
+        # also lists every such 404, door by door with its roles, and the list is uploaded below.
         run: npm run api:sweep -- --report-not-found=api-sweep-not-found.json
       - name: API sweep not-found list
         if: always()

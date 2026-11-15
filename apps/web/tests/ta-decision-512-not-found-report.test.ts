@@ -1,9 +1,10 @@
 /**
  * TA-512, the owner's decision of 14 November 2026 (list first, then declare and tighten): the API sweep let a permitted
  * role's fixed-address GET answer 404 by default, so a read that lost its own rows passed. Built here: the sweep's
- * report mode (`--report-not-found`, scripts/sweep-not-found.ts), which lists every such 404 and fails nothing; CI's run
- * of it, whose list is uploaded; and the sweep header, which claimed a permitted GET was expected to answer 200. The
- * declarations per role and the tightened default come after the local run, and are not this suite's.
+ * report mode (`--report-not-found`, scripts/sweep-not-found.ts), which lists every such 404 and sets no exit code of its
+ * own; CI's run of it, whose list is uploaded; and the sweep header, which claimed a permitted GET was expected to answer
+ * 200. The declarations per role and the tightened default, which came after the local run of 15 November 2026, are
+ * tests/ta-decision-512-tightened-default.test.ts's; here the report's line and the default's pin follow them.
  *
  * Pure: no database and no server. The module is imported inside each case, so each case fails alone without it.
  */
@@ -23,7 +24,7 @@ const load = async () => {
 };
 
 const fixed = (e: Endpoint) => e.method === "GET" && !/\{\w+\}/.test(e.path) && e.path !== "/api/v1/events";
-/** A fixed-address read open to the office with nothing declared: the default [200, 404] judges it. */
+/** A fixed-address read open to the office with nothing declared: the default judges it (since TA-512's last step, [200]). */
 const plainRead = ENDPOINTS.find((e) => fixed(e) && e.access === "signed-in" && !e.duties?.length && declaredStatus(e, "ADMIN") === undefined)!;
 const withParam = ENDPOINTS.find((e) => e.method === "GET" && /\{\w+\}/.test(e.path) && e.access === "signed-in" && declaredStatus(e, "ADMIN") === undefined)!;
 
@@ -52,7 +53,7 @@ describe("TA-512: the API sweep's not-found report", () => {
     expect(reportable.length).toBeGreaterThan(100);
   });
 
-  it("TA-512: the report lists each 404 door by door with its roles, counts what the default judged, and says none failed", async () => {
+  it("TA-512: the report lists each 404 door by door with its roles, counts what the default judged, and says each failed the run", async () => {
     const { NotFoundReport } = await load();
     const report = new NotFoundReport();
     const a = { method: "GET", path: "/api/v1/zz/a" } as const;
@@ -69,7 +70,7 @@ describe("TA-512: the API sweep's not-found report", () => {
     const lines = report.lines();
     expect(lines[0]).toBe("· not found (report): GET /api/v1/zz/a as ADMIN, TEACHER (sample /api/v1/zz/a?term=1)");
     expect(lines[1]).toBe("· not found (report): GET /api/v1/zz/b as TEACHER");
-    expect(lines.at(-1)).toMatch(/^not-found report \(TA-512\): 3 of 4 calls at 2 of 2 fixed-address reads judged by the default \[200, 404\] answered 404 to a permitted role; listed, none failed/);
+    expect(lines.at(-1)).toMatch(/^not-found report \(TA-512\): 3 of 4 calls at 2 of 2 fixed-address reads judged by the default \[200\] answered 404 to a permitted role; each failed the run/);
     const json = report.json(new Date("2026-11-14T10:00:00Z"), "http://localhost:3000", "features on: none");
     expect(json).toMatchObject({ finding: "TA-512", generatedAt: "2026-11-14T10:00:00.000Z", judgedCalls: 4, judgedDoors: 2, notFoundCalls: 3, gate: "features on: none" });
     expect(json.doors).toHaveLength(2);
@@ -93,11 +94,11 @@ describe("TA-512: the API sweep's not-found report", () => {
     const tail = src.slice(src.indexOf("const failed = results.filter((r) => !r.ok);", src.indexOf("async function main()")));
     expect(tail).toMatch(/for \(const line of notFound\.lines\(\)\) console\.log\(line\)/);
     expect(tail).toMatch(/writeFileSync\(NOT_FOUND, JSON\.stringify\(notFound\.json\(/);
-    // The list fails nothing: the exit code is still the failures' and the variants' alone.
+    // The list sets no exit code of its own: the exit code is the failures' and the variants', a listed 404 being one of the failures.
     expect(tail).toMatch(/if \(failed\.length \|\| variantResults\.some\(\(r\) => !r\.ok\)\) process\.exitCode = 1;/);
     expect(src).not.toMatch(/notFound[^\n]*process\.exitCode/);
-    // The default itself is unchanged until the declarations: the tightened default is the campaign's last commit.
-    expect(src).toMatch(/declaredStatus\(e, role\) \?\? \[200, 404\]\);/);
+    // The default, tightened after the declarations (the campaign's last commit): 200 at a fixed address, [200, 404] where the path names a parameter.
+    expect(src).toMatch(/declaredStatus\(e, role\) \?\? defaultGetStatus\(e\)\);/);
   });
 
   it("TA-512: the sweep header no longer claims a permitted GET is expected to answer 200, and names the report", () => {

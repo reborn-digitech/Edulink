@@ -14,8 +14,9 @@
  *   npm run api:sweep -- --variants=off     the per-role walk alone, without the role variants (owner-batch-item13, below)
  *   npm run api:sweep -- --report-not-found[=<file>]
  *                                           the not-found report (TA-512, below): list every fixed-address read that
- *                                           answered 404 to a permitted role on the default alone, and fail none of
- *                                           them; with a file, the list is written there as JSON too (CI uploads it)
+ *                                           answered 404 to a permitted role with nothing declared for it, each of
+ *                                           them also a failure of the run; with a file, the list is written there as
+ *                                           JSON too (CI uploads it)
  *   npm run api:sweep -- --clean-since=<ISO> [--clean-until=<ISO>]
  *                                               no sweep: take away what a run that never reached its own
  *                                               clean-up wrote to the ZZ fixture schools in that window (W-13)
@@ -24,13 +25,13 @@
  * own, sent as bearer tokens (not cookies — the point is the phone's door),
  * and deleted at the end. A GET answers a permitted role what the catalog
  * declares for it (statusByRole, then emptyBodyStatus) and, where nothing is
- * declared, 200 or 404: a permitted role's 404 is accepted by default, so it
- * is not proved that a permitted GET answers 200 (TA-512, below). A
- * POST/DELETE with an empty body answers the catalog's emptyBodyStatus for a
- * permitted role, and where none is declared 200, 404 or 422. The rest are
- * answered 403; signed out is 401 for anything not open to anyone. An
- * endpoint with a path parameter and no sample is skipped and listed, so the
- * gap is visible rather than silent.
+ * declared, 200 at a fixed address (no parameter in its catalog path) and
+ * 200 or 404 at a path that names a parameter, whose sample is another
+ * tenant's row to some actors (TA-512, below). A POST/DELETE with an empty
+ * body answers the catalog's emptyBodyStatus for a permitted role, and where
+ * none is declared 200, 404 or 422. The rest are answered 403; signed out is
+ * 401 for anything not open to anyone. An endpoint with a path parameter and
+ * no sample is skipped and listed, so the gap is visible rather than silent.
  *
  * MODULES AND COLLEGES (SWEEPS-4 and W-17, 4 Oct 2026). A door whose module
  * the actor's school has off answers 403 MODULE_OFF for every role, and that
@@ -53,8 +54,9 @@
  * judged from the door's own `module` (published as `x-module`) against the actor's school's modules, and a
  * college's door at a school from the catalog file it is filed in (`COLLEGE_DOORS`, published as `x-college`),
  * so a new door is classified where it is catalogued and no path or count is kept here; a 404 for another
- * tenant's sample is what a GET's `[200, 404]` already allows. Path prefixes are not used: the college's doors
- * share them with the school's (`/library/eresources` is a college's, `/library/titles` a school's).
+ * tenant's sample is what a GET's `[200, 404]` allows where its path names a parameter, and at a fixed address it
+ * is declared for the role (TA-512, below). Path prefixes are not used: the college's doors share them with the
+ * school's (`/library/eresources` is a college's, `/library/titles` a school's).
  *
  * ROLE VARIANTS (owner-batch-item13, 1 Nov 2026). Beside the walk as one person per role, every door that declares a
  * `reach` (the relation its handler requires: catalog types.ts REACHES) or a duty is walked as the role's VARIANTS —
@@ -67,12 +69,15 @@
  * refused variant whose empty body was refused by the parser first (422), with no valid body to send, is counted as
  * not reaching the fence rather than as a pass. `--variants=off` runs the old walk alone.
  *
- * NOT FOUND, LISTED BEFORE IT IS TIGHTENED (TA-512, decided 14 Nov 2026). The default `[200, 404]` for a permitted
- * role's GET lets a fixed-address read that loses its own rows pass. `--report-not-found` lists every fixed-address
- * read (no parameter in its catalog path) that answered 404 to a permitted role with nothing declared for that role,
- * and fails none of them (scripts/sweep-not-found.ts); CI's run writes it to api-sweep-not-found.json and uploads it.
- * The by-design 404s it finds are to be declared per role (statusByRole), and only then does the default become
- * "must succeed"; until then the default above stands.
+ * NOT FOUND AT A FIXED ADDRESS IS DECLARED OR FAILS (TA-512, decided 14 Nov 2026: list first, then declare and
+ * tighten). The default `[200, 404]` for a permitted role's GET let a fixed-address read that loses its own rows pass.
+ * The run with platform features and plans on (15 Nov 2026) listed every fixed-address read (no parameter in its
+ * catalog path) that answered 404 to a permitted role with nothing declared for that role: twelve doors and fifteen
+ * calls, each by design for the role that met it and now declared in its catalog entry for that role alone
+ * (statusByRole). So the default for a fixed-address read is now 200 (defaultGetStatus, scripts/sweep-not-found.ts)
+ * and a 404 there fails the run unless the catalog declares it for the role; a read whose path names a parameter
+ * keeps `[200, 404]`. `--report-not-found` still lists each such 404, door by door with its roles; CI's run writes the
+ * list to api-sweep-not-found.json and uploads it.
  */
 import { createHash, randomBytes } from "node:crypto";
 import { writeFileSync } from "node:fs";
@@ -93,7 +98,7 @@ import { keepSessionsAlive, purgeSessionsOnSignal, SWEEP_VARIANTS, sweepSessionE
 import { describeGateState, doorGate, gateFlags, readGateState, runSwitches, type GateState } from "./sweep-features";
 import { healthAnswers, RETRY_PAUSE_MS, RETRY_TIMEOUT_MS, retryOnceIfHealthy } from "./sweep-retry";
 import { isLiveRun, liveRunSkip } from "./sweep-live-run";
-import { judgedByDefault, notFoundReportFlag, NotFoundReport } from "./sweep-not-found";
+import { defaultGetStatus, judgedByDefault, notFoundReportFlag, NotFoundReport } from "./sweep-not-found";
 
 const BASE = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000";
 const db = new PrismaClient({ datasourceUrl: process.env.DATABASE_ADMIN_URL ?? process.env.DATABASE_URL });
@@ -756,8 +761,9 @@ function expected(e: Endpoint, role: Role | null): number | number[] {
   // the substitution door's empty body is refused by the parser first (422),
   // and its closed-day answer is what the valid-body probe expects below.
   if (e.path === "/api/v1/staff/attendance/check-in" && checkInClosedFor(role)) return 403;
-  // A GET's emptyBodyStatus is the permitted actor's answer to the sample as it stands (catalog types.ts).
-  if (e.method === "GET") return e.path === "/api/v1/events" ? 200 : (declaredStatus(e, role) ?? [200, 404]);
+  // A GET's emptyBodyStatus is the permitted actor's answer to the sample as it stands (catalog types.ts). With nothing
+  // declared for the role, a fixed-address read must answer 200 and one whose path names a parameter 200 or 404 (TA-512).
+  if (e.method === "GET") return e.path === "/api/v1/events" ? 200 : (declaredStatus(e, role) ?? defaultGetStatus(e));
   return declaredStatus(e, role) ?? [200, 404, 422];
 }
 
@@ -1351,7 +1357,7 @@ async function main() {
       const handlerOk = (a: Answer) => byHandler && a.status === 404;
       const got = await hit(e, role ? tokens[role] : null, path);
       if (role) baseAnswers.set(baseKey(e, role, "empty"), got.status); // owner-batch-item13
-      // TA-512: a permitted role's answer at a fixed-address read judged by the default alone, noted for the report (fails nothing).
+      // TA-512: a permitted role's answer at a fixed-address read judged by the default alone, noted for the report; the default, 200, judges the call itself below.
       if (NOT_FOUND !== undefined && role && !byHandler && off !== "must" && judgedByDefault(e, role, actorPermits(e, role))) notFound.note(e, role, path, got.status);
       results.push({ endpoint: `${e.method} ${e.path}`, role: role ?? "anonymous", expected: byHandler ? `${JSON.stringify(wanted(want, off))} or 404 (its handler, feature off)` : wanted(want, off), got: got.status, ok: judge(want, off, got) || handlerOk(got) });
       // With a valid body, a permitted role must get through (200), which is
@@ -1379,7 +1385,7 @@ async function main() {
   printVariants(); // owner-batch-item13
   printSlowest();
   if (NOT_FOUND !== undefined) {
-    // TA-512: the list, which fails nothing; the exit code below is the failures' and the variants' alone.
+    // TA-512: the list sets no exit code of its own: each 404 in it is already one of the failures above, and the exit code below is the failures' and the variants'.
     console.log("");
     for (const line of notFound.lines()) console.log(line);
     if (NOT_FOUND) {

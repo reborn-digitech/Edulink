@@ -21,7 +21,7 @@ export async function POST(_request: Request, { params }: { params: Promise<{ fi
     if (!access.allowed) throw new AccessError("notFound.title", "NOT_FOUND");
     const link = signFileLink(fileId);
     if (!link) {
-      // Production with neither FILE_LINK_SECRET nor VAPID_PRIVATE_KEY: the phone falls back to the web page.
+      // Production without a FILE_LINK_SECRET of 32 or more characters (fileLinkKey in file-links.ts no longer derives one from the push key): the phone falls back to the web page.
       const t = await getT();
       return NextResponse.json(apiErrorSchema.parse({ error: t("common.tryAgainMoment"), code: "SERVER" }), { status: 503, headers: { "Cache-Control": "no-store" } });
     }

@@ -16,7 +16,8 @@
  *   sweep only reads their ids.
  *
  *   restoreSweepThrowaways — rows whose door IS a removal (an appraisal, a
- *   lesson-plan template, an absence note, an expert's open window). Each
+ *   lesson-plan template, an absence note, an expert's open window, the
+ *   school's seal). Each
  *   exists only to be removed: the sweep puts it back before it walks the
  *   catalog, so every run proves the removal itself and not a 404 left by the
  *   run before, and zz:fixtures puts it back after, as it restores every row
@@ -28,6 +29,7 @@
 import type { PrismaClient } from "@prisma/client";
 import { randomBytes } from "node:crypto";
 import { addDaysToKey, todayKey, zonedStartOfDay } from "../src/lib/dates";
+import { fixturePng } from "./png";
 
 const DAY = 86_400_000;
 
@@ -291,5 +293,20 @@ export async function restoreSweepThrowaways(db: PrismaClient, schoolId: string)
     else if (!slot.bookedAt) await db.expertSlot.update({ where: { id: ids.goneExpertSlot }, data: { startsAt, endsAt: new Date(startsAt.getTime() + 3_600_000), cancelledAt: null } });
     made.push("an expert's window to withdraw");
   }
+  await restoreSweepSeal(db, schoolId);
+  made.push("the seal to remove");
   return made;
+}
+
+/**
+ * The school's seal, which every run's own POST /api/v1/office/signatures/seal/remove takes away (the admin's call with
+ * an empty body): put back when it is missing, so that the seal's picture, GET /api/v1/office/signatures/image?of=seal,
+ * a fixed-address read held to 200 since TA-512, has one to answer with on a second run as well as on the first after
+ * zz:fixtures (which makes the school's seal afresh, buildSignatures). A seal there already is left as it is; the one
+ * put back is made in the past, so the run's clean-up of the rows made during it leaves it. True when one was made.
+ */
+export async function restoreSweepSeal(db: PrismaClient, schoolId: string): Promise<boolean> {
+  if (await db.signatureImage.findFirst({ where: { schoolId, kind: "SEAL" }, select: { id: true } })) return false;
+  await db.signatureImage.create({ data: { schoolId, kind: "SEAL", png: new Uint8Array(fixturePng(200, 200)), createdAt: new Date(Date.now() - 20 * DAY) } });
+  return true;
 }
