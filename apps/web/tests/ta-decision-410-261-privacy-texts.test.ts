@@ -128,8 +128,12 @@ describe("TA-261: the privacy page says what is kept, where it goes and for how 
     }
   });
 
-  it("TA-261: the assistant is off unless a school turns it on and runs on the company's own machine; no outside AI company is named for it", () => {
-    expect(en.privacy.s5assistant).toMatch(/off unless/);
+  it("TA-261: the assistant is off unless the company switches it on and runs on the company's own machine; no outside AI company is named for it", () => {
+    // The operator switches it (platform-features.ts; modules.ts: "ASSISTANT is the operator's to switch, never the admin's").
+    expect(en.privacy.s5assistant).toMatch(/off unless the company switches it on/);
+    expect(en.privacy.s5assistant).not.toMatch(/school turns it on/);
+    expect(hi.privacy.s5assistant).toContain("जब तक कंपनी उसे चालू न करे");
+    expect(mr.privacy.s5assistant).toContain("कंपनीने सुरू केल्याशिवाय");
     expect(en.privacy.s5assistant).toMatch(/own machine/);
     expect(en.privacy.s5assistant).not.toMatch(/Anthropic|OpenAI|Google|Microsoft|Gemini|Claude/);
     expect(hi.privacy.s5assistant).not.toMatch(/Anthropic|OpenAI|Google|Microsoft/);
