@@ -79,13 +79,44 @@ let draft: string;
 let closed: string;
 let noConsentNeeded: string;
 
-const TITLE = "TEST Junior Maths Challenge";
+const STAMP = Date.now();
+const STARTED = new Date(STAMP);
+// Stamped per run: nothing sweeps every "TEST …" competition before a run any more, so a run killed before its
+// clean-up could otherwise leave an entry or a notice under this title for the assertions below to find.
+const TITLE = `TEST Junior Maths Challenge ${STAMP}`;
+
+/*
+ * The clean-up removes what this suite made and nothing else (CLAUDE.md: a test removes only its own rows, and an
+ * unscoped delete once took every school's 2025 registers). It used to delete every competition titled "TEST …" and
+ * its entries in every school, every notice whose title held "TEST " for anybody, and every audit row whose action
+ * began "competition." in every school, while it runs in the seed schools; the leaderboard suite was put right for
+ * the same fault in b1141e14.
+ */
+const made: string[] = []; // the competitions it made, by id, those a case removes itself included
+let told: string[] = []; // the people it acts as, and every guardian their entries tell
+
+/** Notes a competition this suite made, so that the clean-up removes it by id; answers the id. */
+function keep(id: string): string {
+  made.push(id);
+  return id;
+}
 
 async function cleanup() {
-  await db.competitionEntry.deleteMany({ where: { competition: { title: { startsWith: "TEST " } } } });
-  await db.competition.deleteMany({ where: { title: { startsWith: "TEST " } } });
-  await db.notification.deleteMany({ where: { title: { contains: "TEST " } } });
-  await db.auditLog.deleteMany({ where: { action: { startsWith: "competition." } } });
+  if (made.length === 0) return;
+  // Every entry this suite makes is on a competition it made; their ids join the competitions' to find audit rows.
+  const entries = await db.competitionEntry.findMany({ where: { competitionId: { in: made } }, select: { id: true } });
+  const ids = [...made, ...entries.map((e) => e.id)];
+  await db.competitionEntry.deleteMany({ where: { competitionId: { in: made } } });
+  await db.competition.deleteMany({ where: { id: { in: made } } });
+  // Every audit row competitions.ts writes names its competition in meta (competitionId), the rows of an entry a case
+  // has since removed included; an added entrant's names the entry as targetId too. None of these ids existed before.
+  await db.auditLog.deleteMany({
+    where: { createdAt: { gte: STARTED }, OR: [{ targetId: { in: ids } }, ...ids.map((id) => ({ meta: { contains: id } }))] },
+  });
+  // Every notice competitions.ts writes links to its competition: those links, sent to this suite's people since it began.
+  await db.notification.deleteMany({
+    where: { userId: { in: told }, kind: "COMPETITION", createdAt: { gte: STARTED }, url: { in: made.map((id) => `/competitions/${id}`) } },
+  });
 }
 
 beforeAll(async () => {
@@ -139,12 +170,18 @@ beforeAll(async () => {
     role: "ADMIN",
   });
 
-  await cleanup();
+  // Whom this suite's notices can reach: its own people, and every ACTIVE guardian of the two pupils who enter
+  // (notifyGuardians tells each one, the school's stand-in included).
+  const families = await db.guardianship.findMany({
+    where: { studentMembershipId: { in: [guarded.studentMembershipId, notGuarded.id] }, status: "ACTIVE" },
+    select: { parentUserId: true },
+  });
+  told = [...new Set([guarded.student.userId, notGuarded.userId, parentUser.id, oakStudent.userId, priya.id, ...families.map((g) => g.parentUserId)])];
 
   const soon = new Date(Date.now() + 30 * 86_400_000);
   const longAgo = new Date(Date.now() - 30 * 86_400_000);
 
-  published = (
+  published = keep((
     await db.competition.create({
       data: {
         title: TITLE,
@@ -155,13 +192,13 @@ beforeAll(async () => {
         requiresParentConsent: true,
       },
     })
-  ).id;
-  draft = (
+  ).id);
+  draft = keep((
     await db.competition.create({
       data: { title: "TEST Draft Cup", summary: "Not ready", organizerName: "Nobody", status: "DRAFT" },
     })
-  ).id;
-  closed = (
+  ).id);
+  closed = keep((
     await db.competition.create({
       data: {
         title: "TEST Closed Cup",
@@ -171,8 +208,8 @@ beforeAll(async () => {
         registrationClosesAt: longAgo,
       },
     })
-  ).id;
-  noConsentNeeded = (
+  ).id);
+  noConsentNeeded = keep((
     await db.competition.create({
       data: {
         title: "TEST Reading Week",
@@ -183,7 +220,7 @@ beforeAll(async () => {
         requiresParentConsent: false,
       },
     })
-  ).id;
+  ).id);
 });
 
 afterAll(async () => {
@@ -303,6 +340,7 @@ describe("the catalogue, in two sections", () => {
         status: "DRAFT",
       },
     });
+    keep(own.id);
     const seen = await getCompetition(admin, own.id);
     expect(seen.isOrganiser).toBe(true);
   });
@@ -472,6 +510,7 @@ describe("the parent's waiting list", () => {
       data: { title: "TEST Consent Board Cup", summary: "Scored before consent", organizerName: "The Maths Trust", status: "PUBLISHED", requiresParentConsent: true, registrationClosesAt: new Date(Date.now() + 30 * 86_400_000) },
       select: { id: true },
     });
+    keep(cup.id); // removed below; kept so the clean-up still finds its audit rows and notices
     try {
       const { entryId } = await enterCompetition(child, cup.id);
       await recordResult(admin, entryId, { scoreMilli: 7_000, rank: 2 });
@@ -505,6 +544,7 @@ describe("the parent's waiting list", () => {
         requiresParentConsent: true,
       },
     });
+    keep(pulled.id);
     await enterCompetition(child, pulled.id);
     expect((await pendingConsents(guardian)).some((w) => w.competitionId === pulled.id)).toBe(true);
 
@@ -560,6 +600,7 @@ describe("organising one", () => {
       summary: "In the hall",
       requiresParentConsent: false,
     });
+    keep(id);
     const row = await db.competition.findUniqueOrThrow({ where: { id } });
     expect(row.status).toBe("DRAFT");
   });
@@ -570,6 +611,7 @@ describe("organising one", () => {
       summary: "x",
       requiresParentConsent: true,
     });
+    keep(id);
     const row = await db.competition.findUniqueOrThrow({ where: { id } });
     expect(row.organizerSchoolId).toBe(admin.schoolId);
     expect(row.organizerName).toBe("Riverside Primary School");
@@ -583,6 +625,7 @@ describe("organising one", () => {
       // @ts-expect-error — deliberately passing a field the input type refuses
       verified: true,
     });
+    keep(id);
     const row = await db.competition.findUniqueOrThrow({ where: { id } });
     expect(row.verified).toBe(false);
   });
@@ -599,6 +642,7 @@ describe("organising one", () => {
       summary: "x",
       requiresParentConsent: false,
     });
+    keep(id);
     const before = await listCompetitions(child);
     expect([...before.school, ...before.platform].map((c) => c.id)).not.toContain(id);
 
@@ -633,6 +677,7 @@ describe("organising one", () => {
       summary: "x",
       requiresParentConsent: false,
     });
+    keep(id);
     await expect(setCompetitionStatus(otherAdmin, id, "PUBLISHED")).rejects.toMatchObject({
       code: "NOT_FOUND",
     });
@@ -651,6 +696,7 @@ describe("organising one", () => {
       summary: "x",
       requiresParentConsent: false,
     });
+    keep(id);
     await setCompetitionStatus(admin, id, "PUBLISHED");
     const { entryId } = await enterCompetition(child, id);
 
@@ -746,6 +792,7 @@ describe("handing in", () => {
         endsAt: new Date(Date.now() - 86_400_000),
       },
     });
+    keep(finished.id);
     await enterCompetition(child, finished.id);
     await expect(submitEntry(child, finished.id, "https://x.test")).rejects.toBeInstanceOf(AccessError);
   });
@@ -764,6 +811,7 @@ describe("handing in", () => {
         endsAt: new Date(Date.now() + 86_400_000),
       },
     });
+    keep(late.id);
     // Registered while it was still open (written directly, as it would have been).
     await db.competitionEntry.create({
       data: {
