@@ -83,7 +83,8 @@ for (const role of ["ADMIN", "PRINCIPAL"] as const) {
       await page.keyboard.press("ControlOrMeta+k");
       const palette = page.getByRole("dialog", { name: "Search and commands" });
       await expect(palette).toBeVisible();
-      await palette.getByRole("textbox", { name: "Search pages and actions" }).fill("Signatures");
+      // A combobox since ea69a413 (TA-400): the arrow keys' highlight is read through aria-activedescendant.
+      await palette.getByRole("combobox", { name: "Search pages and actions" }).fill("Signatures");
       await expect(palette.locator('a[href="/admin/signatures"]')).toBeVisible();
       await context.close();
     });

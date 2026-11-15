@@ -24,12 +24,12 @@ import { createHash, randomBytes, randomUUID } from "node:crypto";
 import { mkdir, writeFile, rm } from "node:fs/promises";
 import { join, resolve } from "node:path";
 import { config } from "dotenv";
-import { NAV, PRIMARY_ACTION, QUICK_ACTIONS, hiddenByFeature } from "@/lib/nav";
 import { isLimitedRole, ROLE_HOME, type Role } from "@/lib/constants";
 import { dutiesForRole, MODULE_OF_ROLE } from "@edulink/contracts";
 import { todayKey } from "@/lib/dates";
 import { warmPlan, warmUp } from "./sweep-warm";
 import { describeGateState, gateFlags, pageGate, readGateState, runSwitches, type GateState } from "./sweep-features";
+import { navWalkPlan } from "./sweep-nav";
 import { request as httpRequest } from "node:http";
 
 config();
@@ -1112,37 +1112,56 @@ async function staffingAndDuty(schoolId: string) {
  */
 const NAV_REDIRECTS: Record<string, number> = {};
 
-type NavWalker = { role: Role; actor: Actor; modulesOn: readonly string[]; where: string; expect?: Record<string, number>; also?: string[]; /** A FACULTY's or HOD's duties (5 Oct 2026): an entry carrying `duty` is shown only to its holder. */ duties?: readonly string[] };
+type NavWalker = {
+  role: Role;
+  actor: Actor;
+  modulesOn: readonly string[];
+  where: string;
+  expect?: Record<string, number>;
+  also?: string[];
+  /** A FACULTY's or HOD's duties (5 Oct 2026): an entry carrying `duty` is shown only to its holder. */
+  duties?: readonly string[];
+  /** The institution kinds the shell reads for this person (DS-4): the school's own, a guardian's children's schools', none without a school. */
+  kinds: readonly string[];
+};
 
 async function everyNavLink(walkers: NavWalker[]) {
   for (const w of walkers) {
     const role = w.role;
-    const inScope = NAV[role].filter((item) => (!item.module || w.modulesOn.includes(item.module)) && (!item.duty || (w.duties ?? []).includes(item.duty)));
-    // An entry the shell drops while its platform feature is off (nav.ts hiddenByFeature) is not shown; typed in,
-    // its page is the app's 404 — asked below, so a hidden entry whose page still opens is caught (16 Oct 2026).
-    const hidden = new Set(hiddenByFeature(inScope, [...gate.on]));
-    const shown = inScope.filter((item) => !hidden.has(item.href));
+    // What the shell shows this person, by its own rules (sweep-nav.ts). An entry it drops while its platform feature is
+    // off (nav.ts hiddenByFeature) is not shown; typed in, its page is the app's 404 — asked below, so a hidden entry
+    // whose page still opens is caught (16 Oct 2026). An entry it drops for the institution's kind (nav.ts hiddenByKind:
+    // the school's exams, syllabus, substitutions and admissions at a college) is not asked as a link the person is shown
+    // (E2 of the CI triage of 15 November 2026: /admin/admissions at ZZ Vidya College, which TA-269's layout answers
+    // with the 404); each is asked typed in below, at the answer written down for it.
+    const plan = navWalkPlan(role, { modulesOn: w.modulesOn, duties: w.duties, featuresOn: [...gate.on], kinds: w.kinds, also: w.also });
     // The head's pages an admin does not hold (owner-batch-item9): hidden from the menu and the palette, and typed in, the app's 404.
-    const headless = role === "ADMIN" ? NAV.ADMIN.filter((item) => item.duty && !(w.duties ?? []).includes(item.duty) && (!item.module || w.modulesOn.includes(item.module))).map((item) => item.href) : [];
-    for (const href of headless) await check(w.actor, href, 404, `${role} at ${w.where} does not hold the head's pages: the menu hides this, and typed in it is the app's 404`);
-    const hrefs = [
-      ...shown.map((item) => item.href),
-      ...QUICK_ACTIONS[role].map((action) => action.href).filter((href) => !headless.includes(href)),
-      ...(PRIMARY_ACTION[role] ? [PRIMARY_ACTION[role]!.href] : []),
-      ...(w.also ?? []),
-    ].filter((href) => !href.includes("["));
+    for (const href of plan.headless) await check(w.actor, href, 404, `${role} at ${w.where} does not hold the head's pages: the menu hides this, and typed in it is the app's 404`);
     // A limited role whose own module is off keeps its home, the notices and the person's own pages (role-gate.ts modulePagePermitted).
     const own = isLimitedRole(role) ? (MODULE_OF_ROLE as Partial<Record<string, string>>)[role] : undefined;
     const ownOff = own !== undefined && !w.modulesOn.includes(own);
     const home = ROLE_HOME[role];
     const keptWhenOff = (href: string) => href === home || href.startsWith(`${home}/`) || href.startsWith("/notifications") || href.startsWith("/account");
 
-    for (const href of [...hidden].filter((h) => !h.includes("["))) {
+    for (const href of plan.featureOff) {
       if (ownOff && !keptWhenOff(href)) continue;
       await check(w.actor, href, 404, `${role}'s menu hides this while its feature is off at ${w.where}; typed in, the app's 404`);
     }
-    for (const href of [...new Set(hrefs)]) {
-      if (hidden.has(href)) continue;
+    // The school's pages the shell hides by kind at a college while they still open by address (sweep-nav.ts
+    // OPEN_WHEN_HIDDEN_BY_KIND): asked typed in at the answer they give today, a 200, the page rendered and not a
+    // redirect, so one that stops rendering is still caught. Whether a college person should reach them by address at
+    // all is an open product question for the owner, not decided by this line.
+    for (const href of plan.typedIn) {
+      if (ownOff && !keptWhenOff(href)) continue;
+      await check(w.actor, href, 200, `${role} is not shown this school's page at ${w.where} (hidden by kind), and typed in it still opens: the owner's open question`);
+    }
+    // Every other page the shell hides by kind: typed in, the app's 404, as a feature's hidden page is (the admissions at a
+    // college, whose layout answers it since 3ccf78f4, TA-269).
+    for (const href of plan.kindNotFound) {
+      if (ownOff && !keptWhenOff(href)) continue;
+      await check(w.actor, href, 404, `${role}'s menu hides this at ${w.where} (hidden by kind); typed in, the app's 404`);
+    }
+    for (const href of plan.shown) {
       if (ownOff && !keptWhenOff(href)) {
         skip(`${role} ${href} at ${w.where}`, `the role's own module ${own} is off there: the gate keeps only its home`);
         continue;
@@ -1173,6 +1192,13 @@ async function modulesForFamily(email: string): Promise<string[]> {
   const links = await db.guardianship.findMany({ where: { parent: { email }, status: "ACTIVE" }, select: { studentSchoolId: true } });
   const rows = await db.schoolModule.findMany({ where: { schoolId: { in: [...new Set(links.map((l) => l.studentSchoolId))] } }, select: { module: true } });
   return [...new Set(rows.map((r) => r.module))];
+}
+
+/** …and the kinds of the children's institutions (institutionKindsForFamily), which hiddenByKind reads for a guardian. */
+async function kindsForFamily(email: string): Promise<string[]> {
+  const links = await db.guardianship.findMany({ where: { parent: { email }, status: "ACTIVE" }, select: { studentSchoolId: true } });
+  const schools = await db.school.findMany({ where: { id: { in: [...new Set(links.map((l) => l.studentSchoolId))] } }, select: { kind: true } });
+  return [...new Set(schools.map((s) => s.kind))];
 }
 
 /** The slowest twenty pages by their slowest fetch, with the median and the number of fetches (SWEEPS-3). */
@@ -1856,8 +1882,22 @@ async function leaveAndPrincipal(schoolId: string) {
     await check(head, "/principal/staff", 200, "…and the staff roster with its records");
     await check(head, "/admin/calendar", 200, "…and the staff calendar, where leave shows");
     await check(head, "/teacher/leave", 200, "a principal takes leave like anybody else");
-    // A principal READS the school; they do not mark registers or set it up.
-    await check(head, "/teacher/attendance", 307, "⚠ …but does not take a register");
+    // A principal READS the school; they do not mark registers or set it up. Since 72c9c968 (TA-031) the register page
+    // admits a principal, for the class a cover row names them on that day, and nothing else (classesIMayTake): this
+    // one is named on no cover, so the page is its empty state, with no register drawn and no class to pick (E1 of the
+    // CI triage of 15 November 2026; it expected the role's redirect, 307, until then).
+    {
+      const page = await hit(head, "/teacher/attendance");
+      const offered = page.body.includes('data-testid="register-sync"') || page.body.includes('href="/teacher/attendance?classId=');
+      results.push({
+        role: head.label,
+        path: "/teacher/attendance",
+        status: page.status,
+        expected: 200,
+        ok: page.status === 200 && page.body.includes('data-empty-state="true"') && !offered,
+        note: offered ? "⚠ …a principal named on no cover was offered a register to take" : "⚠ …but, named on no cover, is given no register to take",
+      });
+    }
     await check(head, "/attendance/history", 200, "…yet reads every class's past registers");
     await check(head, "/admin/people", 307, "⚠ …nor run the directory");
     await check(head, "/admin/classes/new", 307, "⚠ …nor create classes");
@@ -3090,7 +3130,7 @@ async function main() {
    * No membership is made at Riverside for them any more.
    */
   const zzWalker = async (slug: string, role: Role, email: string, extra: Partial<NavWalker> = {}): Promise<NavWalker | null> => {
-    const at = await db.school.findUnique({ where: { slug }, select: { id: true } });
+    const at = await db.school.findUnique({ where: { slug }, select: { id: true, kind: true } });
     const member = at ? await db.membership.findFirst({ where: { schoolId: at.id, role, status: "ACTIVE", leftAt: null, user: { email } }, select: { id: true, dutiesJson: true } }) : null;
     if (!at || !member) {
       skip(`the nav walk of ${role} at ${slug}`, `${email} is not an active ${role} there (npm run zz:fixtures)`);
@@ -3102,7 +3142,7 @@ async function main() {
     // suite running at the time, so the run's clean-up of "the notices it caused" leaves theirs alone.
     const person = await db.user.findUnique({ where: { email }, select: { id: true } });
     if (person) touched.delete(person.id);
-    return { role, actor, modulesOn: await modulesAt(at.id), where, duties: dutiesForRole(role, member.dutiesJson, await hasHead(at.id)), ...extra };
+    return { role, actor, modulesOn: await modulesAt(at.id), where, duties: dutiesForRole(role, member.dutiesJson, await hasHead(at.id)), kinds: [at.kind], ...extra };
   };
 
   // The recruiter (4 Oct 2026): an outside account like the expert's, made for the walk and taken away again.
@@ -3113,16 +3153,16 @@ async function main() {
   try {
     const riversideModules = await modulesAt(riverside.id);
     const walkers: (NavWalker | null)[] = [
-      { role: "ADMIN", actor: admin, modulesOn: riversideModules, where: "riverside", duties: await officeDutiesAt(riverside.id, "priya@riverside.school") },
-      { role: "TEACHER", actor: teacher, modulesOn: riversideModules, where: "riverside" },
-      { role: "STUDENT", actor: student, modulesOn: riversideModules, where: "riverside" },
-      { role: "PARENT", actor: parent, modulesOn: await modulesForFamily("parent@example.com"), where: "riverside" },
-      principalHost?.user.email ? { role: "PRINCIPAL", actor: await mint(principalHost.user.email, "PRINCIPAL", riverside.id, "nav-principal"), modulesOn: riversideModules, where: "riverside" } : null,
+      { role: "ADMIN", actor: admin, modulesOn: riversideModules, where: "riverside", duties: await officeDutiesAt(riverside.id, "priya@riverside.school"), kinds: [riverside.kind] },
+      { role: "TEACHER", actor: teacher, modulesOn: riversideModules, where: "riverside", kinds: [riverside.kind] },
+      { role: "STUDENT", actor: student, modulesOn: riversideModules, where: "riverside", kinds: [riverside.kind] },
+      { role: "PARENT", actor: parent, modulesOn: await modulesForFamily("parent@example.com"), where: "riverside", kinds: await kindsForFamily("parent@example.com") },
+      principalHost?.user.email ? { role: "PRINCIPAL", actor: await mint(principalHost.user.email, "PRINCIPAL", riverside.id, "nav-principal"), modulesOn: riversideModules, where: "riverside", kinds: [riverside.kind] } : null,
       // The seed has no expert, and this is the exact role whose nav pointed at
       // a 404 for months. Skipping it would recreate the blind spot that let
       // that happen, so one is made and taken away again.
-      { role: "EXPERT", actor: await mint(SWEEP_EXPERT_EMAIL, "EXPERT", null, "nav-expert"), modulesOn: [], where: "no school" },
-      { role: "RECRUITER", actor: await mint(sweepRecruiterEmail, "RECRUITER", null, "nav-recruiter"), modulesOn: [], where: "no school" },
+      { role: "EXPERT", actor: await mint(SWEEP_EXPERT_EMAIL, "EXPERT", null, "nav-expert"), modulesOn: [], where: "no school", kinds: [] },
+      { role: "RECRUITER", actor: await mint(sweepRecruiterEmail, "RECRUITER", null, "nav-recruiter"), modulesOn: [], where: "no school", kinds: [] },
       // The module roles at ZZ Northgate (zz-fixtures.ts buildModuleRoles), whose modules are on there.
       await zzWalker("zz-northgate-school", "DRIVER", "zz.driver01@zz.test"),
       await zzWalker("zz-northgate-school", "LIBRARIAN", "zz.librarian@zz.test"),

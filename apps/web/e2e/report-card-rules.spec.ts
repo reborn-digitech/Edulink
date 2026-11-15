@@ -154,7 +154,8 @@ test("one save writes the rules and the terms' shares together; a wrong number t
   await page.getByTestId("rules-tab-layout").click();
   await page.getByTestId("layout-headerNote").fill("ZZ e2e header");
   await page.getByTestId("rules-save").click();
-  await expect(page.getByText("Report card rules saved.")).toBeVisible();
+  // The card the office sees: since ea69a413 (TA-235) the same words are also written into the screen reader's region.
+  await expect(page.getByTestId("toast").getByText("Report card rules saved.")).toBeVisible();
 
   const saved = JSON.parse((await northgate()).reportCardConfig ?? "{}") as { kindWeights?: Record<string, number>; layout?: { headerNote?: string | null } };
   expect(saved.kindWeights).toEqual({ UNIT_TEST: 25, MID_TERM: 25, FINAL: 50 });

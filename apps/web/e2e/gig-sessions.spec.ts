@@ -69,11 +69,13 @@ test("an expert offers a time, a pupil asks, a guardian agrees, the office reads
   await expect(seat.getByTestId("session-link")).toHaveCount(0);
   expect(await pupil.content()).not.toContain(LINK);
 
-  // The expert reads who asked and from which school, through a booking that is a school's row.
+  // The expert reads that the seat is asked for, and not who asked, from which school or why: a seat no guardian has
+  // agreed to carries no name, school or purpose (TA-120, 53bd04e3). They are read once the guardian agrees, below.
   await expert.reload({ waitUntil: "networkidle" });
   await expect(mine).toContainText("1 of 1 seat taken");
   await expect(mine.getByTestId("provider-seat")).toContainText("Waiting for a guardian");
-  await expect(mine.getByTestId("provider-seat")).toContainText("ZZ Northgate School");
+  await expect(mine.getByTestId("provider-seat")).not.toContainText("ZZ Northgate School");
+  await expect(mine.getByTestId("provider-seat")).not.toContainText("ZZ e2e I want to know how rockets stay up");
 
   // The guardian agrees; now, and only now, the family is shown the link.
   const guardian = await open(browser, "PARENT", baseURL!);
@@ -92,8 +94,12 @@ test("an expert offers a time, a pupil asks, a guardian agrees, the office reads
   expect(await office.content()).not.toContain(LINK);
   await expect(office.getByTestId("guidance-switch")).toBeChecked();
 
-  // The expert cancels the seat with a reason; the family sees it cancelled, the link gone, and the seat is free again.
+  // The guardian has agreed: the expert reads who asked, from which school and why, through a booking that is a school's row.
   await expert.reload({ waitUntil: "networkidle" });
+  await expect(mine.getByTestId("provider-seat")).toContainText("Confirmed");
+  await expect(mine.getByTestId("provider-seat")).toContainText("ZZ Northgate School");
+  await expect(mine.getByTestId("provider-seat")).toContainText("ZZ e2e I want to know how rockets stay up");
+  // The expert cancels the seat with a reason; the family sees it cancelled, the link gone, and the seat is free again.
   await mine.getByTestId("seat-cancel-open").click();
   await mine.getByTestId("seat-cancel-reason").fill("ZZ e2e the launch is that morning");
   await mine.getByTestId("seat-cancel").click();

@@ -9,7 +9,9 @@
  * Now both set-ups, the Playwright teardown and zz:token (the BDD run's and the phone suites' sign-in) call
  * refuseUnlessLocalDatabase before their first write. The cases read the files' text (nothing here runs a
  * set-up, so nothing is written whatever the database is) and call the guard with a client that fails the
- * case if it is ever asked anything.
+ * case if it is ever asked anything. The Playwright set-up and teardown ask it through its command
+ * (e2e/local-database.ts refuseUnlessLocalDatabaseAt), since Playwright's loader cannot import the .mjs
+ * (R1 of the CI triage of 15 November 2026, tests/ci-triage-web.test.ts).
  */
 import { describe, expect, it } from "vitest";
 import { readFileSync } from "node:fs";
@@ -22,7 +24,7 @@ const read = (path: string) => readFileSync(join(ROOT, path), "utf8");
 /** The index of the guard's call and of the first write, in a file's text (the guard's own lines excluded). */
 function guardBeforeWrites(path: string, writes: RegExp): { guard: number; firstWrite: number } {
   const text = read(path);
-  return { guard: text.search(/await refuseUnlessLocalDatabase\((setupDb|db),/), firstWrite: text.search(writes) };
+  return { guard: text.search(/await refuseUnlessLocalDatabase\((setupDb|db),|\brefuseUnlessLocalDatabaseAt\(databaseUrl,/), firstWrite: text.search(writes) };
 }
 
 describe("TA-263: the test set-ups ask whether the database is on this machine before they write", () => {
@@ -39,7 +41,7 @@ describe("TA-263: the test set-ups ask whether the database is on this machine b
     const text = read("e2e/global-setup.ts");
     const start = text.indexOf("export default async function globalSetup()");
     const body = text.slice(start);
-    const guard = body.search(/await refuseUnlessLocalDatabase\(db,/);
+    const guard = body.search(/\brefuseUnlessLocalDatabaseAt\(databaseUrl,/);
     const firstWrite = body.search(/db\.(session|platformFeature|examSeries|examSlot|classTeacher)\.(deleteMany|upsert|create|update|updateMany)\(/);
     expect(start).toBeGreaterThan(-1);
     expect(firstWrite).toBeGreaterThan(-1);

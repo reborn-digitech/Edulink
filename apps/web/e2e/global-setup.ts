@@ -6,7 +6,7 @@ import { config } from "dotenv";
 import { dutiesForRole, PLATFORM_FEATURES } from "@edulink/contracts";
 import { missingActor } from "./expected-actor";
 import { HARNESS_EXAM_NAME } from "./harness-exam";
-import { refuseUnlessLocalDatabase } from "../scripts/local-db-guard.mjs";
+import { refuseUnlessLocalDatabaseAt } from "./local-database";
 
 /**
  * Sessions for one actor per role on ZZ Northgate, written to e2e/.sessions.json.
@@ -32,7 +32,8 @@ export type Actor = {
 export type Sessions = Record<string, Actor>;
 
 config({ path: ".env" });
-const db = new PrismaClient({ datasourceUrl: process.env.DATABASE_ADMIN_URL ?? process.env.DATABASE_URL });
+const databaseUrl = process.env.DATABASE_ADMIN_URL ?? process.env.DATABASE_URL;
+const db = new PrismaClient({ datasourceUrl: databaseUrl });
 
 async function mint(userId: string, role: string | null, schoolId: string | null): Promise<string> {
   const token = randomBytes(32).toString("base64url");
@@ -54,7 +55,8 @@ async function mint(userId: string, role: string | null, schoolId: string | null
 export default async function globalSetup() {
   // A database on this machine only (TA-263): the run deletes sessions and switches every platform feature on,
   // and a fly proxy or an exported production URL is "localhost" too. CI's service container passes on the runner.
-  await refuseUnlessLocalDatabase(db, "the Playwright suites' set-up");
+  // Asked through the guard's command with the URL `db` writes to (e2e/local-database.ts): Playwright cannot import the .mjs.
+  refuseUnlessLocalDatabaseAt(databaseUrl, "the Playwright suites' set-up");
   // Only the stale ones (TA-465): a run beside this one keeps its live sessions; global-teardown.ts removes this run's.
   await db.session.deleteMany({ where: { userAgent: "e2e", expiresAt: { lt: new Date() } } });
   const school = await db.school.findUnique({ where: { slug: "zz-northgate-school" } });

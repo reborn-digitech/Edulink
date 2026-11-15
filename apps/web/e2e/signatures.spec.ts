@@ -61,7 +61,8 @@ test("the admin signs in the box, with a mouse at a desk and a finger on a phone
     await page.mouse.up();
     await expect(mine.getByTestId("signature-mine-save")).toBeEnabled();
     await mine.getByTestId("signature-mine-save").click();
-    await expect(page.getByText("Signature saved")).toBeVisible();
+    // The card the admin sees: since ea69a413 (TA-235) the same words are also written into the screen reader's region.
+    await expect(page.getByTestId("toast").getByText("Signature saved")).toBeVisible();
     // What is kept is a PNG and not what was there before.
     await expect.poll(async () => mine.getByTestId("signature-mine-current").getAttribute("src")).not.toBe(was);
     expect(await mine.getByTestId("signature-mine-current").getAttribute("src")).toMatch(/^\/api\/v1\/office\/signatures\/image\?of=mine/);

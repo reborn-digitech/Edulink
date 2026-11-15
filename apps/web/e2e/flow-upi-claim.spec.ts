@@ -110,7 +110,11 @@ test("the guardian claims a UPI payment with a UTR, the office confirms it once,
 
   // The second confirm, from the tab that never refreshed: refused by name, and the ledger as it was.
   await stale.locator(`[data-testid="claim-row"][data-payment-id="${paymentId}"]`).getByTestId("claim-confirm").click();
-  await expect(stale.getByRole("status").filter({ hasText: "That payment is not waiting to be confirmed." })).toBeVisible();
+  // A refusal is a danger toast: since ea69a413 (TA-235) the card is no live region and its words are said in the
+  // assertive region, role "alert" (it was the card's own role "status" before). The office reads the card, and a
+  // screen reader is told.
+  await expect(stale.getByTestId("toast").filter({ hasText: "That payment is not waiting to be confirmed." })).toBeVisible();
+  await expect(stale.getByRole("alert").filter({ hasText: "That payment is not waiting to be confirmed." })).toBeAttached();
   expect(await db.feeReceipt.count({ where: { schoolId, paymentId } })).toBe(1);
   expect(await db.feePayment.count({ where: { schoolId, studentMembershipId: pupilId, reference: UTR } })).toBe(1);
   expect(await db.feeDemand.findUniqueOrThrow({ where: { id: demandId }, select: { status: true, paidPaise: true } })).toEqual({ status: "PAID", paidPaise: AMOUNT_PAISE });

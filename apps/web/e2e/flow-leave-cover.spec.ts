@@ -109,7 +109,10 @@ test("a teacher applies for a day, the head approves it naming a cover, the boar
   await expect(card).toContainText(REASON);
   await expect(card.getByTestId("leave-cover")).toHaveValue(cover.id);
   await card.getByTestId("leave-approve").click();
-  await expect(head.getByRole("status").filter({ hasText: "Leave approved" })).toBeVisible();
+  // The card the head sees, and the screen reader's polite region: since ea69a413 (TA-235) the card is no live region,
+  // and the words are said by the standing region under role "status".
+  await expect(head.getByTestId("toast").getByText("Leave approved")).toBeVisible();
+  await expect(head.getByRole("status").filter({ hasText: "Leave approved" })).toBeAttached();
   await expect(card).toHaveCount(0);
   await sound(head, "PRINCIPAL the leave queue after the approval");
   expect((await db.leaveRequest.findUniqueOrThrow({ where: { id: leaveId }, select: { status: true } })).status).toBe("APPROVED");
