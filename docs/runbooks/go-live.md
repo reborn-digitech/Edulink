@@ -1,14 +1,16 @@
 # Go-live: the web app and the phone app
 
 Written 2 October 2026 from the code at `a11a7aa4`, and revised the same day after the code and the other runbooks
-were fixed where they disagreed (below). This runbook takes Shalaghar from nothing to a live web app
+were fixed where they disagreed (below). Its facts were brought up to date with the code at `f6922ac2`
+(14 November 2026), at the owner's request of that day. This runbook takes Shalaghar from nothing to a live web app
 on Fly.io and a phone app in both stores. Every step names who does it, what exactly, and how to tell it worked.
 Tick a box only when its check has passed. Write the date and your initials beside it.
 
 What is being deployed: one Next.js image (`apps/web/Dockerfile`) running as two Fly process groups (`web`
-and `jobs`), 470 pages, 530 API endpoints (`docs/api/openapi.json`, 3.1 MB), 62 migrations, 146 row-level
-security policies on 104 tables, and 17 scheduled jobs (`apps/web/src/lib/jobs.ts`). The phone app is the Expo
-project in `apps/mobile`, built by EAS.
+and `jobs`), 453 page files (`apps/web/src/app/**/page.tsx`), 1,265 API endpoints (the catalog,
+`apps/web/src/lib/api-catalog.ts`, and `docs/api/openapi.json`, 8.5 MB), 141 migrations, 349 row-level security
+policies on 291 tables (`apps/web/prisma/rls.sql`), and 27 scheduled jobs (`apps/web/src/lib/jobs.ts`), counted at
+`f6922ac2`. The phone app is the Expo project in `apps/mobile`, built by EAS.
 
 Who is who:
 
@@ -44,7 +46,7 @@ The code was read for every step. Where an older runbook disagrees, the code win
   longer match.
 
 Fixed since this runbook was first written, in the code or in the runbook concerned, and so no longer listed
-here: the SMS bodies to register are 26 (`messaging.md`); the scripts strip Prisma's pool parameters before
+here: the SMS bodies to register are 38 (`messaging.md`, 0.7); the scripts strip Prisma's pool parameters before
 psql sees a URL, so the pool settings can go on `DATABASE_URL` (`deploy.md`); the image takes the browser's
 push key as a build argument (3.3); `ota.yml` refuses to publish without the channel's API URL, and a phone
 release refuses a loopback base (6.6); a deployed server refuses `FEES_GATEWAY_TRANSPORT=devbox` at boot;
@@ -74,9 +76,16 @@ Apple, Google, Razorpay, the lawyer.
 
 - [ ] **0.3 Fly.io organisation with billing** — owner
 
-  **What.** Create the organisation and add a card. Same day.
+  **What.** First confirm that Fly still offers Mumbai: `fly.toml` sets `primary_region = "bom"`, and 0.4, 0.5 and
+  Phase 3 assume it. A price study that agents read on the vendors' pages, not checked by the owner, did not find
+  Mumbai on Fly's regions page and read that the region is deprecated, the nearest listed being Singapore at a higher
+  machine price (a caution the owner asked for; `<confirm>` both on Fly's current pages). If Fly does not offer
+  Mumbai, the choice of host, and so where children's data is stored, goes back to the owner and counsel, and
+  `fly.toml`'s region changes with it. Host decision, if it goes back: `<fill in>`. Then create the organisation and
+  add a card. Same day.
 
-  **Verify.** `fly orgs list` shows it.
+  **Verify.** Fly's current pages list Mumbai (or the decision above is written), and `fly orgs list` shows the
+  organisation.
 
 - [ ] **0.4 Managed Postgres 16 in or near Mumbai, with point-in-time recovery** — owner, engineer
 
@@ -85,7 +94,7 @@ Apple, Google, Razorpay, the lawyer.
   transaction pooler) for the release step, and let the owner role `CREATE ROLE`. The owner role must also be a
   superuser or hold `BYPASSRLS`: every tenant table forces row-level security, so an owner that is neither runs
   every data step of a migration, every job and the dump over no school's rows (TA-243; `npm run db:release` and
-  the jobs runner refuse to go on without it). Same day.
+  the jobs runner refuse to go on without it). Mumbai is 0.3's region, to be confirmed there first. Same day.
 
   **Verify.** `psql "$PROD_OWNER_URL" -tAc 'show server_version'` starts with `16.`. PITR shows as on in the
   provider's console. `psql "$PROD_OWNER_URL" -tAc 'SELECT rolsuper OR rolbypassrls FROM pg_roles WHERE rolname =
@@ -109,23 +118,48 @@ Apple, Google, Razorpay, the lawyer.
 - [ ] **0.7 Twilio account and DLT registration for Indian SMS** — owner
 
   **What.** A Twilio account and a Messaging Service (`MG…`). On one DLT portal (Jio, Airtel, Vodafone Idea or
-  BSNL): register the company as principal entity, a sender header, and every SMS body verbatim. Print the 21
-  template bodies with `cd apps/web && npm run messages:templates`. Register the 5 bodies in
+  BSNL): register the company as principal entity, a sender header, and every SMS body verbatim. Print the 33
+  template bodies (eleven templates, the four opt-out forms among them, in en, hi and mr: `MESSAGE_TEMPLATES` in
+  `apps/web/src/lib/message-templates.ts`) with `cd apps/web && npm run messages:templates`. Register the 5 bodies in
   `apps/web/src/lib/sms.ts` too: `sendResetCode` and `sendPhoneCode` (English, code category), and
   `sendPhoneChangedNotice` in en, hi and mr (the dictionary key `sms.phoneChanged`). Attach the entity id and
   header to the Messaging Service. Entity: about 2 to 7 days; header and templates about 1 to 3 days a round
   (estimates). This blocks the first deploy.
 
-  **Verify.** The DLT portal lists 26 approved templates with ids. Keep the ids beside the template key and
+  **The price, to confirm before committing** (a caution the owner asked for, from a price study that agents read on
+  the vendors' pages, not checked by the owner). Twilio's list price to Indian numbers was read as 0.0832 US dollars
+  a segment, about ₹7.8, against about ₹0.2 at Indian providers: check Twilio's India price (`<confirm>`). A Hindi or
+  Marathi text is two or three segments with ordinary names and amounts, up to six for a 300-character notice
+  (Devanagari is 70 characters a segment, 67 once split: `smsSegments` in `message-templates.ts`). A school's cap is
+  2,000 segments a month unless its office or its plan sets another (`School.msgMonthlyCap` in
+  `apps/web/prisma/schema.prisma`, `apps/web/src/lib/message-cap.ts`), so one school at its cap would cost about
+  166 US dollars, roughly ₹15,600, a month at that price. Two ways to pay less, neither built nor decided: WhatsApp,
+  which the code already tries before a text when the school and the person have both open (`deliverToUser` in
+  `apps/web/src/lib/messaging.ts`; 0.8, 5.3), though the account codes of `sms.ts` go by SMS whatever; and an Indian
+  SMS provider, which would be a new transport, since `sms.ts` (the account codes) and `messaging.ts` (the schools'
+  texts, with Twilio's delivery callback and its STOP record) know only `devbox` and `twilio`.
+
+  **STOP replies, to confirm with Twilio** (a caution the coordinating session asked for on 15 November 2026, not
+  checked against Twilio). A school's text to a number the office typed and nobody proved goes in its opt-out form,
+  ending "Reply STOP to stop these texts." (`OPT_OUT_FORM` in `apps/web/src/lib/messaging.ts`), and the only record
+  that a number said STOP is Twilio's refusal of a later text to it with error 21610 (`STOP_REPLY` in
+  `apps/web/src/lib/text-retention.ts`, `answeredStop` in `messaging.ts`; decision 0002's amendment of 14 November
+  2026). Whether a reply from an Indian handset to a sender name made of letters (an alphanumeric DLT header) reaches
+  Twilio at all is not known here: ask Twilio (`<confirm>`). If it does not, the opt-out line cannot work in India and
+  no STOP is ever recorded for an Indian number, so another way to stop those texts has to be settled before the
+  first school's text.
+
+  **Verify.** The DLT portal lists 38 approved templates with ids. Keep the ids beside the template key and
   language; step 1.3 needs them.
 
 - [ ] **0.8 WhatsApp Business sender (not needed to go live)** — owner
 
   **What.** A WhatsApp sender approved through Twilio, after Meta's business verification (days to weeks,
   estimate). Then one content template per message per language from the same `messages:templates` output
-  (the `{{1}}` form): 21. `WHATSAPP_TRANSPORT` is never fatal, so this can follow the go-live.
+  (the `{{1}}` form): 33, the opt-out forms included, since a text to a number the office typed may go by WhatsApp
+  too. `WHATSAPP_TRANSPORT` is never fatal, so this can follow the go-live.
 
-  **Verify.** Twilio's console lists the sender as approved and 21 content SIDs (`HX…`).
+  **Verify.** Twilio's console lists the sender as approved and 33 content SIDs (`HX…`).
 
 - [ ] **0.9 The company's Razorpay account (not needed to go live)** — owner
 
@@ -188,7 +222,10 @@ Apple, Google, Razorpay, the lawyer.
 - [ ] **0.16 Sentry (recommended)** — owner
 
   **What.** A Sentry organisation and one project for the web app. Choose the data region. Sentry receives the
-  person's and the school's ids as tags (`metrics.ts`), so the privacy policy must name it. Same day.
+  person's and the school's ids as tags (`metrics.ts`), so the privacy policy must name it, and today it does not:
+  the privacy text of 14 November 2026 lists its outside services by name (`privacy.s5*` in
+  `packages/i18n/src/en.ts`, `hi.ts`, `mr.ts`) without Sentry. It is named there in the three languages, and read
+  with the rest (0.17), before `SENTRY_DSN` is set (5.4). Same day.
 
   **Verify.** The project's DSN is shown under Client Keys.
 
@@ -198,9 +235,25 @@ Apple, Google, Razorpay, the lawyer.
   somebody reads (`SUPPORT_EMAIL`) and reads the policy pages against decision 0002 (store checklist items 1
   and 9). The public privacy texts were rewritten on 14 November 2026 (decision 0002's amendment of that day and
   decision 0009: what is kept and for how long, the outside companies by name, and that the company's team can
-  open any school at any time): counsel, and a native speaker of Hindi and of Marathi, read `/privacy`,
-  `/delete-account`, the three store listings and `apps/mobile/store/privacy-answers.md` before any school is
-  shown them. That reading has not happened yet.
+  open any school at any time, each visit recorded and shown to that school): counsel, and a native speaker of Hindi
+  and of Marathi, read `/privacy`, `/delete-account`, the three store listings and
+  `apps/mobile/store/privacy-answers.md` before any school is shown them. That reading has not happened yet.
+
+  Counsel also confirms what the owner's decisions of 14 November 2026 left to counsel: the one-year keeping of
+  texts, bus boarding times, closed enquiries and refused or withdrawn expert applications (TA-457, decision 0002's
+  amendment "one year, then deleted"); leaving a safeguarding concern out of a guardian's export (TA-108, decision
+  0002, row 27); that a college's ICC and anti-ragging committee minutes are the office's and the head's alone
+  (TA-304, commit `1531a247`; no decision record names it); whether the bus's positions and a pupil's boarding times
+  are tracking of a child in the Act's sense (decision 0002, Frame); and two things the rewrite noted and left
+  as they are (commit `4c23397c`): the page's list of what is held does not name an expert's payout details, and the
+  UPI link a family pays a fee by carries the pupil's name in its note.
+
+  The text names no host. It says the company runs the server and the database and keeps their backups
+  (`privacy.s1c`), and its outside services (`privacy.s5*`) name neither the hosting provider (0.3), the
+  database's provider (0.4) nor Sentry (0.16). Each is named there, in the three languages and read as above,
+  before it is connected: the host and the database's provider in the image of the first deploy (3.3), Sentry
+  before 5.4. The mail relay (0.6) and the bucket (0.5) are described there without a name; whether they must be
+  named is counsel's to say.
 
   **Verify.** The mailbox receives a test mail.
 
@@ -272,9 +325,9 @@ the server with `Refusing to start: N environment problem(s).` and the key names
 | `SSO_GOOGLE_*`, `SSO_MICROSOFT_*`, `SSO_APPLE_*` | leave out | never (half-set is a warning) | only when a school asks (Phase 5) |
 | `HSTS_PRELOAD` | leave out | never | Phase 5, last |
 | `APP_MIN_VERSION_*`, `APP_LATEST_VERSION_*`, `APP_STORE_URL_*`, `APP_UPDATE_MESSAGE` | leave out | never (malformed is treated as unset) | Phase 6 |
-| `RETENTION_*` (eight) | leave out | never | defaults: sessions 7, tokens 7, rate limits 1, upload tickets 30, outbox 30, job runs 90, audit 730, health reads 365 days |
+| `RETENTION_*` (fifteen) | leave out | never (a malformed one is said at boot and its default stands) | defaults (`RETENTION_DEFAULTS` in `env.ts`): sessions 7, tokens 7, rate limits 1, upload tickets 30, outbox 30, job runs 90, audit 730, health reads 365, bus positions 30, assistant conversations 30, assistant daily counts 62, texts 365, bus boardings 365, closed enquiries 365, refused or withdrawn expert applications 365 days. The last four since 14 November 2026 (TA-457), counsel to confirm the year (0.17) |
 | `EXPO_ACCESS_TOKEN` | optional | never | an Expo access token; raises the push rate ceiling |
-| `ANTHROPIC_API_KEY` | owner's decision | never | turns on machine drafts of question translations (`translate.ts`); it sends question text to Anthropic. Leave out unless the owner decides |
+| `ANTHROPIC_API_KEY` | owner's decision | never | turns on machine drafts of question translations (`translate.ts`); it sends question text to Anthropic. Leave out unless the owner decides. Left out, nothing goes to Anthropic and the translation is off: a question the content team saves on `/appadmin/bank` is saved in English only (the form says so), readers get the English until its Hindi and Marathi exist, and the content team types them on `/appadmin/translations`, where the question waits under "missing"; a teacher writing for the bank is told to write them too (`gigs.draftOff`). The privacy text names Anthropic either way, as used only where the server is set up for it (`privacy.s5e`) |
 | `TZ`, `NODE_ENV`, `PORT` | in `fly.toml` | — | do not set as secrets |
 | `APP_COMMIT` | build argument | — | stamped by the image build, not a secret |
 | `TRUST_CLOUDFLARE` | only with Cloudflare's proxy on | never | `1` keys the rate limits on `CF-Connecting-IP` for requests arriving from Cloudflare's ranges (3.8) |
@@ -307,12 +360,13 @@ and one-off scripts connect as the owner. Never run `db:seed`, `db:reset` or `db
 - [ ] **2.1 Open a terminal used for production and nothing else** — engineer
 
   **What.** In this terminal hold the two URLs without echoing them, and close it when done. Through a
-  `localhost` tunnel (`fly proxy`, `fly mpg proxy`) `zz:fixtures`, `demo:schools`, `db:seed`, `db:reset` and
-  `db:backup` (so `db:migrate` and `db:push`) ask the server where it answered and refuse Fly's private network,
-  and a loopback or socket answer counts only for a database named `edulink_dev`, `edulink_ci` or `edulink_test`
-  (TA-523: an `ssh -L` or `kubectl port-forward` tunnel ends on the database host's own loopback, so the address
-  alone cannot tell); the others cannot tell production from a laptop. In this terminal never run `zz:fixtures`, `demo:schools`, `db:seed`, `db:reset`, `db:push`,
-  `sweep`, `api:sweep`, `load:check`, `zz:token` or `zz:fleet`.
+  `localhost` tunnel (`fly proxy`, `fly mpg proxy`) `zz:fixtures`, `zz:token` (since TA-263), `demo:schools`,
+  `db:seed`, `db:reset` and `db:backup` (so `db:migrate` and `db:push`) ask the server where it answered and refuse
+  Fly's private network, and a loopback or socket answer counts only for a database named `edulink_dev`,
+  `edulink_ci` or `edulink_test` (TA-523: an `ssh -L` or `kubectl port-forward` tunnel ends on the database host's
+  own loopback, so the address alone cannot tell); the others cannot tell production from a laptop. In this
+  terminal never run `zz:fixtures`, `demo:schools`, `db:seed`, `db:reset`, `db:push`, `sweep`, `api:sweep`,
+  `load:check`, `zz:token` or `zz:fleet`.
 
   ```bash
   cd ~/Documents/Relay/apps/web
@@ -338,8 +392,14 @@ and one-off scripts connect as the owner. Never run `db:seed`, `db:reset` or `db
 
 - [ ] **2.3 Apply the migrations, the grants and the policies** — engineer
 
-  **What.** `db:release` is `prisma migrate deploy` as the owner, then `db-grants.mjs`, which grants the app
-  role, applies `prisma/rls.sql`, and proves the app role can read and cannot rewrite the audit log. Fly's release
+  **What.** `db:release` first names the database it touches and reads the owner role's flags, and stops (exit 2,
+  naming the role, nothing applied) on an owner that is neither a superuser nor BYPASSRLS, on flags it cannot read,
+  and with `NODE_ENV=production` (Fly's release step) on one role for app and owner: `scripts/with-admin-db.mjs`,
+  before `prisma migrate deploy` runs (TA-243). Then `prisma migrate deploy` as the owner, then `db-grants.mjs`,
+  which asks both roles again, grants the app role, applies `prisma/rls.sql`, and proves the app role can read and
+  cannot rewrite the audit log. The newest migration, `20261114161500_consent_per_guardian_and_wider_totals`, also
+  refuses in its own data step a role that is neither a superuser nor BYPASSRLS, and its two `NULLS NOT DISTINCT`
+  keys need Postgres 15 or later (0.4 asks for 16). Fly's release
   step runs the same command on every deploy; running it here first separates a database problem from a
   deploy problem. Never `db:migrate` here: it is the dev machine's, and dumps first onto this laptop and its
   iCloud-synced Desktop (TA-254; `db-backup.mjs` now refuses a database that is not on this machine).
@@ -348,20 +408,23 @@ and one-off scripts connect as the owner. Never run `db:seed`, `db:reset` or `db
   DATABASE_ADMIN_URL="$PROD_OWNER_URL" DATABASE_URL="$PROD_APP_URL" npm run db:release
   ```
 
-  **Verify.** `All migrations have been successfully applied.` and then
+  **Verify.** First `with-admin-db: edulink on <host> as <owner role> ← prisma migrate deploy`, then
+  `All migrations have been successfully applied.` and then
   `✓ Grants and policies restored, and edulink_app can read.`
 
 - [ ] **2.4 Count what the database now holds** — engineer
 
-  **What.** Compare with the commit being deployed (these are the numbers at `a11a7aa4`).
+  **What.** Compare with the commit being deployed (these are the numbers at `f6922ac2`: the `CREATE POLICY` and
+  `ENABLE ROW LEVEL SECURITY` lines of `prisma/rls.sql`, which no migration adds to, and the folders under
+  `prisma/migrations`).
 
   ```bash
-  psql "$PROD_OWNER_URL" -tAc "select count(*) from pg_policies where schemaname='public'"            # 146
-  psql "$PROD_OWNER_URL" -tAc "select count(*) from pg_tables where schemaname='public' and rowsecurity" # 104
-  psql "$PROD_OWNER_URL" -tAc "select count(*) from _prisma_migrations where finished_at is not null and rolled_back_at is null"  # 62
+  psql "$PROD_OWNER_URL" -tAc "select count(*) from pg_policies where schemaname='public'"            # 349
+  psql "$PROD_OWNER_URL" -tAc "select count(*) from pg_tables where schemaname='public' and rowsecurity" # 291
+  psql "$PROD_OWNER_URL" -tAc "select count(*) from _prisma_migrations where finished_at is not null and rolled_back_at is null"  # 141
   ```
 
-  **Verify.** 146, 104 and 62, or the numbers a local database migrated to the same commit gives.
+  **Verify.** 349, 291 and 141, or the numbers a local database migrated to the same commit gives.
 
 - [ ] **2.5 Know what `rls:generate` and `rls:verify` are for** — engineer
 
@@ -416,9 +479,10 @@ and one-off scripts connect as the owner. Never run `db:seed`, `db:reset` or `db
 
 ## Phase 3 — The web app on Fly
 
-`fly.toml`: app `edulink-web`, region `bom`, release command `npm run db:release`, rolling deploys, two process
-groups (`web` serves on 3000; `jobs` runs `node scripts/jobs-runner.mjs` on loopback 3999), `min_machines_running = 2`,
-a health check on `/api/health` every 30 seconds, `shared-cpu-2x` with 4 GB, `TZ=Asia/Kolkata`.
+`fly.toml`: app `edulink-web`, region `bom` (to confirm, 0.3), release command `npm run db:release`, rolling
+deploys, two process groups (`web` serves on 3000; `jobs` runs `node scripts/jobs-runner.mjs` on loopback 3999),
+`min_machines_running = 2`, a health check on `/api/health` every 30 seconds, `shared-cpu-2x` with 4 GB,
+`TZ=Asia/Kolkata`.
 
 **Size, from the load wave of 4 October 2026** (`ops/load/README.md`, one `next start` process on a laptop):
 
@@ -470,8 +534,9 @@ a health check on `/api/health` every 30 seconds, `shared-cpu-2x` with 4 GB, `TZ
   ```
 
   Option B: let Fly build it from a clean checkout of the green commit (this Mac has no Docker; Fly's remote
-  builder is used). `next build` needs a 4 GB heap; if the builder runs out of memory, use option A
-  (`<confirm>` the builder's size).
+  builder is used). `next build` needs an 8 GB heap (the build script's `--max-old-space-size=8192`, which the
+  Dockerfile's build runs; it ran out at 4 GB in CI's image job on 2 November 2026); if the builder runs out of
+  memory, use option A (`<confirm>` the builder's size).
 
   **Verify.** Option A: the image job's "Push to GHCR" step ran on the next push. Option B: `git status` is clean
   and `git rev-parse --short HEAD` is the green commit.
@@ -513,9 +578,11 @@ a health check on `/api/health` every 30 seconds, `shared-cpu-2x` with 4 GB, `TZ
   **What.** `fly logs -a edulink-web` for a minute after a restart.
 
   **Verify.** No `Refusing to start` line. Every `[env]` line is read and understood; a warning is accepted only
-  if this runbook says so (for example none should name `STORAGE_BUCKET`). If the health check never passes
-  and the server says it listens on the machine's name rather than `0.0.0.0`, set `HOSTNAME=0.0.0.0` under
-  `[env]` in `fly.toml` and redeploy (the jobs runner overrides it with `127.0.0.1`). Untested on Fly.
+  if this runbook says so (for example none should name `STORAGE_BUCKET`). The image already sets
+  `HOSTNAME=0.0.0.0` (`apps/web/Dockerfile`). If the health check never passes and the server says it listens on
+  the machine's name rather than `0.0.0.0`, the platform has put its own in its place (`scripts/jobs-runner.mjs`
+  says the platform sets `HOSTNAME` to the machine's own name): set `HOSTNAME=0.0.0.0` under `[env]` in `fly.toml`
+  and redeploy (the jobs runner overrides it with `127.0.0.1`). Untested on Fly.
 
 - [ ] **3.6 Health answers with the commit** — engineer
 
@@ -528,12 +595,13 @@ a health check on `/api/health` every 30 seconds, `shared-cpu-2x` with 4 GB, `TZ
   **Verify.** `{"ok":true,"database":"ok","databaseMs":…,"uptimeSeconds":…,"commit":"<sha7>"}`, the commit
   being the one deployed.
 
-  Then the proxy's compression (Node sends identity bodies since 4 October 2026) and the event stream through it:
+  Then the proxy's compression (Node sends identity bodies since 4 October 2026), and the event stream through the
+  same proxy on staging (3.12), where the ZZ sessions are (production holds no ZZ person, 4.6):
 
   ```bash
   curl -s -o /dev/null -D - -H 'Accept-Encoding: zstd, br, gzip' https://edulink-web.fly.dev/login | grep -i '^content-encoding'
   read -rs TOKEN   # a minted ZZ session on staging, never a person's; press Return
-  curl -sN -m 40 -H "Authorization: Bearer $TOKEN" -H 'Accept-Encoding: gzip' https://edulink-web.fly.dev/api/v1/events | head -c 300
+  curl -sN -m 40 -H "Authorization: Bearer $TOKEN" -H 'Accept-Encoding: gzip' https://<staging host>/api/v1/events | head -c 300
   ```
 
   **Verify.** The first prints `content-encoding: zstd` (or `br`, `gzip`). The second prints the stream's first
@@ -542,14 +610,14 @@ a health check on `/api/health` every 30 seconds, `shared-cpu-2x` with 4 GB, `TZ
   encodes, and Fly passes an encoded response through untouched) and redeploy. Untested on Fly.
 
   Then live updates between the two web machines (TA-193: a signal published on one machine reaches the other's
-  streams through the database). On staging, with ZZ people only: `fly machines list -a edulink-web` for the two
-  web machines' ids; hold a ZZ office session's stream on the first and save a ZZ class's register through the
+  streams through the database). On staging (3.12), with ZZ people only: `fly machines list -a <staging app>` for
+  the two web machines' ids; hold a ZZ office session's stream on the first and save a ZZ class's register through the
   second, each request pinned with Fly's `fly-force-instance-id` header (`<confirm>` the header's name in Fly's
   request-routing reference):
 
   ```bash
   read -rs OFFICE    # a minted ZZ ADMIN session on staging; press Return
-  curl -sN -m 60 -H "Authorization: Bearer $OFFICE" -H "fly-force-instance-id: <first web machine>" https://edulink-web.fly.dev/api/v1/events
+  curl -sN -m 60 -H "Authorization: Bearer $OFFICE" -H "fly-force-instance-id: <first web machine>" https://<staging host>/api/v1/events
   # in a second terminal, as the ZZ class's teacher, save one mark with `-H "fly-force-instance-id: <second web machine>"`
   ```
 
@@ -638,6 +706,49 @@ a health check on `/api/health` every 30 seconds, `shared-cpu-2x` with 4 GB, `TZ
   and the owner's decision, dated, before 7.3: keep the caller looked up per query, or try resolving it once per
   request (one file remembering the caller for the request, measured before and after the same way, with tests for
   a school switch, sign-in and the event stream) before more schools join.
+
+- [ ] **3.12 Make the staging environment, before 3.6's staging checks, 3.11 and 5.1's test mode** — engineer, owner
+
+  **What.** Added at the owner's request of 14 November 2026: 3.6, 3.11, 5.1, 6.3, 6.6, 6.15 and 8.1 use a
+  staging deployment that no step made. A second Fly app, `<fill in>` (its name), answering on
+  `https://<staging host>` (`<fill in>`, the host 6.3 asks for), running the image production runs (3.2), with its
+  own Postgres 16 database on a server that is not production's (3.11 never touches production), its own bucket,
+  and its own secrets made as in 1.2, never production's. One exception the image forces: the browser's push key is
+  built into it and the server compares the private half it is given with that key (1.3), so staging holds
+  production's VAPID pair, or runs an image built with its own key, which is then not the same image: `<fill in>`.
+  To `env.ts` it is a deployed server (`NODE_ENV=production` in the image and in `fly.toml`, and a host that is not
+  localhost), so 1.3's fatal rows hold for it as for production: an SMTP sender, `SMS_TRANSPORT=twilio` with
+  `MESSAGE_TEMPLATE_IDS`, a bucket.
+
+  Test data only, never a real school's and never a copy of production: the ZZ fixture. `zz:fixtures` and
+  `zz:token` refuse any database that is not on this machine, staging's included (2.1, `scripts/local-db-guard.mjs`),
+  because the fixture's accounts carry the repository's own development password unless `ZZ_PASSWORD` is set for the
+  run that makes them, and one of them is a superuser (`scripts/zz-fixtures.ts`). So the fixture is made on a scratch
+  database this machine holds by name (`edulink_test`), migrated to the same commit, with a `ZZ_PASSWORD` made for
+  staging and kept with its secrets; the sessions 3.6 and 3.11 use are minted into it there
+  (`zz:token -- --hours=24`, the longest it mints); and its dump (`ops/backup.sh`) is restored into a new database
+  at staging's provider (`ops/restore.sh`, then `db-grants.mjs` with both of staging's URLs, as in 9.3), before the
+  first deploy, whose release step then finds no migration to apply. `npm run load:check`, whose `--emit-cookies`
+  3.11's k6 profiles read (`ops/load/README.md`), has no such guard: point it at staging's owner URL only. Keep text
+  messaging off on staging (the `TEXT_MESSAGING` switch of 4.12): the fixture gives its guardians +91 numbers that
+  nobody has checked are unused (`+91 98764 00001` upwards, `buildMessaging` in `scripts/zz-fixtures.ts`), and the
+  account codes are not behind that switch, so never ask a code for a ZZ person's number there.
+
+  ```bash
+  fly apps create <staging app> --org <fill in>
+  fly secrets import --stage -a <staging app> < ~/shalaghar-secrets/staging.env
+  fly deploy -a <staging app> --image <the image production runs, 3.3>
+  fly scale count web=2 jobs=1 -a <staging app>
+  ```
+
+  The phone's staging profile still points at a placeholder, `https://staging.edulink.example`
+  (`apps/mobile/eas.json`): the real host goes there and into `EXPO_PUBLIC_API_URL_STAGING` (6.3, 6.6). Untested:
+  no staging deployment has been made.
+
+  **Verify.** `curl -s https://<staging host>/api/health` answers as in 3.6 with the commit of the image chosen
+  above; `psql "<owner URL of staging>" -tAc "select count(*) from \"School\" where name not like 'ZZ%'"` prints
+  `0`; staging's `/root/features` shows Text messaging off; a session minted for staging reads
+  `https://<staging host>/api/v1/me`.
 
 ## Phase 4 — First run on production
 
@@ -730,26 +841,45 @@ Nothing in this phase writes test data. Which scripts are safe here:
   - Paid workshop seats: the payments switch on `/root/gigs` (`paymentsEnabled`, off by default). With no
     `GATEWAY_PLATFORM_KEY_ID` the gig transport is `off` anyway.
   - Online fees: `FEES_GATEWAY_TRANSPORT` unset.
-  - WhatsApp: `WHATSAPP_TRANSPORT` unset (devbox).
+  - WhatsApp: `WHATSAPP_TRANSPORT` unset (devbox). Until 5.3 no school ticks WhatsApp on `/admin/messaging`: on
+    devbox a deployed server files each WhatsApp text in the dev mailbox's table, marked sent, and nobody receives
+    it, and WhatsApp is tried before SMS (`sendRow` and `deliverToUser` in `src/lib/messaging.ts`).
+  - Texts from every school: the platform's Text messaging switch (`TEXT_MESSAGING` on `/root/features`), off by
+    default until 4.12.
   - Each school's texts: off until that school's office switches them on at `/admin/messaging`.
   - `HSTS_PRELOAD`, `SSO_*`, `APP_MIN_VERSION_*`: unset.
-  - SMS cannot be off: `SMS_TRANSPORT` must be `twilio` to boot. The per-school switches are the brake.
+  - SMS cannot be off: `SMS_TRANSPORT` must be `twilio` to boot. The per-school switches and the platform's switch
+    (4.12) are the brake; neither holds the account codes of `src/lib/sms.ts`.
 
-  **Verify.** `fly secrets list -a edulink-web` has none of the unset names; `/root/gigs` shows payments off.
+  **Verify.** `fly secrets list -a edulink-web` has none of the unset names; `/root/gigs` shows payments off;
+  `/root/features` shows Text messaging off.
 
 - [ ] **4.10 The jobs run on their schedule** — operator
 
   **What.** `/root/jobs` an hour after 3.7, and again the next morning.
 
-  **Verify.** All 17 jobs listed. The minutely `circulars:deliver` and `messages:send` and the quarter-hourly
-  `jobs:watch` have recent runs. Next morning `retention:sweep` (04:00) has run, and the `health:digest`
-  mail (07:00 IST) has reached the operator.
+  **Verify.** All 27 jobs listed (`JOBS` in `src/lib/jobs.ts`). The minutely `circulars:deliver` and
+  `messages:send` and the quarter-hourly `jobs:watch` have recent runs. Next morning `retention:sweep` (04:00) has
+  run, and the `health:digest` mail (07:00 IST) has reached the operator.
 
 - [ ] **4.11 The metrics page** — operator
 
   **What.** `/root/metrics`.
 
-  **Verify.** Errors in the last hour: 0. The error-tracker badge reads `log` until 5.3, then `SENTRY_DSN`.
+  **Verify.** Errors in the last hour: 0. The error-tracker badge reads `log` until 5.4, then `SENTRY_DSN`.
+
+- [ ] **4.12 Switch the platform's text messaging on, before the first school's test text** — operator
+
+  **What.** Added at the owner's request of 14 November 2026. Text messaging is one of the platform's switches
+  (`TEXT_MESSAGING`, "Text messaging" on `/root/features`), off in a new database until the operator switches it on
+  (`src/lib/platform-features.ts`). While it is off, every text a school would send, the office's "Send a test to
+  me" included, is recorded as not sent with the reason "texts switched off on the platform", and the queue is
+  emptied the same way (`deliverToUser` and `drainQueue` in `src/lib/messaging.ts`); notices in the app and push go
+  on, and so do the account codes of `src/lib/sms.ts` (4.7). Switch it on once 0.7's price is confirmed and before
+  the test texts of 5.3 and 7.4: `/root/features`, Text messaging, "Switch on". It holds every school's texts at once
+  (8.6).
+
+  **Verify.** `/root/features` shows Text messaging running; `/root/audit` shows `operator.feature.on`.
 
 ## Phase 5 — Messaging and integrations
 
@@ -810,7 +940,7 @@ In this order. Each item is switched on, proved, and then the next begins.
 
 - [ ] **5.3 Twilio: WhatsApp and the full template-id map** — engineer
 
-  **What.** When 0.8 is done, add the 21 content SIDs under `whatsapp` in `MESSAGE_TEMPLATE_IDS`, then set
+  **What.** When 0.8 is done, add the 33 content SIDs under `whatsapp` in `MESSAGE_TEMPLATE_IDS`, then set
   `WHATSAPP_TRANSPORT=twilio` and `TWILIO_WHATSAPP_FROM=whatsapp:+<number>`. Delivery status needs no console
   setting: each message carries its own callback `https://<host>/api/webhooks/twilio/status/<schoolId>`,
   signed against `NEXT_PUBLIC_APP_URL`.
@@ -820,7 +950,8 @@ In this order. Each item is switched on, proved, and then the next begins.
 
 - [ ] **5.4 Sentry** — engineer
 
-  **What.** `fly secrets set SENTRY_DSN=<dsn> -a edulink-web`. Name Sentry in the privacy policy as a processor.
+  **What.** First name Sentry in the privacy policy as a processor, in the three languages, read as in 0.17: the
+  text of 14 November 2026 does not name it (0.16). Then `fly secrets set SENTRY_DSN=<dsn> -a edulink-web`.
 
   **Verify.** `/root/metrics` shows the `SENTRY_DSN` badge. The first real error appears in Sentry with the route
   pattern and no body, cookie or query string.
@@ -935,10 +1066,11 @@ production API URL is an EAS environment variable, never a file. Run EAS command
 
 - [ ] **6.7 Decide the Google button** — owner, engineer
 
-  **What.** The phone's sign-in screen always shows "Continue with Google" (`src/app/(auth)/index.tsx`), whether
-  or not the server has Google SSO. With SSO off it fails, and a reviewer will press it. Either hide it when the
-  server offers no provider, or set up Google SSO (5.5) and answer Apple Guideline 4.8 (decision 0002, store
-  checklist item 6). Decision: `<fill in>`.
+  **What.** The phone's sign-in screen shows "Continue with Google" only when the server's `/api/v1/app/version`
+  answer names `google` among its `ssoProviders`, that is when the `SSO_GOOGLE_*` variables are set
+  (`src/app/(auth)/index.tsx`, since 2 October 2026); with SSO off there is no button for a reviewer to press. What
+  is left to decide: leave Google off, or set up Google SSO (5.5) and answer Apple Guideline 4.8 (decision 0002,
+  store checklist item 6). Decision: `<fill in>`.
 
   **Verify.** On the build, the button either is absent or completes a sign-in.
 
@@ -977,7 +1109,9 @@ production API URL is an EAS environment variable, never a file. Run EAS command
   **What.** Copy from `apps/mobile/store/listing.en.md`, `listing.hi.md` and `listing.mr.md`. Replace
   `SUPPORT_EMAIL`, `PRIVACY_URL` (`https://<host>/privacy`), `ACCOUNT_DELETION_URL` (`https://<host>/delete-account`).
   Have a native speaker read the Hindi and Marathi. Screenshots: six per language from a device on the ZZ
-  fixture school locally, so no real child appears.
+  fixture school locally, so no real child appears. A phone reaches the dev server only when it was started with
+  `npm run dev:network`; `npm run dev` listens on this Mac alone (127.0.0.1) since TA-246 (`apps/web/package.json`),
+  and on a `dev:network` day `/dev/mailbox` asks for the operator.
 
   **Verify.** Character counts within `apps/mobile/store/README.md`'s limits; no ALL-CAPS placeholder left.
 
@@ -1054,7 +1188,8 @@ production API URL is an EAS environment variable, never a file. Run EAS command
 - [ ] **7.4 The school's first hour** — operator, owner
 
   **What.** In order, each checked before the next: the admin accepts the invitation and signs in; turns on
-  two-step sign-in; switches SMS on at `/admin/messaging` and presses "Send a test to me"; invites one teacher;
+  two-step sign-in; switches SMS on at `/admin/messaging` and presses "Send a test to me" (the platform's Text
+  messaging switch is on since 4.12; while it is off the test is recorded as not sent); invites one teacher;
   the teacher marks one register; one guardian joins and sees the mark. Only then are the families invited.
 
   **Verify.** Each of the six seen on screen, and the test text on the admin's handset.
@@ -1093,13 +1228,17 @@ production API URL is an EAS environment variable, never a file. Run EAS command
 - [ ] **8.2 Remember that migrations only go forward** — engineer
 
   **What.** There are no down migrations. `deploy.md`'s rule is add-only for one release, so the old code runs on
-  the new schema. `a11a7aa4`'s `20261002100602_gig_company_collects` renamed and dropped columns, so no image
-  older than it runs on a database that has it. The first production deploy is not affected; never roll back
-  across that migration. A mistake is fixed by a new forward migration.
+  the new schema. Six migrations are not add-only (`apps/web/tests/ta-ops-ci-dr-ci.test.ts` lists them and fails on
+  a new one). The newest, `20261114161500_consent_per_guardian_and_wider_totals` (`ee1a3cf5`, 14 November 2026),
+  changed five payroll totals to `BIGINT` and replaced StudentConsent's unique key with one keyed to the
+  guardianship, so no image older than the commit that added it runs on a database that has it (`deploy.md`,
+  Rollback). The first production deploy is not affected; never roll back across that migration. A mistake is
+  fixed by a new forward migration.
 
   **Verify.** Before any rollback, ask the database what the target image does not know, and read each listed
-  migration for a `DROP` or `RENAME` (any one means restore from the pre-deploy snapshot, 8.4, not an image swap;
-  `deploy.md`, Rollback):
+  migration for a `DROP COLUMN`, `DROP TABLE`, `RENAME`, `SET NOT NULL`, `SET DATA TYPE`, a unique key dropped and
+  made again, or a `NOT NULL` column added with no default (any one means restore from the pre-deploy snapshot,
+  8.4, not an image swap; `deploy.md`, Rollback):
   `docker run --rm -e DATABASE_URL="$PROD_OWNER_URL" ghcr.io/reborn-digitech/edulink-web:<target sha7> prisma migrate status`.
 
 - [ ] **8.3 A migration that failed half-way** — engineer
@@ -1140,8 +1279,12 @@ production API URL is an EAS environment variable, never a file. Run EAS command
 - [ ] **8.6 Switch things off without a deploy** — operator, engineer
 
   **What.** Paid seats: the switch on `/root/gigs` (refunds still go). A school's texts: its own switches at
-  `/admin/messaging`. WhatsApp: `fly secrets set WHATSAPP_TRANSPORT=devbox`. SMS cannot go to devbox (the server
-  would refuse to boot): use the schools' switches.
+  `/admin/messaging`. Every school's texts at once: the platform's Text messaging switch on `/root/features` (4.12);
+  the account codes still go. WhatsApp: each school's WhatsApp switch at `/admin/messaging` (its texts then go by
+  SMS), or the platform's switch; not `WHATSAPP_TRANSPORT=devbox`, on which a deployed server files each WhatsApp
+  text in the dev mailbox's table, marked sent, delivered to nobody and not sent by SMS instead (`sendRow` in
+  `src/lib/messaging.ts`). SMS cannot go to devbox (the server would refuse to boot): use the schools' switches or
+  the platform's.
 
   **Verify.** `/admin/messaging`'s overview shows nothing sent after the switch.
 
@@ -1238,10 +1381,15 @@ production API URL is an EAS environment variable, never a file. Run EAS command
 | Blocker | What it blocks | Who clears it |
 | --- | --- | --- |
 | The domain is registered (0.1) | `NEXT_PUBLIC_APP_URL`, the certificate, the privacy and store URLs | owner |
+| Fly's Mumbai region confirmed, or the host chosen again with counsel (0.3) | the Fly organisation; `fly.toml`'s region; where the database is | owner |
 | An SMTP provider with the domain's mail records (0.6) | the first boot (`EMAIL_TRANSPORT=devbox` is fatal) | owner, engineer |
-| Twilio, a DLT entity and header, 26 approved SMS bodies (0.7) | the first boot (`SMS_TRANSPORT=devbox` and an empty `MESSAGE_TEMPLATE_IDS` are fatal) | owner |
+| Twilio, its India price confirmed, a DLT entity and header, 38 approved SMS bodies (0.7) | the first boot (`SMS_TRANSPORT=devbox` and an empty `MESSAGE_TEMPLATE_IDS` are fatal) | owner |
 | Managed Postgres 16 with PITR (0.4) | everything | owner, engineer |
+| The host and the database's provider named in the privacy text (0.17) | the first deploy (3.3) | owner, engineer |
+| Counsel's and the native speakers' read of the privacy texts, and counsel's answers listed in 0.17 | showing the texts to any school, so the first school (7.3) | owner |
+| A staging environment with the ZZ fixture only (3.12) | 3.6's staging checks, the pre-launch load run (3.11), Razorpay's test mode (5.1), staging builds and updates (6.3, 6.6, 6.15) | engineer, owner |
 | The pre-launch load run's statement count and the owner's decision on it (3.11) | the first school (7.3) | engineer, owner |
+| The platform's Text messaging switched on (4.12) | every school's texts, the office's test text included (5.3, 7.4) | operator |
 | An uploads bucket (0.5) | the first boot (a deployed server on Fly refuses to start without one) | owner, engineer |
 | The image built with `NEXT_PUBLIC_VAPID_PUBLIC_KEY` (3.2, 3.3) | browser push; with option A, the first boot | engineer |
 | The company's Razorpay account with KYC (0.9) | paid workshop seats | owner |
@@ -1251,7 +1399,7 @@ production API URL is an EAS environment variable, never a file. Run EAS command
 | The money tables' refusing delete rules and a counter row per number series (2.8) | paid seats on; passes on sale (5.1) | engineer |
 | The decision-0003 legal opinion (0.12) | the first school taking fees online | owner |
 | Counsel's DPDP read, decision 0002 item 10 (0.12) | the store submission | owner |
-| An approved WhatsApp sender and 21 content SIDs (0.8) | WhatsApp to families | owner |
+| An approved WhatsApp sender and 33 content SIDs (0.8) | WhatsApp to families | owner |
 | An Expo account and EAS project (0.13, 6.2) | any build or update | owner, engineer |
 | Apple Developer with D-U-N-S (0.14) | TestFlight and the App Store | owner |
 | Google Play organisation account (0.15) | Play testing and release | owner |
@@ -1263,5 +1411,5 @@ production API URL is an EAS environment variable, never a file. Run EAS command
 | A reviewer account at a review school (4.6, 6.13) | store review | owner, operator |
 | A native speaker's read of the Hindi and Marathi listings | the listings | owner |
 | A home for the nightly dump (9.2) | logical backups | engineer, owner |
-| Sentry (0.16) | error tracking beyond the log | owner |
+| Sentry (0.16), named in the privacy text first (0.17) | error tracking beyond the log | owner |
 | App links built (5.7) | verified links into the app | engineer |

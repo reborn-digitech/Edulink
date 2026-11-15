@@ -18,12 +18,16 @@ Only the fixed templates in `message-templates.ts`, in the reader's language:
 | `incident` | an incident staff record with the guardians to be told (web or phone) | when the record is saved (the `incidents` event) |
 | `test` | the office's own test button | on demand |
 
-Seven templates in three languages: 21 bodies, which `npm run messages:templates`
-prints. Three account messages are sent as SMS outside this table, by
-`src/lib/sms.ts`, and are registered the same way: the password-reset code and
-the phone-confirm code (English only) and the notice to a number that was
-replaced (`sms.phoneChanged`, in English, Hindi and Marathi) — 5 more, so
-**26 SMS bodies** to register with DLT. WhatsApp carries only the 21.
+The seven templates in the table and the opt-out forms of four of them
+(`absenceOptOut`, `feeDueSoonOptOut`, `feeOverdueOptOut`, `circularOptOut`: the
+same words and "Reply STOP to stop these texts.", for a guardian's number the
+office typed and nobody proved) make eleven templates in three languages: 33
+bodies, which `npm run messages:templates` prints. Three account messages are
+sent as SMS outside this table, by `src/lib/sms.ts`, and are registered the
+same way: the password-reset code and the phone-confirm code (English only)
+and the notice to a number that was replaced (`sms.phoneChanged`, in English,
+Hindi and Marathi) — 5 more, so **38 SMS bodies** to register with DLT.
+WhatsApp carries only the 33.
 
 Each school switches the five automatic events on or off, switches SMS and
 WhatsApp on or off, and sets a monthly cap. A guardian switches SMS or
@@ -39,8 +43,8 @@ person), no transport.
 > product's name (the sign-off is now "- Shalaghar", "- शालाघर", "- शाळाघर",
 > and the school line names Shalaghar), so any id registered under the old
 > wording no longer matches what the app sends and the operator drops the
-> text, billed. Register all 26 SMS bodies again (`npm run messages:templates`
-> prints 21; the other 5 are the account messages above), then set `MESSAGE_TEMPLATE_IDS`; until the ids exist, leave the
+> text, billed. Register all 38 SMS bodies again (`npm run messages:templates`
+> prints 33; the other 5 are the account messages above), then set `MESSAGE_TEMPLATE_IDS`; until the ids exist, leave the
 > transports on `devbox` — a deployment with a live transport and no ids
 > refuses to boot.
 
