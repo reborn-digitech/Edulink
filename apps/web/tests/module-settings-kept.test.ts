@@ -43,11 +43,13 @@ vi.mock("@/lib/audit", async (importOriginal) => {
     audit: async (...args: Parameters<typeof real.audit>) => {
       if (inject.offAuditFails > 0 && args[0].action === "school.module.off") {
         inject.offAuditFails -= 1;
-        // The insert refused: on the switch's own transaction when it hands one in, which Postgres then aborts, and
-        // swallowed, as audit() swallows every failed write, so that the answer is null and nothing is written.
+        // The insert refused on the switch's own transaction, which Postgres then aborts, and passed on to the caller,
+        // as audit() does with a transaction since 15 November 2026 (tests/audit-in-transaction.test.ts); a write made
+        // without one is still swallowed and answered null.
         const tx = args[1];
-        if (tx) await tx.$executeRaw`SELECT 1/0`.catch(() => undefined);
-        return null;
+        if (!tx) return null;
+        const refused = await tx.$executeRaw`SELECT 1/0`.then(() => null, (error: unknown) => error);
+        throw refused instanceof Error ? refused : new Error("the audit row was refused");
       }
       return real.audit(...args);
     },

@@ -198,7 +198,8 @@ export const KEPT_SETTINGS_KEY = "settingsJson";
  * A switch-off. THE ROW IT DELETES HOLDS THE MODULE'S SETTINGS (SchoolModule.settingsJson), so they leave with it on
  * the switch-off's own audit row, as the column held them and in the same transaction as the delete, for the switch
  * back on to find (settingsAtLastSwitchOff); a module with no settings writes that row as it always did. A lost
- * audit row would be lost settings, so a write audit() swallowed (it answers null) undoes the switch-off: the module
+ * audit row would be lost settings, so a refused one undoes the switch-off: audit() passes a refusal on the switch's
+ * own transaction to it (and a null, which it answered there until 15 November 2026, is read the same), so the module
  * stays on with its settings and the caller is told it failed. The delete hands back the row it took in the one
  * statement, so a save of the settings at the same moment cannot fall between a read and the delete.
  */

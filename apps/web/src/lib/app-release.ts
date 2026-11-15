@@ -115,8 +115,9 @@ export async function recordAppReport(ctx: ActiveContext, body: AppReportBody): 
       stackPresent: Boolean(body.stack),
     },
   });
-  // audit() swallows its own failures so a lost line never fails a teacher's
-  // save; here the line IS the thing being saved, so a lost one is a failure.
+  // audit() swallows a failed write made on its own (no transaction), so a lost
+  // line never fails the action it records; here the line IS the thing being
+  // saved, so a lost one is a failure.
   if (!reportId) throw new Error("The app report could not be recorded");
 
   if (body.kind === "PROBLEM" && ctx.schoolId) {

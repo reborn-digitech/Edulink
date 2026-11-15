@@ -10,10 +10,19 @@ import { writeJson } from "./json";
  * Append-only audit trail. The Safety Center reads it, and it is the only way
  * to answer "who changed this child's grade" after the fact. (§3 Safety Center)
  *
- * Writing an audit row must never take down the action it describes, so
- * failures are logged and swallowed here — this is the documented exception to
- * the no-silent-catch rule (§5), and the reason is that losing an audit line is
- * strictly better than failing a teacher's attendance save.
+ * Writing an audit row on its own must never take down the action it
+ * describes, so those failures are logged and swallowed here — this is the
+ * documented exception to the no-silent-catch rule (§5), and the reason is that
+ * losing an audit line is strictly better than failing the action. A row
+ * written on the caller's transaction is not swallowed (auditInTransaction,
+ * below): a refused insert has already aborted that transaction, so its error
+ * goes to the caller and the work rolls back with it, a teacher's attendance
+ * save, which writes its row on the register's own transaction, among them.
+ *
+ * NOT ON A CALLER'S TRANSACTION, THOUGH. A row written on one (the `tx`
+ * argument) is part of that transaction's work, and Postgres has already given
+ * up the transaction by the time its insert fails, so swallowing it saves
+ * nothing and hides the loss; its failure throws (auditInTransaction says why).
  *
  * THAT EXCEPTION HID A BUG FOR AS LONG AS ROW-LEVEL SECURITY HAS BEEN ON. The
  * most interesting things to audit happen BEFORE a school is bound — a login, a
@@ -39,7 +48,8 @@ import { writeJson } from "./json";
  * `db`: only `$queryRaw` and `$executeRaw`, which is all the raw insert needs.
  * Handed in by work that must keep its audit rows inside its own transaction —
  * the operator's onboarding, where a refused step rolls the school and its
- * record back together (subscriptions.ts).
+ * record back together (subscriptions.ts). A row that fails on it throws, into
+ * that work, rather than answering null.
  */
 export type AuditTx = Pick<typeof db, "$queryRaw" | "$executeRaw">;
 
@@ -58,10 +68,14 @@ export async function audit(
    * Returns the row's id, or null when nothing was written. Almost every
    * caller ignores it; the app's problem report hands it back to the phone as
    * the report's id, and needs to know when the swallowed failure below has
-   * left it with nothing to hand back.
+   * left it with nothing to hand back. Null comes only from the path without a
+   * transaction: on a caller's transaction a failure throws instead.
    */
+  // OUTSIDE the try, so that a failure on a caller's transaction reaches it.
+  // Inside, as it was until 15 November 2026, the catch below swallowed it and
+  // the caller's COMMIT silently rolled the whole unit back (auditInTransaction).
+  if (tx) return auditInTransaction(entry, tx);
   try {
-    if (tx) return await auditInTransaction(entry, tx);
     /**
      * The IP is best-effort CONTEXT, not the record. `headers()` throws
      * outside a request scope — cron jobs, scripts, the simulation harness —
@@ -155,9 +169,21 @@ export async function audit(
  * and put back, the same narrowing `forSchool` does per query outside a
  * transaction. The id is minted here, as below.
  *
- * NOT SWALLOWED. A failed statement aborts the Postgres transaction, so there
- * is nothing left to protect by continuing; the throw reaches the caller's
- * `$tenantTransaction` and the whole unit rolls back, which is the point.
+ * NOT SWALLOWED, which is why audit() calls this before its try and not inside
+ * it. Until 15 November 2026 it was called inside, and the comment here said the
+ * throw reached the caller when the catch was taking it. A failed statement
+ * aborts the Postgres transaction, and with the error swallowed the work carried
+ * on: if the audit row was its last statement, its callback returned, Prisma
+ * sent COMMIT and Postgres answered it by rolling back, with no error, so the
+ * caller was told the unit had succeeded while every write of it was gone; if
+ * anything followed, that failed with 25P02 "current transaction is aborted" in
+ * place of the real cause (tests/audit-in-transaction.test.ts, as the app role).
+ * Thrown, it reaches the caller's `$tenantTransaction`, the whole unit rolls
+ * back and the caller hears why, which is the point. A throw before any
+ * statement (a meta JSON cannot hold) goes the same way, so the work and its
+ * record still stand or fall together. Nobody should catch it and carry on
+ * inside the transaction: after a failed statement the transaction is already
+ * lost, and only a savepoint could keep the work alive past it.
  */
 async function auditInTransaction(entry: Parameters<typeof audit>[0], tx: AuditTx): Promise<string> {
   let ip: string | null = null;
