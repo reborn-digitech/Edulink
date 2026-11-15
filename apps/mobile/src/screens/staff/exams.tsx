@@ -2,12 +2,12 @@ import { useRef, useState, type RefObject } from "react";
 import { TextInput, View } from "react-native";
 import { useRouter } from "expo-router";
 import { keepPreviousData, useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { adminExamsSchema, examSeriesCreatedSchema, okSchema, staffExamSheetsSchema, type AdminExams as AdminExamsData } from "@edulink/contracts";
+import { adminExamsSchema, examSeriesCreatedSchema, isCollegeKind, okSchema, staffExamSheetsSchema, type AdminExams as AdminExamsData } from "@edulink/contracts";
 import { Button, Card, Empty, Failed, Field, Loading, Row, Screen, Stat, Text } from "@/components";
 import { api } from "@/lib/api";
 import { unwrap } from "@/lib/query";
 import { useLocale, useT } from "@/lib/i18n";
-import { useRole } from "@/lib/session";
+import { useRole, useSession } from "@/lib/session";
 import { useTheme } from "@/lib/theme";
 import { EXAM_KIND, formatTimeRange, hhmm, Pill, type ExamKind } from "../family/shared";
 import { Chips, formatDateKey, MultiChips, Notice, parseClock } from "./shared";
@@ -50,6 +50,12 @@ export function AdminExams() {
   const t = useT();
   const th = useTheme();
   const qc = useQueryClient();
+  /**
+   * At a college a school's exam series is not made (the owner, 15 November 2026: the door answers not-found there), and
+   * the menu no longer offers this screen; reached by a link or a notice, it offers no new series and says why.
+   */
+  const session = useSession();
+  const college = isCollegeKind(session.status === "signed-in" ? session.me.institutionKind : null);
   const [kind, setKind] = useState<Kind>("");
   const [state, setState] = useState<State>("");
   const [grade, setGrade] = useState("");
@@ -136,9 +142,9 @@ export function AdminExams() {
           ) : null}
           {d.series.length === 0 ? (
             <Empty
-              title={filtered ? t("common.noResultsTitle") : t("exams.noneYet")}
-              body={filtered ? t("common.noResultsBody") : t("exams.newSeriesHint")}
-              action={filtered ? <Button label={t("common.clearAll")} variant="secondary" onPress={clear} /> : <Button label={t("exams.newSeriesTitle")} variant="secondary" onPress={() => nameRef.current?.focus()} />}
+              title={filtered ? t("common.noResultsTitle") : college ? t("schoolCampus.refuseNotThisKind") : t("exams.noneYet")}
+              body={filtered ? t("common.noResultsBody") : college ? undefined : t("exams.newSeriesHint")}
+              action={filtered ? <Button label={t("common.clearAll")} variant="secondary" onPress={clear} /> : college ? undefined : <Button label={t("exams.newSeriesTitle")} variant="secondary" onPress={() => nameRef.current?.focus()} />}
             />
           ) : (
             d.series.map((s) => (
@@ -154,7 +160,7 @@ export function AdminExams() {
               />
             ))
           )}
-          <CreateSeries key={formKey} nameRef={nameRef} grades={d.grades} terms={d.terms} busy={create.isPending} onCreate={(body) => create.mutate(body)} />
+          {college ? null : <CreateSeries key={formKey} nameRef={nameRef} grades={d.grades} terms={d.terms} busy={create.isPending} onCreate={(body) => create.mutate(body)} />}
         </>
       ) : null}
     </Screen>

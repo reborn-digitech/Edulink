@@ -1,6 +1,6 @@
 import { fireEvent, screen, waitFor } from "@testing-library/react-native";
 import { AdminExams, PrincipalExams } from "@/screens/staff/exams";
-import { gated, json, mountStaff, refused } from "./staff-harness";
+import { gated, json, me, mountStaff, refused } from "./staff-harness";
 
 /** The screen's empty state has a door into the app's own tabs; the router is the harness's, so a test can read where it went. */
 const mockRouter = { push: jest.fn(), replace: jest.fn(), back: jest.fn(), params: {} as Record<string, string> };
@@ -144,5 +144,24 @@ describe("the head's exams", () => {
     expect(await screen.findByRole("alert")).toHaveTextContent("Not now.");
     await fireEvent.press(screen.getByRole("button", { name: "Try again" }));
     await waitFor(() => expect(calls().filter((c) => c.line === "GET /api/v1/staff/exams/sheets").length).toBe(2));
+  });
+});
+
+describe("the exam office at a college (the owner, 15 Nov 2026: a school's exam series is not made there)", () => {
+  it("offers no new series: no form, no button; its empty state says it is not offered at this kind of institution", async () => {
+    const empty = { series: [], total: 0, grades: [], terms: [] };
+    await mountStaff(<AdminExams />, "ADMIN", { "GET /api/v1/admin/exams": () => json(empty) }, { me: { ...me("ADMIN"), institutionKind: "COLLEGE" } });
+    expect(await screen.findByText("That is not offered at this kind of institution.")).toBeTruthy();
+    expect(screen.queryByText("New exam series")).toBeNull();
+    expect(screen.queryByRole("button", { name: "Create the series" })).toBeNull();
+    expect(screen.queryByText("No exam series yet. Create the first one above.")).toBeNull();
+  });
+
+  it("at a school the same empty office still offers the new series", async () => {
+    const empty = { series: [], total: 0, grades: ["5"], terms: [] };
+    await mountStaff(<AdminExams />, "ADMIN", { "GET /api/v1/admin/exams": () => json(empty) });
+    expect(await screen.findByText("No exam series yet. Create the first one above.")).toBeTruthy();
+    expect(screen.getAllByText("New exam series").length).toBeGreaterThan(0);
+    expect(screen.getByRole("button", { name: "Create the series" })).toBeTruthy();
   });
 });

@@ -166,7 +166,12 @@ export const ALL_TAB_SCREENS = ["index", "attendance", "classes", "messages", "a
  */
 export type MenuGroup = "daily" | "school" | "running" | "teaching" | "people" | "attendance" | "money" | "communication" | "modules" | "setup" | "me";
 /** `streams` (5 Oct 2026): hidden at a college whose recorded streams include none of them (the practical record at a law college); none recorded keeps it. */
-/** `schoolOnly` (TA-269, 14 Nov 2026): the school version's page, hidden while the active place is a college (the web's `kinds: SCHOOL_KINDS`). */
+/**
+ * `schoolOnly` (TA-269, 14 Nov 2026): the school version's page, hidden while the active place is a college (the web's
+ * `kinds: SCHOOL_KINDS`): the admissions, and since the owner's word of 15 November 2026 ("Yes, hide it") the office's and
+ * the head's exams, syllabus and substitutions and the student's school exams, whose web pages answer not-found at a
+ * college. A guardian's /me names no school, so a guardian's menu is never at a college here.
+ */
 export type MenuItem = { labelKey: TranslationKey; icon: string; group: MenuGroup; module?: SchoolModuleCode; duty?: AnyDutyCode; streams?: readonly StreamCode[]; feature?: FeatureField; schoolOnly?: true } & ({ screen: string; web?: undefined } | { web: string; screen?: undefined });
 
 /**
@@ -263,7 +268,7 @@ export const MENU: Record<RoleCode, MenuItem[]> = {
     MY_LETTERS,
   ],
   STUDENT: [
-    { labelKey: "nav.exams", icon: "chartLine", group: "daily", screen: "/(app)/exams" },
+    { labelKey: "nav.exams", icon: "chartLine", group: "daily", screen: "/(app)/exams", schoolOnly: true },
     { labelKey: "agenda.title", icon: "calendar", group: "daily", screen: "/(app)/agenda" },
     { labelKey: "fees.myFeesTitle", icon: "receipt", group: "daily", screen: "/(app)/fees" },
     { labelKey: "nav.certificates", icon: "fileText", group: "daily", screen: "/(app)/certificates" },
@@ -347,10 +352,10 @@ export const MENU: Record<RoleCode, MenuItem[]> = {
   ADMIN: [
     { labelKey: "nav.classes", icon: "chalkboard", group: "teaching", screen: "/(app)/classes" },
     { labelKey: "nav.timetable", icon: "clock", group: "teaching", screen: "/(app)/timetable" },
-    { labelKey: "nav.exams", icon: "clipboard", group: "teaching", screen: "/(app)/exams" },
-    { labelKey: "nav.syllabus", icon: "books", group: "teaching", screen: "/(app)/syllabus-coverage" },
+    { labelKey: "nav.exams", icon: "clipboard", group: "teaching", screen: "/(app)/exams", schoolOnly: true },
+    { labelKey: "nav.syllabus", icon: "books", group: "teaching", screen: "/(app)/syllabus-coverage", schoolOnly: true },
     { labelKey: "nav.reportCards", icon: "clipboard", group: "teaching", screen: "/(app)/report-card-rules" },
-    { labelKey: "nav.substitutions", icon: "arrowsClockwise", group: "teaching", screen: "/(app)/substitutions" },
+    { labelKey: "nav.substitutions", icon: "arrowsClockwise", group: "teaching", screen: "/(app)/substitutions", schoolOnly: true },
     { labelKey: "academics.title", icon: "graduationCap", group: "teaching", screen: "/(app)/office-academics", module: "ACADEMICS" },
     { labelKey: "examCell.title", icon: "clipboard", group: "teaching", screen: "/(app)/exam-cell", module: "EXAMS" },
     { labelKey: "streamRecords.title", icon: "clipboard", group: "teaching", screen: "/(app)/stream-records", module: "ACADEMICS" },
@@ -418,11 +423,11 @@ export const MENU: Record<RoleCode, MenuItem[]> = {
     { labelKey: "inventory.myTitle", icon: "archive", group: "me", screen: "/(app)/my-items", module: "INVENTORY" },
   ],
   PRINCIPAL: [
-    { labelKey: "nav.exams", icon: "clipboard", group: "teaching", screen: "/(app)/exams" },
+    { labelKey: "nav.exams", icon: "clipboard", group: "teaching", screen: "/(app)/exams", schoolOnly: true },
     { labelKey: "nav.timetable", icon: "clock", group: "teaching", screen: "/(app)/timetable" },
-    { labelKey: "nav.syllabus", icon: "books", group: "teaching", screen: "/(app)/syllabus-coverage" },
+    { labelKey: "nav.syllabus", icon: "books", group: "teaching", screen: "/(app)/syllabus-coverage", schoolOnly: true },
     { labelKey: "nav.reportCards", icon: "clipboard", group: "teaching", screen: "/(app)/report-card-rules" },
-    { labelKey: "nav.substitutions", icon: "arrowsClockwise", group: "teaching", screen: "/(app)/substitutions" },
+    { labelKey: "nav.substitutions", icon: "arrowsClockwise", group: "teaching", screen: "/(app)/substitutions", schoolOnly: true },
     { labelKey: "academics.title", icon: "graduationCap", group: "teaching", screen: "/(app)/office-academics", module: "ACADEMICS" },
     { labelKey: "examCell.title", icon: "clipboard", group: "teaching", screen: "/(app)/exam-cell", module: "EXAMS" },
     { labelKey: "streamRecords.title", icon: "clipboard", group: "teaching", screen: "/(app)/stream-records", module: "ACADEMICS" },
