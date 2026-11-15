@@ -10,8 +10,9 @@ learned the hard way and are not negotiable without saying so in the commit.
 - Migrations, seeds and fixtures run through the owner connection: `npm run db:migrate` (not a bare
   `prisma migrate deploy`, which fails with "must be owner" and leaves a failed migration row to
   `migrate resolve --rolled-back`). After `npm run rls:generate` run `npm run db:grants`.
-- The container's release step is `npm run db:release` (deploy, then grants, no dump): the image carries no pg_dump and
-  the hosted database's backups are the provider's. `db:migrate` with its dump is the dev machine's.
+- The container's release step is `npm run db:release` (deploy, then grants, no dump): the hosted database's backups are
+  the provider's, so it takes none. The image does install `postgresql-client`, for the grants script's `psql`; the
+  `pg_dump` that comes with it is not used. `db:migrate` with its dump is the dev machine's.
 - Restart the dev server after a migration or `prisma generate`; a stale client 500s.
 
 ## Database and fixtures
@@ -39,7 +40,8 @@ learned the hard way and are not negotiable without saying so in the commit.
 ## Verification before a commit
 1. web tsc, scripts tsc, eslint; 2. `npx vitest run`; 3. `npm run rls:verify` on schema/policy change,
 `npm run api:docs` on catalog/contract change; 4. `npm run i18n -- --max <floor>` (floor in
-`.github/workflows/battery.yml`; a new job name raises it by one); 5. phone `npm run battery`;
+`.github/workflows/battery.yml`; a new job name raises it by one); 5. phone `npm run battery`, and
+`npm run bundle:check` when phone or package files change (CI's own step, 6 MB ceiling; the battery does not run it);
 6. `npm run sweep` and `npm run api:sweep` twice (warm-up, then count) against a running dev server —
 "got 0" means the server is down; 7. `npm run build` with the dev server stopped, then `rm -rf .next`;
 8. `npm run data:audit` when derived data or fixtures change.
