@@ -10,6 +10,7 @@ import { ROLE_META, type Role } from "./constants";
 import { getT } from "./i18n/server";
 import type { Translate } from "./i18n/dictionary";
 import { studentsGuardianMaySee } from "./student-consent";
+import { kindHiddenHrefs } from "./school-only-page";
 
 /**
  * One search across what a person may already see.
@@ -320,7 +321,11 @@ async function searchPapers(ctx: ActiveContext, q: string, limit: number, t: Tra
 /* Pages — the role's menu, for the phone (the web palette filters its own)    */
 /* -------------------------------------------------------------------------- */
 
-function searchPages(ctx: ActiveContext, q: string, limit: number, t: Translate): SearchHit[] {
+/**
+ * An entry the menu hides for the institution's kind is left out (15 November 2026): a college person's search no longer
+ * offers the school's exams, syllabus, substitutions or admissions, whose pages answer not-found at a college.
+ */
+function searchPages(ctx: ActiveContext, q: string, limit: number, t: Translate, hidden: readonly string[]): SearchHit[] {
   const role = ctx.role;
   if (!role) return [];
   const needle = q.toLowerCase();
@@ -331,7 +336,7 @@ function searchPages(ctx: ActiveContext, q: string, limit: number, t: Translate)
   const seen = new Set<string>();
   const hits: SearchHit[] = [];
   for (const entry of entries) {
-    if (seen.has(entry.href)) continue;
+    if (seen.has(entry.href) || hidden.includes(entry.href)) continue;
     if (!entry.label.toLowerCase().includes(needle) && !entry.description?.toLowerCase().includes(needle) && !entry.href.toLowerCase().includes(needle)) continue;
     seen.add(entry.href);
     hits.push({ kind: "pages", id: entry.href, title: entry.label, subtitle: entry.description, href: entry.href, phoneRoute: null });
@@ -348,11 +353,12 @@ export async function searchEverything(ctx: ActiveContext, opts: { q: string; li
   const q = opts.q.trim();
   const limit = Math.max(1, Math.min(50, opts.limit));
   const t = await getT();
-  const [people, posts, messages, papers] = await Promise.all([
+  const [people, posts, messages, papers, hidden] = await Promise.all([
     searchPeople(ctx, q, limit, t),
     searchPosts(ctx, q, limit),
     searchMessages(ctx, q, limit, t),
     searchPapers(ctx, q, limit, t),
+    kindHiddenHrefs(ctx),
   ]);
-  return { q, people, posts, messages, papers, pages: searchPages(ctx, q, limit, t) };
+  return { q, people, posts, messages, papers, pages: searchPages(ctx, q, limit, t, hidden) };
 }

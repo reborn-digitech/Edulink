@@ -11,8 +11,7 @@
  * children's schools' kinds, none without a school), beside hiddenByFeature as before.
  *
  * An entry hidden by kind is not asked as a link the person is shown, but it is still asked typed in, at an answer
- * written down: the school's exams, syllabus and substitutions, whose pages still open at a college by address, at the
- * 200 they give today (OPEN_WHEN_HIDDEN_BY_KIND), and every other one, the admissions, at the app's 404.
+ * written down: the app's 404 (kindNotFound), unless it is listed in OPEN_WHEN_HIDDEN_BY_KIND, which no entry is today.
  *
  * Pure: the walker's school, modules, duties and kinds are read by the sweep and passed in.
  */
@@ -20,16 +19,17 @@ import { NAV, PRIMARY_ACTION, QUICK_ACTIONS, hiddenByFeature, hiddenByKind } fro
 import type { Role } from "@/lib/constants";
 
 /**
- * Entries the shell hides by kind at a college whose pages still open there when the address is typed in: a 200, the
- * page rendered, not a redirect. At ZZ Vidya College they are seven of the walk's lines: the office's /admin/exams,
- * /admin/syllabus and /admin/substitutions, the head's /exams, /admin/syllabus and /admin/substitutions, and the
- * student's /exams, each asked as a link the person was shown until the kinds rule above. They are kept as typed-in
- * checks at today's answer so that a page that stops rendering is still caught. Whether a college person should reach
- * the school's pages by address at all is an open product question for the owner, not decided here. Every other entry
- * hidden by kind is asked typed in for the app's 404 (kindNotFound): /admin/admissions, whose layout answers it at a
- * college since 3ccf78f4 (TA-269), for the office and the head at ZZ Vidya College.
+ * Entries the shell hides by kind at a college whose pages still open there when the address is typed in, asked at 200.
+ * None today. Until 15 November 2026 the list held the school's /admin/exams, /admin/syllabus, /admin/substitutions and
+ * /exams, seven of the walk's lines at ZZ Vidya College (the office's three, the head's three, the student's /exams),
+ * kept at the 200 they gave while it was open whether a college person should reach them; the owner then said a college
+ * should not ("Yes, all three"), and their layouts answer the app's 404 at a college through notFoundAtCollege
+ * (src/lib/school-only-page.ts), as /admin/admissions's has since 3ccf78f4 (TA-269). So every entry hidden by kind is
+ * asked typed in for the app's 404 (kindNotFound): at ZZ Vidya College the office's /admin/exams, /admin/syllabus,
+ * /admin/substitutions and /admin/admissions, the head's /exams, /admin/syllabus, /admin/substitutions and
+ * /admin/admissions, and the student's /exams.
  */
-export const OPEN_WHEN_HIDDEN_BY_KIND: readonly string[] = ["/admin/exams", "/admin/syllabus", "/admin/substitutions", "/exams"];
+export const OPEN_WHEN_HIDDEN_BY_KIND: readonly string[] = [];
 
 export type NavWalkScope = {
   /** The modules the walker's school has on (a guardian's: the children's schools'). */
@@ -51,7 +51,7 @@ export type NavWalkPlan = {
   featureOff: string[];
   /** The entries hidden for the institution's kind: not asked as links the person is shown. */
   kindOff: string[];
-  /** Of those, the ones whose pages still open by address (OPEN_WHEN_HIDDEN_BY_KIND): asked typed in, at 200. */
+  /** Of those, the ones whose pages still open by address (OPEN_WHEN_HIDDEN_BY_KIND, empty today): asked typed in, at 200. */
   typedIn: string[];
   /** And the rest of them: asked typed in for the app's 404, so every entry hidden by kind is asked with an answer. */
   kindNotFound: string[];

@@ -3,7 +3,7 @@ import { test, expect, type Page } from "@playwright/test";
 import AxeBuilder from "@axe-core/playwright";
 import { PrismaClient } from "@prisma/client";
 import { config } from "dotenv";
-import { NAV, PRIMARY_ACTION } from "../src/lib/nav";
+import { NAV, PRIMARY_ACTION, hiddenByKind } from "../src/lib/nav";
 import { ROLE_HOME, type Role } from "../src/lib/constants";
 import { contextFor, sessions, VIEWPORTS } from "./actors";
 import { overflow, smallTargets, overflowers } from "./checks";
@@ -32,9 +32,12 @@ const all = sessions();
 const keys = Object.keys(all).filter((key) => NAV[all[key]!.role as Role]);
 const shown = (key: string) => {
   const actor = all[key]!;
-  // As the shell shows them (5 Oct 2026): the module on, the duty held, and at a college with streams one of the entry's.
+  // As the shell shows them (5 Oct 2026): the module on, the duty held, and at a college with streams one of the entry's;
+  // and (15 Nov 2026) not an entry for another institution kind, whose page answers not-found there (hiddenByKind).
+  const byKind = hiddenByKind(NAV[actor.role as Role], actor.kinds ?? []);
   return NAV[actor.role as Role].filter(
     (item) =>
+      !byKind.includes(item.href) &&
       (!item.module || !actor.modules || actor.modules.includes(item.module)) &&
       (!item.duty || (actor.duties ?? []).includes(item.duty)) &&
       (!item.streams || !actor.streams?.length || item.streams.some((s) => actor.streams!.includes(s))),

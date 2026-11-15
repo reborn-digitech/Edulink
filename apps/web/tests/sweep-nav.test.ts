@@ -5,9 +5,9 @@
  * 3ccf78f4 (TA-269). The walk dropped the entries hidden for an off feature (hiddenByFeature) and not those hidden for
  * the institution's kind (hiddenByKind, signed-in-shell.tsx). scripts/sweep-nav.ts now decides the walk with both of
  * the shell's functions, and everyNavLink walks what it decides. An entry hidden by kind is still asked typed in, at an
- * answer written down: the school's exams, syllabus and substitutions, whose pages still open at a college by address,
- * at 200 (seven lines at ZZ Vidya College, kept until the owner decides whether a college person should reach them at
- * all), and the admissions at the app's 404, which TA-269's layout gives at a college.
+ * answer written down: the app's 404. The admissions have answered it at a college since TA-269's layout; the school's
+ * exams, syllabus and substitutions (seven lines at ZZ Vidya College) were asked at the 200 they gave until the owner
+ * said, on 15 November 2026 ("Yes, all three"), that a college should not open them, and now answer it too.
  */
 import { describe, expect, it } from "vitest";
 import { readFileSync } from "node:fs";
@@ -47,31 +47,36 @@ describe("E2: the nav walk drops what the shell drops for the institution's kind
     }
   });
 
-  it("E2: at a college the office and the head ask the admissions typed in for the app's 404 (TA-269), and nothing else; at a school nothing", () => {
-    for (const role of ["ADMIN", "PRINCIPAL"] as const) {
-      for (const kind of COLLEGE_KINDS) expect(navWalkPlan(role, open(role, [kind])).kindNotFound, `${role} at a ${kind}`).toEqual(["/admin/admissions"]);
+  it("E2: at a college every page hidden by kind is asked typed in for the app's 404, the admissions (TA-269) and the school's seven (the owner, 15 Nov); at a school nothing", () => {
+    const notFound: Partial<Record<Role, string[]>> = {
+      ADMIN: ["/admin/admissions", "/admin/exams", "/admin/substitutions", "/admin/syllabus"],
+      PRINCIPAL: ["/admin/admissions", "/admin/substitutions", "/admin/syllabus", "/exams"],
+      STUDENT: ["/exams"],
+      PARENT: ["/exams"],
+    };
+    for (const [role, hrefs] of Object.entries(notFound) as [Role, string[]][]) {
+      for (const kind of COLLEGE_KINDS) expect([...navWalkPlan(role, open(role, [kind])).kindNotFound].sort(), `${role} at a ${kind}`).toEqual(hrefs);
       for (const kind of SCHOOL_KINDS) expect(navWalkPlan(role, open(role, [kind])).kindNotFound, `${role} at a ${kind}`).toEqual([]);
     }
-    // The college's student and a college child's guardian have no admissions entry: their one hidden page still opens.
-    for (const role of ["STUDENT", "PARENT"] as const) expect(navWalkPlan(role, open(role, ["COLLEGE"])).kindNotFound, role).toEqual([]);
   });
 
-  it("E2: at a college the seven school's pages that still open by address are asked typed in, and none as a link shown", () => {
-    // The seven lines at ZZ Vidya College: the office's three, the head's three and the student's one.
+  it("E2: no page hidden by kind is asked at 200 at a college any more: the seven school's pages answer the app's 404 there (the owner, 15 Nov), none shown as a link", () => {
+    // The seven lines at ZZ Vidya College that were asked at 200 until the owner's word: the office's three, the head's three, the student's one.
     const seven: Partial<Record<Role, string[]>> = {
       ADMIN: ["/admin/exams", "/admin/substitutions", "/admin/syllabus"],
       PRINCIPAL: ["/admin/substitutions", "/admin/syllabus", "/exams"],
       STUDENT: ["/exams"],
     };
+    expect(OPEN_WHEN_HIDDEN_BY_KIND).toEqual([]);
     for (const kind of COLLEGE_KINDS) {
       for (const [role, hrefs] of Object.entries(seven) as [Role, string[]][]) {
         const plan = navWalkPlan(role, open(role, [kind]));
-        expect([...plan.typedIn].sort(), `${role} at a ${kind}`).toEqual(hrefs);
-        expect(plan.shown.filter((href) => plan.typedIn.includes(href)), `${role} at a ${kind}`).toEqual([]);
+        expect(plan.typedIn, `${role} at a ${kind}`).toEqual([]);
+        for (const href of hrefs) expect(plan.kindNotFound, `${role} at a ${kind}`).toContain(href);
+        expect(plan.shown.filter((href) => hrefs.includes(href)), `${role} at a ${kind}`).toEqual([]);
       }
     }
     expect(Object.values(seven).flat()).toHaveLength(7);
-    expect(OPEN_WHEN_HIDDEN_BY_KIND).not.toContain("/admin/admissions");
     // At a school nothing is hidden by kind, so nothing is asked typed in: the pages are links the person is shown.
     for (const role of ["ADMIN", "PRINCIPAL", "STUDENT"] as const) {
       for (const kind of SCHOOL_KINDS) expect(navWalkPlan(role, open(role, [kind])).typedIn, `${role} at a ${kind}`).toEqual([]);
@@ -114,8 +119,9 @@ describe("E2: the nav walk drops what the shell drops for the institution's kind
     expect(plan.shown).not.toContain("/student/practice");
     expect(plan.kindOff).toContain("/exams");
     expect([...plan.shown, ...plan.featureOff]).not.toContain("/exams");
-    // ...and, its page still opening by address, it is asked typed in.
-    expect(plan.typedIn).toEqual(["/exams"]);
+    // ...and it is asked typed in for the app's 404, which its layout gives at a college since the owner's word of 15 November 2026.
+    expect(plan.typedIn).toEqual([]);
+    expect(plan.kindNotFound).toEqual(["/exams"]);
   });
 
   it("E2: sweep.ts walks the plan with each walker's kinds, asks the typed-in pages at 200 and 404, and decides nothing about the menu itself", () => {

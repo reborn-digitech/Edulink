@@ -28,6 +28,12 @@ export type Actor = {
   duties?: string[];
   /** The college's streams (5 Oct 2026): an entry for other streams (the practical record at a law college) is hidden. */
   streams?: string[];
+  /**
+   * The institution kinds the actor's menu reads (signed-in-shell.tsx; 15 Nov 2026): a guardian's children's schools',
+   * anyone else's own school's. An entry for other kinds (the school's exams at a college) is hidden, and its page
+   * answers not-found there, so the axe walk leaves it out as the menu does.
+   */
+  kinds?: string[];
 };
 export type Sessions = Record<string, Actor>;
 
@@ -155,15 +161,24 @@ export default async function globalSetup() {
 
   // Each school actor's modules, read once: Northgate's for the school's, Vidya's for the college's.
   const modulesOf = new Map<string, string[]>();
+  // A guardian's kinds are the children's schools', as institutionKindsForFamily reads them (src/lib/family-child.ts,
+  // which this file cannot import: it is server-only).
+  const familyKinds = async (parentUserId: string) => {
+    const links = await db.guardianship.findMany({ where: { parentUserId, status: "ACTIVE" }, select: { studentSchoolId: true } });
+    const schools = await db.school.findMany({ where: { id: { in: [...new Set(links.map((l) => l.studentSchoolId))] } }, select: { kind: true } });
+    return [...new Set(schools.map((s) => s.kind))];
+  };
   for (const actor of Object.values(sessions)) {
     const session = await db.session.findFirst({ where: { tokenHash: createHash("sha256").update(actor.cookie.split("=")[1]!).digest("hex") }, select: { activeSchoolId: true, activeRole: true, userId: true } });
+    if (session?.activeRole === "PARENT") actor.kinds = await familyKinds(session.userId);
     const schoolId = session?.activeSchoolId;
     if (!schoolId) continue;
     if (!modulesOf.has(schoolId)) modulesOf.set(schoolId, (await db.schoolModule.findMany({ where: { schoolId }, select: { module: true } })).map((m) => m.module));
     actor.modules = modulesOf.get(schoolId);
     // The streams and the duties (5 Oct 2026): the shell hides another stream's entries and a duty the person does not hold.
-    const school = await db.school.findUnique({ where: { id: schoolId }, select: { streamsJson: true } });
+    const school = await db.school.findUnique({ where: { id: schoolId }, select: { streamsJson: true, kind: true } });
     actor.streams = JSON.parse(school?.streamsJson ?? "[]") as string[];
+    if (session.activeRole !== "PARENT") actor.kinds = school?.kind ? [school.kind] : [];
     if (session.activeRole) {
       const membership = await db.membership.findFirst({ where: { userId: session.userId, schoolId, role: session.activeRole, status: "ACTIVE", leftAt: null }, select: { dutiesJson: true } });
       // As the session reads them (owner-batch-item9): a college teacher's duties, an admin's office duties (the head's

@@ -1147,16 +1147,15 @@ async function everyNavLink(walkers: NavWalker[]) {
       if (ownOff && !keptWhenOff(href)) continue;
       await check(w.actor, href, 404, `${role}'s menu hides this while its feature is off at ${w.where}; typed in, the app's 404`);
     }
-    // The school's pages the shell hides by kind at a college while they still open by address (sweep-nav.ts
-    // OPEN_WHEN_HIDDEN_BY_KIND): asked typed in at the answer they give today, a 200, the page rendered and not a
-    // redirect, so one that stops rendering is still caught. Whether a college person should reach them by address at
-    // all is an open product question for the owner, not decided by this line.
+    // A page the shell hides by kind that still opens by address (sweep-nav.ts OPEN_WHEN_HIDDEN_BY_KIND, empty since the
+    // owner's word of 15 November 2026): asked typed in at 200, the page rendered and not a redirect.
     for (const href of plan.typedIn) {
       if (ownOff && !keptWhenOff(href)) continue;
-      await check(w.actor, href, 200, `${role} is not shown this school's page at ${w.where} (hidden by kind), and typed in it still opens: the owner's open question`);
+      await check(w.actor, href, 200, `${role} is not shown this page at ${w.where} (hidden by kind), and typed in it still opens`);
     }
-    // Every other page the shell hides by kind: typed in, the app's 404, as a feature's hidden page is (the admissions at a
-    // college, whose layout answers it since 3ccf78f4, TA-269).
+    // Every other page the shell hides by kind: typed in, the app's 404, as a feature's hidden page is: the admissions at a
+    // college (TA-269, 3ccf78f4) and, since the owner's word of 15 November 2026, the school's exams, syllabus and
+    // substitutions, whose layouts answer it through notFoundAtCollege (src/lib/school-only-page.ts).
     for (const href of plan.kindNotFound) {
       if (ownOff && !keptWhenOff(href)) continue;
       await check(w.actor, href, 404, `${role}'s menu hides this at ${w.where} (hidden by kind); typed in, the app's 404`);
