@@ -5,6 +5,7 @@ import { finishedYearContaining } from "./academic-year";
 import { listHolidays, isSchoolClosed } from "./holidays";
 import { formatDateKey, parseTeachingDays } from "./dates";
 import { audit } from "./audit";
+import { refuseAtACollege } from "./modules";
 import { AccessError } from "./tenancy";
 import { studentsGuardianMaySee } from "./student-consent";
 import { isDateKey } from "./dates";
@@ -121,6 +122,9 @@ export async function createSeries(
   input: { name: string; gradeLevel: string; kind?: string; termId?: string | null },
 ): Promise<string> {
   const { schoolId } = requireAdmin(ctx);
+  // A school's exam series is not made at a college (the owner, 15 November 2026: "Yes, close it"): the door's catalog
+  // entry names the school kinds, and this refuses every other caller, the page's action included.
+  await refuseAtACollege(schoolId);
   const name = input.name.trim().slice(0, 120);
   const gradeLevel = input.gradeLevel.trim().slice(0, 20);
   if (name.length < 2) throw new AccessError("access.giveTheExamAName");

@@ -11,7 +11,7 @@ import { isCollegeKind } from "@edulink/contracts";
 import { db } from "./db";
 import { AccessError } from "./tenancy";
 import { NotForThisKindError } from "./access-error";
-import { institutionKindOf } from "./modules";
+import { refuseAtACollege } from "./modules";
 import { APPLICATION_TRIES, consume } from "./rate-limit";
 import { audit } from "./audit";
 import { notify } from "./notify";
@@ -82,16 +82,11 @@ function office(ctx: ActiveContext): Office {
   return ctx as Office;
 }
 
-/**
- * THE SCHOOL'S ROAD, NOT A COLLEGE'S (TA-269). A college admits through its own desk (college-admissions: the CET list,
- * scrutiny, both anti-ragging undertakings and the academic seat); this road mints a pupil with a class and a school
- * fee plan and none of those. At a college a cycle cannot be made, applied to or admitted from, answered as the doors
- * at the wrong kind of institution are (404, role-gate.ts rule 4).
- */
-async function refuseAtACollege(schoolId: string): Promise<void> {
-  const kind = await institutionKindOf(schoolId);
-  if (isCollegeKind(kind)) throw new NotForThisKindError(kind ?? "COLLEGE", "schoolCampus.refuseNotThisKind");
-}
+// THE SCHOOL'S ROAD, NOT A COLLEGE'S (TA-269). A college admits through its own desk (college-admissions: the CET list,
+// scrutiny, both anti-ragging undertakings and the academic seat); this road mints a pupil with a class and a school
+// fee plan and none of those. At a college a cycle cannot be made, applied to or admitted from, answered as the doors
+// at the wrong kind of institution are (404, role-gate.ts rule 4), through refuseAtACollege (modules.ts), which a
+// school's exam series shares since 15 November 2026.
 
 /** How many applications one account may have standing in one cycle (TA-181): a family's children, not a list of names. */
 const LIVE_APPLICATIONS_PER_CYCLE = 5;

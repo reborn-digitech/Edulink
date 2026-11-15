@@ -1,6 +1,9 @@
 import * as c from "@edulink/contracts";
 import type { Endpoint } from "./types";
 
+/** A school's kinds, as the nav names them (nav.ts SCHOOL_KINDS): every institution kind but a college's. */
+const SCHOOL_KINDS = c.INSTITUTION_KINDS.filter((kind) => !c.isCollegeKind(kind));
+
 /**
  * admin: the office's navigation pages, in the nav's order. One GET per page
  * (what it shows), one POST per primary action, each thin over the same lib
@@ -74,7 +77,9 @@ export const ADMIN: Endpoint[] = [
   { method: "POST", path: "/api/v1/admin/timetable/slots", summary: "Put a lesson in a cell of a class's week", access: ["ADMIN"], request: c.slotSaveBodySchema, reach: "ownSchool", reachRefusal: "unprocessable", response: c.savedIdSchema, emptyBodyStatus: 422 },
   // ---- /admin/exams --------------------------------------------------------
   { method: "GET", path: "/api/v1/admin/exams", summary: "Every live exam series with its papers", access: ["ADMIN"], request: c.adminExamsQuerySchema, response: c.adminExamsSchema },
-  { method: "POST", path: "/api/v1/admin/exams", summary: "Schedule an exam series", access: ["ADMIN"], request: c.examSeriesCreateBodySchema, response: c.examSeriesCreatedSchema, emptyBodyStatus: 422 },
+  // A school's exam series is not made at a college (the owner, 15 November 2026: "Yes, close it"): the school kinds
+  // alone, so the session's gate answers 404 NOT_FOUND at a college (role-gate.ts rule 4), as its pages do since d714f25f.
+  { method: "POST", path: "/api/v1/admin/exams", summary: "Schedule an exam series", access: ["ADMIN"], kinds: SCHOOL_KINDS, request: c.examSeriesCreateBodySchema, response: c.examSeriesCreatedSchema, emptyBodyStatus: 422 },
   {
     method: "POST",
     path: "/api/v1/admin/exams/{seriesId}/slots",

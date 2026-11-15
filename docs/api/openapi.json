@@ -7908,7 +7908,7 @@
       },
       "post": {
         "summary": "Schedule an exam series",
-        "description": "Roles: ADMIN.",
+        "description": "Roles: ADMIN. Only at an institution of kind SCHOOL or JUNIOR_COLLEGE; elsewhere 404.",
         "security": [
           {
             "bearer": []
@@ -7916,6 +7916,10 @@
         ],
         "x-access": [
           "ADMIN"
+        ],
+        "x-kinds": [
+          "SCHOOL",
+          "JUNIOR_COLLEGE"
         ],
         "responses": {
           "200": {

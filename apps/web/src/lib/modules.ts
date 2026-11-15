@@ -4,7 +4,7 @@ import { defaultModulesForKind, isCollegeKind, modulesForKind, presetUnion, SCHO
 import { db } from "./db";
 import { audit } from "./audit";
 import { readJson } from "./json";
-import { AccessError, ModuleOffError, NotACollegeError } from "./access-error";
+import { AccessError, ModuleOffError, NotACollegeError, NotForThisKindError } from "./access-error";
 import type { TranslationKey } from "./i18n/dictionary";
 import type { ActiveContext } from "./session";
 import { MODULE_META } from "./module-meta";
@@ -66,6 +66,17 @@ export const institutionKindOf = cache(async (schoolId: string | null | undefine
   const school = await db.school.findUnique({ where: { id: schoolId }, select: { kind: true } });
   return (school?.kind as InstitutionKind | undefined) ?? null;
 });
+
+/**
+ * A SCHOOL'S WRITE, NOT A COLLEGE'S: refused at an institution of a college kind, answered as a door at the wrong kind
+ * of institution is (404 NOT_FOUND, role-gate.ts rule 4, "schoolCampus.refuseNotThisKind"), so that a page's action
+ * and every other caller meet the refusal the door's own catalog `kinds` gives. The school's admissions (TA-269), and
+ * since the owner's word of 15 November 2026 ("Yes, close it") a school's exam series (exams.ts createSeries).
+ */
+export async function refuseAtACollege(schoolId: string): Promise<void> {
+  const kind = await institutionKindOf(schoolId);
+  if (isCollegeKind(kind)) throw new NotForThisKindError(kind ?? "COLLEGE", "schoolCampus.refuseNotThisKind");
+}
 
 /**
  * THE AUTONOMOUS SWITCH (4 October 2026): an autonomous college sets its own
