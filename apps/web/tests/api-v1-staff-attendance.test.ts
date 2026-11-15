@@ -29,7 +29,17 @@ const TZ = "Asia/Kolkata";
  * back: rows the database dates itself (a membership's joinedAt, a session's createdAt) then stay in the past.
  */
 const REAL_NOW = Date.now();
-const SUITE_NOW = todayKey(TZ, new Date(REAL_NOW)).endsWith("-01") ? REAL_NOW + 86_400_000 : REAL_NOW;
+/**
+ * ...and out of the school's first hour (CI run 43745001180, 16 November 2026, run at 00:0x in the school's zone): the
+ * check-in case sets the day's start half an hour, then an hour, before the suite's clock, clamped at midnight, so in
+ * the first five minutes after midnight a check-in fell inside the five minutes' grace and read PRESENT, not LATE. In
+ * that first hour the clock moves forward an hour, still the same school day; forward, never back, as above.
+ */
+function suiteClock(realNow: number): number {
+  const day = todayKey(TZ, new Date(realNow)).endsWith("-01") ? realNow + 86_400_000 : realNow;
+  return minuteOfDayIn(TZ, new Date(day)) < 60 ? day + 3_600_000 : day;
+}
+const SUITE_NOW = suiteClock(REAL_NOW);
 let schoolId = "";
 let adminUserId = "";
 let principalUserId = "";
@@ -137,12 +147,31 @@ describe("the register", () => {
     expect(JSON.stringify(audits[0]!.meta)).not.toContain("Bus");
   });
 
+  it("the suite's clock is never in the school's first hour, where the day's start clamped to midnight let a check-in fall inside the grace (CI run 43745001180)", () => {
+    const at = (dateKey: string, minute: number) => zonedStartOfDay(dateKey, TZ).getTime() + minute * 60_000;
+    const justAfterMidnight = at("2026-11-16", 2);
+    const pinned = suiteClock(justAfterMidnight);
+    const minute = minuteOfDayIn(TZ, new Date(pinned));
+    expect(minute).toBeGreaterThanOrEqual(60);
+    expect(todayKey(TZ, new Date(pinned))).toBe("2026-11-16");
+    expect(pinned).toBeGreaterThanOrEqual(justAfterMidnight);
+    // The check-in case's own settings at that moment make the tap late, as it asserts: the start half an hour, then an hour, earlier, five minutes' grace.
+    expect(minute).toBeGreaterThan(Math.max(0, minute - 30) + 5);
+    expect(minute).toBeGreaterThan(Math.max(0, minute - 60) + 5);
+    // On the first of a month both moves: to the 2nd, and out of its first hour.
+    const first = suiteClock(at("2026-12-01", 2));
+    expect(todayKey(TZ, new Date(first))).toBe("2026-12-02");
+    expect(minuteOfDayIn(TZ, new Date(first))).toBeGreaterThanOrEqual(60);
+    // Elsewhere in the day the clock is left where it is.
+    expect(suiteClock(at("2026-11-16", 600))).toBe(at("2026-11-16", 600));
+  });
+
   it("a teacher checks in — present or late by the school's clock — a second tap a no-op, never on a closed day; the office sees the check-in; the month is theirs", async () => {
     // The head marks the register and does not set the clock it is marked against.
     await as("PRINCIPAL");
     expect((await settingsPost(json("/x", { checkInMinute: 540, lateGraceMinutes: 5 }))).status).toBe(403);
     await as("ADMIN");
-    // Whether the check-in lands present or late depends on the wall clock; pin it by setting the day's start around now.
+    // Whether the check-in lands present or late depends on the suite's clock, never in the school's first hour (suiteClock): pin it by setting the day's start around it.
     const nowMinute = minuteOfDayIn(TZ);
     expect((await settingsPost(json("/x", { checkInMinute: Math.max(0, nowMinute - 30), lateGraceMinutes: 5 }))).status).toBe(200);
     await as("TEACHER");
