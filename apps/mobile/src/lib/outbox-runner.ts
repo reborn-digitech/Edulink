@@ -48,9 +48,10 @@ let sending: QueuedRequest | null = null;
  * The transport flushQueue is given: one queued item, sent as it was queued,
  * naming the person who queued it (X-Edulink-Owner, the web outbox's header
  * since 13674f8): the server answers 401 to a bearer of anyone else, and a
- * 401 keeps the row.
+ * 401 keeps the row. A row the server took comes back with its answer, which
+ * the outbox hands to the screens (a marks sheet's new version, CI's R2).
  */
-export async function sendQueued(item: QueuedRequest): Promise<{ status: number; error?: string }> {
+export async function sendQueued(item: QueuedRequest): Promise<{ status: number; error?: string; data?: unknown }> {
   let body: unknown;
   try {
     body = JSON.parse(item.body);
@@ -61,7 +62,7 @@ export async function sendQueued(item: QueuedRequest): Promise<{ status: number;
   try {
     const result = await replayClient().request(item.method as Method, item.url, body);
     // A refusal's sentence rides with its status, so the notice of a replay the server refused can say why (TA-146).
-    return result.ok ? { status: 200 } : { status: result.status, ...(result.error ? { error: result.error } : {}) };
+    return result.ok ? { status: 200, data: result.data } : { status: result.status, ...(result.error ? { error: result.error } : {}) };
   } finally {
     sending = null;
   }

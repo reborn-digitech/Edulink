@@ -137,6 +137,13 @@ export function newClientId(): string {
 
 export type QueueEvent =
   | { type: "queued"; item: QueuedRequest; remaining: number }
+  /**
+   * One row the server took in a flush, with its answer when the transport had one (CI's triage of 15 Nov 2026, R2):
+   * a screen showing what the row wrote takes the answer as it takes its own live save's, so a marks sheet holds the
+   * version the replay was answered with, not the older one it was typed on. `superseded`: a newer body of its tag
+   * went through, or was queued, while its send was out, so its answer is older news than that body's and is not taken.
+   */
+  | { type: "sent"; item: QueuedRequest; data?: unknown; superseded?: true }
   | { type: "flushed"; sent: number; failed: number; remaining: number }
   /** `error`: the server's sentence for the refusal, when the transport had one (TA-146). */
   | { type: "rejected"; item: QueuedRequest; status: number; error?: string };
@@ -150,16 +157,47 @@ function emit(event: QueueEvent) {
   for (const l of listeners) l(event);
 }
 
+/**
+ * The outbox's clock: the newest createdAt minted, marked or read. It never goes back, so a row's createdAt is strictly
+ * above every row queued before it and every mark taken before it, whatever Date.now() does (stands still within a
+ * millisecond, or is set back), and runs ahead of Date.now() by a millisecond a row when it must.
+ */
 let lastCreatedAt = 0;
+
+/** How far ahead of the device's clock a stored createdAt may be and still move the outbox's clock. */
+const AHEAD_MS = 86_400_000;
+
+/**
+ * Every row in the store, the clock moved up to the newest createdAt of this person's rows at this school among them
+ * (TA-010): a row an earlier run of the app stored, or the build before this one, under a clock since set back, is
+ * older than whatever is queued or marked after it has been read. Only those rows, because only they are ordered
+ * against a new row (removeOlder, the flush's newest-only rule, supersedeQueued) or sent beside it; and not one
+ * stamped more than a day ahead of the device's clock, which was minted under a clock that was wrong and would carry
+ * every row after it as far ahead, putting off its SEND_DAYS and HOLD_DAYS (such a row is ordered as before TA-010's
+ * clock). Every read of the store comes through here, and the app reads before it writes: the runner's first flush on
+ * signing in, and the badge of every screen that writes, when it opens.
+ */
+async function stored(): Promise<QueuedRequest[]> {
+  const rows = await current().all();
+  const ceiling = Date.now() + AHEAD_MS;
+  for (const row of rows) {
+    if (!owner || row.owner !== owner.userId || (row.schoolId ?? null) !== owner.schoolId) continue;
+    if (row.createdAt > lastCreatedAt && row.createdAt <= ceiling) lastCreatedAt = row.createdAt;
+  }
+  return rows;
+}
 
 /**
  * The outbox's clock now: every row queued so far has a createdAt at or below
- * it, every row queued later one above it (createdAt runs ahead of Date.now()
- * by a millisecond per row queued within one). A live write takes it before it
- * leaves, for supersedeQueued.
+ * it, every row queued later one above it. A live write takes it before it
+ * leaves, for supersedeQueued. The mark is kept as the clock (TA-010; CI's phone
+ * battery at 399aeda0, 2ffc5f66 and 4c23397c): returned and not kept, a row
+ * queued in the same millisecond, or after the clock was set back, took a
+ * createdAt at or below it and was removed as older than the live write.
  */
 export function queueMark(): number {
-  return Math.max(Date.now(), lastCreatedAt);
+  lastCreatedAt = Math.max(Date.now(), lastCreatedAt);
+  return lastCreatedAt;
 }
 
 export async function enqueue(item: Omit<QueuedRequest, "id" | "createdAt" | "attempts" | "owner" | "schoolId" | "membershipId">): Promise<string> {
@@ -186,7 +224,7 @@ const superseded = new Set<string>();
 /** Removes the same person's rows at the same school under `like`'s tag queued before `before`. */
 async function removeOlder(like: Pick<QueuedRequest, "tag" | "owner" | "schoolId">, before: number, inclusive = false): Promise<number> {
   let removed = 0;
-  for (const item of await current().all()) {
+  for (const item of await stored()) {
     if (item.tag !== like.tag || item.owner !== like.owner || (item.schoolId ?? null) !== (like.schoolId ?? null)) continue;
     if (inclusive ? item.createdAt > before : item.createdAt >= before) continue;
     await current().remove(item.id);
@@ -217,14 +255,14 @@ export async function supersedeQueued(tag: string, startedAt: number): Promise<n
  * person's to delete; they keep their HOLD_DAYS.
  */
 export async function clearQueue(): Promise<number> {
-  const items = (await current().all()).filter((i) => i.owner === null || i.owner === owner?.userId);
+  const items = (await stored()).filter((i) => i.owner === null || i.owner === owner?.userId);
   for (const item of items) await current().remove(item.id);
   if (items.length) emit({ type: "flushed", sent: 0, failed: 0, remaining: await countQueued() });
   return items.length;
 }
 
 async function everything(): Promise<QueuedRequest[]> {
-  return (await current().all()).sort((a, b) => a.createdAt - b.createdAt);
+  return (await stored()).sort((a, b) => a.createdAt - b.createdAt);
 }
 
 /** What waits to send for the person signed in, at the school they are at: what a badge counts. */
@@ -301,10 +339,11 @@ export const ROW_LIMIT_MS = 45_000;
  * this person's rows of another school stay where they are (until
  * HOLD_DAYS). `send` is the transport — the api client's request with the
  * replay and owner headers — injected so the suite can prove the policy
- * without a network.
+ * without a network; what it hands back as `data` with a 2xx, the server's
+ * answer, goes to the listeners with the row's "sent" event.
  */
 export async function flushQueue(
-  send: (item: QueuedRequest) => Promise<{ status: number; error?: string }>,
+  send: (item: QueuedRequest) => Promise<{ status: number; error?: string; data?: unknown }>,
   now: number = Date.now(),
   /** How long one row's send may take before it is kept for the next try (TA-149): a send that never settles held every later flush. */
   rowLimitMs: number = ROW_LIMIT_MS,
@@ -331,6 +370,7 @@ export async function flushQueue(
       let status = 0;
       let error = "";
       let refusal: string | undefined;
+      let data: unknown;
       let timer: ReturnType<typeof setTimeout> | undefined;
       try {
         const answer = await Promise.race([
@@ -341,6 +381,7 @@ export async function flushQueue(
         ]);
         status = answer.status;
         refusal = answer.error;
+        data = answer.data;
       } catch (e) {
         error = e instanceof Error ? e.message : "network";
       } finally {
@@ -349,6 +390,7 @@ export async function flushQueue(
       if (status >= 200 && status < 300) {
         await current().remove(item.id);
         sent++;
+        emit({ type: "sent", item, ...(data !== undefined ? { data } : {}), ...(superseded.has(item.id) ? { superseded: true as const } : {}) });
         continue;
       }
       if (status >= 400 && status < 500 && status !== 401 && status !== 429) {
@@ -357,6 +399,9 @@ export async function flushQueue(
         emit({ type: "rejected", item, status, ...(refusal ? { error: refusal } : {}) });
         continue;
       }
+      // Superseded while its send was out (a newer body of its tag went through, or was queued): it is gone, as a row
+      // superseded before its turn is, and put back it would be sent after the newer one.
+      if (superseded.has(item.id)) continue;
       await current().put({ ...item, attempts: item.attempts + 1, lastError: error || `HTTP ${status}` });
       held.add(item.tag);
       failed++;

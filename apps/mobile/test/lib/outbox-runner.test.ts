@@ -25,7 +25,8 @@ describe("the outbox runner", () => {
     const body = { classId: "c1", dateKey: "2026-09-07", marks: [] };
     await enqueue({ url: "/api/attendance", method: "POST", body: JSON.stringify(body), tag: "attendance:c1" });
     const [item] = await listQueued();
-    expect(await sendQueued(item!)).toEqual({ status: 200 });
+    // With the server's answer, which the outbox hands to the screens (CI's R2).
+    expect(await sendQueued(item!)).toEqual({ status: 200, data: { ok: true } });
     const [url, init] = fetch.mock.calls[0] as [string, RequestInit];
     expect(new URL(url).pathname).toBe("/api/attendance");
     expect(init.method).toBe("POST");

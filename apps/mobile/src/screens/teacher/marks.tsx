@@ -1,15 +1,15 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { usePrivateScreen } from "@/lib/private-screen";
 import { Pressable, View } from "react-native";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { marksBatchSchema, marksGridSchema, marksSavedSchema, staffExamsSchema } from "@edulink/contracts";
+import { marksBatchSchema, marksGridSchema, marksSavedSchema, staffExamsSchema, type MarksBatch, type MarksGridBody } from "@edulink/contracts";
 import { Button, Card, Empty, Failed, Field, Loading, Row, Screen, Text } from "@/components";
 import { api } from "@/lib/api";
 import { unwrap } from "@/lib/query";
 import { useLocale, useT } from "@/lib/i18n";
 import { useTheme } from "@/lib/theme";
-import { queueMark } from "@/lib/outbox";
+import { onQueueEvent, queueMark } from "@/lib/outbox";
 import { OutboxBadge, dayLabel, throwIfRefused, useOutboxRunner, writeOrQueue } from "./support";
 
 /**
@@ -17,11 +17,55 @@ import { OutboxBadge, dayLabel, throwIfRefused, useOutboxRunner, writeOrQueue } 
  * a mark per pupil, save the sheet. One POST /api/v1/marks with the whole
  * sheet — replay-safe, so it goes to the outbox when the network is not there.
  * The sheet names the version it was typed on (`basedOn`: the grid's, or the
- * last save's answer), so a pupil's mark written since by anyone is kept by
- * the server rather than replaced (TA-010, TA-012); a sent sheet removes the
- * older one waiting in the outbox under the same paper (writeOrQueue).
+ * last save's answer, live or replayed by the outbox, while the boxes show what
+ * that save left), so a pupil's mark written since by anyone is kept by the
+ * server rather than replaced (TA-010, TA-012); a sent sheet removes the older
+ * one waiting in the outbox under the same paper (writeOrQueue).
  */
 const KIND_KEY = { UNIT_TEST: "exams.kindUnitTest", MID_TERM: "exams.kindMidTerm", FINAL: "exams.kindFinal" } as const;
+
+type Held = { tag: string; version: string } | null;
+type Sheet = NonNullable<MarksGridBody["grid"]>;
+
+/** The later of the version held for a paper and an answer's: a replay can be answered while a live save's answer is still on its way. */
+function later(held: Held, tag: string, version: string): Held {
+  return held?.tag === tag && Date.parse(held.version) >= Date.parse(version) ? held : { tag, version };
+}
+
+/** A box's text as the sheet sends it (submit): blank is no mark. */
+function markOf(raw: string): number | null {
+  const text = raw.trim();
+  return text === "" ? null : Number(text);
+}
+
+/** The sheet a save or a queued row sent, or null when it cannot be read as one. */
+function sheetOf(body: unknown): MarksBatch | null {
+  try {
+    const parsed = marksBatchSchema.safeParse(typeof body === "string" ? JSON.parse(body) : body);
+    return parsed.success ? parsed.data : null;
+  } catch {
+    return null;
+  }
+}
+
+/**
+ * Whether the boxes show what a save or a replay of `sent` left on the server: every box drawn from the cached grid
+ * holds what the sheet sent for that pupil (a typed box is the teacher's own, whatever it holds). Only then may the
+ * screen hold that answer's version (CI's R2, second reading): a box drawn from a grid read before the answer, sent
+ * under the newer version, would put its older mark over what the save or the replay wrote.
+ */
+function boxesShow(sent: MarksBatch, entries: Record<string, string>, sheet: Sheet | null): boolean {
+  if (!sheet) return false;
+  const marks = new Map(sent.entries.map((e) => [e.membershipId, e.marks]));
+  return sheet.pupils.every((p) => entries[p.membershipId] !== undefined || (marks.has(p.membershipId) && marks.get(p.membershipId) === p.marks));
+}
+
+/** The typed boxes kept when an answer says marks stood: those holding what `sent` sent go, so the server's show; those typed since stay. */
+function typedSince(entries: Record<string, string>, sent: MarksBatch | null): Record<string, string> {
+  if (!sent) return {};
+  const marks = new Map(sent.entries.map((e) => [e.membershipId, e.marks]));
+  return Object.fromEntries(Object.entries(entries).filter(([id, raw]) => !marks.has(id) || markOf(raw) !== marks.get(id)));
+}
 
 export function MarksGrid() {
   // Marks and report cards are a child's private record: no screenshots, no screen recording, while this screen is up.
@@ -37,8 +81,15 @@ export function MarksGrid() {
   const [entries, setEntries] = useState<Record<string, string>>({});
   const [formError, setFormError] = useState<string | null>(null);
   const [note, setNote] = useState<string | null>(null);
-  // The version the last save of this paper answered with, newer than the grid's until the grid is read again.
-  const [savedVersion, setSavedVersion] = useState<{ tag: string; version: string } | null>(null);
+  // The version the last save of this paper answered with, live or replayed, newer than the grid's until the grid is read
+  // again; held only while the boxes show what that save left (boxesShow), and let go when they fall back to the grid.
+  const [savedVersion, setSavedVersion] = useState<Held>(null);
+  // The boxes and the grid as they stand now, for an answer that lands after the render that sent the sheet.
+  const entriesRef = useRef(entries);
+  const sheetRef = useRef<Sheet | null>(null);
+  useEffect(() => {
+    entriesRef.current = entries;
+  });
   useOutboxRunner();
 
   const exams = useQuery({
@@ -59,19 +110,66 @@ export function MarksGrid() {
       const parsed = result.ok ? marksSavedSchema.safeParse(result.data) : null;
       return { outcome, answer: parsed !== null && parsed.success ? parsed.data : null };
     },
-    onSuccess: ({ outcome, answer }) => {
-      if (answer?.version) setSavedVersion({ tag, version: answer.version });
+    onSuccess: ({ outcome, answer }, body) => {
+      const sent = sheetOf(body);
+      const version = answer?.version;
       const kept = answer?.skipped ?? 0;
-      // Marks someone wrote after this sheet was read stood: the typed ones over them go, so the boxes show what is saved.
-      if (kept > 0) setEntries({});
+      if (kept > 0) {
+        // Marks someone wrote after this sheet was read stood: the typed boxes that went out go, so the boxes show what
+        // is saved once the grid is read again, and those typed while the save was out stay. The version goes with
+        // them: the boxes fall back to the grid read before this save, and a save made before the read lands must be
+        // based on that read, or it puts the older marks over this save's and the colleague's (D3 of the second reading).
+        setEntries((prev) => typedSince(prev, sent));
+        setSavedVersion(null);
+      } else if (version && sent && boxesShow(sent, entriesRef.current, sheetRef.current)) {
+        setSavedVersion((held) => later(held, tag, version));
+      }
       setNote(outcome.kind !== "sent" ? t("common.queuedOffline") : kept > 0 ? t("exams.savedSomeKept", { count: kept }) : t("exams.savedNote"));
       void qc.invalidateQueries({ queryKey: ["staff", "exams", "grid", classId, slotId] });
       void qc.invalidateQueries({ queryKey: ["staff", "today"] });
     },
   });
 
+  // A sheet the outbox replays is answered as a live save is, and the answer is taken the same way (CI's triage of
+  // 15 November 2026, R2: the phone e2e's offline.spec.ts at :94 and :134 since 45fd5d3f). Dropped, the screen kept the
+  // version it read before the replay, so the teacher's next save of the paper named an older basedOn and the server
+  // kept the teacher's own replayed marks as somebody else's ("Marks saved, except 1 that someone changed").
+  useEffect(
+    () =>
+      onQueueEvent((event) => {
+        if (event.type !== "sent" || !event.item.tag.startsWith("marks:")) return;
+        // Whatever paper is on screen: the grids cached were read before the replay.
+        void qc.invalidateQueries({ queryKey: ["staff", "exams", "grid"] });
+        void qc.invalidateQueries({ queryKey: ["staff", "today"] });
+        // A sheet the teacher's own live save superseded while it was out is older news than that save: what it found
+        // written since is the teacher's, not somebody else's, and its version is not this screen's to hold (B3).
+        if (event.superseded || event.item.tag !== tag) return;
+        const answer = marksSavedSchema.safeParse(event.data);
+        const sent = sheetOf(event.item.body);
+        if (!answer.success || !sent) return;
+        const kept = answer.data.skipped ?? 0;
+        const version = answer.data.version;
+        if (kept === 0) {
+          // Held only while the boxes show what the replay wrote: after a paper was picked again, or a read that came
+          // before the replay, a box drawn from the grid would go out under the newer version over the replayed mark (B1).
+          if (version && boxesShow(sent, entriesRef.current, sheetRef.current)) setSavedVersion((held) => later(held, tag, version));
+          return;
+        }
+        // Marks someone wrote before the replay landed stood: the typed boxes that went out with it go, so that theirs
+        // show once the grid invalidated above is read again, and those typed since stay, unsaved (B2). The version goes
+        // with them, as after a live save that kept marks, so a save made before that read lands still keeps them.
+        setEntries((prev) => typedSince(prev, sent));
+        setSavedVersion(null);
+        setNote(t("exams.savedSomeKept", { count: kept }));
+      }),
+    [qc, tag, t],
+  );
+
   const klass = exams.data?.classes.find((c) => c.id === classId) ?? null;
   const sheet = grid.data?.grid ?? null;
+  useEffect(() => {
+    sheetRef.current = sheet;
+  });
   const valueFor = (membershipId: string, server: number | null) => entries[membershipId] ?? (server === null ? "" : String(server));
 
   /** The later of the grid's version and the last save's answer: what this sheet was typed on. */
@@ -110,7 +208,9 @@ export function MarksGrid() {
   const pick = (nextClass: string | null, nextSlot: string | null) => {
     setClassId(nextClass);
     setSlotId(nextSlot);
+    // The boxes fall back to the grid as cached: a version held for what they showed goes with them (B1).
     setEntries({});
+    setSavedVersion(null);
     setNote(null);
     setFormError(null);
   };
