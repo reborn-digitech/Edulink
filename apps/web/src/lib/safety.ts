@@ -3,6 +3,7 @@ import { db } from "./db";
 import { readJson } from "./json";
 import { notify } from "./notify";
 import { audit } from "./audit";
+import { KEPT_SETTINGS_KEY } from "./modules";
 import { AccessError } from "./tenancy";
 import type { ActiveContext } from "./session";
 import { URGENT_REASONS, type AuditEntry, type ReportGroup, type ReportTarget } from "./safety-labels";
@@ -353,8 +354,18 @@ export async function listAudit(
     actorName: row.actorUserId ? (nameById.get(row.actorUserId) ?? "Removed user") : "System",
     targetType: row.targetType,
     targetId: row.targetId,
-    meta: readJson<Record<string, unknown>>(row.meta, {}),
+    meta: shownMeta(row.action, readJson<Record<string, unknown>>(row.meta, {})),
     ip: row.ip,
     at: row.createdAt,
   }));
+}
+
+/**
+ * A row's meta as the trail shows it (the web's audit table prints each value as JSON, and GET /api/v1/admin/safety
+ * hands the phone the same): all of it, but for the settings a switch-off keeps for the switch back on (modules.ts),
+ * which are the module's own state and not a record of who did what.
+ */
+function shownMeta(action: string, meta: Record<string, unknown>): Record<string, unknown> {
+  if (action !== "school.module.off") return meta;
+  return Object.fromEntries(Object.entries(meta).filter(([key]) => key !== KEPT_SETTINGS_KEY));
 }

@@ -3,6 +3,7 @@ import { cache } from "react";
 import { defaultModulesForKind, isCollegeKind, modulesForKind, presetUnion, SCHOOL_MODULES, STREAMS, type InstitutionKind, type SchoolModuleCode } from "@edulink/contracts";
 import { db } from "./db";
 import { audit } from "./audit";
+import { readJson } from "./json";
 import { AccessError, ModuleOffError, NotACollegeError } from "./access-error";
 import type { TranslationKey } from "./i18n/dictionary";
 import type { ActiveContext } from "./session";
@@ -144,7 +145,11 @@ export function isOperatorsModule(module: SchoolModuleCode): boolean {
  * as every settings door is. Idempotent: switching on what is on, or off
  * what is off, changes nothing and writes no audit row. Switching off keeps
  * everything the module recorded — it only hides it — so switching back on
- * finds it as it was; and it takes away nobody's membership: a driver whose
+ * finds it as it was, its settings too (15 Nov 2026): the switch-off's audit
+ * row keeps the settings the module's row held, and the switch back on takes
+ * them from it (switchOff below), so a module left off for longer than the
+ * audit log is kept (RETENTION_AUDIT_DAYS, two years by default) comes back
+ * with its defaults. And it takes away nobody's membership: a driver whose
  * school switches transport off still belongs to the school, and their home
  * says the module is off.
  */
@@ -171,21 +176,64 @@ export async function switchModuleFor(schoolId: string, actorUserId: string, mod
   if (on && !modulesForKind(kind).includes(module)) throw new AccessError("modules.refuseNotForKind");
   // A college cannot run without its academics (the academics builder, 4 Oct 2026): ACADEMICS stays on.
   if (!on && isAlwaysOn(module, kind)) throw new AccessError("academics.refuseAlwaysOn");
-  if (on) {
-    const existing = await db.schoolModule.findUnique({ where: { schoolId_module: { schoolId, module } }, select: { id: true } });
-    if (existing) return { changed: false };
-    try {
-      await db.schoolModule.create({ data: { schoolId, module, enabledByUserId: ctx.user.id } });
-    } catch {
-      // Two presses at once: the other one switched it on.
-      return { changed: false };
-    }
-  } else {
-    const gone = await db.schoolModule.deleteMany({ where: { schoolId, module } });
-    if (gone.count === 0) return { changed: false };
+  if (!on) return switchOff(schoolId, ctx.user.id, module, opts);
+  const existing = await db.schoolModule.findUnique({ where: { schoolId_module: { schoolId, module } }, select: { id: true } });
+  if (existing) return { changed: false };
+  // Back with the settings it had when it was last switched off, or none.
+  const settingsJson = await settingsAtLastSwitchOff(schoolId, module);
+  try {
+    await db.schoolModule.create({ data: { schoolId, module, enabledByUserId: ctx.user.id, settingsJson } });
+  } catch {
+    // Two presses at once: the other one switched it on.
+    return { changed: false };
   }
-  await audit({ schoolId, actorUserId: ctx.user.id, action: on ? "school.module.on" : "school.module.off", targetType: "School", targetId: schoolId, meta: opts.byOperator ? { module, byOperator: true } : { module } });
+  await audit({ schoolId, actorUserId: ctx.user.id, action: "school.module.on", targetType: "School", targetId: schoolId, meta: opts.byOperator ? { module, byOperator: true } : { module } });
   return { changed: true };
+}
+
+/** The key under which a switch-off's audit row keeps the module's settings; the safety centre's trail leaves it out (safety.ts). */
+export const KEPT_SETTINGS_KEY = "settingsJson";
+
+/**
+ * A switch-off. THE ROW IT DELETES HOLDS THE MODULE'S SETTINGS (SchoolModule.settingsJson), so they leave with it on
+ * the switch-off's own audit row, as the column held them and in the same transaction as the delete, for the switch
+ * back on to find (settingsAtLastSwitchOff); a module with no settings writes that row as it always did. A lost
+ * audit row would be lost settings, so a write audit() swallowed (it answers null) undoes the switch-off: the module
+ * stays on with its settings and the caller is told it failed. The delete hands back the row it took in the one
+ * statement, so a save of the settings at the same moment cannot fall between a read and the delete.
+ */
+async function switchOff(schoolId: string, actorUserId: string, module: SchoolModuleCode, opts: { byOperator?: boolean }): Promise<{ changed: boolean }> {
+  return db.$tenantTransaction(async (raw) => {
+    const tx = raw as typeof db;
+    const [gone] = await tx.$queryRaw<{ settingsJson: string | null }[]>`
+      DELETE FROM "SchoolModule" WHERE "schoolId" = ${schoolId} AND "module" = ${module} RETURNING "settingsJson"
+    `;
+    if (!gone) return { changed: false };
+    const meta = { module, ...(opts.byOperator ? { byOperator: true } : {}), ...(gone.settingsJson === null ? {} : { [KEPT_SETTINGS_KEY]: gone.settingsJson }) };
+    const written = await audit({ schoolId, actorUserId, action: "school.module.off", targetType: "School", targetId: schoolId, meta }, tx);
+    if (!written) throw new Error("The switch-off's audit row, which keeps the module's settings, was not written");
+    return { changed: true };
+  });
+}
+
+/**
+ * The settings this school's module had when it was last switched off, as the column held them (switchOff keeps
+ * them on that school.module.off row); null when it had none, or when that row is gone: a switch-off before
+ * 15 November 2026, or one longer ago than the audit log is kept. This school's rows only, whatever the binding
+ * could read. Each module's reader checks what it reads (transport takes only true, the alumni feed only a known
+ * mode, placement only numbers and a boolean), so a restored value is held to the same rules as a stored one.
+ */
+async function settingsAtLastSwitchOff(schoolId: string, module: SchoolModuleCode): Promise<string | null> {
+  const row = await db.auditLog.findFirst({
+    // writeJson spells the meta {"module":"…",…}; the kept settings are a JSON string inside it, their quotes
+    // escaped, so they cannot spell a module's name here.
+    where: { schoolId, action: "school.module.off", meta: { contains: `"module":"${module}"` } },
+    orderBy: [{ createdAt: "desc" }, { id: "desc" }],
+    select: { meta: true },
+  });
+  const meta = readJson<Record<string, unknown>>(row?.meta, {});
+  const kept = meta[KEPT_SETTINGS_KEY];
+  return meta.module === module && typeof kept === "string" ? kept : null;
 }
 
 /**
