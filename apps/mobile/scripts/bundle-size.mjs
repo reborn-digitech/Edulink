@@ -2,7 +2,7 @@
 /**
  * The bundle-size gate.
  *
- *   node scripts/bundle-size.mjs            export both platforms, measure, gate
+ *   node scripts/bundle-size.mjs            export both platforms, measure, check (bundle-verify.cjs), gate
  *   node scripts/bundle-size.mjs --json     also write bundle-size.json for the trend
  *
  * The plan's target was a JavaScript bundle under 4 MB for the first
@@ -64,12 +64,32 @@
  * draws (−88 KB); and the 24 contracts files the phone imports no value from
  * left out where the index re-exports them (scripts/contracts-subset.cjs;
  * −96 KB). 5.92 MB Android, 5.76 MB iOS (1.59 and 1.56 MB gzipped).
+ *
+ * On 14 Nov 2026 the gate failed in CI at 6.01 MB Android, 5.85 and 5.86 MB
+ * iOS (4566baf1 and f6922ac2; ee1a3cf5 had read 6 MB, on the ceiling, that
+ * morning): a day of the testing analysis's fixes had added 72 KB to the
+ * 5.94 MB of 47f1ede1, spread over the screens, the dictionaries and the
+ * contracts, with no new dependency. Three cuts, nothing a screen shows
+ * lost: the contracts package with plain exports in place of Expo's
+ * live-binding getters (scripts/contracts-exports.cjs; −178 KB); the
+ * dictionaries' key names as one string and each language's sentences as
+ * one (scripts/i18n-subset.cjs; −63 KB); and a key the source builds as
+ * `duties.${duty}.name` read as the keys that end so, not every key under
+ * duties., which left out 293 keys of the web's pages (−30 KB). 5.75 MB
+ * Android, 5.59 MB iOS (1.58 and 1.55 MB gzipped). Since then the gate also
+ * runs scripts/bundle-verify.cjs on its own export, both platforms: the
+ * contracts index runs and every value the phone imports from it is defined,
+ * no contracts module exports through a getter, and each language holds its
+ * share in its own words; a problem there fails the gate as the ceiling does.
  */
 import { execSync } from "node:child_process";
 import { mkdtempSync, readdirSync, readFileSync, rmSync, statSync, writeFileSync } from "node:fs";
+import { createRequire } from "node:module";
 import { gzipSync } from "node:zlib";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
+
+const { describe, expectations, verifyBundle } = createRequire(import.meta.url)("./bundle-verify.cjs");
 
 const TARGET_MB = 4.5;
 const CEILING_MB = 6;
@@ -93,6 +113,17 @@ try {
   for (const r of rows) console.log(`${r.platform.padEnd(8)} ${r.kind.padEnd(7)} ${String(r.mb).padStart(5)} MB  (${r.gzipMb} MB gzipped)`);
   console.log(`largest JS bundle ${worst} MB · target ${TARGET_MB} MB · ceiling ${CEILING_MB} MB`);
   if (process.argv.includes("--json")) writeFileSync("bundle-size.json", JSON.stringify({ at: new Date().toISOString(), commit: process.env.GITHUB_SHA ?? null, targetMb: TARGET_MB, ceilingMb: CEILING_MB, bundles: rows }, null, 2) + "\n");
+  // What the cuts change in how things are bundled, checked in this same export (scripts/bundle-verify.cjs).
+  const expected = expectations();
+  for (const platform of ["ios", "android"]) {
+    const dir = join(out, "_expo", "static", "js", platform);
+    for (const file of readdirSync(dir).filter((f) => f.endsWith(".js"))) {
+      const { ok, problems, facts } = verifyBundle(readFileSync(join(dir, file), "utf8"), expected);
+      console.log(`${platform.padEnd(8)} checked ${ok ? describe(facts) : "FAILED"}`);
+      for (const problem of problems) console.error(`bundle-size: ${platform}: ${problem}`);
+      if (!ok) process.exitCode = 1;
+    }
+  }
   if (worst > CEILING_MB) {
     console.error(`bundle-size: ${worst} MB is over the ${CEILING_MB} MB ceiling`);
     process.exit(1);

@@ -1,4 +1,4 @@
-// Metro for the EduLink app: Expo's defaults, with five changes.
+// Metro for the EduLink app: Expo's defaults, with six changes.
 //
 // 1. The minifier writes Devanagari as itself.
 //
@@ -101,5 +101,27 @@ if (config.transformer.babelTransformerPath !== iconWeights.UPSTREAM) {
   throw new Error(`metro.config.js: Expo's Babel transformer is ${config.transformer.babelTransformerPath}, not the ${iconWeights.UPSTREAM} scripts/icon-weights.cjs hands files on to`);
 }
 config.transformer.babelTransformerPath = require.resolve("./scripts/icon-weights.cjs");
+
+// 4. The contracts package is bundled with plain exports.
+//
+// Expo turns each export into a getter and each use of an import into a read
+// on the module ("live bindings"), so that an import cycle reads a value when
+// it is used; the contracts package, schemas that import zod, @edulink/i18n
+// and each other with no cycle, carried 2,275 such getters, 200 KB of the
+// bundle (15 Nov 2026). scripts/contracts-exports.cjs is Expo's own transform
+// worker with live bindings off for that package's files alone; every other
+// file is transformed as before. Expo offers the switch for a whole bundle
+// (customTransformOptions.liveBindings); setting it file by file is this
+// repository's own use of it. It applies to every bundle, the development
+// server's too, as the icons' weights do. Expo leaves a custom worker out of
+// the transformer's cache key, so a hash of its text goes into
+// config.transformer, whose settings the key reads.
+const contractsExports = require("./scripts/contracts-exports.cjs");
+
+if (config.transformerPath !== contractsExports.UPSTREAM) {
+  throw new Error(`metro.config.js: Expo's transform worker is ${config.transformerPath}, not the ${contractsExports.UPSTREAM} scripts/contracts-exports.cjs hands files on to`);
+}
+config.transformerPath = require.resolve("./scripts/contracts-exports.cjs");
+config.transformer.edulinkContractsExports = contractsExports.CACHE_KEY;
 
 module.exports = config;

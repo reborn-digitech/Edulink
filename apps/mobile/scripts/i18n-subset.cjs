@@ -13,7 +13,10 @@
  *   1. every string in the phone's own source that is a key of the dictionary
  *      (a t("…") call, a map of keys, a menu entry);
  *   2. every key under a prefix the source builds at run time
- *      (t(`role.${x}`) takes all of role.*);
+ *      (t(`role.${x}`) takes all of role.*), and where the template closes
+ *      the key after its hole, only the keys that end so too
+ *      (t(`duties.${duty}.name`) takes duties.lab.name, not duties.lab.colItem;
+ *      AROUND, 15 Nov 2026);
  *   3. the same two, in the workspace packages the phone bundles;
  *   4. the keys the SERVER sends for the phone to translate: a badge's label,
  *      a setup step's title, the reason a row of a sheet was refused, the
@@ -44,6 +47,13 @@
  * file, /i18n/<locale>.<hash>.json, and is kept on the phone
  * (src/lib/i18n-words.ts); offline with nothing kept, a sentence the first
  * screens do not hold is shown in English, never as its key.
+ *
+ * WRITTEN COMPACTLY (15 Nov 2026): the names of the keys once, as one string
+ * (treeOf), and each language as one string of its sentences split at run
+ * time (sentencesSource); inflate fills the tree when the app starts. 63 KB
+ * of the bundle lighter than an object of positions and arrays of strings,
+ * the keys the same, with the same tree at the end, which
+ * test/lib/i18n-subset.test.ts checks by running the files as written.
  *
  * Plain CommonJS with no TypeScript tooling, because metro.config.js loads it:
  * the dictionary files are object literals and are read as such.
@@ -90,6 +100,31 @@ function sources(dir, skip = () => false) {
 const LITERAL = /["'`]([A-Za-z]\w*(?:\.\w+)+)["'`]/g;
 /** `role.${x}`, `filings.board${b}`, "staff.aq" + code: everything under what is written before the hole. */
 const BUILT = [/`([A-Za-z]\w*(?:\.\w+)*\.\w*)\$\{/g, /["']([A-Za-z]\w*(?:\.\w+)*\.\w*)["']\s*\+/g];
+/**
+ * `duties.${duty}.name`: one hole with whole segments after it that close the
+ * template. Only the keys written so on both sides of the hole are taken, not
+ * everything under what comes before it: read open, `duties.${duty}.name`
+ * brought in 248 keys of the web's pages under duties. that no file of the
+ * phone names, and `streams.${code}.name` 45 under streams. (15 Nov 2026).
+ */
+const AROUND = /`([A-Za-z]\w*(?:\.\w+)*\.\w*)\$\{[^{}`]*\}((?:\.\w+)+)`/g;
+
+/** The keys a file builds at run time, each as [what is written before the hole, what after it]; after it is "" where the source does not close the key. */
+function builtIn(text) {
+  const out = [];
+  const around = new Set();
+  for (const m of text.matchAll(AROUND)) {
+    out.push([m[1], m[2]]);
+    around.add(m.index);
+  }
+  for (const pattern of BUILT) for (const m of text.matchAll(pattern)) if (!around.has(m.index)) out.push([m[1], ""]);
+  return out;
+}
+
+/** Whether a key is one a [before, after] of builtIn can make: everything under `before`, or, with `after`, the keys that also end so with something in the hole. */
+function fits(key, [before, after]) {
+  return key.startsWith(before) && (after === "" || (key.endsWith(after) && key.length > before.length + after.length));
+}
 /** t(step.titleKey as TranslationKey): a key that came in an answer, its type a plain string until the screen says otherwise. */
 const SENT = /\bt\(\s*[\w.[\]!?]*\.(\w*Key)\s+as\s+(?:TranslationKey|never|any)\b/g;
 
@@ -137,14 +172,14 @@ function sentSites() {
 function usedKeys() {
   const all = flatten(readDictionary("en"));
   const used = new Set();
-  const prefixes = new Set();
+  const built = new Map();
   const literals = (text) => {
     for (const m of text.matchAll(LITERAL)) if (all.has(m[1])) used.add(m[1]);
   };
   const own = (file) => {
     const text = fs.readFileSync(file, "utf8");
     literals(text);
-    for (const pattern of BUILT) for (const m of text.matchAll(pattern)) prefixes.add(m[1]);
+    for (const pair of builtIn(text)) built.set(pair.join("${…}"), pair);
   };
   for (const file of sources(path.join(__dirname, "..", "src"))) own(file);
   for (const file of sources(path.join(ROOT, "packages", "contracts", "src"))) own(file);
@@ -156,8 +191,10 @@ function usedKeys() {
     if (!fs.existsSync(file)) throw new Error(`i18n-subset: apps/web/src/${name} is missing, and the keys it sends the phone would be left out of the phone's dictionaries`);
     literals(fs.readFileSync(file, "utf8"));
   }
-  for (const prefix of prefixes) for (const key of all.keys()) if (key.startsWith(prefix)) used.add(key);
-  return { used, prefixes, server, all };
+  for (const pair of built.values()) for (const key of all.keys()) if (fits(key, pair)) used.add(key);
+  const prefixes = new Set([...built.values()].filter(([, after]) => after === "").map(([before]) => before));
+  const around = new Set([...built.keys()].filter((name) => !name.endsWith("${…}")));
+  return { used, prefixes, around, server, all };
 }
 
 /**
@@ -169,21 +206,28 @@ function usedKeys() {
  */
 const BOOT_SOURCES = ["src/app/_layout.tsx", "src/app/(auth)", "src/app/(app)/_layout.tsx", "src/screens/auth", "src/screens/shared/update-required.tsx", "src/components", "src/lib"];
 
-/** The keys of the first screens, a share of `used`: what Hindi and Marathi bundle. */
+/**
+ * The keys of the first screens, a share of `used`: what Hindi and Marathi
+ * bundle. A key a first screen builds at run time takes every key under what
+ * is written before the hole, as it did before AROUND: a shared component's
+ * `streams.${code}.name` so brings in the college tiles' words, which other
+ * screens show, and reading it closed would move them from the bundle to the
+ * first fetch for a Hindi or Marathi reader, a change AROUND is not for.
+ */
 function bootKeys(used) {
   const app = path.join(__dirname, "..");
   const boot = new Set();
-  const prefixes = new Set();
+  const before = new Set();
   for (const source of BOOT_SOURCES) {
     const full = path.join(app, ...source.split("/"));
     if (!fs.existsSync(full)) throw new Error(`i18n-subset: ${source} is missing from BOOT_SOURCES' places, and the first screens' Hindi and Marathi would be left out`);
     for (const file of fs.statSync(full).isDirectory() ? sources(full) : [full]) {
       const text = fs.readFileSync(file, "utf8");
       for (const m of text.matchAll(LITERAL)) if (used.has(m[1])) boot.add(m[1]);
-      for (const pattern of BUILT) for (const m of text.matchAll(pattern)) prefixes.add(m[1]);
+      for (const [prefix] of builtIn(text)) before.add(prefix);
     }
   }
-  for (const prefix of prefixes) for (const key of used) if (key.startsWith(prefix)) boot.add(key);
+  for (const prefix of before) for (const key of used) if (key.startsWith(prefix)) boot.add(key);
   return boot;
 }
 
@@ -204,20 +248,38 @@ function subsetOf(locale, used) {
 
 /**
  * The names of the keys are the same in every language, and written out three
- * times they were 62 KB each. They are written once, as a tree whose leaves are
- * positions, and each language is the list of its sentences in that order; the
- * tree is filled from the list when the app starts. A sentence a language lacks
- * is the empty string, which the fold over English already reads as a gap.
+ * times they were 62 KB each. They are written once, and each language is the
+ * list of its sentences in the same order; the tree is filled from the two
+ * when the app starts. A sentence a language lacks is the empty string, which
+ * the fold over English already reads as a gap.
+ *
+ * The names are one string, `academics(aboveLine,absentShort),admissions(…)`:
+ * a name followed by brackets holds the names inside them, any other name is a
+ * key, and the keys' sentences come in the order the keys are written. As an
+ * object literal whose leaves were their positions (`aboveLine:0`) the names
+ * of 8,868 keys were 158 KB of the bundle; as this, 116 KB (15 Nov 2026).
+ * Every segment of every key is a word (letters, digits, underscore), so a
+ * bracket or a comma cannot be part of a name; a key that broke that would
+ * stop the release here rather than be bundled wrong.
  */
-function shapeOf(keys) {
-  const out = {};
-  keys.forEach((key, at) => {
+function treeOf(keys) {
+  const root = new Map();
+  for (const key of keys) {
     const parts = key.split(".");
-    let node = out;
-    for (const part of parts.slice(0, -1)) node = node[part] ??= {};
-    node[parts[parts.length - 1]] = at;
-  });
-  return out;
+    if (!parts.every((part) => /^\w+$/.test(part))) throw new Error(`i18n-subset: the key ${key} has a segment that is not a word, which the names' string cannot hold`);
+    let node = root;
+    for (const part of parts.slice(0, -1)) {
+      if (!node.has(part)) node.set(part, new Map());
+      node = node.get(part);
+      if (!(node instanceof Map)) throw new Error(`i18n-subset: ${key} is under a name that is also a key`);
+    }
+    const last = parts[parts.length - 1];
+    if (node.get(last) instanceof Map) throw new Error(`i18n-subset: ${key} is also a name that holds keys`);
+    node.set(last, null);
+  }
+  const order = [];
+  const write = (node, above) => [...node].map(([name, inner]) => (inner ? `${name}(${write(inner, `${above}${name}.`)})` : (order.push(`${above}${name}`), name))).join(",");
+  return { tree: write(root, ""), order };
 }
 
 function sentencesOf(locale, keys) {
@@ -225,12 +287,45 @@ function sentencesOf(locale, keys) {
   return keys.map((key) => whole.get(key) ?? "");
 }
 
-/** Written into the bundle as it stands here, so that what the tests fill a tree with is what the phone does. */
-function inflate(shape, sentences) {
+/** Characters a sentence may be split on, the first that no sentence of the list holds; none needs escaping in a string. */
+const SEPARATORS = ["|", "~", "^", "`", "@"];
+
+/**
+ * A language's sentences as the bundle writes them: one string and the split
+ * that makes it the list again, two bytes a sentence lighter than an array of
+ * strings (17 KB of English, 15 Nov 2026).
+ */
+function sentencesSource(sentences) {
+  const separator = SEPARATORS.find((c) => sentences.every((sentence) => !sentence.includes(c)));
+  if (separator === undefined) return JSON.stringify(sentences);
+  return `${JSON.stringify(sentences.join(separator))}.split(${JSON.stringify(separator)})`;
+}
+
+/**
+ * Written into the bundle as it stands here, so that what the tests fill a
+ * tree with is what the phone does. It runs at every start, so it reads the
+ * names' string with one native split at each bracket and comma, which keeps
+ * the marks: the parts come as a name and the mark after it, pair by pair. A
+ * loop over each character took twice as long as the object literal it
+ * replaced; this is level with it (one cold call under node --jitless, the
+ * nearest stand-in for Hermes here, 15 Nov 2026).
+ */
+function inflate(tree, sentences) {
   const out = {};
-  for (const name in shape) {
-    const at = shape[name];
-    out[name] = typeof at === "number" ? sentences[at] : inflate(at, sentences);
+  const above = [];
+  let node = out;
+  let at = 0;
+  const parts = tree.split(/([(),])/);
+  for (let i = 0; i < parts.length; i += 2) {
+    const name = parts[i];
+    const mark = parts[i + 1];
+    if (mark === "(") {
+      above.push(node);
+      node = node[name] = {};
+    } else {
+      if (name) node[name] = sentences[at++];
+      if (mark === ")") node = above.pop();
+    }
   }
   return out;
 }
@@ -242,15 +337,15 @@ function inflate(shape, sentences) {
  * two fetched (src/lib/i18n-words.ts).
  */
 function subsetFiles(used, boot = bootKeys(used)) {
-  const keys = [...used].sort();
-  const first = [...boot].filter((key) => used.has(key)).sort();
+  const all = treeOf([...used].sort());
+  const first = treeOf([...boot].filter((key) => used.has(key)).sort());
   const files = {
-    "shape.js": `// Generated by scripts/i18n-subset.cjs when a release is bundled: the names of the keys the phone can ask for. Not kept in git.\nexport const shape = ${JSON.stringify(shapeOf(keys))};\nexport ${inflate.toString()}\n`,
-    "boot.js": `// Generated by scripts/i18n-subset.cjs when a release is bundled: the names of the first screens' keys, which Hindi and Marathi bundle. Not kept in git.\nexport const boot = ${JSON.stringify(shapeOf(first))};\n`,
-    "en.js": `// Generated by scripts/i18n-subset.cjs when a release is bundled: the phone's share of packages/i18n/src/en.ts. Not kept in git.\nimport { inflate, shape } from "./shape";\nexport const en = inflate(shape, ${JSON.stringify(sentencesOf("en", keys))});\n`,
+    "shape.js": `// Generated by scripts/i18n-subset.cjs when a release is bundled: the names of the keys the phone can ask for. Not kept in git.\nexport const shape = ${JSON.stringify(all.tree)};\nexport ${inflate.toString()}\n`,
+    "boot.js": `// Generated by scripts/i18n-subset.cjs when a release is bundled: the names of the first screens' keys, which Hindi and Marathi bundle. Not kept in git.\nexport const boot = ${JSON.stringify(first.tree)};\n`,
+    "en.js": `// Generated by scripts/i18n-subset.cjs when a release is bundled: the phone's share of packages/i18n/src/en.ts. Not kept in git.\nimport { inflate, shape } from "./shape";\nexport const en = inflate(shape, ${sentencesSource(sentencesOf("en", all.order))});\n`,
   };
   for (const locale of LOCALES.filter((l) => l !== "en")) {
-    files[`${locale}.js`] = `// Generated by scripts/i18n-subset.cjs when a release is bundled: the first screens' share of packages/i18n/src/${locale}.ts; the rest is fetched on first use (src/lib/i18n-words.ts). Not kept in git.\nimport { inflate } from "./shape";\nimport { boot } from "./boot";\nexport const ${locale} = inflate(boot, ${JSON.stringify(sentencesOf(locale, first))});\n`;
+    files[`${locale}.js`] = `// Generated by scripts/i18n-subset.cjs when a release is bundled: the first screens' share of packages/i18n/src/${locale}.ts; the rest is fetched on first use (src/lib/i18n-words.ts). Not kept in git.\nimport { inflate } from "./shape";\nimport { boot } from "./boot";\nexport const ${locale} = inflate(boot, ${sentencesSource(sentencesOf(locale, first.order))});\n`;
   }
   return files;
 }
@@ -267,13 +362,13 @@ function writeSubset() {
   return Object.fromEntries(LOCALES.map((locale) => [locale, path.join(SUBSET_DIR, `${locale}.js`)]));
 }
 
-module.exports = { BOOT_SOURCES, LOCALES, SENT_BY_SERVER, SUBSET_DIR, bootKeys, flatten, inflate, readDictionary, sentencesOf, shapeOf, sentSites, subsetFiles, subsetOf, usedKeys, writeSubset };
+module.exports = { BOOT_SOURCES, LOCALES, SENT_BY_SERVER, SEPARATORS, SUBSET_DIR, bootKeys, builtIn, fits, flatten, inflate, readDictionary, sentencesOf, sentencesSource, sentSites, subsetFiles, subsetOf, treeOf, usedKeys, writeSubset };
 
 if (require.main === module) {
-  const { used, all, prefixes, server } = usedKeys();
+  const { used, all, prefixes, around, server } = usedKeys();
   const kb = (text) => (Buffer.byteLength(text) / 1024).toFixed(0);
   const files = subsetFiles(used);
-  console.log(`the phone can ask for ${used.size} of ${all.size} keys (${prefixes.size} prefixes built at run time; ${server.size} of the server's files read for the keys it sends)`);
+  console.log(`the phone can ask for ${used.size} of ${all.size} keys (${prefixes.size} prefixes and ${around.size} keys closed after the hole built at run time; ${server.size} of the server's files read for the keys it sends)`);
   console.log(`the names of the keys, once: ${kb(files["shape.js"])} KB; the first screens' ${bootKeys(used).size} keys, which Hindi and Marathi bundle: ${kb(files["boot.js"])} KB`);
   for (const locale of LOCALES) console.log(`${locale}  ${kb(JSON.stringify(readDictionary(locale)))} KB whole  →  ${kb(files[`${locale}.js`])} KB bundled${locale === "en" ? "" : " (the rest fetched on first use)"}`);
   writeSubset();
