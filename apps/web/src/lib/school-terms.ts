@@ -564,7 +564,9 @@ export async function bulkTerms(session: ActiveContext, body: BulkBody, now: Dat
   const ids = [...new Set(body.schoolIds)];
   const schools = await db.school.findMany({ where: { id: { in: ids } }, select: TERMS_SELECT, orderBy: { name: "asc" } });
   if (schools.length !== ids.length || schools.some((s) => s.removedAt)) return refusal("root.bulkSchoolMissing");
-  const plans: { school: TermsRow; data: Prisma.SchoolUncheckedUpdateManyInput; action: "superuser.school.premium" | "superuser.school.terms"; meta: Record<string, unknown> }[] = [];
+  // `meta` is what the school's own log reads, as setSchoolTerms writes it there (decision 17; the review's B-2): the parts
+  // that moved and, only the first time, that its terms were set; `operator` adds what the platform's log reads besides.
+  const plans: { school: TermsRow; data: Prisma.SchoolUncheckedUpdateManyInput; action: "superuser.school.premium" | "superuser.school.terms"; meta: Record<string, unknown>; operator?: Record<string, unknown> }[] = [];
   for (const school of schools) {
     const college = isCollegeKind(school.kind);
     switch (body.action) {
@@ -581,13 +583,20 @@ export async function bulkTerms(session: ActiveContext, body: BulkBody, now: Dat
         break;
       }
       case "OUR_PRICES": {
-        const already = school.termsSetAt !== null && school.subscriptionPricePaise === null && school.subscriptionDiscountBps === null && school.premiumPricePaise === null && school.premiumDiscountBps === null;
-        if (!already) {
+        const moved: Record<string, unknown> = {};
+        const subscription = chipOf(school.subscriptionPricePaise, school.subscriptionDiscountBps);
+        const premium = chipOf(school.premiumPricePaise, school.premiumDiscountBps);
+        if (subscription.mode !== "OURS") moved.subscription = { before: subscription, after: { mode: "OURS" } };
+        if (premium.mode !== "OURS") moved.premium = { before: premium, after: { mode: "OURS" } };
+        const firstSet = school.termsSetAt === null;
+        // A school already on our prices with its terms set is left as it is and counted.
+        if (firstSet || Object.keys(moved).length > 0) {
           plans.push({
             school,
             data: { subscriptionPricePaise: null, subscriptionDiscountBps: null, premiumPricePaise: null, premiumDiscountBps: null, termsSetAt: now },
             action: "superuser.school.terms",
-            meta: { subscription: { before: chipOf(school.subscriptionPricePaise, school.subscriptionDiscountBps), after: { mode: "OURS" } }, premium: { before: chipOf(school.premiumPricePaise, school.premiumDiscountBps), after: { mode: "OURS" } }, termsSet: true },
+            meta: { ...moved, ...(firstSet ? { termsSet: true } : {}) },
+            operator: { termsSet: firstSet },
           });
         }
         break;
@@ -601,7 +610,7 @@ export async function bulkTerms(session: ActiveContext, body: BulkBody, now: Dat
   try {
     await db.$tenantTransaction(async (tx: unknown) => {
       const t = tx as typeof db;
-      for (const { school, data, action, meta } of plans) {
+      for (const { school, data, action, meta, operator } of plans) {
         const moved = await t.school.updateMany({
           where: {
             id: school.id,
@@ -617,8 +626,8 @@ export async function bulkTerms(session: ActiveContext, body: BulkBody, now: Dat
           data,
         });
         if (moved.count !== 1) throw new ChangedMeanwhile("root.termsChangedMeanwhile");
-        await audit({ schoolId: null, actorUserId: session.user.id, action, targetType: "School", targetId: school.id, meta: { schoolId: school.id, name: school.name, ...meta, bulk: body.action, reason } }, tx as AuditTx);
-        await audit({ schoolId: school.id, actorUserId: session.user.id, action, targetType: "School", targetId: school.id, meta: { ...meta, reason } }, tx as AuditTx);
+        await audit({ schoolId: null, actorUserId: session.user.id, action, targetType: "School", targetId: school.id, meta: { schoolId: school.id, name: school.name, ...meta, ...operator, bulk: body.action, reason } }, tx as AuditTx);
+        await audit({ schoolId: school.id, actorUserId: session.user.id, action, targetType: "School", targetId: school.id, meta: { ...meta, ...(reason ? { reason } : {}) } }, tx as AuditTx);
       }
     });
   } catch (error) {

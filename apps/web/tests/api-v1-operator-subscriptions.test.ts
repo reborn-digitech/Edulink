@@ -64,7 +64,7 @@ async function blockedOn(table: string): Promise<void> {
   throw new Error(`nothing waited on "${table}" within five seconds`);
 }
 
-const ids = { operator: "", teacher: "", follow: "", discount: "", ownPrice: "", notSet: "", college: "", paused: "", trial: "", due: "", receipted: "", again: "", clock: "", gone: "", zone: "", window: "", pStudents: "", pTeachers: "", pBoth: "", pNotSet: "", pCollege: "", race: "" };
+const ids = { operator: "", teacher: "", follow: "", discount: "", ownPrice: "", notSet: "", college: "", paused: "", trial: "", due: "", receipted: "", again: "", clock: "", gone: "", zone: "", window: "", pStudents: "", pTeachers: "", pBoth: "", pNotSet: "", pCollege: "", race: "", bulk: "" };
 const office: Record<string, string[]> = {};
 /** The suite's own schools: our offer's moves and notices are kept to them (updateOffer's scope), never the database's. */
 const scope = () => ({ schoolIds: Object.values(ids).filter((id, i) => i >= 2 && id) });
@@ -131,6 +131,8 @@ beforeAll(async () => {
   ids.pCollege = await school("PCollege", { ...set, kind: "COLLEGE", premiumStudents: true }, 900);
   // B-1 of the review of 21 November 2026: an unpaid trial whose renewal has passed, corrected while a payment is recorded.
   ids.race = await school("Race", { subscriptionStatus: "TRIAL", subscriptionStartsAt: at(day(-10)), subscriptionDueAt: at(day(-1)) });
+  // B-2: terms not set, every part ours, for the bulk "our prices" that sets them the first time.
+  ids.bulk = await school("Bulk", { subscriptionStatus: "ACTIVE", subscriptionStartsAt: at(day(-300)), subscriptionDueAt: at(day(65)) });
   ids.teacher = (await db.user.create({ data: { name: `${PREFIX} Teacher`, email: `zz-premium-teacher-${STAMP}@test.invalid` }, select: { id: true } })).id;
   await db.membership.create({ data: { userId: ids.teacher, schoolId: ids.follow, role: "TEACHER", status: "ACTIVE" } });
 });
@@ -367,10 +369,20 @@ describe("one change over many schools", () => {
     const ctx = await as("OPERATOR");
     const preview = await bulkTerms(ctx, { schoolIds: [ids.follow, ids.ownPrice], action: "STUDENTS_ON", preview: true });
     expect(preview).toMatchObject({ preview: true, changed: [{ schoolId: ids.ownPrice }], unchanged: 1 });
-    const ours = await bulkTerms(ctx, { schoolIds: [ids.ownPrice, ids.discount], action: "OUR_PRICES", reason: "ZZ back on ours" });
+    const ours = await bulkTerms(ctx, { schoolIds: [ids.ownPrice, ids.discount, ids.bulk], action: "OUR_PRICES", reason: "ZZ back on ours" });
     expect(ours).toMatchObject({ preview: false, unchanged: 0 });
-    const rows = await db.school.findMany({ where: { id: { in: [ids.ownPrice, ids.discount] } }, select: { subscriptionPricePaise: true, subscriptionDiscountBps: true, termsSetAt: true } });
+    const rows = await db.school.findMany({ where: { id: { in: [ids.ownPrice, ids.discount, ids.bulk] } }, select: { subscriptionPricePaise: true, subscriptionDiscountBps: true, termsSetAt: true } });
     for (const row of rows) expect(row).toMatchObject({ subscriptionPricePaise: null, subscriptionDiscountBps: null, termsSetAt: expect.any(Date) });
+    // The school's own log reads what a terms save writes there (decision 17; the review's B-2): the parts that moved, that
+    // its terms were set only the first time, and the reason only when one was typed.
+    const schoolLog = async (action: string, id: string) =>
+      JSON.parse(String((await db.auditLog.findFirstOrThrow({ where: { action, schoolId: id }, orderBy: { createdAt: "desc" }, select: { meta: true } })).meta));
+    expect(await schoolLog("superuser.school.terms", ids.ownPrice)).toEqual({ subscription: { before: { mode: "OWN_PRICE", pricePaise: 12_000 }, after: { mode: "OURS" } }, reason: "ZZ back on ours" });
+    expect(await schoolLog("superuser.school.terms", ids.bulk)).toEqual({ termsSet: true, reason: "ZZ back on ours" });
+    expect(await bulkTerms(ctx, { schoolIds: [ids.bulk], action: "STUDENTS_ON" })).toMatchObject({ preview: false, changed: [{ schoolId: ids.bulk }] });
+    expect(await schoolLog("superuser.school.premium", ids.bulk)).toEqual({ premiumStudents: true });
+    // Off again, so the premium cases below meet this school as they meet the others without it.
+    expect(await bulkTerms(ctx, { schoolIds: [ids.bulk], action: "STUDENTS_OFF" })).toMatchObject({ preview: false });
   });
 });
 
