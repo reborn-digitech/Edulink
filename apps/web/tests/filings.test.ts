@@ -17,6 +17,7 @@ import { PrismaClient } from "@prisma/client";
 import { createSession } from "@/lib/session";
 import { __resetCookies } from "../tests/stubs/next-headers";
 import { parseCsvRecords } from "@/lib/csv";
+import { ageInYears } from "@/lib/dates";
 import { GET as filingsGet } from "@/app/api/v1/office/filings/route";
 import { POST as identityPost } from "@/app/api/v1/office/filings/identity/route";
 import { GET as studentsGet } from "@/app/api/v1/office/filings/export/udise-students/route";
@@ -26,6 +27,27 @@ import { GET as cbseGet } from "@/app/api/v1/office/filings/export/cbse-candidat
 import { GET as msbshseGet } from "@/app/api/v1/office/filings/export/msbshse-candidates/route";
 import { GET as recordGet, POST as recordPost } from "@/app/api/v1/office/pupil-records/[membershipId]/route";
 import { GET as download } from "@/app/(app)/admin/filings/export/[kind]/route";
+
+/**
+ * AGES MOVE WITH THE CALENDAR: the enrolment-by-age table reckons each pupil's age on the day it is exported
+ * (src/lib/filings.ts, ageInYears with no day given), and takes no as-on day. Bhakti's birthdate was fixed at 21 November
+ * 2010, so on 21 November 2026 she turned sixteen, Aarav's age, and the table lost a row (CI run 44856908710). Aarav's
+ * birthdate stays fixed, since the SDMS and board sheets print it (he is sixteen or more from 10 March 2026, in the ">22"
+ * row from 10 March 2033); Bhakti is always fifteen and Dev always seven, each a hundred days past a birthday on the day
+ * the suite runs, so the table holds three ages and the row with none on any day.
+ */
+const DAY = 86_400_000;
+/** Born `years` years and a hundred days before `now`: `years` old on it, and for the next eight months. */
+const yearsAgo = (years: number, now: Date) => new Date(Date.UTC(now.getUTCFullYear() - years, now.getUTCMonth(), now.getUTCDate()) - 100 * DAY);
+const AARAV_BIRTH = new Date("2010-03-10T00:00:00Z");
+/** The three birthdates as reckoned on a day. */
+const birthsOn = (now: Date) => ({ aarav: AARAV_BIRTH, bhakti: yearsAgo(15, now), dev: yearsAgo(7, now) });
+const { bhakti: BHAKTI_BIRTH, dev: DEV_BIRTH } = birthsOn(new Date());
+/** The table's own rows: under five and over twenty-two are grouped (src/lib/filings.ts). */
+const ageRow = (birth: Date, now = new Date()) => {
+  const age = ageInYears(birth, now);
+  return age < 5 ? "<5" : age > 22 ? ">22" : String(age);
+};
 
 const db = new PrismaClient();
 const STAMP = Date.now();
@@ -59,9 +81,9 @@ beforeAll(async () => {
   const suffix = String(STAMP).slice(-6);
   schoolId = (await db.school.create({ data: { name: `ZZ Filing School ${STAMP}`, slug: `zz-filing-${STAMP}`, code: `ZF${suffix}`, contactEmail: `zz-filing-${STAMP}@test.invalid`, timezone: "Asia/Kolkata", city: "Pune", region: "Maharashtra", postalCode: "411005", locale: "mr", medium: "Marathi" }, select: { id: true } })).id;
   const mk = (who: string, extra: Record<string, unknown> = {}) => db.user.create({ data: { name: `ZZ Filing ${who}`, email: `zz-filing-${who.toLowerCase().replace(/ /g, "-")}-${STAMP}@test.invalid`, ...extra }, select: { id: true } });
-  const [admin, principal, teacher, a, b, parent] = await Promise.all([mk("Admin"), mk("Principal"), mk("Teacher", { birthdate: new Date("1988-04-02T00:00:00Z"), phone: `+91 98765 ${suffix.slice(0, 5)}` }), mk("Aarav Patil", { birthdate: new Date("2010-03-10T00:00:00Z") }), mk("Bhakti Bhosale", { birthdate: new Date("2010-11-21T00:00:00Z") }), mk("Parent", { phone: "+91 98764 00011" })]);
+  const [admin, principal, teacher, a, b, parent] = await Promise.all([mk("Admin"), mk("Principal"), mk("Teacher", { birthdate: new Date("1988-04-02T00:00:00Z"), phone: `+91 98765 ${suffix.slice(0, 5)}` }), mk("Aarav Patil", { birthdate: AARAV_BIRTH }), mk("Bhakti Bhosale", { birthdate: BHAKTI_BIRTH }), mk("Parent", { phone: "+91 98764 00011" })]);
   // C: admitted this June, no date of birth, NT, in a class whose grade is no UDISE+ class. D: in grade 1 since 2024.
-  const [c, d, teacherTwo] = await Promise.all([mk("Chaitra Kamble"), mk("Dev Jadhav", { birthdate: new Date("2019-07-01T00:00:00Z") }), mk("Teacher Two", { birthdate: new Date("1990-01-15T00:00:00Z") })]);
+  const [c, d, teacherTwo] = await Promise.all([mk("Chaitra Kamble"), mk("Dev Jadhav", { birthdate: DEV_BIRTH }), mk("Teacher Two", { birthdate: new Date("1990-01-15T00:00:00Z") })]);
   adminUserId = admin.id;
   principalUserId = principal.id;
   teacherUserId = teacher.id;
@@ -168,6 +190,21 @@ describe("the identity and the readiness", () => {
   });
 });
 
+describe("the pupils' ages on any day", () => {
+  it("the age table keeps three ages and the row with none whatever the day: her old birthday and the day after, Aarav's own, a leap day, Aarav past twenty-two (CI run 44856908710)", () => {
+    const rowsOn = (births: { aarav: Date; bhakti: Date; dev: Date }, now: Date) => [ageRow(births.aarav, now), ageRow(births.bhakti, now), ageRow(births.dev, now)];
+    for (const day of ["2026-11-21", "2026-11-22", "2027-03-09", "2027-03-10", "2028-02-29", "2033-03-10", "2034-03-10", "2040-11-21"]) {
+      const now = new Date(`${day}T06:00:00Z`);
+      expect(new Set(rowsOn(birthsOn(now), now)).size, day).toBe(3);
+    }
+    expect(rowsOn(birthsOn(new Date("2026-11-22T06:00:00Z")), new Date("2026-11-22T06:00:00Z"))).toEqual(["16", "15", "7"]);
+    expect(rowsOn(birthsOn(new Date("2034-03-10T06:00:00Z")), new Date("2034-03-10T06:00:00Z"))).toEqual([">22", "15", "7"]);
+    // The birthdates as they stood until this change put Aarav and Bhakti in one row from her birthday on.
+    const fixed = { aarav: AARAV_BIRTH, bhakti: new Date("2010-11-21T00:00:00Z"), dev: new Date("2019-07-01T00:00:00Z") };
+    expect(rowsOn(fixed, new Date("2026-11-22T06:00:00Z"))).toEqual(["16", "16", "7"]);
+  });
+});
+
 describe("the sheets", () => {
   it("the UDISE+ student sheet: the portal's columns in order and its codes, Aadhaar blank, dates DD-MM-YYYY, names in capitals, the guardian's phone; refused to the head and a teacher; audited with a count", async () => {
     await as("PRINCIPAL");
@@ -245,7 +282,7 @@ describe("the sheets", () => {
     expect(rows.filter((r) => r.table === "4.2(b) Minority groups").map((r) => [r.row, r["Not in a listed class Girls"]])).toEqual([["BUDDHIST", "1"]]);
     const ages = rows.filter((r) => r.table === "4.4 Enrolment by age").map((r) => r.row);
     expect(ages).toHaveLength(4);
-    expect(ages).toEqual(expect.arrayContaining(["7", "15", "16", "Age not on record"]));
+    expect(ages).toEqual(expect.arrayContaining([ageRow(DEV_BIRTH), ageRow(BHAKTI_BIRTH), ageRow(AARAV_BIRTH), "Age not on record"]));
     expect(rows.filter((r) => r.table === "4.6 CWSN by impairment").map((r) => [r.row, r["X Girls"]])).toEqual([["2 Low vision", "1"]]);
     expect(JSON.stringify(rows)).not.toContain("Aarav");
   });
