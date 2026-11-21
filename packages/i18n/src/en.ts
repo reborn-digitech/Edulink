@@ -3225,6 +3225,7 @@ export const en = {
     termsOwnPriceAtCollege: "A college pays its tier: give it its own discount, not its own price.",
     termsTeachersAtCollege: "College teachers hold no plan, so premium for teachers does not apply at a college.",
     paymentChangedMeanwhile: "This school's subscription changed while this was open. Look at it again, then record the payment.",
+    subscriptionChangedMeanwhile: "This school's subscription was changed while this was open. Look at it again, then save.",
     renewalOverAYear: "The renewal is more than a year away. Tick “More than a year, on purpose” to keep it.",
     renewalBeforeToday: "The renewal is today or earlier, so the school starts due. Tick “Due now” to keep it.",
     paymentAlreadyRecorded: "That payment is already recorded: the renewal has moved on.",

@@ -64,7 +64,7 @@ async function blockedOn(table: string): Promise<void> {
   throw new Error(`nothing waited on "${table}" within five seconds`);
 }
 
-const ids = { operator: "", teacher: "", follow: "", discount: "", ownPrice: "", notSet: "", college: "", paused: "", trial: "", due: "", receipted: "", again: "", clock: "", gone: "", zone: "", window: "", pStudents: "", pTeachers: "", pBoth: "", pNotSet: "", pCollege: "" };
+const ids = { operator: "", teacher: "", follow: "", discount: "", ownPrice: "", notSet: "", college: "", paused: "", trial: "", due: "", receipted: "", again: "", clock: "", gone: "", zone: "", window: "", pStudents: "", pTeachers: "", pBoth: "", pNotSet: "", pCollege: "", race: "" };
 const office: Record<string, string[]> = {};
 /** The suite's own schools: our offer's moves and notices are kept to them (updateOffer's scope), never the database's. */
 const scope = () => ({ schoolIds: Object.values(ids).filter((id, i) => i >= 2 && id) });
@@ -129,6 +129,8 @@ beforeAll(async () => {
   ids.pNotSet = await school("PNotSet", { subscriptionStatus: "ACTIVE", subscriptionStartsAt: at(day(-300)), subscriptionDueAt: at(day(65)), premiumStudents: true });
   // A college with Students premium on and no tier chosen: no subscription figure, so no bill, and not in the totals.
   ids.pCollege = await school("PCollege", { ...set, kind: "COLLEGE", premiumStudents: true }, 900);
+  // B-1 of the review of 21 November 2026: an unpaid trial whose renewal has passed, corrected while a payment is recorded.
+  ids.race = await school("Race", { subscriptionStatus: "TRIAL", subscriptionStartsAt: at(day(-10)), subscriptionDueAt: at(day(-1)) });
   ids.teacher = (await db.user.create({ data: { name: `${PREFIX} Teacher`, email: `zz-premium-teacher-${STAMP}@test.invalid` }, select: { id: true } })).id;
   await db.membership.create({ data: { userId: ids.teacher, schoolId: ids.follow, role: "TEACHER", status: "ACTIVE" } });
 });
@@ -512,6 +514,34 @@ describe("a payment sent twice at once", () => {
     release();
     await first;
     expect(await second).toEqual({ ok: false, errorKey: "root.paymentAlreadyRecorded" });
+  });
+});
+
+describe("a correction sent while a payment is recorded (the review's B-1)", () => {
+  it("is refused by name when the payment commits first, never written over it: the school stays paid", async () => {
+    const ctx = await as("OPERATOR");
+    const noon = new Date(`${TODAY}T06:30:00.000Z`);
+    // The payment's write, held open: ACTIVE, the renewal a year on, paid today, uncommitted while the correction (judged on
+    // the unpaid trial it read, so allowed by C1) reaches its own write.
+    let release!: () => void;
+    let taken!: () => void;
+    const held = new Promise<void>((resolve) => (release = resolve));
+    const lockTaken = new Promise<void>((resolve) => (taken = resolve));
+    const paid = { subscriptionStatus: "ACTIVE", subscriptionDueAt: at(renewalFrom(day(-1), 12)), subscriptionPaidAt: at(day(0)) };
+    const payment = db.$transaction(async (tx) => {
+      await tx.school.update({ where: { id: ids.race }, data: paid });
+      taken();
+      await held;
+    }, { timeout: 20_000 });
+    await Promise.race([lockTaken, payment]);
+    const correcting = setSubscription(ctx, ids.race, { status: "DUE", reason: "ZZ correction meeting a payment" }, noon);
+    await blockedOn("School");
+    release();
+    await payment;
+    expect(await correcting).toEqual({ ok: false, errorKey: "root.subscriptionChangedMeanwhile" });
+    expect(await db.school.findUniqueOrThrow({ where: { id: ids.race }, select: { subscriptionStatus: true, subscriptionDueAt: true, subscriptionPaidAt: true } })).toEqual(paid);
+    // Nothing of the refused correction is in either log.
+    expect(await db.auditLog.count({ where: { action: "superuser.school.subscription", targetId: ids.race } })).toBe(0);
   });
 });
 

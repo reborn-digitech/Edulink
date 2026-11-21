@@ -195,12 +195,19 @@ const text = (value: string | null | undefined): string | null => {
   return trimmed ? trimmed : null;
 };
 
+/** A write that met another hand's commit since its read: refused by name, nothing written (the review's B-1). */
+class SubscriptionChangedMeanwhile extends Error {}
+
 /**
  * Changes the subscription: only the fields sent change; a status must be
  * a move the list allows; the due date must follow the start; the partner
  * must exist. Audited twice with the reason — the operator's own row, and
  * one in the school's Safety Centre that names the status and the due date
  * and not the invoice references, which are the operator's bookkeeping.
+ * Compared and set on the standing as read (status, start, renewal, paid-at;
+ * the review of 21 November 2026, B-1): a payment or another correction
+ * committed since the read is never written over, and C1's "nothing recorded
+ * as paid" holds of the row as written; the miss is refused by name.
  */
 export async function setSubscription(session: ActiveContext, schoolId: string, input: OperatorSubscriptionBody, now: Date = new Date()): Promise<{ ok: true } | Refusal> {
   assertSuperuser(session);
@@ -281,14 +288,30 @@ export async function setSubscription(session: ActiveContext, schoolId: string, 
   if (changes.startsAt !== undefined) forSchool.startsAt = changes.startsAt;
   // The record and both audit rows in one transaction (rule 14): a correction moves the date and the status together in
   // one audited write (C1), and an audit row that cannot be written takes the change back with it.
-  await db.$tenantTransaction(async (raw) => {
-    const tx = raw as Tx;
-    await tx.school.update({ where: { id: schoolId }, data });
-    await audit({ schoolId: null, actorUserId: session.user.id, action: "superuser.school.subscription", targetType: "School", targetId: schoolId, meta: { schoolId, name: school.name, ...changes, reason } }, tx as unknown as AuditTx);
-    if (Object.keys(forSchool).length > 1) {
-      await audit({ schoolId, actorUserId: session.user.id, action: "superuser.school.subscription", targetType: "School", targetId: schoolId, meta: forSchool }, tx as unknown as AuditTx);
-    }
-  });
+  try {
+    await db.$tenantTransaction(async (raw) => {
+      const tx = raw as Tx;
+      const written = await tx.school.updateMany({
+        where: {
+          id: schoolId,
+          removedAt: null,
+          subscriptionStatus: school.subscriptionStatus,
+          subscriptionStartsAt: school.subscriptionStartsAt,
+          subscriptionDueAt: school.subscriptionDueAt,
+          subscriptionPaidAt: school.subscriptionPaidAt,
+        },
+        data,
+      });
+      if (written.count === 0) throw new SubscriptionChangedMeanwhile();
+      await audit({ schoolId: null, actorUserId: session.user.id, action: "superuser.school.subscription", targetType: "School", targetId: schoolId, meta: { schoolId, name: school.name, ...changes, reason } }, tx as unknown as AuditTx);
+      if (Object.keys(forSchool).length > 1) {
+        await audit({ schoolId, actorUserId: session.user.id, action: "superuser.school.subscription", targetType: "School", targetId: schoolId, meta: forSchool }, tx as unknown as AuditTx);
+      }
+    });
+  } catch (error) {
+    if (error instanceof SubscriptionChangedMeanwhile) return { ok: false, errorKey: "root.subscriptionChangedMeanwhile" };
+    throw error;
+  }
   return { ok: true };
 }
 
