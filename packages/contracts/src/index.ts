@@ -257,6 +257,7 @@ export * from "./v1/iqac";
 export * from "./v1/iqac-filing-text";
 export * from "./v1/regulator-calendar";
 export * from "./v1/operator-college";
+export * from "./v1/school-offer";
 export * from "./v1/principal-college";
 export * from "./v1/streams";
 export * from "./v1/duties";
