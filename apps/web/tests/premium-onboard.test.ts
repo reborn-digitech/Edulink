@@ -13,6 +13,7 @@ import { renewalFrom, type OperatorOnboardBody } from "@edulink/contracts";
 import { createSession, getSession, type ActiveContext } from "@/lib/session";
 import { __resetCookies } from "../tests/stubs/next-headers";
 import { onboardSchool } from "@/lib/subscriptions";
+import { readOffer } from "@/lib/school-terms";
 import { addDaysToKey, todayKey } from "@/lib/dates";
 
 const db = new PrismaClient();
@@ -89,7 +90,9 @@ describe("onboarding with the school's terms", () => {
   it("an own discount at onboarding is kept as the school's own; a college has no own price and no teachers' premium", async () => {
     const ctx = await operator();
     const row = await made(await onboardSchool(ctx, body({ subscription: { mode: "OWN_DISCOUNT", discountBps: 2_000 } }), NOW));
-    expect({ discount: row.subscriptionDiscountBps, price: row.subscriptionPricePaise, set: row.termsSetAt !== null, due: keyOf(row.subscriptionDueAt) }).toEqual({ discount: 2_000, price: null, set: true, due: renewalFrom(today, 6) });
+    // No free months sent: our offer's, as the platform has saved it or as it starts (the review's D-5: not six assumed).
+    const months = (await readOffer()).freeMonths;
+    expect({ discount: row.subscriptionDiscountBps, price: row.subscriptionPricePaise, set: row.termsSetAt !== null, due: keyOf(row.subscriptionDueAt) }).toEqual({ discount: 2_000, price: null, set: true, due: renewalFrom(today, months) });
     expect(await onboardSchool(ctx, body({ kind: "COLLEGE", subscription: { mode: "OWN_PRICE", pricePaise: 15_000 } }), NOW)).toEqual({ ok: false, errorKey: "root.termsOwnPriceAtCollege" });
     expect(await onboardSchool(ctx, body({ kind: "COLLEGE", premium: { students: true, teachers: true } }), NOW)).toEqual({ ok: false, errorKey: "root.termsTeachersAtCollege" });
   });

@@ -13,7 +13,7 @@
  * for in the suites unless a case names one (setActivePlansForTests), and each case's are dropped after it.
  */
 import { afterAll, afterEach, beforeAll, describe, expect, it } from "vitest";
-import { PrismaClient } from "@prisma/client";
+import { PrismaClient, type Prisma } from "@prisma/client";
 import { OFFER_START, PRICE_MAX_PAISE, bulkBodySchema, paysPaise, renewalFrom, type FreeMonths } from "@edulink/contracts";
 import { createSession, getSession, type ActiveContext } from "@/lib/session";
 import { __resetCookies } from "../tests/stubs/next-headers";
@@ -27,6 +27,7 @@ import { POST as bulkPost } from "@/app/api/v1/operator/subscriptions/bulk/route
 import { GET as termsGet, PUT as termsPut } from "@/app/api/v1/operator/schools/[schoolId]/terms/route";
 import { POST as paymentPost } from "@/app/api/v1/operator/schools/[schoolId]/payment/route";
 import { GET as officeGet } from "@/app/api/v1/office/subscription/route";
+import { holdOfferLock, removeLeftOffer, triedAndRolledBack } from "./suite-offer";
 
 const db = new PrismaClient();
 const STAMP = Date.now();
@@ -38,13 +39,12 @@ const day = (offset: number) => addDaysToKey(TODAY, offset);
 const at = (key: string) => new Date(`${key}T00:00:00.000Z`);
 /**
  * Our offer is the platform's one row. The offer section works from the owner's starting values and writes that row, so
- * it runs only where there is none, removing what it wrote; where the platform has prices of its own it is skipped, and
- * says so. Every other case reckons its figures from the offer as it stands, so it runs either way. A row an interrupted
- * run of this suite left behind (saved by one of its own ZZ operators) is the suite's, and is removed first.
+ * it runs only where there is none, and each case that writes it removes it again; where the platform has prices of its
+ * own it is skipped, and says so. Every other case reckons its figures from the offer as it stands, so it runs either way.
+ * A row a killed run of this suite left (saved by one of its own ZZ operators, no run holding the suites' lock) is removed
+ * first, as tests/setup.ts removes it at the start of any run (tests/suite-offer.ts; the review's D-1 and D-2).
  */
-const leftover = await db.schoolOffer.findUnique({ where: { id: "offer" }, select: { updatedByUserId: true } });
-const leftBy = leftover?.updatedByUserId ? await db.user.findUnique({ where: { id: leftover.updatedByUserId }, select: { email: true } }) : null;
-if (leftBy?.email && /^zz-premium-operator-\d+@test\.invalid$/.test(leftBy.email)) await db.schoolOffer.delete({ where: { id: "offer" } });
+await removeLeftOffer(db);
 const platformOffer = await db.schoolOffer.findUnique({ where: { id: "offer" }, select: { updatedAt: true } });
 if (platformOffer) console.warn("[api-v1-operator-subscriptions] the platform's offer is saved on this database: the offer section, which writes that row and assumes the starting values, is skipped");
 const offerSection = platformOffer ? describe.skip : describe;
@@ -53,15 +53,29 @@ async function ours() {
   const offer = await readOffer();
   return { offer, subscription: paysPaise(offer.subscriptionPricePaise, offer.subscriptionDiscountBps), premium: paysPaise(offer.premiumPricePaise, offer.premiumDiscountBps) };
 }
-/** Resolves once a statement on this database that names `table` waits on a lock: the call under test is at its write, behind the held transaction. */
-async function blockedOn(table: string): Promise<void> {
-  const pattern = `%"${table}"%`;
+/** A write the database must refuse, tried in a transaction that always rolls back (the review's D-4): nothing of it can stay. */
+async function refusedWithin(write: (tx: Prisma.TransactionClient) => Promise<unknown>, check: RegExp): Promise<void> {
+  const outcome = await triedAndRolledBack(db, write);
+  expect(outcome instanceof Error ? outcome.message : String(outcome)).toMatch(check);
+}
+
+/** The held transaction's own backend, so that only the call it blocks can let a race case go on (the review's D-6). */
+async function pidOf(tx: Pick<PrismaClient, "$queryRaw">): Promise<number> {
+  const [row] = await tx.$queryRaw<{ pid: number }[]>`SELECT pg_backend_pid() AS pid`;
+  return row!.pid;
+}
+/**
+ * Resolves once a backend on this database waits on a lock the held transaction `pid` holds: the call under test is at its
+ * write, behind that transaction. Another process's lock wait cannot pass for it (the suite's rows are its own, stamped).
+ */
+async function blockedBy(pid: number): Promise<void> {
+  if (pid < 0) throw new Error("the held transaction ended before it held anything");
   for (let i = 0; i < 200; i += 1) {
-    const [row] = await db.$queryRaw<{ n: bigint }[]>`SELECT count(*)::bigint AS n FROM pg_stat_activity WHERE datname = current_database() AND wait_event_type = 'Lock' AND query LIKE ${pattern}`;
+    const [row] = await db.$queryRaw<{ n: bigint }[]>`SELECT count(*)::bigint AS n FROM pg_stat_activity WHERE datname = current_database() AND ${pid}::int = ANY (pg_blocking_pids(pid))`;
     if (Number(row?.n ?? 0) > 0) return;
     await new Promise((resolve) => setTimeout(resolve, 25));
   }
-  throw new Error(`nothing waited on "${table}" within five seconds`);
+  throw new Error(`nothing waited behind backend ${pid} within five seconds`);
 }
 
 const ids = { operator: "", teacher: "", follow: "", discount: "", ownPrice: "", notSet: "", college: "", paused: "", trial: "", due: "", receipted: "", again: "", clock: "", gone: "", zone: "", window: "", pStudents: "", pTeachers: "", pBoth: "", pNotSet: "", pCollege: "", race: "", bulk: "" };
@@ -147,10 +161,11 @@ afterAll(async () => {
   await db.session.deleteMany({ where: { userId: { in: users } } });
   await db.notification.deleteMany({ where: { userId: { in: users } } });
   await db.auditLog.deleteMany({ where: { OR: [{ schoolId: { in: schools } }, { targetId: { in: schools } }, { actorUserId: { in: users } }] } });
+  // The row this suite wrote, and only that: a row another hand saved meanwhile is the platform's. Before the operator goes,
+  // so that a run killed here leaves a row tests/setup.ts can still tell for this suite's.
+  await db.schoolOffer.deleteMany({ where: { id: "offer", updatedByUserId: ids.operator } });
   await db.school.deleteMany({ where: { id: { in: schools } } });
   await db.user.deleteMany({ where: { id: { in: users } } });
-  // The row this suite wrote, and only that: a row another hand saved meanwhile is the platform's.
-  await db.schoolOffer.deleteMany({ where: { id: "offer", updatedByUserId: ids.operator } });
   await db.$disconnect();
 });
 
@@ -176,14 +191,29 @@ describe("the doors are the operator's, and the office's card its own", () => {
 });
 
 offerSection("our offer: the owner's starting values until the first save", () => {
-  it("GET answers the starting values, ₹100 and ₹50, six months free", async () => {
+  // Our offer's row across processes (the review's D-1): this section writes it, so it runs only while it holds the suites'
+  // advisory lock; beside another run's offer section it skips, touching nothing (tests/suite-offer.ts).
+  let holds = false;
+  let lock: ReturnType<typeof holdOfferLock> | null = null;
+  beforeAll(async () => {
+    lock = holdOfferLock(db);
+    holds = await lock.taken;
+    // Loudly (the coordinating session's remark on D-1): a skipped offer section is not a verified one, and the verify stops on it.
+    if (!holds) console.warn("\n!!! [api-v1-operator-subscriptions] OFFER SECTION SKIPPED: another run is in its offer section on this database. Its five cases are NOT verified by this run.\n");
+  });
+  afterAll(async () => {
+    await lock?.release();
+  });
+  it("GET answers the starting values, ₹100 and ₹50, six months free", async (c) => {
+    if (!holds) c.skip();
     await as("OPERATOR");
     const res = await offerGet();
     expect(res.status).toBe(200);
     const body = await res.json();
     expect(body.offer).toMatchObject({ subscription: { pricePaise: OFFER_START.subscriptionPricePaise, discountBps: 0 }, premium: { pricePaise: OFFER_START.premiumPricePaise, discountBps: 0 }, freeMonths: 6, starting: true, updatedAt: null });
   });
-  it("a preview of ₹120 moves the school that follows and the one on its own discount, not the one on its own price or with terms not set, and writes nothing", async () => {
+  it("a preview of ₹120 moves the school that follows and the one on its own discount, not the one on its own price or with terms not set, and writes nothing", async (c) => {
+    if (!holds) c.skip();
     const ctx = await as("OPERATOR");
     const body = { subscription: { pricePaise: 12_000, discountBps: 0 }, premium: { pricePaise: 5_000, discountBps: 0 }, freeMonths: 6, studentsByDefault: true, teachersByDefault: false, reason: "ZZ preview", expect: { updatedAt: null }, preview: true };
     const result = await updateOffer(ctx, body, new Date(), scope());
@@ -201,7 +231,8 @@ offerSection("our offer: the owner's starting values until the first save", () =
     expect(await db.schoolOffer.findUnique({ where: { id: "offer" } })).toBeNull();
     expect(await db.auditLog.count({ where: { action: "operator.offer.update", actorUserId: ids.operator } })).toBe(0);
   });
-  it("the door's preview answers 200 and writes nothing", async () => {
+  it("the door's preview answers 200 and writes nothing", async (c) => {
+    if (!holds) c.skip();
     await as("OPERATOR");
     const body = { subscription: { pricePaise: 12_000, discountBps: 0 }, premium: { pricePaise: 5_000, discountBps: 0 }, freeMonths: 6, studentsByDefault: true, teachersByDefault: false, reason: "ZZ preview", expect: { updatedAt: null }, preview: true };
     const res = await offerPut(send("PUT", "/operator/offer", body));
@@ -209,74 +240,83 @@ offerSection("our offer: the owner's starting values until the first save", () =
     expect(await res.json()).toMatchObject({ preview: true, offer: { subscription: { pricePaise: 12_000 } } });
     expect(await db.schoolOffer.findUnique({ where: { id: "offer" } })).toBeNull();
   });
-  it("two first saves at once: one is saved, the other refused by name, never overwritten", async () => {
+  it("two first saves at once: one is saved, the other refused by name, never overwritten", async (c) => {
+    if (!holds) c.skip();
     const ctx = await as("OPERATOR");
-    const body = { subscription: { pricePaise: 12_000, discountBps: 0 }, premium: { pricePaise: 5_000, discountBps: 0 }, freeMonths: 6, studentsByDefault: true, teachersByDefault: false, reason: "ZZ second hand", expect: { updatedAt: null } };
-    // The other hand's save, held open: the row exists, uncommitted, while this save reaches its write.
-    let release!: () => void;
-    let taken!: () => void;
-    const held = new Promise<void>((resolve) => (release = resolve));
-    const lockTaken = new Promise<void>((resolve) => (taken = resolve));
-    const other = db.$transaction(async (tx) => {
-      await tx.schoolOffer.create({ data: { id: "offer", subscriptionPricePaise: 11_000, premiumPricePaise: 5_000, updatedByUserId: ids.operator } });
-      taken();
-      await held;
-    }, { timeout: 20_000 });
-    await Promise.race([lockTaken, other]);
-    const saving = updateOffer(ctx, body, new Date(), scope());
-    // Released only once the save is waiting at its write, so the case tests the write's own comparison.
-    await blockedOn("SchoolOffer");
-    release();
-    await other;
-    expect(await saving).toEqual({ ok: false, errorKey: "root.offerChangedMeanwhile" });
-    expect((await db.schoolOffer.findUniqueOrThrow({ where: { id: "offer" } })).subscriptionPricePaise).toBe(11_000);
-    await db.schoolOffer.delete({ where: { id: "offer" } });
+    const body = { subscription: { pricePaise: 12_000, discountBps: 0 }, premium: { pricePaise: 5_000, discountBps: 0 }, freeMonths: 6, studentsByDefault: true, teachersByDefault: false, reason: `ZZ second hand ${STAMP}`, expect: { updatedAt: null } };
+    try {
+      // The other hand's save, held open: the row exists, uncommitted, while this save reaches its write.
+      let release!: () => void;
+      let taken!: (pid: number) => void;
+      const held = new Promise<void>((resolve) => (release = resolve));
+      const holder = new Promise<number>((resolve) => (taken = resolve));
+      const other = db.$transaction(async (tx) => {
+        await tx.schoolOffer.create({ data: { id: "offer", subscriptionPricePaise: 11_000, premiumPricePaise: 5_000, updatedByUserId: ids.operator } });
+        taken(await pidOf(tx));
+        await held;
+      }, { timeout: 20_000 });
+      const pid = await Promise.race([holder, other.then(() => -1)]);
+      const saving = updateOffer(ctx, body, new Date(), scope());
+      // Released only once the save is waiting at its write behind this very transaction (D-6), so the case tests the
+      // write's own comparison.
+      await blockedBy(pid);
+      release();
+      await other;
+      expect(await saving).toEqual({ ok: false, errorKey: "root.offerChangedMeanwhile" });
+      expect((await db.schoolOffer.findUniqueOrThrow({ where: { id: "offer" } })).subscriptionPricePaise).toBe(11_000);
+    } finally {
+      await db.schoolOffer.deleteMany({ where: { id: "offer", updatedByUserId: ids.operator } });
+    }
   });
-  it("a stale offer is refused by name; the save writes the row, one audit row, and tells the moved schools' office and head, not an ended school's", async () => {
+  it("a stale offer is refused by name; the save writes the row, one audit row, and tells the moved schools' office and head, not an ended school's; GET answers it among the last changes; a save against the version another hand is saving is refused when that one commits", async (c) => {
+    if (!holds) c.skip();
     const ctx = await as("OPERATOR");
-    const body = { subscription: { pricePaise: 12_000, discountBps: 0 }, premium: { pricePaise: 5_000, discountBps: 0 }, freeMonths: 6, studentsByDefault: true, teachersByDefault: false, reason: "ZZ new prices" };
-    expect(await updateOffer(ctx, { ...body, expect: { updatedAt: "2026-01-01T00:00:00.000Z" } }, new Date(), scope())).toEqual({ ok: false, errorKey: "root.offerChangedMeanwhile" });
-    const saved = await updateOffer(ctx, { ...body, expect: { updatedAt: null } }, new Date(), scope());
-    expect(saved).toMatchObject({ preview: false, told: 6 });
-    expect((await readOffer()).subscriptionPricePaise).toBe(12_000);
-    expect(await db.auditLog.count({ where: { action: "operator.offer.update", actorUserId: ids.operator, schoolId: null } })).toBe(1);
-    const told = async (id: string) => db.notification.count({ where: { userId: { in: office[id] }, titleKey: "notifTitle.schoolTermsChanged" } });
-    expect([await told(ids.follow), await told(ids.discount), await told(ids.paused)]).toEqual([2, 2, 2]);
-    expect([await told(ids.ownPrice), await told(ids.notSet), await told(ids.gone)]).toEqual([0, 0, 0]);
-  });
-  it("GET answers the last changes, newest first, with the reason and what the prices became", async () => {
-    await as("OPERATOR");
-    const res = await offerGet();
-    expect(res.status).toBe(200);
-    const body = await res.json();
-    expect(body.offer).toMatchObject({ subscription: { pricePaise: 12_000 }, starting: false });
-    expect(body.recent).toHaveLength(1);
-    expect(body.recent[0]).toMatchObject({ reason: "ZZ new prices", before: { subscription: { pricePaise: 10_000 } }, after: { subscription: { pricePaise: 12_000 } } });
-  });
-  it("a save made against the offer another hand is saving is refused when that one commits, never written over it", async () => {
-    const ctx = await as("OPERATOR");
-    const read = await readOffer();
-    const body = { subscription: { pricePaise: 10_000, discountBps: 0 }, premium: { pricePaise: 5_000, discountBps: 0 }, freeMonths: 6, studentsByDefault: true, teachersByDefault: false, reason: "ZZ back", expect: { updatedAt: read.updatedAt!.toISOString() } };
-    let release!: () => void;
-    let taken!: () => void;
-    const held = new Promise<void>((resolve) => (release = resolve));
-    const lockTaken = new Promise<void>((resolve) => (taken = resolve));
-    const other = db.$transaction(async (tx) => {
-      await tx.schoolOffer.update({ where: { id: "offer" }, data: { freeMonths: 3, updatedByUserId: ids.operator } });
-      taken();
-      await held;
-    }, { timeout: 20_000 });
-    await Promise.race([lockTaken, other]);
-    const saving = updateOffer(ctx, body, new Date(), scope());
-    await blockedOn("SchoolOffer");
-    release();
-    await other;
-    expect(await saving).toEqual({ ok: false, errorKey: "root.offerChangedMeanwhile" });
-    expect(await db.schoolOffer.findUniqueOrThrow({ where: { id: "offer" }, select: { subscriptionPricePaise: true, freeMonths: true } })).toEqual({ subscriptionPricePaise: 12_000, freeMonths: 3 });
-    // Back to the starting values for the rest of the suite, against the row as it now stands.
-    const now = await readOffer();
-    expect(await updateOffer(ctx, { ...body, expect: { updatedAt: now.updatedAt!.toISOString() } }, new Date(), scope())).toMatchObject({ preview: false });
-    expect(await readOffer()).toMatchObject({ subscriptionPricePaise: 10_000, freeMonths: 6 });
+    const body = { subscription: { pricePaise: 12_000, discountBps: 0 }, premium: { pricePaise: 5_000, discountBps: 0 }, freeMonths: 6, studentsByDefault: true, teachersByDefault: false, reason: `ZZ new prices ${STAMP}` };
+    // The suite's prices stand for this case alone (the review's D-2): the row is removed after it, as there was none before.
+    try {
+      expect(await updateOffer(ctx, { ...body, expect: { updatedAt: "2026-01-01T00:00:00.000Z" } }, new Date(), scope())).toEqual({ ok: false, errorKey: "root.offerChangedMeanwhile" });
+      const saved = await updateOffer(ctx, { ...body, expect: { updatedAt: null } }, new Date(), scope());
+      expect(saved).toMatchObject({ preview: false, told: 6 });
+      expect((await readOffer()).subscriptionPricePaise).toBe(12_000);
+      expect(await db.auditLog.count({ where: { action: "operator.offer.update", actorUserId: ids.operator, schoolId: null } })).toBe(1);
+      const told = async (id: string) => db.notification.count({ where: { userId: { in: office[id] }, titleKey: "notifTitle.schoolTermsChanged" } });
+      expect([await told(ids.follow), await told(ids.discount), await told(ids.paused)]).toEqual([2, 2, 2]);
+      expect([await told(ids.ownPrice), await told(ids.notSet), await told(ids.gone)]).toEqual([0, 0, 0]);
+
+      // GET answers the last changes, newest first, with the reason and what the prices became. Counted by this run's own
+      // reasons (D-3): another run's rows may be among the last ten.
+      await as("OPERATOR");
+      const res = await offerGet();
+      expect(res.status).toBe(200);
+      const answer = await res.json();
+      expect(answer.offer).toMatchObject({ subscription: { pricePaise: 12_000 }, starting: false });
+      const mine = (answer.recent as { reason: string }[]).filter((r) => r.reason.endsWith(` ${STAMP}`));
+      expect(mine).toHaveLength(1);
+      expect(mine[0]).toMatchObject({ reason: `ZZ new prices ${STAMP}`, before: { subscription: { pricePaise: 10_000 } }, after: { subscription: { pricePaise: 12_000 } } });
+
+      // A save made against the offer another hand is saving is refused when that one commits, never written over it.
+      const read = await readOffer();
+      const back = { ...body, subscription: { pricePaise: 10_000, discountBps: 0 }, reason: `ZZ back ${STAMP}`, expect: { updatedAt: read.updatedAt!.toISOString() } };
+      let release!: () => void;
+      let taken!: (pid: number) => void;
+      const held = new Promise<void>((resolve) => (release = resolve));
+      const holder = new Promise<number>((resolve) => (taken = resolve));
+      const other = db.$transaction(async (tx) => {
+        await tx.schoolOffer.update({ where: { id: "offer" }, data: { freeMonths: 3, updatedByUserId: ids.operator } });
+        taken(await pidOf(tx));
+        await held;
+      }, { timeout: 20_000 });
+      const pid = await Promise.race([holder, other.then(() => -1)]);
+      const saving = updateOffer(await as("OPERATOR"), back, new Date(), scope());
+      await blockedBy(pid);
+      release();
+      await other;
+      expect(await saving).toEqual({ ok: false, errorKey: "root.offerChangedMeanwhile" });
+      expect(await db.schoolOffer.findUniqueOrThrow({ where: { id: "offer" }, select: { subscriptionPricePaise: true, freeMonths: true } })).toEqual({ subscriptionPricePaise: 12_000, freeMonths: 3 });
+    } finally {
+      await db.schoolOffer.deleteMany({ where: { id: "offer", updatedByUserId: ids.operator } });
+    }
+    expect(await readOffer()).toMatchObject({ subscriptionPricePaise: OFFER_START.subscriptionPricePaise, freeMonths: OFFER_START.freeMonths, starting: true });
   });
 });
 
@@ -518,6 +558,12 @@ describe("a payment recorded", () => {
     expect({ status: row.subscriptionStatus, due: row.subscriptionDueAt?.toISOString().slice(0, 10), paid: row.subscriptionPaidAt?.toISOString().slice(0, 10), ref: row.subscriptionPaidRef }).toEqual({ status: "ACTIVE", due: renewalFrom(day(170), 12), paid: day(0), ref: "ZZ NEFT 1" });
     expect(await recordPayment(ctx, ids.follow, { ...from, amountPaise: bill })).toEqual({ ok: false, errorKey: "root.paymentAlreadyRecorded" });
     expect(await db.auditLog.count({ where: { action: "superuser.school.subscription", schoolId: ids.follow } })).toBe(1);
+    // The operator's own row holds the money (the review's D-9): the amount, the bill and the difference, beside the status
+    // and the renewal; the school's holds the status and the renewal alone.
+    const operatorRow = await db.auditLog.findFirstOrThrow({ where: { action: "superuser.school.subscription", schoolId: null, targetId: ids.follow }, orderBy: { createdAt: "desc" }, select: { meta: true } });
+    expect(JSON.parse(String(operatorRow.meta))).toMatchObject({ kind: "payment", amountPaise: bill - 100_000, billPaise: bill, differencePaise: -100_000, ref: "ZZ NEFT 1", statusBefore: "TRIAL", renewalBefore: day(170), renewalAfter: renewalFrom(day(170), 12) });
+    const schoolRow = await db.auditLog.findFirstOrThrow({ where: { action: "superuser.school.subscription", schoolId: ids.follow }, select: { meta: true } });
+    expect(JSON.parse(String(schoolRow.meta))).toEqual({ status: "ACTIVE", dueAt: renewalFrom(day(170), 12) });
   });
 });
 
@@ -528,17 +574,17 @@ describe("a payment sent twice at once", () => {
     const payment = { fromStatus: "TRIAL" as const, fromDueAt: day(170), paidOn: day(0), amountPaise: 1, acceptDifference: true };
     // The first request's write, held open: its payment is in the row, uncommitted, while the second reaches its own write.
     let release!: () => void;
-    let taken!: () => void;
+    let taken!: (pid: number) => void;
     const held = new Promise<void>((resolve) => (release = resolve));
-    const lockTaken = new Promise<void>((resolve) => (taken = resolve));
+    const holder = new Promise<number>((resolve) => (taken = resolve));
     const first = db.$transaction(async (tx) => {
       await tx.school.update({ where: { id: ids.discount }, data: { subscriptionStatus: "ACTIVE", subscriptionDueAt: at(renewalFrom(day(170), 12)), subscriptionPaidAt: at(day(0)) } });
-      taken();
+      taken(await pidOf(tx));
       await held;
     }, { timeout: 20_000 });
-    await Promise.race([lockTaken, first]);
+    const pid = await Promise.race([holder, first.then(() => -1)]);
     const second = recordPayment(ctx, ids.discount, payment);
-    await blockedOn("School");
+    await blockedBy(pid);
     release();
     await first;
     expect(await second).toEqual({ ok: false, errorKey: "root.paymentAlreadyRecorded" });
@@ -552,18 +598,18 @@ describe("a correction sent while a payment is recorded (the review's B-1)", () 
     // The payment's write, held open: ACTIVE, the renewal a year on, paid today, uncommitted while the correction (judged on
     // the unpaid trial it read, so allowed by C1) reaches its own write.
     let release!: () => void;
-    let taken!: () => void;
+    let taken!: (pid: number) => void;
     const held = new Promise<void>((resolve) => (release = resolve));
-    const lockTaken = new Promise<void>((resolve) => (taken = resolve));
+    const holder = new Promise<number>((resolve) => (taken = resolve));
     const paid = { subscriptionStatus: "ACTIVE", subscriptionDueAt: at(renewalFrom(day(-1), 12)), subscriptionPaidAt: at(day(0)) };
     const payment = db.$transaction(async (tx) => {
       await tx.school.update({ where: { id: ids.race }, data: paid });
-      taken();
+      taken(await pidOf(tx));
       await held;
     }, { timeout: 20_000 });
-    await Promise.race([lockTaken, payment]);
+    const pid = await Promise.race([holder, payment.then(() => -1)]);
     const correcting = setSubscription(ctx, ids.race, { status: "DUE", reason: "ZZ correction meeting a payment" }, noon);
-    await blockedOn("School");
+    await blockedBy(pid);
     release();
     await payment;
     expect(await correcting).toEqual({ ok: false, errorKey: "root.subscriptionChangedMeanwhile" });
@@ -575,6 +621,9 @@ describe("a correction sent while a payment is recorded (the review's B-1)", () 
 
 describe("an unpaid school's status corrected with its renewal (rule 5, the coordinator's C1 of 21 November 2026)", () => {
   const reason = "ZZ correction of a mistaken onboarding";
+  // Judged on TODAY, fixed when the suite loaded (the review's D-7): a run crossing midnight in Kolkata still asks of the
+  // same day.
+  const noon = new Date(`${TODAY}T06:30:00.000Z`);
   const refused = { ok: false, errorKey: "root.subscriptionMoveRefused" };
   const standing = async (id: string) => {
     const row = await db.school.findUniqueOrThrow({ where: { id }, select: { subscriptionStatus: true, subscriptionDueAt: true } });
@@ -583,10 +632,10 @@ describe("an unpaid school's status corrected with its renewal (rule 5, the coor
   it("TRIAL to DUE only when the renewal as it will stand is today or before, the date and the status in one audited write", async () => {
     const ctx = await as("OPERATOR");
     // The renewal twenty days on: DUE alone is refused, as tests/subscriptions.test.ts:187 holds; so is a renewal tomorrow.
-    expect(await setSubscription(ctx, ids.trial, { status: "DUE", reason })).toEqual(refused);
-    expect(await setSubscription(ctx, ids.trial, { status: "DUE", dueAt: day(1), reason })).toEqual(refused);
+    expect(await setSubscription(ctx, ids.trial, { status: "DUE", reason }, noon)).toEqual(refused);
+    expect(await setSubscription(ctx, ids.trial, { status: "DUE", dueAt: day(1), reason }, noon)).toEqual(refused);
     expect(await standing(ids.trial)).toEqual({ status: "TRIAL", due: day(20) });
-    expect(await setSubscription(ctx, ids.trial, { status: "DUE", dueAt: day(0), reason })).toEqual({ ok: true });
+    expect(await setSubscription(ctx, ids.trial, { status: "DUE", dueAt: day(0), reason }, noon)).toEqual({ ok: true });
     expect(await standing(ids.trial)).toEqual({ status: "DUE", due: day(0) });
     const rows = await db.auditLog.findMany({ where: { action: "superuser.school.subscription", targetId: ids.trial }, select: { schoolId: true, meta: true } });
     expect(rows.map((r) => r.schoolId).sort()).toEqual([ids.trial, null].sort());
@@ -594,18 +643,18 @@ describe("an unpaid school's status corrected with its renewal (rule 5, the coor
   });
   it("DUE to TRIAL only when the renewal as it will stand is after today", async () => {
     const ctx = await as("OPERATOR");
-    expect(await setSubscription(ctx, ids.due, { status: "TRIAL", reason })).toEqual(refused);
-    expect(await setSubscription(ctx, ids.due, { status: "TRIAL", dueAt: day(0), reason })).toEqual(refused);
-    expect(await setSubscription(ctx, ids.due, { status: "TRIAL", dueAt: day(90), reason })).toEqual({ ok: true });
+    expect(await setSubscription(ctx, ids.due, { status: "TRIAL", reason }, noon)).toEqual(refused);
+    expect(await setSubscription(ctx, ids.due, { status: "TRIAL", dueAt: day(0), reason }, noon)).toEqual(refused);
+    expect(await setSubscription(ctx, ids.due, { status: "TRIAL", dueAt: day(90), reason }, noon)).toEqual({ ok: true });
     expect(await standing(ids.due)).toEqual({ status: "TRIAL", due: day(90) });
   });
   it("once a payment is recorded the list alone rules: neither move, nor one in the write that records a payment", async () => {
     const ctx = await as("OPERATOR");
-    expect(await setSubscription(ctx, ids.receipted, { status: "TRIAL", dueAt: day(90), reason })).toEqual(refused);
-    expect(await setSubscription(ctx, ids.again, { status: "DUE", dueAt: day(0), reason })).toEqual(refused);
-    expect(await setSubscription(ctx, ids.due, { status: "DUE", dueAt: day(0), paidAt: day(0), reason })).toEqual(refused);
+    expect(await setSubscription(ctx, ids.receipted, { status: "TRIAL", dueAt: day(90), reason }, noon)).toEqual(refused);
+    expect(await setSubscription(ctx, ids.again, { status: "DUE", dueAt: day(0), reason }, noon)).toEqual(refused);
+    expect(await setSubscription(ctx, ids.due, { status: "DUE", dueAt: day(0), paidAt: day(0), reason }, noon)).toEqual(refused);
     // C1a: nor one in the write that clears a payment; taking a payment back is its own act.
-    expect(await setSubscription(ctx, ids.receipted, { status: "TRIAL", dueAt: day(90), paidAt: null, reason })).toEqual(refused);
+    expect(await setSubscription(ctx, ids.receipted, { status: "TRIAL", dueAt: day(90), paidAt: null, reason }, noon)).toEqual(refused);
     expect([await standing(ids.receipted), await standing(ids.again), await standing(ids.due)]).toEqual([
       { status: "DUE", due: day(-5) },
       { status: "TRIAL", due: day(30) },
@@ -660,14 +709,16 @@ describe("the Schools tab's renewal filters, on the school's own day at both end
 describe("the database holds the shape the owner approved (the migration's CHECKs)", () => {
   it("our offer: one row, prices in whole rupees from ₹1 to ₹10,000, discounts to 100 %, the free months from the list", async () => {
     const good = { subscriptionPricePaise: 10_000, premiumPricePaise: 5_000 };
-    await expect(db.schoolOffer.create({ data: { id: "zz-second", ...good } })).rejects.toThrow(/SchoolOffer_one_row_check/);
+    // Each write is tried inside a transaction that always rolls back (the review's D-4): where a CHECK is missing the write
+    // lands, the case fails, and still nothing of it stays in the platform's row.
+    await refusedWithin((tx) => tx.schoolOffer.create({ data: { id: "zz-second", ...good } }), /SchoolOffer_one_row_check/);
     const bad = [
       [{ subscriptionPricePaise: 10_050 }, /SchoolOffer_prices_check/],
       [{ premiumPricePaise: 1_000_100 }, /SchoolOffer_prices_check/],
       [{ subscriptionDiscountBps: 10_001 }, /SchoolOffer_discounts_check/],
       [{ freeMonths: 2 }, /SchoolOffer_free_months_check/],
     ] as const;
-    for (const [data, check] of bad) await expect(db.schoolOffer.upsert({ where: { id: "offer" }, create: { ...good, ...data }, update: data })).rejects.toThrow(check);
+    for (const [data, check] of bad) await refusedWithin((tx) => tx.schoolOffer.upsert({ where: { id: "offer" }, create: { ...good, ...data }, update: data }), check);
   });
   it("a school's own terms: a price or a discount for each part, never both, within the same bounds", async () => {
     const bad = [

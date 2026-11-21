@@ -92,6 +92,20 @@ const SUITE_OWNED_BUCKETS = ["login:+919876511001", "login:zzlimits.h4nd@edulink
 await setupDb.rateLimit.deleteMany({
   where: { NOT: [{ bucket: { startsWith: "zz-test:" } }, { bucket: { in: SUITE_OWNED_BUCKETS } }, { bucket: { contains: "@zzloginlimits.test" } }, { bucket: { contains: ":2001:db8:7a:" } }] },
 });
+/**
+ * OUR OFFER AS A KILLED RUN LEFT IT (the review of 21 November 2026, D-2). The operator subscriptions suite writes the
+ * platform's one offer row for a few seconds, and every school's figures read it; a run killed then would leave the suite's
+ * prices for every school until that suite ran again. So any run removes such a row first: saved by one of that suite's
+ * own ZZ operators, while no run holds its lock (tests/suite-offer.ts). A row the platform saved is never touched. One
+ * statement before each file, and never the reason a file fails: what it cannot do now, the next file's set-up does.
+ */
+import { removeLeftOffer } from "./suite-offer";
+
+try {
+  await removeLeftOffer(setupDb);
+} catch (error) {
+  console.warn("[setup] our offer's left row was not checked:", error instanceof Error ? error.message : error);
+}
 await setupDb.$disconnect();
 
 /**
