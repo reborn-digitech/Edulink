@@ -2,6 +2,7 @@ import { z } from "zod";
 import { institutionKindSchema } from "./modules";
 import { streamListSchema } from "./streams";
 import { schoolBoardSchema } from "./filings";
+import { freeMonthsSchema, partTermsSchema } from "./school-offer-parts";
 
 /**
  * operator-dashboard: the operator's one page for running fifty schools —
@@ -26,9 +27,10 @@ const optionalText = (max: number) => z.string().trim().max(max).nullable().opti
 /* ---------------------------------------------------------------------- */
 
 /**
- * Where a school's subscription stands. TRIAL: the free weeks before the
- * first due date. ACTIVE: paid up. DUE: the due date has passed and nothing
- * has been recorded as paid. SUSPENDED: the operator has stopped the clock
+ * Where a school's subscription stands. TRIAL: the free months before the
+ * renewal. ACTIVE: paid up. DUE: owed, the renewal reached (on the day
+ * itself) or no free months given, and nothing recorded as paid for the
+ * year (decision 0010 rule 5). SUSPENDED: the operator has stopped the clock
  * (nothing in the product is switched off by it — it is a record). ENDED:
  * the school left; its rows stay.
  */
@@ -174,6 +176,19 @@ export const operatorOnboardBodySchema = z.object({
   trial: z.boolean().default(false),
   startsAt: day.optional(),
   dueAt: day.optional(),
+  /**
+   * The school's terms at onboarding (decision 0010, 21 November 2026): its Shalaghar subscription (ours, an own
+   * discount or an own price), its premium switches and their terms, and the free months that set the renewal (or the
+   * typed dueAt, which wins). Any of them makes this the new path: terms set, renewal = start + free months, DUE when
+   * that is the start day or before today, TRIAL otherwise. All left out: today's rule, unchanged (a year, or a
+   * thirty-day trial), terms not set, premium off. A renewal more than a year on needs `acceptOverAYear`; one before
+   * today needs `acceptDueNow`.
+   */
+  subscription: partTermsSchema.optional(),
+  premium: z.object({ students: z.boolean(), teachers: z.boolean(), terms: partTermsSchema.optional() }).strict().optional(),
+  freeMonths: freeMonthsSchema.optional(),
+  acceptOverAYear: z.boolean().optional(),
+  acceptDueNow: z.boolean().optional(),
   contact: operatorContactBodySchema.optional(),
   commission: z
     .union([

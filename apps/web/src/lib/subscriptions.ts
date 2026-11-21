@@ -1,5 +1,5 @@
 import "server-only";
-import { collegeTierOf, isCollegeKind, isRealDateKey, tierMonthPaise, type InstitutionKind } from "@edulink/contracts";
+import { collegeTierOf, isCollegeKind, isRealDateKey, nextRenewalOnPayment, renewalFrom, renewalOverAYear, statusByRenewal, tierMonthPaise, type InstitutionKind, type PaymentAnswer, type PaymentBody } from "@edulink/contracts";
 import type { TranslationKey } from "@/lib/i18n/dictionary";
 import {
   SUBSCRIPTION_STATUSES,
@@ -13,10 +13,11 @@ import {
   type SubscriptionStatus,
 } from "@edulink/contracts";
 import { db } from "./db";
-import { audit } from "./audit";
+import { audit, type AuditTx } from "./audit";
+import { columnsOf, readOffer, readSchoolTerms } from "./school-terms";
 import { assertSuperuser, createSchool, inviteAdmin, sendAdminInviteMail, type AdminInviteMail, type SchoolDetails } from "./superuser";
 import { assignPlan, monthKeyFor } from "./plans";
-import { addDaysToKey, todayKey } from "./dates";
+import { addDaysToKey, safeTimeZone, todayKey } from "./dates";
 import { messageCapOf } from "./message-cap";
 import { notify } from "./notify";
 import { translator } from "./i18n/dictionary";
@@ -67,6 +68,15 @@ export const SUBSCRIPTION_MOVES: Record<SubscriptionStatus, readonly Subscriptio
 export function canMoveSubscription(from: SubscriptionStatus | null, to: SubscriptionStatus): boolean {
   if (from === null || from === to) return true;
   return SUBSCRIPTION_MOVES[from].includes(to);
+}
+
+/**
+ * The correction of a mistaken onboarding (rule 5, the coordinator's C1 of 21 November 2026), beside the list and not in
+ * it: TRIAL to DUE and DUE to TRIAL, which the list refuses, are allowed while nothing is recorded as paid, and only to
+ * the status the renewal as it will stand calls for (statusByRenewal), so the date and the status move together.
+ */
+function isRenewalCorrection(from: SubscriptionStatus | null, to: SubscriptionStatus): boolean {
+  return (from === "TRIAL" && to === "DUE") || (from === "DUE" && to === "TRIAL");
 }
 
 export function isSubscriptionStatus(value: string | null | undefined): value is SubscriptionStatus {
@@ -192,9 +202,9 @@ const text = (value: string | null | undefined): string | null => {
  * one in the school's Safety Centre that names the status and the due date
  * and not the invoice references, which are the operator's bookkeeping.
  */
-export async function setSubscription(session: ActiveContext, schoolId: string, input: OperatorSubscriptionBody): Promise<{ ok: true } | Refusal> {
+export async function setSubscription(session: ActiveContext, schoolId: string, input: OperatorSubscriptionBody, now: Date = new Date()): Promise<{ ok: true } | Refusal> {
   assertSuperuser(session);
-  const school = await db.school.findUnique({ where: { id: schoolId }, select: SUBSCRIPTION_SELECT });
+  const school = await db.school.findUnique({ where: { id: schoolId }, select: { ...SUBSCRIPTION_SELECT, timezone: true } });
   if (!school) return { ok: false, errorKey: "root.noSuchSchool" };
   if (school.removedAt) return { ok: false, errorKey: "root.schoolWasRemoved" };
   const reason = input.reason.trim();
@@ -205,7 +215,7 @@ export async function setSubscription(session: ActiveContext, schoolId: string, 
   const changes: Record<string, unknown> = {};
 
   if (input.status !== undefined && input.status !== current) {
-    if (!canMoveSubscription(current, input.status)) return { ok: false, errorKey: "root.subscriptionMoveRefused" };
+    if (!canMoveSubscription(current, input.status) && !isRenewalCorrection(current, input.status)) return { ok: false, errorKey: "root.subscriptionMoveRefused" };
     data.subscriptionStatus = input.status;
     changes.status = input.status;
   }
@@ -243,7 +253,16 @@ export async function setSubscription(session: ActiveContext, schoolId: string, 
   }
   const startsAt = "subscriptionStartsAt" in data ? (data.subscriptionStartsAt as Date | null) : school.subscriptionStartsAt;
   const dueAt = "subscriptionDueAt" in data ? (data.subscriptionDueAt as Date | null) : school.subscriptionDueAt;
-  if (startsAt && dueAt && dueAt.getTime() <= startsAt.getTime()) return { ok: false, errorKey: "root.subscriptionDatesOrder" };
+  // A renewal on the start day is allowed (decision 0010 rule 5: onboarding with no free months renews, due, on its first day); before it, never.
+  if (startsAt && dueAt && dueAt.getTime() < startsAt.getTime()) return { ok: false, errorKey: "root.subscriptionDatesOrder" };
+  // C1: a move the list refuses gets this far only as TRIAL <-> DUE; it stands while nothing is recorded as paid, before
+  // this write or by it (C1a), and only to the status the renewal as it will stand calls for, by onboarding's reckoning,
+  // on the school's own day (C1b).
+  if (changes.status !== undefined && !canMoveSubscription(current, changes.status as SubscriptionStatus)) {
+    const paidAt = "subscriptionPaidAt" in data ? (data.subscriptionPaidAt as Date | null) : school.subscriptionPaidAt;
+    const calledFor = dueAt ? statusByRenewal(dateToDay(startsAt), dateToDay(dueAt)!, todayKey(safeTimeZone(school.timezone), now)) : null;
+    if (school.subscriptionPaidAt || paidAt || calledFor !== changes.status) return { ok: false, errorKey: "root.subscriptionMoveRefused" };
+  }
 
   if (input.commissionPartnerId !== undefined && input.commissionPartnerId !== (school.commissionPartner?.id ?? null)) {
     if (input.commissionPartnerId !== null) {
@@ -255,18 +274,78 @@ export async function setSubscription(session: ActiveContext, schoolId: string, 
   }
 
   if (Object.keys(data).length === 0) return { ok: true };
-  await db.school.update({ where: { id: schoolId }, data });
-
-  await audit({ schoolId: null, actorUserId: session.user.id, action: "superuser.school.subscription", targetType: "School", targetId: schoolId, meta: { schoolId, name: school.name, ...changes, reason } });
   // The school's own record names its standing, not the operator's references.
   const forSchool: Record<string, unknown> = { reason };
   if (changes.status !== undefined) forSchool.status = changes.status;
   if (changes.dueAt !== undefined) forSchool.dueAt = changes.dueAt;
   if (changes.startsAt !== undefined) forSchool.startsAt = changes.startsAt;
-  if (Object.keys(forSchool).length > 1) {
-    await audit({ schoolId, actorUserId: session.user.id, action: "superuser.school.subscription", targetType: "School", targetId: schoolId, meta: forSchool });
-  }
+  // The record and both audit rows in one transaction (rule 14): a correction moves the date and the status together in
+  // one audited write (C1), and an audit row that cannot be written takes the change back with it.
+  await db.$tenantTransaction(async (raw) => {
+    const tx = raw as Tx;
+    await tx.school.update({ where: { id: schoolId }, data });
+    await audit({ schoolId: null, actorUserId: session.user.id, action: "superuser.school.subscription", targetType: "School", targetId: schoolId, meta: { schoolId, name: school.name, ...changes, reason } }, tx as unknown as AuditTx);
+    if (Object.keys(forSchool).length > 1) {
+      await audit({ schoolId, actorUserId: session.user.id, action: "superuser.school.subscription", targetType: "School", targetId: schoolId, meta: forSchool }, tx as unknown as AuditTx);
+    }
+  });
   return { ok: true };
+}
+
+/**
+ * RECORD A PAYMENT (decision 0010 rule 5). The renewal (subscriptionDueAt) is the day the next unpaid year starts; a
+ * payment moves it twelve months on, once, from the renewal on record, whether paid early or late, in the free period or
+ * paid up (with no record, the year starts on the day paid), and makes the school ACTIVE with the day and reference
+ * paid. Refused while SUSPENDED or ENDED: recording is resumed first. Compared and set against the standing as read; the
+ * same payment sent twice is refused by name. An amount unlike the bill (today's prices, the newest count) needs
+ * `acceptDifference`. Recorded, never collected (decision 0003). A preview writes nothing.
+ */
+export async function recordPayment(session: ActiveContext, schoolId: string, input: PaymentBody, now: Date = new Date()): Promise<PaymentAnswer | Refusal> {
+  assertSuperuser(session);
+  const school = await db.school.findUnique({ where: { id: schoolId }, select: { id: true, name: true, removedAt: true, subscriptionStatus: true, subscriptionDueAt: true } });
+  if (!school) return { ok: false, errorKey: "root.noSuchSchool" };
+  if (school.removedAt) return { ok: false, errorKey: "root.schoolWasRemoved" };
+  const status = isSubscriptionStatus(school.subscriptionStatus) ? school.subscriptionStatus : null;
+  const dueDay = dateToDay(school.subscriptionDueAt);
+  if (status === "SUSPENDED" || status === "ENDED") return { ok: false, errorKey: "root.paymentStatusFirst" };
+  if (input.fromStatus !== status || input.fromDueAt !== dueDay) return missedPayment(input, status, dueDay);
+  const next = nextRenewalOnPayment({ status, dueDay, paidOnDay: input.paidOn });
+  if (!next.ok) return { ok: false, errorKey: next.errorKey };
+  const terms = await readSchoolTerms(session, schoolId, now);
+  if ("ok" in terms) return terms;
+  const billPaise = terms.bill?.totalPaise ?? null;
+  const differencePaise = billPaise === null ? null : input.amountPaise - billPaise;
+  if (differencePaise !== null && differencePaise !== 0 && !input.acceptDifference) return { ok: false, errorKey: "root.paymentDiffers" };
+  const answer: PaymentAnswer = { preview: Boolean(input.preview), renewalBefore: dueDay, renewalAfter: next.renewalDay, statusAfter: "ACTIVE", billPaise, differencePaise };
+  if (input.preview) return answer;
+  const ref = text(input.ref ?? null);
+  const moved = await db.$tenantTransaction(async (raw) => {
+    const tx = raw as Tx;
+    const written = await tx.school.updateMany({
+      where: { id: schoolId, removedAt: null, subscriptionStatus: school.subscriptionStatus, subscriptionDueAt: school.subscriptionDueAt },
+      data: { subscriptionStatus: "ACTIVE", subscriptionDueAt: dayToDate(next.renewalDay), subscriptionPaidAt: dayToDate(input.paidOn), subscriptionPaidRef: ref },
+    });
+    if (written.count !== 1) return false;
+    const meta = { kind: "payment", paidOn: input.paidOn, ref, amountPaise: input.amountPaise, billPaise, differencePaise, statusBefore: status, renewalBefore: dueDay, renewalAfter: next.renewalDay };
+    await audit({ schoolId: null, actorUserId: session.user.id, action: "superuser.school.subscription", targetType: "School", targetId: schoolId, meta: { schoolId, name: school.name, ...meta } }, tx as unknown as AuditTx);
+    // The school's own record names its standing, not the operator's references or amounts.
+    await audit({ schoolId, actorUserId: session.user.id, action: "superuser.school.subscription", targetType: "School", targetId: schoolId, meta: { status: "ACTIVE", dueAt: next.renewalDay } }, tx as unknown as AuditTx);
+    return true;
+  });
+  if (!moved) {
+    // The standing moved between the read and the write, as when the same payment is sent twice at once: read it again,
+    // and name the payment already recorded when that is what moved it.
+    const after = await db.school.findUnique({ where: { id: schoolId }, select: { subscriptionStatus: true, subscriptionDueAt: true } });
+    return missedPayment(input, isSubscriptionStatus(after?.subscriptionStatus) ? (after!.subscriptionStatus as SubscriptionStatus) : null, dateToDay(after?.subscriptionDueAt));
+  }
+  return answer;
+}
+
+/** A payment whose standing as read is not the school's: the same payment already recorded, by name, or a change to look at again. */
+function missedPayment(input: PaymentBody, status: SubscriptionStatus | null, dueDay: string | null): Refusal {
+  const would = nextRenewalOnPayment({ status: input.fromStatus, dueDay: input.fromDueAt, paidOnDay: input.paidOn });
+  if (would.ok && status === "ACTIVE" && dueDay === would.renewalDay) return { ok: false, errorKey: "root.paymentAlreadyRecorded" };
+  return { ok: false, errorKey: "root.paymentChangedMeanwhile" };
 }
 
 /** The point of contact: four free-text fields, audited in the operator's own log. */
@@ -621,11 +700,32 @@ export async function onboardSchool(session: ActiveContext, input: OperatorOnboa
   }
   // TA-593: a typed day that is not on the calendar is refused by name, not thrown as a 500 by the date arithmetic.
   if ((input.startsAt && !isRealDateKey(input.startsAt)) || (input.dueAt && !isRealDateKey(input.dueAt))) return { ok: false, errorKey: "root.subscriptionDayNotReal" };
-  const today = todayKey("UTC", now);
+  // The terms at onboarding (decision 0010, 21 November 2026): any of them makes this the new path, where the renewal is
+  // the start plus the free months (or the typed day), the school is DUE when that is the start day or on or before
+  // today and TRIAL otherwise, and its terms are set. With none of them, today's rule exactly: terms not set, premium off.
+  const withTerms = input.subscription !== undefined || input.premium !== undefined || input.freeMonths !== undefined;
+  // C1b: the new path reckons the school's own day; the old one keeps the UTC day its callers and suites know.
+  const today = withTerms ? todayKey(safeTimeZone(input.timezone), now) : todayKey("UTC", now);
   const startsAt = input.startsAt ?? today;
-  const dueAt = input.dueAt ?? addDaysToKey(startsAt, input.trial ? 30 : 365);
-  if (dayToDate(dueAt).getTime() <= dayToDate(startsAt).getTime()) return { ok: false, errorKey: "root.subscriptionDatesOrder" };
-  const status: SubscriptionStatus = input.trial ? "TRIAL" : "ACTIVE";
+  let dueAt: string;
+  let status: SubscriptionStatus;
+  if (withTerms) {
+    if (isCollegeKind(input.kind) && input.subscription?.mode === "OWN_PRICE") return { ok: false, errorKey: "root.termsOwnPriceAtCollege" };
+    if (isCollegeKind(input.kind) && input.premium?.teachers) return { ok: false, errorKey: "root.termsTeachersAtCollege" };
+    dueAt = input.dueAt ?? renewalFrom(startsAt, input.freeMonths ?? (await readOffer()).freeMonths);
+    if (dueAt < startsAt) return { ok: false, errorKey: "root.subscriptionDatesOrder" };
+    if (renewalOverAYear(startsAt, dueAt) && !input.acceptOverAYear) return { ok: false, errorKey: "root.renewalOverAYear" };
+    // §2.5: a renewal on or before today starts the school due and asks a tick, except on its own first day (no free
+    // months, starting today), which is simply owed from the start.
+    if (dueAt <= today && startsAt < today && !input.acceptDueNow) return { ok: false, errorKey: "root.renewalBeforeToday" };
+    status = statusByRenewal(startsAt, dueAt, today);
+  } else {
+    dueAt = input.dueAt ?? addDaysToKey(startsAt, input.trial ? 30 : 365);
+    if (dayToDate(dueAt).getTime() <= dayToDate(startsAt).getTime()) return { ok: false, errorKey: "root.subscriptionDatesOrder" };
+    status = input.trial ? "TRIAL" : "ACTIVE";
+  }
+  const ownSubscription = columnsOf(input.subscription ?? { mode: "OURS" });
+  const ownPremium = columnsOf(input.premium?.terms ?? { mode: "OURS" });
   if (input.contact?.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.contact.email.trim())) return { ok: false, errorKey: "root.emailLooksWrong" };
   // A college's two references from the guided flow (4 Oct 2026): kept for a college only, the AISHE code as AISHE issues it.
   const college = isCollegeKind(input.kind);
@@ -686,6 +786,17 @@ export async function onboardSchool(session: ActiveContext, input: OperatorOnboa
             pocEmail: text(input.contact?.email),
             commissionPartnerId: partnerId,
             ...(college ? { affiliatingUniversity: text(input.affiliatingUniversity), aisheCode } : {}),
+            ...(withTerms
+              ? {
+                  subscriptionPricePaise: ownSubscription.price,
+                  subscriptionDiscountBps: ownSubscription.discount,
+                  premiumStudents: input.premium?.students ?? false,
+                  premiumTeachers: input.premium?.teachers ?? false,
+                  premiumPricePaise: ownPremium.price,
+                  premiumDiscountBps: ownPremium.discount,
+                  termsSetAt: now,
+                }
+              : {}),
           },
         });
         if (input.planId) {
@@ -703,7 +814,7 @@ export async function onboardSchool(session: ActiveContext, input: OperatorOnboa
             action: "superuser.school.onboard",
             targetType: "School",
             targetId: schoolId,
-            meta: { schoolId, name: input.name.trim(), slug: row.slug, planId: input.planId ?? null, status, startsAt, dueAt, partnerId, adminEmail },
+            meta: { schoolId, name: input.name.trim(), slug: row.slug, planId: input.planId ?? null, status, startsAt, dueAt, partnerId, adminEmail, terms: withTerms ? { subscription: input.subscription ?? { mode: "OURS" }, premium: input.premium ?? null, freeMonths: input.freeMonths ?? null } : null },
           },
           tx,
         );

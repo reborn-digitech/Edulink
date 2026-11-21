@@ -340,7 +340,11 @@ model School {
   /// SUBSCRIPTION_STATUSES in packages/contracts (null until the operator
   /// records one); the invoice and payment are dates and references the
   /// operator TYPES after the fact — nothing here collects a rupee
-  /// (decision 0003). Every change is an audit row with a reason.
+  /// (decision 0003). Every change is an audit row with a reason. Since
+  /// decision 0010 (21 November 2026) the due date is the RENEWAL, the day
+  /// the next unpaid year starts: a payment recorded through recordPayment
+  /// moves it twelve months on and makes the school ACTIVE, and while
+  /// nothing is recorded as paid TRIAL or DUE follows it (statusByRenewal).
   subscriptionStartsAt   DateTime?
   subscriptionDueAt      DateTime?
   subscriptionStatus     String?
@@ -348,6 +352,26 @@ model School {
   subscriptionInvoiceRef String?
   subscriptionPaidAt     DateTime?
   subscriptionPaidRef    String?
+  /// THE SCHOOL'S TERMS (decision 0010 parts 1 to 3, 21 November 2026), written only by src/lib/school-terms.ts: the
+  /// school's own price OR its own discount for each part, never both (a CHECK per part); both null = it follows our
+  /// offer (SchoolOffer). The premium add-on's two switches cover everyone on the roll in that role for the plan's
+  /// features; nothing is written per person. `termsSetAt` null is "Terms not set" (the owner's "No change until I
+  /// set terms"): the school stays on what it had before, with no notice, bill or estimate. Prices are paise a student
+  /// a year in whole rupees before GST; discounts basis points. What a school pays is worked out on read
+  /// (packages/contracts v1/school-offer.ts), never stored.
+  subscriptionPricePaise  Int?
+  subscriptionDiscountBps Int?
+  premiumStudents         Boolean   @default(false)
+  premiumTeachers         Boolean   @default(false)
+  premiumPricePaise       Int?
+  premiumDiscountBps      Int?
+  termsNote               String?
+  termsSetAt              DateTime?
+  /// RECORDING PAUSED (decision 0010 part 4), unread until the lock is built: set only by the operator's Pause or End
+  /// (with SUSPENDED or ENDED, a CHECK holds it) and cleared by Resume or Restore; `recordingWarnedAt` is when the
+  /// office and the head were warned, seven days before a pause may take effect.
+  recordingClosedAt       DateTime?
+  recordingWarnedAt       DateTime?
   /// The school's point of contact for the operator — whoever picks up the
   /// phone there. Free text; it is not a membership and opens no door.
   pocName                String?
@@ -6235,6 +6259,26 @@ model TwoFactorChallenge {
   @@index([userId])
   /// The retention sweep finds dead rows by this alone.
   @@index([expiresAt])
+}
+
+/// OUR OFFER (decision 0010 parts 1 to 3, 21 November 2026): the one figure for all schools, a price a student a year
+/// for the school's Shalaghar subscription and for the premium add-on, each with a discount for all schools, the free
+/// months a new school is given, and what the onboarding form ticks. ONE ROW (id "offer", a CHECK holds it), absent
+/// until the operator first saves; until then the owner's starting values stand (OFFER_START: ₹100, ₹50 more, no
+/// discounts, six months free). OUTSIDE THE SCHOOL FENCE ON PURPOSE (NO_SCHOOL_POLICY): the platform's, the same for
+/// every school, read when a school's figure is worked out and written by the operator alone through
+/// src/lib/school-terms.ts, audited "operator.offer.update". RECORDED, never collected (decision 0003).
+model SchoolOffer {
+  id                      String   @id @default("offer")
+  subscriptionPricePaise  Int
+  subscriptionDiscountBps Int      @default(0)
+  premiumPricePaise       Int
+  premiumDiscountBps      Int      @default(0)
+  freeMonths              Int      @default(6)
+  studentsByDefault       Boolean  @default(true)
+  teachersByDefault       Boolean  @default(false)
+  updatedAt               DateTime @updatedAt
+  updatedByUserId         String?
 }
 
 /// A plan the operator offers a school: what it allows per month, and a

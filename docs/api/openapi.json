@@ -41029,6 +41029,2111 @@
         ]
       }
     },
+    "/api/v1/operator/offer": {
+      "get": {
+        "summary": "Our offer for all schools: the Shalaghar subscription and the premium add-on, each a price a student a year with a discount for all, the free months and the onboarding ticks (the owner's starting values before the first save); how the live schools stand against it, and the year billed at today's prices",
+        "description": "The server operator.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": "operator",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "offer": {
+                      "type": "object",
+                      "properties": {
+                        "subscription": {
+                          "type": "object",
+                          "properties": {
+                            "pricePaise": {
+                              "type": "integer",
+                              "minimum": 0
+                            },
+                            "discountBps": {
+                              "type": "integer"
+                            }
+                          },
+                          "required": [
+                            "pricePaise",
+                            "discountBps"
+                          ],
+                          "additionalProperties": false
+                        },
+                        "premium": {
+                          "type": "object",
+                          "properties": {
+                            "pricePaise": {
+                              "$ref": "#/properties/offer/properties/subscription/properties/pricePaise"
+                            },
+                            "discountBps": {
+                              "type": "integer"
+                            }
+                          },
+                          "required": [
+                            "pricePaise",
+                            "discountBps"
+                          ],
+                          "additionalProperties": false
+                        },
+                        "freeMonths": {
+                          "type": "integer"
+                        },
+                        "studentsByDefault": {
+                          "type": "boolean"
+                        },
+                        "teachersByDefault": {
+                          "type": "boolean"
+                        },
+                        "updatedAt": {
+                          "type": "string",
+                          "format": "date-time",
+                          "nullable": true
+                        },
+                        "starting": {
+                          "type": "boolean"
+                        }
+                      },
+                      "required": [
+                        "subscription",
+                        "premium",
+                        "freeMonths",
+                        "studentsByDefault",
+                        "teachersByDefault",
+                        "updatedAt",
+                        "starting"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "groups": {
+                      "type": "object",
+                      "properties": {
+                        "follow": {
+                          "type": "integer",
+                          "minimum": 0
+                        },
+                        "ownDiscount": {
+                          "$ref": "#/properties/groups/properties/follow"
+                        },
+                        "ownPrice": {
+                          "$ref": "#/properties/groups/properties/follow"
+                        },
+                        "colleges": {
+                          "$ref": "#/properties/groups/properties/follow"
+                        },
+                        "notSet": {
+                          "$ref": "#/properties/groups/properties/follow"
+                        },
+                        "premiumOn": {
+                          "$ref": "#/properties/groups/properties/follow"
+                        }
+                      },
+                      "required": [
+                        "follow",
+                        "ownDiscount",
+                        "ownPrice",
+                        "colleges",
+                        "notSet",
+                        "premiumOn"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "totals": {
+                      "type": "object",
+                      "properties": {
+                        "billedYearPaise": {
+                          "$ref": "#/properties/offer/properties/subscription/properties/pricePaise"
+                        },
+                        "countedSchools": {
+                          "$ref": "#/properties/groups/properties/follow"
+                        },
+                        "notCounted": {
+                          "type": "object",
+                          "properties": {
+                            "notSet": {
+                              "$ref": "#/properties/groups/properties/follow"
+                            },
+                            "noTier": {
+                              "$ref": "#/properties/groups/properties/follow"
+                            },
+                            "noCount": {
+                              "$ref": "#/properties/groups/properties/follow"
+                            },
+                            "notRunning": {
+                              "$ref": "#/properties/groups/properties/follow"
+                            }
+                          },
+                          "required": [
+                            "notSet",
+                            "noTier",
+                            "noCount",
+                            "notRunning"
+                          ],
+                          "additionalProperties": false
+                        }
+                      },
+                      "required": [
+                        "billedYearPaise",
+                        "countedSchools",
+                        "notCounted"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "recent": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "at": {
+                            "$ref": "#/properties/offer/properties/updatedAt"
+                          },
+                          "reason": {
+                            "type": "string"
+                          },
+                          "before": {
+                            "$ref": "#/properties/offer"
+                          },
+                          "after": {
+                            "$ref": "#/properties/offer"
+                          }
+                        },
+                        "required": [
+                          "at",
+                          "reason",
+                          "before",
+                          "after"
+                        ],
+                        "additionalProperties": false
+                      }
+                    }
+                  },
+                  "required": [
+                    "offer",
+                    "groups",
+                    "totals",
+                    "recent"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "summary": "Change our offer with a reason, against the offer as read: every school following it or on its own discount moves at once, one on its own price or with terms not set does not; preview names each move, the year's difference and who is told, and writes nothing; audited",
+        "description": "The server operator.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": "operator",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "preview": {
+                      "type": "boolean"
+                    },
+                    "offer": {
+                      "type": "object",
+                      "properties": {
+                        "subscription": {
+                          "type": "object",
+                          "properties": {
+                            "pricePaise": {
+                              "type": "integer",
+                              "minimum": 0
+                            },
+                            "discountBps": {
+                              "type": "integer"
+                            }
+                          },
+                          "required": [
+                            "pricePaise",
+                            "discountBps"
+                          ],
+                          "additionalProperties": false
+                        },
+                        "premium": {
+                          "type": "object",
+                          "properties": {
+                            "pricePaise": {
+                              "$ref": "#/properties/offer/properties/subscription/properties/pricePaise"
+                            },
+                            "discountBps": {
+                              "type": "integer"
+                            }
+                          },
+                          "required": [
+                            "pricePaise",
+                            "discountBps"
+                          ],
+                          "additionalProperties": false
+                        },
+                        "freeMonths": {
+                          "type": "integer"
+                        },
+                        "studentsByDefault": {
+                          "type": "boolean"
+                        },
+                        "teachersByDefault": {
+                          "type": "boolean"
+                        },
+                        "updatedAt": {
+                          "type": "string",
+                          "format": "date-time",
+                          "nullable": true
+                        },
+                        "starting": {
+                          "type": "boolean"
+                        }
+                      },
+                      "required": [
+                        "subscription",
+                        "premium",
+                        "freeMonths",
+                        "studentsByDefault",
+                        "teachersByDefault",
+                        "updatedAt",
+                        "starting"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "moves": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "schoolId": {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 64
+                          },
+                          "name": {
+                            "type": "string"
+                          },
+                          "part": {
+                            "type": "string",
+                            "enum": [
+                              "SUBSCRIPTION",
+                              "PREMIUM"
+                            ]
+                          },
+                          "beforePaise": {
+                            "$ref": "#/properties/offer/properties/subscription/properties/pricePaise"
+                          },
+                          "afterPaise": {
+                            "$ref": "#/properties/offer/properties/subscription/properties/pricePaise"
+                          },
+                          "source": {
+                            "type": "string",
+                            "enum": [
+                              "OURS",
+                              "OWN_DISCOUNT",
+                              "OWN_PRICE"
+                            ]
+                          }
+                        },
+                        "required": [
+                          "schoolId",
+                          "name",
+                          "part",
+                          "beforePaise",
+                          "afterPaise",
+                          "source"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "unchanged": {
+                      "type": "object",
+                      "properties": {
+                        "ownPrice": {
+                          "type": "integer",
+                          "minimum": 0
+                        },
+                        "notSet": {
+                          "$ref": "#/properties/unchanged/properties/ownPrice"
+                        }
+                      },
+                      "required": [
+                        "ownPrice",
+                        "notSet"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "yearDeltaPaise": {
+                      "type": "integer"
+                    },
+                    "told": {
+                      "$ref": "#/properties/unchanged/properties/ownPrice"
+                    }
+                  },
+                  "required": [
+                    "preview",
+                    "offer",
+                    "moves",
+                    "unchanged",
+                    "yearDeltaPaise",
+                    "told"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "subscription": {
+                    "type": "object",
+                    "properties": {
+                      "pricePaise": {
+                        "type": "integer",
+                        "minimum": 100,
+                        "maximum": 1000000
+                      },
+                      "discountBps": {
+                        "type": "integer",
+                        "minimum": 0,
+                        "maximum": 10000
+                      }
+                    },
+                    "required": [
+                      "pricePaise",
+                      "discountBps"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "premium": {
+                    "$ref": "#/properties/subscription"
+                  },
+                  "freeMonths": {
+                    "type": "integer"
+                  },
+                  "studentsByDefault": {
+                    "type": "boolean"
+                  },
+                  "teachersByDefault": {
+                    "type": "boolean"
+                  },
+                  "reason": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 500
+                  },
+                  "expect": {
+                    "type": "object",
+                    "properties": {
+                      "updatedAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "nullable": true
+                      }
+                    },
+                    "required": [
+                      "updatedAt"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "preview": {
+                    "type": "boolean"
+                  }
+                },
+                "required": [
+                  "subscription",
+                  "premium",
+                  "freeMonths",
+                  "studentsByDefault",
+                  "teachersByDefault",
+                  "reason",
+                  "expect"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/operator/subscriptions": {
+      "get": {
+        "summary": "Every school not removed with its subscription terms, premium switches, renewal and state, narrowed by q, premium, terms, renewal and recording; the year billed over the real schools",
+        "description": "The server operator.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": "operator",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "rows": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "schoolId": {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 64
+                          },
+                          "name": {
+                            "type": "string"
+                          },
+                          "kind": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "planCode": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "termsSet": {
+                            "type": "boolean"
+                          },
+                          "termsSetAt": {
+                            "type": "string",
+                            "format": "date-time",
+                            "nullable": true
+                          },
+                          "subscription": {
+                            "anyOf": [
+                              {
+                                "type": "object",
+                                "properties": {
+                                  "mode": {
+                                    "type": "string",
+                                    "enum": [
+                                      "OURS"
+                                    ]
+                                  }
+                                },
+                                "required": [
+                                  "mode"
+                                ],
+                                "additionalProperties": false
+                              },
+                              {
+                                "type": "object",
+                                "properties": {
+                                  "mode": {
+                                    "type": "string",
+                                    "enum": [
+                                      "OWN_DISCOUNT"
+                                    ]
+                                  },
+                                  "discountBps": {
+                                    "type": "integer",
+                                    "minimum": 0,
+                                    "maximum": 10000
+                                  }
+                                },
+                                "required": [
+                                  "mode",
+                                  "discountBps"
+                                ],
+                                "additionalProperties": false
+                              },
+                              {
+                                "type": "object",
+                                "properties": {
+                                  "mode": {
+                                    "type": "string",
+                                    "enum": [
+                                      "OWN_PRICE"
+                                    ]
+                                  },
+                                  "pricePaise": {
+                                    "type": "integer",
+                                    "minimum": 100,
+                                    "maximum": 1000000
+                                  }
+                                },
+                                "required": [
+                                  "mode",
+                                  "pricePaise"
+                                ],
+                                "additionalProperties": false
+                              }
+                            ]
+                          },
+                          "subscriptionFigure": {
+                            "type": "object",
+                            "properties": {
+                              "basePaise": {
+                                "type": "integer",
+                                "minimum": 0
+                              },
+                              "discountBps": {
+                                "type": "integer",
+                                "minimum": 0,
+                                "maximum": 10000
+                              },
+                              "paysPaise": {
+                                "$ref": "#/properties/rows/items/properties/subscriptionFigure/properties/basePaise"
+                              },
+                              "source": {
+                                "type": "string",
+                                "enum": [
+                                  "OURS",
+                                  "OWN_DISCOUNT",
+                                  "OWN_PRICE"
+                                ]
+                              },
+                              "tierCode": {
+                                "type": "string",
+                                "nullable": true
+                              }
+                            },
+                            "required": [
+                              "basePaise",
+                              "discountBps",
+                              "paysPaise",
+                              "source",
+                              "tierCode"
+                            ],
+                            "additionalProperties": false,
+                            "nullable": true
+                          },
+                          "premiumStudents": {
+                            "type": "boolean"
+                          },
+                          "premiumTeachers": {
+                            "type": "boolean"
+                          },
+                          "premium": {
+                            "$ref": "#/properties/rows/items/properties/subscription"
+                          },
+                          "premiumFigure": {
+                            "$ref": "#/properties/rows/items/properties/subscriptionFigure"
+                          },
+                          "status": {
+                            "type": "string",
+                            "enum": [
+                              "TRIAL",
+                              "ACTIVE",
+                              "DUE",
+                              "SUSPENDED",
+                              "ENDED"
+                            ],
+                            "nullable": true
+                          },
+                          "startsOn": {
+                            "type": "string",
+                            "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+                            "nullable": true
+                          },
+                          "renewsOn": {
+                            "allOf": [
+                              {
+                                "$ref": "#/properties/rows/items/properties/startsOn"
+                              }
+                            ],
+                            "nullable": true
+                          },
+                          "paidOn": {
+                            "allOf": [
+                              {
+                                "$ref": "#/properties/rows/items/properties/startsOn"
+                              }
+                            ],
+                            "nullable": true
+                          },
+                          "state": {
+                            "type": "string",
+                            "enum": [
+                              "FREE",
+                              "FREE_ENDED",
+                              "PAID",
+                              "RENEWAL_PASSED",
+                              "INVOICED_UNPAID",
+                              "DUE_SINCE",
+                              "RECORDING_PAUSED",
+                              "ENDED",
+                              "SUSPENDED_OPEN",
+                              "NO_RECORD"
+                            ]
+                          },
+                          "stateDay": {
+                            "allOf": [
+                              {
+                                "$ref": "#/properties/rows/items/properties/startsOn"
+                              }
+                            ],
+                            "nullable": true
+                          },
+                          "noTierChosen": {
+                            "type": "boolean"
+                          },
+                          "pupils": {
+                            "type": "integer",
+                            "minimum": 0,
+                            "nullable": true
+                          },
+                          "billedYearPaise": {
+                            "allOf": [
+                              {
+                                "$ref": "#/properties/rows/items/properties/subscriptionFigure/properties/basePaise"
+                              }
+                            ],
+                            "nullable": true
+                          }
+                        },
+                        "required": [
+                          "schoolId",
+                          "name",
+                          "kind",
+                          "planCode",
+                          "termsSet",
+                          "termsSetAt",
+                          "subscription",
+                          "subscriptionFigure",
+                          "premiumStudents",
+                          "premiumTeachers",
+                          "premium",
+                          "premiumFigure",
+                          "status",
+                          "startsOn",
+                          "renewsOn",
+                          "paidOn",
+                          "state",
+                          "stateDay",
+                          "noTierChosen",
+                          "pupils",
+                          "billedYearPaise"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "totals": {
+                      "type": "object",
+                      "properties": {
+                        "billedYearPaise": {
+                          "$ref": "#/properties/rows/items/properties/subscriptionFigure/properties/basePaise"
+                        },
+                        "countedSchools": {
+                          "$ref": "#/properties/rows/items/properties/pupils"
+                        },
+                        "notCounted": {
+                          "type": "object",
+                          "properties": {
+                            "notSet": {
+                              "$ref": "#/properties/rows/items/properties/pupils"
+                            },
+                            "noTier": {
+                              "$ref": "#/properties/rows/items/properties/pupils"
+                            },
+                            "noCount": {
+                              "$ref": "#/properties/rows/items/properties/pupils"
+                            },
+                            "notRunning": {
+                              "$ref": "#/properties/rows/items/properties/pupils"
+                            }
+                          },
+                          "required": [
+                            "notSet",
+                            "noTier",
+                            "noCount",
+                            "notRunning"
+                          ],
+                          "additionalProperties": false
+                        }
+                      },
+                      "required": [
+                        "billedYearPaise",
+                        "countedSchools",
+                        "notCounted"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "rows",
+                    "totals"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "q",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "maxLength": 120
+            }
+          },
+          {
+            "name": "premium",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "all",
+                "on",
+                "off"
+              ]
+            }
+          },
+          {
+            "name": "terms",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "all",
+                "ours",
+                "own",
+                "notset"
+              ]
+            }
+          },
+          {
+            "name": "renewal",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "any",
+                "30",
+                "passed"
+              ]
+            }
+          },
+          {
+            "name": "recording",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "all",
+                "open",
+                "paused"
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/operator/subscriptions/bulk": {
+      "post": {
+        "summary": "One change over 1 to 100 schools: a premium switch on or off, or our prices for both parts (which sets each school's terms); never a pause; preview writes nothing; audited a school at a time",
+        "description": "The server operator.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": "operator",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "preview": {
+                      "type": "boolean"
+                    },
+                    "changed": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "schoolId": {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 64
+                          },
+                          "name": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "schoolId",
+                          "name"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "unchanged": {
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    "told": {
+                      "$ref": "#/properties/unchanged"
+                    }
+                  },
+                  "required": [
+                    "preview",
+                    "changed",
+                    "unchanged",
+                    "told"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "schoolIds": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 64
+                    },
+                    "minItems": 1,
+                    "maxItems": 100
+                  },
+                  "action": {
+                    "type": "string",
+                    "enum": [
+                      "STUDENTS_ON",
+                      "STUDENTS_OFF",
+                      "TEACHERS_ON",
+                      "TEACHERS_OFF",
+                      "OUR_PRICES"
+                    ]
+                  },
+                  "reason": {
+                    "type": "string",
+                    "maxLength": 500
+                  },
+                  "preview": {
+                    "type": "boolean"
+                  }
+                },
+                "required": [
+                  "schoolIds",
+                  "action"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/operator/schools/{schoolId}/terms": {
+      "get": {
+        "summary": "One school's subscription and premium terms worked out on read (ours, its own discount or its own price; a college's tier), its standing and renewal, and the year's bill at the newest count",
+        "description": "The server operator.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": "operator",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "schoolId": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 64
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "kind": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "planCode": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "termsSet": {
+                      "type": "boolean"
+                    },
+                    "termsSetAt": {
+                      "type": "string",
+                      "format": "date-time",
+                      "nullable": true
+                    },
+                    "subscription": {
+                      "anyOf": [
+                        {
+                          "type": "object",
+                          "properties": {
+                            "mode": {
+                              "type": "string",
+                              "enum": [
+                                "OURS"
+                              ]
+                            }
+                          },
+                          "required": [
+                            "mode"
+                          ],
+                          "additionalProperties": false
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "mode": {
+                              "type": "string",
+                              "enum": [
+                                "OWN_DISCOUNT"
+                              ]
+                            },
+                            "discountBps": {
+                              "type": "integer",
+                              "minimum": 0,
+                              "maximum": 10000
+                            }
+                          },
+                          "required": [
+                            "mode",
+                            "discountBps"
+                          ],
+                          "additionalProperties": false
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "mode": {
+                              "type": "string",
+                              "enum": [
+                                "OWN_PRICE"
+                              ]
+                            },
+                            "pricePaise": {
+                              "type": "integer",
+                              "minimum": 100,
+                              "maximum": 1000000
+                            }
+                          },
+                          "required": [
+                            "mode",
+                            "pricePaise"
+                          ],
+                          "additionalProperties": false
+                        }
+                      ]
+                    },
+                    "subscriptionFigure": {
+                      "type": "object",
+                      "properties": {
+                        "basePaise": {
+                          "type": "integer",
+                          "minimum": 0
+                        },
+                        "discountBps": {
+                          "type": "integer",
+                          "minimum": 0,
+                          "maximum": 10000
+                        },
+                        "paysPaise": {
+                          "$ref": "#/properties/subscriptionFigure/properties/basePaise"
+                        },
+                        "source": {
+                          "type": "string",
+                          "enum": [
+                            "OURS",
+                            "OWN_DISCOUNT",
+                            "OWN_PRICE"
+                          ]
+                        },
+                        "tierCode": {
+                          "type": "string",
+                          "nullable": true
+                        }
+                      },
+                      "required": [
+                        "basePaise",
+                        "discountBps",
+                        "paysPaise",
+                        "source",
+                        "tierCode"
+                      ],
+                      "additionalProperties": false,
+                      "nullable": true
+                    },
+                    "premiumStudents": {
+                      "type": "boolean"
+                    },
+                    "premiumTeachers": {
+                      "type": "boolean"
+                    },
+                    "premium": {
+                      "$ref": "#/properties/subscription"
+                    },
+                    "premiumFigure": {
+                      "$ref": "#/properties/subscriptionFigure"
+                    },
+                    "note": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "status": {
+                      "type": "string",
+                      "enum": [
+                        "TRIAL",
+                        "ACTIVE",
+                        "DUE",
+                        "SUSPENDED",
+                        "ENDED"
+                      ],
+                      "nullable": true
+                    },
+                    "startsOn": {
+                      "type": "string",
+                      "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+                      "nullable": true
+                    },
+                    "renewsOn": {
+                      "allOf": [
+                        {
+                          "$ref": "#/properties/startsOn"
+                        }
+                      ],
+                      "nullable": true
+                    },
+                    "paidOn": {
+                      "allOf": [
+                        {
+                          "$ref": "#/properties/startsOn"
+                        }
+                      ],
+                      "nullable": true
+                    },
+                    "state": {
+                      "type": "string",
+                      "enum": [
+                        "FREE",
+                        "FREE_ENDED",
+                        "PAID",
+                        "RENEWAL_PASSED",
+                        "INVOICED_UNPAID",
+                        "DUE_SINCE",
+                        "RECORDING_PAUSED",
+                        "ENDED",
+                        "SUSPENDED_OPEN",
+                        "NO_RECORD"
+                      ]
+                    },
+                    "stateDay": {
+                      "allOf": [
+                        {
+                          "$ref": "#/properties/startsOn"
+                        }
+                      ],
+                      "nullable": true
+                    },
+                    "noTierChosen": {
+                      "type": "boolean"
+                    },
+                    "pupils": {
+                      "type": "integer",
+                      "minimum": 0,
+                      "nullable": true
+                    },
+                    "bill": {
+                      "type": "object",
+                      "properties": {
+                        "pupils": {
+                          "$ref": "#/properties/pupils"
+                        },
+                        "lines": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "part": {
+                                "type": "string",
+                                "enum": [
+                                  "SUBSCRIPTION",
+                                  "PREMIUM"
+                                ]
+                              },
+                              "perStudentPaise": {
+                                "$ref": "#/properties/subscriptionFigure/properties/basePaise"
+                              },
+                              "totalPaise": {
+                                "$ref": "#/properties/subscriptionFigure/properties/basePaise"
+                              }
+                            },
+                            "required": [
+                              "part",
+                              "perStudentPaise",
+                              "totalPaise"
+                            ],
+                            "additionalProperties": false
+                          }
+                        },
+                        "totalPaise": {
+                          "$ref": "#/properties/subscriptionFigure/properties/basePaise"
+                        }
+                      },
+                      "required": [
+                        "pupils",
+                        "lines",
+                        "totalPaise"
+                      ],
+                      "additionalProperties": false,
+                      "nullable": true
+                    }
+                  },
+                  "required": [
+                    "schoolId",
+                    "name",
+                    "kind",
+                    "planCode",
+                    "termsSet",
+                    "termsSetAt",
+                    "subscription",
+                    "subscriptionFigure",
+                    "premiumStudents",
+                    "premiumTeachers",
+                    "premium",
+                    "premiumFigure",
+                    "note",
+                    "status",
+                    "startsOn",
+                    "renewsOn",
+                    "paidOn",
+                    "state",
+                    "stateDay",
+                    "noTierChosen",
+                    "pupils",
+                    "bill"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "schoolId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      },
+      "put": {
+        "summary": "Change one school's own terms for either part, its premium switches or its note, against the terms as read; a save of a part's terms sets the school's terms; preview writes nothing; audited in both logs and the office told",
+        "description": "The server operator.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": "operator",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "preview": {
+                      "type": "boolean"
+                    },
+                    "terms": {
+                      "type": "object",
+                      "properties": {
+                        "schoolId": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 64
+                        },
+                        "name": {
+                          "type": "string"
+                        },
+                        "kind": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "planCode": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "termsSet": {
+                          "type": "boolean"
+                        },
+                        "termsSetAt": {
+                          "type": "string",
+                          "format": "date-time",
+                          "nullable": true
+                        },
+                        "subscription": {
+                          "anyOf": [
+                            {
+                              "type": "object",
+                              "properties": {
+                                "mode": {
+                                  "type": "string",
+                                  "enum": [
+                                    "OURS"
+                                  ]
+                                }
+                              },
+                              "required": [
+                                "mode"
+                              ],
+                              "additionalProperties": false
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "mode": {
+                                  "type": "string",
+                                  "enum": [
+                                    "OWN_DISCOUNT"
+                                  ]
+                                },
+                                "discountBps": {
+                                  "type": "integer",
+                                  "minimum": 0,
+                                  "maximum": 10000
+                                }
+                              },
+                              "required": [
+                                "mode",
+                                "discountBps"
+                              ],
+                              "additionalProperties": false
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "mode": {
+                                  "type": "string",
+                                  "enum": [
+                                    "OWN_PRICE"
+                                  ]
+                                },
+                                "pricePaise": {
+                                  "type": "integer",
+                                  "minimum": 100,
+                                  "maximum": 1000000
+                                }
+                              },
+                              "required": [
+                                "mode",
+                                "pricePaise"
+                              ],
+                              "additionalProperties": false
+                            }
+                          ]
+                        },
+                        "subscriptionFigure": {
+                          "type": "object",
+                          "properties": {
+                            "basePaise": {
+                              "type": "integer",
+                              "minimum": 0
+                            },
+                            "discountBps": {
+                              "type": "integer",
+                              "minimum": 0,
+                              "maximum": 10000
+                            },
+                            "paysPaise": {
+                              "$ref": "#/properties/terms/properties/subscriptionFigure/properties/basePaise"
+                            },
+                            "source": {
+                              "type": "string",
+                              "enum": [
+                                "OURS",
+                                "OWN_DISCOUNT",
+                                "OWN_PRICE"
+                              ]
+                            },
+                            "tierCode": {
+                              "type": "string",
+                              "nullable": true
+                            }
+                          },
+                          "required": [
+                            "basePaise",
+                            "discountBps",
+                            "paysPaise",
+                            "source",
+                            "tierCode"
+                          ],
+                          "additionalProperties": false,
+                          "nullable": true
+                        },
+                        "premiumStudents": {
+                          "type": "boolean"
+                        },
+                        "premiumTeachers": {
+                          "type": "boolean"
+                        },
+                        "premium": {
+                          "$ref": "#/properties/terms/properties/subscription"
+                        },
+                        "premiumFigure": {
+                          "$ref": "#/properties/terms/properties/subscriptionFigure"
+                        },
+                        "note": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "status": {
+                          "type": "string",
+                          "enum": [
+                            "TRIAL",
+                            "ACTIVE",
+                            "DUE",
+                            "SUSPENDED",
+                            "ENDED"
+                          ],
+                          "nullable": true
+                        },
+                        "startsOn": {
+                          "type": "string",
+                          "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+                          "nullable": true
+                        },
+                        "renewsOn": {
+                          "allOf": [
+                            {
+                              "$ref": "#/properties/terms/properties/startsOn"
+                            }
+                          ],
+                          "nullable": true
+                        },
+                        "paidOn": {
+                          "allOf": [
+                            {
+                              "$ref": "#/properties/terms/properties/startsOn"
+                            }
+                          ],
+                          "nullable": true
+                        },
+                        "state": {
+                          "type": "string",
+                          "enum": [
+                            "FREE",
+                            "FREE_ENDED",
+                            "PAID",
+                            "RENEWAL_PASSED",
+                            "INVOICED_UNPAID",
+                            "DUE_SINCE",
+                            "RECORDING_PAUSED",
+                            "ENDED",
+                            "SUSPENDED_OPEN",
+                            "NO_RECORD"
+                          ]
+                        },
+                        "stateDay": {
+                          "allOf": [
+                            {
+                              "$ref": "#/properties/terms/properties/startsOn"
+                            }
+                          ],
+                          "nullable": true
+                        },
+                        "noTierChosen": {
+                          "type": "boolean"
+                        },
+                        "pupils": {
+                          "type": "integer",
+                          "minimum": 0,
+                          "nullable": true
+                        },
+                        "bill": {
+                          "type": "object",
+                          "properties": {
+                            "pupils": {
+                              "$ref": "#/properties/terms/properties/pupils"
+                            },
+                            "lines": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "part": {
+                                    "type": "string",
+                                    "enum": [
+                                      "SUBSCRIPTION",
+                                      "PREMIUM"
+                                    ]
+                                  },
+                                  "perStudentPaise": {
+                                    "$ref": "#/properties/terms/properties/subscriptionFigure/properties/basePaise"
+                                  },
+                                  "totalPaise": {
+                                    "$ref": "#/properties/terms/properties/subscriptionFigure/properties/basePaise"
+                                  }
+                                },
+                                "required": [
+                                  "part",
+                                  "perStudentPaise",
+                                  "totalPaise"
+                                ],
+                                "additionalProperties": false
+                              }
+                            },
+                            "totalPaise": {
+                              "$ref": "#/properties/terms/properties/subscriptionFigure/properties/basePaise"
+                            }
+                          },
+                          "required": [
+                            "pupils",
+                            "lines",
+                            "totalPaise"
+                          ],
+                          "additionalProperties": false,
+                          "nullable": true
+                        }
+                      },
+                      "required": [
+                        "schoolId",
+                        "name",
+                        "kind",
+                        "planCode",
+                        "termsSet",
+                        "termsSetAt",
+                        "subscription",
+                        "subscriptionFigure",
+                        "premiumStudents",
+                        "premiumTeachers",
+                        "premium",
+                        "premiumFigure",
+                        "note",
+                        "status",
+                        "startsOn",
+                        "renewsOn",
+                        "paidOn",
+                        "state",
+                        "stateDay",
+                        "noTierChosen",
+                        "pupils",
+                        "bill"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "changed": {
+                      "type": "boolean"
+                    },
+                    "told": {
+                      "$ref": "#/properties/terms/properties/pupils"
+                    }
+                  },
+                  "required": [
+                    "preview",
+                    "terms",
+                    "changed",
+                    "told"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "schoolId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "subscription": {
+                    "anyOf": [
+                      {
+                        "type": "object",
+                        "properties": {
+                          "mode": {
+                            "type": "string",
+                            "enum": [
+                              "OURS"
+                            ]
+                          }
+                        },
+                        "required": [
+                          "mode"
+                        ],
+                        "additionalProperties": false
+                      },
+                      {
+                        "type": "object",
+                        "properties": {
+                          "mode": {
+                            "type": "string",
+                            "enum": [
+                              "OWN_DISCOUNT"
+                            ]
+                          },
+                          "discountBps": {
+                            "type": "integer",
+                            "minimum": 0,
+                            "maximum": 10000
+                          }
+                        },
+                        "required": [
+                          "mode",
+                          "discountBps"
+                        ],
+                        "additionalProperties": false
+                      },
+                      {
+                        "type": "object",
+                        "properties": {
+                          "mode": {
+                            "type": "string",
+                            "enum": [
+                              "OWN_PRICE"
+                            ]
+                          },
+                          "pricePaise": {
+                            "type": "integer",
+                            "minimum": 100,
+                            "maximum": 1000000
+                          }
+                        },
+                        "required": [
+                          "mode",
+                          "pricePaise"
+                        ],
+                        "additionalProperties": false
+                      }
+                    ]
+                  },
+                  "premium": {
+                    "type": "object",
+                    "properties": {
+                      "students": {
+                        "type": "boolean"
+                      },
+                      "teachers": {
+                        "type": "boolean"
+                      },
+                      "terms": {
+                        "$ref": "#/properties/subscription"
+                      }
+                    },
+                    "additionalProperties": false
+                  },
+                  "note": {
+                    "type": "string",
+                    "maxLength": 500,
+                    "nullable": true
+                  },
+                  "reason": {
+                    "type": "string",
+                    "maxLength": 500
+                  },
+                  "expect": {
+                    "type": "object",
+                    "properties": {
+                      "termsSetAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "nullable": true
+                      },
+                      "premiumStudents": {
+                        "type": "boolean"
+                      },
+                      "premiumTeachers": {
+                        "type": "boolean"
+                      },
+                      "subscription": {
+                        "$ref": "#/properties/subscription"
+                      },
+                      "premium": {
+                        "$ref": "#/properties/subscription"
+                      }
+                    },
+                    "required": [
+                      "termsSetAt",
+                      "premiumStudents",
+                      "premiumTeachers",
+                      "subscription",
+                      "premium"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "preview": {
+                    "type": "boolean"
+                  }
+                },
+                "required": [
+                  "expect"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/operator/schools/{schoolId}/payment": {
+      "post": {
+        "summary": "Record a payment the company received, against the standing as read: the renewal moves twelve months on, once, and the school is Active; refused while suspended or ended; an amount unlike the bill needs acceptDifference; recorded, never collected; preview writes nothing",
+        "description": "The server operator.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": "operator",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "preview": {
+                      "type": "boolean"
+                    },
+                    "renewalBefore": {
+                      "type": "string",
+                      "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+                      "nullable": true
+                    },
+                    "renewalAfter": {
+                      "$ref": "#/properties/renewalBefore"
+                    },
+                    "statusAfter": {
+                      "type": "string",
+                      "enum": [
+                        "TRIAL",
+                        "ACTIVE",
+                        "DUE",
+                        "SUSPENDED",
+                        "ENDED"
+                      ]
+                    },
+                    "billPaise": {
+                      "type": "integer",
+                      "minimum": 0,
+                      "nullable": true
+                    },
+                    "differencePaise": {
+                      "type": "integer",
+                      "nullable": true
+                    }
+                  },
+                  "required": [
+                    "preview",
+                    "renewalBefore",
+                    "renewalAfter",
+                    "statusAfter",
+                    "billPaise",
+                    "differencePaise"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "schoolId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "fromStatus": {
+                    "type": "string",
+                    "enum": [
+                      "TRIAL",
+                      "ACTIVE",
+                      "DUE",
+                      "SUSPENDED",
+                      "ENDED"
+                    ],
+                    "nullable": true
+                  },
+                  "fromDueAt": {
+                    "type": "string",
+                    "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+                    "nullable": true
+                  },
+                  "paidOn": {
+                    "$ref": "#/properties/fromDueAt"
+                  },
+                  "ref": {
+                    "type": "string",
+                    "maxLength": 120,
+                    "nullable": true
+                  },
+                  "amountPaise": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 10000000000
+                  },
+                  "acceptDifference": {
+                    "type": "boolean"
+                  },
+                  "preview": {
+                    "type": "boolean"
+                  }
+                },
+                "required": [
+                  "fromStatus",
+                  "fromDueAt",
+                  "paidOn",
+                  "amountPaise"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/v1/operator/schools/{schoolId}/subscription": {
       "post": {
         "summary": "Change a school's subscription record with a reason: its status (a move the coded list allows), start and due dates, invoice sent and paid dates with references, and its commission partner — recorded, never collected; audited twice",
@@ -41956,6 +44061,95 @@
                   },
                   "dueAt": {
                     "$ref": "#/properties/startsAt"
+                  },
+                  "subscription": {
+                    "anyOf": [
+                      {
+                        "type": "object",
+                        "properties": {
+                          "mode": {
+                            "type": "string",
+                            "enum": [
+                              "OURS"
+                            ]
+                          }
+                        },
+                        "required": [
+                          "mode"
+                        ],
+                        "additionalProperties": false
+                      },
+                      {
+                        "type": "object",
+                        "properties": {
+                          "mode": {
+                            "type": "string",
+                            "enum": [
+                              "OWN_DISCOUNT"
+                            ]
+                          },
+                          "discountBps": {
+                            "type": "integer",
+                            "minimum": 0,
+                            "maximum": 10000
+                          }
+                        },
+                        "required": [
+                          "mode",
+                          "discountBps"
+                        ],
+                        "additionalProperties": false
+                      },
+                      {
+                        "type": "object",
+                        "properties": {
+                          "mode": {
+                            "type": "string",
+                            "enum": [
+                              "OWN_PRICE"
+                            ]
+                          },
+                          "pricePaise": {
+                            "type": "integer",
+                            "minimum": 100,
+                            "maximum": 1000000
+                          }
+                        },
+                        "required": [
+                          "mode",
+                          "pricePaise"
+                        ],
+                        "additionalProperties": false
+                      }
+                    ]
+                  },
+                  "premium": {
+                    "type": "object",
+                    "properties": {
+                      "students": {
+                        "type": "boolean"
+                      },
+                      "teachers": {
+                        "type": "boolean"
+                      },
+                      "terms": {
+                        "$ref": "#/properties/subscription"
+                      }
+                    },
+                    "required": [
+                      "students",
+                      "teachers"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "freeMonths": {
+                    "type": "integer"
+                  },
+                  "acceptOverAYear": {
+                    "type": "boolean"
+                  },
+                  "acceptDueNow": {
+                    "type": "boolean"
                   },
                   "contact": {
                     "type": "object",
@@ -54005,6 +56199,197 @@
                   "toClassIds"
                 ],
                 "additionalProperties": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/office/subscription": {
+      "get": {
+        "summary": "This school's Shalaghar subscription and premium add-on, read only: both parts, free until, renews on, and whether recording is paused; nothing is paid in the app",
+        "description": "Roles: ADMIN, PRINCIPAL.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN",
+          "PRINCIPAL"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "termsSet": {
+                      "type": "boolean"
+                    },
+                    "subscriptionFigure": {
+                      "type": "object",
+                      "properties": {
+                        "basePaise": {
+                          "type": "integer",
+                          "minimum": 0
+                        },
+                        "discountBps": {
+                          "type": "integer",
+                          "minimum": 0,
+                          "maximum": 10000
+                        },
+                        "paysPaise": {
+                          "$ref": "#/properties/subscriptionFigure/properties/basePaise"
+                        },
+                        "source": {
+                          "type": "string",
+                          "enum": [
+                            "OURS",
+                            "OWN_DISCOUNT",
+                            "OWN_PRICE"
+                          ]
+                        },
+                        "tierCode": {
+                          "type": "string",
+                          "nullable": true
+                        }
+                      },
+                      "required": [
+                        "basePaise",
+                        "discountBps",
+                        "paysPaise",
+                        "source",
+                        "tierCode"
+                      ],
+                      "additionalProperties": false,
+                      "nullable": true
+                    },
+                    "premium": {
+                      "type": "object",
+                      "properties": {
+                        "students": {
+                          "type": "boolean"
+                        },
+                        "teachers": {
+                          "type": "boolean"
+                        },
+                        "figure": {
+                          "allOf": [
+                            {
+                              "$ref": "#/properties/subscriptionFigure"
+                            }
+                          ],
+                          "nullable": true
+                        }
+                      },
+                      "required": [
+                        "students",
+                        "teachers",
+                        "figure"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "freeUntil": {
+                      "type": "string",
+                      "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+                      "nullable": true
+                    },
+                    "renewsOn": {
+                      "allOf": [
+                        {
+                          "$ref": "#/properties/freeUntil"
+                        }
+                      ],
+                      "nullable": true
+                    },
+                    "state": {
+                      "type": "string",
+                      "enum": [
+                        "FREE",
+                        "FREE_ENDED",
+                        "PAID",
+                        "RENEWAL_PASSED",
+                        "INVOICED_UNPAID",
+                        "DUE_SINCE",
+                        "RECORDING_PAUSED",
+                        "ENDED",
+                        "SUSPENDED_OPEN",
+                        "NO_RECORD"
+                      ]
+                    },
+                    "recording": {
+                      "type": "object",
+                      "properties": {
+                        "paused": {
+                          "type": "boolean"
+                        },
+                        "since": {
+                          "type": "string",
+                          "format": "date-time",
+                          "nullable": true
+                        }
+                      },
+                      "required": [
+                        "paused",
+                        "since"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "termsSet",
+                    "subscriptionFigure",
+                    "premium",
+                    "freeUntil",
+                    "renewsOn",
+                    "state",
+                    "recording"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
               }
             }
           }

@@ -53,5 +53,7 @@ export const OFFICE: Endpoint[] = [
   { method: "POST", path: "/api/v1/office/timetable/import", summary: "Write the sheet: each cell upserted on (class, day, period) in one transaction; a teacher that cannot be honoured is left blank", access: ["ADMIN"], request: c.timetableImportBodySchema, response: c.timetableImportResultSchema, emptyBodyStatus: 422 },
   { method: "POST", path: "/api/v1/office/timetable/copy", summary: "Copy one section's week onto its sister sections, teachers left blank for the office to fill (overwrites theirs)", access: ["ADMIN"], request: c.timetableCopyBodySchema, reach: "ownSchool", reachRefusal: "unprocessable", response: c.timetableCopyResultSchema, emptyBodyStatus: 422 },
   // ---- usage against the plan (2026-10-01) ------------------------------------------
+  // ---- the school's own subscription card (decision 0010, 21 November 2026) ----
+  { method: "GET", path: "/api/v1/office/subscription", summary: "This school's Shalaghar subscription and premium add-on, read only: both parts, free until, renews on, and whether recording is paused; nothing is paid in the app", access: ["ADMIN", "PRINCIPAL"], response: c.officeSubscriptionSchema },
   { method: "GET", path: "/api/v1/office/usage", summary: "This school's running month — pupils, texts, storage, people active — against its plan's caps, and the months before it; the office's own", access: ["ADMIN", "PRINCIPAL"], response: c.officeUsageSchema },
 ];

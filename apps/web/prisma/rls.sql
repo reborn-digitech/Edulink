@@ -3705,6 +3705,7 @@ CREATE TRIGGER "OperatorAccess_close_only"
 --   RecruiterProfile
 --   ReferenceSource
 --   Requirement
+--   SchoolOffer
 --   Session
 --   SessionPayment
 --   SsoIdentity

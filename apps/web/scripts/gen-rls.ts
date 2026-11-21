@@ -176,6 +176,11 @@ const NO_SCHOOL_POLICY = new Set([
   // school, read by every tenant's requests and written by the operator alone, who belongs to no school.
   "PlatformFeature",
   // ---- end feature-switches ----
+  // ---- school-offer (21 Nov 2026) ----
+  // Our offer for every school (decision 0010 parts 1 to 3; src/lib/school-terms.ts): one row, the same for every
+  // school, read when a school's figure is worked out and written by the operator alone, who belongs to no school.
+  "SchoolOffer",
+  // ---- end school-offer ----
   // ---- expert-registration (15 Oct 2026) ----
   // An expert's application from the login page (src/lib/expert-applications.ts): the applicant has no
   // session and no school, the reader and decider is the operator alone, who belongs to no school, and no

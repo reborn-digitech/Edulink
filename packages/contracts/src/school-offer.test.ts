@@ -27,6 +27,7 @@ import {
   renewalOverAYear,
   renewalReached,
   standingBodySchema,
+  statusByRenewal,
   subscriptionMonthPaise,
   subscriptionTerms,
   subscriptionsQuerySchema,
@@ -181,6 +182,17 @@ describe("the renewal from the free months: calendar months, the day held to the
     expect(renewalReached("2027-05-21", "2027-05-21")).toBe(true);
     expect(renewalReached(null, "2027-05-21")).toBe(false);
   });
+  it("an unpaid school's renewal calls for DUE on the start day or on or before today, TRIAL after today (rule 5, the coordinator's C1)", () => {
+    expect(statusByRenewal("2026-11-21", "2027-05-21", "2026-11-21")).toBe("TRIAL");
+    expect(statusByRenewal("2026-10-01", "2026-11-21", "2026-11-21")).toBe("DUE");
+    expect(statusByRenewal("2026-10-01", "2026-11-20", "2026-11-21")).toBe("DUE");
+    expect(statusByRenewal("2026-10-01", "2026-11-22", "2026-11-21")).toBe("TRIAL");
+    // No free months: a start ahead renews, due, on its first day, as onboarding makes it.
+    expect(statusByRenewal("2026-12-01", "2026-12-01", "2026-11-21")).toBe("DUE");
+    // No start on record: today alone decides.
+    expect(statusByRenewal(null, "2026-12-01", "2026-11-21")).toBe("TRIAL");
+    expect(statusByRenewal(null, "2026-11-21", "2026-11-21")).toBe("DUE");
+  });
 });
 
 describe("a payment moves the renewal twelve months, once, never at a paused or ended school", () => {
@@ -197,8 +209,8 @@ describe("a payment moves the renewal twelve months, once, never at a paused or 
     expect(nextRenewalOnPayment({ status: "ACTIVE", dueDay: null, paidOnDay: "2026-11-21" })).toEqual({ ok: true, renewalDay: "2027-11-21" });
   });
   it("refused while SUSPENDED or ENDED: resume first", () => {
-    expect(nextRenewalOnPayment({ status: "SUSPENDED", dueDay: "2027-05-21", paidOnDay: "2027-05-01" })).toEqual({ ok: false, errorKey: "subscription.paymentStatusFirst" });
-    expect(nextRenewalOnPayment({ status: "ENDED", dueDay: "2027-05-21", paidOnDay: "2027-05-01" })).toEqual({ ok: false, errorKey: "subscription.paymentStatusFirst" });
+    expect(nextRenewalOnPayment({ status: "SUSPENDED", dueDay: "2027-05-21", paidOnDay: "2027-05-01" })).toEqual({ ok: false, errorKey: "root.paymentStatusFirst" });
+    expect(nextRenewalOnPayment({ status: "ENDED", dueDay: "2027-05-21", paidOnDay: "2027-05-01" })).toEqual({ ok: false, errorKey: "root.paymentStatusFirst" });
   });
 });
 

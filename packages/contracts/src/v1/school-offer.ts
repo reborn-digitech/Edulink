@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { DISCOUNT_MAX_BPS, discountBpsSchema, freeMonthsSchema, partTermsSchema, wholeRupeesPaise } from "./school-offer-parts";
 import { realDateKey } from "./calendar-keys";
 import { isCollegeKind } from "./modules";
 import { collegeTierOf, type CollegeTierCode } from "./operator-college";
@@ -22,9 +23,10 @@ import { subscriptionStatusSchema, type SubscriptionStatus } from "./operator-da
 /* The coded lists and the bounds                                          */
 /* ---------------------------------------------------------------------- */
 
-/** The free months a new school may be given, covering both parts. */
-export const FREE_MONTHS = [0, 1, 3, 6, 12] as const;
-export type FreeMonths = (typeof FREE_MONTHS)[number];
+/** The pieces the onboarding body shares (school-offer-parts.ts, a leaf, so operator-dashboard.ts can import them). */
+export { FREE_MONTHS, PRICE_MIN_PAISE, PRICE_MAX_PAISE, DISCOUNT_MAX_BPS, wholeRupeesPaise, discountBpsSchema, freeMonthsSchema, partTermsSchema } from "./school-offer-parts";
+export type { FreeMonths, PartTermsBody } from "./school-offer-parts";
+
 
 /** The chips the price forms offer, in paise a student a year: ₹50 to ₹200 for the subscription, ₹25 to ₹100 more for premium. */
 export const SUBSCRIPTION_PRICE_CHIPS_PAISE = [5_000, 10_000, 15_000, 20_000] as const;
@@ -32,10 +34,6 @@ export const PREMIUM_PRICE_CHIPS_PAISE = [2_500, 5_000, 7_500, 10_000] as const;
 /** A school's own discount chips, in basis points (10, 20, 25 and 50 %). */
 export const OWN_DISCOUNT_CHIPS_BPS = [1_000, 2_000, 2_500, 5_000] as const;
 
-/** A price is ₹1 to ₹10,000 a student a year, in whole rupees; a discount 0 to 100 %, in basis points. */
-export const PRICE_MIN_PAISE = 100;
-export const PRICE_MAX_PAISE = 1_000_000;
-export const DISCOUNT_MAX_BPS = 10_000;
 
 /**
  * Our offer before the operator first saves one (no SchoolOffer row): the owner's starting values of 21 November 2026,
@@ -215,12 +213,22 @@ export function renewalReached(dueDay: string | null, todayDay: string): boolean
 }
 
 /**
+ * The status a renewal calls for while nothing is recorded as paid (rule 5; the coordinator's C1 of 21 November 2026): DUE
+ * when the renewal is the start day (no free months) or on or before today, TRIAL when it is later; with no start on
+ * record, today alone decides. Onboarding's new path sets it, and an unpaid school's TRIAL may become DUE, or its DUE
+ * TRIAL, only when its renewal as it will stand calls for that status.
+ */
+export function statusByRenewal(startDay: string | null, renewalDay: string, todayDay: string): "TRIAL" | "DUE" {
+  return renewalDay === startDay || renewalDay <= todayDay ? "DUE" : "TRIAL";
+}
+
+/**
  * Where the renewal moves when a payment is recorded: twelve months on from the renewal on record, whether paid early
  * (an invoice sent before the renewal) or late, in the free period or paid up; with no record, or no renewal on record,
  * the year starts on the day it was paid. Refused while SUSPENDED or ENDED: recording is resumed first.
  */
-export function nextRenewalOnPayment(input: { status: SubscriptionStatus | null; dueDay: string | null; paidOnDay: string }): { ok: true; renewalDay: string } | { ok: false; errorKey: "subscription.paymentStatusFirst" } {
-  if (input.status === "SUSPENDED" || input.status === "ENDED") return { ok: false, errorKey: "subscription.paymentStatusFirst" };
+export function nextRenewalOnPayment(input: { status: SubscriptionStatus | null; dueDay: string | null; paidOnDay: string }): { ok: true; renewalDay: string } | { ok: false; errorKey: "root.paymentStatusFirst" } {
+  if (input.status === "SUSPENDED" || input.status === "ENDED") return { ok: false, errorKey: "root.paymentStatusFirst" };
   if (input.status === null || input.dueDay === null) return { ok: true, renewalDay: renewalFrom(input.paidOnDay, 12) };
   return { ok: true, renewalDay: renewalFrom(input.dueDay, 12) };
 }
@@ -279,20 +287,6 @@ export function mayPauseOn(warnedDay: string | null, todayDay: string): boolean 
 const iso = z.string().datetime();
 const reasonSchema = z.string().trim().min(1).max(500);
 
-/** A price a student a year: whole rupees from ₹1 to ₹10,000, in paise. parseRupees takes two decimals, so the whole rupee is refused here. */
-export const wholeRupeesPaise = z
-  .number()
-  .int()
-  .min(PRICE_MIN_PAISE)
-  .max(PRICE_MAX_PAISE)
-  .refine((paise) => paise % 100 === 0, "offer.wholeRupees");
-/** A discount, 0 to 100 % in basis points. */
-export const discountBpsSchema = z.number().int().min(0).max(DISCOUNT_MAX_BPS);
-/** The free months, from the list. */
-export const freeMonthsSchema = z
-  .number()
-  .int()
-  .refine((months) => (FREE_MONTHS as readonly number[]).includes(months), "offer.freeMonths");
 
 /** One part of our offer as saved. */
 export const offerPartSchema = z.object({ pricePaise: wholeRupeesPaise, discountBps: discountBpsSchema }).strict();
@@ -312,13 +306,6 @@ export const offerBodySchema = z
   .strict();
 export type OfferBody = z.infer<typeof offerBodySchema>;
 
-/** A school's own terms for one part, one chip at a time: ours, an own discount on ours, or an own price. */
-export const partTermsSchema = z.discriminatedUnion("mode", [
-  z.object({ mode: z.literal("OURS") }).strict(),
-  z.object({ mode: z.literal("OWN_DISCOUNT"), discountBps: discountBpsSchema }).strict(),
-  z.object({ mode: z.literal("OWN_PRICE"), pricePaise: wholeRupeesPaise }).strict(),
-]);
-export type PartTermsBody = z.infer<typeof partTermsSchema>;
 
 /**
  * POST /api/v1/operator/schools/{schoolId}/standing: one act, its reason, and the standing as read (compare-and-set).
@@ -336,7 +323,7 @@ export const standingBodySchema = z
   })
   .strict()
   .superRefine((body, ctx) => {
-    if ((body.action === "pause" || body.action === "end") && !body.confirmName) ctx.addIssue({ code: z.ZodIssueCode.custom, path: ["confirmName"], message: "standing.nameMismatch" });
+    if ((body.action === "pause" || body.action === "end") && !body.confirmName) ctx.addIssue({ code: z.ZodIssueCode.custom, path: ["confirmName"], message: "root.standingNameNeeded" });
   });
 export type StandingBody = z.infer<typeof standingBodySchema>;
 
@@ -363,3 +350,176 @@ export const subscriptionsQuerySchema = z.object({
   recording: z.enum(["all", "open", "paused"]).optional(),
 });
 export type SubscriptionsQuery = z.infer<typeof subscriptionsQuerySchema>;
+
+/* ---------------------------------------------------------------------- */
+/* The terms door's and the bulk door's bodies (phase 2)                   */
+/* ---------------------------------------------------------------------- */
+
+const doorId = z.string().min(1).max(64);
+
+/** A school's terms as the form read them: compare-and-set, so a change made meanwhile is refused (terms.changedMeanwhile). */
+export const schoolTermsExpectSchema = z
+  .object({
+    termsSetAt: iso.nullable(),
+    premiumStudents: z.boolean(),
+    premiumTeachers: z.boolean(),
+    subscription: partTermsSchema,
+    premium: partTermsSchema,
+  })
+  .strict();
+
+/**
+ * PUT /api/v1/operator/schools/{schoolId}/terms: any of the subscription's terms, premium's switches and terms, and the
+ * school's note, with the terms as read. A save of either part's terms sets the school's terms (termsSetAt); a switch
+ * alone does not. A reason is asked of a change of terms by the form; the door keeps it in the audit row when given.
+ */
+export const termsBodySchema = z
+  .object({
+    subscription: partTermsSchema.optional(),
+    premium: z.object({ students: z.boolean().optional(), teachers: z.boolean().optional(), terms: partTermsSchema.optional() }).strict().optional(),
+    note: z.string().trim().max(500).nullable().optional(),
+    reason: z.string().trim().max(500).optional(),
+    expect: schoolTermsExpectSchema,
+    preview: z.boolean().optional(),
+  })
+  .strict();
+export type TermsBody = z.infer<typeof termsBodySchema>;
+
+/** What one bulk change does to every school it names: a premium switch on or off, or our prices for both parts. Never a pause. */
+export const BULK_ACTIONS = ["STUDENTS_ON", "STUDENTS_OFF", "TEACHERS_ON", "TEACHERS_OFF", "OUR_PRICES"] as const;
+export type BulkAction = (typeof BULK_ACTIONS)[number];
+
+/** POST /api/v1/operator/subscriptions/bulk: one action over 1 to 100 schools. */
+export const bulkBodySchema = z
+  .object({
+    schoolIds: z.array(doorId).min(1).max(BULK_SCHOOLS_MAX),
+    action: z.enum(BULK_ACTIONS),
+    reason: z.string().trim().max(500).optional(),
+    preview: z.boolean().optional(),
+  })
+  .strict();
+export type BulkBody = z.infer<typeof bulkBodySchema>;
+
+/* ---------------------------------------------------------------------- */
+/* The doors' answers (phase 2)                                            */
+/* ---------------------------------------------------------------------- */
+
+const paise = z.number().int().min(0);
+const count = z.number().int().min(0);
+const dayKey = z.string().regex(/^\d{4}-\d{2}-\d{2}$/, "day");
+
+/** A part's figure at one school, as worked out on read. */
+export const partFigureSchema = z.object({ basePaise: paise, discountBps: z.number().int().min(0).max(10_000), paysPaise: paise, source: z.enum(TERMS_SOURCES), tierCode: z.string().nullable() });
+export type PartFigure = z.infer<typeof partFigureSchema>;
+
+/** The year's bill at today's prices, last count. */
+export const billSchema = z.object({ pupils: count, lines: z.array(z.object({ part: z.enum(["SUBSCRIPTION", "PREMIUM"]), perStudentPaise: paise, totalPaise: paise })), totalPaise: paise });
+
+/** Our offer as it stands: the saved row, or the owner's starting values (`starting`) before the first save. */
+export const offerReadSchema = z.object({
+  subscription: z.object({ pricePaise: paise, discountBps: z.number().int() }),
+  premium: z.object({ pricePaise: paise, discountBps: z.number().int() }),
+  freeMonths: z.number().int(),
+  studentsByDefault: z.boolean(),
+  teachersByDefault: z.boolean(),
+  updatedAt: iso.nullable(),
+  starting: z.boolean(),
+});
+
+/** How the live schools stand against our offer: following it, on an own discount or price, colleges on a tier, terms not set; and how many have premium. */
+export const offerGroupsSchema = z.object({ follow: count, ownDiscount: count, ownPrice: count, colleges: count, notSet: count, premiumOn: count });
+
+/** The year billed across the live schools at today's prices, and the schools it leaves out and why. */
+export const offerTotalsSchema = z.object({
+  billedYearPaise: paise,
+  countedSchools: count,
+  notCounted: z.object({ notSet: count, noTier: count, noCount: count, notRunning: count }),
+});
+
+/** GET /api/v1/operator/offer. */
+/** One change of our offer, from the operator's own log: when, the reason given, and the offer before and after it. */
+export const offerChangeEntrySchema = z.object({ at: iso, reason: z.string(), before: offerReadSchema, after: offerReadSchema });
+export type OfferChangeEntry = z.infer<typeof offerChangeEntrySchema>;
+
+/** GET /api/v1/operator/offer: our offer, how the schools stand against it, the year billed, and the last ten changes (§5). */
+export const schoolOfferAnswerSchema = z.object({ offer: offerReadSchema, groups: offerGroupsSchema, totals: offerTotalsSchema, recent: z.array(offerChangeEntrySchema) });
+export type SchoolOfferAnswer = z.infer<typeof schoolOfferAnswerSchema>;
+
+/** One school's figure moved by a change: its part, before and after, and why it moves. */
+export const termsMoveSchema = z.object({ schoolId: doorId, name: z.string(), part: z.enum(["SUBSCRIPTION", "PREMIUM"]), beforePaise: paise, afterPaise: paise, source: z.enum(TERMS_SOURCES) });
+
+/** PUT /api/v1/operator/offer: the schools whose figure moves, those that do not and why, the year's difference at last count, and how many schools are told. */
+export const offerChangeSchema = z.object({
+  preview: z.boolean(),
+  offer: offerReadSchema,
+  moves: z.array(termsMoveSchema),
+  unchanged: z.object({ ownPrice: count, notSet: count }),
+  yearDeltaPaise: z.number().int(),
+  told: count,
+});
+export type OfferChange = z.infer<typeof offerChangeSchema>;
+
+/** A school's terms and standing, as the operator reads them (GET and the answer of PUT …/terms). */
+export const schoolTermsSchema = z.object({
+  schoolId: doorId,
+  name: z.string(),
+  kind: z.string().nullable(),
+  planCode: z.string().nullable(),
+  termsSet: z.boolean(),
+  termsSetAt: iso.nullable(),
+  subscription: partTermsSchema,
+  subscriptionFigure: partFigureSchema.nullable(),
+  premiumStudents: z.boolean(),
+  premiumTeachers: z.boolean(),
+  premium: partTermsSchema,
+  premiumFigure: partFigureSchema,
+  note: z.string().nullable(),
+  status: subscriptionStatusSchema.nullable(),
+  startsOn: dayKey.nullable(),
+  renewsOn: dayKey.nullable(),
+  paidOn: dayKey.nullable(),
+  state: z.enum(SCHOOL_TERMS_STATES),
+  stateDay: dayKey.nullable(),
+  noTierChosen: z.boolean(),
+  pupils: count.nullable(),
+  bill: billSchema.nullable(),
+});
+export type SchoolTerms = z.infer<typeof schoolTermsSchema>;
+
+/** PUT /api/v1/operator/schools/{schoolId}/terms: the terms as they stand (or would, on a preview), and how many people are told. */
+export const termsChangeSchema = z.object({ preview: z.boolean(), terms: schoolTermsSchema, changed: z.boolean(), told: count });
+export type TermsChange = z.infer<typeof termsChangeSchema>;
+
+/** One school's row on the Schools tab. */
+export const subscriptionRowSchema = schoolTermsSchema.omit({ note: true, bill: true }).extend({ billedYearPaise: paise.nullable() });
+/** GET /api/v1/operator/subscriptions. */
+export const subscriptionsAnswerSchema = z.object({ rows: z.array(subscriptionRowSchema), totals: offerTotalsSchema });
+export type SubscriptionsAnswer = z.infer<typeof subscriptionsAnswerSchema>;
+
+/** POST /api/v1/operator/subscriptions/bulk: the schools changed (or that would be), those already so, and how many schools are told. */
+export const bulkAnswerSchema = z.object({ preview: z.boolean(), changed: z.array(z.object({ schoolId: doorId, name: z.string() })), unchanged: count, told: count });
+export type BulkAnswer = z.infer<typeof bulkAnswerSchema>;
+
+/** POST /api/v1/operator/schools/{schoolId}/payment: where the renewal moves, the bill it was taken against, and the difference. */
+export const paymentAnswerSchema = z.object({
+  preview: z.boolean(),
+  renewalBefore: dayKey.nullable(),
+  renewalAfter: dayKey,
+  statusAfter: subscriptionStatusSchema,
+  billPaise: paise.nullable(),
+  differencePaise: z.number().int().nullable(),
+});
+export type PaymentAnswer = z.infer<typeof paymentAnswerSchema>;
+
+/** GET /api/v1/office/subscription: the school's own read-only card. Nothing is paid in the app. */
+export const officeSubscriptionSchema = z.object({
+  termsSet: z.boolean(),
+  subscriptionFigure: partFigureSchema.nullable(),
+  /** Null while the school's terms are not set, as the subscription's figure is: "not recorded yet" (§2.6). */
+  premium: z.object({ students: z.boolean(), teachers: z.boolean(), figure: partFigureSchema.nullable() }),
+  freeUntil: dayKey.nullable(),
+  renewsOn: dayKey.nullable(),
+  state: z.enum(SCHOOL_TERMS_STATES),
+  recording: z.object({ paused: z.boolean(), since: iso.nullable() }),
+});
+export type OfficeSubscription = z.infer<typeof officeSubscriptionSchema>;
