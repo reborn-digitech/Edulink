@@ -19,6 +19,29 @@ const SUFFIX = String(STAMP).slice(-6);
 const SLUG = `zz-profile-${STAMP}`;
 const ids = { college: "", users: [] as string[], teacher: "", teacherM: "", hod: "", admin: "", record: "" };
 
+/**
+ * A PUBLIC PAGE CARRIES THE PAGE'S FIELDS AND NO PRIVATE VALUE. The page is built field by field (faculty-profile.ts
+ * snapshotOf); the check names those fields, asks for each of the fixture's private values exactly, and, as before, finds
+ * any fixture phone or address at all, whoever's. The PAN's values
+ * are seeded as text no run-time number (a stamp is digits) or id (lowercase) can imitate: when the check was the
+ * pattern /4321|sealed|\+9197|@test\.invalid/ over the whole page and the PAN's last four was "4321", a college name
+ * stamped with Date.now() between 06:40:10 and 06:40:20 UTC on 21 November 2026 matched it with nothing leaked (CI run
+ * 44874329172).
+ */
+const PRIVATE = { panLast4: "432F", panSealed: "ZZ-SEALED-PAN" } as const;
+const PAGE_KEYS = ["collegeName", "departmentName", "designation", "experienceYears", "name", "netSetQualified", "qualification", "research"];
+/**
+ * Any fixture phone or address, whoever's: this suite's people and its college are all "+9197…" and "…@test.invalid",
+ * which no stamp (digits only) or id (no "+", no "@") can imitate, so the old pattern's breadth is kept.
+ */
+const FIXTURE_CONTACT = /\+9197\d*|[\w.+-]*@test\.invalid/g;
+/** Each key the page should not have, each private value found in it, and any fixture phone or address; empty is a clean page. */
+function privateIn(snapshotJson: string, secrets: string[]): string[] {
+  const stray = Object.keys(JSON.parse(snapshotJson) as Record<string, unknown>).filter((key) => !PAGE_KEYS.includes(key)).map((key) => `key ${key}`);
+  const contacts = (snapshotJson.match(FIXTURE_CONTACT) ?? []).map((found) => `contact ${found}`);
+  return [...stray, ...secrets.filter((secret) => snapshotJson.includes(secret)), ...contacts];
+}
+
 function appRoleUrl(): string | null {
   const app = process.env.DATABASE_APP_URL;
   const admin = process.env.DATABASE_ADMIN_URL ?? app;
@@ -57,7 +80,7 @@ beforeAll(async () => {
   ids.hod = (await person("Hod", "HOD")).userId;
   ids.admin = (await person("Admin", "ADMIN")).userId;
   const dept = await owner.department.create({ data: { schoolId: ids.college, code: `ZPD${SUFFIX}`, name: "ZZ Physics" }, select: { id: true } });
-  ids.record = (await owner.facultyRecord.create({ data: { schoolId: ids.college, membershipId: teacher.membershipId, designation: "ASSISTANT_PROFESSOR", appointment: "REGULAR", highestQualification: "PHD", netSetQualified: true, experienceBeforeYears: 2, departmentId: dept.id, panSealed: "zz-sealed", panLast4: "4321" }, select: { id: true } })).id;
+  ids.record = (await owner.facultyRecord.create({ data: { schoolId: ids.college, membershipId: teacher.membershipId, designation: "ASSISTANT_PROFESSOR", appointment: "REGULAR", highestQualification: "PHD", netSetQualified: true, experienceBeforeYears: 2, departmentId: dept.id, panSealed: PRIVATE.panSealed, panLast4: PRIVATE.panLast4 }, select: { id: true } })).id;
   await owner.researchItem.create({ data: { schoolId: ids.college, kind: "PUBLICATION", title: "ZZ Low-cost interferometer", indexing: "SCOPUS", year: 2025, facultyMembershipId: teacher.membershipId } });
 });
 
@@ -100,13 +123,25 @@ describe("my public page", () => {
     await expect(setMyPublicProfile(admin, true)).rejects.toMatchObject({ key: "access.wrongRoleForThisAction" });
   });
 
+  it("a page whose college name carries a stamp holding the PAN's old last four is no leak, and the check still finds a private value or key (CI run 44874329172)", () => {
+    const page = { name: "ZZ Profile Teacher", collegeName: `ZZ Profile College ${1795243215000}`, departmentName: "ZZ Physics", designation: "ASSISTANT_PROFESSOR", qualification: "PHD", netSetQualified: true, experienceYears: 2, research: [] };
+    expect(privateIn(JSON.stringify(page), [PRIVATE.panLast4, PRIVATE.panSealed])).toEqual([]);
+    // The check as it stood until this change read that stamp as a leak.
+    expect(JSON.stringify(page)).toMatch(/4321|sealed|\+9197|@test\.invalid/);
+    expect(privateIn(JSON.stringify({ ...page, collegeName: `ZZ ${PRIVATE.panLast4}` }), [PRIVATE.panLast4])).toEqual([PRIVATE.panLast4]);
+    expect(privateIn(JSON.stringify({ ...page, panLast4: "x" }), [])).toEqual(["key panLast4"]);
+    // Another person's fixture phone or address anywhere on the page is caught too, whoever's it is.
+    expect(privateIn(JSON.stringify({ ...page, departmentName: `ZZ Physics, zz-profile-hod-${STAMP}@test.invalid, +919700000110` }), [])).toEqual([`contact zz-profile-hod-${STAMP}@test.invalid`, "contact +919700000110"]);
+  });
+
   it("publishes a snapshot with the work and nothing else, readable signed out through the door", async () => {
     const teacher = await ctxAs(ids.teacher, "FACULTY");
     const after = await setMyPublicProfile(teacher, true);
     expect(after.url).toBe(`/public/faculty/${SLUG}`);
     expect((await owner.facultyRecord.findUniqueOrThrow({ where: { id: ids.record }, select: { publicProfileAt: true } })).publicProfileAt).not.toBeNull();
     const row = await owner.facultyPublicProfile.findUniqueOrThrow({ where: { facultyRecordId: ids.record }, select: { snapshotJson: true } });
-    expect(row.snapshotJson).not.toMatch(/4321|sealed|\+9197|@test\.invalid/);
+    const person = await owner.user.findUniqueOrThrow({ where: { id: ids.teacher }, select: { email: true, phone: true } });
+    expect(privateIn(row.snapshotJson, [PRIVATE.panLast4, PRIVATE.panSealed, person.email!, person.phone!])).toEqual([]);
     __resetCookies();
     const res = await publicGet(new Request(`http://localhost/api/v1/public/faculty/${SLUG}`), { params: Promise.resolve({ slug: SLUG }) });
     expect(res.status).toBe(200);
