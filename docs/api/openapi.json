@@ -41712,6 +41712,27 @@
                           "premiumFigure": {
                             "$ref": "#/properties/rows/items/properties/subscriptionFigure"
                           },
+                          "premiumBilled": {
+                            "type": "boolean"
+                          },
+                          "premiumNotBilled": {
+                            "type": "string",
+                            "enum": [
+                              "TERMS_NOT_SET",
+                              "PLAN_NOT_ASKED"
+                            ],
+                            "nullable": true
+                          },
+                          "premiumWaitsFor": {
+                            "type": "array",
+                            "items": {
+                              "type": "string",
+                              "enum": [
+                                "STUDENT",
+                                "TEACHER"
+                              ]
+                            }
+                          },
                           "status": {
                             "type": "string",
                             "enum": [
@@ -41797,6 +41818,9 @@
                           "premiumTeachers",
                           "premium",
                           "premiumFigure",
+                          "premiumBilled",
+                          "premiumNotBilled",
+                          "premiumWaitsFor",
                           "status",
                           "startsOn",
                           "renewsOn",
@@ -42269,6 +42293,27 @@
                     "premiumFigure": {
                       "$ref": "#/properties/subscriptionFigure"
                     },
+                    "premiumBilled": {
+                      "type": "boolean"
+                    },
+                    "premiumNotBilled": {
+                      "type": "string",
+                      "enum": [
+                        "TERMS_NOT_SET",
+                        "PLAN_NOT_ASKED"
+                      ],
+                      "nullable": true
+                    },
+                    "premiumWaitsFor": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "enum": [
+                          "STUDENT",
+                          "TEACHER"
+                        ]
+                      }
+                    },
                     "note": {
                       "type": "string",
                       "nullable": true
@@ -42395,6 +42440,9 @@
                     "premiumTeachers",
                     "premium",
                     "premiumFigure",
+                    "premiumBilled",
+                    "premiumNotBilled",
+                    "premiumWaitsFor",
                     "note",
                     "status",
                     "startsOn",
@@ -42621,6 +42669,27 @@
                         "premiumFigure": {
                           "$ref": "#/properties/terms/properties/subscriptionFigure"
                         },
+                        "premiumBilled": {
+                          "type": "boolean"
+                        },
+                        "premiumNotBilled": {
+                          "type": "string",
+                          "enum": [
+                            "TERMS_NOT_SET",
+                            "PLAN_NOT_ASKED"
+                          ],
+                          "nullable": true
+                        },
+                        "premiumWaitsFor": {
+                          "type": "array",
+                          "items": {
+                            "type": "string",
+                            "enum": [
+                              "STUDENT",
+                              "TEACHER"
+                            ]
+                          }
+                        },
                         "note": {
                           "type": "string",
                           "nullable": true
@@ -42747,6 +42816,9 @@
                         "premiumTeachers",
                         "premium",
                         "premiumFigure",
+                        "premiumBilled",
+                        "premiumNotBilled",
+                        "premiumWaitsFor",
                         "note",
                         "status",
                         "startsOn",
@@ -56283,12 +56355,25 @@
                             }
                           ],
                           "nullable": true
+                        },
+                        "billed": {
+                          "type": "boolean"
+                        },
+                        "notBilled": {
+                          "type": "string",
+                          "enum": [
+                            "TERMS_NOT_SET",
+                            "PLAN_NOT_ASKED"
+                          ],
+                          "nullable": true
                         }
                       },
                       "required": [
                         "students",
                         "teachers",
-                        "figure"
+                        "figure",
+                        "billed",
+                        "notBilled"
                       ],
                       "additionalProperties": false
                     },

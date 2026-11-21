@@ -76,6 +76,15 @@ describe("which doors the assistant may ever read for a person", () => {
     for (const role of ROLES) for (const e of readableDoorsFor(role)) expect(DOOR_LOADERS[e.path], `${role} ${e.path}`).toBeDefined();
   });
 
+  it("never the school's subscription card: the school's dealings with the company, as a person's passes and payments are (21 November 2026)", () => {
+    const card = ENDPOINTS.find((e) => e.method === "GET" && e.path === "/api/v1/office/subscription");
+    expect(card, "the office's card is in the catalog").toBeDefined();
+    expect(neverReadWhy(card!)).toMatch(/subscription/);
+    expect(neverReadWhy({ method: "GET", path: "/api/v1/account/pass", summary: "x", access: ["STUDENT"] } as never)).not.toBeNull();
+    for (const role of ["ADMIN", "PRINCIPAL"] as const) expect(readableDoorsFor(role).map((e) => e.path)).not.toContain("/api/v1/office/subscription");
+    expect(DOOR_LOADERS["/api/v1/office/subscription"]).toBeUndefined();
+  });
+
   it("names a <data> block by the door's summary, never its /api/ path, and reads the response's fields as words for the help index", () => {
     expect(doorTitle("/api/v1/fees/family")).toMatch(/^A guardian's child: dues/);
     expect(doorTitle("/api/v1/no/such")).not.toContain("/api/");

@@ -264,7 +264,6 @@ export const DOOR_LOADERS: Record<string, () => Promise<{ GET?: unknown }>> = {
   "/api/v1/office/signatures": () => import("@/app/api/v1/office/signatures/route"),
   "/api/v1/office/staff-attendance": () => import("@/app/api/v1/office/staff-attendance/route"),
   "/api/v1/office/staff-attendance/month": () => import("@/app/api/v1/office/staff-attendance/month/route"),
-  "/api/v1/office/subscription": () => import("@/app/api/v1/office/subscription/route"),
   "/api/v1/office/substitutions": () => import("@/app/api/v1/office/substitutions/route"),
   "/api/v1/office/syllabus": () => import("@/app/api/v1/office/syllabus/route"),
   "/api/v1/office/syllabus/coverage": () => import("@/app/api/v1/office/syllabus/coverage/route"),

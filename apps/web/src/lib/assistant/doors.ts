@@ -34,6 +34,9 @@ export const NEVER_DOORS: { path: RegExp; why: string }[] = [
   // plans-pay (17 Oct 2026)
   { path: /^\/api\/v1\/account\/pass(?:\/|$)/, why: "a person's passes, payments and invoices: the account's Plans page shows them, a chat does not (17 Oct 2026)" },
   // end plans-pay
+  // The school's subscription card (21 Nov 2026, the coordinating session's decision on the plans-pay precedent above): the
+  // school's terms, bill and renewal are its dealings with the company, which the office's card shows in its own words.
+  { path: /^\/api\/v1\/office\/subscription(?:\/|$)/, why: "the school's subscription, its bill and its renewal: the school's dealings with the company, which the office's card shows in its own careful sentences; a chat does not (21 Nov 2026)" },
   { path: /^\/api\/v1\/(?:me\/sessions|account\/totp)(?:\/|$)/, why: "the account's security, never read for a chat" },
   { path: /\/export(?:\/|$)/, why: "an export: a file, or a person's whole data (DPDP s.11)" },
   { path: /^\/api\/v1\/search(?:\/|$)/, why: "the search door would carry the question's words" },

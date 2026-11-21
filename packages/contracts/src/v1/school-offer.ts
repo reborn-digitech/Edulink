@@ -37,8 +37,9 @@ export const OWN_DISCOUNT_CHIPS_BPS = [1_000, 2_000, 2_500, 5_000] as const;
 
 /**
  * Our offer before the operator first saves one (no SchoolOffer row): the owner's starting values of 21 November 2026,
- * "Rs 100 + Rs 50 premium": ₹100 a student a year, ₹50 more for premium, no discounts, six months free; the onboarding
- * form ticks premium for students and not for teachers.
+ * "Rs 100 + Rs 50 premium": ₹100 a student a year, ₹50 more for premium, no discounts, six months free; our defaults tick
+ * premium for students and not for teachers, and the onboarding form starts a box ticked only once that role's plan is
+ * asked for (onboardingTicks; C3).
  */
 export const OFFER_START = {
   subscriptionPricePaise: 10_000,
@@ -137,8 +138,8 @@ export type Bill = { pupils: number; lines: { part: "SUBSCRIPTION" | "PREMIUM"; 
 
 /**
  * The bill for a school: no bill without terms set, a renewal day, a count of pupils, or a subscription figure (a
- * college with no tier). Premium is billed only while one of its switches is on (`premiumOn`: students or teachers); a
- * part free by agreement is no line.
+ * college with no tier). Premium is a line only while `premiumOn`, which its caller works out with premiumBilling: billed
+ * only while its plan is asked for (C3); a part free by agreement is no line.
  */
 export function billFor(input: { pupils: number | null; termsSet: boolean; renewalDay: string | null; subscription: PartTerms | null; premium: PartTerms | null; premiumOn: boolean }): Bill | null {
   if (!input.termsSet || !input.renewalDay || input.pupils === null || !input.subscription) return null;
@@ -150,6 +151,44 @@ export function billFor(input: { pupils: number | null; termsSet: boolean; renew
   ];
   for (const [part, terms] of parts) if (terms && terms.paysPaise > 0) lines.push({ part, perStudentPaise: terms.paysPaise, totalPaise: terms.paysPaise * pupils });
   return { pupils, lines, totalPaise: lines.reduce((sum, line) => sum + line.totalPaise, 0) };
+}
+
+/** The plan each premium switch opens (person-plans.ts): the Student plan for Students, the Teacher plan for Teachers. The Expert plan is no part of premium. */
+export const PREMIUM_PLAN_OF = { students: "STUDENT", teachers: "TEACHER" } as const;
+export const PREMIUM_PLANS = [PREMIUM_PLAN_OF.students, PREMIUM_PLAN_OF.teachers] as const;
+export type PremiumPlan = (typeof PREMIUM_PLANS)[number];
+
+/** Why a school with premium on is not billed for it, in the order they are told (C3a): its terms not set, then the plan. */
+export const PREMIUM_NOT_BILLED = ["TERMS_NOT_SET", "PLAN_NOT_ASKED"] as const;
+export type PremiumNotBilled = (typeof PREMIUM_NOT_BILLED)[number];
+
+/**
+ * Whether a school's premium is billed: the owner's "Not billed until then" (21 November 2026, 17:36 IST; the
+ * coordinator's C3 and C3a). Premium is billed only while its plan is asked for: for at least one role, the school's
+ * switch on and that role's plan asked for (the plans the operator has made active), at a school whose terms are set. The
+ * rule reads the plan alone, not the platform's feature switches and not the school's status (a SUSPENDED school's bill
+ * keeps the line; its payment is refused anyway). With premium on and not billed, `notBilled` says why, the terms first
+ * (there is no bill at all while they are not set, C2's "terms not set"), then the plan, with `waitsFor` naming the plans
+ * of the switches that are on, none of them asked for. Premium off: neither.
+ */
+export function premiumBilling(school: { termsSet: boolean; students: boolean; teachers: boolean }, asked: ReadonlySet<string>): { billed: boolean; notBilled: PremiumNotBilled | null; waitsFor: PremiumPlan[] } {
+  const on = (["students", "teachers"] as const).filter((role) => school[role]).map((role) => PREMIUM_PLAN_OF[role]);
+  if (on.length === 0) return { billed: false, notBilled: null, waitsFor: [] };
+  if (!school.termsSet) return { billed: false, notBilled: "TERMS_NOT_SET", waitsFor: [] };
+  if (on.some((plan) => asked.has(plan))) return { billed: true, notBilled: null, waitsFor: [] };
+  return { billed: false, notBilled: "PLAN_NOT_ASKED", waitsFor: on };
+}
+
+/**
+ * Onboarding's premium boxes as they start (C3): ticked only where our offer's default is on AND that role's plan is asked
+ * for; the operator may still tick either. A college has no teachers' premium (onboarding refuses it, §2.5 hides the box),
+ * so its Teachers box never starts ticked.
+ */
+export function onboardingTicks(offer: { studentsByDefault: boolean; teachersByDefault: boolean }, asked: ReadonlySet<string>, kind: string | null | undefined): { students: boolean; teachers: boolean } {
+  return {
+    students: offer.studentsByDefault && asked.has(PREMIUM_PLAN_OF.students),
+    teachers: !isCollegeKind(kind) && offer.teachersByDefault && asked.has(PREMIUM_PLAN_OF.teachers),
+  };
 }
 
 /** A month of the subscription, the figure a partner's share is taken of: round(pays × pupils ÷ 12); no figure or no count, none. Premium is never shared. */
@@ -473,6 +512,15 @@ export const schoolTermsSchema = z.object({
   premiumTeachers: z.boolean(),
   premium: partTermsSchema,
   premiumFigure: partFigureSchema,
+  /**
+   * Whether premium is billed (C3: only while its plan is asked for, at a school whose terms are set; the rule reads the
+   * plan alone). The bill itself may still be null for its own reasons (a college with no tier, no count, no renewal),
+   * and a part free by agreement is no line. With premium on and not billed, why (C3a: the terms first, then the plan)
+   * and the plans not asked for.
+   */
+  premiumBilled: z.boolean(),
+  premiumNotBilled: z.enum(PREMIUM_NOT_BILLED).nullable(),
+  premiumWaitsFor: z.array(z.enum(PREMIUM_PLANS)),
   note: z.string().nullable(),
   status: subscriptionStatusSchema.nullable(),
   startsOn: dayKey.nullable(),
@@ -515,8 +563,12 @@ export type PaymentAnswer = z.infer<typeof paymentAnswerSchema>;
 export const officeSubscriptionSchema = z.object({
   termsSet: z.boolean(),
   subscriptionFigure: partFigureSchema.nullable(),
-  /** Null while the school's terms are not set, as the subscription's figure is: "not recorded yet" (§2.6). */
-  premium: z.object({ students: z.boolean(), teachers: z.boolean(), figure: partFigureSchema.nullable() }),
+  /**
+   * The figure is null while the school's terms are not set, as the subscription's is ("not recorded yet", §2.6), and
+   * while premium is on but its plan is not asked for (C3: "Premium add-on: on. No charge for it yet.", none of the
+   * operator's words). `billed` and `notBilled` read as the operator's answer does, the terms first (C3a).
+   */
+  premium: z.object({ students: z.boolean(), teachers: z.boolean(), figure: partFigureSchema.nullable(), billed: z.boolean(), notBilled: z.enum(PREMIUM_NOT_BILLED).nullable() }),
   freeUntil: dayKey.nullable(),
   renewsOn: dayKey.nullable(),
   state: z.enum(SCHOOL_TERMS_STATES),

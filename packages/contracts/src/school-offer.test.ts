@@ -19,9 +19,11 @@ import {
   mayPauseOn,
   nextRenewalOnPayment,
   offerBodySchema,
+  onboardingTicks,
   partTermsSchema,
   paymentBodySchema,
   paysPaise,
+  premiumBilling,
   premiumTerms,
   renewalFrom,
   renewalOverAYear,
@@ -143,6 +145,58 @@ describe("the bill, on read at today's prices: the newest count of pupils × eac
     expect(billFor({ pupils: 412, termsSet: true, renewalDay: null, subscription: sub, premium, premiumOn: true })).toBeNull();
     expect(billFor({ pupils: null, termsSet: true, renewalDay: "2027-05-21", subscription: sub, premium, premiumOn: true })).toBeNull();
     expect(billFor({ pupils: 412, termsSet: true, renewalDay: "2027-05-21", subscription: null, premium, premiumOn: true })).toBeNull();
+  });
+});
+
+describe("premium billed only while its plan is asked for (the owner's \"Not billed until then\", 21 November 2026; C3 and C3a)", () => {
+  const sub = subscriptionTerms(school({ discountBps: 2_000 }), OURS);
+  const premium = premiumTerms({}, PREMIUM_OURS);
+  const asked = (...plans: string[]) => new Set(plans);
+  const set = (students: boolean, teachers: boolean) => ({ termsSet: true, students, teachers });
+  const bill = (on: { termsSet: boolean; students: boolean; teachers: boolean }, plans: Set<string>) =>
+    billFor({ pupils: 412, termsSet: on.termsSet, renewalDay: "2027-05-21", subscription: sub, premium, premiumOn: premiumBilling(on, plans).billed });
+  it("Students on and the Student plan not asked for: no premium line, and why; asked for: the line", () => {
+    expect(premiumBilling(set(true, false), asked())).toEqual({ billed: false, notBilled: "PLAN_NOT_ASKED", waitsFor: ["STUDENT"] });
+    expect(bill(set(true, false), asked())?.lines.map((l) => l.part)).toEqual(["SUBSCRIPTION"]);
+    expect(premiumBilling(set(true, false), asked("STUDENT"))).toEqual({ billed: true, notBilled: null, waitsFor: [] });
+    expect(bill(set(true, false), asked("STUDENT"))?.totalPaise).toBe(5_356_000);
+    // The Expert plan is no part of premium.
+    expect(premiumBilling(set(true, false), asked("EXPERT"))).toEqual({ billed: false, notBilled: "PLAN_NOT_ASKED", waitsFor: ["STUDENT"] });
+  });
+  it("Teachers premium only, with only the Student plan asked for: no line, and the Teacher plan named", () => {
+    expect(premiumBilling(set(false, true), asked("STUDENT"))).toEqual({ billed: false, notBilled: "PLAN_NOT_ASKED", waitsFor: ["TEACHER"] });
+    expect(bill(set(false, true), asked("STUDENT"))?.totalPaise).toBe(3_296_000);
+    expect(premiumBilling(set(false, true), asked("TEACHER"))).toEqual({ billed: true, notBilled: null, waitsFor: [] });
+  });
+  it("both switches with one plan asked for: the line, once; with none asked for, both plans named", () => {
+    for (const plan of ["STUDENT", "TEACHER"]) {
+      const lines = bill(set(true, true), asked(plan))!.lines;
+      expect(lines.filter((l) => l.part === "PREMIUM")).toHaveLength(1);
+      expect(lines.reduce((sum, l) => sum + l.totalPaise, 0)).toBe(5_356_000);
+    }
+    expect(premiumBilling(set(true, true), asked())).toEqual({ billed: false, notBilled: "PLAN_NOT_ASKED", waitsFor: ["STUDENT", "TEACHER"] });
+  });
+  it("terms not set: not billed, and that is the reason first, whatever is asked for (C3a); the plan's reason only once they are set", () => {
+    const notSet = { termsSet: false, students: true, teachers: false };
+    expect(premiumBilling(notSet, asked())).toEqual({ billed: false, notBilled: "TERMS_NOT_SET", waitsFor: [] });
+    expect(premiumBilling(notSet, asked("STUDENT"))).toEqual({ billed: false, notBilled: "TERMS_NOT_SET", waitsFor: [] });
+    expect(bill(notSet, asked("STUDENT"))).toBeNull();
+  });
+  it("premium off is not billed and needs no reason, whatever is asked for; the partner's month never changes with any of this", () => {
+    expect(premiumBilling(set(false, false), asked("STUDENT", "TEACHER"))).toEqual({ billed: false, notBilled: null, waitsFor: [] });
+    expect(premiumBilling({ termsSet: false, students: false, teachers: false }, asked())).toEqual({ billed: false, notBilled: null, waitsFor: [] });
+    // A partner's base is the subscription's alone: subscriptionMonthPaise takes no premium, billed or not.
+    expect(subscriptionMonthPaise(sub, 412)).toBe(Math.round((8_000 * 412) / 12));
+  });
+  it("onboarding's premium boxes start ticked only where our default is on and that role's plan is asked for; a college's Teachers box never", () => {
+    expect(onboardingTicks(OFFER_START, asked(), "SCHOOL")).toEqual({ students: false, teachers: false });
+    expect(onboardingTicks(OFFER_START, asked("STUDENT"), "SCHOOL")).toEqual({ students: true, teachers: false });
+    expect(onboardingTicks(OFFER_START, asked("TEACHER"), null)).toEqual({ students: false, teachers: false });
+    const teachersToo = { studentsByDefault: false, teachersByDefault: true };
+    expect(onboardingTicks(teachersToo, asked("STUDENT", "TEACHER"), null)).toEqual({ students: false, teachers: true });
+    // A college has no teachers' premium: onboarding refuses it (root.termsTeachersAtCollege), so the box never starts ticked.
+    expect(onboardingTicks(teachersToo, asked("STUDENT", "TEACHER"), "COLLEGE")).toEqual({ students: false, teachers: false });
+    expect(onboardingTicks({ ...teachersToo, studentsByDefault: true }, asked("STUDENT", "TEACHER"), "AUTONOMOUS_COLLEGE")).toEqual({ students: true, teachers: false });
   });
 });
 

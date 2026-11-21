@@ -8,15 +8,19 @@
  * a college; an operator and a teacher of its own. Our offer is one platform row: it is read before the suite and put
  * back after it (deleted if there was none), so an interrupted run is the only way to leave it changed. Every clean-up
  * is scoped to this suite's schools and people.
+ *
+ * Premium is billed only while its plan is asked for (the owner's "Not billed until then", C3 and C3a). No plan is asked
+ * for in the suites unless a case names one (setActivePlansForTests), and each case's are dropped after it.
  */
-import { afterAll, beforeAll, describe, expect, it } from "vitest";
+import { afterAll, afterEach, beforeAll, describe, expect, it } from "vitest";
 import { PrismaClient } from "@prisma/client";
-import { OFFER_START, bulkBodySchema, paysPaise, renewalFrom } from "@edulink/contracts";
+import { OFFER_START, PRICE_MAX_PAISE, bulkBodySchema, paysPaise, renewalFrom, type FreeMonths } from "@edulink/contracts";
 import { createSession, getSession, type ActiveContext } from "@/lib/session";
 import { __resetCookies } from "../tests/stubs/next-headers";
 import { listSubscriptions, readOffer, readSchoolTerms, setSchoolTerms, bulkTerms, updateOffer } from "@/lib/school-terms";
 import { addDaysToKey, todayKey } from "@/lib/dates";
 import { recordPayment, setSubscription } from "@/lib/subscriptions";
+import { setActivePlansForTests } from "@/lib/person-plans";
 import { GET as offerGet, PUT as offerPut } from "@/app/api/v1/operator/offer/route";
 import { GET as listGet } from "@/app/api/v1/operator/subscriptions/route";
 import { POST as bulkPost } from "@/app/api/v1/operator/subscriptions/bulk/route";
@@ -60,7 +64,7 @@ async function blockedOn(table: string): Promise<void> {
   throw new Error(`nothing waited on "${table}" within five seconds`);
 }
 
-const ids = { operator: "", teacher: "", follow: "", discount: "", ownPrice: "", notSet: "", college: "", paused: "", trial: "", due: "", receipted: "", again: "", clock: "", gone: "", zone: "", window: "" };
+const ids = { operator: "", teacher: "", follow: "", discount: "", ownPrice: "", notSet: "", college: "", paused: "", trial: "", due: "", receipted: "", again: "", clock: "", gone: "", zone: "", window: "", pStudents: "", pTeachers: "", pBoth: "", pNotSet: "", pCollege: "" };
 const office: Record<string, string[]> = {};
 /** The suite's own schools: our offer's moves and notices are kept to them (updateOffer's scope), never the database's. */
 const scope = () => ({ schoolIds: Object.values(ids).filter((id, i) => i >= 2 && id) });
@@ -117,9 +121,20 @@ beforeAll(async () => {
   ids.zone = await school("Zone", { subscriptionStatus: "TRIAL", subscriptionStartsAt: at("2026-11-01"), subscriptionDueAt: at("2027-05-01") });
   // C1c's renewal filters: thirty days from 22 November in Kolkata reach 22 December.
   ids.window = await school("Window", { subscriptionStatus: "TRIAL", subscriptionStartsAt: at("2026-11-01"), subscriptionDueAt: at("2026-12-22") });
+  // C3's schools, premium on and billed only while its plan is asked for; their own ₹120, so our subscription's moves pass them by.
+  ids.pStudents = await school("PStudents", { ...set, subscriptionPricePaise: 12_000, premiumStudents: true });
+  ids.pTeachers = await school("PTeachers", { ...set, subscriptionPricePaise: 12_000, premiumTeachers: true });
+  ids.pBoth = await school("PBoth", { ...set, subscriptionPricePaise: 12_000, premiumStudents: true, premiumTeachers: true });
+  // Premium on and terms not set: no bill at all, and that reason first (C3a).
+  ids.pNotSet = await school("PNotSet", { subscriptionStatus: "ACTIVE", subscriptionStartsAt: at(day(-300)), subscriptionDueAt: at(day(65)), premiumStudents: true });
+  // A college with Students premium on and no tier chosen: no subscription figure, so no bill, and not in the totals.
+  ids.pCollege = await school("PCollege", { ...set, kind: "COLLEGE", premiumStudents: true }, 900);
   ids.teacher = (await db.user.create({ data: { name: `${PREFIX} Teacher`, email: `zz-premium-teacher-${STAMP}@test.invalid` }, select: { id: true } })).id;
   await db.membership.create({ data: { userId: ids.teacher, schoolId: ids.follow, role: "TEACHER", status: "ACTIVE" } });
 });
+
+// No plan asked for unless a case names one, as in every suite (person-plans.ts setActivePlansForTests).
+afterEach(() => setActivePlansForTests([]));
 
 afterAll(async () => {
   __resetCookies();
@@ -146,12 +161,13 @@ describe("the doors are the operator's, and the office's card its own", () => {
     expect((await offerGet()).status).toBe(401);
   });
   it("the office reads its own card: both parts, free until, renews on, recording open", async () => {
+    setActivePlansForTests(["STUDENT"]);
     await as("OFFICE", ids.follow);
     const res = await officeGet();
     expect(res.status).toBe(200);
     const card = await res.json();
     const now = await ours();
-    expect(card).toMatchObject({ termsSet: true, subscriptionFigure: { paysPaise: now.subscription, source: "OURS" }, premium: { students: true, teachers: false, figure: { paysPaise: now.premium } }, freeUntil: day(170), renewsOn: day(170), state: "FREE", recording: { paused: false, since: null } });
+    expect(card).toMatchObject({ termsSet: true, subscriptionFigure: { paysPaise: now.subscription, source: "OURS" }, premium: { students: true, teachers: false, figure: { paysPaise: now.premium }, billed: true, notBilled: null }, freeUntil: day(170), renewsOn: day(170), state: "FREE", recording: { paused: false, since: null } });
   });
 });
 
@@ -262,11 +278,12 @@ offerSection("our offer: the owner's starting values until the first save", () =
 
 describe("a school's terms", () => {
   it("GET works the figures out on read: our ₹100, an own 20 % off is ₹80, an own price ₹120; the bill at the newest count", async () => {
+    setActivePlansForTests(["STUDENT"]);
     await as("OPERATOR");
     const follow = await (await termsGet(get(`/operator/schools/${ids.follow}/terms`), params(ids.follow))).json();
     const now = await ours();
     const ownTwenty = paysPaise(now.offer.subscriptionPricePaise, 2_000);
-    expect(follow).toMatchObject({ termsSet: true, subscription: { mode: "OURS" }, subscriptionFigure: { paysPaise: now.subscription }, premiumStudents: true, premiumFigure: { paysPaise: now.premium }, pupils: 412, bill: { totalPaise: 412 * (now.subscription + now.premium) }, state: "FREE" });
+    expect(follow).toMatchObject({ termsSet: true, subscription: { mode: "OURS" }, subscriptionFigure: { paysPaise: now.subscription }, premiumStudents: true, premiumFigure: { paysPaise: now.premium }, premiumBilled: true, premiumNotBilled: null, premiumWaitsFor: [], pupils: 412, bill: { totalPaise: 412 * (now.subscription + now.premium) }, state: "FREE" });
     const discount = await (await termsGet(get(`/operator/schools/${ids.discount}/terms`), params(ids.discount))).json();
     expect(discount).toMatchObject({ subscription: { mode: "OWN_DISCOUNT", discountBps: 2_000 }, subscriptionFigure: { paysPaise: ownTwenty }, bill: { totalPaise: 412 * ownTwenty } });
     const notSet = await (await termsGet(get(`/operator/schools/${ids.notSet}/terms`), params(ids.notSet))).json();
@@ -355,13 +372,112 @@ describe("one change over many schools", () => {
   });
 });
 
+describe("premium billed only while its plan is asked for (the owner's \"Not billed until then\", C3 and C3a)", () => {
+  const terms = async (ctx: ActiveContext, id: string) => {
+    const read = await readSchoolTerms(ctx, id);
+    if ("ok" in read) throw new Error(read.errorKey);
+    return read;
+  };
+  it("Students premium on and the Student plan not asked for: no premium line, and why; asked for: the line", async () => {
+    const ctx = await as("OPERATOR");
+    const now = await ours();
+    const off = await terms(ctx, ids.pStudents);
+    expect(off).toMatchObject({ premiumStudents: true, premiumBilled: false, premiumNotBilled: "PLAN_NOT_ASKED", premiumWaitsFor: ["STUDENT"], bill: { totalPaise: 412 * 12_000 } });
+    expect(off.bill!.lines.map((l) => l.part)).toEqual(["SUBSCRIPTION"]);
+    setActivePlansForTests(["STUDENT"]);
+    const on = await terms(ctx, ids.pStudents);
+    expect(on).toMatchObject({ premiumBilled: true, premiumNotBilled: null, premiumWaitsFor: [], bill: { totalPaise: 412 * (12_000 + now.premium) } });
+  });
+  it("Teachers premium alone, with only the Student plan asked for: no line, the Teacher plan named; both switches with one plan: the line, once", async () => {
+    const ctx = await as("OPERATOR");
+    const now = await ours();
+    setActivePlansForTests(["STUDENT"]);
+    expect(await terms(ctx, ids.pTeachers)).toMatchObject({ premiumTeachers: true, premiumBilled: false, premiumNotBilled: "PLAN_NOT_ASKED", premiumWaitsFor: ["TEACHER"], bill: { totalPaise: 412 * 12_000 } });
+    setActivePlansForTests(["TEACHER"]);
+    const both = await terms(ctx, ids.pBoth);
+    expect(both.bill!.lines.filter((l) => l.part === "PREMIUM")).toHaveLength(1);
+    expect(both).toMatchObject({ premiumBilled: true, bill: { totalPaise: 412 * (12_000 + now.premium) } });
+    setActivePlansForTests([]);
+    expect(await terms(ctx, ids.pBoth)).toMatchObject({ premiumBilled: false, premiumNotBilled: "PLAN_NOT_ASKED", premiumWaitsFor: ["STUDENT", "TEACHER"] });
+  });
+  it("premium on with its terms not set: no bill, and \"terms not set\" is the reason first, to the operator and on the office's card, whatever is asked for (C3a)", async () => {
+    const ctx = await as("OPERATOR");
+    setActivePlansForTests(["STUDENT"]);
+    expect(await terms(ctx, ids.pNotSet)).toMatchObject({ termsSet: false, premiumStudents: true, premiumBilled: false, premiumNotBilled: "TERMS_NOT_SET", premiumWaitsFor: [], bill: null });
+    await as("OFFICE", ids.pNotSet);
+    expect(await (await officeGet()).json()).toMatchObject({ termsSet: false, premium: { students: true, figure: null, billed: false, notBilled: "TERMS_NOT_SET" } });
+  });
+  it("the Schools tab's rows and the office's card read it the same way", async () => {
+    const ctx = await as("OPERATOR");
+    const now = await ours();
+    const rows = async () => new Map((await listSubscriptions(ctx, {})).rows.map((r) => [r.schoolId, r]));
+    const before = await rows();
+    expect([before.get(ids.pStudents), before.get(ids.pTeachers)].map((r) => [r?.premiumBilled, r?.billedYearPaise])).toEqual([[false, 412 * 12_000], [false, 412 * 12_000]]);
+    await as("OFFICE", ids.pStudents);
+    expect(await (await officeGet()).json()).toMatchObject({ termsSet: true, premium: { students: true, figure: null, billed: false, notBilled: "PLAN_NOT_ASKED" } });
+    setActivePlansForTests(["STUDENT"]);
+    await as("OPERATOR");
+    const after = await rows();
+    expect([after.get(ids.pStudents), after.get(ids.pTeachers)].map((r) => [r?.premiumBilled, r?.billedYearPaise])).toEqual([[true, 412 * (12_000 + now.premium)], [false, 412 * 12_000]]);
+    await as("OFFICE", ids.pStudents);
+    expect(await (await officeGet()).json()).toMatchObject({ premium: { students: true, figure: { paysPaise: now.premium }, billed: true, notBilled: null } });
+  });
+  it("a change of our premium price moves, counts and tells only where premium is billed, and the year's difference counts what the totals count (C3a; rule 8)", async () => {
+    const ctx = await as("OPERATOR");
+    // A preview from our offer as it stands, which writes nothing, so the case runs where the platform's offer is saved
+    // too: the subscription as it is, premium ₹10 more a student (₹10 less at the top of the range).
+    const offer = await readOffer();
+    const premiumPrice = offer.premiumPricePaise + (offer.premiumPricePaise + 1_000 <= PRICE_MAX_PAISE ? 1_000 : -1_000);
+    const step = paysPaise(premiumPrice, offer.premiumDiscountBps) - paysPaise(offer.premiumPricePaise, offer.premiumDiscountBps);
+    const body = {
+      subscription: { pricePaise: offer.subscriptionPricePaise, discountBps: offer.subscriptionDiscountBps },
+      premium: { pricePaise: premiumPrice, discountBps: offer.premiumDiscountBps },
+      freeMonths: offer.freeMonths as FreeMonths,
+      studentsByDefault: offer.studentsByDefault,
+      teachersByDefault: offer.teachersByDefault,
+      reason: "ZZ premium preview",
+      expect: { updatedAt: offer.updatedAt?.toISOString() ?? null },
+      preview: true,
+    };
+    const premiumMoves = (result: Awaited<ReturnType<typeof updateOffer>>) => {
+      if ("ok" in result) throw new Error(result.errorKey);
+      return result.moves.filter((m) => m.part === "PREMIUM").map((m) => m.schoolId).sort();
+    };
+    // No plan asked for: premium is on no bill, so its price moves nobody's bill, counts nothing and tells nobody.
+    const none = await updateOffer(ctx, body, new Date(), scope());
+    expect(premiumMoves(none)).toEqual([]);
+    expect(none).toMatchObject({ yearDeltaPaise: 0, told: 0 });
+    // The Student plan asked for: the schools with Students on move and are told (two each), Teachers alone does not. The
+    // college with no tier moves too (its premium is billed, and the figure its office reads moves), but it has no bill,
+    // so the year's difference leaves it out, as the totals do: three schools of 412.
+    setActivePlansForTests(["STUDENT"]);
+    const students = await updateOffer(ctx, body, new Date(), scope());
+    expect(premiumMoves(students)).toEqual([ids.follow, ids.pStudents, ids.pBoth, ids.pCollege].sort());
+    expect(students).toMatchObject({ yearDeltaPaise: 3 * 412 * step, told: 8 });
+    expect(step).not.toBe(0);
+  });
+  it("a payment's bill follows the same reading: the amount that matched without premium is unlike the bill once it is billed", async () => {
+    const ctx = await as("OPERATOR");
+    const now = await ours();
+    const from = { fromStatus: "TRIAL" as const, fromDueAt: day(170), paidOn: day(0), preview: true };
+    const preview = async (amountPaise: number) => (await paymentPost(send("POST", `/operator/schools/${ids.pStudents}/payment`, { ...from, amountPaise }), params(ids.pStudents))).json();
+    expect(await preview(412 * 12_000)).toMatchObject({ preview: true, billPaise: 412 * 12_000, differencePaise: 0 });
+    setActivePlansForTests(["STUDENT"]);
+    expect(await recordPayment(ctx, ids.pStudents, { ...from, amountPaise: 412 * 12_000 })).toEqual({ ok: false, errorKey: "root.paymentDiffers" });
+    expect(await preview(412 * (12_000 + now.premium))).toMatchObject({ billPaise: 412 * (12_000 + now.premium), differencePaise: 0 });
+  });
+});
+
 describe("a payment recorded", () => {
   it("refused while suspended; an amount unlike the bill needs the tick; the renewal moves twelve months once; the same payment twice is refused by name", async () => {
+    setActivePlansForTests(["STUDENT"]);
     const ctx = await as("OPERATOR");
     expect(await recordPayment(ctx, ids.paused, { fromStatus: "SUSPENDED", fromDueAt: day(170), paidOn: day(0), amountPaise: 1 })).toEqual({ ok: false, errorKey: "root.paymentStatusFirst" });
     const terms = await readSchoolTerms(ctx, ids.follow);
     if ("ok" in terms) throw new Error(terms.errorKey);
     const bill = terms.bill!.totalPaise;
+    // The bill carries premium, the Student plan being asked for (C3a: this case names it).
+    expect(terms.bill!.lines.map((l) => l.part)).toEqual(["SUBSCRIPTION", "PREMIUM"]);
     const from = { fromStatus: "TRIAL" as const, fromDueAt: day(170), paidOn: day(0) };
     expect(await recordPayment(ctx, ids.follow, { ...from, amountPaise: bill - 100_000 })).toEqual({ ok: false, errorKey: "root.paymentDiffers" });
     const preview = await (await paymentPost(send("POST", `/operator/schools/${ids.follow}/payment`, { ...from, amountPaise: bill, preview: true }), params(ids.follow))).json();

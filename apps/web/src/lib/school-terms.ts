@@ -8,6 +8,7 @@ import {
   billFor,
   isCollegeKind,
   offerChangeEntrySchema,
+  premiumBilling,
   premiumTerms,
   renewalReached,
   subscriptionTerms,
@@ -31,6 +32,7 @@ import { db } from "./db";
 import { audit, type AuditTx } from "./audit";
 import { assertSuperuser } from "./superuser";
 import { forTenant } from "./tenant-context";
+import { activePlans } from "./person-plans";
 import { addDaysToKey, safeTimeZone, todayKey } from "./dates";
 import type { ActiveContext } from "./session";
 
@@ -45,8 +47,9 @@ import type { ActiveContext } from "./session";
  * form read, with its audit rows inside it: the operator's log (no school) and, for a school's terms, the school's own
  * log, which its safety centre shows. The office and the head are told, best-effort, after the write: when premium goes
  * on or off or the terms are set or moved; never about a note, and never a school whose terms are not set about a
- * price. RECORDED, never collected (decision 0003). Nothing here opens or closes a door: premium's cover on the plan
- * lock comes with the gate (phase 4), the read-only pause with the lock (phase 12).
+ * price. Premium is billed only while its plan is asked for (the owner's "Not billed until then", 21 November 2026; C3
+ * and C3a). RECORDED, never collected (decision 0003). Nothing here opens or closes a door:
+ * premium's cover on the plan lock comes with the gate (phase 4), the read-only pause with the lock (phase 12).
  */
 
 export type Refusal = { ok: false; errorKey: TranslationKey };
@@ -152,12 +155,18 @@ export async function newestPupils(schoolIds: string[]): Promise<Map<string, num
   return new Map(rows.map((r) => [r.schoolId, r.pupils]));
 }
 
-function viewOf(row: TermsRow, offer: Offer, pupils: number | null, now: Date): SchoolTerms {
+/**
+ * A school's terms on read. `asked` is the plans the operator has made active (activePlans): premium is billed only while
+ * its plan is asked for (the owner's "Not billed until then", C3), and with premium on and not billed the view says why,
+ * its terms not set first, then the plan (C3a).
+ */
+function viewOf(row: TermsRow, offer: Offer, pupils: number | null, now: Date, asked: ReadonlySet<string>): SchoolTerms {
   const { subscription, premium } = figuresOf(row, offer);
   const zone = safeTimeZone(row.timezone);
   const status = statusOf(row.subscriptionStatus);
   const renewsOn = dayOf(row.subscriptionDueAt);
   const termsSet = row.termsSetAt !== null;
+  const premiumBill = premiumBilling({ termsSet, students: row.premiumStudents, teachers: row.premiumTeachers }, asked);
   const state = termsState({
     status,
     dueDay: renewsOn,
@@ -180,6 +189,9 @@ function viewOf(row: TermsRow, offer: Offer, pupils: number | null, now: Date): 
     premiumTeachers: row.premiumTeachers,
     premium: chipOf(row.premiumPricePaise, row.premiumDiscountBps),
     premiumFigure: premium,
+    premiumBilled: premiumBill.billed,
+    premiumNotBilled: premiumBill.notBilled,
+    premiumWaitsFor: premiumBill.waitsFor,
     note: row.termsNote ?? null,
     status,
     startsOn: dayOf(row.subscriptionStartsAt),
@@ -189,7 +201,7 @@ function viewOf(row: TermsRow, offer: Offer, pupils: number | null, now: Date): 
     stateDay: state.day,
     noTierChosen: state.noTierChosen,
     pupils,
-    bill: billFor({ pupils, termsSet, renewalDay: renewsOn, subscription, premium, premiumOn: row.premiumStudents || row.premiumTeachers }),
+    bill: billFor({ pupils, termsSet, renewalDay: renewsOn, subscription, premium, premiumOn: premiumBill.billed }),
   };
 }
 
@@ -198,8 +210,8 @@ export async function readSchoolTerms(session: ActiveContext, schoolId: string, 
   assertSuperuser(session);
   const row = await db.school.findUnique({ where: { id: schoolId }, select: TERMS_SELECT });
   if (!row) return refusal("root.noSuchSchool");
-  const [offer, pupils] = await Promise.all([readOffer(), newestPupils([schoolId])]);
-  return viewOf(row, offer, pupils.get(schoolId) ?? null, now);
+  const [offer, pupils, asked] = await Promise.all([readOffer(), newestPupils([schoolId]), activePlans()]);
+  return viewOf(row, offer, pupils.get(schoolId) ?? null, now, asked);
 }
 
 /** Thrown inside a write's transaction when the row moved since it was read; answered as the matching refusal. */
@@ -310,11 +322,11 @@ export async function setSchoolTerms(session: ActiveContext, schoolId: string, b
   if (schoolSees) data.termsSetAt = now;
 
   const after: TermsRow = { ...row, ...(data as Partial<TermsRow>) };
-  const [offer, pupils] = await Promise.all([readOffer(), newestPupils([schoolId])]);
+  const [offer, pupils, asked] = await Promise.all([readOffer(), newestPupils([schoolId]), activePlans()]);
   const changed = schoolSees || Object.keys(switched).length > 0 || noteChanged;
   const tells = schoolSees || Object.keys(switched).length > 0;
-  if (!changed) return { preview: Boolean(body.preview), terms: viewOf(row, offer, pupils.get(schoolId) ?? null, now), changed: false, told: 0 };
-  if (body.preview) return { preview: true, terms: viewOf(after, offer, pupils.get(schoolId) ?? null, now), changed: true, told: tells ? await officeCount(session, [schoolId]) : 0 };
+  if (!changed) return { preview: Boolean(body.preview), terms: viewOf(row, offer, pupils.get(schoolId) ?? null, now, asked), changed: false, told: 0 };
+  if (body.preview) return { preview: true, terms: viewOf(after, offer, pupils.get(schoolId) ?? null, now, asked), changed: true, told: tells ? await officeCount(session, [schoolId]) : 0 };
 
   try {
     await db.$tenantTransaction(async (tx: unknown) => {
@@ -353,15 +365,15 @@ export async function setSchoolTerms(session: ActiveContext, schoolId: string, b
   }
   const told = tells ? await tellOffices(session, [{ id: row.id, name: row.name }]) : 0;
   const fresh = await db.school.findUniqueOrThrow({ where: { id: schoolId }, select: TERMS_SELECT });
-  return { preview: false, terms: viewOf(fresh, offer, pupils.get(schoolId) ?? null, now), changed: true, told };
+  return { preview: false, terms: viewOf(fresh, offer, pupils.get(schoolId) ?? null, now, asked), changed: true, told };
 }
 
 /**
  * Change our offer: both parts, the free months, the onboarding ticks. Compared and set against the offer as read (no
  * row: null). Every school whose terms are set and that follows our price or has its own discount moves at once; a
- * school with its own price, and one whose terms are not set, does not. Premium moves only a school with a switch on.
- * The answer names each move, the year's difference at the newest count, and how many schools are told. A preview
- * writes nothing.
+ * school with its own price, and one whose terms are not set, does not. Premium moves only a school whose premium is
+ * billed (only while its plan is asked for, C3 and C3a). The answer names each move, the year's difference at the newest
+ * count, and how many schools are told. A preview writes nothing.
  */
 export async function updateOffer(session: ActiveContext, body: OfferBody, now: Date = new Date(), scope?: { schoolIds: string[] }): Promise<OfferChange | Refusal> {
   assertSuperuser(session);
@@ -381,7 +393,7 @@ export async function updateOffer(session: ActiveContext, body: OfferBody, now: 
   };
   // The suites' scope keeps the moves and the notices to their own schools; the door never passes one.
   const schools = await db.school.findMany({ where: { removedAt: null, ...(scope ? { id: { in: scope.schoolIds } } : {}) }, select: TERMS_SELECT, orderBy: { name: "asc" } });
-  const pupils = await newestPupils(schools.map((s) => s.id));
+  const [pupils, asked] = await Promise.all([newestPupils(schools.map((s) => s.id)), activePlans()]);
   const moves: OfferChange["moves"] = [];
   const told = new Map<string, string>();
   let ownPrice = 0;
@@ -395,17 +407,21 @@ export async function updateOffer(session: ActiveContext, body: OfferBody, now: 
     const before = figuresOf(school, current);
     const after = figuresOf(school, next);
     const count = pupils.get(school.id) ?? 0;
-    // The year's difference counts what the totals count (rule 8: real schools, Trial, Active or Due, recording open), so
-    // it agrees with the year billed beside it; a school that left is listed but not told about a price (rule 10).
+    // The year's difference counts exactly what the totals count (totalsOf, rule 8: real schools, terms set, Trial, Active or
+    // Due, recording open, with a subscription figure, a count and a renewal, so with a bill), so it agrees with the year
+    // billed beside it: a college with no tier is not in it, though its premium figure moves; a school that left is listed
+    // but not told about a price (rule 10).
     const status = statusOf(school.subscriptionStatus);
-    const counted = !school.isTestFixture && (status === "TRIAL" || status === "ACTIVE" || status === "DUE") && school.recordingClosedAt === null;
+    const counted = !school.isTestFixture && (status === "TRIAL" || status === "ACTIVE" || status === "DUE") && school.recordingClosedAt === null && after.subscription !== null && pupils.has(school.id) && school.subscriptionDueAt !== null;
     const tellable = status !== "ENDED";
     if (before.subscription && after.subscription && before.subscription.paysPaise !== after.subscription.paysPaise) {
       moves.push({ schoolId: school.id, name: school.name, part: "SUBSCRIPTION", beforePaise: before.subscription.paysPaise, afterPaise: after.subscription.paysPaise, source: after.subscription.source });
       if (counted) yearDeltaPaise += (after.subscription.paysPaise - before.subscription.paysPaise) * count;
       if (tellable) told.set(school.id, school.name);
     } else if (school.subscriptionPricePaise !== null) ownPrice += 1;
-    if ((school.premiumStudents || school.premiumTeachers) && before.premium.paysPaise !== after.premium.paysPaise) {
+    // Premium moves only where it is billed, only while its plan is asked for (C3, C3a): elsewhere its figure moves unseen,
+    // nobody is told, and the school's bill gains the line, at the price then in force, once the plan is asked for.
+    if (premiumBilling({ termsSet: school.termsSetAt !== null, students: school.premiumStudents, teachers: school.premiumTeachers }, asked).billed && before.premium.paysPaise !== after.premium.paysPaise) {
       moves.push({ schoolId: school.id, name: school.name, part: "PREMIUM", beforePaise: before.premium.paysPaise, afterPaise: after.premium.paysPaise, source: after.premium.source });
       if (counted) yearDeltaPaise += (after.premium.paysPaise - before.premium.paysPaise) * count;
       if (tellable) told.set(school.id, school.name);
@@ -477,9 +493,9 @@ function totalsOf(views: { view: SchoolTerms; fixture: boolean; closed: boolean 
 /** Our offer, how the live schools stand against it, and the year billed. */
 export async function readOfferAnswer(session: ActiveContext, now: Date = new Date()): Promise<SchoolOfferAnswer> {
   assertSuperuser(session);
-  const [offer, schools] = await Promise.all([readOffer(), db.school.findMany({ where: { removedAt: null }, select: TERMS_SELECT })]);
+  const [offer, schools, asked] = await Promise.all([readOffer(), db.school.findMany({ where: { removedAt: null }, select: TERMS_SELECT }), activePlans()]);
   const pupils = await newestPupils(schools.map((s) => s.id));
-  const views = schools.map((s) => ({ view: viewOf(s, offer, pupils.get(s.id) ?? null, now), fixture: s.isTestFixture, closed: s.recordingClosedAt !== null }));
+  const views = schools.map((s) => ({ view: viewOf(s, offer, pupils.get(s.id) ?? null, now, asked), fixture: s.isTestFixture, closed: s.recordingClosedAt !== null }));
   const groups = { follow: 0, ownDiscount: 0, ownPrice: 0, colleges: 0, notSet: 0, premiumOn: 0 };
   for (const { view, fixture } of views) {
     if (fixture) continue;
@@ -508,9 +524,9 @@ async function recentOfferChanges(): Promise<SchoolOfferAnswer["recent"]> {
 export async function listSubscriptions(session: ActiveContext, query: SubscriptionsQuery, now: Date = new Date()): Promise<SubscriptionsAnswer> {
   assertSuperuser(session);
   const q = query.q?.trim().toLowerCase() ?? "";
-  const [offer, schools] = await Promise.all([readOffer(), db.school.findMany({ where: { removedAt: null }, select: TERMS_SELECT, orderBy: { name: "asc" } })]);
+  const [offer, schools, asked] = await Promise.all([readOffer(), db.school.findMany({ where: { removedAt: null }, select: TERMS_SELECT, orderBy: { name: "asc" } }), activePlans()]);
   const pupils = await newestPupils(schools.map((s) => s.id));
-  const all = schools.map((s) => ({ view: viewOf(s, offer, pupils.get(s.id) ?? null, now), fixture: s.isTestFixture, closed: s.recordingClosedAt !== null, zone: safeTimeZone(s.timezone) }));
+  const all = schools.map((s) => ({ view: viewOf(s, offer, pupils.get(s.id) ?? null, now, asked), fixture: s.isTestFixture, closed: s.recordingClosedAt !== null, zone: safeTimeZone(s.timezone) }));
   const keep = all.filter(({ view, closed, zone }) => {
     if (q && !view.name.toLowerCase().includes(q)) return false;
     const premiumOn = view.premiumStudents || view.premiumTeachers;
@@ -620,13 +636,15 @@ export async function bulkTerms(session: ActiveContext, body: BulkBody, now: Dat
  */
 export async function officeSubscription(ctx: ActiveContext, now: Date = new Date()): Promise<OfficeSubscription> {
   if (!ctx.schoolId) throw new Error("officeSubscription: no school in the session");
-  const [row, offer] = await Promise.all([db.school.findUniqueOrThrow({ where: { id: ctx.schoolId }, select: TERMS_SELECT }), readOffer()]);
-  const view = viewOf(row, offer, null, now);
+  const [row, offer, asked] = await Promise.all([db.school.findUniqueOrThrow({ where: { id: ctx.schoolId }, select: TERMS_SELECT }), readOffer(), activePlans()]);
+  const view = viewOf(row, offer, null, now, asked);
+  // Premium on and its plan not asked for (C3): "No charge for it yet", so no figure, and none of the operator's words.
+  const noChargeYet = view.premiumNotBilled === "PLAN_NOT_ASKED";
   return {
     termsSet: view.termsSet,
     subscriptionFigure: view.termsSet ? view.subscriptionFigure : null,
     // Terms not set: no figure for either part, "not recorded yet" (§2.6), though premium may be on.
-    premium: { students: view.premiumStudents, teachers: view.premiumTeachers, figure: view.termsSet ? view.premiumFigure : null },
+    premium: { students: view.premiumStudents, teachers: view.premiumTeachers, figure: view.termsSet && !noChargeYet ? view.premiumFigure : null, billed: view.premiumBilled, notBilled: view.premiumNotBilled },
     freeUntil: view.status === "TRIAL" ? view.renewsOn : null,
     renewsOn: view.renewsOn,
     state: view.state,
